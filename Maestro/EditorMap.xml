@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<ResourceEditors>
+<!--
+
+A basic entry for an editor looks like this.
+
+The DisplayName is used various places, and shown to the user.
+The ResourceExtension, is the extension used in the server.
+The ImagePath is the path of the image/icon used to represent the resource.
+Alternative to the ImagePath are the fields:
+	ImageAssembly and ImageResourceName
+Those fields can used to load the image from an assembly.
+
+ResourceEditorAssembly is the path of the assembly to load the resourceeditor from.
+ResourceEditroClass is the fully qualified typename for the editor control.
+
+ResourceInstanceAssembly is the path of the assembly to load the resourc instance from.
+ResourceInstanceClass is the fully qualified typename for the resource instance.
+
+	<ResourceEditorEntry>
+		<DisplayName></DisplayName>
+		<ResourceExtension></ResourceExtension>
+		<ImagePath></ImagePath>
+		<ImageAssembly></ImageAssembly>
+		<ImageResourceName></ImageResourceName>
+		<ResourceEditorAssembly></ResourceEditorAssembly>
+		<ResourceEditorClass></ResourceEditorClass>
+		<ResourceInstanceAssembly></ResourceInstanceAssembly>
+		<ResourceInstanceClass></ResourceInstanceClass>
+	</ResourceEditorEntry>
+-->
+
+	<ResourceEditorEntry>
+		<DisplayName>Map</DisplayName>
+		<ResourceExtension>MapDefinition</ResourceExtension>
+		<ImageAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ImageAssembly>
+		<ImageResourceName>OSGeo.MapGuide.Maestro.ResourceEditors.Icons.Map.ico</ImageResourceName>
+		<ResourceEditorAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ResourceEditorAssembly>
+		<ResourceEditorClass>OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor</ResourceEditorClass>
+		<ResourceInstanceAssembly>OSGeo.MapGuide.MaestroAPI.dll</ResourceInstanceAssembly>
+		<ResourceInstanceClass>OSGeo.MapGuide.MaestroAPI.MapDefinition</ResourceInstanceClass>
+	</ResourceEditorEntry>
+
+	<ResourceEditorEntry>
+		<DisplayName>Layer</DisplayName>
+		<ResourceExtension>LayerDefinition</ResourceExtension>
+		<ImageAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ImageAssembly>
+		<ImageResourceName>OSGeo.MapGuide.Maestro.ResourceEditors.Icons.Layer.ico</ImageResourceName>
+		<ResourceEditorAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ResourceEditorAssembly>
+		<ResourceEditorClass>OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor</ResourceEditorClass>
+		<ResourceInstanceAssembly>OSGeo.MapGuide.MaestroAPI.dll</ResourceInstanceAssembly>
+		<ResourceInstanceClass>OSGeo.MapGuide.MaestroAPI.LayerDefinition</ResourceInstanceClass>
+	</ResourceEditorEntry>
+
+	<ResourceEditorEntry>
+		<DisplayName>Feature source</DisplayName>
+		<ResourceExtension>FeatureSource</ResourceExtension>
+		<ImageAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ImageAssembly>
+		<ImageResourceName>OSGeo.MapGuide.Maestro.ResourceEditors.Icons.FileDatasource.ico</ImageResourceName>
+		<ResourceEditorAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ResourceEditorAssembly>
+		<ResourceEditorClass>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase</ResourceEditorClass>
+		<ResourceInstanceAssembly>OSGeo.MapGuide.MaestroAPI.dll</ResourceInstanceAssembly>
+		<ResourceInstanceClass>OSGeo.MapGuide.MaestroAPI.FeatureSource</ResourceInstanceClass>
+	</ResourceEditorEntry>
+
+	<ResourceEditorEntry>
+		<DisplayName>Layout</DisplayName>
+		<ResourceExtension>WebLayout</ResourceExtension>
+		<ImageAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ImageAssembly>
+		<ImageResourceName>OSGeo.MapGuide.Maestro.ResourceEditors.Icons.WebLayout.ico</ImageResourceName>
+		<ResourceEditorAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ResourceEditorAssembly>
+		<ResourceEditorClass>OSGeo.MapGuide.Maestro.ResourceEditors.LayoutEditor</ResourceEditorClass>
+		<ResourceInstanceAssembly>OSGeo.MapGuide.MaestroAPI.dll</ResourceInstanceAssembly>
+		<ResourceInstanceClass>OSGeo.MapGuide.MaestroAPI.WebLayout</ResourceInstanceClass>
+	</ResourceEditorEntry>
+
+	<ResourceEditorEntry>
+		<DisplayName>Print layout</DisplayName>
+		<ResourceExtension>PrintLayout</ResourceExtension>
+		<ImageAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ImageAssembly>
+		<ImageResourceName>OSGeo.MapGuide.Maestro.ResourceEditors.Icons.PrintLayout.ico</ImageResourceName>
+		<ResourceEditorAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ResourceEditorAssembly>
+		<ResourceEditorClass>OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl</ResourceEditorClass>
+		<ResourceInstanceAssembly>OSGeo.MapGuide.MaestroAPI.dll</ResourceInstanceAssembly>
+		<ResourceInstanceClass>OSGeo.MapGuide.MaestroAPI.PrintLayout</ResourceInstanceClass>
+	</ResourceEditorEntry>
+
+	<ResourceEditorEntry>
+		<DisplayName>Symbol library</DisplayName>
+		<ResourceExtension>SymbolLibrary</ResourceExtension>
+		<ImageAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ImageAssembly>
+		<ImageResourceName>OSGeo.MapGuide.Maestro.ResourceEditors.Icons.Symbols.ico</ImageResourceName>
+		<ResourceEditorAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ResourceEditorAssembly>
+		<ResourceEditorClass>OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl</ResourceEditorClass>
+		<ResourceInstanceAssembly>OSGeo.MapGuide.MaestroAPI.dll</ResourceInstanceAssembly>
+		<ResourceInstanceClass>OSGeo.MapGuide.MaestroAPI.SymbolLibraryType</ResourceInstanceClass>
+	</ResourceEditorEntry>
+
+	<!--<ResourceEditorEntry>
+		<DisplayName>Symbol definition</DisplayName>
+		<ResourceExtension>SymbolDefinition</ResourceExtension>
+		<ImageAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ImageAssembly>
+		<ImageResourceName>OSGeo.MapGuide.Maestro.ResourceEditors.Icons.Symbols.ico</ImageResourceName>
+		<ResourceEditorAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ResourceEditorAssembly>
+		<ResourceEditorClass>OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl</ResourceEditorClass>
+		<ResourceInstanceAssembly>OSGeo.MapGuide.MaestroAPI.dll</ResourceInstanceAssembly>
+		<ResourceInstanceClass>OSGeo.MapGuide.MaestroAPI.SymbolDefinition</ResourceInstanceClass>
+	</ResourceEditorEntry> -->
+
+	<ResourceEditorEntry>
+		<DisplayName>Fusion application</DisplayName>
+		<ResourceExtension>ApplicationDefinition</ResourceExtension>
+		<ImageAssembly>OSGeo.MapGuide.Maestro.FusionEditor.dll</ImageAssembly>
+		<ImageResourceName>OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinition.ico</ImageResourceName>
+		<ResourceEditorAssembly>OSGeo.MapGuide.Maestro.FusionEditor.dll</ResourceEditorAssembly>
+		<ResourceEditorClass>OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor</ResourceEditorClass>
+		<ResourceInstanceAssembly>OSGeo.MapGuide.MaestroAPI.dll</ResourceInstanceAssembly>
+		<ResourceInstanceClass>OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.ApplicationDefinitionType</ResourceInstanceClass>
+	</ResourceEditorEntry>
+
+</ResourceEditors>

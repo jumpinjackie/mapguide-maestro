@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="ResMimeType">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="Version">
+		<value>1.0.0.0</value>
+	</resheader>
+	<resheader name="Reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="Writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="OSGeo.MapGuide.Maestro.XmlEditor.Text" type="System.String">
+		<value>Editor Xml</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.XmlEditor.OKBtn.Text" type="System.String">
+		<value>OK</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.XmlEditor.CancelBtn.Text" type="System.String">
+		<value>Cancelar</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.XmlEditor.label1.Text" type="System.String">
+		<value>La aplicación asociada con el editor xml ha comenzado.</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.XmlEditor.label2.Text" type="System.String">
+		<value>Cierra el programa externo para restaurar la funcionalidad de edición en el editor xml.</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.XmlEditor.label3.Text" type="System.String">
+		<value>El texto mostrado se actualizará automáticamente cuando el editor guarde el fichero.</value>
+	</data>
+	<data name="Do you want to close this dialog and discard all changes?" type="System.String">
+		<value>¿Deseas cerrar este cuadro de diálogo y descartar todos los cambios?</value>
+	</data>
+	<data name="Item did not correspond to the desired type.\nXml gave type: {0}\nExpected type was: {1}"
+		type="System.String">
+		<value>El objeto no correspondía al tipo deseado.\nXml Tipo dado: {0}\nTipo esperado era: {1}</value>
+	</data>
+	<data name="Failed to start external editor, most likely this means that theres is no external editor associated with xml files.\nError message was: {0}"
+		type="System.String">
+		<value>Fallo al iniciar el editor externo, lo más probable es que signifique que no hay editor externo asociado con los ficheros xml.\nEl mensaje de error fue: {0}</value>
+	</data>
+	<data name="The entered xml failed to serialize into an object.\nError message is: {0}"
+		type="System.String">
+		<value>El xml no entró a serializarse en un objeto.\nEl mensaje de error es: {0}</value>
+	</data>
+</root>

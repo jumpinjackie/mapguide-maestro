@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="ResMimeType">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="Version">
+		<value>1.0.0.0</value>
+	</resheader>
+	<resheader name="Reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="Writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.CustomEditorPage.Text" type="System.String">
+	<value>Tilpasset editor</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.GenericEditorPage.Text" type="System.String">
+	<value>Standard Editor</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.CoordinateSystemOverride.AddButton.ToolTipText" type="System.String">
+	<value>Tilføj et nyt koordinatsystem</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.CoordinateSystemOverride.DeleteButton.ToolTipText" type="System.String">
+	<value>Slet et koordinatsystem</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.CoordinateSystemOverride.EditButton.ToolTipText" type="System.String">
+	<value>Rediger et koordinat system</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.CoordinateSystemOverride.RefreshButton.ToolTipText" type="System.String">
+	<value>Hent koordinatsystemer fra datakilden</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.CoordinateSystemOverride.SourceHeader.Text" type="System.String">
+	<value>Kilde</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.CoordinateSystemOverride.TargetHeader.Text" type="System.String">
+	<value>Mål</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.TestConnectionResult.Text" type="System.String">
+	<value>Klik på "Test forbindelse" for at teste med den nuværende opsætning</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.btnTest.Text" type="System.String">
+	<value>Test forbindelse</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.AddFileButton.Text" type="System.String">
+	<value>Tilføj</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.AddFileButton.ToolTipText" type="System.String">
+	<value>Upload en data fil</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.DeleteFileButton.Text" type="System.String">
+	<value>Slet</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.DeleteFileButton.ToolTipText" type="System.String">
+	<value>Slet den valgte data fil</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.DownloadFileButton.Text" type="System.String">
+	<value>Download</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.DownloadFileButton.ToolTipText" type="System.String">
+	<value>Download en kopi af data filen</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.columnHeader1.Text" type="System.String">
+	<value>Filnavn</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.ToggleDocumentsButton.Text" type="System.String">
+	<value>Vis alle</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.ToggleDocumentsButton.ToolTipText" type="System.String">
+	<value>Skifter display af datafiler and resource filer</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.columnHeader2.Text" type="System.String">
+	<value>Type</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.ChangeResourceTypeMenu.Text" type="System.String">
+	<value>Skift type</value>
+</data>
+
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.label1.Text" type="System.String">
+    <value>Driver</value>
+  </data>
+
+</root>

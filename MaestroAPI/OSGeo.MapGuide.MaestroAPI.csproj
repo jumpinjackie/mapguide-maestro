@@ -1,0 +1,413 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{290B027E-3649-4A60-A9BF-0544831435E2}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>OSGeo.MapGuide.MaestroAPI</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>OSGeo.MapGuide.MaestroAPI</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>0.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>http://localhost/OSGeo.MapGuide.MaestroAPI/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MapGuideDotNetApi, Version=2.0.0.2308, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>MapGuideDotNetApi.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="Topology, Version=1.0.8.24721, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>TopologyFramework\Topology.dll</HintPath>
+    </Reference>
+    <Reference Include="Topology.IO.MapGuide, Version=1.0.8.40022, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>TopologyFramework\Topology.IO.MapGuide.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BinarySerializer\Enums.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BinarySerializer\IBinarySerializeable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BinarySerializer\MgBinaryDeserializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BinarySerializer\MgBinarySerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CoordinateSystem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FeatureSetReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceDescription.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileBufferedStreamReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ApplicationDefinition-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ApplicationDefinitionInfo-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\DataStoreList-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\DrawingSectionList-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\DrawingSectionResourceList-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\DrawingSource-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Envelope-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\FdoLongTransactionList-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\FdoProviderCapabilities-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\FdoSpatialContextList-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\FeatureProviderRegistry-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\FeatureSet-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\FeatureSource-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Group-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\GroupList-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LayerDefinition-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LayerDefinition-1.1.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LayerDefinition-1.2.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LoadProcedure-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\MapDefinition-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\PrintLayout-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\RepositoryContent-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ResourceDataList-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ResourceDocumentHeader-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ResourceFolderHeader-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ResourceList-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ResourcePackageManifest-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ResourceReferenceList-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ResourceSecurity-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Role-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SelectAggregate-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Server-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SiteInformation-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SiteVersion-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SqlSelect-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SymbolDefinition-1.1.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SymbolLibrary-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Types-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\UnmanagedDataList-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\User-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\UserList-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\WebLayout-1.0.0.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HttpServerConnection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LenghtyOperationCallbackArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LocalNativeConnection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RequestBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RuntimeClasses\RuntimeMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RuntimeClasses\Selection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServerConnectionBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServerConnectionI.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SiteVersion.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utf8XmlWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XmlSerializer\XmlSerializerAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XmlSerializer\XmlSerializerEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XmlValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Content Include="Schemas\ApplicationDefinition-1.0.0.xsd" />
+    <Content Include="Schemas\ApplicationDefinitionInfo-1.0.0.xsd" />
+    <Content Include="Schemas\LayerDefinition-1.1.0.xsd" />
+    <None Include="Schemas\DataStoreList-1.0.0.xsd" />
+    <None Include="Schemas\DrawingSectionList-1.0.0.xsd" />
+    <None Include="Schemas\DrawingSectionResourceList-1.0.0.xsd" />
+    <None Include="Schemas\DrawingSource-1.0.0.xsd" />
+    <None Include="Schemas\Envelope-1.0.0.xsd" />
+    <None Include="Schemas\FdoLongTransactionList-1.0.0.xsd" />
+    <None Include="Schemas\FdoProviderCapabilities-1.0.0.xsd" />
+    <None Include="Schemas\FdoSpatialContextList-1.0.0.xsd" />
+    <None Include="Schemas\FeatureProviderRegistry-1.0.0.xsd" />
+    <None Include="Schemas\FeatureSet-1.0.0.xsd" />
+    <None Include="Schemas\FeatureSource-1.0.0.xsd" />
+    <None Include="Schemas\Group-1.0.0.xsd" />
+    <None Include="Schemas\GroupList-1.0.0.xsd" />
+    <None Include="Schemas\LayerDefinition-1.0.0.xsd" />
+    <None Include="Schemas\LayerDefinition-1.0.0.xsx">
+      <DependentUpon>LayerDefinition-1.0.0.xsd</DependentUpon>
+    </None>
+    <None Include="Schemas\LayerDefinition-1.1.0.xsx">
+      <DependentUpon>LayerDefinition-1.1.0.xsd</DependentUpon>
+    </None>
+    <None Include="Schemas\LoadProcedure-1.0.0.xsd" />
+    <None Include="Schemas\MapDefinition-1.0.0.xsd" />
+    <None Include="Schemas\MapDefinition-1.0.0.xsx">
+      <DependentUpon>MapDefinition-1.0.0.xsd</DependentUpon>
+    </None>
+    <None Include="Schemas\PrintLayout-1.0.0.xsd" />
+    <None Include="Schemas\RepositoryContent-1.0.0.xsd" />
+    <None Include="Schemas\RepositoryContent-1.0.0.xsx">
+      <DependentUpon>RepositoryContent-1.0.0.xsd</DependentUpon>
+    </None>
+    <None Include="Schemas\RepositoryList-1.0.0.xsd" />
+    <None Include="Schemas\RepositoryList-1.0.0.xsx">
+      <DependentUpon>RepositoryList-1.0.0.xsd</DependentUpon>
+    </None>
+    <None Include="Schemas\ResourceDataList-1.0.0.xsd" />
+    <None Include="Schemas\ResourceDataList-1.0.0.xsx">
+      <DependentUpon>ResourceDataList-1.0.0.xsd</DependentUpon>
+    </None>
+    <None Include="Schemas\ResourceDocumentHeader-1.0.0.xsd" />
+    <None Include="Schemas\ResourceDocumentHeader-1.0.0.xsx">
+      <DependentUpon>ResourceDocumentHeader-1.0.0.xsd</DependentUpon>
+    </None>
+    <None Include="Schemas\ResourceFolderHeader-1.0.0.xsd" />
+    <None Include="Schemas\ResourceList-1.0.0.xsd" />
+    <None Include="Schemas\ResourceList-1.0.0.xsx">
+      <DependentUpon>ResourceList-1.0.0.xsd</DependentUpon>
+    </None>
+    <None Include="Schemas\ResourcePackageManifest-1.0.0.xsd" />
+    <None Include="Schemas\ResourceReferenceList-1.0.0.xsd" />
+    <None Include="Schemas\ResourceSecurity-1.0.0.xsd" />
+    <None Include="Schemas\ResourceSecurity-1.0.0.xsx">
+      <DependentUpon>ResourceSecurity-1.0.0.xsd</DependentUpon>
+    </None>
+    <None Include="Schemas\Role-1.0.0.xsd" />
+    <None Include="Schemas\SelectAggregate-1.0.0.xsd" />
+    <None Include="Schemas\Server-1.0.0.xsd" />
+    <None Include="Schemas\ServerList-1.0.0.xsd" />
+    <None Include="Schemas\SiteInformation-1.0.0.xsd" />
+    <None Include="Schemas\SiteVersion-1.0.0.xsd" />
+    <None Include="Schemas\SqlSelect-1.0.0.xsd" />
+    <None Include="Schemas\SymbolLibrary-1.0.0.xsd" />
+    <None Include="Schemas\Types-1.0.0.xsd" />
+    <None Include="Schemas\User-1.0.0.xsd" />
+    <None Include="Schemas\UserList-1.0.0.xsd" />
+    <None Include="Schemas\WebLayout-1.0.0.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

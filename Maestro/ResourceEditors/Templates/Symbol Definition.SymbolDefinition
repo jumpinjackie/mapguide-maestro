@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SimpleSymbolDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="SymbolDefinition-1.0.0.xsd" version="1.0.0">
+  <Name>Symbol</Name>
+  <Graphics>
+    <Path>
+      <Geometry>M 0,0 L 5,0 L 5,5 L 0,5 L 0,0</Geometry>
+      <FillColor>ff0000ff</FillColor>
+      <LineColor>ffff0000</LineColor>
+      <LineWeight>0.0</LineWeight>
+    </Path>
+    <Path>
+      <Geometry>M -2,-2 L 7,7 M 7,-2 L -2,7</Geometry>
+      <FillColor>00000000</FillColor>
+      <LineColor>ffffff00</LineColor>
+      <LineWeight>1.0</LineWeight>
+    </Path>
+  </Graphics>
+  <PointUsage/>
+  <ParameterDefinition/>
+</SimpleSymbolDefinition>

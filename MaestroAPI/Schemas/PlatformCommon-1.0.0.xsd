@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+  <xs:complexType name="ExtendedDataType">
+    <xs:annotation>
+      <xs:documentation>A type allocating space for future, additional, and validatable data.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:any processContents="lax" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

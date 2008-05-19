@@ -1,0 +1,883 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E324888B-4A05-46A7-8FB4-54452145128F}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>OSGeo.MapGuide.Maestro.ResourceEditors</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>OSGeo.MapGuide.Maestro.ResourceEditors</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>0.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>http://localhost/OSGeo.MapGuide.Maestro.ResourceEditors/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <ProjectReference Include="..\..\MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
+      <Name>MapGuideAPI</Name>
+      <Project>{290B027E-3649-4A60-A9BF-0544831435E2}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalizator\Globalizator.csproj">
+      <Name>Globalizator</Name>
+      <Project>{361D5982-275F-4A4C-935F-0BB637330C9C}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\MaestroEditorInterface\MaestroEditorInterface.csproj">
+      <Name>MapStudioEditorInterface</Name>
+      <Project>{006AFE1A-BF79-4C84-888D-9396958A42BD}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\RasterViewer\RasterViewer.csproj">
+      <Name>RasterViewer</Name>
+      <Project>{D5D73500-BB48-4617-90A0-C1E9A747C443}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CoordinateSystemOverride.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CoordinateSystemOverrideDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeaturePreviewRender.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditorBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditorGeneric.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ArcSDE\FeatureSourceEditorArcSDE.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\Gdal\AddFilenames.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\Gdal\AddFolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\Gdal\Composite.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\Gdal\ConfigUpdater.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\Gdal\FeatureSourceEditorGdal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\Gdal\Simple.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\King.MSSql\FeatureSourceEditorKingMSSql.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\King.Oracle\FeatureSourceEditorKingOracle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ManagedFileControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\MSQLSpatial\FeatureSourceEditorMSSQLSpatial.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\MySQL\FeatureSourceEditorMySQL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\ConnectionStringManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\Credentials.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\DSN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\FeatureSourceEditorODBC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\GeometryColumnsEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\Managed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\Unmanaged.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\Wizard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\Wizards\Informix.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\Wizards\MsSQL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\Wizards\MySQL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\Wizards\Oracle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\Wizards\OracleMS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\Wizards\PostgreSQL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\ArcSDE.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\Custom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\DODS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\FeatureSourceEditorOGR.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\FME.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\Grass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\Informix.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\Managed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\MySQL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\ODBC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\OGDI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\Oracle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\PostGIS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\Unmanaged.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\PostGIS\FeatureSourceEditorPostGIS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\SDF\FeatureSourceEditorSDF.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\SDF\Managed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\SDF\Unmanaged.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\SHP\FeatureSourceEditorSHP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\SHP\Managed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\SHP\Unmanaged.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\WFS\FeatureSourceEditorWFS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\WMS\FeatureSourceEditorWMS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceExtensions\Calculated.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceExtensions\EditExtensions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceExtensions\Extension.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceExtensions\FeatureSourceExtension.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceExtensions\Join.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceExtensions\Key.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GeometryStyleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GeometryStyleEditors\AreaFeatureStyleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GeometryStyleEditors\ColorComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GeometryStyleEditors\CustomCombo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GeometryStyleEditors\FillStyleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GeometryStyleEditors\FontStyleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GeometryStyleEditors\ImageStylePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GeometryStyleEditors\LineFeatureStyleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GeometryStyleEditors\LineStyleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GeometryStyleEditors\PointFeatureStyleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GeometryStyleEditors\ScaleRangeEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\RasterLayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleRangeProperties.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\SchemaSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\StyleRuleProperties.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\VectorLayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayoutControls\BasicCommand.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayoutControls\BrowseLayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayoutControls\CommandEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayoutControls\FlyoutItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayoutControls\HelpCommand.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayoutControls\InvokeScript.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayoutControls\InvokeURL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayoutControls\PrintCommand.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayoutControls\SearchCommand.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayoutControls\TargetedCommand.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayoutEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapLayerGroupProperties.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapLayerProperties.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PlaceHolderEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PreviewFeatureStyleColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ProviderEditorMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ResourceDataEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SelectCoordinateSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectDataProvider.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShellIcons.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SymbolLibraryEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="XmlEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <EmbeddedResource Include="blank_icon.gif" />
+    <EmbeddedResource Include="CommandTypesDataset.xml" />
+    <EmbeddedResource Include="CoordinateSystemOverride.resx">
+      <DependentUpon>CoordinateSystemOverride.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoordinateSystemOverrideDialog.resx">
+      <DependentUpon>CoordinateSystemOverrideDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditorBase.resx">
+      <DependentUpon>FeatureSourceEditorBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditorGeneric.resx">
+      <DependentUpon>FeatureSourceEditorGeneric.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ArcSDE\FeatureSourceEditorArcSDE.resx">
+      <DependentUpon>FeatureSourceEditorArcSDE.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\Gdal\AddFilenames.resx">
+      <DependentUpon>AddFilenames.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\Gdal\AddFolder.resx">
+      <DependentUpon>AddFolder.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\Gdal\Composite.resx">
+      <DependentUpon>Composite.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\Gdal\FeatureSourceEditorGdal.resx">
+      <DependentUpon>FeatureSourceEditorGdal.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\Gdal\Simple.resx">
+      <DependentUpon>Simple.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\King.MSSql\FeatureSourceEditorKingMSSql.resx">
+      <DependentUpon>FeatureSourceEditorKingMSSql.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\King.Oracle\FeatureSourceEditorKingOracle.resx">
+      <DependentUpon>FeatureSourceEditorKingOracle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ManagedFileControl.resx">
+      <DependentUpon>ManagedFileControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\MSQLSpatial\FeatureSourceEditorMSSQLSpatial.resx">
+      <DependentUpon>FeatureSourceEditorMSSQLSpatial.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\MySQL\FeatureSourceEditorMySQL.resx">
+      <DependentUpon>FeatureSourceEditorMySQL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\Credentials.resx">
+      <DependentUpon>Credentials.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\DSN.resx">
+      <DependentUpon>DSN.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\FeatureSourceEditorODBC.resx">
+      <DependentUpon>FeatureSourceEditorODBC.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\GeometryColumnsEditor.resx">
+      <DependentUpon>GeometryColumnsEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\Managed.resx">
+      <DependentUpon>Managed.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\Unmanaged.resx">
+      <DependentUpon>Unmanaged.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\Wizard.resx">
+      <DependentUpon>Wizard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\Wizards\Informix.resx">
+      <DependentUpon>Informix.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\Wizards\MsSQL.resx">
+      <DependentUpon>MsSQL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\Wizards\MySQL.resx">
+      <DependentUpon>MySQL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\Wizards\Oracle.resx">
+      <DependentUpon>Oracle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\Wizards\OracleMS.resx">
+      <DependentUpon>OracleMS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\Wizards\PostgreSQL.resx">
+      <DependentUpon>PostgreSQL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\ArcSDE.resx">
+      <DependentUpon>ArcSDE.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\Custom.resx">
+      <DependentUpon>Custom.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\DODS.resx">
+      <DependentUpon>DODS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\FeatureSourceEditorOGR.resx">
+      <DependentUpon>FeatureSourceEditorOGR.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\FME.resx">
+      <DependentUpon>FME.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\Grass.resx">
+      <DependentUpon>Grass.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\Informix.resx">
+      <DependentUpon>Informix.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\Managed.resx">
+      <DependentUpon>Managed.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\MySQL.resx">
+      <DependentUpon>MySQL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\ODBC.resx">
+      <DependentUpon>ODBC.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\OGDI.resx">
+      <DependentUpon>OGDI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\Oracle.resx">
+      <DependentUpon>Oracle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\PostGIS.resx">
+      <DependentUpon>PostGIS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\Unmanaged.resx">
+      <DependentUpon>Unmanaged.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\PostGIS\FeatureSourceEditorPostGIS.resx">
+      <DependentUpon>FeatureSourceEditorPostGIS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\SDF\FeatureSourceEditorSDF.resx">
+      <DependentUpon>FeatureSourceEditorSDF.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\SDF\Managed.resx">
+      <DependentUpon>Managed.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\SDF\Unmanaged.resx">
+      <DependentUpon>Unmanaged.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\SHP\FeatureSourceEditorSHP.resx">
+      <DependentUpon>FeatureSourceEditorSHP.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\SHP\Managed.resx">
+      <DependentUpon>Managed.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\SHP\Unmanaged.resx">
+      <DependentUpon>Unmanaged.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\WFS\FeatureSourceEditorWFS.resx">
+      <DependentUpon>FeatureSourceEditorWFS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\WMS\FeatureSourceEditorWMS.resx">
+      <DependentUpon>FeatureSourceEditorWMS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceExtensions\Calculated.resx">
+      <DependentUpon>Calculated.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceExtensions\EditExtensions.resx">
+      <DependentUpon>EditExtensions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceExtensions\Extension.resx">
+      <DependentUpon>Extension.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceExtensions\FeatureSourceExtension.resx">
+      <DependentUpon>FeatureSourceExtension.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceExtensions\Join.resx">
+      <DependentUpon>Join.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceExtensions\Key.resx">
+      <DependentUpon>Key.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeometryStyleEditor.resx">
+      <DependentUpon>GeometryStyleEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeometryStyleEditors\AreaFeatureStyleEditor.resx">
+      <DependentUpon>AreaFeatureStyleEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeometryStyleEditors\AreaStyleComboDataset.xml" />
+    <EmbeddedResource Include="GeometryStyleEditors\CustomCombo.resx">
+      <DependentUpon>CustomCombo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeometryStyleEditors\FillStyleEditor.resx">
+      <DependentUpon>FillStyleEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\01.Solid.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\02.Net.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\03.Net_45.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\04.Line.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\05.Line_45.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\06.Line_90.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\07.Line_135.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\08.Square.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\09.Angle.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\10.Box.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\11.Brass.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\13.Brstone.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\14.Clay.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\15.Cork.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\16.Cross.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\17.Dash.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\18.Dolmit.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\19.Dots.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\20.Earth.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\21.Escher.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\22.Flex.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\23.Grass.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\24.Grate.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\25.Hex.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\26.Honey.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\27.Hound.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\28.Insul.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\29.Mudst.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\30.Net3.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\31.Plast.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\32.Plasti.gif" />
+    <EmbeddedResource Include="GeometryStyleEditors\FontStyleComboDataset.xml" />
+    <EmbeddedResource Include="GeometryStyleEditors\FontStyleEditor.resx">
+      <DependentUpon>FontStyleEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeometryStyleEditors\LineFeatureStyleEditor.resx">
+      <DependentUpon>LineFeatureStyleEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeometryStyleEditors\LineStyleComboDataset.xml" />
+    <EmbeddedResource Include="GeometryStyleEditors\LineStyleEditor.resx">
+      <DependentUpon>LineStyleEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeometryStyleEditors\PointFeatureStyleEditor.resx">
+      <DependentUpon>PointFeatureStyleEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeometryStyleEditors\PointStyleComboDataset.xml" />
+    <EmbeddedResource Include="GeometryStyleEditors\ScaleRangeEditor.resx">
+      <DependentUpon>ScaleRangeEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icons\FileDatasource.ico" />
+    <EmbeddedResource Include="Icons\Layer.ico" />
+    <EmbeddedResource Include="Icons\Map.ico" />
+    <EmbeddedResource Include="Icons\PrintLayout.ico" />
+    <EmbeddedResource Include="Icons\Symbols.ico" />
+    <EmbeddedResource Include="Icons\WebLayout.ico" />
+    <EmbeddedResource Include="LayerEditor.resx">
+      <DependentUpon>LayerEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\RasterLayer.resx">
+      <DependentUpon>RasterLayer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\ScaleRangeProperties.resx">
+      <DependentUpon>ScaleRangeProperties.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\SchemaSelector.resx">
+      <DependentUpon>SchemaSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\StyleRuleProperties.resx">
+      <DependentUpon>StyleRuleProperties.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\VectorLayer.resx">
+      <DependentUpon>VectorLayer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutControls\BasicCommand.resx">
+      <DependentUpon>BasicCommand.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutControls\BrowseLayers.resx">
+      <DependentUpon>BrowseLayers.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutControls\CommandEditor.resx">
+      <DependentUpon>CommandEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutControls\FlyoutItem.resx">
+      <DependentUpon>FlyoutItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutControls\HelpCommand.resx">
+      <DependentUpon>HelpCommand.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutControls\InvokeScript.resx">
+      <DependentUpon>InvokeScript.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutControls\InvokeURL.resx">
+      <DependentUpon>InvokeURL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutControls\PrintCommand.resx">
+      <DependentUpon>PrintCommand.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutControls\SearchCommand.resx">
+      <DependentUpon>SearchCommand.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutControls\TargetedCommand.resx">
+      <DependentUpon>TargetedCommand.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutEditor.resx">
+      <DependentUpon>LayoutEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapEditor.resx">
+      <DependentUpon>MapEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapLayerGroupProperties.resx">
+      <DependentUpon>MapLayerGroupProperties.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapLayerProperties.resx">
+      <DependentUpon>MapLayerProperties.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlaceHolderEditor.resx">
+      <DependentUpon>PlaceHolderEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResourceDataEditor.resx">
+      <DependentUpon>ResourceDataEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectCoordinateSystem.resx">
+      <DependentUpon>SelectCoordinateSystem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectDataProvider.resx">
+      <DependentUpon>SelectDataProvider.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLibraryEditor.resx">
+      <DependentUpon>SymbolLibraryEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XmlEditorControl.resx">
+      <DependentUpon>XmlEditorControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="GeometryStyleEditors\Fillstyles\12.Brick.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:simpleType name="version">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d+\.\d+\.\d+\.\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FeatureProviderRegistry" type="FeatureProviderRegistry">
+    <xs:annotation>
+      <xs:documentation>Root element that contains a collection of FeatureProvider elements.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="FeatureProviderRegistry">
+    <xs:sequence>
+      <xs:element name="FeatureProvider" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Describes an installed feature provider.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Name" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Unique name of the feature provider. This name should be of the form &lt;Company&gt;.&lt;Provider&gt;.lt;Version&gt;.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="DisplayName" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>A user friendly display name of the feature provider.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Description" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>A brief description of the feature provider.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Version" type="version">
+              <xs:annotation>
+                <xs:documentation>The version of the feature provider. The version number string has the form &lt;VersionMajor&gt;.&lt;VersionMinor&gt;.&lt;BuildMajor&gt;.&lt;BuildMinor&gt;.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="FeatureDataObjectsVersion" type="version">
+              <xs:annotation>
+                <xs:documentation>The version of the feature data objects specification the feature provider conforms to. The version number string has the form &lt;VersionMajor&gt;.&lt;VersionMinor&gt;.&lt;BuildMajor&gt;.&lt;BuildMinor&gt;.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="ConnectionProperties">
+              <xs:annotation>
+                <xs:documentation>Connection properties for each provider with default values will be listed here.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                  <xs:element name="ConnectionProperty" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="Name" type="xs:string">
+                          <xs:annotation>
+                            <xs:documentation>Name of the property retrieved from Fdo Provider</xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                        <xs:element name="LocalizedName" type="xs:string" minOccurs="0">
+                          <xs:annotation>
+                            <xs:documentation>Properties can have localized names for displaying them in UI. Provider will inform us what that string should be.</xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                        <xs:element name="DefaultValue" type="xs:string" minOccurs="0">
+                          <xs:annotation>
+                            <xs:documentation>This is a default value. This will be one of the values listed in  Value element</xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Value" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                          <xs:annotation>
+                            <xs:documentation>A property can have more than one alternative values to choose from. All possible values will be listed here.</xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                      </xs:sequence>
+                      <xs:attribute name="Required" type="xs:boolean" use="required"/>
+                      <xs:attribute name="Protected" type="xs:boolean" use="required"/>
+                      <xs:attribute name="Enumerable" type="xs:boolean" use="required"/>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

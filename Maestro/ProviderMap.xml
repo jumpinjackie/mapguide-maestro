@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<ProviderEditorMap>
+	<ProviderItem>
+		<Provider>OSGeo.SDF</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorSDF</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+
+	<ProviderItem>
+		<Provider>OSGeo.ODBC</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+
+	<ProviderItem>
+		<Provider>OSGeo.OGR</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorOGR</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+
+	<ProviderItem>
+		<Provider>OSGeo.PostGIS</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorPostGIS</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+
+	<ProviderItem>
+		<Provider>OSGeo.KingOracle</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorKingOracle</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+
+	<ProviderItem>
+		<Provider>OSGeo.SQLServerSpatial</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorMSSQLSpatial</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+
+	<ProviderItem>
+		<Provider>King.MsSqlSpatial</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorKingMSSql</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+
+	<ProviderItem>
+		<Provider>OSGeo.ArcSDE</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorArcSDE</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+
+	<ProviderItem>
+		<Provider>OSGeo.SHP</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorSHP</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+
+	<ProviderItem>
+		<Provider>OSGeo.WFS</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorWFS</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+
+	<ProviderItem>
+		<Provider>OSGeo.WMS</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorWMS</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+		
+	<ProviderItem>
+		<Provider>OSGeo.MySQL</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorMySQL</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+
+	<ProviderItem>
+		<Provider>OSGeo.Gdal</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+		
+</ProviderEditorMap>

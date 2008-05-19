@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="RowSet" type="RowCollectionType">
+    <xs:annotation>
+      <xs:documentation>This schema defines the return structure of Fdo Select operation</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="RowType"/>
+  <xs:complexType name="RowCollectionType">
+    <xs:sequence>
+      <xs:element name="ColumnDefinitions" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>There can be more than one table definition in case we do join operation etc. like road.id = highway.id etc.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Column" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Name" type="xs:string"/>
+                  <xs:element name="Type">
+                    <xs:annotation>
+                      <xs:documentation>Enum of data types  Boolean, Byte, DateTime, Decimal, Double, Int16, Int32, Int64, Single, String, BLOB, CLOB, UniqueID  </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="boolean"/>
+                        <xs:enumeration value="byte"/>
+                        <xs:enumeration value="datetime"/>
+                        <xs:enumeration value="decimal"/>
+                        <xs:enumeration value="double"/>
+                        <xs:enumeration value="int16"/>
+                        <xs:enumeration value="int32"/>
+                        <xs:enumeration value="int64"/>
+                        <xs:enumeration value="single"/>
+                        <xs:enumeration value="string"/>
+                        <xs:enumeration value="blob"/>
+                        <xs:enumeration value="clob"/>
+                        <xs:enumeration value="uniqueId"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Rows">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Row" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="RowType">
+                    <xs:sequence>
+                      <xs:element name="Column" maxOccurs="unbounded">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="Name">
+                              <xs:complexType>
+                                <xs:simpleContent>
+                                  <xs:extension base="xs:string"/>
+                                </xs:simpleContent>
+                              </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Value" type="xs:string"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

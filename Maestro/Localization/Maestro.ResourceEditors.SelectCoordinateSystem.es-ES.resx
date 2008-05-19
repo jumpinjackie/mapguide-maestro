@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="ResMimeType">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="Version">
+		<value>1.0.0.0</value>
+	</resheader>
+	<resheader name="Reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="Writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.Text" type="System.String">
+		<value>Selecciona Sistema de Coordenadas</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.label1.Text" type="System.String">
+		<value>Categoría de las Coordenadas</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.label3.Text" type="System.String">
+		<value>Well-Known-Text (WKT)</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.SelectByList.Text" type="System.String">
+		<value>Seleccionar por lista</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.SelectByWKT.Text" type="System.String">
+		<value>Tipo de código WKT</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.SelectByCoordSysCode.Text"
+		type="System.String">
+		<value>Tipo de código en el sistema de coordenadas</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.label5.Text" type="System.String">
+		<value>Código en el sistema de coordenadas</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.SelectByEPSGCode.Text" type="System.String">
+		<value>Tipo de código EPSG</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.label4.Text" type="System.String">
+		<value>Código en el sistema de coordenadas</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.ValidateEPSG.Text" type="System.String">
+		<value>Validar</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.ValidateCoordSysCode.Text"
+		type="System.String">
+		<value>Validar</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.ValidateWKT.Text" type="System.String">
+		<value>Validar</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.CoordinateSystemLabel.Text"
+		type="System.String">
+		<value>Sistema de coordenadas</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.OKBtn.Text" type="System.String">
+		<value>OK</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.ResourceEditors.SelectCoordinateSystem.CancelBtn.Text" type="System.String">
+		<value>Cancelar</value>
+	</data>
+</root>

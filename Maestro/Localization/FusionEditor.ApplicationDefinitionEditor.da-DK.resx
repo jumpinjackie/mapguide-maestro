@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="ResMimeType">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="Version">
+    <value>1.0.0.0</value>
+  </resheader>
+  <resheader name="Reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="Writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.label1.Text" type="System.String">
+    <value>Titel</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.label2.Text" type="System.String">
+    <value>URL til skabelon</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.MapGroup.Text" type="System.String">
+    <value>Kort</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.label3.Text" type="System.String">
+    <value>Kort element</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.OverrideDisplayExtents.Text" type="System.String">
+    <value>Benyt en andet start udstrækning</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.label5.Text" type="System.String">
+    <value>Målforhold</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.label4.Text" type="System.String">
+    <value>Y</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.label7.Text" type="System.String">
+    <value>X</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.label8.Text" type="System.String">
+    <value>Kort type</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.groupBox1.Text" type="System.String">
+    <value>Widgets</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.containerEditor.label1.Text" type="System.String">
+    <value>Navn</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.containerEditor.label2.Text" type="System.String">
+    <value>Placering</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.containerEditor.label3.Text" type="System.String">
+    <value>Type</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.widgetEntry.label1.Text" type="System.String">
+    <value>Widget</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.RemoveWidgetButton.ToolTipText" type="System.String">
+    <value>Slet et element</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.MoveWidgetUpButton.ToolTipText" type="System.String">
+    <value>Flyt det valgte element op</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.MoveWidgetDownButton.ToolTipText" type="System.String">
+    <value>Flyt det valgte element ned</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.AddWidgetSeperatorMenu.Text" type="System.String">
+    <value>Adskilder</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.AddWidgetSubmenuMenu.Text" type="System.String">
+    <value>Undermenu</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.AddWidgetEntryMenu.Text" type="System.String">
+    <value>Widget</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.AddWidgetButton.ToolTipText" type="System.String">
+    <value>Tilføj en widget</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.MapTypeCombo.Text" type="System.String">
+    <value>comboBox1</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.MapSingleTileCheck.Text" type="System.String">
+    <value>Enkelt flise</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.label9.Text" type="System.String">
+    <value>Kort ID</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.AddContainerButton.ToolTipText" type="System.String">
+    <value>Tilføj en beholder</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.ConfigureWidgetsButton.ToolTipText" type="System.String">
+    <value>Indstil tilgængelige widgets</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.flyoutEntry.label3.Text" type="System.String">
+    <value>Billed url</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.flyoutEntry.label2.Text" type="System.String">
+    <value>Tooltip</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.flyoutEntry.label1.Text" type="System.String">
+    <value>Navn</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.flyoutEntry.label4.Text" type="System.String">
+    <value>Billed klasse</value>
+  </data>
+  <data name="New submenu" type="System.String">
+    <value>Ny undermenu</value>
+  </data>
+  <data name="- Seperator -" type="System.String">
+    <value>- Adskilder -</value>
+  </data>
+  <data name="New container" type="System.String">
+    <value>Ny beholder</value>
+  </data>
+
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.label12.Text" type="System.String">
+	<value>Vis i browser</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.FusionEditor.ApplicationDefinitionEditor.ShowInBrowser.Text" type="System.String">
+	<value>Vis i browser</value>
+  </data>
+</root>

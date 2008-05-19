@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="ResMimeType">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="Version">
+		<value>1.0.0.0</value>
+	</resheader>
+	<resheader name="Reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="Writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+<data name="There already exists a resource file with the name &quot;{0}&quot;. Do you want to overwrite the existing file?" type="System.String"><value>Der eksisterer allerede en fil med det angivne navn: \&quot;{0}\&quot;. Vil du overskrive den eksisterende fil?</value></data>
+<data name="Delete the selected resources?" type="System.String"><value>Vil du slette de valgte elementer?</value></data>
+<data name="All files (*.*)" type="System.String"><value>Alle filer (*.*)</value></data>
+<data name="Save resource file" type="System.String"><value>Gem filen</value></data>
+<data name="Select folder where downloaded files will be saved" type="System.String"><value>Vælg den mappe hvor filerne skal gemmes</value></data>
+<data name="Download of resource &quot;{0}&quot; failed.\nReason: {1}\nHow do you want to continue?" type="System.String"><value>Download af filen \&quot;{0}\&quot; fejlede.\nÅrsag: {1}\nHvordan vil du fortsætte?</value></data>
+<data name="Delete of resource &quot;{0}&quot; failed.\nReason: {1}\nHow do you want to continue?" type="System.String"><value>Sletning af filen \&quot;{0}\&quot; fejlede.\nÅrsag: {1}\nHvordan vil du fortsætte?</value></data>
+<data name="The file &quot;{0}&quot; already exists. \nDo you want to overwrite?" type="System.String"><value>File \&quot;{0}\&quot; findes allerede. \nVil du overskrive den?</value></data>
+<data name="Upload of resource failed.\nReason: {0}\nHow do you want to continue?" type="System.String"><value>Upload af filen fejlede.\nÅrsag: {0}\nHvordan vil du fortsætte?</value></data>
+<data name="Select files to upload" type="System.String"><value>Vælg de filer der skal uploades</value></data>
+</root>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="ResourceFolderHeader-1.0.0.xsd"/>
+  <xs:include schemaLocation="ResourceDocumentHeader-1.0.0.xsd"/>
+  <xs:element name="ResourceList">
+    <xs:annotation>
+      <xs:documentation>Resource list</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ResourceFolder">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ResourceId" type="xs:string"/>
+              <xs:element name="Depth" type="xs:integer"/>
+              <xs:element name="Owner" type="xs:string"/>
+              <xs:element name="CreatedDate" type="xs:dateTime"/>
+              <xs:element name="ModifiedDate" type="xs:dateTime"/>
+              <xs:element name="NumberOfFolders" type="xs:integer"/>
+              <xs:element name="NumberOfDocuments" type="xs:integer"/>
+              <xs:element name="ResourceFolderHeader" type="ResourceFolderHeaderType"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ResourceDocument">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ResourceId" type="xs:string"/>
+              <xs:element name="Depth" type="xs:integer"/>
+              <xs:element name="Owner" type="xs:string"/>
+              <xs:element name="CreatedDate" type="xs:dateTime"/>
+              <xs:element name="ModifiedDate" type="xs:dateTime"/>
+              <xs:element name="ResourceDocumentHeader" type="ResourceDocumentHeaderType"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

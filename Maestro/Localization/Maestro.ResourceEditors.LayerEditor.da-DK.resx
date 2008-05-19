@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="ResMimeType">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="Version">
+    <value>1.0.0.0</value>
+  </resheader>
+  <resheader name="Reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="Writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.label1.Text" type="System.String">
+    <value>Datakilde</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.schemaSelector.label2.Text" type="System.String">
+    <value>Skema</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.schemaSelector.GeometryLabel.Text" type="System.String">
+    <value>Geometri</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.label4.Text" type="System.String">
+    <value>Filter</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.label5.Text" type="System.String">
+    <value>Link</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.label6.Text" type="System.String">
+    <value>Tooltip</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.ResourceGroup.Text" type="System.String">
+    <value>Indstillinger</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.SelectAllButton.Text" type="System.String">
+    <value>Vælg alle</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.SelectNoneButton.Text" type="System.String">
+    <value>Vælg ingen</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.groupViewerProperties.Text" type="System.String">
+    <value>Værdier der vises når objektet er valgt</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.groupBox1.Text" type="System.String">
+    <value>Lag udseende</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.groupBox2.Text" type="System.String">
+    <value>Egenskaber</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label1.Text" type="System.String">
+    <value>Egenskab</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label2.Text" type="System.String">
+    <value>Font</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label3.Text" type="System.String">
+    <value>Størrelses forhold</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label4.Text" type="System.String">
+    <value>Enheder</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label5.Text" type="System.String">
+    <value>Størrelse</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label6.Text" type="System.String">
+    <value>Stil</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label7.Text" type="System.String">
+    <value>Baggrundstype</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label8.Text" type="System.String">
+    <value>Baggrund</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label9.Text" type="System.String">
+    <value>Tekst</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label10.Text" type="System.String">
+    <value>Rotation</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.fontGroup.Text" type="System.String">
+    <value>Font</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.colorGroup.Text" type="System.String">
+    <value>Farver</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.alignmentGroup.Text" type="System.String">
+    <value>Justering</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.underlineCheck.Text" type="System.String">
+    <value>U</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.italicCheck.Text" type="System.String">
+    <value>K</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.boldCheck.Text" type="System.String">
+    <value>F</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.previewGroup.Text" type="System.String">
+    <value>Preview</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.verticalLabel.Text" type="System.String">
+    <value>Vertikal</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.horizontalLabel.Text" type="System.String">
+    <value>Horisontal</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.groupBox1.Text" type="System.String">
+    <value>Symbol stil</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label1.Text" type="System.String">
+    <value>Symbol</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label2.Text" type="System.String">
+    <value>Størrelsesforhold</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label3.Text" type="System.String">
+    <value>Størrelses enheder</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label4.Text" type="System.String">
+    <value>Bredde</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label5.Text" type="System.String">
+    <value>Højde</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label6.Text" type="System.String">
+    <value>Reference punkt</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label7.Text" type="System.String">
+    <value>X</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label8.Text" type="System.String">
+    <value>Y</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label9.Text" type="System.String">
+    <value>Rotation</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.groupBox2.Text" type="System.String">
+    <value>Symbol udfyldning</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.groupBox3.Text" type="System.String">
+    <value>Symbol kant</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.groupBox4.Text" type="System.String">
+    <value>Preview</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.WidthText.Text" type="System.String">
+    <value>Bredde</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.ReferenceX.Text" type="System.String">
+    <value>ReferenceX</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.MaintainAspectRatio.Text" type="System.String">
+    <value>Bibehold størrelsesforhold</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.ReferenceY.Text" type="System.String">
+    <value>ReferenceY</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.fillStyleEditor.displayFill.Text" type="System.String">
+    <value>Udfyld punktet</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.fillStyleEditor.lblBackground.Text" type="System.String">
+    <value>Baggrundsfarve</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.fillStyleEditor.lblForeground.Text" type="System.String">
+    <value>Forgrundsfarve</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.fillStyleEditor.lblFill.Text" type="System.String">
+    <value>Udfyldningsmønster</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.lineStyleEditor.lblColor.Text" type="System.String">
+    <value>Farve</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.lineStyleEditor.lblThickness.Text" type="System.String">
+    <value>Tykkelse</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.lineStyleEditor.lblFill.Text" type="System.String">
+    <value>Linie stil</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.lineStyleEditor.displayLine.Text" type="System.String">
+    <value>Synlig kant</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.groupBox1.Text" type="System.String">
+    <value>Sammensat linie</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.label3.Text" type="System.String">
+    <value>Størrelses enheder</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.label2.Text" type="System.String">
+    <value>Størrelsesforhold</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.applyLineStyle.Text" type="System.String">
+    <value>Anvend linie stil</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.compositeLines.Text" type="System.String">
+    <value>Anvend sammensat linie stil</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.lineStyleEditor.lblColor.Text" type="System.String">
+    <value>Farve</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.lineStyleEditor.lblThickness.Text" type="System.String">
+    <value>Tykkelse</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.lineStyleEditor.lblFill.Text" type="System.String">
+    <value>Linie stil</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.lineStyleEditor.displayLine.Text" type="System.String">
+    <value>Synlig kant</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.lineGroup.Text" type="System.String">
+    <value>Linie stil</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.sizeGroup.Text" type="System.String">
+    <value>Størrelse</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.previewGroup.Text" type="System.String">
+    <value>Preview</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.label4.Text" type="System.String">
+    <value>Enheder</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.label3.Text" type="System.String">
+    <value>Størrelsesforhold</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.groupBox1.Text" type="System.String">
+    <value>Kant udseende</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.groupBox2.Text" type="System.String">
+    <value>Udfylnings stil</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.label1.Text" type="System.String">
+    <value>Gennemsigtighed</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.previewGroup.Text" type="System.String">
+    <value>Preview</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.fillStyleEditor.displayFill.Text" type="System.String">
+    <value>Vis udfyldning</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.fillStyleEditor.lblBackground.Text" type="System.String">
+    <value>Baggrundsfarve</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.fillStyleEditor.lblForeground.Text" type="System.String">
+    <value>Forgrundsfarve</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.fillStyleEditor.lblFill.Text" type="System.String">
+    <value>Udfyldningsmønster</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.lineStyleEditor.lblColor.Text" type="System.String">
+    <value>Farve</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.lineStyleEditor.lblThickness.Text" type="System.String">
+    <value>Tykkelse</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.lineStyleEditor.lblFill.Text" type="System.String">
+    <value>Linie stil</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.lineStyleEditor.displayLine.Text" type="System.String">
+    <value>Synlig kant</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.AddScaleRangeButton.ToolTipText" type="System.String">
+    <value>Tilføj et visningsområde</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.SelectInverseButton.Text" type="System.String">
+    <value>Omvend valgt</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeProperties.UsePoint.Text" type="System.String">
+    <value>Vis punkter</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeProperties.UseLine.Text" type="System.String">
+    <value>Vis linier</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeProperties.UseArea.Text" type="System.String">
+    <value>Vis flader</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeProperties.label1.Text" type="System.String">
+    <value>Mindste visningområde</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeProperties.label2.Text" type="System.String">
+    <value>Største visningsområde</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.styleRuleProperties.label1.Text" type="System.String">
+    <value>Regel</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.styleRuleProperties.ShowFeatures.Text" type="System.String">
+    <value>Vis geometri</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.styleRuleProperties.ShowLabels.Text" type="System.String">
+    <value>Vis geometri labels</value>
+  </data>
+
+  <data name="Line" type="System.String">
+    <value>Linie</value>
+  </data>
+  <data name="Feature" type="System.String">
+    <value>Geometri</value>
+  </data>
+  <data name="Unlimited" type="System.String">
+    <value>Uendelig</value>
+  </data>
+  <data name="Point" type="System.String">
+    <value>Punkt</value>
+  </data>
+  <data name="Label" type="System.String">
+    <value>Label</value>
+  </data>
+  <data name="Area" type="System.String">
+    <value>Flade</value>
+  </data>
+  <data name="Could not open feature source: {0}, because {1}" type="System.String">
+    <value>Kunne ikke åbne elementet: {0}, fordi {1}</value>
+  </data>
+  <data name="to" type="System.String">
+    <value>til</value>
+  </data>
+  <data name="&lt;default&gt;" type="System.String">
+    <value>&lt;standard&gt;</value>
+  </data>
+
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.ResourceGroup.Text" type="System.String">
+    <value>Resource indstillinger</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.schemaSelector.label2.Text" type="System.String">
+    <value>Skema</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.schemaSelector.GeometryLabel.Text" type="System.String">
+    <value>Raster</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.VisualSettings.Text" type="System.String">
+    <value>Indstillinger for synlighed</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label1.Text" type="System.String">
+    <value>Synlig fra</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label2.Text" type="System.String">
+    <value>til</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.RebuildThreshold.Text" type="System.String">
+    <value>Genbyg raster efter denne zoom faktor</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label3.Text" type="System.String">
+    <value>Forgrundsfarve</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label4.Text" type="System.String">
+    <value>Baggrundsfarve</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.groupBox1.Text" type="System.String">
+    <value>To farve billedindstillinger</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label5.Text" type="System.String">
+    <value>Brightness faktor</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label6.Text" type="System.String">
+    <value>Kontrast faktor</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label7.Text" type="System.String">
+    <value>Gennemsigtig farve</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label8.Text" type="System.String">
+    <value>BÅnd</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label9.Text" type="System.String">
+    <value>Azimuth</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label10.Text" type="System.String">
+    <value>Højde</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label11.Text" type="System.String">
+    <value>Målforhold</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label12.Text" type="System.String">
+    <value>Bånd</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label13.Text" type="System.String">
+    <value>Standard farve</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label14.Text" type="System.String">
+    <value>Nul værdi</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.label15.Text" type="System.String">
+    <value>Målforhold</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.EnableAdvanced.Text" type="System.String">
+    <value>Avancerede indstillinger</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.EnableSurface.Text" type="System.String">
+    <value>Overflade</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.rasterLayer.EnableHillshade.Text" type="System.String">
+    <value>Skygger</value>
+  </data>
+  <data name="Failed to read schema from data source.\nThe operation gave the error message: {0}" type="System.String">
+    <value>Kunne ikke læse skema fra datakilde.\nFejlbeskeden var: {0}</value>
+  </data>
+  <data name="&lt; Select a featuresource &gt;" type="System.String">
+    <value>&lt; Vælg en datakilde &gt;</value>
+  </data>
+</root>

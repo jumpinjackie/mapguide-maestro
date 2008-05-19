@@ -1,0 +1,4 @@
+All images in this folder and subfolders are taken from the MapGuide Open Source WebStudio folder,
+and belived to be avalible under the GPL license.
+
+Please contact the OSGeo consortium for copyright questions regarding these images.

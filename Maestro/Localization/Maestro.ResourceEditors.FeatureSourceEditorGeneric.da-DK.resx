@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="ResMimeType">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="Version">
+    <value>1.0.0.0</value>
+  </resheader>
+  <resheader name="Reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="Writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGeneric.btnTest.Text" type="System.String">
+    <value>Test forbindelse</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGeneric.TestConnectionResult.Text" type="System.String">
+    <value>Klik på "Test forbindelse" for at teste med de indtastede parametre</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGeneric.resourceDataEditor.AddFileButton.Text" type="System.String">
+    <value>Tilføj</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGeneric.resourceDataEditor.AddFileButton.ToolTipText" type="System.String">
+    <value>Upload en data fil</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGeneric.resourceDataEditor.DeleteFileButton.Text" type="System.String">
+    <value>Slet</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGeneric.resourceDataEditor.DeleteFileButton.ToolTipText" type="System.String">
+    <value>Sletter de markerede data filer</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGeneric.resourceDataEditor.DownloadFileButton.Text" type="System.String">
+    <value>Download</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGeneric.resourceDataEditor.DownloadFileButton.ToolTipText" type="System.String">
+    <value>Henter en kopi af data filen</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGeneric.resourceDataEditor.columnHeader1.Text" type="System.String">
+    <value>Filnavn</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGeneric.resourceDataEditor.ToggleDocumentsButton.Text" type="System.String">
+    <value>Vis alle</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGeneric.resourceDataEditor.ToggleDocumentsButton.ToolTipText" type="System.String">
+    <value>Skifter visning af data filer og resource filer</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGeneric.resourceDataEditor.columnHeader2.Text" type="System.String">
+    <value>Type</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGeneric.resourceDataEditor.ChangeResourceTypeMenu.Text" type="System.String">
+    <value>Skift type</value>
+  </data>
+  <data name="Provider reported no errors" type="System.String">
+    <value>Der blev ikke rapporteret nogen fejl</value>
+  </data>
+  <data name="This featuresource cannot be edited, because the provider is not installed on the server, and the featuresource does not contain connection information" type="System.String">
+    <value>Denne forbindelse kan ikke redigeres, fordi driveren ikke er installeret på serveren, og forbindelsen ikke indeholder de nøvendige oplysninger.</value>
+  </data>
+</root>
