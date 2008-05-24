@@ -123,8 +123,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VectorLayer));
-            OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType pointSymbolization2DType2 = new OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType();
-            OSGeo.MapGuide.MaestroAPI.MarkSymbolType markSymbolType2 = new OSGeo.MapGuide.MaestroAPI.MarkSymbolType();
+            OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType pointSymbolization2DType1 = new OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType();
+            OSGeo.MapGuide.MaestroAPI.MarkSymbolType markSymbolType1 = new OSGeo.MapGuide.MaestroAPI.MarkSymbolType();
             this.PropertyColumnDisplay = new System.Data.DataColumn();
             this.PropertyColumnVisible = new System.Data.DataColumn();
             this.PropertyColumnName = new System.Data.DataColumn();
@@ -637,23 +637,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             this.pointFeatureStyleEditor.AutoScroll = true;
             this.pointFeatureStyleEditor.AutoScrollMinSize = new System.Drawing.Size(344, 584);
-            pointSymbolization2DType2.ExtendedData1 = null;
-            markSymbolType2.Edge = null;
-            markSymbolType2.ExtendedData1 = null;
-            markSymbolType2.Fill = null;
-            markSymbolType2.InsertionPointX = 0;
-            markSymbolType2.InsertionPointXSpecified = false;
-            markSymbolType2.InsertionPointY = 0;
-            markSymbolType2.InsertionPointYSpecified = false;
-            markSymbolType2.MaintainAspect = false;
-            markSymbolType2.MaintainAspectSpecified = false;
-            markSymbolType2.Rotation = null;
-            markSymbolType2.Shape = OSGeo.MapGuide.MaestroAPI.ShapeType.Square;
-            markSymbolType2.SizeX = null;
-            markSymbolType2.SizeY = null;
-            markSymbolType2.Unit = OSGeo.MapGuide.MaestroAPI.LengthUnitType.Millimeters;
-            pointSymbolization2DType2.Item = markSymbolType2;
-            this.pointFeatureStyleEditor.Item = pointSymbolization2DType2;
+            pointSymbolization2DType1.ExtendedData1 = null;
+            markSymbolType1.Edge = null;
+            markSymbolType1.ExtendedData1 = null;
+            markSymbolType1.Fill = null;
+            markSymbolType1.InsertionPointX = 0;
+            markSymbolType1.InsertionPointXSpecified = false;
+            markSymbolType1.InsertionPointY = 0;
+            markSymbolType1.InsertionPointYSpecified = false;
+            markSymbolType1.MaintainAspect = false;
+            markSymbolType1.MaintainAspectSpecified = false;
+            markSymbolType1.Rotation = null;
+            markSymbolType1.Shape = OSGeo.MapGuide.MaestroAPI.ShapeType.Square;
+            markSymbolType1.SizeX = null;
+            markSymbolType1.SizeY = null;
+            markSymbolType1.Unit = OSGeo.MapGuide.MaestroAPI.LengthUnitType.Millimeters;
+            pointSymbolization2DType1.Item = markSymbolType1;
+            this.pointFeatureStyleEditor.Item = pointSymbolization2DType1;
             this.pointFeatureStyleEditor.Location = new System.Drawing.Point(64, 168);
             this.pointFeatureStyleEditor.Name = "pointFeatureStyleEditor";
             this.pointFeatureStyleEditor.Size = new System.Drawing.Size(344, 584);
@@ -673,6 +673,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             // toolStrip1
             // 
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddScaleRangeButton,
             this.AddRuleButton,

@@ -1,5 +1,0 @@
-RasterViewer
-FormMain
-XmlEditor
-ApplicationDefinitionEditor
-EditWidgets

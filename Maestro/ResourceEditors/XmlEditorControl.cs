@@ -226,6 +226,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // toolBar
             // 
+            this.toolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CopyClipboardButton,
             this.CutClipboardButton,

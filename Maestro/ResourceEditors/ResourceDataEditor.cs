@@ -152,6 +152,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // ResourceDataFilesToolbar
             // 
+            this.ResourceDataFilesToolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.ResourceDataFilesToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddFileButton,
             this.DeleteFileButton,

@@ -91,6 +91,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // toolStrip
             // 
+            toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddButton,
             this.DeleteButton,

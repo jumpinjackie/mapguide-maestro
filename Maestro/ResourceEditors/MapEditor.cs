@@ -84,11 +84,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripButton MoveLayerUpButton;
         private ToolStripButton MoveLayerDownButton;
         private ToolStrip toolStrip1;
-        private ToolStripButton RemoveLayerOrderButton_1;
+        private ToolStripButton RemoveLayerOrderButton;
         private ToolStripSeparator toolStripSeparator3;
-        private ToolStripButton MoveLayerUpOrderButton_1;
-        private ToolStripButton AddLayerOrderButton_1;
-        private ToolStripButton MoveLayerDownOrderButton_1;
+        private ToolStripButton MoveLayerUpOrderButton;
+        private ToolStripButton AddLayerOrderButton;
+        private ToolStripButton MoveLayerDownOrderButton;
 		private Globalizator.Globalizator m_globalizor = null;
 
 		public MapEditor(EditorInterface editor, string resourceID)
@@ -121,7 +121,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			ctlGroupProperties.LayerPropertiesChanged +=new EventHandler(ctlGroupProperties_LayerPropertiesChanged);
 
 			m_globalizor = new  Globalizator.Globalizator(this);
-		}
+            bgColor.ResetColors();
+        }
 
 		public void UpdateDisplay()
 		{
@@ -325,11 +326,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.lstDrawOrder = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.AddLayerOrderButton_1 = new System.Windows.Forms.ToolStripButton();
-            this.RemoveLayerOrderButton_1 = new System.Windows.Forms.ToolStripButton();
+            this.AddLayerOrderButton = new System.Windows.Forms.ToolStripButton();
+            this.RemoveLayerOrderButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.MoveLayerUpOrderButton_1 = new System.Windows.Forms.ToolStripButton();
-            this.MoveLayerDownOrderButton_1 = new System.Windows.Forms.ToolStripButton();
+            this.MoveLayerUpOrderButton = new System.Windows.Forms.ToolStripButton();
+            this.MoveLayerDownOrderButton = new System.Windows.Forms.ToolStripButton();
             this.LayerToolbarImages = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -394,167 +395,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // bgColor
             // 
-            this.bgColor.Items.AddRange(new object[] {
-            System.Drawing.Color.Black,
-            System.Drawing.Color.White,
-            System.Drawing.Color.DarkRed,
-            System.Drawing.Color.DarkGreen,
-            System.Drawing.Color.Goldenrod,
-            System.Drawing.Color.DarkBlue,
-            System.Drawing.Color.DarkMagenta,
-            System.Drawing.Color.DarkCyan,
-            System.Drawing.Color.LightGray,
-            System.Drawing.Color.Gray,
-            System.Drawing.Color.Red,
-            System.Drawing.Color.Green,
-            System.Drawing.Color.Yellow,
-            System.Drawing.Color.Blue,
-            System.Drawing.Color.Magenta,
-            System.Drawing.Color.Cyan,
-            System.Drawing.Color.Black,
-            System.Drawing.Color.White,
-            System.Drawing.Color.DarkRed,
-            System.Drawing.Color.DarkGreen,
-            System.Drawing.Color.Goldenrod,
-            System.Drawing.Color.DarkBlue,
-            System.Drawing.Color.DarkMagenta,
-            System.Drawing.Color.DarkCyan,
-            System.Drawing.Color.LightGray,
-            System.Drawing.Color.Gray,
-            System.Drawing.Color.Red,
-            System.Drawing.Color.Green,
-            System.Drawing.Color.Yellow,
-            System.Drawing.Color.Blue,
-            System.Drawing.Color.Magenta,
-            System.Drawing.Color.Cyan,
-            System.Drawing.Color.Black,
-            System.Drawing.Color.White,
-            System.Drawing.Color.DarkRed,
-            System.Drawing.Color.DarkGreen,
-            System.Drawing.Color.Goldenrod,
-            System.Drawing.Color.DarkBlue,
-            System.Drawing.Color.DarkMagenta,
-            System.Drawing.Color.DarkCyan,
-            System.Drawing.Color.LightGray,
-            System.Drawing.Color.Gray,
-            System.Drawing.Color.Red,
-            System.Drawing.Color.Green,
-            System.Drawing.Color.Yellow,
-            System.Drawing.Color.Blue,
-            System.Drawing.Color.Magenta,
-            System.Drawing.Color.Cyan,
-            System.Drawing.Color.Black,
-            System.Drawing.Color.White,
-            System.Drawing.Color.DarkRed,
-            System.Drawing.Color.DarkGreen,
-            System.Drawing.Color.Goldenrod,
-            System.Drawing.Color.DarkBlue,
-            System.Drawing.Color.DarkMagenta,
-            System.Drawing.Color.DarkCyan,
-            System.Drawing.Color.LightGray,
-            System.Drawing.Color.Gray,
-            System.Drawing.Color.Red,
-            System.Drawing.Color.Green,
-            System.Drawing.Color.Yellow,
-            System.Drawing.Color.Blue,
-            System.Drawing.Color.Magenta,
-            System.Drawing.Color.Cyan,
-            System.Drawing.Color.Black,
-            System.Drawing.Color.White,
-            System.Drawing.Color.DarkRed,
-            System.Drawing.Color.DarkGreen,
-            System.Drawing.Color.Goldenrod,
-            System.Drawing.Color.DarkBlue,
-            System.Drawing.Color.DarkMagenta,
-            System.Drawing.Color.DarkCyan,
-            System.Drawing.Color.LightGray,
-            System.Drawing.Color.Gray,
-            System.Drawing.Color.Red,
-            System.Drawing.Color.Green,
-            System.Drawing.Color.Yellow,
-            System.Drawing.Color.Blue,
-            System.Drawing.Color.Magenta,
-            System.Drawing.Color.Cyan,
-            System.Drawing.Color.Black,
-            System.Drawing.Color.White,
-            System.Drawing.Color.DarkRed,
-            System.Drawing.Color.DarkGreen,
-            System.Drawing.Color.Goldenrod,
-            System.Drawing.Color.DarkBlue,
-            System.Drawing.Color.DarkMagenta,
-            System.Drawing.Color.DarkCyan,
-            System.Drawing.Color.LightGray,
-            System.Drawing.Color.Gray,
-            System.Drawing.Color.Red,
-            System.Drawing.Color.Green,
-            System.Drawing.Color.Yellow,
-            System.Drawing.Color.Blue,
-            System.Drawing.Color.Magenta,
-            System.Drawing.Color.Cyan,
-            System.Drawing.Color.Black,
-            System.Drawing.Color.White,
-            System.Drawing.Color.DarkRed,
-            System.Drawing.Color.DarkGreen,
-            System.Drawing.Color.Goldenrod,
-            System.Drawing.Color.DarkBlue,
-            System.Drawing.Color.DarkMagenta,
-            System.Drawing.Color.DarkCyan,
-            System.Drawing.Color.LightGray,
-            System.Drawing.Color.Gray,
-            System.Drawing.Color.Red,
-            System.Drawing.Color.Green,
-            System.Drawing.Color.Yellow,
-            System.Drawing.Color.Blue,
-            System.Drawing.Color.Magenta,
-            System.Drawing.Color.Cyan,
-            System.Drawing.Color.Black,
-            System.Drawing.Color.White,
-            System.Drawing.Color.DarkRed,
-            System.Drawing.Color.DarkGreen,
-            System.Drawing.Color.Goldenrod,
-            System.Drawing.Color.DarkBlue,
-            System.Drawing.Color.DarkMagenta,
-            System.Drawing.Color.DarkCyan,
-            System.Drawing.Color.LightGray,
-            System.Drawing.Color.Gray,
-            System.Drawing.Color.Red,
-            System.Drawing.Color.Green,
-            System.Drawing.Color.Yellow,
-            System.Drawing.Color.Blue,
-            System.Drawing.Color.Magenta,
-            System.Drawing.Color.Cyan,
-            System.Drawing.Color.Black,
-            System.Drawing.Color.White,
-            System.Drawing.Color.DarkRed,
-            System.Drawing.Color.DarkGreen,
-            System.Drawing.Color.Goldenrod,
-            System.Drawing.Color.DarkBlue,
-            System.Drawing.Color.DarkMagenta,
-            System.Drawing.Color.DarkCyan,
-            System.Drawing.Color.LightGray,
-            System.Drawing.Color.Gray,
-            System.Drawing.Color.Red,
-            System.Drawing.Color.Green,
-            System.Drawing.Color.Yellow,
-            System.Drawing.Color.Blue,
-            System.Drawing.Color.Magenta,
-            System.Drawing.Color.Cyan,
-            System.Drawing.Color.Black,
-            System.Drawing.Color.White,
-            System.Drawing.Color.DarkRed,
-            System.Drawing.Color.DarkGreen,
-            System.Drawing.Color.Goldenrod,
-            System.Drawing.Color.DarkBlue,
-            System.Drawing.Color.DarkMagenta,
-            System.Drawing.Color.DarkCyan,
-            System.Drawing.Color.LightGray,
-            System.Drawing.Color.Gray,
-            System.Drawing.Color.Red,
-            System.Drawing.Color.Green,
-            System.Drawing.Color.Yellow,
-            System.Drawing.Color.Blue,
-            System.Drawing.Color.Magenta,
-            System.Drawing.Color.Cyan});
             this.bgColor.Location = new System.Drawing.Point(144, 88);
             this.bgColor.Name = "bgColor";
             this.bgColor.Size = new System.Drawing.Size(216, 21);
@@ -851,6 +691,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // tlbLayerGroups
             // 
+            this.tlbLayerGroups.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tlbLayerGroups.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddGroupButton,
             this.RemoveGroupButton,
@@ -875,6 +716,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.AddGroupButton.Name = "AddGroupButton";
             this.AddGroupButton.Size = new System.Drawing.Size(23, 22);
             this.AddGroupButton.Text = "toolStripButton1";
+            this.AddGroupButton.ToolTipText = "Add a new group";
             this.AddGroupButton.Click += new System.EventHandler(this.AddGroupButton_Click);
             // 
             // RemoveGroupButton
@@ -885,6 +727,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.RemoveGroupButton.Name = "RemoveGroupButton";
             this.RemoveGroupButton.Size = new System.Drawing.Size(23, 22);
             this.RemoveGroupButton.Text = "toolStripButton2";
+            this.RemoveGroupButton.ToolTipText = "Remove the selected group and contents";
             this.RemoveGroupButton.Click += new System.EventHandler(this.RemoveGroupButton_Click);
             // 
             // toolStripSeparator1
@@ -900,6 +743,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.AddLayerButton.Name = "AddLayerButton";
             this.AddLayerButton.Size = new System.Drawing.Size(23, 22);
             this.AddLayerButton.Text = "toolStripButton3";
+            this.AddLayerButton.ToolTipText = "Add a new layer to the map";
             this.AddLayerButton.Click += new System.EventHandler(this.AddLayerButton_Click);
             // 
             // RemoveLayerButton
@@ -910,6 +754,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.RemoveLayerButton.Name = "RemoveLayerButton";
             this.RemoveLayerButton.Size = new System.Drawing.Size(23, 22);
             this.RemoveLayerButton.Text = "toolStripButton4";
+            this.RemoveLayerButton.ToolTipText = "Remove a layer from the group";
             this.RemoveLayerButton.Click += new System.EventHandler(this.RemoveLayerButton_Click);
             // 
             // toolStripSeparator2
@@ -925,6 +770,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveLayerUpButton.Name = "MoveLayerUpButton";
             this.MoveLayerUpButton.Size = new System.Drawing.Size(23, 22);
             this.MoveLayerUpButton.Text = "toolStripButton5";
+            this.MoveLayerUpButton.ToolTipText = "Move the selected layer up";
             this.MoveLayerUpButton.Click += new System.EventHandler(this.MoveLayerUpButton_Click);
             // 
             // MoveLayerDownButton
@@ -935,6 +781,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveLayerDownButton.Name = "MoveLayerDownButton";
             this.MoveLayerDownButton.Size = new System.Drawing.Size(23, 22);
             this.MoveLayerDownButton.Text = "toolStripButton6";
+            this.MoveLayerDownButton.ToolTipText = "Move the selected layer down";
             this.MoveLayerDownButton.Click += new System.EventHandler(this.MoveLayerDownButton_Click);
             // 
             // tabDrawOrder
@@ -969,60 +816,66 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // toolStrip1
             // 
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddLayerOrderButton_1,
-            this.RemoveLayerOrderButton_1,
+            this.AddLayerOrderButton,
+            this.RemoveLayerOrderButton,
             this.toolStripSeparator3,
-            this.MoveLayerUpOrderButton_1,
-            this.MoveLayerDownOrderButton_1});
+            this.MoveLayerUpOrderButton,
+            this.MoveLayerDownOrderButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(248, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // AddLayerOrderButton_1
+            // AddLayerOrderButton
             // 
-            this.AddLayerOrderButton_1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddLayerOrderButton_1.Image = ((System.Drawing.Image)(resources.GetObject("AddLayerOrderButton_1.Image")));
-            this.AddLayerOrderButton_1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddLayerOrderButton_1.Name = "AddLayerOrderButton_1";
-            this.AddLayerOrderButton_1.Size = new System.Drawing.Size(23, 22);
-            this.AddLayerOrderButton_1.Click += new System.EventHandler(this.AddLayerOrderButton_Click);
+            this.AddLayerOrderButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AddLayerOrderButton.Image = ((System.Drawing.Image)(resources.GetObject("AddLayerOrderButton.Image")));
+            this.AddLayerOrderButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddLayerOrderButton.Name = "AddLayerOrderButton";
+            this.AddLayerOrderButton.Size = new System.Drawing.Size(23, 22);
+            this.AddLayerOrderButton.ToolTipText = "Add a new layer to the map";
+            this.AddLayerOrderButton.Click += new System.EventHandler(this.AddLayerOrderButton_Click);
             // 
-            // RemoveLayerOrderButton_1
+            // RemoveLayerOrderButton
             // 
-            this.RemoveLayerOrderButton_1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RemoveLayerOrderButton_1.Image = ((System.Drawing.Image)(resources.GetObject("RemoveLayerOrderButton_1.Image")));
-            this.RemoveLayerOrderButton_1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.RemoveLayerOrderButton_1.Name = "RemoveLayerOrderButton_1";
-            this.RemoveLayerOrderButton_1.Size = new System.Drawing.Size(23, 22);
-            this.RemoveLayerOrderButton_1.Click += new System.EventHandler(this.RemoveLayerOrderButton_Click);
+            this.RemoveLayerOrderButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.RemoveLayerOrderButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveLayerOrderButton.Image")));
+            this.RemoveLayerOrderButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RemoveLayerOrderButton.Name = "RemoveLayerOrderButton";
+            this.RemoveLayerOrderButton.Size = new System.Drawing.Size(23, 22);
+            this.RemoveLayerOrderButton.ToolTipText = "Remove the selected layers from the map";
+            this.RemoveLayerOrderButton.Click += new System.EventHandler(this.RemoveLayerOrderButton_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
-            // MoveLayerUpOrderButton_1
+            // MoveLayerUpOrderButton
             // 
-            this.MoveLayerUpOrderButton_1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveLayerUpOrderButton_1.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerUpOrderButton_1.Image")));
-            this.MoveLayerUpOrderButton_1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MoveLayerUpOrderButton_1.Name = "MoveLayerUpOrderButton_1";
-            this.MoveLayerUpOrderButton_1.Size = new System.Drawing.Size(23, 22);
-            this.MoveLayerUpOrderButton_1.Text = "toolStripButton3";
-            this.MoveLayerUpOrderButton_1.Click += new System.EventHandler(this.MoveLayerUpOrderButton_Click);
+            this.MoveLayerUpOrderButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MoveLayerUpOrderButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerUpOrderButton.Image")));
+            this.MoveLayerUpOrderButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MoveLayerUpOrderButton.Name = "MoveLayerUpOrderButton";
+            this.MoveLayerUpOrderButton.Size = new System.Drawing.Size(23, 22);
+            this.MoveLayerUpOrderButton.Text = "toolStripButton3";
+            this.MoveLayerUpOrderButton.ToolTipText = "Move the selected layers up";
+            this.MoveLayerUpOrderButton.Click += new System.EventHandler(this.MoveLayerUpOrderButton_Click);
             // 
-            // MoveLayerDownOrderButton_1
+            // MoveLayerDownOrderButton
             // 
-            this.MoveLayerDownOrderButton_1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveLayerDownOrderButton_1.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerDownOrderButton_1.Image")));
-            this.MoveLayerDownOrderButton_1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MoveLayerDownOrderButton_1.Name = "MoveLayerDownOrderButton_1";
-            this.MoveLayerDownOrderButton_1.Size = new System.Drawing.Size(23, 22);
-            this.MoveLayerDownOrderButton_1.Text = "toolStripButton3";
-            this.MoveLayerDownOrderButton_1.Click += new System.EventHandler(this.MoveLayerDownOrderButton_Click);
+            this.MoveLayerDownOrderButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MoveLayerDownOrderButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerDownOrderButton.Image")));
+            this.MoveLayerDownOrderButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MoveLayerDownOrderButton.Name = "MoveLayerDownOrderButton";
+            this.MoveLayerDownOrderButton.Size = new System.Drawing.Size(23, 22);
+            this.MoveLayerDownOrderButton.Text = "toolStripButton3";
+            this.MoveLayerDownOrderButton.ToolTipText = "Move the selected layers down";
+            this.MoveLayerDownOrderButton.Click += new System.EventHandler(this.MoveLayerDownOrderButton_Click);
             // 
             // LayerToolbarImages
             // 
@@ -1129,7 +982,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void MapEditor_Load(object sender, System.EventArgs e)
 		{
-		
 		}
 
 		private void txtDescription_TextChanged(object sender, System.EventArgs e)

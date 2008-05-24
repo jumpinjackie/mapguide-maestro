@@ -52,9 +52,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
 
-			// TODO: Add any initialization after the InitializeComponent call
-
-		}
+            colorCombo.AllowTransparent = false;
+            colorCombo.ResetColors();
+        }
 
 		/// <summary> 
 		/// Clean up any resources being used.
@@ -95,55 +95,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			// 
 			this.colorCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 				| System.Windows.Forms.AnchorStyles.Right)));
-			this.colorCombo.Items.AddRange(new object[] {
-															System.Drawing.Color.Black,
-															System.Drawing.Color.White,
-															System.Drawing.Color.DarkRed,
-															System.Drawing.Color.DarkGreen,
-															System.Drawing.Color.Goldenrod,
-															System.Drawing.Color.DarkBlue,
-															System.Drawing.Color.DarkMagenta,
-															System.Drawing.Color.DarkCyan,
-															System.Drawing.Color.LightGray,
-															System.Drawing.Color.Gray,
-															System.Drawing.Color.Red,
-															System.Drawing.Color.Green,
-															System.Drawing.Color.Yellow,
-															System.Drawing.Color.Blue,
-															System.Drawing.Color.Magenta,
-															System.Drawing.Color.Cyan,
-															System.Drawing.Color.Black,
-															System.Drawing.Color.White,
-															System.Drawing.Color.DarkRed,
-															System.Drawing.Color.DarkGreen,
-															System.Drawing.Color.Goldenrod,
-															System.Drawing.Color.DarkBlue,
-															System.Drawing.Color.DarkMagenta,
-															System.Drawing.Color.DarkCyan,
-															System.Drawing.Color.LightGray,
-															System.Drawing.Color.Gray,
-															System.Drawing.Color.Red,
-															System.Drawing.Color.Green,
-															System.Drawing.Color.Yellow,
-															System.Drawing.Color.Blue,
-															System.Drawing.Color.Magenta,
-															System.Drawing.Color.Cyan,
-															System.Drawing.Color.Black,
-															System.Drawing.Color.White,
-															System.Drawing.Color.DarkRed,
-															System.Drawing.Color.DarkGreen,
-															System.Drawing.Color.Goldenrod,
-															System.Drawing.Color.DarkBlue,
-															System.Drawing.Color.DarkMagenta,
-															System.Drawing.Color.DarkCyan,
-															System.Drawing.Color.LightGray,
-															System.Drawing.Color.Gray,
-															System.Drawing.Color.Red,
-															System.Drawing.Color.Green,
-															System.Drawing.Color.Yellow,
-															System.Drawing.Color.Blue,
-															System.Drawing.Color.Magenta,
-															System.Drawing.Color.Cyan});
+
 			this.colorCombo.Location = new System.Drawing.Point(120, 64);
 			this.colorCombo.Name = "colorCombo";
 			this.colorCombo.Size = new System.Drawing.Size(312, 21);
@@ -237,11 +189,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void LineStyleEditor_Load(object sender, System.EventArgs e)
 		{
-			colorCombo.AllowTransparent = false;
-
 			fillCombo.Items.Clear();
 			fillCombo.Items.AddRange(FeaturePreviewRender.LineStyles);
-		
 		}
 
 		private void displayLine_CheckedChanged(object sender, System.EventArgs e)

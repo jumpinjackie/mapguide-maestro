@@ -63,9 +63,8 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-
-			// TODO: Add any initialization after the InitializeComponent call
-
+            BorderColor.ResetColors();
+            FillColor.ResetColors();
 		}
 
 		/// <summary> 
@@ -168,39 +167,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			// 
 			this.BorderColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 				| System.Windows.Forms.AnchorStyles.Right)));
-			this.BorderColor.Items.AddRange(new object[] {
-															 System.Drawing.Color.Black,
-															 System.Drawing.Color.White,
-															 System.Drawing.Color.DarkRed,
-															 System.Drawing.Color.DarkGreen,
-															 System.Drawing.Color.Goldenrod,
-															 System.Drawing.Color.DarkBlue,
-															 System.Drawing.Color.DarkMagenta,
-															 System.Drawing.Color.DarkCyan,
-															 System.Drawing.Color.LightGray,
-															 System.Drawing.Color.Gray,
-															 System.Drawing.Color.Red,
-															 System.Drawing.Color.Green,
-															 System.Drawing.Color.Yellow,
-															 System.Drawing.Color.Blue,
-															 System.Drawing.Color.Magenta,
-															 System.Drawing.Color.Cyan,
-															 System.Drawing.Color.Black,
-															 System.Drawing.Color.White,
-															 System.Drawing.Color.DarkRed,
-															 System.Drawing.Color.DarkGreen,
-															 System.Drawing.Color.Goldenrod,
-															 System.Drawing.Color.DarkBlue,
-															 System.Drawing.Color.DarkMagenta,
-															 System.Drawing.Color.DarkCyan,
-															 System.Drawing.Color.LightGray,
-															 System.Drawing.Color.Gray,
-															 System.Drawing.Color.Red,
-															 System.Drawing.Color.Green,
-															 System.Drawing.Color.Yellow,
-															 System.Drawing.Color.Blue,
-															 System.Drawing.Color.Magenta,
-															 System.Drawing.Color.Cyan});
+
 			this.BorderColor.Location = new System.Drawing.Point(136, 80);
 			this.BorderColor.Name = "BorderColor";
 			this.BorderColor.Size = new System.Drawing.Size(424, 21);
@@ -238,39 +205,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			// 
 			this.FillColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 				| System.Windows.Forms.AnchorStyles.Right)));
-			this.FillColor.Items.AddRange(new object[] {
-														   System.Drawing.Color.Black,
-														   System.Drawing.Color.White,
-														   System.Drawing.Color.DarkRed,
-														   System.Drawing.Color.DarkGreen,
-														   System.Drawing.Color.Goldenrod,
-														   System.Drawing.Color.DarkBlue,
-														   System.Drawing.Color.DarkMagenta,
-														   System.Drawing.Color.DarkCyan,
-														   System.Drawing.Color.LightGray,
-														   System.Drawing.Color.Gray,
-														   System.Drawing.Color.Red,
-														   System.Drawing.Color.Green,
-														   System.Drawing.Color.Yellow,
-														   System.Drawing.Color.Blue,
-														   System.Drawing.Color.Magenta,
-														   System.Drawing.Color.Cyan,
-														   System.Drawing.Color.Black,
-														   System.Drawing.Color.White,
-														   System.Drawing.Color.DarkRed,
-														   System.Drawing.Color.DarkGreen,
-														   System.Drawing.Color.Goldenrod,
-														   System.Drawing.Color.DarkBlue,
-														   System.Drawing.Color.DarkMagenta,
-														   System.Drawing.Color.DarkCyan,
-														   System.Drawing.Color.LightGray,
-														   System.Drawing.Color.Gray,
-														   System.Drawing.Color.Red,
-														   System.Drawing.Color.Green,
-														   System.Drawing.Color.Yellow,
-														   System.Drawing.Color.Blue,
-														   System.Drawing.Color.Magenta,
-														   System.Drawing.Color.Cyan});
+
 			this.FillColor.Location = new System.Drawing.Point(136, 104);
 			this.FillColor.Name = "FillColor";
 			this.FillColor.Size = new System.Drawing.Size(424, 21);

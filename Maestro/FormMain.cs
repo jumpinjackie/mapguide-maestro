@@ -32,84 +32,81 @@ namespace OSGeo.MapGuide.Maestro
 	{
 
 		private OSGeo.MapGuide.MaestroAPI.ServerConnectionI m_connection;
-		private Hashtable m_userControls = new Hashtable();
-		private System.Windows.Forms.Panel panLeftTree;
-		private System.Windows.Forms.Panel panInnerRight;
-		private System.Windows.Forms.Panel panOuter;
-		private System.Windows.Forms.Splitter splitter1;
+        private Hashtable m_userControls = new Hashtable();
 		public System.Windows.Forms.TabControl tabItems;
-		private System.Windows.Forms.ContextMenu NewResourceMenu;
-		private System.Windows.Forms.ContextMenu TreeContextMenu;
-		private System.Windows.Forms.MenuItem PropertiesMenu;
-		private System.Windows.Forms.MenuItem SaveXmlAsMenu;
+		private System.Windows.Forms.ContextMenuStrip NewResourceMenu;
+		private System.Windows.Forms.ContextMenuStrip TreeContextMenu;
+		private System.Windows.Forms.ToolStripMenuItem PropertiesMenu;
+        private System.Windows.Forms.ToolStripMenuItem SaveXmlAsMenu;
 		private System.Windows.Forms.ImageList toolbarImages;
 		private System.ComponentModel.IContainer components;
-		private System.Windows.Forms.TreeView ResourceTree;
-		private System.Windows.Forms.ToolBar ResourceTreeToolbar;
-		private System.Windows.Forms.ToolBarButton ResourceTreeCopy;
-		private System.Windows.Forms.ToolBarButton ResourceTreeCut;
-		private System.Windows.Forms.ToolBarButton ResourceTreePaste;
-		private System.Windows.Forms.ToolBarButton toolBarButton1;
-		private System.Windows.Forms.ImageList toolbarImagesSmall;
-		private System.Windows.Forms.ToolBarButton toolBarButton2;
-		private System.Windows.Forms.ToolBar toolBar2;
-		private System.Windows.Forms.ToolBarButton SaveResourceButton;
-		private System.Windows.Forms.ToolBarButton SaveResourceAsButton;
-		private System.Windows.Forms.ToolBarButton EditAsXmlButton;
-		private System.Windows.Forms.ToolBarButton toolBarButton4;
-		private System.Windows.Forms.ToolBarButton AddResourceButton;
-		private System.Windows.Forms.ToolBarButton DeleteResourceButton;
-		private System.Windows.Forms.ToolBarButton ResourceTreeRefreshButton;
+        private System.Windows.Forms.TreeView ResourceTree;
+        private System.Windows.Forms.ImageList toolbarImagesSmall;
 
 		private Hashtable m_templateMenuIndex = null;
 
-		private TreeNode m_clipboardBuffer = null;
-		private System.Windows.Forms.ToolBarButton AddFolderButton;
-		private System.Windows.Forms.ToolBarButton toolBarButton3;
-		private System.Windows.Forms.ToolBarButton ClosePageButton;
+        private TreeNode m_clipboardBuffer = null;
 		private bool m_clipboardCut = false;
 
 		private SortedList m_Folders = null;
-		private System.Windows.Forms.MenuItem menuItem1;
-		private System.Windows.Forms.MenuItem menuItem7;
-		private System.Windows.Forms.MenuItem EditAsXmlMenu;
-		private System.Windows.Forms.MenuItem LoadFromXmlMenu;
-		private System.Windows.Forms.MenuItem CutMenu;
-		private System.Windows.Forms.MenuItem CopyMenu;
-		private System.Windows.Forms.MenuItem PasteMenu;
+        private System.Windows.Forms.ToolStripSeparator menuItem1;
+        private System.Windows.Forms.ToolStripSeparator menuItem7;
+        private System.Windows.Forms.ToolStripMenuItem EditAsXmlMenu;
+        private System.Windows.Forms.ToolStripMenuItem LoadFromXmlMenu;
+        private System.Windows.Forms.ToolStripMenuItem CutMenu;
+        private System.Windows.Forms.ToolStripMenuItem CopyMenu;
+        private System.Windows.Forms.ToolStripMenuItem PasteMenu;
 		private System.Windows.Forms.Timer KeepAliveTimer;
-		private SortedList m_Documents = null;
-		private System.Windows.Forms.ToolBarButton PreviewButton;
-		private System.Windows.Forms.MainMenu MainMenu;
-		private System.Windows.Forms.MenuItem menuItem2;
-		private System.Windows.Forms.MenuItem menuItem3;
-		private System.Windows.Forms.MenuItem menuItem11;
-		private System.Windows.Forms.MenuItem menuItem17;
-		private System.Windows.Forms.MenuItem menuItem20;
-		private System.Windows.Forms.MenuItem menuItem22;
-		private System.Windows.Forms.MenuItem MainMenuNew;
-		private System.Windows.Forms.MenuItem MainMenuOpen;
-		private System.Windows.Forms.MenuItem MainMenuClose;
-		private System.Windows.Forms.MenuItem MainMenuSave;
-		private System.Windows.Forms.MenuItem MainMenuSaveAs;
-		private System.Windows.Forms.MenuItem MainMenuSaveAll;
-		private System.Windows.Forms.MenuItem MainMenuSaveAsXml;
-		private System.Windows.Forms.MenuItem MainMenuLoadFromXml;
-		private System.Windows.Forms.MenuItem MainMenuChangeServer;
-		private System.Windows.Forms.MenuItem MainMenuExit;
-		private System.Windows.Forms.MenuItem MainMenuCopy;
-		private System.Windows.Forms.MenuItem MainMenuPaste;
-		private System.Windows.Forms.MenuItem MainMenuAbout;
-		private System.Windows.Forms.MenuItem MainMenuEditAsXml;
-		private System.Windows.Forms.MenuItem MainMenuEdit;
-		private System.Windows.Forms.MenuItem MainMenuCut;
-		private System.Windows.Forms.MenuItem menuItem4;
-		private System.Windows.Forms.MenuItem DeleteMenu;
-		private System.Windows.Forms.MenuItem NewMenu;
+        private SortedList m_Documents = null;
+		private System.Windows.Forms.MenuStrip MainMenu;
+        private System.Windows.Forms.ToolStripMenuItem menuItem2;
+        private System.Windows.Forms.ToolStripMenuItem menuItem3;
+        private System.Windows.Forms.ToolStripSeparator menuItem11;
+        private System.Windows.Forms.ToolStripSeparator menuItem17;
+        private System.Windows.Forms.ToolStripSeparator menuItem20;
+        private System.Windows.Forms.ToolStripSeparator menuItem22;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuNew;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuOpen;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuClose;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuSave;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuSaveAs;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuSaveAll;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuSaveAsXml;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuLoadFromXml;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuChangeServer;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuExit;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuCopy;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuPaste;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuAbout;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuEditAsXml;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuEdit;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuCut;
+        private System.Windows.Forms.ToolStripSeparator menuItem4;
+        private System.Windows.Forms.ToolStripMenuItem DeleteMenu;
+        private System.Windows.Forms.ToolStripMenuItem NewMenu;
 
 		private ResourceEditorMap m_editors;
-		private System.Windows.Forms.MenuItem OpenSiteAdmin;
+        private System.Windows.Forms.ToolStripMenuItem OpenSiteAdmin;
 		private  Globalizator.Globalizator m_globalizor = null;
+        private ToolStrip ResourceTreeToolbar;
+        private ToolStripSplitButton AddResourceButton;
+        private ToolStripButton AddFolderButton;
+        private ToolStripButton DeleteResourceButton;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripButton ResourceTreeCopy;
+        private ToolStripButton ResourceTreeCut;
+        private ToolStripButton ResourceTreePaste;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripButton ResourceTreeRefreshButton;
+        private SplitContainer splitContainer1;
+        private ToolStrip toolStrip1;
+        private ToolStripButton SaveResourceButton;
+        private ToolStripButton SaveResourceAsButton;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripButton PreviewButton;
+        private ToolStripButton EditAsXmlButton;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripButton ClosePageButton;
 		private string m_lastSelectedNode = null;
 
 		public FormMain()
@@ -149,564 +146,698 @@ namespace OSGeo.MapGuide.Maestro
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(FormMain));
-			this.ResourceTree = new System.Windows.Forms.TreeView();
-			this.TreeContextMenu = new System.Windows.Forms.ContextMenu();
-			this.PropertiesMenu = new System.Windows.Forms.MenuItem();
-			this.menuItem7 = new System.Windows.Forms.MenuItem();
-			this.EditAsXmlMenu = new System.Windows.Forms.MenuItem();
-			this.LoadFromXmlMenu = new System.Windows.Forms.MenuItem();
-			this.SaveXmlAsMenu = new System.Windows.Forms.MenuItem();
-			this.menuItem1 = new System.Windows.Forms.MenuItem();
-			this.CutMenu = new System.Windows.Forms.MenuItem();
-			this.CopyMenu = new System.Windows.Forms.MenuItem();
-			this.PasteMenu = new System.Windows.Forms.MenuItem();
-			this.menuItem4 = new System.Windows.Forms.MenuItem();
-			this.DeleteMenu = new System.Windows.Forms.MenuItem();
-			this.NewMenu = new System.Windows.Forms.MenuItem();
-			this.panLeftTree = new System.Windows.Forms.Panel();
-			this.ResourceTreeToolbar = new System.Windows.Forms.ToolBar();
-			this.AddResourceButton = new System.Windows.Forms.ToolBarButton();
-			this.AddFolderButton = new System.Windows.Forms.ToolBarButton();
-			this.DeleteResourceButton = new System.Windows.Forms.ToolBarButton();
-			this.toolBarButton2 = new System.Windows.Forms.ToolBarButton();
-			this.ResourceTreeCopy = new System.Windows.Forms.ToolBarButton();
-			this.ResourceTreeCut = new System.Windows.Forms.ToolBarButton();
-			this.ResourceTreePaste = new System.Windows.Forms.ToolBarButton();
-			this.toolBarButton1 = new System.Windows.Forms.ToolBarButton();
-			this.ResourceTreeRefreshButton = new System.Windows.Forms.ToolBarButton();
-			this.toolbarImages = new System.Windows.Forms.ImageList(this.components);
-			this.panInnerRight = new System.Windows.Forms.Panel();
-			this.toolBar2 = new System.Windows.Forms.ToolBar();
-			this.SaveResourceButton = new System.Windows.Forms.ToolBarButton();
-			this.SaveResourceAsButton = new System.Windows.Forms.ToolBarButton();
-			this.toolBarButton4 = new System.Windows.Forms.ToolBarButton();
-			this.PreviewButton = new System.Windows.Forms.ToolBarButton();
-			this.EditAsXmlButton = new System.Windows.Forms.ToolBarButton();
-			this.toolBarButton3 = new System.Windows.Forms.ToolBarButton();
-			this.ClosePageButton = new System.Windows.Forms.ToolBarButton();
-			this.tabItems = new System.Windows.Forms.TabControl();
-			this.panOuter = new System.Windows.Forms.Panel();
-			this.splitter1 = new System.Windows.Forms.Splitter();
-			this.NewResourceMenu = new System.Windows.Forms.ContextMenu();
-			this.toolbarImagesSmall = new System.Windows.Forms.ImageList(this.components);
-			this.KeepAliveTimer = new System.Windows.Forms.Timer(this.components);
-			this.MainMenu = new System.Windows.Forms.MainMenu();
-			this.menuItem2 = new System.Windows.Forms.MenuItem();
-			this.MainMenuNew = new System.Windows.Forms.MenuItem();
-			this.MainMenuOpen = new System.Windows.Forms.MenuItem();
-			this.MainMenuClose = new System.Windows.Forms.MenuItem();
-			this.menuItem17 = new System.Windows.Forms.MenuItem();
-			this.MainMenuSave = new System.Windows.Forms.MenuItem();
-			this.MainMenuSaveAs = new System.Windows.Forms.MenuItem();
-			this.MainMenuSaveAll = new System.Windows.Forms.MenuItem();
-			this.menuItem11 = new System.Windows.Forms.MenuItem();
-			this.MainMenuEditAsXml = new System.Windows.Forms.MenuItem();
-			this.MainMenuSaveAsXml = new System.Windows.Forms.MenuItem();
-			this.MainMenuLoadFromXml = new System.Windows.Forms.MenuItem();
-			this.menuItem20 = new System.Windows.Forms.MenuItem();
-			this.MainMenuChangeServer = new System.Windows.Forms.MenuItem();
-			this.OpenSiteAdmin = new System.Windows.Forms.MenuItem();
-			this.menuItem22 = new System.Windows.Forms.MenuItem();
-			this.MainMenuExit = new System.Windows.Forms.MenuItem();
-			this.MainMenuEdit = new System.Windows.Forms.MenuItem();
-			this.MainMenuCut = new System.Windows.Forms.MenuItem();
-			this.MainMenuCopy = new System.Windows.Forms.MenuItem();
-			this.MainMenuPaste = new System.Windows.Forms.MenuItem();
-			this.menuItem3 = new System.Windows.Forms.MenuItem();
-			this.MainMenuAbout = new System.Windows.Forms.MenuItem();
-			this.panLeftTree.SuspendLayout();
-			this.panInnerRight.SuspendLayout();
-			this.panOuter.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// ResourceTree
-			// 
-			this.ResourceTree.AllowDrop = true;
-			this.ResourceTree.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ResourceTree.ContextMenu = this.TreeContextMenu;
-			this.ResourceTree.ImageIndex = -1;
-			this.ResourceTree.LabelEdit = true;
-			this.ResourceTree.Location = new System.Drawing.Point(8, 48);
-			this.ResourceTree.Name = "ResourceTree";
-			this.ResourceTree.SelectedImageIndex = -1;
-			this.ResourceTree.Size = new System.Drawing.Size(288, 396);
-			this.ResourceTree.TabIndex = 0;
-			this.ResourceTree.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ResourceTree_MouseDown);
-			this.ResourceTree.DragOver += new System.Windows.Forms.DragEventHandler(this.ResourceTree_DragOver);
-			this.ResourceTree.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ResourceTree_KeyUp);
-			this.ResourceTree.DoubleClick += new System.EventHandler(this.ResourceTree_DoubleClick);
-			this.ResourceTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ResourceTree_AfterSelect);
-			this.ResourceTree.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.ResourceTree_AfterLabelEdit);
-			this.ResourceTree.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.ResourceTree_ItemDrag);
-			this.ResourceTree.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.ResourceTree_BeforeLabelEdit);
-			this.ResourceTree.DragDrop += new System.Windows.Forms.DragEventHandler(this.ResourceTree_DragDrop);
-			// 
-			// TreeContextMenu
-			// 
-			this.TreeContextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																							this.PropertiesMenu,
-																							this.menuItem7,
-																							this.EditAsXmlMenu,
-																							this.LoadFromXmlMenu,
-																							this.SaveXmlAsMenu,
-																							this.menuItem1,
-																							this.CutMenu,
-																							this.CopyMenu,
-																							this.PasteMenu,
-																							this.menuItem4,
-																							this.DeleteMenu,
-																							this.NewMenu});
-			this.TreeContextMenu.Popup += new System.EventHandler(this.TreeContextMenu_Popup);
-			// 
-			// PropertiesMenu
-			// 
-			this.PropertiesMenu.Index = 0;
-			this.PropertiesMenu.Text = "Properties";
-			// 
-			// menuItem7
-			// 
-			this.menuItem7.Index = 1;
-			this.menuItem7.Text = "-";
-			// 
-			// EditAsXmlMenu
-			// 
-			this.EditAsXmlMenu.Index = 2;
-			this.EditAsXmlMenu.Text = "Edit as xml";
-			this.EditAsXmlMenu.Click += new System.EventHandler(this.EditAsXmlMenu_Click);
-			// 
-			// LoadFromXmlMenu
-			// 
-			this.LoadFromXmlMenu.Index = 3;
-			this.LoadFromXmlMenu.Text = "Load from Xml...";
-			this.LoadFromXmlMenu.Click += new System.EventHandler(this.LoadFromXmlMenu_Click);
-			// 
-			// SaveXmlAsMenu
-			// 
-			this.SaveXmlAsMenu.Index = 4;
-			this.SaveXmlAsMenu.Text = "Save Xml As...";
-			this.SaveXmlAsMenu.Click += new System.EventHandler(this.SaveXmlAsMenu_Click);
-			// 
-			// menuItem1
-			// 
-			this.menuItem1.Index = 5;
-			this.menuItem1.Text = "-";
-			// 
-			// CutMenu
-			// 
-			this.CutMenu.Index = 6;
-			this.CutMenu.Shortcut = System.Windows.Forms.Shortcut.CtrlX;
-			this.CutMenu.Text = "Cut";
-			this.CutMenu.Click += new System.EventHandler(this.CutMenu_Click);
-			// 
-			// CopyMenu
-			// 
-			this.CopyMenu.Index = 7;
-			this.CopyMenu.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
-			this.CopyMenu.Text = "Copy";
-			this.CopyMenu.Click += new System.EventHandler(this.CopyMenu_Click);
-			// 
-			// PasteMenu
-			// 
-			this.PasteMenu.Index = 8;
-			this.PasteMenu.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
-			this.PasteMenu.Text = "Paste";
-			this.PasteMenu.Click += new System.EventHandler(this.PasteMenu_Click);
-			// 
-			// menuItem4
-			// 
-			this.menuItem4.Index = 9;
-			this.menuItem4.Text = "-";
-			// 
-			// DeleteMenu
-			// 
-			this.DeleteMenu.Index = 10;
-			this.DeleteMenu.Text = "Delete";
-			this.DeleteMenu.Click += new System.EventHandler(this.DeleteMenu_Click);
-			// 
-			// NewMenu
-			// 
-			this.NewMenu.Index = 11;
-			this.NewMenu.Text = "New";
-			// 
-			// panLeftTree
-			// 
-			this.panLeftTree.Controls.Add(this.ResourceTreeToolbar);
-			this.panLeftTree.Controls.Add(this.ResourceTree);
-			this.panLeftTree.Dock = System.Windows.Forms.DockStyle.Left;
-			this.panLeftTree.Location = new System.Drawing.Point(0, 0);
-			this.panLeftTree.Name = "panLeftTree";
-			this.panLeftTree.Size = new System.Drawing.Size(296, 454);
-			this.panLeftTree.TabIndex = 2;
-			// 
-			// ResourceTreeToolbar
-			// 
-			this.ResourceTreeToolbar.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
-			this.ResourceTreeToolbar.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[] {
-																								   this.AddResourceButton,
-																								   this.AddFolderButton,
-																								   this.DeleteResourceButton,
-																								   this.toolBarButton2,
-																								   this.ResourceTreeCopy,
-																								   this.ResourceTreeCut,
-																								   this.ResourceTreePaste,
-																								   this.toolBarButton1,
-																								   this.ResourceTreeRefreshButton});
-			this.ResourceTreeToolbar.DropDownArrows = true;
-			this.ResourceTreeToolbar.ImageList = this.toolbarImages;
-			this.ResourceTreeToolbar.Location = new System.Drawing.Point(0, 0);
-			this.ResourceTreeToolbar.Name = "ResourceTreeToolbar";
-			this.ResourceTreeToolbar.ShowToolTips = true;
-			this.ResourceTreeToolbar.Size = new System.Drawing.Size(296, 44);
-			this.ResourceTreeToolbar.TabIndex = 1;
-			this.ResourceTreeToolbar.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
-			this.ResourceTreeToolbar.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(this.ResourceTreeToolbar_ButtonClick);
-			// 
-			// AddResourceButton
-			// 
-			this.AddResourceButton.ImageIndex = 4;
-			this.AddResourceButton.ToolTipText = "Creates a new resource";
-			// 
-			// AddFolderButton
-			// 
-			this.AddFolderButton.ImageIndex = 10;
-			this.AddFolderButton.ToolTipText = "Creates a new folder";
-			// 
-			// DeleteResourceButton
-			// 
-			this.DeleteResourceButton.Enabled = false;
-			this.DeleteResourceButton.ImageIndex = 5;
-			this.DeleteResourceButton.ToolTipText = "Deletes the selected resource or folder";
-			// 
-			// toolBarButton2
-			// 
-			this.toolBarButton2.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
-			// 
-			// ResourceTreeCopy
-			// 
-			this.ResourceTreeCopy.Enabled = false;
-			this.ResourceTreeCopy.ImageIndex = 0;
-			this.ResourceTreeCopy.ToolTipText = "Copies the current resource or folder to the clipboard";
-			// 
-			// ResourceTreeCut
-			// 
-			this.ResourceTreeCut.Enabled = false;
-			this.ResourceTreeCut.ImageIndex = 1;
-			this.ResourceTreeCut.ToolTipText = "Cuts the current resource or folder to the clipboard";
-			// 
-			// ResourceTreePaste
-			// 
-			this.ResourceTreePaste.Enabled = false;
-			this.ResourceTreePaste.ImageIndex = 2;
-			this.ResourceTreePaste.ToolTipText = "Pastes the current content of the clipboard";
-			// 
-			// toolBarButton1
-			// 
-			this.toolBarButton1.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
-			// 
-			// ResourceTreeRefreshButton
-			// 
-			this.ResourceTreeRefreshButton.ImageIndex = 3;
-			this.ResourceTreeRefreshButton.ToolTipText = "Refreshes the tree to match the current server state";
-			// 
-			// toolbarImages
-			// 
-			this.toolbarImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-			this.toolbarImages.ImageSize = new System.Drawing.Size(32, 32);
-			this.toolbarImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("toolbarImages.ImageStream")));
-			this.toolbarImages.TransparentColor = System.Drawing.Color.Transparent;
-			// 
-			// panInnerRight
-			// 
-			this.panInnerRight.Controls.Add(this.toolBar2);
-			this.panInnerRight.Controls.Add(this.tabItems);
-			this.panInnerRight.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panInnerRight.Location = new System.Drawing.Point(304, 0);
-			this.panInnerRight.Name = "panInnerRight";
-			this.panInnerRight.Size = new System.Drawing.Size(400, 454);
-			this.panInnerRight.TabIndex = 3;
-			// 
-			// toolBar2
-			// 
-			this.toolBar2.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
-			this.toolBar2.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[] {
-																						this.SaveResourceButton,
-																						this.SaveResourceAsButton,
-																						this.toolBarButton4,
-																						this.PreviewButton,
-																						this.EditAsXmlButton,
-																						this.toolBarButton3,
-																						this.ClosePageButton});
-			this.toolBar2.DropDownArrows = true;
-			this.toolBar2.ImageList = this.toolbarImages;
-			this.toolBar2.Location = new System.Drawing.Point(0, 0);
-			this.toolBar2.Name = "toolBar2";
-			this.toolBar2.ShowToolTips = true;
-			this.toolBar2.Size = new System.Drawing.Size(400, 44);
-			this.toolBar2.TabIndex = 2;
-			this.toolBar2.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
-			this.toolBar2.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(this.toolBar2_ButtonClick);
-			// 
-			// SaveResourceButton
-			// 
-			this.SaveResourceButton.ImageIndex = 6;
-			this.SaveResourceButton.ToolTipText = "Saves the current resource";
-			// 
-			// SaveResourceAsButton
-			// 
-			this.SaveResourceAsButton.ImageIndex = 7;
-			this.SaveResourceAsButton.ToolTipText = "Saves the current resource under a different name";
-			// 
-			// toolBarButton4
-			// 
-			this.toolBarButton4.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
-			// 
-			// PreviewButton
-			// 
-			this.PreviewButton.ImageIndex = 12;
-			this.PreviewButton.ToolTipText = "Preview the item";
-			// 
-			// EditAsXmlButton
-			// 
-			this.EditAsXmlButton.ImageIndex = 8;
-			this.EditAsXmlButton.ToolTipText = "Edits the current resource in an xml editor";
-			// 
-			// toolBarButton3
-			// 
-			this.toolBarButton3.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
-			// 
-			// ClosePageButton
-			// 
-			this.ClosePageButton.ImageIndex = 11;
-			this.ClosePageButton.ToolTipText = "Close the current page";
-			// 
-			// tabItems
-			// 
-			this.tabItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.tabItems.ItemSize = new System.Drawing.Size(0, 18);
-			this.tabItems.Location = new System.Drawing.Point(0, 48);
-			this.tabItems.Name = "tabItems";
-			this.tabItems.SelectedIndex = 0;
-			this.tabItems.Size = new System.Drawing.Size(392, 396);
-			this.tabItems.TabIndex = 1;
-			// 
-			// panOuter
-			// 
-			this.panOuter.Controls.Add(this.panInnerRight);
-			this.panOuter.Controls.Add(this.splitter1);
-			this.panOuter.Controls.Add(this.panLeftTree);
-			this.panOuter.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panOuter.Location = new System.Drawing.Point(0, 0);
-			this.panOuter.Name = "panOuter";
-			this.panOuter.Size = new System.Drawing.Size(704, 454);
-			this.panOuter.TabIndex = 5;
-			// 
-			// splitter1
-			// 
-			this.splitter1.Location = new System.Drawing.Point(296, 0);
-			this.splitter1.Name = "splitter1";
-			this.splitter1.Size = new System.Drawing.Size(8, 454);
-			this.splitter1.TabIndex = 3;
-			this.splitter1.TabStop = false;
-			// 
-			// toolbarImagesSmall
-			// 
-			this.toolbarImagesSmall.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-			this.toolbarImagesSmall.ImageSize = new System.Drawing.Size(16, 16);
-			this.toolbarImagesSmall.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("toolbarImagesSmall.ImageStream")));
-			this.toolbarImagesSmall.TransparentColor = System.Drawing.Color.Transparent;
-			// 
-			// KeepAliveTimer
-			// 
-			this.KeepAliveTimer.Interval = 300000;
-			this.KeepAliveTimer.Tick += new System.EventHandler(this.KeepAliveTimer_Tick);
-			// 
-			// MainMenu
-			// 
-			this.MainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																					 this.menuItem2,
-																					 this.MainMenuEdit,
-																					 this.menuItem3});
-			// 
-			// menuItem2
-			// 
-			this.menuItem2.Index = 0;
-			this.menuItem2.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																					  this.MainMenuNew,
-																					  this.MainMenuOpen,
-																					  this.MainMenuClose,
-																					  this.menuItem17,
-																					  this.MainMenuSave,
-																					  this.MainMenuSaveAs,
-																					  this.MainMenuSaveAll,
-																					  this.menuItem11,
-																					  this.MainMenuEditAsXml,
-																					  this.MainMenuSaveAsXml,
-																					  this.MainMenuLoadFromXml,
-																					  this.menuItem20,
-																					  this.MainMenuChangeServer,
-																					  this.OpenSiteAdmin,
-																					  this.menuItem22,
-																					  this.MainMenuExit});
-			this.menuItem2.Text = "File";
-			// 
-			// MainMenuNew
-			// 
-			this.MainMenuNew.Index = 0;
-			this.MainMenuNew.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
-			this.MainMenuNew.Text = "New";
-			this.MainMenuNew.Click += new System.EventHandler(this.MainMenuNew_Click);
-			// 
-			// MainMenuOpen
-			// 
-			this.MainMenuOpen.Index = 1;
-			this.MainMenuOpen.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
-			this.MainMenuOpen.Text = "Open";
-			this.MainMenuOpen.Click += new System.EventHandler(this.MainMenuOpen_Click);
-			// 
-			// MainMenuClose
-			// 
-			this.MainMenuClose.Index = 2;
-			this.MainMenuClose.Shortcut = System.Windows.Forms.Shortcut.CtrlF4;
-			this.MainMenuClose.Text = "Close";
-			this.MainMenuClose.Click += new System.EventHandler(this.MainMenuClose_Click);
-			// 
-			// menuItem17
-			// 
-			this.menuItem17.Index = 3;
-			this.menuItem17.Text = "-";
-			// 
-			// MainMenuSave
-			// 
-			this.MainMenuSave.Index = 4;
-			this.MainMenuSave.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
-			this.MainMenuSave.Text = "Save";
-			this.MainMenuSave.Click += new System.EventHandler(this.MainMenuSave_Click);
-			// 
-			// MainMenuSaveAs
-			// 
-			this.MainMenuSaveAs.Index = 5;
-			this.MainMenuSaveAs.Text = "Save as...";
-			this.MainMenuSaveAs.Click += new System.EventHandler(this.MainMenuSaveAs_Click);
-			// 
-			// MainMenuSaveAll
-			// 
-			this.MainMenuSaveAll.Index = 6;
-			this.MainMenuSaveAll.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftS;
-			this.MainMenuSaveAll.Text = "Save all";
-			this.MainMenuSaveAll.Click += new System.EventHandler(this.MainMenuSaveAll_Click);
-			// 
-			// menuItem11
-			// 
-			this.menuItem11.Index = 7;
-			this.menuItem11.Text = "-";
-			// 
-			// MainMenuEditAsXml
-			// 
-			this.MainMenuEditAsXml.Index = 8;
-			this.MainMenuEditAsXml.Text = "Edit as Xml";
-			this.MainMenuEditAsXml.Click += new System.EventHandler(this.MainMenuEditAsXml_Click);
-			// 
-			// MainMenuSaveAsXml
-			// 
-			this.MainMenuSaveAsXml.Index = 9;
-			this.MainMenuSaveAsXml.Text = "Save as Xml...";
-			this.MainMenuSaveAsXml.Click += new System.EventHandler(this.MainMenuSaveAsXml_Click);
-			// 
-			// MainMenuLoadFromXml
-			// 
-			this.MainMenuLoadFromXml.Index = 10;
-			this.MainMenuLoadFromXml.Text = "Load from Xml...";
-			this.MainMenuLoadFromXml.Click += new System.EventHandler(this.MainMenuLoadFromXml_Click);
-			// 
-			// menuItem20
-			// 
-			this.menuItem20.Index = 11;
-			this.menuItem20.Text = "-";
-			// 
-			// MainMenuChangeServer
-			// 
-			this.MainMenuChangeServer.Index = 12;
-			this.MainMenuChangeServer.Text = "Change server...";
-			this.MainMenuChangeServer.Click += new System.EventHandler(this.MainMenuChangeServer_Click);
-			// 
-			// OpenSiteAdmin
-			// 
-			this.OpenSiteAdmin.Index = 13;
-			this.OpenSiteAdmin.Text = "Open Site Administrator...";
-			this.OpenSiteAdmin.Click += new System.EventHandler(this.OpenSiteAdmin_Click);
-			// 
-			// menuItem22
-			// 
-			this.menuItem22.Index = 14;
-			this.menuItem22.Text = "-";
-			// 
-			// MainMenuExit
-			// 
-			this.MainMenuExit.Index = 15;
-			this.MainMenuExit.Text = "Exit";
-			this.MainMenuExit.Click += new System.EventHandler(this.MainMenuExit_Click);
-			// 
-			// MainMenuEdit
-			// 
-			this.MainMenuEdit.Index = 1;
-			this.MainMenuEdit.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																						 this.MainMenuCut,
-																						 this.MainMenuCopy,
-																						 this.MainMenuPaste});
-			this.MainMenuEdit.Text = "Edit";
-			// 
-			// MainMenuCut
-			// 
-			this.MainMenuCut.Index = 0;
-			this.MainMenuCut.Text = "Cut";
-			this.MainMenuCut.Click += new System.EventHandler(this.MainMenuCut_Click);
-			// 
-			// MainMenuCopy
-			// 
-			this.MainMenuCopy.Index = 1;
-			this.MainMenuCopy.Text = "Copy";
-			this.MainMenuCopy.Click += new System.EventHandler(this.MainMenuCopy_Click);
-			// 
-			// MainMenuPaste
-			// 
-			this.MainMenuPaste.Index = 2;
-			this.MainMenuPaste.Text = "Paste";
-			this.MainMenuPaste.Click += new System.EventHandler(this.MainMenuPaste_Click);
-			// 
-			// menuItem3
-			// 
-			this.menuItem3.Index = 2;
-			this.menuItem3.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																					  this.MainMenuAbout});
-			this.menuItem3.Text = "Help";
-			// 
-			// MainMenuAbout
-			// 
-			this.MainMenuAbout.Index = 0;
-			this.MainMenuAbout.Text = "About...";
-			this.MainMenuAbout.Click += new System.EventHandler(this.MainMenuAbout_Click);
-			// 
-			// FormMain
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(704, 454);
-			this.Controls.Add(this.panOuter);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Menu = this.MainMenu;
-			this.Name = "FormMain";
-			this.Text = "MapGuide Maestro";
-			this.Closing += new System.ComponentModel.CancelEventHandler(this.FormMain_Closing);
-			this.Load += new System.EventHandler(this.FormMain_Load);
-			this.panLeftTree.ResumeLayout(false);
-			this.panInnerRight.ResumeLayout(false);
-			this.panOuter.ResumeLayout(false);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+            this.ResourceTree = new System.Windows.Forms.TreeView();
+            this.TreeContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.PropertiesMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItem7 = new System.Windows.Forms.ToolStripSeparator();
+            this.EditAsXmlMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadFromXmlMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveXmlAsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.CutMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.CopyMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.PasteMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.DeleteMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.NewMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ResourceTreeToolbar = new System.Windows.Forms.ToolStrip();
+            this.AddResourceButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.AddFolderButton = new System.Windows.Forms.ToolStripButton();
+            this.DeleteResourceButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ResourceTreeCopy = new System.Windows.Forms.ToolStripButton();
+            this.ResourceTreeCut = new System.Windows.Forms.ToolStripButton();
+            this.ResourceTreePaste = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.ResourceTreeRefreshButton = new System.Windows.Forms.ToolStripButton();
+            this.toolbarImages = new System.Windows.Forms.ImageList(this.components);
+            this.tabItems = new System.Windows.Forms.TabControl();
+            this.NewResourceMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolbarImagesSmall = new System.Windows.Forms.ImageList(this.components);
+            this.KeepAliveTimer = new System.Windows.Forms.Timer(this.components);
+            this.MainMenu = new System.Windows.Forms.MenuStrip();
+            this.menuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainMenuNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainMenuOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainMenuClose = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItem17 = new System.Windows.Forms.ToolStripSeparator();
+            this.MainMenuSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainMenuSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainMenuSaveAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItem11 = new System.Windows.Forms.ToolStripSeparator();
+            this.MainMenuEditAsXml = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainMenuSaveAsXml = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainMenuLoadFromXml = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItem20 = new System.Windows.Forms.ToolStripSeparator();
+            this.MainMenuChangeServer = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenSiteAdmin = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItem22 = new System.Windows.Forms.ToolStripSeparator();
+            this.MainMenuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainMenuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainMenuCut = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainMenuCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainMenuPaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.SaveResourceButton = new System.Windows.Forms.ToolStripButton();
+            this.SaveResourceAsButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.PreviewButton = new System.Windows.Forms.ToolStripButton();
+            this.EditAsXmlButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.ClosePageButton = new System.Windows.Forms.ToolStripButton();
+            this.TreeContextMenu.SuspendLayout();
+            this.ResourceTreeToolbar.SuspendLayout();
+            this.MainMenu.SuspendLayout();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // ResourceTree
+            // 
+            this.ResourceTree.AllowDrop = true;
+            this.ResourceTree.ContextMenuStrip = this.TreeContextMenu;
+            this.ResourceTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ResourceTree.LabelEdit = true;
+            this.ResourceTree.Location = new System.Drawing.Point(0, 39);
+            this.ResourceTree.Name = "ResourceTree";
+            this.ResourceTree.Size = new System.Drawing.Size(278, 391);
+            this.ResourceTree.TabIndex = 0;
+            this.ResourceTree.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.ResourceTree_AfterLabelEdit);
+            this.ResourceTree.DoubleClick += new System.EventHandler(this.ResourceTree_DoubleClick);
+            this.ResourceTree.DragDrop += new System.Windows.Forms.DragEventHandler(this.ResourceTree_DragDrop);
+            this.ResourceTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ResourceTree_AfterSelect);
+            this.ResourceTree.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ResourceTree_MouseDown);
+            this.ResourceTree.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ResourceTree_KeyUp);
+            this.ResourceTree.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.ResourceTree_BeforeLabelEdit);
+            this.ResourceTree.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.ResourceTree_ItemDrag);
+            this.ResourceTree.DragOver += new System.Windows.Forms.DragEventHandler(this.ResourceTree_DragOver);
+            // 
+            // TreeContextMenu
+            // 
+            this.TreeContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PropertiesMenu,
+            this.menuItem7,
+            this.EditAsXmlMenu,
+            this.LoadFromXmlMenu,
+            this.SaveXmlAsMenu,
+            this.menuItem1,
+            this.CutMenu,
+            this.CopyMenu,
+            this.PasteMenu,
+            this.menuItem4,
+            this.DeleteMenu,
+            this.NewMenu});
+            this.TreeContextMenu.Name = "TreeContextMenu";
+            this.TreeContextMenu.Size = new System.Drawing.Size(165, 220);
+            this.TreeContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.TreeContextMenu_Popup);
+            // 
+            // PropertiesMenu
+            // 
+            this.PropertiesMenu.Name = "PropertiesMenu";
+            this.PropertiesMenu.Size = new System.Drawing.Size(164, 22);
+            this.PropertiesMenu.Text = "Properties";
+            // 
+            // menuItem7
+            // 
+            this.menuItem7.Name = "menuItem7";
+            this.menuItem7.Size = new System.Drawing.Size(161, 6);
+            // 
+            // EditAsXmlMenu
+            // 
+            this.EditAsXmlMenu.Name = "EditAsXmlMenu";
+            this.EditAsXmlMenu.Size = new System.Drawing.Size(164, 22);
+            this.EditAsXmlMenu.Text = "Edit as xml";
+            this.EditAsXmlMenu.Click += new System.EventHandler(this.EditAsXmlMenu_Click);
+            // 
+            // LoadFromXmlMenu
+            // 
+            this.LoadFromXmlMenu.Name = "LoadFromXmlMenu";
+            this.LoadFromXmlMenu.Size = new System.Drawing.Size(164, 22);
+            this.LoadFromXmlMenu.Text = "Load from Xml...";
+            this.LoadFromXmlMenu.Click += new System.EventHandler(this.LoadFromXmlMenu_Click);
+            // 
+            // SaveXmlAsMenu
+            // 
+            this.SaveXmlAsMenu.Name = "SaveXmlAsMenu";
+            this.SaveXmlAsMenu.Size = new System.Drawing.Size(164, 22);
+            this.SaveXmlAsMenu.Text = "Save Xml As...";
+            this.SaveXmlAsMenu.Click += new System.EventHandler(this.SaveXmlAsMenu_Click);
+            // 
+            // menuItem1
+            // 
+            this.menuItem1.Name = "menuItem1";
+            this.menuItem1.Size = new System.Drawing.Size(161, 6);
+            // 
+            // CutMenu
+            // 
+            this.CutMenu.Name = "CutMenu";
+            this.CutMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.CutMenu.Size = new System.Drawing.Size(164, 22);
+            this.CutMenu.Text = "Cut";
+            this.CutMenu.Click += new System.EventHandler(this.CutMenu_Click);
+            // 
+            // CopyMenu
+            // 
+            this.CopyMenu.Name = "CopyMenu";
+            this.CopyMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.CopyMenu.Size = new System.Drawing.Size(164, 22);
+            this.CopyMenu.Text = "Copy";
+            this.CopyMenu.Click += new System.EventHandler(this.CopyMenu_Click);
+            // 
+            // PasteMenu
+            // 
+            this.PasteMenu.Name = "PasteMenu";
+            this.PasteMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.PasteMenu.Size = new System.Drawing.Size(164, 22);
+            this.PasteMenu.Text = "Paste";
+            this.PasteMenu.Click += new System.EventHandler(this.PasteMenu_Click);
+            // 
+            // menuItem4
+            // 
+            this.menuItem4.Name = "menuItem4";
+            this.menuItem4.Size = new System.Drawing.Size(161, 6);
+            // 
+            // DeleteMenu
+            // 
+            this.DeleteMenu.Name = "DeleteMenu";
+            this.DeleteMenu.Size = new System.Drawing.Size(164, 22);
+            this.DeleteMenu.Text = "Delete";
+            this.DeleteMenu.Click += new System.EventHandler(this.DeleteMenu_Click);
+            // 
+            // NewMenu
+            // 
+            this.NewMenu.Name = "NewMenu";
+            this.NewMenu.Size = new System.Drawing.Size(164, 22);
+            this.NewMenu.Text = "New";
+            // 
+            // ResourceTreeToolbar
+            // 
+            this.ResourceTreeToolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.ResourceTreeToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddResourceButton,
+            this.AddFolderButton,
+            this.DeleteResourceButton,
+            this.toolStripSeparator1,
+            this.ResourceTreeCopy,
+            this.ResourceTreeCut,
+            this.ResourceTreePaste,
+            this.toolStripSeparator2,
+            this.ResourceTreeRefreshButton});
+            this.ResourceTreeToolbar.Location = new System.Drawing.Point(0, 0);
+            this.ResourceTreeToolbar.Name = "ResourceTreeToolbar";
+            this.ResourceTreeToolbar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.ResourceTreeToolbar.Size = new System.Drawing.Size(278, 39);
+            this.ResourceTreeToolbar.TabIndex = 2;
+            this.ResourceTreeToolbar.Text = "toolStrip1";
+            // 
+            // AddResourceButton
+            // 
+            this.AddResourceButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AddResourceButton.Image = ((System.Drawing.Image)(resources.GetObject("AddResourceButton.Image")));
+            this.AddResourceButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.AddResourceButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddResourceButton.Name = "AddResourceButton";
+            this.AddResourceButton.Size = new System.Drawing.Size(48, 36);
+            this.AddResourceButton.Text = "toolStripSplitButton1";
+            this.AddResourceButton.ToolTipText = "Creates a new resource";
+            this.AddResourceButton.ButtonClick += new System.EventHandler(this.AddResourceButton_ButtonClick);
+            // 
+            // AddFolderButton
+            // 
+            this.AddFolderButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AddFolderButton.Image = ((System.Drawing.Image)(resources.GetObject("AddFolderButton.Image")));
+            this.AddFolderButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.AddFolderButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddFolderButton.Name = "AddFolderButton";
+            this.AddFolderButton.Size = new System.Drawing.Size(36, 36);
+            this.AddFolderButton.Text = "toolStripButton2";
+            this.AddFolderButton.ToolTipText = "Creates a new folder";
+            this.AddFolderButton.Click += new System.EventHandler(this.AddFolderButton_Click);
+            // 
+            // DeleteResourceButton
+            // 
+            this.DeleteResourceButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.DeleteResourceButton.Enabled = false;
+            this.DeleteResourceButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteResourceButton.Image")));
+            this.DeleteResourceButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.DeleteResourceButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DeleteResourceButton.Name = "DeleteResourceButton";
+            this.DeleteResourceButton.Size = new System.Drawing.Size(36, 36);
+            this.DeleteResourceButton.Text = "toolStripButton3";
+            this.DeleteResourceButton.ToolTipText = "Deletes the selected resource or folder";
+            this.DeleteResourceButton.Click += new System.EventHandler(this.DeleteResourceButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
+            // 
+            // ResourceTreeCopy
+            // 
+            this.ResourceTreeCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ResourceTreeCopy.Enabled = false;
+            this.ResourceTreeCopy.Image = ((System.Drawing.Image)(resources.GetObject("ResourceTreeCopy.Image")));
+            this.ResourceTreeCopy.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ResourceTreeCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ResourceTreeCopy.Name = "ResourceTreeCopy";
+            this.ResourceTreeCopy.Size = new System.Drawing.Size(36, 36);
+            this.ResourceTreeCopy.Text = "toolStripButton4";
+            this.ResourceTreeCopy.ToolTipText = "Copies the current resource or folder to the clipboard";
+            this.ResourceTreeCopy.Click += new System.EventHandler(this.ResourceTreeCopy_Click);
+            // 
+            // ResourceTreeCut
+            // 
+            this.ResourceTreeCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ResourceTreeCut.Enabled = false;
+            this.ResourceTreeCut.Image = ((System.Drawing.Image)(resources.GetObject("ResourceTreeCut.Image")));
+            this.ResourceTreeCut.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ResourceTreeCut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ResourceTreeCut.Name = "ResourceTreeCut";
+            this.ResourceTreeCut.Size = new System.Drawing.Size(36, 36);
+            this.ResourceTreeCut.Text = "toolStripButton5";
+            this.ResourceTreeCut.ToolTipText = "Cuts the current resource or folder to the clipboard";
+            this.ResourceTreeCut.Click += new System.EventHandler(this.ResourceTreeCut_Click);
+            // 
+            // ResourceTreePaste
+            // 
+            this.ResourceTreePaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ResourceTreePaste.Enabled = false;
+            this.ResourceTreePaste.Image = ((System.Drawing.Image)(resources.GetObject("ResourceTreePaste.Image")));
+            this.ResourceTreePaste.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ResourceTreePaste.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ResourceTreePaste.Name = "ResourceTreePaste";
+            this.ResourceTreePaste.Size = new System.Drawing.Size(36, 36);
+            this.ResourceTreePaste.Text = "toolStripButton6";
+            this.ResourceTreePaste.ToolTipText = "Pastes the current content of the clipboard";
+            this.ResourceTreePaste.Click += new System.EventHandler(this.ResourceTreePaste_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
+            // ResourceTreeRefreshButton
+            // 
+            this.ResourceTreeRefreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ResourceTreeRefreshButton.Image = ((System.Drawing.Image)(resources.GetObject("ResourceTreeRefreshButton.Image")));
+            this.ResourceTreeRefreshButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ResourceTreeRefreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ResourceTreeRefreshButton.Name = "ResourceTreeRefreshButton";
+            this.ResourceTreeRefreshButton.Size = new System.Drawing.Size(36, 36);
+            this.ResourceTreeRefreshButton.Text = "toolStripButton7";
+            this.ResourceTreeRefreshButton.ToolTipText = "Refreshes the tree to match the current server state";
+            this.ResourceTreeRefreshButton.Click += new System.EventHandler(this.ResourceTreeRefreshButton_Click);
+            // 
+            // toolbarImages
+            // 
+            this.toolbarImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("toolbarImages.ImageStream")));
+            this.toolbarImages.TransparentColor = System.Drawing.Color.Transparent;
+            this.toolbarImages.Images.SetKeyName(0, "");
+            this.toolbarImages.Images.SetKeyName(1, "");
+            this.toolbarImages.Images.SetKeyName(2, "");
+            this.toolbarImages.Images.SetKeyName(3, "");
+            this.toolbarImages.Images.SetKeyName(4, "");
+            this.toolbarImages.Images.SetKeyName(5, "");
+            this.toolbarImages.Images.SetKeyName(6, "");
+            this.toolbarImages.Images.SetKeyName(7, "");
+            this.toolbarImages.Images.SetKeyName(8, "");
+            this.toolbarImages.Images.SetKeyName(9, "");
+            this.toolbarImages.Images.SetKeyName(10, "");
+            this.toolbarImages.Images.SetKeyName(11, "");
+            this.toolbarImages.Images.SetKeyName(12, "");
+            // 
+            // tabItems
+            // 
+            this.tabItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabItems.ItemSize = new System.Drawing.Size(0, 18);
+            this.tabItems.Location = new System.Drawing.Point(0, 39);
+            this.tabItems.Name = "tabItems";
+            this.tabItems.SelectedIndex = 0;
+            this.tabItems.Size = new System.Drawing.Size(418, 391);
+            this.tabItems.TabIndex = 1;
+            // 
+            // NewResourceMenu
+            // 
+            this.NewResourceMenu.Name = "NewResourceMenu";
+            this.NewResourceMenu.Size = new System.Drawing.Size(61, 4);
+            // 
+            // toolbarImagesSmall
+            // 
+            this.toolbarImagesSmall.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("toolbarImagesSmall.ImageStream")));
+            this.toolbarImagesSmall.TransparentColor = System.Drawing.Color.Transparent;
+            this.toolbarImagesSmall.Images.SetKeyName(0, "");
+            this.toolbarImagesSmall.Images.SetKeyName(1, "");
+            this.toolbarImagesSmall.Images.SetKeyName(2, "");
+            this.toolbarImagesSmall.Images.SetKeyName(3, "");
+            this.toolbarImagesSmall.Images.SetKeyName(4, "");
+            this.toolbarImagesSmall.Images.SetKeyName(5, "");
+            this.toolbarImagesSmall.Images.SetKeyName(6, "");
+            this.toolbarImagesSmall.Images.SetKeyName(7, "");
+            this.toolbarImagesSmall.Images.SetKeyName(8, "");
+            // 
+            // KeepAliveTimer
+            // 
+            this.KeepAliveTimer.Interval = 300000;
+            this.KeepAliveTimer.Tick += new System.EventHandler(this.KeepAliveTimer_Tick);
+            // 
+            // MainMenu
+            // 
+            this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItem2,
+            this.MainMenuEdit,
+            this.menuItem3});
+            this.MainMenu.Location = new System.Drawing.Point(0, 0);
+            this.MainMenu.Name = "MainMenu";
+            this.MainMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.MainMenu.Size = new System.Drawing.Size(704, 24);
+            this.MainMenu.TabIndex = 3;
+            // 
+            // menuItem2
+            // 
+            this.menuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MainMenuNew,
+            this.MainMenuOpen,
+            this.MainMenuClose,
+            this.menuItem17,
+            this.MainMenuSave,
+            this.MainMenuSaveAs,
+            this.MainMenuSaveAll,
+            this.menuItem11,
+            this.MainMenuEditAsXml,
+            this.MainMenuSaveAsXml,
+            this.MainMenuLoadFromXml,
+            this.menuItem20,
+            this.MainMenuChangeServer,
+            this.OpenSiteAdmin,
+            this.menuItem22,
+            this.MainMenuExit});
+            this.menuItem2.Name = "menuItem2";
+            this.menuItem2.Size = new System.Drawing.Size(35, 20);
+            this.menuItem2.Text = "File";
+            // 
+            // MainMenuNew
+            // 
+            this.MainMenuNew.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuNew.Image")));
+            this.MainMenuNew.Name = "MainMenuNew";
+            this.MainMenuNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.MainMenuNew.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuNew.Text = "New";
+            this.MainMenuNew.Click += new System.EventHandler(this.MainMenuNew_Click);
+            // 
+            // MainMenuOpen
+            // 
+            this.MainMenuOpen.Name = "MainMenuOpen";
+            this.MainMenuOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.MainMenuOpen.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuOpen.Text = "Open";
+            this.MainMenuOpen.Click += new System.EventHandler(this.MainMenuOpen_Click);
+            // 
+            // MainMenuClose
+            // 
+            this.MainMenuClose.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuClose.Image")));
+            this.MainMenuClose.Name = "MainMenuClose";
+            this.MainMenuClose.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
+            this.MainMenuClose.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuClose.Text = "Close";
+            this.MainMenuClose.Click += new System.EventHandler(this.MainMenuClose_Click);
+            // 
+            // menuItem17
+            // 
+            this.menuItem17.Name = "menuItem17";
+            this.menuItem17.Size = new System.Drawing.Size(208, 6);
+            // 
+            // MainMenuSave
+            // 
+            this.MainMenuSave.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuSave.Image")));
+            this.MainMenuSave.Name = "MainMenuSave";
+            this.MainMenuSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.MainMenuSave.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuSave.Text = "Save";
+            this.MainMenuSave.Click += new System.EventHandler(this.MainMenuSave_Click);
+            // 
+            // MainMenuSaveAs
+            // 
+            this.MainMenuSaveAs.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuSaveAs.Image")));
+            this.MainMenuSaveAs.Name = "MainMenuSaveAs";
+            this.MainMenuSaveAs.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuSaveAs.Text = "Save as...";
+            this.MainMenuSaveAs.Click += new System.EventHandler(this.MainMenuSaveAs_Click);
+            // 
+            // MainMenuSaveAll
+            // 
+            this.MainMenuSaveAll.Name = "MainMenuSaveAll";
+            this.MainMenuSaveAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+                        | System.Windows.Forms.Keys.S)));
+            this.MainMenuSaveAll.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuSaveAll.Text = "Save all";
+            this.MainMenuSaveAll.Click += new System.EventHandler(this.MainMenuSaveAll_Click);
+            // 
+            // menuItem11
+            // 
+            this.menuItem11.Name = "menuItem11";
+            this.menuItem11.Size = new System.Drawing.Size(208, 6);
+            // 
+            // MainMenuEditAsXml
+            // 
+            this.MainMenuEditAsXml.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuEditAsXml.Image")));
+            this.MainMenuEditAsXml.Name = "MainMenuEditAsXml";
+            this.MainMenuEditAsXml.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuEditAsXml.Text = "Edit as Xml";
+            this.MainMenuEditAsXml.Click += new System.EventHandler(this.MainMenuEditAsXml_Click);
+            // 
+            // MainMenuSaveAsXml
+            // 
+            this.MainMenuSaveAsXml.Name = "MainMenuSaveAsXml";
+            this.MainMenuSaveAsXml.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuSaveAsXml.Text = "Save as Xml...";
+            this.MainMenuSaveAsXml.Click += new System.EventHandler(this.MainMenuSaveAsXml_Click);
+            // 
+            // MainMenuLoadFromXml
+            // 
+            this.MainMenuLoadFromXml.Name = "MainMenuLoadFromXml";
+            this.MainMenuLoadFromXml.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuLoadFromXml.Text = "Load from Xml...";
+            this.MainMenuLoadFromXml.Click += new System.EventHandler(this.MainMenuLoadFromXml_Click);
+            // 
+            // menuItem20
+            // 
+            this.menuItem20.Name = "menuItem20";
+            this.menuItem20.Size = new System.Drawing.Size(208, 6);
+            // 
+            // MainMenuChangeServer
+            // 
+            this.MainMenuChangeServer.Name = "MainMenuChangeServer";
+            this.MainMenuChangeServer.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuChangeServer.Text = "Change server...";
+            this.MainMenuChangeServer.Click += new System.EventHandler(this.MainMenuChangeServer_Click);
+            // 
+            // OpenSiteAdmin
+            // 
+            this.OpenSiteAdmin.Name = "OpenSiteAdmin";
+            this.OpenSiteAdmin.Size = new System.Drawing.Size(211, 22);
+            this.OpenSiteAdmin.Text = "Open Site Administrator...";
+            this.OpenSiteAdmin.Click += new System.EventHandler(this.OpenSiteAdmin_Click);
+            // 
+            // menuItem22
+            // 
+            this.menuItem22.Name = "menuItem22";
+            this.menuItem22.Size = new System.Drawing.Size(208, 6);
+            // 
+            // MainMenuExit
+            // 
+            this.MainMenuExit.Name = "MainMenuExit";
+            this.MainMenuExit.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuExit.Text = "Exit";
+            this.MainMenuExit.Click += new System.EventHandler(this.MainMenuExit_Click);
+            // 
+            // MainMenuEdit
+            // 
+            this.MainMenuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MainMenuCut,
+            this.MainMenuCopy,
+            this.MainMenuPaste});
+            this.MainMenuEdit.Name = "MainMenuEdit";
+            this.MainMenuEdit.Size = new System.Drawing.Size(37, 20);
+            this.MainMenuEdit.Text = "Edit";
+            // 
+            // MainMenuCut
+            // 
+            this.MainMenuCut.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuCut.Image")));
+            this.MainMenuCut.Name = "MainMenuCut";
+            this.MainMenuCut.Size = new System.Drawing.Size(112, 22);
+            this.MainMenuCut.Text = "Cut";
+            this.MainMenuCut.Click += new System.EventHandler(this.MainMenuCut_Click);
+            // 
+            // MainMenuCopy
+            // 
+            this.MainMenuCopy.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuCopy.Image")));
+            this.MainMenuCopy.Name = "MainMenuCopy";
+            this.MainMenuCopy.Size = new System.Drawing.Size(112, 22);
+            this.MainMenuCopy.Text = "Copy";
+            this.MainMenuCopy.Click += new System.EventHandler(this.MainMenuCopy_Click);
+            // 
+            // MainMenuPaste
+            // 
+            this.MainMenuPaste.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuPaste.Image")));
+            this.MainMenuPaste.Name = "MainMenuPaste";
+            this.MainMenuPaste.Size = new System.Drawing.Size(112, 22);
+            this.MainMenuPaste.Text = "Paste";
+            this.MainMenuPaste.Click += new System.EventHandler(this.MainMenuPaste_Click);
+            // 
+            // menuItem3
+            // 
+            this.menuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MainMenuAbout});
+            this.menuItem3.Name = "menuItem3";
+            this.menuItem3.Size = new System.Drawing.Size(40, 20);
+            this.menuItem3.Text = "Help";
+            // 
+            // MainMenuAbout
+            // 
+            this.MainMenuAbout.Name = "MainMenuAbout";
+            this.MainMenuAbout.Size = new System.Drawing.Size(126, 22);
+            this.MainMenuAbout.Text = "About...";
+            this.MainMenuAbout.Click += new System.EventHandler(this.MainMenuAbout_Click);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.ResourceTree);
+            this.splitContainer1.Panel1.Controls.Add(this.ResourceTreeToolbar);
+            this.splitContainer1.Panel1MinSize = 278;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tabItems);
+            this.splitContainer1.Panel2.Controls.Add(this.toolStrip1);
+            this.splitContainer1.Size = new System.Drawing.Size(704, 430);
+            this.splitContainer1.SplitterDistance = 278;
+            this.splitContainer1.SplitterWidth = 8;
+            this.splitContainer1.TabIndex = 6;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SaveResourceButton,
+            this.SaveResourceAsButton,
+            this.toolStripSeparator3,
+            this.PreviewButton,
+            this.EditAsXmlButton,
+            this.toolStripSeparator4,
+            this.ClosePageButton});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip1.Size = new System.Drawing.Size(418, 39);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // SaveResourceButton
+            // 
+            this.SaveResourceButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SaveResourceButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveResourceButton.Image")));
+            this.SaveResourceButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SaveResourceButton.Name = "SaveResourceButton";
+            this.SaveResourceButton.Size = new System.Drawing.Size(36, 36);
+            this.SaveResourceButton.Text = "toolStripButton1";
+            this.SaveResourceButton.ToolTipText = "Saves the current resource";
+            this.SaveResourceButton.Click += new System.EventHandler(this.SaveResourceButton_Click);
+            // 
+            // SaveResourceAsButton
+            // 
+            this.SaveResourceAsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SaveResourceAsButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveResourceAsButton.Image")));
+            this.SaveResourceAsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SaveResourceAsButton.Name = "SaveResourceAsButton";
+            this.SaveResourceAsButton.Size = new System.Drawing.Size(36, 36);
+            this.SaveResourceAsButton.Text = "toolStripButton2";
+            this.SaveResourceAsButton.ToolTipText = "Saves the current resource under a different name";
+            this.SaveResourceAsButton.Click += new System.EventHandler(this.SaveResourceAsButton_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
+            // 
+            // PreviewButton
+            // 
+            this.PreviewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.PreviewButton.Image = ((System.Drawing.Image)(resources.GetObject("PreviewButton.Image")));
+            this.PreviewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.PreviewButton.Name = "PreviewButton";
+            this.PreviewButton.Size = new System.Drawing.Size(36, 36);
+            this.PreviewButton.Text = "toolStripButton3";
+            this.PreviewButton.ToolTipText = "Preview the item";
+            this.PreviewButton.Click += new System.EventHandler(this.PreviewButton_Click);
+            // 
+            // EditAsXmlButton
+            // 
+            this.EditAsXmlButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.EditAsXmlButton.Image = ((System.Drawing.Image)(resources.GetObject("EditAsXmlButton.Image")));
+            this.EditAsXmlButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.EditAsXmlButton.Name = "EditAsXmlButton";
+            this.EditAsXmlButton.Size = new System.Drawing.Size(36, 36);
+            this.EditAsXmlButton.Text = "toolStripButton4";
+            this.EditAsXmlButton.ToolTipText = "Edits the current resource in an xml editor";
+            this.EditAsXmlButton.Click += new System.EventHandler(this.EditAsXmlButton_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 39);
+            // 
+            // ClosePageButton
+            // 
+            this.ClosePageButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ClosePageButton.Image = ((System.Drawing.Image)(resources.GetObject("ClosePageButton.Image")));
+            this.ClosePageButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ClosePageButton.Name = "ClosePageButton";
+            this.ClosePageButton.Size = new System.Drawing.Size(36, 36);
+            this.ClosePageButton.Text = "toolStripButton5";
+            this.ClosePageButton.ToolTipText = "Close the current page";
+            this.ClosePageButton.Click += new System.EventHandler(this.ClosePageButton_Click);
+            // 
+            // FormMain
+            // 
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.ClientSize = new System.Drawing.Size(704, 454);
+            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.MainMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.MainMenu;
+            this.Name = "FormMain";
+            this.Text = "MapGuide Maestro";
+            this.Load += new System.EventHandler(this.FormMain_Load);
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.FormMain_Closing);
+            this.TreeContextMenu.ResumeLayout(false);
+            this.ResourceTreeToolbar.ResumeLayout(false);
+            this.ResourceTreeToolbar.PerformLayout();
+            this.MainMenu.ResumeLayout(false);
+            this.MainMenu.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            this.splitContainer1.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion
@@ -751,41 +882,35 @@ namespace OSGeo.MapGuide.Maestro
 
 			string templatepath = System.IO.Path.Combine(Application.StartupPath, "Templates");
 			m_templateMenuIndex = new Hashtable();
-			NewResourceMenu.MenuItems.Clear();
+			NewResourceMenu.Items.Clear();
 
-			WallpaperChanger.ExtendedMenuItem folderMenu = new WallpaperChanger.ExtendedMenuItem(m_globalizor.Translate("Folder") , new System.EventHandler(NewFolderMenuItem_Click));
-			folderMenu.Image = m_editors.SmallImageList.Images[m_editors.FolderIcon];
+			ToolStripMenuItem folderMenu = new ToolStripMenuItem(m_globalizor.Translate("Folder"), m_editors.SmallImageList.Images[m_editors.FolderIcon], new System.EventHandler(NewFolderMenuItem_Click));
 
-			WallpaperChanger.ExtendedMenuItem folderMenu2 = new WallpaperChanger.ExtendedMenuItem(m_globalizor.Translate("Folder") , new System.EventHandler(NewFolderMenuItem_Click));
-			folderMenu2.Image = m_editors.SmallImageList.Images[m_editors.FolderIcon];
+			ToolStripMenuItem folderMenu2 = new ToolStripMenuItem(m_globalizor.Translate("Folder"), m_editors.SmallImageList.Images[m_editors.FolderIcon], new System.EventHandler(NewFolderMenuItem_Click));
+            NewResourceMenu.Items.Add(folderMenu);
+            NewResourceMenu.Items.Add(new ToolStripSeparator());
 
-			NewResourceMenu.MenuItems.Add(folderMenu);
-			NewResourceMenu.MenuItems.Add(new MenuItem("-"));
+			MainMenuNew.DropDown.Items.Clear();
+            MainMenuNew.DropDown.Items.Add(folderMenu2);
+            MainMenuNew.DropDown.Items.Add(new ToolStripSeparator());
 
-			MainMenuNew.MenuItems.Clear();
-			MainMenuNew.MenuItems.Add(folderMenu2);
-			MainMenuNew.MenuItems.Add(new MenuItem("-"));
-
-			NewMenu.MenuItems.Clear();
+			NewMenu.DropDown.Items.Clear();
 
 			if (System.IO.Directory.Exists(templatepath))
 			{
 				foreach(string file in System.IO.Directory.GetFiles(templatepath))
 				{
-					WallpaperChanger.ExtendedMenuItem menu = new WallpaperChanger.ExtendedMenuItem(System.IO.Path.GetFileNameWithoutExtension(file), new System.EventHandler(NewResourceMenu_Clicked));
-					menu.Image = m_editors.SmallImageList.Images[m_editors.GetImageIndexFromResourceID(file)];
+                    ToolStripMenuItem menu = new ToolStripMenuItem(System.IO.Path.GetFileNameWithoutExtension(file), m_editors.SmallImageList.Images[m_editors.GetImageIndexFromResourceID(file)], new System.EventHandler(NewResourceMenu_Clicked));
 					m_templateMenuIndex.Add(menu, file);
-					NewResourceMenu.MenuItems.Add(menu);
+					AddResourceButton.DropDown.Items.Add(menu);
 
-					menu = new WallpaperChanger.ExtendedMenuItem(System.IO.Path.GetFileNameWithoutExtension(file), new System.EventHandler(NewResourceMenu_Clicked));
-					menu.Image = m_editors.SmallImageList.Images[m_editors.GetImageIndexFromResourceID(file)];
+                    menu = new ToolStripMenuItem(System.IO.Path.GetFileNameWithoutExtension(file), m_editors.SmallImageList.Images[m_editors.GetImageIndexFromResourceID(file)], new System.EventHandler(NewResourceMenu_Clicked));
 					m_templateMenuIndex.Add(menu, file);
-					MainMenuNew.MenuItems.Add(menu);
+					MainMenuNew.DropDown.Items.Add(menu);
 
-					menu = new WallpaperChanger.ExtendedMenuItem(System.IO.Path.GetFileNameWithoutExtension(file), new System.EventHandler(NewResourceMenu_Clicked));
-					menu.Image = m_editors.SmallImageList.Images[m_editors.GetImageIndexFromResourceID(file)];
+                    menu = new ToolStripMenuItem(System.IO.Path.GetFileNameWithoutExtension(file), m_editors.SmallImageList.Images[m_editors.GetImageIndexFromResourceID(file)], new System.EventHandler(NewResourceMenu_Clicked));
 					m_templateMenuIndex.Add(menu, file);
-					NewMenu.MenuItems.Add(menu);
+					NewMenu.DropDown.Items.Add(menu);
 				}
 			}
 
@@ -1053,18 +1178,20 @@ namespace OSGeo.MapGuide.Maestro
 			return edi;
 		}
 
-		private void TreeContextMenu_Popup(object sender, System.EventArgs e)
+		private void TreeContextMenu_Popup(object sender, CancelEventArgs e)
 		{
 			if (ResourceTree.SelectedNode == null || ResourceTree.SelectedNode.Tag == null)
 			{
-				foreach(MenuItem m in TreeContextMenu.MenuItems)
-					m.Enabled = false;
+				foreach(ToolStripItem m in TreeContextMenu.Items)
+                    if (m as ToolStripMenuItem != null)
+					    m.Enabled = false;
 			}
 			else
 			{
-				foreach(MenuItem m in TreeContextMenu.MenuItems)
-					m.Enabled = true;
-			}
+                foreach (ToolStripItem m in TreeContextMenu.Items)
+                    if (m as ToolStripMenuItem != null)
+                        m.Enabled = true;
+            }
 
 			//TODO: Implement the properties dialog
 			PropertiesMenu.Enabled = false;
@@ -1233,28 +1360,6 @@ namespace OSGeo.MapGuide.Maestro
 			}
 		}
 
-		private void ResourceTreeToolbar_ButtonClick(object sender, System.Windows.Forms.ToolBarButtonClickEventArgs e)
-		{
-			if (e.Button == DeleteResourceButton)
-				DeleteResource();
-			else if (e.Button == AddResourceButton)
-				NewResourceMenu.Show(ResourceTreeToolbar, new Point(e.Button.Rectangle.Left, e.Button.Rectangle.Bottom));
-			else if (e.Button == AddFolderButton)
-				AddFolder();
-			else if (e.Button == ResourceTreeCopy)
-				ClipboardCopy();
-			else if (e.Button == ResourceTreeCut)
-				ClipboardCut();
-			else if (e.Button == ResourceTreePaste)
-				ClipboardPaste();
-			else if (e.Button == ResourceTreeRefreshButton)
-			{
-				RebuildDocumentTree();
-				//TODO: Remove any open resources that do not exist any more
-			}
-		
-		}
-		
 		private bool MoveOrCopyResource(TreeNode source, TreeNode target, bool move, bool refreshTree)
 		{
 			using (new WaitCursor(this))
@@ -1470,20 +1575,6 @@ namespace OSGeo.MapGuide.Maestro
 				}
 		}
 
-		private void toolBar2_ButtonClick(object sender, System.Windows.Forms.ToolBarButtonClickEventArgs e)
-		{
-			if (e.Button == SaveResourceButton)
-				SaveResource();
-			else if (e.Button == SaveResourceAsButton)
-				SaveResourceAs();
-			else if (e.Button == EditAsXmlButton)
-				EditAsXml();
-			else if (e.Button == ClosePageButton)
-				ClosePage();
-			else if (e.Button == PreviewButton)
-				OpenPreview();		
-		}
-
 		private void ResourceTree_AfterSelect(object sender, System.Windows.Forms.TreeViewEventArgs e)
 		{
 			bool itemSelected = ResourceTree.SelectedNode != null && ResourceTree.SelectedNode.Tag != null;
@@ -1564,12 +1655,12 @@ namespace OSGeo.MapGuide.Maestro
 			}
 			else if (e.KeyCode == Keys.Delete)
 			{
-				ResourceTreeToolbar_ButtonClick(null, new ToolBarButtonClickEventArgs(DeleteResourceButton));
+                DeleteResourceButton_Click(sender, e);
 				e.Handled = true;
 			}
 			else if ((e.KeyCode == Keys.R && e.Control) || e.KeyCode == Keys.F5)
 			{
-				ResourceTreeToolbar_ButtonClick(null, new ToolBarButtonClickEventArgs(ResourceTreeRefreshButton));
+                ResourceTreeRefreshButton_Click(sender, e);
 				e.Handled = true;
 			}
 			else if ((e.KeyCode == Keys.F2))
@@ -1684,17 +1775,17 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void CutMenu_Click(object sender, System.EventArgs e)
 		{
-			ResourceTreeToolbar_ButtonClick(null, new ToolBarButtonClickEventArgs(ResourceTreeCut));
+            ClipboardCut();
 		}
 
 		private void CopyMenu_Click(object sender, System.EventArgs e)
 		{
-			ResourceTreeToolbar_ButtonClick(null, new ToolBarButtonClickEventArgs(ResourceTreeCopy));
+            ClipboardCopy();
 		}
 
 		private void PasteMenu_Click(object sender, System.EventArgs e)
 		{
-			ResourceTreeToolbar_ButtonClick(null, new ToolBarButtonClickEventArgs(ResourceTreePaste));
+            ClipboardPaste();
 		}
 
 		private void EditAsXmlMenu_Click(object sender, System.EventArgs e)
@@ -1959,5 +2050,65 @@ namespace OSGeo.MapGuide.Maestro
 		public SortedList ResourceDocuments { get { return m_Documents; } }
 		public ResourceEditorMap ResourceEditorMap { get { return m_editors; } }
 		public string LastSelectedNode { get { return m_lastSelectedNode; } }
+
+        private void AddResourceButton_ButtonClick(object sender, EventArgs e)
+        {
+            AddResourceButton.ShowDropDown();
+        }
+
+        private void AddFolderButton_Click(object sender, EventArgs e)
+        {
+            AddFolder();
+        }
+
+        private void DeleteResourceButton_Click(object sender, EventArgs e)
+        {
+            DeleteResource();
+        }
+
+        private void ResourceTreeCopy_Click(object sender, EventArgs e)
+        {
+            ClipboardCopy();
+        }
+
+        private void ResourceTreeCut_Click(object sender, EventArgs e)
+        {
+            ClipboardCut();
+        }
+
+        private void ResourceTreePaste_Click(object sender, EventArgs e)
+        {
+            ClipboardPaste();
+        }
+
+        private void ResourceTreeRefreshButton_Click(object sender, EventArgs e)
+        {
+            RebuildDocumentTree();
+        }
+
+        private void SaveResourceButton_Click(object sender, EventArgs e)
+        {
+            SaveResource();
+        }
+
+        private void SaveResourceAsButton_Click(object sender, EventArgs e)
+        {
+            SaveResourceAs();
+        }
+
+        private void PreviewButton_Click(object sender, EventArgs e)
+        {
+            OpenPreview();
+        }
+
+        private void EditAsXmlButton_Click(object sender, EventArgs e)
+        {
+            EditAsXml();
+        }
+
+        private void ClosePageButton_Click(object sender, EventArgs e)
+        {
+            ClosePage();
+        }
 	}
 }

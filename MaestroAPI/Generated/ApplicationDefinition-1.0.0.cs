@@ -298,6 +298,7 @@ namespace OSGeo.MapGuide.MaestroAPI.ApplicationDefinition {
 
 		public CustomContentType()
 		{
+            m_any = new XmlElement[0];
 		}
 
 		public CustomContentType(XmlElementCollection col)
@@ -338,6 +339,9 @@ namespace OSGeo.MapGuide.MaestroAPI.ApplicationDefinition {
 			{
 				if (m_lookup == null)
 					InitializeLookup();
+                if (m_any == null)
+                    m_any = new XmlElement[0];
+
 				if (value == null)
 				{
 					if (m_lookup.ContainsKey(elementname))
@@ -361,7 +365,11 @@ namespace OSGeo.MapGuide.MaestroAPI.ApplicationDefinition {
 						((XmlNode)m_lookup[elementname]).InnerXml = value;
 					else
 					{
+                        if (m_any == null)
+                            m_any = new XmlElement[0];
+
 						XmlDocument doc = m_any.Length == 0 ? new XmlDocument() : m_any[0].OwnerDocument;
+
 
 						XmlElement m = doc.CreateElement(elementname);
 						m.InnerXml = value;

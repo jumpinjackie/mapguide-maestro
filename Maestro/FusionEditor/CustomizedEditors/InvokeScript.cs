@@ -28,10 +28,11 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 {
 	public class InvokeScript : FusionEditor.BasisWidgetEditor
 	{
-		private System.Windows.Forms.ComboBox Script;
+		private System.Windows.Forms.ComboBox ScriptPicker;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox Target;
 		private System.Windows.Forms.Label label2;
+        private TextBox Script;
 		private System.ComponentModel.IContainer components = null;
 
 		public InvokeScript()
@@ -67,6 +68,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 
 				Target.Text = GetSettingValue("Target");
 				Script.Text = GetSettingValue("Script");
+                ScriptPicker.SelectedIndex = 0;
 			}
 			finally
 			{
@@ -81,63 +83,79 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Script = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.Target = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Script
-			// 
-			this.Script.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Script.Items.AddRange(new object[] {
-														"showOverviewMapDialog()",
-														"showTaskDialog()",
-														"showLegendDialog()",
-														"showSelectionDialog()"});
-			this.Script.Location = new System.Drawing.Point(136, 32);
-			this.Script.Name = "Script";
-			this.Script.Size = new System.Drawing.Size(472, 21);
-			this.Script.TabIndex = 32;
-			this.Script.TextChanged += new System.EventHandler(this.Script_TextChanged);
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 32);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(128, 16);
-			this.label3.TabIndex = 31;
-			this.label3.Text = "Script";
-			// 
-			// Target
-			// 
-			this.Target.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Target.Location = new System.Drawing.Point(136, 8);
-			this.Target.Name = "Target";
-			this.Target.Size = new System.Drawing.Size(472, 20);
-			this.Target.TabIndex = 30;
-			this.Target.Text = "";
-			this.Target.TextChanged += new System.EventHandler(this.Target_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 8);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(128, 16);
-			this.label2.TabIndex = 29;
-			this.label2.Text = "Target";
-			// 
-			// InvokeScript
-			// 
-			this.Controls.Add(this.Script);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.Target);
-			this.Controls.Add(this.label2);
-			this.Name = "InvokeScript";
-			this.Size = new System.Drawing.Size(616, 64);
-			this.ResumeLayout(false);
+            this.ScriptPicker = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Target = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Script = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // ScriptPicker
+            // 
+            this.ScriptPicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScriptPicker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ScriptPicker.Items.AddRange(new object[] {
+            "< Select a built in script >",
+            "showOverviewMapDialog()",
+            "showTaskDialog()",
+            "showLegendDialog()",
+            "showSelectionDialog()"});
+            this.ScriptPicker.Location = new System.Drawing.Point(136, 32);
+            this.ScriptPicker.Name = "ScriptPicker";
+            this.ScriptPicker.Size = new System.Drawing.Size(472, 21);
+            this.ScriptPicker.TabIndex = 32;
+            this.ScriptPicker.SelectedIndexChanged += new System.EventHandler(this.ScriptPicker_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(8, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(128, 16);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Script";
+            // 
+            // Target
+            // 
+            this.Target.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.Target.Location = new System.Drawing.Point(136, 8);
+            this.Target.Name = "Target";
+            this.Target.Size = new System.Drawing.Size(472, 20);
+            this.Target.TabIndex = 30;
+            this.Target.TextChanged += new System.EventHandler(this.Target_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(8, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(128, 16);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "Target";
+            // 
+            // Script
+            // 
+            this.Script.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.Script.Location = new System.Drawing.Point(8, 56);
+            this.Script.Multiline = true;
+            this.Script.Name = "Script";
+            this.Script.Size = new System.Drawing.Size(600, 136);
+            this.Script.TabIndex = 33;
+            this.Script.TextChanged += new System.EventHandler(this.Script_TextChanged);
+            // 
+            // InvokeScript
+            // 
+            this.Controls.Add(this.Script);
+            this.Controls.Add(this.ScriptPicker);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Target);
+            this.Controls.Add(this.label2);
+            this.Name = "InvokeScript";
+            this.Size = new System.Drawing.Size(616, 198);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion
@@ -155,8 +173,17 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			if (m_isUpdating || m_w == null)
 				return;
 
-			SetSettingValue("Script", Script.Text);
+			SetSettingValue("Script", ScriptPicker.Text);
 		}
+
+        private void ScriptPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_isUpdating || m_w == null)
+                return;
+
+            if (ScriptPicker.SelectedIndex > 0)
+                Script.Text = ScriptPicker.Text;
+        }
 	}
 }
 

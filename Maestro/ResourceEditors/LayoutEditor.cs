@@ -497,6 +497,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.dataColumn8 = new System.Data.DataColumn();
             this.dataColumn9 = new System.Data.DataColumn();
             this.MenuBox = new System.Windows.Forms.GroupBox();
+            this.commandEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.CommandEditor();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.MenuTabs = new System.Windows.Forms.TabControl();
             this.ToolbarTab = new System.Windows.Forms.TabPage();
@@ -538,7 +539,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.AddSubMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddSeperatorItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateCommandMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.commandEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.CommandEditor();
             this.overriddenMapExtents.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -1029,6 +1029,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MenuBox.TabStop = false;
             this.MenuBox.Text = "Menus";
             // 
+            // commandEditor
+            // 
+            this.commandEditor.AutoScroll = true;
+            this.commandEditor.AutoScrollMinSize = new System.Drawing.Size(220, 500);
+            this.commandEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.commandEditor.Location = new System.Drawing.Point(267, 16);
+            this.commandEditor.Name = "commandEditor";
+            this.commandEditor.Size = new System.Drawing.Size(282, 269);
+            this.commandEditor.TabIndex = 2;
+            this.commandEditor.Visible = false;
+            // 
             // splitter2
             // 
             this.splitter2.Location = new System.Drawing.Point(259, 16);
@@ -1072,6 +1083,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // ToolbarToolstrip
             // 
+            this.ToolbarToolstrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.ToolbarToolstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolbarAddButton,
             this.ToolbarDeleteButton,
@@ -1173,6 +1185,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // ContextToolstrip
             // 
+            this.ContextToolstrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.ContextToolstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ContextAddButton,
             this.ContextDeleteButton,
@@ -1264,6 +1277,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // TaskToolstrip
             // 
+            this.TaskToolstrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.TaskToolstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TaskAddButton,
             this.TaskDeleteButton,
@@ -1390,7 +1404,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.AddSubMenuItem,
             this.AddSeperatorItem});
             this.AddItemMenu.Name = "AddItemMenu_1";
-            this.AddItemMenu.Size = new System.Drawing.Size(159, 114);
+            this.AddItemMenu.Size = new System.Drawing.Size(159, 92);
             // 
             // AddBuiltInFunctionMenu
             // 
@@ -1422,17 +1436,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.CreateCommandMenu.Name = "CreateCommandMenu";
             this.CreateCommandMenu.Size = new System.Drawing.Size(61, 4);
-            // 
-            // commandEditor
-            // 
-            this.commandEditor.AutoScroll = true;
-            this.commandEditor.AutoScrollMinSize = new System.Drawing.Size(220, 500);
-            this.commandEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.commandEditor.Location = new System.Drawing.Point(267, 16);
-            this.commandEditor.Name = "commandEditor";
-            this.commandEditor.Size = new System.Drawing.Size(282, 269);
-            this.commandEditor.TabIndex = 2;
-            this.commandEditor.Visible = false;
             // 
             // LayoutEditor
             // 

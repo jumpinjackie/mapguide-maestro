@@ -240,6 +240,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             // 
             // toolStrip
             // 
+            this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddExtensionButton,
             this.AddComputationButton,
@@ -254,48 +255,48 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "toolStrip1";
             // 
-            // AddExtensionButton_1
+            // AddExtensionButton
             // 
             this.AddExtensionButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddExtensionButton.Image = ((System.Drawing.Image)(resources.GetObject("AddExtensionButton_1.Image")));
+            this.AddExtensionButton.Image = ((System.Drawing.Image)(resources.GetObject("AddExtensionButton.Image")));
             this.AddExtensionButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddExtensionButton.Name = "AddExtensionButton_1";
+            this.AddExtensionButton.Name = "AddExtensionButton";
             this.AddExtensionButton.Size = new System.Drawing.Size(23, 22);
             this.AddExtensionButton.Text = "toolStripButton1";
             this.AddExtensionButton.ToolTipText = "Add a new extension";
             this.AddExtensionButton.Click += new System.EventHandler(this.AddExtensionButton_Click);
             // 
-            // AddComputationButton_1
+            // AddComputationButton
             // 
             this.AddComputationButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.AddComputationButton.Enabled = false;
-            this.AddComputationButton.Image = ((System.Drawing.Image)(resources.GetObject("AddComputationButton_1.Image")));
+            this.AddComputationButton.Image = ((System.Drawing.Image)(resources.GetObject("AddComputationButton.Image")));
             this.AddComputationButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddComputationButton.Name = "AddComputationButton_1";
+            this.AddComputationButton.Name = "AddComputationButton";
             this.AddComputationButton.Size = new System.Drawing.Size(23, 22);
             this.AddComputationButton.Text = "toolStripButton2";
             this.AddComputationButton.ToolTipText = "Add a new calculated property";
             this.AddComputationButton.Click += new System.EventHandler(this.AddComputationButton_Click);
             // 
-            // AddJoinButton_1
+            // AddJoinButton
             // 
             this.AddJoinButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.AddJoinButton.Enabled = false;
-            this.AddJoinButton.Image = ((System.Drawing.Image)(resources.GetObject("AddJoinButton_1.Image")));
+            this.AddJoinButton.Image = ((System.Drawing.Image)(resources.GetObject("AddJoinButton.Image")));
             this.AddJoinButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddJoinButton.Name = "AddJoinButton_1";
+            this.AddJoinButton.Name = "AddJoinButton";
             this.AddJoinButton.Size = new System.Drawing.Size(23, 22);
             this.AddJoinButton.Text = "toolStripButton3";
             this.AddJoinButton.ToolTipText = "Add a new database join";
             this.AddJoinButton.Click += new System.EventHandler(this.AddJoinButton_Click);
             // 
-            // AddKeyButton_1
+            // AddKeyButton
             // 
             this.AddKeyButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.AddKeyButton.Enabled = false;
-            this.AddKeyButton.Image = ((System.Drawing.Image)(resources.GetObject("AddKeyButton_1.Image")));
+            this.AddKeyButton.Image = ((System.Drawing.Image)(resources.GetObject("AddKeyButton.Image")));
             this.AddKeyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddKeyButton.Name = "AddKeyButton_1";
+            this.AddKeyButton.Name = "AddKeyButton";
             this.AddKeyButton.Size = new System.Drawing.Size(23, 22);
             this.AddKeyButton.Text = "toolStripButton4";
             this.AddKeyButton.ToolTipText = "Add a new key mapping";
@@ -306,13 +307,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // RemoveItemButton_1
+            // RemoveItemButton
             // 
             this.RemoveItemButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.RemoveItemButton.Enabled = false;
-            this.RemoveItemButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveItemButton_1.Image")));
+            this.RemoveItemButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveItemButton.Image")));
             this.RemoveItemButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.RemoveItemButton.Name = "RemoveItemButton_1";
+            this.RemoveItemButton.Name = "RemoveItemButton";
             this.RemoveItemButton.Size = new System.Drawing.Size(23, 22);
             this.RemoveItemButton.Text = "toolStripButton5";
             this.RemoveItemButton.ToolTipText = "Delete the selected item";

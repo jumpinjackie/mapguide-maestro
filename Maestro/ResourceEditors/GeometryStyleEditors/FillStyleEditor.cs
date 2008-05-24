@@ -50,10 +50,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
+        
+            foregroundColor.AllowTransparent = false;
+            backgroundColor.AllowTransparent = true;
 
-			// TODO: Add any initialization after the InitializeComponent call
-
-		}
+            foregroundColor.ResetColors();
+            backgroundColor.ResetColors();
+        }
 
 		/// <summary> 
 		/// Clean up any resources being used.
@@ -172,9 +175,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void FillStyleEditor_Load(object sender, System.EventArgs e)
 		{
-			foregroundColor.AllowTransparent = false;
-			backgroundColor.AllowTransparent = true;
-
 			fillCombo.Items.Clear();
 			fillCombo.Items.AddRange(FeaturePreviewRender.FillImages);
 		}

@@ -38,15 +38,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				m_currentColor = new SpecialCell(SpecialCell.CellTypes.CurrentColor);
 				base.CustomRender = new RenderCustomItem(ColorComboRender);
 
-				base.Items.Clear();
-
-				base.Items.Add(SpecialCell.Transparent);
-				foreach(Color c in KnownColors )
-					base.Items.Add(c);
-				base.Items.Add(m_currentColor);
-				base.Items.Add(SpecialCell.MoreColors);
+                //ResetColors();
 			}
 		}
+
+        public void ResetColors()
+        {
+            base.Items.Clear();
+
+            if (m_allowTransparent)
+                base.Items.Add(SpecialCell.Transparent);
+
+            foreach (Color c in KnownColors)
+                base.Items.Add(c);
+            base.Items.Add(m_currentColor);
+            base.Items.Add(SpecialCell.MoreColors);
+        }
 
 		[ System.ComponentModel.Browsable(false), System.ComponentModel.ReadOnly(true) ]
 		public bool AllowTransparent
