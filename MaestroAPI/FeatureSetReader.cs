@@ -146,45 +146,44 @@ namespace OSGeo.MapGuide.MaestroAPI
 		{
 			m_name = node.Attributes["name"].Value;
 			m_allowNull = node.Attributes["minOccurs"] != null && node.Attributes["minOccurs"].Value == "0";
-			if (node.Attributes["type"] != null && node.Attributes["type"].Value == "gml:AbstractGeometryType")
-				m_type = Utility.GeometryType;
-			else if (node["xs:simpleType"] == null)
-				//TODO: Perhaps define a more appropriate type?
-				m_type = typeof(System.Drawing.Bitmap);
-			else
-				switch(node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value.ToLower())
-				{
-					case "xs:string":
-						m_type = typeof(string);
-						break;
-					case "fdo:byte":
-						m_type = typeof(Byte);
-						break;
-					case "fdo:int32":
-						m_type = typeof(int);
-						break;
-					case "fdo:int16":
-						m_type = typeof(short);
-						break;
-					case "fdo:int64":
-						m_type = typeof(long);
-						break;
-					case "xs:float":
-						m_type = typeof(float);
-						break;
-					case "xs:double":
-					case "xs:decimal":
-						m_type = typeof(double);
-						break;
-					case "xs:boolean":
-						m_type = typeof(bool);
-						return;
-					case "xs:datetime":
-						m_type = typeof(DateTime);
-						break;
-					default:
-						throw new Exception("Failed to find appropriate type for: " + node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value);
-				}
+            if (node.Attributes["type"] != null && node.Attributes["type"].Value == "gml:AbstractGeometryType")
+                m_type = Utility.GeometryType;
+            else if (node["xs:simpleType"] == null)
+                m_type = Utility.RasterType;
+            else
+                switch (node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value.ToLower())
+                {
+                    case "xs:string":
+                        m_type = typeof(string);
+                        break;
+                    case "fdo:byte":
+                        m_type = typeof(Byte);
+                        break;
+                    case "fdo:int32":
+                        m_type = typeof(int);
+                        break;
+                    case "fdo:int16":
+                        m_type = typeof(short);
+                        break;
+                    case "fdo:int64":
+                        m_type = typeof(long);
+                        break;
+                    case "xs:float":
+                        m_type = typeof(float);
+                        break;
+                    case "xs:double":
+                    case "xs:decimal":
+                        m_type = typeof(double);
+                        break;
+                    case "xs:boolean":
+                        m_type = typeof(bool);
+                        return;
+                    case "xs:datetime":
+                        m_type = typeof(DateTime);
+                        break;
+                    default:
+                        throw new Exception("Failed to find appropriate type for: " + node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value);
+                }
 		}
 
 		private string m_name;
