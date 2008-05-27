@@ -34,7 +34,6 @@ namespace OSGeo.MapGuide.Maestro
 		private OSGeo.MapGuide.MaestroAPI.ServerConnectionI m_connection;
         private Hashtable m_userControls = new Hashtable();
 		public System.Windows.Forms.TabControl tabItems;
-		private System.Windows.Forms.ContextMenuStrip NewResourceMenu;
 		private System.Windows.Forms.ContextMenuStrip TreeContextMenu;
 		private System.Windows.Forms.ToolStripMenuItem PropertiesMenu;
         private System.Windows.Forms.ToolStripMenuItem SaveXmlAsMenu;
@@ -90,7 +89,6 @@ namespace OSGeo.MapGuide.Maestro
 		private  Globalizator.Globalizator m_globalizor = null;
         private ToolStrip ResourceTreeToolbar;
         private ToolStripSplitButton AddResourceButton;
-        private ToolStripButton AddFolderButton;
         private ToolStripButton DeleteResourceButton;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton ResourceTreeCopy;
@@ -164,7 +162,6 @@ namespace OSGeo.MapGuide.Maestro
             this.NewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ResourceTreeToolbar = new System.Windows.Forms.ToolStrip();
             this.AddResourceButton = new System.Windows.Forms.ToolStripSplitButton();
-            this.AddFolderButton = new System.Windows.Forms.ToolStripButton();
             this.DeleteResourceButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ResourceTreeCopy = new System.Windows.Forms.ToolStripButton();
@@ -174,7 +171,6 @@ namespace OSGeo.MapGuide.Maestro
             this.ResourceTreeRefreshButton = new System.Windows.Forms.ToolStripButton();
             this.toolbarImages = new System.Windows.Forms.ImageList(this.components);
             this.tabItems = new System.Windows.Forms.TabControl();
-            this.NewResourceMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolbarImagesSmall = new System.Windows.Forms.ImageList(this.components);
             this.KeepAliveTimer = new System.Windows.Forms.Timer(this.components);
             this.MainMenu = new System.Windows.Forms.MenuStrip();
@@ -342,7 +338,6 @@ namespace OSGeo.MapGuide.Maestro
             this.ResourceTreeToolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.ResourceTreeToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddResourceButton,
-            this.AddFolderButton,
             this.DeleteResourceButton,
             this.toolStripSeparator1,
             this.ResourceTreeCopy,
@@ -368,18 +363,6 @@ namespace OSGeo.MapGuide.Maestro
             this.AddResourceButton.Text = "toolStripSplitButton1";
             this.AddResourceButton.ToolTipText = "Creates a new resource";
             this.AddResourceButton.ButtonClick += new System.EventHandler(this.AddResourceButton_ButtonClick);
-            // 
-            // AddFolderButton
-            // 
-            this.AddFolderButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddFolderButton.Image = ((System.Drawing.Image)(resources.GetObject("AddFolderButton.Image")));
-            this.AddFolderButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.AddFolderButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddFolderButton.Name = "AddFolderButton";
-            this.AddFolderButton.Size = new System.Drawing.Size(36, 36);
-            this.AddFolderButton.Text = "toolStripButton2";
-            this.AddFolderButton.ToolTipText = "Creates a new folder";
-            this.AddFolderButton.Click += new System.EventHandler(this.AddFolderButton_Click);
             // 
             // DeleteResourceButton
             // 
@@ -482,11 +465,6 @@ namespace OSGeo.MapGuide.Maestro
             this.tabItems.SelectedIndex = 0;
             this.tabItems.Size = new System.Drawing.Size(418, 391);
             this.tabItems.TabIndex = 1;
-            // 
-            // NewResourceMenu
-            // 
-            this.NewResourceMenu.Name = "NewResourceMenu";
-            this.NewResourceMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // toolbarImagesSmall
             // 
@@ -717,7 +695,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.splitContainer1.Panel1.Controls.Add(this.ResourceTree);
             this.splitContainer1.Panel1.Controls.Add(this.ResourceTreeToolbar);
-            this.splitContainer1.Panel1MinSize = 278;
+            this.splitContainer1.Panel1MinSize = 242;
             // 
             // splitContainer1.Panel2
             // 
@@ -882,19 +860,18 @@ namespace OSGeo.MapGuide.Maestro
 
 			string templatepath = System.IO.Path.Combine(Application.StartupPath, "Templates");
 			m_templateMenuIndex = new Hashtable();
-			NewResourceMenu.Items.Clear();
-
-			ToolStripMenuItem folderMenu = new ToolStripMenuItem(m_globalizor.Translate("Folder"), m_editors.SmallImageList.Images[m_editors.FolderIcon], new System.EventHandler(NewFolderMenuItem_Click));
-
-			ToolStripMenuItem folderMenu2 = new ToolStripMenuItem(m_globalizor.Translate("Folder"), m_editors.SmallImageList.Images[m_editors.FolderIcon], new System.EventHandler(NewFolderMenuItem_Click));
-            NewResourceMenu.Items.Add(folderMenu);
-            NewResourceMenu.Items.Add(new ToolStripSeparator());
 
 			MainMenuNew.DropDown.Items.Clear();
-            MainMenuNew.DropDown.Items.Add(folderMenu2);
+            MainMenuNew.DropDown.Items.Add(new ToolStripMenuItem(m_globalizor.Translate("Folder"), m_editors.SmallImageList.Images[m_editors.FolderIcon], new System.EventHandler(NewFolderMenuItem_Click)));
             MainMenuNew.DropDown.Items.Add(new ToolStripSeparator());
 
-			NewMenu.DropDown.Items.Clear();
+            NewMenu.DropDown.Items.Clear();
+            NewMenu.DropDown.Items.Add(new ToolStripMenuItem(m_globalizor.Translate("Folder"), m_editors.SmallImageList.Images[m_editors.FolderIcon], new System.EventHandler(NewFolderMenuItem_Click)));
+            NewMenu.DropDown.Items.Add(new ToolStripSeparator());
+
+            AddResourceButton.DropDown.Items.Clear();
+            AddResourceButton.DropDown.Items.Add(new ToolStripMenuItem(m_globalizor.Translate("Folder"), m_editors.SmallImageList.Images[m_editors.FolderIcon], new System.EventHandler(NewFolderMenuItem_Click)));
+            AddResourceButton.DropDown.Items.Add(new ToolStripSeparator());
 
 			if (System.IO.Directory.Exists(templatepath))
 			{
