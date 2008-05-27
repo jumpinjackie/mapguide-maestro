@@ -63,8 +63,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             else if (m_area != null)
             {
                 if (m_area != null)
-                    foreach (AreaRuleType art in m_area.AreaRule)
-                        AddRuleControl(art);
+                    if (m_area.AreaRule != null)
+                        foreach (AreaRuleType art in m_area.AreaRule)
+                            AddRuleControl(art);
             }
         }
 

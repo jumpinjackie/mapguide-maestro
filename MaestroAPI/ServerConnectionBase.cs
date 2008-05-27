@@ -1300,9 +1300,22 @@ namespace OSGeo.MapGuide.MaestroAPI
 						mdef.BaseMapDefinition = null;
 
 				if (mdef.Layers != null)
-					foreach(MapLayerType mlt in mdef.Layers)
-						if (mlt.LegendLabel == null)
-							mlt.LegendLabel = "";
+                    foreach (MapLayerType mlt in mdef.Layers)
+                    {
+                        if (mlt.LegendLabel == null)
+                            mlt.LegendLabel = "";
+                        if (mlt.Group == null)
+                            mlt.Group = "";
+                    }
+
+				if (mdef.LayerGroups != null)
+                    foreach (MapLayerGroupType mlg in mdef.LayerGroups)
+                    {
+                        if (mlg.LegendLabel == null)
+                            mlg.LegendLabel = "";
+                        if (mlg.Group == null)
+                            mlg.Group = "";
+                    }
 			}
 
 			WebLayout wl = resource as WebLayout;
