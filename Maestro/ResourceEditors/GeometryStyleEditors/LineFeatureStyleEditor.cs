@@ -130,7 +130,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				{
 					sizeUnitsCombo.SelectedValue = st.Unit.ToString();
 					//sizeContextCombo.SelectedValue = st.??;
-					lineStyleEditor.colorCombo.CurrentColor = st.Color;
+                    if (st.ColorAsHTML == null)
+                        lineStyleEditor.colorCombo.CurrentColor = Color.White;
+                    else
+                        lineStyleEditor.colorCombo.CurrentColor = st.Color;
+
 					lineStyleEditor.fillCombo.SelectedIndex = lineStyleEditor.fillCombo.FindString(st.LineStyle);
 					double o;
 					if (double.TryParse(st.Thickness, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out o))

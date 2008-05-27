@@ -60,19 +60,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 		private System.Windows.Forms.Button SelectNoneButton;
 		private System.Windows.Forms.Button SelectAllButton;
 		private System.Windows.Forms.DataGrid dataGrid1;
-		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.Splitter splitter1;
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.Panel EditControlPanel;
-		private ResourceEditors.LayerEditorControls.StyleRuleProperties styleRuleProperties;
-		private ResourceEditors.LayerEditorControls.ScaleRangeProperties scaleRangeProperties;
-		private ResourceEditors.GeometryStyleEditors.AreaFeatureStyleEditor areaFeatureStyleEditor;
-		private ResourceEditors.GeometryStyleEditors.LineFeatureStyleEditor lineFeatureStyleEditor;
-		private ResourceEditors.GeometryStyleEditors.FontStyleEditor fontStyleEditor;
-		private ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor pointFeatureStyleEditor;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TreeView LayerStyleTree;
 		private System.Data.DataSet DisplayRanges;
 		private System.ComponentModel.IContainer components;
 
@@ -88,8 +77,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 		private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn2;
         private ToolStrip toolStrip1;
         private ToolStripButton AddScaleRangeButton;
-        private ToolStripButton AddRuleButton;
         private ToolStripButton DeleteItemButton;
+        private OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ScaleRangeList scaleRangeList;
+        private ToolStripButton toolStripButton1;
 		private EditorInterface m_editor;
 
 		public VectorLayer()
@@ -123,13 +113,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VectorLayer));
-            OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType pointSymbolization2DType1 = new OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType();
-            OSGeo.MapGuide.MaestroAPI.MarkSymbolType markSymbolType1 = new OSGeo.MapGuide.MaestroAPI.MarkSymbolType();
             this.PropertyColumnDisplay = new System.Data.DataColumn();
             this.PropertyColumnVisible = new System.Data.DataColumn();
             this.PropertyColumnName = new System.Data.DataColumn();
             this.ResourceGroup = new System.Windows.Forms.GroupBox();
-            this.schemaSelector = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -143,10 +130,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.DisplayRangesTable = new System.Data.DataTable();
             this.FromScaleColumn = new System.Data.DataColumn();
             this.ToScaleColumn = new System.Data.DataColumn();
-            this.StylizationColumn = new System.Data.DataColumn();
-            this.dataColumn1 = new System.Data.DataColumn();
-            this.dataColumn2 = new System.Data.DataColumn();
-            this.dataColumn3 = new System.Data.DataColumn();
             this.PropertyDataset = new System.Data.DataSet();
             this.LayerStyleImages = new System.Windows.Forms.ImageList(this.components);
             this.groupViewerProperties = new System.Windows.Forms.GroupBox();
@@ -159,23 +142,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridTextBoxColumn2 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.splitter1 = new System.Windows.Forms.Splitter();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.EditControlPanel = new System.Windows.Forms.Panel();
-            this.styleRuleProperties = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.StyleRuleProperties();
-            this.scaleRangeProperties = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleRangeProperties();
-            this.areaFeatureStyleEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.AreaFeatureStyleEditor();
-            this.lineFeatureStyleEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.LineFeatureStyleEditor();
-            this.fontStyleEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.FontStyleEditor();
-            this.pointFeatureStyleEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.AddScaleRangeButton = new System.Windows.Forms.ToolStripButton();
-            this.AddRuleButton = new System.Windows.Forms.ToolStripButton();
             this.DeleteItemButton = new System.Windows.Forms.ToolStripButton();
-            this.LayerStyleTree = new System.Windows.Forms.TreeView();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.DisplayRanges = new System.Data.DataSet();
+            this.schemaSelector = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector();
+            this.scaleRangeList = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ScaleRangeList();
+            this.StylizationColumn = new System.Data.DataColumn();
+            this.dataColumn1 = new System.Data.DataColumn();
+            this.dataColumn2 = new System.Data.DataColumn();
+            this.dataColumn3 = new System.Data.DataColumn();
             this.ResourceGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ViewerPropertiesTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayRangesTable)).BeginInit();
@@ -183,9 +161,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.groupViewerProperties.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.EditControlPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayRanges)).BeginInit();
@@ -225,28 +200,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.ResourceGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ResourceGroup.Location = new System.Drawing.Point(0, 0);
             this.ResourceGroup.Name = "ResourceGroup";
-            this.ResourceGroup.Size = new System.Drawing.Size(504, 192);
+            this.ResourceGroup.Size = new System.Drawing.Size(799, 176);
             this.ResourceGroup.TabIndex = 16;
             this.ResourceGroup.TabStop = false;
             this.ResourceGroup.Text = "Resource settings";
-            // 
-            // schemaSelector
-            // 
-            this.schemaSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.schemaSelector.IsRaster = false;
-            this.schemaSelector.Location = new System.Drawing.Point(16, 16);
-            this.schemaSelector.Name = "schemaSelector";
-            this.schemaSelector.Size = new System.Drawing.Size(472, 56);
-            this.schemaSelector.TabIndex = 14;
-            this.schemaSelector.GeometryChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector.GeometryChangedDelegate(this.schemaSelector_GeometryChanged);
-            this.schemaSelector.SchemaChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector.SchemaChangedDelegate(this.schemaSelector_SchemaChanged);
             // 
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button5.Location = new System.Drawing.Point(464, 152);
+            this.button5.Location = new System.Drawing.Point(759, 144);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(24, 20);
             this.button5.TabIndex = 13;
@@ -257,7 +220,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button4.Location = new System.Drawing.Point(464, 120);
+            this.button4.Location = new System.Drawing.Point(759, 112);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(24, 20);
             this.button4.TabIndex = 12;
@@ -268,7 +231,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button3.Location = new System.Drawing.Point(464, 88);
+            this.button3.Location = new System.Drawing.Point(759, 80);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(24, 20);
             this.button3.TabIndex = 11;
@@ -279,9 +242,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             this.Tooltip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.Tooltip.Location = new System.Drawing.Point(120, 152);
+            this.Tooltip.Location = new System.Drawing.Point(120, 144);
             this.Tooltip.Name = "Tooltip";
-            this.Tooltip.Size = new System.Drawing.Size(344, 20);
+            this.Tooltip.Size = new System.Drawing.Size(639, 20);
             this.Tooltip.TabIndex = 10;
             this.Tooltip.Text = "textBox4";
             this.Tooltip.TextChanged += new System.EventHandler(this.Tooltip_TextChanged);
@@ -290,9 +253,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             this.Link.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.Link.Location = new System.Drawing.Point(120, 120);
+            this.Link.Location = new System.Drawing.Point(120, 112);
             this.Link.Name = "Link";
-            this.Link.Size = new System.Drawing.Size(344, 20);
+            this.Link.Size = new System.Drawing.Size(639, 20);
             this.Link.TabIndex = 9;
             this.Link.Text = "textBox3";
             this.Link.TextChanged += new System.EventHandler(this.Link_TextChanged);
@@ -301,9 +264,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             this.Filter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.Filter.Location = new System.Drawing.Point(120, 88);
+            this.Filter.Location = new System.Drawing.Point(120, 80);
             this.Filter.Name = "Filter";
-            this.Filter.Size = new System.Drawing.Size(344, 20);
+            this.Filter.Size = new System.Drawing.Size(639, 20);
             this.Filter.TabIndex = 8;
             this.Filter.Text = "textBox2";
             this.Filter.TextChanged += new System.EventHandler(this.Filter_TextChanged);
@@ -311,7 +274,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // label6
             // 
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label6.Location = new System.Drawing.Point(16, 152);
+            this.label6.Location = new System.Drawing.Point(16, 144);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 16);
             this.label6.TabIndex = 4;
@@ -320,7 +283,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // label5
             // 
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label5.Location = new System.Drawing.Point(16, 120);
+            this.label5.Location = new System.Drawing.Point(16, 112);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(96, 16);
             this.label5.TabIndex = 3;
@@ -329,7 +292,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // label4
             // 
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label4.Location = new System.Drawing.Point(16, 88);
+            this.label4.Location = new System.Drawing.Point(16, 80);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 16);
             this.label4.TabIndex = 2;
@@ -364,27 +327,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.ToScaleColumn.Caption = "To";
             this.ToScaleColumn.ColumnName = "ToScale";
             // 
-            // StylizationColumn
-            // 
-            this.StylizationColumn.Caption = "Stylization";
-            this.StylizationColumn.ColumnName = "Stylization";
-            this.StylizationColumn.DataType = typeof(object);
-            // 
-            // dataColumn1
-            // 
-            this.dataColumn1.ColumnName = "PreviewPoint";
-            this.dataColumn1.DataType = typeof(object);
-            // 
-            // dataColumn2
-            // 
-            this.dataColumn2.ColumnName = "PreviewLine";
-            this.dataColumn2.DataType = typeof(object);
-            // 
-            // dataColumn3
-            // 
-            this.dataColumn3.ColumnName = "PreviewArea";
-            this.dataColumn3.DataType = typeof(object);
-            // 
             // PropertyDataset
             // 
             this.PropertyDataset.DataSetName = "ViewerProperties";
@@ -417,9 +359,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.groupViewerProperties.Controls.Add(this.SelectAllButton);
             this.groupViewerProperties.Controls.Add(this.dataGrid1);
             this.groupViewerProperties.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupViewerProperties.Location = new System.Drawing.Point(0, 200);
+            this.groupViewerProperties.Location = new System.Drawing.Point(0, 184);
             this.groupViewerProperties.Name = "groupViewerProperties";
-            this.groupViewerProperties.Size = new System.Drawing.Size(504, 240);
+            this.groupViewerProperties.Size = new System.Drawing.Size(799, 232);
             this.groupViewerProperties.TabIndex = 17;
             this.groupViewerProperties.TabStop = false;
             this.groupViewerProperties.Text = "Properties avalible in viewer";
@@ -428,7 +370,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             this.SelectInverseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SelectInverseButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.SelectInverseButton.Location = new System.Drawing.Point(232, 200);
+            this.SelectInverseButton.Location = new System.Drawing.Point(232, 192);
             this.SelectInverseButton.Name = "SelectInverseButton";
             this.SelectInverseButton.Size = new System.Drawing.Size(96, 24);
             this.SelectInverseButton.TabIndex = 3;
@@ -439,7 +381,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             this.SelectNoneButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SelectNoneButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.SelectNoneButton.Location = new System.Drawing.Point(128, 200);
+            this.SelectNoneButton.Location = new System.Drawing.Point(128, 192);
             this.SelectNoneButton.Name = "SelectNoneButton";
             this.SelectNoneButton.Size = new System.Drawing.Size(88, 24);
             this.SelectNoneButton.TabIndex = 2;
@@ -450,7 +392,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             this.SelectAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SelectAllButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.SelectAllButton.Location = new System.Drawing.Point(16, 200);
+            this.SelectAllButton.Location = new System.Drawing.Point(16, 192);
             this.SelectAllButton.Name = "SelectAllButton";
             this.SelectAllButton.Size = new System.Drawing.Size(96, 24);
             this.SelectAllButton.TabIndex = 1;
@@ -470,7 +412,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.dataGrid1.Location = new System.Drawing.Point(16, 24);
             this.dataGrid1.Name = "dataGrid1";
             this.dataGrid1.RowHeadersVisible = false;
-            this.dataGrid1.Size = new System.Drawing.Size(472, 168);
+            this.dataGrid1.Size = new System.Drawing.Size(767, 160);
             this.dataGrid1.TabIndex = 0;
             this.dataGrid1.TableStyles.AddRange(new System.Windows.Forms.DataGridTableStyle[] {
             this.dataGridTableStyle1});
@@ -516,159 +458,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.splitter1);
-            this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox1.Location = new System.Drawing.Point(0, 448);
+            this.groupBox1.Location = new System.Drawing.Point(0, 424);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(504, 328);
+            this.groupBox1.Size = new System.Drawing.Size(799, 430);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Layer style";
             // 
-            // splitter1
-            // 
-            this.splitter1.Location = new System.Drawing.Point(219, 16);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(8, 309);
-            this.splitter1.TabIndex = 4;
-            this.splitter1.TabStop = false;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.groupBox2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(219, 16);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(282, 309);
-            this.panel2.TabIndex = 3;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.EditControlPanel);
-            this.groupBox2.Location = new System.Drawing.Point(0, 8);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(266, 288);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Properties";
-            // 
-            // EditControlPanel
-            // 
-            this.EditControlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditControlPanel.Controls.Add(this.styleRuleProperties);
-            this.EditControlPanel.Controls.Add(this.scaleRangeProperties);
-            this.EditControlPanel.Controls.Add(this.areaFeatureStyleEditor);
-            this.EditControlPanel.Controls.Add(this.lineFeatureStyleEditor);
-            this.EditControlPanel.Controls.Add(this.fontStyleEditor);
-            this.EditControlPanel.Controls.Add(this.pointFeatureStyleEditor);
-            this.EditControlPanel.Location = new System.Drawing.Point(16, 24);
-            this.EditControlPanel.Name = "EditControlPanel";
-            this.EditControlPanel.Size = new System.Drawing.Size(234, 248);
-            this.EditControlPanel.TabIndex = 0;
-            // 
-            // styleRuleProperties
-            // 
-            this.styleRuleProperties.Enabled = false;
-            this.styleRuleProperties.Item = null;
-            this.styleRuleProperties.Location = new System.Drawing.Point(32, 72);
-            this.styleRuleProperties.Name = "styleRuleProperties";
-            this.styleRuleProperties.Size = new System.Drawing.Size(248, 312);
-            this.styleRuleProperties.TabIndex = 6;
-            this.styleRuleProperties.Visible = false;
-            this.styleRuleProperties.ChangedTree += new System.EventHandler(this.notify_ChangedTree);
-            this.styleRuleProperties.Changed += new System.EventHandler(this.notify_Changed);
-            // 
-            // scaleRangeProperties
-            // 
-            this.scaleRangeProperties.Enabled = false;
-            this.scaleRangeProperties.Item = null;
-            this.scaleRangeProperties.Location = new System.Drawing.Point(80, 16);
-            this.scaleRangeProperties.Name = "scaleRangeProperties";
-            this.scaleRangeProperties.Size = new System.Drawing.Size(160, 120);
-            this.scaleRangeProperties.TabIndex = 5;
-            this.scaleRangeProperties.Visible = false;
-            this.scaleRangeProperties.ChangedTree += new System.EventHandler(this.notify_ChangedTree);
-            this.scaleRangeProperties.Changed += new System.EventHandler(this.notify_Changed);
-            // 
-            // areaFeatureStyleEditor
-            // 
-            this.areaFeatureStyleEditor.AutoScroll = true;
-            this.areaFeatureStyleEditor.AutoScrollMinSize = new System.Drawing.Size(344, 416);
-            this.areaFeatureStyleEditor.Item = null;
-            this.areaFeatureStyleEditor.Location = new System.Drawing.Point(48, 128);
-            this.areaFeatureStyleEditor.Name = "areaFeatureStyleEditor";
-            this.areaFeatureStyleEditor.Size = new System.Drawing.Size(344, 416);
-            this.areaFeatureStyleEditor.TabIndex = 4;
-            this.areaFeatureStyleEditor.Visible = false;
-            this.areaFeatureStyleEditor.Changed += new System.EventHandler(this.notify_Changed);
-            // 
-            // lineFeatureStyleEditor
-            // 
-            this.lineFeatureStyleEditor.AutoScroll = true;
-            this.lineFeatureStyleEditor.AutoScrollMinSize = new System.Drawing.Size(290, 480);
-            this.lineFeatureStyleEditor.Item = null;
-            this.lineFeatureStyleEditor.Location = new System.Drawing.Point(64, 96);
-            this.lineFeatureStyleEditor.Name = "lineFeatureStyleEditor";
-            this.lineFeatureStyleEditor.Size = new System.Drawing.Size(290, 320);
-            this.lineFeatureStyleEditor.TabIndex = 3;
-            this.lineFeatureStyleEditor.Visible = false;
-            this.lineFeatureStyleEditor.Changed += new System.EventHandler(this.notify_Changed);
-            // 
-            // fontStyleEditor
-            // 
-            this.fontStyleEditor.AutoScroll = true;
-            this.fontStyleEditor.AutoScrollMinSize = new System.Drawing.Size(296, 528);
-            this.fontStyleEditor.Item = null;
-            this.fontStyleEditor.Location = new System.Drawing.Point(80, 32);
-            this.fontStyleEditor.Name = "fontStyleEditor";
-            this.fontStyleEditor.Size = new System.Drawing.Size(80, 152);
-            this.fontStyleEditor.TabIndex = 2;
-            this.fontStyleEditor.Visible = false;
-            this.fontStyleEditor.Changed += new System.EventHandler(this.notify_Changed);
-            // 
-            // pointFeatureStyleEditor
-            // 
-            this.pointFeatureStyleEditor.AutoScroll = true;
-            this.pointFeatureStyleEditor.AutoScrollMinSize = new System.Drawing.Size(344, 584);
-            pointSymbolization2DType1.ExtendedData1 = null;
-            markSymbolType1.Edge = null;
-            markSymbolType1.ExtendedData1 = null;
-            markSymbolType1.Fill = null;
-            markSymbolType1.InsertionPointX = 0;
-            markSymbolType1.InsertionPointXSpecified = false;
-            markSymbolType1.InsertionPointY = 0;
-            markSymbolType1.InsertionPointYSpecified = false;
-            markSymbolType1.MaintainAspect = false;
-            markSymbolType1.MaintainAspectSpecified = false;
-            markSymbolType1.Rotation = null;
-            markSymbolType1.Shape = OSGeo.MapGuide.MaestroAPI.ShapeType.Square;
-            markSymbolType1.SizeX = null;
-            markSymbolType1.SizeY = null;
-            markSymbolType1.Unit = OSGeo.MapGuide.MaestroAPI.LengthUnitType.Millimeters;
-            pointSymbolization2DType1.Item = markSymbolType1;
-            this.pointFeatureStyleEditor.Item = pointSymbolization2DType1;
-            this.pointFeatureStyleEditor.Location = new System.Drawing.Point(64, 168);
-            this.pointFeatureStyleEditor.Name = "pointFeatureStyleEditor";
-            this.pointFeatureStyleEditor.Size = new System.Drawing.Size(344, 584);
-            this.pointFeatureStyleEditor.TabIndex = 1;
-            this.pointFeatureStyleEditor.Visible = false;
-            this.pointFeatureStyleEditor.Changed += new System.EventHandler(this.notify_Changed);
-            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.scaleRangeList);
             this.panel1.Controls.Add(this.toolStrip1);
-            this.panel1.Controls.Add(this.LayerStyleTree);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(216, 309);
+            this.panel1.Size = new System.Drawing.Size(793, 411);
             this.panel1.TabIndex = 2;
             // 
             // toolStrip1
@@ -676,12 +482,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddScaleRangeButton,
-            this.AddRuleButton,
-            this.DeleteItemButton});
+            this.DeleteItemButton,
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(216, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(793, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -696,17 +502,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.AddScaleRangeButton.ToolTipText = "Add a scale range";
             this.AddScaleRangeButton.Click += new System.EventHandler(this.AddScaleRangeButton_Click);
             // 
-            // AddRuleButton
-            // 
-            this.AddRuleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddRuleButton.Enabled = false;
-            this.AddRuleButton.Image = ((System.Drawing.Image)(resources.GetObject("AddRuleButton.Image")));
-            this.AddRuleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddRuleButton.Name = "AddRuleButton";
-            this.AddRuleButton.Size = new System.Drawing.Size(23, 22);
-            this.AddRuleButton.Text = "toolStripButton2";
-            this.AddRuleButton.Click += new System.EventHandler(this.AddRuleButton_Click);
-            // 
             // DeleteItemButton
             // 
             this.DeleteItemButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -718,19 +513,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.DeleteItemButton.Text = "toolStripButton3";
             this.DeleteItemButton.Click += new System.EventHandler(this.DeleteItemButton_Click);
             // 
-            // LayerStyleTree
+            // toolStripButton1
             // 
-            this.LayerStyleTree.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.LayerStyleTree.ImageIndex = 0;
-            this.LayerStyleTree.ImageList = this.LayerStyleImages;
-            this.LayerStyleTree.Location = new System.Drawing.Point(8, 32);
-            this.LayerStyleTree.Name = "LayerStyleTree";
-            this.LayerStyleTree.SelectedImageIndex = 0;
-            this.LayerStyleTree.Size = new System.Drawing.Size(200, 264);
-            this.LayerStyleTree.TabIndex = 0;
-            this.LayerStyleTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.LayerStyleTree_AfterSelect);
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Enabled = false;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // DisplayRanges
             // 
@@ -739,13 +530,55 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.DisplayRanges.Tables.AddRange(new System.Data.DataTable[] {
             this.DisplayRangesTable});
             // 
+            // schemaSelector
+            // 
+            this.schemaSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.schemaSelector.IsRaster = false;
+            this.schemaSelector.Location = new System.Drawing.Point(16, 16);
+            this.schemaSelector.Name = "schemaSelector";
+            this.schemaSelector.Size = new System.Drawing.Size(767, 56);
+            this.schemaSelector.TabIndex = 14;
+            this.schemaSelector.GeometryChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector.GeometryChangedDelegate(this.schemaSelector_GeometryChanged);
+            this.schemaSelector.SchemaChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector.SchemaChangedDelegate(this.schemaSelector_SchemaChanged);
+            // 
+            // scaleRangeList
+            // 
+            this.scaleRangeList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scaleRangeList.Location = new System.Drawing.Point(0, 25);
+            this.scaleRangeList.Name = "scaleRangeList";
+            this.scaleRangeList.Size = new System.Drawing.Size(793, 386);
+            this.scaleRangeList.TabIndex = 3;
+            this.scaleRangeList.ItemChanged += new System.EventHandler(this.scaleRangeList_ItemChanged);
+            // 
+            // StylizationColumn
+            // 
+            this.StylizationColumn.Caption = "Stylization";
+            this.StylizationColumn.ColumnName = "Stylization";
+            this.StylizationColumn.DataType = typeof(object);
+            // 
+            // dataColumn1
+            // 
+            this.dataColumn1.ColumnName = "PreviewPoint";
+            this.dataColumn1.DataType = typeof(object);
+            // 
+            // dataColumn2
+            // 
+            this.dataColumn2.ColumnName = "PreviewLine";
+            this.dataColumn2.DataType = typeof(object);
+            // 
+            // dataColumn3
+            // 
+            this.dataColumn3.ColumnName = "PreviewArea";
+            this.dataColumn3.DataType = typeof(object);
+            // 
             // VectorLayer
             // 
             this.Controls.Add(this.ResourceGroup);
             this.Controls.Add(this.groupViewerProperties);
             this.Controls.Add(this.groupBox1);
             this.Name = "VectorLayer";
-            this.Size = new System.Drawing.Size(504, 776);
+            this.Size = new System.Drawing.Size(799, 854);
             this.ResourceGroup.ResumeLayout(false);
             this.ResourceGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ViewerPropertiesTable)).EndInit();
@@ -754,9 +587,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.groupViewerProperties.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.EditControlPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -769,7 +599,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 
 		private void BuildScaleRange()
 		{
-			if (inUpdate)
+			/*if (inUpdate)
 				return;
 			try
 			{
@@ -801,7 +631,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 			finally
 			{
 				inUpdate = false;
-			}
+			}*/
 
 		}
 
@@ -826,6 +656,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 					Link.Text = vl.Url;
 					Tooltip.Text = vl.ToolTip;
 					Filter.Text = vl.Filter;
+
+                    scaleRangeList.SetItem(vl);
 
 				}
 			} 
@@ -871,7 +703,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 						}
                     
 						string[] m_avalibleColumns = (string[])avalibleColums.ToArray(typeof(string));
-						fontStyleEditor.SetAvalibleColumns(m_avalibleColumns);
+						//fontStyleEditor.SetAvalibleColumns(m_avalibleColumns);
 
 					}
 					else
@@ -951,7 +783,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 
 		private void LayerStyleTree_AfterSelect(object sender, System.Windows.Forms.TreeViewEventArgs e)
 		{
-			UserControl editor = null;
+			/*UserControl editor = null;
 			if (LayerStyleTree.SelectedNode != null && LayerStyleTree.SelectedNode.Tag != null)
 			{
 				Type t = LayerStyleTree.SelectedNode.Tag.GetType();
@@ -1015,7 +847,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 
 			foreach(Control c in EditControlPanel.Controls)
 				c.Visible = c == editor;
-
+            */
 		}
 
 		private void SelectInverseButton_Click(object sender, System.EventArgs e)
@@ -1084,12 +916,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 		private void notify_Changed(object sender, System.EventArgs e)
 		{
 			m_editor.HasChanged();
-			RebuildNode(LayerStyleTree.SelectedNode);
+			//RebuildNode(LayerStyleTree.SelectedNode);
 		}
 
 		private void notify_ChangedTree(object sender, System.EventArgs e)
 		{
-			RebuildNode(LayerStyleTree.SelectedNode);
+			//RebuildNode(LayerStyleTree.SelectedNode);
 		}
 
 		private void RebuildNode(TreeNode n)
@@ -1393,126 +1225,26 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType vld = m_layer.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType;
             if (vld == null)
                 return;
+
             OSGeo.MapGuide.MaestroAPI.VectorScaleRangeType vsc = new OSGeo.MapGuide.MaestroAPI.VectorScaleRangeType();
+            if (vld.VectorScaleRange == null)
+            {
+                vld.VectorScaleRange = new VectorScaleRangeTypeCollection();
+                scaleRangeList.SetItem(vld);
+            }
+
             vld.VectorScaleRange.Add(vsc);
-            BuildScaleRange();
-            try
-            {
-                LayerStyleTree.Nodes[LayerStyleTree.Nodes.Count - 1].Expand();
-                LayerStyleTree.SelectedNode = LayerStyleTree.Nodes[LayerStyleTree.Nodes.Count - 1];
-            }
-            catch { }
+            scaleRangeList.AddScaleRange(vsc);
         }
 
-        private void AddRuleButton_Click(object sender, EventArgs e)
-        {
-            if (LayerStyleTree.SelectedNode != null && LayerStyleTree.SelectedNode.Tag != null)
-            {
-                LayerStyleTree.SelectedNode.Expand();
-                System.Type t = LayerStyleTree.SelectedNode.Tag.GetType();
-                bool refresh = false;
-                if (t == typeof(OSGeo.MapGuide.MaestroAPI.PointTypeStyleType))
-                {
-                    OSGeo.MapGuide.MaestroAPI.PointTypeStyleType point = (OSGeo.MapGuide.MaestroAPI.PointTypeStyleType)LayerStyleTree.SelectedNode.Tag;
-                    OSGeo.MapGuide.MaestroAPI.PointRuleType pr = new OSGeo.MapGuide.MaestroAPI.PointRuleType();
-                    point.PointRule.Add(pr);
-                    refresh = true;
-                }
-                else if (t == typeof(OSGeo.MapGuide.MaestroAPI.LineTypeStyleType))
-                {
-                    OSGeo.MapGuide.MaestroAPI.LineTypeStyleType line = (OSGeo.MapGuide.MaestroAPI.LineTypeStyleType)LayerStyleTree.SelectedNode.Tag;
-                    OSGeo.MapGuide.MaestroAPI.LineRuleType lr = new OSGeo.MapGuide.MaestroAPI.LineRuleType();
-                    line.LineRule.Add(lr);
-                    refresh = true;
-                }
-                else if (t == typeof(OSGeo.MapGuide.MaestroAPI.AreaTypeStyleType))
-                {
-                    OSGeo.MapGuide.MaestroAPI.AreaTypeStyleType area = (OSGeo.MapGuide.MaestroAPI.AreaTypeStyleType)LayerStyleTree.SelectedNode.Tag;
-                    OSGeo.MapGuide.MaestroAPI.AreaRuleType ar = new OSGeo.MapGuide.MaestroAPI.AreaRuleType();
-                    area.AreaRule.Add(ar);
-                    refresh = true;
-                }
-
-                if (refresh)
-                {
-                    m_editor.HasChanged();
-                    RebuildNode(LayerStyleTree.SelectedNode);
-                }
-            }
-        }
 
         private void DeleteItemButton_Click(object sender, EventArgs e)
         {
-            if (LayerStyleTree.SelectedNode != null && LayerStyleTree.SelectedNode.Tag != null)
-            {
-                System.Type t = LayerStyleTree.SelectedNode.Tag.GetType();
+        }
 
-                if (t == typeof(OSGeo.MapGuide.MaestroAPI.VectorScaleRangeType))
-                {
-                    OSGeo.MapGuide.MaestroAPI.VectorScaleRangeTypeCollection layers = (m_layer.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType).VectorScaleRange;
-                    for (int i = 0; i < layers.Count; i++)
-                    {
-                        if (layers[i] == LayerStyleTree.SelectedNode.Tag)
-                        {
-                            layers.RemoveAt(i);
-                            LayerStyleTree.Nodes.Remove(LayerStyleTree.SelectedNode);
-                            m_editor.HasChanged();
-                            break;
-                        }
-                    }
-                }
-                else if (t == typeof(OSGeo.MapGuide.MaestroAPI.PointRuleType))
-                {
-                    OSGeo.MapGuide.MaestroAPI.VectorScaleRangeType scl = ((OSGeo.MapGuide.MaestroAPI.VectorScaleRangeType)LayerStyleTree.SelectedNode.Parent.Parent.Tag);
-                    OSGeo.MapGuide.MaestroAPI.PointTypeStyleType points = ((OSGeo.MapGuide.MaestroAPI.PointTypeStyleType)LayerStyleTree.SelectedNode.Parent.Tag);
-
-                    for (int i = 0; i < points.PointRule.Count; i++)
-                    {
-                        if (points.PointRule[i] == LayerStyleTree.SelectedNode.Tag)
-                        {
-                            points.PointRule.RemoveAt(i);
-                            LayerStyleTree.SelectedNode = LayerStyleTree.SelectedNode.Parent;
-                            RebuildNode(LayerStyleTree.SelectedNode);
-                            m_editor.HasChanged();
-                            break;
-                        }
-                    }
-                }
-                else if (t == typeof(OSGeo.MapGuide.MaestroAPI.LineRuleType))
-                {
-                    OSGeo.MapGuide.MaestroAPI.VectorScaleRangeType scl = ((OSGeo.MapGuide.MaestroAPI.VectorScaleRangeType)LayerStyleTree.SelectedNode.Parent.Parent.Tag);
-                    OSGeo.MapGuide.MaestroAPI.LineTypeStyleType lines = ((OSGeo.MapGuide.MaestroAPI.LineTypeStyleType)LayerStyleTree.SelectedNode.Parent.Tag);
-
-                    for (int i = 0; i < lines.LineRule.Count; i++)
-                    {
-                        if (lines.LineRule[i] == LayerStyleTree.SelectedNode.Tag)
-                        {
-                            lines.LineRule.RemoveAt(i);
-                            LayerStyleTree.SelectedNode = LayerStyleTree.SelectedNode.Parent;
-                            RebuildNode(LayerStyleTree.SelectedNode);
-                            m_editor.HasChanged();
-                            break;
-                        }
-                    }
-                }
-                else if (t == typeof(OSGeo.MapGuide.MaestroAPI.AreaRuleType))
-                {
-                    OSGeo.MapGuide.MaestroAPI.VectorScaleRangeType scl = ((OSGeo.MapGuide.MaestroAPI.VectorScaleRangeType)LayerStyleTree.SelectedNode.Parent.Parent.Tag);
-                    OSGeo.MapGuide.MaestroAPI.AreaTypeStyleType areas = ((OSGeo.MapGuide.MaestroAPI.AreaTypeStyleType)LayerStyleTree.SelectedNode.Parent.Tag);
-
-                    for (int i = 0; i < areas.AreaRule.Count; i++)
-                    {
-                        if (areas.AreaRule[i] == LayerStyleTree.SelectedNode.Tag)
-                        {
-                            areas.AreaRule.RemoveAt(i);
-                            LayerStyleTree.SelectedNode = LayerStyleTree.SelectedNode.Parent;
-                            RebuildNode(LayerStyleTree.SelectedNode);
-                            m_editor.HasChanged();
-                            break;
-                        }
-                    }
-                }
-            }
+        private void scaleRangeList_ItemChanged(object sender, EventArgs e)
+        {
+            m_editor.HasChanged();
         }
 	}	
 	

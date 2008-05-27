@@ -123,6 +123,24 @@ namespace OSGeo.MapGuide.MaestroAPI
 			} while (r > 0);
 		}
 
+        /// <summary>
+        /// Builds a copy of the object by serializing it to xml, and then deserializing it.
+        /// Please note that this function is has a large overhead.
+        /// </summary>
+        /// <param name="source">The object to copy</param>
+        /// <returns>A copy of the object</returns>
+        public static object XmlDeepCopy(object source)
+        {
+            if (source == null)
+                return null;
+
+            System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(source.GetType());
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            ser.Serialize(ms, source);
+            ms.Position = 0;
+            return ser.Deserialize(ms);
+        }
+
 		/// <summary>
 		/// Makes a deep copy of an object, by copying all the public properties.
 		/// This overload tries to maintain object references by assigning properties
@@ -177,6 +195,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>A copied object</returns>
 		public static object DeepCopy(object source)
 		{
+            if (source == null)
+                return null;
+
 			object target = Activator.CreateInstance(source.GetType());
 
 			foreach(System.Reflection.PropertyInfo pi in source.GetType().GetProperties())

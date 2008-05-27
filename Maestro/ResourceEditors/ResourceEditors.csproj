@@ -1,4 +1,4 @@
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>
@@ -352,6 +352,48 @@
     <Compile Include="LayerEditorControls\RasterLayer.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\Condition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\Condition.Designer.cs">
+      <DependentUpon>Condition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\ConditionList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\ConditionList.Designer.cs">
+      <DependentUpon>ConditionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\EditorTemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\EditorTemplateForm.Designer.cs">
+      <DependentUpon>EditorTemplateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\ItemStyle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\ItemStyle.designer.cs">
+      <DependentUpon>ItemStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\ScaleRange.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\ScaleRange.Designer.cs">
+      <DependentUpon>ScaleRange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\ScaleRangeConditions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\ScaleRangeConditions.designer.cs">
+      <DependentUpon>ScaleRangeConditions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\ScaleRangeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\ScaleRangeList.Designer.cs">
+      <DependentUpon>ScaleRangeList.cs</DependentUpon>
+    </Compile>
     <Compile Include="LayerEditorControls\ScaleRangeProperties.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -685,37 +727,6 @@
       <DependentUpon>FillStyleEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\01.Solid.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\02.Net.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\03.Net_45.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\04.Line.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\05.Line_45.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\06.Line_90.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\07.Line_135.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\08.Square.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\09.Angle.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\10.Box.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\11.Brass.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\13.Brstone.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\14.Clay.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\15.Cork.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\16.Cross.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\17.Dash.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\18.Dolmit.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\19.Dots.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\20.Earth.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\21.Escher.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\22.Flex.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\23.Grass.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\24.Grate.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\25.Hex.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\26.Honey.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\27.Hound.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\28.Insul.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\29.Mudst.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\30.Net3.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\31.Plast.gif" />
-    <EmbeddedResource Include="GeometryStyleEditors\Fillstyles\32.Plasti.gif" />
     <EmbeddedResource Include="GeometryStyleEditors\FontStyleComboDataset.xml" />
     <EmbeddedResource Include="GeometryStyleEditors\FontStyleEditor.resx">
       <DependentUpon>FontStyleEditor.cs</DependentUpon>
@@ -752,6 +763,34 @@
     <EmbeddedResource Include="LayerEditorControls\RasterLayer.resx">
       <DependentUpon>RasterLayer.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\ScaleControls\Condition.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Condition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\ScaleControls\ConditionList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ConditionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\ScaleControls\EditorTemplateForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EditorTemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\ScaleControls\ItemStyle.resx">
+      <DependentUpon>ItemStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\ScaleControls\ScaleRange.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ScaleRange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\ScaleControls\ScaleRangeConditions.resx">
+      <DependentUpon>ScaleRangeConditions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\ScaleControls\ScaleRangeList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ScaleRangeList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LayerEditorControls\ScaleRangeProperties.resx">
       <DependentUpon>ScaleRangeProperties.cs</DependentUpon>
@@ -854,7 +893,6 @@
       <DependentUpon>XmlEditorControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="GeometryStyleEditors\Fillstyles\12.Brick.gif" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

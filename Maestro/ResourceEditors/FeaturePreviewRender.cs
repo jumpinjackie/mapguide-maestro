@@ -114,10 +114,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				return;
 			}
 
-			//TODO: Implement line dash
-			foreach(OSGeo.MapGuide.MaestroAPI.StrokeType st in item)
-				using(Pen p = new Pen(st.Color, /*float.Parse(st.Thickness)*/ 1)) //TODO: Calculate appropriate thickness
-					g.DrawLine(p, new Point(size.Left, size.Top + (size.Height/2)), new Point(size.Right, size.Top + (size.Height / 2))); 
+            try
+            {
+                //TODO: Implement line dash
+                foreach (OSGeo.MapGuide.MaestroAPI.StrokeType st in item)
+                    using (Pen p = new Pen(st.ColorAsHTML == null ? Color.White : st.Color, /*float.Parse(st.Thickness)*/ 1)) //TODO: Calculate appropriate thickness
+                        g.DrawLine(p, new Point(size.Left, size.Top + (size.Height / 2)), new Point(size.Right, size.Top + (size.Height / 2)));
+            }
+            catch
+            {
+            }
 		}
 
 		public static void RenderPreviewFont(Graphics g, Rectangle size, OSGeo.MapGuide.MaestroAPI.TextSymbolType item)
@@ -242,7 +248,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 			if (item.Edge != null)
 			{
-				using(Pen p = new Pen(item.Edge.Color, /* float.Parse(item.Edge.Thickness) */ 1)) //TODO: Calculate appropriate thickness
+				using(Pen p = new Pen(item.Edge.ColorAsHTML == null ? Color.White : item.Edge.Color, /* float.Parse(item.Edge.Thickness) */ 1)) //TODO: Calculate appropriate thickness
 					g.DrawPolygon(p, points); //TODO: Implement line dash
 			}
 		
