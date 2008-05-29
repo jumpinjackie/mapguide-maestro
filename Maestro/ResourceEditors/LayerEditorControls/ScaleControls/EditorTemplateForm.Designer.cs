@@ -47,8 +47,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             // 
             // CancelBtn
             // 
+            this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(144, 8);
+            this.CancelBtn.Location = new System.Drawing.Point(160, 8);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(64, 24);
             this.CancelBtn.TabIndex = 1;
@@ -57,6 +58,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             // 
             // OKBtn
             // 
+            this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.OKBtn.Location = new System.Drawing.Point(72, 8);
             this.OKBtn.Name = "OKBtn";
             this.OKBtn.Size = new System.Drawing.Size(64, 24);
@@ -86,7 +88,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "EditorTemplateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "EditorTemplateForm";
+            this.Text = "Edit the style";
             this.Load += new System.EventHandler(this.EditorTemplateForm_Load);
             this.ButtonPanel.ResumeLayout(false);
             this.ResumeLayout(false);

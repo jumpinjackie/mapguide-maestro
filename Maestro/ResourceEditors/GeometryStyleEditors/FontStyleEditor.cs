@@ -124,7 +124,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			propertyCombo.Items.Clear();
 			if (items != null)
 				propertyCombo.Items.AddRange(items);
-			propertyCombo.Items.Add("Expression...");
+			//propertyCombo.Items.Add("Expression...");
 		}
 
 		private void UpdateDisplay()
@@ -964,7 +964,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
 		{
-			FeaturePreviewRender.RenderPreviewFont(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), null);
+			FeaturePreviewRender.RenderPreviewFont(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), m_item);
 		}
 
 		private void fontGroup_Enter(object sender, System.EventArgs e)

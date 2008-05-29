@@ -25,6 +25,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
         public event EventHandler ItemChanged;
 
+        private VectorLayer m_owner;
+
+        public VectorLayer Owner
+        {
+            get { return m_owner; }
+            set { m_owner = value; }
+        }
+
         public ItemStyle()
         {
             InitializeComponent();
@@ -94,6 +102,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             {
                 uc = new GeometryStyleEditors.FontStyleEditor();
                 ((GeometryStyleEditors.FontStyleEditor)uc).Item = (TextSymbolType)Utility.DeepCopy(m_label);
+
+                ((GeometryStyleEditors.FontStyleEditor)uc).SetAvalibleColumns(m_owner.GetAvalibleColumns());
             }
             else if (isPoint)
             {
@@ -159,6 +169,20 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
                 }
             }
 
+        }
+
+        private void previewPicture_Click(object sender, EventArgs e)
+        {
+            try { Parent.Focus(); }
+            catch {}
+        }
+
+        private void previewPicture_DoubleClick(object sender, EventArgs e)
+        {
+            try { Parent.Focus(); }
+            catch { }
+
+            EditButton_Click(sender, e);
         }
     }
 }

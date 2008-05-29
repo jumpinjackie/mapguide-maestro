@@ -15,6 +15,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         private bool m_isUpdating = false;
 
         public event EventHandler ItemChanged;
+        
+        private VectorLayer m_owner;
+
+        public VectorLayer Owner
+        {
+            get { return m_owner; }
+            set
+            {
+                m_owner = value;
+                scaleRangeConditions.Owner = m_owner;
+            }
+        }
+
 
         public ScaleRange()
         {

@@ -51,7 +51,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
         
-            foregroundColor.AllowTransparent = false;
+            foregroundColor.AllowTransparent = true;
             backgroundColor.AllowTransparent = true;
 
             foregroundColor.ResetColors();

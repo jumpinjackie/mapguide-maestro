@@ -37,8 +37,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TrackBar trackBar1;
-		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.TrackBar Transparency;
+		private System.Windows.Forms.Label percentageLabel;
 		private System.Windows.Forms.GroupBox previewGroup;
 		private System.Windows.Forms.PictureBox previewPicture;
 		/// <summary>
@@ -129,8 +129,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.percentageLabel = new System.Windows.Forms.Label();
+            this.Transparency = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.previewGroup = new System.Windows.Forms.GroupBox();
             this.previewPicture = new System.Windows.Forms.PictureBox();
@@ -139,7 +139,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Transparency)).BeginInit();
             this.previewGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).BeginInit();
@@ -259,8 +259,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.trackBar1);
+            this.groupBox2.Controls.Add(this.percentageLabel);
+            this.groupBox2.Controls.Add(this.Transparency);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.fillStyleEditor);
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
@@ -270,26 +270,27 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fill style";
             // 
-            // label2
+            // percentageLabel
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.Location = new System.Drawing.Point(194, 128);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "0%";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.percentageLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.percentageLabel.Location = new System.Drawing.Point(194, 128);
+            this.percentageLabel.Name = "percentageLabel";
+            this.percentageLabel.Size = new System.Drawing.Size(40, 16);
+            this.percentageLabel.TabIndex = 3;
+            this.percentageLabel.Text = "0%";
+            this.percentageLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // trackBar1
+            // Transparency
             // 
-            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.Transparency.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar1.Location = new System.Drawing.Point(136, 120);
-            this.trackBar1.Maximum = 100;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(58, 42);
-            this.trackBar1.TabIndex = 2;
-            this.trackBar1.TickFrequency = 10;
+            this.Transparency.Location = new System.Drawing.Point(136, 120);
+            this.Transparency.Maximum = 255;
+            this.Transparency.Name = "Transparency";
+            this.Transparency.Size = new System.Drawing.Size(58, 42);
+            this.Transparency.TabIndex = 2;
+            this.Transparency.TickFrequency = 25;
+            this.Transparency.ValueChanged += new System.EventHandler(this.Transparency_ValueChanged);
             // 
             // label1
             // 
@@ -347,7 +348,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Transparency)).EndInit();
             this.previewGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).EndInit();
@@ -358,7 +359,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void AreaFeatureStyleEditor_Load(object sender, System.EventArgs e)
 		{
-			UpdateDisplay();
+			//UpdateDisplay();
 		}
 
 		private void UpdateDisplay()
@@ -379,8 +380,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				fillStyleEditor.displayFill.Checked = m_item.Fill != null;
 				if (m_item.Fill != null)
 				{
-					fillStyleEditor.foregroundColor.CurrentColor = m_item.Fill.ForegroundColor;
-					fillStyleEditor.backgroundColor.CurrentColor = m_item.Fill.BackgroundColor;
+                    int alpha = Transparency.Maximum - m_item.Fill.ForegroundColor.A;
+                    fillStyleEditor.foregroundColor.CurrentColor = Color.FromArgb(255, m_item.Fill.ForegroundColor);
+                    if (m_item.Fill.BackgroundColor.A == 0)
+                        fillStyleEditor.backgroundColor.CurrentColor = Color.Transparent;
+                    else
+                        fillStyleEditor.backgroundColor.CurrentColor = Color.FromArgb(255, m_item.Fill.BackgroundColor);
+                    Transparency.Value = alpha;
+
 					fillStyleEditor.fillCombo.SelectedValue = m_item.Fill.FillPattern;
 					if (fillStyleEditor.fillCombo.SelectedItem == null && fillStyleEditor.fillCombo.Items.Count > 0)
 						fillStyleEditor.fillCombo.SelectedIndex = fillStyleEditor.fillCombo.FindString(m_item.Fill.FillPattern);
@@ -462,7 +469,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			if (m_inUpdate)
 				return;
 
-			m_item.Fill.ForegroundColor = fillStyleEditor.foregroundColor.CurrentColor;
+			m_item.Fill.ForegroundColor = Color.FromArgb(Transparency.Maximum - Transparency.Value,  fillStyleEditor.foregroundColor.CurrentColor);
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
@@ -473,7 +480,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			if (m_inUpdate)
 				return;
 
-			m_item.Fill.BackgroundColor = fillStyleEditor.backgroundColor.CurrentColor;
+			m_item.Fill.BackgroundColor = Color.FromArgb(Transparency.Maximum - Transparency.Value, fillStyleEditor.backgroundColor.CurrentColor);
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
@@ -531,5 +538,25 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			if (Changed != null)
 				Changed(this, new EventArgs());
 		}
+
+        private void Transparency_ValueChanged(object sender, EventArgs e)
+        {
+            percentageLabel.Text = ((int)((Transparency.Value / 255.0) * 100)).ToString() + "%";
+
+            if (m_inUpdate)
+                return;
+            if (m_item.Fill.BackgroundColorAsHTML == null)
+                m_item.Fill.BackgroundColor = Color.Black;
+            if (m_item.Fill.ForegroundColorAsHTML == null)
+                m_item.Fill.ForegroundColor = Color.White;
+
+            m_item.Fill.BackgroundColor = Color.FromArgb(Transparency.Maximum - Transparency.Value, m_item.Fill.BackgroundColor);
+            m_item.Fill.ForegroundColor = Color.FromArgb(Transparency.Maximum - Transparency.Value, m_item.Fill.ForegroundColor);
+
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+
+        }
 	}
 }

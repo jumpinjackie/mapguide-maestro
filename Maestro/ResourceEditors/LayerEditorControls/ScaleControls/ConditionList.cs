@@ -16,8 +16,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         private AreaTypeStyleType m_area;
 
         private VectorScaleRangeType m_parent;
+        private object m_selectedItem;
 
+        public event EventHandler SelectionChanged;
         public event EventHandler ItemChanged;
+
+        private VectorLayer m_owner;
+
+        public VectorLayer Owner
+        {
+            get { return m_owner; }
+            set
+            {
+                m_owner = value;
+                foreach (Condition c in this.Controls)
+                    c.Owner = m_owner; ;
+            }
+        }
 
         public ConditionList()
         {
@@ -39,6 +54,24 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             SetItemInternal(parent, area);
         }
 
+        public object SelectedItem 
+        { 
+            get { return m_selectedItem; }
+            set
+            {
+                m_selectedItem = value;
+                if (m_selectedItem != null)
+                {
+                    foreach (Condition c in this.Controls)
+                        if (c.Item == m_selectedItem)
+                        {
+                            c.Focus();
+                            return;
+                        }
+                }
+            }
+        }
+
         private void SetItemInternal(VectorScaleRangeType parent, object item)
         {
             m_parent = parent;
@@ -46,7 +79,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             m_line = item as LineTypeStyleType;
             m_area = item as AreaTypeStyleType;
 
-            ControlList.Controls.Clear();
+            this.Controls.Clear();
 
             if (m_point != null)
             {
@@ -69,7 +102,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             }
         }
 
-        private Condition AddRuleControl(object rule)
+        public Condition AddRuleControl(object rule)
         {
             if (rule == null)
                 return null;
@@ -83,12 +116,40 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             else if (rule as AreaRuleType != null)
                 c.SetItem(rule as AreaRuleType);
 
+            c.Owner = m_owner;
             c.Dock = DockStyle.Top;
-            ControlList.Controls.Add(c);
+            this.Controls.Add(c);
             c.BringToFront();
             c.ItemChanged += new EventHandler(Rule_ItemChanged);
             c.ItemDeleted += new EventHandler(Rule_ItemDeleted);
+            c.Enter += new EventHandler(Rule_Enter);
+            c.Leave += new EventHandler(Rule_Leave);
             return c;
+        }
+
+        private void Rule_Leave(object sender, EventArgs e)
+        {
+            Condition c = sender as Condition;
+            if (c == null)
+                return;
+
+            c.BorderStyle = BorderStyle.None;
+           
+            m_selectedItem = null;
+            if (SelectionChanged != null)
+                SelectionChanged(this, null);
+        }
+
+        private void Rule_Enter(object sender, EventArgs e)
+        {
+            Condition c = sender as Condition;
+            if (c == null)
+                return;
+
+            c.BorderStyle = BorderStyle.FixedSingle;
+            m_selectedItem = c.Item;
+            if (SelectionChanged != null)
+                SelectionChanged(this, null);
         }
 
         private void SignalItemChanged()
@@ -109,10 +170,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
         void Rule_ItemDeleted(object sender, EventArgs e)
         {
-            foreach (Condition c in ControlList.Controls)
+            foreach (Condition c in this.Controls)
                 if (c.Item == sender)
                 {
-                    ControlList.Controls.Remove(c);
+                    this.Controls.Remove(c);
                     break;
                 }
 
@@ -148,49 +209,45 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             
         }
 
-        private void AddRuleButton_Click(object sender, EventArgs e)
+        public void MoveSelectedRule(bool down)
         {
-            if (m_point != null)
-            {
-                PointRuleType prt = new PointRuleType();
-                prt.Item = new PointSymbolization2DType();
-                prt.Item.Item = new MarkSymbolType();
-                prt.Item.Item.SizeContext = SizeContextType.DeviceUnits;
-                if (m_point.PointRule == null)
-                    m_point.PointRule = new PointRuleTypeCollection();
-                m_point.PointRule.Add(prt);
-                AddRuleControl(prt).Focus();
-            }
-            else if (m_line != null)
-            {
-                LineRuleType lrt = new LineRuleType();
-                lrt.Items = new StrokeTypeCollection();
-                lrt.Items.Add(new StrokeType());
-                lrt.Items[0].LineStyle = "Solid";
-                lrt.Items[0].SizeContext = SizeContextType.DeviceUnits;
-                if (m_line.LineRule == null)
-                    m_line.LineRule = new LineRuleTypeCollection();
-                m_line.LineRule.Add(lrt);
-                AddRuleControl(lrt).Focus();;
-            }
-            else if (m_area != null)
-            {
-                AreaRuleType art = new AreaRuleType();
-                art.Item = new AreaSymbolizationFillType();
-                art.Item.Fill = new FillType();
-                art.Item.Stroke = new StrokeType();
-                art.Item.Fill.BackgroundColor = Color.White;
-                art.Item.Fill.ForegroundColor = Color.White;
-                art.Item.Fill.FillPattern = "Solid";
-                art.Item.Stroke.Color = Color.Black;
-                art.Item.Stroke.LineStyle = "Solid";
-                if (m_area.AreaRule == null)
-                    m_area.AreaRule = new AreaRuleTypeCollection();
-                m_area.AreaRule.Add(art);
-                AddRuleControl(art).Focus();
-               
-            }
+            if (this.SelectedItem == null)
+                return;
 
+            Condition selectedControl = null;
+            object selectedRule = this.SelectedItem;
+
+            foreach (Condition c in this.Controls)
+                if (c.Item == this.SelectedItem)
+                {
+                    selectedControl = c;
+                    break;
+                }
+
+            if (selectedControl == null)
+                return;
+
+            int pos = this.Controls.GetChildIndex(selectedControl);
+            if ((down && pos > 0) || (!down && pos < this.Controls.Count - 1))
+            {
+                this.Controls.SetChildIndex(selectedControl, pos + (down ? -1 : 1));
+
+                System.Collections.IList ic = null;
+                if (m_point != null)
+                    ic = m_point.PointRule;
+                else if (m_line != null)
+                    ic = m_line.LineRule;
+                else if (m_area != null)
+                    ic = m_area.AreaRule;
+
+                pos = ic.IndexOf(selectedRule);
+                if ((!down && pos > 0) || (down && pos < ic.Count - 1))
+                {
+                    ic.RemoveAt(pos);
+                    ic.Insert(pos + (down ? 1 : -1), selectedRule);
+                }
+
+            }
         }
     }
 }

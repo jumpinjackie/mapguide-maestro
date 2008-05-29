@@ -98,7 +98,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				b.Dispose();
 			}
 
-			if (item.Stroke != null)
+			if (item.Stroke != null && item.Stroke.ColorAsHTML != null)
 			{
 				using(Pen p = new Pen(item.Stroke.Color, /*float.Parse(item.Stroke.Thickness)*/ 1)) //TODO: Calculate appropriate thickness
 					g.DrawPolygon(p, points); //TODO: Implement line dash

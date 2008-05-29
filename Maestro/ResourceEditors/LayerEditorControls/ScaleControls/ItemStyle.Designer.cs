@@ -43,7 +43,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.previewPicture.Size = new System.Drawing.Size(113, 20);
             this.previewPicture.TabIndex = 0;
             this.previewPicture.TabStop = false;
-            this.previewPicture.DoubleClick += new System.EventHandler(this.EditButton_Click);
+            this.previewPicture.DoubleClick += new System.EventHandler(this.previewPicture_DoubleClick);
+            this.previewPicture.Click += new System.EventHandler(this.previewPicture_Click);
             this.previewPicture.Paint += new System.Windows.Forms.PaintEventHandler(this.previewPicture_Paint);
             // 
             // EditButton

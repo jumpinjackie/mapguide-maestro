@@ -256,7 +256,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="FdoProviderCapabilitiesGeometryType")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="FdoProviderCapabilitiesGeometryLineType")]
     public enum FdoProviderCapabilitiesGeometryType1 {
         
         /// <remarks/>
@@ -725,7 +725,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="FdoProviderCapabilitiesFilterOperation")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="FdoProviderCapabilitiesFilterGeometryOperation")]
     public enum FdoProviderCapabilitiesFilterOperation1 {
         
         /// <remarks/>
@@ -1001,7 +1001,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="FdoProviderCapabilitiesSchemaType")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="FdoProviderCapabilitiesSchemaDataType")]
     public enum FdoProviderCapabilitiesSchemaType1 {
         
         /// <remarks/>

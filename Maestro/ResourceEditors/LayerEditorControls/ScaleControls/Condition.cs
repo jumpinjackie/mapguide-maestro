@@ -19,6 +19,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         public event EventHandler ItemDeleted;
         public event EventHandler ItemChanged;
 
+        private VectorLayer m_owner;
+
+        public VectorLayer Owner
+        {
+            get { return m_owner; }
+            set
+            {
+                m_owner = value;
+                FeatureStyle.Owner = m_owner;
+                LabelStyle.Owner = m_owner;
+            }
+        }
+
         public Condition()
         {
             InitializeComponent();
@@ -119,7 +132,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
         private void EditFilter_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(this, "This feature is not yet implemented", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string tmp = m_owner.EditExpression(RuleCondition.Text);
+            if (tmp != null)
+                RuleCondition.Text = tmp;
         }
 
         private void LegendLabel_TextChanged(object sender, EventArgs e)
@@ -167,6 +182,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         private void FeatureStyle_ItemChanged(object sender, EventArgs e)
         {
             SignalChanged();
+        }
+
+        private void FeatureStyle_Click(object sender, EventArgs e)
+        {
+            this.Focus();
         }
 
     }

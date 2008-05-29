@@ -109,5 +109,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		string BrowseUnmanagedData(string startPath, System.Collections.Specialized.NameValueCollection filetypes);
 
 		System.Windows.Forms.DialogResult LengthyOperation(object caller, System.Reflection.MethodInfo mi);
+
+        /// <summary>
+        /// Edits an SQL expression, ea. a filter or label expression
+        /// </summary>
+        /// <param name="current">The current text</param>
+        /// <param name="featureSource">The featureSource this expression is executed against</param>
+        /// <returns>Null if the user cancelled, otherwise the new expression</returns>
+        string EditExpression(string current, OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription.FeatureSourceSchema schema, string providername);
+
 	}
 }

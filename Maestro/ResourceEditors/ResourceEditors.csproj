@@ -364,6 +364,12 @@
     <Compile Include="LayerEditorControls\ScaleControls\ConditionList.Designer.cs">
       <DependentUpon>ConditionList.cs</DependentUpon>
     </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\ConditionListButtons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\ScaleControls\ConditionListButtons.Designer.cs">
+      <DependentUpon>ConditionListButtons.cs</DependentUpon>
+    </Compile>
     <Compile Include="LayerEditorControls\ScaleControls\EditorTemplateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -771,6 +777,10 @@
     <EmbeddedResource Include="LayerEditorControls\ScaleControls\ConditionList.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ConditionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\ScaleControls\ConditionListButtons.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ConditionListButtons.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LayerEditorControls\ScaleControls\EditorTemplateForm.resx">
       <SubType>Designer</SubType>

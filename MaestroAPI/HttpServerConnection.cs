@@ -255,6 +255,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public OSGeo.MapGuide.MaestroAPI.FdoProviderCapabilities GetProviderCapabilities(string provider)
 		{
+            if (m_cachedProviderCapabilities == null)
+                m_cachedProviderCapabilities = new Hashtable();
+
 			if (m_cachedProviderCapabilities.ContainsKey(provider))
 				return (FdoProviderCapabilities)m_cachedProviderCapabilities[provider];
 

@@ -16,6 +16,21 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         private VectorScaleRangeType m_vsc;
         private bool m_isUpdating = false;
 
+
+        private VectorLayer m_owner;
+
+        public VectorLayer Owner
+        {
+            get { return m_owner; }
+            set
+            {
+                m_owner = value;
+                pointConditionList.Owner = m_owner;
+                lineConditionList.Owner = m_owner;
+                areaConditionList.Owner = m_owner;
+            }
+        }
+
         public ScaleRangeConditions()
         {
             InitializeComponent();

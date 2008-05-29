@@ -267,6 +267,17 @@ namespace OSGeo.MapGuide.Maestro
 			return lo.ShowDialog(m_editor);
 		}
 
+        public string EditExpression(string current, OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription.FeatureSourceSchema schema, string providername)
+        {
+            FormExpression dlg = new FormExpression();
+            dlg.SetupForm(m_editor.CurrentConnection, schema, providername);
+            dlg.Expression = current;
+            if (dlg.ShowDialog() == DialogResult.OK)
+                return dlg.Expression;
+            else
+                return null;
+        }
+
 		#endregion
 	}
 }

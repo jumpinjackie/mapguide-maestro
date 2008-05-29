@@ -29,11 +29,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         private void InitializeComponent()
         {
             this.DisplayLines = new System.Windows.Forms.CheckBox();
-            this.lineConditionList = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ConditionList();
+            this.lineConditionList = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ConditionListButtons();
             this.DisplayPoints = new System.Windows.Forms.CheckBox();
-            this.pointConditionList = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ConditionList();
+            this.pointConditionList = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ConditionListButtons();
             this.DisplayAreas = new System.Windows.Forms.CheckBox();
-            this.areaConditionList = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ConditionList();
+            this.areaConditionList = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ConditionListButtons();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.SuspendLayout();
@@ -46,7 +46,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.DisplayLines.Dock = System.Windows.Forms.DockStyle.Top;
             this.DisplayLines.Location = new System.Drawing.Point(0, 113);
             this.DisplayLines.Name = "DisplayLines";
-            this.DisplayLines.Size = new System.Drawing.Size(594, 17);
+            this.DisplayLines.Size = new System.Drawing.Size(597, 17);
             this.DisplayLines.TabIndex = 7;
             this.DisplayLines.Text = "Display lines";
             this.DisplayLines.UseVisualStyleBackColor = true;
@@ -59,7 +59,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.lineConditionList.Dock = System.Windows.Forms.DockStyle.Top;
             this.lineConditionList.Location = new System.Drawing.Point(0, 130);
             this.lineConditionList.Name = "lineConditionList";
-            this.lineConditionList.Size = new System.Drawing.Size(594, 88);
+            this.lineConditionList.Size = new System.Drawing.Size(597, 88);
             this.lineConditionList.TabIndex = 10;
             this.lineConditionList.ItemChanged += new System.EventHandler(this.lineConditionList_ItemChanged);
             // 
@@ -71,7 +71,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.DisplayPoints.Dock = System.Windows.Forms.DockStyle.Top;
             this.DisplayPoints.Location = new System.Drawing.Point(0, 0);
             this.DisplayPoints.Name = "DisplayPoints";
-            this.DisplayPoints.Size = new System.Drawing.Size(594, 17);
+            this.DisplayPoints.Size = new System.Drawing.Size(597, 17);
             this.DisplayPoints.TabIndex = 7;
             this.DisplayPoints.Text = "Display points";
             this.DisplayPoints.UseVisualStyleBackColor = true;
@@ -84,7 +84,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.pointConditionList.Dock = System.Windows.Forms.DockStyle.Top;
             this.pointConditionList.Location = new System.Drawing.Point(0, 17);
             this.pointConditionList.Name = "pointConditionList";
-            this.pointConditionList.Size = new System.Drawing.Size(594, 88);
+            this.pointConditionList.Size = new System.Drawing.Size(597, 88);
             this.pointConditionList.TabIndex = 10;
             this.pointConditionList.ItemChanged += new System.EventHandler(this.pointConditionList_ItemChanged);
             // 
@@ -96,7 +96,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.DisplayAreas.Dock = System.Windows.Forms.DockStyle.Top;
             this.DisplayAreas.Location = new System.Drawing.Point(0, 226);
             this.DisplayAreas.Name = "DisplayAreas";
-            this.DisplayAreas.Size = new System.Drawing.Size(594, 17);
+            this.DisplayAreas.Size = new System.Drawing.Size(597, 17);
             this.DisplayAreas.TabIndex = 7;
             this.DisplayAreas.Text = "Display areas";
             this.DisplayAreas.UseVisualStyleBackColor = true;
@@ -109,7 +109,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.areaConditionList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.areaConditionList.Location = new System.Drawing.Point(0, 243);
             this.areaConditionList.Name = "areaConditionList";
-            this.areaConditionList.Size = new System.Drawing.Size(594, 91);
+            this.areaConditionList.Size = new System.Drawing.Size(597, 91);
             this.areaConditionList.TabIndex = 10;
             this.areaConditionList.ItemChanged += new System.EventHandler(this.areaConditionList_ItemChanged);
             // 
@@ -118,7 +118,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
             this.splitter1.Location = new System.Drawing.Point(0, 105);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(594, 8);
+            this.splitter1.Size = new System.Drawing.Size(597, 8);
             this.splitter1.TabIndex = 11;
             this.splitter1.TabStop = false;
             // 
@@ -127,7 +127,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.splitter2.Dock = System.Windows.Forms.DockStyle.Top;
             this.splitter2.Location = new System.Drawing.Point(0, 218);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(594, 8);
+            this.splitter2.Size = new System.Drawing.Size(597, 8);
             this.splitter2.TabIndex = 12;
             this.splitter2.TabStop = false;
             // 
@@ -144,7 +144,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.Controls.Add(this.pointConditionList);
             this.Controls.Add(this.DisplayPoints);
             this.Name = "ScaleRangeConditions";
-            this.Size = new System.Drawing.Size(594, 334);
+            this.Size = new System.Drawing.Size(597, 334);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,10 +153,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         #endregion
 
         private System.Windows.Forms.CheckBox DisplayLines;
-        private ConditionList lineConditionList;
-        private ConditionList pointConditionList;
+        private ConditionListButtons lineConditionList;
+        private ConditionListButtons pointConditionList;
         private System.Windows.Forms.CheckBox DisplayPoints;
-        private ConditionList areaConditionList;
+        private ConditionListButtons areaConditionList;
         private System.Windows.Forms.CheckBox DisplayAreas;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Splitter splitter2;
