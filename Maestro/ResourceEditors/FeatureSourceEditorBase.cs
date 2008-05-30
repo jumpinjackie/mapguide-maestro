@@ -110,7 +110,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			m_editor = editor;
 			SelectDataProvider sdp = new SelectDataProvider(editor.CurrentConnection);
-			if (sdp.ShowDialog() != DialogResult.Cancel && sdp.SelectedProvider != null)
+            DialogResult dlgres = sdp.ShowDialog(this);
+
+			if (dlgres != DialogResult.Cancel && sdp.SelectedProvider != null)
 			{
 				string nid = editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource, true);
 				m_feature = new OSGeo.MapGuide.MaestroAPI.FeatureSource();
@@ -124,8 +126,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				CreateLayout(editor, m_feature);
 			}
 
-			if (m_child == null)
-				throw new Exception("Failed to create new datasource");
+            if (m_child == null)
+                if (dlgres == DialogResult.Cancel)
+                    //TODO: Should probably have a special class rather than this ugly way...
+                    throw new Exception("CANCEL");
+                else
+				    throw new Exception("Failed to create new datasource");
 
 
 		}

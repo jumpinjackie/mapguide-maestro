@@ -120,65 +120,65 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.featureSourceExtension = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions.FeatureSourceExtension();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.OKBtn = new System.Windows.Forms.Button();
-			this.CancelBtn = new System.Windows.Forms.Button();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// featureSourceExtension
-			// 
-			this.featureSourceExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.featureSourceExtension.Location = new System.Drawing.Point(8, 8);
-			this.featureSourceExtension.Name = "featureSourceExtension";
-			this.featureSourceExtension.Size = new System.Drawing.Size(608, 336);
-			this.featureSourceExtension.TabIndex = 0;
-			// 
-			// panel1
-			// 
-			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.panel1.Controls.Add(this.CancelBtn);
-			this.panel1.Controls.Add(this.OKBtn);
-			this.panel1.Location = new System.Drawing.Point(8, 352);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(608, 24);
-			this.panel1.TabIndex = 1;
-			// 
-			// OKBtn
-			// 
-			this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.OKBtn.Location = new System.Drawing.Point(216, 0);
-			this.OKBtn.Name = "OKBtn";
-			this.OKBtn.Size = new System.Drawing.Size(80, 24);
-			this.OKBtn.TabIndex = 0;
-			this.OKBtn.Text = "OK";
-			this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
-			// 
-			// CancelBtn
-			// 
-			this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.CancelBtn.Location = new System.Drawing.Point(304, 0);
-			this.CancelBtn.Name = "CancelBtn";
-			this.CancelBtn.Size = new System.Drawing.Size(80, 24);
-			this.CancelBtn.TabIndex = 1;
-			this.CancelBtn.Text = "Cancel";
-			// 
-			// EditExtensions
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.CancelButton = this.CancelBtn;
-			this.ClientSize = new System.Drawing.Size(624, 381);
-			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.featureSourceExtension);
-			this.Name = "EditExtensions";
-			this.Text = "EditExtensions";
-			this.panel1.ResumeLayout(false);
-			this.ResumeLayout(false);
+            this.featureSourceExtension = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions.FeatureSourceExtension();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CancelBtn = new System.Windows.Forms.Button();
+            this.OKBtn = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // featureSourceExtension
+            // 
+            this.featureSourceExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.featureSourceExtension.Location = new System.Drawing.Point(8, 8);
+            this.featureSourceExtension.Name = "featureSourceExtension";
+            this.featureSourceExtension.Size = new System.Drawing.Size(608, 336);
+            this.featureSourceExtension.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.CancelBtn);
+            this.panel1.Controls.Add(this.OKBtn);
+            this.panel1.Location = new System.Drawing.Point(8, 352);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(608, 24);
+            this.panel1.TabIndex = 1;
+            // 
+            // CancelBtn
+            // 
+            this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelBtn.Location = new System.Drawing.Point(304, 0);
+            this.CancelBtn.Name = "CancelBtn";
+            this.CancelBtn.Size = new System.Drawing.Size(80, 24);
+            this.CancelBtn.TabIndex = 1;
+            this.CancelBtn.Text = "Cancel";
+            // 
+            // OKBtn
+            // 
+            this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.OKBtn.Location = new System.Drawing.Point(216, 0);
+            this.OKBtn.Name = "OKBtn";
+            this.OKBtn.Size = new System.Drawing.Size(80, 24);
+            this.OKBtn.TabIndex = 0;
+            this.OKBtn.Text = "OK";
+            this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
+            // 
+            // EditExtensions
+            // 
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.CancelButton = this.CancelBtn;
+            this.ClientSize = new System.Drawing.Size(624, 381);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.featureSourceExtension);
+            this.Name = "EditExtensions";
+            this.Text = "Edit feature source extensions";
+            this.panel1.ResumeLayout(false);
+            this.ResumeLayout(false);
 
 		}
 		#endregion

@@ -2321,14 +2321,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private void ItemTree_ItemDrag(object sender, ItemDragEventArgs e)
         {
             TreeView tree = sender as TreeView;
-            if (tree == null || tree.SelectedNode == null || tree.SelectedNode.Tag == null)
+            if (tree == null || e.Item as TreeNode == null || (e.Item as TreeNode).TreeView != GetActiveTree())
                 return;
-            TreeNode node = tree.GetNodeAt(tree.PointToClient(Cursor.Position));
-            if (node != null)
-            {
-                tree.SelectedNode = node;
-                tree.DoDragDrop(node, DragDropEffects.Move);
-            }
+            tree.DoDragDrop(e.Item, DragDropEffects.Move);
         }
 
         private void ItemTree_DragEnter(object sender, DragEventArgs e)

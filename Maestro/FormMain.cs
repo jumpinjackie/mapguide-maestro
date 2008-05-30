@@ -1073,7 +1073,13 @@ namespace OSGeo.MapGuide.Maestro
 				}
 				catch(Exception ex)
 				{
-					//TODO: Handle cancel a little more gracefully
+                    if (ex as System.Reflection.TargetInvocationException != null)
+                        ex = ex.InnerException;
+ 
+					//TODO: Handle cancel with a special exeption type
+                    if (ex.Message == "CANCEL")
+                        return;
+
 					MessageBox.Show(this, string.Format(m_globalizor.Translate("Unable to create the resource {0}\nError message: {1}"), resourceID, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			else

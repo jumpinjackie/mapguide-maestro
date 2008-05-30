@@ -137,6 +137,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.OKBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.OKBtn.Enabled = false;
             this.OKBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.OKBtn.Location = new System.Drawing.Point(40, 304);
             this.OKBtn.Name = "OKBtn";
@@ -169,6 +170,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.Controls.Add(this.ProviderList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SelectDataProvider";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Select Data Provider";
             this.ResumeLayout(false);
 
