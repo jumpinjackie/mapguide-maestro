@@ -382,15 +382,26 @@ namespace OSGeo.MapGuide.MaestroAPI
 			System.Net.WebRequest req = m_reqBuilder.SetResource(resourceid, outStream, stream, null);
 			req.Credentials = m_wc.Credentials;
 			outStream.Position = 0;
-			using(System.IO.Stream rs = req.GetRequestStream())
-			{
-				Utility.CopyStream(outStream, rs);
-				rs.Flush();
-			}
-			using (System.IO.Stream resp = req.GetResponse().GetResponseStream())
-			{
-				//Do nothing... there is no return value
-			}
+            try
+            {
+                using (System.IO.Stream rs = req.GetRequestStream())
+                {
+                    Utility.CopyStream(outStream, rs);
+                    rs.Flush();
+                }
+                using (System.IO.Stream resp = req.GetResponse().GetResponseStream())
+                {
+                    //Do nothing... there is no return value
+                }
+            }
+            catch (Exception ex)
+            {
+                Exception ex2 = Utility.ThrowAsWebException(ex);
+                if (ex2 != ex)
+                    throw ex2;
+                else
+                    throw;
+            }
 #if DEBUG_LASTMESSAGE
 			} 
 			catch 
@@ -979,11 +990,17 @@ namespace OSGeo.MapGuide.MaestroAPI
 			}
 			catch (Exception ex)
 			{
-				if (!this.m_autoRestartSession || !this.IsSessionExpiredException(ex) || !this.RestartSession(false)) 
-					throw;
-				else
-					//Do not try more than once
-					return m_wc.DownloadData(req.Replace(prev_session, m_reqBuilder.SessionID)); 
+                if (!this.m_autoRestartSession || !this.IsSessionExpiredException(ex) || !this.RestartSession(false))
+                {
+                    Exception ex2 = Utility.ThrowAsWebException(ex);
+                    if (ex2 != ex)
+                        throw ex2;
+                    else
+                        throw;
+                }
+                else
+                    //Do not try more than once
+                    return m_wc.DownloadData(req.Replace(prev_session, m_reqBuilder.SessionID)); 
 			}
 		}
 

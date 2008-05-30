@@ -30,8 +30,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 	/// Summary description for MapLayerGroupProperties.
 	/// </summary>
 	public class MapLayerGroupProperties : System.Windows.Forms.UserControl
-	{
-		private System.Windows.Forms.TextBox txtLayername;
+    {
+        public TextBox txtLayername;
 		private System.Windows.Forms.CheckBox chkLayerShowInLegend;
 		private System.Windows.Forms.CheckBox chkLayerVisible;
 		private System.Windows.Forms.Label label12;
@@ -110,103 +110,102 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.txtLayername = new System.Windows.Forms.TextBox();
-			this.chkLayerShowInLegend = new System.Windows.Forms.CheckBox();
-			this.chkLayerVisible = new System.Windows.Forms.CheckBox();
-			this.label12 = new System.Windows.Forms.Label();
-			this.chkLayerExpand = new System.Windows.Forms.CheckBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.txtLayerLegendLabel = new System.Windows.Forms.TextBox();
-			this.SuspendLayout();
-			// 
-			// txtLayername
-			// 
-			this.txtLayername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.txtLayername.Location = new System.Drawing.Point(128, 8);
-			this.txtLayername.Name = "txtLayername";
-			this.txtLayername.Size = new System.Drawing.Size(160, 20);
-			this.txtLayername.TabIndex = 47;
-			this.txtLayername.Text = "";
-			this.txtLayername.TextChanged += new System.EventHandler(this.txtLayername_TextChanged);
-			// 
-			// chkLayerShowInLegend
-			// 
-			this.chkLayerShowInLegend.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.chkLayerShowInLegend.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.chkLayerShowInLegend.Location = new System.Drawing.Point(16, 104);
-			this.chkLayerShowInLegend.Name = "chkLayerShowInLegend";
-			this.chkLayerShowInLegend.Size = new System.Drawing.Size(272, 16);
-			this.chkLayerShowInLegend.TabIndex = 46;
-			this.chkLayerShowInLegend.Text = "Group is shown in the map legend";
-			this.chkLayerShowInLegend.CheckedChanged += new System.EventHandler(this.chkLayerShowInLegend_CheckedChanged);
-			// 
-			// chkLayerVisible
-			// 
-			this.chkLayerVisible.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.chkLayerVisible.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.chkLayerVisible.Location = new System.Drawing.Point(16, 80);
-			this.chkLayerVisible.Name = "chkLayerVisible";
-			this.chkLayerVisible.Size = new System.Drawing.Size(272, 16);
-			this.chkLayerVisible.TabIndex = 44;
-			this.chkLayerVisible.Text = "Group is visible at startup";
-			this.chkLayerVisible.CheckedChanged += new System.EventHandler(this.chkLayerVisible_CheckedChanged);
-			// 
-			// label12
-			// 
-			this.label12.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label12.Location = new System.Drawing.Point(16, 40);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(96, 16);
-			this.label12.TabIndex = 43;
-			this.label12.Text = "Legend label";
-			// 
-			// chkLayerExpand
-			// 
-			this.chkLayerExpand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.chkLayerExpand.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.chkLayerExpand.Location = new System.Drawing.Point(16, 128);
-			this.chkLayerExpand.Name = "chkLayerExpand";
-			this.chkLayerExpand.Size = new System.Drawing.Size(272, 16);
-			this.chkLayerExpand.TabIndex = 45;
-			this.chkLayerExpand.Text = "Group is expanded in legend";
-			this.chkLayerExpand.CheckedChanged += new System.EventHandler(this.chkLayerExpand_CheckedChanged);
-			// 
-			// label10
-			// 
-			this.label10.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label10.Location = new System.Drawing.Point(16, 8);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(88, 16);
-			this.label10.TabIndex = 41;
-			this.label10.Text = "Name";
-			// 
-			// txtLayerLegendLabel
-			// 
-			this.txtLayerLegendLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.txtLayerLegendLabel.Location = new System.Drawing.Point(128, 40);
-			this.txtLayerLegendLabel.Name = "txtLayerLegendLabel";
-			this.txtLayerLegendLabel.Size = new System.Drawing.Size(160, 20);
-			this.txtLayerLegendLabel.TabIndex = 49;
-			this.txtLayerLegendLabel.Text = "textBox10";
-			this.txtLayerLegendLabel.TextChanged += new System.EventHandler(this.txtLayerLegendLabel_TextChanged);
-			// 
-			// MapLayerGroupProperties
-			// 
-			this.Controls.Add(this.txtLayername);
-			this.Controls.Add(this.chkLayerShowInLegend);
-			this.Controls.Add(this.chkLayerVisible);
-			this.Controls.Add(this.chkLayerExpand);
-			this.Controls.Add(this.txtLayerLegendLabel);
-			this.Controls.Add(this.label12);
-			this.Controls.Add(this.label10);
-			this.Name = "MapLayerGroupProperties";
-			this.Size = new System.Drawing.Size(304, 184);
-			this.ResumeLayout(false);
+            this.txtLayername = new System.Windows.Forms.TextBox();
+            this.chkLayerShowInLegend = new System.Windows.Forms.CheckBox();
+            this.chkLayerVisible = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.chkLayerExpand = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtLayerLegendLabel = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // txtLayername
+            // 
+            this.txtLayername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLayername.Location = new System.Drawing.Point(128, 8);
+            this.txtLayername.Name = "txtLayername";
+            this.txtLayername.Size = new System.Drawing.Size(160, 20);
+            this.txtLayername.TabIndex = 47;
+            this.txtLayername.TextChanged += new System.EventHandler(this.txtLayername_TextChanged);
+            // 
+            // chkLayerShowInLegend
+            // 
+            this.chkLayerShowInLegend.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkLayerShowInLegend.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkLayerShowInLegend.Location = new System.Drawing.Point(16, 104);
+            this.chkLayerShowInLegend.Name = "chkLayerShowInLegend";
+            this.chkLayerShowInLegend.Size = new System.Drawing.Size(272, 16);
+            this.chkLayerShowInLegend.TabIndex = 46;
+            this.chkLayerShowInLegend.Text = "Group is shown in the map legend";
+            this.chkLayerShowInLegend.CheckedChanged += new System.EventHandler(this.chkLayerShowInLegend_CheckedChanged);
+            // 
+            // chkLayerVisible
+            // 
+            this.chkLayerVisible.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkLayerVisible.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkLayerVisible.Location = new System.Drawing.Point(16, 80);
+            this.chkLayerVisible.Name = "chkLayerVisible";
+            this.chkLayerVisible.Size = new System.Drawing.Size(272, 16);
+            this.chkLayerVisible.TabIndex = 44;
+            this.chkLayerVisible.Text = "Group is visible at startup";
+            this.chkLayerVisible.CheckedChanged += new System.EventHandler(this.chkLayerVisible_CheckedChanged);
+            // 
+            // label12
+            // 
+            this.label12.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label12.Location = new System.Drawing.Point(16, 40);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(96, 16);
+            this.label12.TabIndex = 43;
+            this.label12.Text = "Legend label";
+            // 
+            // chkLayerExpand
+            // 
+            this.chkLayerExpand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkLayerExpand.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkLayerExpand.Location = new System.Drawing.Point(16, 128);
+            this.chkLayerExpand.Name = "chkLayerExpand";
+            this.chkLayerExpand.Size = new System.Drawing.Size(272, 16);
+            this.chkLayerExpand.TabIndex = 45;
+            this.chkLayerExpand.Text = "Group is expanded in legend";
+            this.chkLayerExpand.CheckedChanged += new System.EventHandler(this.chkLayerExpand_CheckedChanged);
+            // 
+            // label10
+            // 
+            this.label10.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label10.Location = new System.Drawing.Point(16, 8);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(88, 16);
+            this.label10.TabIndex = 41;
+            this.label10.Text = "Name";
+            // 
+            // txtLayerLegendLabel
+            // 
+            this.txtLayerLegendLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLayerLegendLabel.Location = new System.Drawing.Point(128, 40);
+            this.txtLayerLegendLabel.Name = "txtLayerLegendLabel";
+            this.txtLayerLegendLabel.Size = new System.Drawing.Size(160, 20);
+            this.txtLayerLegendLabel.TabIndex = 49;
+            this.txtLayerLegendLabel.TextChanged += new System.EventHandler(this.txtLayerLegendLabel_TextChanged);
+            // 
+            // MapLayerGroupProperties
+            // 
+            this.Controls.Add(this.txtLayername);
+            this.Controls.Add(this.chkLayerShowInLegend);
+            this.Controls.Add(this.chkLayerVisible);
+            this.Controls.Add(this.chkLayerExpand);
+            this.Controls.Add(this.txtLayerLegendLabel);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label10);
+            this.Name = "MapLayerGroupProperties";
+            this.Size = new System.Drawing.Size(304, 184);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

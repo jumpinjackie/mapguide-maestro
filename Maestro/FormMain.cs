@@ -1202,7 +1202,7 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void NewFolderMenuItem_Click(object sender, System.EventArgs e)
 		{
-						
+            AddFolder();
 		}
 
 		private void NewResourceMenu_Clicked(object sender, System.EventArgs e)

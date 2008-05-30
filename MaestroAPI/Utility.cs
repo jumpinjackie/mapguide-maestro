@@ -378,5 +378,36 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             get { return typeof(Topology.Geometries.IGeometry); }
         }
+
+        public static Exception ThrowAsWebException(Exception ex)
+        {
+            if (ex as System.Net.WebException != null)
+            {
+                try
+                {
+                    System.Net.WebException wex = ex as System.Net.WebException;
+                    using (System.IO.StreamReader sr = new System.IO.StreamReader(wex.Response.GetResponseStream()))
+                    {
+                        string html = sr.ReadToEnd();
+                        System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex("(\\<body\\>)(.+)\\<\\/body\\>", System.Text.RegularExpressions.RegexOptions.Singleline);
+                        System.Text.RegularExpressions.Match m = r.Match(html);
+                        if (m.Success && m.Groups.Count == 3)
+                        {
+                            html = m.Groups[2].Value;
+                            int n = html.IndexOf("</h2>");
+                            if (n > 0)
+                                html = html.Substring(n + "</h2>".Length);
+                        }
+
+                        return new Exception(wex.Message + ": " + html, wex);
+                    }
+                }
+                catch
+                {
+                }
+            }
+
+            return ex;
+        }
 	}
 }

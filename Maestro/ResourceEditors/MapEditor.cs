@@ -1255,10 +1255,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				groupName = string.Format(m_globalizor.Translate("New group {0}"), + (i++));
 
 			group.Name = groupName;
+            group.ShowInLegend = true;
+            group.Visible = true;
+            group.ExpandInLegend = true;
 			m_map.LayerGroups.Add(group);
 			m_editor.HasChanged();
 			UpdateDisplay();
 			SelectItemByTag(trvLayerGroups.Nodes, group);
+            try
+            {
+                ctlGroupProperties.txtLayername.SelectAll();
+                ctlGroupProperties.txtLayername.Focus();
+            }
+            catch { }
 		}
 
 		private void AddLayer()
@@ -1293,6 +1302,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 							lvi.EnsureVisible();
 							break;
 						}
+                try
+                {
+                    ctlLayerProperties.txtLayername.SelectAll();
+                    ctlLayerProperties.txtLayername.Focus();
+                }
+                catch { }
 			}
 		}
 

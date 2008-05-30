@@ -30,8 +30,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 	/// Summary description for MapLayerProperties.
 	/// </summary>
 	public class MapLayerProperties : System.Windows.Forms.UserControl
-	{
-		private System.Windows.Forms.TextBox txtLayername;
+    {
+        public TextBox txtLayername;
 		private System.Windows.Forms.CheckBox chkLayerShowInLegend;
 		private System.Windows.Forms.CheckBox chkLayerVisible;
 		private System.Windows.Forms.CheckBox chkLayerSelectable;
@@ -122,169 +122,168 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.txtLayername = new System.Windows.Forms.TextBox();
-			this.chkLayerShowInLegend = new System.Windows.Forms.CheckBox();
-			this.chkLayerVisible = new System.Windows.Forms.CheckBox();
-			this.chkLayerSelectable = new System.Windows.Forms.CheckBox();
-			this.btnEdit = new System.Windows.Forms.Button();
-			this.label12 = new System.Windows.Forms.Label();
-			this.chkLayerExpand = new System.Windows.Forms.CheckBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
-			this.txtLayerLegendLabel = new System.Windows.Forms.TextBox();
-			this.btnSelectLayer = new System.Windows.Forms.Button();
-			this.txtLayerResource = new System.Windows.Forms.TextBox();
-			this.SuspendLayout();
-			// 
-			// txtLayername
-			// 
-			this.txtLayername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.txtLayername.Location = new System.Drawing.Point(128, 40);
-			this.txtLayername.Name = "txtLayername";
-			this.txtLayername.Size = new System.Drawing.Size(160, 20);
-			this.txtLayername.TabIndex = 38;
-			this.txtLayername.Text = "";
-			this.txtLayername.TextChanged += new System.EventHandler(this.txtLayername_TextChanged);
-			// 
-			// chkLayerShowInLegend
-			// 
-			this.chkLayerShowInLegend.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.chkLayerShowInLegend.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.chkLayerShowInLegend.Location = new System.Drawing.Point(16, 160);
-			this.chkLayerShowInLegend.Name = "chkLayerShowInLegend";
-			this.chkLayerShowInLegend.Size = new System.Drawing.Size(272, 16);
-			this.chkLayerShowInLegend.TabIndex = 35;
-			this.chkLayerShowInLegend.Text = "Layer is shown in the map legend";
-			this.chkLayerShowInLegend.CheckedChanged += new System.EventHandler(this.chkLayerShowInLegend_CheckedChanged);
-			// 
-			// chkLayerVisible
-			// 
-			this.chkLayerVisible.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.chkLayerVisible.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.chkLayerVisible.Location = new System.Drawing.Point(16, 112);
-			this.chkLayerVisible.Name = "chkLayerVisible";
-			this.chkLayerVisible.Size = new System.Drawing.Size(272, 16);
-			this.chkLayerVisible.TabIndex = 32;
-			this.chkLayerVisible.Text = "Layer is visible at startup (when in display range)";
-			this.chkLayerVisible.CheckedChanged += new System.EventHandler(this.chkLayerVisible_CheckedChanged);
-			// 
-			// chkLayerSelectable
-			// 
-			this.chkLayerSelectable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.chkLayerSelectable.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.chkLayerSelectable.Location = new System.Drawing.Point(16, 136);
-			this.chkLayerSelectable.Name = "chkLayerSelectable";
-			this.chkLayerSelectable.Size = new System.Drawing.Size(272, 16);
-			this.chkLayerSelectable.TabIndex = 33;
-			this.chkLayerSelectable.Text = "Features on layer are selectable (if visible)";
-			this.chkLayerSelectable.CheckedChanged += new System.EventHandler(this.chkLayerSelectable_CheckedChanged);
-			// 
-			// btnEdit
-			// 
-			this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btnEdit.Location = new System.Drawing.Point(166, 216);
-			this.btnEdit.Name = "btnEdit";
-			this.btnEdit.Size = new System.Drawing.Size(128, 32);
-			this.btnEdit.TabIndex = 41;
-			this.btnEdit.Text = "Edit layer";
-			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-			// 
-			// label12
-			// 
-			this.label12.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label12.Location = new System.Drawing.Point(16, 72);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(96, 16);
-			this.label12.TabIndex = 31;
-			this.label12.Text = "Legend label";
-			// 
-			// chkLayerExpand
-			// 
-			this.chkLayerExpand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.chkLayerExpand.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.chkLayerExpand.Location = new System.Drawing.Point(16, 184);
-			this.chkLayerExpand.Name = "chkLayerExpand";
-			this.chkLayerExpand.Size = new System.Drawing.Size(272, 16);
-			this.chkLayerExpand.TabIndex = 34;
-			this.chkLayerExpand.Text = "Layer is expanded in legend (if themed)";
-			this.chkLayerExpand.CheckedChanged += new System.EventHandler(this.chkLayerExpand_CheckedChanged);
-			// 
-			// label9
-			// 
-			this.label9.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label9.Location = new System.Drawing.Point(16, 8);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(88, 16);
-			this.label9.TabIndex = 28;
-			this.label9.Text = "Resource";
-			// 
-			// label10
-			// 
-			this.label10.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label10.Location = new System.Drawing.Point(16, 40);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(88, 16);
-			this.label10.TabIndex = 29;
-			this.label10.Text = "Name";
-			// 
-			// txtLayerLegendLabel
-			// 
-			this.txtLayerLegendLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.txtLayerLegendLabel.Location = new System.Drawing.Point(128, 72);
-			this.txtLayerLegendLabel.Name = "txtLayerLegendLabel";
-			this.txtLayerLegendLabel.Size = new System.Drawing.Size(160, 20);
-			this.txtLayerLegendLabel.TabIndex = 40;
-			this.txtLayerLegendLabel.Text = "textBox10";
-			this.txtLayerLegendLabel.TextChanged += new System.EventHandler(this.txtLayerLegendLabel_TextChanged);
-			// 
-			// btnSelectLayer
-			// 
-			this.btnSelectLayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnSelectLayer.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btnSelectLayer.Location = new System.Drawing.Point(264, 8);
-			this.btnSelectLayer.Name = "btnSelectLayer";
-			this.btnSelectLayer.Size = new System.Drawing.Size(24, 20);
-			this.btnSelectLayer.TabIndex = 37;
-			this.btnSelectLayer.Text = "...";
-			this.btnSelectLayer.Click += new System.EventHandler(this.btnSelectLayer_Click);
-			// 
-			// txtLayerResource
-			// 
-			this.txtLayerResource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.txtLayerResource.Location = new System.Drawing.Point(128, 8);
-			this.txtLayerResource.Name = "txtLayerResource";
-			this.txtLayerResource.ReadOnly = true;
-			this.txtLayerResource.Size = new System.Drawing.Size(136, 20);
-			this.txtLayerResource.TabIndex = 36;
-			this.txtLayerResource.Text = "";
-			// 
-			// MapLayerProperties
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(300, 304);
-			this.Controls.Add(this.txtLayername);
-			this.Controls.Add(this.chkLayerShowInLegend);
-			this.Controls.Add(this.chkLayerVisible);
-			this.Controls.Add(this.chkLayerSelectable);
-			this.Controls.Add(this.btnEdit);
-			this.Controls.Add(this.chkLayerExpand);
-			this.Controls.Add(this.txtLayerLegendLabel);
-			this.Controls.Add(this.btnSelectLayer);
-			this.Controls.Add(this.txtLayerResource);
-			this.Controls.Add(this.label12);
-			this.Controls.Add(this.label9);
-			this.Controls.Add(this.label10);
-			this.Name = "MapLayerProperties";
-			this.Size = new System.Drawing.Size(304, 304);
-			this.ResumeLayout(false);
+            this.txtLayername = new System.Windows.Forms.TextBox();
+            this.chkLayerShowInLegend = new System.Windows.Forms.CheckBox();
+            this.chkLayerVisible = new System.Windows.Forms.CheckBox();
+            this.chkLayerSelectable = new System.Windows.Forms.CheckBox();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.chkLayerExpand = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtLayerLegendLabel = new System.Windows.Forms.TextBox();
+            this.btnSelectLayer = new System.Windows.Forms.Button();
+            this.txtLayerResource = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // txtLayername
+            // 
+            this.txtLayername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLayername.Location = new System.Drawing.Point(128, 40);
+            this.txtLayername.Name = "txtLayername";
+            this.txtLayername.Size = new System.Drawing.Size(160, 20);
+            this.txtLayername.TabIndex = 38;
+            this.txtLayername.TextChanged += new System.EventHandler(this.txtLayername_TextChanged);
+            // 
+            // chkLayerShowInLegend
+            // 
+            this.chkLayerShowInLegend.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkLayerShowInLegend.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkLayerShowInLegend.Location = new System.Drawing.Point(16, 160);
+            this.chkLayerShowInLegend.Name = "chkLayerShowInLegend";
+            this.chkLayerShowInLegend.Size = new System.Drawing.Size(272, 16);
+            this.chkLayerShowInLegend.TabIndex = 35;
+            this.chkLayerShowInLegend.Text = "Layer is shown in the map legend";
+            this.chkLayerShowInLegend.CheckedChanged += new System.EventHandler(this.chkLayerShowInLegend_CheckedChanged);
+            // 
+            // chkLayerVisible
+            // 
+            this.chkLayerVisible.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkLayerVisible.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkLayerVisible.Location = new System.Drawing.Point(16, 112);
+            this.chkLayerVisible.Name = "chkLayerVisible";
+            this.chkLayerVisible.Size = new System.Drawing.Size(272, 16);
+            this.chkLayerVisible.TabIndex = 32;
+            this.chkLayerVisible.Text = "Layer is visible at startup (when in display range)";
+            this.chkLayerVisible.CheckedChanged += new System.EventHandler(this.chkLayerVisible_CheckedChanged);
+            // 
+            // chkLayerSelectable
+            // 
+            this.chkLayerSelectable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkLayerSelectable.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkLayerSelectable.Location = new System.Drawing.Point(16, 136);
+            this.chkLayerSelectable.Name = "chkLayerSelectable";
+            this.chkLayerSelectable.Size = new System.Drawing.Size(272, 16);
+            this.chkLayerSelectable.TabIndex = 33;
+            this.chkLayerSelectable.Text = "Features on layer are selectable (if visible)";
+            this.chkLayerSelectable.CheckedChanged += new System.EventHandler(this.chkLayerSelectable_CheckedChanged);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnEdit.Location = new System.Drawing.Point(166, 216);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(128, 32);
+            this.btnEdit.TabIndex = 41;
+            this.btnEdit.Text = "Edit layer";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // label12
+            // 
+            this.label12.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label12.Location = new System.Drawing.Point(16, 72);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(96, 16);
+            this.label12.TabIndex = 31;
+            this.label12.Text = "Legend label";
+            // 
+            // chkLayerExpand
+            // 
+            this.chkLayerExpand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkLayerExpand.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkLayerExpand.Location = new System.Drawing.Point(16, 184);
+            this.chkLayerExpand.Name = "chkLayerExpand";
+            this.chkLayerExpand.Size = new System.Drawing.Size(272, 16);
+            this.chkLayerExpand.TabIndex = 34;
+            this.chkLayerExpand.Text = "Layer is expanded in legend (if themed)";
+            this.chkLayerExpand.CheckedChanged += new System.EventHandler(this.chkLayerExpand_CheckedChanged);
+            // 
+            // label9
+            // 
+            this.label9.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label9.Location = new System.Drawing.Point(16, 8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(88, 16);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Resource";
+            // 
+            // label10
+            // 
+            this.label10.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label10.Location = new System.Drawing.Point(16, 40);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(88, 16);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "Name";
+            // 
+            // txtLayerLegendLabel
+            // 
+            this.txtLayerLegendLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLayerLegendLabel.Location = new System.Drawing.Point(128, 72);
+            this.txtLayerLegendLabel.Name = "txtLayerLegendLabel";
+            this.txtLayerLegendLabel.Size = new System.Drawing.Size(160, 20);
+            this.txtLayerLegendLabel.TabIndex = 40;
+            this.txtLayerLegendLabel.Text = "textBox10";
+            this.txtLayerLegendLabel.TextChanged += new System.EventHandler(this.txtLayerLegendLabel_TextChanged);
+            // 
+            // btnSelectLayer
+            // 
+            this.btnSelectLayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelectLayer.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnSelectLayer.Location = new System.Drawing.Point(264, 8);
+            this.btnSelectLayer.Name = "btnSelectLayer";
+            this.btnSelectLayer.Size = new System.Drawing.Size(24, 20);
+            this.btnSelectLayer.TabIndex = 37;
+            this.btnSelectLayer.Text = "...";
+            this.btnSelectLayer.Click += new System.EventHandler(this.btnSelectLayer_Click);
+            // 
+            // txtLayerResource
+            // 
+            this.txtLayerResource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLayerResource.Location = new System.Drawing.Point(128, 8);
+            this.txtLayerResource.Name = "txtLayerResource";
+            this.txtLayerResource.ReadOnly = true;
+            this.txtLayerResource.Size = new System.Drawing.Size(136, 20);
+            this.txtLayerResource.TabIndex = 36;
+            // 
+            // MapLayerProperties
+            // 
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(300, 304);
+            this.Controls.Add(this.txtLayername);
+            this.Controls.Add(this.chkLayerShowInLegend);
+            this.Controls.Add(this.chkLayerVisible);
+            this.Controls.Add(this.chkLayerSelectable);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.chkLayerExpand);
+            this.Controls.Add(this.txtLayerLegendLabel);
+            this.Controls.Add(this.btnSelectLayer);
+            this.Controls.Add(this.txtLayerResource);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label10);
+            this.Name = "MapLayerProperties";
+            this.Size = new System.Drawing.Size(304, 304);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion
