@@ -439,7 +439,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
 				m_command.LayerSet = new System.Collections.Specialized.StringCollection();
 				foreach(string s in dlg.LayerList.CheckedItems)
 					m_command.LayerSet.Add(s);
-			
+
+                LayerSet.Items.Clear();
 
 				if (m_command.LayerSet == null || m_command.LayerSet.Count == 0)
 				{

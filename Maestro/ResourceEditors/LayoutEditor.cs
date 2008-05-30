@@ -38,6 +38,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		public Hashtable BuiltInCommands = null;
 		private Hashtable m_advancedTypes = null;
 
+        private const int BLANK_IMAGE = 0;
+        private const int FOLDER_IMAGE = 1;
+        private const int SEPARATOR_IMAGE = 2;
+
 		private OSGeo.MapGuide.MaestroAPI.WebLayout m_layout;
 		private EditorInterface m_editor;
 		private System.Windows.Forms.Label label1;
@@ -78,8 +82,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Windows.Forms.TextBox HomePageURL;
 		private System.Windows.Forms.TextBox FeatureLinkTarget;
 		private System.Windows.Forms.ComboBox FeatureLinkTargetType;
-		private System.Windows.Forms.Button SelectMapButton;
-		private System.Windows.Forms.ImageList ToolbarIcons;
+        private System.Windows.Forms.Button SelectMapButton;
 		private System.Data.DataSet CommandTypesDataset;
 		private System.Data.DataTable CommandTable;
 		private System.Data.DataColumn dataColumn1;
@@ -136,6 +139,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripMenuItem AddSubMenuItem;
         private ToolStripMenuItem AddSeperatorItem;
         private ContextMenuStrip CreateCommandMenu;
+        private ImageList FixedImages;
 		private string m_tempResource;
 
 		private enum ListViewColumns : int
@@ -272,7 +276,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			{
 				foreach(OSGeo.MapGuide.MaestroAPI.CommandType i in m_layout.CommandSet)
 					if (!BuiltInCommands.ContainsKey(i.Name) && i.Name != "Invoke Script" && i.Name != "Invoke URL" && i.Name != "Search")
-						AddCustomItemMenu.DropDown.Items.Add(new ToolStripMenuItem(i.Name, null, new System.EventHandler(AddCustomItem_Click)));
+						AddCustomItemMenu.DropDown.Items.Add(new ToolStripMenuItem(i.Name, LoadedImageList.Images[FindImageIndex(i.ImageURL)], new System.EventHandler(AddCustomItem_Click)));
 			}
 
 			SortedList sl = new SortedList(BuiltInCommands);
@@ -283,7 +287,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 CreateCommandMenu.Items.Add(new ToolStripMenuItem(dr["Command"].ToString(), null, new System.EventHandler(CreateCommand_Click)));
 
 				if (key != "Invoke Script" && key != "Invoke URL" && key != "Search")
-                    AddBuiltInFunctionMenu.DropDown.Items.Add(new ToolStripMenuItem(dr["Command"].ToString(), null, new System.EventHandler(AddBuiltInItem_Click)));
+                    AddBuiltInFunctionMenu.DropDown.Items.Add(new ToolStripMenuItem(dr["Command"].ToString(), LoadedImageList.Images[FindImageIndex(dr["EnabledIcon"].ToString())], new System.EventHandler(AddBuiltInItem_Click)));
 			}
 
             ToolbarCreateButton.DropDown = CreateCommandMenu;
@@ -307,6 +311,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			{
 				string prevpath = null;
 				int previndex = -1;
+
+                tree.ImageList = LoadedImageList;
 
 				if (tree.SelectedNode != null)
 				{
@@ -377,6 +383,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					OSGeo.MapGuide.MaestroAPI.CommandItemType cmd = (OSGeo.MapGuide.MaestroAPI.CommandItemType)button;
 					TreeNode n = new TreeNode(cmd.Command);
 					n.Tag = button;
+                    n.ImageIndex = n.SelectedImageIndex = BLANK_IMAGE;
+
+                    foreach(OSGeo.MapGuide.MaestroAPI.CommandType ct in m_layout.CommandSet)
+                        if (ct.Name == cmd.Command)
+                        {
+                            n.ImageIndex = n.SelectedImageIndex = FindImageIndex(ct.ImageURL);
+                            break;
+                        }
+
 					parent.Add(n);
 				}
 				else if (button as OSGeo.MapGuide.MaestroAPI.SeparatorItemType != null)
@@ -384,6 +399,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					OSGeo.MapGuide.MaestroAPI.SeparatorItemType cmd = (OSGeo.MapGuide.MaestroAPI.SeparatorItemType)button;
 					TreeNode n = new TreeNode(m_globalizor.Translate("- seperator -"));
 					n.Tag = button;
+                    n.ImageIndex = n.SelectedImageIndex = SEPARATOR_IMAGE;
 					parent.Add(n);
 				}
 				else if (button as OSGeo.MapGuide.MaestroAPI.FlyoutItemType!= null)
@@ -392,6 +408,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					TreeNode n = new TreeNode(cmd.Label);
 					n.Tag = button;
 					parent.Add(n);
+                    n.ImageIndex = n.SelectedImageIndex = FOLDER_IMAGE;
 					BuildTree(n.Nodes, cmd.SubItem);
 				}
 			}
@@ -484,7 +501,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.label11 = new System.Windows.Forms.Label();
             this.HomePageURL = new System.Windows.Forms.TextBox();
             this.FeatureLinkTargetType = new System.Windows.Forms.ComboBox();
-            this.ToolbarIcons = new System.Windows.Forms.ImageList(this.components);
             this.CommandTypesDataset = new System.Data.DataSet();
             this.CommandTable = new System.Data.DataTable();
             this.dataColumn1 = new System.Data.DataColumn();
@@ -521,6 +537,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ContextCreateButton = new System.Windows.Forms.ToolStripSplitButton();
             this.TaskFrameTab = new System.Windows.Forms.TabPage();
+            this.TaskTree = new System.Windows.Forms.TreeView();
             this.TaskToolstrip = new System.Windows.Forms.ToolStrip();
             this.TaskAddButton = new System.Windows.Forms.ToolStripSplitButton();
             this.TaskDeleteButton = new System.Windows.Forms.ToolStripButton();
@@ -529,7 +546,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.TaskDownButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.TaskCreateButton = new System.Windows.Forms.ToolStripSplitButton();
-            this.TaskTree = new System.Windows.Forms.TreeView();
             this.browserURL = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.ShowInBrowser = new System.Windows.Forms.Button();
@@ -539,6 +555,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.AddSubMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddSeperatorItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateCommandMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.FixedImages = new System.Windows.Forms.ImageList(this.components);
             this.overriddenMapExtents.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -947,16 +964,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.FeatureLinkTargetType.TabIndex = 12;
             this.FeatureLinkTargetType.SelectedIndexChanged += new System.EventHandler(this.FeatureLinkTargetType_SelectedIndexChanged);
             // 
-            // ToolbarIcons
-            // 
-            this.ToolbarIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ToolbarIcons.ImageStream")));
-            this.ToolbarIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.ToolbarIcons.Images.SetKeyName(0, "");
-            this.ToolbarIcons.Images.SetKeyName(1, "");
-            this.ToolbarIcons.Images.SetKeyName(2, "");
-            this.ToolbarIcons.Images.SetKeyName(3, "");
-            this.ToolbarIcons.Images.SetKeyName(4, "");
-            // 
             // CommandTypesDataset
             // 
             this.CommandTypesDataset.DataSetName = "NewDataSet";
@@ -1032,7 +1039,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // commandEditor
             // 
             this.commandEditor.AutoScroll = true;
-            this.commandEditor.AutoScrollMinSize = new System.Drawing.Size(220, 500);
+            this.commandEditor.AutoScrollMinSize = new System.Drawing.Size(220, 269);
             this.commandEditor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.commandEditor.Location = new System.Drawing.Point(267, 16);
             this.commandEditor.Name = "commandEditor";
@@ -1073,13 +1080,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // ToolbarTree
             // 
+            this.ToolbarTree.AllowDrop = true;
             this.ToolbarTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ToolbarTree.HideSelection = false;
             this.ToolbarTree.Location = new System.Drawing.Point(0, 25);
             this.ToolbarTree.Name = "ToolbarTree";
             this.ToolbarTree.Size = new System.Drawing.Size(248, 218);
             this.ToolbarTree.TabIndex = 1;
+            this.ToolbarTree.DragDrop += new System.Windows.Forms.DragEventHandler(this.ItemTree_DragDrop);
             this.ToolbarTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ItemTree_AfterSelect);
+            this.ToolbarTree.DragEnter += new System.Windows.Forms.DragEventHandler(this.ItemTree_DragEnter);
+            this.ToolbarTree.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.ItemTree_ItemDrag);
+            this.ToolbarTree.DragOver += new System.Windows.Forms.DragEventHandler(this.ItemTree_DragOver);
             // 
             // ToolbarToolstrip
             // 
@@ -1175,13 +1187,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // ContextTree
             // 
+            this.ContextTree.AllowDrop = true;
             this.ContextTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContextTree.HideSelection = false;
             this.ContextTree.Location = new System.Drawing.Point(0, 25);
             this.ContextTree.Name = "ContextTree";
             this.ContextTree.Size = new System.Drawing.Size(248, 218);
             this.ContextTree.TabIndex = 3;
+            this.ContextTree.DragDrop += new System.Windows.Forms.DragEventHandler(this.ItemTree_DragDrop);
             this.ContextTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ItemTree_AfterSelect);
+            this.ContextTree.DragEnter += new System.Windows.Forms.DragEventHandler(this.ItemTree_DragEnter);
+            this.ContextTree.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.ItemTree_ItemDrag);
+            this.ContextTree.DragOver += new System.Windows.Forms.DragEventHandler(this.ItemTree_DragOver);
             // 
             // ContextToolstrip
             // 
@@ -1267,13 +1284,28 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // TaskFrameTab
             // 
-            this.TaskFrameTab.Controls.Add(this.TaskToolstrip);
             this.TaskFrameTab.Controls.Add(this.TaskTree);
+            this.TaskFrameTab.Controls.Add(this.TaskToolstrip);
             this.TaskFrameTab.Location = new System.Drawing.Point(4, 22);
             this.TaskFrameTab.Name = "TaskFrameTab";
             this.TaskFrameTab.Size = new System.Drawing.Size(248, 243);
             this.TaskFrameTab.TabIndex = 2;
             this.TaskFrameTab.Text = "Task frame menu";
+            // 
+            // TaskTree
+            // 
+            this.TaskTree.AllowDrop = true;
+            this.TaskTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TaskTree.HideSelection = false;
+            this.TaskTree.Location = new System.Drawing.Point(0, 25);
+            this.TaskTree.Name = "TaskTree";
+            this.TaskTree.Size = new System.Drawing.Size(248, 218);
+            this.TaskTree.TabIndex = 4;
+            this.TaskTree.DragDrop += new System.Windows.Forms.DragEventHandler(this.ItemTree_DragDrop);
+            this.TaskTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ItemTree_AfterSelect);
+            this.TaskTree.DragEnter += new System.Windows.Forms.DragEventHandler(this.ItemTree_DragEnter);
+            this.TaskTree.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.ItemTree_ItemDrag);
+            this.TaskTree.DragOver += new System.Windows.Forms.DragEventHandler(this.ItemTree_DragOver);
             // 
             // TaskToolstrip
             // 
@@ -1357,16 +1389,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.TaskCreateButton.Text = "toolStripSplitButton1";
             this.TaskCreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
-            // TaskTree
-            // 
-            this.TaskTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TaskTree.HideSelection = false;
-            this.TaskTree.Location = new System.Drawing.Point(0, 0);
-            this.TaskTree.Name = "TaskTree";
-            this.TaskTree.Size = new System.Drawing.Size(248, 243);
-            this.TaskTree.TabIndex = 4;
-            this.TaskTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ItemTree_AfterSelect);
-            // 
             // browserURL
             // 
             this.browserURL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
@@ -1420,6 +1442,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // AddSubMenuItem
             // 
+            this.AddSubMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("AddSubMenuItem.Image")));
             this.AddSubMenuItem.Name = "AddSubMenuItem";
             this.AddSubMenuItem.Size = new System.Drawing.Size(158, 22);
             this.AddSubMenuItem.Text = "Submenu";
@@ -1427,6 +1450,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // AddSeperatorItem
             // 
+            this.AddSeperatorItem.Image = ((System.Drawing.Image)(resources.GetObject("AddSeperatorItem.Image")));
             this.AddSeperatorItem.Name = "AddSeperatorItem";
             this.AddSeperatorItem.Size = new System.Drawing.Size(158, 22);
             this.AddSeperatorItem.Text = "Seperator";
@@ -1436,6 +1460,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.CreateCommandMenu.Name = "CreateCommandMenu";
             this.CreateCommandMenu.Size = new System.Drawing.Size(61, 4);
+            // 
+            // FixedImages
+            // 
+            this.FixedImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("FixedImages.ImageStream")));
+            this.FixedImages.TransparentColor = System.Drawing.Color.Transparent;
+            this.FixedImages.Images.SetKeyName(0, "FolderOpen.ico");
+            this.FixedImages.Images.SetKeyName(1, "Seperator.ico");
             // 
             // LayoutEditor
             // 
@@ -1733,6 +1764,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 				LoadedImageList.Images.Add(new Bitmap(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "blank_icon.gif")));
 
+                LoadedImageList.Images.Add(FixedImages.Images[0]);
+                LoadedImageList.Images.Add(FixedImages.Images[1]);
+
 				string path = System.IO.Path.Combine(Application.StartupPath, "stdicons");
 				if (System.IO.Directory.Exists(path))
 					foreach(string s in System.IO.Directory.GetFiles(path, "*.gif"))
@@ -1740,6 +1774,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 						LoadedImageList.Images.Add(Image.FromFile(s));
 						LoadedImages.Add("../stdicons/" + System.IO.Path.GetFileName(s), LoadedImageList.Images.Count - 1);
 					}
+
+
 			}
 
 			using(System.IO.MemoryStream ms = new System.IO.MemoryStream(SharedComboDataSet))
@@ -1970,8 +2006,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void MoveItemUp()
 		{
-			OSGeo.MapGuide.MaestroAPI.UIItemTypeCollection col = GetActiveUICollection();
-			int idx = col.IndexOf((OSGeo.MapGuide.MaestroAPI.UIItemType)GetActiveTree().SelectedNode.Tag);
+            TreeView tree = GetActiveTree();
+            if (tree == null || tree.SelectedNode == null || tree.SelectedNode.Tag == null)
+                return;
+
+            OSGeo.MapGuide.MaestroAPI.UIItemTypeCollection col = GetActiveUISubCollection();
+
+			int idx = col.IndexOf((OSGeo.MapGuide.MaestroAPI.UIItemType)tree.SelectedNode.Tag);
 			if (idx > 0 && idx < col.Count)
 			{
 				OSGeo.MapGuide.MaestroAPI.UIItemType item = col[idx];
@@ -1980,13 +2021,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 
 			BuildTree(GetActiveTree(), GetActiveUIParent());
+            m_editor.HasChanged();
 		}
 
 		private void MoveItemDown()
 		{
-			OSGeo.MapGuide.MaestroAPI.UIItemTypeCollection col = GetActiveUICollection();
-			int idx = col.IndexOf((OSGeo.MapGuide.MaestroAPI.UIItemType)GetActiveTree().SelectedNode.Tag);
-			if (idx >= 0 && idx < col.Count - 1)
+            TreeView tree = GetActiveTree();
+            if (tree == null || tree.SelectedNode == null || tree.SelectedNode.Tag == null)
+                return;
+
+            OSGeo.MapGuide.MaestroAPI.UIItemTypeCollection col = GetActiveUISubCollection();
+
+            int idx = col.IndexOf((OSGeo.MapGuide.MaestroAPI.UIItemType)tree.SelectedNode.Tag);
+            if (idx >= 0 && idx < col.Count - 1)
 			{
 				OSGeo.MapGuide.MaestroAPI.UIItemType item = col[idx];
 				col.RemoveAt(idx);
@@ -1994,6 +2041,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 
 			BuildTree(GetActiveTree(), GetActiveUIParent());
+            m_editor.HasChanged();
 		}
 
 		private void DeleteSelectedItem()
@@ -2007,6 +2055,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				col.RemoveAt(idx);
 
 			BuildTree(GetActiveTree(), GetActiveUIParent());
+            m_editor.HasChanged();
 		}
 
 		private void MenuTabs_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -2062,14 +2111,41 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			return col;
 		}
 
+        public OSGeo.MapGuide.MaestroAPI.UIItemTypeCollection GetActiveUISubCollection()
+        {
+            return GetActiveUISubCollection(GetActiveTree().SelectedNode);
+        }
+
+        public OSGeo.MapGuide.MaestroAPI.UIItemTypeCollection GetActiveUISubCollection(TreeNode sourceNode)
+        {
+            TreeView tree = GetActiveTree();
+            OSGeo.MapGuide.MaestroAPI.UIItemTypeCollection col = GetActiveUICollection();
+
+            if (sourceNode != null)
+            {
+                if (sourceNode.Tag as OSGeo.MapGuide.MaestroAPI.FlyoutItemType != null)
+                {
+                    col = (sourceNode.Tag as OSGeo.MapGuide.MaestroAPI.FlyoutItemType).SubItem;
+                }
+                else if (sourceNode.Parent != null && sourceNode.Parent.Tag as OSGeo.MapGuide.MaestroAPI.FlyoutItemType != null)
+                {
+                    col = (sourceNode.Parent.Tag as OSGeo.MapGuide.MaestroAPI.FlyoutItemType).SubItem;
+                }
+            }
+
+            return col;
+        }
+
 		private void InsertItem(OSGeo.MapGuide.MaestroAPI.UIItemType item)
 		{
 			TreeView tree = GetActiveTree();
-			OSGeo.MapGuide.MaestroAPI.UIItemTypeCollection col = GetActiveUICollection();
+			OSGeo.MapGuide.MaestroAPI.UIItemTypeCollection col = GetActiveUISubCollection();
 
 			int idx = -1;
-			if (tree.SelectedNode != null)
-				idx = col.IndexOf((OSGeo.MapGuide.MaestroAPI.UIItemType)tree.SelectedNode.Tag);
+            if (tree.SelectedNode != null)
+            {
+                idx = col.IndexOf((OSGeo.MapGuide.MaestroAPI.UIItemType)tree.SelectedNode.Tag);
+            }
 
 			if (idx < 0)
 				idx = col.Count - 1;
@@ -2094,6 +2170,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			InsertItem(fly);
 
 			BuildTree(GetActiveTree(), GetActiveUIParent());
+            m_editor.HasChanged();
 		}
 
 		private void AddSeperatorItem_Click(object sender, System.EventArgs e)
@@ -2104,6 +2181,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			InsertItem(sep);
 
 			BuildTree(GetActiveTree(), GetActiveUIParent());
+            m_editor.HasChanged();
 		}
 
 		private void AddBuiltInItem_Click(object sender, System.EventArgs e)
@@ -2139,6 +2217,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					break;
 				}
 
+            m_editor.HasChanged();
+
 		}
 
 		private void AddCustomItem_Click(object sender, System.EventArgs e)
@@ -2161,6 +2241,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					n.EnsureVisible();
 					break;
 				}
+
+            m_editor.HasChanged();
 		}
 
 
@@ -2236,6 +2318,107 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             (sender as ToolStripSplitButton).ShowDropDown();
         }
 
+        private void ItemTree_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            TreeView tree = sender as TreeView;
+            if (tree == null || tree.SelectedNode == null || tree.SelectedNode.Tag == null)
+                return;
+            TreeNode node = tree.GetNodeAt(tree.PointToClient(Cursor.Position));
+            if (node != null)
+            {
+                tree.SelectedNode = node;
+                tree.DoDragDrop(node, DragDropEffects.Move);
+            }
+        }
 
+        private void ItemTree_DragEnter(object sender, DragEventArgs e)
+        {
+            TreeView tree = sender as TreeView;
+            TreeNode sourceNode = e.Data.GetData(typeof(TreeNode)) as TreeNode;;
+            if (sourceNode != null && sourceNode.TreeView == tree)
+                e.Effect = DragDropEffects.Move;
+            else
+                e.Effect = DragDropEffects.None;
+            
+            
+        }
+
+        private void ItemTree_DragOver(object sender, DragEventArgs e)
+        {
+            TreeView tree = sender as TreeView;
+            TreeNode sourceNode = e.Data.GetData(typeof(TreeNode)) as TreeNode;;
+            if (sourceNode != null && sourceNode.TreeView == tree)
+            {
+                TreeNode targetNode = tree.GetNodeAt(tree.PointToClient(new Point(e.X, e.Y)));
+                if (targetNode != sourceNode)
+                {
+                    tree.SelectedNode = targetNode;
+                    e.Effect = DragDropEffects.Move;
+                }
+                else
+                    e.Effect = DragDropEffects.None;
+            }
+            else
+                e.Effect = DragDropEffects.None;
+
+        }
+
+        private void ItemTree_DragDrop(object sender, DragEventArgs e)
+        {
+            TreeView tree = sender as TreeView;
+            TreeNode sourceNode = e.Data.GetData(typeof(TreeNode)) as TreeNode;;
+            if (sourceNode != null && sourceNode.TreeView == tree)
+            {
+                TreeNode targetNode = tree.GetNodeAt(tree.PointToClient(new Point(e.X, e.Y)));
+                if (targetNode != sourceNode)
+                {
+                    OSGeo.MapGuide.MaestroAPI.UIItemTypeCollection col = GetActiveUISubCollection(sourceNode);
+
+                    for (int i = 0; i < col.Count; i++)
+                        if (col[i] == sourceNode.Tag)
+                        {
+                            col.RemoveAt(i);
+                            break;
+                        }
+
+                    col = GetActiveUISubCollection(targetNode);
+                    int index = col.Count;
+                    if (targetNode != null && targetNode.Tag != null)
+                        index = col.IndexOf(targetNode.Tag as OSGeo.MapGuide.MaestroAPI.UIItemType);
+
+                    if (index < 0)
+                        index = col.Count;
+
+                    col.Insert(index, sourceNode.Tag as OSGeo.MapGuide.MaestroAPI.UIItemType);
+                    try
+                    {
+                        tree.BeginUpdate();
+                        sourceNode.Remove();
+                        if (targetNode != null && targetNode.Tag as OSGeo.MapGuide.MaestroAPI.FlyoutItemType != null && (targetNode.Tag as OSGeo.MapGuide.MaestroAPI.FlyoutItemType).SubItem == col)
+                        {
+                            targetNode.Nodes.Insert(index, sourceNode);
+                            tree.SelectedNode = sourceNode;
+                        }
+                        else if (col == GetActiveUICollection())
+                        {
+                            tree.Nodes.Insert(index, sourceNode);
+                            tree.SelectedNode = sourceNode;
+                        }
+                    }
+                    finally
+                    {
+                        tree.EndUpdate();
+                    }
+
+                    //This should never happen, but in case I forgot something, this will pick it up :)
+                    if (sourceNode.TreeView == null)
+                        BuildTree(GetActiveTree(), GetActiveUICollection());
+
+                    
+                    m_editor.HasChanged();
+                }
+            }
+
+        }
 	}
 }

@@ -123,6 +123,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.PropertyColumnVisible = new System.Data.DataColumn();
             this.PropertyColumnName = new System.Data.DataColumn();
             this.ResourceGroup = new System.Windows.Forms.GroupBox();
+            this.schemaSelector = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector();
             this.EditTooltipBtn = new System.Windows.Forms.Button();
             this.EditLinkBtn = new System.Windows.Forms.Button();
             this.EditFilterBtn = new System.Windows.Forms.Button();
@@ -136,6 +137,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.DisplayRangesTable = new System.Data.DataTable();
             this.FromScaleColumn = new System.Data.DataColumn();
             this.ToScaleColumn = new System.Data.DataColumn();
+            this.StylizationColumn = new System.Data.DataColumn();
+            this.dataColumn1 = new System.Data.DataColumn();
+            this.dataColumn2 = new System.Data.DataColumn();
+            this.dataColumn3 = new System.Data.DataColumn();
             this.PropertyDataset = new System.Data.DataSet();
             this.LayerStyleImages = new System.Windows.Forms.ImageList(this.components);
             this.groupViewerProperties = new System.Windows.Forms.GroupBox();
@@ -149,6 +154,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.dataGridTextBoxColumn2 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.ScaleRangeGroup = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.scaleRangeList = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ScaleRangeList();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.AddScaleRangeButton = new System.Windows.Forms.ToolStripButton();
             this.DeleteItemButton = new System.Windows.Forms.ToolStripButton();
@@ -157,12 +163,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.OpenInWindowButton = new System.Windows.Forms.ToolStripButton();
             this.CloseWindowButton = new System.Windows.Forms.ToolStripButton();
             this.DisplayRanges = new System.Data.DataSet();
-            this.schemaSelector = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector();
-            this.scaleRangeList = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ScaleRangeList();
-            this.StylizationColumn = new System.Data.DataColumn();
-            this.dataColumn1 = new System.Data.DataColumn();
-            this.dataColumn2 = new System.Data.DataColumn();
-            this.dataColumn3 = new System.Data.DataColumn();
             this.ResourceGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ViewerPropertiesTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayRangesTable)).BeginInit();
@@ -212,6 +212,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.ResourceGroup.TabIndex = 16;
             this.ResourceGroup.TabStop = false;
             this.ResourceGroup.Text = "Resource settings";
+            // 
+            // schemaSelector
+            // 
+            this.schemaSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.schemaSelector.IsRaster = false;
+            this.schemaSelector.Location = new System.Drawing.Point(16, 16);
+            this.schemaSelector.Name = "schemaSelector";
+            this.schemaSelector.Size = new System.Drawing.Size(767, 56);
+            this.schemaSelector.TabIndex = 14;
+            this.schemaSelector.GeometryChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector.GeometryChangedDelegate(this.schemaSelector_GeometryChanged);
+            this.schemaSelector.SchemaChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector.SchemaChangedDelegate(this.schemaSelector_SchemaChanged);
             // 
             // EditTooltipBtn
             // 
@@ -331,6 +343,27 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             this.ToScaleColumn.Caption = "To";
             this.ToScaleColumn.ColumnName = "ToScale";
+            // 
+            // StylizationColumn
+            // 
+            this.StylizationColumn.Caption = "Stylization";
+            this.StylizationColumn.ColumnName = "Stylization";
+            this.StylizationColumn.DataType = typeof(object);
+            // 
+            // dataColumn1
+            // 
+            this.dataColumn1.ColumnName = "PreviewPoint";
+            this.dataColumn1.DataType = typeof(object);
+            // 
+            // dataColumn2
+            // 
+            this.dataColumn2.ColumnName = "PreviewLine";
+            this.dataColumn2.DataType = typeof(object);
+            // 
+            // dataColumn3
+            // 
+            this.dataColumn3.ColumnName = "PreviewArea";
+            this.dataColumn3.DataType = typeof(object);
             // 
             // PropertyDataset
             // 
@@ -479,6 +512,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.panel1.Size = new System.Drawing.Size(793, 427);
             this.panel1.TabIndex = 2;
             // 
+            // scaleRangeList
+            // 
+            this.scaleRangeList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scaleRangeList.Location = new System.Drawing.Point(0, 25);
+            this.scaleRangeList.Name = "scaleRangeList";
+            this.scaleRangeList.Owner = null;
+            this.scaleRangeList.Size = new System.Drawing.Size(793, 402);
+            this.scaleRangeList.TabIndex = 3;
+            this.scaleRangeList.Load += new System.EventHandler(this.scaleRangeList_Load);
+            this.scaleRangeList.SelectionChanged += new System.EventHandler(this.scaleRangeList_SelectionChanged);
+            this.scaleRangeList.ItemChanged += new System.EventHandler(this.scaleRangeList_ItemChanged);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -515,7 +560,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.DeleteItemButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DeleteItemButton.Name = "DeleteItemButton";
             this.DeleteItemButton.Size = new System.Drawing.Size(23, 22);
-            this.DeleteItemButton.Text = "toolStripButton3";
+            this.DeleteItemButton.Text = "Delete the selected scalerange";
             this.DeleteItemButton.Click += new System.EventHandler(this.DeleteItemButton_Click);
             // 
             // InsertCopyButton
@@ -526,7 +571,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.InsertCopyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.InsertCopyButton.Name = "InsertCopyButton";
             this.InsertCopyButton.Size = new System.Drawing.Size(23, 22);
-            this.InsertCopyButton.Text = "toolStripButton1";
+            this.InsertCopyButton.Text = "Append a copy of the selected scale";
             this.InsertCopyButton.Click += new System.EventHandler(this.InsertCopyButton_Click);
             // 
             // toolStripSeparator1
@@ -563,50 +608,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.DisplayRanges.Locale = new System.Globalization.CultureInfo("da-DK");
             this.DisplayRanges.Tables.AddRange(new System.Data.DataTable[] {
             this.DisplayRangesTable});
-            // 
-            // schemaSelector
-            // 
-            this.schemaSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.schemaSelector.IsRaster = false;
-            this.schemaSelector.Location = new System.Drawing.Point(16, 16);
-            this.schemaSelector.Name = "schemaSelector";
-            this.schemaSelector.Size = new System.Drawing.Size(767, 56);
-            this.schemaSelector.TabIndex = 14;
-            this.schemaSelector.GeometryChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector.GeometryChangedDelegate(this.schemaSelector_GeometryChanged);
-            this.schemaSelector.SchemaChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector.SchemaChangedDelegate(this.schemaSelector_SchemaChanged);
-            // 
-            // scaleRangeList
-            // 
-            this.scaleRangeList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scaleRangeList.Location = new System.Drawing.Point(0, 25);
-            this.scaleRangeList.Name = "scaleRangeList";
-            this.scaleRangeList.Size = new System.Drawing.Size(793, 402);
-            this.scaleRangeList.TabIndex = 3;
-            this.scaleRangeList.Load += new System.EventHandler(this.scaleRangeList_Load);
-            this.scaleRangeList.SelectionChanged += new System.EventHandler(this.scaleRangeList_SelectionChanged);
-            this.scaleRangeList.ItemChanged += new System.EventHandler(this.scaleRangeList_ItemChanged);
-            // 
-            // StylizationColumn
-            // 
-            this.StylizationColumn.Caption = "Stylization";
-            this.StylizationColumn.ColumnName = "Stylization";
-            this.StylizationColumn.DataType = typeof(object);
-            // 
-            // dataColumn1
-            // 
-            this.dataColumn1.ColumnName = "PreviewPoint";
-            this.dataColumn1.DataType = typeof(object);
-            // 
-            // dataColumn2
-            // 
-            this.dataColumn2.ColumnName = "PreviewLine";
-            this.dataColumn2.DataType = typeof(object);
-            // 
-            // dataColumn3
-            // 
-            this.dataColumn3.ColumnName = "PreviewArea";
-            this.dataColumn3.DataType = typeof(object);
             // 
             // VectorLayer
             // 
