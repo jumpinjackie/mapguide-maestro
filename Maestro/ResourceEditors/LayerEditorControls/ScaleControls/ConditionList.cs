@@ -241,7 +241,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
                     ic = m_area.AreaRule;
 
                 pos = ic.IndexOf(selectedRule);
-                if ((!down && pos > 0) || (down && pos < ic.Count - 1))
+                if ((!down && pos > 0) || (down && pos < ic.Count - 1 && pos > 0))
                 {
                     ic.RemoveAt(pos);
                     ic.Insert(pos + (down ? 1 : -1), selectedRule);
@@ -249,5 +249,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
             }
         }
+
+        public int GetPreferedHeight()
+        {
+            int minHeight = 0;
+
+            for (int i = 0; i < Math.Min(3, this.Controls.Count); i++)
+                minHeight += this.Controls[i].Height;
+
+            return minHeight;
+        }
+
     }
 }

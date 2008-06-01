@@ -102,8 +102,18 @@
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.ChangeResourceTypeMenu.Text" type="System.String">
 	<value>Change type</value>
 </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.label1.Text" type="System.String">
-    <value>Provider</value>
-  </data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.label1.Text" type="System.String">
+	<value>Provider</value>
+</data>
+
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.groupBox1.Text" type="System.String">
+	<value>Coordinate system override</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.label2.Text" type="System.String">
+	<value>The feature source can be joined with other properties and contain values that are computed on the fly.</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.EditExtensions.Text" type="System.String">
+	<value>Edit extensions</value>
+</data>
 
 </root>

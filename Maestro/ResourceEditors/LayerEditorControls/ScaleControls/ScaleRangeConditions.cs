@@ -28,6 +28,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
                 pointConditionList.Owner = m_owner;
                 lineConditionList.Owner = m_owner;
                 areaConditionList.Owner = m_owner;
+
+                if (m_owner != null && m_owner.Globalizor != null)
+                {
+                    DisplayPoints.Text = m_owner.Globalizor.Translate("Display points");
+                    DisplayLines.Text = m_owner.Globalizor.Translate("Display lines");
+                    DisplayAreas.Text = m_owner.Globalizor.Translate("Display areas");
+                }
             }
         }
 
@@ -206,6 +213,28 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         private void areaConditionList_ItemChanged(object sender, EventArgs e)
         {
             SignalItemChanged();
+        }
+
+        public int GetPreferedHeight()
+        {
+            int minHeight = DisplayPoints.Height + DisplayLines.Height + DisplayAreas.Height + splitter1.Height + splitter2.Height;
+
+            if (DisplayPoints.Checked)
+                minHeight += pointConditionList.GetPreferedHeight();
+            if (DisplayLines.Checked)
+                minHeight += lineConditionList.GetPreferedHeight();
+            if (DisplayAreas.Checked)
+                minHeight += areaConditionList.GetPreferedHeight();
+
+            return minHeight;
+        }
+
+        public void ResizeAuto()
+        {
+            pointConditionList.ResizeAuto();
+            lineConditionList.ResizeAuto();
+            areaConditionList.ResizeAuto();
+            this.Height = this.GetPreferedHeight();
         }
     }
 }

@@ -62,6 +62,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		private OSGeo.MapGuide.MaestroAPI.FillType previousFill = null;
 		private OSGeo.MapGuide.MaestroAPI.StrokeType previousStroke = null;
 
+        private Globalizator.Globalizator m_globalizor;
+
 		public event EventHandler Changed;
 
 		public AreaFeatureStyleEditor()
@@ -91,6 +93,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			lineStyleEditor.thicknessUpDown.ValueChanged +=new EventHandler(thicknessCombo_SelectedIndexChanged);
 			lineStyleEditor.colorCombo.SelectedIndexChanged +=new EventHandler(colorCombo_SelectedIndexChanged);
 			lineStyleEditor.fillCombo.SelectedIndexChanged +=new EventHandler(fillCombo_Line_SelectedIndexChanged);
+
+            m_globalizor = new Globalizator.Globalizator(this);
 		}
 
 		/// <summary>

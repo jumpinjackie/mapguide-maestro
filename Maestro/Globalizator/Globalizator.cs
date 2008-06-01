@@ -241,7 +241,7 @@ namespace Globalizator
 						if (p.PropertyType == typeof(string))
 						{
 							string s = Convert.ToString(p.GetValue(obj, null));
-							if (s != null && s.Trim().Length > 0 && s != "-")
+							if (s != null && s.Trim().Length > 0 && s != "-" && s != "...")
 							{
 								Console.WriteLine("<data name=\"" + resName + '.' + p.Name +"\" type=\"" + p.PropertyType + "\">");
 								Console.WriteLine("\t<value>" + s + "</value>");

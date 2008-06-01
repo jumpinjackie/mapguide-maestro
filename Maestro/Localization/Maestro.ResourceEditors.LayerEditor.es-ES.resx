@@ -69,251 +69,17 @@
   <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.groupViewerProperties.Text" type="System.String">
     <value>Propiedades disponibles en el visor</value>
   </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.groupBox1.Text" type="System.String">
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.ScaleRangeGroup.Text" type="System.String">
     <value>Estilo de la capa</value>
   </data>
   <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.groupBox2.Text" type="System.String">
     <value>Propiedades</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label1.Text" type="System.String">
-    <value>Propiedades</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label2.Text" type="System.String">
-    <value>Fuente</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label3.Text" type="System.String">
-    <value>Tamaño texto</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label4.Text" type="System.String">
-    <value>Unidades</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label5.Text" type="System.String">
-    <value>Tamaño</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label6.Text" type="System.String">
-    <value>Estilo</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label7.Text" type="System.String">
-    <value>Tipo de fondo</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label8.Text" type="System.String">
-    <value>Fondo</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label9.Text" type="System.String">
-    <value>Texto</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.label10.Text" type="System.String">
-    <value>Rotación</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.fontGroup.Text" type="System.String">
-    <value>Fuente</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.colorGroup.Text" type="System.String">
-    <value>Colores</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.alignmentGroup.Text" type="System.String">
-    <value>Alineamiento</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.underlineCheck.Text" type="System.String">
-    <value>U</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.italicCheck.Text" type="System.String">
-    <value>I</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.boldCheck.Text" type="System.String">
-    <value>B</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.previewGroup.Text" type="System.String">
-    <value>Preliminar</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.verticalLabel.Text" type="System.String">
-    <value>Vertical</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.fontStyleEditor.horizontalLabel.Text" type="System.String">
-    <value>Horizontal</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.groupBox1.Text" type="System.String">
-    <value>Estilo de Símbolo</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label1.Text" type="System.String">
-    <value>Símbolo</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label2.Text" type="System.String">
-    <value>Tamaño texto</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label3.Text" type="System.String">
-    <value>Tamaño ud.</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label4.Text" type="System.String">
-    <value>Anchura</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label5.Text" type="System.String">
-    <value>Altura</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label6.Text" type="System.String">
-    <value>Punto de referencia</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label7.Text" type="System.String">
-    <value>X</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label8.Text" type="System.String">
-    <value>Y</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.label9.Text" type="System.String">
-    <value>Rotación</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.groupBox2.Text" type="System.String">
-    <value>Relleno del símbolo</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.groupBox3.Text" type="System.String">
-    <value>Borde del símbolo</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.groupBox4.Text" type="System.String">
-    <value>Preliminar</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.WidthText.Text" type="System.String">
-    <value>Anchura</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.ReferenceX.Text" type="System.String">
-    <value>ReferenciaX</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.MaintainAspectRatio.Text" type="System.String">
-    <value>Mantener proporción</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.ReferenceY.Text" type="System.String">
-    <value>ReferenciaY</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.fillStyleEditor.displayFill.Text" type="System.String">
-    <value>Rellenar pantalla</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.fillStyleEditor.lblBackground.Text" type="System.String">
-    <value>Color de fondo</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.fillStyleEditor.lblForeground.Text" type="System.String">
-    <value>Primer plano</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.fillStyleEditor.lblFill.Text" type="System.String">
-    <value>Patrón de relleno</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.lineStyleEditor.lblColor.Text" type="System.String">
-    <value>Color</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.lineStyleEditor.lblThickness.Text" type="System.String">
-    <value>Grosor</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.lineStyleEditor.lblFill.Text" type="System.String">
-    <value>Estilo de línea</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.pointFeatureStyleEditor.lineStyleEditor.displayLine.Text" type="System.String">
-    <value>Mostrar borde</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.groupBox1.Text" type="System.String">
-    <value>Composición de la línea</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.label3.Text" type="System.String">
-    <value>Tamaño ud.</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.label2.Text" type="System.String">
-    <value>Tamaño texto</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.applyLineStyle.Text" type="System.String">
-    <value>Aplicar estilo de línea</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.compositeLines.Text" type="System.String">
-    <value>Usar líneas compuestas</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.lineStyleEditor.lblColor.Text" type="System.String">
-    <value>Color</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.lineStyleEditor.lblThickness.Text" type="System.String">
-    <value>Grosor</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.lineStyleEditor.lblFill.Text" type="System.String">
-    <value>Estilo de línea</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.lineStyleEditor.displayLine.Text" type="System.String">
-    <value>Mostrar borde</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.lineGroup.Text" type="System.String">
-    <value>Estilo de línea</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.sizeGroup.Text" type="System.String">
-    <value>Tamaño</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.lineFeatureStyleEditor.previewGroup.Text" type="System.String">
-    <value>Preliminar</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.label4.Text" type="System.String">
-    <value>Unidades</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.label3.Text" type="System.String">
-    <value>Tamaño texto</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.groupBox1.Text" type="System.String">
-    <value>Estilo de borde</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.groupBox2.Text" type="System.String">
-    <value>Estilo de relleno</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.label1.Text" type="System.String">
-    <value>Transparencia</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.previewGroup.Text" type="System.String">
-    <value>Preliminar</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.fillStyleEditor.displayFill.Text" type="System.String">
-    <value>Mostrar relleno</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.fillStyleEditor.lblBackground.Text" type="System.String">
-    <value>Color de fondo</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.fillStyleEditor.lblForeground.Text" type="System.String">
-    <value>Primer plano</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.fillStyleEditor.lblFill.Text" type="System.String">
-    <value>Patrón de relleno</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.lineStyleEditor.lblColor.Text" type="System.String">
-    <value>Color</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.lineStyleEditor.lblThickness.Text" type="System.String">
-    <value>Grosor</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.lineStyleEditor.lblFill.Text" type="System.String">
-    <value>Estilo de línea</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.areaFeatureStyleEditor.lineStyleEditor.displayLine.Text" type="System.String">
-    <value>Mostrar borde</value>
   </data>
   <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.AddScaleRangeButton.ToolTipText" type="System.String">
     <value>Añadir un rango de escala</value>
   </data>
   <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.SelectInverseButton.Text" type="System.String">
     <value>Selecc. inversa</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeProperties.UsePoint.Text" type="System.String">
-    <value>Mostrar puntos</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeProperties.UseLine.Text" type="System.String">
-    <value>Mostrar líneas</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeProperties.UseArea.Text" type="System.String">
-    <value>Mostrar áreas</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeProperties.label1.Text" type="System.String">
-    <value>Escala mínima</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeProperties.label2.Text" type="System.String">
-    <value>Escala máxima</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.styleRuleProperties.label1.Text" type="System.String">
-    <value>Reglas</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.styleRuleProperties.ShowFeatures.Text" type="System.String">
-    <value>Mostrar características</value>
-  </data>
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.styleRuleProperties.ShowLabels.Text" type="System.String">
-    <value>Mostrar características de las etiquetas</value>
   </data>
 
   <data name="Line" type="System.String">
@@ -422,4 +188,52 @@
   <data name="&lt; Select a featuresource &gt;" type="System.String">
     <value>&lt; Elegir un featuresource &gt;</value>
   </data>
+
+
+  <data name="Display points" type="System.String">
+    <value>Mostrar puntos</value>
+  </data>
+  <data name="Display lines" type="System.String">
+    <value>Mostrar líneas</value>
+  </data>
+  <data name="Display areas" type="System.String">
+    <value>Mostrar áreas</value>
+  </data>
+
+
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.DeleteItemButton.ToolTipText" type="System.String">
+	<value>Delete the selected scalerange</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeList.label3.Text" type="System.String">
+	<value>Display properties</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeList.label2.Text" type="System.String">
+	<value>Maximum</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeList.label1.Text" type="System.String">
+	<value>Minimum</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.InsertCopyButton.ToolTipText" type="System.String">
+	<value>Append a copy of the selected scale</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.OpenInWindowButton.ToolTipText" type="System.String">
+	<value>Show the scale setup in a seperate window</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.CloseWindowButton.ToolTipText" type="System.String">
+	<value>Click here to restore the control in the editor</value>
+</data>
+<data name="Rule" type="System.String">
+	<value>Rule</value>
+</data>
+<data name="Legendlabel" type="System.String">
+	<value>Legend label</value>
+</data>
+<data name="Featurestyle" type="System.String">
+	<value>Featurestyle</value>
+</data>
+<data name="Labelstyle" type="System.String">
+	<value>Labelstyle</value>
+</data>
+
+
 </root>

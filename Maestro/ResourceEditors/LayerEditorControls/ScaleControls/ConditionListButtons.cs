@@ -30,6 +30,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             {
                 m_owner = value;
                 conditionList.Owner = m_owner;
+                if (m_owner != null && m_owner.Globalizor != null)
+                {
+                    label1.Text = m_owner.Globalizor.Translate("Rule");
+                    label2.Text = m_owner.Globalizor.Translate("Legendlabel");
+                    label3.Text = m_owner.Globalizor.Translate("Featurestyle");
+                    label4.Text = m_owner.Globalizor.Translate("Labelstyle");
+                }
             }
         }
 
@@ -162,6 +169,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         {
             if (ItemChanged != null)
                 ItemChanged(sender, null);
+        }
+
+
+        public void ResizeAuto()
+        {
+            this.Height = this.GetPreferedHeight();
+        }
+
+        public int GetPreferedHeight()
+        {
+            return panel1.Height + conditionList.GetPreferedHeight() + 24;
         }
 
     }

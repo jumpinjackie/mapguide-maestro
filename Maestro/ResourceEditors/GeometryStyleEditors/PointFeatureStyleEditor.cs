@@ -83,6 +83,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		private OSGeo.MapGuide.MaestroAPI.FillType previousFill = null;
         private CheckBox DisplayPoints;
 		private OSGeo.MapGuide.MaestroAPI.StrokeType previousEdge = null;
+        private Globalizator.Globalizator m_globalizor;
 
 		public event EventHandler Changed;
 
@@ -116,6 +117,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 			m_item = new OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType();
 			m_item.Item = new OSGeo.MapGuide.MaestroAPI.MarkSymbolType();
+
+            m_globalizor = new Globalizator.Globalizator(this);
 		}
 
 

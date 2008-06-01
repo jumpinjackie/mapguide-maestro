@@ -60,6 +60,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
             if (MinScale.SelectedIndex == 0)
                 m_vsc.MinScaleSpecified = false;
+
+            if (ItemChanged != null)
+                ItemChanged(m_vsc, null);
         }
 
         private void MaxScale_SelectedIndexChanged(object sender, EventArgs e)
@@ -70,6 +73,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             if (MaxScale.SelectedIndex == 0)
                 m_vsc.MaxScaleSpecified = false;
 
+            if (ItemChanged != null)
+                ItemChanged(m_vsc, null);
         }
 
         private void MinScale_TextChanged(object sender, EventArgs e)
@@ -88,7 +93,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             else
                 errorProvider.SetError(MinScale, "Invalid value");
 
-
+            if (ItemChanged != null)
+                ItemChanged(m_vsc, null);
         }
 
         private void MaxScale_TextChanged(object sender, EventArgs e)
@@ -106,6 +112,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             }
             else
                 errorProvider.SetError(MaxScale, "Invalid value");
+
+            if (ItemChanged != null)
+                ItemChanged(m_vsc, null);
         }
 
         private void scaleRangeConditions_ItemChanged(object sender, EventArgs e)
@@ -115,6 +124,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
             if (ItemChanged != null)
                 ItemChanged(m_vsc, null);
+        }
+
+        public int GetPreferedHeight()
+        {
+            return panel2.Height + scaleRangeConditions.GetPreferedHeight();
+        }
+
+        public void ResizeAuto()
+        {
+            scaleRangeConditions.ResizeAuto();
+            this.Height = this.GetPreferedHeight();
         }
     }
 }

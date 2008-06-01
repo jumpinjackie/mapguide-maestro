@@ -925,6 +925,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 				try
 				{
 					reqb.SessionID = System.Text.Encoding.Default.GetString(wc.DownloadData(req));
+                    if (reqb.SessionID.IndexOf("<") >= 0)
+                        throw new Exception("Invalid server token recieved: " + reqb.SessionID);
 				}
 				catch (Exception ex)
 				{
@@ -942,6 +944,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 							reqb = new RequestBuilder(hosturl, locale);
 							req = reqb.CreateSession();
 							reqb.SessionID = System.Text.Encoding.Default.GetString(wc.DownloadData(req));
+                            if (reqb.SessionID.IndexOf("<") >= 0)
+                                throw new Exception("Invalid server token recieved: " + reqb.SessionID);
 				
 							ok = true;
 						}
@@ -1018,11 +1022,17 @@ namespace OSGeo.MapGuide.MaestroAPI
 			}
 			catch (Exception ex)
 			{
-				if (!this.m_autoRestartSession || !this.IsSessionExpiredException(ex) || !this.RestartSession(false)) 
-					throw;
-				else
-					//Do not try more than once
-					return m_wc.OpenRead(req.Replace(prev_session, m_reqBuilder.SessionID)); 
+                if (!this.m_autoRestartSession || !this.IsSessionExpiredException(ex) || !this.RestartSession(false))
+                {
+                    Exception ex2 = Utility.ThrowAsWebException(ex);
+                    if (ex2 != ex)
+                        throw ex2;
+                    else
+                        throw;
+                }
+                else
+                    //Do not try more than once
+                    return m_wc.OpenRead(req.Replace(prev_session, m_reqBuilder.SessionID)); 
 			}
 		}
 

@@ -102,9 +102,18 @@
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.ChangeResourceTypeMenu.Text" type="System.String">
 	<value>Skift type</value>
 </data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.label1.Text" type="System.String">
+	<value>Driver</value>
+</data>
 
-  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.label1.Text" type="System.String">
-    <value>Driver</value>
-  </data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.groupBox1.Text" type="System.String">
+	<value>Gennemtving andet koordinatsystem</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.label2.Text" type="System.String">
+	<value>En datakilde kan sammenkædes med andre datakilder og indeholde værdier der beregnes løbende.</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.EditExtensions.Text" type="System.String">
+	<value>Rediger udvidelser</value>
+</data>
 
 </root>

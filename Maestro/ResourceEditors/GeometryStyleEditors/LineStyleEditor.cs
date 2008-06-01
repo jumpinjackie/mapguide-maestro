@@ -54,6 +54,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
             colorCombo.AllowTransparent = false;
             colorCombo.ResetColors();
+
+            fillCombo.Items.Clear();
+            fillCombo.Items.AddRange(FeaturePreviewRender.LineStyles);
         }
 
 		/// <summary> 
@@ -189,8 +192,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void LineStyleEditor_Load(object sender, System.EventArgs e)
 		{
-			fillCombo.Items.Clear();
-			fillCombo.Items.AddRange(FeaturePreviewRender.LineStyles);
 		}
 
 		private void displayLine_CheckedChanged(object sender, System.EventArgs e)

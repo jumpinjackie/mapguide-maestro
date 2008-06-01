@@ -87,6 +87,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 
         private FeatureSourceDescription.FeatureSourceSchema m_selectedSchema;
 
+        public Globalizator.Globalizator Globalizor { get { return m_globalizor; } }
+
 		public VectorLayer()
 		{
 			// This call is required by the Windows.Forms Form Designer.
@@ -460,8 +462,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.dataGridTableStyle1.DataGrid = this.dataGrid1;
             this.dataGridTableStyle1.GridColumnStyles.AddRange(new System.Windows.Forms.DataGridColumnStyle[] {
             this.dataGridBoolColumn1,
-            this.dataGridTextBoxColumn1,
-            this.dataGridTextBoxColumn2});
+            this.dataGridTextBoxColumn2,
+            this.dataGridTextBoxColumn1});
             this.dataGridTableStyle1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.dataGridTableStyle1.MappingName = "ViewerPropertiesTable";
             this.dataGridTableStyle1.RowHeadersVisible = false;
@@ -657,7 +659,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 					Filter.Text = vl.Filter;
 
                     scaleRangeList.SetItem(vl);
-
+                    scaleRangeList.ResizeAuto();
 				}
 			} 
 			finally
@@ -958,8 +960,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             }
 
             vld.VectorScaleRange.Add(vsc);
-            scaleRangeList.AddScaleRange(vsc);
+            Control c = scaleRangeList.AddScaleRange(vsc);
+            scaleRangeList.ResizeAuto();
             m_editor.HasChanged();
+
+            try { c.Focus(); }
+            catch { }
         }
 
         private void DeleteItemButton_Click(object sender, EventArgs e)
@@ -981,6 +987,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 
         private void scaleRangeList_ItemChanged(object sender, EventArgs e)
         {
+            scaleRangeList.ResizeAuto();
             m_editor.HasChanged();
         }
 

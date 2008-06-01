@@ -94,6 +94,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
         private CheckBox DisplayLabel;
 		private bool isUpdating = false;
 
+        private Globalizator.Globalizator m_globalizor;
+
 		public event EventHandler Changed;
 
 		public FontStyleEditor()
@@ -117,6 +119,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
             backgroundColor.ResetColors();
             textColor.ResetColors();
+            m_globalizor = new Globalizator.Globalizator(this);
 		}
 
 		public void SetAvalibleColumns(string[] items)

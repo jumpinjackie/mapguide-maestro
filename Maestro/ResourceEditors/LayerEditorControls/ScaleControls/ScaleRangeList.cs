@@ -56,7 +56,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             }
         }
 
-        public void AddScaleRange(VectorScaleRangeType sc)
+        public ScaleRange AddScaleRange(VectorScaleRangeType sc)
         {
             ScaleRange sr = new ScaleRange();
             sr.Owner = m_owner;
@@ -67,6 +67,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             sr.ItemChanged += new EventHandler(Scale_ItemChanged);
             sr.Enter += new EventHandler(Scale_Enter);
             sr.Leave += new EventHandler(Scale_Leave);
+            return sr;
         }
 
         void Scale_Leave(object sender, EventArgs e)
@@ -103,6 +104,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
                     ControlList.Controls.Remove(sr);
                     break;
                 }
+        }
+
+        public void ResizeAuto()
+        {
+            foreach (ScaleRange sr in ControlList.Controls)
+                sr.ResizeAuto();
         }
     }
 }

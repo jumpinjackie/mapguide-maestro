@@ -62,6 +62,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		private System.Data.DataColumn dataColumn5;
 		private System.Data.DataColumn dataColumn6;
 		private bool isUpdating = false;
+        private Globalizator.Globalizator m_globalizor;
 
 		public event EventHandler Changed;
 
@@ -87,6 +88,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			lineStyleEditor.thicknessUpDown.ValueChanged +=new EventHandler(thicknessCombo_SelectedIndexChanged);
 			lineStyleEditor.colorCombo.SelectedIndexChanged += new EventHandler(colorCombo_SelectedIndexChanged);
 			lineStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_SelectedIndexChanged);
+
+
+            m_globalizor = new Globalizator.Globalizator(this);
 		}
 
 		public void UpdateDisplay()
@@ -135,7 +139,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                     else
                         lineStyleEditor.colorCombo.CurrentColor = st.Color;
 
-					lineStyleEditor.fillCombo.SelectedIndex = lineStyleEditor.fillCombo.FindString(st.LineStyle);
+                    foreach(object i in lineStyleEditor.fillCombo.Items)
+                        if (i as ImageStylePicker.NamedImage != null && (i as ImageStylePicker.NamedImage).Name == st.LineStyle)
+                        {
+                            lineStyleEditor.fillCombo.SelectedItem = i;
+                            break;
+                        }
 					double o;
 					if (double.TryParse(st.Thickness, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out o))
 						lineStyleEditor.thicknessUpDown.Value = (decimal)o;
@@ -539,7 +548,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		{
 			if (isUpdating)
 				return;
-			this.CurrentStrokeType.LineStyle = lineStyleEditor.fillCombo.SelectedText;
+
+            if (lineStyleEditor.fillCombo.SelectedItem as ImageStylePicker.NamedImage != null)
+                this.CurrentStrokeType.LineStyle = (lineStyleEditor.fillCombo.SelectedItem as ImageStylePicker.NamedImage).Name;
 			previewPicture.Refresh();
 			lineStyles.Refresh();
 			if (Changed != null)

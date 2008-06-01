@@ -42,4 +42,39 @@
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.simple.label1.Text" type="System.String">
 	<value>Sti til fil(er)</value>
 </data>
+
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.label1.Text" type="System.String">
+	<value>Type</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.RebuildButton.Text" type="System.String">
+	<value>Genopbyg alle</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.label1.Text" type="System.String">
+	<value>Bemærk at alle stier er som disse ser ud fra MapGuide serveren, ikke fra Maestro</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.DeleteButton.ToolTipText" type="System.String">
+	<value>Fjern de valgte filer</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.RefreshButton.ToolTipText" type="System.String">
+	<value>Genindlæs data fra de valgte elementer</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.AddButton.ToolTipText" type="System.String">
+	<value>Tilføj raster filer</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.browseAliasToolStripMenuItem.Text" type="System.String">
+	<value>Udpeg filer via alias...</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.browseFilesToolStripMenuItem.Text" type="System.String">
+	<value>Udpeg filer...</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.browseFolderToolStripMenuItem.Text" type="System.String">
+	<value>Udeg mappe...</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.typeFilelistToolStripMenuItem.Text" type="System.String">
+	<value>Indtast filliste...</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.typeFolderToolStripMenuItem.Text" type="System.String">
+	<value>Indtast mappesti...</value>
+</data>
+
 </root>

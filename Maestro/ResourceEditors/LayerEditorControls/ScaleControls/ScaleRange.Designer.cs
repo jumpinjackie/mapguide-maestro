@@ -86,6 +86,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.scaleRangeConditions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scaleRangeConditions.Location = new System.Drawing.Point(208, 0);
             this.scaleRangeConditions.Name = "scaleRangeConditions";
+            this.scaleRangeConditions.Owner = null;
             this.scaleRangeConditions.Size = new System.Drawing.Size(594, 330);
             this.scaleRangeConditions.TabIndex = 0;
             this.scaleRangeConditions.ItemChanged += new System.EventHandler(this.scaleRangeConditions_ItemChanged);
@@ -101,7 +102,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.Controls.Add(this.scaleRangeConditions);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.MinimumSize = new System.Drawing.Size(802, 338);
             this.Name = "ScaleRange";
             this.Size = new System.Drawing.Size(802, 338);
             this.panel1.ResumeLayout(false);
