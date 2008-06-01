@@ -102,7 +102,7 @@
   <data name="OSGeo.MapGuide.Maestro.FormMain.MainMenuCopy.Text" type="System.String">
     <value>Copy</value>
   </data>
-  <data name="OSGeo.MapGuide.Maestro.FormMain.MainMenuCopy.menu.Text" type="System.String">
+  <data name="OSGeo.MapGuide.Maestro.FormMain.MainMenuEdit.Text" type="System.String">
     <value>Edit</value>
   </data>
   <data name="OSGeo.MapGuide.Maestro.FormMain.MainMenuPaste.Text" type="System.String">
