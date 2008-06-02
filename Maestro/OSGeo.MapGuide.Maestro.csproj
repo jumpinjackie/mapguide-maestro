@@ -239,6 +239,7 @@
     </EmbeddedResource>
     <Content Include="EditorMap.xml" />
     <Content Include="Icons\App.ico" />
+    <EmbeddedResource Include="Icons\MapGuide Maestro.ico" />
     <Content Include="ProviderMap.xml" />
   </ItemGroup>
   <ItemGroup>

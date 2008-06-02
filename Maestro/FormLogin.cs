@@ -61,6 +61,7 @@ namespace OSGeo.MapGuide.Maestro
 			InitializeComponent();
 
 			m_globalizor = new Globalizator.Globalizator(this);
+            this.Icon = FormMain.MaestroIcon;
 
 			this.toolTip.SetToolTip(this.cmbServerUrl, m_globalizor.Translate("Enter the full URL of the MapAgent service here"));
 			this.toolTip.SetToolTip(this.txtStartingpoint, m_globalizor.Translate("Enter the initial directory here"));
@@ -290,7 +291,6 @@ namespace OSGeo.MapGuide.Maestro
 			this.Controls.Add(this.cmbServerUrl);
 			this.Controls.Add(this.label1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FormLogin";

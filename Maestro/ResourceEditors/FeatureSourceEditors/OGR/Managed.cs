@@ -35,8 +35,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 		private ResourceEditors.FeatureSourceEditors.ManagedFileControl managedFileControl;
 		private System.ComponentModel.IContainer components;
 
-		private ResourceEditors.EditorInterface m_editor = null;
-		private System.Windows.Forms.ImageList ToolbarImages;
+        private ResourceEditors.EditorInterface m_editor = null;
+        private ImageList ToolbarImages;
 		private OSGeo.MapGuide.MaestroAPI.FeatureSource m_item = null;
 
 		public Managed()
@@ -104,37 +104,38 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(Managed));
-			this.managedFileControl = new ResourceEditors.FeatureSourceEditors.ManagedFileControl();
-			this.ToolbarImages = new System.Windows.Forms.ImageList(this.components);
-			this.SuspendLayout();
-			// 
-			// managedFileControl
-			// 
-			this.managedFileControl.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.managedFileControl.FileTypes = null;
-			this.managedFileControl.Location = new System.Drawing.Point(0, 0);
-			this.managedFileControl.Name = "managedFileControl";
-			this.managedFileControl.Size = new System.Drawing.Size(200, 96);
-			this.managedFileControl.TabIndex = 1;
-			this.managedFileControl.NewDefaultSelected += new ResourceEditors.FeatureSourceEditors.ManagedFileControl.NewDefaultSelectedDelegate(this.managedFileControl_NewDefaultSelected);
-			// 
-			// ToolbarImages
-			// 
-			this.ToolbarImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-			this.ToolbarImages.ImageSize = new System.Drawing.Size(16, 16);
-			this.ToolbarImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ToolbarImages.ImageStream")));
-			this.ToolbarImages.TransparentColor = System.Drawing.Color.Transparent;
-			// 
-			// Managed
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(200, 96);
-			this.Controls.Add(this.managedFileControl);
-			this.Name = "Managed";
-			this.Size = new System.Drawing.Size(200, 96);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Managed));
+            this.managedFileControl = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ManagedFileControl();
+            this.ToolbarImages = new System.Windows.Forms.ImageList(this.components);
+            this.SuspendLayout();
+            // 
+            // managedFileControl
+            // 
+            this.managedFileControl.AutoScroll = true;
+            this.managedFileControl.AutoScrollMinSize = new System.Drawing.Size(136, 56);
+            this.managedFileControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.managedFileControl.FileTypes = null;
+            this.managedFileControl.Location = new System.Drawing.Point(0, 0);
+            this.managedFileControl.Name = "managedFileControl";
+            this.managedFileControl.Size = new System.Drawing.Size(200, 96);
+            this.managedFileControl.TabIndex = 1;
+            this.managedFileControl.NewDefaultSelected += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ManagedFileControl.NewDefaultSelectedDelegate(this.managedFileControl_NewDefaultSelected);
+            // 
+            // ToolbarImages
+            // 
+            this.ToolbarImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ToolbarImages.ImageStream")));
+            this.ToolbarImages.TransparentColor = System.Drawing.Color.Transparent;
+            this.ToolbarImages.Images.SetKeyName(0, "FavoriteFolder.ico");
+            // 
+            // Managed
+            // 
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(200, 96);
+            this.Controls.Add(this.managedFileControl);
+            this.Name = "Managed";
+            this.Size = new System.Drawing.Size(200, 96);
+            this.ResumeLayout(false);
 
 		}
 		#endregion

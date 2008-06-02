@@ -120,7 +120,8 @@ namespace OSGeo.MapGuide.Maestro
 			ResourceTreeToolbar.ImageList = tmp;
 			
 			m_globalizor = new  Globalizator.Globalizator(this);
-		}
+            this.Icon = FormMain.MaestroIcon;
+        }
 
 		/// <summary>
 		/// Clean up any resources being used.
@@ -796,7 +797,6 @@ namespace OSGeo.MapGuide.Maestro
             this.ClientSize = new System.Drawing.Size(704, 454);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.MainMenu);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MainMenu;
             this.Name = "FormMain";
             this.Text = "MapGuide Maestro";
@@ -1164,6 +1164,28 @@ namespace OSGeo.MapGuide.Maestro
 			tabItems.TabPages.Add(tp);
 			return edi;
 		}
+
+        //Mono does not like icons from windows forms resources
+        //because of an extra field introduced in .Net 2.0 SP1 called "dateTimeOffsetPattern"
+        private static Icon m_maestroIcon;
+        public static Icon MaestroIcon
+        {
+            get
+            {
+                if (m_maestroIcon == null)
+                {
+                    try
+                    {
+                        m_maestroIcon = new System.Drawing.Icon(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(typeof(FormMain), "Icons.MapGuide Maestro.ico"));
+                    }
+                    catch
+                    {
+                    }
+                }
+
+                return m_maestroIcon;
+            }
+        }
 
 		private void TreeContextMenu_Popup(object sender, CancelEventArgs e)
 		{

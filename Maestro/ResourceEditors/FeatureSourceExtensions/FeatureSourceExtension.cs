@@ -228,15 +228,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             // 
             this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList.Images.SetKeyName(0, "");
-            this.imageList.Images.SetKeyName(1, "");
-            this.imageList.Images.SetKeyName(2, "");
-            this.imageList.Images.SetKeyName(3, "");
-            this.imageList.Images.SetKeyName(4, "");
-            this.imageList.Images.SetKeyName(5, "");
-            this.imageList.Images.SetKeyName(6, "");
-            this.imageList.Images.SetKeyName(7, "");
-            this.imageList.Images.SetKeyName(8, "");
+            this.imageList.Images.SetKeyName(0, "AddExtension.ico");
+            this.imageList.Images.SetKeyName(1, "AddDataJoin.ico");
+            this.imageList.Images.SetKeyName(2, "AddCalculator.ico");
+            this.imageList.Images.SetKeyName(3, "AddKey.ico");
+            this.imageList.Images.SetKeyName(4, "Extension.ico");
+            this.imageList.Images.SetKeyName(5, "DataJoin.ico");
+            this.imageList.Images.SetKeyName(6, "Calculator.ico");
+            this.imageList.Images.SetKeyName(7, "Key.ico");
             // 
             // toolStrip
             // 

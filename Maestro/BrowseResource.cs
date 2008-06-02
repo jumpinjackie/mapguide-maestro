@@ -78,6 +78,8 @@ namespace OSGeo.MapGuide.Maestro
 
 			if (!m_openMode)
 				this.Text = m_globalizor.Translate("Save resource");
+
+            this.Icon = FormMain.MaestroIcon;
 		}
 
 		protected BrowseResource()
@@ -305,7 +307,6 @@ namespace OSGeo.MapGuide.Maestro
 			this.Controls.Add(this.CancelButton);
 			this.Controls.Add(this.OKButton);
 			this.Controls.Add(this.panel1);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "BrowseResource";
 			this.Text = "Open resource";
 			this.Load += new System.EventHandler(this.BrowseResource_Load);

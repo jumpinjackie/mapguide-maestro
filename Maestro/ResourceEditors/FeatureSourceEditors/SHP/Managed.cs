@@ -115,75 +115,76 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.SHP
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(Managed));
-			this.managedFileControl = new ResourceEditors.FeatureSourceEditors.ManagedFileControl();
-			this.BrowseTempPath = new System.Windows.Forms.Button();
-			this.TempPath = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.ToolbarImages = new System.Windows.Forms.ImageList(this.components);
-			this.SuspendLayout();
-			// 
-			// managedFileControl
-			// 
-			this.managedFileControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.managedFileControl.FileTypes = null;
-			this.managedFileControl.Location = new System.Drawing.Point(8, 8);
-			this.managedFileControl.Name = "managedFileControl";
-			this.managedFileControl.Size = new System.Drawing.Size(240, 88);
-			this.managedFileControl.TabIndex = 0;
-			// 
-			// BrowseTempPath
-			// 
-			this.BrowseTempPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.BrowseTempPath.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.BrowseTempPath.Location = new System.Drawing.Point(224, 104);
-			this.BrowseTempPath.Name = "BrowseTempPath";
-			this.BrowseTempPath.Size = new System.Drawing.Size(24, 20);
-			this.BrowseTempPath.TabIndex = 51;
-			this.BrowseTempPath.Text = "...";
-			this.BrowseTempPath.Click += new System.EventHandler(this.BrowseTempPath_Click);
-			// 
-			// TempPath
-			// 
-			this.TempPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.TempPath.Location = new System.Drawing.Point(152, 104);
-			this.TempPath.Name = "TempPath";
-			this.TempPath.Size = new System.Drawing.Size(72, 20);
-			this.TempPath.TabIndex = 50;
-			this.TempPath.Text = "";
-			this.TempPath.TextChanged += new System.EventHandler(this.TempPath_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.label2.Location = new System.Drawing.Point(8, 104);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(136, 16);
-			this.label2.TabIndex = 49;
-			this.label2.Text = "Temp path";
-			// 
-			// ToolbarImages
-			// 
-			this.ToolbarImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-			this.ToolbarImages.ImageSize = new System.Drawing.Size(16, 16);
-			this.ToolbarImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ToolbarImages.ImageStream")));
-			this.ToolbarImages.TransparentColor = System.Drawing.Color.Transparent;
-			// 
-			// Managed
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(256, 136);
-			this.Controls.Add(this.BrowseTempPath);
-			this.Controls.Add(this.TempPath);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.managedFileControl);
-			this.Name = "Managed";
-			this.Size = new System.Drawing.Size(256, 136);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Managed));
+            this.managedFileControl = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ManagedFileControl();
+            this.BrowseTempPath = new System.Windows.Forms.Button();
+            this.TempPath = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ToolbarImages = new System.Windows.Forms.ImageList(this.components);
+            this.SuspendLayout();
+            // 
+            // managedFileControl
+            // 
+            this.managedFileControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.managedFileControl.AutoScroll = true;
+            this.managedFileControl.AutoScrollMinSize = new System.Drawing.Size(136, 56);
+            this.managedFileControl.FileTypes = null;
+            this.managedFileControl.Location = new System.Drawing.Point(8, 8);
+            this.managedFileControl.Name = "managedFileControl";
+            this.managedFileControl.Size = new System.Drawing.Size(240, 88);
+            this.managedFileControl.TabIndex = 0;
+            // 
+            // BrowseTempPath
+            // 
+            this.BrowseTempPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BrowseTempPath.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.BrowseTempPath.Location = new System.Drawing.Point(224, 104);
+            this.BrowseTempPath.Name = "BrowseTempPath";
+            this.BrowseTempPath.Size = new System.Drawing.Size(24, 20);
+            this.BrowseTempPath.TabIndex = 51;
+            this.BrowseTempPath.Text = "...";
+            this.BrowseTempPath.Click += new System.EventHandler(this.BrowseTempPath_Click);
+            // 
+            // TempPath
+            // 
+            this.TempPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TempPath.Location = new System.Drawing.Point(152, 104);
+            this.TempPath.Name = "TempPath";
+            this.TempPath.Size = new System.Drawing.Size(72, 20);
+            this.TempPath.TabIndex = 50;
+            this.TempPath.TextChanged += new System.EventHandler(this.TempPath_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.Location = new System.Drawing.Point(8, 104);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(136, 16);
+            this.label2.TabIndex = 49;
+            this.label2.Text = "Temp path";
+            // 
+            // ToolbarImages
+            // 
+            this.ToolbarImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ToolbarImages.ImageStream")));
+            this.ToolbarImages.TransparentColor = System.Drawing.Color.Transparent;
+            this.ToolbarImages.Images.SetKeyName(0, "FavoriteFolder.ico");
+            // 
+            // Managed
+            // 
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(256, 136);
+            this.Controls.Add(this.BrowseTempPath);
+            this.Controls.Add(this.TempPath);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.managedFileControl);
+            this.Name = "Managed";
+            this.Size = new System.Drawing.Size(256, 136);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

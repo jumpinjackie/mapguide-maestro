@@ -52,7 +52,8 @@ namespace OSGeo.MapGuide.Maestro
 			//
 			InitializeComponent();
 			m_globalizor = new  Globalizator.Globalizator(this);
-		}
+            this.Icon = FormMain.MaestroIcon;
+        }
 
 		/// <summary>
 		/// Clean up any resources being used.
@@ -217,7 +218,6 @@ namespace OSGeo.MapGuide.Maestro
             this.Controls.Add(this.linkLabel);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormAbout";

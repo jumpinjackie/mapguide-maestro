@@ -87,7 +87,8 @@ namespace OSGeo.MapGuide.Maestro
 			//
 			InitializeComponent();
 			m_globalizor = new  Globalizator.Globalizator(this);
-		}
+            this.Icon = FormMain.MaestroIcon;
+        }
 
 		/// <summary>
 		/// Clean up any resources being used.
@@ -254,7 +255,6 @@ namespace OSGeo.MapGuide.Maestro
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "LengthyOperation";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
 			this.Text = "Confirm operations on related items";

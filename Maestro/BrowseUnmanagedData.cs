@@ -68,7 +68,8 @@ namespace OSGeo.MapGuide.Maestro
 			OSGeo.MapGuide.Maestro.ResourceEditors.ShellIcons.AddIcon(FOLDER_IMAGE, imageList.Images[0]);
 			OSGeo.MapGuide.Maestro.ResourceEditors.ShellIcons.AddIcon(FOLDER_ALIAS, imageList.Images[1]);
 			m_globalizor = new Globalizator.Globalizator(this);
-		}
+            this.Icon = FormMain.MaestroIcon;
+        }
 
 		public void SetFileTypes(NameValueCollection filetypes)
 		{
@@ -339,7 +340,6 @@ namespace OSGeo.MapGuide.Maestro
 			this.Controls.Add(this.CancelButton);
 			this.Controls.Add(this.OKButton);
 			this.Controls.Add(this.panel1);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "BrowseUnmanagedData";
 			this.Text = "Browse unmanaged data";
 			this.Load += new System.EventHandler(this.BrowseUnmanagedData_Load);

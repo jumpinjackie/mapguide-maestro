@@ -75,7 +75,8 @@ namespace OSGeo.MapGuide.Maestro
 			m_serializeType = item.GetType();
 			m_modified = false;
 			m_serializedObject = item;
-		}
+            this.Icon = FormMain.MaestroIcon;
+        }
 
 		private XmlEditor()
 		{
@@ -361,7 +362,6 @@ namespace OSGeo.MapGuide.Maestro
             this.ClientSize = new System.Drawing.Size(656, 525);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "XmlEditor";
             this.ShowInTaskbar = false;
