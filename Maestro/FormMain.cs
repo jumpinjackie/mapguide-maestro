@@ -1150,6 +1150,10 @@ namespace OSGeo.MapGuide.Maestro
 
 			UserControl uc = (UserControl)Activator.CreateInstance(controlType, args );
 
+            /*tp.BackgroundImage = new System.Drawing.Bitmap("test.png");
+            tp.BackgroundImageLayout = ImageLayout.Stretch;
+            uc.BackColor = Color.Transparent;*/
+
 			tp.Controls.Add(uc);
 			uc.Top = 16;
 			uc.Left = 16;

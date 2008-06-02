@@ -202,37 +202,37 @@
 
 
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.DeleteItemButton.ToolTipText" type="System.String">
-	<value>Delete the selected scalerange</value>
+	<value>Eliminar el rango actual seleccionado</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeList.label3.Text" type="System.String">
-	<value>Display properties</value>
+	<value>Mostrar propiedades</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeList.label2.Text" type="System.String">
-	<value>Maximum</value>
+	<value>Maximo</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.scaleRangeList.label1.Text" type="System.String">
-	<value>Minimum</value>
+	<value>Minimo</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.InsertCopyButton.ToolTipText" type="System.String">
-	<value>Append a copy of the selected scale</value>
+	<value>Agregar una copia de la escala seleccionada</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.OpenInWindowButton.ToolTipText" type="System.String">
-	<value>Show the scale setup in a seperate window</value>
+	<value>Mostrar la config. de la escala en una nueva ventana</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.CloseWindowButton.ToolTipText" type="System.String">
-	<value>Click here to restore the control in the editor</value>
+	<value>Pulse aqui para restaurar el control en el editor</value>
 </data>
 <data name="Rule" type="System.String">
-	<value>Rule</value>
+	<value>Regla</value>
 </data>
 <data name="Legendlabel" type="System.String">
-	<value>Legend label</value>
+	<value>Etiqueta de leyenda</value>
 </data>
 <data name="Featurestyle" type="System.String">
-	<value>Featurestyle</value>
+	<value>Estolo de las características</value>
 </data>
 <data name="Labelstyle" type="System.String">
-	<value>Labelstyle</value>
+	<value>Estilo de Etiqueda</value>
 </data>
 
 

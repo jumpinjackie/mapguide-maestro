@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-1" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <root>
 	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
 		<xsd:element name="root" msdata:IsDataSet="true">
@@ -43,10 +43,10 @@
 	<value>Editor personalizado</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.GenericEditorPage.Text" type="System.String">
-	<value>Editor genérico</value>
+	<value>Editor genÃ©rico</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.CoordinateSystemOverride.AddButton.ToolTipText" type="System.String">
-	<value>Añadir nuevo sistema de coord. sobrescrito</value>
+	<value>AÃ±adir nuevo sistema de coord. sobrescrito</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.CoordinateSystemOverride.DeleteButton.ToolTipText" type="System.String">
 	<value>Borrar un sistema de coord. sobrescrito</value>
@@ -64,13 +64,13 @@
 	<value>Objetivo</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.TestConnectionResult.Text" type="System.String">
-	<value>Pulse en "Testear conexión" para testear con los parámetros actuales</value>
+	<value>Pulse en "Testear conexiÃ³n" para testear con los parÃ¡metros actuales</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.btnTest.Text" type="System.String">
-	<value>Testear conexión</value>
+	<value>Testear conexiÃ³n</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.AddFileButton.Text" type="System.String">
-	<value>Añadir</value>
+	<value>AÃ±adir</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor.AddFileButton.ToolTipText" type="System.String">
 	<value>Subir un fichero de datos a la fuente</value>
@@ -107,13 +107,13 @@
 </data>
 
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.groupBox1.Text" type="System.String">
-	<value>Coordinate system override</value>
+	<value>Sobreescribir sistema de coordenadas</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.label2.Text" type="System.String">
-	<value>The feature source can be joined with other properties and contain values that are computed on the fly.</value>
+	<value>La fuente del recurso puede unirse con otras propiedades y contener valores calculados al vuelo.</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.EditExtensions.Text" type="System.String">
-	<value>Edit extensions</value>
+	<value>Editar extensiÃ³n</value>
 </data>
 
 </root>

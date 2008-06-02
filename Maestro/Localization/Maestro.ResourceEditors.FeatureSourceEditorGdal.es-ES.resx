@@ -44,37 +44,37 @@
 </data>
 
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.label1.Text" type="System.String">
-	<value>Type</value>
+	<value>Tipo</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.RebuildButton.Text" type="System.String">
-	<value>Rebuild all</value>
+	<value>Reconstruir Todo</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.label1.Text" type="System.String">
-	<value>Note that all paths are as seen by the MapGuide server, not Maestro</value>
+	<value>Observa que todas las rutas son como se ven en el Mapguide Server, no como Maestro</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.DeleteButton.ToolTipText" type="System.String">
-	<value>Remove the selected files</value>
+	<value>Eliminar los ficheros seleccionados</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.RefreshButton.ToolTipText" type="System.String">
-	<value>Refresh the mapping data for the selected items</value>
+	<value>Actualizar los datos del mapa para los objetos seleccionados</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.AddButton.ToolTipText" type="System.String">
-	<value>Add raster files</value>
+	<value>Añadir fichero raster</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.browseAliasToolStripMenuItem.Text" type="System.String">
-	<value>Browse alias...</value>
+	<value>Navegar por alias...</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.browseFilesToolStripMenuItem.Text" type="System.String">
-	<value>Browse files...</value>
+	<value>Navegar por ficheros...</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.browseFolderToolStripMenuItem.Text" type="System.String">
-	<value>Browse folder...</value>
+	<value>Navegar por carpeta...</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.typeFilelistToolStripMenuItem.Text" type="System.String">
-	<value>Type filelist...</value>
+	<value>Tipo lista fichero...</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorGdal.composite.typeFolderToolStripMenuItem.Text" type="System.String">
-	<value>Type folder...</value>
+	<value>Tipo de carpeta...</value>
 </data>
 
 </root>
