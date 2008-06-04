@@ -181,6 +181,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.textEditor.AcceptsTab = true;
             this.textEditor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textEditor.Location = new System.Drawing.Point(0, 93);
+            this.textEditor.MaxLength = 0;
             this.textEditor.Multiline = true;
             this.textEditor.Name = "textEditor";
             this.textEditor.ScrollBars = System.Windows.Forms.ScrollBars.Both;
