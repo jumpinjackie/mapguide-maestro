@@ -1372,18 +1372,48 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			try
 			{
+                //The commented code below is for the raster based viewer.
+                //Its incomplete, and thus not used
+                /*
 				string id = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.RuntimeMap, true);
 				m_editor.CurrentConnection.CreateRuntimeMap(id, m_map);
 
 				RasterViewer.PreviewMap pv = new RasterViewer.PreviewMap(m_editor.CurrentConnection, id);
-				pv.ShowDialog(this);
+				pv.ShowDialog(this);*/
+
+                MaestroAPI.WebLayout layout;
+
+                if (System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, "Preview layout.WebLayout")))
+                {
+                    using (System.IO.FileStream fs = new System.IO.FileStream(System.IO.Path.Combine(Application.StartupPath, "Preview layout.WebLayout"), System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
+                        layout = (MaestroAPI.WebLayout)m_editor.CurrentConnection.DeserializeObject(typeof(OSGeo.MapGuide.MaestroAPI.WebLayout), fs);
+
+                }
+                else
+                    layout = (MaestroAPI.WebLayout)m_editor.CurrentConnection.DeserializeObject(typeof(OSGeo.MapGuide.MaestroAPI.WebLayout), System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "Preview layout.WebLayout"));
+
+
+                string tempmap = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, true);
+
+                string templayout = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, true);
+
+                layout.Map.ResourceId = tempmap;
+                m_editor.CurrentConnection.SaveResourceAs(layout, templayout);
+                m_editor.CurrentConnection.SaveResourceAs(m_map, tempmap);
+
+                string url =((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL;
+
+                url += "mapviewerajax/?WEBLAYOUT=" + System.Web.HttpUtility.UrlEncode(templayout) + "&SESSION=" + System.Web.HttpUtility.UrlEncode(m_editor.CurrentConnection.SessionID);
+
+                m_editor.OpenUrl(url);
+
 			}
 			catch(Exception ex)
 			{
 				MessageBox.Show(this, string.Format(m_globalizor.Translate("Failed while creating map preview: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
-			return false;
+			return true;
 		}
 
 		private void lstDrawOrder_SizeChanged(object sender, System.EventArgs e)

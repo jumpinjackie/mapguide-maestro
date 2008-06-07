@@ -453,8 +453,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		public bool Preview()
 		{
-			return m_child.Preview();
-		}
+            if (!m_child.Preview())
+            {
+                //It is using a temp id, so its safe to save it
+                m_editor.CurrentConnection.SaveResource(m_feature);
+
+                string url = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL;
+
+                url += "schemareport/describeschema.php" +
+ "?viewer=basic&resId=" + System.Web.HttpUtility.UrlEncode(m_feature.ResourceId) +
+ "&sessionId=" + System.Web.HttpUtility.UrlEncode(m_editor.CurrentConnection.SessionID)  + "&schemaName=&className=";
+
+                m_editor.OpenUrl(url);
+
+            }
+        
+            return true;
+        }
 
 		public bool Save(string savename)
 		{

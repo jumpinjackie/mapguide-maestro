@@ -465,7 +465,72 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		public bool Preview()
 		{
-			return false;
+			try
+			{
+                MaestroAPI.WebLayout layout;
+
+                if (System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, "Preview layout.WebLayout")))
+                {
+                    using (System.IO.FileStream fs = new System.IO.FileStream(System.IO.Path.Combine(Application.StartupPath, "Preview layout.WebLayout"), System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
+                        layout = (MaestroAPI.WebLayout)m_editor.CurrentConnection.DeserializeObject(typeof(OSGeo.MapGuide.MaestroAPI.WebLayout), fs);
+
+                }
+                else
+                    layout = (MaestroAPI.WebLayout)m_editor.CurrentConnection.DeserializeObject(typeof(OSGeo.MapGuide.MaestroAPI.WebLayout), System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "Preview layout.WebLayout"));
+
+                string templayer = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefiniton, true);
+
+                string tempmap = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, true);
+
+                string templayout = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, true);
+
+                layout.Map.ResourceId = tempmap;
+
+                MaestroAPI.MapDefinition map = new OSGeo.MapGuide.MaestroAPI.MapDefinition();
+                map.BackgroundColor = Color.White;
+
+                OSGeo.MapGuide.MaestroAPI.FdoSpatialContextList lst = m_editor.CurrentConnection.GetSpatialContextInfo(m_layer.Item.ResourceId, false);
+                
+                if (lst.SpatialContext != null && lst.SpatialContext.Count >= 1)
+                {
+                    map.Extents = new OSGeo.MapGuide.MaestroAPI.Box2DType();
+                    map.Extents.MinX = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.X,  System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);
+                    map.Extents.MinY = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.Y,  System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);;
+                    map.Extents.MaxX = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.X,  System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);;
+                    map.Extents.MaxY = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.Y, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture); ;
+                }
+
+                MaestroAPI.MapLayerType l = new OSGeo.MapGuide.MaestroAPI.MapLayerType();
+                l.Visible = true;
+                l.ShowInLegend = true;
+                l.ExpandInLegend = true;
+                l.Selectable = true;
+                if (string.IsNullOrEmpty(m_layer.ResourceId))
+                    l.LegendLabel = "Layer";
+                else
+                    l.LegendLabel = m_editor.CurrentConnection.GetResourceName(m_layer.ResourceId, false);
+                l.Name = l.LegendLabel;
+                l.ResourceId = templayer;
+                map.Layers = new OSGeo.MapGuide.MaestroAPI.MapLayerTypeCollection();
+                map.Layers.Add(l);
+
+                m_editor.CurrentConnection.SaveResourceAs(m_layer, templayer);
+                m_editor.CurrentConnection.SaveResourceAs(map, tempmap);
+                m_editor.CurrentConnection.SaveResourceAs(layout, templayout);
+
+                string url =((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL;
+
+                url += "mapviewerajax/?WEBLAYOUT=" + System.Web.HttpUtility.UrlEncode(templayout) + "&SESSION=" + System.Web.HttpUtility.UrlEncode(m_editor.CurrentConnection.SessionID);
+
+                m_editor.OpenUrl(url);
+
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show(this, string.Format(m_globalizor.Translate("Failed while creating map preview: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+
+            return true;
 		}
 
 

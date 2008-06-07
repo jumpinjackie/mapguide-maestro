@@ -278,6 +278,11 @@ namespace OSGeo.MapGuide.Maestro
                 return null;
         }
 
+        public void OpenUrl(string url)
+        {
+            FormAbout.OpenUrl(url);
+        }
+
 		#endregion
 	}
 }

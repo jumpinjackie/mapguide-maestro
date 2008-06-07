@@ -1579,7 +1579,15 @@ namespace OSGeo.MapGuide.Maestro
 			foreach(EditorInterface edi in m_userControls.Values)
 				if (edi.Page == tabItems.SelectedTab)
 				{
-					((ResourceEditor)edi.Page.Controls[0]).Preview();
+                    try
+                    {
+                        if (!((ResourceEditor)edi.Page.Controls[0]).Preview())
+                            MessageBox.Show(this, m_globalizor.Translate("The selected editor could not preview the resource. Most likely, the preview feature is not implemented for the given resource."), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(this, string.Format(m_globalizor.Translate("Failed while previewing resource: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 					break;
 				}
 		}
@@ -2014,33 +2022,9 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void OpenSiteAdmin_Click(object sender, System.EventArgs e)
 		{
-			try
-			{
-				string url = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_connection).BaseURL + "mapadmin/login.php";
-				if (!url.StartsWith("http://") && !url.StartsWith("https://"))
-					throw new Exception ("Malformed URL");
 
-				try
-				{
-					System.Diagnostics.Process process = new System.Diagnostics.Process();
-					process.StartInfo.FileName = url;
-					process.StartInfo.UseShellExecute = true;
-					process.Start();
-				}
-				catch
-				{
-					//The straightforward method gives an error: "The requested lookup key was not found in any active activation context"
-					System.Diagnostics.Process process = new System.Diagnostics.Process();
-					process.StartInfo.FileName = "rundll32.exe";
-					process.StartInfo.Arguments = "url.dll,FileProtocolHandler " + url;
-					process.StartInfo.UseShellExecute = true;
-					process.Start();
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(this, String.Format(m_globalizor.Translate("Failed to launch browser: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
+            string url = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_connection).BaseURL + "mapadmin/login.php";
+            FormAbout.OpenUrl(url);
 		
 		}
 

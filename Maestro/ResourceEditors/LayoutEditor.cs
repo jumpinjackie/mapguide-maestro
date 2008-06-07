@@ -2267,25 +2267,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			{
 				m_editor.CurrentConnection.SaveResourceAs(m_layout, m_tempResource);
 				string url = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL + "mapviewerajax/?WEBLAYOUT=" + System.Web.HttpUtility.UrlEncode(m_tempResource) + "&SESSION=" + System.Web.HttpUtility.UrlEncode(m_editor.CurrentConnection.SessionID);
-				if (!url.StartsWith("http://") && !url.StartsWith("https://"))
-					throw new Exception ("Malformed URL");
 
-				try
-				{
-					System.Diagnostics.Process process = new System.Diagnostics.Process();
-					process.StartInfo.FileName = url;
-					process.StartInfo.UseShellExecute = true;
-					process.Start();
-				}
-				catch
-				{
-					//The straightforward method gives an error: "The requested lookup key was not found in any active activation context"
-					System.Diagnostics.Process process = new System.Diagnostics.Process();
-					process.StartInfo.FileName = "rundll32.exe";
-					process.StartInfo.Arguments = "url.dll,FileProtocolHandler " + url;
-					process.StartInfo.UseShellExecute = true;
-					process.Start();
-				}
+                m_editor.OpenUrl(url);
 			}
 			catch (Exception ex)
 			{

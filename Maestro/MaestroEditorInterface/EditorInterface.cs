@@ -118,5 +118,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         /// <returns>Null if the user cancelled, otherwise the new expression</returns>
         string EditExpression(string current, OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription.FeatureSourceSchema schema, string providername);
 
+        /// <summary>
+        /// Opens the system default browser and displays the given Url
+        /// </summary>
+        /// <param name="url">The url to display in the browser</param>
+        void OpenUrl(string url);
+
 	}
 }
