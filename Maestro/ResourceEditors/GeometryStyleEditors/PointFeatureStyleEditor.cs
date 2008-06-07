@@ -719,7 +719,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				return;
 
 			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).Unit = (OSGeo.MapGuide.MaestroAPI.LengthUnitType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.LengthUnitType), (string) SizeContext.SelectedValue);
+				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).Unit = (OSGeo.MapGuide.MaestroAPI.LengthUnitType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.LengthUnitType), (string) SizeUnits.SelectedValue);
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
