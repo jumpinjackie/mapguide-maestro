@@ -128,6 +128,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				ColorDialog dlg = new ColorDialog();
 				dlg.FullOpen = true;
 				dlg.SolidColorOnly = true;
+                dlg.AllowFullOpen = true;
+                dlg.Color = m_currentColor.Color;
 				this.SelectedItem = m_currentColor;
 
 				if (dlg.ShowDialog(this) == DialogResult.OK)
