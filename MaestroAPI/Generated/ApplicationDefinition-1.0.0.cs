@@ -114,12 +114,12 @@ namespace OSGeo.MapGuide.MaestroAPI.ApplicationDefinition {
 			{
 				XmlDocument appDoc = null;
 
-				if (this.Extension.Any.Length > 0)
+                if (this.Extension.Any != null && this.Extension.Any.Length > 0)
 					appDoc = this.Extension.Any[0].OwnerDocument;
 				else if (this.MapSet != null)
 					foreach(MapGroupType mgt in this.MapSet)
 					{
-						if (mgt.Extension != null && mgt.Extension.Any.Length > 0)
+						if (mgt.Extension != null && mgt.Extension.Any != null && mgt.Extension.Any.Length > 0)
 						{
 							appDoc = mgt.Extension.Any[0].OwnerDocument;
 							break;
@@ -127,7 +127,7 @@ namespace OSGeo.MapGuide.MaestroAPI.ApplicationDefinition {
 
 						if (mgt.Map != null)
 							foreach (OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.MapType mtx in mgt.Map)
-								if (mtx.Extension.Any.Length > 0)
+								if (mtx.Extension != null && mtx.Extension.Any != null && mtx.Extension.Any.Length > 0)
 								{
 									appDoc = mtx.Extension.Any[0].OwnerDocument;
 									break;

@@ -280,8 +280,10 @@ namespace OSGeo.MapGuide.Maestro
 
         public void OpenUrl(string url)
         {
-            FormAbout.OpenUrl(url);
+            Program.OpenUrl(url);
         }
+
+        public bool UseFusionPreview { get { return Program.ApplicationSettings.UseFusionPreview; } }
 
 		#endregion
 	}

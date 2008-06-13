@@ -26,7 +26,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 	/// A connection to the server, using the Native API.
 	/// Only works locally, or with special firewall rules for the server.
 	/// </summary>
-	public class LocalNativeConnection : ServerConnectionBase, ServerConnectionI
+	public class LocalNativeConnection : ServerConnectionBase, ServerConnectionI, IDisposable 
 	{
 		private OSGeo.MapGuide.MgSiteConnection m_con;
 		private string m_locale;
@@ -574,5 +574,18 @@ namespace OSGeo.MapGuide.MaestroAPI
 		}
 
 		#endregion
-	}
+
+        #region IDisposable Members
+
+        public override void Dispose()
+        {
+            if (m_con != null)
+            {
+                m_con.Dispose();
+                m_con = null;
+            }
+        }
+
+        #endregion
+    }
 }

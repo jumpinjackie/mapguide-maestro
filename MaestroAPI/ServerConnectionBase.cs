@@ -1547,5 +1547,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="startpath">The path to retrieve the data from</param>
 		/// <returns>A list of unmanaged data</returns>
 		abstract public UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type);
+
+        abstract public void Dispose();
 	}
 }

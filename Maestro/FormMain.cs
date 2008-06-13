@@ -105,6 +105,7 @@ namespace OSGeo.MapGuide.Maestro
         private ToolStripButton EditAsXmlButton;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripButton ClosePageButton;
+        private ToolStripMenuItem MainMenuChangePreferences;
 		private string m_lastSelectedNode = null;
 
 		public FormMain()
@@ -207,6 +208,7 @@ namespace OSGeo.MapGuide.Maestro
             this.EditAsXmlButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ClosePageButton = new System.Windows.Forms.ToolStripButton();
+            this.MainMenuChangePreferences = new System.Windows.Forms.ToolStripMenuItem();
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -513,6 +515,7 @@ namespace OSGeo.MapGuide.Maestro
             this.MainMenuSaveAsXml,
             this.MainMenuLoadFromXml,
             this.menuItem20,
+            this.MainMenuChangePreferences,
             this.MainMenuChangeServer,
             this.OpenSiteAdmin,
             this.menuItem22,
@@ -790,6 +793,13 @@ namespace OSGeo.MapGuide.Maestro
             this.ClosePageButton.Text = "toolStripButton5";
             this.ClosePageButton.ToolTipText = "Close the current page";
             this.ClosePageButton.Click += new System.EventHandler(this.ClosePageButton_Click);
+            // 
+            // MainMenuChangePreferences
+            // 
+            this.MainMenuChangePreferences.Name = "MainMenuChangePreferences";
+            this.MainMenuChangePreferences.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuChangePreferences.Text = "Preferences...";
+            this.MainMenuChangePreferences.Click += new System.EventHandler(this.MainMenuChangePreferences_Click);
             // 
             // FormMain
             // 
@@ -2024,10 +2034,9 @@ namespace OSGeo.MapGuide.Maestro
 		{
 
             string url = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_connection).BaseURL + "mapadmin/login.php";
-            FormAbout.OpenUrl(url);
+            Program.OpenUrl(url);
 		
 		}
-
 
 
 		//TODO: Is sucks having two places where we keep track of the pages
@@ -2102,6 +2111,12 @@ namespace OSGeo.MapGuide.Maestro
         private void ClosePageButton_Click(object sender, EventArgs e)
         {
             ClosePage();
+        }
+
+        private void MainMenuChangePreferences_Click(object sender, EventArgs e)
+        {
+            ApplicationSettings dlg = new ApplicationSettings();
+            dlg.ShowDialog(this);
         }
 	}
 }

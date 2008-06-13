@@ -124,5 +124,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         /// <param name="url">The url to display in the browser</param>
         void OpenUrl(string url);
 
+        /// <summary>
+        /// Returns a value indicating if the preview should use a fusion based viewer
+        /// </summary>
+        bool UseFusionPreview { get; }
+
 	}
 }

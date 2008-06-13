@@ -123,23 +123,25 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		protected override void OnSelectedIndexChanged(EventArgs e)
 		{
-			if (this.SelectedItem != null && this.SelectedItem.ToString() == "More colors...")
-			{
-				ColorDialog dlg = new ColorDialog();
-				dlg.FullOpen = true;
-				dlg.SolidColorOnly = true;
+            if (this.SelectedItem != null && this.SelectedItem.ToString() == "More colors...")
+            {
+                ColorDialog dlg = new ColorDialog();
+                dlg.FullOpen = true;
+                dlg.SolidColorOnly = true;
                 dlg.AllowFullOpen = true;
                 dlg.Color = m_currentColor.Color;
-				this.SelectedItem = m_currentColor;
+                this.SelectedItem = m_currentColor;
 
-				if (dlg.ShowDialog(this) == DialogResult.OK)
-				{
-					if (Array.IndexOf(KnownColors, dlg.Color) > 0)
-						this.SelectedItem = dlg.Color;
-					else
-						m_currentColor.Color = dlg.Color;
-				}
-			}
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    if (Array.IndexOf(KnownColors, dlg.Color) > 0)
+                        this.SelectedItem = dlg.Color;
+                    else
+                        m_currentColor.Color = dlg.Color;
+                }
+            }
+            else
+                m_currentColor.Color = this.CurrentColor; 
 			base.OnSelectedIndexChanged (e);
 		}
 

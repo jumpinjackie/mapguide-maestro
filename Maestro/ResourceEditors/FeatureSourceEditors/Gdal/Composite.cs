@@ -359,6 +359,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 				ext.Add(".gif", "");
 				
 				s = s.Replace("%MG_DATA_PATH_ALIAS[", "[").Replace("]%", "]");
+                if (s.IndexOf("/") > 0 && !s.EndsWith("/"))
+                    s = s.Substring(0, s.LastIndexOf("/"));
 
 				OSGeo.MapGuide.MaestroAPI.UnmanagedDataList lst = m_editor.CurrentConnection.EnumerateUnmanagedData(s, null, true, OSGeo.MapGuide.MaestroAPI.UnmanagedDataTypes.Files);
 				for(int i = 0; i < lst.Items.Count; i++)

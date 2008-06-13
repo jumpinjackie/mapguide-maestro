@@ -28,8 +28,10 @@ namespace OSGeo.MapGuide.Maestro
 	public class PreferedSiteList
 	{
 		private PreferedSite[] m_sites;
+        private string m_systemBrowser;
 		private int m_initialSite;
 		private bool m_autoconnect;
+        private bool m_useFusionPreview;
 
 		public PreferedSite[] Sites
 		{
@@ -41,6 +43,34 @@ namespace OSGeo.MapGuide.Maestro
 			}
 			set { m_sites = value; }
 		}
+
+        [System.Xml.Serialization.XmlAttribute()]
+        public bool UseFusionPreview
+        {
+            get { return m_useFusionPreview; }
+            set { m_useFusionPreview = value; }
+        }
+
+        [System.Xml.Serialization.XmlAttribute()]
+        public string SystemBrowser
+        {
+            get 
+            {
+                if (string.IsNullOrEmpty(m_systemBrowser))
+                {
+                    //Windows, use system default by url handler
+                    if (System.IO.Path.DirectorySeparatorChar == '\\')
+                        m_systemBrowser = "";
+                    //Linux, assume firefox
+                    else
+                        m_systemBrowser = "firefox";
+                }
+
+                return m_systemBrowser; 
+            }
+            set { m_systemBrowser = value; }
+        }
+
 
 		[System.Xml.Serialization.XmlAttribute()]
 		public int PreferedSite

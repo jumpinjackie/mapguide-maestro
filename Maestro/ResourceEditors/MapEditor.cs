@@ -1381,31 +1381,85 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				RasterViewer.PreviewMap pv = new RasterViewer.PreviewMap(m_editor.CurrentConnection, id);
 				pv.ShowDialog(this);*/
 
-                MaestroAPI.WebLayout layout;
-
-                if (System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, "Preview layout.WebLayout")))
-                {
-                    using (System.IO.FileStream fs = new System.IO.FileStream(System.IO.Path.Combine(Application.StartupPath, "Preview layout.WebLayout"), System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
-                        layout = (MaestroAPI.WebLayout)m_editor.CurrentConnection.DeserializeObject(typeof(OSGeo.MapGuide.MaestroAPI.WebLayout), fs);
-
-                }
-                else
-                    layout = (MaestroAPI.WebLayout)m_editor.CurrentConnection.DeserializeObject(typeof(OSGeo.MapGuide.MaestroAPI.WebLayout), System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "Preview layout.WebLayout"));
-
-
                 string tempmap = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, true);
 
-                string templayout = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, true);
-
-                layout.Map.ResourceId = tempmap;
-                m_editor.CurrentConnection.SaveResourceAs(layout, templayout);
                 m_editor.CurrentConnection.SaveResourceAs(m_map, tempmap);
 
-                string url =((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL;
+                if (m_editor.UseFusionPreview)
+                {
+                    string templayout = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition, true);
 
-                url += "mapviewerajax/?WEBLAYOUT=" + System.Web.HttpUtility.UrlEncode(templayout) + "&SESSION=" + System.Web.HttpUtility.UrlEncode(m_editor.CurrentConnection.SessionID);
+                    MaestroAPI.ApplicationDefinition.ApplicationDefinitionType layout;
+                    if (System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, "Preview layout.ApplicationDefinition")))
+                    {
+                        using (System.IO.FileStream fs = new System.IO.FileStream(System.IO.Path.Combine(Application.StartupPath, "Preview layout.ApplicationDefinition"), System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
+                            layout = (MaestroAPI.ApplicationDefinition.ApplicationDefinitionType)m_editor.CurrentConnection.DeserializeObject(typeof(OSGeo.MapGuide.MaestroAPI.WebLayout), fs);
 
-                m_editor.OpenUrl(url);
+                    }
+                    else
+                        layout = (MaestroAPI.ApplicationDefinition.ApplicationDefinitionType)m_editor.CurrentConnection.DeserializeObject(typeof(OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.ApplicationDefinitionType), System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "Preview layout.ApplicationDefinition"));
+
+                    if (layout.MapSet == null)
+                        layout.MapSet = new OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.MapGroupTypeCollection();
+                    if (layout.MapSet.Count == 0)
+                        layout.MapSet.Add(new OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.MapGroupType());
+
+                    if (layout.MapSet[0].Map == null)
+                        layout.MapSet[0].Map = new OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.MapTypeCollection();
+
+                    if (layout.MapSet[0].Map.Count == 0)
+                        layout.MapSet[0].Map.Add(new OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.MapType());
+
+                    if (string.IsNullOrEmpty(layout.MapSet[0].Map[0].SingleTile))
+                        layout.MapSet[0].Map[0].SingleTile = "true";
+                    layout.MapSet[0].Map[0].Type = "MapGuide";
+
+                    if (layout.MapSet[0].Map[0].Extension == null)
+                        layout.MapSet[0].Map[0].Extension = new OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.CustomContentType();
+
+                    if (layout.MapSet[0].Map[0].Extension.Any == null || layout.MapSet[0].Map[0].Extension.Any.Length == 0)
+                        layout.MapSet[0].Map[0].Extension.Any = new System.Xml.XmlElement[1];
+                    layout.MapSet[0].Map[0].Extension.Any[0] = layout.ApplicationDocument.CreateElement("ResourceId");
+                    layout.MapSet[0].Map[0].Extension.Any[0].InnerText = tempmap;
+
+
+                    string url = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL;
+                    if (string.IsNullOrEmpty(layout.TemplateUrl))
+                        layout.TemplateUrl = "fusion/templates/mapguide/aqua/index.html";
+
+                    m_editor.CurrentConnection.SaveResourceAs(layout, templayout);
+
+                    url += layout.TemplateUrl;
+
+                    if (!url.EndsWith("?"))
+                        url += "?";
+
+                    url += "ApplicationDefinition=" + System.Web.HttpUtility.UrlEncode(templayout) + "&SESSION=" + System.Web.HttpUtility.UrlEncode(m_editor.CurrentConnection.SessionID);
+
+                    m_editor.OpenUrl(url);
+                }
+                else
+                {
+                    string templayout = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, true); MaestroAPI.WebLayout layout;
+
+                    if (System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, "Preview layout.WebLayout")))
+                    {
+                        using (System.IO.FileStream fs = new System.IO.FileStream(System.IO.Path.Combine(Application.StartupPath, "Preview layout.WebLayout"), System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
+                            layout = (MaestroAPI.WebLayout)m_editor.CurrentConnection.DeserializeObject(typeof(OSGeo.MapGuide.MaestroAPI.WebLayout), fs);
+
+                    }
+                    else
+                        layout = (MaestroAPI.WebLayout)m_editor.CurrentConnection.DeserializeObject(typeof(OSGeo.MapGuide.MaestroAPI.WebLayout), System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "Preview layout.WebLayout"));
+
+                    layout.Map.ResourceId = tempmap;
+                    m_editor.CurrentConnection.SaveResourceAs(layout, templayout);
+
+                    string url = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL;
+
+                    url += "mapviewerajax/?WEBLAYOUT=" + System.Web.HttpUtility.UrlEncode(templayout) + "&SESSION=" + System.Web.HttpUtility.UrlEncode(m_editor.CurrentConnection.SessionID);
+
+                    m_editor.OpenUrl(url);
+                }
 
 			}
 			catch(Exception ex)

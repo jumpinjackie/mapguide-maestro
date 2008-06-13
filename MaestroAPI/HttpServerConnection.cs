@@ -28,7 +28,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 	/// <summary>
 	/// Primary http based connection to the MapGuide Server
 	/// </summary>
-	public class HttpServerConnection : ServerConnectionBase, ServerConnectionI
+	public class HttpServerConnection : ServerConnectionBase, ServerConnectionI, IDisposable
 	{
 		private WebClient m_wc;
 		private RequestBuilder m_reqBuilder;
@@ -967,6 +967,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 				m_featureProviders = null;
 				m_cachedProviderCapabilities = null;
 				m_reqBuilder = reqb;
+                //This ensures we do not hit the connection limit in .Net
+                try { m_wc.Dispose(); }
+                catch { }
 				m_wc = wc;
 
 				return true;
@@ -1110,5 +1113,25 @@ namespace OSGeo.MapGuide.MaestroAPI
 			} 
 		}
 
-	}
+
+        #region IDisposable Members
+
+        public override void Dispose()
+        {
+            if (m_featureProviders != null)
+                m_featureProviders = null;
+
+            if (m_cachedProviderCapabilities != null)
+                m_cachedProviderCapabilities = null;
+
+            if (m_wc != null)
+            {
+                try { m_wc.Dispose(); }
+                catch { }
+                m_wc = null;
+            }
+        }
+
+        #endregion
+    }
 }

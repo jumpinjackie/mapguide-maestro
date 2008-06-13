@@ -366,16 +366,7 @@ namespace OSGeo.MapGuide.Maestro
 						m_sitelist.AutoConnect = chkAutoConnect.Checked;
 						m_sitelist.PreferedSite = index;
 
-						string path = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), Application.ProductName);
-						if (!System.IO.Directory.Exists(path))
-							System.IO.Directory.CreateDirectory(path);
-						path = System.IO.Path.Combine(path, "sitelist.xml");
-						System.Xml.Serialization.XmlSerializer sz = new System.Xml.Serialization.XmlSerializer(typeof(PreferedSiteList));
-						using(System.IO.FileStream fs = System.IO.File.Open(path, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.Write, System.IO.FileShare.None))
-						{
-							fs.SetLength(0);
-							sz.Serialize(fs, m_sitelist);
-						}
+                        Program.ApplicationSettings = m_sitelist;
 					}
 					catch (Exception ex)
 					{
@@ -395,26 +386,9 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void FormLogin_Load(object sender, System.EventArgs e)
 		{
-			try
-			{
-				string path = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), Application.ProductName);
-				if (!System.IO.Directory.Exists(path))
-					System.IO.Directory.CreateDirectory(path);
-				path = System.IO.Path.Combine(path, "sitelist.xml");
-				if (System.IO.File.Exists(path))
-				{
+            m_sitelist = Program.ApplicationSettings;
 
-					System.Xml.Serialization.XmlSerializer sz = new System.Xml.Serialization.XmlSerializer(typeof(PreferedSiteList));
-					using(System.IO.FileStream fs = System.IO.File.Open(path, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.None))
-						m_sitelist = (PreferedSiteList)sz.Deserialize(fs);
-				}
-			}
-			catch(Exception ex)
-			{
-				string s = ex.Message;
-			}
-
-			if (m_sitelist.Sites.Length == 0)
+            if (m_sitelist.Sites.Length == 0)
 			{
 				cmbServerUrl.Text = "http://localhost/mapguide/mapagent/mapagent.fcgi";
 				txtStartingpoint.Text = "Library://";

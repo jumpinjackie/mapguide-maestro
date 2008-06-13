@@ -28,7 +28,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 	/// <summary>
 	/// Primary connection to the MapGuide Server
 	/// </summary>
-	public interface ServerConnectionI
+	public interface ServerConnectionI : IDisposable
 	{
 		string SessionID { get; }
 		ResourceList RepositoryResources { get; }

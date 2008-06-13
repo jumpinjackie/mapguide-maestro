@@ -461,7 +461,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 string url = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL;
 
                 url += "schemareport/describeschema.php" +
- "?viewer=basic&resId=" + System.Web.HttpUtility.UrlEncode(m_feature.ResourceId) +
+                    "?viewer=" + (m_editor.UseFusionPreview ? "flexible" : "basic") + "&resId=" + System.Web.HttpUtility.UrlEncode(m_feature.ResourceId) +
  "&sessionId=" + System.Web.HttpUtility.UrlEncode(m_editor.CurrentConnection.SessionID)  + "&schemaName=&className=";
 
                 m_editor.OpenUrl(url);

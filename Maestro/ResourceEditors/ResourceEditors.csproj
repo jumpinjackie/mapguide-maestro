@@ -924,6 +924,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Preview layout.WebLayout" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Preview layout.ApplicationDefinition" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
