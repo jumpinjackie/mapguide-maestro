@@ -1187,7 +1187,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 						vldef.Filter = "";
 					foreach(VectorScaleRangeType vsc in vldef.VectorScaleRange)
 					{
-						for(int i= vsc.Items.Count-1; i >= 0; i--)
+						for(int i= vsc.Items.Count - 1; i >= 0; i--)
 						{
 							object o = vsc.Items[i];
 							if (o as PointTypeStyleType != null)
@@ -1240,11 +1240,16 @@ namespace OSGeo.MapGuide.MaestroAPI
 												lr.LegendLabel = "";
 											if (lr.Items != null)
 											{
-												foreach(StrokeType st in lr.Items)
-													if (version1)
-														st.SizeContext = SizeContextType.Default;
-													else if (st.SizeContext == SizeContextType.Default)
-														st.SizeContext = SizeContextType.MappingUnits;
+                                                foreach (StrokeType st in lr.Items)
+                                                {
+                                                    if (version1)
+                                                        st.SizeContext = SizeContextType.Default;
+                                                    else if (st.SizeContext == SizeContextType.Default)
+                                                        st.SizeContext = SizeContextType.MappingUnits;
+
+                                                    if (string.IsNullOrEmpty(st.Thickness))
+                                                        st.Thickness = "0";
+                                                }
 											}
 										}
 								}
@@ -1264,7 +1269,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 											ar.Item.Stroke.SizeContext = SizeContextType.Default;
 										else if (ar.Item.Stroke.SizeContext == SizeContextType.Default)
 											ar.Item.Stroke.SizeContext = SizeContextType.MappingUnits;
-									}
+                                    
+                                        if (string.IsNullOrEmpty(ar.Item.Stroke.Thickness))
+                                            ar.Item.Stroke.Thickness = "0";
+                                    }
 								}
 
 							}

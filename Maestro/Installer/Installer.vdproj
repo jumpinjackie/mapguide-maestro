@@ -3083,7 +3083,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.MaestroEditorInterface, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.MaestroEditorInterface, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_0170C03482856C102AB520686DD044D6"
@@ -3154,7 +3154,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.FusionEditor, Version=1.0.7.35979, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.FusionEditor, Version=1.0.8.15016, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_02A343CA1DB33BE51F7D67E927052A59"
@@ -7580,7 +7580,7 @@
             "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
+            "Vital" = "11:FALSE"
             "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
@@ -8136,7 +8136,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.MaestroAPI, Version=1.0.7.22698, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.MaestroAPI, Version=1.0.8.36521, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_7E465C48B0DBD9506B6F078FDE0073DA"
@@ -8867,7 +8867,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.0.7.35978, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.0.8.15016, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_930EB55616768E2A4E42E99F72181CF0"
@@ -9542,7 +9542,7 @@
             "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
+            "Vital" = "11:FALSE"
             "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
@@ -10740,7 +10740,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.RasterViewer, Version=1.0.3085.22699, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.RasterViewer, Version=1.0.3087.14919, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C76983902F72BC7AC6638026DAB6CB60"
@@ -12151,7 +12151,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Globalizator, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Globalizator, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_F76B53C948FF18C6C2204520A0C5AC32"
