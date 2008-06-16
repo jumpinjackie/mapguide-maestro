@@ -111,192 +111,195 @@ namespace OSGeo.MapGuide.Maestro
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(FormLogin));
-			this.label1 = new System.Windows.Forms.Label();
-			this.cmbServerUrl = new System.Windows.Forms.ComboBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.txtStartingpoint = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.txtUsername = new System.Windows.Forms.TextBox();
-			this.txtPassword = new System.Windows.Forms.TextBox();
-			this.btnOK = new System.Windows.Forms.Button();
-			this.btnCancel = new System.Windows.Forms.Button();
-			this.chkAutoConnect = new System.Windows.Forms.CheckBox();
-			this.chkSavePassword = new System.Windows.Forms.CheckBox();
-			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.cmbLanguage = new System.Windows.Forms.ComboBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label1.Location = new System.Drawing.Point(16, 16);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(64, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Server:";
-			// 
-			// cmbServerUrl
-			// 
-			this.cmbServerUrl.Location = new System.Drawing.Point(96, 16);
-			this.cmbServerUrl.Name = "cmbServerUrl";
-			this.cmbServerUrl.Size = new System.Drawing.Size(288, 21);
-			this.cmbServerUrl.TabIndex = 1;
-			this.cmbServerUrl.Text = "http://localhost/mapguide/mapagent/mapagent.fcgi";
-			this.toolTip.SetToolTip(this.cmbServerUrl, "Enter the full URL of the MapAgent service here");
-			this.cmbServerUrl.SelectedIndexChanged += new System.EventHandler(this.cmbServerUrl_SelectedIndexChanged);
-			// 
-			// label2
-			// 
-			this.label2.Enabled = false;
-			this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label2.Location = new System.Drawing.Point(16, 48);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(72, 16);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "Startingpoint";
-			// 
-			// txtStartingpoint
-			// 
-			this.txtStartingpoint.Enabled = false;
-			this.txtStartingpoint.Location = new System.Drawing.Point(96, 48);
-			this.txtStartingpoint.Name = "txtStartingpoint";
-			this.txtStartingpoint.Size = new System.Drawing.Size(288, 20);
-			this.txtStartingpoint.TabIndex = 3;
-			this.txtStartingpoint.Text = "Library://";
-			this.toolTip.SetToolTip(this.txtStartingpoint, "Enter the initial directory here");
-			// 
-			// label3
-			// 
-			this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label3.Location = new System.Drawing.Point(16, 80);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(80, 16);
-			this.label3.TabIndex = 4;
-			this.label3.Text = "Username";
-			// 
-			// label4
-			// 
-			this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label4.Location = new System.Drawing.Point(16, 112);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(80, 16);
-			this.label4.TabIndex = 5;
-			this.label4.Text = "Password";
-			// 
-			// txtUsername
-			// 
-			this.txtUsername.Location = new System.Drawing.Point(96, 80);
-			this.txtUsername.Name = "txtUsername";
-			this.txtUsername.Size = new System.Drawing.Size(288, 20);
-			this.txtUsername.TabIndex = 6;
-			this.txtUsername.Text = "Administrator";
-			this.toolTip.SetToolTip(this.txtUsername, "Enter the username used for login here");
-			// 
-			// txtPassword
-			// 
-			this.txtPassword.Location = new System.Drawing.Point(96, 112);
-			this.txtPassword.Name = "txtPassword";
-			this.txtPassword.PasswordChar = '*';
-			this.txtPassword.Size = new System.Drawing.Size(288, 20);
-			this.txtPassword.TabIndex = 7;
-			this.txtPassword.Text = "admin";
-			this.toolTip.SetToolTip(this.txtPassword, "Enter the site password here");
-			// 
-			// btnOK
-			// 
-			this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btnOK.Location = new System.Drawing.Point(96, 232);
-			this.btnOK.Name = "btnOK";
-			this.btnOK.Size = new System.Drawing.Size(96, 32);
-			this.btnOK.TabIndex = 8;
-			this.btnOK.Text = "OK";
-			this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-			// 
-			// btnCancel
-			// 
-			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btnCancel.Location = new System.Drawing.Point(208, 232);
-			this.btnCancel.Name = "btnCancel";
-			this.btnCancel.Size = new System.Drawing.Size(96, 32);
-			this.btnCancel.TabIndex = 9;
-			this.btnCancel.Text = "Cancel";
-			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-			// 
-			// chkAutoConnect
-			// 
-			this.chkAutoConnect.Enabled = false;
-			this.chkAutoConnect.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.chkAutoConnect.Location = new System.Drawing.Point(96, 200);
-			this.chkAutoConnect.Name = "chkAutoConnect";
-			this.chkAutoConnect.Size = new System.Drawing.Size(288, 16);
-			this.chkAutoConnect.TabIndex = 10;
-			this.chkAutoConnect.Text = "Log in automatically";
-			this.toolTip.SetToolTip(this.chkAutoConnect, "Check this box to have Maestro log in to this site on startup automatically.");
-			this.chkAutoConnect.CheckedChanged += new System.EventHandler(this.chkAutoConnect_CheckedChanged);
-			// 
-			// chkSavePassword
-			// 
-			this.chkSavePassword.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.chkSavePassword.Location = new System.Drawing.Point(96, 176);
-			this.chkSavePassword.Name = "chkSavePassword";
-			this.chkSavePassword.Size = new System.Drawing.Size(288, 16);
-			this.chkSavePassword.TabIndex = 11;
-			this.chkSavePassword.Text = "Save password on computer";
-			this.toolTip.SetToolTip(this.chkSavePassword, "If checked, a scrambled version of the password is stored on the computer. Please" +
-				" not that the password is NOT encrypted and may be read by a third party. Storin" +
-				"g the password on the computer is considered unsafe, but increases convinience.");
-			// 
-			// cmbLanguage
-			// 
-			this.cmbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cmbLanguage.Location = new System.Drawing.Point(96, 144);
-			this.cmbLanguage.Name = "cmbLanguage";
-			this.cmbLanguage.Size = new System.Drawing.Size(288, 21);
-			this.cmbLanguage.TabIndex = 13;
-			this.toolTip.SetToolTip(this.cmbLanguage, "Select your prefered language here");
-			this.cmbLanguage.SelectedIndexChanged += new System.EventHandler(this.cmbLanguage_SelectedIndexChanged);
-			// 
-			// label5
-			// 
-			this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label5.Location = new System.Drawing.Point(16, 144);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(64, 16);
-			this.label5.TabIndex = 12;
-			this.label5.Text = "Language";
-			// 
-			// FormLogin
-			// 
-			this.AcceptButton = this.btnOK;
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.CancelButton = this.btnCancel;
-			this.ClientSize = new System.Drawing.Size(408, 287);
-			this.Controls.Add(this.cmbLanguage);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.chkSavePassword);
-			this.Controls.Add(this.chkAutoConnect);
-			this.Controls.Add(this.btnCancel);
-			this.Controls.Add(this.btnOK);
-			this.Controls.Add(this.txtPassword);
-			this.Controls.Add(this.txtUsername);
-			this.Controls.Add(this.txtStartingpoint);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.cmbServerUrl);
-			this.Controls.Add(this.label1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "FormLogin";
-			this.Text = "Log on to a MapGuide Server";
-			this.Load += new System.EventHandler(this.FormLogin_Load);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbServerUrl = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtStartingpoint = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.chkAutoConnect = new System.Windows.Forms.CheckBox();
+            this.chkSavePassword = new System.Windows.Forms.CheckBox();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.cmbLanguage = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label1.Location = new System.Drawing.Point(16, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Server:";
+            // 
+            // cmbServerUrl
+            // 
+            this.cmbServerUrl.Location = new System.Drawing.Point(96, 16);
+            this.cmbServerUrl.Name = "cmbServerUrl";
+            this.cmbServerUrl.Size = new System.Drawing.Size(288, 21);
+            this.cmbServerUrl.TabIndex = 1;
+            this.cmbServerUrl.Text = "http://localhost/mapguide/mapagent/mapagent.fcgi";
+            this.toolTip.SetToolTip(this.cmbServerUrl, "Enter the full URL of the MapAgent service here");
+            this.cmbServerUrl.SelectedIndexChanged += new System.EventHandler(this.cmbServerUrl_SelectedIndexChanged);
+            this.cmbServerUrl.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.Enabled = false;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label2.Location = new System.Drawing.Point(16, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 16);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Startingpoint";
+            // 
+            // txtStartingpoint
+            // 
+            this.txtStartingpoint.Enabled = false;
+            this.txtStartingpoint.Location = new System.Drawing.Point(96, 48);
+            this.txtStartingpoint.Name = "txtStartingpoint";
+            this.txtStartingpoint.Size = new System.Drawing.Size(288, 20);
+            this.txtStartingpoint.TabIndex = 3;
+            this.txtStartingpoint.Text = "Library://";
+            this.toolTip.SetToolTip(this.txtStartingpoint, "Enter the initial directory here");
+            // 
+            // label3
+            // 
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label3.Location = new System.Drawing.Point(16, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 16);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Username";
+            // 
+            // label4
+            // 
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label4.Location = new System.Drawing.Point(16, 112);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(80, 16);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Password";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(96, 80);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(288, 20);
+            this.txtUsername.TabIndex = 6;
+            this.txtUsername.Text = "Administrator";
+            this.toolTip.SetToolTip(this.txtUsername, "Enter the username used for login here");
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(96, 112);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(288, 20);
+            this.txtPassword.TabIndex = 7;
+            this.txtPassword.Text = "admin";
+            this.toolTip.SetToolTip(this.txtPassword, "Enter the site password here");
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            // 
+            // btnOK
+            // 
+            this.btnOK.Enabled = false;
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnOK.Location = new System.Drawing.Point(96, 232);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(96, 32);
+            this.btnOK.TabIndex = 8;
+            this.btnOK.Text = "OK";
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnCancel.Location = new System.Drawing.Point(208, 232);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(96, 32);
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // chkAutoConnect
+            // 
+            this.chkAutoConnect.Enabled = false;
+            this.chkAutoConnect.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkAutoConnect.Location = new System.Drawing.Point(96, 200);
+            this.chkAutoConnect.Name = "chkAutoConnect";
+            this.chkAutoConnect.Size = new System.Drawing.Size(288, 16);
+            this.chkAutoConnect.TabIndex = 10;
+            this.chkAutoConnect.Text = "Log in automatically";
+            this.toolTip.SetToolTip(this.chkAutoConnect, "Check this box to have Maestro log in to this site on startup automatically.");
+            this.chkAutoConnect.CheckedChanged += new System.EventHandler(this.chkAutoConnect_CheckedChanged);
+            // 
+            // chkSavePassword
+            // 
+            this.chkSavePassword.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkSavePassword.Location = new System.Drawing.Point(96, 176);
+            this.chkSavePassword.Name = "chkSavePassword";
+            this.chkSavePassword.Size = new System.Drawing.Size(288, 16);
+            this.chkSavePassword.TabIndex = 11;
+            this.chkSavePassword.Text = "Save password on computer";
+            this.toolTip.SetToolTip(this.chkSavePassword, resources.GetString("chkSavePassword.ToolTip"));
+            // 
+            // cmbLanguage
+            // 
+            this.cmbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLanguage.Location = new System.Drawing.Point(96, 144);
+            this.cmbLanguage.Name = "cmbLanguage";
+            this.cmbLanguage.Size = new System.Drawing.Size(288, 21);
+            this.cmbLanguage.TabIndex = 13;
+            this.toolTip.SetToolTip(this.cmbLanguage, "Select your prefered language here");
+            this.cmbLanguage.SelectedIndexChanged += new System.EventHandler(this.cmbLanguage_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label5.Location = new System.Drawing.Point(16, 144);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 16);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Language";
+            // 
+            // FormLogin
+            // 
+            this.AcceptButton = this.btnOK;
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new System.Drawing.Size(408, 287);
+            this.Controls.Add(this.cmbLanguage);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.chkSavePassword);
+            this.Controls.Add(this.chkAutoConnect);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.txtStartingpoint);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbServerUrl);
+            this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "FormLogin";
+            this.Text = "Log on to a MapGuide Server";
+            this.Load += new System.EventHandler(this.FormLogin_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion
@@ -450,6 +453,11 @@ namespace OSGeo.MapGuide.Maestro
 			get { return m_useAutoConnect; }
 			set { m_useAutoConnect = value; }
 		}
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            btnOK.Enabled = txtPassword.Text.Trim().Length > 0 && cmbServerUrl.Text.Length > 0 && txtUsername.Text.Length > 0;
+        }
 
 	}
 }
