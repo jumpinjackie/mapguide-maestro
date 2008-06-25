@@ -3154,7 +3154,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.FusionEditor, Version=1.0.8.15016, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.FusionEditor, Version=1.0.8.27345, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_02A343CA1DB33BE51F7D67E927052A59"
@@ -8136,7 +8136,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.MaestroAPI, Version=1.0.8.36521, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.MaestroAPI, Version=1.0.8.26374, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_7E465C48B0DBD9506B6F078FDE0073DA"
@@ -8867,7 +8867,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.0.8.15016, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.0.8.27345, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_930EB55616768E2A4E42E99F72181CF0"
@@ -10740,7 +10740,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.RasterViewer, Version=1.0.3087.14919, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.RasterViewer, Version=1.0.3098.26374, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C76983902F72BC7AC6638026DAB6CB60"
@@ -12622,14 +12622,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MapGuide Maestro"
-        "ProductCode" = "8:{52E0BC92-8245-40AA-BBCD-9D24A07952AF}"
-        "PackageCode" = "8:{E360EBC7-1B72-4839-8DE3-0AB4670306C6}"
+        "ProductCode" = "8:{EE16B81B-4287-493A-BA9A-E66A49CD2A41}"
+        "PackageCode" = "8:{0EA27854-CE48-4CF6-9A1F-A152E2E08916}"
         "UpgradeCode" = "8:{A7C2ECB3-1991-47B9-A22E-8844BB95CAE2}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.7"
+        "ProductVersion" = "8:1.0.8"
         "Manufacturer" = "8:HexaD"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://trac.osgeo.org/mapguide/wiki/maestro"
@@ -13157,7 +13157,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3CD6F68EBB9E4C3185534FA37AA861AD"
             {
-            "SourcePath" = "8:..\\obj\\Debug\\Maestro.exe"
+            "SourcePath" = "8:..\\obj\\Release\\Maestro.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
