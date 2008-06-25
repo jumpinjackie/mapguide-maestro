@@ -45,6 +45,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton EditButton;
         private ToolStripButton RefreshButton;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripButton DisplayRawXml;
 		private FeatureSource m_item = null;
 
 		public CoordinateSystemOverride()
@@ -85,6 +87,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ProjectionOverrides = new System.Windows.Forms.ListView();
             this.SourceHeader = new System.Windows.Forms.ColumnHeader();
             this.TargetHeader = new System.Windows.Forms.ColumnHeader();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.DisplayRawXml = new System.Windows.Forms.ToolStripButton();
             toolStrip = new System.Windows.Forms.ToolStrip();
             toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -97,7 +101,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.DeleteButton,
             this.toolStripSeparator1,
             this.EditButton,
-            this.RefreshButton});
+            this.RefreshButton,
+            this.toolStripSeparator2,
+            this.DisplayRawXml});
             toolStrip.Location = new System.Drawing.Point(0, 0);
             toolStrip.Name = "toolStrip";
             toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -180,6 +186,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.TargetHeader.Text = "Target";
             this.TargetHeader.Width = 297;
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // DisplayRawXml
+            // 
+            this.DisplayRawXml.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.DisplayRawXml.Image = ((System.Drawing.Image)(resources.GetObject("DisplayRawXml.Image")));
+            this.DisplayRawXml.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DisplayRawXml.Name = "DisplayRawXml";
+            this.DisplayRawXml.Size = new System.Drawing.Size(23, 22);
+            this.DisplayRawXml.Text = "toolStripButton1";
+            this.DisplayRawXml.ToolTipText = "Click here to view the spatial context information";
+            this.DisplayRawXml.Click += new System.EventHandler(this.DisplayRawXml_Click);
             // 
             // CoordinateSystemOverride
             // 
@@ -326,6 +348,53 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             {
                 MessageBox.Show(this, string.Format("Failed to retrive coordinate info: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void DisplayRawXml_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (m_item.CurrentConnection == null)
+                    m_item.CurrentConnection = m_editor.CurrentConnection;
+
+                //This is always a copy, so saving is always safe
+                m_editor.CurrentConnection.SaveResource(m_item);
+
+                OSGeo.MapGuide.MaestroAPI.FdoSpatialContextList resp = m_item.GetSpatialInfo();
+                if (resp == null)
+                    throw new Exception("Null content in spatial info");
+
+                Form f = new Form();
+                f.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+                f.Text = "Spatial context info";
+                f.StartPosition = FormStartPosition.CenterParent;
+                f.Width = 500;
+                f.Height = 500;
+                TextBox t = new TextBox();
+                f.Controls.Clear();
+                f.Controls.Add(t);
+                t.ReadOnly = true;
+                t.Dock = DockStyle.Fill;
+                t.Multiline = true;
+                t.ScrollBars = ScrollBars.Both;
+
+
+                System.Xml.Serialization.XmlSerializer xs = new System.Xml.Serialization.XmlSerializer(resp.GetType());
+
+                using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                {
+                    xs.Serialize(ms, resp);
+                    t.Text = System.Text.Encoding.UTF8.GetString(ms.ToArray());
+                }
+
+                f.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, string.Format("Failed to retrive coordinate info: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        
+
         }
 	
 	}
