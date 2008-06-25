@@ -354,7 +354,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.ReferenceY.Name = "ReferenceY";
             this.ReferenceY.Size = new System.Drawing.Size(48, 20);
             this.ReferenceY.TabIndex = 15;
-            this.ReferenceY.Text = "ReferenceY";
             this.ReferenceY.TextChanged += new System.EventHandler(this.ReferenceY_TextChanged);
             // 
             // label8
@@ -371,7 +370,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.ReferenceX.Name = "ReferenceX";
             this.ReferenceX.Size = new System.Drawing.Size(48, 20);
             this.ReferenceX.TabIndex = 13;
-            this.ReferenceX.Text = "ReferenceX";
             this.ReferenceX.TextChanged += new System.EventHandler(this.ReferenceX_TextChanged);
             // 
             // label7
@@ -419,7 +417,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.WidthText.Name = "WidthText";
             this.WidthText.Size = new System.Drawing.Size(208, 21);
             this.WidthText.TabIndex = 8;
-            this.WidthText.Text = "Width";
             this.WidthText.SelectedIndexChanged += new System.EventHandler(this.WidthText_SelectedIndexChanged);
             // 
             // SizeUnits
@@ -685,8 +682,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
 		{
-			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item);		
+            if (m_item != null && m_item.Item as OSGeo.MapGuide.MaestroAPI.MarkSymbolType != null)
+                FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item);
+            else
+                FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), null);
 		}
 
 		private void Symbol_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -757,7 +756,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				return;
 
 			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				try { ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).InsertionPointX = double.Parse(ReferenceX.Text); }
+				try { 
+                    ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).InsertionPointX = double.Parse(ReferenceX.Text);
+                    ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointXSpecified = true;
+                }
 				catch { } //TODO: Handle better
 			previewPicture.Refresh();		
 			if (Changed != null)
@@ -770,7 +772,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				return;
 
 			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				try { ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).InsertionPointY = double.Parse( ReferenceY.Text ); }
+				try { 
+                    ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).InsertionPointY = double.Parse( ReferenceY.Text );
+                    ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointYSpecified = true;
+                }
 				catch {} //TODO: Handle better
 			previewPicture.Refresh();		
 			if (Changed != null)

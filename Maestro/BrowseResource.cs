@@ -467,7 +467,7 @@ namespace OSGeo.MapGuide.Maestro
 			{
 				TreeNode node = FolderView.SelectedNode;
 				string startPath = "Library://";
-				if (node != null)
+				if (node != null && node.Parent != null)
 					startPath += node.FullPath.Substring(m_connection.DisplayName.Length + FolderView.PathSeparator.Length).Replace(FolderView.PathSeparator, "/");
 
 				if (!startPath.EndsWith("/"))

@@ -1218,6 +1218,35 @@ namespace OSGeo.MapGuide.MaestroAPI
 													{
 													}
 
+                                                    if (!mks.InsertionPointXSpecified)
+                                                    {
+                                                        mks.InsertionPointX = 0;
+                                                        mks.InsertionPointXSpecified = true;
+                                                    }
+
+                                                    if (!mks.InsertionPointYSpecified)
+                                                    {
+                                                        mks.InsertionPointY = 0;
+                                                        mks.InsertionPointYSpecified = true;
+                                                    }
+
+                                                    if (!mks.MaintainAspectSpecified)
+                                                    {
+                                                        mks.MaintainAspect = true;
+                                                        mks.MaintainAspectSpecified = true;
+                                                    }
+
+                                                    if (mks.SizeX == null || mks.SizeY == null)
+                                                        mks.Unit = LengthUnitType.Points;
+
+                                                    if (mks.SizeX == null)
+                                                        mks.SizeX = "10";
+                                                    if (mks.SizeY == null)
+                                                        mks.SizeY = "10";
+
+                                                    if (mks.SizeContext == SizeContextType.Default)
+                                                        mks.SizeContext = SizeContextType.DeviceUnits;
+
 												}
 												/*if (version1)
 													pr.Item.Item.SizeContext = SizeContextType.Default;
