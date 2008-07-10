@@ -773,7 +773,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="attributes">The type of layer to include in the query</param>
 		/// <param name="raw">True if the result should contain the tooltip and link info</param>
 		/// <returns>The selection Xml, or an empty string if there were no data.</returns>
-		public string QueryMapFeatures(string runtimemap, string wkt, bool persist, QueryMapFeaturesLayerAttributes attributes, bool raw)
+		public override string QueryMapFeatures(string runtimemap, string wkt, bool persist, QueryMapFeaturesLayerAttributes attributes, bool raw)
 		{
 			//The request may execeed the url limit of the server, when large geometries
 			System.IO.MemoryStream ms = new System.IO.MemoryStream();

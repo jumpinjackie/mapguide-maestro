@@ -59,6 +59,19 @@ namespace OSGeo.MapGuide.MaestroAPI
 		}
 
 
+        /// <summary>
+        /// Returns a working copy of the site connection.
+        /// </summary>
+        private MgSiteConnection Con
+        {
+            get
+            {
+                //It seems that the connection 'forgets' that it is logged in.
+                if (string.IsNullOrEmpty(m_con.GetSite().GetCurrentSession()))
+                    m_con.Open(new MgUserInformation(this.SessionID));
+                return m_con;
+            }
+        }
 
 		#region ServerConnectionI Members
 
@@ -82,7 +95,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		{
 			if (type == null)
 				type = "";
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			System.Reflection.MethodInfo mi = res.GetType().GetMethod("EnumerateResources", new Type[] { typeof(MgResourceIdentifier), typeof(int), typeof(string) });
 			return (ResourceList) base.DeserializeObject(typeof(ResourceList), Utility.MgStreamToNetStream(res, mi, new object[] {new MgResourceIdentifier(startingpoint), depth, type }));
 		}
@@ -91,14 +104,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 		{
 			get
 			{
-				MgFeatureService fes = m_con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+				MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
 				return (FeatureProviderRegistryFeatureProviderCollection) base.DeserializeObject(typeof(ResourceList), Utility.MgStreamToNetStream(fes, fes.GetType().GetMethod("GetFeatureProviders"), new object[] { }));
 			}
 		}
 
 		public string TestConnection(string providername, System.Collections.Specialized.NameValueCollection parameters)
 		{
-			MgFeatureService fes = m_con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+			MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
 			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 			if (parameters != null)
 			{
@@ -112,7 +125,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public override string TestConnection(string featuresource)
 		{
-			MgFeatureService fes = m_con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+			MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
 			return fes.TestConnection(new MgResourceIdentifier(featuresource)) ? "No errors" : "Unspecified errors";
 		}
 
@@ -124,26 +137,26 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public FdoProviderCapabilities GetProviderCapabilities(string provider)
 		{
-			MgFeatureService fes = m_con.CreateService(MgServiceType.ResourceService) as MgFeatureService;
+			MgFeatureService fes = this.Con.CreateService(MgServiceType.ResourceService) as MgFeatureService;
 			return (FdoProviderCapabilities) base.DeserializeObject(typeof(FdoProviderCapabilities), Utility.MgStreamToNetStream(fes, fes.GetType().GetMethod("GetCapabilities"), new object[] { provider }));
 		}
 
 		public override System.IO.MemoryStream GetResourceData(string resourceID, string dataname)
 		{
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			return Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceData"), new object[] { new MgResourceIdentifier(resourceID), dataname });
 		}
 
 
 		public override byte[] GetResourceXmlData(string resourceID)
 		{
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			return Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceContent"), new object[] { new MgResourceIdentifier(resourceID) }).ToArray();
 		}
 
 		public override FeatureProviderRegistryFeatureProvider GetFeatureProvider(string providername)
 		{
-			MgFeatureService fes = m_con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+			MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
 			System.IO.MemoryStream ms = Utility.MgStreamToNetStream(fes, fes.GetType().GetMethod("GetCapabilities"), new object[] { providername });
 			return (FeatureProviderRegistryFeatureProvider)DeserializeObject(typeof(FeatureProviderRegistryFeatureProvider), ms);
 		}
@@ -155,7 +168,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public override void SetResourceData(string resourceid, string dataname, OSGeo.MapGuide.MaestroAPI.ResourceDataType datatype, System.IO.Stream stream)
 		{
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			byte[] data = Utility.StreamAsArray(stream);
 			MgByteReader reader = new MgByteReader(data, data.Length, "binary/octet-stream");
 			res.SetResourceData(new MgResourceIdentifier(resourceid), dataname, datatype.ToString(), reader); 
@@ -163,7 +176,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public override void SetResourceXmlData(string resourceid, System.IO.Stream stream)
 		{
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			if (stream == null)
 				res.SetResource(new MgResourceIdentifier(resourceid), null, null);
 			else
@@ -186,7 +199,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns)
 		{
-			MgFeatureService fes = m_con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+			MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
 			MgFeatureQueryOptions mgf = new MgFeatureQueryOptions();
 			if (query != null)
 				mgf.SetFilter(query);
@@ -200,14 +213,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public FeatureSourceDescription DescribeFeatureSource(string resourceID)
 		{
-			MgFeatureService fes = m_con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+			MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
 			System.IO.MemoryStream ms = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), "")));
 			return new FeatureSourceDescription(ms);
 		}
 
 		public FeatureSourceDescription DescribeFeatureSource(string resourceID, string schema)
 		{
-			MgFeatureService fes = m_con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+			MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
             if (schema != null && schema.IndexOf(":") > 0)
                 schema = schema.Split(':')[0];
 			System.IO.MemoryStream ms = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), schema)));
@@ -217,7 +230,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		public void CreateRuntimeMap(string resourceID, string mapdefinition)
 		{
 			string mapname = this.GetResourceName(resourceID, true);
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			MgMap map = new MgMap();
 			map.Create(res, new MgResourceIdentifier(mapdefinition), mapname);
 			map.Save(res, new MgResourceIdentifier(resourceID));
@@ -292,20 +305,20 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public void DeleteResourceData(string resourceID, string dataname)
 		{
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			res.DeleteResourceData(new MgResourceIdentifier(resourceID), dataname);
 		}
 
 		public ResourceDataList EnumerateResourceData(string resourceID)
 		{
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			System.IO.MemoryStream ms = Utility.MgStreamToNetStream(res, res.GetType().GetMethod("EnumerateResourceData"), new object[] { new MgResourceIdentifier(resourceID) });			
 			return (ResourceDataList)DeserializeObject(typeof(ResourceDataList), ms);
 		}
 
 		public override void DeleteResource(string resourceID)
 		{
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			res.DeleteResource(new MgResourceIdentifier(resourceID));
 		}
 
@@ -313,7 +326,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		{
 			if (!folderPath.EndsWith("/"))
 				folderPath += "/";
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			res.DeleteResource(new MgResourceIdentifier(folderPath));
 		}
 
@@ -349,20 +362,20 @@ namespace OSGeo.MapGuide.MaestroAPI
 		{
 			get
 			{
-				return m_con.GetSite().GetCurrentSiteAddress();
+				return this.Con.GetSite().GetCurrentSiteAddress();
 			}
 		}
 
 		public override ResourceReferenceList EnumerateResourceReferences(string resourceid)
 		{
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			System.IO.MemoryStream ms = Utility.MgStreamToNetStream(res, res.GetType().GetMethod("EnumerateReferences"), new object[] { new MgResourceIdentifier(resourceid) });
 			return (ResourceReferenceList)DeserializeObject(typeof(ResourceReferenceList), ms);
 		}
 
 		public override void CopyResource(string oldpath, string newpath, bool overwrite)
 		{
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			res.CopyResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
 		}
 
@@ -373,13 +386,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 			if (!newpath.EndsWith("/"))
 				newpath += "/";
 
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			res.CopyResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
 		}
 
 		public override void MoveResource(string oldpath, string newpath, bool overwrite)
 		{
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			res.MoveResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
 		}
 
@@ -390,14 +403,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 			if (!newpath.EndsWith("/"))
 				newpath += "/";
 
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			res.MoveResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
 		}
 
 		public System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi)
 		{
-			MgRenderingService rnd = m_con.CreateService(MgServiceType.RenderingService) as MgRenderingService;
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgRenderingService rnd = this.Con.CreateService(MgServiceType.RenderingService) as MgRenderingService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			MgGeometryFactory gf = new MgGeometryFactory();
 
 			string mapname = this.GetResourceName(resourceId, true);
@@ -451,11 +464,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>A list of spatial contexts</returns>
 		public override FdoSpatialContextList GetSpatialContextInfo(string resourceID, bool activeOnly)
 		{
-			MgFeatureService fes = m_con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+			MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
 			MgSpatialContextReader rd = fes.GetSpatialContexts(new MgResourceIdentifier(resourceID), activeOnly);
-			//TODO: Convert rd to FdoSpatialContextList
-			throw new MissingMethodException();
-
+            return this.DeserializeObject(typeof(FdoSpatialContextList), Utility.MgStreamToNetStream(rd, rd.GetType().GetMethod("ToXml"), null)) as FdoSpatialContextList;
 		}
 
 		/// <summary>
@@ -466,7 +477,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>A string array with the found identities</returns>
 		public override string[] GetIdentityProperties(string resourceID, string classname)
 		{
-			MgFeatureService fes = m_con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+			MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
 			string[] parts = classname.Split(':');
             MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
 			MgPropertyDefinitionCollection props;
@@ -537,7 +548,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		public override void SetSelectionXml(string runtimeMap, string selectionXml)
 		{
 			ValidateResourceID(runtimeMap, ResourceTypes.RuntimeMap);
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			MgMap map = new MgMap();
 			string mapname = this.GetResourceName(runtimeMap, true);
 			map.Open(res, mapname);
@@ -552,7 +563,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>The selection xml</returns>
 		public override string GetSelectionXml(string runtimeMap)
 		{
-			MgResourceService res = m_con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			MgMap map = new MgMap();
 			string mapname = this.GetResourceName(runtimeMap, true);
 			map.Open(res, mapname);
@@ -572,6 +583,19 @@ namespace OSGeo.MapGuide.MaestroAPI
 		{
 			throw new MissingMethodException();
 		}
+
+        public override string QueryMapFeatures(string runtimemap, string wkt, bool persist, QueryMapFeaturesLayerAttributes attributes, bool raw)
+        {
+            MgRenderingService rs = this.Con.CreateService(MgServiceType.RenderingService) as MgRenderingService;
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			MgMap map = new MgMap();
+			string mapname = runtimemap.IndexOf(":") > 0 ? this.GetResourceName(runtimemap, true) : runtimemap;
+			map.Open(res, mapname);
+
+            MgWktReaderWriter r = new MgWktReaderWriter();
+            MgFeatureInformation info = rs.QueryFeatures(map, null, r.Read(wkt), (int)MgFeatureSpatialOperations.Intersects, "", -1, (int)attributes);
+            return System.Text.Encoding.UTF8.GetString(Utility.MgStreamToNetStream(info, info.GetType().GetMethod("ToXml"), null).ToArray()).Trim();
+        }
 
 		#endregion
 

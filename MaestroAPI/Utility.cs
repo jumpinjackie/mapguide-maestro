@@ -409,5 +409,38 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             return ex;
         }
+
+        public static string CleanUpFeatureSet(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return input;
+
+            System.Xml.XmlDocument doc1 = new System.Xml.XmlDocument();
+            doc1.LoadXml(input);
+
+            System.Xml.XmlDocument doc2 = new System.Xml.XmlDocument();
+
+            System.Xml.XmlNode root1 = doc1["FeatureInformation"];
+            if (root1 == null)
+                root1 = doc1;
+
+            if (root1["FeatureSet"] != null)
+            {
+                System.Xml.XmlNode root2 = doc2.AppendChild(doc2.CreateElement("FeatureSet"));
+                root2.InnerXml = root1["FeatureSet"].InnerXml;
+            }
+
+            return doc2.OuterXml;
+            
+        }
+
+        private static void CopyNodeRecursive(System.Xml.XmlNode n1, System.Xml.XmlNode n2)
+        {
+            foreach (System.Xml.XmlAttribute attr in n1.Attributes)
+                n2.Attributes.Append(n2.OwnerDocument.CreateAttribute(attr.Name)).Value = attr.Value;
+
+            foreach (System.Xml.XmlNode n in n1.ChildNodes)
+                CopyNodeRecursive(n, n2.AppendChild(n2.OwnerDocument.CreateElement(n.Name)));
+        }
 	}
 }

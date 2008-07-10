@@ -12626,7 +12626,7 @@
         "PackageCode" = "8:{0EA27854-CE48-4CF6-9A1F-A152E2E08916}"
         "UpgradeCode" = "8:{A7C2ECB3-1991-47B9-A22E-8844BB95CAE2}"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.8"

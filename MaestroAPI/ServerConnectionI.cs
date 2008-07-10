@@ -297,5 +297,25 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="startpath">The path to retrieve the data from</param>
 		/// <returns>A list of unmanaged data</returns>
 		UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type);
+
+        /// <summary>
+		/// Selects features from a runtime map, returning a selection Xml.
+		/// </summary>
+		/// <param name="runtimemap">The map to query. NOT a resourceID, only the map name!</param>
+		/// <param name="wkt">The WKT of the geometry to query with (always uses intersection)</param>
+		/// <param name="persist">True if the selection should be saved in the runtime map, false otherwise.</param>
+		/// <param name="attributes">The type of layer to include in the query</param>
+		/// <param name="raw">True if the result should contain the tooltip and link info</param>
+		/// <returns>The selection Xml, or an empty string if there were no data.</returns>
+        string QueryMapFeatures(string runtimemap, string wkt, bool persist, QueryMapFeaturesLayerAttributes attributes, bool raw);
+
+        /// <summary>
+		/// Selects features from a runtime map, returning a selection Xml.
+		/// </summary>
+		/// <param name="runtimemap">The map to query. NOT a resourceID, only the map name!</param>
+		/// <param name="wkt">The WKT of the geometry to query with (always uses intersection)</param>
+		/// <param name="persist">True if the selection should be saved in the runtime map, false otherwise.</param>
+		/// <returns>The selection Xml, or an empty string if there were no data.</returns>
+        string QueryMapFeatures(string runtimemap, string wkt, bool persist);
 	}
 }

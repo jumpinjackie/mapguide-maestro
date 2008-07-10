@@ -407,8 +407,10 @@ namespace OSGeo.MapGuide.Maestro
 				chkAutoConnect.Checked = m_sitelist.AutoConnect;
 			}
 
-			//TODO: Enable the Starting Point, once the functionality is created
+            //Fix, enable OK button in case the password is "admin" :)
+            txtPassword_TextChanged(null, null);
 
+			//TODO: Enable the Starting Point, once the functionality is created
 			//TODO: Enable the AutoConnect checkbox, once the reconnect option is created inside studio
 			if (m_useAutoConnect && chkAutoConnect.Checked)
 			{
