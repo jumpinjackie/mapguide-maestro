@@ -187,17 +187,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 							OSGeo.MapGuide.MaestroAPI.FdoSpatialContextList lst = m_editor.CurrentConnection.GetSpatialContextInfo(tempname, false);
 							if (lst.SpatialContext != null && lst.SpatialContext.Count != 0 && lst.SpatialContext[0].Extent != null)
 							{
-								minx = Math.Min(minx, double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.X, System.Globalization.CultureInfo.InvariantCulture)); 
-								miny = Math.Min(miny, double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.Y, System.Globalization.CultureInfo.InvariantCulture)); 
-								maxx = Math.Max(maxx, double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.X, System.Globalization.CultureInfo.InvariantCulture)); 
-								maxy = Math.Max(maxy, double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.Y, System.Globalization.CultureInfo.InvariantCulture)); 
+                                double local_minx = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.X, System.Globalization.CultureInfo.InvariantCulture);
+                                double local_miny = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.Y, System.Globalization.CultureInfo.InvariantCulture);
+
+                                double local_maxx = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.X, System.Globalization.CultureInfo.InvariantCulture);
+                                double local_maxy = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.Y, System.Globalization.CultureInfo.InvariantCulture);
+
+								minx = Math.Min(minx, local_minx); 
+								miny = Math.Min(miny, local_miny); 
+								maxx = Math.Max(maxx, local_maxx); 
+								maxy = Math.Max(maxy, local_maxy); 
 
 								string[] items = SplitPath(item.Itempath);
 							
 								if (!toplevels.ContainsKey(items[0]))
 									toplevels[items[0]] = new System.Text.StringBuilder();
 							
-								((System.Text.StringBuilder)toplevels[items[0]]).Append(string.Format(System.Globalization.CultureInfo.InvariantCulture, TEMPLATE_FEAT, System.IO.Path.GetFileNameWithoutExtension(items[1]), items[1], minx, miny, maxx, maxy)); 
+								((System.Text.StringBuilder)toplevels[items[0]]).Append(string.Format(System.Globalization.CultureInfo.InvariantCulture, TEMPLATE_FEAT, System.IO.Path.GetFileNameWithoutExtension(items[1]), items[1], local_minx, local_miny, local_maxx, local_maxy)); 
 							}
 						}
 						finally
