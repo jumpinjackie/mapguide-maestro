@@ -100,6 +100,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 			if (m_rd != null)
 			{
 				bool next = m_rd.ReadNext();
+                if (!next)
+                {
+                    m_rd = null;
+                    m_row = null;
+                    return false;
+                }
+
 				m_row = new FeatureSetRow(this, m_rd);
 				return next;
 			}
@@ -279,7 +286,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                         OSGeo.MapGuide.MgAgfReaderWriter rdw = new OSGeo.MapGuide.MgAgfReaderWriter();
                         OSGeo.MapGuide.MgGeometry g = rdw.Read(rd.GetGeometry(p));
                         OSGeo.MapGuide.MgWktReaderWriter rdww = new OSGeo.MapGuide.MgWktReaderWriter();
-                        m_items[ordinal] = m_reader.Read(rdww.Write(g));
+                        m_items[ordinal] = this.Reader.Read(rdww.Write(g));
                     }
 				}
 				else

@@ -317,5 +317,15 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="persist">True if the selection should be saved in the runtime map, false otherwise.</param>
 		/// <returns>The selection Xml, or an empty string if there were no data.</returns>
         string QueryMapFeatures(string runtimemap, string wkt, bool persist);
+
+        /// <summary>
+        /// Renders a minature bitmap of the layers style
+        /// </summary>
+        /// <param name="scale">The scale for the bitmap to match</param>
+        /// <param name="layerdefinition">The layer the image should represent</param>
+        /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
+        /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
+        /// <returns>The minature bitmap</returns>
+        System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type);
 	}
 }

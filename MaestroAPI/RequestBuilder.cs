@@ -937,5 +937,19 @@ namespace OSGeo.MapGuide.MaestroAPI
 			
 			return m_hosturi + "?" + EncodeParameters(param);
 		}
+
+        public string GetLegendImage(double scale, string layerdef, int themeIndex, int type)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "GETLEGENDIMAGE");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("SCALE", scale.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            param.Add("LAYERDEFINITION", layerdef);
+            param.Add("THEMECATEGORY", themeIndex.ToString());
+            param.Add("TYPE", type.ToString());
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
 	}
 }

@@ -1113,6 +1113,19 @@ namespace OSGeo.MapGuide.MaestroAPI
 			} 
 		}
 
+        /// <summary>
+        /// Renders a minature bitmap of the layers style
+        /// </summary>
+        /// <param name="scale">The scale for the bitmap to match</param>
+        /// <param name="layerdefinition">The layer the image should represent</param>
+        /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
+        /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
+        /// <returns>The minature bitmap</returns>
+        public override System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type)
+        {
+            string param = m_reqBuilder.GetLegendImage(scale, layerdefinition, themeIndex, type);
+            return new System.Drawing.Bitmap(this.OpenRead(param));
+        }
 
         #region IDisposable Members
 
