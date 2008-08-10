@@ -196,6 +196,17 @@ namespace OSGeo.MapGuide.MaestroAPI
 			
 		}
 
+        /// <summary>
+        /// Deserializes an object from a stream.
+        /// </summary>
+        /// <typeparam name="T">The expected object type</typeparam>
+        /// <param name="data">The stream containing the object</param>
+        /// <returns>The deserialized object</returns>
+        virtual public T DeserializeObject<T>(System.IO.Stream data)
+        {
+            return (T)DeserializeObject(typeof(T), data);
+        }
+
 		/// <summary>
 		/// Deserializes an object from a stream.
 		/// </summary>
@@ -244,8 +255,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 		virtual public System.IO.MemoryStream SerializeObject(object o)
 		{
 			System.IO.MemoryStream ms = new System.IO.MemoryStream();
-			SerializeObject(o, ms);
-			return Utility.RemoveUTF8BOM(ms);
+            GetSerializer(o.GetType()).Serialize(new Utf8XmlWriter(ms), o);
+            return Utility.RemoveUTF8BOM(ms);
 		}
 
 		/// <summary>
@@ -258,7 +269,11 @@ namespace OSGeo.MapGuide.MaestroAPI
 			//The Utf8 writer makes sure the Utf8 tag is in place + sets encoding to Utf8
 			//This is needed because the server fails when rendering maps using non utf8 xml documents
 			//And the XmlSerializer sytem in .Net does not have a method to set the encoding attribute
-			GetSerializer(o.GetType()).Serialize(new Utf8XmlWriter(stream), o);
+
+            //This does not remove the utf8 BOM marker :(
+            //GetSerializer(o.GetType()).Serialize(new Utf8XmlWriter(stream), o);
+
+            SerializeObject(o).WriteTo(stream);
 		}
 
 		/// <summary>
@@ -1104,14 +1119,26 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>A stream containing the references resource data</returns>
 		abstract public System.IO.MemoryStream GetResourceData(string resourceID, string dataname);
 
-		/// <summary>
+        /// <summary>
+        /// Uploads data to a resource
+        /// </summary>
+        /// <param name="resourceid">The id of the resource to update</param>
+        /// <param name="dataname">The name of the data to update or create</param>
+        /// <param name="datatype">The type of data</param>
+        /// <param name="stream">A stream containing the new content of the resource data</param>
+        virtual public void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream)
+        {
+            SetResourceData(resourceid, dataname, datatype, stream, null);
+        }
+        
+        /// <summary>
 		/// Uploads data to a resource
 		/// </summary>
 		/// <param name="resourceid">The id of the resource to update</param>
 		/// <param name="dataname">The name of the data to update or create</param>
 		/// <param name="datatype">The type of data</param>
 		/// <param name="stream">A stream containing the new content of the resource data</param>
-		abstract public void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream);
+		abstract public void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback);
 
 		/// <summary>
 		/// Saves a WebLayout, using its originating resourceId
@@ -1619,6 +1646,18 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
         /// <returns>The minature bitmap</returns>
         abstract public System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type);
+
+        /// <summary>
+        /// Upload a MapGuide Package file to the server
+        /// </summary>
+        /// <param name="filename">Name of the file to upload</param>
+        /// <param name="callback">A callback argument used to display progress. May be null.</param>
+        abstract public void UploadPackage(string filename, Utility.StreamCopyProgressDelegate callback);
+
+        abstract public ResourceDocumentHeaderType GetResourceHeader(string resourceID);
+        abstract public ResourceFolderHeaderType GetFolderHeader(string resourceID);
+        abstract public void SetFolderHeader(string resourceID, ResourceFolderHeaderType header);
+        abstract public void SetResourceHeader(string resourceID, ResourceDocumentHeaderType header);
 
 	}
 }

@@ -107,21 +107,88 @@ namespace OSGeo.MapGuide.MaestroAPI
 		}
 
 
+        /// <summary>
+        /// Copies the content of a stream into another stream.
+        /// Automatically attempts to rewind the source stream.
+        /// </summary>
+        /// <param name="source">The source stream</param>
+        /// <param name="target">The target stream</param>
+        public static void CopyStream(System.IO.Stream source, System.IO.Stream target)
+        {
+            CopyStream(source, target, true);
+        }
+
 		/// <summary>
-		/// Copies the content of a stream into another stream
+		/// Copies the content of a stream into another stream.
 		/// </summary>
 		/// <param name="source">The source stream</param>
 		/// <param name="target">The target stream</param>
-		public static void CopyStream(System.IO.Stream source, System.IO.Stream target)
+        /// <param name="rewind">True if the source stream should be rewound before being copied</param>
+		public static void CopyStream(System.IO.Stream source, System.IO.Stream target, bool rewind)
 		{
 			int r;
 			byte[] buf = new byte[1024];
+
+            if (rewind && source.CanSeek)
+                try { source.Position = 0; }
+                catch { }
+
 			do
 			{
 				r  = source.Read(buf, 0, buf.Length);
 				target.Write(buf, 0, r);
 			} while (r > 0);
 		}
+
+        /// <summary>
+        /// A delegate used to update a progress bar while copying a stream.
+        /// </summary>
+        /// <param name="copied">The number of bytes copied so far</param>
+        /// <param name="remaining">The number of bytes left in the stream. -1 if the stream length is not known</param>
+        /// <param name="total">The total number of bytes in the source stream. -1 if the stream length is unknown</param>
+        public delegate void StreamCopyProgressDelegate(long copied, long remaining, long total);
+
+        /// <summary>
+        /// Copies the content of a stream into another stream, with callbacks.
+        /// </summary>
+        /// <param name="source">The source stream</param>
+        /// <param name="target">The target stream</param>
+        /// <param name="callback">An optional callback delegate, may be null.</param>
+        /// <param name="updateFrequence">The number of bytes to copy before calling the callback delegate, set to 0 to get every update</param>
+        public static void CopyStream(System.IO.Stream source, System.IO.Stream target, StreamCopyProgressDelegate callback, long updateFrequence)
+        {
+            long length = -1;
+            try { length = source.Length; }
+            catch { }
+
+            long copied = 0;
+            long freqCount = 0;
+
+            if (callback != null)
+                callback(copied, length > 0 ? (length - copied) : -1 , length);
+
+            int r;
+            byte[] buf = new byte[1024];
+            do
+            {
+                r = source.Read(buf, 0, buf.Length);
+                target.Write(buf, 0, r);
+                
+                copied += r;
+                freqCount += r;
+
+                if (freqCount > updateFrequence)
+                {
+                    freqCount = 0;
+                    if (callback != null)
+                        callback(copied, length > 0 ? (length - copied) : -1, length);
+                }
+
+            } while (r > 0);
+
+            if (callback != null)
+                callback(copied, 0, copied);
+        }
 
         /// <summary>
         /// Builds a copy of the object by serializing it to xml, and then deserializing it.
@@ -232,6 +299,15 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return target;
 		}
 
+        /// <summary>
+        /// Converts a MgStream to a .Net Stream object.
+        /// Due to some swig issues, it is not possible to pass on an MgStream to a function,
+        /// so this function calls a method to retrieve the stream locally.
+        /// </summary>
+        /// <param name="source">The object which has a stream</param>
+        /// <param name="mi">The method to call</param>
+        /// <param name="args">Arguments to the method</param>
+        /// <returns>A memorystream with the MgStream's content</returns>
 		public static System.IO.MemoryStream MgStreamToNetStream(object source, System.Reflection.MethodInfo mi, object[] args)
 		{
 			OSGeo.MapGuide.MgByteReader rd = (OSGeo.MapGuide.MgByteReader)mi.Invoke(source, args);
@@ -247,6 +323,12 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return ms;
 		}
 
+        /// <summary>
+        /// Reads all data from a stream, and returns it as a single array.
+        /// Note that this is very inefficient if the stream is several megabytes long.
+        /// </summary>
+        /// <param name="s">The stream to exhaust</param>
+        /// <returns>The streams content as an array</returns>
 		public static byte[] StreamAsArray(System.IO.Stream s)
 		{
 			if (s as System.IO.MemoryStream != null)
@@ -285,7 +367,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 				{
 					ms.Position = 3;
 					System.IO.MemoryStream mxs = new System.IO.MemoryStream();
-					Utility.CopyStream(ms, mxs);
+					Utility.CopyStream(ms, mxs, false);
 					mxs.Position = 0;
 					return mxs;
 				}
@@ -369,16 +451,29 @@ namespace OSGeo.MapGuide.MaestroAPI
 			throw new Exception("Failed to find type for: " + type.FullName.ToString());
 		}
 
+        /// <summary>
+        /// Returns a type used to define a raster column in a feature reader
+        /// </summary>
         public static Type RasterType
         {
             get { return typeof(System.Drawing.Bitmap); }
         }
 
+        /// <summary>
+        /// Returns the type used to define a geometry column in a feature reader
+        /// </summary>
         public static Type GeometryType
         {
             get { return typeof(Topology.Geometries.IGeometry); }
         }
 
+        /// <summary>
+        /// This method tries to extract the html content of a WebException.
+        /// If succesfull, it will return an exception with an error message corresponding to the html text.
+        /// If not, it will return the original exception object.
+        /// </summary>
+        /// <param name="ex">The exception object to extract from</param>
+        /// <returns>A potentially better exeception</returns>
         public static Exception ThrowAsWebException(Exception ex)
         {
             if (ex as System.Net.WebException != null)
@@ -442,5 +537,23 @@ namespace OSGeo.MapGuide.MaestroAPI
             foreach (System.Xml.XmlNode n in n1.ChildNodes)
                 CopyNodeRecursive(n, n2.AppendChild(n2.OwnerDocument.CreateElement(n.Name)));
         }
+
+        /// <summary>
+        /// Formats a number of bytes to a human readable format, ea.: 2.56 Kb
+        /// </summary>
+        /// <param name="size">The size in bytes</param>
+        /// <returns>The human readable string</returns>
+        public static string FormatSizeString(long size)
+        {
+            if (size > 1024 * 1024 * 1024)
+                return string.Format("{0:N} GB", (double)size / (1024 * 1024 * 1024));
+            else if (size > 1024 * 1024)
+                return string.Format("{0:N} MB", (double)size / (1024 * 1024));
+            else if (size > 1024)
+                return string.Format("{0:N} KB", (double)size / 1024);
+            else
+                return string.Format("{0} bytes", size);
+        }
+
 	}
 }

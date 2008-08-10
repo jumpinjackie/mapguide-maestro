@@ -89,6 +89,10 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SharpZipLib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -105,9 +109,8 @@
       <Name>System.XML</Name>
     </Reference>
     <ProjectReference Include="..\MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
-      <Name>MapGuideAPI</Name>
       <Project>{290B027E-3649-4A60-A9BF-0544831435E2}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+      <Name>OSGeo.MapGuide.MaestroAPI</Name>
     </ProjectReference>
     <ProjectReference Include="FusionEditor\FusionEditor.csproj">
       <Name>FusionEditor</Name>
@@ -172,6 +175,20 @@
     <Compile Include="LengthyOperation.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PackageManager\CreatePackage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackageManager\CreatePackage.Designer.cs">
+      <DependentUpon>CreatePackage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PackageManager\PackageBuilder.cs" />
+    <Compile Include="PackageManager\PackageProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackageManager\PackageProgress.Designer.cs">
+      <DependentUpon>PackageProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PackageManager\PackageUploader.cs" />
     <Compile Include="PreferedSite.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -233,6 +250,14 @@
     <EmbeddedResource Include="LengthyOperation.resx">
       <DependentUpon>LengthyOperation.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageManager\CreatePackage.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CreatePackage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageManager\PackageProgress.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PackageProgress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>

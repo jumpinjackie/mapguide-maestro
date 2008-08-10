@@ -106,6 +106,10 @@ namespace OSGeo.MapGuide.Maestro
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripButton ClosePageButton;
         private ToolStripMenuItem MainMenuChangePreferences;
+        private ToolStripMenuItem packagesToolStripMenuItem;
+        private ToolStripMenuItem createPackageToolStripMenuItem;
+        private ToolStripMenuItem modifyPackageToolStripMenuItem;
+        private ToolStripMenuItem restorePackageToolStripMenuItem;
 		private string m_lastSelectedNode = null;
 
 		public FormMain()
@@ -189,6 +193,7 @@ namespace OSGeo.MapGuide.Maestro
             this.MainMenuSaveAsXml = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuLoadFromXml = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem20 = new System.Windows.Forms.ToolStripSeparator();
+            this.MainMenuChangePreferences = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuChangeServer = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenSiteAdmin = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem22 = new System.Windows.Forms.ToolStripSeparator();
@@ -197,6 +202,10 @@ namespace OSGeo.MapGuide.Maestro
             this.MainMenuCut = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuPaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.packagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createPackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifyPackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restorePackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -208,7 +217,6 @@ namespace OSGeo.MapGuide.Maestro
             this.EditAsXmlButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ClosePageButton = new System.Windows.Forms.ToolStripButton();
-            this.MainMenuChangePreferences = new System.Windows.Forms.ToolStripMenuItem();
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -493,6 +501,7 @@ namespace OSGeo.MapGuide.Maestro
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItem2,
             this.MainMenuEdit,
+            this.packagesToolStripMenuItem,
             this.menuItem3});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
@@ -613,6 +622,13 @@ namespace OSGeo.MapGuide.Maestro
             this.menuItem20.Name = "menuItem20";
             this.menuItem20.Size = new System.Drawing.Size(208, 6);
             // 
+            // MainMenuChangePreferences
+            // 
+            this.MainMenuChangePreferences.Name = "MainMenuChangePreferences";
+            this.MainMenuChangePreferences.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuChangePreferences.Text = "Preferences...";
+            this.MainMenuChangePreferences.Click += new System.EventHandler(this.MainMenuChangePreferences_Click);
+            // 
             // MainMenuChangeServer
             // 
             this.MainMenuChangeServer.Name = "MainMenuChangeServer";
@@ -672,6 +688,37 @@ namespace OSGeo.MapGuide.Maestro
             this.MainMenuPaste.Size = new System.Drawing.Size(112, 22);
             this.MainMenuPaste.Text = "Paste";
             this.MainMenuPaste.Click += new System.EventHandler(this.MainMenuPaste_Click);
+            // 
+            // packagesToolStripMenuItem
+            // 
+            this.packagesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createPackageToolStripMenuItem,
+            this.modifyPackageToolStripMenuItem,
+            this.restorePackageToolStripMenuItem});
+            this.packagesToolStripMenuItem.Name = "packagesToolStripMenuItem";
+            this.packagesToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.packagesToolStripMenuItem.Text = "Packages";
+            // 
+            // createPackageToolStripMenuItem
+            // 
+            this.createPackageToolStripMenuItem.Name = "createPackageToolStripMenuItem";
+            this.createPackageToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.createPackageToolStripMenuItem.Text = "Create package...";
+            this.createPackageToolStripMenuItem.Click += new System.EventHandler(this.createPackageToolStripMenuItem_Click);
+            // 
+            // modifyPackageToolStripMenuItem
+            // 
+            this.modifyPackageToolStripMenuItem.Name = "modifyPackageToolStripMenuItem";
+            this.modifyPackageToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.modifyPackageToolStripMenuItem.Text = "Modify package...";
+            this.modifyPackageToolStripMenuItem.Click += new System.EventHandler(this.modifyPackageToolStripMenuItem_Click);
+            // 
+            // restorePackageToolStripMenuItem
+            // 
+            this.restorePackageToolStripMenuItem.Name = "restorePackageToolStripMenuItem";
+            this.restorePackageToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.restorePackageToolStripMenuItem.Text = "Restore package...";
+            this.restorePackageToolStripMenuItem.Click += new System.EventHandler(this.restorePackageToolStripMenuItem_Click);
             // 
             // menuItem3
             // 
@@ -793,13 +840,6 @@ namespace OSGeo.MapGuide.Maestro
             this.ClosePageButton.Text = "toolStripButton5";
             this.ClosePageButton.ToolTipText = "Close the current page";
             this.ClosePageButton.Click += new System.EventHandler(this.ClosePageButton_Click);
-            // 
-            // MainMenuChangePreferences
-            // 
-            this.MainMenuChangePreferences.Name = "MainMenuChangePreferences";
-            this.MainMenuChangePreferences.Size = new System.Drawing.Size(211, 22);
-            this.MainMenuChangePreferences.Text = "Preferences...";
-            this.MainMenuChangePreferences.Click += new System.EventHandler(this.MainMenuChangePreferences_Click);
             // 
             // FormMain
             // 
@@ -2117,6 +2157,24 @@ namespace OSGeo.MapGuide.Maestro
         {
             ApplicationSettings dlg = new ApplicationSettings();
             dlg.ShowDialog(this);
+        }
+
+        private void createPackageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PackageManager.CreatePackage dlg = new OSGeo.MapGuide.Maestro.PackageManager.CreatePackage();
+            dlg.Setup(new EditorInterface(this, null, null, false), this.LastSelectedNode);
+            dlg.ShowDialog(this);
+        }
+
+        private void restorePackageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (PackageManager.PackageUploader.UploadPackage(this, m_connection) == DialogResult.OK)
+                RebuildDocumentTree();
+        }
+
+        private void modifyPackageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(this, "This feature is not yet implemented", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 	}
 }

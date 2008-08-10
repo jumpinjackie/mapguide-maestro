@@ -166,13 +166,18 @@ namespace OSGeo.MapGuide.MaestroAPI
 			throw new MissingMethodException();
 		}
 
-		public override void SetResourceData(string resourceid, string dataname, OSGeo.MapGuide.MaestroAPI.ResourceDataType datatype, System.IO.Stream stream)
+		public override void SetResourceData(string resourceid, string dataname, OSGeo.MapGuide.MaestroAPI.ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback)
 		{
+            byte[] data = Utility.StreamAsArray(stream);
+            if (callback != null)
+                callback(0, data.Length, data.Length);
 			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			byte[] data = Utility.StreamAsArray(stream);
 			MgByteReader reader = new MgByteReader(data, data.Length, "binary/octet-stream");
-			res.SetResourceData(new MgResourceIdentifier(resourceid), dataname, datatype.ToString(), reader); 
-		}
+			res.SetResourceData(new MgResourceIdentifier(resourceid), dataname, datatype.ToString(), reader);
+            
+            if (callback != null)
+                callback(data.Length, 0, data.Length);
+        }
 
 		public override void SetResourceXmlData(string resourceid, System.IO.Stream stream)
 		{
@@ -234,7 +239,11 @@ namespace OSGeo.MapGuide.MaestroAPI
 			MgMap map = new MgMap();
 			map.Create(res, new MgResourceIdentifier(mapdefinition), mapname);
 			map.Save(res, new MgResourceIdentifier(resourceID));
-		}
+        
+            //Grrr... This does not happen automatically, even though it is required!
+            MgSelection sel = new MgSelection(map);
+            sel.Save(res, mapname);
+        }
 
 		void OSGeo.MapGuide.MaestroAPI.ServerConnectionI.CreateRuntimeMap(string resourceID, MapDefinition map)
 		{
@@ -594,8 +603,78 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             MgWktReaderWriter r = new MgWktReaderWriter();
             MgFeatureInformation info = rs.QueryFeatures(map, null, r.Read(wkt), (int)MgFeatureSpatialOperations.Intersects, "", -1, (int)attributes);
-            return System.Text.Encoding.UTF8.GetString(Utility.MgStreamToNetStream(info, info.GetType().GetMethod("ToXml"), null).ToArray()).Trim();
+
+            string xml = System.Text.Encoding.UTF8.GetString(Utility.MgStreamToNetStream(info, info.GetType().GetMethod("ToXml"), null).ToArray()).Trim();
+
+            if (persist)
+            {
+                MgSelection sel = new MgSelection(map, xml);
+                sel.Save(res, mapname);
+            }
+ 
+            return xml;
         }
+
+        /// <summary>
+        /// Upload a MapGuide Package file to the server
+        /// </summary>
+        /// <param name="filename">Name of the file to upload</param>
+        /// <param name="callback">A callback argument used to display progress. May be null.</param>
+        public override void UploadPackage(string filename, Utility.StreamCopyProgressDelegate callback)
+        {
+            System.IO.FileInfo fi = new System.IO.FileInfo(filename);
+
+            if (callback != null)
+                callback(0, fi.Length, fi.Length);
+
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            MgByteReader rd = new MgByteReader(filename, "application/octet-stream");
+            res.ApplyResourcePackage(rd);
+            rd.Dispose();
+
+
+            if (callback != null)
+                callback(fi.Length, 0, fi.Length);
+        }
+
+        public override ResourceDocumentHeaderType GetResourceHeader(string resourceID)
+        {
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			return this.DeserializeObject<ResourceDocumentHeaderType>(Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceHeader"), new object[] { new MgResourceIdentifier(resourceID) }));
+        }
+
+        public override ResourceFolderHeaderType GetFolderHeader(string resourceID)
+        {
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            return this.DeserializeObject<ResourceFolderHeaderType>(Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceContent"), new object[] { new MgResourceIdentifier(resourceID) }));
+        }
+
+        public override void SetResourceHeader(string resourceID, ResourceDocumentHeaderType header)
+        {
+			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+			if (header == null)
+				res.SetResource(new MgResourceIdentifier(resourceID), null, null);
+			else
+			{
+				byte[] buf = Utility.StreamAsArray(SerializeObject(header));
+				MgByteReader r = new MgByteReader(buf, buf.Length, "text/xml");
+				res.SetResource(new MgResourceIdentifier(resourceID), null, r);
+			}
+        }
+
+        public override void SetFolderHeader(string resourceID, ResourceFolderHeaderType header)
+        {
+            MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            if (header == null)
+                res.SetResource(new MgResourceIdentifier(resourceID), null, null);
+            else
+            {
+                byte[] buf = Utility.StreamAsArray(SerializeObject(header));
+                MgByteReader r = new MgByteReader(buf, buf.Length, "text/xml");
+                res.SetResource(new MgResourceIdentifier(resourceID), null, r);
+            }
+        }
+
 
 		#endregion
 

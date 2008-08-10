@@ -74,6 +74,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 		OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.ApplicationDefinitionType GetApplicationDefinition(string resourceID);
 		OSGeo.MapGuide.MaestroAPI.FdoProviderCapabilities GetProviderCapabilities(string provider);
 		System.IO.MemoryStream GetResourceData(string resourceID, string dataname);
+        OSGeo.MapGuide.MaestroAPI.ResourceDocumentHeaderType GetResourceHeader(string resourceID);
+        OSGeo.MapGuide.MaestroAPI.ResourceFolderHeaderType GetFolderHeader(string resourceID);
 		OSGeo.MapGuide.MaestroAPI.FeatureSource GetFeatureSource(string resourceID);
 		byte[] GetResourceXmlData(string resourceID);
 		object GetResource(string resourceID);
@@ -93,17 +95,21 @@ namespace OSGeo.MapGuide.MaestroAPI
 		FeatureProviderRegistryFeatureProvider GetFeatureProvider(string providername);
 		System.IO.Stream GetMapDWF(string resourceID);
 		object DeserializeObject(Type type, System.IO.Stream data);
+        T DeserializeObject<T>(System.IO.Stream data);
 		System.IO.MemoryStream SerializeObject(object o);
 		void SerializeObject(object o, System.IO.Stream stream);
 		Version MaxTestedVersion { get; }
 		void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream);
-		void SetResourceXmlData(string resourceid, System.IO.Stream stream);
+        void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback);
+        void SetResourceXmlData(string resourceid, System.IO.Stream stream);
 		FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query);
 		FeatureSetReader QueryFeatureSource(string resourceID, string schema);
 		FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns);
 		FeatureSourceDescription DescribeFeatureSource(string resourceID);
 		FeatureSourceDescription DescribeFeatureSource(string resourceID, string schema);
 		FdoSpatialContextList GetSpatialContextInfo(string resourceID, bool activeOnly);
+        void SetFolderHeader(string resourceID, ResourceFolderHeaderType header);
+        void SetResourceHeader(string resourceID, ResourceDocumentHeaderType header);
 
 		/// <summary>
 		/// Creates a runtime map on the server
@@ -327,5 +333,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
         /// <returns>The minature bitmap</returns>
         System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type);
+
+        /// <summary>
+        /// Upload a MapGuide Package file to the server
+        /// </summary>
+        /// <param name="filename">Name of the file to upload</param>
+        /// <param name="callback">A callback argument used to display progress. May be null.</param>
+        void UploadPackage(string filename, Utility.StreamCopyProgressDelegate callback);
 	}
 }

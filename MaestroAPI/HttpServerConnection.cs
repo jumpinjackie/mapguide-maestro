@@ -283,6 +283,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return ms;
 		}
 
+        public WebHeaderCollection LastResponseHeaders
+        {
+            get
+            {
+                return m_wc.ResponseHeaders;
+            }
+        }
 
 		public override byte[] GetResourceXmlData(string resourceID)
 		{
@@ -321,7 +328,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return this.OpenRead(req);
 		}
 
-		public override void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream)
+		public override void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback)
 		{
 
 #if DEBUG_LASTMESSAGE
@@ -336,7 +343,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			try 
 			{
 #endif
-				System.Net.WebRequest req = m_reqBuilder.SetResourceData(resourceid, dataname, datatype, outStream, stream);
+				System.Net.WebRequest req = m_reqBuilder.SetResourceData(resourceid, dataname, datatype, outStream, stream, callback);
 				req.Credentials = m_wc.Credentials;
 				outStream.Position = 0;
 				
@@ -368,20 +375,20 @@ namespace OSGeo.MapGuide.MaestroAPI
 					
 		}
 
-		public override void SetResourceXmlData(string resourceid, System.IO.Stream stream)
-		{
-			System.IO.MemoryStream outStream = new System.IO.MemoryStream();
+        private void SetResourceXmlData(string resourceid, System.IO.Stream header, System.IO.Stream content)
+        {
+            System.IO.MemoryStream outStream = new System.IO.MemoryStream();
 #if DEBUG_LASTMESSAGE
 			try 
 			{
 #endif
-			//Protect against session expired
-			if (this.m_autoRestartSession && m_username != null && m_password != null)
-				this.DownloadData(m_reqBuilder.GetSiteVersion());
+            //Protect against session expired
+            if (this.m_autoRestartSession && m_username != null && m_password != null)
+                this.DownloadData(m_reqBuilder.GetSiteVersion());
 
-			System.Net.WebRequest req = m_reqBuilder.SetResource(resourceid, outStream, stream, null);
-			req.Credentials = m_wc.Credentials;
-			outStream.Position = 0;
+            System.Net.WebRequest req = m_reqBuilder.SetResource(resourceid, outStream, content, header);
+            req.Credentials = m_wc.Credentials;
+            outStream.Position = 0;
             try
             {
                 using (System.IO.Stream rs = req.GetRequestStream())
@@ -414,6 +421,12 @@ namespace OSGeo.MapGuide.MaestroAPI
 				throw;
 			}
 #endif
+        }
+
+
+		public override void SetResourceXmlData(string resourceid, System.IO.Stream stream)
+		{
+            SetResourceXmlData(resourceid, null, stream);
 		}
 
 		public FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query)
@@ -1125,6 +1138,66 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string param = m_reqBuilder.GetLegendImage(scale, layerdefinition, themeIndex, type);
             return new System.Drawing.Bitmap(this.OpenRead(param));
+        }
+
+
+        /// <summary>
+        /// Upload a MapGuide Package file to the server
+        /// </summary>
+        /// <param name="filename">Name of the file to upload</param>
+        /// <param name="callback">A callback argument used to display progress. May be null.</param>
+        public override void UploadPackage(string filename, Utility.StreamCopyProgressDelegate callback)
+        {
+            try
+            {
+                using (System.IO.FileStream fs = new System.IO.FileStream(filename, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
+                {
+                    System.Net.WebRequest req = m_reqBuilder.ApplyPackage(fs, callback);
+                    req.Credentials = m_wc.Credentials;
+                    req.GetRequestStream().Flush();
+                    req.GetRequestStream().Close();
+
+                    byte[] buf = new byte[1];
+                    System.IO.Stream s = req.GetResponse().GetResponseStream();
+                    s.Read(buf, 0, 1);
+                    s.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Exception ex2 = Utility.ThrowAsWebException(ex);
+                if (ex2 != ex)
+                    throw ex2;
+                else
+                    throw;
+            }
+        }
+
+        public override ResourceDocumentHeaderType GetResourceHeader(string resourceID)
+        {
+            string req = m_reqBuilder.GetResourceHeader(resourceID);
+			System.IO.MemoryStream ms = new System.IO.MemoryStream();
+			using(System.IO.Stream s = this.OpenRead(req))
+                return this.DeserializeObject<ResourceDocumentHeaderType>(s);
+        }
+
+        public override ResourceFolderHeaderType GetFolderHeader(string resourceID)
+        {
+			ValidateResourceID(resourceID, ResourceTypes.Folder);
+			string req = m_reqBuilder.GetResourceHeader(resourceID);
+			System.IO.MemoryStream ms = new System.IO.MemoryStream();
+			using(System.IO.Stream s = this.OpenRead(req))
+                return this.DeserializeObject<ResourceFolderHeaderType>(s);
+        }
+
+        public override void SetResourceHeader(string resourceID, ResourceDocumentHeaderType header)
+        {
+            SetResourceXmlData(resourceID, this.SerializeObject(header), null);
+        }
+
+        public override void SetFolderHeader(string resourceID, ResourceFolderHeaderType header)
+        {
+            SetResourceXmlData(resourceID, this.SerializeObject(header), null);
         }
 
         #region IDisposable Members

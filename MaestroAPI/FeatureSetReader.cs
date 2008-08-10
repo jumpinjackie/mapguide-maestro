@@ -27,7 +27,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 	/// <summary>
 	/// Represents a set of results from a query
 	/// </summary>
-	public class FeatureSetReader
+	public class FeatureSetReader : IDisposable
 	{
 		private FeatureSetColumn[] m_columns;
 		private FeatureSetRow m_row;
@@ -102,8 +102,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 				bool next = m_rd.ReadNext();
                 if (!next)
                 {
-                    m_rd = null;
-                    m_row = null;
+                    this.Dispose();
                     return false;
                 }
 
@@ -139,7 +138,22 @@ namespace OSGeo.MapGuide.MaestroAPI
 			get { return m_row; }
 		}
 
-	}
+
+        #region IDisposable Members
+
+        public void Dispose()
+        {
+            if (m_rd != null)
+            {
+                m_rd.Close();
+                m_rd.Dispose();
+                m_rd = null;
+                m_row = null;
+            }
+        }
+
+        #endregion
+    }
 
 	public class FeatureSetColumn
 	{
@@ -259,38 +273,41 @@ namespace OSGeo.MapGuide.MaestroAPI
 			{
 				string p = m_parent.Columns[i].Name;
 				int ordinal = GetOrdinal(p);
-				m_nulls[ordinal] = false;
-                				
-				if (parent.Columns[ordinal].Type == typeof(string))
-					m_items[ordinal] = rd.GetString(p);
-				else if (parent.Columns[ordinal].Type == typeof(int))
-					m_items[ordinal] = rd.GetInt32(p);
-				else if (parent.Columns[ordinal].Type == typeof(short))
-					m_items[ordinal] = rd.GetInt16(p);
-				else if (parent.Columns[ordinal].Type == typeof(double))
-					m_items[ordinal] = rd.GetDouble(p);
-				else if (parent.Columns[ordinal].Type == typeof(bool))
-					m_items[ordinal] = rd.GetBoolean(p);
-				else if (parent.Columns[ordinal].Type == typeof(DateTime))
-					m_items[ordinal] = rd.GetDateTime(p);
-				else if (parent.Columns[ordinal].Type == Utility.GeometryType)
-				{
-                    //TODO: Uncomment this once the API gets updated to 2.0.0
-                    //It is optional to include the Topology.IO.MapGuide dll
-                    /*if (this.MgReader != null)
-                        m_items[ordinal] = this.MgReader.ReadGeometry(ref rd, p);
-                    else*/
+				m_nulls[ordinal] = rd.IsNull(p);
+
+                if (!m_nulls[ordinal])
+                {
+                    if (parent.Columns[ordinal].Type == typeof(string))
+                        m_items[ordinal] = rd.GetString(p);
+                    else if (parent.Columns[ordinal].Type == typeof(int))
+                        m_items[ordinal] = rd.GetInt32(p);
+                    else if (parent.Columns[ordinal].Type == typeof(short))
+                        m_items[ordinal] = rd.GetInt16(p);
+                    else if (parent.Columns[ordinal].Type == typeof(double))
+                        m_items[ordinal] = rd.GetDouble(p);
+                    else if (parent.Columns[ordinal].Type == typeof(bool))
+                        m_items[ordinal] = rd.GetBoolean(p);
+                    else if (parent.Columns[ordinal].Type == typeof(DateTime))
+                        m_items[ordinal] = rd.GetDateTime(p);
+                    else if (parent.Columns[ordinal].Type == Utility.GeometryType)
                     {
-                        //No MapGuide dll, convert to WKT and then to internal representation
-                        System.IO.MemoryStream ms = Utility.MgStreamToNetStream(rd, rd.GetType().GetMethod("GetGeometry"), new string[] { p });
-                        OSGeo.MapGuide.MgAgfReaderWriter rdw = new OSGeo.MapGuide.MgAgfReaderWriter();
-                        OSGeo.MapGuide.MgGeometry g = rdw.Read(rd.GetGeometry(p));
-                        OSGeo.MapGuide.MgWktReaderWriter rdww = new OSGeo.MapGuide.MgWktReaderWriter();
-                        m_items[ordinal] = this.Reader.Read(rdww.Write(g));
+                        //TODO: Uncomment this once the Topology.Net sAPI gets updated to 2.0.0
+                        //It is optional to include the Topology.IO.MapGuide dll
+                        /*if (this.MgReader != null)
+                            m_items[ordinal] = this.MgReader.ReadGeometry(ref rd, p);
+                        else*/
+                        {
+                            //No MapGuide dll, convert to WKT and then to internal representation
+                            System.IO.MemoryStream ms = Utility.MgStreamToNetStream(rd, rd.GetType().GetMethod("GetGeometry"), new string[] { p });
+                            OSGeo.MapGuide.MgAgfReaderWriter rdw = new OSGeo.MapGuide.MgAgfReaderWriter();
+                            OSGeo.MapGuide.MgGeometry g = rdw.Read(rd.GetGeometry(p));
+                            OSGeo.MapGuide.MgWktReaderWriter rdww = new OSGeo.MapGuide.MgWktReaderWriter();
+                            m_items[ordinal] = this.Reader.Read(rdww.Write(g));
+                        }
                     }
-				}
-				else
-					throw new Exception("Unknown type: " + parent.Columns[ordinal].Type.FullName);
+                    else
+                        throw new Exception("Unknown type: " + parent.Columns[ordinal].Type.FullName);
+                }
 			}
 		}
 

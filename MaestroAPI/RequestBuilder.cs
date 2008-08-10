@@ -346,7 +346,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			foreach(string s in param.Keys)
 			{
 				System.IO.MemoryStream content = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(param[s]));
-				AppendFormContent(s, null, boundary, responseStream, content);
+				AppendFormContent(s, null, boundary, responseStream, content, null);
 			}
 		}
 
@@ -358,7 +358,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="boundary">The request boundary string</param>
 		/// <param name="responseStream">The stream to write to</param>
 		/// <param name="dataStream">The stream to read from. When using non-file parameters, use UTF8 encoding</param>
-		private void AppendFormContent(string name, string filename, string boundary, System.IO.Stream responseStream, System.IO.Stream dataStream)
+		private void AppendFormContent(string name, string filename, string boundary, System.IO.Stream responseStream, System.IO.Stream dataStream, Utility.StreamCopyProgressDelegate callback)
 		{
 			string contenttype;
 			if (filename == null)
@@ -374,15 +374,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 			byte[] headers = System.Text.Encoding.UTF8.GetBytes(string.Concat(new String[] { "Content-Disposition: form-data; name=\"" + name + "\";" + filename , "\"", contenttype, "\r\n\r\n"}));
 			responseStream.Write(headers, 0, headers.Length);
-			
-			byte[] buffer = new byte[1024 * 8];
-			int r;
 
-			do
-			{
-				r = dataStream.Read(buffer, 0, headers.Length);
-				responseStream.Write(buffer, 0, r);
-			} while (r > 0);
+            Utility.CopyStream(dataStream, responseStream, callback, 0);
 
 			byte[] footer =  System.Text.Encoding.UTF8.GetBytes("\r\n--" + boundary + "\r\n");
 			responseStream.Write(footer, 0, footer.Length);
@@ -407,16 +400,16 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 			EncodeFormParameters(boundary, param, outStream);
 			if (content != null)
-				AppendFormContent("CONTENT", "content.xml", boundary, outStream, content);					
+				AppendFormContent("CONTENT", "content.xml", boundary, outStream, content, null);					
 			if (header != null)
-				AppendFormContent("HEADER", "header.xml", boundary, outStream, header);
+				AppendFormContent("HEADER", "header.xml", boundary, outStream, header, null);
 
 			req.ContentLength = outStream.Length;
 			return req;
 		}
 
 
-		public System.Net.WebRequest SetResourceData(string id, string dataname, ResourceDataType datatype, System.IO.Stream outStream, System.IO.Stream content)
+		public System.Net.WebRequest SetResourceData(string id, string dataname, ResourceDataType datatype, System.IO.Stream outStream, System.IO.Stream content, Utility.StreamCopyProgressDelegate callback)
 		{
 			if (m_sessionID == null)
 				throw new Exception("Connection is not yet logged in");
@@ -437,7 +430,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			System.Net.WebRequest req = PrepareFormContent(outStream, out boundary);
 
 			EncodeFormParameters(boundary, param, outStream);
-			AppendFormContent("DATA", "content.bin", boundary, outStream, content);					
+			AppendFormContent("DATA", "content.bin", boundary, outStream, content, callback);					
 
 			req.ContentLength = outStream.Length;
 			return req;
@@ -951,5 +944,40 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
+
+        public System.Net.WebRequest ApplyPackage(System.IO.Stream filestream, Utility.StreamCopyProgressDelegate callback)
+        {
+            if (m_sessionID == null)
+                throw new Exception("Connection is not yet logged in");
+
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "APPLYRESOURCEPACKAGE");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("MAX_FILE_SIZE", "100000000");
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            string boundary;
+            System.IO.MemoryStream outStream = new System.IO.MemoryStream();
+            System.Net.WebRequest req = PrepareFormContent(outStream, out boundary);
+            req.Timeout = 1000 * 60 * 5; //Wait up to five minutes
+
+            EncodeFormParameters(boundary, param, outStream);
+
+            /*try { req.ContentLength = outStream.Length + filestream.Length; }
+            catch {}*/
+
+            System.IO.Stream s = req.GetRequestStream();
+
+            Utility.CopyStream(outStream, s);
+            outStream.Dispose();
+
+            AppendFormContent("PACKAGE", "package.mgp", boundary, s, filestream, callback);
+            s.Close();
+
+            return req;
+        }
+
 	}
 }
