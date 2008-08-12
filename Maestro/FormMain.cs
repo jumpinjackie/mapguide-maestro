@@ -885,7 +885,7 @@ namespace OSGeo.MapGuide.Maestro
 				return;
 			}
 
-			KeepAliveTimer.Enabled = true;
+            KeepAliveTimer.Enabled = true;
 			string editorMap = System.IO.Path.Combine(Application.StartupPath, "EditorMap.xml");
 			if (!System.IO.File.Exists(editorMap))
 			{
@@ -896,7 +896,7 @@ namespace OSGeo.MapGuide.Maestro
 
 			try
 			{
-				m_editors = new ResourceEditorMap(System.IO.Path.Combine(Application.StartupPath, "EditorMap.xml"));
+                m_editors = new ResourceEditorMap(System.IO.Path.Combine(Application.StartupPath, "EditorMap.xml"));
 			}
 			catch(Exception ex)
 			{
@@ -908,6 +908,7 @@ namespace OSGeo.MapGuide.Maestro
 			this.ResourceTree.ImageList = m_editors.SmallImageList;
 			this.tabItems.ImageList = m_editors.SmallImageList;
 
+            //TODO: This should be case insensitive for linux
 			string templatepath = System.IO.Path.Combine(Application.StartupPath, "Templates");
 			m_templateMenuIndex = new Hashtable();
 
@@ -1671,8 +1672,6 @@ namespace OSGeo.MapGuide.Maestro
 				return;
 			}
 
-
-
 			TreeNode n = ResourceTree.GetNodeAt(ResourceTree.PointToClient(new Point(e.X, e.Y)));
 			if (n == null)
 				e.Effect = DragDropEffects.None;
@@ -2175,6 +2174,7 @@ namespace OSGeo.MapGuide.Maestro
         private void modifyPackageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(this, "This feature is not yet implemented", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //PackageManager.PackageEditor.EditPackage(m_connection, this);
         }
 	}
 }

@@ -198,6 +198,29 @@ namespace OSGeo.MapGuide.MaestroAPI {
                 base.InnerList[idx] = value;
             }
         }
+
+        public ResourcePackageManifestOperationsOperationParametersParameter this[string idx]
+        {
+            get
+            {
+                ResourcePackageManifestOperationsOperationParametersParameter secondBest = null;
+                foreach (ResourcePackageManifestOperationsOperationParametersParameter op in base.InnerList)
+                    if (op.Name == idx)
+                        return op;
+                    else if (secondBest == null && op.Name.ToLower().Equals(idx.ToLower()))
+                        secondBest = op;
+
+                return secondBest;
+            }
+            set
+            {
+                ResourcePackageManifestOperationsOperationParametersParameter op = this[idx];
+                if (op == null)
+                    this.Add(value);
+                else
+                    this[base.InnerList.IndexOf(op)] = value;
+            }
+        }
         
         public int Add(ResourcePackageManifestOperationsOperationParametersParameter value) {
             return base.InnerList.Add(value);
