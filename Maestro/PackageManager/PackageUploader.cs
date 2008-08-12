@@ -85,7 +85,8 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         public static DialogResult UploadPackage(Form owner, ServerConnectionI con)
         {
             OpenFileDialog dlg = new OpenFileDialog();
-            dlg.AutoUpgradeEnabled = true;
+            //Mono does NOT like this one
+            //dlg.AutoUpgradeEnabled = true;
             dlg.CheckFileExists = true;
             dlg.CheckPathExists = true;
             dlg.DefaultExt = ".mgp";

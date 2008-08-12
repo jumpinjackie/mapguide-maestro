@@ -80,10 +80,12 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             // 
             // OperationLabel
             // 
-            this.OperationLabel.AutoSize = true;
+            this.OperationLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.OperationLabel.AutoEllipsis = true;
             this.OperationLabel.Location = new System.Drawing.Point(88, 8);
             this.OperationLabel.Name = "OperationLabel";
-            this.OperationLabel.Size = new System.Drawing.Size(79, 13);
+            this.OperationLabel.Size = new System.Drawing.Size(384, 13);
             this.OperationLabel.TabIndex = 5;
             this.OperationLabel.Text = "OperationLabel";
             // 
