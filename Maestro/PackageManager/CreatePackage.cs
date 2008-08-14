@@ -113,6 +113,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
         private void BrowseResourcePath_Click(object sender, EventArgs e)
         {
+            //TODO: can't select folder
             string path = m_editor.BrowseResource("Folder");
             if (path != null)
                 ResourcePath.Text = path;

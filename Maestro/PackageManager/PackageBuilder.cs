@@ -90,7 +90,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                     {
                         m_progress.SetOperation("Creating folder " + folder.ResourceId);
                         m_progress.SetCurrentProgress(0, 100);
-                        AddFolderResource(manifest, temppath, folder, m_removeExisting);
+                        AddFolderResource(manifest, temppath, folder, m_removeExisting, m_connection);
                         m_progress.SetCurrentProgress(100, 100);
                         m_progress.SetOperationNo(opno++);
                     }
@@ -119,7 +119,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                             fs.Write(data, 0, data.Length);
                         }
 
-                        AddFileResource(manifest, temppath, doc, contentname, m_removeExisting);
+                        AddFileResource(manifest, temppath, doc, contentname, m_removeExisting, m_connection);
 
                         m_progress.SetCurrentProgress(i++, itemCount);
 
@@ -129,7 +129,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                             using (System.IO.FileStream fs = new System.IO.FileStream(fi.FullName, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
                                 m_connection.GetResourceData(doc.ResourceId, rd.Name).WriteTo(fs);
 
-                            AddResourceData(manifest, temppath, doc, fi, rd);
+                            AddResourceData(manifest, temppath, doc, fi, rd, m_connection);
 
                             m_progress.SetCurrentProgress(i++, itemCount);
                         }
@@ -146,67 +146,11 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                     m_progress.SetOperation("Compressing files");
                     m_progress.SetCurrentProgress(0, 100);
 
-                    ICSharpCode.SharpZipLib.Checksums.Crc32 crc = new ICSharpCode.SharpZipLib.Checksums.Crc32();
-                    using(System.IO.FileStream ofs = new System.IO.FileStream(m_targetfile,  System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                    using (ICSharpCode.SharpZipLib.Zip.ZipOutputStream zip = new ICSharpCode.SharpZipLib.Zip.ZipOutputStream(ofs))
-                    {
-                        try
-                        {
-                            zip.SetLevel(9);
-                            zip.SetComment("MapGuide Package created by Maestro");
-                            //zip.BeginUpdate();
+                    ZipDirectory(m_targetfile, temppath, "MapGuide Package created by Maestro", m_progress);
 
-                            //Replicate file system inside the zip file
-                            Queue<string> folderlist = new Queue<string>();
-                            Queue<string> filelist = new Queue<string>();
-                            folderlist.Enqueue(temppath);
-
-                            while (folderlist.Count != 0)
-                            {
-                                string fl = folderlist.Dequeue();
-
-                                foreach (string f in System.IO.Directory.GetDirectories(fl))
-                                {
-                                    //zip.AddDirectory(RelativeName(f, temppath)); 
-                                    folderlist.Enqueue(f);
-                                }
-                                foreach (string f in System.IO.Directory.GetFiles(fl))
-                                    filelist.Enqueue(f);
-                            }
-
-                            m_progress.SetCurrentProgress(0, filelist.Count);
-                            int i = 0;
-
-                            foreach (string s in filelist)
-                            {
-                                //TODO: If the files are 100Mb, this needs to be handled differently
-                                byte[] data;
-                                using (System.IO.FileStream fs = new System.IO.FileStream(s, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.None))
-                                    data = MaestroAPI.Utility.StreamAsArray(fs);
-
-                                crc.Reset();
-                                crc.Update(data);
-                                ICSharpCode.SharpZipLib.Zip.ZipEntry ze = new ICSharpCode.SharpZipLib.Zip.ZipEntry(RelativeName(s, temppath));
-                                ze.Crc = crc.Value;
-                                ze.DateTime = System.IO.File.GetLastWriteTime(s);
-                                ze.Size = data.Length;
-                                zip.PutNextEntry(ze);
-                                zip.Write(data, 0, data.Length);
-                                m_progress.SetCurrentProgress(i++, filelist.Count);
-
-                            }
-
-                            zip.Finish();
-                            m_progress.SetOperationNo(opno++);
-                            m_progress.SetOperation("Finished");
-                            m_progress.Close();
-                        }
-                        finally
-                        {
-                            try { zip.Close(); }
-                            catch { }
-                        }
-                    }
+                    m_progress.SetOperationNo(opno++);
+                    m_progress.SetOperation("Finished");
+                    m_progress.Close();
 
                 }
                 finally
@@ -228,7 +172,27 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             }
         }
 
-        private void AddResourceData(ResourcePackageManifest manifest, string temppath, ResourceListResourceDocument doc, System.IO.FileInfo fi, ResourceDataListResourceData rd)
+        public static void AddResourceData(ResourcePackageManifest manifest, string temppath, ResourceListResourceDocument doc, System.IO.FileInfo fi, ResourceDataListResourceData rd, ServerConnectionI connection)
+        {
+            string contentType = "application/octet-stream";
+            try
+            {
+                if (connection as HttpServerConnection != null)
+                    contentType = (connection as HttpServerConnection).LastResponseHeaders[System.Net.HttpResponseHeader.ContentType];
+            }
+            catch
+            {
+            }
+            string name = rd.Name;
+            string type = rd.Type.ToString();
+            string resourceId = doc.ResourceId;
+            string filename = RelativeName(fi.FullName, temppath).Replace('\\', '/');
+            long size = fi.Length;
+
+            AddResourceData(manifest, resourceId, contentType, type, name, filename, size);
+        }
+
+        public static void AddResourceData(ResourcePackageManifest manifest, string resourceId, string contentType, string type, string name, string filename, long size)
         {
             ResourcePackageManifestOperationsOperation op = new ResourcePackageManifestOperationsOperation();
             op.Name = "SETRESOURCEDATA";
@@ -238,44 +202,47 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
             ResourcePackageManifestOperationsOperationParametersParameter param = new ResourcePackageManifestOperationsOperationParametersParameter();
 
-            string contentType = "application/octet-stream";
-            try
-            {
-                contentType = (m_connection as HttpServerConnection).LastResponseHeaders[System.Net.HttpResponseHeader.ContentType];
-            }
-            catch
-            {
-            }
-
             param.Name = "DATA";
-            param.Value = RelativeName(fi.FullName, temppath).Replace('\\', '/');
+            param.Value = filename;
             param.ContentType = contentType;
             op.Parameters.Parameter.Add(param);
 
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
             param.Name = "DATALENGTH";
-            param.Value = fi.Length.ToString();
+            param.Value = size.ToString();
             op.Parameters.Parameter.Add(param);
 
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
             param.Name = "DATANAME";
-            param.Value = rd.Name;
+            param.Value = name;
             op.Parameters.Parameter.Add(param);
 
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
             param.Name = "DATATYPE";
-            param.Value = rd.Type.ToString();
+            param.Value = type;
             op.Parameters.Parameter.Add(param);
 
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
             param.Name = "RESOURCEID";
-            param.Value = doc.ResourceId;
+            param.Value = resourceId;
             op.Parameters.Parameter.Add(param);
 
             manifest.Operations.Operation.Add(op);
         }
 
-        private void AddFileResource(ResourcePackageManifest manifest, string temppath, ResourceListResourceDocument doc, string contentfilename, bool eraseFirst)
+        public static void AddFileResource(ResourcePackageManifest manifest, string temppath, ResourceListResourceDocument doc, string contentfilename, bool eraseFirst, ServerConnectionI connection)
+        {
+            string filebase = CreateFolderForResource(connection, doc.ResourceId, temppath);
+
+            using (System.IO.FileStream fs = new System.IO.FileStream(filebase + "_HEADER.xml", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                connection.SerializeObject(connection.GetResourceHeader(doc.ResourceId), fs);
+
+            string headerpath = RelativeName(filebase + "_HEADER.xml", temppath).Replace('\\', '/');
+            string contentpath = RelativeName(contentfilename, temppath).Replace('\\', '/');
+            AddFileResource(manifest, doc.ResourceId, headerpath, contentpath, eraseFirst);
+        }
+
+        public static void AddFileResource(ResourcePackageManifest manifest, string resourceId, string headerpath, string contentpath, bool eraseFirst)
         {
             if (eraseFirst)
             {
@@ -288,7 +255,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                 ResourcePackageManifestOperationsOperationParametersParameter delparam = new ResourcePackageManifestOperationsOperationParametersParameter();
 
                 delparam.Name = "RESOURCEID";
-                delparam.Value = doc.ResourceId;
+                delparam.Value = resourceId;
                 delop.Parameters.Parameter.Add(delparam);
                 manifest.Operations.Operation.Add(delop);
             }
@@ -301,91 +268,94 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
             ResourcePackageManifestOperationsOperationParametersParameter param = new ResourcePackageManifestOperationsOperationParametersParameter();
 
-            string filebase = CreateFolderForResource(doc.ResourceId, temppath);
-
-            using (System.IO.FileStream fs = new System.IO.FileStream(filebase + "_HEADER.xml", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                m_connection.SerializeObject(m_connection.GetResourceHeader(doc.ResourceId), fs);
-
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
             param.Name = "CONTENT";
-            param.Value = RelativeName(contentfilename, temppath).Replace('\\', '/');
+            param.Value = contentpath;
             param.ContentType = "text/xml";
             op.Parameters.Parameter.Add(param);
 
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
             param.Name = "HEADER";
-            param.Value = RelativeName(filebase + "_HEADER.xml", temppath).Replace('\\', '/');
+            param.Value = headerpath;
             param.ContentType = "text/xml";
             op.Parameters.Parameter.Add(param);
 
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
             param.Name = "RESOURCEID";
-            param.Value = doc.ResourceId;
+            param.Value = resourceId;
             op.Parameters.Parameter.Add(param);
 
             manifest.Operations.Operation.Add(op);
         }
 
-        private void AddFolderResource(ResourcePackageManifest manifest, string temppath, ResourceListResourceFolder folder, bool eraseFirst)
+        public static void AddFolderResource(ResourcePackageManifest manifest, string temppath, ResourceListResourceFolder folder, bool eraseFirst, ServerConnectionI connection)
         {
-            if (eraseFirst)
-            {
-                ResourcePackageManifestOperationsOperation delop = new ResourcePackageManifestOperationsOperation();
-                delop.Name = "DELETERESOURCE";
-                delop.Version = "1.0.0";
-                delop.Parameters = new ResourcePackageManifestOperationsOperationParameters();
-                delop.Parameters.Parameter = new ResourcePackageManifestOperationsOperationParametersParameterCollection();
-
-                ResourcePackageManifestOperationsOperationParametersParameter delparam = new ResourcePackageManifestOperationsOperationParametersParameter();
-
-                delparam.Name = "RESOURCEID";
-                delparam.Value = folder.ResourceId;
-                delop.Parameters.Parameter.Add(delparam);
-                manifest.Operations.Operation.Add(delop);
-            }
-
-            ResourcePackageManifestOperationsOperation op = new ResourcePackageManifestOperationsOperation();
-            op.Name = "SETRESOURCE";
-            op.Version = "1.0.0";
-            op.Parameters = new ResourcePackageManifestOperationsOperationParameters();
-            op.Parameters.Parameter = new ResourcePackageManifestOperationsOperationParametersParameterCollection();
-
-            ResourcePackageManifestOperationsOperationParametersParameter param = new ResourcePackageManifestOperationsOperationParametersParameter();
-
-            string filebase = System.IO.Path.GetDirectoryName(CreateFolderForResource(folder.ResourceId + "dummy.xml", temppath));
+            string filebase = System.IO.Path.GetDirectoryName(CreateFolderForResource(connection, folder.ResourceId + "dummy.xml", temppath));
 
             using (System.IO.FileStream fs = new System.IO.FileStream(System.IO.Path.Combine(filebase, "_HEADER.xml"), System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                m_connection.SerializeObject(m_connection.GetFolderHeader(folder.ResourceId), fs);
+                connection.SerializeObject(connection.GetFolderHeader(folder.ResourceId), fs);
 
             if (!filebase.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()))
                 filebase += System.IO.Path.DirectorySeparatorChar;
 
+            string headerpath = RelativeName(filebase + "_HEADER.xml", temppath).Replace('\\', '/');
+
+            AddFolderResource(manifest, folder.ResourceId, headerpath, eraseFirst);
+        }
+
+
+        public static void AddFolderResource(ResourcePackageManifest manifest, string resourceId, string headerpath, bool eraseFirst)
+        {
+            if (eraseFirst)
+            {
+                ResourcePackageManifestOperationsOperation delop = new ResourcePackageManifestOperationsOperation();
+                delop.Name = "DELETERESOURCE";
+                delop.Version = "1.0.0";
+                delop.Parameters = new ResourcePackageManifestOperationsOperationParameters();
+                delop.Parameters.Parameter = new ResourcePackageManifestOperationsOperationParametersParameterCollection();
+
+                ResourcePackageManifestOperationsOperationParametersParameter delparam = new ResourcePackageManifestOperationsOperationParametersParameter();
+
+                delparam.Name = "RESOURCEID";
+                delparam.Value = resourceId;
+                delop.Parameters.Parameter.Add(delparam);
+                manifest.Operations.Operation.Add(delop);
+            }
+
+            ResourcePackageManifestOperationsOperation op = new ResourcePackageManifestOperationsOperation();
+            op.Name = "SETRESOURCE";
+            op.Version = "1.0.0";
+            op.Parameters = new ResourcePackageManifestOperationsOperationParameters();
+            op.Parameters.Parameter = new ResourcePackageManifestOperationsOperationParametersParameterCollection();
+
+            ResourcePackageManifestOperationsOperationParametersParameter param = new ResourcePackageManifestOperationsOperationParametersParameter();
+
             param.Name = "HEADER";
-            param.Value = RelativeName(filebase + "_HEADER.xml", temppath).Replace('\\', '/');
+            param.Value = headerpath;
             param.ContentType = "text/xml";
             op.Parameters.Parameter.Add(param);
 
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
             param.Name = "RESOURCEID";
-            param.Value = folder.ResourceId;
+            param.Value = resourceId;
             op.Parameters.Parameter.Add(param);
 
             manifest.Operations.Operation.Add(op);
         }
 
-        private string RelativeName(string filebase, string temppath)
+        public static string RelativeName(string filebase, string temppath)
         {
             if (!filebase.StartsWith(temppath))
                 throw new Exception(string.Format("Filename \"{0}\" is not relative to \"{1}\"", filebase, temppath));
-            if (!temppath.EndsWith(System.IO.Path.PathSeparator.ToString()))
-                temppath += System.IO.Path.PathSeparator;
+            if (!temppath.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()))
+                temppath += System.IO.Path.DirectorySeparatorChar;
             return filebase.Substring(temppath.Length);
         }
 
-        private string CreateFolderForResource(string resourceId, string temppath)
+        public static string CreateFolderForResource(ServerConnectionI connection, string resourceId, string temppath)
         {
-            string filebase = m_connection.GetResourceName(resourceId, false);
-            string folder = "Library/" + m_connection.GetResourceName(resourceId, true);
+            string filebase = connection.GetResourceName(resourceId, false);
+            string folder = "Library/" + connection.GetResourceName(resourceId, true);
             folder = folder.Substring(0, folder.Length - filebase.Length);
             filebase += resourceId.Substring(resourceId.LastIndexOf('.'));
 
@@ -401,9 +371,76 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             return filebase;
         }
 
+        private string CreateFolderForResource(string resourceId, string temppath)
+        {
+            return CreateFolderForResource(m_connection, resourceId, temppath);
+        }
+
         private void RemapFiles(string tempdir, string origpath, string newpath)
         {
             //TODO: Implement this
+        }
+
+        public static void ZipDirectory(string zipfile, string folder, string comment, PackageProgress progress)
+        {
+            ICSharpCode.SharpZipLib.Checksums.Crc32 crc = new ICSharpCode.SharpZipLib.Checksums.Crc32();
+            using (System.IO.FileStream ofs = new System.IO.FileStream(zipfile, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
+            using (ICSharpCode.SharpZipLib.Zip.ZipOutputStream zip = new ICSharpCode.SharpZipLib.Zip.ZipOutputStream(ofs))
+            {
+                try
+                {
+                    zip.SetLevel(9);
+                    if (!string.IsNullOrEmpty(comment))
+                        zip.SetComment(comment);
+
+                    //Replicate file system inside the zip file
+                    Queue<string> folderlist = new Queue<string>();
+                    Queue<string> filelist = new Queue<string>();
+                    folderlist.Enqueue(folder);
+
+                    while (folderlist.Count != 0)
+                    {
+                        string fl = folderlist.Dequeue();
+
+                        foreach (string f in System.IO.Directory.GetDirectories(fl))
+                            folderlist.Enqueue(f);
+
+                        foreach (string f in System.IO.Directory.GetFiles(fl))
+                            filelist.Enqueue(f);
+                    }
+
+                    if (progress != null)
+                        progress.SetCurrentProgress(0, filelist.Count);
+                    int i = 0;
+
+                    foreach (string s in filelist)
+                    {
+                        //TODO: If the files are 100Mb, this needs to be handled differently
+                        byte[] data;
+                        using (System.IO.FileStream fs = new System.IO.FileStream(s, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.None))
+                            data = MaestroAPI.Utility.StreamAsArray(fs);
+
+                        crc.Reset();
+                        crc.Update(data);
+                        ICSharpCode.SharpZipLib.Zip.ZipEntry ze = new ICSharpCode.SharpZipLib.Zip.ZipEntry(RelativeName(s, folder));
+                        ze.Crc = crc.Value;
+                        ze.DateTime = System.IO.File.GetLastWriteTime(s);
+                        ze.Size = data.Length;
+                        zip.PutNextEntry(ze);
+                        zip.Write(data, 0, data.Length);
+                        if (progress != null)
+                            progress.SetCurrentProgress(i++, filelist.Count);
+
+                    }
+
+                    zip.Finish();
+                }
+                finally
+                {
+                    try { zip.Close(); }
+                    catch { }
+                }
+            }
         }
 
     }

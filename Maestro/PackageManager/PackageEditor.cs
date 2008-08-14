@@ -11,6 +11,14 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 {
     public partial class PackageEditor : Form
     {
+        private const string DEFAULT_HEADER = 
+            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+            "<ResourceFolderHeader xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"ResourceFolderHeader-1.0.0.xsd\">\n" +
+            "	<Security xsi:noNamespaceSchemaLocation=\"ResourceSecurity-1.0.0.xsd\">\n" +
+            "		<Inherited>true</Inherited>\n" +
+            "	</Security>\n" +
+            "</ResourceFolderHeader>";
+
         public enum EntryTypeEnum
         {
             Regular,
@@ -455,13 +463,13 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             (n.Tag as ResourceItem).IsFolder = true;
 
             if (ResourceTree.SelectedNode == null || ResourceTree.SelectedNode.Parent == null)
-                ResourceTree.Nodes.Add(n);
+                ResourceTree.Nodes[0].Nodes.Add(n);
             else if (ResourceTree.SelectedNode.Tag as ResourceItem != null)
             {
                 if ((ResourceTree.SelectedNode.Tag as ResourceItem).IsFolder)
                     ResourceTree.SelectedNode.Nodes.Add(n);
                 else if (ResourceTree.SelectedNode.Parent == null)
-                    ResourceTree.Nodes.Add(n);
+                    ResourceTree.Nodes[0].Nodes.Add(n);
                 else
                     ResourceTree.SelectedNode.Parent.Nodes.Add(n);
             }
@@ -520,13 +528,13 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                 n.Tag = i;
 
                 if (ResourceTree.SelectedNode == null || ResourceTree.SelectedNode.Parent == null)
-                    ResourceTree.Nodes.Add(n);
+                    ResourceTree.Nodes[0].Nodes.Add(n);
                 else if (ResourceTree.SelectedNode.Tag as ResourceItem != null)
                 {
                     if ((ResourceTree.SelectedNode.Tag as ResourceItem).IsFolder)
                         ResourceTree.SelectedNode.Nodes.Add(n);
                     else if (ResourceTree.SelectedNode.Parent == null)
-                        ResourceTree.Nodes.Add(n);
+                        ResourceTree.Nodes[0].Nodes.Add(n);
                     else
                         ResourceTree.SelectedNode.Parent.Nodes.Add(n);
                 }
@@ -539,7 +547,189 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
         private void OKBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This feature is not yet completed");
+            if (SavePackageDialog.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            string tempfolder = System.IO.Path.Combine(System.IO.Path.GetTempPath(), System.IO.Path.GetRandomFileName());
+
+            try
+            {
+                //Step 1: Update all resources with the correct path, and build a list with them
+                List<ResourceItem> items = new List<ResourceItem>();
+
+                try
+                {
+                    ResourceTree.PathSeparator = "/";
+                    ResourceTree.Nodes[0].Text = "Library:/";
+
+                    Queue<TreeNode> nl = new Queue<TreeNode>();
+                    foreach (TreeNode n in ResourceTree.Nodes[0].Nodes)
+                        nl.Enqueue(n);
+
+                    while (nl.Count > 0)
+                    {
+                        TreeNode n = nl.Dequeue();
+                        foreach (TreeNode tn in n.Nodes)
+                            nl.Enqueue(tn);
+
+                        if (n.Tag as ResourceItem != null && (n.Tag as ResourceItem).EntryType != EntryTypeEnum.Deleted)
+                        {
+                            ResourceItem ri = n.Tag as ResourceItem;
+                            ri.ResourcePath = n.FullPath + (ri.IsFolder ? "/" : "");
+                            if (string.IsNullOrEmpty(ri.OriginalResourcePath))
+                                ri.OriginalResourcePath = ri.ResourcePath;
+
+                            items.Add(ri);
+                        }
+                    }
+                }
+                finally 
+                {
+                    ResourceTree.Nodes[0].Text = "Library://";
+                }
+
+                //Step 2: Create the file system layout
+                if (!System.IO.Directory.Exists(tempfolder))
+                    System.IO.Directory.CreateDirectory(tempfolder);
+
+                foreach (ResourceItem ri in items)
+                {
+                    string filebase;
+                    if (ri.IsFolder)
+                    {
+                        filebase = System.IO.Path.GetDirectoryName(MapResourcePathToFolder(tempfolder, ri.ResourcePath + "dummy.xml"));
+                        if (!filebase.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()))
+                            filebase += System.IO.Path.DirectorySeparatorChar;
+                    }
+                    else
+                        filebase = MapResourcePathToFolder(tempfolder, ri.ResourcePath);
+
+                    string headerpath = filebase + "_HEADER.xml";
+                    string contentpath = filebase + "_CONTENT.xml";
+
+                    if (ri.EntryType == EntryTypeEnum.Added)
+                    {
+                        if (string.IsNullOrEmpty(ri.Headerpath))
+                            using (System.IO.FileStream fs = new System.IO.FileStream(ri.Headerpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                            {
+                                byte[] data = System.Text.Encoding.UTF8.GetBytes(DEFAULT_HEADER);
+                                fs.Write(data, 0, data.Length);
+                            }
+                        else if (!ri.IsFolder)
+                            System.IO.File.Copy(ri.Headerpath, headerpath);
+
+                        System.IO.File.Copy(ri.Contentpath, contentpath);
+                    }
+                    else if (ri.EntryType == EntryTypeEnum.Regular)
+                    {
+                        int index = m_zipfile.FindEntry(ri.Headerpath, false);
+                        if (index < 0)
+                            throw new Exception(string.Format("Failed to find file {0} in archive", ri.Headerpath));
+
+                        using (System.IO.FileStream fs = new System.IO.FileStream(headerpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                            Utility.CopyStream(m_zipfile.GetInputStream(index), fs);
+
+                        if (!ri.IsFolder)
+                        {
+                            index = m_zipfile.FindEntry(ri.Contentpath, false);
+                            if (index < 0)
+                                throw new Exception(string.Format("Failed to find file {0} in archive", ri.Contentpath));
+
+                            using (System.IO.FileStream fs = new System.IO.FileStream(contentpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                                Utility.CopyStream(m_zipfile.GetInputStream(index), fs);
+                        }
+
+                    }
+
+                    ri.Headerpath = headerpath;
+                    ri.Contentpath = contentpath;
+
+                    foreach (ResourceDataItem rdi in ri.Items)
+                    {
+                        string targetpath = filebase + "_DATA_" + rdi.ResourceName;
+                        if (rdi.EntryType == EntryTypeEnum.Added)
+                            System.IO.File.Copy(rdi.Filename, targetpath);
+                        else
+                        {
+                            int index = m_zipfile.FindEntry(rdi.Filename, false);
+                            if (index < 0)
+                                throw new Exception(string.Format("Failed to find file {0} in archive", ri.Contentpath));
+
+                            using (System.IO.FileStream fs = new System.IO.FileStream(targetpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                                Utility.CopyStream(m_zipfile.GetInputStream(index), fs);
+                        }
+                        rdi.Filename = targetpath;
+                    }
+                }
+
+                //Step 3: Repoint all resources with respect to the update
+                foreach (ResourceItem ri in items)
+                    if (ri.OriginalResourcePath != ri.ResourcePath)
+                    {
+
+                    }
+
+                //Step 4: Create an updated definition file
+                ResourcePackageManifest manifest = new ResourcePackageManifest();
+                manifest.Description = "MapGuide Package created by Maestro";
+                manifest.Operations = new ResourcePackageManifestOperations();
+                manifest.Operations.Operation = new ResourcePackageManifestOperationsOperationCollection();
+
+                bool eraseFirst = true;
+
+                foreach (ResourceItem ri in items)
+                    if (ri.IsFolder)
+                    {
+                        PackageBuilder.AddFolderResource(
+                            manifest,
+                            ri.ResourcePath,
+                            PackageBuilder.RelativeName(ri.Headerpath, tempfolder).Replace('\\', '/'), 
+                            eraseFirst);
+                    }
+                    else
+                    {
+                        PackageBuilder.AddFileResource(
+                            manifest, 
+                            ri.ResourcePath,
+                            PackageBuilder.RelativeName(ri.Headerpath, tempfolder).Replace('\\', '/'),
+                            PackageBuilder.RelativeName(ri.Contentpath, tempfolder).Replace('\\', '/'), 
+                            eraseFirst);
+
+                        foreach (ResourceDataItem rdi in ri.Items)
+                            PackageBuilder.AddResourceData(
+                                manifest, 
+                                ri.ResourcePath, 
+                                rdi.ContentType, 
+                                rdi.DataType,
+                                rdi.ResourceName,
+                                PackageBuilder.RelativeName(rdi.Filename, tempfolder).Replace('\\', '/'), 
+                                new System.IO.FileInfo(rdi.Filename).Length);
+                    }
+
+                using(System.IO.FileStream fs = new System.IO.FileStream(System.IO.Path.Combine(tempfolder, "MgResourcePackageManifest.xml"),  System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                    m_owner.CurrentConnection.SerializeObject(manifest, fs);
+
+                //Step 4: Create the zip file
+                PackageBuilder.ZipDirectory(SavePackageDialog.FileName, tempfolder, m_zipfile.ZipFileComment, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, string.Format("An error occured while building package: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            finally
+            {
+                try { System.IO.Directory.Delete(tempfolder, true); }
+                catch { }
+            }
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private string MapResourcePathToFolder(string tempfolder, string resourcename)
+        {
+            return PackageBuilder.CreateFolderForResource(m_owner.CurrentConnection, resourcename, tempfolder);
         }
     }
 }

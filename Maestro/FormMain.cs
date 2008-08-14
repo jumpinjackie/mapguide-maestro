@@ -2173,8 +2173,8 @@ namespace OSGeo.MapGuide.Maestro
 
         private void modifyPackageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(this, "This feature is not yet implemented", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //PackageManager.PackageEditor.EditPackage(m_connection, this);
+            //MessageBox.Show(this, "This feature is not yet implemented", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            PackageManager.PackageEditor.EditPackage(m_connection, this);
         }
 	}
 }

@@ -39,6 +39,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.ResourceTree = new System.Windows.Forms.TreeView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.AddFolderButton = new System.Windows.Forms.ToolStripButton();
+            this.AddResourceButton = new System.Windows.Forms.ToolStripButton();
             this.DeleteResourceButton = new System.Windows.Forms.ToolStripButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.ResourceDataFileList = new System.Windows.Forms.ListView();
@@ -59,7 +60,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.label1 = new System.Windows.Forms.Label();
             this.BrowseResourceDataFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveResourceDataFile = new System.Windows.Forms.SaveFileDialog();
-            this.AddResourceButton = new System.Windows.Forms.ToolStripButton();
+            this.SavePackageDialog = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.LoaderGroup.SuspendLayout();
@@ -200,6 +201,17 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.AddFolderButton.Text = "toolStripButton1";
             this.AddFolderButton.ToolTipText = "Add a new folder";
             this.AddFolderButton.Click += new System.EventHandler(this.AddFolderButton_Click);
+            // 
+            // AddResourceButton
+            // 
+            this.AddResourceButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AddResourceButton.Image = ((System.Drawing.Image)(resources.GetObject("AddResourceButton.Image")));
+            this.AddResourceButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddResourceButton.Name = "AddResourceButton";
+            this.AddResourceButton.Size = new System.Drawing.Size(23, 22);
+            this.AddResourceButton.Text = "toolStripButton1";
+            this.AddResourceButton.ToolTipText = "Add a new resource to the package";
+            this.AddResourceButton.Click += new System.EventHandler(this.AddResourceButton_Click);
             // 
             // DeleteResourceButton
             // 
@@ -387,16 +399,11 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.SaveResourceDataFile.Filter = "All files (*.*)|*.*";
             this.SaveResourceDataFile.Title = "Select where to save the file";
             // 
-            // AddResourceButton
+            // SavePackageDialog
             // 
-            this.AddResourceButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddResourceButton.Image = ((System.Drawing.Image)(resources.GetObject("AddResourceButton.Image")));
-            this.AddResourceButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddResourceButton.Name = "AddResourceButton";
-            this.AddResourceButton.Size = new System.Drawing.Size(23, 22);
-            this.AddResourceButton.Text = "toolStripButton1";
-            this.AddResourceButton.ToolTipText = "Add a new resource to the package";
-            this.AddResourceButton.Click += new System.EventHandler(this.AddResourceButton_Click);
+            this.SavePackageDialog.DefaultExt = "mgp";
+            this.SavePackageDialog.Filter = "MapGuide Packages (*.mgp)|*.mgp|Zip files (*.zip)|*.zip|All files (*.*)|*.*";
+            this.SavePackageDialog.Title = "Select where to store the file";
             // 
             // PackageEditor
             // 
@@ -460,5 +467,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         private System.Windows.Forms.OpenFileDialog BrowseResourceDataFile;
         private System.Windows.Forms.SaveFileDialog SaveResourceDataFile;
         private System.Windows.Forms.ToolStripButton AddResourceButton;
+        private System.Windows.Forms.SaveFileDialog SavePackageDialog;
     }
 }

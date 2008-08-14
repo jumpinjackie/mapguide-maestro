@@ -114,208 +114,207 @@ namespace OSGeo.MapGuide.Maestro
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(BrowseResource));
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.panel3 = new System.Windows.Forms.Panel();
-			this.panel5 = new System.Windows.Forms.Panel();
-			this.ItemView = new System.Windows.Forms.ListView();
-			this.splitter1 = new System.Windows.Forms.Splitter();
-			this.panel4 = new System.Windows.Forms.Panel();
-			this.RefreshButton = new System.Windows.Forms.Button();
-			this.FolderView = new System.Windows.Forms.TreeView();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.ResourceType = new System.Windows.Forms.ComboBox();
-			this.ResourceName = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.OKButton = new System.Windows.Forms.Button();
-			this.CancelButton = new System.Windows.Forms.Button();
-			this.panel1.SuspendLayout();
-			this.panel3.SuspendLayout();
-			this.panel5.SuspendLayout();
-			this.panel4.SuspendLayout();
-			this.panel2.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// panel1
-			// 
-			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.panel1.Controls.Add(this.panel3);
-			this.panel1.Controls.Add(this.panel2);
-			this.panel1.Location = new System.Drawing.Point(0, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(640, 463);
-			this.panel1.TabIndex = 0;
-			// 
-			// panel3
-			// 
-			this.panel3.Controls.Add(this.panel5);
-			this.panel3.Controls.Add(this.splitter1);
-			this.panel3.Controls.Add(this.panel4);
-			this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel3.Location = new System.Drawing.Point(0, 0);
-			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(640, 391);
-			this.panel3.TabIndex = 1;
-			// 
-			// panel5
-			// 
-			this.panel5.Controls.Add(this.ItemView);
-			this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel5.Location = new System.Drawing.Point(152, 0);
-			this.panel5.Name = "panel5";
-			this.panel5.Size = new System.Drawing.Size(488, 391);
-			this.panel5.TabIndex = 2;
-			// 
-			// ItemView
-			// 
-			this.ItemView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ItemView.Location = new System.Drawing.Point(8, 8);
-			this.ItemView.Name = "ItemView";
-			this.ItemView.Size = new System.Drawing.Size(472, 375);
-			this.ItemView.TabIndex = 0;
-			this.ItemView.View = System.Windows.Forms.View.List;
-			this.ItemView.Click += new System.EventHandler(this.ItemView_Click);
-			this.ItemView.DoubleClick += new System.EventHandler(this.ItemView_DoubleClick);
-			// 
-			// splitter1
-			// 
-			this.splitter1.Location = new System.Drawing.Point(144, 0);
-			this.splitter1.Name = "splitter1";
-			this.splitter1.Size = new System.Drawing.Size(8, 391);
-			this.splitter1.TabIndex = 1;
-			this.splitter1.TabStop = false;
-			// 
-			// panel4
-			// 
-			this.panel4.Controls.Add(this.RefreshButton);
-			this.panel4.Controls.Add(this.FolderView);
-			this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-			this.panel4.Location = new System.Drawing.Point(0, 0);
-			this.panel4.Name = "panel4";
-			this.panel4.Size = new System.Drawing.Size(144, 391);
-			this.panel4.TabIndex = 0;
-			// 
-			// RefreshButton
-			// 
-			this.RefreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.RefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.RefreshButton.Location = new System.Drawing.Point(8, 359);
-			this.RefreshButton.Name = "RefreshButton";
-			this.RefreshButton.Size = new System.Drawing.Size(128, 24);
-			this.RefreshButton.TabIndex = 1;
-			this.RefreshButton.Text = "Refresh";
-			// 
-			// FolderView
-			// 
-			this.FolderView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.FolderView.HideSelection = false;
-			this.FolderView.ImageIndex = -1;
-			this.FolderView.Location = new System.Drawing.Point(8, 8);
-			this.FolderView.Name = "FolderView";
-			this.FolderView.SelectedImageIndex = -1;
-			this.FolderView.Size = new System.Drawing.Size(128, 351);
-			this.FolderView.TabIndex = 0;
-			this.FolderView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.FolderView_AfterSelect);
-			// 
-			// panel2
-			// 
-			this.panel2.Controls.Add(this.ResourceType);
-			this.panel2.Controls.Add(this.ResourceName);
-			this.panel2.Controls.Add(this.label2);
-			this.panel2.Controls.Add(this.label1);
-			this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel2.Location = new System.Drawing.Point(0, 391);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(640, 72);
-			this.panel2.TabIndex = 0;
-			// 
-			// ResourceType
-			// 
-			this.ResourceType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ResourceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ResourceType.Location = new System.Drawing.Point(112, 40);
-			this.ResourceType.Name = "ResourceType";
-			this.ResourceType.Size = new System.Drawing.Size(520, 21);
-			this.ResourceType.TabIndex = 3;
-			this.ResourceType.SelectedIndexChanged += new System.EventHandler(this.ResourceType_SelectedIndexChanged);
-			// 
-			// ResourceName
-			// 
-			this.ResourceName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ResourceName.Location = new System.Drawing.Point(112, 8);
-			this.ResourceName.Name = "ResourceName";
-			this.ResourceName.Size = new System.Drawing.Size(520, 20);
-			this.ResourceName.TabIndex = 2;
-			this.ResourceName.Text = "";
-			// 
-			// label2
-			// 
-			this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label2.Location = new System.Drawing.Point(8, 40);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(96, 16);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "Resource type";
-			// 
-			// label1
-			// 
-			this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(96, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Resource name";
-			// 
-			// OKButton
-			// 
-			this.OKButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.OKButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.OKButton.Location = new System.Drawing.Point(216, 471);
-			this.OKButton.Name = "OKButton";
-			this.OKButton.Size = new System.Drawing.Size(80, 24);
-			this.OKButton.TabIndex = 1;
-			this.OKButton.Text = "OK";
-			this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
-			// 
-			// CancelButton
-			// 
-			this.CancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.CancelButton.Location = new System.Drawing.Point(320, 471);
-			this.CancelButton.Name = "CancelButton";
-			this.CancelButton.Size = new System.Drawing.Size(80, 24);
-			this.CancelButton.TabIndex = 2;
-			this.CancelButton.Text = "Cancel";
-			this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
-			// 
-			// BrowseResource
-			// 
-			this.AcceptButton = this.OKButton;
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(640, 509);
-			this.Controls.Add(this.CancelButton);
-			this.Controls.Add(this.OKButton);
-			this.Controls.Add(this.panel1);
-			this.Name = "BrowseResource";
-			this.Text = "Open resource";
-			this.Load += new System.EventHandler(this.BrowseResource_Load);
-			this.panel1.ResumeLayout(false);
-			this.panel3.ResumeLayout(false);
-			this.panel5.ResumeLayout(false);
-			this.panel4.ResumeLayout(false);
-			this.panel2.ResumeLayout(false);
-			this.ResumeLayout(false);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.ItemView = new System.Windows.Forms.ListView();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.RefreshButton = new System.Windows.Forms.Button();
+            this.FolderView = new System.Windows.Forms.TreeView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.ResourceType = new System.Windows.Forms.ComboBox();
+            this.ResourceName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.OKButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(640, 463);
+            this.panel1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Controls.Add(this.splitter1);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(640, 391);
+            this.panel3.TabIndex = 1;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.ItemView);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(152, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(488, 391);
+            this.panel5.TabIndex = 2;
+            // 
+            // ItemView
+            // 
+            this.ItemView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ItemView.Location = new System.Drawing.Point(8, 8);
+            this.ItemView.Name = "ItemView";
+            this.ItemView.Size = new System.Drawing.Size(472, 375);
+            this.ItemView.TabIndex = 0;
+            this.ItemView.UseCompatibleStateImageBehavior = false;
+            this.ItemView.View = System.Windows.Forms.View.List;
+            this.ItemView.SelectedIndexChanged += new System.EventHandler(this.ItemView_SelectedIndexChanged);
+            this.ItemView.DoubleClick += new System.EventHandler(this.ItemView_DoubleClick);
+            this.ItemView.Click += new System.EventHandler(this.ItemView_Click);
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(144, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(8, 391);
+            this.splitter1.TabIndex = 1;
+            this.splitter1.TabStop = false;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.RefreshButton);
+            this.panel4.Controls.Add(this.FolderView);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(144, 391);
+            this.panel4.TabIndex = 0;
+            // 
+            // RefreshButton
+            // 
+            this.RefreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.RefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.RefreshButton.Location = new System.Drawing.Point(8, 359);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(128, 24);
+            this.RefreshButton.TabIndex = 1;
+            this.RefreshButton.Text = "Refresh";
+            // 
+            // FolderView
+            // 
+            this.FolderView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.FolderView.HideSelection = false;
+            this.FolderView.Location = new System.Drawing.Point(8, 8);
+            this.FolderView.Name = "FolderView";
+            this.FolderView.Size = new System.Drawing.Size(128, 351);
+            this.FolderView.TabIndex = 0;
+            this.FolderView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.FolderView_AfterSelect);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.ResourceType);
+            this.panel2.Controls.Add(this.ResourceName);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 391);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(640, 72);
+            this.panel2.TabIndex = 0;
+            // 
+            // ResourceType
+            // 
+            this.ResourceType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResourceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ResourceType.Location = new System.Drawing.Point(112, 40);
+            this.ResourceType.Name = "ResourceType";
+            this.ResourceType.Size = new System.Drawing.Size(520, 21);
+            this.ResourceType.TabIndex = 3;
+            this.ResourceType.SelectedIndexChanged += new System.EventHandler(this.ResourceType_SelectedIndexChanged);
+            // 
+            // ResourceName
+            // 
+            this.ResourceName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResourceName.Location = new System.Drawing.Point(112, 8);
+            this.ResourceName.Name = "ResourceName";
+            this.ResourceName.Size = new System.Drawing.Size(520, 20);
+            this.ResourceName.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label2.Location = new System.Drawing.Point(8, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 16);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Resource type";
+            // 
+            // label1
+            // 
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label1.Location = new System.Drawing.Point(8, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Resource name";
+            // 
+            // OKButton
+            // 
+            this.OKButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.OKButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.OKButton.Location = new System.Drawing.Point(216, 471);
+            this.OKButton.Name = "OKButton";
+            this.OKButton.Size = new System.Drawing.Size(80, 24);
+            this.OKButton.TabIndex = 1;
+            this.OKButton.Text = "OK";
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.CancelButton.Location = new System.Drawing.Point(320, 471);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(80, 24);
+            this.CancelButton.TabIndex = 2;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // BrowseResource
+            // 
+            this.AcceptButton = this.OKButton;
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.ClientSize = new System.Drawing.Size(640, 509);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.OKButton);
+            this.Controls.Add(this.panel1);
+            this.Name = "BrowseResource";
+            this.Text = "Open resource";
+            this.Load += new System.EventHandler(this.BrowseResource_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.ResumeLayout(false);
 
 		}
 		#endregion
@@ -445,7 +444,8 @@ namespace OSGeo.MapGuide.Maestro
 			if (imageindex == m_ownerform.ResourceEditorMap.BlankIcon || imageindex == m_ownerform.ResourceEditorMap.FolderIcon)
 			{
 				itemType = m_validTypes[ResourceType.SelectedIndex];
-				fullpath += "." + itemType;
+                if (itemType.ToLower() != "folder")
+				    fullpath += "." + itemType;
 			}
 
 			bool valid = false;
@@ -495,6 +495,21 @@ namespace OSGeo.MapGuide.Maestro
 				return;
 			}
 
+            if (itemType.ToLower().Equals("folder"))
+            {
+                try
+                {
+                    m_connection.ValidateResourceID(fullpath, OSGeo.MapGuide.MaestroAPI.ResourceTypes.Folder);
+                    m_selectedResource = fullpath;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                    return;
+                }
+                catch
+                {
+                }
+            }
+
 			if (m_openMode)
 				MessageBox.Show(this, m_globalizor.Translate("The resource entered does not exist."), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 			else
@@ -515,6 +530,14 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void FolderView_AfterSelect(object sender, System.Windows.Forms.TreeViewEventArgs e)
 		{
+            if (FolderView.SelectedNode != null && m_validTypes != null && m_validTypes.Length == 1 && m_validTypes[0].ToLower().Equals("folder"))
+            {
+                if (FolderView.SelectedNode.Tag as MaestroAPI.ResourceListResourceFolder == null)
+                    ResourceName.Text = "Library://";
+                else
+                    ResourceName.Text = (FolderView.SelectedNode.Tag as MaestroAPI.ResourceListResourceFolder).ResourceId;
+            }
+
 			UpdateDocumentList();
 		}
 
@@ -546,5 +569,10 @@ namespace OSGeo.MapGuide.Maestro
 			get { return m_selectedResource; }
 			set { m_selectedResource = value; }
 		}
+
+        private void ItemView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
 	}
 }
