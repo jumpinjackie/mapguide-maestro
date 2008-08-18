@@ -43,6 +43,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.PackageFilename = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.LibraryLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,7 +86,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             // EnableRestorePath
             // 
             this.EnableRestorePath.AutoSize = true;
-            this.EnableRestorePath.Enabled = false;
             this.EnableRestorePath.Location = new System.Drawing.Point(16, 72);
             this.EnableRestorePath.Name = "EnableRestorePath";
             this.EnableRestorePath.Size = new System.Drawing.Size(87, 17);
@@ -97,9 +97,9 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             // RestorePath
             // 
             this.RestorePath.Enabled = false;
-            this.RestorePath.Location = new System.Drawing.Point(128, 72);
+            this.RestorePath.Location = new System.Drawing.Point(176, 72);
             this.RestorePath.Name = "RestorePath";
-            this.RestorePath.Size = new System.Drawing.Size(216, 20);
+            this.RestorePath.Size = new System.Drawing.Size(168, 20);
             this.RestorePath.TabIndex = 5;
             // 
             // label2
@@ -184,12 +184,23 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.saveFileDialog.Filter = "MapGuide Packages (*.mgp)|*.mgp|Zip files (*.zip)|*.zip|All files (*.*)|*.*";
             this.saveFileDialog.Title = "Select where to store the file";
             // 
+            // LibraryLabel
+            // 
+            this.LibraryLabel.AutoSize = true;
+            this.LibraryLabel.Enabled = false;
+            this.LibraryLabel.Location = new System.Drawing.Point(120, 72);
+            this.LibraryLabel.Name = "LibraryLabel";
+            this.LibraryLabel.Size = new System.Drawing.Size(51, 13);
+            this.LibraryLabel.TabIndex = 12;
+            this.LibraryLabel.Text = "Library://";
+            // 
             // CreatePackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
             this.ClientSize = new System.Drawing.Size(383, 313);
+            this.Controls.Add(this.LibraryLabel);
             this.Controls.Add(this.BrowseTargetFilename);
             this.Controls.Add(this.PackageFilename);
             this.Controls.Add(this.label3);
@@ -230,5 +241,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         private System.Windows.Forms.TextBox PackageFilename;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Label LibraryLabel;
     }
 }

@@ -61,6 +61,26 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                 return;
             }
 
+            string restorePath = null;
+
+            try
+            {
+                if (EnableRestorePath.Checked)
+                {
+                    m_editor.CurrentConnection.ValidateResourceID("Library://" + RestorePath.Text, ResourceTypes.Folder);
+                    if (string.IsNullOrEmpty(RestorePath.Text))
+                        if (MessageBox.Show(this, "You have selected to restore the package at another location, but not entered one\r\nThis will cause the package to be restored a the root of the resource tree.\r\nAre you sure this is what you want?", Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3) != DialogResult.Yes)
+                            return;
+
+                    restorePath = "Library://" + RestorePath.Text;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, string.Format("An error occured while validating the restore path: {0}\nIt should have the format: \"Libray://folder/folder/\".", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             List<string> extensions = new List<string>();
             for (int i = 1; i < AllowedTypes.Items.Count - 1; i++)
                 if (AllowedTypes.GetItemChecked(i))
@@ -68,7 +88,13 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             if (AllowedTypes.GetItemChecked(AllowedTypes.Items.Count - 1))
                 extensions.Add("*");
 
-            PackageBuilder pkb = new PackageBuilder(this, ResourcePath.Text, PackageFilename.Text, EnableRestorePath.Checked ? ResourcePath.Text : "", extensions.ToArray(), RemoveTargeOnRestore.Checked, m_editor.CurrentConnection);
+            if (RemoveTargeOnRestore.Checked && ((restorePath != null && restorePath == "Library://") || (restorePath == null && ResourcePath.Text == "Library://")))
+                if (MessageBox.Show(this, "You have selected to restore the package at the root.\r\nYou have also selected to delete the target before restoring.\r\nThis will result in the entire repository being deleted and replaced with this package.\r\nAre you absolutely sure that is what you want?", Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3) != DialogResult.Yes)
+                    return;
+
+
+
+            PackageBuilder pkb = new PackageBuilder(this, ResourcePath.Text, PackageFilename.Text, restorePath, extensions.ToArray(), RemoveTargeOnRestore.Checked, m_editor.CurrentConnection);
             this.DialogResult = pkb.Start();
             this.Close();
         }
@@ -121,7 +147,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
         private void EnableRestorePath_CheckedChanged(object sender, EventArgs e)
         {
-            RestorePath.Enabled = EnableRestorePath.Checked;
+            RestorePath.Enabled = LibraryLabel.Enabled = EnableRestorePath.Checked;
         }
 
         private void BrowseTargetFilename_Click(object sender, EventArgs e)

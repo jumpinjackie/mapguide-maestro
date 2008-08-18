@@ -88,6 +88,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
                     foreach (ResourceListResourceFolder folder in folders)
                     {
+
                         m_progress.SetOperation("Creating folder " + folder.ResourceId);
                         m_progress.SetCurrentProgress(0, 100);
                         AddFolderResource(manifest, temppath, folder, m_removeExisting, m_connection);
@@ -137,11 +138,12 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                         m_progress.SetOperationNo(opno++);
                     }
 
+                    if (!string.IsNullOrEmpty(m_alternatetarget))
+                        RemapFiles(manifest, temppath, m_startingpoint, m_alternatetarget);
+
                     using (System.IO.FileStream fs = new System.IO.FileStream(System.IO.Path.Combine(temppath, "MgResourcePackageManifest.xml"), System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
                         m_connection.SerializeObject(manifest, fs);
 
-                    if (!string.IsNullOrEmpty(m_alternatetarget))
-                        RemapFiles(temppath, m_startingpoint, m_alternatetarget);
 
                     m_progress.SetOperation("Compressing files");
                     m_progress.SetCurrentProgress(0, 100);
@@ -376,9 +378,34 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             return CreateFolderForResource(m_connection, resourceId, temppath);
         }
 
-        private void RemapFiles(string tempdir, string origpath, string newpath)
+        private void RemapFiles(MaestroAPI.ResourcePackageManifest manifest, string tempdir, string origpath, string newpath)
         {
-            //TODO: Implement this
+            if (!newpath.EndsWith("/"))
+                newpath += "/";
+            if (!origpath.EndsWith("/"))
+                origpath += "/";
+
+            foreach (MaestroAPI.ResourcePackageManifestOperationsOperation op in manifest.Operations.Operation)
+            {
+                op.Parameters.Parameter["RESOURCEID"].Value = newpath + op.Parameters.Parameter["RESOURCEID"].Value.Substring(origpath.Length);
+                if (op.Parameters.Parameter["CONTENT"] != null)
+                {
+                    string path = System.IO.Path.Combine(tempdir, op.Parameters.Parameter["CONTENT"].Value.Replace('/', System.IO.Path.DirectorySeparatorChar));
+                    System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+                    doc.Load(path);
+                    ((ServerConnectionBase)m_connection).UpdateResourceReferences(doc, origpath, newpath, true);
+                    System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                    doc.Save(ms);
+                    System.IO.MemoryStream ms2 = Utility.RemoveUTF8BOM(ms);
+                    if (ms2 != ms)
+                        ms.Dispose();
+
+                    ms2.Position = 0;
+                    using (System.IO.FileStream fs = new System.IO.FileStream(path, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                        ms2.WriteTo(fs);
+                    ms2.Dispose();
+                }
+            }
         }
 
         public static void ZipDirectory(string zipfile, string folder, string comment, PackageProgress progress)
@@ -422,7 +449,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
                         crc.Reset();
                         crc.Update(data);
-                        ICSharpCode.SharpZipLib.Zip.ZipEntry ze = new ICSharpCode.SharpZipLib.Zip.ZipEntry(RelativeName(s, folder));
+                        ICSharpCode.SharpZipLib.Zip.ZipEntry ze = new ICSharpCode.SharpZipLib.Zip.ZipEntry(RelativeName(s, folder).Replace('\\', '/'));
                         ze.Crc = crc.Value;
                         ze.DateTime = System.IO.File.GetLastWriteTime(s);
                         ze.Size = data.Length;

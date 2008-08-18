@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -607,7 +608,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="oldresourcepath">The current resource path, the one updating from</param>
 		/// <param name="newresourcepath">The new resource path, the one updating to</param>
 		/// <param name="folderupdates">True if the old and new resource path identifiers are folders, false otherwise</param>
-		protected void UpdateResourceReferences(object o, string oldresourcepath, string newresourcepath, bool folderupdates)
+		public virtual void UpdateResourceReferences(object o, string oldresourcepath, string newresourcepath, bool folderupdates)
 		{
 			UpdateResourceReferences(o, oldresourcepath, newresourcepath, folderupdates, new Hashtable());
 		}
@@ -645,11 +646,59 @@ namespace OSGeo.MapGuide.MaestroAPI
 					newresourcepath += "/";
 			}
 
+            //If the value is a document or fragment of a document, we still wan't to repoint it
+            if (o as System.Xml.XmlDocument != null || o as System.Xml.XmlNode != null)
+            {
+                Queue<System.Xml.XmlNode> lst = new Queue<System.Xml.XmlNode>();
+                if (o as System.Xml.XmlDocument != null)
+                {
+                    foreach (System.Xml.XmlNode n in (o as System.Xml.XmlDocument).ChildNodes)
+                        if (n.NodeType == System.Xml.XmlNodeType.Element)
+                            lst.Enqueue(n);
+                }
+                else
+                    lst.Enqueue(o as System.Xml.XmlNode);
+
+                while (lst.Count > 0)
+                {
+                    System.Xml.XmlNode n = lst.Dequeue();
+
+                    foreach (System.Xml.XmlNode nx in n.ChildNodes)
+                        if (nx.NodeType == System.Xml.XmlNodeType.Element)
+                            lst.Enqueue(nx);
+
+                    if (n.Name == "ResourceId")
+                    {
+                        string current = n.InnerXml;
+                        if (folderupdates && current.StartsWith(oldresourcepath))
+                            n.InnerXml = newresourcepath + current.Substring(oldresourcepath.Length);
+                        else if (current == oldresourcepath)
+                            n.InnerXml = newresourcepath;
+                    }
+
+                    foreach(System.Xml.XmlAttribute a in n.Attributes)
+                        if (a.Name == "ResourceId")
+                        {
+                            string current = a.Value;
+                            if (folderupdates && current.StartsWith(oldresourcepath))
+                                n.Value = newresourcepath + current.Substring(oldresourcepath.Length);
+                            else if (current == oldresourcepath)
+                                n.Value = newresourcepath;
+                        }
+                }
+
+                //There can be no objects in an xml document or node, so just return immediately
+                return;
+            }
+
+            //Try to find the object properties
 			foreach(System.Reflection.PropertyInfo pi in o.GetType().GetProperties())
 			{
+                //Only index free read-write properties are taken into account
 				if (!pi.CanRead || !pi.CanWrite || pi.GetIndexParameters().Length != 0 || pi.GetValue(o, null) == null)
 					continue;
 
+                //If we are at a ResourceId property, update it as needed
 				if (pi.Name == "ResourceId")
 				{
 					object v = pi.GetValue(o, null);
@@ -665,18 +714,23 @@ namespace OSGeo.MapGuide.MaestroAPI
 				}
 				else if (pi.GetValue(o, null).GetType().GetInterface(typeof(System.Collections.ICollection).FullName) != null)
 				{
+                    //Handle collections
 					System.Collections.ICollection srcList = (System.Collections.ICollection)pi.GetValue(o, null);
 					foreach(object ox in srcList)
 						UpdateResourceReferences(ox, oldresourcepath, newresourcepath, folderupdates, visited);
 				}
 				else if (pi.GetValue(o, null).GetType().IsArray)
 				{
+                    //Handle arrays
 					System.Array sourceArr = (System.Array)pi.GetValue(o, null);
 					for(int i = 0; i < sourceArr.Length; i++)
 						UpdateResourceReferences(sourceArr.GetValue(i), oldresourcepath, newresourcepath, folderupdates, visited);
 				}
-				else if (pi.PropertyType.IsClass)
-					UpdateResourceReferences(pi.GetValue(o, null), oldresourcepath, newresourcepath, folderupdates, visited);
+                else if (pi.PropertyType.IsClass)
+                {
+                    //Handle subobjects
+                    UpdateResourceReferences(pi.GetValue(o, null), oldresourcepath, newresourcepath, folderupdates, visited);
+                }
 			}
 
 		}

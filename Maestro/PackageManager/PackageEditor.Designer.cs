@@ -29,7 +29,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PackageEditor));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.ButtonPanel = new System.Windows.Forms.Panel();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.OKBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -61,7 +61,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.BrowseResourceDataFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveResourceDataFile = new System.Windows.Forms.SaveFileDialog();
             this.SavePackageDialog = new System.Windows.Forms.SaveFileDialog();
-            this.panel1.SuspendLayout();
+            this.ButtonPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.LoaderGroup.SuspendLayout();
             this.MainGroup.Panel1.SuspendLayout();
@@ -72,15 +72,15 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // ButtonPanel
             // 
-            this.panel1.Controls.Add(this.CancelBtn);
-            this.panel1.Controls.Add(this.OKBtn);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 344);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 55);
-            this.panel1.TabIndex = 0;
+            this.ButtonPanel.Controls.Add(this.CancelBtn);
+            this.ButtonPanel.Controls.Add(this.OKBtn);
+            this.ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ButtonPanel.Location = new System.Drawing.Point(0, 344);
+            this.ButtonPanel.Name = "ButtonPanel";
+            this.ButtonPanel.Size = new System.Drawing.Size(450, 55);
+            this.ButtonPanel.TabIndex = 0;
             // 
             // CancelBtn
             // 
@@ -412,11 +412,11 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.CancelButton = this.CancelBtn;
             this.ClientSize = new System.Drawing.Size(450, 399);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.ButtonPanel);
             this.Name = "PackageEditor";
             this.Text = "Package Editor";
             this.Load += new System.EventHandler(this.PackageEditor_Load);
-            this.panel1.ResumeLayout(false);
+            this.ButtonPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.LoaderGroup.ResumeLayout(false);
             this.MainGroup.Panel1.ResumeLayout(false);
@@ -436,7 +436,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel ButtonPanel;
         private System.Windows.Forms.Button CancelBtn;
         private System.Windows.Forms.Button OKBtn;
         private System.Windows.Forms.Panel panel2;

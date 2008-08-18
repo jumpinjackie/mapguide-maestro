@@ -11,134 +11,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 {
     public partial class PackageEditor : Form
     {
-        private const string DEFAULT_HEADER = 
-            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-            "<ResourceFolderHeader xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"ResourceFolderHeader-1.0.0.xsd\">\n" +
-            "	<Security xsi:noNamespaceSchemaLocation=\"ResourceSecurity-1.0.0.xsd\">\n" +
-            "		<Inherited>true</Inherited>\n" +
-            "	</Security>\n" +
-            "</ResourceFolderHeader>";
-
-        public enum EntryTypeEnum
-        {
-            Regular,
-            Deleted,
-            Added
-        }
-
-        private class ResourceDataItem
-        {
-            private string m_resourceName;
-            private string m_contentType;
-            private string m_filename;
-            private string m_dataType;
-            private EntryTypeEnum m_entryType;
-
-            public ResourceDataItem(string resourceName, string contentType, string filename, string dataType)
-            {
-                m_resourceName = resourceName;
-                m_contentType = contentType;
-                m_filename = filename;
-                m_dataType = dataType;
-                m_entryType = EntryTypeEnum.Regular;
-            }
-
-            public string ResourceName
-            {
-                get { return m_resourceName; }
-                set { m_resourceName = value; }
-            }
-
-            public string ContentType
-            {
-                get { return m_contentType; }
-                set { m_contentType = value; }
-            }
-
-            public string Filename
-            {
-                get { return m_filename; }
-                set { m_filename = value; }
-            }
-
-            public EntryTypeEnum EntryType
-            {
-                get { return m_entryType; }
-                set { m_entryType = value; }
-            }
-
-            public string DataType
-            {
-                get { return m_dataType; }
-                set { m_dataType = value; }
-            }
-        }
-
-        private class ResourceItem
-        {
-
-            public ResourceItem(string resourcePath, string headerPath, string contentPath)
-            {
-                m_originalResourcePath = m_resourcePath = resourcePath;
-                m_headerpath = headerPath;
-                m_contentpath = contentPath;
-                m_entryType = EntryTypeEnum.Regular;
-                m_items = new List<ResourceDataItem>();
-                m_isFolder = m_originalResourcePath.EndsWith("/");
-            }
-
-            private string m_originalResourcePath;
-            private string m_headerpath;
-            private string m_contentpath;
-            private string m_resourcePath;
-            private EntryTypeEnum m_entryType;
-            private List<ResourceDataItem> m_items;
-            private bool m_isFolder;
-
-            public bool IsFolder
-            {
-                get { return m_isFolder; }
-                set { m_isFolder = true; }
-            }
-
-            public List<ResourceDataItem> Items
-            {
-                get { return m_items; }
-                set { m_items = value; }
-            }
-
-            public EntryTypeEnum EntryType
-            {
-                get { return m_entryType; }
-                set { m_entryType = value; }
-            }
-
-
-            public string OriginalResourcePath
-            {
-                get { return m_originalResourcePath; }
-                set { m_originalResourcePath = value; }
-            }
-
-            public string ResourcePath
-            {
-                get { return m_resourcePath; }
-                set { m_resourcePath = value; }
-            }
-
-            public string Contentpath
-            {
-                get { return m_contentpath; }
-                set { m_contentpath = value; }
-            }
-
-            public string Headerpath
-            {
-                get { return m_headerpath; }
-                set { m_headerpath = value; }
-            }
-        }
-
         private string m_filename;
         private FormMain m_owner;
         private Dictionary<string, ResourceItem> m_resources;
@@ -187,7 +59,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             try
             {
                 m_zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(m_filename);
-                int index = m_zipfile.FindEntry("MgResourcePackageManifest.xml", false);
+                int index = PackageRebuilder.FindZipEntry(m_zipfile, "MgResourcePackageManifest.xml");
                 if (index < 0)
                     throw new Exception("Failed to locate file MgResourcePackageManifest.xml in zip file. Most likely the file is not a MapGuide package.");
 
@@ -355,7 +227,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
                 if ((ResourceDataFileList.SelectedItems[0].Tag as ResourceDataItem).EntryType == EntryTypeEnum.Regular)
                 {
-                    int index = m_zipfile.FindEntry((ResourceDataFileList.SelectedItems[0].Tag as ResourceDataItem).Filename, false);
+                    int index = PackageRebuilder.FindZipEntry(m_zipfile, (ResourceDataFileList.SelectedItems[0].Tag as ResourceDataItem).Filename);
                     if (index >= 0)
                         using (System.IO.FileStream fs = new System.IO.FileStream(SaveResourceDataFile.FileName, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
                             Utility.CopyStream(m_zipfile.GetInputStream(index), fs);
@@ -550,186 +422,66 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             if (SavePackageDialog.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            string tempfolder = System.IO.Path.Combine(System.IO.Path.GetTempPath(), System.IO.Path.GetRandomFileName());
+            LoaderGroup.Text = "Rebuilding package...";
+            LoaderGroup.Visible = true;
+            MainGroup.Visible = false;
+            ButtonPanel.Enabled = false;
+
+            //Preparation: Update all resources with the correct path, and build a list with them
+            List<ResourceItem> items = new List<ResourceItem>();
 
             try
             {
-                //Step 1: Update all resources with the correct path, and build a list with them
-                List<ResourceItem> items = new List<ResourceItem>();
+                ResourceTree.PathSeparator = "/";
+                ResourceTree.Nodes[0].Text = "Library:/";
 
-                try
+                Queue<TreeNode> nl = new Queue<TreeNode>();
+                foreach (TreeNode n in ResourceTree.Nodes[0].Nodes)
+                    nl.Enqueue(n);
+
+                while (nl.Count > 0)
                 {
-                    ResourceTree.PathSeparator = "/";
-                    ResourceTree.Nodes[0].Text = "Library:/";
+                    TreeNode n = nl.Dequeue();
+                    foreach (TreeNode tn in n.Nodes)
+                        nl.Enqueue(tn);
 
-                    Queue<TreeNode> nl = new Queue<TreeNode>();
-                    foreach (TreeNode n in ResourceTree.Nodes[0].Nodes)
-                        nl.Enqueue(n);
-
-                    while (nl.Count > 0)
+                    if (n.Tag as ResourceItem != null && (n.Tag as ResourceItem).EntryType != EntryTypeEnum.Deleted)
                     {
-                        TreeNode n = nl.Dequeue();
-                        foreach (TreeNode tn in n.Nodes)
-                            nl.Enqueue(tn);
+                        ResourceItem ri = new ResourceItem(n.Tag as ResourceItem);
+                        ri.ResourcePath = n.FullPath + (ri.IsFolder ? "/" : "");
+                        if (string.IsNullOrEmpty(ri.OriginalResourcePath))
+                            ri.OriginalResourcePath = ri.ResourcePath;
 
-                        if (n.Tag as ResourceItem != null && (n.Tag as ResourceItem).EntryType != EntryTypeEnum.Deleted)
-                        {
-                            ResourceItem ri = n.Tag as ResourceItem;
-                            ri.ResourcePath = n.FullPath + (ri.IsFolder ? "/" : "");
-                            if (string.IsNullOrEmpty(ri.OriginalResourcePath))
-                                ri.OriginalResourcePath = ri.ResourcePath;
-
-                            items.Add(ri);
-                        }
+                        items.Add(ri);
                     }
                 }
-                finally 
-                {
-                    ResourceTree.Nodes[0].Text = "Library://";
-                }
-
-                //Step 2: Create the file system layout
-                if (!System.IO.Directory.Exists(tempfolder))
-                    System.IO.Directory.CreateDirectory(tempfolder);
-
-                foreach (ResourceItem ri in items)
-                {
-                    string filebase;
-                    if (ri.IsFolder)
-                    {
-                        filebase = System.IO.Path.GetDirectoryName(MapResourcePathToFolder(tempfolder, ri.ResourcePath + "dummy.xml"));
-                        if (!filebase.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()))
-                            filebase += System.IO.Path.DirectorySeparatorChar;
-                    }
-                    else
-                        filebase = MapResourcePathToFolder(tempfolder, ri.ResourcePath);
-
-                    string headerpath = filebase + "_HEADER.xml";
-                    string contentpath = filebase + "_CONTENT.xml";
-
-                    if (ri.EntryType == EntryTypeEnum.Added)
-                    {
-                        if (string.IsNullOrEmpty(ri.Headerpath))
-                            using (System.IO.FileStream fs = new System.IO.FileStream(ri.Headerpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                            {
-                                byte[] data = System.Text.Encoding.UTF8.GetBytes(DEFAULT_HEADER);
-                                fs.Write(data, 0, data.Length);
-                            }
-                        else if (!ri.IsFolder)
-                            System.IO.File.Copy(ri.Headerpath, headerpath);
-
-                        System.IO.File.Copy(ri.Contentpath, contentpath);
-                    }
-                    else if (ri.EntryType == EntryTypeEnum.Regular)
-                    {
-                        int index = m_zipfile.FindEntry(ri.Headerpath, false);
-                        if (index < 0)
-                            throw new Exception(string.Format("Failed to find file {0} in archive", ri.Headerpath));
-
-                        using (System.IO.FileStream fs = new System.IO.FileStream(headerpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                            Utility.CopyStream(m_zipfile.GetInputStream(index), fs);
-
-                        if (!ri.IsFolder)
-                        {
-                            index = m_zipfile.FindEntry(ri.Contentpath, false);
-                            if (index < 0)
-                                throw new Exception(string.Format("Failed to find file {0} in archive", ri.Contentpath));
-
-                            using (System.IO.FileStream fs = new System.IO.FileStream(contentpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                                Utility.CopyStream(m_zipfile.GetInputStream(index), fs);
-                        }
-
-                    }
-
-                    ri.Headerpath = headerpath;
-                    ri.Contentpath = contentpath;
-
-                    foreach (ResourceDataItem rdi in ri.Items)
-                    {
-                        string targetpath = filebase + "_DATA_" + rdi.ResourceName;
-                        if (rdi.EntryType == EntryTypeEnum.Added)
-                            System.IO.File.Copy(rdi.Filename, targetpath);
-                        else
-                        {
-                            int index = m_zipfile.FindEntry(rdi.Filename, false);
-                            if (index < 0)
-                                throw new Exception(string.Format("Failed to find file {0} in archive", ri.Contentpath));
-
-                            using (System.IO.FileStream fs = new System.IO.FileStream(targetpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                                Utility.CopyStream(m_zipfile.GetInputStream(index), fs);
-                        }
-                        rdi.Filename = targetpath;
-                    }
-                }
-
-                //Step 3: Repoint all resources with respect to the update
-                foreach (ResourceItem ri in items)
-                    if (ri.OriginalResourcePath != ri.ResourcePath)
-                    {
-
-                    }
-
-                //Step 4: Create an updated definition file
-                ResourcePackageManifest manifest = new ResourcePackageManifest();
-                manifest.Description = "MapGuide Package created by Maestro";
-                manifest.Operations = new ResourcePackageManifestOperations();
-                manifest.Operations.Operation = new ResourcePackageManifestOperationsOperationCollection();
-
-                bool eraseFirst = true;
-
-                foreach (ResourceItem ri in items)
-                    if (ri.IsFolder)
-                    {
-                        PackageBuilder.AddFolderResource(
-                            manifest,
-                            ri.ResourcePath,
-                            PackageBuilder.RelativeName(ri.Headerpath, tempfolder).Replace('\\', '/'), 
-                            eraseFirst);
-                    }
-                    else
-                    {
-                        PackageBuilder.AddFileResource(
-                            manifest, 
-                            ri.ResourcePath,
-                            PackageBuilder.RelativeName(ri.Headerpath, tempfolder).Replace('\\', '/'),
-                            PackageBuilder.RelativeName(ri.Contentpath, tempfolder).Replace('\\', '/'), 
-                            eraseFirst);
-
-                        foreach (ResourceDataItem rdi in ri.Items)
-                            PackageBuilder.AddResourceData(
-                                manifest, 
-                                ri.ResourcePath, 
-                                rdi.ContentType, 
-                                rdi.DataType,
-                                rdi.ResourceName,
-                                PackageBuilder.RelativeName(rdi.Filename, tempfolder).Replace('\\', '/'), 
-                                new System.IO.FileInfo(rdi.Filename).Length);
-                    }
-
-                using(System.IO.FileStream fs = new System.IO.FileStream(System.IO.Path.Combine(tempfolder, "MgResourcePackageManifest.xml"),  System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                    m_owner.CurrentConnection.SerializeObject(manifest, fs);
-
-                //Step 4: Create the zip file
-                PackageBuilder.ZipDirectory(SavePackageDialog.FileName, tempfolder, m_zipfile.ZipFileComment, null);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(this, string.Format("An error occured while building package: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
             }
             finally
             {
-                try { System.IO.Directory.Delete(tempfolder, true); }
-                catch { }
+                ResourceTree.Nodes[0].Text = "Library://";
+            }
+
+            PackageRebuilder rb = new PackageRebuilder(m_owner.CurrentConnection, m_filename, items, SavePackageDialog.FileName);
+
+            while (!rb.IsComplete)
+            {
+                System.Threading.Thread.Sleep(100);
+                Application.DoEvents();
+            }
+
+            LoaderGroup.Visible = false;
+            MainGroup.Visible = true;
+            ButtonPanel.Enabled = true;
+
+            if (rb.Result != null)
+            {
+                MessageBox.Show(this, string.Format("An error occured while building package: {0}", rb.Result.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
-        private string MapResourcePathToFolder(string tempfolder, string resourcename)
-        {
-            return PackageBuilder.CreateFolderForResource(m_owner.CurrentConnection, resourcename, tempfolder);
-        }
     }
 }

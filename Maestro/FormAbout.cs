@@ -43,6 +43,10 @@ namespace OSGeo.MapGuide.Maestro
 		private System.Windows.Forms.TabPage licenseTab;
 		private System.Windows.Forms.TabPage creditsTab;
 		private System.Windows.Forms.TextBox Credits;
+        private TabPage thirdPartyTab;
+        private LinkLabel tfnetLinkLabel;
+        private Label label2;
+        private LinkLabel ziplibLinkLabel;
 		private  Globalizator.Globalizator m_globalizor = null;
 
 		public FormAbout()
@@ -91,11 +95,16 @@ namespace OSGeo.MapGuide.Maestro
             this.licenseTab = new System.Windows.Forms.TabPage();
             this.creditsTab = new System.Windows.Forms.TabPage();
             this.Credits = new System.Windows.Forms.TextBox();
+            this.thirdPartyTab = new System.Windows.Forms.TabPage();
+            this.tfnetLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ziplibLinkLabel = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayPalImage)).BeginInit();
             this.tabControl.SuspendLayout();
             this.licenseTab.SuspendLayout();
             this.creditsTab.SuspendLayout();
+            this.thirdPartyTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -170,6 +179,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.tabControl.Controls.Add(this.licenseTab);
             this.tabControl.Controls.Add(this.creditsTab);
+            this.tabControl.Controls.Add(this.thirdPartyTab);
             this.tabControl.Location = new System.Drawing.Point(16, 64);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -184,6 +194,7 @@ namespace OSGeo.MapGuide.Maestro
             this.licenseTab.Size = new System.Drawing.Size(320, 142);
             this.licenseTab.TabIndex = 0;
             this.licenseTab.Text = "License";
+            this.licenseTab.UseVisualStyleBackColor = true;
             // 
             // creditsTab
             // 
@@ -193,6 +204,7 @@ namespace OSGeo.MapGuide.Maestro
             this.creditsTab.Size = new System.Drawing.Size(320, 142);
             this.creditsTab.TabIndex = 1;
             this.creditsTab.Text = "Credits";
+            this.creditsTab.UseVisualStyleBackColor = true;
             // 
             // Credits
             // 
@@ -205,6 +217,49 @@ namespace OSGeo.MapGuide.Maestro
             this.Credits.Size = new System.Drawing.Size(320, 142);
             this.Credits.TabIndex = 4;
             this.Credits.Text = resources.GetString("Credits.Text");
+            // 
+            // thirdPartyTab
+            // 
+            this.thirdPartyTab.Controls.Add(this.ziplibLinkLabel);
+            this.thirdPartyTab.Controls.Add(this.tfnetLinkLabel);
+            this.thirdPartyTab.Controls.Add(this.label2);
+            this.thirdPartyTab.Location = new System.Drawing.Point(4, 22);
+            this.thirdPartyTab.Name = "thirdPartyTab";
+            this.thirdPartyTab.Size = new System.Drawing.Size(320, 142);
+            this.thirdPartyTab.TabIndex = 2;
+            this.thirdPartyTab.Text = "Thirdparty";
+            this.thirdPartyTab.UseVisualStyleBackColor = true;
+            // 
+            // tfnetLinkLabel
+            // 
+            this.tfnetLinkLabel.AutoSize = true;
+            this.tfnetLinkLabel.Location = new System.Drawing.Point(8, 32);
+            this.tfnetLinkLabel.Name = "tfnetLinkLabel";
+            this.tfnetLinkLabel.Size = new System.Drawing.Size(181, 13);
+            this.tfnetLinkLabel.TabIndex = 1;
+            this.tfnetLinkLabel.TabStop = true;
+            this.tfnetLinkLabel.Text = "Topology Framework .NET (TF.NET)";
+            this.tfnetLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.tfnetLinkLabel_LinkClicked);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(242, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "This program uses the following thirdparty libraries:";
+            // 
+            // ziplibLinkLabel
+            // 
+            this.ziplibLinkLabel.AutoSize = true;
+            this.ziplibLinkLabel.Location = new System.Drawing.Point(8, 56);
+            this.ziplibLinkLabel.Name = "ziplibLinkLabel";
+            this.ziplibLinkLabel.Size = new System.Drawing.Size(80, 13);
+            this.ziplibLinkLabel.TabIndex = 2;
+            this.ziplibLinkLabel.TabStop = true;
+            this.ziplibLinkLabel.Text = "ICSharp Zip Lib";
+            this.ziplibLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ziplibLinkLabel_LinkClicked);
             // 
             // FormAbout
             // 
@@ -231,6 +286,8 @@ namespace OSGeo.MapGuide.Maestro
             this.licenseTab.PerformLayout();
             this.creditsTab.ResumeLayout(false);
             this.creditsTab.PerformLayout();
+            this.thirdPartyTab.ResumeLayout(false);
+            this.thirdPartyTab.PerformLayout();
             this.ResumeLayout(false);
 
 		}
@@ -251,5 +308,15 @@ namespace OSGeo.MapGuide.Maestro
 		{
             Program.OpenUrl(linkLabel.Text);
 		}
+
+        private void tfnetLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Program.OpenUrl("http://code.google.com/p/tf-net/");
+        }
+
+        private void ziplibLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Program.OpenUrl("http://sharpdevelop.net/OpenSource/SharpZipLib/Default.aspx");
+        }
 	}
 }
