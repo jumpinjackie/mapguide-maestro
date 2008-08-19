@@ -34,7 +34,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         public static void EditPackage(ServerConnectionI connection, FormMain owner)
         {
             OpenFileDialog dlg = new OpenFileDialog();
-            dlg.AutoUpgradeEnabled = true;
+            //dlg.AutoUpgradeEnabled = true;
             dlg.CheckFileExists = true;
             dlg.CheckPathExists = true;
             dlg.DefaultExt = ".mgp";
