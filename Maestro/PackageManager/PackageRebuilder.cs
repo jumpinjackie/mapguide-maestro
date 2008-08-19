@@ -161,20 +161,19 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         private System.Threading.Thread m_thread;
         private List<ResourceItem> m_items;
         private string m_tempfolder;
-        private ICSharpCode.SharpZipLib.Zip.ZipFile m_zipfile;
         private ServerConnectionI m_connection;
         private string m_targetfile;
         private Exception m_ex;
+        private string m_zipfilename;
 
         public PackageRebuilder(ServerConnectionI connection, string zipfile, List<ResourceItem> items, string targetfile)
         {
             m_tempfolder = System.IO.Path.Combine(System.IO.Path.GetTempPath(), System.IO.Path.GetRandomFileName());
             m_items = items;
-            m_zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(zipfile);
             m_targetfile = targetfile;
             m_ex = null;
             m_connection = connection;
-            m_zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(zipfile);
+            m_zipfilename = zipfile;
 
             m_thread = new System.Threading.Thread(new System.Threading.ThreadStart(RunThread));
             m_thread.IsBackground = true;
@@ -198,73 +197,80 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                 if (!System.IO.Directory.Exists(m_tempfolder))
                     System.IO.Directory.CreateDirectory(m_tempfolder);
 
-                foreach (ResourceItem ri in m_items)
+                string zipfilecomment;
+
+                using (ICSharpCode.SharpZipLib.Zip.ZipFile zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(m_zipfilename))
                 {
-                    string filebase;
-                    if (ri.IsFolder)
+                    zipfilecomment = zipfile.ZipFileComment;
+
+                    foreach (ResourceItem ri in m_items)
                     {
-                        filebase = System.IO.Path.GetDirectoryName(MapResourcePathToFolder(m_tempfolder, ri.ResourcePath + "dummy.xml"));
-                        if (!filebase.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()))
-                            filebase += System.IO.Path.DirectorySeparatorChar;
-                    }
-                    else
-                        filebase = MapResourcePathToFolder(m_tempfolder, ri.ResourcePath);
-
-                    string headerpath = filebase + "_HEADER.xml";
-                    string contentpath = filebase + "_CONTENT.xml";
-
-                    if (ri.EntryType == EntryTypeEnum.Added)
-                    {
-                        if (string.IsNullOrEmpty(ri.Headerpath))
-                            using (System.IO.FileStream fs = new System.IO.FileStream(ri.Headerpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                            {
-                                byte[] data = System.Text.Encoding.UTF8.GetBytes(DEFAULT_HEADER);
-                                fs.Write(data, 0, data.Length);
-                            }
-                        else if (!ri.IsFolder)
-                            System.IO.File.Copy(ri.Headerpath, headerpath);
-
-                        System.IO.File.Copy(ri.Contentpath, contentpath);
-                    }
-                    else if (ri.EntryType == EntryTypeEnum.Regular)
-                    {
-                        int index = FindZipEntry(m_zipfile, ri.Headerpath);
-                        if (index < 0)
-                            throw new Exception(string.Format("Failed to find file {0} in archive", ri.Headerpath));
-
-                        using (System.IO.FileStream fs = new System.IO.FileStream(headerpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                            Utility.CopyStream(m_zipfile.GetInputStream(index), fs);
-
-                        if (!ri.IsFolder)
+                        string filebase;
+                        if (ri.IsFolder)
                         {
-                            index = FindZipEntry(m_zipfile, ri.Contentpath);
-                            if (index < 0)
-                                throw new Exception(string.Format("Failed to find file {0} in archive", ri.Contentpath));
-
-                            using (System.IO.FileStream fs = new System.IO.FileStream(contentpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                                Utility.CopyStream(m_zipfile.GetInputStream(index), fs);
+                            filebase = System.IO.Path.GetDirectoryName(MapResourcePathToFolder(m_tempfolder, ri.ResourcePath + "dummy.xml"));
+                            if (!filebase.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()))
+                                filebase += System.IO.Path.DirectorySeparatorChar;
                         }
-
-                    }
-
-                    ri.Headerpath = headerpath;
-                    ri.Contentpath = contentpath;
-
-                    foreach (ResourceDataItem rdi in ri.Items)
-                    {
-                        string targetpath = filebase + "_DATA_" + rdi.ResourceName;
-                        if (rdi.EntryType == EntryTypeEnum.Added)
-                            System.IO.File.Copy(rdi.Filename, targetpath);
                         else
-                        {
-                            int index = FindZipEntry(m_zipfile, rdi.Filename);
-                            if (index < 0)
-                                throw new Exception(string.Format("Failed to find file {0} in archive", ri.Contentpath));
+                            filebase = MapResourcePathToFolder(m_tempfolder, ri.ResourcePath);
 
-                            using (System.IO.FileStream fs = new System.IO.FileStream(targetpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                                Utility.CopyStream(m_zipfile.GetInputStream(index), fs);
+                        string headerpath = filebase + "_HEADER.xml";
+                        string contentpath = filebase + "_CONTENT.xml";
+
+                        if (ri.EntryType == EntryTypeEnum.Added)
+                        {
+                            if (string.IsNullOrEmpty(ri.Headerpath))
+                                using (System.IO.FileStream fs = new System.IO.FileStream(ri.Headerpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                                {
+                                    byte[] data = System.Text.Encoding.UTF8.GetBytes(DEFAULT_HEADER);
+                                    fs.Write(data, 0, data.Length);
+                                }
+                            else if (!ri.IsFolder)
+                                System.IO.File.Copy(ri.Headerpath, headerpath);
+
+                            System.IO.File.Copy(ri.Contentpath, contentpath);
                         }
-                        rdi.Filename = targetpath;
+                        else if (ri.EntryType == EntryTypeEnum.Regular)
+                        {
+                            int index = FindZipEntry(zipfile, ri.Headerpath);
+                            if (index < 0)
+                                throw new Exception(string.Format("Failed to find file {0} in archive", ri.Headerpath));
+
+                            using (System.IO.FileStream fs = new System.IO.FileStream(headerpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                                Utility.CopyStream(zipfile.GetInputStream(index), fs);
+
+                            if (!ri.IsFolder)
+                            {
+                                index = FindZipEntry(zipfile, ri.Contentpath);
+                                if (index < 0)
+                                    throw new Exception(string.Format("Failed to find file {0} in archive", ri.Contentpath));
+
+                                using (System.IO.FileStream fs = new System.IO.FileStream(contentpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                                    Utility.CopyStream(zipfile.GetInputStream(index), fs);
+                            }
+
+                        }
+
+                        ri.Headerpath = headerpath;
+                        ri.Contentpath = contentpath;
+
+                        foreach (ResourceDataItem rdi in ri.Items)
+                        {
+                            string targetpath = filebase + "_DATA_" + rdi.ResourceName;
+                            if (rdi.EntryType == EntryTypeEnum.Added)
+                                System.IO.File.Copy(rdi.Filename, targetpath);
+                            else
+                            {
+                                int index = FindZipEntry(zipfile, rdi.Filename);
+                                if (index < 0)
+                                    throw new Exception(string.Format("Failed to find file {0} in archive", ri.Contentpath));
+
+                                using (System.IO.FileStream fs = new System.IO.FileStream(targetpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                                    Utility.CopyStream(zipfile.GetInputStream(index), fs);
+                            }
+                            rdi.Filename = targetpath;
+                        }
                     }
                 }
 
@@ -334,7 +340,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                     m_connection.SerializeObject(manifest, fs);
 
                 //Step 4: Create the zip file
-                PackageBuilder.ZipDirectory(m_targetfile, m_tempfolder, m_zipfile.ZipFileComment, null);
+                PackageBuilder.ZipDirectory(m_targetfile, m_tempfolder, zipfilecomment, null);
             }
             catch (Exception ex)
             {

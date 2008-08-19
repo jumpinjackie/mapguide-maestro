@@ -14,7 +14,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         private string m_filename;
         private FormMain m_owner;
         private Dictionary<string, ResourceItem> m_resources;
-        private ICSharpCode.SharpZipLib.Zip.ZipFile m_zipfile;
+        //private ICSharpCode.SharpZipLib.Zip.ZipFile m_zipfile;
 
         public PackageEditor(string filename, FormMain owner)
             : this()
@@ -58,13 +58,15 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
             try
             {
-                m_zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(m_filename);
-                int index = PackageRebuilder.FindZipEntry(m_zipfile, "MgResourcePackageManifest.xml");
-                if (index < 0)
-                    throw new Exception("Failed to locate file MgResourcePackageManifest.xml in zip file. Most likely the file is not a MapGuide package.");
+                ResourcePackageManifest manifest;
+                using(ICSharpCode.SharpZipLib.Zip.ZipFile zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(m_filename))
+                {
+                    int index = PackageRebuilder.FindZipEntry(zipfile, "MgResourcePackageManifest.xml");
+                    if (index < 0)
+                        throw new Exception("Failed to locate file MgResourcePackageManifest.xml in zip file. Most likely the file is not a MapGuide package.");
 
-                ResourcePackageManifest manifest = m_owner.CurrentConnection.DeserializeObject<ResourcePackageManifest>(m_zipfile.GetInputStream(index));
-
+                     manifest = m_owner.CurrentConnection.DeserializeObject<ResourcePackageManifest>(zipfile.GetInputStream(index));
+                }
                 //TODO: Much of this assumes that the package is correctly constructed, ea.: no SETRESOURCEDATA, before a SETRESOURCE and so on.
                 foreach (ResourcePackageManifestOperationsOperation op in manifest.Operations.Operation)
                 {
@@ -227,10 +229,13 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
                 if ((ResourceDataFileList.SelectedItems[0].Tag as ResourceDataItem).EntryType == EntryTypeEnum.Regular)
                 {
-                    int index = PackageRebuilder.FindZipEntry(m_zipfile, (ResourceDataFileList.SelectedItems[0].Tag as ResourceDataItem).Filename);
-                    if (index >= 0)
-                        using (System.IO.FileStream fs = new System.IO.FileStream(SaveResourceDataFile.FileName, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                            Utility.CopyStream(m_zipfile.GetInputStream(index), fs);
+                    using(ICSharpCode.SharpZipLib.Zip.ZipFile zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(m_filename))
+                    {
+                        int index = PackageRebuilder.FindZipEntry(zipfile, (ResourceDataFileList.SelectedItems[0].Tag as ResourceDataItem).Filename);
+                        if (index >= 0)
+                            using (System.IO.FileStream fs = new System.IO.FileStream(SaveResourceDataFile.FileName, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                                Utility.CopyStream(zipfile.GetInputStream(index), fs);
+                    }
                 }
                 else if ((ResourceDataFileList.SelectedItems[0].Tag as ResourceDataItem).EntryType == EntryTypeEnum.Added)
                 {
@@ -419,6 +424,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
         private void OKBtn_Click(object sender, EventArgs e)
         {
+            SavePackageDialog.FileName = m_filename;
             if (SavePackageDialog.ShowDialog(this) != DialogResult.OK)
                 return;
 
