@@ -1342,17 +1342,17 @@ namespace OSGeo.MapGuide.MaestroAPI
 							}
 							else if (o as LineTypeStyleType != null)
 							{
-								if (((LineTypeStyleType)vsc.Items[i]).LineRule != null)
-								{
-									if ( ((LineTypeStyleType)vsc.Items[i]).LineRule.Count == 0 )
-										vsc.Items.RemoveAt(i);
-									else
-										foreach(LineRuleType lr in ((LineTypeStyleType)vsc.Items[i]).LineRule)
-										{
-											if (lr.LegendLabel == null)
-												lr.LegendLabel = "";
-											if (lr.Items != null)
-											{
+                                if (((LineTypeStyleType)vsc.Items[i]).LineRule != null)
+                                {
+                                    if (((LineTypeStyleType)vsc.Items[i]).LineRule.Count == 0)
+                                        vsc.Items.RemoveAt(i);
+                                    else
+                                        foreach (LineRuleType lr in ((LineTypeStyleType)vsc.Items[i]).LineRule)
+                                        {
+                                            if (lr.LegendLabel == null)
+                                                lr.LegendLabel = "";
+                                            if (lr.Items != null)
+                                            {
                                                 foreach (StrokeType st in lr.Items)
                                                 {
                                                     if (version1)
@@ -1363,9 +1363,11 @@ namespace OSGeo.MapGuide.MaestroAPI
                                                     if (string.IsNullOrEmpty(st.Thickness))
                                                         st.Thickness = "0";
                                                 }
-											}
-										}
-								}
+                                            }
+                                        }
+                                }
+                                else
+                                    vsc.Items.RemoveAt(i);
 							}
 							else if (o as AreaTypeStyleType != null)
 							{
