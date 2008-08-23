@@ -83,6 +83,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// </summary>
 		protected string m_password;
 
+        protected UserList m_cachedUserList = null;
+        protected GroupList m_cachedGroupList = null;
+
 		protected ServerConnectionBase()
 		{
 			m_serializers = new Hashtable();
@@ -1712,6 +1715,28 @@ namespace OSGeo.MapGuide.MaestroAPI
         abstract public ResourceFolderHeaderType GetFolderHeader(string resourceID);
         abstract public void SetFolderHeader(string resourceID, ResourceFolderHeaderType header);
         abstract public void SetResourceHeader(string resourceID, ResourceDocumentHeaderType header);
+
+        /// <summary>
+        /// Gets a list of all users on the server
+        /// </summary>
+        /// <returns>The list of users</returns>
+        public virtual UserList EnumerateUsers()
+        {
+            return this.EnumerateUsers(null);
+        }
+
+        /// <summary>
+        /// Gets a list of users in a group
+        /// </summary>
+        /// <param name="group">The group to retrieve the users from</param>
+        /// <returns>The list of users</returns>
+        abstract public UserList EnumerateUsers(string group);
+
+        /// <summary>
+        /// Gets a list of all groups on the server
+        /// </summary>
+        /// <returns>The list of groups</returns>
+        abstract public GroupList EnumerateGroups();
 
 	}
 }

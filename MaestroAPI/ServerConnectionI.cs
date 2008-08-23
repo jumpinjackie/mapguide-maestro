@@ -340,5 +340,24 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="filename">Name of the file to upload</param>
         /// <param name="callback">A callback argument used to display progress. May be null.</param>
         void UploadPackage(string filename, Utility.StreamCopyProgressDelegate callback);
+
+        /// <summary>
+        /// Gets a list of all users on the server
+        /// </summary>
+        /// <returns>The list of users</returns>
+        UserList EnumerateUsers();
+
+        /// <summary>
+        /// Gets a list of users in a group
+        /// </summary>
+        /// <param name="group">The group to retrieve the users from</param>
+        /// <returns>The list of users</returns>
+        UserList EnumerateUsers(string group);
+
+        /// <summary>
+        /// Gets a list of all groups on the server
+        /// </summary>
+        /// <returns>The list of groups</returns>
+        GroupList EnumerateGroups();
 	}
 }

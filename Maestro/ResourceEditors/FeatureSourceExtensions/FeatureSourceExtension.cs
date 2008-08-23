@@ -425,7 +425,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
 				FeatureSourceDescription.FeatureSourceSchema scm2 = null;
 
 				foreach(FeatureSourceDescription.FeatureSourceSchema scm in m_fsd)
-					if (scm.Fullname == ext.FeatureClass)
+					if (scm.FullnameDecoded == Utility.DecodeFDOName(ext.FeatureClass))
 					{
 						scm1 = scm;
 						break;
@@ -434,7 +434,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
 				try
 				{
 					foreach(FeatureSourceDescription.FeatureSourceSchema scm in m_editor.CurrentConnection.DescribeFeatureSource(atr.ResourceId).Schemas)
-						if (scm.Fullname == atr.AttributeClass)
+						if (scm.FullnameDecoded == Utility.DecodeFDOName(atr.AttributeClass))
 						{
 							scm2 = scm;
 							break;

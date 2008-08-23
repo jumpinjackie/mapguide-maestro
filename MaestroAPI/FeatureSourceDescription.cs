@@ -103,6 +103,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			public string Name { get { return m_name; } }
 			public string Schema { get { return m_schema; } }
 			public string Fullname { get { return m_schema == null ? m_name : m_schema + ":" + m_name; } }
+            public string FullnameDecoded { get { return Utility.DecodeFDOName(this.Fullname); } }
 			public FeatureSetColumn[] Columns { get { return m_columns; } }
 		}
 	}

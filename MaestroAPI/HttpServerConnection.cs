@@ -1176,7 +1176,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override ResourceDocumentHeaderType GetResourceHeader(string resourceID)
         {
             string req = m_reqBuilder.GetResourceHeader(resourceID);
-			System.IO.MemoryStream ms = new System.IO.MemoryStream();
 			using(System.IO.Stream s = this.OpenRead(req))
                 return this.DeserializeObject<ResourceDocumentHeaderType>(s);
         }
@@ -1199,6 +1198,38 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             SetResourceXmlData(resourceID, this.SerializeObject(header), null);
         }
+
+        /// <summary>
+        /// Gets a list of users in a group
+        /// </summary>
+        /// <param name="group">The group to retrieve the users from</param>
+        /// <returns>The list of users</returns>
+        public override UserList EnumerateUsers(string group)
+        {
+            if (m_cachedUserList == null)
+            {
+                string req = m_reqBuilder.EnumerateUsers(group);
+                using (System.IO.Stream s = this.OpenRead(req))
+                    m_cachedUserList = this.DeserializeObject<UserList>(s);
+            }
+            return m_cachedUserList;
+        }
+
+        /// <summary>
+        /// Gets a list of all groups on the server
+        /// </summary>
+        /// <returns>The list of groups</returns>
+        public override GroupList EnumerateGroups()
+        {
+            if (m_cachedGroupList == null)
+            {
+                string req = m_reqBuilder.EnumerateGroups();
+                using (System.IO.Stream s = this.OpenRead(req))
+                    m_cachedGroupList = this.DeserializeObject<GroupList>(s);
+            }
+            return m_cachedGroupList;
+        }
+
 
         #region IDisposable Members
 

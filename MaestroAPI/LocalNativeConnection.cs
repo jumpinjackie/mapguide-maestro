@@ -675,6 +675,29 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        /// <summary>
+        /// Gets a list of users in a group
+        /// </summary>
+        /// <param name="group">The group to retrieve the users from</param>
+        /// <returns>The list of users</returns>
+        public override UserList EnumerateUsers(string group)
+        {
+            if (m_cachedUserList == null)
+                m_cachedUserList = this.DeserializeObject<UserList>(Utility.MgStreamToNetStream(this.Con.GetSite(), this.Con.GetSite().GetType().GetMethod("EnumerateUsers"), new object[] { group }));
+            return m_cachedUserList;
+        }
+
+        /// <summary>
+        /// Gets a list of all groups on the server
+        /// </summary>
+        /// <returns>The list of groups</returns>
+        public override GroupList EnumerateGroups()
+        {
+            if (m_cachedGroupList == null)
+                m_cachedGroupList = this.DeserializeObject<GroupList>(Utility.MgStreamToNetStream(this.Con.GetSite(), this.Con.GetSite().GetType().GetMethod("EnumerateGroups"), null));
+            return m_cachedGroupList;
+        }
+
 
 		#endregion
 

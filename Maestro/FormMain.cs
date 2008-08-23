@@ -262,7 +262,7 @@ namespace OSGeo.MapGuide.Maestro
             this.DeleteMenu,
             this.NewMenu});
             this.TreeContextMenu.Name = "TreeContextMenu";
-            this.TreeContextMenu.Size = new System.Drawing.Size(165, 220);
+            this.TreeContextMenu.Size = new System.Drawing.Size(165, 242);
             this.TreeContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.TreeContextMenu_Popup);
             // 
             // PropertiesMenu
@@ -270,6 +270,7 @@ namespace OSGeo.MapGuide.Maestro
             this.PropertiesMenu.Name = "PropertiesMenu";
             this.PropertiesMenu.Size = new System.Drawing.Size(164, 22);
             this.PropertiesMenu.Text = "Properties";
+            this.PropertiesMenu.Click += new System.EventHandler(this.PropertiesMenu_Click);
             // 
             // menuItem7
             // 
@@ -1254,7 +1255,7 @@ namespace OSGeo.MapGuide.Maestro
             }
 
 			//TODO: Implement the properties dialog
-			PropertiesMenu.Enabled = false;
+            PropertiesMenu.Enabled = ResourceTree.SelectedNode != null;
 			PasteMenu.Enabled =  (ResourceTree.SelectedNode != null && m_clipboardBuffer != null);
 			NewMenu.Enabled = true;
 		}
@@ -2173,8 +2174,25 @@ namespace OSGeo.MapGuide.Maestro
 
         private void modifyPackageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(this, "This feature is not yet implemented", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             PackageManager.PackageEditor.EditPackage(m_connection, this);
+        }
+
+        private void PropertiesMenu_Click(object sender, EventArgs e)
+        {
+            if (ResourceTree.SelectedNode == null)
+                return;
+
+            string resid = null;
+            if (ResourceTree.SelectedNode.Tag as MaestroAPI.ResourceListResourceDocument != null)
+                resid = (ResourceTree.SelectedNode.Tag as MaestroAPI.ResourceListResourceDocument).ResourceId;
+            else if (ResourceTree.SelectedNode.Tag as MaestroAPI.ResourceListResourceFolder != null)
+                resid = (ResourceTree.SelectedNode.Tag as MaestroAPI.ResourceListResourceFolder).ResourceId;
+
+            if (resid == null)
+                return;
+
+            ResourceProperties dlg = new ResourceProperties(m_connection, resid);
+            dlg.ShowDialog(this);
         }
 	}
 }

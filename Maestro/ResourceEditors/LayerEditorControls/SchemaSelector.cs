@@ -75,14 +75,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 					Schema.Items.Clear();
 
 					foreach(OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription.FeatureSourceSchema scm in m_schemas.Schemas)
-						Schema.Items.Add(scm.Fullname);
+						Schema.Items.Add(OSGeo.MapGuide.MaestroAPI.Utility.DecodeFDOName(scm.Fullname));
 
 					string schemaName = "";
 					if (m_layer.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType != null)
-						schemaName = (m_layer.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType).FeatureName;
+						schemaName =  (m_layer.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType).FeatureName;
 					else if (m_layer.Item as OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType != null)
 						schemaName = (m_layer.Item as OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType).FeatureName;
 
+                    schemaName = OSGeo.MapGuide.MaestroAPI.Utility.DecodeFDOName(schemaName);
 					Schema.SelectedIndex = Schema.FindString(schemaName);
 
 					if (Schema.Items.Count > 0 && (Schema.Text != schemaName || Schema.SelectedIndex < 0))
@@ -295,7 +296,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 					return null;
 
 				foreach(OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription.FeatureSourceSchema scm in m_schemas.Schemas)
-					if (scm.Fullname == Schema.Text)
+					if (scm.FullnameDecoded == Schema.Text)
 						return scm;
 
 				return null;

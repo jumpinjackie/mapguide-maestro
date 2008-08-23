@@ -222,6 +222,12 @@
     <Compile Include="ResourceEditorMap.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ResourceProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResourceProperties.Designer.cs">
+      <DependentUpon>ResourceProperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,6 +300,10 @@
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResourceProperties.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ResourceProperties.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>

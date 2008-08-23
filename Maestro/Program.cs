@@ -44,6 +44,9 @@ namespace OSGeo.MapGuide.Maestro
 			System.Xml.Serialization.XmlSerializer xs3 = new System.Xml.Serialization.XmlSerializer(typeof(OSGeo.MapGuide.MaestroAPI.MapDefinition));
 			System.Xml.Serialization.XmlSerializer xs4 = new System.Xml.Serialization.XmlSerializer(typeof(OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.ApplicationDefinitionType));*/
 
+            //MaestroAPI.Utility.DecodeFDOName("px-y-dot-g-x32-");
+            //MaestroAPI.Utility.DecodeFDOName("-x35-px-y-dot-g-x32-");
+
 			try
 			{
 				Application.EnableVisualStyles();

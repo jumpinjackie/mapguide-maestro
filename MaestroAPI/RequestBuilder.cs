@@ -931,6 +931,37 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return m_hosturi + "?" + EncodeParameters(param);
 		}
 
+        public string EnumerateUsers(string group)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "ENUMERATEUSERS");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("FORMAT", "text/xml");
+
+            if (!string.IsNullOrEmpty(group))
+                param.Add("GROUP", group);
+
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
+        public string EnumerateGroups()
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "ENUMERATEGROUPS");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("FORMAT", "text/xml");
+
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
         public string GetLegendImage(double scale, string layerdef, int themeIndex, int type)
         {
             NameValueCollection param = new NameValueCollection();

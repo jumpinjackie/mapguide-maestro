@@ -555,5 +555,45 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return string.Format("{0} bytes", size);
         }
 
-	}
+        private static System.Text.RegularExpressions.Regex EncRegExp = new System.Text.RegularExpressions.Regex(@"(\-x[0-9][0-9]\-)|(\-dot\-)|(\-colon\-)", System.Text.RegularExpressions.RegexOptions.Compiled);
+
+        /// <summary>
+        /// Converts FDO encoded characters into their original character.
+        /// Encoded characters have the form -x00-.
+        /// </summary>
+        /// <param name="name">The FDO encoded string</param>
+        /// <returns>The unencoded version of the string</returns>
+        public static string DecodeFDOName(string name)
+        {
+            System.Text.RegularExpressions.Match m = EncRegExp.Match(name);
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            int previndex = 0;
+
+            while (m != null && m.Success)
+            {
+                string replaceval;
+                if (m.Value == "-dot-")
+                    replaceval = ".";
+                else if (m.Value == "-colon-")
+                    replaceval = ":";
+                else
+                    replaceval = ((char)int.Parse(m.Value.Substring(2, 2), System.Globalization.NumberStyles.HexNumber)).ToString();
+
+                sb.Append(name.Substring(previndex, m.Index - previndex));
+                sb.Append(replaceval);
+                previndex = m.Index + m.Value.Length;
+
+                m = m.NextMatch();
+            }
+
+            if (sb.Length == 0)
+                return name;
+            else
+            {
+                sb.Append(name.Substring(previndex));
+                return sb.ToString();
+            }
+        }
+
+    }
 }
