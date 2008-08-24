@@ -34,7 +34,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 		protected const int ClassId = 11500; //30500;
 		protected double[] m_center = new double[2];
 		protected double m_scale;
-		protected string m_resourceID;
+		protected ResourceIdentifier m_resourceID;
 
 		protected new RuntimeMapLayerCollection m_mapLayer;
 		protected new RuntimeMapGroupCollection m_mapLayerGroup;
@@ -418,7 +418,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 			set { m_layersGroupBlob = value; }
 		}
 
-		public string ResourceID
+		public ResourceIdentifier ResourceID
 		{
 			get { return m_resourceID; }
 			set { m_resourceID = value; }

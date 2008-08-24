@@ -114,7 +114,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 			if (dlgres != DialogResult.Cancel && sdp.SelectedProvider != null)
 			{
-				string nid = editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource, true);
+			    OSGeo.MapGuide.MaestroAPI.ResourceIdentifier nid = new OSGeo.MapGuide.MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource, m_editor.CurrentConnection.SessionID);
 				m_feature = new OSGeo.MapGuide.MaestroAPI.FeatureSource();
 				m_feature.ResourceId = nid;
 				m_feature.Provider = sdp.SelectedProvider.Name;
@@ -141,7 +141,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			m_editor = editor;
 			m_realid = resourceID;
-			string nid = editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource, true);
+            string nid = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource, m_editor.CurrentConnection.SessionID);
 			editor.CurrentConnection.CopyResource(resourceID, nid, true);
 			m_feature = editor.CurrentConnection.GetFeatureSource(nid);
 			CreateLayout(editor, m_feature);

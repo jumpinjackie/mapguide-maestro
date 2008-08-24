@@ -67,7 +67,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             {
                 if (EnableRestorePath.Checked)
                 {
-                    m_editor.CurrentConnection.ValidateResourceID("Library://" + RestorePath.Text, ResourceTypes.Folder);
+                    ResourceIdentifier.Validate("Library://" + RestorePath.Text, ResourceTypes.Folder);
                     if (string.IsNullOrEmpty(RestorePath.Text))
                         if (MessageBox.Show(this, "You have selected to restore the package at another location, but not entered one\r\nThis will cause the package to be restored a the root of the resource tree.\r\nAre you sure this is what you want?", Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3) != DialogResult.Yes)
                             return;

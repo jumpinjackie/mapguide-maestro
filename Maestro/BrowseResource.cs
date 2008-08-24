@@ -499,7 +499,7 @@ namespace OSGeo.MapGuide.Maestro
             {
                 try
                 {
-                    m_connection.ValidateResourceID(fullpath, OSGeo.MapGuide.MaestroAPI.ResourceTypes.Folder);
+                    MaestroAPI.ResourceIdentifier.Validate(fullpath, OSGeo.MapGuide.MaestroAPI.ResourceTypes.Folder);
                     m_selectedResource = fullpath;
                     this.DialogResult = DialogResult.OK;
                     this.Close();

@@ -175,7 +175,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// </summary>
 		abstract public string SessionID { get; }
 
-		/// <summary>
+		/*/// <summary>
 		/// Builds a resource Identifier, using path info
 		/// </summary>
 		/// <param name="path">The initial absolute path, not including type or repository info, ea. Test/MyResource</param>
@@ -188,17 +188,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 				return "Session:" + SessionID + "//" + path + EnumHelper.ResourceName(type, true);
 			else
 				return "Library://" + path + EnumHelper.ResourceName(type, true);
-		}
-
-		/// <summary>
-		/// Validates a resource identifier. Only validates the string, not the existence of the resource
-		/// </summary>
-		/// <param name="resourceid">The full resource identifier</param>
-		/// <param name="type">The type of resource that is identified</param>
-		virtual public void ValidateResourceID(string resourceid, ResourceTypes type)
-		{
-			
-		}
+		}*/
 
         /// <summary>
         /// Deserializes an object from a stream.
@@ -486,9 +476,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return null;
 		}
 
+
 		public virtual string TestConnection(FeatureSource feature)
 		{
-			string f = GetResourceIdentifier(Guid.NewGuid().ToString(), ResourceTypes.FeatureSource, true);
+			ResourceIdentifier f = new ResourceIdentifier(Guid.NewGuid().ToString(), ResourceTypes.FeatureSource, this.SessionID);
 
 			try
 			{
@@ -1300,6 +1291,12 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 													if (mks.Fill != null)
 													{
+                                                        if (string.IsNullOrEmpty(mks.Fill.BackgroundColorAsHTML))
+                                                            mks.Fill.BackgroundColor = System.Drawing.Color.White;
+                                                        if (string.IsNullOrEmpty(mks.Fill.ForegroundColorAsHTML))
+                                                            mks.Fill.ForegroundColorAsHTML = mks.Fill.BackgroundColorAsHTML;
+                                                        if (string.IsNullOrEmpty(mks.Fill.FillPattern))
+                                                            mks.Fill.FillPattern = "Solid";
 													}
 
                                                     if (!mks.InsertionPointXSpecified)
@@ -1548,7 +1545,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			set { m_disableValidation = value; }
 		}
 
-		/// <summary>
+		/*/// <summary>
 		/// Gets the name of a resource, given its identifier
 		/// </summary>
 		/// <param name="identifier">The identifier to look for</param>
@@ -1556,7 +1553,6 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>The name of the resource</returns>
 		public string GetResourceName(string identifier, bool includePath)
 		{
-
 			int begin;
 			if (includePath)
 			{
@@ -1577,7 +1573,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			if (end < begin)
 				throw new Exception("Not valid identifier");
 			return identifier.Substring(begin, end - begin);
-		}
+		}*/
 
 		/// <summary>
 		/// Gets or sets a value indicating if the session should automatically be restarted if it expires
@@ -1740,5 +1736,26 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>The list of groups</returns>
         abstract public GroupList EnumerateGroups();
 
-	}
+        /// <summary>
+        /// Creates a runtime map on the server. 
+        /// The map name will be the name of the resource, without path information.
+        /// This is equivalent to the way the AJAX viewer creates the runtime map.
+        /// </summary>
+        /// <param name="resourceID">The mapDefinition resource id</param>
+        public virtual void CreateRuntimeMap(string resourceID)
+        {
+            ResourceIdentifier.Validate(resourceID, ResourceTypes.MapDefinition);
+            ResourceIdentifier ri = new ResourceIdentifier(resourceID);
+            ri.Path = ri.Name;
+            ri.Extension = EnumHelper.ResourceName(ResourceTypes.RuntimeMap);
+            CreateRuntimeMap(ri, resourceID);
+        }
+
+        /// <summary>
+        /// Creates a runtime map on the server
+        /// </summary>
+        /// <param name="resourceID">The target resource id for the runtime map</param>
+        /// <param name="mapdefinition">The mapdefinition to base the map on</param>
+        abstract public void CreateRuntimeMap(string resourceID, string mapdefinition);
+    }
 }

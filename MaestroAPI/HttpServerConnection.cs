@@ -293,7 +293,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public override byte[] GetResourceXmlData(string resourceID)
 		{
-			ValidateResourceID(resourceID, ResourceTypes.FeatureSource);
+			ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
 			string req = m_reqBuilder.GetResourceContent(resourceID);
 			System.IO.MemoryStream ms = new System.IO.MemoryStream();
 			using(System.IO.Stream s = this.OpenRead(req))
@@ -322,7 +322,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public System.IO.Stream GetMapDWF(string resourceID)
 		{
-			ValidateResourceID(resourceID, ResourceTypes.MapDefinition);
+			ResourceIdentifier.Validate(resourceID, ResourceTypes.MapDefinition);
 
 			string req = m_reqBuilder.GetMapDWF(resourceID);
 			return this.OpenRead(req);
@@ -442,7 +442,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		public FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns)
 		{
 			//The request may execeed the url limit of the server, especially when using GeomFromText('...')
-			ValidateResourceID(resourceID, ResourceTypes.FeatureSource);
+			ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
 			System.IO.MemoryStream ms = new System.IO.MemoryStream();
 			System.Net.WebRequest req = m_reqBuilder.SelectFeatures(resourceID, schema, query, columns, ms);
 			req.Timeout = 200 * 1000;
@@ -469,7 +469,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		{
 			if (schema != null && schema.IndexOf(":") > 0)
 				schema = schema.Substring(0, schema.IndexOf(":"));
-			ValidateResourceID(resourceID, ResourceTypes.FeatureSource);
+			ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
 			string req = m_reqBuilder.DescribeSchema(resourceID, schema);
 
 			return new FeatureSourceDescription(this.OpenRead(req));
@@ -480,9 +480,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// </summary>
 		/// <param name="resourceID">The target resource id for the runtime map</param>
 		/// <param name="mapdefinition">The mapdefinition to base the map on</param>
-		public void CreateRuntimeMap(string resourceID, string mapdefinition)
+		public override void CreateRuntimeMap(string resourceID, string mapdefinition)
 		{
-			ValidateResourceID(resourceID, ResourceTypes.RuntimeMap);
+			ResourceIdentifier.Validate(resourceID, ResourceTypes.RuntimeMap);
 			MapDefinition map = this.GetMapDefinition(mapdefinition);
 			CreateRuntimeMap(resourceID, map);
 		}
@@ -494,7 +494,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="map">The mapdefinition to base the map on</param>
 		public void CreateRuntimeMap(string resourceID, MapDefinition map)
 		{
-			ValidateResourceID(resourceID, ResourceTypes.RuntimeMap);
+            ResourceIdentifier.Validate(resourceID, ResourceTypes.RuntimeMap);
 			RuntimeClasses.RuntimeMap m = new RuntimeClasses.RuntimeMap(map);
 			CreateRuntimeMap(resourceID, m);
 		}
@@ -506,7 +506,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="map">The mapdefinition to base the map on</param>
 		public void CreateRuntimeMap(string resourceID, RuntimeClasses.RuntimeMap map)
 		{
-			ValidateResourceID(resourceID, ResourceTypes.RuntimeMap);
+            ResourceIdentifier.Validate(resourceID, ResourceTypes.RuntimeMap);
 			string selectionID = resourceID.Substring(0, resourceID.LastIndexOf(".")) + ".Selection";
 			SetResourceXmlData(resourceID, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_XML)));
 			SetResourceXmlData(selectionID, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_SELECTION_XML)));
@@ -527,7 +527,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="map">The runtime map to update with</param>
 		public void SaveRuntimeMap(string resourceID, RuntimeClasses.RuntimeMap map)
 		{
-			ValidateResourceID(resourceID, ResourceTypes.RuntimeMap);
+            ResourceIdentifier.Validate(resourceID, ResourceTypes.RuntimeMap);
 			if (!resourceID.StartsWith("Session:" + this.m_reqBuilder.SessionID + "//") || !resourceID.EndsWith(".Map"))
 				throw new Exception("Runtime maps must be in the current session repository");
 
@@ -745,7 +745,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi)
 		{
-			ValidateResourceID(resourceId, ResourceTypes.RuntimeMap);
+            ResourceIdentifier.Validate(resourceId, ResourceTypes.RuntimeMap);
 			string mapname = resourceId.Substring(resourceId.IndexOf("//") + 2);
 			mapname = mapname.Substring(0, mapname.LastIndexOf("."));
 #if DEBUG
@@ -1059,7 +1059,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="selectionXml">The selection xml</param>
 		public override void SetSelectionXml(string runtimeMap, string selectionXml)
 		{
-			ValidateResourceID(runtimeMap, ResourceTypes.RuntimeMap);
+            ResourceIdentifier.Validate(runtimeMap, ResourceTypes.RuntimeMap);
 			string selectionID = runtimeMap.Substring(0, runtimeMap.LastIndexOf(".")) + ".Selection";
 			//Assumes the runtime map is created, and has the selection resource
 			//SetResourceXmlData(selectionID, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_SELECTION_XML)));
@@ -1079,7 +1079,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>The selection xml</returns>
 		public override string GetSelectionXml(string runtimeMap)
 		{
-			ValidateResourceID(runtimeMap, ResourceTypes.RuntimeMap);
+            ResourceIdentifier.Validate(runtimeMap, ResourceTypes.RuntimeMap);
 			string selectionID = runtimeMap.Substring(0, runtimeMap.LastIndexOf(".")) + ".Selection";
 			System.IO.MemoryStream ms = GetResourceData(selectionID, "RuntimeData");
 			BinarySerializer.MgBinaryDeserializer deserializer = new BinarySerializer.MgBinaryDeserializer(ms, m_siteVersion);
@@ -1182,7 +1182,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public override ResourceFolderHeaderType GetFolderHeader(string resourceID)
         {
-			ValidateResourceID(resourceID, ResourceTypes.Folder);
+            ResourceIdentifier.Validate(resourceID, ResourceTypes.Folder);
 			string req = m_reqBuilder.GetResourceHeader(resourceID);
 			System.IO.MemoryStream ms = new System.IO.MemoryStream();
 			using(System.IO.Stream s = this.OpenRead(req))

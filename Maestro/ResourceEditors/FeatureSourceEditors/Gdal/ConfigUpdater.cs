@@ -172,7 +172,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 
 					try
 					{
-						string tempname = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource, true);
+                        string tempname = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource, m_editor.CurrentConnection.SessionID);
 						OSGeo.MapGuide.MaestroAPI.FeatureSource fs = new OSGeo.MapGuide.MaestroAPI.FeatureSource();
 						fs.CurrentConnection = m_editor.CurrentConnection;
 						fs.Provider = m_feature.Provider;

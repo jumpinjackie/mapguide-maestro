@@ -1381,13 +1381,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				RasterViewer.PreviewMap pv = new RasterViewer.PreviewMap(m_editor.CurrentConnection, id);
 				pv.ShowDialog(this);*/
 
-                string tempmap = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, true);
+                string tempmap = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, m_editor.CurrentConnection.SessionID);
 
                 m_editor.CurrentConnection.SaveResourceAs(m_map, tempmap);
 
                 if (m_editor.UseFusionPreview)
                 {
-                    string templayout = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition, true);
+                    string templayout = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition, m_editor.CurrentConnection.SessionID);
 
                     MaestroAPI.ApplicationDefinition.ApplicationDefinitionType layout;
                     if (System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, "Preview layout.ApplicationDefinition")))
@@ -1440,7 +1440,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 }
                 else
                 {
-                    string templayout = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, true); MaestroAPI.WebLayout layout;
+                    string templayout = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, m_editor.CurrentConnection.SessionID); 
+                    MaestroAPI.WebLayout layout;
 
                     if (System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, "Preview layout.WebLayout")))
                     {

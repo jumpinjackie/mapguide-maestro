@@ -356,8 +356,8 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
         public static string CreateFolderForResource(ServerConnectionI connection, string resourceId, string temppath)
         {
-            string filebase = connection.GetResourceName(resourceId, false);
-            string folder = "Library/" + connection.GetResourceName(resourceId, true);
+            string filebase = new MaestroAPI.ResourceIdentifier(resourceId).Name;
+            string folder = "Library/" + new MaestroAPI.ResourceIdentifier(resourceId).Path;
             folder = folder.Substring(0, folder.Length - filebase.Length);
             filebase += resourceId.Substring(resourceId.LastIndexOf('.'));
 

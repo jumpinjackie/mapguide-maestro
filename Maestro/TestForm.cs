@@ -194,7 +194,7 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void button3_Click(object sender, System.EventArgs e)
 		{
-			string resid = m_con.GetResourceIdentifier(textBox4.Text, OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, false);
+			string resid = new MaestroAPI.ResourceIdentifier(textBox4.Text, OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition);
 			OSGeo.MapGuide.MaestroAPI.MapDefinition m = m_con.GetMapDefinition(resid);
 
 			listBox1.Items.Clear();

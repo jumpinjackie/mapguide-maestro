@@ -121,7 +121,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		{
 			m_editor = editor;
 			m_appDef = new OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.ApplicationDefinitionType();
-			m_tempResource = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition, true);
+            m_tempResource = new ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition, m_editor.CurrentConnection.SessionID);
 			UpdateDisplay();
 		}
 
@@ -130,7 +130,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		{
 			m_editor = editor;
 			m_appDef = m_editor.CurrentConnection.GetApplicationDefinition(resourceID);
-			m_tempResource = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition, true);
+            m_tempResource = new ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition, m_editor.CurrentConnection.SessionID);
 			UpdateDisplay();
 		}
 

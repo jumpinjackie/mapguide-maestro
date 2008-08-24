@@ -344,7 +344,7 @@ namespace OSGeo.MapGuide.Maestro.RasterViewer
 
 			if (resourceId.EndsWith(".MapDefinition"))
 			{
-				m_currentmap = m_connection.GetResourceIdentifier(Guid.NewGuid().ToString(),  ResourceTypes.RuntimeMap, true);
+				m_currentmap = new ResourceIdentifier(Guid.NewGuid().ToString(),  ResourceTypes.RuntimeMap, m_connection.SessionID);
 				MapDefinition m = m_connection.GetMapDefinition(resourceId);
 				r = new RuntimeMap(m);
 				m_connection.CreateRuntimeMap(m_currentmap, r);

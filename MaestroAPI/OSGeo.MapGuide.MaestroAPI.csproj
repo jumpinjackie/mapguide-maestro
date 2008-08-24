@@ -287,6 +287,7 @@
     <Compile Include="RequestBuilder.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ResourceIdentifier.cs" />
     <Compile Include="RuntimeClasses\RuntimeMap.cs">
       <SubType>Code</SubType>
     </Compile>

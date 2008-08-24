@@ -467,9 +467,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			try
 			{
-                string templayer = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefiniton, true);
+                string templayer = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefiniton, m_editor.CurrentConnection.SessionID);
 
-                string tempmap = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, true);
+                string tempmap = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, m_editor.CurrentConnection.SessionID);
 
 
                 MaestroAPI.MapDefinition map = new OSGeo.MapGuide.MaestroAPI.MapDefinition();
@@ -494,7 +494,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 if (string.IsNullOrEmpty(m_layer.ResourceId))
                     l.LegendLabel = "Layer";
                 else
-                    l.LegendLabel = m_editor.CurrentConnection.GetResourceName(m_layer.ResourceId, false);
+                    l.LegendLabel = new MaestroAPI.ResourceIdentifier(m_layer.ResourceId).Name;
                 l.Name = l.LegendLabel;
                 l.ResourceId = templayer;
                 map.Layers = new OSGeo.MapGuide.MaestroAPI.MapLayerTypeCollection();
@@ -505,7 +505,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
                 if (m_editor.UseFusionPreview)
                 {
-                    string templayout = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition, true);
+                    string templayout = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition, m_editor.CurrentConnection.SessionID);
                     
                     MaestroAPI.ApplicationDefinition.ApplicationDefinitionType layout;
                     if (System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, "Preview layout.ApplicationDefinition")))
@@ -559,7 +559,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 }
                 else
                 {
-                    string templayout = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, true);
+                    string templayout = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, m_editor.CurrentConnection.SessionID);
 
                     MaestroAPI.WebLayout layout;
                     if (System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, "Preview layout.WebLayout")))

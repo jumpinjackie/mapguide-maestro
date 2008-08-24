@@ -232,9 +232,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return new FeatureSourceDescription(ms);
 		}
 
-		public void CreateRuntimeMap(string resourceID, string mapdefinition)
+		public override void CreateRuntimeMap(string resourceID, string mapdefinition)
 		{
-			string mapname = this.GetResourceName(resourceID, true);
+            string mapname = new ResourceIdentifier(resourceID).Path;
 			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			MgMap map = new MgMap();
 			map.Create(res, new MgResourceIdentifier(mapdefinition), mapname);
@@ -247,7 +247,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		void OSGeo.MapGuide.MaestroAPI.ServerConnectionI.CreateRuntimeMap(string resourceID, MapDefinition map)
 		{
-			string guid = base.GetResourceIdentifier(Guid.NewGuid().ToString(), ResourceTypes.MapDefinition, true);
+			ResourceIdentifier guid = new ResourceIdentifier(Guid.NewGuid().ToString(), ResourceTypes.MapDefinition, this.SessionID);
 			try
 			{
 				SaveResourceAs(map, guid);
@@ -262,7 +262,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		void OSGeo.MapGuide.MaestroAPI.ServerConnectionI.CreateRuntimeMap(string resourceID, OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMap map)
 		{
-			ValidateResourceID(resourceID, ResourceTypes.RuntimeMap);
+            if (!ResourceIdentifier.Validate(resourceID, ResourceTypes.RuntimeMap))
+                throw new ArgumentException("Invalid resourceId", "resourceID");
+
 			string selectionID = resourceID.Substring(0, resourceID.LastIndexOf(".")) + ".Selection";
 			SetResourceXmlData(resourceID, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(HttpServerConnection.RUNTIMEMAP_XML)));
 			SetResourceXmlData(selectionID, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(HttpServerConnection.RUNTIMEMAP_SELECTION_XML)));
@@ -422,7 +424,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			MgGeometryFactory gf = new MgGeometryFactory();
 
-			string mapname = this.GetResourceName(resourceId, true);
+			string mapname = new ResourceIdentifier(resourceId).Path;
 
 			MgMap map = new MgMap();
 			map.Open(res, mapname);
@@ -556,10 +558,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="selectionXml">The selection xml</param>
 		public override void SetSelectionXml(string runtimeMap, string selectionXml)
 		{
-			ValidateResourceID(runtimeMap, ResourceTypes.RuntimeMap);
+			ResourceIdentifier.Validate(runtimeMap, ResourceTypes.RuntimeMap);
 			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			MgMap map = new MgMap();
-			string mapname = this.GetResourceName(runtimeMap, true);
+            string mapname = new ResourceIdentifier(runtimeMap).Path;
 			map.Open(res, mapname);
 			MgSelection sel = new MgSelection(map, selectionXml);
 			sel.Save(res, mapname);
@@ -574,7 +576,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		{
 			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			MgMap map = new MgMap();
-			string mapname = this.GetResourceName(runtimeMap, true);
+            string mapname = new ResourceIdentifier(runtimeMap).Path;
 			map.Open(res, mapname);
 			MgSelection sel = new MgSelection(map);
 			return sel.ToXml();
@@ -598,7 +600,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             MgRenderingService rs = this.Con.CreateService(MgServiceType.RenderingService) as MgRenderingService;
 			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			MgMap map = new MgMap();
-			string mapname = runtimemap.IndexOf(":") > 0 ? this.GetResourceName(runtimemap, true) : runtimemap;
+			string mapname = runtimemap.IndexOf(":") > 0 ? new ResourceIdentifier(runtimemap).Path : runtimemap;
 			map.Open(res, mapname);
 
             MgWktReaderWriter r = new MgWktReaderWriter();

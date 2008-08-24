@@ -160,7 +160,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			m_editor = editor;
 			m_layout = new OSGeo.MapGuide.MaestroAPI.WebLayout();
-			m_tempResource = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, true);
+            m_tempResource = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, m_editor.CurrentConnection.SessionID);
 			UpdateDisplay();
 		}
 
@@ -169,7 +169,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			m_editor = editor;
 			m_layout = editor.CurrentConnection.GetWebLayout(resourceID);
-			m_tempResource = m_editor.CurrentConnection.GetResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, true);
+            m_tempResource = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, m_editor.CurrentConnection.SessionID);
 			UpdateDisplay();
 		}
 

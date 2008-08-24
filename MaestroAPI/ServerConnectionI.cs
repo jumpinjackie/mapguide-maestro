@@ -53,21 +53,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// </summary>
 		void DescribeSchema();
 
-		/// <summary>
-		/// Builds a resource Identifier, using path info
-		/// </summary>
-		/// <param name="path">The initial absolute path, not including type or repository info, ea. Test/MyResource</param>
-		/// <param name="type">The type of the resource</param>
-		/// <param name="fromSession">True if the item is found in the session</param>
-		/// <returns>A string representing the resource identifier</returns>
-		string GetResourceIdentifier(string path, ResourceTypes type,  bool fromSession);
 
-		/// <summary>
-		/// Validates a resource identifier. Only validates the string, not the existence of the resource
-		/// </summary>
-		/// <param name="resourceid">The full resource identifier</param>
-		/// <param name="type">The type of resource that is identified</param>
-		void ValidateResourceID(string resourceid, ResourceTypes type);
 		OSGeo.MapGuide.MaestroAPI.WebLayout GetWebLayout(string resourceID);
 		OSGeo.MapGuide.MaestroAPI.MapDefinition GetMapDefinition(string resourceID);
 		OSGeo.MapGuide.MaestroAPI.LayerDefinition GetLayerDefinition(string resourceID);
@@ -111,7 +97,15 @@ namespace OSGeo.MapGuide.MaestroAPI
         void SetFolderHeader(string resourceID, ResourceFolderHeaderType header);
         void SetResourceHeader(string resourceID, ResourceDocumentHeaderType header);
 
-		/// <summary>
+        /// <summary>
+        /// Creates a runtime map on the server. 
+        /// The map name will be the name of the resource, without path information.
+        /// This is equivalent to the way the AJAX viewer creates the runtime map.
+        /// </summary>
+        /// <param name="resourceID">The mapDefinition resource id</param>
+        void CreateRuntimeMap(string resourceID);
+        
+        /// <summary>
 		/// Creates a runtime map on the server
 		/// </summary>
 		/// <param name="resourceID">The target resource id for the runtime map</param>
@@ -259,14 +253,6 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="classname">The classname of the feature, including schema</param>
 		/// <returns>A string array with the found identities</returns>
 		string[] GetIdentityProperties(string resourceID, string classname);
-
-		/// <summary>
-		/// Gets the name of a resource, given its identifier
-		/// </summary>
-		/// <param name="identifier">The identifier to look for</param>
-		/// <param name="includePath">True if path information should be include, false otherwise</param>
-		/// <returns>The name of the resource</returns>
-		string GetResourceName(string identifier, bool includePath);
 
 		/// <summary>
 		/// Restarts the server session, and creates a new session ID

@@ -47,6 +47,13 @@ namespace OSGeo.MapGuide.Maestro
             //MaestroAPI.Utility.DecodeFDOName("px-y-dot-g-x32-");
             //MaestroAPI.Utility.DecodeFDOName("-x35-px-y-dot-g-x32-");
 
+            /*MaestroAPI.ResourceIdentifier id = new OSGeo.MapGuide.MaestroAPI.ResourceIdentifier("test/f", OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefiniton);
+            string x = id;
+            id = "Library://ff/yy/test.MapDefinition";
+            id.Extension = ".Map";
+            id.Name = "zz";
+            id.Fullpath = "xx/tt";*/
+
 			try
 			{
 				Application.EnableVisualStyles();
