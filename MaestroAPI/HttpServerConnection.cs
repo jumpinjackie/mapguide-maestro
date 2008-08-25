@@ -759,9 +759,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 			{
 				Utility.CopyStream(ms, rs);
 				rs.Flush();
+				return req.GetResponse().GetResponseStream();
 			}
 
-			return req.GetResponse().GetResponseStream();
 #endif
 		}
 
