@@ -261,7 +261,48 @@ namespace OSGeo.MapGuide.MaestroAPI {
                 base.InnerList[idx] = value;
             }
         }
-        
+
+        public string this[string idx]
+        {
+            get
+            {
+                int x = Find(idx);
+                if (x >= 0)
+                    return ((ResourceDocumentHeaderTypeMetadataSimpleProperty)base.InnerList[x]).Value;
+                else
+                    return null;
+            }
+            set
+            {
+                int x = Find(idx);
+                if (x >= 0)
+                {
+                    if (value == null)
+                        base.InnerList.RemoveAt(x);
+                    else
+                        ((ResourceDocumentHeaderTypeMetadataSimpleProperty)base.InnerList[x]).Value = value;
+                }
+                else
+                {
+                    if (value != null)
+                    {
+                        ResourceDocumentHeaderTypeMetadataSimpleProperty p = new ResourceDocumentHeaderTypeMetadataSimpleProperty();
+                        p.Name = idx;
+                        p.Value = value;
+                        base.InnerList.Add(p);
+                    }
+                }   
+            }
+        }
+
+        public int Find(string x)
+        {
+            for (int i = 0; i < base.InnerList.Count; i++)
+                if (((ResourceDocumentHeaderTypeMetadataSimpleProperty)base.InnerList[i]).Name.ToLower().Equals(x.ToLower()))
+                    return i;
+            return -1;
+        }
+
         public int Add(ResourceDocumentHeaderTypeMetadataSimpleProperty value) {
             return base.InnerList.Add(value);
         }

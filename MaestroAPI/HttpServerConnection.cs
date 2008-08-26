@@ -754,7 +754,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 #else
 			System.IO.MemoryStream ms = new System.IO.MemoryStream();
 			System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, "PNG", null, x, y, scale, dpi, width, height, null, null, null, null, ms);
-			
+            
+            //Maksim reported that the rendering times out frequently, so now we wait 5 minutes
+            req.Timeout = 5 * 60 * 1000;
+
 			using(System.IO.Stream rs = req.GetRequestStream())
 			{
 				Utility.CopyStream(ms, rs);

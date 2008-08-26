@@ -555,7 +555,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return string.Format("{0} bytes", size);
         }
 
-        private static System.Text.RegularExpressions.Regex EncRegExp = new System.Text.RegularExpressions.Regex(@"(\-x[0-9][0-9]\-)|(\-dot\-)|(\-colon\-)", System.Text.RegularExpressions.RegexOptions.Compiled);
+        private static System.Text.RegularExpressions.Regex EncRegExp = new System.Text.RegularExpressions.Regex(@"(\-x([0-9]|[a-e]|[A-E])([0-9]|[a-e]|[A-E])\-)|(\-dot\-)|(\-colon\-)", System.Text.RegularExpressions.RegexOptions.Compiled);
 
         /// <summary>
         /// Converts FDO encoded characters into their original character.
