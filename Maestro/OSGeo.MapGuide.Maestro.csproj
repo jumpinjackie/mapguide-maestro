@@ -102,6 +102,7 @@
     <Reference Include="System.Drawing">
       <Name>System.Drawing</Name>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms">
       <Name>System.Windows.Forms</Name>
     </Reference>
@@ -147,6 +148,12 @@
     </Compile>
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoundsPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BoundsPicker.Designer.cs">
+      <DependentUpon>BoundsPicker.cs</DependentUpon>
     </Compile>
     <Compile Include="BrowseResource.cs">
       <SubType>Form</SubType>
@@ -243,6 +250,10 @@
     <EmbeddedResource Include="ApplicationSettings.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ApplicationSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoundsPicker.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BoundsPicker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BrowseResource.resx">
       <DependentUpon>BrowseResource.cs</DependentUpon>

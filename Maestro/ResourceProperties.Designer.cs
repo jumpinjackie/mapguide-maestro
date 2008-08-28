@@ -37,11 +37,18 @@ namespace OSGeo.MapGuide.Maestro
             this.SecurityTab = new System.Windows.Forms.TabPage();
             this.UseInherited = new System.Windows.Forms.CheckBox();
             this.UsersAndGroups = new System.Windows.Forms.ListView();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.securityContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.readWriteAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.readOnlyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.denyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserAndGroupImages = new System.Windows.Forms.ImageList(this.components);
             this.WMSTab = new System.Windows.Forms.TabPage();
             this.WMSClearHeaderButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.EditWMSBounds = new System.Windows.Forms.Button();
             this.WMSBounds = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.WMSOpaque = new System.Windows.Forms.CheckBox();
@@ -57,8 +64,16 @@ namespace OSGeo.MapGuide.Maestro
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.WFSTab = new System.Windows.Forms.TabPage();
-            this.CustomTab = new System.Windows.Forms.TabPage();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.WFSClearHeaderButton = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.WFSOtherSRS = new System.Windows.Forms.ComboBox();
+            this.WFSPrimarySRS = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.EditWFSBounds = new System.Windows.Forms.Button();
+            this.WFSBounds = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.WFSAvalible = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.WFSMetadata = new System.Windows.Forms.TextBox();
             this.WFSAbstract = new System.Windows.Forms.TextBox();
@@ -68,30 +83,24 @@ namespace OSGeo.MapGuide.Maestro
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.WFSBounds = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.WFSAvalible = new System.Windows.Forms.CheckBox();
-            this.WFSPrimarySRS = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.WFSOtherSRS = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.WFSClearHeaderButton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CustomTab = new System.Windows.Forms.TabPage();
             this.ClearHeaderButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ItemKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.inheritedAccessRightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SecurityTab.SuspendLayout();
+            this.securityContextMenu.SuspendLayout();
             this.WMSTab.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.WFSTab.SuspendLayout();
-            this.CustomTab.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.CustomTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,6 +117,7 @@ namespace OSGeo.MapGuide.Maestro
             // CancelBtn
             // 
             this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelBtn.Location = new System.Drawing.Point(183, 8);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(75, 23);
@@ -124,6 +134,7 @@ namespace OSGeo.MapGuide.Maestro
             this.OKBtn.TabIndex = 0;
             this.OKBtn.Text = "OK";
             this.OKBtn.UseVisualStyleBackColor = true;
+            this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
             // 
             // tabControl1
             // 
@@ -167,14 +178,68 @@ namespace OSGeo.MapGuide.Maestro
             this.UsersAndGroups.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.UsersAndGroups.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.UsersAndGroups.ContextMenuStrip = this.securityContextMenu;
             this.UsersAndGroups.Enabled = false;
+            this.UsersAndGroups.FullRowSelect = true;
             this.UsersAndGroups.Location = new System.Drawing.Point(16, 40);
             this.UsersAndGroups.Name = "UsersAndGroups";
-            this.UsersAndGroups.Size = new System.Drawing.Size(320, 240);
+            this.UsersAndGroups.Size = new System.Drawing.Size(320, 312);
             this.UsersAndGroups.SmallImageList = this.UserAndGroupImages;
             this.UsersAndGroups.TabIndex = 0;
+            this.toolTip.SetToolTip(this.UsersAndGroups, "Right click to change access rights");
             this.UsersAndGroups.UseCompatibleStateImageBehavior = false;
-            this.UsersAndGroups.View = System.Windows.Forms.View.List;
+            this.UsersAndGroups.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Name";
+            this.columnHeader1.Width = 88;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Description";
+            this.columnHeader2.Width = 104;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Access";
+            this.columnHeader3.Width = 93;
+            // 
+            // securityContextMenu
+            // 
+            this.securityContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.readWriteAccessToolStripMenuItem,
+            this.readOnlyAccessToolStripMenuItem,
+            this.denyAccessToolStripMenuItem,
+            this.inheritedAccessRightsToolStripMenuItem});
+            this.securityContextMenu.Name = "securityContextMenu";
+            this.securityContextMenu.Size = new System.Drawing.Size(195, 92);
+            this.securityContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.securityContextMenu_Opening);
+            // 
+            // readWriteAccessToolStripMenuItem
+            // 
+            this.readWriteAccessToolStripMenuItem.Name = "readWriteAccessToolStripMenuItem";
+            this.readWriteAccessToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.readWriteAccessToolStripMenuItem.Text = "Read write access";
+            this.readWriteAccessToolStripMenuItem.Click += new System.EventHandler(this.readWriteAccessToolStripMenuItem_Click);
+            // 
+            // readOnlyAccessToolStripMenuItem
+            // 
+            this.readOnlyAccessToolStripMenuItem.Name = "readOnlyAccessToolStripMenuItem";
+            this.readOnlyAccessToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.readOnlyAccessToolStripMenuItem.Text = "Read only access";
+            this.readOnlyAccessToolStripMenuItem.Click += new System.EventHandler(this.readOnlyAccessToolStripMenuItem_Click);
+            // 
+            // denyAccessToolStripMenuItem
+            // 
+            this.denyAccessToolStripMenuItem.Name = "denyAccessToolStripMenuItem";
+            this.denyAccessToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.denyAccessToolStripMenuItem.Text = "Deny access";
+            this.denyAccessToolStripMenuItem.Click += new System.EventHandler(this.denyAccessToolStripMenuItem_Click);
             // 
             // UserAndGroupImages
             // 
@@ -186,6 +251,8 @@ namespace OSGeo.MapGuide.Maestro
             this.UserAndGroupImages.Images.SetKeyName(3, "WriteGroup.ico");
             this.UserAndGroupImages.Images.SetKeyName(4, "ReadOnlyGroup.ico");
             this.UserAndGroupImages.Images.SetKeyName(5, "DenyGroup.ico");
+            this.UserAndGroupImages.Images.SetKeyName(6, "InheritedUser.ico");
+            this.UserAndGroupImages.Images.SetKeyName(7, "InheritedGroup.ico");
             // 
             // WMSTab
             // 
@@ -215,7 +282,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.EditWMSBounds);
             this.groupBox2.Controls.Add(this.WMSBounds);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.WMSOpaque);
@@ -228,14 +295,15 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Functionality";
             // 
-            // button1
+            // EditWMSBounds
             // 
-            this.button1.Location = new System.Drawing.Point(304, 96);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 20);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
+            this.EditWMSBounds.Location = new System.Drawing.Point(304, 96);
+            this.EditWMSBounds.Name = "EditWMSBounds";
+            this.EditWMSBounds.Size = new System.Drawing.Size(24, 20);
+            this.EditWMSBounds.TabIndex = 8;
+            this.EditWMSBounds.Text = "...";
+            this.EditWMSBounds.UseVisualStyleBackColor = true;
+            this.EditWMSBounds.Click += new System.EventHandler(this.EditWMSBounds_Click);
             // 
             // WMSBounds
             // 
@@ -402,16 +470,118 @@ namespace OSGeo.MapGuide.Maestro
             this.WFSTab.Text = "WFS";
             this.WFSTab.UseVisualStyleBackColor = true;
             // 
-            // CustomTab
+            // WFSClearHeaderButton
             // 
-            this.CustomTab.Controls.Add(this.ClearHeaderButton);
-            this.CustomTab.Controls.Add(this.dataGridView1);
-            this.CustomTab.Location = new System.Drawing.Point(4, 22);
-            this.CustomTab.Name = "CustomTab";
-            this.CustomTab.Size = new System.Drawing.Size(350, 363);
-            this.CustomTab.TabIndex = 3;
-            this.CustomTab.Text = "Custom Metadata";
-            this.CustomTab.UseVisualStyleBackColor = true;
+            this.WFSClearHeaderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.WFSClearHeaderButton.Location = new System.Drawing.Point(224, 328);
+            this.WFSClearHeaderButton.Name = "WFSClearHeaderButton";
+            this.WFSClearHeaderButton.Size = new System.Drawing.Size(119, 23);
+            this.WFSClearHeaderButton.TabIndex = 11;
+            this.WFSClearHeaderButton.Text = "Clear all WFS data";
+            this.WFSClearHeaderButton.UseVisualStyleBackColor = true;
+            this.WFSClearHeaderButton.Click += new System.EventHandler(this.WFSClearHeaderButton_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.WFSOtherSRS);
+            this.groupBox4.Controls.Add(this.WFSPrimarySRS);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.EditWFSBounds);
+            this.groupBox4.Controls.Add(this.WFSBounds);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.WFSAvalible);
+            this.groupBox4.Location = new System.Drawing.Point(7, 176);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(336, 144);
+            this.groupBox4.TabIndex = 10;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Functionality";
+            // 
+            // WFSOtherSRS
+            // 
+            this.WFSOtherSRS.FormattingEnabled = true;
+            this.WFSOtherSRS.Location = new System.Drawing.Point(88, 72);
+            this.WFSOtherSRS.Name = "WFSOtherSRS";
+            this.WFSOtherSRS.Size = new System.Drawing.Size(240, 21);
+            this.WFSOtherSRS.TabIndex = 14;
+            this.toolTip.SetToolTip(this.WFSOtherSRS, "This field contains a secondary spatial reference system, usually in the format E" +
+                    "PSG:xxxx");
+            this.WFSOtherSRS.TextChanged += new System.EventHandler(this.WFSOtherSRS_TextChanged);
+            // 
+            // WFSPrimarySRS
+            // 
+            this.WFSPrimarySRS.FormattingEnabled = true;
+            this.WFSPrimarySRS.Location = new System.Drawing.Point(88, 48);
+            this.WFSPrimarySRS.Name = "WFSPrimarySRS";
+            this.WFSPrimarySRS.Size = new System.Drawing.Size(240, 21);
+            this.WFSPrimarySRS.TabIndex = 13;
+            this.toolTip.SetToolTip(this.WFSPrimarySRS, "This field contains the primary spatial reference system, usually in the format E" +
+                    "PSG:xxxx");
+            this.WFSPrimarySRS.TextChanged += new System.EventHandler(this.WFSPrimarySRS_TextChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(8, 72);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(58, 13);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Other SRS";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 48);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(66, 13);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Primary SRS";
+            // 
+            // EditWFSBounds
+            // 
+            this.EditWFSBounds.Location = new System.Drawing.Point(304, 96);
+            this.EditWFSBounds.Name = "EditWFSBounds";
+            this.EditWFSBounds.Size = new System.Drawing.Size(24, 20);
+            this.EditWFSBounds.TabIndex = 8;
+            this.EditWFSBounds.Text = "...";
+            this.EditWFSBounds.UseVisualStyleBackColor = true;
+            this.EditWFSBounds.Click += new System.EventHandler(this.EditWFSBounds_Click);
+            // 
+            // WFSBounds
+            // 
+            this.WFSBounds.Location = new System.Drawing.Point(88, 96);
+            this.WFSBounds.Multiline = true;
+            this.WFSBounds.Name = "WFSBounds";
+            this.WFSBounds.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.WFSBounds.Size = new System.Drawing.Size(216, 40);
+            this.WFSBounds.TabIndex = 7;
+            this.toolTip.SetToolTip(this.WFSBounds, "This value is the Xml element bounds, which is inserted directly into the xml out" +
+                    "put. Use the edit button if you are uncomfortable editing the value manually");
+            this.WFSBounds.TextChanged += new System.EventHandler(this.WFSBounds_TextChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 96);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(43, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Bounds";
+            // 
+            // WFSAvalible
+            // 
+            this.WFSAvalible.AutoSize = true;
+            this.WFSAvalible.Location = new System.Drawing.Point(8, 24);
+            this.WFSAvalible.Name = "WFSAvalible";
+            this.WFSAvalible.Size = new System.Drawing.Size(63, 17);
+            this.WFSAvalible.TabIndex = 4;
+            this.WFSAvalible.Text = "Avalible";
+            this.toolTip.SetToolTip(this.WFSAvalible, "This checkbox controls the avalibility of the layer");
+            this.WFSAvalible.UseVisualStyleBackColor = true;
+            this.WFSAvalible.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -508,113 +678,27 @@ namespace OSGeo.MapGuide.Maestro
             this.label9.TabIndex = 2;
             this.label9.Text = "Keywords";
             // 
-            // groupBox4
+            // CustomTab
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.WFSOtherSRS);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.WFSPrimarySRS);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Controls.Add(this.WFSBounds);
-            this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.WFSAvalible);
-            this.groupBox4.Location = new System.Drawing.Point(7, 176);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(336, 144);
-            this.groupBox4.TabIndex = 10;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Functionality";
+            this.CustomTab.Controls.Add(this.ClearHeaderButton);
+            this.CustomTab.Controls.Add(this.dataGridView1);
+            this.CustomTab.Location = new System.Drawing.Point(4, 22);
+            this.CustomTab.Name = "CustomTab";
+            this.CustomTab.Size = new System.Drawing.Size(350, 363);
+            this.CustomTab.TabIndex = 3;
+            this.CustomTab.Text = "Custom Metadata";
+            this.CustomTab.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // ClearHeaderButton
             // 
-            this.button2.Location = new System.Drawing.Point(304, 96);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(24, 20);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "...";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // WFSBounds
-            // 
-            this.WFSBounds.Location = new System.Drawing.Point(88, 96);
-            this.WFSBounds.Multiline = true;
-            this.WFSBounds.Name = "WFSBounds";
-            this.WFSBounds.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.WFSBounds.Size = new System.Drawing.Size(216, 40);
-            this.WFSBounds.TabIndex = 7;
-            this.toolTip.SetToolTip(this.WFSBounds, "This value is the Xml element bounds, which is inserted directly into the xml out" +
-                    "put. Use the edit button if you are uncomfortable editing the value manually");
-            this.WFSBounds.TextChanged += new System.EventHandler(this.WFSBounds_TextChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(8, 96);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 13);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Bounds";
-            // 
-            // WFSAvalible
-            // 
-            this.WFSAvalible.AutoSize = true;
-            this.WFSAvalible.Location = new System.Drawing.Point(8, 24);
-            this.WFSAvalible.Name = "WFSAvalible";
-            this.WFSAvalible.Size = new System.Drawing.Size(63, 17);
-            this.WFSAvalible.TabIndex = 4;
-            this.WFSAvalible.Text = "Avalible";
-            this.toolTip.SetToolTip(this.WFSAvalible, "This checkbox controls the avalibility of the layer");
-            this.WFSAvalible.UseVisualStyleBackColor = true;
-            this.WFSAvalible.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
-            // 
-            // WFSPrimarySRS
-            // 
-            this.WFSPrimarySRS.Location = new System.Drawing.Point(88, 48);
-            this.WFSPrimarySRS.Name = "WFSPrimarySRS";
-            this.WFSPrimarySRS.Size = new System.Drawing.Size(240, 20);
-            this.WFSPrimarySRS.TabIndex = 10;
-            this.toolTip.SetToolTip(this.WFSPrimarySRS, "This field contains the layer title");
-            this.WFSPrimarySRS.TextChanged += new System.EventHandler(this.WFSPrimarySRS_TextChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 48);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(66, 13);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Primary SRS";
-            // 
-            // WFSOtherSRS
-            // 
-            this.WFSOtherSRS.Location = new System.Drawing.Point(88, 72);
-            this.WFSOtherSRS.Name = "WFSOtherSRS";
-            this.WFSOtherSRS.Size = new System.Drawing.Size(240, 20);
-            this.WFSOtherSRS.TabIndex = 12;
-            this.toolTip.SetToolTip(this.WFSOtherSRS, "This field contains the layer title");
-            this.WFSOtherSRS.TextChanged += new System.EventHandler(this.WFSOtherSRS_TextChanged);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(8, 72);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 13);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Other SRS";
-            // 
-            // WFSClearHeaderButton
-            // 
-            this.WFSClearHeaderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.WFSClearHeaderButton.Location = new System.Drawing.Point(224, 328);
-            this.WFSClearHeaderButton.Name = "WFSClearHeaderButton";
-            this.WFSClearHeaderButton.Size = new System.Drawing.Size(119, 23);
-            this.WFSClearHeaderButton.TabIndex = 11;
-            this.WFSClearHeaderButton.Text = "Clear all WFS data";
-            this.WFSClearHeaderButton.UseVisualStyleBackColor = true;
-            this.WFSClearHeaderButton.Click += new System.EventHandler(this.WFSClearHeaderButton_Click);
+            this.ClearHeaderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClearHeaderButton.Location = new System.Drawing.Point(224, 328);
+            this.ClearHeaderButton.Name = "ClearHeaderButton";
+            this.ClearHeaderButton.Size = new System.Drawing.Size(119, 23);
+            this.ClearHeaderButton.TabIndex = 11;
+            this.ClearHeaderButton.Text = "Clear all metadata";
+            this.ClearHeaderButton.UseVisualStyleBackColor = true;
+            this.ClearHeaderButton.Click += new System.EventHandler(this.ClearHeaderButton_Click_1);
             // 
             // dataGridView1
             // 
@@ -629,17 +713,7 @@ namespace OSGeo.MapGuide.Maestro
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(336, 312);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // ClearHeaderButton
-            // 
-            this.ClearHeaderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClearHeaderButton.Location = new System.Drawing.Point(224, 328);
-            this.ClearHeaderButton.Name = "ClearHeaderButton";
-            this.ClearHeaderButton.Size = new System.Drawing.Size(119, 23);
-            this.ClearHeaderButton.TabIndex = 11;
-            this.ClearHeaderButton.Text = "Clear all metadata";
-            this.ClearHeaderButton.UseVisualStyleBackColor = true;
-            this.ClearHeaderButton.Click += new System.EventHandler(this.ClearHeaderButton_Click_1);
+            this.dataGridView1.Leave += new System.EventHandler(this.dataGridView1_Leave);
             // 
             // ItemKey
             // 
@@ -651,10 +725,18 @@ namespace OSGeo.MapGuide.Maestro
             this.ItemValue.HeaderText = "Value";
             this.ItemValue.Name = "ItemValue";
             // 
+            // inheritedAccessRightsToolStripMenuItem
+            // 
+            this.inheritedAccessRightsToolStripMenuItem.Name = "inheritedAccessRightsToolStripMenuItem";
+            this.inheritedAccessRightsToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.inheritedAccessRightsToolStripMenuItem.Text = "Inherited access rights";
+            this.inheritedAccessRightsToolStripMenuItem.Click += new System.EventHandler(this.inheritedAccessRightsToolStripMenuItem_Click);
+            // 
             // ResourceProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.CancelBtn;
             this.ClientSize = new System.Drawing.Size(358, 429);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
@@ -665,17 +747,18 @@ namespace OSGeo.MapGuide.Maestro
             this.tabControl1.ResumeLayout(false);
             this.SecurityTab.ResumeLayout(false);
             this.SecurityTab.PerformLayout();
+            this.securityContextMenu.ResumeLayout(false);
             this.WMSTab.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.WFSTab.ResumeLayout(false);
-            this.CustomTab.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.CustomTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -706,14 +789,14 @@ namespace OSGeo.MapGuide.Maestro
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox WMSBounds;
         private System.Windows.Forms.TextBox WMSTitle;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button EditWMSBounds;
         private System.Windows.Forms.TextBox WMSMetadata;
         private System.Windows.Forms.TextBox WMSAbstract;
         private System.Windows.Forms.TextBox WMSKeyWords;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Button WMSClearHeaderButton;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button EditWFSBounds;
         private System.Windows.Forms.TextBox WFSBounds;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox WFSAvalible;
@@ -726,14 +809,22 @@ namespace OSGeo.MapGuide.Maestro
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox WFSOtherSRS;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox WFSPrimarySRS;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button WFSClearHeaderButton;
         private System.Windows.Forms.Button ClearHeaderButton;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemKey;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemValue;
+        private System.Windows.Forms.ComboBox WFSOtherSRS;
+        private System.Windows.Forms.ComboBox WFSPrimarySRS;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ContextMenuStrip securityContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem readWriteAccessToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem readOnlyAccessToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem denyAccessToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inheritedAccessRightsToolStripMenuItem;
     }
 }

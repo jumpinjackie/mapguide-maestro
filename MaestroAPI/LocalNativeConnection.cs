@@ -187,7 +187,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			else
 			{
 				byte[] buf = Utility.StreamAsArray(stream);
-				MgByteReader r = new MgByteReader(buf, buf.Length, "text/xml");
+				MgByteReader r = buf.Length == 0 ? null : new MgByteReader(buf, buf.Length, "text/xml");
 				res.SetResource(new MgResourceIdentifier(resourceid), r, null);
 			}
 		}

@@ -525,7 +525,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 root2.InnerXml = root1["FeatureSet"].InnerXml;
             }
 
-            return doc2.OuterXml;
+            return doc2.OuterXml == "<FeatureSet />" ? "" : doc2.OuterXml;
             
         }
 
