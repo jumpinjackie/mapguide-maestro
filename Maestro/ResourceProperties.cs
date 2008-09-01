@@ -64,7 +64,7 @@ namespace OSGeo.MapGuide.Maestro
                 ListViewItem lvi = new ListViewItem(new string[] { u.FullName, u.Description, StatusNames[IHUSER] }, IHUSER);
                 lvi.Tag = u;
                 UsersAndGroups.Items.Add(lvi);
-                ul.Add(lvi.Text, lvi);
+                ul.Add(u.Name, lvi);
             }
 
             foreach (GroupListGroup g in m_connection.EnumerateGroups().Group)
@@ -72,7 +72,7 @@ namespace OSGeo.MapGuide.Maestro
                 ListViewItem lvi = new ListViewItem(new string[] { g.Name, g.Description, StatusNames[IHGROUP] }, IHGROUP);
                 lvi.Tag = g;
                 UsersAndGroups.Items.Add(lvi);
-                gl.Add(lvi.Text, lvi);
+                gl.Add(g.Name, lvi);
             }
 
             if (m_resourceId.IsFolder)
@@ -130,6 +130,7 @@ namespace OSGeo.MapGuide.Maestro
             }
 
             this.Text = m_resourceId;
+            UseInherited_CheckedChanged(null, null);
 
         }
 
@@ -226,6 +227,9 @@ namespace OSGeo.MapGuide.Maestro
 
         private void UpdateListItem(ResourceSecurityTypeUsersUser u, ListViewItem lvi)
         {
+            if (u == null)
+                lvi.ImageIndex = IHUSER;
+
             switch (u.Permissions)
             {
                 case PermissionsType.rw:
@@ -244,16 +248,19 @@ namespace OSGeo.MapGuide.Maestro
 
         private void UpdateListItem(ResourceSecurityTypeGroupsGroup g, ListViewItem lvi)
         {
+            if (g == null)
+                lvi.ImageIndex = IHGROUP;
+
             switch (g.Permissions)
             {
                 case PermissionsType.rw:
-                    lvi.ImageIndex = RWUSER;
+                    lvi.ImageIndex = RWGROUP;
                     break;
                 case PermissionsType.r:
-                    lvi.ImageIndex = ROUSER;
+                    lvi.ImageIndex = ROGROUP;
                     break;
                 case PermissionsType.n:
-                    lvi.ImageIndex = NOUSER;
+                    lvi.ImageIndex = NOGROUP;
                     break;
             }
             lvi.SubItems[2].Text = StatusNames[lvi.ImageIndex];
@@ -663,6 +670,22 @@ namespace OSGeo.MapGuide.Maestro
 
         private void EditWMSBounds_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (m_srslist == null)
+                {
+                    List<string> items = new List<string>();
+                    foreach (OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys c in m_connection.CoordinateSystem.Coordsys)
+                        if (c.Code.StartsWith("EPSG:"))
+                            items.Add(c.Code);
+
+                    m_srslist = items.ToArray();
+                }
+            }
+            catch
+            {
+            }
+
             BoundsPicker bp = new BoundsPicker(WMSBounds.Text, m_srslist);
             if (bp.ShowDialog(this) == DialogResult.OK)
                 WMSBounds.Text = bp.SRSBounds;
@@ -670,7 +693,7 @@ namespace OSGeo.MapGuide.Maestro
 
         private void EditWFSBounds_Click(object sender, EventArgs e)
         {
-            BoundsPicker bp = new BoundsPicker(WFSBounds.Text, m_srslist);
+            BoundsPicker bp = new BoundsPicker(WFSBounds.Text, null);
             if (bp.ShowDialog(this) == DialogResult.OK)
                 WFSBounds.Text = bp.SRSBounds;
 

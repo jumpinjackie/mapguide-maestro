@@ -179,17 +179,15 @@ namespace OSGeo.MapGuide.MaestroAPI
                 callback(data.Length, 0, data.Length);
         }
 
-		public override void SetResourceXmlData(string resourceid, System.IO.Stream stream)
+		public override void SetResourceXmlData(string resourceid, System.IO.Stream content, System.IO.Stream header)
 		{
 			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			if (stream == null)
-				res.SetResource(new MgResourceIdentifier(resourceid), null, null);
-			else
-			{
-				byte[] buf = Utility.StreamAsArray(stream);
-				MgByteReader r = buf.Length == 0 ? null : new MgByteReader(buf, buf.Length, "text/xml");
-				res.SetResource(new MgResourceIdentifier(resourceid), r, null);
-			}
+
+            byte[] bufHeader = header == null ? new byte[0] : Utility.StreamAsArray(header);
+            byte[] bufContent = content == null ? new byte[0] : Utility.StreamAsArray(content);
+            MgByteReader rH = bufHeader.Length == 0 ? null : new MgByteReader(bufHeader, bufHeader.Length, "text/xml");
+            MgByteReader rC = bufContent.Length == 0 ? null : new MgByteReader(bufContent, bufContent.Length, "text/xml");
+            res.SetResource(new MgResourceIdentifier(resourceid), rC, rH);
 		}
 
 		public FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query)
@@ -639,43 +637,15 @@ namespace OSGeo.MapGuide.MaestroAPI
                 callback(fi.Length, 0, fi.Length);
         }
 
-        public override ResourceDocumentHeaderType GetResourceHeader(string resourceID)
+        public override object GetFolderOrResourceHeader(string resourceID)
         {
 			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			return this.DeserializeObject<ResourceDocumentHeaderType>(Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceHeader"), new object[] { new MgResourceIdentifier(resourceID) }));
-        }
-
-        public override ResourceFolderHeaderType GetFolderHeader(string resourceID)
-        {
-			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
-            return this.DeserializeObject<ResourceFolderHeaderType>(Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceContent"), new object[] { new MgResourceIdentifier(resourceID) }));
-        }
-
-        public override void SetResourceHeader(string resourceID, ResourceDocumentHeaderType header)
-        {
-			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			if (header == null)
-				res.SetResource(new MgResourceIdentifier(resourceID), null, null);
-			else
-			{
-				byte[] buf = Utility.StreamAsArray(SerializeObject(header));
-				MgByteReader r = new MgByteReader(buf, buf.Length, "text/xml");
-				res.SetResource(new MgResourceIdentifier(resourceID), null, r);
-			}
-        }
-
-        public override void SetFolderHeader(string resourceID, ResourceFolderHeaderType header)
-        {
-            MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
-            if (header == null)
-                res.SetResource(new MgResourceIdentifier(resourceID), null, null);
+            if (ResourceIdentifier.IsFolderResource(resourceID))
+                return this.DeserializeObject<ResourceFolderHeaderType>(Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceHeader"), new object[] { new MgResourceIdentifier(resourceID) }));
             else
-            {
-                byte[] buf = Utility.StreamAsArray(SerializeObject(header));
-                MgByteReader r = new MgByteReader(buf, buf.Length, "text/xml");
-                res.SetResource(new MgResourceIdentifier(resourceID), null, r);
-            }
+                return this.DeserializeObject<ResourceDocumentHeaderType>(Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceHeader"), new object[] { new MgResourceIdentifier(resourceID) }));
         }
+
 
         /// <summary>
         /// Gets a list of users in a group

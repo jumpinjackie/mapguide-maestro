@@ -525,12 +525,15 @@ namespace OSGeo.MapGuide.MaestroAPI
 			SetResourceXmlData(resourceid, ms);
 		}
 
-		/// <summary>
-		/// Writes raw data into a resource.
-		/// </summary>
-		/// <param name="resourceid">The resourceID to write into</param>
-		/// <param name="stream">The stream containing the data to write.</param>
-		abstract public void SetResourceXmlData(string resourceid, System.IO.Stream stream);
+        /// <summary>
+        /// Writes raw data into a resource.
+        /// </summary>
+        /// <param name="resourceid">The resourceID to write into</param>
+        /// <param name="stream">The stream containing the data to write.</param>
+        public virtual void SetResourceXmlData(string resourceid, System.IO.Stream stream)
+        {
+            SetResourceXmlData(resourceid, stream, null);
+        }
 
 		/// <summary>
 		/// Gets the Xsd schema for a given type.
@@ -1709,11 +1712,51 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="callback">A callback argument used to display progress. May be null.</param>
         abstract public void UploadPackage(string filename, Utility.StreamCopyProgressDelegate callback);
 
-        abstract public ResourceDocumentHeaderType GetResourceHeader(string resourceID);
-        abstract public ResourceFolderHeaderType GetFolderHeader(string resourceID);
-        abstract public void SetFolderHeader(string resourceID, ResourceFolderHeaderType header);
-        abstract public void SetResourceHeader(string resourceID, ResourceDocumentHeaderType header);
+        abstract public object GetFolderOrResourceHeader(string resourceId);
+        abstract public void SetResourceXmlData(string resourceId, System.IO.Stream content, System.IO.Stream header);
 
+        public virtual ResourceDocumentHeaderType GetResourceHeader(string resourceID)
+        {
+            return (ResourceDocumentHeaderType)this.GetFolderOrResourceHeader(resourceID);
+        }
+
+        public virtual ResourceFolderHeaderType GetFolderHeader(string resourceID)
+        {
+            return (ResourceFolderHeaderType)this.GetFolderOrResourceHeader(resourceID);
+        }
+
+        public virtual void SetFolderHeader(string resourceID, ResourceFolderHeaderType header)
+        {
+            SetFolderOrResourceHeader(resourceID, header);
+        }
+
+        public virtual void SetResourceHeader(string resourceID, ResourceDocumentHeaderType header)
+        {
+            SetFolderOrResourceHeader(resourceID, header);
+        }
+
+        public virtual void SetFolderOrResourceHeader(string resourceID, object header)
+        {
+            if (header == null)
+                throw new ArgumentNullException("header");
+
+            ResourceSecurityType sec;
+            if (header as ResourceFolderHeaderType != null)
+                sec = (header as ResourceFolderHeaderType).Security;
+            else if (header as ResourceDocumentHeaderType != null)
+                sec = (header as ResourceDocumentHeaderType).Security;
+            else
+                throw new ArgumentException("Header must be either ResourceFolderHeaderType or ResourceDocumentHeaderType", "header");
+
+            if (sec.Users != null && sec.Users.User != null && sec.Users.User.Count == 0)
+                sec.Users = null;
+
+            if (sec.Groups != null && sec.Groups.Group != null && sec.Groups.Group.Count == 0)
+                sec.Groups = null;
+
+            this.SetResourceXmlData(resourceID, null, this.SerializeObject(header));
+        }
+         
         /// <summary>
         /// Gets a list of all users on the server
         /// </summary>

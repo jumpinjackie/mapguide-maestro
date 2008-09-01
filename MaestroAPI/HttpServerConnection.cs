@@ -375,7 +375,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 					
 		}
 
-        private void SetResourceXmlData(string resourceid, System.IO.Stream header, System.IO.Stream content)
+        public override void SetResourceXmlData(string resourceid, System.IO.Stream content, System.IO.Stream header)
         {
             System.IO.MemoryStream outStream = new System.IO.MemoryStream();
 #if DEBUG_LASTMESSAGE
@@ -423,11 +423,6 @@ namespace OSGeo.MapGuide.MaestroAPI
 #endif
         }
 
-
-		public override void SetResourceXmlData(string resourceid, System.IO.Stream stream)
-		{
-            SetResourceXmlData(resourceid, null, stream);
-		}
 
 		public FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query)
 		{
@@ -768,7 +763,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 #endif
 		}
 
-		/// <summary>
+/*		/// <summary>
 		/// Selects features from a runtime map, returning a selection Xml.
 		/// </summary>
 		/// <param name="runtimemap">The map to query. NOT a resourceID, only the map name!</param>
@@ -778,7 +773,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		public string QueryMapFeatures(string runtimemap, string wkt, bool persist)
 		{
 			return QueryMapFeatures(runtimemap, wkt, persist, QueryMapFeaturesLayerAttributes.Default, false);
-		}
+		}*/
 
 		/// <summary>
 		/// Selects features from a runtime map, returning a selection Xml.
@@ -1176,30 +1171,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public override ResourceDocumentHeaderType GetResourceHeader(string resourceID)
+        public override object GetFolderOrResourceHeader(string resourceID)
         {
             string req = m_reqBuilder.GetResourceHeader(resourceID);
 			using(System.IO.Stream s = this.OpenRead(req))
-                return this.DeserializeObject<ResourceDocumentHeaderType>(s);
-        }
-
-        public override ResourceFolderHeaderType GetFolderHeader(string resourceID)
-        {
-            ResourceIdentifier.Validate(resourceID, ResourceTypes.Folder);
-			string req = m_reqBuilder.GetResourceHeader(resourceID);
-			System.IO.MemoryStream ms = new System.IO.MemoryStream();
-			using(System.IO.Stream s = this.OpenRead(req))
+            if (ResourceIdentifier.IsFolderResource(resourceID))
                 return this.DeserializeObject<ResourceFolderHeaderType>(s);
-        }
-
-        public override void SetResourceHeader(string resourceID, ResourceDocumentHeaderType header)
-        {
-            SetResourceXmlData(resourceID, this.SerializeObject(header), null);
-        }
-
-        public override void SetFolderHeader(string resourceID, ResourceFolderHeaderType header)
-        {
-            SetResourceXmlData(resourceID, this.SerializeObject(header), null);
+            else
+                return this.DeserializeObject<ResourceDocumentHeaderType>(s);
         }
 
         /// <summary>
