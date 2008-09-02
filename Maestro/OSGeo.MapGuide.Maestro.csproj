@@ -164,6 +164,12 @@
     <Compile Include="EditorInterface.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ExceptionViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExceptionViewer.Designer.cs">
+      <DependentUpon>ExceptionViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +268,10 @@
     <EmbeddedResource Include="BrowseUnmanagedData.resx">
       <DependentUpon>BrowseUnmanagedData.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExceptionViewer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ExceptionViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>

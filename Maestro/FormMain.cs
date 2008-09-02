@@ -111,6 +111,10 @@ namespace OSGeo.MapGuide.Maestro
         private ToolStripMenuItem modifyPackageToolStripMenuItem;
         private ToolStripMenuItem restorePackageToolStripMenuItem;
 		private string m_lastSelectedNode = null;
+        private ToolStripMenuItem viewLastExceptionToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator5;
+
+        private Exception m_lastException;
 
 		public FormMain()
 		{
@@ -217,6 +221,8 @@ namespace OSGeo.MapGuide.Maestro
             this.EditAsXmlButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ClosePageButton = new System.Windows.Forms.ToolStripButton();
+            this.viewLastExceptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -262,7 +268,7 @@ namespace OSGeo.MapGuide.Maestro
             this.DeleteMenu,
             this.NewMenu});
             this.TreeContextMenu.Name = "TreeContextMenu";
-            this.TreeContextMenu.Size = new System.Drawing.Size(165, 242);
+            this.TreeContextMenu.Size = new System.Drawing.Size(165, 220);
             this.TreeContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.TreeContextMenu_Popup);
             // 
             // PropertiesMenu
@@ -724,6 +730,8 @@ namespace OSGeo.MapGuide.Maestro
             // menuItem3
             // 
             this.menuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewLastExceptionToolStripMenuItem,
+            this.toolStripSeparator5,
             this.MainMenuAbout});
             this.menuItem3.Name = "menuItem3";
             this.menuItem3.Size = new System.Drawing.Size(40, 20);
@@ -732,7 +740,7 @@ namespace OSGeo.MapGuide.Maestro
             // MainMenuAbout
             // 
             this.MainMenuAbout.Name = "MainMenuAbout";
-            this.MainMenuAbout.Size = new System.Drawing.Size(126, 22);
+            this.MainMenuAbout.Size = new System.Drawing.Size(167, 22);
             this.MainMenuAbout.Text = "About...";
             this.MainMenuAbout.Click += new System.EventHandler(this.MainMenuAbout_Click);
             // 
@@ -841,6 +849,18 @@ namespace OSGeo.MapGuide.Maestro
             this.ClosePageButton.Text = "toolStripButton5";
             this.ClosePageButton.ToolTipText = "Close the current page";
             this.ClosePageButton.Click += new System.EventHandler(this.ClosePageButton_Click);
+            // 
+            // viewLastExceptionToolStripMenuItem
+            // 
+            this.viewLastExceptionToolStripMenuItem.Name = "viewLastExceptionToolStripMenuItem";
+            this.viewLastExceptionToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.viewLastExceptionToolStripMenuItem.Text = "Last exception...";
+            this.viewLastExceptionToolStripMenuItem.Click += new System.EventHandler(this.viewLastExceptionToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(164, 6);
             // 
             // FormMain
             // 
@@ -2193,6 +2213,24 @@ namespace OSGeo.MapGuide.Maestro
 
             ResourceProperties dlg = new ResourceProperties(m_connection, resid);
             dlg.ShowDialog(this);
+        }
+
+        public Exception LastException
+        {
+            get { return m_lastException; }
+            set { m_lastException = value; }
+        }
+
+        private void viewLastExceptionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (m_lastException == null)
+                MessageBox.Show(this, "There is no exception data to view", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+            {
+                ExceptionViewer dlg = new ExceptionViewer();
+                dlg.ExceptionText.Text = m_lastException.ToString().Replace("\r\n", "\n").Replace("\n", "\r\n");
+                dlg.ShowDialog(this);
+            }
         }
 	}
 }

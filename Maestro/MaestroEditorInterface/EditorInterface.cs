@@ -129,5 +129,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         /// </summary>
         bool UseFusionPreview { get; }
 
+        /// <summary>
+        /// Registers the last thrown exception so it can be displayed
+        /// </summary>
+        /// <param name="ex">The exception to register</param>
+        void SetLastException(Exception ex);
+
 	}
 }

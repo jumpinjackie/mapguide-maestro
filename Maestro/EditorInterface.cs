@@ -123,6 +123,7 @@ namespace OSGeo.MapGuide.Maestro
 				}
 				catch (Exception ex)
 				{
+                    SetLastException(ex);
 					MessageBox.Show(m_editor, string.Format(m_globalizor.Translate("An error occured while deleting: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
@@ -236,6 +237,7 @@ namespace OSGeo.MapGuide.Maestro
 				}
 				catch (Exception ex)
 				{
+                    SetLastException(ex);
 					MessageBox.Show(m_editor, string.Format(m_globalizor.Translate("An error occured while saving: {0}"),  ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return false;
 				}
@@ -284,6 +286,8 @@ namespace OSGeo.MapGuide.Maestro
         }
 
         public bool UseFusionPreview { get { return Program.ApplicationSettings.UseFusionPreview; } }
+
+        public void SetLastException(Exception ex) { m_editor.LastException = ex; }
 
 		#endregion
 	}

@@ -303,6 +303,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.sizeCombo.TabIndex = 10;
             this.sizeCombo.Text = "comboBox5";
             this.sizeCombo.SelectedIndexChanged += new System.EventHandler(this.sizeCombo_SelectedIndexChanged);
+            this.sizeCombo.TextChanged += new System.EventHandler(this.sizeCombo_TextChanged);
             // 
             // unitsCombo
             // 
@@ -1011,6 +1012,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                 this.Item = null;
             }
 
+        }
+
+        private void sizeCombo_TextChanged(object sender, EventArgs e)
+        {
+            sizeCombo_SelectedIndexChanged(sender, e);
         }
 
 
