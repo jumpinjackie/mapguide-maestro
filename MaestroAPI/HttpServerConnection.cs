@@ -445,14 +445,35 @@ namespace OSGeo.MapGuide.MaestroAPI
 #if DEBUG
 			string xq = m_reqBuilder.reqAsUrl(resourceID, schema, query, columns);
 #endif
+            try
+            {
+                using (System.IO.Stream rs = req.GetRequestStream())
+                {
+                    Utility.CopyStream(ms, rs);
+                    rs.Flush();
+                }
 
-			using(System.IO.Stream rs = req.GetRequestStream())
-			{
-				Utility.CopyStream(ms, rs);
-				rs.Flush();
-			}
+                return new FeatureSetReader(req.GetResponse().GetResponseStream());
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    if (this.IsSessionExpiredException(ex) && this.AutoRestartSession && this.RestartSession(false))
+                        return this.QueryFeatureSource(resourceID, schema, query, columns);
+                }
+                catch
+                {
+                    //Throw the original exception, not the secondary one
+                }
 
-			return new FeatureSetReader(req.GetResponse().GetResponseStream());
+                Exception ex2 = Utility.ThrowAsWebException(ex);
+                if (ex2 != ex)
+                    throw ex2;
+                else
+                    throw;
+
+            }
 		}
 
 		public FeatureSourceDescription DescribeFeatureSource(string resourceID)
@@ -467,7 +488,29 @@ namespace OSGeo.MapGuide.MaestroAPI
 			ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
 			string req = m_reqBuilder.DescribeSchema(resourceID, schema);
 
-			return new FeatureSourceDescription(this.OpenRead(req));
+            try
+            {
+                return new FeatureSourceDescription(this.OpenRead(req));
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    if (this.IsSessionExpiredException(ex) && this.AutoRestartSession && this.RestartSession(false))
+                        return this.DescribeFeatureSource(resourceID, schema);
+                }
+                catch
+                {
+                    //Throw the original exception, not the secondary one
+                }
+
+                Exception ex2 = Utility.ThrowAsWebException(ex);
+                if (ex2 != ex)
+                    throw ex2;
+                else
+                    throw;
+
+            }
 		}
 
 		/// <summary>

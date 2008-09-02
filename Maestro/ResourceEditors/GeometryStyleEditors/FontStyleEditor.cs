@@ -1003,7 +1003,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                 if (DisplayLabel.Tag as OSGeo.MapGuide.MaestroAPI.TextSymbolType != null)
                     this.Item = DisplayLabel.Tag as OSGeo.MapGuide.MaestroAPI.TextSymbolType;
                 if (m_item == null)
-                    this.Item = new OSGeo.MapGuide.MaestroAPI.TextSymbolType();
+                    this.Item = DefaultItemGenerator.CreateTextSymbolType();
             }
             else
             {

@@ -81,14 +81,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
         }
 
+        public void AddRule()
+        {
+            AddRuleButton_Click(null, null);
+        }
+
         private void AddRuleButton_Click(object sender, EventArgs e)
         {
             if (m_point != null)
             {
-                PointRuleType prt = new PointRuleType();
-                prt.Item = new PointSymbolization2DType();
-                prt.Item.Item = new MarkSymbolType();
-                prt.Item.Item.SizeContext = SizeContextType.DeviceUnits;
+                PointRuleType prt = DefaultItemGenerator.CreatePointRuleType();
                 if (m_point.PointRule == null)
                     m_point.PointRule = new PointRuleTypeCollection();
                 m_point.PointRule.Add(prt);
@@ -96,11 +98,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             }
             else if (m_line != null)
             {
-                LineRuleType lrt = new LineRuleType();
-                lrt.Items = new StrokeTypeCollection();
-                lrt.Items.Add(new StrokeType());
-                lrt.Items[0].LineStyle = "Solid";
-                lrt.Items[0].SizeContext = SizeContextType.DeviceUnits;
+                LineRuleType lrt = DefaultItemGenerator.CreateLineRuleType();
                 if (m_line.LineRule == null)
                     m_line.LineRule = new LineRuleTypeCollection();
                 m_line.LineRule.Add(lrt);
@@ -108,15 +106,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             }
             else if (m_area != null)
             {
-                AreaRuleType art = new AreaRuleType();
-                art.Item = new AreaSymbolizationFillType();
-                art.Item.Fill = new FillType();
-                art.Item.Stroke = new StrokeType();
-                art.Item.Fill.BackgroundColor = Color.White;
-                art.Item.Fill.ForegroundColor = Color.White;
-                art.Item.Fill.FillPattern = "Solid";
-                art.Item.Stroke.Color = Color.Black;
-                art.Item.Stroke.LineStyle = "Solid";
+                AreaRuleType art = DefaultItemGenerator.CreateAreaRuleType();
                 if (m_area.AreaRule == null)
                     m_area.AreaRule = new AreaRuleTypeCollection();
                 m_area.AreaRule.Add(art);

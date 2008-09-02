@@ -139,6 +139,7 @@
     <Compile Include="CoordinateSystemOverrideDialog.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DefaultItemGenerator.cs" />
     <Compile Include="FeaturePreviewRender.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -944,7 +944,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 
         private void AddScaleRangeButton_Click(object sender, EventArgs e)
         {
-            AddScaleRange(new OSGeo.MapGuide.MaestroAPI.VectorScaleRangeType());
+            AddScaleRange(DefaultItemGenerator.CreateVectorScaleRangeType());
         }
 
         private void AddScaleRange(VectorScaleRangeType vsc)

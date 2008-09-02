@@ -89,19 +89,29 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
             if (DisplayPoints.Checked)
             {
+                if (m_vsc.Items == null)
+                    m_vsc.Items = new System.Collections.ArrayList();
+
                 if (DisplayPoints.Tag != null)
                 {
                     m_vsc.Items.Add(DisplayPoints.Tag);
                     DisplayPoints.Tag = null;
                 }
-                else
+
+                bool hasPoint = false;
+                foreach (object o in m_vsc.Items)
+                    if (o as PointTypeStyleType != null)
+                        hasPoint = true;
+
+                if (!hasPoint)
                 {
                     PointTypeStyleType pst = new PointTypeStyleType();
-                    if (m_vsc.Items == null)
-                        m_vsc.Items = new System.Collections.ArrayList();
                     m_vsc.Items.Add(pst);
                     pointConditionList.SetItem(m_vsc, pst);
                 }
+
+                pointConditionList.AddRule();
+
             }
             else
             {
@@ -126,19 +136,28 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
             if (DisplayLines.Checked)
             {
+                if (m_vsc.Items == null)
+                    m_vsc.Items = new System.Collections.ArrayList();
+
                 if (DisplayLines.Tag != null)
                 {
                     m_vsc.Items.Add(DisplayLines.Tag);
                     DisplayLines.Tag = null;
                 }
-                else
+
+                bool hasLine = false;
+                foreach (object o in m_vsc.Items)
+                    if (o as LineTypeStyleType != null)
+                        hasLine = true;
+
+                if (!hasLine)
                 {
                     LineTypeStyleType lst = new LineTypeStyleType();
-                    if (m_vsc.Items == null)
-                        m_vsc.Items = new System.Collections.ArrayList();
                     m_vsc.Items.Add(lst);
                     lineConditionList.SetItem(m_vsc, lst);
                 }
+
+                lineConditionList.AddRule();
             }
             else
             {
@@ -163,19 +182,28 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
             if (DisplayAreas.Checked)
             {
+                if (m_vsc.Items == null)
+                    m_vsc.Items = new System.Collections.ArrayList();
+
                 if (DisplayAreas.Tag != null)
                 {
                     m_vsc.Items.Add(DisplayAreas.Tag);
                     DisplayAreas.Tag = null;
                 }
-                else
+
+                bool hasArea = false;
+                foreach (object o in m_vsc.Items)
+                    if (o as AreaTypeStyleType != null)
+                        hasArea = true;
+
+                if (!hasArea)
                 {
                     AreaTypeStyleType ast = new AreaTypeStyleType();
-                    if (m_vsc.Items == null)
-                        m_vsc.Items = new System.Collections.ArrayList();
                     m_vsc.Items.Add(ast);
                     areaConditionList.SetItem(m_vsc, ast);
                 }
+
+                areaConditionList.AddRule();
             }
             else
             {
