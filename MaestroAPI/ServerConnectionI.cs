@@ -93,6 +93,11 @@ namespace OSGeo.MapGuide.MaestroAPI
 		FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns);
 		FeatureSourceDescription DescribeFeatureSource(string resourceID);
 		FeatureSourceDescription DescribeFeatureSource(string resourceID, string schema);
+
+        FeatureSourceDescription.FeatureSourceSchema GetFeatureSourceSchema(string resourceID, string schema);
+        FeatureSourceDescription GetFeatureSourceDescription(string resourceID);
+        void ResetFeatureSourceSchemaCache();
+
 		FdoSpatialContextList GetSpatialContextInfo(string resourceID, bool activeOnly);
         void SetFolderHeader(string resourceID, ResourceFolderHeaderType header);
         void SetResourceHeader(string resourceID, ResourceDocumentHeaderType header);

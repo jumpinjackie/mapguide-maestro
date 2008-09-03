@@ -722,17 +722,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 		{
 			OSGeo.MapGuide.MaestroAPI.FeatureSource fs = con.GetFeatureSource(m_featureSourceId);
 			string[] ids = fs.GetIdentityProperties(m_featureName);
-			OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription fsd = fs.DescribeSource(m_featureName);
-			OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription.FeatureSourceSchema scm = null;
-			if (fsd.Schemas.Length == 1)
-				scm = fsd.Schemas[0];
-			else
-				foreach(OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription.FeatureSourceSchema sc in fsd.Schemas)
-					if (m_featureName.EndsWith(sc.Name))
-					{
-						scm = sc;
-						break;
-					}
+			OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription.FeatureSourceSchema scm = con.GetFeatureSourceSchema(m_featureSourceId, m_featureName);
 
 			if (scm != null)
 			{

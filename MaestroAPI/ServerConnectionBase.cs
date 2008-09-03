@@ -1800,5 +1800,55 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="resourceID">The target resource id for the runtime map</param>
         /// <param name="mapdefinition">The mapdefinition to base the map on</param>
         abstract public void CreateRuntimeMap(string resourceID, string mapdefinition);
+
+        abstract public FeatureSourceDescription DescribeFeatureSource(string resourceID);
+        abstract public FeatureSourceDescription DescribeFeatureSource(string resourceID, string schema);
+
+
+        protected Dictionary<string, FeatureSourceDescription> m_featureSchemaCache = new Dictionary<string, FeatureSourceDescription>();
+        protected Dictionary<string, FeatureSourceDescription.FeatureSourceSchema> m_featureSchemaNameCache = new Dictionary<string, FeatureSourceDescription.FeatureSourceSchema>();
+
+        public virtual FeatureSourceDescription GetFeatureSourceDescription(string resourceID)
+        {
+            if (!m_featureSchemaCache.ContainsKey(resourceID))
+            {
+                try
+                {
+                    m_featureSchemaCache[resourceID] = this.DescribeFeatureSource(resourceID);
+                    foreach (FeatureSourceDescription.FeatureSourceSchema scm in m_featureSchemaCache[resourceID].Schemas)
+                        m_featureSchemaNameCache[resourceID + "!" + scm.FullnameDecoded] = scm;
+                }
+                catch
+                {
+                    m_featureSchemaCache[resourceID] = null;
+                }
+            }
+
+            return m_featureSchemaCache[resourceID];
+
+        }
+
+
+        public virtual FeatureSourceDescription.FeatureSourceSchema GetFeatureSourceSchema(string resourceID, string schema)
+        {
+            if (schema != null && schema.IndexOf(":") > 0)
+                schema = schema.Substring(0, schema.IndexOf(":"));
+
+            //If it is missing, just get the entire schema, and hope that we will need the others
+            //Some providers actually return the entire list even when asked for a particular schema
+            if (!m_featureSchemaCache.ContainsKey(resourceID + "!" + schema))
+                GetFeatureSourceDescription(resourceID);
+            if (!m_featureSchemaCache.ContainsKey(resourceID + "!" + schema))
+                m_featureSchemaNameCache[resourceID + "!" + schema] = null;
+
+            return m_featureSchemaNameCache[resourceID + "!" + schema];
+        }
+
+        public virtual void ResetFeatureSourceSchemaCache()
+        {
+            m_featureSchemaCache = new Dictionary<string, FeatureSourceDescription>();
+            m_featureSchemaNameCache = new Dictionary<string, FeatureSourceDescription.FeatureSourceSchema>();
+        }
+
     }
 }

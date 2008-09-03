@@ -476,12 +476,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
 		}
 
-		public FeatureSourceDescription DescribeFeatureSource(string resourceID)
+		public override FeatureSourceDescription DescribeFeatureSource(string resourceID)
 		{
 			return DescribeFeatureSource(resourceID, "");
 		}
 
-		public FeatureSourceDescription DescribeFeatureSource(string resourceID, string schema)
+		public override FeatureSourceDescription DescribeFeatureSource(string resourceID, string schema)
 		{
 			if (schema != null && schema.IndexOf(":") > 0)
 				schema = schema.Substring(0, schema.IndexOf(":"));

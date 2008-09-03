@@ -214,14 +214,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return new FeatureSetReader(fes.SelectFeatures(new MgResourceIdentifier(resourceID), schema, mgf));
 		}
 
-		public FeatureSourceDescription DescribeFeatureSource(string resourceID)
+		public override FeatureSourceDescription DescribeFeatureSource(string resourceID)
 		{
 			MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
 			System.IO.MemoryStream ms = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), "")));
 			return new FeatureSourceDescription(ms);
 		}
 
-		public FeatureSourceDescription DescribeFeatureSource(string resourceID, string schema)
+		public override FeatureSourceDescription DescribeFeatureSource(string resourceID, string schema)
 		{
 			MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
             if (schema != null && schema.IndexOf(":") > 0)
