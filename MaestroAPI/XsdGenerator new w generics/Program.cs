@@ -1,5 +1,5 @@
 #region Disclaimer / License
-// Copyright (C) 2006, Kenneth Skovhede
+// Copyright (C) 2008, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
 // 
 // This library is free software; you can redistribute it and/or
@@ -16,6 +16,7 @@
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
+#endregion
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
