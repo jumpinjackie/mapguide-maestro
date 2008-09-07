@@ -84,7 +84,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
         private ToolStripButton AddMapButton;
         private ToolStripButton RemoveMapButton;
         private ToolStrip toolStrip2;
-        private ToolStripSplitButton AddWidgetButton;
+        private ToolStripDropDownButton AddWidgetButton;
         private ToolStripButton AddContainerButton;
         private ToolStripButton RemoveWidgetButton;
         private ToolStripSeparator toolStripSeparator1;
@@ -294,7 +294,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.panel4 = new System.Windows.Forms.Panel();
             this.WidgetTree = new System.Windows.Forms.TreeView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.AddWidgetButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.AddWidgetButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.seperatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.submenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.widgetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -613,7 +613,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(197, 25);
             this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
             // 
             // AddMapButton
             // 
@@ -622,7 +621,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.AddMapButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddMapButton.Name = "AddMapButton";
             this.AddMapButton.Size = new System.Drawing.Size(23, 22);
-            this.AddMapButton.Text = "toolStripButton1";
             this.AddMapButton.ToolTipText = "Add a map to the application";
             this.AddMapButton.Click += new System.EventHandler(this.AddMapButton_Click);
             // 
@@ -633,7 +631,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.RemoveMapButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RemoveMapButton.Name = "RemoveMapButton";
             this.RemoveMapButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveMapButton.Text = "toolStripButton2";
             this.RemoveMapButton.ToolTipText = "Remove the selected map from the application";
             this.RemoveMapButton.Click += new System.EventHandler(this.RemoveMapButton_Click);
             // 
@@ -724,9 +721,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.AddWidgetButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddWidgetButton.Name = "AddWidgetButton";
             this.AddWidgetButton.Size = new System.Drawing.Size(32, 22);
-            this.AddWidgetButton.Text = "toolStripSplitButton1";
             this.AddWidgetButton.ToolTipText = "Add a widget";
-            this.AddWidgetButton.ButtonClick += new System.EventHandler(this.AddWidgetButton_ButtonClick);
             // 
             // seperatorToolStripMenuItem
             // 
@@ -767,7 +762,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.RemoveWidgetButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RemoveWidgetButton.Name = "RemoveWidgetButton";
             this.RemoveWidgetButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveWidgetButton.Text = "toolStripButton4";
             this.RemoveWidgetButton.ToolTipText = "Delete the selected item";
             this.RemoveWidgetButton.Click += new System.EventHandler(this.RemoveWidgetButton_Click);
             // 
@@ -784,7 +778,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.MoveWidgetUpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MoveWidgetUpButton.Name = "MoveWidgetUpButton";
             this.MoveWidgetUpButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveWidgetUpButton.Text = "toolStripButton5";
             this.MoveWidgetUpButton.ToolTipText = "Move the selected item up";
             this.MoveWidgetUpButton.Click += new System.EventHandler(this.MoveWidgetUpButton_Click);
             // 
@@ -796,7 +789,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.MoveWidgetDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MoveWidgetDownButton.Name = "MoveWidgetDownButton";
             this.MoveWidgetDownButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveWidgetDownButton.Text = "toolStripButton6";
             this.MoveWidgetDownButton.ToolTipText = "Move the selected item down";
             this.MoveWidgetDownButton.Click += new System.EventHandler(this.MoveWidgetDownButton_Click);
             // 
@@ -812,7 +804,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.ConfigureWidgetsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ConfigureWidgetsButton.Name = "ConfigureWidgetsButton";
             this.ConfigureWidgetsButton.Size = new System.Drawing.Size(23, 22);
-            this.ConfigureWidgetsButton.Text = "toolStripButton7";
             this.ConfigureWidgetsButton.ToolTipText = "Configure avalible widgets";
             this.ConfigureWidgetsButton.Click += new System.EventHandler(this.ConfigureWidgetsButton_Click);
             // 
@@ -1402,11 +1393,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
                     MapList_SelectedIndexChanged(sender, new EventArgs());
                     break;
                 }
-        }
-
-        private void AddWidgetButton_ButtonClick(object sender, EventArgs e)
-        {
-            AddWidgetButton.ShowDropDown();
         }
 
         private void AddContainerButton_Click(object sender, EventArgs e)

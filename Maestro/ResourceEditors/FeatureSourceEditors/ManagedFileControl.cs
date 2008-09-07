@@ -123,7 +123,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip.Size = new System.Drawing.Size(200, 25);
             this.toolStrip.TabIndex = 4;
-            this.toolStrip.Text = "toolStrip1";
             // 
             // AddButton
             // 
@@ -132,7 +131,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors
             this.AddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(23, 22);
-            this.AddButton.Text = "toolStripButton1";
             this.AddButton.ToolTipText = "Upload a new file to the server";
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
@@ -144,7 +142,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors
             this.RemoveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RemoveButton.Name = "RemoveButton";
             this.RemoveButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveButton.Text = "toolStripButton2";
             this.RemoveButton.ToolTipText = "Delete a file from the server";
             this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
@@ -156,7 +153,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors
             this.DataItemButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DataItemButton.Name = "DataItemButton";
             this.DataItemButton.Size = new System.Drawing.Size(23, 22);
-            this.DataItemButton.Text = "toolStripButton3";
             this.DataItemButton.ToolTipText = "Select the currently selected data item as the datasource";
             this.DataItemButton.Click += new System.EventHandler(this.DataItemButton_Click);
             // 
@@ -173,7 +169,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors
             this.DownloadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DownloadButton.Name = "DownloadButton";
             this.DownloadButton.Size = new System.Drawing.Size(23, 22);
-            this.DownloadButton.Text = "toolStripButton4";
             this.DownloadButton.ToolTipText = "Download a copy of the server file";
             this.DownloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
             // 

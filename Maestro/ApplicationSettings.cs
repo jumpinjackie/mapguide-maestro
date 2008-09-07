@@ -32,10 +32,13 @@ namespace OSGeo.MapGuide.Maestro
     {
         private PreferedSiteList m_settings;
         private bool m_isUpdating = false;
+        private Globalizator.Globalizator m_globalizor = null;
 
         public ApplicationSettings()
         {
             InitializeComponent();
+            m_globalizor = new Globalizator.Globalizator(this);
+
             this.Icon = FormMain.MaestroIcon;
             m_settings = (PreferedSiteList)Utility.XmlDeepCopy(Program.ApplicationSettings);
 

@@ -48,4 +48,37 @@
   <data name="The entered xml failed to serialize into an object.\nError message is: {0}" type="System.String">
     <value>El xml no entró a serializarse en un objeto.\nEl mensaje de error es: {0}</value>
   </data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.label1.Text" type="System.String">
+	<value>La aplicación asociada con el editor xml ha comenzado.</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.label2.Text" type="System.String">
+	<value>Cierra el programa externo para restaurar la funcionalidad de edición en el editor xml.</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.label3.Text" type="System.String">
+	<value>El texto mostrado se actualizará automáticamente cuando el editor guarde el fichero.</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.CopyClipboardButton.ToolTipText" type="System.String">
+	<value>Copy selected text to the clipboard</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.CutClipboardButton.ToolTipText" type="System.String">
+	<value>Cut the selected text and place it in the clipboard</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.PasteClipboardButton.ToolTipText" type="System.String">
+	<value>Paste text from the clipboard</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.UndoClipboardButton.ToolTipText" type="System.String">
+	<value>Undo the last action</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.RedoClipboardButton.ToolTipText" type="System.String">
+	<value>Redo the last action</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.ValidateButton.Text" type="System.String">
+	<value>Validate the current xml</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.ValidateButton.ToolTipText" type="System.String">
+	<value>Validate the current xml</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.LaunchExternalEditorButton.ToolTipText" type="System.String">
+	<value>Launch the system editor associated with xml files</value>
+</data>  
 </root>

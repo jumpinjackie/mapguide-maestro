@@ -54,6 +54,10 @@ namespace OSGeo.MapGuide.Maestro
             id.Name = "zz";
             id.Fullpath = "xx/tt";*/
 
+            //System.Text.RegularExpressions.Regex m_filenameTransformer = new System.Text.RegularExpressions.Regex(@"[^A-Za-z0-9\.-\/]");
+            //System.Text.RegularExpressions.Match m = m_filenameTransformer.Match("xxæøå");
+
+
 			try
 			{
 				Application.EnableVisualStyles();

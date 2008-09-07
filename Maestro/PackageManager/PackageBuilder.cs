@@ -67,7 +67,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             try
             {
                 m_progress.SetCurrentProgress(0, 100);
-                m_progress.SetOperation("Getting file list");
+                m_progress.SetOperation(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Getting file list"));
                 ResourceList items = m_connection.GetRepositoryResources(m_startingpoint);
 
                 List<ResourceListResourceDocument> files = new List<ResourceListResourceDocument>();
@@ -108,7 +108,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                     foreach (ResourceListResourceFolder folder in folders)
                     {
 
-                        m_progress.SetOperation("Creating folder " + folder.ResourceId);
+                        m_progress.SetOperation(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Creating folder") + " " + folder.ResourceId);
                         m_progress.SetCurrentProgress(0, 100);
                         AddFolderResource(manifest, temppath, folder, m_removeExisting, m_connection);
                         m_progress.SetCurrentProgress(100, 100);
@@ -117,7 +117,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
                     foreach (ResourceListResourceDocument doc in files)
                     {
-                        m_progress.SetOperation("Downloading " + doc.ResourceId);
+                        m_progress.SetOperation(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Downloading") + " " + doc.ResourceId);
                         m_progress.SetCurrentProgress(0, 100);
 
                         string filebase = CreateFolderForResource(doc.ResourceId, temppath);
@@ -164,13 +164,13 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                         m_connection.SerializeObject(manifest, fs);
 
 
-                    m_progress.SetOperation("Compressing files");
+                    m_progress.SetOperation(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Compressing files"));
                     m_progress.SetCurrentProgress(0, 100);
 
                     ZipDirectory(m_targetfile, temppath, "MapGuide Package created by Maestro", m_progress);
 
                     m_progress.SetOperationNo(opno++);
-                    m_progress.SetOperation("Finished");
+                    m_progress.SetOperation(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Finished"));
                     m_progress.Close();
 
                 }
@@ -188,7 +188,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             catch (Exception ex)
             {
                 string s = ex.Message;
-                System.Windows.Forms.MessageBox.Show(string.Format("Failed to create package, error message: {0}", ex.Message), System.Windows.Forms.Application.ProductName, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show(string.Format(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Failed to create package, error message: {0}"), ex.Message), System.Windows.Forms.Application.ProductName, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 m_progress.Cancel();
             }
         }
@@ -367,16 +367,45 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         public static string RelativeName(string filebase, string temppath)
         {
             if (!filebase.StartsWith(temppath))
-                throw new Exception(string.Format("Filename \"{0}\" is not relative to \"{1}\"", filebase, temppath));
+                throw new Exception(string.Format(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Filename \"{0}\" is not relative to \"{1}\""), filebase, temppath));
             if (!temppath.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()))
                 temppath += System.IO.Path.DirectorySeparatorChar;
             return filebase.Substring(temppath.Length);
         }
 
+        private static System.Text.RegularExpressions.Regex m_filenameTransformer = new System.Text.RegularExpressions.Regex(@"[^A-Za-z0-9\.-\/]", System.Text.RegularExpressions.RegexOptions.Compiled);
+
+        //There are some problems with the Zip reader in MapGuide and international characters :(
+        private static string EncodeFilename(string filename)
+        {
+            System.Text.RegularExpressions.Match m = m_filenameTransformer.Match(filename);
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            int previndex = 0;
+
+            while (m != null && m.Success)
+            {
+                string replaceval = string.Format("-x{0:x2}-", (int)m.Value[0]);
+
+                sb.Append(filename.Substring(previndex, m.Index - previndex));
+                sb.Append(replaceval);
+                previndex = m.Index + m.Value.Length;
+
+                m = m.NextMatch();
+            }
+
+            if (sb.Length == 0)
+                return filename;
+            else
+            {
+                sb.Append(filename.Substring(previndex));
+                return sb.ToString();
+            }
+        }
+
         public static string CreateFolderForResource(ServerConnectionI connection, string resourceId, string temppath)
         {
-            string filebase = new MaestroAPI.ResourceIdentifier(resourceId).Name;
-            string folder = "Library/" + new MaestroAPI.ResourceIdentifier(resourceId).Path;
+            string filebase = EncodeFilename(new MaestroAPI.ResourceIdentifier(resourceId).Name);
+            string folder = "Library/" + EncodeFilename(new MaestroAPI.ResourceIdentifier(resourceId).Path);
             folder = folder.Substring(0, folder.Length - filebase.Length);
             filebase += resourceId.Substring(resourceId.LastIndexOf('.'));
 

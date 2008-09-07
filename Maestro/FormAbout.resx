@@ -995,7 +995,7 @@
 </value>
   </data>
   <data name="License.Text" xml:space="preserve">
-    <value>Copyright (C) 2006, Kenneth Skovhede
+    <value>Copyright (C) 2008, Kenneth Skovhede
 http://www.hexad.dk, opensource@hexad.dk
 
 This library is free software; you can redistribute it and/or
@@ -1012,9 +1012,6 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</value>
   </data>
-  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="PayPalImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhTAAZAPcAAP///whlle3t7QAzaQIBAf6kAv5SBHGYsCMlYqy4xOUCI9fn5xBaYMPJ0QINb9TW

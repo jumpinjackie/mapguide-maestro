@@ -261,4 +261,48 @@
   <data name="OSGeo.MapGuide.Maestro.FormMain.OpenSiteAdmin.Text" type="System.String">
     <value>Åbn Site Administrator...</value>
   </data>
-</root>
+  
+<data name="OSGeo.MapGuide.Maestro.FormMain.MainMenuChangePreferences.Text" type="System.String">
+	<value>Indstillinger...</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormMain.packagesToolStripMenuItem.Text" type="System.String">
+	<value>Pakker</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormMain.createPackageToolStripMenuItem.Text" type="System.String">
+	<value>Opret pakke...</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormMain.modifyPackageToolStripMenuItem.Text" type="System.String">
+	<value>Rediger pakke...</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormMain.restorePackageToolStripMenuItem.Text" type="System.String">
+	<value>Gendan pakke...</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormMain.viewLastExceptionToolStripMenuItem.Text" type="System.String">
+	<value>Sidste fejl...</value>
+</data>
+ <data name="Dataconnection" type="System.String">
+	<value>Dataforbindelse</value>
+</data>
+<data name="Fusion Application" type="System.String">
+	<value>Fusion applikation</value>
+</data>
+<data name="Layer" type="System.String">
+	<value>Lag</value>
+</data>
+<data name="Layout" type="System.String">
+	<value>Layout</value>
+</data>
+<data name="Map" type="System.String">
+	<value>Kort</value>
+</data>
+<data name="Print Layout" type="System.String">
+	<value>Printlayout</value>
+</data>
+<data name="Symbol Definition" type="System.String">
+	<value>Symboldefinition</value>
+</data>
+<data name="Symbol Library" type="System.String">
+	<value>Symbolsamling</value>
+</data>
+
+  </root>

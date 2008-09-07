@@ -252,7 +252,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip.Size = new System.Drawing.Size(176, 25);
             this.toolStrip.TabIndex = 2;
-            this.toolStrip.Text = "toolStrip1";
             // 
             // AddExtensionButton
             // 
@@ -261,7 +260,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             this.AddExtensionButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddExtensionButton.Name = "AddExtensionButton";
             this.AddExtensionButton.Size = new System.Drawing.Size(23, 22);
-            this.AddExtensionButton.Text = "toolStripButton1";
             this.AddExtensionButton.ToolTipText = "Add a new extension";
             this.AddExtensionButton.Click += new System.EventHandler(this.AddExtensionButton_Click);
             // 
@@ -273,7 +271,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             this.AddComputationButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddComputationButton.Name = "AddComputationButton";
             this.AddComputationButton.Size = new System.Drawing.Size(23, 22);
-            this.AddComputationButton.Text = "toolStripButton2";
             this.AddComputationButton.ToolTipText = "Add a new calculated property";
             this.AddComputationButton.Click += new System.EventHandler(this.AddComputationButton_Click);
             // 
@@ -285,7 +282,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             this.AddJoinButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddJoinButton.Name = "AddJoinButton";
             this.AddJoinButton.Size = new System.Drawing.Size(23, 22);
-            this.AddJoinButton.Text = "toolStripButton3";
             this.AddJoinButton.ToolTipText = "Add a new database join";
             this.AddJoinButton.Click += new System.EventHandler(this.AddJoinButton_Click);
             // 
@@ -297,7 +293,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             this.AddKeyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddKeyButton.Name = "AddKeyButton";
             this.AddKeyButton.Size = new System.Drawing.Size(23, 22);
-            this.AddKeyButton.Text = "toolStripButton4";
             this.AddKeyButton.ToolTipText = "Add a new key mapping";
             this.AddKeyButton.Click += new System.EventHandler(this.AddKeyButton_Click);
             // 
@@ -314,7 +309,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             this.RemoveItemButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RemoveItemButton.Name = "RemoveItemButton";
             this.RemoveItemButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveItemButton.Text = "toolStripButton5";
             this.RemoveItemButton.ToolTipText = "Delete the selected item";
             this.RemoveItemButton.Click += new System.EventHandler(this.RemoveItemButton_Click);
             // 

@@ -45,28 +45,22 @@
 	<data name="OSGeo.MapGuide.Maestro.FormAbout.label1.Text" type="System.String">
 		<value>MapGuide Maestro</value>
 	</data>
-	<data name="OSGeo.MapGuide.Maestro.FormAbout.tabControl.licenseTab.License.Text" type="System.String">
-		<value>Copyright (C) 2006, Kenneth Skovhede
-http://www.hexad.dk, opensource@hexad.dk
-
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public
-License along with this library; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</value>
-	</data>
 	<data name="Selected language: {0}, OS Language: {1}" type="System.String">
 		<value>Valgt sprog: {0}, OS sprog: {1}</value>
 	</data>
 	<data name="Version: {0}" type="System.String">
 		<value>Version: {0}</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.FormAbout.licenseTab.Text" type="System.String">
+		<value>Licens</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.FormAbout.creditsTab.Text" type="System.String">
+		<value>Tak til</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.FormAbout.thirdPartyTab.Text" type="System.String">
+		<value>Tredjeparts moduler</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.FormAbout.label2.Text" type="System.String">
+		<value>Dette program anvender disse tredjeparts moduler:</value>
 	</data>
 </root>

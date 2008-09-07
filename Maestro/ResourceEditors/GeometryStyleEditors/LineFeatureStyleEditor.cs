@@ -481,11 +481,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.AddStyleButton,
             this.RemoveStyleButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 16);
-            this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(282, 25);
             this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
             // 
             // AddStyleButton
             // 
@@ -494,7 +492,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.AddStyleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddStyleButton.Name = "AddStyleButton";
             this.AddStyleButton.Size = new System.Drawing.Size(23, 22);
-            this.AddStyleButton.Text = "toolStripButton1";
             this.AddStyleButton.Click += new System.EventHandler(this.AddStyleButton_Click);
             // 
             // RemoveStyleButton
@@ -505,7 +502,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.RemoveStyleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RemoveStyleButton.Name = "RemoveStyleButton";
             this.RemoveStyleButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveStyleButton.Text = "toolStripButton2";
             this.RemoveStyleButton.Click += new System.EventHandler(this.RemoveStyleButton_Click);
             // 
             // LineFeatureStyleEditor

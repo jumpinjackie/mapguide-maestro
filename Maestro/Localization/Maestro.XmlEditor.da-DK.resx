@@ -55,7 +55,7 @@
 		<value>Luk det eksterne program for at gendanne funktionaliteten i dette vindue.</value>
 	</data>
 	<data name="OSGeo.MapGuide.Maestro.XmlEditor.label3.Text" type="System.String">
-		<value>Teksten herunder bliver automatisk opdateret når det eksterne program gemmer filen</value>
+		<value>Teksten herunder bliver automatisk opdateret når det eksterne program gemmer filen.</value>
 	</data>
 	<data name="Do you want to close this dialog and discard all changes?" type="System.String">
 		<value>Vil du lukke denne dialog og annullere alle ændringer?</value>
@@ -72,4 +72,29 @@
 		type="System.String">
 		<value>Den indtastede Xml kunne ikke omdannes til et objekt.\nFejlbeskeden var: {0}</value>
 	</data>
+	
+<data name="OSGeo.MapGuide.Maestro.XmlEditor.CopyClipboardButton.ToolTipText" type="System.String">
+	<value>Kopier den markerede tekst til klippebordet</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.XmlEditor.CutClipboardButton.ToolTipText" type="System.String">
+	<value>Klip den markerede tekst og placer den i klippebordet</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.XmlEditor.PasteClipboardButton.ToolTipText" type="System.String">
+	<value>Indsæt tekst fra klippebordet</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.XmlEditor.UndoClipboardButton.ToolTipText" type="System.String">
+	<value>Fortryd den sidste handling</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.XmlEditor.RedoClipboardButton.ToolTipText" type="System.String">
+	<value>Gentag den sidst fortrudte handling</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.XmlEditor.ValidateButton.Text" type="System.String">
+	<value>Validér den nuværende xml</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.XmlEditor.ValidateButton.ToolTipText" type="System.String">
+	<value>Validér den nuværende xml</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.XmlEditor.LaunchExternalEditorButton.ToolTipText" type="System.String">
+	<value>Start systemets editor til xml filer</value>
+</data>	
 </root>

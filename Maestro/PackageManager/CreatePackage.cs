@@ -32,10 +32,12 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
     {
         private OSGeo.MapGuide.Maestro.ResourceEditors.EditorInterface m_editor;
         private bool m_isUpdating = false;
+        private Globalizator.Globalizator m_globalizor = null;
 
         public CreatePackage()
         {
             InitializeComponent();
+            m_globalizor = new Globalizator.Globalizator(this);
         }
 
         public void Setup(OSGeo.MapGuide.Maestro.ResourceEditors.EditorInterface editor, string startpath)
@@ -45,10 +47,10 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                 m_isUpdating = true;
                 m_editor = editor;
                 AllowedTypes.Items.Clear();
-                AllowedTypes.Items.Add("All types", true);
+                AllowedTypes.Items.Add(m_globalizor.Translate("All types"), true);
                 foreach (string s in ((ServerConnectionBase)m_editor.CurrentConnection).ResourceTypeLookup.Keys)
                     AllowedTypes.Items.Add(s, true);
-                AllowedTypes.Items.Add("Unknown types", true);
+                AllowedTypes.Items.Add(m_globalizor.Translate("Unknown types"), true);
                 if (!string.IsNullOrEmpty(startpath))
                     ResourcePath.Text = startpath.IndexOf('.') > 0 ? startpath.Substring(0, startpath.LastIndexOf('/')) : startpath;
             }
@@ -62,7 +64,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         {
             if (AllowedTypes.CheckedItems.Count == 0)
             {
-                MessageBox.Show(this, "You must select at least one type", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, m_globalizor.Translate("You must select at least one type"), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -70,13 +72,13 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             {
                 if (PackageFilename.Text.Trim().Length == 0 || !System.IO.Path.IsPathRooted(PackageFilename.Text))
                 {
-                    MessageBox.Show(this, "You must enter a full path to the output file", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, m_globalizor.Translate("You must enter a full path to the output file"), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format("An error occured while validating the output file path: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, string.Format(m_globalizor.Translate("An error occured while validating the output file path: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -88,7 +90,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                 {
                     ResourceIdentifier.Validate("Library://" + RestorePath.Text, ResourceTypes.Folder);
                     if (string.IsNullOrEmpty(RestorePath.Text))
-                        if (MessageBox.Show(this, "You have selected to restore the package at another location, but not entered one\r\nThis will cause the package to be restored a the root of the resource tree.\r\nAre you sure this is what you want?", Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3) != DialogResult.Yes)
+                        if (MessageBox.Show(this, m_globalizor.Translate("You have selected to restore the package at another location, but not entered one\r\nThis will cause the package to be restored a the root of the resource tree.\r\nAre you sure this is what you want?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3) != DialogResult.Yes)
                             return;
 
                     restorePath = "Library://" + RestorePath.Text;
@@ -96,7 +98,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format("An error occured while validating the restore path: {0}\nIt should have the format: \"Libray://folder/folder/\".", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, string.Format(m_globalizor.Translate("An error occured while validating the restore path: {0}\nIt should have the format: \"Libray://folder/folder/\"."), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -108,7 +110,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                 extensions.Add("*");
 
             if (RemoveTargeOnRestore.Checked && ((restorePath != null && restorePath == "Library://") || (restorePath == null && ResourcePath.Text == "Library://")))
-                if (MessageBox.Show(this, "You have selected to restore the package at the root.\r\nYou have also selected to delete the target before restoring.\r\nThis will result in the entire repository being deleted and replaced with this package.\r\nAre you absolutely sure that is what you want?", Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3) != DialogResult.Yes)
+                if (MessageBox.Show(this, m_globalizor.Translate("You have selected to restore the package at the root.\r\nYou have also selected to delete the target before restoring.\r\nThis will result in the entire repository being deleted and replaced with this package.\r\nAre you absolutely sure that is what you want?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3) != DialogResult.Yes)
                     return;
 
 

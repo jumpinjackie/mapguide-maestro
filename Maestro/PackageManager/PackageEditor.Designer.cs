@@ -189,7 +189,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(168, 25);
             this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
             // 
             // AddFolderButton
             // 
@@ -198,7 +197,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.AddFolderButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddFolderButton.Name = "AddFolderButton";
             this.AddFolderButton.Size = new System.Drawing.Size(23, 22);
-            this.AddFolderButton.Text = "toolStripButton1";
             this.AddFolderButton.ToolTipText = "Add a new folder";
             this.AddFolderButton.Click += new System.EventHandler(this.AddFolderButton_Click);
             // 
@@ -209,7 +207,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.AddResourceButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddResourceButton.Name = "AddResourceButton";
             this.AddResourceButton.Size = new System.Drawing.Size(23, 22);
-            this.AddResourceButton.Text = "toolStripButton1";
             this.AddResourceButton.ToolTipText = "Add a new resource to the package";
             this.AddResourceButton.Click += new System.EventHandler(this.AddResourceButton_Click);
             // 
@@ -221,7 +218,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.DeleteResourceButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DeleteResourceButton.Name = "DeleteResourceButton";
             this.DeleteResourceButton.Size = new System.Drawing.Size(23, 22);
-            this.DeleteResourceButton.Text = "toolStripButton2";
             this.DeleteResourceButton.ToolTipText = "Delete the selected item";
             this.DeleteResourceButton.Click += new System.EventHandler(this.DeleteResourceButton_Click);
             // 
@@ -297,7 +293,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.AddResourceData.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddResourceData.Name = "AddResourceData";
             this.AddResourceData.Size = new System.Drawing.Size(23, 22);
-            this.AddResourceData.Text = "toolStripButton1";
             this.AddResourceData.ToolTipText = "Add a file";
             this.AddResourceData.Click += new System.EventHandler(this.AddResourceData_Click);
             // 
@@ -309,7 +304,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.DeleteResourceData.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DeleteResourceData.Name = "DeleteResourceData";
             this.DeleteResourceData.Size = new System.Drawing.Size(23, 22);
-            this.DeleteResourceData.Text = "toolStripButton3";
             this.DeleteResourceData.ToolTipText = "Delete the selected file";
             this.DeleteResourceData.Click += new System.EventHandler(this.DeleteResourceData_Click);
             // 
@@ -321,7 +315,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.EditResourceData.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EditResourceData.Name = "EditResourceData";
             this.EditResourceData.Size = new System.Drawing.Size(23, 22);
-            this.EditResourceData.Text = "toolStripButton2";
             this.EditResourceData.ToolTipText = "Edit the selected files metadata";
             this.EditResourceData.Click += new System.EventHandler(this.EditResourceData_Click);
             // 
@@ -338,7 +331,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.SaveResourceData.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveResourceData.Name = "SaveResourceData";
             this.SaveResourceData.Size = new System.Drawing.Size(23, 22);
-            this.SaveResourceData.Text = "toolStripButton4";
             this.SaveResourceData.ToolTipText = "Save the selected file";
             this.SaveResourceData.Click += new System.EventHandler(this.SaveResourceData_Click);
             // 

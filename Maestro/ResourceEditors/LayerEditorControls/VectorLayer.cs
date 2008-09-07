@@ -541,7 +541,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(793, 25);
             this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
             // 
             // AddScaleRangeButton
             // 
@@ -550,7 +549,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.AddScaleRangeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddScaleRangeButton.Name = "AddScaleRangeButton";
             this.AddScaleRangeButton.Size = new System.Drawing.Size(23, 22);
-            this.AddScaleRangeButton.Text = "toolStripButton1";
             this.AddScaleRangeButton.ToolTipText = "Add a scale range";
             this.AddScaleRangeButton.Click += new System.EventHandler(this.AddScaleRangeButton_Click);
             // 
@@ -588,7 +586,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.OpenInWindowButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.OpenInWindowButton.Name = "OpenInWindowButton";
             this.OpenInWindowButton.Size = new System.Drawing.Size(23, 22);
-            this.OpenInWindowButton.Text = "toolStripButton1";
             this.OpenInWindowButton.ToolTipText = "Show the scale setup in a seperate window";
             this.OpenInWindowButton.Click += new System.EventHandler(this.OpenInWindowButton_Click);
             // 
@@ -599,7 +596,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.CloseWindowButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CloseWindowButton.Name = "CloseWindowButton";
             this.CloseWindowButton.Size = new System.Drawing.Size(23, 22);
-            this.CloseWindowButton.Text = "toolStripButton1";
             this.CloseWindowButton.ToolTipText = "Click here to restore the control in the editor";
             this.CloseWindowButton.Visible = false;
             this.CloseWindowButton.Click += new System.EventHandler(this.CloseWindowButton_Click);

@@ -30,6 +30,7 @@ namespace OSGeo.MapGuide.Maestro
     public partial class BoundsPicker : Form
     {
         private string m_bounds;
+        private Globalizator.Globalizator m_globalizor = null;
 
         public string SRSBounds
         {
@@ -89,6 +90,7 @@ namespace OSGeo.MapGuide.Maestro
         private BoundsPicker()
         {
             InitializeComponent();
+            m_globalizor = new Globalizator.Globalizator(this);
         }
 
         private void OKBtn_Click(object sender, EventArgs e)
@@ -145,11 +147,11 @@ namespace OSGeo.MapGuide.Maestro
                             MessageBox.Show(this, "Failed to convert the Min Y value", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (double.TryParse(MaxX.Text, System.Globalization.NumberStyles.Float, localCI, out temp))
-                            MaxX.Text = temp.ToString(usCI);
+                        if (double.TryParse(MaxY.Text, System.Globalization.NumberStyles.Float, localCI, out temp))
+                            MaxY.Text = temp.ToString(usCI);
                         else
                         {
-                            MessageBox.Show(this, "Failed to convert the Max X value", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, "Failed to convert the Max Y value", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         break;

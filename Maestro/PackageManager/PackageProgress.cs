@@ -30,10 +30,12 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
     public partial class PackageProgress : Form
     {
         private bool m_allowClose = true;
+        private Globalizator.Globalizator m_globalizor = null;
 
         public PackageProgress()
         {
             InitializeComponent();
+            m_globalizor = new Globalizator.Globalizator(this);
         }
 
         private void PackageProgress_Load(object sender, EventArgs e)
@@ -45,7 +47,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         {
             if (!m_allowClose && e.CloseReason == CloseReason.UserClosing)
             {
-                if (MessageBox.Show(this, "Do you want to cancel?", Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) == DialogResult.Yes)
+                if (MessageBox.Show(this, m_globalizor.Translate("Do you want to cancel?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) == DialogResult.Yes)
                     m_allowClose = true;
                 else
                     e.Cancel = true;

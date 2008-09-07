@@ -45,20 +45,6 @@
 	<data name="OSGeo.MapGuide.Maestro.FormAbout.label1.Text" type="System.String">
 		<value>MapGuide Maestro</value>
 	</data>
-	<data name="OSGeo.MapGuide.Maestro.FormAbout.tabControl.licenseTab.License.Text" type="System.String">
-		<value>Copyright (C) 2006, Kenneth Skovhede
-http://www.hexad.dk, opensource@hexad.dk
-
-Esta aplicación es software libre; puedes distribuirlo y 
-modificarlo bajo los términos de la GNU, Lesser General Public License publicado por la Free Software Foundation; cualquier
-versión 2.1 de la licencia, o (como prefieras) cualquier versión posterior.
-
-Esta aplicación es distribuída con la esperanza de que sea útil,
-pero SIN NINGÚN TIPO DE GARANTÍA; sin conformidad a la garantía de MERCABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR.  Mira la GNU Lesser General Public License para mas detalle.
-
-Deberías haber recibido una copia de la Lesser General Public License con esta aplicación; Si no es asi, escribe a la
-Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</value>
-	</data>
 	<data name="Selected language: {0}, OS Language: {1}" type="System.String">
 		<value>Idioma seleccionado: {0}, OS idioma: {1}</value>
 	</data>
@@ -67,5 +53,17 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  021
 	</data>
 	<data name="Version: {0}" type="System.String">
 		<value>Versión: {0}</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.FormAbout.licenseTab.Text" type="System.String">
+		<value>License</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.FormAbout.creditsTab.Text" type="System.String">
+		<value>Credits</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.FormAbout.thirdPartyTab.Text" type="System.String">
+		<value>Thirdparty</value>
+	</data>
+	<data name="OSGeo.MapGuide.Maestro.FormAbout.label2.Text" type="System.String">
+		<value>This program uses the following thirdparty libraries:</value>
 	</data>
 </root>

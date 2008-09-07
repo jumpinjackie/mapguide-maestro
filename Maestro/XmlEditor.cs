@@ -252,7 +252,6 @@ namespace OSGeo.MapGuide.Maestro
             this.toolBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolBar.Size = new System.Drawing.Size(656, 25);
             this.toolBar.TabIndex = 4;
-            this.toolBar.Text = "toolStrip1";
             // 
             // CopyClipboardButton
             // 
@@ -261,7 +260,6 @@ namespace OSGeo.MapGuide.Maestro
             this.CopyClipboardButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CopyClipboardButton.Name = "CopyClipboardButton";
             this.CopyClipboardButton.Size = new System.Drawing.Size(23, 22);
-            this.CopyClipboardButton.Text = "toolStripButton1";
             this.CopyClipboardButton.ToolTipText = "Copy selected text to the clipboard";
             this.CopyClipboardButton.Click += new System.EventHandler(this.CopyClipboardButton_Click);
             // 
@@ -272,7 +270,6 @@ namespace OSGeo.MapGuide.Maestro
             this.CutClipboardButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CutClipboardButton.Name = "CutClipboardButton";
             this.CutClipboardButton.Size = new System.Drawing.Size(23, 22);
-            this.CutClipboardButton.Text = "toolStripButton2";
             this.CutClipboardButton.ToolTipText = "Cut the selected text and place it in the clipboard";
             this.CutClipboardButton.Click += new System.EventHandler(this.CutClipboardButton_Click);
             // 
@@ -283,7 +280,6 @@ namespace OSGeo.MapGuide.Maestro
             this.PasteClipboardButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PasteClipboardButton.Name = "PasteClipboardButton";
             this.PasteClipboardButton.Size = new System.Drawing.Size(23, 22);
-            this.PasteClipboardButton.Text = "toolStripButton3";
             this.PasteClipboardButton.ToolTipText = "Paste text from the clipboard";
             this.PasteClipboardButton.Click += new System.EventHandler(this.PasteClipboardButton_Click);
             // 
@@ -299,7 +295,6 @@ namespace OSGeo.MapGuide.Maestro
             this.UndoClipboardButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.UndoClipboardButton.Name = "UndoClipboardButton";
             this.UndoClipboardButton.Size = new System.Drawing.Size(23, 22);
-            this.UndoClipboardButton.Text = "toolStripButton4";
             this.UndoClipboardButton.ToolTipText = "Undo the last action";
             this.UndoClipboardButton.Click += new System.EventHandler(this.UndoClipboardButton_Click);
             // 
@@ -310,7 +305,6 @@ namespace OSGeo.MapGuide.Maestro
             this.RedoClipboardButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RedoClipboardButton.Name = "RedoClipboardButton";
             this.RedoClipboardButton.Size = new System.Drawing.Size(23, 22);
-            this.RedoClipboardButton.Text = "toolStripButton5";
             this.RedoClipboardButton.ToolTipText = "Redo the last action";
             this.RedoClipboardButton.Click += new System.EventHandler(this.RedoClipboardButton_Click);
             // 
@@ -341,7 +335,6 @@ namespace OSGeo.MapGuide.Maestro
             this.LaunchExternalEditorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.LaunchExternalEditorButton.Name = "LaunchExternalEditorButton";
             this.LaunchExternalEditorButton.Size = new System.Drawing.Size(23, 22);
-            this.LaunchExternalEditorButton.Text = "toolStripButton7";
             this.LaunchExternalEditorButton.ToolTipText = "Launch the system editor associated with xml files";
             this.LaunchExternalEditorButton.Click += new System.EventHandler(this.LaunchExternalEditorButton_Click);
             // 

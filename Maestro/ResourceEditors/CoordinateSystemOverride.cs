@@ -109,7 +109,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             toolStrip.Size = new System.Drawing.Size(648, 25);
             toolStrip.TabIndex = 5;
-            toolStrip.Text = "toolStrip1";
             // 
             // AddButton
             // 
@@ -118,7 +117,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.AddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(23, 22);
-            this.AddButton.Text = "toolStripButton1";
             this.AddButton.ToolTipText = "Add a new coordinate system override";
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
@@ -130,7 +128,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.DeleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(23, 22);
-            this.DeleteButton.Text = "toolStripButton2";
             this.DeleteButton.ToolTipText = "Delete a coordinate system override";
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -147,7 +144,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.EditButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(23, 22);
-            this.EditButton.Text = "toolStripButton3";
             this.EditButton.ToolTipText = "Edit a coordinate system override";
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
@@ -158,7 +154,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.RefreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(23, 22);
-            this.RefreshButton.Text = "toolStripButton4";
             this.RefreshButton.ToolTipText = "Fetch coordinate systems found in the featuresource";
             this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
@@ -199,7 +194,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.DisplayRawXml.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DisplayRawXml.Name = "DisplayRawXml";
             this.DisplayRawXml.Size = new System.Drawing.Size(23, 22);
-            this.DisplayRawXml.Text = "toolStripButton1";
             this.DisplayRawXml.ToolTipText = "Click here to view the spatial context information";
             this.DisplayRawXml.Click += new System.EventHandler(this.DisplayRawXml_Click);
             // 

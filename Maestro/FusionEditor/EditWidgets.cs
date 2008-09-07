@@ -77,7 +77,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		private FusionEditor.CustomizedEditors.ZoomOnClick ZoomOnClick;
 		private FusionEditor.CustomizedEditors.ZoomToSelection ZoomToSelection;
         private ToolStrip toolStrip1;
-        private ToolStripSplitButton AddWidgetButton;
+        private ToolStripDropDownButton AddWidgetButton;
         private ToolStripButton RemoveWidgetButton;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton MoveWidgetUpButton;
@@ -134,7 +134,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.panel1 = new System.Windows.Forms.Panel();
             this.WidgetList = new System.Windows.Forms.ListView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.AddWidgetButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.AddWidgetButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.RemoveWidgetButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MoveWidgetUpButton = new System.Windows.Forms.ToolStripButton();
@@ -242,7 +242,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(184, 25);
             this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
             // 
             // AddWidgetButton
             // 
@@ -254,9 +253,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.AddWidgetButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddWidgetButton.Name = "AddWidgetButton";
             this.AddWidgetButton.Size = new System.Drawing.Size(32, 22);
-            this.AddWidgetButton.Text = "toolStripSplitButton1";
             this.AddWidgetButton.ToolTipText = "Add a new widget to the list";
-            this.AddWidgetButton.ButtonClick += new System.EventHandler(this.AddWidgetButton_ButtonClick);
             // 
             // RemoveWidgetButton
             // 
@@ -266,7 +263,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.RemoveWidgetButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RemoveWidgetButton.Name = "RemoveWidgetButton";
             this.RemoveWidgetButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveWidgetButton.Text = "toolStripButton1";
             this.RemoveWidgetButton.ToolTipText = "Remove the selected widget from the list";
             this.RemoveWidgetButton.Click += new System.EventHandler(this.RemoveWidgetButton_Click);
             // 
@@ -283,7 +279,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.MoveWidgetUpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MoveWidgetUpButton.Name = "MoveWidgetUpButton";
             this.MoveWidgetUpButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveWidgetUpButton.Text = "toolStripButton2";
             this.MoveWidgetUpButton.ToolTipText = "Move the selected widget up";
             this.MoveWidgetUpButton.Click += new System.EventHandler(this.MoveWidgetUpButton_Click);
             // 
@@ -295,7 +290,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.MoveWidgetDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MoveWidgetDownButton.Name = "MoveWidgetDownButton";
             this.MoveWidgetDownButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveWidgetDownButton.Text = "toolStripButton3";
             this.MoveWidgetDownButton.ToolTipText = "Move the selected widget down";
             this.MoveWidgetDownButton.Click += new System.EventHandler(this.MoveWidgetDownButton_Click);
             // 
@@ -817,11 +811,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		{
 			WidgetList_SelectedIndexChanged(sender, e);
 		}
-
-        private void AddWidgetButton_ButtonClick(object sender, EventArgs e)
-        {
-            AddWidgetButton.ShowDropDown();
-        }
 
         private void RemoveWidgetButton_Click(object sender, EventArgs e)
         {

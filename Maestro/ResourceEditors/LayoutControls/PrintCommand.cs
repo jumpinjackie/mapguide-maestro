@@ -145,7 +145,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip.Size = new System.Drawing.Size(208, 25);
             this.toolStrip.TabIndex = 3;
-            this.toolStrip.Text = "toolStrip1";
             // 
             // AddPrintLayout
             // 
@@ -154,7 +153,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             this.AddPrintLayout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddPrintLayout.Name = "AddPrintLayout";
             this.AddPrintLayout.Size = new System.Drawing.Size(23, 22);
-            this.AddPrintLayout.Text = "toolStripButton1";
             this.AddPrintLayout.Click += new System.EventHandler(this.AddPrintLayout_Click);
             // 
             // RemovePrintLayout
@@ -165,7 +163,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             this.RemovePrintLayout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RemovePrintLayout.Name = "RemovePrintLayout";
             this.RemovePrintLayout.Size = new System.Drawing.Size(23, 22);
-            this.RemovePrintLayout.Text = "toolStripButton2";
             this.RemovePrintLayout.Click += new System.EventHandler(this.RemovePrintLayout_Click);
             // 
             // PrintCommand

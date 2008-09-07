@@ -164,7 +164,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ResourceDataFilesToolbar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.ResourceDataFilesToolbar.Size = new System.Drawing.Size(656, 25);
             this.ResourceDataFilesToolbar.TabIndex = 2;
-            this.ResourceDataFilesToolbar.Text = "toolStrip1";
             // 
             // AddFileButton
             // 

@@ -36,6 +36,8 @@ namespace OSGeo.MapGuide.Maestro
         private ResourceDocumentHeaderType m_resourceHeader;
         private ResourceFolderHeaderType m_folderHeader;
 
+        private Globalizator.Globalizator m_globalizor = null;
+
         private bool m_isUpdating = false;
         private string[] m_srslist = null;
 
@@ -70,6 +72,9 @@ namespace OSGeo.MapGuide.Maestro
         private ResourceProperties()
         {
             InitializeComponent();
+            m_globalizor = new Globalizator.Globalizator(this);
+            for (int i = 0; i < StatusNames.Length; i++)
+                StatusNames[i] = m_globalizor.Translate(StatusNames[i]);
         }
 
         private void ResourceProperties_Load(object sender, EventArgs e)
@@ -582,7 +587,7 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format("Failed to save the resource properties: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(m_globalizor.Translate("Failed to save the resource properties: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

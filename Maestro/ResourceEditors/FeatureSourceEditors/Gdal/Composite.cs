@@ -45,7 +45,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
         private ToolStrip toolStrip;
         private ToolStripButton DeleteButton;
         private ToolStripButton RefreshButton;
-        private ToolStripSplitButton AddButton;
+        private ToolStripDropDownButton AddButton;
         private ToolStripMenuItem browseAliasToolStripMenuItem;
         private ToolStripMenuItem browseFilesToolStripMenuItem;
         private ToolStripMenuItem browseFolderToolStripMenuItem;
@@ -117,7 +117,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
             this.label1 = new System.Windows.Forms.Label();
             this.RebuildButton = new System.Windows.Forms.Button();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.AddButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.AddButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.browseAliasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.browseFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.browseFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -184,7 +184,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip.Size = new System.Drawing.Size(376, 25);
             this.toolStrip.TabIndex = 3;
-            this.toolStrip.Text = "toolStrip1";
             // 
             // AddButton
             // 
@@ -199,9 +198,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
             this.AddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(32, 22);
-            this.AddButton.Text = "toolStripSplitButton1";
             this.AddButton.ToolTipText = "Add raster files";
-            this.AddButton.ButtonClick += new System.EventHandler(this.AddButton_Click);
             // 
             // browseAliasToolStripMenuItem
             // 
@@ -246,7 +243,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
             this.DeleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(23, 22);
-            this.DeleteButton.Text = "toolStripButton2";
             this.DeleteButton.ToolTipText = "Remove the selected files";
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -258,7 +254,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
             this.RefreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(23, 22);
-            this.RefreshButton.Text = "toolStripButton3";
             this.RefreshButton.ToolTipText = "Refresh the mapping data for the selected items";
             this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
@@ -480,11 +475,5 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
             m_updater.UpdateItems(files, files);
             UpdateDisplay();
         }
-
-        private void AddButton_Click(object sender, EventArgs e)
-        {
-            AddButton.ShowDropDown();
-        }
-
 	}
 }

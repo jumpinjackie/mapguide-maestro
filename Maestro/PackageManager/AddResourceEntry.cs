@@ -29,9 +29,12 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 {
     public partial class AddResourceEntry : Form
     {
+        private Globalizator.Globalizator m_globalizor = null;
+
         public AddResourceEntry()
         {
             InitializeComponent();
+            m_globalizor = new Globalizator.Globalizator(this);
         }
 
         private void UseHeader_CheckedChanged(object sender, EventArgs e)
@@ -57,28 +60,28 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             {
                 if (UseAlternateName.Checked && AlternateName.Text.Trim().Length == 0)
                 {
-                    MessageBox.Show(this, "You must enter a alternate name, or remove the checkmark", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, m_globalizor.Translate("You must enter a alternate name, or remove the checkmark"), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     AlternateName.Focus();
                     return;
                 }
 
                 if (UseHeader.Checked && !System.IO.File.Exists(HeaderPath.Text))
                 {
-                    MessageBox.Show(this, "The header file does not exist", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, m_globalizor.Translate("The header file does not exist"), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     HeaderPath.Focus();
                     return;
                 }
 
                 if (!System.IO.File.Exists(ContentPath.Text))
                 {
-                    MessageBox.Show(this, "The content file does not exist", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, m_globalizor.Translate("The content file does not exist"), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ContentPath.Focus();
                     return;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format("Failed to validate the filenames: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(m_globalizor.Translate("Failed to validate the filenames: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

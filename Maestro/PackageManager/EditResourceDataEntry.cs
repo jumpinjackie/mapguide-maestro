@@ -33,6 +33,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         private string m_contentType;
         private string m_filename;
         private string m_datatype;
+        private Globalizator.Globalizator m_globalizor = null;
 
         public string ResourceName
         {
@@ -61,6 +62,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         public EditResourceDataEntry()
         {
             InitializeComponent();
+            m_globalizor = new Globalizator.Globalizator(this);
         }
 
         private void EditResourceDataEntry_Load(object sender, EventArgs e)

@@ -54,7 +54,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                     if (ex.Message == "CANCEL" || ex as ObjectDisposedException != null)
                         return;
                     
-                    MessageBox.Show(string.Format("Failed to upload package: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Failed to upload package: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     m_owner.Cancel();
                     return;
                 }
@@ -73,7 +73,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                         if (total == -1)
                         {
                             m_owner.CurrentProgress.Style = ProgressBarStyle.Marquee;
-                            m_owner.SetOperation("Uploading file...");
+                            m_owner.SetOperation(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Uploading file..."));
                         }
                         else
                             m_owner.CurrentProgress.Style = ProgressBarStyle.Blocks;
@@ -83,14 +83,14 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
                     if (total != -1)
                     {
-                        m_owner.SetOperation(string.Format("Uploaded {0} of {1}", Utility.FormatSizeString(copied), Utility.FormatSizeString(total)));
+                        m_owner.SetOperation(string.Format(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Uploaded {0} of {1}"), Utility.FormatSizeString(copied), Utility.FormatSizeString(total)));
                         m_owner.SetCurrentProgress((int)((copied / (double)total) * 100), 100);
                     }
 
                     if (remain == 0)
                     {
                         m_owner.CurrentProgress.Style = ProgressBarStyle.Marquee;
-                        m_owner.SetOperation("Waiting for server to complete restore operation...");
+                        m_owner.SetOperation(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Waiting for server to complete restore operation..."));
                     }
                     else
                     {
@@ -113,7 +113,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             dlg.FilterIndex = 0;
             dlg.Multiselect = false;
             dlg.ValidateNames = true;
-            dlg.Title = "Select the package to upload";
+            dlg.Title = Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Select the package to upload");
 
             if (dlg.ShowDialog(owner) == DialogResult.OK)
             {

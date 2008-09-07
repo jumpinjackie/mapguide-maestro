@@ -231,8 +231,10 @@ namespace Globalizator
 					if (resObj != null)
 					{
 						p.SetValue(obj, Convert.ChangeType(resObj, p.PropertyType), null);
-						if (obj as System.Windows.Forms.Label != null)
-							(obj as System.Windows.Forms.Label).AutoSize = true;
+                        if (obj as System.Windows.Forms.Label != null)
+                            (obj as System.Windows.Forms.Label).AutoSize = true;
+                        else if (obj as System.Windows.Forms.CheckBox != null)
+                            (obj as System.Windows.Forms.CheckBox).AutoSize = true;
 					}
 //When debuggin, this drops the current values into the console for grabbing
 #if DEBUG_LOC

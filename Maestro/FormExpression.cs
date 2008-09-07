@@ -33,10 +33,12 @@ namespace OSGeo.MapGuide.Maestro
         private FeatureSourceDescription.FeatureSourceSchema m_schema;
         private string m_providername;
         private ServerConnectionI m_connection;
+        private Globalizator.Globalizator m_globalizor = null;
 
         public FormExpression()
         {
             InitializeComponent();
+            m_globalizor = new Globalizator.Globalizator(this);
         }
 
         public string Expression

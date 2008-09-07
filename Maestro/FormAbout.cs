@@ -96,9 +96,9 @@ namespace OSGeo.MapGuide.Maestro
             this.creditsTab = new System.Windows.Forms.TabPage();
             this.Credits = new System.Windows.Forms.TextBox();
             this.thirdPartyTab = new System.Windows.Forms.TabPage();
+            this.ziplibLinkLabel = new System.Windows.Forms.LinkLabel();
             this.tfnetLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
-            this.ziplibLinkLabel = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayPalImage)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -230,6 +230,17 @@ namespace OSGeo.MapGuide.Maestro
             this.thirdPartyTab.Text = "Thirdparty";
             this.thirdPartyTab.UseVisualStyleBackColor = true;
             // 
+            // ziplibLinkLabel
+            // 
+            this.ziplibLinkLabel.AutoSize = true;
+            this.ziplibLinkLabel.Location = new System.Drawing.Point(8, 56);
+            this.ziplibLinkLabel.Name = "ziplibLinkLabel";
+            this.ziplibLinkLabel.Size = new System.Drawing.Size(80, 13);
+            this.ziplibLinkLabel.TabIndex = 2;
+            this.ziplibLinkLabel.TabStop = true;
+            this.ziplibLinkLabel.Text = "ICSharp Zip Lib";
+            this.ziplibLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ziplibLinkLabel_LinkClicked);
+            // 
             // tfnetLinkLabel
             // 
             this.tfnetLinkLabel.AutoSize = true;
@@ -249,17 +260,6 @@ namespace OSGeo.MapGuide.Maestro
             this.label2.Size = new System.Drawing.Size(242, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "This program uses the following thirdparty libraries:";
-            // 
-            // ziplibLinkLabel
-            // 
-            this.ziplibLinkLabel.AutoSize = true;
-            this.ziplibLinkLabel.Location = new System.Drawing.Point(8, 56);
-            this.ziplibLinkLabel.Name = "ziplibLinkLabel";
-            this.ziplibLinkLabel.Size = new System.Drawing.Size(80, 13);
-            this.ziplibLinkLabel.TabIndex = 2;
-            this.ziplibLinkLabel.TabStop = true;
-            this.ziplibLinkLabel.Text = "ICSharp Zip Lib";
-            this.ziplibLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ziplibLinkLabel_LinkClicked);
             // 
             // FormAbout
             // 

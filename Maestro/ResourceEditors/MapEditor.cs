@@ -706,7 +706,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.tlbLayerGroups.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.tlbLayerGroups.Size = new System.Drawing.Size(248, 25);
             this.tlbLayerGroups.TabIndex = 2;
-            this.tlbLayerGroups.Text = "toolStrip1";
             // 
             // AddGroupButton
             // 
@@ -715,7 +714,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.AddGroupButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddGroupButton.Name = "AddGroupButton";
             this.AddGroupButton.Size = new System.Drawing.Size(23, 22);
-            this.AddGroupButton.Text = "toolStripButton1";
             this.AddGroupButton.ToolTipText = "Add a new group";
             this.AddGroupButton.Click += new System.EventHandler(this.AddGroupButton_Click);
             // 
@@ -726,7 +724,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.RemoveGroupButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RemoveGroupButton.Name = "RemoveGroupButton";
             this.RemoveGroupButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveGroupButton.Text = "toolStripButton2";
             this.RemoveGroupButton.ToolTipText = "Remove the selected group and contents";
             this.RemoveGroupButton.Click += new System.EventHandler(this.RemoveGroupButton_Click);
             // 
@@ -742,7 +739,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.AddLayerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddLayerButton.Name = "AddLayerButton";
             this.AddLayerButton.Size = new System.Drawing.Size(23, 22);
-            this.AddLayerButton.Text = "toolStripButton3";
             this.AddLayerButton.ToolTipText = "Add a new layer to the map";
             this.AddLayerButton.Click += new System.EventHandler(this.AddLayerButton_Click);
             // 
@@ -753,7 +749,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.RemoveLayerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RemoveLayerButton.Name = "RemoveLayerButton";
             this.RemoveLayerButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveLayerButton.Text = "toolStripButton4";
             this.RemoveLayerButton.ToolTipText = "Remove a layer from the group";
             this.RemoveLayerButton.Click += new System.EventHandler(this.RemoveLayerButton_Click);
             // 
@@ -769,7 +764,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveLayerUpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MoveLayerUpButton.Name = "MoveLayerUpButton";
             this.MoveLayerUpButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveLayerUpButton.Text = "toolStripButton5";
             this.MoveLayerUpButton.ToolTipText = "Move the selected layer up";
             this.MoveLayerUpButton.Click += new System.EventHandler(this.MoveLayerUpButton_Click);
             // 
@@ -780,7 +774,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveLayerDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MoveLayerDownButton.Name = "MoveLayerDownButton";
             this.MoveLayerDownButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveLayerDownButton.Text = "toolStripButton6";
             this.MoveLayerDownButton.ToolTipText = "Move the selected layer down";
             this.MoveLayerDownButton.Click += new System.EventHandler(this.MoveLayerDownButton_Click);
             // 
@@ -828,7 +821,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(248, 25);
             this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
             // 
             // AddLayerOrderButton
             // 
@@ -862,7 +854,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveLayerUpOrderButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MoveLayerUpOrderButton.Name = "MoveLayerUpOrderButton";
             this.MoveLayerUpOrderButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveLayerUpOrderButton.Text = "toolStripButton3";
             this.MoveLayerUpOrderButton.ToolTipText = "Move the selected layers up";
             this.MoveLayerUpOrderButton.Click += new System.EventHandler(this.MoveLayerUpOrderButton_Click);
             // 
@@ -873,7 +864,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveLayerDownOrderButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MoveLayerDownOrderButton.Name = "MoveLayerDownOrderButton";
             this.MoveLayerDownOrderButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveLayerDownOrderButton.Text = "toolStripButton3";
             this.MoveLayerDownOrderButton.ToolTipText = "Move the selected layers down";
             this.MoveLayerDownOrderButton.Click += new System.EventHandler(this.MoveLayerDownOrderButton_Click);
             // 

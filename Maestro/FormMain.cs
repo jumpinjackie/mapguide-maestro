@@ -88,7 +88,7 @@ namespace OSGeo.MapGuide.Maestro
         private System.Windows.Forms.ToolStripMenuItem OpenSiteAdmin;
 		private  Globalizator.Globalizator m_globalizor = null;
         private ToolStrip ResourceTreeToolbar;
-        private ToolStripSplitButton AddResourceButton;
+        private ToolStripDropDownButton AddResourceButton;
         private ToolStripButton DeleteResourceButton;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton ResourceTreeCopy;
@@ -171,7 +171,7 @@ namespace OSGeo.MapGuide.Maestro
             this.DeleteMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.NewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ResourceTreeToolbar = new System.Windows.Forms.ToolStrip();
-            this.AddResourceButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.AddResourceButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.DeleteResourceButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ResourceTreeCopy = new System.Windows.Forms.ToolStripButton();
@@ -211,6 +211,8 @@ namespace OSGeo.MapGuide.Maestro
             this.modifyPackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restorePackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewLastExceptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.MainMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -221,8 +223,6 @@ namespace OSGeo.MapGuide.Maestro
             this.EditAsXmlButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ClosePageButton = new System.Windows.Forms.ToolStripButton();
-            this.viewLastExceptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -368,7 +368,6 @@ namespace OSGeo.MapGuide.Maestro
             this.ResourceTreeToolbar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.ResourceTreeToolbar.Size = new System.Drawing.Size(278, 39);
             this.ResourceTreeToolbar.TabIndex = 2;
-            this.ResourceTreeToolbar.Text = "toolStrip1";
             // 
             // AddResourceButton
             // 
@@ -378,9 +377,7 @@ namespace OSGeo.MapGuide.Maestro
             this.AddResourceButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddResourceButton.Name = "AddResourceButton";
             this.AddResourceButton.Size = new System.Drawing.Size(48, 36);
-            this.AddResourceButton.Text = "toolStripSplitButton1";
             this.AddResourceButton.ToolTipText = "Creates a new resource";
-            this.AddResourceButton.ButtonClick += new System.EventHandler(this.AddResourceButton_ButtonClick);
             // 
             // DeleteResourceButton
             // 
@@ -391,7 +388,6 @@ namespace OSGeo.MapGuide.Maestro
             this.DeleteResourceButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DeleteResourceButton.Name = "DeleteResourceButton";
             this.DeleteResourceButton.Size = new System.Drawing.Size(36, 36);
-            this.DeleteResourceButton.Text = "toolStripButton3";
             this.DeleteResourceButton.ToolTipText = "Deletes the selected resource or folder";
             this.DeleteResourceButton.Click += new System.EventHandler(this.DeleteResourceButton_Click);
             // 
@@ -409,7 +405,6 @@ namespace OSGeo.MapGuide.Maestro
             this.ResourceTreeCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ResourceTreeCopy.Name = "ResourceTreeCopy";
             this.ResourceTreeCopy.Size = new System.Drawing.Size(36, 36);
-            this.ResourceTreeCopy.Text = "toolStripButton4";
             this.ResourceTreeCopy.ToolTipText = "Copies the current resource or folder to the clipboard";
             this.ResourceTreeCopy.Click += new System.EventHandler(this.ResourceTreeCopy_Click);
             // 
@@ -422,7 +417,6 @@ namespace OSGeo.MapGuide.Maestro
             this.ResourceTreeCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ResourceTreeCut.Name = "ResourceTreeCut";
             this.ResourceTreeCut.Size = new System.Drawing.Size(36, 36);
-            this.ResourceTreeCut.Text = "toolStripButton5";
             this.ResourceTreeCut.ToolTipText = "Cuts the current resource or folder to the clipboard";
             this.ResourceTreeCut.Click += new System.EventHandler(this.ResourceTreeCut_Click);
             // 
@@ -435,7 +429,6 @@ namespace OSGeo.MapGuide.Maestro
             this.ResourceTreePaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ResourceTreePaste.Name = "ResourceTreePaste";
             this.ResourceTreePaste.Size = new System.Drawing.Size(36, 36);
-            this.ResourceTreePaste.Text = "toolStripButton6";
             this.ResourceTreePaste.ToolTipText = "Pastes the current content of the clipboard";
             this.ResourceTreePaste.Click += new System.EventHandler(this.ResourceTreePaste_Click);
             // 
@@ -452,7 +445,6 @@ namespace OSGeo.MapGuide.Maestro
             this.ResourceTreeRefreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ResourceTreeRefreshButton.Name = "ResourceTreeRefreshButton";
             this.ResourceTreeRefreshButton.Size = new System.Drawing.Size(36, 36);
-            this.ResourceTreeRefreshButton.Text = "toolStripButton7";
             this.ResourceTreeRefreshButton.ToolTipText = "Refreshes the tree to match the current server state";
             this.ResourceTreeRefreshButton.Click += new System.EventHandler(this.ResourceTreeRefreshButton_Click);
             // 
@@ -737,6 +729,18 @@ namespace OSGeo.MapGuide.Maestro
             this.menuItem3.Size = new System.Drawing.Size(40, 20);
             this.menuItem3.Text = "Help";
             // 
+            // viewLastExceptionToolStripMenuItem
+            // 
+            this.viewLastExceptionToolStripMenuItem.Name = "viewLastExceptionToolStripMenuItem";
+            this.viewLastExceptionToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.viewLastExceptionToolStripMenuItem.Text = "Last exception...";
+            this.viewLastExceptionToolStripMenuItem.Click += new System.EventHandler(this.viewLastExceptionToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(164, 6);
+            // 
             // MainMenuAbout
             // 
             this.MainMenuAbout.Name = "MainMenuAbout";
@@ -783,7 +787,6 @@ namespace OSGeo.MapGuide.Maestro
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(418, 39);
             this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
             // 
             // SaveResourceButton
             // 
@@ -792,7 +795,6 @@ namespace OSGeo.MapGuide.Maestro
             this.SaveResourceButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveResourceButton.Name = "SaveResourceButton";
             this.SaveResourceButton.Size = new System.Drawing.Size(36, 36);
-            this.SaveResourceButton.Text = "toolStripButton1";
             this.SaveResourceButton.ToolTipText = "Saves the current resource";
             this.SaveResourceButton.Click += new System.EventHandler(this.SaveResourceButton_Click);
             // 
@@ -803,7 +805,6 @@ namespace OSGeo.MapGuide.Maestro
             this.SaveResourceAsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveResourceAsButton.Name = "SaveResourceAsButton";
             this.SaveResourceAsButton.Size = new System.Drawing.Size(36, 36);
-            this.SaveResourceAsButton.Text = "toolStripButton2";
             this.SaveResourceAsButton.ToolTipText = "Saves the current resource under a different name";
             this.SaveResourceAsButton.Click += new System.EventHandler(this.SaveResourceAsButton_Click);
             // 
@@ -819,7 +820,6 @@ namespace OSGeo.MapGuide.Maestro
             this.PreviewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PreviewButton.Name = "PreviewButton";
             this.PreviewButton.Size = new System.Drawing.Size(36, 36);
-            this.PreviewButton.Text = "toolStripButton3";
             this.PreviewButton.ToolTipText = "Preview the item";
             this.PreviewButton.Click += new System.EventHandler(this.PreviewButton_Click);
             // 
@@ -830,7 +830,6 @@ namespace OSGeo.MapGuide.Maestro
             this.EditAsXmlButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EditAsXmlButton.Name = "EditAsXmlButton";
             this.EditAsXmlButton.Size = new System.Drawing.Size(36, 36);
-            this.EditAsXmlButton.Text = "toolStripButton4";
             this.EditAsXmlButton.ToolTipText = "Edits the current resource in an xml editor";
             this.EditAsXmlButton.Click += new System.EventHandler(this.EditAsXmlButton_Click);
             // 
@@ -846,21 +845,8 @@ namespace OSGeo.MapGuide.Maestro
             this.ClosePageButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ClosePageButton.Name = "ClosePageButton";
             this.ClosePageButton.Size = new System.Drawing.Size(36, 36);
-            this.ClosePageButton.Text = "toolStripButton5";
             this.ClosePageButton.ToolTipText = "Close the current page";
             this.ClosePageButton.Click += new System.EventHandler(this.ClosePageButton_Click);
-            // 
-            // viewLastExceptionToolStripMenuItem
-            // 
-            this.viewLastExceptionToolStripMenuItem.Name = "viewLastExceptionToolStripMenuItem";
-            this.viewLastExceptionToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.viewLastExceptionToolStripMenuItem.Text = "Last exception...";
-            this.viewLastExceptionToolStripMenuItem.Click += new System.EventHandler(this.viewLastExceptionToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(164, 6);
             // 
             // FormMain
             // 
@@ -949,15 +935,16 @@ namespace OSGeo.MapGuide.Maestro
 			{
 				foreach(string file in System.IO.Directory.GetFiles(templatepath))
 				{
-                    ToolStripMenuItem menu = new ToolStripMenuItem(System.IO.Path.GetFileNameWithoutExtension(file), m_editors.SmallImageList.Images[m_editors.GetImageIndexFromResourceID(file)], new System.EventHandler(NewResourceMenu_Clicked));
+                    string name = System.IO.Path.GetFileNameWithoutExtension(file);
+                    ToolStripMenuItem menu = new ToolStripMenuItem(m_globalizor.Translate(name), m_editors.SmallImageList.Images[m_editors.GetImageIndexFromResourceID(file)], new System.EventHandler(NewResourceMenu_Clicked));
 					m_templateMenuIndex.Add(menu, file);
 					AddResourceButton.DropDown.Items.Add(menu);
 
-                    menu = new ToolStripMenuItem(System.IO.Path.GetFileNameWithoutExtension(file), m_editors.SmallImageList.Images[m_editors.GetImageIndexFromResourceID(file)], new System.EventHandler(NewResourceMenu_Clicked));
+                    menu = new ToolStripMenuItem(m_globalizor.Translate(name), m_editors.SmallImageList.Images[m_editors.GetImageIndexFromResourceID(file)], new System.EventHandler(NewResourceMenu_Clicked));
 					m_templateMenuIndex.Add(menu, file);
 					MainMenuNew.DropDown.Items.Add(menu);
 
-                    menu = new ToolStripMenuItem(System.IO.Path.GetFileNameWithoutExtension(file), m_editors.SmallImageList.Images[m_editors.GetImageIndexFromResourceID(file)], new System.EventHandler(NewResourceMenu_Clicked));
+                    menu = new ToolStripMenuItem(m_globalizor.Translate(name), m_editors.SmallImageList.Images[m_editors.GetImageIndexFromResourceID(file)], new System.EventHandler(NewResourceMenu_Clicked));
 					m_templateMenuIndex.Add(menu, file);
 					NewMenu.DropDown.Items.Add(menu);
 				}
@@ -2112,11 +2099,6 @@ namespace OSGeo.MapGuide.Maestro
 		public SortedList ResourceDocuments { get { return m_Documents; } }
 		public ResourceEditorMap ResourceEditorMap { get { return m_editors; } }
 		public string LastSelectedNode { get { return m_lastSelectedNode; } }
-
-        private void AddResourceButton_ButtonClick(object sender, EventArgs e)
-        {
-            AddResourceButton.ShowDropDown();
-        }
 
         private void AddFolderButton_Click(object sender, EventArgs e)
         {

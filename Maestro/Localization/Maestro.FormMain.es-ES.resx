@@ -261,4 +261,49 @@
   <data name="OSGeo.MapGuide.Maestro.FormMain.OpenSiteAdmin.Text" type="System.String">
     <value>Abrir página del Administrador...</value>
   </data>
-</root>
+  
+  
+<data name="OSGeo.MapGuide.Maestro.FormMain.MainMenuChangePreferences.Text" type="System.String">
+	<value>Preferences...</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormMain.packagesToolStripMenuItem.Text" type="System.String">
+	<value>Packages</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormMain.createPackageToolStripMenuItem.Text" type="System.String">
+	<value>Create package...</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormMain.modifyPackageToolStripMenuItem.Text" type="System.String">
+	<value>Modify package...</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormMain.restorePackageToolStripMenuItem.Text" type="System.String">
+	<value>Restore package...</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormMain.viewLastExceptionToolStripMenuItem.Text" type="System.String">
+	<value>Last exception...</value>
+</data>
+<data name="Dataconnection" type="System.String">
+	<value>Dataconnection</value>
+</data>
+<data name="Fusion Application" type="System.String">
+	<value>Fusion Application</value>
+</data>
+<data name="Layer" type="System.String">
+	<value>Layer</value>
+</data>
+<data name="Layout" type="System.String">
+	<value>Layout</value>
+</data>
+<data name="Map" type="System.String">
+	<value>Map</value>
+</data>
+<data name="Print Layout" type="System.String">
+	<value>Print Layout</value>
+</data>
+<data name="Symbol Definition" type="System.String">
+	<value>Symbol Definition</value>
+</data>
+<data name="Symbol Library" type="System.String">
+	<value>Symbol Library</value>
+</data>
+
+  </root>

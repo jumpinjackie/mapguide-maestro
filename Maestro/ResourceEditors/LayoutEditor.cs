@@ -110,29 +110,29 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private Globalizator.Globalizator m_globalizor = null;
 		private System.Windows.Forms.TextBox browserURL;
         private ToolStrip ToolbarToolstrip;
-        private ToolStripSplitButton ToolbarAddButton;
+        private ToolStripDropDownButton ToolbarAddButton;
         private ToolStripButton ToolbarDeleteButton;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton ToolbarUpButton;
         private ToolStripButton ToolbarDownButton;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStrip ContextToolstrip;
-        private ToolStripSplitButton ContextAddButton;
+        private ToolStripDropDownButton ContextAddButton;
         private ToolStripButton ContextDeleteButton;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripButton ContextUpButton;
         private ToolStripButton ContextDownButton;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStrip TaskToolstrip;
-        private ToolStripSplitButton TaskAddButton;
+        private ToolStripDropDownButton TaskAddButton;
         private ToolStripButton TaskDeleteButton;
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripButton TaskUpButton;
         private ToolStripButton TaskDownButton;
         private ToolStripSeparator toolStripSeparator6;
-        private ToolStripSplitButton ToolbarCreateButton;
-        private ToolStripSplitButton ContextCreateButton;
-        private ToolStripSplitButton TaskCreateButton;
+        private ToolStripDropDownButton ToolbarCreateButton;
+        private ToolStripDropDownButton ContextCreateButton;
+        private ToolStripDropDownButton TaskCreateButton;
         private ContextMenuStrip AddItemMenu;
         private ToolStripMenuItem AddBuiltInFunctionMenu;
         private ToolStripMenuItem AddCustomItemMenu;
@@ -519,33 +519,33 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ToolbarTab = new System.Windows.Forms.TabPage();
             this.ToolbarTree = new System.Windows.Forms.TreeView();
             this.ToolbarToolstrip = new System.Windows.Forms.ToolStrip();
-            this.ToolbarAddButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.ToolbarAddButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.ToolbarDeleteButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolbarUpButton = new System.Windows.Forms.ToolStripButton();
             this.ToolbarDownButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolbarCreateButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.ToolbarCreateButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.ContextMenuTab = new System.Windows.Forms.TabPage();
             this.ContextTree = new System.Windows.Forms.TreeView();
             this.ContextToolstrip = new System.Windows.Forms.ToolStrip();
-            this.ContextAddButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.ContextAddButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.ContextDeleteButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ContextUpButton = new System.Windows.Forms.ToolStripButton();
             this.ContextDownButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.ContextCreateButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.ContextCreateButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.TaskFrameTab = new System.Windows.Forms.TabPage();
             this.TaskTree = new System.Windows.Forms.TreeView();
             this.TaskToolstrip = new System.Windows.Forms.ToolStrip();
-            this.TaskAddButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.TaskAddButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.TaskDeleteButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.TaskUpButton = new System.Windows.Forms.ToolStripButton();
             this.TaskDownButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.TaskCreateButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.TaskCreateButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.browserURL = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.ShowInBrowser = new System.Windows.Forms.Button();
@@ -1109,7 +1109,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ToolbarToolstrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.ToolbarToolstrip.Size = new System.Drawing.Size(248, 25);
             this.ToolbarToolstrip.TabIndex = 2;
-            this.ToolbarToolstrip.Text = "toolStrip1";
             // 
             // ToolbarAddButton
             // 
@@ -1118,9 +1117,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ToolbarAddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ToolbarAddButton.Name = "ToolbarAddButton";
             this.ToolbarAddButton.Size = new System.Drawing.Size(32, 22);
-            this.ToolbarAddButton.Text = "toolStripSplitButton1";
             this.ToolbarAddButton.ToolTipText = "Click to add a new item";
-            this.ToolbarAddButton.ButtonClick += new System.EventHandler(this.AddButton_Click);
             // 
             // ToolbarDeleteButton
             // 
@@ -1129,7 +1126,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ToolbarDeleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ToolbarDeleteButton.Name = "ToolbarDeleteButton";
             this.ToolbarDeleteButton.Size = new System.Drawing.Size(23, 22);
-            this.ToolbarDeleteButton.Text = "toolStripButton1";
             this.ToolbarDeleteButton.ToolTipText = "Click to delete the selected item";
             this.ToolbarDeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -1145,7 +1141,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ToolbarUpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ToolbarUpButton.Name = "ToolbarUpButton";
             this.ToolbarUpButton.Size = new System.Drawing.Size(23, 22);
-            this.ToolbarUpButton.Text = "toolStripButton2";
             this.ToolbarUpButton.ToolTipText = "Click to move the selected item up";
             this.ToolbarUpButton.Click += new System.EventHandler(this.UpButton_Click);
             // 
@@ -1156,7 +1151,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ToolbarDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ToolbarDownButton.Name = "ToolbarDownButton";
             this.ToolbarDownButton.Size = new System.Drawing.Size(23, 22);
-            this.ToolbarDownButton.Text = "toolStripButton3";
             this.ToolbarDownButton.ToolTipText = "Click to move the selected item down";
             this.ToolbarDownButton.Click += new System.EventHandler(this.DownButton_Click);
             // 
@@ -1172,8 +1166,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ToolbarCreateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ToolbarCreateButton.Name = "ToolbarCreateButton";
             this.ToolbarCreateButton.Size = new System.Drawing.Size(32, 22);
-            this.ToolbarCreateButton.Text = "toolStripSplitButton1";
-            this.ToolbarCreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // ContextMenuTab
             // 
@@ -1225,9 +1217,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ContextAddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ContextAddButton.Name = "ContextAddButton";
             this.ContextAddButton.Size = new System.Drawing.Size(32, 22);
-            this.ContextAddButton.Text = "toolStripSplitButton1";
             this.ContextAddButton.ToolTipText = "Click to add a new item";
-            this.ContextAddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // ContextDeleteButton
             // 
@@ -1236,7 +1226,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ContextDeleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ContextDeleteButton.Name = "ContextDeleteButton";
             this.ContextDeleteButton.Size = new System.Drawing.Size(23, 22);
-            this.ContextDeleteButton.Text = "toolStripButton1";
             this.ContextDeleteButton.ToolTipText = "Click to delete the selected item";
             this.ContextDeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -1252,7 +1241,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ContextUpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ContextUpButton.Name = "ContextUpButton";
             this.ContextUpButton.Size = new System.Drawing.Size(23, 22);
-            this.ContextUpButton.Text = "toolStripButton2";
             this.ContextUpButton.ToolTipText = "Click to move the selected item up";
             this.ContextUpButton.Click += new System.EventHandler(this.UpButton_Click);
             // 
@@ -1263,7 +1251,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ContextDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ContextDownButton.Name = "ContextDownButton";
             this.ContextDownButton.Size = new System.Drawing.Size(23, 22);
-            this.ContextDownButton.Text = "toolStripButton3";
             this.ContextDownButton.ToolTipText = "Click to move the selected item down";
             this.ContextDownButton.Click += new System.EventHandler(this.DownButton_Click);
             // 
@@ -1279,8 +1266,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ContextCreateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ContextCreateButton.Name = "ContextCreateButton";
             this.ContextCreateButton.Size = new System.Drawing.Size(32, 22);
-            this.ContextCreateButton.Text = "toolStripSplitButton1";
-            this.ContextCreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // TaskFrameTab
             // 
@@ -1332,9 +1317,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.TaskAddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TaskAddButton.Name = "TaskAddButton";
             this.TaskAddButton.Size = new System.Drawing.Size(32, 22);
-            this.TaskAddButton.Text = "toolStripSplitButton1";
             this.TaskAddButton.ToolTipText = "Click to add a new item";
-            this.TaskAddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // TaskDeleteButton
             // 
@@ -1343,7 +1326,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.TaskDeleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TaskDeleteButton.Name = "TaskDeleteButton";
             this.TaskDeleteButton.Size = new System.Drawing.Size(23, 22);
-            this.TaskDeleteButton.Text = "toolStripButton1";
             this.TaskDeleteButton.ToolTipText = "Click to delete the selected item";
             this.TaskDeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -1359,7 +1341,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.TaskUpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TaskUpButton.Name = "TaskUpButton";
             this.TaskUpButton.Size = new System.Drawing.Size(23, 22);
-            this.TaskUpButton.Text = "toolStripButton2";
             this.TaskUpButton.ToolTipText = "Click to move the selected item up";
             this.TaskUpButton.Click += new System.EventHandler(this.UpButton_Click);
             // 
@@ -1370,7 +1351,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.TaskDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TaskDownButton.Name = "TaskDownButton";
             this.TaskDownButton.Size = new System.Drawing.Size(23, 22);
-            this.TaskDownButton.Text = "toolStripButton3";
             this.TaskDownButton.ToolTipText = "Click to move the selected item down";
             this.TaskDownButton.Click += new System.EventHandler(this.DownButton_Click);
             // 
@@ -1386,8 +1366,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.TaskCreateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TaskCreateButton.Name = "TaskCreateButton";
             this.TaskCreateButton.Size = new System.Drawing.Size(32, 22);
-            this.TaskCreateButton.Text = "toolStripSplitButton1";
-            this.TaskCreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // browserURL
             // 
@@ -2276,11 +2254,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 		}
 
-        private void AddButton_Click(object sender, EventArgs e)
-        {
-            (sender as ToolStripSplitButton).ShowDropDown();
-        }
-
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             DeleteSelectedItem();            
@@ -2294,11 +2267,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private void DownButton_Click(object sender, EventArgs e)
         {
             MoveItemDown();
-        }
-
-        private void CreateButton_Click(object sender, EventArgs e)
-        {
-            (sender as ToolStripSplitButton).ShowDropDown();
         }
 
         private void ItemTree_ItemDrag(object sender, ItemDragEventArgs e)
