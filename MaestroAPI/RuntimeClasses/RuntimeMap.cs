@@ -669,7 +669,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 				}
 				m_hasTooltips = (vld.ToolTip != null && vld.ToolTip.Trim().Length > 0) || (vld.Url != null && vld.Url.Trim().Length > 0);
 
-				if (base.m_selectable)
+				if (base.m_selectable && base.m_visible)
 					try { FindResourceIDs(layer.Parent.CurrentConnection); }
 					catch {}
 
@@ -1032,9 +1032,20 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 			get { return m_selectable; }
 			set 
 			{ 
-				if (value && (m_ids == null || m_ids.Count == 0))
+				if (m_visible && value && (m_ids == null || m_ids.Count == 0))
 					FindResourceIDs();
 				m_selectable = value; 
+			}
+		}
+
+		public override bool Visible
+		{
+			get { return m_visible; }
+			set 
+			{ 
+				if (m_selectable && value && (m_ids == null || m_ids.Count == 0))
+					FindResourceIDs();
+				m_visible = value; 
 			}
 		}
 
@@ -1052,7 +1063,12 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 
 		public ArrayList IDs 
 		{
-			get { return m_ids; }
+			get 
+			{ 
+				if (m_ids == null || m_ids.Count == 0)
+					FindResourceIDs();
+				return m_ids; 
+			}
 			set { m_ids = value; }
 		}
 		

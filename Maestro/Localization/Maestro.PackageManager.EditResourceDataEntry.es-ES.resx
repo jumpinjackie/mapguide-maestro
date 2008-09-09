@@ -41,24 +41,24 @@
   </resheader>
 
   <data name="OSGeo.MapGuide.Maestro.PackageManager.EditResourceDataEntry.Text" type="System.String">
-	<value>Edit resourcedata details</value>
+	<value>Editar detalles de los datos del recurso</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.EditResourceDataEntry.label1.Text" type="System.String">
-	<value>Name</value>
+	<value>Nombre</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.EditResourceDataEntry.label2.Text" type="System.String">
-	<value>Content type</value>
+	<value>Tipo de contenido</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.EditResourceDataEntry.label3.Text" type="System.String">
-	<value>Data type</value>
+	<value>Tipo de datos</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.EditResourceDataEntry.label4.Text" type="System.String">
-	<value>Filename</value>
+	<value>Nombre del fichero</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.EditResourceDataEntry.OKBtn.Text" type="System.String">
 	<value>OK</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.EditResourceDataEntry.CancelBtn.Text" type="System.String">
-	<value>Cancel</value>
+	<value>Cancelar</value>
 </data>
 </root>

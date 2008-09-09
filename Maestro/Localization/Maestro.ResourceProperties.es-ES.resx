@@ -44,13 +44,13 @@
 	<value>ResourceProperties</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.CancelBtn.Text" type="System.String">
-	<value>Cancel</value>
+	<value>Cancelar</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.OKBtn.Text" type="System.String">
 	<value>OK</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.SecurityTab.Text" type="System.String">
-	<value>Security</value>
+	<value>Seguridad</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.WMSTab.Text" type="System.String">
 	<value>WMS</value>
@@ -59,114 +59,114 @@
 	<value>WFS</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.CustomTab.Text" type="System.String">
-	<value>Custom Metadata</value>
+	<value>Metadatos personalizados</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.UseInherited.Text" type="System.String">
-	<value>Use inherited security settings</value>
+	<value>Usar ajustes heredados de seguridad</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.groupBox1.Text" type="System.String">
-	<value>Description</value>
+	<value>Descripción</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.label1.Text" type="System.String">
-	<value>Title</value>
+	<value>Título</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.label5.Text" type="System.String">
-	<value>Abstract</value>
+	<value>Abstracto</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.label2.Text" type="System.String">
-	<value>Metadata</value>
+	<value>Metadatos</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.label3.Text" type="System.String">
-	<value>Keywords</value>
+	<value>Palabras clave</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.WMSOpaque.Text" type="System.String">
-	<value>Opaque</value>
+	<value>Opaco</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.label4.Text" type="System.String">
-	<value>Bounds</value>
+	<value>Límites</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.WMSAvalible.Text" type="System.String">
-	<value>Avalible</value>
+	<value>Disponible</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.WMSQueryable.Text" type="System.String">
-	<value>Queryable</value>
+	<value>Consultable</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.groupBox2.Text" type="System.String">
-	<value>Functionality</value>
+	<value>Funcionalidad</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.WMSClearHeaderButton.Text" type="System.String">
-	<value>Clear all WMS data</value>
+	<value>Limpiar todos los datos WMS</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.groupBox4.Text" type="System.String">
-	<value>Functionality</value>
+	<value>Funcionalidad</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.label10.Text" type="System.String">
-	<value>Bounds</value>
+	<value>Límites</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.WFSAvalible.Text" type="System.String">
-	<value>Avalible</value>
+	<value>Disponible</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.groupBox3.Text" type="System.String">
-	<value>Description</value>
+	<value>Descripción</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.label6.Text" type="System.String">
-	<value>Title</value>
+	<value>Título</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.label7.Text" type="System.String">
-	<value>Abstract</value>
+	<value>Abstracto</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.label8.Text" type="System.String">
-	<value>Metadata</value>
+	<value>Metadatos</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.label9.Text" type="System.String">
-	<value>Keywords</value>
+	<value>Palabras clave</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.label12.Text" type="System.String">
-	<value>Other SRS</value>
+	<value>Otros SRS</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.label11.Text" type="System.String">
-	<value>Primary SRS</value>
+	<value>SRS primarios</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.WFSClearHeaderButton.Text" type="System.String">
-	<value>Clear all WFS data</value>
+	<value>Limpiar todos los datos WFS</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.ClearHeaderButton.Text" type="System.String">
-	<value>Clear all metadata</value>
+	<value>limpiar todos los metadatos</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.columnHeader1.Text" type="System.String">
-	<value>Name</value>
+	<value>Nombres</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.columnHeader2.Text" type="System.String">
-	<value>Description</value>
+	<value>Descripción</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.columnHeader3.Text" type="System.String">
-	<value>Access</value>
+	<value>Acceso</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.readWriteAccessToolStripMenuItem.Text" type="System.String">
-	<value>Read write access</value>
+	<value>Acceso de lectura/escritura</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.readOnlyAccessToolStripMenuItem.Text" type="System.String">
-	<value>Read only access</value>
+	<value>Acceso de solo lectura</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.denyAccessToolStripMenuItem.Text" type="System.String">
-	<value>Deny access</value>
+	<value>Denegar acceso</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ResourceProperties.inheritedAccessRightsToolStripMenuItem.Text" type="System.String">
-	<value>Inherited access rights</value>
+	<value>Derechos de acceso heredados</value>
 </data>
 <data name="Read/write" type="System.String">
-	<value>Read/write</value>
+	<value>Lectura/escritura</value>
 </data>
 <data name="Read only" type="System.String">
-	<value>Read only</value>
+	<value>Solo lectura</value>
 </data>
 <data name="No access" type="System.String">
-	<value>No access</value>
+	<value>Sin acceso</value>
 </data>
 <data name="Inherited" type="System.String">
-	<value>Inherited</value>
+	<value>Heredado</value>
 </data>
 <data name="Failed to save the resource properties: {0}" type="System.String">
-	<value>Failed to save the resource properties: {0}</value>
+	<value>Fallo al guardar las propiedades del recurso: {0}</value>
 </data>
 </root>

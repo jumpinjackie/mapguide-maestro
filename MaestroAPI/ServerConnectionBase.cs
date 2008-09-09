@@ -1831,14 +1831,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public virtual FeatureSourceDescription.FeatureSourceSchema GetFeatureSourceSchema(string resourceID, string schema)
         {
-            if (schema != null && schema.IndexOf(":") > 0)
-                schema = schema.Substring(0, schema.IndexOf(":"));
+            /*if (schema != null && schema.IndexOf(":") > 0)
+                schema = schema.Substring(0, schema.IndexOf(":"));*/
 
             //If it is missing, just get the entire schema, and hope that we will need the others
             //Some providers actually return the entire list even when asked for a particular schema
             if (!m_featureSchemaCache.ContainsKey(resourceID + "!" + schema))
                 GetFeatureSourceDescription(resourceID);
-            if (!m_featureSchemaCache.ContainsKey(resourceID + "!" + schema))
+            if (!m_featureSchemaNameCache.ContainsKey(resourceID + "!" + schema))
                 m_featureSchemaNameCache[resourceID + "!" + schema] = null;
 
             return m_featureSchemaNameCache[resourceID + "!" + schema];

@@ -74,27 +74,27 @@
 	</data>
 	
 <data name="OSGeo.MapGuide.Maestro.XmlEditor.CopyClipboardButton.ToolTipText" type="System.String">
-	<value>Copy selected text to the clipboard</value>
+	<value>Copiar el texto seleccionado al portapapeles</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.XmlEditor.CutClipboardButton.ToolTipText" type="System.String">
-	<value>Cut the selected text and place it in the clipboard</value>
+	<value>Cortar el texto seleccionado al portapapeles</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.XmlEditor.PasteClipboardButton.ToolTipText" type="System.String">
-	<value>Paste text from the clipboard</value>
+	<value>Pegar el texto seleccionado del portapapeles</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.XmlEditor.UndoClipboardButton.ToolTipText" type="System.String">
-	<value>Undo the last action</value>
+	<value>Deshacer la última acción</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.XmlEditor.RedoClipboardButton.ToolTipText" type="System.String">
-	<value>Redo the last action</value>
+	<value>Rehacer la última acción</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.XmlEditor.ValidateButton.Text" type="System.String">
-	<value>Validate the current xml</value>
+	<value>Validar el actual xml</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.XmlEditor.ValidateButton.ToolTipText" type="System.String">
-	<value>Validate the current xml</value>
+	<value>Validar el actual xml</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.XmlEditor.LaunchExternalEditorButton.ToolTipText" type="System.String">
-	<value>Launch the system editor associated with xml files</value>
+	<value>Lanza el editor del sistema asociado con el fichero xml</value>
 </data>	
 </root>

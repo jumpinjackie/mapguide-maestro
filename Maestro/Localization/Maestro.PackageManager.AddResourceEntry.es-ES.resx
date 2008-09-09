@@ -41,34 +41,34 @@
   </resheader>
 
   <data name="OSGeo.MapGuide.Maestro.PackageManager.AddResourceEntry.Text" type="System.String">
-	<value>Add a resource</value>
+	<value>Añadir una fuente</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.AddResourceEntry.UseHeader.Text" type="System.String">
-	<value>Header file</value>
+	<value>fichero de encabezado</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.AddResourceEntry.label1.Text" type="System.String">
-	<value>Content file</value>
+	<value>Fichero de contenido</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.AddResourceEntry.OKBtn.Text" type="System.String">
 	<value>OK</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.AddResourceEntry.CancelBtn.Text" type="System.String">
-	<value>Cancel</value>
+	<value>Cancelar</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.AddResourceEntry.UseAlternateName.Text" type="System.String">
-	<value>Alternate name</value>
+	<value>Nombre alternativo</value>
 </data>
 <data name="You must enter a alternate name, or remove the checkmark" type="System.String">
-	<value>You must enter a alternate name, or remove the checkmark</value>
+	<value>Debes introducir un nombre alternativo, o eliminar la marca de verificación</value>
 </data>
 <data name="The header file does not exist" type="System.String">
-	<value>The header file does not exist</value>
+	<value>El encabezado del fichero no exíste</value>
 </data>
 <data name="The content file does not exist" type="System.String">
-	<value>The content file does not exist</value>
+	<value>El fichero de contenido no exíste</value>
 </data>
 <data name="Failed to validate the filenames: {0}" type="System.String">
-	<value>Failed to validate the filenames: {0}</value>
+	<value>Fallo al validar el nombre de fichero: {0}</value>
 </data>
 
 </root>

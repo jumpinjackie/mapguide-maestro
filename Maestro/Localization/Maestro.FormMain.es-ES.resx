@@ -264,46 +264,46 @@
   
   
 <data name="OSGeo.MapGuide.Maestro.FormMain.MainMenuChangePreferences.Text" type="System.String">
-	<value>Preferences...</value>
+	<value>Preferencias...</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.FormMain.packagesToolStripMenuItem.Text" type="System.String">
-	<value>Packages</value>
+	<value>Paquetes</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.FormMain.createPackageToolStripMenuItem.Text" type="System.String">
-	<value>Create package...</value>
+	<value>Crear paquete...</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.FormMain.modifyPackageToolStripMenuItem.Text" type="System.String">
-	<value>Modify package...</value>
+	<value>Modificar paquete...</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.FormMain.restorePackageToolStripMenuItem.Text" type="System.String">
-	<value>Restore package...</value>
+	<value>Restaurar paquete...</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.FormMain.viewLastExceptionToolStripMenuItem.Text" type="System.String">
-	<value>Last exception...</value>
+	<value>Última excepción...</value>
 </data>
 <data name="Dataconnection" type="System.String">
-	<value>Dataconnection</value>
+	<value>Conexión a Datos</value>
 </data>
 <data name="Fusion Application" type="System.String">
-	<value>Fusion Application</value>
+	<value>App. Fusion</value>
 </data>
 <data name="Layer" type="System.String">
-	<value>Layer</value>
+	<value>Capa</value>
 </data>
 <data name="Layout" type="System.String">
-	<value>Layout</value>
+	<value>Diseño</value>
 </data>
 <data name="Map" type="System.String">
-	<value>Map</value>
+	<value>Mapa</value>
 </data>
 <data name="Print Layout" type="System.String">
-	<value>Print Layout</value>
+	<value>Diseño de impresión</value>
 </data>
 <data name="Symbol Definition" type="System.String">
-	<value>Symbol Definition</value>
+	<value>Definición de Símbolos</value>
 </data>
 <data name="Symbol Library" type="System.String">
-	<value>Symbol Library</value>
+	<value>Librería de Símbolos</value>
 </data>
 
   </root>

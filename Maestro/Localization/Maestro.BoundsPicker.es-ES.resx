@@ -41,7 +41,7 @@
   </resheader>
 
 <data name="OSGeo.MapGuide.Maestro.BoundsPicker.Text" type="System.String">
-	<value>Enter the data bounds</value>
+	<value>Introduce los datos de los límites</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.BoundsPicker.label1.Text" type="System.String">
 	<value>Min X</value>
@@ -65,28 +65,28 @@
 	<value>OK</value>
 </data>
 <data name="Failed to decode the current bounds,\nyou may enter new bounds, and these will replace the current.\nError message: {0}" type="System.String">
-	<value>Failed to decode the current bounds,\nyou may enter new bounds, and these will replace the current.\nError message: {0}</value>
+	<value>Fallo al descodificar el limite actual,\ndebes introducir nuevos límites, y estos reemplazarán al actual.\nMensaje de error: {0}</value>
 </data>
 <data name="You have not entered all the required information." type="System.String">
-	<value>You have not entered all the required information.</value>
+	<value>No has introducido toda la información requerida.</value>
 </data>
 <data name="The values you have entered appears to be in local regional format, but are required in US regional format\nDo you want to convert the values?" type="System.String">
-	<value>The values you have entered appears to be in local regional format, but are required in US regional format\nDo you want to convert the values?</value>
+	<value>Los valores introducidos parecen estar en un formato regional local, pero necesitan estar en formato regional US\n¿Deseas convertir los valores?</value>
 </data>
 <data name="Failed to convert the Min X value" type="System.String">
-	<value>Failed to convert the Min X value</value>
+	<value>Fallo al convertir el valor Min. X</value>
 </data>
 <data name="Failed to convert the Max X value" type="System.String">
-	<value>Failed to convert the Max X value</value>
+	<value>Fallo al convertir el valor Max. X</value>
 </data>
 <data name="Failed to convert the Min Y value" type="System.String">
-	<value>Failed to convert the Min Y value</value>
+	<value>Fallo al convertir el valor Min. Y</value>
 </data>
 <data name="Failed to convert the Max Y value" type="System.String">
-	<value>Failed to convert the Max Y value</value>
+	<value>Fallo al convertir el valor Max. Y</value>
 </data>
 <data name="The coordinates you have entered appears to be invalid, do you want to use them anyway?" type="System.String">
-	<value>The coordinates you have entered appears to be invalid, do you want to use them anyway?</value>
+	<value>Las coordenadas que has introducido parecen ser inválidas, ¿Deseas usarlas igualmente?</value>
 </data>
 
 </root>

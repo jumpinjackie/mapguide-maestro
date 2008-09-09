@@ -41,62 +41,62 @@
   </resheader>
   
 <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.Text" type="System.String">
-	<value>Building package</value>
+	<value>Creando paquete</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.label1.Text" type="System.String">
-	<value>File</value>
+	<value>Fichero</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.TotalLabel.Text" type="System.String">
 	<value>Total</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.label3.Text" type="System.String">
-	<value>Operation</value>
+	<value>Operación</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.CancelBtn.Text" type="System.String">
-	<value>Cancel</value>
+	<value>Cancelar</value>
 </data>
 
 <data name="Getting file list" type="System.String">
-	<value>Getting file list</value>
+	<value>Obteniendo lista de ficheros</value>
 </data>
 <data name="Creating folder" type="System.String">
-	<value>Creating folder</value>
+	<value>Creando carpeta</value>
 </data>
 <data name="Downloading" type="System.String">
-	<value>Downloading</value>
+	<value>Descargando</value>
 </data>
 <data name="Compressing files" type="System.String">
-	<value>Compressing files</value>
+	<value>Comprimiendo ficheros</value>
 </data>
 <data name="Finished" type="System.String">
-	<value>Finished</value>
+	<value>Finalizado</value>
 </data>
 <data name="Failed to create package, error message: {0}" type="System.String">
-	<value>Failed to create package, error message: {0}</value>
+	<value>Fallo al crear paquete, mensaje de error: {0}</value>
 </data>
 <data name="Filename &quot;{0}&quot; is not relative to &quot;{1}&quot;" type="System.String">
-	<value>Filename &quot;{0}&quot; is not relative to &quot;{1}&quot;</value>
+	<value>fichero &quot;{0}&quot; no es relativo a &quot;{1}&quot;</value>
 </data>
 <data name="Do you want to cancel?" type="System.String">
-	<value>Do you want to cancel?</value>
+	<value>¿Deseas cancelar?</value>
 </data>
 <data name="Failed to find file {0} in archive" type="System.String">
-	<value>Failed to find file {0} in archive</value>
+	<value>Fallo al buscar fichero {0} en el archivo</value>
 </data>
 <data name="Failed to upload package: {0}" type="System.String">
-	<value>Failed to upload package: {0}</value>
+	<value>Fallo al subir fichero: {0}</value>
 </data>
 <data name="Uploading file..." type="System.String">
-	<value>Uploading file...</value>
+	<value>Subiendo fichero...</value>
 </data>
 <data name="Uploaded {0} of {1}" type="System.String">
-	<value>Uploaded {0} of {1}</value>
+	<value>subidos {0} de {1}</value>
 </data>
 <data name="Waiting for server to complete restore operation..." type="System.String">
-	<value>Waiting for server to complete restore operation...</value>
+	<value>Esperando al servidor para completar la operación de restauración...</value>
 </data>
 <data name="Select the package to upload" type="System.String">
-	<value>Select the package to upload</value>
+	<value>Seleccionar el paquete a subir</value>
 </data>
 
 

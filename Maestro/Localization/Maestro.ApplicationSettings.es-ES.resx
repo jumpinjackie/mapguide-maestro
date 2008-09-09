@@ -41,31 +41,31 @@
   </resheader>
 
 <data name="OSGeo.MapGuide.Maestro.ApplicationSettings.Text" type="System.String">
-	<value>MapGuide Maestro Settings</value>
+	<value>Ajustes MapGuide Maestro</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ApplicationSettings.label1.Text" type="System.String">
-	<value>Browser program</value>
+	<value>Navegador</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ApplicationSettings.label2.Text" type="System.String">
-	<value>Stored connection settings</value>
+	<value>Ajustes de la conexión almacenada</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ApplicationSettings.OKBtn.Text" type="System.String">
 	<value>OK</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ApplicationSettings.CancelBtn.Text" type="System.String">
-	<value>Cancel</value>
+	<value>Cancelar</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ApplicationSettings.removeToolStripMenuItem.Text" type="System.String">
-	<value>Remove</value>
+	<value>Eliminar</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ApplicationSettings.groupBox1.Text" type="System.String">
-	<value>Preview viewer type</value>
+	<value>Tipo vista previa</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ApplicationSettings.FusionViewer.Text" type="System.String">
-	<value>Fusion based</value>
+	<value>Basado en Fusion</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.ApplicationSettings.RegularViewer.Text" type="System.String">
-	<value>Regular (WebLayout based)</value>
+	<value>Regular (basado en el WebLayout)</value>
 </data>
   
 </root>

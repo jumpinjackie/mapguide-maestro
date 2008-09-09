@@ -498,7 +498,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         /// Gets or sets the layer visibility, this attribute is combined with the layers DisplayScale, to determine actual visibility.
         /// </summary>
-        public bool Visible {
+        public virtual bool Visible {
             get { return this.m_visible; }
             set { this.m_visible = value; }
         }

@@ -55,15 +55,15 @@
 		<value>Versión: {0}</value>
 	</data>
 	<data name="OSGeo.MapGuide.Maestro.FormAbout.licenseTab.Text" type="System.String">
-		<value>License</value>
+		<value>Licencia</value>
 	</data>
 	<data name="OSGeo.MapGuide.Maestro.FormAbout.creditsTab.Text" type="System.String">
-		<value>Credits</value>
+		<value>Créditos</value>
 	</data>
 	<data name="OSGeo.MapGuide.Maestro.FormAbout.thirdPartyTab.Text" type="System.String">
-		<value>Thirdparty</value>
+		<value>Terceros</value>
 	</data>
 	<data name="OSGeo.MapGuide.Maestro.FormAbout.label2.Text" type="System.String">
-		<value>This program uses the following thirdparty libraries:</value>
+		<value>Este programa usa las siguientes librerías de terceros:</value>
 	</data>
 </root>

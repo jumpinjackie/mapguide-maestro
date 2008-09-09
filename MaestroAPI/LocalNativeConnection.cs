@@ -561,7 +561,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			MgMap map = new MgMap();
             string mapname = new ResourceIdentifier(runtimeMap).Path;
 			map.Open(res, mapname);
-			MgSelection sel = new MgSelection(map, selectionXml);
+			MgSelection sel = string.IsNullOrEmpty(selectionXml) ? new MgSelection(map) : new MgSelection(map, selectionXml);
 			sel.Save(res, mapname);
 		}
 

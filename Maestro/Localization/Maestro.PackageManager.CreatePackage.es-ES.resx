@@ -41,52 +41,52 @@
   </resheader>
   
 <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.Text" type="System.String">
-	<value>Create a new package</value>
+	<value>Crear un nuevo paquete</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.label1.Text" type="System.String">
-	<value>Starting point</value>
+	<value>Punto de comienzo</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.RemoveTargeOnRestore.Text" type="System.String">
-	<value>Remove target folder when restoring</value>
+	<value>Eliminar una carpeta destino cuando restaures</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.EnableRestorePath.Text" type="System.String">
-	<value>Restore path</value>
+	<value>Ruta de restauración</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.label2.Text" type="System.String">
-	<value>Include these types in the package</value>
+	<value>Incluír estos tipos en el paquete</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.CancelBtn.Text" type="System.String">
-	<value>Cancel</value>
+	<value>Cancelar</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.OKBtn.Text" type="System.String">
 	<value>OK</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.label3.Text" type="System.String">
-	<value>File name</value>
+	<value>Nombre de fichero</value>
 </data>
 <data name="All types" type="System.String">
-	<value>All types</value>
+	<value>Todos los tipos</value>
 </data>
 <data name="Unknown types" type="System.String">
-	<value>Unknown types</value>
+	<value>Tipos desconocidos</value>
 </data>
 <data name="You must select at least one type" type="System.String">
-	<value>You must select at least one type</value>
+	<value>Debes seleccionar como mínimo un tipo</value>
 </data>
 <data name="You must enter a full path to the output file" type="System.String">
-	<value>You must enter a full path to the output file</value>
+	<value>Debes introducir una ruta completa para el fichero de salida</value>
 </data>
 <data name="An error occured while validating the output file path: {0}" type="System.String">
-	<value>An error occured while validating the output file path: {0}</value>
+	<value>Error ocurrido mientras se validaba la ruta del fichero de salida: {0}</value>
 </data>
 <data name="You have selected to restore the package at another location, but not entered one\r\nThis will cause the package to be restored a the root of the resource tree.\r\nAre you sure this is what you want?" type="System.String">
-	<value>You have selected to restore the package at another location, but not entered one\r\nThis will cause the package to be restored a the root of the resource tree.\r\nAre you sure this is what you want?</value>
+	<value>Has seleccionado restaurar el paquete a otra localización, pero no has introducido ninguno\r\nEsto causará que el paquete sea restaurado a la raíz del arbol de recursos.\r\n¿Estás seguro de que es lo que quieres?</value>
 </data>
 <data name="An error occured while validating the restore path: {0}\nIt should have the format: &quot;Libray://folder/folder/&quot;." type="System.String">
-	<value>An error occured while validating the restore path: {0}\nIt should have the format: &quot;Libray://folder/folder/&quot;.</value>
+	<value>Error ocurrido mientras se validaba la ruta de restauración: {0}\nDebería tener el formato: &quot;Libray://folder/folder/&quot;.</value>
 </data>
 <data name="You have selected to restore the package at the root.\r\nYou have also selected to delete the target before restoring.\r\nThis will result in the entire repository being deleted and replaced with this package.\r\nAre you absolutely sure that is what you want?" type="System.String">
-	<value>You have selected to restore the package at the root.\r\nYou have also selected to delete the target before restoring.\r\nThis will result in the entire repository being deleted and replaced with this package.\r\nAre you absolutely sure that is what you want?</value>
+	<value>Has seleccionado para restaurar el paquete a la raíz.\r\nHas seleccionado eliminar el destino antes de restaurarlo.\r\nEsto causará que el repositorio completo sea borrado y reemplazado con este paquete.\r\n¿Estás absolutamente seguro de que es lo que quieres?</value>
 </data>
 
 
