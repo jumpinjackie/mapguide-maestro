@@ -53,6 +53,31 @@ namespace OSGeo.MapGuide.Maestro
 		/// </summary>
 		bool Preview();
 
+        /// <summary>
+        /// Validates the current resource, returns true if the call succeded
+        /// </summary>
+        bool ValidateResource();
+
+        /// <summary>
+        /// Initiates profiling, returns true if the call succeded
+        /// </summary>
+        bool Profile();
+
+        /// <summary>
+        /// Returns a value indicating if the editor supports previews
+        /// </summary>
+        bool SupportsPreview { get; }
+
+        /// <summary>
+        /// Returns a value indicating if the editor supports validation
+        /// </summary>
+        bool SupportsValidate { get; }
+
+        /// <summary>
+        /// Returns a value indicating if the editor supports profiling
+        /// </summary>
+        bool SupportsProfiling { get; }
+
 		/// <summary>
 		/// Called before a save, to let the provider do the save, or some preliminary work.
 		/// Return false to let the generic code handle the save.

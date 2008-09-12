@@ -98,6 +98,8 @@ namespace OSGeo.MapGuide.MaestroAPI.BinarySerializer
 
 		public void WriteStringInternal(string value)
 		{
+            if (value == null)
+                value = "";
 			byte[] buf = System.Text.Encoding.Unicode.GetBytes(value + "\0");
 
 			int charWidth = System.Text.Encoding.Unicode.GetByteCount(" ");

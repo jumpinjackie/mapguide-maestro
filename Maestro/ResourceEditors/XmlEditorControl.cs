@@ -581,5 +581,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
         }
 
-	}
+        public bool Profile() { return true; }
+        public bool ValidateResource() { return true; }
+        public bool SupportsPreview { get { return false; } }
+        public bool SupportsValidate { get { return false; } }
+        public bool SupportsProfiling { get { return false; } }
+    }
 }

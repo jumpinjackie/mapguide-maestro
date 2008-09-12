@@ -524,5 +524,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				(m_editor, m_feature); 
 			dlg.ShowDialog(this);
 		}
-	}
+
+        public bool Profile() { return m_child.Profile(); }
+        public bool ValidateResource() { return m_child.ValidateResource(); }
+        public bool SupportsPreview { get { return m_child.SupportsPreview; } }
+        public bool SupportsValidate { get { return m_child.SupportsValidate; } }
+        public bool SupportsProfiling { get { return m_child.SupportsProfiling; } }
+    }
 }

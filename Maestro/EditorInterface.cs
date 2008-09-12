@@ -209,6 +209,7 @@ namespace OSGeo.MapGuide.Maestro
 							m_editor.CurrentConnection.SaveResourceAs(((ResourceEditor)m_page.Controls[0]).Resource, resid);
 							m_resourceID = resid;
 							((ResourceEditor)m_page.Controls[0]).ResourceId = resid;
+                            m_page.Text = OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.GetName(resid);
 						}
 					}
 

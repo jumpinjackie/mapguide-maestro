@@ -274,5 +274,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			m_feature.Parameter["KingFdoClass"] = FDOClass.Text;
 			m_editor.HasChanged();
 		}
-	}
+    
+        public bool Profile() { return true; }
+        public bool ValidateResource() { return true; }
+        public bool SupportsPreview { get { return true; } }
+        public bool SupportsValidate { get { return false; } }
+        public bool SupportsProfiling { get { return false; } }
+    }
 }

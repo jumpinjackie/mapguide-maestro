@@ -113,6 +113,8 @@ namespace OSGeo.MapGuide.Maestro
 		private string m_lastSelectedNode = null;
         private ToolStripMenuItem viewLastExceptionToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator5;
+        private ToolStripButton ProfileButton;
+        private ToolStripButton ValidateButton;
 
         private Exception m_lastException;
 
@@ -223,6 +225,8 @@ namespace OSGeo.MapGuide.Maestro
             this.EditAsXmlButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ClosePageButton = new System.Windows.Forms.ToolStripButton();
+            this.ProfileButton = new System.Windows.Forms.ToolStripButton();
+            this.ValidateButton = new System.Windows.Forms.ToolStripButton();
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -376,7 +380,7 @@ namespace OSGeo.MapGuide.Maestro
             this.AddResourceButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.AddResourceButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddResourceButton.Name = "AddResourceButton";
-            this.AddResourceButton.Size = new System.Drawing.Size(48, 36);
+            this.AddResourceButton.Size = new System.Drawing.Size(45, 36);
             this.AddResourceButton.ToolTipText = "Creates a new resource";
             // 
             // DeleteResourceButton
@@ -475,6 +479,9 @@ namespace OSGeo.MapGuide.Maestro
             this.tabItems.SelectedIndex = 0;
             this.tabItems.Size = new System.Drawing.Size(418, 391);
             this.tabItems.TabIndex = 1;
+            this.tabItems.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.tabItems_ControlAdded);
+            this.tabItems.TabIndexChanged += new System.EventHandler(this.tabItems_SelectedIndexChanged);
+            this.tabItems.SelectedIndexChanged += new System.EventHandler(this.tabItems_SelectedIndexChanged);
             // 
             // toolbarImagesSmall
             // 
@@ -780,6 +787,8 @@ namespace OSGeo.MapGuide.Maestro
             this.toolStripSeparator3,
             this.PreviewButton,
             this.EditAsXmlButton,
+            this.ProfileButton,
+            this.ValidateButton,
             this.toolStripSeparator4,
             this.ClosePageButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -791,6 +800,7 @@ namespace OSGeo.MapGuide.Maestro
             // SaveResourceButton
             // 
             this.SaveResourceButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SaveResourceButton.Enabled = false;
             this.SaveResourceButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveResourceButton.Image")));
             this.SaveResourceButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveResourceButton.Name = "SaveResourceButton";
@@ -801,6 +811,7 @@ namespace OSGeo.MapGuide.Maestro
             // SaveResourceAsButton
             // 
             this.SaveResourceAsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SaveResourceAsButton.Enabled = false;
             this.SaveResourceAsButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveResourceAsButton.Image")));
             this.SaveResourceAsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveResourceAsButton.Name = "SaveResourceAsButton";
@@ -816,6 +827,7 @@ namespace OSGeo.MapGuide.Maestro
             // PreviewButton
             // 
             this.PreviewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.PreviewButton.Enabled = false;
             this.PreviewButton.Image = ((System.Drawing.Image)(resources.GetObject("PreviewButton.Image")));
             this.PreviewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PreviewButton.Name = "PreviewButton";
@@ -826,6 +838,7 @@ namespace OSGeo.MapGuide.Maestro
             // EditAsXmlButton
             // 
             this.EditAsXmlButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.EditAsXmlButton.Enabled = false;
             this.EditAsXmlButton.Image = ((System.Drawing.Image)(resources.GetObject("EditAsXmlButton.Image")));
             this.EditAsXmlButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EditAsXmlButton.Name = "EditAsXmlButton";
@@ -841,12 +854,34 @@ namespace OSGeo.MapGuide.Maestro
             // ClosePageButton
             // 
             this.ClosePageButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ClosePageButton.Enabled = false;
             this.ClosePageButton.Image = ((System.Drawing.Image)(resources.GetObject("ClosePageButton.Image")));
             this.ClosePageButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ClosePageButton.Name = "ClosePageButton";
             this.ClosePageButton.Size = new System.Drawing.Size(36, 36);
             this.ClosePageButton.ToolTipText = "Close the current page";
             this.ClosePageButton.Click += new System.EventHandler(this.ClosePageButton_Click);
+            // 
+            // ProfileButton
+            // 
+            this.ProfileButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ProfileButton.Enabled = false;
+            this.ProfileButton.Image = ((System.Drawing.Image)(resources.GetObject("ProfileButton.Image")));
+            this.ProfileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ProfileButton.Name = "ProfileButton";
+            this.ProfileButton.Size = new System.Drawing.Size(36, 36);
+            this.ProfileButton.ToolTipText = "Provides timing details on the current resource";
+            this.ProfileButton.Click += new System.EventHandler(this.ProfileButton_Click);
+            // 
+            // ValidateButton
+            // 
+            this.ValidateButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ValidateButton.Enabled = false;
+            this.ValidateButton.Image = ((System.Drawing.Image)(resources.GetObject("ValidateButton.Image")));
+            this.ValidateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ValidateButton.Name = "ValidateButton";
+            this.ValidateButton.Size = new System.Drawing.Size(36, 36);
+            this.ValidateButton.ToolTipText = "Validates the current resource against common errors";
             // 
             // FormMain
             // 
@@ -2030,8 +2065,13 @@ namespace OSGeo.MapGuide.Maestro
 				FormMain_Closing(this, cea);
 				if (!cea.Cancel)
 				{
-					foreach(OSGeo.MapGuide.Maestro.EditorInterface edi in this.OpenResourceEditors.Values)
-						edi.Close(false);
+                    //The collection changes, so we trick it!
+                    while(this.OpenResourceEditors.Values.Count > 0)
+                        foreach (OSGeo.MapGuide.Maestro.EditorInterface edi in this.OpenResourceEditors.Values)
+                        {
+                            edi.Close(false);
+                            break;
+                        }
 					ResourceTree.Nodes.Clear();
 					m_connection = lg.Connection;
 					m_Folders = m_Documents = null;
@@ -2213,6 +2253,70 @@ namespace OSGeo.MapGuide.Maestro
                 dlg.ExceptionText.Text = m_lastException.ToString().Replace("\r\n", "\n").Replace("\n", "\r\n");
                 dlg.ShowDialog(this);
             }
+        }
+
+        private void tabItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (tabItems.SelectedTab == null || tabItems.SelectedTab.Controls.Count != 1 || tabItems.TabCount == 0)
+            {
+                foreach (ToolStripItem b in toolStrip1.Items)
+                    b.Enabled = false;
+            }
+            else
+            {
+                EditorInterface edi = null;
+                foreach (EditorInterface n in m_userControls.Values)
+                    if (n.Page == tabItems.SelectedTab)
+                    {
+                        edi = n;
+                        break;
+                    }
+
+                if (edi == null || edi.Page == null || edi.Page.Controls.Count < 1 || edi.Page.Controls[0] as ResourceEditor == null)
+                {
+                    foreach (ToolStripItem b in toolStrip1.Items)
+                        b.Enabled = false;
+                }
+                else
+                {
+                    SaveResourceButton.Enabled =
+                    SaveResourceAsButton.Enabled =
+                    EditAsXmlButton.Enabled =
+                    ClosePageButton.Enabled = true;
+
+                    ResourceEditor ei = edi.Page.Controls[0] as ResourceEditor;
+                    PreviewButton.Enabled = ei.SupportsPreview;
+                    ProfileButton.Enabled = ei.SupportsProfiling;
+                    ValidateButton.Enabled = ei.SupportsValidate;
+                }
+            }
+        }
+
+        private void tabItems_ControlAdded(object sender, ControlEventArgs e)
+        {
+            tabItems_SelectedIndexChanged(null, null);
+        }
+
+        private void ProfileButton_Click(object sender, EventArgs e)
+        {
+            EditorInterface edi = null;
+            foreach (EditorInterface n in m_userControls.Values)
+                if (n.Page == tabItems.SelectedTab)
+                {
+                    edi = n;
+                    break;
+                }
+
+            if (edi == null || edi.Page == null || edi.Page.Controls == null || edi.Page.Controls.Count < 1)
+                return;
+
+            ResourceEditor ei = edi.Page.Controls[0] as ResourceEditor;
+            if (ei == null || ei.Resource == null)
+                return;
+
+            Profiling dlg = new Profiling(ei.Resource, m_connection);
+            dlg.ShowDialog(this);
         }
 	}
 }

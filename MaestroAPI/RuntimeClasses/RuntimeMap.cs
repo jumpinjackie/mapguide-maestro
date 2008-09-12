@@ -71,6 +71,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 		{
 			if (map.CurrentConnection == null)
 				throw new Exception("Map must have a connection for construction to work");
+            this.CurrentConnection = map.CurrentConnection;
 			this.m_resourceID = map.ResourceId;
 			base.m_resourceId = map.ResourceId;
 			base.m_name = map.Name;
@@ -100,6 +101,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 				if (layer.Parent == null)
 					layer.Parent = map;
 				RuntimeMapLayer rtl = new RuntimeMapLayer(layer);
+                rtl.SetParent(this);
 				rtl.DisplayOrder = (++dispIndex) * 1000;
 				this.m_mapLayer.Add(rtl);
 
