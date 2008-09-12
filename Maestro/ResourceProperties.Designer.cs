@@ -44,6 +44,7 @@ namespace OSGeo.MapGuide.Maestro
             this.readWriteAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readOnlyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.denyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inheritedAccessRightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserAndGroupImages = new System.Windows.Forms.ImageList(this.components);
             this.WMSTab = new System.Windows.Forms.TabPage();
             this.WMSClearHeaderButton = new System.Windows.Forms.Button();
@@ -89,7 +90,9 @@ namespace OSGeo.MapGuide.Maestro
             this.ItemKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.inheritedAccessRightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.ResourceID = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SecurityTab.SuspendLayout();
@@ -102,6 +105,7 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox3.SuspendLayout();
             this.CustomTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -109,7 +113,7 @@ namespace OSGeo.MapGuide.Maestro
             this.panel1.Controls.Add(this.CancelBtn);
             this.panel1.Controls.Add(this.OKBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 389);
+            this.panel1.Location = new System.Drawing.Point(0, 423);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(358, 40);
             this.panel1.TabIndex = 0;
@@ -143,10 +147,10 @@ namespace OSGeo.MapGuide.Maestro
             this.tabControl1.Controls.Add(this.WFSTab);
             this.tabControl1.Controls.Add(this.CustomTab);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Location = new System.Drawing.Point(0, 32);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(358, 389);
+            this.tabControl1.Size = new System.Drawing.Size(358, 391);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -157,7 +161,7 @@ namespace OSGeo.MapGuide.Maestro
             this.SecurityTab.Location = new System.Drawing.Point(4, 22);
             this.SecurityTab.Name = "SecurityTab";
             this.SecurityTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SecurityTab.Size = new System.Drawing.Size(350, 363);
+            this.SecurityTab.Size = new System.Drawing.Size(350, 365);
             this.SecurityTab.TabIndex = 0;
             this.SecurityTab.Text = "Security";
             this.SecurityTab.UseVisualStyleBackColor = true;
@@ -187,7 +191,7 @@ namespace OSGeo.MapGuide.Maestro
             this.UsersAndGroups.FullRowSelect = true;
             this.UsersAndGroups.Location = new System.Drawing.Point(16, 40);
             this.UsersAndGroups.Name = "UsersAndGroups";
-            this.UsersAndGroups.Size = new System.Drawing.Size(320, 312);
+            this.UsersAndGroups.Size = new System.Drawing.Size(320, 314);
             this.UsersAndGroups.SmallImageList = this.UserAndGroupImages;
             this.UsersAndGroups.TabIndex = 0;
             this.toolTip.SetToolTip(this.UsersAndGroups, "Right click to change access rights");
@@ -240,6 +244,13 @@ namespace OSGeo.MapGuide.Maestro
             this.denyAccessToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.denyAccessToolStripMenuItem.Text = "Deny access";
             this.denyAccessToolStripMenuItem.Click += new System.EventHandler(this.denyAccessToolStripMenuItem_Click);
+            // 
+            // inheritedAccessRightsToolStripMenuItem
+            // 
+            this.inheritedAccessRightsToolStripMenuItem.Name = "inheritedAccessRightsToolStripMenuItem";
+            this.inheritedAccessRightsToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.inheritedAccessRightsToolStripMenuItem.Text = "Inherited access rights";
+            this.inheritedAccessRightsToolStripMenuItem.Click += new System.EventHandler(this.inheritedAccessRightsToolStripMenuItem_Click);
             // 
             // UserAndGroupImages
             // 
@@ -725,23 +736,46 @@ namespace OSGeo.MapGuide.Maestro
             this.ItemValue.HeaderText = "Value";
             this.ItemValue.Name = "ItemValue";
             // 
-            // inheritedAccessRightsToolStripMenuItem
+            // panel2
             // 
-            this.inheritedAccessRightsToolStripMenuItem.Name = "inheritedAccessRightsToolStripMenuItem";
-            this.inheritedAccessRightsToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.inheritedAccessRightsToolStripMenuItem.Text = "Inherited access rights";
-            this.inheritedAccessRightsToolStripMenuItem.Click += new System.EventHandler(this.inheritedAccessRightsToolStripMenuItem_Click);
+            this.panel2.Controls.Add(this.ResourceID);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(358, 32);
+            this.panel2.TabIndex = 2;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(8, 8);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(67, 13);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Resource ID";
+            // 
+            // ResourceID
+            // 
+            this.ResourceID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResourceID.Location = new System.Drawing.Point(88, 6);
+            this.ResourceID.Name = "ResourceID";
+            this.ResourceID.ReadOnly = true;
+            this.ResourceID.Size = new System.Drawing.Size(264, 20);
+            this.ResourceID.TabIndex = 1;
             // 
             // ResourceProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(358, 429);
+            this.ClientSize = new System.Drawing.Size(358, 463);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "ResourceProperties";
-            this.Text = "ResourceProperties";
+            this.Text = "Properties";
             this.Load += new System.EventHandler(this.ResourceProperties_Load);
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
@@ -760,6 +794,8 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox3.PerformLayout();
             this.CustomTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -826,5 +862,8 @@ namespace OSGeo.MapGuide.Maestro
         private System.Windows.Forms.ToolStripMenuItem readOnlyAccessToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem denyAccessToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inheritedAccessRightsToolStripMenuItem;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox ResourceID;
+        private System.Windows.Forms.Label label13;
     }
 }

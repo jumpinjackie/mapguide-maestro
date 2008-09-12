@@ -67,6 +67,7 @@ namespace OSGeo.MapGuide.Maestro
         {
             m_connection = connection;
             m_resourceId = resourceId;
+            ResourceID.Text = resourceId;
         }
 
         private ResourceProperties()

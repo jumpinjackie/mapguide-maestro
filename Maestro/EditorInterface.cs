@@ -42,7 +42,8 @@ namespace OSGeo.MapGuide.Maestro
 			m_page = page;
 			m_existing = exisiting;
 			m_resourceID = resid;
-			m_globalizor = new  Globalizator.Globalizator(this);
+			m_globalizor = new Globalizator.Globalizator(this);
+            m_page.ToolTipText = resid;
 		}
 
 		#region EditorInterface Members
@@ -210,6 +211,7 @@ namespace OSGeo.MapGuide.Maestro
 							m_resourceID = resid;
 							((ResourceEditor)m_page.Controls[0]).ResourceId = resid;
                             m_page.Text = OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.GetName(resid);
+                            m_page.ToolTipText = resid;
 						}
 					}
 
