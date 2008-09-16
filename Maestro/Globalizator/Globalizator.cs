@@ -155,7 +155,11 @@ namespace Globalizator
 
 		public static string Translate(string resourceName, Assembly asm, string text)
 		{
-			return m_rm.GetString(resourceName + '.' + text, Globalizator.CurrentCulture);
+			string res = m_rm.GetString(resourceName + '.' + text, Globalizator.CurrentCulture);
+            if (res == null)
+                return text;
+            else
+                return res;
 		}
 
 

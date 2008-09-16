@@ -43,7 +43,8 @@ namespace OSGeo.MapGuide.Maestro
 			m_existing = exisiting;
 			m_resourceID = resid;
 			m_globalizor = new Globalizator.Globalizator(this);
-            m_page.ToolTipText = resid;
+            if (m_page != null)
+                m_page.ToolTipText = resid == null ? "" : resid;
 		}
 
 		#region EditorInterface Members
