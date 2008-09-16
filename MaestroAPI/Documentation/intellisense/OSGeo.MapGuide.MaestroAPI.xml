@@ -1,0 +1,1334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>OSGeo.MapGuide.MaestroAPI</name>
+  </assembly>
+  <members>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.CoordinateSystem">
+      <summary>Interface to MapGuide coordinate system functions. Only works with server &gt; 1.2, since the coordinate mapping is not avalible through Http on older versions</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.DataStoreItem">
+      <summary>Represents a single datastore item</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DataStoreItem.FdoEnabled">
+      <summary>Gets or sets a value indicating if this item is FDO enabled</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DataStoreItem.Name">
+      <summary>Gets or sets name of the data item</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.DataStoreItemCollection">
+      <summary>Represents a list of datastore items</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DataStoreItemCollection.Item(System.Int32)">
+      <summary>Gets or sets a datastore item, using the item index</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.DataStoreItemCollection.Add(OSGeo.MapGuide.MaestroAPI.DataStoreItem)">
+      <summary>Adds a datastore item</summary>
+      <param name="value">The item to add</param>
+      <returns>The newly assigned index</returns>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.DataStoreList">
+      <summary>Represents a list of data in a featuresource</summary>
+    </member>
+    <member name="F:OSGeo.MapGuide.MaestroAPI.DataStoreList.SchemaName">
+      <summary>The name of the xsd document that will be used to validate this class before and after serialization This field is read-only.</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DataStoreList.CurrentConnection">
+      <summary>Gets or sets the connection used in various operations performed on this object</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DataStoreList.DataStore">
+      <summary>Gets or sets the datastore elements</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DataStoreList.XsdSchema">
+      <summary>Gets the name of the xsd document that will be used to validate this class before and after serialization</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.DrawingSection">
+      <summary>Represents a single drawing section</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSection.Name">
+      <summary>Gets or sets the name of this drawing section</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSection.Title">
+      <summary>Gets or sets the title of this drawing section</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSection.Type">
+      <summary>Gets or sets the type of this drawing section</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.DrawingSectionCollection">
+      <summary>Represents a list of drawing sections</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSectionCollection.Item(System.Int32)">
+      <summary>Gets or sets a drawing section, based on the item index</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.DrawingSectionCollection.Add(OSGeo.MapGuide.MaestroAPI.DrawingSection)">
+      <summary>Appends a drawing section to the end of the list</summary>
+      <param name="value">The drawing section to append</param>
+      <returns>The newly assigned index</returns>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.DrawingSectionList">
+      <summary>Represents a Drawing Section</summary>
+    </member>
+    <member name="F:OSGeo.MapGuide.MaestroAPI.DrawingSectionList.SchemaName">
+      <summary>The name of the xsd document that will be used to validate this class before and after serialization This field is read-only.</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSectionList.CurrentConnection">
+      <summary>Gets or sets the connection used in various operations performed on this object</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSectionList.Section">
+      <summary>Gets or sets a list of drawing sections</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSectionList.XsdSchema">
+      <summary>Gets the name of the xsd document that will be used to validate this class before and after serialization</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.DrawingSectionResource">
+      <summary>Represents a single DrawingSectionResource</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSectionResource.Href">
+      <summary>Gets or sets the resource link</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSectionResource.Mime">
+      <summary>Gets or sets the resource mime type</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSectionResource.Role">
+      <summary>Gets or sets the resource role</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSectionResource.Title">
+      <summary>Gets or sets the resource title</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.DrawingSectionResourceCollection">
+      <summary>Represents a list of DrawingSectionResources</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSectionResourceCollection.Item(System.Int32)">
+      <summary>Gets or sets an item, using the collection index</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.DrawingSectionResourceCollection.Add(OSGeo.MapGuide.MaestroAPI.DrawingSectionResource)">
+      <summary>Adds a resource to the collection</summary>
+      <param name="value" />
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.DrawingSectionResourceList">
+      <summary>Represents a DrawingSectionResourceList</summary>
+    </member>
+    <member name="F:OSGeo.MapGuide.MaestroAPI.DrawingSectionResourceList.SchemaName">
+      <summary>The name of the xsd document that will be used to validate this class before and after serialization This field is read-only.</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSectionResourceList.CurrentConnection">
+      <summary>Gets or sets the connection used in various operations performed on this object</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSectionResourceList.SectionResources">
+      <summary>Gets or sets the Section Resources</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.DrawingSectionResourceList.XsdSchema">
+      <summary>Gets the name of the xsd document that will be used to validate this class before and after serialization</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.FeatureSet">
+      <summary>Represents a set of features</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.FeatureSetReader">
+      <summary>Represents a set of results from a query</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.FeatureSource.CurrentConnection">
+      <summary>Gets or sets the connection used in various operations performed on this object</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription">
+      <summary>Class that represents a the layout of a datasource</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.FileBufferedStreamReader">
+      <summary>Represents a buffered reader that relays stream data, using a file buffer, thus exhausting the source fast.</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.HttpServerConnection">
+      <summary>Primary http based connection to the MapGuide Server</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.BaseURL">
+      <summary>Gets the base url, ea.: http://localhost/mapguide/</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.DisplayName">
+      <summary>Gets a string that can be used to identify the server by a user</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.ServerURI">
+      <summary>Returns the Uri for the mapagent</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.CreateRuntimeMap(System.String,System.String)">
+      <summary>Creates a runtime map on the server</summary>
+      <param name="resourceID">The target resource id for the runtime map</param>
+      <param name="mapdefinition">The mapdefinition to base the map on</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.CreateRuntimeMap(System.String,OSGeo.MapGuide.MaestroAPI.MapDefinition)">
+      <summary>Creates a runtime map on the server</summary>
+      <param name="resourceID">The target resource id for the runtime map</param>
+      <param name="map">The mapdefinition to base the map on</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.CreateRuntimeMap(System.String,OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMap)">
+      <summary>Creates a runtime map on the server</summary>
+      <param name="resourceID">The target resource id for the runtime map</param>
+      <param name="map">The mapdefinition to base the map on</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.DescribeSchema">
+      <summary>Placeholder for actual method call</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.DownloadData(System.String)">
+      <summary>Downloads data as a byte array. Wrapper function that automatically recreates the session if it has expired.</summary>
+      <param name="req">The request URI</param>
+      <returns>The data at the given location</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.EnumerateGroups">
+      <summary>Gets a list of all groups on the server</summary>
+      <returns>The list of groups</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.EnumerateUnmanagedData(System.String,System.String,System.Boolean,OSGeo.MapGuide.MaestroAPI.UnmanagedDataTypes)">
+      <summary>Enumerates all unmanaged folders, meaning alias'ed folders</summary>
+      <param name="type">The type of data to return</param>
+      <param name="filter">A filter applied to the items</param>
+      <param name="recursive">True if the list should contains recursive results</param>
+      <param name="startpath">The path to retrieve the data from</param>
+      <returns>A list of unmanaged data</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.EnumerateUsers(System.String)">
+      <summary>Gets a list of users in a group</summary>
+      <param name="group">The group to retrieve the users from</param>
+      <returns>The list of users</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.GetApplicationContainers">
+      <summary>Returns the avalible widget containers on the server</summary>
+      <returns>The avalible widget containers on the server</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.GetApplicationTemplates">
+      <summary>Returns the avalible application templates on the server</summary>
+      <returns>The avalible application templates on the server</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.GetApplicationWidgets">
+      <summary>Returns the avalible application widgets on the server</summary>
+      <returns>The avalible application widgets on the server</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.GetIdentityProperties(System.String,System.String)">
+      <summary>Gets the names of the identity properties from a feature</summary>
+      <param name="resourceID">The resourceID for the FeatureSource</param>
+      <param name="classname">The classname of the feature, including schema</param>
+      <returns>A string array with the found identities</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.GetLegendImage(System.Double,System.String,System.Int32,System.Int32)">
+      <summary>Renders a minature bitmap of the layers style</summary>
+      <param name="scale">The scale for the bitmap to match</param>
+      <param name="layerdefinition">The layer the image should represent</param>
+      <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
+      <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
+      <returns>The minature bitmap</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.GetSelectionXml(System.String)">
+      <summary>Gets the selection from a map</summary>
+      <param name="runtimeMap">The resourceID of the runtime map</param>
+      <returns>The selection xml</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.GetSpatialContextInfo(System.String,System.Boolean)">
+      <summary>Returns the spatial info for a given featuresource</summary>
+      <param name="resourceID">The ID of the resource to query</param>
+      <param name="activeOnly">Query only active items</param>
+      <returns>A list of spatial contexts</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.OpenRead(System.String)">
+      <summary>Opens a stream for reading. Wrapper function that automatically recreates the session if it has expired.</summary>
+      <param name="req">The request URI</param>
+      <returns>The data at the given location</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.QueryMapFeatures(System.String,System.String,System.Boolean,OSGeo.MapGuide.MaestroAPI.QueryMapFeaturesLayerAttributes,System.Boolean)">
+      <summary>Selects features from a runtime map, returning a selection Xml.</summary>
+      <param name="runtimemap">The map to query. NOT a resourceID, only the map name!</param>
+      <param name="wkt">The WKT of the geometry to query with (always uses intersection)</param>
+      <param name="persist">True if the selection should be saved in the runtime map, false otherwise.</param>
+      <param name="attributes">The type of layer to include in the query</param>
+      <param name="raw">True if the result should contain the tooltip and link info</param>
+      <returns>The selection Xml, or an empty string if there were no data.</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.RestartSession(System.Boolean)">
+      <summary>Restarts the server session, and creates a new session ID</summary>
+      <param name="throwException">If set to true, the call throws an exception if the call failed</param>
+      <returns>True if the creation succeed, false otherwise</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.SaveRuntimeMap(System.String,OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMap)">
+      <summary>Updates an existing runtime map</summary>
+      <param name="resourceID">The target resource id for the runtime map</param>
+      <param name="map">The runtime map to update with</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.SetSelectionXml(System.String,System.String)">
+      <summary>Sets the selection of a map</summary>
+      <param name="runtimeMap">The resourceID of the runtime map</param>
+      <param name="selectionXml">The selection xml</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.HttpServerConnection.UploadPackage(System.String,OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate)">
+      <summary>Upload a MapGuide Package file to the server</summary>
+      <param name="filename">Name of the file to upload</param>
+      <param name="callback">A callback argument used to display progress. May be null.</param>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.LocalNativeConnection">
+      <summary>A connection to the server, using the Native API. Only works locally, or with special firewall rules for the server.</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.LocalNativeConnection.EnumerateGroups">
+      <summary>Gets a list of all groups on the server</summary>
+      <returns>The list of groups</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.LocalNativeConnection.EnumerateUnmanagedData(System.String,System.String,System.Boolean,OSGeo.MapGuide.MaestroAPI.UnmanagedDataTypes)">
+      <summary>Enumerates all unmanaged folders, meaning alias'ed folders</summary>
+      <param name="type">The type of data to return</param>
+      <param name="filter">A filter applied to the items</param>
+      <param name="recursive">True if the list should contains recursive results</param>
+      <param name="startpath">The path to retrieve the data from</param>
+      <returns>A list of unmanaged data</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.LocalNativeConnection.EnumerateUsers(System.String)">
+      <summary>Gets a list of users in a group</summary>
+      <param name="group">The group to retrieve the users from</param>
+      <returns>The list of users</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.LocalNativeConnection.GetApplicationContainers">
+      <summary>Returns the avalible widget containers on the server</summary>
+      <returns>The avalible widget containers on the server</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.LocalNativeConnection.GetApplicationTemplates">
+      <summary>Returns the avalible application templates on the server</summary>
+      <returns>The avalible application templates on the server</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.LocalNativeConnection.GetApplicationWidgets">
+      <summary>Returns the avalible application widgets on the server</summary>
+      <returns>The avalible application widgets on the server</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.LocalNativeConnection.GetIdentityProperties(System.String,System.String)">
+      <summary>Gets the names of the identity properties from a feature</summary>
+      <param name="resourceID">The resourceID for the FeatureSource</param>
+      <param name="classname">The classname of the feature, including schema</param>
+      <returns>A string array with the found identities</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.LocalNativeConnection.GetLegendImage(System.Double,System.String,System.Int32,System.Int32)">
+      <summary>Renders a minature bitmap of the layers style</summary>
+      <param name="scale">The scale for the bitmap to match</param>
+      <param name="layerdefinition">The layer the image should represent</param>
+      <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
+      <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
+      <returns>The minature bitmap</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.LocalNativeConnection.GetSelectionXml(System.String)">
+      <summary>Gets the selection from a map</summary>
+      <param name="runtimeMap">The resourceID of the runtime map</param>
+      <returns>The selection xml</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.LocalNativeConnection.GetSpatialContextInfo(System.String,System.Boolean)">
+      <summary>Returns the spatial info for a given featuresource</summary>
+      <param name="resourceID">The ID of the resource to query</param>
+      <param name="activeOnly">Query only active items</param>
+      <returns>A list of spatial contexts</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.LocalNativeConnection.RestartSession(System.Boolean)">
+      <summary>Restarts the server session, and creates a new session ID</summary>
+      <param name="throwException">If set to true, the call throws an exception if the call failed</param>
+      <returns>True if the creation succeed, false otherwise</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.LocalNativeConnection.SetSelectionXml(System.String,System.String)">
+      <summary>Sets the selection of a map</summary>
+      <param name="runtimeMap">The resourceID of the runtime map</param>
+      <param name="selectionXml">The selection xml</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.LocalNativeConnection.UploadPackage(System.String,OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate)">
+      <summary>Upload a MapGuide Package file to the server</summary>
+      <param name="filename">Name of the file to upload</param>
+      <param name="callback">A callback argument used to display progress. May be null.</param>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.MapDefinition">
+      <summary>Defines a Map, in either the library or session repository</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.MapDefinition.CurrentConnection">
+      <summary>Gets or sets the connection used in various operations performed on this object</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.MapDefinition.LayerGroups">
+      <summary>Gets or sets the groups defined in this map</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.MapDefinition.Layers">
+      <summary>Gets or sets the layers associated with this map</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.MapDefinition.Metadata">
+      <summary>Gets or sets the Metadata for the map</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.MapLayerGroupCommonType.ExpandInLegend">
+      <summary>Gets or sets a value indicating if this groups layers are displayed in the map legend</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.MapLayerGroupCommonType.LegendLabel">
+      <summary>Gets or sets the label to use for this group</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.MapLayerGroupCommonType.Name">
+      <summary>Gets or sets the name of the group</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.MapLayerGroupCommonType.ShowInLegend">
+      <summary>Gets or sets a value indicating if this group is displayed in the map legend</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.MapLayerGroupCommonType.Visible">
+      <summary>Gets or set the group visibility</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.MapLayerGroupType.GetFullPath(System.String,OSGeo.MapGuide.MaestroAPI.MapDefinition)">
+      <summary>Gets the full path of the group</summary>
+      <param name="separator">The string used to separate the individual levels</param>
+      <param name="parent">The parent mapdefinition, use null for the current parent</param>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.MapLayerType.Group">
+      <summary>Gets or sets the Group that this layer belongs to</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.MapLayerType.Layers">
+      <summary>Returns a list of layers present in the current group. This method does NOT run in O(n).</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.MapLayerType.Visible">
+      <summary>Gets or sets the layer visibility, this attribute is combined with the layers DisplayScale, to determine actual visibility.</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.MapLayerType.GetFullPath(System.String,OSGeo.MapGuide.MaestroAPI.MapDefinition)">
+      <summary>Gets the full path of the group</summary>
+      <param name="separator">The string used to separate the individual levels</param>
+      <param name="parent">The parent mapdefinition, use null for the current parent</param>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier">
+      <summary>This class contains all the required code for maintaining resource identifiers. It has implicit conversions to and from a string, which makes it much easier to use. It has both static methods that operate on strings, as well as a class that can be manipulated.</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.Extension">
+      <summary>Gets or sets the extension of the resourceId</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.Fullname">
+      <summary>Gets or sets the name and extension of the resource</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.Fullpath">
+      <summary>Gets the full path of the resource, that is the path without repository information</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.IsEmpty">
+      <summary>Gets a value indicating if the resource is blank</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.IsFolder">
+      <summary>Gets a value indicating if the resource identifier points to a folder</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.IsInLibrary">
+      <summary>Gets a value indicating if the resource is in the library repository</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.IsInSessionRepository">
+      <summary>Gets a value indicating if the resource is in the session repository</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.IsValid">
+      <summary>Gets a value indicating if the resource identifier is valid</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.Length">
+      <summary>Gets the length of the resource identifier as a string</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.Name">
+      <summary>Gets or sets the name of the resource</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.Path">
+      <summary>Gets the path of the resource, that is the path without repository information and no extension</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.ResourceId">
+      <summary>Gets or sets the full resource identifier</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.ConvertToLibrary(System.String)">
+      <summary>Converts a resource id to be placed in the library</summary>
+      <param name="identifier">The identifier to convert</param>
+      <returns>The converted identifier</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.ConvertToLibrary">
+      <summary>Converts this instance to be in the library repository</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.ConvertToSession(System.String,System.String)">
+      <summary>Converts a resource id to be placed in the library</summary>
+      <param name="identifier">The identifier to convert</param>
+      <param name="sessionId">The session id of the repository it should be placed in</param>
+      <returns>The converted identifier</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.ConvertToSession(System.String)">
+      <summary>Converts this instance to be in the session repository</summary>
+      <param name="sessionId">The sessionid</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.GetExtension(System.String)">
+      <summary>Returns the extension of a resource identifier</summary>
+      <param name="identifier">The identifier to get the extension from</param>
+      <returns>The extension of the identifier</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.GetFullname(System.String)">
+      <summary>Gets the name and extension of the identifier</summary>
+      <param name="identifier">The identifier to extract the information from</param>
+      <returns>The full name of the identifier</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.GetFullpath(System.String)">
+      <summary>Returns the full path of the resource, that is the resourceId without the repository information</summary>
+      <param name="identifier">The identifier to get the path from</param>
+      <returns>The path of the identifier</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.GetName(System.String)">
+      <summary>Gets the name of a resource, given its identifier</summary>
+      <param name="identifier">The identifier to look for</param>
+      <returns>The name of the resource</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.GetPath(System.String)">
+      <summary>Returns the path of the resource, that is the resourceId without the repository information and extension</summary>
+      <param name="identifier">The identifier to get the path from</param>
+      <returns>The path of the identifier</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.GetRepository(System.String)">
+      <summary>Gets the repository part of a resource identifier, eg.: "Library://" or "Session:xxxx//"</summary>
+      <param name="identifier" />
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.IsFolderResource(System.String)">
+      <summary>Returns a value indicating if the resource points to a folder</summary>
+      <param name="identifier">The identifier to evaluate</param>
+      <returns>A value indicating if the resource points to a folder</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.Normalize(System.String)">
+      <summary>Normalizes a identifier, that is prepends a slash if it is a folder resource</summary>
+      <param name="identifier">The identifier to normalize</param>
+      <returns>The normalized identifier</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.Normalize">
+      <summary>Normalizes the identifier, that is prepends a slash if the identifier points to a folder</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.SetExtension(System.String,System.String)">
+      <summary>Changes the extension of the given resource</summary>
+      <param name="identifier">The identifier to change the extension for</param>
+      <param name="newextension">The new extension to use</param>
+      <returns>The renmaed identifier</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.SetName(System.String,System.String)">
+      <summary>Sets the name of the resource, with or without the extension</summary>
+      <param name="identifier">The identifier to give a new name</param>
+      <param name="newname">The new name to assign</param>
+      <returns>The renamed identifier</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.SetPath(System.String,System.String)">
+      <summary>Sets the path of the identifier, with or without the extension</summary>
+      <param name="identifier">The identifier to update</param>
+      <param name="newpath">The new path to user, with or without the extension</param>
+      <returns>The new identifier</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.ToString">
+      <summary>Returns the full resource id as a string</summary>
+      <returns>The full resource id as a string</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.Validate(System.String)">
+      <summary>Determines if a resource identifier is valid</summary>
+      <param name="identifier">The identifier to validate</param>
+      <returns>A value indicating if the identifier is valid</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.Validate(System.String,OSGeo.MapGuide.MaestroAPI.ResourceTypes)">
+      <summary>Determines if a resource identifier is valid and of the desired type</summary>
+      <param name="identifier">The identifier to validate</param>
+      <param name="type">The type the resource identifer must be</param>
+      <returns>A value indicating if the identifier is valid</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.op_Implicit(OSGeo.MapGuide.MaestroAPI.ResourceIdentifier)~System.String">
+      <summary>Helper operator that makes using the resource identifiers easier</summary>
+      <param name="id">The id to convert to a string</param>
+      <returns>The converted string</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.op_Implicit(System.String)~OSGeo.MapGuide.MaestroAPI.ResourceIdentifier">
+      <summary>Helper operator that makes using the resource identifiers easier</summary>
+      <param name="id">The id to convert into a resource indetifier class</param>
+      <returns>The resource identifier</returns>
+    </member>
+    <member name="F:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.m_autoRestartSession">
+      <summary>A flag that indicates if a session will be automatically restarted</summary>
+    </member>
+    <member name="F:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.m_cachedSchemas">
+      <summary>A lookup table for Xsd Schemas</summary>
+    </member>
+    <member name="F:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.m_disableValidation">
+      <summary>A flag indicating if Xsd validation is perfomed</summary>
+    </member>
+    <member name="F:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.m_password">
+      <summary>The password used to open this connection, if any</summary>
+    </member>
+    <member name="F:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.m_resourceTypeLookup">
+      <summary>A resource lookup table, for converting resourceID's into types.</summary>
+    </member>
+    <member name="F:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.m_schemasPath">
+      <summary>The path of Xsd schemas</summary>
+    </member>
+    <member name="F:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.m_serializers">
+      <summary>A list of cached serializers</summary>
+    </member>
+    <member name="F:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.m_username">
+      <summary>The username used to open this connection, if any</summary>
+    </member>
+    <member name="F:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.m_validator">
+      <summary>The current XML validator</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.AutoRestartSession">
+      <summary>Gets or sets a value indicating if the session should automatically be restarted if it expires</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.CachedSchemas">
+      <summary>Gets or sets the collection of cached schemas. Use the object type for key, and an XmlSchema instance for value.</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.DisableValidation">
+      <summary>Gets or sets a flag that indicates if the Xml resources are validated before leaving and entering the server.</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.FeatureProviders">
+      <summary>Gets a list of installed feature providers</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.MaxTestedVersion">
+      <summary>Gets the highest version the API is currently tested againts</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.ResourceTypeLookup">
+      <summary>Gets or sets a hashtable where the key is resourceID extensions, and values are System.Type values.</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SessionID">
+      <summary>Gets the current SessionID.</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.CopyFolder(System.String,System.String,System.Boolean)">
+      <summary>Copies a folder and all its content. This does not update any references.</summary>
+      <param name="oldpath">The current folder path, the one copying from</param>
+      <param name="newpath">The new folder path, the one copying to</param>
+      <param name="overwrite">True if the copy can overwrite an existing folder, false otherwise</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.CopyFolderWithReferences(System.String,System.String,OSGeo.MapGuide.MaestroAPI.LengthyOperationCallBack,OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack)">
+      <summary>Copies folder, and subsequently updates all resources within the folder to use the new folder path instead of the originating one.</summary>
+      <param name="oldpath">The current folder path, the one copying from</param>
+      <param name="newpath">The new folder path, the one copying to</param>
+      <param name="callback">A callback delegate, being called for non progress reporting events.</param>
+      <param name="progress">A callback delegate, being called for progress reporting events.</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.CopyResource(System.String,System.String,System.Boolean)">
+      <summary>Copies a resource from one location to another. This does not update any references.</summary>
+      <param name="oldpath">The current resource path, the one copying from</param>
+      <param name="newpath">The new resource path, the one copying to</param>
+      <param name="overwrite">True if the copy can overwrite an existing resource, false otherwise</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.CreateFolder(System.String)">
+      <summary>Creates a folder on the server</summary>
+      <param name="resourceID">The path of the folder to create</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.CreateRuntimeMap(System.String)">
+      <summary>Creates a runtime map on the server. The map name will be the name of the resource, without path information. This is equivalent to the way the AJAX viewer creates the runtime map.</summary>
+      <param name="resourceID">The mapDefinition resource id</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.CreateRuntimeMap(System.String,System.String)">
+      <summary>Creates a runtime map on the server</summary>
+      <param name="resourceID">The target resource id for the runtime map</param>
+      <param name="mapdefinition">The mapdefinition to base the map on</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.DeserializeObject``1(System.IO.Stream)">
+      <summary>Deserializes an object from a stream.</summary>
+      <typeparam name="T">The expected object type</typeparam>
+      <param name="data">The stream containing the object</param>
+      <returns>The deserialized object</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.DeserializeObject(System.Type,System.IO.Stream)">
+      <summary>Deserializes an object from a stream.</summary>
+      <param name="type">The expected object type</param>
+      <param name="data">The stream containing the object</param>
+      <returns>The deserialized object</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.EnumerateGroups">
+      <summary>Gets a list of all groups on the server</summary>
+      <returns>The list of groups</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.EnumerateResourceReferences(System.String)">
+      <summary>Enumereates all references to a given resource</summary>
+      <param name="resourceid">The resource to enumerate references for</param>
+      <returns>A list of resources that reference the given resourceID</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.EnumerateUnmanagedData(System.String,System.String,System.Boolean,OSGeo.MapGuide.MaestroAPI.UnmanagedDataTypes)">
+      <summary>Enumerates all unmanaged folders, meaning alias'ed folders</summary>
+      <param name="type">The type of data to return</param>
+      <param name="filter">A filter applied to the items</param>
+      <param name="recursive">True if the list should contains recursive results</param>
+      <param name="startpath">The path to retrieve the data from</param>
+      <returns>A list of unmanaged data</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.EnumerateUsers">
+      <summary>Gets a list of all users on the server</summary>
+      <returns>The list of users</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.EnumerateUsers(System.String)">
+      <summary>Gets a list of users in a group</summary>
+      <param name="group">The group to retrieve the users from</param>
+      <returns>The list of users</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.FixAndValidateFolderPath(System.String)">
+      <summary>Validates the origin of the folder, and ensures the folder path has a trailing slash.</summary>
+      <param name="folderpath">The path to validate and fix</param>
+      <returns>The fixed path</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetApplicationContainers">
+      <summary>Returns the avalible widget containers on the server</summary>
+      <returns>The avalible widget containers on the server</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetApplicationDefinition(System.String)">
+      <summary>Returns a ApplicationDefinition from the server.</summary>
+      <param name="resourceID">The full resourceID of the ApplicationDefinition.</param>
+      <returns>The ApplicationDefinition with the given ResourceID</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetApplicationTemplates">
+      <summary>Returns the avalible application templates on the server</summary>
+      <returns>The avalible application templates on the server</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetApplicationWidgets">
+      <summary>Returns the avalible application widgets on the server</summary>
+      <returns>The avalible application widgets on the server</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetFeatureProvider(System.String)">
+      <summary>Returns an installed provider, given the name of the provider</summary>
+      <param name="providername">The name of the provider</param>
+      <returns>The first matching provider or null</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetFeatureSource(System.String)">
+      <summary>Returns a FeatureSource from the server.</summary>
+      <param name="resourceID">The full resourceID of the FeatureSource.</param>
+      <returns>The FeatureSource with the given ResourceID</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetIdentityProperties(System.String,System.String)">
+      <summary>Gets the names of the identity properties from a feature</summary>
+      <param name="resourceID">The resourceID for the FeatureSource</param>
+      <param name="classname">The classname of the feature, including schema</param>
+      <returns>A string array with the found identities</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetLayerDefinition(System.String)">
+      <summary>Returns a LayerDefinition from the server.</summary>
+      <param name="resourceID">The full resourceID of the LayerDefinition.</param>
+      <returns>The LayerDefinition with the given ResourceID</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetLegendImage(System.Double,System.String,System.Int32,System.Int32)">
+      <summary>Renders a minature bitmap of the layers style</summary>
+      <param name="scale">The scale for the bitmap to match</param>
+      <param name="layerdefinition">The layer the image should represent</param>
+      <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
+      <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
+      <returns>The minature bitmap</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetMapDefinition(System.String)">
+      <summary>Returns a MapDefinition from the server.</summary>
+      <param name="resourceID">The full resourceID of the MapDefinition.</param>
+      <returns>The MapDefinition with the given ResourceID</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetRepositoryResources">
+      <summary>Gets a full list of resources in the permanent server repository (Library). This method returns the full catalog and should be used sparringly.</summary>
+      <returns>A list of contained resources</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetRepositoryResources(System.Int32)">
+      <summary>Gets a list of resources in the permanent server repository (Library). This method limits folder recursion to the specified depth.</summary>
+      <param name="depth">The max depth to recurse. Use -1 for no limit.</param>
+      <returns>A list of contained resources</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetRepositoryResources(System.String,System.Int32)">
+      <summary>Gets a list of resources in the permanent server repository (Library). This method limits folder recursion to the specified depth.</summary>
+      <param name="startingpoint">The folder from which to return items. Use null for "Library://"</param>
+      <param name="depth">The max depth to recurse. Use -1 for no limit.</param>
+      <returns>A list of contained resources</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetRepositoryResources(System.String)">
+      <summary>Gets a list of resources in the permanent server repository (Library). This method limits folder recursion to the specified depth.</summary>
+      <param name="startingpoint">The folder from which to return items. Use null for "Library://"</param>
+      <returns>A list of contained resources</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetRepositoryResources(System.String,System.String)">
+      <summary>Gets a list of resources in the permanent server repository (Library). This method limits folder recursion to the specified depth.</summary>
+      <param name="startingpoint">The folder from which to return items. Use null for "Library://"</param>
+      <param name="type">The type of resource to look for. Basically this is the resource extension, like ".MapDefinition". Use null for all resources.</param>
+      <returns>A list of contained resources</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetRepositoryResources(System.String,System.String,System.Int32)">
+      <summary>Gets a list of resources in the permanent server repository (Library). This method limits folder recursion to the specified depth.</summary>
+      <param name="startingpoint">The folder from which to return items. Use null for "Library://"</param>
+      <param name="type">The type of resource to look for. Basically this is the resource extension, like ".MapDefinition". Use null for all resources.</param>
+      <param name="depth">The max depth to recurse. Use -1 for no limit.</param>
+      <returns>A list of contained resources</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetResource(System.String)">
+      <summary>Returns an object deserialized from server data. Uses the ResourceID to infer the object type.</summary>
+      <param name="resourceID">The full resourceID of the item to retrieve.</param>
+      <returns>A deserialized object.</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetResourceData(System.String,System.String)">
+      <summary>Returns data from a resource as a memorystream</summary>
+      <param name="resourceID">The id of the resource to fetch data from</param>
+      <param name="dataname">The name of the associated data item</param>
+      <returns>A stream containing the references resource data</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetResourceType(System.String)">
+      <summary>Gets an object type from the resourceID. Use the ResourceTypeLookup to add or remove types.</summary>
+      <param name="resourceID">The resourceID for the resource</param>
+      <returns>The type of the given item, throws an exception if the type does not exist</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetResourceXmlData(System.String)">
+      <summary>Returns raw data from the server a byte array</summary>
+      <param name="resourceID">The full resourceID to get data from</param>
+      <returns>Raw data from the given resource</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetSchema(System.Type)">
+      <summary>Gets the Xsd schema for a given type.</summary>
+      <param name="type">The type to get the schema for</param>
+      <returns>The schema for the given type</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetSelectionXml(System.String)">
+      <summary>Gets the selection from a map</summary>
+      <param name="runtimeMap">The resourceID of the runtime map</param>
+      <returns>The selection xml</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetSerializer(System.Type)">
+      <summary>Returns an XmlSerializer for the given type</summary>
+      <param name="type">The object type to serialize</param>
+      <returns>An XmlSerializer for the given type</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetSpatialContextInfo(System.String,System.Boolean)">
+      <summary>Returns the spatial info for a given featuresource</summary>
+      <param name="resourceID">The ID of the resource to query</param>
+      <param name="activeOnly">Query only active items</param>
+      <returns>A list of spatial contexts</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.GetWebLayout(System.String)">
+      <summary>Returns a WebLayout from the server.</summary>
+      <param name="resourceID">The full resourceID of the WebLayout.</param>
+      <returns>The WebLayout with the given ResourceID</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.HasFolder(System.String)">
+      <summary>Returns a value indicating if a given folder exists</summary>
+      <param name="folderpath">The path of the folder</param>
+      <returns>True if the folder exists, false otherwise. Also returns false on error.</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.IsSessionExpiredException(System.Exception)">
+      <summary>Determines if an exception is a "Session Expired" exception.</summary>
+      <param name="ex">The exception to evaluate</param>
+      <returns>True if the exception is a session expired exception</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.MoveFolder(System.String,System.String,System.Boolean)">
+      <summary>Moves a folder and its content from one location to another. This does not update any references.</summary>
+      <param name="oldpath">The current folder path, the one moving from</param>
+      <param name="newpath">The new folder path, the one moving to</param>
+      <param name="overwrite">True if the move can overwrite an existing folder, false otherwise</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.MoveFolderWithReferences(System.String,System.String,OSGeo.MapGuide.MaestroAPI.LengthyOperationCallBack,OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack)">
+      <summary>Moves a folder, and subsequently updates all resources pointing to the old resource path</summary>
+      <param name="oldpath">The current folder path, the one moving from</param>
+      <param name="newpath">The new folder path, the one moving to</param>
+      <param name="callback">A callback delegate, being called for non progress reporting events.</param>
+      <param name="progress">A callback delegate, being called for progress reporting events.</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.MoveResource(System.String,System.String,System.Boolean)">
+      <summary>Moves a resource from one location to another. This does not update any references.</summary>
+      <param name="oldpath">The current resource path, the one moving from</param>
+      <param name="newpath">The new resource path, the one moving to</param>
+      <param name="overwrite">True if the move can overwrite an existing resource, false otherwise</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.MoveResourceWithReferences(System.String,System.String,OSGeo.MapGuide.MaestroAPI.LengthyOperationCallBack,OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack)">
+      <summary>Moves a resource, and subsequently updates all resources pointing to the old resource path</summary>
+      <param name="oldpath">The current resource path, the one moving from</param>
+      <param name="newpath">The new resource path, the one moving to</param>
+      <param name="callback">A callback delegate, being called for non progress reporting events.</param>
+      <param name="progress">A callback delegate, being called for progress reporting events.</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.QueryMapFeatures(System.String,System.String,System.Boolean)">
+      <summary>Selects features from a runtime map, returning a selection Xml.</summary>
+      <param name="runtimemap">The map to query. NOT a resourceID, only the map name!</param>
+      <param name="wkt">The WKT of the geometry to query with (always uses intersection)</param>
+      <param name="persist">True if the selection should be saved in the runtime map, false otherwise.</param>
+      <returns>The selection Xml, or an empty string if there were no data.</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.QueryMapFeatures(System.String,System.String,System.Boolean,OSGeo.MapGuide.MaestroAPI.QueryMapFeaturesLayerAttributes,System.Boolean)">
+      <summary>Selects features from a runtime map, returning a selection Xml.</summary>
+      <param name="runtimemap">The map to query. NOT a resourceID, only the map name!</param>
+      <param name="wkt">The WKT of the geometry to query with (always uses intersection)</param>
+      <param name="persist">True if the selection should be saved in the runtime map, false otherwise.</param>
+      <param name="attributes">The type of layer to include in the query</param>
+      <param name="raw">True if the result should contain the tooltip and link info</param>
+      <returns>The selection Xml, or an empty string if there were no data.</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.RemoveVersionFromProviderName(System.String)">
+      <summary>Removes the version numbers from a providername</summary>
+      <param name="providername">The name of the provider, with or without version numbers</param>
+      <returns>The provider name without version numbers</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.ResourceExists(System.String)">
+      <summary>Returns a boolean indicating if a given resource exists</summary>
+      <param name="resourceid">The resource to look for</param>
+      <returns>True if the resource exists false otherwise. Also returns false on error.</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.RestartSession">
+      <summary>Restarts the server session, and creates a new session ID</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.RestartSession(System.Boolean)">
+      <summary>Restarts the server session, and creates a new session ID</summary>
+      <param name="throwException">If set to true, the call throws an exception if the call failed</param>
+      <returns>True if the creation succeed, false otherwise</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SaveResource(OSGeo.MapGuide.MaestroAPI.WebLayout)">
+      <summary>Saves a WebLayout, using its originating resourceId</summary>
+      <param name="resource">The WebLayout to save</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SaveResource(OSGeo.MapGuide.MaestroAPI.FeatureSource)">
+      <summary>Saves a FeatureSource, using its originating resourceId</summary>
+      <param name="resource">The FeatureSource to save</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SaveResource(OSGeo.MapGuide.MaestroAPI.LayerDefinition)">
+      <summary>Saves a LayerDefinition, using its originating resourceId</summary>
+      <param name="resource">The LayerDefinition to save</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SaveResource(OSGeo.MapGuide.MaestroAPI.MapDefinition)">
+      <summary>Saves a MapDefinition, using its originating resourceId</summary>
+      <param name="resource">The MapDefintion to save</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SaveResourceAs(System.Object,System.String)">
+      <summary>Saves an object into the repository</summary>
+      <param name="resource">The object to save</param>
+      <param name="resourceid">The resourceId to save the object as</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SaveResourceAs(OSGeo.MapGuide.MaestroAPI.MapDefinition,System.String)">
+      <summary>Saves a MapDefinition under a different resourceID</summary>
+      <param name="resource">The MapDefinition to save</param>
+      <param name="resourceid">The new path of the MapDefinition</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SaveResourceAs(OSGeo.MapGuide.MaestroAPI.LayerDefinition,System.String)">
+      <summary>Saves a LayerDefinition under a different resourceID</summary>
+      <param name="resource">The LayerDefinition to save</param>
+      <param name="resourceid">The new path of the LayerDefinition</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SaveResourceAs(OSGeo.MapGuide.MaestroAPI.FeatureSource,System.String)">
+      <summary>Saves a FeatureSource under a different resourceID</summary>
+      <param name="resource">The FeatureSource to save</param>
+      <param name="resourceid">The new path of the FeatureSource</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SaveResourceAs(OSGeo.MapGuide.MaestroAPI.WebLayout,System.String)">
+      <summary>Saves a WebLayout under a different resourceID</summary>
+      <param name="resource">The WebLayout to save</param>
+      <param name="resourceid">The new path of the WebLayout</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SerializeObject(System.Object)">
+      <summary>Serialize an object into a new memory stream.</summary>
+      <param name="o">The object to serialize</param>
+      <returns>A memorystream with the serialized object</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SerializeObject(System.Object,System.IO.Stream)">
+      <summary>Serializes an object into a stream</summary>
+      <param name="o">The object to serialize</param>
+      <param name="stream">The stream to serialize into</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SetResourceData(System.String,System.String,OSGeo.MapGuide.MaestroAPI.ResourceDataType,System.IO.Stream)">
+      <summary>Uploads data to a resource</summary>
+      <param name="resourceid">The id of the resource to update</param>
+      <param name="dataname">The name of the data to update or create</param>
+      <param name="datatype">The type of data</param>
+      <param name="stream">A stream containing the new content of the resource data</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SetResourceData(System.String,System.String,OSGeo.MapGuide.MaestroAPI.ResourceDataType,System.IO.Stream,OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate)">
+      <summary>Uploads data to a resource</summary>
+      <param name="resourceid">The id of the resource to update</param>
+      <param name="dataname">The name of the data to update or create</param>
+      <param name="datatype">The type of data</param>
+      <param name="stream">A stream containing the new content of the resource data</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SetResourceXmlData(System.String,System.IO.Stream)">
+      <summary>Writes raw data into a resource.</summary>
+      <param name="resourceid">The resourceID to write into</param>
+      <param name="stream">The stream containing the data to write.</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.SetSelectionXml(System.String,System.String)">
+      <summary>Sets the selection of a map</summary>
+      <param name="runtimeMap">The resourceID of the runtime map</param>
+      <param name="selectionXml">The selection xml</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.TryGetResourceType(System.String)">
+      <summary>Gets an object type from the resourceID. Use the ResourceTypeLookup to add or remove types.</summary>
+      <param name="resourceID">The resourceID for the resource</param>
+      <returns>The type of the given item, returns null if no such type exists</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.UpdateResourceReferences(System.Object,System.String,System.String,System.Boolean)">
+      <summary>Updates all resource references inside an object.</summary>
+      <param name="o">The object in which the resource references are to be updated</param>
+      <param name="oldresourcepath">The current resource path, the one updating from</param>
+      <param name="newresourcepath">The new resource path, the one updating to</param>
+      <param name="folderupdates">True if the old and new resource path identifiers are folders, false otherwise</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.UpdateResourceReferences(System.Object,System.String,System.String,System.Boolean,System.Collections.Hashtable)">
+      <summary>Updates all resource references inside an object.</summary>
+      <param name="o">The object in which the resource references are to be updated</param>
+      <param name="oldresourcepath">The current resource path, the one updating from</param>
+      <param name="newresourcepath">The new resource path, the one updating to</param>
+      <param name="folderupdates">True if the old and new resource path identifiers are folders, false otherwise</param>
+      <param name="visited">A hashtable with objects previously visited. Used for recursion, leave as null when calling from outside the API.</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.UploadPackage(System.String,OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate)">
+      <summary>Upload a MapGuide Package file to the server</summary>
+      <param name="filename">Name of the file to upload</param>
+      <param name="callback">A callback argument used to display progress. May be null.</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.ValidateVersion(OSGeo.MapGuide.MaestroAPI.SiteVersion)">
+      <summary>Validates the current server version against the highest tested version.</summary>
+      <param name="version">The version to validate</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.ValidateVersion(System.Version)">
+      <summary>Validates the current server version against the highest tested version.</summary>
+      <param name="version">The version to validate</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionBase.WriteResource(System.String,System.Object)">
+      <summary>Writes an object into a resourceID</summary>
+      <param name="resourceid">The resource to write into</param>
+      <param name="resource">The resourcec to write</param>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.Utf8XmlWriter">
+      <summary>Overrides the default XmlWriter, to ensure that the Xml is Utf8 and with whitespaces, as the MapGuide server requires Utf8</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.Utility">
+      <summary>Various helper functions</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.Utility.GeometryType">
+      <summary>Returns the type used to define a geometry column in a feature reader</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.Utility.RasterType">
+      <summary>Returns a type used to define a raster column in a feature reader</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.ConvertMgTypeToNetType(System.Int32)">
+      <summary>Gets the type of an item, givne the MapGuide type id</summary>
+      <param name="MgType">The MapGuide type id</param>
+      <returns>The corresponding .Net type</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.ConvertNetTypeToMgType(System.Type)">
+      <summary>Gets the MapGuide id for a given type</summary>
+      <param name="type">The .Net type</param>
+      <returns>The corresponding MapGuide type id</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.CopyStream(System.IO.Stream,System.IO.Stream)">
+      <summary>Copies the content of a stream into another stream. Automatically attempts to rewind the source stream.</summary>
+      <param name="source">The source stream</param>
+      <param name="target">The target stream</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.CopyStream(System.IO.Stream,System.IO.Stream,System.Boolean)">
+      <summary>Copies the content of a stream into another stream.</summary>
+      <param name="source">The source stream</param>
+      <param name="target">The target stream</param>
+      <param name="rewind">True if the source stream should be rewound before being copied</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.CopyStream(System.IO.Stream,System.IO.Stream,OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate,System.Int64)">
+      <summary>Copies the content of a stream into another stream, with callbacks.</summary>
+      <param name="source">The source stream</param>
+      <param name="target">The target stream</param>
+      <param name="callback">An optional callback delegate, may be null.</param>
+      <param name="updateFrequence">The number of bytes to copy before calling the callback delegate, set to 0 to get every update</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.DecodeFDOName(System.String)">
+      <summary>Converts FDO encoded characters into their original character. Encoded characters have the form -x00-.</summary>
+      <param name="name">The FDO encoded string</param>
+      <returns>The unencoded version of the string</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.DeepCopy(System.Object,System.Object)">
+      <summary>Makes a deep copy of an object, by copying all the public properties. This overload tries to maintain object references by assigning properties</summary>
+      <param name="source">The object to copy</param>
+      <param name="target">The object to assign to</param>
+      <returns>A copied object</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.DeepCopy(System.Object)">
+      <summary>Makes a deep copy of an object, by copying all the public properties</summary>
+      <param name="source">The object to copy</param>
+      <returns>A copied object</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.FormatSizeString(System.Int64)">
+      <summary>Formats a number of bytes to a human readable format, ea.: 2.56 Kb</summary>
+      <param name="size">The size in bytes</param>
+      <returns>The human readable string</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.MgStreamToNetStream(System.Object,System.Reflection.MethodInfo,System.Object[])">
+      <summary>Converts a MgStream to a .Net Stream object. Due to some swig issues, it is not possible to pass on an MgStream to a function, so this function calls a method to retrieve the stream locally.</summary>
+      <param name="source">The object which has a stream</param>
+      <param name="mi">The method to call</param>
+      <param name="args">Arguments to the method</param>
+      <returns>A memorystream with the MgStream's content</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.ParseDigit(System.String)">
+      <summary>Parses a string with a decimal value in EN-US format</summary>
+      <param name="digit">The string value</param>
+      <returns>The parsed value</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.ParseHTMLColor(System.String)">
+      <summary>Parses a color in HTML notation (ea. #ffaabbff)</summary>
+      <param name="color">The HTML representation of the color</param>
+      <returns>The .Net color structure that matches the color</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.RemoveUTF8BOM(System.IO.MemoryStream)">
+      <summary>Creates a copy of the stream, with removed Utf8 BOM, if any</summary>
+      <param name="ms">The stream to fix</param>
+      <returns>A stream with no Utf8 BOM</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.SerializeDigit(System.Single)">
+      <summary>Turns a decimal value into a string representation in EN-US format</summary>
+      <param name="digit">The value to encode</param>
+      <returns>The encoded value</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.SerializeDigit(System.Double)">
+      <summary>Turns a decimal value into a string representation in EN-US format</summary>
+      <param name="digit">The value to encode</param>
+      <returns>The encoded value</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.SerializeHTMLColor(System.Drawing.Color,System.Boolean)">
+      <summary>Returns the HTML representation of an .Net color structure</summary>
+      <param name="color">The color to encode</param>
+      <param name="includeAlpha">A flag indicating if the color structures alpha value should be included</param>
+      <returns>The HTML representation of the color structure</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.StreamAsArray(System.IO.Stream)">
+      <summary>Reads all data from a stream, and returns it as a single array. Note that this is very inefficient if the stream is several megabytes long.</summary>
+      <param name="s">The stream to exhaust</param>
+      <returns>The streams content as an array</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.ThrowAsWebException(System.Exception)">
+      <summary>This method tries to extract the html content of a WebException. If succesfull, it will return an exception with an error message corresponding to the html text. If not, it will return the original exception object.</summary>
+      <param name="ex">The exception object to extract from</param>
+      <returns>A potentially better exeception</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.Utility.XmlDeepCopy(System.Object)">
+      <summary>Builds a copy of the object by serializing it to xml, and then deserializing it. Please note that this function is has a large overhead.</summary>
+      <param name="source">The object to copy</param>
+      <returns>A copy of the object</returns>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.XMLValidator">
+      <summary>Class that makes XSD validation</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.ServerConnectionI">
+      <summary>Primary connection to the MapGuide Server</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.AutoRestartSession">
+      <summary>Gets or sets a value indicating if the session should automatically be restarted if it expires</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.DisplayName">
+      <summary>Gets a string that can be used to identify the server by a user</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.CreateRuntimeMap(System.String)">
+      <summary>Creates a runtime map on the server. The map name will be the name of the resource, without path information. This is equivalent to the way the AJAX viewer creates the runtime map.</summary>
+      <param name="resourceID">The mapDefinition resource id</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.CreateRuntimeMap(System.String,System.String)">
+      <summary>Creates a runtime map on the server</summary>
+      <param name="resourceID">The target resource id for the runtime map</param>
+      <param name="mapdefinition">The mapdefinition to base the map on</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.CreateRuntimeMap(System.String,OSGeo.MapGuide.MaestroAPI.MapDefinition)">
+      <summary>Creates a runtime map on the server</summary>
+      <param name="resourceID">The target resource id for the runtime map</param>
+      <param name="map">The mapdefinition to base the map on</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.CreateRuntimeMap(System.String,OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMap)">
+      <summary>Creates a runtime map on the server</summary>
+      <param name="resourceID">The target resource id for the runtime map</param>
+      <param name="map">The mapdefinition to base the map on</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.DescribeSchema">
+      <summary>Placeholder for actual method call</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.EnumerateGroups">
+      <summary>Gets a list of all groups on the server</summary>
+      <returns>The list of groups</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.EnumerateUnmanagedData(System.String,System.String,System.Boolean,OSGeo.MapGuide.MaestroAPI.UnmanagedDataTypes)">
+      <summary>Enumerates all unmanaged folders, meaning alias'ed folders</summary>
+      <param name="type">The type of data to return</param>
+      <param name="filter">A filter applied to the items</param>
+      <param name="recursive">True if the list should contains recursive results</param>
+      <param name="startpath">The path to retrieve the data from</param>
+      <returns>A list of unmanaged data</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.EnumerateUsers">
+      <summary>Gets a list of all users on the server</summary>
+      <returns>The list of users</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.EnumerateUsers(System.String)">
+      <summary>Gets a list of users in a group</summary>
+      <param name="group">The group to retrieve the users from</param>
+      <returns>The list of users</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.GetApplicationContainers">
+      <summary>Returns the avalible widget containers on the server</summary>
+      <returns>The avalible widget containers on the server</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.GetApplicationWidgets">
+      <summary>Returns the avalible application widgets on the server</summary>
+      <returns>The avalible application widgets on the server</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.GetFeatureProvider(System.String)">
+      <summary>Returns an installed provider, given the name of the provider</summary>
+      <param name="providername">The name of the provider</param>
+      <returns>The first matching provider or null</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.GetIdentityProperties(System.String,System.String)">
+      <summary>Gets the names of the identity properties from a feature</summary>
+      <param name="resourceID">The resourceID for the FeatureSource</param>
+      <param name="classname">The classname of the feature, including schema</param>
+      <returns>A string array with the found identities</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.GetLegendImage(System.Double,System.String,System.Int32,System.Int32)">
+      <summary>Renders a minature bitmap of the layers style</summary>
+      <param name="scale">The scale for the bitmap to match</param>
+      <param name="layerdefinition">The layer the image should represent</param>
+      <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
+      <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
+      <returns>The minature bitmap</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.GetResourceType(System.String)">
+      <summary>Gets the resource type from a resourceID</summary>
+      <param name="resourceID">The resourceID for the resource</param>
+      <returns>The type of the given item, throws an exception if the type does not exist</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.GetSelectionXml(System.String)">
+      <summary>Gets the selection from a map</summary>
+      <param name="runtimeMap">The resourceID of the runtime map</param>
+      <returns>The selection xml</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.QueryMapFeatures(System.String,System.String,System.Boolean,OSGeo.MapGuide.MaestroAPI.QueryMapFeaturesLayerAttributes,System.Boolean)">
+      <summary>Selects features from a runtime map, returning a selection Xml.</summary>
+      <param name="runtimemap">The map to query. NOT a resourceID, only the map name!</param>
+      <param name="wkt">The WKT of the geometry to query with (always uses intersection)</param>
+      <param name="persist">True if the selection should be saved in the runtime map, false otherwise.</param>
+      <param name="attributes">The type of layer to include in the query</param>
+      <param name="raw">True if the result should contain the tooltip and link info</param>
+      <returns>The selection Xml, or an empty string if there were no data.</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.QueryMapFeatures(System.String,System.String,System.Boolean)">
+      <summary>Selects features from a runtime map, returning a selection Xml.</summary>
+      <param name="runtimemap">The map to query. NOT a resourceID, only the map name!</param>
+      <param name="wkt">The WKT of the geometry to query with (always uses intersection)</param>
+      <param name="persist">True if the selection should be saved in the runtime map, false otherwise.</param>
+      <returns>The selection Xml, or an empty string if there were no data.</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.RemoveVersionFromProviderName(System.String)">
+      <summary>Removes the version numbers from a providername</summary>
+      <param name="providername">The name of the provider, with or without version numbers</param>
+      <returns>The provider name without version numbers</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.RestartSession">
+      <summary>Restarts the server session, and creates a new session ID</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.RestartSession(System.Boolean)">
+      <summary>Restarts the server session, and creates a new session ID</summary>
+      <param name="throwException">If set to true, the call throws an exception if the call failed</param>
+      <returns>True if the creation succeed, false otherwise</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.SaveResource(OSGeo.MapGuide.MaestroAPI.WebLayout)">
+      <summary>Saves a WebLayout, using its originating resourceId</summary>
+      <param name="resource">The WebLayout to save</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.SaveResource(OSGeo.MapGuide.MaestroAPI.FeatureSource)">
+      <summary>Saves a FeatureSource, using its originating resourceId</summary>
+      <param name="resource">The FeatureSource to save</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.SaveResource(OSGeo.MapGuide.MaestroAPI.LayerDefinition)">
+      <summary>Saves a LayerDefinition, using its originating resourceId</summary>
+      <param name="resource">The LayerDefinition to save</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.SaveResource(OSGeo.MapGuide.MaestroAPI.MapDefinition)">
+      <summary>Saves a MapDefinition, using its originating resourceId</summary>
+      <param name="resource">The MapDefintion to save</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.SaveResourceAs(System.Object,System.String)">
+      <summary>Saves an object into the repository</summary>
+      <param name="resource">The object to save</param>
+      <param name="resourceid">The resourceId to save the object as</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.SaveResourceAs(OSGeo.MapGuide.MaestroAPI.MapDefinition,System.String)">
+      <summary>Saves a MapDefinition under a different resourceID</summary>
+      <param name="resource">The MapDefinition to save</param>
+      <param name="resourceid">The new path of the MapDefinition</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.SaveResourceAs(OSGeo.MapGuide.MaestroAPI.LayerDefinition,System.String)">
+      <summary>Saves a LayerDefinition under a different resourceID</summary>
+      <param name="resource">The LayerDefinition to save</param>
+      <param name="resourceid">The new path of the LayerDefinition</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.SaveResourceAs(OSGeo.MapGuide.MaestroAPI.FeatureSource,System.String)">
+      <summary>Saves a FeatureSource under a different resourceID</summary>
+      <param name="resource">The FeatureSource to save</param>
+      <param name="resourceid">The new path of the FeatureSource</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.SaveResourceAs(OSGeo.MapGuide.MaestroAPI.WebLayout,System.String)">
+      <summary>Saves a WebLayout under a different resourceID</summary>
+      <param name="resource">The WebLayout to save</param>
+      <param name="resourceid">The new path of the WebLayout</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.SaveRuntimeMap(System.String,OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMap)">
+      <summary>Updates an existing runtime map</summary>
+      <param name="resourceID">The target resource id for the runtime map</param>
+      <param name="map">The runtime map to update with</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.SetSelectionXml(System.String,System.String)">
+      <summary>Sets the selection of a map</summary>
+      <param name="runtimeMap">The resourceID of the runtime map</param>
+      <param name="selectionXml">The selection xml</param>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.TryGetResourceType(System.String)">
+      <summary>Gets the resource type from a resourceID</summary>
+      <param name="resourceID">The resourceID for the resource</param>
+      <returns>The type of the given item, returns null if no such type exists</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.ServerConnectionI.UploadPackage(System.String,OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate)">
+      <summary>Upload a MapGuide Package file to the server</summary>
+      <param name="filename">Name of the file to upload</param>
+      <param name="callback">A callback argument used to display progress. May be null.</param>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.KnownSiteVersions">
+      <summary>This file contains the current known versions of the MapGuide server.</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate">
+      <summary>A delegate used to update a progress bar while copying a stream.</summary>
+      <param name="copied">The number of bytes copied so far</param>
+      <param name="remaining">The number of bytes left in the stream. -1 if the stream length is not known</param>
+      <param name="total">The total number of bytes in the source stream. -1 if the stream length is unknown</param>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.ApplicationDefinitionType.ApplicationDocument">
+      <summary>Gets the Application Document, used to create new extension elements</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.BinarySerializer.MgBinaryDeserializer">
+      <summary>A utility for serializing objects to the internal MapGuide Format</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.BinarySerializer.MgBinaryDeserializer.ReadStreamRepeat(System.Byte[],System.Int32,System.Int32)">
+      <summary>Internal helper that will read from a potentially fragmented stream</summary>
+      <param name="len">The number of bytes to read</param>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.BinarySerializer.MgBinarySerializer">
+      <summary>A utility for deserializing data in the internal MapGuide format.</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.BinarySerializer.IBinarySerializeable">
+      <summary>An object that can be serialized, using the internal MapGuide format, must implement this interface</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMap">
+      <summary>Implementation of the runtime map. This class is prone to breaking if the MapGuide server code changes. An implementation of RFC 21 can correct this problem.</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMap.CurrentConnection">
+      <summary>Gets or sets the connection used in various operations performed on this object</summary>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMapGroup.Layers">
+      <summary>Returns a list of layers present in the current group. This method does NOT run in O(n).</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMapGroup.GetFullPath(System.String,OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMap)">
+      <summary>Gets the full path of the group</summary>
+      <param name="separator">The string used to separate the individual levels</param>
+      <param name="parent">The parent mapdefinition, use null for the current parent</param>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMapGroupCollection.Item(System.String)">
+      <summary>Gets or sets a layer based on the layers name. Is case sensitive but will search case insensitive if no layer matches with case sensitive.</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMapGroupCollection.Contains(System.String)">
+      <summary>Gets a value indicating if the layer exists in the map. Is case sensitive but will search case insensitive if no layer matches with case sensitive.</summary>
+      <param name="name">The name of the layer</param>
+      <returns>True if the layer was found, false otherwise</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMapGroupCollection.IndexOf(System.String)">
+      <summary>Gets or sets the index of a layer, given the layer name. Is case sensitive but will search case insensitive if no layer matches with case sensitive.</summary>
+      <param name="name">The name of the layer</param>
+      <returns>The index of the layer, or -1 if no such layer could be found</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMapLayer.GetFullPath(System.String,OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMap)">
+      <summary>Gets the full path of the layer</summary>
+      <param name="separator">The string used to separate the individual levels</param>
+      <param name="parent">The parent mapdefinition, use null for the current parent</param>
+    </member>
+    <member name="P:OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMapLayerCollection.Item(System.String)">
+      <summary>Gets or sets a layer based on the layers name. Is case sensitive but will search case insensitive if no layer matches with case sensitive.</summary>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMapLayerCollection.Contains(System.String)">
+      <summary>Gets a value indicating if the layer exists in the map. Is case sensitive but will search case insensitive if no layer matches with case sensitive.</summary>
+      <param name="name">The name of the layer</param>
+      <returns>True if the layer was found, false otherwise</returns>
+    </member>
+    <member name="M:OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMapLayerCollection.IndexOf(System.String)">
+      <summary>Gets or sets the index of a layer, given the layer name. Is case sensitive but will search case insensitive if no layer matches with case sensitive.</summary>
+      <param name="name">The name of the layer</param>
+      <returns>The index of the layer, or -1 if no such layer could be found</returns>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.XmlSerializer.XmlSerializerAttribute">
+      <summary>A decoration attribute for an Xml Serializeable element</summary>
+    </member>
+    <member name="T:OSGeo.MapGuide.MaestroAPI.XmlSerializer.XmlSerializerEngine">
+      <summary>An engine that can serialize and deserialize objects using Attributes</summary>
+    </member>
+  </members>
+</doc>
