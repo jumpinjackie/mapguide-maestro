@@ -93,7 +93,11 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                     if (op.Name.ToLower().Equals("setresource"))
                     {
                         string id = op.Parameters.Parameter["RESOURCEID"].Value;
-                        string header = op.Parameters.Parameter["HEADER"].Value;
+                        string header;
+                        if (op.Parameters.Parameter["HEADER"] != null)
+                            header = op.Parameters.Parameter["HEADER"].Value;
+                        else
+                            header = null;
                         string content = op.Parameters.Parameter["CONTENT"] == null ? null : op.Parameters.Parameter["CONTENT"].Value;
 
                         m_resources.Add(id, new ResourceItem(id, header, content));

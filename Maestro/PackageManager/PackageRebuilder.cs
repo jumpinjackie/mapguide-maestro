@@ -252,16 +252,27 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                         }
                         else if (ri.EntryType == EntryTypeEnum.Regular)
                         {
-                            int index = FindZipEntry(zipfile, ri.Headerpath);
-                            if (index < 0)
-                                throw new Exception(string.Format(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Failed to find file {0} in archive"), ri.Headerpath));
+                            if (string.IsNullOrEmpty(ri.Headerpath))
+                            {
+                                using (System.IO.FileStream fs = new System.IO.FileStream(ri.Headerpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                                {
+                                    byte[] data = System.Text.Encoding.UTF8.GetBytes(DEFAULT_HEADER);
+                                    fs.Write(data, 0, data.Length);
+                                }
+                            }
+                            else
+                            {
+                                int index = FindZipEntry(zipfile, ri.Headerpath);
+                                if (index < 0)
+                                    throw new Exception(string.Format(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Failed to find file {0} in archive"), ri.Headerpath));
 
-                            using (System.IO.FileStream fs = new System.IO.FileStream(headerpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                                Utility.CopyStream(zipfile.GetInputStream(index), fs);
+                                using (System.IO.FileStream fs = new System.IO.FileStream(headerpath, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                                    Utility.CopyStream(zipfile.GetInputStream(index), fs);
+                            }
 
                             if (!ri.IsFolder)
                             {
-                                index = FindZipEntry(zipfile, ri.Contentpath);
+                                int index = FindZipEntry(zipfile, ri.Contentpath);
                                 if (index < 0)
                                     throw new Exception(string.Format(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Failed to find file {0} in archive"), ri.Contentpath));
 
