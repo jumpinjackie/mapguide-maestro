@@ -380,6 +380,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.fontCombo.TabIndex = 7;
             this.fontCombo.ValueMember = "Value";
             this.fontCombo.SelectedIndexChanged += new System.EventHandler(this.fontCombo_SelectedIndexChanged);
+            this.fontCombo.TextChanged += new System.EventHandler(this.fontCombo_TextChanged);
             // 
             // FontTable
             // 
@@ -1017,6 +1018,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
         private void sizeCombo_TextChanged(object sender, EventArgs e)
         {
             sizeCombo_SelectedIndexChanged(sender, e);
+        }
+
+        private void fontCombo_TextChanged(object sender, EventArgs e)
+        {
+            fontCombo_SelectedIndexChanged(sender, e);
         }
 
 
