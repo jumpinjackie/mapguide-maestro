@@ -1010,5 +1010,34 @@ namespace OSGeo.MapGuide.MaestroAPI
             return req;
         }
 
-	}
+        public System.Net.WebRequest UpdateRepository(string resourceId, System.IO.Stream headerstream)
+        {
+            if (m_sessionID == null)
+                throw new Exception("Connection is not yet logged in");
+
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "UPDATEREPOSITORY");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("RESOURCEID", resourceId);
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            string boundary;
+            System.IO.MemoryStream outStream = new System.IO.MemoryStream();
+            System.Net.WebRequest req = PrepareFormContent(outStream, out boundary);
+
+            EncodeFormParameters(boundary, param, outStream);
+            System.IO.Stream s = req.GetRequestStream();
+
+            Utility.CopyStream(outStream, s);
+            outStream.Dispose();
+
+            AppendFormContent("HEADER", "header.xml", boundary, s, headerstream, null);
+            s.Close();
+
+            return req;
+        }
+    
+    }
 }

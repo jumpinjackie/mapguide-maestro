@@ -101,6 +101,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		FdoSpatialContextList GetSpatialContextInfo(string resourceID, bool activeOnly);
         void SetFolderHeader(string resourceID, ResourceFolderHeaderType header);
         void SetResourceHeader(string resourceID, ResourceDocumentHeaderType header);
+        void UpdateRepository(string resourceId, ResourceFolderHeaderType header);
 
         /// <summary>
         /// Creates a runtime map on the server. 

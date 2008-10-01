@@ -1214,6 +1214,31 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        public override void UpdateRepository(string resourceId, ResourceFolderHeaderType header)
+        {
+            try
+            {
+                System.Net.WebRequest req = m_reqBuilder.UpdateRepository(resourceId, this.SerializeObject(header));
+                req.Credentials = m_wc.Credentials;
+                req.GetRequestStream().Flush();
+                req.GetRequestStream().Close();
+
+                byte[] buf = new byte[1];
+                System.IO.Stream s = req.GetResponse().GetResponseStream();
+                s.Read(buf, 0, 1);
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                Exception ex2 = Utility.ThrowAsWebException(ex);
+                if (ex2 != ex)
+                    throw ex2;
+                else
+                    throw;
+            }
+            
+        }
+
         public override object GetFolderOrResourceHeader(string resourceID)
         {
             string req = m_reqBuilder.GetResourceHeader(resourceID);

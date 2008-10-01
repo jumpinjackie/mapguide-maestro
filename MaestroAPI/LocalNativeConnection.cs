@@ -637,6 +637,20 @@ namespace OSGeo.MapGuide.MaestroAPI
                 callback(fi.Length, 0, fi.Length);
         }
 
+        public override void UpdateRepository(string resourceId, ResourceFolderHeaderType header)
+        {
+            MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+
+            if (header == null)
+                res.UpdateRepository(new MgResourceIdentifier(resourceId), null, null);
+            else
+            {
+                byte[] data = this.SerializeObject(header).ToArray();
+                MgByteReader rd = new MgByteReader(data, data.Length, "text/xml");
+                res.UpdateRepository(new MgResourceIdentifier(resourceId), null, rd);
+            }
+        }
+
         public override object GetFolderOrResourceHeader(string resourceID)
         {
 			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;

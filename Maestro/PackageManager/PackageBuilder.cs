@@ -344,7 +344,10 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             }
 
             ResourcePackageManifestOperationsOperation op = new ResourcePackageManifestOperationsOperation();
-            op.Name = "SETRESOURCE";
+            if (resourceId.EndsWith("//"))
+                op.Name = "UPDATEREPOSITORY";
+            else
+                op.Name = "SETRESOURCE";
             op.Version = "1.0.0";
             op.Parameters = new ResourcePackageManifestOperationsOperationParameters();
             op.Parameters.Parameter = new ResourcePackageManifestOperationsOperationParametersParameterCollection();

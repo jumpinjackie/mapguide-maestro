@@ -1712,6 +1712,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="callback">A callback argument used to display progress. May be null.</param>
         abstract public void UploadPackage(string filename, Utility.StreamCopyProgressDelegate callback);
 
+        abstract public void UpdateRepository(string resourceId, ResourceFolderHeaderType header);
         abstract public object GetFolderOrResourceHeader(string resourceId);
         abstract public void SetResourceXmlData(string resourceId, System.IO.Stream content, System.IO.Stream header);
 
@@ -1761,7 +1762,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (sec.Groups != null && sec.Groups.Group != null && sec.Groups.Group.Count == 0)
                 sec.Groups = null;
 
-            this.SetResourceXmlData(resourceID, null, this.SerializeObject(header));
+            if (resourceID.EndsWith("//"))
+            {
+                if (header as ResourceFolderHeaderType == null)
+                    throw new Exception("The resourceId: " + resourceID + " must be updated with a folder header");
+                UpdateRepository(resourceID, header as ResourceFolderHeaderType);
+            }
+            else
+                this.SetResourceXmlData(resourceID, null, this.SerializeObject(header));
         }
          
         /// <summary>
