@@ -1722,7 +1722,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public virtual ResourceFolderHeaderType GetFolderHeader(string resourceID)
         {
-            return (ResourceFolderHeaderType)this.GetFolderOrResourceHeader(resourceID);
+            if (resourceID.EndsWith("//"))
+            {
+                ResourceList lst = this.GetRepositoryResources(resourceID, 0);
+                ResourceListResourceFolder fld = lst.Items[0] as ResourceListResourceFolder;
+                return fld.ResourceFolderHeader;
+            }
+            else
+                return (ResourceFolderHeaderType)this.GetFolderOrResourceHeader(resourceID);
         }
 
         public virtual void SetFolderHeader(string resourceID, ResourceFolderHeaderType header)

@@ -658,6 +658,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 
 				this.m_featureSourceId = vld.ResourceId;
 				this.m_featureName = vld.FeatureName;
+                this.m_schemaName = vld.FeatureName.IndexOf(":") > 0 ? vld.FeatureName.Substring(0, vld.FeatureName.IndexOf(":")) : "";
 				this.m_geometry = vld.Geometry;
 
 				if (vld.VectorScaleRange != null)

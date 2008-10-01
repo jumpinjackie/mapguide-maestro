@@ -68,6 +68,21 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                 return;
             }
 
+            if (ResourcePath.Text.Trim().Length == 0)
+            {
+                if (MessageBox.Show(this, m_globalizor.Translate("You have not selected a starting folder, do you want to back up the entire site?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) != DialogResult.Yes)
+                    return;
+                ResourcePath.Text = "Library://";
+
+            }
+
+            if (!ResourcePath.Text.StartsWith("Library://"))
+            {
+                if (MessageBox.Show(this, string.Format(m_globalizor.Translate("The folder must start with \"Library://\", do you want the starting folder to become:\n {0} ?"), "Library://" + ResourcePath.Text), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) != DialogResult.Yes)
+                    return;
+                ResourcePath.Text = "Library://" + ResourcePath.Text;
+            }
+
             try
             {
                 if (PackageFilename.Text.Trim().Length == 0 || !System.IO.Path.IsPathRooted(PackageFilename.Text))

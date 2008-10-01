@@ -1386,6 +1386,7 @@ namespace OSGeo.MapGuide.Maestro
             CopyResourceIdMenu.Enabled = ResourceTree.SelectedNode != null;
 			PasteMenu.Enabled =  (ResourceTree.SelectedNode != null && m_clipboardBuffer != null);
 			NewMenu.Enabled = true;
+
 		}
 
 		private void SaveXmlAsMenu_Click(object sender, System.EventArgs e)
@@ -2315,6 +2316,8 @@ namespace OSGeo.MapGuide.Maestro
                 resid = (ResourceTree.SelectedNode.Tag as MaestroAPI.ResourceListResourceDocument).ResourceId;
             else if (ResourceTree.SelectedNode.Tag as MaestroAPI.ResourceListResourceFolder != null)
                 resid = (ResourceTree.SelectedNode.Tag as MaestroAPI.ResourceListResourceFolder).ResourceId;
+            else if (ResourceTree.SelectedNode.Parent == null)
+                resid = "Library://";
 
             if (resid == null)
                 return;
