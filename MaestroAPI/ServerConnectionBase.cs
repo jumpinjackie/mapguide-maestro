@@ -287,7 +287,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// </summary>
 		virtual public Version MaxTestedVersion
 		{
-			get { return SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP2009); }
+			get { return SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_0_2); }
 		}
 
 		/// <summary>
