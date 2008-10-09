@@ -115,6 +115,24 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 				this.m_mapLayerGroup.Add(rtg);
 			}
 
+            if (map.BaseMapDefinition != null && map.BaseMapDefinition.BaseMapLayerGroup != null)
+                foreach (OSGeo.MapGuide.MaestroAPI.BaseMapLayerGroupCommonType group in map.BaseMapDefinition.BaseMapLayerGroup)
+                {
+                    if (group.BaseMapLayer != null)
+                        foreach(BaseMapLayerType layer in group.BaseMapLayer)
+                        {
+                            if (layer.Parent == null)
+                                layer.Parent = map;
+				            RuntimeMapLayer rtl = new RuntimeMapLayer(layer, group.Name, true);
+                            rtl.SetParent(this);
+				            rtl.DisplayOrder = (++dispIndex) * 1000;
+				            this.m_mapLayer.Add(rtl);
+                        }
+
+                    RuntimeMapGroup rtg = new RuntimeMapGroup(group);
+                    this.m_mapLayerGroup.Add(rtg);
+                }
+
 			if (map.BaseMapDefinition != null && map.BaseMapDefinition.FiniteDisplayScale != null)
 			{
 				m_finiteScales = new double[map.BaseMapDefinition.FiniteDisplayScale.Count];
@@ -461,9 +479,24 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 		public RuntimeMapGroup()
 			: base()
 		{
-			m_type = 1;
+			m_type = MgLayerGroupType.Normal;
 			m_objectid = Guid.NewGuid().ToString();
 		}
+
+        public RuntimeMapGroup(BaseMapLayerGroupCommonType group)
+            : this()
+        {
+            base.ExpandInLegend = group.ExpandInLegend;
+            base.LegendLabel = group.LegendLabel;
+            base.Name = group.Name;
+            base.ShowInLegend = group.ShowInLegend;
+
+            m_visible = group.Visible;
+            m_parentGroup = "";
+            m_objectid = Guid.NewGuid().ToString();
+            m_type = MgLayerGroupType.BaseMap;
+        }
+
 
 		public RuntimeMapGroup(MapLayerGroupType group)
 			: this()
@@ -635,86 +668,91 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 			m_guid = System.Guid.NewGuid().ToString();
 		}
 
-		public RuntimeMapLayer(OSGeo.MapGuide.MaestroAPI.MapLayerType layer)
-			: this()
-		{
-			base.m_resourceId = layer.ResourceId;
-			base.m_expandInLegend = layer.ExpandInLegend;
-			base.m_group = layer.Group;
-			base.m_legendLabel = layer.LegendLabel;
-			base.m_name = layer.Name;
-			base.m_selectable = layer.Selectable;
-			base.m_showInLegend = layer.ShowInLegend;
-			base.m_visible = layer.Visible;
+        public RuntimeMapLayer(OSGeo.MapGuide.MaestroAPI.BaseMapLayerType layer, string group, bool visible)
+            : this()
+        {
+            base.m_resourceId = layer.ResourceId;
+            base.m_expandInLegend = layer.ExpandInLegend;
+            base.m_group = group;
+            base.m_legendLabel = layer.LegendLabel;
+            base.m_name = layer.Name;
+            base.m_selectable = layer.Selectable;
+            base.m_showInLegend = layer.ShowInLegend;
+            base.m_visible = visible;
 
-			OSGeo.MapGuide.MaestroAPI.LayerDefinition ldef = layer.Parent.CurrentConnection.GetLayerDefinition(layer.ResourceId);
-			if (ldef.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType != null)
-			{
-				OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType vld = (OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType) ldef.Item;
-				this.m_type = 1;
-				this.m_needRefresh = false;
-				this.m_displayOrder = 0;
+            OSGeo.MapGuide.MaestroAPI.LayerDefinition ldef = layer.Parent.CurrentConnection.GetLayerDefinition(layer.ResourceId);
+            if (ldef.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType != null)
+            {
+                OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType vld = (OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType)ldef.Item;
+                this.m_type = 1;
+                this.m_needRefresh = false;
+                this.m_displayOrder = 0;
 
 
-				this.m_featureSourceId = vld.ResourceId;
-				this.m_featureName = vld.FeatureName;
+                this.m_featureSourceId = vld.ResourceId;
+                this.m_featureName = vld.FeatureName;
                 this.m_schemaName = vld.FeatureName.IndexOf(":") > 0 ? vld.FeatureName.Substring(0, vld.FeatureName.IndexOf(":")) : "";
-				this.m_geometry = vld.Geometry;
+                this.m_geometry = vld.Geometry;
 
-				if (vld.VectorScaleRange != null)
-				{
-					m_scaleRanges = new double[vld.VectorScaleRange.Count * 2];
-					for(int i = 0; i < vld.VectorScaleRange.Count; i++)
-					{
-						m_scaleRanges[i * 2] = vld.VectorScaleRange[i].MinScaleSpecified ? vld.VectorScaleRange[i].MinScale : 0;
-						m_scaleRanges[i * 2 + 1] = vld.VectorScaleRange[i].MaxScaleSpecified ? vld.VectorScaleRange[i].MaxScale : InfinityScale;
-					}
-				}
-				m_hasTooltips = (vld.ToolTip != null && vld.ToolTip.Trim().Length > 0) || (vld.Url != null && vld.Url.Trim().Length > 0);
+                if (vld.VectorScaleRange != null)
+                {
+                    m_scaleRanges = new double[vld.VectorScaleRange.Count * 2];
+                    for (int i = 0; i < vld.VectorScaleRange.Count; i++)
+                    {
+                        m_scaleRanges[i * 2] = vld.VectorScaleRange[i].MinScaleSpecified ? vld.VectorScaleRange[i].MinScale : 0;
+                        m_scaleRanges[i * 2 + 1] = vld.VectorScaleRange[i].MaxScaleSpecified ? vld.VectorScaleRange[i].MaxScale : InfinityScale;
+                    }
+                }
+                m_hasTooltips = (vld.ToolTip != null && vld.ToolTip.Trim().Length > 0) || (vld.Url != null && vld.Url.Trim().Length > 0);
 
-				if (base.m_selectable && base.m_visible)
-					try { FindResourceIDs(layer.Parent.CurrentConnection); }
-					catch {}
+                if (base.m_selectable && base.m_visible)
+                    try { FindResourceIDs(layer.Parent.CurrentConnection); }
+                    catch { }
 
-			}
-			else if (ldef.Item as OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType != null)
-			{
-				OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType gld = (OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType)ldef.Item;
-				this.m_type = 2;
-				this.m_needRefresh = false;
-				this.m_displayOrder = 0;
+            }
+            else if (ldef.Item as OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType != null)
+            {
+                OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType gld = (OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType)ldef.Item;
+                this.m_type = 2;
+                this.m_needRefresh = false;
+                this.m_displayOrder = 0;
 
-				this.m_featureSourceId = gld.ResourceId;
-				this.m_featureName = gld.FeatureName;
-				this.m_geometry = gld.Geometry;
+                this.m_featureSourceId = gld.ResourceId;
+                this.m_featureName = gld.FeatureName;
+                this.m_geometry = gld.Geometry;
 
-				if (gld.GridScaleRange != null)
-				{
-					m_scaleRanges = new double[gld.GridScaleRange.Count * 2];
-					for(int i = 0; i < gld.GridScaleRange.Count; i++)
-					{
-						m_scaleRanges[i * 2] = gld.GridScaleRange[i].MinScaleSpecified ? gld.GridScaleRange[i].MinScale : 0;
-						m_scaleRanges[i * 2 + 1] = gld.GridScaleRange[i].MaxScaleSpecified ? gld.GridScaleRange[i].MaxScale : InfinityScale;
-					}
-				}
-			}
-			else if (ldef.Item as OSGeo.MapGuide.MaestroAPI.DrawingLayerDefinitionType != null)
-			{
-				OSGeo.MapGuide.MaestroAPI.DrawingLayerDefinitionType dld = (OSGeo.MapGuide.MaestroAPI.DrawingLayerDefinitionType)ldef.Item;
-				this.m_type = 2;
-				this.m_needRefresh = false;
-				this.m_displayOrder = 0;
+                if (gld.GridScaleRange != null)
+                {
+                    m_scaleRanges = new double[gld.GridScaleRange.Count * 2];
+                    for (int i = 0; i < gld.GridScaleRange.Count; i++)
+                    {
+                        m_scaleRanges[i * 2] = gld.GridScaleRange[i].MinScaleSpecified ? gld.GridScaleRange[i].MinScale : 0;
+                        m_scaleRanges[i * 2 + 1] = gld.GridScaleRange[i].MaxScaleSpecified ? gld.GridScaleRange[i].MaxScale : InfinityScale;
+                    }
+                }
+            }
+            else if (ldef.Item as OSGeo.MapGuide.MaestroAPI.DrawingLayerDefinitionType != null)
+            {
+                OSGeo.MapGuide.MaestroAPI.DrawingLayerDefinitionType dld = (OSGeo.MapGuide.MaestroAPI.DrawingLayerDefinitionType)ldef.Item;
+                this.m_type = 2;
+                this.m_needRefresh = false;
+                this.m_displayOrder = 0;
 
-				throw new Exception("Drawing layers are not support in runtime map creation");
-			}
-			else
-			{
-				throw new Exception("Layer " + ldef.ResourceId + " had an invalid or unknown type");
-			}
+                throw new Exception("Drawing layers are not support in runtime map creation");
+            }
+            else
+            {
+                throw new Exception("Layer " + ldef.ResourceId + " had an invalid or unknown type");
+            }
 
-			if (m_ids == null)
-				m_ids = new ArrayList();
+            if (m_ids == null)
+                m_ids = new ArrayList();
 
+        }
+
+		public RuntimeMapLayer(OSGeo.MapGuide.MaestroAPI.MapLayerType layer)
+			: this(layer, layer.Group, layer.Visible)
+		{
 		}
 
 
@@ -724,6 +762,14 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 		private void FindResourceIDs(ServerConnectionI con)
 		{
 			OSGeo.MapGuide.MaestroAPI.FeatureSource fs = con.GetFeatureSource(m_featureSourceId);
+            //TODO: Should not be hardcoded, but it is the fastest way!
+            if (fs.Provider.StartsWith("OSGeo.Gdal") || fs.Provider.StartsWith("OSGeo.WMS") || fs.Provider.StartsWith("Autodesk.Raster"))
+            {
+                if (m_ids == null)
+                    m_ids = new ArrayList();
+                return;
+            }
+
 			string[] ids = fs.GetIdentityProperties(m_featureName);
 			OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription.FeatureSourceSchema scm = con.GetFeatureSourceSchema(m_featureSourceId, m_featureName);
 
