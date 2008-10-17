@@ -452,6 +452,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 		}
 
         /// <summary>
+        /// Returns a type used to define an unknown column type in a feature reader
+        /// </summary>
+        public static Type UnmappedType
+        {
+            get { return typeof(UnmappedDataType); }
+        }
+
+        /// <summary>
         /// Returns a type used to define a raster column in a feature reader
         /// </summary>
         public static Type RasterType
@@ -505,6 +513,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             return ex;
         }
 
+        /// <summary>
+        /// Removes the outer &lt;FeatureInformation&gt; tag, and returns a blank string for empty sets.
+        /// This eases the use of SelectionXml, because different parts of MapGuide represents it differently.
+        /// </summary>
+        /// <param name="input">The string to clean</param>
+        /// <returns>The cleaned string</returns>
         public static string CleanUpFeatureSet(string input)
         {
             if (string.IsNullOrEmpty(input))

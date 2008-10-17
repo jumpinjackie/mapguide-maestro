@@ -203,7 +203,9 @@ namespace OSGeo.MapGuide.MaestroAPI
                         m_type = typeof(DateTime);
                         break;
                     default:
-                        throw new Exception("Failed to find appropriate type for: " + node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value);
+                        //throw new Exception("Failed to find appropriate type for: " + node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value);
+                        m_type = Utility.UnmappedType;
+                        break;
                 }
 		}
 
@@ -305,6 +307,12 @@ namespace OSGeo.MapGuide.MaestroAPI
                             m_items[ordinal] = this.Reader.Read(rdww.Write(g));
                         }
                     }
+                    else if (parent.Columns[ordinal].Type == Utility.UnmappedType)
+                    {
+                        //Attempt to read it as a string
+                        try { m_items[ordinal] = rd.GetString(p); }
+                        catch { m_items[ordinal] = null; }
+                    }
                     else
                         throw new Exception("Unknown type: " + parent.Columns[ordinal].Type.FullName);
                 }
@@ -320,8 +328,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 				if (!m_nulls[ordinal])
 					throw new Exception("Bad document, multiple: " + p["Name"].InnerText + " values in a single feature");
 				m_nulls[ordinal] = false;
-				
-				if (parent.Columns[ordinal].Type == typeof(string))
+
+                if (parent.Columns[ordinal].Type == typeof(string) || parent.Columns[ordinal].Type == Utility.UnmappedType)
 					m_items[ordinal] = p["Value"].InnerText;
 				else if (parent.Columns[ordinal].Type == typeof(int))
 					m_items[ordinal] = XmlConvert.ToInt32(p["Value"].InnerText);

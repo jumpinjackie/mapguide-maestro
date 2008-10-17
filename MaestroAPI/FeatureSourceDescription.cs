@@ -22,6 +22,13 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
+    /// <summary>
+    /// Dummy class that represents an unknown data type
+    /// </summary>
+    public class UnmappedDataType
+    {
+    }
+
 	/// <summary>
 	/// Class that represents a the layout of a datasource
 	/// </summary>
@@ -31,24 +38,31 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public FeatureSourceDescription(System.IO.Stream stream)
 		{
+            bool usingFdoSchema;
 			XmlDocument doc = new XmlDocument();
 			doc.Load(stream);
 
 			if (doc.FirstChild.Name != "xml")
 				throw new Exception("Bad document");
 
-			if (doc.ChildNodes.Count != 2 || doc.ChildNodes[1].Name != "xs:schema")
-				throw new Exception("Bad document");
+            XmlNode root;
+            if (doc.ChildNodes.Count == 2 && doc.ChildNodes[1].Name == "fdo:DataStore")
+                root = doc.ChildNodes[1];
+            else if (doc.ChildNodes.Count != 2 || doc.ChildNodes[1].Name != "xs:schema")
+                throw new Exception("Bad document");
+            else
+                root = doc;
 
 			XmlNamespaceManager mgr = new XmlNamespaceManager(doc.NameTable);
 			mgr.AddNamespace("xs", "http://www.w3.org/2001/XMLSchema");
 			mgr.AddNamespace("gml", "http://www.opengis.net/gml");
 			mgr.AddNamespace("fdo", "http://fdo.osgeo.org/schemas");
 
-			XmlNodeList lst = doc.SelectNodes("xs:schema/xs:complexType[@abstract='false']", mgr);
+			XmlNodeList lst = root.SelectNodes("xs:schema/xs:complexType[@abstract='false']", mgr);
+
 			m_schemas = new FeatureSourceSchema[lst.Count];
 			for(int i = 0;i<lst.Count;i++)
-				m_schemas[i] = new FeatureSourceSchema(lst[i], doc, mgr);
+				m_schemas[i] = new FeatureSourceSchema(lst[i], mgr);
 		}
 
 		public FeatureSourceSchema[] Schemas { get { return m_schemas; } }
@@ -72,9 +86,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 			private string m_schema;
 			private FeatureSetColumn[] m_columns;
 
-			public FeatureSourceSchema(XmlNode node, XmlDocument doc, XmlNamespaceManager mgr)
+			public FeatureSourceSchema(XmlNode node, XmlNamespaceManager mgr)
 			{
-				XmlNode root = doc.FirstChild;
+				XmlNode root = node.ParentNode;
 				if (root.NodeType == XmlNodeType.XmlDeclaration)
 					root = root.NextSibling;
 				m_schema = root.Attributes["targetNamespace"] == null ? null : root.Attributes["targetNamespace"].Value;
