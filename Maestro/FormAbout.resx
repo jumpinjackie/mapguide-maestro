@@ -1044,14 +1044,4 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="Credits.Text" xml:space="preserve">
-    <value>Programming:
-  Kenneth Skovhede, Hexad
-Artwork:
-  Kenneth Skovhede, Hexad
-English and Danish translation:
-  Kenneth Skovhede, HexaD
-Spanish translation:
-  José Manuel Cerrejón González, MAPAS SL</value>
-  </data>
 </root>

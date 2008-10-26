@@ -373,7 +373,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.fontCombo.DataSource = this.FontTable;
             this.fontCombo.DisplayMember = "Display";
-            this.fontCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fontCombo.Location = new System.Drawing.Point(112, 48);
             this.fontCombo.Name = "fontCombo";
             this.fontCombo.Size = new System.Drawing.Size(176, 21);

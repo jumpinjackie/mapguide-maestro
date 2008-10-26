@@ -216,7 +216,9 @@ namespace OSGeo.MapGuide.Maestro
             this.Credits.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Credits.Size = new System.Drawing.Size(320, 142);
             this.Credits.TabIndex = 4;
-            this.Credits.Text = resources.GetString("Credits.Text");
+            this.Credits.Text = "Programming:\r\n  Kenneth Skovhede, HexaD\r\nArtwork:\r\n  Kenneth Skovhede, HexaD\r\nEng" +
+                "lish and Danish translation:\r\n  Kenneth Skovhede, HexaD\r\nSpanish translation:\r\n " +
+                " José Manuel Cerrejón González";
             // 
             // thirdPartyTab
             // 
