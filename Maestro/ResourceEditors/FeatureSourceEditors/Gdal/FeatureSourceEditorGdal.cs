@@ -211,6 +211,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		public bool Save(string savename)
 		{
+            if (TypeCombo.SelectedIndex == 0)
+            {
+                //Clear the config document
+                if (m_feature.Parameter == null)
+                    m_feature.Parameter = new OSGeo.MapGuide.MaestroAPI.NameValuePairTypeCollection();
+
+                m_feature.ConfigurationDocument = null;
+                m_feature.Parameter["DefaultRasterFileLocation"] = Filepath.Text;
+            }
+
 			return false;
 		}
 
@@ -224,16 +234,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				bool wasVisible = simple.Visible;
 				simple.Visible = true;
 				composite.Visible = false;
-				if (!wasVisible)
-					simple.UpdateDisplay();
+                if (!wasVisible)
+                {
+                    simple.UpdateDisplay();
+                    m_editor.HasChanged();
+                }
 			}
 			else
 			{
 				bool wasVisible = composite.Visible;
 				simple.Visible = false;
 				composite.Visible = true;
-				if (!wasVisible)
-					composite.UpdateDisplay();
+                if (!wasVisible)
+                {
+                    composite.UpdateDisplay();
+                    m_editor.HasChanged();
+                }
 			}
 		}
 
