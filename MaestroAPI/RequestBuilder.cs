@@ -28,6 +28,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 	/// </summary>
 	internal class RequestBuilder
 	{
+        private readonly string CLIENT_AGENT = "MapGuide Maestro";
 		private string m_hosturi;
 		private string m_sessionID = null;
 		private string m_locale = null;
@@ -52,6 +53,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("OPERATION", "CREATESESSION");
 			param.Add("VERSION", "1.0.0");
 			param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
 			if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 			return m_hosturi + "?" + EncodeParameters(param);
@@ -64,7 +66,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 			return m_hosturi + "?" + EncodeParameters(param);
 		}
@@ -79,7 +82,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 			return m_hosturi + "?" + EncodeParameters(param);
 
@@ -94,7 +98,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("OPERATION", "ENUMERATERESOURCES");
 			param.Add("VERSION", "1.0.0");
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 			param.Add("RESOURCEID", startingpoint);
 			param.Add("DEPTH", depth.ToString());
@@ -112,7 +117,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			param.Add("RESOURCEID", featuresource);
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            param.Add("RESOURCEID", featuresource);
 			if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
@@ -129,7 +135,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("PROVIDER", providername);
@@ -165,7 +172,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("PROVIDER", providername);
@@ -219,7 +227,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("OPERATION", "GETMAP");
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("DWFVERSION", "6.01");
@@ -239,7 +248,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("RESOURCEID", id);
@@ -257,7 +267,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("RESOURCEID", id);
@@ -276,7 +287,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("RESOURCEID", id);
@@ -295,7 +307,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("RESOURCEID", id);
@@ -315,7 +328,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("RESOURCEID", id);
@@ -333,7 +347,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("RESOURCEID", id);
@@ -390,7 +405,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("OPERATION", "SETRESOURCE");
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("RESOURCEID", id);
@@ -418,7 +434,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("OPERATION", "SETRESOURCEDATA");
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("RESOURCEID", id);
@@ -443,7 +460,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("RESOURCEID", resourceId);
@@ -468,7 +486,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("RESOURCEID", resourceId);
@@ -511,7 +530,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("RESOURCEID", resourceId);
@@ -527,7 +547,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("PROVIDER", provider);
@@ -543,7 +564,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			return m_hosturi + "?" + EncodeParameters(param);
@@ -557,7 +579,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("CSCATEGORY", category);
@@ -572,7 +595,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("CSWKT", wkt);
@@ -588,7 +612,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("CSCODE", code);
@@ -604,7 +629,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("CSWKT", wkt);
@@ -619,7 +645,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("CSCODE", code);
@@ -634,7 +661,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			return m_hosturi + "?" + EncodeParameters(param);
@@ -647,7 +675,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("CSWKT", wkt);
@@ -662,7 +691,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("RESOURCEID", resourceid);
@@ -677,7 +707,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("SOURCE", source);
@@ -694,7 +725,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("SOURCE", source);
@@ -711,7 +743,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (m_locale != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (m_locale != null)
 				param.Add("LOCALE", m_locale);
 
 			param.Add("RESOURCEID", resourceid);
@@ -726,6 +759,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("MAPNAME", mapname);
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
 
 			if (format != null && format.Length != 0)
 				param.Add("FORMAT", format);
@@ -749,8 +783,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			if (hidegroups != null && hidegroups.Length > 0)
 				param.Add("HIDEGROUPS", string.Join(",", hidegroups));
 
-			//TODO: Find out if these actually work...
-			//param.Add("SETDATAEXTENT", ...)
+			//TODO: Find out if this actually works...
 			//param.Add("REFRESHLAYERS", ...)
 
 			string boundary;
@@ -761,7 +794,47 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return req;
 		}
 
-		public string BuildRequest(NameValueCollection param)
+        public System.Net.WebRequest GetMapImage(string mapname, string format, string selectionXml, double x1, double y1, double x2, double y2, int dpi, int width, int height, string[] showlayers, string[] hidelayers, string[] showgroups, string[] hidegroups, System.IO.Stream outStream)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "GETMAPIMAGE");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("MAPNAME", mapname);
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+
+            if (format != null && format.Length != 0)
+                param.Add("FORMAT", format);
+
+            if (selectionXml != null && selectionXml.Length != 0)
+                param.Add("SELECTION", selectionXml);
+
+            param.Add("SETDATAEXTENT", Utility.SerializeDigit(x1) + ", " + Utility.SerializeDigit(y1) + ", " + Utility.SerializeDigit(x2) + ", " + Utility.SerializeDigit(y2));
+            param.Add("SETDISPLAYDPI", dpi.ToString());
+            param.Add("SETDISPLAYWIDTH", width.ToString());
+            param.Add("SETDISPLAYHEIGHT", height.ToString());
+
+            if (showlayers != null && showlayers.Length > 0)
+                param.Add("SHOWLAYERS", string.Join(",", showlayers));
+            if (hidelayers != null && hidelayers.Length > 0)
+                param.Add("HIDELAYERS", string.Join(",", hidelayers));
+            if (showgroups != null && showgroups.Length > 0)
+                param.Add("SHOWGROUPS", string.Join(",", showgroups));
+            if (hidegroups != null && hidegroups.Length > 0)
+                param.Add("HIDEGROUPS", string.Join(",", hidegroups));
+
+            //TODO: Find out if this actually works...
+            //param.Add("REFRESHLAYERS", ...)
+
+            string boundary;
+            System.Net.WebRequest req = PrepareFormContent(outStream, out boundary);
+            EncodeFormParameters(boundary, param, outStream);
+            req.ContentLength = outStream.Length;
+
+            return req;
+        }
+        
+        public string BuildRequest(NameValueCollection param)
 		{
 			return m_hosturi + "?" + EncodeParameters(param);
 		}
@@ -797,12 +870,46 @@ namespace OSGeo.MapGuide.MaestroAPI
 			if (hidegroups != null && hidegroups.Length > 0)
 				param.Add("HIDEGROUPS", string.Join(",", hidegroups));
 
-			//TODO: Find out if these actually work...
-			//param.Add("SETDATAEXTENT", ...)
+			//TODO: Find out if this actually works...
 			//param.Add("REFRESHLAYERS", ...)
 
 			return m_hosturi + "?" + EncodeParameters(param);
 		}
+
+        public string GetMapImageUrl(string mapname, string format, string selectionXml, double x1, double y1, double x2, double y2, int dpi, int width, int height, string[] showlayers, string[] hidelayers, string[] showgroups, string[] hidegroups)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "GETMAPIMAGE");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("MAPNAME", mapname);
+
+            if (format != null && format.Length != 0)
+                param.Add("FORMAT", format);
+
+            if (selectionXml != null && selectionXml.Length != 0)
+                param.Add("SELECTION", selectionXml);
+
+
+            param.Add("SETDATAEXTENT", Utility.SerializeDigit(x1) + ", " + Utility.SerializeDigit(y1) + ", " + Utility.SerializeDigit(x2) + ", " + Utility.SerializeDigit(y2));
+            param.Add("SETDISPLAYDPI", dpi.ToString());
+            param.Add("SETDISPLAYWIDTH", width.ToString());
+            param.Add("SETDISPLAYHEIGHT", height.ToString());
+
+            if (showlayers != null && showlayers.Length > 0)
+                param.Add("SHOWLAYERS", string.Join(",", showlayers));
+            if (hidelayers != null && hidelayers.Length > 0)
+                param.Add("HIDELAYERS", string.Join(",", hidelayers));
+            if (showgroups != null && showgroups.Length > 0)
+                param.Add("SHOWGROUPS", string.Join(",", showgroups));
+            if (hidegroups != null && hidegroups.Length > 0)
+                param.Add("HIDEGROUPS", string.Join(",", hidegroups));
+
+            //TODO: Find out if this actually works...
+            //param.Add("REFRESHLAYERS", ...)
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
 
 		public System.Net.WebRequest QueryMapFeatures(string mapname, bool persist, string geometry, System.IO.Stream outStream, QueryMapFeaturesLayerAttributes attributes)
 		{
@@ -817,6 +924,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("MAXFEATURES", "-1");
 			param.Add("LAYERATTRIBUTEFILTER", ((int)attributes).ToString());
 			param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
 
 			if (m_locale != null)
 				param.Add("LOCALE", m_locale);
@@ -836,6 +944,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
 
 			if (m_locale != null)
 				param.Add("LOCALE", m_locale);
@@ -850,6 +959,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
 
 			if (m_locale != null)
 				param.Add("LOCALE", m_locale);
@@ -864,6 +974,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
 
 			if (m_locale != null)
 				param.Add("LOCALE", m_locale);
@@ -880,6 +991,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("FORMAT", "text/xml");
 			param.Add("RESOURCEID", resourceID);
 			param.Add("ACTIVEONLY", activeOnly ? "0" : "1");
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
 
 			if (m_locale != null)
 				param.Add("LOCALE", m_locale);
@@ -899,6 +1011,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("RESOURCEID", resourceID);
 			param.Add("SCHEMA", schema);
 			param.Add("CLASSNAME", classname);
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
 
 			if (m_locale != null)
 				param.Add("LOCALE", m_locale);
@@ -913,7 +1026,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
-			if (startpath != null)
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
+            if (startpath != null)
 				param.Add("PATH", startpath);
 			if (filter != null)
 				param.Add("FILTER", filter);
@@ -938,6 +1052,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("VERSION", "1.0.0");
             param.Add("SESSION", m_sessionID);
             param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
 
             if (!string.IsNullOrEmpty(group))
                 param.Add("GROUP", group);
@@ -955,6 +1070,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("VERSION", "1.0.0");
             param.Add("SESSION", m_sessionID);
             param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -972,6 +1088,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("LAYERDEFINITION", layerdef);
             param.Add("THEMECATEGORY", themeIndex.ToString());
             param.Add("TYPE", type.ToString());
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
@@ -986,6 +1103,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("VERSION", "1.0.0");
             param.Add("SESSION", m_sessionID);
             param.Add("MAX_FILE_SIZE", "100000000");
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -1020,6 +1138,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("VERSION", "1.0.0");
             param.Add("SESSION", m_sessionID);
             param.Add("RESOURCEID", resourceId);
+            param.Add("CLIENTAGENT", CLIENT_AGENT);
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 

@@ -20,6 +20,7 @@
 using System;
 using System.Xml;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -27,14 +28,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 	/// Interface to MapGuide coordinate system functions.
 	/// Only works with server > 1.2, since the coordinate mapping is not avalible through Http on older versions
 	/// </summary>
-	public class CoordinateSystem
+	public class HttpCoordinateSystem : OSGeo.MapGuide.MaestroAPI.ICoordinateSystem
 	{
 		private HttpServerConnection m_con;
 		private RequestBuilder m_req;
 		private Category[] m_categories;
 		private string m_coordLib = null;
 
-		internal CoordinateSystem(HttpServerConnection con, RequestBuilder req)
+		internal HttpCoordinateSystem(HttpServerConnection con, RequestBuilder req)
 		{
 			m_con = con;
 			m_req = req;
@@ -108,18 +109,27 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public class Category
 		{
-			private CoordinateSystem m_parent;
+			private HttpCoordinateSystem m_httpParent;
+            private LocalNativeCoordinateSystem m_localParent;
 			private string m_name;
 			private CoordSys[] m_items;
 
-			internal Category(CoordinateSystem parent, string name)
+			internal Category(HttpCoordinateSystem parent, string name)
 			{
 				m_name = name;
-				m_parent = parent;
+				m_httpParent = parent;
 			}
 
+            internal Category(LocalNativeCoordinateSystem parent, string name)
+            {
+                m_name = name;
+                m_localParent = parent;
+            }
+
 			public string Name { get { return m_name; } }
-			internal CoordinateSystem Parent { get { return m_parent; } }
+			internal HttpCoordinateSystem HttpParent { get { return m_httpParent; } }
+            internal LocalNativeCoordinateSystem LocalParent { get { return m_localParent; } }
+            internal ICoordinateSystem Parent { get { return m_httpParent == null ? (ICoordinateSystem)m_localParent : (ICoordinateSystem)m_httpParent; } }
 
 			public CoordSys[] Items
 			{
@@ -127,14 +137,25 @@ namespace OSGeo.MapGuide.MaestroAPI
 				{
 					if (m_items == null)
 					{
-						string req = m_parent.RequestBuilder.EnumerateCoordinateSystems(m_name);
-						XmlDocument doc = new XmlDocument();
-						doc.Load(m_parent.Connection.WebClient.OpenRead(req));
-						XmlNodeList lst = doc.SelectNodes("BatchPropertyCollection/PropertyCollection");
-						CoordSys[] data = new CoordSys[lst.Count];
-						for(int i = 0; i < lst.Count; i++)
-							data[i] = new CoordSys(this, lst[i]);
-						m_items = data;
+                        if (m_httpParent != null)
+                        {
+                            string req = m_httpParent.RequestBuilder.EnumerateCoordinateSystems(m_name);
+                            XmlDocument doc = new XmlDocument();
+                            doc.Load(m_httpParent.Connection.WebClient.OpenRead(req));
+                            XmlNodeList lst = doc.SelectNodes("BatchPropertyCollection/PropertyCollection");
+                            CoordSys[] data = new CoordSys[lst.Count];
+                            for (int i = 0; i < lst.Count; i++)
+                                data[i] = new CoordSys(this, lst[i]);
+                            m_items = data;
+                        }
+                        else
+                        {
+                            MgBatchPropertyCollection bp = m_localParent.m_cf.EnumerateCoordinateSystems(m_name);
+                            List<CoordSys> lst = new List<CoordSys>();
+                            for(int i = 0; i < bp.Count; i++)
+                                lst.Add(new CoordSys(this, bp[i]));
+
+                        }
 					}
 					return m_items;
 				}
@@ -165,6 +186,40 @@ namespace OSGeo.MapGuide.MaestroAPI
 			public CoordSys()
 			{
 			}
+
+            internal CoordSys(Category parent, MgPropertyCollection props)
+            {
+                m_parent = parent;
+
+                for (int i = 0; i < props.Count; i++)
+                    switch (props[i].Name.ToLower())
+                    {
+                        case "code":
+                            m_code = (props[i] as MgStringProperty).Value;
+                            break;
+                        case "description":
+                            m_description = (props[i] as MgStringProperty).Value;
+                            break;
+                        case "projection":
+                            m_projection = (props[i] as MgStringProperty).Value;
+                            break;
+                        case "projection description":
+                            m_projectionDescription = (props[i] as MgStringProperty).Value;
+                            break;
+                        case "Datum":
+                            m_datum = (props[i] as MgStringProperty).Value;
+                            break;
+                        case "datum description":
+                            m_datumDescription = (props[i] as MgStringProperty).Value;
+                            break;
+                        case "ellipsoid":
+                            m_ellipsoid = (props[i] as MgStringProperty).Value;
+                            break;
+                        case "ellipsoid description":
+                            m_ellipsoidDescription = (props[i] as MgStringProperty).Value;
+                            break;
+                    }
+            }
 
 			internal CoordSys(Category parent, XmlNode topnode)
 			{
@@ -265,8 +320,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			get 
 			{
 				ArrayList items = new ArrayList();
-				foreach(OSGeo.MapGuide.MaestroAPI.CoordinateSystem.Category cat in this.Categories)
-						foreach(OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys coord in cat.Items)
+				foreach(OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.Category cat in this.Categories)
+						foreach(OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys coord in cat.Items)
 							items.Add(coord);
 
 				return (CoordSys[])items.ToArray(typeof(CoordSys));
@@ -277,8 +332,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 		{
 			try
 			{
-				foreach(OSGeo.MapGuide.MaestroAPI.CoordinateSystem.Category cat in this.Categories)
-						foreach(OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys coord in cat.Items)
+				foreach(OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.Category cat in this.Categories)
+						foreach(OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys coord in cat.Items)
 							if (coord.Code == coordcode)
 								return coord;
 			}

@@ -1865,5 +1865,19 @@ namespace OSGeo.MapGuide.MaestroAPI
             m_featureSchemaNameCache = new Dictionary<string, FeatureSourceDescription.FeatureSourceSchema>();
         }
 
+
+        public virtual System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi)
+        {
+            return this.RenderRuntimeMap(resourceId, x, y, scale, width, height, dpi, "PNG");
+        }
+
+        public virtual System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi)
+        {
+            return this.RenderRuntimeMap(resourceId, x1, y1, x2, y2, width, height, dpi, "PNG");
+        }
+
+        public abstract System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format);
+        public abstract System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format);
+
     }
 }

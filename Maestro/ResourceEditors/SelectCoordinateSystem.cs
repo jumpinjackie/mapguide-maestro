@@ -58,10 +58,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private OSGeo.MapGuide.MaestroAPI.ServerConnectionI m_connection;
 
-		private OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys m_wktCoordSys = null;
-		private OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys m_epsgCoordSys = null;
-		private OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys m_coordsysCodeCoordSys = null;
-		private OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys m_selectedCoordsys = null;
+		private OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys m_wktCoordSys = null;
+		private OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys m_epsgCoordSys = null;
+		private OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys m_coordsysCodeCoordSys = null;
+		private OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys m_selectedCoordsys = null;
 
 		private Globalizator.Globalizator m_globalizor = null;
 		private System.Windows.Forms.Label CoordinateWait;
@@ -469,7 +469,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			this.Refresh();
 			m_connection.CoordinateSystem.FindCoordSys("");
 
-			OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys[] items = null;
+			OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys[] items = null;
 			try
 			{
 				items = m_connection.CoordinateSystem.Coordsys;
@@ -483,7 +483,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			{
 				EPSGCodeText.Items.Clear();
 				if (items != null)
-					foreach(OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys c in items)
+					foreach(OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys c in items)
 						if (c.Code.StartsWith("EPSG:"))
 							EPSGCodeText.Items.Add(c.EPSG);
 			}
@@ -497,7 +497,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			{
 				CoordSysCodeText.Items.Clear();
 				if (items != null)
-					foreach(OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys c in items)
+					foreach(OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys c in items)
 						CoordSysCodeText.Items.Add(c.Code);
 			}
 			finally
@@ -568,7 +568,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			CoordinateSystem.Enabled = CoordinateSystemLabel.Enabled = CoordinateCategory.SelectedIndex >= 0;
 			if (CoordinateCategory.SelectedIndex >= 0)
 			{
-				OSGeo.MapGuide.MaestroAPI.CoordinateSystem.Category cat = CoordinateCategory.SelectedItem as OSGeo.MapGuide.MaestroAPI.CoordinateSystem.Category;
+				OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.Category cat = CoordinateCategory.SelectedItem as OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.Category;
 				if (cat == null)
 				{
 					OKBtn.Enabled = false;
@@ -582,9 +582,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void UpdateOthers()
 		{
-			OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys selectedCoordsys;
+			OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys selectedCoordsys;
 			if (SelectByList.Checked)
-				selectedCoordsys = CoordinateSystem.SelectedItem as OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys;
+				selectedCoordsys = CoordinateSystem.SelectedItem as OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys;
 			else if (SelectByCoordSysCode.Checked)
 				selectedCoordsys = m_coordsysCodeCoordSys;
 			else if (SelectByWKT.Checked)
@@ -679,7 +679,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 					if (m_wktCoordSys == null)
 					{
-						m_wktCoordSys = new OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys();
+						m_wktCoordSys = new OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys();
 						m_wktCoordSys.Code = null;
 						m_wktCoordSys.Description = null;
 						m_wktCoordSys.WKT = WKTText.Text;
@@ -728,12 +728,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private void OKBtn_Click(object sender, System.EventArgs e)
 		{
 			if (SelectByList.Checked)
-				m_selectedCoordsys = CoordinateSystem.SelectedItem as OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys;
+				m_selectedCoordsys = CoordinateSystem.SelectedItem as OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys;
 			else if (SelectByCoordSysCode.Checked)
 				m_selectedCoordsys = m_coordsysCodeCoordSys;
 			else if (SelectByWKT.Checked && m_connection.CoordinateSystem == null)
 			{
-				m_selectedCoordsys = new OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys();
+				m_selectedCoordsys = new OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys();
 				m_selectedCoordsys.Code = null;
 				m_selectedCoordsys.Description = null;
 				m_selectedCoordsys.WKT = WKTText.Text;
@@ -746,7 +746,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				m_selectedCoordsys = null;
 		}
 
-		public OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordSys SelectedCoordSys
+		public OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys SelectedCoordSys
 		{
 			get { return m_selectedCoordsys; }
 		}

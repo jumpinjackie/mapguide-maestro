@@ -37,8 +37,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		private System.Windows.Forms.Button BrowseFileButton;
-		private System.Windows.Forms.TextBox Filepath;
+        private System.Windows.Forms.Button BrowseFileButton;
+        public TextBox Filepath;
 		private System.Windows.Forms.Label label1;
 		private bool m_isUpdating = false;
 		private Globalizator.Globalizator m_globalizor;
@@ -98,51 +98,51 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.BrowseFileButton = new System.Windows.Forms.Button();
-			this.Filepath = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// BrowseFileButton
-			// 
-			this.BrowseFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BrowseFileButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.BrowseFileButton.Location = new System.Drawing.Point(184, 8);
-			this.BrowseFileButton.Name = "BrowseFileButton";
-			this.BrowseFileButton.Size = new System.Drawing.Size(24, 20);
-			this.BrowseFileButton.TabIndex = 42;
-			this.BrowseFileButton.Text = "...";
-			this.BrowseFileButton.Click += new System.EventHandler(this.BrowseFileButton_Click);
-			// 
-			// Filepath
-			// 
-			this.Filepath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Filepath.Location = new System.Drawing.Point(112, 8);
-			this.Filepath.Name = "Filepath";
-			this.Filepath.Size = new System.Drawing.Size(72, 20);
-			this.Filepath.TabIndex = 41;
-			this.Filepath.Text = "";
-			this.Filepath.TextChanged += new System.EventHandler(this.Filepath_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(96, 16);
-			this.label1.TabIndex = 40;
-			this.label1.Text = "Path to file(s)";
-			// 
-			// Simple
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(216, 40);
-			this.Controls.Add(this.BrowseFileButton);
-			this.Controls.Add(this.Filepath);
-			this.Controls.Add(this.label1);
-			this.Name = "Simple";
-			this.Size = new System.Drawing.Size(216, 40);
-			this.ResumeLayout(false);
+            this.BrowseFileButton = new System.Windows.Forms.Button();
+            this.Filepath = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // BrowseFileButton
+            // 
+            this.BrowseFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BrowseFileButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.BrowseFileButton.Location = new System.Drawing.Point(184, 8);
+            this.BrowseFileButton.Name = "BrowseFileButton";
+            this.BrowseFileButton.Size = new System.Drawing.Size(24, 20);
+            this.BrowseFileButton.TabIndex = 42;
+            this.BrowseFileButton.Text = "...";
+            this.BrowseFileButton.Click += new System.EventHandler(this.BrowseFileButton_Click);
+            // 
+            // Filepath
+            // 
+            this.Filepath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.Filepath.Location = new System.Drawing.Point(112, 8);
+            this.Filepath.Name = "Filepath";
+            this.Filepath.Size = new System.Drawing.Size(72, 20);
+            this.Filepath.TabIndex = 41;
+            this.Filepath.TextChanged += new System.EventHandler(this.Filepath_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(8, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 16);
+            this.label1.TabIndex = 40;
+            this.label1.Text = "Path to file(s)";
+            // 
+            // Simple
+            // 
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(216, 40);
+            this.Controls.Add(this.BrowseFileButton);
+            this.Controls.Add(this.Filepath);
+            this.Controls.Add(this.label1);
+            this.Name = "Simple";
+            this.Size = new System.Drawing.Size(216, 40);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

@@ -145,7 +145,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		RuntimeClasses.RuntimeMap GetRuntimeMap(string resourceID);
 		Version SiteVersion { get; }
 		bool DisableValidation { get; set; }
-		CoordinateSystem CoordinateSystem { get; }
+		ICoordinateSystem CoordinateSystem { get; }
 		bool HasFolder(string folderpath);
 		void CreateFolder(string folderpath);
 
@@ -164,6 +164,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 		bool CopyFolderWithReferences(string oldpath, string newpath, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress);
 		bool ResourceExists(string resourceid);
 		System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi);
+        System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi);
+
+        System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format);
+        System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format);
 
 		/// <summary>
 		/// Saves a WebLayout, using its originating resourceId

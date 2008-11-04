@@ -660,10 +660,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public override Version SiteVersion { get { return m_siteVersion; } }
 
-		private CoordinateSystem m_coordsys = null;
+		private HttpCoordinateSystem m_coordsys = null;
 		//TODO: Figure out a strategy for cache invalidation 
 		//TODO: Figure out if this can work with MapGuide EP 1.0 (just exclude it?)
-		public CoordinateSystem CoordinateSystem 
+		public ICoordinateSystem CoordinateSystem 
 		{ 
 			get 
 			{ 
@@ -672,7 +672,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 				else
 				{	
 					if (m_coordsys == null)
-						m_coordsys = new CoordinateSystem(this, m_reqBuilder);
+						m_coordsys = new HttpCoordinateSystem(this, m_reqBuilder);
 					return m_coordsys;
 				}
 			} 
@@ -781,17 +781,17 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 
 
-		public System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi)
+		public override System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format)
 		{
             ResourceIdentifier.Validate(resourceId, ResourceTypes.RuntimeMap);
 			string mapname = resourceId.Substring(resourceId.IndexOf("//") + 2);
 			mapname = mapname.Substring(0, mapname.LastIndexOf("."));
 #if DEBUG
-			string s = m_reqBuilder.GetMapImageUrl(mapname, "PNG", null, x, y, scale, dpi, width, height, null, null, null, null);
+			string s = m_reqBuilder.GetMapImageUrl(mapname, format, null, x, y, scale, dpi, width, height, null, null, null, null);
 			return new System.IO.MemoryStream(this.DownloadData(s));
 #else
 			System.IO.MemoryStream ms = new System.IO.MemoryStream();
-			System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, "PNG", null, x, y, scale, dpi, width, height, null, null, null, null, ms);
+			System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x, y, scale, dpi, width, height, null, null, null, null, ms);
             
             //Maksim reported that the rendering times out frequently, so now we wait 5 minutes
             req.Timeout = 5 * 60 * 1000;
@@ -805,6 +805,31 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 #endif
 		}
+
+        public override System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)
+        {
+            ResourceIdentifier.Validate(resourceId, ResourceTypes.RuntimeMap);
+            string mapname = resourceId.Substring(resourceId.IndexOf("//") + 2);
+            mapname = mapname.Substring(0, mapname.LastIndexOf("."));
+#if DEBUG
+            string s = m_reqBuilder.GetMapImageUrl(mapname, format, null, x1, y1, x2, y2, dpi, width, height, null, null, null, null);
+            return new System.IO.MemoryStream(this.DownloadData(s));
+#else
+			System.IO.MemoryStream ms = new System.IO.MemoryStream();
+			System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x1, y1, x2, y2, dpi, width, height, null, null, null, null, ms);
+            
+            //Maksim reported that the rendering times out frequently, so now we wait 5 minutes
+            req.Timeout = 5 * 60 * 1000;
+
+			using(System.IO.Stream rs = req.GetRequestStream())
+			{
+				Utility.CopyStream(ms, rs);
+				rs.Flush();
+				return req.GetResponse().GetResponseStream();
+			}
+
+#endif
+        }
 
 /*		/// <summary>
 		/// Selects features from a runtime map, returning a selection Xml.

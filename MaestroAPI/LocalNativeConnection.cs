@@ -350,6 +350,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return m;
 		}
 
+        //TODO: Figure out where to read this
 		public override Version SiteVersion
 		{
 			get
@@ -359,13 +360,23 @@ namespace OSGeo.MapGuide.MaestroAPI
 		}
 
 
-		public CoordinateSystem CoordinateSystem
+        private LocalNativeCoordinateSystem m_coordsys = null;
+        //TODO: Figure out a strategy for cache invalidation 
+        
+        public ICoordinateSystem CoordinateSystem
 		{
-			get
-			{
-				throw new MissingMethodException();
-			}
-		}
+            get
+            {
+                if (this.SiteVersion < OSGeo.MapGuide.MaestroAPI.SiteVersions.GetVersion(OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.MapGuideOS1_2))
+                    return null;
+                else
+                {
+                    if (m_coordsys == null)
+                        m_coordsys = new LocalNativeCoordinateSystem(this);
+                    return m_coordsys;
+                }
+            }
+        }
 
 		public string DisplayName
 		{
@@ -416,7 +427,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			res.MoveResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
 		}
 
-		public System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi)
+		public override System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format)
 		{
 			MgRenderingService rnd = this.Con.CreateService(MgServiceType.RenderingService) as MgRenderingService;
 			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
@@ -429,9 +440,29 @@ namespace OSGeo.MapGuide.MaestroAPI
 			MgSelection sel = new MgSelection(map);
 			MgColor color = new MgColor(map.GetBackgroundColor());
 		
-			object[] args = new object[] { map, sel, gf.CreateCoordinateXY(x, y), scale, width, height, color, "PNG", true };
-			return Utility.MgStreamToNetStream(rnd, rnd.GetType().GetMethod("RenderMap"), args);
+			object[] args = new object[] { map, sel, gf.CreateCoordinateXY(x, y), scale, width, height, color, format, true };
+            Type[] types = new Type[] { args[0].GetType(), args[1].GetType(), args[2].GetType(), args[3].GetType(), args[4].GetType(), args[5].GetType(), args[6].GetType(), args[7].GetType(), args[8].GetType() };
+			return Utility.MgStreamToNetStream(rnd, rnd.GetType().GetMethod("RenderMap", types), args);
 		}
+
+        public override System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)
+        {
+            MgRenderingService rnd = this.Con.CreateService(MgServiceType.RenderingService) as MgRenderingService;
+            MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            MgGeometryFactory gf = new MgGeometryFactory();
+
+            string mapname = new ResourceIdentifier(resourceId).Path;
+
+            MgMap map = new MgMap();
+            map.Open(res, mapname);
+            MgSelection sel = new MgSelection(map);
+            MgColor color = new MgColor(map.GetBackgroundColor());
+            MgEnvelope env = new MgEnvelope(gf.CreateCoordinateXY(x1, y1), gf.CreateCoordinateXY(x2, y2));
+
+            object[] args = new object[] { map, sel, env, width, height, color, format };
+            Type[] types = new Type[] { args[0].GetType(), args[1].GetType(), args[2].GetType(), args[3].GetType(), args[4].GetType(), args[5].GetType(), args[6].GetType() };
+            return Utility.MgStreamToNetStream(rnd, rnd.GetType().GetMethod("RenderMap", types), args);
+        }
 
 		public override bool IsSessionExpiredException(Exception ex)
 		{

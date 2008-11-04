@@ -218,7 +218,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     m_feature.Parameter = new OSGeo.MapGuide.MaestroAPI.NameValuePairTypeCollection();
 
                 m_feature.ConfigurationDocument = null;
-                m_feature.Parameter["DefaultRasterFileLocation"] = Filepath.Text;
+                m_feature.Parameter["DefaultRasterFileLocation"] = simple.Filepath.Text;
             }
 
 			return false;
