@@ -27,7 +27,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 	public class Utf8XmlWriter : System.Xml.XmlTextWriter
 	{
 		public Utf8XmlWriter(System.IO.Stream s) 
-			: base(s, System.Text.Encoding.UTF8) 
+            //This creation of the UTF8 encoder removes the BOM
+            //Which is required because MapGuide has trouble reading files with a BOM.
+			: base(s, new System.Text.UTF8Encoding(false, true)) 
 		{ 
 			//The MapGuide Studio parser is broken, it can't read Xml without whitespace :)
 			base.Formatting = System.Xml.Formatting.Indented; 

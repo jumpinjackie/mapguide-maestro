@@ -359,7 +359,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>A stream with no Utf8 BOM</returns>
 		public static System.IO.MemoryStream RemoveUTF8BOM(System.IO.MemoryStream ms)
 		{
-			//Skip UTF file header, since the XmlParser is broken
+			//Skip UTF file header, since the MapGuide XmlParser is broken
 			ms.Position = 0;
 			byte[] utfheader = new byte[3];
 			if (ms.Read(utfheader, 0, utfheader.Length) == utfheader.Length)

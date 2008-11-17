@@ -124,6 +124,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
                             if (layer.Parent == null)
                                 layer.Parent = map;
 				            RuntimeMapLayer rtl = new RuntimeMapLayer(layer, group.Name, true);
+                            rtl.Type = OSGeo.MapGuide.MgLayerType.BaseMap;
                             rtl.SetParent(this);
 				            rtl.DisplayOrder = (++dispIndex) * 1000;
 				            this.m_mapLayer.Add(rtl);
