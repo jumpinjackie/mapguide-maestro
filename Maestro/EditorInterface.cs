@@ -33,7 +33,6 @@ namespace OSGeo.MapGuide.Maestro
 		private bool m_existing;
 		private  Globalizator.Globalizator m_globalizor;
 		private static string m_lastPath;
-
 		public event EventHandler Closing;
 
 		public EditorInterface(FormMain editor, TabPage page, string resid, bool exisiting)

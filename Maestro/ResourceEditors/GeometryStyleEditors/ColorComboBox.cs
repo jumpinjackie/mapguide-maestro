@@ -29,6 +29,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 	{
 		private bool m_allowTransparent = false;
 		private SpecialCell m_currentColor;
+        private ColorDialog m_colorPicker;
+        private static ColorDialog m_sharedColorPicker;
 
 		public ColorComboBox()
 			: base()
@@ -125,7 +127,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		{
             if (this.SelectedItem != null && this.SelectedItem.ToString() == "More colors...")
             {
-                ColorDialog dlg = new ColorDialog();
+                ColorDialog dlg = this.ColorPicker;
+
                 dlg.FullOpen = true;
                 dlg.SolidColorOnly = true;
                 dlg.AllowFullOpen = true;
@@ -258,5 +261,20 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			return true;
 		}
 
+        public ColorDialog ColorPicker
+        {
+            get 
+            {
+                if (m_colorPicker == null)
+                {
+                    if (m_sharedColorPicker == null)
+                        m_sharedColorPicker = new ColorDialog();
+
+                    m_colorPicker = m_sharedColorPicker;
+                }
+                return m_colorPicker; 
+            }
+            set { m_colorPicker = value; }
+        }
     }
 }
