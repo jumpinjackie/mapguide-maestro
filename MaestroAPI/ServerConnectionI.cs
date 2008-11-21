@@ -355,5 +355,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <returns>The list of groups</returns>
         GroupList EnumerateGroups();
+
+        System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format);
 	}
 }

@@ -201,8 +201,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					tn.ImageIndex = tn.SelectedImageIndex = 0;
 
 					TreeNodeCollection parent = FindParentNode(layer.GetFullPath("/", m_map));
-					if (parent == null)
-						parent = trvLayerGroups.Nodes;
+                    if (parent == null)
+                    {
+                        layer.Group = "";
+                        m_editor.HasChanged();
+                        parent = trvLayerGroups.Nodes;
+                    }
 
 					parent.Add(tn);
 				}
@@ -232,6 +236,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private TreeNodeCollection FindParentNode(string fullpath)
 		{
+            if (fullpath == null)
+                return null;
+
 			string[] path = fullpath.Split('/');
 			TreeNodeCollection nodes = trvLayerGroups.Nodes;
 			bool found = true;
@@ -1026,6 +1033,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			int index = m_map.LayerGroups.IndexOf((OSGeo.MapGuide.MaestroAPI.MapLayerGroupType)trvLayerGroups.SelectedNode.Tag);
 			if (index >= 0)
 			{
+                string folder_path = m_map.LayerGroups[index].GetFullPath("/", m_map) + "/";
+                for (int i = 0; i < m_map.Layers.Count; i++)
+                {
+                    string path = m_map.Layers[i].GetFullPath("/", m_map);
+                    if (path.StartsWith(folder_path))
+                    {
+                        m_map.Layers.RemoveAt(i);
+                        i--;
+                    }
+                }
+
 				m_map.LayerGroups.RemoveAt(index);
 				trvLayerGroups.SelectedNode.Remove();
 				m_editor.HasChanged();

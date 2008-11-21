@@ -516,7 +516,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
 		/// </summary>
 		/// <param name="separator">The string used to separate the individual levels</param>
 		/// <param name="parent">The parent mapdefinition, use null for the current parent</param>
-		/// <returns></returns>
+		/// <returns>The full path or null if no such group is found</returns>
 		public string GetFullPath(string separator, MapDefinition parent)
 		{
 			if (parent == null)
@@ -536,8 +536,8 @@ namespace OSGeo.MapGuide.MaestroAPI {
 							mlg = g;
 							break;
 						}
-				if (mlg == null)
-					throw new Exception("Failed to locate group named: " + m_group);
+                if (mlg == null)
+                    return null;
 				return mlg.GetFullPath(separator, parent) + separator + m_name;
 			}
 		}

@@ -1325,5 +1325,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         #endregion
+
+        public override System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
+        {
+            string req = m_reqBuilder.GetTile(mapdefinition, baselayergroup, row, col, scaleindex, format);
+            return this.OpenRead(req);
+        }
     }
 }

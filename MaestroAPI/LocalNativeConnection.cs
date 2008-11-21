@@ -715,6 +715,15 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_cachedGroupList;
         }
 
+        public override System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
+        {
+            MgTileService ts = this.Con.CreateService(MgServiceType.TileService) as MgTileService;
+
+            Type[] types = new Type[] { typeof(MgResourceIdentifier), typeof(string), typeof(int), typeof(int), typeof(int) };
+
+            return Utility.MgStreamToNetStream(ts, ts.GetType().GetMethod("GetTile", types), new object[] { new MgResourceIdentifier(mapdefinition), baselayergroup, col, row, scaleindex });
+            //ts.GetTile(new MgResourceIdentifier(mapdefinition), baselayergroup, col, row, scaleindex)
+        }
 
 		#endregion
 
@@ -746,5 +755,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         #endregion
+
     }
 }
