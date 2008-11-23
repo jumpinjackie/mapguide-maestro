@@ -18,45 +18,20 @@
 // 
 #endregion
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
 
-namespace OSGeo.MapGuide.MaestroAPI
+namespace OSGeo.MapGuide.MgCooker
 {
-	///<summary>
-	/// This file contains the current known versions of the MapGuide server.
-	///</summary>
-	public enum KnownSiteVersions
-	{
-		MapGuideEP1_1,
-		MapGuideOS1_1,
-		MapGuideOS1_2,
-		MapGuideEP1_2,
-		MapGuideOS2_0B1,
-		MapGuideOS2_0,
-		MapGuideEP2009,
-        MapGuideOS2_0_2,
-        MapGuideEP2009_SP1,
-	}
-
-	public class SiteVersions
-	{
-
-		public static readonly Version[] SiteVersionNumbers = new Version[] 
-		{ 
-			new Version(1,0,0,17864), 
-			new Version(1,1,0,301), 
-			new Version(1,2,0,1307), 
-			new Version(1,2,0,4103), 
-			new Version(2,0,0,1402), 
-			new Version(2,0,0,2308),
-			new Version(2,0,0,3202),
-            new Version(2,0,2,3011),
-            new Version(2,0,2,3402),
-		};
-
-		public static Version GetVersion(KnownSiteVersions index)
-		{
-			return SiteVersionNumbers[(int)index];
-		}
-
-	}
+    public partial class SetupRun : Form
+    {
+        public SetupRun()
+        {
+            InitializeComponent();
+        }
+    }
 }

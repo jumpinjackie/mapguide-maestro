@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{290B027E-3649-4A60-A9BF-0544831435E2}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -319,72 +319,55 @@
       <SubType>Code</SubType>
     </Compile>
     <Content Include="Schemas\ApplicationDefinition-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Schemas\ApplicationDefinitionInfo-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Schemas\LayerDefinition-1.1.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Schemas\DataStoreList-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\DrawingSectionList-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\DrawingSectionResourceList-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\DrawingSource-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\Envelope-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\FdoLongTransactionList-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\FdoProviderCapabilities-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\FdoSpatialContextList-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\FeatureProviderRegistry-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\FeatureSet-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\FeatureSource-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\Group-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\GroupList-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\LayerDefinition-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\LayerDefinition-1.0.0.xsx">
       <DependentUpon>LayerDefinition-1.0.0.xsd</DependentUpon>
@@ -393,121 +376,97 @@
       <DependentUpon>LayerDefinition-1.1.0.xsd</DependentUpon>
     </None>
     <None Include="Schemas\LoadProcedure-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\MapDefinition-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\MapDefinition-1.0.0.xsx">
       <DependentUpon>MapDefinition-1.0.0.xsd</DependentUpon>
     </None>
     <None Include="Schemas\PrintLayout-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\RepositoryContent-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\RepositoryContent-1.0.0.xsx">
       <DependentUpon>RepositoryContent-1.0.0.xsd</DependentUpon>
     </None>
     <None Include="Schemas\RepositoryList-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\RepositoryList-1.0.0.xsx">
       <DependentUpon>RepositoryList-1.0.0.xsd</DependentUpon>
     </None>
     <None Include="Schemas\ResourceDataList-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\ResourceDataList-1.0.0.xsx">
       <DependentUpon>ResourceDataList-1.0.0.xsd</DependentUpon>
     </None>
     <None Include="Schemas\ResourceDocumentHeader-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\ResourceDocumentHeader-1.0.0.xsx">
       <DependentUpon>ResourceDocumentHeader-1.0.0.xsd</DependentUpon>
     </None>
     <None Include="Schemas\ResourceFolderHeader-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\ResourceList-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\ResourceList-1.0.0.xsx">
       <DependentUpon>ResourceList-1.0.0.xsd</DependentUpon>
     </None>
     <None Include="Schemas\ResourcePackageManifest-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\ResourceReferenceList-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\ResourceSecurity-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\ResourceSecurity-1.0.0.xsx">
       <DependentUpon>ResourceSecurity-1.0.0.xsd</DependentUpon>
     </None>
     <None Include="Schemas\Role-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\SelectAggregate-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\Server-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\ServerList-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\SiteInformation-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\SiteVersion-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\SqlSelect-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\SymbolLibrary-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\Types-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\User-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\UserList-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\WebLayout-1.0.0.xsd">
-      <SubType>
-      </SubType>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>

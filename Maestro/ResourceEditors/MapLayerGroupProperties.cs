@@ -42,7 +42,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
-		private OSGeo.MapGuide.MaestroAPI.MapLayerGroupType m_group = null;
+        private OSGeo.MapGuide.MaestroAPI.MapLayerGroupCommonType m_group = null;
 		private bool m_isUpdating = false;
 
 		public event System.EventHandler LayerPropertiesChanged;
@@ -58,7 +58,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		}
 
-		internal void SelectLayerItem(OSGeo.MapGuide.MaestroAPI.MapLayerGroupType group, EditorInterface editor)
+        internal void SelectLayerItem(OSGeo.MapGuide.MaestroAPI.MapLayerGroupCommonType group, EditorInterface editor)
 		{
 			if (m_isUpdating)
 				return;
@@ -77,7 +77,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					this.Visible = true;
 					txtLayername.Text = group.Name;
 					txtLayerLegendLabel.Text = group.LegendLabel;
-					chkLayerVisible.Checked = group.Visible;
+                    chkLayerVisible.Checked = group.Visible;
+
 					chkLayerShowInLegend.Checked = group.ShowInLegend;
 					chkLayerExpand.Checked = group.ExpandInLegend;
 				}

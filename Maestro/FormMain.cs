@@ -170,6 +170,8 @@ namespace OSGeo.MapGuide.Maestro
             this.ResourceTree = new System.Windows.Forms.TreeView();
             this.TreeContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.PropertiesMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.CopyResourceIdMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.EditAsXmlMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.LoadFromXmlMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -236,13 +238,11 @@ namespace OSGeo.MapGuide.Maestro
             this.ValidateButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ClosePageButton = new System.Windows.Forms.ToolStripButton();
-            this.CopyResourceIdMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.TabPageContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TabClosePageMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.TabSaveMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.TabSaveAsMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.TabCopyIdMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.TreeContextMenu.SuspendLayout();
@@ -302,6 +302,19 @@ namespace OSGeo.MapGuide.Maestro
             this.PropertiesMenu.Size = new System.Drawing.Size(180, 22);
             this.PropertiesMenu.Text = "Properties";
             this.PropertiesMenu.Click += new System.EventHandler(this.PropertiesMenu_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
+            // 
+            // CopyResourceIdMenu
+            // 
+            this.CopyResourceIdMenu.Name = "CopyResourceIdMenu";
+            this.CopyResourceIdMenu.Size = new System.Drawing.Size(180, 22);
+            this.CopyResourceIdMenu.Text = "Copy id to clipboard";
+            this.CopyResourceIdMenu.ToolTipText = "Copies the currently selected resource id to the clipboard";
+            this.CopyResourceIdMenu.Click += new System.EventHandler(this.CopyResourceIdMenu_Click);
             // 
             // menuItem7
             // 
@@ -904,19 +917,6 @@ namespace OSGeo.MapGuide.Maestro
             this.ClosePageButton.ToolTipText = "Close the current page";
             this.ClosePageButton.Click += new System.EventHandler(this.ClosePageButton_Click);
             // 
-            // CopyResourceIdMenu
-            // 
-            this.CopyResourceIdMenu.Name = "CopyResourceIdMenu";
-            this.CopyResourceIdMenu.Size = new System.Drawing.Size(180, 22);
-            this.CopyResourceIdMenu.Text = "Copy id to clipboard";
-            this.CopyResourceIdMenu.ToolTipText = "Copies the currently selected resource id to the clipboard";
-            this.CopyResourceIdMenu.Click += new System.EventHandler(this.CopyResourceIdMenu_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
-            // 
             // TabPageContextMenu
             // 
             this.TabPageContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -937,6 +937,11 @@ namespace OSGeo.MapGuide.Maestro
             this.TabClosePageMenu.Text = "Close";
             this.TabClosePageMenu.Click += new System.EventHandler(this.TabClosePageMenu_Click);
             // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
+            // 
             // TabSaveMenu
             // 
             this.TabSaveMenu.Name = "TabSaveMenu";
@@ -950,11 +955,6 @@ namespace OSGeo.MapGuide.Maestro
             this.TabSaveAsMenu.Size = new System.Drawing.Size(180, 22);
             this.TabSaveAsMenu.Text = "Save as...";
             this.TabSaveAsMenu.Click += new System.EventHandler(this.TabSaveAsMenu_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripSeparator8
             // 
@@ -1000,9 +1000,59 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void FormMain_Load(object sender, System.EventArgs e)
 		{
+            try
+            {
+                if (Program.ApplicationSettings.MaximizedWindow)
+                    this.WindowState = FormWindowState.Maximized;
+                else
+                {
+                    if (Program.ApplicationSettings.WindowWidth >= 100 && Program.ApplicationSettings.WindowHeight >= 100)
+                    {
+                        Screen s = Screen.FromControl(this);
+                        if (s != null)
+                        {
+                            Rectangle r = new Rectangle(Program.ApplicationSettings.WindowLeft, Program.ApplicationSettings.WindowTop, Program.ApplicationSettings.WindowWidth, Program.ApplicationSettings.WindowHeight);
+                            if (s.WorkingArea.Contains(r))
+                            {
+                                this.Width = Program.ApplicationSettings.WindowWidth;
+                                this.Height = Program.ApplicationSettings.WindowHeight;
+                                this.Left = Program.ApplicationSettings.WindowLeft;
+                                this.Top = Program.ApplicationSettings.WindowTop;
+                            }
+                            else
+                            {
+                                r = new Rectangle(0, 0, Program.ApplicationSettings.WindowWidth, Program.ApplicationSettings.WindowHeight);
+                                if (s.WorkingArea.Contains(r))
+                                {
+                                    this.Width = Program.ApplicationSettings.WindowWidth;
+                                    this.Height = Program.ApplicationSettings.WindowHeight;
+                                }
+
+                                if (s.WorkingArea.Contains(Program.ApplicationSettings.WindowLeft, Program.ApplicationSettings.WindowTop))
+                                {
+                                    this.Left = Program.ApplicationSettings.WindowLeft;
+                                    this.Top = Program.ApplicationSettings.WindowTop;
+                                }
+                            }
+                        }
+                    }
+                    this.WindowState = FormWindowState.Normal;
+                }
+            }
+            catch
+            {
+            }
+
+
+
 			this.Show();
-		
+
+            //Register these after any pre-load stuff
+            this.SizeChanged += new System.EventHandler(this.FormMain_SizeChanged);
+            this.Move += new System.EventHandler(this.FormMain_Move);
+
 			FormLogin frm = new FormLogin();
+            frm.StartPosition = FormStartPosition.CenterParent;
 			frm.UseAutoConnect = true;
 
 			if (frm.ShowDialog(this) == DialogResult.OK)
@@ -2452,6 +2502,29 @@ namespace OSGeo.MapGuide.Maestro
 
         private void TabPageContextMenu_Opening(object sender, CancelEventArgs e)
         {
+        }
+
+        private void FormMain_SizeChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Program.ApplicationSettings.WindowLeft = this.Left;
+                Program.ApplicationSettings.WindowTop = this.Top;
+                Program.ApplicationSettings.WindowWidth = this.Width;
+                Program.ApplicationSettings.WindowHeight = this.Height;
+                Program.ApplicationSettings.MaximizedWindow = this.WindowState == FormWindowState.Maximized;
+                //Trigger a save
+                Program.ApplicationSettings = Program.ApplicationSettings;
+
+            }
+            catch
+            {
+            }
+        }
+
+        private void FormMain_Move(object sender, EventArgs e)
+        {
+            FormMain_SizeChanged(sender, e);
         }
 	}
 }

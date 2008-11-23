@@ -764,6 +764,16 @@ namespace OSGeo.MapGuide.MaestroAPI {
         public int Add(BaseMapLayerGroupCommonType value) {
             return base.InnerList.Add(value);
         }
+
+        public void Insert(int index, BaseMapLayerGroupCommonType value)
+        {
+            base.InnerList.Insert(index, value);
+        }
+
+        public int IndexOf(BaseMapLayerGroupCommonType value)
+        {
+            return base.InnerList.IndexOf(value);
+        }
     }
     
     public class BaseMapLayerTypeCollection : System.Collections.CollectionBase {
@@ -780,5 +790,16 @@ namespace OSGeo.MapGuide.MaestroAPI {
         public int Add(BaseMapLayerType value) {
             return base.InnerList.Add(value);
         }
+
+        public void Insert(int index, BaseMapLayerType value)
+        {
+            base.InnerList.Insert(index, value);
+        }
+
+        public int IndexOf(BaseMapLayerType value)
+        {
+            return base.InnerList.IndexOf(value);
+        }
+
     }
 }

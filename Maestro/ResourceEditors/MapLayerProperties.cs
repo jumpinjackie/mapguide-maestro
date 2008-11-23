@@ -47,7 +47,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		private OSGeo.MapGuide.MaestroAPI.MapLayerType m_layer;
+        private OSGeo.MapGuide.MaestroAPI.BaseMapLayerType m_layer;
 		private System.Windows.Forms.Button btnEdit;
 		private EditorInterface m_editor;
 		private bool m_isUpdating = false;
@@ -63,7 +63,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		}
 
-		internal void SelectLayerItem(OSGeo.MapGuide.MaestroAPI.MapLayerType layer, EditorInterface editor)
+        internal void SelectLayerItem(OSGeo.MapGuide.MaestroAPI.BaseMapLayerType layer, EditorInterface editor)
 		{
 			m_layer = layer;
 			m_editor = editor;
@@ -80,7 +80,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				m_isUpdating = true;
 				if (m_layer == null)
 				{
-					this.Visible = false;
+                    this.Visible = false;
 				}
 				else
 				{
@@ -88,7 +88,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					txtLayerResource.Text = m_layer.ResourceId;
 					txtLayername.Text = m_layer.Name;
 					txtLayerLegendLabel.Text = m_layer.LegendLabel;
-					chkLayerVisible.Checked = m_layer.Visible;
+                    if (m_layer as MaestroAPI.MapLayerType != null)
+                    {
+                        chkLayerVisible.Visible = true;
+                        chkLayerVisible.Checked = (m_layer as MaestroAPI.MapLayerType).Visible;
+                    }
+                    else
+                        chkLayerVisible.Visible = false;
 					chkLayerSelectable.Checked = m_layer.Selectable;
 					chkLayerShowInLegend.Checked = m_layer.ShowInLegend;
 					chkLayerExpand.Checked = m_layer.ExpandInLegend;
@@ -316,8 +322,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			if (m_isUpdating)
 				return;
 
-			if (m_layer != null)
-				m_layer.Visible = chkLayerVisible.Checked;
+			if (m_layer as MaestroAPI.MapLayerType != null)
+				(m_layer as MaestroAPI.MapLayerType).Visible = chkLayerVisible.Checked;
 			if (LayerPropertiesChanged != null)
 				LayerPropertiesChanged(sender, e);
 		}

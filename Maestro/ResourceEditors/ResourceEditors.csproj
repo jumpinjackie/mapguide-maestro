@@ -314,6 +314,12 @@
     <Compile Include="FeatureSourceExtensions\Key.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="FiniteDisplayScales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FiniteDisplayScales.Designer.cs">
+      <DependentUpon>FiniteDisplayScales.cs</DependentUpon>
+    </Compile>
     <Compile Include="GeometryStyleEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -926,6 +932,10 @@
     <EmbeddedResource Include="Preview layout.WebLayout" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FiniteDisplayScales.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FiniteDisplayScales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Preview layout.ApplicationDefinition" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

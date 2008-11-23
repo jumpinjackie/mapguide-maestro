@@ -287,7 +287,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// </summary>
 		virtual public Version MaxTestedVersion
 		{
-			get { return SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_0_2); }
+			get { return SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP2009_SP1); }
 		}
 
 		/// <summary>
@@ -1439,7 +1439,29 @@ namespace OSGeo.MapGuide.MaestroAPI
                         if (mlg.Group == null)
                             mlg.Group = "";
                     }
-			}
+
+                if (mdef.BaseMapDefinition != null && mdef.BaseMapDefinition.BaseMapLayerGroup != null)
+                {
+                    foreach (BaseMapLayerGroupCommonType blg in mdef.BaseMapDefinition.BaseMapLayerGroup)
+                    {
+                        if (blg.LegendLabel == null)
+                            blg.LegendLabel = "";
+
+                        if (blg.BaseMapLayer != null)
+                            foreach (BaseMapLayerType bml in blg.BaseMapLayer)
+                            {
+                                if (bml.LegendLabel == null)
+                                    bml.LegendLabel = "";
+                            }
+                    }
+
+                    if (mdef.BaseMapDefinition.FiniteDisplayScale == null)
+                        mdef.BaseMapDefinition.FiniteDisplayScale = new DoubleCollection();
+
+                    if (mdef.BaseMapDefinition.FiniteDisplayScale.Count == 0)
+                        throw new Exception("It is not allowed to have a map with base layers but no finite display scales");
+                }
+            }
 
 			WebLayout wl = resource as WebLayout;
 			if (wl != null)

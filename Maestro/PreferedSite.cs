@@ -32,6 +32,11 @@ namespace OSGeo.MapGuide.Maestro
 		private int m_initialSite;
 		private bool m_autoconnect;
         private bool m_useFusionPreview;
+        private bool m_maximizedWindow;
+        private int m_windowLeft;
+        private int m_windowTop;
+        private int m_windowWidth;
+        private int m_windowHeight;
 
 		public PreferedSite[] Sites
 		{
@@ -86,6 +91,40 @@ namespace OSGeo.MapGuide.Maestro
 			set { m_autoconnect = value; }
 		}
 
+        [System.Xml.Serialization.XmlAttribute()]
+        public bool MaximizedWindow
+        {
+            get { return m_maximizedWindow; }
+            set { m_maximizedWindow = value; }
+        }
+
+        [System.Xml.Serialization.XmlAttribute()]
+        public int WindowLeft
+        {
+            get { return m_windowLeft; }
+            set { m_windowLeft = value; }
+        }
+
+        [System.Xml.Serialization.XmlAttribute()]
+        public int WindowTop
+        {
+            get { return m_windowTop; }
+            set { m_windowTop = value; }
+        }
+
+        [System.Xml.Serialization.XmlAttribute()]
+        public int WindowWidth
+        {
+            get { return m_windowWidth; }
+            set { m_windowWidth = value; }
+        }
+
+        [System.Xml.Serialization.XmlAttribute()]
+        public int WindowHeight
+        {
+            get { return m_windowHeight; }
+            set { m_windowHeight = value; }
+        }
 
 		public void AddSite(PreferedSite site)
 		{

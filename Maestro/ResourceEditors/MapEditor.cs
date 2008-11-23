@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors
 {
@@ -89,6 +90,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripButton MoveLayerUpOrderButton;
         private ToolStripButton AddLayerOrderButton;
         private ToolStripButton MoveLayerDownOrderButton;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripButton ConvertToBaseLayerGroupButton;
+        private TabPage tabBaseLayerGroups;
+        private TreeView trvBaseLayerGroups;
+        private ToolStrip BaseLayerGroupToolStrip;
+        private ToolStripButton AddBaseLayerGroupButton;
+        private ToolStripButton RemoveBaseLayerGroupButton;
+        private ToolStripSeparator toolStripSeparator5;
+        private ToolStripButton AddBaseLayerButton;
+        private ToolStripButton RemoveBaseLayerButton;
+        private ToolStripSeparator toolStripSeparator6;
+        private ToolStripButton MoveBaseLayerUpButton;
+        private ToolStripButton MoveBaseLayerDownButton;
+        private ToolStripSeparator toolStripSeparator7;
+        private ToolStripButton ConvertBaseLayerGroupToDynamicGroup;
+        private FiniteDisplayScales ctlFiniteDisplayScales;
 		private Globalizator.Globalizator m_globalizor = null;
 
 		public MapEditor(EditorInterface editor, string resourceID)
@@ -116,9 +133,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			ctlLayerProperties.Dock = DockStyle.Fill;
 			ctlGroupProperties.Visible = false;
 			ctlGroupProperties.Dock = DockStyle.Fill;
+            ctlFiniteDisplayScales.Visible = false;
+            ctlFiniteDisplayScales.Dock = DockStyle.Fill;
 
 			ctlLayerProperties.LayerPropertiesChanged += new EventHandler(ctlLayerProperties_LayerPropertiesChanged);
-			ctlGroupProperties.LayerPropertiesChanged +=new EventHandler(ctlGroupProperties_LayerPropertiesChanged);
+			ctlGroupProperties.LayerPropertiesChanged += new EventHandler(ctlGroupProperties_LayerPropertiesChanged);
 
 			m_globalizor = new  Globalizator.Globalizator(this);
             bgColor.ResetColors();
@@ -227,6 +246,34 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 						lstDrawOrder.Items[0].Selected = true;
 					}
 				}
+
+                trvBaseLayerGroups.BeginUpdate();
+                trvBaseLayerGroups.Nodes.Clear();
+                trvBaseLayerGroups.Nodes.Add(m_globalizor.Translate("Finite display scales"));
+                trvBaseLayerGroups.Nodes[0].Expand();
+
+                if (m_map.BaseMapDefinition != null)
+                {
+                    if (m_map.BaseMapDefinition.FiniteDisplayScale != null)
+                        trvBaseLayerGroups.Nodes[0].Tag = m_map.BaseMapDefinition.FiniteDisplayScale;
+
+                    if (m_map.BaseMapDefinition.BaseMapLayerGroup != null)
+                        foreach(MaestroAPI.BaseMapLayerGroupCommonType group in m_map.BaseMapDefinition.BaseMapLayerGroup)
+                        {
+                            TreeNode gn = new TreeNode(group.Name, 1, 1);
+                            gn.Tag = group;
+
+                            foreach(MaestroAPI.BaseMapLayerType layer in group.BaseMapLayer)
+                            {
+                                TreeNode ln = new TreeNode(layer.Name, 0, 0);
+                                ln.Tag = layer;
+                                gn.Nodes.Add(ln);
+                            }
+
+                            trvBaseLayerGroups.Nodes.Add(gn);
+                        }
+                }
+                trvBaseLayerGroups.EndUpdate();
 			}
 			finally
 			{
@@ -311,6 +358,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.ctlFiniteDisplayScales = new OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales();
             this.ctlGroupProperties = new OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerGroupProperties();
             this.ctlLayerProperties = new OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerProperties();
             this.label9 = new System.Windows.Forms.Label();
@@ -329,6 +377,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.MoveLayerUpButton = new System.Windows.Forms.ToolStripButton();
             this.MoveLayerDownButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.ConvertToBaseLayerGroupButton = new System.Windows.Forms.ToolStripButton();
             this.tabDrawOrder = new System.Windows.Forms.TabPage();
             this.lstDrawOrder = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
@@ -338,6 +388,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.MoveLayerUpOrderButton = new System.Windows.Forms.ToolStripButton();
             this.MoveLayerDownOrderButton = new System.Windows.Forms.ToolStripButton();
+            this.tabBaseLayerGroups = new System.Windows.Forms.TabPage();
+            this.trvBaseLayerGroups = new System.Windows.Forms.TreeView();
+            this.BaseLayerGroupToolStrip = new System.Windows.Forms.ToolStrip();
+            this.AddBaseLayerGroupButton = new System.Windows.Forms.ToolStripButton();
+            this.RemoveBaseLayerGroupButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.AddBaseLayerButton = new System.Windows.Forms.ToolStripButton();
+            this.RemoveBaseLayerButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.MoveBaseLayerUpButton = new System.Windows.Forms.ToolStripButton();
+            this.MoveBaseLayerDownButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.ConvertBaseLayerGroupToDynamicGroup = new System.Windows.Forms.ToolStripButton();
             this.LayerToolbarImages = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -351,6 +414,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.tlbLayerGroups.SuspendLayout();
             this.tabDrawOrder.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.tabBaseLayerGroups.SuspendLayout();
+            this.BaseLayerGroupToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // lable1
@@ -395,7 +460,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(576, 224);
+            this.groupBox1.Size = new System.Drawing.Size(592, 224);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
@@ -415,7 +480,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Location = new System.Drawing.Point(16, 120);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(544, 88);
+            this.panel1.Size = new System.Drawing.Size(557, 88);
             this.panel1.TabIndex = 9;
             // 
             // groupBox2
@@ -436,7 +501,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(544, 88);
+            this.groupBox2.Size = new System.Drawing.Size(554, 88);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Initial map view";
@@ -541,7 +606,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.btnSelectCoordSys.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSelectCoordSys.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnSelectCoordSys.Location = new System.Drawing.Point(536, 56);
+            this.btnSelectCoordSys.Location = new System.Drawing.Point(549, 56);
             this.btnSelectCoordSys.Name = "btnSelectCoordSys";
             this.btnSelectCoordSys.Size = new System.Drawing.Size(24, 20);
             this.btnSelectCoordSys.TabIndex = 8;
@@ -555,7 +620,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.txtCoordsys.Location = new System.Drawing.Point(144, 56);
             this.txtCoordsys.Name = "txtCoordsys";
             this.txtCoordsys.ReadOnly = true;
-            this.txtCoordsys.Size = new System.Drawing.Size(392, 20);
+            this.txtCoordsys.Size = new System.Drawing.Size(405, 20);
             this.txtCoordsys.TabIndex = 5;
             // 
             // txtDescription
@@ -564,7 +629,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescription.Location = new System.Drawing.Point(144, 24);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(416, 20);
+            this.txtDescription.Size = new System.Drawing.Size(429, 20);
             this.txtDescription.TabIndex = 4;
             this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
             // 
@@ -578,7 +643,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox3.Location = new System.Drawing.Point(0, 232);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(576, 392);
+            this.groupBox3.Size = new System.Drawing.Size(592, 392);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Layers";
@@ -587,25 +652,36 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.panel4.Controls.Add(this.groupBox4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(280, 16);
+            this.panel4.Location = new System.Drawing.Point(352, 16);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(293, 373);
+            this.panel4.Size = new System.Drawing.Size(237, 373);
             this.panel4.TabIndex = 4;
             // 
             // groupBox4
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.ctlFiniteDisplayScales);
             this.groupBox4.Controls.Add(this.ctlGroupProperties);
             this.groupBox4.Controls.Add(this.ctlLayerProperties);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox4.Location = new System.Drawing.Point(8, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(280, 368);
+            this.groupBox4.Size = new System.Drawing.Size(221, 368);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Layer properties";
+            // 
+            // ctlFiniteDisplayScales
+            // 
+            this.ctlFiniteDisplayScales.AutoScroll = true;
+            this.ctlFiniteDisplayScales.AutoScrollMinSize = new System.Drawing.Size(337, 351);
+            this.ctlFiniteDisplayScales.Location = new System.Drawing.Point(32, 280);
+            this.ctlFiniteDisplayScales.Name = "ctlFiniteDisplayScales";
+            this.ctlFiniteDisplayScales.Size = new System.Drawing.Size(200, 80);
+            this.ctlFiniteDisplayScales.TabIndex = 3;
+            this.ctlFiniteDisplayScales.Visible = false;
             // 
             // ctlGroupProperties
             // 
@@ -634,7 +710,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(272, 16);
+            this.splitter1.Location = new System.Drawing.Point(344, 16);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(8, 373);
             this.splitter1.TabIndex = 3;
@@ -646,7 +722,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(3, 16);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(269, 373);
+            this.panel3.Size = new System.Drawing.Size(341, 373);
             this.panel3.TabIndex = 2;
             // 
             // tabLayers
@@ -656,11 +732,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tabLayers.Controls.Add(this.tabLayerGroups);
             this.tabLayers.Controls.Add(this.tabDrawOrder);
+            this.tabLayers.Controls.Add(this.tabBaseLayerGroups);
             this.tabLayers.ImageList = this.LayerToolbarImages;
             this.tabLayers.Location = new System.Drawing.Point(8, 8);
             this.tabLayers.Name = "tabLayers";
             this.tabLayers.SelectedIndex = 0;
-            this.tabLayers.Size = new System.Drawing.Size(256, 352);
+            this.tabLayers.Size = new System.Drawing.Size(328, 352);
             this.tabLayers.TabIndex = 0;
             // 
             // tabLayerGroups
@@ -669,9 +746,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.tabLayerGroups.Controls.Add(this.tlbLayerGroups);
             this.tabLayerGroups.Location = new System.Drawing.Point(4, 23);
             this.tabLayerGroups.Name = "tabLayerGroups";
-            this.tabLayerGroups.Size = new System.Drawing.Size(248, 325);
+            this.tabLayerGroups.Size = new System.Drawing.Size(320, 325);
             this.tabLayerGroups.TabIndex = 0;
             this.tabLayerGroups.Text = "Layers by group";
+            this.tabLayerGroups.UseVisualStyleBackColor = true;
             // 
             // trvLayerGroups
             // 
@@ -682,7 +760,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.trvLayerGroups.Location = new System.Drawing.Point(0, 25);
             this.trvLayerGroups.Name = "trvLayerGroups";
             this.trvLayerGroups.SelectedImageIndex = 0;
-            this.trvLayerGroups.Size = new System.Drawing.Size(248, 300);
+            this.trvLayerGroups.Size = new System.Drawing.Size(320, 300);
             this.trvLayerGroups.TabIndex = 0;
             this.trvLayerGroups.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvLayerGroups_DragDrop);
             this.trvLayerGroups.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvLayerGroups_AfterSelect);
@@ -707,11 +785,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.RemoveLayerButton,
             this.toolStripSeparator2,
             this.MoveLayerUpButton,
-            this.MoveLayerDownButton});
+            this.MoveLayerDownButton,
+            this.toolStripSeparator4,
+            this.ConvertToBaseLayerGroupButton});
             this.tlbLayerGroups.Location = new System.Drawing.Point(0, 0);
             this.tlbLayerGroups.Name = "tlbLayerGroups";
             this.tlbLayerGroups.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tlbLayerGroups.Size = new System.Drawing.Size(248, 25);
+            this.tlbLayerGroups.Size = new System.Drawing.Size(320, 25);
             this.tlbLayerGroups.TabIndex = 2;
             // 
             // AddGroupButton
@@ -784,15 +864,31 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveLayerDownButton.ToolTipText = "Move the selected layer down";
             this.MoveLayerDownButton.Click += new System.EventHandler(this.MoveLayerDownButton_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // ConvertToBaseLayerGroupButton
+            // 
+            this.ConvertToBaseLayerGroupButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ConvertToBaseLayerGroupButton.Image = ((System.Drawing.Image)(resources.GetObject("ConvertToBaseLayerGroupButton.Image")));
+            this.ConvertToBaseLayerGroupButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ConvertToBaseLayerGroupButton.Name = "ConvertToBaseLayerGroupButton";
+            this.ConvertToBaseLayerGroupButton.Size = new System.Drawing.Size(23, 22);
+            this.ConvertToBaseLayerGroupButton.ToolTipText = "Convert the selected group to a base layer group";
+            this.ConvertToBaseLayerGroupButton.Click += new System.EventHandler(this.ConvertToBaseLayerGroupButton_Click);
+            // 
             // tabDrawOrder
             // 
             this.tabDrawOrder.Controls.Add(this.lstDrawOrder);
             this.tabDrawOrder.Controls.Add(this.toolStrip1);
             this.tabDrawOrder.Location = new System.Drawing.Point(4, 23);
             this.tabDrawOrder.Name = "tabDrawOrder";
-            this.tabDrawOrder.Size = new System.Drawing.Size(248, 325);
+            this.tabDrawOrder.Size = new System.Drawing.Size(320, 325);
             this.tabDrawOrder.TabIndex = 1;
             this.tabDrawOrder.Text = "Layers by drawing order";
+            this.tabDrawOrder.UseVisualStyleBackColor = true;
             // 
             // lstDrawOrder
             // 
@@ -802,7 +898,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.lstDrawOrder.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lstDrawOrder.Location = new System.Drawing.Point(0, 25);
             this.lstDrawOrder.Name = "lstDrawOrder";
-            this.lstDrawOrder.Size = new System.Drawing.Size(248, 300);
+            this.lstDrawOrder.Size = new System.Drawing.Size(320, 300);
             this.lstDrawOrder.SmallImageList = this.TreeImages;
             this.lstDrawOrder.TabIndex = 0;
             this.lstDrawOrder.UseCompatibleStateImageBehavior = false;
@@ -826,7 +922,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(248, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(320, 25);
             this.toolStrip1.TabIndex = 2;
             // 
             // AddLayerOrderButton
@@ -874,6 +970,136 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveLayerDownOrderButton.ToolTipText = "Move the selected layers down";
             this.MoveLayerDownOrderButton.Click += new System.EventHandler(this.MoveLayerDownOrderButton_Click);
             // 
+            // tabBaseLayerGroups
+            // 
+            this.tabBaseLayerGroups.Controls.Add(this.trvBaseLayerGroups);
+            this.tabBaseLayerGroups.Controls.Add(this.BaseLayerGroupToolStrip);
+            this.tabBaseLayerGroups.Location = new System.Drawing.Point(4, 23);
+            this.tabBaseLayerGroups.Name = "tabBaseLayerGroups";
+            this.tabBaseLayerGroups.Size = new System.Drawing.Size(320, 325);
+            this.tabBaseLayerGroups.TabIndex = 2;
+            this.tabBaseLayerGroups.Text = "Base layer groups";
+            this.tabBaseLayerGroups.UseVisualStyleBackColor = true;
+            // 
+            // trvBaseLayerGroups
+            // 
+            this.trvBaseLayerGroups.AllowDrop = true;
+            this.trvBaseLayerGroups.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trvBaseLayerGroups.HideSelection = false;
+            this.trvBaseLayerGroups.ImageIndex = 0;
+            this.trvBaseLayerGroups.ImageList = this.TreeImages;
+            this.trvBaseLayerGroups.Location = new System.Drawing.Point(0, 25);
+            this.trvBaseLayerGroups.Name = "trvBaseLayerGroups";
+            this.trvBaseLayerGroups.SelectedImageIndex = 0;
+            this.trvBaseLayerGroups.Size = new System.Drawing.Size(320, 300);
+            this.trvBaseLayerGroups.TabIndex = 4;
+            this.trvBaseLayerGroups.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvBaseLayerGroups_AfterSelect);
+            // 
+            // BaseLayerGroupToolStrip
+            // 
+            this.BaseLayerGroupToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.BaseLayerGroupToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddBaseLayerGroupButton,
+            this.RemoveBaseLayerGroupButton,
+            this.toolStripSeparator5,
+            this.AddBaseLayerButton,
+            this.RemoveBaseLayerButton,
+            this.toolStripSeparator6,
+            this.MoveBaseLayerUpButton,
+            this.MoveBaseLayerDownButton,
+            this.toolStripSeparator7,
+            this.ConvertBaseLayerGroupToDynamicGroup});
+            this.BaseLayerGroupToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.BaseLayerGroupToolStrip.Name = "BaseLayerGroupToolStrip";
+            this.BaseLayerGroupToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.BaseLayerGroupToolStrip.Size = new System.Drawing.Size(320, 25);
+            this.BaseLayerGroupToolStrip.TabIndex = 3;
+            // 
+            // AddBaseLayerGroupButton
+            // 
+            this.AddBaseLayerGroupButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AddBaseLayerGroupButton.Image = ((System.Drawing.Image)(resources.GetObject("AddBaseLayerGroupButton.Image")));
+            this.AddBaseLayerGroupButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddBaseLayerGroupButton.Name = "AddBaseLayerGroupButton";
+            this.AddBaseLayerGroupButton.Size = new System.Drawing.Size(23, 22);
+            this.AddBaseLayerGroupButton.ToolTipText = "Add a new group";
+            this.AddBaseLayerGroupButton.Click += new System.EventHandler(this.AddBaseLayerGroupButton_Click);
+            // 
+            // RemoveBaseLayerGroupButton
+            // 
+            this.RemoveBaseLayerGroupButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.RemoveBaseLayerGroupButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveBaseLayerGroupButton.Image")));
+            this.RemoveBaseLayerGroupButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RemoveBaseLayerGroupButton.Name = "RemoveBaseLayerGroupButton";
+            this.RemoveBaseLayerGroupButton.Size = new System.Drawing.Size(23, 22);
+            this.RemoveBaseLayerGroupButton.ToolTipText = "Remove the selected group and contents";
+            this.RemoveBaseLayerGroupButton.Click += new System.EventHandler(this.RemoveBaseLayerGroupButton_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // AddBaseLayerButton
+            // 
+            this.AddBaseLayerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AddBaseLayerButton.Image = ((System.Drawing.Image)(resources.GetObject("AddBaseLayerButton.Image")));
+            this.AddBaseLayerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddBaseLayerButton.Name = "AddBaseLayerButton";
+            this.AddBaseLayerButton.Size = new System.Drawing.Size(23, 22);
+            this.AddBaseLayerButton.ToolTipText = "Add a new layer to the map";
+            this.AddBaseLayerButton.Click += new System.EventHandler(this.AddBaseLayerButton_Click);
+            // 
+            // RemoveBaseLayerButton
+            // 
+            this.RemoveBaseLayerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.RemoveBaseLayerButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveBaseLayerButton.Image")));
+            this.RemoveBaseLayerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RemoveBaseLayerButton.Name = "RemoveBaseLayerButton";
+            this.RemoveBaseLayerButton.Size = new System.Drawing.Size(23, 22);
+            this.RemoveBaseLayerButton.ToolTipText = "Remove a layer from the group";
+            this.RemoveBaseLayerButton.Click += new System.EventHandler(this.RemoveBaseLayerButton_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            // 
+            // MoveBaseLayerUpButton
+            // 
+            this.MoveBaseLayerUpButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MoveBaseLayerUpButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveBaseLayerUpButton.Image")));
+            this.MoveBaseLayerUpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MoveBaseLayerUpButton.Name = "MoveBaseLayerUpButton";
+            this.MoveBaseLayerUpButton.Size = new System.Drawing.Size(23, 22);
+            this.MoveBaseLayerUpButton.ToolTipText = "Move the selected layer up";
+            this.MoveBaseLayerUpButton.Click += new System.EventHandler(this.MoveBaseLayerUpButton_Click);
+            // 
+            // MoveBaseLayerDownButton
+            // 
+            this.MoveBaseLayerDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MoveBaseLayerDownButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveBaseLayerDownButton.Image")));
+            this.MoveBaseLayerDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MoveBaseLayerDownButton.Name = "MoveBaseLayerDownButton";
+            this.MoveBaseLayerDownButton.Size = new System.Drawing.Size(23, 22);
+            this.MoveBaseLayerDownButton.ToolTipText = "Move the selected layer down";
+            this.MoveBaseLayerDownButton.Click += new System.EventHandler(this.MoveBaseLayerDownButton_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
+            // ConvertBaseLayerGroupToDynamicGroup
+            // 
+            this.ConvertBaseLayerGroupToDynamicGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ConvertBaseLayerGroupToDynamicGroup.Image = ((System.Drawing.Image)(resources.GetObject("ConvertBaseLayerGroupToDynamicGroup.Image")));
+            this.ConvertBaseLayerGroupToDynamicGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ConvertBaseLayerGroupToDynamicGroup.Name = "ConvertBaseLayerGroupToDynamicGroup";
+            this.ConvertBaseLayerGroupToDynamicGroup.Size = new System.Drawing.Size(23, 22);
+            this.ConvertBaseLayerGroupToDynamicGroup.ToolTipText = "Convert the selected group to regular group";
+            this.ConvertBaseLayerGroupToDynamicGroup.Click += new System.EventHandler(this.ConvertBaseLayerGroupToDynamicGroup_Click);
+            // 
             // LayerToolbarImages
             // 
             this.LayerToolbarImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("LayerToolbarImages.ImageStream")));
@@ -888,11 +1114,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // MapEditor
             // 
             this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(576, 624);
+            this.AutoScrollMinSize = new System.Drawing.Size(592, 626);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "MapEditor";
-            this.Size = new System.Drawing.Size(576, 624);
+            this.Size = new System.Drawing.Size(592, 626);
             this.Load += new System.EventHandler(this.MapEditor_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -912,6 +1138,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.tabDrawOrder.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.tabBaseLayerGroups.ResumeLayout(false);
+            this.tabBaseLayerGroups.PerformLayout();
+            this.BaseLayerGroupToolStrip.ResumeLayout(false);
+            this.BaseLayerGroupToolStrip.PerformLayout();
             this.ResumeLayout(false);
 
 		}
@@ -935,45 +1165,66 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void SelectLayerItem(object item)
 		{
-			if (item == null)
+            if (item == null || (item as MaestroAPI.BaseMapLayerType == null && item as MaestroAPI.MapLayerGroupCommonType == null))
 			{
 				ctlLayerProperties.Visible = false;
 				ctlGroupProperties.Visible = false;
+                ctlFiniteDisplayScales.Visible = false;
 				RemoveGroupButton.Enabled = false;
 				RemoveLayerButton.Enabled = false;
-				SetZoom.Enabled = false;
-			}
+                RemoveBaseLayerGroupButton.Enabled = false;
+                RemoveBaseLayerButton.Enabled = false;
+                AddBaseLayerButton.Enabled = false;
+                ConvertToBaseLayerGroupButton.Enabled = false;
+                ConvertBaseLayerGroupToDynamicGroup.Enabled = false;
+                SetZoom.Enabled = false;
+                ctlLayerProperties.Tag = null;
+                ctlGroupProperties.Tag = null;
+            }
 			else
 			{
-				if (item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MapLayerType))
+				if (item is MaestroAPI.BaseMapLayerType)
 				{
 
-					ctlLayerProperties.SelectLayerItem((OSGeo.MapGuide.MaestroAPI.MapLayerType)item, m_editor);
+                    ctlLayerProperties.SelectLayerItem((OSGeo.MapGuide.MaestroAPI.BaseMapLayerType)item, m_editor);
 					RemoveGroupButton.Enabled = false;
 					RemoveLayerButton.Enabled = true;
-					SetZoom.Enabled = true;
+                    RemoveBaseLayerGroupButton.Enabled = false;
+                    SetZoom.Enabled = true;
 
 					ctlLayerProperties.Visible = true;
 					ctlGroupProperties.Visible = false;
-				}
-				else if (item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MapLayerGroupType))
+                    ctlFiniteDisplayScales.Visible = false;
+                    ctlLayerProperties.Tag = item;
+                    ctlGroupProperties.Tag = null;
+                    ctlFiniteDisplayScales.Visible = false;
+
+                    ConvertToBaseLayerGroupButton.Enabled = false;
+                    ConvertBaseLayerGroupToDynamicGroup.Enabled = false;
+
+                    RemoveBaseLayerButton.Enabled = item.GetType() == typeof(MaestroAPI.BaseMapLayerType);
+
+                }
+				else if (item is MaestroAPI.MapLayerGroupCommonType)
 				{
-					ctlGroupProperties.SelectLayerItem((OSGeo.MapGuide.MaestroAPI.MapLayerGroupType)item, m_editor);
+                    ctlGroupProperties.SelectLayerItem((OSGeo.MapGuide.MaestroAPI.MapLayerGroupCommonType)item, m_editor);
 					RemoveGroupButton.Enabled = true;
 					RemoveLayerButton.Enabled = false;
+                    RemoveBaseLayerButton.Enabled = false;
 					SetZoom.Enabled = false;
 
 					ctlLayerProperties.Visible = false;
 					ctlGroupProperties.Visible = true;
-				}
-				else
-				{
-					ctlLayerProperties.Visible = false;
-					ctlGroupProperties.Visible = false;
-					RemoveGroupButton.Enabled = false;
-					RemoveLayerButton.Enabled = false;
-					SetZoom.Enabled = false;
-				}
+                    ctlLayerProperties.Tag = null;
+                    ctlGroupProperties.Tag = item;
+                    ctlFiniteDisplayScales.Visible = false;
+
+                    ConvertToBaseLayerGroupButton.Enabled = item is MaestroAPI.MapLayerGroupType;
+                    ConvertBaseLayerGroupToDynamicGroup.Enabled = !(item is MaestroAPI.MapLayerGroupType);
+
+                    RemoveBaseLayerGroupButton.Enabled = !(item is MaestroAPI.MapLayerGroupType);
+
+                }
 			}
 		}
 
@@ -1283,7 +1534,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			string resource = m_editor.BrowseResource("LayerDefinition");
 			if (resource != null)
 			{
-				foreach(OSGeo.MapGuide.MaestroAPI.MapLayerType layer in m_map.Layers)
+
+                ArrayList layers = new ArrayList();
+                layers.AddRange(m_map.Layers);
+                if (m_map.BaseMapDefinition != null && m_map.BaseMapDefinition.BaseMapLayerGroup != null)
+                    foreach (MaestroAPI.BaseMapLayerGroupCommonType g in m_map.BaseMapDefinition.BaseMapLayerGroup)
+                        layers.AddRange(g.BaseMapLayer);
+
+                foreach (OSGeo.MapGuide.MaestroAPI.BaseMapLayerType layer in layers)
 					if (layer.ResourceId == resource)
 					{
 						if (MessageBox.Show(this, m_globalizor.Translate("That layer is already in the map, do you want it to appear twice?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
@@ -1355,14 +1613,41 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			if (m_isUpdating)
 				return;
 
-			if (trvLayerGroups.SelectedNode == null || trvLayerGroups.SelectedNode.Tag == null)
-				return;
+            object item;
+            if (ctlLayerProperties.Visible)
+                item = ctlLayerProperties.Tag;
+            else if (ctlGroupProperties.Visible)
+                item = ctlGroupProperties.Tag;
+            else
+                return;
 
-			m_editor.HasChanged();
-			if (trvLayerGroups.SelectedNode.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerGroupType != null)
-				trvLayerGroups.SelectedNode.Text = ((OSGeo.MapGuide.MaestroAPI.MapLayerGroupType)trvLayerGroups.SelectedNode.Tag).Name;
-			else if (trvLayerGroups.SelectedNode.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerType != null)
-				trvLayerGroups.SelectedNode.Text = ((OSGeo.MapGuide.MaestroAPI.MapLayerType)trvLayerGroups.SelectedNode.Tag).Name;
+            if (item == null)
+                return;
+
+            string text;
+            if (item as OSGeo.MapGuide.MaestroAPI.BaseMapLayerType != null)
+                text = ((OSGeo.MapGuide.MaestroAPI.BaseMapLayerType)item).Name;
+            else if (item as OSGeo.MapGuide.MaestroAPI.MapLayerGroupCommonType != null)
+                text = ((OSGeo.MapGuide.MaestroAPI.MapLayerGroupCommonType)item).Name;
+            else
+                return;
+
+            m_editor.HasChanged();
+
+            TreeNode n = FindItemByTag(trvLayerGroups.Nodes, item);
+            if (n != null)
+                n.Text = text;
+
+            foreach(ListViewItem lvi in lstDrawOrder.Items)
+                if (lvi.Tag == item)
+                {
+                    lvi.Text = text;
+                    break;
+                }
+
+            n = FindItemByTag(trvBaseLayerGroups.Nodes, item);
+            if (n != null)
+                n.Text = text;
 		}
 
 		private void ctlGroupProperties_LayerPropertiesChanged(object sender, EventArgs e)
@@ -1664,5 +1949,361 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         public bool SupportsPreview { get { return true; } }
         public bool SupportsValidate { get { return false; } }
         public bool SupportsProfiling { get { return true; } }
+
+        private void trvBaseLayerGroups_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            SelectLayerItem(trvBaseLayerGroups.SelectedNode == null ? null : trvBaseLayerGroups.SelectedNode.Tag);
+            
+            //Finite display scales
+            if (trvBaseLayerGroups.SelectedNode != null && trvBaseLayerGroups.SelectedNode.Index == 0 && trvBaseLayerGroups.SelectedNode.Parent == null)
+            {
+                ctlFiniteDisplayScales.SetItem(m_editor, m_map);
+                ctlFiniteDisplayScales.Visible = true;
+            }
+
+            if (trvBaseLayerGroups.SelectedNode != null)
+                if (trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerType != null)
+                {
+                    MoveBaseLayerUpButton.Enabled = trvBaseLayerGroups.SelectedNode.Index != 0;
+                    MoveBaseLayerDownButton.Enabled = trvBaseLayerGroups.SelectedNode.Index != trvBaseLayerGroups.SelectedNode.Parent.Nodes.Count - 1;
+                    AddBaseLayerButton.Enabled = true;
+                }
+                else if (trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerGroupCommonType != null)
+                {
+                    MoveBaseLayerUpButton.Enabled = trvBaseLayerGroups.SelectedNode.Index != 1;
+                    MoveBaseLayerDownButton.Enabled = trvBaseLayerGroups.SelectedNode.Index != trvBaseLayerGroups.Nodes.Count - 1;
+                    AddBaseLayerButton.Enabled = true;
+                }
+                else
+                {
+                    MoveBaseLayerUpButton.Enabled = false;
+                    MoveBaseLayerDownButton.Enabled = false;
+                    AddBaseLayerButton.Enabled = false;
+                }
+                
+        }
+
+        private void ConvertBaseLayerGroupToDynamicGroup_Click(object sender, EventArgs e)
+        {
+            if (trvBaseLayerGroups.SelectedNode == null || trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerGroupCommonType == null)
+                return;
+
+            MaestroAPI.BaseMapLayerGroupCommonType g = trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerGroupCommonType;
+            if (g == null)
+                return;
+
+            m_map.BaseMapDefinition.BaseMapLayerGroup.RemoveAt(m_map.BaseMapDefinition.BaseMapLayerGroup.IndexOf(g));
+
+            MaestroAPI.MapLayerGroupType group = new OSGeo.MapGuide.MaestroAPI.MapLayerGroupType();
+            group.ExpandInLegend = g.ExpandInLegend;
+            group.Group = "";
+            group.LegendLabel = g.LegendLabel;
+            group.Name = g.Name;
+            group.ShowInLegend = g.ShowInLegend;
+            group.Visible = g.Visible;
+
+            if (m_map.LayerGroups == null)
+                m_map.LayerGroups = new OSGeo.MapGuide.MaestroAPI.MapLayerGroupTypeCollection();
+
+            if (m_map.Layers == null)
+                m_map.Layers = new OSGeo.MapGuide.MaestroAPI.MapLayerTypeCollection();
+
+            m_map.LayerGroups.Add(group);
+
+            foreach (MaestroAPI.BaseMapLayerType l in g.BaseMapLayer)
+            {
+                MaestroAPI.MapLayerType layer = new OSGeo.MapGuide.MaestroAPI.MapLayerType();
+                layer.ExpandInLegend = l.ExpandInLegend;
+                layer.Group = g.Name;
+                layer.LegendLabel = l.LegendLabel;
+                layer.Name = l.Name;
+                layer.ResourceId = l.ResourceId;
+                layer.Selectable = l.Selectable;
+                layer.ShowInLegend = l.ShowInLegend;
+                layer.Visible = true;
+                m_map.Layers.Add(layer);
+            }
+
+            m_editor.HasChanged();
+            UpdateDisplay();
+
+        }
+
+        private void MoveBaseLayer(bool up)
+        {
+            if (trvBaseLayerGroups.SelectedNode == null)
+                return;
+
+            if (trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerType != null)
+            {
+                MaestroAPI.BaseMapLayerType l = trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerType;
+                MaestroAPI.BaseMapLayerGroupCommonType g = trvBaseLayerGroups.SelectedNode.Parent.Tag as MaestroAPI.BaseMapLayerGroupCommonType;
+                if (g == null)
+                    return;
+
+                int index = g.BaseMapLayer.IndexOf(l);
+                if (up)
+                {
+                    if (index == 0)
+                        return;
+
+                    g.BaseMapLayer.RemoveAt(index);
+                    g.BaseMapLayer.Insert(index - 1, l);
+
+                    TreeNode n = trvBaseLayerGroups.SelectedNode;
+                    TreeNode ng = trvBaseLayerGroups.SelectedNode.Parent;
+                    ng.Nodes.Remove(n);
+                    ng.Nodes.Insert(index - 1, n);
+                    trvBaseLayerGroups.SelectedNode = n;
+                }
+                else
+                {
+                    if (index == g.BaseMapLayer.Count - 1)
+                        return;
+                    g.BaseMapLayer.RemoveAt(index);
+                    g.BaseMapLayer.Insert(index + 1, l);
+
+                    TreeNode n = trvBaseLayerGroups.SelectedNode;
+                    TreeNode ng = trvBaseLayerGroups.SelectedNode.Parent;
+                    ng.Nodes.Remove(n);
+                    ng.Nodes.Insert(index + 1, n);
+                    trvBaseLayerGroups.SelectedNode = n;
+                }
+            }
+            else if (trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerGroupCommonType != null)
+            {
+                MaestroAPI.BaseMapLayerGroupCommonType g = trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerGroupCommonType;
+                if (g == null)
+                    return;
+
+                int index = m_map.BaseMapDefinition.BaseMapLayerGroup.IndexOf(g);
+                if (up)
+                {
+                    if (index == 0)
+                        return;
+
+                    m_map.BaseMapDefinition.BaseMapLayerGroup.RemoveAt(index);
+                    m_map.BaseMapDefinition.BaseMapLayerGroup.Insert(index - 1, g);
+
+                    TreeNode n = trvBaseLayerGroups.SelectedNode;
+                    trvBaseLayerGroups.Nodes.Remove(n);
+                    trvBaseLayerGroups.Nodes.Insert(index, n);
+                    trvBaseLayerGroups.SelectedNode = n;
+                }
+                else
+                {
+                    if (index == m_map.BaseMapDefinition.BaseMapLayerGroup.Count - 1)
+                        return;
+
+                    m_map.BaseMapDefinition.BaseMapLayerGroup.RemoveAt(index);
+                    m_map.BaseMapDefinition.BaseMapLayerGroup.Insert(index + 1, g);
+
+                    TreeNode n = trvBaseLayerGroups.SelectedNode;
+                    trvBaseLayerGroups.Nodes.Remove(n);
+                    trvBaseLayerGroups.Nodes.Insert(index + 2, n);
+                    trvBaseLayerGroups.SelectedNode = n;
+                }
+            }
+        }
+
+        private void MoveBaseLayerDownButton_Click(object sender, EventArgs e)
+        {
+            MoveBaseLayer(false);
+        }
+
+        private void MoveBaseLayerUpButton_Click(object sender, EventArgs e)
+        {
+            MoveBaseLayer(true);
+        }
+
+        private void RemoveBaseLayerButton_Click(object sender, EventArgs e)
+        {
+            if (trvBaseLayerGroups.SelectedNode == null || trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerType == null)
+                return;
+
+            MaestroAPI.BaseMapLayerType l = trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerType;
+            if (l == null)
+                return;
+
+            MaestroAPI.BaseMapLayerGroupCommonType g = trvBaseLayerGroups.SelectedNode.Parent.Tag as MaestroAPI.BaseMapLayerGroupCommonType;
+            if (g == null)
+                return;
+
+            g.BaseMapLayer.RemoveAt(g.BaseMapLayer.IndexOf(l));
+            trvBaseLayerGroups.Nodes.Remove(trvBaseLayerGroups.SelectedNode);
+        }
+
+        private void AddBaseLayerButton_Click(object sender, EventArgs e)
+        {
+            if (trvBaseLayerGroups.SelectedNode == null)
+                return;
+
+            MaestroAPI.BaseMapLayerGroupCommonType g;
+
+            if (trvBaseLayerGroups.SelectedNode.Parent != null)
+                g = trvBaseLayerGroups.SelectedNode.Parent.Tag as MaestroAPI.BaseMapLayerGroupCommonType;
+            else
+                g = trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerGroupCommonType;
+
+            if (g == null)
+                return;
+
+            string resource = m_editor.BrowseResource("LayerDefinition");
+            if (resource != null)
+            {
+                ArrayList layers = new ArrayList();
+                layers.AddRange(m_map.Layers);
+                foreach (MaestroAPI.BaseMapLayerGroupCommonType gx in m_map.BaseMapDefinition.BaseMapLayerGroup)
+                    layers.AddRange(gx.BaseMapLayer);
+
+                foreach (OSGeo.MapGuide.MaestroAPI.BaseMapLayerType layer in layers)
+                    if (layer.ResourceId == resource)
+                    {
+                        if (MessageBox.Show(this, m_globalizor.Translate("That layer is already in the map, do you want it to appear twice?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
+                            return;
+                    }
+
+                OSGeo.MapGuide.MaestroAPI.BaseMapLayerType maplayer = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerType();
+                maplayer.ResourceId = resource;
+                maplayer.Name = resource.Substring(resource.LastIndexOf("/") + 1, resource.LastIndexOf(".") - (resource.LastIndexOf("/") + 1));
+                maplayer.ShowInLegend = true;
+                maplayer.ExpandInLegend = true;
+                g.BaseMapLayer.Add(maplayer);
+                m_editor.HasChanged();
+                UpdateDisplay();
+
+                SelectItemByTag(trvBaseLayerGroups.Nodes, maplayer);
+
+                try
+                {
+                    ctlLayerProperties.txtLayername.SelectAll();
+                    ctlLayerProperties.txtLayername.Focus();
+                }
+                catch { }
+            }
+        }
+
+        private void RemoveBaseLayerGroupButton_Click(object sender, EventArgs e)
+        {
+            if (trvBaseLayerGroups.SelectedNode == null || trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerGroupCommonType == null)
+                return;
+
+            MaestroAPI.BaseMapLayerGroupCommonType g = trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerGroupCommonType;
+            if (g == null)
+                return;
+
+            m_map.BaseMapDefinition.BaseMapLayerGroup.RemoveAt(m_map.BaseMapDefinition.BaseMapLayerGroup.IndexOf(g));
+            trvBaseLayerGroups.Nodes.Remove(trvBaseLayerGroups.SelectedNode);
+        }
+
+        //TODO: The button's enabled state should follow the selection
+        private void ConvertToBaseLayerGroupButton_Click(object sender, EventArgs e)
+        {
+            if (trvLayerGroups.SelectedNode == null || trvLayerGroups.SelectedNode.Tag as MaestroAPI.MapLayerGroupType == null)
+                return;
+
+            MaestroAPI.MapLayerGroupType g = trvLayerGroups.SelectedNode.Tag as MaestroAPI.MapLayerGroupType;
+            if (g == null)
+                return;
+
+            List<MaestroAPI.MapLayerType> layers = new List<OSGeo.MapGuide.MaestroAPI.MapLayerType>();
+            List<MaestroAPI.MapLayerGroupType> groups = new List<OSGeo.MapGuide.MaestroAPI.MapLayerGroupType>();
+            
+            string grouppath = g.GetFullPath("/", m_map) + "/";
+
+            bool hasInvisible = false;
+            foreach (MaestroAPI.MapLayerType l in m_map.Layers)
+            {
+                string lpath = l.GetFullPath("/", m_map);
+                if (lpath != null && lpath.StartsWith(grouppath))
+                {
+                    layers.Add(l);
+                    hasInvisible |= !l.Visible;
+                }
+                
+            }
+
+            foreach (MaestroAPI.MapLayerGroupType lg in m_map.LayerGroups)
+            {
+                string lpath = lg.GetFullPath("/", m_map);
+                if (lpath != null && lpath.StartsWith(grouppath))
+                    groups.Add(lg);
+            }
+
+            if (groups.Count > 0)
+                if (MessageBox.Show(this, m_globalizor.Translate("The selected group has sub groups. These will be removed and all\nlayers will be moved to the selected group before being converted.\n\nDo you want to continue?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) != DialogResult.Yes)
+                    return;
+
+            if (hasInvisible)
+                if (MessageBox.Show(this, m_globalizor.Translate("The selected group has one or more layers that are invisible.\nThe layers in a base layer are always visible.\nIf you convert the group, the layers will be made visible.\n\nDo you want to continue?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) != DialogResult.Yes)
+                    return;
+
+            groups.Add(g);
+
+            for(int i = 0; i < m_map.LayerGroups.Count; i++)
+                if (groups.Contains(m_map.LayerGroups[i]))
+                {
+                    m_map.LayerGroups.RemoveAt(i);
+                    i--;
+                }
+
+            for (int i = 0; i < m_map.Layers.Count; i++)
+                if (layers.Contains(m_map.Layers[i]))
+                {
+                    m_map.Layers.RemoveAt(i);
+                    i--;
+                }
+
+            MaestroAPI.BaseMapLayerGroupCommonType blg = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerGroupCommonType();
+            blg.ExpandInLegend = g.ExpandInLegend;
+            blg.LegendLabel = g.LegendLabel;
+            blg.Name = g.Name;
+            blg.ShowInLegend = g.ShowInLegend;
+            blg.Visible = g.Visible;
+            blg.BaseMapLayer = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerTypeCollection();
+
+            foreach (MaestroAPI.MapLayerType l in layers)
+            {
+                MaestroAPI.BaseMapLayerType bl = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerType();
+                bl.ExpandInLegend = l.ExpandInLegend;
+                bl.LegendLabel = l.LegendLabel;
+                bl.Name = l.Name;
+                bl.ResourceId = l.ResourceId;
+                bl.Selectable = l.Selectable;
+                bl.ShowInLegend = l.ShowInLegend;
+                blg.BaseMapLayer.Add(bl);
+            }
+
+            if (m_map.BaseMapDefinition == null)
+                m_map.BaseMapDefinition = new OSGeo.MapGuide.MaestroAPI.MapDefinitionTypeBaseMapDefinition();
+            if (m_map.BaseMapDefinition.BaseMapLayerGroup == null)
+                m_map.BaseMapDefinition.BaseMapLayerGroup = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerGroupCommonTypeCollection();
+            m_map.BaseMapDefinition.BaseMapLayerGroup.Add(blg);
+
+            m_editor.HasChanged();
+
+            this.UpdateDisplay();
+        }
+
+        private void AddBaseLayerGroupButton_Click(object sender, EventArgs e)
+        {
+            MaestroAPI.BaseMapLayerGroupCommonType g = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerGroupCommonType();
+            g.Name = m_globalizor.Translate("New group");
+            g.LegendLabel = m_globalizor.Translate("New group");
+            g.BaseMapLayer = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerTypeCollection();
+            g.ExpandInLegend = true;
+            g.ShowInLegend = true;
+            g.Visible = true;
+
+            if (m_map.BaseMapDefinition == null)
+                m_map.BaseMapDefinition = new OSGeo.MapGuide.MaestroAPI.MapDefinitionTypeBaseMapDefinition();
+            if (m_map.BaseMapDefinition.BaseMapLayerGroup == null)
+                m_map.BaseMapDefinition.BaseMapLayerGroup = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerGroupCommonTypeCollection();
+
+            m_map.BaseMapDefinition.BaseMapLayerGroup.Add(g);
+
+            UpdateDisplay();
+            trvBaseLayerGroups.SelectedNode = trvBaseLayerGroups.Nodes[trvBaseLayerGroups.Nodes.Count - 1];
+        }
     }
 }
