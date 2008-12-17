@@ -35,10 +35,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.listviewCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.AddScaleButton = new System.Windows.Forms.ToolStripButton();
             this.RemoveScaleButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.RefreshScalesButton = new System.Windows.Forms.ToolStripButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.LogarithmicGeneration = new System.Windows.Forms.RadioButton();
@@ -57,6 +54,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.editScalesButton = new System.Windows.Forms.ToolStripButton();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -89,7 +87,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.columnHeader1});
             this.lstScales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstScales.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lstScales.LabelEdit = true;
             this.lstScales.Location = new System.Drawing.Point(3, 41);
             this.lstScales.Name = "lstScales";
             this.lstScales.Size = new System.Drawing.Size(367, 83);
@@ -124,26 +121,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddScaleButton,
-            this.RemoveScaleButton,
-            this.toolStripSeparator1,
-            this.RefreshScalesButton});
+            this.editScalesButton,
+            this.RemoveScaleButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 16);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(367, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // AddScaleButton
-            // 
-            this.AddScaleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddScaleButton.Image = ((System.Drawing.Image)(resources.GetObject("AddScaleButton.Image")));
-            this.AddScaleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddScaleButton.Name = "AddScaleButton";
-            this.AddScaleButton.Size = new System.Drawing.Size(23, 22);
-            this.AddScaleButton.Text = "toolStripButton1";
-            this.AddScaleButton.Click += new System.EventHandler(this.AddScaleButton_Click);
             // 
             // RemoveScaleButton
             // 
@@ -155,21 +140,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.RemoveScaleButton.Size = new System.Drawing.Size(23, 22);
             this.RemoveScaleButton.Text = "toolStripButton2";
             this.RemoveScaleButton.Click += new System.EventHandler(this.RemoveScaleButton_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // RefreshScalesButton
-            // 
-            this.RefreshScalesButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RefreshScalesButton.Image = ((System.Drawing.Image)(resources.GetObject("RefreshScalesButton.Image")));
-            this.RefreshScalesButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.RefreshScalesButton.Name = "RefreshScalesButton";
-            this.RefreshScalesButton.Size = new System.Drawing.Size(23, 22);
-            this.RefreshScalesButton.ToolTipText = "Re-sort the scales and remove duplicates";
-            this.RefreshScalesButton.Click += new System.EventHandler(this.RefreshScalesButton_Click);
             // 
             // groupBox2
             // 
@@ -404,6 +374,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.label1.TabIndex = 0;
             this.label1.Text = "Min scale";
             // 
+            // editScalesButton
+            // 
+            this.editScalesButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.editScalesButton.Image = ((System.Drawing.Image)(resources.GetObject("editScalesButton.Image")));
+            this.editScalesButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.editScalesButton.Name = "editScalesButton";
+            this.editScalesButton.Size = new System.Drawing.Size(23, 22);
+            this.editScalesButton.Text = "toolStripButton1";
+            this.editScalesButton.ToolTipText = "Edit the scales manually";
+            this.editScalesButton.Click += new System.EventHandler(this.editScalesButton_Click);
+            // 
             // FiniteDisplayScales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,7 +418,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton AddScaleButton;
         private System.Windows.Forms.ToolStripButton RemoveScaleButton;
         private System.Windows.Forms.ListView lstScales;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -461,7 +441,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel listviewCount;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton RefreshScalesButton;
+        private System.Windows.Forms.ToolStripButton editScalesButton;
     }
 }

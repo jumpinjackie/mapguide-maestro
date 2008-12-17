@@ -128,8 +128,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
             if (m_child == null)
                 if (dlgres == DialogResult.Cancel)
-                    //TODO: Should probably have a special class rather than this ugly way...
-                    throw new Exception("CANCEL");
+                    throw new CancelException();
                 else
 				    throw new Exception("Failed to create new datasource");
 

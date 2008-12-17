@@ -106,6 +106,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripSeparator toolStripSeparator7;
         private ToolStripButton ConvertBaseLayerGroupToDynamicGroup;
         private FiniteDisplayScales ctlFiniteDisplayScales;
+        private ToolStripSeparator toolStripSeparator8;
+        private ToolStripButton activateMgCooker;
 		private Globalizator.Globalizator m_globalizor = null;
 
 		public MapEditor(EditorInterface editor, string resourceID)
@@ -251,6 +253,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 trvBaseLayerGroups.Nodes.Clear();
                 trvBaseLayerGroups.Nodes.Add(m_globalizor.Translate("Finite display scales"));
                 trvBaseLayerGroups.Nodes[0].Expand();
+                trvBaseLayerGroups.Nodes[0].ImageIndex = trvBaseLayerGroups.Nodes[0].SelectedImageIndex = 2;
 
                 if (m_map.BaseMapDefinition != null)
                 {
@@ -402,6 +405,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.ConvertBaseLayerGroupToDynamicGroup = new System.Windows.Forms.ToolStripButton();
             this.LayerToolbarImages = new System.Windows.Forms.ImageList(this.components);
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.activateMgCooker = new System.Windows.Forms.ToolStripButton();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -773,6 +778,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.TreeImages.TransparentColor = System.Drawing.Color.Transparent;
             this.TreeImages.Images.SetKeyName(0, "");
             this.TreeImages.Images.SetKeyName(1, "");
+            this.TreeImages.Images.SetKeyName(2, "Range.ico");
             // 
             // tlbLayerGroups
             // 
@@ -1008,7 +1014,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveBaseLayerUpButton,
             this.MoveBaseLayerDownButton,
             this.toolStripSeparator7,
-            this.ConvertBaseLayerGroupToDynamicGroup});
+            this.ConvertBaseLayerGroupToDynamicGroup,
+            this.toolStripSeparator8,
+            this.activateMgCooker});
             this.BaseLayerGroupToolStrip.Location = new System.Drawing.Point(0, 0);
             this.BaseLayerGroupToolStrip.Name = "BaseLayerGroupToolStrip";
             this.BaseLayerGroupToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -1110,6 +1118,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.LayerToolbarImages.Images.SetKeyName(3, "");
             this.LayerToolbarImages.Images.SetKeyName(4, "");
             this.LayerToolbarImages.Images.SetKeyName(5, "");
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            // 
+            // activateMgCooker
+            // 
+            this.activateMgCooker.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.activateMgCooker.Image = ((System.Drawing.Image)(resources.GetObject("activateMgCooker.Image")));
+            this.activateMgCooker.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.activateMgCooker.Name = "activateMgCooker";
+            this.activateMgCooker.Size = new System.Drawing.Size(23, 22);
+            this.activateMgCooker.Text = "toolStripButton1";
+            this.activateMgCooker.ToolTipText = "Click to activate MgCooker for pre-building tiles";
+            this.activateMgCooker.Click += new System.EventHandler(this.activateMgCooker_Click);
             // 
             // MapEditor
             // 
@@ -1812,6 +1836,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		public bool Save(string savename)
 		{
+            if (m_map.BaseMapDefinition != null && m_editor.Existing)
+            {
+                if (MessageBox.Show(this, m_globalizor.Translate("This map contains base layers. Saving the map will clear any generated tiles\nDo you want to save the layer?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) != DialogResult.Yes)
+                    throw new CancelException();
+
+            }
 			return false;
 		}
 
@@ -2304,6 +2334,33 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
             UpdateDisplay();
             trvBaseLayerGroups.SelectedNode = trvBaseLayerGroups.Nodes[trvBaseLayerGroups.Nodes.Count - 1];
+        }
+
+        private void activateMgCooker_Click(object sender, EventArgs e)
+        {
+            if (!m_editor.Existing)
+            {
+                MessageBox.Show(this, m_globalizor.Translate("This map is not yet saved. MgCooker can only process saved maps"), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
+            //TODO: Detect modified layers
+
+            try
+            {
+                Dictionary<string, string> args = new Dictionary<string, string>();
+
+                MaestroAPI.HttpServerConnection con = m_editor.CurrentConnection as MaestroAPI.HttpServerConnection;
+                args.Add("mapagent", con.ServerURI);
+
+                MgCooker.SetupRun dlg = new OSGeo.MapGuide.MgCooker.SetupRun(m_editor.CurrentConnection, new string[] { m_map.ResourceId }, args);
+                dlg.ShowDialog(this);
+            }
+            catch(Exception ex)
+            {
+                m_editor.SetLastException(ex);
+                MessageBox.Show(this, string.Format(m_globalizor.Translate("MgCooker threw an exception: {0}"), ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

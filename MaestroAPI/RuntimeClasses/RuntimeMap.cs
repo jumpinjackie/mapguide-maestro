@@ -685,10 +685,8 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
             if (ldef.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType != null)
             {
                 OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType vld = (OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType)ldef.Item;
-                this.m_type = 1;
                 this.m_needRefresh = false;
                 this.m_displayOrder = 0;
-
 
                 this.m_featureSourceId = vld.ResourceId;
                 this.m_featureName = vld.FeatureName;
@@ -714,7 +712,6 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
             else if (ldef.Item as OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType != null)
             {
                 OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType gld = (OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType)ldef.Item;
-                this.m_type = 2;
                 this.m_needRefresh = false;
                 this.m_displayOrder = 0;
 
@@ -735,7 +732,6 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
             else if (ldef.Item as OSGeo.MapGuide.MaestroAPI.DrawingLayerDefinitionType != null)
             {
                 OSGeo.MapGuide.MaestroAPI.DrawingLayerDefinitionType dld = (OSGeo.MapGuide.MaestroAPI.DrawingLayerDefinitionType)ldef.Item;
-                this.m_type = 2;
                 this.m_needRefresh = false;
                 this.m_displayOrder = 0;
 

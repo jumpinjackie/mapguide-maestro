@@ -231,14 +231,25 @@ namespace OSGeo.MapGuide.MgCooker
         /// <param name="password">The password to connect with</param>
         /// <param name="maps">A list of maps to process, leave empty to process all layers</param>
         public BatchSettings(string mapagent, string username, string password, params string[] maps)
+            : this(new MaestroAPI.HttpServerConnection(new Uri(mapagent), username, password, null, true), maps)
         {
-            m_connection = new MaestroAPI.HttpServerConnection(new Uri(mapagent), username, password, null, true);
+        }
+
+        public BatchSettings(MaestroAPI.ServerConnectionI connection)
+        {
+            m_connection = connection;
+            m_maps = new List<BatchMap>();
+        }
+
+        public BatchSettings(MaestroAPI.ServerConnectionI connection, params string[] maps)
+        {
+            m_connection = connection;
             m_maps = new List<BatchMap>();
 
-            if (maps == null || maps.Length == 0)
+            if (maps == null || maps.Length == 0 || (maps.Length == 1 && maps[0].Trim().Length == 0))
             {
                 List<string> tmp = new List<string>();
-                foreach(MaestroAPI.ResourceListResourceDocument doc in m_connection.GetRepositoryResources("Library://", "MapDefinition").Items)
+                foreach (MaestroAPI.ResourceListResourceDocument doc in m_connection.GetRepositoryResources("Library://", "MapDefinition").Items)
                     tmp.Add(doc.ResourceId);
                 maps = tmp.ToArray();
             }
@@ -249,7 +260,30 @@ namespace OSGeo.MapGuide.MgCooker
                 if (bm.Resolutions > 0)
                     m_maps.Add(bm);
             }
+        }
 
+        public void SetScales(int[] scaleindexes)
+        {
+            foreach (BatchMap bm in m_maps)
+                bm.SetScales(scaleindexes);
+        }
+
+        public void SetGroups(string[] groups)
+        {
+            foreach (BatchMap bm in m_maps)
+                bm.SetGroups(groups);
+        }
+
+        public void LimitRows(long limit)
+        {
+            foreach (BatchMap bm in m_maps)
+                bm.LimitRows(limit);
+        }
+
+        public void LimitCols(long limit)
+        {
+            foreach (BatchMap bm in m_maps)
+                bm.LimitCols(limit);
         }
 
         /// <summary>
@@ -312,6 +346,11 @@ namespace OSGeo.MapGuide.MgCooker
         private MaestroAPI.Box2DType m_maxExtent;
 
         /// <summary>
+        /// The list of baselayer group names
+        /// </summary>
+        private string[] m_groups;
+
+        /// <summary>
         /// For each entry there is two longs, row and column
         /// </summary>
         private long[][] m_dimensions;
@@ -325,12 +364,25 @@ namespace OSGeo.MapGuide.MgCooker
         {
             m_parent = parent;
             m_mapdefinition = parent.Connection.GetMapDefinition(map);
+
             if (m_mapdefinition.BaseMapDefinition != null && m_mapdefinition.BaseMapDefinition.FiniteDisplayScale != null && m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.Count != 0)
+            {
+                m_groups = new string[m_mapdefinition.BaseMapDefinition.BaseMapLayerGroup.Count];
+                for (int i = 0; i < m_mapdefinition.BaseMapDefinition.BaseMapLayerGroup.Count; i++)
+                    m_groups[i] = m_mapdefinition.BaseMapDefinition.BaseMapLayerGroup[i].Name;
+
                 CalculateDimensions();
+            }
         }
 
         public void CalculateDimensions()
         {
+            if (m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.Count == 0)
+            {
+                m_dimensions = new long[0][];
+                return;
+            }
+
             MaestroAPI.Box2DType extents = m_maxExtent == null ? m_mapdefinition.Extents : m_maxExtent;
             double maxscale = m_mapdefinition.BaseMapDefinition.FiniteDisplayScale[m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.Count - 1];
 
@@ -349,6 +401,46 @@ namespace OSGeo.MapGuide.MgCooker
                 m_dimensions[i] = new long[] {rows, cols};
 
             }
+        }
+
+        public void SetGroups(string[] groups)
+        {
+            List<string> g = new List<string>();
+            for(int i = 0; i < m_groups.Length; i++)
+                if (Array.IndexOf<string>(groups, m_groups[i]) >= 0)
+                    g.Add(m_groups[i]);
+
+            m_groups = g.ToArray();
+        }
+
+        public void SetScales(int[] scaleindexes)
+        {
+            //TODO: Re-read scales from mapdef?
+            SortedList<int, int> s = new SortedList<int, int>();
+            foreach (int i in scaleindexes)
+                if (!s.ContainsKey(i))
+                    s.Add(i, i);
+
+            List<int> keys = new List<int>(s.Keys);
+            keys.Reverse();
+
+            for (int i = m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.Count - 1; i >= 0; i--)
+                if (!keys.Contains(i))
+                    m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.RemoveAt(i);
+
+            CalculateDimensions();
+        }
+
+        public void LimitCols(long limit)
+        {
+            foreach (long[] d in m_dimensions)
+                d[1] = Math.Min(limit, d[1]);
+        }
+
+        public void LimitRows(long limit)
+        {
+            foreach (long[] d in m_dimensions)
+                d[0] = Math.Min(limit, d[0]);
         }
 
         public long TotalTiles
@@ -479,11 +571,11 @@ namespace OSGeo.MapGuide.MgCooker
             m_parent.InvokeBeginRendering(this);
 
             if (!m_parent.Cancel)
-                foreach (MaestroAPI.BaseMapLayerGroupCommonType g in m_mapdefinition.BaseMapDefinition.BaseMapLayerGroup)
+                foreach (string s in m_groups)
                     if (m_parent.Cancel)
                         break;
                     else
-                        RenderGroup(g.Name);
+                        RenderGroup(s);
 
             m_parent.InvokeFinishRendering(this);
         }
@@ -527,8 +619,8 @@ namespace OSGeo.MapGuide.MgCooker
         public int TileWidth = 300;
         public int TileHeight = 300;
         public int RetryCount = 5;
-        public int DisplayResolutionHeight = 1920;
-        public int DisplayResolutionWidth = 1280;
+        public int DisplayResolutionWidth = 1920;
+        public int DisplayResolutionHeight = 1280;
 
     }
 }

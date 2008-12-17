@@ -51,7 +51,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                 }
                 catch(Exception ex)
                 {
-                    if (ex.Message == "CANCEL" || ex as ObjectDisposedException != null)
+                    if (ex is CancelException || ex is ObjectDisposedException)
                         return;
                     
                     MessageBox.Show(string.Format(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Failed to upload package: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -95,7 +95,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                     else
                     {
                         if (!m_owner.Visible && m_owner.DialogResult == DialogResult.Cancel)
-                            throw new Exception("CANCEL");
+                            throw new CancelException();
                     }
                 }
             }

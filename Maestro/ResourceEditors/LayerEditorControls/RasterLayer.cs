@@ -148,10 +148,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 
 
 				if (gld.GridScaleRange[0].RebuildFactor > 0)
-					VisibleFrom.Text = gld.GridScaleRange[0].RebuildFactor.ToString("0", System.Globalization.CultureInfo.CurrentUICulture);
+					RebuildFactor.Text = gld.GridScaleRange[0].RebuildFactor.ToString("0", System.Globalization.CultureInfo.CurrentUICulture);
 				else
 				{
-					VisibleFrom.Text = "1";
+                    RebuildFactor.Text = "1";
 					gld.GridScaleRange[0].RebuildFactor = 1;
 					m_editor.HasChanged();
 				}

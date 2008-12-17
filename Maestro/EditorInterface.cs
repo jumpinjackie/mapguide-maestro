@@ -201,49 +201,53 @@ namespace OSGeo.MapGuide.Maestro
 					if (!((EditorInterface)m_editor.OpenResourceEditors[resid]).Close(true))
 						return false;
 
-				try
-				{
-					if (resid != null)
-					{
-						if (!((ResourceEditor)m_page.Controls[0]).Save(resid))
-						{
-							m_editor.CurrentConnection.SaveResourceAs(((ResourceEditor)m_page.Controls[0]).Resource, resid);
-							m_resourceID = resid;
-							((ResourceEditor)m_page.Controls[0]).ResourceId = resid;
+                try
+                {
+                    if (resid != null)
+                    {
+                        if (!((ResourceEditor)m_page.Controls[0]).Save(resid))
+                        {
+                            m_editor.CurrentConnection.SaveResourceAs(((ResourceEditor)m_page.Controls[0]).Resource, resid);
+                            m_resourceID = resid;
+                            ((ResourceEditor)m_page.Controls[0]).ResourceId = resid;
                             m_page.Text = OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.GetName(resid);
                             m_page.ToolTipText = resid;
-						}
-					}
+                        }
+                    }
 
-					if (m_page.Text.EndsWith(" *"))
-						m_page.Text = m_page.Text.Substring(0, m_page.Text.Length - 2);
+                    if (m_page.Text.EndsWith(" *"))
+                        m_page.Text = m_page.Text.Substring(0, m_page.Text.Length - 2);
 
-					if (!m_existing || m_resourceID != resid)
-					{
-						m_editor.RebuildDocumentTree();
-						m_existing = true;
-						string n = resid.Substring(resid.LastIndexOf("/") + 1);
-						m_page.Text = n.Substring(0, n.LastIndexOf("."));
+                    if (!m_existing || m_resourceID != resid)
+                    {
+                        m_editor.RebuildDocumentTree();
+                        m_existing = true;
+                        string n = resid.Substring(resid.LastIndexOf("/") + 1);
+                        m_page.Text = n.Substring(0, n.LastIndexOf("."));
 
 
-						foreach(System.Collections.DictionaryEntry de in m_editor.OpenResourceEditors)
-							if (de.Value == this)
-							{
-								m_editor.OpenResourceEditors.Remove(de.Key);
-								m_editor.OpenResourceEditors.Add(m_resourceID, this);
-								break;
-							}
-					}
-					
-					((ResourceEditor)m_page.Controls[0]).UpdateDisplay();
-					return true;
-				}
-				catch (Exception ex)
-				{
+                        foreach (System.Collections.DictionaryEntry de in m_editor.OpenResourceEditors)
+                            if (de.Value == this)
+                            {
+                                m_editor.OpenResourceEditors.Remove(de.Key);
+                                m_editor.OpenResourceEditors.Add(m_resourceID, this);
+                                break;
+                            }
+                    }
+
+                    ((ResourceEditor)m_page.Controls[0]).UpdateDisplay();
+                    return true;
+                }
+                catch (CancelException)
+                {
+                    return false;
+                }
+                catch (Exception ex)
+                {
                     SetLastException(ex);
-					MessageBox.Show(m_editor, string.Format(m_globalizor.Translate("An error occured while saving: {0}"),  ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-					return false;
-				}
+                    MessageBox.Show(m_editor, string.Format(m_globalizor.Translate("An error occured while saving: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
 			}
 		}
 

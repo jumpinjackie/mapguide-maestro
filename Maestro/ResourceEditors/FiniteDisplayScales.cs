@@ -160,6 +160,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 for(int i = 0; i < m_map.BaseMapDefinition.FiniteDisplayScale.Count; i++)
                     if (m_map.BaseMapDefinition.FiniteDisplayScale[i].ToString(m_globalizor.Culture) == lvi.Text)
                     {
+                        m_editor.HasChanged();
                         m_map.BaseMapDefinition.FiniteDisplayScale.RemoveAt(i);
                         break;
                     }
@@ -205,6 +206,38 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         {
             SortCollection();
             UpdateDisplay();
+        }
+
+        private void editScalesButton_Click(object sender, EventArgs e)
+        {
+            LayerEditorControls.EditScales dlg = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.EditScales();
+
+            System.Text.StringBuilder sb = new StringBuilder();
+
+            if (m_map.BaseMapDefinition != null && m_map.BaseMapDefinition.FiniteDisplayScale != null)
+                foreach (double d in m_map.BaseMapDefinition.FiniteDisplayScale)
+                    sb.Append(d.ToString(System.Globalization.CultureInfo.CurrentUICulture) + "\r\n");
+
+            dlg.textBox1.Text = sb.ToString();
+
+            if (dlg.ShowDialog(this) == DialogResult.OK)
+            {
+                if (m_map.BaseMapDefinition == null)
+                    m_map.BaseMapDefinition = new OSGeo.MapGuide.MaestroAPI.MapDefinitionTypeBaseMapDefinition();
+                m_map.BaseMapDefinition.FiniteDisplayScale = new OSGeo.MapGuide.MaestroAPI.DoubleCollection();
+
+                using(System.IO.StringReader sr = new System.IO.StringReader(dlg.textBox1.Text))
+                    while (sr.Peek() != -1)
+                    {
+                        string s = sr.ReadLine().Trim();
+                        double d;
+                        if (double.TryParse(s, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentUICulture, out d))
+                            m_map.BaseMapDefinition.FiniteDisplayScale.Add(d);
+                    }
+                m_editor.HasChanged();
+                SortCollection();
+                UpdateDisplay();
+            }
         }   
     }
 }

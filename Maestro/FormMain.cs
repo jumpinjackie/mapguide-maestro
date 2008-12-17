@@ -1307,7 +1307,7 @@ namespace OSGeo.MapGuide.Maestro
                         ex = ex.InnerException;
  
 					//TODO: Handle cancel with a special exeption type
-                    if (ex.Message == "CANCEL")
+                    if (ex is CancelException)
                         return;
 
 					MessageBox.Show(this, string.Format(m_globalizor.Translate("Unable to create the resource {0}\nError message: {1}"), resourceID, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);

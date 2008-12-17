@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Duplicati.CommandLine;
 
 namespace OSGeo.MapGuide.MgCooker
 {
@@ -43,9 +44,10 @@ namespace OSGeo.MapGuide.MgCooker
 
         private static bool m_logableProgress = false;
 
+        [STAThread()]
         static void Main(string[] args)
         {
-            //TODO: Parameters:
+            //Parameters:
             //mapagent=
             //username=
             //password=
@@ -53,8 +55,108 @@ namespace OSGeo.MapGuide.MgCooker
             //scaleindex=0,1,2,3,4,5
             //basegroups="x","y"
 
+            string mapagent = "http://localhost/mapguide";
+            string username = "Anonymous";
+            string password = "";
+            string mapdefinitions = "";
+            string scaleindex = "";
+            string basegroups = "";
 
-            BatchSettings bx = new BatchSettings("http://localhost/mapguide", "Administrator", "admin");
+            string limitRows = "";
+            string limitCols = "";
+
+            string tileWidth = "";
+            string tileHeight = "";
+
+            string DPI = "";
+            string metersPerUnit = "";
+
+
+            List<string> largs = new List<string>(args);
+            Dictionary<string, string> opts = CommandLineParser.ExtractOptions(largs);
+            if (opts.ContainsKey("mapagent"))
+                mapagent = opts["mapagent"];
+            if (opts.ContainsKey("username"))
+                username = opts["username"];
+            if (opts.ContainsKey("password"))
+                username = opts["password"];
+            if (opts.ContainsKey("mapdefinitions"))
+                mapdefinitions = opts["mapdefinitions"];
+            if (opts.ContainsKey("scaleindex"))
+                scaleindex = opts["scaleindex"];
+            if (opts.ContainsKey("basegroups"))
+                basegroups = opts["basegroups"];
+
+            if (opts.ContainsKey("limitrows"))
+                limitRows = opts["limitrows"];
+            if (opts.ContainsKey("limitcols"))
+                limitCols = opts["limitcols"];
+
+            if (opts.ContainsKey("tilewidth"))
+                tileWidth = opts["tilewidth"];
+            if (opts.ContainsKey("tileheight"))
+                tileHeight = opts["tileheight"];
+
+            if (opts.ContainsKey("DPI"))
+                DPI = opts["DPI"];
+            if (opts.ContainsKey("metersperunit"))
+                metersPerUnit = opts["metersperunit"];
+
+            if (largs.IndexOf("batch") < 0 && largs.IndexOf("/batch") < 0)
+            {
+                MaestroAPI.HttpServerConnection con = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri(mapagent), username, password, System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, true);
+                SetupRun sr = new SetupRun(con, mapdefinitions.Split(','), opts);
+                sr.ShowDialog();
+                return;
+            }
+            
+
+            BatchSettings bx = new BatchSettings(mapagent, username, password, mapdefinitions.Split(','));
+            if (!string.IsNullOrEmpty(scaleindex))
+            {
+                List<int> scales = new List<int>();
+                int tmp;
+                foreach (string s in scaleindex.Split(','))
+                    if (int.TryParse(s, out tmp))
+                        scales.Add(tmp);
+                bx.SetScales(scales.ToArray());
+            }
+
+            if (!string.IsNullOrEmpty(basegroups))
+            {
+                List<string> groups = new List<string>();
+                foreach (string s in basegroups.Split(','))
+                {
+                    string f = s;
+                    if (f.StartsWith("\""))
+                        f = f.Substring(1);
+                    if (f.EndsWith("\""))
+                        f = f.Substring(0, f.Length - 1);
+                    groups.Add(f);
+                }
+                bx.SetGroups(groups.ToArray());
+            }
+
+            int x;
+
+            if (!string.IsNullOrEmpty(limitCols) && int.TryParse(limitCols, out x))
+                bx.LimitCols(x);
+            if (!string.IsNullOrEmpty(limitRows) && int.TryParse(limitRows, out x))
+                bx.LimitRows(x);
+
+            if (!string.IsNullOrEmpty(tileWidth) && int.TryParse(tileWidth, out x))
+                bx.Config.TileWidth = x;
+            if (!string.IsNullOrEmpty(tileHeight) && int.TryParse(tileHeight, out x))
+                bx.Config.TileHeight = x;
+
+            if (!string.IsNullOrEmpty(DPI) && int.TryParse(DPI, out x))
+                bx.Config.DPI = x;
+
+            double d;
+            if (!string.IsNullOrEmpty(metersPerUnit) && double.TryParse(metersPerUnit, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentCulture, out d))
+                bx.Config.MetersPerUnit = d;
+
+
             bx.BeginRenderingMap += new ProgressCallback(bx_BeginRenderingMap);
             bx.FinishRenderingMap += new ProgressCallback(bx_FinishRenderingMap);
             bx.BeginRenderingGroup += new ProgressCallback(bx_BeginRenderingGroup);

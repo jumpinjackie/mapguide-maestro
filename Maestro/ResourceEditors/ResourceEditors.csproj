@@ -113,6 +113,10 @@
       <Project>{290B027E-3649-4A60-A9BF-0544831435E2}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
+    <ProjectReference Include="..\..\MgCooker\MgCooker.csproj">
+      <Project>{C76FFEBF-F047-4BE8-983C-BF8BF3CFB3D9}</Project>
+      <Name>MgCooker</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Globalizator\Globalizator.csproj">
       <Name>Globalizator</Name>
       <Project>{361D5982-275F-4A4C-935F-0BB637330C9C}</Project>
@@ -355,6 +359,12 @@
     </Compile>
     <Compile Include="LayerEditor.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\EditScales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayerEditorControls\EditScales.Designer.cs">
+      <DependentUpon>EditScales.cs</DependentUpon>
     </Compile>
     <Compile Include="LayerEditorControls\RasterLayer.cs">
       <SubType>UserControl</SubType>
@@ -935,6 +945,10 @@
     <EmbeddedResource Include="FiniteDisplayScales.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FiniteDisplayScales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\EditScales.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EditScales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Preview layout.ApplicationDefinition" />
   </ItemGroup>
