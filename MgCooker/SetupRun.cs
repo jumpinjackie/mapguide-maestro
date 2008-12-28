@@ -160,7 +160,12 @@ namespace OSGeo.MapGuide.MgCooker
             if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 string executable = System.IO.Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                executable = System.IO.Path.Combine(Application.StartupPath, executable);
+
+                //Windows has problems with console output from GUI applications...
+                if (System.Environment.OSVersion.Platform != PlatformID.Unix && executable == "MgCooker.exe" && System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, "MgCookerCommandline.exe")))
+                    executable = System.IO.Path.Combine(Application.StartupPath, "MgCookerCommandline.exe");
+                else
+                    executable = System.IO.Path.Combine(Application.StartupPath, executable);
 
                 executable = "\"" + executable + "\"";
 
@@ -190,7 +195,7 @@ namespace OSGeo.MapGuide.MgCooker
                         {
                             if (i != 0)
                                 sw.Write(",");
-                            sw.Write(i.ToString());
+                            sw.Write(c.ScaleIndexes[i].ToString());
                         }
 
                         foreach (string s in m_commandlineargs.Keys)

@@ -356,6 +356,11 @@ namespace OSGeo.MapGuide.MgCooker
         private long[][] m_dimensions;
 
         /// <summary>
+        /// The max scale for the map
+        /// </summary>
+        private double m_maxscale;
+
+        /// <summary>
         /// Constructs a new map to be processed
         /// </summary>
         /// <param name="parent">The parent entry</param>
@@ -372,6 +377,7 @@ namespace OSGeo.MapGuide.MgCooker
                     m_groups[i] = m_mapdefinition.BaseMapDefinition.BaseMapLayerGroup[i].Name;
 
                 CalculateDimensions();
+                m_maxscale = m_mapdefinition.BaseMapDefinition.FiniteDisplayScale[m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.Count - 1];
             }
         }
 
@@ -384,7 +390,19 @@ namespace OSGeo.MapGuide.MgCooker
             }
 
             MaestroAPI.Box2DType extents = m_maxExtent == null ? m_mapdefinition.Extents : m_maxExtent;
-            double maxscale = m_mapdefinition.BaseMapDefinition.FiniteDisplayScale[m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.Count - 1];
+            double maxscale = m_maxscale;
+
+            //Note the algorithm used here is slightly different than the one proposed by the MapGuide team.
+            //The MapGuide team suggestion can be found here:
+            //http://www.nabble.com/Pre-Genererate--tiles-for-the-entire-map-at-all-pre-defined-zoom-scales-to6074037.html#a6078663
+
+            //Using the above algorithm, yields a negative number of columns/rows, if the max scale is larger than the max extent of the map.
+
+            //This method assumes that the max scale is displayed on a screen with resolution 1920x1280.
+            //This display width/height is then multiplied up to calculate the pixelwidth of all subsequent
+            //scale ranges. Eg. if max scale range is 1:200, then scale range 1:100 is twice the size,
+            //meaning the full map at 1:100 fills 3840x2560 pixels.
+            //The width/height is then used to calculate the number of rows and columns of 300x300 pixel tiles.
 
             m_dimensions = new long[this.Resolutions][];
             for (int i = this.Resolutions - 1; i >= 0; i--)
@@ -533,7 +551,10 @@ namespace OSGeo.MapGuide.MgCooker
                             if (m_parent.Cancel)
                                 break;
                             else
-                                RenderTile(r - (rows / 2), c - (cols / 2), scaleindex, group);
+                            {
+                                //TODO: Does not correctly detect tiles outside map extent
+                                RenderTile(r, c, scaleindex, group);
+                            }
 
             }
 

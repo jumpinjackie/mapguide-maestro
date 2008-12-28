@@ -24,6 +24,7 @@ namespace OSGeo.MapGuide.MgCooker
         private long m_grandTotalTileCount = 0;
         private DateTime m_grandBegin;
         private bool m_allowClose = true;
+        private long m_failCount = 0;
 
         private Progress()
         {
@@ -41,6 +42,7 @@ namespace OSGeo.MapGuide.MgCooker
 
             bx.FinishRenderingTile += new ProgressCallback(bx_FinishRenderingTile);
             bx.FinishRenderingMaps += new ProgressCallback(bx_FinishRenderingMaps);
+            bx.FailedRenderingTile += new ErrorCallback(bx_FailedRenderingTile);
             m_tileRuns = new List<TimeSpan>();
 
             m_grandTotalTiles = 0;
@@ -48,6 +50,12 @@ namespace OSGeo.MapGuide.MgCooker
                 m_grandTotalTiles += bm.TotalTiles;
 
             m_grandBegin = DateTime.Now;
+        }
+
+        void bx_FailedRenderingTile(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref Exception exception)
+        {
+            m_failCount++;
+            exception = null; //Eat it
         }
 
         private void DoClose()
@@ -116,6 +124,8 @@ namespace OSGeo.MapGuide.MgCooker
                 totalPG.Value = (int)Math.Max(Math.Min((m_grandTotalTileCount / (double)m_grandTotalTiles) * (totalPG.Maximum - totalPG.Minimum), totalPG.Maximum), totalPG.Minimum);
 
                 tileCounter.Text = string.Format("Tile {0} of {1}", m_grandTotalTileCount, m_grandTotalTiles);
+                if (m_failCount > 0)
+                    tileCounter.Text += string.Format(" ({0} failed tiles)", m_failCount);
 
                 TimeSpan elapsed = DateTime.Now - m_grandBegin;
                 DateTime finish = DateTime.Now + (new TimeSpan(m_prevDuration.Ticks * m_grandTotalTiles) - elapsed);

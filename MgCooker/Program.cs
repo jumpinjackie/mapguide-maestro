@@ -24,7 +24,7 @@ using Duplicati.CommandLine;
 
 namespace OSGeo.MapGuide.MgCooker
 {
-    class Program
+    public class Program
     {
         private static DateTime beginOverall;
         private static DateTime beginMap;
@@ -44,8 +44,10 @@ namespace OSGeo.MapGuide.MgCooker
 
         private static bool m_logableProgress = false;
 
+        private static bool hasConsole = true;
+
         [STAThread()]
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             //Parameters:
             //mapagent=
@@ -102,6 +104,15 @@ namespace OSGeo.MapGuide.MgCooker
             if (opts.ContainsKey("metersperunit"))
                 metersPerUnit = opts["metersperunit"];
 
+            try
+            {
+                Console.Clear();
+            }
+            catch
+            {
+                hasConsole = false;
+            }
+
             if (largs.IndexOf("batch") < 0 && largs.IndexOf("/batch") < 0)
             {
                 MaestroAPI.HttpServerConnection con = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri(mapagent), username, password, System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, true);
@@ -156,22 +167,29 @@ namespace OSGeo.MapGuide.MgCooker
             if (!string.IsNullOrEmpty(metersPerUnit) && double.TryParse(metersPerUnit, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentCulture, out d))
                 bx.Config.MetersPerUnit = d;
 
+            if (largs.IndexOf("gui") >= 0 || largs.IndexOf("/gui") >= 0)
+            {
+                Progress pg = new Progress(bx);
+                pg.ShowDialog();
+            }
+            else
+            {
+                bx.BeginRenderingMap += new ProgressCallback(bx_BeginRenderingMap);
+                bx.FinishRenderingMap += new ProgressCallback(bx_FinishRenderingMap);
+                bx.BeginRenderingGroup += new ProgressCallback(bx_BeginRenderingGroup);
+                bx.FinishRenderingGroup += new ProgressCallback(bx_FinishRenderingGroup);
+                bx.BeginRenderingScale += new ProgressCallback(bx_BeginRenderingScale);
+                bx.FinishRenderingScale += new ProgressCallback(bx_FinishRenderingScale);
+                bx.BeginRenderingTile += new ProgressCallback(bx_BeginRenderingTile);
+                bx.FinishRenderingTile += new ProgressCallback(bx_FinishRenderingTile);
 
-            bx.BeginRenderingMap += new ProgressCallback(bx_BeginRenderingMap);
-            bx.FinishRenderingMap += new ProgressCallback(bx_FinishRenderingMap);
-            bx.BeginRenderingGroup += new ProgressCallback(bx_BeginRenderingGroup);
-            bx.FinishRenderingGroup += new ProgressCallback(bx_FinishRenderingGroup);
-            bx.BeginRenderingScale += new ProgressCallback(bx_BeginRenderingScale);
-            bx.FinishRenderingScale += new ProgressCallback(bx_FinishRenderingScale);
-            bx.BeginRenderingTile += new ProgressCallback(bx_BeginRenderingTile);
-            bx.FinishRenderingTile += new ProgressCallback(bx_FinishRenderingTile);
+                bx.FailedRenderingTile += new ErrorCallback(bx_FailedRenderingTile);
 
-            bx.FailedRenderingTile += new ErrorCallback(bx_FailedRenderingTile);
+                mapCount = 0;
+                lastUpdate = DateTime.Now;
 
-            mapCount = 0;
-            lastUpdate = DateTime.Now;
-
-            bx.RenderAll();
+                bx.RenderAll();
+            }
         }
 
         static void bx_FailedRenderingTile(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref Exception exception)
@@ -182,7 +200,8 @@ namespace OSGeo.MapGuide.MgCooker
 
         static void DisplayProgress(BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
-            Console.Clear();
+            if (hasConsole)
+                Console.Clear();
             Console.WriteLine(string.Format("Update time:   \t{0}", DateTime.Now));
             Console.WriteLine(string.Format("Current Map:   \t{0} ({1} of {2})", map.ResourceId, mapCount, map.Parent.Maps.Count));
             Console.WriteLine(string.Format("Current Group: \t{0} ({1} of {2})", group, groupCount, map.Map.BaseMapDefinition.BaseMapLayerGroup.Count));
