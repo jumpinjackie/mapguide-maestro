@@ -30,30 +30,6 @@ namespace OSGeo.MapGuide.Maestro
 		[STAThread()]
 		public static void Main(string[] args)
 		{
-			//Test of the LocalNativeConnection... it needs some work :(
-			/*OSGeo.MapGuide.MaestroAPI.LocalNativeConnection con = new OSGeo.MapGuide.MaestroAPI.LocalNativeConnection(@"C:\Programmer\MapGuideOpenSource2.0\WebServerExtensions\www\webconfig.ini", "Administrator", "admin", null);
-			OSGeo.MapGuide.MaestroAPI.MapDefinition mdef = con.GetMapDefinition("Library://Allerod importeret/Map1.MapDefinition");
-			string sid = "Session:" + con.SessionID + "//test.Map";
-			con.CreateRuntimeMap(sid, mdef.ResourceId);
-			OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMap rtmap = con.GetRuntimeMap(sid);*/
-
-
-			//Test of Mono serializers
-			/*System.Xml.Serialization.XmlSerializer xs1 = new System.Xml.Serialization.XmlSerializer(typeof(OSGeo.MapGuide.MaestroAPI.LayerDefinition));
-			System.Xml.Serialization.XmlSerializer xs2 = new System.Xml.Serialization.XmlSerializer(typeof(OSGeo.MapGuide.MaestroAPI.WebLayout));
-			System.Xml.Serialization.XmlSerializer xs3 = new System.Xml.Serialization.XmlSerializer(typeof(OSGeo.MapGuide.MaestroAPI.MapDefinition));
-			System.Xml.Serialization.XmlSerializer xs4 = new System.Xml.Serialization.XmlSerializer(typeof(OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.ApplicationDefinitionType));*/
-
-            //MaestroAPI.Utility.DecodeFDOName("px-y-dot-g-x32-");
-            //MaestroAPI.Utility.DecodeFDOName("-x35-px-y-dot-g-x32-");
-
-            /*MaestroAPI.ResourceIdentifier id = new OSGeo.MapGuide.MaestroAPI.ResourceIdentifier("test/f", OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefiniton);
-            string x = id;
-            id = "Library://ff/yy/test.MapDefinition";
-            id.Extension = ".Map";
-            id.Name = "zz";
-            id.Fullpath = "xx/tt";*/
-
             //System.Text.RegularExpressions.Regex m_filenameTransformer = new System.Text.RegularExpressions.Regex(@"[^A-Za-z0-9\.-\/]");
             //System.Text.RegularExpressions.Match m = m_filenameTransformer.Match("xxæøå");
 
