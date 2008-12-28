@@ -188,6 +188,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.textEditor.Size = new System.Drawing.Size(656, 432);
             this.textEditor.TabIndex = 0;
             this.textEditor.TextChanged += new System.EventHandler(this.textEditor_TextChanged);
+            this.textEditor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEditor_KeyUp);
             // 
             // LockedMessagePanel
             // 
@@ -586,5 +587,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         public bool SupportsPreview { get { return false; } }
         public bool SupportsValidate { get { return false; } }
         public bool SupportsProfiling { get { return false; } }
+
+        private void textEditor_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.A)
+                textEditor.SelectAll();
+        }
     }
 }

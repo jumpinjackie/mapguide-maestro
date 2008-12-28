@@ -196,6 +196,7 @@ namespace OSGeo.MapGuide.Maestro
             this.textEditor.Size = new System.Drawing.Size(656, 384);
             this.textEditor.TabIndex = 0;
             this.textEditor.TextChanged += new System.EventHandler(this.textEditor_TextChanged);
+            this.textEditor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEditor_KeyUp);
             // 
             // LockedMessagePanel
             // 
@@ -573,6 +574,12 @@ namespace OSGeo.MapGuide.Maestro
                 EndExternalEditing(false);
                 MessageBox.Show(this, string.Format(m_globalizor.Translate("Failed to start external editor, most likely this means that theres is no external editor associated with xml files.\nError message was: {0}"), ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void textEditor_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.A)
+                textEditor.SelectAll();
         }
 	}
 }
