@@ -128,6 +128,7 @@ namespace OSGeo.MapGuide.Maestro
         private Exception m_lastException;
         private ToolTip ResourceInfoTip;
         private Timer TooltipUpdateTimer;
+        private ToolTip TabPageTooltip;
         private string m_lastTooltip;
 
         public FormMain()
@@ -250,6 +251,7 @@ namespace OSGeo.MapGuide.Maestro
             this.TabCopyIdMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ResourceInfoTip = new System.Windows.Forms.ToolTip(this.components);
             this.TooltipUpdateTimer = new System.Windows.Forms.Timer(this.components);
+            this.TabPageTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -519,6 +521,8 @@ namespace OSGeo.MapGuide.Maestro
             this.tabItems.SelectedIndex = 0;
             this.tabItems.Size = new System.Drawing.Size(418, 391);
             this.tabItems.TabIndex = 1;
+            this.tabItems.MouseLeave += new System.EventHandler(this.tabItems_MouseLeave);
+            this.tabItems.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabItems_MouseMove);
             this.tabItems.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.tabItems_ControlAdded);
             this.tabItems.TabIndexChanged += new System.EventHandler(this.tabItems_SelectedIndexChanged);
             this.tabItems.SelectedIndexChanged += new System.EventHandler(this.tabItems_SelectedIndexChanged);
@@ -2598,6 +2602,23 @@ namespace OSGeo.MapGuide.Maestro
                 m_lastTooltip = "";
             }
 
+        }
+
+        private void tabItems_MouseMove(object sender, MouseEventArgs e)
+        {
+            for(int i = 0; i < tabItems.TabPages.Count; i++)
+                if (tabItems.GetTabRect(i).Contains(e.Location))
+                {
+                    TabPageTooltip.SetToolTip(tabItems, tabItems.TabPages[i].ToolTipText);
+                    return;
+                }
+
+            TabPageTooltip.SetToolTip(tabItems, null);
+        }
+
+        private void tabItems_MouseLeave(object sender, EventArgs e)
+        {
+            TabPageTooltip.SetToolTip(tabItems, null);
         }
 	}
 }
