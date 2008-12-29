@@ -468,6 +468,14 @@
     <None Include="Schemas\WebLayout-1.0.0.xsd">
       <SubType>Designer</SubType>
     </None>
+    <EmbeddedResource Include="Templates\Template.ApplicationDefinition" />
+    <EmbeddedResource Include="Templates\Template.FeatureSource" />
+    <EmbeddedResource Include="Templates\Template.LayerDefinition" />
+    <EmbeddedResource Include="Templates\Template.MapDefinition" />
+    <EmbeddedResource Include="Templates\Template.PrintLayout" />
+    <EmbeddedResource Include="Templates\Template.SymbolDefinition" />
+    <EmbeddedResource Include="Templates\Template.SymbolLibrary" />
+    <EmbeddedResource Include="Templates\Template.WebLayout" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

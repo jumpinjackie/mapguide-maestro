@@ -356,6 +356,23 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>The list of groups</returns>
         GroupList EnumerateGroups();
 
+        /// <summary>
+        /// Reads a tile from MapGuide
+        /// </summary>
+        /// <param name="mapdefinition">A map with baselayergroups</param>
+        /// <param name="baselayergroup">The name of a baselayergroup</param>
+        /// <param name="col">The column index of the tile</param>
+        /// <param name="row">The row index of the tile</param>
+        /// <param name="scaleindex">The scale index for the tile set</param>
+        /// <param name="format">The format to return the tile in, either JPG, GIF, PNG or PNG8</param>
+        /// <returns>An image stream</returns>
         System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format);
+
+        /// <summary>
+        /// Creates a new object of the given type, with standard values inserted
+        /// </summary>
+        /// <typeparam name="T">The type of the object to create</typeparam>
+        /// <returns>A new instance of the object</returns>
+        T CreateResourceObject<T>();
 	}
 }

@@ -1902,5 +1902,34 @@ namespace OSGeo.MapGuide.MaestroAPI
         public abstract System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format);
 
         public abstract System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format);
+
+
+        /// <summary>
+        /// Creates a new object of the given type, with standard values inserted
+        /// </summary>
+        /// <typeparam name="T">The type of the object to create</typeparam>
+        /// <returns>A new instance of the object</returns>
+        public virtual T CreateResourceObject<T>()
+        {
+            string resExt = null;
+            foreach(string s in this.ResourceTypeLookup.Keys)
+                if (this.ResourceTypeLookup[s] == typeof(T))
+                {
+                    resExt = s;
+                    break;
+                }
+
+            if (resExt == null)
+                throw new Exception("Unable to determine extension for object of type: " + typeof(T).FullName);
+
+            System.IO.Stream rs = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "Templates.Template." + resExt);
+            if (rs == null)
+                throw new Exception("Unable to load template for object of type: " + typeof(T).FullName + ", with extension: " + resExt);
+
+            try { rs.Position = 0; }
+            catch {}
+
+            return this.DeserializeObject<T>(rs); 
+        }
     }
 }

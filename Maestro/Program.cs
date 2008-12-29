@@ -33,6 +33,9 @@ namespace OSGeo.MapGuide.Maestro
             //System.Text.RegularExpressions.Regex m_filenameTransformer = new System.Text.RegularExpressions.Regex(@"[^A-Za-z0-9\.-\/]");
             //System.Text.RegularExpressions.Match m = m_filenameTransformer.Match("xxæøå");
 
+            //MaestroAPI.HttpServerConnection con = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri("http://localhost/mapguide"), "Administrator", "admin", "da", true);
+            //MaestroAPI.LayerDefinition ldef = con.CreateResourceObject<MaestroAPI.LayerDefinition>();
+
 			try
 			{
 				Application.EnableVisualStyles();
