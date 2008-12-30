@@ -475,15 +475,28 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 MaestroAPI.MapDefinition map = new OSGeo.MapGuide.MaestroAPI.MapDefinition();
                 map.BackgroundColor = Color.White;
 
-                OSGeo.MapGuide.MaestroAPI.FdoSpatialContextList lst = m_editor.CurrentConnection.GetSpatialContextInfo(m_layer.Item.ResourceId, false);
-                
-                if (lst.SpatialContext != null && lst.SpatialContext.Count >= 1)
+                try
                 {
+                    Topology.Geometries.IEnvelope env = m_layer.GetSpatialExtent();
                     map.Extents = new OSGeo.MapGuide.MaestroAPI.Box2DType();
-                    map.Extents.MinX = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.X,  System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);
-                    map.Extents.MinY = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.Y,  System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);;
-                    map.Extents.MaxX = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.X,  System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);;
-                    map.Extents.MaxY = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.Y, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture); ;
+                    map.Extents.MinX = env.MinX;
+                    map.Extents.MinY = env.MinY;
+                    map.Extents.MaxX = env.MaxX;
+                    map.Extents.MaxY = env.MaxY;
+                }
+                catch
+                {
+
+                    OSGeo.MapGuide.MaestroAPI.FdoSpatialContextList lst = m_editor.CurrentConnection.GetSpatialContextInfo(m_layer.Item.ResourceId, false);
+
+                    if (lst.SpatialContext != null && lst.SpatialContext.Count >= 1)
+                    {
+                        map.Extents = new OSGeo.MapGuide.MaestroAPI.Box2DType();
+                        map.Extents.MinX = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.X, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);
+                        map.Extents.MinY = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.Y, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture); ;
+                        map.Extents.MaxX = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.X, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture); ;
+                        map.Extents.MaxY = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.Y, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture); ;
+                    }
                 }
 
                 MaestroAPI.MapLayerType l = new OSGeo.MapGuide.MaestroAPI.MapLayerType();

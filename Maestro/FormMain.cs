@@ -985,7 +985,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             // TooltipUpdateTimer
             // 
-            this.TooltipUpdateTimer.Interval = 1000;
+            this.TooltipUpdateTimer.Interval = 5000;
             this.TooltipUpdateTimer.Tick += new System.EventHandler(this.TooltipUpdateTimer_Tick);
             // 
             // FormMain
@@ -2554,7 +2554,12 @@ namespace OSGeo.MapGuide.Maestro
 
         private void ResourceTree_MouseMove(object sender, MouseEventArgs e)
         {
+            //TODO: The tooltip is a bit annoying...
+            //TooltipUpdateTimer.Enabled = false;
+            //TooltipUpdateTimer.Interval = m_lastTooltip == "" ? 5000 : 1000;
             TooltipUpdateTimer.Enabled = true;
+            /*if (m_lastTooltip != "")
+                ResourceInfoTip.RemoveAll();*/
         }
 
         private void TooltipUpdateTimer_Tick(object sender, EventArgs e)

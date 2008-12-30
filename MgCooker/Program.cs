@@ -81,7 +81,7 @@ namespace OSGeo.MapGuide.MgCooker
             if (opts.ContainsKey("username"))
                 username = opts["username"];
             if (opts.ContainsKey("password"))
-                username = opts["password"];
+                password = opts["password"];
             if (opts.ContainsKey("mapdefinitions"))
                 mapdefinitions = opts["mapdefinitions"];
             if (opts.ContainsKey("scaleindex"))

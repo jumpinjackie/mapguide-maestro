@@ -18,6 +18,7 @@
 // 
 #endregion
 using System;
+using System.Collections.Generic;
 using OSGeo.MapGuide.Maestro;
 
 namespace OSGeo.MapGuide.Maestro.ResourceValidators
@@ -25,23 +26,61 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
 	/// <summary>
 	/// Summary description for FeatureSourceValidator.
 	/// </summary>
-	public class FeatureSourceValidator : OSGeo.MapGuide.Maestro.ResourceEditors.ValidatorInterface
+	public class FeatureSourceValidator : IValidator
 	{
-		public FeatureSourceValidator()
-		{
-		}
+        public ValidationIssue[] Validate(object resource, bool recurse)
+        {
+            if (resource as OSGeo.MapGuide.MaestroAPI.FeatureSource == null)
+                return null;
 
-		public string[] ValidateResource(object resource)
-		{
-			if (resource as OSGeo.MapGuide.MaestroAPI.FeatureSource == null)
-				return null;
+            List<ValidationIssue> issues = new List<ValidationIssue>();
 
-			OSGeo.MapGuide.MaestroAPI.FeatureSource feature = resource as OSGeo.MapGuide.MaestroAPI.FeatureSource;
-			string s = feature.CurrentConnection.TestConnection(feature);
-			if (s == null || s.Length == 0)
-				return new string[0];
-			else
-				return new string[] {s};
-		}
-	}
+            OSGeo.MapGuide.MaestroAPI.FeatureSource feature = resource as OSGeo.MapGuide.MaestroAPI.FeatureSource;
+            string s = feature.CurrentConnection.TestConnection(feature);
+            if (s != null && s.Length != 0)
+                return new ValidationIssue[] { new ValidationIssue(feature, ValidationStatus.Error, s) };
+
+            try
+            {
+                MaestroAPI.FdoSpatialContextList lst = feature.GetSpatialInfo();
+                if (lst == null || lst.SpatialContext == null || lst.SpatialContext.Count == 0)
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, "No spatial contexts found"));
+            }
+            catch (Exception ex)
+            {
+                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, "Failed to read spatial context: " + ex.Message));
+            }
+
+            List<string> classes = new List<string>();
+            try
+            {
+                MaestroAPI.FeatureSourceDescription fsd = feature.DescribeSource();
+                if (fsd == null || fsd.Schemas == null || fsd.Schemas.Length == 0)
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, "No schemas found in datasource"));
+                else
+                    foreach (MaestroAPI.FeatureSourceDescription.FeatureSourceSchema scm in fsd.Schemas)
+                        classes.Add(scm.FullnameDecoded);
+            }
+            catch (Exception ex)
+            {
+                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, "Failed to read schema description: " + ex.Message));
+            }
+
+
+            foreach (string cl in classes)
+                try
+                {
+                    string[] ids = feature.GetIdentityProperties(cl);
+                    if (ids == null || ids.Length == 0)
+                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, "No primary key defined for class: " + cl + ", features will not be selectable"));
+                }
+                catch (Exception ex)
+                {
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Error, "Failed to read identity properties: " + ex.Message));
+                }
+
+            return issues.ToArray();
+        }
+
+    }
 }

@@ -108,6 +108,10 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
+    <Reference Include="Topology, Version=1.0.8.24721, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MaestroAPI\TopologyFramework\Topology.dll</HintPath>
+    </Reference>
     <ProjectReference Include="..\..\MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Name>MapGuideAPI</Name>
       <Project>{290B027E-3649-4A60-A9BF-0544831435E2}</Project>

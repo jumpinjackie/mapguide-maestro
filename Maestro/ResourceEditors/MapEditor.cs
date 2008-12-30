@@ -1836,7 +1836,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		public bool Save(string savename)
 		{
-            if (m_map.BaseMapDefinition != null && m_editor.Existing)
+            if (m_map.BaseMapDefinition != null && m_map.BaseMapDefinition.BaseMapLayerGroup != null && m_map.BaseMapDefinition.BaseMapLayerGroup.Count > 0 && m_editor.Existing)
             {
                 if (MessageBox.Show(this, m_globalizor.Translate("This map contains base layers. Saving the map will clear any generated tiles\nDo you want to save the layer?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) != DialogResult.Yes)
                     throw new CancelException();
@@ -1906,17 +1906,28 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					throw new Exception(m_globalizor.Translate("No layer selected"));
 
 				OSGeo.MapGuide.MaestroAPI.LayerDefinition ldef = m_editor.CurrentConnection.GetLayerDefinition(ml.ResourceId);
-				OSGeo.MapGuide.MaestroAPI.FdoSpatialContextList lst = m_editor.CurrentConnection.GetSpatialContextInfo(ldef.Item.ResourceId, false);
-				if (lst.SpatialContext != null && lst.SpatialContext.Count >= 1)
-				{
-					txtLowerX.Text = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.X, System.Globalization.CultureInfo.InvariantCulture).ToString(System.Globalization.CultureInfo.CurrentUICulture);
-					txtLowerY.Text = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.Y, System.Globalization.CultureInfo.InvariantCulture).ToString(System.Globalization.CultureInfo.CurrentUICulture);
-					txtUpperX.Text = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.X, System.Globalization.CultureInfo.InvariantCulture).ToString(System.Globalization.CultureInfo.CurrentUICulture);
-					txtUpperY.Text = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.Y, System.Globalization.CultureInfo.InvariantCulture).ToString(System.Globalization.CultureInfo.CurrentUICulture);
-				}
-				else
-					throw new Exception("No spatial data found in layer");
 
+                try
+                {
+                    Topology.Geometries.IEnvelope env = ldef.GetSpatialExtent();
+                    txtLowerX.Text = env.MinX.ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                    txtLowerY.Text = env.MaxX.ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                    txtUpperX.Text = env.MinY.ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                    txtUpperY.Text = env.MaxY.ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                }
+                catch
+                {
+                    OSGeo.MapGuide.MaestroAPI.FdoSpatialContextList lst = m_editor.CurrentConnection.GetSpatialContextInfo(ldef.Item.ResourceId, false);
+                    if (lst.SpatialContext != null && lst.SpatialContext.Count >= 1)
+                    {
+                        txtLowerX.Text = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.X, System.Globalization.CultureInfo.InvariantCulture).ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                        txtLowerY.Text = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.Y, System.Globalization.CultureInfo.InvariantCulture).ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                        txtUpperX.Text = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.X, System.Globalization.CultureInfo.InvariantCulture).ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                        txtUpperY.Text = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.Y, System.Globalization.CultureInfo.InvariantCulture).ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                    }
+                    else
+                        throw new Exception("No spatial data found in layer");
+                }
 			}
 			catch (Exception ex)
 			{
@@ -2338,13 +2349,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
         private void activateMgCooker_Click(object sender, EventArgs e)
         {
-            if (!m_editor.Existing)
+            if (m_editor.IsModified)
             {
                 MessageBox.Show(this, m_globalizor.Translate("This map is not yet saved. MgCooker can only process saved maps"), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
-
-            //TODO: Detect modified layers
 
             try
             {

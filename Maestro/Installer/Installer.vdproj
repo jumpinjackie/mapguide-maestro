@@ -21,36 +21,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_019175C77481139046F959A349E6646A"
-        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_019175C77481139046F959A349E6646A"
-        "OwnerKey" = "8:_83DA33D7F43044B5B94E1B55E92266EA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_019175C77481139046F959A349E6646A"
-        "OwnerKey" = "8:_53D5770AF291D175415936C8916262EF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_019175C77481139046F959A349E6646A"
-        "OwnerKey" = "8:_B369EA6B8AFDE48229FAC3EED5BBE00A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_019175C77481139046F959A349E6646A"
-        "OwnerKey" = "8:_38349EAB5BA31A56167634E895603CC8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_01D8B6D4C7FB45F29F38532E62F930BB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -71,24 +41,6 @@
         {
         "MsmKey" = "8:_04557FA0511648B8B4B96980AA18BA42"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0486F0A3D8A445934D583D606994B09A"
-        "OwnerKey" = "8:_019175C77481139046F959A349E6646A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0486F0A3D8A445934D583D606994B09A"
-        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0486F0A3D8A445934D583D606994B09A"
-        "OwnerKey" = "8:_DAE1E49328D8A5EA69FEA351EC5BECB4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -255,6 +207,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_12DFADB84632BBA042B560BBA705E1B8"
+        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_137F9DBC092743038CE220B772B5B619"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -413,6 +371,24 @@
         {
         "MsmKey" = "8:_225A57363E4D438D8A532A635AC4302D"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2289D505E4D08CA792FF885E52F291B2"
+        "OwnerKey" = "8:_12DFADB84632BBA042B560BBA705E1B8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2289D505E4D08CA792FF885E52F291B2"
+        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2289D505E4D08CA792FF885E52F291B2"
+        "OwnerKey" = "8:_D3B384091DC41087B52C420EB5EF0A34"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -645,14 +621,26 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_33336FAD1C43F008B9D833A0D69AAEB9"
+        "MsmKey" = "8:_334A84E83BD7424AA5054C76382FFF0F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3497DA057BC8EAD88515F31CF6B9BE3B"
+        "OwnerKey" = "8:_12DFADB84632BBA042B560BBA705E1B8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3497DA057BC8EAD88515F31CF6B9BE3B"
         "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_334A84E83BD7424AA5054C76382FFF0F"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_3497DA057BC8EAD88515F31CF6B9BE3B"
+        "OwnerKey" = "8:_D3B384091DC41087B52C420EB5EF0A34"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -663,14 +651,26 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_36F04641C29640E09FE5D8AFC6C889F3"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_363376AA51D45EE7376CFB94CEE1D89F"
+        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_38349EAB5BA31A56167634E895603CC8"
-        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
+        "MsmKey" = "8:_363376AA51D45EE7376CFB94CEE1D89F"
+        "OwnerKey" = "8:_58365C16488948048A99F6465F3E3625"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_363376AA51D45EE7376CFB94CEE1D89F"
+        "OwnerKey" = "8:_D98B59656C7908F270309EB29F61C76B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_36F04641C29640E09FE5D8AFC6C889F3"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -855,6 +855,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4467D31B17E54CBE08D5F8BA6D654440"
+        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_44D19AF165344E2DB1F7D785B61A24E6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -875,6 +881,12 @@
         {
         "MsmKey" = "8:_4585FABB764C4C6997227BEE224C3342"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_461B082C67267393D78B4DF222A2C499"
+        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1047,18 +1059,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_53D5770AF291D175415936C8916262EF"
-        "OwnerKey" = "8:_38349EAB5BA31A56167634E895603CC8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_53D5770AF291D175415936C8916262EF"
-        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_54971DDF60CD4CF4A5DD1FC0A718621F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1120,6 +1120,12 @@
         "Entry"
         {
         "MsmKey" = "8:_57B67960DB9D4A9C8CE234A237650377"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_58365C16488948048A99F6465F3E3625"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1659,12 +1665,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_83DA33D7F43044B5B94E1B55E92266EA"
-        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_84813E2FB67F445FBA0C6ADD88359794"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1751,6 +1751,18 @@
         {
         "MsmKey" = "8:_8DEDD7DC0E364F8A8832146CAF9FF928"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8E019A17EAF324A37C4F78C6CAFA911A"
+        "OwnerKey" = "8:_D3B384091DC41087B52C420EB5EF0A34"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8E019A17EAF324A37C4F78C6CAFA911A"
+        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2115,18 +2127,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A998C506A080BE771CBC00B87930CC2D"
-        "OwnerKey" = "8:_019175C77481139046F959A349E6646A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A998C506A080BE771CBC00B87930CC2D"
-        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_AAAEDA7DC6C04DDBA3261D84E74EFE96"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2147,24 +2147,6 @@
         {
         "MsmKey" = "8:_B34BD66EC184412D89CD5FA0F5900D91"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B369EA6B8AFDE48229FAC3EED5BBE00A"
-        "OwnerKey" = "8:_38349EAB5BA31A56167634E895603CC8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B369EA6B8AFDE48229FAC3EED5BBE00A"
-        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B369EA6B8AFDE48229FAC3EED5BBE00A"
-        "OwnerKey" = "8:_53D5770AF291D175415936C8916262EF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2523,6 +2505,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D3B384091DC41087B52C420EB5EF0A34"
+        "OwnerKey" = "8:_12DFADB84632BBA042B560BBA705E1B8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D3B384091DC41087B52C420EB5EF0A34"
+        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D6EFD473A4714920BF75D63649062C57"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2565,14 +2559,50 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DAE1E49328D8A5EA69FEA351EC5BECB4"
-        "OwnerKey" = "8:_019175C77481139046F959A349E6646A"
+        "MsmKey" = "8:_D98B59656C7908F270309EB29F61C76B"
+        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DAE1E49328D8A5EA69FEA351EC5BECB4"
-        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
+        "MsmKey" = "8:_D98B59656C7908F270309EB29F61C76B"
+        "OwnerKey" = "8:_58365C16488948048A99F6465F3E3625"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D98B59656C7908F270309EB29F61C76B"
+        "OwnerKey" = "8:_EFFF6F70DDA81C4EA8D48A7D792E445E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D98B59656C7908F270309EB29F61C76B"
+        "OwnerKey" = "8:_4467D31B17E54CBE08D5F8BA6D654440"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D98B59656C7908F270309EB29F61C76B"
+        "OwnerKey" = "8:_8E019A17EAF324A37C4F78C6CAFA911A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D98B59656C7908F270309EB29F61C76B"
+        "OwnerKey" = "8:_D3B384091DC41087B52C420EB5EF0A34"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D98B59656C7908F270309EB29F61C76B"
+        "OwnerKey" = "8:_3497DA057BC8EAD88515F31CF6B9BE3B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D98B59656C7908F270309EB29F61C76B"
+        "OwnerKey" = "8:_12DFADB84632BBA042B560BBA705E1B8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2757,6 +2787,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_EFFF6F70DDA81C4EA8D48A7D792E445E"
+        "OwnerKey" = "8:_58365C16488948048A99F6465F3E3625"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F206CF6D9479400E8D831A9ED8BAAB8F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2841,6 +2877,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_FA8BE0F0EBAD48CAACA98FF40AE9D974"
+        "OwnerKey" = "8:_D98B59656C7908F270309EB29F61C76B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FA8BE0F0EBAD48CAACA98FF40AE9D974"
+        "OwnerKey" = "8:_58365C16488948048A99F6465F3E3625"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FA8BE0F0EBAD48CAACA98FF40AE9D974"
+        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_FADE4550A7774D749C7AB10BDE753F35"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2865,24 +2919,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_FC5339402D4C8FDDAF1ED48BCAAF5C9F"
-        "OwnerKey" = "8:_38349EAB5BA31A56167634E895603CC8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FC5339402D4C8FDDAF1ED48BCAAF5C9F"
-        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FC5339402D4C8FDDAF1ED48BCAAF5C9F"
-        "OwnerKey" = "8:_53D5770AF291D175415936C8916262EF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_FCC4ED19FF4947AD896092FAD5FE3B3D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2891,6 +2927,30 @@
         {
         "MsmKey" = "8:_FD24DD6280104E9AA9F0171C05368052"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FD3D86969628C939AD85D8DE0A56BE71"
+        "OwnerKey" = "8:_D98B59656C7908F270309EB29F61C76B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FD3D86969628C939AD85D8DE0A56BE71"
+        "OwnerKey" = "8:_58365C16488948048A99F6465F3E3625"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FD3D86969628C939AD85D8DE0A56BE71"
+        "OwnerKey" = "8:_3CD6F68EBB9E4C3185534FA37AA861AD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FD3D86969628C939AD85D8DE0A56BE71"
+        "OwnerKey" = "8:_FA8BE0F0EBAD48CAACA98FF40AE9D974"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2908,61 +2968,79 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_83DA33D7F43044B5B94E1B55E92266EA"
+        "OwnerKey" = "8:_58365C16488948048A99F6465F3E3625"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_38349EAB5BA31A56167634E895603CC8"
+        "OwnerKey" = "8:_EFFF6F70DDA81C4EA8D48A7D792E445E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_53D5770AF291D175415936C8916262EF"
+        "OwnerKey" = "8:_461B082C67267393D78B4DF222A2C499"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B369EA6B8AFDE48229FAC3EED5BBE00A"
+        "OwnerKey" = "8:_4467D31B17E54CBE08D5F8BA6D654440"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FC5339402D4C8FDDAF1ED48BCAAF5C9F"
+        "OwnerKey" = "8:_12DFADB84632BBA042B560BBA705E1B8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_019175C77481139046F959A349E6646A"
+        "OwnerKey" = "8:_D3B384091DC41087B52C420EB5EF0A34"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_33336FAD1C43F008B9D833A0D69AAEB9"
+        "OwnerKey" = "8:_8E019A17EAF324A37C4F78C6CAFA911A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DAE1E49328D8A5EA69FEA351EC5BECB4"
+        "OwnerKey" = "8:_3497DA057BC8EAD88515F31CF6B9BE3B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0486F0A3D8A445934D583D606994B09A"
+        "OwnerKey" = "8:_2289D505E4D08CA792FF885E52F291B2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A998C506A080BE771CBC00B87930CC2D"
+        "OwnerKey" = "8:_D98B59656C7908F270309EB29F61C76B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_FA8BE0F0EBAD48CAACA98FF40AE9D974"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_FD3D86969628C939AD85D8DE0A56BE71"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_363376AA51D45EE7376CFB94CEE1D89F"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -3091,37 +3169,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_019175C77481139046F959A349E6646A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.MaestroAPI, Version=1.0.9.15907, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_019175C77481139046F959A349E6646A"
-                    {
-                    "Name" = "8:OSGeo.MapGuide.MaestroAPI.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:OSGeo.MapGuide.MaestroAPI.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_01D8B6D4C7FB45F29F38532E62F930BB"
             {
             "SourcePath" = "8:..\\Images\\WebStudio\\lines\\DashDot.png"
@@ -3200,37 +3247,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0486F0A3D8A445934D583D606994B09A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Topology, Version=1.0.8.24721, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_0486F0A3D8A445934D583D606994B09A"
-                    {
-                    "Name" = "8:Topology.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Topology.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0507B43D4FD84784A34BD385A565D6F5"
@@ -3773,6 +3789,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_12DFADB84632BBA042B560BBA705E1B8"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.FusionEditor, Version=1.0.9.27337, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_12DFADB84632BBA042B560BBA705E1B8"
+                    {
+                    "Name" = "8:OSGeo.MapGuide.Maestro.FusionEditor.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:OSGeo.MapGuide.Maestro.FusionEditor.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_137F9DBC092743038CE220B772B5B619"
             {
             "SourcePath" = "8:..\\Images\\stdicons\\icon_pandown.gif"
@@ -4311,6 +4358,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2289D505E4D08CA792FF885E52F291B2"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Globalizator, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_2289D505E4D08CA792FF885E52F291B2"
+                    {
+                    "Name" = "8:Globalizator.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Globalizator.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_22E8BF26EE6F404FB03A09F3B06C6BD9"
@@ -5073,37 +5151,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_33336FAD1C43F008B9D833A0D69AAEB9"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_33336FAD1C43F008B9D833A0D69AAEB9"
-                    {
-                    "Name" = "8:ICSharpCode.SharpZipLib.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:ICSharpCode.SharpZipLib.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_334A84E83BD7424AA5054C76382FFF0F"
             {
             "SourcePath" = "8:..\\Images\\WebStudio\\lines\\Dash.png"
@@ -5122,6 +5169,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3497DA057BC8EAD88515F31CF6B9BE3B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.MaestroEditorInterface, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_3497DA057BC8EAD88515F31CF6B9BE3B"
+                    {
+                    "Name" = "8:OSGeo.MapGuide.Maestro.MaestroEditorInterface.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:OSGeo.MapGuide.Maestro.MaestroEditorInterface.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_360A1A40744F417685B594EBC5C669D3"
@@ -5144,6 +5222,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_363376AA51D45EE7376CFB94CEE1D89F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MapGuideDotNetApi, Version=2.0.0.2308, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_363376AA51D45EE7376CFB94CEE1D89F"
+                    {
+                    "Name" = "8:MapGuideDotNetApi.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MapGuideDotNetApi.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_36F04641C29640E09FE5D8AFC6C889F3"
             {
             "SourcePath" = "8:..\\Images\\WebStudio\\areas\\Clay.png"
@@ -5162,37 +5271,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_38349EAB5BA31A56167634E895603CC8"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.FusionEditor, Version=1.0.9.15909, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_38349EAB5BA31A56167634E895603CC8"
-                    {
-                    "Name" = "8:OSGeo.MapGuide.Maestro.FusionEditor.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:OSGeo.MapGuide.Maestro.FusionEditor.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_38AF476E58F9418B9CD3B1F9641A83C8"
@@ -5775,6 +5853,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4467D31B17E54CBE08D5F8BA6D654440"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.RasterViewer, Version=1.0.3285.15645, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_4467D31B17E54CBE08D5F8BA6D654440"
+                    {
+                    "Name" = "8:OSGeo.MapGuide.Maestro.RasterViewer.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:OSGeo.MapGuide.Maestro.RasterViewer.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_44D19AF165344E2DB1F7D785B61A24E6"
             {
             "SourcePath" = "8:..\\..\\MaestroAPI\\Schemas\\FeatureSource-1.0.0.xsd"
@@ -5853,6 +5962,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_461B082C67267393D78B4DF222A2C499"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_461B082C67267393D78B4DF222A2C499"
+                    {
+                    "Name" = "8:ICSharpCode.SharpZipLib.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ICSharpCode.SharpZipLib.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_462E1D71E0B94F92B870FBB521327AC8"
@@ -6413,37 +6553,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_53D5770AF291D175415936C8916262EF"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.0.9.15908, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_53D5770AF291D175415936C8916262EF"
-                    {
-                    "Name" = "8:OSGeo.MapGuide.Maestro.ResourceEditors.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:OSGeo.MapGuide.Maestro.ResourceEditors.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_54971DDF60CD4CF4A5DD1FC0A718621F"
@@ -8446,37 +8555,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_83DA33D7F43044B5B94E1B55E92266EA"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.RasterViewer, Version=1.0.3174.15907, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_83DA33D7F43044B5B94E1B55E92266EA"
-                    {
-                    "Name" = "8:OSGeo.MapGuide.Maestro.RasterViewer.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:OSGeo.MapGuide.Maestro.RasterViewer.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_84813E2FB67F445FBA0C6ADD88359794"
             {
             "SourcePath" = "8:..\\Images\\WebStudio\\areas\\Shapefill58.png"
@@ -8775,6 +8853,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8E019A17EAF324A37C4F78C6CAFA911A"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MgCooker, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_8E019A17EAF324A37C4F78C6CAFA911A"
+                    {
+                    "Name" = "8:MgCooker.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MgCooker.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8E8F9070BCF04D3A8DFA062D9710BCA7"
@@ -9977,37 +10086,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A998C506A080BE771CBC00B87930CC2D"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MapGuideDotNetApi, Version=2.0.0.2308, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_A998C506A080BE771CBC00B87930CC2D"
-                    {
-                    "Name" = "8:MapGuideDotNetApi.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MapGuideDotNetApi.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AAAEDA7DC6C04DDBA3261D84E74EFE96"
             {
             "SourcePath" = "8:..\\Images\\WebStudio\\areas\\Acad_iso11w100.png"
@@ -10086,37 +10164,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B369EA6B8AFDE48229FAC3EED5BBE00A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.MaestroEditorInterface, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_B369EA6B8AFDE48229FAC3EED5BBE00A"
-                    {
-                    "Name" = "8:OSGeo.MapGuide.Maestro.MaestroEditorInterface.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:OSGeo.MapGuide.Maestro.MaestroEditorInterface.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B396DF80E31D4B41A80C566D75539F3B"
@@ -11299,6 +11346,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D3B384091DC41087B52C420EB5EF0A34"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.0.9.27337, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_D3B384091DC41087B52C420EB5EF0A34"
+                    {
+                    "Name" = "8:OSGeo.MapGuide.Maestro.ResourceEditors.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:OSGeo.MapGuide.Maestro.ResourceEditors.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D6EFD473A4714920BF75D63649062C57"
             {
             "SourcePath" = "8:..\\Localization\\Maestro.ResourceEditors.FeatureSourceEditorGeneric.es-ES.resx"
@@ -11439,20 +11517,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DAE1E49328D8A5EA69FEA351EC5BECB4"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D98B59656C7908F270309EB29F61C76B"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Topology.IO.MapGuide, Version=1.0.8.40022, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OSGeo.MapGuide.MaestroAPI, Version=1.0.9.15644, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_DAE1E49328D8A5EA69FEA351EC5BECB4"
+                    "_D98B59656C7908F270309EB29F61C76B"
                     {
-                    "Name" = "8:Topology.IO.MapGuide.dll"
+                    "Name" = "8:OSGeo.MapGuide.MaestroAPI.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:Topology.IO.MapGuide.dll"
+            "SourcePath" = "8:OSGeo.MapGuide.MaestroAPI.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
@@ -12070,6 +12148,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EFFF6F70DDA81C4EA8D48A7D792E445E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MgCooker, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_EFFF6F70DDA81C4EA8D48A7D792E445E"
+                    {
+                    "Name" = "8:MgCooker.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MgCooker.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F206CF6D9479400E8D831A9ED8BAAB8F"
             {
             "SourcePath" = "8:..\\Images\\WebStudio\\areas\\Shapefill15.png"
@@ -12350,6 +12459,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FA8BE0F0EBAD48CAACA98FF40AE9D974"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Topology.IO.MapGuide, Version=1.0.8.40022, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_FA8BE0F0EBAD48CAACA98FF40AE9D974"
+                    {
+                    "Name" = "8:Topology.IO.MapGuide.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Topology.IO.MapGuide.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FADE4550A7774D749C7AB10BDE753F35"
             {
             "SourcePath" = "8:..\\Localization\\Maestro.BrowseResource.resx"
@@ -12430,37 +12570,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FC5339402D4C8FDDAF1ED48BCAAF5C9F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Globalizator, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_FC5339402D4C8FDDAF1ED48BCAAF5C9F"
-                    {
-                    "Name" = "8:Globalizator.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Globalizator.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FCC4ED19FF4947AD896092FAD5FE3B3D"
             {
             "SourcePath" = "8:..\\Images\\WebStudio\\areas\\Line.png"
@@ -12499,6 +12608,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FD3D86969628C939AD85D8DE0A56BE71"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Topology, Version=1.0.8.24721, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_FD3D86969628C939AD85D8DE0A56BE71"
+                    {
+                    "Name" = "8:Topology.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Topology.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FF0649C071D84D2C882939DC40B33041"
@@ -13200,7 +13340,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3CD6F68EBB9E4C3185534FA37AA861AD"
             {
-            "SourcePath" = "8:..\\obj\\Release\\Maestro.exe"
+            "SourcePath" = "8:..\\obj\\Debug\\Maestro.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
@@ -13221,6 +13361,34 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{F3BADE4F-2581-4B65-9E15-412C294DB973}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_58365C16488948048A99F6465F3E3625"
+            {
+            "SourcePath" = "8:..\\..\\MgCooker\\MgCookerCommandline\\obj\\Debug\\MgCookerCommandline.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6B59D9294A8346D38714B59D92CCE3C6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{385D3D92-874C-43F8-ADFD-B0D6D13378D7}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

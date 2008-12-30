@@ -296,6 +296,8 @@ namespace OSGeo.MapGuide.Maestro
 
         public void SetLastException(Exception ex) { m_editor.LastException = ex; }
 
+        public bool IsModified { get { return m_page.Text.EndsWith(" *"); } }
+
 		#endregion
 	}
 }

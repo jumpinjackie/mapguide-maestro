@@ -93,6 +93,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		bool Existing { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating if the resource is modified (ie. not saved)
+        /// </summary>
+        bool IsModified { get; }
+
 		/// <summary>
 		/// Informs the control that the editor is closing
 		/// </summary>

@@ -376,8 +376,8 @@ namespace OSGeo.MapGuide.MgCooker
                 for (int i = 0; i < m_mapdefinition.BaseMapDefinition.BaseMapLayerGroup.Count; i++)
                     m_groups[i] = m_mapdefinition.BaseMapDefinition.BaseMapLayerGroup[i].Name;
 
-                CalculateDimensions();
                 m_maxscale = m_mapdefinition.BaseMapDefinition.FiniteDisplayScale[m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.Count - 1];
+                CalculateDimensions();
             }
         }
 

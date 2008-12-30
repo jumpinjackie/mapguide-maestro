@@ -104,13 +104,11 @@
     <Compile Include="EditorInterface.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="IValidator.cs" />
     <Compile Include="ResourceEditor.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ResourceEditorMap.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ValidatorInterface.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
