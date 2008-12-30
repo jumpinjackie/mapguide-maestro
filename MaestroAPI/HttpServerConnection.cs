@@ -436,14 +436,24 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns)
 		{
-			//The request may execeed the url limit of the server, especially when using GeomFromText('...')
-			ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
-			System.IO.MemoryStream ms = new System.IO.MemoryStream();
-			System.Net.WebRequest req = m_reqBuilder.SelectFeatures(resourceID, schema, query, columns, ms);
-			req.Timeout = 200 * 1000;
-			ms.Position = 0;
+            return QueryFeatureSource(resourceID, schema, query, columns, null);
+		}
+
+        public FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns, NameValueCollection computedProperties)
+        {
+            return QueryFeatureSourceCore(false, resourceID, schema, query, columns, computedProperties);
+        }
+
+        private FeatureSetReader QueryFeatureSourceCore(bool aggregate, string resourceID, string schema, string query, string[] columns, NameValueCollection computedProperties)
+        {
+            //The request may execeed the url limit of the server, especially when using GeomFromText('...')
+            ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            System.Net.WebRequest req = m_reqBuilder.SelectFeatures(aggregate, resourceID, schema, query, columns, computedProperties, ms);
+            req.Timeout = 200 * 1000;
+            ms.Position = 0;
 #if DEBUG
-			string xq = m_reqBuilder.reqAsUrl(resourceID, schema, query, columns);
+            string xq = m_reqBuilder.reqAsUrl(resourceID, schema, query, columns);
 #endif
             try
             {
@@ -474,7 +484,18 @@ namespace OSGeo.MapGuide.MaestroAPI
                     throw;
 
             }
-		}
+        }
+
+
+        public override FeatureSetReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, string[] columns)
+        {
+            return QueryFeatureSourceCore(true, resourceID, schema, filter, columns, null);
+        }
+
+        public override FeatureSetReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, NameValueCollection aggregateFunctions)
+        {
+            return QueryFeatureSourceCore(true, resourceID, schema, filter, null, aggregateFunctions);
+        }
 
 		public override FeatureSourceDescription DescribeFeatureSource(string resourceID)
 		{

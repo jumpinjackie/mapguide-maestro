@@ -1582,6 +1582,38 @@ namespace OSGeo.MapGuide.MaestroAPI
                 this.m_version = value;
             }
         }
+
+        private ServerConnectionI m_serverConnection;
+
+        /// <summary>
+        /// Gets or sets the connection used in various operations performed on this object
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnore()]
+        public ServerConnectionI CurrentConnection
+        {
+            get { return m_serverConnection; }
+            set { m_serverConnection = value; }
+        }
+
+        public Topology.Geometries.IEnvelope GetSpatialExtent()
+        {
+            return GetSpatialExtent(null);
+        }
+
+        public Topology.Geometries.IEnvelope GetSpatialExtent(string filter)
+        {
+            if (this.CurrentConnection == null)
+                throw new System.Exception("No server set for object");
+
+            if (this.Item as VectorLayerDefinitionType != null)
+                return this.CurrentConnection.GetSpatialExtent(this.Item.ResourceId, (this.Item as VectorLayerDefinitionType).FeatureName, (this.Item as VectorLayerDefinitionType).Geometry, filter);
+            else if (this.Item as GridLayerDefinitionType != null)
+                return this.CurrentConnection.GetSpatialExtent(this.Item.ResourceId, (this.Item as GridLayerDefinitionType).FeatureName, (this.Item as GridLayerDefinitionType).Geometry, filter);
+            else
+                return null;
+
+        }
+
     }
     
     /// <remarks/>

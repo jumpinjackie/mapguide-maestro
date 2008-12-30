@@ -18,6 +18,7 @@
 // 
 #endregion
 using System;
+using System.Collections.Specialized;
 
 namespace OSGeo.MapGuide.MaestroAPI {
     
@@ -164,34 +165,52 @@ namespace OSGeo.MapGuide.MaestroAPI {
 
 		public FeatureSetReader SelectFeatures(string query, string classname, string[] columns)
 		{
-			if (this.CurrentConnection == null)
-				throw new System.Exception("No server set for object");
-			else
-			{
-				/*if (this.ConfigurationDocument != null && this.ConfigurationDocument.Length > 0 && classname == null)
-				{
-					System.IO.MemoryStream data = this.CurrentConnection.GetResourceData(this.ResourceId, this.ConfigurationDocument);
-					//TODO: Decode the xml config document to derive the class name, something like "Default:xxxx"
-					throw new System.MissingMethodException("Currently the method that derives the classname from the featuresource is not complete, please specify it manually");
-				}*/
-
-				if (classname == null || classname.Length == 0)
-				{
-					try
-					{
-						FeatureSourceDescription items = this.DescribeSource();
-						if (items != null && items.Schemas != null && items.Schemas.Length > 0)
-							classname = items.Schemas[0].Name;
-					}
-					catch (Exception ex)
-					{
-						throw new Exception("No classname supplied, and the attempt to derive it failed", ex);
-					}
-				}
-
-				return this.CurrentConnection.QueryFeatureSource(this.ResourceId, classname, query, columns);
-			}
+            return SelectFeatures(query, classname, columns, null);
 		}
+
+        public FeatureSetReader SelectFeatures(string query, string classname, string[] columns, NameValueCollection computedProperties)
+        {
+            if (this.CurrentConnection == null)
+                throw new System.Exception("No server set for object");
+            else
+            {
+                /*if (this.ConfigurationDocument != null && this.ConfigurationDocument.Length > 0 && classname == null)
+                {
+                    System.IO.MemoryStream data = this.CurrentConnection.GetResourceData(this.ResourceId, this.ConfigurationDocument);
+                    //TODO: Decode the xml config document to derive the class name, something like "Default:xxxx"
+                    throw new System.MissingMethodException("Currently the method that derives the classname from the featuresource is not complete, please specify it manually");
+                }*/
+
+                if (classname == null || classname.Length == 0)
+                {
+                    try
+                    {
+                        FeatureSourceDescription items = this.DescribeSource();
+                        if (items != null && items.Schemas != null && items.Schemas.Length > 0)
+                            classname = items.Schemas[0].Name;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("No classname supplied, and the attempt to derive it failed", ex);
+                    }
+                }
+
+                return this.CurrentConnection.QueryFeatureSource(this.ResourceId, classname, query, columns, computedProperties);
+            }
+        }
+
+        public Topology.Geometries.IEnvelope GetSpatialExtent(string schema, string geometry)
+        {
+            return this.GetSpatialExtent(schema, geometry, null);
+        }
+
+        public Topology.Geometries.IEnvelope GetSpatialExtent(string schema, string geometry, string filter)
+        {
+            if (this.CurrentConnection == null)
+                throw new System.Exception("No server set for object");
+            else
+                return this.CurrentConnection.GetSpatialExtent(this.ResourceId, schema, geometry, filter);
+        }
 
 		public FdoSpatialContextList GetSpatialInfo()
 		{

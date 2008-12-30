@@ -1931,5 +1931,61 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             return this.DeserializeObject<T>(rs); 
         }
+
+        /// <summary>
+        /// Performs an aggregate query on all columns in the datasource
+        /// </summary>
+        /// <param name="resourceID">The resourceID of the FeatureSource to query</param>
+        /// <param name="schema">The schema name</param>
+        /// <param name="filter">The filter to apply to the </param>
+        /// <returns>A FeatureSetReader with the aggregated values</returns>
+        public virtual FeatureSetReader AggregateQueryFeatureSource(string resourceID, string schema, string filter)
+        {
+            return AggregateQueryFeatureSource(resourceID, schema, filter, (string[])null);
+        }
+
+        /// <summary>
+        /// Performs an aggregate query on columns in the datasource
+        /// </summary>
+        /// <param name="resourceID">The resourceID of the FeatureSource to query</param>
+        /// <param name="schema">The schema name</param>
+        /// <param name="filter">The filter to apply to the </param>
+        /// <param name="columns">The columns to aggregate</param>
+        /// <returns>A FeatureSetReader with the aggregated values</returns>
+        public abstract FeatureSetReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, string[] columns);
+
+        /// <summary>
+        /// Performs an aggregate query on computed resources
+        /// </summary>
+        /// <param name="resourceID">The resourceID of the FeatureSource to query</param>
+        /// <param name="schema">The schema name</param>
+        /// <param name="filter">The filter to apply to the </param>
+        /// <param name="aggregateFunctions">A collection of column name and aggregate functions</param>
+        /// <returns>A FeatureSetReader with the aggregated values</returns>
+        public abstract FeatureSetReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, System.Collections.Specialized.NameValueCollection aggregateFunctions);
+
+        public virtual Topology.Geometries.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry)
+        {
+            return GetSpatialExtent(resourceID, schema, null);
+        }
+
+        public virtual Topology.Geometries.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, string filter)
+        {
+            System.Collections.Specialized.NameValueCollection fun = new System.Collections.Specialized.NameValueCollection();
+            fun.Add("extent", "SpatialExtents(\"" + geometry + "\")");
+            using (FeatureSetReader fsr = AggregateQueryFeatureSource(resourceID, schema, filter, fun))
+                if (fsr.Read())
+                {
+                    Topology.Geometries.IGeometry geom = fsr.Row["extent"] as Topology.Geometries.IGeometry;
+                    if (geom == null)
+                        throw new Exception("No data found in resource: " + resourceID);
+                    else
+                        return geom.EnvelopeInternal;
+                }
+                else
+                    throw new Exception("No data found in resource: " + resourceID);
+        }
+
+
     }
 }

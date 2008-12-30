@@ -1004,15 +1004,20 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 
 		public FeatureSetReader Query()
 		{
-			return Query(null, null);
+			return Query(null, null, null);
 		}
 
 		public FeatureSetReader Query(string filter)
 		{
-			return Query(filter, null);
+			return Query(filter, null, null);
 		}
 
-		public FeatureSetReader Query(string filter, string[] columns)
+        public FeatureSetReader Query(string filter, string[] columns)
+        {
+            return Query(filter, columns, null);
+        }
+
+		public FeatureSetReader Query(string filter, string[] columns, System.Collections.Specialized.NameValueCollection computedProperties)
 		{
 			//TODO: This is SLOW, and also breaks the OGR provider :(
 			/*
@@ -1026,7 +1031,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 			}
 			*/
 
-			return m_parent.CurrentConnection.QueryFeatureSource(this.FeatureSourceID, this.FeatureName, filter, columns);
+			return m_parent.CurrentConnection.QueryFeatureSource(this.FeatureSourceID, this.FeatureName, filter, columns, computedProperties);
 		}
 
 		/// <summary>

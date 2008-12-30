@@ -479,10 +479,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return m_hosturi + "?" + EncodeParameters(param);
 		}
 
-		public System.Net.WebRequest SelectFeatures(string resourceId, string classname, string filter, string[] columns, System.IO.Stream outStream)
+		public System.Net.WebRequest SelectFeatures(bool aggregate, string resourceId, string classname, string filter, string[] columns, NameValueCollection computedProperties, System.IO.Stream outStream)
 		{
 			NameValueCollection param = new NameValueCollection();
-			param.Add("OPERATION", "SELECTFEATURES");
+			if (aggregate)
+                param.Add("OPERATION", "SELECTAGGREGATES");
+            else
+                param.Add("OPERATION", "SELECTFEATURES");
 			param.Add("VERSION", "1.0.0");
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
@@ -498,8 +501,20 @@ namespace OSGeo.MapGuide.MaestroAPI
 			if (columns != null)
 				param.Add("PROPERTIES", string.Join("\t", columns));
 
-			//param.Add("COMPUTED_ALIASES", computed_aliases);
-			//param.Add("COMPUTED_PROPERTIES", computed_properties);
+            if (computedProperties != null && computedProperties.Count > 0)
+            {
+                System.Collections.Generic.List<string> keys = new System.Collections.Generic.List<string>();
+                System.Collections.Generic.List<string> values = new System.Collections.Generic.List<string>();
+
+                foreach(string s in computedProperties.Keys)
+                {
+                    keys.Add(s);
+                    values.Add(computedProperties[s]);
+                }
+
+                param.Add("COMPUTED_ALIASES", string.Join("\t", keys.ToArray()));
+                param.Add("COMPUTED_PROPERTIES", string.Join("\t", values.ToArray()));
+            }
 			if (filter != null)
 				param.Add("FILTER", filter);
 

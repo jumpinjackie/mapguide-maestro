@@ -33,9 +33,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 		private FeatureSetRow m_row;
 		private XmlTextReader m_reader;
 
-		private OSGeo.MapGuide.MgFeatureReader m_rd;
+		private OSGeo.MapGuide.MgReader m_rd;
 
-		public FeatureSetReader(OSGeo.MapGuide.MgFeatureReader rd)
+		public FeatureSetReader(OSGeo.MapGuide.MgReader rd)
 		{
 			m_rd = rd;
 			m_columns = new FeatureSetColumn[rd.GetPropertyCount()];
@@ -55,12 +55,12 @@ namespace OSGeo.MapGuide.MaestroAPI
 			if (m_reader.Name != "xml")
 				throw new Exception("Bad document");
 			m_reader.Read();
-			if (m_reader.Name != "FeatureSet")
+			if (m_reader.Name != "FeatureSet" && m_reader.Name != "PropertySet")
 				throw new Exception("Bad document");
 
-			m_reader.Read();
-			if (m_reader.Name != "xs:schema")
-				throw new Exception("Bad document");
+            m_reader.Read();
+            if (m_reader.Name != "xs:schema" && m_reader.Name != "PropertyDefinitions")
+                throw new Exception("Bad document");
 
 			XmlDocument doc = new XmlDocument();
 			doc.LoadXml(m_reader.ReadOuterXml());
@@ -73,21 +73,27 @@ namespace OSGeo.MapGuide.MaestroAPI
 			XmlNodeList lst = doc.SelectNodes("xs:schema/xs:complexType/xs:complexContent/xs:extension/xs:sequence/xs:element", mgr);
 			if (lst.Count == 0)
 				lst = doc.SelectNodes("xs:schema/xs:complexType/xs:sequence/xs:element", mgr);
+            if (lst.Count == 0)
+                lst = doc.SelectNodes("PropertyDefinitions/PropertyDefinition");
 			m_columns = new FeatureSetColumn[lst.Count];
 			for(int i = 0;i<lst.Count;i++)
 				m_columns[i] = new FeatureSetColumn(lst[i]);
 
 			m_row = null;
 
-			if (m_reader.Name != "Features")
+			if (m_reader.Name != "Features" && m_reader.Name != "Properties")
 				throw new Exception("Bad document");
 
 			m_reader.Read();
 
 			if (m_reader.Name == "Features")
 				m_reader = null; //No features :(
-			else if (m_reader.Name != "Feature")
-				throw new Exception("Bad document");
+            else if (m_reader.Name == "PropertyCollection")
+            {
+                //OK
+            }
+            else if (m_reader.Name != "Feature")
+                throw new Exception("Bad document");
 		}
 
 		public FeatureSetColumn[] Columns
@@ -112,7 +118,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			else
 			{
 
-				if (m_reader == null || m_reader.Name != "Feature")
+				if (m_reader == null || (m_reader.Name != "Feature" && m_reader.Name != "PropertyCollection"))
 				{
 					m_row = null;
 					return false;
@@ -122,8 +128,12 @@ namespace OSGeo.MapGuide.MaestroAPI
 				XmlDocument doc = new XmlDocument();
 				doc.LoadXml(xmlfragment);
 
-				m_row = new FeatureSetRow(this, doc["Feature"]);
-				if (m_reader.Name != "Feature")
+                if (doc["Feature"] == null)
+                    m_row = new FeatureSetRow(this, doc["PropertyCollection"]);
+                else
+				    m_row = new FeatureSetRow(this, doc["Feature"]);
+
+                if (m_reader.Name != "Feature" && m_reader.Name != "PropertyCollection")
 				{
 					m_reader.Close();
 					m_reader = null;
@@ -165,48 +175,103 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		internal FeatureSetColumn(XmlNode node)
 		{
-			m_name = node.Attributes["name"].Value;
-			m_allowNull = node.Attributes["minOccurs"] != null && node.Attributes["minOccurs"].Value == "0";
-            if (node.Attributes["type"] != null && node.Attributes["type"].Value == "gml:AbstractGeometryType")
-                m_type = Utility.GeometryType;
-            else if (node["xs:simpleType"] == null)
-                m_type = Utility.RasterType;
-            else
-                switch (node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value.ToLower())
+            if (node.Name == "PropertyDefinition")
+            {
+                m_name = node["Name"].InnerText;
+                m_allowNull = true;
+                switch (node["Type"].InnerText.ToLower().Trim())
                 {
-                    case "xs:string":
+                    case "string":
                         m_type = typeof(string);
                         break;
-                    case "fdo:byte":
+                    case "byte":
                         m_type = typeof(Byte);
                         break;
-                    case "fdo:int32":
+                    case "int32":
+                    case "int":
+                    case "integer":
                         m_type = typeof(int);
                         break;
-                    case "fdo:int16":
+                    case "int16":
                         m_type = typeof(short);
                         break;
-                    case "fdo:int64":
+                    case "int64":
+                    case "long":
                         m_type = typeof(long);
                         break;
-                    case "xs:float":
+                    case "float":
                         m_type = typeof(float);
                         break;
-                    case "xs:double":
-                    case "xs:decimal":
+                    case "double":
+                    case "decimal":
                         m_type = typeof(double);
                         break;
-                    case "xs:boolean":
+                    case "boolean":
+                    case "bool":
                         m_type = typeof(bool);
                         return;
-                    case "xs:datetime":
+                    case "datetime":
+                    case "date":
                         m_type = typeof(DateTime);
+                        break;
+                    case "raster":
+                        m_type = Utility.RasterType;
+                        break;
+                    case "geometry":
+                        m_type = Utility.GeometryType;
                         break;
                     default:
                         //throw new Exception("Failed to find appropriate type for: " + node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value);
                         m_type = Utility.UnmappedType;
                         break;
                 }
+            }
+            else
+            {
+
+                m_name = node.Attributes["name"].Value;
+                m_allowNull = node.Attributes["minOccurs"] != null && node.Attributes["minOccurs"].Value == "0";
+                if (node.Attributes["type"] != null && node.Attributes["type"].Value == "gml:AbstractGeometryType")
+                    m_type = Utility.GeometryType;
+                else if (node["xs:simpleType"] == null)
+                    m_type = Utility.RasterType;
+                else
+                    switch (node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value.ToLower())
+                    {
+                        case "xs:string":
+                            m_type = typeof(string);
+                            break;
+                        case "fdo:byte":
+                            m_type = typeof(Byte);
+                            break;
+                        case "fdo:int32":
+                            m_type = typeof(int);
+                            break;
+                        case "fdo:int16":
+                            m_type = typeof(short);
+                            break;
+                        case "fdo:int64":
+                            m_type = typeof(long);
+                            break;
+                        case "xs:float":
+                            m_type = typeof(float);
+                            break;
+                        case "xs:double":
+                        case "xs:decimal":
+                            m_type = typeof(double);
+                            break;
+                        case "xs:boolean":
+                            m_type = typeof(bool);
+                            return;
+                        case "xs:datetime":
+                            m_type = typeof(DateTime);
+                            break;
+                        default:
+                            //throw new Exception("Failed to find appropriate type for: " + node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value);
+                            m_type = Utility.UnmappedType;
+                            break;
+                    }
+            }
 		}
 
 		private string m_name;
@@ -268,7 +333,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			}
 		}
 
-		internal FeatureSetRow(FeatureSetReader parent, OSGeo.MapGuide.MgFeatureReader rd)
+		internal FeatureSetRow(FeatureSetReader parent, OSGeo.MapGuide.MgReader rd)
 			: this(parent)
 		{
 			for(int i = 0; i < m_parent.Columns.Length; i++)

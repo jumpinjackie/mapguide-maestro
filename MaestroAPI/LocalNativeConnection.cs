@@ -200,7 +200,12 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return QueryFeatureSource(resourceID, schema, null, null);
 		}
 
-		public FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns)
+        public FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns)
+        {
+            return QueryFeatureSource(resourceID, schema, query, columns, null);
+        }
+
+		public FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns, System.Collections.Specialized.NameValueCollection computedProperties)
 		{
 			MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
 			MgFeatureQueryOptions mgf = new MgFeatureQueryOptions();
@@ -211,8 +216,41 @@ namespace OSGeo.MapGuide.MaestroAPI
 				foreach(string s in columns)
 					mgf.AddFeatureProperty(s);
 
-			return new FeatureSetReader(fes.SelectFeatures(new MgResourceIdentifier(resourceID), schema, mgf));
+            if (computedProperties != null && computedProperties.Count > 0)
+                foreach (string s in computedProperties.Keys)
+                    mgf.AddComputedProperty(s, computedProperties[s]);
+            
+   			return new FeatureSetReader(fes.SelectFeatures(new MgResourceIdentifier(resourceID), schema, mgf));
 		}
+
+        private FeatureSetReader AggregateQueryFeatureSourceCore(string resourceID, string schema, string query, string[] columns, System.Collections.Specialized.NameValueCollection computedProperties)
+        {
+            MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+            MgFeatureAggregateOptions mgf = new MgFeatureAggregateOptions();
+            if (query != null)
+                mgf.SetFilter(query);
+
+            if (columns != null && columns.Length != 0)
+                foreach (string s in columns)
+                    mgf.AddFeatureProperty(s);
+
+            if (computedProperties != null && computedProperties.Count > 0)
+                foreach (string s in computedProperties.Keys)
+                    mgf.AddComputedProperty(s, computedProperties[s]);
+
+            return new FeatureSetReader(fes.SelectAggregate(new MgResourceIdentifier(resourceID), schema, mgf));
+        }
+
+        public override FeatureSetReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, string[] columns)
+        {
+            return AggregateQueryFeatureSourceCore(resourceID, schema, filter, columns, null);
+        }
+
+        public override FeatureSetReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, System.Collections.Specialized.NameValueCollection aggregateFunctions)
+        {
+            return AggregateQueryFeatureSourceCore(resourceID, schema, filter, null, aggregateFunctions);
+        }
+
 
 		public override FeatureSourceDescription DescribeFeatureSource(string resourceID)
 		{

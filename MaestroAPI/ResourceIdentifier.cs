@@ -260,8 +260,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static string SetName(string identifier, string newname)
         {
             string temp = GetPath(identifier);
-            if (newname.IndexOf(".") < 0)
-                newname += "." + GetExtension(identifier);
+            newname += "." + GetExtension(identifier);
 
 
             if (newname.IndexOf("/") > 0)
@@ -280,8 +279,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static string SetPath(string identifier, string newpath)
         {
             string temp = GetPath(identifier);
-            if (newpath.IndexOf(".") < 0)
-                newpath += "." + GetExtension(identifier);
+            newpath += "." + GetExtension(identifier);
 
             return GetRepository(identifier) + newpath;
         }

@@ -91,7 +91,16 @@ namespace OSGeo.MapGuide.MaestroAPI
 		FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query);
 		FeatureSetReader QueryFeatureSource(string resourceID, string schema);
 		FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns);
-		FeatureSourceDescription DescribeFeatureSource(string resourceID);
+        FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns, NameValueCollection computedProperties);
+
+        FeatureSetReader AggregateQueryFeatureSource(string resourceID, string schema, string filter);
+        FeatureSetReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, string[] columns);
+        FeatureSetReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, NameValueCollection aggregateFunctions);
+
+        Topology.Geometries.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry);
+        Topology.Geometries.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, string filter);
+
+        FeatureSourceDescription DescribeFeatureSource(string resourceID);
 		FeatureSourceDescription DescribeFeatureSource(string resourceID, string schema);
 
         FeatureSourceDescription.FeatureSourceSchema GetFeatureSourceSchema(string resourceID, string schema);
