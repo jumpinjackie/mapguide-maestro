@@ -109,9 +109,8 @@
       <Name>System.XML</Name>
     </Reference>
     <ProjectReference Include="..\..\MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
-      <Name>OSGeo.MapGuide.MaestroAPI</Name>
       <Project>{290B027E-3649-4A60-A9BF-0544831435E2}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+      <Name>OSGeo.MapGuide.MaestroAPI</Name>
     </ProjectReference>
     <ProjectReference Include="..\Globalizator\Globalizator.csproj">
       <Name>Globalizator</Name>

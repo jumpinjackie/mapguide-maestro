@@ -126,7 +126,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 						ConnectionStringManager.InsertDefaultValues(test, nv["Driver"]);
 						if (test.Count > 0)
 							ConnectionType.SelectedIndex = (int)DisplayTypes.Wizard;
-						else if (m_feature.Parameter["DataSourceName"].IndexOf("Dbq=") >= 0)
+						else if (m_feature.Parameter["DataSourceName"] != null && m_feature.Parameter["DataSourceName"].IndexOf("Dbq=") >= 0)
 							ConnectionType.SelectedIndex = (int)DisplayTypes.Unmanaged;
 						else
 							ConnectionType.SelectedIndex = (int)DisplayTypes.Custom;

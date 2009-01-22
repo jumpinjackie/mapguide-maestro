@@ -62,12 +62,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
-      <Project>{290B027E-3649-4A60-A9BF-0544831435E2}</Project>
-      <Name>OSGeo.MapGuide.MaestroAPI</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Progress.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Progress.cs</DependentUpon>
@@ -83,6 +77,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MgCookerLogo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
+      <Project>{290B027E-3649-4A60-A9BF-0544831435E2}</Project>
+      <Name>OSGeo.MapGuide.MaestroAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

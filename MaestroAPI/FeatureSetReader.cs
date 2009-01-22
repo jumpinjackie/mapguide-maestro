@@ -355,7 +355,10 @@ namespace OSGeo.MapGuide.MaestroAPI
                     else if (parent.Columns[ordinal].Type == typeof(bool))
                         m_items[ordinal] = rd.GetBoolean(p);
                     else if (parent.Columns[ordinal].Type == typeof(DateTime))
-                        m_items[ordinal] = rd.GetDateTime(p);
+                    {
+                        MgDateTime t = rd.GetDateTime(p);
+                        m_items[ordinal] = new DateTime(t.Year, t.Month, t.Day, t.Hour, t.Minute, t.Second);
+                    }
                     else if (parent.Columns[ordinal].Type == Utility.GeometryType)
                     {
                         //TODO: Uncomment this once the Topology.Net sAPI gets updated to 2.0.0

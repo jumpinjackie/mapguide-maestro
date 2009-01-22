@@ -131,11 +131,6 @@
       <Project>{006AFE1A-BF79-4C84-888D-9396958A42BD}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\RasterViewer\RasterViewer.csproj">
-      <Name>RasterViewer</Name>
-      <Project>{D5D73500-BB48-4617-90A0-C1E9A747C443}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs">
