@@ -173,7 +173,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			if (m_isUpdating || m_w == null)
 				return;
 
-			SetSettingValue("Script", ScriptPicker.Text);
+			SetSettingValue("Script", Script.Text);
 		}
 
         private void ScriptPicker_SelectedIndexChanged(object sender, EventArgs e)
