@@ -552,7 +552,8 @@ namespace OSGeo.MapGuide.Maestro
                 m_fsw = new System.IO.FileSystemWatcher(System.IO.Path.GetDirectoryName(m_tempfile), System.IO.Path.GetFileName(m_tempfile));
                 m_fsw.Changed += new System.IO.FileSystemEventHandler(m_fsw_Changed);
                 m_fsw.EnableRaisingEvents = true;
-
+                m_fsw.SynchronizingObject = this;
+                
                 m_externalProcess = new System.Diagnostics.Process();
                 m_externalProcess.StartInfo.UseShellExecute = true;
                 m_externalProcess.StartInfo.Verb = "edit";
