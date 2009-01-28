@@ -32,7 +32,7 @@
             <property name="DocumentProtected" value="False" />
             <property name="AssemblyVersionInfo" value="AssemblyVersion" />
             <property name="CopyrightText" value="GNU Lesser General Public License" />
-            <property name="FeedbackEmailAddress" value="ks@geograf.dk" />
+            <property name="FeedbackEmailAddress" value="opensource@hexad.dk" />
             <property name="CleanIntermediates" value="True" />
         </documenter>
         <documenter name="MSDN-Web">

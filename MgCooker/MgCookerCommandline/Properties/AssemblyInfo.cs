@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("MgCookerCommandline")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("GEOGRAF A/S")]
+[assembly: AssemblyCompany("HexaD")]
 [assembly: AssemblyProduct("MgCookerCommandline")]
-[assembly: AssemblyCopyright("Copyright © GEOGRAF A/S 2008")]
+[assembly: AssemblyCopyright("Copyright © HexaD A/S 2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
