@@ -559,9 +559,20 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
 					gc = new FeatureSourceEditorODBC.GeometryColumn();
 					if (XColumn.Items.Count > 0)
 					{
-						gc.Name = "Geometry";
-						gc.XColumn = (string)XColumn.Items[0];
-						gc.YColumn = (string)XColumn.Items[Math.Min(1, XColumn.Items.Count - 1)];
+                        if (m_geom.ContainsKey(scm.Name))
+                        {
+                            FeatureSourceEditorODBC.GeometryColumn gCached = (FeatureSourceEditorODBC.GeometryColumn)m_geom[scm.Name];
+                            gc.Name = gCached.Name;
+                            gc.XColumn = gCached.XColumn;
+                            gc.YColumn = gCached.YColumn;
+                            gc.ZColumn = gCached.ZColumn;
+                        }
+                        else
+                        {
+                            gc.Name = "Geometry";
+                            gc.XColumn = (string)XColumn.Items[0];
+                            gc.YColumn = (string)XColumn.Items[Math.Min(1, XColumn.Items.Count - 1)];
+                        }
 					}
 				}
 				m_geom[scm.Name] = gc;

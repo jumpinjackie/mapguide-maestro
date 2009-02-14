@@ -674,7 +674,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					elm.Attributes.Append(temp.CreateAttribute("xColumnName")).Value = gc.XColumn;
 					elm.Attributes.Append(temp.CreateAttribute("yColumnName")).Value = gc.YColumn;
 					if(gc.ZColumn != null)
-						elm.Attributes.Append(temp.CreateAttribute("zColumnName")).Value = gc.YColumn;
+						elm.Attributes.Append(temp.CreateAttribute("zColumnName")).Value = gc.ZColumn;
 				}
 			}
 
