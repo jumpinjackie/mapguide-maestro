@@ -1911,8 +1911,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 {
                     Topology.Geometries.IEnvelope env = ldef.GetSpatialExtent();
                     txtLowerX.Text = env.MinX.ToString(System.Globalization.CultureInfo.CurrentUICulture);
-                    txtLowerY.Text = env.MaxX.ToString(System.Globalization.CultureInfo.CurrentUICulture);
-                    txtUpperX.Text = env.MinY.ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                    txtLowerY.Text = env.MinY.ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                    txtUpperX.Text = env.MaxX.ToString(System.Globalization.CultureInfo.CurrentUICulture);
                     txtUpperY.Text = env.MaxY.ToString(System.Globalization.CultureInfo.CurrentUICulture);
                 }
                 catch
