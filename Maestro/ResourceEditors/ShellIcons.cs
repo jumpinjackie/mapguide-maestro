@@ -33,33 +33,26 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private static Hashtable m_loadedImages;
 		private static bool m_supported = false;
 
-		public static ImageList ImageList
-		{
-			get 
-			{ 
-				if (m_imageList == null)
-				{
-					m_imageList = new ImageList();
-					m_loadedImages = new Hashtable();
-					m_imageList.ImageSize = new Size(16, 16);
-					m_imageList.ColorDepth = ColorDepth.Depth32Bit;
-					m_imageList.Images.Add(System.Drawing.Image.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(typeof(ResourceDataEditor), "blank_icon.gif")));
-					m_loadedImages.Add("", 0);
+        static ShellIcons()
+        {
+            m_imageList = new ImageList();
+            m_loadedImages = new Hashtable();
+            m_imageList.ImageSize = new Size(16, 16);
+            m_imageList.ColorDepth = ColorDepth.Depth32Bit;
+            m_imageList.Images.Add(System.Drawing.Image.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(typeof(ResourceDataEditor), "blank_icon.gif")));
+            m_loadedImages.Add("", 0);
 
-					try
-					{
-						//This does nothing on windows, but fails on linux
-						DestroyIcon(IntPtr.Zero);
-						m_supported = true;
-					}
-					catch
-					{
-						m_supported = false;
-					}
-				}
-				return m_imageList;
-			}
-		}
+            try
+            {
+                //This does nothing on windows, but fails on linux
+                DestroyIcon(IntPtr.Zero);
+                m_supported = true;
+            }
+            catch
+            {
+                m_supported = false;
+            }
+        }
 
 		#region Win32 Native Code
 		[System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
@@ -92,6 +85,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		#endregion
 
+        public static bool Supported { get { return m_supported; } }
+
+        public static ImageList ImageList { get { return m_imageList; } }
+
 		public static void AddIcon(string filename, System.Drawing.Image img)
 		{
 			string type = System.IO.Path.GetExtension(filename).ToLower();
@@ -102,21 +99,24 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 		}
 
-		public static int GetShellIcon(string filename)
-		{
-			if (m_imageList == null)
-			{
-				//Initialize
-				object o = ShellIcons.ImageList;
-			}
+        public static int GetFolderIcon(bool open)
+        {
+            return GetShellIcon("folder", FILE_ATTRIBUTE_DIRECTORY, SHGFI_ICON | SHGFI_USEFILEATTRIBUTES | SHGFI_SMALLICON | (open ? SHGFI_OPENICON : 0));
+        }
 
-			string type = System.IO.Path.GetExtension(filename).ToLower();
-			if (!m_loadedImages.Contains(type) && m_supported)
+        public static int GetShellIcon(string filename)
+        {
+            return GetShellIcon(System.IO.Path.GetExtension(filename).ToLower(), FILE_ATTRIBUTE_NORMAL, SHGFI_ICON | SHGFI_USEFILEATTRIBUTES | SHGFI_SMALLICON);
+        }
+
+		private static int GetShellIcon(string ext, int type, int attributes)
+		{
+			if (!m_loadedImages.Contains(ext) && m_supported)
 			{
 				try
 				{
 					SHFILEINFO shinfo = new SHFILEINFO();
-					IntPtr hImg = SHGetFileInfo(type, FILE_ATTRIBUTE_NORMAL, ref shinfo, System.Runtime.InteropServices.Marshal.SizeOf(shinfo), SHGFI_ICON | SHGFI_USEFILEATTRIBUTES | SHGFI_SMALLICON);
+					IntPtr hImg = SHGetFileInfo(ext, type, ref shinfo, System.Runtime.InteropServices.Marshal.SizeOf(shinfo), attributes);
 					System.Drawing.Icon tmp = (System.Drawing.Icon)System.Drawing.Icon.FromHandle(shinfo.hIcon).Clone();
 					DestroyIcon(shinfo.hIcon);
 					

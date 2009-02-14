@@ -65,7 +65,8 @@ namespace Globalizator
 					Hashtable translations = (Hashtable)m_localities[ci];
 
 					foreach(XmlNode n in doc.SelectNodes("root/data"))
-						translations[n.Attributes["name"].Value] = n.InnerText; 
+                        if (n["value"] != null)
+						    translations[n.Attributes["name"].Value] = n["value"].InnerText; 
 
 				}
 				catch(Exception ex)

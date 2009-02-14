@@ -458,6 +458,12 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public int GetOrdinal(string name)
 		{
+            if (name == null)
+                throw new ArgumentNullException("name");
+
+            if (name == "")
+                throw new Exception("The name parameter must not be empty");
+
 			name = name.Trim();
 
 			for(int i = 0; i < m_parent.Columns.Length; i++)

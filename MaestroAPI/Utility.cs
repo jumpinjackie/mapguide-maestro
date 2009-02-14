@@ -310,17 +310,27 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>A memorystream with the MgStream's content</returns>
 		public static System.IO.MemoryStream MgStreamToNetStream(object source, System.Reflection.MethodInfo mi, object[] args)
 		{
-			OSGeo.MapGuide.MgByteReader rd = (OSGeo.MapGuide.MgByteReader)mi.Invoke(source, args);
-			System.IO.MemoryStream ms = new System.IO.MemoryStream();
-			byte[] buf = new byte[1024];
-			int c = 0;
-			do
-			{
-				c = rd.Read(buf, buf.Length);
-				ms.Write(buf, 0, c);
-			} while (c != 0);
-			ms.Position = 0;
-			return ms;
+            try
+            {
+                OSGeo.MapGuide.MgByteReader rd = (OSGeo.MapGuide.MgByteReader)mi.Invoke(source, args);
+                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                byte[] buf = new byte[1024];
+                int c = 0;
+                do
+                {
+                    c = rd.Read(buf, buf.Length);
+                    ms.Write(buf, 0, c);
+                } while (c != 0);
+                ms.Position = 0;
+                return ms;
+            }
+            catch (System.Reflection.TargetInvocationException tex)
+            {
+                if (tex.InnerException != null)
+                    throw tex.InnerException;
+                else
+                    throw;
+            }
 		}
 
         /// <summary>

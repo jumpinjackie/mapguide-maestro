@@ -1352,5 +1352,17 @@ namespace OSGeo.MapGuide.MaestroAPI
             string req = m_reqBuilder.GetTile(mapdefinition, baselayergroup, row, col, scaleindex, format);
             return this.OpenRead(req);
         }
+
+        /// <summary>
+        /// Gets or sets the agent reported to MapGuide. 
+        /// Free form text, will appear in the log files.
+        /// Default is MapGuide Maestro API
+        /// </summary>
+        public string UserAgent
+        {
+            get { return m_reqBuilder.UserAgent; }
+            set { m_reqBuilder.UserAgent = value; }
+        }
+
     }
 }

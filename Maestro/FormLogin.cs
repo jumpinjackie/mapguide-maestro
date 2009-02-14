@@ -341,6 +341,7 @@ namespace OSGeo.MapGuide.Maestro
 						con = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri(cmbServerUrl.Text), txtUsername.Text, txtPassword.Text, System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName, true);
 #else
 					OSGeo.MapGuide.MaestroAPI.ServerConnectionI con = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri(cmbServerUrl.Text), txtUsername.Text, txtPassword.Text, System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName, true);
+                    ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)con).UserAgent = "MapGuide Maestro";
 #endif
 					if (con.SiteVersion > con.MaxTestedVersion && con.SiteVersion > ps.ApprovedVersion)
 					{
@@ -403,7 +404,9 @@ namespace OSGeo.MapGuide.Maestro
 			else
 			{
 				cmbServerUrl.Items.AddRange(m_sitelist.Sites);
-				cmbServerUrl.SelectedIndex = m_sitelist.PreferedSite;
+                //In case the site was removed...
+                try { cmbServerUrl.SelectedIndex = m_sitelist.PreferedSite; }
+                catch { } 
 				chkAutoConnect.Checked = m_sitelist.AutoConnect;
 			}
 
