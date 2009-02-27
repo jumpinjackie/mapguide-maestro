@@ -140,6 +140,7 @@ if not "%TYPEACTION%"=="buildinstall" goto quit
 echo [build] MapGuide Maestro
 pushd %MAESTRO_DEV%
 %MSBUILD% OSGeo.MapGuide.Maestro.sln
+if "%errorlevel%"=="1" goto error
 popd
 if not "%TYPEACTION%"=="buildinstall" goto quit
 
