@@ -1419,8 +1419,11 @@ namespace OSGeo.MapGuide.MaestroAPI
 				if (mdef.BaseMapDefinition != null)
 					if (mdef.BaseMapDefinition.BaseMapLayerGroup == null)
 						mdef.BaseMapDefinition = null;
-					else if (mdef.BaseMapDefinition.BaseMapLayerGroup.Count == 0)
-						mdef.BaseMapDefinition = null;
+                    else if (mdef.BaseMapDefinition.BaseMapLayerGroup.Count == 0)
+                    {
+                        if (mdef.BaseMapDefinition.FiniteDisplayScale.Count == 0)
+                            mdef.BaseMapDefinition = null;
+                    }
 
 				if (mdef.Layers != null)
                     foreach (MapLayerType mlt in mdef.Layers)
