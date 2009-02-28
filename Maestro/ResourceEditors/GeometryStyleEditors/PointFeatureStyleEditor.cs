@@ -408,6 +408,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.HeigthText.Size = new System.Drawing.Size(208, 21);
             this.HeigthText.TabIndex = 9;
             this.HeigthText.SelectedIndexChanged += new System.EventHandler(this.HeigthText_SelectedIndexChanged);
+            this.HeigthText.TextChanged += new System.EventHandler(this.HeigthText_TextChanged);
             // 
             // WidthText
             // 
@@ -418,6 +419,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.WidthText.Size = new System.Drawing.Size(208, 21);
             this.WidthText.TabIndex = 8;
             this.WidthText.SelectedIndexChanged += new System.EventHandler(this.WidthText_SelectedIndexChanged);
+            this.WidthText.TextChanged += new System.EventHandler(this.WidthText_TextChanged);
             // 
             // SizeUnits
             // 
@@ -945,6 +947,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             }
         }
 
+        private void WidthText_TextChanged(object sender, EventArgs e)
+        {
+            WidthText_SelectedIndexChanged(sender, e);
+        }
 
-	}
+        private void HeigthText_TextChanged(object sender, EventArgs e)
+        {
+            HeigthText_SelectedIndexChanged(sender, e);
+        }
+    }
 }
