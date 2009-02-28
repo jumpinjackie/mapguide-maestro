@@ -248,10 +248,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (string.IsNullOrEmpty(temp))
                 throw new ArgumentException("The value must be a resource identifier", "identifier");
 
-            if (identifier.EndsWith("/"))
-                return temp.Substring(temp.LastIndexOf("/") + 1);
-            else
-                return temp.Substring(0, temp.LastIndexOf("."));
+            return temp.Substring(temp.LastIndexOf("/") + 1);
         }
 
         /// <summary>
