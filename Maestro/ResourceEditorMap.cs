@@ -300,26 +300,12 @@ namespace OSGeo.MapGuide.Maestro
 
 		public string GetResourceNameFromResourceID(string resourceID)
 		{
-			string[] parts = SplitResourceID(resourceID);
-			string name = parts[parts.Length-1];
-			int x = name.LastIndexOf(".");
-			if (x > 0)
-				name = name.Substring(0, x);
-			return name;
+            return new MaestroAPI.ResourceIdentifier(resourceID).Name;
 		}
 
 		public string GetResourceTypeNameFromResourceID(string resourceID)
 		{
-			string suffix = resourceID;
-			if (suffix.IndexOf("/") > 0)
-				suffix = suffix.Substring(suffix.LastIndexOf("/") + 1);
-            
-			if (suffix.IndexOf(".") > 0)
-				suffix = suffix.Substring(suffix.LastIndexOf(".") + 1);
-			else
-				suffix = "";
-			
-			return suffix;
+            return new MaestroAPI.ResourceIdentifier(resourceID).Extension;
 		}
 
 		public string[] SplitResourceID(string resourceID)

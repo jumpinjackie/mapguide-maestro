@@ -247,8 +247,11 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (string.IsNullOrEmpty(temp))
                 throw new ArgumentException("The value must be a resource identifier", "identifier");
-            int ix = identifier.LastIndexOf("/") + 1;
-            return identifier.Substring(ix, identifier.Length - GetExtension(identifier).Length - ix - 1);
+
+            if (identifier.EndsWith("/"))
+                return temp.Substring(temp.LastIndexOf("/") + 1);
+            else
+                return temp.Substring(0, temp.LastIndexOf("."));
         }
 
         /// <summary>
@@ -260,7 +263,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static string SetName(string identifier, string newname)
         {
             string temp = GetPath(identifier);
-            newname += "." + GetExtension(identifier);
+            if (identifier.EndsWith("/"))
+            {
+                if (!newname.EndsWith("/"))
+                    newname += "/";
+            }
+            else
+                newname += "." + GetExtension(identifier);
 
 
             if (newname.IndexOf("/") > 0)
@@ -279,7 +288,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static string SetPath(string identifier, string newpath)
         {
             string temp = GetPath(identifier);
-            newpath += "." + GetExtension(identifier);
+            if (!identifier.EndsWith("/"))
+                newpath += "." + GetExtension(identifier);
 
             return GetRepository(identifier) + newpath;
         }
@@ -292,6 +302,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>The renmaed identifier</returns>
         public static string SetExtension(string identifier, string newextension)
         {
+            if (identifier.EndsWith("/"))
+                throw new Exception("Cannot change extension for a folder");
+
             if (!newextension.StartsWith("."))
                 newextension = "." + newextension;
 
@@ -355,6 +368,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (string.IsNullOrEmpty(identifier))
                 throw new ArgumentNullException("identifier");
 
+            if (identifier.EndsWith("/"))
+                return "";
+
             int ix = identifier.LastIndexOf(".");
             if (ix <= 0)
                 throw new ArgumentException("The value must be a resource identifier", "identifier");
@@ -390,7 +406,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>The full name of the identifier</returns>
         public static string GetFullname(string identifier)
         {
-            return GetName(identifier) + "." + GetExtension(identifier);
+            if (identifier.EndsWith("/"))
+                return GetName(identifier);
+            else
+                return GetName(identifier) + "." + GetExtension(identifier);
         }
 
         /// <summary>
@@ -403,7 +422,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             try
             {
                 GetRepository(identifier);
-                if (identifier.IndexOf(".") != identifier.LastIndexOf(".") || identifier.LastIndexOf(".") < 0)
+                if (identifier.IndexOf(".") < 0 && !identifier.EndsWith("/"))
                     return false;
 
             }
@@ -422,7 +441,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>A value indicating if the resource points to a folder</returns>
         public static bool IsFolderResource(string identifier)
         {
-            return identifier.IndexOf(".") < 0;
+            return identifier.EndsWith("/");
         }
 
         /// <summary>
@@ -432,7 +451,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>The normalized identifier</returns>
         public static string Normalize(string identifier)
         {
-            if (IsFolderResource(identifier) && !identifier.EndsWith("/"))
+            if (identifier.LastIndexOf(".") <= identifier.LastIndexOf("/") && !identifier.EndsWith("/"))
                 return identifier + "/";
             else
                 return identifier;
