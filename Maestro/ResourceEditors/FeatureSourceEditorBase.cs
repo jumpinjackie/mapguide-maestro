@@ -30,9 +30,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 	/// <summary>
 	/// This usercontrol is a placeholder for the specialized version of the resource editor
 	/// </summary>
-	public class FeatureSourceEditorBase : System.Windows.Forms.UserControl, ResourceEditor 
+	public class FeatureSourceEditorBase : System.Windows.Forms.UserControl, IResourceEditorControl 
 	{
-		private ResourceEditor m_child;
+		private IResourceEditorControl m_child;
 		private FeatureSourceEditorGeneric m_childGeneric = null;
 		private ResourceEditors.EditorInterface m_editor = null;
 
@@ -68,10 +68,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			if (ClassDef != null)
 			{
 				UserControl uc = (UserControl)Activator.CreateInstance(ClassDef, new object[]{editor, feature} );
-				if (uc as ResourceEditor == null)
+				if (uc as IResourceEditorControl == null)
 					throw new Exception("Failed to create new datasource");
 
-				m_child = (ResourceEditor)uc;
+				m_child = (IResourceEditorControl)uc;
 				if (uc.GetType() == typeof(FeatureSourceEditorGeneric))
 				{
 					Panel editorPanel = new Panel();
@@ -488,10 +488,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void EditorTab_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (EditorTab.SelectedTab == null || EditorTab.SelectedTab.Controls[0] as ResourceEditor == null)
+			if (EditorTab.SelectedTab == null || EditorTab.SelectedTab.Controls[0] as IResourceEditorControl == null)
 				return;
 
-			(EditorTab.SelectedTab.Controls[0] as ResourceEditor).Resource = m_feature;
+			(EditorTab.SelectedTab.Controls[0] as IResourceEditorControl).Resource = m_feature;
 		}
 
 		private void btnTest_Click(object sender, System.EventArgs e)
@@ -525,7 +525,21 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		}
 
         public bool Profile() { return m_child.Profile(); }
-        public bool ValidateResource() { return m_child.ValidateResource(); }
+        public bool ValidateResource(bool recurse) 
+        {
+            try
+            {
+                //We always work on a temp, so it is now safe to save it
+                m_editor.CurrentConnection.SaveResource(m_feature);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to save resource, so it cannot be validated.\nError message: " + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return m_child.ValidateResource(recurse); 
+        }
         public bool SupportsPreview { get { return m_child.SupportsPreview; } }
         public bool SupportsValidate { get { return m_child.SupportsValidate; } }
         public bool SupportsProfiling { get { return m_child.SupportsProfiling; } }

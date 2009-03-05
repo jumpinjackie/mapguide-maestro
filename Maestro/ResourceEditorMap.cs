@@ -234,8 +234,8 @@ namespace OSGeo.MapGuide.Maestro
 						throw new Exception("Failed to load type " + e.ResourceInstanceClass + " from assembly: " + e.ResourceInstanceAssembly);
 
 
-					if (editorType.GetInterface(typeof(ResourceEditor).FullName) == null)
-						throw new Exception("Resource editor for " + e.ResourceExtension + " does not implement the required interface: " + typeof(ResourceEditor).FullName);
+					if (editorType.GetInterface(typeof(IResourceEditorControl).FullName) == null)
+						throw new Exception("Resource editor for " + e.ResourceExtension + " does not implement the required interface: " + typeof(IResourceEditorControl).FullName);
 
 					m_editors.Add(e.ResourceExtension, 
 						new ResourceEditorEntry(

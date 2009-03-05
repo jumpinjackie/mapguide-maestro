@@ -31,7 +31,7 @@ namespace OSGeo.MapGuide.Maestro
 	/// 
 	/// The first constructor is used for creating a new resource, the second for editing an existing.
 	/// </summary>
-	public interface ResourceEditor
+	public interface IResourceEditorControl
 	{
 		/// <summary>
 		/// Gets or sets the resource in its current state
@@ -56,7 +56,7 @@ namespace OSGeo.MapGuide.Maestro
         /// <summary>
         /// Validates the current resource, returns true if the call succeded
         /// </summary>
-        bool ValidateResource();
+        bool ValidateResource(bool recursive);
 
         /// <summary>
         /// Initiates profiling, returns true if the call succeded

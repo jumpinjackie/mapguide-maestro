@@ -910,6 +910,7 @@ namespace OSGeo.MapGuide.Maestro
             this.ValidateButton.Name = "ValidateButton";
             this.ValidateButton.Size = new System.Drawing.Size(36, 36);
             this.ValidateButton.ToolTipText = "Validates the current resource against common errors";
+            this.ValidateButton.Click += new System.EventHandler(this.ValidateButton_Click);
             // 
             // toolStripSeparator4
             // 
@@ -1082,6 +1083,9 @@ namespace OSGeo.MapGuide.Maestro
 				Application.Exit();
 				return;
 			}
+
+            //TODO: Allow thirdparty validators as well
+            ResourceValidators.ResourceValidatorLoader.LoadStockValidators();
 
             KeepAliveTimer.Enabled = true;
 			string editorMap = System.IO.Path.Combine(Application.StartupPath, "EditorMap.xml");
@@ -1317,7 +1321,7 @@ namespace OSGeo.MapGuide.Maestro
 				{ 
 					EditorInterface edi = AddEditTab(ClassDef, resourceID, false);
 					if (item != null)
-						((ResourceEditor)edi.Page.Controls[0]).Resource = item;
+						((IResourceEditorControl)edi.Page.Controls[0]).Resource = item;
 					tabItems.SelectedTab = edi.Page;
 					edi.HasChanged();
 				}
@@ -1793,7 +1797,7 @@ namespace OSGeo.MapGuide.Maestro
 			foreach(EditorInterface edi in m_userControls.Values)
 				if (edi.Page == tabItems.SelectedTab)
 				{
-					object resource = ((ResourceEditor)edi.Page.Controls[0]).Resource;
+					object resource = ((IResourceEditorControl)edi.Page.Controls[0]).Resource;
 					XmlEditor dlg = new XmlEditor(resource, this.CurrentConnection);
 					if (dlg.ShowDialog() == DialogResult.OK)
 					{
@@ -1806,7 +1810,7 @@ namespace OSGeo.MapGuide.Maestro
 						if (pi != null)
 							pi.SetValue(o, pi.GetValue(resource, null), null);
 
-						((ResourceEditor)edi.Page.Controls[0]).Resource = dlg.SerializedObject;
+						((IResourceEditorControl)edi.Page.Controls[0]).Resource = dlg.SerializedObject;
 						edi.HasChanged();
 					}
 				}
@@ -1832,7 +1836,7 @@ namespace OSGeo.MapGuide.Maestro
 				{
                     try
                     {
-                        if (!((ResourceEditor)edi.Page.Controls[0]).Preview())
+                        if (!((IResourceEditorControl)edi.Page.Controls[0]).Preview())
                             MessageBox.Show(this, m_globalizor.Translate("The selected editor could not preview the resource. Most likely, the preview feature is not implemented for the given resource."), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
@@ -2433,7 +2437,7 @@ namespace OSGeo.MapGuide.Maestro
                         break;
                     }
 
-                if (edi == null || edi.Page == null || edi.Page.Controls.Count < 1 || edi.Page.Controls[0] as ResourceEditor == null)
+                if (edi == null || edi.Page == null || edi.Page.Controls.Count < 1 || edi.Page.Controls[0] as IResourceEditorControl == null)
                 {
                     foreach (ToolStripItem b in toolStrip1.Items)
                         b.Enabled = false;
@@ -2446,7 +2450,7 @@ namespace OSGeo.MapGuide.Maestro
                     EditAsXmlButton.Enabled =
                     ClosePageButton.Enabled = true;
 
-                    ResourceEditor ei = edi.Page.Controls[0] as ResourceEditor;
+                    IResourceEditorControl ei = edi.Page.Controls[0] as IResourceEditorControl;
                     PreviewButton.Enabled = ei.SupportsPreview;
                     ProfileButton.Enabled = ei.SupportsProfiling;
                     ValidateButton.Enabled = ei.SupportsValidate;
@@ -2473,7 +2477,7 @@ namespace OSGeo.MapGuide.Maestro
             if (edi == null || edi.Page == null || edi.Page.Controls == null || edi.Page.Controls.Count < 1)
                 return;
 
-            ResourceEditor ei = edi.Page.Controls[0] as ResourceEditor;
+            IResourceEditorControl ei = edi.Page.Controls[0] as IResourceEditorControl;
             if (ei == null || ei.Resource == null)
                 return;
 
@@ -2624,6 +2628,46 @@ namespace OSGeo.MapGuide.Maestro
         private void tabItems_MouseLeave(object sender, EventArgs e)
         {
             TabPageTooltip.SetToolTip(tabItems, null);
+        }
+
+        private void ValidateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                EditorInterface edi = null;
+                foreach (EditorInterface n in m_userControls.Values)
+                    if (n.Page == tabItems.SelectedTab)
+                    {
+                        edi = n;
+                        break;
+                    }
+
+                if (edi == null || edi.Page == null || edi.Page.Controls == null || edi.Page.Controls.Count < 1)
+                    return;
+
+                IResourceEditorControl ei = edi.Page.Controls[0] as IResourceEditorControl;
+                if (ei == null || ei.Resource == null)
+                    return;
+
+                if (ei.ValidateResource(true))
+                {
+                    ResourceValidators.ValidationIssue[] issues = ResourceValidators.Validation.Validate(ei.Resource, true);
+                    if (issues.Length == 0)
+                        MessageBox.Show(this, "No issues were found", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                    {
+                        ValidationResults dlg = new ValidationResults(issues);
+                        dlg.ShowDialog(this);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                this.LastException = ex;
+                MessageBox.Show(this, "An error occured while validating: " + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 	}
 }

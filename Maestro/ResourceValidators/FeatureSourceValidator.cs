@@ -24,7 +24,7 @@ using OSGeo.MapGuide.Maestro;
 namespace OSGeo.MapGuide.Maestro.ResourceValidators
 {
 	/// <summary>
-	/// Summary description for FeatureSourceValidator.
+	/// Validator for validating FeatureSources.
 	/// </summary>
 	public class FeatureSourceValidator : IValidator
 	{
@@ -36,7 +36,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
             List<ValidationIssue> issues = new List<ValidationIssue>();
 
             OSGeo.MapGuide.MaestroAPI.FeatureSource feature = resource as OSGeo.MapGuide.MaestroAPI.FeatureSource;
-            string s = feature.CurrentConnection.TestConnection(feature);
+            //Note: Must be saved!
+            string s = feature.CurrentConnection.TestConnection(feature.ResourceId);
             if (s != null && s.Length != 0)
                 return new ValidationIssue[] { new ValidationIssue(feature, ValidationStatus.Error, s) };
 

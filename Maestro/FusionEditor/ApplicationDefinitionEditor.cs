@@ -32,7 +32,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 	/// <summary>
 	/// Summary description for ApplicationDefinitionEditor.
 	/// </summary>
-	public class ApplicationDefinitionEditor : System.Windows.Forms.UserControl, OSGeo.MapGuide.Maestro.ResourceEditor
+	public class ApplicationDefinitionEditor : System.Windows.Forms.UserControl, OSGeo.MapGuide.Maestro.IResourceEditorControl
 	{
 		private System.ComponentModel.IContainer components;
 
@@ -1599,7 +1599,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
         }
 
         public bool Profile() { return true; }
-        public bool ValidateResource() { return true; }
+        public bool ValidateResource(bool recurse) { return true; }
         public bool SupportsPreview { get { return true; } }
         public bool SupportsValidate { get { return false; } }
         public bool SupportsProfiling { get { return false; } }

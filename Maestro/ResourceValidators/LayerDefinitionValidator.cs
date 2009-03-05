@@ -14,6 +14,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
             MaestroAPI.LayerDefinition ldef = resource as MaestroAPI.LayerDefinition;
             MaestroAPI.VectorLayerDefinitionType vldef = ldef.Item as MaestroAPI.VectorLayerDefinitionType;
             MaestroAPI.GridLayerDefinitionType gldef = ldef.Item as MaestroAPI.GridLayerDefinitionType;
+            MaestroAPI.DrawingLayerDefinitionType dldef = ldef.Item as MaestroAPI.DrawingLayerDefinitionType;
 
             List<ValidationIssue> issues = new List<ValidationIssue>();
 
@@ -50,23 +51,39 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                             issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format("The minimum scale ({0}) is larger than the maximum scale ({1}).", sr.Value, sr.Key)));
                     }
 
-
                     //TODO: Detect gaps in scale ranges
                     for (int i = 0; i < ranges.Count; i++)
                         for (int j = i + 1; j < ranges.Count; j++)
                             if (ranges[i].Key > ranges[j].Value || ranges[i].Value > ranges[j].Value)
                                 issues.Add(new ValidationIssue(resource, ValidationStatus.Information, string.Format("The scale range {0}-{1} overlaps the range {2}-{3}", ranges[i].Value, ranges[i].Key, ranges[j].Value, ranges[j].Key)));
+
                 }
             }
             else if (gldef != null)
             {
+                if (gldef.GridScaleRange == null || gldef.GridScaleRange.Count == 0)
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, "No scale ranges are defined, no data can be displayed"));
+                else if (gldef.GridScaleRange.Count != 1)
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, "More than one scale ranges is defined, this is valid, but unsupported by Maestro"));
 
             }
-
-
+            else if (dldef != null)
+                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, "Maestro does not support DrawingLayers"));
+            else
+                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, "The layer has no type, or the type is unsupported by Maestro"));
 
             if (recurse)
-                issues.AddRange(Validate(ldef.CurrentConnection.GetFeatureSource(ldef.Item.ResourceId), recurse));
+            {
+                try
+                {
+                    MaestroAPI.FeatureSource fs = ldef.CurrentConnection.GetFeatureSource(ldef.Item.ResourceId);
+                    issues.AddRange(Validation.Validate(fs, recurse));
+                }
+                catch (Exception ex)
+                {
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format("Failed to load featuresource")));
+                }
+            }
 
             return issues.ToArray();
         }

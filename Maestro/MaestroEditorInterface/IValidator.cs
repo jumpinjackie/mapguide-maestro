@@ -91,4 +91,28 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
         /// </summary>
         Error
     }
+
+    public static class Validation
+    {
+        private static List<IValidator> m_validators = new List<IValidator>();
+
+        public static ValidationIssue[] Validate(object item, bool recurse)
+        {
+            List<ValidationIssue> issues = new List<ValidationIssue>();
+            foreach (IValidator v in m_validators)
+            {
+                ValidationIssue[] tmp = v.Validate(item, recurse);
+                if (tmp != null)
+                    issues.AddRange(tmp);
+            }
+                
+            return issues.ToArray();
+        }
+
+        public static void RegisterValidator(IValidator v)
+        {
+            if (!m_validators.Contains(v))
+                m_validators.Add(v);
+        }
+    }
 }

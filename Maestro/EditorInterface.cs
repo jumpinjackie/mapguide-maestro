@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.Maestro
 {
@@ -186,6 +187,35 @@ namespace OSGeo.MapGuide.Maestro
 		{
 			using (new WaitCursor(m_editor))
 			{
+                if (((IResourceEditorControl)m_page.Controls[0]).SupportsValidate)
+                    if (((IResourceEditorControl)m_page.Controls[0]).ValidateResource(false))
+                    {
+                        ResourceValidators.ValidationIssue[] issues = ResourceValidators.Validation.Validate(((IResourceEditorControl)m_page.Controls[0]).Resource, false);
+                        List<string> errors = new List<string>();
+                        List<string> warnings = new List<string>();
+
+                        foreach (ResourceValidators.ValidationIssue issue in issues)
+                        {
+                            if(issue.Status == OSGeo.MapGuide.Maestro.ResourceValidators.ValidationStatus.Error)
+                                errors.Add(issue.Message);
+                            else if (issue.Status == OSGeo.MapGuide.Maestro.ResourceValidators.ValidationStatus.Warning)
+                                warnings.Add(issue.Message);
+                        }
+
+                        if (errors.Count > 0 || warnings.Count > 0)
+                        {
+                            string msg;
+
+                            if (errors.Count > 0)
+                                msg = string.Format("The resource had the following errors:\n {0}\n\nDo you want to save it anyway?", string.Join("\n", errors.ToArray()));
+                            else
+                                msg = string.Format("The resource had the following warnings:\n {0}\n\nDo you want to save it anyway?", string.Join("\n", warnings.ToArray()));
+
+                            if (MessageBox.Show(m_editor, msg, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) != DialogResult.Yes)
+                                return false;
+                        }
+                    }
+
 				string resourceType = m_editor.ResourceEditorMap.GetResourceTypeNameFromResourceID(m_resourceID);
 				if (!m_existing || resid == null)
 				{
@@ -205,11 +235,11 @@ namespace OSGeo.MapGuide.Maestro
                 {
                     if (resid != null)
                     {
-                        if (!((ResourceEditor)m_page.Controls[0]).Save(resid))
+                        if (!((IResourceEditorControl)m_page.Controls[0]).Save(resid))
                         {
-                            m_editor.CurrentConnection.SaveResourceAs(((ResourceEditor)m_page.Controls[0]).Resource, resid);
+                            m_editor.CurrentConnection.SaveResourceAs(((IResourceEditorControl)m_page.Controls[0]).Resource, resid);
                             m_resourceID = resid;
-                            ((ResourceEditor)m_page.Controls[0]).ResourceId = resid;
+                            ((IResourceEditorControl)m_page.Controls[0]).ResourceId = resid;
                             m_page.Text = OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.GetName(resid);
                             m_page.ToolTipText = resid;
                         }
@@ -235,7 +265,7 @@ namespace OSGeo.MapGuide.Maestro
                             }
                     }
 
-                    ((ResourceEditor)m_page.Controls[0]).UpdateDisplay();
+                    ((IResourceEditorControl)m_page.Controls[0]).UpdateDisplay();
                     return true;
                 }
                 catch (CancelException)

@@ -29,7 +29,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 	/// <summary>
 	/// Summary description for FeatureSourceEditorMySQL.
 	/// </summary>
-	public class FeatureSourceEditorMySQL : System.Windows.Forms.UserControl, ResourceEditor
+	public class FeatureSourceEditorMySQL : System.Windows.Forms.UserControl, IResourceEditorControl
 	{
 		private System.ComponentModel.IContainer components;
 
@@ -300,9 +300,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		}
 
         public bool Profile() { return true; }
-        public bool ValidateResource() { return true; }
+        public bool ValidateResource(bool recurse) { return true; }
         public bool SupportsPreview { get { return true; } }
-        public bool SupportsValidate { get { return false; } }
+        public bool SupportsValidate { get { return true; } }
         public bool SupportsProfiling { get { return false; } }
     }
 }
