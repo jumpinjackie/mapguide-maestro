@@ -1601,7 +1601,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
         public bool Profile() { return true; }
         public bool ValidateResource(bool recurse) { return true; }
         public bool SupportsPreview { get { return true; } }
-        public bool SupportsValidate { get { return false; } }
+        public bool SupportsValidate { get { return true; } }
         public bool SupportsProfiling { get { return false; } }
     }
 }

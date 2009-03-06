@@ -65,7 +65,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                     issues.Add(new ValidationIssue(resource, ValidationStatus.Error, "No scale ranges are defined, no data can be displayed"));
                 else if (gldef.GridScaleRange.Count != 1)
                     issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, "More than one scale ranges is defined, this is valid, but unsupported by Maestro"));
-
             }
             else if (dldef != null)
                 issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, "Maestro does not support DrawingLayers"));
@@ -78,6 +77,43 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                 {
                     MaestroAPI.FeatureSource fs = ldef.CurrentConnection.GetFeatureSource(ldef.Item.ResourceId);
                     issues.AddRange(Validation.Validate(fs, recurse));
+
+                    try
+                    {
+                        if (vldef != null || gldef != null)
+                        {
+                            string schema = vldef == null ? gldef.FeatureName : vldef.FeatureName;
+                            string geometry = vldef == null ? gldef.Geometry : vldef.Geometry;
+
+                            bool foundSchema = false;
+                            bool foundGeometry = false;
+
+                            MaestroAPI.FeatureSourceDescription desc = fs.DescribeSource();
+                            foreach (MaestroAPI.FeatureSourceDescription.FeatureSourceSchema scm in desc.Schemas)
+                                if (scm.FullnameDecoded == schema)
+                                {
+                                    foundSchema = true;
+
+                                    foreach(MaestroAPI.FeatureSetColumn col in scm.Columns)
+                                        if (col.Name == geometry)
+                                        {
+                                            foundGeometry = true;
+                                            break;
+                                        }
+
+                                    break;
+                                }
+
+                            if (!foundSchema)
+                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format("Failed to find schema {0} in featuresource {1}", schema, fs.ResourceId)));
+                            else if (!foundGeometry)
+                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format("Failed to find geometry column {0} in schema {1} on featuresource {2}", geometry, schema, fs.ResourceId)));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        issues.Add(new ValidationIssue(fs, ValidationStatus.Error, string.Format("Failed to validate column and schema")));
+                    }
                 }
                 catch (Exception ex)
                 {

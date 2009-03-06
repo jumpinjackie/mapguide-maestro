@@ -16,6 +16,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
             Validation.RegisterValidator(new FeatureSourceValidator());
             Validation.RegisterValidator(new LayerDefinitionValidator());
             Validation.RegisterValidator(new MapDefinitionValidator());
+            Validation.RegisterValidator(new WebLayoutValidator());
+            Validation.RegisterValidator(new ApplicationDefinitionValidator());
 
             m_initialized = true;
         }

@@ -121,6 +121,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        public bool IsLoaded { get { return m_categories != null; } } 
+
         #endregion
     }
 }

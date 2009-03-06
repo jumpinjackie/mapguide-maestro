@@ -155,7 +155,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				m_isUpdating = true;
 
 				txtDescription.Text = m_map.Metadata.Replace("<MapDescription>", "").Replace("</MapDescription>", "");
-				if (m_editor.CurrentConnection.CoordinateSystem == null || m_map.CoordinateSystem == null || m_map.CoordinateSystem.Length == 0)
+				if (m_editor.CurrentConnection.CoordinateSystem == null || m_map.CoordinateSystem == null || m_map.CoordinateSystem.Length == 0 || !m_editor.CurrentConnection.CoordinateSystem.IsLoaded)
 					txtCoordsys.Text = m_map.CoordinateSystem;
 				else
 				{

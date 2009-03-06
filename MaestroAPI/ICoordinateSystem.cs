@@ -31,5 +31,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         HttpCoordinateSystem.CoordSys FindCoordSys(string coordcode);
         bool IsValid(string wkt);
         string LibraryName { get; }
+        bool IsLoaded { get; }
     }
 }

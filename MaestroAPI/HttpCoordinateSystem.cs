@@ -344,5 +344,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return null;
 		}
 
+        public bool IsLoaded { get { return m_categories != null; } }
+
 	}
 }

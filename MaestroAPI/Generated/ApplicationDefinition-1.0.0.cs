@@ -42,6 +42,18 @@ namespace OSGeo.MapGuide.MaestroAPI.ApplicationDefinition {
 			set { m_resourceId = value; } 
 		}
 
+        private ServerConnectionI m_serverConnection;
+
+        /// <summary>
+        /// Gets or sets the connection used in various operations performed on this object
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnore()]
+        public ServerConnectionI CurrentConnection
+        {
+            get { return m_serverConnection; }
+            set { m_serverConnection = value; }
+        }
+
         private string m_title;
         
         private string m_templateUrl;
