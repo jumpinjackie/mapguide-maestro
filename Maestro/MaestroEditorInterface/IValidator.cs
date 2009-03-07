@@ -101,9 +101,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
             List<ValidationIssue> issues = new List<ValidationIssue>();
             foreach (IValidator v in m_validators)
             {
-                ValidationIssue[] tmp = v.Validate(item, recurse);
-                if (tmp != null)
-                    issues.AddRange(tmp);
+                try
+                {
+                    ValidationIssue[] tmp = v.Validate(item, recurse);
+                    if (tmp != null)
+                        issues.AddRange(tmp);
+                }
+                catch (Exception ex)
+                {
+                    issues.Add(new ValidationIssue(item, ValidationStatus.Error, "Failed in validator: " + ex.Message));
+                }
             }
                 
             return issues.ToArray();

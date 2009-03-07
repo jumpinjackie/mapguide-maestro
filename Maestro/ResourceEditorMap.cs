@@ -305,7 +305,10 @@ namespace OSGeo.MapGuide.Maestro
 
 		public string GetResourceTypeNameFromResourceID(string resourceID)
 		{
-            return new MaestroAPI.ResourceIdentifier(resourceID).Extension;
+            if (resourceID.IndexOf(".") < 0)
+                return "";
+            else
+                return new MaestroAPI.ResourceIdentifier(resourceID).Extension;
 		}
 
 		public string[] SplitResourceID(string resourceID)

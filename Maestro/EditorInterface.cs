@@ -190,6 +190,10 @@ namespace OSGeo.MapGuide.Maestro
                 if (((IResourceEditorControl)m_page.Controls[0]).SupportsValidate)
                     if (((IResourceEditorControl)m_page.Controls[0]).ValidateResource(false))
                     {
+                        System.Reflection.PropertyInfo pi = ((IResourceEditorControl)m_page.Controls[0]).Resource.GetType().GetProperty("CurrentConnection");
+                        if (pi != null && pi.CanWrite)
+                            pi.SetValue(((IResourceEditorControl)m_page.Controls[0]).Resource, m_editor.CurrentConnection, null);
+
                         ResourceValidators.ValidationIssue[] issues = ResourceValidators.Validation.Validate(((IResourceEditorControl)m_page.Controls[0]).Resource, false);
                         List<string> errors = new List<string>();
                         List<string> warnings = new List<string>();

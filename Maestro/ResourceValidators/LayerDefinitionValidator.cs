@@ -101,6 +101,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                                             break;
                                         }
 
+
+                                    //TODO: Validate property mapping, if any
                                     break;
                                 }
 

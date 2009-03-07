@@ -2651,6 +2651,11 @@ namespace OSGeo.MapGuide.Maestro
 
                 if (ei.ValidateResource(true))
                 {
+                    System.Reflection.PropertyInfo pi = ei.Resource.GetType().GetProperty("CurrentConnection");
+                    if (pi != null && pi.CanWrite)
+                        pi.SetValue(ei.Resource, this.CurrentConnection, null);
+
+
                     ResourceValidators.ValidationIssue[] issues = ResourceValidators.Validation.Validate(ei.Resource, true);
                     if (issues.Length == 0)
                         MessageBox.Show(this, "No issues were found", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
