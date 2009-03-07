@@ -22,6 +22,7 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.Maestro
 {
@@ -129,6 +130,8 @@ namespace OSGeo.MapGuide.Maestro
         private ToolTip ResourceInfoTip;
         private Timer TooltipUpdateTimer;
         private ToolTip TabPageTooltip;
+        private ToolStripSeparator toolStripSeparator9;
+        private ToolStripMenuItem validateResourcesToolStripMenuItem;
         private string m_lastTooltip;
 
         public FormMain()
@@ -252,6 +255,8 @@ namespace OSGeo.MapGuide.Maestro
             this.ResourceInfoTip = new System.Windows.Forms.ToolTip(this.components);
             this.TooltipUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.TabPageTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.validateResourcesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -289,6 +294,8 @@ namespace OSGeo.MapGuide.Maestro
             this.PropertiesMenu,
             this.toolStripSeparator6,
             this.CopyResourceIdMenu,
+            this.toolStripSeparator9,
+            this.validateResourcesToolStripMenuItem,
             this.menuItem7,
             this.EditAsXmlMenu,
             this.LoadFromXmlMenu,
@@ -301,7 +308,7 @@ namespace OSGeo.MapGuide.Maestro
             this.DeleteMenu,
             this.NewMenu});
             this.TreeContextMenu.Name = "TreeContextMenu";
-            this.TreeContextMenu.Size = new System.Drawing.Size(181, 248);
+            this.TreeContextMenu.Size = new System.Drawing.Size(181, 298);
             this.TreeContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.TreeContextMenu_Popup);
             // 
             // PropertiesMenu
@@ -988,6 +995,18 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.TooltipUpdateTimer.Interval = 5000;
             this.TooltipUpdateTimer.Tick += new System.EventHandler(this.TooltipUpdateTimer_Tick);
+            // 
+            // validateResourcesToolStripMenuItem
+            // 
+            this.validateResourcesToolStripMenuItem.Name = "validateResourcesToolStripMenuItem";
+            this.validateResourcesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.validateResourcesToolStripMenuItem.Text = "Validate resources";
+            this.validateResourcesToolStripMenuItem.Click += new System.EventHandler(this.validateResourcesToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(177, 6);
             // 
             // FormMain
             // 
@@ -2649,30 +2668,131 @@ namespace OSGeo.MapGuide.Maestro
                 if (ei == null || ei.Resource == null)
                     return;
 
+
                 if (ei.ValidateResource(true))
                 {
                     System.Reflection.PropertyInfo pi = ei.Resource.GetType().GetProperty("CurrentConnection");
                     if (pi != null && pi.CanWrite)
                         pi.SetValue(ei.Resource, this.CurrentConnection, null);
 
+                    WaitForOperation wdlg = new WaitForOperation();
+                    wdlg.CancelAbortsThread = true;
 
-                    ResourceValidators.ValidationIssue[] issues = ResourceValidators.Validation.Validate(ei.Resource, true);
+                    ResourceValidators.ValidationIssue[] issues = (ResourceValidators.ValidationIssue[])wdlg.RunOperationAsync(this, new WaitForOperation.DoBackgroundWork(ValidateBackgroundRunner), ei.Resource);
                     if (issues.Length == 0)
                         MessageBox.Show(this, "No issues were found", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                     {
-                        ValidationResults dlg = new ValidationResults(issues);
+                        ValidationResults dlg = new ValidationResults(ei.ResourceId, issues);
                         dlg.ShowDialog(this);
                     }
                 }
 
             }
+            catch (CancelException)
+            { }
             catch (Exception ex)
             {
                 this.LastException = ex;
                 MessageBox.Show(this, "An error occured while validating: " + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
+        }
+
+        private object ValidateBackgroundRunner(BackgroundWorker worker, DoWorkEventArgs e, params object[] args)
+        {
+            if (args[0] is string)
+            {
+                //The user requested a resource to be validated, but it is not open, and may be a folder
+                worker.ReportProgress(-1, "Building resource list...");
+
+                string folder = (string)args[0];
+
+                List<string> documents = new List<string>();
+
+                if (folder.EndsWith("/"))
+                {
+                    foreach (object o in CurrentConnection.GetRepositoryResources((string)args[0]).Items)
+                        if (o is MaestroAPI.ResourceListResourceDocument)
+                            documents.Add((o as MaestroAPI.ResourceListResourceDocument).ResourceId);
+                }
+                else
+                    documents.Add(folder);
+                        
+
+                worker.ReportProgress(0);
+
+                List<KeyValuePair<string, ResourceValidators.ValidationIssue[]>> issues = new List<KeyValuePair<string, OSGeo.MapGuide.Maestro.ResourceValidators.ValidationIssue[]>>();
+                int i = 0;
+                foreach (string s in documents)
+                {
+                    worker.ReportProgress((int)((i / (double)documents.Count) * 100), s);
+                    try
+                    {
+                        //TODO: This will validate resources multiple times, if they are referenced by
+                        //resources inside the folder
+                        object item = this.CurrentConnection.GetResource(s);
+                        issues.Add(new KeyValuePair<string, ResourceValidators.ValidationIssue[]>(s, ResourceValidators.Validation.Validate(item, true)));
+                    }
+                    catch (Exception ex)
+                    {
+                        issues.Add(new KeyValuePair<string, ResourceValidators.ValidationIssue[]>(s, new ResourceValidators.ValidationIssue[] { new OSGeo.MapGuide.Maestro.ResourceValidators.ValidationIssue(s, OSGeo.MapGuide.Maestro.ResourceValidators.ValidationStatus.Error, "Failed to load resource: " + ex.Message) }));
+                    }
+                    i++;
+                    worker.ReportProgress((int)((i / (double)documents.Count) * 100), s);
+                }
+
+                return issues;
+            }
+            else
+            {
+                worker.ReportProgress(-1, "Validating...");
+                return ResourceValidators.Validation.Validate(args[0], true);
+            }
+        }
+
+        private void validateResourcesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ResourceTree.SelectedNode == null)
+                return;
+
+            string resid = null;
+            if (ResourceTree.SelectedNode.Tag as MaestroAPI.ResourceListResourceDocument != null)
+                resid = (ResourceTree.SelectedNode.Tag as MaestroAPI.ResourceListResourceDocument).ResourceId;
+            else if (ResourceTree.SelectedNode.Tag as MaestroAPI.ResourceListResourceFolder != null)
+                resid = (ResourceTree.SelectedNode.Tag as MaestroAPI.ResourceListResourceFolder).ResourceId;
+
+            if (resid == null)
+                return;
+
+            try
+            {
+                WaitForOperation wdlg = new WaitForOperation();
+                wdlg.CancelAbortsThread = true;
+
+                List<KeyValuePair<string, ResourceValidators.ValidationIssue[]>> issues = 
+                    (List<KeyValuePair<string, ResourceValidators.ValidationIssue[]>>)
+                    wdlg.RunOperationAsync(this, new WaitForOperation.DoBackgroundWork(ValidateBackgroundRunner), resid);
+
+                int issuecount = 0;
+                foreach (KeyValuePair<string, ResourceValidators.ValidationIssue[]> p in issues)
+                    issuecount += p.Value.Length;
+
+                if (issuecount == 0)
+                    MessageBox.Show(this, "No issues were found", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                {
+                    ValidationResults dlg = new ValidationResults(issues);
+                    dlg.ShowDialog(this);
+                }
+            }
+            catch (CancelException)
+            { }
+            catch (Exception ex)
+            {
+                this.LastException = ex;
+                MessageBox.Show(this, "An error occured while validating: " + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 	}
 }

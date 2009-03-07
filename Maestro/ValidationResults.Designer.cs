@@ -36,11 +36,14 @@ namespace OSGeo.MapGuide.Maestro
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.SaveReportBtn = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.SaveReportBtn);
             this.panel1.Controls.Add(this.CancelBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 232);
@@ -93,6 +96,22 @@ namespace OSGeo.MapGuide.Maestro
             this.imageList1.Images.SetKeyName(1, "Warning.ico");
             this.imageList1.Images.SetKeyName(2, "Error.ico");
             // 
+            // SaveReportBtn
+            // 
+            this.SaveReportBtn.Location = new System.Drawing.Point(488, 8);
+            this.SaveReportBtn.Name = "SaveReportBtn";
+            this.SaveReportBtn.Size = new System.Drawing.Size(91, 23);
+            this.SaveReportBtn.TabIndex = 1;
+            this.SaveReportBtn.Text = "Save as file...";
+            this.SaveReportBtn.UseVisualStyleBackColor = true;
+            this.SaveReportBtn.Click += new System.EventHandler(this.SaveReportBtn_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "txt";
+            this.saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            this.saveFileDialog1.Title = "Select the filename to write the report to";
+            // 
             // ValidationResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -118,5 +137,7 @@ namespace OSGeo.MapGuide.Maestro
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button SaveReportBtn;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
