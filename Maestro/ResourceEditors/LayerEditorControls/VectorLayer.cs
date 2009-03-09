@@ -692,8 +692,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 							{
 								System.Data.DataRow row = ViewerPropertiesTable.NewRow();
 								row["Visible"] = props.ContainsKey(col.Name);
-								row["Display"] = col.Name;
-								row["Name"] = props.ContainsKey(col.Name) ? (string)props[col.Name] : col.Name;
+                                row["Name"] = col.Name;
+								row["Display"] = props.ContainsKey(col.Name) ? (string)props[col.Name] : col.Name;
 								ViewerPropertiesTable.Rows.Add(row);
 							}
 							avalibleColums.Add(col.Name);
