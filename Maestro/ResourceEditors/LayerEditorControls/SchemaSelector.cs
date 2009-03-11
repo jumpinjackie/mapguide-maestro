@@ -83,6 +83,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 					else if (m_layer.Item as OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType != null)
 						schemaName = (m_layer.Item as OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType).FeatureName;
 
+                    if (schemaName == null)
+                        schemaName = "";
+
                     schemaName = OSGeo.MapGuide.MaestroAPI.Utility.DecodeFDOName(schemaName);
 					Schema.SelectedIndex = Schema.FindString(schemaName);
 
