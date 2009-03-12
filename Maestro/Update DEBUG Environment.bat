@@ -7,5 +7,3 @@ xcopy /Y /E resourceeditors\templates bin\debug\Templates\
 xcopy /Y /E ..\maestroapi\Schemas bin\debug\Schemas\
 
 xcopy /Y /E Localization bin\debug\Localization\
-
-pause
