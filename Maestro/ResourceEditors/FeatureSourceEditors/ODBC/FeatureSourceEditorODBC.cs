@@ -128,7 +128,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 							ConnectionType.SelectedIndex = (int)DisplayTypes.Wizard;
 						else if (m_feature.Parameter["DataSourceName"] != null && m_feature.Parameter["DataSourceName"].IndexOf("Dbq=") >= 0)
 							ConnectionType.SelectedIndex = (int)DisplayTypes.Unmanaged;
-						else
+                        else if (m_feature.Parameter["ConnectionString"] != null && m_feature.Parameter["ConnectionString"].IndexOf("Dbq=") >= 0)
+                            ConnectionType.SelectedIndex = (int)DisplayTypes.Unmanaged;
+                        else
 							ConnectionType.SelectedIndex = (int)DisplayTypes.Custom;
 					}
 				}
@@ -616,8 +618,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					if (keyColumns.ContainsKey(tablename))
 						if (n.FirstChild != null && n.FirstChild.FirstChild != null & n.FirstChild.FirstChild.FirstChild != null)
 						{
-							string colName = (string)keyColumns[tablename];
+                            //Extend the class type if needed
+                            if (n.FirstChild.Name == "xs:sequence")
+                            {
+                                string tmp = "<xs:complexContent><xs:extension base=\"fdo:ClassType\">" + n.InnerXml + "</xs:extension></xs:complexContent>";
+                                n.InnerXml = tmp;
+                            }
+                            
+                            string colName = (string)keyColumns[tablename];
 							System.Xml.XmlNode seq = n.FirstChild.FirstChild.FirstChild;
+
 							if (seq.Name == "xs:sequence")
 								foreach(System.Xml.XmlNode nx in seq.ChildNodes)
 									if (nx.Name == "xs:element" && nx.Attributes["name"] != null && nx.Attributes["name"].Value == colName)
@@ -629,6 +639,36 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				}
 
 			keyColumns = approvedKeys;
+
+            Hashtable keySelectors = new Hashtable();
+            foreach (string s in keyColumns.Keys)
+                keySelectors.Add(s, null);
+
+            //Find tables with existing keys
+            foreach (System.Xml.XmlNode n in schema.FirstChild.ChildNodes)
+                if (n.Name == "xs:element" && n.Attributes["name"] != null && n.Attributes["type"] != null && keyColumns.ContainsKey(n.Attributes["name"].Value))
+                    keySelectors[n.Attributes["name"].Value] = n;
+
+            //Create selectors for non-existing keys
+            foreach(string s in keySelectors.Keys)
+                if (keySelectors[s] == null)
+            {
+    				System.Xml.XmlNode selector = schema.FirstChild.AppendChild(schema.CreateElement("xs:element", "http://www.w3.org/2001/XMLSchema"));
+                    selector.Attributes.Append(selector.OwnerDocument.CreateAttribute("name")).Value = s;
+                    selector.Attributes.Append(selector.OwnerDocument.CreateAttribute("type")).Value = "Default:" + s + "Type";
+                    selector.Attributes.Append(selector.OwnerDocument.CreateAttribute("abstract")).Value = "false";
+                    selector.Attributes.Append(selector.OwnerDocument.CreateAttribute("substitutionGroup")).Value = "gml:_Feature";
+
+                    System.Xml.XmlNode key = selector.AppendChild(selector.OwnerDocument.CreateElement("xs:key", "http://www.w3.org/2001/XMLSchema"));
+                    key.Attributes.Append(key.OwnerDocument.CreateAttribute("name")).Value = s + "Key";
+
+                    System.Xml.XmlNode sl = key.AppendChild(selector.OwnerDocument.CreateElement("xs:selector", "http://www.w3.org/2001/XMLSchema"));
+                    sl.Attributes.Append(sl.OwnerDocument.CreateAttribute("xpath")).Value = ".//" + s;
+
+                    System.Xml.XmlNode f = key.AppendChild(selector.OwnerDocument.CreateElement("xs:field", "http://www.w3.org/2001/XMLSchema"));
+                    f.Attributes.Append(f.OwnerDocument.CreateAttribute("xpath")).Value = (string)keyColumns[s];
+            }
+
 			foreach(System.Xml.XmlNode n in schema.FirstChild.ChildNodes)
 				if (n.Name == "xs:element" && n.Attributes["name"] != null && keyColumns.ContainsKey(n.Attributes["name"].Value))
 					{

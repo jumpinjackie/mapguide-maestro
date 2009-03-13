@@ -230,8 +230,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
 		}
 
 		/// <summary>
-		/// Tokenizes a connectionstring by ;. 
-		/// Curly braces and backslah escapes.
+		/// Tokenizes a connectionstring by a delimiter. 
+		/// Curly braces and backslash escapes.
 		/// Double delim also escapes.
 		/// </summary>
 		/// <param name="connectionstring">The connectionstring to tokenize</param>
