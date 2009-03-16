@@ -146,7 +146,7 @@ if not "%TYPEACTION%"=="buildinstall" goto quit
 
 :install
 echo [install] MapGuide Maestro
-%XCOPY% "%MAESTRO_DEV%\bin\%TYPEBUILD%" "%MAESTRO_OUTPUT%"
+%XCOPY% "%MAESTRO_DEV%\bin\%TYPEBUILD%" %MAESTRO_OUTPUT%
 goto quit
 
 :error
