@@ -2,8 +2,6 @@ Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.Maestro", "OSGeo.MapGuide.Maestro.csproj", "{F3BADE4F-2581-4B65-9E15-412C294DB973}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{FC5923AE-B245-4EBD-8A6A-FCAD7BD29C6E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FusionEditor", "FusionEditor\FusionEditor.csproj", "{A47D6F9A-F58D-4A2E-8E88-09CD833A160E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Globalizator", "Globalizator\Globalizator.csproj", "{361D5982-275F-4A4C-935F-0BB637330C9C}"
@@ -21,10 +19,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestroEditorInterface", "MaestroEditorInterface\MaestroEditorInterface.csproj", "{006AFE1A-BF79-4C84-888D-9396958A42BD}"
 EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -34,9 +28,6 @@ Global
 		{F3BADE4F-2581-4B65-9E15-412C294DB973}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3BADE4F-2581-4B65-9E15-412C294DB973}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3BADE4F-2581-4B65-9E15-412C294DB973}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC5923AE-B245-4EBD-8A6A-FCAD7BD29C6E}.Debug|Any CPU.ActiveCfg = Debug
-		{FC5923AE-B245-4EBD-8A6A-FCAD7BD29C6E}.Release|Any CPU.ActiveCfg = Release
-		{FC5923AE-B245-4EBD-8A6A-FCAD7BD29C6E}.Release|Any CPU.Build.0 = Release
 		{A47D6F9A-F58D-4A2E-8E88-09CD833A160E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A47D6F9A-F58D-4A2E-8E88-09CD833A160E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A47D6F9A-F58D-4A2E-8E88-09CD833A160E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -72,5 +63,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal
