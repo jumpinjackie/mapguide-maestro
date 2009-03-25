@@ -188,6 +188,7 @@ namespace OSGeo.MapGuide.Maestro
             this.textEditor.AcceptsReturn = true;
             this.textEditor.AcceptsTab = true;
             this.textEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textEditor.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textEditor.Location = new System.Drawing.Point(0, 93);
             this.textEditor.MaxLength = 0;
             this.textEditor.Multiline = true;
