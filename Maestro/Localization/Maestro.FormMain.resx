@@ -123,6 +123,9 @@
   <data name="OSGeo.MapGuide.Maestro.FormMain.NewMenu.Text" type="System.String">
     <value>New</value>
   </data>
+  <data name="OSGeo.MapGuide.Maestro.FormMain.RenameMenu.Text" type="System.String">
+    <value>Rename</value>
+  </data>
   <data name="OSGeo.MapGuide.Maestro.FormMain.ResourceTreeCopy.ToolTipText" type="System.String">
     <value>Copies the current resource or folder to the clipboard</value>
   </data>

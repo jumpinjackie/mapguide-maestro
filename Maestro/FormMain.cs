@@ -132,6 +132,7 @@ namespace OSGeo.MapGuide.Maestro
         private ToolTip TabPageTooltip;
         private ToolStripSeparator toolStripSeparator9;
         private ToolStripMenuItem validateResourcesToolStripMenuItem;
+        private ToolStripMenuItem RenameMenu;
         private string m_lastTooltip;
 
         public FormMain()
@@ -179,6 +180,8 @@ namespace OSGeo.MapGuide.Maestro
             this.PropertiesMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.CopyResourceIdMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.validateResourcesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.EditAsXmlMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.LoadFromXmlMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -255,8 +258,7 @@ namespace OSGeo.MapGuide.Maestro
             this.ResourceInfoTip = new System.Windows.Forms.ToolTip(this.components);
             this.TooltipUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.TabPageTooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.validateResourcesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.RenameMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -306,9 +308,10 @@ namespace OSGeo.MapGuide.Maestro
             this.PasteMenu,
             this.menuItem4,
             this.DeleteMenu,
-            this.NewMenu});
+            this.NewMenu,
+            this.RenameMenu});
             this.TreeContextMenu.Name = "TreeContextMenu";
-            this.TreeContextMenu.Size = new System.Drawing.Size(181, 298);
+            this.TreeContextMenu.Size = new System.Drawing.Size(181, 320);
             this.TreeContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.TreeContextMenu_Popup);
             // 
             // PropertiesMenu
@@ -330,6 +333,18 @@ namespace OSGeo.MapGuide.Maestro
             this.CopyResourceIdMenu.Text = "Copy id to clipboard";
             this.CopyResourceIdMenu.ToolTipText = "Copies the currently selected resource id to the clipboard";
             this.CopyResourceIdMenu.Click += new System.EventHandler(this.CopyResourceIdMenu_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(177, 6);
+            // 
+            // validateResourcesToolStripMenuItem
+            // 
+            this.validateResourcesToolStripMenuItem.Name = "validateResourcesToolStripMenuItem";
+            this.validateResourcesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.validateResourcesToolStripMenuItem.Text = "Validate resources";
+            this.validateResourcesToolStripMenuItem.Click += new System.EventHandler(this.validateResourcesToolStripMenuItem_Click);
             // 
             // menuItem7
             // 
@@ -996,17 +1011,12 @@ namespace OSGeo.MapGuide.Maestro
             this.TooltipUpdateTimer.Interval = 5000;
             this.TooltipUpdateTimer.Tick += new System.EventHandler(this.TooltipUpdateTimer_Tick);
             // 
-            // validateResourcesToolStripMenuItem
+            // RenameMenu
             // 
-            this.validateResourcesToolStripMenuItem.Name = "validateResourcesToolStripMenuItem";
-            this.validateResourcesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.validateResourcesToolStripMenuItem.Text = "Validate resources";
-            this.validateResourcesToolStripMenuItem.Click += new System.EventHandler(this.validateResourcesToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(177, 6);
+            this.RenameMenu.Name = "RenameMenu";
+            this.RenameMenu.Size = new System.Drawing.Size(180, 22);
+            this.RenameMenu.Text = "Rename";
+            this.RenameMenu.Click += new System.EventHandler(this.RenameMenu_Click);
             // 
             // FormMain
             // 
@@ -2793,6 +2803,12 @@ namespace OSGeo.MapGuide.Maestro
                 this.LastException = ex;
                 MessageBox.Show(this, "An error occured while validating: " + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void RenameMenu_Click(object sender, EventArgs e)
+        {
+            TreeNode node = ResourceTree.SelectedNode;
+            node.BeginEdit();
         }
 	}
 }

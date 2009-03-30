@@ -123,6 +123,9 @@
   <data name="OSGeo.MapGuide.Maestro.FormMain.NewMenu.Text" type="System.String">
     <value>Ny</value>
   </data>
+  <data name="OSGeo.MapGuide.Maestro.FormMain.RenameMenu.Text" type="System.String">
+    <value>Omdøb</value>
+  </data>
   <data name="OSGeo.MapGuide.Maestro.FormMain.ResourceTreeCopy.ToolTipText" type="System.String">
     <value>Kopierer det valgte element ind i klippebordet</value>
   </data>
