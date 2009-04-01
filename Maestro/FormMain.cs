@@ -127,8 +127,6 @@ namespace OSGeo.MapGuide.Maestro
         private ToolStripMenuItem TabCopyIdMenu;
 
         private Exception m_lastException;
-        private ToolTip ResourceInfoTip;
-        private Timer TooltipUpdateTimer;
         private ToolTip TabPageTooltip;
         private ToolStripSeparator toolStripSeparator9;
         private ToolStripMenuItem validateResourcesToolStripMenuItem;
@@ -193,6 +191,7 @@ namespace OSGeo.MapGuide.Maestro
             this.menuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.DeleteMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.NewMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.RenameMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ResourceTreeToolbar = new System.Windows.Forms.ToolStrip();
             this.AddResourceButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.DeleteResourceButton = new System.Windows.Forms.ToolStripButton();
@@ -255,10 +254,7 @@ namespace OSGeo.MapGuide.Maestro
             this.TabSaveAsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.TabCopyIdMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.ResourceInfoTip = new System.Windows.Forms.ToolTip(this.components);
-            this.TooltipUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.TabPageTooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.RenameMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -277,13 +273,13 @@ namespace OSGeo.MapGuide.Maestro
             this.ResourceTree.LabelEdit = true;
             this.ResourceTree.Location = new System.Drawing.Point(0, 39);
             this.ResourceTree.Name = "ResourceTree";
+            this.ResourceTree.ShowNodeToolTips = true;
             this.ResourceTree.Size = new System.Drawing.Size(278, 391);
             this.ResourceTree.TabIndex = 0;
             this.ResourceTree.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.ResourceTree_AfterLabelEdit);
             this.ResourceTree.DoubleClick += new System.EventHandler(this.ResourceTree_DoubleClick);
             this.ResourceTree.DragDrop += new System.Windows.Forms.DragEventHandler(this.ResourceTree_DragDrop);
             this.ResourceTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ResourceTree_AfterSelect);
-            this.ResourceTree.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ResourceTree_MouseMove);
             this.ResourceTree.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ResourceTree_MouseDown);
             this.ResourceTree.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ResourceTree_KeyUp);
             this.ResourceTree.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.ResourceTree_BeforeLabelEdit);
@@ -311,7 +307,7 @@ namespace OSGeo.MapGuide.Maestro
             this.NewMenu,
             this.RenameMenu});
             this.TreeContextMenu.Name = "TreeContextMenu";
-            this.TreeContextMenu.Size = new System.Drawing.Size(181, 320);
+            this.TreeContextMenu.Size = new System.Drawing.Size(181, 298);
             this.TreeContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.TreeContextMenu_Popup);
             // 
             // PropertiesMenu
@@ -418,6 +414,13 @@ namespace OSGeo.MapGuide.Maestro
             this.NewMenu.Name = "NewMenu";
             this.NewMenu.Size = new System.Drawing.Size(180, 22);
             this.NewMenu.Text = "New";
+            // 
+            // RenameMenu
+            // 
+            this.RenameMenu.Name = "RenameMenu";
+            this.RenameMenu.Size = new System.Drawing.Size(180, 22);
+            this.RenameMenu.Text = "Rename";
+            this.RenameMenu.Click += new System.EventHandler(this.RenameMenu_Click);
             // 
             // ResourceTreeToolbar
             // 
@@ -1001,23 +1004,6 @@ namespace OSGeo.MapGuide.Maestro
             this.TabCopyIdMenu.Text = "Copy id to clipboard";
             this.TabCopyIdMenu.Click += new System.EventHandler(this.TabCopyIdMenu_Click);
             // 
-            // ResourceInfoTip
-            // 
-            this.ResourceInfoTip.AutomaticDelay = 1000;
-            this.ResourceInfoTip.Popup += new System.Windows.Forms.PopupEventHandler(this.ResourceInfoTip_Popup);
-            // 
-            // TooltipUpdateTimer
-            // 
-            this.TooltipUpdateTimer.Interval = 5000;
-            this.TooltipUpdateTimer.Tick += new System.EventHandler(this.TooltipUpdateTimer_Tick);
-            // 
-            // RenameMenu
-            // 
-            this.RenameMenu.Name = "RenameMenu";
-            this.RenameMenu.Size = new System.Drawing.Size(180, 22);
-            this.RenameMenu.Text = "Rename";
-            this.RenameMenu.Click += new System.EventHandler(this.RenameMenu_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
@@ -1282,7 +1268,8 @@ namespace OSGeo.MapGuide.Maestro
 					n.Text = m_editors.GetResourceNameFromResourceID(folder.ResourceId);
 					n.Tag = folder;
 					n.ImageIndex = n.SelectedImageIndex = m_editors.FolderIcon;
-					FindParent(folder.ResourceId).Add(n);
+                    n.ToolTipText = string.Format(m_globalizor.Translate("Resource name: {0}\r\nResource type: {1}\r\nCreated: {2}\r\nLast modified: {3}"), new MaestroAPI.ResourceIdentifier(folder.ResourceId.Substring(0, folder.ResourceId.Length - 1) + ".Folder").Name, m_globalizor.Translate("Folder"), folder.CreatedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture), folder.ModifiedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture)); 
+                    FindParent(folder.ResourceId).Add(n);
 				}
 
 
@@ -1293,6 +1280,20 @@ namespace OSGeo.MapGuide.Maestro
 					n.Text = m_editors.GetResourceNameFromResourceID(document.ResourceId);
 					n.Tag = document;
 					n.ImageIndex = n.SelectedImageIndex = m_editors.GetImageIndexFromResourceID(document.ResourceId);
+
+                    n.ToolTipText = string.Format(m_globalizor.Translate("Resource name: {0}\r\nResource type: {1}\r\nCreated: {2}\r\nLast modified: {3}"), new MaestroAPI.ResourceIdentifier(document.ResourceId).Name, new MaestroAPI.ResourceIdentifier(document.ResourceId).Extension, document.CreatedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture), document.ModifiedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture));
+
+                    if (new MaestroAPI.ResourceIdentifier(document.ResourceId).Extension == "LayerDefinition" || new MaestroAPI.ResourceIdentifier(document.ResourceId).Extension == "FeatureSource")
+                    {
+                        bool published = false;
+                        string serviceType = new MaestroAPI.ResourceIdentifier(document.ResourceId).Extension == "LayerDefinition" ? "WMS" : "WFS";
+                        if (document.ResourceDocumentHeader != null && document.ResourceDocumentHeader.Metadata != null && document.ResourceDocumentHeader.Metadata.Simple != null && document.ResourceDocumentHeader.Metadata.Simple.Property["_IsPublished"] == "1")
+                            published = true;
+
+                        n.ToolTipText += "\r\n" + string.Format(m_globalizor.Translate("{0} published: {1}"), serviceType, published);
+                    }
+
+
 					FindParent(document.ResourceId).Add(n);
 				}
 
@@ -2578,68 +2579,6 @@ namespace OSGeo.MapGuide.Maestro
         private void FormMain_Move(object sender, EventArgs e)
         {
             FormMain_SizeChanged(sender, e);
-        }
-
-        private void ResourceInfoTip_Popup(object sender, PopupEventArgs e)
-        {
-            
-        }
-
-        private void ResourceTree_MouseMove(object sender, MouseEventArgs e)
-        {
-            //TODO: The tooltip is a bit annoying...
-            //TooltipUpdateTimer.Enabled = false;
-            //TooltipUpdateTimer.Interval = m_lastTooltip == "" ? 5000 : 1000;
-            TooltipUpdateTimer.Enabled = true;
-            /*if (m_lastTooltip != "")
-                ResourceInfoTip.RemoveAll();*/
-        }
-
-        private void TooltipUpdateTimer_Tick(object sender, EventArgs e)
-        {
-            TooltipUpdateTimer.Enabled = false;
-
-            Point p = ResourceTree.PointToClient(Cursor.Position);
-            TreeNode n = ResourceTree.GetNodeAt(p);
-            if (n == null || n.Tag == null)
-            {
-                ResourceInfoTip.RemoveAll();
-                m_lastTooltip = "";
-            }
-            else if (n.Tag is MaestroAPI.ResourceListResourceDocument)
-            {
-                MaestroAPI.ResourceListResourceDocument d = n.Tag as MaestroAPI.ResourceListResourceDocument;
-                string tooltip = string.Format(m_globalizor.Translate("Resource name: {0}\r\nResource type: {1}\r\nCreated: {2}\r\nLast modified: {3}"), new MaestroAPI.ResourceIdentifier(d.ResourceId).Name, new MaestroAPI.ResourceIdentifier(d.ResourceId).Extension, d.CreatedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture), d.ModifiedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture));
-
-                if (new MaestroAPI.ResourceIdentifier(d.ResourceId).Extension == "LayerDefinition" || new MaestroAPI.ResourceIdentifier(d.ResourceId).Extension == "FeatureSource")
-                {
-                    bool published = false;
-                    string serviceType = new MaestroAPI.ResourceIdentifier(d.ResourceId).Extension == "LayerDefinition" ? "WMS" : "WFS";
-                    if (d.ResourceDocumentHeader != null && d.ResourceDocumentHeader.Metadata != null && d.ResourceDocumentHeader.Metadata.Simple != null && d.ResourceDocumentHeader.Metadata.Simple.Property["_IsPublished"] == "1")
-                        published = true;
-
-                    tooltip += "\r\n" + string.Format(m_globalizor.Translate("{0} published: {1}"), serviceType, published);
-                }
-
-                //if (tooltip != m_lastTooltip)
-                    ResourceInfoTip.SetToolTip(ResourceTree, tooltip);
-                m_lastTooltip = tooltip;
-            }
-            else if (n.Tag is MaestroAPI.ResourceListResourceFolder)
-            {
-                MaestroAPI.ResourceListResourceFolder d = n.Tag as MaestroAPI.ResourceListResourceFolder;
-
-                string tooltip = string.Format(m_globalizor.Translate("Resource name: {0}\r\nResource type: {1}\r\nCreated: {2}\r\nLast modified: {3}"), new MaestroAPI.ResourceIdentifier(d.ResourceId.Substring(0, d.ResourceId.Length - 1) + ".Folder").Name, m_globalizor.Translate("Folder"), d.CreatedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture), d.ModifiedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture));
-                //if (tooltip != m_lastTooltip)
-                    ResourceInfoTip.SetToolTip(ResourceTree, tooltip);
-                m_lastTooltip = tooltip;
-            }
-            else
-            {
-                ResourceInfoTip.RemoveAll();
-                m_lastTooltip = "";
-            }
-
         }
 
         private void tabItems_MouseMove(object sender, MouseEventArgs e)
