@@ -69,36 +69,14 @@ namespace OSGeo.MapGuide.Maestro
             get 
             {
                 if (_ApplicationSettings == null)
-                {
-                    try
-                    {
-                        if (System.IO.File.Exists(AppSettingFile))
-                        {
-                            System.Xml.Serialization.XmlSerializer sz = new System.Xml.Serialization.XmlSerializer(typeof(PreferedSiteList));
-                            using (System.IO.FileStream fs = System.IO.File.Open(AppSettingFile, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.None))
-                                return (PreferedSiteList)sz.Deserialize(fs);
-                        }
-                        else
-                            _ApplicationSettings = new PreferedSiteList();
-                    }
-                    catch
-                    {
-                        _ApplicationSettings = new PreferedSiteList();
-                    }
-                }
+                    _ApplicationSettings = PreferedSiteList.Load();
 
                 return _ApplicationSettings;
             }
             set
             {
-                System.Xml.Serialization.XmlSerializer sz = new System.Xml.Serialization.XmlSerializer(typeof(PreferedSiteList));
-                using (System.IO.FileStream fs = System.IO.File.Open(AppSettingFile, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                {
-                    fs.SetLength(0);
-                    sz.Serialize(fs, value);
-                }
-
                 _ApplicationSettings = value;
+                _ApplicationSettings.Save();
             }
         }
 

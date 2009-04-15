@@ -1595,11 +1595,44 @@ namespace OSGeo.MapGuide.MaestroAPI
             set { m_serverConnection = value; }
         }
 
+        /// <summary>
+        /// Returns the spatial extent of the data. 
+        /// This is calculated by asking the underlying featuresource for the minimum rectangle that
+        /// contains all the features in the specified table.
+        /// </summary>
+        /// <returns>The envelope for the data in the table</returns>
         public Topology.Geometries.IEnvelope GetSpatialExtent()
         {
-            return GetSpatialExtent(null);
+            return GetSpatialExtent(false);
         }
 
+        /// <summary>
+        /// Returns the spatial extent of the data. 
+        /// This is calculated by asking the underlying featuresource for the minimum rectangle that
+        /// contains all the features in the specified table. If the <paramref name="allowFallbackToContextInformation"/>
+        /// is set to true, and the query fails, the code will attempt to read this information
+        /// from the spatial context information instead.
+        /// </summary>
+        /// <param name="allowFallbackToContextInformation">True to allow reading spatial extents from the spatial context information, if the spatial query fails.</param>
+        /// <returns>The envelope for the data in the table</returns>
+        public Topology.Geometries.IEnvelope GetSpatialExtent(bool allowFallbackToContextInformation)
+        {
+            if (this.CurrentConnection == null)
+                throw new System.Exception("No server set for object");
+
+            if (this.Item as VectorLayerDefinitionType != null)
+                return this.CurrentConnection.GetSpatialExtent(this.Item.ResourceId, (this.Item as VectorLayerDefinitionType).FeatureName, (this.Item as VectorLayerDefinitionType).Geometry, allowFallbackToContextInformation);
+            else if (this.Item as GridLayerDefinitionType != null)
+                return this.CurrentConnection.GetSpatialExtent(this.Item.ResourceId, (this.Item as GridLayerDefinitionType).FeatureName, (this.Item as GridLayerDefinitionType).Geometry, allowFallbackToContextInformation);
+            else
+                return null;
+        }
+
+        /// <summary>
+        /// Returns the spatial extent for the data mathcing the specified filter.
+        /// </summary>
+        /// <param name="filter">The filter to apply to the data</param>
+        /// <returns>The envelope for the data mathcing the specified filter</returns>
         public Topology.Geometries.IEnvelope GetSpatialExtent(string filter)
         {
             if (this.CurrentConnection == null)
@@ -1611,7 +1644,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return this.CurrentConnection.GetSpatialExtent(this.Item.ResourceId, (this.Item as GridLayerDefinitionType).FeatureName, (this.Item as GridLayerDefinitionType).Geometry, filter);
             else
                 return null;
-
         }
 
     }

@@ -1349,7 +1349,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public override System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
         {
-            string req = m_reqBuilder.GetTile(mapdefinition, baselayergroup, row, col, scaleindex, format);
+            string req = m_reqBuilder.GetTile(mapdefinition, baselayergroup, row, col, scaleindex, format, m_wc.Credentials == null);
             return this.OpenRead(req);
         }
 

@@ -61,7 +61,6 @@ namespace OSGeo.MapGuide.Maestro
 			InitializeComponent();
 
 			m_globalizor = new Globalizator.Globalizator(this);
-            this.Icon = FormMain.MaestroIcon;
 
 			this.toolTip.SetToolTip(this.cmbServerUrl, m_globalizor.Translate("Enter the full URL of the MapAgent service here"));
 			this.toolTip.SetToolTip(this.txtStartingpoint, m_globalizor.Translate("Enter the initial directory here"));
@@ -370,7 +369,7 @@ namespace OSGeo.MapGuide.Maestro
 						m_sitelist.AutoConnect = chkAutoConnect.Checked;
 						m_sitelist.PreferedSite = index;
 
-                        Program.ApplicationSettings = m_sitelist;
+                        m_sitelist.Save();
 					}
 					catch (Exception ex)
 					{
@@ -390,7 +389,7 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void FormLogin_Load(object sender, System.EventArgs e)
 		{
-            m_sitelist = Program.ApplicationSettings;
+            m_sitelist = PreferedSiteList.Load();
 
             if (m_sitelist.Sites.Length == 0)
 			{

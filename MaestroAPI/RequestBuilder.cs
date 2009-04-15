@@ -1108,12 +1108,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
-        public string GetTile(string mapdefinition, string groupname, int row, int col, int scaleindex, string format)
+        public string GetTile(string mapdefinition, string groupname, int row, int col, int scaleindex, string format, bool includeSessionID)
         {
             NameValueCollection param = new NameValueCollection();
             param.Add("OPERATION", "GETTILEIMAGE");
             param.Add("VERSION", "1.2.0");
-            param.Add("SESSION", m_sessionID);
+            if (includeSessionID)
+                param.Add("SESSION", m_sessionID);
             param.Add("SCALEINDEX", scaleindex.ToString());
             param.Add("MAPDEFINITION", mapdefinition);
             param.Add("FORMAT", format);

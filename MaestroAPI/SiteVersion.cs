@@ -35,6 +35,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		MapGuideEP2009,
         MapGuideOS2_0_2,
         MapGuideEP2009_SP1,
+        MapGuideEP2010,
 	}
 
 	public class SiteVersions
@@ -51,6 +52,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			new Version(2,0,0,3202),
             new Version(2,0,2,3011),
             new Version(2,0,2,3402),
+            new Version(2,1,0,3001),
 		};
 
 		public static Version GetVersion(KnownSiteVersions index)

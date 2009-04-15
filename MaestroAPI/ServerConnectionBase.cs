@@ -287,7 +287,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// </summary>
 		virtual public Version MaxTestedVersion
 		{
-			get { return SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP2009_SP1); }
+			get { return SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP2010); }
 		}
 
 		/// <summary>
@@ -1969,24 +1969,59 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public virtual Topology.Geometries.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry)
         {
-            return GetSpatialExtent(resourceID, schema, null);
+            return GetSpatialExtent(resourceID, schema, geometry, null, false);
         }
 
         public virtual Topology.Geometries.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, string filter)
         {
-            System.Collections.Specialized.NameValueCollection fun = new System.Collections.Specialized.NameValueCollection();
-            fun.Add("extent", "SpatialExtents(\"" + geometry + "\")");
-            using (FeatureSetReader fsr = AggregateQueryFeatureSource(resourceID, schema, filter, fun))
-                if (fsr.Read())
-                {
-                    Topology.Geometries.IGeometry geom = fsr.Row["extent"] as Topology.Geometries.IGeometry;
-                    if (geom == null)
-                        throw new Exception("No data found in resource: " + resourceID);
+            return GetSpatialExtent(resourceID, schema, geometry, filter, false);
+        }
+
+        public virtual Topology.Geometries.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, bool allowFallbackToContextInformation)
+        {
+            return GetSpatialExtent(resourceID, schema, geometry, null, allowFallbackToContextInformation);
+        }
+
+        protected virtual Topology.Geometries.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, string filter, bool allowFallbackToContextInformation)
+        {
+            try
+            {
+                System.Collections.Specialized.NameValueCollection fun = new System.Collections.Specialized.NameValueCollection();
+                fun.Add("extent", "SpatialExtents(\"" + geometry + "\")");
+                using (FeatureSetReader fsr = AggregateQueryFeatureSource(resourceID, schema, filter, fun))
+                    if (fsr.Read())
+                    {
+                        Topology.Geometries.IGeometry geom = fsr.Row["extent"] as Topology.Geometries.IGeometry;
+                        if (geom == null)
+                            throw new Exception("No data found in resource: " + resourceID);
+                        else
+                            return geom.EnvelopeInternal;
+                    }
                     else
-                        return geom.EnvelopeInternal;
-                }
-                else
-                    throw new Exception("No data found in resource: " + resourceID);
+                        throw new Exception("No data found in resource: " + resourceID);
+            }
+            catch
+            {
+                if (allowFallbackToContextInformation)
+                    try
+                    {
+                        OSGeo.MapGuide.MaestroAPI.FdoSpatialContextList lst = this.GetSpatialContextInfo(resourceID, false);
+                        if (lst.SpatialContext != null && lst.SpatialContext.Count >= 1)
+                        {
+                            return new Topology.Geometries.Envelope(
+                                double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.X, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture),
+                                double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.X, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture),
+                                double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.Y, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture),
+                                double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.Y, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture)
+                            );
+                        }
+                    }
+                    catch
+                    {
+                    }
+
+                throw;
+            }
         }
 
 

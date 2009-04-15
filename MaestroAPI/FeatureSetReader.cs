@@ -407,15 +407,43 @@ namespace OSGeo.MapGuide.MaestroAPI
 					m_items[ordinal] = XmlConvert.ToDouble(p["Value"].InnerText);
 				else if (parent.Columns[ordinal].Type == typeof(bool))
 					m_items[ordinal] = XmlConvert.ToBoolean(p["Value"].InnerText);
-				else if (parent.Columns[ordinal].Type == typeof(DateTime))
-					m_items[ordinal] = XmlConvert.ToDateTime(p["Value"].InnerText, XmlDateTimeSerializationMode.Unspecified);
-				else if (parent.Columns[ordinal].Type == Utility.GeometryType)
-				{
-					m_items[ordinal] = p["Value"].InnerText; //Geometry.WKTReader.Deserialize(p["Value"].InnerText);
-					m_lazyloadGeometry[ordinal] = true;
-				}
-				else
-					throw new Exception("Unknown type: " + parent.Columns[ordinal].Type.FullName);
+                else if (parent.Columns[ordinal].Type == typeof(DateTime))
+                {
+                    //Fix for broken ODBC provider
+                    string v = p["Value"].InnerText;
+
+                    if (v.Trim().ToUpper().StartsWith("TIMESTAMP"))
+                        v = v.Trim().Substring("TIMESTAMP".Length).Trim();
+                    else if (v.Trim().ToUpper().StartsWith("DATE"))
+                        v = v.Trim().Substring("DATE".Length).Trim();
+                    else if (v.Trim().ToUpper().StartsWith("TIME"))
+                        v = v.Trim().Substring("TIME".Length).Trim();
+
+                    if (v != p["Value"].InnerText)
+                    {
+                        if (v.StartsWith("'"))
+                            v = v.Substring(1);
+                        if (v.EndsWith("'"))
+                            v = v.Substring(0, v.Length - 1);
+
+                        m_items[ordinal] = DateTime.Parse(v, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.NoCurrentDateDefault);
+                    }
+                    else
+                        m_items[ordinal] = XmlConvert.ToDateTime(v, XmlDateTimeSerializationMode.Unspecified);
+                }
+                else if (parent.Columns[ordinal].Type == Utility.GeometryType)
+                {
+                    m_items[ordinal] = p["Value"].InnerText;
+                    if (string.IsNullOrEmpty(p["Value"].InnerText))
+                    {
+                        m_nulls[ordinal] = true;
+                        m_items[ordinal] = null;
+                    }
+                    else
+                        m_lazyloadGeometry[ordinal] = true;
+                }
+                else
+                    throw new Exception("Unknown type: " + parent.Columns[ordinal].Type.FullName);
 			}
 		}
 

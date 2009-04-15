@@ -1907,27 +1907,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 				OSGeo.MapGuide.MaestroAPI.LayerDefinition ldef = m_editor.CurrentConnection.GetLayerDefinition(ml.ResourceId);
 
-                try
-                {
-                    Topology.Geometries.IEnvelope env = ldef.GetSpatialExtent();
-                    txtLowerX.Text = env.MinX.ToString(System.Globalization.CultureInfo.CurrentUICulture);
-                    txtLowerY.Text = env.MinY.ToString(System.Globalization.CultureInfo.CurrentUICulture);
-                    txtUpperX.Text = env.MaxX.ToString(System.Globalization.CultureInfo.CurrentUICulture);
-                    txtUpperY.Text = env.MaxY.ToString(System.Globalization.CultureInfo.CurrentUICulture);
-                }
-                catch
-                {
-                    OSGeo.MapGuide.MaestroAPI.FdoSpatialContextList lst = m_editor.CurrentConnection.GetSpatialContextInfo(ldef.Item.ResourceId, false);
-                    if (lst.SpatialContext != null && lst.SpatialContext.Count >= 1)
-                    {
-                        txtLowerX.Text = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.X, System.Globalization.CultureInfo.InvariantCulture).ToString(System.Globalization.CultureInfo.CurrentUICulture);
-                        txtLowerY.Text = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.Y, System.Globalization.CultureInfo.InvariantCulture).ToString(System.Globalization.CultureInfo.CurrentUICulture);
-                        txtUpperX.Text = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.X, System.Globalization.CultureInfo.InvariantCulture).ToString(System.Globalization.CultureInfo.CurrentUICulture);
-                        txtUpperY.Text = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.Y, System.Globalization.CultureInfo.InvariantCulture).ToString(System.Globalization.CultureInfo.CurrentUICulture);
-                    }
-                    else
-                        throw new Exception("No spatial data found in layer");
-                }
+                Topology.Geometries.IEnvelope env = ldef.GetSpatialExtent(true);
+                txtLowerX.Text = env.MinX.ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                txtLowerY.Text = env.MinY.ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                txtUpperX.Text = env.MaxX.ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                txtUpperY.Text = env.MaxY.ToString(System.Globalization.CultureInfo.CurrentUICulture);
 			}
 			catch (Exception ex)
 			{

@@ -1088,16 +1088,23 @@ namespace OSGeo.MapGuide.Maestro
             this.Move += new System.EventHandler(this.FormMain_Move);
 
 			FormLogin frm = new FormLogin();
+            frm.Icon = FormMain.MaestroIcon;
+
             frm.StartPosition = FormStartPosition.CenterParent;
 			frm.UseAutoConnect = true;
 
-			if (frm.ShowDialog(this) == DialogResult.OK)
-				m_connection = frm.Connection;
-			else
-			{
-				Application.Exit();
-				return;
-			}
+            DialogResult res = frm.ShowDialog(this);
+
+            if (frm.ShowDialog(this) == DialogResult.OK)
+                m_connection = frm.Connection;
+            else
+            {
+                Application.Exit();
+                return;
+            }
+
+            //Reset
+            Program.ApplicationSettings = PreferedSiteList.Load();
 
             //TODO: Allow thirdparty validators as well
             ResourceValidators.ResourceValidatorLoader.LoadStockValidators();

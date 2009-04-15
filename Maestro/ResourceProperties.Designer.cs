@@ -30,6 +30,9 @@ namespace OSGeo.MapGuide.Maestro
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResourceProperties));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.OKBtn = new System.Windows.Forms.Button();
@@ -91,8 +94,10 @@ namespace OSGeo.MapGuide.Maestro
             this.ItemValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
             this.ResourceID = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.AutoGenerateWMSBounds = new System.Windows.Forms.Button();
+            this.AutoGenerateWFSBounds = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SecurityTab.SuspendLayout();
@@ -113,16 +118,16 @@ namespace OSGeo.MapGuide.Maestro
             this.panel1.Controls.Add(this.CancelBtn);
             this.panel1.Controls.Add(this.OKBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 423);
+            this.panel1.Location = new System.Drawing.Point(0, 419);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(358, 40);
+            this.panel1.Size = new System.Drawing.Size(354, 40);
             this.panel1.TabIndex = 0;
             // 
             // CancelBtn
             // 
             this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(183, 8);
+            this.CancelBtn.Location = new System.Drawing.Point(181, 8);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(75, 23);
             this.CancelBtn.TabIndex = 1;
@@ -132,7 +137,7 @@ namespace OSGeo.MapGuide.Maestro
             // OKBtn
             // 
             this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.OKBtn.Location = new System.Drawing.Point(95, 8);
+            this.OKBtn.Location = new System.Drawing.Point(93, 8);
             this.OKBtn.Name = "OKBtn";
             this.OKBtn.Size = new System.Drawing.Size(75, 23);
             this.OKBtn.TabIndex = 0;
@@ -150,8 +155,9 @@ namespace OSGeo.MapGuide.Maestro
             this.tabControl1.Location = new System.Drawing.Point(0, 32);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(358, 391);
+            this.tabControl1.Size = new System.Drawing.Size(354, 387);
             this.tabControl1.TabIndex = 1;
+            this.toolTip.SetToolTip(this.tabControl1, "Click to read the current bounds from the data source");
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // SecurityTab
@@ -161,7 +167,7 @@ namespace OSGeo.MapGuide.Maestro
             this.SecurityTab.Location = new System.Drawing.Point(4, 22);
             this.SecurityTab.Name = "SecurityTab";
             this.SecurityTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SecurityTab.Size = new System.Drawing.Size(350, 365);
+            this.SecurityTab.Size = new System.Drawing.Size(346, 361);
             this.SecurityTab.TabIndex = 0;
             this.SecurityTab.Text = "Security";
             this.SecurityTab.UseVisualStyleBackColor = true;
@@ -191,7 +197,7 @@ namespace OSGeo.MapGuide.Maestro
             this.UsersAndGroups.FullRowSelect = true;
             this.UsersAndGroups.Location = new System.Drawing.Point(16, 40);
             this.UsersAndGroups.Name = "UsersAndGroups";
-            this.UsersAndGroups.Size = new System.Drawing.Size(320, 314);
+            this.UsersAndGroups.Size = new System.Drawing.Size(316, 310);
             this.UsersAndGroups.SmallImageList = this.UserAndGroupImages;
             this.UsersAndGroups.TabIndex = 0;
             this.toolTip.SetToolTip(this.UsersAndGroups, "Right click to change access rights");
@@ -273,7 +279,7 @@ namespace OSGeo.MapGuide.Maestro
             this.WMSTab.Location = new System.Drawing.Point(4, 22);
             this.WMSTab.Name = "WMSTab";
             this.WMSTab.Padding = new System.Windows.Forms.Padding(3);
-            this.WMSTab.Size = new System.Drawing.Size(350, 363);
+            this.WMSTab.Size = new System.Drawing.Size(346, 361);
             this.WMSTab.TabIndex = 1;
             this.WMSTab.Text = "WMS";
             this.WMSTab.UseVisualStyleBackColor = true;
@@ -281,7 +287,7 @@ namespace OSGeo.MapGuide.Maestro
             // WMSClearHeaderButton
             // 
             this.WMSClearHeaderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.WMSClearHeaderButton.Location = new System.Drawing.Point(224, 329);
+            this.WMSClearHeaderButton.Location = new System.Drawing.Point(220, 325);
             this.WMSClearHeaderButton.Name = "WMSClearHeaderButton";
             this.WMSClearHeaderButton.Size = new System.Drawing.Size(119, 23);
             this.WMSClearHeaderButton.TabIndex = 10;
@@ -293,6 +299,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.AutoGenerateWMSBounds);
             this.groupBox2.Controls.Add(this.EditWMSBounds);
             this.groupBox2.Controls.Add(this.WMSBounds);
             this.groupBox2.Controls.Add(this.label4);
@@ -301,7 +308,7 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox2.Controls.Add(this.WMSAvalible);
             this.groupBox2.Location = new System.Drawing.Point(8, 176);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(336, 144);
+            this.groupBox2.Size = new System.Drawing.Size(332, 144);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Functionality";
@@ -387,7 +394,7 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(8, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(336, 160);
+            this.groupBox1.Size = new System.Drawing.Size(332, 160);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Description";
@@ -476,7 +483,7 @@ namespace OSGeo.MapGuide.Maestro
             this.WFSTab.Location = new System.Drawing.Point(4, 22);
             this.WFSTab.Name = "WFSTab";
             this.WFSTab.Padding = new System.Windows.Forms.Padding(3);
-            this.WFSTab.Size = new System.Drawing.Size(350, 363);
+            this.WFSTab.Size = new System.Drawing.Size(346, 361);
             this.WFSTab.TabIndex = 2;
             this.WFSTab.Text = "WFS";
             this.WFSTab.UseVisualStyleBackColor = true;
@@ -484,7 +491,7 @@ namespace OSGeo.MapGuide.Maestro
             // WFSClearHeaderButton
             // 
             this.WFSClearHeaderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.WFSClearHeaderButton.Location = new System.Drawing.Point(224, 328);
+            this.WFSClearHeaderButton.Location = new System.Drawing.Point(220, 324);
             this.WFSClearHeaderButton.Name = "WFSClearHeaderButton";
             this.WFSClearHeaderButton.Size = new System.Drawing.Size(119, 23);
             this.WFSClearHeaderButton.TabIndex = 11;
@@ -496,6 +503,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.AutoGenerateWFSBounds);
             this.groupBox4.Controls.Add(this.WFSOtherSRS);
             this.groupBox4.Controls.Add(this.WFSPrimarySRS);
             this.groupBox4.Controls.Add(this.label12);
@@ -506,7 +514,7 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox4.Controls.Add(this.WFSAvalible);
             this.groupBox4.Location = new System.Drawing.Point(7, 176);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(336, 144);
+            this.groupBox4.Size = new System.Drawing.Size(332, 144);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Functionality";
@@ -608,7 +616,7 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Location = new System.Drawing.Point(7, 8);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(336, 160);
+            this.groupBox3.Size = new System.Drawing.Size(332, 160);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Description";
@@ -695,7 +703,7 @@ namespace OSGeo.MapGuide.Maestro
             this.CustomTab.Controls.Add(this.dataGridView1);
             this.CustomTab.Location = new System.Drawing.Point(4, 22);
             this.CustomTab.Name = "CustomTab";
-            this.CustomTab.Size = new System.Drawing.Size(350, 363);
+            this.CustomTab.Size = new System.Drawing.Size(350, 365);
             this.CustomTab.TabIndex = 3;
             this.CustomTab.Text = "Custom Metadata";
             this.CustomTab.UseVisualStyleBackColor = true;
@@ -716,12 +724,36 @@ namespace OSGeo.MapGuide.Maestro
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemKey,
             this.ItemValue});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Location = new System.Drawing.Point(8, 8);
             this.dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Size = new System.Drawing.Size(336, 312);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Leave += new System.EventHandler(this.dataGridView1_Leave);
@@ -743,8 +775,18 @@ namespace OSGeo.MapGuide.Maestro
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(358, 32);
+            this.panel2.Size = new System.Drawing.Size(354, 32);
             this.panel2.TabIndex = 2;
+            // 
+            // ResourceID
+            // 
+            this.ResourceID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResourceID.Location = new System.Drawing.Point(88, 6);
+            this.ResourceID.Name = "ResourceID";
+            this.ResourceID.ReadOnly = true;
+            this.ResourceID.Size = new System.Drawing.Size(260, 20);
+            this.ResourceID.TabIndex = 1;
             // 
             // label13
             // 
@@ -755,22 +797,33 @@ namespace OSGeo.MapGuide.Maestro
             this.label13.TabIndex = 0;
             this.label13.Text = "Resource ID";
             // 
-            // ResourceID
+            // AutoGenerateWMSBounds
             // 
-            this.ResourceID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResourceID.Location = new System.Drawing.Point(88, 6);
-            this.ResourceID.Name = "ResourceID";
-            this.ResourceID.ReadOnly = true;
-            this.ResourceID.Size = new System.Drawing.Size(264, 20);
-            this.ResourceID.TabIndex = 1;
+            this.AutoGenerateWMSBounds.Image = ((System.Drawing.Image)(resources.GetObject("AutoGenerateWMSBounds.Image")));
+            this.AutoGenerateWMSBounds.Location = new System.Drawing.Point(304, 116);
+            this.AutoGenerateWMSBounds.Name = "AutoGenerateWMSBounds";
+            this.AutoGenerateWMSBounds.Size = new System.Drawing.Size(24, 20);
+            this.AutoGenerateWMSBounds.TabIndex = 9;
+            this.toolTip.SetToolTip(this.AutoGenerateWMSBounds, "Click to read the current bounds from the data source");
+            this.AutoGenerateWMSBounds.UseVisualStyleBackColor = true;
+            this.AutoGenerateWMSBounds.Click += new System.EventHandler(this.AutoGenerateWMSBounds_Click);
+            // 
+            // AutoGenerateWFSBounds
+            // 
+            this.AutoGenerateWFSBounds.Image = ((System.Drawing.Image)(resources.GetObject("AutoGenerateWFSBounds.Image")));
+            this.AutoGenerateWFSBounds.Location = new System.Drawing.Point(304, 116);
+            this.AutoGenerateWFSBounds.Name = "AutoGenerateWFSBounds";
+            this.AutoGenerateWFSBounds.Size = new System.Drawing.Size(24, 20);
+            this.AutoGenerateWFSBounds.TabIndex = 15;
+            this.AutoGenerateWFSBounds.UseVisualStyleBackColor = true;
+            this.AutoGenerateWFSBounds.Click += new System.EventHandler(this.AutoGenerateWFSBounds_Click);
             // 
             // ResourceProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(358, 463);
+            this.ClientSize = new System.Drawing.Size(354, 459);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -865,5 +918,7 @@ namespace OSGeo.MapGuide.Maestro
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox ResourceID;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button AutoGenerateWMSBounds;
+        private System.Windows.Forms.Button AutoGenerateWFSBounds;
     }
 }

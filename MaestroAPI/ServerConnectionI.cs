@@ -99,6 +99,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         Topology.Geometries.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry);
         Topology.Geometries.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, string filter);
+        Topology.Geometries.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, bool allowFallbackToContextInformation);
 
         FeatureSourceDescription DescribeFeatureSource(string resourceID);
 		FeatureSourceDescription DescribeFeatureSource(string resourceID, string schema);

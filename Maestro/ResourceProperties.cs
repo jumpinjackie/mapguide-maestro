@@ -723,6 +723,105 @@ namespace OSGeo.MapGuide.Maestro
                 WFSBounds.Text = bp.SRSBounds;
 
         }
+
+        private void AutoGenerateWMSBounds_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string srs = "EPSG:????";
+                string bounds = WMSBounds.Text;
+                bool warnedEPSG = false;
+
+                try
+                {
+                    if (!string.IsNullOrEmpty(bounds))
+                    {
+                        System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+                        if (bounds.Trim().StartsWith("&lt;"))
+                            bounds = System.Web.HttpUtility.HtmlDecode(bounds);
+                        bounds = "<root>" + bounds + "</root>";
+                        doc.LoadXml(bounds);
+                        System.Xml.XmlNode root = doc["root"];
+                        if (root["Bounds"] != null)
+                        {
+                            if (root["Bounds"].Attributes["SRS"] != null)
+                                srs = root["Bounds"].Attributes["SRS"].Value;
+                        }
+                        else
+                            throw new Exception("Missing bounds tag");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    warnedEPSG = true;
+                    MessageBox.Show(this, string.Format("Failed to decode the current bounds,\nyou must re-enter the epsg code in the SRS tag manually.\nError message: {0}.", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                System.Globalization.CultureInfo ic = System.Globalization.CultureInfo.InvariantCulture;
+                LayerDefinition ldef = m_connection.GetLayerDefinition(m_resourceId);
+                Topology.Geometries.IEnvelope env = ldef.GetSpatialExtent(true);
+
+                //TODO: Convert to lon/lat
+
+                bounds = "<Bounds west=\"" + env.MinX.ToString(ic) + "\" east=\"" + env.MaxX.ToString(ic) + "\" south=\"" + env.MinY.ToString(ic) + "\" north=\"" + env.MaxY.ToString(ic) + "\" ";
+                bounds += " SRS=\"" + srs + "\"";
+                bounds += " />";
+
+                WMSBounds.Text = bounds;
+
+                if ((srs == "" || srs == "EPSG:????") && !warnedEPSG)
+                {
+                    MessageBox.Show(this, "You must manually enter the EPSG code for the generated bounds.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    WMSBounds.SelectionStart = WMSBounds.Text.IndexOf("SRS=\"") + "SRS=\"".Length;
+                    WMSBounds.SelectionLength = WMSBounds.Text.IndexOf("\"", WMSBounds.SelectionStart) - WMSBounds.SelectionStart;
+                    WMSBounds.ScrollToCaret();
+                    WMSBounds.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Failed to obtain the extent for the WMS data.\nError message: " + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AutoGenerateWFSBounds_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Globalization.CultureInfo ic = System.Globalization.CultureInfo.InvariantCulture;
+                FeatureSource fs = m_connection.GetFeatureSource(m_resourceId);
+                bool failures = false;
+
+                Topology.Geometries.IEnvelope env = null;
+                foreach (FeatureSourceDescription.FeatureSourceSchema scm in fs.DescribeSource().Schemas)
+                    foreach (FeatureSetColumn col in scm.Columns)
+                        if (col.Type == Utility.GeometryType || col.Type == Utility.RasterType)
+                        {
+                            try
+                            {
+                                Topology.Geometries.IEnvelope re = m_connection.GetSpatialExtent(fs.ResourceId, scm.Name, col.Name, true);
+                                if (env == null)
+                                    env = re;
+                                else
+                                    env.ExpandToInclude(re);
+                            }
+                            catch
+                            {
+                                failures = true;
+                            }
+                        }
+
+                if (env == null)
+                    throw new Exception("No spatial data found in FeatureSource" + (failures ? ", one or more queries failed to execute" : ""));
+
+                WFSBounds.Text = "<Bounds west=\"" + env.MinX.ToString(ic) + "\" east=\"" + env.MaxX.ToString(ic) + "\" south=\"" + env.MinY.ToString(ic) + "\" north=\"" + env.MaxY.ToString(ic) + "\" />";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Failed to obtain the extent for the WFS data.\nError message: " + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 
 }
