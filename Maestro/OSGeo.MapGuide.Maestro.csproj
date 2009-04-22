@@ -132,6 +132,10 @@
       <Project>{006AFE1A-BF79-4C84-888D-9396958A42BD}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
+    <ProjectReference Include="ResourceBrowser\OSGeo.MapGuide.Maestro.ResourceBrowser.csproj">
+      <Project>{FD40B520-CC1B-41C7-B89B-693E0204EBCC}</Project>
+      <Name>OSGeo.MapGuide.Maestro.ResourceBrowser</Name>
+    </ProjectReference>
     <ProjectReference Include="ResourceEditors\ResourceEditors.csproj">
       <Name>ResourceEditors</Name>
       <Project>{E324888B-4A05-46A7-8FB4-54452145128F}</Project>
@@ -157,9 +161,6 @@
     </Compile>
     <Compile Include="BoundsPicker.Designer.cs">
       <DependentUpon>BoundsPicker.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BrowseResource.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="BrowseUnmanagedData.cs">
       <SubType>Form</SubType>
@@ -281,10 +282,6 @@
     <EmbeddedResource Include="BoundsPicker.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BoundsPicker.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BrowseResource.resx">
-      <DependentUpon>BrowseResource.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="BrowseUnmanagedData.resx">
       <DependentUpon>BrowseUnmanagedData.cs</DependentUpon>

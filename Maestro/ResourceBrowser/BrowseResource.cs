@@ -23,7 +23,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace OSGeo.MapGuide.Maestro
+namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 {
 	/// <summary>
 	/// Summary description for BrowseResource.
@@ -38,48 +38,62 @@ namespace OSGeo.MapGuide.Maestro
 		private System.Windows.Forms.Panel panel4;
 		private System.Windows.Forms.Splitter splitter1;
 		private System.Windows.Forms.Panel panel5;
-		private System.Windows.Forms.TreeView FolderView;
+		private ResourceTree FolderView;
 		private System.Windows.Forms.ListView ItemView;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.TextBox ResourceName;
 		private System.Windows.Forms.ComboBox ResourceType;
 		private System.Windows.Forms.Button RefreshButton;
-		private  Globalizator.Globalizator m_globalizor = null;
+		private Globalizator.Globalizator m_globalizor = null;
 
 		private OSGeo.MapGuide.MaestroAPI.ServerConnectionI m_connection;
 
 		private bool m_openMode;
 		private string m_selectedResource;
 		private string[] m_validTypes;
-		private FormMain m_ownerform;
+		private Form m_ownerform;
+        private ResourceEditors.ResourceEditorMap m_editorMap;
 
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		public BrowseResource(OSGeo.MapGuide.MaestroAPI.ServerConnectionI connection, FormMain ownerform, ImageList images, bool openMode, string[] avalibleTypes)
+		public BrowseResource(RepositoryCache cache, Form ownerform, bool openMode, string[] avalibleTypes)
 			: this()
 		{
-			m_connection = connection;
+			m_connection = cache.Connection;
 			m_openMode = openMode;
 			m_ownerform = ownerform;
+            m_editorMap = cache.EditorMap;
 
+            FolderView.Cache = cache;
 
-			m_validTypes = avalibleTypes == null ? ownerform.ResourceEditorMap.AvalibleResourceTypes : avalibleTypes;
+			m_validTypes = avalibleTypes == null ? cache.EditorMap.AvalibleResourceTypes : avalibleTypes;
 			ResourceType.Items.Clear();
+
+            if (avalibleTypes == null)
+                ResourceType.Items.Add(m_globalizor.Translate("All resource types"));
+
 			foreach(string i in m_validTypes)
-				ResourceType.Items.Add(ownerform.ResourceEditorMap.GetResourceDisplayNameFromResourceType(i));
+				ResourceType.Items.Add(cache.EditorMap.GetResourceDisplayNameFromResourceType(i));
+
+            if (avalibleTypes == null)
+            {
+                string[] tmp = new string[m_validTypes.Length + 1];
+                Array.Copy(m_validTypes, 0, tmp, 1, m_validTypes.Length);
+                tmp[0] = "";
+                m_validTypes = tmp;
+            }
 
 			ResourceType.Enabled = ResourceType.Items.Count > 1;
-			FolderView.ImageList = images;
-			ItemView.SmallImageList = images;
+			ItemView.SmallImageList = cache.EditorMap.SmallImageList;
 
 			if (!m_openMode)
 				this.Text = m_globalizor.Translate("Save resource");
 
-            this.Icon = FormMain.MaestroIcon;
+            this.Icon = m_ownerform.Icon;
 		}
 
 		protected BrowseResource()
@@ -121,7 +135,6 @@ namespace OSGeo.MapGuide.Maestro
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel4 = new System.Windows.Forms.Panel();
             this.RefreshButton = new System.Windows.Forms.Button();
-            this.FolderView = new System.Windows.Forms.TreeView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ResourceType = new System.Windows.Forms.ComboBox();
             this.ResourceName = new System.Windows.Forms.TextBox();
@@ -129,6 +142,7 @@ namespace OSGeo.MapGuide.Maestro
             this.label1 = new System.Windows.Forms.Label();
             this.OKButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.FolderView = new OSGeo.MapGuide.Maestro.ResourceBrowser.ResourceTree();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -163,9 +177,9 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.panel5.Controls.Add(this.ItemView);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(152, 0);
+            this.panel5.Location = new System.Drawing.Point(240, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(488, 391);
+            this.panel5.Size = new System.Drawing.Size(400, 391);
             this.panel5.TabIndex = 2;
             // 
             // ItemView
@@ -173,9 +187,9 @@ namespace OSGeo.MapGuide.Maestro
             this.ItemView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.ItemView.Location = new System.Drawing.Point(8, 8);
+            this.ItemView.Location = new System.Drawing.Point(0, 8);
             this.ItemView.Name = "ItemView";
-            this.ItemView.Size = new System.Drawing.Size(472, 375);
+            this.ItemView.Size = new System.Drawing.Size(392, 375);
             this.ItemView.TabIndex = 0;
             this.ItemView.UseCompatibleStateImageBehavior = false;
             this.ItemView.View = System.Windows.Forms.View.List;
@@ -185,7 +199,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(144, 0);
+            this.splitter1.Location = new System.Drawing.Point(232, 0);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(8, 391);
             this.splitter1.TabIndex = 1;
@@ -198,7 +212,7 @@ namespace OSGeo.MapGuide.Maestro
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(144, 391);
+            this.panel4.Size = new System.Drawing.Size(232, 391);
             this.panel4.TabIndex = 0;
             // 
             // RefreshButton
@@ -208,21 +222,10 @@ namespace OSGeo.MapGuide.Maestro
             this.RefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.RefreshButton.Location = new System.Drawing.Point(8, 359);
             this.RefreshButton.Name = "RefreshButton";
-            this.RefreshButton.Size = new System.Drawing.Size(128, 24);
+            this.RefreshButton.Size = new System.Drawing.Size(224, 24);
             this.RefreshButton.TabIndex = 1;
             this.RefreshButton.Text = "Refresh";
-            // 
-            // FolderView
-            // 
-            this.FolderView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.FolderView.HideSelection = false;
-            this.FolderView.Location = new System.Drawing.Point(8, 8);
-            this.FolderView.Name = "FolderView";
-            this.FolderView.Size = new System.Drawing.Size(128, 351);
-            this.FolderView.TabIndex = 0;
-            this.FolderView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.FolderView_AfterSelect);
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
             // panel2
             // 
@@ -297,6 +300,21 @@ namespace OSGeo.MapGuide.Maestro
             this.CancelButton.Text = "Cancel";
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // FolderView
+            // 
+            this.FolderView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.FolderView.Cache = null;
+            this.FolderView.HideDocuments = true;
+            this.FolderView.HideSelection = false;
+            this.FolderView.Location = new System.Drawing.Point(8, 8);
+            this.FolderView.Name = "FolderView";
+            this.FolderView.Size = new System.Drawing.Size(224, 351);
+            this.FolderView.Sorted = true;
+            this.FolderView.TabIndex = 0;
+            this.FolderView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.FolderView_AfterSelect);
+            // 
             // BrowseResource
             // 
             this.AcceptButton = this.OKButton;
@@ -362,71 +380,26 @@ namespace OSGeo.MapGuide.Maestro
 			if (FolderView.SelectedNode != null)
 				selectedNode = FolderView.SelectedNode.FullPath;
 
-			FolderView.Nodes.Clear();
-			TreeNode rootnode = new TreeNode(m_connection.DisplayName, m_ownerform.ResourceEditorMap.ServerIcon, m_ownerform.ResourceEditorMap.ServerIcon);
-			rootnode.Expand();
-			FolderView.Nodes.Add(rootnode);
-
-
-			if (m_ownerform.ResourceFolders == null || m_ownerform.ResourceFolders == null)
-				m_ownerform.RebuildDocumentTree();
-
-			foreach(OSGeo.MapGuide.MaestroAPI.ResourceListResourceFolder folder in m_ownerform.ResourceFolders.Values)
-			{
-				//Skip the root folder
-				if (folder.ResourceId == "Library://")
-					continue;
-
-				TreeNode n = new TreeNode();
-				n.Text = m_ownerform.ResourceEditorMap.GetResourceNameFromResourceID(folder.ResourceId);
-				n.Tag = folder;
-				n.ImageIndex = n.SelectedImageIndex = m_ownerform.ResourceEditorMap.FolderIcon;
-				string foldersearchpath = folder.ResourceId.Substring("Library://".Length).Replace("/", FolderView.PathSeparator);
-				foldersearchpath = m_connection.DisplayName + FolderView.PathSeparator + foldersearchpath.Substring(0, foldersearchpath.Length - 1);
-				TreeNode nx = TreeViewUtil.FindItem(FolderView, foldersearchpath);
-				if (nx != null)
-					nx.Nodes.Add(n);
-				else
-					rootnode.Nodes.Add(n);
-			}
-
-			TreeNode node = TreeViewUtil.FindItemExact(FolderView, selectedNode);
-			if (node != null)
-				FolderView.SelectedNode = node;
-
-			rootnode.Expand();
+            FolderView.RefreshTreeNodes();
+            FolderView.SelectClosestParent(selectedNode);
 		}
 
 		private void UpdateDocumentList()
 		{
-			TreeNode node = FolderView.SelectedNode;
-
-			string startPath = "Library://";
-			int lastidx = startPath.Length - 1;
-
-			if (node != null && node.Parent != null)
-			{
-				startPath += node.FullPath.Substring(m_connection.DisplayName.Length + FolderView.PathSeparator.Length).Replace(FolderView.PathSeparator, "/");
-				lastidx = startPath.Length;
-			}
-
-
-
 			try
 			{
 				ItemView.BeginUpdate();
 				ItemView.Items.Clear();
-				foreach(OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument document in m_ownerform.ResourceDocuments.Values)
-				{	
-					if (m_ownerform.ResourceEditorMap.GetResourceTypeNameFromResourceID(document.ResourceId) == m_validTypes[ResourceType.SelectedIndex])
-						if (document.ResourceId.StartsWith(startPath) && document.ResourceId.LastIndexOf("/") == lastidx )
-						{
-							ListViewItem l = new ListViewItem();
-							l.Text = m_ownerform.ResourceEditorMap.GetResourceNameFromResourceID(document.ResourceId);
-							l.Tag = document;
-							l.ImageIndex = m_ownerform.ResourceEditorMap.GetImageIndexFromResourceID(document.ResourceId);
-							ItemView.Items.Add(l);
-						}
+                foreach (OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument document in FolderView.GetDocuments())
+				{
+                    if (string.IsNullOrEmpty(m_validTypes[ResourceType.SelectedIndex]) || m_editorMap.GetResourceTypeNameFromResourceID(document.ResourceId) == m_validTypes[ResourceType.SelectedIndex])
+                    {
+                        ListViewItem l = new ListViewItem();
+                        l.Text = m_editorMap.GetResourceNameFromResourceID(document.ResourceId);
+                        l.Tag = document;
+                        l.ImageIndex = m_editorMap.GetImageIndexFromResourceID(document.ResourceId);
+                        ItemView.Items.Add(l);
+                    }
 				}
 			}
 			finally
@@ -438,10 +411,10 @@ namespace OSGeo.MapGuide.Maestro
 		private void OKButton_Click(object sender, System.EventArgs e)
 		{
 			string fullpath = ResourceName.Text;
-			int imageindex = m_ownerform.ResourceEditorMap.GetImageIndexFromResourceID(ResourceName.Text);
-			string itemType = m_ownerform.ResourceEditorMap.GetResourceTypeNameFromResourceID(ResourceName.Text);
+            int imageindex = m_editorMap.GetImageIndexFromResourceID(ResourceName.Text);
+            string itemType = m_editorMap.GetResourceTypeNameFromResourceID(ResourceName.Text);
 
-			if (imageindex == m_ownerform.ResourceEditorMap.BlankIcon || imageindex == m_ownerform.ResourceEditorMap.FolderIcon)
+            if (imageindex == m_editorMap.BlankIcon || imageindex == m_editorMap.FolderIcon)
 			{
 				itemType = m_validTypes[ResourceType.SelectedIndex];
                 if (itemType.ToLower() != "folder")
@@ -479,11 +452,8 @@ namespace OSGeo.MapGuide.Maestro
 					fullpath = startPath + fullpath;
 			}
 
-			imageindex = m_ownerform.ResourceEditorMap.GetImageIndexFromResourceID(fullpath);
-
-			//The sorted list is a bit lame, because it contains the items prefixed with their sort order digit
-			//Also the sort order only works when there are no more than 10 resource types...
-			if (m_ownerform.ResourceDocuments.ContainsKey(imageindex.ToString() + "-" + fullpath))
+            
+            if (FolderView.Cache.ResourceExists(fullpath))
 			{
 				if (!m_openMode)
 					if (MessageBox.Show(this, m_globalizor.Translate("Overwrite existing resource?"), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
@@ -515,14 +485,13 @@ namespace OSGeo.MapGuide.Maestro
 			else
 			{
 				//Make sure the folder exists
-				foreach(string s in m_ownerform.ResourceFolders.Keys)
-					if (fullpath.ToLower().StartsWith(s.ToLower()) && fullpath.LastIndexOf("/") == s.Length - 1)
-					{
-						m_selectedResource = fullpath;
-						this.DialogResult = DialogResult.OK;
-						this.Close();
-						return;
-					}
+				if (FolderView.Cache.FolderExists(new MaestroAPI.ResourceIdentifier(fullpath).ParentFolder))
+				{
+					m_selectedResource = fullpath;
+					this.DialogResult = DialogResult.OK;
+					this.Close();
+					return;
+				}
 			
 				MessageBox.Show(this, m_globalizor.Translate("The resource cannot be saved because the folder entered does not exist"), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
@@ -573,6 +542,12 @@ namespace OSGeo.MapGuide.Maestro
         private void ItemView_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            FolderView.Cache.Reset();
+            FolderView.RefreshTreeNodes();
         }
 	}
 }

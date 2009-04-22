@@ -143,12 +143,15 @@ namespace OSGeo.MapGuide.Maestro
                     UpdateWFSDisplay();
             }
 
+            //Hide the tabControl if it only has one tab
             if (tabControl1.TabCount == 1)
             {
                 foreach (Control c in new System.Collections.ArrayList(tabControl1.TabPages[0].Controls))
                 {
                     tabControl1.Controls.Remove(c);
+                    c.Top += tabControl1.Top;
                     this.Controls.Add(c);
+
                 }
 
                 this.Controls.Remove(tabControl1);

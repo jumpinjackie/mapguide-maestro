@@ -111,7 +111,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>A list of contained resources</returns>
 		virtual public ResourceList GetRepositoryResources()
 		{
-			return GetRepositoryResources("Library://", null, -1);
+			return GetRepositoryResources("Library://", null, -1, true);
 		}
 
 		/// <summary>
@@ -122,7 +122,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>A list of contained resources</returns>
 		virtual public ResourceList GetRepositoryResources(int depth)
 		{
-			return GetRepositoryResources("Library://", null, depth);
+			return GetRepositoryResources("Library://", null, depth, true);
 		}
 
 		/// <summary>
@@ -134,7 +134,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>A list of contained resources</returns>
 		virtual public ResourceList GetRepositoryResources(string startingpoint, int depth)
 		{
-			return GetRepositoryResources(startingpoint, null, depth);
+			return GetRepositoryResources(startingpoint, null, depth, true);
 		}
 
 		/// <summary>
@@ -145,7 +145,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>A list of contained resources</returns>
 		virtual public ResourceList GetRepositoryResources(string startingpoint)
 		{
-			return GetRepositoryResources(startingpoint, null, -1);
+			return GetRepositoryResources(startingpoint, null, -1, true);
 		}
 
 		/// <summary>
@@ -157,7 +157,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>A list of contained resources</returns>
 		virtual public ResourceList GetRepositoryResources(string startingpoint, string type)
 		{
-			return GetRepositoryResources(startingpoint, type, -1);
+			return GetRepositoryResources(startingpoint, type, -1, true);
 		}
 
 		/// <summary>
@@ -168,7 +168,22 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="type">The type of resource to look for. Basically this is the resource extension, like &quot;.MapDefinition&quot;. Use null for all resources.</param>
 		/// <param name="depth">The max depth to recurse. Use -1 for no limit.</param>
 		/// <returns>A list of contained resources</returns>
-		abstract public ResourceList GetRepositoryResources(string startingpoint, string type, int depth);
+        public ResourceList GetRepositoryResources(string startingpoint, string type, int depth)
+        {
+            return GetRepositoryResources(startingpoint, type, depth, true);
+        }
+
+
+        /// <summary>
+        /// Gets a list of resources in the permanent server repository (Library).
+        /// </summary>
+        /// <param name="startingpoint">The folder from which to return items. Use null for &quot;Library://&quot;</param>
+        /// <param name="type">The type of resource to look for. Basically this is the resource extension, like &quot;.MapDefinition&quot;. Use null for all resources.</param>
+        /// <param name="depth">The max depth to recurse. Use -1 for no limit.</param>
+        /// <param name="computeChildren">A flag indicating if the count of subfolders and resources should be calculated for leaf nodes</param>
+        /// <returns>A list of contained resources</returns>
+        abstract public ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren);
+
 
 		/// <summary>
 		/// Gets the current SessionID.

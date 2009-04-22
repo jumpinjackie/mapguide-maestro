@@ -124,9 +124,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 		}
 
 
-		public override ResourceList GetRepositoryResources(string startingpoint, string type, int depth)
+		public override ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren)
 		{
-			string req = m_reqBuilder.EnumerateResources(startingpoint, depth, type);
+			string req = m_reqBuilder.EnumerateResources(startingpoint, depth, type, computeChildren);
 			
 			//TODO: Cache?
 			return (ResourceList)DeserializeObject(typeof(ResourceList), this.OpenRead(req));

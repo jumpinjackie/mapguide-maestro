@@ -96,6 +96,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// <returns>The instance type, or null if no such type was found</returns>
 		Type GetResourceInstanceTypeFromResourceID(string resourceID);
 
+        /// <summary>
+        /// Gets the typename from the resourceID
+        /// </summary>
+        /// <param name="resourceID">The resourceId to examine</param>
+        /// <returns>The resource type name</returns>
+        string GetResourceTypeNameFromResourceID(string resourceID);
+
 		/// <summary>
 		/// Gets the imageindex of the folder icon.
 		/// </summary>
@@ -115,5 +122,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// Gets the imageindex of the unknown resource icon.
 		/// </summary>
 		int UnknownIcon { get; }
+
+        /// <summary>
+        /// Returns the small imagelist with images corresponding to the image indexes returned from the various methods.
+        /// </summary>
+        System.Windows.Forms.ImageList SmallImageList { get; }
+        /// <summary>
+        /// Returns the large imagelist with images corresponding to the image indexes returned from the various methods.
+        /// </summary>
+        System.Windows.Forms.ImageList LargeImageList { get; }
+
 	}
 }

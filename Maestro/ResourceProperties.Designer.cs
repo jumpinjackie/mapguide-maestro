@@ -30,9 +30,9 @@ namespace OSGeo.MapGuide.Maestro
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResourceProperties));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.OKBtn = new System.Windows.Forms.Button();
@@ -52,6 +52,7 @@ namespace OSGeo.MapGuide.Maestro
             this.WMSTab = new System.Windows.Forms.TabPage();
             this.WMSClearHeaderButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.AutoGenerateWMSBounds = new System.Windows.Forms.Button();
             this.EditWMSBounds = new System.Windows.Forms.Button();
             this.WMSBounds = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -70,6 +71,7 @@ namespace OSGeo.MapGuide.Maestro
             this.WFSTab = new System.Windows.Forms.TabPage();
             this.WFSClearHeaderButton = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.AutoGenerateWFSBounds = new System.Windows.Forms.Button();
             this.WFSOtherSRS = new System.Windows.Forms.ComboBox();
             this.WFSPrimarySRS = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -96,8 +98,6 @@ namespace OSGeo.MapGuide.Maestro
             this.panel2 = new System.Windows.Forms.Panel();
             this.ResourceID = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.AutoGenerateWMSBounds = new System.Windows.Forms.Button();
-            this.AutoGenerateWFSBounds = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SecurityTab.SuspendLayout();
@@ -313,6 +313,17 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Functionality";
             // 
+            // AutoGenerateWMSBounds
+            // 
+            this.AutoGenerateWMSBounds.Image = ((System.Drawing.Image)(resources.GetObject("AutoGenerateWMSBounds.Image")));
+            this.AutoGenerateWMSBounds.Location = new System.Drawing.Point(304, 116);
+            this.AutoGenerateWMSBounds.Name = "AutoGenerateWMSBounds";
+            this.AutoGenerateWMSBounds.Size = new System.Drawing.Size(24, 20);
+            this.AutoGenerateWMSBounds.TabIndex = 9;
+            this.toolTip.SetToolTip(this.AutoGenerateWMSBounds, "Click to read the current bounds from the data source");
+            this.AutoGenerateWMSBounds.UseVisualStyleBackColor = true;
+            this.AutoGenerateWMSBounds.Click += new System.EventHandler(this.AutoGenerateWMSBounds_Click);
+            // 
             // EditWMSBounds
             // 
             this.EditWMSBounds.Location = new System.Drawing.Point(304, 96);
@@ -519,6 +530,16 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Functionality";
             // 
+            // AutoGenerateWFSBounds
+            // 
+            this.AutoGenerateWFSBounds.Image = ((System.Drawing.Image)(resources.GetObject("AutoGenerateWFSBounds.Image")));
+            this.AutoGenerateWFSBounds.Location = new System.Drawing.Point(304, 116);
+            this.AutoGenerateWFSBounds.Name = "AutoGenerateWFSBounds";
+            this.AutoGenerateWFSBounds.Size = new System.Drawing.Size(24, 20);
+            this.AutoGenerateWFSBounds.TabIndex = 15;
+            this.AutoGenerateWFSBounds.UseVisualStyleBackColor = true;
+            this.AutoGenerateWFSBounds.Click += new System.EventHandler(this.AutoGenerateWFSBounds_Click);
+            // 
             // WFSOtherSRS
             // 
             this.WFSOtherSRS.FormattingEnabled = true;
@@ -703,7 +724,7 @@ namespace OSGeo.MapGuide.Maestro
             this.CustomTab.Controls.Add(this.dataGridView1);
             this.CustomTab.Location = new System.Drawing.Point(4, 22);
             this.CustomTab.Name = "CustomTab";
-            this.CustomTab.Size = new System.Drawing.Size(350, 365);
+            this.CustomTab.Size = new System.Drawing.Size(346, 361);
             this.CustomTab.TabIndex = 3;
             this.CustomTab.Text = "Custom Metadata";
             this.CustomTab.UseVisualStyleBackColor = true;
@@ -724,36 +745,36 @@ namespace OSGeo.MapGuide.Maestro
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemKey,
             this.ItemValue});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(8, 8);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Size = new System.Drawing.Size(336, 312);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Leave += new System.EventHandler(this.dataGridView1_Leave);
@@ -796,27 +817,6 @@ namespace OSGeo.MapGuide.Maestro
             this.label13.Size = new System.Drawing.Size(67, 13);
             this.label13.TabIndex = 0;
             this.label13.Text = "Resource ID";
-            // 
-            // AutoGenerateWMSBounds
-            // 
-            this.AutoGenerateWMSBounds.Image = ((System.Drawing.Image)(resources.GetObject("AutoGenerateWMSBounds.Image")));
-            this.AutoGenerateWMSBounds.Location = new System.Drawing.Point(304, 116);
-            this.AutoGenerateWMSBounds.Name = "AutoGenerateWMSBounds";
-            this.AutoGenerateWMSBounds.Size = new System.Drawing.Size(24, 20);
-            this.AutoGenerateWMSBounds.TabIndex = 9;
-            this.toolTip.SetToolTip(this.AutoGenerateWMSBounds, "Click to read the current bounds from the data source");
-            this.AutoGenerateWMSBounds.UseVisualStyleBackColor = true;
-            this.AutoGenerateWMSBounds.Click += new System.EventHandler(this.AutoGenerateWMSBounds_Click);
-            // 
-            // AutoGenerateWFSBounds
-            // 
-            this.AutoGenerateWFSBounds.Image = ((System.Drawing.Image)(resources.GetObject("AutoGenerateWFSBounds.Image")));
-            this.AutoGenerateWFSBounds.Location = new System.Drawing.Point(304, 116);
-            this.AutoGenerateWFSBounds.Name = "AutoGenerateWFSBounds";
-            this.AutoGenerateWFSBounds.Size = new System.Drawing.Size(24, 20);
-            this.AutoGenerateWFSBounds.TabIndex = 15;
-            this.AutoGenerateWFSBounds.UseVisualStyleBackColor = true;
-            this.AutoGenerateWFSBounds.Click += new System.EventHandler(this.AutoGenerateWFSBounds_Click);
             // 
             // ResourceProperties
             // 

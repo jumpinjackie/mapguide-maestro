@@ -38,6 +38,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 		ResourceList GetRepositoryResources(string startingpoint);
 		ResourceList GetRepositoryResources(string startingpoint, string type);
 		ResourceList GetRepositoryResources(string startingpoint, string type, int depth);
+        ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren);
+
 		FeatureProviderRegistryFeatureProviderCollection FeatureProviders { get; }
 		string TestConnection(string providername, NameValueCollection parameters);
 		string TestConnection(string featuresource);

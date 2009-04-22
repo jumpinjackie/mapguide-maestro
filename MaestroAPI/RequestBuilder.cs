@@ -89,7 +89,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		}
 
-		internal string EnumerateResources(string startingpoint, int depth, string type)
+		internal string EnumerateResources(string startingpoint, int depth, string type, bool computeChildren)
 		{
 			if (type == null)
 				type = "";
@@ -104,6 +104,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("RESOURCEID", startingpoint);
 			param.Add("DEPTH", depth.ToString());
 			param.Add("TYPE", type);
+            param.Add("COMPUTECHILDREN", computeChildren ? "1" : "0");
 			return m_hosturi + "?" + EncodeParameters(param);
 		}
 

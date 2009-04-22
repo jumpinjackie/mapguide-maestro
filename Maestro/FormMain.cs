@@ -40,7 +40,7 @@ namespace OSGeo.MapGuide.Maestro
         private System.Windows.Forms.ToolStripMenuItem SaveXmlAsMenu;
 		private System.Windows.Forms.ImageList toolbarImages;
 		private System.ComponentModel.IContainer components;
-        private System.Windows.Forms.TreeView ResourceTree;
+        private ResourceBrowser.ResourceTree ResourceTree;
         private System.Windows.Forms.ImageList toolbarImagesSmall;
 
 		private Hashtable m_templateMenuIndex = null;
@@ -48,7 +48,6 @@ namespace OSGeo.MapGuide.Maestro
         private TreeNode m_clipboardBuffer = null;
 		private bool m_clipboardCut = false;
 
-		private SortedList m_Folders = null;
         private System.Windows.Forms.ToolStripSeparator menuItem1;
         private System.Windows.Forms.ToolStripSeparator menuItem7;
         private System.Windows.Forms.ToolStripMenuItem EditAsXmlMenu;
@@ -57,7 +56,6 @@ namespace OSGeo.MapGuide.Maestro
         private System.Windows.Forms.ToolStripMenuItem CopyMenu;
         private System.Windows.Forms.ToolStripMenuItem PasteMenu;
 		private System.Windows.Forms.Timer KeepAliveTimer;
-        private SortedList m_Documents = null;
 		private System.Windows.Forms.MenuStrip MainMenu;
         private System.Windows.Forms.ToolStripMenuItem menuItem2;
         private System.Windows.Forms.ToolStripMenuItem menuItem3;
@@ -87,7 +85,7 @@ namespace OSGeo.MapGuide.Maestro
 
 		private ResourceEditorMap m_editors;
         private System.Windows.Forms.ToolStripMenuItem OpenSiteAdmin;
-		private  Globalizator.Globalizator m_globalizor = null;
+		private Globalizator.Globalizator m_globalizor = null;
         private ToolStrip ResourceTreeToolbar;
         private ToolStripDropDownButton AddResourceButton;
         private ToolStripButton DeleteResourceButton;
@@ -131,6 +129,7 @@ namespace OSGeo.MapGuide.Maestro
         private ToolStripSeparator toolStripSeparator9;
         private ToolStripMenuItem validateResourcesToolStripMenuItem;
         private ToolStripMenuItem RenameMenu;
+        private ToolStripMenuItem openToolStripMenuItem;
         private string m_lastTooltip;
 
         public FormMain()
@@ -173,7 +172,7 @@ namespace OSGeo.MapGuide.Maestro
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.ResourceTree = new System.Windows.Forms.TreeView();
+            this.ResourceTree = new OSGeo.MapGuide.Maestro.ResourceBrowser.ResourceTree();
             this.TreeContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.PropertiesMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -192,6 +191,7 @@ namespace OSGeo.MapGuide.Maestro
             this.DeleteMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.NewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.RenameMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ResourceTreeToolbar = new System.Windows.Forms.ToolStrip();
             this.AddResourceButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.DeleteResourceButton = new System.Windows.Forms.ToolStripButton();
@@ -268,6 +268,7 @@ namespace OSGeo.MapGuide.Maestro
             // ResourceTree
             // 
             this.ResourceTree.AllowDrop = true;
+            this.ResourceTree.Cache = null;
             this.ResourceTree.ContextMenuStrip = this.TreeContextMenu;
             this.ResourceTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ResourceTree.LabelEdit = true;
@@ -275,6 +276,7 @@ namespace OSGeo.MapGuide.Maestro
             this.ResourceTree.Name = "ResourceTree";
             this.ResourceTree.ShowNodeToolTips = true;
             this.ResourceTree.Size = new System.Drawing.Size(278, 391);
+            this.ResourceTree.Sorted = true;
             this.ResourceTree.TabIndex = 0;
             this.ResourceTree.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.ResourceTree_AfterLabelEdit);
             this.ResourceTree.DoubleClick += new System.EventHandler(this.ResourceTree_DoubleClick);
@@ -305,9 +307,10 @@ namespace OSGeo.MapGuide.Maestro
             this.menuItem4,
             this.DeleteMenu,
             this.NewMenu,
-            this.RenameMenu});
+            this.RenameMenu,
+            this.openToolStripMenuItem});
             this.TreeContextMenu.Name = "TreeContextMenu";
-            this.TreeContextMenu.Size = new System.Drawing.Size(181, 298);
+            this.TreeContextMenu.Size = new System.Drawing.Size(181, 342);
             this.TreeContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.TreeContextMenu_Popup);
             // 
             // PropertiesMenu
@@ -421,6 +424,13 @@ namespace OSGeo.MapGuide.Maestro
             this.RenameMenu.Size = new System.Drawing.Size(180, 22);
             this.RenameMenu.Text = "Rename";
             this.RenameMenu.Click += new System.EventHandler(this.RenameMenu_Click);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // ResourceTreeToolbar
             // 
@@ -1079,8 +1089,6 @@ namespace OSGeo.MapGuide.Maestro
             {
             }
 
-
-
 			this.Show();
 
             //Register these after any pre-load stuff
@@ -1093,8 +1101,6 @@ namespace OSGeo.MapGuide.Maestro
             frm.StartPosition = FormStartPosition.CenterParent;
 			frm.UseAutoConnect = true;
 
-            DialogResult res = frm.ShowDialog(this);
-
             if (frm.ShowDialog(this) == DialogResult.OK)
                 m_connection = frm.Connection;
             else
@@ -1102,6 +1108,9 @@ namespace OSGeo.MapGuide.Maestro
                 Application.Exit();
                 return;
             }
+
+            if (m_connection is MaestroAPI.HttpServerConnection)
+                ((MaestroAPI.HttpServerConnection)frm.Connection).UserAgent = "MapGuide Maestro v" + Application.ProductVersion;
 
             //Reset
             Program.ApplicationSettings = PreferedSiteList.Load();
@@ -1168,10 +1177,19 @@ namespace OSGeo.MapGuide.Maestro
 			}
 
 			this.Refresh();
-			RebuildDocumentTree();
+
+            //Auto reloads tree
+            ResourceTree.Cache = new OSGeo.MapGuide.Maestro.ResourceBrowser.RepositoryCache(m_connection, m_editors, m_globalizor);
+            ResourceTree.Cache.CacheResetEvent += new EventHandler(Cache_CacheResetEvent);
 		}
 
-		private TreeNodeCollection FindParent(string resourceID)
+        void Cache_CacheResetEvent(object sender, EventArgs e)
+        {
+            using (new WaitCursor(this))
+                ResourceTree.RefreshTreeNodes();
+        }
+
+		private TreeNodeCollection FindParent(string resourceID, bool allowNotFound)
 		{
 			string [] parts = m_editors.SplitResourceID(resourceID);
 			TreeNodeCollection current = ResourceTree.Nodes[0].Nodes;
@@ -1186,21 +1204,32 @@ namespace OSGeo.MapGuide.Maestro
 						break;
 					}
 
-				if (!found)
-					throw new Exception(string.Format(m_globalizor.Translate("Failed to find node with name {0}, while looking for: {1}"), parts[i], resourceID));
+                if (!found)
+                    if (allowNotFound)
+                        return null;
+                    else
+					    throw new Exception(string.Format(m_globalizor.Translate("Failed to find node with name {0}, while looking for: {1}"), parts[i], resourceID));
 			}
 
 			return current;
 		}
 
-		private TreeNode FindItem(string resourceID)
+		private TreeNode FindItem(string resourceID, bool allowNotFound)
 		{
-			TreeNodeCollection parent = FindParent(resourceID);
+			TreeNodeCollection parent = FindParent(resourceID, allowNotFound);
+
+            if (parent == null)
+                return null;
+
 			string[] parts = m_editors.SplitResourceID(resourceID);
 			foreach(TreeNode n in parent)
 				if (n.Text == parts[parts.Length-1])
 					return n;
-			throw new Exception(string.Format(m_globalizor.Translate("Item not found: {0}"), resourceID));
+
+            if (allowNotFound)
+                return null;
+            else
+			    throw new Exception(string.Format(m_globalizor.Translate("Item not found: {0}"), resourceID));
 		}
 
 		public string SelectedPath
@@ -1214,134 +1243,11 @@ namespace OSGeo.MapGuide.Maestro
 			}
 		}
 
-		private void FindOpenNodes(TreeNodeCollection nodes, ArrayList opennodes)
-		{
-			foreach(TreeNode n in nodes)
-				if (n.IsExpanded)
-				{
-					opennodes.Add(n.FullPath);
-					FindOpenNodes(n.Nodes, opennodes);
-				}
-		}
 
 		public void RebuildDocumentTree()
 		{
-			using(new WaitCursor(this))
-			{
-				TreeNode parentnode = ResourceTree.SelectedNode;
-				string parentnodepath = null;
-				string actualnodepath = null;
-				int parentnodeindex = -1;
-
-				if (parentnode != null)
-					parentnodeindex = parentnode.Index;
-				if (parentnode != null && parentnode.Parent != null)
-					parentnodepath = parentnode.Parent.FullPath;
-
-				if (ResourceTree.SelectedNode != null)
-					actualnodepath = ResourceTree.SelectedNode.FullPath;
-			
-
-				ArrayList opennodes = new ArrayList();
-				FindOpenNodes(ResourceTree.Nodes, opennodes);
-
-				OSGeo.MapGuide.MaestroAPI.ResourceList lst = m_connection.GetRepositoryResources();
-				ResourceTree.Nodes.Clear();
-
-				TreeNode rootnode = new TreeNode(m_connection.DisplayName, m_editors.ServerIcon, m_editors.ServerIcon);
-				ResourceTree.Nodes.Add(rootnode);
-
-				m_Folders = new SortedList();
-				m_Documents = new SortedList();
-			
-				//Sort items
-				foreach(object o in lst.Items)
-					if (o.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceFolder))
-						m_Folders.Add(((OSGeo.MapGuide.MaestroAPI.ResourceListResourceFolder)o).ResourceId, o);
-					else if (o.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument))
-					{
-						OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument document = (OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument)o;
-						m_Documents.Add((m_editors.GetImageIndexFromResourceID(document.ResourceId)).ToString() + "-" + document.ResourceId, document);
-					}
-
-				//Build tree with folders first, so all placeholders are ready
-				foreach(OSGeo.MapGuide.MaestroAPI.ResourceListResourceFolder folder in m_Folders.Values)
-				{
-					//Skip the root folder
-					if (folder.ResourceId == "Library://")
-						continue;
-
-					TreeNode n = new TreeNode();
-					n.Text = m_editors.GetResourceNameFromResourceID(folder.ResourceId);
-					n.Tag = folder;
-					n.ImageIndex = n.SelectedImageIndex = m_editors.FolderIcon;
-                    n.ToolTipText = string.Format(m_globalizor.Translate("Resource name: {0}\r\nResource type: {1}\r\nCreated: {2}\r\nLast modified: {3}"), new MaestroAPI.ResourceIdentifier(folder.ResourceId.Substring(0, folder.ResourceId.Length - 1) + ".Folder").Name, m_globalizor.Translate("Folder"), folder.CreatedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture), folder.ModifiedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture)); 
-                    FindParent(folder.ResourceId).Add(n);
-				}
-
-
-				//Pouplate with documents
-				foreach(OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument document in m_Documents.Values)
-				{					
-					TreeNode n = new TreeNode();
-					n.Text = m_editors.GetResourceNameFromResourceID(document.ResourceId);
-					n.Tag = document;
-					n.ImageIndex = n.SelectedImageIndex = m_editors.GetImageIndexFromResourceID(document.ResourceId);
-
-                    n.ToolTipText = string.Format(m_globalizor.Translate("Resource name: {0}\r\nResource type: {1}\r\nCreated: {2}\r\nLast modified: {3}"), new MaestroAPI.ResourceIdentifier(document.ResourceId).Name, new MaestroAPI.ResourceIdentifier(document.ResourceId).Extension, document.CreatedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture), document.ModifiedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture));
-
-                    if (new MaestroAPI.ResourceIdentifier(document.ResourceId).Extension == "LayerDefinition" || new MaestroAPI.ResourceIdentifier(document.ResourceId).Extension == "FeatureSource")
-                    {
-                        bool published = false;
-                        string serviceType = new MaestroAPI.ResourceIdentifier(document.ResourceId).Extension == "LayerDefinition" ? "WMS" : "WFS";
-                        if (document.ResourceDocumentHeader != null && document.ResourceDocumentHeader.Metadata != null && document.ResourceDocumentHeader.Metadata.Simple != null && document.ResourceDocumentHeader.Metadata.Simple.Property["_IsPublished"] == "1")
-                            published = true;
-
-                        n.ToolTipText += "\r\n" + string.Format(m_globalizor.Translate("{0} published: {1}"), serviceType, published);
-                    }
-
-
-					FindParent(document.ResourceId).Add(n);
-				}
-
-				rootnode.Expand();
-
-				//TODO: Remove any open resources that do not exist anymore
-			
-				foreach(string s in opennodes)
-				{
-					TreeNode n = TreeViewUtil.FindItemExact(ResourceTree, s);
-					if (n != null)
-						n.Expand();
-				}
-
-				if (actualnodepath != null)
-				{
-					TreeNode n = TreeViewUtil.FindItemExact(ResourceTree, actualnodepath);
-					if (n != null)
-					{
-						ResourceTree.SelectedNode = n;
-					}
-					else
-					{
-						if (parentnodepath == null && ResourceTree.Nodes.Count > 0)
-							ResourceTree.SelectedNode = ResourceTree.Nodes[Math.Min(ResourceTree.Nodes.Count - 1, parentnodeindex)];
-						else
-						{
-							n = TreeViewUtil.FindItemExact(ResourceTree, parentnodepath);
-							if (n != null)
-								if (n.Nodes.Count > 0)
-									ResourceTree.SelectedNode = n.Nodes[Math.Min(n.Nodes.Count - 1, parentnodeindex)];
-								else
-									ResourceTree.SelectedNode = n;
-						}
-
-					}
-				}
-			}
-				
+            ResourceTree.Cache.Reset();
 		}
-
 
 		public OSGeo.MapGuide.MaestroAPI.ServerConnectionI CurrentConnection
 		{
@@ -1821,7 +1727,22 @@ namespace OSGeo.MapGuide.Maestro
 			foreach(EditorInterface edi in m_userControls.Values)
 				if (edi.Page == tabItems.SelectedTab)
 				{
-					edi.SaveAs();
+                    if (edi.SaveAs())
+                    {
+                        //If we save under a different name, reload the parent folder
+                        try
+                        {
+                            TreeNode c = FindItem(edi.ResourceID, true);
+                            if (c == null || c.Parent == null)
+                                RebuildDocumentTree(); //TODO: If the node is not open, skip the refresh
+                            else
+                                ReloadNode(c.Parent);
+                        }
+                        catch
+                        {
+                            RebuildDocumentTree();
+                        }
+                    }
 					return;
 				}
 		}
@@ -2188,7 +2109,7 @@ namespace OSGeo.MapGuide.Maestro
 		{
 			try
 			{
-				BrowseResource dlg = new BrowseResource(m_connection, this, this.ResourceEditorMap.SmallImageList, true, null);
+                ResourceBrowser.BrowseResource dlg = new ResourceBrowser.BrowseResource(this.RepositoryCache, this, true, null);
 				if (dlg.ShowDialog(this) == DialogResult.OK)
 					this.OpenResource(dlg.SelectedResource);
 			}
@@ -2271,8 +2192,8 @@ namespace OSGeo.MapGuide.Maestro
                             break;
                         }
 					ResourceTree.Nodes.Clear();
+                    ResourceTree.Cache.Connection = lg.Connection;
 					m_connection = lg.Connection;
-					m_Folders = m_Documents = null;
 					RebuildDocumentTree();
 				}
 			}
@@ -2333,8 +2254,7 @@ namespace OSGeo.MapGuide.Maestro
 			get { return m_userControls; }
 		}
 
-		public SortedList ResourceFolders { get { return m_Folders; } }
-		public SortedList ResourceDocuments { get { return m_Documents; } }
+        public ResourceBrowser.RepositoryCache RepositoryCache { get { return ResourceTree.Cache; } }
 		public ResourceEditorMap ResourceEditorMap { get { return m_editors; } }
 		public string LastSelectedNode { get { return m_lastSelectedNode; } }
 
@@ -2755,6 +2675,18 @@ namespace OSGeo.MapGuide.Maestro
         {
             TreeNode node = ResourceTree.SelectedNode;
             node.BeginEdit();
+        }
+
+        private void ReloadNode(TreeNode n)
+        {
+            if (n.Tag is MaestroAPI.ResourceListResourceFolder)
+                using (new WaitCursor(this))
+                    ResourceTree.RebuildNode(n);
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResourceTree_DoubleClick(sender, e);
         }
 	}
 }

@@ -132,6 +132,15 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
+        /// Gets or sets the path to the resource, including the repository
+        /// </summary>
+        public string RepositoryPath
+        {
+            get { return GetRepositoryPath(m_id); }
+            set { m_id = SetRepositoryPath(m_id, value); }
+        }
+
+        /// <summary>
         /// Gets a value indicating if the resource is in the library repository
         /// </summary>
         public bool IsInLibrary
@@ -231,6 +240,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             m_id = ResourceIdentifier.Normalize(m_id);
         }
 
+        /// <summary>
+        /// Gets the containing folder path for the resource, including the repository
+        /// </summary>
+        public string ParentFolder
+        {
+            get { return ResourceIdentifier.GetParentFolder(m_id); }
+        }
+
         #region Static handlers
 
         /// <summary>
@@ -288,7 +305,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (!identifier.EndsWith("/"))
                 newpath += "." + GetExtension(identifier);
 
-            return GetRepository(identifier) + newpath;
+            return GetRepository(identifier) + newpath + (identifier.EndsWith("/") ? "/" : "");
         }
 
         /// <summary>
@@ -469,6 +486,69 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return IsFolderResource(identifier);
             else
                 return EnumHelper.ResourceName(type) == GetExtension(identifier);
+        }
+
+        /// <summary>
+        /// Returns the path that contains the resource, including the repository
+        /// </summary>
+        /// <param name="identifier">The resource identifier to use</param>
+        /// <returns>The folder for the identifier</returns>
+        public static string GetRepositoryPath(string identifier)
+        {
+            if (!Validate(identifier))
+                throw new Exception("Invalid resource id: " + identifier);
+            identifier = Normalize(identifier);
+
+            return identifier.Substring(0, identifier.LastIndexOf("/", identifier.Length)) + "/";
+        }
+
+        /// <summary>
+        /// Sets the path including the repository to the given value
+        /// </summary>
+        /// <param name="identifier">The identifier to change the folder for</param>
+        /// <param name="folder">The new folder</param>
+        /// <returns>An identifier in the new folder</returns>
+        public static string SetRepositoryPath(string identifier, string folder)
+        {
+            if (!folder.StartsWith("Library:") && !folder.StartsWith("Session:"))
+            {
+                string res = identifier.EndsWith("/") ? "" : GetFullname(identifier);
+                string repo = GetRepository(identifier);
+                if (!folder.EndsWith("/") && !string.IsNullOrEmpty(folder))
+                    folder += "/";
+                return repo + folder + res;
+            }
+            else if (GetExtension(identifier) == "")
+            {
+                if (!folder.EndsWith("/"))
+                    folder += "/";
+                return folder;
+            }
+            else
+            {
+                if (!folder.EndsWith("/"))
+                    folder += "/";
+                return folder + GetFullname(identifier);
+            }
+        }
+
+        public static string GetParentFolder(string identifier)
+        {
+            if (!Validate(identifier))
+                throw new Exception("Invalid resource id: " + identifier);
+            identifier = Normalize(identifier);
+
+            if (identifier == GetRepository(identifier))
+                return identifier;
+
+            if (identifier.EndsWith("/"))
+                identifier = identifier.Remove(0, identifier.Length - 1);
+
+            identifier = identifier.Remove(identifier.LastIndexOf("/"));
+            if (!identifier.EndsWith("/"))
+                identifier = identifier + "/";
+
+            return identifier;
         }
     
 

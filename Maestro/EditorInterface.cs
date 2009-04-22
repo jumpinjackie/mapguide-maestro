@@ -104,13 +104,13 @@ namespace OSGeo.MapGuide.Maestro
 
 		public string BrowseResource(string[] itemTypes)
 		{
-			BrowseResource dlg = new BrowseResource(m_editor.CurrentConnection, m_editor, this.ImageList, true, itemTypes);
+            ResourceBrowser.BrowseResource dlg = new ResourceBrowser.BrowseResource(m_editor.RepositoryCache, m_editor, true, itemTypes);
 			dlg.SelectedResource = m_editor.LastSelectedNode;
 
-			if (dlg.ShowDialog() == DialogResult.OK)
-				return dlg.SelectedResource;
-			else
-				return null;
+            if (dlg.ShowDialog() == DialogResult.OK)
+                return dlg.SelectedResource;
+            else
+                return null;
 		}
 
 		public void Delete()
@@ -223,7 +223,7 @@ namespace OSGeo.MapGuide.Maestro
 				string resourceType = m_editor.ResourceEditorMap.GetResourceTypeNameFromResourceID(m_resourceID);
 				if (!m_existing || resid == null)
 				{
-					BrowseResource dlg = new BrowseResource(m_editor.CurrentConnection, m_editor, this.ImageList, false, new string[] { resourceType });
+                    ResourceBrowser.BrowseResource dlg = new ResourceBrowser.BrowseResource(m_editor.RepositoryCache, m_editor, false, new string[] { resourceType });
 					dlg.SelectedResource = m_editor.LastSelectedNode;
 					if (dlg.ShowDialog() != DialogResult.OK)
 						return false;

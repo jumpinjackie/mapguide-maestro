@@ -44,6 +44,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Windows.Forms.Label label2;
 		private bool m_isUpdating = false;
 		private System.Windows.Forms.ToolTip toolTips;
+        private TextBox Datastore;
+        private Label label4;
 		private Globalizator.Globalizator m_globalizor = null;
 
 		public FeatureSourceEditorPostGIS()
@@ -55,7 +57,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			toolTips.SetToolTip(Server, m_globalizor.Translate("Enter server name here, or leave blank for the default, which is localhost"));
 			toolTips.SetToolTip(Database, m_globalizor.Translate("Enter the database name here"));
 			toolTips.SetToolTip(Port, m_globalizor.Translate("Enter communication port here, or leave blank for the default, which is 5432"));
-		}
+            toolTips.SetToolTip(Datastore, m_globalizor.Translate("Enter the datastore (schema) name here"));
+        }
 
 		public FeatureSourceEditorPostGIS(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource feature)
 			: this()
@@ -89,98 +92,119 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.credentials = new ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
-			this.Database = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.Server = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.Port = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.toolTips = new System.Windows.Forms.ToolTip(this.components);
-			this.SuspendLayout();
-			// 
-			// credentials
-			// 
-			this.credentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.credentials.Location = new System.Drawing.Point(8, 104);
-			this.credentials.Name = "credentials";
-			this.credentials.Size = new System.Drawing.Size(304, 152);
-			this.credentials.TabIndex = 0;
-			this.credentials.CredentialsChanged += new ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
-			// 
-			// Database
-			// 
-			this.Database.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Database.Location = new System.Drawing.Point(112, 8);
-			this.Database.Name = "Database";
-			this.Database.Size = new System.Drawing.Size(200, 20);
-			this.Database.TabIndex = 31;
-			this.Database.Text = "";
-			this.Database.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 8);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(96, 16);
-			this.label3.TabIndex = 30;
-			this.label3.Text = "Database";
-			// 
-			// Server
-			// 
-			this.Server.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Server.Location = new System.Drawing.Point(112, 40);
-			this.Server.Name = "Server";
-			this.Server.Size = new System.Drawing.Size(200, 20);
-			this.Server.TabIndex = 29;
-			this.Server.Text = "";
-			this.Server.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 40);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(96, 16);
-			this.label1.TabIndex = 28;
-			this.label1.Text = "Server";
-			// 
-			// Port
-			// 
-			this.Port.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Port.Location = new System.Drawing.Point(112, 72);
-			this.Port.Name = "Port";
-			this.Port.Size = new System.Drawing.Size(200, 20);
-			this.Port.TabIndex = 33;
-			this.Port.Text = "";
-			this.Port.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 72);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(96, 16);
-			this.label2.TabIndex = 32;
-			this.label2.Text = "Port";
-			// 
-			// FeatureSourceEditorPostGIS
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(320, 264);
-			this.Controls.Add(this.Port);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.Database);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.Server);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.credentials);
-			this.Name = "FeatureSourceEditorPostGIS";
-			this.Size = new System.Drawing.Size(320, 264);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            this.credentials = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
+            this.Database = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Server = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Port = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.toolTips = new System.Windows.Forms.ToolTip(this.components);
+            this.Datastore = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // credentials
+            // 
+            this.credentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.credentials.AutoScroll = true;
+            this.credentials.AutoScrollMinSize = new System.Drawing.Size(264, 152);
+            this.credentials.Location = new System.Drawing.Point(8, 136);
+            this.credentials.Name = "credentials";
+            this.credentials.Size = new System.Drawing.Size(304, 152);
+            this.credentials.TabIndex = 0;
+            this.credentials.CredentialsChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
+            // 
+            // Database
+            // 
+            this.Database.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.Database.Location = new System.Drawing.Point(112, 8);
+            this.Database.Name = "Database";
+            this.Database.Size = new System.Drawing.Size(200, 20);
+            this.Database.TabIndex = 31;
+            this.Database.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(8, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(96, 16);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Database";
+            // 
+            // Server
+            // 
+            this.Server.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.Server.Location = new System.Drawing.Point(112, 40);
+            this.Server.Name = "Server";
+            this.Server.Size = new System.Drawing.Size(200, 20);
+            this.Server.TabIndex = 29;
+            this.Server.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(8, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 16);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Server";
+            // 
+            // Port
+            // 
+            this.Port.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.Port.Location = new System.Drawing.Point(112, 72);
+            this.Port.Name = "Port";
+            this.Port.Size = new System.Drawing.Size(200, 20);
+            this.Port.TabIndex = 33;
+            this.Port.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(8, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 16);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Port";
+            // 
+            // Datastore
+            // 
+            this.Datastore.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.Datastore.Location = new System.Drawing.Point(112, 104);
+            this.Datastore.Name = "Datastore";
+            this.Datastore.Size = new System.Drawing.Size(200, 20);
+            this.Datastore.TabIndex = 35;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(8, 104);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 16);
+            this.label4.TabIndex = 34;
+            this.label4.Text = "Datastore";
+            // 
+            // FeatureSourceEditorPostGIS
+            // 
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(320, 293);
+            this.Controls.Add(this.Datastore);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Port);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Database);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Server);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.credentials);
+            this.Name = "FeatureSourceEditorPostGIS";
+            this.Size = new System.Drawing.Size(320, 293);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion
@@ -246,6 +270,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					Port.Text = "";
 				}
 
+                Datastore.Text = m_feature.Parameter["DataStore"];
 				credentials.SetCredentials(m_feature.Parameter["Username"], m_feature.Parameter["Password"]);
 			}
 			finally
@@ -281,6 +306,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 
 			m_feature.Parameter["Service"] = service;
+            m_feature.Parameter["DataStore"] = Datastore.Text;
 			m_editor.HasChanged();
 		
 		}

@@ -36,6 +36,17 @@ namespace OSGeo.MapGuide.Maestro
             //MaestroAPI.HttpServerConnection con = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri("http://localhost/mapguide"), "Administrator", "admin", "da", true);
             //MaestroAPI.LayerDefinition ldef = con.CreateResourceObject<MaestroAPI.LayerDefinition>();
 
+            /*MaestroAPI.ResourceIdentifier ri = new OSGeo.MapGuide.MaestroAPI.ResourceIdentifier("Library://folder/");
+            string s = ri.Folder;
+            ri.Folder = "xfolder";
+            ri.Folder = "Library://yfolder";
+            ri = new OSGeo.MapGuide.MaestroAPI.ResourceIdentifier("Library://folder/mapdef.LayerDefinition");
+            ri.Folder = "xfolder";
+            ri.Folder = "Library://yfolder";
+            ri.Folder = "";
+            ri = new OSGeo.MapGuide.MaestroAPI.ResourceIdentifier("Library://");
+            s = ri.Folder;*/
+
 			try
 			{
 				Application.EnableVisualStyles();

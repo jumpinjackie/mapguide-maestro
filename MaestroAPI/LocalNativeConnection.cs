@@ -91,13 +91,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 			}
 		}
 
-		public override ResourceList GetRepositoryResources(string startingpoint, string type, int depth)
+		public override ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren)
 		{
 			if (type == null)
 				type = "";
 			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			System.Reflection.MethodInfo mi = res.GetType().GetMethod("EnumerateResources", new Type[] { typeof(MgResourceIdentifier), typeof(int), typeof(string) });
-			return (ResourceList) base.DeserializeObject(typeof(ResourceList), Utility.MgStreamToNetStream(res, mi, new object[] {new MgResourceIdentifier(startingpoint), depth, type }));
+			System.Reflection.MethodInfo mi = res.GetType().GetMethod("EnumerateResources", new Type[] { typeof(MgResourceIdentifier), typeof(int), typeof(string), typeof(bool) });
+			return (ResourceList) base.DeserializeObject(typeof(ResourceList), Utility.MgStreamToNetStream(res, mi, new object[] {new MgResourceIdentifier(startingpoint), depth, type, computeChildren }));
 		}
 
 		public override FeatureProviderRegistryFeatureProviderCollection FeatureProviders
