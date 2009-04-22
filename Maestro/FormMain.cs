@@ -310,7 +310,7 @@ namespace OSGeo.MapGuide.Maestro
             this.RenameMenu,
             this.openToolStripMenuItem});
             this.TreeContextMenu.Name = "TreeContextMenu";
-            this.TreeContextMenu.Size = new System.Drawing.Size(181, 342);
+            this.TreeContextMenu.Size = new System.Drawing.Size(181, 320);
             this.TreeContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.TreeContextMenu_Popup);
             // 
             // PropertiesMenu
@@ -559,6 +559,7 @@ namespace OSGeo.MapGuide.Maestro
             this.tabItems.MouseLeave += new System.EventHandler(this.tabItems_MouseLeave);
             this.tabItems.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabItems_MouseMove);
             this.tabItems.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.tabItems_ControlAdded);
+            this.tabItems.Click += new System.EventHandler(this.tabItems_Click);
             this.tabItems.TabIndexChanged += new System.EventHandler(this.tabItems_SelectedIndexChanged);
             this.tabItems.SelectedIndexChanged += new System.EventHandler(this.tabItems_SelectedIndexChanged);
             // 
@@ -2687,6 +2688,25 @@ namespace OSGeo.MapGuide.Maestro
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResourceTree_DoubleClick(sender, e);
+        }
+
+        private void tabItems_Click(object sender, EventArgs e)
+        {
+            MouseEventArgs eventArg = e as MouseEventArgs;
+
+            if (eventArg != null && eventArg.Button == MouseButtons.Middle)
+            {
+                for (int i = 0; i < tabItems.TabCount; i++)
+                {
+                    if (tabItems.GetTabRect(i).Contains(eventArg.Location))
+                    {
+                        tabItems.SelectedIndex = i;
+                        ClosePage();
+                        break;
+                    }
+                }
+            }
+
         }
 	}
 }
