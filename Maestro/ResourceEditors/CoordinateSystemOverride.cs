@@ -47,6 +47,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripButton RefreshButton;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton DisplayRawXml;
+        private Label label1;
+        private TextBox SourceCoordinateSystem;
+        private TextBox TargetCoordinateSystem;
+        private Label label2;
+        private Button BrowseSimpleOverrideButton;
+        private Panel SimpleOverridePanel;
+        private Button LoadSimpleSourceProjection;
+        private Button ToggleExtendedModeButton;
+        private Button RemoveSimpleCoordinateOverrides;
+        private ToolStripButton ToggleSimpleModeButton;
+        private ToolStrip toolStrip;
 		private FeatureSource m_item = null;
 
 		public CoordinateSystemOverride()
@@ -77,38 +88,49 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.Windows.Forms.ToolStrip toolStrip;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CoordinateSystemOverride));
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.AddButton = new System.Windows.Forms.ToolStripButton();
             this.DeleteButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.EditButton = new System.Windows.Forms.ToolStripButton();
             this.RefreshButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.DisplayRawXml = new System.Windows.Forms.ToolStripButton();
+            this.ToggleSimpleModeButton = new System.Windows.Forms.ToolStripButton();
             this.ProjectionOverrides = new System.Windows.Forms.ListView();
             this.SourceHeader = new System.Windows.Forms.ColumnHeader();
             this.TargetHeader = new System.Windows.Forms.ColumnHeader();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.DisplayRawXml = new System.Windows.Forms.ToolStripButton();
-            toolStrip = new System.Windows.Forms.ToolStrip();
-            toolStrip.SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SourceCoordinateSystem = new System.Windows.Forms.TextBox();
+            this.TargetCoordinateSystem = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.BrowseSimpleOverrideButton = new System.Windows.Forms.Button();
+            this.SimpleOverridePanel = new System.Windows.Forms.Panel();
+            this.RemoveSimpleCoordinateOverrides = new System.Windows.Forms.Button();
+            this.LoadSimpleSourceProjection = new System.Windows.Forms.Button();
+            this.ToggleExtendedModeButton = new System.Windows.Forms.Button();
+            this.toolStrip.SuspendLayout();
+            this.SimpleOverridePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
             // 
-            toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddButton,
             this.DeleteButton,
             this.toolStripSeparator1,
             this.EditButton,
             this.RefreshButton,
             this.toolStripSeparator2,
-            this.DisplayRawXml});
-            toolStrip.Location = new System.Drawing.Point(0, 0);
-            toolStrip.Name = "toolStrip";
-            toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            toolStrip.Size = new System.Drawing.Size(648, 25);
-            toolStrip.TabIndex = 5;
+            this.DisplayRawXml,
+            this.ToggleSimpleModeButton});
+            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip.Size = new System.Drawing.Size(648, 25);
+            this.toolStrip.TabIndex = 5;
             // 
             // AddButton
             // 
@@ -157,15 +179,41 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.RefreshButton.ToolTipText = "Fetch coordinate systems found in the featuresource";
             this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // DisplayRawXml
+            // 
+            this.DisplayRawXml.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.DisplayRawXml.Image = ((System.Drawing.Image)(resources.GetObject("DisplayRawXml.Image")));
+            this.DisplayRawXml.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DisplayRawXml.Name = "DisplayRawXml";
+            this.DisplayRawXml.Size = new System.Drawing.Size(23, 22);
+            this.DisplayRawXml.ToolTipText = "Click here to view the spatial context information";
+            this.DisplayRawXml.Click += new System.EventHandler(this.DisplayRawXml_Click);
+            // 
+            // ToggleSimpleModeButton
+            // 
+            this.ToggleSimpleModeButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.ToggleSimpleModeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.ToggleSimpleModeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToggleSimpleModeButton.Name = "ToggleSimpleModeButton";
+            this.ToggleSimpleModeButton.Size = new System.Drawing.Size(68, 22);
+            this.ToggleSimpleModeButton.Text = "<<< Simple";
+            this.ToggleSimpleModeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.ToggleSimpleModeButton.Click += new System.EventHandler(this.ToggleSimpleModeButton_Click);
+            // 
             // ProjectionOverrides
             // 
             this.ProjectionOverrides.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.SourceHeader,
             this.TargetHeader});
             this.ProjectionOverrides.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ProjectionOverrides.Location = new System.Drawing.Point(0, 25);
+            this.ProjectionOverrides.Location = new System.Drawing.Point(0, 73);
             this.ProjectionOverrides.Name = "ProjectionOverrides";
-            this.ProjectionOverrides.Size = new System.Drawing.Size(648, 183);
+            this.ProjectionOverrides.Size = new System.Drawing.Size(648, 135);
             this.ProjectionOverrides.TabIndex = 4;
             this.ProjectionOverrides.UseCompatibleStateImageBehavior = false;
             this.ProjectionOverrides.View = System.Windows.Forms.View.Details;
@@ -182,29 +230,109 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.TargetHeader.Text = "Target";
             this.TargetHeader.Width = 297;
             // 
-            // toolStripSeparator2
+            // label1
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Source";
             // 
-            // DisplayRawXml
+            // SourceCoordinateSystem
             // 
-            this.DisplayRawXml.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.DisplayRawXml.Image = ((System.Drawing.Image)(resources.GetObject("DisplayRawXml.Image")));
-            this.DisplayRawXml.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.DisplayRawXml.Name = "DisplayRawXml";
-            this.DisplayRawXml.Size = new System.Drawing.Size(23, 22);
-            this.DisplayRawXml.ToolTipText = "Click here to view the spatial context information";
-            this.DisplayRawXml.Click += new System.EventHandler(this.DisplayRawXml_Click);
+            this.SourceCoordinateSystem.Location = new System.Drawing.Point(56, 16);
+            this.SourceCoordinateSystem.Name = "SourceCoordinateSystem";
+            this.SourceCoordinateSystem.ReadOnly = true;
+            this.SourceCoordinateSystem.Size = new System.Drawing.Size(152, 20);
+            this.SourceCoordinateSystem.TabIndex = 7;
+            this.SourceCoordinateSystem.TextChanged += new System.EventHandler(this.SimpleCoordinateSystem_TextChanged);
+            // 
+            // TargetCoordinateSystem
+            // 
+            this.TargetCoordinateSystem.Location = new System.Drawing.Point(296, 16);
+            this.TargetCoordinateSystem.Name = "TargetCoordinateSystem";
+            this.TargetCoordinateSystem.ReadOnly = true;
+            this.TargetCoordinateSystem.Size = new System.Drawing.Size(152, 20);
+            this.TargetCoordinateSystem.TabIndex = 9;
+            this.TargetCoordinateSystem.TextChanged += new System.EventHandler(this.SimpleCoordinateSystem_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(248, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Target";
+            // 
+            // BrowseSimpleOverrideButton
+            // 
+            this.BrowseSimpleOverrideButton.Image = ((System.Drawing.Image)(resources.GetObject("BrowseSimpleOverrideButton.Image")));
+            this.BrowseSimpleOverrideButton.Location = new System.Drawing.Point(448, 14);
+            this.BrowseSimpleOverrideButton.Name = "BrowseSimpleOverrideButton";
+            this.BrowseSimpleOverrideButton.Size = new System.Drawing.Size(24, 24);
+            this.BrowseSimpleOverrideButton.TabIndex = 10;
+            this.BrowseSimpleOverrideButton.UseVisualStyleBackColor = true;
+            this.BrowseSimpleOverrideButton.Click += new System.EventHandler(this.BrowseSimpleOverrideButton_Click);
+            // 
+            // SimpleOverridePanel
+            // 
+            this.SimpleOverridePanel.Controls.Add(this.RemoveSimpleCoordinateOverrides);
+            this.SimpleOverridePanel.Controls.Add(this.LoadSimpleSourceProjection);
+            this.SimpleOverridePanel.Controls.Add(this.ToggleExtendedModeButton);
+            this.SimpleOverridePanel.Controls.Add(this.BrowseSimpleOverrideButton);
+            this.SimpleOverridePanel.Controls.Add(this.TargetCoordinateSystem);
+            this.SimpleOverridePanel.Controls.Add(this.label1);
+            this.SimpleOverridePanel.Controls.Add(this.label2);
+            this.SimpleOverridePanel.Controls.Add(this.SourceCoordinateSystem);
+            this.SimpleOverridePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SimpleOverridePanel.Location = new System.Drawing.Point(0, 25);
+            this.SimpleOverridePanel.Name = "SimpleOverridePanel";
+            this.SimpleOverridePanel.Size = new System.Drawing.Size(648, 48);
+            this.SimpleOverridePanel.TabIndex = 11;
+            // 
+            // RemoveSimpleCoordinateOverrides
+            // 
+            this.RemoveSimpleCoordinateOverrides.Image = ((System.Drawing.Image)(resources.GetObject("RemoveSimpleCoordinateOverrides.Image")));
+            this.RemoveSimpleCoordinateOverrides.Location = new System.Drawing.Point(496, 14);
+            this.RemoveSimpleCoordinateOverrides.Name = "RemoveSimpleCoordinateOverrides";
+            this.RemoveSimpleCoordinateOverrides.Size = new System.Drawing.Size(24, 24);
+            this.RemoveSimpleCoordinateOverrides.TabIndex = 13;
+            this.RemoveSimpleCoordinateOverrides.UseVisualStyleBackColor = true;
+            this.RemoveSimpleCoordinateOverrides.Click += new System.EventHandler(this.RemoveSimpleCoordinateOverrides_Click);
+            // 
+            // LoadSimpleSourceProjection
+            // 
+            this.LoadSimpleSourceProjection.Image = ((System.Drawing.Image)(resources.GetObject("LoadSimpleSourceProjection.Image")));
+            this.LoadSimpleSourceProjection.Location = new System.Drawing.Point(208, 14);
+            this.LoadSimpleSourceProjection.Name = "LoadSimpleSourceProjection";
+            this.LoadSimpleSourceProjection.Size = new System.Drawing.Size(24, 24);
+            this.LoadSimpleSourceProjection.TabIndex = 12;
+            this.LoadSimpleSourceProjection.UseVisualStyleBackColor = true;
+            this.LoadSimpleSourceProjection.Click += new System.EventHandler(this.LoadSimpleSourceProjection_Click);
+            // 
+            // ToggleExtendedModeButton
+            // 
+            this.ToggleExtendedModeButton.Location = new System.Drawing.Point(536, 14);
+            this.ToggleExtendedModeButton.Name = "ToggleExtendedModeButton";
+            this.ToggleExtendedModeButton.Size = new System.Drawing.Size(99, 24);
+            this.ToggleExtendedModeButton.TabIndex = 11;
+            this.ToggleExtendedModeButton.Text = "Extended >>>";
+            this.ToggleExtendedModeButton.UseVisualStyleBackColor = true;
+            this.ToggleExtendedModeButton.Click += new System.EventHandler(this.ToggleExtendedModeButton_Click);
             // 
             // CoordinateSystemOverride
             // 
             this.Controls.Add(this.ProjectionOverrides);
-            this.Controls.Add(toolStrip);
+            this.Controls.Add(this.SimpleOverridePanel);
+            this.Controls.Add(this.toolStrip);
             this.Name = "CoordinateSystemOverride";
             this.Size = new System.Drawing.Size(648, 208);
-            toolStrip.ResumeLayout(false);
-            toolStrip.PerformLayout();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
+            this.SimpleOverridePanel.ResumeLayout(false);
+            this.SimpleOverridePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,17 +347,29 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			try
 			{
 				m_isUpdating = true;
-				ProjectionOverrides.Items.Clear();
-				if (item.SupplementalSpatialContextInfo != null)
-					
-					foreach(SpatialContextType sp in item.SupplementalSpatialContextInfo)
-						ProjectionOverrides.Items.Add(CreateLviFromSP(sp));
+                RefreshOverrideList();
+
+                if (ProjectionOverrides.Items.Count <= 1)
+                    ToggleSimpleModeButton_Click(this, null);
+                else
+                    ToggleExtendedModeButton_Click(this, null);
 			}
 			finally
 			{
 				m_isUpdating = false;
 			}
 		}
+
+        private void RefreshOverrideList()
+        {
+            if (m_item == null)
+                return;
+
+            ProjectionOverrides.Items.Clear();
+            if (m_item.SupplementalSpatialContextInfo != null)
+                foreach (SpatialContextType sp in m_item.SupplementalSpatialContextInfo)
+                    ProjectionOverrides.Items.Add(CreateLviFromSP(sp));
+        }
 
 		private void ProjectionOverrides_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
@@ -389,6 +529,88 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
         
 
+        }
+
+        private void ToggleExtendedModeButton_Click(object sender, EventArgs e)
+        {
+            RefreshOverrideList();
+            SimpleOverridePanel.Visible = false;
+            ProjectionOverrides.Visible = toolStrip.Visible = true;
+        }
+
+        private void ToggleSimpleModeButton_Click(object sender, EventArgs e)
+        {
+            if (ProjectionOverrides.Items.Count > 1)
+            {
+                if (MessageBox.Show(this, "Simple mode will remove all but the first overridden projection,\nare you sure you want to remove the other projections?", Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) != DialogResult.Yes)
+                    return;
+            }
+
+            if (m_item != null && m_item.SupplementalSpatialContextInfo != null && m_item.SupplementalSpatialContextInfo.Count == 1)
+            {
+                //Copy to guard against an event that clears it
+                string tmp = m_item.SupplementalSpatialContextInfo[0].CoordinateSystem;
+                SourceCoordinateSystem.Text = m_item.SupplementalSpatialContextInfo[0].Name;
+                TargetCoordinateSystem.Text = tmp;
+            }
+            else
+            {
+                SourceCoordinateSystem.Text = "";
+                TargetCoordinateSystem.Text = "";
+            }
+
+            SimpleOverridePanel.Visible = true;
+            ProjectionOverrides.Visible = toolStrip.Visible = false;
+        }
+
+        private void LoadSimpleSourceProjection_Click(object sender, EventArgs e)
+        {
+            if (m_item != null)
+            {
+                try
+                {
+                    FdoSpatialContextList lst = m_item.GetSpatialInfo();
+                    if (lst.SpatialContext.Count > 0)
+                        SourceCoordinateSystem.Text = lst.SpatialContext[0].CoordinateSystemName;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, string.Format("Failed to retrive coordinate info: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void RemoveSimpleCoordinateOverrides_Click(object sender, EventArgs e)
+        {
+            SourceCoordinateSystem.Text = TargetCoordinateSystem.Text = "";
+            m_item.SupplementalSpatialContextInfo = null;
+        }
+
+        private void SimpleCoordinateSystem_TextChanged(object sender, EventArgs e)
+        {
+            if (m_isUpdating)
+                return;
+
+            if (m_item.SupplementalSpatialContextInfo == null)
+                m_item.SupplementalSpatialContextInfo = new SpatialContextTypeCollection();
+
+            SpatialContextType cnt = new SpatialContextType();
+            cnt.Name = SourceCoordinateSystem.Text;
+            cnt.CoordinateSystem = TargetCoordinateSystem.Text;
+            m_item.SupplementalSpatialContextInfo.Clear();
+            m_item.SupplementalSpatialContextInfo.Add(cnt);
+            m_editor.HasChanged();
+        }
+
+        private void BrowseSimpleOverrideButton_Click(object sender, EventArgs e)
+        {
+            SelectCoordinateSystem dlg = new SelectCoordinateSystem(m_editor.CurrentConnection);
+            dlg.SetWKT(TargetCoordinateSystem.Text);
+            if (dlg.ShowDialog(this) == DialogResult.OK)
+                TargetCoordinateSystem.Text = dlg.SelectedCoordSys.WKT;
+
+            if (SourceCoordinateSystem.Text.Length == 0)
+                LoadSimpleSourceProjection_Click(sender, e);
         }
 	
 	}

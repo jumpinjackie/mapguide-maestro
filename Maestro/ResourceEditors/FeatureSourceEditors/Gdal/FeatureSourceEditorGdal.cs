@@ -237,7 +237,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 if (!wasVisible)
                 {
                     simple.UpdateDisplay();
-                    m_editor.HasChanged();
+                    if (!m_isUpdating)
+                        m_editor.HasChanged();
                 }
 			}
 			else
@@ -248,7 +249,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 if (!wasVisible)
                 {
                     composite.UpdateDisplay();
-                    m_editor.HasChanged();
+                    if (!m_isUpdating)
+                        m_editor.HasChanged();
                 }
 			}
 		}

@@ -57,6 +57,41 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		public delegate void ConnectionStringUpdatedDelegate(string connectionString);
 
+        private string m_wkt = null;
+        System.Xml.XmlNode m_crsNode = null;
+
+        /// <summary>
+        /// The ODBC provider needs this stuff instead of the coordsys override :(.
+        /// {0} is the name, {1} is the wkt, {2,3} and {4,5} is the bbox coordinates.
+        /// </summary>
+        private const string WKT_HEADER = "<gml:DerivedCRS gml:id=\"{0}\">" +
+            "  <gml:remarks>{0}</gml:remarks>" +
+            "  <gml:srsName>{0}</gml:srsName>" +
+            "  <!-- TODO: Maestro does not know how to read the coordsys extent -->" +
+            "  <gml:validArea>" +
+            "    <gml:boundingBox>" +
+            "      <gml:pos>{2} {3}</gml:pos>" +
+            "      <gml:pos>{4} {5}</gml:pos>" +
+            "    </gml:boundingBox>" +
+            "  </gml:validArea>" +
+            "  <gml:baseCRS>" +
+            "    <fdo:WKTCRS gml:id=\"{0}\">" +
+            "      <gml:srsName>{0}</gml:srsName>" +
+            "      <fdo:WKT>{1}</fdo:WKT>" +
+            "    </fdo:WKTCRS>" +
+            "  </gml:baseCRS>" +
+            "  <gml:definedByConversion xlink:href=\"http://fdo.osgeo.org/coord_conversions#identity\"/>" +
+            "  <gml:derivedCRSType codeSpace=\"http://fdo.osgeo.org/crs_types\">geographic</gml:derivedCRSType>" +
+            "  <gml:usesCS xlink:href=\"http://fdo.osgeo.org/cs#default_cartesian\" />" +
+            "</gml:DerivedCRS>";
+
+        private const string XML_WKT_WRAPPER = "<fdo:DataStore xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" " +
+            "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
+            "xmlns:xlink=\"http://www.w3.org/1999/xlink\" " +
+            "xmlns:gml=\"http://www.opengis.net/gml\" " +
+            "xmlns:fdo=\"http://fdo.osgeo.org/schemas\" " +
+            "xmlns:fds=\"http://fdo.osgeo.org/schemas/fds\">{0}</fdo:DataStore>";
+
 		private enum DisplayTypes : int
 		{
 			Managed,
@@ -139,6 +174,48 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					ConnectionString.Text = "";
 				else
 					ConnectionString.Text = m_feature.Parameter["ConnectionString"];
+
+                m_crsNode = null;
+                m_wkt = null;
+
+                //The ODBC provider does not support this
+                m_feature.SupplementalSpatialContextInfo = null;
+
+                if (!string.IsNullOrEmpty(m_feature.ConfigurationDocument))
+                {
+                    try
+                    {
+                        System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+                        doc.Load(m_editor.CurrentConnection.GetResourceData(m_feature.ResourceId, m_feature.ConfigurationDocument));
+
+                        System.Xml.XmlNamespaceManager nm = new System.Xml.XmlNamespaceManager(doc.NameTable);
+                        nm.AddNamespace("fdo", "http://fdo.osgeo.org/schemas");
+                        nm.AddNamespace("gml", "http://www.opengis.net/gml");
+                        nm.AddNamespace("xlink", "http://www.w3.org/1999/xlink");
+
+                        m_crsNode = doc.SelectSingleNode("fdo:DataStore/gml:DerivedCRS", nm);
+                        if (m_crsNode != null)
+                        {
+                            System.Xml.XmlNode wktNode = m_crsNode.SelectSingleNode("gml:baseCRS/fdo:WKTCRS/fdo:WKT", nm);
+                            if (wktNode != null)
+                                m_wkt = wktNode.InnerText;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(this, string.Format("Failed to read current coordsys configuration: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                if (m_wkt != null)
+                {
+                    m_feature.SupplementalSpatialContextInfo = new OSGeo.MapGuide.MaestroAPI.SpatialContextTypeCollection();
+                    MaestroAPI.SpatialContextType cn = new OSGeo.MapGuide.MaestroAPI.SpatialContextType();
+                    cn.CoordinateSystem = m_wkt;
+                    cn.Name = "Default";
+                    m_feature.SupplementalSpatialContextInfo.Add(cn);
+                }
+
 			}
 			finally
 			{
@@ -374,9 +451,75 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		public bool Save(string savename)
 		{
+            System.Text.RegularExpressions.Regex re = new System.Text.RegularExpressions.Regex("(?<type>(PROJCS)|(LOCAL_CS)|(GEOCCS)|(GEOGCS)|(FITTED_CS)|(COMPD_CS))\\[\"(?<name>[^\"]+)\"");
+            re = new System.Text.RegularExpressions.Regex("\"(?<name>[^\"]+)\"");
+            
+
+            if (m_feature.SupplementalSpatialContextInfo == null || m_feature.SupplementalSpatialContextInfo.Count == 0)
+            {
+                //Remove the CRSnode
+                UpdateConfigWithCoordsys(null);
+            }
+            else
+            {
+                string wkt = m_feature.SupplementalSpatialContextInfo[0].CoordinateSystem;
+                //m_feature.SupplementalSpatialContextInfo = null;
+
+                string name = m_editor.CurrentConnection.CoordinateSystem.ConvertWktToCoordinateSystemCode(wkt);
+
+                /*string name = "UNKNOWN";
+                System.Text.RegularExpressions.Match m = re.Match(wkt);
+                if (m.Success)
+                    name = m.Groups["name"].Value;*/
+
+                if (wkt != m_wkt)
+                    //TODO: Figure out how to get the coordsys extent
+                    UpdateConfigWithCoordsys(string.Format(System.Globalization.CultureInfo.InvariantCulture, WKT_HEADER, name, wkt, 0.0, 0.0, 0.0, 0.0));
+
+            }
 			return false;
 		}
 
+        private void UpdateConfigWithCoordsys(string coordsysFragment)
+        {
+            if (!string.IsNullOrEmpty(m_feature.ConfigurationDocument))
+            {
+                try
+                {
+                    System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+                    doc.Load(m_editor.CurrentConnection.GetResourceData(m_feature.ResourceId, m_feature.ConfigurationDocument));
+
+                    System.Xml.XmlNamespaceManager nm = new System.Xml.XmlNamespaceManager(doc.NameTable);
+                    nm.AddNamespace("fdo", "http://fdo.osgeo.org/schemas");
+                    nm.AddNamespace("gml", "http://www.opengis.net/gml");
+                    nm.AddNamespace("xlink", "http://www.w3.org/1999/xlink");
+
+                    System.Xml.XmlNode root = doc.SelectSingleNode("fdo:DataStore", nm);
+                    System.Xml.XmlNode crsNode = root.SelectSingleNode("gml:DerivedCRS", nm);
+                    if (crsNode != null)
+                        root.RemoveChild(crsNode);
+
+                    if (!string.IsNullOrEmpty(coordsysFragment))
+                    {
+                        string tmpXml = string.Format(XML_WKT_WRAPPER, coordsysFragment);
+                        System.Xml.XmlDocument d2 = new System.Xml.XmlDocument();
+                        d2.LoadXml(tmpXml);
+
+                        root.InsertBefore(doc.ImportNode(d2.FirstChild.FirstChild, true), root.FirstChild);
+                    }
+
+                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                    {
+                        doc.Save(ms);
+                        m_editor.CurrentConnection.SetResourceData(m_feature.ResourceId, m_feature.ConfigurationDocument, OSGeo.MapGuide.MaestroAPI.ResourceDataType.Stream, ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, string.Format("Failed to read current coordsys configuration: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
 		private void ConnectionStringUpdated(string connectionString)
 		{
@@ -572,6 +715,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			if (schema.FirstChild.Attributes["xmlns:Default"] == null)
 				schema.FirstChild.Attributes.Append(schema.CreateAttribute("xmlns:Default"));
 			schema.FirstChild.Attributes["xmlns:Default"].Value = "http://fdo.osgeo.org/schemas/feature/Default";
+
+            //Preserve the crs, if any
+            if (m_crsNode != null)
+                schema.FirstChild.AppendChild(m_crsNode.CloneNode(true));
 
 			Hashtable approvedKeys = new Hashtable();
 
@@ -800,7 +947,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		}
 
         public bool Profile() { return true; }
-        public bool ValidateResource(bool recurse) { return true; }
+        public bool ValidateResource(bool recurse) 
+        {
+            //Save as temp before validating, to include projection data
+            Save(null);
+            return true; 
+        }
         public bool SupportsPreview { get { return true; } }
         public bool SupportsValidate { get { return true; } }
         public bool SupportsProfiling { get { return false; } }

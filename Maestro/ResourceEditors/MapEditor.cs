@@ -2080,6 +2080,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     ng.Nodes.Remove(n);
                     ng.Nodes.Insert(index - 1, n);
                     trvBaseLayerGroups.SelectedNode = n;
+                    m_editor.HasChanged();
                 }
                 else
                 {
@@ -2093,6 +2094,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     ng.Nodes.Remove(n);
                     ng.Nodes.Insert(index + 1, n);
                     trvBaseLayerGroups.SelectedNode = n;
+                    m_editor.HasChanged();
                 }
             }
             else if (trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerGroupCommonType != null)
@@ -2114,6 +2116,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     trvBaseLayerGroups.Nodes.Remove(n);
                     trvBaseLayerGroups.Nodes.Insert(index, n);
                     trvBaseLayerGroups.SelectedNode = n;
+                    m_editor.HasChanged();
                 }
                 else
                 {
@@ -2127,6 +2130,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     trvBaseLayerGroups.Nodes.Remove(n);
                     trvBaseLayerGroups.Nodes.Insert(index + 2, n);
                     trvBaseLayerGroups.SelectedNode = n;
+                    m_editor.HasChanged();
                 }
             }
         }

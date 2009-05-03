@@ -52,7 +52,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox ProviderName;
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel EditJoinPanel;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button EditExtensions;
 
@@ -274,178 +274,179 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.EditorTab = new System.Windows.Forms.TabControl();
-			this.CustomEditorPage = new System.Windows.Forms.TabPage();
-			this.GenericEditorPage = new System.Windows.Forms.TabPage();
-			this.CoordinateSystemOverride = new OSGeo.MapGuide.Maestro.ResourceEditors.CoordinateSystemOverride();
-			this.TestConnectionPanel = new System.Windows.Forms.Panel();
-			this.TestConnectionResult = new System.Windows.Forms.TextBox();
-			this.btnTest = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
-			this.ProviderName = new System.Windows.Forms.TextBox();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.EditExtensions = new System.Windows.Forms.Button();
-			this.label2 = new System.Windows.Forms.Label();
-			this.EditorTab.SuspendLayout();
-			this.TestConnectionPanel.SuspendLayout();
-			this.groupBox1.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// EditorTab
-			// 
-			this.EditorTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.EditorTab.Controls.Add(this.CustomEditorPage);
-			this.EditorTab.Controls.Add(this.GenericEditorPage);
-			this.EditorTab.Location = new System.Drawing.Point(0, 24);
-			this.EditorTab.Name = "EditorTab";
-			this.EditorTab.SelectedIndex = 0;
-			this.EditorTab.Size = new System.Drawing.Size(592, 288);
-			this.EditorTab.TabIndex = 0;
-			this.EditorTab.SelectedIndexChanged += new System.EventHandler(this.EditorTab_SelectedIndexChanged);
-			// 
-			// CustomEditorPage
-			// 
-			this.CustomEditorPage.Location = new System.Drawing.Point(4, 22);
-			this.CustomEditorPage.Name = "CustomEditorPage";
-			this.CustomEditorPage.Size = new System.Drawing.Size(584, 262);
-			this.CustomEditorPage.TabIndex = 0;
-			this.CustomEditorPage.Text = "Custom editor";
-			// 
-			// GenericEditorPage
-			// 
-			this.GenericEditorPage.Location = new System.Drawing.Point(4, 22);
-			this.GenericEditorPage.Name = "GenericEditorPage";
-			this.GenericEditorPage.Size = new System.Drawing.Size(584, 246);
-			this.GenericEditorPage.TabIndex = 1;
-			this.GenericEditorPage.Text = "Generic Editor";
-			// 
-			// CoordinateSystemOverride
-			// 
-			this.CoordinateSystemOverride.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.CoordinateSystemOverride.Location = new System.Drawing.Point(8, 16);
-			this.CoordinateSystemOverride.Name = "CoordinateSystemOverride";
-			this.CoordinateSystemOverride.Size = new System.Drawing.Size(576, 112);
-			this.CoordinateSystemOverride.TabIndex = 1;
-			// 
-			// TestConnectionPanel
-			// 
-			this.TestConnectionPanel.Controls.Add(this.TestConnectionResult);
-			this.TestConnectionPanel.Controls.Add(this.btnTest);
-			this.TestConnectionPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.TestConnectionPanel.Location = new System.Drawing.Point(0, 320);
-			this.TestConnectionPanel.Name = "TestConnectionPanel";
-			this.TestConnectionPanel.Size = new System.Drawing.Size(592, 48);
-			this.TestConnectionPanel.TabIndex = 2;
-			// 
-			// TestConnectionResult
-			// 
-			this.TestConnectionResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.TestConnectionResult.Location = new System.Drawing.Point(0, 0);
-			this.TestConnectionResult.Multiline = true;
-			this.TestConnectionResult.Name = "TestConnectionResult";
-			this.TestConnectionResult.ReadOnly = true;
-			this.TestConnectionResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.TestConnectionResult.Size = new System.Drawing.Size(416, 40);
-			this.TestConnectionResult.TabIndex = 7;
-			this.TestConnectionResult.Text = "Click on \"Test connection\" to test with the current parameters";
-			// 
-			// btnTest
-			// 
-			this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnTest.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btnTest.Location = new System.Drawing.Point(424, 8);
-			this.btnTest.Name = "btnTest";
-			this.btnTest.Size = new System.Drawing.Size(160, 32);
-			this.btnTest.TabIndex = 6;
-			this.btnTest.Text = "Test connection";
-			this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-			// 
-			// label1
-			// 
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label1.Location = new System.Drawing.Point(0, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(104, 16);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Provider";
-			// 
-			// ProviderName
-			// 
-			this.ProviderName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ProviderName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.ProviderName.Location = new System.Drawing.Point(112, 0);
-			this.ProviderName.Name = "ProviderName";
-			this.ProviderName.ReadOnly = true;
-			this.ProviderName.Size = new System.Drawing.Size(472, 20);
-			this.ProviderName.TabIndex = 4;
-			this.ProviderName.Text = "";
-			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.CoordinateSystemOverride);
-			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.groupBox1.Location = new System.Drawing.Point(0, 408);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(592, 136);
-			this.groupBox1.TabIndex = 5;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Coordinate system override";
-			// 
-			// panel1
-			// 
-			this.panel1.Controls.Add(this.EditExtensions);
-			this.panel1.Controls.Add(this.label2);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel1.Location = new System.Drawing.Point(0, 368);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(592, 40);
-			this.panel1.TabIndex = 6;
-			// 
-			// EditExtensions
-			// 
-			this.EditExtensions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.EditExtensions.Location = new System.Drawing.Point(424, 8);
-			this.EditExtensions.Name = "EditExtensions";
-			this.EditExtensions.Size = new System.Drawing.Size(160, 24);
-			this.EditExtensions.TabIndex = 1;
-			this.EditExtensions.Text = "Edit extensions";
-			this.EditExtensions.Click += new System.EventHandler(this.EditExtensions_Click);
-			// 
-			// label2
-			// 
-			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.label2.Location = new System.Drawing.Point(8, 8);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(408, 24);
-			this.label2.TabIndex = 0;
-			this.label2.Text = "The feature source can be joined with other properties and contain values that ar" +
-				"e computed on the fly.";
-			// 
-			// FeatureSourceEditorBase
-			// 
-			this.AutoScroll = true;
-			this.Controls.Add(this.TestConnectionPanel);
-			this.Controls.Add(this.ProviderName);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.EditorTab);
-			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.groupBox1);
-			this.Name = "FeatureSourceEditorBase";
-			this.Size = new System.Drawing.Size(592, 544);
-			this.EditorTab.ResumeLayout(false);
-			this.TestConnectionPanel.ResumeLayout(false);
-			this.groupBox1.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
-			this.ResumeLayout(false);
+            this.EditorTab = new System.Windows.Forms.TabControl();
+            this.CustomEditorPage = new System.Windows.Forms.TabPage();
+            this.GenericEditorPage = new System.Windows.Forms.TabPage();
+            this.CoordinateSystemOverride = new OSGeo.MapGuide.Maestro.ResourceEditors.CoordinateSystemOverride();
+            this.TestConnectionPanel = new System.Windows.Forms.Panel();
+            this.TestConnectionResult = new System.Windows.Forms.TextBox();
+            this.btnTest = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ProviderName = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.EditJoinPanel = new System.Windows.Forms.Panel();
+            this.EditExtensions = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.EditorTab.SuspendLayout();
+            this.TestConnectionPanel.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.EditJoinPanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // EditorTab
+            // 
+            this.EditorTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.EditorTab.Controls.Add(this.CustomEditorPage);
+            this.EditorTab.Controls.Add(this.GenericEditorPage);
+            this.EditorTab.Location = new System.Drawing.Point(0, 24);
+            this.EditorTab.Name = "EditorTab";
+            this.EditorTab.SelectedIndex = 0;
+            this.EditorTab.Size = new System.Drawing.Size(592, 288);
+            this.EditorTab.TabIndex = 0;
+            this.EditorTab.SelectedIndexChanged += new System.EventHandler(this.EditorTab_SelectedIndexChanged);
+            // 
+            // CustomEditorPage
+            // 
+            this.CustomEditorPage.Location = new System.Drawing.Point(4, 22);
+            this.CustomEditorPage.Name = "CustomEditorPage";
+            this.CustomEditorPage.Size = new System.Drawing.Size(584, 262);
+            this.CustomEditorPage.TabIndex = 0;
+            this.CustomEditorPage.Text = "Custom editor";
+            // 
+            // GenericEditorPage
+            // 
+            this.GenericEditorPage.Location = new System.Drawing.Point(4, 22);
+            this.GenericEditorPage.Name = "GenericEditorPage";
+            this.GenericEditorPage.Size = new System.Drawing.Size(584, 262);
+            this.GenericEditorPage.TabIndex = 1;
+            this.GenericEditorPage.Text = "Generic Editor";
+            // 
+            // CoordinateSystemOverride
+            // 
+            this.CoordinateSystemOverride.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.CoordinateSystemOverride.Location = new System.Drawing.Point(8, 16);
+            this.CoordinateSystemOverride.Name = "CoordinateSystemOverride";
+            this.CoordinateSystemOverride.Size = new System.Drawing.Size(576, 112);
+            this.CoordinateSystemOverride.TabIndex = 1;
+            // 
+            // TestConnectionPanel
+            // 
+            this.TestConnectionPanel.Controls.Add(this.TestConnectionResult);
+            this.TestConnectionPanel.Controls.Add(this.btnTest);
+            this.TestConnectionPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.TestConnectionPanel.Location = new System.Drawing.Point(0, 320);
+            this.TestConnectionPanel.Name = "TestConnectionPanel";
+            this.TestConnectionPanel.Size = new System.Drawing.Size(592, 48);
+            this.TestConnectionPanel.TabIndex = 2;
+            // 
+            // TestConnectionResult
+            // 
+            this.TestConnectionResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TestConnectionResult.Location = new System.Drawing.Point(0, 0);
+            this.TestConnectionResult.Multiline = true;
+            this.TestConnectionResult.Name = "TestConnectionResult";
+            this.TestConnectionResult.ReadOnly = true;
+            this.TestConnectionResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TestConnectionResult.Size = new System.Drawing.Size(416, 40);
+            this.TestConnectionResult.TabIndex = 7;
+            this.TestConnectionResult.Text = "Click on \"Test connection\" to test with the current parameters";
+            // 
+            // btnTest
+            // 
+            this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTest.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnTest.Location = new System.Drawing.Point(424, 8);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(160, 32);
+            this.btnTest.TabIndex = 6;
+            this.btnTest.Text = "Test connection";
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 16);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Provider";
+            // 
+            // ProviderName
+            // 
+            this.ProviderName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProviderName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProviderName.Location = new System.Drawing.Point(112, 0);
+            this.ProviderName.Name = "ProviderName";
+            this.ProviderName.ReadOnly = true;
+            this.ProviderName.Size = new System.Drawing.Size(472, 20);
+            this.ProviderName.TabIndex = 4;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.CoordinateSystemOverride);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox1.Location = new System.Drawing.Point(0, 408);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(592, 136);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Coordinate system override";
+            // 
+            // EditJoinPanel
+            // 
+            this.EditJoinPanel.Controls.Add(this.EditExtensions);
+            this.EditJoinPanel.Controls.Add(this.label2);
+            this.EditJoinPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.EditJoinPanel.Location = new System.Drawing.Point(0, 368);
+            this.EditJoinPanel.Name = "EditJoinPanel";
+            this.EditJoinPanel.Size = new System.Drawing.Size(592, 40);
+            this.EditJoinPanel.TabIndex = 6;
+            // 
+            // EditExtensions
+            // 
+            this.EditExtensions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.EditExtensions.Location = new System.Drawing.Point(424, 8);
+            this.EditExtensions.Name = "EditExtensions";
+            this.EditExtensions.Size = new System.Drawing.Size(160, 24);
+            this.EditExtensions.TabIndex = 1;
+            this.EditExtensions.Text = "Edit extensions";
+            this.EditExtensions.Click += new System.EventHandler(this.EditExtensions_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Location = new System.Drawing.Point(8, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(408, 24);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "The feature source can be joined with other properties and contain values that ar" +
+                "e computed on the fly.";
+            // 
+            // FeatureSourceEditorBase
+            // 
+            this.AutoScroll = true;
+            this.Controls.Add(this.TestConnectionPanel);
+            this.Controls.Add(this.ProviderName);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.EditorTab);
+            this.Controls.Add(this.EditJoinPanel);
+            this.Controls.Add(this.groupBox1);
+            this.Name = "FeatureSourceEditorBase";
+            this.Size = new System.Drawing.Size(592, 544);
+            this.EditorTab.ResumeLayout(false);
+            this.TestConnectionPanel.ResumeLayout(false);
+            this.TestConnectionPanel.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.EditJoinPanel.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion
