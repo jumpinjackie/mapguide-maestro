@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace OSGeo.MapGuide.Maestro
+namespace OSGeo.MapGuide.Maestro.ResourceEditors
 {
     public partial class WaitForOperation : Form
     {
@@ -105,10 +105,11 @@ namespace OSGeo.MapGuide.Maestro
 
         private void WaitForOperation_Load(object sender, EventArgs e)
         {
+            BackgroundWorker.WorkerSupportsCancellation = !m_cancelAborts;
             BackgroundWorker.RunWorkerAsync();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CancelBtn_Click(object sender, EventArgs e)
         {
             CancelBtn.Enabled = false;
             if (!BackgroundWorker.CancellationPending)
@@ -131,7 +132,13 @@ namespace OSGeo.MapGuide.Maestro
         private void WaitForOperation_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
-                button1_Click(sender, e);
+                CancelBtn_Click(sender, e);
+        }
+
+        private void WaitForOperation_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape && CancelBtn.Enabled)
+                CancelBtn_Click(sender, e);
         }
     }
 }

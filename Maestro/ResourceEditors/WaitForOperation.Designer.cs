@@ -1,4 +1,4 @@
-namespace OSGeo.MapGuide.Maestro
+namespace OSGeo.MapGuide.Maestro.ResourceEditors
 {
     partial class WaitForOperation
     {
@@ -49,7 +49,7 @@ namespace OSGeo.MapGuide.Maestro
             this.CancelBtn.TabIndex = 1;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
-            this.CancelBtn.Click += new System.EventHandler(this.button1_Click);
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // BackgroundWorker
             // 
@@ -72,16 +72,17 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CancelBtn;
             this.ClientSize = new System.Drawing.Size(412, 103);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.progressBar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "WaitForOperation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Wait for operation to complete";
             this.Load += new System.EventHandler(this.WaitForOperation_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WaitForOperation_KeyPress);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WaitForOperation_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

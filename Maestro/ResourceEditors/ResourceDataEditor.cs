@@ -24,6 +24,7 @@ using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
 using System.Collections.Specialized;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors
 {
@@ -316,56 +317,158 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					ft += (ft.Length == 0 ? "" : "|") + filetypes[s] + "|*" + s;
 				dlg.Filter = ft;
 			}
-			if (dlg.ShowDialog() == DialogResult.OK)
+
+			if (dlg.ShowDialog(owner) == DialogResult.OK)
 			{
+                //Find files with same name, but other extensions
+                List<string> basenames = new List<string>();
+                List<string> extraFiles = new List<string>();
+
+                foreach (string s in dlg.FileNames)
+                {
+                    string basename = System.IO.Path.GetFileNameWithoutExtension(s);
+                    bool caseSensitiveFS = System.Environment.OSVersion.Platform == PlatformID.MacOSX || System.Environment.OSVersion.Platform == PlatformID.Unix;
+
+                    if (!caseSensitiveFS)
+                        basename = basename.ToLower();
+
+                    //Do not add duplicates
+                    if (basenames.Contains(basename))
+                        continue;
+
+                    basenames.Add(basename);
+
+                    foreach (string s1 in System.IO.Directory.GetFiles(System.IO.Path.GetDirectoryName(s), basename + ".*"))
+                        if (s1 != s && (string.Compare(System.IO.Path.GetFileNameWithoutExtension(s1), basename, !caseSensitiveFS) == 0))
+                            extraFiles.Add(s1);
+                }
+
+
+                if (extraFiles.Count > 0)
+                {
+                    switch(MessageBox.Show(owner, String.Format(Globalizor.Translate("There exists {0} file(s) with similar names which may be required.\nDo you want to automatically add matching files?"), extraFiles.Count), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                    {
+                        case DialogResult.Cancel:
+                            return false;
+                        case DialogResult.No:
+                            extraFiles.Clear();
+                            break;
+                    }
+                }
+
 				if (rld == null)
 					rld = connection.EnumerateResourceData(resourceId);
 
-				foreach(string s in dlg.FileNames)
-				{
-					bool retry = true;
-					while(retry)
-						try
-						{
-							retry = false;
-							string filename = System.IO.Path.GetFileName(s);
-							bool upload = true;
-							foreach (OSGeo.MapGuide.MaestroAPI.ResourceDataListResourceData rd in rld.ResourceData) 
-								if (rd.Name == filename)
-								{
-									switch(MessageBox.Show(owner, string.Format(Globalizor.Translate("There already exists a resource file with the name \"{0}\". Do you want to overwrite the existing file?"), filename), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
-									{
-										case DialogResult.No:
-											upload = false;
-											break;
-										case DialogResult.Cancel:
-											return res;
-									}
-									break;
-								}
+                List<string> actualFiles = new List<string>();
+                actualFiles.AddRange(dlg.FileNames);
+                actualFiles.AddRange(extraFiles);
 
-							if (!upload)
-								continue;
-							
-							res = true;
-							using(System.IO.FileStream fs = System.IO.File.Open(s, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
-								connection.SetResourceData(resourceId, filename, OSGeo.MapGuide.MaestroAPI.ResourceDataType.File, fs);
-						}
-						catch(Exception ex)
-						{
-							switch(MessageBox.Show(owner, string.Format(Globalizor.Translate("Upload of resource failed.\nReason: {0}\nHow do you want to continue?"), ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
-							{
-								case DialogResult.Abort:
-									return res;
-								case DialogResult.Retry:
-									retry = true;
-									continue;
-							}
-						}
-				}
+                WaitForOperation wdlg = new WaitForOperation();
+                wdlg.CancelAbortsThread = false;
+                Form ownerForm = owner == null ? null : owner.TopLevelControl as Form;
+
+                try
+                {
+                    res = (bool)wdlg.RunOperationAsync(ownerForm, new WaitForOperation.DoBackgroundWork(Background_Upload), actualFiles, rld, owner, connection, resourceId);
+                }
+                catch (CancelException)
+                {
+                    return true;
+                }
+
 			}
 			return res;
 		}
+
+        private static object Background_Upload(BackgroundWorker worker, DoWorkEventArgs args, params object[] target)
+        {
+            bool res = false;
+
+            List<string> actualFiles = (List<string>)target[0];
+            MaestroAPI.ResourceDataList rld = (MaestroAPI.ResourceDataList)target[1];
+            Control owner = (Control)target[2];
+            MaestroAPI.HttpServerConnection connection = (MaestroAPI.HttpServerConnection)target[3];
+            string resourceId = (string)target[4];
+
+            if (owner != null && owner.InvokeRequired)
+                owner = null;
+
+            int i = 0;
+
+            foreach (string s in actualFiles)
+            {
+                bool retry = true;
+                while (retry)
+                    try
+                    {
+                        string filename = System.IO.Path.GetFileName(s);
+                        worker.ReportProgress((int)((i / (double)actualFiles.Count) * 100), filename);
+
+                        if (worker.CancellationPending)
+                        {
+                            args.Cancel = true;
+                            return res;
+                        }
+
+                        bool removeFirst = false;
+                        retry = false;
+                        bool upload = true;
+                        foreach (OSGeo.MapGuide.MaestroAPI.ResourceDataListResourceData rd in rld.ResourceData)
+                            if (rd.Name == filename)
+                            {
+                                removeFirst = true;
+
+                                switch (MessageBox.Show(owner, string.Format(Globalizor.Translate("There already exists a resource file with the name \"{0}\". Do you want to overwrite the existing file?"), filename), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                                {
+                                    case DialogResult.No:
+                                        upload = false;
+                                        break;
+                                    case DialogResult.Cancel:
+                                        return res;
+                                }
+                                break;
+                            }
+
+                        if (!upload)
+                            continue;
+
+                        res = true;
+
+                        if (worker.CancellationPending)
+                        {
+                            args.Cancel = true;
+                            return res;
+                        }
+
+                        if (removeFirst)
+                            connection.DeleteResourceData(resourceId, filename);
+
+                        using (System.IO.FileStream fs = System.IO.File.Open(s, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
+                            connection.SetResourceData(resourceId, filename, OSGeo.MapGuide.MaestroAPI.ResourceDataType.File, fs);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (worker.CancellationPending)
+                        {
+                            args.Cancel = true;
+                            return res;
+                        }
+
+                        switch (MessageBox.Show(owner, string.Format(Globalizor.Translate("Upload of resource failed.\nReason: {0}\nHow do you want to continue?"), ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+                        {
+                            case DialogResult.Abort:
+                                return res;
+                            case DialogResult.Retry:
+                                retry = true;
+                                continue;
+                        }
+                    }
+                i++;
+                worker.ReportProgress((int)((i / (double)actualFiles.Count) * 100));
+            }
+
+            return res;
+        }
 
 		public static bool DeleteFilesFromResource(Control owner, OSGeo.MapGuide.MaestroAPI.ServerConnectionI connection, string resourceId, ListView lv)
 		{

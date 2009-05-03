@@ -546,8 +546,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     return;
             }
 
-            if (m_item != null && m_item.SupplementalSpatialContextInfo != null && m_item.SupplementalSpatialContextInfo.Count == 1)
+            if (m_item != null && m_item.SupplementalSpatialContextInfo != null && m_item.SupplementalSpatialContextInfo.Count >= 1)
             {
+                while (m_item.SupplementalSpatialContextInfo.Count > 1)
+                    m_item.SupplementalSpatialContextInfo.RemoveAt(m_item.SupplementalSpatialContextInfo.Count - 1);
+
                 //Copy to guard against an event that clears it
                 string tmp = m_item.SupplementalSpatialContextInfo[0].CoordinateSystem;
                 SourceCoordinateSystem.Text = m_item.SupplementalSpatialContextInfo[0].Name;
@@ -569,9 +572,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             {
                 try
                 {
+                    if (m_item.CurrentConnection == null)
+                        m_item.CurrentConnection = m_editor.CurrentConnection;
+
                     FdoSpatialContextList lst = m_item.GetSpatialInfo();
                     if (lst.SpatialContext.Count > 0)
-                        SourceCoordinateSystem.Text = lst.SpatialContext[0].CoordinateSystemName;
+                        SourceCoordinateSystem.Text = lst.SpatialContext[0].Name;
                 }
                 catch (Exception ex)
                 {

@@ -2552,10 +2552,10 @@ namespace OSGeo.MapGuide.Maestro
                     if (pi != null && pi.CanWrite)
                         pi.SetValue(ei.Resource, this.CurrentConnection, null);
 
-                    WaitForOperation wdlg = new WaitForOperation();
+                    ResourceEditors.WaitForOperation wdlg = new ResourceEditors.WaitForOperation();
                     wdlg.CancelAbortsThread = true;
 
-                    ResourceValidators.ValidationIssue[] issues = (ResourceValidators.ValidationIssue[])wdlg.RunOperationAsync(this, new WaitForOperation.DoBackgroundWork(ValidateBackgroundRunner), ei.Resource);
+                    ResourceValidators.ValidationIssue[] issues = (ResourceValidators.ValidationIssue[])wdlg.RunOperationAsync(this, new ResourceEditors.WaitForOperation.DoBackgroundWork(ValidateBackgroundRunner), ei.Resource);
                     if (issues.Length == 0)
                         MessageBox.Show(this, "No issues were found", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
@@ -2644,12 +2644,12 @@ namespace OSGeo.MapGuide.Maestro
 
             try
             {
-                WaitForOperation wdlg = new WaitForOperation();
+                ResourceEditors.WaitForOperation wdlg = new ResourceEditors.WaitForOperation();
                 wdlg.CancelAbortsThread = true;
 
                 List<KeyValuePair<string, ResourceValidators.ValidationIssue[]>> issues = 
                     (List<KeyValuePair<string, ResourceValidators.ValidationIssue[]>>)
-                    wdlg.RunOperationAsync(this, new WaitForOperation.DoBackgroundWork(ValidateBackgroundRunner), resid);
+                    wdlg.RunOperationAsync(this, new ResourceEditors.WaitForOperation.DoBackgroundWork(ValidateBackgroundRunner), resid);
 
                 int issuecount = 0;
                 foreach (KeyValuePair<string, ResourceValidators.ValidationIssue[]> p in issues)

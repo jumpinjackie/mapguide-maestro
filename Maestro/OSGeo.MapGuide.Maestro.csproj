@@ -266,12 +266,6 @@
     <Compile Include="WaitCursor.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="WaitForOperation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WaitForOperation.Designer.cs">
-      <DependentUpon>WaitForOperation.cs</DependentUpon>
-    </Compile>
     <Compile Include="XmlEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -355,10 +349,6 @@
     <EmbeddedResource Include="ValidationResults.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ValidationResults.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WaitForOperation.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>WaitForOperation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XmlEditor.resx">
       <DependentUpon>XmlEditor.cs</DependentUpon>
