@@ -578,6 +578,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     FdoSpatialContextList lst = m_item.GetSpatialInfo();
                     if (lst.SpatialContext.Count > 0)
                         SourceCoordinateSystem.Text = lst.SpatialContext[0].Name;
+                    else
+                        SourceCoordinateSystem.Text = "Default";
                 }
                 catch (Exception ex)
                 {

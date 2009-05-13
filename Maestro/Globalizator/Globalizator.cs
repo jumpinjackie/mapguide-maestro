@@ -198,9 +198,10 @@ namespace Globalizator
 			if (obj.GetType().GetProperty("ToolTipText") != null)
 				TranslateProperty(str, rm, obj, culture, "ToolTipText", typeof(System.String));
 
-			//Set default to a sensitive value...
-			if (obj.GetType().GetProperty("FlatStyle") != null)
-				obj.GetType().GetProperty("FlatStyle").SetValue(obj, System.Windows.Forms.FlatStyle.System, null);
+            //VS 2003 / .Net 1.1 had an annoying default
+			if (Environment.OSVersion.Platform != PlatformID.MacOSX && Environment.OSVersion.Platform != PlatformID.Unix && Environment.Version < new Version("2.0.0.0"))
+			    if (obj.GetType().GetProperty("FlatStyle") != null)
+				    obj.GetType().GetProperty("FlatStyle").SetValue(obj, System.Windows.Forms.FlatStyle.System, null);
 
 			FieldInfo [] fi = t.GetFields(BindingFlags.GetField | BindingFlags.Instance | BindingFlags.CreateInstance | BindingFlags.NonPublic | BindingFlags.Public);
 			foreach (FieldInfo f in fi)	

@@ -42,11 +42,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             item.FontName = "Arial";
             item.ForegroundColor = Color.Black;
             item.HorizontalAlignment = "'Center'";
-            item.InsertionPointXSpecified = false;
-            item.InsertionPointYSpecified = false;
             item.Italic = "false";
-            item.MaintainAspect = true;
-            item.MaintainAspectSpecified = true;
             item.Rotation = "0";
             item.SizeContext = SizeContextType.DeviceUnits;
             item.SizeX = "10";
@@ -69,10 +65,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             mks.Fill = CreateFillType();
 
             mks.SizeContext = SizeContextType.DeviceUnits;
-            mks.InsertionPointXSpecified = false;
-            mks.InsertionPointYSpecified = false;
             mks.MaintainAspect = true;
-            mks.MaintainAspectSpecified = true;
             mks.Rotation = "0";
             mks.SizeX = "10";
             mks.SizeY = "10";

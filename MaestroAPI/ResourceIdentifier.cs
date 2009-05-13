@@ -542,11 +542,9 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return identifier;
 
             if (identifier.EndsWith("/"))
-                identifier = identifier.Remove(0, identifier.Length - 1);
+                identifier = identifier.Remove(identifier.Length - 1);
 
-            identifier = identifier.Remove(identifier.LastIndexOf("/"));
-            if (!identifier.EndsWith("/"))
-                identifier = identifier + "/";
+            identifier = identifier.Remove(identifier.LastIndexOf("/") + 1);
 
             return identifier;
         }

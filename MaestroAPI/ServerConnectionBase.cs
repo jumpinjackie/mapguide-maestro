@@ -1317,24 +1317,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                                                             mks.Fill.FillPattern = "Solid";
 													}
 
-                                                    if (!mks.InsertionPointXSpecified)
-                                                    {
-                                                        mks.InsertionPointX = 0;
-                                                        mks.InsertionPointXSpecified = true;
-                                                    }
-
-                                                    if (!mks.InsertionPointYSpecified)
-                                                    {
-                                                        mks.InsertionPointY = 0;
-                                                        mks.InsertionPointYSpecified = true;
-                                                    }
-
-                                                    if (!mks.MaintainAspectSpecified)
-                                                    {
-                                                        mks.MaintainAspect = true;
-                                                        mks.MaintainAspectSpecified = true;
-                                                    }
-
                                                     if (mks.SizeX == null || mks.SizeY == null)
                                                         mks.Unit = LengthUnitType.Points;
 

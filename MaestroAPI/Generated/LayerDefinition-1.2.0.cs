@@ -2895,16 +2895,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         
         private string m_rotation;
         
-        private bool m_maintainAspect;
+        private bool m_maintainAspect = true;
         
-        private bool m_maintainAspectSpecified;
+        private double m_insertionPointX = 0.5;
         
-        private double m_insertionPointX;
-        
-        private double m_insertionPointY;
-        
-        private bool m_insertionPointYSpecified;
-		private bool m_insertionPointXSpecified;
+        private double m_insertionPointY = 0.5;
         
         /// <remarks/>
         public LengthUnitType Unit 
@@ -2960,6 +2955,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
         
         /// <remarks/>
+        [System.ComponentModel.DefaultValue(true)]
         public bool MaintainAspect {
             get {
                 return this.m_maintainAspect;
@@ -2970,18 +2966,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool MaintainAspectSpecified {
-            get {
-                return this.m_maintainAspectSpecified;
-            }
-            set {
-                this.m_maintainAspectSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public double InsertionPointX {
+        [System.ComponentModel.DefaultValue(0.5)]
+        public double InsertionPointX
+        {
             get {
                 return this.m_insertionPointX;
             }
@@ -2991,7 +2978,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
         
         /// <remarks/>
-        public double InsertionPointY {
+        [System.ComponentModel.DefaultValue(0.5)]
+        public double InsertionPointY
+        {
             get {
                 return this.m_insertionPointY;
             }
@@ -2999,30 +2988,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                 this.m_insertionPointY = value;
             }
         }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool InsertionPointYSpecified {
-            get {
-                return this.m_insertionPointYSpecified;
-            }
-            set {
-                this.m_insertionPointYSpecified = value;
-            }
-        }
-
-		[System.Xml.Serialization.XmlIgnoreAttribute()]
-		public bool InsertionPointXSpecified 
-		{
-			get 
-			{
-				return this.m_insertionPointXSpecified;
-			}
-			set 
-			{
-				this.m_insertionPointXSpecified = value;
-			}
-		}
 	}
     
     /// <remarks/>

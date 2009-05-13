@@ -451,9 +451,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		public bool Save(string savename)
 		{
-            System.Text.RegularExpressions.Regex re = new System.Text.RegularExpressions.Regex("(?<type>(PROJCS)|(LOCAL_CS)|(GEOCCS)|(GEOGCS)|(FITTED_CS)|(COMPD_CS))\\[\"(?<name>[^\"]+)\"");
-            re = new System.Text.RegularExpressions.Regex("\"(?<name>[^\"]+)\"");
-            
 
             if (m_feature.SupplementalSpatialContextInfo == null || m_feature.SupplementalSpatialContextInfo.Count == 0)
             {
@@ -466,11 +463,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 //m_feature.SupplementalSpatialContextInfo = null;
 
                 string name = m_editor.CurrentConnection.CoordinateSystem.ConvertWktToCoordinateSystemCode(wkt);
-
-                /*string name = "UNKNOWN";
-                System.Text.RegularExpressions.Match m = re.Match(wkt);
-                if (m.Success)
-                    name = m.Groups["name"].Value;*/
 
                 if (wkt != m_wkt)
                     //TODO: Figure out how to get the coordsys extent
@@ -901,7 +893,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 			Hashtable geometry = new Hashtable();
 			Hashtable keys = new Hashtable();
-			if (m_feature.ConfigurationDocument != null && m_feature.ConfigurationDocument.Length != 0)
+            
+            //Make sure there is no autogeneration, as that hides the properties
+            m_feature.Parameter["GenerateDefaultGeometryProperty"] = "false";
+            
+            if (m_feature.ConfigurationDocument != null && m_feature.ConfigurationDocument.Length != 0)
 			{
 				try
 				{
@@ -916,6 +912,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					return;
 				}
 			}
+
 
 			OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription fsd = null;
 			try

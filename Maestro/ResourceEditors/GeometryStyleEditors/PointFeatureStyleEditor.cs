@@ -145,8 +145,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				WidthText.Text = m_item.Item.SizeX;
 				HeigthText.Text = m_item.Item.SizeY;
 				RotationBox.Text = m_item.Item.Rotation;
-				ReferenceX.Text = m_item.Item.InsertionPointX.ToString();
-				ReferenceY.Text = m_item.Item.InsertionPointY.ToString();
+                ReferenceX.Text = m_item.Item.InsertionPointX.ToString(m_globalizor.Culture);
+				ReferenceY.Text = m_item.Item.InsertionPointY.ToString(m_globalizor.Culture);
 				MaintainAspectRatio.Checked = m_item.Item.MaintainAspect;
 				SizeUnits.SelectedValue = m_item.Item.Unit;
 				SizeContext.SelectedValue = m_item.Item.SizeContext.ToString();
@@ -677,9 +677,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		private void PointFeatureStyleEditor_Load(object sender, System.EventArgs e)
 		{
 			UpdateDisplay();
-
-			ComboBoxDataSet.WriteXmlSchema("testschema.xsd");
-			ComboBoxDataSet.WriteXml("testcontent.xml");
 		}
 
 		private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
@@ -758,9 +755,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				return;
 
 			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				try { 
-                    ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).InsertionPointX = double.Parse(ReferenceX.Text);
-                    ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointXSpecified = true;
+				try 
+                {
+                    ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointX = Math.Min(Math.Max(0.0, double.Parse(ReferenceX.Text, m_globalizor.Culture)), 1.0);
                 }
 				catch { } //TODO: Handle better
 			previewPicture.Refresh();		
@@ -774,9 +771,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				return;
 
 			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				try { 
-                    ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).InsertionPointY = double.Parse( ReferenceY.Text );
-                    ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointYSpecified = true;
+				try 
+                {
+                    ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointY = Math.Min(Math.Max(0.0, double.Parse(ReferenceY.Text, m_globalizor.Culture)), 1.0);
                 }
 				catch {} //TODO: Handle better
 			previewPicture.Refresh();		
