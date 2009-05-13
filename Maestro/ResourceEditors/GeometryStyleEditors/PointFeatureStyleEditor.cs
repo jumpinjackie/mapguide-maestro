@@ -365,6 +365,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.ReferenceY.Size = new System.Drawing.Size(48, 20);
             this.ReferenceY.TabIndex = 15;
             this.ReferenceY.TextChanged += new System.EventHandler(this.ReferenceY_TextChanged);
+            this.ReferenceY.Leave += new System.EventHandler(this.ReferenceY_Leave);
             // 
             // label8
             // 
@@ -767,7 +768,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
             {
                 double d;
-                if (double.TryParse(ReferenceX.Text, System.Globalization.NumberStyles.Float, m_globalizor.Culture, out d))
+                if (ReferenceX.Text.Trim().Length == 0)
+                    ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointY = "0.5";
+                else if (double.TryParse(ReferenceX.Text, System.Globalization.NumberStyles.Float, m_globalizor.Culture, out d) || double.TryParse(ReferenceX.Text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d))
                     ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointX = Math.Min(Math.Max(0.0, d), 1.0).ToString(System.Globalization.CultureInfo.InvariantCulture);
                 else
                     ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointX = ReferenceX.Text;
@@ -785,7 +788,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
             {
                 double d;
-                if (double.TryParse(ReferenceY.Text,  System.Globalization.NumberStyles.Float, m_globalizor.Culture, out d))
+                if (ReferenceY.Text.Trim().Length == 0)
+                    ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointY = "0.5";
+                else if (double.TryParse(ReferenceY.Text, System.Globalization.NumberStyles.Float, m_globalizor.Culture, out d) || double.TryParse(ReferenceY.Text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d))
                     ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointY = Math.Min(Math.Max(0.0, d), 1.0).ToString(System.Globalization.CultureInfo.InvariantCulture);
                 else
                     ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointY = ReferenceY.Text;
@@ -966,6 +971,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
         private void HeigthText_TextChanged(object sender, EventArgs e)
         {
             HeigthText_SelectedIndexChanged(sender, e);
+        }
+
+        private void ReferenceY_Leave(object sender, EventArgs e)
+        {
+                double d;
+                if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
+                    if (!double.TryParse(((MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointY, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d))
+                        MessageBox.Show(this, m_globalizor.Translate("You have entered a non-numeric value in the Reference Y field. Due to a bug in MapGuide, this will likely give an error when saving."), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }
