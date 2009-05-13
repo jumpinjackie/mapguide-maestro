@@ -2897,9 +2897,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         
         private bool m_maintainAspect = true;
         
-        private double m_insertionPointX = 0.5;
+        private string m_insertionPointX = "0.5";
         
-        private double m_insertionPointY = 0.5;
+        private string m_insertionPointY = "0.5";
         
         /// <remarks/>
         public LengthUnitType Unit 
@@ -2966,8 +2966,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
         
         /// <remarks/>
-        [System.ComponentModel.DefaultValue(0.5)]
-        public double InsertionPointX
+        [System.ComponentModel.DefaultValue("0.5")]
+        public string InsertionPointX
         {
             get {
                 return this.m_insertionPointX;
@@ -2978,8 +2978,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
         
         /// <remarks/>
-        [System.ComponentModel.DefaultValue(0.5)]
-        public double InsertionPointY
+        [System.ComponentModel.DefaultValue("0.5")]
+        public string InsertionPointY
         {
             get {
                 return this.m_insertionPointY;
