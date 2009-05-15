@@ -2354,8 +2354,10 @@ namespace OSGeo.MapGuide.Maestro
             if (resid == null)
                 return;
 
-            ResourceProperties dlg = new ResourceProperties(m_connection, resid);
+            ResourceProperties dlg = new ResourceProperties(m_editors, m_connection, resid);
             dlg.ShowDialog(this);
+            if (!string.IsNullOrEmpty(dlg.OpenResource))
+                OpenResource(dlg.OpenResource);
         }
 
         public Exception LastException

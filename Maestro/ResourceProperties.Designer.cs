@@ -30,9 +30,9 @@ namespace OSGeo.MapGuide.Maestro
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResourceProperties));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.OKBtn = new System.Windows.Forms.Button();
@@ -94,10 +94,18 @@ namespace OSGeo.MapGuide.Maestro
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ItemKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReferenceTab = new System.Windows.Forms.TabPage();
+            this.LoadingReferences = new System.Windows.Forms.ProgressBar();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.OutReferences = new System.Windows.Forms.GroupBox();
+            this.OutReferenceList = new System.Windows.Forms.ListView();
+            this.InReferences = new System.Windows.Forms.GroupBox();
+            this.InReferenceList = new System.Windows.Forms.ListView();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.ResourceID = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.ReferenceWorker = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SecurityTab.SuspendLayout();
@@ -110,6 +118,12 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox3.SuspendLayout();
             this.CustomTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.ReferenceTab.SuspendLayout();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.OutReferences.SuspendLayout();
+            this.InReferences.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,6 +147,7 @@ namespace OSGeo.MapGuide.Maestro
             this.CancelBtn.TabIndex = 1;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // OKBtn
             // 
@@ -151,13 +166,13 @@ namespace OSGeo.MapGuide.Maestro
             this.tabControl1.Controls.Add(this.WMSTab);
             this.tabControl1.Controls.Add(this.WFSTab);
             this.tabControl1.Controls.Add(this.CustomTab);
+            this.tabControl1.Controls.Add(this.ReferenceTab);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 32);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(354, 387);
             this.tabControl1.TabIndex = 1;
-            this.toolTip.SetToolTip(this.tabControl1, "Click to read the current bounds from the data source");
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // SecurityTab
@@ -537,6 +552,7 @@ namespace OSGeo.MapGuide.Maestro
             this.AutoGenerateWFSBounds.Name = "AutoGenerateWFSBounds";
             this.AutoGenerateWFSBounds.Size = new System.Drawing.Size(24, 20);
             this.AutoGenerateWFSBounds.TabIndex = 15;
+            this.toolTip.SetToolTip(this.AutoGenerateWFSBounds, "Click to read the current bounds from the data source");
             this.AutoGenerateWFSBounds.UseVisualStyleBackColor = true;
             this.AutoGenerateWFSBounds.Click += new System.EventHandler(this.AutoGenerateWFSBounds_Click);
             // 
@@ -745,36 +761,36 @@ namespace OSGeo.MapGuide.Maestro
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemKey,
             this.ItemValue});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.Location = new System.Drawing.Point(8, 8);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.Size = new System.Drawing.Size(336, 312);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Leave += new System.EventHandler(this.dataGridView1_Leave);
@@ -788,6 +804,94 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.ItemValue.HeaderText = "Value";
             this.ItemValue.Name = "ItemValue";
+            // 
+            // ReferenceTab
+            // 
+            this.ReferenceTab.Controls.Add(this.LoadingReferences);
+            this.ReferenceTab.Controls.Add(this.splitContainer1);
+            this.ReferenceTab.Location = new System.Drawing.Point(4, 22);
+            this.ReferenceTab.Name = "ReferenceTab";
+            this.ReferenceTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ReferenceTab.Size = new System.Drawing.Size(346, 361);
+            this.ReferenceTab.TabIndex = 4;
+            this.ReferenceTab.Text = "References";
+            this.ReferenceTab.UseVisualStyleBackColor = true;
+            // 
+            // LoadingReferences
+            // 
+            this.LoadingReferences.Location = new System.Drawing.Point(32, 88);
+            this.LoadingReferences.Name = "LoadingReferences";
+            this.LoadingReferences.Size = new System.Drawing.Size(288, 23);
+            this.LoadingReferences.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.LoadingReferences.TabIndex = 1;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.OutReferences);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.InReferences);
+            this.splitContainer1.Size = new System.Drawing.Size(340, 355);
+            this.splitContainer1.SplitterDistance = 175;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // OutReferences
+            // 
+            this.OutReferences.Controls.Add(this.OutReferenceList);
+            this.OutReferences.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OutReferences.Enabled = false;
+            this.OutReferences.Location = new System.Drawing.Point(0, 0);
+            this.OutReferences.Name = "OutReferences";
+            this.OutReferences.Size = new System.Drawing.Size(340, 175);
+            this.OutReferences.TabIndex = 0;
+            this.OutReferences.TabStop = false;
+            this.OutReferences.Text = "This resource references";
+            // 
+            // OutReferenceList
+            // 
+            this.OutReferenceList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OutReferenceList.FullRowSelect = true;
+            this.OutReferenceList.GridLines = true;
+            this.OutReferenceList.Location = new System.Drawing.Point(3, 16);
+            this.OutReferenceList.Name = "OutReferenceList";
+            this.OutReferenceList.Size = new System.Drawing.Size(334, 156);
+            this.OutReferenceList.TabIndex = 0;
+            this.OutReferenceList.UseCompatibleStateImageBehavior = false;
+            this.OutReferenceList.View = System.Windows.Forms.View.List;
+            this.OutReferenceList.DoubleClick += new System.EventHandler(this.OutReferenceList_DoubleClick);
+            // 
+            // InReferences
+            // 
+            this.InReferences.Controls.Add(this.InReferenceList);
+            this.InReferences.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.InReferences.Enabled = false;
+            this.InReferences.Location = new System.Drawing.Point(0, 0);
+            this.InReferences.Name = "InReferences";
+            this.InReferences.Size = new System.Drawing.Size(340, 176);
+            this.InReferences.TabIndex = 1;
+            this.InReferences.TabStop = false;
+            this.InReferences.Text = "This resource is referenced by";
+            // 
+            // InReferenceList
+            // 
+            this.InReferenceList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.InReferenceList.FullRowSelect = true;
+            this.InReferenceList.GridLines = true;
+            this.InReferenceList.Location = new System.Drawing.Point(3, 16);
+            this.InReferenceList.Name = "InReferenceList";
+            this.InReferenceList.Size = new System.Drawing.Size(334, 157);
+            this.InReferenceList.TabIndex = 1;
+            this.InReferenceList.UseCompatibleStateImageBehavior = false;
+            this.InReferenceList.View = System.Windows.Forms.View.List;
+            this.InReferenceList.DoubleClick += new System.EventHandler(this.InReferenceList_DoubleClick);
             // 
             // panel2
             // 
@@ -818,6 +922,13 @@ namespace OSGeo.MapGuide.Maestro
             this.label13.TabIndex = 0;
             this.label13.Text = "Resource ID";
             // 
+            // ReferenceWorker
+            // 
+            this.ReferenceWorker.WorkerReportsProgress = true;
+            this.ReferenceWorker.WorkerSupportsCancellation = true;
+            this.ReferenceWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ReferenceWorker_DoWork);
+            this.ReferenceWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.ReferenceWorker_RunWorkerCompleted);
+            // 
             // ResourceProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -847,6 +958,12 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox3.PerformLayout();
             this.CustomTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.ReferenceTab.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.ResumeLayout(false);
+            this.OutReferences.ResumeLayout(false);
+            this.InReferences.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -920,5 +1037,13 @@ namespace OSGeo.MapGuide.Maestro
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button AutoGenerateWMSBounds;
         private System.Windows.Forms.Button AutoGenerateWFSBounds;
+        private System.Windows.Forms.TabPage ReferenceTab;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.GroupBox OutReferences;
+        private System.Windows.Forms.ProgressBar LoadingReferences;
+        private System.Windows.Forms.ListView OutReferenceList;
+        private System.Windows.Forms.GroupBox InReferences;
+        private System.Windows.Forms.ListView InReferenceList;
+        private System.ComponentModel.BackgroundWorker ReferenceWorker;
     }
 }

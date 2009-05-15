@@ -961,6 +961,10 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FeatureSourceEditors\King.Informix\" />
+    <Folder Include="FeatureSourceEditors\SQLite\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

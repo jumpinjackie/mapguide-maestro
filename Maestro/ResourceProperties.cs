@@ -62,12 +62,26 @@ namespace OSGeo.MapGuide.Maestro
             "Inherited"
         };
 
-        public ResourceProperties(ServerConnectionI connection, string resourceId)
+        private object m_lock = new object();
+        private volatile System.Threading.Thread m_backgroundThread = null;
+        private bool m_hasLoadedRefs = false;
+        private ResourceEditorMap m_editor;
+        private string m_openResource = null;
+
+        /// <summary>
+        /// A resource that the main form should open after this form has closed
+        /// </summary>
+        public string OpenResource { get { return m_openResource; } }
+
+        public ResourceProperties(ResourceEditorMap editor, ServerConnectionI connection, string resourceId)
             : this()
         {
             m_connection = connection;
             m_resourceId = resourceId;
             ResourceID.Text = resourceId;
+            m_editor = editor;
+
+            InReferenceList.SmallImageList = OutReferenceList.SmallImageList = editor.SmallImageList;
         }
 
         private ResourceProperties()
@@ -409,6 +423,14 @@ namespace OSGeo.MapGuide.Maestro
                 FillCoordSysLists();
                 UpdateWFSDisplay();
             }
+            else if (tabControl1.SelectedTab == ReferenceTab)
+            {
+                if (!m_hasLoadedRefs)
+                {
+                    LoadingReferences.Visible = true;
+                    ReferenceWorker.RunWorkerAsync(m_resourceId);
+                }
+            }
         }
 
         private void FillCoordSysLists()
@@ -545,6 +567,8 @@ namespace OSGeo.MapGuide.Maestro
 
         private void OKBtn_Click(object sender, EventArgs e)
         {
+            m_openResource = null;
+
             try
             {
                 //Update security info
@@ -824,6 +848,96 @@ namespace OSGeo.MapGuide.Maestro
                 MessageBox.Show(this, "Failed to obtain the extent for the WFS data.\nError message: " + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void ReferenceWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                lock(m_lock)
+                    m_backgroundThread = System.Threading.Thread.CurrentThread;
+
+                string resourceId = (ResourceIdentifier)e.Argument;
+                ResourceReferenceList lst = m_connection.EnumerateResourceReferences(resourceId);
+
+                System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+                using(System.IO.MemoryStream ms = new System.IO.MemoryStream(m_connection.GetResourceXmlData(m_resourceId)))
+                    doc.Load(ms);
+
+                List<KeyValuePair<System.Xml.XmlNode, string>> refs = Utility.GetResourceIdPointers(doc);
+                List<string> r = new List<string>();
+                foreach (KeyValuePair<System.Xml.XmlNode, string> s in refs)
+                    r.Add(s.Value);
+                e.Result = new object[] { lst, r };
+            }
+            catch(System.Threading.ThreadAbortException)
+            {
+                System.Threading.Thread.ResetAbort();
+                e.Cancel = true;
+                return;
+            }
+            finally
+            {
+                lock(m_lock)
+                    m_backgroundThread = null;
+            }
+        }
+
+        private void LoadReferences(DoWorkEventArgs e)
+        {
+        }
+
+        private void ReferenceWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            LoadingReferences.Visible = false;
+
+            if (e.Cancelled)
+                return;
+            if (e.Error != null || e.Result as object[] == null || (e.Result as object[]).Length != 2)
+            {
+                if (e.Error != null)
+                    MessageBox.Show(this, m_globalizor.Translate(string.Format("Failed to read resource references: {0}", e.Error.Message)), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(this, m_globalizor.Translate(string.Format("Failed to read resource references")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            OutReferences.Enabled = InReferences.Enabled = true;
+
+            ResourceReferenceList l1 = ((object[])e.Result)[0] as ResourceReferenceList;
+            List<string> l2 = ((object[])e.Result)[1] as List<string>;
+
+            foreach (string s in l2)
+                OutReferenceList.Items.Add(s, m_editor.GetImageIndexFromResourceID(s));
+
+            foreach (string s in l1.ResourceId)
+                InReferenceList.Items.Add(s, m_editor.GetImageIndexFromResourceID(s));
+
+            m_hasLoadedRefs = true;
+        }
+
+        private void OutReferenceList_DoubleClick(object sender, EventArgs e)
+        {
+            if (OutReferenceList.SelectedItems.Count == 1)
+            {
+                m_openResource = OutReferenceList.SelectedItems[0].Text;
+                this.Close();
+            }
+        }
+
+        private void InReferenceList_DoubleClick(object sender, EventArgs e)
+        {
+            if (InReferenceList.SelectedItems.Count == 1)
+            {
+                m_openResource = InReferenceList.SelectedItems[0].Text;
+                this.Close();
+            }
+        }
+
+        private void CancelBtn_Click(object sender, EventArgs e)
+        {
+            m_openResource = null;
         }
     }
 

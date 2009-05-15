@@ -625,6 +625,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			UpdateResourceReferences(o, oldresourcepath, newresourcepath, folderupdates, new Hashtable());
 		}
 
+
+
 		/// <summary>
 		/// Updates all resource references inside an object.
 		/// </summary>

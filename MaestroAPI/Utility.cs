@@ -20,6 +20,7 @@
 using System;
 using System.Drawing;
 using Topology.Geometries;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -619,5 +620,37 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+
+        /// <summary>
+        /// Enumerates all xml nodes in the document, and looks for tags or attributes named ResourceId
+        /// </summary>
+        /// <param name="item">The xml item to examine</param>
+        /// <returns>A list with all found elements</returns>
+        public static List<KeyValuePair<System.Xml.XmlNode, string>> GetResourceIdPointers(System.Xml.XmlNode item)
+        {
+            Queue<System.Xml.XmlNode> lst = new Queue<System.Xml.XmlNode>();
+            List<KeyValuePair<System.Xml.XmlNode, string>> res = new List<KeyValuePair<System.Xml.XmlNode, string>>();
+
+            lst.Enqueue(item);
+
+            while (lst.Count > 0)
+            {
+                System.Xml.XmlNode n = lst.Dequeue();
+
+                foreach (System.Xml.XmlNode nx in n.ChildNodes)
+                    if (nx.NodeType == System.Xml.XmlNodeType.Element)
+                        lst.Enqueue(nx);
+
+                if (n.Name == "ResourceId")
+                    res.Add(new KeyValuePair<System.Xml.XmlNode, string>(n, n.InnerXml));
+
+                if (n.Attributes != null)
+                    foreach (System.Xml.XmlAttribute a in n.Attributes)
+                        if (a.Name == "ResourceId")
+                            res.Add(new KeyValuePair<System.Xml.XmlNode, string>(a, a.Value));
+            }
+
+            return res;
+        }
     }
 }
