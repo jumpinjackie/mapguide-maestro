@@ -9,7 +9,10 @@ namespace OSGeo.MapGuide.MgCooker.Commandline
         [STAThread()]
         static void Main(string[] args)
         {
-            OSGeo.MapGuide.MgCooker.Program.Main(args);
+            //Append the "/commandline" switch
+            List<string> tmp = new List<string>(args);
+            tmp.Add("/commandline");
+            OSGeo.MapGuide.MgCooker.Program.Main(tmp.ToArray());
         }
     }
 }

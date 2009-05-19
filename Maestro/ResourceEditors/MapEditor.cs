@@ -108,6 +108,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private FiniteDisplayScales ctlFiniteDisplayScales;
         private ToolStripSeparator toolStripSeparator8;
         private ToolStripButton activateMgCooker;
+        private ToolStripButton MoveLayerTopButton;
+        private ToolStripButton MoveLayerBottomButton;
+        private ToolStripButton MoveLayerOrderTopButton;
+        private ToolStripButton MoveLayerOrderBottomButton;
 		private Globalizator.Globalizator m_globalizor = null;
 
 		public MapEditor(EditorInterface editor, string resourceID)
@@ -380,6 +384,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.MoveLayerUpButton = new System.Windows.Forms.ToolStripButton();
             this.MoveLayerDownButton = new System.Windows.Forms.ToolStripButton();
+            this.MoveLayerTopButton = new System.Windows.Forms.ToolStripButton();
+            this.MoveLayerBottomButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ConvertToBaseLayerGroupButton = new System.Windows.Forms.ToolStripButton();
             this.tabDrawOrder = new System.Windows.Forms.TabPage();
@@ -391,6 +397,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.MoveLayerUpOrderButton = new System.Windows.Forms.ToolStripButton();
             this.MoveLayerDownOrderButton = new System.Windows.Forms.ToolStripButton();
+            this.MoveLayerOrderTopButton = new System.Windows.Forms.ToolStripButton();
+            this.MoveLayerOrderBottomButton = new System.Windows.Forms.ToolStripButton();
             this.tabBaseLayerGroups = new System.Windows.Forms.TabPage();
             this.trvBaseLayerGroups = new System.Windows.Forms.TreeView();
             this.BaseLayerGroupToolStrip = new System.Windows.Forms.ToolStrip();
@@ -404,9 +412,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveBaseLayerDownButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.ConvertBaseLayerGroupToDynamicGroup = new System.Windows.Forms.ToolStripButton();
-            this.LayerToolbarImages = new System.Windows.Forms.ImageList(this.components);
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.activateMgCooker = new System.Windows.Forms.ToolStripButton();
+            this.LayerToolbarImages = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -792,6 +800,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolStripSeparator2,
             this.MoveLayerUpButton,
             this.MoveLayerDownButton,
+            this.MoveLayerTopButton,
+            this.MoveLayerBottomButton,
             this.toolStripSeparator4,
             this.ConvertToBaseLayerGroupButton});
             this.tlbLayerGroups.Location = new System.Drawing.Point(0, 0);
@@ -870,6 +880,27 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveLayerDownButton.ToolTipText = "Move the selected layer down";
             this.MoveLayerDownButton.Click += new System.EventHandler(this.MoveLayerDownButton_Click);
             // 
+            // MoveLayerTopButton
+            // 
+            this.MoveLayerTopButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MoveLayerTopButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerTopButton.Image")));
+            this.MoveLayerTopButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MoveLayerTopButton.Name = "MoveLayerTopButton";
+            this.MoveLayerTopButton.Size = new System.Drawing.Size(23, 22);
+            this.MoveLayerTopButton.ToolTipText = "Move the selected layer to the top";
+            this.MoveLayerTopButton.Click += new System.EventHandler(this.MoveLayerTopButton_Click);
+            // 
+            // MoveLayerBottomButton
+            // 
+            this.MoveLayerBottomButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MoveLayerBottomButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerBottomButton.Image")));
+            this.MoveLayerBottomButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MoveLayerBottomButton.Name = "MoveLayerBottomButton";
+            this.MoveLayerBottomButton.Size = new System.Drawing.Size(23, 22);
+            this.MoveLayerBottomButton.Text = "toolStripButton2";
+            this.MoveLayerBottomButton.ToolTipText = "Move the selected layer to the bottom";
+            this.MoveLayerBottomButton.Click += new System.EventHandler(this.MoveLayerBottomButton_Click);
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
@@ -924,7 +955,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.RemoveLayerOrderButton,
             this.toolStripSeparator3,
             this.MoveLayerUpOrderButton,
-            this.MoveLayerDownOrderButton});
+            this.MoveLayerDownOrderButton,
+            this.MoveLayerOrderTopButton,
+            this.MoveLayerOrderBottomButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -975,6 +1008,27 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveLayerDownOrderButton.Size = new System.Drawing.Size(23, 22);
             this.MoveLayerDownOrderButton.ToolTipText = "Move the selected layers down";
             this.MoveLayerDownOrderButton.Click += new System.EventHandler(this.MoveLayerDownOrderButton_Click);
+            // 
+            // MoveLayerOrderTopButton
+            // 
+            this.MoveLayerOrderTopButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MoveLayerOrderTopButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerOrderTopButton.Image")));
+            this.MoveLayerOrderTopButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MoveLayerOrderTopButton.Name = "MoveLayerOrderTopButton";
+            this.MoveLayerOrderTopButton.Size = new System.Drawing.Size(23, 22);
+            this.MoveLayerOrderTopButton.ToolTipText = "Move the selected layer to the top";
+            this.MoveLayerOrderTopButton.Click += new System.EventHandler(this.MoveLayerOrderTopButton_Click);
+            // 
+            // MoveLayerOrderBottomButton
+            // 
+            this.MoveLayerOrderBottomButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MoveLayerOrderBottomButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerOrderBottomButton.Image")));
+            this.MoveLayerOrderBottomButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MoveLayerOrderBottomButton.Name = "MoveLayerOrderBottomButton";
+            this.MoveLayerOrderBottomButton.Size = new System.Drawing.Size(23, 22);
+            this.MoveLayerOrderBottomButton.Text = "toolStripButton2";
+            this.MoveLayerOrderBottomButton.ToolTipText = "Move the selected layer to the bottom";
+            this.MoveLayerOrderBottomButton.Click += new System.EventHandler(this.MoveLayerOrderBottomButton_Click);
             // 
             // tabBaseLayerGroups
             // 
@@ -1108,17 +1162,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ConvertBaseLayerGroupToDynamicGroup.ToolTipText = "Convert the selected group to regular group";
             this.ConvertBaseLayerGroupToDynamicGroup.Click += new System.EventHandler(this.ConvertBaseLayerGroupToDynamicGroup_Click);
             // 
-            // LayerToolbarImages
-            // 
-            this.LayerToolbarImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("LayerToolbarImages.ImageStream")));
-            this.LayerToolbarImages.TransparentColor = System.Drawing.Color.Transparent;
-            this.LayerToolbarImages.Images.SetKeyName(0, "");
-            this.LayerToolbarImages.Images.SetKeyName(1, "");
-            this.LayerToolbarImages.Images.SetKeyName(2, "");
-            this.LayerToolbarImages.Images.SetKeyName(3, "");
-            this.LayerToolbarImages.Images.SetKeyName(4, "");
-            this.LayerToolbarImages.Images.SetKeyName(5, "");
-            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
@@ -1134,6 +1177,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.activateMgCooker.Text = "toolStripButton1";
             this.activateMgCooker.ToolTipText = "Click to activate MgCooker for pre-building tiles";
             this.activateMgCooker.Click += new System.EventHandler(this.activateMgCooker_Click);
+            // 
+            // LayerToolbarImages
+            // 
+            this.LayerToolbarImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("LayerToolbarImages.ImageStream")));
+            this.LayerToolbarImages.TransparentColor = System.Drawing.Color.Transparent;
+            this.LayerToolbarImages.Images.SetKeyName(0, "");
+            this.LayerToolbarImages.Images.SetKeyName(1, "");
+            this.LayerToolbarImages.Images.SetKeyName(2, "");
+            this.LayerToolbarImages.Images.SetKeyName(3, "");
+            this.LayerToolbarImages.Images.SetKeyName(4, "");
+            this.LayerToolbarImages.Images.SetKeyName(5, "");
+            this.LayerToolbarImages.Images.SetKeyName(6, "MoveLayerBottom.ico");
+            this.LayerToolbarImages.Images.SetKeyName(7, "MoveLayerTop.ico");
             // 
             // MapEditor
             // 
@@ -1375,7 +1431,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		}
 
-		private void MoveLayerUp()
+
+		private void MoveSelectedLayers(bool up, bool allTheWay)
 		{
 			if (tabLayers.SelectedTab == tabLayerGroups)
 			{
@@ -1396,12 +1453,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					list = m_map.Layers;
 				}
 
-				if (list != null && index > 0)
+                if (list != null && index >= 0 && index < list.Count)
 				{
 					object o = list[index];
 					list.RemoveAt(index);
-					index--;
-					list.Insert(index, o);
+                    index = allTheWay ?
+                        (up ? 0 : list.Count) :
+                        (up ? index - 1 : index + 1);
+
+                    index = Math.Min(Math.Max(0, index), list.Count);
+
+                    list.Insert(index, o);
 					m_editor.HasChanged();
 					UpdateDisplay();
 					SelectItemByTag(trvLayerGroups.Nodes, o);
@@ -1412,114 +1474,48 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				if (lstDrawOrder.SelectedItems.Count == 0)
 					return;
 
-				ArrayList indices = new ArrayList();
 				bool changed = false;
 
-				foreach(ListViewItem lvi in lstDrawOrder.SelectedItems)
+                
+                List<ListViewItem> selected = new List<ListViewItem>();
+                foreach (ListViewItem lvi in lstDrawOrder.SelectedItems)
+                    selected.Add(lvi);
+
+                if (up)
+                    selected.Reverse();
+
+				foreach(ListViewItem lvi in selected)
 				{
 					int index = m_map.Layers.IndexOf((OSGeo.MapGuide.MaestroAPI.MapLayerType)lvi.Tag);
-					if (index == 0)
-						return;
-
-					indices.Add(index);
-				}
-
-				foreach(ListViewItem lvi in lstDrawOrder.SelectedItems)
-				{
-					int index = m_map.Layers.IndexOf((OSGeo.MapGuide.MaestroAPI.MapLayerType)lvi.Tag);
-					if (index > 0)
+                    if (index >= 0 && index < m_map.Layers.Count)
 					{
 						changed = true;
 						m_map.Layers.RemoveAt(index);
-						index--;
-						((IList)m_map.Layers).Insert(index, (OSGeo.MapGuide.MaestroAPI.MapLayerType)lvi.Tag);
-					}
+                        index = allTheWay ?
+                            (up ? 0 : m_map.Layers.Count) :
+                            (up ? index - 1 : index + 1);
+
+                        index = Math.Min(Math.Max(0, index), m_map.Layers.Count);
+
+                        ((IList)m_map.Layers).Insert(index, (OSGeo.MapGuide.MaestroAPI.MapLayerType)lvi.Tag);
+                    }
 				}
 
 				if (changed)
 				{
-					m_editor.HasChanged();
+                    //Find the index of the selected items, so they can be re-selected
+                    List<int> indices = new List<int>();
+                    foreach (ListViewItem lvi in lstDrawOrder.SelectedItems)
+                        indices.Add(m_map.Layers.IndexOf((OSGeo.MapGuide.MaestroAPI.MapLayerType)lvi.Tag));
+                    
+                    m_editor.HasChanged();
 					UpdateDisplay();
 
 					lstDrawOrder.SelectedItems.Clear();
 
 					foreach(int i in indices)
-						lstDrawOrder.Items[i - 1].Selected = true;
-					lstDrawOrder.Items[((int)indices[indices.Count - 1])- 1].EnsureVisible();
-				}
-			}
-		}
-
-		private void MoveLayerDown()
-		{
-			if (tabLayers.SelectedTab == tabLayerGroups)
-			{
-				if (trvLayerGroups.SelectedNode == null || trvLayerGroups.SelectedNode.Tag == null)
-					return;
-
-				int index = -1;
-				IList list = null;
-
-				if (trvLayerGroups.SelectedNode.Tag.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MapLayerGroupType))
-				{
-					index = m_map.LayerGroups.IndexOf((OSGeo.MapGuide.MaestroAPI.MapLayerGroupType)trvLayerGroups.SelectedNode.Tag);
-					list = m_map.LayerGroups;
-				}
-				else if (trvLayerGroups.SelectedNode.Tag.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MapLayerType))
-				{
-					index = m_map.Layers.IndexOf((OSGeo.MapGuide.MaestroAPI.MapLayerType)trvLayerGroups.SelectedNode.Tag);
-					list = m_map.Layers;
-				}
-
-				if (list != null && index >= 0 && index < list.Count - 1)
-				{
-					object o = list[index];
-					list.RemoveAt(index);
-					index++;
-					list.Insert(index, o);
-					m_editor.HasChanged();
-					UpdateDisplay();
-					SelectItemByTag(trvLayerGroups.Nodes, o);
-				}
-			}
-			else
-			{
-				if (lstDrawOrder.SelectedItems.Count == 0)
-					return;
-
-				ArrayList indices = new ArrayList();
-				foreach(ListViewItem lvi in lstDrawOrder.SelectedItems)
-				{
-					int index = m_map.Layers.IndexOf((OSGeo.MapGuide.MaestroAPI.MapLayerType)lvi.Tag);
-					if (index < 0 || index >= m_map.Layers.Count - 1)
-						return;
-
-					indices.Add(index);
-				}
-
-				bool changed = false;
-				for(int i = lstDrawOrder.SelectedItems.Count - 1; i >= 0; i--)
-				{
-					int index = m_map.Layers.IndexOf((OSGeo.MapGuide.MaestroAPI.MapLayerType)lstDrawOrder.SelectedItems[i].Tag);
-					if (index >= 0 && index < m_map.Layers.Count)
-					{
-						changed = true;
-						m_map.Layers.RemoveAt(index);
-						index++;
-						((IList)m_map.Layers).Insert(index, (OSGeo.MapGuide.MaestroAPI.MapLayerType)lstDrawOrder.SelectedItems[i].Tag);
-					}
-				}
-
-				if (changed)
-				{
-					m_editor.HasChanged();
-					UpdateDisplay();
-
-					lstDrawOrder.SelectedItems.Clear();
-
-					foreach(int i in indices)
-						lstDrawOrder.Items[i+1].Selected = true;
-					lstDrawOrder.Items[((int)indices[0]) + 1].EnsureVisible();
+						lstDrawOrder.Items[i].Selected = true;
+                    lstDrawOrder.Items[up ? ((int)indices[indices.Count - 1]) : ((int)indices[0])].EnsureVisible();
 				}
 			}
 		}
@@ -1941,12 +1937,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
         private void MoveLayerUpButton_Click(object sender, EventArgs e)
         {
-            MoveLayerUp();
+            MoveSelectedLayers(true, false);
         }
 
         private void MoveLayerDownButton_Click(object sender, EventArgs e)
         {
-            MoveLayerDown();
+            MoveSelectedLayers(false, false);
         }
 
         private void AddLayerOrderButton_Click(object sender, EventArgs e)
@@ -1961,12 +1957,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
         private void MoveLayerUpOrderButton_Click(object sender, EventArgs e)
         {
-            MoveLayerUp();
+            MoveSelectedLayers(true, false);
         }
 
         private void MoveLayerDownOrderButton_Click(object sender, EventArgs e)
         {
-            MoveLayerDown();
+            MoveSelectedLayers(false, false);
         }
     
         public bool Profile() { return true; }
@@ -2358,6 +2354,26 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 m_editor.SetLastException(ex);
                 MessageBox.Show(this, string.Format(m_globalizor.Translate("MgCooker threw an exception: {0}"), ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void MoveLayerTopButton_Click(object sender, EventArgs e)
+        {
+            MoveSelectedLayers(true, true);
+        }
+
+        private void MoveLayerBottomButton_Click(object sender, EventArgs e)
+        {
+            MoveSelectedLayers(false, true);
+        }
+
+        private void MoveLayerOrderTopButton_Click(object sender, EventArgs e)
+        {
+            MoveSelectedLayers(true, true);
+        }
+
+        private void MoveLayerOrderBottomButton_Click(object sender, EventArgs e)
+        {
+            MoveSelectedLayers(false, true);
         }
     }
 }

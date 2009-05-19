@@ -51,6 +51,50 @@ namespace OSGeo.MapGuide.MgCooker
             if (m_commandlineargs.ContainsKey("basegroups"))
                 m_commandlineargs.Remove("basegroups");
 
+            if (m_commandlineargs.ContainsKey("mapagent"))
+                MapAgent.Text = m_commandlineargs["mapagent"];
+            if (m_commandlineargs.ContainsKey("username"))
+                Username.Text = m_commandlineargs["username"];
+            if (m_commandlineargs.ContainsKey("password"))
+                Password.Text = m_commandlineargs["password"];
+
+            if (m_commandlineargs.ContainsKey("native-connection"))
+                UseNativeAPI.Checked = true;
+
+            if (m_commandlineargs.ContainsKey("limitrows"))
+            {
+                int i;
+                if (int.TryParse(m_commandlineargs["limitrows"], out i) && i > 0)
+                {
+                    MaxRowLimit.Value = i;
+                    TilesetLimitPanel.Enabled = true;
+                }
+            }
+
+            if (m_commandlineargs.ContainsKey("limitcols"))
+            {
+                int i;
+                if (int.TryParse(m_commandlineargs["limitcols"], out i) && i > 0)
+                {
+                    MaxColLimit.Value = i;
+                    TilesetLimitPanel.Enabled = true;
+                }
+            }
+
+            if (m_commandlineargs.ContainsKey("metersperunit"))
+            {
+                double d;
+                if (
+                    double.TryParse(m_commandlineargs["metersperunit"], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentUICulture, out d)
+                    || double.TryParse(m_commandlineargs["metersperunit"], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d)
+                    )
+                    if (d >= (double)MetersPerUnit.Minimum && d <= (double)MetersPerUnit.Maximum)
+                    {
+                        UseOfficialMethod.Checked = true;
+                        MetersPerUnit.Value = (decimal)d;
+                    }
+            }
+
             if (maps == null || maps.Length == 0 || (maps.Length == 1 && maps[0].Trim().Length == 0))
             {
                 List<string> tmp = new List<string>();
@@ -66,19 +110,19 @@ namespace OSGeo.MapGuide.MgCooker
                 if (mdef.BaseMapDefinition != null && mdef.BaseMapDefinition.FiniteDisplayScale != null && mdef.BaseMapDefinition.BaseMapLayerGroup != null)
                 {
                     TreeNode mn = treeView1.Nodes.Add(m);
-                    mn.Checked = true;
+                    //mn.Checked = true;
                     mn.ImageIndex  = mn.SelectedImageIndex = 0;
                     foreach (MaestroAPI.BaseMapLayerGroupCommonType g in mdef.BaseMapDefinition.BaseMapLayerGroup)
                     {
                         TreeNode gn = mn.Nodes.Add(g.Name);
                         gn.Tag = g;
-                        gn.Checked = true;
+                        //gn.Checked = true;
                         gn.ImageIndex = gn.SelectedImageIndex = 1;
 
                         foreach (double d in mdef.BaseMapDefinition.FiniteDisplayScale)
                         {
                             TreeNode sn = gn.Nodes.Add(d.ToString(System.Globalization.CultureInfo.CurrentUICulture));
-                            sn.Checked = true;
+                            //sn.Checked = true;
                             sn.ImageIndex = sn.SelectedImageIndex = 3;
                         }
                     }
@@ -102,6 +146,24 @@ namespace OSGeo.MapGuide.MgCooker
         private void button1_Click(object sender, EventArgs e)
         {
             BatchSettings bx = new BatchSettings(m_connection);
+
+            if (LimitTileset.Checked)
+            {
+                if (MaxRowLimit.Value > 0)
+                    bx.LimitRows((int)MaxRowLimit.Value);
+                if (MaxColLimit.Value > 0)
+                    bx.LimitCols((int)MaxColLimit.Value);
+            }
+
+            if (UseOfficialMethod.Checked)
+            {
+                bx.Config.MetersPerUnit = (double)MetersPerUnit.Value;
+                bx.Config.UseOfficialMethod = true;
+            }
+
+            bx.Config.ThreadCount = (int)ThreadCount.Value;
+            bx.Config.RandomizeTileSequence = RandomTileOrder.Checked;
+
             foreach (Config c in ReadTree())
             {
                 BatchMap bm = new BatchMap(bx, c.MapDefinition);
@@ -153,12 +215,34 @@ namespace OSGeo.MapGuide.MgCooker
 
         private void button3_Click(object sender, EventArgs e)
         {
-
             if (System.Environment.OSVersion.Platform == PlatformID.Unix)
                 saveFileDialog1.Filter = "Shell Script (*.sh)|*.sh|All files (*.*)|*.*";
 
             if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
+                StringBuilder args = new StringBuilder();
+                args.Append("--mapagent=\"" + MapAgent.Text + "\" ");
+                args.Append("--username=\"" + Username.Text + "\" ");
+                args.Append("--password=\"" + Password.Text + "\" ");
+
+                if (LimitTileset.Checked)
+                {
+                    if (MaxRowLimit.Value > 0)
+                        args.Append("--limitrows=\"" + ((int)MaxRowLimit.Value).ToString() + "\" ");
+                    if (MaxColLimit.Value > 0)
+                        args.Append("--limitcols=\"" + ((int)MaxColLimit.Value).ToString() + "\" ");
+                }
+
+                if (UseNativeAPI.Checked)
+                    args.Append("--native-connection ");
+                if (UseOfficialMethod.Checked)
+                    args.Append("--metersperunit=" + ((double)MetersPerUnit.Value).ToString(System.Globalization.CultureInfo.InvariantCulture) + " ");
+
+                args.Append("--threadcount=" + ((int)ThreadCount.Value).ToString() + " ");
+                if (RandomTileOrder.Checked)
+                    args.Append("--random-tile-order ");
+
+
                 string executable = System.IO.Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
                 //Windows has problems with console output from GUI applications...
@@ -198,15 +282,7 @@ namespace OSGeo.MapGuide.MgCooker
                             sw.Write(c.ScaleIndexes[i].ToString());
                         }
 
-                        foreach (string s in m_commandlineargs.Keys)
-                        {
-                            sw.Write(" --");
-                            sw.Write(s);
-                            sw.Write("=\"");
-                            sw.Write(m_commandlineargs[s]);
-                            sw.Write("\"");
-                        }
-
+                        sw.Write(args.ToString());
                         sw.WriteLine();
                     }
                 }
@@ -223,22 +299,54 @@ namespace OSGeo.MapGuide.MgCooker
             if (byuser)
             {
                 foreach (TreeNode n in e.Node.Nodes)
+                {
+                    foreach (TreeNode tn in n.Nodes)
+                        tn.Checked = e.Node.Checked;
+                    
                     n.Checked = e.Node.Checked;
+                }
 
                 if (e.Node.Parent != null)
                 {
-                    int uc = 0;
                     int c = 0;
 
                     foreach (TreeNode n in e.Node.Parent.Nodes)
                         if (n.Checked)
                             c++;
-                        else
-                            uc++;
 
-                    e.Node.Parent.Checked = c > 0;
+                    if (c > 0)
+                    {
+                        e.Node.Parent.Checked = true;
+                        if (e.Node.Parent.Parent != null)
+                            e.Node.Parent.Parent.Checked = true;
+                    }
                 }
             }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LimitTileset_CheckedChanged(object sender, EventArgs e)
+        {
+            TilesetLimitPanel.Enabled = LimitTileset.Checked;
+        }
+
+        private void UseOfficialMethod_CheckedChanged(object sender, EventArgs e)
+        {
+            OfficialMethodPanel.Enabled = UseOfficialMethod.Checked;
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
         }
     }
 }

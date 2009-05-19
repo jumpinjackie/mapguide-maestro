@@ -26,7 +26,6 @@ namespace OSGeo.MapGuide.MgCooker
 {
     public class Program
     {
-        private static DateTime beginOverall;
         private static DateTime beginMap;
         private static DateTime beginGroup;
         private static DateTime beginScale;
@@ -49,6 +48,9 @@ namespace OSGeo.MapGuide.MgCooker
         [STAThread()]
         public static void Main(string[] args)
         {
+            System.Windows.Forms.Application.EnableVisualStyles();
+            System.Windows.Forms.Application.DoEvents();
+
             //Parameters:
             //mapagent=
             //username=
@@ -113,16 +115,44 @@ namespace OSGeo.MapGuide.MgCooker
                 hasConsole = false;
             }
 
+
+            MaestroAPI.ServerConnectionI connection = null;
+
+            if (!opts.ContainsKey("username") || (!opts.ContainsKey("mapagent")))
+            {
+                if (largs.IndexOf("/commandline") < 0 && largs.IndexOf("commandline") < 0)
+                {
+                    Maestro.FormLogin frm = new OSGeo.MapGuide.Maestro.FormLogin();
+                    if (frm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                        return;
+
+                    connection = frm.Connection;
+                    mapagent = ((MaestroAPI.HttpServerConnection)connection).ServerURI;
+                }
+            }
+
+            if (connection == null)
+            {
+                if (!opts.ContainsKey("native-connection"))
+                    connection = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri(mapagent), username, password, System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, true);
+                else
+                {
+                    string serverconfig = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "webconfig.ini");
+                    connection = new OSGeo.MapGuide.MaestroAPI.LocalNativeConnection(serverconfig, username, password, System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
+                }
+            }
+
+            string[] maps = mapdefinitions.Split(',');
+
             if (largs.IndexOf("batch") < 0 && largs.IndexOf("/batch") < 0)
             {
-                MaestroAPI.HttpServerConnection con = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri(mapagent), username, password, System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, true);
-                SetupRun sr = new SetupRun(con, mapdefinitions.Split(','), opts);
+                SetupRun sr = new SetupRun(connection, maps, opts);
                 sr.ShowDialog();
                 return;
             }
             
 
-            BatchSettings bx = new BatchSettings(mapagent, username, password, mapdefinitions.Split(','));
+            BatchSettings bx = new BatchSettings(connection, maps);
             if (!string.IsNullOrEmpty(scaleindex))
             {
                 List<int> scales = new List<int>();
@@ -165,9 +195,18 @@ namespace OSGeo.MapGuide.MgCooker
 
             double d;
             if (!string.IsNullOrEmpty(metersPerUnit) && double.TryParse(metersPerUnit, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentCulture, out d))
+            {
                 bx.Config.MetersPerUnit = d;
+                bx.Config.UseOfficialMethod = true;
+            }
 
-            if (largs.IndexOf("gui") >= 0 || largs.IndexOf("/gui") >= 0)
+            if (opts.ContainsKey("random-tile-order"))
+                bx.Config.RandomizeTileSequence = true;
+
+            if (opts.ContainsKey("threadcount") && int.TryParse(opts["threadcount"], out x) && x > 0)
+                bx.Config.ThreadCount = x;
+
+            if (largs.IndexOf("/commandline") < 0 && largs.IndexOf("commandline") < 0)
             {
                 Progress pg = new Progress(bx);
                 pg.ShowDialog();

@@ -34,6 +34,8 @@ namespace OSGeo.MapGuide.Maestro
             //System.Text.RegularExpressions.Match m = m_filenameTransformer.Match("xxæøå");
 
             //MaestroAPI.HttpServerConnection con = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri("http://localhost/mapguide"), "Administrator", "admin", "da", true);
+            //MaestroAPI.FeatureSetReader fs = con.QueryFeatureSource("Library://JammerbugtGrundsalg/sqlite.FeatureSource", "Grunde", null, new string[] { "ID" });
+            //fs.Read();
             //MaestroAPI.LayerDefinition ldef = con.CreateResourceObject<MaestroAPI.LayerDefinition>();
 
             /*MaestroAPI.ResourceIdentifier ri = new OSGeo.MapGuide.MaestroAPI.ResourceIdentifier("Library://folder/");

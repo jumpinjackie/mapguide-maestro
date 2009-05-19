@@ -215,10 +215,12 @@ namespace OSGeo.MapGuide.MgCooker
                 this.FinishRenderingTile(CallbackStates.FinishRenderTile, batchMap, group, scaleindex, row, col, ref m_cancel);
         }
 
-        internal void InvokeError(BatchMap batchMap, string group, int scaleindex, int row, int col, ref Exception exception)
+        internal Exception InvokeError(BatchMap batchMap, string group, int scaleindex, int row, int col, ref Exception exception)
         {
             if (this.FailedRenderingTile != null)
                 this.FailedRenderingTile(CallbackStates.FailedRenderingTile, batchMap, group, scaleindex, row, col, ref exception);
+
+            return exception;
         }
 
         #endregion
@@ -361,6 +363,16 @@ namespace OSGeo.MapGuide.MgCooker
         private double m_maxscale;
 
         /// <summary>
+        /// Conversion from supplied scaleindex to actual scaleindex
+        /// </summary>
+        private int[] m_scaleindexmap;
+
+        /// <summary>
+        /// The number of meters in an inch
+        /// </summary>
+        private const double INCH_TO_METER = 0.0254;
+
+        /// <summary>
         /// Constructs a new map to be processed
         /// </summary>
         /// <param name="parent">The parent entry</param>
@@ -385,6 +397,7 @@ namespace OSGeo.MapGuide.MgCooker
         {
             if (m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.Count == 0)
             {
+                m_scaleindexmap = new int[0];
                 m_dimensions = new long[0][];
                 return;
             }
@@ -392,29 +405,43 @@ namespace OSGeo.MapGuide.MgCooker
             MaestroAPI.Box2DType extents = m_maxExtent == null ? m_mapdefinition.Extents : m_maxExtent;
             double maxscale = m_maxscale;
 
-            //Note the algorithm used here is slightly different than the one proposed by the MapGuide team.
-            //The MapGuide team suggestion can be found here:
-            //http://www.nabble.com/Pre-Genererate--tiles-for-the-entire-map-at-all-pre-defined-zoom-scales-to6074037.html#a6078663
-
-            //Using the above algorithm, yields a negative number of columns/rows, if the max scale is larger than the max extent of the map.
-
-            //This method assumes that the max scale is displayed on a screen with resolution 1920x1280.
-            //This display width/height is then multiplied up to calculate the pixelwidth of all subsequent
-            //scale ranges. Eg. if max scale range is 1:200, then scale range 1:100 is twice the size,
-            //meaning the full map at 1:100 fills 3840x2560 pixels.
-            //The width/height is then used to calculate the number of rows and columns of 300x300 pixel tiles.
+            m_dimensions = new long[this.Resolutions][];
+            m_scaleindexmap = new int[m_dimensions.Length];
+ 
+            double width_in_meters = Math.Abs(m_parent.Config.MetersPerUnit * (extents.MaxX - extents.MinX));
+            double height_in_meters = Math.Abs(m_parent.Config.MetersPerUnit * (extents.MaxY - extents.MinY));
 
             m_dimensions = new long[this.Resolutions][];
             for (int i = this.Resolutions - 1; i >= 0; i--)
             {
+                long rows, cols;
                 double scale = m_mapdefinition.BaseMapDefinition.FiniteDisplayScale[i];
-                long pw = (long)(m_parent.Config.DisplayResolutionWidth * (1 / (scale / maxscale)));
-                long ph = (long)(m_parent.Config.DisplayResolutionHeight * (1 / (scale / maxscale)));
 
-                long rows = (pw + (m_parent.Config.TileWidth - 1)) / m_parent.Config.TileWidth;
-                long cols = (ph + (m_parent.Config.TileHeight - 1)) / m_parent.Config.TileHeight;
-                rows += rows % 2;
-                cols += cols % 2;
+                if (m_parent.Config.UseOfficialMethod)
+                {
+                    //This is the algorithm proposed by the MapGuide team:
+                    //http://www.nabble.com/Pre-Genererate--tiles-for-the-entire-map-at-all-pre-defined-zoom-scales-to6074037.html#a6078663
+                    
+                    //Using this algorithm, yields a negative number of columns/rows, if the max scale is larger than the max extent of the map.
+                    rows = Math.Max(1, (int)Math.Ceiling((width_in_meters / ((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileWidth) * (scale)))));
+                    cols = Math.Max(1, (int)Math.Ceiling((height_in_meters / ((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileHeight) * (scale)))));
+                }
+                else
+                {
+                    //This method assumes that the max scale is displayed on a screen with resolution 1920x1280.
+                    //This display width/height is then multiplied up to calculate the pixelwidth of all subsequent
+                    //scale ranges. Eg. if max scale range is 1:200, then scale range 1:100 is twice the size,
+                    //meaning the full map at 1:100 fills 3840x2560 pixels.
+                    //The width/height is then used to calculate the number of rows and columns of 300x300 pixel tiles.
+
+                    long pw = (long)(m_parent.Config.DisplayResolutionWidth * (1 / (scale / maxscale)));
+                    long ph = (long)(m_parent.Config.DisplayResolutionHeight * (1 / (scale / maxscale)));
+
+                    rows = (pw + (m_parent.Config.TileWidth - 1)) / m_parent.Config.TileWidth;
+                    cols = (ph + (m_parent.Config.TileHeight - 1)) / m_parent.Config.TileHeight;
+                    rows += rows % 2;
+                    cols += cols % 2;
+                }
 
                 m_dimensions[i] = new long[] {rows, cols};
 
@@ -447,6 +474,13 @@ namespace OSGeo.MapGuide.MgCooker
                     m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.RemoveAt(i);
 
             CalculateDimensions();
+
+            keys.Reverse();
+
+            //Preserve the original scales
+            m_scaleindexmap = new int[keys.Count];
+            for (int i = 0; i < keys.Count; i++)
+                m_scaleindexmap[i] = keys[i];
         }
 
         public void LimitCols(long limit)
@@ -486,48 +520,6 @@ namespace OSGeo.MapGuide.MgCooker
             }
         }
 
-        /// <summary>
-        /// Renders a single tile
-        /// </summary>
-        /// <param name="row">The row index of the tile</param>
-        /// <param name="col">The column index of the tile</param>
-        /// <param name="scaleindex">The scale index of the tile</param>
-        /// <param name="group">The name of the baselayer group</param>
-        public void RenderTile(long row, long col, int scaleindex, string group)
-        {
-            m_parent.InvokeBeginRendering(this, group, scaleindex, (int)row, (int)col);
-
-            int c = m_parent.Config.RetryCount;
-            while (c > 0)
-            {
-                c--;
-                try
-                {
-                    if (!m_parent.Cancel)
-                        m_parent.Connection.GetTile(m_mapdefinition.ResourceId, group, (int)col, (int)row, scaleindex, "PNG").Dispose();
-
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    if (c == 0)
-                    {
-                        Exception pex = ex;
-                        m_parent.InvokeError(this, group, scaleindex, (int)row, (int)col, ref ex);
-
-                        if (ex == null)
-                            break;
-
-                        if (pex == ex)
-                            throw;
-                        else
-                            throw ex;
-                    }
-                }
-            }
-
-            m_parent.InvokeFinishRendering(this, group, scaleindex, (int)row, (int)col);
-        }
 
         /// <summary>
         /// Renders all tiles in a given scale
@@ -543,24 +535,37 @@ namespace OSGeo.MapGuide.MgCooker
                 int rows = (int)m_dimensions[scaleindex][0];
                 int cols = (int)m_dimensions[scaleindex][1];
 
-                for (int r = 0; r < rows; r++)
-                    if (m_parent.Cancel)
-                        break;
-                    else
-                        for (int c = 0; c < cols; c++)
-                            if (m_parent.Cancel)
-                                break;
-                            else
-                            {
-                                //TODO: Does not correctly detect tiles outside map extent
-                                RenderTile(r, c, scaleindex, group);
-                            }
+                RenderThreads settings = new RenderThreads(this, m_parent, m_scaleindexmap[scaleindex], group, m_mapdefinition.ResourceId);
 
+                if (m_parent.Config.RandomizeTileSequence)
+                {
+                    List<KeyValuePair<int, int>> tmp = new List<KeyValuePair<int, int>>();
+                    for (int r = 0; r < rows; r++)
+                        for (int c = 0; c < cols; c++)
+                            tmp.Add(new KeyValuePair<int, int>(r, c));
+
+                    Random ra = new Random();
+                    while (tmp.Count > 0)
+                    {
+                        int j = ra.Next(0, tmp.Count);
+                        settings.TileSet.Enqueue(tmp[j]);
+                        tmp.RemoveAt(j);
+                    }
+               }
+                else
+                {
+                    for (int r = 0; r < rows; r++)
+                        for (int c = 0; c < cols; c++)
+                            settings.TileSet.Enqueue(new KeyValuePair<int, int>(r, c));
+                }
+
+                settings.RunAndWait();
             }
 
             m_parent.InvokeFinishRendering(this, group, scaleindex);
 
         }
+
 
         /// <summary>
         /// Renders all tiles in all scales
@@ -642,6 +647,13 @@ namespace OSGeo.MapGuide.MgCooker
         public int RetryCount = 5;
         public int DisplayResolutionWidth = 1920;
         public int DisplayResolutionHeight = 1280;
-
+        public bool UseOfficialMethod = false;
+        public bool RandomizeTileSequence = false;
+        private int m_threadCount = 1;
+        public int ThreadCount
+        {
+            get { return m_threadCount; }
+            set { m_threadCount = Math.Max(1, value); }
+        }
     }
 }

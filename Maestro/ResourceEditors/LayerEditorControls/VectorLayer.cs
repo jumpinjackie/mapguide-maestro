@@ -24,6 +24,7 @@ using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 {
@@ -55,10 +56,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 		private System.Data.DataColumn dataColumn3;
         private System.Data.DataSet PropertyDataset;
 		private System.Windows.Forms.ImageList LayerStyleImages;
-		private System.Windows.Forms.GroupBox groupViewerProperties;
-		private System.Windows.Forms.Button SelectInverseButton;
-		private System.Windows.Forms.Button SelectNoneButton;
-		private System.Windows.Forms.Button SelectAllButton;
+        private System.Windows.Forms.GroupBox groupViewerProperties;
 		private System.Windows.Forms.DataGrid dataGrid1;
         private System.Windows.Forms.GroupBox ScaleRangeGroup;
         private System.Windows.Forms.Panel panel1;
@@ -84,6 +82,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
         private ToolStripButton OpenInWindowButton;
         private ToolStripButton CloseWindowButton;
 		private EditorInterface m_editor;
+        private ToolStrip toolStrip2;
+        private ToolStripButton SelectAllButton;
+        private ToolStripButton SelectNoneButton;
+        private ToolStripButton SelectInverseButton;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripButton MovePropertyUpButton;
+        private ToolStripButton MovePropertyDownButton;
 
         private FeatureSourceDescription.FeatureSourceSchema m_selectedSchema;
 
@@ -146,14 +151,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.PropertyDataset = new System.Data.DataSet();
             this.LayerStyleImages = new System.Windows.Forms.ImageList(this.components);
             this.groupViewerProperties = new System.Windows.Forms.GroupBox();
-            this.SelectInverseButton = new System.Windows.Forms.Button();
-            this.SelectNoneButton = new System.Windows.Forms.Button();
-            this.SelectAllButton = new System.Windows.Forms.Button();
             this.dataGrid1 = new System.Windows.Forms.DataGrid();
             this.dataGridTableStyle1 = new System.Windows.Forms.DataGridTableStyle();
             this.dataGridBoolColumn1 = new System.Windows.Forms.DataGridBoolColumn();
-            this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridTextBoxColumn2 = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.SelectAllButton = new System.Windows.Forms.ToolStripButton();
+            this.SelectNoneButton = new System.Windows.Forms.ToolStripButton();
+            this.SelectInverseButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.MovePropertyUpButton = new System.Windows.Forms.ToolStripButton();
+            this.MovePropertyDownButton = new System.Windows.Forms.ToolStripButton();
             this.ScaleRangeGroup = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.scaleRangeList = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ScaleRangeList();
@@ -171,6 +180,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             ((System.ComponentModel.ISupportInitialize)(this.PropertyDataset)).BeginInit();
             this.groupViewerProperties.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).BeginInit();
+            this.toolStrip2.SuspendLayout();
             this.ScaleRangeGroup.SuspendLayout();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -392,10 +402,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             // groupViewerProperties
             // 
-            this.groupViewerProperties.Controls.Add(this.SelectInverseButton);
-            this.groupViewerProperties.Controls.Add(this.SelectNoneButton);
-            this.groupViewerProperties.Controls.Add(this.SelectAllButton);
             this.groupViewerProperties.Controls.Add(this.dataGrid1);
+            this.groupViewerProperties.Controls.Add(this.toolStrip2);
             this.groupViewerProperties.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupViewerProperties.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupViewerProperties.Location = new System.Drawing.Point(0, 176);
@@ -405,53 +413,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.groupViewerProperties.TabStop = false;
             this.groupViewerProperties.Text = "Properties avalible in viewer";
             // 
-            // SelectInverseButton
-            // 
-            this.SelectInverseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SelectInverseButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.SelectInverseButton.Location = new System.Drawing.Point(232, 192);
-            this.SelectInverseButton.Name = "SelectInverseButton";
-            this.SelectInverseButton.Size = new System.Drawing.Size(96, 24);
-            this.SelectInverseButton.TabIndex = 3;
-            this.SelectInverseButton.Text = "Select inverse";
-            this.SelectInverseButton.Click += new System.EventHandler(this.SelectInverseButton_Click);
-            // 
-            // SelectNoneButton
-            // 
-            this.SelectNoneButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SelectNoneButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.SelectNoneButton.Location = new System.Drawing.Point(128, 192);
-            this.SelectNoneButton.Name = "SelectNoneButton";
-            this.SelectNoneButton.Size = new System.Drawing.Size(88, 24);
-            this.SelectNoneButton.TabIndex = 2;
-            this.SelectNoneButton.Text = "Select none";
-            this.SelectNoneButton.Click += new System.EventHandler(this.SelectNoneButton_Click);
-            // 
-            // SelectAllButton
-            // 
-            this.SelectAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SelectAllButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.SelectAllButton.Location = new System.Drawing.Point(16, 192);
-            this.SelectAllButton.Name = "SelectAllButton";
-            this.SelectAllButton.Size = new System.Drawing.Size(96, 24);
-            this.SelectAllButton.TabIndex = 1;
-            this.SelectAllButton.Text = "Select all";
-            this.SelectAllButton.Click += new System.EventHandler(this.SelectAllButton_Click);
-            // 
             // dataGrid1
             // 
             this.dataGrid1.AllowSorting = false;
-            this.dataGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGrid1.CaptionVisible = false;
             this.dataGrid1.DataMember = "";
             this.dataGrid1.DataSource = this.ViewerPropertiesTable;
+            this.dataGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGrid1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.dataGrid1.Location = new System.Drawing.Point(16, 24);
+            this.dataGrid1.Location = new System.Drawing.Point(3, 41);
             this.dataGrid1.Name = "dataGrid1";
             this.dataGrid1.RowHeadersVisible = false;
-            this.dataGrid1.Size = new System.Drawing.Size(767, 160);
+            this.dataGrid1.Size = new System.Drawing.Size(793, 188);
             this.dataGrid1.TabIndex = 0;
             this.dataGrid1.TableStyles.AddRange(new System.Windows.Forms.DataGridTableStyle[] {
             this.dataGridTableStyle1});
@@ -475,14 +448,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.dataGridBoolColumn1.MappingName = "Visible";
             this.dataGridBoolColumn1.Width = 75;
             // 
-            // dataGridTextBoxColumn1
-            // 
-            this.dataGridTextBoxColumn1.Format = "";
-            this.dataGridTextBoxColumn1.FormatInfo = null;
-            this.dataGridTextBoxColumn1.HeaderText = "Display";
-            this.dataGridTextBoxColumn1.MappingName = "Display";
-            this.dataGridTextBoxColumn1.Width = 75;
-            // 
             // dataGridTextBoxColumn2
             // 
             this.dataGridTextBoxColumn2.Format = "";
@@ -491,6 +456,86 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.dataGridTextBoxColumn2.MappingName = "Name";
             this.dataGridTextBoxColumn2.ReadOnly = true;
             this.dataGridTextBoxColumn2.Width = 75;
+            // 
+            // dataGridTextBoxColumn1
+            // 
+            this.dataGridTextBoxColumn1.Format = "";
+            this.dataGridTextBoxColumn1.FormatInfo = null;
+            this.dataGridTextBoxColumn1.HeaderText = "Display";
+            this.dataGridTextBoxColumn1.MappingName = "Display";
+            this.dataGridTextBoxColumn1.Width = 75;
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SelectAllButton,
+            this.SelectNoneButton,
+            this.SelectInverseButton,
+            this.toolStripSeparator2,
+            this.MovePropertyUpButton,
+            this.MovePropertyDownButton});
+            this.toolStrip2.Location = new System.Drawing.Point(3, 16);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip2.Size = new System.Drawing.Size(793, 25);
+            this.toolStrip2.TabIndex = 4;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // SelectAllButton
+            // 
+            this.SelectAllButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SelectAllButton.Image = ((System.Drawing.Image)(resources.GetObject("SelectAllButton.Image")));
+            this.SelectAllButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SelectAllButton.Name = "SelectAllButton";
+            this.SelectAllButton.Size = new System.Drawing.Size(23, 22);
+            this.SelectAllButton.ToolTipText = "Make all properties visible";
+            this.SelectAllButton.Click += new System.EventHandler(this.SelectAllButton_Click);
+            // 
+            // SelectNoneButton
+            // 
+            this.SelectNoneButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SelectNoneButton.Image = ((System.Drawing.Image)(resources.GetObject("SelectNoneButton.Image")));
+            this.SelectNoneButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SelectNoneButton.Name = "SelectNoneButton";
+            this.SelectNoneButton.Size = new System.Drawing.Size(23, 22);
+            this.SelectNoneButton.ToolTipText = "Make no properties visible";
+            this.SelectNoneButton.Click += new System.EventHandler(this.SelectNoneButton_Click);
+            // 
+            // SelectInverseButton
+            // 
+            this.SelectInverseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SelectInverseButton.Image = ((System.Drawing.Image)(resources.GetObject("SelectInverseButton.Image")));
+            this.SelectInverseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SelectInverseButton.Name = "SelectInverseButton";
+            this.SelectInverseButton.Size = new System.Drawing.Size(23, 22);
+            this.SelectInverseButton.ToolTipText = "Reverse the visibility of the properties";
+            this.SelectInverseButton.Click += new System.EventHandler(this.SelectInverseButton_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // MovePropertyUpButton
+            // 
+            this.MovePropertyUpButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MovePropertyUpButton.Image = ((System.Drawing.Image)(resources.GetObject("MovePropertyUpButton.Image")));
+            this.MovePropertyUpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MovePropertyUpButton.Name = "MovePropertyUpButton";
+            this.MovePropertyUpButton.Size = new System.Drawing.Size(23, 22);
+            this.MovePropertyUpButton.ToolTipText = "Move the highlighted property up";
+            this.MovePropertyUpButton.Click += new System.EventHandler(this.MovePropertyUpButton_Click);
+            // 
+            // MovePropertyDownButton
+            // 
+            this.MovePropertyDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MovePropertyDownButton.Image = ((System.Drawing.Image)(resources.GetObject("MovePropertyDownButton.Image")));
+            this.MovePropertyDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MovePropertyDownButton.Name = "MovePropertyDownButton";
+            this.MovePropertyDownButton.Size = new System.Drawing.Size(23, 22);
+            this.MovePropertyDownButton.ToolTipText = "Move the highlighted property down";
+            this.MovePropertyDownButton.Click += new System.EventHandler(this.MovePropertyDownButton_Click);
             // 
             // ScaleRangeGroup
             // 
@@ -620,7 +665,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             ((System.ComponentModel.ISupportInitialize)(this.DisplayRangesTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PropertyDataset)).EndInit();
             this.groupViewerProperties.ResumeLayout(false);
+            this.groupViewerProperties.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).EndInit();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.ScaleRangeGroup.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -679,29 +727,35 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 					if (schema != null)
 					{
 						ViewerPropertiesTable.Rows.Clear();
-						Hashtable props = new Hashtable();
+
+                        //Build list of avalible columns
+                        List<string> schemaCols = new List<string>();
+                        foreach (OSGeo.MapGuide.MaestroAPI.FeatureSetColumn col in schema.Columns)
+                            if (col.Type != OSGeo.MapGuide.MaestroAPI.Utility.GeometryType)
+                                schemaCols.Add(col.Name);
+
+                        //Insert mapped properties first, and preserve their order
 						if (vl.PropertyMapping != null)
-							foreach(OSGeo.MapGuide.MaestroAPI.NameStringPairType ns in vl.PropertyMapping)
-								props.Add(ns.Name, ns.Value);
+                            foreach (OSGeo.MapGuide.MaestroAPI.NameStringPairType ns in vl.PropertyMapping)
+                                if (schemaCols.Contains(ns.Name))
+                                {
+                                    schemaCols.Remove(ns.Name);
+                                    System.Data.DataRow row = ViewerPropertiesTable.NewRow();
+                                    row["Visible"] = true;
+                                    row["Name"] = ns.Name;
+                                    row["Display"] = ns.Value;
+                                    ViewerPropertiesTable.Rows.Add(row);
+                                }
 
-						ArrayList avalibleColums = new ArrayList();
-
-						foreach(OSGeo.MapGuide.MaestroAPI.FeatureSetColumn col in schema.Columns)
-						{
-							if (col.Type != OSGeo.MapGuide.MaestroAPI.Utility.GeometryType)
-							{
-								System.Data.DataRow row = ViewerPropertiesTable.NewRow();
-								row["Visible"] = props.ContainsKey(col.Name);
-                                row["Name"] = col.Name;
-								row["Display"] = props.ContainsKey(col.Name) ? (string)props[col.Name] : col.Name;
-								ViewerPropertiesTable.Rows.Add(row);
-							}
-							avalibleColums.Add(col.Name);
-						}
-                    
-						string[] m_avalibleColumns = (string[])avalibleColums.ToArray(typeof(string));
-						//fontStyleEditor.SetAvalibleColumns(m_avalibleColumns);
-
+                        //Insert the remaining columns, and preserver schema order
+                        foreach (string s in schemaCols)
+                        {
+                            System.Data.DataRow row = ViewerPropertiesTable.NewRow();
+                            row["Visible"] = false;
+                            row["Name"] = s;
+                            row["Display"] = s;
+                            ViewerPropertiesTable.Rows.Add(row);
+                        }
 					}
 					else
 					{
@@ -1045,6 +1099,59 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
                 (ScaleRangeGroup.Parent.Parent as ScaleControls.EditorTemplateForm).Close();
             }
         }
+
+        private void MovePropertyUpButton_Click(object sender, EventArgs e)
+        {
+            MoveRow(true);
+        }
+
+        private void MovePropertyDownButton_Click(object sender, EventArgs e)
+        {
+            MoveRow(false);
+        }
+
+        private void MoveRow(bool up)
+        {
+            try
+            {
+                inUpdate = true;
+                int row = dataGrid1.CurrentRowIndex;
+                if (row < 0 || row >= ViewerPropertiesTable.Rows.Count)
+                    return;
+                System.Data.DataRow r = ViewerPropertiesTable.Rows[row];
+                object[] data = r.ItemArray;
+                ViewerPropertiesTable.Rows.Remove(r);
+
+                row += up ? -1 : 1;
+                row = Math.Min(Math.Max(0, row), ViewerPropertiesTable.Rows.Count);
+                ViewerPropertiesTable.Rows.InsertAt(r, row);
+                r.ItemArray = data;
+                dataGrid1.CurrentRowIndex = row;
+                try { dataGrid1.Focus(); }
+                catch { }
+
+                if (m_layer.Item is OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType)
+                {
+                    OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType vl = (OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType)m_layer.Item;
+                    vl.PropertyMapping.Clear();
+                    foreach (System.Data.DataRow dr in ViewerPropertiesTable.Rows)
+                        if ((bool)dr["Visible"] == true)
+                        {
+                            NameStringPairType pair = new NameStringPairType();
+                            pair.Name = (string)dr["Name"];
+                            pair.Value = (string)dr["Display"];
+                            vl.PropertyMapping.Add(pair);
+                        }
+                }
+
+                m_editor.HasChanged();
+            }
+            finally
+            {
+                inUpdate = false;
+            }
+        }
+
 	}	
 	
 }

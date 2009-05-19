@@ -123,7 +123,7 @@ namespace OSGeo.MapGuide.MgCooker
                 tilePG.Value = (int)Math.Max(Math.Min((m_tileCount / (double)m_totalTiles) * (tilePG.Maximum - tilePG.Minimum), tilePG.Maximum), tilePG.Minimum);
                 totalPG.Value = (int)Math.Max(Math.Min((m_grandTotalTileCount / (double)m_grandTotalTiles) * (totalPG.Maximum - totalPG.Minimum), totalPG.Maximum), totalPG.Minimum);
 
-                tileCounter.Text = string.Format("Tile {0} of {1}", m_grandTotalTileCount, m_grandTotalTiles);
+                tileCounter.Text = string.Format("Tile {0} of {1:###,###,###,###}", m_grandTotalTileCount, m_grandTotalTiles);
                 if (m_failCount > 0)
                     tileCounter.Text += string.Format(" ({0} failed tiles)", m_failCount);
 
