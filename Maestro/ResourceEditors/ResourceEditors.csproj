@@ -176,6 +176,15 @@
     <Compile Include="FeatureSourceEditors\King.Informix\FeatureSourceEditorKingInformix.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="FeatureSourceEditors\King.KML\FeatureSourceEditorKingKML.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\King.KML\Managed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\King.KML\Unmanaged.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="FeatureSourceEditors\King.MSSql\FeatureSourceEditorKingMSSql.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -961,6 +970,18 @@
   <ItemGroup>
     <EmbeddedResource Include="FeatureSourceEditors\King.Informix\FeatureSourceEditorKingInformix.resx">
       <DependentUpon>FeatureSourceEditorKingInformix.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\King.KML\FeatureSourceEditorKingKML.resx">
+      <DependentUpon>FeatureSourceEditorKingKML.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\King.KML\Managed.resx">
+      <DependentUpon>Managed.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\King.KML\Unmanaged.resx">
+      <DependentUpon>Unmanaged.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSourceEditors\SQLite\FeatureSourceEditorSQLite.resx">

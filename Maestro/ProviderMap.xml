@@ -84,9 +84,16 @@
 		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
 	</ProviderItem>
 
-    	<ProviderItem>
+    <ProviderItem>
 		<Provider>King.Informix</Provider>
 		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorKingInformix</Control>
 		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
 	</ProviderItem>
+
+    <ProviderItem>
+		<Provider>King.KML</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorKingKML</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+    
 </ProviderEditorMap>
