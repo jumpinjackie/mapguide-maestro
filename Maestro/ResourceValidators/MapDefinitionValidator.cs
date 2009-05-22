@@ -34,7 +34,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
 
             foreach (MaestroAPI.BaseMapLayerType l in layers)
             {
-                if (l.ShowInLegend && l.LegendLabel.Trim().Length == 0)
+                if (l.ShowInLegend && (string.IsNullOrEmpty(l.LegendLabel) ||  l.LegendLabel.Trim().Length == 0))
                     issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, string.Format("Layer {0} does not have a legend label", l.Name)));
                 
                 if (recurse)
