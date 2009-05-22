@@ -173,6 +173,9 @@
     <Compile Include="FeatureSourceEditors\Gdal\Simple.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="FeatureSourceEditors\King.Informix\FeatureSourceEditorKingInformix.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="FeatureSourceEditors\King.MSSql\FeatureSourceEditorKingMSSql.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -291,6 +294,15 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FeatureSourceEditors\SHP\Unmanaged.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\SQLite\FeatureSourceEditorSQLite.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\SQLite\Managed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\SQLite\Unmanaged.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FeatureSourceEditors\WFS\FeatureSourceEditorWFS.cs">
@@ -947,6 +959,22 @@
     <EmbeddedResource Include="Preview layout.WebLayout" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FeatureSourceEditors\King.Informix\FeatureSourceEditorKingInformix.resx">
+      <DependentUpon>FeatureSourceEditorKingInformix.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\SQLite\FeatureSourceEditorSQLite.resx">
+      <DependentUpon>FeatureSourceEditorSQLite.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\SQLite\Managed.resx">
+      <DependentUpon>Managed.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\SQLite\Unmanaged.resx">
+      <DependentUpon>Unmanaged.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="FiniteDisplayScales.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FiniteDisplayScales.cs</DependentUpon>
@@ -960,10 +988,6 @@
       <DependentUpon>WaitForOperation.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FeatureSourceEditors\King.Informix\" />
-    <Folder Include="FeatureSourceEditors\SQLite\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -78,4 +78,15 @@
 		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
 	</ProviderItem>
 		
+	<ProviderItem>
+		<Provider>OSGeo.SQLite</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorSQLite</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
+
+    	<ProviderItem>
+		<Provider>King.Informix</Provider>
+		<Control>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorKingInformix</Control>
+		<AssemblyPath>OSGeo.MapGuide.Maestro.ResourceEditors.dll</AssemblyPath>
+	</ProviderItem>
 </ProviderEditorMap>

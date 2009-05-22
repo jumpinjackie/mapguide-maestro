@@ -405,7 +405,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // LayerEditor
             // 
             this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(496, 800);
+            this.AutoScrollMinSize = new System.Drawing.Size(350, 800);
             this.Controls.Add(this.EditorPanel);
             this.Controls.Add(this.FeatureSource);
             this.Controls.Add(this.label1);

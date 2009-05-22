@@ -89,6 +89,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton MovePropertyUpButton;
         private ToolStripButton MovePropertyDownButton;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripButton SortScalesByDisplayRangeButton;
 
         private FeatureSourceDescription.FeatureSourceSchema m_selectedSchema;
 
@@ -170,6 +172,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.AddScaleRangeButton = new System.Windows.Forms.ToolStripButton();
             this.DeleteItemButton = new System.Windows.Forms.ToolStripButton();
             this.InsertCopyButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.SortScalesByDisplayRangeButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.OpenInWindowButton = new System.Windows.Forms.ToolStripButton();
             this.CloseWindowButton = new System.Windows.Forms.ToolStripButton();
@@ -578,6 +582,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.AddScaleRangeButton,
             this.DeleteItemButton,
             this.InsertCopyButton,
+            this.toolStripSeparator3,
+            this.SortScalesByDisplayRangeButton,
             this.toolStripSeparator1,
             this.OpenInWindowButton,
             this.CloseWindowButton});
@@ -618,6 +624,21 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.InsertCopyButton.Size = new System.Drawing.Size(23, 22);
             this.InsertCopyButton.Text = "Append a copy of the selected scale";
             this.InsertCopyButton.Click += new System.EventHandler(this.InsertCopyButton_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // SortScalesByDisplayRangeButton
+            // 
+            this.SortScalesByDisplayRangeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SortScalesByDisplayRangeButton.Image = ((System.Drawing.Image)(resources.GetObject("SortScalesByDisplayRangeButton.Image")));
+            this.SortScalesByDisplayRangeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SortScalesByDisplayRangeButton.Name = "SortScalesByDisplayRangeButton";
+            this.SortScalesByDisplayRangeButton.Size = new System.Drawing.Size(23, 22);
+            this.SortScalesByDisplayRangeButton.ToolTipText = "Sort the scale ranges by display range";
+            this.SortScalesByDisplayRangeButton.Click += new System.EventHandler(this.SortScalesByDisplayRangeButton_Click);
             // 
             // toolStripSeparator1
             // 
@@ -1150,6 +1171,74 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             {
                 inUpdate = false;
             }
+        }
+
+        private void SortScalesByDisplayRangeButton_Click(object sender, EventArgs e)
+        {
+            OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType vld = m_layer.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType;
+            if (vld == null)
+                return;
+
+            if (vld.VectorScaleRange == null || vld.VectorScaleRange.Count == 0)
+                return;
+
+            List<VectorScaleRangeType> ranges = new List<VectorScaleRangeType>();
+            foreach(VectorScaleRangeType sc in vld.VectorScaleRange)
+                ranges.Add(sc);
+            ranges.Sort(new ScaleRangeSorter());
+
+            vld.VectorScaleRange.Clear();
+            foreach (VectorScaleRangeType sc in ranges)
+                vld.VectorScaleRange.Add(sc);
+
+            //Refresh display
+            scaleRangeList.SetItem(vld);
+            scaleRangeList.ResizeAuto();
+
+            m_editor.HasChanged();
+        }
+
+        /// <summary>
+        /// Sort helper used to sort the scale ranges
+        /// </summary>
+        private class ScaleRangeSorter : IComparer, IComparer<VectorScaleRangeType>
+        {
+            #region IComparer Members
+
+            public int Compare(object x, object y)
+            {
+                if (x is MaestroAPI.VectorScaleRangeType && y is MaestroAPI.VectorScaleRangeType)
+                {
+                    MaestroAPI.VectorScaleRangeType vx = (MaestroAPI.VectorScaleRangeType)x;
+                    MaestroAPI.VectorScaleRangeType vy = (MaestroAPI.VectorScaleRangeType)y;
+
+                    double minX = vx.MinScaleSpecified ? vx.MinScale : 0;
+                    double maxX = vx.MaxScaleSpecified ? vx.MaxScale : double.MaxValue;
+                    double minY = vy.MinScaleSpecified ? vy.MinScale : 0;
+                    double maxY = vy.MaxScaleSpecified ? vy.MaxScale : double.MaxValue;
+
+                    if (minX == minY)
+                        if (maxX == maxY)
+                            return 0;
+                        else
+                            return maxX > maxY ? 1 : -1;
+                    else
+                        return minX > minY ? 1 : -1;
+                }
+                else
+                    return 0;
+            }
+
+            #endregion
+
+            #region IComparer<VectorScaleRangeType> Members
+
+            public int Compare(VectorScaleRangeType x, VectorScaleRangeType y)
+            {
+                return this.Compare((object)x, (object)y);
+            }
+
+            #endregion
         }
 
 	}	

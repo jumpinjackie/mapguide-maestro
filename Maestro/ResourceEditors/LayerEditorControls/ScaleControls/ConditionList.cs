@@ -273,7 +273,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         {
             int minHeight = 0;
 
-            for (int i = 0; i < Math.Min(3, this.Controls.Count); i++)
+            for (int i = 0; i < Math.Min(10, this.Controls.Count); i++)
                 minHeight += this.Controls[i].Height;
 
             return minHeight;

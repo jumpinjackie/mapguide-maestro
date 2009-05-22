@@ -150,7 +150,31 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             if (conditionList.SelectedItem == null)
                 return;
 
-            conditionList.AddRuleControl(Utility.XmlDeepCopy(conditionList.SelectedItem)).Focus();
+            object rule = Utility.XmlDeepCopy(conditionList.SelectedItem);
+
+
+            if (m_point != null)
+            {
+                if (m_point.PointRule == null)
+                    m_point.PointRule = new PointRuleTypeCollection();
+                m_point.PointRule.Add((PointRuleType)rule);
+            }
+            else if (m_line != null)
+            {
+                if (m_line.LineRule == null)
+                    m_line.LineRule = new LineRuleTypeCollection();
+                m_line.LineRule.Add((LineRuleType)rule);
+            }
+            else if (m_area != null)
+            {
+                if (m_area.AreaRule == null)
+                    m_area.AreaRule = new AreaRuleTypeCollection();
+                m_area.AreaRule.Add((AreaRuleType)rule);
+            }
+            else
+                return;
+
+            conditionList.AddRuleControl(rule).Focus();
 
             if (ItemChanged != null)
                 ItemChanged(this, null);
