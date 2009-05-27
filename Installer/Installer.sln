@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Maestro", "Maestro.wixproj", "{B8651092-0DBD-4B82-B9D5-8E4B4C8EC7B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8651092-0DBD-4B82-B9D5-8E4B4C8EC7B2}.Debug|x86.ActiveCfg = Debug|x86
+		{B8651092-0DBD-4B82-B9D5-8E4B4C8EC7B2}.Debug|x86.Build.0 = Debug|x86
+		{B8651092-0DBD-4B82-B9D5-8E4B4C8EC7B2}.Release|x86.ActiveCfg = Release|x86
+		{B8651092-0DBD-4B82-B9D5-8E4B4C8EC7B2}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

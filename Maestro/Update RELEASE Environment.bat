@@ -7,3 +7,5 @@ xcopy /Y /E resourceeditors\templates bin\release\Templates\
 xcopy /Y /E ..\maestroapi\Schemas bin\release\Schemas\
 
 xcopy /Y /E Localization bin\release\Localization\
+
+xcopy /Y license.txt bin\release\license.txt

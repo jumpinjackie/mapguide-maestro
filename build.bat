@@ -32,7 +32,9 @@ rem ==================================================
 rem MapGuide Maestro vars
 rem ==================================================
 SET MAESTRO_DEV=%CD%\Maestro
-SET MAESTRO_OUTPUT=%CD%\%TYPEBUILD%
+SET MAESTRO_OUTPUT=%CD%\InstallerTemp%TYPEBUILD%\MapGuideMaestro
+SET MAESTRO_WIX=%CD%\Installer
+SET PARAFFIN_PATH=%MAESTRO_WIX%\paraffin.exe
 
 rem ==================================================
 rem MSBuild Settings
@@ -50,7 +52,7 @@ rem Command aliases
 rem ==================================================
 rem SET XCOPY=xcopy /E /Y /I /F
 SET XCOPY=xcopy /E /Y /I /Q
-SET MSBUILD=msbuild.exe /nologo /m:%CPU_CORES% /p:Configuration=%TYPEBUILD% %MSBUILD_VERBOSITY% %MSBUILD_LOG%
+SET MSBUILD=msbuild.exe /nologo /p:Configuration=%TYPEBUILD% %MSBUILD_VERBOSITY% %MSBUILD_LOG%
 SET MSBUILD_CLEAN=msbuild.exe /nologo /m:%CPU_CORES% /p:Configuration=%TYPEBUILD% /t:Clean %MSBUILD_VERBOSITY%
 
 :study_params
@@ -105,6 +107,7 @@ if "%2"=="clean" goto next_param
 if "%2"=="install" goto next_param
 if "%2"=="update" goto next_param
 if "%2"=="buildinstall" goto next_param
+if "%2"=="regen" goto next_param
 SET ERRORMSG=Unrecognised action: %2
 goto custom_error
 
@@ -121,6 +124,14 @@ if "%TYPEACTION%"=="clean" goto clean
 if "%TYPEACTION%"=="install" goto install
 if "%TYPEACTION%"=="update" goto update
 if "%TYPEACTION%"=="buildinstall" goto build
+if "%TYPEACTION%"=="regen" goto build
+
+:clean
+echo [Clean] MapGuide Maestro
+pushd %MAESTRO_DEV%
+%MSBUILD_CLEAN% OSGeo.MapGuide.Maestro.sln
+popd
+goto quit
 
 :clean
 echo [Clean] MapGuide Maestro
@@ -140,14 +151,23 @@ if not "%TYPEACTION%"=="buildinstall" goto quit
 echo [build] MapGuide Maestro
 pushd %MAESTRO_DEV%
 %MSBUILD% OSGeo.MapGuide.Maestro.sln
-if "%errorlevel%"=="1" goto error
 popd
+if "%errorlevel%"=="1" goto error
 if not "%TYPEACTION%"=="buildinstall" goto quit
 
 :install
 echo [install] MapGuide Maestro
-%XCOPY% "%MAESTRO_DEV%\bin\%TYPEBUILD%" %MAESTRO_OUTPUT%
+%XCOPY% "%MAESTRO_DEV%\bin\%TYPEBUILD%" "%MAESTRO_OUTPUT%"
+del /Q "%MAESTRO_OUTPUT%"\*.vshost.*
+del /Q "%MAESTRO_OUTPUT%"\*.pdb
+
+pushd %MAESTRO_WIX%
+"%PARAFFIN_PATH%" -dir ..\InstallerTemp%TYPEBUILD%\MapGuideMaestro -alias ..\InstallerTemp%TYPEBUILD%\MapGuideMaestro -custom MAESTROBIN -dirref INSTALLLOCATION -multiple -guids incBinFiles.wxs -ext .pdb -direXclude .svn
+%MSBUILD% Installer.sln
+popd
+if "%errorlevel%"=="1" goto error
 goto quit
+
 
 :error
 echo [ERROR]: There was an error building the component
@@ -183,8 +203,10 @@ SET TYPEACTION=
 SET TYPEBUILD=
 SET MAESTRO_OUTPUT=
 SET MAESTRO_DEV=
+SET MAESTRO_WIX=
 SET MSBUILD_LOG=
 SET MSBUILD_VERBOSITY=
 SET XCOPY=
 SET MSBUILD=
+SET PARAFFIN_PATH=
 SET PATH=%OLDPATH%
