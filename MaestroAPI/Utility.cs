@@ -652,5 +652,86 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             return res;
         }
+
+        /// <summary>
+        /// Enumerates all objects by reflection, returns the list of referenced objects
+        /// </summary>
+        /// <param name="obj">The object to examine</param>
+        /// <returns>Te combined list of references</returns>
+        public static List<object> EnumerateObjects(object obj)
+        {
+            EnumerateObjectCollector c = new EnumerateObjectCollector();
+            EnumerateObjects(obj, new EnumerateObjectCallback(c.AddItem));
+            return c.items;
+        }
+
+        public delegate void EnumerateObjectCallback(object obj);
+
+        /// <summary>
+        /// Helper class for easy enumeration collection
+        /// </summary>
+        private class EnumerateObjectCollector
+        {
+            public List<object> items = new List<object>();
+            public void AddItem(object o)
+            {
+                items.Add(o);
+            }
+        }
+
+        /// <summary>
+        /// Enumerates all objects by reflection, calling the supplied callback method for each object
+        /// </summary>
+        /// <param name="obj">The object to examine</param>
+        /// <param name="c">The callback function</param>
+        public static void EnumerateObjects(object obj, EnumerateObjectCallback c)
+        {
+			if (obj == null || c == null)
+				return;
+
+		    Dictionary<object, object> visited = new Dictionary<object,object>();
+
+            Queue<object> items = new Queue<object>();
+            items.Enqueue(obj);
+
+            while (items.Count > 0)
+            {
+                object o = items.Dequeue();
+                if (visited.ContainsKey(o))
+                    continue;
+
+                //Prevent infinite recursion by circular reference
+                visited.Add(o, o);
+                c(o);
+
+                //Try to find the object properties
+                foreach (System.Reflection.PropertyInfo pi in o.GetType().GetProperties())
+                {
+                    //Only index free read-write properties are taken into account
+                    if (!pi.CanRead || !pi.CanWrite || pi.GetIndexParameters().Length != 0 || pi.GetValue(o, null) == null)
+                        continue;
+
+                    if (pi.GetValue(o, null).GetType().GetInterface(typeof(System.Collections.ICollection).FullName) != null)
+                    {
+                        //Handle collections
+                        System.Collections.ICollection srcList = (System.Collections.ICollection)pi.GetValue(o, null);
+                        foreach (object ox in srcList)
+                            items.Enqueue(ox);
+                    }
+                    else if (pi.GetValue(o, null).GetType().IsArray)
+                    {
+                        //Handle arrays
+                        System.Array sourceArr = (System.Array)pi.GetValue(o, null);
+                        for (int i = 0; i < sourceArr.Length; i++)
+                            items.Enqueue(sourceArr.GetValue(i));
+                    }
+                    else if (pi.PropertyType.IsClass)
+                    {
+                        //Handle subobjects
+                        items.Enqueue(pi.GetValue(o, null));
+                    }
+                }
+            }
+        }
     }
 }

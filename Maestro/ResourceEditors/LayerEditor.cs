@@ -58,6 +58,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Data.DataColumn dataColumn3;
 		private System.Windows.Forms.Panel EditorPanel;
 		private ResourceEditors.LayerEditorControls.RasterLayer rasterLayer;
+        private Label label2;
+        private ComboBox LayerDefinitionVersion;
         private ResourceEditors.LayerEditorControls.VectorLayer vectorLayer;
 
 		
@@ -69,6 +71,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 			vectorLayer.SetItem(m_editor, m_layer, null, m_globalizor);
 			rasterLayer.SetItem(m_editor, m_layer, null, m_globalizor);
+
+            //TODO: Do we want to limit the user here?
+            /*if (m_editor.CurrentConnection.SiteVersion < OSGeo.MapGuide.MaestroAPI.SiteVersions.GetVersion(OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.MapGuideEP2010))
+                LayerDefinitionVersion.Items.Remove("1.3.0");
+
+            if (m_editor.CurrentConnection.SiteVersion < OSGeo.MapGuide.MaestroAPI.SiteVersions.GetVersion(OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.MapGuideOS1_2))
+                LayerDefinitionVersion.Items.Remove("1.2.0");*/
 
 			UpdateDisplay();
 		}
@@ -188,7 +197,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					vectorLayer.Visible = false;
 					rasterLayer.Visible = false;
 				}
-				
+
+                if (m_layer.version == "1.0.0")
+                {
+                    m_layer.version = "1.1.0";
+                    m_editor.HasChanged();
+                }
+                LayerDefinitionVersion.SelectedIndex = LayerDefinitionVersion.FindStringExact(m_layer.version);
+
 			} 
 			finally
 			{
@@ -256,6 +272,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.EditorPanel = new System.Windows.Forms.Panel();
             this.rasterLayer = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.RasterLayer();
             this.vectorLayer = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.VectorLayer();
+            this.label2 = new System.Windows.Forms.Label();
+            this.LayerDefinitionVersion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ViewerPropertiesTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PropertyDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayRangesTable)).BeginInit();
@@ -382,7 +400,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.EditorPanel.Controls.Add(this.rasterLayer);
             this.EditorPanel.Controls.Add(this.vectorLayer);
-            this.EditorPanel.Location = new System.Drawing.Point(0, 32);
+            this.EditorPanel.Location = new System.Drawing.Point(0, 48);
             this.EditorPanel.Name = "EditorPanel";
             this.EditorPanel.Size = new System.Drawing.Size(504, 776);
             this.EditorPanel.TabIndex = 15;
@@ -402,16 +420,41 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.vectorLayer.Size = new System.Drawing.Size(184, 216);
             this.vectorLayer.TabIndex = 0;
             // 
+            // label2
+            // 
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label2.Location = new System.Drawing.Point(0, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(168, 16);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Layerdefinition schema version";
+            // 
+            // LayerDefinitionVersion
+            // 
+            this.LayerDefinitionVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LayerDefinitionVersion.FormattingEnabled = true;
+            this.LayerDefinitionVersion.Items.AddRange(new object[] {
+            "1.1.0",
+            "1.2.0",
+            "1.3.0"});
+            this.LayerDefinitionVersion.Location = new System.Drawing.Point(176, 24);
+            this.LayerDefinitionVersion.Name = "LayerDefinitionVersion";
+            this.LayerDefinitionVersion.Size = new System.Drawing.Size(121, 21);
+            this.LayerDefinitionVersion.TabIndex = 17;
+            this.LayerDefinitionVersion.SelectedIndexChanged += new System.EventHandler(this.LayerDefinitionVersion_SelectedIndexChanged);
+            // 
             // LayerEditor
             // 
             this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(350, 800);
+            this.AutoScrollMinSize = new System.Drawing.Size(350, 826);
+            this.Controls.Add(this.LayerDefinitionVersion);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.EditorPanel);
             this.Controls.Add(this.FeatureSource);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BrowseFeatureResource);
             this.Name = "LayerEditor";
-            this.Size = new System.Drawing.Size(504, 808);
+            this.Size = new System.Drawing.Size(504, 826);
             ((System.ComponentModel.ISupportInitialize)(this.ViewerPropertiesTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PropertyDataset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayRangesTable)).EndInit();
@@ -624,5 +667,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         public bool SupportsPreview { get { return true; } }
         public bool SupportsValidate { get { return true; } }
         public bool SupportsProfiling { get { return true; } }
+
+        private void LayerDefinitionVersion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_layer == null || inUpdate || LayerDefinitionVersion.SelectedIndex < 0)
+                return;
+
+            m_layer.ConvertLayerDefinitionToVersion(new Version(LayerDefinitionVersion.Text));
+            m_editor.HasChanged();
+        }
     }
 }

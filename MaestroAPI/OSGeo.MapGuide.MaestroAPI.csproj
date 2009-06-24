@@ -369,11 +369,11 @@
     <None Include="Schemas\LayerDefinition-1.0.0.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Schemas\LayerDefinition-1.0.0.xsx">
-      <DependentUpon>LayerDefinition-1.0.0.xsd</DependentUpon>
+    <None Include="Schemas\LayerDefinition-1.2.0.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Schemas\LayerDefinition-1.1.0.xsx">
-      <DependentUpon>LayerDefinition-1.1.0.xsd</DependentUpon>
+    <None Include="Schemas\LayerDefinition-1.3.0.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\LoadProcedure-1.0.0.xsd">
       <SubType>Designer</SubType>
@@ -381,44 +381,26 @@
     <None Include="Schemas\MapDefinition-1.0.0.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Schemas\MapDefinition-1.0.0.xsx">
-      <DependentUpon>MapDefinition-1.0.0.xsd</DependentUpon>
-    </None>
     <None Include="Schemas\PrintLayout-1.0.0.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\RepositoryContent-1.0.0.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Schemas\RepositoryContent-1.0.0.xsx">
-      <DependentUpon>RepositoryContent-1.0.0.xsd</DependentUpon>
-    </None>
     <None Include="Schemas\RepositoryList-1.0.0.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Schemas\RepositoryList-1.0.0.xsx">
-      <DependentUpon>RepositoryList-1.0.0.xsd</DependentUpon>
     </None>
     <None Include="Schemas\ResourceDataList-1.0.0.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Schemas\ResourceDataList-1.0.0.xsx">
-      <DependentUpon>ResourceDataList-1.0.0.xsd</DependentUpon>
-    </None>
     <None Include="Schemas\ResourceDocumentHeader-1.0.0.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Schemas\ResourceDocumentHeader-1.0.0.xsx">
-      <DependentUpon>ResourceDocumentHeader-1.0.0.xsd</DependentUpon>
     </None>
     <None Include="Schemas\ResourceFolderHeader-1.0.0.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Schemas\ResourceList-1.0.0.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Schemas\ResourceList-1.0.0.xsx">
-      <DependentUpon>ResourceList-1.0.0.xsd</DependentUpon>
     </None>
     <None Include="Schemas\ResourcePackageManifest-1.0.0.xsd">
       <SubType>Designer</SubType>
@@ -428,9 +410,6 @@
     </None>
     <None Include="Schemas\ResourceSecurity-1.0.0.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Schemas\ResourceSecurity-1.0.0.xsx">
-      <DependentUpon>ResourceSecurity-1.0.0.xsd</DependentUpon>
     </None>
     <None Include="Schemas\Role-1.0.0.xsd">
       <SubType>Designer</SubType>

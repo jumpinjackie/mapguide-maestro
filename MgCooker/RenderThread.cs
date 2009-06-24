@@ -198,7 +198,10 @@ namespace OSGeo.MapGuide.MgCooker
                 try
                 {
                     if (!Parent.Cancel)
-                        connection.GetTile(MapDefinition, group, (int)col, (int)row, scaleindex, "PNG").Dispose();
+                        if (Parent.Config.RenderMethod == null)
+                            connection.GetTile(MapDefinition, group, (int)col, (int)row, scaleindex, "PNG").Dispose();
+                        else
+                            Parent.Config.RenderMethod(MapDefinition, group, (int)col, (int)row, scaleindex);
 
                     break;
                 }

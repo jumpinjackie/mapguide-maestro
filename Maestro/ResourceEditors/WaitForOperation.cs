@@ -112,7 +112,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private void CancelBtn_Click(object sender, EventArgs e)
         {
             CancelBtn.Enabled = false;
-            if (!BackgroundWorker.CancellationPending)
+            if (!BackgroundWorker.CancellationPending && BackgroundWorker.WorkerSupportsCancellation)
                 BackgroundWorker.CancelAsync();
 
             if (m_cancelAborts)

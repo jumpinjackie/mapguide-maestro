@@ -18,6 +18,9 @@
 // 
 #endregion
 
+using System;
+using System.Collections.Generic;
+
 namespace OSGeo.MapGuide.MaestroAPI 
 {
     
@@ -1538,24 +1541,251 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// <remarks/>
     [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
     public class LayerDefinition : LayerDefinitionType {
-        
-		public static readonly string SchemaName = "LayerDefinition-1.2.0.xsd";
+
+        public static readonly string SchemaName = "LayerDefinition-1.2.0.xsd";
+        public static readonly string SchemaName1_2 = "LayerDefinition-1.2.0.xsd";
 		public static readonly string SchemaName1_1 = "LayerDefinition-1.1.0.xsd";
 		public static readonly string SchemaName1_0 = "LayerDefinition-1.0.0.xsd";
+
+        /// <summary>
+        /// This is a map that defines what version the properties are introduce at
+        /// </summary>
+        private static readonly Dictionary<System.Type, Dictionary<Version, List<string>>> m_propertyMapping;
         
+        /// <summary>
+        /// Static initializer for setting the version specific stuff
+        /// </summary>
+        static LayerDefinition ()
+        {
+            m_propertyMapping = new Dictionary<Type,Dictionary<Version, List<string>>>();
+
+            m_propertyMapping.Add(typeof(SymbolInstance), new Dictionary<Version, List<string>>());
+            m_propertyMapping.Add(typeof(PointTypeStyleType), new Dictionary<Version, List<string>>());
+            m_propertyMapping.Add(typeof(LineTypeStyleType), new Dictionary<Version, List<string>>());
+            m_propertyMapping.Add(typeof(AreaTypeStyleType), new Dictionary<Version, List<string>>());
+            m_propertyMapping.Add(typeof(CompositeTypeStyle), new Dictionary<Version, List<string>>());
+
+            //Changes from 1.1 to 1.2
+            m_propertyMapping[typeof(SymbolInstance)].Add(new Version(1, 2), new List<string>());
+            m_propertyMapping[typeof(SymbolInstance)][new Version(1,2)].Add("RenderingPass");
+            m_propertyMapping[typeof(SymbolInstance)][new Version(1, 2)].Add("UsageContext");
+            m_propertyMapping[typeof(SymbolInstance)][new Version(1, 2)].Add("GeometryContext");
+            
+            //Changes from 1.2 to 1.3
+            m_propertyMapping[typeof(PointTypeStyleType)].Add(new Version(1, 3), new List<string>());
+            m_propertyMapping[typeof(PointTypeStyleType)][new Version(1, 3)].Add("ShowInLegend");
+
+            m_propertyMapping[typeof(LineTypeStyleType)].Add(new Version(1, 3), new List<string>());
+            m_propertyMapping[typeof(LineTypeStyleType)][new Version(1, 3)].Add("ShowInLegend");
+
+            m_propertyMapping[typeof(AreaTypeStyleType)].Add(new Version(1, 3), new List<string>());
+            m_propertyMapping[typeof(AreaTypeStyleType)][new Version(1, 3)].Add("ShowInLegend");
+
+            m_propertyMapping[typeof(CompositeTypeStyle)].Add(new Version(1, 3), new List<string>());
+            m_propertyMapping[typeof(CompositeTypeStyle)][new Version(1, 3)].Add("ShowInLegend");
+        }
+
+        public void ConvertLayerDefinitionToVersion(System.Version v)
+        {
+            if (v != new Version(1, 1, 0) && v != new Version(1, 2, 0) && v != new System.Version(1, 3, 0))
+                throw new Exception("Only LayerDefinition version 1.1 to 1.3 are supported");
+
+            ConversionCallbackHelper h = new ConversionCallbackHelper(this, v);
+            Utility.EnumerateObjects(this, new Utility.EnumerateObjectCallback(h.CallbackHandler));
+            this.version = v.ToString();
+        }
+
+        /// <summary>
+        /// This class handles the callbacks from the object enumeration, when converting versions
+        /// </summary>
+        private class ConversionCallbackHelper
+        {
+            private LayerDefinition m_layer;
+            private Version m_targetVersion;
+            private Version m_sourceVersion;
+
+            public ConversionCallbackHelper(LayerDefinition layer, Version targetVersion)
+            {
+                m_layer = layer;
+                m_targetVersion = targetVersion;
+                m_sourceVersion = new Version(layer.version);
+            }
+
+            public void CallbackHandler(object o)
+            {
+                if (o == null)
+                    return;
+
+                //If the registered property is not present in the requested version, move it to extended data
+                //If the registered property is present, move it from extended data, if it exist
+
+                if (LayerDefinition.m_propertyMapping.ContainsKey(o.GetType()))
+                    foreach (KeyValuePair<Version, List<string>> prop in LayerDefinition.m_propertyMapping[o.GetType()])
+                    {
+                        //The property does not exist in the desired version, move it into ExtendedData
+                        if (prop.Key > m_targetVersion && prop.Key < m_sourceVersion)
+                        {
+                            foreach (string propname in prop.Value)
+                            {
+                                object value;
+                                System.Reflection.PropertyInfo pi = o.GetType().GetProperty(propname);
+                                System.Reflection.PropertyInfo piSpecified = null;
+
+                                if (pi.PropertyType.IsPrimitive)
+                                {
+                                    piSpecified = o.GetType().GetProperty(prop.Value + "Specified");
+                                    if (piSpecified == null || piSpecified.PropertyType != typeof(bool))
+                                        value = pi.GetValue(o, null);
+                                    else if ((bool)piSpecified.GetValue(o, null)) //IsSpecified
+                                        value = pi.GetValue(o, null);
+                                    else
+                                        value = null;
+                                }
+                                else
+                                {
+                                    value = pi.GetValue(o, null);
+                                }
+
+                                System.ComponentModel.DefaultValueAttribute defva = null;
+                                //Skip the move if the value has the default value
+                                if (value != null)
+                                {
+                                    object[] dfa = pi.GetCustomAttributes(typeof(System.ComponentModel.DefaultValueAttribute), false);
+                                    if (dfa != null)
+                                        if (dfa.Length > 1)
+                                            throw new Exception("Invalid default value component assignment");
+                                        else if (dfa.Length == 1)
+                                        {
+                                            defva = (System.ComponentModel.DefaultValueAttribute)dfa[0];
+                                            if (defva.Value != null && defva.Value.Equals(value))
+                                            {
+                                                value = null;
+                                                break;
+                                            }
+                                        }
+                                }
+
+                                if (value != null)
+                                {
+                                    System.Reflection.PropertyInfo pix = o.GetType().GetProperty("ExtendedData1");
+                                    ExtendedDataType ext = pix.GetValue(o, null) as ExtendedDataType;
+                                    if (ext == null)
+                                    {
+                                        ext = new ExtendedDataType();
+                                        pix.SetValue(o, ext, null);
+                                    }
+
+                                    System.Xml.XmlDocument doc;
+                                    if (ext.Any == null || ext.Any.Length == 0)
+                                        doc = new System.Xml.XmlDocument();
+                                    else
+                                        doc = ext.Any[0].OwnerDocument;
+
+                                    System.Xml.XmlElement n = doc.CreateElement(propname);
+
+                                    if (pi.PropertyType.IsPrimitive || pi.PropertyType == typeof(string))
+                                    {
+                                        if (pi.PropertyType == typeof(bool))
+                                            n.InnerText = value.ToString().ToLower();
+                                        else
+                                            n.InnerText = Convert.ToString(value, System.Globalization.CultureInfo.InvariantCulture);
+                                    }
+                                    else
+                                    {
+                                        System.Xml.Serialization.XmlSerializer sr = new System.Xml.Serialization.XmlSerializer(pi.PropertyType);
+                                        using (System.IO.StringWriter sw = new System.IO.StringWriter())
+                                        {
+                                            sr.Serialize(sw, value);
+                                            n.InnerXml = sw.ToString();
+                                        }
+                                    }
+
+                                    if (ext.Any == null || ext.Any.Length == 0)
+                                        ext.Any = new System.Xml.XmlElement[] { n };
+                                    else
+                                    {
+                                        System.Xml.XmlElement[] tmp = new System.Xml.XmlElement[ext.Any.Length + 1];
+                                        Array.Copy(ext.Any, tmp, ext.Any.Length);
+                                        tmp[tmp.Length - 1] = n;
+                                        ext.Any = tmp;
+                                    }
+
+
+                                    //Remove the real value
+                                    if (piSpecified != null)
+                                        piSpecified.SetValue(o, false, null);
+                                    else if (!pi.PropertyType.IsPrimitive)
+                                        pi.SetValue(o, null, null);
+                                    else if (defva != null)
+                                        pi.SetValue(o, defva.Value, null);
+                                }
+                            }
+                        }
+                        //The property is introduced, move it from the ExtendedData into the property
+                        else if (prop.Key < m_targetVersion && prop.Key > m_sourceVersion)
+                        {
+                            System.Reflection.PropertyInfo pix = o.GetType().GetProperty("ExtendedData1");
+                            ExtendedDataType ext = pix.GetValue(o, null) as ExtendedDataType;
+                            if (ext != null && ext.Any != null && ext.Any.Length > 0)
+                                foreach (string propname in prop.Value)
+                                    foreach (System.Xml.XmlElement x in ext.Any)
+                                        if (x.Name == propname)
+                                        {
+                                            System.Reflection.PropertyInfo pi = o.GetType().GetProperty(propname);
+                                            if (pi.PropertyType.IsPrimitive || pi.PropertyType == typeof(string))
+                                            {
+                                                pi.SetValue(o, Convert.ChangeType(x.InnerXml, pi.PropertyType), null);
+
+                                                System.Reflection.PropertyInfo piSpecified = o.GetType().GetProperty(prop.Value + "Specified");
+                                                if (piSpecified != null)
+                                                    piSpecified.SetValue(o, true, null);
+                                            }
+                                            else
+                                            {
+                                                System.Xml.Serialization.XmlSerializer sr = new System.Xml.Serialization.XmlSerializer(pi.PropertyType);
+                                                using (System.IO.StringReader rd = new System.IO.StringReader(x.InnerXml))
+                                                    pi.SetValue(o, sr.Deserialize(rd), null);
+                                            }
+
+                                            if (ext.Any.Length == 1)
+                                            {
+                                                //We set the array to empty, and the ExtendedData1 to null,
+                                                // which allows the itteration to continue on the local copy
+                                                ext.Any = new System.Xml.XmlElement[0];
+                                                pix.SetValue(o, null, null);
+                                            }
+                                            else
+                                            {
+                                                List<System.Xml.XmlElement> items = new List<System.Xml.XmlElement>(ext.Any);
+                                                items.Remove(x);
+                                                ext.Any = items.ToArray();
+                                            }
+
+                                            //Prevent further itteration on modified array
+                                            break;
+
+                                        }
+                        }
+                    }
+            }
+        }
+    
+
 		[System.Xml.Serialization.XmlAttribute("noNamespaceSchemaLocation", Namespace="http://www.w3.org/2001/XMLSchema-instance")]
 		public string XsdSchema
 		{
 			get 
-			{ 
+			{
+                if (m_version == "1.3.0")
+                    return SchemaName;
 				if (m_version == "1.2.0") 
-					return SchemaName;
+					return SchemaName1_2;
 				else if (m_version == "1.1.0") 
 					return SchemaName1_1; 
 				else
 					return SchemaName1_0;
 			}
-			set { if (value != SchemaName && value != SchemaName1_1 && value != SchemaName1_0) throw new System.Exception("Cannot set the schema name"); }
+			set { if (value != SchemaName && value != SchemaName1_2 && value != SchemaName1_1 && value != SchemaName1_0) throw new System.Exception("Cannot set the schema name"); }
 		}
 
 		private string m_resourceId;
@@ -1566,7 +1796,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			set { m_resourceId = value; } 
 		}
 		
-		private string m_version = "1.2.0";
+		private string m_version = "1.3.0";
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -1574,7 +1804,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public string version {
             get {
 				if (this.m_version == null)
-					m_version = "1.2.0";
+					m_version = "1.3.0";
 
                 return this.m_version;
             }
@@ -2064,6 +2294,8 @@ namespace OSGeo.MapGuide.MaestroAPI
     public class CompositeTypeStyle {
         
         private CompositeRuleCollection m_compositeRule;
+
+        private bool m_showInLegend;
         
         private ExtendedDataType m_extendedData1;
         
@@ -2077,7 +2309,15 @@ namespace OSGeo.MapGuide.MaestroAPI
                 this.m_compositeRule = value;
             }
         }
-        
+
+        /// <remarks/>
+        [System.ComponentModel.DefaultValue(true)]
+        public bool ShowInLegend
+        {
+            get { return this.m_showInLegend; }
+            set { this.m_showInLegend = value; }
+        }
+
         /// <remarks/>
         public ExtendedDataType ExtendedData1 {
             get {
@@ -2551,6 +2791,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         private bool m_displayAsText;
         
         private bool m_allowOverpost;
+
+        private bool m_showInLegend;
         
         private PointRuleTypeCollection m_pointRule;
         
@@ -2565,7 +2807,15 @@ namespace OSGeo.MapGuide.MaestroAPI
                 this.m_displayAsText = value;
             }
         }
-        
+
+        /// <remarks/>
+        [System.ComponentModel.DefaultValue(true)]
+        public bool ShowInLegend
+        {
+            get { return this.m_showInLegend; }
+            set { this.m_showInLegend = value; }
+        }
+
         /// <remarks/>
         public bool AllowOverpost {
             get {
@@ -3636,6 +3886,8 @@ namespace OSGeo.MapGuide.MaestroAPI
     public class LineTypeStyleType {
         
         private LineRuleTypeCollection m_lineRule;
+
+        private bool m_showInLegend;
         
         private ExtendedDataType m_extendedData1;
         
@@ -3649,6 +3901,15 @@ namespace OSGeo.MapGuide.MaestroAPI
                 this.m_lineRule = value;
             }
         }
+
+        /// <remarks/>
+        [System.ComponentModel.DefaultValue(true)]
+        public bool ShowInLegend
+        {
+            get { return this.m_showInLegend; }
+            set { this.m_showInLegend = value; }
+        }
+
         
         /// <remarks/>
         public ExtendedDataType ExtendedData1 {
@@ -3730,6 +3991,8 @@ namespace OSGeo.MapGuide.MaestroAPI
     public class AreaTypeStyleType {
         
         private AreaRuleTypeCollection m_areaRule;
+
+        private bool m_showInLegend;
         
         private ExtendedDataType m_extendedData1;
         
@@ -3742,6 +4005,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             set {
                 this.m_areaRule = value;
             }
+        }
+
+        /// <remarks/>
+        [System.ComponentModel.DefaultValue(true)]
+        public bool ShowInLegend
+        {
+            get { return this.m_showInLegend; }
+            set { this.m_showInLegend = value; }
         }
         
         /// <remarks/>

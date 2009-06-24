@@ -373,6 +373,11 @@ namespace OSGeo.MapGuide.MgCooker
         private const double INCH_TO_METER = 0.0254;
 
         /// <summary>
+        /// Gets the list of groups
+        /// </summary>
+        public string[] Groups { get { return m_groups; } }
+
+        /// <summary>
         /// Constructs a new map to be processed
         /// </summary>
         /// <param name="parent">The parent entry</param>
@@ -395,6 +400,15 @@ namespace OSGeo.MapGuide.MgCooker
 
         public void CalculateDimensions()
         {
+            int[] tmp = new int[this.Map.BaseMapDefinition.FiniteDisplayScale.Count];
+            for (int i = 0; i < tmp.Length; i++)
+                tmp[i] = i;
+
+            SetScales(tmp);
+        }
+
+        public void CalculateDimensionsInternal()
+        {
             if (m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.Count == 0)
             {
                 m_scaleindexmap = new int[0];
@@ -407,7 +421,7 @@ namespace OSGeo.MapGuide.MgCooker
 
             m_dimensions = new long[this.Resolutions][];
             m_scaleindexmap = new int[m_dimensions.Length];
- 
+            
             double width_in_meters = Math.Abs(m_parent.Config.MetersPerUnit * (extents.MaxX - extents.MinX));
             double height_in_meters = Math.Abs(m_parent.Config.MetersPerUnit * (extents.MaxY - extents.MinY));
 
@@ -473,7 +487,7 @@ namespace OSGeo.MapGuide.MgCooker
                 if (!keys.Contains(i))
                     m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.RemoveAt(i);
 
-            CalculateDimensions();
+            CalculateDimensionsInternal();
 
             keys.Reverse();
 
@@ -560,6 +574,8 @@ namespace OSGeo.MapGuide.MgCooker
                 }
 
                 settings.RunAndWait();
+                if (settings.TileSet.Count != 0)
+                    throw new Exception("One or more threads chrashed, and the tile set was only partially created");
             }
 
             m_parent.InvokeFinishRendering(this, group, scaleindex);
@@ -655,5 +671,8 @@ namespace OSGeo.MapGuide.MgCooker
             get { return m_threadCount; }
             set { m_threadCount = Math.Max(1, value); }
         }
+
+        public RenderMethodDelegate RenderMethod;
+        public delegate void RenderMethodDelegate(string map, string group, int col, int row, int scale);
     }
 }
