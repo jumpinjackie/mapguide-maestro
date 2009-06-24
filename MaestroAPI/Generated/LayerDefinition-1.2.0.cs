@@ -2295,7 +2295,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         
         private CompositeRuleCollection m_compositeRule;
 
-        private bool m_showInLegend;
+        private bool m_showInLegend = true;
         
         private ExtendedDataType m_extendedData1;
         
@@ -2792,7 +2792,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         
         private bool m_allowOverpost;
 
-        private bool m_showInLegend;
+        private bool m_showInLegend = true;
         
         private PointRuleTypeCollection m_pointRule;
         
@@ -3887,7 +3887,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         
         private LineRuleTypeCollection m_lineRule;
 
-        private bool m_showInLegend;
+        private bool m_showInLegend = true;
         
         private ExtendedDataType m_extendedData1;
         
@@ -3992,7 +3992,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         
         private AreaRuleTypeCollection m_areaRule;
 
-        private bool m_showInLegend;
+        private bool m_showInLegend = true;
         
         private ExtendedDataType m_extendedData1;
         
