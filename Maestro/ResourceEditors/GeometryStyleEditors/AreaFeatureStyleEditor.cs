@@ -484,7 +484,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			if (m_inUpdate)
 				return;
 
-			m_item.Fill.BackgroundColor = Color.FromArgb(Transparency.Maximum - Transparency.Value, fillStyleEditor.backgroundColor.CurrentColor);
+            int transparency;
+
+            if (fillStyleEditor.backgroundColor.CurrentColor.A == 0)
+                transparency = 0;
+            else
+                transparency = Transparency.Maximum - Transparency.Value;
+
+			m_item.Fill.BackgroundColor = Color.FromArgb(transparency, fillStyleEditor.backgroundColor.CurrentColor);
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());

@@ -91,13 +91,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			}
 			set
 			{
-				if (Array.IndexOf(KnownColors, value) > 0)
-					this.SelectedItem = value;
-				else
-				{
-					m_currentColor.Color = value;
-					this.SelectedItem = m_currentColor;
-				}
+                if (Array.IndexOf(KnownColors, value) > 0)
+                    this.SelectedItem = value;
+                else if (value == SpecialCell.Transparent.Color && this.AllowTransparent)
+                    this.SelectedItem = SpecialCell.Transparent;
+                else
+                {
+                    m_currentColor.Color = value;
+                    this.SelectedItem = m_currentColor;
+                }
 			}
 	
 		}
@@ -194,6 +196,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			public SpecialCell(CellTypes celltype)
 			{
 				m_cellType = celltype;
+                if (celltype == CellTypes.Transparent)
+                    m_color = System.Drawing.Color.Transparent;
 			}
 
 			public Color Color
