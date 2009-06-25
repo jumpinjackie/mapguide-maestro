@@ -1578,7 +1578,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			if (m_isUpdating)
 				return;
 			m_layout.InformationPane.LegendVisible = LayerControlCheck.Checked;
-			m_layout.InformationPane.Visible = m_layout.InformationPane.LegendVisible && m_layout.InformationPane.PropertiesVisible;
+			m_layout.InformationPane.Visible = m_layout.InformationPane.LegendVisible || m_layout.InformationPane.PropertiesVisible;
+
+            LeftPaneWidth.Enabled = m_layout.InformationPane.LegendVisible || m_layout.InformationPane.PropertiesVisible;
 			m_editor.HasChanged();
 		}
 
@@ -1587,8 +1589,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			if (m_isUpdating)
 				return;
 			m_layout.InformationPane.PropertiesVisible = ItemPropertiesCheck.Checked;
-			m_layout.InformationPane.Visible = m_layout.InformationPane.LegendVisible && m_layout.InformationPane.PropertiesVisible;
-		}
+			m_layout.InformationPane.Visible = m_layout.InformationPane.LegendVisible || m_layout.InformationPane.PropertiesVisible;
+        
+            LeftPaneWidth.Enabled = m_layout.InformationPane.LegendVisible || m_layout.InformationPane.PropertiesVisible;
+            m_editor.HasChanged();
+        }
 
 		private void LeftPaneWidth_TextChanged(object sender, System.EventArgs e)
 		{
