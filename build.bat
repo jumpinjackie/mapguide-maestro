@@ -133,13 +133,6 @@ pushd %MAESTRO_DEV%
 popd
 goto quit
 
-:clean
-echo [Clean] MapGuide Maestro
-pushd %MAESTRO_DEV%
-%MSBUILD_CLEAN% OSGeo.MapGuide.Maestro.sln
-popd
-goto quit
-
 :update
 echo [update] MapGuide Maestro
 pushd %MAESTRO_DEV%

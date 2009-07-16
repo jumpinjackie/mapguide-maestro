@@ -574,7 +574,7 @@ namespace OSGeo.MapGuide.MgCooker
                 }
 
                 settings.RunAndWait();
-                if (settings.TileSet.Count != 0)
+                if (settings.TileSet.Count != 0 && !m_parent.Cancel)
                     throw new Exception("One or more threads chrashed, and the tile set was only partially created");
             }
 

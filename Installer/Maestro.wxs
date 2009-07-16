@@ -40,7 +40,9 @@
       <Directory Id="ProgramMenuFolder" Name="Programs"/>
       <Directory Id="DesktopFolder" Name="Desktop"/>
       <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLLOCATION" Name="MapGuide Maestro">
+		<Directory Id="OSGEOFOLDER" Name="OSGeo">
+			<Directory Id="INSTALLLOCATION" Name="MapGuide Maestro">
+			</Directory>
         </Directory>
       </Directory>
     </Directory>
