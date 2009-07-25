@@ -145,36 +145,77 @@ namespace OSGeo.MapGuide.MgCooker
 
         private void button1_Click(object sender, EventArgs e)
         {
-            BatchSettings bx = new BatchSettings(m_connection);
+            MaestroAPI.ServerConnectionI con = null;
 
-            if (LimitTileset.Checked)
+            if (UseNativeAPI.Checked)
             {
-                if (MaxRowLimit.Value > 0)
-                    bx.LimitRows((int)MaxRowLimit.Value);
-                if (MaxColLimit.Value > 0)
-                    bx.LimitCols((int)MaxColLimit.Value);
+                string webconfig = System.IO.Path.Combine(Application.StartupPath, "webconfig.ini");
+                if (!System.IO.File.Exists(webconfig))
+                {
+                    MessageBox.Show(this, string.Format("The file {0} was not found, unable to use the Native connection method.\r\nEither copy in the file, or do not use the Native connection method", webconfig), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                try
+                {
+                    con = new MaestroAPI.LocalNativeConnection(webconfig, Username.Text, Password.Text, null);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, string.Format("Unable to connect: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else
+            {
+                try
+                {
+                    con = new MaestroAPI.HttpServerConnection(new Uri(MapAgent.Text), Username.Text, Password.Text, null, true);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, string.Format("Unable to connect: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
 
-            if (UseOfficialMethod.Checked)
+            try
             {
-                bx.Config.MetersPerUnit = (double)MetersPerUnit.Value;
-                bx.Config.UseOfficialMethod = true;
+                BatchSettings bx = new BatchSettings(con);
+
+                if (LimitTileset.Checked)
+                {
+                    if (MaxRowLimit.Value > 0)
+                        bx.LimitRows((int)MaxRowLimit.Value);
+                    if (MaxColLimit.Value > 0)
+                        bx.LimitCols((int)MaxColLimit.Value);
+                }
+
+                if (UseOfficialMethod.Checked)
+                {
+                    bx.Config.MetersPerUnit = (double)MetersPerUnit.Value;
+                    bx.Config.UseOfficialMethod = true;
+                }
+
+                bx.Config.ThreadCount = (int)ThreadCount.Value;
+                bx.Config.RandomizeTileSequence = RandomTileOrder.Checked;
+
+                foreach (Config c in ReadTree())
+                {
+                    BatchMap bm = new BatchMap(bx, c.MapDefinition);
+                    bm.SetGroups(new string[] { c.Group });
+                    bm.SetScales(c.ScaleIndexes);
+                    bx.Maps.Add(bm);
+                }
+
+                Progress p = new Progress(bx);
+                if (p.ShowDialog(this) != DialogResult.Cancel)
+                    this.Close();
             }
-
-            bx.Config.ThreadCount = (int)ThreadCount.Value;
-            bx.Config.RandomizeTileSequence = RandomTileOrder.Checked;
-
-            foreach (Config c in ReadTree())
+            catch (Exception ex)
             {
-                BatchMap bm = new BatchMap(bx, c.MapDefinition);
-                bm.SetGroups(new string[] { c.Group });
-                bm.SetScales(c.ScaleIndexes);
-                bx.Maps.Add(bm);
+                MessageBox.Show(this, string.Format("An internal error occured: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            Progress p = new Progress(bx);
-            if (p.ShowDialog(this) != DialogResult.Cancel)
-                this.Close();
         }
 
         private List<Config> ReadTree()

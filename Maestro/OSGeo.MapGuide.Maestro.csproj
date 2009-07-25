@@ -1,7 +1,7 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F3BADE4F-2581-4B65-9E15-412C294DB973}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -23,7 +23,7 @@
     </StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
-    <OldToolsVersion>0.0</OldToolsVersion>
+    <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <PublishUrl>http://localhost/Maestro/</PublishUrl>
@@ -41,6 +41,7 @@
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -116,6 +117,10 @@
     <ProjectReference Include="..\MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Project>{290B027E-3649-4A60-A9BF-0544831435E2}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MaestroAPI\PackageBuilder\OSGeo.MapGuide.MaestroAPI.PackageBuilder.csproj">
+      <Project>{290C057E-2679-4B60-C9DF-0675831234E2}</Project>
+      <Name>OSGeo.MapGuide.MaestroAPI.PackageBuilder</Name>
     </ProjectReference>
     <ProjectReference Include="FusionEditor\FusionEditor.csproj">
       <Name>FusionEditor</Name>
@@ -210,21 +215,12 @@
     <Compile Include="PackageManager\EditResourceDataEntry.Designer.cs">
       <DependentUpon>EditResourceDataEntry.cs</DependentUpon>
     </Compile>
-    <Compile Include="PackageManager\PackageBuilder.cs" />
     <Compile Include="PackageManager\PackageEditor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PackageManager\PackageEditor.Designer.cs">
       <DependentUpon>PackageEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="PackageManager\PackageProgress.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PackageManager\PackageProgress.Designer.cs">
-      <DependentUpon>PackageProgress.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PackageManager\PackageRebuilder.cs" />
-    <Compile Include="PackageManager\PackageUploader.cs" />
     <Compile Include="PreferedSite.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -324,10 +320,6 @@
     <EmbeddedResource Include="PackageManager\PackageEditor.resx">
       <SubType>Designer</SubType>
       <DependentUpon>PackageEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PackageManager\PackageProgress.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>PackageProgress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Profiling.resx">
       <SubType>Designer</SubType>

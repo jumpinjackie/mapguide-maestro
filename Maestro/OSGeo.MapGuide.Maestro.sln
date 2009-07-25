@@ -1,5 +1,5 @@
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C# Express 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.Maestro", "OSGeo.MapGuide.Maestro.csproj", "{F3BADE4F-2581-4B65-9E15-412C294DB973}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FusionEditor", "FusionEditor\FusionEditor.csproj", "{A47D6F9A-F58D-4A2E-8E88-09CD833A160E}"
@@ -20,11 +20,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestroEditorInterface", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.Maestro.ResourceBrowser", "ResourceBrowser\OSGeo.MapGuide.Maestro.ResourceBrowser.csproj", "{FD40B520-CC1B-41C7-B89B-693E0204EBCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.PackageBuilder", "..\MaestroAPI\PackageBuilder\OSGeo.MapGuide.MaestroAPI.PackageBuilder.csproj", "{290C057E-2679-4B60-C9DF-0675831234E2}"
+EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -70,8 +68,16 @@ Global
 		{FD40B520-CC1B-41C7-B89B-693E0204EBCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD40B520-CC1B-41C7-B89B-693E0204EBCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD40B520-CC1B-41C7-B89B-693E0204EBCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{290C057E-2679-4B60-C9DF-0675831234E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{290C057E-2679-4B60-C9DF-0675831234E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{290C057E-2679-4B60-C9DF-0675831234E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{290C057E-2679-4B60-C9DF-0675831234E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal

@@ -33,8 +33,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.CancelBtn = new System.Windows.Forms.Button();
             this.OKBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.LoaderGroup = new System.Windows.Forms.GroupBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.MainGroup = new System.Windows.Forms.SplitContainer();
             this.ResourceTree = new System.Windows.Forms.TreeView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -63,7 +61,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.SavePackageDialog = new System.Windows.Forms.SaveFileDialog();
             this.ButtonPanel.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.LoaderGroup.SuspendLayout();
             this.MainGroup.Panel1.SuspendLayout();
             this.MainGroup.Panel2.SuspendLayout();
             this.MainGroup.SuspendLayout();
@@ -107,35 +104,12 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.LoaderGroup);
             this.panel2.Controls.Add(this.MainGroup);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(450, 344);
             this.panel2.TabIndex = 1;
-            // 
-            // LoaderGroup
-            // 
-            this.LoaderGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoaderGroup.Controls.Add(this.progressBar1);
-            this.LoaderGroup.Location = new System.Drawing.Point(8, 128);
-            this.LoaderGroup.Name = "LoaderGroup";
-            this.LoaderGroup.Size = new System.Drawing.Size(432, 56);
-            this.LoaderGroup.TabIndex = 1;
-            this.LoaderGroup.TabStop = false;
-            this.LoaderGroup.Text = "Reading package content, please wait...";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(16, 24);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(400, 24);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 0;
             // 
             // MainGroup
             // 
@@ -161,7 +135,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.MainGroup.Size = new System.Drawing.Size(450, 344);
             this.MainGroup.SplitterDistance = 168;
             this.MainGroup.TabIndex = 0;
-            this.MainGroup.Visible = false;
             // 
             // ResourceTree
             // 
@@ -410,7 +383,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.Load += new System.EventHandler(this.PackageEditor_Load);
             this.ButtonPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.LoaderGroup.ResumeLayout(false);
             this.MainGroup.Panel1.ResumeLayout(false);
             this.MainGroup.Panel1.PerformLayout();
             this.MainGroup.Panel2.ResumeLayout(false);
@@ -437,8 +409,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton AddFolderButton;
         private System.Windows.Forms.ToolStripButton DeleteResourceButton;
-        private System.Windows.Forms.GroupBox LoaderGroup;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox ContentFilePath;
         private System.Windows.Forms.TextBox HeaderFilepath;

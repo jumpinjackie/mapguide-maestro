@@ -1,4 +1,4 @@
-namespace OSGeo.MapGuide.Maestro.PackageManager
+namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
 {
     partial class PackageProgress
     {
@@ -35,6 +35,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.label3 = new System.Windows.Forms.Label();
             this.OperationLabel = new System.Windows.Forms.Label();
             this.CancelBtn = new System.Windows.Forms.Button();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // CurrentProgress
@@ -92,19 +93,24 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             // CancelBtn
             // 
             this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelBtn.Location = new System.Drawing.Point(184, 112);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(112, 24);
             this.CancelBtn.TabIndex = 6;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerSupportsCancellation = true;
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
             // PackageProgress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CancelBtn;
             this.ClientSize = new System.Drawing.Size(489, 146);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.OperationLabel);
@@ -134,5 +140,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         private System.Windows.Forms.Label OperationLabel;
         private System.Windows.Forms.Button CancelBtn;
         public System.Windows.Forms.ProgressBar CurrentProgress;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }

@@ -369,7 +369,7 @@ namespace OSGeo.MapGuide.Maestro
 				{
 					if (ex.GetType() == typeof(System.Reflection.TargetInvocationException))
 						ex = ex.InnerException;
-					MessageBox.Show(this, string.Format(m_globalizor.Translate("An error occured while performing the operation: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show(string.Format(m_globalizor.Translate("An error occured while performing the operation: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			this.Invoke(new System.Threading.ThreadStart(CloseDialog));

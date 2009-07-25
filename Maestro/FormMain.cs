@@ -1578,6 +1578,9 @@ namespace OSGeo.MapGuide.Maestro
 				if (target == null)
 					return false;
 
+                if (source == target)
+                    return false;
+
 				string targetpath;
 				if (target.Tag == null)
 					targetpath = "Library://";
@@ -2329,8 +2332,15 @@ namespace OSGeo.MapGuide.Maestro
 
         private void restorePackageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (PackageManager.PackageUploader.UploadPackage(this, m_connection) == DialogResult.OK)
-                RebuildDocumentTree();
+            try
+            {
+                if (MaestroAPI.PackageBuilder.PackageProgress.UploadPackage(this, m_connection) == DialogResult.OK)
+                    RebuildDocumentTree();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(this, string.Format("Failed to restore package: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void modifyPackageToolStripMenuItem_Click(object sender, EventArgs e)

@@ -25,6 +25,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.PackageBuilder;
 
 namespace OSGeo.MapGuide.Maestro.PackageManager
 {
@@ -78,47 +79,15 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
             try
             {
-                ResourcePackageManifest manifest;
-                using(ICSharpCode.SharpZipLib.Zip.ZipFile zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(m_filename))
+                m_resources = PackageProgress.ListPackageContents(this, m_owner.CurrentConnection, m_filename);
+                if (m_resources == null)
                 {
-                    int index = PackageRebuilder.FindZipEntry(zipfile, "MgResourcePackageManifest.xml");
-                    if (index < 0)
-                        throw new Exception(m_globalizor.Translate("Failed to locate file MgResourcePackageManifest.xml in zip file. Most likely the file is not a MapGuide package."));
-
-                     manifest = m_owner.CurrentConnection.DeserializeObject<ResourcePackageManifest>(zipfile.GetInputStream(index));
-                }
-                //TODO: Much of this assumes that the package is correctly constructed, ea.: no SETRESOURCEDATA, before a SETRESOURCE and so on.
-                foreach (ResourcePackageManifestOperationsOperation op in manifest.Operations.Operation)
-                {
-                    if (op.Name.ToLower().Equals("setresource"))
-                    {
-                        string id = op.Parameters.Parameter["RESOURCEID"].Value;
-                        string header;
-                        if (op.Parameters.Parameter["HEADER"] != null)
-                            header = op.Parameters.Parameter["HEADER"].Value;
-                        else
-                            header = null;
-                        string content = op.Parameters.Parameter["CONTENT"] == null ? null : op.Parameters.Parameter["CONTENT"].Value;
-
-                        m_resources.Add(id, new ResourceItem(id, header, content));
-                    }
-                    else if (op.Name.ToLower().Equals("setresourcedata"))
-                    {
-                        string id = op.Parameters.Parameter["RESOURCEID"].Value;
-                        ResourceItem ri = m_resources[id];
-                        string name = op.Parameters.Parameter["DATANAME"].Value;
-                        string file = op.Parameters.Parameter["DATA"].Value;
-                        string contentType = op.Parameters.Parameter["DATA"].ContentType;
-                        string dataType = op.Parameters.Parameter["DATATYPE"].Value;
-
-                        ri.Items.Add(new ResourceDataItem(name, contentType, file, dataType));
-                    }
-                    //TODO: What to do with "DELETERESOURCE" ?
-                    this.Update();
+                    this.DialogResult = DialogResult.Cancel;
+                    this.Close();
+                    return;
                 }
 
                 RebuildTree();
-                
             }
             catch (Exception ex)
             {
@@ -128,8 +97,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                 return;
             }
 
-            LoaderGroup.Visible = false;
-            MainGroup.Visible = true;
             OKBtn.Enabled = true;
         }
 
@@ -206,7 +173,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         private void RefreshFileList()
         {
             ResourceDataFileList.Items.Clear();
-            foreach(ResourceDataItem rdi in ((ResourceItem)ResourceTree.SelectedNode.Tag).Items)
+            foreach (ResourceDataItem rdi in ((ResourceItem)ResourceTree.SelectedNode.Tag).Items)
                 if (rdi.EntryType != EntryTypeEnum.Deleted)
                 {
                     ResourceDataFileList.Items.Add(new ListViewItem(new string[] {
@@ -255,7 +222,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                 {
                     using(ICSharpCode.SharpZipLib.Zip.ZipFile zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(m_filename))
                     {
-                        int index = PackageRebuilder.FindZipEntry(zipfile, (ResourceDataFileList.SelectedItems[0].Tag as ResourceDataItem).Filename);
+                        int index = FindZipEntry(zipfile, (ResourceDataFileList.SelectedItems[0].Tag as ResourceDataItem).Filename);
                         if (index >= 0)
                             using (System.IO.FileStream fs = new System.IO.FileStream(SaveResourceDataFile.FileName, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
                                 Utility.CopyStream(zipfile.GetInputStream(index), fs);
@@ -452,11 +419,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             if (SavePackageDialog.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            LoaderGroup.Text = "Rebuilding package...";
-            LoaderGroup.Visible = true;
-            MainGroup.Visible = false;
-            ButtonPanel.Enabled = false;
-
             //Preparation: Update all resources with the correct path, and build a list with them
             List<ResourceItem> items = new List<ResourceItem>();
 
@@ -491,27 +453,32 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                 ResourceTree.Nodes[0].Text = "Library://";
             }
 
-            PackageRebuilder rb = new PackageRebuilder(m_owner.CurrentConnection, m_filename, items, SavePackageDialog.FileName);
-
-            while (!rb.IsComplete)
+            try
             {
-                System.Threading.Thread.Sleep(100);
-                Application.DoEvents();
+                if (PackageProgress.RebuildPackage(this, m_owner.CurrentConnection, m_filename, items, SavePackageDialog.FileName) != DialogResult.OK)
+                    return;
             }
-
-            LoaderGroup.Visible = false;
-            MainGroup.Visible = true;
-            ButtonPanel.Enabled = true;
-
-            if (rb.Result != null)
+            catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format(m_globalizor.Translate("An error occured while building package: {0}"), rb.Result.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(m_globalizor.Translate("An error occured while building package: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+            finally
+            {
             }
 
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
+        private int FindZipEntry(ICSharpCode.SharpZipLib.Zip.ZipFile file, string path)
+        {
+            string p = path.Replace('\\', '/');
+            foreach (ICSharpCode.SharpZipLib.Zip.ZipEntry ze in file)
+                if (ze.Name.Replace('\\', '/').Equals(p))
+                    return (int)ze.ZipFileIndex;
+
+            return -1;
+        }
     }
 }

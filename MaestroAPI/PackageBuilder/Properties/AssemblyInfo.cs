@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MgCookerCommandline")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("PackageBuilder")]
+[assembly: AssemblyDescription("Library to assist with building MapGuide Packages")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HexaD")]
-[assembly: AssemblyProduct("MgCookerCommandline")]
-[assembly: AssemblyCopyright("Copyright © HexaD A/S 2008")]
+[assembly: AssemblyProduct("OSGeo.MapGuide.MaestroAPI.PackageBuilder")]
+[assembly: AssemblyCopyright("(c) HexaD 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("dbc8defe-b2fa-4651-be11-18d135b57f49")]
+[assembly: Guid("81272808-e696-4c51-8340-4436c9b7eb14")]
 
 // Version information for an assembly consists of the following four values:
 //

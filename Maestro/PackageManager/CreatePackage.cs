@@ -129,9 +129,17 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                     return;
 
 
-
-            PackageBuilder pkb = new PackageBuilder(this, ResourcePath.Text, PackageFilename.Text, restorePath, extensions.ToArray(), RemoveTargeOnRestore.Checked, m_editor.CurrentConnection);
-            this.DialogResult = pkb.Start();
+            try
+            {
+                if (OSGeo.MapGuide.MaestroAPI.PackageBuilder.PackageProgress.CreatePackage(this, m_editor.CurrentConnection, ResourcePath.Text, PackageFilename.Text, extensions, RemoveTargeOnRestore.Checked, restorePath) != DialogResult.OK)
+                    return;
+            }
+            catch (Exception ex)
+            {
+                string s = ex.Message;
+                System.Windows.Forms.MessageBox.Show(string.Format(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageProgress", System.Reflection.Assembly.GetExecutingAssembly(), "Failed to create package, error message: {0}"), ex.Message), System.Windows.Forms.Application.ProductName, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return;
+            }
             this.Close();
         }
 
