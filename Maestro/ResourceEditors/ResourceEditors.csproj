@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{E324888B-4A05-46A7-8FB4-54452145128F}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -156,6 +156,15 @@
     <Compile Include="FeatureSourceEditors\ArcSDE\FeatureSourceEditorArcSDE.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="FeatureSourceEditors\Filebased\FilebasedFeatureSourceEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\Filebased\Managed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\Filebased\Unmanaged.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="FeatureSourceEditors\Gdal\AddFilenames.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,28 +300,10 @@
     <Compile Include="FeatureSourceEditors\SDF\FeatureSourceEditorSDF.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FeatureSourceEditors\SDF\Managed.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FeatureSourceEditors\SDF\Unmanaged.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="FeatureSourceEditors\SHP\FeatureSourceEditorSHP.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FeatureSourceEditors\SHP\Managed.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FeatureSourceEditors\SHP\Unmanaged.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="FeatureSourceEditors\SQLite\FeatureSourceEditorSQLite.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FeatureSourceEditors\SQLite\Managed.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FeatureSourceEditors\SQLite\Unmanaged.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FeatureSourceEditors\WFS\FeatureSourceEditorWFS.cs">
@@ -704,30 +695,6 @@
       <DependentUpon>FeatureSourceEditorPostGIS.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FeatureSourceEditors\SDF\FeatureSourceEditorSDF.resx">
-      <DependentUpon>FeatureSourceEditorSDF.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FeatureSourceEditors\SDF\Managed.resx">
-      <DependentUpon>Managed.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FeatureSourceEditors\SDF\Unmanaged.resx">
-      <DependentUpon>Unmanaged.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FeatureSourceEditors\SHP\FeatureSourceEditorSHP.resx">
-      <DependentUpon>FeatureSourceEditorSHP.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FeatureSourceEditors\SHP\Managed.resx">
-      <DependentUpon>Managed.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FeatureSourceEditors\SHP\Unmanaged.resx">
-      <DependentUpon>Unmanaged.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="FeatureSourceEditors\WFS\FeatureSourceEditorWFS.resx">
       <DependentUpon>FeatureSourceEditorWFS.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -969,6 +936,13 @@
     <EmbeddedResource Include="Preview layout.WebLayout" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FeatureSourceEditors\Filebased\FilebaseFeatureSourceEditor.resx" />
+    <EmbeddedResource Include="FeatureSourceEditors\Filebased\Managed.resx">
+      <DependentUpon>Managed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\Filebased\Unmanaged.resx">
+      <DependentUpon>Unmanaged.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FeatureSourceEditors\King.Informix\FeatureSourceEditorKingInformix.resx">
       <DependentUpon>FeatureSourceEditorKingInformix.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -982,18 +956,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSourceEditors\King.KML\Unmanaged.resx">
-      <DependentUpon>Unmanaged.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FeatureSourceEditors\SQLite\FeatureSourceEditorSQLite.resx">
-      <DependentUpon>FeatureSourceEditorSQLite.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FeatureSourceEditors\SQLite\Managed.resx">
-      <DependentUpon>Managed.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FeatureSourceEditors\SQLite\Unmanaged.resx">
       <DependentUpon>Unmanaged.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>

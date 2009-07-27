@@ -25,7 +25,7 @@ using System.Data;
 using System.Windows.Forms;
 using OSGeo.MapGuide.Maestro;
 
-namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.SQLite
+namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Filebased
 {
 	/// <summary>
 	/// Summary description for Managed.
@@ -36,17 +36,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.SQLite
 		private ResourceEditors.EditorInterface m_editor = null;
 		private OSGeo.MapGuide.MaestroAPI.FeatureSource m_item = null;
 		private ResourceEditors.FeatureSourceEditors.ManagedFileControl managedFileControl;
+        private string m_resourceName;
 
 		public Managed()
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
 			managedFileControl.NewDefaultSelected += new ManagedFileControl.NewDefaultSelectedDelegate(NewDefaultSelected);
-
-			System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
-			nv.Add(".sqlite;*.sqlite3", "SQLite Files (*.sqlite;*.sqlite3)");
-			nv.Add("", "All files (*.*)");
-			managedFileControl.FileTypes = nv;
 		}
 
 		/// <summary> 
@@ -95,21 +91,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.SQLite
 		}
 		#endregion
 
-		public void SetItem(ResourceEditors.EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource item)
+        public void SetItem(ResourceEditors.EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource item, string resourceName, System.Collections.Specialized.NameValueCollection fileTypes)
 		{
 			m_item = item;
 			m_editor = editor;
+            m_resourceName = resourceName;
+            managedFileControl.FileTypes = fileTypes;
 			managedFileControl.SetItem(editor, item.ResourceId, new ManagedFileControl.IsDefaultItemDelegate(IsDefaultItem));
 		}
 
 		private bool IsDefaultItem(string filename)
 		{
-			return (m_item.Parameter != null && m_item.Parameter["File"] != null && m_item.Parameter["File"] == "%MG_DATA_FILE_PATH%" + filename);
+			return (m_item.Parameter != null && m_item.Parameter[m_resourceName] != null && m_item.Parameter[m_resourceName] == "%MG_DATA_FILE_PATH%" + filename);
 		}
 
 		private void NewDefaultSelected(string filename)
 		{
-			m_item.Parameter["File"] = "%MG_DATA_FILE_PATH%" + filename;
+			m_item.Parameter[m_resourceName] = "%MG_DATA_FILE_PATH%" + filename;
 		}
 
 		public void UpdateDisplay()

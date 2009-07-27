@@ -25,7 +25,7 @@ using System.Data;
 using System.Windows.Forms;
 using OSGeo.MapGuide.Maestro;
 
-namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.SDF
+namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Filebased
 {
 	/// <summary>
 	/// Summary description for Unmanaged.
@@ -43,6 +43,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.SDF
 		private ResourceEditors.EditorInterface m_editor = null;
 		private OSGeo.MapGuide.MaestroAPI.FeatureSource m_item = null;
 		private bool m_isUpdating = false;
+
+        private string m_resourceName;
+        private System.Collections.Specialized.NameValueCollection m_fileTypes;
 
 		public Unmanaged()
 		{
@@ -121,13 +124,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.SDF
 		}
 		#endregion
 
-		public void SetItem(ResourceEditors.EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource item)
+		public void SetItem(ResourceEditors.EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource item, string resourceName, System.Collections.Specialized.NameValueCollection fileTypes)
 		{
 			try
 			{
 				m_isUpdating = true;
 				m_editor = editor;
 				m_item = item;
+
+                m_resourceName = resourceName;
+                m_fileTypes = fileTypes;
 
 				UpdateDisplay();
 			}
@@ -145,7 +151,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.SDF
 				if (m_item == null || m_item.Parameter == null)
 					return;
 
-				FilepathText.Text = m_item.Parameter["File"] == null ? "" : m_item.Parameter["File"];
+				FilepathText.Text = m_item.Parameter[m_resourceName] == null ? "" : m_item.Parameter[m_resourceName];
 			}
 			finally
 			{
@@ -155,10 +161,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.SDF
 
 		private void BrowseFileButton_Click(object sender, System.EventArgs e)
 		{
-			System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
+			/*System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
 			nv.Add(".sdf", "SDF Files (*.sdf)");
-			nv.Add("", "All files (*.*)");
-			string f = m_editor.BrowseUnmanagedData(null, nv);
+			nv.Add("", "All files (*.*)");*/
+			string f = m_editor.BrowseUnmanagedData(null, m_fileTypes);
 			if (f != null)
 				FilepathText.Text = f;
 		}
@@ -171,7 +177,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.SDF
 			if (m_item.Parameter == null)
 				m_item.Parameter = new OSGeo.MapGuide.MaestroAPI.NameValuePairTypeCollection();
 
-			m_item.Parameter["File"] = FilepathText.Text;
+			m_item.Parameter[m_resourceName] = FilepathText.Text;
 			m_editor.HasChanged();
 
 		}
