@@ -457,6 +457,9 @@ namespace OSGeo.MapGuide.MaestroAPI {
         
         /// <remarks/>
         UniqueID,
+
+        /// <remarks/>
+        Void,
     }
     
     /// <remarks/>
@@ -466,7 +469,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         
         private string m_description;
         
-        private FdoProviderCapabilitiesExpressionFunctionDefinitionReturnType m_returnType;
+        private string m_returnType;
         
         private FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionCollection m_argumentDefinitionList;
         
@@ -491,7 +494,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         }
         
         /// <remarks/>
-        public FdoProviderCapabilitiesExpressionFunctionDefinitionReturnType ReturnType {
+        public string ReturnType {
             get {
                 return this.m_returnType;
             }
@@ -575,7 +578,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("FunctionDefinition", IsNullable=false)]
-        public FdoProviderCapabilitiesExpressionFunctionDefinitionCollection FunctionDefinitionList {
+        public FdoProviderCapabilitiesExpressionFunctionDefinitionCollection FunctionDefinitionCollection {
             get {
                 return this.m_functionDefinitionList;
             }
