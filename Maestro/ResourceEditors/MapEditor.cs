@@ -1365,12 +1365,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			if (index >= 0)
 			{
                 string folder_path = m_map.LayerGroups[index].GetFullPath("/", m_map) + "/";
+
                 for (int i = 0; i < m_map.Layers.Count; i++)
                 {
                     string path = m_map.Layers[i].GetFullPath("/", m_map);
                     if (path.StartsWith(folder_path))
                     {
                         m_map.Layers.RemoveAt(i);
+                        i--;
+                    }
+                }
+
+                for (int i = 0; i < m_map.LayerGroups.Count; i++)
+                {
+                    string path = m_map.LayerGroups[i].GetFullPath("/", m_map);
+                    if (path.StartsWith(folder_path))
+                    {
+                        m_map.LayerGroups.RemoveAt(i);
                         i--;
                     }
                 }

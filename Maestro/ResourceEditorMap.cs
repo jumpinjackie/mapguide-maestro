@@ -124,134 +124,144 @@ namespace OSGeo.MapGuide.Maestro
 
 		public ResourceEditorMap(string configfile)
 		{
-			try
-			{
-				ResourceEditorXml edt = null;
-				System.Xml.Serialization.XmlSerializer sr = new System.Xml.Serialization.XmlSerializer(typeof(ResourceEditorXml));
-				using(System.IO.FileStream fs = System.IO.File.Open(configfile, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
-					edt = (ResourceEditorXml)sr.Deserialize(fs);
+            string prevdir = System.IO.Directory.GetCurrentDirectory();
+            try
+            {
+                //Make sure relative paths are calculated from the config dir
+                System.IO.Directory.SetCurrentDirectory(System.IO.Path.GetDirectoryName(configfile));
 
-				m_editors = new Hashtable();
-				m_smallImages = new System.Windows.Forms.ImageList();
-				m_largeImages = new System.Windows.Forms.ImageList();
-				m_smallImages.ColorDepth = m_largeImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-				m_smallImages.ImageSize = new System.Drawing.Size(16, 16);
-				m_largeImages.ImageSize = new System.Drawing.Size(32, 32);
+                ResourceEditorXml edt = null;
+                System.Xml.Serialization.XmlSerializer sr = new System.Xml.Serialization.XmlSerializer(typeof(ResourceEditorXml));
+                using (System.IO.FileStream fs = System.IO.File.Open(configfile, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
+                    edt = (ResourceEditorXml)sr.Deserialize(fs);
 
-				//Add the folder type
-				m_editors.Add("", 
-					new ResourceEditorEntry(
-					"Folder",
-					"",
-					null,
-					null,
-					1
-					)
-					);
+                m_editors = new Hashtable();
+                m_smallImages = new System.Windows.Forms.ImageList();
+                m_largeImages = new System.Windows.Forms.ImageList();
+                m_smallImages.ColorDepth = m_largeImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+                m_smallImages.ImageSize = new System.Drawing.Size(16, 16);
+                m_largeImages.ImageSize = new System.Drawing.Size(32, 32);
 
-				System.Drawing.Image blankImg = System.Drawing.Image.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OSGeo.MapGuide.Maestro.Icons.blank_icon.gif"));
-				System.Drawing.Image folderImg = System.Drawing.Image.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OSGeo.MapGuide.Maestro.Icons.FolderOpen.ico"));
-				System.Drawing.Image serverImg = System.Drawing.Image.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OSGeo.MapGuide.Maestro.Icons.Server.ico"));
-				System.Drawing.Image unknownImg = System.Drawing.Image.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OSGeo.MapGuide.Maestro.Icons.Unknown.ico"));
+                //Add the folder type
+                m_editors.Add("",
+                    new ResourceEditorEntry(
+                    "Folder",
+                    "",
+                    null,
+                    null,
+                    1
+                    )
+                    );
 
-				m_smallImages.Images.Add(blankImg);
-				m_largeImages.Images.Add(blankImg);
-				m_smallImages.Images.Add(folderImg);
-				m_largeImages.Images.Add(folderImg);
-				m_smallImages.Images.Add(serverImg);
-				m_largeImages.Images.Add(serverImg);
-				m_smallImages.Images.Add(unknownImg);
-				m_largeImages.Images.Add(unknownImg);
+                System.Drawing.Image blankImg = System.Drawing.Image.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OSGeo.MapGuide.Maestro.Icons.blank_icon.gif"));
+                System.Drawing.Image folderImg = System.Drawing.Image.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OSGeo.MapGuide.Maestro.Icons.FolderOpen.ico"));
+                System.Drawing.Image serverImg = System.Drawing.Image.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OSGeo.MapGuide.Maestro.Icons.Server.ico"));
+                System.Drawing.Image unknownImg = System.Drawing.Image.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OSGeo.MapGuide.Maestro.Icons.Unknown.ico"));
 
-				string path;
+                m_smallImages.Images.Add(blankImg);
+                m_largeImages.Images.Add(blankImg);
+                m_smallImages.Images.Add(folderImg);
+                m_largeImages.Images.Add(folderImg);
+                m_smallImages.Images.Add(serverImg);
+                m_largeImages.Images.Add(serverImg);
+                m_smallImages.Images.Add(unknownImg);
+                m_largeImages.Images.Add(unknownImg);
 
-				foreach(ResourceEditorXml.ResourceEditorEntry e in edt.Editors)
-				{
-					System.Drawing.Image img = null;
-					int imageindex = -1;
+                string path;
 
-					//TODO: Fail gracefully with missing icons?
-					if (e.ImagePath != null && e.ImagePath.Trim().Length > 0)
-						img = System.Drawing.Image.FromFile(e.ImagePath);
-					else if (e.ImageAssembly != null && e.ImageAssembly.Trim().Length > 0 && e.ImageResourceName != null && e.ImageResourceName.Trim().Length > 0)
-					{
-						path = e.ImageAssembly;
-						if (!System.IO.Path.IsPathRooted(path))
-							path = System.IO.Path.GetFullPath(path);
-						System.Reflection.Assembly asm;
-						try
-						{
-							asm = System.Reflection.Assembly.LoadFile(path);
-						}
-						catch(Exception ex)
-						{
-							throw new Exception("Failed while loading assembly: " + path + ", error: " + ex.Message, ex);
-						}
-						img = System.Drawing.Image.FromStream(asm.GetManifestResourceStream(e.ImageResourceName));
-					}
+                foreach (ResourceEditorXml.ResourceEditorEntry e in edt.Editors)
+                {
+                    System.Drawing.Image img = null;
+                    int imageindex = -1;
 
-					if (img != null)
-					{
-						m_smallImages.Images.Add(img);
-						m_largeImages.Images.Add(img);
-						imageindex = m_smallImages.Images.Count - 1;
-					}
+                    //TODO: Fail gracefully with missing icons?
+                    if (e.ImagePath != null && e.ImagePath.Trim().Length > 0)
+                        img = System.Drawing.Image.FromFile(e.ImagePath);
+                    else if (e.ImageAssembly != null && e.ImageAssembly.Trim().Length > 0 && e.ImageResourceName != null && e.ImageResourceName.Trim().Length > 0)
+                    {
+                        path = e.ImageAssembly;
+                        if (!System.IO.Path.IsPathRooted(path))
+                            path = System.IO.Path.GetFullPath(path);
+                        System.Reflection.Assembly asm;
+                        try
+                        {
+                            asm = System.Reflection.Assembly.LoadFile(path);
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception("Failed while loading assembly: " + path + ", error: " + ex.Message, ex);
+                        }
+                        img = System.Drawing.Image.FromStream(asm.GetManifestResourceStream(e.ImageResourceName));
+                    }
 
-					path = e.ResourceEditorAssembly;
-					if (!System.IO.Path.IsPathRooted(path))
-						path = System.IO.Path.GetFullPath(path);
+                    if (img != null)
+                    {
+                        m_smallImages.Images.Add(img);
+                        m_largeImages.Images.Add(img);
+                        imageindex = m_smallImages.Images.Count - 1;
+                    }
 
-					System.Reflection.Assembly editorAsm;
-					try
-					{
-						editorAsm = System.Reflection.Assembly.LoadFile(path);
-					} 
-					catch (Exception ex)
-					{
-						throw new Exception("Failed while loading assembly: " + path + ", error: " + ex.Message, ex);
-					}
+                    path = e.ResourceEditorAssembly;
+                    if (!System.IO.Path.IsPathRooted(path))
+                        path = System.IO.Path.GetFullPath(path);
 
-					System.Type editorType = editorAsm.GetType(e.ResourceEditorClass, true, false);
+                    System.Reflection.Assembly editorAsm;
+                    try
+                    {
+                        editorAsm = System.Reflection.Assembly.LoadFile(path);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Failed while loading assembly: " + path + ", error: " + ex.Message, ex);
+                    }
 
-					path = e.ResourceInstanceAssembly;
-					if (!System.IO.Path.IsPathRooted(path))
-						path = System.IO.Path.GetFullPath(path);
+                    System.Type editorType = editorAsm.GetType(e.ResourceEditorClass, true, false);
 
-					System.Reflection.Assembly instanceAsm;
-					try
-					{
-						instanceAsm = System.Reflection.Assembly.LoadFile(path);
-					}
-					catch (Exception ex)
-					{
-						throw new Exception("Failed while loading assembly: " + path + ", error: " + ex.Message, ex);
-					}
-					System.Type instanceType = instanceAsm.GetType(e.ResourceInstanceClass, true, false);
+                    path = e.ResourceInstanceAssembly;
+                    if (!System.IO.Path.IsPathRooted(path))
+                        path = System.IO.Path.GetFullPath(path);
 
-					if (editorType == null)
-						throw new Exception("Failed to load type " + e.ResourceEditorClass + " from assembly: " + e.ResourceEditorAssembly);
-					if (instanceType == null)
-						throw new Exception("Failed to load type " + e.ResourceInstanceClass + " from assembly: " + e.ResourceInstanceAssembly);
+                    System.Reflection.Assembly instanceAsm;
+                    try
+                    {
+                        instanceAsm = System.Reflection.Assembly.LoadFile(path);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Failed while loading assembly: " + path + ", error: " + ex.Message, ex);
+                    }
+                    System.Type instanceType = instanceAsm.GetType(e.ResourceInstanceClass, true, false);
+
+                    if (editorType == null)
+                        throw new Exception("Failed to load type " + e.ResourceEditorClass + " from assembly: " + e.ResourceEditorAssembly);
+                    if (instanceType == null)
+                        throw new Exception("Failed to load type " + e.ResourceInstanceClass + " from assembly: " + e.ResourceInstanceAssembly);
 
 
-					if (editorType.GetInterface(typeof(IResourceEditorControl).FullName) == null)
-						throw new Exception("Resource editor for " + e.ResourceExtension + " does not implement the required interface: " + typeof(IResourceEditorControl).FullName);
+                    if (editorType.GetInterface(typeof(IResourceEditorControl).FullName) == null)
+                        throw new Exception("Resource editor for " + e.ResourceExtension + " does not implement the required interface: " + typeof(IResourceEditorControl).FullName);
 
-					m_editors.Add(e.ResourceExtension, 
-						new ResourceEditorEntry(
-						e.DisplayName,
-						e.ResourceExtension,
-						editorType,
-						instanceType,
-						imageindex
-						)
-						);
-				}
-			}
-			catch (Exception ex)
-			{
-				throw new Exception("Failed to load the resource editors: " + ex.Message, ex);
-			}
+                    m_editors.Add(e.ResourceExtension,
+                        new ResourceEditorEntry(
+                        e.DisplayName,
+                        e.ResourceExtension,
+                        editorType,
+                        instanceType,
+                        imageindex
+                        )
+                        );
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to load the resource editors: " + ex.Message, ex);
+            }
+            finally
+            {
+                //Restore dir preference
+                try { System.IO.Directory.SetCurrentDirectory(prevdir); }
+                catch { }
+            }
 		}
 
 		private Hashtable m_editors;

@@ -152,7 +152,7 @@ namespace OSGeo.MapGuide.Maestro
 
 			m_editor.tabItems.TabPages.Remove(m_page);
 			
-			foreach(System.Collections.DictionaryEntry de in m_editor.OpenResourceEditors)
+			foreach(KeyValuePair<string, EditorInterface> de in m_editor.OpenResourceEditors)
 				if (de.Value == this)
 				{
 					m_editor.OpenResourceEditors.Remove(de.Key);
@@ -260,7 +260,7 @@ namespace OSGeo.MapGuide.Maestro
                         m_page.Text = n.Substring(0, n.LastIndexOf("."));
 
 
-                        foreach (System.Collections.DictionaryEntry de in m_editor.OpenResourceEditors)
+                        foreach (KeyValuePair<string, EditorInterface> de in m_editor.OpenResourceEditors)
                             if (de.Value == this)
                             {
                                 m_editor.OpenResourceEditors.Remove(de.Key);

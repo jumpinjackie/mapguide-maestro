@@ -23,6 +23,7 @@ using System.IO;
 using System.Reflection;
 using System.Globalization;
 using System.Xml;
+using System.Collections.Generic;
 
 namespace Globalizator
 {
@@ -40,40 +41,47 @@ namespace Globalizator
 			if (!Directory.Exists(locpath))
 				return;
 
-			foreach(string s in Directory.GetFiles(locpath, "*.resx"))
-			{
-				try
-				{
-					string classname = Path.GetFileNameWithoutExtension(s);
-					CultureInfo ci = CultureInfo.InvariantCulture;
-					//TODO: Will break on filenames like: Namespace.12345.resx
-					if (Path.GetExtension(classname) != null && Path.GetExtension(classname).Length == 6)
-						try
-						{
-							ci = CultureInfo.CreateSpecificCulture(Path.GetExtension(classname).Substring(1));
-							classname = Path.GetFileNameWithoutExtension(classname);
-						}
-						catch
-						{
-							continue;
-						}
+            //Look for "es" or "es-ES" like folders 
+            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("([A-z][A-z])(\\-[A-z][A-z])?");
 
-					if (!m_localities.ContainsKey(ci))
-						m_localities.Add(ci, new Hashtable());
+            foreach (string folder in Directory.GetDirectories(locpath))
+            {
+                if (regex.Match(Path.GetFileName(folder)).Value == Path.GetFileName(folder))
+                    foreach (string s in Directory.GetFiles(folder, "*.resx"))
+                    {
+                        try
+                        {
+                            string classname = Path.GetFileNameWithoutExtension(s);
+                            CultureInfo ci = CultureInfo.InvariantCulture;
+                            //TODO: Will break on filenames like: Namespace.12345.resx
+                            if (Path.GetExtension(classname) != null && Path.GetExtension(classname).Length == 6)
+                                try
+                                {
+                                    ci = CultureInfo.CreateSpecificCulture(Path.GetExtension(classname).Substring(1));
+                                    classname = Path.GetFileNameWithoutExtension(classname);
+                                }
+                                catch
+                                {
+                                    continue;
+                                }
 
-					doc.Load(s);
-					Hashtable translations = (Hashtable)m_localities[ci];
+                            if (!m_localities.ContainsKey(ci))
+                                m_localities.Add(ci, new Hashtable());
 
-					foreach(XmlNode n in doc.SelectNodes("root/data"))
-                        if (n["value"] != null)
-						    translations[n.Attributes["name"].Value] = n["value"].InnerText; 
+                            doc.Load(s);
+                            Hashtable translations = (Hashtable)m_localities[ci];
 
-				}
-				catch(Exception ex)
-				{
-					throw new Exception(string.Format("Failed while reading file: {0}\nMessage: {1}", s, ex));
-				}
-			}
+                            foreach (XmlNode n in doc.SelectNodes("root/data"))
+                                if (n["value"] != null)
+                                    translations[n.Attributes["name"].Value] = n["value"].InnerText;
+
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception(string.Format("Failed while reading file: {0}\nMessage: {1}", s, ex));
+                        }
+                    }
+            }
 		}
 
 		public CultureInfo[] AvalibleCultures

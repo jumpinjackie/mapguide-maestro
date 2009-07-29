@@ -22,6 +22,8 @@
     <Compile Include="Maestro.wxs" />
     <Compile Include="incBinFiles.wxs" />
     <Compile Include="Shortcuts.wxs" />
+    <Compile Include="incLocFiles.da-DK.wxs" />
+    <Compile Include="incLocFiles.es-ES.wxs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources" />

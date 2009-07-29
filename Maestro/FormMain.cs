@@ -33,7 +33,7 @@ namespace OSGeo.MapGuide.Maestro
 	{
 
 		private OSGeo.MapGuide.MaestroAPI.ServerConnectionI m_connection;
-        private Hashtable m_userControls = new Hashtable();
+        private Dictionary<string, EditorInterface> m_userControls = new Dictionary<string, EditorInterface>();
 		public System.Windows.Forms.TabControl tabItems;
 		private System.Windows.Forms.ContextMenuStrip TreeContextMenu;
 		private System.Windows.Forms.ToolStripMenuItem PropertiesMenu;
@@ -283,6 +283,7 @@ namespace OSGeo.MapGuide.Maestro
             this.ResourceTree.DragDrop += new System.Windows.Forms.DragEventHandler(this.ResourceTree_DragDrop);
             this.ResourceTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ResourceTree_AfterSelect);
             this.ResourceTree.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ResourceTree_MouseDown);
+            this.ResourceTree.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ResourceTree_KeyPress);
             this.ResourceTree.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ResourceTree_KeyUp);
             this.ResourceTree.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.ResourceTree_BeforeLabelEdit);
             this.ResourceTree.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.ResourceTree_ItemDrag);
@@ -1473,6 +1474,19 @@ namespace OSGeo.MapGuide.Maestro
 			object item = ResourceTree.SelectedNode.Tag;
 			if (item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceFolder))
 			{
+                string resId = ((OSGeo.MapGuide.MaestroAPI.ResourceListResourceFolder)item).ResourceId;
+
+                //Find open resources in the folder
+                List<string> toClose = new List<string>();
+                foreach (string s in m_userControls.Keys)
+                    if (s.StartsWith(resId))
+                        toClose.Add(s);
+
+                //Close them all
+                foreach (string s in toClose)
+                    if (!m_userControls[s].Close(true))
+                        return;
+
 				//We do not enumerate here, because it is SLOW
 				if (ResourceTree.SelectedNode.Nodes.Count == 0 && MessageBox.Show(this, m_globalizor.Translate("Delete the selected folder?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
 					return;
@@ -1481,7 +1495,7 @@ namespace OSGeo.MapGuide.Maestro
 
 				try
 				{
-					m_connection.DeleteFolder(((OSGeo.MapGuide.MaestroAPI.ResourceListResourceFolder)item).ResourceId);
+					m_connection.DeleteFolder(resId);
 				}
 				catch(Exception ex)
 				{
@@ -1492,13 +1506,18 @@ namespace OSGeo.MapGuide.Maestro
 			}
 			else if (item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument))
 			{
+                string resId = ((OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument)item).ResourceId;
+                if (m_userControls.ContainsKey(resId))
+                    if (!m_userControls[resId].Close(true))
+                        return;
+
 				//We do not enumerate here, because it is SLOW
 				if (MessageBox.Show(this, m_globalizor.Translate("If you delete the resource, any resource that reference the resource will become unusable.\n\nDelete the resource?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3) != DialogResult.Yes)
 					return;
 
 				try
 				{
-					m_connection.DeleteResource(((OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument)item).ResourceId);
+					m_connection.DeleteResource(resId);
 				}
 				catch(Exception ex)
 				{
@@ -1635,6 +1654,39 @@ namespace OSGeo.MapGuide.Maestro
 				if (m_connection.ResourceExists(targetpath) && MessageBox.Show(this, sourceisFolder ? m_globalizor.Translate("There already exists a folder at the destination.\nDo you want to overwrite?") : m_globalizor.Translate("There already exists a resource at the destination.\nDo you want to overwrite?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3) != DialogResult.Yes)
 					return false;
 
+
+                if (move)
+                    if (sourceisFolder)
+                    {
+                        List<string> toClose = new List<string>();
+                        foreach (string s in m_userControls.Keys)
+                            if (s.StartsWith(sourcepath))
+                                toClose.Add(s);
+
+                        foreach (string s in toClose)
+                            if (!m_userControls[s].Close(true))
+                                return false;
+                    }
+                    else
+                        if (m_userControls.ContainsKey(sourcepath))
+                            if (!m_userControls[sourcepath].Close(true))
+                                return false;
+
+                switch (MessageBox.Show(this, "Do you want to update items affected by the operation?", Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3))
+                {
+                    case DialogResult.Cancel:
+                        return false;
+                    case DialogResult.No:
+                        if (move && sourceisFolder)
+                            m_connection.MoveFolder(sourcepath, targetpath, true);
+                        else if (sourceisFolder)
+                            m_connection.CopyFolder(sourcepath, targetpath, true);
+                        else if (move)
+                            m_connection.MoveResource(sourcepath, targetpath, true);
+                        else
+                            m_connection.CopyResource(sourcepath, targetpath, true);
+                        return true;
+                }
 
 				LengthyOperation lwdlg = new LengthyOperation();
 
@@ -1880,17 +1932,12 @@ namespace OSGeo.MapGuide.Maestro
 			if (!ResourceTree.Focused)
 				return;
 
-			if (e.KeyCode == Keys.Enter)
-			{
-				ResourceTree_DoubleClick(sender, e);
-				e.Handled = true;
-			}
-			else if (e.KeyCode == Keys.Delete)
-			{
+            if (e.KeyCode == Keys.Delete)
+            {
                 DeleteResourceButton_Click(sender, e);
-				e.Handled = true;
-			}
-			else if ((e.KeyCode == Keys.R && e.Control) || e.KeyCode == Keys.F5)
+                e.Handled = true;
+            }
+            else if ((e.KeyCode == Keys.R && e.Control) || e.KeyCode == Keys.F5)
 			{
                 ResourceTreeRefreshButton_Click(sender, e);
 				e.Handled = true;
@@ -1959,11 +2006,11 @@ namespace OSGeo.MapGuide.Maestro
 				return;
 			}
 
-			if (MoveOrCopyResource(sourcepath, targetpath, true, false))
-				e.Node.Text = e.Label;
+            if (MoveOrCopyResource(sourcepath, targetpath, true, false))
+                e.Node.Text = e.Label;
 
-			RebuildDocumentTree();
-			//this.Invoke(new MoveOrCopyResourceDelegate(MoveOrCopyResource), new object[] {});
+            RebuildDocumentTree();
+            //this.Invoke(new MoveOrCopyResourceDelegate(MoveOrCopyResource), new object[] {});
 		}
 
 
@@ -2253,7 +2300,7 @@ namespace OSGeo.MapGuide.Maestro
 		/// <summary>
 		/// Gets the list of open resouces
 		/// </summary>
-		public Hashtable OpenResourceEditors
+		public Dictionary<string, EditorInterface> OpenResourceEditors
 		{
 			get { return m_userControls; }
 		}
@@ -2719,6 +2766,18 @@ namespace OSGeo.MapGuide.Maestro
                 }
             }
 
+        }
+
+        private void ResourceTree_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!ResourceTree.Focused)
+                return;
+
+            if (e.KeyChar == '\n' || e.KeyChar == '\r')
+            {
+                ResourceTree_DoubleClick(sender, e);
+                e.Handled = true;
+            }
         }
 	}
 }

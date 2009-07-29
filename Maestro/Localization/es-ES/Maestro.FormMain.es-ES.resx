@@ -123,9 +123,6 @@
   <data name="OSGeo.MapGuide.Maestro.FormMain.NewMenu.Text" type="System.String">
     <value>Nuevo</value>
   </data>
-  <data name="OSGeo.MapGuide.Maestro.FormMain.RenameMenu.Text" type="System.String">
-    <value>Rebautizar</value>
-  </data>
   <data name="OSGeo.MapGuide.Maestro.FormMain.ResourceTreeCopy.ToolTipText" type="System.String">
     <value>Copiar el recurso actual o carpeta al portapaleles</value>
   </data>

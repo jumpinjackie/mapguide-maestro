@@ -40,9 +40,11 @@
       <Directory Id="ProgramMenuFolder" Name="Programs"/>
       <Directory Id="DesktopFolder" Name="Desktop"/>
       <Directory Id="ProgramFilesFolder">
-		<Directory Id="OSGEOFOLDER" Name="OSGeo">
-			<Directory Id="INSTALLLOCATION" Name="MapGuide Maestro">
+		<Directory Id="INSTALLLOCATION" Name="OSGeo">
+		  <Directory Id="ROOTFOLDER" Name="MapGuideMaestro">
+			<Directory Id="LANGLOCATION" Name="Localization">
 			</Directory>
+		  </Directory>
         </Directory>
       </Directory>
     </Directory>
@@ -59,6 +61,14 @@
 
     <Feature Id="MaestroProgramFilesShortCutFeature" Title="Program Files Shortcut" Level="1" Description ="Installs a shortcut to MapGuide Maestro in the Program Files menu" Absent="allow" AllowAdvertise="no" TypicalDefault="install" InstallDefault="local">
       <ComponentRef Id="MaestroProgramMenuShortcutComponent"/>
+    </Feature>
+
+	<Feature Id="da_DK_LanguageFeature" Title="Danish translation files" Level="1" Description="Installs the required files for displaying the MapGuide Maestro userinterface in Danish." AllowAdvertise="no" TypicalDefault="install" InstallDefault="local" >
+      <ComponentGroupRef Id="group_MAESTROBIN_da_DK" />
+    </Feature>
+
+	<Feature Id="es_ES_LanguageFeature" Title="Spanish translation files" Level="1" Description="Installs the required files for displaying the MapGuide Maestro userinterface in Spanish." AllowAdvertise="no" TypicalDefault="install" InstallDefault="local" >
+      <ComponentGroupRef Id="group_MAESTROBIN_es_ES" />
     </Feature>
 
     <!-- Launch Maestro setup -->
