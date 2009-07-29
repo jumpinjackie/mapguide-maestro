@@ -505,7 +505,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("ArgumentDefinition", IsNullable=false)]
-        public FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionCollection ArgumentDefinitionList {
+        public FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionCollection ArgumentDefinitionCollection {
             get {
                 return this.m_argumentDefinitionList;
             }
