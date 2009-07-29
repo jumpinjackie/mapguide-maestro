@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F3BADE4F-2581-4B65-9E15-412C294DB973}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -350,6 +350,9 @@
     <Content Include="Icons\App.ico" />
     <EmbeddedResource Include="Icons\MapGuide Maestro.ico" />
     <Content Include="ProviderMap.xml" />
+    <None Include="Resources\bricks.png" />
+    <None Include="Resources\sum.png" />
+    <None Include="Resources\table.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

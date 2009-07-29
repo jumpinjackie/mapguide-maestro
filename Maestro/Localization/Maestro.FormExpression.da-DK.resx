@@ -42,17 +42,23 @@
 <data name="OSGeo.MapGuide.Maestro.FormExpression.Text" type="System.String">
 	<value>Udtryks editor</value>
 </data>
-<data name="OSGeo.MapGuide.Maestro.FormExpression.label1.Text" type="System.String">
-	<value>Du kan redigere udtrykket her.</value>
+<data name="OSGeo.MapGuide.Maestro.FormExpression.lblHint.Text" type="System.String">
+	<value>Tryk Alt + Ret til at påberåbe sig automatisk udfyldning</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormExpression.btnProperties.Text" type="System.String">
+	<value>Egenskaber</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormExpression.btnFunctions.Text" type="System.String">
+	<value>Funktioner</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormExpression.btnFilter.Text" type="System.String">
+	<value>Filter</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.FormExpression.OKBtn.Text" type="System.String">
 	<value>OK</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.FormExpression.CancelBtn.Text" type="System.String">
 	<value>Annuller</value>
-</data>
-<data name="OSGeo.MapGuide.Maestro.FormExpression.label2.Text" type="System.String">
-	<value>Kolonner</value>
 </data>
 <data name="&lt; select column to insert here &gt;" type="System.String">
 	<value>&lt; vælg kolonne til indsættelse &gt;</value>

@@ -42,17 +42,23 @@
 <data name="OSGeo.MapGuide.Maestro.FormExpression.Text" type="System.String">
 	<value>Editor de expresiones</value>
 </data>
-<data name="OSGeo.MapGuide.Maestro.FormExpression.label1.Text" type="System.String">
-	<value>Aqui puedes editar la expresión.</value>
+<data name="OSGeo.MapGuide.Maestro.FormExpression.lblHint.Text" type="System.String">
+	<value>Pulse Alt + invocar el derecho de auto-completar</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormExpression.btnProperties.Text" type="System.String">
+	<value>Propiedades</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormExpression.btnFunctions.Text" type="System.String">
+	<value>Funciones</value>
+</data>
+<data name="OSGeo.MapGuide.Maestro.FormExpression.btnFilter.Text" type="System.String">
+	<value>Filtro</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.FormExpression.OKBtn.Text" type="System.String">
 	<value>OK</value>
 </data>
 <data name="OSGeo.MapGuide.Maestro.FormExpression.CancelBtn.Text" type="System.String">
 	<value>Cancelar</value>
-</data>
-<data name="OSGeo.MapGuide.Maestro.FormExpression.label2.Text" type="System.String">
-	<value>Columnas</value>
 </data>
 <data name="&lt; select column to insert here &gt;" type="System.String">
 	<value>&lt; Seleccione la columna para insertar aquí &gt;</value>

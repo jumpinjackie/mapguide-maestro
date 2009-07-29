@@ -28,6 +28,44 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro
 {
+    /*
+     * Intellisense overview:
+     * 
+     * The intellisense of this expression editor consists of the following parts:
+     *  - An ImageListBox which is filled with auto-complete suggestions
+     *  - A System.Windows.Forms.ToolTip which is shown when an auto-complete choice is highlighted (but not selected)
+     * 
+     * In order to invoke intellisense, we listen for the KeyUp and KeyDown events
+     * on the textbox to determine what actions to take. Some actions include:
+     * 
+     * Key Up:
+     *  - Comma: Show auto-complete with all suggestions
+     *  - Quotes (Single or Double): Insert an extra quote of that type
+     *  - Up/Down: Move the auto-complete selection up/down one item if the auto-complete box is visible.
+     *  - Backspace: Invoke auto-complete with suggestions if there is a context buffer, otherwise hide auto-complete.
+     *  - Alt + Right: Invoke auto-complete with all suggestions
+     *  - Alphanumeric (no modifiers): Invoke auto-complete with suggestions
+     * 
+     * Key Down:
+     *  - Escape: Hide auto-complete
+     *  - Enter: Hide auto-complete
+     * 
+     * As part of the loading process, a full list of auto-complete items (functions/properties) is constructed (sorted by name)
+     * Everytime intellisense is invoked, this list is queried for possible suggestions.
+     * 
+     * In order to determine what items to suggest, the editor builds a context buffer from the current position of the caret
+     * in the textbox. The context buffer algorithm is as follows:
+     * 
+     *  1 - Start from caret position
+     *  2 - Can we move back one char?
+     *    2.1 - Get this char.
+     *    2.2 - If alpha numeric, goto 2.
+     *  3 - Get the string that represents the uninterrupted alphanumeric string sequence that ends at the caret position
+     *  4 - Get the list of completable items that starts with this alphanumeric string
+     *  5 - Add these items to the auto-complete box.
+     *  6 - Show the auto-complete box
+     */
+
     public partial class FormExpression : Form
     {
         private FeatureSourceDescription.FeatureSourceSchema m_schema;
@@ -38,6 +76,7 @@ namespace OSGeo.MapGuide.Maestro
         public FormExpression()
         {
             InitializeComponent();
+            InitAutoComplete();
             m_globalizor = new Globalizator.Globalizator(this);
         }
 
@@ -55,18 +94,98 @@ namespace OSGeo.MapGuide.Maestro
                 m_providername = provider;
                 m_connection = connection;
 
-                ColumnCombo.Items.Clear();
-                ColumnCombo.Items.Add("< select column to insert here >");
-                ColumnCombo.SelectedIndex = 0;
-
-                /*FunctionCombo.Items.Clear();
-                FunctionCombo.Items.Add("< select function to insert here >");*/
+                FdoProviderCapabilities caps = m_connection.GetProviderCapabilities(provider);
 
                 //TODO: Perhaps add column type and indication of primary key
+                SortedList<string, FeatureSetColumn> sortedCols = new SortedList<string, FeatureSetColumn>();
                 foreach (FeatureSetColumn col in m_schema.Columns)
-                    ColumnCombo.Items.Add(col.Name);
+                {
+                    sortedCols.Add(col.Name, col);
+                }
+
+                foreach (FeatureSetColumn col in sortedCols.Values)
+                {
+                    string name = col.Name;
+                    ToolStripButton btn = new ToolStripButton();
+                    btn.Name = name;
+                    btn.Text = name;
+                    btn.Click += delegate
+                    {
+                        InsertText(name);
+                    };
+                    btnProperties.DropDown.Items.Add(btn);
+                }
+                LoadCompletableProperties(m_schema.Columns);
 
                 //TODO: Figure out how to translate the enums into something usefull
+
+                //Functions
+                SortedList<string, FdoProviderCapabilitiesExpressionFunctionDefinition> sortedFuncs = new SortedList<string, FdoProviderCapabilitiesExpressionFunctionDefinition>();
+                foreach (FdoProviderCapabilitiesExpressionFunctionDefinition func in caps.Expression.FunctionDefinitionCollection)
+                {
+                    sortedFuncs.Add(func.Name, func);
+                }
+
+                foreach (FdoProviderCapabilitiesExpressionFunctionDefinition func in sortedFuncs.Values)
+                {
+                    string name = func.Name;
+                    ToolStripButton btn = new ToolStripButton();
+                    btn.Name = name;
+                    btn.Text = name;
+                    btn.ToolTipText = func.Description;
+                    string fmt = "{0}({1})";
+                    List<string> args = new List<string>();
+                    foreach (FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition argDef in func.ArgumentDefinitionCollection)
+                    {
+                        args.Add(argDef.Name.Trim());
+                    }
+                    string expr = string.Format(fmt, name, string.Join(", ", args.ToArray()));
+                    btn.Click += delegate
+                    {
+                        InsertText(expr);
+                    };
+                    btnFunctions.DropDown.Items.Add(btn);
+                }
+                LoadCompletableFunctions(caps.Expression.FunctionDefinitionCollection);
+
+                //Spatial Operators
+                foreach (FdoProviderCapabilitiesFilterOperation op in caps.Filter.Spatial)
+                {
+                    string name = op.ToString().ToUpper();
+                    ToolStripButton btn = new ToolStripButton();
+                    btn.Name = btn.Text = btn.ToolTipText = op.ToString();
+                    btn.Click += delegate
+                    {
+                        InsertFilter(name);
+                    };
+                    btnSpatial.DropDown.Items.Add(btn);
+                }
+
+                //Distance Operators
+                foreach (FdoProviderCapabilitiesFilterOperation1 op in caps.Filter.Distance)
+                {
+                    string name = op.ToString().ToUpper();
+                    ToolStripButton btn = new ToolStripButton();
+                    btn.Name = btn.Text = btn.ToolTipText = op.ToString();
+                    btn.Click += delegate
+                    {
+                        InsertFilter(name);
+                    };
+                    btnDistance.DropDown.Items.Add(btn);
+                }
+
+                //Conditional Operators
+                foreach (FdoProviderCapabilitiesFilterOperation op in caps.Filter.Condition)
+                {
+                    string name = op.ToString().ToUpper();
+                    ToolStripButton btn = new ToolStripButton();
+                    btn.Name = btn.Text = btn.ToolTipText = op.ToString();
+                    btn.Click += delegate
+                    {
+                        InsertFilter(name);
+                    };
+                    btnCondition.DropDown.Items.Add(btn);
+                }
 
                 /*try
                 {
@@ -87,17 +206,37 @@ namespace OSGeo.MapGuide.Maestro
 
         }
 
-        private void SetupFunctions()
+        private void InsertText(string exprText)
         {
-            try
+            int index = ExpressionText.SelectionStart;
+            if (ExpressionText.SelectionLength > 0)
             {
-
-                foreach (FeatureSetColumn col in m_schema.Columns)
-                    ColumnCombo.Items.Add(col.Name);
-
+                ExpressionText.SelectedText = exprText;
+                ExpressionText.SelectionStart = index;
             }
-            catch
+            else
             {
+                if (index > 0)
+                {
+                    string text = ExpressionText.Text;
+                    ExpressionText.Text = text.Insert(index, exprText);
+                    ExpressionText.SelectionStart = index;
+                }
+                else
+                {
+                    ExpressionText.Text = exprText;
+                    ExpressionText.SelectionStart = index;
+                }
+            }
+        }
+
+        private void InsertFilter(string op)
+        {
+            if (!string.IsNullOrEmpty(op))
+            {
+                string filterTemplate = "<geometry property> {0} GeomFromText('<FGF geometry text>')";
+                string exprText = string.Format(filterTemplate, op);
+                InsertText(exprText);
             }
         }
 
@@ -107,14 +246,562 @@ namespace OSGeo.MapGuide.Maestro
             this.Close();
         }
 
-        private void ColumnCombo_SelectedIndexChanged(object sender, EventArgs e)
+        private SortedList<string, AutoCompleteItem> _autoCompleteItems = new SortedList<string, AutoCompleteItem>();
+        private ImageListBox _autoBox;
+
+        enum AutoCompleteItemType : int
         {
-            if (ColumnCombo.SelectedIndex > 0)
+            Property = 0,
+            Function = 1,
+        }
+
+        /// <summary>
+        /// Base auto-complete item
+        /// </summary>
+        abstract class AutoCompleteItem
+        {
+            public abstract AutoCompleteItemType Type { get; }
+
+            public abstract string Name { get; }
+
+            public abstract string ToolTipText { get; }
+
+            public abstract string AutoCompleteText { get; }
+        }
+
+        /// <summary>
+        /// Property auto-complete item
+        /// </summary>
+        class PropertyItem : AutoCompleteItem
+        {
+            private FeatureSetColumn _propDef;
+
+            public PropertyItem(FeatureSetColumn pd)
             {
-                ExpressionText.SelectedText = ColumnCombo.Text;
-                ColumnCombo.SelectedIndex = 0;
+                _propDef = pd;
+            }
+
+            public override AutoCompleteItemType Type
+            {
+                get { return AutoCompleteItemType.Property; }
+            }
+
+            public override string Name
+            {
+                get { return _propDef.Name; }
+            }
+
+            private string _ttText;
+
+            public override string ToolTipText
+            {
+                get
+                {
+                    if (string.IsNullOrEmpty(_ttText))
+                    {
+                        _ttText = string.Format("Property: {0}{1}Type: {2}", _propDef.Name, Environment.NewLine, _propDef.Type.Name);
+                    }
+                    return _ttText;
+                }
+            }
+
+            public override string AutoCompleteText
+            {
+                get { return this.Name; }
             }
         }
 
+        /// <summary>
+        /// Function auto-complete item
+        /// </summary>
+        class FunctionItem : AutoCompleteItem
+        {
+            private FdoProviderCapabilitiesExpressionFunctionDefinition _func;
+
+            public FunctionItem(FdoProviderCapabilitiesExpressionFunctionDefinition fd)
+            {
+                _func = fd;
+            }
+
+            public override AutoCompleteItemType Type
+            {
+                get { return AutoCompleteItemType.Function; }
+            }
+
+            public override string Name
+            {
+                get { return _func.Name; }
+            }
+
+            private string _ttText;
+
+            public override string ToolTipText
+            {
+                get
+                {
+                    if (string.IsNullOrEmpty(_ttText))
+                        _ttText = string.Format("Function: {1}({2}){3}Description: {4}{3}Returns: {0}", GetReturnTypeString(), _func.Name, GetArgumentString(), Environment.NewLine, _func.Description);
+
+                    return _ttText;
+                }
+            }
+
+            private string _argStr;
+
+            private string GetArgumentString()
+            {
+                if (string.IsNullOrEmpty(_argStr))
+                {
+                    List<string> tokens = new List<string>();
+                    foreach (FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition argDef in _func.ArgumentDefinitionCollection)
+                    {
+                        tokens.Add("[" + argDef.Name.Trim() + "]");
+                    }
+                    _argStr = string.Join(", ", tokens.ToArray());
+                }
+                return _argStr;
+            }
+
+            private string GetReturnTypeString()
+            {
+                return _func.ReturnType;
+            }
+
+            public override string AutoCompleteText
+            {
+                get
+                {
+                    return this.Name + "(" + GetArgumentString() + ")";
+                }
+            }
+        }
+
+        private void InitAutoComplete()
+        {
+            _autoBox = new ImageListBox();
+            _autoBox.Visible = false;
+            _autoBox.ImageList = new ImageList();
+            _autoBox.ImageList.Images.Add(Properties.Resources.table);  //Property
+            _autoBox.ImageList.Images.Add(Properties.Resources.bricks); //Function
+            _autoBox.DoubleClick += new EventHandler(OnAutoCompleteDoubleClick);
+            _autoBox.SelectedIndexChanged += new EventHandler(OnAutoCompleteSelectedIndexChanged);
+            _autoBox.KeyDown += new KeyEventHandler(OnAutoCompleteKeyDown);
+            _autoBox.KeyUp += new KeyEventHandler(OnAutoCompleteKeyUp);
+            _autoBox.ValueMember = "Name";
+            _autoBox.Font = new Font(FontFamily.GenericMonospace, 10.0f);
+            ExpressionText.Controls.Add(_autoBox);
+        }
+
+        void OnAutoCompleteKeyDown(object sender, KeyEventArgs e)
+        {
+            ExpressionText.Focus();
+        }
+
+        void OnAutoCompleteKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return || e.KeyCode == Keys.Enter)
+            {
+                PutAutoCompleteSuggestion();
+                _autoBox.Hide();
+                _autoCompleteTooltip.Hide(this);
+            }
+        }
+
+        void OnAutoCompleteSelectedIndexChanged(object sender, EventArgs e)
+        {
+            ExpressionText.Focus();
+            if (_autoBox.Visible && _autoBox.SelectedIndex >= 0 && _autoBox.Items.Count > 0)
+            {
+                string tt = ((_autoBox.SelectedItem as ImageListBoxItem).Tag as AutoCompleteItem).ToolTipText;
+                Point pt = GetCaretPoint();
+                pt.X += _autoBox.Width + 10;
+                pt.Y += 65;
+
+                _autoCompleteTooltip.Show(tt, this, pt.X, pt.Y);
+            }
+        }
+
+        void OnAutoCompleteDoubleClick(object sender, EventArgs e)
+        {
+            PutAutoCompleteSuggestion();
+            _autoBox.Hide();
+            _autoCompleteTooltip.Hide(this);
+        }
+
+        private void MoveAutoCompleteSelectionDown()
+        {
+            if (_autoBox.SelectedIndex < 0)
+            {
+                _autoBox.SelectedIndex = 0;
+            }
+            else
+            {
+                int idx = _autoBox.SelectedIndex;
+                if ((idx + 1) <= _autoBox.Items.Count - 1)
+                {
+                    _autoBox.SelectedIndex = idx + 1;
+                }
+            }
+        }
+
+        private void MoveAutoCompleteSelectionUp()
+        {
+            if (_autoBox.SelectedIndex < 0)
+            {
+                _autoBox.SelectedIndex = 0;
+            }
+            else
+            {
+                int idx = _autoBox.SelectedIndex;
+                if ((idx - 1) >= 0)
+                {
+                    _autoBox.SelectedIndex = idx - 1;
+                }
+            }
+        }
+
+        private void LoadCompletableProperties(IEnumerable<FeatureSetColumn> cols)
+        {
+            foreach (FeatureSetColumn col in cols)
+            {
+                _autoCompleteItems[col.Name] = new PropertyItem(col);
+            }
+        }
+
+        private void LoadCompletableFunctions(FdoProviderCapabilitiesExpressionFunctionDefinitionCollection funcs)
+        {
+            foreach (FdoProviderCapabilitiesExpressionFunctionDefinition func in funcs)
+            {
+                _autoCompleteItems[func.Name] = new FunctionItem(func);
+            }
+        }
+
+        private void PutAutoCompleteSuggestion()
+        {
+            if (_autoBox.SelectedItems.Count == 1)
+            {
+                int pos = ExpressionText.SelectionStart;
+                string context;
+                char? c = GetContextBuffer(out context);
+
+                AutoCompleteItem aci = (_autoBox.SelectedItem as ImageListBoxItem).Tag as AutoCompleteItem;
+
+                string fullText = aci.AutoCompleteText;
+
+                int start = pos - context.Length;
+                int newPos = start + fullText.Length;
+                int selLength = -1;
+
+                //if it's a function, highlight the parameter (or the first parameter if there is multiple arguments
+                if (aci.Type == AutoCompleteItemType.Function)
+                {
+                    newPos = start + aci.Name.Length + 1; //Position the caret just after the opening bracket
+
+                    //Has at least two arguments
+                    int idx = fullText.IndexOf(",");
+                    if (idx > 0)
+                        selLength = idx - aci.Name.Length - 1;
+                    else
+                        selLength = fullText.IndexOf(")") - fullText.IndexOf("(") - 1;
+                }
+
+                string prefix = ExpressionText.Text.Substring(0, start);
+                string suffix = ExpressionText.Text.Substring(pos, ExpressionText.Text.Length - pos);
+
+                ExpressionText.Text = prefix + fullText + suffix;
+                ExpressionText.SelectionStart = newPos;
+                if (selLength > 0)
+                {
+                    ExpressionText.SelectionLength = selLength;
+                }
+                ExpressionText.ScrollToCaret();
+            }
+        }
+
+        private Point GetCaretPoint()
+        {
+            Point pt = ExpressionText.GetPositionFromCharIndex(ExpressionText.SelectionStart);
+            pt.Y += (int)Math.Ceiling(ExpressionText.Font.GetHeight()) + 2;
+            pt.X += 2; // for Courier, may need a better method
+            return pt;
+        }
+
+        private char? GetContextBuffer(out string buffer)
+        {
+            buffer = string.Empty;
+            int caretPos = ExpressionText.SelectionStart;
+            int currentPos = caretPos;
+            char? res = null;
+            if (caretPos > 0)
+            {
+                //Walk backwards
+                caretPos--;
+                char c = ExpressionText.Text[caretPos];
+                while (Char.IsLetterOrDigit(c))
+                {
+                    if (caretPos == 0)
+                        break;
+
+                    caretPos--;
+                    c = ExpressionText.Text[caretPos];
+                }
+
+                if (caretPos > 0)
+                {
+                    res = ExpressionText.Text[caretPos];
+                    buffer = ExpressionText.Text.Substring(caretPos + 1, currentPos - caretPos - 1);
+                }
+                else
+                {
+                    buffer = ExpressionText.Text.Substring(caretPos, currentPos - caretPos);
+                }
+            }
+            return res;
+        }
+
+        private void HandleKeyDown(KeyEventArgs e)
+        {
+            Keys code = e.KeyCode;
+            if (code == Keys.Escape)
+            {
+                if (_autoBox.Visible)
+                {
+                    e.SuppressKeyPress = true;
+                    _autoBox.Hide();
+                    _autoCompleteTooltip.Hide(this);
+                }
+            }
+            else if (code == Keys.Enter || code == Keys.Return)
+            {
+                if (_autoBox.Visible && _autoBox.SelectedItems.Count == 1)
+                {
+                    e.SuppressKeyPress = true;
+                    PutAutoCompleteSuggestion();
+                    _autoBox.Hide();
+                    _autoCompleteTooltip.Hide(this);
+                }
+            }
+        }
+
+        private void HandleKeyUp(KeyEventArgs e)
+        {
+            Keys code = e.KeyCode;
+            if (code == Keys.Oemcomma || code == Keys.OemOpenBrackets)
+            {
+                Complete(string.Empty);
+            }
+            else if (code == Keys.OemQuotes)
+            {
+                if (e.Modifiers == Keys.Shift)  // "
+                    InsertText("\"");
+                else                            // '
+                    InsertText("'");
+
+            }
+            else if (code == Keys.Up || code == Keys.Down)
+            {
+                if (_autoBox.Visible)
+                {
+                    if (code == Keys.Up)
+                    {
+                        MoveAutoCompleteSelectionUp();
+                    }
+                    else
+                    {
+                        MoveAutoCompleteSelectionDown();
+                    }
+                }
+            }
+            else if (code == Keys.Back)
+            {
+                string context;
+                char? c = GetContextBuffer(out context);
+                if (!string.IsNullOrEmpty(context))
+                {
+                    Complete(context);
+                }
+                else 
+                {
+                    if (_autoBox.Visible)
+                    {
+                        _autoBox.Hide();
+                        _autoCompleteTooltip.Hide(this);
+                    }
+                }
+            }
+            else if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.Right)
+            {
+                string context;
+                char? c = GetContextBuffer(out context);
+                Complete(context);
+            }
+            else
+            {
+                if (e.Modifiers == Keys.None)
+                {
+                    bool alpha = (code >= Keys.A && code <= Keys.Z);
+                    bool numeric = (code >= Keys.D0 && code <= Keys.D9) || (code >= Keys.NumPad0 && code <= Keys.NumPad9);
+                    if (alpha || numeric)
+                    {
+                        string context;
+                        char? c = GetContextBuffer(out context);
+                        Complete(context);
+                    }
+                }
+            }
+        }
+
+        private List<AutoCompleteItem> GetItemsStartingWith(string text)
+        {
+            List<AutoCompleteItem> ati = new List<AutoCompleteItem>();
+            foreach (string key in _autoCompleteItems.Keys)
+            {
+                if (key.ToLower().StartsWith(text.Trim().ToLower()))
+                {
+                    ati.Add(_autoCompleteItems[key]);
+                }
+            }
+            return ati;
+        }
+
+        private void Complete(string text)
+        {
+            List<AutoCompleteItem> items = GetItemsStartingWith(text);
+            _autoBox.Items.Clear();
+
+            int width = 0;
+            foreach (AutoCompleteItem it in items)
+            {
+                ImageListBoxItem litem = new ImageListBoxItem();
+                litem.Text = it.Name;
+                litem.ImageIndex = (int)it.Type;
+                litem.Tag = it;
+
+                _autoBox.Items.Add(litem);
+                int length = TextRenderer.MeasureText(it.Name, _autoBox.Font).Width + 30; //For icon size
+                if (length > width)
+                    width = length;
+            }
+            _autoBox.Width = width;
+
+            if (!_autoBox.Visible)
+            {
+                if (_autoBox.Items.Count > 0)
+                {
+                    _autoBox.BringToFront();
+                    _autoBox.Show();
+                }
+            }
+
+            Point pt = GetCaretPoint();
+
+            _autoBox.Location = pt;
+        }
+
+        private void ExpressionText_KeyDown(object sender, KeyEventArgs e)
+        {
+            HandleKeyDown(e);
+        }
+
+        private void ExpressionText_KeyUp(object sender, KeyEventArgs e)
+        {
+            HandleKeyUp(e);
+        }
     }
+
+    // ImageListBoxItem class 
+    public class ImageListBoxItem
+    {
+        private string _myText;
+        private int _myImageIndex;
+        // properties 
+        public string Text
+        {
+            get { return _myText; }
+            set { _myText = value; }
+        }
+        public int ImageIndex
+        {
+            get { return _myImageIndex; }
+            set { _myImageIndex = value; }
+        }
+        //constructor
+        public ImageListBoxItem(string text, int index)
+        {
+            _myText = text;
+            _myImageIndex = index;
+        }
+        public ImageListBoxItem(string text) : this(text, -1) { }
+        public ImageListBoxItem() : this("") { }
+
+        private object _tag;
+
+        public object Tag
+        {
+            get { return _tag; }
+            set { _tag = value; }
+        }
+
+        public override string ToString()
+        {
+            return _myText;
+        }
+    }//End of ImageListBoxItem class
+
+    // ImageListBox class 
+    //
+    // Based on GListBox
+    //
+    // http://www.codeproject.com/KB/combobox/glistbox.aspx
+    public class ImageListBox : ListBox
+    {
+        private ImageList _myImageList;
+        public ImageList ImageList
+        {
+            get { return _myImageList; }
+            set { _myImageList = value; }
+        }
+        public ImageListBox()
+        {
+            // Set owner draw mode
+            this.DrawMode = DrawMode.OwnerDrawFixed;
+        }
+        protected override void OnDrawItem(System.Windows.Forms.DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawFocusRectangle();
+            ImageListBoxItem item;
+            Rectangle bounds = e.Bounds;
+            Size imageSize = _myImageList.ImageSize;
+            try
+            {
+                item = (ImageListBoxItem)Items[e.Index];
+                if (item.ImageIndex != -1)
+                {
+                    _myImageList.Draw(e.Graphics, bounds.Left, bounds.Top, item.ImageIndex);
+                    e.Graphics.DrawString(item.Text, e.Font, new SolidBrush(e.ForeColor),
+                        bounds.Left + imageSize.Width, bounds.Top);
+                }
+                else
+                {
+                    e.Graphics.DrawString(item.Text, e.Font, new SolidBrush(e.ForeColor),
+                        bounds.Left, bounds.Top);
+                }
+            }
+            catch
+            {
+                if (e.Index != -1)
+                {
+                    e.Graphics.DrawString(Items[e.Index].ToString(), e.Font,
+                        new SolidBrush(e.ForeColor), bounds.Left, bounds.Top);
+                }
+                else
+                {
+                    e.Graphics.DrawString(Text, e.Font, new SolidBrush(e.ForeColor),
+                        bounds.Left, bounds.Top);
+                }
+            }
+            base.OnDrawItem(e);
+        }
+    }//End of ImageListBox class
 }
