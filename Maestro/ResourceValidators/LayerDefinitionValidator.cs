@@ -121,7 +121,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                                         }
 
 
-                                    //TODO: Validate property mapping, if any
+                                    if (vldef != null && vldef.PropertyMapping != null)
+                                        foreach (MaestroAPI.NameStringPairType s in vldef.PropertyMapping)
+                                        {
+                                            bool found = false;
+                                            foreach (MaestroAPI.FeatureSetColumn col in scm.Columns)
+                                                if (col.Name == s.Name)
+                                                {
+                                                    found = true;
+                                                    break;
+                                                }
+
+                                            if (!found)
+                                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format("Failed to find schema {0} in featuresource {1}", schema, fs.ResourceId)));
+
+                                        }
+
                                     break;
                                 }
 

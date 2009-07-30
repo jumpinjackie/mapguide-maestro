@@ -706,7 +706,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // ctlLayerProperties
             // 
             this.ctlLayerProperties.AutoScroll = true;
-            this.ctlLayerProperties.AutoScrollMinSize = new System.Drawing.Size(458, 304);
             this.ctlLayerProperties.Location = new System.Drawing.Point(16, 88);
             this.ctlLayerProperties.Name = "ctlLayerProperties";
             this.ctlLayerProperties.Size = new System.Drawing.Size(176, 184);

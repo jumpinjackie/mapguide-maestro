@@ -47,6 +47,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripButton DownloadFileButton;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton ToggleDocumentsButton;
+        private MenuItem EditResourceXmlMenu;
 		private Globalizator.Globalizator m_globalizor = null;
 
 		public ResourceDataEditor(OSGeo.MapGuide.MaestroAPI.ServerConnectionI connection, string resourceid)
@@ -103,6 +104,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.DownloadFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ToggleDocumentsButton = new System.Windows.Forms.ToolStripButton();
+            this.EditResourceXmlMenu = new System.Windows.Forms.MenuItem();
             this.ResourceDataFilesToolbar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -143,7 +145,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // contextMenu
             // 
             this.contextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.ChangeResourceTypeMenu});
+            this.ChangeResourceTypeMenu,
+            this.EditResourceXmlMenu});
             this.contextMenu.Popup += new System.EventHandler(this.contextMenu_Popup);
             // 
             // ChangeResourceTypeMenu
@@ -212,6 +215,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ToggleDocumentsButton.Text = "Show all";
             this.ToggleDocumentsButton.ToolTipText = "Toggles display of datafiles and resource files";
             this.ToggleDocumentsButton.Click += new System.EventHandler(this.ToggleDocumentsButton_Click);
+            // 
+            // EditResourceXmlMenu
+            // 
+            this.EditResourceXmlMenu.Enabled = false;
+            this.EditResourceXmlMenu.Index = 1;
+            this.EditResourceXmlMenu.Text = "Edit as xml";
+            this.EditResourceXmlMenu.Click += new System.EventHandler(this.EditResourceXmlMenu_Click);
             // 
             // ResourceDataEditor
             // 
@@ -734,6 +744,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         {
             ToggleDocumentsButton.Checked = !ToggleDocumentsButton.Checked;
             UpdateDisplay();
+        }
+
+        private void EditResourceXmlMenu_Click(object sender, EventArgs e)
+        {
+
         }
 
 	}

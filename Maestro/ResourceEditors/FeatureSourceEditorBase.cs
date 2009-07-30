@@ -55,6 +55,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Windows.Forms.Panel EditJoinPanel;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button EditExtensions;
+        private Panel panel1;
 
 		/// <summary> 
 		/// Required designer variable.
@@ -277,7 +278,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.EditorTab = new System.Windows.Forms.TabControl();
             this.CustomEditorPage = new System.Windows.Forms.TabPage();
             this.GenericEditorPage = new System.Windows.Forms.TabPage();
-            this.CoordinateSystemOverride = new OSGeo.MapGuide.Maestro.ResourceEditors.CoordinateSystemOverride();
             this.TestConnectionPanel = new System.Windows.Forms.Panel();
             this.TestConnectionResult = new System.Windows.Forms.TextBox();
             this.btnTest = new System.Windows.Forms.Button();
@@ -287,23 +287,24 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.EditJoinPanel = new System.Windows.Forms.Panel();
             this.EditExtensions = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CoordinateSystemOverride = new OSGeo.MapGuide.Maestro.ResourceEditors.CoordinateSystemOverride();
             this.EditorTab.SuspendLayout();
             this.TestConnectionPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.EditJoinPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // EditorTab
             // 
-            this.EditorTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.EditorTab.Controls.Add(this.CustomEditorPage);
             this.EditorTab.Controls.Add(this.GenericEditorPage);
+            this.EditorTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EditorTab.Location = new System.Drawing.Point(0, 24);
             this.EditorTab.Name = "EditorTab";
             this.EditorTab.SelectedIndex = 0;
-            this.EditorTab.Size = new System.Drawing.Size(592, 288);
+            this.EditorTab.Size = new System.Drawing.Size(592, 296);
             this.EditorTab.TabIndex = 0;
             this.EditorTab.SelectedIndexChanged += new System.EventHandler(this.EditorTab_SelectedIndexChanged);
             // 
@@ -311,7 +312,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.CustomEditorPage.Location = new System.Drawing.Point(4, 22);
             this.CustomEditorPage.Name = "CustomEditorPage";
-            this.CustomEditorPage.Size = new System.Drawing.Size(584, 262);
+            this.CustomEditorPage.Size = new System.Drawing.Size(584, 270);
             this.CustomEditorPage.TabIndex = 0;
             this.CustomEditorPage.Text = "Custom editor";
             // 
@@ -319,19 +320,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.GenericEditorPage.Location = new System.Drawing.Point(4, 22);
             this.GenericEditorPage.Name = "GenericEditorPage";
-            this.GenericEditorPage.Size = new System.Drawing.Size(584, 262);
+            this.GenericEditorPage.Size = new System.Drawing.Size(584, 270);
             this.GenericEditorPage.TabIndex = 1;
             this.GenericEditorPage.Text = "Generic Editor";
-            // 
-            // CoordinateSystemOverride
-            // 
-            this.CoordinateSystemOverride.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.CoordinateSystemOverride.Location = new System.Drawing.Point(8, 16);
-            this.CoordinateSystemOverride.Name = "CoordinateSystemOverride";
-            this.CoordinateSystemOverride.Size = new System.Drawing.Size(576, 112);
-            this.CoordinateSystemOverride.TabIndex = 1;
             // 
             // TestConnectionPanel
             // 
@@ -347,12 +338,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.TestConnectionResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.TestConnectionResult.Location = new System.Drawing.Point(0, 0);
+            this.TestConnectionResult.Location = new System.Drawing.Point(0, 8);
             this.TestConnectionResult.Multiline = true;
             this.TestConnectionResult.Name = "TestConnectionResult";
             this.TestConnectionResult.ReadOnly = true;
             this.TestConnectionResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TestConnectionResult.Size = new System.Drawing.Size(416, 40);
+            this.TestConnectionResult.Size = new System.Drawing.Size(416, 32);
             this.TestConnectionResult.TabIndex = 7;
             this.TestConnectionResult.Text = "Click on \"Test connection\" to test with the current parameters";
             // 
@@ -429,15 +420,35 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.label2.Text = "The feature source can be joined with other properties and contain values that ar" +
                 "e computed on the fly.";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ProviderName);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(592, 24);
+            this.panel1.TabIndex = 7;
+            // 
+            // CoordinateSystemOverride
+            // 
+            this.CoordinateSystemOverride.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.CoordinateSystemOverride.Location = new System.Drawing.Point(8, 16);
+            this.CoordinateSystemOverride.Name = "CoordinateSystemOverride";
+            this.CoordinateSystemOverride.Size = new System.Drawing.Size(576, 112);
+            this.CoordinateSystemOverride.TabIndex = 1;
+            // 
             // FeatureSourceEditorBase
             // 
             this.AutoScroll = true;
-            this.Controls.Add(this.TestConnectionPanel);
-            this.Controls.Add(this.ProviderName);
-            this.Controls.Add(this.label1);
+            this.AutoScrollMinSize = new System.Drawing.Size(300, 250);
             this.Controls.Add(this.EditorTab);
+            this.Controls.Add(this.TestConnectionPanel);
             this.Controls.Add(this.EditJoinPanel);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.panel1);
             this.Name = "FeatureSourceEditorBase";
             this.Size = new System.Drawing.Size(592, 544);
             this.EditorTab.ResumeLayout(false);
@@ -445,8 +456,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.TestConnectionPanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.EditJoinPanel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
 		}
 		#endregion

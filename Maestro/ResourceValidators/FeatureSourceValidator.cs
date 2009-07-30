@@ -43,9 +43,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
 
             try
             {
+                System.Globalization.CultureInfo ci = System.Globalization.CultureInfo.InvariantCulture;
                 MaestroAPI.FdoSpatialContextList lst = feature.GetSpatialInfo();
                 if (lst == null || lst.SpatialContext == null || lst.SpatialContext.Count == 0)
                     issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, "No spatial contexts found"));
+                else
+                    foreach (MaestroAPI.FdoSpatialContextListSpatialContext c in lst.SpatialContext)
+                        if (c.Extent == null)
+                            issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, "Empty spatial context extent detected"));
+                        else if (double.Parse(c.Extent.LowerLeftCoordinate.X, ci) <= -1000000 && double.Parse(c.Extent.LowerLeftCoordinate.Y, ci) <= -1000000 && double.Parse(c.Extent.UpperRightCoordinate.X, ci) >= 1000000 && double.Parse(c.Extent.UpperRightCoordinate.Y, ci) >= 1000000)
+                            issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, "Spatial context extent appears to be invalid (or default)"));
             }
             catch (Exception ex)
             {

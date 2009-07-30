@@ -3,36 +3,47 @@
 	<Fragment>
 
     <DirectoryRef Id="ProgramMenuFolder">
-      <Component Id="MaestroProgramMenuShortcutComponent" Guid="1D03AB64-E310-4974-835E-E9E8CFB18BBC">
-        <Shortcut Id="MaestroProgramMenuShortcut"
-                  Name="MapGuide Maestro"
-                  WorkingDirectory="INSTALLLOCATION"
-                  Description="Launch MapGuide Maestro"
-                  Directory="ProgramMenuFolder"
-                  Icon="MaestroIcon.exe"
-                  IconIndex="0"
-                  Target="[INSTALLLOCATION]Maestro.exe"
-                  />
-        <RegistryKey Root="HKCU" Key="Software\HexaD\Maestro\ProgramMenuShortcut">
-          <RegistryValue
-                  Value="Installed"
-                  Type="string"
-                  KeyPath="yes" />
-        </RegistryKey>
-        <RemoveFolder Id="MaestroProgramMenuLocation" On="uninstall" />
-      </Component>
+	  <Directory Id="MaestroProgramMenuFolder" Name="MapGuide Maestro">
+		  <Component Id="MaestroProgramMenuShortcutComponent" Guid="1D03AB64-E310-4974-835E-E9E8CFB18BBC">
+			<Shortcut Id="MaestroProgramMenuShortcut"
+					  Name="MapGuide Maestro"
+					  WorkingDirectory="ROOTFOLDER"
+					  Description="Launch MapGuide Maestro"
+					  Directory="MaestroProgramMenuFolder"
+					  Icon="MaestroIcon.exe"
+					  IconIndex="0"
+					  Target="[ROOTFOLDER]Maestro.exe"
+					  />
+			<Shortcut Id="MgCookerProgramMenuShortcut"
+					  Name="MgCooker"
+					  WorkingDirectory="ROOTFOLDER"
+					  Description="Launch MapGuide Maestro"
+					  Directory="MaestroProgramMenuFolder"
+					  Icon="MgCookerIcon.exe"
+					  IconIndex="0"
+					  Target="[ROOTFOLDER]MgCooker.exe"
+					  />
+			<RegistryKey Root="HKCU" Key="Software\HexaD\Maestro\ProgramMenuShortcut">
+			  <RegistryValue
+					  Value="Installed"
+					  Type="string"
+					  KeyPath="yes" />
+			</RegistryKey>
+			<RemoveFolder Id="MaestroProgramMenuLocation" On="uninstall" />
+		  </Component>
+	  </Directory>
     </DirectoryRef>
 
     <DirectoryRef Id="DesktopFolder">
       <Component Id="MaestroDesktopShortcutComponent" Guid="7BF060B8-389F-4a95-931C-5D551E55902A">
         <Shortcut Id="MaestroDesktopComponent"
                   Name="MapGuide Maestro"
-                  WorkingDirectory="INSTALLLOCATION"
+                  WorkingDirectory="ROOTFOLDER"
                   Description="Launch MapGuide Maestro"
                   Directory="DesktopFolder"
                   Icon="MaestroIcon.exe"
                   IconIndex="0"
-                  Target="[INSTALLLOCATION]Maestro.exe"
+                  Target="[ROOTFOLDER]Maestro.exe"
                 />
         <RegistryKey Root="HKCU" Key="Software\HexaD\Maestro\DesktopFolderShortcut">
           <RegistryValue
@@ -45,6 +56,7 @@
 
 
     <Icon Id="MaestroIcon.exe" SourceFile="..\Maestro\bin\Release\Maestro.exe" />
+    <Icon Id="MgCookerIcon.exe" SourceFile="..\Maestro\bin\Release\MgCooker.exe" />
 
   </Fragment>
 </Wix>

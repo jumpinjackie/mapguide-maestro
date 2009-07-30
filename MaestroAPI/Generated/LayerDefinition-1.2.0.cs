@@ -1542,7 +1542,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
     public class LayerDefinition : LayerDefinitionType {
 
-        public static readonly string SchemaName = "LayerDefinition-1.2.0.xsd";
+        public static readonly string SchemaName = "LayerDefinition-1.3.0.xsd";
         public static readonly string SchemaName1_2 = "LayerDefinition-1.2.0.xsd";
 		public static readonly string SchemaName1_1 = "LayerDefinition-1.1.0.xsd";
 		public static readonly string SchemaName1_0 = "LayerDefinition-1.0.0.xsd";
