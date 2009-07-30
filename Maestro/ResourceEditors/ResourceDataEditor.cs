@@ -50,10 +50,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private MenuItem EditResourceXmlMenu;
 		private Globalizator.Globalizator m_globalizor = null;
 
-		public ResourceDataEditor(OSGeo.MapGuide.MaestroAPI.ServerConnectionI connection, string resourceid)
+		public ResourceDataEditor(EditorInterface editor, string resourceid)
 			: this()
 		{
-			m_connection = connection;
+            m_editor = editor;
 			m_resource = resourceid;
 			this.Enabled = true;
 		}
@@ -98,13 +98,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.contextMenu = new System.Windows.Forms.ContextMenu();
             this.ChangeResourceTypeMenu = new System.Windows.Forms.MenuItem();
+            this.EditResourceXmlMenu = new System.Windows.Forms.MenuItem();
             this.ResourceDataFilesToolbar = new System.Windows.Forms.ToolStrip();
             this.AddFileButton = new System.Windows.Forms.ToolStripButton();
             this.DeleteFileButton = new System.Windows.Forms.ToolStripButton();
             this.DownloadFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ToggleDocumentsButton = new System.Windows.Forms.ToolStripButton();
-            this.EditResourceXmlMenu = new System.Windows.Forms.MenuItem();
             this.ResourceDataFilesToolbar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -153,6 +153,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.ChangeResourceTypeMenu.Index = 0;
             this.ChangeResourceTypeMenu.Text = "Change type";
+            // 
+            // EditResourceXmlMenu
+            // 
+            this.EditResourceXmlMenu.Index = 1;
+            this.EditResourceXmlMenu.Text = "Edit as xml";
+            this.EditResourceXmlMenu.Click += new System.EventHandler(this.EditResourceXmlMenu_Click);
             // 
             // ResourceDataFilesToolbar
             // 
@@ -216,13 +222,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ToggleDocumentsButton.ToolTipText = "Toggles display of datafiles and resource files";
             this.ToggleDocumentsButton.Click += new System.EventHandler(this.ToggleDocumentsButton_Click);
             // 
-            // EditResourceXmlMenu
-            // 
-            this.EditResourceXmlMenu.Enabled = false;
-            this.EditResourceXmlMenu.Index = 1;
-            this.EditResourceXmlMenu.Text = "Edit as xml";
-            this.EditResourceXmlMenu.Click += new System.EventHandler(this.EditResourceXmlMenu_Click);
-            // 
             // ResourceDataEditor
             // 
             this.Controls.Add(this.ResourceDataFiles);
@@ -240,7 +239,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private OSGeo.MapGuide.MaestroAPI.ResourceDataList m_resourceFiles;
 		private string m_resource;
-		private OSGeo.MapGuide.MaestroAPI.ServerConnectionI m_connection;
+		private EditorInterface m_editor;
 
 		private void ResourceDataFiles_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
@@ -250,7 +249,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private void RefreshFileList()
 		{
 			if (m_resourceExists && m_resource != null)
-				m_resourceFiles = m_connection.EnumerateResourceData(m_resource);
+				m_resourceFiles = m_editor.CurrentConnection.EnumerateResourceData(m_resource);
 		}
 
 		private void UpdateDisplay()
@@ -275,6 +274,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 							ListViewItem lvi = new ListViewItem(new string[] {d.Name, d.Type.ToString()}, ShellIcons.GetShellIcon(d.Name));
 							if (d.Type != OSGeo.MapGuide.MaestroAPI.ResourceDataType.File)
 								lvi.Font = new Font(ResourceDataFiles.Font, FontStyle.Italic);
+                            lvi.Tag = d;
 							ResourceDataFiles.Items.Add(lvi);
 						}
 					}
@@ -639,7 +639,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void ChangeType_Clicked(object sender, System.EventArgs e)
 		{
-			ToolStripMenuItem menu = sender as ToolStripMenuItem;
+            MenuItem menu = sender as MenuItem;
 			if (menu == null)
 				return;
 
@@ -651,10 +651,26 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					try
 					{
 						retry = false;
-						using(System.IO.Stream s = m_connection.GetResourceData(m_resource, i.Text))
+                        using (System.IO.Stream s = m_editor.CurrentConnection.GetResourceData(m_resource, i.Text))
 						{
-							m_connection.DeleteResourceData(m_resource, i.Text);
-							m_connection.SetResourceData(m_resource, i.Text, targetType, s);
+                            m_editor.CurrentConnection.DeleteResourceData(m_resource, i.Text);
+                            m_editor.HasChanged();
+
+                            try
+                            {
+                                m_editor.CurrentConnection.SetResourceData(m_resource, i.Text, targetType, s);
+                            }
+                            catch
+                            {
+                                try 
+                                {
+                                    //Attempt to recover the file
+                                    s.Position = 0;
+                                    m_editor.CurrentConnection.SetResourceData(m_resource, i.Text, ((MaestroAPI.ResourceDataListResourceData)i.Tag).Type, s); 
+                                }
+                                catch { }
+                                throw;
+                            }
 						}
 					}
 					catch(Exception ex)
@@ -709,14 +725,21 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		public OSGeo.MapGuide.MaestroAPI.ServerConnectionI Connection
 		{
-			get { return m_connection; }
-			set { m_connection = value; }
+			get { return m_editor.CurrentConnection; }
 		}
+
+        public EditorInterface Editor
+        {
+            get { return m_editor; }
+            set { m_editor = value; }
+        }
 
         private void AddFileButton_Click(object sender, EventArgs e)
         {
-            if (AddFilesToResource(this, m_connection, m_resource, m_resourceFiles))
+            if (AddFilesToResource(this, m_editor.CurrentConnection, m_resource, m_resourceFiles))
             {
+                m_editor.HasChanged();
+                
                 RefreshFileList();
                 UpdateDisplay();
             }
@@ -724,8 +747,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
         private void DeleteFileButton_Click(object sender, EventArgs e)
         {
-            if (DeleteFilesFromResource(this, m_connection, m_resource, ResourceDataFiles))
+            if (DeleteFilesFromResource(this, m_editor.CurrentConnection, m_resource, ResourceDataFiles))
             {
+                m_editor.HasChanged();
+
                 RefreshFileList();
                 UpdateDisplay();
             }
@@ -733,7 +758,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
         private void DownloadFileButton_Click(object sender, EventArgs e)
         {
-            if (DownloadResourceFiles(this, m_connection, m_resource, ResourceDataFiles))
+            if (DownloadResourceFiles(this, m_editor.CurrentConnection, m_resource, ResourceDataFiles))
             {
                 RefreshFileList();
                 UpdateDisplay();
@@ -748,7 +773,27 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
         private void EditResourceXmlMenu_Click(object sender, EventArgs e)
         {
+            try
+            {
+			    if (ResourceDataFiles.SelectedItems.Count != 1)
+				    return;
 
+                XmlEditor dlg;
+                using (System.IO.StreamReader sr = new System.IO.StreamReader(m_editor.CurrentConnection.GetResourceData(m_resource, ResourceDataFiles.SelectedItems[0].Text), System.Text.Encoding.UTF8, true))
+                    dlg = new XmlEditor(sr.ReadToEnd(), m_editor.CurrentConnection);
+
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    using(System.IO.MemoryStream ms = new System.IO.MemoryStream(new System.Text.UTF8Encoding(false).GetBytes(dlg.EditorText)))
+                        m_editor.CurrentConnection.SetResourceData(m_resource, ResourceDataFiles.SelectedItems[0].Text, ((MaestroAPI.ResourceDataListResourceData)(ResourceDataFiles.SelectedItems[0].Tag)).Type, ms);
+                    
+                    m_editor.HasChanged();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, string.Format("Failed to update xml data: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 	}

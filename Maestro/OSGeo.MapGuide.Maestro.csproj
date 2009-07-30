@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F3BADE4F-2581-4B65-9E15-412C294DB973}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -262,9 +262,6 @@
     <Compile Include="WaitCursor.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="XmlEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <EmbeddedResource Include="ApplicationSettings.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ApplicationSettings.cs</DependentUpon>
@@ -341,10 +338,6 @@
     <EmbeddedResource Include="ValidationResults.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ValidationResults.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XmlEditor.resx">
-      <DependentUpon>XmlEditor.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="EditorMap.xml" />
     <Content Include="Icons\App.ico" />

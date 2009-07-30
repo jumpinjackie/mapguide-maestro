@@ -129,7 +129,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					m_feature.Provider = m_editor.CurrentConnection.RemoveVersionFromProviderName(m_provider.Name);
 
 				resourceDataEditor.ResourceExists = true; //m_editor.Existing;
-				resourceDataEditor.Connection = m_editor.CurrentConnection;
+				resourceDataEditor.Editor = m_editor;
 				resourceDataEditor.ResourceID = m_feature.ResourceId;
 			} 
 			finally 
@@ -269,7 +269,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			// 
 			this.resourceDataEditor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
 				| System.Windows.Forms.AnchorStyles.Right)));
-			this.resourceDataEditor.Connection = null;
 			this.resourceDataEditor.Enabled = false;
 			this.resourceDataEditor.Location = new System.Drawing.Point(0, 144);
 			this.resourceDataEditor.Name = "resourceDataEditor";

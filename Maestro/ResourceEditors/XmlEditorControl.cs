@@ -30,9 +30,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 	/// </summary>
 	public class XmlEditorControl : System.Windows.Forms.UserControl, IResourceEditorControl 
 	{
-		private System.Windows.Forms.Panel panel2;
-
-		private System.Windows.Forms.TextBox textEditor;
+        private System.Windows.Forms.Panel panel2;
+        public TextBox textEditor;
 		private System.ComponentModel.IContainer components;
 
         private EditorInterface m_editor;
@@ -62,21 +61,41 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripButton LaunchExternalEditorButton;
 		private string m_resourceId = null;
+        private bool m_modified = false;
+        private MaestroAPI.ServerConnectionI m_connection;
 
 		public XmlEditorControl(EditorInterface editor, string item)
-			: this()
+			: this(editor, editor.CurrentConnection.GetResource(item))
 		{
-			m_inUpdate = true;
-			m_editor = editor;
-			textEditor.Text = System.Text.Encoding.UTF8.GetString(m_editor.CurrentConnection.GetResourceXmlData(item));
-			editor.Closing += new EventHandler(editor_Closing);
-			m_serializeType = m_editor.CurrentConnection.TryGetResourceType(item);
-			if (m_serializeType != null)
-				m_serializedObject = m_editor.CurrentConnection.DeserializeObject(m_serializeType, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text)) );
-			m_inUpdate = false;
-			m_resourceId = item;
-			UpdateDisplay();
 		}
+
+        public XmlEditorControl(EditorInterface editor, object item)
+            : this(editor)
+        {
+            m_inUpdate = true;
+            m_editor = editor;
+
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(m_editor.CurrentConnection.SerializeObject(item), System.Text.Encoding.UTF8, true))
+                textEditor.Text = sr.ReadToEnd();
+
+            editor.Closing += new EventHandler(editor_Closing);
+
+            m_connection = editor.CurrentConnection;
+            m_resourceId = null;
+            m_serializeType = null;
+            m_serializedObject = null;
+
+            if (item.GetType().GetProperty("ResourceId") != null)
+                m_resourceId = (string)item.GetType().GetProperty("ResourceId").GetValue(item, null);
+
+            if (m_resourceId != null)
+                m_serializeType = m_editor.CurrentConnection.TryGetResourceType(m_resourceId);
+            if (m_serializeType != null)
+                m_serializedObject = m_editor.CurrentConnection.DeserializeObject(m_serializeType, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text)));
+
+            m_inUpdate = false;
+            UpdateDisplay();
+        }
 
 		public XmlEditorControl(EditorInterface editor)
 			: this()
@@ -91,6 +110,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			m_resourceId = null;
 			UpdateDisplay();
 		}
+
+        public XmlEditorControl(string item, MaestroAPI.ServerConnectionI editor)
+            : this()
+        {
+            m_inUpdate = true;
+            m_editor = null;
+            textEditor.Text = item;
+            m_serializeType = null;
+            m_serializedObject = null;
+            m_inUpdate = false;
+            m_resourceId = null;
+            UpdateDisplay();
+        }
 
 		public void SetItem(string text, Type type)
 		{
@@ -180,7 +212,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.textEditor.AcceptsReturn = true;
             this.textEditor.AcceptsTab = true;
             this.textEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textEditor.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEditor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textEditor.Location = new System.Drawing.Point(0, 93);
             this.textEditor.MaxLength = 0;
             this.textEditor.Multiline = true;
@@ -385,6 +417,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private delegate void EndExternalEditingDelegate(bool fromThread);
 
+        public void EndExternalEditing()
+        {
+            EndExternalEditing(false);
+        }
+
 		private void EndExternalEditing(bool fromThread)
 		{
 			if (m_externalProcessWatcher != null)
@@ -422,7 +459,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			textEditor.ReadOnly = false;
 		}
 
-		private bool ValidateXml()
+		public bool ValidateXml()
 		{
 			try
 			{
@@ -446,8 +483,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void textEditor_TextChanged(object sender, System.EventArgs e)
 		{
-			if (!m_inUpdate)
-				m_editor.HasChanged();
+            if (!m_inUpdate)
+            {
+                m_modified = true;
+                if (m_editor != null && !(this.ParentForm is XmlEditor))
+                    m_editor.HasChanged();
+            }
 		}
 
 		private void m_fsw_Changed(object sender, System.IO.FileSystemEventArgs e)
@@ -491,13 +532,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			if (m_serializeType != null)
 			{
-				m_serializedObject = m_editor.CurrentConnection.DeserializeObject(m_serializeType, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text)) );
+				m_serializedObject = m_connection.DeserializeObject(m_serializeType, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text)) );
+                m_modified = false;
 				return false;
 			}
 			else
 			{
-				m_editor.CurrentConnection.SetResourceXmlData(savename, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text)));
-				return true;
+                m_connection.SetResourceXmlData(savename, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text)));
+                m_modified = false;
+                return true;
 			}
 		}
 
@@ -595,5 +638,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             if (e.Control && e.KeyCode == Keys.A)
                 textEditor.SelectAll();
         }
+
+        public bool Modified { get { return m_modified; } }
+        public object SerializedObject { get { return m_serializedObject; } }
     }
 }

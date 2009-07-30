@@ -1812,7 +1812,7 @@ namespace OSGeo.MapGuide.Maestro
 				if (edi.Page == tabItems.SelectedTab)
 				{
 					object resource = ((IResourceEditorControl)edi.Page.Controls[0]).Resource;
-					XmlEditor dlg = new XmlEditor(resource, this.CurrentConnection);
+                    ResourceEditors.XmlEditor dlg = new ResourceEditors.XmlEditor(resource, edi);
 					if (dlg.ShowDialog() == DialogResult.OK)
 					{
 						object o = dlg.SerializedObject;

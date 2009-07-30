@@ -52,10 +52,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox ProviderName;
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.Panel EditJoinPanel;
-		private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel EditJoinPanel;
 		private System.Windows.Forms.Button EditExtensions;
         private Panel panel1;
+        private Button EditConfigDocButton;
 
 		/// <summary> 
 		/// Required designer variable.
@@ -284,11 +284,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.label1 = new System.Windows.Forms.Label();
             this.ProviderName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CoordinateSystemOverride = new OSGeo.MapGuide.Maestro.ResourceEditors.CoordinateSystemOverride();
             this.EditJoinPanel = new System.Windows.Forms.Panel();
             this.EditExtensions = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.CoordinateSystemOverride = new OSGeo.MapGuide.Maestro.ResourceEditors.CoordinateSystemOverride();
+            this.EditConfigDocButton = new System.Windows.Forms.Button();
             this.EditorTab.SuspendLayout();
             this.TestConnectionPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -389,10 +389,20 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Coordinate system override";
             // 
+            // CoordinateSystemOverride
+            // 
+            this.CoordinateSystemOverride.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.CoordinateSystemOverride.Location = new System.Drawing.Point(8, 16);
+            this.CoordinateSystemOverride.Name = "CoordinateSystemOverride";
+            this.CoordinateSystemOverride.Size = new System.Drawing.Size(576, 112);
+            this.CoordinateSystemOverride.TabIndex = 1;
+            // 
             // EditJoinPanel
             // 
+            this.EditJoinPanel.Controls.Add(this.EditConfigDocButton);
             this.EditJoinPanel.Controls.Add(this.EditExtensions);
-            this.EditJoinPanel.Controls.Add(this.label2);
             this.EditJoinPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.EditJoinPanel.Location = new System.Drawing.Point(0, 368);
             this.EditJoinPanel.Name = "EditJoinPanel";
@@ -402,23 +412,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // EditExtensions
             // 
             this.EditExtensions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditExtensions.Location = new System.Drawing.Point(424, 8);
+            this.EditExtensions.Location = new System.Drawing.Point(408, 8);
             this.EditExtensions.Name = "EditExtensions";
-            this.EditExtensions.Size = new System.Drawing.Size(160, 24);
+            this.EditExtensions.Size = new System.Drawing.Size(176, 24);
             this.EditExtensions.TabIndex = 1;
-            this.EditExtensions.Text = "Edit extensions";
+            this.EditExtensions.Text = "Edit extensions and joins";
             this.EditExtensions.Click += new System.EventHandler(this.EditExtensions_Click);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.Location = new System.Drawing.Point(8, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(408, 24);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "The feature source can be joined with other properties and contain values that ar" +
-                "e computed on the fly.";
             // 
             // panel1
             // 
@@ -430,15 +429,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.panel1.Size = new System.Drawing.Size(592, 24);
             this.panel1.TabIndex = 7;
             // 
-            // CoordinateSystemOverride
+            // EditConfigDocButton
             // 
-            this.CoordinateSystemOverride.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.CoordinateSystemOverride.Location = new System.Drawing.Point(8, 16);
-            this.CoordinateSystemOverride.Name = "CoordinateSystemOverride";
-            this.CoordinateSystemOverride.Size = new System.Drawing.Size(576, 112);
-            this.CoordinateSystemOverride.TabIndex = 1;
+            this.EditConfigDocButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.EditConfigDocButton.Location = new System.Drawing.Point(224, 8);
+            this.EditConfigDocButton.Name = "EditConfigDocButton";
+            this.EditConfigDocButton.Size = new System.Drawing.Size(176, 24);
+            this.EditConfigDocButton.TabIndex = 2;
+            this.EditConfigDocButton.Text = "Edit configuration document";
+            this.EditConfigDocButton.Click += new System.EventHandler(this.EditConfigDocButton_Click);
             // 
             // FeatureSourceEditorBase
             // 
@@ -556,5 +555,49 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         public bool SupportsPreview { get { return m_child.SupportsPreview; } }
         public bool SupportsValidate { get { return m_child.SupportsValidate; } }
         public bool SupportsProfiling { get { return m_child.SupportsProfiling; } }
+
+        private void EditConfigDocButton_Click(object sender, EventArgs e)
+        {
+            if (m_feature == null)
+                return;
+
+            try
+            {
+                XmlEditor dlg;
+
+                if (string.IsNullOrEmpty(m_feature.ConfigurationDocument))
+                    dlg = new XmlEditor("", m_editor.CurrentConnection);
+                else
+                    using (System.IO.StreamReader sr = new System.IO.StreamReader(m_editor.CurrentConnection.GetResourceData(m_feature.ResourceId, m_feature.ConfigurationDocument), System.Text.Encoding.UTF8, true))
+                        dlg = new XmlEditor(sr.ReadToEnd(), m_editor.CurrentConnection);
+
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    if (!string.IsNullOrEmpty(m_feature.ConfigurationDocument))
+                    {
+                        m_editor.CurrentConnection.DeleteResourceData(m_feature.ResourceId, m_feature.ConfigurationDocument);
+                        m_editor.HasChanged();
+                    }
+
+                    if (string.IsNullOrEmpty(dlg.EditorText))
+                        m_feature.ConfigurationDocument = null;
+                    else
+                    {
+                        if (string.IsNullOrEmpty(m_feature.ConfigurationDocument))
+                            m_feature.ConfigurationDocument = "config.xml";
+
+                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(new System.Text.UTF8Encoding(false).GetBytes(dlg.EditorText)))
+                            m_editor.CurrentConnection.SetResourceData(m_feature.ResourceId, m_feature.ConfigurationDocument, OSGeo.MapGuide.MaestroAPI.ResourceDataType.Stream, ms);
+                    }
+
+                    m_childGeneric.UpdateDisplay();
+                    m_editor.HasChanged();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, string.Format("Failed to update xml data: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
