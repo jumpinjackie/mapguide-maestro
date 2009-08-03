@@ -549,12 +549,8 @@ namespace OSGeo.MapGuide.Maestro
                 if (caretPos > 0)
                 {
                     res = ExpressionText.Text[caretPos];
-                    buffer = ExpressionText.Text.Substring(caretPos + 1, currentPos - caretPos - 1);
                 }
-                else
-                {
-                    buffer = ExpressionText.Text.Substring(caretPos, currentPos - caretPos);
-                }
+                buffer = ExpressionText.Text.Substring(caretPos + 1, currentPos - caretPos - 1);
             }
             return res;
         }
@@ -598,6 +594,10 @@ namespace OSGeo.MapGuide.Maestro
                     InsertText("'");
 
             }
+            else if (code == Keys.D9 && e.Modifiers == Keys.Shift) // (
+            {
+                InsertText(")");
+            }
             else if (code == Keys.Up || code == Keys.Down)
             {
                 if (_autoBox.Visible)
@@ -620,7 +620,7 @@ namespace OSGeo.MapGuide.Maestro
                 {
                     Complete(context);
                 }
-                else 
+                else
                 {
                     if (_autoBox.Visible)
                     {
