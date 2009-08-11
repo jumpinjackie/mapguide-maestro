@@ -28,10 +28,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConditionListButtons));
             this.conditionList = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ConditionList();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.AddRuleButton = new System.Windows.Forms.Button();
@@ -40,6 +40,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.MoveRuleDownButton = new System.Windows.Forms.Button();
             this.MoveRuleUpButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ShowInLegend = new System.Windows.Forms.CheckBox();
+            this.toolTips = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,9 +49,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             // 
             this.conditionList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
+            this.conditionList.AutoScroll = true;
             this.conditionList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.conditionList.Location = new System.Drawing.Point(0, 24);
             this.conditionList.Name = "conditionList";
+            this.conditionList.Owner = null;
             this.conditionList.SelectedItem = null;
             this.conditionList.Size = new System.Drawing.Size(592, 72);
             this.conditionList.TabIndex = 2;
@@ -63,15 +67,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Rule";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(176, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Legendlabel";
             // 
             // label3
             // 
@@ -98,6 +93,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.AddRuleButton.Name = "AddRuleButton";
             this.AddRuleButton.Size = new System.Drawing.Size(32, 24);
             this.AddRuleButton.TabIndex = 4;
+            this.toolTips.SetToolTip(this.AddRuleButton, "Add a new rule");
             this.AddRuleButton.UseVisualStyleBackColor = true;
             this.AddRuleButton.Click += new System.EventHandler(this.AddRuleButton_Click);
             // 
@@ -109,6 +105,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.CopyRuleButton.Name = "CopyRuleButton";
             this.CopyRuleButton.Size = new System.Drawing.Size(32, 24);
             this.CopyRuleButton.TabIndex = 5;
+            this.toolTips.SetToolTip(this.CopyRuleButton, "Click to insert a copy of the current rule");
             this.CopyRuleButton.UseVisualStyleBackColor = true;
             this.CopyRuleButton.Click += new System.EventHandler(this.CopyRuleButton_Click);
             // 
@@ -119,6 +116,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.CreateThemeButton.Name = "CreateThemeButton";
             this.CreateThemeButton.Size = new System.Drawing.Size(32, 24);
             this.CreateThemeButton.TabIndex = 6;
+            this.toolTips.SetToolTip(this.CreateThemeButton, "Click to create a theme for the feature");
             this.CreateThemeButton.UseVisualStyleBackColor = true;
             this.CreateThemeButton.Click += new System.EventHandler(this.CreateThemeButton_Click);
             // 
@@ -130,6 +128,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.MoveRuleDownButton.Name = "MoveRuleDownButton";
             this.MoveRuleDownButton.Size = new System.Drawing.Size(32, 24);
             this.MoveRuleDownButton.TabIndex = 7;
+            this.toolTips.SetToolTip(this.MoveRuleDownButton, "Move the selected rule down");
             this.MoveRuleDownButton.UseVisualStyleBackColor = true;
             this.MoveRuleDownButton.Click += new System.EventHandler(this.MoveRuleDownButton_Click);
             // 
@@ -141,11 +140,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.MoveRuleUpButton.Name = "MoveRuleUpButton";
             this.MoveRuleUpButton.Size = new System.Drawing.Size(32, 24);
             this.MoveRuleUpButton.TabIndex = 8;
+            this.toolTips.SetToolTip(this.MoveRuleUpButton, "Move the selected rule up");
             this.MoveRuleUpButton.UseVisualStyleBackColor = true;
             this.MoveRuleUpButton.Click += new System.EventHandler(this.MoveRuleUpButton_Click);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ShowInLegend);
             this.panel1.Controls.Add(this.MoveRuleUpButton);
             this.panel1.Controls.Add(this.MoveRuleDownButton);
             this.panel1.Controls.Add(this.CreateThemeButton);
@@ -153,13 +154,26 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.panel1.Controls.Add(this.AddRuleButton);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(593, 24);
             this.panel1.TabIndex = 1;
+            // 
+            // ShowInLegend
+            // 
+            this.ShowInLegend.AutoSize = true;
+            this.ShowInLegend.Checked = true;
+            this.ShowInLegend.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ShowInLegend.Location = new System.Drawing.Point(176, 6);
+            this.ShowInLegend.Name = "ShowInLegend";
+            this.ShowInLegend.Size = new System.Drawing.Size(84, 17);
+            this.ShowInLegend.TabIndex = 9;
+            this.ShowInLegend.Text = "Legendlabel";
+            this.toolTips.SetToolTip(this.ShowInLegend, "Check to show in legend (only avalible in LayerDefinition 1.3.0 and above)");
+            this.ShowInLegend.UseVisualStyleBackColor = true;
+            this.ShowInLegend.CheckedChanged += new System.EventHandler(this.ShowInLegend_CheckedChanged);
             // 
             // ConditionListButtons
             // 
@@ -179,7 +193,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
         private ConditionList conditionList;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button AddRuleButton;
@@ -188,5 +201,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         private System.Windows.Forms.Button MoveRuleDownButton;
         private System.Windows.Forms.Button MoveRuleUpButton;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox ShowInLegend;
+        private System.Windows.Forms.ToolTip toolTips;
     }
 }

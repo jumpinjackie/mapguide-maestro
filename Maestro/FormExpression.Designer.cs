@@ -90,12 +90,14 @@ namespace OSGeo.MapGuide.Maestro
             // 
             // toolStrip1
             // 
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnProperties,
             this.btnFunctions,
             this.btnFilter});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(464, 25);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
@@ -131,25 +133,25 @@ namespace OSGeo.MapGuide.Maestro
             // btnCondition
             // 
             this.btnCondition.Name = "btnCondition";
-            this.btnCondition.Size = new System.Drawing.Size(152, 22);
+            this.btnCondition.Size = new System.Drawing.Size(130, 22);
             this.btnCondition.Text = "Condition";
             // 
             // btnSpatial
             // 
             this.btnSpatial.Name = "btnSpatial";
-            this.btnSpatial.Size = new System.Drawing.Size(152, 22);
+            this.btnSpatial.Size = new System.Drawing.Size(130, 22);
             this.btnSpatial.Text = "Spatial";
             // 
             // btnDistance
             // 
             this.btnDistance.Name = "btnDistance";
-            this.btnDistance.Size = new System.Drawing.Size(152, 22);
+            this.btnDistance.Size = new System.Drawing.Size(130, 22);
             this.btnDistance.Text = "Distance";
             // 
             // ExpressionText
             // 
             this.ExpressionText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpressionText.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExpressionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExpressionText.HideSelection = false;
             this.ExpressionText.Location = new System.Drawing.Point(0, 25);
             this.ExpressionText.Multiline = true;

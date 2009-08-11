@@ -29,7 +29,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 	/// <summary>
 	/// A combobox that is able to display custom items
 	/// </summary>
-	public class CustomCombo : System.Windows.Forms.ComboBox 
+    [Serializable]
+    public class CustomCombo : System.Windows.Forms.ComboBox 
 	{
 
 		public CustomCombo()
@@ -115,14 +116,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		/// </summary>
 		private RenderCustomItem m_render = null;
 
-		/// <summary>
-		/// Accessor for custom render
-		/// </summary>
-		public RenderCustomItem CustomRender
-		{
-			get { return m_render; }
-			set { m_render = value; }
-		}
+        /// <summary>
+        /// Sets the custom render callback item
+        /// </summary>
+        /// <param name="render">The render to use</param>
+        public void SetCustomRender(RenderCustomItem render)
+        {
+            m_render = render;
+        }
 
 		/// <summary>
 		/// Interface for items in custom combo

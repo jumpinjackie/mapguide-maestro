@@ -24,6 +24,7 @@ using System.Drawing;
 namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 {
 
+    [Serializable]
 	public class ColorComboBox
 		: CustomCombo
 	{
@@ -38,7 +39,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			if (!this.DesignMode)
 			{
 				m_currentColor = new SpecialCell(SpecialCell.CellTypes.CurrentColor);
-				base.CustomRender = new RenderCustomItem(ColorComboRender);
+				base.SetCustomRender(new RenderCustomItem(ColorComboRender));
 
                 //ResetColors();
 			}

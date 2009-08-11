@@ -177,29 +177,55 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			Rectangle size_adj = new Rectangle(size.X, size.Y, size.Width - 1, size.Height - 1);
 
 			Point[] points = null;
-			switch(item.Fill == null ? "" : item.Fill.FillPattern)
-			{
-				//TODO: Implement other styles
-				default:
-				{
-					//Circle
-					int radius = Math.Min(size_adj.Width / 2, size_adj.Height / 2);
-					int npoints = Math.Min(Math.Max(15, radius / 5), 100);
-					Point center = new Point(size_adj.X + size_adj.Width / 2, size_adj.Y + size_adj.Height / 2);
-					double interval = (2 * Math.PI) / (double)npoints;
 
-					points = new Point[npoints + 1];
-					for(int i = 0; i < npoints; i++)
-					{
-						double angle = interval * i;
-						points[i] = new Point((int)(center.X + Math.Cos(angle) * radius), (int)(center.Y + Math.Sin(angle) * radius));
-					}
+            int radius = Math.Min(size_adj.Width / 2, size_adj.Height / 2);
+            int npoints = Math.Min(Math.Max(15, radius / 5), 100);
+            Point center = new Point(size_adj.X + size_adj.Width / 2, size_adj.Y + size_adj.Height / 2);
+
+            switch(item.Shape)
+			{
+                case OSGeo.MapGuide.MaestroAPI.ShapeType.Square:
+                    points = Rotate(CreateNGon(center, radius, 4), center, Math.PI / 4);
+                    break;
+                case OSGeo.MapGuide.MaestroAPI.ShapeType.Star:
+                    Point[] outerStar = Rotate(CreateNGon(center, radius, 5), center, -Math.PI / 2);
+                    Point[] innerStar = Rotate(Rotate(CreateNGon(center, radius / 2, 5), center, -Math.PI / 2), center, Math.PI / 5);
+                    points = new Point[outerStar.Length + innerStar.Length];
+                    for (int i = 0; i < points.Length; i++)
+                        points[i] = i % 2 == 0 ? outerStar[i >> 1] : innerStar[i >> 1];
+                    //points = innerStar;
+                    break;
+                case OSGeo.MapGuide.MaestroAPI.ShapeType.Triangle:
+                    points = Rotate(CreateNGon(center, radius, 3), center, Math.PI / 6);
+                    break;
+                case OSGeo.MapGuide.MaestroAPI.ShapeType.Cross:
+                case OSGeo.MapGuide.MaestroAPI.ShapeType.X:
+                    Point[] outerCross = Rotate(CreateNGon(center, radius, 4), center, -Math.PI / 2);
+                    Point[] innerCross = Rotate(Rotate(CreateNGon(center, radius / 2, 4), center, -Math.PI / 2), center, Math.PI / 4);
+                    points = new Point[13];
+                    points[0] = new Point(innerCross[0].X, outerCross[0].Y);
+                    points[1] = innerCross[0];
+                    points[2] = new Point(outerCross[1].X, innerCross[0].Y);
+                    points[3] = new Point(outerCross[1].X, innerCross[1].Y);
+                    points[4] = innerCross[1];
+                    points[5] = new Point(innerCross[1].X, outerCross[2].Y);
+                    points[6] = new Point(innerCross[2].X, outerCross[2].Y);
+                    points[7] = innerCross[2];
+                    points[8] = new Point(outerCross[3].X, innerCross[2].Y);
+                    points[9] = new Point(outerCross[3].X, innerCross[3].Y);
+                    points[10] = innerCross[3];
+                    points[11] = new Point(innerCross[3].X, outerCross[0].Y);
+                    points[12] = new Point(innerCross[0].X, outerCross[0].Y);
+
+                    if (item.Shape == OSGeo.MapGuide.MaestroAPI.ShapeType.X)
+                        points = Rotate(points, center, Math.PI / 4);
+                    break;
+				default: //Circle
+				{
+                    points = CreateNGon(center, radius, Math.Min(Math.Max(15, radius / 5), 100));
 					break;
 				}				
 			}
-
-			//Close path
-			points[points.Length-1] = points[0];
 
 			if (item.Fill != null)
 			{
@@ -253,6 +279,41 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 		
 		}
+
+        public static Point[] Rotate(Point[] points, Point center, double radians)
+        {
+            double sin = Math.Sin(radians);
+            double cos = Math.Cos(radians);
+
+            Point[] res = new Point[points.Length];
+            for (int i = 0; i < points.Length; i++)
+            {
+                int x = points[i].X - center.X;
+                int y = points[i].Y - center.Y;
+                res[i] = new Point(
+                    center.X + (int)((x * cos) - (y * sin)),
+                    center.Y + (int)((y * cos) + (x * sin))
+                );
+            }
+            return res;
+        }
+
+        public static Point[] CreateNGon(Point center, int radius, int npoints)
+        {
+            double interval = (2 * Math.PI) / (double)npoints;
+
+            Point[] points = new Point[npoints + 1];
+            for (int i = 0; i < npoints; i++)
+            {
+                double angle = interval * i;
+                points[i] = new Point((int)Math.Round(center.X + Math.Cos(angle) * radius), (int)Math.Round(center.Y + Math.Sin(angle) * radius));
+            }
+
+            //Close the polygon
+            points[points.Length - 1] = points[0];
+
+            return points;
+        }
 
 		public static GeometryStyleEditors.ImageStylePicker.NamedImage[] FillImages
 		{

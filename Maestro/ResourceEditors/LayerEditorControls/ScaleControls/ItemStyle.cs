@@ -93,6 +93,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
         private void previewPicture_Paint(object sender, PaintEventArgs e)
         {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Rectangle rect = new Rectangle(0, 0, previewPicture.Width, previewPicture.Height);
             if (m_label != null)
             {

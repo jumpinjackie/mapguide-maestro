@@ -1422,9 +1422,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 			if (mdef != null)
 			{
 				if (mdef.BaseMapDefinition != null)
-					if (mdef.BaseMapDefinition.BaseMapLayerGroup == null)
+					if (mdef.BaseMapDefinition.BaseMapLayerGroup == null && mdef.BaseMapDefinition.FiniteDisplayScale == null)
 						mdef.BaseMapDefinition = null;
-                    else if (mdef.BaseMapDefinition.BaseMapLayerGroup.Count == 0)
+                    else if (mdef.BaseMapDefinition.BaseMapLayerGroup == null || mdef.BaseMapDefinition.BaseMapLayerGroup.Count == 0)
                     {
                         if (mdef.BaseMapDefinition.FiniteDisplayScale.Count == 0)
                             mdef.BaseMapDefinition = null;

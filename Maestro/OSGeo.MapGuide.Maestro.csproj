@@ -41,7 +41,9 @@
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -343,6 +345,7 @@
     <Content Include="Icons\App.ico" />
     <EmbeddedResource Include="Icons\MapGuide Maestro.ico" />
     <Content Include="ProviderMap.xml" />
+    <None Include="app.config" />
     <None Include="Resources\bricks.png" />
     <None Include="Resources\sum.png" />
     <None Include="Resources\table.png" />

@@ -36,7 +36,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		{
 			if (!this.DesignMode)
 			{
-				base.CustomRender = new RenderCustomItem(ImageComboRender);
+				base.SetCustomRender(new RenderCustomItem(ImageComboRender));
 				base.ValueMember = "Name";
 				base.DisplayMember = "Name";
 			}

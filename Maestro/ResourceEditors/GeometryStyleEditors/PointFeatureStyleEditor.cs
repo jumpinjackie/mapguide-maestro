@@ -692,6 +692,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
 		{
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             if (m_item != null && m_item.Item as OSGeo.MapGuide.MaestroAPI.MarkSymbolType != null)
                 FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item);
             else

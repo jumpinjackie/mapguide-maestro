@@ -42,7 +42,9 @@
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -137,6 +139,7 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ColorBrewer.cs" />
     <Compile Include="CoordinateSystemOverride.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -511,6 +514,12 @@
     </Compile>
     <Compile Include="SymbolLibraryEditor.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ThemeCreator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThemeCreator.Designer.cs">
+      <DependentUpon>ThemeCreator.cs</DependentUpon>
     </Compile>
     <Compile Include="WaitForOperation.cs">
       <SubType>Form</SubType>
@@ -971,6 +980,9 @@
       <DependentUpon>EditScales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Preview layout.ApplicationDefinition" />
+    <EmbeddedResource Include="ThemeCreator.resx">
+      <DependentUpon>ThemeCreator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WaitForOperation.resx">
       <DependentUpon>WaitForOperation.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -978,6 +990,12 @@
     <EmbeddedResource Include="XmlEditor.resx">
       <DependentUpon>XmlEditor.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ColorBrewer.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

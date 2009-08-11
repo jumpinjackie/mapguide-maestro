@@ -38,10 +38,6 @@ namespace OSGeo.MapGuide.MgCooker
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.UseOfficialMethod = new System.Windows.Forms.CheckBox();
-            this.MetersPerUnit = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
-            this.MaxColLimit = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.UseNativeAPI = new System.Windows.Forms.CheckBox();
             this.Password = new System.Windows.Forms.TextBox();
@@ -50,29 +46,33 @@ namespace OSGeo.MapGuide.MgCooker
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.MaxRowLimit = new System.Windows.Forms.NumericUpDown();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.RandomTileOrder = new System.Windows.Forms.CheckBox();
             this.ThreadCount = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.LimitTileset = new System.Windows.Forms.CheckBox();
-            this.TilesetLimitPanel = new System.Windows.Forms.Panel();
             this.OfficialMethodPanel = new System.Windows.Forms.Panel();
+            this.MetersPerUnit = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.LimitTileset = new System.Windows.Forms.CheckBox();
+            this.UseOfficialMethod = new System.Windows.Forms.CheckBox();
+            this.TilesetLimitPanel = new System.Windows.Forms.Panel();
+            this.MaxRowLimit = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.MaxColLimit = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.RandomTileOrder = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MetersPerUnit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxColLimit)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxRowLimit)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ThreadCount)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.TilesetLimitPanel.SuspendLayout();
             this.OfficialMethodPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MetersPerUnit)).BeginInit();
+            this.TilesetLimitPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxRowLimit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxColLimit)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -81,7 +81,7 @@ namespace OSGeo.MapGuide.MgCooker
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 417);
+            this.panel1.Location = new System.Drawing.Point(0, 424);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(565, 41);
             this.panel1.TabIndex = 0;
@@ -129,7 +129,7 @@ namespace OSGeo.MapGuide.MgCooker
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(293, 417);
+            this.treeView1.Size = new System.Drawing.Size(293, 424);
             this.treeView1.TabIndex = 1;
             this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -156,64 +156,8 @@ namespace OSGeo.MapGuide.MgCooker
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(293, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(272, 417);
+            this.panel2.Size = new System.Drawing.Size(272, 424);
             this.panel2.TabIndex = 2;
-            // 
-            // UseOfficialMethod
-            // 
-            this.UseOfficialMethod.AutoSize = true;
-            this.UseOfficialMethod.Location = new System.Drawing.Point(24, 104);
-            this.UseOfficialMethod.Name = "UseOfficialMethod";
-            this.UseOfficialMethod.Size = new System.Drawing.Size(116, 17);
-            this.UseOfficialMethod.TabIndex = 10;
-            this.UseOfficialMethod.Text = "Use official method";
-            this.toolTip1.SetToolTip(this.UseOfficialMethod, "The official method is the most accurate, but requires that the meters per map un" +
-                    "it is entered");
-            this.UseOfficialMethod.UseVisualStyleBackColor = true;
-            this.UseOfficialMethod.CheckedChanged += new System.EventHandler(this.UseOfficialMethod_CheckedChanged);
-            // 
-            // MetersPerUnit
-            // 
-            this.MetersPerUnit.DecimalPlaces = 4;
-            this.MetersPerUnit.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.MetersPerUnit.Location = new System.Drawing.Point(104, 0);
-            this.MetersPerUnit.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.MetersPerUnit.Name = "MetersPerUnit";
-            this.MetersPerUnit.Size = new System.Drawing.Size(104, 20);
-            this.MetersPerUnit.TabIndex = 9;
-            this.toolTip1.SetToolTip(this.MetersPerUnit, "The number of meters pr. map unit");
-            this.MetersPerUnit.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.MetersPerUnit.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 13);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Meters pr. unit";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
-            // 
-            // MaxColLimit
-            // 
-            this.MaxColLimit.Location = new System.Drawing.Point(104, 24);
-            this.MaxColLimit.Name = "MaxColLimit";
-            this.MaxColLimit.Size = new System.Drawing.Size(104, 20);
-            this.MaxColLimit.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.MaxColLimit, "The maximum number of cols to generate tiles for");
             // 
             // groupBox1
             // 
@@ -299,14 +243,6 @@ namespace OSGeo.MapGuide.MgCooker
             this.label1.TabIndex = 0;
             this.label1.Text = "MapAgent";
             // 
-            // MaxRowLimit
-            // 
-            this.MaxRowLimit.Location = new System.Drawing.Point(104, 0);
-            this.MaxRowLimit.Name = "MaxRowLimit";
-            this.MaxRowLimit.Size = new System.Drawing.Size(104, 20);
-            this.MaxRowLimit.TabIndex = 6;
-            this.toolTip1.SetToolTip(this.MaxRowLimit, "The maximum number of rows to generate tiles for");
-            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
@@ -320,6 +256,17 @@ namespace OSGeo.MapGuide.MgCooker
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Threading";
+            // 
+            // RandomTileOrder
+            // 
+            this.RandomTileOrder.AutoSize = true;
+            this.RandomTileOrder.Location = new System.Drawing.Point(24, 48);
+            this.RandomTileOrder.Name = "RandomTileOrder";
+            this.RandomTileOrder.Size = new System.Drawing.Size(159, 17);
+            this.RandomTileOrder.TabIndex = 11;
+            this.RandomTileOrder.Text = "Randomize generation order";
+            this.toolTip1.SetToolTip(this.RandomTileOrder, "Select tiles at random, rather than sequentially");
+            this.RandomTileOrder.UseVisualStyleBackColor = true;
             // 
             // ThreadCount
             // 
@@ -353,24 +300,6 @@ namespace OSGeo.MapGuide.MgCooker
             this.label9.TabIndex = 4;
             this.label9.Text = "Concurrent requests";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 24);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Max cols";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Max rows";
-            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
@@ -386,6 +315,51 @@ namespace OSGeo.MapGuide.MgCooker
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tilesettings";
             // 
+            // OfficialMethodPanel
+            // 
+            this.OfficialMethodPanel.Controls.Add(this.MetersPerUnit);
+            this.OfficialMethodPanel.Controls.Add(this.label8);
+            this.OfficialMethodPanel.Enabled = false;
+            this.OfficialMethodPanel.Location = new System.Drawing.Point(24, 128);
+            this.OfficialMethodPanel.Name = "OfficialMethodPanel";
+            this.OfficialMethodPanel.Size = new System.Drawing.Size(216, 24);
+            this.OfficialMethodPanel.TabIndex = 13;
+            // 
+            // MetersPerUnit
+            // 
+            this.MetersPerUnit.DecimalPlaces = 4;
+            this.MetersPerUnit.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.MetersPerUnit.Location = new System.Drawing.Point(104, 0);
+            this.MetersPerUnit.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.MetersPerUnit.Name = "MetersPerUnit";
+            this.MetersPerUnit.Size = new System.Drawing.Size(104, 20);
+            this.MetersPerUnit.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.MetersPerUnit, "The number of meters pr. map unit");
+            this.MetersPerUnit.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.MetersPerUnit.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(74, 13);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Meters pr. unit";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
             // LimitTileset
             // 
             this.LimitTileset.AutoSize = true;
@@ -399,6 +373,19 @@ namespace OSGeo.MapGuide.MgCooker
             this.LimitTileset.UseVisualStyleBackColor = true;
             this.LimitTileset.CheckedChanged += new System.EventHandler(this.LimitTileset_CheckedChanged);
             // 
+            // UseOfficialMethod
+            // 
+            this.UseOfficialMethod.AutoSize = true;
+            this.UseOfficialMethod.Location = new System.Drawing.Point(24, 104);
+            this.UseOfficialMethod.Name = "UseOfficialMethod";
+            this.UseOfficialMethod.Size = new System.Drawing.Size(116, 17);
+            this.UseOfficialMethod.TabIndex = 10;
+            this.UseOfficialMethod.Text = "Use official method";
+            this.toolTip1.SetToolTip(this.UseOfficialMethod, "The official method is the most accurate, but requires that the meters per map un" +
+                    "it is entered");
+            this.UseOfficialMethod.UseVisualStyleBackColor = true;
+            this.UseOfficialMethod.CheckedChanged += new System.EventHandler(this.UseOfficialMethod_CheckedChanged);
+            // 
             // TilesetLimitPanel
             // 
             this.TilesetLimitPanel.Controls.Add(this.MaxRowLimit);
@@ -411,31 +398,45 @@ namespace OSGeo.MapGuide.MgCooker
             this.TilesetLimitPanel.Size = new System.Drawing.Size(216, 48);
             this.TilesetLimitPanel.TabIndex = 12;
             // 
-            // OfficialMethodPanel
+            // MaxRowLimit
             // 
-            this.OfficialMethodPanel.Controls.Add(this.MetersPerUnit);
-            this.OfficialMethodPanel.Controls.Add(this.label8);
-            this.OfficialMethodPanel.Location = new System.Drawing.Point(24, 128);
-            this.OfficialMethodPanel.Name = "OfficialMethodPanel";
-            this.OfficialMethodPanel.Size = new System.Drawing.Size(216, 24);
-            this.OfficialMethodPanel.TabIndex = 13;
+            this.MaxRowLimit.Location = new System.Drawing.Point(104, 0);
+            this.MaxRowLimit.Name = "MaxRowLimit";
+            this.MaxRowLimit.Size = new System.Drawing.Size(104, 20);
+            this.MaxRowLimit.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.MaxRowLimit, "The maximum number of rows to generate tiles for");
             // 
-            // RandomTileOrder
+            // label6
             // 
-            this.RandomTileOrder.AutoSize = true;
-            this.RandomTileOrder.Location = new System.Drawing.Point(24, 48);
-            this.RandomTileOrder.Name = "RandomTileOrder";
-            this.RandomTileOrder.Size = new System.Drawing.Size(159, 17);
-            this.RandomTileOrder.TabIndex = 11;
-            this.RandomTileOrder.Text = "Randomize generation order";
-            this.toolTip1.SetToolTip(this.RandomTileOrder, "Select tiles at random, rather than sequentially");
-            this.RandomTileOrder.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(52, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Max rows";
+            // 
+            // MaxColLimit
+            // 
+            this.MaxColLimit.Location = new System.Drawing.Point(104, 24);
+            this.MaxColLimit.Name = "MaxColLimit";
+            this.MaxColLimit.Size = new System.Drawing.Size(104, 20);
+            this.MaxColLimit.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.MaxColLimit, "The maximum number of cols to generate tiles for");
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 24);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Max cols";
             // 
             // SetupRun
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 458);
+            this.ClientSize = new System.Drawing.Size(565, 465);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -445,20 +446,20 @@ namespace OSGeo.MapGuide.MgCooker
             this.Text = "Setup a tile build";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MetersPerUnit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxColLimit)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxRowLimit)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ThreadCount)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.TilesetLimitPanel.ResumeLayout(false);
-            this.TilesetLimitPanel.PerformLayout();
             this.OfficialMethodPanel.ResumeLayout(false);
             this.OfficialMethodPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MetersPerUnit)).EndInit();
+            this.TilesetLimitPanel.ResumeLayout(false);
+            this.TilesetLimitPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxRowLimit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxColLimit)).EndInit();
             this.ResumeLayout(false);
 
         }

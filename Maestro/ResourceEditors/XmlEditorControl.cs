@@ -90,6 +90,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
             if (m_resourceId != null)
                 m_serializeType = m_editor.CurrentConnection.TryGetResourceType(m_resourceId);
+
+            if (m_serializeType == null)
+                m_serializeType = item.GetType();
+
             if (m_serializeType != null)
                 m_serializedObject = m_editor.CurrentConnection.DeserializeObject(m_serializeType, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text)));
 

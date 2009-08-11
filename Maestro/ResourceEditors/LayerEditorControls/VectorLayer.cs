@@ -843,6 +843,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 				row["Visible"] = false;		
 		}
 
+        public EditorInterface Editor { get { return m_editor; } }
+
+        public FeatureSourceDescription.FeatureSourceSchema Schema { get { return m_selectedSchema; } }
+
 		public object Resource
 		{
 			get { return m_layer; }

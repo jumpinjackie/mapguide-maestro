@@ -52,7 +52,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
                 if (m_owner != null && m_owner.Globalizor != null)
                 {
                     label1.Text = m_owner.Globalizor.Translate("Rule");
-                    label2.Text = m_owner.Globalizor.Translate("Legendlabel");
+                    ShowInLegend.Text = m_owner.Globalizor.Translate("Legendlabel");
                     label3.Text = m_owner.Globalizor.Translate("Featurestyle");
                     label4.Text = m_owner.Globalizor.Translate("Labelstyle");
                 }
@@ -139,7 +139,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
         private void CreateThemeButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(this, "This function is not yet implemented", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                ThemeCreator dlg = new ThemeCreator(m_owner.Editor, m_owner.Resource as LayerDefinition, m_owner.Schema);
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                    m_owner.UpdateDisplay();
+            }
+            catch (Exception ex)
+            {
+                m_owner.Editor.SetLastException(ex);
+                MessageBox.Show(this, string.Format("An error occured: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void CopyRuleButton_Click(object sender, EventArgs e)
@@ -213,6 +224,36 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         public int GetPreferedHeight()
         {
             return panel1.Height + conditionList.GetPreferedHeight() + 24;
+        }
+
+        private void ShowInLegend_CheckedChanged(object sender, EventArgs e)
+        {
+            LayerDefinition layer = (LayerDefinition)m_owner.Resource;
+            Version layerVersion = new Version((layer).version);
+            bool supported = layerVersion >= new Version(1, 3, 0);
+
+            if (!supported)
+                layer.ConvertLayerDefinitionToVersion(new Version(1, 3, 0));
+
+            if (m_point != null)
+            {
+                m_point.ShowInLegend = ShowInLegend.Checked;
+            }
+            else if (m_line != null)
+            {
+                m_line.ShowInLegend = ShowInLegend.Checked;
+            }
+            else if (m_area != null)
+            {
+                m_area.ShowInLegend = ShowInLegend.Checked;
+            }
+
+            if (!supported)
+                layer.ConvertLayerDefinitionToVersion(layerVersion); 
+            
+            if (ItemChanged != null)
+                ItemChanged(this, null);
+
         }
 
     }

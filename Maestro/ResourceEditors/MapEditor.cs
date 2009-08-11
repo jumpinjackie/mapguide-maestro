@@ -1876,6 +1876,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			if (source == null || source.TreeView != trvLayerGroups)
 				return;
 
+            if (source == target)
+                return;
+
 			source.Remove();
 			
 			string group;
@@ -2166,6 +2169,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
             g.BaseMapLayer.RemoveAt(g.BaseMapLayer.IndexOf(l));
             trvBaseLayerGroups.Nodes.Remove(trvBaseLayerGroups.SelectedNode);
+            m_editor.HasChanged();
         }
 
         private void AddBaseLayerButton_Click(object sender, EventArgs e)
@@ -2229,6 +2233,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
             m_map.BaseMapDefinition.BaseMapLayerGroup.RemoveAt(m_map.BaseMapDefinition.BaseMapLayerGroup.IndexOf(g));
             trvBaseLayerGroups.Nodes.Remove(trvBaseLayerGroups.SelectedNode);
+            m_editor.HasChanged();
         }
 
         //TODO: The button's enabled state should follow the selection
@@ -2339,6 +2344,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
             UpdateDisplay();
             trvBaseLayerGroups.SelectedNode = trvBaseLayerGroups.Nodes[trvBaseLayerGroups.Nodes.Count - 1];
+            m_editor.HasChanged();
         }
 
         private void activateMgCooker_Click(object sender, EventArgs e)
