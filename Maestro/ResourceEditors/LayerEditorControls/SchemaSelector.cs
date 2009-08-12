@@ -253,8 +253,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 				}
 
 				Geometry.SelectedIndex = Geometry.FindString(geom);
-				if (Geometry.Items.Count > 0 && (Geometry.SelectedIndex < 0 || Geometry.Text != geom))
-					Geometry.SelectedIndex = 0;
+                if (Geometry.Items.Count > 0 && (Geometry.SelectedIndex < 0 || Geometry.Text != geom))
+                {
+                    Geometry.SelectedIndex = 0;
+                    if (GeometryChanged != null)
+                        GeometryChanged(true, Geometry.Text); 
+                        //We select the default item, so notify the user that it was changed
+                }
 
 				if (geom != Geometry.Text)
 				{

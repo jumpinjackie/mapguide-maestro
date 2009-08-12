@@ -46,7 +46,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private bool m_isUpdating = false;
 
 		public event System.EventHandler LayerPropertiesChanged;
+        public event GroupRenameDelegate GroupRenamed;
 
+        public delegate void GroupRenameDelegate(object sender, GroupRenameEventArgs args);
+
+        public class GroupRenameEventArgs : System.EventArgs
+        {
+            public GroupRenameEventArgs(string previousName, string newName, OSGeo.MapGuide.MaestroAPI.MapLayerGroupCommonType group)
+            {
+                this.PreviousName = previousName;
+                this.NewName = newName;
+                this.Group = group;
+            }
+
+            public string NewName;
+            public string PreviousName;
+            public OSGeo.MapGuide.MaestroAPI.MapLayerGroupCommonType Group;
+        }
 
 		public MapLayerGroupProperties()
 		{
@@ -216,11 +232,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			if (m_isUpdating)
 				return;
 
-			if (m_group != null)
-				m_group.Name = txtLayername.Text;
+            if (m_group != null)
+            {
+                string prev= m_group.Name;
+                m_group.Name = txtLayername.Text;
 
-			if (LayerPropertiesChanged != null)
-				LayerPropertiesChanged(sender, e);
+                if (GroupRenamed != null)
+                    GroupRenamed(this, new GroupRenameEventArgs(prev, m_group.Name, m_group));
+
+                if (LayerPropertiesChanged != null)
+                    LayerPropertiesChanged(sender, e);
+            }
 		
 		}
 

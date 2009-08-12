@@ -144,9 +144,34 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 			ctlLayerProperties.LayerPropertiesChanged += new EventHandler(ctlLayerProperties_LayerPropertiesChanged);
 			ctlGroupProperties.LayerPropertiesChanged += new EventHandler(ctlGroupProperties_LayerPropertiesChanged);
+            ctlGroupProperties.GroupRenamed += new MapLayerGroupProperties.GroupRenameDelegate(ctlGroupProperties_GroupRenamed);
 
 			m_globalizor = new  Globalizator.Globalizator(this);
             bgColor.ResetColors();
+        }
+
+        void ctlGroupProperties_GroupRenamed(object sender, MapLayerGroupProperties.GroupRenameEventArgs args)
+        {
+            if (trvLayerGroups.SelectedNode == null || trvLayerGroups.SelectedNode.Tag == null)
+                return;
+
+            int index = m_map.LayerGroups.IndexOf((OSGeo.MapGuide.MaestroAPI.MapLayerGroupType)trvLayerGroups.SelectedNode.Tag);
+            if (index >= 0)
+            {
+                string new_folder_path = m_map.LayerGroups[index].GetFullPath("/", m_map) + "/";
+                string prev_folder_path = new_folder_path.Substring(0, new_folder_path.Length - args.NewName.Length - 1) + args.PreviousName + "/";
+
+                for (int i = 0; i < m_map.Layers.Count; i++)
+                    if (m_map.Layers[i].Group == args.PreviousName && m_map.Layers[i].GetFullPath("/", m_map) == null)
+                        m_map.Layers[i].Group = args.NewName;
+
+                for (int i = 0; i < m_map.LayerGroups.Count; i++)
+                    if (m_map.LayerGroups[i].Group == args.PreviousName && m_map.LayerGroups[i].GetFullPath("/", m_map) == null)
+                        m_map.LayerGroups[i].Group = args.NewName;
+
+                m_editor.HasChanged();
+                return;
+            }
         }
 
 		public void UpdateDisplay()

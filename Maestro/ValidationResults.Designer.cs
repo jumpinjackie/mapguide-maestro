@@ -31,12 +31,12 @@ namespace OSGeo.MapGuide.Maestro
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ValidationResults));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.SaveReportBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.SaveReportBtn = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +50,17 @@ namespace OSGeo.MapGuide.Maestro
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(595, 42);
             this.panel1.TabIndex = 0;
+            // 
+            // SaveReportBtn
+            // 
+            this.SaveReportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveReportBtn.Location = new System.Drawing.Point(488, 8);
+            this.SaveReportBtn.Name = "SaveReportBtn";
+            this.SaveReportBtn.Size = new System.Drawing.Size(91, 23);
+            this.SaveReportBtn.TabIndex = 1;
+            this.SaveReportBtn.Text = "Save as file...";
+            this.SaveReportBtn.UseVisualStyleBackColor = true;
+            this.SaveReportBtn.Click += new System.EventHandler(this.SaveReportBtn_Click);
             // 
             // CancelBtn
             // 
@@ -95,16 +106,6 @@ namespace OSGeo.MapGuide.Maestro
             this.imageList1.Images.SetKeyName(0, "Information.ico");
             this.imageList1.Images.SetKeyName(1, "Warning.ico");
             this.imageList1.Images.SetKeyName(2, "Error.ico");
-            // 
-            // SaveReportBtn
-            // 
-            this.SaveReportBtn.Location = new System.Drawing.Point(488, 8);
-            this.SaveReportBtn.Name = "SaveReportBtn";
-            this.SaveReportBtn.Size = new System.Drawing.Size(91, 23);
-            this.SaveReportBtn.TabIndex = 1;
-            this.SaveReportBtn.Text = "Save as file...";
-            this.SaveReportBtn.UseVisualStyleBackColor = true;
-            this.SaveReportBtn.Click += new System.EventHandler(this.SaveReportBtn_Click);
             // 
             // saveFileDialog1
             // 

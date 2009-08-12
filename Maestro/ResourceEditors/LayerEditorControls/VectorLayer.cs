@@ -959,6 +959,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 				return;
 
 			(m_layer.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType).Geometry = geom;
+            if (fromUser)
+                m_editor.HasChanged();
 		}
 
 		private void ViewerPropertiesTable_ColumnChanged(object sender, DataColumnChangeEventArgs e)

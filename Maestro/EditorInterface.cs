@@ -239,14 +239,16 @@ namespace OSGeo.MapGuide.Maestro
                 {
                     if (resid != null)
                     {
+                        //If the control handles the save, we only update the local items
                         if (!((IResourceEditorControl)m_page.Controls[0]).Save(resid))
                         {
                             m_editor.CurrentConnection.SaveResourceAs(((IResourceEditorControl)m_page.Controls[0]).Resource, resid);
-                            m_resourceID = resid;
                             ((IResourceEditorControl)m_page.Controls[0]).ResourceId = resid;
-                            m_page.Text = OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.GetName(resid);
-                            m_page.ToolTipText = resid;
                         }
+
+                        m_resourceID = resid;
+                        m_page.Text = OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.GetName(resid);
+                        m_page.ToolTipText = resid;
                     }
 
                     if (m_page.Text.EndsWith(" *"))
