@@ -191,7 +191,21 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         /// <returns>The string the represents the object</returns>
         public override string ToString()
         {
-            return m_name;
+            string type = "";
+            switch (m_type)
+            {
+                case "qual":
+                    type = "Qualitative";
+                    break;
+                case "seq":
+                    type = "Sequential";
+                    break;
+                case "div":
+                    type = "Diverging";
+                    break;
+            }
+
+            return m_name + " - " + type;
         }
     }
 }

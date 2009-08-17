@@ -149,9 +149,19 @@
             0,
             0,
             0});
+            this.RuleCount.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             this.RuleCount.Name = "RuleCount";
             this.RuleCount.Size = new System.Drawing.Size(208, 20);
             this.RuleCount.TabIndex = 7;
+            this.RuleCount.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             this.RuleCount.ValueChanged += new System.EventHandler(this.RuleCount_ValueChanged);
             // 
             // AggregateCombo
@@ -161,9 +171,9 @@
             this.AggregateCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AggregateCombo.FormattingEnabled = true;
             this.AggregateCombo.Items.AddRange(new object[] {
-            "Qualitative",
-            "Sequential",
-            "Diverging",
+            "Equal",
+            "Standard Deviation",
+            "Quantile",
             "Individual"});
             this.AggregateCombo.Location = new System.Drawing.Point(96, 0);
             this.AggregateCombo.Name = "AggregateCombo";
@@ -326,6 +336,7 @@
             this.CancelBtn.TabIndex = 1;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // OKBtn
             // 
@@ -336,6 +347,7 @@
             this.OKBtn.TabIndex = 0;
             this.OKBtn.Text = "OK";
             this.OKBtn.UseVisualStyleBackColor = true;
+            this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
             // 
             // GradientToColor
             // 
@@ -344,6 +356,7 @@
             this.GradientToColor.Name = "GradientToColor";
             this.GradientToColor.Size = new System.Drawing.Size(88, 21);
             this.GradientToColor.TabIndex = 8;
+            this.GradientToColor.SelectedIndexChanged += new System.EventHandler(this.GradientToColor_SelectedIndexChanged);
             // 
             // GradientFromColor
             // 
@@ -352,6 +365,7 @@
             this.GradientFromColor.Name = "GradientFromColor";
             this.GradientFromColor.Size = new System.Drawing.Size(88, 21);
             this.GradientFromColor.TabIndex = 5;
+            this.GradientFromColor.SelectedIndexChanged += new System.EventHandler(this.GradientFromColor_SelectedIndexChanged);
             // 
             // colorComboBox1
             // 
