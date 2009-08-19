@@ -1,26 +1,26 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual C# Express 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.Maestro", "OSGeo.MapGuide.Maestro.csproj", "{F3BADE4F-2581-4B65-9E15-412C294DB973}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.Maestro", "Maestro\OSGeo.MapGuide.Maestro.csproj", "{F3BADE4F-2581-4B65-9E15-412C294DB973}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FusionEditor", "FusionEditor\FusionEditor.csproj", "{A47D6F9A-F58D-4A2E-8E88-09CD833A160E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FusionEditor", "Maestro\FusionEditor\FusionEditor.csproj", "{A47D6F9A-F58D-4A2E-8E88-09CD833A160E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Globalizator", "Globalizator\Globalizator.csproj", "{361D5982-275F-4A4C-935F-0BB637330C9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Globalizator", "Maestro\Globalizator\Globalizator.csproj", "{361D5982-275F-4A4C-935F-0BB637330C9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceValidators", "ResourceValidators\ResourceValidators.csproj", "{6CB2368F-3405-4E1D-8773-64CA49630AD4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceValidators", "Maestro\ResourceValidators\ResourceValidators.csproj", "{6CB2368F-3405-4E1D-8773-64CA49630AD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MgCooker", "..\MgCooker\MgCooker.csproj", "{C76FFEBF-F047-4BE8-983C-BF8BF3CFB3D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MgCooker", "MgCooker\MgCooker.csproj", "{C76FFEBF-F047-4BE8-983C-BF8BF3CFB3D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MgCookerCommandline", "..\MgCooker\MgCookerCommandline\MgCookerCommandline.csproj", "{385D3D92-874C-43F8-ADFD-B0D6D13378D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MgCookerCommandline", "MgCooker\MgCookerCommandline\MgCookerCommandline.csproj", "{385D3D92-874C-43F8-ADFD-B0D6D13378D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI", "..\MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj", "{290B027E-3649-4A60-A9BF-0544831435E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI", "MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj", "{290B027E-3649-4A60-A9BF-0544831435E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceEditors", "ResourceEditors\ResourceEditors.csproj", "{E324888B-4A05-46A7-8FB4-54452145128F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceEditors", "Maestro\ResourceEditors\ResourceEditors.csproj", "{E324888B-4A05-46A7-8FB4-54452145128F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestroEditorInterface", "MaestroEditorInterface\MaestroEditorInterface.csproj", "{006AFE1A-BF79-4C84-888D-9396958A42BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestroEditorInterface", "Maestro\MaestroEditorInterface\MaestroEditorInterface.csproj", "{006AFE1A-BF79-4C84-888D-9396958A42BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.Maestro.ResourceBrowser", "ResourceBrowser\OSGeo.MapGuide.Maestro.ResourceBrowser.csproj", "{FD40B520-CC1B-41C7-B89B-693E0204EBCC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.Maestro.ResourceBrowser", "Maestro\ResourceBrowser\OSGeo.MapGuide.Maestro.ResourceBrowser.csproj", "{FD40B520-CC1B-41C7-B89B-693E0204EBCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.PackageBuilder", "..\MaestroAPI\PackageBuilder\OSGeo.MapGuide.MaestroAPI.PackageBuilder.csproj", "{290C057E-2679-4B60-C9DF-0675831234E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.PackageBuilder", "MaestroAPI\PackageBuilder\OSGeo.MapGuide.MaestroAPI.PackageBuilder.csproj", "{290C057E-2679-4B60-C9DF-0675831234E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
