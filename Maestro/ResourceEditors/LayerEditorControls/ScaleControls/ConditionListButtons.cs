@@ -141,9 +141,32 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         {
             try
             {
-                ThemeCreator dlg = new ThemeCreator(m_owner.Editor, m_owner.Resource as LayerDefinition, m_owner.Schema);
+                object owner = null;
+                object item = null;
+
+                //TODO: Would be nice if the user could specify the default styles
+                if (m_point != null)
+                {
+                    owner = m_point;
+                    item = new PointSymbolization2DType();
+                }
+                else if (m_line != null)
+                {
+                    owner = m_line;
+                    item = new StrokeTypeCollection();
+                }
+                else if (m_area != null)
+                {
+                    owner = m_area;
+                    item = new AreaSymbolizationFillType();
+                }
+
+                ThemeCreator dlg = new ThemeCreator(m_owner.Editor, m_owner.Resource as LayerDefinition, m_owner.Schema, owner, item);
                 if (dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    m_owner.Editor.HasChanged();
                     m_owner.UpdateDisplay();
+                }
             }
             catch (Exception ex)
             {

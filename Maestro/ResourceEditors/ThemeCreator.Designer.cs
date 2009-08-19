@@ -144,11 +144,6 @@
             this.RuleCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.RuleCount.Location = new System.Drawing.Point(96, 0);
-            this.RuleCount.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
             this.RuleCount.Minimum = new decimal(new int[] {
             3,
             0,
@@ -272,6 +267,7 @@
             this.ChangeBaseStyleBtn.TabIndex = 2;
             this.ChangeBaseStyleBtn.Text = "Change base style";
             this.ChangeBaseStyleBtn.UseVisualStyleBackColor = true;
+            this.ChangeBaseStyleBtn.Click += new System.EventHandler(this.ChangeBaseStyleBtn_Click);
             // 
             // ColorBrewerColors
             // 

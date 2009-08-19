@@ -29,10 +29,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ControlList = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ControlList = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,14 +47,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.panel1.Size = new System.Drawing.Size(790, 24);
             this.panel1.TabIndex = 0;
             // 
-            // ControlList
+            // label3
             // 
-            this.ControlList.AutoScroll = true;
-            this.ControlList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ControlList.Location = new System.Drawing.Point(0, 24);
-            this.ControlList.Name = "ControlList";
-            this.ControlList.Size = new System.Drawing.Size(790, 377);
-            this.ControlList.TabIndex = 1;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(160, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Display properties";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(80, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Maximum";
             // 
             // label1
             // 
@@ -65,23 +74,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.label1.TabIndex = 0;
             this.label1.Text = "Minimum";
             // 
-            // label2
+            // ControlList
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(104, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Maximum";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(208, 8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Display properties";
+            this.ControlList.AutoScroll = true;
+            this.ControlList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ControlList.Location = new System.Drawing.Point(0, 24);
+            this.ControlList.Name = "ControlList";
+            this.ControlList.Size = new System.Drawing.Size(790, 377);
+            this.ControlList.TabIndex = 1;
             // 
             // ScaleRangeList
             // 

@@ -47,6 +47,7 @@ namespace OSGeo.MapGuide.Maestro
         private LinkLabel tfnetLinkLabel;
         private Label label2;
         private LinkLabel ziplibLinkLabel;
+        private LinkLabel colorBrewerlinkLabel;
 		private  Globalizator.Globalizator m_globalizor = null;
 
 		public FormAbout()
@@ -99,6 +100,7 @@ namespace OSGeo.MapGuide.Maestro
             this.ziplibLinkLabel = new System.Windows.Forms.LinkLabel();
             this.tfnetLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
+            this.colorBrewerlinkLabel = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayPalImage)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -216,12 +218,13 @@ namespace OSGeo.MapGuide.Maestro
             this.Credits.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Credits.Size = new System.Drawing.Size(320, 142);
             this.Credits.TabIndex = 4;
-            this.Credits.Text = "Programming:\r\n  Kenneth Skovhede, HexaD\r\nArtwork:\r\n  Kenneth Skovhede, HexaD\r\nEng" +
-                "lish and Danish translation:\r\n  Kenneth Skovhede, HexaD\r\nSpanish translation:\r\n " +
-                " José Manuel Cerrejón González";
+            this.Credits.Text = "Programming:\r\n  Kenneth Skovhede\r\n  Jackie NG\r\nArtwork:\r\n  Kenneth Skovhede\r\nEngl" +
+                "ish and Danish translation:\r\n  Kenneth Skovhede\r\nSpanish translation:\r\n  José Ma" +
+                "nuel Cerrejón González ";
             // 
             // thirdPartyTab
             // 
+            this.thirdPartyTab.Controls.Add(this.colorBrewerlinkLabel);
             this.thirdPartyTab.Controls.Add(this.ziplibLinkLabel);
             this.thirdPartyTab.Controls.Add(this.tfnetLinkLabel);
             this.thirdPartyTab.Controls.Add(this.label2);
@@ -235,7 +238,7 @@ namespace OSGeo.MapGuide.Maestro
             // ziplibLinkLabel
             // 
             this.ziplibLinkLabel.AutoSize = true;
-            this.ziplibLinkLabel.Location = new System.Drawing.Point(8, 56);
+            this.ziplibLinkLabel.Location = new System.Drawing.Point(8, 52);
             this.ziplibLinkLabel.Name = "ziplibLinkLabel";
             this.ziplibLinkLabel.Size = new System.Drawing.Size(80, 13);
             this.ziplibLinkLabel.TabIndex = 2;
@@ -262,6 +265,19 @@ namespace OSGeo.MapGuide.Maestro
             this.label2.Size = new System.Drawing.Size(242, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "This program uses the following thirdparty libraries:";
+            // 
+            // colorBrewerlinkLabel
+            // 
+            this.colorBrewerlinkLabel.LinkArea = new System.Windows.Forms.LinkArea(84, 23);
+            this.colorBrewerlinkLabel.Location = new System.Drawing.Point(8, 72);
+            this.colorBrewerlinkLabel.Name = "colorBrewerlinkLabel";
+            this.colorBrewerlinkLabel.Size = new System.Drawing.Size(304, 32);
+            this.colorBrewerlinkLabel.TabIndex = 3;
+            this.colorBrewerlinkLabel.TabStop = true;
+            this.colorBrewerlinkLabel.Text = "This product includes color specifications and designs developed by Cynthia Brewe" +
+                "r (http://colorbrewer.org/).";
+            this.colorBrewerlinkLabel.UseCompatibleTextRendering = true;
+            this.colorBrewerlinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // FormAbout
             // 
@@ -319,6 +335,11 @@ namespace OSGeo.MapGuide.Maestro
         private void ziplibLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Program.OpenUrl("http://sharpdevelop.net/OpenSource/SharpZipLib/Default.aspx");
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Program.OpenUrl("http://colorbrewer.org/");
         }
 	}
 }

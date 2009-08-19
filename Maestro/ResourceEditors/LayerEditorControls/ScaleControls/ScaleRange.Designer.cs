@@ -46,7 +46,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             "infinite"});
             this.MinScale.Location = new System.Drawing.Point(0, 0);
             this.MinScale.Name = "MinScale";
-            this.MinScale.Size = new System.Drawing.Size(104, 21);
+            this.MinScale.Size = new System.Drawing.Size(80, 21);
             this.MinScale.TabIndex = 1;
             this.MinScale.SelectedIndexChanged += new System.EventHandler(this.MinScale_SelectedIndexChanged);
             this.MinScale.TextChanged += new System.EventHandler(this.MinScale_TextChanged);
@@ -56,9 +56,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.MaxScale.FormattingEnabled = true;
             this.MaxScale.Items.AddRange(new object[] {
             "infinite"});
-            this.MaxScale.Location = new System.Drawing.Point(104, 0);
+            this.MaxScale.Location = new System.Drawing.Point(80, 0);
             this.MaxScale.Name = "MaxScale";
-            this.MaxScale.Size = new System.Drawing.Size(104, 21);
+            this.MaxScale.Size = new System.Drawing.Size(80, 21);
             this.MaxScale.TabIndex = 2;
             this.MaxScale.SelectedIndexChanged += new System.EventHandler(this.MaxScale_SelectedIndexChanged);
             this.MaxScale.TextChanged += new System.EventHandler(this.MaxScale_TextChanged);
@@ -70,7 +70,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(208, 330);
+            this.panel1.Size = new System.Drawing.Size(160, 330);
             this.panel1.TabIndex = 3;
             // 
             // panel2
@@ -84,10 +84,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             // scaleRangeConditions
             // 
             this.scaleRangeConditions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scaleRangeConditions.Location = new System.Drawing.Point(208, 0);
+            this.scaleRangeConditions.Location = new System.Drawing.Point(160, 0);
             this.scaleRangeConditions.Name = "scaleRangeConditions";
             this.scaleRangeConditions.Owner = null;
-            this.scaleRangeConditions.Size = new System.Drawing.Size(594, 330);
+            this.scaleRangeConditions.Size = new System.Drawing.Size(642, 330);
             this.scaleRangeConditions.TabIndex = 0;
             this.scaleRangeConditions.ItemChanged += new System.EventHandler(this.scaleRangeConditions_ItemChanged);
             // 

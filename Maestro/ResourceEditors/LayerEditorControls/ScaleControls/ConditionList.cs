@@ -100,24 +100,35 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
             this.Controls.Clear();
 
-            if (m_point != null)
+            try
             {
-                if (m_point.PointRule != null)
-                    foreach (PointRuleType prt in m_point.PointRule)
-                        AddRuleControl(prt);
+                this.Visible = false;
+                this.SuspendLayout();
+
+                if (m_point != null)
+                {
+                    if (m_point.PointRule != null)
+                        foreach (PointRuleType prt in m_point.PointRule)
+                            AddRuleControl(prt);
+                }
+                else if (m_line != null)
+                {
+                    if (m_line.LineRule != null)
+                        foreach (LineRuleType lrt in m_line.LineRule)
+                            AddRuleControl(lrt);
+                }
+                else if (m_area != null)
+                {
+                    if (m_area != null)
+                        if (m_area.AreaRule != null)
+                            foreach (AreaRuleType art in m_area.AreaRule)
+                                AddRuleControl(art);
+                }
             }
-            else if (m_line != null)
+            finally
             {
-                if (m_line.LineRule != null)
-                    foreach (LineRuleType lrt in m_line.LineRule)
-                        AddRuleControl(lrt);
-            }
-            else if (m_area != null)
-            {
-                if (m_area != null)
-                    if (m_area.AreaRule != null)
-                        foreach (AreaRuleType art in m_area.AreaRule)
-                            AddRuleControl(art);
+                this.ResumeLayout();
+                this.Visible = true;
             }
         }
 
