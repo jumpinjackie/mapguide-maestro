@@ -1,5 +1,5 @@
 #region Disclaimer / License
-// Copyright (C) 2008, Kenneth Skovhede
+// Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
 // 
 // This library is free software; you can redistribute it and/or
@@ -340,7 +340,7 @@ namespace OSGeo.MapGuide.Maestro
 						con = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri(cmbServerUrl.Text), txtUsername.Text, txtPassword.Text, System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName, true);
 #else
 					OSGeo.MapGuide.MaestroAPI.ServerConnectionI con = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri(cmbServerUrl.Text), txtUsername.Text, txtPassword.Text, System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName, true);
-                    ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)con).UserAgent = "MapGuide Maestro";
+                    ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)con).UserAgent = "MapGuide Maestro v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 #endif
 					if (con.SiteVersion > con.MaxTestedVersion && con.SiteVersion > ps.ApprovedVersion)
 					{

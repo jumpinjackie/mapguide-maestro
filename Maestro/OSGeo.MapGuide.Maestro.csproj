@@ -124,6 +124,10 @@
       <Project>{290C057E-2679-4B60-C9DF-0675831234E2}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI.PackageBuilder</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MgCooker\MgCookerCommandline\MgCookerCommandline.csproj">
+      <Project>{385D3D92-874C-43F8-ADFD-B0D6D13378D7}</Project>
+      <Name>MgCookerCommandline</Name>
+    </ProjectReference>
     <ProjectReference Include="FusionEditor\FusionEditor.csproj">
       <Name>FusionEditor</Name>
       <Project>{A47D6F9A-F58D-4A2E-8E88-09CD833A160E}</Project>

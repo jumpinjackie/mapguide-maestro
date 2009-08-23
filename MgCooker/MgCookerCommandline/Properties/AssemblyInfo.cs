@@ -1,5 +1,5 @@
 #region Disclaimer / License
-// Copyright (C) 2008, Kenneth Skovhede
+// Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
 // 
 // This library is free software; you can redistribute it and/or
@@ -48,5 +48,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.1.0.4176")]
-[assembly: AssemblyFileVersion("1.1.0.4176")]
+[assembly: AssemblyVersion("1.1.0.4177")]
+[assembly: AssemblyFileVersion("1.1.0.4177")]

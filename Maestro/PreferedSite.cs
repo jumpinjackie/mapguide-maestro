@@ -1,5 +1,5 @@
 #region Disclaimer / License
-// Copyright (C) 2008, Kenneth Skovhede
+// Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
 // 
 // This library is free software; you can redistribute it and/or
@@ -144,6 +144,11 @@ namespace OSGeo.MapGuide.Maestro
                 if (!System.IO.Directory.Exists(path))
                     System.IO.Directory.CreateDirectory(path);
                 path = System.IO.Path.Combine(path, "sitelist.xml");
+
+                string oldPath = System.IO.Path.Combine(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "Maestro"), "sitelist.xml");
+                if (System.IO.File.Exists(oldPath) && !System.IO.File.Exists(path))
+                    try { System.IO.File.Move(oldPath, path); }
+                    catch { }
 
                 return path;
             }

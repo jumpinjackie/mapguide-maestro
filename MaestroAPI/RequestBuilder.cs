@@ -1,5 +1,5 @@
 #region Disclaimer / License
-// Copyright (C) 2008, Kenneth Skovhede
+// Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
 // 
 // This library is free software; you can redistribute it and/or
@@ -38,6 +38,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			m_hosturi = hosturi.AbsoluteUri;
 			m_locale = locale;
 			m_sessionID = sessionid;
+            m_userAgent += " v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 		}
 
 		internal RequestBuilder(Uri hosturi, string locale)

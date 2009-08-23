@@ -1,5 +1,5 @@
 #region Disclaimer / License
-// Copyright (C) 2008, Kenneth Skovhede
+// Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
 // 
 // This library is free software; you can redistribute it and/or
@@ -45,7 +45,7 @@ using System.Runtime.CompilerServices;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("1.1.0.4176")]
+[assembly: AssemblyVersion("1.1.0.4177")]
 
 //
 // In order to sign your assembly you must specify a key to use. Refer to the 

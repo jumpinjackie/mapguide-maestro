@@ -1,5 +1,5 @@
 #region Disclaimer / License
-// Copyright (C) 2008, Kenneth Skovhede
+// Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
 // 
 // This library is free software; you can redistribute it and/or
@@ -31,7 +31,7 @@ namespace OSGeo.MapGuide.Maestro
 		public static void Main(string[] args)
 		{
             //System.Text.RegularExpressions.Regex m_filenameTransformer = new System.Text.RegularExpressions.Regex(@"[^A-Za-z0-9\.-\/]");
-            //System.Text.RegularExpressions.Match m = m_filenameTransformer.Match("xxæøå");
+            //System.Text.RegularExpressions.Match m = m_filenameTransformer.Match("xxï¿½ï¿½ï¿½");
 
             /*MaestroAPI.HttpServerConnection con = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri("http://localhost:8008/mapguide"), "Administrator", "admin", "da", true);
             con.CreateRuntimeMap("Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition");

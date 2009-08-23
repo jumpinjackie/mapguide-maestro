@@ -1,5 +1,5 @@
 #region Disclaimer / License
-// Copyright (C) 2008, Kenneth Skovhede
+// Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
 // 
 // This library is free software; you can redistribute it and/or
@@ -219,8 +219,8 @@ namespace OSGeo.MapGuide.Maestro
             this.Credits.Size = new System.Drawing.Size(320, 142);
             this.Credits.TabIndex = 4;
             this.Credits.Text = "Programming:\r\n  Kenneth Skovhede\r\n  Jackie NG\r\nArtwork:\r\n  Kenneth Skovhede\r\nEngl" +
-                "ish and Danish translation:\r\n  Kenneth Skovhede\r\nSpanish translation:\r\n  José Ma" +
-                "nuel Cerrejón González ";
+                "ish and Danish translation:\r\n  Kenneth Skovhede\r\nSpanish translation:\r\n  Josï¿½ Ma" +
+                "nuel Cerrejï¿½n Gonzï¿½lez ";
             // 
             // thirdPartyTab
             // 
