@@ -28,8 +28,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Library to assist with building MapGuide Packages")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HexaD")]
-[assembly: AssemblyProduct("OSGeo.MapGuide.MaestroAPI.PackageBuilder")]
-[assembly: AssemblyCopyright("(c) HexaD 2009")]
+[assembly: AssemblyProduct("MapGuide Maestro")]
+[assembly: AssemblyCopyright("Copyright � HexaD 2009 LGPL")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -48,5 +48,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.1.0.4175")]
-[assembly: AssemblyFileVersion("1.1.0.4175")]
+[assembly: AssemblyVersion("1.1.0.4176")]
+[assembly: AssemblyFileVersion("1.1.0.4176")]

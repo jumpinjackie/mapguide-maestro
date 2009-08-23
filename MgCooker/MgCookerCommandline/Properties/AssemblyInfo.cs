@@ -25,11 +25,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MgCookerCommandline")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Commandline invokeable interface to MgCooker")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HexaD")]
-[assembly: AssemblyProduct("MgCookerCommandline")]
-[assembly: AssemblyCopyright("Copyright © HexaD A/S 2008")]
+[assembly: AssemblyProduct("MapGuide Maestro")]
+[assembly: AssemblyCopyright("Copyright © HexaD 2009 LGPL")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -48,5 +48,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.1.0.4175")]
-[assembly: AssemblyFileVersion("1.1.0.4175")]
+[assembly: AssemblyVersion("1.1.0.4176")]
+[assembly: AssemblyFileVersion("1.1.0.4176")]

@@ -24,12 +24,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OSGeo.MapGuide.Maestro.ResourceBrowser")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("ResourceBrowser")]
+[assembly: AssemblyDescription("A plugin for browsing MapGuide Resources")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("GEOGRAF A/S")]
-[assembly: AssemblyProduct("OSGeo.MapGuide.Maestro.ResourceBrowser")]
-[assembly: AssemblyCopyright("Copyright © GEOGRAF A/S 2009")]
+[assembly: AssemblyProduct("MapGuide Maestro")]
+[assembly: AssemblyCopyright("Copyright © HexaD 2009 LGPL")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -50,5 +50,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyFileVersion("1.1.0.4175")]
+[assembly: AssemblyVersion("1.1.0.4176")]
+[assembly: AssemblyFileVersion("1.1.0.4176")]
