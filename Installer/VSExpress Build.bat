@@ -4,6 +4,7 @@ SET MAESTRO_OUTPUT=..\InstallerTemp%TYPEBUILD%\MapGuideMaestro
 SET MAESTRO_WIX=..\Installer
 SET PARAFFIN_PATH=%MAESTRO_WIX%\paraffin.exe
 SET XCOPY=xcopy /E /Y /I /Q
+SET ZIP=%PROGRAMFILES%\7-zip\7z.exe
 
 %XCOPY% "..\Maestro\bin\%TYPEBUILD%" "%MAESTRO_OUTPUT%"
 del /Q "%MAESTRO_OUTPUT%"\*.vshost.*
@@ -19,6 +20,8 @@ rem del /Q "%MAESTRO_WIX%\incLang.wxs"
 for /D %%d in ("%MAESTRO_OUTPUT%\Localization\*") do call :langbuild %%d
 
 WixProjBuilder.exe Maestro.wixproj
+
+"%ZIP%" a -r "bin\%TYPEBUILD%\MapGuide Maestro.zip" "%MAESTRO_OUTPUT%"
 
 goto end_of_program
 

@@ -47,6 +47,20 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
         private bool m_isUpdating = false;
 
+        private class RuleItem
+        {
+            public string Label;
+            public string Filter;
+            public Color Color;
+
+            public RuleItem(string Filter, string Label, Color Color)
+            {
+                this.Filter = Filter;
+                this.Label = Label;
+                this.Color = Color;
+            }
+        }
+
         static ThemeCreator ()
         {
             NUMERIC_TYPES = new Type[] { typeof(byte), typeof(int), typeof(float), typeof(double) };
@@ -60,7 +74,58 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             m_schema = schema;
             m_ruleCollection = ruleCollection;
             m_defaultItem = defaultItem;
+
+            ColorBrewerColorSet.SetCustomRender(new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.CustomCombo.RenderCustomItem(DrawColorSetPreview));
         }
+
+        private bool DrawColorSetPreview(DrawItemEventArgs args, object o)
+        {
+            if (o is ColorBrewer.ColorBrewerListItem)
+            {
+                ColorBrewer cb = (o as ColorBrewer.ColorBrewerListItem).Set;
+                int maxItems = (args.Bounds.Width - 2) / 10;
+                int items = Math.Min(maxItems, cb.Colors.Count);
+
+                //Make odd number if there are too many
+                if (maxItems < cb.Colors.Count && items % 2 == 0)
+                    items--;
+
+                int itemWidth = args.Bounds.Width / items;
+                int leftOffset = (args.Bounds.Width - (itemWidth * items)) / 2;
+
+                args.DrawBackground();
+
+                for (int i = 0; i < items; i++)
+                {
+                    Rectangle area = new Rectangle(args.Bounds.Left + leftOffset + (i * itemWidth), args.Bounds.Top + 1, itemWidth, args.Bounds.Height - 3); ;
+
+                    if (maxItems < cb.Colors.Count && i == items / 2)
+                    {
+                        RectangleF areaF = new RectangleF(area.X, area.Y, area.Width, area.Height);
+                        System.Drawing.StringFormat sf = new StringFormat();
+                        sf.Alignment = StringAlignment.Center;
+                        using (Brush b = new SolidBrush(ColorBrewerColorSet.ForeColor))
+                            args.Graphics.DrawString("...", ColorBrewerColorSet.Font, b, areaF, sf);
+                    }
+                    else
+                    {
+                        Color c = i < items / 2 ? cb.Colors[i] : cb.Colors[cb.Colors.Count - i];
+                        using (Brush b = new SolidBrush(c))
+                            args.Graphics.FillRectangle(b, area);
+                        args.Graphics.DrawRectangle(Pens.Black, area);
+                    }
+
+                }
+
+                if (args.State == DrawItemState.Selected)
+                    args.DrawFocusRectangle();
+
+                return true;
+            }
+            else
+                return false;
+        }
+
 
         private ThemeCreator()
         {
@@ -161,6 +226,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
                         if (AggregateCombo.SelectedIndex < 0)
                             AggregateCombo.SelectedIndex = 0;
+                        if (AggregateCombo.SelectedIndex == AggregateCombo.Items.Count - 1)
+                            AggregateCombo.SelectedIndex = 0;
 
                         RefreshColorBrewerSet();
                     }
@@ -201,26 +268,27 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             try
             {
                 m_isUpdating = true;
-                string prev = ColorBrewerColorSet.Text;
-                ColorBrewerColorSet.Items.Clear();
+                string prevType = ColorBrewerDataType.Text;
+                ColorBrewerDataType.Items.Clear();
 
                 foreach (ColorBrewer cb in m_colorBrewer)
                     if (cb.Colors.Count == RuleCount.Value)
-                        ColorBrewerColorSet.Items.Add(cb);
+                        if (ColorBrewerDataType.FindString(cb.DisplayType) < 0)
+                            ColorBrewerDataType.Items.Add(cb.DisplayType);
 
-                if (ColorBrewerColorSet.FindString(prev) >= 0)
-                    ColorBrewerColorSet.SelectedIndex = ColorBrewerColorSet.FindString(prev);
-                else if (ColorBrewerColorSet.Items.Count > 0)
-                    ColorBrewerColorSet.SelectedIndex = 0;
+                if (ColorBrewerDataType.FindString(prevType) >= 0)
+                    ColorBrewerDataType.SelectedIndex = ColorBrewerDataType.FindString(prevType);
+                else if (ColorBrewerDataType.Items.Count > 0)
+                    ColorBrewerDataType.SelectedIndex = 0;
 
-                if (ColorBrewerColorSet.Items.Count == 0)
+                if (ColorBrewerDataType.Items.Count == 0)
                 {
                     GradientColors.Checked = true;
-                    ColorBrewerColors.Enabled = ColorBrewerColorSet.Enabled = false;
+                    ColorBrewerColors.Enabled = ColorBrewerLabel.Enabled = ColorBrewerPanel.Enabled = false;
                 }
                 else
                 {
-                    ColorBrewerColors.Enabled = ColorBrewerColorSet.Enabled = true;
+                    ColorBrewerColors.Enabled = ColorBrewerLabel.Enabled = ColorBrewerPanel.Enabled = true;
                     if (!GradientColors.Checked)
                         ColorBrewerColors.Checked = true;
                 }
@@ -231,10 +299,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
         }
 
-        private List<KeyValuePair<string, Color>> CalculateRuleSet()
+        private List<RuleItem> CalculateRuleSet()
         {
             Color[] colors = BuildColorSet(false);
-            List<KeyValuePair<string, Color>> result = new List<KeyValuePair<string,Color>>();
+            List<RuleItem> result = new List<RuleItem>();
 
             if (AggregateCombo.SelectedIndex == 0 || AggregateCombo.SelectedIndex == 1 || AggregateCombo.SelectedIndex == 2)
             {
@@ -256,12 +324,21 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 if (AggregateCombo.SelectedIndex == 0) //Equal
                 {
                     double chunksize = (max - min) / colors.Length;
-                    result.Add(new KeyValuePair<string, Color>(string.Format("\"{0}\" <= {1}", ColumnCombo.Text, FormatValue(chunksize + min)), colors[0]));
+                    result.Add(new RuleItem(
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" <= {1}", ColumnCombo.Text, FormatValue(chunksize + min)),
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "Less than {0}", FormatValue(chunksize + min)), 
+                        colors[0]));
 
                     for (int i = 1; i < colors.Length - 1; i++)
-                        result.Add(new KeyValuePair<string, Color>(string.Format("\"{0}\" > {1} AND \"{0}\" <= {2}", ColumnCombo.Text, FormatValue(min + (i * chunksize)), FormatValue(min + ((i + 1) * chunksize))), colors[i]));
+                        result.Add(new RuleItem(
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1} AND \"{0}\" <= {2}", ColumnCombo.Text, FormatValue(min + (i * chunksize)), FormatValue(min + ((i + 1) * chunksize))),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "Between {0} and {1}", FormatValue(min + (i * chunksize)), FormatValue(min + ((i + 1) * chunksize))),
+                            colors[i]));
 
-                    result.Add(new KeyValuePair<string, Color>(string.Format("\"{0}\" > {1}", ColumnCombo.Text, FormatValue(max - chunksize)), colors[colors.Length - 1]));
+                    result.Add(new RuleItem(
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1}", ColumnCombo.Text, FormatValue(max - chunksize)),
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "More than {0}", FormatValue(max - chunksize)), 
+                        colors[colors.Length - 1]));
                 }
                 else if (AggregateCombo.SelectedIndex == 1) //Standard Deviation
                 {
@@ -278,12 +355,21 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     if (colors.Length % 2 == 1)
                         lower += dev / 2; //The middle item goes half an alpha to each side
 
-                    result.Add(new KeyValuePair<string,Color>(string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" < {1}", ColumnCombo.Text, FormatValue(lower + dev)), colors[0]));
+                    result.Add(new RuleItem(
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" < {1}", ColumnCombo.Text, FormatValue(lower + dev)),
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "Less than {0}", FormatValue(lower + dev)),
+                        colors[0]));
 
                     for (int i = 1; i < colors.Length - 1; i++)
-                        result.Add(new KeyValuePair<string, Color>(string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" >= {1} AND \"{0}\" < {2}", ColumnCombo.Text, FormatValue(lower + (i * dev)), FormatValue(lower + ((i + 1) * dev))), colors[i]));
+                        result.Add(new RuleItem(
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" >= {1} AND \"{0}\" < {2}", ColumnCombo.Text, FormatValue(lower + (i * dev)), FormatValue(lower + ((i + 1) * dev))),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "Between {0} and {1}", FormatValue(lower + (i * dev)), FormatValue(lower + ((i + 1) * dev))),
+                            colors[i]));
 
-                    result.Add(new KeyValuePair<string, Color>(string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" >= {1}", ColumnCombo.Text, FormatValue(lower + (dev * (colors.Length - 1)))), colors[colors.Length - 1]));
+                    result.Add(new RuleItem(
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" >= {1}", ColumnCombo.Text, FormatValue(lower + (dev * (colors.Length - 1)))),
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "More than {0}", FormatValue(lower + (dev * (colors.Length - 1)))),
+                        colors[colors.Length - 1]));
 
                 }
                 else if (AggregateCombo.SelectedIndex == 2) //Quantile
@@ -311,12 +397,21 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                         separators.Add(item);
                     }
 
-                    result.Add(new KeyValuePair<string,Color>(string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" <= {1}", ColumnCombo.Text, FormatValue(separators[0])), colors[0]));
+                    result.Add(new RuleItem(
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" <= {1}", ColumnCombo.Text, FormatValue(separators[0])),
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "Less than {0}", FormatValue(separators[0])),
+                        colors[0]));
 
                     for (int i = 1; i < colors.Length - 1; i++)
-                        result.Add(new KeyValuePair<string, Color>(string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1} AND \"{0}\" <= {2}", ColumnCombo.Text, FormatValue(separators[i - 1]), FormatValue(separators[i])), colors[i]));
+                        result.Add(new RuleItem(
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1} AND \"{0}\" <= {2}", ColumnCombo.Text, FormatValue(separators[i - 1]), FormatValue(separators[i])),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "Between {0} and {1}", FormatValue(separators[i - 1]), FormatValue(separators[i])),
+                            colors[i]));
 
-                    result.Add(new KeyValuePair<string, Color>(string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1}", ColumnCombo.Text, FormatValue(separators[separators.Count - 1])), colors[colors.Length - 1]));
+                    result.Add(new RuleItem(
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1}", ColumnCombo.Text, FormatValue(separators[separators.Count - 1])),
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "More than {0}", FormatValue(separators[separators.Count - 1])),
+                        colors[colors.Length - 1]));
                 }
             }
             else if (AggregateCombo.SelectedIndex == 3) //Individual
@@ -326,9 +421,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
                 for (int i = 0; i < colors.Length; i++)
                     if (items[i] is string)
-                        result.Add(new KeyValuePair<string, Color>(string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" = '{1}'", ColumnCombo.Text, items[i]), colors[i]));
+                        result.Add(new RuleItem(
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" = '{1}'", ColumnCombo.Text, items[i]),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", items[i]), 
+                            colors[i]));
                     else
-                        result.Add(new KeyValuePair<string, Color>(string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" = {1}", ColumnCombo.Text, items[i]), colors[i])); 
+                        result.Add(new RuleItem(
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" = {1}", ColumnCombo.Text, items[i]),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", items[i]), 
+                            colors[i])); 
 
             }
 
@@ -436,7 +537,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             else
             {
-                ColorBrewer c = (ColorBrewer)ColorBrewerColorSet.SelectedItem;
+                ColorBrewer c = ((ColorBrewer.ColorBrewerListItem)ColorBrewerColorSet.SelectedItem).Set;
                 if (c == null)
                     return new Color[0];
 
@@ -465,7 +566,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 }
 
                 RuleCount.Value = Math.Max(m_values.Count, RuleCount.Minimum);
-                if (!GradientColors.Checked && ColorBrewerColorSet.Enabled)
+                if (!GradientColors.Checked && ColorBrewerColors.Enabled)
                     ColorBrewerColors.Checked = true;
                 else
                     GradientColors.Checked = true;
@@ -505,7 +606,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         {
             try
             {
-                List<KeyValuePair<string, Color>> rules = CalculateRuleSet();
+                List<RuleItem> rules = CalculateRuleSet();
 
                 if (rules.Count > 1000)
                 {
@@ -520,17 +621,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     if (OverwriteRules.Checked)
                         col.PointRule.Clear();
 
-                    foreach (KeyValuePair<string, Color> entry in rules)
+                    foreach (RuleItem entry in rules)
                     {
                         MaestroAPI.PointRuleType r = new OSGeo.MapGuide.MaestroAPI.PointRuleType();
                         r.Item = MaestroAPI.Utility.DeepCopy(m_defaultItem) as MaestroAPI.PointSymbolization2DType;
-                        r.Filter = r.LegendLabel = entry.Key;
+                        r.Filter = entry.Filter;
+                        r.LegendLabel = entry.Label;
                         if (r.Item.Item == null)
                             r.Item.Item = new OSGeo.MapGuide.MaestroAPI.MarkSymbolType();
                         if (((MaestroAPI.MarkSymbolType)r.Item.Item).Fill == null)
                             ((MaestroAPI.MarkSymbolType)r.Item.Item).Fill = new OSGeo.MapGuide.MaestroAPI.FillType();
 
-                        ((MaestroAPI.MarkSymbolType)r.Item.Item).Fill.BackgroundColor = entry.Value;
+                        ((MaestroAPI.MarkSymbolType)r.Item.Item).Fill.BackgroundColor = entry.Color;
 
                         col.PointRule.Add(r);
                     }
@@ -542,14 +644,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     if (OverwriteRules.Checked)
                         col.LineRule.Clear();
 
-                    foreach (KeyValuePair<string, Color> entry in rules)
+                    foreach (RuleItem entry in rules)
                     {
                         MaestroAPI.LineRuleType l = new OSGeo.MapGuide.MaestroAPI.LineRuleType();
                         l.Items = MaestroAPI.Utility.XmlDeepCopy(m_defaultItem) as MaestroAPI.StrokeTypeCollection;
-                        l.Filter = l.LegendLabel = entry.Key;
+                        l.Filter = entry.Filter;
+                        l.LegendLabel = entry.Label;
                         if (l.Items.Count == 0)
                             l.Items.Add(new OSGeo.MapGuide.MaestroAPI.StrokeType());
-                        l.Items[0].Color = entry.Value;
+                        l.Items[0].Color = entry.Color;
 
                         if (string.IsNullOrEmpty(l.Items[0].LineStyle))
                             l.Items[0].LineStyle = "Solid";
@@ -566,17 +669,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     if (OverwriteRules.Checked)
                         col.AreaRule.Clear();
 
-                    foreach (KeyValuePair<string, Color> entry in rules)
+                    foreach (RuleItem entry in rules)
                     {
                         MaestroAPI.AreaRuleType r = new OSGeo.MapGuide.MaestroAPI.AreaRuleType();
                         r.Item = MaestroAPI.Utility.DeepCopy(m_defaultItem) as MaestroAPI.AreaSymbolizationFillType;
-                        r.Filter = r.LegendLabel = entry.Key;
+                        r.Filter = entry.Filter;
+                        r.LegendLabel = entry.Label;
                         if (r.Item.Fill == null)
                             r.Item.Fill = new OSGeo.MapGuide.MaestroAPI.FillType();
                         if (r.Item.Fill.BackgroundColorAsHTML == null)
                             r.Item.Fill.BackgroundColor = Color.Black;
                         if (r.Item.Fill.ForegroundColorAsHTML == null)
-                            r.Item.Fill.ForegroundColor = entry.Value;
+                            r.Item.Fill.ForegroundColor = entry.Color;
                         if (string.IsNullOrEmpty(r.Item.Fill.FillPattern))
                             r.Item.Fill.FillPattern = "Solid";
 
@@ -651,6 +755,31 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 }
             }
 
+        }
+
+        private void ColorBrewerDataType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string prevSet = ColorBrewerColorSet.Text;
+            ColorBrewerColorSet.Items.Clear();
+
+            foreach (ColorBrewer cb in m_colorBrewer)
+                if (cb.Colors.Count == RuleCount.Value && cb.DisplayType == ColorBrewerDataType.Text)
+                    ColorBrewerColorSet.Items.Add(new ColorBrewer.ColorBrewerListItem(cb, ColorBrewer.ColorBrewerListItem.DisplayMode.Set));
+
+            if (ColorBrewerColorSet.FindString(prevSet) >= 0)
+                ColorBrewerColorSet.SelectedIndex = ColorBrewerColorSet.FindString(prevSet);
+            else if (ColorBrewerColorSet.Items.Count > 0)
+                ColorBrewerColorSet.SelectedIndex = 0;
+
+            if (!m_isUpdating)
+                ColorBrewerColors.Checked = true;
+
+            RefreshPreview();
+        }
+
+        private void ColorBrewerLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            m_editor.OpenUrl("http://colorbrewer.org/");
         }
 
     }

@@ -210,21 +210,88 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         /// <returns>The string the represents the object</returns>
         public override string ToString()
         {
-            string type = "";
-            switch (m_type)
+            return m_name + " - " + DisplayType;
+        }
+
+        /// <summary>
+        /// Gets a display friendly version of the display type
+        /// </summary>
+        public string DisplayType
+        {
+            get
             {
-                case "qual":
-                    type = "Qualitative";
-                    break;
-                case "seq":
-                    type = "Sequential";
-                    break;
-                case "div":
-                    type = "Diverging";
-                    break;
+                switch (m_type)
+                {
+                    case "qual":
+                        return "Qualitative";
+                    case "seq":
+                        return "Sequential";
+                    case "div":
+                        return "Diverging";
+                    default:
+                        return m_type;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Helper class to display ColorBrewer items in a list or combobox
+        /// </summary>
+        public class ColorBrewerListItem
+        {
+            /// <summary>
+            /// Indicates what type of string to use
+            /// </summary>
+            public enum DisplayMode
+            {
+                /// <summary>
+                /// Displays &quot;Group - Name&quot;
+                /// </summary>
+                Full,
+                /// <summary>
+                /// Just display the group
+                /// </summary>
+                Type,
+                /// <summary>
+                /// Just display the set name
+                /// </summary>
+                Set
             }
 
-            return m_name + " - " + type;
+            /// <summary>
+            /// A reference to the set
+            /// </summary>
+            private ColorBrewer m_set;
+
+            /// <summary>
+            /// The current display mode
+            /// </summary>
+            private DisplayMode m_mode;
+
+            /// <summary>
+            /// Gets the ColorBrewer set
+            /// </summary>
+            public ColorBrewer Set { get { return m_set; } }
+
+            public ColorBrewerListItem(ColorBrewer set, DisplayMode mode)
+            {
+                m_set = set;
+                m_mode = mode;
+            }
+
+            /// <summary>
+            /// Returns a display version of the item
+            /// </summary>
+            /// <returns></returns>
+            public override string ToString()
+            {
+                if (m_mode == DisplayMode.Type)
+                    return m_set.DisplayType;
+                else if (m_mode == DisplayMode.Set)
+                    return m_set.Name;
+                else
+                    return m_set.ToString();
+            }
         }
     }
 }
