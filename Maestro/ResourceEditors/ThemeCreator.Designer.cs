@@ -253,6 +253,7 @@
             // 
             // ColorBrewerColorSet
             // 
+            this.ColorBrewerColorSet.DropDownWidth = 150;
             this.ColorBrewerColorSet.FormattingEnabled = true;
             this.ColorBrewerColorSet.Location = new System.Drawing.Point(112, 0);
             this.ColorBrewerColorSet.Name = "ColorBrewerColorSet";

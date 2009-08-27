@@ -98,6 +98,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 			m_resourceTypeLookup.Add("WebLayout", typeof(WebLayout));
 			m_resourceTypeLookup.Add("FeatureSource", typeof(FeatureSource));
 			m_resourceTypeLookup.Add("ApplicationDefinition", typeof(ApplicationDefinition.ApplicationDefinitionType));
+            m_resourceTypeLookup.Add("SymbolLibrary", typeof(SymbolLibraryType));
+            m_resourceTypeLookup.Add("PrintLayout", typeof(PrintLayout));
+
 
 			m_schemasPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "Schemas");
 			m_username = null;
@@ -391,6 +394,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 		virtual public object GetResource(string resourceID)
 		{
 			Type type = GetResourceType(resourceID);
+
+            if (type == null)
+                throw new Exception("Unable to find type for " + resourceID);
 
 			object o = DeserializeObject(type, new System.IO.MemoryStream(GetResourceXmlData(resourceID)));
 

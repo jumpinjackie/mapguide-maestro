@@ -109,7 +109,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     }
                     else
                     {
-                        Color c = i < items / 2 ? cb.Colors[i] : cb.Colors[cb.Colors.Count - i];
+                        Color c = i < (items / 2) ? cb.Colors[i] : cb.Colors[cb.Colors.Count - (items - i)];
                         using (Brush b = new SolidBrush(c))
                             args.Graphics.FillRectangle(b, area);
                         args.Graphics.DrawRectangle(Pens.Black, area);
@@ -749,9 +749,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     if (m_ruleCollection is MaestroAPI.PointTypeStyleType)
                         m_defaultItem = ((GeometryStyleEditors.PointFeatureStyleEditor)uc).Item;
                     else if (m_ruleCollection is MaestroAPI.LineTypeStyleType)
-                        m_defaultItem = ((GeometryStyleEditors.PointFeatureStyleEditor)uc).Item;
+                        m_defaultItem = ((GeometryStyleEditors.LineFeatureStyleEditor)uc).Item;
                     else if (m_ruleCollection is MaestroAPI.AreaTypeStyleType)
-                        m_defaultItem = ((GeometryStyleEditors.PointFeatureStyleEditor)uc).Item;
+                        m_defaultItem = ((GeometryStyleEditors.AreaFeatureStyleEditor)uc).Item;
                 }
             }
 

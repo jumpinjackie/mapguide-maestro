@@ -65,8 +65,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private MaestroAPI.ServerConnectionI m_connection;
 
 		public XmlEditorControl(EditorInterface editor, string item)
-			: this(editor, editor.CurrentConnection.GetResource(item))
+			: this(editor, editor.CurrentConnection.TryGetResourceType(item) == null ? editor.CurrentConnection.GetResourceXmlData(item) : editor.CurrentConnection.GetResource(item))
 		{
+            m_resourceId = item;
 		}
 
         public XmlEditorControl(EditorInterface editor, object item)
@@ -75,28 +76,34 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             m_inUpdate = true;
             m_editor = editor;
 
-            using (System.IO.StreamReader sr = new System.IO.StreamReader(m_editor.CurrentConnection.SerializeObject(item), System.Text.Encoding.UTF8, true))
-                textEditor.Text = sr.ReadToEnd();
-
-            editor.Closing += new EventHandler(editor_Closing);
-
             m_connection = editor.CurrentConnection;
             m_resourceId = null;
             m_serializeType = null;
             m_serializedObject = null;
 
-            if (item.GetType().GetProperty("ResourceId") != null)
-                m_resourceId = (string)item.GetType().GetProperty("ResourceId").GetValue(item, null);
+            editor.Closing += new EventHandler(editor_Closing);
 
-            if (m_resourceId != null)
-                m_serializeType = m_editor.CurrentConnection.TryGetResourceType(m_resourceId);
+            if (item is byte[])
+            {
+                textEditor.Text = System.Text.Encoding.UTF8.GetString(item as byte[]);               
+            }
+            else
+            {
+                using (System.IO.StreamReader sr = new System.IO.StreamReader(m_editor.CurrentConnection.SerializeObject(item), System.Text.Encoding.UTF8, true))
+                    textEditor.Text = sr.ReadToEnd();
 
-            if (m_serializeType == null)
-                m_serializeType = item.GetType();
+                if (item.GetType().GetProperty("ResourceId") != null)
+                    m_resourceId = (string)item.GetType().GetProperty("ResourceId").GetValue(item, null);
 
-            if (m_serializeType != null)
-                m_serializedObject = m_editor.CurrentConnection.DeserializeObject(m_serializeType, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text)));
+                if (m_resourceId != null)
+                    m_serializeType = m_editor.CurrentConnection.TryGetResourceType(m_resourceId);
 
+                if (m_serializeType == null)
+                    m_serializeType = item.GetType();
+
+                if (m_serializeType != null)
+                    m_serializedObject = m_editor.CurrentConnection.DeserializeObject(m_serializeType, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text)));
+            }
             m_inUpdate = false;
             UpdateDisplay();
         }
