@@ -539,10 +539,11 @@ namespace OSGeo.MapGuide.Maestro
                 char c = ExpressionText.Text[caretPos];
                 while (Char.IsLetterOrDigit(c))
                 {
-                    if (caretPos == 0)
+                    caretPos--;
+
+                    if (caretPos < 0)
                         break;
 
-                    caretPos--;
                     c = ExpressionText.Text[caretPos];
                 }
 
