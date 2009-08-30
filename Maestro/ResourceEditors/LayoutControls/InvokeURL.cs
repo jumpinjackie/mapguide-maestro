@@ -82,9 +82,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
 
 			string keycol = m_layoutEditor.Globalizor.Translate("OSGeo.MapGuide.Maestro.ResourceEditors.LayoutEditor.commandEditor.invokeURL.KeyColumnStyle.HeaderText");
 			string valuecol = m_layoutEditor.Globalizor.Translate("OSGeo.MapGuide.Maestro.ResourceEditors.LayoutEditor.commandEditor.invokeURL.ValueColumnStyle.HeaderText");
-			if (keycol != null)
+			if (keycol != null && !keycol.EndsWith(".HeaderText"))
 				KeyColumnStyle.HeaderText = keycol;
-			if (valuecol != null)
+            if (valuecol != null && !keycol.EndsWith(".HeaderText"))
 				ValueColumnStyle.HeaderText = valuecol;
 
 			UpdateDisplay();

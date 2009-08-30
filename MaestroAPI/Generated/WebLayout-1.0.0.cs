@@ -516,7 +516,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         
         private string m_filter;
         
-        private string m_matchLimit;
+        private int m_matchLimit;
         
         /// <remarks/>
         public string Layer {
@@ -560,8 +560,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string MatchLimit {
+       public int MatchLimit {
             get {
                 return this.m_matchLimit;
             }

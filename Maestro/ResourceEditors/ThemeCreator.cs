@@ -207,6 +207,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                                     m_values[value]++;
                                 }
 
+                        rawEx = null; //Clear error
+
                     }
                     catch (Exception ex)
                     {
