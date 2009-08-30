@@ -72,6 +72,7 @@ namespace OSGeo.MapGuide.Maestro
         private string m_providername;
         private ServerConnectionI m_connection;
         private Globalizator.Globalizator m_globalizor = null;
+        private string m_featureSource = null;
 
         public FormExpression()
         {
@@ -86,13 +87,14 @@ namespace OSGeo.MapGuide.Maestro
             set { ExpressionText.Text = value; }
         }
 
-        public void SetupForm(ServerConnectionI connection, FeatureSourceDescription.FeatureSourceSchema schema, string provider)
+        public void SetupForm(ServerConnectionI connection, FeatureSourceDescription.FeatureSourceSchema schema, string provider, string featuresSourceId)
         {
             try
             {
                 m_schema = schema;
                 m_providername = provider;
                 m_connection = connection;
+                m_featureSource = featuresSourceId;
 
                 FdoProviderCapabilities caps = m_connection.GetProviderCapabilities(provider);
 
@@ -102,6 +104,9 @@ namespace OSGeo.MapGuide.Maestro
                 {
                     sortedCols.Add(col.Name, col);
                 }
+
+                ColumnName.Items.Clear();
+                ColumnName.Tag = sortedCols;
 
                 foreach (FeatureSetColumn col in sortedCols.Values)
                 {
@@ -114,7 +119,13 @@ namespace OSGeo.MapGuide.Maestro
                         InsertText(name);
                     };
                     btnProperties.DropDown.Items.Add(btn);
+
+                    ColumnName.Items.Add(name);
                 }
+
+                if (ColumnName.Items.Count > 0)
+                    ColumnName.SelectedIndex = 0;
+
                 LoadCompletableProperties(m_schema.Columns);
 
                 //TODO: Figure out how to translate the enums into something usefull
@@ -707,6 +718,94 @@ namespace OSGeo.MapGuide.Maestro
         private void ExpressionText_KeyUp(object sender, KeyEventArgs e)
         {
             HandleKeyUp(e);
+        }
+
+        private void ColumnName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ColumnName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ColumnValue.Enabled = false;
+
+            if (ColumnName.SelectedIndex < 0)
+                LookupValues.Enabled = ColumnName.SelectedIndex >= 0;
+        }
+
+        private void LookupValues_Click(object sender, EventArgs e)
+        {
+            using(new WaitCursor(this))
+                try
+                {
+                    SortedList<string, FeatureSetColumn> cols = (SortedList<string, FeatureSetColumn>)ColumnName.Tag;
+                    FeatureSetColumn col = cols[ColumnName.Text];
+
+                    bool retry = true;
+                    Exception rawEx = null;
+                    string filter = null;
+
+                    SortedList<string, string> values = new SortedList<string,string>();
+                    bool hasNull = false;
+
+                    while (retry)
+                        try
+                        {
+                            retry = false;
+                            using (FeatureSetReader rd = m_connection.QueryFeatureSource(m_featureSource, m_schema.FullnameDecoded, null, new string[] { ColumnName.Text }))
+                                while (rd.Read())
+                                    if (rd.Row.IsValueNull(ColumnName.Text))
+                                        hasNull = true;
+                                    else
+                                        values[Convert.ToString(rd.Row[ColumnName.Text], System.Globalization.CultureInfo.InvariantCulture)] = null;
+                        }
+                        catch (Exception ex)
+                        {
+                            if (filter == null && ex.Message.IndexOf("MgNullPropertyValueException") >= 0)
+                            {
+                                rawEx = ex;
+                                retry = true;
+                                filter = ColumnName.Text + " != NULL";
+                            }
+                            else if (rawEx != null)
+                                throw rawEx;
+                            else
+                                throw;
+                        }
+
+                    ColumnValue.Items.Clear();
+                    if (hasNull)
+                        ColumnValue.Items.Add("NULL");
+
+                    foreach (string s in values.Keys)
+                        ColumnValue.Items.Add(s);
+
+                    ColumnValue.Tag = col.Type;
+
+                    if (ColumnValue.Items.Count == 0)
+                        MessageBox.Show(this, "No values found in selected column", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                    {
+                        ColumnValue.Enabled = true;
+                        ColumnValue.SelectedIndex = -1;
+                        ColumnValue.DroppedDown = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, string.Format("An error occured while reading column values: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+        }
+
+        private void ColumnValue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ColumnValue.SelectedIndex >= 0 && ColumnValue.Tag as Type != null)
+            {
+                if (ColumnValue.Tag == typeof(string) && (ColumnValue.SelectedIndex != 0 || ColumnValue.Text != "NULL"))
+                    ExpressionText.SelectedText = " '" + ColumnValue.Text + "' ";
+                else
+                    ExpressionText.SelectedText = " " + ColumnValue.Text + " ";
+            }
         }
     }
 

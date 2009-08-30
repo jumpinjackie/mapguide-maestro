@@ -121,7 +121,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         /// <param name="current">The current text</param>
         /// <param name="featureSource">The featureSource this expression is executed against</param>
         /// <returns>Null if the user cancelled, otherwise the new expression</returns>
-        string EditExpression(string current, OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription.FeatureSourceSchema schema, string providername);
+        string EditExpression(string current, OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription.FeatureSourceSchema schema, string providername, string featureSourceId);
 
         /// <summary>
         /// Opens the system default browser and displays the given Url

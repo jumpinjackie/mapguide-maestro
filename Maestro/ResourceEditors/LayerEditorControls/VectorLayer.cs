@@ -909,7 +909,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
                 return null;
             }
 
-            return m_editor.EditExpression(entry, m_selectedSchema, fs.Provider);
+            return m_editor.EditExpression(entry, m_selectedSchema, fs.Provider, fs.ResourceId);
         }
 
 		private void EditFilterBtn_Click(object sender, System.EventArgs e)

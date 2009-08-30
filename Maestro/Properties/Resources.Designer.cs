@@ -67,6 +67,13 @@ namespace OSGeo.MapGuide.Maestro.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap bullet_go {
+            get {
+                object obj = ResourceManager.GetObject("bullet_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap sum {
             get {
                 object obj = ResourceManager.GetObject("sum", resourceCulture);

@@ -501,7 +501,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
                 MaestroAPI.FeatureSourceDescription.FeatureSourceSchema schema = m_editor.CurrentConnection.GetFeatureSourceSchema(vldef.ResourceId, vldef.FeatureName);
 
 
-                string exp = m_editor.EditExpression(Filter.Text, schema, fs.Provider);
+                string exp = m_editor.EditExpression(Filter.Text, schema, fs.Provider, fs.ResourceId);
                 if (exp != null)
                     Filter.Text = exp;
             }

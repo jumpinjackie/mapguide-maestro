@@ -349,6 +349,7 @@
     <Content Include="Icons\App.ico" />
     <EmbeddedResource Include="Icons\MapGuide Maestro.ico" />
     <Content Include="ProviderMap.xml" />
+    <None Include="Resources\bullet_go.png" />
     <None Include="app.config" />
     <None Include="Resources\bricks.png" />
     <None Include="Resources\sum.png" />

@@ -40,6 +40,10 @@ namespace OSGeo.MapGuide.Maestro
             this.btnCondition = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSpatial = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDistance = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ColumnValue = new System.Windows.Forms.ToolStripComboBox();
+            this.LookupValues = new System.Windows.Forms.ToolStripButton();
+            this.ColumnName = new System.Windows.Forms.ToolStripComboBox();
             this.ExpressionText = new System.Windows.Forms.TextBox();
             this._autoCompleteTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
@@ -94,7 +98,11 @@ namespace OSGeo.MapGuide.Maestro
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnProperties,
             this.btnFunctions,
-            this.btnFilter});
+            this.btnFilter,
+            this.toolStripSeparator1,
+            this.ColumnValue,
+            this.LookupValues,
+            this.ColumnName});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -148,10 +156,46 @@ namespace OSGeo.MapGuide.Maestro
             this.btnDistance.Size = new System.Drawing.Size(130, 22);
             this.btnDistance.Text = "Distance";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // ColumnValue
+            // 
+            this.ColumnValue.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.ColumnValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ColumnValue.Enabled = false;
+            this.ColumnValue.Name = "ColumnValue";
+            this.ColumnValue.Size = new System.Drawing.Size(90, 25);
+            this.ColumnValue.SelectedIndexChanged += new System.EventHandler(this.ColumnValue_SelectedIndexChanged);
+            // 
+            // LookupValues
+            // 
+            this.LookupValues.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.LookupValues.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.LookupValues.Enabled = false;
+            this.LookupValues.Image = global::OSGeo.MapGuide.Maestro.Properties.Resources.bullet_go;
+            this.LookupValues.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LookupValues.Name = "LookupValues";
+            this.LookupValues.Size = new System.Drawing.Size(23, 22);
+            this.LookupValues.ToolTipText = "Click to lookup values from the selected column";
+            this.LookupValues.Click += new System.EventHandler(this.LookupValues_Click);
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.ColumnName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.Size = new System.Drawing.Size(90, 25);
+            this.ColumnName.ToolTipText = "Select the column to read values from";
+            this.ColumnName.SelectedIndexChanged += new System.EventHandler(this.ColumnName_SelectedIndexChanged);
+            this.ColumnName.Click += new System.EventHandler(this.ColumnName_Click);
+            // 
             // ExpressionText
             // 
             this.ExpressionText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpressionText.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExpressionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExpressionText.HideSelection = false;
             this.ExpressionText.Location = new System.Drawing.Point(0, 25);
             this.ExpressionText.Multiline = true;
@@ -196,5 +240,9 @@ namespace OSGeo.MapGuide.Maestro
         private System.Windows.Forms.ToolStripMenuItem btnDistance;
         private System.Windows.Forms.ToolTip _autoCompleteTooltip;
         private System.Windows.Forms.Label lblHint;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripComboBox ColumnName;
+        private System.Windows.Forms.ToolStripButton LookupValues;
+        private System.Windows.Forms.ToolStripComboBox ColumnValue;
     }
 }
