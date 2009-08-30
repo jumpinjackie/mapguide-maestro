@@ -558,7 +558,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			try
 			{
 				m_inUpdate = true;
-				if (m_serializedObject != null)
+				if (m_serializedObject != null && m_serializeType != null)
 					textEditor.Text = System.Text.Encoding.UTF8.GetString(m_editor.CurrentConnection.SerializeObject(m_serializedObject).ToArray());
 			}
 			finally
