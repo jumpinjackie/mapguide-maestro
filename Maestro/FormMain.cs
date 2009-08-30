@@ -2135,6 +2135,7 @@ namespace OSGeo.MapGuide.Maestro
 							tabItems.SelectedTab = edir.Page;
 							edir.HasChanged();
 							m_userControls.Add(document.ResourceId, edir);
+                            tabItems_SelectedIndexChanged(sender, e);
 
 						}
 				}

@@ -1500,8 +1500,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 							if (sc.Prompt == null)
 								sc.Prompt = "";
 
-							if (sc.ResultColumns != null && sc.ResultColumns.Count == 0)
-								sc.ResultColumns = null;
+							if (sc.ResultColumns == null)
+								sc.ResultColumns = new ResultColumnTypeCollection();
 						}
 
 						if (cmd as InvokeURLCommandType != null)

@@ -62,7 +62,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripButton LaunchExternalEditorButton;
 		private string m_resourceId = null;
         private bool m_modified = false;
-        private MaestroAPI.ServerConnectionI m_connection;
 
 		public XmlEditorControl(EditorInterface editor, string item)
 			: this(editor, editor.CurrentConnection.TryGetResourceType(item) == null ? editor.CurrentConnection.GetResourceXmlData(item) : editor.CurrentConnection.GetResource(item))
@@ -76,7 +75,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             m_inUpdate = true;
             m_editor = editor;
 
-            m_connection = editor.CurrentConnection;
             m_resourceId = null;
             m_serializeType = null;
             m_serializedObject = null;
@@ -543,13 +541,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			if (m_serializeType != null)
 			{
-				m_serializedObject = m_connection.DeserializeObject(m_serializeType, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text)) );
+                m_serializedObject = m_editor.CurrentConnection.DeserializeObject(m_serializeType, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text)));
                 m_modified = false;
 				return false;
 			}
 			else
 			{
-                m_connection.SetResourceXmlData(savename, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text)));
+                m_editor.CurrentConnection.SetResourceXmlData(savename, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text)));
                 m_modified = false;
                 return true;
 			}
