@@ -187,18 +187,51 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 if (col == null)
                     throw new Exception("Invalid column name");
 
-                //TODO: Try/catch
-                using (MaestroAPI.FeatureSetReader rd = m_editor.CurrentConnection.QueryFeatureSource(m_layer.Item.ResourceId, m_schema.Fullname, null, new string[] { col.Name }))
-                    while (rd.Read() && m_values.Count < 100000) //No more than 100.000 records in memory
-                        if (!rd.Row.IsValueNull(col.Name))
+                string filter = null; //Attempt raw reading initially
+                Exception rawEx = null; //Original exception
+                bool retry = true;
+
+                while (retry)
+                {
+                    retry = false;
+                    try
+                    {
+                        using (MaestroAPI.FeatureSetReader rd = m_editor.CurrentConnection.QueryFeatureSource(m_layer.Item.ResourceId, m_schema.Fullname, filter, new string[] { col.Name }))
+                            while (rd.Read() && m_values.Count < 100000) //No more than 100.000 records in memory
+                                if (!rd.Row.IsValueNull(col.Name))
+                                {
+                                    object value = rd.Row[col.Name];
+                                    if (!m_values.ContainsKey(value))
+                                        m_values.Add(value, 0);
+
+                                    m_values[value]++;
+                                }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        rawEx = ex;
+                        if (filter == null && ex.Message.IndexOf("MgNullPropertyValueException") >= 0) //Known issue
                         {
-                            object value = rd.Row[col.Name];
-                            if (!m_values.ContainsKey(value))
-                                m_values.Add(value, 0);
-
-                            m_values[value]++;
+                            retry = true;
+                            filter = col.Name + " != NULL";
                         }
+                    }
+                }
 
+                if (rawEx != null)
+                {
+                    MessageBox.Show(this, string.Format("Unable to read data from the selected column: {0}", rawEx.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ColumnCombo.SelectedIndex = 0;
+                    return;
+                }
+
+                if (m_values.Count == 0)
+                {
+                    MessageBox.Show(this,"The selected column had no non-null values and cannot be used.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ColumnCombo.SelectedIndex = 0;
+                    return;
+                }
 
                 m_dataType = col.Type;
 
