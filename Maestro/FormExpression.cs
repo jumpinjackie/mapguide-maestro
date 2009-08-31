@@ -728,9 +728,7 @@ namespace OSGeo.MapGuide.Maestro
         private void ColumnName_SelectedIndexChanged(object sender, EventArgs e)
         {
             ColumnValue.Enabled = false;
-
-            if (ColumnName.SelectedIndex < 0)
-                LookupValues.Enabled = ColumnName.SelectedIndex >= 0;
+            LookupValues.Enabled = ColumnName.SelectedIndex >= 0;
         }
 
         private void LookupValues_Click(object sender, EventArgs e)

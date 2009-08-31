@@ -165,6 +165,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.ColumnValue.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.ColumnValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ColumnValue.DropDownWidth = 180;
             this.ColumnValue.Enabled = false;
             this.ColumnValue.Name = "ColumnValue";
             this.ColumnValue.Size = new System.Drawing.Size(90, 25);
@@ -186,6 +187,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.ColumnName.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.ColumnName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ColumnName.DropDownWidth = 180;
             this.ColumnName.Name = "ColumnName";
             this.ColumnName.Size = new System.Drawing.Size(90, 25);
             this.ColumnName.ToolTipText = "Select the column to read values from";
@@ -195,7 +197,7 @@ namespace OSGeo.MapGuide.Maestro
             // ExpressionText
             // 
             this.ExpressionText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpressionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExpressionText.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExpressionText.HideSelection = false;
             this.ExpressionText.Location = new System.Drawing.Point(0, 25);
             this.ExpressionText.Multiline = true;
