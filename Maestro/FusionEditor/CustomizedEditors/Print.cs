@@ -125,7 +125,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			this.ShowNorthArrow.Name = "ShowNorthArrow";
 			this.ShowNorthArrow.Size = new System.Drawing.Size(600, 16);
 			this.ShowNorthArrow.TabIndex = 25;
-			this.ShowNorthArrow.Text = "Show Root Folder";
+			this.ShowNorthArrow.Text = "Show north arrow";
 			this.ShowNorthArrow.CheckedChanged += new System.EventHandler(this.ShowNorthArrow_CheckedChanged);
 			// 
 			// ShowLegend
@@ -136,7 +136,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			this.ShowLegend.Name = "ShowLegend";
 			this.ShowLegend.Size = new System.Drawing.Size(600, 16);
 			this.ShowLegend.TabIndex = 24;
-			this.ShowLegend.Text = "Hide invisible layers";
+			this.ShowLegend.Text = "Show legend";
 			this.ShowLegend.CheckedChanged += new System.EventHandler(this.ShowLegend_CheckedChanged);
 			// 
 			// ShowTitle
@@ -147,7 +147,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			this.ShowTitle.Name = "ShowTitle";
 			this.ShowTitle.Size = new System.Drawing.Size(600, 16);
 			this.ShowTitle.TabIndex = 27;
-			this.ShowTitle.Text = "Show Root Folder";
+			this.ShowTitle.Text = "Show title";
 			this.ShowTitle.CheckedChanged += new System.EventHandler(this.ShowTitle_CheckedChanged);
 			// 
 			// ShowPrintUI
@@ -158,7 +158,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			this.ShowPrintUI.Name = "ShowPrintUI";
 			this.ShowPrintUI.Size = new System.Drawing.Size(600, 16);
 			this.ShowPrintUI.TabIndex = 26;
-			this.ShowPrintUI.Text = "Hide invisible layers";
+			this.ShowPrintUI.Text = "Show print UI";
 			this.ShowPrintUI.CheckedChanged += new System.EventHandler(this.ShowPrintUI_CheckedChanged);
 			// 
 			// Print
