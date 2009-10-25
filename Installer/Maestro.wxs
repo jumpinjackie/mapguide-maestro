@@ -63,12 +63,16 @@
       <ComponentRef Id="MaestroProgramMenuShortcutComponent"/>
     </Feature>
 
-	<Feature Id="da_DK_LanguageFeature" Title="Danish translation files" Level="1" Description="Installs the required files for displaying the MapGuide Maestro userinterface in Danish." AllowAdvertise="no" TypicalDefault="install" InstallDefault="local" >
+	<Feature Id="da_DK_LanguageFeature" Title="Danish translation files" Level="1" Description="Installs the required files for displaying the MapGuide Maestro userinterface in Danish (da-DK)." AllowAdvertise="no" TypicalDefault="install" InstallDefault="local" >
       <ComponentGroupRef Id="group_MAESTROBIN_da_DK" />
     </Feature>
 
-	<Feature Id="es_ES_LanguageFeature" Title="Spanish translation files" Level="1" Description="Installs the required files for displaying the MapGuide Maestro userinterface in Spanish." AllowAdvertise="no" TypicalDefault="install" InstallDefault="local" >
+	<Feature Id="es_ES_LanguageFeature" Title="Spanish translation files" Level="1" Description="Installs the required files for displaying the MapGuide Maestro userinterface in Spanish (es-ES)." AllowAdvertise="no" TypicalDefault="install" InstallDefault="local" >
       <ComponentGroupRef Id="group_MAESTROBIN_es_ES" />
+    </Feature>
+
+	<Feature Id="fr_FR_LanguageFeature" Title="French translation files" Level="1" Description="Installs the required files for displaying the MapGuide Maestro userinterface in French (fr-FR)." AllowAdvertise="no" TypicalDefault="install" InstallDefault="local" >
+      <ComponentGroupRef Id="group_MAESTROBIN_fr_FR" />
     </Feature>
 
     <!-- Launch Maestro setup -->

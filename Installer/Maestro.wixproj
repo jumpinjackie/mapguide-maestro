@@ -24,6 +24,7 @@
     <Compile Include="Shortcuts.wxs" />
     <Compile Include="incLocFiles.da-DK.wxs" />
     <Compile Include="incLocFiles.es-ES.wxs" />
+    <Compile Include="incLocFiles.fr-FR.wxs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources" />

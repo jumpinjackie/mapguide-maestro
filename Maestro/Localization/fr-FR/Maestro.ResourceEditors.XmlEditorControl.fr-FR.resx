@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="ResMimeType">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="Version">
+    <value>1.0.0.0</value>
+  </resheader>
+  <resheader name="Reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="Writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Failed to start external editor, most likely this means that theres is no external editor associated with xml files.\nError message was: {0}" type="System.String">
+    <value>Échec lors du lancement de l'éditeur externe, le plus souvent, cela signifie qu'aucun éditeur externe n'est associé aux fichiers Xml.\nMessage d'erreur : {0}</value>
+  </data>
+  <data name="Item did not correspond to the desired type.\nXml gave type: {0}\nExpected type was: {1}" type="System.String">
+    <value>L'item ne correspond pas au type désiré.\nType fourni par Xml : {0}\nType attendu est : {1}</value>
+  </data>
+  <data name="The entered xml failed to serialize into an object.\nError message is: {0}" type="System.String">
+    <value>Échec lors de la sérialisation en objet du Xml entré.\nMessage d'erreur : {0}</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.label1.Text" type="System.String">
+    <value>L'application associée à l'édition Xml a été démarré.</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.label2.Text" type="System.String">
+    <value>Fermer le programme externe pour restaurer la fonctionnalité de modification dans cet éditeur Xml.</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.label3.Text" type="System.String">
+    <value>L'affichage du texte est mis à jour automatiquement lorsque l'éditeur enregistre le fichier.</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.CopyClipboardButton.ToolTipText" type="System.String">
+    <value>Copier le texte sélectionné au presse-papiers</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.CutClipboardButton.ToolTipText" type="System.String">
+    <value>Couper le texte sélectionné et le placer dans le presse-papiers</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.PasteClipboardButton.ToolTipText" type="System.String">
+    <value>Coller le texte du presse-papiers</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.UndoClipboardButton.ToolTipText" type="System.String">
+    <value>Annuler la dernière action</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.RedoClipboardButton.ToolTipText" type="System.String">
+    <value>Refaire la dernière action</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.ValidateButton.Text" type="System.String">
+    <value>Valider le Xml courant</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.ValidateButton.ToolTipText" type="System.String">
+    <value>Valider le Xml courant</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl.LaunchExternalEditorButton.ToolTipText" type="System.String">
+    <value>Démarrer l'éditeur système associé aux fichiers Xml.</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditor.Text" type="System.String">
+    <value>Éditeur Xml</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditor.CancelBtn.Text" type="System.String">
+    <value>Annuler</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditor.OKBtn.Text" type="System.String">
+    <value>OK</value>
+  </data>
+</root>

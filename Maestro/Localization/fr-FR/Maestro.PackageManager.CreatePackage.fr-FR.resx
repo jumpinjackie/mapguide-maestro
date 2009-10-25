@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="ResMimeType">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="Version">
+    <value>1.0.0.0</value>
+  </resheader>
+  <resheader name="Reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="Writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.Text" type="System.String">
+    <value>Créer un nouveau paquetage</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.label1.Text" type="System.String">
+    <value>Librairie d'origine</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.RemoveTargeOnRestore.Text" type="System.String">
+    <value>Supprimer le répertoire cible lors de la restauration</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.EnableRestorePath.Text" type="System.String">
+    <value>Restaurer le chemin</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.LibraryLabel.Left" type="System.Int32">
+    <value>140</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.RestorePath.Left" type="System.Int32">
+    <value>196</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.label2.Text" type="System.String">
+    <value>Inclure ces types dans le paquetage</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.CancelBtn.Text" type="System.String">
+    <value>Annuler</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.OKBtn.Text" type="System.String">
+    <value>OK</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.CreatePackage.label3.Text" type="System.String">
+    <value>Nom de fichier</value>
+  </data>
+  <data name="All types" type="System.String">
+    <value>Tous les types</value>
+  </data>
+  <data name="Unknown types" type="System.String">
+    <value>Types inconnus</value>
+  </data>
+  <data name="You must select at least one type" type="System.String">
+    <value>Vous devez sélectionnez au moins un type</value>
+  </data>
+  <data name="You must enter a full path to the output file" type="System.String">
+    <value>Vous devez sélectionner un chemin complet pour le fichier de sortie</value>
+  </data>
+  <data name="An error occured while validating the output file path: {0}" type="System.String">
+    <value>Une erreur est survenue lors de la validation du chemin pour le fichier de sortie : {0}</value>
+  </data>
+  <data name="You have selected to restore the package at another location, but not entered one\r\nThis will cause the package to be restored a the root of the resource tree.\r\nAre you sure this is what you want?" type="System.String">
+    <value>Vous avez choisi de restaurer le paquetage à un autre emplacement, sans en fournir un.\r\nCela fera que le paquetage est restauré à la racine de l'arborescence des ressources.\r\nÊtes-vous sûr que c'est ce que vous voulez?</value>
+  </data>
+  <data name="An error occured while validating the restore path: {0}\nIt should have the format: &quot;Libray://folder/folder/&quot;." type="System.String">
+    <value>Une erreur est survenue lors de la validation du chemin de restauration : {0}\nLe chemin doit avoir le format : "Library://dossier/dossier/".</value>
+  </data>
+  <data name="You have selected to restore the package at the root.\r\nYou have also selected to delete the target before restoring.\r\nThis will result in the entire repository being deleted and replaced with this package.\r\nAre you absolutely sure that is what you want?" type="System.String">
+    <value>Vous avez choisi de restaurer le paquetage à la racine.\r\nVous avez également choisi de supprimer la cible avant la restauration.\r\nCela se traduira par la suppression de l'ensemble du référentiel et son remplacement par ce paquetage.\r\nÊtes-vous absolument certain que c'est ce que vous voulez?</value>
+  </data>
+</root>

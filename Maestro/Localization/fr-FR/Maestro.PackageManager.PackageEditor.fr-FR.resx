@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="ResMimeType">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="Version">
+    <value>1.0.0.0</value>
+  </resheader>
+  <resheader name="Reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="Writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.Text" type="System.String">
+    <value>Éditeur de paquetage</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.CancelBtn.Text" type="System.String">
+    <value>Annuler</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.OKBtn.Text" type="System.String">
+    <value>OK</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.AddFolderButton.ToolTipText" type="System.String">
+    <value>Ajouter un nouveau dossier</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.DeleteResourceButton.ToolTipText" type="System.String">
+    <value>Supprimer l'item sélectionné</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.LoaderGroup.Text" type="System.String">
+    <value>Lecture du contenu du paquetage, s.v.p. patientez...</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.label1.Text" type="System.String">
+    <value>Fichier d'en-tête</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.HeaderFilepath.Left" type="System.Int32">
+    <value>110</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.HeaderFilepath.Width" type="System.Int32">
+    <value>154</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.ContentFilePath.Left" type="System.Int32">
+    <value>110</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.ContentFilePath.Width" type="System.Int32">
+    <value>154</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.label2.Text" type="System.String">
+    <value>Fichier de contenu</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.label3.Text" type="System.String">
+    <value>Fichiers de données</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.AddResourceData.ToolTipText" type="System.String">
+    <value>Ajouter un fichier</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.EditResourceData.ToolTipText" type="System.String">
+    <value>Éditer les métadonnées du fichier sélectionné</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.DeleteResourceData.ToolTipText" type="System.String">
+    <value>Supprimer le fichier sélectionné</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.SaveResourceData.ToolTipText" type="System.String">
+    <value>Enregister le fichier sélectionné</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.columnHeader1.Text" type="System.String">
+    <value>Nom de fichier</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.columnHeader2.Text" type="System.String">
+    <value>Type de contenu</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.columnHeader3.Text" type="System.String">
+    <value>Type de données</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.columnHeader5.Text" type="System.String">
+    <value>Fichier</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.AddResourceButton.ToolTipText" type="System.String">
+    <value>Ajouter une nouvelle ressource au paquetage</value>
+  </data>
+  <data name="Select the package to edit" type="System.String">
+    <value>Sélectionner le paquetage à éditer</value>
+  </data>
+  <data name="Failed to locate file MgResourcePackageManifest.xml in zip file. Most likely the file is not a MapGuide package." type="System.String">
+    <value>Échec pour localiser le fichier MgResourcePackageManifest.xml dans le fichier zip. Très probablement le fichier n'est pas un paquetage MapGuide.</value>
+  </data>
+  <data name="Failed to read package. Error message was: {0}" type="System.String">
+    <value>Échec lors la lecture du paquetage. Le message d'erreur est : {0}</value>
+  </data>
+  <data name="An error occured while copying file: {0}" type="System.String">
+    <value>Une erreur s'est produite lors de la copie du fichier : {0}</value>
+  </data>
+  <data name="New folder" type="System.String">
+    <value>Nouveau dossier</value>
+  </data>
+  <data name="Do you want to remove the selected item?" type="System.String">
+    <value>Désirez-vous supprimer l'item sélectionné?</value>
+  </data>
+  <data name="An error occured while building package: {0}" type="System.String">
+    <value>Une erreur s'est produite lors de la construction du paquetage : {0}</value>
+  </data>
+</root>

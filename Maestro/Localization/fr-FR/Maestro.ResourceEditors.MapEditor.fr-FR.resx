@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="ResMimeType">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="Version">
+    <value>1.0.0.0</value>
+  </resheader>
+  <resheader name="Reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="Writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.lable1.Text" type="System.String">
+    <value>Description</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.label1.Text" type="System.String">
+    <value>Système de coordonnées</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.label2.Text" type="System.String">
+    <value>Couleur d'arrière-plan</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.groupBox1.Text" type="System.String">
+    <value>Paramètres</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.groupBox2.Text" type="System.String">
+    <value>Vue initiale de la carte</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.label3.Text" type="System.String">
+    <value>En bas à gauche</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.label4.Text" type="System.String">
+    <value>En  haut à droite</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.label5.Text" type="System.String">
+    <value>X</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.label6.Text" type="System.String">
+    <value>Y</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.label7.Text" type="System.String">
+    <value>X</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.label8.Text" type="System.String">
+    <value>Y</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.groupBox3.Text" type="System.String">
+    <value>Couches</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.groupBox4.Text" type="System.String">
+    <value>Propriétés de la couche</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.tabLayerGroups.Text" type="System.String">
+    <value>Couches par groupe</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.tabDrawOrder.Text" type="System.String">
+    <value>Couches par ordre de dessin</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.tabBaseLayerGroups.Text" type="System.String">
+    <value>Groupes de couche de base</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ctlLayerProperties.chkLayerShowInLegend.Text" type="System.String">
+    <value>La couche est affichée dans la légende de la carte</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ctlLayerProperties.chkLayerVisible.Text" type="System.String">
+    <value>La couche est visible au démarrage (si dans plage d'affichage)</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ctlLayerProperties.chkLayerSelectable.Text" type="System.String">
+    <value>Les entités sur la couche sont sélectionnables (si visible)</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ctlLayerProperties.label12.Text" type="System.String">
+    <value>Étiquette de légende</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ctlLayerProperties.chkLayerExpand.Text" type="System.String">
+    <value>La couche est développée dans la légende (si thème)</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ctlLayerProperties.label9.Text" type="System.String">
+    <value>Ressource</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ctlLayerProperties.label10.Text" type="System.String">
+    <value>Nom</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ctlLayerProperties.btnEdit.Text" type="System.String">
+    <value>Éditer la couche</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ctlGroupProperties.chkLayerShowInLegend.Text" type="System.String">
+    <value>Le groupe est affiché dans la légende de la carte</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ctlGroupProperties.chkLayerVisible.Text" type="System.String">
+    <value>Le groupe est visible au démarrage</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ctlGroupProperties.label12.Text" type="System.String">
+    <value>Étiquette de légende</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ctlGroupProperties.chkLayerExpand.Text" type="System.String">
+    <value>Le groupe est développé dans la légende</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ctlGroupProperties.label10.Text" type="System.String">
+    <value>Nom</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.label9.Text" type="System.String">
+    <value>Quand une couche ou un groupe est sélectionné, les propriétés de cet élément sont affichées ici</value>
+  </data>
+  <data name="Failed while creating map preview: {0}" type="System.String">
+    <value>Échec lors de la prévisualisation de la carte : {0}</value>
+  </data>
+  <data name="That layer is already in the map, do you want it to appear twice?" type="System.String">
+    <value>Cette couche est déjà dans la carte, voulez-vous qu'elle apparaisse deux fois?</value>
+  </data>
+  <data name="New group {0}" type="System.String">
+    <value>Nouveau groupe {0}</value>
+  </data>
+  <data name="New group" type="System.String">
+    <value>Nouveau groupe</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.SetZoom.Text" type="System.String">
+    <value>Visualiser selon l'étendue des couches courantes</value>
+  </data>
+  <data name="No layer selected" type="System.String">
+    <value>Aucune couche sélectionnée</value>
+  </data>
+  <data name="No spatial data found in layer" type="System.String">
+    <value>Aucune donnée spatiale sur la couche</value>
+  </data>
+  <data name="Failed to get layer extent: {0}" type="System.String">
+    <value>Échec lors de l'obtention de l'étendue de la couche : {0}</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.AddGroupButton.ToolTipText" type="System.String">
+    <value>Ajouter un nouveau groupe</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.RemoveGroupButton.ToolTipText" type="System.String">
+    <value>Supprimer le groupe sélectionné et son contenu</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.AddLayerButton.ToolTipText" type="System.String">
+    <value>Ajouter une nouvelle couche à la carte</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.RemoveLayerButton.ToolTipText" type="System.String">
+    <value>Supprimer une couche du groupe</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.MoveLayerUpButton.ToolTipText" type="System.String">
+    <value>Déplacer la couche sélectionnée vers le haut</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.MoveLayerDownButton.ToolTipText" type="System.String">
+    <value>Déplacer la couche sélectionnée vers le bas</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.MoveLayerTopButton.ToolTipText" type="System.String">
+    <value>Déplacer la couche sélectionnée en haut</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.MoveLayerBottomButton.ToolTipText" type="System.String">
+    <value>Déplacer la couche sélectionnée en bas</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ConvertToBaseLayerGroupButton.ToolTipText" type="System.String">
+    <value>Convertir le groupe sélectionné à un groupe de couche de base</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.AddLayerOrderButton.ToolTipText" type="System.String">
+    <value>Ajouter une nouvelle couche à la carte</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.RemoveLayerOrderButton.ToolTipText" type="System.String">
+    <value>Supprimer une couche du groupe</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.MoveLayerUpOrderButton.ToolTipText" type="System.String">
+    <value>Déplacer la couche sélectionnée vers le haut</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.MoveLayerDownOrderButton.ToolTipText" type="System.String">
+    <value>Déplacer la couche sélectionnée vers le bas</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.MoveLayerOrderTopButton.ToolTipText" type="System.String">
+    <value>Déplacer la couche sélectionnée en haut</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.MoveLayerOrderBottomButton.ToolTipText" type="System.String">
+    <value>Déplacer la couche sélectionnée en bas</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.AddBaseLayerGroupButton.ToolTipText" type="System.String">
+    <value>Ajouter nouveau groupe</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.RemoveBaseLayerGroupButton.ToolTipText" type="System.String">
+    <value>Supprimer le groupe sélectionné et son contenu</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.AddBaseLayerButton.ToolTipText" type="System.String">
+    <value>Ajouter une nouvelle couche à la carte</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.RemoveBaseLayerButton.ToolTipText" type="System.String">
+    <value>Supprimer une couche du groupe</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.MoveBaseLayerUpButton.ToolTipText" type="System.String">
+    <value>Déplacer le groupe sélectionné vers le haut</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.MoveBaseLayerDownButton.ToolTipText" type="System.String">
+    <value>Déplacer le groupe sélectionné vers le bas</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.ConvertBaseLayerGroupToDynamicGroup.ToolTipText" type="System.String">
+    <value>Convertir le groupe sélectionné à un groupe régulier</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.MapEditor.activateMgCooker.ToolTipText" type="System.String">
+    <value>Cliquer pour activer MgCooker pour préfabriquer des tuiles</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.MgCooker.SetupRun.Text" type="System.String">
+    <value>Organiser une mosaïque</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.groupBox2.Text" type="System.String">
+    <value>Générer les échelles</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.groupBox1.Text" type="System.String">
+    <value>Afficher les échelles</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.label1.Text" type="System.String">
+    <value>Échelle min</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.label2.Text" type="System.String">
+    <value>Échelle max</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.label4.Text" type="System.String">
+    <value>Méthode</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.linearGeneration.Text" type="System.String">
+    <value>Linéaire</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.ExponentialGeneration.Text" type="System.String">
+    <value>Exponentiel</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.LogarithmicGeneration.Text" type="System.String">
+    <value>Logarithmique</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.label5.Text" type="System.String">
+    <value>Arrondi</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.RoundingOff.Text" type="System.String">
+    <value>Aucun</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.RegularRounding.Text" type="System.String">
+    <value>Régulier</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.PrettyRounding.Text" type="System.String">
+    <value>Joli</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.label3.Text" type="System.String">
+    <value>Nombre d'échelles</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.GenerateButton.Text" type="System.String">
+    <value>Générer</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.editScalesButton.ToolTipText" type="System.String">
+    <value>Éditer les échelles manuellement</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.RemoveScaleButton.ToolTipText" type="System.String">
+    <value>Supprimer l'échelle</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales.listviewCount.Text" type="System.String">
+    <value>échelles</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.EditScales.Text" type="System.String">
+    <value>Éditer l'affichage des échelles</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.OKBtn.Text" type="System.String">
+    <value>OK</value>
+  </data>
+  <data name="OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.CancelBtn.Text" type="System.String">
+    <value>Annuler</value>
+  </data>
+</root>
