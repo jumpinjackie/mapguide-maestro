@@ -388,13 +388,30 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return m;
 		}
 
-        //TODO: Figure out where to read this
 		public override Version SiteVersion
 		{
 			get
 			{
-				return SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2);
-			}
+                try
+                {
+                    MgSite site = m_con.GetSite();
+
+                    MgServerAdmin amd = new MgServerAdmin();
+                    amd.Open(new MgUserInformation(m_sessionId));
+
+                    MgPropertyCollection col = amd.GetInformationProperties();
+
+                    for (int i = 0; i < col.Count; i++)
+                        if (col[i].Name == "ServerVersion")
+                            return new Version(((MgStringProperty)col[i]).GetValue());
+                }
+                catch
+                {
+                }
+
+                //Default
+                return SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2);
+            }
 		}
 
 
