@@ -97,10 +97,10 @@ namespace OSGeo.MapGuide.Maestro
             this.creditsTab = new System.Windows.Forms.TabPage();
             this.Credits = new System.Windows.Forms.TextBox();
             this.thirdPartyTab = new System.Windows.Forms.TabPage();
+            this.colorBrewerlinkLabel = new System.Windows.Forms.LinkLabel();
             this.ziplibLinkLabel = new System.Windows.Forms.LinkLabel();
             this.tfnetLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
-            this.colorBrewerlinkLabel = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayPalImage)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -218,9 +218,7 @@ namespace OSGeo.MapGuide.Maestro
             this.Credits.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Credits.Size = new System.Drawing.Size(320, 142);
             this.Credits.TabIndex = 4;
-            this.Credits.Text = "Programming:\r\n  Kenneth Skovhede\r\n  Jackie NG\r\nArtwork:\r\n  Kenneth Skovhede\r\nEngl" +
-                "ish and Danish translation:\r\n  Kenneth Skovhede\r\nSpanish translation:\r\n  Jos� Ma" +
-                "nuel Cerrej�n Gonz�lez ";
+            this.Credits.Text = resources.GetString("Credits.Text");
             // 
             // thirdPartyTab
             // 
@@ -234,6 +232,19 @@ namespace OSGeo.MapGuide.Maestro
             this.thirdPartyTab.TabIndex = 2;
             this.thirdPartyTab.Text = "Thirdparty";
             this.thirdPartyTab.UseVisualStyleBackColor = true;
+            // 
+            // colorBrewerlinkLabel
+            // 
+            this.colorBrewerlinkLabel.LinkArea = new System.Windows.Forms.LinkArea(84, 23);
+            this.colorBrewerlinkLabel.Location = new System.Drawing.Point(8, 72);
+            this.colorBrewerlinkLabel.Name = "colorBrewerlinkLabel";
+            this.colorBrewerlinkLabel.Size = new System.Drawing.Size(304, 32);
+            this.colorBrewerlinkLabel.TabIndex = 3;
+            this.colorBrewerlinkLabel.TabStop = true;
+            this.colorBrewerlinkLabel.Text = "This product includes color specifications and designs developed by Cynthia Brewe" +
+                "r (http://colorbrewer.org/).";
+            this.colorBrewerlinkLabel.UseCompatibleTextRendering = true;
+            this.colorBrewerlinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // ziplibLinkLabel
             // 
@@ -265,19 +276,6 @@ namespace OSGeo.MapGuide.Maestro
             this.label2.Size = new System.Drawing.Size(242, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "This program uses the following thirdparty libraries:";
-            // 
-            // colorBrewerlinkLabel
-            // 
-            this.colorBrewerlinkLabel.LinkArea = new System.Windows.Forms.LinkArea(84, 23);
-            this.colorBrewerlinkLabel.Location = new System.Drawing.Point(8, 72);
-            this.colorBrewerlinkLabel.Name = "colorBrewerlinkLabel";
-            this.colorBrewerlinkLabel.Size = new System.Drawing.Size(304, 32);
-            this.colorBrewerlinkLabel.TabIndex = 3;
-            this.colorBrewerlinkLabel.TabStop = true;
-            this.colorBrewerlinkLabel.Text = "This product includes color specifications and designs developed by Cynthia Brewe" +
-                "r (http://colorbrewer.org/).";
-            this.colorBrewerlinkLabel.UseCompatibleTextRendering = true;
-            this.colorBrewerlinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // FormAbout
             // 
