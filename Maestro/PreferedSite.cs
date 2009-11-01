@@ -38,6 +38,7 @@ namespace OSGeo.MapGuide.Maestro
         private int m_windowTop;
         private int m_windowWidth;
         private int m_windowHeight;
+        private string m_guiLanguage;
 
 		public PreferedSite[] Sites
 		{
@@ -49,6 +50,13 @@ namespace OSGeo.MapGuide.Maestro
 			}
 			set { m_sites = value; }
 		}
+
+        [System.Xml.Serialization.XmlAttribute()]
+        public string GUILanguage
+        {
+            get { return m_guiLanguage; }
+            set { m_guiLanguage = value; }
+        }
 
         [System.Xml.Serialization.XmlAttribute()]
         public bool UseFusionPreview

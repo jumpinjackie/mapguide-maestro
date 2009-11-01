@@ -368,6 +368,7 @@ namespace OSGeo.MapGuide.Maestro
 
 						m_sitelist.AutoConnect = chkAutoConnect.Checked;
 						m_sitelist.PreferedSite = index;
+                        m_sitelist.GUILanguage = ((System.Globalization.CultureInfo)(((DictionaryEntry)m_languages[cmbLanguage.SelectedIndex]).Value)).Name;
 
                         m_sitelist.Save();
 					}
@@ -407,13 +408,24 @@ namespace OSGeo.MapGuide.Maestro
                 try { cmbServerUrl.SelectedIndex = m_sitelist.PreferedSite; }
                 catch { } 
 				chkAutoConnect.Checked = m_sitelist.AutoConnect;
+
+                try
+                {
+                    if (!string.IsNullOrEmpty(m_sitelist.GUILanguage))
+                        for(int i = 0; i < m_languages.Count; i++)
+                            if (string.Compare(((System.Globalization.CultureInfo)(((DictionaryEntry)m_languages[i]).Value)).Name, m_sitelist.GUILanguage, true) == 0)
+                            {
+                                cmbLanguage.SelectedIndex = i;
+                                break;
+                            }
+                }
+                catch {}
 			}
 
             //Fix, enable OK button in case the password is "admin" :)
             txtPassword_TextChanged(null, null);
 
 			//TODO: Enable the Starting Point, once the functionality is created
-			//TODO: Enable the AutoConnect checkbox, once the reconnect option is created inside studio
 			if (m_useAutoConnect && chkAutoConnect.Checked)
 			{
 				this.Refresh();

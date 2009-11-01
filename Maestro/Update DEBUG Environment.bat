@@ -8,4 +8,4 @@ xcopy /Y /E ..\maestroapi\Schemas bin\debug\Schemas\
 
 xcopy /Y /E Localization bin\debug\Localization\
 
-xcopy /Y license.txt bin\release\license.txt
+xcopy /Y license.txt bin\release\
