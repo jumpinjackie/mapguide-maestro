@@ -19,8 +19,8 @@
 #endregion
 using System;
 
-///This file contains a copy/conversion of some of the internal MapGuide Header files
-///This file is prone to breaking if the MapGuide Server is changed
+//This file contains a copy/conversion of some of the internal MapGuide Header files
+//This file is prone to breaking if the MapGuide Server is changed
 
 namespace OSGeo.MapGuide.MaestroAPI.BinarySerializer
 {

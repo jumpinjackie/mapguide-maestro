@@ -2161,9 +2161,10 @@ namespace OSGeo.MapGuide.Maestro
 		{
 			try
 			{
-                ResourceBrowser.BrowseResource dlg = new ResourceBrowser.BrowseResource(this.RepositoryCache, this, true, null);
-				if (dlg.ShowDialog(this) == DialogResult.OK)
-					this.OpenResource(dlg.SelectedResource);
+                ResourceBrowser.BrowseResource dlg = new ResourceBrowser.BrowseResource(this.RepositoryCache, this, true, true, null);
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                    foreach (string s in dlg.SelectedResource.Split(';'))
+                        this.OpenResource(s);
 			}
 			catch(Exception ex)
 			{

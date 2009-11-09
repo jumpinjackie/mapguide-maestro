@@ -97,14 +97,24 @@ namespace OSGeo.MapGuide.Maestro
 			get { return m_resourceID; }
 		}
 
-		public string BrowseResource(string itemType)
+        public string BrowseResource(string itemType)
+        {
+            return BrowseResource(new string[] { itemType }, false);
+        }
+        
+        public string BrowseResource(string itemType, bool multiSelect)
 		{
-			return BrowseResource(new string[] { itemType } );
+			return BrowseResource(new string[] { itemType }, multiSelect );
 		}
 
-		public string BrowseResource(string[] itemTypes)
+        public string BrowseResource(string[] itemTypes)
+        {
+            return BrowseResource(itemTypes, false);
+        }
+
+		public string BrowseResource(string[] itemTypes, bool multiSelect)
 		{
-            ResourceBrowser.BrowseResource dlg = new ResourceBrowser.BrowseResource(m_editor.RepositoryCache, m_editor, true, itemTypes);
+            ResourceBrowser.BrowseResource dlg = new ResourceBrowser.BrowseResource(m_editor.RepositoryCache, m_editor, true, multiSelect, itemTypes);
 			dlg.SelectedResource = m_editor.LastSelectedNode;
 
             if (dlg.ShowDialog() == DialogResult.OK)
@@ -223,7 +233,7 @@ namespace OSGeo.MapGuide.Maestro
 				string resourceType = m_editor.ResourceEditorMap.GetResourceTypeNameFromResourceID(m_resourceID);
 				if (!m_existing || resid == null)
 				{
-                    ResourceBrowser.BrowseResource dlg = new ResourceBrowser.BrowseResource(m_editor.RepositoryCache, m_editor, false, new string[] { resourceType });
+                    ResourceBrowser.BrowseResource dlg = new ResourceBrowser.BrowseResource(m_editor.RepositoryCache, m_editor, false, false, new string[] { resourceType });
 					dlg.SelectedResource = m_editor.LastSelectedNode;
 					if (dlg.ShowDialog() != DialogResult.OK)
 						return false;

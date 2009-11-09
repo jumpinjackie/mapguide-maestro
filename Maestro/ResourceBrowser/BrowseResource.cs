@@ -60,7 +60,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		public BrowseResource(RepositoryCache cache, Form ownerform, bool openMode, string[] avalibleTypes)
+		public BrowseResource(RepositoryCache cache, Form ownerform, bool openMode, bool allowMulti, string[] avalibleTypes)
 			: this()
 		{
 			m_connection = cache.Connection;
@@ -89,6 +89,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 
 			ResourceType.Enabled = ResourceType.Items.Count > 1;
 			ItemView.SmallImageList = cache.EditorMap.SmallImageList;
+            ItemView.MultiSelect = allowMulti;
 
 			if (!m_openMode)
 				this.Text = m_globalizor.Translate("Save resource");
@@ -411,8 +412,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 		private void OKButton_Click(object sender, System.EventArgs e)
 		{
 			string fullpath = ResourceName.Text;
-            int imageindex = m_editorMap.GetImageIndexFromResourceID(ResourceName.Text);
-            string itemType = m_editorMap.GetResourceTypeNameFromResourceID(ResourceName.Text);
+
+            if (ItemView.SelectedItems.Count > 1)
+                fullpath = ((MaestroAPI.ResourceListResourceDocument)ItemView.SelectedItems[0].Tag).ResourceId;
+
+            int imageindex = m_editorMap.GetImageIndexFromResourceID(fullpath);
+            string itemType = m_editorMap.GetResourceTypeNameFromResourceID(fullpath);
 
             if (imageindex == m_editorMap.BlankIcon || imageindex == m_editorMap.FolderIcon)
 			{
@@ -436,7 +441,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 			}
 
 
-			if (!ResourceName.Text.ToLower().StartsWith("library://"))
+			if (!fullpath.ToLower().StartsWith("library://"))
 			{
 				TreeNode node = FolderView.SelectedNode;
 				string startPath = "Library://";
@@ -459,7 +464,28 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 					if (MessageBox.Show(this, m_globalizor.Translate("Overwrite existing resource?"), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
 						return;
 
-				m_selectedResource = fullpath;
+                if (ItemView.MultiSelect && ItemView.SelectedItems.Count > 1)
+                {
+                    string path = new MaestroAPI.ResourceIdentifier(fullpath).ParentFolder;
+
+                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+                    if (!path.EndsWith("/"))
+                        path += "/";
+
+                    foreach (ListViewItem lvi in ItemView.SelectedItems)
+                    {
+                        if (sb.Length != 0)
+                            sb.Append(";");
+
+                        sb.Append(((MaestroAPI.ResourceListResourceDocument)lvi.Tag).ResourceId);
+                    }
+
+                    m_selectedResource = sb.ToString();
+                }
+                else
+				    m_selectedResource = fullpath;
+
 				this.DialogResult = DialogResult.OK;
 				this.Close();
 				return;
@@ -519,8 +545,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 
 		private void ItemView_Click(object sender, System.EventArgs e)
 		{
-			if (ItemView.SelectedItems.Count == 1)
-				ResourceName.Text = ((OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument)ItemView.SelectedItems[0].Tag).ResourceId;
+            if (ItemView.SelectedItems.Count == 1)
+                ResourceName.Text = ((OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument)ItemView.SelectedItems[0].Tag).ResourceId;
+            else if (ItemView.SelectedItems.Count > 1)
+                ResourceName.Text = "";
 		}
 
 		private void ItemView_DoubleClick(object sender, System.EventArgs e)

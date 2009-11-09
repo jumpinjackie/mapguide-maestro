@@ -1586,49 +1586,67 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void AddLayer()
 		{
-			string resource = m_editor.BrowseResource("LayerDefinition");
+			string resource = m_editor.BrowseResource("LayerDefinition", true);
 			if (resource != null)
 			{
+                OSGeo.MapGuide.MaestroAPI.MapLayerType lastItem = null;
 
-                ArrayList layers = new ArrayList();
-                layers.AddRange(m_map.Layers);
-                if (m_map.BaseMapDefinition != null && m_map.BaseMapDefinition.BaseMapLayerGroup != null)
-                    foreach (MaestroAPI.BaseMapLayerGroupCommonType g in m_map.BaseMapDefinition.BaseMapLayerGroup)
-                        layers.AddRange(g.BaseMapLayer);
-
-                foreach (OSGeo.MapGuide.MaestroAPI.BaseMapLayerType layer in layers)
-					if (layer.ResourceId == resource)
-					{
-						if (MessageBox.Show(this, m_globalizor.Translate("That layer is already in the map, do you want it to appear twice?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
-							return;
-					}
-
-				OSGeo.MapGuide.MaestroAPI.MapLayerType maplayer = new OSGeo.MapGuide.MaestroAPI.MapLayerType();
-				maplayer.ResourceId = resource;
-				maplayer.Name = resource.Substring(resource.LastIndexOf("/") + 1, resource.LastIndexOf(".") - (resource.LastIndexOf("/") + 1));
-				maplayer.Visible = true;
-				maplayer.ShowInLegend = true;
-				maplayer.ExpandInLegend = true;
-				m_map.Layers.Add(maplayer);
-				m_editor.HasChanged();
-				UpdateDisplay();
-				if (tabLayers.SelectedTab == tabLayerGroups)
-					SelectItemByTag(trvLayerGroups.Nodes, maplayer);
-				else
-					foreach(ListViewItem lvi in lstDrawOrder.Items)
-						if (lvi.Tag == maplayer)
-						{
-							lstDrawOrder.SelectedItems.Clear();
-							lvi.Selected = true;
-							lvi.EnsureVisible();
-							break;
-						}
-                try
+                foreach (string layerid in resource.Split(';'))
                 {
-                    ctlLayerProperties.txtLayername.SelectAll();
-                    ctlLayerProperties.txtLayername.Focus();
+                    ArrayList layers = new ArrayList();
+                    layers.AddRange(m_map.Layers);
+                    if (m_map.BaseMapDefinition != null && m_map.BaseMapDefinition.BaseMapLayerGroup != null)
+                        foreach (MaestroAPI.BaseMapLayerGroupCommonType g in m_map.BaseMapDefinition.BaseMapLayerGroup)
+                            layers.AddRange(g.BaseMapLayer);
+
+                    bool add = true;
+                    foreach (OSGeo.MapGuide.MaestroAPI.BaseMapLayerType layer in layers)
+                        if (layer.ResourceId == layerid)
+                        {
+                            if (MessageBox.Show(this, string.Format(m_globalizor.Translate("The layer {0} is already in the map, do you want it to appear twice?"), layerid), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
+                            {
+                                add = false;
+                                break;
+                            }
+                        }
+
+                    if (!add)
+                        continue;
+
+                    OSGeo.MapGuide.MaestroAPI.MapLayerType maplayer = new OSGeo.MapGuide.MaestroAPI.MapLayerType();
+                    maplayer.ResourceId = layerid;
+                    maplayer.Name = new MaestroAPI.ResourceIdentifier(layerid).Name;
+                    maplayer.Visible = true;
+                    maplayer.ShowInLegend = true;
+                    maplayer.ExpandInLegend = true;
+                    maplayer.Selectable = false; //Better for performance
+                    m_map.Layers.Add(maplayer);
+                    
+                    lastItem = maplayer;
                 }
-                catch { }
+
+                if (lastItem != null)
+                {
+                    m_editor.HasChanged();
+                    UpdateDisplay();
+                    if (tabLayers.SelectedTab == tabLayerGroups)
+                        SelectItemByTag(trvLayerGroups.Nodes, lastItem);
+                    else
+                        foreach (ListViewItem lvi in lstDrawOrder.Items)
+                            if (lvi.Tag == lastItem)
+                            {
+                                lstDrawOrder.SelectedItems.Clear();
+                                lvi.Selected = true;
+                                lvi.EnsureVisible();
+                                break;
+                            }
+                    try
+                    {
+                        ctlLayerProperties.txtLayername.SelectAll();
+                        ctlLayerProperties.txtLayername.Focus();
+                    }
+                    catch { }
+                }
 			}
 		}
 
@@ -2212,38 +2230,56 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             if (g == null)
                 return;
 
-            string resource = m_editor.BrowseResource("LayerDefinition");
+            string resource = m_editor.BrowseResource("LayerDefinition", true);
             if (resource != null)
             {
-                ArrayList layers = new ArrayList();
-                layers.AddRange(m_map.Layers);
-                foreach (MaestroAPI.BaseMapLayerGroupCommonType gx in m_map.BaseMapDefinition.BaseMapLayerGroup)
-                    layers.AddRange(gx.BaseMapLayer);
+                OSGeo.MapGuide.MaestroAPI.BaseMapLayerType lastItem = null;
 
-                foreach (OSGeo.MapGuide.MaestroAPI.BaseMapLayerType layer in layers)
-                    if (layer.ResourceId == resource)
-                    {
-                        if (MessageBox.Show(this, m_globalizor.Translate("That layer is already in the map, do you want it to appear twice?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
-                            return;
-                    }
-
-                OSGeo.MapGuide.MaestroAPI.BaseMapLayerType maplayer = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerType();
-                maplayer.ResourceId = resource;
-                maplayer.Name = resource.Substring(resource.LastIndexOf("/") + 1, resource.LastIndexOf(".") - (resource.LastIndexOf("/") + 1));
-                maplayer.ShowInLegend = true;
-                maplayer.ExpandInLegend = true;
-                g.BaseMapLayer.Add(maplayer);
-                m_editor.HasChanged();
-                UpdateDisplay();
-
-                SelectItemByTag(trvBaseLayerGroups.Nodes, maplayer);
-
-                try
+                foreach (string layerid in resource.Split(';'))
                 {
-                    ctlLayerProperties.txtLayername.SelectAll();
-                    ctlLayerProperties.txtLayername.Focus();
+                    ArrayList layers = new ArrayList();
+                    layers.AddRange(m_map.Layers);
+                    foreach (MaestroAPI.BaseMapLayerGroupCommonType gx in m_map.BaseMapDefinition.BaseMapLayerGroup)
+                        layers.AddRange(gx.BaseMapLayer);
+
+                    bool add = true;
+                    foreach (OSGeo.MapGuide.MaestroAPI.BaseMapLayerType layer in layers)
+                        if (layer.ResourceId == layerid)
+                        {
+                            if (MessageBox.Show(this, string.Format(m_globalizor.Translate("The layer {0} is already in the map, do you want it to appear twice?"), layerid), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
+                            {
+                                add = false;
+                                break;
+                            }
+                        }
+
+                    if (!add)
+                        continue;
+
+                    OSGeo.MapGuide.MaestroAPI.BaseMapLayerType maplayer = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerType();
+                    maplayer.ResourceId = layerid;
+                    maplayer.Name = new MaestroAPI.ResourceIdentifier(layerid).Name;
+                    maplayer.ShowInLegend = true;
+                    maplayer.ExpandInLegend = true;
+                    g.BaseMapLayer.Add(maplayer);
+
+                    lastItem = maplayer;
                 }
-                catch { }
+
+                if (lastItem != null)
+                {
+                    m_editor.HasChanged();
+                    UpdateDisplay();
+
+                    SelectItemByTag(trvBaseLayerGroups.Nodes, lastItem);
+
+                    try
+                    {
+                        ctlLayerProperties.txtLayername.SelectAll();
+                        ctlLayerProperties.txtLayername.Focus();
+                    }
+                    catch { }
+                }
             }
         }
 

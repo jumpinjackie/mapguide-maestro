@@ -76,7 +76,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// <returns>The name of the selected resource, or null if the user cancelled</returns>
 		string BrowseResource(string[] itemTypes);
 
-		/// <summary>
+        /// <summary>
+        /// Request a browse dialog for the specified resource type
+        /// </summary>
+        /// <param name="itemType">The resource to browse for</param>
+        /// <param name="multiSelect">True if the user may select multiple items</param>
+        /// <returns>The name of the selected resource, or null if the user cancelled</returns>
+        string BrowseResource(string itemType, bool multiSelect);
+
+        /// <summary>
+        /// Request a browse dialog for the specified resource type
+        /// </summary>
+        /// <param name="itemTypes">The resource types to browse for, null for all valid resource types</param>
+        /// <param name="multiSelect">True if the user may select multiple items</param>
+        /// <returns>The name of the selected resource, or null if the user cancelled</returns>
+        string BrowseResource(string[] itemTypes, bool multiSelect);
+        
+        /// <summary>
 		/// Deletes the current item from the server and removes the current page from the display
 		/// </summary>
 		void Delete();
