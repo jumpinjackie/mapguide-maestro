@@ -63,7 +63,15 @@ namespace OSGeo.MapGuide.MgCooker
         private string MapDefinition;
         private BatchMap Invoker;
 
-        public RenderThreads(BatchMap invoker, BatchSettings parent, int scale, string group, string mapdef)
+        private bool Randomize;
+        private int Rows;
+        private int Cols;
+        private int RowOffset;
+        private int ColOffset;
+
+        private bool FillerComplete = false;
+
+        public RenderThreads(BatchMap invoker, BatchSettings parent, int scale, string group, string mapdef, int rows, int cols, int rowOffset, int colOffset, bool randomize)
         {
             TileSet = new Queue<KeyValuePair<int, int>>();
             SyncLock = new object();
@@ -75,10 +83,18 @@ namespace OSGeo.MapGuide.MgCooker
             this.Parent = parent;
             this.MapDefinition = mapdef;
             this.Invoker = invoker;
+            Randomize = randomize;
+            Rows = rows;
+            Cols = cols;
+            this.RowOffset = rowOffset;
+            this.ColOffset = colOffset;
         }
 
         public void RunAndWait()
         {
+            System.Threading.ThreadPool.QueueUserWorkItem(
+                new System.Threading.WaitCallback(QueueFiller));
+
             for (int i = 0; i < Parent.Config.ThreadCount; i++)
             {
                 System.Threading.ThreadPool.QueueUserWorkItem(
@@ -146,6 +162,91 @@ namespace OSGeo.MapGuide.MgCooker
             }
         }
 
+        /// <summary>
+        /// Helper that fills the queue from a thread
+        /// </summary>
+        /// <param name="dummy">Unused parameter</param>
+        private void QueueFiller(object dummy)
+        {
+            try
+            {
+                if (Randomize)
+                {
+                    Random ra = new Random();
+                    List<int> rows = new List<int>();
+                    int[] cols_full = new int[Cols];
+                    for (int i = 0; i < Rows; i++)
+                        rows.Add(i);
+
+                    for (int i = 0; i < Cols; i++)
+                        cols_full[i] = i;
+
+                    //TODO: This is not really random, because we select
+                    //a row, and then random columns
+
+                    //Unfortunately, I have yet to find a truly random
+                    //pair generation method that is space efficient :(
+
+                    while (rows.Count > 0)
+                    {
+                        int ri = ra.Next(0, rows.Count);
+                        int r = rows[ri];
+                        rows.RemoveAt(ri);
+
+                        List<int> cols = new List<int>(cols_full);
+
+                        while (cols.Count > 0)
+                        {
+                            int ci = ra.Next(0, cols.Count);
+                            int c = cols[ci];
+                            cols.RemoveAt(ci);
+
+                            AddPairToQueue(r + RowOffset, c + ColOffset);
+                        }
+                    }
+                }
+                else
+                {
+                    //Non-random is straightforward
+                    for (int r = 0; r < Rows; r++)
+                        for (int c = 0; c < Cols; c++)
+                            AddPairToQueue(r + RowOffset, c + ColOffset);
+                }
+            }
+            finally
+            {
+                lock(SyncLock)
+                    FillerComplete = true;
+            }
+
+        }
+
+        /// <summary>
+        /// Helper to add a pair to the queue, but prevents huge queue lists
+        /// </summary>
+        /// <param name="r">The row component of the pair</param>
+        /// <param name="c">The column component of the pair</param>
+        private void AddPairToQueue(int r, int c)
+        {
+            bool added = false;
+            while (!added)
+            {
+                lock (SyncLock)
+                    if (TileSet.Count < 500) //Keep at most 500 items in queue
+                    {
+                        TileSet.Enqueue(new KeyValuePair<int, int>(r, c));
+                        added = true;
+                    }
+
+                if (!added) //Prevent CPU spinning
+                    System.Threading.Thread.Sleep(500);
+            }
+        }
+
+        /// <summary>
+        /// Invokes the render callback method
+        /// </summary>
+        /// <param name="dummy">Unused parameter</param>
         private void ThreadRender(object dummy)
         {
             try
@@ -162,20 +263,24 @@ namespace OSGeo.MapGuide.MgCooker
 
                 while (!Parent.Cancel)
                 {
-                    KeyValuePair<int, int> round;
+                    KeyValuePair<int, int>? round = null;
+
                     lock (SyncLock)
                     {
-                        if (TileSet.Count == 0)
-                            return;
+                        if (TileSet.Count == 0 && FillerComplete)
+                            return; //No more data
 
-                        round = TileSet.Dequeue(); ;
+                        if (TileSet.Count > 0)
+                            round = TileSet.Dequeue();
                     }
-
 
                     if (Parent.Cancel)
                         return;
 
-                    RenderTile(ev, con, round.Key, round.Value, Scale, Group);
+                    if (round == null) //No data, but producer is still running
+                        System.Threading.Thread.Sleep(500);
+                    else
+                        RenderTile(ev, con, round.Value.Key, round.Value.Value, Scale, Group);
                 }
 
 

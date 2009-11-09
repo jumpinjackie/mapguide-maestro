@@ -31,6 +31,8 @@ namespace OSGeo.MapGuide.MgCooker
     {
         private MaestroAPI.ServerConnectionI m_connection;
         private Dictionary<string, string> m_commandlineargs;
+        private Dictionary<string, MaestroAPI.Box2DType> m_coordinateOverrides;
+        private bool m_isUpdating = false;
 
         private SetupRun()
         {
@@ -43,6 +45,7 @@ namespace OSGeo.MapGuide.MgCooker
         {
             m_connection = connection;
             m_commandlineargs = args;
+            m_coordinateOverrides = new Dictionary<string, OSGeo.MapGuide.MaestroAPI.Box2DType>();
 
             if (m_commandlineargs.ContainsKey("mapdefinitions"))
                 m_commandlineargs.Remove("mapdefinitions");
@@ -103,15 +106,16 @@ namespace OSGeo.MapGuide.MgCooker
                 maps = tmp.ToArray();
             }
 
-            treeView1.Nodes.Clear();
+            MapTree.Nodes.Clear();
             foreach (string m in maps)
             {
                 MaestroAPI.MapDefinition mdef = m_connection.GetMapDefinition(m);
-                if (mdef.BaseMapDefinition != null && mdef.BaseMapDefinition.FiniteDisplayScale != null && mdef.BaseMapDefinition.BaseMapLayerGroup != null)
+                if (mdef.BaseMapDefinition != null && mdef.BaseMapDefinition.FiniteDisplayScale != null && mdef.BaseMapDefinition.BaseMapLayerGroup != null && mdef.BaseMapDefinition.BaseMapLayerGroup.Count > 0)
                 {
-                    TreeNode mn = treeView1.Nodes.Add(m);
+                    TreeNode mn = MapTree.Nodes.Add(m);
                     //mn.Checked = true;
-                    mn.ImageIndex  = mn.SelectedImageIndex = 0;
+                    mn.ImageIndex = mn.SelectedImageIndex = 0;
+                    mn.Tag = mdef;
                     foreach (MaestroAPI.BaseMapLayerGroupCommonType g in mdef.BaseMapDefinition.BaseMapLayerGroup)
                     {
                         TreeNode gn = mn.Nodes.Add(g.Name);
@@ -129,7 +133,6 @@ namespace OSGeo.MapGuide.MgCooker
 
                     mn.Expand();
                 }
-                
             }
         }
 
@@ -205,6 +208,8 @@ namespace OSGeo.MapGuide.MgCooker
                     BatchMap bm = new BatchMap(bx, c.MapDefinition);
                     bm.SetGroups(new string[] { c.Group });
                     bm.SetScales(c.ScaleIndexes);
+                    if (c.ExtentOverride != null)
+                        bm.MaxExtent = c.ExtentOverride;
                     bx.Maps.Add(bm);
                 }
 
@@ -221,7 +226,7 @@ namespace OSGeo.MapGuide.MgCooker
         private List<Config> ReadTree()
         {
             List<Config> lst = new List<Config>();
-            foreach(TreeNode mn in treeView1.Nodes)
+            foreach(TreeNode mn in MapTree.Nodes)
                 if (mn.Checked)
                 {
                     foreach(TreeNode gn in mn.Nodes)
@@ -233,7 +238,7 @@ namespace OSGeo.MapGuide.MgCooker
                                     ix.Add(sn.Index);
 
                             if (ix.Count > 0)
-                                lst.Add(new Config(mn.Text, gn.Text, ix.ToArray()));
+                                lst.Add(new Config(mn.Text, gn.Text, ix.ToArray(), (m_coordinateOverrides.ContainsKey(mn.Text) ? m_coordinateOverrides[mn.Text] : null)));
                         }
                 }
 
@@ -245,12 +250,14 @@ namespace OSGeo.MapGuide.MgCooker
             public string MapDefinition;
             public string Group;
             public int[] ScaleIndexes;
+            public MaestroAPI.Box2DType ExtentOverride = null;
 
-            public Config(string MapDefinition, string Group, int[] ScaleIndexes)
+            public Config(string MapDefinition, string Group, int[] ScaleIndexes, MaestroAPI.Box2DType ExtentOverride)
             {
                 this.MapDefinition = MapDefinition;
                 this.Group = Group;
                 this.ScaleIndexes = ScaleIndexes;
+                this.ExtentOverride = ExtentOverride;
             }
         }
 
@@ -323,6 +330,18 @@ namespace OSGeo.MapGuide.MgCooker
                             sw.Write(c.ScaleIndexes[i].ToString());
                         }
 
+                        if (c.ExtentOverride != null)
+                        {
+                            sw.Write(" --extentoverride=");
+                            sw.Write(c.ExtentOverride.MinX.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                            sw.Write(",");
+                            sw.Write(c.ExtentOverride.MinY.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                            sw.Write(",");
+                            sw.Write(c.ExtentOverride.MaxX.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                            sw.Write(",");
+                            sw.Write(c.ExtentOverride.MaxY.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                        }
+
                         sw.Write(args.ToString());
                         sw.WriteLine();
                     }
@@ -383,11 +402,93 @@ namespace OSGeo.MapGuide.MgCooker
         private void UseOfficialMethod_CheckedChanged(object sender, EventArgs e)
         {
             OfficialMethodPanel.Enabled = UseOfficialMethod.Checked;
+            MapTree_AfterSelect(null, null);
         }
 
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        private void MapTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            if (m_isUpdating)
+                return;
 
+            if (MapTree.SelectedNode == null || !UseOfficialMethod.Checked)
+            {
+                BoundsOverride.Enabled = false;
+                BoundsOverride.Tag = null;
+            }
+            else
+            {
+                BoundsOverride.Enabled = true;
+                TreeNode root = MapTree.SelectedNode;
+                while (root.Parent != null)
+                    root = root.Parent;
+
+                MaestroAPI.Box2DType box;
+                if (m_coordinateOverrides.ContainsKey(root.Text))
+                    box = m_coordinateOverrides[root.Text];
+                else
+                    box = ((MaestroAPI.MapDefinition)root.Tag).Extents;
+
+                BoundsOverride.Tag = root;
+
+                try
+                {
+                    m_isUpdating = true;
+                    txtLowerX.Text = box.MinX.ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                    txtLowerY.Text = box.MinY.ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                    txtUpperX.Text = box.MaxX.ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                    txtUpperY.Text = box.MaxY.ToString(System.Globalization.CultureInfo.CurrentUICulture);
+                }
+                finally
+                {
+                    m_isUpdating = false;
+                }
+
+                ModfiedOverrideWarning.Visible = m_coordinateOverrides.ContainsKey(root.Text);
+            }
+        }
+
+        private void ResetBounds_Click(object sender, EventArgs e)
+        {
+            if (BoundsOverride.Tag as TreeNode == null)
+                return;
+
+            TreeNode root = BoundsOverride.Tag as TreeNode;
+
+            if (m_coordinateOverrides.ContainsKey(root.Text))
+                m_coordinateOverrides.Remove(root.Text);
+
+            MapTree_AfterSelect(null, null);
+        }
+
+        private void CoordinateItem_TextChanged(object sender, EventArgs e)
+        {
+            if (BoundsOverride.Tag as TreeNode == null || m_isUpdating)
+                return;
+
+            TreeNode root = BoundsOverride.Tag as TreeNode;
+
+            if (!m_coordinateOverrides.ContainsKey(root.Text))
+            {
+                MaestroAPI.Box2DType newbox = new OSGeo.MapGuide.MaestroAPI.Box2DType();
+                MaestroAPI.Box2DType origbox = ((MaestroAPI.MapDefinition)root.Tag).Extents;
+
+                newbox.MinX = origbox.MinX;
+                newbox.MinY = origbox.MinY;
+                newbox.MaxX = origbox.MaxX;
+                newbox.MaxY = origbox.MaxY;
+
+                m_coordinateOverrides.Add(root.Text, newbox);
+            }
+
+            double d;
+            if (double.TryParse(txtLowerX.Text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentUICulture, out d))
+                m_coordinateOverrides[root.Text].MinX = d;
+            if (double.TryParse(txtLowerY.Text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentUICulture, out d))
+                m_coordinateOverrides[root.Text].MinY = d;
+            if (double.TryParse(txtUpperX.Text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentUICulture, out d))
+                m_coordinateOverrides[root.Text].MaxX = d;
+            if (double.TryParse(txtUpperY.Text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentUICulture, out d))
+                m_coordinateOverrides[root.Text].MaxY = d;
         }
     }
 }

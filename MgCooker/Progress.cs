@@ -30,7 +30,6 @@ namespace OSGeo.MapGuide.MgCooker
     public partial class Progress : Form
     {
         private BatchSettings m_bx;
-        private long m_update;
         private List<TimeSpan> m_tileRuns;
         private long m_tileCount;
         private DateTime m_lastUpdate;

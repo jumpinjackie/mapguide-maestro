@@ -34,10 +34,21 @@ namespace OSGeo.MapGuide.MgCooker
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.MapTree = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.BoundsOverride = new System.Windows.Forms.GroupBox();
+            this.ModfiedOverrideWarning = new System.Windows.Forms.Label();
+            this.ResetBounds = new System.Windows.Forms.Button();
+            this.txtUpperY = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtUpperX = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtLowerY = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtLowerX = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.UseNativeAPI = new System.Windows.Forms.CheckBox();
             this.Password = new System.Windows.Forms.TextBox();
@@ -64,6 +75,7 @@ namespace OSGeo.MapGuide.MgCooker
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.BoundsOverride.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ThreadCount)).BeginInit();
@@ -81,7 +93,7 @@ namespace OSGeo.MapGuide.MgCooker
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 424);
+            this.panel1.Location = new System.Drawing.Point(0, 537);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(565, 41);
             this.panel1.TabIndex = 0;
@@ -120,19 +132,19 @@ namespace OSGeo.MapGuide.MgCooker
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // treeView1
+            // MapTree
             // 
-            this.treeView1.CheckBoxes = true;
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.ImageIndex = 0;
-            this.treeView1.ImageList = this.imageList1;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(293, 424);
-            this.treeView1.TabIndex = 1;
-            this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.MapTree.CheckBoxes = true;
+            this.MapTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MapTree.ImageIndex = 0;
+            this.MapTree.ImageList = this.imageList1;
+            this.MapTree.Location = new System.Drawing.Point(0, 0);
+            this.MapTree.Name = "MapTree";
+            this.MapTree.SelectedImageIndex = 0;
+            this.MapTree.Size = new System.Drawing.Size(293, 537);
+            this.MapTree.TabIndex = 1;
+            this.MapTree.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
+            this.MapTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MapTree_AfterSelect);
             // 
             // imageList1
             // 
@@ -150,14 +162,125 @@ namespace OSGeo.MapGuide.MgCooker
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.BoundsOverride);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(293, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(272, 424);
+            this.panel2.Size = new System.Drawing.Size(272, 537);
             this.panel2.TabIndex = 2;
+            // 
+            // BoundsOverride
+            // 
+            this.BoundsOverride.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.BoundsOverride.Controls.Add(this.ModfiedOverrideWarning);
+            this.BoundsOverride.Controls.Add(this.ResetBounds);
+            this.BoundsOverride.Controls.Add(this.txtUpperY);
+            this.BoundsOverride.Controls.Add(this.label4);
+            this.BoundsOverride.Controls.Add(this.txtUpperX);
+            this.BoundsOverride.Controls.Add(this.label5);
+            this.BoundsOverride.Controls.Add(this.txtLowerY);
+            this.BoundsOverride.Controls.Add(this.label10);
+            this.BoundsOverride.Controls.Add(this.txtLowerX);
+            this.BoundsOverride.Controls.Add(this.label11);
+            this.BoundsOverride.Enabled = false;
+            this.BoundsOverride.Location = new System.Drawing.Point(12, 424);
+            this.BoundsOverride.Name = "BoundsOverride";
+            this.BoundsOverride.Size = new System.Drawing.Size(248, 120);
+            this.BoundsOverride.TabIndex = 12;
+            this.BoundsOverride.TabStop = false;
+            this.BoundsOverride.Text = "Override bounds";
+            // 
+            // ModfiedOverrideWarning
+            // 
+            this.ModfiedOverrideWarning.AutoSize = true;
+            this.ModfiedOverrideWarning.Location = new System.Drawing.Point(8, 96);
+            this.ModfiedOverrideWarning.Name = "ModfiedOverrideWarning";
+            this.ModfiedOverrideWarning.Size = new System.Drawing.Size(105, 13);
+            this.ModfiedOverrideWarning.TabIndex = 19;
+            this.ModfiedOverrideWarning.Text = "Coordinates modified";
+            this.ModfiedOverrideWarning.Visible = false;
+            // 
+            // ResetBounds
+            // 
+            this.ResetBounds.Location = new System.Drawing.Point(136, 88);
+            this.ResetBounds.Name = "ResetBounds";
+            this.ResetBounds.Size = new System.Drawing.Size(88, 24);
+            this.ResetBounds.TabIndex = 18;
+            this.ResetBounds.Text = "Reset";
+            this.ResetBounds.UseVisualStyleBackColor = true;
+            this.ResetBounds.Click += new System.EventHandler(this.ResetBounds_Click);
+            // 
+            // txtUpperY
+            // 
+            this.txtUpperY.Location = new System.Drawing.Point(144, 56);
+            this.txtUpperY.Name = "txtUpperY";
+            this.txtUpperY.Size = new System.Drawing.Size(80, 20);
+            this.txtUpperY.TabIndex = 17;
+            this.txtUpperY.TextChanged += new System.EventHandler(this.CoordinateItem_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label4.Location = new System.Drawing.Point(120, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(16, 16);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Y";
+            // 
+            // txtUpperX
+            // 
+            this.txtUpperX.Location = new System.Drawing.Point(32, 56);
+            this.txtUpperX.Name = "txtUpperX";
+            this.txtUpperX.Size = new System.Drawing.Size(72, 20);
+            this.txtUpperX.TabIndex = 15;
+            this.txtUpperX.TextChanged += new System.EventHandler(this.CoordinateItem_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label5.Location = new System.Drawing.Point(8, 56);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(16, 16);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "X";
+            // 
+            // txtLowerY
+            // 
+            this.txtLowerY.Location = new System.Drawing.Point(144, 24);
+            this.txtLowerY.Name = "txtLowerY";
+            this.txtLowerY.Size = new System.Drawing.Size(80, 20);
+            this.txtLowerY.TabIndex = 13;
+            this.txtLowerY.TextChanged += new System.EventHandler(this.CoordinateItem_TextChanged);
+            // 
+            // label10
+            // 
+            this.label10.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label10.Location = new System.Drawing.Point(120, 24);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(16, 16);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Y";
+            // 
+            // txtLowerX
+            // 
+            this.txtLowerX.Location = new System.Drawing.Point(32, 24);
+            this.txtLowerX.Name = "txtLowerX";
+            this.txtLowerX.Size = new System.Drawing.Size(72, 20);
+            this.txtLowerX.TabIndex = 11;
+            this.txtLowerX.TextChanged += new System.EventHandler(this.CoordinateItem_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label11.Location = new System.Drawing.Point(8, 24);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(16, 16);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "X";
             // 
             // groupBox1
             // 
@@ -436,16 +559,18 @@ namespace OSGeo.MapGuide.MgCooker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 465);
-            this.Controls.Add(this.treeView1);
+            this.ClientSize = new System.Drawing.Size(565, 578);
+            this.Controls.Add(this.MapTree);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(449, 492);
+            this.MinimumSize = new System.Drawing.Size(581, 598);
             this.Name = "SetupRun";
             this.Text = "Setup a tile build";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.BoundsOverride.ResumeLayout(false);
+            this.BoundsOverride.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -469,7 +594,7 @@ namespace OSGeo.MapGuide.MgCooker
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView MapTree;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ImageList imageList1;
@@ -498,5 +623,16 @@ namespace OSGeo.MapGuide.MgCooker
         private System.Windows.Forms.Panel TilesetLimitPanel;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.CheckBox RandomTileOrder;
+        private System.Windows.Forms.GroupBox BoundsOverride;
+        private System.Windows.Forms.TextBox txtUpperY;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtUpperX;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtLowerY;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtLowerX;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button ResetBounds;
+        private System.Windows.Forms.Label ModfiedOverrideWarning;
     }
 }

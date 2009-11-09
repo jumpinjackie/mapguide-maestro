@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MgCooker", "MgCooker.csproj", "{C76FFEBF-F047-4BE8-983C-BF8BF3CFB3D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI", "..\MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj", "{290B027E-3649-4A60-A9BF-0544831435E2}"

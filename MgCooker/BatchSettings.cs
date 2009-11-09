@@ -378,6 +378,26 @@ namespace OSGeo.MapGuide.MgCooker
         public string[] Groups { get { return m_groups; } }
 
         /// <summary>
+        /// The number of tiles to offset the row counter with
+        /// </summary>
+        private int m_rowTileOffset = 0;
+
+        /// <summary>
+        /// The number of tiles to offset the col counter with
+        /// </summary>
+        private int m_colTileOffset = 0;
+
+        /// <summary>
+        /// The tile offset for row indexes for tiles
+        /// </summary>
+        public int RowTileOffset { get { return m_rowTileOffset; } }
+
+        /// <summary>
+        /// The tile offset for col indexes for tiles
+        /// </summary>
+        public int ColTileOffset { get { return m_colTileOffset; } }
+
+        /// <summary>
         /// Constructs a new map to be processed
         /// </summary>
         /// <param name="parent">The parent entry</param>
@@ -416,7 +436,7 @@ namespace OSGeo.MapGuide.MgCooker
                 return;
             }
 
-            MaestroAPI.Box2DType extents = m_maxExtent == null ? m_mapdefinition.Extents : m_maxExtent;
+            MaestroAPI.Box2DType extents = this.MaxExtent ?? m_mapdefinition.Extents;
             double maxscale = m_maxscale;
 
             m_dimensions = new long[this.Resolutions][];
@@ -436,9 +456,22 @@ namespace OSGeo.MapGuide.MgCooker
                     //This is the algorithm proposed by the MapGuide team:
                     //http://www.nabble.com/Pre-Genererate--tiles-for-the-entire-map-at-all-pre-defined-zoom-scales-to6074037.html#a6078663
                     
+                    //The tile extent in meters
+                    double tileWidth  =((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileWidth) * (scale));
+                    double tileHeight = ((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileHeight) * (scale));
+
                     //Using this algorithm, yields a negative number of columns/rows, if the max scale is larger than the max extent of the map.
-                    rows = Math.Max(1, (int)Math.Ceiling((width_in_meters / ((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileWidth) * (scale)))));
-                    cols = Math.Max(1, (int)Math.Ceiling((height_in_meters / ((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileHeight) * (scale)))));
+                    rows = Math.Max(1, (int)Math.Ceiling((height_in_meters / tileHeight)));
+                    cols = Math.Max(1, (int)Math.Ceiling((width_in_meters / tileWidth)));
+
+                    if (m_maxExtent != null)
+                    {
+                        //The extent is overridden, so we need to adjust the start offsets
+                        double offsetX = MaxExtent.MinX - m_mapdefinition.Extents.MinX;
+                        double offsetY = MaxExtent.MinY - m_mapdefinition.Extents.MinY;
+                        m_rowTileOffset = (int)Math.Ceiling(offsetY / tileHeight);
+                        m_colTileOffset = (int)Math.Ceiling(offsetX / tileWidth);
+                    }
                 }
                 else
                 {
@@ -447,18 +480,21 @@ namespace OSGeo.MapGuide.MgCooker
                     //scale ranges. Eg. if max scale range is 1:200, then scale range 1:100 is twice the size,
                     //meaning the full map at 1:100 fills 3840x2560 pixels.
                     //The width/height is then used to calculate the number of rows and columns of 300x300 pixel tiles.
+                    
+                    //The purpose of this method is to enabled tile generation without access to
+                    //coordinate system properties
 
                     long pw = (long)(m_parent.Config.DisplayResolutionWidth * (1 / (scale / maxscale)));
                     long ph = (long)(m_parent.Config.DisplayResolutionHeight * (1 / (scale / maxscale)));
 
-                    rows = (pw + (m_parent.Config.TileWidth - 1)) / m_parent.Config.TileWidth;
-                    cols = (ph + (m_parent.Config.TileHeight - 1)) / m_parent.Config.TileHeight;
+                    rows = (ph + (m_parent.Config.TileHeight - 1)) / m_parent.Config.TileHeight;
+                    cols = (pw + (m_parent.Config.TileWidth - 1)) / m_parent.Config.TileWidth;
                     rows += rows % 2;
                     cols += cols % 2;
                 }
 
-                m_dimensions[i] = new long[] {rows, cols};
 
+                m_dimensions[i] = new long[] {rows, cols};
             }
         }
 
@@ -549,33 +585,14 @@ namespace OSGeo.MapGuide.MgCooker
                 int rows = (int)m_dimensions[scaleindex][0];
                 int cols = (int)m_dimensions[scaleindex][1];
 
-                RenderThreads settings = new RenderThreads(this, m_parent, m_scaleindexmap[scaleindex], group, m_mapdefinition.ResourceId);
+                //If the MaxExtents are different from the actual bounds, we need a start offset offset
 
-                if (m_parent.Config.RandomizeTileSequence)
-                {
-                    List<KeyValuePair<int, int>> tmp = new List<KeyValuePair<int, int>>();
-                    for (int r = 0; r < rows; r++)
-                        for (int c = 0; c < cols; c++)
-                            tmp.Add(new KeyValuePair<int, int>(r, c));
-
-                    Random ra = new Random();
-                    while (tmp.Count > 0)
-                    {
-                        int j = ra.Next(0, tmp.Count);
-                        settings.TileSet.Enqueue(tmp[j]);
-                        tmp.RemoveAt(j);
-                    }
-               }
-                else
-                {
-                    for (int r = 0; r < rows; r++)
-                        for (int c = 0; c < cols; c++)
-                            settings.TileSet.Enqueue(new KeyValuePair<int, int>(r, c));
-                }
-
+                RenderThreads settings = new RenderThreads(this, m_parent, m_scaleindexmap[scaleindex], group, m_mapdefinition.ResourceId, rows, cols, m_rowTileOffset, m_colTileOffset, m_parent.Config.RandomizeTileSequence);
+                
                 settings.RunAndWait();
+
                 if (settings.TileSet.Count != 0 && !m_parent.Cancel)
-                    throw new Exception("One or more threads chrashed, and the tile set was only partially created");
+                    throw new Exception("All or more threads chrashed, and the tile set was only partially created");
             }
 
             m_parent.InvokeFinishRendering(this, group, scaleindex);

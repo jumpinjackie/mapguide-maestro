@@ -58,6 +58,7 @@ namespace OSGeo.MapGuide.MgCooker
             //mapdefinition=
             //scaleindex=0,1,2,3,4,5
             //basegroups="x","y"
+            //extentoverride=minx,miny,maxx,maxy
 
             string mapagent = "http://localhost/mapguide";
             string username = "Anonymous";
@@ -75,7 +76,8 @@ namespace OSGeo.MapGuide.MgCooker
             string DPI = "";
             string metersPerUnit = "";
 
-
+            MaestroAPI.Box2DType overrideExtents = null;
+            
             List<string> largs = new List<string>(args);
             Dictionary<string, string> opts = CommandLineParser.ExtractOptions(largs);
             if (opts.ContainsKey("mapagent"))
@@ -105,6 +107,31 @@ namespace OSGeo.MapGuide.MgCooker
                 DPI = opts["DPI"];
             if (opts.ContainsKey("metersperunit"))
                 metersPerUnit = opts["metersperunit"];
+            if (opts.ContainsKey("extentoverride"))
+            {
+                string[] parts = opts["extentoverride"].Split(',');
+                if (parts.Length == 4)
+                {
+                    double minx;
+                    double miny;
+                    double maxx;
+                    double maxy;
+                    if (
+                        double.TryParse(parts[0], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out minx) &&
+                        double.TryParse(parts[1], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out miny) &&
+                        double.TryParse(parts[2], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out maxx) &&
+                        double.TryParse(parts[3], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out maxy)
+                        )
+                    {
+                        overrideExtents = new OSGeo.MapGuide.MaestroAPI.Box2DType();
+                        overrideExtents.MinX = minx;
+                        overrideExtents.MinY = miny;
+                        overrideExtents.MaxX = maxx;
+                        overrideExtents.MaxY = maxy;
+                    }
+                }
+            }
+
 
             try
             {
@@ -205,6 +232,10 @@ namespace OSGeo.MapGuide.MgCooker
 
             if (opts.ContainsKey("threadcount") && int.TryParse(opts["threadcount"], out x) && x > 0)
                 bx.Config.ThreadCount = x;
+
+            if (overrideExtents != null)
+                foreach (BatchMap bm in bx.Maps)
+                    bm.MaxExtent = overrideExtents;
 
             if (largs.IndexOf("/commandline") < 0 && largs.IndexOf("commandline") < 0)
             {
