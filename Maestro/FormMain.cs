@@ -1685,6 +1685,9 @@ namespace OSGeo.MapGuide.Maestro
                             m_connection.MoveResource(sourcepath, targetpath, true);
                         else
                             m_connection.CopyResource(sourcepath, targetpath, true);
+
+                        if (refreshTree)
+                            RebuildDocumentTree();
                         return true;
                 }
 
