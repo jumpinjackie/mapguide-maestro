@@ -30,9 +30,9 @@ namespace OSGeo.MapGuide.Maestro
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResourceProperties));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.OKBtn = new System.Windows.Forms.Button();
@@ -242,34 +242,34 @@ namespace OSGeo.MapGuide.Maestro
             this.denyAccessToolStripMenuItem,
             this.inheritedAccessRightsToolStripMenuItem});
             this.securityContextMenu.Name = "securityContextMenu";
-            this.securityContextMenu.Size = new System.Drawing.Size(195, 92);
+            this.securityContextMenu.Size = new System.Drawing.Size(192, 92);
             this.securityContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.securityContextMenu_Opening);
             // 
             // readWriteAccessToolStripMenuItem
             // 
             this.readWriteAccessToolStripMenuItem.Name = "readWriteAccessToolStripMenuItem";
-            this.readWriteAccessToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.readWriteAccessToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.readWriteAccessToolStripMenuItem.Text = "Read write access";
             this.readWriteAccessToolStripMenuItem.Click += new System.EventHandler(this.readWriteAccessToolStripMenuItem_Click);
             // 
             // readOnlyAccessToolStripMenuItem
             // 
             this.readOnlyAccessToolStripMenuItem.Name = "readOnlyAccessToolStripMenuItem";
-            this.readOnlyAccessToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.readOnlyAccessToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.readOnlyAccessToolStripMenuItem.Text = "Read only access";
             this.readOnlyAccessToolStripMenuItem.Click += new System.EventHandler(this.readOnlyAccessToolStripMenuItem_Click);
             // 
             // denyAccessToolStripMenuItem
             // 
             this.denyAccessToolStripMenuItem.Name = "denyAccessToolStripMenuItem";
-            this.denyAccessToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.denyAccessToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.denyAccessToolStripMenuItem.Text = "Deny access";
             this.denyAccessToolStripMenuItem.Click += new System.EventHandler(this.denyAccessToolStripMenuItem_Click);
             // 
             // inheritedAccessRightsToolStripMenuItem
             // 
             this.inheritedAccessRightsToolStripMenuItem.Name = "inheritedAccessRightsToolStripMenuItem";
-            this.inheritedAccessRightsToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.inheritedAccessRightsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.inheritedAccessRightsToolStripMenuItem.Text = "Inherited access rights";
             this.inheritedAccessRightsToolStripMenuItem.Click += new System.EventHandler(this.inheritedAccessRightsToolStripMenuItem_Click);
             // 
@@ -761,36 +761,36 @@ namespace OSGeo.MapGuide.Maestro
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemKey,
             this.ItemValue});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(8, 8);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Size = new System.Drawing.Size(336, 312);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Leave += new System.EventHandler(this.dataGridView1_Leave);
@@ -941,6 +941,7 @@ namespace OSGeo.MapGuide.Maestro
             this.Name = "ResourceProperties";
             this.Text = "Properties";
             this.Load += new System.EventHandler(this.ResourceProperties_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ResourceProperties_FormClosing);
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.SecurityTab.ResumeLayout(false);

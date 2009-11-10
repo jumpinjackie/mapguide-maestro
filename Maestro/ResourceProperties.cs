@@ -131,6 +131,7 @@ namespace OSGeo.MapGuide.Maestro
                 tabControl1.TabPages.Remove(WMSTab);
                 tabControl1.TabPages.Remove(WFSTab);
                 tabControl1.TabPages.Remove(CustomTab);
+                tabControl1.TabPages.Remove(ReferenceTab);
             }
             else
             {
@@ -861,7 +862,7 @@ namespace OSGeo.MapGuide.Maestro
                 ResourceReferenceList lst = m_connection.EnumerateResourceReferences(resourceId);
 
                 System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
-                using(System.IO.MemoryStream ms = new System.IO.MemoryStream(m_connection.GetResourceXmlData(m_resourceId)))
+                using(System.IO.MemoryStream ms = new System.IO.MemoryStream(m_connection.GetResourceXmlData(resourceId)))
                     doc.Load(ms);
 
                 List<KeyValuePair<System.Xml.XmlNode, string>> refs = Utility.GetResourceIdPointers(doc);
@@ -892,7 +893,10 @@ namespace OSGeo.MapGuide.Maestro
             LoadingReferences.Visible = false;
 
             if (e.Cancelled)
+            {
+                this.Close();
                 return;
+            }
             if (e.Error != null || e.Result as object[] == null || (e.Result as object[]).Length != 2)
             {
                 if (e.Error != null)
@@ -938,6 +942,18 @@ namespace OSGeo.MapGuide.Maestro
         private void CancelBtn_Click(object sender, EventArgs e)
         {
             m_openResource = null;
+        }
+
+        private void ResourceProperties_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            lock (m_lock)
+                if (m_backgroundThread != null)
+                {
+                    this.Enabled = false;
+                    m_backgroundThread.Abort();
+                    e.Cancel = true;
+                    return;
+                }
         }
     }
 
