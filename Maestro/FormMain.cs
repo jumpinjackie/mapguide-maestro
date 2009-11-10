@@ -130,6 +130,7 @@ namespace OSGeo.MapGuide.Maestro
         private ToolStripMenuItem validateResourcesToolStripMenuItem;
         private ToolStripMenuItem RenameMenu;
         private ToolStripMenuItem openToolStripMenuItem;
+        private ToolStripMenuItem DuplicateMenu;
         private string m_lastTooltip;
 
         public FormMain()
@@ -255,6 +256,7 @@ namespace OSGeo.MapGuide.Maestro
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.TabCopyIdMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.TabPageTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.DuplicateMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -305,31 +307,32 @@ namespace OSGeo.MapGuide.Maestro
             this.CutMenu,
             this.CopyMenu,
             this.PasteMenu,
+            this.DuplicateMenu,
             this.menuItem4,
             this.DeleteMenu,
             this.NewMenu,
             this.RenameMenu,
             this.openToolStripMenuItem});
             this.TreeContextMenu.Name = "TreeContextMenu";
-            this.TreeContextMenu.Size = new System.Drawing.Size(181, 320);
+            this.TreeContextMenu.Size = new System.Drawing.Size(183, 364);
             this.TreeContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.TreeContextMenu_Popup);
             // 
             // PropertiesMenu
             // 
             this.PropertiesMenu.Name = "PropertiesMenu";
-            this.PropertiesMenu.Size = new System.Drawing.Size(180, 22);
+            this.PropertiesMenu.Size = new System.Drawing.Size(182, 22);
             this.PropertiesMenu.Text = "Properties";
             this.PropertiesMenu.Click += new System.EventHandler(this.PropertiesMenu_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(179, 6);
             // 
             // CopyResourceIdMenu
             // 
             this.CopyResourceIdMenu.Name = "CopyResourceIdMenu";
-            this.CopyResourceIdMenu.Size = new System.Drawing.Size(180, 22);
+            this.CopyResourceIdMenu.Size = new System.Drawing.Size(182, 22);
             this.CopyResourceIdMenu.Text = "Copy id to clipboard";
             this.CopyResourceIdMenu.ToolTipText = "Copies the currently selected resource id to the clipboard";
             this.CopyResourceIdMenu.Click += new System.EventHandler(this.CopyResourceIdMenu_Click);
@@ -337,51 +340,51 @@ namespace OSGeo.MapGuide.Maestro
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(179, 6);
             // 
             // validateResourcesToolStripMenuItem
             // 
             this.validateResourcesToolStripMenuItem.Name = "validateResourcesToolStripMenuItem";
-            this.validateResourcesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.validateResourcesToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.validateResourcesToolStripMenuItem.Text = "Validate resources";
             this.validateResourcesToolStripMenuItem.Click += new System.EventHandler(this.validateResourcesToolStripMenuItem_Click);
             // 
             // menuItem7
             // 
             this.menuItem7.Name = "menuItem7";
-            this.menuItem7.Size = new System.Drawing.Size(177, 6);
+            this.menuItem7.Size = new System.Drawing.Size(179, 6);
             // 
             // EditAsXmlMenu
             // 
             this.EditAsXmlMenu.Name = "EditAsXmlMenu";
-            this.EditAsXmlMenu.Size = new System.Drawing.Size(180, 22);
+            this.EditAsXmlMenu.Size = new System.Drawing.Size(182, 22);
             this.EditAsXmlMenu.Text = "Edit as xml";
             this.EditAsXmlMenu.Click += new System.EventHandler(this.EditAsXmlMenu_Click);
             // 
             // LoadFromXmlMenu
             // 
             this.LoadFromXmlMenu.Name = "LoadFromXmlMenu";
-            this.LoadFromXmlMenu.Size = new System.Drawing.Size(180, 22);
+            this.LoadFromXmlMenu.Size = new System.Drawing.Size(182, 22);
             this.LoadFromXmlMenu.Text = "Load from Xml...";
             this.LoadFromXmlMenu.Click += new System.EventHandler(this.LoadFromXmlMenu_Click);
             // 
             // SaveXmlAsMenu
             // 
             this.SaveXmlAsMenu.Name = "SaveXmlAsMenu";
-            this.SaveXmlAsMenu.Size = new System.Drawing.Size(180, 22);
+            this.SaveXmlAsMenu.Size = new System.Drawing.Size(182, 22);
             this.SaveXmlAsMenu.Text = "Save Xml As...";
             this.SaveXmlAsMenu.Click += new System.EventHandler(this.SaveXmlAsMenu_Click);
             // 
             // menuItem1
             // 
             this.menuItem1.Name = "menuItem1";
-            this.menuItem1.Size = new System.Drawing.Size(177, 6);
+            this.menuItem1.Size = new System.Drawing.Size(179, 6);
             // 
             // CutMenu
             // 
             this.CutMenu.Name = "CutMenu";
             this.CutMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.CutMenu.Size = new System.Drawing.Size(180, 22);
+            this.CutMenu.Size = new System.Drawing.Size(182, 22);
             this.CutMenu.Text = "Cut";
             this.CutMenu.Click += new System.EventHandler(this.CutMenu_Click);
             // 
@@ -389,7 +392,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.CopyMenu.Name = "CopyMenu";
             this.CopyMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.CopyMenu.Size = new System.Drawing.Size(180, 22);
+            this.CopyMenu.Size = new System.Drawing.Size(182, 22);
             this.CopyMenu.Text = "Copy";
             this.CopyMenu.Click += new System.EventHandler(this.CopyMenu_Click);
             // 
@@ -397,39 +400,39 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.PasteMenu.Name = "PasteMenu";
             this.PasteMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.PasteMenu.Size = new System.Drawing.Size(180, 22);
+            this.PasteMenu.Size = new System.Drawing.Size(182, 22);
             this.PasteMenu.Text = "Paste";
             this.PasteMenu.Click += new System.EventHandler(this.PasteMenu_Click);
             // 
             // menuItem4
             // 
             this.menuItem4.Name = "menuItem4";
-            this.menuItem4.Size = new System.Drawing.Size(177, 6);
+            this.menuItem4.Size = new System.Drawing.Size(179, 6);
             // 
             // DeleteMenu
             // 
             this.DeleteMenu.Name = "DeleteMenu";
-            this.DeleteMenu.Size = new System.Drawing.Size(180, 22);
+            this.DeleteMenu.Size = new System.Drawing.Size(182, 22);
             this.DeleteMenu.Text = "Delete";
             this.DeleteMenu.Click += new System.EventHandler(this.DeleteMenu_Click);
             // 
             // NewMenu
             // 
             this.NewMenu.Name = "NewMenu";
-            this.NewMenu.Size = new System.Drawing.Size(180, 22);
+            this.NewMenu.Size = new System.Drawing.Size(182, 22);
             this.NewMenu.Text = "New";
             // 
             // RenameMenu
             // 
             this.RenameMenu.Name = "RenameMenu";
-            this.RenameMenu.Size = new System.Drawing.Size(180, 22);
+            this.RenameMenu.Size = new System.Drawing.Size(182, 22);
             this.RenameMenu.Text = "Rename";
             this.RenameMenu.Click += new System.EventHandler(this.RenameMenu_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -617,7 +620,7 @@ namespace OSGeo.MapGuide.Maestro
             this.menuItem22,
             this.MainMenuExit});
             this.menuItem2.Name = "menuItem2";
-            this.menuItem2.Size = new System.Drawing.Size(35, 20);
+            this.menuItem2.Size = new System.Drawing.Size(37, 20);
             this.menuItem2.Text = "File";
             // 
             // MainMenuNew
@@ -625,7 +628,7 @@ namespace OSGeo.MapGuide.Maestro
             this.MainMenuNew.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuNew.Image")));
             this.MainMenuNew.Name = "MainMenuNew";
             this.MainMenuNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.MainMenuNew.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuNew.Size = new System.Drawing.Size(210, 22);
             this.MainMenuNew.Text = "New";
             this.MainMenuNew.Click += new System.EventHandler(this.MainMenuNew_Click);
             // 
@@ -633,7 +636,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.MainMenuOpen.Name = "MainMenuOpen";
             this.MainMenuOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.MainMenuOpen.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuOpen.Size = new System.Drawing.Size(210, 22);
             this.MainMenuOpen.Text = "Open";
             this.MainMenuOpen.Click += new System.EventHandler(this.MainMenuOpen_Click);
             // 
@@ -642,21 +645,21 @@ namespace OSGeo.MapGuide.Maestro
             this.MainMenuClose.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuClose.Image")));
             this.MainMenuClose.Name = "MainMenuClose";
             this.MainMenuClose.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
-            this.MainMenuClose.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuClose.Size = new System.Drawing.Size(210, 22);
             this.MainMenuClose.Text = "Close";
             this.MainMenuClose.Click += new System.EventHandler(this.MainMenuClose_Click);
             // 
             // menuItem17
             // 
             this.menuItem17.Name = "menuItem17";
-            this.menuItem17.Size = new System.Drawing.Size(208, 6);
+            this.menuItem17.Size = new System.Drawing.Size(207, 6);
             // 
             // MainMenuSave
             // 
             this.MainMenuSave.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuSave.Image")));
             this.MainMenuSave.Name = "MainMenuSave";
             this.MainMenuSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.MainMenuSave.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuSave.Size = new System.Drawing.Size(210, 22);
             this.MainMenuSave.Text = "Save";
             this.MainMenuSave.Click += new System.EventHandler(this.MainMenuSave_Click);
             // 
@@ -664,7 +667,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.MainMenuSaveAs.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuSaveAs.Image")));
             this.MainMenuSaveAs.Name = "MainMenuSaveAs";
-            this.MainMenuSaveAs.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuSaveAs.Size = new System.Drawing.Size(210, 22);
             this.MainMenuSaveAs.Text = "Save as...";
             this.MainMenuSaveAs.Click += new System.EventHandler(this.MainMenuSaveAs_Click);
             // 
@@ -673,72 +676,72 @@ namespace OSGeo.MapGuide.Maestro
             this.MainMenuSaveAll.Name = "MainMenuSaveAll";
             this.MainMenuSaveAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
                         | System.Windows.Forms.Keys.S)));
-            this.MainMenuSaveAll.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuSaveAll.Size = new System.Drawing.Size(210, 22);
             this.MainMenuSaveAll.Text = "Save all";
             this.MainMenuSaveAll.Click += new System.EventHandler(this.MainMenuSaveAll_Click);
             // 
             // menuItem11
             // 
             this.menuItem11.Name = "menuItem11";
-            this.menuItem11.Size = new System.Drawing.Size(208, 6);
+            this.menuItem11.Size = new System.Drawing.Size(207, 6);
             // 
             // MainMenuEditAsXml
             // 
             this.MainMenuEditAsXml.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuEditAsXml.Image")));
             this.MainMenuEditAsXml.Name = "MainMenuEditAsXml";
-            this.MainMenuEditAsXml.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuEditAsXml.Size = new System.Drawing.Size(210, 22);
             this.MainMenuEditAsXml.Text = "Edit as Xml";
             this.MainMenuEditAsXml.Click += new System.EventHandler(this.MainMenuEditAsXml_Click);
             // 
             // MainMenuSaveAsXml
             // 
             this.MainMenuSaveAsXml.Name = "MainMenuSaveAsXml";
-            this.MainMenuSaveAsXml.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuSaveAsXml.Size = new System.Drawing.Size(210, 22);
             this.MainMenuSaveAsXml.Text = "Save as Xml...";
             this.MainMenuSaveAsXml.Click += new System.EventHandler(this.MainMenuSaveAsXml_Click);
             // 
             // MainMenuLoadFromXml
             // 
             this.MainMenuLoadFromXml.Name = "MainMenuLoadFromXml";
-            this.MainMenuLoadFromXml.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuLoadFromXml.Size = new System.Drawing.Size(210, 22);
             this.MainMenuLoadFromXml.Text = "Load from Xml...";
             this.MainMenuLoadFromXml.Click += new System.EventHandler(this.MainMenuLoadFromXml_Click);
             // 
             // menuItem20
             // 
             this.menuItem20.Name = "menuItem20";
-            this.menuItem20.Size = new System.Drawing.Size(208, 6);
+            this.menuItem20.Size = new System.Drawing.Size(207, 6);
             // 
             // MainMenuChangePreferences
             // 
             this.MainMenuChangePreferences.Name = "MainMenuChangePreferences";
-            this.MainMenuChangePreferences.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuChangePreferences.Size = new System.Drawing.Size(210, 22);
             this.MainMenuChangePreferences.Text = "Preferences...";
             this.MainMenuChangePreferences.Click += new System.EventHandler(this.MainMenuChangePreferences_Click);
             // 
             // MainMenuChangeServer
             // 
             this.MainMenuChangeServer.Name = "MainMenuChangeServer";
-            this.MainMenuChangeServer.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuChangeServer.Size = new System.Drawing.Size(210, 22);
             this.MainMenuChangeServer.Text = "Change server...";
             this.MainMenuChangeServer.Click += new System.EventHandler(this.MainMenuChangeServer_Click);
             // 
             // OpenSiteAdmin
             // 
             this.OpenSiteAdmin.Name = "OpenSiteAdmin";
-            this.OpenSiteAdmin.Size = new System.Drawing.Size(211, 22);
+            this.OpenSiteAdmin.Size = new System.Drawing.Size(210, 22);
             this.OpenSiteAdmin.Text = "Open Site Administrator...";
             this.OpenSiteAdmin.Click += new System.EventHandler(this.OpenSiteAdmin_Click);
             // 
             // menuItem22
             // 
             this.menuItem22.Name = "menuItem22";
-            this.menuItem22.Size = new System.Drawing.Size(208, 6);
+            this.menuItem22.Size = new System.Drawing.Size(207, 6);
             // 
             // MainMenuExit
             // 
             this.MainMenuExit.Name = "MainMenuExit";
-            this.MainMenuExit.Size = new System.Drawing.Size(211, 22);
+            this.MainMenuExit.Size = new System.Drawing.Size(210, 22);
             this.MainMenuExit.Text = "Exit";
             this.MainMenuExit.Click += new System.EventHandler(this.MainMenuExit_Click);
             // 
@@ -749,14 +752,14 @@ namespace OSGeo.MapGuide.Maestro
             this.MainMenuCopy,
             this.MainMenuPaste});
             this.MainMenuEdit.Name = "MainMenuEdit";
-            this.MainMenuEdit.Size = new System.Drawing.Size(37, 20);
+            this.MainMenuEdit.Size = new System.Drawing.Size(39, 20);
             this.MainMenuEdit.Text = "Edit";
             // 
             // MainMenuCut
             // 
             this.MainMenuCut.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuCut.Image")));
             this.MainMenuCut.Name = "MainMenuCut";
-            this.MainMenuCut.Size = new System.Drawing.Size(112, 22);
+            this.MainMenuCut.Size = new System.Drawing.Size(102, 22);
             this.MainMenuCut.Text = "Cut";
             this.MainMenuCut.Click += new System.EventHandler(this.MainMenuCut_Click);
             // 
@@ -764,7 +767,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.MainMenuCopy.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuCopy.Image")));
             this.MainMenuCopy.Name = "MainMenuCopy";
-            this.MainMenuCopy.Size = new System.Drawing.Size(112, 22);
+            this.MainMenuCopy.Size = new System.Drawing.Size(102, 22);
             this.MainMenuCopy.Text = "Copy";
             this.MainMenuCopy.Click += new System.EventHandler(this.MainMenuCopy_Click);
             // 
@@ -772,7 +775,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.MainMenuPaste.Image = ((System.Drawing.Image)(resources.GetObject("MainMenuPaste.Image")));
             this.MainMenuPaste.Name = "MainMenuPaste";
-            this.MainMenuPaste.Size = new System.Drawing.Size(112, 22);
+            this.MainMenuPaste.Size = new System.Drawing.Size(102, 22);
             this.MainMenuPaste.Text = "Paste";
             this.MainMenuPaste.Click += new System.EventHandler(this.MainMenuPaste_Click);
             // 
@@ -783,27 +786,27 @@ namespace OSGeo.MapGuide.Maestro
             this.modifyPackageToolStripMenuItem,
             this.restorePackageToolStripMenuItem});
             this.packagesToolStripMenuItem.Name = "packagesToolStripMenuItem";
-            this.packagesToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.packagesToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.packagesToolStripMenuItem.Text = "Packages";
             // 
             // createPackageToolStripMenuItem
             // 
             this.createPackageToolStripMenuItem.Name = "createPackageToolStripMenuItem";
-            this.createPackageToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.createPackageToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.createPackageToolStripMenuItem.Text = "Create package...";
             this.createPackageToolStripMenuItem.Click += new System.EventHandler(this.createPackageToolStripMenuItem_Click);
             // 
             // modifyPackageToolStripMenuItem
             // 
             this.modifyPackageToolStripMenuItem.Name = "modifyPackageToolStripMenuItem";
-            this.modifyPackageToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.modifyPackageToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.modifyPackageToolStripMenuItem.Text = "Modify package...";
             this.modifyPackageToolStripMenuItem.Click += new System.EventHandler(this.modifyPackageToolStripMenuItem_Click);
             // 
             // restorePackageToolStripMenuItem
             // 
             this.restorePackageToolStripMenuItem.Name = "restorePackageToolStripMenuItem";
-            this.restorePackageToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.restorePackageToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.restorePackageToolStripMenuItem.Text = "Restore package...";
             this.restorePackageToolStripMenuItem.Click += new System.EventHandler(this.restorePackageToolStripMenuItem_Click);
             // 
@@ -814,25 +817,25 @@ namespace OSGeo.MapGuide.Maestro
             this.toolStripSeparator5,
             this.MainMenuAbout});
             this.menuItem3.Name = "menuItem3";
-            this.menuItem3.Size = new System.Drawing.Size(40, 20);
+            this.menuItem3.Size = new System.Drawing.Size(44, 20);
             this.menuItem3.Text = "Help";
             // 
             // viewLastExceptionToolStripMenuItem
             // 
             this.viewLastExceptionToolStripMenuItem.Name = "viewLastExceptionToolStripMenuItem";
-            this.viewLastExceptionToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.viewLastExceptionToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.viewLastExceptionToolStripMenuItem.Text = "Last exception...";
             this.viewLastExceptionToolStripMenuItem.Click += new System.EventHandler(this.viewLastExceptionToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(155, 6);
             // 
             // MainMenuAbout
             // 
             this.MainMenuAbout.Name = "MainMenuAbout";
-            this.MainMenuAbout.Size = new System.Drawing.Size(167, 22);
+            this.MainMenuAbout.Size = new System.Drawing.Size(158, 22);
             this.MainMenuAbout.Text = "About...";
             this.MainMenuAbout.Click += new System.EventHandler(this.MainMenuAbout_Click);
             // 
@@ -975,46 +978,53 @@ namespace OSGeo.MapGuide.Maestro
             this.toolStripSeparator8,
             this.TabCopyIdMenu});
             this.TabPageContextMenu.Name = "TabPageContextMenu";
-            this.TabPageContextMenu.Size = new System.Drawing.Size(181, 104);
+            this.TabPageContextMenu.Size = new System.Drawing.Size(183, 104);
             this.TabPageContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.TabPageContextMenu_Opening);
             // 
             // TabClosePageMenu
             // 
             this.TabClosePageMenu.Name = "TabClosePageMenu";
-            this.TabClosePageMenu.Size = new System.Drawing.Size(180, 22);
+            this.TabClosePageMenu.Size = new System.Drawing.Size(182, 22);
             this.TabClosePageMenu.Text = "Close";
             this.TabClosePageMenu.Click += new System.EventHandler(this.TabClosePageMenu_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(179, 6);
             // 
             // TabSaveMenu
             // 
             this.TabSaveMenu.Name = "TabSaveMenu";
-            this.TabSaveMenu.Size = new System.Drawing.Size(180, 22);
+            this.TabSaveMenu.Size = new System.Drawing.Size(182, 22);
             this.TabSaveMenu.Text = "Save";
             this.TabSaveMenu.Click += new System.EventHandler(this.TabSaveMenu_Click);
             // 
             // TabSaveAsMenu
             // 
             this.TabSaveAsMenu.Name = "TabSaveAsMenu";
-            this.TabSaveAsMenu.Size = new System.Drawing.Size(180, 22);
+            this.TabSaveAsMenu.Size = new System.Drawing.Size(182, 22);
             this.TabSaveAsMenu.Text = "Save as...";
             this.TabSaveAsMenu.Click += new System.EventHandler(this.TabSaveAsMenu_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(179, 6);
             // 
             // TabCopyIdMenu
             // 
             this.TabCopyIdMenu.Name = "TabCopyIdMenu";
-            this.TabCopyIdMenu.Size = new System.Drawing.Size(180, 22);
+            this.TabCopyIdMenu.Size = new System.Drawing.Size(182, 22);
             this.TabCopyIdMenu.Text = "Copy id to clipboard";
             this.TabCopyIdMenu.Click += new System.EventHandler(this.TabCopyIdMenu_Click);
+            // 
+            // DuplicateMenu
+            // 
+            this.DuplicateMenu.Name = "DuplicateMenu";
+            this.DuplicateMenu.Size = new System.Drawing.Size(182, 22);
+            this.DuplicateMenu.Text = "Duplicate";
+            this.DuplicateMenu.Click += new System.EventHandler(this.DuplicateMenu_Click);
             // 
             // FormMain
             // 
@@ -1223,9 +1233,9 @@ namespace OSGeo.MapGuide.Maestro
             if (parent == null)
                 return null;
 
-			string[] parts = m_editors.SplitResourceID(resourceID);
+			string item = new MaestroAPI.ResourceIdentifier(resourceID).Name;
 			foreach(TreeNode n in parent)
-				if (n.Text == parts[parts.Length-1])
+				if (n.Text == item)
 					return n;
 
             if (allowNotFound)
@@ -1233,6 +1243,17 @@ namespace OSGeo.MapGuide.Maestro
             else
 			    throw new Exception(string.Format(m_globalizor.Translate("Item not found: {0}"), resourceID));
 		}
+
+        private bool FindAndSelectNode(string resourceId)
+        {
+            if (resourceId == null)
+                return false;
+
+            TreeNode tn = FindItem(resourceId, true);
+            if (tn != null)
+                ResourceTree.SelectedNode = tn;
+            return tn != null;
+        }
 
 		public string SelectedPath
 		{
@@ -1579,16 +1600,24 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void ClipboardPaste()
 		{
-			if (MoveOrCopyResource(m_clipboardBuffer, ResourceTree.SelectedNode, m_clipboardCut, true) && m_clipboardCut)
-			{
-				ResourceTreePaste.Enabled = false;
-				m_clipboardBuffer = null;
-				m_clipboardCut = false;
-			}
+            string actualTargetPath;
+            if (MoveOrCopyResource(m_clipboardBuffer, ResourceTree.SelectedNode, m_clipboardCut, true, out actualTargetPath))
+            {
+                if (m_clipboardCut)
+                {
+                    ResourceTreePaste.Enabled = false;
+                    m_clipboardBuffer = null;
+                    m_clipboardCut = false;
+                }
+
+                FindAndSelectNode(actualTargetPath);
+            }
 		}
 
-		private bool MoveOrCopyResource(TreeNode source, TreeNode target, bool move, bool refreshTree)
+        private bool MoveOrCopyResource(TreeNode source, TreeNode target, bool move, bool refreshTree, out string actualTargetPath)
 		{
+            actualTargetPath = null;
+
 			using (new WaitCursor(this))
 			{
 				if (source == null || source.Tag == null)
@@ -1631,13 +1660,15 @@ namespace OSGeo.MapGuide.Maestro
 				else
 					return false;
 
-				return MoveOrCopyResource(sourcepath, targetpath, move, refreshTree);
+				return MoveOrCopyResource(sourcepath, targetpath, move, refreshTree, out actualTargetPath);
 			}
 
 		}
 
-		private bool MoveOrCopyResource(string sourcepath, string targetpath, bool move, bool refreshTree)
+		private bool MoveOrCopyResource(string sourcepath, string targetpath, bool move, bool refreshTree, out string actualTargetPath)
 		{
+            actualTargetPath = null;
+
 			using (new WaitCursor(this))
 			{
 				bool sourceisFolder = sourcepath.EndsWith("/");
@@ -1650,6 +1681,8 @@ namespace OSGeo.MapGuide.Maestro
 					}
 					else
 						targetpath = GetUniqueResourceName(sourcepath);
+
+                actualTargetPath = targetpath;
 
 				if (m_connection.ResourceExists(targetpath) && MessageBox.Show(this, sourceisFolder ? m_globalizor.Translate("There already exists a folder at the destination.\nDo you want to overwrite?") : m_globalizor.Translate("There already exists a resource at the destination.\nDo you want to overwrite?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3) != DialogResult.Yes)
 					return false;
@@ -1672,23 +1705,34 @@ namespace OSGeo.MapGuide.Maestro
                             if (!m_userControls[sourcepath].Close(true))
                                 return false;
 
-                switch (MessageBox.Show(this, "Do you want to update items affected by the operation?", Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3))
+                if (move || sourceisFolder) //No update for copies
                 {
-                    case DialogResult.Cancel:
-                        return false;
-                    case DialogResult.No:
-                        if (move && sourceisFolder)
-                            m_connection.MoveFolder(sourcepath, targetpath, true);
-                        else if (sourceisFolder)
-                            m_connection.CopyFolder(sourcepath, targetpath, true);
-                        else if (move)
-                            m_connection.MoveResource(sourcepath, targetpath, true);
-                        else
-                            m_connection.CopyResource(sourcepath, targetpath, true);
+                    switch (MessageBox.Show(this, "Do you want to update items affected by the operation?", Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3))
+                    {
+                        case DialogResult.Cancel:
+                            return false;
+                        case DialogResult.No:
+                            if (move && sourceisFolder)
+                                m_connection.MoveFolder(sourcepath, targetpath, true);
+                            else if (sourceisFolder)
+                                m_connection.CopyFolder(sourcepath, targetpath, true);
+                            else if (move)
+                                m_connection.MoveResource(sourcepath, targetpath, true);
+                            else
+                                m_connection.CopyResource(sourcepath, targetpath, true);
 
-                        if (refreshTree)
-                            RebuildDocumentTree();
-                        return true;
+                            if (refreshTree)
+                                RebuildDocumentTree();
+                            return true;
+                    }
+                }
+                else
+                {
+                    //No update for copies, just copy and return
+                    m_connection.CopyResource(sourcepath, targetpath, true);
+                    if (refreshTree)
+                        RebuildDocumentTree();
+                    return true;
                 }
 
 				LengthyOperation lwdlg = new LengthyOperation();
@@ -1919,11 +1963,16 @@ namespace OSGeo.MapGuide.Maestro
 				return;
 			else if (n.Tag == null || n.Tag.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceFolder))
 			{
+                string actualTargetPath;
+                bool success;
 				//Hmm 8 means CTRL, where is the constant?
 				if ((e.KeyState & 8) != 0)
-					MoveOrCopyResource(x, n, false, true);
+					success = MoveOrCopyResource(x, n, false, true, out actualTargetPath);
 				else
-					MoveOrCopyResource(x, n, true, true);
+					success = MoveOrCopyResource(x, n, true, true, out actualTargetPath);
+                
+                if (success)
+                    FindAndSelectNode(actualTargetPath);
 			}
 			else
 				return;
@@ -2009,8 +2058,12 @@ namespace OSGeo.MapGuide.Maestro
 				return;
 			}
 
-            if (MoveOrCopyResource(sourcepath, targetpath, true, false))
+            string actualTargetPath;
+            if (MoveOrCopyResource(sourcepath, targetpath, true, false, out actualTargetPath))
+            {
                 e.Node.Text = e.Label;
+                FindAndSelectNode(actualTargetPath);
+            }
 
             RebuildDocumentTree();
             //this.Invoke(new MoveOrCopyResourceDelegate(MoveOrCopyResource), new object[] {});
@@ -2165,9 +2218,17 @@ namespace OSGeo.MapGuide.Maestro
 			try
 			{
                 ResourceBrowser.BrowseResource dlg = new ResourceBrowser.BrowseResource(this.RepositoryCache, this, true, true, null);
-                if (dlg.ShowDialog(this) == DialogResult.OK)
-                    foreach (string s in dlg.SelectedResource.Split(';'))
+                if (!string.IsNullOrEmpty(m_lastSelectedNode))
+                    dlg.SelectedResources = new string[] { m_lastSelectedNode };
+
+                if (dlg.ShowDialog(this) == DialogResult.OK && dlg.SelectedResources != null)
+                {
+                    if (dlg.SelectedResources.Length > 0)
+                        m_lastSelectedNode = dlg.SelectedResources[0];
+
+                    foreach (string s in dlg.SelectedResources)
                         this.OpenResource(s);
+               }
 			}
 			catch(Exception ex)
 			{
@@ -2312,7 +2373,11 @@ namespace OSGeo.MapGuide.Maestro
 
         public ResourceBrowser.RepositoryCache RepositoryCache { get { return ResourceTree.Cache; } }
 		public ResourceEditorMap ResourceEditorMap { get { return m_editors; } }
-		public string LastSelectedNode { get { return m_lastSelectedNode; } }
+		public string LastSelectedNode 
+        { 
+            get { return m_lastSelectedNode; }
+            set { m_lastSelectedNode = value; }
+        }
 
         private void AddFolderButton_Click(object sender, EventArgs e)
         {
@@ -2782,6 +2847,23 @@ namespace OSGeo.MapGuide.Maestro
             {
                 ResourceTree_DoubleClick(sender, e);
                 e.Handled = true;
+            }
+        }
+
+        private void DuplicateMenu_Click(object sender, EventArgs e)
+        {
+            if (ResourceTree.SelectedNode == null || ResourceTree.SelectedNode.Tag == null)
+                return;
+
+            TreeNode source = ResourceTree.SelectedNode;
+            if (source.Parent == null)
+                return; //Can't do on Library://
+
+            string actualTargetPath;
+            if (MoveOrCopyResource(source, source.Parent, false, true, out actualTargetPath))
+            {
+                if (FindAndSelectNode(actualTargetPath))
+                    ResourceTree.SelectedNode.BeginEdit();
             }
         }
 	}

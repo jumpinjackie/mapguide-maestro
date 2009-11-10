@@ -1586,12 +1586,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void AddLayer()
 		{
-			string resource = m_editor.BrowseResource("LayerDefinition", true);
-			if (resource != null)
+			string[] resources = m_editor.BrowseResource("LayerDefinition", true);
+			if (resources != null && resources.Length > 0)
 			{
                 OSGeo.MapGuide.MaestroAPI.MapLayerType lastItem = null;
 
-                foreach (string layerid in resource.Split(';'))
+                foreach (string layerid in resources)
                 {
                     ArrayList layers = new ArrayList();
                     layers.AddRange(m_map.Layers);
@@ -2230,12 +2230,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             if (g == null)
                 return;
 
-            string resource = m_editor.BrowseResource("LayerDefinition", true);
-            if (resource != null)
+            string[] resources = m_editor.BrowseResource("LayerDefinition", true);
+            if (resources != null && resources.Length > 0)
             {
                 OSGeo.MapGuide.MaestroAPI.BaseMapLayerType lastItem = null;
 
-                foreach (string layerid in resource.Split(';'))
+                foreach (string layerid in resources)
                 {
                     ArrayList layers = new ArrayList();
                     layers.AddRange(m_map.Layers);

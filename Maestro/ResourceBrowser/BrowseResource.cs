@@ -22,6 +22,7 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 {
@@ -50,7 +51,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 		private OSGeo.MapGuide.MaestroAPI.ServerConnectionI m_connection;
 
 		private bool m_openMode;
-		private string m_selectedResource;
+		private string[] m_selectedResources;
 		private string[] m_validTypes;
 		private Form m_ownerform;
         private ResourceEditors.ResourceEditorMap m_editorMap;
@@ -343,12 +344,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 			LoadTreeList();
 			ResourceType.SelectedIndex = 0;
 
-			if (m_selectedResource != null)
+			if (m_selectedResources != null && m_selectedResources.Length == 1 && m_selectedResources[0] != null)
 			{
-
 				TreeNodeCollection basis = FolderView.Nodes[0].Nodes;
 				TreeNode best = null;
-				string path = m_selectedResource;
+				string path = m_selectedResources[0];
 				if (path.StartsWith("Library://"))
 					path = path.Substring("Library://".Length);
 				string[] items = path.Split('/');
@@ -371,7 +371,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 				if (best != null)
 					FolderView.SelectedNode = best;
 			}
-			m_selectedResource = null;
+			m_selectedResources = null;
 
 		}
 
@@ -466,25 +466,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 
                 if (ItemView.MultiSelect && ItemView.SelectedItems.Count > 1)
                 {
-                    string path = new MaestroAPI.ResourceIdentifier(fullpath).ParentFolder;
-
-                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
-
-                    if (!path.EndsWith("/"))
-                        path += "/";
-
+                    List<string> items = new List<string>();
                     foreach (ListViewItem lvi in ItemView.SelectedItems)
-                    {
-                        if (sb.Length != 0)
-                            sb.Append(";");
+                        items.Add(((MaestroAPI.ResourceListResourceDocument)lvi.Tag).ResourceId);
 
-                        sb.Append(((MaestroAPI.ResourceListResourceDocument)lvi.Tag).ResourceId);
-                    }
-
-                    m_selectedResource = sb.ToString();
+                    m_selectedResources = items.ToArray();
                 }
                 else
-				    m_selectedResource = fullpath;
+				    m_selectedResources = new string[] { fullpath };
 
 				this.DialogResult = DialogResult.OK;
 				this.Close();
@@ -496,7 +485,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
                 try
                 {
                     MaestroAPI.ResourceIdentifier.Validate(fullpath, OSGeo.MapGuide.MaestroAPI.ResourceTypes.Folder);
-                    m_selectedResource = fullpath;
+                    m_selectedResources = new string[] { fullpath };
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                     return;
@@ -513,7 +502,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 				//Make sure the folder exists
 				if (FolderView.Cache.FolderExists(new MaestroAPI.ResourceIdentifier(fullpath).ParentFolder))
 				{
-					m_selectedResource = fullpath;
+					m_selectedResources = new string[] { fullpath };
 					this.DialogResult = DialogResult.OK;
 					this.Close();
 					return;
@@ -538,7 +527,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 
 		private void CancelButton_Click(object sender, System.EventArgs e)
 		{
-			m_selectedResource = null;
+			m_selectedResources = null;
 			this.DialogResult = DialogResult.Cancel;
 			this.Close();
 		}
@@ -561,10 +550,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 			UpdateDocumentList();
 		}
 
-		public string SelectedResource
+		public string[] SelectedResources
 		{
-			get { return m_selectedResource; }
-			set { m_selectedResource = value; }
+			get { return m_selectedResources; }
+			set { m_selectedResources = value; }
 		}
 
         private void ItemView_SelectedIndexChanged(object sender, EventArgs e)

@@ -99,26 +99,38 @@ namespace OSGeo.MapGuide.Maestro
 
         public string BrowseResource(string itemType)
         {
-            return BrowseResource(new string[] { itemType }, false);
+            string[] tmp = BrowseResource(new string[] { itemType }, false);
+            if (tmp != null && tmp.Length == 1)
+                return tmp[0];
+            else
+                return null;
         }
         
-        public string BrowseResource(string itemType, bool multiSelect)
+        public string[] BrowseResource(string itemType, bool multiSelect)
 		{
 			return BrowseResource(new string[] { itemType }, multiSelect );
 		}
 
         public string BrowseResource(string[] itemTypes)
         {
-            return BrowseResource(itemTypes, false);
+            string[] tmp = BrowseResource(itemTypes, false);
+            if (tmp != null && tmp.Length == 1)
+                return tmp[0];
+            else
+                return null;
         }
 
-		public string BrowseResource(string[] itemTypes, bool multiSelect)
+		public string[] BrowseResource(string[] itemTypes, bool multiSelect)
 		{
             ResourceBrowser.BrowseResource dlg = new ResourceBrowser.BrowseResource(m_editor.RepositoryCache, m_editor, true, multiSelect, itemTypes);
-			dlg.SelectedResource = m_editor.LastSelectedNode;
+			dlg.SelectedResources = new string[] { m_editor.LastSelectedNode };
 
             if (dlg.ShowDialog() == DialogResult.OK)
-                return dlg.SelectedResource;
+            {
+                if (dlg.SelectedResources != null && dlg.SelectedResources.Length > 0)
+                    m_editor.LastSelectedNode = dlg.SelectedResources[0];
+                return dlg.SelectedResources;
+            }
             else
                 return null;
 		}
@@ -234,11 +246,11 @@ namespace OSGeo.MapGuide.Maestro
 				if (!m_existing || resid == null)
 				{
                     ResourceBrowser.BrowseResource dlg = new ResourceBrowser.BrowseResource(m_editor.RepositoryCache, m_editor, false, false, new string[] { resourceType });
-					dlg.SelectedResource = m_editor.LastSelectedNode;
-					if (dlg.ShowDialog() != DialogResult.OK)
+					dlg.SelectedResources = new string[] { m_editor.LastSelectedNode };
+					if (dlg.ShowDialog() != DialogResult.OK || resid == null || resid.Length != 1)
 						return false;
 
-					resid = dlg.SelectedResource;
+					resid = dlg.SelectedResources[0];
 				}
 
 				if (m_editor.OpenResourceEditors.ContainsKey(resid) && m_editor.OpenResourceEditors[resid] != this)
