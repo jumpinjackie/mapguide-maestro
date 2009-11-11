@@ -1304,7 +1304,33 @@ namespace OSGeo.MapGuide.MaestroAPI
 												pr.LegendLabel = "";
 											if (pr.Item != null && pr.Item.Item != null)
 											{
-												if (pr.Item.Item as MarkSymbolType != null)
+												if (pr.Item.Item as FontSymbolType != null)
+												{
+													FontSymbolType fontsymbolPoint = pr.Item.Item as FontSymbolType;
+													if (string.IsNullOrEmpty(fontsymbolPoint.FontName))
+														fontsymbolPoint.FontName = "Arial";
+
+													if (string.IsNullOrEmpty(fontsymbolPoint.InsertionPointX))
+														fontsymbolPoint.InsertionPointX = "0.5";
+
+													if (string.IsNullOrEmpty(fontsymbolPoint.InsertionPointY))
+														fontsymbolPoint.InsertionPointY = "0.5";
+
+													if (fontsymbolPoint.SizeX == null || fontsymbolPoint.SizeY == null)
+														fontsymbolPoint.Unit = LengthUnitType.Points;
+
+													if (fontsymbolPoint.SizeX == null)
+														fontsymbolPoint.SizeX = "10";
+													if (fontsymbolPoint.SizeY == null)
+														fontsymbolPoint.SizeY = "10";
+
+													if (fontsymbolPoint.SizeContext == SizeContextType.Default)
+														fontsymbolPoint.SizeContext = SizeContextType.DeviceUnits;
+
+													if (string.IsNullOrEmpty(fontsymbolPoint.ForegroundColorAsHTML))
+														fontsymbolPoint.ForegroundColor = System.Drawing.Color.Black;
+												}
+												else if (pr.Item.Item as MarkSymbolType != null)
 												{
 													MarkSymbolType mks = pr.Item.Item as MarkSymbolType;
 													if (mks.Edge != null)

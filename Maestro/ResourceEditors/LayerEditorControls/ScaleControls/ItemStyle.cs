@@ -101,8 +101,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             }
             else if (m_point != null)
             {
-                FeaturePreviewRender.RenderPreviewPoint(e.Graphics, rect, m_point.Item as MarkSymbolType);
-            }
+				if (((OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType)m_point).Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
+					FeaturePreviewRender.RenderPreviewPoint(e.Graphics, rect, m_point.Item as MarkSymbolType);
+				else if (((OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType)m_point).Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+					FeaturePreviewRender.RenderPreviewFontSymbol(e.Graphics, rect, m_point.Item as FontSymbolType);
+			}
             else if (m_line != null)
             {
                 FeaturePreviewRender.RenderPreviewLine(e.Graphics, rect, m_line);

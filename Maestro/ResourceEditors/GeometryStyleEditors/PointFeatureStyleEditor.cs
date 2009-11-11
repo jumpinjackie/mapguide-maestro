@@ -39,11 +39,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.GroupBox groupBox4;
@@ -67,22 +62,42 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		private System.ComponentModel.Container components = null;
 		private System.Windows.Forms.ComboBox HeigthText;
 		private System.Windows.Forms.ComboBox WidthText;
-		private System.Windows.Forms.ComboBox RotationBox;
-		private System.Windows.Forms.TextBox ReferenceX;
-		private System.Windows.Forms.CheckBox MaintainAspectRatio;
 		private System.Windows.Forms.ComboBox SizeUnits;
 		private System.Windows.Forms.ComboBox SizeContext;
 		private System.Windows.Forms.ComboBox Symbol;
-		private System.Windows.Forms.TextBox ReferenceY;
-		private ResourceEditors.GeometryStyleEditors.FillStyleEditor fillStyleEditor;
 		private ResourceEditors.GeometryStyleEditors.LineStyleEditor lineStyleEditor;
 
 		private OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType m_item;
+        private OSGeo.MapGuide.MaestroAPI.MarkSymbolType m_lastMark = null;
+        private OSGeo.MapGuide.MaestroAPI.FontSymbolType m_lastFont = null;
+
 		private bool m_inUpdate = false;
 
 		private OSGeo.MapGuide.MaestroAPI.FillType previousFill = null;
         private CheckBox DisplayPoints;
 		private OSGeo.MapGuide.MaestroAPI.StrokeType previousEdge = null;
+		private GroupBox groupBoxFont;
+		private ComboBox fontCombo;
+		private Label label10;
+		private ComboBox comboBoxCharacter;
+		private GroupBox groupBoxSymbolLocation;
+		private Button button1;
+		private TextBox ReferenceY;
+		private Label label8;
+		private TextBox ReferenceX;
+		private Label label7;
+		private Label label6;
+		private CheckBox MaintainAspectRatio;
+		private ComboBox RotationBox;
+		private Label label9;
+		private FillStyleEditor fillStyleEditor;
+		public ColorComboBox colorFontForeground;
+		private Label lblForeground;
+        private Panel panel1;
+        private ToolStrip toolStrip1;
+        private ToolStripButton FontBoldButton;
+        private ToolStripButton FontItalicButton;
+        private ToolStripButton FontUnderlineButton;
         private Globalizator.Globalizator m_globalizor;
 
 		public event EventHandler Changed;
@@ -105,6 +120,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			using(System.IO.MemoryStream ms = new System.IO.MemoryStream(SharedComboDataSet))
 				ComboBoxDataSet.ReadXml(ms);
 
+			// fix this by editing "PointStyleComboDataset.xml" to include fonts
+			fontCombo.Items.Clear();
+
+            foreach (FontFamily f in new System.Drawing.Text.InstalledFontCollection().Families)
+                fontCombo.Items.Add(f.Name);
+
+			colorFontForeground.AllowTransparent = false;
+			colorFontForeground.ResetColors();
+			colorFontForeground.SelectedIndexChanged += new EventHandler(colourFontForeground_SelectedIndexChanged);
+
 			fillStyleEditor.displayFill.CheckedChanged += new EventHandler(displayFill_CheckedChanged);
 			fillStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_SelectedIndexChanged);
 			fillStyleEditor.foregroundColor.SelectedIndexChanged += new EventHandler(foregroundColor_SelectedIndexChanged);
@@ -121,6 +146,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             m_globalizor = new Globalizator.Globalizator(this);
 		}
 
+		private void setUIForMarkSymbol(bool enabled)
+		{
+            groupBoxSymbolLocation.Enabled = enabled;
+            groupBox2.Enabled = enabled;
+            groupBox3.Enabled = enabled;
+
+            groupBoxFont.Enabled = !enabled;
+		}
 
 		private void UpdateDisplay()
 		{
@@ -142,28 +175,30 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				if (m_item.Item == null)
 					m_item.Item = new OSGeo.MapGuide.MaestroAPI.MarkSymbolType();
 
+				// shared values
 				WidthText.Text = m_item.Item.SizeX;
 				HeigthText.Text = m_item.Item.SizeY;
 				RotationBox.Text = m_item.Item.Rotation;
 
-                double d;
-
-                if (double.TryParse(m_item.Item.InsertionPointX, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d))
-                    ReferenceX.Text = d.ToString(m_globalizor.Culture);
-                else
-                    ReferenceX.Text = m_item.Item.InsertionPointX;
-
-                if (double.TryParse(m_item.Item.InsertionPointY,  System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d))
-                    ReferenceY.Text = d.ToString(m_globalizor.Culture);
-                else
-				    ReferenceY.Text = m_item.Item.InsertionPointY;
-				MaintainAspectRatio.Checked = m_item.Item.MaintainAspect;
 				SizeUnits.SelectedValue = m_item.Item.Unit;
 				SizeContext.SelectedValue = m_item.Item.SizeContext.ToString();
 
+				// specifics
 				if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
 				{
-					OSGeo.MapGuide.MaestroAPI.MarkSymbolType t = (OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item;
+					MaintainAspectRatio.Checked = m_item.Item.MaintainAspect;
+					double d;
+					if (double.TryParse(m_item.Item.InsertionPointX, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d))
+						ReferenceX.Text = d.ToString(m_globalizor.Culture);
+					else
+						ReferenceX.Text = m_item.Item.InsertionPointX;
+
+					if (double.TryParse(m_item.Item.InsertionPointY, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d))
+						ReferenceY.Text = d.ToString(m_globalizor.Culture);
+					else
+						ReferenceY.Text = m_item.Item.InsertionPointY;
+
+					OSGeo.MapGuide.MaestroAPI.MarkSymbolType t = (OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item;
 					Symbol.SelectedValue = t.Shape.ToString();
 
 					fillStyleEditor.displayFill.Checked = t.Fill != null;
@@ -191,11 +226,37 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 							lineStyleEditor.thicknessUpDown.Value = 0;
 					}
 
+					setUIForMarkSymbol(true);
+				}
+				else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+				{
+					OSGeo.MapGuide.MaestroAPI.FontSymbolType f = (OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item;
 
+					// TODO: Dislike this hard coding, but with association from 'Shape' the 'Font...' string cannot be found or set from the Symbol combobox
+					Symbol.SelectedIndex = 6;
+
+                    fontCombo.SelectedIndex = fontCombo.FindString(f.FontName);
+                    if (string.Compare(fontCombo.Text, f.FontName, true) == 0)
+                        fontCombo.Text = f.FontName;
+
+                    comboBoxCharacter.SelectedIndex = comboBoxCharacter.FindString(f.Character);
+                    if (comboBoxCharacter.Text != f.Character)
+                        comboBoxCharacter.Text = f.Character;
+
+                    FontBoldButton.Checked = f.Bold && f.BoldSpecified;
+                    FontItalicButton.Checked = f.Italic && f.ItalicSpecified;
+                    FontUnderlineButton.Checked = f.Underlined && f.UnderlinedSpecified;
+
+                    if (string.IsNullOrEmpty(f.ForegroundColorAsHTML))
+                        colorFontForeground.CurrentColor = Color.Black;
+                    else
+                        colorFontForeground.CurrentColor = f.ForegroundColor;
+
+					setUIForMarkSymbol(false);
 				}
 				else
 					//TODO: Fix this
-					MessageBox.Show(this, "Only symbols of type \"Mark\" are currently supported", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show(this, "Only symbols of type \"Mark\" and \"Font\" are currently supported", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 				previewPicture.Refresh();
 			} 
@@ -228,19 +289,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PointFeatureStyleEditor));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.RotationBox = new System.Windows.Forms.ComboBox();
             this.RotationTable = new System.Data.DataTable();
             this.dataColumn7 = new System.Data.DataColumn();
             this.dataColumn8 = new System.Data.DataColumn();
             this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.ReferenceY = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.ReferenceX = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.MaintainAspectRatio = new System.Windows.Forms.CheckBox();
             this.HeigthText = new System.Windows.Forms.ComboBox();
             this.WidthText = new System.Windows.Forms.ComboBox();
             this.SizeUnits = new System.Windows.Forms.ComboBox();
@@ -268,6 +323,25 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.previewPicture = new System.Windows.Forms.PictureBox();
             this.ComboBoxDataSet = new System.Data.DataSet();
             this.DisplayPoints = new System.Windows.Forms.CheckBox();
+            this.groupBoxFont = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.FontBoldButton = new System.Windows.Forms.ToolStripButton();
+            this.FontItalicButton = new System.Windows.Forms.ToolStripButton();
+            this.FontUnderlineButton = new System.Windows.Forms.ToolStripButton();
+            this.colorFontForeground = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
+            this.lblForeground = new System.Windows.Forms.Label();
+            this.comboBoxCharacter = new System.Windows.Forms.ComboBox();
+            this.fontCombo = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.groupBoxSymbolLocation = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.ReferenceY = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.ReferenceX = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.MaintainAspectRatio = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RotationTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).BeginInit();
@@ -278,6 +352,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).BeginInit();
+            this.groupBoxFont.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            this.groupBoxSymbolLocation.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -286,13 +364,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.RotationBox);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.ReferenceY);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.ReferenceX);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.MaintainAspectRatio);
             this.groupBox1.Controls.Add(this.HeigthText);
             this.groupBox1.Controls.Add(this.WidthText);
             this.groupBox1.Controls.Add(this.SizeUnits);
@@ -305,7 +376,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(0, 24);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(344, 256);
+            this.groupBox1.Size = new System.Drawing.Size(344, 208);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Symbol style";
@@ -316,12 +387,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.RotationBox.DataSource = this.RotationTable;
             this.RotationBox.DisplayMember = "Display";
-            this.RotationBox.Location = new System.Drawing.Point(128, 224);
+            this.RotationBox.Location = new System.Drawing.Point(128, 176);
             this.RotationBox.Name = "RotationBox";
             this.RotationBox.Size = new System.Drawing.Size(208, 21);
-            this.RotationBox.TabIndex = 18;
+            this.RotationBox.TabIndex = 29;
             this.RotationBox.ValueMember = "Value";
             this.RotationBox.SelectedIndexChanged += new System.EventHandler(this.RotationBox_SelectedIndexChanged);
+            this.RotationBox.TextChanged += new System.EventHandler(this.Rotation_TextChanged);
             // 
             // RotationTable
             // 
@@ -342,73 +414,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(16, 232);
+            this.label9.Location = new System.Drawing.Point(16, 184);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(88, 16);
-            this.label9.TabIndex = 17;
+            this.label9.TabIndex = 28;
             this.label9.Text = "Rotation";
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(288, 192);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 24);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "...";
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // ReferenceY
-            // 
-            this.ReferenceY.Location = new System.Drawing.Point(232, 192);
-            this.ReferenceY.Name = "ReferenceY";
-            this.ReferenceY.Size = new System.Drawing.Size(48, 20);
-            this.ReferenceY.TabIndex = 15;
-            this.ReferenceY.TextChanged += new System.EventHandler(this.ReferenceY_TextChanged);
-            this.ReferenceY.Leave += new System.EventHandler(this.ReferenceY_Leave);
-            // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(216, 192);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(16, 16);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Y";
-            // 
-            // ReferenceX
-            // 
-            this.ReferenceX.Location = new System.Drawing.Point(144, 192);
-            this.ReferenceX.Name = "ReferenceX";
-            this.ReferenceX.Size = new System.Drawing.Size(48, 20);
-            this.ReferenceX.TabIndex = 13;
-            this.ReferenceX.TextChanged += new System.EventHandler(this.ReferenceX_TextChanged);
-            // 
-            // label7
-            // 
-            this.label7.Location = new System.Drawing.Point(128, 192);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(16, 16);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "X";
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(16, 192);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 16);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Reference point";
-            // 
-            // MaintainAspectRatio
-            // 
-            this.MaintainAspectRatio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.MaintainAspectRatio.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.MaintainAspectRatio.Location = new System.Drawing.Point(128, 168);
-            this.MaintainAspectRatio.Name = "MaintainAspectRatio";
-            this.MaintainAspectRatio.Size = new System.Drawing.Size(208, 16);
-            this.MaintainAspectRatio.TabIndex = 10;
-            this.MaintainAspectRatio.Text = "Maintain aspect ratio";
             // 
             // HeigthText
             // 
@@ -570,7 +580,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.fillStyleEditor);
-            this.groupBox2.Location = new System.Drawing.Point(0, 288);
+            this.groupBox2.Location = new System.Drawing.Point(0, 416);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(344, 128);
             this.groupBox2.TabIndex = 1;
@@ -591,7 +601,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.lineStyleEditor);
-            this.groupBox3.Location = new System.Drawing.Point(0, 424);
+            this.groupBox3.Location = new System.Drawing.Point(0, 552);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(344, 128);
             this.groupBox3.TabIndex = 6;
@@ -612,7 +622,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.previewPicture);
-            this.groupBox4.Location = new System.Drawing.Point(0, 560);
+            this.groupBox4.Location = new System.Drawing.Point(0, 688);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(344, 48);
             this.groupBox4.TabIndex = 7;
@@ -656,20 +666,226 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.DisplayPoints.UseVisualStyleBackColor = true;
             this.DisplayPoints.CheckedChanged += new System.EventHandler(this.DisplayPoints_CheckedChanged);
             // 
+            // groupBoxFont
+            // 
+            this.groupBoxFont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxFont.Controls.Add(this.panel1);
+            this.groupBoxFont.Controls.Add(this.colorFontForeground);
+            this.groupBoxFont.Controls.Add(this.lblForeground);
+            this.groupBoxFont.Controls.Add(this.comboBoxCharacter);
+            this.groupBoxFont.Controls.Add(this.fontCombo);
+            this.groupBoxFont.Controls.Add(this.label10);
+            this.groupBoxFont.Location = new System.Drawing.Point(0, 240);
+            this.groupBoxFont.Name = "groupBoxFont";
+            this.groupBoxFont.Size = new System.Drawing.Size(344, 88);
+            this.groupBoxFont.TabIndex = 9;
+            this.groupBoxFont.TabStop = false;
+            this.groupBoxFont.Text = "Font style";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.toolStrip1);
+            this.panel1.Location = new System.Drawing.Point(248, 56);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(88, 24);
+            this.panel1.TabIndex = 13;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FontBoldButton,
+            this.FontItalicButton,
+            this.FontUnderlineButton});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip1.Size = new System.Drawing.Size(88, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // FontBoldButton
+            // 
+            this.FontBoldButton.CheckOnClick = true;
+            this.FontBoldButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.FontBoldButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FontBoldButton.Image = ((System.Drawing.Image)(resources.GetObject("FontBoldButton.Image")));
+            this.FontBoldButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.FontBoldButton.Name = "FontBoldButton";
+            this.FontBoldButton.Size = new System.Drawing.Size(23, 22);
+            this.FontBoldButton.Text = "B";
+            this.FontBoldButton.ToolTipText = "Set bold font";
+            this.FontBoldButton.Click += new System.EventHandler(this.FontBoldButton_Click);
+            // 
+            // FontItalicButton
+            // 
+            this.FontItalicButton.CheckOnClick = true;
+            this.FontItalicButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.FontItalicButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FontItalicButton.Image = ((System.Drawing.Image)(resources.GetObject("FontItalicButton.Image")));
+            this.FontItalicButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.FontItalicButton.Name = "FontItalicButton";
+            this.FontItalicButton.Size = new System.Drawing.Size(23, 22);
+            this.FontItalicButton.Text = "I";
+            this.FontItalicButton.ToolTipText = "Set italic font";
+            this.FontItalicButton.Click += new System.EventHandler(this.FontItalicButton_Click);
+            // 
+            // FontUnderlineButton
+            // 
+            this.FontUnderlineButton.CheckOnClick = true;
+            this.FontUnderlineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.FontUnderlineButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FontUnderlineButton.Image = ((System.Drawing.Image)(resources.GetObject("FontUnderlineButton.Image")));
+            this.FontUnderlineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.FontUnderlineButton.Name = "FontUnderlineButton";
+            this.FontUnderlineButton.Size = new System.Drawing.Size(23, 22);
+            this.FontUnderlineButton.Text = "U";
+            this.FontUnderlineButton.ToolTipText = "Set underlined font";
+            this.FontUnderlineButton.Click += new System.EventHandler(this.FontUnderlineButton_Click);
+            // 
+            // colorFontForeground
+            // 
+            this.colorFontForeground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorFontForeground.Location = new System.Drawing.Point(56, 56);
+            this.colorFontForeground.Name = "colorFontForeground";
+            this.colorFontForeground.Size = new System.Drawing.Size(176, 21);
+            this.colorFontForeground.TabIndex = 12;
+            this.colorFontForeground.SelectedIndexChanged += new System.EventHandler(this.colourFontForeground_SelectedIndexChanged);
+            // 
+            // lblForeground
+            // 
+            this.lblForeground.Location = new System.Drawing.Point(16, 56);
+            this.lblForeground.Name = "lblForeground";
+            this.lblForeground.Size = new System.Drawing.Size(40, 16);
+            this.lblForeground.TabIndex = 11;
+            this.lblForeground.Text = "Color";
+            // 
+            // comboBoxCharacter
+            // 
+            this.comboBoxCharacter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxCharacter.DisplayMember = "Display";
+            this.comboBoxCharacter.Location = new System.Drawing.Point(248, 24);
+            this.comboBoxCharacter.MaxLength = 1;
+            this.comboBoxCharacter.Name = "comboBoxCharacter";
+            this.comboBoxCharacter.Size = new System.Drawing.Size(80, 21);
+            this.comboBoxCharacter.TabIndex = 10;
+            this.comboBoxCharacter.ValueMember = "Value";
+            this.comboBoxCharacter.SelectedIndexChanged += new System.EventHandler(this.comboBoxCharacter_SelectedIndexChanged);
+            this.comboBoxCharacter.TextChanged += new System.EventHandler(this.comboBoxCharacter_TextChanged);
+            // 
+            // fontCombo
+            // 
+            this.fontCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.fontCombo.DisplayMember = "Display";
+            this.fontCombo.Location = new System.Drawing.Point(56, 24);
+            this.fontCombo.Name = "fontCombo";
+            this.fontCombo.Size = new System.Drawing.Size(176, 21);
+            this.fontCombo.TabIndex = 9;
+            this.fontCombo.ValueMember = "Value";
+            this.fontCombo.SelectedIndexChanged += new System.EventHandler(this.fontCombo_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(16, 32);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(40, 16);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Font";
+            // 
+            // groupBoxSymbolLocation
+            // 
+            this.groupBoxSymbolLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxSymbolLocation.Controls.Add(this.button1);
+            this.groupBoxSymbolLocation.Controls.Add(this.ReferenceY);
+            this.groupBoxSymbolLocation.Controls.Add(this.label8);
+            this.groupBoxSymbolLocation.Controls.Add(this.ReferenceX);
+            this.groupBoxSymbolLocation.Controls.Add(this.label7);
+            this.groupBoxSymbolLocation.Controls.Add(this.label6);
+            this.groupBoxSymbolLocation.Controls.Add(this.MaintainAspectRatio);
+            this.groupBoxSymbolLocation.Location = new System.Drawing.Point(0, 336);
+            this.groupBoxSymbolLocation.Name = "groupBoxSymbolLocation";
+            this.groupBoxSymbolLocation.Size = new System.Drawing.Size(344, 72);
+            this.groupBoxSymbolLocation.TabIndex = 10;
+            this.groupBoxSymbolLocation.TabStop = false;
+            this.groupBoxSymbolLocation.Text = "Symbol location";
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button1.Location = new System.Drawing.Point(284, 40);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 24);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "...";
+            // 
+            // ReferenceY
+            // 
+            this.ReferenceY.Location = new System.Drawing.Point(228, 40);
+            this.ReferenceY.Name = "ReferenceY";
+            this.ReferenceY.Size = new System.Drawing.Size(48, 20);
+            this.ReferenceY.TabIndex = 24;
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(212, 40);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(16, 16);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "Y";
+            // 
+            // ReferenceX
+            // 
+            this.ReferenceX.Location = new System.Drawing.Point(140, 40);
+            this.ReferenceX.Name = "ReferenceX";
+            this.ReferenceX.Size = new System.Drawing.Size(48, 20);
+            this.ReferenceX.TabIndex = 22;
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(124, 40);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(16, 16);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "X";
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(12, 40);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(104, 16);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Reference point";
+            // 
+            // MaintainAspectRatio
+            // 
+            this.MaintainAspectRatio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.MaintainAspectRatio.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.MaintainAspectRatio.Location = new System.Drawing.Point(124, 16);
+            this.MaintainAspectRatio.Name = "MaintainAspectRatio";
+            this.MaintainAspectRatio.Size = new System.Drawing.Size(208, 16);
+            this.MaintainAspectRatio.TabIndex = 19;
+            this.MaintainAspectRatio.Text = "Maintain aspect ratio";
+            // 
             // PointFeatureStyleEditor
             // 
             this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(344, 584);
+            this.AutoScrollMinSize = new System.Drawing.Size(344, 744);
+            this.Controls.Add(this.groupBoxSymbolLocation);
+            this.Controls.Add(this.groupBoxFont);
             this.Controls.Add(this.DisplayPoints);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Name = "PointFeatureStyleEditor";
-            this.Size = new System.Drawing.Size(344, 610);
+            this.Size = new System.Drawing.Size(344, 744);
             this.Load += new System.EventHandler(this.PointFeatureStyleEditor_Load);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RotationTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).EndInit();
@@ -679,6 +895,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).EndInit();
+            this.groupBoxFont.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.groupBoxSymbolLocation.ResumeLayout(false);
+            this.groupBoxSymbolLocation.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -693,9 +916,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
 		{
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            if (m_item != null && m_item.Item as OSGeo.MapGuide.MaestroAPI.MarkSymbolType != null)
-                FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item);
-            else
+			if (m_item != null && m_item.Item as OSGeo.MapGuide.MaestroAPI.MarkSymbolType != null)
+				FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item);
+			else if (m_item != null && m_item.Item as OSGeo.MapGuide.MaestroAPI.FontSymbolType != null)
+				FeaturePreviewRender.RenderPreviewFontSymbol(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item);
+			else
                 FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), null);
 		}
 
@@ -704,8 +929,65 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			if (m_inUpdate)
 				return;
 
-			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).Shape = (OSGeo.MapGuide.MaestroAPI.ShapeType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.ShapeType), (string)Symbol.SelectedValue);
+            bool isSymbol = false;
+            MaestroAPI.ShapeType selectedShape = OSGeo.MapGuide.MaestroAPI.ShapeType.Circle;
+
+			// see if need to change symbol type
+            foreach (string s in Enum.GetNames(typeof(OSGeo.MapGuide.MaestroAPI.ShapeType)))
+                if (string.Compare(s, (string)Symbol.SelectedValue, true) == 0)
+                {
+                    selectedShape = (OSGeo.MapGuide.MaestroAPI.ShapeType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.ShapeType), s);
+                    isSymbol = true;
+                    break;
+                }
+
+            if (m_item.Item is OSGeo.MapGuide.MaestroAPI.MarkSymbolType)
+                m_lastMark = (OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item;
+            else if (m_item.Item is OSGeo.MapGuide.MaestroAPI.FontSymbolType)
+                m_lastFont = (OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item;
+
+            if (isSymbol)
+            {
+                bool update = m_item.Item != m_lastMark;
+
+                if (m_lastMark == null)
+                    m_lastMark = new OSGeo.MapGuide.MaestroAPI.MarkSymbolType();
+
+                m_lastMark.Shape = selectedShape;
+                m_item.Item = m_lastMark;
+                
+                setUIForMarkSymbol(true);
+                if (update)
+                    UpdateDisplay();
+            }
+			else if (Symbol.SelectedIndex == 6)
+			{
+			    // user wants to change away FROM a valid 'Mark' symbol type
+			    // if ("Font..." == Symbol.SelectedText)
+
+                bool update = m_item.Item != m_lastFont;
+
+                if (m_lastFont == null)
+                {
+                    m_lastFont = new OSGeo.MapGuide.MaestroAPI.FontSymbolType();
+                    m_lastFont.SizeContext = OSGeo.MapGuide.MaestroAPI.SizeContextType.DeviceUnits;
+                    m_lastFont.Rotation = "0";
+                    m_lastFont.SizeX = "10";
+                    m_lastFont.SizeY = "10";
+                    m_lastFont.Unit = OSGeo.MapGuide.MaestroAPI.LengthUnitType.Points;
+                }
+
+                m_item.Item = m_lastFont;
+                setUIForMarkSymbol(false);
+                if (update)
+                    UpdateDisplay();
+            }
+			else
+			{
+				MessageBox.Show(this, "Only symbols of type \"Mark\" and \"Font\" are currently supported", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+				return;
+			}
+
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
@@ -717,7 +999,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				return;
 
 			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).SizeContext = (OSGeo.MapGuide.MaestroAPI.SizeContextType)Enum.Parse((typeof(OSGeo.MapGuide.MaestroAPI.SizeContextType)), (string)SizeContext.SelectedValue);
+				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).SizeContext = (OSGeo.MapGuide.MaestroAPI.SizeContextType)Enum.Parse((typeof(OSGeo.MapGuide.MaestroAPI.SizeContextType)), (string)SizeContext.SelectedValue);
+			else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+				((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).SizeContext = (OSGeo.MapGuide.MaestroAPI.SizeContextType)Enum.Parse((typeof(OSGeo.MapGuide.MaestroAPI.SizeContextType)), (string)SizeContext.SelectedValue);
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
@@ -729,7 +1013,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				return;
 
 			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).Unit = (OSGeo.MapGuide.MaestroAPI.LengthUnitType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.LengthUnitType), (string) SizeUnits.SelectedValue);
+				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).Unit = (OSGeo.MapGuide.MaestroAPI.LengthUnitType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.LengthUnitType), (string)SizeUnits.SelectedValue);
+			else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+				((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).Unit = (OSGeo.MapGuide.MaestroAPI.LengthUnitType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.LengthUnitType), (string)SizeUnits.SelectedValue);
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
@@ -742,7 +1028,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 			//TODO: Validate
 			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).SizeX = WidthText.Text;
+				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).SizeX = WidthText.Text;
+			else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+				((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).SizeX = WidthText.Text;
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
@@ -755,8 +1043,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 			//TODO: Validate
 			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).SizeY = HeigthText.Text;
-			previewPicture.Refresh();		
+				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).SizeY = HeigthText.Text;
+			else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+				((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).SizeY = HeigthText.Text;
+			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
 		}
@@ -808,9 +1098,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 			//TODO: Validate
 			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).Rotation = (string)RotationBox.SelectedValue;
-			previewPicture.Refresh();
-		
+				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).Rotation = (string)RotationBox.Text;
+			else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+				((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).Rotation = (string)RotationBox.Text;
+			previewPicture.Refresh();		
 			if (Changed != null)
 				Changed(this, new EventArgs());
 		}
@@ -919,13 +1210,76 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			if (m_inUpdate)
 				return;
 
-			//TODO: Validate
 			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
 				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).Edge.LineStyle = lineStyleEditor.fillCombo.Text;
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
 		}
+
+		private void colourFontForeground_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (m_inUpdate)
+				return;
+
+			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+				((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).ForegroundColor = colorFontForeground.CurrentColor;
+
+            previewPicture.Refresh();
+			if (Changed != null)
+				Changed(this, new EventArgs());
+		}
+
+		private void fontCombo_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (m_inUpdate)
+				return;
+
+			//TODO: Validate
+			if (!(m_item.Item is OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+				return;
+			((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).FontName = fontCombo.Text;
+
+			comboBoxCharacter.Items.Clear();
+			try
+			{
+				comboBoxCharacter.Font = new Font(fontCombo.SelectedText, (float)8.25);
+			}
+			catch
+			{
+				MessageBox.Show(this, "Cannot Preview Font '" + fontCombo.SelectedText  + "'", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+				return;
+			}
+
+			// populate with a basic A-Z
+			for (char c = 'A'; c < 'Z'; c++)
+				comboBoxCharacter.Items.Add(c);
+
+			previewPicture.Refresh();
+			if (Changed != null)
+				Changed(this, new EventArgs());
+		}
+
+		private void comboBoxCharacter_SelectedIndexChanged(object sender, System.EventArgs e)
+		{
+			if (m_inUpdate)
+				return;
+
+			//TODO: Validate
+			if (m_item.Item.GetType() != typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+				return;
+			((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).Character = comboBoxCharacter.Text;
+
+			previewPicture.Refresh();
+			if (Changed != null)
+				Changed(this, new EventArgs());
+		}
+
+		private void comboBoxCharacter_TextChanged(object sender, System.EventArgs e)
+		{
+			comboBoxCharacter_SelectedIndexChanged(sender, e);
+		}
+
 
 		private void button1_Click(object sender, System.EventArgs e)
 		{
@@ -974,12 +1328,65 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             HeigthText_SelectedIndexChanged(sender, e);
         }
 
-        private void ReferenceY_Leave(object sender, EventArgs e)
+		private void Rotation_TextChanged(object sender, EventArgs e)
+		{
+			RotationBox_SelectedIndexChanged(sender, e);
+		}
+		
+		private void ReferenceY_Leave(object sender, EventArgs e)
         {
-                double d;
-                if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-                    if (!double.TryParse(((MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointY, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d))
-                        MessageBox.Show(this, m_globalizor.Translate("You have entered a non-numeric value in the Reference Y field. Due to a bug in MapGuide, this will likely give an error when saving."), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            double d;
+            if (m_item.Item is OSGeo.MapGuide.MaestroAPI.MarkSymbolType)
+                if (!double.TryParse(((MaestroAPI.MarkSymbolType)m_item.Item).InsertionPointY, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d))
+                    MessageBox.Show(this, m_globalizor.Translate("You have entered a non-numeric value in the Reference Y field. Due to a bug in MapGuide, this will likely give an error when saving."), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void FontBoldButton_Click(object sender, EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
+
+            if (m_item.Item is MaestroAPI.FontSymbolType)
+            {
+                ((MaestroAPI.FontSymbolType)m_item.Item).Bold = FontBoldButton.Checked;
+                ((MaestroAPI.FontSymbolType)m_item.Item).BoldSpecified = true;
+            }
+
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
+
+        private void FontItalicButton_Click(object sender, EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
+
+            if (m_item.Item is MaestroAPI.FontSymbolType)
+            {
+                ((MaestroAPI.FontSymbolType)m_item.Item).Italic = FontItalicButton.Checked;
+                ((MaestroAPI.FontSymbolType)m_item.Item).ItalicSpecified = true;
+            }
+
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
+
+        private void FontUnderlineButton_Click(object sender, EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
+
+            if (m_item.Item is MaestroAPI.FontSymbolType)
+            {
+                ((MaestroAPI.FontSymbolType)m_item.Item).Underlined = FontUnderlineButton.Checked;
+                ((MaestroAPI.FontSymbolType)m_item.Item).UnderlinedSpecified = true;
+            }
+
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
         }
     }
 }

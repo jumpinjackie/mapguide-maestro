@@ -62,6 +62,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			{
 				if (((OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType)item).Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
 					FeaturePreviewRender.RenderPreviewPoint(g, r, (OSGeo.MapGuide.MaestroAPI.MarkSymbolType)((OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType)item).Item);
+				else if (((OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType)item).Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+					FeaturePreviewRender.RenderPreviewFontSymbol(g, r, (OSGeo.MapGuide.MaestroAPI.FontSymbolType)((OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType)item).Item);
 			}
 			else if(item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.StrokeTypeCollection))
 				FeaturePreviewRender.RenderPreviewLine(g, r, (OSGeo.MapGuide.MaestroAPI.StrokeTypeCollection) item);
@@ -121,6 +123,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 							item = ((OSGeo.MapGuide.MaestroAPI.PointRuleType)item).Item.Item;
 							if (item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
 								FeaturePreviewRender.RenderPreviewPoint(g, boxes[i], (OSGeo.MapGuide.MaestroAPI.MarkSymbolType)item);
+							else if (item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+								FeaturePreviewRender.RenderPreviewFontSymbol(g, boxes[i], (OSGeo.MapGuide.MaestroAPI.FontSymbolType)item);
 						}
 						else if(item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.LineRuleType))
 							FeaturePreviewRender.RenderPreviewLine(g, boxes[i], ((OSGeo.MapGuide.MaestroAPI.LineRuleType)item).Items);

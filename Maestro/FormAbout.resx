@@ -995,7 +995,7 @@
 </value>
   </data>
   <data name="License.Text" xml:space="preserve">
-    <value>Copyright (C) 2008, Kenneth Skovhede
+    <value>Copyright (C) 2009, Kenneth Skovhede
 http://www.hexad.dk, opensource@hexad.dk
 
 This library is free software; you can redistribute it and/or
@@ -1048,13 +1048,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
     <value>Programming:
   Kenneth Skovhede
   Jackie NG
-Artwork:
-  Kenneth Skovhede
-English and Danish translation:
-  Kenneth Skovhede
+  Crispin, 1Spatial Group Ltd
 Spanish translation:
   José Manuel Cerrejón González
 French Translation:
-  Pierre Cardinal</value>
+  Pierre Cardinal
+Artwork:
+  Kenneth Skovhede
+English and Danish translation:
+  Kenneth Skovhede</value>
   </data>
 </root>

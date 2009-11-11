@@ -3771,7 +3771,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
         
         /// <remarks/>
-        public string ForegroundColor {
+        [System.Xml.Serialization.XmlElementAttribute("ForegroundColor")]
+        public string ForegroundColorAsHTML
+        {
             get {
                 return this.m_foregroundColor;
             }
@@ -3779,7 +3781,20 @@ namespace OSGeo.MapGuide.MaestroAPI
                 this.m_foregroundColor = value;
             }
         }
-        
+
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public System.Drawing.Color ForegroundColor
+        {
+            get
+            {
+                return this.m_foregroundColor == null ? System.Drawing.Color.Black : Utility.ParseHTMLColor(this.m_foregroundColor);
+            }
+            set
+            {
+                this.m_foregroundColor = Utility.SerializeHTMLColor(value, false);
+            }
+        }
+
         /// <remarks/>
         public ExtendedDataType ExtendedData1 {
             get {

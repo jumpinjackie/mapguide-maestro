@@ -165,6 +165,47 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				g.DrawString(text, font, b, size);
 		}
 
+		public static void RenderPreviewFontSymbol(Graphics g, Rectangle size, OSGeo.MapGuide.MaestroAPI.FontSymbolType item)
+		{
+			Font font;
+			Color foreground;
+			string text = "";
+
+            if (item == null || item.FontName == null)
+            {
+                RenderPreviewFont(g, size, null);
+                return;
+            }
+            else
+            {
+                try { font = new Font(item.FontName, 12); }
+                catch { font = new Font("Arial", 12); }
+
+                if (string.IsNullOrEmpty(item.ForegroundColorAsHTML))
+                    foreground = Color.Black;
+                else
+                    foreground = item.ForegroundColor;
+
+                FontStyle fs = FontStyle.Regular;
+                if (item.Bold == true && item.BoldSpecified)
+                    fs |= FontStyle.Bold;
+                if (item.Italic == true && item.ItalicSpecified)
+                    fs |= FontStyle.Italic;
+                if (item.Underlined == true && item.UnderlinedSpecified)
+                    fs |= FontStyle.Underline;
+                font = new Font(font, fs);
+
+                text = item.Character;
+            }
+
+            SizeF textSize = g.MeasureString(text, font);
+
+            PointF center = new PointF((size.Width - textSize.Width) / 2, (size.Height - textSize.Height) / 2);
+
+			using (Brush b = new SolidBrush(foreground))
+				g.DrawString(text, font, b, center);
+		}
+
 		public static void RenderPreviewPoint(Graphics g, Rectangle size, OSGeo.MapGuide.MaestroAPI.MarkSymbolType item)
 		{
 			if (item == null)

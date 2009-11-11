@@ -663,7 +663,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				{
 					object item = ((OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType) r["Style"]).Item;
 					if (item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-						FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1,1, stylePreview.Width - 2, stylePreview.Height - 2), (OSGeo.MapGuide.MaestroAPI.MarkSymbolType) item);
+						FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, stylePreview.Width - 2, stylePreview.Height - 2), (OSGeo.MapGuide.MaestroAPI.MarkSymbolType)item);
+					else if (item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+						FeaturePreviewRender.RenderPreviewFontSymbol(e.Graphics, new Rectangle(1, 1, stylePreview.Width - 2, stylePreview.Height - 2), (OSGeo.MapGuide.MaestroAPI.FontSymbolType)item);
 				}
 				else if(m_item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.LineTypeStyleType))
 				{
