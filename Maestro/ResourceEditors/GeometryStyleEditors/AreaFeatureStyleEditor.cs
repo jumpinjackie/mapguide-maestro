@@ -395,7 +395,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 					fillStyleEditor.fillCombo.SelectedValue = m_item.Fill.FillPattern;
 					if (fillStyleEditor.fillCombo.SelectedItem == null && fillStyleEditor.fillCombo.Items.Count > 0)
 						fillStyleEditor.fillCombo.SelectedIndex = fillStyleEditor.fillCombo.FindString(m_item.Fill.FillPattern);
-
 				}
 				
 				lineStyleEditor.displayLine.Checked = m_item.Stroke != null;
@@ -569,5 +568,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                 Changed(this, new EventArgs());
 
         }
-	}
+
+        internal void SetupForTheming()
+        {
+            fillStyleEditor.foregroundColor.Enabled =
+            fillStyleEditor.lblForeground.Enabled =
+            fillStyleEditor.displayFill.Enabled =
+                false;
+        }
+    }
 }

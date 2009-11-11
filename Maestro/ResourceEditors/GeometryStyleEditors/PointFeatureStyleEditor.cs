@@ -1388,5 +1388,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
+
+        internal void SetupForTheming()
+        {
+            fillStyleEditor.foregroundColor.Enabled = 
+            lineStyleEditor.lblColor.Enabled = 
+            colorFontForeground.Enabled =
+            lblForeground.Enabled =
+            DisplayPoints.Enabled =
+            fillStyleEditor.displayFill.Enabled =
+                false;
+        }
     }
 }

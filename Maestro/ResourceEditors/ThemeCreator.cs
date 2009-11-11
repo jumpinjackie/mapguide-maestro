@@ -66,14 +66,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             NUMERIC_TYPES = new Type[] { typeof(byte), typeof(int), typeof(float), typeof(double) };
         }
 
-        public ThemeCreator(EditorInterface editor, MaestroAPI.LayerDefinition layer, MaestroAPI.FeatureSourceDescription.FeatureSourceSchema schema, object ruleCollection, object defaultItem)
+        public ThemeCreator(EditorInterface editor, MaestroAPI.LayerDefinition layer, MaestroAPI.FeatureSourceDescription.FeatureSourceSchema schema, object ruleCollection)
             : this()
         {
             m_editor = editor;
             m_layer = layer;
             m_schema = schema;
             m_ruleCollection = ruleCollection;
-            m_defaultItem = defaultItem;
+
+            //TODO: Would be nice if the user could specify the default styles
+            PrepareDefaultItem();
 
             ColorBrewerColorSet.SetCustomRender(new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.CustomCombo.RenderCustomItem(DrawColorSetPreview));
         }
@@ -664,10 +666,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                         r.LegendLabel = entry.Label;
                         if (r.Item.Item == null)
                             r.Item.Item = new OSGeo.MapGuide.MaestroAPI.MarkSymbolType();
-                        if (((MaestroAPI.MarkSymbolType)r.Item.Item).Fill == null)
-                            ((MaestroAPI.MarkSymbolType)r.Item.Item).Fill = new OSGeo.MapGuide.MaestroAPI.FillType();
-
-                        ((MaestroAPI.MarkSymbolType)r.Item.Item).Fill.BackgroundColor = entry.Color;
+                        if (r.Item.Item is MaestroAPI.MarkSymbolType)
+                        {
+                            if (((MaestroAPI.MarkSymbolType)r.Item.Item).Fill == null)
+                                ((MaestroAPI.MarkSymbolType)r.Item.Item).Fill = new OSGeo.MapGuide.MaestroAPI.FillType();
+                            ((MaestroAPI.MarkSymbolType)r.Item.Item).Fill.ForegroundColor = entry.Color;
+                        }
+                        else if (r.Item.Item is MaestroAPI.FontSymbolType)
+                        {
+                            ((MaestroAPI.FontSymbolType)r.Item.Item).ForegroundColor = entry.Color;
+                        }
 
                         col.PointRule.Add(r);
                     }
@@ -689,11 +697,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                             l.Items.Add(new OSGeo.MapGuide.MaestroAPI.StrokeType());
                         l.Items[0].Color = entry.Color;
 
-                        if (string.IsNullOrEmpty(l.Items[0].LineStyle))
-                            l.Items[0].LineStyle = "Solid";
-                        if (string.IsNullOrEmpty(l.Items[0].Thickness))
-                            l.Items[0].Thickness = "1";
-
                         col.LineRule.Add(l);
                     }
                 }
@@ -712,13 +715,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                         r.LegendLabel = entry.Label;
                         if (r.Item.Fill == null)
                             r.Item.Fill = new OSGeo.MapGuide.MaestroAPI.FillType();
-                        if (r.Item.Fill.BackgroundColorAsHTML == null)
-                            r.Item.Fill.BackgroundColor = Color.Black;
-                        if (r.Item.Fill.ForegroundColorAsHTML == null)
-                            r.Item.Fill.ForegroundColor = entry.Color;
-                        if (string.IsNullOrEmpty(r.Item.Fill.FillPattern))
-                            r.Item.Fill.FillPattern = "Solid";
-
+                        r.Item.Fill.ForegroundColor = entry.Color;
                         col.AreaRule.Add(r);
                     }
                 }
@@ -753,6 +750,64 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             RefreshPreview();
         }
 
+        private void PrepareDefaultItem()
+        {
+            if (m_ruleCollection is MaestroAPI.PointTypeStyleType)
+            {
+                MaestroAPI.PointSymbolization2DType i = new MaestroAPI.PointSymbolization2DType();
+                MaestroAPI.MarkSymbolType m = new OSGeo.MapGuide.MaestroAPI.MarkSymbolType();
+
+                i.Item = m;
+                m.SizeContext = OSGeo.MapGuide.MaestroAPI.SizeContextType.DeviceUnits;
+                m.SizeX = "10";
+                m.SizeY = "10";
+                m.Rotation = "0";
+                m.Unit = OSGeo.MapGuide.MaestroAPI.LengthUnitType.Points;
+                m.Fill = new OSGeo.MapGuide.MaestroAPI.FillType();
+                m.Fill.FillPattern = "Solid";
+                m.Fill.ForegroundColor = Color.Black;
+                m.Fill.BackgroundColor = Color.Transparent;
+                m.Edge = new OSGeo.MapGuide.MaestroAPI.StrokeType();
+                m.Edge.Color = Color.Black;
+                m.Edge.SizeContext = OSGeo.MapGuide.MaestroAPI.SizeContextType.DeviceUnits;
+                m.Edge.Thickness = "1";
+                m.Edge.Unit = OSGeo.MapGuide.MaestroAPI.LengthUnitType.Points;
+                m.Edge.LineStyle = "Solid";
+
+                m_defaultItem = i;
+            }
+            else if (m_ruleCollection is MaestroAPI.LineTypeStyleType)
+            {
+                MaestroAPI.StrokeTypeCollection i = new OSGeo.MapGuide.MaestroAPI.StrokeTypeCollection();
+                MaestroAPI.StrokeType s = new OSGeo.MapGuide.MaestroAPI.StrokeType();
+                s.Color = Color.Black;
+                s.LineStyle = "Solid";
+                s.SizeContext = OSGeo.MapGuide.MaestroAPI.SizeContextType.DeviceUnits;
+                s.Thickness = "1";
+                s.Unit = OSGeo.MapGuide.MaestroAPI.LengthUnitType.Points;
+                
+                i.Add(s);
+                
+                m_defaultItem = i;
+            }
+            else if (m_ruleCollection is MaestroAPI.AreaTypeStyleType)
+            {
+                MaestroAPI.AreaSymbolizationFillType i = new MaestroAPI.AreaSymbolizationFillType();
+                i.Fill = new OSGeo.MapGuide.MaestroAPI.FillType();
+                i.Fill.BackgroundColor = Color.Transparent;
+                i.Fill.ForegroundColor = Color.Black;
+                i.Fill.FillPattern = "Solid";
+                i.Stroke = new OSGeo.MapGuide.MaestroAPI.StrokeType();
+                i.Stroke.Color = Color.Black;
+                i.Stroke.LineStyle = "Solid";
+                i.Stroke.SizeContext = OSGeo.MapGuide.MaestroAPI.SizeContextType.DeviceUnits;
+                i.Stroke.Thickness = "1";
+                i.Stroke.Unit = OSGeo.MapGuide.MaestroAPI.LengthUnitType.Points;
+                
+                m_defaultItem = i;
+            }
+        }
+
         private void ChangeBaseStyleBtn_Click(object sender, EventArgs e)
         {
             UserControl uc = null;
@@ -760,16 +815,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             {
                 uc = new GeometryStyleEditors.PointFeatureStyleEditor();
                 ((GeometryStyleEditors.PointFeatureStyleEditor)uc).Item = (MaestroAPI.PointSymbolization2DType)MaestroAPI.Utility.XmlDeepCopy(m_defaultItem);
+                ((GeometryStyleEditors.PointFeatureStyleEditor)uc).SetupForTheming();
             }
             else if (m_ruleCollection is MaestroAPI.LineTypeStyleType)
             {
                 uc = new GeometryStyleEditors.LineFeatureStyleEditor();
                 ((GeometryStyleEditors.LineFeatureStyleEditor)uc).Item = (MaestroAPI.StrokeTypeCollection)MaestroAPI.Utility.XmlDeepCopy(m_defaultItem);
+                ((GeometryStyleEditors.LineFeatureStyleEditor)uc).SetupForTheming();
             }
             else if (m_ruleCollection is MaestroAPI.AreaTypeStyleType)
             {
                 uc = new GeometryStyleEditors.AreaFeatureStyleEditor();
                 ((GeometryStyleEditors.AreaFeatureStyleEditor)uc).Item = (MaestroAPI.AreaSymbolizationFillType)MaestroAPI.Utility.XmlDeepCopy(m_defaultItem);
+                ((GeometryStyleEditors.AreaFeatureStyleEditor)uc).SetupForTheming();
             }
 
             if (uc != null)

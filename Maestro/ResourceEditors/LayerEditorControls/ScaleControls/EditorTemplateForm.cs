@@ -38,7 +38,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         {
             if (ItemPanel.Controls.Count > 0 && ItemPanel.Controls[0] as UserControl != null)
             {
-                this.Height = ButtonPanel.Height + ItemPanel.Top + (ItemPanel.Controls[0] as UserControl).AutoScrollMinSize.Height + (8 * 4);
+                this.Height = ButtonPanel.Height + ItemPanel.Top + (ItemPanel.Controls[0] as UserControl).AutoScrollMinSize.Height + (8 * 6);
 
                 this.Width = Math.Max(this.Width, (ItemPanel.Controls[0] as UserControl).AutoScrollMinSize.Width + 2 * ItemPanel.Left + (8 * 4));
             }
