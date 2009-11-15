@@ -805,17 +805,17 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 
 
-		public override System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format)
+		public override System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
 		{
             ResourceIdentifier.Validate(resourceId, ResourceTypes.RuntimeMap);
 			string mapname = resourceId.Substring(resourceId.IndexOf("//") + 2);
 			mapname = mapname.Substring(0, mapname.LastIndexOf("."));
 #if DEBUG
-			string s = m_reqBuilder.GetMapImageUrl(mapname, format, null, x, y, scale, dpi, width, height, null, null, null, null);
+			string s = m_reqBuilder.GetMapImageUrl(mapname, format, null, x, y, scale, dpi, width, height, clip, null, null, null, null);
 			return new System.IO.MemoryStream(this.DownloadData(s));
 #else
 			System.IO.MemoryStream ms = new System.IO.MemoryStream();
-			System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x, y, scale, dpi, width, height, null, null, null, null, ms);
+			System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x, y, scale, dpi, width, height, clip, null, null, null, null, ms);
             
             //Maksim reported that the rendering times out frequently, so now we wait 5 minutes
             req.Timeout = 5 * 60 * 1000;
@@ -830,17 +830,17 @@ namespace OSGeo.MapGuide.MaestroAPI
 #endif
 		}
 
-        public override System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)
+        public override System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
         {
             ResourceIdentifier.Validate(resourceId, ResourceTypes.RuntimeMap);
             string mapname = resourceId.Substring(resourceId.IndexOf("//") + 2);
             mapname = mapname.Substring(0, mapname.LastIndexOf("."));
 #if DEBUG
-            string s = m_reqBuilder.GetMapImageUrl(mapname, format, null, x1, y1, x2, y2, dpi, width, height, null, null, null, null);
+            string s = m_reqBuilder.GetMapImageUrl(mapname, format, null, x1, y1, x2, y2, dpi, width, height, clip, null, null, null, null);
             return new System.IO.MemoryStream(this.DownloadData(s));
 #else
 			System.IO.MemoryStream ms = new System.IO.MemoryStream();
-			System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x1, y1, x2, y2, dpi, width, height, null, null, null, null, ms);
+			System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x1, y1, x2, y2, dpi, width, height, clip, null, null, null, null, ms);
             
             //Maksim reported that the rendering times out frequently, so now we wait 5 minutes
             req.Timeout = 5 * 60 * 1000;

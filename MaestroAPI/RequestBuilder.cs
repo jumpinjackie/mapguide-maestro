@@ -769,7 +769,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return m_hosturi + "?" + EncodeParameters(param);
 		}
 
-		public System.Net.WebRequest GetMapImage(string mapname, string format, string selectionXml, double centerX, double centerY, double scale, int dpi, int width, int height, string[] showlayers, string[] hidelayers, string[] showgroups, string[] hidegroups, System.IO.Stream outStream)
+		public System.Net.WebRequest GetMapImage(string mapname, string format, string selectionXml, double centerX, double centerY, double scale, int dpi, int width, int height, bool clip, string[] showlayers, string[] hidelayers, string[] showgroups, string[] hidegroups, System.IO.Stream outStream)
 		{
 			NameValueCollection param = new NameValueCollection();
 			param.Add("OPERATION", "GETMAPIMAGE");
@@ -800,6 +800,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			if (hidegroups != null && hidegroups.Length > 0)
 				param.Add("HIDEGROUPS", string.Join(",", hidegroups));
 
+            param.Add("CLIP", clip ? "1" : "0");
 			//TODO: Find out if this actually works...
 			//param.Add("REFRESHLAYERS", ...)
 
@@ -811,7 +812,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return req;
 		}
 
-        public System.Net.WebRequest GetMapImage(string mapname, string format, string selectionXml, double x1, double y1, double x2, double y2, int dpi, int width, int height, string[] showlayers, string[] hidelayers, string[] showgroups, string[] hidegroups, System.IO.Stream outStream)
+        public System.Net.WebRequest GetMapImage(string mapname, string format, string selectionXml, double x1, double y1, double x2, double y2, int dpi, int width, int height, bool clip, string[] showlayers, string[] hidelayers, string[] showgroups, string[] hidegroups, System.IO.Stream outStream)
         {
             NameValueCollection param = new NameValueCollection();
             param.Add("OPERATION", "GETMAPIMAGE");
@@ -840,6 +841,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (hidegroups != null && hidegroups.Length > 0)
                 param.Add("HIDEGROUPS", string.Join(",", hidegroups));
 
+            param.Add("CLIP", clip ? "1" : "0");
             //TODO: Find out if this actually works...
             //param.Add("REFRESHLAYERS", ...)
 
@@ -856,7 +858,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return m_hosturi + "?" + EncodeParameters(param);
 		}
 
-		public string GetMapImageUrl(string mapname, string format, string selectionXml, double centerX, double centerY, double scale, int dpi, int width, int height, string[] showlayers, string[] hidelayers, string[] showgroups, string[] hidegroups)
+		public string GetMapImageUrl(string mapname, string format, string selectionXml, double centerX, double centerY, double scale, int dpi, int width, int height, bool clip, string[] showlayers, string[] hidelayers, string[] showgroups, string[] hidegroups)
 		{
 			NameValueCollection param = new NameValueCollection();
 			param.Add("OPERATION", "GETMAPIMAGE");
@@ -890,10 +892,12 @@ namespace OSGeo.MapGuide.MaestroAPI
 			//TODO: Find out if this actually works...
 			//param.Add("REFRESHLAYERS", ...)
 
+            param.Add("CLIP", clip ? "1" : "0");
+
 			return m_hosturi + "?" + EncodeParameters(param);
 		}
 
-        public string GetMapImageUrl(string mapname, string format, string selectionXml, double x1, double y1, double x2, double y2, int dpi, int width, int height, string[] showlayers, string[] hidelayers, string[] showgroups, string[] hidegroups)
+        public string GetMapImageUrl(string mapname, string format, string selectionXml, double x1, double y1, double x2, double y2, int dpi, int width, int height, bool clip, string[] showlayers, string[] hidelayers, string[] showgroups, string[] hidegroups)
         {
             NameValueCollection param = new NameValueCollection();
             param.Add("OPERATION", "GETMAPIMAGE");
@@ -921,6 +925,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                 param.Add("SHOWGROUPS", string.Join(",", showgroups));
             if (hidegroups != null && hidegroups.Length > 0)
                 param.Add("HIDEGROUPS", string.Join(",", hidegroups));
+
+            param.Add("CLIP", clip ? "1" : "0");
 
             //TODO: Find out if this actually works...
             //param.Add("REFRESHLAYERS", ...)

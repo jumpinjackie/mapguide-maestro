@@ -1930,16 +1930,26 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public virtual System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi)
         {
-            return this.RenderRuntimeMap(resourceId, x, y, scale, width, height, dpi, "PNG");
+            return this.RenderRuntimeMap(resourceId, x, y, scale, width, height, dpi, "PNG", false);
         }
 
         public virtual System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi)
         {
-            return this.RenderRuntimeMap(resourceId, x1, y1, x2, y2, width, height, dpi, "PNG");
+            return this.RenderRuntimeMap(resourceId, x1, y1, x2, y2, width, height, dpi, "PNG", false);
         }
 
-        public abstract System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format);
-        public abstract System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format);
+        public virtual System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format)
+        {
+            return this.RenderRuntimeMap(resourceId, x, y, scale, width, height, dpi, format, false);
+        }
+
+        public virtual System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)
+        {
+            return this.RenderRuntimeMap(resourceId, x1, y1, x2, y2, width, height, dpi, format, false);
+        }
+
+        public abstract System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format, bool clip);
+        public abstract System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip);
 
         public abstract System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format);
 

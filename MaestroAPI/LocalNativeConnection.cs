@@ -485,7 +485,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			res.MoveResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
 		}
 
-		public override System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format)
+		public override System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
 		{
 			MgRenderingService rnd = this.Con.CreateService(MgServiceType.RenderingService) as MgRenderingService;
 			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
@@ -498,13 +498,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 			MgSelection sel = new MgSelection(map);
             //The color accepted by MgColor has alpha as the last value, but the returned has alpha first
 			MgColor color = new MgColor(Utility.ParseHTMLColor(map.GetBackgroundColor()));
-		
-			object[] args = new object[] { map, sel, gf.CreateCoordinateXY(x, y), scale, width, height, color, format, true };
+
+            //TODO: The render method is missing the overload for the Clip parameter
+            object[] args = new object[] { map, sel, gf.CreateCoordinateXY(x, y), scale, width, height, color, format, true };
             Type[] types = new Type[] { args[0].GetType(), args[1].GetType(), args[2].GetType(), args[3].GetType(), args[4].GetType(), args[5].GetType(), args[6].GetType(), args[7].GetType(), args[8].GetType() };
 			return Utility.MgStreamToNetStream(rnd, rnd.GetType().GetMethod("RenderMap", types), args);
 		}
 
-        public override System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)
+        public override System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
         {
             MgRenderingService rnd = this.Con.CreateService(MgServiceType.RenderingService) as MgRenderingService;
             MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
@@ -518,6 +519,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             //The color accepted by MgColor has alpha as the last value, but the returned has alpha first
             MgColor color = new MgColor(Utility.ParseHTMLColor(map.GetBackgroundColor()));
             MgEnvelope env = new MgEnvelope(gf.CreateCoordinateXY(x1, y1), gf.CreateCoordinateXY(x2, y2));
+
+            //TODO: The render is missing the clip param for the extent override method
 
             object[] args = new object[] { map, sel, env, width, height, color, format };
             Type[] types = new Type[] { args[0].GetType(), args[1].GetType(), args[2].GetType(), args[3].GetType(), args[4].GetType(), args[5].GetType(), args[6].GetType() };

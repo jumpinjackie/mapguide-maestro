@@ -478,6 +478,28 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 			}
 		}
 
+        public System.IO.Stream RenderToStream(double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
+        {
+            return m_serverConnection.RenderRuntimeMap(m_resourceID, x, y, scale, width, height, dpi, format, clip);
+        }
+
+        public System.IO.Stream RenderToStream(double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
+        {
+            return m_serverConnection.RenderRuntimeMap(m_resourceID, x1, y1, x2, y2, width, height, dpi, format, clip);
+        }
+
+        public System.Drawing.Bitmap Render(double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
+        {
+            using (System.IO.Stream s = m_serverConnection.RenderRuntimeMap(m_resourceID, x, y, scale, width, height, dpi, format, clip))
+                return new System.Drawing.Bitmap(s);
+        }
+
+        public System.Drawing.Bitmap Render(double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
+        {
+            using (System.IO.Stream s = m_serverConnection.RenderRuntimeMap(m_resourceID, x1, y1, x2, y2, width, height, dpi, format, clip))
+                return new System.Drawing.Bitmap(s);
+        }
+
 
 	}
 
@@ -1307,6 +1329,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 		{
 			base.InnerList.Insert(index, layer);
 		}
-	}
+
+    }
 
 }
