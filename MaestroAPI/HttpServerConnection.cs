@@ -619,7 +619,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 				SetResourceData(resourceID, "RuntimeData", ResourceDataType.Stream, ms);
 				if (ms2 != null)
 					SetResourceData(resourceID, "LayerGroupData", ResourceDataType.Stream, ms2);
-			}
+
+                if (map.HasLoadedSelectionXml)
+                    SetSelectionXml(resourceID, map.Selection.ToXml());
+            }
 			finally
 			{
 				map.Name = r;

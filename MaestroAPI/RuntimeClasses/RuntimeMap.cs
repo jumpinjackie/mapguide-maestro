@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 {
@@ -28,7 +29,6 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 	/// </summary>
 	public class RuntimeMap : OSGeo.MapGuide.MaestroAPI.MapDefinition 
 	{
-
 		protected string m_objid;
 		protected const int MgBinaryVersion = 262144; //1;
 		protected const int ClassId = 11500; //30500;
@@ -38,6 +38,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 
 		protected new RuntimeMapLayerCollection m_mapLayer;
 		protected new RuntimeMapGroupCollection m_mapLayerGroup;
+        protected MaestroAPI.Selection m_selection = null;
 
 		Box2DType m_dataExtent = new Box2DType();
 		int m_displaydpi;
@@ -179,6 +180,21 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 			get { return m_mapLayerGroup; } 
 			set { m_mapLayerGroup = value; }
 		}
+
+        public bool HasLoadedSelectionXml
+        {
+            get { return m_selection != null; }
+        }
+
+        public MaestroAPI.Selection Selection
+        {
+            get 
+            {
+                if (m_selection == null)
+                    m_selection = new OSGeo.MapGuide.MaestroAPI.Selection(this, m_serverConnection.GetSelectionXml(m_resourceID));
+                return m_selection; 
+            }
+        }
 
 		internal void Serialize(BinarySerializer.MgBinarySerializer s)
 		{
@@ -631,7 +647,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 	{
 		protected double[] m_scaleRanges;
 		protected int m_type;
-		protected ArrayList m_ids;
+		protected List<KeyValuePair<string, Type>> m_ids;
 		protected bool m_needRefresh;
 		protected double m_displayOrder;
 		protected string m_featureSourceId;
@@ -660,7 +676,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 		{
 			m_scaleRanges = new double[] {0.0, InfinityScale};
 			m_type = OSGeo.MapGuide.MgLayerType.Dynamic;
-			m_ids = new ArrayList();
+            m_ids = new List<KeyValuePair<string, Type>>();
 			m_schemaName = "";
 
 			m_featureName = "";
@@ -743,7 +759,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
             }
 
             if (m_ids == null)
-                m_ids = new ArrayList();
+                m_ids = new List<KeyValuePair<string,Type>>();
 
         }
 
@@ -763,7 +779,7 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
             if (fs.Provider.StartsWith("OSGeo.Gdal") || fs.Provider.StartsWith("OSGeo.WMS") || fs.Provider.StartsWith("Autodesk.Raster"))
             {
                 if (m_ids == null)
-                    m_ids = new ArrayList();
+                    m_ids = new List<KeyValuePair<string,Type>>();
                 return;
             }
 
@@ -772,12 +788,12 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 
 			if (scm != null)
 			{
-				m_ids = new ArrayList();
+                m_ids = new List<KeyValuePair<string, Type>>();
 				foreach(string id in ids)
 					foreach(OSGeo.MapGuide.MaestroAPI.FeatureSetColumn fsc in scm.Columns)
 						if (fsc.Name == id)
 						{
-							m_ids.Add(new object[] {(short)Utility.ConvertNetTypeToMgType(fsc.Type), id});
+							m_ids.Add(new KeyValuePair<string, Type> (id, fsc.Type));
 							break;
 						}
 			}
@@ -832,14 +848,14 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 				m_featureName = d.ReadString();
 				m_geometry = d.ReadString();
 
-				ArrayList ids = new ArrayList();
+                List<KeyValuePair<string, Type>> ids = new List<KeyValuePair<string, Type>>();
 				int idCount = d.ReadInt32();
 
 				while(idCount-- > 0)
 				{
 					short idType = d.ReadInt16();
 					string idName = d.ReadString();
-					ids.Add(new object[] { idType, idName } );
+					ids.Add(new KeyValuePair<string, Type>(idName, Utility.ConvertMgTypeToNetType(idType)));
 				}
 
 				m_ids = ids;
@@ -873,14 +889,14 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 				m_schemaName = d.ReadInternalString();
 				m_geometry = d.ReadInternalString();
 
-				ArrayList ids = new ArrayList();
+                List<KeyValuePair<string, Type>> ids = new List<KeyValuePair<string, Type>>();
 				int idCount = BitConverter.ToInt32(d.ReadStreamRepeat(4), 0);
 
 				while(idCount-- > 0)
 				{
 					short idType = BitConverter.ToInt16(d.ReadStreamRepeat(2), 0);
 					string idName = d.ReadInternalString();
-					ids.Add(new object[] { idType, idName } );
+					ids.Add(new KeyValuePair<string, Type>(idName, Utility.ConvertMgTypeToNetType(idType)));
 				}
 
 				m_ids = ids;
@@ -923,10 +939,10 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 				s.Write(m_geometry);
 
 				s.Write(m_ids.Count);
-				foreach(object[] x in m_ids)
+				foreach(KeyValuePair<string, Type> x in m_ids)
 				{
-					s.Write((short)x[0]);
-					s.Write((string)x[1]);
+					s.Write((short)Utility.ConvertNetTypeToMgType(x.Value));
+					s.Write(x.Key);
 				}
 			}
 			else
@@ -956,13 +972,11 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 				s.WriteStringInternal(m_geometry);
 
 				s.WriteRaw(BitConverter.GetBytes(m_ids.Count));
-				foreach(object[] x in m_ids)
+				foreach(KeyValuePair<string, Type> x in m_ids)
 				{
-					s.WriteRaw(BitConverter.GetBytes((short)x[0]));
-					s.WriteStringInternal((string)x[1]);
+					s.WriteRaw(BitConverter.GetBytes((short)Utility.ConvertNetTypeToMgType(x.Value)));
+					s.WriteStringInternal(x.Key);
 				}
-
-
 			}
 		}
 
@@ -1112,15 +1126,17 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 			set { m_type = value; }
 		}
 
-		public ArrayList IDs 
+        /// <summary>
+        /// Returns the list of columns that comprise the primary key for the layer
+        /// </summary>
+		public IList<KeyValuePair<string, Type>> IDs 
 		{
 			get 
 			{ 
 				if (m_ids == null || m_ids.Count == 0)
 					FindResourceIDs();
-				return m_ids; 
+				return new System.Collections.ObjectModel.ReadOnlyCollection<KeyValuePair<string, Type>>(m_ids); 
 			}
-			set { m_ids = value; }
 		}
 		
 	}
@@ -1202,6 +1218,15 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 		{
 			base.InnerList.Insert(index, layer);
 		}
+
+        public RuntimeClasses.RuntimeMapLayer FindByGuid(string guid)
+        {
+            foreach (RuntimeMapLayer l in base.InnerList)
+                if (l.Guid == guid)
+                    return l;
+            
+            return null;
+        }
 	}
 
 
