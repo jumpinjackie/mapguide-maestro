@@ -26,7 +26,9 @@ using System.Windows.Forms;
 namespace OSGeo.MapGuide.Maestro
 {
 	/// <summary>
-	/// Summary description for LengthyOperation.
+	/// Form that displays progress for a lengthy operation.
+    /// This implementation is really messy, and should be rewritten,
+    /// using a BackgroundWorker.
 	/// </summary>
 	public class LengthyOperation : System.Windows.Forms.Form
 	{
@@ -79,6 +81,7 @@ namespace OSGeo.MapGuide.Maestro
 		private Globalizator.Globalizator m_globalizor = null;
 		private object m_callbackobject = null;
 		private bool m_noCancelConfirmation = false;
+        private bool m_waitForAccept = true;
 
 		public LengthyOperation()
 		{
@@ -298,13 +301,14 @@ namespace OSGeo.MapGuide.Maestro
 			set { m_callbackobject = value; }
 		}
 
-		public void InitializeDialog(OSGeo.MapGuide.MaestroAPI.ServerConnectionI connection, string argument1, string argument2, OperationType operation)
+		public void InitializeDialog(OSGeo.MapGuide.MaestroAPI.ServerConnectionI connection, string argument1, string argument2, OperationType operation, bool waitForAccept)
 		{
 			m_connection = connection;
 			OSGeo.MapGuide.MaestroAPI.LengthyOperationCallBack callback = new OSGeo.MapGuide.MaestroAPI.LengthyOperationCallBack(CallbackMethod);
 			OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack pgcallback = new OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack(WaitOperationCallBack);
 			m_event = new System.Threading.ManualResetEvent(false);
 			m_operation = operation;
+            m_waitForAccept = waitForAccept;
 
 			switch(operation)
 			{
@@ -464,11 +468,15 @@ namespace OSGeo.MapGuide.Maestro
 				ProgressPanel.Visible = false;
 				OKBtn.Enabled = true;
 
-				if (workList.Items.Count == 0)
-					m_event.Set();
-				else
-					//Flash it
-					this.Focus();
+                if (workList.Items.Count == 0)
+                    m_event.Set();
+                else
+                {
+                    if (m_waitForAccept)
+                        this.Focus(); //Flash it
+                    else
+                        OKBtn_Click(OKBtn, null);
+                }
 			}
 			else
 			{

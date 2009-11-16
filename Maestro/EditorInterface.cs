@@ -325,12 +325,17 @@ namespace OSGeo.MapGuide.Maestro
 			return Save(m_resourceID);
 		}
 
-		public DialogResult LengthyOperation(object caller, System.Reflection.MethodInfo mi)
+        public DialogResult LengthyOperation(object caller, System.Reflection.MethodInfo mi)
+        {
+            return LengthyOperation(caller, mi, true);
+        }
+
+		public DialogResult LengthyOperation(object caller, System.Reflection.MethodInfo mi, bool waitForAccept)
 		{
 			OSGeo.MapGuide.Maestro.LengthyOperation lo = new OSGeo.MapGuide.Maestro.LengthyOperation();
 			lo.CallbackObject = caller;
 			lo.CallbackEnabledMethod = mi;
-			lo.InitializeDialog(m_editor.CurrentConnection, "", "", OSGeo.MapGuide.Maestro.LengthyOperation.OperationType.Other);
+			lo.InitializeDialog(m_editor.CurrentConnection, "", "", OSGeo.MapGuide.Maestro.LengthyOperation.OperationType.Other, waitForAccept);
 			return lo.ShowDialog(m_editor);
 		}
 

@@ -70,7 +70,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 			m_remove = toremove;
 			m_add = newfiles;
 
-			return m_editor.LengthyOperation(this, this.GetType().GetMethod("Runner", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance));
+			return m_editor.LengthyOperation(this, this.GetType().GetMethod("Runner", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance), false);
 		}
 
 		private string[] SplitPath(string input)

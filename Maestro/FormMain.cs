@@ -1738,11 +1738,11 @@ namespace OSGeo.MapGuide.Maestro
 				LengthyOperation lwdlg = new LengthyOperation();
 
 				if (sourceisFolder && move) 
-					lwdlg.InitializeDialog(m_connection, sourcepath, targetpath, LengthyOperation.OperationType.MoveFolder);
+					lwdlg.InitializeDialog(m_connection, sourcepath, targetpath, LengthyOperation.OperationType.MoveFolder, true);
 				else if (sourceisFolder)
-					lwdlg.InitializeDialog(m_connection, sourcepath, targetpath, LengthyOperation.OperationType.CopyFolder);
+					lwdlg.InitializeDialog(m_connection, sourcepath, targetpath, LengthyOperation.OperationType.CopyFolder, true);
 				else if (move)
-					lwdlg.InitializeDialog(m_connection, sourcepath, targetpath, LengthyOperation.OperationType.MoveResource);
+					lwdlg.InitializeDialog(m_connection, sourcepath, targetpath, LengthyOperation.OperationType.MoveResource, true);
 				else
 				{
 					m_connection.CopyResource(sourcepath, targetpath, true);

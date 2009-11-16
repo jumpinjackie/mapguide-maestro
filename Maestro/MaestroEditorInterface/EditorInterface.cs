@@ -129,7 +129,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// <returns>The name of the selected file, or null if the user cancelled</returns>
 		string BrowseUnmanagedData(string startPath, System.Collections.Specialized.NameValueCollection filetypes);
 
+        /// <summary>
+        /// Performs a lengthy operation and displays a progress dialog for the user
+        /// </summary>
+        /// <param name="caller">The sender that is updated when the progress starts</param>
+        /// <param name="mi">The method to invoke when the operation progress starts</param>
+        /// <returns>DialogResult.OK if the operation succeeded, DialogResult.Cancel if the user cancelled</returns>
 		System.Windows.Forms.DialogResult LengthyOperation(object caller, System.Reflection.MethodInfo mi);
+
+        /// <summary>
+        /// Performs a lengthy operation and displays a progress dialog for the user
+        /// </summary>
+        /// <param name="caller">The sender that is updated when the progress starts</param>
+        /// <param name="mi">The method to invoke when the operation progress starts</param>
+        /// <param name="waitForAccept">True if the user should be prompted before applying the changes</param>
+        /// <returns>DialogResult.OK if the operation succeeded, DialogResult.Cancel if the user cancelled</returns>
+        System.Windows.Forms.DialogResult LengthyOperation(object caller, System.Reflection.MethodInfo mi, bool waitForAccept);
 
         /// <summary>
         /// Edits an SQL expression, ea. a filter or label expression
