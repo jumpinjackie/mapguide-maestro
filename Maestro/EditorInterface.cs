@@ -247,7 +247,7 @@ namespace OSGeo.MapGuide.Maestro
 				{
                     ResourceBrowser.BrowseResource dlg = new ResourceBrowser.BrowseResource(m_editor.RepositoryCache, m_editor, false, false, new string[] { resourceType });
 					dlg.SelectedResources = new string[] { m_editor.LastSelectedNode };
-					if (dlg.ShowDialog() != DialogResult.OK || resid == null || resid.Length != 1)
+					if (dlg.ShowDialog() != DialogResult.OK || dlg.SelectedResources == null || dlg.SelectedResources.Length != 1)
 						return false;
 
 					resid = dlg.SelectedResources[0];
