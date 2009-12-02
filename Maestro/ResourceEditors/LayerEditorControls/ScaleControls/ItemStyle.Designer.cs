@@ -28,6 +28,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemStyle));
             this.previewPicture = new System.Windows.Forms.PictureBox();
             this.EditButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
@@ -37,11 +38,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             // 
             this.previewPicture.BackColor = System.Drawing.Color.White;
             this.previewPicture.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.previewPicture.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.previewPicture.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.previewPicture, "previewPicture");
             this.previewPicture.Name = "previewPicture";
-            this.previewPicture.Size = new System.Drawing.Size(113, 20);
-            this.previewPicture.TabIndex = 0;
             this.previewPicture.TabStop = false;
             this.previewPicture.DoubleClick += new System.EventHandler(this.previewPicture_DoubleClick);
             this.previewPicture.Click += new System.EventHandler(this.previewPicture_Click);
@@ -49,23 +47,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             // 
             // EditButton
             // 
-            this.EditButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.EditButton.Location = new System.Drawing.Point(113, 0);
+            resources.ApplyResources(this.EditButton, "EditButton");
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(24, 20);
-            this.EditButton.TabIndex = 1;
-            this.EditButton.Text = "...";
             this.EditButton.UseVisualStyleBackColor = true;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // ItemStyle
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.previewPicture);
             this.Controls.Add(this.EditButton);
             this.Name = "ItemStyle";
-            this.Size = new System.Drawing.Size(137, 20);
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
             this.ResumeLayout(false);
 

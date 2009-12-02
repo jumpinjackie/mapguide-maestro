@@ -29,6 +29,7 @@ namespace OSGeo.MapGuide.Maestro
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormExpression));
             this.OKBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -52,24 +53,16 @@ namespace OSGeo.MapGuide.Maestro
             // 
             // OKBtn
             // 
-            this.OKBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKBtn.Location = new System.Drawing.Point(289, 6);
+            resources.ApplyResources(this.OKBtn, "OKBtn");
             this.OKBtn.Name = "OKBtn";
-            this.OKBtn.Size = new System.Drawing.Size(75, 23);
-            this.OKBtn.TabIndex = 2;
-            this.OKBtn.Text = "OK";
             this.OKBtn.UseVisualStyleBackColor = true;
             this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(377, 6);
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.CancelBtn.TabIndex = 3;
-            this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
             // 
             // panel1
@@ -77,20 +70,13 @@ namespace OSGeo.MapGuide.Maestro
             this.panel1.Controls.Add(this.lblHint);
             this.panel1.Controls.Add(this.CancelBtn);
             this.panel1.Controls.Add(this.OKBtn);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 231);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(464, 40);
-            this.panel1.TabIndex = 4;
             // 
             // lblHint
             // 
-            this.lblHint.AutoSize = true;
-            this.lblHint.Location = new System.Drawing.Point(12, 11);
+            resources.ApplyResources(this.lblHint, "lblHint");
             this.lblHint.Name = "lblHint";
-            this.lblHint.Size = new System.Drawing.Size(202, 13);
-            this.lblHint.TabIndex = 4;
-            this.lblHint.Text = "Press Alt + Right to invoke auto-complete";
             // 
             // toolStrip1
             // 
@@ -103,28 +89,21 @@ namespace OSGeo.MapGuide.Maestro
             this.ColumnValue,
             this.LookupValues,
             this.ColumnName});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(464, 25);
-            this.toolStrip1.TabIndex = 5;
-            this.toolStrip1.Text = "toolStrip1";
             // 
             // btnProperties
             // 
             this.btnProperties.Image = global::OSGeo.MapGuide.Maestro.Properties.Resources.table;
-            this.btnProperties.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.btnProperties, "btnProperties");
             this.btnProperties.Name = "btnProperties";
-            this.btnProperties.Size = new System.Drawing.Size(85, 22);
-            this.btnProperties.Text = "Properties";
             // 
             // btnFunctions
             // 
             this.btnFunctions.Image = global::OSGeo.MapGuide.Maestro.Properties.Resources.sum;
-            this.btnFunctions.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.btnFunctions, "btnFunctions");
             this.btnFunctions.Name = "btnFunctions";
-            this.btnFunctions.Size = new System.Drawing.Size(82, 22);
-            this.btnFunctions.Text = "Functions";
             // 
             // btnFilter
             // 
@@ -133,54 +112,45 @@ namespace OSGeo.MapGuide.Maestro
             this.btnSpatial,
             this.btnDistance});
             this.btnFilter.Image = global::OSGeo.MapGuide.Maestro.Properties.Resources.bricks;
-            this.btnFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.btnFilter, "btnFilter");
             this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(60, 22);
-            this.btnFilter.Text = "Filter";
             // 
             // btnCondition
             // 
             this.btnCondition.Name = "btnCondition";
-            this.btnCondition.Size = new System.Drawing.Size(130, 22);
-            this.btnCondition.Text = "Condition";
+            resources.ApplyResources(this.btnCondition, "btnCondition");
             // 
             // btnSpatial
             // 
             this.btnSpatial.Name = "btnSpatial";
-            this.btnSpatial.Size = new System.Drawing.Size(130, 22);
-            this.btnSpatial.Text = "Spatial";
+            resources.ApplyResources(this.btnSpatial, "btnSpatial");
             // 
             // btnDistance
             // 
             this.btnDistance.Name = "btnDistance";
-            this.btnDistance.Size = new System.Drawing.Size(130, 22);
-            this.btnDistance.Text = "Distance";
+            resources.ApplyResources(this.btnDistance, "btnDistance");
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // ColumnValue
             // 
             this.ColumnValue.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.ColumnValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ColumnValue.DropDownWidth = 180;
-            this.ColumnValue.Enabled = false;
+            resources.ApplyResources(this.ColumnValue, "ColumnValue");
             this.ColumnValue.Name = "ColumnValue";
-            this.ColumnValue.Size = new System.Drawing.Size(90, 25);
             this.ColumnValue.SelectedIndexChanged += new System.EventHandler(this.ColumnValue_SelectedIndexChanged);
             // 
             // LookupValues
             // 
             this.LookupValues.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.LookupValues.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.LookupValues.Enabled = false;
+            resources.ApplyResources(this.LookupValues, "LookupValues");
             this.LookupValues.Image = global::OSGeo.MapGuide.Maestro.Properties.Resources.bullet_go;
-            this.LookupValues.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.LookupValues.Name = "LookupValues";
-            this.LookupValues.Size = new System.Drawing.Size(23, 22);
-            this.LookupValues.ToolTipText = "Click to lookup values from the selected column";
             this.LookupValues.Click += new System.EventHandler(this.LookupValues_Click);
             // 
             // ColumnName
@@ -189,35 +159,26 @@ namespace OSGeo.MapGuide.Maestro
             this.ColumnName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ColumnName.DropDownWidth = 180;
             this.ColumnName.Name = "ColumnName";
-            this.ColumnName.Size = new System.Drawing.Size(90, 25);
-            this.ColumnName.ToolTipText = "Select the column to read values from";
+            resources.ApplyResources(this.ColumnName, "ColumnName");
             this.ColumnName.SelectedIndexChanged += new System.EventHandler(this.ColumnName_SelectedIndexChanged);
             this.ColumnName.Click += new System.EventHandler(this.ColumnName_Click);
             // 
             // ExpressionText
             // 
-            this.ExpressionText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpressionText.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            resources.ApplyResources(this.ExpressionText, "ExpressionText");
             this.ExpressionText.HideSelection = false;
-            this.ExpressionText.Location = new System.Drawing.Point(0, 25);
-            this.ExpressionText.Multiline = true;
             this.ExpressionText.Name = "ExpressionText";
-            this.ExpressionText.Size = new System.Drawing.Size(464, 206);
-            this.ExpressionText.TabIndex = 6;
             this.ExpressionText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyDown);
             this.ExpressionText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyUp);
             // 
             // FormExpression
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 271);
             this.Controls.Add(this.ExpressionText);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
             this.Name = "FormExpression";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Expression Editor";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

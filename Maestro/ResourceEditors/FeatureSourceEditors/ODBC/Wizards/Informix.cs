@@ -111,132 +111,92 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizar
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.Host = new System.Windows.Forms.TextBox();
-			this.Server = new System.Windows.Forms.TextBox();
-			this.Service = new System.Windows.Forms.TextBox();
-			this.Database = new System.Windows.Forms.TextBox();
-			this.Protocol = new System.Windows.Forms.ComboBox();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(136, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Host";
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 32);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(136, 16);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "Server";
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 56);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(136, 16);
-			this.label3.TabIndex = 2;
-			this.label3.Text = "Service";
-			// 
-			// label4
-			// 
-			this.label4.Location = new System.Drawing.Point(8, 80);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(136, 16);
-			this.label4.TabIndex = 3;
-			this.label4.Text = "Protocol";
-			// 
-			// label5
-			// 
-			this.label5.Location = new System.Drawing.Point(8, 104);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(136, 16);
-			this.label5.TabIndex = 4;
-			this.label5.Text = "Database";
-			// 
-			// Host
-			// 
-			this.Host.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Host.Location = new System.Drawing.Point(152, 8);
-			this.Host.Name = "Host";
-			this.Host.Size = new System.Drawing.Size(200, 20);
-			this.Host.TabIndex = 5;
-			this.Host.Text = "textBox1";
-			this.Host.TextChanged += new System.EventHandler(this.PropertyText_Changed);
-			// 
-			// Server
-			// 
-			this.Server.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Server.Location = new System.Drawing.Point(152, 32);
-			this.Server.Name = "Server";
-			this.Server.Size = new System.Drawing.Size(200, 20);
-			this.Server.TabIndex = 6;
-			this.Server.Text = "textBox2";
-			this.Server.TextChanged += new System.EventHandler(this.PropertyText_Changed);
-			// 
-			// Service
-			// 
-			this.Service.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Service.Location = new System.Drawing.Point(152, 56);
-			this.Service.Name = "Service";
-			this.Service.Size = new System.Drawing.Size(200, 20);
-			this.Service.TabIndex = 7;
-			this.Service.Text = "textBox3";
-			this.Service.TextChanged += new System.EventHandler(this.PropertyText_Changed);
-			// 
-			// Database
-			// 
-			this.Database.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Database.Location = new System.Drawing.Point(152, 104);
-			this.Database.Name = "Database";
-			this.Database.Size = new System.Drawing.Size(200, 20);
-			this.Database.TabIndex = 9;
-			this.Database.Text = "textBox5";
-			this.Database.TextChanged += new System.EventHandler(this.PropertyText_Changed);
-			// 
-			// Protocol
-			// 
-			this.Protocol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Protocol.Items.AddRange(new object[] {
-														  "olsoctcp"});
-			this.Protocol.Location = new System.Drawing.Point(152, 80);
-			this.Protocol.Name = "Protocol";
-			this.Protocol.Size = new System.Drawing.Size(200, 21);
-			this.Protocol.TabIndex = 10;
-			this.Protocol.Text = "olsoctcp";
-			this.Protocol.TextChanged += new System.EventHandler(this.PropertyText_Changed);
-			// 
-			// Informix
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(360, 128);
-			this.Controls.Add(this.Protocol);
-			this.Controls.Add(this.Database);
-			this.Controls.Add(this.Service);
-			this.Controls.Add(this.Server);
-			this.Controls.Add(this.Host);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Name = "Informix";
-			this.Size = new System.Drawing.Size(360, 128);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Informix));
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Host = new System.Windows.Forms.TextBox();
+            this.Server = new System.Windows.Forms.TextBox();
+            this.Service = new System.Windows.Forms.TextBox();
+            this.Database = new System.Windows.Forms.TextBox();
+            this.Protocol = new System.Windows.Forms.ComboBox();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // Host
+            // 
+            resources.ApplyResources(this.Host, "Host");
+            this.Host.Name = "Host";
+            this.Host.TextChanged += new System.EventHandler(this.PropertyText_Changed);
+            // 
+            // Server
+            // 
+            resources.ApplyResources(this.Server, "Server");
+            this.Server.Name = "Server";
+            this.Server.TextChanged += new System.EventHandler(this.PropertyText_Changed);
+            // 
+            // Service
+            // 
+            resources.ApplyResources(this.Service, "Service");
+            this.Service.Name = "Service";
+            this.Service.TextChanged += new System.EventHandler(this.PropertyText_Changed);
+            // 
+            // Database
+            // 
+            resources.ApplyResources(this.Database, "Database");
+            this.Database.Name = "Database";
+            this.Database.TextChanged += new System.EventHandler(this.PropertyText_Changed);
+            // 
+            // Protocol
+            // 
+            resources.ApplyResources(this.Protocol, "Protocol");
+            this.Protocol.Items.AddRange(new object[] {
+            resources.GetString("Protocol.Items")});
+            this.Protocol.Name = "Protocol";
+            this.Protocol.TextChanged += new System.EventHandler(this.PropertyText_Changed);
+            // 
+            // Informix
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.Protocol);
+            this.Controls.Add(this.Database);
+            this.Controls.Add(this.Service);
+            this.Controls.Add(this.Server);
+            this.Controls.Add(this.Host);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Name = "Informix";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

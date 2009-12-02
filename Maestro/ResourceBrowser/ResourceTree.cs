@@ -188,7 +188,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
         public void RefreshTreeNodes()
         {
             if (m_cache == null)
-                throw new Exception("You must set the cache property before using the tree");
+                throw new Exception(Strings.ResourceTree.MissingInitializationInternalError);
 
             string prevSelected = null;
             if (this.SelectedNode != null && this.SelectedNode.Tag != null)

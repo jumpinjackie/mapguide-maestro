@@ -248,15 +248,15 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
                 }
 
                 if (Progress != null)
-                    Progress(ProgressType.PreparingFolder, "Done", files.Count + folders.Count + 1, files.Count + folders.Count + 1);
+                    Progress(ProgressType.PreparingFolder, Strings.PackageBuilder.ProgressDone, files.Count + folders.Count + 1, files.Count + folders.Count + 1);
 
                 if (!string.IsNullOrEmpty(alternateTargetResourceId))
                 {
                     if (Progress != null)
-                        Progress(ProgressType.MovingResources, "Updating references ...", 100, 0);
+                        Progress(ProgressType.MovingResources, Strings.PackageBuilder.ProgressUpdatingReferences, 100, 0);
                     RemapFiles(m_connection, manifest, temppath, folderResourceId, alternateTargetResourceId, filemap);
                     if (Progress != null)
-                        Progress(ProgressType.MovingResources, "Updated references", 100, 100);
+                        Progress(ProgressType.MovingResources, Strings.PackageBuilder.ProgressUpdatedReferences, 100, 100);
                 }
 
                 filemap.Add(new KeyValuePair<string, string>(System.IO.Path.Combine(temppath, "MgResourcePackageManifest.xml"), System.IO.Path.Combine(temppath, Guid.NewGuid().ToString())));
@@ -467,7 +467,7 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
         private string RelativeName(string filebase, string temppath)
         {
             if (!filebase.StartsWith(temppath))
-                throw new Exception(string.Format("Filename \"{0}\" is not relative to \"{1}\"", filebase, temppath));
+                throw new Exception(string.Format(Strings.PackageBuilder.FilenameRelationInternalError, filebase, temppath));
             if (!temppath.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()))
                 temppath += System.IO.Path.DirectorySeparatorChar;
             return filebase.Substring(temppath.Length);
@@ -692,7 +692,7 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
                             {
                                 int index = FindZipEntry(zipfile, ri.Headerpath);
                                 if (index < 0)
-                                    throw new Exception(string.Format("Failed to find file {0} in archive", ri.Headerpath));
+                                    throw new Exception(string.Format(Strings.PackageBuilder.FileMissingError, ri.Headerpath));
 
                                 filemap.Add(new KeyValuePair<string, string>(headerpath, System.IO.Path.Combine(tempfolder, Guid.NewGuid().ToString())));
                                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
@@ -703,7 +703,7 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
                             {
                                 int index = FindZipEntry(zipfile, ri.Contentpath);
                                 if (index < 0)
-                                    throw new Exception(string.Format("Failed to find file {0} in archive", ri.Contentpath));
+                                    throw new Exception(string.Format(Strings.PackageBuilder.FileMissingError, ri.Contentpath));
 
                                 filemap.Add(new KeyValuePair<string, string>(contentpath, System.IO.Path.Combine(tempfolder, Guid.NewGuid().ToString())));
                                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
@@ -726,7 +726,7 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
                             {
                                 int index = FindZipEntry(zipfile, rdi.Filename);
                                 if (index < 0)
-                                    throw new Exception(string.Format("Failed to find file {0} in archive", ri.Contentpath));
+                                    throw new Exception(string.Format(Strings.PackageBuilder.FileMissingError, ri.Contentpath));
 
                                 filemap.Add(new KeyValuePair<string, string>(targetpath, System.IO.Path.Combine(tempfolder, Guid.NewGuid().ToString())));
                                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
@@ -750,7 +750,7 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
                 foreach (ResourceItem ri in items)
                 {
                     if (Progress != null)
-                        Progress(ProgressType.MovingResources, "Updating resources ...", items.Count, i);
+                        Progress(ProgressType.MovingResources, Strings.PackageBuilder.ProgressUpdatingResources, items.Count, i);
 
                     if (ri.OriginalResourcePath != ri.ResourcePath)
                     {
@@ -775,11 +775,11 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
                         }
                     }
                     if (Progress != null)
-                        Progress(ProgressType.MovingResources, "Updating resources ...", items.Count, i++);
+                        Progress(ProgressType.MovingResources, Strings.PackageBuilder.ProgressUpdatingResources, items.Count, i++);
                 }
 
                 if (Progress != null)
-                    Progress(ProgressType.MovingResources, "Updated resources", items.Count, items.Count);
+                    Progress(ProgressType.MovingResources, Strings.PackageBuilder.ProgressUpdatedResources, items.Count, items.Count);
 
                 //Step 3: Create an updated definition file
                 ResourcePackageManifest manifest = new ResourcePackageManifest();
@@ -823,13 +823,13 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
                     m_connection.SerializeObject(manifest, fs);
 
                 if (Progress != null)
-                    Progress(ProgressType.Compressing, "Compressing ...", 100, 0);
+                    Progress(ProgressType.Compressing, Strings.PackageBuilder.ProgressCompressing, 100, 0);
 
                 //Step 4: Create the zip file
                 ZipDirectory(targetfile, tempfolder, zipfilecomment, filemap);
 
                 if (Progress != null)
-                    Progress(ProgressType.Compressing, "Compressed", 100, 100);
+                    Progress(ProgressType.Compressing, Strings.PackageBuilder.ProgressCompressed, 100, 100);
             }
             finally
             {
@@ -865,7 +865,7 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
             {
                 int index = FindZipEntry(zipfile, "MgResourcePackageManifest.xml");
                 if (index < 0)
-                    throw new Exception("Failed to locate file MgResourcePackageManifest.xml in zip file. Most likely the file is not a MapGuide package.");
+                    throw new Exception(Strings.PackageBuilder.InvalidPackageFileError);
 
                 manifest = m_connection.DeserializeObject<ResourcePackageManifest>(zipfile.GetInputStream(index));
             }

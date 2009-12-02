@@ -84,78 +84,60 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.QueryActiveLayer = new System.Windows.Forms.CheckBox();
-			this.Tolerance = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SelectionType = new System.Windows.Forms.ComboBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// QueryActiveLayer
-			// 
-			this.QueryActiveLayer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.QueryActiveLayer.Location = new System.Drawing.Point(8, 8);
-			this.QueryActiveLayer.Name = "QueryActiveLayer";
-			this.QueryActiveLayer.Size = new System.Drawing.Size(600, 16);
-			this.QueryActiveLayer.TabIndex = 24;
-			this.QueryActiveLayer.Text = "Query active layer";
-			this.QueryActiveLayer.CheckedChanged += new System.EventHandler(this.QueryActiveLayer_CheckedChanged);
-			// 
-			// Tolerance
-			// 
-			this.Tolerance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Tolerance.Location = new System.Drawing.Point(144, 32);
-			this.Tolerance.Name = "Tolerance";
-			this.Tolerance.Size = new System.Drawing.Size(464, 20);
-			this.Tolerance.TabIndex = 23;
-			this.Tolerance.Text = "";
-			this.Tolerance.TextChanged += new System.EventHandler(this.Tolerance_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 32);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(136, 16);
-			this.label1.TabIndex = 22;
-			this.label1.Text = "Tolerance";
-			// 
-			// SelectionType
-			// 
-			this.SelectionType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.SelectionType.Items.AddRange(new object[] {
-															   "CONTAINS",
-															   "DISJOINT",
-															   "INTERSECTS",
-															   "WITHIN",
-															   "INSIDE",
-															   "ENVELOPEINTERSECTS"});
-			this.SelectionType.Location = new System.Drawing.Point(144, 56);
-			this.SelectionType.Name = "SelectionType";
-			this.SelectionType.Size = new System.Drawing.Size(464, 21);
-			this.SelectionType.TabIndex = 32;
-			this.SelectionType.TextChanged += new System.EventHandler(this.SelectionType_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 56);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(136, 16);
-			this.label2.TabIndex = 31;
-			this.label2.Text = "Selection type";
-			// 
-			// Select
-			// 
-			this.Controls.Add(this.SelectionType);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.QueryActiveLayer);
-			this.Controls.Add(this.Tolerance);
-			this.Controls.Add(this.label1);
-			this.Name = "Select";
-			this.Size = new System.Drawing.Size(616, 96);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Select));
+            this.QueryActiveLayer = new System.Windows.Forms.CheckBox();
+            this.Tolerance = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SelectionType = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // QueryActiveLayer
+            // 
+            resources.ApplyResources(this.QueryActiveLayer, "QueryActiveLayer");
+            this.QueryActiveLayer.Name = "QueryActiveLayer";
+            this.QueryActiveLayer.CheckedChanged += new System.EventHandler(this.QueryActiveLayer_CheckedChanged);
+            // 
+            // Tolerance
+            // 
+            resources.ApplyResources(this.Tolerance, "Tolerance");
+            this.Tolerance.Name = "Tolerance";
+            this.Tolerance.TextChanged += new System.EventHandler(this.Tolerance_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // SelectionType
+            // 
+            resources.ApplyResources(this.SelectionType, "SelectionType");
+            this.SelectionType.Items.AddRange(new object[] {
+            resources.GetString("SelectionType.Items"),
+            resources.GetString("SelectionType.Items1"),
+            resources.GetString("SelectionType.Items2"),
+            resources.GetString("SelectionType.Items3"),
+            resources.GetString("SelectionType.Items4"),
+            resources.GetString("SelectionType.Items5")});
+            this.SelectionType.Name = "SelectionType";
+            this.SelectionType.TextChanged += new System.EventHandler(this.SelectionType_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // Select
+            // 
+            this.Controls.Add(this.SelectionType);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.QueryActiveLayer);
+            this.Controls.Add(this.Tolerance);
+            this.Controls.Add(this.label1);
+            this.Name = "Select";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

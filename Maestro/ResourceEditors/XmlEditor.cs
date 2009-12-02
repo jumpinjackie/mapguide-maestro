@@ -38,7 +38,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.ComponentModel.IContainer components;
         private Panel panel2;
 
-		private Globalizator.Globalizator m_globalizor = null;
         private XmlEditorControl m_xmlEditorControl;
 
         public XmlEditor(string item, MaestroAPI.ServerConnectionI con)
@@ -71,7 +70,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			m_globalizor = new  Globalizator.Globalizator(this);
 		}
 
 		/// <summary>
@@ -96,6 +94,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XmlEditor));
             this.panel1 = new System.Windows.Forms.Panel();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.OKBtn = new System.Windows.Forms.Button();
@@ -107,54 +106,35 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.panel1.Controls.Add(this.CancelBtn);
             this.panel1.Controls.Add(this.OKBtn);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 447);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(656, 48);
-            this.panel1.TabIndex = 0;
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.CancelBtn.Location = new System.Drawing.Point(332, 16);
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(96, 24);
-            this.CancelBtn.TabIndex = 1;
-            this.CancelBtn.Text = "Cancel";
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // OKBtn
             // 
-            this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.OKBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.OKBtn.Location = new System.Drawing.Point(212, 16);
+            resources.ApplyResources(this.OKBtn, "OKBtn");
             this.OKBtn.Name = "OKBtn";
-            this.OKBtn.Size = new System.Drawing.Size(96, 24);
-            this.OKBtn.TabIndex = 0;
-            this.OKBtn.Text = "OK";
             this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
             // 
             // panel2
             // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(656, 447);
-            this.panel2.TabIndex = 1;
             // 
             // XmlEditor
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(656, 495);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.MinimizeBox = false;
             this.Name = "XmlEditor";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "XmlEditor";
             this.Load += new System.EventHandler(this.XmlEditor_Load);
             this.Closing += new System.ComponentModel.CancelEventHandler(this.XmlEditor_Closing);
             this.panel1.ResumeLayout(false);
@@ -176,7 +156,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void CancelBtn_Click(object sender, System.EventArgs e)
 		{
-			if (m_xmlEditorControl.Modified && MessageBox.Show(this, m_globalizor.Translate("Do you want to close this dialog and discard all changes?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
+			if (m_xmlEditorControl.Modified && MessageBox.Show(this, Strings.XmlEditor.CloseWithoutSavingWarning, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
 				return;
 
 			m_xmlEditorControl.EndExternalEditing();

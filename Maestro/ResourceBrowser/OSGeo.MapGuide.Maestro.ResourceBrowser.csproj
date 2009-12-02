@@ -52,16 +52,27 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strings\BrowseResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BrowseResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\RepositoryCache.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepositoryCache.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\ResourceTree.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceTree.resx</DependentUpon>
+    </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Project>{290B027E-3649-4A60-A9BF-0544831435E2}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Globalizator\Globalizator.csproj">
-      <Project>{361D5982-275F-4A4C-935F-0BB637330C9C}</Project>
-      <Name>Globalizator</Name>
     </ProjectReference>
     <ProjectReference Include="..\MaestroEditorInterface\MaestroEditorInterface.csproj">
       <Project>{006AFE1A-BF79-4C84-888D-9396958A42BD}</Project>
@@ -72,6 +83,18 @@
     <EmbeddedResource Include="BrowseResource.resx">
       <DependentUpon>BrowseResource.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\BrowseResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BrowseResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\RepositoryCache.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RepositoryCache.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\ResourceTree.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceTree.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

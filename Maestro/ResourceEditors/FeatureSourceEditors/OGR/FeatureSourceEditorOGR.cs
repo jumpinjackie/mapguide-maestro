@@ -56,8 +56,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private OSGeo.MapGuide.MaestroAPI.FeatureSource m_feature;
 		private System.Windows.Forms.CheckBox WriteProtected;
 		private bool m_isUpdating = false;
-		private Globalizator.Globalizator m_globalizor = null;
-
 
 		private enum ProviderTypes
 		{
@@ -202,23 +200,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				uc.Visible = false;
 				uc.Dock = DockStyle.Fill;
 			}
-
-			m_globalizor = new Globalizator.Globalizator(this);
-
-			string tmp = m_globalizor.Translate("OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorOGR.ConnectionType.Items");
-			if (tmp != null && tmp.Trim().Length > 0)
-			{
-				ArrayList fix = new ArrayList();
-				foreach(string s in tmp.Trim().Split('\n'))
-					if (s.Trim().Length > 0)
-						fix.Add(s.Trim());
-
-				if (fix.Count == ConnectionType.Items.Count)
-				{
-					ConnectionType.Items.Clear();
-					ConnectionType.Items.AddRange(fix.ToArray());
-				}
-			}
 		}
 
 		/// <summary> 
@@ -243,198 +224,152 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.ConnectionType = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.ProviderPanel = new System.Windows.Forms.Panel();
-			this.fme = new ResourceEditors.FeatureSourceEditors.OGR.FME();
-			this.informix = new ResourceEditors.FeatureSourceEditors.OGR.Informix();
-			this.ogdi = new ResourceEditors.FeatureSourceEditors.OGR.OGDI();
-			this.grass = new ResourceEditors.FeatureSourceEditors.OGR.Grass();
-			this.arcSDE = new ResourceEditors.FeatureSourceEditors.OGR.ArcSDE();
-			this.dods = new ResourceEditors.FeatureSourceEditors.OGR.DODS();
-			this.custom = new ResourceEditors.FeatureSourceEditors.OGR.Custom();
-			this.mySQL = new ResourceEditors.FeatureSourceEditors.OGR.MySQL();
-			this.oracle = new ResourceEditors.FeatureSourceEditors.OGR.Oracle();
-			this.odbc = new ResourceEditors.FeatureSourceEditors.OGR.ODBC();
-			this.postGIS = new ResourceEditors.FeatureSourceEditors.OGR.PostGIS();
-			this.managed = new ResourceEditors.FeatureSourceEditors.OGR.Managed();
-			this.unmanaged = new ResourceEditors.FeatureSourceEditors.OGR.Unmanaged();
-			this.WriteProtected = new System.Windows.Forms.CheckBox();
-			this.ProviderPanel.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// ConnectionType
-			// 
-			this.ConnectionType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ConnectionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ConnectionType.Items.AddRange(new object[] {
-																"Internal file (Managed)",
-																"File on the server (Unmanaged)",
-																"DODS",
-																"ArcSDE",
-																"GRASS",
-																"OGDI",
-																"Informix",
-																"PostGIS",
-																"MySQL",
-																"ODBC",
-																"Oracle",
-																"FME",
-																"Custom connectionstring"});
-			this.ConnectionType.Location = new System.Drawing.Point(128, 0);
-			this.ConnectionType.Name = "ConnectionType";
-			this.ConnectionType.Size = new System.Drawing.Size(440, 21);
-			this.ConnectionType.TabIndex = 3;
-			this.ConnectionType.SelectedIndexChanged += new System.EventHandler(this.ConnectionType_SelectedIndexChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(104, 16);
-			this.label1.TabIndex = 2;
-			this.label1.Text = "Connection Type";
-			// 
-			// ProviderPanel
-			// 
-			this.ProviderPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ProviderPanel.Controls.Add(this.fme);
-			this.ProviderPanel.Controls.Add(this.informix);
-			this.ProviderPanel.Controls.Add(this.ogdi);
-			this.ProviderPanel.Controls.Add(this.grass);
-			this.ProviderPanel.Controls.Add(this.arcSDE);
-			this.ProviderPanel.Controls.Add(this.dods);
-			this.ProviderPanel.Controls.Add(this.custom);
-			this.ProviderPanel.Controls.Add(this.mySQL);
-			this.ProviderPanel.Controls.Add(this.oracle);
-			this.ProviderPanel.Controls.Add(this.odbc);
-			this.ProviderPanel.Controls.Add(this.postGIS);
-			this.ProviderPanel.Controls.Add(this.managed);
-			this.ProviderPanel.Controls.Add(this.unmanaged);
-			this.ProviderPanel.Location = new System.Drawing.Point(8, 48);
-			this.ProviderPanel.Name = "ProviderPanel";
-			this.ProviderPanel.Size = new System.Drawing.Size(560, 448);
-			this.ProviderPanel.TabIndex = 4;
-			// 
-			// fme
-			// 
-			this.fme.Location = new System.Drawing.Point(144, 400);
-			this.fme.Name = "fme";
-			this.fme.Size = new System.Drawing.Size(144, 32);
-			this.fme.TabIndex = 12;
-			// 
-			// informix
-			// 
-			this.informix.Location = new System.Drawing.Point(384, 296);
-			this.informix.Name = "informix";
-			this.informix.Size = new System.Drawing.Size(152, 80);
-			this.informix.TabIndex = 11;
-			// 
-			// ogdi
-			// 
-			this.ogdi.Location = new System.Drawing.Point(384, 200);
-			this.ogdi.Name = "ogdi";
-			this.ogdi.Size = new System.Drawing.Size(152, 80);
-			this.ogdi.TabIndex = 10;
-			// 
-			// grass
-			// 
-			this.grass.Location = new System.Drawing.Point(384, 104);
-			this.grass.Name = "grass";
-			this.grass.Size = new System.Drawing.Size(152, 80);
-			this.grass.TabIndex = 9;
-			// 
-			// arcSDE
-			// 
-			this.arcSDE.AutoScroll = true;
-			this.arcSDE.AutoScrollMinSize = new System.Drawing.Size(312, 296);
-			this.arcSDE.Location = new System.Drawing.Point(384, 8);
-			this.arcSDE.Name = "arcSDE";
-			this.arcSDE.Size = new System.Drawing.Size(152, 80);
-			this.arcSDE.TabIndex = 8;
-			// 
-			// dods
-			// 
-			this.dods.Location = new System.Drawing.Point(200, 296);
-			this.dods.Name = "dods";
-			this.dods.Size = new System.Drawing.Size(184, 80);
-			this.dods.TabIndex = 7;
-			// 
-			// custom
-			// 
-			this.custom.Location = new System.Drawing.Point(16, 296);
-			this.custom.Name = "custom";
-			this.custom.Size = new System.Drawing.Size(176, 80);
-			this.custom.TabIndex = 6;
-			// 
-			// mySQL
-			// 
-			this.mySQL.Location = new System.Drawing.Point(208, 200);
-			this.mySQL.Name = "mySQL";
-			this.mySQL.Size = new System.Drawing.Size(176, 88);
-			this.mySQL.TabIndex = 5;
-			// 
-			// oracle
-			// 
-			this.oracle.Location = new System.Drawing.Point(24, 208);
-			this.oracle.Name = "oracle";
-			this.oracle.Size = new System.Drawing.Size(168, 80);
-			this.oracle.TabIndex = 4;
-			// 
-			// odbc
-			// 
-			this.odbc.Location = new System.Drawing.Point(216, 112);
-			this.odbc.Name = "odbc";
-			this.odbc.Size = new System.Drawing.Size(168, 80);
-			this.odbc.TabIndex = 3;
-			// 
-			// postGIS
-			// 
-			this.postGIS.Location = new System.Drawing.Point(24, 104);
-			this.postGIS.Name = "postGIS";
-			this.postGIS.Size = new System.Drawing.Size(176, 88);
-			this.postGIS.TabIndex = 2;
-			// 
-			// managed
-			// 
-			this.managed.Location = new System.Drawing.Point(200, 8);
-			this.managed.Name = "managed";
-			this.managed.Size = new System.Drawing.Size(176, 88);
-			this.managed.TabIndex = 1;
-			// 
-			// unmanaged
-			// 
-			this.unmanaged.Location = new System.Drawing.Point(16, 8);
-			this.unmanaged.Name = "unmanaged";
-			this.unmanaged.Size = new System.Drawing.Size(176, 80);
-			this.unmanaged.TabIndex = 0;
-			// 
-			// WriteProtected
-			// 
-			this.WriteProtected.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.WriteProtected.Location = new System.Drawing.Point(128, 24);
-			this.WriteProtected.Name = "WriteProtected";
-			this.WriteProtected.Size = new System.Drawing.Size(440, 16);
-			this.WriteProtected.TabIndex = 5;
-			this.WriteProtected.Text = "Data source is write protected";
-			this.WriteProtected.CheckedChanged += new System.EventHandler(this.WriteProtected_CheckedChanged);
-			// 
-			// FeatureSourceEditorOGR
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(416, 264);
-			this.Controls.Add(this.WriteProtected);
-			this.Controls.Add(this.ProviderPanel);
-			this.Controls.Add(this.ConnectionType);
-			this.Controls.Add(this.label1);
-			this.Name = "FeatureSourceEditorOGR";
-			this.Size = new System.Drawing.Size(576, 504);
-			this.ProviderPanel.ResumeLayout(false);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditorOGR));
+            this.ConnectionType = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ProviderPanel = new System.Windows.Forms.Panel();
+            this.fme = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.FME();
+            this.informix = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.Informix();
+            this.ogdi = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.OGDI();
+            this.grass = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.Grass();
+            this.arcSDE = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.ArcSDE();
+            this.dods = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.DODS();
+            this.custom = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.Custom();
+            this.mySQL = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.MySQL();
+            this.oracle = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.Oracle();
+            this.odbc = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.ODBC();
+            this.postGIS = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.PostGIS();
+            this.managed = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.Managed();
+            this.unmanaged = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.Unmanaged();
+            this.WriteProtected = new System.Windows.Forms.CheckBox();
+            this.ProviderPanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // ConnectionType
+            // 
+            resources.ApplyResources(this.ConnectionType, "ConnectionType");
+            this.ConnectionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ConnectionType.Items.AddRange(new object[] {
+            resources.GetString("ConnectionType.Items"),
+            resources.GetString("ConnectionType.Items1"),
+            resources.GetString("ConnectionType.Items2"),
+            resources.GetString("ConnectionType.Items3"),
+            resources.GetString("ConnectionType.Items4"),
+            resources.GetString("ConnectionType.Items5"),
+            resources.GetString("ConnectionType.Items6"),
+            resources.GetString("ConnectionType.Items7"),
+            resources.GetString("ConnectionType.Items8"),
+            resources.GetString("ConnectionType.Items9"),
+            resources.GetString("ConnectionType.Items10"),
+            resources.GetString("ConnectionType.Items11"),
+            resources.GetString("ConnectionType.Items12")});
+            this.ConnectionType.Name = "ConnectionType";
+            this.ConnectionType.SelectedIndexChanged += new System.EventHandler(this.ConnectionType_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // ProviderPanel
+            // 
+            resources.ApplyResources(this.ProviderPanel, "ProviderPanel");
+            this.ProviderPanel.Controls.Add(this.fme);
+            this.ProviderPanel.Controls.Add(this.informix);
+            this.ProviderPanel.Controls.Add(this.ogdi);
+            this.ProviderPanel.Controls.Add(this.grass);
+            this.ProviderPanel.Controls.Add(this.arcSDE);
+            this.ProviderPanel.Controls.Add(this.dods);
+            this.ProviderPanel.Controls.Add(this.custom);
+            this.ProviderPanel.Controls.Add(this.mySQL);
+            this.ProviderPanel.Controls.Add(this.oracle);
+            this.ProviderPanel.Controls.Add(this.odbc);
+            this.ProviderPanel.Controls.Add(this.postGIS);
+            this.ProviderPanel.Controls.Add(this.managed);
+            this.ProviderPanel.Controls.Add(this.unmanaged);
+            this.ProviderPanel.Name = "ProviderPanel";
+            // 
+            // fme
+            // 
+            resources.ApplyResources(this.fme, "fme");
+            this.fme.Name = "fme";
+            // 
+            // informix
+            // 
+            resources.ApplyResources(this.informix, "informix");
+            this.informix.Name = "informix";
+            // 
+            // ogdi
+            // 
+            resources.ApplyResources(this.ogdi, "ogdi");
+            this.ogdi.Name = "ogdi";
+            // 
+            // grass
+            // 
+            resources.ApplyResources(this.grass, "grass");
+            this.grass.Name = "grass";
+            // 
+            // arcSDE
+            // 
+            resources.ApplyResources(this.arcSDE, "arcSDE");
+            this.arcSDE.Name = "arcSDE";
+            // 
+            // dods
+            // 
+            resources.ApplyResources(this.dods, "dods");
+            this.dods.Name = "dods";
+            // 
+            // custom
+            // 
+            resources.ApplyResources(this.custom, "custom");
+            this.custom.Name = "custom";
+            // 
+            // mySQL
+            // 
+            resources.ApplyResources(this.mySQL, "mySQL");
+            this.mySQL.Name = "mySQL";
+            // 
+            // oracle
+            // 
+            resources.ApplyResources(this.oracle, "oracle");
+            this.oracle.Name = "oracle";
+            // 
+            // odbc
+            // 
+            resources.ApplyResources(this.odbc, "odbc");
+            this.odbc.Name = "odbc";
+            // 
+            // postGIS
+            // 
+            resources.ApplyResources(this.postGIS, "postGIS");
+            this.postGIS.Name = "postGIS";
+            // 
+            // managed
+            // 
+            resources.ApplyResources(this.managed, "managed");
+            this.managed.Name = "managed";
+            // 
+            // unmanaged
+            // 
+            resources.ApplyResources(this.unmanaged, "unmanaged");
+            this.unmanaged.Name = "unmanaged";
+            // 
+            // WriteProtected
+            // 
+            resources.ApplyResources(this.WriteProtected, "WriteProtected");
+            this.WriteProtected.Name = "WriteProtected";
+            this.WriteProtected.CheckedChanged += new System.EventHandler(this.WriteProtected_CheckedChanged);
+            // 
+            // FeatureSourceEditorOGR
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.WriteProtected);
+            this.Controls.Add(this.ProviderPanel);
+            this.Controls.Add(this.ConnectionType);
+            this.Controls.Add(this.label1);
+            this.Name = "FeatureSourceEditorOGR";
+            this.ProviderPanel.ResumeLayout(false);
+            this.ResumeLayout(false);
 
 		}
 		#endregion

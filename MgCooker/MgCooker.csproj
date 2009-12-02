@@ -46,16 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Maestro\FormLogin.cs">
-      <Link>FormLogin.cs</Link>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="..\Maestro\PreferedSite.cs">
-      <Link>PreferedSite.cs</Link>
-    </Compile>
-    <Compile Include="..\Maestro\WaitCursor.cs">
-      <Link>WaitCursor.cs</Link>
-    </Compile>
     <Compile Include="BatchSettings.cs" />
     <Compile Include="CommandLineParser.cs" />
     <Compile Include="Program.cs" />
@@ -73,13 +63,28 @@
     <Compile Include="SetupRun.Designer.cs">
       <DependentUpon>SetupRun.cs</DependentUpon>
     </Compile>
+    <Compile Include="Strings\BatchSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BatchSettings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\Program.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Program.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\Progress.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Progress.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\SetupRun.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SetupRun.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\Maestro\FormLogin.resx">
-      <Link>FormLogin.resx</Link>
-      <DependentUpon>FormLogin.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Progress.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Progress.cs</DependentUpon>
@@ -87,6 +92,22 @@
     <EmbeddedResource Include="SetupRun.resx">
       <SubType>Designer</SubType>
       <DependentUpon>SetupRun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\BatchSettings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BatchSettings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\Program.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Program.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\Progress.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Progress.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\SetupRun.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SetupRun.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -97,9 +118,9 @@
       <Project>{290B027E-3649-4A60-A9BF-0544831435E2}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Maestro\Globalizator\Globalizator.csproj">
-      <Project>{361D5982-275F-4A4C-935F-0BB637330C9C}</Project>
-      <Name>Globalizator</Name>
+    <ProjectReference Include="..\Maestro\LoginForm\OSGeo.MapGuide.Maestro.LoginForm.csproj">
+      <Project>{4B79021A-5117-4894-BBC0-39452E4F40E3}</Project>
+      <Name>OSGeo.MapGuide.Maestro.LoginForm</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

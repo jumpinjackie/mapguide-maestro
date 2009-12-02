@@ -101,82 +101,61 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.TypeCombo = new System.Windows.Forms.ComboBox();
-			this.NameText = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.LocationText = new System.Windows.Forms.TextBox();
-			this.SuspendLayout();
-			// 
-			// TypeCombo
-			// 
-			this.TypeCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.TypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.TypeCombo.Location = new System.Drawing.Point(96, 32);
-			this.TypeCombo.Name = "TypeCombo";
-			this.TypeCombo.Size = new System.Drawing.Size(288, 21);
-			this.TypeCombo.TabIndex = 11;
-			this.TypeCombo.SelectedIndexChanged += new System.EventHandler(this.TypeCombo_SelectedIndexChanged);
-			// 
-			// NameText
-			// 
-			this.NameText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.NameText.Location = new System.Drawing.Point(96, 8);
-			this.NameText.Name = "NameText";
-			this.NameText.Size = new System.Drawing.Size(288, 20);
-			this.NameText.TabIndex = 9;
-			this.NameText.Text = "textBox1";
-			this.NameText.TextChanged += new System.EventHandler(this.NameText_TextChanged);
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(4, 32);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(80, 16);
-			this.label3.TabIndex = 8;
-			this.label3.Text = "Type";
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(4, 56);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(72, 16);
-			this.label2.TabIndex = 7;
-			this.label2.Text = "Position";
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(4, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(64, 16);
-			this.label1.TabIndex = 6;
-			this.label1.Text = "Name";
-			// 
-			// LocationText
-			// 
-			this.LocationText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.LocationText.Location = new System.Drawing.Point(96, 56);
-			this.LocationText.Name = "LocationText";
-			this.LocationText.Size = new System.Drawing.Size(288, 20);
-			this.LocationText.TabIndex = 23;
-			this.LocationText.Text = "LocationText";
-			this.LocationText.TextChanged += new System.EventHandler(this.LocationText_TextChanged);
-			// 
-			// WidgetEditor
-			// 
-			this.Controls.Add(this.LocationText);
-			this.Controls.Add(this.TypeCombo);
-			this.Controls.Add(this.NameText);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Name = "WidgetEditor";
-			this.Size = new System.Drawing.Size(392, 80);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WidgetEditor));
+            this.TypeCombo = new System.Windows.Forms.ComboBox();
+            this.NameText = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.LocationText = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // TypeCombo
+            // 
+            resources.ApplyResources(this.TypeCombo, "TypeCombo");
+            this.TypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TypeCombo.Name = "TypeCombo";
+            this.TypeCombo.SelectedIndexChanged += new System.EventHandler(this.TypeCombo_SelectedIndexChanged);
+            // 
+            // NameText
+            // 
+            resources.ApplyResources(this.NameText, "NameText");
+            this.NameText.Name = "NameText";
+            this.NameText.TextChanged += new System.EventHandler(this.NameText_TextChanged);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // LocationText
+            // 
+            resources.ApplyResources(this.LocationText, "LocationText");
+            this.LocationText.Name = "LocationText";
+            this.LocationText.TextChanged += new System.EventHandler(this.LocationText_TextChanged);
+            // 
+            // WidgetEditor
+            // 
+            this.Controls.Add(this.LocationText);
+            this.Controls.Add(this.TypeCombo);
+            this.Controls.Add(this.NameText);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Name = "WidgetEditor";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

@@ -29,12 +29,9 @@ namespace OSGeo.MapGuide.Maestro
 {
     public partial class ExceptionViewer : Form
     {
-        private Globalizator.Globalizator m_globalizor = null;
-
         public ExceptionViewer()
         {
             InitializeComponent();
-            m_globalizor = new Globalizator.Globalizator(this);
         }
 
         private void ExceptionViewer_KeyUp(object sender, KeyEventArgs e)

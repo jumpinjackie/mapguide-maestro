@@ -39,7 +39,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 		private System.ComponentModel.IContainer components;
 
 		private bool m_isUpdating = false;
-		private Globalizator.Globalizator m_globalizor;
 		private EditorInterface m_editor;
         private OSGeo.MapGuide.MaestroAPI.FeatureSource m_feature;
         private ToolStrip toolStrip;
@@ -51,6 +50,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
         private ToolStripMenuItem browseFolderToolStripMenuItem;
         private ToolStripMenuItem typeFilelistToolStripMenuItem;
         private ToolStripMenuItem typeFolderToolStripMenuItem;
+        private OpenFileDialog OpenFileDialog;
+        private FolderBrowserDialog FolderBrowserDialog;
 		private ConfigUpdater m_updater;
 
 		public Composite()
@@ -59,11 +60,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 			InitializeComponent();
 		}
 
-		public void SetItem(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource feature,  Globalizator.Globalizator globalizor)
+		public void SetItem(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource feature)
 		{
 			m_editor = editor;
 			m_feature = feature;
-			m_globalizor = globalizor;
 			m_updater = new ConfigUpdater(editor, feature);
 			listView.SmallImageList = ShellIcons.ImageList;
 		}
@@ -125,18 +125,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
             this.typeFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteButton = new System.Windows.Forms.ToolStripButton();
             this.RefreshButton = new System.Windows.Forms.ToolStripButton();
+            this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.FolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView
             // 
-            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView.Location = new System.Drawing.Point(0, 25);
+            resources.ApplyResources(this.listView, "listView");
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(376, 119);
             this.listView.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.List;
             this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
@@ -145,31 +144,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
             // 
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.RebuildButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 144);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(376, 40);
-            this.panel1.TabIndex = 2;
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(232, 32);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Note that all paths are as seen by the MapGuide server, not Maestro";
             // 
             // RebuildButton
             // 
-            this.RebuildButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.RebuildButton.Location = new System.Drawing.Point(240, 8);
+            resources.ApplyResources(this.RebuildButton, "RebuildButton");
             this.RebuildButton.Name = "RebuildButton";
-            this.RebuildButton.Size = new System.Drawing.Size(136, 32);
-            this.RebuildButton.TabIndex = 0;
-            this.RebuildButton.Text = "Rebuild all";
             this.RebuildButton.Click += new System.EventHandler(this.RebuildButton_Click);
             // 
             // toolStrip
@@ -179,11 +165,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
             this.AddButton,
             this.DeleteButton,
             this.RefreshButton});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip.Size = new System.Drawing.Size(376, 25);
-            this.toolStrip.TabIndex = 3;
             // 
             // AddButton
             // 
@@ -194,78 +178,69 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
             this.browseFolderToolStripMenuItem,
             this.typeFilelistToolStripMenuItem,
             this.typeFolderToolStripMenuItem});
-            this.AddButton.Image = ((System.Drawing.Image)(resources.GetObject("AddButton.Image")));
-            this.AddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddButton, "AddButton");
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(32, 22);
-            this.AddButton.ToolTipText = "Add raster files";
             // 
             // browseAliasToolStripMenuItem
             // 
             this.browseAliasToolStripMenuItem.Name = "browseAliasToolStripMenuItem";
-            this.browseAliasToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.browseAliasToolStripMenuItem.Text = "Browse alias...";
+            resources.ApplyResources(this.browseAliasToolStripMenuItem, "browseAliasToolStripMenuItem");
             this.browseAliasToolStripMenuItem.Click += new System.EventHandler(this.AddAliasMenu_Click);
             // 
             // browseFilesToolStripMenuItem
             // 
             this.browseFilesToolStripMenuItem.Name = "browseFilesToolStripMenuItem";
-            this.browseFilesToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.browseFilesToolStripMenuItem.Text = "Browse files...";
+            resources.ApplyResources(this.browseFilesToolStripMenuItem, "browseFilesToolStripMenuItem");
             this.browseFilesToolStripMenuItem.Click += new System.EventHandler(this.AddFilesMenu_Click);
             // 
             // browseFolderToolStripMenuItem
             // 
             this.browseFolderToolStripMenuItem.Name = "browseFolderToolStripMenuItem";
-            this.browseFolderToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.browseFolderToolStripMenuItem.Text = "Browse folder...";
+            resources.ApplyResources(this.browseFolderToolStripMenuItem, "browseFolderToolStripMenuItem");
             this.browseFolderToolStripMenuItem.Click += new System.EventHandler(this.AddFolderMenu_Click);
             // 
             // typeFilelistToolStripMenuItem
             // 
             this.typeFilelistToolStripMenuItem.Name = "typeFilelistToolStripMenuItem";
-            this.typeFilelistToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.typeFilelistToolStripMenuItem.Text = "Type filelist...";
+            resources.ApplyResources(this.typeFilelistToolStripMenuItem, "typeFilelistToolStripMenuItem");
             this.typeFilelistToolStripMenuItem.Click += new System.EventHandler(this.AddManualMenu_Click);
             // 
             // typeFolderToolStripMenuItem
             // 
             this.typeFolderToolStripMenuItem.Name = "typeFolderToolStripMenuItem";
-            this.typeFolderToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.typeFolderToolStripMenuItem.Text = "Type folder...";
+            resources.ApplyResources(this.typeFolderToolStripMenuItem, "typeFolderToolStripMenuItem");
             this.typeFolderToolStripMenuItem.Click += new System.EventHandler(this.AddFolderManual_Click);
             // 
             // DeleteButton
             // 
             this.DeleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.DeleteButton.Enabled = false;
-            this.DeleteButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteButton.Image")));
-            this.DeleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.DeleteButton, "DeleteButton");
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(23, 22);
-            this.DeleteButton.ToolTipText = "Remove the selected files";
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // RefreshButton
             // 
             this.RefreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RefreshButton.Enabled = false;
-            this.RefreshButton.Image = ((System.Drawing.Image)(resources.GetObject("RefreshButton.Image")));
-            this.RefreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.RefreshButton, "RefreshButton");
             this.RefreshButton.Name = "RefreshButton";
-            this.RefreshButton.Size = new System.Drawing.Size(23, 22);
-            this.RefreshButton.ToolTipText = "Refresh the mapping data for the selected items";
             this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
+            // 
+            // OpenFileDialog
+            // 
+            resources.ApplyResources(this.OpenFileDialog, "OpenFileDialog");
+            this.OpenFileDialog.Multiselect = true;
+            // 
+            // FolderBrowserDialog
+            // 
+            resources.ApplyResources(this.FolderBrowserDialog, "FolderBrowserDialog");
             // 
             // Composite
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(376, 144);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.listView);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.panel1);
             this.Name = "Composite";
-            this.Size = new System.Drawing.Size(376, 184);
             this.panel1.ResumeLayout(false);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
@@ -277,38 +252,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 
 		private void AddFilesMenu_Click(object sender, System.EventArgs e)
 		{
-			OpenFileDialog dlg = new OpenFileDialog();
-			dlg.Filter = string.Join("|", new string[] {
-				"PNG files (*.png)", "*.png",
-				"JPEG files (*.jpg; *.jpeg)", "*.jpg;*.jpeg",
-				"Tagged Image format (*.tif, *.tiff)", "*.tif;*.tiff",
-				"Enhanced Wawelet files (*.ecw)", "*.ecw",
-				"MrSID files (*.sid)", "*.sid",
-				"GIF files (*.gif)", "*.gif",
-				"All files (*.*)", "*.*"
-			});
-
-			dlg.Title = "Select files to add";
-			dlg.Multiselect = true;
-			if (dlg.ShowDialog(this) == DialogResult.OK)
+			if (OpenFileDialog.ShowDialog(this) == DialogResult.OK)
 			{
-				m_updater.UpdateItems(dlg.FileNames, new string[]{});
+                m_updater.UpdateItems(OpenFileDialog.FileNames, new string[] { });
 				UpdateDisplay();
 			}
-
 		}
 
 		private void AddFolderMenu_Click(object sender, System.EventArgs e)
 		{
 			ArrayList files = new ArrayList();
-			FolderBrowserDialog dlg = new FolderBrowserDialog();
-			dlg.Description = "Select the folder with files to include";
-			if (dlg.ShowDialog(this) != DialogResult.OK)
+            if (FolderBrowserDialog.ShowDialog(this) != DialogResult.OK)
 				return;
 
 			//I usually use the recursive model, but this time I'll try a queue based
 			Queue folders = new Queue();
-			folders.Enqueue(dlg.SelectedPath);
+            folders.Enqueue(FolderBrowserDialog.SelectedPath);
 
 			Hashtable ext = new Hashtable();
 			ext.Add(".png", "");
@@ -338,7 +297,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 		{
 			ArrayList files = new ArrayList();
 			NameValueCollection nv = new NameValueCollection();
-			nv.Add("", "All files");
+			nv.Add("", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.AllFiles);
 			string s = m_editor.BrowseUnmanagedData("", nv);
 
 			if (s != null)
@@ -448,7 +407,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format(m_globalizor.Translate("Failed to load files: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.Composite.FileLoadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

@@ -121,101 +121,70 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.Filter = new System.Windows.Forms.TextBox();
-			this.ShowFeatures = new System.Windows.Forms.CheckBox();
-			this.ShowLabels = new System.Windows.Forms.CheckBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.LegendLabel = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label1.Location = new System.Drawing.Point(0, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(40, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Rule";
-			// 
-			// Filter
-			// 
-			this.Filter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Filter.Location = new System.Drawing.Point(96, 0);
-			this.Filter.Name = "Filter";
-			this.Filter.Size = new System.Drawing.Size(224, 20);
-			this.Filter.TabIndex = 1;
-			this.Filter.Text = "";
-			this.Filter.TextChanged += new System.EventHandler(this.Filter_TextChanged);
-			// 
-			// ShowFeatures
-			// 
-			this.ShowFeatures.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ShowFeatures.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.ShowFeatures.Location = new System.Drawing.Point(0, 48);
-			this.ShowFeatures.Name = "ShowFeatures";
-			this.ShowFeatures.Size = new System.Drawing.Size(352, 16);
-			this.ShowFeatures.TabIndex = 2;
-			this.ShowFeatures.Text = "Show features";
-			this.ShowFeatures.CheckedChanged += new System.EventHandler(this.ShowFeatures_CheckedChanged);
-			// 
-			// ShowLabels
-			// 
-			this.ShowLabels.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ShowLabels.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.ShowLabels.Location = new System.Drawing.Point(0, 72);
-			this.ShowLabels.Name = "ShowLabels";
-			this.ShowLabels.Size = new System.Drawing.Size(352, 16);
-			this.ShowLabels.TabIndex = 3;
-			this.ShowLabels.Text = "Show feature labels";
-			this.ShowLabels.CheckedChanged += new System.EventHandler(this.ShowLabels_CheckedChanged);
-			// 
-			// button1
-			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.button1.Location = new System.Drawing.Point(328, 0);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(24, 20);
-			this.button1.TabIndex = 4;
-			this.button1.Text = "...";
-			// 
-			// LegendLabel
-			// 
-			this.LegendLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.LegendLabel.Location = new System.Drawing.Point(96, 24);
-			this.LegendLabel.Name = "LegendLabel";
-			this.LegendLabel.Size = new System.Drawing.Size(256, 20);
-			this.LegendLabel.TabIndex = 6;
-			this.LegendLabel.Text = "";
-			this.LegendLabel.TextChanged += new System.EventHandler(this.LegendLabel_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label2.Location = new System.Drawing.Point(0, 24);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(64, 16);
-			this.label2.TabIndex = 5;
-			this.label2.Text = "Legend label";
-			// 
-			// StyleRuleProperties
-			// 
-			this.Controls.Add(this.LegendLabel);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.ShowLabels);
-			this.Controls.Add(this.ShowFeatures);
-			this.Controls.Add(this.Filter);
-			this.Controls.Add(this.label1);
-			this.Name = "StyleRuleProperties";
-			this.Size = new System.Drawing.Size(352, 128);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StyleRuleProperties));
+            this.label1 = new System.Windows.Forms.Label();
+            this.Filter = new System.Windows.Forms.TextBox();
+            this.ShowFeatures = new System.Windows.Forms.CheckBox();
+            this.ShowLabels = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.LegendLabel = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // Filter
+            // 
+            resources.ApplyResources(this.Filter, "Filter");
+            this.Filter.Name = "Filter";
+            this.Filter.TextChanged += new System.EventHandler(this.Filter_TextChanged);
+            // 
+            // ShowFeatures
+            // 
+            resources.ApplyResources(this.ShowFeatures, "ShowFeatures");
+            this.ShowFeatures.Name = "ShowFeatures";
+            this.ShowFeatures.CheckedChanged += new System.EventHandler(this.ShowFeatures_CheckedChanged);
+            // 
+            // ShowLabels
+            // 
+            resources.ApplyResources(this.ShowLabels, "ShowLabels");
+            this.ShowLabels.Name = "ShowLabels";
+            this.ShowLabels.CheckedChanged += new System.EventHandler(this.ShowLabels_CheckedChanged);
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            // 
+            // LegendLabel
+            // 
+            resources.ApplyResources(this.LegendLabel, "LegendLabel");
+            this.LegendLabel.Name = "LegendLabel";
+            this.LegendLabel.TextChanged += new System.EventHandler(this.LegendLabel_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // StyleRuleProperties
+            // 
+            this.Controls.Add(this.LegendLabel);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ShowLabels);
+            this.Controls.Add(this.ShowFeatures);
+            this.Controls.Add(this.Filter);
+            this.Controls.Add(this.label1);
+            this.Name = "StyleRuleProperties";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

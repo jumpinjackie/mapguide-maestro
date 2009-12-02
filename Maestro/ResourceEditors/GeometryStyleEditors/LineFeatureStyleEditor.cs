@@ -65,7 +65,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
         private ToolStrip toolStrip1;
         private ToolStripButton AddStyleButton;
         private ToolStripButton RemoveStyleButton;
-        private Globalizator.Globalizator m_globalizor;
 
 		public event EventHandler Changed;
 
@@ -76,7 +75,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				System.IO.Stream s = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "LineStyleComboDataset.xml");
 				byte[] buf = new byte[s.Length];
 				if (s.Read(buf, 0, (int)s.Length) != s.Length)
-					throw new Exception("Failed while reading data from assembly");
+					throw new Exception(OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.AssemblyDataInternalError);
 				SharedComboDataSet = buf;
 			}
 
@@ -91,9 +90,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			lineStyleEditor.thicknessUpDown.ValueChanged +=new EventHandler(thicknessCombo_SelectedIndexChanged);
 			lineStyleEditor.colorCombo.SelectedIndexChanged += new EventHandler(colorCombo_SelectedIndexChanged);
 			lineStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_SelectedIndexChanged);
-
-
-            m_globalizor = new Globalizator.Globalizator(this);
 		}
 
 		public void UpdateDisplay()
@@ -246,37 +242,25 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             this.applyLineStyle.Checked = true;
             this.applyLineStyle.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.applyLineStyle.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.applyLineStyle.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.applyLineStyle, "applyLineStyle");
             this.applyLineStyle.Name = "applyLineStyle";
-            this.applyLineStyle.Size = new System.Drawing.Size(176, 16);
-            this.applyLineStyle.TabIndex = 0;
-            this.applyLineStyle.Text = "Apply line style";
             this.applyLineStyle.CheckedChanged += new System.EventHandler(this.applyLineStyle_CheckedChanged);
             // 
             // compositeLines
             // 
             this.compositeLines.Checked = true;
             this.compositeLines.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.compositeLines.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.compositeLines.Location = new System.Drawing.Point(0, 24);
+            resources.ApplyResources(this.compositeLines, "compositeLines");
             this.compositeLines.Name = "compositeLines";
-            this.compositeLines.Size = new System.Drawing.Size(272, 16);
-            this.compositeLines.TabIndex = 1;
-            this.compositeLines.Text = "Use composite lines";
             this.compositeLines.CheckedChanged += new System.EventHandler(this.compositeLines_CheckedChanged);
             // 
             // CompositeGroup
             // 
             this.CompositeGroup.Controls.Add(this.toolStrip1);
             this.CompositeGroup.Controls.Add(this.lineStyles);
-            this.CompositeGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CompositeGroup.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.CompositeGroup, "CompositeGroup");
             this.CompositeGroup.Name = "CompositeGroup";
-            this.CompositeGroup.Size = new System.Drawing.Size(290, 160);
-            this.CompositeGroup.TabIndex = 2;
             this.CompositeGroup.TabStop = false;
-            this.CompositeGroup.Text = "Composite line";
             this.CompositeGroup.Enter += new System.EventHandler(this.CompositeGroup_Enter);
             // 
             // toolStrip1
@@ -285,41 +269,29 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddStyleButton,
             this.RemoveStyleButton});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 16);
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(284, 25);
-            this.toolStrip1.TabIndex = 1;
             // 
             // AddStyleButton
             // 
             this.AddStyleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddStyleButton.Image = ((System.Drawing.Image)(resources.GetObject("AddStyleButton.Image")));
-            this.AddStyleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddStyleButton, "AddStyleButton");
             this.AddStyleButton.Name = "AddStyleButton";
-            this.AddStyleButton.Size = new System.Drawing.Size(23, 22);
             this.AddStyleButton.Click += new System.EventHandler(this.AddStyleButton_Click);
             // 
             // RemoveStyleButton
             // 
             this.RemoveStyleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RemoveStyleButton.Enabled = false;
-            this.RemoveStyleButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveStyleButton.Image")));
-            this.RemoveStyleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.RemoveStyleButton, "RemoveStyleButton");
             this.RemoveStyleButton.Name = "RemoveStyleButton";
-            this.RemoveStyleButton.Size = new System.Drawing.Size(23, 22);
             this.RemoveStyleButton.Click += new System.EventHandler(this.RemoveStyleButton_Click);
             // 
             // lineStyles
             // 
-            this.lineStyles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.lineStyles, "lineStyles");
             this.lineStyles.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lineStyles.Location = new System.Drawing.Point(16, 56);
             this.lineStyles.Name = "lineStyles";
-            this.lineStyles.Size = new System.Drawing.Size(258, 95);
-            this.lineStyles.TabIndex = 0;
             this.lineStyles.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lineStyles_DrawItem);
             this.lineStyles.SelectedIndexChanged += new System.EventHandler(this.lineStyles_SelectedIndexChanged);
             // 
@@ -327,76 +299,50 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             this.AdvancedPanel.Controls.Add(this.compositeLines);
             this.AdvancedPanel.Controls.Add(this.applyLineStyle);
-            this.AdvancedPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.AdvancedPanel.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.AdvancedPanel, "AdvancedPanel");
             this.AdvancedPanel.Name = "AdvancedPanel";
-            this.AdvancedPanel.Size = new System.Drawing.Size(290, 48);
-            this.AdvancedPanel.TabIndex = 3;
             // 
             // compositePanel
             // 
             this.compositePanel.Controls.Add(this.CompositeGroup);
-            this.compositePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.compositePanel.Location = new System.Drawing.Point(0, 48);
+            resources.ApplyResources(this.compositePanel, "compositePanel");
             this.compositePanel.Name = "compositePanel";
-            this.compositePanel.Size = new System.Drawing.Size(290, 160);
-            this.compositePanel.TabIndex = 4;
             // 
             // propertyPanel
             // 
             this.propertyPanel.Controls.Add(this.previewGroup);
             this.propertyPanel.Controls.Add(this.lineGroup);
             this.propertyPanel.Controls.Add(this.sizeGroup);
-            this.propertyPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.propertyPanel.Location = new System.Drawing.Point(0, 208);
+            resources.ApplyResources(this.propertyPanel, "propertyPanel");
             this.propertyPanel.Name = "propertyPanel";
-            this.propertyPanel.Size = new System.Drawing.Size(290, 240);
-            this.propertyPanel.TabIndex = 5;
             // 
             // previewGroup
             // 
             this.previewGroup.Controls.Add(this.previewPicture);
-            this.previewGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.previewGroup.Location = new System.Drawing.Point(0, 192);
-            this.previewGroup.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
+            resources.ApplyResources(this.previewGroup, "previewGroup");
             this.previewGroup.Name = "previewGroup";
-            this.previewGroup.Size = new System.Drawing.Size(290, 48);
-            this.previewGroup.TabIndex = 10;
             this.previewGroup.TabStop = false;
-            this.previewGroup.Text = "Preview";
             // 
             // previewPicture
             // 
-            this.previewPicture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.previewPicture, "previewPicture");
             this.previewPicture.BackColor = System.Drawing.Color.White;
             this.previewPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.previewPicture.Location = new System.Drawing.Point(8, 16);
             this.previewPicture.Name = "previewPicture";
-            this.previewPicture.Size = new System.Drawing.Size(274, 24);
-            this.previewPicture.TabIndex = 0;
             this.previewPicture.TabStop = false;
             this.previewPicture.Paint += new System.Windows.Forms.PaintEventHandler(this.previewPicture_Paint);
             // 
             // lineGroup
             // 
             this.lineGroup.Controls.Add(this.lineStyleEditor);
-            this.lineGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lineGroup.Location = new System.Drawing.Point(0, 80);
+            resources.ApplyResources(this.lineGroup, "lineGroup");
             this.lineGroup.Name = "lineGroup";
-            this.lineGroup.Size = new System.Drawing.Size(290, 112);
-            this.lineGroup.TabIndex = 0;
             this.lineGroup.TabStop = false;
-            this.lineGroup.Text = "Line style";
             // 
             // lineStyleEditor
             // 
-            this.lineStyleEditor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.lineStyleEditor.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.lineStyleEditor, "lineStyleEditor");
             this.lineStyleEditor.Name = "lineStyleEditor";
-            this.lineStyleEditor.Size = new System.Drawing.Size(274, 88);
-            this.lineStyleEditor.TabIndex = 0;
             // 
             // sizeGroup
             // 
@@ -404,25 +350,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.sizeGroup.Controls.Add(this.sizeContextCombo);
             this.sizeGroup.Controls.Add(this.label3);
             this.sizeGroup.Controls.Add(this.label2);
-            this.sizeGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sizeGroup.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.sizeGroup, "sizeGroup");
             this.sizeGroup.Name = "sizeGroup";
-            this.sizeGroup.Size = new System.Drawing.Size(290, 80);
-            this.sizeGroup.TabIndex = 1;
             this.sizeGroup.TabStop = false;
-            this.sizeGroup.Text = "Size";
             // 
             // sizeUnitsCombo
             // 
-            this.sizeUnitsCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.sizeUnitsCombo, "sizeUnitsCombo");
             this.sizeUnitsCombo.DataSource = this.UnitsTable;
             this.sizeUnitsCombo.DisplayMember = "Display";
             this.sizeUnitsCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.sizeUnitsCombo.Location = new System.Drawing.Point(120, 44);
             this.sizeUnitsCombo.Name = "sizeUnitsCombo";
-            this.sizeUnitsCombo.Size = new System.Drawing.Size(162, 21);
-            this.sizeUnitsCombo.TabIndex = 11;
             this.sizeUnitsCombo.ValueMember = "Value";
             this.sizeUnitsCombo.SelectedIndexChanged += new System.EventHandler(this.sizeUnitsCombo_SelectedIndexChanged);
             // 
@@ -445,15 +383,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // sizeContextCombo
             // 
-            this.sizeContextCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.sizeContextCombo, "sizeContextCombo");
             this.sizeContextCombo.DataSource = this.SizeContextTable;
             this.sizeContextCombo.DisplayMember = "Display";
             this.sizeContextCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.sizeContextCombo.Location = new System.Drawing.Point(120, 12);
             this.sizeContextCombo.Name = "sizeContextCombo";
-            this.sizeContextCombo.Size = new System.Drawing.Size(162, 21);
-            this.sizeContextCombo.TabIndex = 10;
             this.sizeContextCombo.ValueMember = "Value";
             this.sizeContextCombo.SelectedIndexChanged += new System.EventHandler(this.sizeContextCombo_SelectedIndexChanged);
             // 
@@ -476,19 +410,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(8, 52);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 16);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Size units";
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(8, 20);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 16);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Size context";
             // 
             // ComboBoxDataSet
             // 
@@ -500,13 +428,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // LineFeatureStyleEditor
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(290, 480);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.propertyPanel);
             this.Controls.Add(this.compositePanel);
             this.Controls.Add(this.AdvancedPanel);
             this.Name = "LineFeatureStyleEditor";
-            this.Size = new System.Drawing.Size(273, 435);
             this.CompositeGroup.ResumeLayout(false);
             this.CompositeGroup.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

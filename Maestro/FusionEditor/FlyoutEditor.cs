@@ -97,97 +97,75 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.NameBox = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.ImageClassText = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.ImageURLText = new System.Windows.Forms.TextBox();
-			this.TooltipBox = new System.Windows.Forms.TextBox();
-			this.SuspendLayout();
-			// 
-			// NameBox
-			// 
-			this.NameBox.Location = new System.Drawing.Point(100, 10);
-			this.NameBox.Name = "NameBox";
-			this.NameBox.Size = new System.Drawing.Size(288, 20);
-			this.NameBox.TabIndex = 9;
-			this.NameBox.Text = "textBox1";
-			this.NameBox.TextChanged += new System.EventHandler(this.NameBox_TextChanged);
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(4, 58);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(80, 16);
-			this.label3.TabIndex = 8;
-			this.label3.Text = "Image url";
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(4, 34);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(72, 16);
-			this.label2.TabIndex = 7;
-			this.label2.Text = "Tooltip";
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(4, 10);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(64, 16);
-			this.label1.TabIndex = 6;
-			this.label1.Text = "Name";
-			// 
-			// ImageClassText
-			// 
-			this.ImageClassText.Location = new System.Drawing.Point(100, 80);
-			this.ImageClassText.Name = "ImageClassText";
-			this.ImageClassText.Size = new System.Drawing.Size(288, 20);
-			this.ImageClassText.TabIndex = 13;
-			this.ImageClassText.Text = "textBox1";
-			this.ImageClassText.TextChanged += new System.EventHandler(this.ImageClassText_TextChanged);
-			// 
-			// label4
-			// 
-			this.label4.Location = new System.Drawing.Point(4, 80);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(84, 16);
-			this.label4.TabIndex = 12;
-			this.label4.Text = "Image class";
-			// 
-			// ImageURLText
-			// 
-			this.ImageURLText.Location = new System.Drawing.Point(100, 56);
-			this.ImageURLText.Name = "ImageURLText";
-			this.ImageURLText.Size = new System.Drawing.Size(288, 20);
-			this.ImageURLText.TabIndex = 14;
-			this.ImageURLText.Text = "textBox1";
-			this.ImageURLText.TextChanged += new System.EventHandler(this.ImageURLText_TextChanged);
-			// 
-			// TooltipBox
-			// 
-			this.TooltipBox.Location = new System.Drawing.Point(100, 32);
-			this.TooltipBox.Name = "TooltipBox";
-			this.TooltipBox.Size = new System.Drawing.Size(288, 20);
-			this.TooltipBox.TabIndex = 15;
-			this.TooltipBox.Text = "textBox1";
-			this.TooltipBox.TextChanged += new System.EventHandler(this.TooltipBox_TextChanged);
-			// 
-			// FlyoutEditor
-			// 
-			this.Controls.Add(this.TooltipBox);
-			this.Controls.Add(this.ImageURLText);
-			this.Controls.Add(this.ImageClassText);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.NameBox);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Name = "FlyoutEditor";
-			this.Size = new System.Drawing.Size(392, 112);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FlyoutEditor));
+            this.NameBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ImageClassText = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ImageURLText = new System.Windows.Forms.TextBox();
+            this.TooltipBox = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // NameBox
+            // 
+            resources.ApplyResources(this.NameBox, "NameBox");
+            this.NameBox.Name = "NameBox";
+            this.NameBox.TextChanged += new System.EventHandler(this.NameBox_TextChanged);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // ImageClassText
+            // 
+            resources.ApplyResources(this.ImageClassText, "ImageClassText");
+            this.ImageClassText.Name = "ImageClassText";
+            this.ImageClassText.TextChanged += new System.EventHandler(this.ImageClassText_TextChanged);
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // ImageURLText
+            // 
+            resources.ApplyResources(this.ImageURLText, "ImageURLText");
+            this.ImageURLText.Name = "ImageURLText";
+            this.ImageURLText.TextChanged += new System.EventHandler(this.ImageURLText_TextChanged);
+            // 
+            // TooltipBox
+            // 
+            resources.ApplyResources(this.TooltipBox, "TooltipBox");
+            this.TooltipBox.Name = "TooltipBox";
+            this.TooltipBox.TextChanged += new System.EventHandler(this.TooltipBox_TextChanged);
+            // 
+            // FlyoutEditor
+            // 
+            this.Controls.Add(this.TooltipBox);
+            this.Controls.Add(this.ImageURLText);
+            this.Controls.Add(this.ImageClassText);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.NameBox);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Name = "FlyoutEditor";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

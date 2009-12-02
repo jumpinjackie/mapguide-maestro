@@ -96,62 +96,45 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.PropertyName = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.PropertyDefinition = new System.Windows.Forms.TextBox();
-			this.SuspendLayout();
-			// 
-			// PropertyName
-			// 
-			this.PropertyName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.PropertyName.Location = new System.Drawing.Point(160, 6);
-			this.PropertyName.Name = "PropertyName";
-			this.PropertyName.Size = new System.Drawing.Size(320, 20);
-			this.PropertyName.TabIndex = 6;
-			this.PropertyName.Text = "";
-			this.PropertyName.TextChanged += new System.EventHandler(this.PropertyName_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 6);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(144, 16);
-			this.label2.TabIndex = 5;
-			this.label2.Text = "Property name";
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 30);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(208, 16);
-			this.label1.TabIndex = 4;
-			this.label1.Text = "Calculated property definition";
-			// 
-			// PropertyDefinition
-			// 
-			this.PropertyDefinition.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.PropertyDefinition.Location = new System.Drawing.Point(8, 48);
-			this.PropertyDefinition.Multiline = true;
-			this.PropertyDefinition.Name = "PropertyDefinition";
-			this.PropertyDefinition.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.PropertyDefinition.Size = new System.Drawing.Size(472, 184);
-			this.PropertyDefinition.TabIndex = 7;
-			this.PropertyDefinition.Text = "";
-			this.PropertyDefinition.TextChanged += new System.EventHandler(this.PropertyDefinition_TextChanged);
-			// 
-			// Calculated
-			// 
-			this.Controls.Add(this.PropertyDefinition);
-			this.Controls.Add(this.PropertyName);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Name = "Calculated";
-			this.Size = new System.Drawing.Size(488, 232);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calculated));
+            this.PropertyName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.PropertyDefinition = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // PropertyName
+            // 
+            resources.ApplyResources(this.PropertyName, "PropertyName");
+            this.PropertyName.Name = "PropertyName";
+            this.PropertyName.TextChanged += new System.EventHandler(this.PropertyName_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // PropertyDefinition
+            // 
+            resources.ApplyResources(this.PropertyDefinition, "PropertyDefinition");
+            this.PropertyDefinition.Name = "PropertyDefinition";
+            this.PropertyDefinition.TextChanged += new System.EventHandler(this.PropertyDefinition_TextChanged);
+            // 
+            // Calculated
+            // 
+            this.Controls.Add(this.PropertyDefinition);
+            this.Controls.Add(this.PropertyName);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Name = "Calculated";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

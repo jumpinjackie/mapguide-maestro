@@ -34,7 +34,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         private string m_filename;
         private FormMain m_owner;
         private Dictionary<string, ResourceItem> m_resources;
-        private Globalizator.Globalizator m_globalizor = null;
 
         public PackageEditor(string filename, FormMain owner)
             : this()
@@ -49,7 +48,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         private PackageEditor()
         {
             InitializeComponent();
-            m_globalizor = new Globalizator.Globalizator(this);
         }
 
         public static void EditPackage(ServerConnectionI connection, FormMain owner)
@@ -59,11 +57,14 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             dlg.CheckFileExists = true;
             dlg.CheckPathExists = true;
             dlg.DefaultExt = ".mgp";
-            dlg.Filter = "MapGuide Packages (*.mgp)|*.mgp|Zip files (*.zip)|*.zip|All files (*.*)|*.*";
+            dlg.Filter =
+                string.Format(Strings.PackageEditor.FiletypeMGP + "|{0}", "*.mgp") +
+                string.Format(Strings.PackageEditor.FiletypeZip + "|{0}", "*.zip") +
+                string.Format(Strings.PackageEditor.FiletypeAll + "|{0}", "*.*");
             dlg.FilterIndex = 0;
             dlg.Multiselect = false;
             dlg.ValidateNames = true;
-            dlg.Title = Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.PackageManager.PackageEditor", System.Reflection.Assembly.GetExecutingAssembly(), "Select the package to edit");
+            dlg.Title = Strings.PackageEditor.SelectPackageFile;
 
             if (dlg.ShowDialog(owner) == DialogResult.OK)
             {
@@ -91,7 +92,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format(m_globalizor.Translate("Failed to read package. Error message was: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.PackageEditor.PackageReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
                 return;
@@ -235,7 +236,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format(m_globalizor.Translate("An error occured while copying file: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.PackageEditor.FileCopyError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -325,7 +326,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
         private void AddFolderButton_Click(object sender, EventArgs e)
         {
-            TreeNode n = new TreeNode(m_globalizor.Translate("New folder"), m_owner.ResourceEditorMap.FolderIcon, m_owner.ResourceEditorMap.FolderIcon);
+            TreeNode n = new TreeNode(Strings.PackageEditor.NewFolder, m_owner.ResourceEditorMap.FolderIcon, m_owner.ResourceEditorMap.FolderIcon);
             n.Tag = new ResourceItem("", "", "");
             (n.Tag as ResourceItem).EntryType = EntryTypeEnum.Added;
             (n.Tag as ResourceItem).IsFolder = true;
@@ -352,7 +353,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             if (ResourceTree.SelectedNode == null || ResourceTree.SelectedNode.Tag as ResourceItem == null)
                 return;
 
-            if (MessageBox.Show(this, m_globalizor.Translate("Do you want to remove the selected item?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
+            if (MessageBox.Show(this, Strings.PackageEditor.DeleteConfirmation, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
 
             TreeNode root = ResourceTree.SelectedNode;
@@ -460,7 +461,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format(m_globalizor.Translate("An error occured while building package: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.PackageEditor.PackageBuildError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             finally

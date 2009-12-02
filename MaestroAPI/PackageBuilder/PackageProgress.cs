@@ -66,11 +66,11 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
             dlg.CheckFileExists = true;
             dlg.CheckPathExists = true;
             dlg.DefaultExt = ".mgp";
-            dlg.Filter = "MapGuide Packages (*.mgp)|*.mgp|Zip files (*.zip)|*.zip|All files (*.*)|*.*";
+            dlg.Filter = Strings.PackageProgress.UploadPackageDialogFilter;
             dlg.FilterIndex = 0;
             dlg.Multiselect = false;
             dlg.ValidateNames = true;
-            dlg.Title = "Select the package to upload";
+            dlg.Title = Strings.PackageProgress.UploadPackageDialogTitle;
 
             if (dlg.ShowDialog(owner) == DialogResult.OK)
             {
@@ -173,7 +173,7 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
         {
             if (m_thread != null && !m_allowClose && e.CloseReason == CloseReason.UserClosing)
             {
-                if (MessageBox.Show(this, "Do you want to cancel?", Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) == DialogResult.Yes)
+                if (MessageBox.Show(this, Strings.PackageProgress.CancelConfirmation, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) == DialogResult.Yes)
                 {
                     try { m_thread.Abort(); }
                     catch { }
@@ -212,28 +212,28 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
                     HideTotal();
                     if (pg == total)
                     {
-                        OperationLabel.Text = "Awating server processing ...";
+                        OperationLabel.Text = Strings.PackageProgress.ProgressWaitingForServer;
                         CurrentProgress.Style = ProgressBarStyle.Marquee;
                     }
                     else
                     {
-                        OperationLabel.Text = string.Format("Uploading, {0:0.00} of {1:0.00} mb ...", ((double)pg / 1024), ((double)total / 1024));
+                        OperationLabel.Text = string.Format(Strings.PackageProgress.ProgressUploading, ((double)pg / 1024), ((double)total / 1024));
                         this.Refresh();
                     }
                 }
                 else if (type == OSGeo.MapGuide.MaestroAPI.PackageBuilder.ProgressType.ListingFiles)
                 {
                     HideTotal();
-                    OperationLabel.Text = "Reading package contents ...";
+                    OperationLabel.Text = Strings.PackageProgress.ProgressReadingPackage;
                     CurrentProgress.Style = ProgressBarStyle.Marquee;
                 }
                 else if (type == ProgressType.Compressing)
                 {
-                    OperationLabel.Text = "Compressing files ...";
+                    OperationLabel.Text = Strings.PackageProgress.ProgressCompressing;
                 }
                 else if (type == ProgressType.MovingResources)
                 {
-                    OperationLabel.Text = "Updating resource references ...";
+                    OperationLabel.Text = Strings.PackageProgress.ProgressUpdatingReferences;
                 }
                 else if (type == ProgressType.PreparingFolder)
                 {

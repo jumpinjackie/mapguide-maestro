@@ -90,7 +90,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // SymbolLibraryEditor
+            // 
+            this.Name = "SymbolLibraryEditor";
+            this.ResumeLayout(false);
+
 		}
 		#endregion
 

@@ -83,6 +83,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FillStyleEditor));
             this.lblBackground = new System.Windows.Forms.Label();
             this.lblForeground = new System.Windows.Forms.Label();
             this.lblFill = new System.Windows.Forms.Label();
@@ -94,55 +95,34 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // lblBackground
             // 
-            this.lblBackground.Location = new System.Drawing.Point(0, 80);
+            resources.ApplyResources(this.lblBackground, "lblBackground");
             this.lblBackground.Name = "lblBackground";
-            this.lblBackground.Size = new System.Drawing.Size(96, 16);
-            this.lblBackground.TabIndex = 8;
-            this.lblBackground.Text = "Background color";
             // 
             // lblForeground
             // 
-            this.lblForeground.Location = new System.Drawing.Point(0, 48);
+            resources.ApplyResources(this.lblForeground, "lblForeground");
             this.lblForeground.Name = "lblForeground";
-            this.lblForeground.Size = new System.Drawing.Size(96, 16);
-            this.lblForeground.TabIndex = 7;
-            this.lblForeground.Text = "Foreground color";
             // 
             // lblFill
             // 
-            this.lblFill.Location = new System.Drawing.Point(0, 24);
+            resources.ApplyResources(this.lblFill, "lblFill");
             this.lblFill.Name = "lblFill";
-            this.lblFill.Size = new System.Drawing.Size(96, 16);
-            this.lblFill.TabIndex = 6;
-            this.lblFill.Text = "Fill pattern";
             // 
             // foregroundColor
             // 
-            this.foregroundColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.foregroundColor.Location = new System.Drawing.Point(120, 48);
+            resources.ApplyResources(this.foregroundColor, "foregroundColor");
             this.foregroundColor.Name = "foregroundColor";
-            this.foregroundColor.Size = new System.Drawing.Size(184, 21);
-            this.foregroundColor.TabIndex = 10;
             // 
             // backgroundColor
             // 
-            this.backgroundColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.backgroundColor.Location = new System.Drawing.Point(120, 80);
+            resources.ApplyResources(this.backgroundColor, "backgroundColor");
             this.backgroundColor.Name = "backgroundColor";
-            this.backgroundColor.Size = new System.Drawing.Size(184, 21);
-            this.backgroundColor.TabIndex = 11;
             // 
             // fillCombo
             // 
-            this.fillCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.fillCombo, "fillCombo");
             this.fillCombo.DisplayMember = "Name";
-            this.fillCombo.Location = new System.Drawing.Point(120, 16);
             this.fillCombo.Name = "fillCombo";
-            this.fillCombo.Size = new System.Drawing.Size(184, 21);
-            this.fillCombo.TabIndex = 12;
             this.fillCombo.TextWidth = 50;
             this.fillCombo.ValueMember = "Name";
             // 
@@ -150,12 +130,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             this.displayFill.Checked = true;
             this.displayFill.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.displayFill.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.displayFill.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.displayFill, "displayFill");
             this.displayFill.Name = "displayFill";
-            this.displayFill.Size = new System.Drawing.Size(168, 16);
-            this.displayFill.TabIndex = 13;
-            this.displayFill.Text = "Display fill";
             this.displayFill.CheckedChanged += new System.EventHandler(this.displayFill_CheckedChanged);
             // 
             // FillStyleEditor
@@ -168,7 +144,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.Controls.Add(this.lblForeground);
             this.Controls.Add(this.lblFill);
             this.Name = "FillStyleEditor";
-            this.Size = new System.Drawing.Size(304, 104);
+            resources.ApplyResources(this, "$this");
             this.Load += new System.EventHandler(this.FillStyleEditor_Load);
             this.ResumeLayout(false);
 

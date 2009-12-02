@@ -113,10 +113,57 @@
     <Compile Include="LayerDefinitionValidator.cs" />
     <Compile Include="MapDefinitionValidator.cs" />
     <Compile Include="ResourceValidatorLoader.cs" />
+    <Compile Include="Strings\ApplicationDefinitionValidator.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApplicationDefinitionValidator.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\FeatureSourceValidator.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeatureSourceValidator.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\LayerDefinitionValidator.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LayerDefinitionValidator.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\MapDefinitionValidator.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MapDefinitionValidator.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\WebLayoutValidator.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebLayoutValidator.resx</DependentUpon>
+    </Compile>
     <Compile Include="WebLayoutValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Strings\ApplicationDefinitionValidator.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApplicationDefinitionValidator.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\FeatureSourceValidator.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FeatureSourceValidator.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\LayerDefinitionValidator.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LayerDefinitionValidator.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\MapDefinitionValidator.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MapDefinitionValidator.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\WebLayoutValidator.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WebLayoutValidator.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

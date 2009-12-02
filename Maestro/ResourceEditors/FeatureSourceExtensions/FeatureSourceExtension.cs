@@ -43,7 +43,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
 		private FeatureSourceTypeExtensionCollection m_extensions;
 		private bool m_isUpdating = false;
 		private System.Windows.Forms.TreeView treeView;
-		private Globalizator.Globalizator m_globalizor;
 		private FeatureSource m_feature;
 		private FeatureSourceDescription.FeatureSourceSchema[] m_fsd;
 
@@ -73,11 +72,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
 			calculated.Dock = join.Dock = extension.Dock  = key.Dock = DockStyle.Fill;
 		}
 
-		public void SetItem(EditorInterface editor, FeatureSource feature, FeatureSourceTypeExtensionCollection extensions, Globalizator.Globalizator globalizor)
+		public void SetItem(EditorInterface editor, FeatureSource feature, FeatureSourceTypeExtensionCollection extensions)
 		{
 			m_editor = editor;
 			m_extensions = extensions;
-			m_globalizor = globalizor;
 			m_feature = feature;
 
 			UpdateDisplay();
@@ -206,22 +204,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             // 
             this.panel1.Controls.Add(this.treeView);
             this.panel1.Controls.Add(this.toolStrip);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(176, 344);
-            this.panel1.TabIndex = 0;
             // 
             // treeView
             // 
-            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView.ImageIndex = 0;
+            resources.ApplyResources(this.treeView, "treeView");
             this.treeView.ImageList = this.imageList;
-            this.treeView.Location = new System.Drawing.Point(0, 25);
             this.treeView.Name = "treeView";
-            this.treeView.SelectedImageIndex = 0;
-            this.treeView.Size = new System.Drawing.Size(176, 319);
-            this.treeView.TabIndex = 1;
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
             // imageList
@@ -247,77 +237,54 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             this.AddKeyButton,
             this.toolStripSeparator1,
             this.RemoveItemButton});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip.Size = new System.Drawing.Size(176, 25);
-            this.toolStrip.TabIndex = 2;
             // 
             // AddExtensionButton
             // 
             this.AddExtensionButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddExtensionButton.Image = ((System.Drawing.Image)(resources.GetObject("AddExtensionButton.Image")));
-            this.AddExtensionButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddExtensionButton, "AddExtensionButton");
             this.AddExtensionButton.Name = "AddExtensionButton";
-            this.AddExtensionButton.Size = new System.Drawing.Size(23, 22);
-            this.AddExtensionButton.ToolTipText = "Add a new extension";
             this.AddExtensionButton.Click += new System.EventHandler(this.AddExtensionButton_Click);
             // 
             // AddComputationButton
             // 
             this.AddComputationButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddComputationButton.Enabled = false;
-            this.AddComputationButton.Image = ((System.Drawing.Image)(resources.GetObject("AddComputationButton.Image")));
-            this.AddComputationButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddComputationButton, "AddComputationButton");
             this.AddComputationButton.Name = "AddComputationButton";
-            this.AddComputationButton.Size = new System.Drawing.Size(23, 22);
-            this.AddComputationButton.ToolTipText = "Add a new calculated property";
             this.AddComputationButton.Click += new System.EventHandler(this.AddComputationButton_Click);
             // 
             // AddJoinButton
             // 
             this.AddJoinButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddJoinButton.Enabled = false;
-            this.AddJoinButton.Image = ((System.Drawing.Image)(resources.GetObject("AddJoinButton.Image")));
-            this.AddJoinButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddJoinButton, "AddJoinButton");
             this.AddJoinButton.Name = "AddJoinButton";
-            this.AddJoinButton.Size = new System.Drawing.Size(23, 22);
-            this.AddJoinButton.ToolTipText = "Add a new database join";
             this.AddJoinButton.Click += new System.EventHandler(this.AddJoinButton_Click);
             // 
             // AddKeyButton
             // 
             this.AddKeyButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddKeyButton.Enabled = false;
-            this.AddKeyButton.Image = ((System.Drawing.Image)(resources.GetObject("AddKeyButton.Image")));
-            this.AddKeyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddKeyButton, "AddKeyButton");
             this.AddKeyButton.Name = "AddKeyButton";
-            this.AddKeyButton.Size = new System.Drawing.Size(23, 22);
-            this.AddKeyButton.ToolTipText = "Add a new key mapping";
             this.AddKeyButton.Click += new System.EventHandler(this.AddKeyButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // RemoveItemButton
             // 
             this.RemoveItemButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RemoveItemButton.Enabled = false;
-            this.RemoveItemButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveItemButton.Image")));
-            this.RemoveItemButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.RemoveItemButton, "RemoveItemButton");
             this.RemoveItemButton.Name = "RemoveItemButton";
-            this.RemoveItemButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveItemButton.ToolTipText = "Delete the selected item";
             this.RemoveItemButton.Click += new System.EventHandler(this.RemoveItemButton_Click);
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(176, 0);
+            resources.ApplyResources(this.splitter1, "splitter1");
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 344);
-            this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
             // 
             // panel2
@@ -326,42 +293,31 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             this.panel2.Controls.Add(this.extension);
             this.panel2.Controls.Add(this.join);
             this.panel2.Controls.Add(this.calculated);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(179, 0);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(205, 344);
-            this.panel2.TabIndex = 2;
             // 
             // key
             // 
-            this.key.Location = new System.Drawing.Point(24, 280);
+            resources.ApplyResources(this.key, "key");
             this.key.Name = "key";
-            this.key.Size = new System.Drawing.Size(152, 56);
-            this.key.TabIndex = 4;
             this.key.NameChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions.FeatureSourceExtension.NameChangedDelegate(this.item_NameChanged);
             // 
             // extension
             // 
-            this.extension.Location = new System.Drawing.Point(16, 192);
+            resources.ApplyResources(this.extension, "extension");
             this.extension.Name = "extension";
-            this.extension.Size = new System.Drawing.Size(160, 80);
-            this.extension.TabIndex = 2;
             this.extension.NameChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions.FeatureSourceExtension.NameChangedDelegate(this.item_NameChanged);
             // 
             // join
             // 
-            this.join.Location = new System.Drawing.Point(16, 112);
+            resources.ApplyResources(this.join, "join");
             this.join.Name = "join";
-            this.join.Size = new System.Drawing.Size(160, 64);
-            this.join.TabIndex = 1;
             this.join.NameChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions.FeatureSourceExtension.NameChangedDelegate(this.item_NameChanged);
             // 
             // calculated
             // 
-            this.calculated.Location = new System.Drawing.Point(16, 16);
+            resources.ApplyResources(this.calculated, "calculated");
             this.calculated.Name = "calculated";
-            this.calculated.Size = new System.Drawing.Size(150, 88);
-            this.calculated.TabIndex = 3;
             this.calculated.NameChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions.FeatureSourceExtension.NameChangedDelegate(this.item_NameChanged);
             // 
             // FeatureSourceExtension
@@ -370,7 +326,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.panel1);
             this.Name = "FeatureSourceExtension";
-            this.Size = new System.Drawing.Size(384, 344);
+            resources.ApplyResources(this, "$this");
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip.ResumeLayout(false);
@@ -462,7 +418,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
         private void AddExtensionButton_Click(object sender, EventArgs e)
         {
             FeatureSourceTypeExtension v = new FeatureSourceTypeExtension();
-            v.Name = "New extension";
+            v.Name = Strings.FeatureSourceExtension.NewExtensionName;
             m_extensions.Add(v);
 
             TreeNode n = new TreeNode(v.Name, ICON_EXTENSION, ICON_EXTENSION);
@@ -488,7 +444,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
                 return;
 
             CalculatedPropertyType ct = new CalculatedPropertyType();
-            ct.Name = "New property";
+            ct.Name = Strings.FeatureSourceExtension.NewPropertyName;
             if (p.CalculatedProperty == null)
                 p.CalculatedProperty = new CalculatedPropertyTypeCollection();
             p.CalculatedProperty.Add(ct);
@@ -519,7 +475,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
             if (p.AttributeRelate == null)
                 p.AttributeRelate = new AttributeRelateTypeCollection();
             AttributeRelateType at = new AttributeRelateType();
-            at.Name = "New join";
+            at.Name = Strings.FeatureSourceExtension.NewJoinName;
             p.AttributeRelate.Add(at);
 
             TreeNode an = new TreeNode(at.Name, ICON_JOIN, ICON_JOIN);

@@ -38,7 +38,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 
 		private OSGeo.MapGuide.MaestroAPI.LayerDefinition m_layer;
 		private bool inUpdate = false;
-		private Globalizator.Globalizator m_globalizor = null;
 		private OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription m_schemas;
 		private System.Windows.Forms.GroupBox ResourceGroup;
 		private ResourceEditors.LayerEditorControls.SchemaSelector schemaSelector;
@@ -112,14 +111,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 			base.Dispose( disposing );
 		}
 
-		public void SetItem(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.LayerDefinition layer, OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription schema, Globalizator.Globalizator globalizor)
+		public void SetItem(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.LayerDefinition layer, OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription schema)
 		{
 			m_editor = editor;
 			m_layer = layer;
 			m_schemas = schema;
-			m_globalizor = globalizor;
 
-			schemaSelector.SetItem(editor, layer, schema, globalizor);
+			schemaSelector.SetItem(editor, layer, schema);
 			UpdateDisplay();
 		}
 
@@ -260,494 +258,359 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(RasterLayer));
-			this.ResourceGroup = new System.Windows.Forms.GroupBox();
-			this.schemaSelector = new ResourceEditors.LayerEditorControls.SchemaSelector();
-			this.VisualSettings = new System.Windows.Forms.GroupBox();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.BackgroundColor = new ResourceEditors.GeometryStyleEditors.ColorComboBox();
-			this.ForegroundColor = new ResourceEditors.GeometryStyleEditors.ColorComboBox();
-			this.RebuildFactor = new System.Windows.Forms.TextBox();
-			this.RebuildThreshold = new System.Windows.Forms.Label();
-			this.VisibleTo = new System.Windows.Forms.ComboBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.VisibleFrom = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.AdvancedSettings = new System.Windows.Forms.GroupBox();
-			this.EnableSurface = new System.Windows.Forms.CheckBox();
-			this.EnableHillshade = new System.Windows.Forms.CheckBox();
-			this.TransparencyColor = new ResourceEditors.GeometryStyleEditors.ColorComboBox();
-			this.ContrastFactor = new System.Windows.Forms.TextBox();
-			this.BrightnessFactor = new System.Windows.Forms.TextBox();
-			this.HillshadeGroup = new System.Windows.Forms.GroupBox();
-			this.HillshadeBand = new System.Windows.Forms.TextBox();
-			this.HillshadeScaleFactor = new System.Windows.Forms.TextBox();
-			this.Azimuth = new System.Windows.Forms.TextBox();
-			this.Altitude = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.SurfaceGroup = new System.Windows.Forms.GroupBox();
-			this.DefaultColor = new ResourceEditors.GeometryStyleEditors.ColorComboBox();
-			this.SurfaceBand = new System.Windows.Forms.TextBox();
-			this.SurfaceScaleFactor = new System.Windows.Forms.TextBox();
-			this.label12 = new System.Windows.Forms.Label();
-			this.label13 = new System.Windows.Forms.Label();
-			this.label14 = new System.Windows.Forms.Label();
-			this.label15 = new System.Windows.Forms.Label();
-			this.ZeroValue = new System.Windows.Forms.TextBox();
-			this.EnableAdvanced = new System.Windows.Forms.CheckBox();
-			this.ResourceGroup.SuspendLayout();
-			this.VisualSettings.SuspendLayout();
-			this.groupBox1.SuspendLayout();
-			this.AdvancedSettings.SuspendLayout();
-			this.HillshadeGroup.SuspendLayout();
-			this.SurfaceGroup.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// ResourceGroup
-			// 
-			this.ResourceGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ResourceGroup.Controls.Add(this.schemaSelector);
-			this.ResourceGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.ResourceGroup.Location = new System.Drawing.Point(0, 0);
-			this.ResourceGroup.Name = "ResourceGroup";
-			this.ResourceGroup.Size = new System.Drawing.Size(416, 80);
-			this.ResourceGroup.TabIndex = 17;
-			this.ResourceGroup.TabStop = false;
-			this.ResourceGroup.Text = "Resource settings";
-			// 
-			// schemaSelector
-			// 
-			this.schemaSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.schemaSelector.IsRaster = false;
-			this.schemaSelector.Location = new System.Drawing.Point(16, 16);
-			this.schemaSelector.Name = "schemaSelector";
-			this.schemaSelector.Size = new System.Drawing.Size(384, 56);
-			this.schemaSelector.TabIndex = 14;
-			this.schemaSelector.GeometryChanged += new ResourceEditors.LayerEditorControls.SchemaSelector.GeometryChangedDelegate(this.schemaSelector_GeometryChanged);
-			// 
-			// VisualSettings
-			// 
-			this.VisualSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.VisualSettings.Controls.Add(this.groupBox1);
-			this.VisualSettings.Controls.Add(this.RebuildFactor);
-			this.VisualSettings.Controls.Add(this.RebuildThreshold);
-			this.VisualSettings.Controls.Add(this.VisibleTo);
-			this.VisualSettings.Controls.Add(this.label2);
-			this.VisualSettings.Controls.Add(this.VisibleFrom);
-			this.VisualSettings.Controls.Add(this.label1);
-			this.VisualSettings.Location = new System.Drawing.Point(0, 88);
-			this.VisualSettings.Name = "VisualSettings";
-			this.VisualSettings.Size = new System.Drawing.Size(416, 168);
-			this.VisualSettings.TabIndex = 18;
-			this.VisualSettings.TabStop = false;
-			this.VisualSettings.Text = "Visibility settings";
-			// 
-			// groupBox1
-			// 
-			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox1.Controls.Add(this.label4);
-			this.groupBox1.Controls.Add(this.label3);
-			this.groupBox1.Controls.Add(this.BackgroundColor);
-			this.groupBox1.Controls.Add(this.ForegroundColor);
-			this.groupBox1.Location = new System.Drawing.Point(8, 80);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(392, 72);
-			this.groupBox1.TabIndex = 10;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Two tone image color settings";
-			// 
-			// label4
-			// 
-			this.label4.Location = new System.Drawing.Point(8, 48);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(256, 16);
-			this.label4.TabIndex = 9;
-			this.label4.Text = "Background color";
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 24);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(248, 16);
-			this.label3.TabIndex = 8;
-			this.label3.Text = "Foreground color";
-			// 
-			// BackgroundColor
-			// 
-			this.BackgroundColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-
-			this.BackgroundColor.Location = new System.Drawing.Point(288, 40);
-			this.BackgroundColor.Name = "BackgroundColor";
-			this.BackgroundColor.Size = new System.Drawing.Size(96, 21);
-			this.BackgroundColor.TabIndex = 7;
-			this.BackgroundColor.SelectedIndexChanged += new System.EventHandler(this.BackgroundColor_SelectedIndexChanged);
-			// 
-			// ForegroundColor
-			// 
-			this.ForegroundColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-
-			this.ForegroundColor.Location = new System.Drawing.Point(288, 16);
-			this.ForegroundColor.Name = "ForegroundColor";
-			this.ForegroundColor.Size = new System.Drawing.Size(96, 21);
-			this.ForegroundColor.TabIndex = 6;
-			this.ForegroundColor.SelectedIndexChanged += new System.EventHandler(this.ForegroundColor_SelectedIndexChanged);
-			// 
-			// RebuildFactor
-			// 
-			this.RebuildFactor.Location = new System.Drawing.Point(296, 56);
-			this.RebuildFactor.Name = "RebuildFactor";
-			this.RebuildFactor.Size = new System.Drawing.Size(96, 20);
-			this.RebuildFactor.TabIndex = 5;
-			this.RebuildFactor.Text = "1";
-			this.RebuildFactor.TextChanged += new System.EventHandler(this.RebuildFactor_TextChanged);
-			// 
-			// RebuildThreshold
-			// 
-			this.RebuildThreshold.Location = new System.Drawing.Point(16, 56);
-			this.RebuildThreshold.Name = "RebuildThreshold";
-			this.RebuildThreshold.Size = new System.Drawing.Size(264, 16);
-			this.RebuildThreshold.TabIndex = 4;
-			this.RebuildThreshold.Text = "Rebuild raster after zoom factor";
-			// 
-			// VisibleTo
-			// 
-			this.VisibleTo.Items.AddRange(new object[] {
-														   "Infinity"});
-			this.VisibleTo.Location = new System.Drawing.Point(296, 24);
-			this.VisibleTo.Name = "VisibleTo";
-			this.VisibleTo.Size = new System.Drawing.Size(96, 21);
-			this.VisibleTo.TabIndex = 3;
-			this.VisibleTo.Text = "Infinity";
-			this.VisibleTo.TextChanged += new System.EventHandler(this.VisibleTo_TextChanged);
-			this.VisibleTo.SelectedIndexChanged += new System.EventHandler(this.VisibleTo_SelectedIndexChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(240, 24);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(48, 16);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "to";
-			// 
-			// VisibleFrom
-			// 
-			this.VisibleFrom.Location = new System.Drawing.Point(120, 24);
-			this.VisibleFrom.Name = "VisibleFrom";
-			this.VisibleFrom.Size = new System.Drawing.Size(104, 20);
-			this.VisibleFrom.TabIndex = 1;
-			this.VisibleFrom.Text = "0";
-			this.VisibleFrom.TextChanged += new System.EventHandler(this.VisibleFrom_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(16, 24);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(96, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Visible from";
-			// 
-			// AdvancedSettings
-			// 
-			this.AdvancedSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.AdvancedSettings.Controls.Add(this.EnableSurface);
-			this.AdvancedSettings.Controls.Add(this.EnableHillshade);
-			this.AdvancedSettings.Controls.Add(this.TransparencyColor);
-			this.AdvancedSettings.Controls.Add(this.ContrastFactor);
-			this.AdvancedSettings.Controls.Add(this.BrightnessFactor);
-			this.AdvancedSettings.Controls.Add(this.HillshadeGroup);
-			this.AdvancedSettings.Controls.Add(this.label6);
-			this.AdvancedSettings.Controls.Add(this.label5);
-			this.AdvancedSettings.Controls.Add(this.label7);
-			this.AdvancedSettings.Controls.Add(this.SurfaceGroup);
-			this.AdvancedSettings.Enabled = false;
-			this.AdvancedSettings.Location = new System.Drawing.Point(0, 264);
-			this.AdvancedSettings.Name = "AdvancedSettings";
-			this.AdvancedSettings.Size = new System.Drawing.Size(416, 352);
-			this.AdvancedSettings.TabIndex = 19;
-			this.AdvancedSettings.TabStop = false;
-			// 
-			// EnableSurface
-			// 
-			this.EnableSurface.Checked = true;
-			this.EnableSurface.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.EnableSurface.Location = new System.Drawing.Point(24, 224);
-			this.EnableSurface.Name = "EnableSurface";
-			this.EnableSurface.Size = new System.Drawing.Size(88, 16);
-			this.EnableSurface.TabIndex = 22;
-			this.EnableSurface.Text = "Surface";
-			this.EnableSurface.CheckedChanged += new System.EventHandler(this.EnableSurface_CheckedChanged);
-			// 
-			// EnableHillshade
-			// 
-			this.EnableHillshade.Checked = true;
-			this.EnableHillshade.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.EnableHillshade.Location = new System.Drawing.Point(24, 96);
-			this.EnableHillshade.Name = "EnableHillshade";
-			this.EnableHillshade.Size = new System.Drawing.Size(96, 16);
-			this.EnableHillshade.TabIndex = 21;
-			this.EnableHillshade.Text = "Hillshade";
-			this.EnableHillshade.CheckedChanged += new System.EventHandler(this.EnableHillshade_CheckedChanged);
-			// 
-			// TransparencyColor
-			// 
-			this.TransparencyColor.Location = new System.Drawing.Point(160, 64);
-			this.TransparencyColor.Name = "TransparencyColor";
-			this.TransparencyColor.Size = new System.Drawing.Size(104, 21);
-			this.TransparencyColor.TabIndex = 12;
-			this.TransparencyColor.SelectedIndexChanged += new System.EventHandler(this.TransparencyColor_SelectedIndexChanged);
-			// 
-			// ContrastFactor
-			// 
-			this.ContrastFactor.Location = new System.Drawing.Point(160, 40);
-			this.ContrastFactor.Name = "ContrastFactor";
-			this.ContrastFactor.Size = new System.Drawing.Size(104, 20);
-			this.ContrastFactor.TabIndex = 11;
-			this.ContrastFactor.Text = "0";
-			this.ContrastFactor.TextChanged += new System.EventHandler(this.ContrastFactor_TextChanged);
-			// 
-			// BrightnessFactor
-			// 
-			this.BrightnessFactor.Location = new System.Drawing.Point(160, 16);
-			this.BrightnessFactor.Name = "BrightnessFactor";
-			this.BrightnessFactor.Size = new System.Drawing.Size(104, 20);
-			this.BrightnessFactor.TabIndex = 10;
-			this.BrightnessFactor.Text = "0";
-			this.BrightnessFactor.TextChanged += new System.EventHandler(this.BrightnessFactor_TextChanged);
-			// 
-			// HillshadeGroup
-			// 
-			this.HillshadeGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.HillshadeGroup.Controls.Add(this.HillshadeBand);
-			this.HillshadeGroup.Controls.Add(this.HillshadeScaleFactor);
-			this.HillshadeGroup.Controls.Add(this.Azimuth);
-			this.HillshadeGroup.Controls.Add(this.Altitude);
-			this.HillshadeGroup.Controls.Add(this.label10);
-			this.HillshadeGroup.Controls.Add(this.label8);
-			this.HillshadeGroup.Controls.Add(this.label9);
-			this.HillshadeGroup.Controls.Add(this.label11);
-			this.HillshadeGroup.Location = new System.Drawing.Point(8, 96);
-			this.HillshadeGroup.Name = "HillshadeGroup";
-			this.HillshadeGroup.Size = new System.Drawing.Size(392, 120);
-			this.HillshadeGroup.TabIndex = 8;
-			this.HillshadeGroup.TabStop = false;
-			// 
-			// HillshadeBand
-			// 
-			this.HillshadeBand.Location = new System.Drawing.Point(152, 64);
-			this.HillshadeBand.Name = "HillshadeBand";
-			this.HillshadeBand.Size = new System.Drawing.Size(104, 20);
-			this.HillshadeBand.TabIndex = 10;
-			this.HillshadeBand.Text = "";
-			this.HillshadeBand.TextChanged += new System.EventHandler(this.HillshadeBand_TextChanged);
-			// 
-			// HillshadeScaleFactor
-			// 
-			this.HillshadeScaleFactor.Location = new System.Drawing.Point(152, 88);
-			this.HillshadeScaleFactor.Name = "HillshadeScaleFactor";
-			this.HillshadeScaleFactor.Size = new System.Drawing.Size(104, 20);
-			this.HillshadeScaleFactor.TabIndex = 9;
-			this.HillshadeScaleFactor.Text = "0";
-			this.HillshadeScaleFactor.TextChanged += new System.EventHandler(this.HillshadeScaleFactor_TextChanged);
-			// 
-			// Azimuth
-			// 
-			this.Azimuth.Location = new System.Drawing.Point(152, 40);
-			this.Azimuth.Name = "Azimuth";
-			this.Azimuth.Size = new System.Drawing.Size(104, 20);
-			this.Azimuth.TabIndex = 8;
-			this.Azimuth.Text = "0";
-			this.Azimuth.TextChanged += new System.EventHandler(this.Azimuth_TextChanged);
-			// 
-			// Altitude
-			// 
-			this.Altitude.Location = new System.Drawing.Point(152, 16);
-			this.Altitude.Name = "Altitude";
-			this.Altitude.Size = new System.Drawing.Size(104, 20);
-			this.Altitude.TabIndex = 7;
-			this.Altitude.Text = "0";
-			this.Altitude.TextChanged += new System.EventHandler(this.Altitude_TextChanged);
-			// 
-			// label10
-			// 
-			this.label10.Location = new System.Drawing.Point(16, 24);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(112, 16);
-			this.label10.TabIndex = 3;
-			this.label10.Text = "Altitude";
-			// 
-			// label8
-			// 
-			this.label8.Location = new System.Drawing.Point(16, 72);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(112, 16);
-			this.label8.TabIndex = 5;
-			this.label8.Text = "Band";
-			// 
-			// label9
-			// 
-			this.label9.Location = new System.Drawing.Point(16, 48);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(112, 16);
-			this.label9.TabIndex = 4;
-			this.label9.Text = "Azimuth";
-			// 
-			// label11
-			// 
-			this.label11.Location = new System.Drawing.Point(16, 96);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(112, 16);
-			this.label11.TabIndex = 6;
-			this.label11.Text = "Scale factor";
-			// 
-			// label6
-			// 
-			this.label6.Location = new System.Drawing.Point(16, 48);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(112, 16);
-			this.label6.TabIndex = 1;
-			this.label6.Text = "Contrast factor";
-			// 
-			// label5
-			// 
-			this.label5.Location = new System.Drawing.Point(16, 24);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(112, 16);
-			this.label5.TabIndex = 0;
-			this.label5.Text = "Brightness factor";
-			// 
-			// label7
-			// 
-			this.label7.Location = new System.Drawing.Point(16, 72);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(112, 16);
-			this.label7.TabIndex = 2;
-			this.label7.Text = "Transparency Color";
-			// 
-			// SurfaceGroup
-			// 
-			this.SurfaceGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.SurfaceGroup.Controls.Add(this.DefaultColor);
-			this.SurfaceGroup.Controls.Add(this.SurfaceBand);
-			this.SurfaceGroup.Controls.Add(this.SurfaceScaleFactor);
-			this.SurfaceGroup.Controls.Add(this.label12);
-			this.SurfaceGroup.Controls.Add(this.label13);
-			this.SurfaceGroup.Controls.Add(this.label14);
-			this.SurfaceGroup.Controls.Add(this.label15);
-			this.SurfaceGroup.Controls.Add(this.ZeroValue);
-			this.SurfaceGroup.Location = new System.Drawing.Point(8, 224);
-			this.SurfaceGroup.Name = "SurfaceGroup";
-			this.SurfaceGroup.Size = new System.Drawing.Size(392, 120);
-			this.SurfaceGroup.TabIndex = 9;
-			this.SurfaceGroup.TabStop = false;
-			// 
-			// DefaultColor
-			// 
-			this.DefaultColor.Location = new System.Drawing.Point(144, 64);
-			this.DefaultColor.Name = "DefaultColor";
-			this.DefaultColor.Size = new System.Drawing.Size(104, 21);
-			this.DefaultColor.TabIndex = 13;
-			this.DefaultColor.SelectedIndexChanged += new System.EventHandler(this.DefaultColor_SelectedIndexChanged);
-			// 
-			// SurfaceBand
-			// 
-			this.SurfaceBand.Location = new System.Drawing.Point(144, 16);
-			this.SurfaceBand.Name = "SurfaceBand";
-			this.SurfaceBand.Size = new System.Drawing.Size(104, 20);
-			this.SurfaceBand.TabIndex = 12;
-			this.SurfaceBand.Text = "";
-			this.SurfaceBand.TextChanged += new System.EventHandler(this.SurfaceBand_TextChanged);
-			// 
-			// SurfaceScaleFactor
-			// 
-			this.SurfaceScaleFactor.Location = new System.Drawing.Point(144, 88);
-			this.SurfaceScaleFactor.Name = "SurfaceScaleFactor";
-			this.SurfaceScaleFactor.Size = new System.Drawing.Size(104, 20);
-			this.SurfaceScaleFactor.TabIndex = 11;
-			this.SurfaceScaleFactor.Text = "0";
-			this.SurfaceScaleFactor.TextChanged += new System.EventHandler(this.SurfaceScaleFactor_TextChanged);
-			// 
-			// label12
-			// 
-			this.label12.Location = new System.Drawing.Point(16, 24);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(112, 16);
-			this.label12.TabIndex = 3;
-			this.label12.Text = "Band";
-			// 
-			// label13
-			// 
-			this.label13.Location = new System.Drawing.Point(16, 72);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(112, 16);
-			this.label13.TabIndex = 5;
-			this.label13.Text = "Default color";
-			// 
-			// label14
-			// 
-			this.label14.Location = new System.Drawing.Point(16, 48);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(112, 16);
-			this.label14.TabIndex = 4;
-			this.label14.Text = "Zero value";
-			// 
-			// label15
-			// 
-			this.label15.Location = new System.Drawing.Point(16, 96);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(112, 16);
-			this.label15.TabIndex = 6;
-			this.label15.Text = "Scale factor";
-			// 
-			// ZeroValue
-			// 
-			this.ZeroValue.Location = new System.Drawing.Point(144, 40);
-			this.ZeroValue.Name = "ZeroValue";
-			this.ZeroValue.Size = new System.Drawing.Size(104, 20);
-			this.ZeroValue.TabIndex = 10;
-			this.ZeroValue.Text = "0";
-			this.ZeroValue.TextChanged += new System.EventHandler(this.ZeroValue_TextChanged);
-			// 
-			// EnableAdvanced
-			// 
-			this.EnableAdvanced.Location = new System.Drawing.Point(16, 264);
-			this.EnableAdvanced.Name = "EnableAdvanced";
-			this.EnableAdvanced.Size = new System.Drawing.Size(128, 16);
-			this.EnableAdvanced.TabIndex = 20;
-			this.EnableAdvanced.Text = "Advanced settings";
-			this.EnableAdvanced.CheckedChanged += new System.EventHandler(this.EnableAdvanced_CheckedChanged);
-			// 
-			// RasterLayer
-			// 
-			this.Controls.Add(this.EnableAdvanced);
-			this.Controls.Add(this.AdvancedSettings);
-			this.Controls.Add(this.VisualSettings);
-			this.Controls.Add(this.ResourceGroup);
-			this.Name = "RasterLayer";
-			this.Size = new System.Drawing.Size(416, 664);
-			this.ResourceGroup.ResumeLayout(false);
-			this.VisualSettings.ResumeLayout(false);
-			this.groupBox1.ResumeLayout(false);
-			this.AdvancedSettings.ResumeLayout(false);
-			this.HillshadeGroup.ResumeLayout(false);
-			this.SurfaceGroup.ResumeLayout(false);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RasterLayer));
+            this.ResourceGroup = new System.Windows.Forms.GroupBox();
+            this.schemaSelector = new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector();
+            this.VisualSettings = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.BackgroundColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
+            this.ForegroundColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
+            this.RebuildFactor = new System.Windows.Forms.TextBox();
+            this.RebuildThreshold = new System.Windows.Forms.Label();
+            this.VisibleTo = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.VisibleFrom = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.AdvancedSettings = new System.Windows.Forms.GroupBox();
+            this.EnableSurface = new System.Windows.Forms.CheckBox();
+            this.EnableHillshade = new System.Windows.Forms.CheckBox();
+            this.TransparencyColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
+            this.ContrastFactor = new System.Windows.Forms.TextBox();
+            this.BrightnessFactor = new System.Windows.Forms.TextBox();
+            this.HillshadeGroup = new System.Windows.Forms.GroupBox();
+            this.HillshadeBand = new System.Windows.Forms.TextBox();
+            this.HillshadeScaleFactor = new System.Windows.Forms.TextBox();
+            this.Azimuth = new System.Windows.Forms.TextBox();
+            this.Altitude = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.SurfaceGroup = new System.Windows.Forms.GroupBox();
+            this.DefaultColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
+            this.SurfaceBand = new System.Windows.Forms.TextBox();
+            this.SurfaceScaleFactor = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.ZeroValue = new System.Windows.Forms.TextBox();
+            this.EnableAdvanced = new System.Windows.Forms.CheckBox();
+            this.ResourceGroup.SuspendLayout();
+            this.VisualSettings.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.AdvancedSettings.SuspendLayout();
+            this.HillshadeGroup.SuspendLayout();
+            this.SurfaceGroup.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // ResourceGroup
+            // 
+            resources.ApplyResources(this.ResourceGroup, "ResourceGroup");
+            this.ResourceGroup.Controls.Add(this.schemaSelector);
+            this.ResourceGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ResourceGroup.Name = "ResourceGroup";
+            this.ResourceGroup.TabStop = false;
+            // 
+            // schemaSelector
+            // 
+            resources.ApplyResources(this.schemaSelector, "schemaSelector");
+            this.schemaSelector.IsRaster = false;
+            this.schemaSelector.Name = "schemaSelector";
+            this.schemaSelector.GeometryChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector.GeometryChangedDelegate(this.schemaSelector_GeometryChanged);
+            // 
+            // VisualSettings
+            // 
+            resources.ApplyResources(this.VisualSettings, "VisualSettings");
+            this.VisualSettings.Controls.Add(this.groupBox1);
+            this.VisualSettings.Controls.Add(this.RebuildFactor);
+            this.VisualSettings.Controls.Add(this.RebuildThreshold);
+            this.VisualSettings.Controls.Add(this.VisibleTo);
+            this.VisualSettings.Controls.Add(this.label2);
+            this.VisualSettings.Controls.Add(this.VisibleFrom);
+            this.VisualSettings.Controls.Add(this.label1);
+            this.VisualSettings.Name = "VisualSettings";
+            this.VisualSettings.TabStop = false;
+            // 
+            // groupBox1
+            // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.BackgroundColor);
+            this.groupBox1.Controls.Add(this.ForegroundColor);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // BackgroundColor
+            // 
+            resources.ApplyResources(this.BackgroundColor, "BackgroundColor");
+            this.BackgroundColor.Name = "BackgroundColor";
+            this.BackgroundColor.SelectedIndexChanged += new System.EventHandler(this.BackgroundColor_SelectedIndexChanged);
+            // 
+            // ForegroundColor
+            // 
+            resources.ApplyResources(this.ForegroundColor, "ForegroundColor");
+            this.ForegroundColor.Name = "ForegroundColor";
+            this.ForegroundColor.SelectedIndexChanged += new System.EventHandler(this.ForegroundColor_SelectedIndexChanged);
+            // 
+            // RebuildFactor
+            // 
+            resources.ApplyResources(this.RebuildFactor, "RebuildFactor");
+            this.RebuildFactor.Name = "RebuildFactor";
+            this.RebuildFactor.TextChanged += new System.EventHandler(this.RebuildFactor_TextChanged);
+            // 
+            // RebuildThreshold
+            // 
+            resources.ApplyResources(this.RebuildThreshold, "RebuildThreshold");
+            this.RebuildThreshold.Name = "RebuildThreshold";
+            // 
+            // VisibleTo
+            // 
+            this.VisibleTo.Items.AddRange(new object[] {
+            resources.GetString("VisibleTo.Items")});
+            resources.ApplyResources(this.VisibleTo, "VisibleTo");
+            this.VisibleTo.Name = "VisibleTo";
+            this.VisibleTo.SelectedIndexChanged += new System.EventHandler(this.VisibleTo_SelectedIndexChanged);
+            this.VisibleTo.TextChanged += new System.EventHandler(this.VisibleTo_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // VisibleFrom
+            // 
+            resources.ApplyResources(this.VisibleFrom, "VisibleFrom");
+            this.VisibleFrom.Name = "VisibleFrom";
+            this.VisibleFrom.TextChanged += new System.EventHandler(this.VisibleFrom_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // AdvancedSettings
+            // 
+            resources.ApplyResources(this.AdvancedSettings, "AdvancedSettings");
+            this.AdvancedSettings.Controls.Add(this.EnableSurface);
+            this.AdvancedSettings.Controls.Add(this.EnableHillshade);
+            this.AdvancedSettings.Controls.Add(this.TransparencyColor);
+            this.AdvancedSettings.Controls.Add(this.ContrastFactor);
+            this.AdvancedSettings.Controls.Add(this.BrightnessFactor);
+            this.AdvancedSettings.Controls.Add(this.HillshadeGroup);
+            this.AdvancedSettings.Controls.Add(this.label6);
+            this.AdvancedSettings.Controls.Add(this.label5);
+            this.AdvancedSettings.Controls.Add(this.label7);
+            this.AdvancedSettings.Controls.Add(this.SurfaceGroup);
+            this.AdvancedSettings.Name = "AdvancedSettings";
+            this.AdvancedSettings.TabStop = false;
+            // 
+            // EnableSurface
+            // 
+            this.EnableSurface.Checked = true;
+            this.EnableSurface.CheckState = System.Windows.Forms.CheckState.Checked;
+            resources.ApplyResources(this.EnableSurface, "EnableSurface");
+            this.EnableSurface.Name = "EnableSurface";
+            this.EnableSurface.CheckedChanged += new System.EventHandler(this.EnableSurface_CheckedChanged);
+            // 
+            // EnableHillshade
+            // 
+            this.EnableHillshade.Checked = true;
+            this.EnableHillshade.CheckState = System.Windows.Forms.CheckState.Checked;
+            resources.ApplyResources(this.EnableHillshade, "EnableHillshade");
+            this.EnableHillshade.Name = "EnableHillshade";
+            this.EnableHillshade.CheckedChanged += new System.EventHandler(this.EnableHillshade_CheckedChanged);
+            // 
+            // TransparencyColor
+            // 
+            resources.ApplyResources(this.TransparencyColor, "TransparencyColor");
+            this.TransparencyColor.Name = "TransparencyColor";
+            this.TransparencyColor.SelectedIndexChanged += new System.EventHandler(this.TransparencyColor_SelectedIndexChanged);
+            // 
+            // ContrastFactor
+            // 
+            resources.ApplyResources(this.ContrastFactor, "ContrastFactor");
+            this.ContrastFactor.Name = "ContrastFactor";
+            this.ContrastFactor.TextChanged += new System.EventHandler(this.ContrastFactor_TextChanged);
+            // 
+            // BrightnessFactor
+            // 
+            resources.ApplyResources(this.BrightnessFactor, "BrightnessFactor");
+            this.BrightnessFactor.Name = "BrightnessFactor";
+            this.BrightnessFactor.TextChanged += new System.EventHandler(this.BrightnessFactor_TextChanged);
+            // 
+            // HillshadeGroup
+            // 
+            resources.ApplyResources(this.HillshadeGroup, "HillshadeGroup");
+            this.HillshadeGroup.Controls.Add(this.HillshadeBand);
+            this.HillshadeGroup.Controls.Add(this.HillshadeScaleFactor);
+            this.HillshadeGroup.Controls.Add(this.Azimuth);
+            this.HillshadeGroup.Controls.Add(this.Altitude);
+            this.HillshadeGroup.Controls.Add(this.label10);
+            this.HillshadeGroup.Controls.Add(this.label8);
+            this.HillshadeGroup.Controls.Add(this.label9);
+            this.HillshadeGroup.Controls.Add(this.label11);
+            this.HillshadeGroup.Name = "HillshadeGroup";
+            this.HillshadeGroup.TabStop = false;
+            // 
+            // HillshadeBand
+            // 
+            resources.ApplyResources(this.HillshadeBand, "HillshadeBand");
+            this.HillshadeBand.Name = "HillshadeBand";
+            this.HillshadeBand.TextChanged += new System.EventHandler(this.HillshadeBand_TextChanged);
+            // 
+            // HillshadeScaleFactor
+            // 
+            resources.ApplyResources(this.HillshadeScaleFactor, "HillshadeScaleFactor");
+            this.HillshadeScaleFactor.Name = "HillshadeScaleFactor";
+            this.HillshadeScaleFactor.TextChanged += new System.EventHandler(this.HillshadeScaleFactor_TextChanged);
+            // 
+            // Azimuth
+            // 
+            resources.ApplyResources(this.Azimuth, "Azimuth");
+            this.Azimuth.Name = "Azimuth";
+            this.Azimuth.TextChanged += new System.EventHandler(this.Azimuth_TextChanged);
+            // 
+            // Altitude
+            // 
+            resources.ApplyResources(this.Altitude, "Altitude");
+            this.Altitude.Name = "Altitude";
+            this.Altitude.TextChanged += new System.EventHandler(this.Altitude_TextChanged);
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // SurfaceGroup
+            // 
+            resources.ApplyResources(this.SurfaceGroup, "SurfaceGroup");
+            this.SurfaceGroup.Controls.Add(this.DefaultColor);
+            this.SurfaceGroup.Controls.Add(this.SurfaceBand);
+            this.SurfaceGroup.Controls.Add(this.SurfaceScaleFactor);
+            this.SurfaceGroup.Controls.Add(this.label12);
+            this.SurfaceGroup.Controls.Add(this.label13);
+            this.SurfaceGroup.Controls.Add(this.label14);
+            this.SurfaceGroup.Controls.Add(this.label15);
+            this.SurfaceGroup.Controls.Add(this.ZeroValue);
+            this.SurfaceGroup.Name = "SurfaceGroup";
+            this.SurfaceGroup.TabStop = false;
+            // 
+            // DefaultColor
+            // 
+            resources.ApplyResources(this.DefaultColor, "DefaultColor");
+            this.DefaultColor.Name = "DefaultColor";
+            this.DefaultColor.SelectedIndexChanged += new System.EventHandler(this.DefaultColor_SelectedIndexChanged);
+            // 
+            // SurfaceBand
+            // 
+            resources.ApplyResources(this.SurfaceBand, "SurfaceBand");
+            this.SurfaceBand.Name = "SurfaceBand";
+            this.SurfaceBand.TextChanged += new System.EventHandler(this.SurfaceBand_TextChanged);
+            // 
+            // SurfaceScaleFactor
+            // 
+            resources.ApplyResources(this.SurfaceScaleFactor, "SurfaceScaleFactor");
+            this.SurfaceScaleFactor.Name = "SurfaceScaleFactor";
+            this.SurfaceScaleFactor.TextChanged += new System.EventHandler(this.SurfaceScaleFactor_TextChanged);
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            // 
+            // ZeroValue
+            // 
+            resources.ApplyResources(this.ZeroValue, "ZeroValue");
+            this.ZeroValue.Name = "ZeroValue";
+            this.ZeroValue.TextChanged += new System.EventHandler(this.ZeroValue_TextChanged);
+            // 
+            // EnableAdvanced
+            // 
+            resources.ApplyResources(this.EnableAdvanced, "EnableAdvanced");
+            this.EnableAdvanced.Name = "EnableAdvanced";
+            this.EnableAdvanced.CheckedChanged += new System.EventHandler(this.EnableAdvanced_CheckedChanged);
+            // 
+            // RasterLayer
+            // 
+            this.Controls.Add(this.EnableAdvanced);
+            this.Controls.Add(this.AdvancedSettings);
+            this.Controls.Add(this.VisualSettings);
+            this.Controls.Add(this.ResourceGroup);
+            this.Name = "RasterLayer";
+            resources.ApplyResources(this, "$this");
+            this.ResourceGroup.ResumeLayout(false);
+            this.VisualSettings.ResumeLayout(false);
+            this.VisualSettings.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.AdvancedSettings.ResumeLayout(false);
+            this.AdvancedSettings.PerformLayout();
+            this.HillshadeGroup.ResumeLayout(false);
+            this.HillshadeGroup.PerformLayout();
+            this.SurfaceGroup.ResumeLayout(false);
+            this.SurfaceGroup.PerformLayout();
+            this.ResumeLayout(false);
 
 		}
 		#endregion

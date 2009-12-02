@@ -155,7 +155,7 @@ namespace OSGeo.MapGuide.MgCooker
                 string webconfig = System.IO.Path.Combine(Application.StartupPath, "webconfig.ini");
                 if (!System.IO.File.Exists(webconfig))
                 {
-                    MessageBox.Show(this, string.Format("The file {0} was not found, unable to use the Native connection method.\r\nEither copy in the file, or do not use the Native connection method", webconfig), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Strings.SetupRun.MissingWebConfigFile, webconfig), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -165,7 +165,7 @@ namespace OSGeo.MapGuide.MgCooker
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, string.Format("Unable to connect: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Strings.SetupRun.ConnectionError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -177,7 +177,7 @@ namespace OSGeo.MapGuide.MgCooker
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, string.Format("Unable to connect: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Strings.SetupRun.ConnectionError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -219,7 +219,7 @@ namespace OSGeo.MapGuide.MgCooker
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format("An internal error occured: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.SetupRun.InternalError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -264,7 +264,9 @@ namespace OSGeo.MapGuide.MgCooker
         private void button3_Click(object sender, EventArgs e)
         {
             if (System.Environment.OSVersion.Platform == PlatformID.Unix)
-                saveFileDialog1.Filter = "Shell Script (*.sh)|*.sh|All files (*.*)|*.*";
+                saveFileDialog1.Filter = 
+                    string.Format(Strings.SetupRun.FileTypeShellScript + "|{0}", "*.sh") +
+                    string.Format(Strings.SetupRun.FileTypeAllFiles + "|{0}", "*.*");
 
             if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
             {

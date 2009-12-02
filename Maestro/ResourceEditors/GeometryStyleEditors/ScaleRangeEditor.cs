@@ -67,7 +67,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // ScaleRangeEditor
+            // 
+            this.Name = "ScaleRangeEditor";
+            this.ResumeLayout(false);
+
 		}
 		#endregion
 	}

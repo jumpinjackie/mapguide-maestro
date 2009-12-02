@@ -24,7 +24,7 @@ using System.Collections.Generic;
 namespace OSGeo.MapGuide.Maestro
 {
 	/// <summary>
-	/// Summary description for EditorInterface.
+	/// An implementation of the interface avalible to resource editor implementations
 	/// </summary>
 	public class EditorInterface : OSGeo.MapGuide.Maestro.ResourceEditors.EditorInterface
 	{
@@ -32,7 +32,6 @@ namespace OSGeo.MapGuide.Maestro
 		private TabPage m_page;
 		private string m_resourceID;
 		private bool m_existing;
-		private  Globalizator.Globalizator m_globalizor;
 		private static string m_lastPath;
 		public event EventHandler Closing;
 
@@ -42,7 +41,6 @@ namespace OSGeo.MapGuide.Maestro
 			m_page = page;
 			m_existing = exisiting;
 			m_resourceID = resid;
-			m_globalizor = new Globalizator.Globalizator(this);
             if (m_page != null)
                 m_page.ToolTipText = resid == null ? "" : resid;
 		}
@@ -148,7 +146,7 @@ namespace OSGeo.MapGuide.Maestro
 				catch (Exception ex)
 				{
                     SetLastException(ex);
-					MessageBox.Show(m_editor, string.Format(m_globalizor.Translate("An error occured while deleting: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show(m_editor, string.Format(Strings.EditorInterface.DeleteResourceError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 		}
@@ -156,7 +154,7 @@ namespace OSGeo.MapGuide.Maestro
 		public bool Close(bool askUser)
 		{
 			if (askUser && m_page.Text.EndsWith(" *"))
-				switch (MessageBox.Show(m_editor, m_globalizor.Translate("The resource has modifications. Do you want so save the changes before closing the page?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+				switch (MessageBox.Show(m_editor, Strings.EditorInterface.SaveBeforeCloseConfirmation, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
 				{
 					case DialogResult.Yes:
 						this.Save();
@@ -233,9 +231,9 @@ namespace OSGeo.MapGuide.Maestro
                             string msg;
 
                             if (errors.Count > 0)
-                                msg = string.Format("The resource had the following errors:\n {0}\n\nDo you want to save it anyway?", string.Join("\n", errors.ToArray()));
+                                msg = string.Format(Strings.EditorInterface.SaveWithErrorsConfirmation, string.Join("\n", errors.ToArray()));
                             else
-                                msg = string.Format("The resource had the following warnings:\n {0}\n\nDo you want to save it anyway?", string.Join("\n", warnings.ToArray()));
+                                msg = string.Format(Strings.EditorInterface.SaveWithWarningsConfirmation, string.Join("\n", warnings.ToArray()));
 
                             if (MessageBox.Show(m_editor, msg, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) != DialogResult.Yes)
                                 return false;
@@ -303,7 +301,7 @@ namespace OSGeo.MapGuide.Maestro
                 catch (Exception ex)
                 {
                     SetLastException(ex);
-                    MessageBox.Show(m_editor, string.Format(m_globalizor.Translate("An error occured while saving: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(m_editor, string.Format(Strings.EditorInterface.SaveResourceError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 			}

@@ -35,9 +35,31 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private static System.Collections.Specialized.NameValueCollection GetFileTypes()
         {
 			System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
-			nv.Add(".shp", "SHP Files (*.shp)");
-			nv.Add("", "All files (*.*)");
+			nv.Add(".shp", Strings.Common.ShapeFiles);
+			nv.Add("", Strings.Common.AllFiles);
             return nv;
+        }
+
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditorSHP));
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // UnmanagedEditor
+            // 
+            resources.ApplyResources(this.UnmanagedEditor, "UnmanagedEditor");
+            // 
+            // ManagedEditor
+            // 
+            resources.ApplyResources(this.ManagedEditor, "ManagedEditor");
+            // 
+            // FeatureSourceEditorSHP
+            // 
+            this.Name = "FeatureSourceEditorSHP";
+            this.panel1.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
     }
 }

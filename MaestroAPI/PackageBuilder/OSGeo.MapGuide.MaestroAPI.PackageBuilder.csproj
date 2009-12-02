@@ -132,6 +132,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceDataItem.cs" />
     <Compile Include="ResourceItem.cs" />
+    <Compile Include="Strings\PackageBuilder.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PackageBuilder.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\PackageProgress.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PackageProgress.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.csproj">
@@ -142,6 +152,14 @@
   <ItemGroup>
     <EmbeddedResource Include="PackageProgress.resx">
       <DependentUpon>PackageProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\PackageBuilder.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PackageBuilder.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\PackageProgress.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PackageProgress.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

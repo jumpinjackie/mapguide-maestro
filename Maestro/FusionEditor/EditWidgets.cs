@@ -50,11 +50,10 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		private FusionEditor.GenericWidgetExtensions GenericWidgetExtensions;
 		private System.Windows.Forms.Panel CustomEditors;
 		private FusionEditor.WidgetEditorUI widgetEditorUI;
-		private Globalizator.Globalizator m_globalizor = null;
 		private FusionEditor.CustomizedEditors.BufferPanel BufferPanel;
 		private FusionEditor.CustomizedEditors.Buffer Buffer;
 		private FusionEditor.CustomizedEditors.ActivityIndicator ActivityIndicator;
-		private FusionEditor.CustomizedEditors.About About;
+		private FusionEditor.CustomizedEditors.AboutURL About;
 		private FusionEditor.CustomizedEditors.CursorPosition CursorPosition;
 		private FusionEditor.CustomizedEditors.EditableScale EditableScale;
 		private FusionEditor.CustomizedEditors.ExtentHistory ExtentHistory;
@@ -93,7 +92,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			m_globalizor = new Globalizator.Globalizator(this);
 			System.Xml.Serialization.XmlSerializer sr = new System.Xml.Serialization.XmlSerializer(typeof(OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.ApplicationDefinitionType));
 			m_defaultWidgets = ((OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.ApplicationDefinitionType)sr.Deserialize(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "Defaults.xml"))).WidgetSet[0].Widget;
 			widgetEditor.DefaultWidgets = m_defaultWidgets;
@@ -135,6 +133,8 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.WidgetList = new System.Windows.Forms.ListView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.AddWidgetButton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.withUserInterfaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.withoutUserInterfaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RemoveWidgetButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MoveWidgetUpButton = new System.Windows.Forms.ToolStripButton();
@@ -143,14 +143,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.WidgetControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.CustomEditors = new System.Windows.Forms.Panel();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.splitter1 = new System.Windows.Forms.Splitter();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.CancelBtn = new System.Windows.Forms.Button();
-            this.OKBtn = new System.Windows.Forms.Button();
-            this.withUserInterfaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.withoutUserInterfaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ZoomToSelection = new OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.ZoomToSelection();
             this.ZoomOnClick = new OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.ZoomOnClick();
             this.Zoom = new OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.Zoom();
@@ -175,10 +167,16 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.BufferPanel = new OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.BufferPanel();
             this.Buffer = new OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.Buffer();
             this.ActivityIndicator = new OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.ActivityIndicator();
-            this.About = new OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.About();
+            this.About = new OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.AboutURL();
             this.widgetEditorUI = new OSGeo.MapGuide.Maestro.FusionEditor.WidgetEditorUI();
             this.widgetEditor = new OSGeo.MapGuide.Maestro.FusionEditor.WidgetEditor();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.GenericWidgetExtensions = new OSGeo.MapGuide.Maestro.FusionEditor.GenericWidgetExtensions();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.CancelBtn = new System.Windows.Forms.Button();
+            this.OKBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -186,9 +184,9 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.tabPage1.SuspendLayout();
             this.CustomEditors.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GenericWidgetExtensions)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GenericWidgetExtensions)).BeginInit();
             this.SuspendLayout();
             // 
             // toolbarImages
@@ -209,21 +207,15 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             // 
             this.panel1.Controls.Add(this.WidgetList);
             this.panel1.Controls.Add(this.toolStrip1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(184, 445);
-            this.panel1.TabIndex = 0;
             // 
             // WidgetList
             // 
-            this.WidgetList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WidgetList.Location = new System.Drawing.Point(0, 25);
+            resources.ApplyResources(this.WidgetList, "WidgetList");
             this.WidgetList.MultiSelect = false;
             this.WidgetList.Name = "WidgetList";
-            this.WidgetList.Size = new System.Drawing.Size(184, 420);
             this.WidgetList.SmallImageList = this.toolbarImages;
-            this.WidgetList.TabIndex = 1;
             this.WidgetList.UseCompatibleStateImageBehavior = false;
             this.WidgetList.View = System.Windows.Forms.View.List;
             this.WidgetList.SelectedIndexChanged += new System.EventHandler(this.WidgetList_SelectedIndexChanged);
@@ -237,11 +229,9 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.toolStripSeparator1,
             this.MoveWidgetUpButton,
             this.MoveWidgetDownButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(184, 25);
-            this.toolStrip1.TabIndex = 2;
             // 
             // AddWidgetButton
             // 
@@ -249,70 +239,60 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.AddWidgetButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.withUserInterfaceToolStripMenuItem,
             this.withoutUserInterfaceToolStripMenuItem});
-            this.AddWidgetButton.Image = ((System.Drawing.Image)(resources.GetObject("AddWidgetButton.Image")));
-            this.AddWidgetButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddWidgetButton, "AddWidgetButton");
             this.AddWidgetButton.Name = "AddWidgetButton";
-            this.AddWidgetButton.Size = new System.Drawing.Size(32, 22);
-            this.AddWidgetButton.ToolTipText = "Add a new widget to the list";
+            // 
+            // withUserInterfaceToolStripMenuItem
+            // 
+            this.withUserInterfaceToolStripMenuItem.Name = "withUserInterfaceToolStripMenuItem";
+            resources.ApplyResources(this.withUserInterfaceToolStripMenuItem, "withUserInterfaceToolStripMenuItem");
+            this.withUserInterfaceToolStripMenuItem.Click += new System.EventHandler(this.withUserInterfaceToolStripMenuItem_Click);
+            // 
+            // withoutUserInterfaceToolStripMenuItem
+            // 
+            this.withoutUserInterfaceToolStripMenuItem.Name = "withoutUserInterfaceToolStripMenuItem";
+            resources.ApplyResources(this.withoutUserInterfaceToolStripMenuItem, "withoutUserInterfaceToolStripMenuItem");
+            this.withoutUserInterfaceToolStripMenuItem.Click += new System.EventHandler(this.withoutUserInterfaceToolStripMenuItem_Click);
             // 
             // RemoveWidgetButton
             // 
             this.RemoveWidgetButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RemoveWidgetButton.Enabled = false;
-            this.RemoveWidgetButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveWidgetButton.Image")));
-            this.RemoveWidgetButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.RemoveWidgetButton, "RemoveWidgetButton");
             this.RemoveWidgetButton.Name = "RemoveWidgetButton";
-            this.RemoveWidgetButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveWidgetButton.ToolTipText = "Remove the selected widget from the list";
             this.RemoveWidgetButton.Click += new System.EventHandler(this.RemoveWidgetButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // MoveWidgetUpButton
             // 
             this.MoveWidgetUpButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveWidgetUpButton.Enabled = false;
-            this.MoveWidgetUpButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveWidgetUpButton.Image")));
-            this.MoveWidgetUpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MoveWidgetUpButton, "MoveWidgetUpButton");
             this.MoveWidgetUpButton.Name = "MoveWidgetUpButton";
-            this.MoveWidgetUpButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveWidgetUpButton.ToolTipText = "Move the selected widget up";
             this.MoveWidgetUpButton.Click += new System.EventHandler(this.MoveWidgetUpButton_Click);
             // 
             // MoveWidgetDownButton
             // 
             this.MoveWidgetDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveWidgetDownButton.Enabled = false;
-            this.MoveWidgetDownButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveWidgetDownButton.Image")));
-            this.MoveWidgetDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MoveWidgetDownButton, "MoveWidgetDownButton");
             this.MoveWidgetDownButton.Name = "MoveWidgetDownButton";
-            this.MoveWidgetDownButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveWidgetDownButton.ToolTipText = "Move the selected widget down";
             this.MoveWidgetDownButton.Click += new System.EventHandler(this.MoveWidgetDownButton_Click);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.WidgetControl);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(187, 0);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(453, 445);
-            this.panel2.TabIndex = 2;
             // 
             // WidgetControl
             // 
             this.WidgetControl.Controls.Add(this.tabPage1);
             this.WidgetControl.Controls.Add(this.tabPage2);
-            this.WidgetControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WidgetControl.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.WidgetControl, "WidgetControl");
             this.WidgetControl.Name = "WidgetControl";
             this.WidgetControl.SelectedIndex = 0;
-            this.WidgetControl.Size = new System.Drawing.Size(453, 445);
-            this.WidgetControl.TabIndex = 3;
-            this.WidgetControl.Visible = false;
             this.WidgetControl.SelectedIndexChanged += new System.EventHandler(this.WidgetControl_SelectedIndexChanged);
             // 
             // tabPage1
@@ -320,11 +300,8 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.tabPage1.Controls.Add(this.CustomEditors);
             this.tabPage1.Controls.Add(this.widgetEditorUI);
             this.tabPage1.Controls.Add(this.widgetEditor);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(445, 419);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Basic properties";
             // 
             // CustomEditors
             // 
@@ -353,326 +330,228 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.CustomEditors.Controls.Add(this.Buffer);
             this.CustomEditors.Controls.Add(this.ActivityIndicator);
             this.CustomEditors.Controls.Add(this.About);
-            this.CustomEditors.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CustomEditors.Location = new System.Drawing.Point(0, 232);
+            resources.ApplyResources(this.CustomEditors, "CustomEditors");
             this.CustomEditors.Name = "CustomEditors";
-            this.CustomEditors.Size = new System.Drawing.Size(445, 187);
-            this.CustomEditors.TabIndex = 3;
+            // 
+            // ZoomToSelection
+            // 
+            this.ZoomToSelection.DefaultWidgets = null;
+            resources.ApplyResources(this.ZoomToSelection, "ZoomToSelection");
+            this.ZoomToSelection.Name = "ZoomToSelection";
+            // 
+            // ZoomOnClick
+            // 
+            this.ZoomOnClick.DefaultWidgets = null;
+            resources.ApplyResources(this.ZoomOnClick, "ZoomOnClick");
+            this.ZoomOnClick.Name = "ZoomOnClick";
+            // 
+            // Zoom
+            // 
+            this.Zoom.DefaultWidgets = null;
+            resources.ApplyResources(this.Zoom, "Zoom");
+            this.Zoom.Name = "Zoom";
+            // 
+            // ViewSize
+            // 
+            this.ViewSize.DefaultWidgets = null;
+            resources.ApplyResources(this.ViewSize, "ViewSize");
+            this.ViewSize.Name = "ViewSize";
+            // 
+            // ViewOptions
+            // 
+            this.ViewOptions.DefaultWidgets = null;
+            resources.ApplyResources(this.ViewOptions, "ViewOptions");
+            this.ViewOptions.Name = "ViewOptions";
+            // 
+            // TaskPane
+            // 
+            this.TaskPane.DefaultWidgets = null;
+            resources.ApplyResources(this.TaskPane, "TaskPane");
+            this.TaskPane.Name = "TaskPane";
+            // 
+            // SelectWithin
+            // 
+            this.SelectWithin.DefaultWidgets = null;
+            resources.ApplyResources(this.SelectWithin, "SelectWithin");
+            this.SelectWithin.Name = "SelectWithin";
+            // 
+            // SelectRadius
+            // 
+            this.SelectRadius.DefaultWidgets = null;
+            resources.ApplyResources(this.SelectRadius, "SelectRadius");
+            this.SelectRadius.Name = "SelectRadius";
+            // 
+            // SelectPolygon
+            // 
+            this.SelectPolygon.DefaultWidgets = null;
+            resources.ApplyResources(this.SelectPolygon, "SelectPolygon");
+            this.SelectPolygon.Name = "SelectPolygon";
+            // 
+            // Select
+            // 
+            this.Select.DefaultWidgets = null;
+            resources.ApplyResources(this.Select, "Select");
+            this.Select.Name = "Select";
+            // 
+            // SaveMap
+            // 
+            this.SaveMap.DefaultWidgets = null;
+            resources.ApplyResources(this.SaveMap, "SaveMap");
+            this.SaveMap.Name = "SaveMap";
+            // 
+            // Print
+            // 
+            this.Print.DefaultWidgets = null;
+            resources.ApplyResources(this.Print, "Print");
+            this.Print.Name = "Print";
+            // 
+            // OverviewMap
+            // 
+            this.OverviewMap.DefaultWidgets = null;
+            resources.ApplyResources(this.OverviewMap, "OverviewMap");
+            this.OverviewMap.Name = "OverviewMap";
+            // 
+            // Measure
+            // 
+            this.Measure.DefaultWidgets = null;
+            resources.ApplyResources(this.Measure, "Measure");
+            this.Measure.Name = "Measure";
+            // 
+            // MapMenu
+            // 
+            this.MapMenu.DefaultWidgets = null;
+            resources.ApplyResources(this.MapMenu, "MapMenu");
+            this.MapMenu.Name = "MapMenu";
+            // 
+            // Legend
+            // 
+            this.Legend.DefaultWidgets = null;
+            resources.ApplyResources(this.Legend, "Legend");
+            this.Legend.Name = "Legend";
+            // 
+            // InvokeScript
+            // 
+            this.InvokeScript.DefaultWidgets = null;
+            resources.ApplyResources(this.InvokeScript, "InvokeScript");
+            this.InvokeScript.Name = "InvokeScript";
+            // 
+            // Help
+            // 
+            this.Help.DefaultWidgets = null;
+            resources.ApplyResources(this.Help, "Help");
+            this.Help.Name = "Help";
+            // 
+            // ExtentHistory
+            // 
+            this.ExtentHistory.DefaultWidgets = null;
+            resources.ApplyResources(this.ExtentHistory, "ExtentHistory");
+            this.ExtentHistory.Name = "ExtentHistory";
+            // 
+            // EditableScale
+            // 
+            this.EditableScale.DefaultWidgets = null;
+            resources.ApplyResources(this.EditableScale, "EditableScale");
+            this.EditableScale.Name = "EditableScale";
+            // 
+            // CursorPosition
+            // 
+            this.CursorPosition.DefaultWidgets = null;
+            resources.ApplyResources(this.CursorPosition, "CursorPosition");
+            this.CursorPosition.Name = "CursorPosition";
+            // 
+            // BufferPanel
+            // 
+            this.BufferPanel.DefaultWidgets = null;
+            resources.ApplyResources(this.BufferPanel, "BufferPanel");
+            this.BufferPanel.Name = "BufferPanel";
+            // 
+            // Buffer
+            // 
+            this.Buffer.DefaultWidgets = null;
+            resources.ApplyResources(this.Buffer, "Buffer");
+            this.Buffer.Name = "Buffer";
+            // 
+            // ActivityIndicator
+            // 
+            this.ActivityIndicator.DefaultWidgets = null;
+            resources.ApplyResources(this.ActivityIndicator, "ActivityIndicator");
+            this.ActivityIndicator.Name = "ActivityIndicator";
+            // 
+            // About
+            // 
+            this.About.DefaultWidgets = null;
+            resources.ApplyResources(this.About, "About");
+            this.About.Name = "About";
+            // 
+            // widgetEditorUI
+            // 
+            this.widgetEditorUI.DefaultWidgets = null;
+            resources.ApplyResources(this.widgetEditorUI, "widgetEditorUI");
+            this.widgetEditorUI.Name = "widgetEditorUI";
+            // 
+            // widgetEditor
+            // 
+            this.widgetEditor.DefaultWidgets = null;
+            resources.ApplyResources(this.widgetEditor, "widgetEditor");
+            this.widgetEditor.Name = "widgetEditor";
+            this.widgetEditor.ValueChanged += new OSGeo.MapGuide.Maestro.FusionEditor.ValueChangedDelegate(this.widgetEditor_ValueChanged);
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.GenericWidgetExtensions);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(445, 419);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Extended properties";
+            // 
+            // GenericWidgetExtensions
+            // 
+            this.GenericWidgetExtensions.DataMember = "";
+            resources.ApplyResources(this.GenericWidgetExtensions, "GenericWidgetExtensions");
+            this.GenericWidgetExtensions.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.GenericWidgetExtensions.Name = "GenericWidgetExtensions";
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.splitter1);
             this.panel3.Controls.Add(this.panel1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(640, 445);
-            this.panel3.TabIndex = 3;
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(184, 0);
+            resources.ApplyResources(this.splitter1, "splitter1");
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 445);
-            this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.CancelBtn);
             this.panel4.Controls.Add(this.OKBtn);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 445);
+            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(640, 48);
-            this.panel4.TabIndex = 4;
             // 
             // CancelBtn
             // 
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.CancelBtn.Location = new System.Drawing.Point(328, 8);
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(96, 32);
-            this.CancelBtn.TabIndex = 1;
-            this.CancelBtn.Text = "Cancel";
             // 
             // OKBtn
             // 
-            this.OKBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.OKBtn.Location = new System.Drawing.Point(216, 8);
+            resources.ApplyResources(this.OKBtn, "OKBtn");
             this.OKBtn.Name = "OKBtn";
-            this.OKBtn.Size = new System.Drawing.Size(96, 32);
-            this.OKBtn.TabIndex = 0;
-            this.OKBtn.Text = "OK";
             this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
-            // 
-            // withUserInterfaceToolStripMenuItem
-            // 
-            this.withUserInterfaceToolStripMenuItem.Name = "withUserInterfaceToolStripMenuItem";
-            this.withUserInterfaceToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.withUserInterfaceToolStripMenuItem.Text = "With user interface";
-            this.withUserInterfaceToolStripMenuItem.Click += new System.EventHandler(this.withUserInterfaceToolStripMenuItem_Click);
-            // 
-            // withoutUserInterfaceToolStripMenuItem
-            // 
-            this.withoutUserInterfaceToolStripMenuItem.Name = "withoutUserInterfaceToolStripMenuItem";
-            this.withoutUserInterfaceToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.withoutUserInterfaceToolStripMenuItem.Text = "Without user interface";
-            this.withoutUserInterfaceToolStripMenuItem.Click += new System.EventHandler(this.withoutUserInterfaceToolStripMenuItem_Click);
-            // 
-            // ZoomToSelection
-            // 
-            this.ZoomToSelection.DefaultWidgets = null;
-            this.ZoomToSelection.Location = new System.Drawing.Point(224, 88);
-            this.ZoomToSelection.Name = "ZoomToSelection";
-            this.ZoomToSelection.Size = new System.Drawing.Size(64, 24);
-            this.ZoomToSelection.TabIndex = 24;
-            // 
-            // ZoomOnClick
-            // 
-            this.ZoomOnClick.DefaultWidgets = null;
-            this.ZoomOnClick.Location = new System.Drawing.Point(224, 56);
-            this.ZoomOnClick.Name = "ZoomOnClick";
-            this.ZoomOnClick.Size = new System.Drawing.Size(64, 24);
-            this.ZoomOnClick.TabIndex = 23;
-            // 
-            // Zoom
-            // 
-            this.Zoom.DefaultWidgets = null;
-            this.Zoom.Location = new System.Drawing.Point(224, 32);
-            this.Zoom.Name = "Zoom";
-            this.Zoom.Size = new System.Drawing.Size(56, 24);
-            this.Zoom.TabIndex = 22;
-            // 
-            // ViewSize
-            // 
-            this.ViewSize.DefaultWidgets = null;
-            this.ViewSize.Location = new System.Drawing.Point(216, 8);
-            this.ViewSize.Name = "ViewSize";
-            this.ViewSize.Size = new System.Drawing.Size(64, 24);
-            this.ViewSize.TabIndex = 21;
-            // 
-            // ViewOptions
-            // 
-            this.ViewOptions.DefaultWidgets = null;
-            this.ViewOptions.Location = new System.Drawing.Point(176, 152);
-            this.ViewOptions.Name = "ViewOptions";
-            this.ViewOptions.Size = new System.Drawing.Size(40, 24);
-            this.ViewOptions.TabIndex = 20;
-            // 
-            // TaskPane
-            // 
-            this.TaskPane.DefaultWidgets = null;
-            this.TaskPane.Location = new System.Drawing.Point(168, 128);
-            this.TaskPane.Name = "TaskPane";
-            this.TaskPane.Size = new System.Drawing.Size(48, 24);
-            this.TaskPane.TabIndex = 19;
-            // 
-            // SelectWithin
-            // 
-            this.SelectWithin.DefaultWidgets = null;
-            this.SelectWithin.Location = new System.Drawing.Point(168, 104);
-            this.SelectWithin.Name = "SelectWithin";
-            this.SelectWithin.Size = new System.Drawing.Size(48, 24);
-            this.SelectWithin.TabIndex = 18;
-            // 
-            // SelectRadius
-            // 
-            this.SelectRadius.DefaultWidgets = null;
-            this.SelectRadius.Location = new System.Drawing.Point(168, 80);
-            this.SelectRadius.Name = "SelectRadius";
-            this.SelectRadius.Size = new System.Drawing.Size(40, 24);
-            this.SelectRadius.TabIndex = 17;
-            // 
-            // SelectPolygon
-            // 
-            this.SelectPolygon.DefaultWidgets = null;
-            this.SelectPolygon.Location = new System.Drawing.Point(168, 56);
-            this.SelectPolygon.Name = "SelectPolygon";
-            this.SelectPolygon.Size = new System.Drawing.Size(40, 24);
-            this.SelectPolygon.TabIndex = 16;
-            // 
-            // Select
-            // 
-            this.Select.DefaultWidgets = null;
-            this.Select.Location = new System.Drawing.Point(168, 32);
-            this.Select.Name = "Select";
-            this.Select.Size = new System.Drawing.Size(48, 24);
-            this.Select.TabIndex = 15;
-            // 
-            // SaveMap
-            // 
-            this.SaveMap.DefaultWidgets = null;
-            this.SaveMap.Location = new System.Drawing.Point(160, 8);
-            this.SaveMap.Name = "SaveMap";
-            this.SaveMap.Size = new System.Drawing.Size(56, 24);
-            this.SaveMap.TabIndex = 14;
-            // 
-            // Print
-            // 
-            this.Print.DefaultWidgets = null;
-            this.Print.Location = new System.Drawing.Point(104, 152);
-            this.Print.Name = "Print";
-            this.Print.Size = new System.Drawing.Size(48, 24);
-            this.Print.TabIndex = 13;
-            // 
-            // OverviewMap
-            // 
-            this.OverviewMap.DefaultWidgets = null;
-            this.OverviewMap.Location = new System.Drawing.Point(104, 128);
-            this.OverviewMap.Name = "OverviewMap";
-            this.OverviewMap.Size = new System.Drawing.Size(48, 24);
-            this.OverviewMap.TabIndex = 12;
-            // 
-            // Measure
-            // 
-            this.Measure.DefaultWidgets = null;
-            this.Measure.Location = new System.Drawing.Point(96, 104);
-            this.Measure.Name = "Measure";
-            this.Measure.Size = new System.Drawing.Size(56, 24);
-            this.Measure.TabIndex = 11;
-            // 
-            // MapMenu
-            // 
-            this.MapMenu.DefaultWidgets = null;
-            this.MapMenu.Location = new System.Drawing.Point(96, 80);
-            this.MapMenu.Name = "MapMenu";
-            this.MapMenu.Size = new System.Drawing.Size(64, 24);
-            this.MapMenu.TabIndex = 10;
-            // 
-            // Legend
-            // 
-            this.Legend.DefaultWidgets = null;
-            this.Legend.Location = new System.Drawing.Point(88, 56);
-            this.Legend.Name = "Legend";
-            this.Legend.Size = new System.Drawing.Size(64, 24);
-            this.Legend.TabIndex = 9;
-            // 
-            // InvokeScript
-            // 
-            this.InvokeScript.DefaultWidgets = null;
-            this.InvokeScript.Location = new System.Drawing.Point(96, 32);
-            this.InvokeScript.Name = "InvokeScript";
-            this.InvokeScript.Size = new System.Drawing.Size(64, 24);
-            this.InvokeScript.TabIndex = 8;
-            // 
-            // Help
-            // 
-            this.Help.DefaultWidgets = null;
-            this.Help.Location = new System.Drawing.Point(96, 8);
-            this.Help.Name = "Help";
-            this.Help.Size = new System.Drawing.Size(64, 24);
-            this.Help.TabIndex = 7;
-            // 
-            // ExtentHistory
-            // 
-            this.ExtentHistory.DefaultWidgets = null;
-            this.ExtentHistory.Location = new System.Drawing.Point(8, 152);
-            this.ExtentHistory.Name = "ExtentHistory";
-            this.ExtentHistory.Size = new System.Drawing.Size(96, 24);
-            this.ExtentHistory.TabIndex = 6;
-            // 
-            // EditableScale
-            // 
-            this.EditableScale.DefaultWidgets = null;
-            this.EditableScale.Location = new System.Drawing.Point(8, 128);
-            this.EditableScale.Name = "EditableScale";
-            this.EditableScale.Size = new System.Drawing.Size(80, 24);
-            this.EditableScale.TabIndex = 5;
-            // 
-            // CursorPosition
-            // 
-            this.CursorPosition.DefaultWidgets = null;
-            this.CursorPosition.Location = new System.Drawing.Point(8, 104);
-            this.CursorPosition.Name = "CursorPosition";
-            this.CursorPosition.Size = new System.Drawing.Size(80, 24);
-            this.CursorPosition.TabIndex = 4;
-            // 
-            // BufferPanel
-            // 
-            this.BufferPanel.DefaultWidgets = null;
-            this.BufferPanel.Location = new System.Drawing.Point(8, 80);
-            this.BufferPanel.Name = "BufferPanel";
-            this.BufferPanel.Size = new System.Drawing.Size(80, 24);
-            this.BufferPanel.TabIndex = 3;
-            // 
-            // Buffer
-            // 
-            this.Buffer.DefaultWidgets = null;
-            this.Buffer.Location = new System.Drawing.Point(8, 56);
-            this.Buffer.Name = "Buffer";
-            this.Buffer.Size = new System.Drawing.Size(72, 24);
-            this.Buffer.TabIndex = 2;
-            // 
-            // ActivityIndicator
-            // 
-            this.ActivityIndicator.DefaultWidgets = null;
-            this.ActivityIndicator.Location = new System.Drawing.Point(8, 32);
-            this.ActivityIndicator.Name = "ActivityIndicator";
-            this.ActivityIndicator.Size = new System.Drawing.Size(88, 24);
-            this.ActivityIndicator.TabIndex = 1;
-            // 
-            // About
-            // 
-            this.About.DefaultWidgets = null;
-            this.About.Location = new System.Drawing.Point(8, 8);
-            this.About.Name = "About";
-            this.About.Size = new System.Drawing.Size(88, 24);
-            this.About.TabIndex = 0;
-            // 
-            // widgetEditorUI
-            // 
-            this.widgetEditorUI.DefaultWidgets = null;
-            this.widgetEditorUI.Dock = System.Windows.Forms.DockStyle.Top;
-            this.widgetEditorUI.Location = new System.Drawing.Point(0, 80);
-            this.widgetEditorUI.Name = "widgetEditorUI";
-            this.widgetEditorUI.Size = new System.Drawing.Size(445, 152);
-            this.widgetEditorUI.TabIndex = 4;
-            // 
-            // widgetEditor
-            // 
-            this.widgetEditor.DefaultWidgets = null;
-            this.widgetEditor.Dock = System.Windows.Forms.DockStyle.Top;
-            this.widgetEditor.Location = new System.Drawing.Point(0, 0);
-            this.widgetEditor.Name = "widgetEditor";
-            this.widgetEditor.Size = new System.Drawing.Size(445, 80);
-            this.widgetEditor.TabIndex = 2;
-            this.widgetEditor.ValueChanged += new OSGeo.MapGuide.Maestro.FusionEditor.ValueChangedDelegate(this.widgetEditor_ValueChanged);
-            // 
-            // GenericWidgetExtensions
-            // 
-            this.GenericWidgetExtensions.DataMember = "";
-            this.GenericWidgetExtensions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GenericWidgetExtensions.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.GenericWidgetExtensions.Location = new System.Drawing.Point(0, 0);
-            this.GenericWidgetExtensions.Name = "GenericWidgetExtensions";
-            this.GenericWidgetExtensions.Size = new System.Drawing.Size(445, 419);
-            this.GenericWidgetExtensions.TabIndex = 0;
             // 
             // EditWidgets
             // 
             this.AcceptButton = this.OKBtn;
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            resources.ApplyResources(this, "$this");
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(640, 493);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MinimizeBox = false;
             this.Name = "EditWidgets";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "EditWidgets";
             this.Load += new System.EventHandler(this.EditWidgets_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -683,9 +562,9 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.tabPage1.ResumeLayout(false);
             this.CustomEditors.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GenericWidgetExtensions)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GenericWidgetExtensions)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -766,7 +645,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 
 		private void AddUIWidget_Click(object sender, System.EventArgs e)
 		{
-			ListViewItem lvi = new ListViewItem(m_globalizor.Translate("New widget"));
+			ListViewItem lvi = new ListViewItem(Strings.EditWidgets.NewWidgetName);
 			UiWidgetType w = new UiWidgetType();
 
 			w.Disabled = false.ToString();
@@ -788,7 +667,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 
 		private void AddWidget_Click(object sender, System.EventArgs e)
 		{
-			ListViewItem lvi = new ListViewItem(m_globalizor.Translate("New widget"));
+			ListViewItem lvi = new ListViewItem(Strings.EditWidgets.NewWidgetName);
 			WidgetType w = new WidgetType();
 
 			w.Location = "";
@@ -882,7 +761,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 
         private string GetNextName()
         {
-            string basename = m_globalizor.Translate("New widget");
+            string basename = Strings.EditWidgets.NewWidgetName;
             string currentname = basename;
             int i = 1;
             bool exists = true;

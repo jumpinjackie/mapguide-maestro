@@ -117,6 +117,579 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 16</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MapTitle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="MapTitle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 0</value>
+  </data>
+  <data name="MapTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>568, 20</value>
+  </data>
+  <data name="MapTitle.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="MapTitle.Text" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="&gt;&gt;MapTitle.Name" xml:space="preserve">
+    <value>MapTitle</value>
+  </data>
+  <data name="&gt;&gt;MapTitle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapTitle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MapTitle.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="TemplateURL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="TemplateURL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 24</value>
+  </data>
+  <data name="TemplateURL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 20</value>
+  </data>
+  <data name="TemplateURL.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="TemplateURL.Text" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="&gt;&gt;TemplateURL.Name" xml:space="preserve">
+    <value>TemplateURL</value>
+  </data>
+  <data name="&gt;&gt;TemplateURL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TemplateURL.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TemplateURL.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 16</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Template URL</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="MapGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="MapID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 32</value>
+  </data>
+  <data name="MapID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>352, 20</value>
+  </data>
+  <data name="MapID.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="MapID.Text" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="&gt;&gt;MapID.Name" xml:space="preserve">
+    <value>MapID</value>
+  </data>
+  <data name="&gt;&gt;MapID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapID.Parent" xml:space="preserve">
+    <value>MapPropertiesPanel</value>
+  </data>
+  <data name="&gt;&gt;MapID.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 32</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 16</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Map ID</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>MapPropertiesPanel</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="MapSingleTileCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 128</value>
+  </data>
+  <data name="MapSingleTileCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 16</value>
+  </data>
+  <data name="MapSingleTileCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="MapSingleTileCheck.Text" xml:space="preserve">
+    <value>Single tiled</value>
+  </data>
+  <data name="&gt;&gt;MapSingleTileCheck.Name" xml:space="preserve">
+    <value>MapSingleTileCheck</value>
+  </data>
+  <data name="&gt;&gt;MapSingleTileCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapSingleTileCheck.Parent" xml:space="preserve">
+    <value>MapPropertiesPanel</value>
+  </data>
+  <data name="&gt;&gt;MapSingleTileCheck.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="MapTypeCombo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 128</value>
+  </data>
+  <data name="MapTypeCombo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 21</value>
+  </data>
+  <data name="MapTypeCombo.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="MapTypeCombo.Text" xml:space="preserve">
+    <value>comboBox1</value>
+  </data>
+  <data name="&gt;&gt;MapTypeCombo.Name" xml:space="preserve">
+    <value>MapTypeCombo</value>
+  </data>
+  <data name="&gt;&gt;MapTypeCombo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapTypeCombo.Parent" xml:space="preserve">
+    <value>MapPropertiesPanel</value>
+  </data>
+  <data name="&gt;&gt;MapTypeCombo.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 128</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 16</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>MapType</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>MapPropertiesPanel</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="OverrideDisplayExtents.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="OverrideDisplayExtents.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 64</value>
+  </data>
+  <data name="OverrideDisplayExtents.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 16</value>
+  </data>
+  <data name="OverrideDisplayExtents.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="OverrideDisplayExtents.Text" xml:space="preserve">
+    <value>Override the maps initial display extents</value>
+  </data>
+  <data name="&gt;&gt;OverrideDisplayExtents.Name" xml:space="preserve">
+    <value>OverrideDisplayExtents</value>
+  </data>
+  <data name="&gt;&gt;OverrideDisplayExtents.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OverrideDisplayExtents.Parent" xml:space="preserve">
+    <value>MapPropertiesPanel</value>
+  </data>
+  <data name="&gt;&gt;OverrideDisplayExtents.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>336, 24</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>1:</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>overriddenMapExtents</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="overrideScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>352, 24</value>
+  </data>
+  <data name="overrideScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 20</value>
+  </data>
+  <data name="overrideScale.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;overrideScale.Name" xml:space="preserve">
+    <value>overrideScale</value>
+  </data>
+  <data name="&gt;&gt;overrideScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;overrideScale.Parent" xml:space="preserve">
+    <value>overriddenMapExtents</value>
+  </data>
+  <data name="&gt;&gt;overrideScale.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="overrideY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 24</value>
+  </data>
+  <data name="overrideY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 20</value>
+  </data>
+  <data name="overrideY.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;overrideY.Name" xml:space="preserve">
+    <value>overrideY</value>
+  </data>
+  <data name="&gt;&gt;overrideY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;overrideY.Parent" xml:space="preserve">
+    <value>overriddenMapExtents</value>
+  </data>
+  <data name="&gt;&gt;overrideY.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="overrideX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 24</value>
+  </data>
+  <data name="overrideX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 20</value>
+  </data>
+  <data name="overrideX.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;overrideX.Name" xml:space="preserve">
+    <value>overrideX</value>
+  </data>
+  <data name="&gt;&gt;overrideX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;overrideX.Parent" xml:space="preserve">
+    <value>overriddenMapExtents</value>
+  </data>
+  <data name="&gt;&gt;overrideX.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>296, 24</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 16</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>overriddenMapExtents</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 24</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 16</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>overriddenMapExtents</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 24</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 16</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>overriddenMapExtents</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="overriddenMapExtents.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="overriddenMapExtents.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 64</value>
+  </data>
+  <data name="overriddenMapExtents.Size" type="System.Drawing.Size, System.Drawing">
+    <value>472, 56</value>
+  </data>
+  <data name="overriddenMapExtents.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;overriddenMapExtents.Name" xml:space="preserve">
+    <value>overriddenMapExtents</value>
+  </data>
+  <data name="&gt;&gt;overriddenMapExtents.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;overriddenMapExtents.Parent" xml:space="preserve">
+    <value>MapPropertiesPanel</value>
+  </data>
+  <data name="&gt;&gt;overriddenMapExtents.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="BrowseMapButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="BrowseMapButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>451, 8</value>
+  </data>
+  <data name="BrowseMapButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 20</value>
+  </data>
+  <data name="BrowseMapButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="BrowseMapButton.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;BrowseMapButton.Name" xml:space="preserve">
+    <value>BrowseMapButton</value>
+  </data>
+  <data name="&gt;&gt;BrowseMapButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BrowseMapButton.Parent" xml:space="preserve">
+    <value>MapPropertiesPanel</value>
+  </data>
+  <data name="&gt;&gt;BrowseMapButton.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="MapResourceID.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="MapResourceID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 8</value>
+  </data>
+  <data name="MapResourceID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 20</value>
+  </data>
+  <data name="MapResourceID.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="MapResourceID.Text" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="&gt;&gt;MapResourceID.Name" xml:space="preserve">
+    <value>MapResourceID</value>
+  </data>
+  <data name="&gt;&gt;MapResourceID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapResourceID.Parent" xml:space="preserve">
+    <value>MapPropertiesPanel</value>
+  </data>
+  <data name="&gt;&gt;MapResourceID.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 16</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Map Resource</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>MapPropertiesPanel</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="MapPropertiesPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="MapPropertiesPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>208, 16</value>
+  </data>
+  <data name="MapPropertiesPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>485, 157</value>
+  </data>
+  <data name="MapPropertiesPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="MapPropertiesPanel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;MapPropertiesPanel.Name" xml:space="preserve">
+    <value>MapPropertiesPanel</value>
+  </data>
+  <data name="&gt;&gt;MapPropertiesPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapPropertiesPanel.Parent" xml:space="preserve">
+    <value>MapGroup</value>
+  </data>
+  <data name="&gt;&gt;MapPropertiesPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splitter1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 16</value>
+  </data>
+  <data name="splitter1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 157</value>
+  </data>
+  <data name="splitter1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;splitter1.Name" xml:space="preserve">
+    <value>splitter1</value>
+  </data>
+  <data name="&gt;&gt;splitter1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Splitter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitter1.Parent" xml:space="preserve">
+    <value>MapGroup</value>
+  </data>
+  <data name="&gt;&gt;splitter1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="MapList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="MapList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="MapList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 132</value>
+  </data>
   <metadata name="toolbarImages.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -125,57 +698,57 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB6
-        QwAAAk1TRnQBSQFMAgEBDAEAAQ4BAAEEAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
-        AwABQAMAAQEBAAEgBgABQP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8AigABTwGVAVoB/wEs
-        AZIBQwH/ATsBkQFKAf8BgQGrAYEB/yQAAbECrQH/Aa4CqgH/BAABTwGVAVoB/wEsAZIBQwH/ATsBkQFK
+        QwAAAk1TRnQBSQFMAgEBDAEAASQBAAEMAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        AwABQAMAAQEBAAEgBgABQP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8AigABTgGVAVkB/wEr
+        AZIBQgH/AToBkQFJAf8BgQGrAYEB/yQAAbECrQH/Aa4CqgH/BAABTgGVAVkB/wErAZIBQgH/AToBkQFJ
         Af8BgQGrAYEB/0wAAaEBngGdAf8BoQGeAZ0B/wGhAZ4BnQH/AZ8CnAH/AZ8CnAH/AZ8CnAH/AZsCmAH/
         AZsCmAH/AZsCmAH/AZYClAH/AZYClAH/AZYClAH/AZYClAH/AZYClAH/CAABoQGeAZ0B/wGhAZ4BnQH/
-        AaEBngGdAf8BnwKcAf8BnwKcAf8BnwKcAf8BmgKXAf8BWAGBAVoB/wErAaMBRgH/ASsB1wF0Af8BZgHm
-        AZ8B/wFFAd0BgQH/ASwBuAFVAf8BPAGDAUMB/xwAAbUCsQH/AegB3AHYAf8BgQGlAYAB/wErAaMBRgH/
-        ASoB1wFzAf8BZgHmAZ8B/wFFAd0BgQH/ASwBuAFVAf8BRwGQAVAB/0QAAaQCoAH/AfcB7wHsAf8B9AHo
+        AaEBngGdAf8BnwKcAf8BnwKcAf8BnwKcAf8BmgKXAf8BVwGBAVkB/wEqAaMBRQH/ASoB1wFzAf8BZQHm
+        AZ8B/wFEAd0BgQH/ASsBuAFUAf8BOwGDAUIB/xwAAbUCsQH/AegB3AHYAf8BgQGlAYAB/wEqAaMBRQH/
+        ASkB1wFyAf8BZQHmAZ8B/wFEAd0BgQH/ASsBuAFUAf8BRgGQAU8B/0QAAaQCoAH/AfcB7wHsAf8B9AHo
         AeMB/wH0AegB4wH/AfQB6AHjAf8B8gHkAd4B/wHyAeQB3gH/AfIB5AHeAf8B8gHkAd4B/wHyAeQB3gH/
         AfIB5AHeAf8B8gHkAd4B/wHyAeQB3gH/AfIB5AHeAf8B9AHoAeMB/wGWApQB/wGkAqAB/wH3Ae8B7AH/
-        AfQB6AHjAf8B9AHoAeMB/wH0AegB4wH/AfMB5AHeAf8B8wHkAd4B/wHFAcsBuAH/ASwBlAE4Af8BMAHE
-        AVgB/wEzAdgBcgH/AeMB8gHpAf8BgQHgAZ8B/wEyAcwBYAH/AS8BpwFBAf8BVAGBAVYB/wwAAa4CqgH/
-        AaoCpgH/BAABrgKqAf8BxAHJAbUB/wEsAZQBOAH/ATABxAFYAf8BMwHYAXIB/wHjAfIB6QH/AYEB4AGf
-        Af8BMgHMAWAB/wEvAacBQQH/AYEBqwGBAf9AAAGkAqAB/wH0AegB4wH/AfIB5AHeAf8B8gHkAd4B/wHv
+        AfQB6AHjAf8B9AHoAeMB/wH0AegB4wH/AfMB5AHeAf8B8wHkAd4B/wHFAcsBuAH/ASsBlAE3Af8BLwHE
+        AVcB/wEyAdgBcQH/AeMB8gHpAf8BgQHgAZ8B/wExAcwBXwH/AS4BpwFAAf8BUwGBAVUB/wwAAa4CqgH/
+        AaoCpgH/BAABrgKqAf8BxAHJAbUB/wErAZQBNwH/AS8BxAFXAf8BMgHYAXEB/wHjAfIB6QH/AYEB4AGf
+        Af8BMQHMAV8B/wEuAacBQAH/AYEBqwGBAf9AAAGkAqAB/wH0AegB4wH/AfIB5AHeAf8B8gHkAd4B/wHv
         AdwB1QH/Ae8B3AHVAf8B7wHcAdUB/wHvAdwB1QH/Ae4B2AHRAf8B7gHYAdEB/wHuAdgB0QH/Ae4B2AHR
         Af8B7gHYAdEB/wHuAdgB0QH/AfIB5AHeAf8BlgKUAf8BpAKgAf8B9AHoAeMB/wHzAeQB3gH/AfMB5AHe
-        Af8B7wHcAdUB/wHwAd0B1gH/Ae8B3AHVAf8BgQGmAYAB/wEvAacBQQH/AXQBygGBAf8BgwHYAZkB/wHu
-        AfYB8AH/AbIB4wG/Af8BgQHTAY8B/wFIAbMBUwH/ATQBhAE6Af8IAAGuAqoB/wHxAeIB3AH/AegB3AHY
-        Af8BwgK8Af8BzAHGAcUB/wGBAaUBgAH/ATABpQE7Af8BdAHKAYEB/wGDAdgBmQH/Ae4B9gHwAf8BsgHj
-        Ab8B/wGBAdMBjwH/AUgBswFTAf8BPQGOAUMB/0AAAakBpgGlAf8B9wHvAewB/wHyAeQB3gH/AfIB5AHe
+        Af8B7wHcAdUB/wHwAd0B1gH/Ae8B3AHVAf8BgQGmAYAB/wEuAacBQAH/AXMBygGBAf8BgwHYAZkB/wHu
+        AfYB8AH/AbIB4wG/Af8BgQHTAY8B/wFHAbMBUgH/ATMBhAE5Af8IAAGuAqoB/wHxAeIB3AH/AegB3AHY
+        Af8BwgK8Af8BzAHGAcUB/wGBAaUBgAH/AS8BpQE6Af8BcwHKAYEB/wGDAdgBmQH/Ae4B9gHwAf8BsgHj
+        Ab8B/wGBAdMBjwH/AUcBswFSAf8BPAGOAUIB/0AAAakBpgGlAf8B9wHvAewB/wHyAeQB3gH/AfIB5AHe
         Af8B8AHeAdgB/wHwAd4B2AH/Ae8B3AHVAf8B7wHcAdUB/wHvAdwB1QH/Ae8B3AHVAf8B7gHYAdEB/wHu
         AdgB0QH/Ae4B2AHRAf8B7gHYAdEB/wHvAdwB1QH/AZsCmAH/AakBpgGlAf8B9wHvAewB/wHzAeQB3gH/
-        AfMB5AHeAf8B8AHeAdgB/wHwAd4B2AH/AfAB3QHWAf8BegGhAXQB/wEzAagBPQH/AcIB4AHFAf8B7QHy
-        Ae0B/wP+Af8B8gH2AfIB/wHtAfIB7QH/AWkBvAFxAf8BLAGHATMB/wgAAa4CqgH/AfEB4gHcAf8B8QHg
-        AdoB/wHwAd0B1gH/AfAB3QHWAf8BegGhAXQB/wEzAagBPQH/AcIB4AHFAf8B7QHyAe0B/wP+Af8B8gH2
-        AfIB/wHtAfIB7QH/AWkBvAFxAf8BLgGIATYB/0AAAakBpgGlAf8B9wHvAewB/wHyAeQB3gH/AfIB5AHe
+        AfMB5AHeAf8B8AHeAdgB/wHwAd4B2AH/AfAB3QHWAf8BeQGhAXMB/wEyAagBPAH/AcIB4AHFAf8B7QHy
+        Ae0B/wP+Af8B8gH2AfIB/wHtAfIB7QH/AWgBvAFwAf8BKwGHATIB/wgAAa4CqgH/AfEB4gHcAf8B8QHg
+        AdoB/wHwAd0B1gH/AfAB3QHWAf8BeQGhAXMB/wEyAagBPAH/AcIB4AHFAf8B7QHyAe0B/wP+Af8B8gH2
+        AfIB/wHtAfIB7QH/AWgBvAFwAf8BLQGIATUB/0AAAakBpgGlAf8B9wHvAewB/wHyAeQB3gH/AfIB5AHe
         Af8B8gHkAd4B/wHyAeQB3gH/AfIB5AHeAf8B7wHcAdUB/wHvAdwB1QH/Ae8B3AHVAf8B7wHcAdUB/wHu
         AdgB0QH/Ae4B2AHRAf8B7gHYAdEB/wHyAeQB3gH/AZYClAH/AakBpgGlAf8B9wHvAewB/wHzAeQB3gH/
-        AfMB5AHeAf8B8wHkAd4B/wHzAeQB3gH/AfAB3gHYAf8BkgGuAYcB/wE6AaUBRAH/AWgByAFxAf8BdAHK
-        AYEB/wHtAfIB7QH/AaIB2AGnAf8BbgHKAXUB/wFLAbQBVAH/ATwBgQFBAf8MAAHPAcgBxgH/AfEB4gHc
-        Af8B8QHiAdwB/wHMAcYBxQH/AXYBjwF2Af8BOgGlAUQB/wFoAcgBcQH/AXkBzAGAAf8B7QHyAe0B/wGi
-        AdgBpwH/AW0BygF1Af8BSwG0AVQB/wFRAZQBVwH/QAABqQGmAaUB/wH3Ae8B7AH/AfQB6AHjAf8B9AHo
+        AfMB5AHeAf8B8wHkAd4B/wHzAeQB3gH/AfAB3gHYAf8BkgGuAYcB/wE5AaUBQwH/AWcByAFwAf8BcwHK
+        AYEB/wHtAfIB7QH/AaIB2AGnAf8BbQHKAXQB/wFKAbQBUwH/ATsBgQFAAf8MAAHPAcgBxgH/AfEB4gHc
+        Af8B8QHiAdwB/wHMAcYBxQH/AXUBjwF1Af8BOQGlAUMB/wFnAcgBcAH/AXgBzAGAAf8B7QHyAe0B/wGi
+        AdgBpwH/AWwBygF0Af8BSgG0AVMB/wFQAZQBVgH/QAABqQGmAaUB/wH3Ae8B7AH/AfQB6AHjAf8B9AHo
         AeMB/wH0AegB4wH/AfIB5AHeAf8B8AHeAdgB/wHyAeQB3gH/AfAB3gHYAf8B7wHcAdUB/wHvAdwB1QH/
         Ae8B3AHVAf8B7wHcAdUB/wHuAdgB0QH/AfIB5AHeAf8BmwKYAf8BqQGmAaUB/wH3Ae8B7AH/AfQB6AHj
-        Af8B9AHoAeMB/wH0AegB4wH/AfMB5AHeAf8B8wHkAd4B/wHhAdcBzAH/AT0BjgFCAf8BdQHFAXwB/wGB
-        AdMBhQH/AdUB5gHWAf8BogHYAacB/wF5AcwBgAH/AUQBoAFMAf8BZAGBAWQB/wQAAb0CuQH/AbECrQH/
-        AdcB0AHOAf8B8QHiAdwB/wHMAcYBxQH/CAABPQGOAUMB/wF0AcUBfAH/AYEB0wGFAf8B1QHmAdYB/wGi
-        AdgBpwH/AXkBzAGAAf8BRAGgAUwB/wGaAbcBmwH/BAADhgH/A5EB/wORAf8DmQH/A5EB/wORAf8DjQH/
+        Af8B9AHoAeMB/wH0AegB4wH/AfMB5AHeAf8B8wHkAd4B/wHhAdcBzAH/ATwBjgFBAf8BdAHFAXsB/wGB
+        AdMBhQH/AdUB5gHWAf8BogHYAacB/wF4AcwBgAH/AUMBoAFLAf8BYwGBAWMB/wQAAb0CuQH/AbECrQH/
+        AdcB0AHOAf8B8QHiAdwB/wHMAcYBxQH/CAABPAGOAUIB/wFzAcUBewH/AYEB0wGFAf8B1QHmAdYB/wGi
+        AdgBpwH/AXgBzAGAAf8BQwGgAUsB/wGaAbcBmwH/BAADhgH/A5EB/wORAf8DmQH/A5EB/wORAf8DjQH/
         A40B/wOGAf8DhgH/A4YB/wOGAf8DhgH/A4EB/wQAAakBpgGlAf8B+QHyAfAB/wH0AegB4wH/AfQB6AHj
         Af8B9AHoAeMB/wH0AegB4wH/AfIB5AHeAf8B8gHkAd4B/wHyAeQB3gH/AfAB3gHYAf8B7wHcAdUB/wHv
         AdwB1QH/Ae8B3AHVAf8B7wHcAdUB/wHyAeQB3gH/AZsCmAH/AakBpgGlAf8B+QHyAfAB/wH0AegB4wH/
-        AfQB6AHjAf8B9AHoAeMB/wH0AegB4wH/AfMB5AHeAf8B8wHkAd4B/wG8AcUBrQH/AU4BlgFTAf8BgQHE
-        AYEB/wGVAdUBmgH/AYcBzQGNAf8BWAGkAV4B/wGBAasBgQH/AZoClwH/AbkCtgH/Ae4B5gHkAf8B9QHp
-        AeUB/wH0AeYB4QH/AfQB5gHhAf8BrgKqAf8MAAFRAZQBVwH/AYEBxAGBAf8BlQHVAZoB/wGHAc0BjQH/
-        AVgBpAFeAf8BgQGlAYAB/wGuAqoB/wQAA40B/wONAf8DmQH/A6wB/wOyAf8DrAH/A5EB/wONAf8DhgH/
+        AfQB6AHjAf8B9AHoAeMB/wH0AegB4wH/AfMB5AHeAf8B8wHkAd4B/wG8AcUBrQH/AU0BlgFSAf8BgQHE
+        AYEB/wGVAdUBmgH/AYcBzQGNAf8BVwGkAV0B/wGBAasBgQH/AZoClwH/AbkCtgH/Ae4B5gHkAf8B9QHp
+        AeUB/wH0AeYB4QH/AfQB5gHhAf8BrgKqAf8MAAFQAZQBVgH/AYEBxAGBAf8BlQHVAZoB/wGHAc0BjQH/
+        AVcBpAFdAf8BgQGlAYAB/wGuAqoB/wQAA40B/wONAf8DmQH/A6wB/wOyAf8DrAH/A5EB/wONAf8DhgH/
         A4YB/wOGAf8DhgH/A40B/wOGAf8EAAGsAakBqAH/AfkB8gHwAf8B9wHvAewB/wH2Ae0B6QH/AfUB6QHl
         Af8B9AHoAeMB/wH0AegB4wH/AfQB6AHjAf8B8gHkAd4B/wHyAeQB3gH/AfIB5AHeAf8B8QHgAdoB/wHv
         AdwB1QH/Ae8B3AHVAf8B8gHkAd4B/wGbApgB/wGsAakBqAH/AfkB8gHwAf8B9wHvAewB/wH0AegB4wH/
-        AfUB6QHlAf8B9AHoAeMB/wH0AegB4wH/AfQB6AHjAf8B8wHkAd4B/wHhAdkBzgH/AZIBrwGJAf8BegGh
-        AXQB/wGBAaYBgAH/AcMBxAGwAf8B8wHkAd4B/wGfApwB/wG9ArkB/wHuAeYB5AH/AfUB6QHlAf8B9QHp
-        AeUB/wH1AekB5QH/AbECrQH/EAABdgGPAXYB/wF6AaEBdAH/AYEBpgGAAf8BxAHJAbUB/wHjAdkB1QH/
+        AfUB6QHlAf8B9AHoAeMB/wH0AegB4wH/AfQB6AHjAf8B8wHkAd4B/wHhAdkBzgH/AZIBrwGJAf8BeQGh
+        AXMB/wGBAaYBgAH/AcMBxAGwAf8B8wHkAd4B/wGfApwB/wG9ArkB/wHuAeYB5AH/AfUB6QHlAf8B9QHp
+        AeUB/wH1AekB5QH/AbECrQH/EAABdQGPAXUB/wF5AaEBcwH/AYEBpgGAAf8BxAHJAbUB/wHjAdkB1QH/
         Aa4CqgH/BAADjQH/A4EB/wONAf8DmQH/A6wB/wOyAf8DrAH/A5EB/wONAf8DhgH/A4YB/wOGAf8DhgH/
         A4YB/wQAAawBqQGoAf8B+QHyAfAB/wH3Ae8B7AH/AfcB7wHsAf8B9gHtAekB/wH2Ae0B6QH/AfUB6QHl
         Af8B9QHpAeUB/wH0AegB4wH/AfIB5AHeAf8B8gHkAd4B/wHyAeQB3gH/AfIB5AHeAf8B7wHcAdUB/wH0
@@ -189,173 +762,173 @@
         AZ0BnAH/Ae8B3AHVAf8B7wHcAdUB/wHpAdgB1AH/AekB2AHUAf8B7wHcAdUB/wHpAdgB1AH/AekB2AHU
         Af8B6QHYAdQB/wHpAdgB1AH/AecB1AHPAf8B6QHYAdQB/wHnAdQBzwH/AecB1AHPAf8B6QHYAdQB/wGc
         AZABjgH/DAABwgK8Af8B9QHpAeUB/wH1AekB5QH/AdEBygHIAf8BsQKtAf8BrgKqAf8BzwHKAckB/wH0
-        AeYB4QH/AfEB4AHaAf8BwgK8Af9MAAG9AWwBWgH/AccBdQFiAf8BwQF3AWYB/wHBAXcBZgH/AcgBdgFi
-        Af8BwQF3AWYB/wHBAXcBZgH/AcUBcwFgAf8BxQFzAWAB/wHFAXMBYAH/AcUBcwFgAf8BvQFsAVoB/wHF
-        AXMBYAH/AbsBaAFWAf8BvQFsAVoB/wG7AWgBVgH/Ab0BbAFaAf8BxQFzAWAB/wHHAXUBYgH/AcgBdgFi
-        Af8ByAF2AWIB/wHHAXUBYgH/AcgBdgFiAf8BxQFzAWAB/wHFAXMBYAH/AcUBcwFgAf8BxQFzAWAB/wHF
-        AXMBYAH/Ab0BbAFaAf8BxQFzAWAB/wG9AWwBWgH/Ab0BbAFaAf8IAAGxAq0B/wHzAesB6AH/AfUB6QHl
+        AeYB4QH/AfEB4AHaAf8BwgK8Af9MAAG9AWsBWQH/AccBdAFhAf8BwQF2AWUB/wHBAXYBZQH/AcgBdQFh
+        Af8BwQF2AWUB/wHBAXYBZQH/AcUBcgFfAf8BxQFyAV8B/wHFAXIBXwH/AcUBcgFfAf8BvQFrAVkB/wHF
+        AXIBXwH/AbsBZwFVAf8BvQFrAVkB/wG7AWcBVQH/Ab0BawFZAf8BxQFyAV8B/wHHAXQBYQH/AcgBdQFh
+        Af8ByAF1AWEB/wHHAXQBYQH/AcgBdQFhAf8BxQFyAV8B/wHFAXIBXwH/AcUBcgFfAf8BxQFyAV8B/wHF
+        AXIBXwH/Ab0BawFZAf8BxQFyAV8B/wG9AWsBWQH/Ab0BawFZAf8IAAGxAq0B/wHzAesB6AH/AfUB6QHl
         Af8B8wHrAegB/wH1AekB5QH/AfUB6QHlAf8B9QHpAeUB/wH0AeYB4QH/AfEB4gHcAf8B8QHiAdwB/wH0
-        AeYB4QH/AaoCpgH/SAABxwF1AWIB/wHRAYEBXQH/AdEBgQFdAf8B1AGBAWMB/wHUAYEBYwH/AdQBgQFj
-        Af8B0wGBAWUB/wHTAYEBZQH/Ac0BewFgAf8BzQF7AWAB/wHAAW0BVwH/Ab4BawFUAf8BuQFlAU8B/wGz
-        AV4BSgH/AbABWwFIAf8BvQFsAVoB/wHFAXMBYAH/AdEBgQFdAf8B0QGBAWAB/wHUAYEBYwH/AdQBgQFj
-        Af8B1AGBAWMB/wHUAYEBYwH/AdABfwFjAf8BzQF7AWAB/wHJAXYBXQH/AcABbQFXAf8BvQFsAVoB/wGz
-        AV4BSgH/AbABWwFIAf8BsAFbAUgB/wG9AWwBWgH/CAABtQKxAf8B8wHrAegB/wHzAesB6AH/AcwBxgHF
+        AeYB4QH/AaoCpgH/SAABxwF0AWEB/wHRAYEBXAH/AdEBgQFcAf8B1AGBAWIB/wHUAYEBYgH/AdQBgQFi
+        Af8B0wGBAWQB/wHTAYEBZAH/Ac0BegFfAf8BzQF6AV8B/wHAAWwBVgH/Ab4BagFTAf8BuQFkAU4B/wGz
+        AV0BSQH/AbABWgFHAf8BvQFrAVkB/wHFAXIBXwH/AdEBgQFcAf8B0QGBAV8B/wHUAYEBYgH/AdQBgQFi
+        Af8B1AGBAWIB/wHUAYEBYgH/AdABfgFiAf8BzQF6AV8B/wHJAXUBXAH/AcABbAFWAf8BvQFrAVkB/wGz
+        AV0BSQH/AbABWgFHAf8BsAFaAUcB/wG9AWsBWQH/CAABtQKxAf8B8wHrAegB/wHzAesB6AH/AcwBxgHF
         Af8B0QHKAcgB/wHzAesB6AH/AfUB6QHlAf8B0QHKAcgB/wHFAsMB/wH0AeYB4QH/Ae4B5gHkAf8BqgKm
-        Af9IAAHBAXcBZgH/AdEBgQFgAf8B0QGBAV0B/wHUAYEBYwH/AdQBgQFjAf8B1gGBAWgB/wHWAYEBaAH/
-        AdMBgQFlAf8B0wGBAWUB/wHIAXYBYgH/Ac0BewFgAf8BxwF1AWIB/wG+AWsBVAH/AbsBaAFWAf8BuwFo
-        AVYB/wHBAXcBZgH/AccBdQFiAf8B0QGBAV0B/wHRAYEBXQH/AdQBgQFjAf8B1gGBAWgB/wHWAYEBaAH/
-        AdYBgQFoAf8B1gGBAWgB/wHQAX8BYwH/Ac4BfQFjAf8ByQF2AV0B/wHFAXMBYAH/AcABbQFXAf8BuQFl
-        AU8B/wG9AWwBWgH/AcUBcwFgAf8MAAG1ArEB/wG1ArEB/wQAAbkCtgH/AfUB6QHlAf8B8wHrAegB/wG1
-        ArEB/wQAAa4CqgH/Aa4CqgH/UAABwQF3AWYB/wHHAXUBYgH/AccBdQFiAf8BwQF3AWYB/wHBAXcBZgH/
-        AcgBdgFiAf8BwQF3AWYB/wHFAXMBYAH/AccBdQFiAf8BxQFzAWAB/wG9AWwBWgH/AccBdQFiAf8BwgFw
-        AV4B/wHBAXcBZgH/CAABxwF1AWIB/wHAAXUBYwH/AcUBcwFgAf8BxwF1AWIB/wHHAXUBYgH/AccBdQFi
-        Af8BwAF1AWMB/wHHAXUBYgH/AccBdQFiAf8BwAF1AWMB/wHFAXMBYAH/AcUBcwFgAf8BxQFzAWAB/wHA
-        AXUBYwH/IAAB3gHZAdcB/wHoAeIB4AH/AcUCwwH/9AABuQK2Af8BuQK2Af/EAAFPAZUBWgH/ASwBkgFD
-        Af8BOwGRAUoB/wGBAasBgQH/JAABsQKtAf8BrQKpAf+8AAFxAaMBiAH/ASsBowFGAf8BKgHXAXQB/wFm
-        AeYBnwH/AUQB3QGBAf8BLAG4AVUB/wFHAZABUAH/HAABtQKyAf8B6QHdAdgB/wHpAd0B2AH/AbUCsgH/
+        Af9IAAHBAXYBZQH/AdEBgQFfAf8B0QGBAVwB/wHUAYEBYgH/AdQBgQFiAf8B1gGBAWcB/wHWAYEBZwH/
+        AdMBgQFkAf8B0wGBAWQB/wHIAXUBYQH/Ac0BegFfAf8BxwF0AWEB/wG+AWoBUwH/AbsBZwFVAf8BuwFn
+        AVUB/wHBAXYBZQH/AccBdAFhAf8B0QGBAVwB/wHRAYEBXAH/AdQBgQFiAf8B1gGBAWcB/wHWAYEBZwH/
+        AdYBgQFnAf8B1gGBAWcB/wHQAX4BYgH/Ac4BfAFiAf8ByQF1AVwB/wHFAXIBXwH/AcABbAFWAf8BuQFk
+        AU4B/wG9AWsBWQH/AcUBcgFfAf8MAAG1ArEB/wG1ArEB/wQAAbkCtgH/AfUB6QHlAf8B8wHrAegB/wG1
+        ArEB/wQAAa4CqgH/Aa4CqgH/UAABwQF2AWUB/wHHAXQBYQH/AccBdAFhAf8BwQF2AWUB/wHBAXYBZQH/
+        AcgBdQFhAf8BwQF2AWUB/wHFAXIBXwH/AccBdAFhAf8BxQFyAV8B/wG9AWsBWQH/AccBdAFhAf8BwgFv
+        AV0B/wHBAXYBZQH/CAABxwF0AWEB/wHAAXQBYgH/AcUBcgFfAf8BxwF0AWEB/wHHAXQBYQH/AccBdAFh
+        Af8BwAF0AWIB/wHHAXQBYQH/AccBdAFhAf8BwAF0AWIB/wHFAXIBXwH/AcUBcgFfAf8BxQFyAV8B/wHA
+        AXQBYgH/IAAB3gHZAdcB/wHoAeIB4AH/AcUCwwH/9AABuQK2Af8BuQK2Af/EAAFOAZUBWQH/ASsBkgFC
+        Af8BOgGRAUkB/wGBAasBgQH/JAABsQKtAf8BrQKpAf+8AAFwAaMBiAH/ASoBowFFAf8BKQHXAXMB/wFl
+        AeYBnwH/AUMB3QGBAf8BKwG4AVQB/wFGAZABTwH/HAABtQKyAf8B6QHdAdgB/wHpAd0B2AH/AbUCsgH/
         IAABzALKAf8BzALKAf8BzALKAf8BzALKAf8BzALKAf8ByALGAf8ByALGAf8ByALGAf8ByALGAf8ByALG
-        Af8ByALGAf8BqAKmAf8IAAGHAcIB+AH/AXYBygH7Af8BMQHEAf0B/wExAcQB/QH/ATEBxAH9Af8BMQHE
-        Af0B/wEnAb4B/QH/AScBvgH9Af8BJwG+Af0B/wEnAb4B/QH/ASABuwH9Af8BIAG7Af0B/wElAbMB+wH/
-        DAABhAHEAfYB/wFhAbkB9AH/AawB6wH6Af8BwgHwAfsB/wHCAfAB+wH/AcIB8AH7Af8BwgHwAfsB/wGZ
-        AdABzAH/ASwBlAE4Af8BMAHEAVgB/wEzAdgBcgH/AeMB8gHpAf8BgQHgAZ8B/wEyAcwBYAH/AS8BpwFB
+        Af8ByALGAf8BqAKmAf8IAAGHAcIB+AH/AXUBygH7Af8BMAHEAf0B/wEwAcQB/QH/ATABxAH9Af8BMAHE
+        Af0B/wEmAb4B/QH/ASYBvgH9Af8BJgG+Af0B/wEmAb4B/QH/AR8BuwH9Af8BHwG7Af0B/wEkAbMB+wH/
+        DAABhAHEAfYB/wFgAbkB9AH/AawB6wH6Af8BwgHwAfsB/wHCAfAB+wH/AcIB8AH7Af8BwgHwAfsB/wGZ
+        AdABzAH/ASsBlAE3Af8BLwHEAVcB/wEyAdgBcQH/AeMB8gHpAf8BgQHgAZ8B/wExAcwBXwH/AS4BpwFA
         Af8BgQGrAYEB/wwAAa0CqQH/AaoCpgH/BAABrQKpAf8B8QHgAdoB/wHwAd4B2AH/AaYCogH/BAABpgKi
         Af8BqgKmAf8UAAH7AfgB9wH/AfcB7AHpAf8B9wHsAekB/wHzAeQB3gH/AfMB5AHeAf8B8wHkAd4B/wHx
         AeAB2QH/AfEB4AHZAf8B8QHgAdkB/wHxAeAB2QH/AfMB5AHeAf8ByALGAf8IAAGVAcoB+QH/AYcBygH5
-        Af8BSAHZAv8BSAHZAv8BOwHSAv8BOwHSAv8BOwHSAv8BOwHSAv8BOwHSAv8BOAHRAv8BOAHRAv8BMwHP
-        Av8BMwHPAv8BgQG/AfEB/wgAAYsBxwH2Af8BkwHbAfgB/wF5Ac4B9gH/AaEB6wH6Af8BngHpAfoB/wGc
-        AeYB+gH/AZwB5gH6Af8BYQGoAYcB/wEvAacBQQH/AXQBygGBAf8BgwHYAZkB/wHuAfYB8AH/AbIB4wG/
-        Af8BgQHTAY8B/wFIAbMBUwH/AT0BjQFDAf8IAAGtAqkB/wHxAeAB2gH/Ae4B3wHaAf8BwQG7AboB/wHM
+        Af8BRwHZAv8BRwHZAv8BOgHSAv8BOgHSAv8BOgHSAv8BOgHSAv8BOgHSAv8BNwHRAv8BNwHRAv8BMgHP
+        Av8BMgHPAv8BgQG/AfEB/wgAAYsBxwH2Af8BkwHbAfgB/wF4Ac4B9gH/AaEB6wH6Af8BngHpAfoB/wGc
+        AeYB+gH/AZwB5gH6Af8BYAGoAYcB/wEuAacBQAH/AXMBygGBAf8BgwHYAZkB/wHuAfYB8AH/AbIB4wG/
+        Af8BgQHTAY8B/wFHAbMBUgH/ATwBjQFCAf8IAAGtAqkB/wHxAeAB2gH/Ae4B3wHaAf8BwQG7AboB/wHM
         AcYBxQH/Ae4B2wHUAf8B7gHbAdQB/wHSAcoByAH/AcEBuwG6Af8B7gHbAdQB/wHuAdsB1AH/AaoCpgH/
         EAAB+wH4AfcB/wH3AewB6QH/AfQB5gHhAf8B9AHmAeEB/wHjAcEBuwH/AdYBpgGgAf8B2gGvAaoB/wHs
-        AdQBzQH/Ae4B2AHRAf8B7gHYAdEB/wHxAeAB2QH/AcMCwQH/CAABmAHLAfkB/wF2Ab4B+AH/AYEB6AH+
-        Af8BVwHhAv8BVwHhAv8BVwHhAv8BVwHhAv8BUwHfAv8BUwHfAv8BUwHfAv8BSAHZAv8BUwHfAv8BUAHX
-        AfwB/wFpAcgB+AH/DAABrAHrAfoB/wFZAbgB9AH/AWgB2wH2Af8BXAHVAfUB/wFYAdAB9QH/AVgB0AH1
-        Af8BNwGYAX8B/wEwAaUBOwH/AcIB4AHFAf8B7QHyAe0B/wP+Af8B8gH2AfIB/wHtAfIB7QH/AWkBvAFx
-        Af8BLgGIATYB/wgAAbECrQH/AfEB4AHaAf8B8AHeAdgB/wHwAd0B1gH/AfAB3QHWAf8B8AHeAdgB/wHw
+        AdQBzQH/Ae4B2AHRAf8B7gHYAdEB/wHxAeAB2QH/AcMCwQH/CAABmAHLAfkB/wF1Ab4B+AH/AYEB6AH+
+        Af8BVgHhAv8BVgHhAv8BVgHhAv8BVgHhAv8BUgHfAv8BUgHfAv8BUgHfAv8BRwHZAv8BUgHfAv8BTwHX
+        AfwB/wFoAcgB+AH/DAABrAHrAfoB/wFYAbgB9AH/AWcB2wH2Af8BWwHVAfUB/wFXAdAB9QH/AVcB0AH1
+        Af8BNgGYAX4B/wEvAaUBOgH/AcIB4AHFAf8B7QHyAe0B/wP+Af8B8gH2AfIB/wHtAfIB7QH/AWgBvAFw
+        Af8BLQGIATUB/wgAAbECrQH/AfEB4AHaAf8B8AHeAdgB/wHwAd0B1gH/AfAB3QHWAf8B8AHeAdgB/wHw
         Ad0B1gH/Ae4B2wHUAf8B7gHYAdEB/wHuAdsB1AH/Ae4B2wHUAf8BsQKtAf8QAAH7AfgB9wH/AfgB7wHr
-        Af8B4wHBAbsB/wGjAYQBaQH/AbIBmgFnAf8B5wG1AWoB/wHgAakBZQH/Ac0BiwFwAf8BzwGXAZIB/wHu
-        AdgB0QH/AfMB5AHeAf8BwwLBAf8IAAGYAcsB+QH/AUYBugH6Af8BlQHjAf0B/wFoAekC/wFoAekC/wFo
-        AekC/wFoAekC/wFfAeUC/wFfAeUC/wFfAeUC/wFfAeUC/wFfAeUC/wFkAeEB/QH/AYQB6QH9Af8MAAGh
-        AeQB+AH/AW0BwAH1Af8BXAHVAfUB/wE/AccB8wH/ATwBxQHzAf8BNgG6AfEB/wEtAZgBlAH/AToBpQFE
-        Af8BaAHIAXEB/wF0AcoBgQH/Ae0B8gHtAf8BogHYAacB/wFtAcoBdgH/AUsBtAFUAf8BUAGUAVcB/wwA
+        Af8B4wHBAbsB/wGjAYQBaAH/AbIBmgFmAf8B5wG1AWkB/wHgAakBZAH/Ac0BiwFvAf8BzwGXAZIB/wHu
+        AdgB0QH/AfMB5AHeAf8BwwLBAf8IAAGYAcsB+QH/AUUBugH6Af8BlQHjAf0B/wFnAekC/wFnAekC/wFn
+        AekC/wFnAekC/wFeAeUC/wFeAeUC/wFeAeUC/wFeAeUC/wFeAeUC/wFjAeEB/QH/AYQB6QH9Af8MAAGh
+        AeQB+AH/AWwBwAH1Af8BWwHVAfUB/wE+AccB8wH/ATsBxQHzAf8BNQG6AfEB/wEsAZgBlAH/ATkBpQFD
+        Af8BZwHIAXAB/wFzAcoBgQH/Ae0B8gHtAf8BogHYAacB/wFsAcoBdQH/AUoBtAFTAf8BTwGUAVYB/wwA
         Ac8ByAHGAf8B8QHgAdoB/wHxAeAB2gH/AcwBxgHFAf8BqgKmAf8BrQKpAf8ByAHCAcAB/wHwAd0B1gH/
-        Ae4B2wHUAf8B0QHIAcUB/wHFAcABvwH/EAAB+wH5AfgB/wHjAcEBuwH/AdwBpQGBAf8BoAGxAVYB/wFK
-        AacBRwH/AcYBugFMAf8B/gHAAT8B/wH4AbgBMQH/AcoBpwFXAf8BwQGPAYMB/wHzAeQB3gH/AcgCxgH/
-        CAABmAHLAfkB/wFDAckB/QH/AYcBygH5Af8BewHuAv8BewHuAv8BewHuAv8BdwHuAv8BdwHuAv8BdwHu
-        Av8BcAHtAv8BcAHtAv8BcAHtAv8BdwHuAv8BnwH8Af4B/wGBAcIB8AH/CAABlgHdAfcB/wGKAdwB+AH/
-        AVkBuAH0Af8BPwHHAfMB/wE5AcAB8gH/ATYBugHxAf8BMgGvAeAB/wEuAYsBRAH/AXQBxQF8Af8BgQHT
-        AYUB/wHVAeYB1gH/AaIB2AGnAf8BewHMAYEB/wFEAaABTAH/AXcBngGoAf8EAAG9ArkB/wGxAq0B/wHX
+        Ae4B2wHUAf8B0QHIAcUB/wHFAcABvwH/EAAB+wH5AfgB/wHjAcEBuwH/AdwBpQGBAf8BoAGxAVUB/wFJ
+        AacBRgH/AcYBugFLAf8B/gHAAT4B/wH4AbgBMAH/AcoBpwFWAf8BwQGPAYMB/wHzAeQB3gH/AcgCxgH/
+        CAABmAHLAfkB/wFCAckB/QH/AYcBygH5Af8BegHuAv8BegHuAv8BegHuAv8BdgHuAv8BdgHuAv8BdgHu
+        Av8BbwHtAv8BbwHtAv8BbwHtAv8BdgHuAv8BnwH8Af4B/wGBAcIB8AH/CAABlgHdAfcB/wGKAdwB+AH/
+        AVgBuAH0Af8BPgHHAfMB/wE4AcAB8gH/ATUBugHxAf8BMQGvAeAB/wEtAYsBQwH/AXMBxQF7Af8BgQHT
+        AYUB/wHVAeYB1gH/AaIB2AGnAf8BegHMAYEB/wFDAaABSwH/AXYBngGoAf8EAAG9ArkB/wGxAq0B/wHX
         AdABzgH/AfEB4AHaAf8BzAHGAcUB/wwAAcwBxgHFAf8BxQHAAb8B/wHwAd0B1gH/AdIBygHIAf8BqgKm
-        Af8BtQKyAf8MAAH7AfgB9wH/AdYBmwGBAf8B+gHPAXoB/wGPAbQBWAH/AUQBrQFSAf8BSgGnAUcB/wHw
-        AcYBWgH/Af4BwAE/Af8BuwGwATUB/wFwAYYBRwH/AeMBwQG7Af8ByALGAf8IAAGYAcsB+QH/AVoB2AL/
-        AVQBugH4Af8BwQH0Af4B/wG1AfQB/gH/AbUB9AH+Af8BtQH0Af4B/wGlAfQB/gH/AYkB8wL/AYkB8wL/
-        AYkB8wL/AYUB8wL/AYQB6QH9Af8BtAP/AYEB1AH4Af8IAAGKAdMB9gH/AZ4B6QH6Af8BUwGuAfEB/wFS
-        AbwB8gH/AVIBvAHyAf8BUwGuAfEB/wFMAbUB8AH/AUQBnwG7Af8BQAGPAVQB/wGBAcQBgQH/AZUB1QGa
-        Af8BhwHNAY0B/wFXAaQBXgH/AXwBmwGEAf8EAAG5ArYB/wHuAeYB5AH/AfUB6QHlAf8B9AHmAeEB/wH1
+        Af8BtQKyAf8MAAH7AfgB9wH/AdYBmwGBAf8B+gHPAXkB/wGPAbQBVwH/AUMBrQFRAf8BSQGnAUYB/wHw
+        AcYBWQH/Af4BwAE+Af8BuwGwATQB/wFvAYYBRgH/AeMBwQG7Af8ByALGAf8IAAGYAcsB+QH/AVkB2AL/
+        AVMBugH4Af8BwQH0Af4B/wG1AfQB/gH/AbUB9AH+Af8BtQH0Af4B/wGlAfQB/gH/AYkB8wL/AYkB8wL/
+        AYkB8wL/AYUB8wL/AYQB6QH9Af8BtAP/AYEB1AH4Af8IAAGKAdMB9gH/AZ4B6QH6Af8BUgGuAfEB/wFR
+        AbwB8gH/AVEBvAHyAf8BUgGuAfEB/wFLAbUB8AH/AUMBnwG7Af8BPwGPAVMB/wGBAcQBgQH/AZUB1QGa
+        Af8BhwHNAY0B/wFWAaQBXQH/AXsBmwGEAf8EAAG5ArYB/wHuAeYB5AH/AfUB6QHlAf8B9AHmAeEB/wH1
         AekB5QH/Aa0CqQH/EAABqgKmAf8B8AHdAdYB/wHwAd0B1gH/AfAB3gHYAf8B6QHdAdgB/wGtAqkB/wgA
-        AekBzwHIAf8B7QHAAYcB/wH9AdcBhgH/AW4BqgFOAf8BUQGoAUkB/wHIAcUBdQH/Af0BzwFwAf8BmgG0
-        AU4B/wFXAagBRQH/AUcBpQFGAf8BxgGaAY8B/wHIAsYB/wgAAZgBywH5Af8BdQHlAv8BUAHXAfwB/wFL
-        AcEB+AH/AUsBwQH4Af8BSwHBAfgB/wFLAcEB+AH/AX8BxAH4Af8BzQH3Af4B/wHNAfcB/gH/AcEB9AH+
+        AekBzwHIAf8B7QHAAYcB/wH9AdcBhgH/AW0BqgFNAf8BUAGoAUgB/wHIAcUBdAH/Af0BzwFvAf8BmgG0
+        AU0B/wFWAagBRAH/AUYBpQFFAf8BxgGaAY8B/wHIAsYB/wgAAZgBywH5Af8BdAHlAv8BTwHXAfwB/wFK
+        AcEB+AH/AUoBwQH4Af8BSgHBAfgB/wFKAcEB+AH/AX4BxAH4Af8BzQH3Af4B/wHNAfcB/gH/AcEB9AH+
         Af8BxQH3Af4B/wHBAfQB/gH/AdoB/QH+Af8BwQH0Af4B/wgAAYEByQH1Af8BoQHxAfoB/wGMAeEB9wH/
-        AYEBygHrAf8BaAGoAc4B/wFnAaYBzQH/AWQBogHNAf8BZAGiAc0B/wFiAZ4BvQH/AVIBkwGBAf8BSQGQ
-        AXEB/wFeAaQBgQH/AWQBkwGzAf8IAAG9ArkB/wHuAeYB5AH/AfUB6QHlAf8B9QHpAeUB/wH1AekB5QH/
+        AYEBygHrAf8BZwGoAc4B/wFmAaYBzQH/AWMBogHNAf8BYwGiAc0B/wFhAZ4BvQH/AVEBkwGBAf8BSAGQ
+        AXAB/wFdAaQBgQH/AWMBkwGzAf8IAAG9ArkB/wHuAeYB5AH/AfUB6QHlAf8B9QHpAeUB/wH1AekB5QH/
         Aa0CqQH/EAABrQKpAf8B8QHgAdoB/wHwAd0B1gH/AfEB4AHaAf8B4wHZAdUB/wGtAqkB/wgAAd8BtgGq
-        Af8B5wHTAZIB/wGBAawBUAH/AbsBxwGBAf8B9QHeAaoB/wH9AdoBkQH/Af4B0gF7Af8BgQGsAVAB/wFE
-        Aa0BUgH/AVsBpgFBAf8BtAGSAYEB/wHIAsYB/wgAAZgBywH5Af8BhQHzAv8BdAHwAv8BdAHwAv8BdAHw
-        Av8BdAHwAv8BdAHwAv8BawHiAfwB/wFlAc0B+gH/AWUBzQH6Af8BZQHNAfoB/wFlAc0B+gH/AV0BuQH4
-        Af8QAAF6Ab8B8wH/AaEB8QH6Af8BoQHxAfoB/wGcAe4B9gH/AYEBwAHOAf8BgAG8AcsB/wGAAbwBywH/
-        AYABvAHLAf8BewG1AcoB/wF7AbUBygH/AX4BuQHRAf8BnAHmAfoB/wF3Aa4B7AH/DAABwQG7AboB/wG1
+        Af8B5wHTAZIB/wGBAawBTwH/AbsBxwGBAf8B9QHeAaoB/wH9AdoBkQH/Af4B0gF6Af8BgQGsAU8B/wFD
+        Aa0BUQH/AVoBpgFAAf8BtAGSAYEB/wHIAsYB/wgAAZgBywH5Af8BhQHzAv8BcwHwAv8BcwHwAv8BcwHw
+        Av8BcwHwAv8BcwHwAv8BagHiAfwB/wFkAc0B+gH/AWQBzQH6Af8BZAHNAfoB/wFkAc0B+gH/AVwBuQH4
+        Af8QAAF5Ab8B8wH/AaEB8QH6Af8BoQHxAfoB/wGcAe4B9gH/AYEBwAHOAf8BgAG8AcsB/wGAAbwBywH/
+        AYABvAHLAf8BegG1AcoB/wF6AbUBygH/AX0BuQHRAf8BnAHmAfoB/wF2Aa4B7AH/DAABwQG7AboB/wG1
         ArIB/wHPAcoByQH/AfUB6QHlAf8BzwHIAcYB/wHPAcoByQH/CAABzAHGAcUB/wHMAcYBxQH/AfAB3gHY
-        Af8B0gHKAcgB/wGqAqYB/wG9ArkB/wwAAeQBwAG1Af8BaQGeAUUB/wFEAa0BUgH/AWQBqQFIAf8B6QHZ
-        AZ4B/wH9AdoBkQH/Af4B0QF5Af8B0gG+AVUB/wFbAZkBKwH/AXABogE2Af8BwAGaAYYB/wHIAsYB/wgA
+        Af8B0gHKAcgB/wGqAqYB/wG9ArkB/wwAAeQBwAG1Af8BaAGeAUQB/wFDAa0BUQH/AWMBqQFHAf8B6QHZ
+        AZ4B/wH9AdoBkQH/Af4B0QF4Af8B0gG+AVQB/wFaAZkBKgH/AW8BogE1Af8BwAGaAYYB/wHIAsYB/wgA
         AZgBywH5Af8BpAH+Av8BkAH+Av8BkAH+Av8BkAH+Av8BtAP/AbQD/wG0A/8BtAP/AbQD/wG0A/8BtAP/
-        AYEBzgH6Af8QAAF4AboB8QH/AbEB8wH5Af8BsQHzAfkB/wGxAfMB+QH/AbEB8wH5Af8BoQHrAfoB/wGq
+        AYEBzgH6Af8QAAF3AboB8QH/AbEB8wH5Af8BsQHzAfkB/wGxAfMB+QH/AbEB8wH5Af8BoQHrAfoB/wGq
         AeoB9wH/AawB6wH6Af8BrwHnAfQB/wGxAeQB9AH/AbEB5AH0Af8BsQHkAfQB/wGBAbsB7wH/FAABwQG7
         AboB/wH1AekB5QH/AfUB6QHlAf8BzwHKAckB/wGxAq0B/wGtAqkB/wHPAcoByQH/AfQB5gHhAf8B8QHg
-        AdoB/wHBAbsBugH/FAAB9wHsAekB/wF/AYwBSAH/AUQBrQFSAf8BRwGlAUYB/wFPAaIBPgH/AeMBzQF+
-        Af8B/QHPAXAB/wH+AcYBUQH/AXcBnQEsAf8BggGmAVEB/wHaAa8BqgH/AcgCxgH/CAABmAHLAfkB/wHU
-        A/8BygP/AcoD/wHUA/8BhwHCAfgB/zAAAY0BvAHyAf8BjQG8AfIB/wGNAbwB8gH/DAABbAGUAc8B/wHY
+        AdoB/wHBAbsBugH/FAAB9wHsAekB/wF+AYwBRwH/AUMBrQFRAf8BRgGlAUUB/wFOAaIBPQH/AeMBzQF9
+        Af8B/QHPAW8B/wH+AcYBUAH/AXYBnQErAf8BggGmAVAB/wHaAa8BqgH/AcgCxgH/CAABmAHLAfkB/wHU
+        A/8BygP/AcoD/wHUA/8BhwHCAfgB/zAAAY0BvAHyAf8BjQG8AfIB/wGNAbwB8gH/DAABawGUAc8B/wHY
         AfMB9gH/AekB9wH4Af8B6QH3AfgB/wHuAfYB8AH/AYQBxAH2Af8QAAGzArAB/wHxAekB5wH/AfUB6QHl
         Af8B9QHpAeUB/wH1AekB5QH/AfEB6QHnAf8B9AHrAegB/wH0AeYB4QH/AfEB4AHaAf8B8QHgAdoB/wH0
-        AeYB4QH/AaoCpgH/EAAB+wH4AfcB/wHLAaQBiAH/AVIBnAE9Af8BpAG2AV0B/wFlAZwBMgH/AZgBtgFa
-        Af8BtgG4AU8B/wH+AcABPwH/AfwBxAFIAf8B0gGQAXsB/wH3AewB6QH/AcgCxgH/DAABlQHKAfkB/wGY
-        AcsB+QH/AZgBywH5Af8BkwHIAfkB/1AAAXgBnAHPAf8BeAGcAc8B/wF4AZwBzwH/AXYBlwHKAf8BfQGW
+        AeYB4QH/AaoCpgH/EAAB+wH4AfcB/wHLAaQBiAH/AVEBnAE8Af8BpAG2AVwB/wFkAZwBMQH/AZgBtgFZ
+        Af8BtgG4AU4B/wH+AcABPgH/AfwBxAFHAf8B0gGQAXoB/wH3AewB6QH/AcgCxgH/DAABlQHKAfkB/wGY
+        AcsB+QH/AZgBywH5Af8BkwHIAfkB/1AAAXcBnAHPAf8BdwGcAc8B/wF3AZwBzwH/AXUBlwHKAf8BfAGW
         AcgB/xAAAbUCsgH/AfEB6QHnAf8B8QHpAecB/wHPAcgBxgH/Ac8BygHJAf8B9QHtAeoB/wH0AesB6AH/
         AdIBygHIAf8BxALCAf8B9AHmAeEB/wHuAeYB5AH/AaoCpgH/EAAB+wH5AfgB/wH3AewB6QH/Ab8BmQGA
-        Af8BkAGiAVcB/wGgAbEBVgH/AWQBqQFIAf8BRAGtAVIB/wGpAa4BTwH/AdIBkAF7Af8B7gHYAdEB/wH5
+        Af8BkAGiAVYB/wGgAbEBVQH/AWMBqQFHAf8BQwGtAVEB/wGpAa4BTgH/AdIBkAF6Af8B7gHYAdEB/wH5
         AfMB8QH/AcgCxgH/lAABtQKyAf8BtQKyAf8EAAG5ArYB/wH1AekB5QH/AfEB6QHnAf8BtQKyAf8EAAGt
-        AqkB/wGtAqkB/xQAAfsB+QH4Af8B+AHwAe0B/wH4AfAB7QH/AeQBwAG1Af8BxAGhAYEB/wGkAZIBaQH/
-        AbABlwF3Af8B2gGvAaIB/wH3AewB6QH/AfgB8AHtAf8B+QHzAfEB/wHIAsYB/6QAAd4B2QHXAf8B7gHf
+        AqkB/wGtAqkB/xQAAfsB+QH4Af8B+AHwAe0B/wH4AfAB7QH/AeQBwAG1Af8BxAGhAYEB/wGkAZIBaAH/
+        AbABlwF2Af8B2gGvAaIB/wH3AewB6QH/AfgB8AHtAf8B+QHzAfEB/wHIAsYB/6QAAd4B2QHXAf8B7gHf
         AdoB/wHEAsIB/yAAAfsB+QH4Af8B+QHzAfEB/wH5AfMB8QH/AfkB8wHxAf8B+QHzAfEB/wH5AfMB8QH/
         AfkB8wHxAf8B+AHwAe0B/wH5AfMB8QH/AfkB8wHxAf8B+QHzAfEB/wHMAsoB/6QAAbkCtgH/AbkCtgH/
         JAAB0AHOAc0B/wHQAc4BzQH/AdABzgHNAf8B0AHOAc0B/wHQAc4BzQH/AcwCygH/AcwCygH/AcwCygH/
         AcwCygH/AcwCygH/AcwCygH/AbMCrwH/DAABxQLCAf8BwQK+Af8BwQK+Af8BvgK8Af8BvgK8Af8BvgK8
-        Af8BvgK8Af8BvgK8Af8BgQGbAYIB/wFPAZMBWQH/ASwBkgFDAf8BPAGRAUsB/wFwAZQBdAH/AbABsgGt
+        Af8BvgK8Af8BvgK8Af8BgQGbAYIB/wFOAZMBWAH/ASsBkgFCAf8BOwGRAUoB/wFvAZQBcwH/AbABsgGt
         Af8IAAHFAsIB/wHBAr4B/wHBAr4B/wG+ArwB/wG+ArwB/wG+ArwB/wG+ArwB/wG+ArwB/wGEAYYBqAH/
-        AVcBYgG1Af8BNQFLAbsB/wFEAVUBuQH/AXUBewGrAf8BsAGvAbQB/wgAAcUCwgH/AcECvgH/AcECvgH/
-        Ab4CvAH/Ab4CvAH/Ab4CvAH/Ab4CvAH/Ab4CvAH/AXUBtgF8Af8BXgHLAXkB/wFZAccBcgH/AVMBswFh
+        AVYBYQG1Af8BNAFKAbsB/wFDAVQBuQH/AXQBegGrAf8BsAGvAbQB/wgAAcUCwgH/AcECvgH/AcECvgH/
+        Ab4CvAH/Ab4CvAH/Ab4CvAH/Ab4CvAH/Ab4CvAH/AXQBtgF7Af8BXQHLAXgB/wFYAccBcQH/AVIBswFg
         Af8CuQG2Af8BvgK8Af8IAAHFAsIB/wHBAr4B/wHBAr4B/wG+ArwB/wG+ArwB/wG+ArwB/wG+ArwB/wG+
-        ArwB/wG+ArwB/wGQAbEBjgH/AXsBrwF/Af8BvgK8Af8BvgK8Af8BugK4Af8IAAHBAr4B/wH6AfUB9AH/
-        AfcB7wHsAf8B9wHvAewB/wH2AewB6QH/AfYB7AHpAf8B9gHsAekB/wGBAasBgQH/ASsBowFGAf8BKwHX
-        AXQB/wFmAeYBnwH/AUUB3QGBAf8BLAG4AVYB/wFCAYoBSgH/CAABwQK+Af8B+gH1AfQB/wH3Ae8B7AH/
-        AfcB7wHsAf8B9gHsAekB/wH2AewB6QH/AfYB7AHpAf8BgwGGAcIB/wE2AVAB0wH/ATIBbAH1Af8BLQF4
-        AfwB/wEwAXEB+QH/ATYBWgHkAf8BSwFVAbAB/wgAAcECvgH/AfoB9QH0Af8B9wHvAewB/wH3Ae8B7AH/
-        AfYB7AHpAf8B9gHsAekB/wH2AewB6QH/AfQB5gHhAf8BgQHMAYQB/wF/AfABjgH/AWwB5AGAAf8BVQHD
-        AW4B/wH3Ae8B7AH/Ab4CvAH/CAABwQK+Af8B+gH1AfQB/wH3Ae8B7AH/AfcB7wHsAf8B9gHsAegB/wH2
-        AewB6AH/AfYB7AHoAf8B9AHmAeEB/wHZAeABzAH/AWMB0QGAAf8BYgHaAYEB/wGxAdIBqQH/AfcB7wHs
+        ArwB/wG+ArwB/wGQAbEBjgH/AXoBrwF+Af8BvgK8Af8BvgK8Af8BugK4Af8IAAHBAr4B/wH6AfUB9AH/
+        AfcB7wHsAf8B9wHvAewB/wH2AewB6QH/AfYB7AHpAf8B9gHsAekB/wGBAasBgQH/ASoBowFFAf8BKgHX
+        AXMB/wFlAeYBnwH/AUQB3QGBAf8BKwG4AVUB/wFBAYoBSQH/CAABwQK+Af8B+gH1AfQB/wH3Ae8B7AH/
+        AfcB7wHsAf8B9gHsAekB/wH2AewB6QH/AfYB7AHpAf8BgwGGAcIB/wE1AU8B0wH/ATEBawH1Af8BLAF3
+        AfwB/wEvAXAB+QH/ATUBWQHkAf8BSgFUAbAB/wgAAcECvgH/AfoB9QH0Af8B9wHvAewB/wH3Ae8B7AH/
+        AfYB7AHpAf8B9gHsAekB/wH2AewB6QH/AfQB5gHhAf8BgQHMAYQB/wF+AfABjgH/AWsB5AGAAf8BVAHD
+        AW0B/wH3Ae8B7AH/Ab4CvAH/CAABwQK+Af8B+gH1AfQB/wH3Ae8B7AH/AfcB7wHsAf8B9gHsAegB/wH2
+        AewB6AH/AfYB7AHoAf8B9AHmAeEB/wHZAeABzAH/AWIB0QGAAf8BYQHaAYEB/wGxAdIBqQH/AfcB7wHs
         Af8BugK4Af8IAAHFAsIB/wH6AfUB9AH/AfQB5gHhAf8B9AHmAeEB/wHyAeQB3gH/AfIB5AHeAf8BwwHF
-        AbAB/wEsAZQBOAH/ATABxAFYAf8BMwHYAXIB/wHjAfIB6QH/AYEB4AGfAf8BMgHMAWAB/wEvAacBQQH/
+        AbAB/wErAZQBNwH/AS8BxAFXAf8BMgHYAXEB/wHjAfIB6QH/AYEB4AGfAf8BMQHMAV8B/wEuAacBQAH/
         AYEBqwGBAf8EAAHFAsIB/wH6AfUB9AH/AfQB5gHhAf8B9AHmAeEB/wHyAeQB3gH/AfIB5AHeAf8BxQG5
-        AcgB/wE5AUgBygH/AT0BYAH3Af8BPgFzAf4B/wE+AXMB/gH/AT4BcwH+Af8BPwFmAfwB/wE8AVAB4QH/
+        AcgB/wE4AUcBygH/ATwBXwH3Af8BPQFyAf4B/wE9AXIB/gH/AT0BcgH+Af8BPgFlAfwB/wE7AU8B4QH/
         AYEBhQHFAf8EAAHFAsIB/wH6AfUB9AH/AfQB5gHhAf8B9AHmAeEB/wHyAeQB3gH/AfIB5AHeAf8B7wHb
-        AdQB/wHvAdsB1AH/AYEByQGBAf8BfwHwAY4B/wFsAeQBgAH/AVUBwwFuAf8B9AHmAeEB/wG6ArgB/wgA
+        AdQB/wHvAdsB1AH/AYEByQGBAf8BfgHwAY4B/wFrAeQBgAH/AVQBwwFtAf8B9AHmAeEB/wG6ArgB/wgA
         AcUCwgH/AfoB9QH0Af8B9AHmAeEB/wH0AeYB4QH/AfIB5AHeAf8B8gHkAd4B/wHwAd4B1wH/AekB2gHQ
-        Af8BbQHGAXkB/wF9AfABkQH/AW0B5QGBAf8BVgHFAXAB/wHXAd0ByQH/Ab4CvAH/CAABwQK+Af8B+gH1
-        AfQB/wH3Ae8B7AH/Ae0B4gHeAf8B3wHTAdAB/wHfAdMB0AH/AYEBoQF8Af8BMAGlATsB/wF0AcoBgQH/
-        AYMB2AGZAf8B7gH2AfAB/wGyAeMBvwH/AYEB0wGPAf8BSAGzAVMB/wE9AY4BQwH/BAABwQK+Af8B+gH1
-        AfQB/wH3Ae8B7AH/Ae0B4gHeAf8B3wHTAdAB/wHfAdMB0AH/AoEBtwH/ATwBUAHhAf8BfgGEAfMB/wGP
-        AaIB9gH/AY8BogH2Af8BjwGlAfYB/wGMAZsB9gH/AVcBZQHrAf8BRAFVAbkB/wQAAcECvgH/AfoB9QH0
-        Af8B9wHvAewB/wHtAeIB3gH/Ad8B0wHQAf8B3wHTAdAB/wHdAdABzAH/AdwBzgHJAf8BfAHGAYEB/wF/
-        AfABjgH/AWwB5AGAAf8BVQHDAW4B/wH0AeYB4QH/Ab4CvAH/CAABwQK+Af8B+gH1AfQB/wH3Ae8B7AH/
-        Ae0B4gHeAf8B4QHWAdIB/wHdAdABzAH/Ad0B0AHMAf8BgQHFAYEB/wFzAeUBiwH/AYAB7wGLAf8BbAHk
-        AYAB/wFVAdUBbwH/AWYBwwF3Af8BtQG2AbQB/wgAAcUCwgH/AfoB9QH0Af8B+AHvAewB/wHuAeUB4gH/
-        AeEB2QHWAf8B4QHWAdIB/wF0AZ4BcgH/ATMBqAE9Af8BwgHgAcUB/wHtAfIB7QH/A/4B/wHyAfYB8gH/
-        Ae0B8gHtAf8BaQG8AXEB/wEuAYgBNgH/BAABxQLCAf8B+gH1AfQB/wH4Ae8B7AH/Ae4B5QHiAf8B4QHZ
-        AdYB/wHhAdYB0gH/AXoBfAG5Af8BQgFQAegB/wG+AcIB7wH/AesB7AH1Af8B6wHsAfUB/wHrAewB9QH/
-        AesB7AH1Af8BdAF/AeoB/wE5AUUBuwH/BAABxQLCAf8B+gH1AfQB/wH4Ae8B7AH/Ae4B5QHiAf8B4QHZ
-        AdYB/wHhAdcB1AH/AdcB0gHJAf8BwAHKAbMB/wF0AccBfwH/AX8B8AGOAf8BbAHkAYAB/wFVAcMBbgH/
+        Af8BbAHGAXgB/wF8AfABkQH/AWwB5QGBAf8BVQHFAW8B/wHXAd0ByQH/Ab4CvAH/CAABwQK+Af8B+gH1
+        AfQB/wH3Ae8B7AH/Ae0B4gHeAf8B3wHTAdAB/wHfAdMB0AH/AYEBoQF7Af8BLwGlAToB/wFzAcoBgQH/
+        AYMB2AGZAf8B7gH2AfAB/wGyAeMBvwH/AYEB0wGPAf8BRwGzAVIB/wE8AY4BQgH/BAABwQK+Af8B+gH1
+        AfQB/wH3Ae8B7AH/Ae0B4gHeAf8B3wHTAdAB/wHfAdMB0AH/AoEBtwH/ATsBTwHhAf8BfQGEAfMB/wGP
+        AaIB9gH/AY8BogH2Af8BjwGlAfYB/wGMAZsB9gH/AVYBZAHrAf8BQwFUAbkB/wQAAcECvgH/AfoB9QH0
+        Af8B9wHvAewB/wHtAeIB3gH/Ad8B0wHQAf8B3wHTAdAB/wHdAdABzAH/AdwBzgHJAf8BewHGAYEB/wF+
+        AfABjgH/AWsB5AGAAf8BVAHDAW0B/wH0AeYB4QH/Ab4CvAH/CAABwQK+Af8B+gH1AfQB/wH3Ae8B7AH/
+        Ae0B4gHeAf8B4QHWAdIB/wHdAdABzAH/Ad0B0AHMAf8BgQHFAYEB/wFyAeUBiwH/AYAB7wGLAf8BawHk
+        AYAB/wFUAdUBbgH/AWUBwwF2Af8BtQG2AbQB/wgAAcUCwgH/AfoB9QH0Af8B+AHvAewB/wHuAeUB4gH/
+        AeEB2QHWAf8B4QHWAdIB/wFzAZ4BcQH/ATIBqAE8Af8BwgHgAcUB/wHtAfIB7QH/A/4B/wHyAfYB8gH/
+        Ae0B8gHtAf8BaAG8AXAB/wEtAYgBNQH/BAABxQLCAf8B+gH1AfQB/wH4Ae8B7AH/Ae4B5QHiAf8B4QHZ
+        AdYB/wHhAdYB0gH/AXkBewG5Af8BQQFPAegB/wG+AcIB7wH/AesB7AH1Af8B6wHsAfUB/wHrAewB9QH/
+        AesB7AH1Af8BcwF+AeoB/wE4AUQBuwH/BAABxQLCAf8B+gH1AfQB/wH4Ae8B7AH/Ae4B5QHiAf8B4QHZ
+        AdYB/wHhAdcB1AH/AdcB0gHJAf8BwAHKAbMB/wFzAccBfgH/AX4B8AGOAf8BawHkAYAB/wFUAcMBbQH/
         AdYB3QHHAf8BsAG3Aa0B/wgAAcUCwgH/AfoB9QH0Af8B+AHvAewB/wHuAeUB4gH/AeEB2AHWAf8B4QHW
-        AdIB/wG8Ac0BsQH/AV8BxgFrAf8BYwHWAYEB/wF/AfABjgH/AWwB5AGAAf8BVAHPAXYB/wFfAcYBawH/
+        AdIB/wG8Ac0BsQH/AV4BxgFqAf8BYgHWAYEB/wF+AfABjgH/AWsB5AGAAf8BUwHPAXUB/wFeAcYBagH/
         AYEBqQGBAf8IAAHFAsIB/wH6AfUB9AH/AfkB8AHtAf8B7gHlAeIB/wHhAdkB1gH/AeEB2QHWAf8BhwGo
-        AYMB/wE6AaUBRAH/AWgByAFxAf8BdAHKAYEB/wHtAfIB7QH/AaIB2AGnAf8BbgHKAXUB/wFLAbQBVAH/
-        AU8BkwFZAf8EAAHFAsIB/wH6AfUB9AH/AfkB8AHtAf8B7gHlAeIB/wHhAdkB1gH/AeEB2QHWAf8CiwG5
-        Af8BSAFWAd8B/wF2AYEB/AH/AYEBigH+Af8BhAGOAf4B/wGEAY4B/gH/AX0BgQH+Af8BVwFlAesB/wFZ
-        AWMBvAH/BAABxQLCAf8B+gH1AfQB/wH5AfAB7QH/Ae4B5QHiAf8B5AHcAdkB/wHhAdkB1gH/AcMBzwG5
-        Af8BTwHGAWMB/wFpAd8BgwH/AX8B8AGOAf8BbAHkAYAB/wFVAdMBdAH/AUgBwwFmAf8BhgGrAYQB/wgA
+        AYMB/wE5AaUBQwH/AWcByAFwAf8BcwHKAYEB/wHtAfIB7QH/AaIB2AGnAf8BbQHKAXQB/wFKAbQBUwH/
+        AU4BkwFYAf8EAAHFAsIB/wH6AfUB9AH/AfkB8AHtAf8B7gHlAeIB/wHhAdkB1gH/AeEB2QHWAf8CiwG5
+        Af8BRwFVAd8B/wF1AYEB/AH/AYEBigH+Af8BhAGOAf4B/wGEAY4B/gH/AXwBgQH+Af8BVgFkAesB/wFY
+        AWIBvAH/BAABxQLCAf8B+gH1AfQB/wH5AfAB7QH/Ae4B5QHiAf8B5AHcAdkB/wHhAdkB1gH/AcMBzwG5
+        Af8BTgHGAWIB/wFoAd8BgwH/AX4B8AGOAf8BawHkAYAB/wFUAdMBcwH/AUcBwwFlAf8BhgGrAYQB/wgA
         AcUCwgH/AfoB9QH0Af8B+QHwAe0B/wHuAeUB4gH/AeEB2AHWAf8B4QHYAdYB/wHhAdgB1gH/Ad8B1QHS
-        Af8BfgHMAYEB/wF/AfABjgH/AWwB5AGAAf8BVgHFAXAB/wH3Ae8B7AH/AboCuAH/CAABxQLCAf8B+gH1
-        AfQB/wH5AfAB7QH/AfQB5gHhAf8B5AHcAdkB/wHkAdwB2QH/AdQB0gHKAf8BPQGOAUMB/wF0AcUBfAH/
-        AYEB0wGFAf8B1QHmAdYB/wGiAdgBpwH/AXsBzAGBAf8BRAGgAUwB/wgAAcUCwgH/AfoB9QH0Af8B+QHw
-        Ae0B/wH0AeYB4QH/AeQB3AHZAf8B5AHcAdkB/wHUAc0B0wH/AUQBVQG5Af8BfwGBAfEB/wGJAZMB/QH/
-        AZEBmgH+Af8BiQGTAf0B/wGBAYYB9wH/AVABXAHTAf8IAAHFAsIB/wH6AfUB9AH/AfkB8AHtAf8B7gHl
-        AeIB/wHkAdwB2QH/AeQB3AHZAf8B4QHZAdYB/wGlAdEBnwH/AWoB4QGEAf8BfwHvAYsB/wFsAeQBgAH/
-        AVUB0wF0Af8BgQHMAYQB/wG+ArwB/wgAAcUCwgH/AfoB9QH0Af8B+QHwAe0B/wHuAeUB4gH/AeQB3AHZ
-        Af8B5AHcAdkB/wHhAdgB1gH/AeEB2AHWAf8BfwHOAYEB/wF/AfABjgH/AWwB5AGAAf8BVwHJAW8B/wH2
+        Af8BfQHMAYEB/wF+AfABjgH/AWsB5AGAAf8BVQHFAW8B/wH3Ae8B7AH/AboCuAH/CAABxQLCAf8B+gH1
+        AfQB/wH5AfAB7QH/AfQB5gHhAf8B5AHcAdkB/wHkAdwB2QH/AdQB0gHKAf8BPAGOAUIB/wFzAcUBewH/
+        AYEB0wGFAf8B1QHmAdYB/wGiAdgBpwH/AXoBzAGBAf8BQwGgAUsB/wgAAcUCwgH/AfoB9QH0Af8B+QHw
+        Ae0B/wH0AeYB4QH/AeQB3AHZAf8B5AHcAdkB/wHUAc0B0wH/AUMBVAG5Af8BfgGBAfEB/wGJAZMB/QH/
+        AZEBmgH+Af8BiQGTAf0B/wGBAYYB9wH/AU8BWwHTAf8IAAHFAsIB/wH6AfUB9AH/AfkB8AHtAf8B7gHl
+        AeIB/wHkAdwB2QH/AeQB3AHZAf8B4QHZAdYB/wGlAdEBnwH/AWkB4QGEAf8BfgHvAYsB/wFrAeQBgAH/
+        AVQB0wFzAf8BgQHMAYQB/wG+ArwB/wgAAcUCwgH/AfoB9QH0Af8B+QHwAe0B/wHuAeUB4gH/AeQB3AHZ
+        Af8B5AHcAdkB/wHhAdgB1gH/AeEB2AHWAf8BfgHOAYEB/wF+AfABjgH/AWsB5AGAAf8BVgHJAW4B/wH2
         AewB6AH/Ab4CvAH/CAABxQLCAf8B+gH1AfQB/wH5AfAB7QH/Ae4B5QHiAf8B5AHcAdkB/wHkAdwB2QH/
-        AfYB7AHpAf8BrgG9AagB/wFMAZQBUQH/AYEBxAGBAf8BlQHVAZoB/wGHAc0BjQH/AVgBpAFeAf8BcQGT
-        AXIB/wgAAcUCwgH/AfoB9QH0Af8B+QHwAe0B/wHuAeUB4gH/AeQB3AHZAf8B5AHcAdkB/wH3Ae8B7AH/
-        AbABrQHFAf8BVQFeAb4B/wGCAYsB6AH/AZwBowHzAf8BjwGXAe4B/wFiAWwBzwH/AXUBewGrAf8IAAHF
+        AfYB7AHpAf8BrgG9AagB/wFLAZQBUAH/AYEBxAGBAf8BlQHVAZoB/wGHAc0BjQH/AVcBpAFdAf8BcAGT
+        AXEB/wgAAcUCwgH/AfoB9QH0Af8B+QHwAe0B/wHuAeUB4gH/AeQB3AHZAf8B5AHcAdkB/wH3Ae8B7AH/
+        AbABrQHFAf8BVAFdAb4B/wGCAYsB6AH/AZwBowHzAf8BjwGXAe4B/wFhAWsBzwH/AXQBegGrAf8IAAHF
         AsIB/wH6AfUB9AH/AfkB8AHtAf8B7gHlAeIB/wHkAdwB2QH/AeQB3AHZAf8B9gHsAekB/wHkAdwB2QH/
-        AYEByAGBAf8BeAHtAZAB/wFuAeYBgQH/AWQBxwF0Af8B9gHsAekB/wG+ArwB/wgAAcUCwgH/AfoB9QH0
-        Af8B+QHwAe0B/wHuAeUB4gH/AeQB3AHZAf8B5AHcAdkB/wH2AewB6AH/AeQB3AHZAf8BgAHRAYMB/wF/
-        AfABjgH/AWwB5AGAAf8BVwHJAW8B/wH3Ae8B7AH/Ab4CvAH/CAABxQLCAf8B+gH1AfQB/wH5AfAB7QH/
+        AYEByAGBAf8BdwHtAZAB/wFtAeYBgQH/AWMBxwFzAf8B9gHsAekB/wG+ArwB/wgAAcUCwgH/AfoB9QH0
+        Af8B+QHwAe0B/wHuAeUB4gH/AeQB3AHZAf8B5AHcAdkB/wH2AewB6AH/AeQB3AHZAf8BgAHRAYMB/wF+
+        AfABjgH/AWsB5AGAAf8BVgHJAW4B/wH3Ae8B7AH/Ab4CvAH/CAABxQLCAf8B+gH1AfQB/wH5AfAB7QH/
         Ae4B5QHiAf8B5AHcAdkB/wHkAdwB2QH/Ae4B5QHiAf8B1gHOAcwB/wHdAdsB0wH/AZYBtwGSAf8BgAGp
-        AX8B/wF9AZ8BfAH/AcoB1gHEAf8BvgK8Af8IAAHFAsIB/wH6AfUB9AH/AfkB8AHtAf8B7gHlAeIB/wHk
+        AX4B/wF8AZ8BewH/AcoB1gHEAf8BvgK8Af8IAAHFAsIB/wH6AfUB9AH/AfkB8AHtAf8B7gHlAeIB/wHk
         AdwB2QH/AeEB2QHWAf8B9AHmAeEB/wHWAc4BzAH/Ad0B1gHcAf8CmgHIAf8CgQHDAf8CgQG3Af8BzAHJ
         AdwB/wG+ArwB/wgAAcUCwgH/AfoB9QH0Af8B+QHwAe0B/wHuAeUB4gH/AeQB3AHZAf8B5AHcAdkB/wHu
-        AeUB4gH/AdYBzgHMAf8B5QHiAdoB/wFwAdQBgAH/AWEB1wF/Af8BugHIAbEB/wH3Ae8B7AH/Ab4CvAH/
+        AeUB4gH/AdYBzgHMAf8B5QHiAdoB/wFvAdQBgAH/AWAB1wF+Af8BugHIAbEB/wH3Ae8B7AH/Ab4CvAH/
         CAABxQLCAf8B+gH1AfQB/wH5AfAB7QH/Ae4B5QHiAf8B5AHcAdkB/wHkAdwB2QH/Ae4B5QHiAf8B1gHO
-        AcwB/wGBAdQBhgH/AX0B8AGRAf8BbQHlAYEB/wFUAc8BdgH/AfkB8AHtAf8BvgK8Af8IAAHFAsIB/wH7
+        AcwB/wGBAdQBhgH/AXwB8AGRAf8BbAHlAYEB/wFTAc8BdQH/AfkB8AHtAf8BvgK8Af8IAAHFAsIB/wH7
         AfkB+AH/AfkB8AHtAf8B7gHlAeIB/wHkAdwB2QH/AeQB3AHZAf8B9AHmAeEB/wHZAdIBzwH/AfkB8AHt
         Af8B+QHwAe0B/wH4Ae8B7AH/AdQB0gHKAf8B+gH1AfQB/wG+ArwB/wgAAcUCwgH/AfsB+QH4Af8B+QHw
         Ae0B/wHuAeUB4gH/AeQB3AHZAf8B5AHcAdkB/wHuAeUB4gH/AdkB0gHPAf8B+QHwAe0B/wH5AfAB7QH/
@@ -415,127 +988,740 @@
         AQEBgAEBAYABAQGAAQMBgAEDAYABAwGAAQMBgAEHAYABBwGAAQcBgAEHAYABDwGAAQ8BgAEPAYABDws=
 </value>
   </data>
+  <data name="MapList.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;MapList.Name" xml:space="preserve">
+    <value>MapList</value>
+  </data>
+  <data name="&gt;&gt;MapList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapList.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;MapList.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>273, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="AddMapButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAhhJREFUOE99kt9L
-        U2Ecxif7SxwlCRGVF6VF5DCiCLuJrqJuoo3TVYsKiyyTUIKKdAUVtH6Ji2gsDepiLVo7IGOWbHncKHVH
-        bWBsTg5rusX21PPaWZyd1QsPnPfwfT/v83zfb4Pl94p+VFDI5yxWq5Vb0yqXy+JfqVS0dHTYG0wFsjyG
-        SqWC/I/SfxUIBOHzvURdAA9nl4sGaQUNmdzqH60gGHwPJamaIXSgA+a+LSH5dUEUqul89Zt7v3+0KoOT
-        egBCMrkVsD+EzqrfBSwUkpFS02CcapR/AXjwUyxZjcU44xNTwq0BQOpq8aco1CPwNkaoBURin+sDantA
-        AGGMEP8yjYHXd3Dm2Vm4PKcRViJmB/UAi5kCvG992Ou243L4PO5N3sb18T4cetoJ56Djbw8YQQfonacD
-        2m290QKXLOFqvBtKehLDicfoip6C/WFbfQBt88moXm8f2oY2wzF2FF0RCVktKwAnI8ex/1U7Dg7uWYPo
-        DthlHRBTVDgfSGjxNkNOhcRhTiuHi9+OwDFs7F+3BuCEMQLffWYui4n4rJDr0TlsGWoSt99N9GK5sIR3
-        8yO4Gb+EfaO7RDyDA+anZhY0Ib/8AZvcNnSGm+BMNGNRm4cndQGHoxuwbXg9Lj7vNjugC3ZfF4t2PmmE
-        NNUIT/oIeqZ34MAbG3Zf225sImNQnLBaXbnfIxrWOmBD+62tkNwn8GLELwC/ACt9xxnW2QbqAAAAAElF
-        TkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIISURBVDhPfZLfS1NhHMb9VxwpCRGWF6VJpBBRhN1EV2I3
+        4sbpykWFRZZJGEFKugILnP0QJ+FYGtTFXLR2QMYs2fK4UeqOs4GyqRx0asEefV47y+M59cID7+F838/7
+        fZ73W1S0syJfFASDMmR53FL8R/n9AbDetHgwn89jbf3Xf0WA1/vWDCGAh7OrWwZpOQ2Zlc0/2kAg8AlK
+        QjVD9gLmfy4j8WNBFKrptcKe3z7faEGGTqwAhGRWNsB8CJ1TlwSMWSTVtDGPfwF48Gs0UbBFOxOT08Ku
+        IVBSN7d+i0LdAm+jhf2AcPSbNUAPcS+Ae1qIfZ9B9/unuDZ0HU73VYSUsLkDK8BiJgfPmBdnXLW4G7qJ
+        Z1NP8GiiAxdf18HRY//7nLSgA/TkaYHtVnZWwClLuB9rhZKewmD8JVoizajtr7IGsG0+GdXu6UDVQDns
+        4w1oCUvIalkBuBJuxLl3NbjQc3oXonfAlHVAVFHh6JNQ4SmDnAyKw5xWDhf3dv9lHHpwYBfACaMFvvvs
+        fBaTsTkh54sbODJQKm7vjbdjNbeMj6kRdMXu4OzoSWHP0AH9U7MLmpBP/ozDLhvqQqVwxMuwqKXgTt7C
+        pchBHBsswe03reYO2AXT18Wi6lfFkKaL4U7Xo23mBM5/sOHUw+PGEGmD4oTt173nbSKwym4bah4fheRq
+        wvCITwC2AbpY3noXadHQAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="AddMapButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="AddMapButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="AddMapButton.ToolTipText" xml:space="preserve">
+    <value>Add a map to the application</value>
   </data>
   <data name="RemoveMapButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgJJREFUOE99k99L
-        U2Ecxif7U4IQFIR+QBgIXjQvlhQRYtSVN5FF5C/oYjioOdBJIl0Iq6siCCI9URHDcdATB5b4CyeTwVKP
-        TLHcXOm2s+W2J5/3cE4enb3w4X3fw3mf8zzf93tqHIdjdj6GfDbjcDqd3FqjXC6LZ5w5dD3vaGm5UmN7
-        iRtVjaBQPEA29+e/hMMyPk1IqCrAw+lfRYtURodBQTzjWpanEYtrGB//YBehA1NgY3MX8URSwEOceYhI
-        0kcLm0g1AR6gGOvDeXUjLcSmlAjWtS0wjhXlNAc/UnnMLa4ciVUQe7q1CSiKKorIrEcjcL2wFLfVhY6q
-        ChyvASNoW1kRIRH7jkgwiK9eD754PEh8mz3p4LQiqu8lyDfd2A48wf7rl9gdG8FCRzvedd3/VwNGMAX4
-        VfMWonPLCLkb8dvbh/LzQVSCo2LW/R5Eb7iqCzC3eW2hQABrV5tQevwAlSEvKs98Bv092LndivCta4aI
-        6YBNYwosxTSEuh9h23UJGUVGLrVj42dfJyYvNxgC7DBGYOPwvhejawIWTHOdw76vF/lXIwZvDnkxLBww
-        ns0B85PV5J4gElIx09QAve08KvcuWJTuXBTC6oD3pAO6YAOZKP6niLrqkeuoRenhGRTvnkXyej0kd7O9
-        iIxB2GHHeev34XN7Kyab64RtXqH5V/4FyU/RgaVjSCgAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH0SURBVDhPfZPfS1NhHMb9XwQRFIQ0iALBm91MUSLEsCtv
+        xIwof4AXw0GtQU2U6EJYXRVCEOqJijhsHPTIgSn+wsliMLUjUyynljq32dyTz3t4546bHvjwvudwvs/5
+        Ps/7PWVl59f8YgS6bsAwQjbkM65EVQPg+0UXC9OZfzhOnl5LMKjh66RSLEIBFu/9yeRJHKRgkRbPuNe0
+        aUSiJiYmPttFCgU2t/YRjcUFLOLKIqIoX/LYREoJsIBizIfr+uaeEJvSQ/hpboN28llc1cGvxAkWln8U
+        2EqLe9q1CTBhhkivhRa4X1qJ2nJhRyUFZIhSgBbM7WNhIRZZQ8jvx4zbhe8uF2Kz88UdXBaQIRrjCrR7
+        Tuz4nuHowzvsj45gqaMNn552X2RAC1KAX5WnEF5Yheq8jb/ufpy9eYmc/7VYU14XwncdpQVoQR6b6vNh
+        o7Ee2YFHyL1yIzfssRjsxW57E4L3my0R2QGHRgqsREyoPU+w47iFA11DMrFr43f/QwTu1FgCnDBa4ODw
+        vJfDGwIGZjpu4MjTh5P3IxZj57wdEh3Qnq0D+ifr8UNBSDUwV1+DVGstcl11ebIPbgph44W7uAN2wQGS
+        6N7nCDuqkeyoRPZxOTKdFYi3VENxNthDpA3CCbvMR68H39qaEGioEm3zCOVf+R87WeXQgnPczgAAAABJ
+        RU5ErkJggg==
 </value>
+  </data>
+  <data name="RemoveMapButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="RemoveMapButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="RemoveMapButton.ToolTipText" xml:space="preserve">
+    <value>Remove the selected map from the application</value>
+  </data>
+  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 25</value>
+  </data>
+  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 157</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>MapGroup</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="MapGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 56</value>
+  </data>
+  <data name="MapGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>696, 176</value>
+  </data>
+  <data name="MapGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="MapGroup.Text" xml:space="preserve">
+    <value>Maps</value>
+  </data>
+  <data name="&gt;&gt;MapGroup.Name" xml:space="preserve">
+    <value>MapGroup</value>
+  </data>
+  <data name="&gt;&gt;MapGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MapGroup.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="flyoutEntry.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 128</value>
+  </data>
+  <data name="flyoutEntry.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 104</value>
+  </data>
+  <data name="flyoutEntry.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;flyoutEntry.Name" xml:space="preserve">
+    <value>flyoutEntry</value>
+  </data>
+  <data name="&gt;&gt;flyoutEntry.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.FlyoutEditor, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4326, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;flyoutEntry.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;flyoutEntry.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="widgetEntry.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 88</value>
+  </data>
+  <data name="widgetEntry.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 40</value>
+  </data>
+  <data name="widgetEntry.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="widgetEntry.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;widgetEntry.Name" xml:space="preserve">
+    <value>widgetEntry</value>
+  </data>
+  <data name="&gt;&gt;widgetEntry.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.WidgetEntry, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4326, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;widgetEntry.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;widgetEntry.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="containerEditor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 8</value>
+  </data>
+  <data name="containerEditor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 80</value>
+  </data>
+  <data name="containerEditor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="containerEditor.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;containerEditor.Name" xml:space="preserve">
+    <value>containerEditor</value>
+  </data>
+  <data name="&gt;&gt;containerEditor.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.ContainerEditor, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4326, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;containerEditor.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;containerEditor.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>208, 16</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>485, 264</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splitter2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 16</value>
+  </data>
+  <data name="splitter2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 264</value>
+  </data>
+  <data name="splitter2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;splitter2.Name" xml:space="preserve">
+    <value>splitter2</value>
+  </data>
+  <data name="&gt;&gt;splitter2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Splitter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitter2.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;splitter2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="WidgetTree.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="WidgetTree.ImageIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="WidgetTree.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="WidgetTree.SelectedImageIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="WidgetTree.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 239</value>
+  </data>
+  <data name="WidgetTree.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;WidgetTree.Name" xml:space="preserve">
+    <value>WidgetTree</value>
+  </data>
+  <data name="&gt;&gt;WidgetTree.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WidgetTree.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;WidgetTree.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>372, 17</value>
   </metadata>
+  <data name="seperatorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 22</value>
+  </data>
+  <data name="seperatorToolStripMenuItem.Text" xml:space="preserve">
+    <value>Seperator</value>
+  </data>
+  <data name="submenuToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 22</value>
+  </data>
+  <data name="submenuToolStripMenuItem.Text" xml:space="preserve">
+    <value>Submenu</value>
+  </data>
+  <data name="widgetToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 22</value>
+  </data>
+  <data name="widgetToolStripMenuItem.Text" xml:space="preserve">
+    <value>Widget</value>
+  </data>
+  <data name="AddWidgetButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="AddWidgetButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAfZJREFUOE+NU91L
-        U3EY9k+xYaIQ4vAi5kdUUGGidCFdiV14MVuDwouBA7WIyBs/CnehXfjVNpkYrNIaTIS5I3PMVsjcDJWj
-        0zEJx3b8uNwjzy/OkTmdDh72nnPe53mf5z2/U1RU4Dc35wFRqKfgs+j6FuSdJBYXpeuJuN2zIKjKyXv7
-        x0j+O9TuuVxfQFw4lUQ2E9JSCIHgH1FThDVdbCeOsJtIweFw5YvMzLg1gkokmSBxYycjwPpCAdryen2C
-        oE6lKC0vB8OC+FfOgD15EXiTEdhIMiMsBcJaI68JOmAcOtDejsczL3Kpk/nPyeenmAfMMI2/gsXRg9ll
-        PyLr8f8LpZIqQJvE+U03Dj3Ca78VIxEb+lbeo/lzEyx261kfXXDqr99RYZN2VQeG/ip0SCa8W+3GWiIC
-        Z2wCltBL3B+rxqcfI7lOmVvdNkVou9peCWOgVZAOlAMh8CLYhsff74HOtKi0TTI3vbaZFmDmqqlySLJP
-        kLPZLJQTRdRG7zPc6i3JF4htJMWrogPm1NtL0Rk0YTj2FumTFBbiXzGw2oP6b3fAeDnLpgv1kLDmtiuG
-        dGjyl6I9Vo59JY5R2YqnoTLcdt5E13Tn5d8IzwXd0EXt5A08jxZjNNGCN5s1aPipw8PBuqs/MPUk0uYT
-        2wMYPupw94M+Z/IpjPsBkYVyoksAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH2SURBVDhPjVPdS1NxGPZPsWGiEOLwIuZHVFBhonQhXYld
+        eDFbg8KLgQO1iMgbPwp3oV341TaZGKzSGkyEuSNzzFbI3AyVo9MxCcd2/LjcI88vzpE5nQ4e9p5z3ud5
+        n+c9v1NUVOA3N+cBUain4LPo+hbknSQWF6XribjdsyCoysl7+8dI/jvU7rlcX0BcOJVENhPSUgiB4B9R
+        U4Q1XWwnjrCbSMHhcOWLzMy4NYJKJJkgcWMnI8D6QgHa8np9gqBOpSgtLwfDgvhXzoA9eRF4kxHYSDIj
+        LAXCWiOvCTpgHDrQ3o7HMy9yqZP5z8nnp5gHzDCNv4LF0YPZZT8i6/H/C6WSKkCbxPlNNw49wmu/FSMR
+        G/pW3qP5cxMsdutZH11w6q/fUWGTdlUHhv4qdEgmvFvtxloiAmdsApbQS9wfq8anHyO5Tplb3TZFaLva
+        XgljoFWQDpQDIfAi2IbH3++BzrSotE0yN722mRZg5qqpckiyT5Cz2SyUE0XURu8z3OotyReIbSTFq6ID
+        5tTbS9EZNGE49hbpkxQW4l8xsNqD+m93wHg5y6YL9ZCw5rYrhnRo8peiPVaOfSWOUdmKp6Ey3HbeRNd0
+        5+XfCM8F3dBF7eQNPI8WYzTRgjebNWj4qcPDwbqrPzD1JNLmE9sDGD7qcPeDPmfyKYz7AZGFcqJLAAAA
+        AElFTkSuQmCC
 </value>
+  </data>
+  <data name="AddWidgetButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="AddWidgetButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 22</value>
+  </data>
+  <data name="AddWidgetButton.ToolTipText" xml:space="preserve">
+    <value>Add a widget</value>
   </data>
   <data name="AddContainerButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAh5JREFUOE+tU91L
-        VEEcvf+KC0Xbg5g+mCaioQ9aLRvK0loYlGDtCpWR5kdmWCw9+NGSSbK2q/n9UZI9KBhJ7SWzVQt31xuk
-        KGvWQupyM6WXPfn73abuFj4EDZw7Z+Y358yZGa4k/Y92wv4KVvsELOdlEBegOT2nugDVeG9akFf+jmGt
-        9KOwOhgD65W3sF6eQV7JaxYfOzuB7JNjMJ95xmOJPiS2XNUMYrAjtlyaZjEJSZSRP4L048MMGkvCiaOW
-        TGr4yfWRBRfrqWcDV1s/Ah82GH4lzNBzMTfr/8Q16gVvaHJB6u0bRET9ji8b278Q+ryJP7G48hUCwYUI
-        11taWmMNaPJj+FuMmEQz75dx+7ETtvaLKOuuwbD3JZu5XG5IXd19nGC3HYfkceTcy0KttxKtgWbUTzuQ
-        32nCtYEKLQEZUHy9gYjqm1/GwYYklMp23JqrQXA1gB6lA2W+CzjsSUVBecFvA/0ZiSuLETgeOZHalYDi
-        yUJUTNmwpq6xgX2qCLlPM5Fcm/i3AQkJdFF05qReI+SlFyyORqNQt1TmxeOnYXQYIHk8nRxfJKAnJDH1
-        dGHJPXt49/tKHSJb63geeoLGuevIGUlHws39msFudzD6Rkb8XQNM3r04pxgRVkNwL1XB4tvHxkercrX/
-        oe1BOwToaQTols3VJqQ9jINtPg7u1VO4sXAIR0YNSKnbOf+/NHNzNlKcBmTcOcBPKLQ/AGkFnTCHDeJU
-        AAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIeSURBVDhPrVPdS1RBHL3/igtF24OYPpgmoqEPWi0bytJa
+        GJRg7QqVkeZHZlgsPfjRkkmytqv5/VGSPSgYSe0ls1ULd9cbpChr1kLqcjOllz35+92m7hY+BA2cO2fm
+        N+fMmRmuJP2PdsL+Clb7BCznZRAXoDk9p7oA1XhvWpBX/o5hrfSjsDoYA+uVt7BenkFeyWsWHzs7geyT
+        YzCfecZjiT4ktlzVDGKwI7ZcmmYxCUmUkT+C9OPDDBpLwomjlkxq+Mn1kQUX66lnA1dbPwIfNhh+JczQ
+        czE36//ENeoFb2hyQertG0RE/Y4vG9u/EPq8iT+xuPIVAsGFCNdbWlpjDWjyY/hbjJhEM++XcfuxE7b2
+        iyjrrsGw9yWbuVxuSF3dfZxgtx2H5HHk3MtCrbcSrYFm1E87kN9pwrWBCi0BGVB8vYGI6ptfxsGGJJTK
+        dtyaq0FwNYAepQNlvgs47ElFQXnBbwP9GYkrixE4HjmR2pWA4slCVEzZsKausYF9qgi5TzORXJv4twEJ
+        CXRRdOakXiPkpRcsjkajULdU5sXjp2F0GCB5PJ0cXySgJyQx9XRhyT17ePf7Sh0iW+t4HnqCxrnryBlJ
+        R8LN/ZrBbncw+kZG/F0DTN69OKcYEVZDcC9VweLbx8ZHq3K1/6HtQTsE6GkE6JbN1SakPYyDbT4O7tVT
+        uLFwCEdGDUip2zn/vzRzczZSnAZk3DnATyi0PwBpBZ0whw3iVAAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="AddContainerButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="AddContainerButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="AddContainerButton.Text" xml:space="preserve">
+    <value>Add a container</value>
+  </data>
+  <data name="RemoveWidgetButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="RemoveWidgetButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAdZJREFUOE+NU1sr
-        RFEY9V+UFKVcSpTyMoqIFwlPXkSS3PIgg4ZyySUPyqVEPExR82DqdAZlMo1xGZJr7rcOI0xjSI1ZrD2d
-        wxiGU6vznX2+b33rW3vviIgwj9ksgQiXE/bf7v4xTs8VWK1L/yMxmWZBkJWdr268UFwebc1onAHxY1cW
-        MplYsq3C7tgUMUkYc+3s+gmX1/eYmjKGkkxPm7QCtZDFBAsPz90CjH8koCyLZVEUqF1JSsl2+4pGwpyQ
-        EbjIEZYdTlFMuTa7U0vkN7F3qIhxqEDbHUmaE3Opnflm5+9dxqurIOv1sDQ3Y81iw/b+RcBQMqkEnI/4
-        7vRCfjaUrlZ4JkZwP9gLZ0kB5BbDZx5VsOv6xq4winJVBVJmCtz6OrwNdMA/1C/eL+2N2MrTwTY2GqyU
-        c6tuk4SyT7LS4GuogL9TD3+PIYCmGriKsiEV5nwSUDaLD07d2Dl6FJDr66FkJONhcR7eO1cQbuvKIafG
-        hRLQae4KFXDOM108PIZaPE/0BTDZi+fh7oCCj/GCzKYK9ZAwptuOtDi85CfAX5aowVecJIitbU2/3xGe
-        C6rh1m3pYuEtiYavMhKvpVG4zI2F+cPEP2+pehKZSMPk9Bgh+2vnd3DyCPgFLDOJAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHWSURBVDhPjVNbK0RRGPVflBSlXEqU8jKKiBcJT15Ektzy
+        IIOGcsklD8qlRDxMUfNg6nQGZTKNcRmSa+63DiNMY0iNWaw9ncMYhlOr8519vm9961t774iIMI/ZLIEI
+        lxP23+7+MU7PFVitS/8jMZlmQZCVna9uvFBcHm3NaJwB8WNXFjKZWLKtwu7YFDFJGHPt7PoJl9f3mJoy
+        hpJMT5u0ArWQxQQLD8/dAox/JKAsi2VRFKhdSUrJdvuKRsKckBG4yBGWHU5RTLk2u1NL5Dexd6iIcahA
+        2x1JmhNzqZ35ZufvXcarqyDr9bA0N2PNYsP2/kXAUDKpBJyP+O70Qn42lK5WeCZGcD/YC2dJAeQWw2ce
+        VbDr+sauMIpyVQVSZgrc+jq8DXTAP9Qv3i/tjdjK08E2NhqslHOrbpOEsk+y0uBrqIC/Uw9/jyGAphq4
+        irIhFeZ8ElA2iw9O3dg5ehSQ6+uhZCTjYXEe3jtXEG7ryiGnxoUS0GnuChVwzjNdPDyGWjxP9AUw2Yvn
+        4e6Ago/xgsymCvWQMKbbjrQ4vOQnwF+WqMFXnCSIrW1Nv98Rnguq4dZt6WLhLYmGrzISr6VRuMyNhfnD
+        xD9vqXoSmUjD5PQYIftr53dw8gj4BSwziQAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="RemoveWidgetButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="RemoveWidgetButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="RemoveWidgetButton.ToolTipText" xml:space="preserve">
+    <value>Delete the selected item</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="MoveWidgetUpButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="MoveWidgetUpButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAbZJREFUOE+NkstL
-        AlEYxRX/r3ZF0aJNEEVQREQYFAT2gMBF0iaI/oNWrSJRBNMIqcRXSZqJYpY2okahTYSPHsipc2NGJsfq
-        wuHOvTPf737n3DEavkb0IoVGTTaYTCYu1dFqtcQeZ45Go27o7+8zaj7iIhAI4/XtA7X6+686OvLB4XBB
-        F8Di6vNbhypyU+xx9vlOkL3Owm53aiHsQAEUSk/I3BSRykiQyjX1mWuerkgD0QMQwlOZD6F56VHATk8D
-        uJPKoB3VSjcAC2OJjGqrIr8ikkiLbjUAUhkivSoWeBotKIDYfQbOnLc74GcGBBBGC9eFEpaSM7CkR+AM
-        HwprHR3oAR4qDeF7LbyC7eo8rOVpmENj4P6/AEx+53IXNmkSm7IFS8UpmK8GYYuu/g1gsTfmx2iwF+v5
-        CWw9twHj/h7Y9jbat8AQaYEp0zeLk2lJBOY6O4YlZFYB0/5BhG5T2D9wtAH8w74BTeQKVcSv8kLR+C0i
-        FzdYCy5qALwd3Qz4gsoVX4SSWVnIGlnuAHg8h/odsAumrIhAhqZkQAu610gbFFv7qUX3HBbOhzEbGsKI
-        awBur1e18AnBRdHxkrLkPgAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGoSURBVDhPjZNNSwJRGIX9Ze1aRIs2gRRBERJhUBBoBUGL
+        pE0Q/YNWrSJRBEsJqcRGS9JUlMnURtQotImw7GNx6tyY0Wmmj4HDvXNn3ue+59wZm+3zSp7ncXwcQywW
+        N0hb40jt74fB900XC19e39F+evtVBwcR+HwBM4QAFrceXk1qqh2xxjESOULxsgiv12+E9AKq9XvIVzXk
+        ZQVKo63Pec/dNRkgVgBCuCvzIbSi3AkYs7hWGqAdPYufACxMZWTdVlN9QSJTEHYNAFIZIr1qFrgbLWiA
+        1I0Mfzn0M0ALsRfAOS1cVutw56bgKtjhj4eFNVMHVoDb5rPwvRxfxGZrFisNB5zSKLj+LwCT37rYhkeZ
+        wLrqgrs2CWd2EJ7k0t8AFodSUYyc9GO1Mo6Nhy5gLNoHz85a9xQYIi0wZfpmca6giMACp4dwSU4d4IgO
+        Qirlsbvn6wL4hX0BOihXW0hnK0LJdAmJ8yssn8wbADwdywz4gCrXHoVyRVVoJbFgAhh+rN4O2AVT1kQg
+        Q9MyoAXLYySEYmvfNR+cwdzZMKalIdgDAwiGQrqFDye15j0ss3xfAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="MoveWidgetUpButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="MoveWidgetUpButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="MoveWidgetUpButton.ToolTipText" xml:space="preserve">
+    <value>Move the selected item up</value>
+  </data>
+  <data name="MoveWidgetDownButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="MoveWidgetDownButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAaJJREFUOE+Nks1L
-        AlEUxRX/s3DVxzJIaFNSEBQRpSAUIkEbQeo/aNHGjTFQISFCxkjCZCo5fqU5olKgKWF+hdw6t2bUNPHB
-        4fLevPvj3PNGr/teUlimZqOmMxgM2Gqr1+vxGSpWt9vRGY0z+qFL2IjiHbU7n9T46E6Uz+cnj0egsQA0
-        V+sdTZVai/4KgEw6MwqBAxVQKL1R6qnIAgBVTiqsi6tLblalOfkPABjyQc0VqgwLBETKK2WCm6kAsfgz
-        O8F4qOFIgt0OAUBFiLg0OMJLpckNp5kzciYdrAPRzvdGAOMyUEc4erTRSX2XbCUzbT7MTg+AA8x9GLWS
-        q24ha3GV1kILPMpUDtT0HWHLEADgiQC1ERUh2qU9DbAuzrMDr/e6/woIERlUam0OkRtlhYR7H60EF8km
-        mzQAMsDZgdveB/j9N7+AFr83mqVIloXUnaUNctasPxnE52jrdpl/Ku0/UB0o5QZBueI7K5GrUyT9SttB
-        s/YKGCGUTQxnMOgA8yEkVQBK+RRZoybaTy+ROyaMzwAQCOmOk0s4Jsv5jvZNDfELUGvRcbvlWMQAAAAA
-        SUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGQSURBVDhPjZJNSwJRFIb9fX0sg4Q2JQVBEVEOCIlI0EaQ
+        +gct2rgxBiokRMgYSTBTyfErzRGVAk0JS63FqffUHWcaEwdeDszc83DOM9dm+34SSZWiUYUU5cYU8Q4V
+        CYcjhPOWB42D4Sf13j4mBoBgULZCAEBzuzvU0+r06W8AKBVLVogRUGu8UOGhzgEAVc1rnLOLc24W0Vf5
+        DwAY/KBWam2GwUVVa5p9TAJkso88CdZDTaZyvK5JKKiQiEPGFZ5a79xwXDohX97LcSsePmcBCIlGgFjh
+        4N5FR90dcjUctHE3Mz0AE2Dv/bRE/q6TpPoKrcbneZWpJhD2vUmnCQDwRIBoRIVET2JXB6wpczxBKHQ5
+        ulCQCAetzoAlcqOqkXwbpuXYArlUuw6AA7xzBzwjQCRy9Qvo8/9GcyJV5sC6r7FOvo704yA7S5vXS3yp
+        9IskJtCaPUIq9VdOrtKlVPGZtmIO/S9ghXg5Z3ZgnAD7QZIIgIlqgaS0nfaKixTIyOMdAILA7rj45UNy
+        nm7r34TEL+U05clBT2lYAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="MoveWidgetDownButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="MoveWidgetDownButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="MoveWidgetDownButton.ToolTipText" xml:space="preserve">
+    <value>Move the selected item down</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
   </data>
   <data name="ConfigureWidgetsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAUVJREFUOE+Nk+FL
-        wlAUxf3//ww/DAwGpiSsiGw4WRKZUTkNraisJQ4F/Xzjd+Xaas+hcNh7b/ece+7Zs1Ip+bVagYCymtJ3
-        w9FUxs+ZhGHnMJFG40QAqnT+SDfyma52Z7WaL8DZFSLFoBv35arXl+/FRr7ma4l7d+ridbaW91kmnndU
-        FKnXm0qmq4E9AhDHLysFa6cAtk7PLndkHPj+sVpmbSLUFEbgkBEopLuNYIVR91pAMl3qODgIgvOtEAvm
-        ylt3BcUZIzxOlvp8GL1tAyVtE8AmQi4BukIGOEkm6W8dLpj35nao6tjNz8n+oh0p2Uawz/0nD2a3tCHR
-        FTftMFby/VMmUTxQsUKQOICMvbxVIw6STAUAtQUBC4mry1fBgRGwzZnt994DROylCeKoWvW0I8+95P+W
-        CImkgTOwQ/6idhPLan8AiZfmhlTJlZEAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFFSURBVDhPjZPhS8JQFMX9//8MPwwMBqYkrIhsOFkSmVE5
+        Da2orCUOBf1843fl2mrPoXDYe2/3nHvu2bNSKfm1WoGAsprSd8PRVMbPmYRh5zCRRuNEAKp0/kg38pmu
+        dme1mi/A2RUixaAb9+Wq15fvxUa+5muJe3fq4nW2lvdZJp53VBSp15tKpquBPQIQxy8rBWunALZOzy53
+        ZBz4/rFaZm0i1BRG4JARKKS7jWCFUfdaQDJd6jg4CILzrRAL5spbdwXFGSM8Tpb6fBi9bQMlbRPAJkIu
+        AbpCBjhJJulvHS6Y9+Z2qOrYzc/J/qIdKdlGsM/9Jw9mt7Qh0RU37TBW8v1TJlE8ULFCkDiAjL28VSMO
+        kkwFALUFAQuJq8tXwYERsM2Z7ffeA0TspQniqFr1tCPPveT/lgiJpIEzsEP+onYTy2p/AImX5oZUyZWR
+        AAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="ConfigureWidgetsButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="ConfigureWidgetsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="ConfigureWidgetsButton.ToolTipText" xml:space="preserve">
+    <value>Configure avalible widgets</value>
+  </data>
+  <data name="toolStrip2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStrip2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 25</value>
+  </data>
+  <data name="toolStrip2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="toolStrip2.Text" xml:space="preserve">
+    <value>toolStrip2</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Name" xml:space="preserve">
+    <value>toolStrip2</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
+  </data>
+  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 264</value>
+  </data>
+  <data name="panel4.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 264</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>696, 283</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Widgets</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="SelectTemplateBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="SelectTemplateBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="SelectTemplateBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>672, 24</value>
+  </data>
+  <data name="SelectTemplateBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 20</value>
+  </data>
+  <data name="SelectTemplateBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="SelectTemplateBtn.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;SelectTemplateBtn.Name" xml:space="preserve">
+    <value>SelectTemplateBtn</value>
+  </data>
+  <data name="&gt;&gt;SelectTemplateBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectTemplateBtn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SelectTemplateBtn.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ShowInBrowser.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="ShowInBrowser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>560, 240</value>
+  </data>
+  <data name="ShowInBrowser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 20</value>
+  </data>
+  <data name="ShowInBrowser.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="ShowInBrowser.Text" xml:space="preserve">
+    <value>Show in browser</value>
+  </data>
+  <data name="&gt;&gt;ShowInBrowser.Name" xml:space="preserve">
+    <value>ShowInBrowser</value>
+  </data>
+  <data name="&gt;&gt;ShowInBrowser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ShowInBrowser.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ShowInBrowser.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="browserURL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="browserURL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 240</value>
+  </data>
+  <data name="browserURL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 20</value>
+  </data>
+  <data name="browserURL.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;browserURL.Name" xml:space="preserve">
+    <value>browserURL</value>
+  </data>
+  <data name="&gt;&gt;browserURL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;browserURL.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;browserURL.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 240</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 16</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>View in browser</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>696, 544</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>696, 544</value>
+  </data>
+  <data name="&gt;&gt;toolbarImages.Name" xml:space="preserve">
+    <value>toolbarImages</value>
+  </data>
+  <data name="&gt;&gt;toolbarImages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AddMapButton.Name" xml:space="preserve">
+    <value>AddMapButton</value>
+  </data>
+  <data name="&gt;&gt;AddMapButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RemoveMapButton.Name" xml:space="preserve">
+    <value>RemoveMapButton</value>
+  </data>
+  <data name="&gt;&gt;RemoveMapButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AddWidgetButton.Name" xml:space="preserve">
+    <value>AddWidgetButton</value>
+  </data>
+  <data name="&gt;&gt;AddWidgetButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;seperatorToolStripMenuItem.Name" xml:space="preserve">
+    <value>seperatorToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;seperatorToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;submenuToolStripMenuItem.Name" xml:space="preserve">
+    <value>submenuToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;submenuToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;widgetToolStripMenuItem.Name" xml:space="preserve">
+    <value>widgetToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;widgetToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AddContainerButton.Name" xml:space="preserve">
+    <value>AddContainerButton</value>
+  </data>
+  <data name="&gt;&gt;AddContainerButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RemoveWidgetButton.Name" xml:space="preserve">
+    <value>RemoveWidgetButton</value>
+  </data>
+  <data name="&gt;&gt;RemoveWidgetButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MoveWidgetUpButton.Name" xml:space="preserve">
+    <value>MoveWidgetUpButton</value>
+  </data>
+  <data name="&gt;&gt;MoveWidgetUpButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MoveWidgetDownButton.Name" xml:space="preserve">
+    <value>MoveWidgetDownButton</value>
+  </data>
+  <data name="&gt;&gt;MoveWidgetDownButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ConfigureWidgetsButton.Name" xml:space="preserve">
+    <value>ConfigureWidgetsButton</value>
+  </data>
+  <data name="&gt;&gt;ConfigureWidgetsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>ApplicationDefinitionEditor</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

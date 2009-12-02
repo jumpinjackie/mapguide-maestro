@@ -117,6 +117,39 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="managedFileControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="managedFileControl.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="managedFileControl.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>136, 56</value>
+  </data>
+  <data name="managedFileControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="managedFileControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 120</value>
+  </data>
+  <data name="managedFileControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;managedFileControl.Name" xml:space="preserve">
+    <value>managedFileControl</value>
+  </data>
+  <data name="&gt;&gt;managedFileControl.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ManagedFileControl, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;managedFileControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;managedFileControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="ToolbarImages.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -124,34 +157,58 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAA+
-        BgAAAk1TRnQBSQFMAwEBAAEEAQABBAEAARABAAEQAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABQAMA
-        ARADAAEBAQABIAYAARAmAAEtAgIBQwEsAXcB4wH/ASECAQEtARcBawHBAfEBFgIBARwIAAELAgEBDQEn
-        AUkBkgHiARICAQEX0AABLQICAUMBMAF/AeUB/wFaAcwB9AH/AVcBvAHxAf8BNQICAVMBQgHDAfIB/gFS
-        AdcB9QH+AREBgwHjAfwBFQFsAckB9AFRAdEB9AH+AU8BzwHzAf7QAAEwAYUB5gH/AYkB3AH4Af8BVAHF
-        AfUB/wErAbUB8QH/AVYBuwHxAf8BRgGBAbwB/wEtAbgB+AH/AT8B3gH8Af8BNQHPAfwB/wEyAckB/AH/
-        ATAByAH8Af8BQAG6AfAB/tAAAasB5gH5Af8BqgHjAfoB/wFTAcQB9QH/ASsBtQHxAf8BVwG8AfEB/wFy
-        AbABxQH/ARUBpQH4Af8BUQH5Af4B/wFHAeoB/QH/ATwB2AH8Af8BMgHLAfwB/wEsAaMB7QH+AQMCAQEC
-        zAABqQHlAfkB/wGqAeMB+gH/AVMBxAH1Af8BKwG1AfEB/wFZAcIB8gH/ARIBoAHzAf8BVgH3Af0B/wFR
-        AfwB/gH/AVQB/QH+Af8BTwH1Af0B/wFDAeQB/QH/AUIB0wH2Af4BGQFnAcEB8swAAagB5QH5Af8BqgHj
-        AfoB/wFTAcQB9QH/ASsBtQHxAf8BEgGsAfsB/wFOAekB/QH/ATsB5wH+Af8BRAHwAf4B/wFNAfkB/gH/
-        AVMB/QH+Af8BUwH7Af4B/wFLAeoB9wH+AU8B4AH2Af4BIgFYAaMB6MgAAacB5QH5Af8BqwHkAfoB/wFT
-        AcQB9QH/ASsBtQHxAf8BIgGyAfMB/wEaAa4B+AH/AQYBoQH6Af8BMQHEAfsB/wE+AeoB/gH/AUcB8wH+
-        Af8BRAHQAfkB/wERAYIB3QH5AUcBEwEgAaUBLAICAULIAAGnAeYB+QH/AawB5gH6Af8BVQHIAfUB/wEr
-        AbUB8QH/ASsBtQHxAf8BPwG/AfIB/wFHAY8B1gH/AVUBrgHSAf8BUQHpAf0B/wFMAeoB/QH/AUUBCAEM
-        AYMBDAIBAQ4BBwIBAQgBAwIBAQLIAAGoAeYB+QH/Aa8B6AH6Af8BWAHMAfUB/wEuAbkB8QH/ASwBtwHx
-        Af8BQAG/AfIB/wFIAZMB1gH/AXMBtAHFAf8BDgGqAfsB/wEfAa8B9QH+AQoCAQELAQYCAQEGAQIDAcwA
-        AagB5gH5Af8BsQHqAfoB/wFbAdEB9gH/ATEBwAHyAf8BLwG8AfEB/wFDAcMB8wH/AUoBlgHWAf8BdAG2
-        AcUB/wGWAeUB9wH/ASoBaQG9AfIBAwIBAQLUAAGpAegB+QH/AbMB7AH7Af8BYAHXAfYB/wE3AccB8wH/
-        ATMBwwHzAf8BRgHIAfQB/wFMAZoB1wH/AXgBugHIAf8BqAHvAfcB/wEqAXYB3AH92AABqAHoAfoB/wG1
-        Ae4B+wH/AWMB2gH2Af8BOgHNAfMB/wE5AcoB8wH/AUwBzgH0Af8BYgG5AfEB/wGgAfMB+gH/AakB8wH6
-        Af8BKgGBAecB/9gAAagB6gH6Af8BtgHwAfsB/wFvAd8B9wH/AWgB2wH1Af8BRQGvAfEB/wE4AZkB7wH/
-        AY4B4wH4Af8BoAHzAfoB/wGpAfMB+gH/AS4BhgHoAf/YAAGWAeUB+QH/AVIBwQH0Af8BOQGiAfIB/wGL
-        AdwB+AH/AZsB6AH6Af8BnwHrAfoB/wGjAe8B+gH/AagB8QH6Af8BsAHzAfoB/wEvAYoB6gH/2AABRwGq
-        AfMB/wG4AfIB+gH/AbQB8AH5Af8BmwHfAfcB/wGBAc4B9QH/AWcBugHzAf8BSwGlAfAB/wEwAZAB7QH/
-        AToBXAGfAecBSwEVASQBntgAASICAQEwARgCAQEf8AABQgFNAT4HAAE+AwABKAMAAUADAAEQAwABAQEA
-        AQEFAAGAFwAD/wEAAfgBMQYAAeABAwYAAcABAwYAAcABAQYAAcABAQYAAcAHAAHABwABwAcAAcABAQYA
-        AcABBwYAAcABDwYAAcABDwYAAcABDwYAAcABDwYAAcABDwYAAc8B/wYACw==
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAo
+        BgAAAk1TRnQBSQFMAwEBAAEMAQABDAEAARABAAEQAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABQAMA
+        ARADAAEBAQABIAYAARAmAAEsAikBQwErAXYB4wH/AR8CHgEtASABaQG2AfEDFAEcCAADCgENATQBTgGH
+        AeIDEQEX0AABLAIpAUMBLwF+AeUB/wFZAcwB9AH/AVYBvAHxAf8BMwIuAVMBQgHBAfAB/gFSAdUB8wH+
+        ARIBgAHeAfwBGgFpAb8B9AFRAc8B8gH+AU8BzQHxAf7QAAEvAYUB5gH/AYkB3AH4Af8BUwHFAfUB/wEq
+        AbUB8QH/AVUBuwHxAf8BRQGBAbwB/wEsAbgB+AH/AT4B3gH8Af8BNAHPAfwB/wExAckB/AH/AS8ByAH8
+        Af8BQAG4Ae4B/tAAAasB5gH5Af8BqgHjAfoB/wFSAcQB9QH/ASoBtQHxAf8BVgG8AfEB/wFxAbABxQH/
+        ARQBpQH4Af8BUAH5Af4B/wFGAeoB/QH/ATsB2AH8Af8BMQHLAfwB/wEsAaEB6wH+AwEBAswAAakB5QH5
+        Af8BqgHjAfoB/wFSAcQB9QH/ASoBtQHxAf8BWAHCAfIB/wERAaAB8wH/AVUB9wH9Af8BUAH8Af4B/wFT
+        Af0B/gH/AU4B9QH9Af8BQgHkAf0B/wFCAdEB9AH+ASEBZwG3AfLMAAGoAeUB+QH/AaoB4wH6Af8BUgHE
+        AfUB/wEqAbUB8QH/AREBrAH7Af8BTQHpAf0B/wE6AecB/gH/AUMB8AH+Af8BTAH5Af4B/wFSAf0B/gH/
+        AVIB+wH+Af8BSwHoAfUB/gFPAd4B9AH+AS0BWAGXAejIAAGnAeUB+QH/AasB5AH6Af8BUgHEAfUB/wEq
+        AbUB8QH/ASEBsgHzAf8BGQGuAfgB/wEFAaEB+gH/ATABxAH7Af8BPQHqAf4B/wFGAfMB/gH/AUMB0AH5
+        Af8BFQGBAdcB+QFNATcBPQGlASsCKAFCyAABpwHmAfkB/wGsAeYB+gH/AVQByAH1Af8BKgG1AfEB/wEq
+        AbUB8QH/AT4BvwHyAf8BRgGPAdYB/wFUAa4B0gH/AVAB6QH9Af8BSwHqAf0B/wFHATYBNwGDAwoBDgMG
+        AQgDAQECyAABqAHmAfkB/wGvAegB+gH/AVcBzAH1Af8BLQG5AfEB/wErAbcB8QH/AT8BvwHyAf8BRwGT
+        AdYB/wFyAbQBxQH/AQ0BqgH7Af8BHwGtAfMB/gMIAQsDBAEGAwABAcwAAagB5gH5Af8BsQHqAfoB/wFa
+        AdEB9gH/ATABwAHyAf8BLgG8AfEB/wFCAcMB8wH/AUkBlgHWAf8BcwG2AcUB/wGWAeUB9wH/ATABaAGz
+        AfIDAQEC1AABqQHoAfkB/wGzAewB+wH/AV8B1wH2Af8BNgHHAfMB/wEyAcMB8wH/AUUByAH0Af8BSwGa
+        AdcB/wF3AboByAH/AagB7wH3Af8BKwF0AdkB/dgAAagB6AH6Af8BtQHuAfsB/wFiAdoB9gH/ATkBzQHz
+        Af8BOAHKAfMB/wFLAc4B9AH/AWEBuQHxAf8BoAHzAfoB/wGpAfMB+gH/ASkBgQHnAf/YAAGoAeoB+gH/
+        AbYB8AH7Af8BbgHfAfcB/wFnAdsB9QH/AUQBrwHxAf8BNwGZAe8B/wGOAeMB+AH/AaAB8wH6Af8BqQHz
+        AfoB/wEtAYYB6AH/2AABlgHlAfkB/wFRAcEB9AH/ATgBogHyAf8BiwHcAfgB/wGbAegB+gH/AZ8B6wH6
+        Af8BowHvAfoB/wGoAfEB+gH/AbAB8wH6Af8BLgGKAeoB/9gAAUYBqgHzAf8BuAHyAfoB/wG0AfAB+QH/
+        AZsB3wH3Af8BgQHOAfUB/wFmAboB8wH/AUoBpQHwAf8BLwGQAe0B/wFBAVwBkwHnAU0BOAE+AZ7YAAEh
+        AiABMAMWAR/wAAFCAU0BPgcAAT4DAAEoAwABQAMAARADAAEBAQABAQUAAYAXAAP/AQAB+AExBgAB4AED
+        BgABwAEDBgABwAEBBgABwAEBBgABwAcAAcAHAAHABwABwAEBBgABwAEHBgABwAEPBgABwAEPBgABwAEP
+        BgABwAEPBgABwAEPBgABzwH/BgAL
 </value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>256, 136</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 136</value>
+  </data>
+  <data name="&gt;&gt;ToolbarImages.Name" xml:space="preserve">
+    <value>ToolbarImages</value>
+  </data>
+  <data name="&gt;&gt;ToolbarImages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Managed</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

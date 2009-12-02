@@ -47,13 +47,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
                 pointConditionList.Owner = m_owner;
                 lineConditionList.Owner = m_owner;
                 areaConditionList.Owner = m_owner;
-
-                if (m_owner != null && m_owner.Globalizor != null)
-                {
-                    DisplayPoints.Text = m_owner.Globalizor.Translate("Display points");
-                    DisplayLines.Text = m_owner.Globalizor.Translate("Display lines");
-                    DisplayAreas.Text = m_owner.Globalizor.Translate("Display areas");
-                }
             }
         }
 

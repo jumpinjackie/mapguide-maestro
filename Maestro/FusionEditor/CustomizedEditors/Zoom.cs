@@ -84,82 +84,63 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Tolerance = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.Factor = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.Direction = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Tolerance
-			// 
-			this.Tolerance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Tolerance.Location = new System.Drawing.Point(104, 8);
-			this.Tolerance.Name = "Tolerance";
-			this.Tolerance.Size = new System.Drawing.Size(504, 20);
-			this.Tolerance.TabIndex = 19;
-			this.Tolerance.Text = "";
-			this.Tolerance.TextChanged += new System.EventHandler(this.Tolerance_TextChanged);
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 8);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(72, 16);
-			this.label3.TabIndex = 18;
-			this.label3.Text = "Tolerance";
-			// 
-			// Factor
-			// 
-			this.Factor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Factor.Location = new System.Drawing.Point(104, 32);
-			this.Factor.Name = "Factor";
-			this.Factor.Size = new System.Drawing.Size(504, 20);
-			this.Factor.TabIndex = 17;
-			this.Factor.Text = "";
-			this.Factor.TextChanged += new System.EventHandler(this.Factor_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 32);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(72, 16);
-			this.label2.TabIndex = 16;
-			this.label2.Text = "Factor";
-			// 
-			// Direction
-			// 
-			this.Direction.Items.AddRange(new object[] {
-														   "in",
-														   "out"});
-			this.Direction.Location = new System.Drawing.Point(104, 56);
-			this.Direction.Name = "Direction";
-			this.Direction.Size = new System.Drawing.Size(504, 21);
-			this.Direction.TabIndex = 15;
-			this.Direction.TextChanged += new System.EventHandler(this.Direction_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 56);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(88, 16);
-			this.label1.TabIndex = 14;
-			this.label1.Text = "Direction";
-			// 
-			// Zoom
-			// 
-			this.Controls.Add(this.Tolerance);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.Factor);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.Direction);
-			this.Controls.Add(this.label1);
-			this.Name = "Zoom";
-			this.Size = new System.Drawing.Size(616, 88);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Zoom));
+            this.Tolerance = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Factor = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Direction = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Tolerance
+            // 
+            resources.ApplyResources(this.Tolerance, "Tolerance");
+            this.Tolerance.Name = "Tolerance";
+            this.Tolerance.TextChanged += new System.EventHandler(this.Tolerance_TextChanged);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // Factor
+            // 
+            resources.ApplyResources(this.Factor, "Factor");
+            this.Factor.Name = "Factor";
+            this.Factor.TextChanged += new System.EventHandler(this.Factor_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // Direction
+            // 
+            this.Direction.Items.AddRange(new object[] {
+            resources.GetString("Direction.Items"),
+            resources.GetString("Direction.Items1")});
+            resources.ApplyResources(this.Direction, "Direction");
+            this.Direction.Name = "Direction";
+            this.Direction.TextChanged += new System.EventHandler(this.Direction_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // Zoom
+            // 
+            this.Controls.Add(this.Tolerance);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Factor);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Direction);
+            this.Controls.Add(this.label1);
+            this.Name = "Zoom";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

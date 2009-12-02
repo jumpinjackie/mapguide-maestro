@@ -119,246 +119,168 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(Buffer));
-			this.label1 = new System.Windows.Forms.Label();
-			this.BufferUnits = new System.Windows.Forms.ComboBox();
-			this.BorderColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.BufferDistanceInput = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.FillColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.LayerName = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.FillColorInput = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.BufferUnitsInput = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.BorderColorInput = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.LayerNameInput = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.BufferDistance = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(128, 16);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "Units";
-			// 
-			// BufferUnits
-			// 
-			this.BufferUnits.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.BufferUnits.Items.AddRange(new object[] {
-															 "meters",
-															 "miles"});
-			this.BufferUnits.Location = new System.Drawing.Point(136, 8);
-			this.BufferUnits.Name = "BufferUnits";
-			this.BufferUnits.Size = new System.Drawing.Size(424, 21);
-			this.BufferUnits.TabIndex = 2;
-			this.BufferUnits.TextChanged += new System.EventHandler(this.BufferUnits_TextChanged);
-			// 
-			// BorderColor
-			// 
-			this.BorderColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-
-			this.BorderColor.Location = new System.Drawing.Point(136, 80);
-			this.BorderColor.Name = "BorderColor";
-			this.BorderColor.Size = new System.Drawing.Size(424, 21);
-			this.BorderColor.TabIndex = 4;
-			this.BorderColor.SelectedIndexChanged += new System.EventHandler(this.BorderColor_SelectedIndexChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 80);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(128, 16);
-			this.label2.TabIndex = 3;
-			this.label2.Text = "Border color";
-			// 
-			// BufferDistanceInput
-			// 
-			this.BufferDistanceInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.BufferDistanceInput.Location = new System.Drawing.Point(136, 128);
-			this.BufferDistanceInput.Name = "BufferDistanceInput";
-			this.BufferDistanceInput.Size = new System.Drawing.Size(424, 20);
-			this.BufferDistanceInput.TabIndex = 6;
-			this.BufferDistanceInput.Text = "";
-			this.BufferDistanceInput.TextChanged += new System.EventHandler(this.BufferDistanceInput_TextChanged);
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 128);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(128, 16);
-			this.label3.TabIndex = 5;
-			this.label3.Text = "Distance Input";
-			// 
-			// FillColor
-			// 
-			this.FillColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-
-			this.FillColor.Location = new System.Drawing.Point(136, 104);
-			this.FillColor.Name = "FillColor";
-			this.FillColor.Size = new System.Drawing.Size(424, 21);
-			this.FillColor.TabIndex = 8;
-			this.FillColor.SelectedIndexChanged += new System.EventHandler(this.FillColor_SelectedIndexChanged);
-			// 
-			// label4
-			// 
-			this.label4.Location = new System.Drawing.Point(8, 104);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(128, 16);
-			this.label4.TabIndex = 7;
-			this.label4.Text = "Fill color";
-			// 
-			// LayerName
-			// 
-			this.LayerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.LayerName.Location = new System.Drawing.Point(136, 56);
-			this.LayerName.Name = "LayerName";
-			this.LayerName.Size = new System.Drawing.Size(424, 20);
-			this.LayerName.TabIndex = 10;
-			this.LayerName.Text = "";
-			this.LayerName.TextChanged += new System.EventHandler(this.LayerName_TextChanged);
-			// 
-			// label5
-			// 
-			this.label5.Location = new System.Drawing.Point(8, 56);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(128, 16);
-			this.label5.TabIndex = 9;
-			this.label5.Text = "Layer name";
-			// 
-			// FillColorInput
-			// 
-			this.FillColorInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.FillColorInput.Location = new System.Drawing.Point(136, 152);
-			this.FillColorInput.Name = "FillColorInput";
-			this.FillColorInput.Size = new System.Drawing.Size(424, 20);
-			this.FillColorInput.TabIndex = 12;
-			this.FillColorInput.Text = "";
-			this.FillColorInput.TextChanged += new System.EventHandler(this.FillColorInput_TextChanged);
-			// 
-			// label6
-			// 
-			this.label6.Location = new System.Drawing.Point(8, 152);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(128, 16);
-			this.label6.TabIndex = 11;
-			this.label6.Text = "Fill Color Input";
-			// 
-			// BufferUnitsInput
-			// 
-			this.BufferUnitsInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.BufferUnitsInput.Location = new System.Drawing.Point(136, 176);
-			this.BufferUnitsInput.Name = "BufferUnitsInput";
-			this.BufferUnitsInput.Size = new System.Drawing.Size(424, 20);
-			this.BufferUnitsInput.TabIndex = 14;
-			this.BufferUnitsInput.Text = "";
-			this.BufferUnitsInput.TextChanged += new System.EventHandler(this.BufferUnitsInput_TextChanged);
-			// 
-			// label7
-			// 
-			this.label7.Location = new System.Drawing.Point(8, 176);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(128, 16);
-			this.label7.TabIndex = 13;
-			this.label7.Text = "Buffer Units Input";
-			// 
-			// BorderColorInput
-			// 
-			this.BorderColorInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.BorderColorInput.Location = new System.Drawing.Point(136, 200);
-			this.BorderColorInput.Name = "BorderColorInput";
-			this.BorderColorInput.Size = new System.Drawing.Size(424, 20);
-			this.BorderColorInput.TabIndex = 16;
-			this.BorderColorInput.Text = "";
-			this.BorderColorInput.TextChanged += new System.EventHandler(this.BorderColorInput_TextChanged);
-			// 
-			// label8
-			// 
-			this.label8.Location = new System.Drawing.Point(8, 200);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(128, 16);
-			this.label8.TabIndex = 15;
-			this.label8.Text = "Border Color Input";
-			// 
-			// LayerNameInput
-			// 
-			this.LayerNameInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.LayerNameInput.Location = new System.Drawing.Point(136, 224);
-			this.LayerNameInput.Name = "LayerNameInput";
-			this.LayerNameInput.Size = new System.Drawing.Size(424, 20);
-			this.LayerNameInput.TabIndex = 18;
-			this.LayerNameInput.Text = "";
-			this.LayerNameInput.TextChanged += new System.EventHandler(this.LayerNameInput_TextChanged);
-			// 
-			// label9
-			// 
-			this.label9.Location = new System.Drawing.Point(8, 224);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(128, 16);
-			this.label9.TabIndex = 17;
-			this.label9.Text = "Layer Name Input";
-			// 
-			// BufferDistance
-			// 
-			this.BufferDistance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.BufferDistance.Location = new System.Drawing.Point(136, 32);
-			this.BufferDistance.Name = "BufferDistance";
-			this.BufferDistance.Size = new System.Drawing.Size(424, 20);
-			this.BufferDistance.TabIndex = 20;
-			this.BufferDistance.Text = "";
-			this.BufferDistance.TextChanged += new System.EventHandler(this.BufferDistance_TextChanged);
-			// 
-			// label10
-			// 
-			this.label10.Location = new System.Drawing.Point(8, 32);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(128, 16);
-			this.label10.TabIndex = 19;
-			this.label10.Text = "Buffer Distance";
-			// 
-			// Buffer
-			// 
-			this.Controls.Add(this.BufferDistance);
-			this.Controls.Add(this.label10);
-			this.Controls.Add(this.LayerNameInput);
-			this.Controls.Add(this.label9);
-			this.Controls.Add(this.BorderColorInput);
-			this.Controls.Add(this.label8);
-			this.Controls.Add(this.BufferUnitsInput);
-			this.Controls.Add(this.label7);
-			this.Controls.Add(this.FillColorInput);
-			this.Controls.Add(this.label6);
-			this.Controls.Add(this.LayerName);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.FillColor);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.BufferDistanceInput);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.BorderColor);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.BufferUnits);
-			this.Controls.Add(this.label1);
-			this.Name = "Buffer";
-			this.Size = new System.Drawing.Size(568, 248);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Buffer));
+            this.label1 = new System.Windows.Forms.Label();
+            this.BufferUnits = new System.Windows.Forms.ComboBox();
+            this.BorderColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.BufferDistanceInput = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.FillColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.LayerName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.FillColorInput = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.BufferUnitsInput = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.BorderColorInput = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.LayerNameInput = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.BufferDistance = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // BufferUnits
+            // 
+            resources.ApplyResources(this.BufferUnits, "BufferUnits");
+            this.BufferUnits.Items.AddRange(new object[] {
+            resources.GetString("BufferUnits.Items"),
+            resources.GetString("BufferUnits.Items1")});
+            this.BufferUnits.Name = "BufferUnits";
+            this.BufferUnits.TextChanged += new System.EventHandler(this.BufferUnits_TextChanged);
+            // 
+            // BorderColor
+            // 
+            resources.ApplyResources(this.BorderColor, "BorderColor");
+            this.BorderColor.Name = "BorderColor";
+            this.BorderColor.SelectedIndexChanged += new System.EventHandler(this.BorderColor_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // BufferDistanceInput
+            // 
+            resources.ApplyResources(this.BufferDistanceInput, "BufferDistanceInput");
+            this.BufferDistanceInput.Name = "BufferDistanceInput";
+            this.BufferDistanceInput.TextChanged += new System.EventHandler(this.BufferDistanceInput_TextChanged);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // FillColor
+            // 
+            resources.ApplyResources(this.FillColor, "FillColor");
+            this.FillColor.Name = "FillColor";
+            this.FillColor.SelectedIndexChanged += new System.EventHandler(this.FillColor_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // LayerName
+            // 
+            resources.ApplyResources(this.LayerName, "LayerName");
+            this.LayerName.Name = "LayerName";
+            this.LayerName.TextChanged += new System.EventHandler(this.LayerName_TextChanged);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // FillColorInput
+            // 
+            resources.ApplyResources(this.FillColorInput, "FillColorInput");
+            this.FillColorInput.Name = "FillColorInput";
+            this.FillColorInput.TextChanged += new System.EventHandler(this.FillColorInput_TextChanged);
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // BufferUnitsInput
+            // 
+            resources.ApplyResources(this.BufferUnitsInput, "BufferUnitsInput");
+            this.BufferUnitsInput.Name = "BufferUnitsInput";
+            this.BufferUnitsInput.TextChanged += new System.EventHandler(this.BufferUnitsInput_TextChanged);
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // BorderColorInput
+            // 
+            resources.ApplyResources(this.BorderColorInput, "BorderColorInput");
+            this.BorderColorInput.Name = "BorderColorInput";
+            this.BorderColorInput.TextChanged += new System.EventHandler(this.BorderColorInput_TextChanged);
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // LayerNameInput
+            // 
+            resources.ApplyResources(this.LayerNameInput, "LayerNameInput");
+            this.LayerNameInput.Name = "LayerNameInput";
+            this.LayerNameInput.TextChanged += new System.EventHandler(this.LayerNameInput_TextChanged);
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // BufferDistance
+            // 
+            resources.ApplyResources(this.BufferDistance, "BufferDistance");
+            this.BufferDistance.Name = "BufferDistance";
+            this.BufferDistance.TextChanged += new System.EventHandler(this.BufferDistance_TextChanged);
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // Buffer
+            // 
+            this.Controls.Add(this.BufferDistance);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.LayerNameInput);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.BorderColorInput);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.BufferUnitsInput);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.FillColorInput);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.LayerName);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.FillColor);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.BufferDistanceInput);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.BorderColor);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.BufferUnits);
+            this.Controls.Add(this.label1);
+            this.Name = "Buffer";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

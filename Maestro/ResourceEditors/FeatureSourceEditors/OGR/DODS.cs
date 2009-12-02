@@ -113,38 +113,30 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.URL = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// URL
-			// 
-			this.URL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.URL.Location = new System.Drawing.Point(112, 8);
-			this.URL.Name = "URL";
-			this.URL.Size = new System.Drawing.Size(88, 20);
-			this.URL.TabIndex = 3;
-			this.URL.Text = "";
-			this.URL.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(96, 16);
-			this.label1.TabIndex = 2;
-			this.label1.Text = "URL";
-			// 
-			// DODS
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(208, 32);
-			this.Controls.Add(this.URL);
-			this.Controls.Add(this.label1);
-			this.Name = "DODS";
-			this.Size = new System.Drawing.Size(208, 32);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DODS));
+            this.URL = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // URL
+            // 
+            resources.ApplyResources(this.URL, "URL");
+            this.URL.Name = "URL";
+            this.URL.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // DODS
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.URL);
+            this.Controls.Add(this.label1);
+            this.Name = "DODS";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

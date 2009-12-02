@@ -40,7 +40,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private EditorInterface m_editor;
 		private object m_item;
 		private bool m_isUpdating;
-		private Globalizator.Globalizator m_globalizor = null;
 
 		public PlaceHolderEditor(EditorInterface editor)
 			: this()
@@ -75,9 +74,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-
-			m_globalizor = new  Globalizator.Globalizator(this);
-
 		}
 
 		/// <summary> 
@@ -102,23 +98,21 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(48, 32);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(296, 104);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "This is a placeholder for the actual page";
-			// 
-			// PlaceHolderEditor
-			// 
-			this.Controls.Add(this.label1);
-			this.Name = "PlaceHolderEditor";
-			this.Size = new System.Drawing.Size(400, 320);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlaceHolderEditor));
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // PlaceHolderEditor
+            // 
+            this.Controls.Add(this.label1);
+            this.Name = "PlaceHolderEditor";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
 
 		}
 		#endregion

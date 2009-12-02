@@ -45,7 +45,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         protected ResourceEditors.FeatureSourceEditors.Filebased.Unmanaged UnmanagedEditor;
         protected ResourceEditors.FeatureSourceEditors.Filebased.Managed ManagedEditor;
         protected System.Windows.Forms.CheckBox ReadOnlyCheck;
-        protected Globalizator.Globalizator m_globalizor;
 
         protected string m_filepath_resource_name = "File";
         protected System.Collections.Specialized.NameValueCollection m_fileextensions;
@@ -118,21 +117,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			InitializeComponent();
 			ManagedEditor.Dock = DockStyle.Fill;
 			UnmanagedEditor.Dock = DockStyle.Fill;
-			m_globalizor = new Globalizator.Globalizator(this);
-			string tmp = m_globalizor.Translate("OSGeo.MapGuide.Maestro.ResourceEditors.FilebasedFeatureSourceEditor.LocationType.Items");
-			if (tmp != null && tmp.Trim().Length > 0)
-			{
-				ArrayList fix = new ArrayList();
-				foreach(string s in tmp.Trim().Split('\n'))
-					if (s.Trim().Length > 0)
-						fix.Add(s.Trim());
-
-				if (fix.Count == LocationType.Items.Count)
-				{
-					LocationType.Items.Clear();
-					LocationType.Items.AddRange(fix.ToArray());
-				}
-			}
 		}
 
 		/// <summary> 
@@ -157,86 +141,64 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.LocationType = new System.Windows.Forms.ComboBox();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.UnmanagedEditor = new ResourceEditors.FeatureSourceEditors.Filebased.Unmanaged();
-			this.ManagedEditor = new ResourceEditors.FeatureSourceEditors.Filebased.Managed();
-			this.ReadOnlyCheck = new System.Windows.Forms.CheckBox();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(4, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(112, 16);
-			this.label1.TabIndex = 2;
-			this.label1.Text = "File location type";
-			// 
-			// LocationType
-			// 
-			this.LocationType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.LocationType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.LocationType.Items.AddRange(new object[] {
-														 "Inside the MapGuide server (Managed)",
-														 "On the server file system (Unmanaged)"});
-			this.LocationType.Location = new System.Drawing.Point(120, 0);
-			this.LocationType.Name = "LocationType";
-			this.LocationType.Size = new System.Drawing.Size(536, 21);
-			this.LocationType.TabIndex = 3;
-			this.LocationType.SelectedIndexChanged += new System.EventHandler(this.LocationType_SelectedIndexChanged);
-			// 
-			// panel1
-			// 
-			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.panel1.Controls.Add(this.UnmanagedEditor);
-			this.panel1.Controls.Add(this.ManagedEditor);
-			this.panel1.Location = new System.Drawing.Point(8, 48);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(648, 184);
-			this.panel1.TabIndex = 4;
-			// 
-			// UnmanagedEditor
-			// 
-			this.UnmanagedEditor.Location = new System.Drawing.Point(336, 8);
-			this.UnmanagedEditor.Name = "UnmanagedEditor";
-			this.UnmanagedEditor.Size = new System.Drawing.Size(288, 120);
-			this.UnmanagedEditor.TabIndex = 1;
-			this.UnmanagedEditor.Visible = false;
-			// 
-			// ManagedEditor
-			// 
-			this.ManagedEditor.Location = new System.Drawing.Point(16, 8);
-			this.ManagedEditor.Name = "ManagedEditor";
-			this.ManagedEditor.Size = new System.Drawing.Size(224, 136);
-			this.ManagedEditor.TabIndex = 0;
-			this.ManagedEditor.Visible = false;
-			// 
-			// ReadOnlyCheck
-			// 
-			this.ReadOnlyCheck.Location = new System.Drawing.Point(8, 24);
-			this.ReadOnlyCheck.Name = "ReadOnlyCheck";
-			this.ReadOnlyCheck.Size = new System.Drawing.Size(272, 16);
-			this.ReadOnlyCheck.TabIndex = 5;
-			this.ReadOnlyCheck.Text = "Data source is read only";
-			this.ReadOnlyCheck.CheckedChanged += new System.EventHandler(this.ReadOnlyCheck_CheckedChanged);
-			// 
-			// FilebasedFeatureSourceEditor
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(280, 160);
-			this.Controls.Add(this.ReadOnlyCheck);
-			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.LocationType);
-			this.Controls.Add(this.label1);
-			this.Name = "FilebasedFeatureSourceEditor";
-			this.Size = new System.Drawing.Size(664, 240);
-			this.panel1.ResumeLayout(false);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilebasedFeatureSourceEditor));
+            this.label1 = new System.Windows.Forms.Label();
+            this.LocationType = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.UnmanagedEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Filebased.Unmanaged();
+            this.ManagedEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Filebased.Managed();
+            this.ReadOnlyCheck = new System.Windows.Forms.CheckBox();
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // LocationType
+            // 
+            resources.ApplyResources(this.LocationType, "LocationType");
+            this.LocationType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LocationType.Items.AddRange(new object[] {
+            resources.GetString("LocationType.Items"),
+            resources.GetString("LocationType.Items1")});
+            this.LocationType.Name = "LocationType";
+            this.LocationType.SelectedIndexChanged += new System.EventHandler(this.LocationType_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Controls.Add(this.UnmanagedEditor);
+            this.panel1.Controls.Add(this.ManagedEditor);
+            this.panel1.Name = "panel1";
+            // 
+            // UnmanagedEditor
+            // 
+            resources.ApplyResources(this.UnmanagedEditor, "UnmanagedEditor");
+            this.UnmanagedEditor.Name = "UnmanagedEditor";
+            // 
+            // ManagedEditor
+            // 
+            resources.ApplyResources(this.ManagedEditor, "ManagedEditor");
+            this.ManagedEditor.Name = "ManagedEditor";
+            // 
+            // ReadOnlyCheck
+            // 
+            resources.ApplyResources(this.ReadOnlyCheck, "ReadOnlyCheck");
+            this.ReadOnlyCheck.Name = "ReadOnlyCheck";
+            this.ReadOnlyCheck.CheckedChanged += new System.EventHandler(this.ReadOnlyCheck_CheckedChanged);
+            // 
+            // FilebasedFeatureSourceEditor
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.ReadOnlyCheck);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.LocationType);
+            this.Controls.Add(this.label1);
+            this.Name = "FilebasedFeatureSourceEditor";
+            this.panel1.ResumeLayout(false);
+            this.ResumeLayout(false);
 
 		}
 		#endregion

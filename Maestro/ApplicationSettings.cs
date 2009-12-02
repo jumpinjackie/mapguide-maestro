@@ -32,12 +32,10 @@ namespace OSGeo.MapGuide.Maestro
     {
         private PreferedSiteList m_settings;
         private bool m_isUpdating = false;
-        private Globalizator.Globalizator m_globalizor = null;
 
         public ApplicationSettings()
         {
             InitializeComponent();
-            m_globalizor = new Globalizator.Globalizator(this);
 
             this.Icon = FormMain.MaestroIcon;
             m_settings = (PreferedSiteList)Utility.XmlDeepCopy(Program.ApplicationSettings);
@@ -63,12 +61,8 @@ namespace OSGeo.MapGuide.Maestro
 
         private void BrowseForBrowser_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Title = "Select the browser to use";
-            dlg.Filter = "Executeables (*.exe)|*.exe|All files (*.*)|*.*";
-            dlg.Multiselect = false;
-            if (dlg.ShowDialog(this) == DialogResult.OK)
-                BrowserCommand.Text = dlg.FileName;
+            if (SelectBrowser.ShowDialog(this) == DialogResult.OK)
+                BrowserCommand.Text = SelectBrowser.FileName;
         }
 
         private void OKBtn_Click(object sender, EventArgs e)

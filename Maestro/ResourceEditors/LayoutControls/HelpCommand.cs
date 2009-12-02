@@ -106,85 +106,62 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.TargetFrame = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.Target = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.URL = new System.Windows.Forms.TextBox();
-			this.SuspendLayout();
-			// 
-			// TargetFrame
-			// 
-			this.TargetFrame.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.TargetFrame.Location = new System.Drawing.Point(96, 40);
-			this.TargetFrame.Name = "TargetFrame";
-			this.TargetFrame.Size = new System.Drawing.Size(88, 20);
-			this.TargetFrame.TabIndex = 32;
-			this.TargetFrame.Text = "";
-			// 
-			// label2
-			// 
-			this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label2.Location = new System.Drawing.Point(8, 40);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(80, 16);
-			this.label2.TabIndex = 31;
-			this.label2.Text = "Frame";
-			// 
-			// Target
-			// 
-			this.Target.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Target.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.Target.Location = new System.Drawing.Point(96, 8);
-			this.Target.Name = "Target";
-			this.Target.Size = new System.Drawing.Size(88, 21);
-			this.Target.TabIndex = 30;
-			this.Target.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
-			// 
-			// label1
-			// 
-			this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(80, 16);
-			this.label1.TabIndex = 29;
-			this.label1.Text = "Target";
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 72);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(80, 16);
-			this.label3.TabIndex = 33;
-			this.label3.Text = "URL";
-			// 
-			// URL
-			// 
-			this.URL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.URL.Location = new System.Drawing.Point(96, 72);
-			this.URL.Name = "URL";
-			this.URL.Size = new System.Drawing.Size(88, 20);
-			this.URL.TabIndex = 34;
-			this.URL.Text = "";
-			// 
-			// HelpCommand
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(192, 96);
-			this.Controls.Add(this.URL);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.TargetFrame);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.Target);
-			this.Controls.Add(this.label1);
-			this.Name = "HelpCommand";
-			this.Size = new System.Drawing.Size(192, 96);
-			this.Load += new System.EventHandler(this.HelpCommand_Load);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelpCommand));
+            this.TargetFrame = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Target = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.URL = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // TargetFrame
+            // 
+            resources.ApplyResources(this.TargetFrame, "TargetFrame");
+            this.TargetFrame.Name = "TargetFrame";
+            // 
+            // label2
+            // 
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // Target
+            // 
+            resources.ApplyResources(this.Target, "Target");
+            this.Target.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Target.Name = "Target";
+            this.Target.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
+            // 
+            // label1
+            // 
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // URL
+            // 
+            resources.ApplyResources(this.URL, "URL");
+            this.URL.Name = "URL";
+            // 
+            // HelpCommand
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.URL);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.TargetFrame);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Target);
+            this.Controls.Add(this.label1);
+            this.Name = "HelpCommand";
+            this.Load += new System.EventHandler(this.HelpCommand_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

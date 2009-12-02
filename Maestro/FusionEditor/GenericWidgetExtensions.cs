@@ -101,42 +101,45 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.ExtensionDataSet = new System.Data.DataSet();
-			this.ExtensionTable = new System.Data.DataTable();
-			this.NameColumn = new System.Data.DataColumn();
-			this.ValueColumn = new System.Data.DataColumn();
-			((System.ComponentModel.ISupportInitialize)(this.ExtensionDataSet)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.ExtensionTable)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
-			// 
-			// ExtensionDataSet
-			// 
-			this.ExtensionDataSet.DataSetName = "NewDataSet";
-			this.ExtensionDataSet.Locale = new System.Globalization.CultureInfo("da-DK");
-			this.ExtensionDataSet.Tables.AddRange(new System.Data.DataTable[] {
-																				  this.ExtensionTable});
-			// 
-			// ExtensionTable
-			// 
-			this.ExtensionTable.Columns.AddRange(new System.Data.DataColumn[] {
-																				  this.NameColumn,
-																				  this.ValueColumn});
-			this.ExtensionTable.TableName = "ExtensionTable";
-			// 
-			// NameColumn
-			// 
-			this.NameColumn.ColumnName = "Name";
-			// 
-			// ValueColumn
-			// 
-			this.ValueColumn.ColumnName = "Value";
-			// 
-			// GenericWidgetExtensions
-			// 
-			this.Size = new System.Drawing.Size(400, 456);
-			((System.ComponentModel.ISupportInitialize)(this.ExtensionDataSet)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.ExtensionTable)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenericWidgetExtensions));
+            this.ExtensionDataSet = new System.Data.DataSet();
+            this.ExtensionTable = new System.Data.DataTable();
+            this.NameColumn = new System.Data.DataColumn();
+            this.ValueColumn = new System.Data.DataColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.ExtensionDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExtensionTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ExtensionDataSet
+            // 
+            this.ExtensionDataSet.DataSetName = "NewDataSet";
+            this.ExtensionDataSet.Locale = new System.Globalization.CultureInfo("da-DK");
+            this.ExtensionDataSet.Tables.AddRange(new System.Data.DataTable[] {
+            this.ExtensionTable});
+            // 
+            // ExtensionTable
+            // 
+            this.ExtensionTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.NameColumn,
+            this.ValueColumn});
+            this.ExtensionTable.TableName = "ExtensionTable";
+            // 
+            // NameColumn
+            // 
+            this.NameColumn.ColumnName = "Name";
+            // 
+            // ValueColumn
+            // 
+            this.ValueColumn.ColumnName = "Value";
+            // 
+            // GenericWidgetExtensions
+            // 
+            resources.ApplyResources(this, "$this");
+            ((System.ComponentModel.ISupportInitialize)(this.ExtensionDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExtensionTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            this.ResumeLayout(false);
 
 		}
 		#endregion

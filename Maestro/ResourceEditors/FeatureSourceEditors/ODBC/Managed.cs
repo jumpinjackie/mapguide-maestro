@@ -44,17 +44,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
 			InitializeComponent();
 			managedFileControl.NewDefaultSelected += new ManagedFileControl.NewDefaultSelectedDelegate(NewDefaultSelected);
 			System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
-			nv.Add(".mdb", "Access database (*.mdb)");
-			nv.Add(".asc", "ASCII file (*.asc)");
-			nv.Add(".csv", "Comma separated values (*.csv)");
-			nv.Add(".tab", "Tabulator seperated values (*.tab)");
-			nv.Add(".txt", "Text file (*.txt)");
-			nv.Add(".sqlite", "SQLite database (*.sqlite)");
-			nv.Add(".db", "SQLite database (*.db)");
-			nv.Add(".fdb", "Firebird database (*.fdb)");
-			nv.Add(".xls", "Excel spreadsheet (*.xls)");
-			nv.Add(".dbf", "dBase database (*.dbf)");
-			nv.Add("", "All files (*.*)");
+            nv.Add(".mdb", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.AccessDatabaseFiles);
+            nv.Add(".asc", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.ASCIIFiles);
+            nv.Add(".csv", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.CSVFiles);
+            nv.Add(".tab", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.TABFiles);
+            nv.Add(".txt", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.TextFiles);
+            nv.Add(".sqlite", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.SQLiteFiles);
+            nv.Add(".db", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.SQLiteDbFiles);
+            nv.Add(".fdb", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.FirebirdFiles);
+            nv.Add(".xls", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.ExcelFiles);
+            nv.Add(".dbf", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.dBaseFiles);
+            nv.Add("", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.AllFiles);
 			managedFileControl.FileTypes = nv;
 		}
 
@@ -80,26 +80,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.managedFileControl = new ResourceEditors.FeatureSourceEditors.ManagedFileControl();
-			this.SuspendLayout();
-			// 
-			// managedFileControl
-			// 
-			this.managedFileControl.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.managedFileControl.FileTypes = null;
-			this.managedFileControl.Location = new System.Drawing.Point(0, 0);
-			this.managedFileControl.Name = "managedFileControl";
-			this.managedFileControl.Size = new System.Drawing.Size(264, 104);
-			this.managedFileControl.TabIndex = 0;
-			// 
-			// Managed
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(264, 104);
-			this.Controls.Add(this.managedFileControl);
-			this.Name = "Managed";
-			this.Size = new System.Drawing.Size(264, 104);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Managed));
+            this.managedFileControl = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ManagedFileControl();
+            this.SuspendLayout();
+            // 
+            // managedFileControl
+            // 
+            resources.ApplyResources(this.managedFileControl, "managedFileControl");
+            this.managedFileControl.FileTypes = null;
+            this.managedFileControl.Name = "managedFileControl";
+            // 
+            // Managed
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.managedFileControl);
+            this.Name = "Managed";
+            this.ResumeLayout(false);
 
 		}
 		#endregion

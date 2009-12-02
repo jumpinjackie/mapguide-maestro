@@ -203,6 +203,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommandEditor));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.basicPage = new System.Windows.Forms.TabPage();
             this.flyoutItem = new OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.FlyoutItem();
@@ -223,40 +224,26 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             // 
             this.tabControl.Controls.Add(this.basicPage);
             this.tabControl.Controls.Add(this.extraPage);
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(448, 269);
-            this.tabControl.TabIndex = 0;
             // 
             // basicPage
             // 
             this.basicPage.Controls.Add(this.flyoutItem);
             this.basicPage.Controls.Add(this.basicCommand);
-            this.basicPage.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.basicPage, "basicPage");
             this.basicPage.Name = "basicPage";
-            this.basicPage.Size = new System.Drawing.Size(440, 243);
-            this.basicPage.TabIndex = 0;
-            this.basicPage.Text = "Basic properties";
             // 
             // flyoutItem
             // 
-            this.flyoutItem.AutoScroll = true;
-            this.flyoutItem.AutoScrollMinSize = new System.Drawing.Size(192, 160);
-            this.flyoutItem.Location = new System.Drawing.Point(136, 8);
+            resources.ApplyResources(this.flyoutItem, "flyoutItem");
             this.flyoutItem.Name = "flyoutItem";
-            this.flyoutItem.Size = new System.Drawing.Size(288, 168);
-            this.flyoutItem.TabIndex = 1;
             // 
             // basicCommand
             // 
-            this.basicCommand.AutoScroll = true;
-            this.basicCommand.AutoScrollMinSize = new System.Drawing.Size(192, 232);
-            this.basicCommand.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.basicCommand, "basicCommand");
             this.basicCommand.Name = "basicCommand";
-            this.basicCommand.Size = new System.Drawing.Size(192, 232);
-            this.basicCommand.TabIndex = 0;
             // 
             // extraPage
             // 
@@ -266,73 +253,44 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             this.extraPage.Controls.Add(this.targetedCommand);
             this.extraPage.Controls.Add(this.invokeURL);
             this.extraPage.Controls.Add(this.searchCommand);
-            this.extraPage.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.extraPage, "extraPage");
             this.extraPage.Name = "extraPage";
-            this.extraPage.Size = new System.Drawing.Size(440, 486);
-            this.extraPage.TabIndex = 1;
-            this.extraPage.Text = "Extra properties";
             // 
             // invokeScript
             // 
-            this.invokeScript.AutoScroll = true;
-            this.invokeScript.AutoScrollMinSize = new System.Drawing.Size(192, 232);
-            this.invokeScript.Location = new System.Drawing.Point(24, 272);
+            resources.ApplyResources(this.invokeScript, "invokeScript");
             this.invokeScript.Name = "invokeScript";
-            this.invokeScript.Size = new System.Drawing.Size(112, 80);
-            this.invokeScript.TabIndex = 5;
             // 
             // helpCommand
             // 
-            this.helpCommand.AutoScroll = true;
-            this.helpCommand.AutoScrollMinSize = new System.Drawing.Size(192, 96);
-            this.helpCommand.Location = new System.Drawing.Point(168, 152);
+            resources.ApplyResources(this.helpCommand, "helpCommand");
             this.helpCommand.Name = "helpCommand";
-            this.helpCommand.Size = new System.Drawing.Size(112, 96);
-            this.helpCommand.TabIndex = 4;
             // 
             // printCommand
             // 
-            this.printCommand.AutoScroll = true;
-            this.printCommand.AutoScrollMinSize = new System.Drawing.Size(208, 104);
-            this.printCommand.Location = new System.Drawing.Point(24, 152);
+            resources.ApplyResources(this.printCommand, "printCommand");
             this.printCommand.Name = "printCommand";
-            this.printCommand.Size = new System.Drawing.Size(104, 104);
-            this.printCommand.TabIndex = 3;
             // 
             // targetedCommand
             // 
-            this.targetedCommand.AutoScroll = true;
-            this.targetedCommand.AutoScrollMinSize = new System.Drawing.Size(192, 64);
-            this.targetedCommand.Location = new System.Drawing.Point(264, 8);
+            resources.ApplyResources(this.targetedCommand, "targetedCommand");
             this.targetedCommand.Name = "targetedCommand";
-            this.targetedCommand.Size = new System.Drawing.Size(120, 128);
-            this.targetedCommand.TabIndex = 2;
             // 
             // invokeURL
             // 
-            this.invokeURL.AutoScroll = true;
-            this.invokeURL.AutoScrollMinSize = new System.Drawing.Size(192, 336);
-            this.invokeURL.Location = new System.Drawing.Point(136, 8);
+            resources.ApplyResources(this.invokeURL, "invokeURL");
             this.invokeURL.Name = "invokeURL";
-            this.invokeURL.Size = new System.Drawing.Size(112, 128);
-            this.invokeURL.TabIndex = 1;
             // 
             // searchCommand
             // 
-            this.searchCommand.AutoScroll = true;
-            this.searchCommand.AutoScrollMinSize = new System.Drawing.Size(192, 408);
-            this.searchCommand.Location = new System.Drawing.Point(16, 8);
+            resources.ApplyResources(this.searchCommand, "searchCommand");
             this.searchCommand.Name = "searchCommand";
-            this.searchCommand.Size = new System.Drawing.Size(112, 128);
-            this.searchCommand.TabIndex = 0;
             // 
             // CommandEditor
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(220, 269);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.tabControl);
             this.Name = "CommandEditor";
-            this.Size = new System.Drawing.Size(448, 269);
             this.tabControl.ResumeLayout(false);
             this.basicPage.ResumeLayout(false);
             this.extraPage.ResumeLayout(false);

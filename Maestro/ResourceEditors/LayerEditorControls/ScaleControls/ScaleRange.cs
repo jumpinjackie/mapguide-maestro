@@ -61,8 +61,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             {
                 m_isUpdating = true;
                 m_vsc = vsc;
-                MaxScale.Text = m_vsc.MaxScaleSpecified ? m_vsc.MaxScale.ToString(Globalizator.Globalizator.CurrentCulture) : "infinite";
-                MinScale.Text = m_vsc.MinScaleSpecified ? m_vsc.MinScale.ToString(Globalizator.Globalizator.CurrentCulture) : "infinite";
+                MaxScale.Text = m_vsc.MaxScaleSpecified ? m_vsc.MaxScale.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture) : OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.InfiniteValue;
+                MinScale.Text = m_vsc.MinScaleSpecified ? m_vsc.MinScale.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture) : OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.InfiniteValue;
 
                 scaleRangeConditions.SetItem(m_vsc);
             }
@@ -103,14 +103,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
             double o;
 
-            if (double.TryParse(MinScale.Text, System.Globalization.NumberStyles.Number, Globalizator.Globalizator.CurrentCulture, out o))
+            if (double.TryParse(MinScale.Text, System.Globalization.NumberStyles.Number, System.Threading.Thread.CurrentThread.CurrentUICulture, out o))
             {
                 m_vsc.MinScaleSpecified = true;
                 m_vsc.MinScale = o;
                 errorProvider.SetError(MinScale, null);
             }
             else
-                errorProvider.SetError(MinScale, "Invalid value");
+                errorProvider.SetError(MinScale, OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.InvalidValueError);
 
             if (ItemChanged != null)
                 ItemChanged(m_vsc, null);
@@ -123,14 +123,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
             double o;
 
-            if (double.TryParse(MaxScale.Text, System.Globalization.NumberStyles.Number, Globalizator.Globalizator.CurrentCulture, out o))
+            if (double.TryParse(MaxScale.Text, System.Globalization.NumberStyles.Number, System.Threading.Thread.CurrentThread.CurrentUICulture, out o))
             {
                 m_vsc.MaxScaleSpecified = true;
                 m_vsc.MaxScale = o;
                 errorProvider.SetError(MaxScale, null);
             }
             else
-                errorProvider.SetError(MaxScale, "Invalid value");
+                errorProvider.SetError(MaxScale, OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.InvalidValueError);
 
             if (ItemChanged != null)
                 ItemChanged(m_vsc, null);

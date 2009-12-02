@@ -117,65 +117,205 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Filelist.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Filelist.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="Filelist.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 98</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Filelist.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;Filelist.Name" xml:space="preserve">
+    <value>Filelist</value>
+  </data>
+  <data name="&gt;&gt;Filelist.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Filelist.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Filelist.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>143, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="AddButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgNJREFUOE+Nk99L
-        WmEYxw3/kqRFQYxaF60fjIxGNKLdjK5G3UTK6aqgRotqFdEYrNi0iwqqbUlFCGFBEWLkPBCSFFnmikoz
-        Dgs026GcOvS7Pa8c50nHeuHLeQ/nOZ/3+3zPc7IUf5bDsYNwOEJb2YrFYgqlUqmgK61oNKKorq7KSivk
-        +S3E43Hc3EaTCkd+ye7pmdlsgdG4hIwAKghcR/4pfzAMi2UTx0fH6RBycF+AaXmVAWRO7gvwCUG4j87h
-        8QqsnWQrqQDh+w9WlCrXNy8kEUTKIwmwWnlQaJTB/wCX/lBmgJRBJoB9bx+jKzp0LHSizzgAm8sub4Ec
-        SACvcCOzb1hfRI1ejTe215g4GMN7xzBezNZDq9P8zSAVIAVFGdDJpSPFaOc5DDl74RIOMOf+jK7tNlTN
-        lGUGSA4otMH5YZQZCqHZakSXnUNADDBAq70Zz1bUeK57moBIDmhYyAG9vOfyQjvFoXg+H7zHyl6maRVD
-        IttrzE0oeJuTANCEUQb+4E+c+a6w6zxjav/0CkWGXHb6uHsQ16ErbPhMGHX2oXb5CWtP5oDsk04vRKYl
-        /ise6lWot+VC687HpejDtKcbDdt5KJl7gJ7F3nQH5IK+tSQqqviSDe4wG9PCS/SflKNuTYXKd4/lIVIb
-        JBrRuxqY7GeBlX5UQf3hETh9C4ymxF/5Gz+dzDj10EpxAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHzSURBVDhPlZPbSxtBGMX9VwwaFETa+uAVMQUpLcW+iE9F
+        X8SE9cmAFi3GqhRLoRVN+qCC9xBFAhIDioQUYxYkJLSYmqZKNWlkqZCLLhq1Qk77Tdg060bUgcPO7n7z
+        mzNnZvLy/jWf7wt4fkshl4tn3+hJcjicoHpFo6JUKoXTsz8ZXVxeyd7pHwGs1mUlhABUEDu+vFHRxAWc
+        zg3s7e4pIfcB2FZWGUDm5K6AiJBAcPcXQmFBnkc2QPh9woqyFfgRhiSCSHlkwqSEKTTK4DbAUTSZGyCF
+        mAvg2f6GYbsRnYtd6LMOwB3wyJdADiRAWDiV2TevL+GJSYM37h6M73zCB98QGucboDNq/29nNkAKijKg
+        mSs/lkHPc3jrNyAg7MASnEW3twOPp6tyAyQHFNrgwhCqzA+g3WpGt4dDTIwxQLunFc/sGrww1qchkgM6
+        LOSABm8HwtBNcihbKAYfcrHBdFrFpMj6WkcLSt4VpAF0wiiDaOIcB5E4vvoPmPQzr/DQrGazjwUHcZyM
+        43PEhmF/H56u1LLlyRyQfdL+oci0zG+i1KRCg1sNXbAYR2IEU6HXaPIWodxSiN4lg9IBuaC9lkRFNXP5
+        4L7nY0p4if6f1Xi+pkLd+wp5iLQMEt246xqY6GeBVY6qoBl5BM7UBqstfSv/AtxW4JLSgfLrAAAAAElF
+        TkSuQmCC
 </value>
+  </data>
+  <data name="AddButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="AddButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="AddButton.ToolTipText" xml:space="preserve">
+    <value>Upload a new file to the server</value>
+  </data>
+  <data name="RemoveButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="RemoveButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAedJREFUOE+Nk9Fr
-        UmEYxh3+KYMRJAitIBoMHOKNk0VEGOtqN1GNsVpCF5KwnFhGErsQ1q42BlFI0goRTZhywMZkI0NKI2eK
-        WJpm0+kx9ZnvdzjmUSM/+HE8+Pk7z/uczxFZe4XD+6jVePooWc1mUyaXy2V0pVWv8zK1emqkbyPHhVDj
-        /6BcqXfovafvfD4/nE4XBgpow89f/D/JF2vw+3cQj8X7JZRgWMHrbTcTSJIMK0hlivgU+4bDZIaN0xml
-        W5DJltimXqKfkyBIIvbREQQCHCuROvif4Hv+eLBA7GCQIBL+CM7hQNBkRNBqxZf3e9IRKIEoSGbKkvjB
-        F068u6xF1raMo811FBx27M/p8fL2rb8ddAvEoqgDerJHewElkwHN1YdorT1l16rFiMglzWCBmIAK89hs
-        SExPonFvHq1HJrSemAXuLyE3q4Pv6owgERPQYaEE9OMP0bbgziKymvMoBvyo5HMSfhhuwjuhFAR0wqiD
-        fLGKRKqAg0iC4TYakdScwZH5Lo437AJbbZ49ZgloPEkCik98Tf9mhDwcdieVqF4ZR+vG2Q6Na+eYmFsx
-        9SegFPSuRQKWB4hoFKjMnUJjYRT89TGkLyrg0qqkJdIYBB3RXp5bzHir18GrOs1i0yt880r4V54A9yLT
-        m2S2FSIAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHOSURBVDhPlZPdK0NhHMf9L0qKWnkpUWo3uxmRJOJqN/KS
+        vJaLZcUsTCQXK1yREi3ykpZZ2TqFLDLJW2ZoDWNmZsbsa7/ndMbZmXDq0+mc85zP+T7f5zwpKbHDbt8F
+        x21KsFo5do/OhNlsAY2XHDToNfyO5+BbnMRrekYCo3FBKiEBDbh/DP+I1/cKi2UDpyenUsl/BItLq0wg
+        SvJXwZXbh6OTS1y43OI+vgvcHj8blMjhsQsESYQ+4mVSw1QadfCb4Mb7klwglJhM4LAfgDMYYNOoYevr
+        w9nWjngKlEAQuNzPovi2WSPWy5Xw6LsRmJrAg2EYu6pKzLU0fC3nd4FQFHVAXzYp8+HXdOBjtB/RsRF2
+        DunUcJQpkguEBFSYSa+Hs6gQkc5GRAc0iA5pebracFddDHNVCS8REtDPQgno5f3DmKC1GR5FHnxWC4Le
+        OxG3HfVYK5DxAvrDqAOvLwTn1QP2HE7GqloNlyILAW07XiaHeaZjjA+yBDQ9UQKKT5xfPzE2TRy2C2UI
+        VWQjWpcTJ1KTy8Rcr0aagFLQWgtYdT1wKDIRVKUj0pSKcG0arkszsaCUi0ukaRC04xKZ0WmxUlmMNXkG
+        i01LuDzP78pPk+rn9YbBWMIAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="RemoveButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="RemoveButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="RemoveButton.ToolTipText" xml:space="preserve">
+    <value>Delete a file from the server</value>
+  </data>
+  <data name="DataItemButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="DataItemButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAWFJREFUOE+1kk9L
-        AlEUxf0MQWsXRrQJF1Fh0B8LpKIkIQpXbdtEn6JPILarNrU0FxG2KIiCwLUw0KJF/zYlkjk5We/N6Z07
-        YyVomZBw4DG+37nn3vsCgf/86aMhqFwEHdfQ+TDURbgzA3XQC30/CXW7gFom9HcTbQ3DvYtAX4+D57ba
-        0GdLUIf90KchuI9zQHEMsGPQlSSYqLobhpNdbjRzj00FA+jLEYFExZiIMFQcrk4YJUXqZhFv1gzsvR5U
-        tqY8M1Zlr4yL0sQn+AUbg+q8mHMuNChv9jUmkaE9eBe/g3I23wgyZVO4PiBOm/16kf2qphWCujAo8HP6
-        l428X816cQn6G+B7oF7PR3/eRu1k1ZuFH5dV67AY5KNwcuutTZzMtEyZoLKiAlCqYDZlDKSFnXhrA+6Z
-        BoTs7SBe9ldEPIuR+a+cGmhtYKe75HKzmHZ2DU+pIEob3e29yraerrn0AbN/Z/B8pIs7AAAAAElFTkSu
-        QmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFhSURBVDhPtZJPSwJRFMX9DEFrF0a0CRdRYdAfC6SiJCEK
+        V23bRJ+iTyC2qza1NBcRtiiIgsC1MNCiRf82JZI5OVnvzemdO2MlaJmQcOAxvt+55977AoH//OmjIahc
+        BB3X0Pkw1EW4MwN10At9Pwl1u4BaJvR3E20Nw72LQF+Pg+e22tBnS1CH/dCnIbiPc0BxDLBj0JUkmKi6
+        G4aTXW40c49NBQPoyxGBRMWYiDBUHK5OGCVF6mYRb9YM7L0eVLamPDNWZa+Mi9LEJ/gFG4PqvJhzLjQo
+        b/Y1JpGhPXgXv4NyNt8IMmVTuD4gTpv9epH9qqYVgrowKPBz+peNvF/NenEJ+hvge6Bez0d/3kbtZNWb
+        hR+XVeuwGOSjcHLrrU2czLRMmaCyogJQqmA2ZQykhZ14awPumQaE7O0gXvZXRDyLkfmvnBpobWCnu+Ry
+        s5h2dg1PqSBKG93tvcq2nq659AGzf2fwfKSLOwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="DataItemButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="DataItemButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="DataItemButton.ToolTipText" xml:space="preserve">
+    <value>Select the currently selected data item as the datasource</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="DownloadButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="DownloadButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAaZJREFUOE+1U9sr
-        w3EU33/jYR4krNiLy4smlKeFPCkbHuQWSbG8YHuQGsk1W0MucwubWyi1lEkUJbnUlGmyK+PDOfr6bXN9
-        8atP3+855/P9nPM93/OTyf7j03UsQadfQ7/JyaA9+X7Npe+2wzjsxO6+n3F06mMIm2LfitBh88wFVra9
-        sO+EeA2Fnhm2N5tAPuJ8KdJi2MPE4j0ml0OwroYZQkDYHLN7QdwokeqmWfSY3Bic9GJo6oVBZCEgfLT2
-        jj+hb+wuuidF2gUYBh7QNeKD4yDIlRCRBLy+MO8X1h841t7rZpRWzUtVFFZsoqHzvQKRlbIIARIUfkpC
-        XLXGJgkocpZQXHODSl0AWw7/B1kcEitVUdEaZG5ytlUSSMiwIDH3DEp1APnlj1xu7GHz3D3ytGGkqX3M
-        TVVZJAFt7TQSVIdIKbiFptnD/bh2SU08v/LzvUvqPMwhbn1LRA/oSeLTrRyIzRxpkyhxiPvlLMizNlDb
-        dgLjqIufNRLkK2s8hjxz7eeRFpXQPZPyLxm0/zFzbDk0WIpsC+KUUwxq2Kc7//pn/ZHwCkuR8ACpaTGw
-        AAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGmSURBVDhPtVPbK8NxFN9/42EeJKzYi8uLJpSnhTwpGx7k
+        FkmxvGB7kBrJNVtDLnMLm1sotZRJFCW51JRpsivjwzn6+m1zffGrT9/vOefz/ZzzPd/zk8n+49N1LEGn
+        X0O/ycmgPfl+zaXvtsM47MTuvp9xdOpjCJti34rQYfPMBVa2vbDvhHgNhZ4ZtjebQD7ifCnSYtjDxOI9
+        JpdDsK6GGUJA2Byze0HcKJHqpln0mNwYnPRiaOqFQWQhIHy09o4/oW/sLronRdoFGAYe0DXig+MgyJUQ
+        kQS8vjDvF9YfONbe62aUVs1LVRRWbKKh870CkZWyCAESFH5KQly1xiYJKHKWUFxzg0pdAFsO/wdZHBIr
+        VVHRGmRucrZVEkjIsCAx9wxKdQD55Y9cbuxh89w98rRhpKl9zE1VWSQBbe00ElSHSCm4habZw/24dklN
+        PL/y871L6jzMIW59S0QP6Eni060ciM0caZMocYj75SzIszZQ23YC46iLnzUS5CtrPIY8c+3nkRaV0D2T
+        8i8ZtP8xc2w5NFiKbAvilFMMatinO//6Z/2R8ApLkfAAqWkxsAAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="DownloadButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="DownloadButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="DownloadButton.ToolTipText" xml:space="preserve">
+    <value>Download a copy of the server file</value>
+  </data>
+  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 25</value>
+  </data>
+  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Name" xml:space="preserve">
+    <value>toolStrip</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>136, 56</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 123</value>
+  </data>
+  <data name="&gt;&gt;AddButton.Name" xml:space="preserve">
+    <value>AddButton</value>
+  </data>
+  <data name="&gt;&gt;AddButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RemoveButton.Name" xml:space="preserve">
+    <value>RemoveButton</value>
+  </data>
+  <data name="&gt;&gt;RemoveButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DataItemButton.Name" xml:space="preserve">
+    <value>DataItemButton</value>
+  </data>
+  <data name="&gt;&gt;DataItemButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DownloadButton.Name" xml:space="preserve">
+    <value>DownloadButton</value>
+  </data>
+  <data name="&gt;&gt;DownloadButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>ManagedFileControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

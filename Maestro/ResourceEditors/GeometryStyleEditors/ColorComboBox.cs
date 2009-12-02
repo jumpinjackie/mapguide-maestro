@@ -128,7 +128,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		protected override void OnSelectedIndexChanged(EventArgs e)
 		{
-            if (this.SelectedItem != null && this.SelectedItem.ToString() == "More colors...")
+            if (this.SelectedItem != null && this.SelectedItem.ToString() == Strings.ColorComboBox.MoreColorsName)
             {
                 ColorDialog dlg = this.ColorPicker;
 
@@ -215,9 +215,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			public override string ToString()
 			{
 				if (m_cellType == CellTypes.MoreColors)
-					return "More colors...";
+					return Strings.ColorComboBox.MoreColorsName;
 				else if (m_cellType == CellTypes.Transparent)
-					return "Transparent";
+					return Strings.ColorComboBox.TransparentName;
 				else
 					return base.ToString ();
 			}

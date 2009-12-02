@@ -78,36 +78,30 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Folder = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Folder
-			// 
-			this.Folder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Folder.Location = new System.Drawing.Point(104, 10);
-			this.Folder.Name = "Folder";
-			this.Folder.Size = new System.Drawing.Size(504, 20);
-			this.Folder.TabIndex = 5;
-			this.Folder.Text = "";
-			this.Folder.TextChanged += new System.EventHandler(this.Folder_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 10);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(72, 16);
-			this.label1.TabIndex = 4;
-			this.label1.Text = "Folder";
-			// 
-			// MapMenu
-			// 
-			this.Controls.Add(this.Folder);
-			this.Controls.Add(this.label1);
-			this.Name = "MapMenu";
-			this.Size = new System.Drawing.Size(616, 40);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapMenu));
+            this.Folder = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Folder
+            // 
+            resources.ApplyResources(this.Folder, "Folder");
+            this.Folder.Name = "Folder";
+            this.Folder.TextChanged += new System.EventHandler(this.Folder_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // MapMenu
+            // 
+            this.Controls.Add(this.Folder);
+            this.Controls.Add(this.label1);
+            this.Name = "MapMenu";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

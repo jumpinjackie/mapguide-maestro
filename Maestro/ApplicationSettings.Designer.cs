@@ -29,48 +29,41 @@ namespace OSGeo.MapGuide.Maestro
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ApplicationSettings));
             this.label1 = new System.Windows.Forms.Label();
             this.BrowserCommand = new System.Windows.Forms.TextBox();
             this.BrowseForBrowser = new System.Windows.Forms.Button();
             this.Connections = new System.Windows.Forms.ListBox();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.OKBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.RegularViewer = new System.Windows.Forms.RadioButton();
             this.FusionViewer = new System.Windows.Forms.RadioButton();
+            this.RegularViewer = new System.Windows.Forms.RadioButton();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.SelectBrowser = new System.Windows.Forms.OpenFileDialog();
             this.contextMenuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Browser program";
             // 
             // BrowserCommand
             // 
-            this.BrowserCommand.Location = new System.Drawing.Point(104, 8);
+            resources.ApplyResources(this.BrowserCommand, "BrowserCommand");
             this.BrowserCommand.Name = "BrowserCommand";
-            this.BrowserCommand.Size = new System.Drawing.Size(256, 20);
-            this.BrowserCommand.TabIndex = 1;
-            this.toolTip.SetToolTip(this.BrowserCommand, "Leave blank for system default on Windows, and firefox for Linux");
+            this.toolTip.SetToolTip(this.BrowserCommand, resources.GetString("BrowserCommand.ToolTip"));
             this.BrowserCommand.TextChanged += new System.EventHandler(this.BrowserCommand_TextChanged);
             // 
             // BrowseForBrowser
             // 
-            this.BrowseForBrowser.Location = new System.Drawing.Point(360, 8);
+            resources.ApplyResources(this.BrowseForBrowser, "BrowseForBrowser");
             this.BrowseForBrowser.Name = "BrowseForBrowser";
-            this.BrowseForBrowser.Size = new System.Drawing.Size(24, 20);
-            this.BrowseForBrowser.TabIndex = 2;
-            this.BrowseForBrowser.Text = "...";
             this.BrowseForBrowser.UseVisualStyleBackColor = true;
             this.BrowseForBrowser.Click += new System.EventHandler(this.BrowseForBrowser_Click);
             // 
@@ -78,98 +71,78 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.Connections.ContextMenuStrip = this.contextMenuStrip;
             this.Connections.FormattingEnabled = true;
-            this.Connections.Location = new System.Drawing.Point(8, 136);
+            resources.ApplyResources(this.Connections, "Connections");
             this.Connections.Name = "Connections";
-            this.Connections.Size = new System.Drawing.Size(376, 108);
-            this.Connections.TabIndex = 3;
-            this.toolTip.SetToolTip(this.Connections, "Right click an entry to delete it");
+            this.toolTip.SetToolTip(this.Connections, resources.GetString("Connections.ToolTip"));
             this.Connections.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Connections_KeyUp);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 120);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Stored connection settings";
-            // 
-            // OKBtn
-            // 
-            this.OKBtn.Location = new System.Drawing.Point(96, 256);
-            this.OKBtn.Name = "OKBtn";
-            this.OKBtn.Size = new System.Drawing.Size(88, 24);
-            this.OKBtn.TabIndex = 5;
-            this.OKBtn.Text = "OK";
-            this.OKBtn.UseVisualStyleBackColor = true;
-            this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
-            // 
-            // CancelBtn
-            // 
-            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(200, 256);
-            this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(88, 24);
-            this.CancelBtn.TabIndex = 6;
-            this.CancelBtn.Text = "Cancel";
-            this.CancelBtn.UseVisualStyleBackColor = true;
             // 
             // contextMenuStrip
             // 
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.removeToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(125, 26);
+            resources.ApplyResources(this.contextMenuStrip, "contextMenuStrip");
             this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.removeToolStripMenuItem.Text = "Remove";
+            resources.ApplyResources(this.removeToolStripMenuItem, "removeToolStripMenuItem");
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // OKBtn
+            // 
+            resources.ApplyResources(this.OKBtn, "OKBtn");
+            this.OKBtn.Name = "OKBtn";
+            this.OKBtn.UseVisualStyleBackColor = true;
+            this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
+            // 
+            // CancelBtn
+            // 
+            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
+            this.CancelBtn.Name = "CancelBtn";
+            this.CancelBtn.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.FusionViewer);
             this.groupBox1.Controls.Add(this.RegularViewer);
-            this.groupBox1.Location = new System.Drawing.Point(8, 40);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(376, 72);
-            this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Preview viewer type";
-            // 
-            // RegularViewer
-            // 
-            this.RegularViewer.AutoSize = true;
-            this.RegularViewer.Location = new System.Drawing.Point(8, 24);
-            this.RegularViewer.Name = "RegularViewer";
-            this.RegularViewer.Size = new System.Drawing.Size(158, 17);
-            this.RegularViewer.TabIndex = 0;
-            this.RegularViewer.TabStop = true;
-            this.RegularViewer.Text = "Regular (WebLayout based)";
-            this.RegularViewer.UseVisualStyleBackColor = true;
-            this.RegularViewer.CheckedChanged += new System.EventHandler(this.RegularViewer_CheckedChanged);
             // 
             // FusionViewer
             // 
-            this.FusionViewer.AutoSize = true;
-            this.FusionViewer.Location = new System.Drawing.Point(8, 48);
+            resources.ApplyResources(this.FusionViewer, "FusionViewer");
             this.FusionViewer.Name = "FusionViewer";
-            this.FusionViewer.Size = new System.Drawing.Size(88, 17);
-            this.FusionViewer.TabIndex = 1;
             this.FusionViewer.TabStop = true;
-            this.FusionViewer.Text = "Fusion based";
             this.FusionViewer.UseVisualStyleBackColor = true;
             this.FusionViewer.CheckedChanged += new System.EventHandler(this.FusionViewer_CheckedChanged);
             // 
+            // RegularViewer
+            // 
+            resources.ApplyResources(this.RegularViewer, "RegularViewer");
+            this.RegularViewer.Name = "RegularViewer";
+            this.RegularViewer.TabStop = true;
+            this.RegularViewer.UseVisualStyleBackColor = true;
+            this.RegularViewer.CheckedChanged += new System.EventHandler(this.RegularViewer_CheckedChanged);
+            // 
+            // SelectBrowser
+            // 
+            this.SelectBrowser.FileName = "SelectBrowser";
+            resources.ApplyResources(this.SelectBrowser, "SelectBrowser");
+            // 
             // ApplicationSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(392, 289);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.OKBtn);
@@ -182,7 +155,6 @@ namespace OSGeo.MapGuide.Maestro
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ApplicationSettings";
-            this.Text = "MapGuide Maestro Settings";
             this.contextMenuStrip.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -206,5 +178,6 @@ namespace OSGeo.MapGuide.Maestro
         private System.Windows.Forms.RadioButton FusionViewer;
         private System.Windows.Forms.RadioButton RegularViewer;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.OpenFileDialog SelectBrowser;
     }
 }

@@ -30,8 +30,6 @@ namespace OSGeo.MapGuide.Maestro
     public partial class BoundsPicker : Form
     {
         private string m_bounds;
-        private Globalizator.Globalizator m_globalizor = null;
-
         public string SRSBounds
         {
             get { return m_bounds; }
@@ -78,11 +76,11 @@ namespace OSGeo.MapGuide.Maestro
                             MaxY.Text = root["Bounds"].Attributes["north"].Value;
                     }
                     else
-                        throw new Exception("Missing bounds tag");
+                        throw new Exception(Strings.BoundsPicker.MissingBoundsError);
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(this, string.Format("Failed to decode the current bounds,\nyou may enter new bounds, and these will replace the current.\nError message: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                    MessageBox.Show(this, string.Format(Strings.BoundsPicker.BoundsDecodeError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 }
             }
         }
@@ -90,7 +88,6 @@ namespace OSGeo.MapGuide.Maestro
         private BoundsPicker()
         {
             InitializeComponent();
-            m_globalizor = new Globalizator.Globalizator(this);
         }
 
         private void OKBtn_Click(object sender, EventArgs e)
@@ -103,7 +100,7 @@ namespace OSGeo.MapGuide.Maestro
 
             if (MinX.Text.Trim().Length == 0 || MaxX.Text.Trim().Length == 0 || MinY.Text.Trim().Length == 0 || MaxY.Text.Trim().Length == 0 || (srs == null && SRSCombo.Visible))
             {
-                MessageBox.Show(this, "You have not entered all the required information.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Strings.BoundsPicker.IncompleBoundsError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -123,35 +120,35 @@ namespace OSGeo.MapGuide.Maestro
 
             if (!isUs && isLocal)
             {
-                switch (MessageBox.Show(this, "The values you have entered appears to be in local regional format, but are required in US regional format\nDo you want to convert the values?", Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                switch (MessageBox.Show(this, Strings.BoundsPicker.NumbersInRegionalError, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
                 {
                     case DialogResult.Yes:
                         if (double.TryParse(MinX.Text, System.Globalization.NumberStyles.Float, localCI, out temp))
                             MinX.Text = temp.ToString(usCI);
                         else
                         {
-                            MessageBox.Show(this, "Failed to convert the Min X value", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, Strings.BoundsPicker.InvalidMinXError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (double.TryParse(MaxX.Text, System.Globalization.NumberStyles.Float, localCI, out temp))
                             MaxX.Text = temp.ToString(usCI);
                         else
                         {
-                            MessageBox.Show(this, "Failed to convert the Max X value", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, Strings.BoundsPicker.InvalidMaxXError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (double.TryParse(MinY.Text, System.Globalization.NumberStyles.Float, localCI, out temp))
                             MinY.Text = temp.ToString(usCI);
                         else
                         {
-                            MessageBox.Show(this, "Failed to convert the Min Y value", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, Strings.BoundsPicker.InvalidMinYError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (double.TryParse(MaxY.Text, System.Globalization.NumberStyles.Float, localCI, out temp))
                             MaxY.Text = temp.ToString(usCI);
                         else
                         {
-                            MessageBox.Show(this, "Failed to convert the Max Y value", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, Strings.BoundsPicker.InvalidMaxYError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         break;
@@ -162,7 +159,7 @@ namespace OSGeo.MapGuide.Maestro
 
             if (!isUs && !isLocal)
             {
-                if (MessageBox.Show(this, "The coordinates you have entered appears to be invalid, do you want to use them anyway?", Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error) != DialogResult.Yes)
+                if (MessageBox.Show(this, Strings.BoundsPicker.UseInvalidCoordinatesWarning, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error) != DialogResult.Yes)
                     return;
             }
 

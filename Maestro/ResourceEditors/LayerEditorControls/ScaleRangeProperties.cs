@@ -136,107 +136,74 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.UsePoint = new System.Windows.Forms.CheckBox();
-			this.UseLine = new System.Windows.Forms.CheckBox();
-			this.UseArea = new System.Windows.Forms.CheckBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.minimumScale = new System.Windows.Forms.ComboBox();
-			this.maximumScale = new System.Windows.Forms.ComboBox();
-			this.SuspendLayout();
-			// 
-			// UsePoint
-			// 
-			this.UsePoint.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.UsePoint.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.UsePoint.Location = new System.Drawing.Point(0, 48);
-			this.UsePoint.Name = "UsePoint";
-			this.UsePoint.Size = new System.Drawing.Size(248, 16);
-			this.UsePoint.TabIndex = 0;
-			this.UsePoint.Text = "Display points";
-			this.UsePoint.CheckedChanged += new System.EventHandler(this.UsePoint_CheckedChanged);
-			// 
-			// UseLine
-			// 
-			this.UseLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.UseLine.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.UseLine.Location = new System.Drawing.Point(0, 72);
-			this.UseLine.Name = "UseLine";
-			this.UseLine.Size = new System.Drawing.Size(248, 16);
-			this.UseLine.TabIndex = 1;
-			this.UseLine.Text = "Display lines";
-			this.UseLine.CheckedChanged += new System.EventHandler(this.UseLine_CheckedChanged);
-			// 
-			// UseArea
-			// 
-			this.UseArea.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.UseArea.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.UseArea.Location = new System.Drawing.Point(0, 96);
-			this.UseArea.Name = "UseArea";
-			this.UseArea.Size = new System.Drawing.Size(248, 16);
-			this.UseArea.TabIndex = 2;
-			this.UseArea.Text = "Display areas";
-			this.UseArea.CheckedChanged += new System.EventHandler(this.UseArea_CheckedChanged);
-			// 
-			// label1
-			// 
-			this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label1.Location = new System.Drawing.Point(0, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(88, 16);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Minimum scale";
-			// 
-			// label2
-			// 
-			this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label2.Location = new System.Drawing.Point(0, 24);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(88, 16);
-			this.label2.TabIndex = 4;
-			this.label2.Text = "Maximum scale";
-			// 
-			// minimumScale
-			// 
-			this.minimumScale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.minimumScale.Items.AddRange(new object[] {
-															  "Infinite"});
-			this.minimumScale.Location = new System.Drawing.Point(104, 0);
-			this.minimumScale.Name = "minimumScale";
-			this.minimumScale.Size = new System.Drawing.Size(144, 21);
-			this.minimumScale.TabIndex = 5;
-			this.minimumScale.Text = "comboBox1";
-			this.minimumScale.TextChanged += new System.EventHandler(this.minimumScale_TextChanged);
-			// 
-			// maximumScale
-			// 
-			this.maximumScale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.maximumScale.Items.AddRange(new object[] {
-															  "Infinite"});
-			this.maximumScale.Location = new System.Drawing.Point(104, 24);
-			this.maximumScale.Name = "maximumScale";
-			this.maximumScale.Size = new System.Drawing.Size(144, 21);
-			this.maximumScale.TabIndex = 6;
-			this.maximumScale.Text = "comboBox2";
-			this.maximumScale.TextChanged += new System.EventHandler(this.maximumScale_TextChanged);
-			// 
-			// ScaleRangeProperties
-			// 
-			this.Controls.Add(this.maximumScale);
-			this.Controls.Add(this.minimumScale);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.UseArea);
-			this.Controls.Add(this.UseLine);
-			this.Controls.Add(this.UsePoint);
-			this.Name = "ScaleRangeProperties";
-			this.Size = new System.Drawing.Size(248, 312);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScaleRangeProperties));
+            this.UsePoint = new System.Windows.Forms.CheckBox();
+            this.UseLine = new System.Windows.Forms.CheckBox();
+            this.UseArea = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.minimumScale = new System.Windows.Forms.ComboBox();
+            this.maximumScale = new System.Windows.Forms.ComboBox();
+            this.SuspendLayout();
+            // 
+            // UsePoint
+            // 
+            resources.ApplyResources(this.UsePoint, "UsePoint");
+            this.UsePoint.Name = "UsePoint";
+            this.UsePoint.CheckedChanged += new System.EventHandler(this.UsePoint_CheckedChanged);
+            // 
+            // UseLine
+            // 
+            resources.ApplyResources(this.UseLine, "UseLine");
+            this.UseLine.Name = "UseLine";
+            this.UseLine.CheckedChanged += new System.EventHandler(this.UseLine_CheckedChanged);
+            // 
+            // UseArea
+            // 
+            resources.ApplyResources(this.UseArea, "UseArea");
+            this.UseArea.Name = "UseArea";
+            this.UseArea.CheckedChanged += new System.EventHandler(this.UseArea_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // label2
+            // 
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // minimumScale
+            // 
+            resources.ApplyResources(this.minimumScale, "minimumScale");
+            this.minimumScale.Items.AddRange(new object[] {
+            resources.GetString("minimumScale.Items")});
+            this.minimumScale.Name = "minimumScale";
+            this.minimumScale.TextChanged += new System.EventHandler(this.minimumScale_TextChanged);
+            // 
+            // maximumScale
+            // 
+            resources.ApplyResources(this.maximumScale, "maximumScale");
+            this.maximumScale.Items.AddRange(new object[] {
+            resources.GetString("maximumScale.Items")});
+            this.maximumScale.Name = "maximumScale";
+            this.maximumScale.TextChanged += new System.EventHandler(this.maximumScale_TextChanged);
+            // 
+            // ScaleRangeProperties
+            // 
+            this.Controls.Add(this.maximumScale);
+            this.Controls.Add(this.minimumScale);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.UseArea);
+            this.Controls.Add(this.UseLine);
+            this.Controls.Add(this.UsePoint);
+            this.Name = "ScaleRangeProperties";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
 
 		}
 		#endregion
@@ -246,7 +213,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 			if (m_isUpdating)
 				return;
 
-			if (minimumScale.Text == "Infinite")
+			if (minimumScale.Text.Equals(OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.InfiniteValue, StringComparison.CurrentCultureIgnoreCase))
 				m_range.MinScaleSpecified = false;
 			else
 			{
@@ -265,7 +232,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 			if (m_isUpdating)
 				return;
 		
-			if (maximumScale.Text == "Infinite")
+			if (maximumScale.Text.Equals(OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.InfiniteValue, StringComparison.CurrentCultureIgnoreCase))
 				m_range.MaxScaleSpecified = false;
 			else
 			{

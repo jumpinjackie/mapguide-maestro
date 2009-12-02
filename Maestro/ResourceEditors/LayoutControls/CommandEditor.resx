@@ -117,4 +117,313 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="flyoutItem.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="flyoutItem.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>192, 160</value>
+  </data>
+  <data name="flyoutItem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 8</value>
+  </data>
+  <data name="flyoutItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 168</value>
+  </data>
+  <data name="flyoutItem.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flyoutItem.Name" xml:space="preserve">
+    <value>flyoutItem</value>
+  </data>
+  <data name="&gt;&gt;flyoutItem.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.FlyoutItem, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;flyoutItem.Parent" xml:space="preserve">
+    <value>basicPage</value>
+  </data>
+  <data name="&gt;&gt;flyoutItem.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="basicCommand.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="basicCommand.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>192, 232</value>
+  </data>
+  <data name="basicCommand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="basicCommand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 232</value>
+  </data>
+  <data name="basicCommand.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;basicCommand.Name" xml:space="preserve">
+    <value>basicCommand</value>
+  </data>
+  <data name="&gt;&gt;basicCommand.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.BasicCommand, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;basicCommand.Parent" xml:space="preserve">
+    <value>basicPage</value>
+  </data>
+  <data name="&gt;&gt;basicCommand.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="basicPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="basicPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 243</value>
+  </data>
+  <data name="basicPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="basicPage.Text" xml:space="preserve">
+    <value>Basic properties</value>
+  </data>
+  <data name="&gt;&gt;basicPage.Name" xml:space="preserve">
+    <value>basicPage</value>
+  </data>
+  <data name="&gt;&gt;basicPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;basicPage.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;basicPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="invokeScript.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="invokeScript.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>192, 232</value>
+  </data>
+  <data name="invokeScript.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 272</value>
+  </data>
+  <data name="invokeScript.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 80</value>
+  </data>
+  <data name="invokeScript.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;invokeScript.Name" xml:space="preserve">
+    <value>invokeScript</value>
+  </data>
+  <data name="&gt;&gt;invokeScript.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.InvokeScript, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;invokeScript.Parent" xml:space="preserve">
+    <value>extraPage</value>
+  </data>
+  <data name="&gt;&gt;invokeScript.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="helpCommand.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="helpCommand.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>192, 96</value>
+  </data>
+  <data name="helpCommand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 152</value>
+  </data>
+  <data name="helpCommand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 96</value>
+  </data>
+  <data name="helpCommand.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;helpCommand.Name" xml:space="preserve">
+    <value>helpCommand</value>
+  </data>
+  <data name="&gt;&gt;helpCommand.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.HelpCommand, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;helpCommand.Parent" xml:space="preserve">
+    <value>extraPage</value>
+  </data>
+  <data name="&gt;&gt;helpCommand.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="printCommand.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="printCommand.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>208, 104</value>
+  </data>
+  <data name="printCommand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 152</value>
+  </data>
+  <data name="printCommand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 104</value>
+  </data>
+  <data name="printCommand.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;printCommand.Name" xml:space="preserve">
+    <value>printCommand</value>
+  </data>
+  <data name="&gt;&gt;printCommand.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.PrintCommand, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;printCommand.Parent" xml:space="preserve">
+    <value>extraPage</value>
+  </data>
+  <data name="&gt;&gt;printCommand.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="targetedCommand.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="targetedCommand.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>192, 64</value>
+  </data>
+  <data name="targetedCommand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>264, 8</value>
+  </data>
+  <data name="targetedCommand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 128</value>
+  </data>
+  <data name="targetedCommand.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;targetedCommand.Name" xml:space="preserve">
+    <value>targetedCommand</value>
+  </data>
+  <data name="&gt;&gt;targetedCommand.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.TargetedCommand, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;targetedCommand.Parent" xml:space="preserve">
+    <value>extraPage</value>
+  </data>
+  <data name="&gt;&gt;targetedCommand.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="invokeURL.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="invokeURL.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>192, 336</value>
+  </data>
+  <data name="invokeURL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 8</value>
+  </data>
+  <data name="invokeURL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 128</value>
+  </data>
+  <data name="invokeURL.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;invokeURL.Name" xml:space="preserve">
+    <value>invokeURL</value>
+  </data>
+  <data name="&gt;&gt;invokeURL.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.InvokeURL, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;invokeURL.Parent" xml:space="preserve">
+    <value>extraPage</value>
+  </data>
+  <data name="&gt;&gt;invokeURL.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="searchCommand.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="searchCommand.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>192, 408</value>
+  </data>
+  <data name="searchCommand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 8</value>
+  </data>
+  <data name="searchCommand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 128</value>
+  </data>
+  <data name="searchCommand.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;searchCommand.Name" xml:space="preserve">
+    <value>searchCommand</value>
+  </data>
+  <data name="&gt;&gt;searchCommand.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.SearchCommand, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;searchCommand.Parent" xml:space="preserve">
+    <value>extraPage</value>
+  </data>
+  <data name="&gt;&gt;searchCommand.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="extraPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="extraPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 243</value>
+  </data>
+  <data name="extraPage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="extraPage.Text" xml:space="preserve">
+    <value>Extra properties</value>
+  </data>
+  <data name="&gt;&gt;extraPage.Name" xml:space="preserve">
+    <value>extraPage</value>
+  </data>
+  <data name="&gt;&gt;extraPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;extraPage.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;extraPage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 269</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>220, 269</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 269</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>CommandEditor</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

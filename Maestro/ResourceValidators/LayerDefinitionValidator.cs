@@ -38,19 +38,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
             List<ValidationIssue> issues = new List<ValidationIssue>();
 
             if (ldef.Item == null)
-                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, "Layer is missing core information"));
+                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, Strings.LayerDefinitionValidator.LayerNullError));
             else if (vldef == null && gldef == null)
-                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, "Only vector layers and raster layers are currently validated"));
+                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, Strings.LayerDefinitionValidator.DrawingLayerDefinitionNotSupportedWarning));
 
             if (vldef != null)
             {
                 if (string.IsNullOrEmpty(vldef.FeatureName))
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, "No FeatureSource is assigned to the layer"));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, Strings.LayerDefinitionValidator.MissingFeatureSourceError));
                 if (string.IsNullOrEmpty(vldef.Geometry))
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, "No Geometry is assigned to the layer"));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, Strings.LayerDefinitionValidator.MissingGeometryError));
 
                 if (vldef.VectorScaleRange == null || vldef.VectorScaleRange.Count == 0)
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, "No scale ranges are defined, no data can be displayed"));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, Strings.LayerDefinitionValidator.MissingScaleRangesError));
                 else
                 {
                     //Test for overlapping scale ranges
@@ -67,28 +67,28 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                         min = Math.Min(min, sr.Value);
                         max = Math.Max(max, sr.Key);
                         if (sr.Key < sr.Value)
-                            issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format("The minimum scale ({0}) is larger than the maximum scale ({1}).", sr.Value, sr.Key)));
+                            issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format(Strings.LayerDefinitionValidator.MinAndMaxScaleSwappedError, sr.Value, sr.Key)));
                     }
 
                     //TODO: Detect gaps in scale ranges
                     for (int i = 0; i < ranges.Count; i++)
                         for (int j = i + 1; j < ranges.Count; j++)
                             if (ranges[i].Key > ranges[j].Value || ranges[i].Value > ranges[j].Value)
-                                issues.Add(new ValidationIssue(resource, ValidationStatus.Information, string.Format("The scale range {0}-{1} overlaps the range {2}-{3}", ranges[i].Value, ranges[i].Key, ranges[j].Value, ranges[j].Key)));
+                                issues.Add(new ValidationIssue(resource, ValidationStatus.Information, string.Format(Strings.LayerDefinitionValidator.ScaleRangesOverlapInformation, ranges[i].Value, ranges[i].Key, ranges[j].Value, ranges[j].Key)));
 
                 }
             }
             else if (gldef != null)
             {
                 if (gldef.GridScaleRange == null || gldef.GridScaleRange.Count == 0)
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, "No scale ranges are defined, no data can be displayed"));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, Strings.LayerDefinitionValidator.MissingScaleRangesError));
                 else if (gldef.GridScaleRange.Count != 1)
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, "More than one scale ranges is defined, this is valid, but unsupported by Maestro"));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, Strings.LayerDefinitionValidator.MultipleScaleRangesWarning));
             }
             else if (dldef != null)
-                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, "Maestro does not support DrawingLayers"));
+                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, Strings.LayerDefinitionValidator.DrawingLayerNotSupportedWarning));
             else
-                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, "The layer has no type, or the type is unsupported by Maestro"));
+                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, Strings.LayerDefinitionValidator.UnsupportedLayerTypeWarning));
 
             if (recurse)
             {
@@ -133,7 +133,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                                                 }
 
                                             if (!found)
-                                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format("Failed to find schema {0} in featuresource {1}", schema, fs.ResourceId)));
+                                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format(Strings.LayerDefinitionValidator.SchemaMissingError, schema, fs.ResourceId)));
 
                                         }
 
@@ -141,19 +141,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                                 }
 
                             if (!foundSchema)
-                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format("Failed to find schema {0} in featuresource {1}", schema, fs.ResourceId)));
+                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format(Strings.LayerDefinitionValidator.SchemaMissingError, schema, fs.ResourceId)));
                             else if (!foundGeometry)
-                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format("Failed to find geometry column {0} in schema {1} on featuresource {2}", geometry, schema, fs.ResourceId)));
+                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format(Strings.LayerDefinitionValidator.GeometryMissingError, geometry, schema, fs.ResourceId)));
                         }
                     }
                     catch (Exception ex)
                     {
-                        issues.Add(new ValidationIssue(fs, ValidationStatus.Error, string.Format("Failed to validate column and schema")));
+                        issues.Add(new ValidationIssue(fs, ValidationStatus.Error, string.Format(Strings.LayerDefinitionValidator.SchemaAndColumnReadFailedError)));
                     }
                 }
                 catch (Exception ex)
                 {
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format("Failed to load featuresource")));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format(Strings.LayerDefinitionValidator.FeatureSourceLoadError)));
                 }
             }
 

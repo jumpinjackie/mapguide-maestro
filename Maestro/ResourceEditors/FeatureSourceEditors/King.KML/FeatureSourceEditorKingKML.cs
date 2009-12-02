@@ -42,7 +42,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private ResourceEditors.FeatureSourceEditors.KingKML.Managed managed;
 		private System.Windows.Forms.Panel providerpanel;
 		private bool m_isUpdating = false;
-		private Globalizator.Globalizator m_globalizor;
 
 		public FeatureSourceEditorKingKML()
 		{
@@ -52,21 +51,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			{
 				c.Visible = false;
 				c.Dock = DockStyle.Fill;
-			}
-			m_globalizor = new Globalizator.Globalizator(this);
-			string tmp = m_globalizor.Translate("OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorKingKML.FilePathType.Items");
-			if (tmp != null && tmp.Trim().Length > 0)
-			{
-				ArrayList fix = new ArrayList();
-				foreach(string s in tmp.Trim().Split('\n'))
-					if (s.Trim().Length > 0)
-						fix.Add(s.Trim());
-
-				if (fix.Count == FilePathType.Items.Count)
-				{
-					FilePathType.Items.Clear();
-					FilePathType.Items.AddRange(fix.ToArray());
-				}
 			}
 		}
 
@@ -101,75 +85,58 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.toolTips = new System.Windows.Forms.ToolTip(this.components);
-			this.label1 = new System.Windows.Forms.Label();
-			this.FilePathType = new System.Windows.Forms.ComboBox();
-			this.providerpanel = new System.Windows.Forms.Panel();
-			this.managed = new ResourceEditors.FeatureSourceEditors.KingKML.Managed();
-			this.unmanaged = new ResourceEditors.FeatureSourceEditors.KingKML.Unmanaged();
-			this.providerpanel.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(120, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "File location";
-			// 
-			// FilePathType
-			// 
-			this.FilePathType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.FilePathType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.FilePathType.Items.AddRange(new object[] {
-															  "Internal file (Managed)",
-															  "File on the server (Unmanaged)"});
-			this.FilePathType.Location = new System.Drawing.Point(136, 0);
-			this.FilePathType.Name = "FilePathType";
-			this.FilePathType.Size = new System.Drawing.Size(304, 21);
-			this.FilePathType.TabIndex = 1;
-			this.FilePathType.SelectedIndexChanged += new System.EventHandler(this.FilePathType_SelectedIndexChanged);
-			// 
-			// providerpanel
-			// 
-			this.providerpanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.providerpanel.Controls.Add(this.managed);
-			this.providerpanel.Controls.Add(this.unmanaged);
-			this.providerpanel.Location = new System.Drawing.Point(8, 32);
-			this.providerpanel.Name = "providerpanel";
-			this.providerpanel.Size = new System.Drawing.Size(432, 216);
-			this.providerpanel.TabIndex = 2;
-			// 
-			// managed
-			// 
-			this.managed.Location = new System.Drawing.Point(16, 16);
-			this.managed.Name = "managed";
-			this.managed.Size = new System.Drawing.Size(136, 144);
-			this.managed.TabIndex = 2;
-			// 
-			// unmanaged
-			// 
-			this.unmanaged.Location = new System.Drawing.Point(136, 16);
-			this.unmanaged.Name = "unmanaged";
-			this.unmanaged.Size = new System.Drawing.Size(224, 144);
-			this.unmanaged.TabIndex = 1;
-			// 
-			// FeatureSourceEditorKingKML
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(248, 128);
-			this.Controls.Add(this.providerpanel);
-			this.Controls.Add(this.FilePathType);
-			this.Controls.Add(this.label1);
-			this.Name = "FeatureSourceEditorKingKML";
-			this.Size = new System.Drawing.Size(448, 256);
-			this.providerpanel.ResumeLayout(false);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditorKingKML));
+            this.toolTips = new System.Windows.Forms.ToolTip(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.FilePathType = new System.Windows.Forms.ComboBox();
+            this.providerpanel = new System.Windows.Forms.Panel();
+            this.managed = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.KingKML.Managed();
+            this.unmanaged = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.KingKML.Unmanaged();
+            this.providerpanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // FilePathType
+            // 
+            resources.ApplyResources(this.FilePathType, "FilePathType");
+            this.FilePathType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FilePathType.Items.AddRange(new object[] {
+            resources.GetString("FilePathType.Items"),
+            resources.GetString("FilePathType.Items1")});
+            this.FilePathType.Name = "FilePathType";
+            this.FilePathType.SelectedIndexChanged += new System.EventHandler(this.FilePathType_SelectedIndexChanged);
+            // 
+            // providerpanel
+            // 
+            resources.ApplyResources(this.providerpanel, "providerpanel");
+            this.providerpanel.Controls.Add(this.managed);
+            this.providerpanel.Controls.Add(this.unmanaged);
+            this.providerpanel.Name = "providerpanel";
+            // 
+            // managed
+            // 
+            resources.ApplyResources(this.managed, "managed");
+            this.managed.Name = "managed";
+            // 
+            // unmanaged
+            // 
+            resources.ApplyResources(this.unmanaged, "unmanaged");
+            this.unmanaged.Name = "unmanaged";
+            // 
+            // FeatureSourceEditorKingKML
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.providerpanel);
+            this.Controls.Add(this.FilePathType);
+            this.Controls.Add(this.label1);
+            this.Name = "FeatureSourceEditorKingKML";
+            this.providerpanel.ResumeLayout(false);
+            this.ResumeLayout(false);
 
 		}
 		#endregion

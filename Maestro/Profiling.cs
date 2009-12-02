@@ -79,7 +79,7 @@ namespace OSGeo.MapGuide.Maestro
             }
             else
             {
-                WriteString("The resource type is not supported for profiling");
+                WriteString(Strings.Profiling.LogMessageUnsupportedResourceType);
             }
 
             SignalDone();
@@ -92,8 +92,8 @@ namespace OSGeo.MapGuide.Maestro
                 this.Invoke(new SignalDoneDelegate(SignalDone));
             else
             {
-                CancelBtn.Text = "Close";
-                WriteString("*** Done ***");
+                CancelBtn.Text = Strings.Profiling.CloseButtonText;
+                WriteString(Strings.Profiling.LogMessageDone);
                 m_done = true;
             }
         }
@@ -127,7 +127,7 @@ namespace OSGeo.MapGuide.Maestro
 
         private void ProfileFeatureSource(FeatureSource fs)
         {
-            m_writer(string.Format("Profiling FeatureSource: {0}", fs.ResourceId));
+            m_writer(string.Format(Strings.Profiling.LogMessageFeatureSource, fs.ResourceId));
         }
 
         private void SetTempLayer(string resourceId)
@@ -176,8 +176,8 @@ namespace OSGeo.MapGuide.Maestro
 
             MakeTempMap();
 
-            m_writer(string.Format("Profiling LayerDefinition: {0}", ldef.ResourceId));
-            using (new Timer("Runtime layer creation: ", m_writer))
+            m_writer(string.Format(Strings.Profiling.LogMessageLayerDefinition, ldef.ResourceId));
+            using (new Timer(Strings.Profiling.LogMessageRuntimeLayer, m_writer))
             {
                 try
                 {
@@ -191,7 +191,7 @@ namespace OSGeo.MapGuide.Maestro
                     m_connection.ResetFeatureSourceSchemaCache();
 
                     OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMap map = new OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMap(mdef);
-                    using (new Timer("Identity fetching: ", m_writer))
+                    using (new Timer(Strings.Profiling.LogMessageIdentifyFetching, m_writer))
                     {
                         //map.Layers[0].Parent = map;
                         map.Layers[0].Visible = true;
@@ -200,14 +200,14 @@ namespace OSGeo.MapGuide.Maestro
                 }
                 catch (Exception ex)
                 {
-                    m_writer(string.Format("Failed while profiling LayerDefinition: {0},\r\nError message: {1}", ldef.ResourceId, ex.Message));
+                    m_writer(string.Format(Strings.Profiling.LayerDefinitionProfilingError, ldef.ResourceId, ex.Message));
                 }
             }
 
                 LayerDefinition lx = (LayerDefinition)Utility.XmlDeepCopy(ldef);
                 if (lx.Item as VectorLayerDefinitionType != null || lx.Item as GridLayerDefinitionType != null)
                 {
-                    using (new Timer("Rendering scales: ", m_writer))
+                    using (new Timer(Strings.Profiling.LogMessageRenderingScales, m_writer))
                     {
                         if (lx.Item as VectorLayerDefinitionType != null)
                         {
@@ -248,7 +248,7 @@ namespace OSGeo.MapGuide.Maestro
                                     SetTempLayer(tmp1);
                                     m_connection.SaveRuntimeMap(m_tempmap.ResourceID, m_tempmap);
 
-                                    using (new Timer(string.Format("Scalerange [{0} : {1}]: ", minscale, maxscale), m_writer))
+                                    using (new Timer(string.Format(Strings.Profiling.LogMessageScaleRange, minscale, maxscale), m_writer))
                                     {
                                         //TODO: Use extents rather than scale
                                         //using (System.IO.Stream s = m_connection.RenderRuntimeMap(tmp2, m.Extents, 1024, 800, 96))
@@ -272,9 +272,9 @@ namespace OSGeo.MapGuide.Maestro
 
         private void ProfileMapDefinition(MapDefinition mdef)
         {
-            m_writer(string.Format("Profiling MapDefinition: {0}", mdef.ResourceId));
+            m_writer(string.Format(Strings.Profiling.LogMessageMapDefinition, mdef.ResourceId));
 
-            using(new Timer("Total for runtime Map Generation: ", m_writer))
+            using(new Timer(Strings.Profiling.LogMessageRuntimeMap, m_writer))
                 foreach (MapLayerType ml in mdef.Layers)
                 {
                     try
@@ -284,7 +284,7 @@ namespace OSGeo.MapGuide.Maestro
                     }
                     catch (Exception ex)
                     {
-                        m_writer(string.Format("Failed while profiling LayerDefinition: {0},\r\nError message: {1}", ml.ResourceId, ex.Message));
+                        m_writer(string.Format(Strings.Profiling.LayerDefinitionProfilingError, ml.ResourceId, ex.Message));
                     }
                 }
 
@@ -294,12 +294,12 @@ namespace OSGeo.MapGuide.Maestro
             try
             {
                 m_connection.ResetFeatureSourceSchemaCache();
-                using (new Timer("Runtime map generation in one go: ", m_writer))
+                using (new Timer(Strings.Profiling.LogMessageRuntimeMapTotal, m_writer))
                     new OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMap(mdef);
             }
             catch (Exception ex)
             {
-                m_writer(string.Format("Failed while profiling MapDefinition runtime: {0},\r\nError message: {1}", mdef.ResourceId, ex.Message));
+                m_writer(string.Format(Strings.Profiling.RuntimeMapProfilingError, mdef.ResourceId, ex.Message));
             }
 
             string tmp2 = new ResourceIdentifier(Guid.NewGuid().ToString(), ResourceTypes.RuntimeMap, m_connection.SessionID);
@@ -307,7 +307,7 @@ namespace OSGeo.MapGuide.Maestro
             try
             {
                 m_connection.CreateRuntimeMap(tmp2, mdef);
-                using (new Timer("Full map rendering: ", m_writer))
+                using (new Timer(Strings.Profiling.LogMessageRenderingMap, m_writer))
                 {
                     //TODO: Use extents rather than scale
                     //using (System.IO.Stream s = m_connection.RenderRuntimeMap(tmp2, mdef.Extents, 1024, 800, 96))
@@ -315,14 +315,12 @@ namespace OSGeo.MapGuide.Maestro
                     using (Bitmap b = new Bitmap(s))
                     {
                         //Just dispose it after being read
-
-                        //b.Save("C:\\test.png");
                     }
                 }
             }
             catch (Exception ex)
             {
-                m_writer(string.Format("Failed while profiling MapDefinition rendering: {0},\r\nError message: {1}", mdef.ResourceId, ex.Message));
+                m_writer(string.Format(Strings.Profiling.MapRenderingError, mdef.ResourceId, ex.Message));
             }
             finally
             {

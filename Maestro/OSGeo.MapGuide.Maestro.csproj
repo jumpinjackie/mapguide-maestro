@@ -133,10 +133,9 @@
       <Project>{A47D6F9A-F58D-4A2E-8E88-09CD833A160E}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="Globalizator\Globalizator.csproj">
-      <Name>Globalizator</Name>
-      <Project>{361D5982-275F-4A4C-935F-0BB637330C9C}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    <ProjectReference Include="LoginForm\OSGeo.MapGuide.Maestro.LoginForm.csproj">
+      <Project>{4B79021A-5117-4894-BBC0-39452E4F40E3}</Project>
+      <Name>OSGeo.MapGuide.Maestro.LoginForm</Name>
     </ProjectReference>
     <ProjectReference Include="MaestroEditorInterface\MaestroEditorInterface.csproj">
       <Name>MapStudioEditorInterface</Name>
@@ -194,9 +193,6 @@
     <Compile Include="FormExpression.Designer.cs">
       <DependentUpon>FormExpression.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,8 +223,20 @@
     <Compile Include="PackageManager\PackageEditor.Designer.cs">
       <DependentUpon>PackageEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="PreferedSite.cs">
-      <SubType>Code</SubType>
+    <Compile Include="PackageManager\Strings\AddResourceEntry.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddResourceEntry.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PackageManager\Strings\CreatePackage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreatePackage.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PackageManager\Strings\PackageEditor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PackageEditor.resx</DependentUpon>
     </Compile>
     <Compile Include="Profiling.cs">
       <SubType>Form</SubType>
@@ -253,8 +261,70 @@
     <Compile Include="ResourceProperties.Designer.cs">
       <DependentUpon>ResourceProperties.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestForm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Strings\BoundsPicker.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BoundsPicker.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\BrowseUnmanagedData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BrowseUnmanagedData.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\EditorInterface.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditorInterface.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\FormAbout.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormAbout.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\FormExpression.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormExpression.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\FormMain.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormMain.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\LengthyOperation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LengthyOperation.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\Profiling.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Profiling.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\Program.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Program.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\ResourceEditorMap.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceEditorMap.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\ResourceProperties.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceProperties.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\TemplateNames.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TemplateNames.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\ValidationResults.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationResults.resx</DependentUpon>
     </Compile>
     <Compile Include="TreeViewUtil.cs">
       <SubType>Code</SubType>
@@ -264,9 +334,6 @@
     </Compile>
     <Compile Include="ValidationResults.Designer.cs">
       <DependentUpon>ValidationResults.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WaitCursor.cs">
-      <SubType>Code</SubType>
     </Compile>
     <EmbeddedResource Include="ApplicationSettings.resx">
       <SubType>Designer</SubType>
@@ -291,10 +358,6 @@
     <EmbeddedResource Include="FormExpression.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FormExpression.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLogin.resx">
-      <DependentUpon>FormLogin.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -324,6 +387,18 @@
       <SubType>Designer</SubType>
       <DependentUpon>PackageEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PackageManager\Strings\AddResourceEntry.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddResourceEntry.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageManager\Strings\CreatePackage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreatePackage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageManager\Strings\PackageEditor.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PackageEditor.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Profiling.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Profiling.cs</DependentUpon>
@@ -337,9 +412,57 @@
       <SubType>Designer</SubType>
       <DependentUpon>ResourceProperties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Strings\BoundsPicker.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BoundsPicker.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\BrowseUnmanagedData.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BrowseUnmanagedData.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\EditorInterface.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditorInterface.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\FormAbout.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormAbout.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\FormExpression.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormExpression.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\FormMain.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormMain.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\LengthyOperation.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LengthyOperation.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\Profiling.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Profiling.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\Program.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Program.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\ResourceEditorMap.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceEditorMap.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\ResourceProperties.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceProperties.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\TemplateNames.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TemplateNames.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\ValidationResults.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationResults.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ValidationResults.resx">
       <SubType>Designer</SubType>

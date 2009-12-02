@@ -78,7 +78,6 @@ namespace OSGeo.MapGuide.Maestro
 
 		private bool m_cancelRequested = false;
 		private bool m_waitingForUser = true;
-		private Globalizator.Globalizator m_globalizor = null;
 		private object m_callbackobject = null;
 		private bool m_noCancelConfirmation = false;
         private bool m_waitForAccept = true;
@@ -89,7 +88,6 @@ namespace OSGeo.MapGuide.Maestro
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			m_globalizor = new  Globalizator.Globalizator(this);
             this.Icon = FormMain.MaestroIcon;
         }
 
@@ -139,14 +137,11 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.workList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
-            this.workList.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.workList, "workList");
             this.workList.FullRowSelect = true;
             this.workList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.workList.Location = new System.Drawing.Point(0, 32);
             this.workList.Name = "workList";
-            this.workList.Size = new System.Drawing.Size(472, 0);
             this.workList.SmallImageList = this.progressImages;
-            this.workList.TabIndex = 0;
             this.workList.UseCompatibleStateImageBehavior = false;
             this.workList.View = System.Windows.Forms.View.Details;
             this.workList.Resize += new System.EventHandler(this.workList_Resize);
@@ -169,85 +164,50 @@ namespace OSGeo.MapGuide.Maestro
             // 
             // OperationDescription
             // 
-            this.OperationDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.OperationDescription.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.OperationDescription, "OperationDescription");
             this.OperationDescription.Name = "OperationDescription";
-            this.OperationDescription.Size = new System.Drawing.Size(456, 16);
-            this.OperationDescription.TabIndex = 1;
-            this.OperationDescription.Text = "The operation you have initiated requires that the resources listed below, gets u" +
-                "pdated";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.CancelBtn);
             this.panel1.Controls.Add(this.OKBtn);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 64);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(472, 40);
-            this.panel1.TabIndex = 2;
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.CancelBtn.Enabled = false;
-            this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.CancelBtn.Location = new System.Drawing.Point(252, 8);
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(96, 24);
-            this.CancelBtn.TabIndex = 1;
-            this.CancelBtn.Text = "Cancel";
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // OKBtn
             // 
-            this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.OKBtn.Enabled = false;
-            this.OKBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.OKBtn.Location = new System.Drawing.Point(140, 8);
+            resources.ApplyResources(this.OKBtn, "OKBtn");
             this.OKBtn.Name = "OKBtn";
-            this.OKBtn.Size = new System.Drawing.Size(96, 24);
-            this.OKBtn.TabIndex = 0;
-            this.OKBtn.Text = "OK";
             this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.OperationDescription);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(472, 32);
-            this.panel2.TabIndex = 3;
             // 
             // ProgressPanel
             // 
             this.ProgressPanel.Controls.Add(this.label2);
             this.ProgressPanel.Controls.Add(this.ProgressBar);
-            this.ProgressPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ProgressPanel.Location = new System.Drawing.Point(0, 24);
+            resources.ApplyResources(this.ProgressPanel, "ProgressPanel");
             this.ProgressPanel.Name = "ProgressPanel";
-            this.ProgressPanel.Size = new System.Drawing.Size(472, 40);
-            this.ProgressPanel.TabIndex = 4;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Progress";
             // 
             // ProgressBar
             // 
-            this.ProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProgressBar.Location = new System.Drawing.Point(80, 8);
+            resources.ApplyResources(this.ProgressBar, "ProgressBar");
             this.ProgressBar.Name = "ProgressBar";
-            this.ProgressBar.Size = new System.Drawing.Size(376, 24);
-            this.ProgressBar.TabIndex = 0;
             // 
             // animationTimer
             // 
@@ -261,8 +221,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             // LengthyOperation
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(472, 104);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.workList);
             this.Controls.Add(this.ProgressPanel);
             this.Controls.Add(this.panel2);
@@ -270,7 +229,6 @@ namespace OSGeo.MapGuide.Maestro
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "LengthyOperation";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Text = "Confirm operations on related items";
             this.Load += new System.EventHandler(this.LengthyOperation_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -315,32 +273,32 @@ namespace OSGeo.MapGuide.Maestro
 				case OperationType.CopyFolder:
 					m_callbackEnabledMethod = typeof(OSGeo.MapGuide.MaestroAPI.ServerConnectionI).GetMethod("CopyFolderWithReferences");
 					m_arguments = new object[] { argument1, argument2, callback, pgcallback };
-					OperationDescription.Text = m_globalizor.Translate("Copying the selected folder requires the following items to be copied.");
+					OperationDescription.Text = Strings.LengthyOperation.CopyFolderCopyConfirmation;
 					m_callbackobject = connection;
 					break;
 				case OperationType.MoveFolder:
 					m_callbackEnabledMethod = typeof(OSGeo.MapGuide.MaestroAPI.ServerConnectionI).GetMethod("MoveFolderWithReferences");
 					m_arguments = new object[] { argument1, argument2, callback, pgcallback };
-					OperationDescription.Text = m_globalizor.Translate("A move or rename of the selected folder requires the following items to be updated.");
+					OperationDescription.Text = Strings.LengthyOperation.MoveFolderConfirmation;
 					m_callbackobject = connection;
 					break;
 				case OperationType.MoveResource:
 					m_callbackEnabledMethod = typeof(OSGeo.MapGuide.MaestroAPI.ServerConnectionI).GetMethod("MoveResourceWithReferences");
 					m_arguments = new object[] { argument1, argument2, callback, pgcallback };
-					OperationDescription.Text = m_globalizor.Translate("A move or rename of the selected resource requires the following items to be updated.");
+					OperationDescription.Text = Strings.LengthyOperation.MoveResourceConfirmation;
 					m_callbackobject = connection;
 					break;
 				case OperationType.Other:
-					this.Text = m_globalizor.Translate("Confirm the list of files to be processed");
+					this.Text = Strings.LengthyOperation.OtherOperationConfirmation;
 					m_arguments = new object[] { argument1, argument2, callback, pgcallback };
 					m_noCancelConfirmation = true;
 					break;
 				default:
-					throw new Exception(string.Format(m_globalizor.Translate("Invalid operation: {0}"), operation.ToString()));
+					throw new Exception(string.Format(Strings.LengthyOperation.UnknownOperationInternalError, operation.ToString()));
 			}
 
 			if (m_callbackEnabledMethod == null)
-				throw new MissingMethodException(m_globalizor.Translate("The requested method was not found in the API. Most likely, the API has been updated, and the function names changed"));
+				throw new MissingMethodException(Strings.LengthyOperation.MissingMethodInternalError);
 
 		}
 
@@ -359,7 +317,7 @@ namespace OSGeo.MapGuide.Maestro
 					catch (System.Reflection.TargetInvocationException tex)
 					{
 						Exception ex = tex.InnerException;
-						switch (MessageBox.Show(string.Format(m_globalizor.Translate("An error occured: {0}.\n Do you want to retry the operation?"), ex.Message), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1))
+						switch (MessageBox.Show(string.Format(Strings.LengthyOperation.ErrorOccuredRetryQuestion, ex.Message), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1))
 						{
 							case DialogResult.No:
 								throw;
@@ -373,7 +331,7 @@ namespace OSGeo.MapGuide.Maestro
 				{
 					if (ex.GetType() == typeof(System.Reflection.TargetInvocationException))
 						ex = ex.InnerException;
-					MessageBox.Show(string.Format(m_globalizor.Translate("An error occured while performing the operation: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show(string.Format(Strings.LengthyOperation.OperationFailedError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			this.Invoke(new System.Threading.ThreadStart(CloseDialog));
@@ -413,7 +371,7 @@ namespace OSGeo.MapGuide.Maestro
 		private void AskCancel()
 		{
 			if (m_cancelRequested && !m_cancel) 
-				if (m_noCancelConfirmation || MessageBox.Show(this, m_globalizor.Translate("The main part of the operation has already been performed.\nIf you cancel the remainder of this operation, some references may not be updated properly.\nDo you want to cancel the remainder of the operation?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+				if (m_noCancelConfirmation || MessageBox.Show(this, Strings.LengthyOperation.CancelNotRecomendedConfirmation, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
 					m_cancel = true;
 			m_cancelRequested = false;
 		}
@@ -453,13 +411,13 @@ namespace OSGeo.MapGuide.Maestro
 				switch(m_operation)
 				{
 					case OperationType.CopyFolder:
-						OperationDescription.Text = m_globalizor.Translate("Copying the selected folder requires that the following resources are updated");
+						OperationDescription.Text = Strings.LengthyOperation.CopyFolderUpdateConfirmation;
 						break;
 					case OperationType.MoveFolder:
-						OperationDescription.Text = m_globalizor.Translate("A move or rename of the selected folder requires the following resources to be updated.");
+						OperationDescription.Text = Strings.LengthyOperation.MoveFolderConfirmation;
 						break;
 					case OperationType.MoveResource:
-						OperationDescription.Text = m_globalizor.Translate("A move or rename of the selected resource requires the following resources to be updated.");
+						OperationDescription.Text = Strings.LengthyOperation.MoveResourceConfirmation;
 						break;
 				}
 
@@ -508,7 +466,7 @@ namespace OSGeo.MapGuide.Maestro
 		private void LengthyOperation_Load(object sender, System.EventArgs e)
 		{
 			if (m_callbackEnabledMethod == null)
-				throw new Exception("Please call the \"InitializeDialog\" method before displaying the dialog");
+				throw new Exception(Strings.LengthyOperation.NotInitializedInternalError);
 
 			m_runner = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadRunner));
 			m_runner.IsBackground = true;

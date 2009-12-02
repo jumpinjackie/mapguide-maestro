@@ -101,61 +101,45 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizar
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Database = new System.Windows.Forms.TextBox();
-			this.Server = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Database
-			// 
-			this.Database.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Database.Location = new System.Drawing.Point(152, 32);
-			this.Database.Name = "Database";
-			this.Database.Size = new System.Drawing.Size(200, 20);
-			this.Database.TabIndex = 19;
-			this.Database.Text = "textBox5";
-			this.Database.TextChanged += new System.EventHandler(this.PropertyText_Changed);
-			// 
-			// Server
-			// 
-			this.Server.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Server.Location = new System.Drawing.Point(152, 8);
-			this.Server.Name = "Server";
-			this.Server.Size = new System.Drawing.Size(200, 20);
-			this.Server.TabIndex = 17;
-			this.Server.Text = "textBox2";
-			this.Server.TextChanged += new System.EventHandler(this.PropertyText_Changed);
-			// 
-			// label5
-			// 
-			this.label5.Location = new System.Drawing.Point(8, 32);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(136, 16);
-			this.label5.TabIndex = 15;
-			this.label5.Text = "Database";
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 8);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(136, 16);
-			this.label2.TabIndex = 12;
-			this.label2.Text = "Server";
-			// 
-			// MsSQL
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(360, 56);
-			this.Controls.Add(this.Database);
-			this.Controls.Add(this.Server);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.label2);
-			this.Name = "MsSQL";
-			this.Size = new System.Drawing.Size(360, 56);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MsSQL));
+            this.Database = new System.Windows.Forms.TextBox();
+            this.Server = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Database
+            // 
+            resources.ApplyResources(this.Database, "Database");
+            this.Database.Name = "Database";
+            this.Database.TextChanged += new System.EventHandler(this.PropertyText_Changed);
+            // 
+            // Server
+            // 
+            resources.ApplyResources(this.Server, "Server");
+            this.Server.Name = "Server";
+            this.Server.TextChanged += new System.EventHandler(this.PropertyText_Changed);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // MsSQL
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.Database);
+            this.Controls.Add(this.Server);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label2);
+            this.Name = "MsSQL";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

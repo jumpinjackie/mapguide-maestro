@@ -28,6 +28,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditorTemplateForm));
             this.ButtonPanel = new System.Windows.Forms.Panel();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.OKBtn = new System.Windows.Forms.Button();
@@ -39,56 +40,37 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             // 
             this.ButtonPanel.Controls.Add(this.CancelBtn);
             this.ButtonPanel.Controls.Add(this.OKBtn);
-            this.ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ButtonPanel.Location = new System.Drawing.Point(0, 232);
+            resources.ApplyResources(this.ButtonPanel, "ButtonPanel");
             this.ButtonPanel.Name = "ButtonPanel";
-            this.ButtonPanel.Size = new System.Drawing.Size(297, 41);
-            this.ButtonPanel.TabIndex = 0;
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(160, 8);
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(64, 24);
-            this.CancelBtn.TabIndex = 1;
-            this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
             // 
             // OKBtn
             // 
-            this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.OKBtn.Location = new System.Drawing.Point(72, 8);
+            resources.ApplyResources(this.OKBtn, "OKBtn");
             this.OKBtn.Name = "OKBtn";
-            this.OKBtn.Size = new System.Drawing.Size(64, 24);
-            this.OKBtn.TabIndex = 0;
-            this.OKBtn.Text = "OK";
             this.OKBtn.UseVisualStyleBackColor = true;
             this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
             // 
             // ItemPanel
             // 
-            this.ItemPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.ItemPanel.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.ItemPanel, "ItemPanel");
             this.ItemPanel.Name = "ItemPanel";
-            this.ItemPanel.Size = new System.Drawing.Size(280, 224);
-            this.ItemPanel.TabIndex = 1;
             // 
             // EditorTemplateForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(297, 273);
             this.Controls.Add(this.ItemPanel);
             this.Controls.Add(this.ButtonPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "EditorTemplateForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Edit the style";
             this.Load += new System.EventHandler(this.EditorTemplateForm_Load);
             this.ButtonPanel.ResumeLayout(false);
             this.ResumeLayout(false);

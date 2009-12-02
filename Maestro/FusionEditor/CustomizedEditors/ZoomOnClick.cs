@@ -78,36 +78,30 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Factor = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Factor
-			// 
-			this.Factor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Factor.Location = new System.Drawing.Point(104, 10);
-			this.Factor.Name = "Factor";
-			this.Factor.Size = new System.Drawing.Size(504, 20);
-			this.Factor.TabIndex = 3;
-			this.Factor.Text = "";
-			this.Factor.TextChanged += new System.EventHandler(this.Factor_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 10);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(72, 16);
-			this.label1.TabIndex = 2;
-			this.label1.Text = "Factor";
-			// 
-			// ZoomOnClick
-			// 
-			this.Controls.Add(this.Factor);
-			this.Controls.Add(this.label1);
-			this.Name = "ZoomOnClick";
-			this.Size = new System.Drawing.Size(616, 40);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ZoomOnClick));
+            this.Factor = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Factor
+            // 
+            resources.ApplyResources(this.Factor, "Factor");
+            this.Factor.Name = "Factor";
+            this.Factor.TextChanged += new System.EventHandler(this.Factor_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // ZoomOnClick
+            // 
+            this.Controls.Add(this.Factor);
+            this.Controls.Add(this.label1);
+            this.Name = "ZoomOnClick";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

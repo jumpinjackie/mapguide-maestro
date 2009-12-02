@@ -92,57 +92,37 @@ namespace OSGeo.MapGuide.MgCooker
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 537);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(565, 41);
-            this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button3
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button3.Location = new System.Drawing.Point(227, 9);
+            resources.ApplyResources(this.button3, "button3");
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Save as script...";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button2.Location = new System.Drawing.Point(355, 8);
+            resources.ApplyResources(this.button2, "button2");
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Location = new System.Drawing.Point(99, 8);
+            resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Build tiles now";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MapTree
             // 
             this.MapTree.CheckBoxes = true;
-            this.MapTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MapTree.ImageIndex = 0;
+            resources.ApplyResources(this.MapTree, "MapTree");
             this.MapTree.ImageList = this.imageList1;
-            this.MapTree.Location = new System.Drawing.Point(0, 0);
             this.MapTree.Name = "MapTree";
-            this.MapTree.SelectedImageIndex = 0;
-            this.MapTree.Size = new System.Drawing.Size(293, 537);
-            this.MapTree.TabIndex = 1;
             this.MapTree.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
             this.MapTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MapTree_AfterSelect);
             // 
@@ -157,8 +137,7 @@ namespace OSGeo.MapGuide.MgCooker
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.Filter = "Batch Files (*.bat)|*.bat|All files (*.*)|*.*";
-            this.saveFileDialog1.Title = "Select file to save script to";
+            resources.ApplyResources(this.saveFileDialog1, "saveFileDialog1");
             // 
             // panel2
             // 
@@ -166,16 +145,12 @@ namespace OSGeo.MapGuide.MgCooker
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.groupBox2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(293, 0);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(272, 537);
-            this.panel2.TabIndex = 2;
             // 
             // BoundsOverride
             // 
-            this.BoundsOverride.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.BoundsOverride, "BoundsOverride");
             this.BoundsOverride.Controls.Add(this.ModfiedOverrideWarning);
             this.BoundsOverride.Controls.Add(this.ResetBounds);
             this.BoundsOverride.Controls.Add(this.txtUpperY);
@@ -186,106 +161,72 @@ namespace OSGeo.MapGuide.MgCooker
             this.BoundsOverride.Controls.Add(this.label10);
             this.BoundsOverride.Controls.Add(this.txtLowerX);
             this.BoundsOverride.Controls.Add(this.label11);
-            this.BoundsOverride.Enabled = false;
-            this.BoundsOverride.Location = new System.Drawing.Point(12, 424);
             this.BoundsOverride.Name = "BoundsOverride";
-            this.BoundsOverride.Size = new System.Drawing.Size(248, 120);
-            this.BoundsOverride.TabIndex = 12;
             this.BoundsOverride.TabStop = false;
-            this.BoundsOverride.Text = "Override bounds";
             // 
             // ModfiedOverrideWarning
             // 
-            this.ModfiedOverrideWarning.AutoSize = true;
-            this.ModfiedOverrideWarning.Location = new System.Drawing.Point(8, 96);
+            resources.ApplyResources(this.ModfiedOverrideWarning, "ModfiedOverrideWarning");
             this.ModfiedOverrideWarning.Name = "ModfiedOverrideWarning";
-            this.ModfiedOverrideWarning.Size = new System.Drawing.Size(105, 13);
-            this.ModfiedOverrideWarning.TabIndex = 19;
-            this.ModfiedOverrideWarning.Text = "Coordinates modified";
-            this.ModfiedOverrideWarning.Visible = false;
             // 
             // ResetBounds
             // 
-            this.ResetBounds.Location = new System.Drawing.Point(136, 88);
+            resources.ApplyResources(this.ResetBounds, "ResetBounds");
             this.ResetBounds.Name = "ResetBounds";
-            this.ResetBounds.Size = new System.Drawing.Size(88, 24);
-            this.ResetBounds.TabIndex = 18;
-            this.ResetBounds.Text = "Reset";
             this.ResetBounds.UseVisualStyleBackColor = true;
             this.ResetBounds.Click += new System.EventHandler(this.ResetBounds_Click);
             // 
             // txtUpperY
             // 
-            this.txtUpperY.Location = new System.Drawing.Point(144, 56);
+            resources.ApplyResources(this.txtUpperY, "txtUpperY");
             this.txtUpperY.Name = "txtUpperY";
-            this.txtUpperY.Size = new System.Drawing.Size(80, 20);
-            this.txtUpperY.TabIndex = 17;
             this.txtUpperY.TextChanged += new System.EventHandler(this.CoordinateItem_TextChanged);
             // 
             // label4
             // 
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label4.Location = new System.Drawing.Point(120, 56);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 16);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Y";
             // 
             // txtUpperX
             // 
-            this.txtUpperX.Location = new System.Drawing.Point(32, 56);
+            resources.ApplyResources(this.txtUpperX, "txtUpperX");
             this.txtUpperX.Name = "txtUpperX";
-            this.txtUpperX.Size = new System.Drawing.Size(72, 20);
-            this.txtUpperX.TabIndex = 15;
             this.txtUpperX.TextChanged += new System.EventHandler(this.CoordinateItem_TextChanged);
             // 
             // label5
             // 
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label5.Location = new System.Drawing.Point(8, 56);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(16, 16);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "X";
             // 
             // txtLowerY
             // 
-            this.txtLowerY.Location = new System.Drawing.Point(144, 24);
+            resources.ApplyResources(this.txtLowerY, "txtLowerY");
             this.txtLowerY.Name = "txtLowerY";
-            this.txtLowerY.Size = new System.Drawing.Size(80, 20);
-            this.txtLowerY.TabIndex = 13;
             this.txtLowerY.TextChanged += new System.EventHandler(this.CoordinateItem_TextChanged);
             // 
             // label10
             // 
             this.label10.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label10.Location = new System.Drawing.Point(120, 24);
+            resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(16, 16);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Y";
             // 
             // txtLowerX
             // 
-            this.txtLowerX.Location = new System.Drawing.Point(32, 24);
+            resources.ApplyResources(this.txtLowerX, "txtLowerX");
             this.txtLowerX.Name = "txtLowerX";
-            this.txtLowerX.Size = new System.Drawing.Size(72, 20);
-            this.txtLowerX.TabIndex = 11;
             this.txtLowerX.TextChanged += new System.EventHandler(this.CoordinateItem_TextChanged);
             // 
             // label11
             // 
             this.label11.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label11.Location = new System.Drawing.Point(8, 24);
+            resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(16, 16);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "X";
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.UseNativeAPI);
             this.groupBox1.Controls.Add(this.Password);
             this.groupBox1.Controls.Add(this.Username);
@@ -293,107 +234,69 @@ namespace OSGeo.MapGuide.MgCooker
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(248, 128);
-            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "MapAgent";
             // 
             // UseNativeAPI
             // 
-            this.UseNativeAPI.AutoSize = true;
-            this.UseNativeAPI.Location = new System.Drawing.Point(88, 104);
+            resources.ApplyResources(this.UseNativeAPI, "UseNativeAPI");
             this.UseNativeAPI.Name = "UseNativeAPI";
-            this.UseNativeAPI.Size = new System.Drawing.Size(146, 17);
-            this.UseNativeAPI.TabIndex = 6;
-            this.UseNativeAPI.Text = "Connect using native API";
-            this.toolTip1.SetToolTip(this.UseNativeAPI, "Using the Native API is potentially faster, but requires binary files, open ports" +
-                    " and a webconfig.ini file");
+            this.toolTip1.SetToolTip(this.UseNativeAPI, resources.GetString("UseNativeAPI.ToolTip"));
             this.UseNativeAPI.UseVisualStyleBackColor = true;
             // 
             // Password
             // 
-            this.Password.Location = new System.Drawing.Point(88, 72);
+            resources.ApplyResources(this.Password, "Password");
             this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(144, 20);
-            this.Password.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.Password, "Password used to connect to the server");
+            this.toolTip1.SetToolTip(this.Password, resources.GetString("Password.ToolTip"));
             this.Password.UseSystemPasswordChar = true;
             // 
             // Username
             // 
-            this.Username.Location = new System.Drawing.Point(88, 48);
+            resources.ApplyResources(this.Username, "Username");
             this.Username.Name = "Username";
-            this.Username.Size = new System.Drawing.Size(144, 20);
-            this.Username.TabIndex = 4;
-            this.Username.Text = "Anonymous";
-            this.toolTip1.SetToolTip(this.Username, "Username used to connect to the server");
+            this.toolTip1.SetToolTip(this.Username, resources.GetString("Username.ToolTip"));
             // 
             // MapAgent
             // 
-            this.MapAgent.Location = new System.Drawing.Point(88, 24);
+            resources.ApplyResources(this.MapAgent, "MapAgent");
             this.MapAgent.Name = "MapAgent";
-            this.MapAgent.Size = new System.Drawing.Size(144, 20);
-            this.MapAgent.TabIndex = 3;
-            this.MapAgent.Text = "http://localhost/mapguide/mapagent/mapagent.fcgi";
-            this.toolTip1.SetToolTip(this.MapAgent, "Enter the URL for the MapAgent");
+            this.toolTip1.SetToolTip(this.MapAgent, resources.GetString("MapAgent.ToolTip"));
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 72);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Password";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 48);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Username";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 24);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "MapAgent";
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.RandomTileOrder);
             this.groupBox3.Controls.Add(this.ThreadCount);
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Location = new System.Drawing.Point(12, 328);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(248, 80);
-            this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Threading";
             // 
             // RandomTileOrder
             // 
-            this.RandomTileOrder.AutoSize = true;
-            this.RandomTileOrder.Location = new System.Drawing.Point(24, 48);
+            resources.ApplyResources(this.RandomTileOrder, "RandomTileOrder");
             this.RandomTileOrder.Name = "RandomTileOrder";
-            this.RandomTileOrder.Size = new System.Drawing.Size(159, 17);
-            this.RandomTileOrder.TabIndex = 11;
-            this.RandomTileOrder.Text = "Randomize generation order";
-            this.toolTip1.SetToolTip(this.RandomTileOrder, "Select tiles at random, rather than sequentially");
+            this.toolTip1.SetToolTip(this.RandomTileOrder, resources.GetString("RandomTileOrder.ToolTip"));
             this.RandomTileOrder.UseVisualStyleBackColor = true;
             // 
             // ThreadCount
             // 
-            this.ThreadCount.Location = new System.Drawing.Point(128, 24);
+            resources.ApplyResources(this.ThreadCount, "ThreadCount");
             this.ThreadCount.Maximum = new decimal(new int[] {
             20,
             0,
@@ -405,9 +308,7 @@ namespace OSGeo.MapGuide.MgCooker
             0,
             0});
             this.ThreadCount.Name = "ThreadCount";
-            this.ThreadCount.Size = new System.Drawing.Size(104, 20);
-            this.ThreadCount.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.ThreadCount, "Number of concurrent request to server");
+            this.toolTip1.SetToolTip(this.ThreadCount, resources.GetString("ThreadCount.ToolTip"));
             this.ThreadCount.Value = new decimal(new int[] {
             1,
             0,
@@ -416,37 +317,25 @@ namespace OSGeo.MapGuide.MgCooker
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 24);
+            resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 13);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Concurrent requests";
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.OfficialMethodPanel);
             this.groupBox2.Controls.Add(this.LimitTileset);
             this.groupBox2.Controls.Add(this.UseOfficialMethod);
             this.groupBox2.Controls.Add(this.TilesetLimitPanel);
-            this.groupBox2.Location = new System.Drawing.Point(12, 144);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(248, 168);
-            this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Tilesettings";
             // 
             // OfficialMethodPanel
             // 
             this.OfficialMethodPanel.Controls.Add(this.MetersPerUnit);
             this.OfficialMethodPanel.Controls.Add(this.label8);
-            this.OfficialMethodPanel.Enabled = false;
-            this.OfficialMethodPanel.Location = new System.Drawing.Point(24, 128);
+            resources.ApplyResources(this.OfficialMethodPanel, "OfficialMethodPanel");
             this.OfficialMethodPanel.Name = "OfficialMethodPanel";
-            this.OfficialMethodPanel.Size = new System.Drawing.Size(216, 24);
-            this.OfficialMethodPanel.TabIndex = 13;
             // 
             // MetersPerUnit
             // 
@@ -456,16 +345,14 @@ namespace OSGeo.MapGuide.MgCooker
             0,
             0,
             65536});
-            this.MetersPerUnit.Location = new System.Drawing.Point(104, 0);
+            resources.ApplyResources(this.MetersPerUnit, "MetersPerUnit");
             this.MetersPerUnit.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.MetersPerUnit.Name = "MetersPerUnit";
-            this.MetersPerUnit.Size = new System.Drawing.Size(104, 20);
-            this.MetersPerUnit.TabIndex = 9;
-            this.toolTip1.SetToolTip(this.MetersPerUnit, "The number of meters pr. map unit");
+            this.toolTip1.SetToolTip(this.MetersPerUnit, resources.GetString("MetersPerUnit.ToolTip"));
             this.MetersPerUnit.Value = new decimal(new int[] {
             1,
             0,
@@ -475,37 +362,23 @@ namespace OSGeo.MapGuide.MgCooker
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 0);
+            resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 13);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Meters pr. unit";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // LimitTileset
             // 
-            this.LimitTileset.AutoSize = true;
-            this.LimitTileset.Location = new System.Drawing.Point(24, 24);
+            resources.ApplyResources(this.LimitTileset, "LimitTileset");
             this.LimitTileset.Name = "LimitTileset";
-            this.LimitTileset.Size = new System.Drawing.Size(118, 17);
-            this.LimitTileset.TabIndex = 11;
-            this.LimitTileset.Text = "Limit number of tiles";
-            this.toolTip1.SetToolTip(this.LimitTileset, "Set a limit on the number of tiles generated, note that this may prevent all tile" +
-                    "s from being created");
+            this.toolTip1.SetToolTip(this.LimitTileset, resources.GetString("LimitTileset.ToolTip"));
             this.LimitTileset.UseVisualStyleBackColor = true;
             this.LimitTileset.CheckedChanged += new System.EventHandler(this.LimitTileset_CheckedChanged);
             // 
             // UseOfficialMethod
             // 
-            this.UseOfficialMethod.AutoSize = true;
-            this.UseOfficialMethod.Location = new System.Drawing.Point(24, 104);
+            resources.ApplyResources(this.UseOfficialMethod, "UseOfficialMethod");
             this.UseOfficialMethod.Name = "UseOfficialMethod";
-            this.UseOfficialMethod.Size = new System.Drawing.Size(116, 17);
-            this.UseOfficialMethod.TabIndex = 10;
-            this.UseOfficialMethod.Text = "Use official method";
-            this.toolTip1.SetToolTip(this.UseOfficialMethod, "The official method is the most accurate, but requires that the meters per map un" +
-                    "it is entered");
+            this.toolTip1.SetToolTip(this.UseOfficialMethod, resources.GetString("UseOfficialMethod.ToolTip"));
             this.UseOfficialMethod.UseVisualStyleBackColor = true;
             this.UseOfficialMethod.CheckedChanged += new System.EventHandler(this.UseOfficialMethod_CheckedChanged);
             // 
@@ -515,58 +388,39 @@ namespace OSGeo.MapGuide.MgCooker
             this.TilesetLimitPanel.Controls.Add(this.label6);
             this.TilesetLimitPanel.Controls.Add(this.MaxColLimit);
             this.TilesetLimitPanel.Controls.Add(this.label7);
-            this.TilesetLimitPanel.Enabled = false;
-            this.TilesetLimitPanel.Location = new System.Drawing.Point(24, 48);
+            resources.ApplyResources(this.TilesetLimitPanel, "TilesetLimitPanel");
             this.TilesetLimitPanel.Name = "TilesetLimitPanel";
-            this.TilesetLimitPanel.Size = new System.Drawing.Size(216, 48);
-            this.TilesetLimitPanel.TabIndex = 12;
             // 
             // MaxRowLimit
             // 
-            this.MaxRowLimit.Location = new System.Drawing.Point(104, 0);
+            resources.ApplyResources(this.MaxRowLimit, "MaxRowLimit");
             this.MaxRowLimit.Name = "MaxRowLimit";
-            this.MaxRowLimit.Size = new System.Drawing.Size(104, 20);
-            this.MaxRowLimit.TabIndex = 6;
-            this.toolTip1.SetToolTip(this.MaxRowLimit, "The maximum number of rows to generate tiles for");
+            this.toolTip1.SetToolTip(this.MaxRowLimit, resources.GetString("MaxRowLimit.ToolTip"));
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 0);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Max rows";
             // 
             // MaxColLimit
             // 
-            this.MaxColLimit.Location = new System.Drawing.Point(104, 24);
+            resources.ApplyResources(this.MaxColLimit, "MaxColLimit");
             this.MaxColLimit.Name = "MaxColLimit";
-            this.MaxColLimit.Size = new System.Drawing.Size(104, 20);
-            this.MaxColLimit.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.MaxColLimit, "The maximum number of cols to generate tiles for");
+            this.toolTip1.SetToolTip(this.MaxColLimit, resources.GetString("MaxColLimit.ToolTip"));
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 24);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Max cols";
             // 
             // SetupRun
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 578);
             this.Controls.Add(this.MapTree);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(581, 598);
             this.Name = "SetupRun";
-            this.Text = "Setup a tile build";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.BoundsOverride.ResumeLayout(false);

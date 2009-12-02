@@ -131,32 +131,21 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.panel1.Controls.Add(this.CancelBtn);
             this.panel1.Controls.Add(this.OKBtn);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 419);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(354, 40);
-            this.panel1.TabIndex = 0;
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(181, 8);
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.CancelBtn.TabIndex = 1;
-            this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // OKBtn
             // 
-            this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.OKBtn.Location = new System.Drawing.Point(93, 8);
+            resources.ApplyResources(this.OKBtn, "OKBtn");
             this.OKBtn.Name = "OKBtn";
-            this.OKBtn.Size = new System.Drawing.Size(75, 23);
-            this.OKBtn.TabIndex = 0;
-            this.OKBtn.Text = "OK";
             this.OKBtn.UseVisualStyleBackColor = true;
             this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
             // 
@@ -167,72 +156,52 @@ namespace OSGeo.MapGuide.Maestro
             this.tabControl1.Controls.Add(this.WFSTab);
             this.tabControl1.Controls.Add(this.CustomTab);
             this.tabControl1.Controls.Add(this.ReferenceTab);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 32);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(354, 387);
-            this.tabControl1.TabIndex = 1;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // SecurityTab
             // 
             this.SecurityTab.Controls.Add(this.UseInherited);
             this.SecurityTab.Controls.Add(this.UsersAndGroups);
-            this.SecurityTab.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.SecurityTab, "SecurityTab");
             this.SecurityTab.Name = "SecurityTab";
-            this.SecurityTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SecurityTab.Size = new System.Drawing.Size(346, 361);
-            this.SecurityTab.TabIndex = 0;
-            this.SecurityTab.Text = "Security";
             this.SecurityTab.UseVisualStyleBackColor = true;
             // 
             // UseInherited
             // 
-            this.UseInherited.AutoSize = true;
-            this.UseInherited.Location = new System.Drawing.Point(16, 16);
+            resources.ApplyResources(this.UseInherited, "UseInherited");
             this.UseInherited.Name = "UseInherited";
-            this.UseInherited.Size = new System.Drawing.Size(166, 17);
-            this.UseInherited.TabIndex = 1;
-            this.UseInherited.Text = "Use inherited security settings";
             this.UseInherited.UseVisualStyleBackColor = true;
             this.UseInherited.CheckedChanged += new System.EventHandler(this.UseInherited_CheckedChanged);
             // 
             // UsersAndGroups
             // 
-            this.UsersAndGroups.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.UsersAndGroups, "UsersAndGroups");
             this.UsersAndGroups.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
             this.UsersAndGroups.ContextMenuStrip = this.securityContextMenu;
-            this.UsersAndGroups.Enabled = false;
             this.UsersAndGroups.FullRowSelect = true;
-            this.UsersAndGroups.Location = new System.Drawing.Point(16, 40);
             this.UsersAndGroups.Name = "UsersAndGroups";
-            this.UsersAndGroups.Size = new System.Drawing.Size(316, 310);
             this.UsersAndGroups.SmallImageList = this.UserAndGroupImages;
-            this.UsersAndGroups.TabIndex = 0;
-            this.toolTip.SetToolTip(this.UsersAndGroups, "Right click to change access rights");
+            this.toolTip.SetToolTip(this.UsersAndGroups, resources.GetString("UsersAndGroups.ToolTip"));
             this.UsersAndGroups.UseCompatibleStateImageBehavior = false;
             this.UsersAndGroups.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Name";
-            this.columnHeader1.Width = 88;
+            resources.ApplyResources(this.columnHeader1, "columnHeader1");
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Description";
-            this.columnHeader2.Width = 104;
+            resources.ApplyResources(this.columnHeader2, "columnHeader2");
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Access";
-            this.columnHeader3.Width = 93;
+            resources.ApplyResources(this.columnHeader3, "columnHeader3");
             // 
             // securityContextMenu
             // 
@@ -242,35 +211,31 @@ namespace OSGeo.MapGuide.Maestro
             this.denyAccessToolStripMenuItem,
             this.inheritedAccessRightsToolStripMenuItem});
             this.securityContextMenu.Name = "securityContextMenu";
-            this.securityContextMenu.Size = new System.Drawing.Size(192, 92);
+            resources.ApplyResources(this.securityContextMenu, "securityContextMenu");
             this.securityContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.securityContextMenu_Opening);
             // 
             // readWriteAccessToolStripMenuItem
             // 
             this.readWriteAccessToolStripMenuItem.Name = "readWriteAccessToolStripMenuItem";
-            this.readWriteAccessToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.readWriteAccessToolStripMenuItem.Text = "Read write access";
+            resources.ApplyResources(this.readWriteAccessToolStripMenuItem, "readWriteAccessToolStripMenuItem");
             this.readWriteAccessToolStripMenuItem.Click += new System.EventHandler(this.readWriteAccessToolStripMenuItem_Click);
             // 
             // readOnlyAccessToolStripMenuItem
             // 
             this.readOnlyAccessToolStripMenuItem.Name = "readOnlyAccessToolStripMenuItem";
-            this.readOnlyAccessToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.readOnlyAccessToolStripMenuItem.Text = "Read only access";
+            resources.ApplyResources(this.readOnlyAccessToolStripMenuItem, "readOnlyAccessToolStripMenuItem");
             this.readOnlyAccessToolStripMenuItem.Click += new System.EventHandler(this.readOnlyAccessToolStripMenuItem_Click);
             // 
             // denyAccessToolStripMenuItem
             // 
             this.denyAccessToolStripMenuItem.Name = "denyAccessToolStripMenuItem";
-            this.denyAccessToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.denyAccessToolStripMenuItem.Text = "Deny access";
+            resources.ApplyResources(this.denyAccessToolStripMenuItem, "denyAccessToolStripMenuItem");
             this.denyAccessToolStripMenuItem.Click += new System.EventHandler(this.denyAccessToolStripMenuItem_Click);
             // 
             // inheritedAccessRightsToolStripMenuItem
             // 
             this.inheritedAccessRightsToolStripMenuItem.Name = "inheritedAccessRightsToolStripMenuItem";
-            this.inheritedAccessRightsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.inheritedAccessRightsToolStripMenuItem.Text = "Inherited access rights";
+            resources.ApplyResources(this.inheritedAccessRightsToolStripMenuItem, "inheritedAccessRightsToolStripMenuItem");
             this.inheritedAccessRightsToolStripMenuItem.Click += new System.EventHandler(this.inheritedAccessRightsToolStripMenuItem_Click);
             // 
             // UserAndGroupImages
@@ -291,29 +256,20 @@ namespace OSGeo.MapGuide.Maestro
             this.WMSTab.Controls.Add(this.WMSClearHeaderButton);
             this.WMSTab.Controls.Add(this.groupBox2);
             this.WMSTab.Controls.Add(this.groupBox1);
-            this.WMSTab.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.WMSTab, "WMSTab");
             this.WMSTab.Name = "WMSTab";
-            this.WMSTab.Padding = new System.Windows.Forms.Padding(3);
-            this.WMSTab.Size = new System.Drawing.Size(346, 361);
-            this.WMSTab.TabIndex = 1;
-            this.WMSTab.Text = "WMS";
             this.WMSTab.UseVisualStyleBackColor = true;
             // 
             // WMSClearHeaderButton
             // 
-            this.WMSClearHeaderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.WMSClearHeaderButton.Location = new System.Drawing.Point(220, 325);
+            resources.ApplyResources(this.WMSClearHeaderButton, "WMSClearHeaderButton");
             this.WMSClearHeaderButton.Name = "WMSClearHeaderButton";
-            this.WMSClearHeaderButton.Size = new System.Drawing.Size(119, 23);
-            this.WMSClearHeaderButton.TabIndex = 10;
-            this.WMSClearHeaderButton.Text = "Clear all WMS data";
             this.WMSClearHeaderButton.UseVisualStyleBackColor = true;
             this.WMSClearHeaderButton.Click += new System.EventHandler(this.ClearHeaderButton_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.AutoGenerateWMSBounds);
             this.groupBox2.Controls.Add(this.EditWMSBounds);
             this.groupBox2.Controls.Add(this.WMSBounds);
@@ -321,95 +277,63 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox2.Controls.Add(this.WMSOpaque);
             this.groupBox2.Controls.Add(this.WMSQueryable);
             this.groupBox2.Controls.Add(this.WMSAvalible);
-            this.groupBox2.Location = new System.Drawing.Point(8, 176);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(332, 144);
-            this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Functionality";
             // 
             // AutoGenerateWMSBounds
             // 
-            this.AutoGenerateWMSBounds.Image = ((System.Drawing.Image)(resources.GetObject("AutoGenerateWMSBounds.Image")));
-            this.AutoGenerateWMSBounds.Location = new System.Drawing.Point(304, 116);
+            resources.ApplyResources(this.AutoGenerateWMSBounds, "AutoGenerateWMSBounds");
             this.AutoGenerateWMSBounds.Name = "AutoGenerateWMSBounds";
-            this.AutoGenerateWMSBounds.Size = new System.Drawing.Size(24, 20);
-            this.AutoGenerateWMSBounds.TabIndex = 9;
-            this.toolTip.SetToolTip(this.AutoGenerateWMSBounds, "Click to read the current bounds from the data source");
+            this.toolTip.SetToolTip(this.AutoGenerateWMSBounds, resources.GetString("AutoGenerateWMSBounds.ToolTip"));
             this.AutoGenerateWMSBounds.UseVisualStyleBackColor = true;
             this.AutoGenerateWMSBounds.Click += new System.EventHandler(this.AutoGenerateWMSBounds_Click);
             // 
             // EditWMSBounds
             // 
-            this.EditWMSBounds.Location = new System.Drawing.Point(304, 96);
+            resources.ApplyResources(this.EditWMSBounds, "EditWMSBounds");
             this.EditWMSBounds.Name = "EditWMSBounds";
-            this.EditWMSBounds.Size = new System.Drawing.Size(24, 20);
-            this.EditWMSBounds.TabIndex = 8;
-            this.EditWMSBounds.Text = "...";
             this.EditWMSBounds.UseVisualStyleBackColor = true;
             this.EditWMSBounds.Click += new System.EventHandler(this.EditWMSBounds_Click);
             // 
             // WMSBounds
             // 
-            this.WMSBounds.Location = new System.Drawing.Point(88, 96);
-            this.WMSBounds.Multiline = true;
+            resources.ApplyResources(this.WMSBounds, "WMSBounds");
             this.WMSBounds.Name = "WMSBounds";
-            this.WMSBounds.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.WMSBounds.Size = new System.Drawing.Size(216, 40);
-            this.WMSBounds.TabIndex = 7;
-            this.toolTip.SetToolTip(this.WMSBounds, "This value is the Xml element bounds, which is inserted directly into the xml out" +
-                    "put. Use the edit button if you are uncomfortable editing the value manually");
+            this.toolTip.SetToolTip(this.WMSBounds, resources.GetString("WMSBounds.ToolTip"));
             this.WMSBounds.TextChanged += new System.EventHandler(this.WMSBounds_TextChanged);
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 96);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Bounds";
             // 
             // WMSOpaque
             // 
-            this.WMSOpaque.AutoSize = true;
-            this.WMSOpaque.Location = new System.Drawing.Point(8, 72);
+            resources.ApplyResources(this.WMSOpaque, "WMSOpaque");
             this.WMSOpaque.Name = "WMSOpaque";
-            this.WMSOpaque.Size = new System.Drawing.Size(64, 17);
-            this.WMSOpaque.TabIndex = 6;
-            this.WMSOpaque.Text = "Opaque";
-            this.toolTip.SetToolTip(this.WMSOpaque, "This checkbox determines if the layer should be rendered opaque");
+            this.toolTip.SetToolTip(this.WMSOpaque, resources.GetString("WMSOpaque.ToolTip"));
             this.WMSOpaque.UseVisualStyleBackColor = true;
             this.WMSOpaque.CheckedChanged += new System.EventHandler(this.WMSOpaque_CheckedChanged);
             // 
             // WMSQueryable
             // 
-            this.WMSQueryable.AutoSize = true;
-            this.WMSQueryable.Location = new System.Drawing.Point(8, 48);
+            resources.ApplyResources(this.WMSQueryable, "WMSQueryable");
             this.WMSQueryable.Name = "WMSQueryable";
-            this.WMSQueryable.Size = new System.Drawing.Size(74, 17);
-            this.WMSQueryable.TabIndex = 3;
-            this.WMSQueryable.Text = "Queryable";
-            this.toolTip.SetToolTip(this.WMSQueryable, "This checkbox determines if the layer can be queried for tooltips and links");
+            this.toolTip.SetToolTip(this.WMSQueryable, resources.GetString("WMSQueryable.ToolTip"));
             this.WMSQueryable.UseVisualStyleBackColor = true;
             this.WMSQueryable.CheckedChanged += new System.EventHandler(this.WMSQueryable_CheckedChanged);
             // 
             // WMSAvalible
             // 
-            this.WMSAvalible.AutoSize = true;
-            this.WMSAvalible.Location = new System.Drawing.Point(8, 24);
+            resources.ApplyResources(this.WMSAvalible, "WMSAvalible");
             this.WMSAvalible.Name = "WMSAvalible";
-            this.WMSAvalible.Size = new System.Drawing.Size(63, 17);
-            this.WMSAvalible.TabIndex = 4;
-            this.WMSAvalible.Text = "Avalible";
-            this.toolTip.SetToolTip(this.WMSAvalible, "This checkbox controls the avalibility of the layer");
+            this.toolTip.SetToolTip(this.WMSAvalible, resources.GetString("WMSAvalible.ToolTip"));
             this.WMSAvalible.UseVisualStyleBackColor = true;
             this.WMSAvalible.CheckedChanged += new System.EventHandler(this.WMSAvalible_CheckedChanged);
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.WMSMetadata);
             this.groupBox1.Controls.Add(this.WMSAbstract);
             this.groupBox1.Controls.Add(this.WMSKeyWords);
@@ -418,117 +342,76 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(8, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(332, 160);
-            this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Description";
             // 
             // WMSMetadata
             // 
-            this.WMSMetadata.Location = new System.Drawing.Point(80, 112);
-            this.WMSMetadata.Multiline = true;
+            resources.ApplyResources(this.WMSMetadata, "WMSMetadata");
             this.WMSMetadata.Name = "WMSMetadata";
-            this.WMSMetadata.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.WMSMetadata.Size = new System.Drawing.Size(248, 40);
-            this.WMSMetadata.TabIndex = 11;
-            this.toolTip.SetToolTip(this.WMSMetadata, "This field contains human readable metadata");
+            this.toolTip.SetToolTip(this.WMSMetadata, resources.GetString("WMSMetadata.ToolTip"));
             this.WMSMetadata.TextChanged += new System.EventHandler(this.WMSMetadata_TextChanged);
             // 
             // WMSAbstract
             // 
-            this.WMSAbstract.Location = new System.Drawing.Point(80, 64);
-            this.WMSAbstract.Multiline = true;
+            resources.ApplyResources(this.WMSAbstract, "WMSAbstract");
             this.WMSAbstract.Name = "WMSAbstract";
-            this.WMSAbstract.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.WMSAbstract.Size = new System.Drawing.Size(248, 40);
-            this.WMSAbstract.TabIndex = 10;
-            this.toolTip.SetToolTip(this.WMSAbstract, "This field contains an abstract that describes the layer");
+            this.toolTip.SetToolTip(this.WMSAbstract, resources.GetString("WMSAbstract.ToolTip"));
             this.WMSAbstract.TextChanged += new System.EventHandler(this.WMSAbstract_TextChanged);
             // 
             // WMSKeyWords
             // 
-            this.WMSKeyWords.Location = new System.Drawing.Point(80, 40);
+            resources.ApplyResources(this.WMSKeyWords, "WMSKeyWords");
             this.WMSKeyWords.Name = "WMSKeyWords";
-            this.WMSKeyWords.Size = new System.Drawing.Size(248, 20);
-            this.WMSKeyWords.TabIndex = 9;
-            this.toolTip.SetToolTip(this.WMSKeyWords, "This field contains searchable keywords, seperated with spaces");
+            this.toolTip.SetToolTip(this.WMSKeyWords, resources.GetString("WMSKeyWords.ToolTip"));
             this.WMSKeyWords.TextChanged += new System.EventHandler(this.WMSKeyWords_TextChanged);
             // 
             // WMSTitle
             // 
-            this.WMSTitle.Location = new System.Drawing.Point(80, 16);
+            resources.ApplyResources(this.WMSTitle, "WMSTitle");
             this.WMSTitle.Name = "WMSTitle";
-            this.WMSTitle.Size = new System.Drawing.Size(248, 20);
-            this.WMSTitle.TabIndex = 8;
-            this.toolTip.SetToolTip(this.WMSTitle, "This field contains the layer title");
+            this.toolTip.SetToolTip(this.WMSTitle, resources.GetString("WMSTitle.ToolTip"));
             this.WMSTitle.TextChanged += new System.EventHandler(this.WMSTitle_TextChanged);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(27, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Title";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 64);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Abstract";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 112);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Metadata";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 40);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Keywords";
             // 
             // WFSTab
             // 
             this.WFSTab.Controls.Add(this.WFSClearHeaderButton);
             this.WFSTab.Controls.Add(this.groupBox4);
             this.WFSTab.Controls.Add(this.groupBox3);
-            this.WFSTab.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.WFSTab, "WFSTab");
             this.WFSTab.Name = "WFSTab";
-            this.WFSTab.Padding = new System.Windows.Forms.Padding(3);
-            this.WFSTab.Size = new System.Drawing.Size(346, 361);
-            this.WFSTab.TabIndex = 2;
-            this.WFSTab.Text = "WFS";
             this.WFSTab.UseVisualStyleBackColor = true;
             // 
             // WFSClearHeaderButton
             // 
-            this.WFSClearHeaderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.WFSClearHeaderButton.Location = new System.Drawing.Point(220, 324);
+            resources.ApplyResources(this.WFSClearHeaderButton, "WFSClearHeaderButton");
             this.WFSClearHeaderButton.Name = "WFSClearHeaderButton";
-            this.WFSClearHeaderButton.Size = new System.Drawing.Size(119, 23);
-            this.WFSClearHeaderButton.TabIndex = 11;
-            this.WFSClearHeaderButton.Text = "Clear all WFS data";
             this.WFSClearHeaderButton.UseVisualStyleBackColor = true;
             this.WFSClearHeaderButton.Click += new System.EventHandler(this.WFSClearHeaderButton_Click);
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.AutoGenerateWFSBounds);
             this.groupBox4.Controls.Add(this.WFSOtherSRS);
             this.groupBox4.Controls.Add(this.WFSPrimarySRS);
@@ -538,111 +421,73 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox4.Controls.Add(this.WFSBounds);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.WFSAvalible);
-            this.groupBox4.Location = new System.Drawing.Point(7, 176);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(332, 144);
-            this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Functionality";
             // 
             // AutoGenerateWFSBounds
             // 
-            this.AutoGenerateWFSBounds.Image = ((System.Drawing.Image)(resources.GetObject("AutoGenerateWFSBounds.Image")));
-            this.AutoGenerateWFSBounds.Location = new System.Drawing.Point(304, 116);
+            resources.ApplyResources(this.AutoGenerateWFSBounds, "AutoGenerateWFSBounds");
             this.AutoGenerateWFSBounds.Name = "AutoGenerateWFSBounds";
-            this.AutoGenerateWFSBounds.Size = new System.Drawing.Size(24, 20);
-            this.AutoGenerateWFSBounds.TabIndex = 15;
-            this.toolTip.SetToolTip(this.AutoGenerateWFSBounds, "Click to read the current bounds from the data source");
+            this.toolTip.SetToolTip(this.AutoGenerateWFSBounds, resources.GetString("AutoGenerateWFSBounds.ToolTip"));
             this.AutoGenerateWFSBounds.UseVisualStyleBackColor = true;
             this.AutoGenerateWFSBounds.Click += new System.EventHandler(this.AutoGenerateWFSBounds_Click);
             // 
             // WFSOtherSRS
             // 
             this.WFSOtherSRS.FormattingEnabled = true;
-            this.WFSOtherSRS.Location = new System.Drawing.Point(88, 72);
+            resources.ApplyResources(this.WFSOtherSRS, "WFSOtherSRS");
             this.WFSOtherSRS.Name = "WFSOtherSRS";
-            this.WFSOtherSRS.Size = new System.Drawing.Size(240, 21);
-            this.WFSOtherSRS.TabIndex = 14;
-            this.toolTip.SetToolTip(this.WFSOtherSRS, "This field contains a secondary spatial reference system, usually in the format E" +
-                    "PSG:xxxx");
+            this.toolTip.SetToolTip(this.WFSOtherSRS, resources.GetString("WFSOtherSRS.ToolTip"));
             this.WFSOtherSRS.TextChanged += new System.EventHandler(this.WFSOtherSRS_TextChanged);
             // 
             // WFSPrimarySRS
             // 
             this.WFSPrimarySRS.FormattingEnabled = true;
-            this.WFSPrimarySRS.Location = new System.Drawing.Point(88, 48);
+            resources.ApplyResources(this.WFSPrimarySRS, "WFSPrimarySRS");
             this.WFSPrimarySRS.Name = "WFSPrimarySRS";
-            this.WFSPrimarySRS.Size = new System.Drawing.Size(240, 21);
-            this.WFSPrimarySRS.TabIndex = 13;
-            this.toolTip.SetToolTip(this.WFSPrimarySRS, "This field contains the primary spatial reference system, usually in the format E" +
-                    "PSG:xxxx");
+            this.toolTip.SetToolTip(this.WFSPrimarySRS, resources.GetString("WFSPrimarySRS.ToolTip"));
             this.WFSPrimarySRS.TextChanged += new System.EventHandler(this.WFSPrimarySRS_TextChanged);
             // 
             // label12
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(8, 72);
+            resources.ApplyResources(this.label12, "label12");
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 13);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Other SRS";
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 48);
+            resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(66, 13);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Primary SRS";
             // 
             // EditWFSBounds
             // 
-            this.EditWFSBounds.Location = new System.Drawing.Point(304, 96);
+            resources.ApplyResources(this.EditWFSBounds, "EditWFSBounds");
             this.EditWFSBounds.Name = "EditWFSBounds";
-            this.EditWFSBounds.Size = new System.Drawing.Size(24, 20);
-            this.EditWFSBounds.TabIndex = 8;
-            this.EditWFSBounds.Text = "...";
             this.EditWFSBounds.UseVisualStyleBackColor = true;
             this.EditWFSBounds.Click += new System.EventHandler(this.EditWFSBounds_Click);
             // 
             // WFSBounds
             // 
-            this.WFSBounds.Location = new System.Drawing.Point(88, 96);
-            this.WFSBounds.Multiline = true;
+            resources.ApplyResources(this.WFSBounds, "WFSBounds");
             this.WFSBounds.Name = "WFSBounds";
-            this.WFSBounds.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.WFSBounds.Size = new System.Drawing.Size(216, 40);
-            this.WFSBounds.TabIndex = 7;
-            this.toolTip.SetToolTip(this.WFSBounds, "This value is the Xml element bounds, which is inserted directly into the xml out" +
-                    "put. Use the edit button if you are uncomfortable editing the value manually");
+            this.toolTip.SetToolTip(this.WFSBounds, resources.GetString("WFSBounds.ToolTip"));
             this.WFSBounds.TextChanged += new System.EventHandler(this.WFSBounds_TextChanged);
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(8, 96);
+            resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 13);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Bounds";
             // 
             // WFSAvalible
             // 
-            this.WFSAvalible.AutoSize = true;
-            this.WFSAvalible.Location = new System.Drawing.Point(8, 24);
+            resources.ApplyResources(this.WFSAvalible, "WFSAvalible");
             this.WFSAvalible.Name = "WFSAvalible";
-            this.WFSAvalible.Size = new System.Drawing.Size(63, 17);
-            this.WFSAvalible.TabIndex = 4;
-            this.WFSAvalible.Text = "Avalible";
-            this.toolTip.SetToolTip(this.WFSAvalible, "This checkbox controls the avalibility of the layer");
+            this.toolTip.SetToolTip(this.WFSAvalible, resources.GetString("WFSAvalible.ToolTip"));
             this.WFSAvalible.UseVisualStyleBackColor = true;
             this.WFSAvalible.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.WFSMetadata);
             this.groupBox3.Controls.Add(this.WFSAbstract);
             this.groupBox3.Controls.Add(this.WFSKeywords);
@@ -651,116 +496,75 @@ namespace OSGeo.MapGuide.Maestro
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Location = new System.Drawing.Point(7, 8);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(332, 160);
-            this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Description";
             // 
             // WFSMetadata
             // 
-            this.WFSMetadata.Location = new System.Drawing.Point(80, 112);
-            this.WFSMetadata.Multiline = true;
+            resources.ApplyResources(this.WFSMetadata, "WFSMetadata");
             this.WFSMetadata.Name = "WFSMetadata";
-            this.WFSMetadata.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.WFSMetadata.Size = new System.Drawing.Size(248, 40);
-            this.WFSMetadata.TabIndex = 11;
-            this.toolTip.SetToolTip(this.WFSMetadata, "This field contains human readable metadata");
+            this.toolTip.SetToolTip(this.WFSMetadata, resources.GetString("WFSMetadata.ToolTip"));
             this.WFSMetadata.TextChanged += new System.EventHandler(this.WFSMetadata_TextChanged);
             // 
             // WFSAbstract
             // 
-            this.WFSAbstract.Location = new System.Drawing.Point(80, 64);
-            this.WFSAbstract.Multiline = true;
+            resources.ApplyResources(this.WFSAbstract, "WFSAbstract");
             this.WFSAbstract.Name = "WFSAbstract";
-            this.WFSAbstract.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.WFSAbstract.Size = new System.Drawing.Size(248, 40);
-            this.WFSAbstract.TabIndex = 10;
-            this.toolTip.SetToolTip(this.WFSAbstract, "This field contains an abstract that describes the layer");
+            this.toolTip.SetToolTip(this.WFSAbstract, resources.GetString("WFSAbstract.ToolTip"));
             this.WFSAbstract.TextChanged += new System.EventHandler(this.WFSAbstract_TextChanged);
             // 
             // WFSKeywords
             // 
-            this.WFSKeywords.Location = new System.Drawing.Point(80, 40);
+            resources.ApplyResources(this.WFSKeywords, "WFSKeywords");
             this.WFSKeywords.Name = "WFSKeywords";
-            this.WFSKeywords.Size = new System.Drawing.Size(248, 20);
-            this.WFSKeywords.TabIndex = 9;
-            this.toolTip.SetToolTip(this.WFSKeywords, "This field contains searchable keywords, seperated with spaces");
+            this.toolTip.SetToolTip(this.WFSKeywords, resources.GetString("WFSKeywords.ToolTip"));
             this.WFSKeywords.TextChanged += new System.EventHandler(this.WFSKeywords_TextChanged);
             // 
             // WFSTitle
             // 
-            this.WFSTitle.Location = new System.Drawing.Point(80, 16);
+            resources.ApplyResources(this.WFSTitle, "WFSTitle");
             this.WFSTitle.Name = "WFSTitle";
-            this.WFSTitle.Size = new System.Drawing.Size(248, 20);
-            this.WFSTitle.TabIndex = 8;
-            this.toolTip.SetToolTip(this.WFSTitle, "This field contains the layer title");
+            this.toolTip.SetToolTip(this.WFSTitle, resources.GetString("WFSTitle.ToolTip"));
             this.WFSTitle.TextChanged += new System.EventHandler(this.WFSTitle_TextChanged);
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Title";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 64);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Abstract";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 112);
+            resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Metadata";
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 40);
+            resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 13);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Keywords";
             // 
             // CustomTab
             // 
             this.CustomTab.Controls.Add(this.ClearHeaderButton);
             this.CustomTab.Controls.Add(this.dataGridView1);
-            this.CustomTab.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.CustomTab, "CustomTab");
             this.CustomTab.Name = "CustomTab";
-            this.CustomTab.Size = new System.Drawing.Size(346, 361);
-            this.CustomTab.TabIndex = 3;
-            this.CustomTab.Text = "Custom Metadata";
             this.CustomTab.UseVisualStyleBackColor = true;
             // 
             // ClearHeaderButton
             // 
-            this.ClearHeaderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClearHeaderButton.Location = new System.Drawing.Point(224, 328);
+            resources.ApplyResources(this.ClearHeaderButton, "ClearHeaderButton");
             this.ClearHeaderButton.Name = "ClearHeaderButton";
-            this.ClearHeaderButton.Size = new System.Drawing.Size(119, 23);
-            this.ClearHeaderButton.TabIndex = 11;
-            this.ClearHeaderButton.Text = "Clear all metadata";
             this.ClearHeaderButton.UseVisualStyleBackColor = true;
             this.ClearHeaderButton.Click += new System.EventHandler(this.ClearHeaderButton_Click_1);
             // 
             // dataGridView1
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -781,7 +585,6 @@ namespace OSGeo.MapGuide.Maestro
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 8);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -791,46 +594,36 @@ namespace OSGeo.MapGuide.Maestro
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.Size = new System.Drawing.Size(336, 312);
-            this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Leave += new System.EventHandler(this.dataGridView1_Leave);
             // 
             // ItemKey
             // 
-            this.ItemKey.HeaderText = "Key";
+            resources.ApplyResources(this.ItemKey, "ItemKey");
             this.ItemKey.Name = "ItemKey";
             // 
             // ItemValue
             // 
-            this.ItemValue.HeaderText = "Value";
+            resources.ApplyResources(this.ItemValue, "ItemValue");
             this.ItemValue.Name = "ItemValue";
             // 
             // ReferenceTab
             // 
             this.ReferenceTab.Controls.Add(this.LoadingReferences);
             this.ReferenceTab.Controls.Add(this.splitContainer1);
-            this.ReferenceTab.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.ReferenceTab, "ReferenceTab");
             this.ReferenceTab.Name = "ReferenceTab";
-            this.ReferenceTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ReferenceTab.Size = new System.Drawing.Size(346, 361);
-            this.ReferenceTab.TabIndex = 4;
-            this.ReferenceTab.Text = "References";
             this.ReferenceTab.UseVisualStyleBackColor = true;
             // 
             // LoadingReferences
             // 
-            this.LoadingReferences.Location = new System.Drawing.Point(32, 88);
+            resources.ApplyResources(this.LoadingReferences, "LoadingReferences");
             this.LoadingReferences.Name = "LoadingReferences";
-            this.LoadingReferences.Size = new System.Drawing.Size(288, 23);
             this.LoadingReferences.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.LoadingReferences.TabIndex = 1;
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
             this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
@@ -839,31 +632,20 @@ namespace OSGeo.MapGuide.Maestro
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.InReferences);
-            this.splitContainer1.Size = new System.Drawing.Size(340, 355);
-            this.splitContainer1.SplitterDistance = 175;
-            this.splitContainer1.TabIndex = 0;
             // 
             // OutReferences
             // 
             this.OutReferences.Controls.Add(this.OutReferenceList);
-            this.OutReferences.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OutReferences.Enabled = false;
-            this.OutReferences.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.OutReferences, "OutReferences");
             this.OutReferences.Name = "OutReferences";
-            this.OutReferences.Size = new System.Drawing.Size(340, 175);
-            this.OutReferences.TabIndex = 0;
             this.OutReferences.TabStop = false;
-            this.OutReferences.Text = "This resource references";
             // 
             // OutReferenceList
             // 
-            this.OutReferenceList.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.OutReferenceList, "OutReferenceList");
             this.OutReferenceList.FullRowSelect = true;
             this.OutReferenceList.GridLines = true;
-            this.OutReferenceList.Location = new System.Drawing.Point(3, 16);
             this.OutReferenceList.Name = "OutReferenceList";
-            this.OutReferenceList.Size = new System.Drawing.Size(334, 156);
-            this.OutReferenceList.TabIndex = 0;
             this.OutReferenceList.UseCompatibleStateImageBehavior = false;
             this.OutReferenceList.View = System.Windows.Forms.View.List;
             this.OutReferenceList.DoubleClick += new System.EventHandler(this.OutReferenceList_DoubleClick);
@@ -871,24 +653,16 @@ namespace OSGeo.MapGuide.Maestro
             // InReferences
             // 
             this.InReferences.Controls.Add(this.InReferenceList);
-            this.InReferences.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.InReferences.Enabled = false;
-            this.InReferences.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.InReferences, "InReferences");
             this.InReferences.Name = "InReferences";
-            this.InReferences.Size = new System.Drawing.Size(340, 176);
-            this.InReferences.TabIndex = 1;
             this.InReferences.TabStop = false;
-            this.InReferences.Text = "This resource is referenced by";
             // 
             // InReferenceList
             // 
-            this.InReferenceList.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.InReferenceList, "InReferenceList");
             this.InReferenceList.FullRowSelect = true;
             this.InReferenceList.GridLines = true;
-            this.InReferenceList.Location = new System.Drawing.Point(3, 16);
             this.InReferenceList.Name = "InReferenceList";
-            this.InReferenceList.Size = new System.Drawing.Size(334, 157);
-            this.InReferenceList.TabIndex = 1;
             this.InReferenceList.UseCompatibleStateImageBehavior = false;
             this.InReferenceList.View = System.Windows.Forms.View.List;
             this.InReferenceList.DoubleClick += new System.EventHandler(this.InReferenceList_DoubleClick);
@@ -897,30 +671,19 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.panel2.Controls.Add(this.ResourceID);
             this.panel2.Controls.Add(this.label13);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(354, 32);
-            this.panel2.TabIndex = 2;
             // 
             // ResourceID
             // 
-            this.ResourceID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResourceID.Location = new System.Drawing.Point(88, 6);
+            resources.ApplyResources(this.ResourceID, "ResourceID");
             this.ResourceID.Name = "ResourceID";
             this.ResourceID.ReadOnly = true;
-            this.ResourceID.Size = new System.Drawing.Size(260, 20);
-            this.ResourceID.TabIndex = 1;
             // 
             // label13
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.label13, "label13");
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(67, 13);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Resource ID";
             // 
             // ReferenceWorker
             // 
@@ -931,15 +694,13 @@ namespace OSGeo.MapGuide.Maestro
             // 
             // ResourceProperties
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(354, 459);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "ResourceProperties";
-            this.Text = "Properties";
             this.Load += new System.EventHandler(this.ResourceProperties_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ResourceProperties_FormClosing);
             this.panel1.ResumeLayout(false);

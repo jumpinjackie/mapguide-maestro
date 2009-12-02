@@ -80,8 +80,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.KingKML
 			managedFileControl.NewDefaultSelected += new ResourceEditors.FeatureSourceEditors.ManagedFileControl.NewDefaultSelectedDelegate(managedFileControl_NewDefaultSelected);
 
 			System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
-			nv.Add(".kml", "KML file (*.kml)");
-			nv.Add("", "All files (*.*)");
+			nv.Add(".kml", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.KMLFiles);
+			nv.Add("", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.AllFiles);
 			managedFileControl.FileTypes = nv;
 		}
 
@@ -115,16 +115,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.KingKML
             // 
             // managedFileControl
             // 
-            this.managedFileControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.managedFileControl.AutoScroll = true;
-            this.managedFileControl.AutoScrollMinSize = new System.Drawing.Size(136, 56);
+            resources.ApplyResources(this.managedFileControl, "managedFileControl");
             this.managedFileControl.FileTypes = null;
-            this.managedFileControl.Location = new System.Drawing.Point(8, 8);
             this.managedFileControl.Name = "managedFileControl";
-            this.managedFileControl.Size = new System.Drawing.Size(240, 120);
-            this.managedFileControl.TabIndex = 0;
             // 
             // ToolbarImages
             // 
@@ -134,11 +127,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.KingKML
             // 
             // Managed
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(256, 136);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.managedFileControl);
             this.Name = "Managed";
-            this.Size = new System.Drawing.Size(256, 136);
             this.ResumeLayout(false);
 
 		}

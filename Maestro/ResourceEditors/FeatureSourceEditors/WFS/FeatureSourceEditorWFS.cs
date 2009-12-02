@@ -40,13 +40,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Windows.Forms.ToolTip toolTips;
 		private System.Windows.Forms.TextBox Server;
 		private bool m_isUpdating = false;
-		private Globalizator.Globalizator m_globalizor;
 
 		public FeatureSourceEditorWFS()
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-			m_globalizor = new Globalizator.Globalizator(this);
 		}
 
 		public FeatureSourceEditorWFS(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource feature)
@@ -80,54 +78,40 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.Server = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.credentials = new ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
-			this.toolTips = new System.Windows.Forms.ToolTip(this.components);
-			this.SuspendLayout();
-			// 
-			// Server
-			// 
-			this.Server.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Server.Location = new System.Drawing.Point(112, 8);
-			this.Server.Name = "Server";
-			this.Server.Size = new System.Drawing.Size(160, 20);
-			this.Server.TabIndex = 38;
-			this.Server.Text = "";
-			this.Server.TextChanged += new System.EventHandler(this.Server_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(96, 16);
-			this.label1.TabIndex = 37;
-			this.label1.Text = "Server";
-			// 
-			// credentials
-			// 
-			this.credentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.credentials.AutoScroll = true;
-			this.credentials.AutoScrollMinSize = new System.Drawing.Size(264, 152);
-			this.credentials.Location = new System.Drawing.Point(8, 40);
-			this.credentials.Name = "credentials";
-			this.credentials.Size = new System.Drawing.Size(264, 152);
-			this.credentials.TabIndex = 36;
-			this.credentials.CredentialsChanged += new ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
-			// 
-			// FeatureSourceEditorWFS
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(280, 200);
-			this.Controls.Add(this.Server);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.credentials);
-			this.Name = "FeatureSourceEditorWFS";
-			this.Size = new System.Drawing.Size(280, 200);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditorWFS));
+            this.Server = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.credentials = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
+            this.toolTips = new System.Windows.Forms.ToolTip(this.components);
+            this.SuspendLayout();
+            // 
+            // Server
+            // 
+            resources.ApplyResources(this.Server, "Server");
+            this.Server.Name = "Server";
+            this.Server.TextChanged += new System.EventHandler(this.Server_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // credentials
+            // 
+            resources.ApplyResources(this.credentials, "credentials");
+            this.credentials.Name = "credentials";
+            this.credentials.CredentialsChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
+            // 
+            // FeatureSourceEditorWFS
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.Server);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.credentials);
+            this.Name = "FeatureSourceEditorWFS";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

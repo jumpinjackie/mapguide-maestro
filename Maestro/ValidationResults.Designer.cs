@@ -45,32 +45,21 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.panel1.Controls.Add(this.SaveReportBtn);
             this.panel1.Controls.Add(this.CancelBtn);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 232);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(595, 42);
-            this.panel1.TabIndex = 0;
             // 
             // SaveReportBtn
             // 
-            this.SaveReportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveReportBtn.Location = new System.Drawing.Point(488, 8);
+            resources.ApplyResources(this.SaveReportBtn, "SaveReportBtn");
             this.SaveReportBtn.Name = "SaveReportBtn";
-            this.SaveReportBtn.Size = new System.Drawing.Size(91, 23);
-            this.SaveReportBtn.TabIndex = 1;
-            this.SaveReportBtn.Text = "Save as file...";
             this.SaveReportBtn.UseVisualStyleBackColor = true;
             this.SaveReportBtn.Click += new System.EventHandler(this.SaveReportBtn_Click);
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(256, 8);
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.CancelBtn.TabIndex = 0;
-            this.CancelBtn.Text = "Close";
             this.CancelBtn.UseVisualStyleBackColor = true;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
@@ -79,25 +68,20 @@ namespace OSGeo.MapGuide.Maestro
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.listView1, "listView1");
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(595, 232);
             this.listView1.SmallImageList = this.imageList1;
-            this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Resource";
-            this.columnHeader1.Width = 240;
+            resources.ApplyResources(this.columnHeader1, "columnHeader1");
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Message";
-            this.columnHeader2.Width = 324;
+            resources.ApplyResources(this.columnHeader2, "columnHeader2");
             // 
             // imageList1
             // 
@@ -110,21 +94,17 @@ namespace OSGeo.MapGuide.Maestro
             // saveFileDialog1
             // 
             this.saveFileDialog1.DefaultExt = "txt";
-            this.saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            this.saveFileDialog1.Title = "Select the filename to write the report to";
+            resources.ApplyResources(this.saveFileDialog1, "saveFileDialog1");
             // 
             // ValidationResults
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(595, 274);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "ValidationResults";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Validation Results";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

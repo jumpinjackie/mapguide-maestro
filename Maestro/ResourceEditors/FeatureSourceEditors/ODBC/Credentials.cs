@@ -53,13 +53,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
 		
 		public delegate void CredentialsChangedDelegate(string username, string password);
 		public event CredentialsChangedDelegate CredentialsChanged;
-		private Globalizator.Globalizator m_globalizor;
 
 		public Credentials()
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-			m_globalizor = new Globalizator.Globalizator(this);
 		}
 
 		public void SetItem(ResourceEditors.EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource item)
@@ -125,129 +123,88 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.NoCredentials = new System.Windows.Forms.RadioButton();
-			this.MapGuideCredentials = new System.Windows.Forms.RadioButton();
-			this.SpecifiedCredentials = new System.Windows.Forms.RadioButton();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.CredentialPanel = new System.Windows.Forms.Panel();
-			this.label2 = new System.Windows.Forms.Label();
-			this.Username = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.Password = new System.Windows.Forms.TextBox();
-			this.groupBox1.SuspendLayout();
-			this.CredentialPanel.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// NoCredentials
-			// 
-			this.NoCredentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.NoCredentials.Location = new System.Drawing.Point(16, 24);
-			this.NoCredentials.Name = "NoCredentials";
-			this.NoCredentials.Size = new System.Drawing.Size(232, 16);
-			this.NoCredentials.TabIndex = 0;
-			this.NoCredentials.Text = "No credentials";
-			this.NoCredentials.CheckedChanged += new System.EventHandler(this.Credentials_CheckedChanged);
-			// 
-			// MapGuideCredentials
-			// 
-			this.MapGuideCredentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.MapGuideCredentials.Location = new System.Drawing.Point(16, 48);
-			this.MapGuideCredentials.Name = "MapGuideCredentials";
-			this.MapGuideCredentials.Size = new System.Drawing.Size(232, 16);
-			this.MapGuideCredentials.TabIndex = 1;
-			this.MapGuideCredentials.Text = "MapGuide Credentials";
-			this.MapGuideCredentials.CheckedChanged += new System.EventHandler(this.Credentials_CheckedChanged);
-			// 
-			// SpecifiedCredentials
-			// 
-			this.SpecifiedCredentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.SpecifiedCredentials.Location = new System.Drawing.Point(16, 72);
-			this.SpecifiedCredentials.Name = "SpecifiedCredentials";
-			this.SpecifiedCredentials.Size = new System.Drawing.Size(232, 16);
-			this.SpecifiedCredentials.TabIndex = 2;
-			this.SpecifiedCredentials.Text = "Specified Credentials";
-			this.SpecifiedCredentials.CheckedChanged += new System.EventHandler(this.Credentials_CheckedChanged);
-			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.SpecifiedCredentials);
-			this.groupBox1.Controls.Add(this.MapGuideCredentials);
-			this.groupBox1.Controls.Add(this.NoCredentials);
-			this.groupBox1.Controls.Add(this.CredentialPanel);
-			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox1.Location = new System.Drawing.Point(0, 0);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(264, 152);
-			this.groupBox1.TabIndex = 3;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Data source credentials";
-			// 
-			// CredentialPanel
-			// 
-			this.CredentialPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.CredentialPanel.Controls.Add(this.label2);
-			this.CredentialPanel.Controls.Add(this.Username);
-			this.CredentialPanel.Controls.Add(this.label1);
-			this.CredentialPanel.Controls.Add(this.Password);
-			this.CredentialPanel.Enabled = false;
-			this.CredentialPanel.Location = new System.Drawing.Point(16, 88);
-			this.CredentialPanel.Name = "CredentialPanel";
-			this.CredentialPanel.Size = new System.Drawing.Size(232, 56);
-			this.CredentialPanel.TabIndex = 7;
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(16, 32);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(112, 16);
-			this.label2.TabIndex = 4;
-			this.label2.Text = "Password";
-			// 
-			// Username
-			// 
-			this.Username.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Username.Location = new System.Drawing.Point(128, 8);
-			this.Username.Name = "Username";
-			this.Username.Size = new System.Drawing.Size(96, 20);
-			this.Username.TabIndex = 5;
-			this.Username.Text = "";
-			this.Username.TextChanged += new System.EventHandler(this.Username_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(16, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(112, 16);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Username";
-			// 
-			// Password
-			// 
-			this.Password.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Password.Location = new System.Drawing.Point(128, 32);
-			this.Password.Name = "Password";
-			this.Password.PasswordChar = '*';
-			this.Password.Size = new System.Drawing.Size(96, 20);
-			this.Password.TabIndex = 6;
-			this.Password.Text = "";
-			this.Password.TextChanged += new System.EventHandler(this.Password_TextChanged);
-			// 
-			// Credentials
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(264, 152);
-			this.Controls.Add(this.groupBox1);
-			this.Name = "Credentials";
-			this.Size = new System.Drawing.Size(264, 152);
-			this.groupBox1.ResumeLayout(false);
-			this.CredentialPanel.ResumeLayout(false);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Credentials));
+            this.NoCredentials = new System.Windows.Forms.RadioButton();
+            this.MapGuideCredentials = new System.Windows.Forms.RadioButton();
+            this.SpecifiedCredentials = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CredentialPanel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Username = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Password = new System.Windows.Forms.TextBox();
+            this.groupBox1.SuspendLayout();
+            this.CredentialPanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // NoCredentials
+            // 
+            resources.ApplyResources(this.NoCredentials, "NoCredentials");
+            this.NoCredentials.Name = "NoCredentials";
+            this.NoCredentials.CheckedChanged += new System.EventHandler(this.Credentials_CheckedChanged);
+            // 
+            // MapGuideCredentials
+            // 
+            resources.ApplyResources(this.MapGuideCredentials, "MapGuideCredentials");
+            this.MapGuideCredentials.Name = "MapGuideCredentials";
+            this.MapGuideCredentials.CheckedChanged += new System.EventHandler(this.Credentials_CheckedChanged);
+            // 
+            // SpecifiedCredentials
+            // 
+            resources.ApplyResources(this.SpecifiedCredentials, "SpecifiedCredentials");
+            this.SpecifiedCredentials.Name = "SpecifiedCredentials";
+            this.SpecifiedCredentials.CheckedChanged += new System.EventHandler(this.Credentials_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.SpecifiedCredentials);
+            this.groupBox1.Controls.Add(this.MapGuideCredentials);
+            this.groupBox1.Controls.Add(this.NoCredentials);
+            this.groupBox1.Controls.Add(this.CredentialPanel);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // CredentialPanel
+            // 
+            resources.ApplyResources(this.CredentialPanel, "CredentialPanel");
+            this.CredentialPanel.Controls.Add(this.label2);
+            this.CredentialPanel.Controls.Add(this.Username);
+            this.CredentialPanel.Controls.Add(this.label1);
+            this.CredentialPanel.Controls.Add(this.Password);
+            this.CredentialPanel.Name = "CredentialPanel";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // Username
+            // 
+            resources.ApplyResources(this.Username, "Username");
+            this.Username.Name = "Username";
+            this.Username.TextChanged += new System.EventHandler(this.Username_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // Password
+            // 
+            resources.ApplyResources(this.Password, "Password");
+            this.Password.Name = "Password";
+            this.Password.TextChanged += new System.EventHandler(this.Password_TextChanged);
+            // 
+            // Credentials
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.groupBox1);
+            this.Name = "Credentials";
+            this.groupBox1.ResumeLayout(false);
+            this.CredentialPanel.ResumeLayout(false);
+            this.CredentialPanel.PerformLayout();
+            this.ResumeLayout(false);
 
 		}
 		#endregion

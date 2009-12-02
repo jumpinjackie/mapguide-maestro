@@ -143,107 +143,75 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Path = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.Mapset = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.Database = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.LocationText = new System.Windows.Forms.TextBox();
-			this.SuspendLayout();
-			// 
-			// Path
-			// 
-			this.Path.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Path.Location = new System.Drawing.Point(112, 104);
-			this.Path.Name = "Path";
-			this.Path.Size = new System.Drawing.Size(144, 20);
-			this.Path.TabIndex = 19;
-			this.Path.Text = "";
-			this.Path.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label4
-			// 
-			this.label4.Location = new System.Drawing.Point(8, 104);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(96, 16);
-			this.label4.TabIndex = 18;
-			this.label4.Text = "Path";
-			// 
-			// Mapset
-			// 
-			this.Mapset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Mapset.Location = new System.Drawing.Point(112, 72);
-			this.Mapset.Name = "Mapset";
-			this.Mapset.Size = new System.Drawing.Size(144, 20);
-			this.Mapset.TabIndex = 17;
-			this.Mapset.Text = "";
-			this.Mapset.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 72);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(96, 16);
-			this.label3.TabIndex = 16;
-			this.label3.Text = "Mapset";
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 40);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(96, 16);
-			this.label2.TabIndex = 14;
-			this.label2.Text = "Location";
-			// 
-			// Database
-			// 
-			this.Database.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Database.Location = new System.Drawing.Point(112, 8);
-			this.Database.Name = "Database";
-			this.Database.Size = new System.Drawing.Size(144, 20);
-			this.Database.TabIndex = 13;
-			this.Database.Text = "";
-			this.Database.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(96, 16);
-			this.label1.TabIndex = 12;
-			this.label1.Text = "Database";
-			// 
-			// LocationText
-			// 
-			this.LocationText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.LocationText.Location = new System.Drawing.Point(112, 40);
-			this.LocationText.Name = "LocationText";
-			this.LocationText.Size = new System.Drawing.Size(144, 20);
-			this.LocationText.TabIndex = 20;
-			this.LocationText.Text = "";
-			this.LocationText.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// Grass
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(264, 136);
-			this.Controls.Add(this.LocationText);
-			this.Controls.Add(this.Path);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.Mapset);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.Database);
-			this.Controls.Add(this.label1);
-			this.Name = "Grass";
-			this.Size = new System.Drawing.Size(264, 136);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Grass));
+            this.Path = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Mapset = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Database = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.LocationText = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // Path
+            // 
+            resources.ApplyResources(this.Path, "Path");
+            this.Path.Name = "Path";
+            this.Path.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // Mapset
+            // 
+            resources.ApplyResources(this.Mapset, "Mapset");
+            this.Mapset.Name = "Mapset";
+            this.Mapset.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // Database
+            // 
+            resources.ApplyResources(this.Database, "Database");
+            this.Database.Name = "Database";
+            this.Database.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // LocationText
+            // 
+            resources.ApplyResources(this.LocationText, "LocationText");
+            this.LocationText.Name = "LocationText";
+            this.LocationText.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // Grass
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.LocationText);
+            this.Controls.Add(this.Path);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Mapset);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Database);
+            this.Controls.Add(this.label1);
+            this.Name = "Grass";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

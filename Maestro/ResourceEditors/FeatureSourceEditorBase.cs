@@ -46,7 +46,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Windows.Forms.Panel TestConnectionPanel;
 		private System.Windows.Forms.TextBox TestConnectionResult;
 		private System.Windows.Forms.Button btnTest;
-		private Globalizator.Globalizator m_globalizor;
 
 		private Hashtable m_providerMap = null;
 		private System.Windows.Forms.Label label1;
@@ -70,7 +69,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			{
 				UserControl uc = (UserControl)Activator.CreateInstance(ClassDef, new object[]{editor, feature} );
 				if (uc as IResourceEditorControl == null)
-					throw new Exception("Failed to create new datasource");
+					throw new Exception(Strings.FeatureSourceEditorBase.FeatureSourceCreationError);
 
 				m_child = (IResourceEditorControl)uc;
 				if (uc.GetType() == typeof(FeatureSourceEditorGeneric))
@@ -131,7 +130,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 if (dlgres == DialogResult.Cancel)
                     throw new CancelException();
                 else
-				    throw new Exception("Failed to create new datasource");
+				    throw new Exception(Strings.FeatureSourceEditorBase.FeatureSourceCreationError);
 
 
 		}
@@ -147,7 +146,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			CreateLayout(editor, m_feature);
 
 			if (m_child == null)
-				throw new Exception("Failed to create new datasource");
+				throw new Exception(Strings.FeatureSourceEditorBase.FeatureSourceCreationError);
 
 		}
 
@@ -158,7 +157,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				Hashtable ht = new Hashtable();
 				string path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "ProviderMap.xml");
 				if (!System.IO.File.Exists(path))
-					throw new Exception(string.Format("The setup file for the FeatureSource Editors is missing. Please place it at: {0}", path));
+					throw new Exception(string.Format(Strings.FeatureSourceEditorBase.FeatureSourceEditorMapMissingError, path));
 
 				ProviderEditorMap pvm = new ProviderEditorMap();
 
@@ -173,7 +172,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				}
 
 				if (pvm.Mappings == null || pvm.Mappings.Length == 0)
-					throw new Exception("The setup file for the FeatureSource Editors is invalid.");
+					throw new Exception(Strings.FeatureSourceEditorBase.FeatureSourceEditorMapInvalidError);
 
 				string oldDir = System.IO.Directory.GetCurrentDirectory();
 				try
@@ -188,11 +187,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 						}
 						catch (Exception ex)
 						{
-							throw new Exception(string.Format("Failed to load assembly {0} from file {1}.\nError message: {2}", pv.Provider, System.IO.Path.GetFullPath(pv.AssemblyPath), ex.Message), ex);
+							throw new Exception(string.Format(Strings.FeatureSourceEditorBase.AssemblyLoadError, pv.Provider, System.IO.Path.GetFullPath(pv.AssemblyPath), ex.Message), ex);
 						}
 						Type t = asm.GetType(pv.Control);
 						if (t == null)
-							throw new Exception(string.Format("Failed to find the Control type: {0} in assembly: {1}",  pv.Control, pv.AssemblyPath));
+							throw new Exception(string.Format(Strings.FeatureSourceEditorBase.ControlMissingError,  pv.Control, pv.AssemblyPath));
 						ht.Add(pv.Provider, t);
 					}
 				} 
@@ -250,7 +249,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-			m_globalizor = new Globalizator.Globalizator(this);
 		}
 
 		/// <summary> 
@@ -275,6 +273,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditorBase));
             this.EditorTab = new System.Windows.Forms.TabControl();
             this.CustomEditorPage = new System.Windows.Forms.TabPage();
             this.GenericEditorPage = new System.Windows.Forms.TabPage();
@@ -286,9 +285,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CoordinateSystemOverride = new OSGeo.MapGuide.Maestro.ResourceEditors.CoordinateSystemOverride();
             this.EditJoinPanel = new System.Windows.Forms.Panel();
+            this.EditConfigDocButton = new System.Windows.Forms.Button();
             this.EditExtensions = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.EditConfigDocButton = new System.Windows.Forms.Button();
             this.EditorTab.SuspendLayout();
             this.TestConnectionPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -300,156 +299,98 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.EditorTab.Controls.Add(this.CustomEditorPage);
             this.EditorTab.Controls.Add(this.GenericEditorPage);
-            this.EditorTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EditorTab.Location = new System.Drawing.Point(0, 24);
+            resources.ApplyResources(this.EditorTab, "EditorTab");
             this.EditorTab.Name = "EditorTab";
             this.EditorTab.SelectedIndex = 0;
-            this.EditorTab.Size = new System.Drawing.Size(592, 296);
-            this.EditorTab.TabIndex = 0;
             this.EditorTab.SelectedIndexChanged += new System.EventHandler(this.EditorTab_SelectedIndexChanged);
             // 
             // CustomEditorPage
             // 
-            this.CustomEditorPage.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.CustomEditorPage, "CustomEditorPage");
             this.CustomEditorPage.Name = "CustomEditorPage";
-            this.CustomEditorPage.Size = new System.Drawing.Size(584, 270);
-            this.CustomEditorPage.TabIndex = 0;
-            this.CustomEditorPage.Text = "Custom editor";
             // 
             // GenericEditorPage
             // 
-            this.GenericEditorPage.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.GenericEditorPage, "GenericEditorPage");
             this.GenericEditorPage.Name = "GenericEditorPage";
-            this.GenericEditorPage.Size = new System.Drawing.Size(584, 270);
-            this.GenericEditorPage.TabIndex = 1;
-            this.GenericEditorPage.Text = "Generic Editor";
             // 
             // TestConnectionPanel
             // 
             this.TestConnectionPanel.Controls.Add(this.TestConnectionResult);
             this.TestConnectionPanel.Controls.Add(this.btnTest);
-            this.TestConnectionPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.TestConnectionPanel.Location = new System.Drawing.Point(0, 320);
+            resources.ApplyResources(this.TestConnectionPanel, "TestConnectionPanel");
             this.TestConnectionPanel.Name = "TestConnectionPanel";
-            this.TestConnectionPanel.Size = new System.Drawing.Size(592, 48);
-            this.TestConnectionPanel.TabIndex = 2;
             // 
             // TestConnectionResult
             // 
-            this.TestConnectionResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.TestConnectionResult.Location = new System.Drawing.Point(0, 8);
-            this.TestConnectionResult.Multiline = true;
+            resources.ApplyResources(this.TestConnectionResult, "TestConnectionResult");
             this.TestConnectionResult.Name = "TestConnectionResult";
             this.TestConnectionResult.ReadOnly = true;
-            this.TestConnectionResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TestConnectionResult.Size = new System.Drawing.Size(416, 32);
-            this.TestConnectionResult.TabIndex = 7;
-            this.TestConnectionResult.Text = "Click on \"Test connection\" to test with the current parameters";
             // 
             // btnTest
             // 
-            this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTest.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnTest.Location = new System.Drawing.Point(424, 8);
+            resources.ApplyResources(this.btnTest, "btnTest");
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(160, 32);
-            this.btnTest.TabIndex = 6;
-            this.btnTest.Text = "Test connection";
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Provider";
             // 
             // ProviderName
             // 
-            this.ProviderName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProviderName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProviderName.Location = new System.Drawing.Point(112, 0);
+            resources.ApplyResources(this.ProviderName, "ProviderName");
             this.ProviderName.Name = "ProviderName";
             this.ProviderName.ReadOnly = true;
-            this.ProviderName.Size = new System.Drawing.Size(472, 20);
-            this.ProviderName.TabIndex = 4;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.CoordinateSystemOverride);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 408);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(592, 136);
-            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Coordinate system override";
             // 
             // CoordinateSystemOverride
             // 
-            this.CoordinateSystemOverride.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.CoordinateSystemOverride.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.CoordinateSystemOverride, "CoordinateSystemOverride");
             this.CoordinateSystemOverride.Name = "CoordinateSystemOverride";
-            this.CoordinateSystemOverride.Size = new System.Drawing.Size(576, 112);
-            this.CoordinateSystemOverride.TabIndex = 1;
             // 
             // EditJoinPanel
             // 
             this.EditJoinPanel.Controls.Add(this.EditConfigDocButton);
             this.EditJoinPanel.Controls.Add(this.EditExtensions);
-            this.EditJoinPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.EditJoinPanel.Location = new System.Drawing.Point(0, 368);
+            resources.ApplyResources(this.EditJoinPanel, "EditJoinPanel");
             this.EditJoinPanel.Name = "EditJoinPanel";
-            this.EditJoinPanel.Size = new System.Drawing.Size(592, 40);
-            this.EditJoinPanel.TabIndex = 6;
+            // 
+            // EditConfigDocButton
+            // 
+            resources.ApplyResources(this.EditConfigDocButton, "EditConfigDocButton");
+            this.EditConfigDocButton.Name = "EditConfigDocButton";
+            this.EditConfigDocButton.Click += new System.EventHandler(this.EditConfigDocButton_Click);
             // 
             // EditExtensions
             // 
-            this.EditExtensions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditExtensions.Location = new System.Drawing.Point(408, 8);
+            resources.ApplyResources(this.EditExtensions, "EditExtensions");
             this.EditExtensions.Name = "EditExtensions";
-            this.EditExtensions.Size = new System.Drawing.Size(176, 24);
-            this.EditExtensions.TabIndex = 1;
-            this.EditExtensions.Text = "Edit extensions and joins";
             this.EditExtensions.Click += new System.EventHandler(this.EditExtensions_Click);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.ProviderName);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(592, 24);
-            this.panel1.TabIndex = 7;
-            // 
-            // EditConfigDocButton
-            // 
-            this.EditConfigDocButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditConfigDocButton.Location = new System.Drawing.Point(224, 8);
-            this.EditConfigDocButton.Name = "EditConfigDocButton";
-            this.EditConfigDocButton.Size = new System.Drawing.Size(176, 24);
-            this.EditConfigDocButton.TabIndex = 2;
-            this.EditConfigDocButton.Text = "Edit configuration document";
-            this.EditConfigDocButton.Click += new System.EventHandler(this.EditConfigDocButton_Click);
             // 
             // FeatureSourceEditorBase
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(300, 250);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.EditorTab);
             this.Controls.Add(this.TestConnectionPanel);
             this.Controls.Add(this.EditJoinPanel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Name = "FeatureSourceEditorBase";
-            this.Size = new System.Drawing.Size(592, 544);
             this.EditorTab.ResumeLayout(false);
             this.TestConnectionPanel.ResumeLayout(false);
             this.TestConnectionPanel.PerformLayout();
@@ -518,7 +459,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 				string x = m_editor.CurrentConnection.TestConnection(m_feature.ResourceId);
 				if (x.Length == 0)
-					TestConnectionResult.Text = m_globalizor.Translate("Provider reported no errors");
+					TestConnectionResult.Text = Strings.FeatureSourceEditorBase.NoErrorsFound;
 				else
 					TestConnectionResult.Text = x;
 			}
@@ -546,7 +487,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unable to save resource, so it cannot be validated.\nError message: " + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(Strings.FeatureSourceEditorBase.ResourceSaveError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -596,7 +537,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format("Failed to update xml data: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.FeatureSourceEditorBase.XmlUpdateError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

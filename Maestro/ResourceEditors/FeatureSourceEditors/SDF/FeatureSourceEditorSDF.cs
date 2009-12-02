@@ -35,9 +35,31 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private static System.Collections.Specialized.NameValueCollection GetFileTypes()
         {
 			System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
-			nv.Add(".sdf", "SDF Files (*.sdf)");
-			nv.Add("", "All files (*.*)");
+			nv.Add(".sdf", Strings.Common.SDFFiles);
+			nv.Add("", Strings.Common.AllFiles);
             return nv;
+        }
+
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditorSDF));
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // UnmanagedEditor
+            // 
+            resources.ApplyResources(this.UnmanagedEditor, "UnmanagedEditor");
+            // 
+            // ManagedEditor
+            // 
+            resources.ApplyResources(this.ManagedEditor, "ManagedEditor");
+            // 
+            // FeatureSourceEditorSDF
+            // 
+            this.Name = "FeatureSourceEditorSDF";
+            this.panel1.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
     }
 }

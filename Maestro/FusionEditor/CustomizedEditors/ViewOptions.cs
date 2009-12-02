@@ -78,36 +78,32 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.DisplayUnits = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// DisplayUnits
-			// 
-			this.DisplayUnits.Items.AddRange(new object[] {
-															  "meters",
-															  "miles"});
-			this.DisplayUnits.Location = new System.Drawing.Point(104, 10);
-			this.DisplayUnits.Name = "DisplayUnits";
-			this.DisplayUnits.Size = new System.Drawing.Size(504, 21);
-			this.DisplayUnits.TabIndex = 7;
-			this.DisplayUnits.TextChanged += new System.EventHandler(this.DisplayUnits_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 12);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(88, 16);
-			this.label1.TabIndex = 6;
-			this.label1.Text = "Display units";
-			// 
-			// ViewOptions
-			// 
-			this.Controls.Add(this.DisplayUnits);
-			this.Controls.Add(this.label1);
-			this.Name = "ViewOptions";
-			this.Size = new System.Drawing.Size(616, 40);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewOptions));
+            this.DisplayUnits = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // DisplayUnits
+            // 
+            this.DisplayUnits.Items.AddRange(new object[] {
+            resources.GetString("DisplayUnits.Items"),
+            resources.GetString("DisplayUnits.Items1")});
+            resources.ApplyResources(this.DisplayUnits, "DisplayUnits");
+            this.DisplayUnits.Name = "DisplayUnits";
+            this.DisplayUnits.TextChanged += new System.EventHandler(this.DisplayUnits_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // ViewOptions
+            // 
+            this.Controls.Add(this.DisplayUnits);
+            this.Controls.Add(this.label1);
+            this.Name = "ViewOptions";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
 
 		}
 		#endregion

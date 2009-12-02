@@ -108,270 +108,189 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.DistancePrecision = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.AreaPrecision = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.LineStyleWidth = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.MeasureTooltipContainer = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.MeasureTipPositionTop = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.MeasureTipPositionLeft = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
-			this.FillStyle = new System.Windows.Forms.ComboBox();
-			this.LineStyleColor = new System.Windows.Forms.ComboBox();
-			this.Type = new System.Windows.Forms.ComboBox();
-			this.MeasureTooltipType = new System.Windows.Forms.ComboBox();
-			this.Units = new System.Windows.Forms.ComboBox();
-			this.SuspendLayout();
-			// 
-			// DistancePrecision
-			// 
-			this.DistancePrecision.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.DistancePrecision.Location = new System.Drawing.Point(136, 8);
-			this.DistancePrecision.Name = "DistancePrecision";
-			this.DistancePrecision.Size = new System.Drawing.Size(472, 20);
-			this.DistancePrecision.TabIndex = 7;
-			this.DistancePrecision.Text = "";
-			this.DistancePrecision.TextChanged += new System.EventHandler(this.DistancePrecision_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(128, 16);
-			this.label1.TabIndex = 6;
-			this.label1.Text = "Distance precision";
-			// 
-			// AreaPrecision
-			// 
-			this.AreaPrecision.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.AreaPrecision.Location = new System.Drawing.Point(136, 32);
-			this.AreaPrecision.Name = "AreaPrecision";
-			this.AreaPrecision.Size = new System.Drawing.Size(472, 20);
-			this.AreaPrecision.TabIndex = 9;
-			this.AreaPrecision.Text = "";
-			this.AreaPrecision.TextChanged += new System.EventHandler(this.AreaPrecision_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 32);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(128, 16);
-			this.label2.TabIndex = 8;
-			this.label2.Text = "Area precision";
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 56);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(128, 16);
-			this.label3.TabIndex = 10;
-			this.label3.Text = "Fill color";
-			// 
-			// label4
-			// 
-			this.label4.Location = new System.Drawing.Point(8, 80);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(128, 16);
-			this.label4.TabIndex = 12;
-			this.label4.Text = "Line color";
-			// 
-			// LineStyleWidth
-			// 
-			this.LineStyleWidth.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.LineStyleWidth.Location = new System.Drawing.Point(136, 104);
-			this.LineStyleWidth.Name = "LineStyleWidth";
-			this.LineStyleWidth.Size = new System.Drawing.Size(472, 20);
-			this.LineStyleWidth.TabIndex = 15;
-			this.LineStyleWidth.Text = "";
-			this.LineStyleWidth.TextChanged += new System.EventHandler(this.LineStyleWidth_TextChanged);
-			// 
-			// label5
-			// 
-			this.label5.Location = new System.Drawing.Point(8, 104);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(128, 16);
-			this.label5.TabIndex = 14;
-			this.label5.Text = "Line width";
-			// 
-			// label6
-			// 
-			this.label6.Location = new System.Drawing.Point(8, 224);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(128, 16);
-			this.label6.TabIndex = 24;
-			this.label6.Text = "Type";
-			// 
-			// label7
-			// 
-			this.label7.Location = new System.Drawing.Point(8, 200);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(128, 16);
-			this.label7.TabIndex = 22;
-			this.label7.Text = "Tooltip type";
-			// 
-			// MeasureTooltipContainer
-			// 
-			this.MeasureTooltipContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.MeasureTooltipContainer.Location = new System.Drawing.Point(136, 176);
-			this.MeasureTooltipContainer.Name = "MeasureTooltipContainer";
-			this.MeasureTooltipContainer.Size = new System.Drawing.Size(472, 20);
-			this.MeasureTooltipContainer.TabIndex = 21;
-			this.MeasureTooltipContainer.Text = "";
-			this.MeasureTooltipContainer.TextChanged += new System.EventHandler(this.MeasureTooltipContainer_TextChanged);
-			// 
-			// label8
-			// 
-			this.label8.Location = new System.Drawing.Point(8, 176);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(128, 16);
-			this.label8.TabIndex = 20;
-			this.label8.Text = "Tooltip container";
-			// 
-			// MeasureTipPositionTop
-			// 
-			this.MeasureTipPositionTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.MeasureTipPositionTop.Location = new System.Drawing.Point(136, 152);
-			this.MeasureTipPositionTop.Name = "MeasureTipPositionTop";
-			this.MeasureTipPositionTop.Size = new System.Drawing.Size(472, 20);
-			this.MeasureTipPositionTop.TabIndex = 19;
-			this.MeasureTipPositionTop.Text = "";
-			this.MeasureTipPositionTop.TextChanged += new System.EventHandler(this.MeasureTipPositionTop_TextChanged);
-			// 
-			// label9
-			// 
-			this.label9.Location = new System.Drawing.Point(8, 152);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(128, 16);
-			this.label9.TabIndex = 18;
-			this.label9.Text = "Measure tip top";
-			// 
-			// MeasureTipPositionLeft
-			// 
-			this.MeasureTipPositionLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.MeasureTipPositionLeft.Location = new System.Drawing.Point(136, 128);
-			this.MeasureTipPositionLeft.Name = "MeasureTipPositionLeft";
-			this.MeasureTipPositionLeft.Size = new System.Drawing.Size(472, 20);
-			this.MeasureTipPositionLeft.TabIndex = 17;
-			this.MeasureTipPositionLeft.Text = "";
-			this.MeasureTipPositionLeft.TextChanged += new System.EventHandler(this.MeasureTipPositionLeft_TextChanged);
-			// 
-			// label10
-			// 
-			this.label10.Location = new System.Drawing.Point(8, 128);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(128, 16);
-			this.label10.TabIndex = 16;
-			this.label10.Text = "Measure tip left";
-			// 
-			// label11
-			// 
-			this.label11.Location = new System.Drawing.Point(8, 248);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(128, 16);
-			this.label11.TabIndex = 26;
-			this.label11.Text = "Units";
-			// 
-			// FillStyle
-			// 
-			this.FillStyle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.FillStyle.Location = new System.Drawing.Point(136, 56);
-			this.FillStyle.Name = "FillStyle";
-			this.FillStyle.Size = new System.Drawing.Size(472, 21);
-			this.FillStyle.TabIndex = 28;
-			this.FillStyle.TextChanged += new System.EventHandler(this.FillStyle_TextChanged);
-			// 
-			// LineStyleColor
-			// 
-			this.LineStyleColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.LineStyleColor.Location = new System.Drawing.Point(136, 80);
-			this.LineStyleColor.Name = "LineStyleColor";
-			this.LineStyleColor.Size = new System.Drawing.Size(472, 21);
-			this.LineStyleColor.TabIndex = 29;
-			this.LineStyleColor.TextChanged += new System.EventHandler(this.LineStyleColor_TextChanged);
-			// 
-			// Type
-			// 
-			this.Type.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Type.Items.AddRange(new object[] {
-													  "both"});
-			this.Type.Location = new System.Drawing.Point(136, 224);
-			this.Type.Name = "Type";
-			this.Type.Size = new System.Drawing.Size(472, 21);
-			this.Type.TabIndex = 31;
-			this.Type.TextChanged += new System.EventHandler(this.Type_TextChanged);
-			// 
-			// MeasureTooltipType
-			// 
-			this.MeasureTooltipType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.MeasureTooltipType.Items.AddRange(new object[] {
-																	"static",
-																	"dynamic"});
-			this.MeasureTooltipType.Location = new System.Drawing.Point(136, 200);
-			this.MeasureTooltipType.Name = "MeasureTooltipType";
-			this.MeasureTooltipType.Size = new System.Drawing.Size(472, 21);
-			this.MeasureTooltipType.TabIndex = 30;
-			this.MeasureTooltipType.TextChanged += new System.EventHandler(this.MeasureTooltipType_TextChanged);
-			// 
-			// Units
-			// 
-			this.Units.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Units.Items.AddRange(new object[] {
-													   "meters",
-													   "miles",
-													   "none"});
-			this.Units.Location = new System.Drawing.Point(136, 248);
-			this.Units.Name = "Units";
-			this.Units.Size = new System.Drawing.Size(472, 21);
-			this.Units.TabIndex = 32;
-			this.Units.TextChanged += new System.EventHandler(this.Units_TextChanged);
-			// 
-			// Measure
-			// 
-			this.Controls.Add(this.Units);
-			this.Controls.Add(this.Type);
-			this.Controls.Add(this.MeasureTooltipType);
-			this.Controls.Add(this.LineStyleColor);
-			this.Controls.Add(this.FillStyle);
-			this.Controls.Add(this.label11);
-			this.Controls.Add(this.label6);
-			this.Controls.Add(this.label7);
-			this.Controls.Add(this.MeasureTooltipContainer);
-			this.Controls.Add(this.label8);
-			this.Controls.Add(this.MeasureTipPositionTop);
-			this.Controls.Add(this.label9);
-			this.Controls.Add(this.MeasureTipPositionLeft);
-			this.Controls.Add(this.label10);
-			this.Controls.Add(this.LineStyleWidth);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.AreaPrecision);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.DistancePrecision);
-			this.Controls.Add(this.label1);
-			this.Name = "Measure";
-			this.Size = new System.Drawing.Size(616, 280);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Measure));
+            this.DistancePrecision = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.AreaPrecision = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.LineStyleWidth = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.MeasureTooltipContainer = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.MeasureTipPositionTop = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.MeasureTipPositionLeft = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.FillStyle = new System.Windows.Forms.ComboBox();
+            this.LineStyleColor = new System.Windows.Forms.ComboBox();
+            this.Type = new System.Windows.Forms.ComboBox();
+            this.MeasureTooltipType = new System.Windows.Forms.ComboBox();
+            this.Units = new System.Windows.Forms.ComboBox();
+            this.SuspendLayout();
+            // 
+            // DistancePrecision
+            // 
+            resources.ApplyResources(this.DistancePrecision, "DistancePrecision");
+            this.DistancePrecision.Name = "DistancePrecision";
+            this.DistancePrecision.TextChanged += new System.EventHandler(this.DistancePrecision_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // AreaPrecision
+            // 
+            resources.ApplyResources(this.AreaPrecision, "AreaPrecision");
+            this.AreaPrecision.Name = "AreaPrecision";
+            this.AreaPrecision.TextChanged += new System.EventHandler(this.AreaPrecision_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // LineStyleWidth
+            // 
+            resources.ApplyResources(this.LineStyleWidth, "LineStyleWidth");
+            this.LineStyleWidth.Name = "LineStyleWidth";
+            this.LineStyleWidth.TextChanged += new System.EventHandler(this.LineStyleWidth_TextChanged);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // MeasureTooltipContainer
+            // 
+            resources.ApplyResources(this.MeasureTooltipContainer, "MeasureTooltipContainer");
+            this.MeasureTooltipContainer.Name = "MeasureTooltipContainer";
+            this.MeasureTooltipContainer.TextChanged += new System.EventHandler(this.MeasureTooltipContainer_TextChanged);
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // MeasureTipPositionTop
+            // 
+            resources.ApplyResources(this.MeasureTipPositionTop, "MeasureTipPositionTop");
+            this.MeasureTipPositionTop.Name = "MeasureTipPositionTop";
+            this.MeasureTipPositionTop.TextChanged += new System.EventHandler(this.MeasureTipPositionTop_TextChanged);
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // MeasureTipPositionLeft
+            // 
+            resources.ApplyResources(this.MeasureTipPositionLeft, "MeasureTipPositionLeft");
+            this.MeasureTipPositionLeft.Name = "MeasureTipPositionLeft";
+            this.MeasureTipPositionLeft.TextChanged += new System.EventHandler(this.MeasureTipPositionLeft_TextChanged);
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // FillStyle
+            // 
+            resources.ApplyResources(this.FillStyle, "FillStyle");
+            this.FillStyle.Name = "FillStyle";
+            this.FillStyle.TextChanged += new System.EventHandler(this.FillStyle_TextChanged);
+            // 
+            // LineStyleColor
+            // 
+            resources.ApplyResources(this.LineStyleColor, "LineStyleColor");
+            this.LineStyleColor.Name = "LineStyleColor";
+            this.LineStyleColor.TextChanged += new System.EventHandler(this.LineStyleColor_TextChanged);
+            // 
+            // Type
+            // 
+            resources.ApplyResources(this.Type, "Type");
+            this.Type.Items.AddRange(new object[] {
+            resources.GetString("Type.Items")});
+            this.Type.Name = "Type";
+            this.Type.TextChanged += new System.EventHandler(this.Type_TextChanged);
+            // 
+            // MeasureTooltipType
+            // 
+            resources.ApplyResources(this.MeasureTooltipType, "MeasureTooltipType");
+            this.MeasureTooltipType.Items.AddRange(new object[] {
+            resources.GetString("MeasureTooltipType.Items"),
+            resources.GetString("MeasureTooltipType.Items1")});
+            this.MeasureTooltipType.Name = "MeasureTooltipType";
+            this.MeasureTooltipType.TextChanged += new System.EventHandler(this.MeasureTooltipType_TextChanged);
+            // 
+            // Units
+            // 
+            resources.ApplyResources(this.Units, "Units");
+            this.Units.Items.AddRange(new object[] {
+            resources.GetString("Units.Items"),
+            resources.GetString("Units.Items1"),
+            resources.GetString("Units.Items2")});
+            this.Units.Name = "Units";
+            this.Units.TextChanged += new System.EventHandler(this.Units_TextChanged);
+            // 
+            // Measure
+            // 
+            this.Controls.Add(this.Units);
+            this.Controls.Add(this.Type);
+            this.Controls.Add(this.MeasureTooltipType);
+            this.Controls.Add(this.LineStyleColor);
+            this.Controls.Add(this.FillStyle);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.MeasureTooltipContainer);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.MeasureTipPositionTop);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.MeasureTipPositionLeft);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.LineStyleWidth);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.AreaPrecision);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.DistancePrecision);
+            this.Controls.Add(this.label1);
+            this.Name = "Measure";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

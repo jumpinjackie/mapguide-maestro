@@ -138,7 +138,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				font = new Font("Arial", 12);
 				foreground = Color.Black;
 				background = Color.White;
-				text = "None";
+				text = Strings.Common.EmptyText;
 			}
 			else
 			{

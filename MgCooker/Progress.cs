@@ -136,23 +136,24 @@ namespace OSGeo.MapGuide.MgCooker
                 this.Invoke(new DisplayProgressDelegate(DisplayProgress), new object[] { map, group, scaleindex, row, column, cancel });
             else
             {
-                label1.Text = group + " in " + map.ResourceId;
+                label1.Text = string.Format(Strings.Progress.CurrentGroupStatus, group, map.ResourceId);
 
                 tilePG.Value = (int)Math.Max(Math.Min((m_tileCount / (double)m_totalTiles) * (tilePG.Maximum - tilePG.Minimum), tilePG.Maximum), tilePG.Minimum);
                 totalPG.Value = (int)Math.Max(Math.Min((m_grandTotalTileCount / (double)m_grandTotalTiles) * (totalPG.Maximum - totalPG.Minimum), totalPG.Maximum), totalPG.Minimum);
 
-                tileCounter.Text = string.Format("Tile {0} of {1:###,###,###,###}", m_grandTotalTileCount, m_grandTotalTiles);
-                if (m_failCount > 0)
-                    tileCounter.Text += string.Format(" ({0} failed tiles)", m_failCount);
+                if (m_failCount == 0)
+                    tileCounter.Text = string.Format(Strings.Progress.CurrentTileCounter, m_grandTotalTileCount, m_grandTotalTiles, "");
+                else
+                    tileCounter.Text = string.Format(Strings.Progress.CurrentTileCounter, m_grandTotalTileCount, m_grandTotalTiles, string.Format(Strings.Progress.TileErrorCount, m_failCount));
 
                 TimeSpan elapsed = DateTime.Now - m_grandBegin;
                 DateTime finish = DateTime.Now + (new TimeSpan(m_prevDuration.Ticks * m_grandTotalTiles) - elapsed);
                 TimeSpan remain = finish - DateTime.Now;
 
                 if (finish < DateTime.Now)
-                   finishEstimate.Text = "< Inaccurate measure of remaining time >";
+                   finishEstimate.Text = Strings.Progress.InsufficientTimePassed;
                 else
-                    finishEstimate.Text = string.Format("{0}, remaining time: {1}:{2}:{3}", finish.ToShortTimeString(), (int)Math.Floor(remain.TotalHours), remain.Minutes.ToString("00"), remain.Seconds.ToString("00"));
+                    finishEstimate.Text = string.Format(Strings.Progress.RemainingTime, finish.ToShortTimeString(), string.Format("{0}:{1}:{2}", (int)Math.Floor(remain.TotalHours), remain.Minutes.ToString("00"), remain.Seconds.ToString("00")));
             }
         }
 
@@ -194,9 +195,7 @@ namespace OSGeo.MapGuide.MgCooker
         private void button1_Click(object sender, EventArgs e)
         {
             if (this.m_cancel)
-            {
-                MessageBox.Show(this, "I heard you the first time!\nPlease be patient.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+                MessageBox.Show(this, Strings.Progress.AlreadyAborting, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 this.m_cancel = true;
         }

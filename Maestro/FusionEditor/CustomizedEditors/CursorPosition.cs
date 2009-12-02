@@ -82,82 +82,60 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Precision = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.Units = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.Template = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Precision
-			// 
-			this.Precision.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Precision.Location = new System.Drawing.Point(104, 8);
-			this.Precision.Name = "Precision";
-			this.Precision.Size = new System.Drawing.Size(504, 20);
-			this.Precision.TabIndex = 3;
-			this.Precision.Text = "";
-			this.Precision.TextChanged += new System.EventHandler(this.Precision_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(72, 16);
-			this.label1.TabIndex = 2;
-			this.label1.Text = "Precision";
-			// 
-			// Units
-			// 
-			this.Units.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Units.Location = new System.Drawing.Point(104, 56);
-			this.Units.Name = "Units";
-			this.Units.Size = new System.Drawing.Size(504, 20);
-			this.Units.TabIndex = 5;
-			this.Units.Text = "";
-			this.Units.TextChanged += new System.EventHandler(this.Units_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 56);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(72, 16);
-			this.label2.TabIndex = 4;
-			this.label2.Text = "Units";
-			// 
-			// Template
-			// 
-			this.Template.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Template.Location = new System.Drawing.Point(104, 32);
-			this.Template.Name = "Template";
-			this.Template.Size = new System.Drawing.Size(504, 20);
-			this.Template.TabIndex = 7;
-			this.Template.Text = "";
-			this.Template.TextChanged += new System.EventHandler(this.Template_TextChanged);
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 32);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(72, 16);
-			this.label3.TabIndex = 6;
-			this.label3.Text = "Template";
-			// 
-			// CursorPosition
-			// 
-			this.Controls.Add(this.Template);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.Units);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.Precision);
-			this.Controls.Add(this.label1);
-			this.Name = "CursorPosition";
-			this.Size = new System.Drawing.Size(616, 88);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CursorPosition));
+            this.Precision = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Units = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Template = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Precision
+            // 
+            resources.ApplyResources(this.Precision, "Precision");
+            this.Precision.Name = "Precision";
+            this.Precision.TextChanged += new System.EventHandler(this.Precision_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // Units
+            // 
+            resources.ApplyResources(this.Units, "Units");
+            this.Units.Name = "Units";
+            this.Units.TextChanged += new System.EventHandler(this.Units_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // Template
+            // 
+            resources.ApplyResources(this.Template, "Template");
+            this.Template.Name = "Template";
+            this.Template.TextChanged += new System.EventHandler(this.Template_TextChanged);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // CursorPosition
+            // 
+            this.Controls.Add(this.Template);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Units);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Precision);
+            this.Controls.Add(this.label1);
+            this.Name = "CursorPosition";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

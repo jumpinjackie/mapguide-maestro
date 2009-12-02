@@ -81,63 +81,50 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.ZoomFactor = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.MaximumZoomDimension = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// ZoomFactor
-			// 
-			this.ZoomFactor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ZoomFactor.Items.AddRange(new object[] {
-															"showOverviewMapDialog()",
-															"showTaskDialog()",
-															"showLegendDialog()",
-															"showSelectionDialog()"});
-			this.ZoomFactor.Location = new System.Drawing.Point(136, 30);
-			this.ZoomFactor.Name = "ZoomFactor";
-			this.ZoomFactor.Size = new System.Drawing.Size(472, 21);
-			this.ZoomFactor.TabIndex = 36;
-			this.ZoomFactor.TextChanged += new System.EventHandler(this.ZoomFactor_TextChanged);
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 30);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(128, 16);
-			this.label3.TabIndex = 35;
-			this.label3.Text = "Zoom factor";
-			// 
-			// MaximumZoomDimension
-			// 
-			this.MaximumZoomDimension.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.MaximumZoomDimension.Location = new System.Drawing.Point(136, 6);
-			this.MaximumZoomDimension.Name = "MaximumZoomDimension";
-			this.MaximumZoomDimension.Size = new System.Drawing.Size(472, 20);
-			this.MaximumZoomDimension.TabIndex = 34;
-			this.MaximumZoomDimension.Text = "";
-			this.MaximumZoomDimension.TextChanged += new System.EventHandler(this.MaximumZoomDimension_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 6);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(128, 16);
-			this.label2.TabIndex = 33;
-			this.label2.Text = "Max zoom dimension";
-			// 
-			// ZoomToSelection
-			// 
-			this.Controls.Add(this.ZoomFactor);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.MaximumZoomDimension);
-			this.Controls.Add(this.label2);
-			this.Name = "ZoomToSelection";
-			this.Size = new System.Drawing.Size(616, 56);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ZoomToSelection));
+            this.ZoomFactor = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.MaximumZoomDimension = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // ZoomFactor
+            // 
+            resources.ApplyResources(this.ZoomFactor, "ZoomFactor");
+            this.ZoomFactor.Items.AddRange(new object[] {
+            resources.GetString("ZoomFactor.Items"),
+            resources.GetString("ZoomFactor.Items1"),
+            resources.GetString("ZoomFactor.Items2"),
+            resources.GetString("ZoomFactor.Items3")});
+            this.ZoomFactor.Name = "ZoomFactor";
+            this.ZoomFactor.TextChanged += new System.EventHandler(this.ZoomFactor_TextChanged);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // MaximumZoomDimension
+            // 
+            resources.ApplyResources(this.MaximumZoomDimension, "MaximumZoomDimension");
+            this.MaximumZoomDimension.Name = "MaximumZoomDimension";
+            this.MaximumZoomDimension.TextChanged += new System.EventHandler(this.MaximumZoomDimension_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // ZoomToSelection
+            // 
+            this.Controls.Add(this.ZoomFactor);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.MaximumZoomDimension);
+            this.Controls.Add(this.label2);
+            this.Name = "ZoomToSelection";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

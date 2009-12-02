@@ -98,36 +98,30 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizar
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Database = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Database
-			// 
-			this.Database.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Database.Location = new System.Drawing.Point(152, 6);
-			this.Database.Name = "Database";
-			this.Database.Size = new System.Drawing.Size(200, 20);
-			this.Database.TabIndex = 16;
-			this.Database.Text = "textBox1";
-			this.Database.TextChanged += new System.EventHandler(this.PropertyText_Changed);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 6);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(136, 16);
-			this.label1.TabIndex = 11;
-			this.label1.Text = "Database";
-			// 
-			// Oracle
-			// 
-			this.Controls.Add(this.Database);
-			this.Controls.Add(this.label1);
-			this.Name = "Oracle";
-			this.Size = new System.Drawing.Size(360, 32);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Oracle));
+            this.Database = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Database
+            // 
+            resources.ApplyResources(this.Database, "Database");
+            this.Database.Name = "Database";
+            this.Database.TextChanged += new System.EventHandler(this.PropertyText_Changed);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // Oracle
+            // 
+            this.Controls.Add(this.Database);
+            this.Controls.Add(this.label1);
+            this.Name = "Oracle";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

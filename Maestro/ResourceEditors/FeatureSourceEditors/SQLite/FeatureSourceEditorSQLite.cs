@@ -35,9 +35,32 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private static System.Collections.Specialized.NameValueCollection GetFileTypes()
         {
 			System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
-			nv.Add(".sqlite;*.sqlite3", "SQLite Files (*.sqlite;*.sqlite3)");
-			nv.Add("", "All files (*.*)");
+            nv.Add(".sqlite", Strings.Common.SQLiteFiles);
+            nv.Add(".sqlite3", Strings.Common.SQLite3Files);
+			nv.Add("", Strings.Common.AllFiles);
             return nv;
+        }
+
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditorSQLite));
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // UnmanagedEditor
+            // 
+            resources.ApplyResources(this.UnmanagedEditor, "UnmanagedEditor");
+            // 
+            // ManagedEditor
+            // 
+            resources.ApplyResources(this.ManagedEditor, "ManagedEditor");
+            // 
+            // FeatureSourceEditorSQLite
+            // 
+            this.Name = "FeatureSourceEditorSQLite";
+            this.panel1.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
     }
 }

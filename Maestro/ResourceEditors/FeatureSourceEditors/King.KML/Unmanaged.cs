@@ -94,6 +94,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.KingKML
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Unmanaged));
             this.BrowseFileButton = new System.Windows.Forms.Button();
             this.FilePath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -101,42 +102,28 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.KingKML
             // 
             // BrowseFileButton
             // 
-            this.BrowseFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BrowseFileButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.BrowseFileButton.Location = new System.Drawing.Point(216, 8);
+            resources.ApplyResources(this.BrowseFileButton, "BrowseFileButton");
             this.BrowseFileButton.Name = "BrowseFileButton";
-            this.BrowseFileButton.Size = new System.Drawing.Size(24, 20);
-            this.BrowseFileButton.TabIndex = 47;
-            this.BrowseFileButton.Text = "...";
             this.BrowseFileButton.Click += new System.EventHandler(this.BrowseFileButton_Click);
             // 
             // FilePath
             // 
-            this.FilePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.FilePath.Location = new System.Drawing.Point(120, 8);
+            resources.ApplyResources(this.FilePath, "FilePath");
             this.FilePath.Name = "FilePath";
-            this.FilePath.Size = new System.Drawing.Size(96, 20);
-            this.FilePath.TabIndex = 44;
             this.FilePath.TextChanged += new System.EventHandler(this.FilePath_TextChanged);
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 16);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "File path";
             // 
             // Unmanaged
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(248, 72);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.BrowseFileButton);
             this.Controls.Add(this.FilePath);
             this.Controls.Add(this.label1);
             this.Name = "Unmanaged";
-            this.Size = new System.Drawing.Size(248, 74);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,8 +133,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.KingKML
 		private void BrowseFileButton_Click(object sender, System.EventArgs e)
 		{
 			System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
-			nv.Add(".kml", "KML file (*.kml)");
-			nv.Add("", "All files (*.*)");
+			nv.Add(".kml", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.KMLFiles);
+			nv.Add("", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.AllFiles);
 			string f = m_editor.BrowseUnmanagedData(null, nv);
 			if (f != null)
 				FilePath.Text = f;

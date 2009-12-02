@@ -42,13 +42,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Windows.Forms.TextBox Database;
 		private System.Windows.Forms.Label label2;
 		private bool m_isUpdating = false;
-		private Globalizator.Globalizator m_globalizor;
 
 		public FeatureSourceEditorMSSQLSpatial()
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-			m_globalizor = new Globalizator.Globalizator(this);
 		}
 
 		public FeatureSourceEditorMSSQLSpatial(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource feature)
@@ -82,75 +80,55 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.Server = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.credentials = new ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
-			this.toolTips = new System.Windows.Forms.ToolTip(this.components);
-			this.Database = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Server
-			// 
-			this.Server.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Server.Location = new System.Drawing.Point(112, 8);
-			this.Server.Name = "Server";
-			this.Server.Size = new System.Drawing.Size(200, 20);
-			this.Server.TabIndex = 38;
-			this.Server.Text = "";
-			this.Server.TextChanged += new System.EventHandler(this.Server_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(96, 16);
-			this.label1.TabIndex = 37;
-			this.label1.Text = "Server";
-			// 
-			// credentials
-			// 
-			this.credentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.credentials.Location = new System.Drawing.Point(8, 72);
-			this.credentials.Name = "credentials";
-			this.credentials.Size = new System.Drawing.Size(304, 152);
-			this.credentials.TabIndex = 36;
-			this.credentials.CredentialsChanged += new ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
-			// 
-			// Database
-			// 
-			this.Database.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Database.Location = new System.Drawing.Point(112, 40);
-			this.Database.Name = "Database";
-			this.Database.Size = new System.Drawing.Size(200, 20);
-			this.Database.TabIndex = 40;
-			this.Database.Text = "";
-			this.Database.TextChanged += new System.EventHandler(this.Database_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 40);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(96, 16);
-			this.label2.TabIndex = 39;
-			this.label2.Text = "Database";
-			// 
-			// FeatureSourceEditorMSSQLSpatial
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(320, 232);
-			this.Controls.Add(this.Database);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.Server);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.credentials);
-			this.Name = "FeatureSourceEditorMSSQLSpatial";
-			this.Size = new System.Drawing.Size(320, 232);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditorMSSQLSpatial));
+            this.Server = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.credentials = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
+            this.toolTips = new System.Windows.Forms.ToolTip(this.components);
+            this.Database = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Server
+            // 
+            resources.ApplyResources(this.Server, "Server");
+            this.Server.Name = "Server";
+            this.Server.TextChanged += new System.EventHandler(this.Server_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // credentials
+            // 
+            resources.ApplyResources(this.credentials, "credentials");
+            this.credentials.Name = "credentials";
+            this.credentials.CredentialsChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
+            // 
+            // Database
+            // 
+            resources.ApplyResources(this.Database, "Database");
+            this.Database.Name = "Database";
+            this.Database.TextChanged += new System.EventHandler(this.Database_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // FeatureSourceEditorMSSQLSpatial
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.Database);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Server);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.credentials);
+            this.Name = "FeatureSourceEditorMSSQLSpatial";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

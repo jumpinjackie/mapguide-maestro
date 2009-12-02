@@ -145,7 +145,7 @@ namespace OSGeo.MapGuide.Maestro
                 //Add the folder type
                 m_editors.Add("",
                     new ResourceEditorEntry(
-                    "Folder",
+                    Strings.ResourceEditorMap.FolderResourceName,
                     "",
                     null,
                     null,
@@ -189,7 +189,7 @@ namespace OSGeo.MapGuide.Maestro
                         }
                         catch (Exception ex)
                         {
-                            throw new Exception("Failed while loading assembly: " + path + ", error: " + ex.Message, ex);
+                            throw new Exception(string.Format(Strings.ResourceEditorMap.AssemblyLoadError, path, ex.Message), ex);
                         }
                         img = System.Drawing.Image.FromStream(asm.GetManifestResourceStream(e.ImageResourceName));
                     }
@@ -212,7 +212,7 @@ namespace OSGeo.MapGuide.Maestro
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Failed while loading assembly: " + path + ", error: " + ex.Message, ex);
+                        throw new Exception(string.Format(Strings.ResourceEditorMap.AssemblyLoadError, path, ex.Message), ex);
                     }
 
                     System.Type editorType = editorAsm.GetType(e.ResourceEditorClass, true, false);
@@ -228,18 +228,18 @@ namespace OSGeo.MapGuide.Maestro
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Failed while loading assembly: " + path + ", error: " + ex.Message, ex);
+                        throw new Exception(string.Format(Strings.ResourceEditorMap.AssemblyLoadError, path, ex.Message), ex);
                     }
                     System.Type instanceType = instanceAsm.GetType(e.ResourceInstanceClass, true, false);
 
                     if (editorType == null)
-                        throw new Exception("Failed to load type " + e.ResourceEditorClass + " from assembly: " + e.ResourceEditorAssembly);
+                        throw new Exception(string.Format(Strings.ResourceEditorMap.TypeLoadError, e.ResourceEditorClass, e.ResourceEditorAssembly));
                     if (instanceType == null)
-                        throw new Exception("Failed to load type " + e.ResourceInstanceClass + " from assembly: " + e.ResourceInstanceAssembly);
+                        throw new Exception(string.Format(Strings.ResourceEditorMap.TypeLoadError, e.ResourceInstanceClass, e.ResourceInstanceAssembly));
 
 
                     if (editorType.GetInterface(typeof(IResourceEditorControl).FullName) == null)
-                        throw new Exception("Resource editor for " + e.ResourceExtension + " does not implement the required interface: " + typeof(IResourceEditorControl).FullName);
+                        throw new Exception(string.Format(Strings.ResourceEditorMap.TypeMissingInterfaceError, e.ResourceExtension, typeof(IResourceEditorControl).FullName));
 
                     m_editors.Add(e.ResourceExtension,
                         new ResourceEditorEntry(
@@ -254,7 +254,7 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch (Exception ex)
             {
-                throw new Exception("Failed to load the resource editors: " + ex.Message, ex);
+                throw new Exception(string.Format(Strings.ResourceEditorMap.ResourceEditorLoadError, ex.Message), ex);
             }
             finally
             {
@@ -325,7 +325,7 @@ namespace OSGeo.MapGuide.Maestro
 		{
 			int x = resourceID.IndexOf("://");
 			if (x < 0)
-				throw new Exception("Invalid Resource Identifier: " + resourceID);
+				throw new Exception(string.Format(Strings.ResourceEditorMap.InvalidResourceIdError, resourceID));
 			
 			string parts = resourceID.Substring(x + "://".Length);
 			if (parts.EndsWith("/"))

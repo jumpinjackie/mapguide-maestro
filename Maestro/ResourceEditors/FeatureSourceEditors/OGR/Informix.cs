@@ -170,98 +170,68 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Table = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.Database = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.Server = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.credentials = new ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
-			this.SuspendLayout();
-			// 
-			// Table
-			// 
-			this.Table.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Table.Location = new System.Drawing.Point(112, 72);
-			this.Table.Name = "Table";
-			this.Table.Size = new System.Drawing.Size(160, 20);
-			this.Table.TabIndex = 17;
-			this.Table.Text = "";
-			this.Table.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 72);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(96, 16);
-			this.label3.TabIndex = 16;
-			this.label3.Text = "Table";
-			// 
-			// Database
-			// 
-			this.Database.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Database.Location = new System.Drawing.Point(112, 40);
-			this.Database.Name = "Database";
-			this.Database.Size = new System.Drawing.Size(160, 20);
-			this.Database.TabIndex = 15;
-			this.Database.Text = "";
-			this.Database.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 40);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(96, 16);
-			this.label2.TabIndex = 14;
-			this.label2.Text = "Database";
-			// 
-			// Server
-			// 
-			this.Server.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Server.Location = new System.Drawing.Point(112, 8);
-			this.Server.Name = "Server";
-			this.Server.Size = new System.Drawing.Size(160, 20);
-			this.Server.TabIndex = 13;
-			this.Server.Text = "";
-			this.Server.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(96, 16);
-			this.label1.TabIndex = 12;
-			this.label1.Text = "Server";
-			// 
-			// credentials
-			// 
-			this.credentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.credentials.AutoScroll = true;
-			this.credentials.AutoScrollMinSize = new System.Drawing.Size(264, 152);
-			this.credentials.Location = new System.Drawing.Point(8, 104);
-			this.credentials.Name = "credentials";
-			this.credentials.Size = new System.Drawing.Size(264, 152);
-			this.credentials.TabIndex = 18;
-			this.credentials.CredentialsChanged += new ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
-			// 
-			// Informix
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(280, 264);
-			this.Controls.Add(this.credentials);
-			this.Controls.Add(this.Table);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.Database);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.Server);
-			this.Controls.Add(this.label1);
-			this.Name = "Informix";
-			this.Size = new System.Drawing.Size(280, 264);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Informix));
+            this.Table = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Database = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Server = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.credentials = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
+            this.SuspendLayout();
+            // 
+            // Table
+            // 
+            resources.ApplyResources(this.Table, "Table");
+            this.Table.Name = "Table";
+            this.Table.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // Database
+            // 
+            resources.ApplyResources(this.Database, "Database");
+            this.Database.Name = "Database";
+            this.Database.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // Server
+            // 
+            resources.ApplyResources(this.Server, "Server");
+            this.Server.Name = "Server";
+            this.Server.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // credentials
+            // 
+            resources.ApplyResources(this.credentials, "credentials");
+            this.credentials.Name = "credentials";
+            this.credentials.CredentialsChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
+            // 
+            // Informix
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.credentials);
+            this.Controls.Add(this.Table);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Database);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Server);
+            this.Controls.Add(this.label1);
+            this.Name = "Informix";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

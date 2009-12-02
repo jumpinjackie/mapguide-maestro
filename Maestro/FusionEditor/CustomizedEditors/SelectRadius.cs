@@ -90,136 +90,100 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.SelectionType = new System.Windows.Forms.ComboBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.Tolerance = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.RadiusTooltipType = new System.Windows.Forms.ComboBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.DefaultRadius = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.RadiusTooltipContainer = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// SelectionType
-			// 
-			this.SelectionType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.SelectionType.Items.AddRange(new object[] {
-															   "CONTAINS",
-															   "DISJOINT",
-															   "INTERSECTS",
-															   "WITHIN",
-															   "INSIDE",
-															   "ENVELOPEINTERSECTS"});
-			this.SelectionType.Location = new System.Drawing.Point(144, 32);
-			this.SelectionType.Name = "SelectionType";
-			this.SelectionType.Size = new System.Drawing.Size(464, 21);
-			this.SelectionType.TabIndex = 36;
-			this.SelectionType.TextChanged += new System.EventHandler(this.SelectionType_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 32);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(136, 16);
-			this.label2.TabIndex = 35;
-			this.label2.Text = "Selection type";
-			// 
-			// Tolerance
-			// 
-			this.Tolerance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Tolerance.Location = new System.Drawing.Point(144, 8);
-			this.Tolerance.Name = "Tolerance";
-			this.Tolerance.Size = new System.Drawing.Size(464, 20);
-			this.Tolerance.TabIndex = 34;
-			this.Tolerance.Text = "";
-			this.Tolerance.TextChanged += new System.EventHandler(this.Tolerance_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(136, 16);
-			this.label1.TabIndex = 33;
-			this.label1.Text = "Tolerance";
-			// 
-			// RadiusTooltipType
-			// 
-			this.RadiusTooltipType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.RadiusTooltipType.Items.AddRange(new object[] {
-																   "static",
-																   "dynamic"});
-			this.RadiusTooltipType.Location = new System.Drawing.Point(144, 56);
-			this.RadiusTooltipType.Name = "RadiusTooltipType";
-			this.RadiusTooltipType.Size = new System.Drawing.Size(464, 21);
-			this.RadiusTooltipType.TabIndex = 38;
-			this.RadiusTooltipType.TextChanged += new System.EventHandler(this.RadiusTooltipType_TextChanged);
-			// 
-			// label7
-			// 
-			this.label7.Location = new System.Drawing.Point(8, 56);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(136, 16);
-			this.label7.TabIndex = 37;
-			this.label7.Text = "Tooltip type";
-			// 
-			// DefaultRadius
-			// 
-			this.DefaultRadius.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.DefaultRadius.Location = new System.Drawing.Point(144, 104);
-			this.DefaultRadius.Name = "DefaultRadius";
-			this.DefaultRadius.Size = new System.Drawing.Size(464, 20);
-			this.DefaultRadius.TabIndex = 42;
-			this.DefaultRadius.Text = "";
-			this.DefaultRadius.TextChanged += new System.EventHandler(this.DefaultRadius_TextChanged);
-			// 
-			// label9
-			// 
-			this.label9.Location = new System.Drawing.Point(8, 104);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(136, 16);
-			this.label9.TabIndex = 41;
-			this.label9.Text = "Default radius";
-			// 
-			// RadiusTooltipContainer
-			// 
-			this.RadiusTooltipContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.RadiusTooltipContainer.Location = new System.Drawing.Point(144, 80);
-			this.RadiusTooltipContainer.Name = "RadiusTooltipContainer";
-			this.RadiusTooltipContainer.Size = new System.Drawing.Size(464, 20);
-			this.RadiusTooltipContainer.TabIndex = 40;
-			this.RadiusTooltipContainer.Text = "";
-			this.RadiusTooltipContainer.TextChanged += new System.EventHandler(this.RadiusTooltipContainer_TextChanged);
-			// 
-			// label10
-			// 
-			this.label10.Location = new System.Drawing.Point(8, 80);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(136, 16);
-			this.label10.TabIndex = 39;
-			this.label10.Text = "Tooltip Container";
-			// 
-			// SelectRadius
-			// 
-			this.Controls.Add(this.DefaultRadius);
-			this.Controls.Add(this.label9);
-			this.Controls.Add(this.RadiusTooltipContainer);
-			this.Controls.Add(this.label10);
-			this.Controls.Add(this.RadiusTooltipType);
-			this.Controls.Add(this.label7);
-			this.Controls.Add(this.SelectionType);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.Tolerance);
-			this.Controls.Add(this.label1);
-			this.Name = "SelectRadius";
-			this.Size = new System.Drawing.Size(616, 128);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectRadius));
+            this.SelectionType = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Tolerance = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.RadiusTooltipType = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.DefaultRadius = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.RadiusTooltipContainer = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // SelectionType
+            // 
+            resources.ApplyResources(this.SelectionType, "SelectionType");
+            this.SelectionType.Items.AddRange(new object[] {
+            resources.GetString("SelectionType.Items"),
+            resources.GetString("SelectionType.Items1"),
+            resources.GetString("SelectionType.Items2"),
+            resources.GetString("SelectionType.Items3"),
+            resources.GetString("SelectionType.Items4"),
+            resources.GetString("SelectionType.Items5")});
+            this.SelectionType.Name = "SelectionType";
+            this.SelectionType.TextChanged += new System.EventHandler(this.SelectionType_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // Tolerance
+            // 
+            resources.ApplyResources(this.Tolerance, "Tolerance");
+            this.Tolerance.Name = "Tolerance";
+            this.Tolerance.TextChanged += new System.EventHandler(this.Tolerance_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // RadiusTooltipType
+            // 
+            resources.ApplyResources(this.RadiusTooltipType, "RadiusTooltipType");
+            this.RadiusTooltipType.Items.AddRange(new object[] {
+            resources.GetString("RadiusTooltipType.Items"),
+            resources.GetString("RadiusTooltipType.Items1")});
+            this.RadiusTooltipType.Name = "RadiusTooltipType";
+            this.RadiusTooltipType.TextChanged += new System.EventHandler(this.RadiusTooltipType_TextChanged);
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // DefaultRadius
+            // 
+            resources.ApplyResources(this.DefaultRadius, "DefaultRadius");
+            this.DefaultRadius.Name = "DefaultRadius";
+            this.DefaultRadius.TextChanged += new System.EventHandler(this.DefaultRadius_TextChanged);
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // RadiusTooltipContainer
+            // 
+            resources.ApplyResources(this.RadiusTooltipContainer, "RadiusTooltipContainer");
+            this.RadiusTooltipContainer.Name = "RadiusTooltipContainer";
+            this.RadiusTooltipContainer.TextChanged += new System.EventHandler(this.RadiusTooltipContainer_TextChanged);
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // SelectRadius
+            // 
+            this.Controls.Add(this.DefaultRadius);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.RadiusTooltipContainer);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.RadiusTooltipType);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.SelectionType);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Tolerance);
+            this.Controls.Add(this.label1);
+            this.Name = "SelectRadius";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

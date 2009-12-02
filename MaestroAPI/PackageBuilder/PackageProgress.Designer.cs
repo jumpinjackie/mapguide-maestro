@@ -28,6 +28,7 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PackageProgress));
             this.CurrentProgress = new System.Windows.Forms.ProgressBar();
             this.TotalProgress = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,64 +41,39 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
             // 
             // CurrentProgress
             // 
-            this.CurrentProgress.Location = new System.Drawing.Point(88, 40);
+            resources.ApplyResources(this.CurrentProgress, "CurrentProgress");
             this.CurrentProgress.Name = "CurrentProgress";
-            this.CurrentProgress.Size = new System.Drawing.Size(384, 23);
-            this.CurrentProgress.TabIndex = 0;
             // 
             // TotalProgress
             // 
-            this.TotalProgress.Location = new System.Drawing.Point(88, 72);
+            resources.ApplyResources(this.TotalProgress, "TotalProgress");
             this.TotalProgress.Name = "TotalProgress";
-            this.TotalProgress.Size = new System.Drawing.Size(384, 23);
-            this.TotalProgress.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 40);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "File";
             // 
             // TotalLabel
             // 
-            this.TotalLabel.AutoSize = true;
-            this.TotalLabel.Location = new System.Drawing.Point(16, 72);
+            resources.ApplyResources(this.TotalLabel, "TotalLabel");
             this.TotalLabel.Name = "TotalLabel";
-            this.TotalLabel.Size = new System.Drawing.Size(31, 13);
-            this.TotalLabel.TabIndex = 3;
-            this.TotalLabel.Text = "Total";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 8);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Operation";
             // 
             // OperationLabel
             // 
-            this.OperationLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.OperationLabel, "OperationLabel");
             this.OperationLabel.AutoEllipsis = true;
-            this.OperationLabel.Location = new System.Drawing.Point(88, 8);
             this.OperationLabel.Name = "OperationLabel";
-            this.OperationLabel.Size = new System.Drawing.Size(384, 13);
-            this.OperationLabel.TabIndex = 5;
-            this.OperationLabel.Text = "OperationLabel";
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.CancelBtn.Location = new System.Drawing.Point(184, 112);
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(112, 24);
-            this.CancelBtn.TabIndex = 6;
-            this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
@@ -109,9 +85,8 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
             // 
             // PackageProgress
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 146);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.OperationLabel);
             this.Controls.Add(this.label3);
@@ -123,7 +98,6 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PackageProgress";
-            this.Text = "Building package";
             this.Load += new System.EventHandler(this.PackageProgress_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PackageProgress_FormClosing);
             this.ResumeLayout(false);

@@ -117,59 +117,46 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.ExtensionName = new System.Windows.Forms.TextBox();
-			this.ExtensionSchema = new System.Windows.Forms.ComboBox();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 32);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(144, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Feature class to extend";
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 8);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(144, 16);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "Extension name";
-			// 
-			// ExtensionName
-			// 
-			this.ExtensionName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ExtensionName.Location = new System.Drawing.Point(160, 8);
-			this.ExtensionName.Name = "ExtensionName";
-			this.ExtensionName.Size = new System.Drawing.Size(320, 20);
-			this.ExtensionName.TabIndex = 2;
-			this.ExtensionName.Text = "";
-			this.ExtensionName.TextChanged += new System.EventHandler(this.ExtensionName_TextChanged);
-			// 
-			// ExtensionSchema
-			// 
-			this.ExtensionSchema.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ExtensionSchema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ExtensionSchema.Location = new System.Drawing.Point(160, 32);
-			this.ExtensionSchema.Name = "ExtensionSchema";
-			this.ExtensionSchema.Size = new System.Drawing.Size(320, 21);
-			this.ExtensionSchema.TabIndex = 3;
-			this.ExtensionSchema.SelectedIndexChanged += new System.EventHandler(this.ExtensionSchema_SelectedIndexChanged);
-			// 
-			// Extension
-			// 
-			this.Controls.Add(this.ExtensionSchema);
-			this.Controls.Add(this.ExtensionName);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Name = "Extension";
-			this.Size = new System.Drawing.Size(488, 56);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Extension));
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ExtensionName = new System.Windows.Forms.TextBox();
+            this.ExtensionSchema = new System.Windows.Forms.ComboBox();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // ExtensionName
+            // 
+            resources.ApplyResources(this.ExtensionName, "ExtensionName");
+            this.ExtensionName.Name = "ExtensionName";
+            this.ExtensionName.TextChanged += new System.EventHandler(this.ExtensionName_TextChanged);
+            // 
+            // ExtensionSchema
+            // 
+            resources.ApplyResources(this.ExtensionSchema, "ExtensionSchema");
+            this.ExtensionSchema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ExtensionSchema.Name = "ExtensionSchema";
+            this.ExtensionSchema.SelectedIndexChanged += new System.EventHandler(this.ExtensionSchema_SelectedIndexChanged);
+            // 
+            // Extension
+            // 
+            this.Controls.Add(this.ExtensionSchema);
+            this.Controls.Add(this.ExtensionName);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Name = "Extension";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

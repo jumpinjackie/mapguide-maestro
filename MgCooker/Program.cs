@@ -51,6 +51,21 @@ namespace OSGeo.MapGuide.MgCooker
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.DoEvents();
 
+            try
+            {
+                OSGeo.MapGuide.Maestro.PreferedSiteList sites = OSGeo.MapGuide.Maestro.PreferedSiteList.Load();
+                if (!string.IsNullOrEmpty(sites.GUILanguage))
+                {
+                    System.Threading.Thread.CurrentThread.CurrentUICulture =
+                    System.Threading.Thread.CurrentThread.CurrentCulture =
+                        System.Globalization.CultureInfo.GetCultureInfo(sites.GUILanguage);
+                }
+            }
+            catch
+            {
+            }
+
+
             //Parameters:
             //mapagent=
             //username=
@@ -272,20 +287,19 @@ namespace OSGeo.MapGuide.MgCooker
         {
             if (hasConsole)
                 Console.Clear();
-            Console.WriteLine(string.Format("Update time:   \t{0}", DateTime.Now));
-            Console.WriteLine(string.Format("Current Map:   \t{0} ({1} of {2})", map.ResourceId, mapCount, map.Parent.Maps.Count));
-            Console.WriteLine(string.Format("Current Group: \t{0} ({1} of {2})", group, groupCount, map.Map.BaseMapDefinition.BaseMapLayerGroup.Count));
-            Console.WriteLine(string.Format("Current Scale: \t1:{0} ({1} of {2})", map.Map.BaseMapDefinition.FiniteDisplayScale[scaleindex], scaleindex, map.Map.BaseMapDefinition.FiniteDisplayScale.Count));
-            Console.WriteLine(string.Format("Current Tile:  \t{0} of {1}", tileCount, totalTiles));
+            Console.WriteLine(string.Format(Strings.Program.ConsoleUpdateTime.Replace("\\t", "\t"), DateTime.Now));
+            Console.WriteLine(string.Format(Strings.Program.ConsoleCurrentMap.Replace("\\t", "\t"), map.ResourceId, mapCount, map.Parent.Maps.Count));
+            Console.WriteLine(string.Format(Strings.Program.ConsoleCurrentGroup.Replace("\\t", "\t"), group, groupCount, map.Map.BaseMapDefinition.BaseMapLayerGroup.Count));
+            Console.WriteLine(string.Format(Strings.Program.ConsoleCurrentScale.Replace("\\t", "\t"), map.Map.BaseMapDefinition.FiniteDisplayScale[scaleindex], scaleindex, map.Map.BaseMapDefinition.FiniteDisplayScale.Count));
+            Console.WriteLine(string.Format(Strings.Program.ConsoleCurrentTile.Replace("\\t", "\t"), tileCount, totalTiles));
             Console.WriteLine();
-            Console.WriteLine(string.Format("Group duration:  \t{0}", DateTime.Now - beginGroup));
-            Console.WriteLine(string.Format("Group estimate:  \t{0}", new TimeSpan(prevDuration.Ticks * totalTiles)));
+            Console.WriteLine(string.Format(Strings.Program.ConsoleGroupDuration.Replace("\\t", "\t"), DateTime.Now - beginGroup));
+            Console.WriteLine(string.Format(Strings.Program.ConsoleGroupEstimate.Replace("\\t", "\t"), new TimeSpan(prevDuration.Ticks * totalTiles)));
 
             if (exceptionList.Count != 0)
             {
                 Console.WriteLine();
-                Console.WriteLine("Error count: " + exceptionList.Count .ToString() + ", last exception:");
-                Console.WriteLine(exceptionList[exceptionList.Count - 1].ToString());
+                Console.WriteLine(string.Format(Strings.Program.ConsoleErrorSummary, exceptionList.Count, exceptionList[exceptionList.Count - 1].ToString()));
             }
         }
 
@@ -294,7 +308,7 @@ namespace OSGeo.MapGuide.MgCooker
         {
             TimeSpan duration = DateTime.Now - beginGroup;
             if (m_logableProgress)
-                Console.Write(string.Format("{0}: Rendered group {1} in {2}\n", DateTime.Now, group, duration));
+                Console.WriteLine(string.Format(Strings.Program.ConsoleOperationFinishGroup, DateTime.Now, group, duration));
         }
 
         static void bx_BeginRenderingGroup(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
@@ -303,7 +317,7 @@ namespace OSGeo.MapGuide.MgCooker
             beginGroup = DateTime.Now;
 
             if (m_logableProgress)
-                Console.Write(string.Format("{0}: Rendering group {1} ({3} of {4})\n", beginGroup, group, 1, 1));
+                Console.WriteLine(string.Format(Strings.Program.ConsoleOperationBeginGroup, beginGroup, group, 1, 1));
 
             tileRuns = new List<TimeSpan>();
             tileCount = 0;
@@ -336,10 +350,7 @@ namespace OSGeo.MapGuide.MgCooker
 
 
                 if (m_logableProgress)
-                {
-                    Console.Write(string.Format("Processed {0} of {1} tiles in {2}, expected duration: {3}\n", tileCount, totalTiles, group, duration));
-
-                }
+                    Console.WriteLine(string.Format(Strings.Program.ConsoleOperationFinishTile, tileCount, totalTiles, group, duration));
                 else
                     DisplayProgress(map, group, scaleindex, row, column, ref cancel);
             }
@@ -354,14 +365,14 @@ namespace OSGeo.MapGuide.MgCooker
         {
             TimeSpan duration = DateTime.Now - beginScale;
             if (m_logableProgress)
-                Console.Write(string.Format("{0}: Rendered scale 1:{1} in {2}\n", DateTime.Now, map.Map.BaseMapDefinition.FiniteDisplayScale[scaleindex], duration));
+                Console.WriteLine(string.Format(Strings.Program.ConsoleOperationFinishScale, DateTime.Now, map.Map.BaseMapDefinition.FiniteDisplayScale[scaleindex], duration));
         }
 
         static void bx_BeginRenderingScale(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             beginScale = DateTime.Now;
             if (m_logableProgress)
-                Console.Write(string.Format("{0}: Rendering scale 1:{1} ({2} of {3})\n", beginMap, map.Map.BaseMapDefinition.FiniteDisplayScale[scaleindex], scaleindex, map.Resolutions));
+                Console.WriteLine(string.Format(Strings.Program.ConsoleOperationBeginScale, beginMap, map.Map.BaseMapDefinition.FiniteDisplayScale[scaleindex], scaleindex, map.Resolutions));
         }
 
         static void bx_FinishRenderingMap(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
@@ -369,7 +380,7 @@ namespace OSGeo.MapGuide.MgCooker
             groupCount = 0;
             TimeSpan duration = DateTime.Now - beginMap;
             if (m_logableProgress)
-                Console.Write(string.Format("{0}: Rendered map {1} in {2}\n", DateTime.Now, map.ResourceId, duration));
+                Console.WriteLine(string.Format(Strings.Program.ConsoleOperationFinishMap, DateTime.Now, map.ResourceId, duration));
         }
 
         static void bx_BeginRenderingMap(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
@@ -377,7 +388,7 @@ namespace OSGeo.MapGuide.MgCooker
             mapCount++;
             beginMap = DateTime.Now;
             if (m_logableProgress)
-                Console.Write(string.Format("{0}: Rendering map {1}\n", beginMap, map.ResourceId));
+                Console.WriteLine(string.Format(Strings.Program.ConsoleOperationBeginMap, beginMap, map.ResourceId));
         }
     }
 }

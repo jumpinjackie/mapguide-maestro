@@ -46,17 +46,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                 System.Globalization.CultureInfo ci = System.Globalization.CultureInfo.InvariantCulture;
                 MaestroAPI.FdoSpatialContextList lst = feature.GetSpatialInfo();
                 if (lst == null || lst.SpatialContext == null || lst.SpatialContext.Count == 0)
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, "No spatial contexts found"));
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, Strings.FeatureSourceValidator.NoSpatialContextWarning));
                 else
                     foreach (MaestroAPI.FdoSpatialContextListSpatialContext c in lst.SpatialContext)
                         if (c.Extent == null)
-                            issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, "Empty spatial context extent detected"));
+                            issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, Strings.FeatureSourceValidator.EmptySpatialContextWarning));
                         else if (double.Parse(c.Extent.LowerLeftCoordinate.X, ci) <= -1000000 && double.Parse(c.Extent.LowerLeftCoordinate.Y, ci) <= -1000000 && double.Parse(c.Extent.UpperRightCoordinate.X, ci) >= 1000000 && double.Parse(c.Extent.UpperRightCoordinate.Y, ci) >= 1000000)
-                            issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, "Spatial context extent appears to be invalid (or default)"));
+                            issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, Strings.FeatureSourceValidator.DefaultSpatialContextWarning));
             }
             catch (Exception ex)
             {
-                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, "Failed to read spatial context: " + ex.Message));
+                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Strings.FeatureSourceValidator.SpatialContextReadError, ex.Message)));
             }
 
             List<string> classes = new List<string>();
@@ -64,14 +64,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
             {
                 MaestroAPI.FeatureSourceDescription fsd = feature.DescribeSource();
                 if (fsd == null || fsd.Schemas == null || fsd.Schemas.Length == 0)
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, "No schemas found in datasource"));
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, Strings.FeatureSourceValidator.ShemasMissingWarning));
                 else
                     foreach (MaestroAPI.FeatureSourceDescription.FeatureSourceSchema scm in fsd.Schemas)
                         classes.Add(scm.FullnameDecoded);
             }
             catch (Exception ex)
             {
-                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, "Failed to read schema description: " + ex.Message));
+                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Strings.FeatureSourceValidator.SchemaReadError, ex.Message)));
             }
 
 
@@ -80,11 +80,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                 {
                     string[] ids = feature.GetIdentityProperties(cl);
                     if (ids == null || ids.Length == 0)
-                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, "No primary key defined for class: " + cl + ", features will not be selectable"));
+                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, Strings.FeatureSourceValidator.PrimaryKeyMissingInformation));
                 }
                 catch (Exception ex)
                 {
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Error, "Failed to read identity properties: " + ex.Message));
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Strings.FeatureSourceValidator.PrimaryKeyReadError, ex.Message)));
                 }
 
             return issues.ToArray();

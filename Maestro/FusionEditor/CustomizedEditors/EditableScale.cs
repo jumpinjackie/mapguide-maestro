@@ -76,36 +76,30 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Precision = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Precision
-			// 
-			this.Precision.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Precision.Location = new System.Drawing.Point(104, 10);
-			this.Precision.Name = "Precision";
-			this.Precision.Size = new System.Drawing.Size(504, 20);
-			this.Precision.TabIndex = 3;
-			this.Precision.Text = "";
-			this.Precision.TextChanged += new System.EventHandler(this.Precision_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 10);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(72, 16);
-			this.label1.TabIndex = 2;
-			this.label1.Text = "Precision";
-			// 
-			// EditableScale
-			// 
-			this.Controls.Add(this.Precision);
-			this.Controls.Add(this.label1);
-			this.Name = "EditableScale";
-			this.Size = new System.Drawing.Size(616, 40);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditableScale));
+            this.Precision = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Precision
+            // 
+            resources.ApplyResources(this.Precision, "Precision");
+            this.Precision.Name = "Precision";
+            this.Precision.TextChanged += new System.EventHandler(this.Precision_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // EditableScale
+            // 
+            this.Controls.Add(this.Precision);
+            this.Controls.Add(this.label1);
+            this.Name = "EditableScale";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

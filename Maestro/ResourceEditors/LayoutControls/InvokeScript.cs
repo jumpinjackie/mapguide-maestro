@@ -97,40 +97,30 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.Script = new System.Windows.Forms.TextBox();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(152, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Script";
-			// 
-			// Script
-			// 
-			this.Script.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Script.Location = new System.Drawing.Point(8, 24);
-			this.Script.Multiline = true;
-			this.Script.Name = "Script";
-			this.Script.Size = new System.Drawing.Size(176, 200);
-			this.Script.TabIndex = 1;
-			this.Script.Text = "";
-			this.Script.TextChanged += new System.EventHandler(this.Script_TextChanged);
-			// 
-			// InvokeScript
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(192, 232);
-			this.Controls.Add(this.Script);
-			this.Controls.Add(this.label1);
-			this.Name = "InvokeScript";
-			this.Size = new System.Drawing.Size(192, 232);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvokeScript));
+            this.label1 = new System.Windows.Forms.Label();
+            this.Script = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // Script
+            // 
+            resources.ApplyResources(this.Script, "Script");
+            this.Script.Name = "Script";
+            this.Script.TextChanged += new System.EventHandler(this.Script_TextChanged);
+            // 
+            // InvokeScript
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.Script);
+            this.Controls.Add(this.label1);
+            this.Name = "InvokeScript";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

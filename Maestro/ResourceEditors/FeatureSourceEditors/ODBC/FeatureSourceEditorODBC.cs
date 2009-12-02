@@ -53,7 +53,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Windows.Forms.Button RefreshButton;
 		private System.Windows.Forms.Button ConfigureButton;
 		private bool m_isUpdating = false;
-		private Globalizator.Globalizator m_globalizor;
 
 		public delegate void ConnectionStringUpdatedDelegate(string connectionString);
 
@@ -203,7 +202,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(this, string.Format("Failed to read current coordsys configuration: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Strings.FeatureSourceEditorODBC.CoordinateSystemError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
@@ -227,21 +226,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-			m_globalizor = new Globalizator.Globalizator(this);
-			string tmp = m_globalizor.Translate("OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionType.Items");
-			if (tmp != null && tmp.Trim().Length > 0)
-			{
-				ArrayList fix = new ArrayList();
-				foreach(string s in tmp.Trim().Split('\n'))
-					if (s.Trim().Length > 0)
-						fix.Add(s.Trim());
-
-				if (fix.Count == ConnectionType.Items.Count)
-				{
-					ConnectionType.Items.Clear();
-					ConnectionType.Items.AddRange(fix.ToArray());
-				}
-			}
 		}
 
 		/// <summary> 
@@ -266,159 +250,117 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.ConnectionType = new System.Windows.Forms.ComboBox();
-			this.CustomPanel = new System.Windows.Forms.Panel();
-			this.dsn = new ResourceEditors.FeatureSourceEditors.ODBC.DSN();
-			this.managed = new ResourceEditors.FeatureSourceEditors.ODBC.Managed();
-			this.unmanaged = new ResourceEditors.FeatureSourceEditors.ODBC.Unmanaged();
-			this.wizard = new ResourceEditors.FeatureSourceEditors.ODBC.Wizard();
-			this.ConnectionString = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.credentials = new ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
-			this.RefreshButton = new System.Windows.Forms.Button();
-			this.ConfigureButton = new System.Windows.Forms.Button();
-			this.CustomPanel.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(104, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Connection Type";
-			// 
-			// ConnectionType
-			// 
-			this.ConnectionType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ConnectionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ConnectionType.Items.AddRange(new object[] {
-																"Internal file (Managed)",
-																"File on the server (Unmanaged)",
-																"DSN (Named ODBC)",
-																"Known database type",
-																"Custom connectionstring"});
-			this.ConnectionType.Location = new System.Drawing.Point(128, 0);
-			this.ConnectionType.Name = "ConnectionType";
-			this.ConnectionType.Size = new System.Drawing.Size(424, 21);
-			this.ConnectionType.TabIndex = 1;
-			this.ConnectionType.SelectedIndexChanged += new System.EventHandler(this.ConnectionType_SelectedIndexChanged);
-			// 
-			// CustomPanel
-			// 
-			this.CustomPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.CustomPanel.Controls.Add(this.dsn);
-			this.CustomPanel.Controls.Add(this.managed);
-			this.CustomPanel.Controls.Add(this.unmanaged);
-			this.CustomPanel.Controls.Add(this.wizard);
-			this.CustomPanel.Location = new System.Drawing.Point(8, 32);
-			this.CustomPanel.Name = "CustomPanel";
-			this.CustomPanel.Size = new System.Drawing.Size(544, 120);
-			this.CustomPanel.TabIndex = 2;
-			// 
-			// dsn
-			// 
-			this.dsn.Location = new System.Drawing.Point(8, 16);
-			this.dsn.Name = "dsn";
-			this.dsn.Size = new System.Drawing.Size(128, 96);
-			this.dsn.TabIndex = 3;
-			this.dsn.ConnectionStringUpdated += new ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
-			// 
-			// managed
-			// 
-			this.managed.Location = new System.Drawing.Point(144, 16);
-			this.managed.Name = "managed";
-			this.managed.Size = new System.Drawing.Size(128, 96);
-			this.managed.TabIndex = 2;
-			this.managed.ConnectionStringUpdated += new ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
-			// 
-			// unmanaged
-			// 
-			this.unmanaged.Location = new System.Drawing.Point(288, 16);
-			this.unmanaged.Name = "unmanaged";
-			this.unmanaged.Size = new System.Drawing.Size(112, 96);
-			this.unmanaged.TabIndex = 1;
-			this.unmanaged.ConnectionStringUpdated += new ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
-			// 
-			// wizard
-			// 
-			this.wizard.Location = new System.Drawing.Point(424, 16);
-			this.wizard.Name = "wizard";
-			this.wizard.Size = new System.Drawing.Size(104, 96);
-			this.wizard.TabIndex = 0;
-			this.wizard.ConnectionStringUpdated += new ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
-			// 
-			// ConnectionString
-			// 
-			this.ConnectionString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ConnectionString.Location = new System.Drawing.Point(8, 352);
-			this.ConnectionString.Multiline = true;
-			this.ConnectionString.Name = "ConnectionString";
-			this.ConnectionString.Size = new System.Drawing.Size(536, 56);
-			this.ConnectionString.TabIndex = 3;
-			this.ConnectionString.Text = "ConnectionString";
-			this.ConnectionString.TextChanged += new System.EventHandler(this.ConnectionString_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.label2.Location = new System.Drawing.Point(8, 328);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(128, 16);
-			this.label2.TabIndex = 4;
-			this.label2.Text = "Connection String";
-			// 
-			// credentials
-			// 
-			this.credentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.credentials.Location = new System.Drawing.Point(8, 160);
-			this.credentials.Name = "credentials";
-			this.credentials.Size = new System.Drawing.Size(544, 152);
-			this.credentials.TabIndex = 5;
-			this.credentials.ConnectionStringUpdated += new ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
-			// 
-			// RefreshButton
-			// 
-			this.RefreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.RefreshButton.Location = new System.Drawing.Point(424, 328);
-			this.RefreshButton.Name = "RefreshButton";
-			this.RefreshButton.Size = new System.Drawing.Size(120, 24);
-			this.RefreshButton.TabIndex = 6;
-			this.RefreshButton.Text = "Rebuild Schema";
-			this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
-			// 
-			// ConfigureButton
-			// 
-			this.ConfigureButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.ConfigureButton.Location = new System.Drawing.Point(272, 328);
-			this.ConfigureButton.Name = "ConfigureButton";
-			this.ConfigureButton.Size = new System.Drawing.Size(136, 24);
-			this.ConfigureButton.TabIndex = 7;
-			this.ConfigureButton.Text = "Configure columns";
-			this.ConfigureButton.Click += new System.EventHandler(this.ConfigureButton_Click);
-			// 
-			// FeatureSourceEditorODBC
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(560, 416);
-			this.Controls.Add(this.ConfigureButton);
-			this.Controls.Add(this.RefreshButton);
-			this.Controls.Add(this.credentials);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.ConnectionString);
-			this.Controls.Add(this.CustomPanel);
-			this.Controls.Add(this.ConnectionType);
-			this.Controls.Add(this.label1);
-			this.Name = "FeatureSourceEditorODBC";
-			this.Size = new System.Drawing.Size(560, 416);
-			this.CustomPanel.ResumeLayout(false);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditorODBC));
+            this.label1 = new System.Windows.Forms.Label();
+            this.ConnectionType = new System.Windows.Forms.ComboBox();
+            this.CustomPanel = new System.Windows.Forms.Panel();
+            this.dsn = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.DSN();
+            this.managed = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Managed();
+            this.unmanaged = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Unmanaged();
+            this.wizard = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizard();
+            this.ConnectionString = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.credentials = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
+            this.RefreshButton = new System.Windows.Forms.Button();
+            this.ConfigureButton = new System.Windows.Forms.Button();
+            this.CustomPanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // ConnectionType
+            // 
+            resources.ApplyResources(this.ConnectionType, "ConnectionType");
+            this.ConnectionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ConnectionType.Items.AddRange(new object[] {
+            resources.GetString("ConnectionType.Items"),
+            resources.GetString("ConnectionType.Items1"),
+            resources.GetString("ConnectionType.Items2"),
+            resources.GetString("ConnectionType.Items3"),
+            resources.GetString("ConnectionType.Items4")});
+            this.ConnectionType.Name = "ConnectionType";
+            this.ConnectionType.SelectedIndexChanged += new System.EventHandler(this.ConnectionType_SelectedIndexChanged);
+            // 
+            // CustomPanel
+            // 
+            resources.ApplyResources(this.CustomPanel, "CustomPanel");
+            this.CustomPanel.Controls.Add(this.dsn);
+            this.CustomPanel.Controls.Add(this.managed);
+            this.CustomPanel.Controls.Add(this.unmanaged);
+            this.CustomPanel.Controls.Add(this.wizard);
+            this.CustomPanel.Name = "CustomPanel";
+            // 
+            // dsn
+            // 
+            resources.ApplyResources(this.dsn, "dsn");
+            this.dsn.Name = "dsn";
+            this.dsn.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
+            // 
+            // managed
+            // 
+            resources.ApplyResources(this.managed, "managed");
+            this.managed.Name = "managed";
+            this.managed.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
+            // 
+            // unmanaged
+            // 
+            resources.ApplyResources(this.unmanaged, "unmanaged");
+            this.unmanaged.Name = "unmanaged";
+            this.unmanaged.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
+            // 
+            // wizard
+            // 
+            resources.ApplyResources(this.wizard, "wizard");
+            this.wizard.Name = "wizard";
+            this.wizard.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
+            // 
+            // ConnectionString
+            // 
+            resources.ApplyResources(this.ConnectionString, "ConnectionString");
+            this.ConnectionString.Name = "ConnectionString";
+            this.ConnectionString.TextChanged += new System.EventHandler(this.ConnectionString_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // credentials
+            // 
+            resources.ApplyResources(this.credentials, "credentials");
+            this.credentials.Name = "credentials";
+            this.credentials.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
+            // 
+            // RefreshButton
+            // 
+            resources.ApplyResources(this.RefreshButton, "RefreshButton");
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
+            // 
+            // ConfigureButton
+            // 
+            resources.ApplyResources(this.ConfigureButton, "ConfigureButton");
+            this.ConfigureButton.Name = "ConfigureButton";
+            this.ConfigureButton.Click += new System.EventHandler(this.ConfigureButton_Click);
+            // 
+            // FeatureSourceEditorODBC
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.ConfigureButton);
+            this.Controls.Add(this.RefreshButton);
+            this.Controls.Add(this.credentials);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.ConnectionString);
+            this.Controls.Add(this.CustomPanel);
+            this.Controls.Add(this.ConnectionType);
+            this.Controls.Add(this.label1);
+            this.Name = "FeatureSourceEditorODBC";
+            this.CustomPanel.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion
@@ -508,7 +450,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, string.Format("Failed to read current coordsys configuration: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Strings.FeatureSourceEditorODBC.CoordinateSystemError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -603,7 +545,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(this, string.Format("Failed to refresh schema: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Strings.FeatureSourceEditorODBC.SchemaRefreshError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -908,7 +850,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				}
 				catch(Exception ex)
 				{
-					MessageBox.Show(this, string.Format("Failed to read current column configuration: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Strings.FeatureSourceEditorODBC.ConfigurationReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return;
 				}
 			}
@@ -932,7 +874,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch(Exception ex)
 			{
-				MessageBox.Show(this, string.Format("Failed to read current datasource layout: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Strings.FeatureSourceEditorODBC.DatasourceLayoutReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 

@@ -39,63 +39,51 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             // 
             // RuleCondition
             // 
-            this.RuleCondition.Location = new System.Drawing.Point(33, 1);
+            resources.ApplyResources(this.RuleCondition, "RuleCondition");
             this.RuleCondition.Name = "RuleCondition";
-            this.RuleCondition.Size = new System.Drawing.Size(110, 20);
-            this.RuleCondition.TabIndex = 3;
             this.RuleCondition.TextChanged += new System.EventHandler(this.RuleCondition_TextChanged);
             // 
             // LegendLabel
             // 
-            this.LegendLabel.Location = new System.Drawing.Point(169, 1);
+            resources.ApplyResources(this.LegendLabel, "LegendLabel");
             this.LegendLabel.Name = "LegendLabel";
-            this.LegendLabel.Size = new System.Drawing.Size(134, 20);
-            this.LegendLabel.TabIndex = 5;
             this.LegendLabel.TextChanged += new System.EventHandler(this.LegendLabel_TextChanged);
             // 
             // EditFilter
             // 
-            this.EditFilter.Location = new System.Drawing.Point(143, 1);
+            resources.ApplyResources(this.EditFilter, "EditFilter");
             this.EditFilter.Name = "EditFilter";
-            this.EditFilter.Size = new System.Drawing.Size(24, 20);
-            this.EditFilter.TabIndex = 6;
-            this.EditFilter.Text = "...";
             this.EditFilter.UseVisualStyleBackColor = true;
             this.EditFilter.Click += new System.EventHandler(this.EditFilter_Click);
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteButton.Image")));
-            this.DeleteButton.Location = new System.Drawing.Point(1, 1);
+            resources.ApplyResources(this.DeleteButton, "DeleteButton");
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(32, 20);
-            this.DeleteButton.TabIndex = 7;
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // LabelStyle
             // 
-            this.LabelStyle.Location = new System.Drawing.Point(441, 1);
+            resources.ApplyResources(this.LabelStyle, "LabelStyle");
             this.LabelStyle.Name = "LabelStyle";
-            this.LabelStyle.Size = new System.Drawing.Size(134, 20);
-            this.LabelStyle.TabIndex = 1;
+            this.LabelStyle.Owner = null;
             this.LabelStyle.DoubleClick += new System.EventHandler(this.FeatureStyle_Click);
             this.LabelStyle.Click += new System.EventHandler(this.FeatureStyle_Click);
             this.LabelStyle.ItemChanged += new System.EventHandler(this.LabelStyle_ItemChanged);
             // 
             // FeatureStyle
             // 
-            this.FeatureStyle.Location = new System.Drawing.Point(305, 1);
+            resources.ApplyResources(this.FeatureStyle, "FeatureStyle");
             this.FeatureStyle.Name = "FeatureStyle";
-            this.FeatureStyle.Size = new System.Drawing.Size(134, 20);
-            this.FeatureStyle.TabIndex = 0;
+            this.FeatureStyle.Owner = null;
             this.FeatureStyle.DoubleClick += new System.EventHandler(this.FeatureStyle_Click);
             this.FeatureStyle.Click += new System.EventHandler(this.FeatureStyle_Click);
             this.FeatureStyle.ItemChanged += new System.EventHandler(this.FeatureStyle_ItemChanged);
             // 
             // Condition
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.EditFilter);
@@ -106,7 +94,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.MaximumSize = new System.Drawing.Size(0, 20);
             this.MinimumSize = new System.Drawing.Size(577, 23);
             this.Name = "Condition";
-            this.Size = new System.Drawing.Size(577, 23);
             this.ResumeLayout(false);
             this.PerformLayout();
 

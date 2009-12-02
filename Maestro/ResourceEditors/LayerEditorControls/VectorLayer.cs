@@ -66,7 +66,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 
 		private OSGeo.MapGuide.MaestroAPI.LayerDefinition m_layer;
 		private bool inUpdate = false;
-		private Globalizator.Globalizator m_globalizor = null;
 		private OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription m_schemas;
 		private ResourceEditors.LayerEditorControls.SchemaSelector schemaSelector;
 		private System.Windows.Forms.DataGridTableStyle dataGridTableStyle1;
@@ -94,9 +93,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 
         private FeatureSourceDescription.FeatureSourceSchema m_selectedSchema;
 
-        public Globalizator.Globalizator Globalizor { get { return m_globalizor; } }
-
-		public VectorLayer()
+    	public VectorLayer()
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
@@ -220,116 +217,72 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.ResourceGroup.Controls.Add(this.label6);
             this.ResourceGroup.Controls.Add(this.label5);
             this.ResourceGroup.Controls.Add(this.label4);
-            this.ResourceGroup.Dock = System.Windows.Forms.DockStyle.Top;
+            resources.ApplyResources(this.ResourceGroup, "ResourceGroup");
             this.ResourceGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ResourceGroup.Location = new System.Drawing.Point(0, 0);
             this.ResourceGroup.Name = "ResourceGroup";
-            this.ResourceGroup.Size = new System.Drawing.Size(799, 176);
-            this.ResourceGroup.TabIndex = 16;
             this.ResourceGroup.TabStop = false;
-            this.ResourceGroup.Text = "Resource settings";
             // 
             // schemaSelector
             // 
-            this.schemaSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.schemaSelector, "schemaSelector");
             this.schemaSelector.IsRaster = false;
-            this.schemaSelector.Location = new System.Drawing.Point(16, 16);
             this.schemaSelector.Name = "schemaSelector";
-            this.schemaSelector.Size = new System.Drawing.Size(767, 56);
-            this.schemaSelector.TabIndex = 14;
             this.schemaSelector.GeometryChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector.GeometryChangedDelegate(this.schemaSelector_GeometryChanged);
             this.schemaSelector.SchemaChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.SchemaSelector.SchemaChangedDelegate(this.schemaSelector_SchemaChanged);
             // 
             // EditTooltipBtn
             // 
-            this.EditTooltipBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditTooltipBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.EditTooltipBtn.Location = new System.Drawing.Point(759, 144);
+            resources.ApplyResources(this.EditTooltipBtn, "EditTooltipBtn");
             this.EditTooltipBtn.Name = "EditTooltipBtn";
-            this.EditTooltipBtn.Size = new System.Drawing.Size(24, 20);
-            this.EditTooltipBtn.TabIndex = 13;
-            this.EditTooltipBtn.Text = "...";
             this.EditTooltipBtn.Click += new System.EventHandler(this.EditTooltipBtn_Click);
             // 
             // EditLinkBtn
             // 
-            this.EditLinkBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditLinkBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.EditLinkBtn.Location = new System.Drawing.Point(759, 112);
+            resources.ApplyResources(this.EditLinkBtn, "EditLinkBtn");
             this.EditLinkBtn.Name = "EditLinkBtn";
-            this.EditLinkBtn.Size = new System.Drawing.Size(24, 20);
-            this.EditLinkBtn.TabIndex = 12;
-            this.EditLinkBtn.Text = "...";
             this.EditLinkBtn.Click += new System.EventHandler(this.EditLinkBtn_Click);
             // 
             // EditFilterBtn
             // 
-            this.EditFilterBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditFilterBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.EditFilterBtn.Location = new System.Drawing.Point(759, 80);
+            resources.ApplyResources(this.EditFilterBtn, "EditFilterBtn");
             this.EditFilterBtn.Name = "EditFilterBtn";
-            this.EditFilterBtn.Size = new System.Drawing.Size(24, 20);
-            this.EditFilterBtn.TabIndex = 11;
-            this.EditFilterBtn.Text = "...";
             this.EditFilterBtn.Click += new System.EventHandler(this.EditFilterBtn_Click);
             // 
             // Tooltip
             // 
-            this.Tooltip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.Tooltip.Location = new System.Drawing.Point(120, 144);
+            resources.ApplyResources(this.Tooltip, "Tooltip");
             this.Tooltip.Name = "Tooltip";
-            this.Tooltip.Size = new System.Drawing.Size(639, 20);
-            this.Tooltip.TabIndex = 10;
             this.Tooltip.TextChanged += new System.EventHandler(this.Tooltip_TextChanged);
             // 
             // Link
             // 
-            this.Link.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.Link.Location = new System.Drawing.Point(120, 112);
+            resources.ApplyResources(this.Link, "Link");
             this.Link.Name = "Link";
-            this.Link.Size = new System.Drawing.Size(639, 20);
-            this.Link.TabIndex = 9;
             this.Link.TextChanged += new System.EventHandler(this.Link_TextChanged);
             // 
             // Filter
             // 
-            this.Filter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.Filter.Location = new System.Drawing.Point(120, 80);
+            resources.ApplyResources(this.Filter, "Filter");
             this.Filter.Name = "Filter";
-            this.Filter.Size = new System.Drawing.Size(639, 20);
-            this.Filter.TabIndex = 8;
             this.Filter.TextChanged += new System.EventHandler(this.Filter_TextChanged);
             // 
             // label6
             // 
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label6.Location = new System.Drawing.Point(16, 144);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 16);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Tooltip";
             // 
             // label5
             // 
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label5.Location = new System.Drawing.Point(16, 112);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 16);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Link";
             // 
             // label4
             // 
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label4.Location = new System.Drawing.Point(16, 80);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 16);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Filter";
             // 
             // ViewerPropertiesTable
             // 
@@ -408,14 +361,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             this.groupViewerProperties.Controls.Add(this.dataGrid1);
             this.groupViewerProperties.Controls.Add(this.toolStrip2);
-            this.groupViewerProperties.Dock = System.Windows.Forms.DockStyle.Top;
+            resources.ApplyResources(this.groupViewerProperties, "groupViewerProperties");
             this.groupViewerProperties.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupViewerProperties.Location = new System.Drawing.Point(0, 176);
             this.groupViewerProperties.Name = "groupViewerProperties";
-            this.groupViewerProperties.Size = new System.Drawing.Size(799, 232);
-            this.groupViewerProperties.TabIndex = 17;
             this.groupViewerProperties.TabStop = false;
-            this.groupViewerProperties.Text = "Properties avalible in viewer";
             // 
             // dataGrid1
             // 
@@ -423,13 +372,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.dataGrid1.CaptionVisible = false;
             this.dataGrid1.DataMember = "";
             this.dataGrid1.DataSource = this.ViewerPropertiesTable;
-            this.dataGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.dataGrid1, "dataGrid1");
             this.dataGrid1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.dataGrid1.Location = new System.Drawing.Point(3, 41);
             this.dataGrid1.Name = "dataGrid1";
             this.dataGrid1.RowHeadersVisible = false;
-            this.dataGrid1.Size = new System.Drawing.Size(793, 188);
-            this.dataGrid1.TabIndex = 0;
             this.dataGrid1.TableStyles.AddRange(new System.Windows.Forms.DataGridTableStyle[] {
             this.dataGridTableStyle1});
             // 
@@ -448,26 +394,20 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // dataGridBoolColumn1
             // 
             this.dataGridBoolColumn1.AllowNull = false;
-            this.dataGridBoolColumn1.HeaderText = "Visible";
-            this.dataGridBoolColumn1.MappingName = "Visible";
-            this.dataGridBoolColumn1.Width = 75;
+            resources.ApplyResources(this.dataGridBoolColumn1, "dataGridBoolColumn1");
             // 
             // dataGridTextBoxColumn2
             // 
             this.dataGridTextBoxColumn2.Format = "";
             this.dataGridTextBoxColumn2.FormatInfo = null;
-            this.dataGridTextBoxColumn2.HeaderText = "Name";
-            this.dataGridTextBoxColumn2.MappingName = "Name";
+            resources.ApplyResources(this.dataGridTextBoxColumn2, "dataGridTextBoxColumn2");
             this.dataGridTextBoxColumn2.ReadOnly = true;
-            this.dataGridTextBoxColumn2.Width = 75;
             // 
             // dataGridTextBoxColumn1
             // 
             this.dataGridTextBoxColumn1.Format = "";
             this.dataGridTextBoxColumn1.FormatInfo = null;
-            this.dataGridTextBoxColumn1.HeaderText = "Display";
-            this.dataGridTextBoxColumn1.MappingName = "Display";
-            this.dataGridTextBoxColumn1.Width = 75;
+            resources.ApplyResources(this.dataGridTextBoxColumn1, "dataGridTextBoxColumn1");
             // 
             // toolStrip2
             // 
@@ -479,98 +419,70 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.toolStripSeparator2,
             this.MovePropertyUpButton,
             this.MovePropertyDownButton});
-            this.toolStrip2.Location = new System.Drawing.Point(3, 16);
+            resources.ApplyResources(this.toolStrip2, "toolStrip2");
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip2.Size = new System.Drawing.Size(793, 25);
-            this.toolStrip2.TabIndex = 4;
-            this.toolStrip2.Text = "toolStrip2";
             // 
             // SelectAllButton
             // 
             this.SelectAllButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SelectAllButton.Image = ((System.Drawing.Image)(resources.GetObject("SelectAllButton.Image")));
-            this.SelectAllButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.SelectAllButton, "SelectAllButton");
             this.SelectAllButton.Name = "SelectAllButton";
-            this.SelectAllButton.Size = new System.Drawing.Size(23, 22);
-            this.SelectAllButton.ToolTipText = "Make all properties visible";
             this.SelectAllButton.Click += new System.EventHandler(this.SelectAllButton_Click);
             // 
             // SelectNoneButton
             // 
             this.SelectNoneButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SelectNoneButton.Image = ((System.Drawing.Image)(resources.GetObject("SelectNoneButton.Image")));
-            this.SelectNoneButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.SelectNoneButton, "SelectNoneButton");
             this.SelectNoneButton.Name = "SelectNoneButton";
-            this.SelectNoneButton.Size = new System.Drawing.Size(23, 22);
-            this.SelectNoneButton.ToolTipText = "Make no properties visible";
             this.SelectNoneButton.Click += new System.EventHandler(this.SelectNoneButton_Click);
             // 
             // SelectInverseButton
             // 
             this.SelectInverseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SelectInverseButton.Image = ((System.Drawing.Image)(resources.GetObject("SelectInverseButton.Image")));
-            this.SelectInverseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.SelectInverseButton, "SelectInverseButton");
             this.SelectInverseButton.Name = "SelectInverseButton";
-            this.SelectInverseButton.Size = new System.Drawing.Size(23, 22);
-            this.SelectInverseButton.ToolTipText = "Reverse the visibility of the properties";
             this.SelectInverseButton.Click += new System.EventHandler(this.SelectInverseButton_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // MovePropertyUpButton
             // 
             this.MovePropertyUpButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MovePropertyUpButton.Image = ((System.Drawing.Image)(resources.GetObject("MovePropertyUpButton.Image")));
-            this.MovePropertyUpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MovePropertyUpButton, "MovePropertyUpButton");
             this.MovePropertyUpButton.Name = "MovePropertyUpButton";
-            this.MovePropertyUpButton.Size = new System.Drawing.Size(23, 22);
-            this.MovePropertyUpButton.ToolTipText = "Move the highlighted property up";
             this.MovePropertyUpButton.Click += new System.EventHandler(this.MovePropertyUpButton_Click);
             // 
             // MovePropertyDownButton
             // 
             this.MovePropertyDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MovePropertyDownButton.Image = ((System.Drawing.Image)(resources.GetObject("MovePropertyDownButton.Image")));
-            this.MovePropertyDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MovePropertyDownButton, "MovePropertyDownButton");
             this.MovePropertyDownButton.Name = "MovePropertyDownButton";
-            this.MovePropertyDownButton.Size = new System.Drawing.Size(23, 22);
-            this.MovePropertyDownButton.ToolTipText = "Move the highlighted property down";
             this.MovePropertyDownButton.Click += new System.EventHandler(this.MovePropertyDownButton_Click);
             // 
             // ScaleRangeGroup
             // 
             this.ScaleRangeGroup.Controls.Add(this.panel1);
-            this.ScaleRangeGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.ScaleRangeGroup, "ScaleRangeGroup");
             this.ScaleRangeGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ScaleRangeGroup.Location = new System.Drawing.Point(0, 408);
             this.ScaleRangeGroup.Name = "ScaleRangeGroup";
-            this.ScaleRangeGroup.Size = new System.Drawing.Size(799, 446);
-            this.ScaleRangeGroup.TabIndex = 18;
             this.ScaleRangeGroup.TabStop = false;
-            this.ScaleRangeGroup.Text = "Layer style";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.scaleRangeList);
             this.panel1.Controls.Add(this.toolStrip1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 16);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(793, 427);
-            this.panel1.TabIndex = 2;
             // 
             // scaleRangeList
             // 
-            this.scaleRangeList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scaleRangeList.Location = new System.Drawing.Point(0, 25);
+            resources.ApplyResources(this.scaleRangeList, "scaleRangeList");
             this.scaleRangeList.Name = "scaleRangeList";
             this.scaleRangeList.Owner = null;
-            this.scaleRangeList.Size = new System.Drawing.Size(793, 402);
-            this.scaleRangeList.TabIndex = 3;
             this.scaleRangeList.Load += new System.EventHandler(this.scaleRangeList_Load);
             this.scaleRangeList.SelectionChanged += new System.EventHandler(this.scaleRangeList_SelectionChanged);
             this.scaleRangeList.ItemChanged += new System.EventHandler(this.scaleRangeList_ItemChanged);
@@ -587,83 +499,60 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.toolStripSeparator1,
             this.OpenInWindowButton,
             this.CloseWindowButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(793, 25);
-            this.toolStrip1.TabIndex = 2;
             // 
             // AddScaleRangeButton
             // 
             this.AddScaleRangeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddScaleRangeButton.Image = ((System.Drawing.Image)(resources.GetObject("AddScaleRangeButton.Image")));
-            this.AddScaleRangeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddScaleRangeButton, "AddScaleRangeButton");
             this.AddScaleRangeButton.Name = "AddScaleRangeButton";
-            this.AddScaleRangeButton.Size = new System.Drawing.Size(23, 22);
-            this.AddScaleRangeButton.ToolTipText = "Add a scale range";
             this.AddScaleRangeButton.Click += new System.EventHandler(this.AddScaleRangeButton_Click);
             // 
             // DeleteItemButton
             // 
             this.DeleteItemButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.DeleteItemButton.Enabled = false;
-            this.DeleteItemButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteItemButton.Image")));
-            this.DeleteItemButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.DeleteItemButton, "DeleteItemButton");
             this.DeleteItemButton.Name = "DeleteItemButton";
-            this.DeleteItemButton.Size = new System.Drawing.Size(23, 22);
-            this.DeleteItemButton.Text = "Delete the selected scalerange";
             this.DeleteItemButton.Click += new System.EventHandler(this.DeleteItemButton_Click);
             // 
             // InsertCopyButton
             // 
             this.InsertCopyButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.InsertCopyButton.Enabled = false;
-            this.InsertCopyButton.Image = ((System.Drawing.Image)(resources.GetObject("InsertCopyButton.Image")));
-            this.InsertCopyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.InsertCopyButton, "InsertCopyButton");
             this.InsertCopyButton.Name = "InsertCopyButton";
-            this.InsertCopyButton.Size = new System.Drawing.Size(23, 22);
-            this.InsertCopyButton.Text = "Append a copy of the selected scale";
             this.InsertCopyButton.Click += new System.EventHandler(this.InsertCopyButton_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
             // SortScalesByDisplayRangeButton
             // 
             this.SortScalesByDisplayRangeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SortScalesByDisplayRangeButton.Image = ((System.Drawing.Image)(resources.GetObject("SortScalesByDisplayRangeButton.Image")));
-            this.SortScalesByDisplayRangeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.SortScalesByDisplayRangeButton, "SortScalesByDisplayRangeButton");
             this.SortScalesByDisplayRangeButton.Name = "SortScalesByDisplayRangeButton";
-            this.SortScalesByDisplayRangeButton.Size = new System.Drawing.Size(23, 22);
-            this.SortScalesByDisplayRangeButton.ToolTipText = "Sort the scale ranges by display range";
             this.SortScalesByDisplayRangeButton.Click += new System.EventHandler(this.SortScalesByDisplayRangeButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // OpenInWindowButton
             // 
             this.OpenInWindowButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.OpenInWindowButton.Image = ((System.Drawing.Image)(resources.GetObject("OpenInWindowButton.Image")));
-            this.OpenInWindowButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.OpenInWindowButton, "OpenInWindowButton");
             this.OpenInWindowButton.Name = "OpenInWindowButton";
-            this.OpenInWindowButton.Size = new System.Drawing.Size(23, 22);
-            this.OpenInWindowButton.ToolTipText = "Show the scale setup in a seperate window";
             this.OpenInWindowButton.Click += new System.EventHandler(this.OpenInWindowButton_Click);
             // 
             // CloseWindowButton
             // 
             this.CloseWindowButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CloseWindowButton.Image = ((System.Drawing.Image)(resources.GetObject("CloseWindowButton.Image")));
-            this.CloseWindowButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.CloseWindowButton, "CloseWindowButton");
             this.CloseWindowButton.Name = "CloseWindowButton";
-            this.CloseWindowButton.Size = new System.Drawing.Size(23, 22);
-            this.CloseWindowButton.ToolTipText = "Click here to restore the control in the editor";
-            this.CloseWindowButton.Visible = false;
             this.CloseWindowButton.Click += new System.EventHandler(this.CloseWindowButton_Click);
             // 
             // DisplayRanges
@@ -679,7 +568,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.Controls.Add(this.groupViewerProperties);
             this.Controls.Add(this.ResourceGroup);
             this.Name = "VectorLayer";
-            this.Size = new System.Drawing.Size(799, 854);
+            resources.ApplyResources(this, "$this");
             this.ResourceGroup.ResumeLayout(false);
             this.ResourceGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ViewerPropertiesTable)).EndInit();
@@ -892,7 +781,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
         {
             if (m_selectedSchema == null)
             {
-                MessageBox.Show(this, "Cannot display editor, because no schema was selected", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, Strings.VectorLayer.SchemaMissingError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return null;
             }
 
@@ -905,7 +794,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, "Failed to read featuresource: " + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, string.Format(Strings.VectorLayer.FeatureSourceReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return null;
             }
 
@@ -933,16 +822,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
                 Tooltip.Text = tmp;
         }
 
-		public void SetItem(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.LayerDefinition layer, OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription schema, Globalizator.Globalizator globalizor)
+		public void SetItem(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.LayerDefinition layer, OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription schema)
 		{
 
 			OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription oldSchema = m_schemas;
 			m_editor = editor;
 			m_layer = layer;
 			m_schemas = schema;
-			m_globalizor = globalizor;
 
-			schemaSelector.SetItem(editor, layer, schema, globalizor);
+			schemaSelector.SetItem(editor, layer, schema);
 
 			UpdateAfterSchema(oldSchema != m_schemas, schemaSelector.CurrentSchema);
 			UpdateDisplay();

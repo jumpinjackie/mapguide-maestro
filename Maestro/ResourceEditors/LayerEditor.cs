@@ -37,7 +37,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private OSGeo.MapGuide.MaestroAPI.LayerDefinition m_layer;
 		private bool inUpdate = false;
-		private Globalizator.Globalizator m_globalizor = null;
 		private EditorInterface m_editor;
 		private OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription m_schema = null;
 
@@ -69,8 +68,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			m_editor = editor;
 			m_layer = new OSGeo.MapGuide.MaestroAPI.LayerDefinition();
 
-			vectorLayer.SetItem(m_editor, m_layer, null, m_globalizor);
-			rasterLayer.SetItem(m_editor, m_layer, null, m_globalizor);
+			vectorLayer.SetItem(m_editor, m_layer, null);
+			rasterLayer.SetItem(m_editor, m_layer, null);
 
             //TODO: Do we want to limit the user here?
             /*if (m_editor.CurrentConnection.SiteVersion < OSGeo.MapGuide.MaestroAPI.SiteVersions.GetVersion(OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.MapGuideEP2010))
@@ -87,7 +86,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			try
 			{
 				m_schema = null;
-				if (resourceID == null || resourceID == "" || resourceID.Equals(m_globalizor.Translate("< Select a featuresource >")))
+				if (resourceID == null || resourceID == "" || resourceID.Equals(Strings.LayerEditor.SelectFeatureSourceHint))
 					return;
 
 				m_schema = m_editor.CurrentConnection.DescribeFeatureSource(resourceID);
@@ -116,14 +115,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					m_layer.Item.ResourceId = resourceID;
 				}
 
-				if (isRaster)
-					rasterLayer.SetItem(m_editor, m_layer, m_schema, m_globalizor);
-				else
-					vectorLayer.SetItem(m_editor, m_layer, m_schema, m_globalizor);
+                if (isRaster)
+                    rasterLayer.SetItem(m_editor, m_layer, m_schema);
+                else
+                    vectorLayer.SetItem(m_editor, m_layer, m_schema);
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(this, m_globalizor.Translate(string.Format("Failed to read schema from data source.\nThe operation gave the error message: {0}", ex.Message)), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+				MessageBox.Show(this, string.Format(Strings.LayerEditor.SchemaReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
 			}
 
 		}
@@ -150,8 +149,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 			if (m_schema != null)
 			{
-				vectorLayer.SetItem(m_editor, m_layer, m_schema, m_globalizor);
-				rasterLayer.SetItem(m_editor, m_layer, m_schema, m_globalizor);
+				vectorLayer.SetItem(m_editor, m_layer, m_schema);
+				rasterLayer.SetItem(m_editor, m_layer, m_schema);
 			}
 
 			UpdateDisplay();
@@ -168,7 +167,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				if (m_layer != null && m_layer.Item != null && m_layer.Item.ResourceId != null && m_layer.Item.ResourceId.Length > 0)
 					FeatureSource.Text = m_layer.Item.ResourceId;
 				else
-					FeatureSource.Text = m_globalizor.Translate("< Select a featuresource >");
+					FeatureSource.Text = Strings.LayerEditor.SelectFeatureSourceHint;
 
 				if (m_schema == null)
 				{
@@ -218,8 +217,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-			m_globalizor = new Globalizator.Globalizator(this);
-	
 			vectorLayer.Visible = false;
 			rasterLayer.Visible = false;
 
@@ -253,6 +250,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LayerEditor));
             this.label1 = new System.Windows.Forms.Label();
             this.ViewerPropertiesTable = new System.Data.DataTable();
             this.PropertyColumnVisible = new System.Data.DataColumn();
@@ -284,11 +282,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // label1
             // 
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Feature resource";
             // 
             // ViewerPropertiesTable
             // 
@@ -317,25 +312,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // FeatureSource
             // 
-            this.FeatureSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.FeatureSource.Location = new System.Drawing.Point(112, 0);
+            resources.ApplyResources(this.FeatureSource, "FeatureSource");
             this.FeatureSource.Name = "FeatureSource";
             this.FeatureSource.ReadOnly = true;
-            this.FeatureSource.Size = new System.Drawing.Size(352, 20);
-            this.FeatureSource.TabIndex = 2;
-            this.FeatureSource.Text = "< Select a featuresource >";
             this.FeatureSource.TextChanged += new System.EventHandler(this.FeatureSource_TextChanged);
             // 
             // BrowseFeatureResource
             // 
-            this.BrowseFeatureResource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BrowseFeatureResource.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.BrowseFeatureResource.Location = new System.Drawing.Point(464, 0);
+            resources.ApplyResources(this.BrowseFeatureResource, "BrowseFeatureResource");
             this.BrowseFeatureResource.Name = "BrowseFeatureResource";
-            this.BrowseFeatureResource.Size = new System.Drawing.Size(24, 20);
-            this.BrowseFeatureResource.TabIndex = 14;
-            this.BrowseFeatureResource.Text = "...";
             this.BrowseFeatureResource.Click += new System.EventHandler(this.BrowseFeatureResource_Click);
             // 
             // PropertyDataset
@@ -396,57 +381,43 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // EditorPanel
             // 
-            this.EditorPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.EditorPanel, "EditorPanel");
             this.EditorPanel.Controls.Add(this.rasterLayer);
             this.EditorPanel.Controls.Add(this.vectorLayer);
-            this.EditorPanel.Location = new System.Drawing.Point(0, 48);
             this.EditorPanel.Name = "EditorPanel";
-            this.EditorPanel.Size = new System.Drawing.Size(504, 776);
-            this.EditorPanel.TabIndex = 15;
             // 
             // rasterLayer
             // 
-            this.rasterLayer.Location = new System.Drawing.Point(240, 24);
+            resources.ApplyResources(this.rasterLayer, "rasterLayer");
             this.rasterLayer.Name = "rasterLayer";
-            this.rasterLayer.Size = new System.Drawing.Size(176, 232);
-            this.rasterLayer.TabIndex = 1;
             // 
             // vectorLayer
             // 
-            this.vectorLayer.Location = new System.Drawing.Point(24, 32);
+            resources.ApplyResources(this.vectorLayer, "vectorLayer");
             this.vectorLayer.Name = "vectorLayer";
             this.vectorLayer.Resource = null;
-            this.vectorLayer.Size = new System.Drawing.Size(184, 216);
-            this.vectorLayer.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label2.Location = new System.Drawing.Point(0, 24);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(168, 16);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Layerdefinition schema version";
             // 
             // LayerDefinitionVersion
             // 
             this.LayerDefinitionVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LayerDefinitionVersion.FormattingEnabled = true;
             this.LayerDefinitionVersion.Items.AddRange(new object[] {
-            "1.1.0",
-            "1.2.0",
-            "1.3.0"});
-            this.LayerDefinitionVersion.Location = new System.Drawing.Point(176, 24);
+            resources.GetString("LayerDefinitionVersion.Items"),
+            resources.GetString("LayerDefinitionVersion.Items1"),
+            resources.GetString("LayerDefinitionVersion.Items2")});
+            resources.ApplyResources(this.LayerDefinitionVersion, "LayerDefinitionVersion");
             this.LayerDefinitionVersion.Name = "LayerDefinitionVersion";
-            this.LayerDefinitionVersion.Size = new System.Drawing.Size(121, 21);
-            this.LayerDefinitionVersion.TabIndex = 17;
             this.LayerDefinitionVersion.SelectedIndexChanged += new System.EventHandler(this.LayerDefinitionVersion_SelectedIndexChanged);
             // 
             // LayerEditor
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(350, 826);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.LayerDefinitionVersion);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.EditorPanel);
@@ -454,7 +425,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BrowseFeatureResource);
             this.Name = "LayerEditor";
-            this.Size = new System.Drawing.Size(504, 826);
             ((System.ComponentModel.ISupportInitialize)(this.ViewerPropertiesTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PropertyDataset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayRangesTable)).EndInit();
@@ -493,8 +463,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				if (prevFdef != nFdef)
 					RefreshSchema(nFdef);
 				
-				vectorLayer.SetItem(m_editor, m_layer, m_schema, m_globalizor);
-				rasterLayer.SetItem(m_editor, m_layer, m_schema, m_globalizor);
+				vectorLayer.SetItem(m_editor, m_layer, m_schema);
+				rasterLayer.SetItem(m_editor, m_layer, m_schema);
 				UpdateDisplay();
 			}
 		}
@@ -548,7 +518,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 l.ExpandInLegend = true;
                 l.Selectable = true;
                 if (string.IsNullOrEmpty(m_layer.ResourceId))
-                    l.LegendLabel = "Layer";
+                    l.LegendLabel = Strings.LayerEditor.DefaultLegendLabel;
                 else
                     l.LegendLabel = new MaestroAPI.ResourceIdentifier(m_layer.ResourceId).Name;
                 l.Name = l.LegendLabel;
@@ -640,7 +610,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch(Exception ex)
 			{
-				MessageBox.Show(this, string.Format(m_globalizor.Translate("Failed while creating map preview: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(this, string.Format(Strings.LayerEditor.MapPreviewError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
             return true;

@@ -41,7 +41,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
         public TextBox Filepath;
 		private System.Windows.Forms.Label label1;
 		private bool m_isUpdating = false;
-		private Globalizator.Globalizator m_globalizor;
 		private EditorInterface m_editor;
 		private OSGeo.MapGuide.MaestroAPI.FeatureSource m_feature;
 
@@ -51,11 +50,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 			InitializeComponent();
 		}
 
-		public void SetItem(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource feature,  Globalizator.Globalizator globalizor)
+		public void SetItem(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource feature)
 		{
 			m_editor = editor;
 			m_feature = feature;
-			m_globalizor = globalizor;
 
 			UpdateDisplay();
 		}
@@ -98,6 +96,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simple));
             this.BrowseFileButton = new System.Windows.Forms.Button();
             this.Filepath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -105,42 +104,28 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
             // 
             // BrowseFileButton
             // 
-            this.BrowseFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BrowseFileButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.BrowseFileButton.Location = new System.Drawing.Point(184, 8);
+            resources.ApplyResources(this.BrowseFileButton, "BrowseFileButton");
             this.BrowseFileButton.Name = "BrowseFileButton";
-            this.BrowseFileButton.Size = new System.Drawing.Size(24, 20);
-            this.BrowseFileButton.TabIndex = 42;
-            this.BrowseFileButton.Text = "...";
             this.BrowseFileButton.Click += new System.EventHandler(this.BrowseFileButton_Click);
             // 
             // Filepath
             // 
-            this.Filepath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.Filepath.Location = new System.Drawing.Point(112, 8);
+            resources.ApplyResources(this.Filepath, "Filepath");
             this.Filepath.Name = "Filepath";
-            this.Filepath.Size = new System.Drawing.Size(72, 20);
-            this.Filepath.TabIndex = 41;
             this.Filepath.TextChanged += new System.EventHandler(this.Filepath_TextChanged);
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 16);
-            this.label1.TabIndex = 40;
-            this.label1.Text = "Path to file(s)";
             // 
             // Simple
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(216, 40);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.BrowseFileButton);
             this.Controls.Add(this.Filepath);
             this.Controls.Add(this.label1);
             this.Name = "Simple";
-            this.Size = new System.Drawing.Size(216, 40);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,7 +141,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 				m_feature.Parameter = new OSGeo.MapGuide.MaestroAPI.NameValuePairTypeCollection();
 
 			if (m_feature.ConfigurationDocument != null && m_feature.ConfigurationDocument.Trim().Length != 0)
-				if (MessageBox.Show(this, m_globalizor.Translate("This will remove the configuration document and any specialized setup.\nAre you sure you want to continue?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3) != DialogResult.Yes)
+				if (MessageBox.Show(this, Strings.Simple.RemoveConfigurationWarning, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3) != DialogResult.Yes)
 					return;
 				else
 					m_feature.ConfigurationDocument = null;
@@ -168,7 +153,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 		private void BrowseFileButton_Click(object sender, System.EventArgs e)
 		{
 			NameValueCollection nv = new NameValueCollection();
-			nv.Add("", "All files");
+			nv.Add("", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.AllFiles);
 			string s = m_editor.BrowseUnmanagedData("", nv);
 			if (s != null)
 				Filepath.Text = s;

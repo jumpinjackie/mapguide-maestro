@@ -84,82 +84,60 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.MaxRatio = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.MinRatio = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.MapId = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// MaxRatio
-			// 
-			this.MaxRatio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.MaxRatio.Location = new System.Drawing.Point(136, 56);
-			this.MaxRatio.Name = "MaxRatio";
-			this.MaxRatio.Size = new System.Drawing.Size(472, 20);
-			this.MaxRatio.TabIndex = 25;
-			this.MaxRatio.Text = "";
-			this.MaxRatio.TextChanged += new System.EventHandler(this.MaxRatio_TextChanged);
-			// 
-			// label9
-			// 
-			this.label9.Location = new System.Drawing.Point(8, 56);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(128, 16);
-			this.label9.TabIndex = 24;
-			this.label9.Text = "Max ratio";
-			// 
-			// MinRatio
-			// 
-			this.MinRatio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.MinRatio.Location = new System.Drawing.Point(136, 32);
-			this.MinRatio.Name = "MinRatio";
-			this.MinRatio.Size = new System.Drawing.Size(472, 20);
-			this.MinRatio.TabIndex = 23;
-			this.MinRatio.Text = "";
-			this.MinRatio.TextChanged += new System.EventHandler(this.MinRatio_TextChanged);
-			// 
-			// label10
-			// 
-			this.label10.Location = new System.Drawing.Point(8, 32);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(128, 16);
-			this.label10.TabIndex = 22;
-			this.label10.Text = "Min ratio";
-			// 
-			// MapId
-			// 
-			this.MapId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.MapId.Location = new System.Drawing.Point(136, 8);
-			this.MapId.Name = "MapId";
-			this.MapId.Size = new System.Drawing.Size(472, 20);
-			this.MapId.TabIndex = 21;
-			this.MapId.Text = "";
-			this.MapId.TextChanged += new System.EventHandler(this.MapId_TextChanged);
-			// 
-			// label5
-			// 
-			this.label5.Location = new System.Drawing.Point(8, 8);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(128, 16);
-			this.label5.TabIndex = 20;
-			this.label5.Text = "Map ID";
-			// 
-			// OverviewMap
-			// 
-			this.Controls.Add(this.MaxRatio);
-			this.Controls.Add(this.label9);
-			this.Controls.Add(this.MinRatio);
-			this.Controls.Add(this.label10);
-			this.Controls.Add(this.MapId);
-			this.Controls.Add(this.label5);
-			this.Name = "OverviewMap";
-			this.Size = new System.Drawing.Size(616, 88);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OverviewMap));
+            this.MaxRatio = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.MinRatio = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.MapId = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // MaxRatio
+            // 
+            resources.ApplyResources(this.MaxRatio, "MaxRatio");
+            this.MaxRatio.Name = "MaxRatio";
+            this.MaxRatio.TextChanged += new System.EventHandler(this.MaxRatio_TextChanged);
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // MinRatio
+            // 
+            resources.ApplyResources(this.MinRatio, "MinRatio");
+            this.MinRatio.Name = "MinRatio";
+            this.MinRatio.TextChanged += new System.EventHandler(this.MinRatio_TextChanged);
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // MapId
+            // 
+            resources.ApplyResources(this.MapId, "MapId");
+            this.MapId.Name = "MapId";
+            this.MapId.TextChanged += new System.EventHandler(this.MapId_TextChanged);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // OverviewMap
+            // 
+            this.Controls.Add(this.MaxRatio);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.MinRatio);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.MapId);
+            this.Controls.Add(this.label5);
+            this.Name = "OverviewMap";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

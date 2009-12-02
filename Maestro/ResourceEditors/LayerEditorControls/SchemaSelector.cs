@@ -49,7 +49,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 		private OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription m_schemas;
 		private OSGeo.MapGuide.MaestroAPI.LayerDefinition m_layer;
 		private EditorInterface m_editor;
-		private Globalizator.Globalizator m_globalizor;
 		private System.Windows.Forms.Label GeometryLabel;
 		private bool m_isRaster = false;
 
@@ -134,61 +133,48 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Geometry = new System.Windows.Forms.ComboBox();
-			this.Schema = new System.Windows.Forms.ComboBox();
-			this.GeometryLabel = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Geometry
-			// 
-			this.Geometry.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Geometry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.Geometry.Location = new System.Drawing.Point(104, 32);
-			this.Geometry.Name = "Geometry";
-			this.Geometry.Size = new System.Drawing.Size(232, 21);
-			this.Geometry.TabIndex = 11;
-			this.Geometry.SelectedIndexChanged += new System.EventHandler(this.Geometry_SelectedIndexChanged);
-			// 
-			// Schema
-			// 
-			this.Schema.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Schema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.Schema.Location = new System.Drawing.Point(104, 0);
-			this.Schema.Name = "Schema";
-			this.Schema.Size = new System.Drawing.Size(232, 21);
-			this.Schema.TabIndex = 10;
-			this.Schema.SelectedIndexChanged += new System.EventHandler(this.Schema_SelectedIndexChanged);
-			// 
-			// GeometryLabel
-			// 
-			this.GeometryLabel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.GeometryLabel.Location = new System.Drawing.Point(0, 32);
-			this.GeometryLabel.Name = "GeometryLabel";
-			this.GeometryLabel.Size = new System.Drawing.Size(96, 16);
-			this.GeometryLabel.TabIndex = 9;
-			this.GeometryLabel.Text = "Geometry";
-			// 
-			// label2
-			// 
-			this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label2.Location = new System.Drawing.Point(0, 0);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(96, 16);
-			this.label2.TabIndex = 8;
-			this.label2.Text = "Schema";
-			// 
-			// SchemaSelector
-			// 
-			this.Controls.Add(this.Geometry);
-			this.Controls.Add(this.Schema);
-			this.Controls.Add(this.GeometryLabel);
-			this.Controls.Add(this.label2);
-			this.Name = "SchemaSelector";
-			this.Size = new System.Drawing.Size(336, 56);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SchemaSelector));
+            this.Geometry = new System.Windows.Forms.ComboBox();
+            this.Schema = new System.Windows.Forms.ComboBox();
+            this.GeometryLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Geometry
+            // 
+            resources.ApplyResources(this.Geometry, "Geometry");
+            this.Geometry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Geometry.Name = "Geometry";
+            this.Geometry.SelectedIndexChanged += new System.EventHandler(this.Geometry_SelectedIndexChanged);
+            // 
+            // Schema
+            // 
+            resources.ApplyResources(this.Schema, "Schema");
+            this.Schema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Schema.Name = "Schema";
+            this.Schema.SelectedIndexChanged += new System.EventHandler(this.Schema_SelectedIndexChanged);
+            // 
+            // GeometryLabel
+            // 
+            this.GeometryLabel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.GeometryLabel, "GeometryLabel");
+            this.GeometryLabel.Name = "GeometryLabel";
+            // 
+            // label2
+            // 
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // SchemaSelector
+            // 
+            this.Controls.Add(this.Geometry);
+            this.Controls.Add(this.Schema);
+            this.Controls.Add(this.GeometryLabel);
+            this.Controls.Add(this.label2);
+            this.Name = "SchemaSelector";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
 
 		}
 		#endregion
@@ -225,7 +211,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 			set 
 			{ 
 				m_isRaster = value;
-				GeometryLabel.Text = m_isRaster ? "Raster" : "Geometry";
+				GeometryLabel.Text = m_isRaster ? Strings.SchemaSelector.RasterLabel : Strings.SchemaSelector.VectorLabel;
 			}
 		}
 
@@ -311,12 +297,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 			}
 		}
 
-		public void SetItem(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.LayerDefinition layer, OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription schema, Globalizator.Globalizator globalizor)
+		public void SetItem(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.LayerDefinition layer, OSGeo.MapGuide.MaestroAPI.FeatureSourceDescription schema)
 		{
 			m_editor = editor;
 			m_layer = layer;
 			m_schemas = schema;
-			m_globalizor = globalizor;
 
 			UpdateDisplay();
 		}

@@ -73,48 +73,32 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             // 
             this.ButtonPanel.Controls.Add(this.CancelBtn);
             this.ButtonPanel.Controls.Add(this.OKBtn);
-            this.ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ButtonPanel.Location = new System.Drawing.Point(0, 344);
+            resources.ApplyResources(this.ButtonPanel, "ButtonPanel");
             this.ButtonPanel.Name = "ButtonPanel";
-            this.ButtonPanel.Size = new System.Drawing.Size(450, 55);
-            this.ButtonPanel.TabIndex = 0;
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(232, 16);
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(72, 24);
-            this.CancelBtn.TabIndex = 1;
-            this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
             // 
             // OKBtn
             // 
-            this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.OKBtn.Enabled = false;
-            this.OKBtn.Location = new System.Drawing.Point(144, 16);
+            resources.ApplyResources(this.OKBtn, "OKBtn");
             this.OKBtn.Name = "OKBtn";
-            this.OKBtn.Size = new System.Drawing.Size(72, 24);
-            this.OKBtn.TabIndex = 0;
-            this.OKBtn.Text = "OK";
             this.OKBtn.UseVisualStyleBackColor = true;
             this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.MainGroup);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(450, 344);
-            this.panel2.TabIndex = 1;
             // 
             // MainGroup
             // 
-            this.MainGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainGroup.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.MainGroup, "MainGroup");
             this.MainGroup.Name = "MainGroup";
             // 
             // MainGroup.Panel1
@@ -130,21 +114,15 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.MainGroup.Panel2.Controls.Add(this.HeaderFilepath);
             this.MainGroup.Panel2.Controls.Add(this.label2);
             this.MainGroup.Panel2.Controls.Add(this.label1);
-            this.MainGroup.Panel2.Enabled = false;
+            resources.ApplyResources(this.MainGroup.Panel2, "MainGroup.Panel2");
             this.MainGroup.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.MainGroup_Panel2_Paint);
-            this.MainGroup.Size = new System.Drawing.Size(450, 344);
-            this.MainGroup.SplitterDistance = 168;
-            this.MainGroup.TabIndex = 0;
             // 
             // ResourceTree
             // 
             this.ResourceTree.AllowDrop = true;
-            this.ResourceTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.ResourceTree, "ResourceTree");
             this.ResourceTree.LabelEdit = true;
-            this.ResourceTree.Location = new System.Drawing.Point(0, 25);
             this.ResourceTree.Name = "ResourceTree";
-            this.ResourceTree.Size = new System.Drawing.Size(168, 319);
-            this.ResourceTree.TabIndex = 0;
             this.ResourceTree.DragDrop += new System.Windows.Forms.DragEventHandler(this.ResourceTree_DragDrop);
             this.ResourceTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ResourceTree_AfterSelect);
             this.ResourceTree.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.ResourceTree_ItemDrag);
@@ -157,54 +135,37 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.AddFolderButton,
             this.AddResourceButton,
             this.DeleteResourceButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(168, 25);
-            this.toolStrip1.TabIndex = 1;
             // 
             // AddFolderButton
             // 
             this.AddFolderButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddFolderButton.Image = ((System.Drawing.Image)(resources.GetObject("AddFolderButton.Image")));
-            this.AddFolderButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddFolderButton, "AddFolderButton");
             this.AddFolderButton.Name = "AddFolderButton";
-            this.AddFolderButton.Size = new System.Drawing.Size(23, 22);
-            this.AddFolderButton.ToolTipText = "Add a new folder";
             this.AddFolderButton.Click += new System.EventHandler(this.AddFolderButton_Click);
             // 
             // AddResourceButton
             // 
             this.AddResourceButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddResourceButton.Image = ((System.Drawing.Image)(resources.GetObject("AddResourceButton.Image")));
-            this.AddResourceButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddResourceButton, "AddResourceButton");
             this.AddResourceButton.Name = "AddResourceButton";
-            this.AddResourceButton.Size = new System.Drawing.Size(23, 22);
-            this.AddResourceButton.ToolTipText = "Add a new resource to the package";
             this.AddResourceButton.Click += new System.EventHandler(this.AddResourceButton_Click);
             // 
             // DeleteResourceButton
             // 
             this.DeleteResourceButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.DeleteResourceButton.Enabled = false;
-            this.DeleteResourceButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteResourceButton.Image")));
-            this.DeleteResourceButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.DeleteResourceButton, "DeleteResourceButton");
             this.DeleteResourceButton.Name = "DeleteResourceButton";
-            this.DeleteResourceButton.Size = new System.Drawing.Size(23, 22);
-            this.DeleteResourceButton.ToolTipText = "Delete the selected item";
             this.DeleteResourceButton.Click += new System.EventHandler(this.DeleteResourceButton_Click);
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Controls.Add(this.ResourceDataFileList);
             this.panel3.Controls.Add(this.toolStrip2);
-            this.panel3.Location = new System.Drawing.Point(16, 88);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(248, 248);
-            this.panel3.TabIndex = 5;
             // 
             // ResourceDataFileList
             // 
@@ -213,13 +174,10 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader5});
-            this.ResourceDataFileList.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.ResourceDataFileList, "ResourceDataFileList");
             this.ResourceDataFileList.FullRowSelect = true;
-            this.ResourceDataFileList.Location = new System.Drawing.Point(0, 25);
             this.ResourceDataFileList.MultiSelect = false;
             this.ResourceDataFileList.Name = "ResourceDataFileList";
-            this.ResourceDataFileList.Size = new System.Drawing.Size(248, 223);
-            this.ResourceDataFileList.TabIndex = 1;
             this.ResourceDataFileList.UseCompatibleStateImageBehavior = false;
             this.ResourceDataFileList.View = System.Windows.Forms.View.Details;
             this.ResourceDataFileList.SelectedIndexChanged += new System.EventHandler(this.ResourcDataFileList_SelectedIndexChanged);
@@ -227,21 +185,19 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Filename";
-            this.columnHeader1.Width = 100;
+            resources.ApplyResources(this.columnHeader1, "columnHeader1");
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Content type";
-            this.columnHeader2.Width = 80;
+            resources.ApplyResources(this.columnHeader2, "columnHeader2");
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Data type";
+            resources.ApplyResources(this.columnHeader3, "columnHeader3");
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "File";
+            resources.ApplyResources(this.columnHeader5, "columnHeader5");
             // 
             // toolStrip2
             // 
@@ -252,134 +208,91 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.EditResourceData,
             this.toolStripSeparator1,
             this.SaveResourceData});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.toolStrip2, "toolStrip2");
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip2.Size = new System.Drawing.Size(248, 25);
-            this.toolStrip2.TabIndex = 0;
-            this.toolStrip2.Text = "toolStrip2";
             // 
             // AddResourceData
             // 
             this.AddResourceData.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddResourceData.Image = ((System.Drawing.Image)(resources.GetObject("AddResourceData.Image")));
-            this.AddResourceData.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddResourceData, "AddResourceData");
             this.AddResourceData.Name = "AddResourceData";
-            this.AddResourceData.Size = new System.Drawing.Size(23, 22);
-            this.AddResourceData.ToolTipText = "Add a file";
             this.AddResourceData.Click += new System.EventHandler(this.AddResourceData_Click);
             // 
             // DeleteResourceData
             // 
             this.DeleteResourceData.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.DeleteResourceData.Enabled = false;
-            this.DeleteResourceData.Image = ((System.Drawing.Image)(resources.GetObject("DeleteResourceData.Image")));
-            this.DeleteResourceData.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.DeleteResourceData, "DeleteResourceData");
             this.DeleteResourceData.Name = "DeleteResourceData";
-            this.DeleteResourceData.Size = new System.Drawing.Size(23, 22);
-            this.DeleteResourceData.ToolTipText = "Delete the selected file";
             this.DeleteResourceData.Click += new System.EventHandler(this.DeleteResourceData_Click);
             // 
             // EditResourceData
             // 
             this.EditResourceData.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.EditResourceData.Enabled = false;
-            this.EditResourceData.Image = ((System.Drawing.Image)(resources.GetObject("EditResourceData.Image")));
-            this.EditResourceData.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.EditResourceData, "EditResourceData");
             this.EditResourceData.Name = "EditResourceData";
-            this.EditResourceData.Size = new System.Drawing.Size(23, 22);
-            this.EditResourceData.ToolTipText = "Edit the selected files metadata";
             this.EditResourceData.Click += new System.EventHandler(this.EditResourceData_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // SaveResourceData
             // 
             this.SaveResourceData.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SaveResourceData.Enabled = false;
-            this.SaveResourceData.Image = ((System.Drawing.Image)(resources.GetObject("SaveResourceData.Image")));
-            this.SaveResourceData.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.SaveResourceData, "SaveResourceData");
             this.SaveResourceData.Name = "SaveResourceData";
-            this.SaveResourceData.Size = new System.Drawing.Size(23, 22);
-            this.SaveResourceData.ToolTipText = "Save the selected file";
             this.SaveResourceData.Click += new System.EventHandler(this.SaveResourceData_Click);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 64);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Data files";
             // 
             // ContentFilePath
             // 
-            this.ContentFilePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.ContentFilePath.Location = new System.Drawing.Point(80, 32);
+            resources.ApplyResources(this.ContentFilePath, "ContentFilePath");
             this.ContentFilePath.Name = "ContentFilePath";
             this.ContentFilePath.ReadOnly = true;
-            this.ContentFilePath.Size = new System.Drawing.Size(184, 20);
-            this.ContentFilePath.TabIndex = 3;
             // 
             // HeaderFilepath
             // 
-            this.HeaderFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.HeaderFilepath.Location = new System.Drawing.Point(80, 8);
+            resources.ApplyResources(this.HeaderFilepath, "HeaderFilepath");
             this.HeaderFilepath.Name = "HeaderFilepath";
             this.HeaderFilepath.ReadOnly = true;
-            this.HeaderFilepath.Size = new System.Drawing.Size(184, 20);
-            this.HeaderFilepath.TabIndex = 2;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 32);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Content file";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 8);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Header file";
             // 
             // BrowseResourceDataFile
             // 
-            this.BrowseResourceDataFile.Filter = "All files (*.*)|*.*";
-            this.BrowseResourceDataFile.Title = "Select a file to add";
+            resources.ApplyResources(this.BrowseResourceDataFile, "BrowseResourceDataFile");
             // 
             // SaveResourceDataFile
             // 
-            this.SaveResourceDataFile.Filter = "All files (*.*)|*.*";
-            this.SaveResourceDataFile.Title = "Select where to save the file";
+            resources.ApplyResources(this.SaveResourceDataFile, "SaveResourceDataFile");
             // 
             // SavePackageDialog
             // 
             this.SavePackageDialog.DefaultExt = "mgp";
-            this.SavePackageDialog.Filter = "MapGuide Packages (*.mgp)|*.mgp|Zip files (*.zip)|*.zip|All files (*.*)|*.*";
-            this.SavePackageDialog.Title = "Select where to store the file";
+            resources.ApplyResources(this.SavePackageDialog, "SavePackageDialog");
             // 
             // PackageEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(450, 399);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.ButtonPanel);
             this.Name = "PackageEditor";
-            this.Text = "Package Editor";
             this.Load += new System.EventHandler(this.PackageEditor_Load);
             this.ButtonPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

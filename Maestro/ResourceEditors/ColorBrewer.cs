@@ -98,17 +98,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 columns.Add("SchemeType", colnames.IndexOf("schemetype"));
 
                 if (columns["ColorName"] < 0)
-                    throw new Exception("Missing column \"ColorName\"");
+                    throw new Exception(string.Format(Strings.ColorBrewer.MissingColumnError, "ColorName"));
                 if (columns["Type"] < 0)
-                    throw new Exception("Missing column \"Type\"");
+                    throw new Exception(string.Format(Strings.ColorBrewer.MissingColumnError, "Type"));
                 if (columns["NumOfColors"] < 0)
-                    throw new Exception("Missing column \"NumOfColors\"");
+                    throw new Exception(string.Format(Strings.ColorBrewer.MissingColumnError, "NumOfColors"));
                 if (columns["R"] < 0)
-                    throw new Exception("Missing column \"R\"");
+                    throw new Exception(string.Format(Strings.ColorBrewer.MissingColumnError, "R"));
                 if (columns["G"] < 0)
-                    throw new Exception("Missing column \"G\"");
+                    throw new Exception(string.Format(Strings.ColorBrewer.MissingColumnError, "G"));
                 if (columns["B"] < 0)
-                    throw new Exception("Missing column \"B\"");
+                    throw new Exception(string.Format(Strings.ColorBrewer.MissingColumnError, "B"));
 
                 while (!sr.EndOfStream)
                 {
@@ -116,7 +116,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     List<string> values = TokenizeLine(line, recordDelimiter, textDelimiter);
                     
                     if (values.Count != columns.Count)
-                        throw new Exception(string.Format("Invalid field count in line: ", line));
+                        throw new Exception(string.Format(Strings.ColorBrewer.InvalidFieldCountError, line));
 
                     string colorName = values[columns["ColorName"]];
                     string type = values[columns["Type"]];
@@ -136,15 +136,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                         {
                             values = TokenizeLine(line, recordDelimiter, textDelimiter);
                             if (values.Count != colnames.Count)
-                                throw new Exception(string.Format("Invalid record count in line: {0}", line));
+                                throw new Exception(string.Format(Strings.ColorBrewer.InvalidRecordCountError, line));
                             
                             byte r, g, b;
                             if (!byte.TryParse(values[columns["R"]], out r))
-                                throw new Exception(string.Format("Invalid R color component {0} in line {1}", values[columns["R"]], line));
+                                throw new Exception(string.Format(Strings.ColorBrewer.InvalidColorComponent, "R", values[columns["R"]], line));
                             if (!byte.TryParse(values[columns["G"]], out g))
-                                throw new Exception(string.Format("Invalid G color component {0} in line {1}", values[columns["G"]], line));
+                                throw new Exception(string.Format(Strings.ColorBrewer.InvalidColorComponent, "G", values[columns["G"]], line));
                             if (!byte.TryParse(values[columns["B"]], out b))
-                                throw new Exception(string.Format("Invalid B color component {0} in line {1}", values[columns["B"]], line));
+                                throw new Exception(string.Format(Strings.ColorBrewer.InvalidColorComponent, "B", values[columns["B"]], line));
 
                             colors.Add(System.Drawing.Color.FromArgb(r, g, b));
                             colorCount--;
@@ -155,7 +155,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     }
 
                     if (colorCount != 0)
-                        throw new Exception(string.Format("Failed to read {0} color(s) for line: {1}", colorCount, line));
+                        throw new Exception(string.Format(Strings.ColorBrewer.ColorCountError, colorCount, line));
 
                     result.Add(new ColorBrewer(colorName, type, colors));
                 }
@@ -223,11 +223,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 switch (m_type)
                 {
                     case "qual":
-                        return "Qualitative";
+                        return Strings.ColorBrewer.QualitativeName;
                     case "seq":
-                        return "Sequential";
+                        return Strings.ColorBrewer.SequentialName;
                     case "div":
-                        return "Diverging";
+                        return Strings.ColorBrewer.DivergingName;
                     default:
                         return m_type;
                 }

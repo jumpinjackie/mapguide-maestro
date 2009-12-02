@@ -124,11 +124,6 @@
       <Project>{C76FFEBF-F047-4BE8-983C-BF8BF3CFB3D9}</Project>
       <Name>MgCooker</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Globalizator\Globalizator.csproj">
-      <Name>Globalizator</Name>
-      <Project>{361D5982-275F-4A4C-935F-0BB637330C9C}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
     <ProjectReference Include="..\MaestroEditorInterface\MaestroEditorInterface.csproj">
       <Name>MapStudioEditorInterface</Name>
       <Project>{006AFE1A-BF79-4C84-888D-9396958A42BD}</Project>
@@ -186,6 +181,21 @@
     <Compile Include="FeatureSourceEditors\Gdal\Simple.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="FeatureSourceEditors\Gdal\Strings\Composite.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Composite.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\Gdal\Strings\ConfigUpdater.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConfigUpdater.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\Gdal\Strings\Simple.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Simple.resx</DependentUpon>
+    </Compile>
     <Compile Include="FeatureSourceEditors\King.Informix\FeatureSourceEditorKingInformix.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -230,6 +240,11 @@
     </Compile>
     <Compile Include="FeatureSourceEditors\ODBC\Managed.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\Strings\FeatureSourceEditorODBC.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeatureSourceEditorODBC.resx</DependentUpon>
     </Compile>
     <Compile Include="FeatureSourceEditors\ODBC\Unmanaged.cs">
       <SubType>UserControl</SubType>
@@ -333,14 +348,16 @@
     <Compile Include="FeatureSourceExtensions\Key.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="FeatureSourceExtensions\Strings\FeatureSourceExtension.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeatureSourceExtension.resx</DependentUpon>
+    </Compile>
     <Compile Include="FiniteDisplayScales.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FiniteDisplayScales.Designer.cs">
       <DependentUpon>FiniteDisplayScales.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GeometryStyleEditor.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GeometryStyleEditors\AreaFeatureStyleEditor.cs">
       <SubType>UserControl</SubType>
@@ -371,6 +388,16 @@
     </Compile>
     <Compile Include="GeometryStyleEditors\ScaleRangeEditor.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GeometryStyleEditors\Strings\ColorComboBox.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ColorComboBox.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GeometryStyleEditors\Strings\PointFeatureStyleEditor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PointFeatureStyleEditor.resx</DependentUpon>
     </Compile>
     <Compile Include="LayerEditor.cs">
       <SubType>UserControl</SubType>
@@ -438,6 +465,16 @@
     <Compile Include="LayerEditorControls\SchemaSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="LayerEditorControls\Strings\SchemaSelector.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchemaSelector.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LayerEditorControls\Strings\VectorLayer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VectorLayer.resx</DependentUpon>
+    </Compile>
     <Compile Include="LayerEditorControls\StyleRuleProperties.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -471,6 +508,21 @@
     <Compile Include="LayoutControls\SearchCommand.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="LayoutControls\Strings\BasicCommand.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BasicCommand.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LayoutControls\Strings\InvokeURL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvokeURL.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LayoutControls\Strings\SearchCommand.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SearchCommand.resx</DependentUpon>
+    </Compile>
     <Compile Include="LayoutControls\TargetedCommand.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -488,9 +540,6 @@
     </Compile>
     <Compile Include="PlaceHolderEditor.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PreviewFeatureStyleColumn.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -511,6 +560,76 @@
     </Compile>
     <Compile Include="ShellIcons.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Strings\ColorBrewer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ColorBrewer.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\Common.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\CoordinateSystemOverride.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoordinateSystemOverride.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\CoordinateSystemOverrideDialog.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoordinateSystemOverrideDialog.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\FeatureSourceEditorBase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeatureSourceEditorBase.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\FeatureSourceEditorGeneric.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeatureSourceEditorGeneric.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\FiniteDisplayScales.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FiniteDisplayScales.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\LayerEditor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LayerEditor.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\LayoutEditor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LayoutEditor.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\MapEditor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MapEditor.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\ResourceDataEditor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceDataEditor.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\ThemeCreator.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThemeCreator.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\XmlEditor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XmlEditor.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\XmlEditorControl.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XmlEditorControl.resx</DependentUpon>
     </Compile>
     <Compile Include="SymbolLibraryEditor.cs">
       <SubType>UserControl</SubType>
@@ -739,10 +858,6 @@
       <DependentUpon>Key.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="GeometryStyleEditor.resx">
-      <DependentUpon>GeometryStyleEditor.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="GeometryStyleEditors\AreaFeatureStyleEditor.resx">
       <DependentUpon>AreaFeatureStyleEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -948,12 +1063,26 @@
     <EmbeddedResource Include="Preview layout.WebLayout" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FeatureSourceEditors\Filebased\FilebaseFeatureSourceEditor.resx" />
+    <EmbeddedResource Include="FeatureSourceEditors\Filebased\FilebasedFeatureSourceEditor.resx">
+      <DependentUpon>FilebasedFeatureSourceEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FeatureSourceEditors\Filebased\Managed.resx">
       <DependentUpon>Managed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSourceEditors\Filebased\Unmanaged.resx">
       <DependentUpon>Unmanaged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\Gdal\Strings\Composite.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Composite.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\Gdal\Strings\ConfigUpdater.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfigUpdater.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\Gdal\Strings\Simple.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Simple.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSourceEditors\King.Informix\FeatureSourceEditorKingInformix.resx">
       <DependentUpon>FeatureSourceEditorKingInformix.cs</DependentUpon>
@@ -971,15 +1100,116 @@
       <DependentUpon>Unmanaged.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\Strings\FeatureSourceEditorODBC.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FeatureSourceEditorODBC.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\SDF\FeatureSourceEditorSDF.resx">
+      <DependentUpon>FeatureSourceEditorSDF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\SHP\FeatureSourceEditorSHP.resx">
+      <DependentUpon>FeatureSourceEditorSHP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\SQLite\FeatureSourceEditorSQLite.resx">
+      <DependentUpon>FeatureSourceEditorSQLite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceExtensions\Strings\FeatureSourceExtension.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FeatureSourceExtension.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="FiniteDisplayScales.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FiniteDisplayScales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeometryStyleEditors\Strings\ColorComboBox.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ColorComboBox.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeometryStyleEditors\Strings\PointFeatureStyleEditor.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PointFeatureStyleEditor.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="LayerEditorControls\EditScales.resx">
       <SubType>Designer</SubType>
       <DependentUpon>EditScales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\Strings\SchemaSelector.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SchemaSelector.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerEditorControls\Strings\VectorLayer.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VectorLayer.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutControls\Strings\BasicCommand.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BasicCommand.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutControls\Strings\InvokeURL.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>InvokeURL.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutControls\Strings\SearchCommand.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SearchCommand.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Preview layout.ApplicationDefinition" />
+    <EmbeddedResource Include="Strings\ColorBrewer.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ColorBrewer.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\Common.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\CoordinateSystemOverride.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoordinateSystemOverride.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\CoordinateSystemOverrideDialog.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoordinateSystemOverrideDialog.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\FeatureSourceEditorBase.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FeatureSourceEditorBase.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\FeatureSourceEditorGeneric.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FeatureSourceEditorGeneric.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\FiniteDisplayScales.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FiniteDisplayScales.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\LayerEditor.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LayerEditor.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\LayoutEditor.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LayoutEditor.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\MapEditor.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MapEditor.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\ResourceDataEditor.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceDataEditor.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\ThemeCreator.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ThemeCreator.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\XmlEditor.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>XmlEditor.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\XmlEditorControl.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>XmlEditorControl.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ThemeCreator.resx">
       <DependentUpon>ThemeCreator.cs</DependentUpon>
     </EmbeddedResource>

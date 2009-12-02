@@ -75,5 +75,16 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 				m_w.Extension = new CustomContentType();
 			m_w.Extension[name] = value;
 		}
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // BasisWidgetEditor
+            // 
+            this.Name = "BasisWidgetEditor";
+            this.ResumeLayout(false);
+
+        }
 	}
 }

@@ -46,7 +46,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 		private System.Windows.Forms.TextBox ResourceName;
 		private System.Windows.Forms.ComboBox ResourceType;
 		private System.Windows.Forms.Button RefreshButton;
-		private Globalizator.Globalizator m_globalizor = null;
 
 		private OSGeo.MapGuide.MaestroAPI.ServerConnectionI m_connection;
 
@@ -75,7 +74,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 			ResourceType.Items.Clear();
 
             if (avalibleTypes == null)
-                ResourceType.Items.Add(m_globalizor.Translate("All resource types"));
+                ResourceType.Items.Add(Strings.BrowseResource.AllResourceTypes);
 
 			foreach(string i in m_validTypes)
 				ResourceType.Items.Add(cache.EditorMap.GetResourceDisplayNameFromResourceType(i));
@@ -93,7 +92,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
             ItemView.MultiSelect = allowMulti;
 
 			if (!m_openMode)
-				this.Text = m_globalizor.Translate("Save resource");
+				this.Text = Strings.BrowseResource.SaveModeTitle;
 
             this.Icon = m_ownerform.Icon;
 		}
@@ -104,8 +103,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			m_globalizor = new  Globalizator.Globalizator(this);
-
 		}
 
 		/// <summary>
@@ -130,6 +127,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BrowseResource));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -137,6 +135,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel4 = new System.Windows.Forms.Panel();
             this.RefreshButton = new System.Windows.Forms.Button();
+            this.FolderView = new OSGeo.MapGuide.Maestro.ResourceBrowser.ResourceTree();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ResourceType = new System.Windows.Forms.ComboBox();
             this.ResourceName = new System.Windows.Forms.TextBox();
@@ -144,7 +143,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
             this.label1 = new System.Windows.Forms.Label();
             this.OKButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
-            this.FolderView = new OSGeo.MapGuide.Maestro.ResourceBrowser.ResourceTree();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -154,45 +152,29 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(640, 463);
-            this.panel1.TabIndex = 0;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.splitter1);
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(640, 391);
-            this.panel3.TabIndex = 1;
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.ItemView);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(240, 0);
+            resources.ApplyResources(this.panel5, "panel5");
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(400, 391);
-            this.panel5.TabIndex = 2;
             // 
             // ItemView
             // 
-            this.ItemView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.ItemView.Location = new System.Drawing.Point(0, 8);
+            resources.ApplyResources(this.ItemView, "ItemView");
             this.ItemView.Name = "ItemView";
-            this.ItemView.Size = new System.Drawing.Size(392, 375);
-            this.ItemView.TabIndex = 0;
             this.ItemView.UseCompatibleStateImageBehavior = false;
             this.ItemView.View = System.Windows.Forms.View.List;
             this.ItemView.SelectedIndexChanged += new System.EventHandler(this.ItemView_SelectedIndexChanged);
@@ -201,33 +183,32 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(232, 0);
+            resources.ApplyResources(this.splitter1, "splitter1");
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(8, 391);
-            this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.RefreshButton);
             this.panel4.Controls.Add(this.FolderView);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(232, 391);
-            this.panel4.TabIndex = 0;
             // 
             // RefreshButton
             // 
-            this.RefreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.RefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.RefreshButton.Location = new System.Drawing.Point(8, 359);
+            resources.ApplyResources(this.RefreshButton, "RefreshButton");
             this.RefreshButton.Name = "RefreshButton";
-            this.RefreshButton.Size = new System.Drawing.Size(224, 24);
-            this.RefreshButton.TabIndex = 1;
-            this.RefreshButton.Text = "Refresh";
             this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
+            // 
+            // FolderView
+            // 
+            resources.ApplyResources(this.FolderView, "FolderView");
+            this.FolderView.Cache = null;
+            this.FolderView.HideDocuments = true;
+            this.FolderView.HideSelection = false;
+            this.FolderView.Name = "FolderView";
+            this.FolderView.Sorted = true;
+            this.FolderView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.FolderView_AfterSelect);
             // 
             // panel2
             // 
@@ -235,98 +216,54 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
             this.panel2.Controls.Add(this.ResourceName);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 391);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(640, 72);
-            this.panel2.TabIndex = 0;
             // 
             // ResourceType
             // 
-            this.ResourceType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.ResourceType, "ResourceType");
             this.ResourceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ResourceType.Location = new System.Drawing.Point(112, 40);
             this.ResourceType.Name = "ResourceType";
-            this.ResourceType.Size = new System.Drawing.Size(520, 21);
-            this.ResourceType.TabIndex = 3;
             this.ResourceType.SelectedIndexChanged += new System.EventHandler(this.ResourceType_SelectedIndexChanged);
             // 
             // ResourceName
             // 
-            this.ResourceName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResourceName.Location = new System.Drawing.Point(112, 8);
+            resources.ApplyResources(this.ResourceName, "ResourceName");
             this.ResourceName.Name = "ResourceName";
-            this.ResourceName.Size = new System.Drawing.Size(520, 20);
-            this.ResourceName.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label2.Location = new System.Drawing.Point(8, 40);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Resource type";
             // 
             // label1
             // 
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label1.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Resource name";
             // 
             // OKButton
             // 
-            this.OKButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.OKButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.OKButton.Location = new System.Drawing.Point(216, 471);
+            resources.ApplyResources(this.OKButton, "OKButton");
             this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(80, 24);
-            this.OKButton.TabIndex = 1;
-            this.OKButton.Text = "OK";
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // CancelButton
             // 
-            this.CancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            resources.ApplyResources(this.CancelButton, "CancelButton");
             this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.CancelButton.Location = new System.Drawing.Point(320, 471);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(80, 24);
-            this.CancelButton.TabIndex = 2;
-            this.CancelButton.Text = "Cancel";
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
-            // 
-            // FolderView
-            // 
-            this.FolderView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.FolderView.Cache = null;
-            this.FolderView.HideDocuments = true;
-            this.FolderView.HideSelection = false;
-            this.FolderView.Location = new System.Drawing.Point(8, 8);
-            this.FolderView.Name = "FolderView";
-            this.FolderView.Size = new System.Drawing.Size(224, 351);
-            this.FolderView.Sorted = true;
-            this.FolderView.TabIndex = 0;
-            this.FolderView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.FolderView_AfterSelect);
             // 
             // BrowseResource
             // 
             this.AcceptButton = this.OKButton;
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(640, 509);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.panel1);
             this.Name = "BrowseResource";
-            this.Text = "Open resource";
             this.Load += new System.EventHandler(this.BrowseResource_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -436,7 +373,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 
 			if (!valid)
 			{
-				MessageBox.Show(this, m_globalizor.Translate("The resource entered does not have a valid type"), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show(this, Strings.BrowseResource.InvalidResourceTypeSelectedError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 				return;
 			}
 
@@ -461,7 +398,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
             if (FolderView.Cache.ResourceExists(fullpath))
 			{
 				if (!m_openMode)
-					if (MessageBox.Show(this, m_globalizor.Translate("Overwrite existing resource?"), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+					if (MessageBox.Show(this, Strings.BrowseResource.OverwriteResourceConfirmation, Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
 						return;
 
                 if (ItemView.MultiSelect && ItemView.SelectedItems.Count > 1)
@@ -496,7 +433,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
             }
 
 			if (m_openMode)
-				MessageBox.Show(this, m_globalizor.Translate("The resource entered does not exist."), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show(this, Strings.BrowseResource.MissingResourceError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 			else
 			{
 				//Make sure the folder exists
@@ -508,7 +445,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
 					return;
 				}
 			
-				MessageBox.Show(this, m_globalizor.Translate("The resource cannot be saved because the folder entered does not exist"), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show(this, Strings.BrowseResource.MissingFolderError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}
 

@@ -99,41 +99,31 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.FilepathText = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// FilepathText
-			// 
-			this.FilepathText.AcceptsReturn = true;
-			this.FilepathText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.FilepathText.Location = new System.Drawing.Point(120, 2);
-			this.FilepathText.Multiline = true;
-			this.FilepathText.Name = "FilepathText";
-			this.FilepathText.Size = new System.Drawing.Size(184, 46);
-			this.FilepathText.TabIndex = 10;
-			this.FilepathText.Text = "textBox1";
-			this.FilepathText.TextChanged += new System.EventHandler(this.FilepathText_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(0, 2);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(112, 16);
-			this.label1.TabIndex = 9;
-			this.label1.Text = "Connectionstring";
-			// 
-			// Custom
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(312, 56);
-			this.Controls.Add(this.FilepathText);
-			this.Controls.Add(this.label1);
-			this.Name = "Custom";
-			this.Size = new System.Drawing.Size(312, 56);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Custom));
+            this.FilepathText = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // FilepathText
+            // 
+            this.FilepathText.AcceptsReturn = true;
+            resources.ApplyResources(this.FilepathText, "FilepathText");
+            this.FilepathText.Name = "FilepathText";
+            this.FilepathText.TextChanged += new System.EventHandler(this.FilepathText_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // Custom
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.FilepathText);
+            this.Controls.Add(this.label1);
+            this.Name = "Custom";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

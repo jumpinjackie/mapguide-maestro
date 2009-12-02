@@ -126,7 +126,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 			//Add new items
 			if (m_add.Length > 0)
 			{
-				OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressArgs la = new OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressArgs("Processing files...", -1);
+				OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressArgs la = new OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressArgs(Strings.ConfigUpdater.ProgressProcessingFiles, -1);
 
 				if (progress != null)
 					progress(this, la);

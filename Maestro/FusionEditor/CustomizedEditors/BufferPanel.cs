@@ -87,36 +87,30 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.Target = new System.Windows.Forms.TextBox();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(72, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Target";
-			// 
-			// Target
-			// 
-			this.Target.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Target.Location = new System.Drawing.Point(104, 8);
-			this.Target.Name = "Target";
-			this.Target.Size = new System.Drawing.Size(504, 20);
-			this.Target.TabIndex = 1;
-			this.Target.Text = "";
-			this.Target.TextChanged += new System.EventHandler(this.Target_TextChanged);
-			// 
-			// BufferPanel
-			// 
-			this.Controls.Add(this.Target);
-			this.Controls.Add(this.label1);
-			this.Name = "BufferPanel";
-			this.Size = new System.Drawing.Size(616, 40);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BufferPanel));
+            this.label1 = new System.Windows.Forms.Label();
+            this.Target = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // Target
+            // 
+            resources.ApplyResources(this.Target, "Target");
+            this.Target.Name = "Target";
+            this.Target.TextChanged += new System.EventHandler(this.Target_TextChanged);
+            // 
+            // BufferPanel
+            // 
+            this.Controls.Add(this.Target);
+            this.Controls.Add(this.label1);
+            this.Name = "BufferPanel";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

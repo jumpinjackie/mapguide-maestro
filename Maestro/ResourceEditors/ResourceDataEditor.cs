@@ -48,7 +48,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton ToggleDocumentsButton;
         private MenuItem EditResourceXmlMenu;
-		private Globalizator.Globalizator m_globalizor = null;
 
 		public ResourceDataEditor(EditorInterface editor, string resourceid)
 			: this()
@@ -65,7 +64,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			foreach(string s in Enum.GetNames(typeof(OSGeo.MapGuide.MaestroAPI.ResourceDataType)))
 				ChangeResourceTypeMenu.MenuItems.Add(s, new EventHandler(ChangeType_Clicked));
 			this.Enabled = false;
-			m_globalizor = new  Globalizator.Globalizator(this);
 		}
 
 		/// <summary> 
@@ -123,11 +121,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.columnHeader1,
             this.columnHeader2});
             this.ResourceDataFiles.ContextMenu = this.contextMenu;
-            this.ResourceDataFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ResourceDataFiles.Location = new System.Drawing.Point(0, 25);
+            resources.ApplyResources(this.ResourceDataFiles, "ResourceDataFiles");
             this.ResourceDataFiles.Name = "ResourceDataFiles";
-            this.ResourceDataFiles.Size = new System.Drawing.Size(656, 271);
-            this.ResourceDataFiles.TabIndex = 1;
             this.ResourceDataFiles.UseCompatibleStateImageBehavior = false;
             this.ResourceDataFiles.View = System.Windows.Forms.View.Details;
             this.ResourceDataFiles.SelectedIndexChanged += new System.EventHandler(this.ResourceDataFiles_SelectedIndexChanged);
@@ -135,12 +130,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Filename";
-            this.columnHeader1.Width = 100;
+            resources.ApplyResources(this.columnHeader1, "columnHeader1");
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Type";
+            resources.ApplyResources(this.columnHeader2, "columnHeader2");
             // 
             // contextMenu
             // 
@@ -152,12 +146,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // ChangeResourceTypeMenu
             // 
             this.ChangeResourceTypeMenu.Index = 0;
-            this.ChangeResourceTypeMenu.Text = "Change type";
+            resources.ApplyResources(this.ChangeResourceTypeMenu, "ChangeResourceTypeMenu");
             // 
             // EditResourceXmlMenu
             // 
             this.EditResourceXmlMenu.Index = 1;
-            this.EditResourceXmlMenu.Text = "Edit as xml";
+            resources.ApplyResources(this.EditResourceXmlMenu, "EditResourceXmlMenu");
             this.EditResourceXmlMenu.Click += new System.EventHandler(this.EditResourceXmlMenu_Click);
             // 
             // ResourceDataFilesToolbar
@@ -169,57 +163,37 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.DownloadFileButton,
             this.toolStripSeparator1,
             this.ToggleDocumentsButton});
-            this.ResourceDataFilesToolbar.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.ResourceDataFilesToolbar, "ResourceDataFilesToolbar");
             this.ResourceDataFilesToolbar.Name = "ResourceDataFilesToolbar";
             this.ResourceDataFilesToolbar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.ResourceDataFilesToolbar.Size = new System.Drawing.Size(656, 25);
-            this.ResourceDataFilesToolbar.TabIndex = 2;
             // 
             // AddFileButton
             // 
-            this.AddFileButton.Image = ((System.Drawing.Image)(resources.GetObject("AddFileButton.Image")));
-            this.AddFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddFileButton, "AddFileButton");
             this.AddFileButton.Name = "AddFileButton";
-            this.AddFileButton.Size = new System.Drawing.Size(46, 22);
-            this.AddFileButton.Text = "Add";
-            this.AddFileButton.ToolTipText = "Upload a data file to the resource";
             this.AddFileButton.Click += new System.EventHandler(this.AddFileButton_Click);
             // 
             // DeleteFileButton
             // 
-            this.DeleteFileButton.Enabled = false;
-            this.DeleteFileButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteFileButton.Image")));
-            this.DeleteFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.DeleteFileButton, "DeleteFileButton");
             this.DeleteFileButton.Name = "DeleteFileButton";
-            this.DeleteFileButton.Size = new System.Drawing.Size(58, 22);
-            this.DeleteFileButton.Text = "Delete";
-            this.DeleteFileButton.ToolTipText = "Delete the selected data file";
             this.DeleteFileButton.Click += new System.EventHandler(this.DeleteFileButton_Click);
             // 
             // DownloadFileButton
             // 
-            this.DownloadFileButton.Enabled = false;
-            this.DownloadFileButton.Image = ((System.Drawing.Image)(resources.GetObject("DownloadFileButton.Image")));
-            this.DownloadFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.DownloadFileButton, "DownloadFileButton");
             this.DownloadFileButton.Name = "DownloadFileButton";
-            this.DownloadFileButton.Size = new System.Drawing.Size(74, 22);
-            this.DownloadFileButton.Text = "Download";
-            this.DownloadFileButton.ToolTipText = "Download a copy of the data file";
             this.DownloadFileButton.Click += new System.EventHandler(this.DownloadFileButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // ToggleDocumentsButton
             // 
-            this.ToggleDocumentsButton.Image = ((System.Drawing.Image)(resources.GetObject("ToggleDocumentsButton.Image")));
-            this.ToggleDocumentsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.ToggleDocumentsButton, "ToggleDocumentsButton");
             this.ToggleDocumentsButton.Name = "ToggleDocumentsButton";
-            this.ToggleDocumentsButton.Size = new System.Drawing.Size(66, 22);
-            this.ToggleDocumentsButton.Text = "Show all";
-            this.ToggleDocumentsButton.ToolTipText = "Toggles display of datafiles and resource files";
             this.ToggleDocumentsButton.Click += new System.EventHandler(this.ToggleDocumentsButton_Click);
             // 
             // ResourceDataEditor
@@ -227,7 +201,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.Controls.Add(this.ResourceDataFiles);
             this.Controls.Add(this.ResourceDataFilesToolbar);
             this.Name = "ResourceDataEditor";
-            this.Size = new System.Drawing.Size(656, 296);
+            resources.ApplyResources(this, "$this");
             this.Load += new System.EventHandler(this.ResourceDataEditor_Load);
             this.ResourceDataFilesToolbar.ResumeLayout(false);
             this.ResourceDataFilesToolbar.PerformLayout();
@@ -288,17 +262,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			
 		}
 
-		private static Globalizator.Globalizator _Globalizor;
-		private static Globalizator.Globalizator Globalizor
-		{
-			get 
-			{
-				if (_Globalizor == null) //Perhaps a bit too much memory waste...
-					_Globalizor = new Globalizator.Globalizator(new ResourceDataEditor());
-				return _Globalizor;
-			}
-		}
-
 		public static bool AddFilesToResource(Control owner, OSGeo.MapGuide.MaestroAPI.ServerConnectionI connection, string resourceId, NameValueCollection filetypes)
 		{
 			return AddFilesToResource(owner, connection, resourceId, null, filetypes);
@@ -318,7 +281,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			bool res = false;
 			OpenFileDialog dlg = new OpenFileDialog();
-			dlg.Title = Globalizor.Translate("Select files to upload");
+			dlg.Title = Strings.ResourceDataEditor.UploadFilesDialogTitle;
 			dlg.Multiselect = true;
 			if (filetypes != null)
 			{
@@ -356,7 +319,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
                 if (extraFiles.Count > 0)
                 {
-                    switch(MessageBox.Show(owner, String.Format(Globalizor.Translate("There exists {0} file(s) with similar names which may be required.\nDo you want to automatically add matching files?"), extraFiles.Count), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                    switch(MessageBox.Show(owner, String.Format(Strings.ResourceDataEditor.IncludeSimilarFilesConfirmation, extraFiles.Count), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
                     {
                         case DialogResult.Cancel:
                             return false;
@@ -428,7 +391,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                             {
                                 removeFirst = true;
 
-                                switch (MessageBox.Show(owner, string.Format(Globalizor.Translate("There already exists a resource file with the name \"{0}\". Do you want to overwrite the existing file?"), filename), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                                switch (MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.OverwriteResourceFileConfirmation, filename), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
                                 {
                                     case DialogResult.No:
                                         upload = false;
@@ -464,7 +427,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                             return res;
                         }
 
-                        switch (MessageBox.Show(owner, string.Format(Globalizor.Translate("Upload of resource failed.\nReason: {0}\nHow do you want to continue?"), ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+                        switch (MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.UploadFailedQuestion, s, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
                         {
                             case DialogResult.Abort:
                                 return res;
@@ -495,7 +458,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		public static bool DeleteFilesFromResource(Control owner, OSGeo.MapGuide.MaestroAPI.ServerConnectionI connection, string resourceId, string[] resourcenames)
 		{
 			bool res = false;
-			if (MessageBox.Show(owner, Globalizor.Translate("Delete the selected resources?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+			if (MessageBox.Show(owner, Strings.ResourceDataEditor.DeleteFileConfirmation, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
 			{
 				foreach(string resourcename in resourcenames)
 				{
@@ -509,7 +472,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 						}
 						catch (Exception ex)
 						{
-							switch(MessageBox.Show(owner, string.Format(Globalizor.Translate("Delete of resource \"{0}\" failed.\nReason: {1}\nHow do you want to continue?"), resourcename, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+							switch(MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DeleteFailedQuestion, resourcename, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
 							{
 								case DialogResult.Abort:
 									return res;
@@ -545,7 +508,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			else if (items.Length == 1)
 			{
 				SaveFileDialog dlg = new SaveFileDialog();
-				dlg.Title = Globalizor.Translate("Save resource file");
+				dlg.Title = Strings.ResourceDataEditor.DownloadFileDialogTitle;
 				dlg.ValidateNames = true;
 				dlg.OverwritePrompt = true;
 				dlg.AddExtension = true;
@@ -554,7 +517,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				dlg.DefaultExt = System.IO.Path.GetExtension(items[0]);
 				dlg.DereferenceLinks = true;
 				dlg.FileName = items[0];
-				dlg.Filter = Globalizor.Translate("All files (*.*)") + "|*.*";
+				dlg.Filter = Strings.Common.AllFiles + "|*.*";
 				if (dlg.ShowDialog(owner) == DialogResult.OK)
 				{
 					bool retry = true;
@@ -569,7 +532,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 						}
 						catch(Exception ex)
 						{
-							switch(MessageBox.Show(owner, string.Format(Globalizor.Translate("Download of resource \"{0}\" failed.\nReason: {1}\nHow do you want to continue?"), items[0], ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+							switch(MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, items[0], ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
 							{
 								case DialogResult.Abort:
 									return res;
@@ -583,7 +546,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			else
 			{
 				FolderBrowserDialog dlg = new FolderBrowserDialog();
-				dlg.Description = Globalizor.Translate("Select folder where downloaded files will be saved");
+				dlg.Description = Strings.ResourceDataEditor.DownloadFilesDialogTitle;
 				dlg.ShowNewFolderButton = true;
 				if (dlg.ShowDialog(owner) == DialogResult.OK)
 				{
@@ -597,7 +560,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 								bool download = true;
 								string targetpath = System.IO.Path.Combine(dlg.SelectedPath, item);
 								if (System.IO.File.Exists(targetpath))
-									switch(MessageBox.Show(owner, string.Format(Globalizor.Translate("The file \"{0}\" already exists. \nDo you want to overwrite?"), item), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+									switch(MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.OverwriteLocalFileConfirmation, item), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
 									{
 										case DialogResult.No:
 											download = false;
@@ -616,7 +579,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 							}
 							catch(Exception ex)
 							{
-								switch(MessageBox.Show(owner, string.Format(Globalizor.Translate("Download of resource \"{0}\" failed.\nReason: {1}\nHow do you want to continue?"), item, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+								switch(MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, item, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
 								{
 									case DialogResult.Abort:
 										return res;
@@ -675,7 +638,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					}
 					catch(Exception ex)
 					{
-						switch(MessageBox.Show(this, string.Format(m_globalizor.Translate("Download of resource \"{0}\" failed.\nReason: {1}\nHow do you want to continue?"), i.Text, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+						switch(MessageBox.Show(this, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, i.Text, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
 						{
 							case DialogResult.Abort:
 								RefreshFileList();
@@ -792,7 +755,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format("Failed to update xml data: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.ResourceDataEditor.UpdateXmlDataError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

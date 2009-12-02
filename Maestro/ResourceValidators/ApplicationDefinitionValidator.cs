@@ -38,7 +38,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
 
             ApplicationDefinitionType fusionApp = resource as ApplicationDefinitionType;
             if (fusionApp.MapSet == null || fusionApp.MapSet.Count == 0)
-                issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, string.Format("Fusion application does not specify a map")));
+                issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, string.Format(Strings.ApplicationDefinitionValidator.MapMissingError)));
             else
             {
                 if (recurse)
@@ -51,7 +51,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
 
                                 if (map.Extension == null || map.Extension["ResourceId"] == null)
                                 {
-                                    issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, string.Format("Map with ID {0} does not point to a valid map", mapGroup.id)));
+                                    issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, string.Format(Strings.ApplicationDefinitionValidator.MapInvalidError, mapGroup.id)));
                                 }
                                 else
                                 {
@@ -64,7 +64,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                                     if (mapGroup.InitialView != null)
                                     {
                                         if (!mapEnv.Contains(mapGroup.InitialView.CenterX, mapGroup.InitialView.CenterY))
-                                            issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, string.Format("Fusion application specifies a start view that is outside the map's initial extents")));
+                                            issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, string.Format(Strings.ApplicationDefinitionValidator.ViewOutsideMapExtents)));
                                     }
                                 }
                                 
@@ -72,7 +72,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                             }
                             catch (Exception ex)
                             {
-                                issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, string.Format("Error validating MapDefinition {0}, message: {1}", mapGroup.id, ex.Message)));
+                                issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, string.Format(Strings.ApplicationDefinitionValidator.MapValidationError, mapGroup.id, ex.Message)));
                             }
                         }
                 }

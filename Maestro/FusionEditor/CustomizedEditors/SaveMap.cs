@@ -81,62 +81,49 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Scale = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.Format = new System.Windows.Forms.ComboBox();
-			this.SuspendLayout();
-			// 
-			// Scale
-			// 
-			this.Scale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Scale.Location = new System.Drawing.Point(144, 32);
-			this.Scale.Name = "Scale";
-			this.Scale.Size = new System.Drawing.Size(464, 20);
-			this.Scale.TabIndex = 15;
-			this.Scale.Text = "";
-			this.Scale.TextChanged += new System.EventHandler(this.Scale_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 32);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(136, 16);
-			this.label2.TabIndex = 14;
-			this.label2.Text = "Scale";
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(136, 16);
-			this.label1.TabIndex = 12;
-			this.label1.Text = "Format";
-			// 
-			// Format
-			// 
-			this.Format.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Format.Items.AddRange(new object[] {
-														"png",
-														"jpg",
-														"gif"});
-			this.Format.Location = new System.Drawing.Point(144, 8);
-			this.Format.Name = "Format";
-			this.Format.Size = new System.Drawing.Size(464, 21);
-			this.Format.TabIndex = 30;
-			this.Format.TextChanged += new System.EventHandler(this.Format_TextChanged);
-			// 
-			// SaveMap
-			// 
-			this.Controls.Add(this.Format);
-			this.Controls.Add(this.Scale);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Name = "SaveMap";
-			this.Size = new System.Drawing.Size(616, 56);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SaveMap));
+            this.Scale = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Format = new System.Windows.Forms.ComboBox();
+            this.SuspendLayout();
+            // 
+            // Scale
+            // 
+            resources.ApplyResources(this.Scale, "Scale");
+            this.Scale.Name = "Scale";
+            this.Scale.TextChanged += new System.EventHandler(this.Scale_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // Format
+            // 
+            resources.ApplyResources(this.Format, "Format");
+            this.Format.Items.AddRange(new object[] {
+            resources.GetString("Format.Items"),
+            resources.GetString("Format.Items1"),
+            resources.GetString("Format.Items2")});
+            this.Format.Name = "Format";
+            this.Format.TextChanged += new System.EventHandler(this.Format_TextChanged);
+            // 
+            // SaveMap
+            // 
+            this.Controls.Add(this.Format);
+            this.Controls.Add(this.Scale);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Name = "SaveMap";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

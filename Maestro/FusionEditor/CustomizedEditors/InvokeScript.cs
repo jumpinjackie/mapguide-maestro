@@ -83,6 +83,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvokeScript));
             this.ScriptPicker = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Target = new System.Windows.Forms.TextBox();
@@ -92,57 +93,37 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             // 
             // ScriptPicker
             // 
-            this.ScriptPicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.ScriptPicker, "ScriptPicker");
             this.ScriptPicker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ScriptPicker.Items.AddRange(new object[] {
-            "< Select a built in script >",
-            "showOverviewMapDialog()",
-            "showTaskDialog()",
-            "showLegendDialog()",
-            "showSelectionDialog()"});
-            this.ScriptPicker.Location = new System.Drawing.Point(136, 32);
+            resources.GetString("ScriptPicker.Items"),
+            resources.GetString("ScriptPicker.Items1"),
+            resources.GetString("ScriptPicker.Items2"),
+            resources.GetString("ScriptPicker.Items3"),
+            resources.GetString("ScriptPicker.Items4")});
             this.ScriptPicker.Name = "ScriptPicker";
-            this.ScriptPicker.Size = new System.Drawing.Size(472, 21);
-            this.ScriptPicker.TabIndex = 32;
             this.ScriptPicker.SelectedIndexChanged += new System.EventHandler(this.ScriptPicker_SelectedIndexChanged);
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(8, 32);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 16);
-            this.label3.TabIndex = 31;
-            this.label3.Text = "Script";
             // 
             // Target
             // 
-            this.Target.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.Target.Location = new System.Drawing.Point(136, 8);
+            resources.ApplyResources(this.Target, "Target");
             this.Target.Name = "Target";
-            this.Target.Size = new System.Drawing.Size(472, 20);
-            this.Target.TabIndex = 30;
             this.Target.TextChanged += new System.EventHandler(this.Target_TextChanged);
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 16);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Target";
             // 
             // Script
             // 
-            this.Script.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.Script.Location = new System.Drawing.Point(8, 56);
-            this.Script.Multiline = true;
+            resources.ApplyResources(this.Script, "Script");
             this.Script.Name = "Script";
-            this.Script.Size = new System.Drawing.Size(600, 136);
-            this.Script.TabIndex = 33;
             this.Script.TextChanged += new System.EventHandler(this.Script_TextChanged);
             // 
             // InvokeScript
@@ -153,7 +134,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             this.Controls.Add(this.Target);
             this.Controls.Add(this.label2);
             this.Name = "InvokeScript";
-            this.Size = new System.Drawing.Size(616, 198);
+            resources.ApplyResources(this, "$this");
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -49,14 +49,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 			managedFileControl.NewDefaultSelected += new ResourceEditors.FeatureSourceEditors.ManagedFileControl.NewDefaultSelectedDelegate(managedFileControl_NewDefaultSelected);
 
 			System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
-			nv.Add(".shp", "Shape file (*.shp)");
-			nv.Add(".mif", "MapInfo Interchange (*.mif)");
-			nv.Add(".tab", "MapInfo Native (*.tab)");
-			nv.Add(".sqlite", "SQLite database (*.sqlite)");
-			nv.Add(".gml", "GML file (*.gml)");
-			nv.Add(".dgn", "DGN file (*.dgn)");
-			nv.Add(".s57", "S-57 (*.s57)");
-			nv.Add("", "All files (*.*)");
+			nv.Add(".shp", Strings.Common.ShapeFiles);
+			nv.Add(".mif", Strings.Common.MapInfoInterchangeFiles);
+			nv.Add(".tab", Strings.Common.MapInfoNativeFiles);
+			nv.Add(".sqlite", Strings.Common.SQLiteFiles);
+			nv.Add(".gml", Strings.Common.GMLFiles);
+			nv.Add(".dgn", Strings.Common.DGNFiles);
+			nv.Add(".s57", Strings.Common.S57Files);
+			nv.Add("", Strings.Common.AllFiles);
 			managedFileControl.FileTypes = nv;
 		}
 
@@ -112,14 +112,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
             // 
             // managedFileControl
             // 
-            this.managedFileControl.AutoScroll = true;
-            this.managedFileControl.AutoScrollMinSize = new System.Drawing.Size(136, 56);
-            this.managedFileControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.managedFileControl, "managedFileControl");
             this.managedFileControl.FileTypes = null;
-            this.managedFileControl.Location = new System.Drawing.Point(0, 0);
             this.managedFileControl.Name = "managedFileControl";
-            this.managedFileControl.Size = new System.Drawing.Size(200, 96);
-            this.managedFileControl.TabIndex = 1;
             this.managedFileControl.NewDefaultSelected += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ManagedFileControl.NewDefaultSelectedDelegate(this.managedFileControl_NewDefaultSelected);
             // 
             // ToolbarImages
@@ -130,11 +125,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
             // 
             // Managed
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(200, 96);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.managedFileControl);
             this.Name = "Managed";
-            this.Size = new System.Drawing.Size(200, 96);
             this.ResumeLayout(false);
 
 		}

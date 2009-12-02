@@ -100,11 +100,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors
             // 
             // Filelist
             // 
-            this.Filelist.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Filelist.Location = new System.Drawing.Point(0, 25);
+            resources.ApplyResources(this.Filelist, "Filelist");
             this.Filelist.Name = "Filelist";
-            this.Filelist.Size = new System.Drawing.Size(200, 98);
-            this.Filelist.TabIndex = 3;
             this.Filelist.UseCompatibleStateImageBehavior = false;
             this.Filelist.View = System.Windows.Forms.View.List;
             this.Filelist.SelectedIndexChanged += new System.EventHandler(this.Filelist_SelectedIndexChanged);
@@ -118,68 +115,49 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors
             this.DataItemButton,
             this.toolStripSeparator1,
             this.DownloadButton});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip.Size = new System.Drawing.Size(200, 25);
-            this.toolStrip.TabIndex = 4;
             // 
             // AddButton
             // 
             this.AddButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddButton.Image = ((System.Drawing.Image)(resources.GetObject("AddButton.Image")));
-            this.AddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddButton, "AddButton");
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(23, 22);
-            this.AddButton.ToolTipText = "Upload a new file to the server";
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // RemoveButton
             // 
             this.RemoveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RemoveButton.Enabled = false;
-            this.RemoveButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveButton.Image")));
-            this.RemoveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.RemoveButton, "RemoveButton");
             this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveButton.ToolTipText = "Delete a file from the server";
             this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // DataItemButton
             // 
             this.DataItemButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.DataItemButton.Enabled = false;
-            this.DataItemButton.Image = ((System.Drawing.Image)(resources.GetObject("DataItemButton.Image")));
-            this.DataItemButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.DataItemButton, "DataItemButton");
             this.DataItemButton.Name = "DataItemButton";
-            this.DataItemButton.Size = new System.Drawing.Size(23, 22);
-            this.DataItemButton.ToolTipText = "Select the currently selected data item as the datasource";
             this.DataItemButton.Click += new System.EventHandler(this.DataItemButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // DownloadButton
             // 
             this.DownloadButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.DownloadButton.Enabled = false;
-            this.DownloadButton.Image = ((System.Drawing.Image)(resources.GetObject("DownloadButton.Image")));
-            this.DownloadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.DownloadButton, "DownloadButton");
             this.DownloadButton.Name = "DownloadButton";
-            this.DownloadButton.Size = new System.Drawing.Size(23, 22);
-            this.DownloadButton.ToolTipText = "Download a copy of the server file";
             this.DownloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
             // 
             // ManagedFileControl
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(136, 56);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.Filelist);
             this.Controls.Add(this.toolStrip);
             this.Name = "ManagedFileControl";
-            this.Size = new System.Drawing.Size(200, 123);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.ResumeLayout(false);

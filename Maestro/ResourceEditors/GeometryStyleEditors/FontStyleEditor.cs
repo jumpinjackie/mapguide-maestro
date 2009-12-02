@@ -94,8 +94,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
         private CheckBox DisplayLabel;
 		private bool isUpdating = false;
 
-        private Globalizator.Globalizator m_globalizor;
-
 		public event EventHandler Changed;
 
 		public FontStyleEditor()
@@ -105,7 +103,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				System.IO.Stream s = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "FontStyleComboDataset.xml");
 				byte[] buf = new byte[s.Length];
 				if (s.Read(buf, 0, (int)s.Length) != s.Length)
-					throw new Exception("Failed while reading data from assembly");
+					throw new Exception(OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.AssemblyDataInternalError);
 				SharedComboDataSet = buf;
 			}
 
@@ -119,7 +117,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
             backgroundColor.ResetColors();
             textColor.ResetColors();
-            m_globalizor = new Globalizator.Globalizator(this);
 		}
 
 		public void SetAvalibleColumns(string[] items)
@@ -271,8 +268,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // fontGroup
             // 
-            this.fontGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.fontGroup, "fontGroup");
             this.fontGroup.Controls.Add(this.sizeCombo);
             this.fontGroup.Controls.Add(this.unitsCombo);
             this.fontGroup.Controls.Add(this.sizeContextCombo);
@@ -285,37 +281,24 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.fontGroup.Controls.Add(this.label2);
             this.fontGroup.Controls.Add(this.label1);
             this.fontGroup.Controls.Add(this.panel1);
-            this.fontGroup.Location = new System.Drawing.Point(0, 24);
             this.fontGroup.Name = "fontGroup";
-            this.fontGroup.Size = new System.Drawing.Size(296, 208);
-            this.fontGroup.TabIndex = 12;
             this.fontGroup.TabStop = false;
-            this.fontGroup.Text = "Font";
             this.fontGroup.Enter += new System.EventHandler(this.fontGroup_Enter);
             // 
             // sizeCombo
             // 
-            this.sizeCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.sizeCombo.Location = new System.Drawing.Point(112, 144);
+            resources.ApplyResources(this.sizeCombo, "sizeCombo");
             this.sizeCombo.Name = "sizeCombo";
-            this.sizeCombo.Size = new System.Drawing.Size(176, 21);
-            this.sizeCombo.TabIndex = 10;
-            this.sizeCombo.Text = "comboBox5";
             this.sizeCombo.SelectedIndexChanged += new System.EventHandler(this.sizeCombo_SelectedIndexChanged);
             this.sizeCombo.TextChanged += new System.EventHandler(this.sizeCombo_TextChanged);
             // 
             // unitsCombo
             // 
-            this.unitsCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.unitsCombo, "unitsCombo");
             this.unitsCombo.DataSource = this.UnitsTable;
             this.unitsCombo.DisplayMember = "Display";
             this.unitsCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.unitsCombo.Location = new System.Drawing.Point(112, 112);
             this.unitsCombo.Name = "unitsCombo";
-            this.unitsCombo.Size = new System.Drawing.Size(176, 21);
-            this.unitsCombo.TabIndex = 9;
             this.unitsCombo.ValueMember = "Value";
             this.unitsCombo.SelectedIndexChanged += new System.EventHandler(this.unitsCombo_SelectedIndexChanged);
             // 
@@ -338,15 +321,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // sizeContextCombo
             // 
-            this.sizeContextCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.sizeContextCombo, "sizeContextCombo");
             this.sizeContextCombo.DataSource = this.SizeContextTable;
             this.sizeContextCombo.DisplayMember = "Display";
             this.sizeContextCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.sizeContextCombo.Location = new System.Drawing.Point(112, 80);
             this.sizeContextCombo.Name = "sizeContextCombo";
-            this.sizeContextCombo.Size = new System.Drawing.Size(176, 21);
-            this.sizeContextCombo.TabIndex = 8;
             this.sizeContextCombo.ValueMember = "Value";
             this.sizeContextCombo.SelectedIndexChanged += new System.EventHandler(this.sizeContextCombo_SelectedIndexChanged);
             // 
@@ -369,14 +348,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // fontCombo
             // 
-            this.fontCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.fontCombo, "fontCombo");
             this.fontCombo.DataSource = this.FontTable;
             this.fontCombo.DisplayMember = "Display";
-            this.fontCombo.Location = new System.Drawing.Point(112, 48);
             this.fontCombo.Name = "fontCombo";
-            this.fontCombo.Size = new System.Drawing.Size(176, 21);
-            this.fontCombo.TabIndex = 7;
             this.fontCombo.ValueMember = "Value";
             this.fontCombo.SelectedIndexChanged += new System.EventHandler(this.fontCombo_SelectedIndexChanged);
             this.fontCombo.TextChanged += new System.EventHandler(this.fontCombo_TextChanged);
@@ -400,142 +375,86 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // propertyCombo
             // 
-            this.propertyCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.propertyCombo.Location = new System.Drawing.Point(112, 16);
+            resources.ApplyResources(this.propertyCombo, "propertyCombo");
             this.propertyCombo.Name = "propertyCombo";
-            this.propertyCombo.Size = new System.Drawing.Size(176, 21);
-            this.propertyCombo.TabIndex = 6;
             this.propertyCombo.SelectedIndexChanged += new System.EventHandler(this.propertyCombo_SelectedIndexChanged);
             this.propertyCombo.TextChanged += new System.EventHandler(this.propertyCombo_TextChanged);
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(8, 176);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 16);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Style";
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(8, 144);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 16);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Size";
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(8, 112);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 16);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Units";
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(8, 80);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Size context";
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(8, 48);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Font";
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Property";
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.underlineCheck);
             this.panel1.Controls.Add(this.italicCheck);
             this.panel1.Controls.Add(this.boldCheck);
-            this.panel1.Location = new System.Drawing.Point(112, 176);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(176, 24);
-            this.panel1.TabIndex = 11;
             // 
             // underlineCheck
             // 
-            this.underlineCheck.Appearance = System.Windows.Forms.Appearance.Button;
-            this.underlineCheck.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.underlineCheck.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.underlineCheck.Location = new System.Drawing.Point(64, 0);
+            resources.ApplyResources(this.underlineCheck, "underlineCheck");
             this.underlineCheck.Name = "underlineCheck";
-            this.underlineCheck.Size = new System.Drawing.Size(24, 24);
-            this.underlineCheck.TabIndex = 5;
-            this.underlineCheck.Text = "U";
-            this.underlineCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.underlineCheck.CheckedChanged += new System.EventHandler(this.underlineCheck_CheckedChanged);
             // 
             // italicCheck
             // 
-            this.italicCheck.Appearance = System.Windows.Forms.Appearance.Button;
-            this.italicCheck.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.italicCheck.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.italicCheck.Location = new System.Drawing.Point(32, 0);
+            resources.ApplyResources(this.italicCheck, "italicCheck");
             this.italicCheck.Name = "italicCheck";
-            this.italicCheck.Size = new System.Drawing.Size(24, 24);
-            this.italicCheck.TabIndex = 4;
-            this.italicCheck.Text = "I";
-            this.italicCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.italicCheck.CheckedChanged += new System.EventHandler(this.italicCheck_CheckedChanged);
             // 
             // boldCheck
             // 
-            this.boldCheck.Appearance = System.Windows.Forms.Appearance.Button;
-            this.boldCheck.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.boldCheck.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boldCheck.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.boldCheck, "boldCheck");
             this.boldCheck.Name = "boldCheck";
-            this.boldCheck.Size = new System.Drawing.Size(24, 24);
-            this.boldCheck.TabIndex = 3;
-            this.boldCheck.Text = "B";
-            this.boldCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.boldCheck.CheckedChanged += new System.EventHandler(this.boldCheck_CheckedChanged);
             // 
             // colorGroup
             // 
-            this.colorGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.colorGroup, "colorGroup");
             this.colorGroup.Controls.Add(this.backgroundTypeCombo);
             this.colorGroup.Controls.Add(this.backgroundColor);
             this.colorGroup.Controls.Add(this.textColor);
             this.colorGroup.Controls.Add(this.label7);
             this.colorGroup.Controls.Add(this.label8);
             this.colorGroup.Controls.Add(this.label9);
-            this.colorGroup.Location = new System.Drawing.Point(0, 240);
             this.colorGroup.Name = "colorGroup";
-            this.colorGroup.Size = new System.Drawing.Size(296, 112);
-            this.colorGroup.TabIndex = 14;
             this.colorGroup.TabStop = false;
-            this.colorGroup.Text = "Colors";
             // 
             // backgroundTypeCombo
             // 
-            this.backgroundTypeCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.backgroundTypeCombo, "backgroundTypeCombo");
             this.backgroundTypeCombo.DataSource = this.BackgroundTypeTable;
             this.backgroundTypeCombo.DisplayMember = "Display";
             this.backgroundTypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.backgroundTypeCombo.Location = new System.Drawing.Point(112, 78);
             this.backgroundTypeCombo.Name = "backgroundTypeCombo";
-            this.backgroundTypeCombo.Size = new System.Drawing.Size(176, 21);
-            this.backgroundTypeCombo.TabIndex = 11;
             this.backgroundTypeCombo.ValueMember = "Value";
             this.backgroundTypeCombo.SelectedIndexChanged += new System.EventHandler(this.backgroundTypeCombo_SelectedIndexChanged);
             // 
@@ -556,75 +475,49 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // backgroundColor
             // 
-            this.backgroundColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.backgroundColor.Location = new System.Drawing.Point(112, 46);
+            resources.ApplyResources(this.backgroundColor, "backgroundColor");
             this.backgroundColor.Name = "backgroundColor";
-            this.backgroundColor.Size = new System.Drawing.Size(176, 21);
-            this.backgroundColor.TabIndex = 10;
             this.backgroundColor.SelectedIndexChanged += new System.EventHandler(this.backgroundColor_SelectedIndexChanged);
             // 
             // textColor
             // 
-            this.textColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textColor.Location = new System.Drawing.Point(112, 14);
+            resources.ApplyResources(this.textColor, "textColor");
             this.textColor.Name = "textColor";
-            this.textColor.Size = new System.Drawing.Size(176, 21);
-            this.textColor.TabIndex = 9;
             this.textColor.SelectedIndexChanged += new System.EventHandler(this.textColor_SelectedIndexChanged);
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(8, 80);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(96, 16);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Background type";
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(8, 48);
+            resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 16);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Background";
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(64, 16);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Text";
             // 
             // alignmentGroup
             // 
-            this.alignmentGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.alignmentGroup, "alignmentGroup");
             this.alignmentGroup.Controls.Add(this.rotationCombo);
             this.alignmentGroup.Controls.Add(this.verticalCombo);
             this.alignmentGroup.Controls.Add(this.horizontalCombo);
             this.alignmentGroup.Controls.Add(this.label10);
             this.alignmentGroup.Controls.Add(this.verticalLabel);
             this.alignmentGroup.Controls.Add(this.horizontalLabel);
-            this.alignmentGroup.Location = new System.Drawing.Point(0, 360);
             this.alignmentGroup.Name = "alignmentGroup";
-            this.alignmentGroup.Size = new System.Drawing.Size(296, 112);
-            this.alignmentGroup.TabIndex = 15;
             this.alignmentGroup.TabStop = false;
-            this.alignmentGroup.Text = "Alignment";
             // 
             // rotationCombo
             // 
-            this.rotationCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.rotationCombo, "rotationCombo");
             this.rotationCombo.DataSource = this.RotationTable;
             this.rotationCombo.DisplayMember = "Display";
-            this.rotationCombo.Location = new System.Drawing.Point(112, 78);
             this.rotationCombo.Name = "rotationCombo";
-            this.rotationCombo.Size = new System.Drawing.Size(176, 21);
-            this.rotationCombo.TabIndex = 11;
             this.rotationCombo.ValueMember = "Value";
             this.rotationCombo.SelectedIndexChanged += new System.EventHandler(this.rotationCombo_SelectedIndexChanged);
             // 
@@ -647,15 +540,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // verticalCombo
             // 
-            this.verticalCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.verticalCombo, "verticalCombo");
             this.verticalCombo.DataSource = this.VerticalTable;
             this.verticalCombo.DisplayMember = "Display";
             this.verticalCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.verticalCombo.Location = new System.Drawing.Point(112, 46);
             this.verticalCombo.Name = "verticalCombo";
-            this.verticalCombo.Size = new System.Drawing.Size(176, 21);
-            this.verticalCombo.TabIndex = 10;
             this.verticalCombo.ValueMember = "Value";
             this.verticalCombo.SelectedIndexChanged += new System.EventHandler(this.verticalCombo_SelectedIndexChanged);
             // 
@@ -676,15 +565,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // horizontalCombo
             // 
-            this.horizontalCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.horizontalCombo, "horizontalCombo");
             this.horizontalCombo.DataSource = this.HorizontalTable;
             this.horizontalCombo.DisplayMember = "Display";
             this.horizontalCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.horizontalCombo.Location = new System.Drawing.Point(112, 14);
             this.horizontalCombo.Name = "horizontalCombo";
-            this.horizontalCombo.Size = new System.Drawing.Size(176, 21);
-            this.horizontalCombo.TabIndex = 9;
             this.horizontalCombo.ValueMember = "Value";
             this.horizontalCombo.SelectedIndexChanged += new System.EventHandler(this.horizontalCombo_SelectedIndexChanged);
             // 
@@ -705,50 +590,32 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(8, 80);
+            resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(96, 16);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Rotation";
             // 
             // verticalLabel
             // 
-            this.verticalLabel.Location = new System.Drawing.Point(8, 48);
+            resources.ApplyResources(this.verticalLabel, "verticalLabel");
             this.verticalLabel.Name = "verticalLabel";
-            this.verticalLabel.Size = new System.Drawing.Size(80, 16);
-            this.verticalLabel.TabIndex = 4;
-            this.verticalLabel.Text = "Vertical";
             // 
             // horizontalLabel
             // 
-            this.horizontalLabel.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.horizontalLabel, "horizontalLabel");
             this.horizontalLabel.Name = "horizontalLabel";
-            this.horizontalLabel.Size = new System.Drawing.Size(64, 16);
-            this.horizontalLabel.TabIndex = 3;
-            this.horizontalLabel.Text = "Horizontal";
             // 
             // previewGroup
             // 
-            this.previewGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.previewGroup, "previewGroup");
             this.previewGroup.Controls.Add(this.previewPicture);
-            this.previewGroup.Location = new System.Drawing.Point(0, 480);
             this.previewGroup.Name = "previewGroup";
-            this.previewGroup.Size = new System.Drawing.Size(296, 48);
-            this.previewGroup.TabIndex = 16;
             this.previewGroup.TabStop = false;
-            this.previewGroup.Text = "Preview";
             // 
             // previewPicture
             // 
-            this.previewPicture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.previewPicture, "previewPicture");
             this.previewPicture.BackColor = System.Drawing.Color.White;
             this.previewPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.previewPicture.Location = new System.Drawing.Point(8, 16);
             this.previewPicture.Name = "previewPicture";
-            this.previewPicture.Size = new System.Drawing.Size(280, 24);
-            this.previewPicture.TabIndex = 0;
             this.previewPicture.TabStop = false;
             this.previewPicture.Paint += new System.Windows.Forms.PaintEventHandler(this.previewPicture_Paint);
             // 
@@ -767,28 +634,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // DisplayLabel
             // 
-            this.DisplayLabel.AutoSize = true;
+            resources.ApplyResources(this.DisplayLabel, "DisplayLabel");
             this.DisplayLabel.Checked = true;
             this.DisplayLabel.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.DisplayLabel.Location = new System.Drawing.Point(0, 0);
             this.DisplayLabel.Name = "DisplayLabel";
-            this.DisplayLabel.Size = new System.Drawing.Size(126, 17);
-            this.DisplayLabel.TabIndex = 17;
-            this.DisplayLabel.Text = "Display feature labels";
             this.DisplayLabel.UseVisualStyleBackColor = true;
             this.DisplayLabel.CheckedChanged += new System.EventHandler(this.DisplayLabel_CheckedChanged);
             // 
             // FontStyleEditor
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(296, 531);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.DisplayLabel);
             this.Controls.Add(this.previewGroup);
             this.Controls.Add(this.colorGroup);
             this.Controls.Add(this.fontGroup);
             this.Controls.Add(this.alignmentGroup);
             this.Name = "FontStyleEditor";
-            this.Size = new System.Drawing.Size(296, 531);
             this.fontGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).EndInit();

@@ -165,88 +165,60 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Table = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.Database = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.credentials = new ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
-			this.SuspendLayout();
-			// 
-			// Table
-			// 
-			this.Table.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Table.Location = new System.Drawing.Point(112, 40);
-			this.Table.Name = "Table";
-			this.Table.Size = new System.Drawing.Size(176, 20);
-			this.Table.TabIndex = 27;
-			this.Table.Text = "";
-			this.Table.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 40);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(96, 16);
-			this.label3.TabIndex = 26;
-			this.label3.Text = "Table";
-			// 
-			// Database
-			// 
-			this.Database.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Database.Location = new System.Drawing.Point(112, 8);
-			this.Database.Name = "Database";
-			this.Database.Size = new System.Drawing.Size(176, 20);
-			this.Database.TabIndex = 25;
-			this.Database.Text = "";
-			this.Database.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 8);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(96, 16);
-			this.label2.TabIndex = 24;
-			this.label2.Text = "Database";
-			// 
-			// label7
-			// 
-			this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.label7.Location = new System.Drawing.Point(112, 72);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(176, 48);
-			this.label7.TabIndex = 32;
-			this.label7.Text = "Tables are optional, but will speed up initial connection. Enter a list of table " +
-				"names, seperated by commas. Ea.: table1,table2";
-			// 
-			// credentials
-			// 
-			this.credentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.credentials.AutoScroll = true;
-			this.credentials.AutoScrollMinSize = new System.Drawing.Size(264, 152);
-			this.credentials.Location = new System.Drawing.Point(8, 128);
-			this.credentials.Name = "credentials";
-			this.credentials.Size = new System.Drawing.Size(280, 152);
-			this.credentials.TabIndex = 33;
-			this.credentials.CredentialsChanged += new ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
-			// 
-			// Oracle
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(296, 288);
-			this.Controls.Add(this.credentials);
-			this.Controls.Add(this.label7);
-			this.Controls.Add(this.Table);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.Database);
-			this.Controls.Add(this.label2);
-			this.Name = "Oracle";
-			this.Size = new System.Drawing.Size(296, 288);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Oracle));
+            this.Table = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Database = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.credentials = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
+            this.SuspendLayout();
+            // 
+            // Table
+            // 
+            resources.ApplyResources(this.Table, "Table");
+            this.Table.Name = "Table";
+            this.Table.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // Database
+            // 
+            resources.ApplyResources(this.Database, "Database");
+            this.Database.Name = "Database";
+            this.Database.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // credentials
+            // 
+            resources.ApplyResources(this.credentials, "credentials");
+            this.credentials.Name = "credentials";
+            this.credentials.CredentialsChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
+            // 
+            // Oracle
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.credentials);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.Table);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Database);
+            this.Controls.Add(this.label2);
+            this.Name = "Oracle";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

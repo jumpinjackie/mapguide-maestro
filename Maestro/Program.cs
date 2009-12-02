@@ -60,12 +60,26 @@ namespace OSGeo.MapGuide.Maestro
 			{
 				Application.EnableVisualStyles();
 				Application.DoEvents();
-				Globalizator.Globalizator.InitializeResourceManager();
+
+                try
+                {
+                    PreferedSiteList sites = PreferedSiteList.Load();
+                    if (!string.IsNullOrEmpty(sites.GUILanguage))
+                    {
+                        System.Threading.Thread.CurrentThread.CurrentUICulture =
+                        System.Threading.Thread.CurrentThread.CurrentCulture =
+                            System.Globalization.CultureInfo.GetCultureInfo(sites.GUILanguage);
+                    }
+                }
+                catch
+                {
+                }
+
 				Application.Run(new FormMain());
 			}
 			catch(Exception ex)
 			{
-				MessageBox.Show("A serious error occured: " + ex.ToString(), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(string.Format(Strings.Program.SeriousError, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -142,7 +156,7 @@ namespace OSGeo.MapGuide.Maestro
             catch (Exception ex)
             {
                 string s = ex.Message;
-                MessageBox.Show(string.Format(Globalizator.Globalizator.Translate("OSGeo.MapGuide.Maestro.Localization.FormAbout", System.Reflection.Assembly.GetExecutingAssembly(), "Unable to open a browser window, please manually visit: \r\n{0}"), url), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(Strings.Program.OpenLinkError, url), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

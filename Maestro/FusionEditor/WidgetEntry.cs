@@ -98,34 +98,30 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.WidgetCombo = new System.Windows.Forms.ComboBox();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(4, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(64, 16);
-			this.label1.TabIndex = 4;
-			this.label1.Text = "Widget";
-			// 
-			// WidgetCombo
-			// 
-			this.WidgetCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.WidgetCombo.Location = new System.Drawing.Point(80, 8);
-			this.WidgetCombo.Name = "WidgetCombo";
-			this.WidgetCombo.Size = new System.Drawing.Size(304, 21);
-			this.WidgetCombo.TabIndex = 5;
-			this.WidgetCombo.SelectedIndexChanged += new System.EventHandler(this.WidgetCombo_SelectedIndexChanged);
-			// 
-			// WidgetEntry
-			// 
-			this.Controls.Add(this.WidgetCombo);
-			this.Controls.Add(this.label1);
-			this.Name = "WidgetEntry";
-			this.Size = new System.Drawing.Size(392, 40);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WidgetEntry));
+            this.label1 = new System.Windows.Forms.Label();
+            this.WidgetCombo = new System.Windows.Forms.ComboBox();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // WidgetCombo
+            // 
+            this.WidgetCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.WidgetCombo, "WidgetCombo");
+            this.WidgetCombo.Name = "WidgetCombo";
+            this.WidgetCombo.SelectedIndexChanged += new System.EventHandler(this.WidgetCombo_SelectedIndexChanged);
+            // 
+            // WidgetEntry
+            // 
+            this.Controls.Add(this.WidgetCombo);
+            this.Controls.Add(this.label1);
+            this.Name = "WidgetEntry";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
 
 		}
 		#endregion

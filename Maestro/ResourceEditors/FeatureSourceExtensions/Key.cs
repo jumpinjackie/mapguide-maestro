@@ -142,59 +142,46 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceExtensions
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.SecondaryKey = new System.Windows.Forms.ComboBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.PrimaryKey = new System.Windows.Forms.ComboBox();
-			this.SuspendLayout();
-			// 
-			// SecondaryKey
-			// 
-			this.SecondaryKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.SecondaryKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.SecondaryKey.Location = new System.Drawing.Point(160, 32);
-			this.SecondaryKey.Name = "SecondaryKey";
-			this.SecondaryKey.Size = new System.Drawing.Size(320, 21);
-			this.SecondaryKey.TabIndex = 7;
-			this.SecondaryKey.SelectedIndexChanged += new System.EventHandler(this.SecondaryKey_SelectedIndexChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 8);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(144, 16);
-			this.label2.TabIndex = 5;
-			this.label2.Text = "Left column";
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 32);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(144, 16);
-			this.label1.TabIndex = 4;
-			this.label1.Text = "Right column";
-			// 
-			// PrimaryKey
-			// 
-			this.PrimaryKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.PrimaryKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.PrimaryKey.Location = new System.Drawing.Point(160, 8);
-			this.PrimaryKey.Name = "PrimaryKey";
-			this.PrimaryKey.Size = new System.Drawing.Size(320, 21);
-			this.PrimaryKey.TabIndex = 8;
-			this.PrimaryKey.SelectedIndexChanged += new System.EventHandler(this.PrimaryKey_SelectedIndexChanged);
-			// 
-			// Key
-			// 
-			this.Controls.Add(this.PrimaryKey);
-			this.Controls.Add(this.SecondaryKey);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Name = "Key";
-			this.Size = new System.Drawing.Size(488, 56);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Key));
+            this.SecondaryKey = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.PrimaryKey = new System.Windows.Forms.ComboBox();
+            this.SuspendLayout();
+            // 
+            // SecondaryKey
+            // 
+            resources.ApplyResources(this.SecondaryKey, "SecondaryKey");
+            this.SecondaryKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SecondaryKey.Name = "SecondaryKey";
+            this.SecondaryKey.SelectedIndexChanged += new System.EventHandler(this.SecondaryKey_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // PrimaryKey
+            // 
+            resources.ApplyResources(this.PrimaryKey, "PrimaryKey");
+            this.PrimaryKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PrimaryKey.Name = "PrimaryKey";
+            this.PrimaryKey.SelectedIndexChanged += new System.EventHandler(this.PrimaryKey_SelectedIndexChanged);
+            // 
+            // Key
+            // 
+            this.Controls.Add(this.PrimaryKey);
+            this.Controls.Add(this.SecondaryKey);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Name = "Key";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
 
 		}
 		#endregion

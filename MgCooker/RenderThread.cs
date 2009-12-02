@@ -145,8 +145,8 @@ namespace OSGeo.MapGuide.MgCooker
                                     eventToRaise.Col,
                                     ref eventToRaise.Exception);
                                 break;
-                            default:
-                                throw new Exception("Bad event type");
+                            default: 
+                                throw new Exception("Bad event type"); //Not translated, because it is an internal error that should never happen
                         }
                         eventToRaise.Event.Set();
                         eventToRaise = null;

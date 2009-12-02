@@ -130,61 +130,45 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Path = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.Provider = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Path
-			// 
-			this.Path.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Path.Location = new System.Drawing.Point(112, 40);
-			this.Path.Name = "Path";
-			this.Path.Size = new System.Drawing.Size(104, 20);
-			this.Path.TabIndex = 19;
-			this.Path.Text = "";
-			this.Path.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 40);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(96, 16);
-			this.label2.TabIndex = 18;
-			this.label2.Text = "Path";
-			// 
-			// Provider
-			// 
-			this.Provider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Provider.Location = new System.Drawing.Point(112, 8);
-			this.Provider.Name = "Provider";
-			this.Provider.Size = new System.Drawing.Size(104, 20);
-			this.Provider.TabIndex = 17;
-			this.Provider.Text = "";
-			this.Provider.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(96, 16);
-			this.label1.TabIndex = 16;
-			this.label1.Text = "Provider";
-			// 
-			// FME
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(224, 64);
-			this.Controls.Add(this.Path);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.Provider);
-			this.Controls.Add(this.label1);
-			this.Name = "FME";
-			this.Size = new System.Drawing.Size(224, 64);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FME));
+            this.Path = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Provider = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Path
+            // 
+            resources.ApplyResources(this.Path, "Path");
+            this.Path.Name = "Path";
+            this.Path.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // Provider
+            // 
+            resources.ApplyResources(this.Provider, "Provider");
+            this.Provider.Name = "Provider";
+            this.Provider.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // FME
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.Path);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Provider);
+            this.Controls.Add(this.label1);
+            this.Name = "FME";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

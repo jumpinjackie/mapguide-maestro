@@ -84,72 +84,53 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Target = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.AdditionalParameter = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.DisableIfSelectionEmpty = new System.Windows.Forms.CheckBox();
-			this.SuspendLayout();
-			// 
-			// Target
-			// 
-			this.Target.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Target.Location = new System.Drawing.Point(144, 56);
-			this.Target.Name = "Target";
-			this.Target.Size = new System.Drawing.Size(464, 20);
-			this.Target.TabIndex = 46;
-			this.Target.Text = "";
-			this.Target.TextChanged += new System.EventHandler(this.Target_TextChanged);
-			// 
-			// label9
-			// 
-			this.label9.Location = new System.Drawing.Point(8, 56);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(136, 16);
-			this.label9.TabIndex = 45;
-			this.label9.Text = "Target";
-			// 
-			// AdditionalParameter
-			// 
-			this.AdditionalParameter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.AdditionalParameter.Location = new System.Drawing.Point(144, 32);
-			this.AdditionalParameter.Name = "AdditionalParameter";
-			this.AdditionalParameter.Size = new System.Drawing.Size(464, 20);
-			this.AdditionalParameter.TabIndex = 44;
-			this.AdditionalParameter.Text = "";
-			this.AdditionalParameter.TextChanged += new System.EventHandler(this.AdditionalParameter_TextChanged);
-			// 
-			// label10
-			// 
-			this.label10.Location = new System.Drawing.Point(8, 32);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(136, 16);
-			this.label10.TabIndex = 43;
-			this.label10.Text = "Additional parameter";
-			// 
-			// DisableIfSelectionEmpty
-			// 
-			this.DisableIfSelectionEmpty.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.DisableIfSelectionEmpty.Location = new System.Drawing.Point(8, 8);
-			this.DisableIfSelectionEmpty.Name = "DisableIfSelectionEmpty";
-			this.DisableIfSelectionEmpty.Size = new System.Drawing.Size(600, 16);
-			this.DisableIfSelectionEmpty.TabIndex = 47;
-			this.DisableIfSelectionEmpty.Text = "Disable if the selection is empty";
-			this.DisableIfSelectionEmpty.CheckedChanged += new System.EventHandler(this.DisableIfSelectionEmpty_CheckedChanged);
-			// 
-			// SelectWithin
-			// 
-			this.Controls.Add(this.DisableIfSelectionEmpty);
-			this.Controls.Add(this.Target);
-			this.Controls.Add(this.label9);
-			this.Controls.Add(this.AdditionalParameter);
-			this.Controls.Add(this.label10);
-			this.Name = "SelectWithin";
-			this.Size = new System.Drawing.Size(616, 80);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectWithin));
+            this.Target = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.AdditionalParameter = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.DisableIfSelectionEmpty = new System.Windows.Forms.CheckBox();
+            this.SuspendLayout();
+            // 
+            // Target
+            // 
+            resources.ApplyResources(this.Target, "Target");
+            this.Target.Name = "Target";
+            this.Target.TextChanged += new System.EventHandler(this.Target_TextChanged);
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // AdditionalParameter
+            // 
+            resources.ApplyResources(this.AdditionalParameter, "AdditionalParameter");
+            this.AdditionalParameter.Name = "AdditionalParameter";
+            this.AdditionalParameter.TextChanged += new System.EventHandler(this.AdditionalParameter_TextChanged);
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // DisableIfSelectionEmpty
+            // 
+            resources.ApplyResources(this.DisableIfSelectionEmpty, "DisableIfSelectionEmpty");
+            this.DisableIfSelectionEmpty.Name = "DisableIfSelectionEmpty";
+            this.DisableIfSelectionEmpty.CheckedChanged += new System.EventHandler(this.DisableIfSelectionEmpty_CheckedChanged);
+            // 
+            // SelectWithin
+            // 
+            this.Controls.Add(this.DisableIfSelectionEmpty);
+            this.Controls.Add(this.Target);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.AdditionalParameter);
+            this.Controls.Add(this.label10);
+            this.Name = "SelectWithin";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

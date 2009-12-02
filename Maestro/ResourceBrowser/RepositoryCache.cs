@@ -48,16 +48,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
         private ResourceFolder m_root = null;
         private Dictionary<string, ResourceFolder> m_folders;
         private ResourceEditorMap m_editors;
-        private Globalizator.Globalizator m_globalizor;
 
         /// <summary>
         /// The editor map has images and various helper functions
         /// </summary>
         public ResourceEditorMap EditorMap { get { return m_editors; } }
-        /// <summary>
-        /// The globalizor makes sure we display the texts in the correct language
-        /// </summary>
-        public Globalizator.Globalizator Globalizator { get { return m_globalizor; } }
         /// <summary>
         /// This marker is used on treenodes to indicate that the parent node has not loaded
         /// </summary>
@@ -69,11 +64,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
         public event EventHandler CacheResetEvent;
 
 
-        public RepositoryCache(ServerConnectionI connection, ResourceEditorMap editors, Globalizator.Globalizator globalizor)
+        public RepositoryCache(ServerConnectionI connection, ResourceEditorMap editors)
         {
             m_connection = connection;
             m_editors = editors;
-            m_globalizor = globalizor;
         }
 
         /// <summary>
@@ -183,10 +177,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
                 if (m_folders.ContainsKey(resId))
                     return m_folders[resId];
                 else
-                    throw new Exception("Unknown node passed to reload");
+                    throw new Exception(Strings.RepositoryCache.UnknownNodeInternalError);
             }
             else
-                throw new Exception("Invalid node passed to reload");
+                throw new Exception(Strings.RepositoryCache.InvalidNodeInternalError);
         }
 
         /// <summary>
@@ -299,7 +293,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
                     n.Text = m_parent.EditorMap.GetResourceNameFromResourceID(folder.ResourceId);
                     n.Tag = folder.m_item;
                     n.ImageIndex = n.SelectedImageIndex = m_parent.EditorMap.FolderIcon;
-                    n.ToolTipText = string.Format(m_parent.Globalizator.Translate("Resource name: {0}\r\nResource type: {1}\r\nCreated: {2}\r\nLast modified: {3}"), new MaestroAPI.ResourceIdentifier(folder.ResourceId.Substring(0, folder.ResourceId.Length - 1) + ".Folder").Name, m_parent.Globalizator.Translate("Folder"), folder.m_item.CreatedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture), folder.m_item.ModifiedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture));
+                    n.ToolTipText = string.Format(Strings.RepositoryCache.ResourceTooltip, new MaestroAPI.ResourceIdentifier(folder.ResourceId.Substring(0, folder.ResourceId.Length - 1) + ".Folder").Name, Strings.RepositoryCache.FolderName, folder.m_item.CreatedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture), folder.m_item.ModifiedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture));
 
                     TreeNode marker = new TreeNode("dummy");
                     marker.Tag = NOT_LOADED_MARKER;
@@ -318,7 +312,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
                     n.Tag = document;
                     n.ImageIndex = n.SelectedImageIndex = m_parent.EditorMap.GetImageIndexFromResourceID(document.ResourceId);
 
-                    n.ToolTipText = string.Format(m_parent.Globalizator.Translate("Resource name: {0}\r\nResource type: {1}\r\nCreated: {2}\r\nLast modified: {3}"), new MaestroAPI.ResourceIdentifier(document.ResourceId).Name, new MaestroAPI.ResourceIdentifier(document.ResourceId).Extension, document.CreatedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture), document.ModifiedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture));
+                    n.ToolTipText = string.Format(Strings.RepositoryCache.ResourceTooltip, new MaestroAPI.ResourceIdentifier(document.ResourceId).Name, new MaestroAPI.ResourceIdentifier(document.ResourceId).Extension, document.CreatedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture), document.ModifiedDate.ToString(System.Globalization.CultureInfo.CurrentUICulture));
 
                     if (new MaestroAPI.ResourceIdentifier(document.ResourceId).Extension == "LayerDefinition" || new MaestroAPI.ResourceIdentifier(document.ResourceId).Extension == "FeatureSource")
                     {
@@ -327,7 +321,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceBrowser
                         if (document.ResourceDocumentHeader != null && document.ResourceDocumentHeader.Metadata != null && document.ResourceDocumentHeader.Metadata.Simple != null && document.ResourceDocumentHeader.Metadata.Simple.Property["_IsPublished"] == "1")
                             published = true;
 
-                        n.ToolTipText += "\r\n" + string.Format(m_parent.Globalizator.Translate("{0} published: {1}"), serviceType, published);
+                        n.ToolTipText += "\r\n" + string.Format(Strings.RepositoryCache.PublishedTooltip, serviceType, published);
                     }
 
                     node.Nodes.Add(n);

@@ -81,65 +81,52 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.SelectionType = new System.Windows.Forms.ComboBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.Tolerance = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// SelectionType
-			// 
-			this.SelectionType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.SelectionType.Items.AddRange(new object[] {
-															   "CONTAINS",
-															   "DISJOINT",
-															   "INTERSECTS",
-															   "WITHIN",
-															   "INSIDE",
-															   "ENVELOPEINTERSECTS"});
-			this.SelectionType.Location = new System.Drawing.Point(144, 30);
-			this.SelectionType.Name = "SelectionType";
-			this.SelectionType.Size = new System.Drawing.Size(464, 21);
-			this.SelectionType.TabIndex = 36;
-			this.SelectionType.TextChanged += new System.EventHandler(this.SelectionType_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 30);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(136, 16);
-			this.label2.TabIndex = 35;
-			this.label2.Text = "Selection type";
-			// 
-			// Tolerance
-			// 
-			this.Tolerance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Tolerance.Location = new System.Drawing.Point(144, 6);
-			this.Tolerance.Name = "Tolerance";
-			this.Tolerance.Size = new System.Drawing.Size(464, 20);
-			this.Tolerance.TabIndex = 34;
-			this.Tolerance.Text = "";
-			this.Tolerance.TextChanged += new System.EventHandler(this.Tolerance_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 6);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(136, 16);
-			this.label1.TabIndex = 33;
-			this.label1.Text = "Tolerance";
-			// 
-			// SelectPolygon
-			// 
-			this.Controls.Add(this.SelectionType);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.Tolerance);
-			this.Controls.Add(this.label1);
-			this.Name = "SelectPolygon";
-			this.Size = new System.Drawing.Size(616, 56);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectPolygon));
+            this.SelectionType = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Tolerance = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // SelectionType
+            // 
+            resources.ApplyResources(this.SelectionType, "SelectionType");
+            this.SelectionType.Items.AddRange(new object[] {
+            resources.GetString("SelectionType.Items"),
+            resources.GetString("SelectionType.Items1"),
+            resources.GetString("SelectionType.Items2"),
+            resources.GetString("SelectionType.Items3"),
+            resources.GetString("SelectionType.Items4"),
+            resources.GetString("SelectionType.Items5")});
+            this.SelectionType.Name = "SelectionType";
+            this.SelectionType.TextChanged += new System.EventHandler(this.SelectionType_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // Tolerance
+            // 
+            resources.ApplyResources(this.Tolerance, "Tolerance");
+            this.Tolerance.Name = "Tolerance";
+            this.Tolerance.TextChanged += new System.EventHandler(this.Tolerance_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // SelectPolygon
+            // 
+            this.Controls.Add(this.SelectionType);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Tolerance);
+            this.Controls.Add(this.label1);
+            this.Name = "SelectPolygon";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

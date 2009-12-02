@@ -42,16 +42,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private System.Windows.Forms.Label label1;
 		private bool m_isUpdating = false;
 		private System.Windows.Forms.ToolTip toolTips;
-		private Globalizator.Globalizator m_globalizor = null;
 
 		public FeatureSourceEditorMySQL()
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-			m_globalizor = new Globalizator.Globalizator(this);
-
-			toolTips.SetToolTip(Server, m_globalizor.Translate("Enter server name here, or leave blank for the default, which is localhost"));
-			toolTips.SetToolTip(Database, m_globalizor.Translate("Enter the database name here"));
 		}
 
 		public FeatureSourceEditorMySQL(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource feature)
@@ -87,6 +82,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditorMySQL));
             this.credentials = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
             this.Database = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -97,63 +93,43 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // credentials
             // 
-            this.credentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.credentials.AutoScroll = true;
-            this.credentials.AutoScrollMinSize = new System.Drawing.Size(264, 152);
-            this.credentials.Location = new System.Drawing.Point(8, 72);
+            resources.ApplyResources(this.credentials, "credentials");
             this.credentials.Name = "credentials";
-            this.credentials.Size = new System.Drawing.Size(304, 152);
-            this.credentials.TabIndex = 0;
             this.credentials.CredentialsChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
             // 
             // Database
             // 
-            this.Database.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.Database.Location = new System.Drawing.Point(112, 40);
+            resources.ApplyResources(this.Database, "Database");
             this.Database.Name = "Database";
-            this.Database.Size = new System.Drawing.Size(200, 20);
-            this.Database.TabIndex = 31;
+            this.toolTips.SetToolTip(this.Database, resources.GetString("Database.ToolTip"));
             this.Database.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(8, 40);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 16);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "Database";
             // 
             // Server
             // 
-            this.Server.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.Server.Location = new System.Drawing.Point(112, 8);
+            resources.ApplyResources(this.Server, "Server");
             this.Server.Name = "Server";
-            this.Server.Size = new System.Drawing.Size(200, 20);
-            this.Server.TabIndex = 29;
+            this.toolTips.SetToolTip(this.Server, resources.GetString("Server.ToolTip"));
             this.Server.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 16);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "Server";
             // 
             // FeatureSourceEditorMySQL
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(320, 232);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.Database);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Server);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.credentials);
             this.Name = "FeatureSourceEditorMySQL";
-            this.Size = new System.Drawing.Size(320, 232);
             this.ResumeLayout(false);
             this.PerformLayout();
 

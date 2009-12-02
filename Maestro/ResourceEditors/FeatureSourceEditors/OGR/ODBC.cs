@@ -237,9 +237,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 
 			TableNames.RowChanged += new DataRowChangeEventHandler(TableNames_RowChanged);
 			TableNames.RowDeleted += new DataRowChangeEventHandler(TableNames_RowDeleted);
-			Globalizator.Globalizator globalizor = new Globalizator.Globalizator(this);
-			dataGridTableStyle1.GridColumnStyles["Table"].HeaderText = globalizor.Translate("Tablename");
-			dataGridTableStyle1.GridColumnStyles["Geometry"].HeaderText = globalizor.Translate("Geometry column");
 		}
 
 		/// <summary> 
@@ -264,232 +261,177 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.DSN = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.SpatialTextColumn = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.SpatialIDColumn = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.SpatialTablename = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.TableGrid = new System.Windows.Forms.DataGrid();
-			this.TableDataSet = new System.Data.DataSet();
-			this.TableNames = new System.Data.DataTable();
-			this.TablenameColumn = new System.Data.DataColumn();
-			this.GeometryColumn = new System.Data.DataColumn();
-			this.dataGridTableStyle1 = new System.Windows.Forms.DataGridTableStyle();
-			this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
-			this.dataGridTextBoxColumn2 = new System.Windows.Forms.DataGridTextBoxColumn();
-			this.credentials = new ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
-			this.groupBox1.SuspendLayout();
-			this.groupBox2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.TableGrid)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.TableDataSet)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.TableNames)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// DSN
-			// 
-			this.DSN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.DSN.Location = new System.Drawing.Point(112, 8);
-			this.DSN.Name = "DSN";
-			this.DSN.Size = new System.Drawing.Size(248, 20);
-			this.DSN.TabIndex = 13;
-			this.DSN.Text = "";
-			this.DSN.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(96, 16);
-			this.label1.TabIndex = 12;
-			this.label1.Text = "DSN";
-			// 
-			// groupBox1
-			// 
-			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox1.Controls.Add(this.SpatialTextColumn);
-			this.groupBox1.Controls.Add(this.label3);
-			this.groupBox1.Controls.Add(this.SpatialIDColumn);
-			this.groupBox1.Controls.Add(this.label2);
-			this.groupBox1.Controls.Add(this.SpatialTablename);
-			this.groupBox1.Controls.Add(this.label7);
-			this.groupBox1.Location = new System.Drawing.Point(8, 128);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(352, 120);
-			this.groupBox1.TabIndex = 28;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Spatial reference table";
-			// 
-			// SpatialTextColumn
-			// 
-			this.SpatialTextColumn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.SpatialTextColumn.Location = new System.Drawing.Point(112, 88);
-			this.SpatialTextColumn.Name = "SpatialTextColumn";
-			this.SpatialTextColumn.Size = new System.Drawing.Size(232, 20);
-			this.SpatialTextColumn.TabIndex = 33;
-			this.SpatialTextColumn.Text = "";
-			this.SpatialTextColumn.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 88);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(96, 16);
-			this.label3.TabIndex = 32;
-			this.label3.Text = "Text column";
-			// 
-			// SpatialIDColumn
-			// 
-			this.SpatialIDColumn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.SpatialIDColumn.Location = new System.Drawing.Point(112, 56);
-			this.SpatialIDColumn.Name = "SpatialIDColumn";
-			this.SpatialIDColumn.Size = new System.Drawing.Size(232, 20);
-			this.SpatialIDColumn.TabIndex = 31;
-			this.SpatialIDColumn.Text = "";
-			this.SpatialIDColumn.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 56);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(96, 16);
-			this.label2.TabIndex = 30;
-			this.label2.Text = "ID column";
-			// 
-			// SpatialTablename
-			// 
-			this.SpatialTablename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.SpatialTablename.Location = new System.Drawing.Point(112, 22);
-			this.SpatialTablename.Name = "SpatialTablename";
-			this.SpatialTablename.Size = new System.Drawing.Size(232, 20);
-			this.SpatialTablename.TabIndex = 29;
-			this.SpatialTablename.Text = "";
-			this.SpatialTablename.TextChanged += new System.EventHandler(this.SomeProperty_Change);
-			// 
-			// label7
-			// 
-			this.label7.Location = new System.Drawing.Point(8, 22);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(96, 16);
-			this.label7.TabIndex = 28;
-			this.label7.Text = "Tablename";
-			// 
-			// groupBox2
-			// 
-			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox2.Controls.Add(this.TableGrid);
-			this.groupBox2.Location = new System.Drawing.Point(8, 40);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(352, 80);
-			this.groupBox2.TabIndex = 29;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "Spatial tables";
-			// 
-			// TableGrid
-			// 
-			this.TableGrid.CaptionVisible = false;
-			this.TableGrid.DataMember = "Names";
-			this.TableGrid.DataSource = this.TableDataSet;
-			this.TableGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TableGrid.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-			this.TableGrid.Location = new System.Drawing.Point(3, 16);
-			this.TableGrid.Name = "TableGrid";
-			this.TableGrid.Size = new System.Drawing.Size(346, 61);
-			this.TableGrid.TabIndex = 0;
-			this.TableGrid.TableStyles.AddRange(new System.Windows.Forms.DataGridTableStyle[] {
-																								  this.dataGridTableStyle1});
-			this.TableGrid.Leave += new System.EventHandler(this.TableGrid_Leave);
-			this.TableGrid.Enter += new System.EventHandler(this.TableGrid_Enter);
-			// 
-			// TableDataSet
-			// 
-			this.TableDataSet.DataSetName = "TableNames";
-			this.TableDataSet.Locale = new System.Globalization.CultureInfo("da-DK");
-			this.TableDataSet.Tables.AddRange(new System.Data.DataTable[] {
-																			  this.TableNames});
-			// 
-			// TableNames
-			// 
-			this.TableNames.Columns.AddRange(new System.Data.DataColumn[] {
-																			  this.TablenameColumn,
-																			  this.GeometryColumn});
-			this.TableNames.TableName = "Names";
-			// 
-			// TablenameColumn
-			// 
-			this.TablenameColumn.Caption = "Tablename";
-			this.TablenameColumn.ColumnName = "Table";
-			// 
-			// GeometryColumn
-			// 
-			this.GeometryColumn.Caption = "Geometry column";
-			this.GeometryColumn.ColumnName = "Geometry";
-			// 
-			// dataGridTableStyle1
-			// 
-			this.dataGridTableStyle1.DataGrid = this.TableGrid;
-			this.dataGridTableStyle1.GridColumnStyles.AddRange(new System.Windows.Forms.DataGridColumnStyle[] {
-																												  this.dataGridTextBoxColumn1,
-																												  this.dataGridTextBoxColumn2});
-			this.dataGridTableStyle1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-			this.dataGridTableStyle1.MappingName = "Names";
-			// 
-			// dataGridTextBoxColumn1
-			// 
-			this.dataGridTextBoxColumn1.Format = "";
-			this.dataGridTextBoxColumn1.FormatInfo = null;
-			this.dataGridTextBoxColumn1.HeaderText = "Tablename";
-			this.dataGridTextBoxColumn1.MappingName = "Table";
-			this.dataGridTextBoxColumn1.Width = 150;
-			// 
-			// dataGridTextBoxColumn2
-			// 
-			this.dataGridTextBoxColumn2.Format = "";
-			this.dataGridTextBoxColumn2.FormatInfo = null;
-			this.dataGridTextBoxColumn2.HeaderText = "Geometry column";
-			this.dataGridTextBoxColumn2.MappingName = "Geometry";
-			this.dataGridTextBoxColumn2.Width = 150;
-			// 
-			// credentials
-			// 
-			this.credentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.credentials.AutoScroll = true;
-			this.credentials.AutoScrollMinSize = new System.Drawing.Size(264, 152);
-			this.credentials.Location = new System.Drawing.Point(8, 264);
-			this.credentials.Name = "credentials";
-			this.credentials.Size = new System.Drawing.Size(352, 152);
-			this.credentials.TabIndex = 30;
-			this.credentials.CredentialsChanged += new ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
-			// 
-			// ODBC
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(368, 424);
-			this.Controls.Add(this.credentials);
-			this.Controls.Add(this.groupBox2);
-			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.DSN);
-			this.Controls.Add(this.label1);
-			this.Name = "ODBC";
-			this.Size = new System.Drawing.Size(368, 424);
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.TableGrid)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.TableDataSet)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.TableNames)).EndInit();
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ODBC));
+            this.DSN = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.SpatialTextColumn = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.SpatialIDColumn = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SpatialTablename = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TableGrid = new System.Windows.Forms.DataGrid();
+            this.TableDataSet = new System.Data.DataSet();
+            this.TableNames = new System.Data.DataTable();
+            this.TablenameColumn = new System.Data.DataColumn();
+            this.GeometryColumn = new System.Data.DataColumn();
+            this.dataGridTableStyle1 = new System.Windows.Forms.DataGridTableStyle();
+            this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.dataGridTextBoxColumn2 = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.credentials = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TableGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TableDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TableNames)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // DSN
+            // 
+            resources.ApplyResources(this.DSN, "DSN");
+            this.DSN.Name = "DSN";
+            this.DSN.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // groupBox1
+            // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.SpatialTextColumn);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.SpatialIDColumn);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.SpatialTablename);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // SpatialTextColumn
+            // 
+            resources.ApplyResources(this.SpatialTextColumn, "SpatialTextColumn");
+            this.SpatialTextColumn.Name = "SpatialTextColumn";
+            this.SpatialTextColumn.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // SpatialIDColumn
+            // 
+            resources.ApplyResources(this.SpatialIDColumn, "SpatialIDColumn");
+            this.SpatialIDColumn.Name = "SpatialIDColumn";
+            this.SpatialIDColumn.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // SpatialTablename
+            // 
+            resources.ApplyResources(this.SpatialTablename, "SpatialTablename");
+            this.SpatialTablename.Name = "SpatialTablename";
+            this.SpatialTablename.TextChanged += new System.EventHandler(this.SomeProperty_Change);
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // groupBox2
+            // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.TableGrid);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // TableGrid
+            // 
+            this.TableGrid.CaptionVisible = false;
+            this.TableGrid.DataMember = "Names";
+            this.TableGrid.DataSource = this.TableDataSet;
+            resources.ApplyResources(this.TableGrid, "TableGrid");
+            this.TableGrid.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.TableGrid.Name = "TableGrid";
+            this.TableGrid.TableStyles.AddRange(new System.Windows.Forms.DataGridTableStyle[] {
+            this.dataGridTableStyle1});
+            this.TableGrid.Enter += new System.EventHandler(this.TableGrid_Enter);
+            this.TableGrid.Leave += new System.EventHandler(this.TableGrid_Leave);
+            // 
+            // TableDataSet
+            // 
+            this.TableDataSet.DataSetName = "TableNames";
+            this.TableDataSet.Locale = new System.Globalization.CultureInfo("da-DK");
+            this.TableDataSet.Tables.AddRange(new System.Data.DataTable[] {
+            this.TableNames});
+            // 
+            // TableNames
+            // 
+            this.TableNames.Columns.AddRange(new System.Data.DataColumn[] {
+            this.TablenameColumn,
+            this.GeometryColumn});
+            this.TableNames.TableName = "Names";
+            // 
+            // TablenameColumn
+            // 
+            this.TablenameColumn.Caption = "Tablename";
+            this.TablenameColumn.ColumnName = "Table";
+            // 
+            // GeometryColumn
+            // 
+            this.GeometryColumn.Caption = "Geometry column";
+            this.GeometryColumn.ColumnName = "Geometry";
+            // 
+            // dataGridTableStyle1
+            // 
+            this.dataGridTableStyle1.DataGrid = this.TableGrid;
+            this.dataGridTableStyle1.GridColumnStyles.AddRange(new System.Windows.Forms.DataGridColumnStyle[] {
+            this.dataGridTextBoxColumn1,
+            this.dataGridTextBoxColumn2});
+            this.dataGridTableStyle1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.dataGridTableStyle1.MappingName = "Names";
+            // 
+            // dataGridTextBoxColumn1
+            // 
+            this.dataGridTextBoxColumn1.Format = "";
+            this.dataGridTextBoxColumn1.FormatInfo = null;
+            resources.ApplyResources(this.dataGridTextBoxColumn1, "dataGridTextBoxColumn1");
+            // 
+            // dataGridTextBoxColumn2
+            // 
+            this.dataGridTextBoxColumn2.Format = "";
+            this.dataGridTextBoxColumn2.FormatInfo = null;
+            resources.ApplyResources(this.dataGridTextBoxColumn2, "dataGridTextBoxColumn2");
+            // 
+            // credentials
+            // 
+            resources.ApplyResources(this.credentials, "credentials");
+            this.credentials.Name = "credentials";
+            this.credentials.CredentialsChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
+            // 
+            // ODBC
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.credentials);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.DSN);
+            this.Controls.Add(this.label1);
+            this.Name = "ODBC";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TableGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TableDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TableNames)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

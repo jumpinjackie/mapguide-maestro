@@ -107,63 +107,48 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.TargetFrame = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.Target = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// TargetFrame
-			// 
-			this.TargetFrame.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.TargetFrame.Location = new System.Drawing.Point(96, 40);
-			this.TargetFrame.Name = "TargetFrame";
-			this.TargetFrame.Size = new System.Drawing.Size(88, 20);
-			this.TargetFrame.TabIndex = 28;
-			this.TargetFrame.Text = "";
-			this.TargetFrame.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
-			// 
-			// label2
-			// 
-			this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label2.Location = new System.Drawing.Point(8, 40);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(80, 16);
-			this.label2.TabIndex = 27;
-			this.label2.Text = "Frame";
-			// 
-			// Target
-			// 
-			this.Target.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Target.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.Target.Location = new System.Drawing.Point(96, 8);
-			this.Target.Name = "Target";
-			this.Target.Size = new System.Drawing.Size(88, 21);
-			this.Target.TabIndex = 26;
-			this.Target.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
-			// 
-			// label1
-			// 
-			this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(80, 16);
-			this.label1.TabIndex = 25;
-			this.label1.Text = "Target";
-			// 
-			// TargetedCommand
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(192, 64);
-			this.Controls.Add(this.TargetFrame);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.Target);
-			this.Controls.Add(this.label1);
-			this.Name = "TargetedCommand";
-			this.Size = new System.Drawing.Size(192, 64);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TargetedCommand));
+            this.TargetFrame = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Target = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // TargetFrame
+            // 
+            resources.ApplyResources(this.TargetFrame, "TargetFrame");
+            this.TargetFrame.Name = "TargetFrame";
+            this.TargetFrame.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
+            // 
+            // label2
+            // 
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // Target
+            // 
+            resources.ApplyResources(this.Target, "Target");
+            this.Target.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Target.Name = "Target";
+            this.Target.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
+            // 
+            // label1
+            // 
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // TargetedCommand
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.TargetFrame);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Target);
+            this.Controls.Add(this.label1);
+            this.Name = "TargetedCommand";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

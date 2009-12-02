@@ -85,14 +85,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
 			m_layoutEditor = layoutEditor;
 			m_editor = editor;
 
-			string capcol = m_layoutEditor.Globalizor.Translate("OSGeo.MapGuide.Maestro.ResourceEditors.LayoutEditor.commandEditor.searchCommand.CaptionColumnStyle.HeaderText");
-			string propcol = m_layoutEditor.Globalizor.Translate("OSGeo.MapGuide.Maestro.ResourceEditors.LayoutEditor.commandEditor.searchCommand.PropertyColumnStyle.HeaderText");
-
-			if (capcol != null && !capcol.EndsWith(".HeaderText"))
-				CaptionColumnStyle.HeaderText = capcol;
-            if (propcol != null && !propcol.EndsWith(".HeaderText"))
-				PropertyColumnStyle.HeaderText = propcol;
-
             try
             {
                 m_isUpdating = true;
@@ -170,6 +162,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchCommand));
             this.TargetFrame = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Target = new System.Windows.Forms.ComboBox();
@@ -200,122 +193,78 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             // 
             // TargetFrame
             // 
-            this.TargetFrame.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.TargetFrame.Location = new System.Drawing.Point(96, 40);
+            resources.ApplyResources(this.TargetFrame, "TargetFrame");
             this.TargetFrame.Name = "TargetFrame";
-            this.TargetFrame.Size = new System.Drawing.Size(88, 20);
-            this.TargetFrame.TabIndex = 32;
             this.TargetFrame.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
             // 
             // label2
             // 
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label2.Location = new System.Drawing.Point(8, 40);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 16);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "Frame";
             // 
             // Target
             // 
-            this.Target.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.Target, "Target");
             this.Target.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Target.Location = new System.Drawing.Point(96, 8);
             this.Target.Name = "Target";
-            this.Target.Size = new System.Drawing.Size(88, 21);
-            this.Target.TabIndex = 30;
             this.Target.SelectedIndexChanged += new System.EventHandler(this.SomeProperty_Changed);
             this.Target.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
             // 
             // label1
             // 
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label1.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 16);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Target";
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(8, 72);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 16);
-            this.label3.TabIndex = 33;
-            this.label3.Text = "Prompt";
             // 
             // Prompt
             // 
-            this.Prompt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.Prompt.Location = new System.Drawing.Point(8, 88);
-            this.Prompt.Multiline = true;
+            resources.ApplyResources(this.Prompt, "Prompt");
             this.Prompt.Name = "Prompt";
-            this.Prompt.Size = new System.Drawing.Size(176, 88);
-            this.Prompt.TabIndex = 34;
             this.Prompt.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
             // 
             // label4
             // 
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label4.Location = new System.Drawing.Point(8, 184);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 16);
-            this.label4.TabIndex = 44;
-            this.label4.Text = "Layer";
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(8, 208);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 16);
-            this.label5.TabIndex = 46;
-            this.label5.Text = "Filter";
             // 
             // Filter
             // 
-            this.Filter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.Filter.Location = new System.Drawing.Point(96, 208);
+            resources.ApplyResources(this.Filter, "Filter");
             this.Filter.Name = "Filter";
-            this.Filter.Size = new System.Drawing.Size(56, 20);
-            this.Filter.TabIndex = 47;
             this.Filter.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
             // 
             // BuildFilter
             // 
-            this.BuildFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BuildFilter.Location = new System.Drawing.Point(160, 208);
+            resources.ApplyResources(this.BuildFilter, "BuildFilter");
             this.BuildFilter.Name = "BuildFilter";
-            this.BuildFilter.Size = new System.Drawing.Size(24, 20);
-            this.BuildFilter.TabIndex = 48;
-            this.BuildFilter.Text = "...";
             this.BuildFilter.Click += new System.EventHandler(this.BuildFilter_Click);
             // 
             // label6
             // 
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label6.Location = new System.Drawing.Point(8, 232);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 16);
-            this.label6.TabIndex = 49;
-            this.label6.Text = "Result limit";
             // 
             // resultColumns
             // 
-            this.resultColumns.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.resultColumns, "resultColumns");
             this.resultColumns.CaptionVisible = false;
             this.resultColumns.DataMember = "";
             this.resultColumns.DataSource = this.ResultTable;
             this.resultColumns.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.resultColumns.Location = new System.Drawing.Point(8, 288);
             this.resultColumns.Name = "resultColumns";
-            this.resultColumns.Size = new System.Drawing.Size(176, 112);
-            this.resultColumns.TabIndex = 51;
             this.resultColumns.TableStyles.AddRange(new System.Windows.Forms.DataGridTableStyle[] {
             this.dataGridTableStyle1});
             this.resultColumns.Leave += new System.EventHandler(this.resultColumns_Leave);
@@ -348,25 +297,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             // 
             this.CaptionColumnStyle.Format = "";
             this.CaptionColumnStyle.FormatInfo = null;
-            this.CaptionColumnStyle.HeaderText = "Caption";
-            this.CaptionColumnStyle.MappingName = "CaptionColumn";
-            this.CaptionColumnStyle.Width = 75;
+            resources.ApplyResources(this.CaptionColumnStyle, "CaptionColumnStyle");
             // 
             // PropertyColumnStyle
             // 
             this.PropertyColumnStyle.Format = "";
             this.PropertyColumnStyle.FormatInfo = null;
-            this.PropertyColumnStyle.HeaderText = "Property";
-            this.PropertyColumnStyle.MappingName = "PropertyColumn";
-            this.PropertyColumnStyle.Width = 150;
+            resources.ApplyResources(this.PropertyColumnStyle, "PropertyColumnStyle");
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(8, 272);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(176, 16);
-            this.label7.TabIndex = 52;
-            this.label7.Text = "Result columns";
             // 
             // dataSet
             // 
@@ -377,36 +319,27 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             // 
             // ResultLimit
             // 
-            this.ResultLimit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResultLimit.Location = new System.Drawing.Point(96, 232);
+            resources.ApplyResources(this.ResultLimit, "ResultLimit");
             this.ResultLimit.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.ResultLimit.Name = "ResultLimit";
-            this.ResultLimit.Size = new System.Drawing.Size(88, 20);
-            this.ResultLimit.TabIndex = 53;
             this.ResultLimit.ValueChanged += new System.EventHandler(this.SomeProperty_Changed);
             // 
             // Layer
             // 
-            this.Layer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.Layer, "Layer");
             this.Layer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Layer.FormattingEnabled = true;
-            this.Layer.Location = new System.Drawing.Point(96, 184);
             this.Layer.Name = "Layer";
-            this.Layer.Size = new System.Drawing.Size(88, 21);
-            this.Layer.TabIndex = 54;
             this.Layer.SelectedIndexChanged += new System.EventHandler(this.SomeProperty_Changed);
             this.Layer.TextChanged += new System.EventHandler(this.SomeProperty_Changed);
             // 
             // SearchCommand
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(192, 408);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.Layer);
             this.Controls.Add(this.ResultLimit);
             this.Controls.Add(this.label7);
@@ -423,7 +356,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             this.Controls.Add(this.Target);
             this.Controls.Add(this.label1);
             this.Name = "SearchCommand";
-            this.Size = new System.Drawing.Size(192, 408);
             ((System.ComponentModel.ISupportInitialize)(this.resultColumns)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResultTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
@@ -484,7 +416,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             {
                 if (Layer.SelectedIndex < 0)
                 {
-                    MessageBox.Show(this, "Please select a layer first", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, Strings.SearchCommand.NoLayerSelectedError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -493,7 +425,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
                 MaestroAPI.VectorLayerDefinitionType vldef = ldef.Item as MaestroAPI.VectorLayerDefinitionType;
                 if (vldef == null)
                 {
-                    MessageBox.Show(this, "The selected layer is not a vector layer, please select a vector layer", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, Strings.SearchCommand.NoVectorLayerSelectedError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 
@@ -508,7 +440,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             catch (Exception ex)
             {
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format("An error occured: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.GenericError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 		}
 

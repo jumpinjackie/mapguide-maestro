@@ -67,26 +67,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Filebased
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.managedFileControl = new ResourceEditors.FeatureSourceEditors.ManagedFileControl();
-			this.SuspendLayout();
-			// 
-			// managedFileControl
-			// 
-			this.managedFileControl.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.managedFileControl.FileTypes = null;
-			this.managedFileControl.Location = new System.Drawing.Point(0, 0);
-			this.managedFileControl.Name = "managedFileControl";
-			this.managedFileControl.Size = new System.Drawing.Size(216, 88);
-			this.managedFileControl.TabIndex = 0;
-			// 
-			// Managed
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(216, 88);
-			this.Controls.Add(this.managedFileControl);
-			this.Name = "Managed";
-			this.Size = new System.Drawing.Size(216, 88);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Managed));
+            this.managedFileControl = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ManagedFileControl();
+            this.SuspendLayout();
+            // 
+            // managedFileControl
+            // 
+            resources.ApplyResources(this.managedFileControl, "managedFileControl");
+            this.managedFileControl.FileTypes = null;
+            this.managedFileControl.Name = "managedFileControl";
+            // 
+            // Managed
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.managedFileControl);
+            this.Name = "Managed";
+            this.ResumeLayout(false);
 
 		}
 		#endregion

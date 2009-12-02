@@ -76,36 +76,32 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.Direction = new System.Windows.Forms.ComboBox();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 10);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(72, 16);
-			this.label1.TabIndex = 4;
-			this.label1.Text = "Direction";
-			// 
-			// Direction
-			// 
-			this.Direction.Items.AddRange(new object[] {
-														   "Previous",
-														   "Next"});
-			this.Direction.Location = new System.Drawing.Point(104, 8);
-			this.Direction.Name = "Direction";
-			this.Direction.Size = new System.Drawing.Size(504, 21);
-			this.Direction.TabIndex = 5;
-			this.Direction.TextChanged += new System.EventHandler(this.Direction_TextChanged);
-			// 
-			// ExtentHistory
-			// 
-			this.Controls.Add(this.Direction);
-			this.Controls.Add(this.label1);
-			this.Name = "ExtentHistory";
-			this.Size = new System.Drawing.Size(616, 40);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExtentHistory));
+            this.label1 = new System.Windows.Forms.Label();
+            this.Direction = new System.Windows.Forms.ComboBox();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // Direction
+            // 
+            this.Direction.Items.AddRange(new object[] {
+            resources.GetString("Direction.Items"),
+            resources.GetString("Direction.Items1")});
+            resources.ApplyResources(this.Direction, "Direction");
+            this.Direction.Name = "Direction";
+            this.Direction.TextChanged += new System.EventHandler(this.Direction_TextChanged);
+            // 
+            // ExtentHistory
+            // 
+            this.Controls.Add(this.Direction);
+            this.Controls.Add(this.label1);
+            this.Name = "ExtentHistory";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
 
 		}
 		#endregion

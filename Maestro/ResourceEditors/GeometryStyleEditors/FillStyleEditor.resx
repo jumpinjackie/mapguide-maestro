@@ -117,4 +117,190 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblBackground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 80</value>
+  </data>
+  <data name="lblBackground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 16</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblBackground.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lblBackground.Text" xml:space="preserve">
+    <value>Background color</value>
+  </data>
+  <data name="&gt;&gt;lblBackground.Name" xml:space="preserve">
+    <value>lblBackground</value>
+  </data>
+  <data name="&gt;&gt;lblBackground.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblBackground.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblBackground.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblForeground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 48</value>
+  </data>
+  <data name="lblForeground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 16</value>
+  </data>
+  <data name="lblForeground.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="lblForeground.Text" xml:space="preserve">
+    <value>Foreground color</value>
+  </data>
+  <data name="&gt;&gt;lblForeground.Name" xml:space="preserve">
+    <value>lblForeground</value>
+  </data>
+  <data name="&gt;&gt;lblForeground.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblForeground.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblForeground.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblFill.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="lblFill.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 16</value>
+  </data>
+  <data name="lblFill.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lblFill.Text" xml:space="preserve">
+    <value>Fill pattern</value>
+  </data>
+  <data name="&gt;&gt;lblFill.Name" xml:space="preserve">
+    <value>lblFill</value>
+  </data>
+  <data name="&gt;&gt;lblFill.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFill.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblFill.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="foregroundColor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="foregroundColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 48</value>
+  </data>
+  <data name="foregroundColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 21</value>
+  </data>
+  <data name="foregroundColor.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;foregroundColor.Name" xml:space="preserve">
+    <value>foregroundColor</value>
+  </data>
+  <data name="&gt;&gt;foregroundColor.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;foregroundColor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;foregroundColor.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="backgroundColor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="backgroundColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 80</value>
+  </data>
+  <data name="backgroundColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 21</value>
+  </data>
+  <data name="backgroundColor.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;backgroundColor.Name" xml:space="preserve">
+    <value>backgroundColor</value>
+  </data>
+  <data name="&gt;&gt;backgroundColor.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;backgroundColor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;backgroundColor.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="fillCombo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="fillCombo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 16</value>
+  </data>
+  <data name="fillCombo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 21</value>
+  </data>
+  <data name="fillCombo.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;fillCombo.Name" xml:space="preserve">
+    <value>fillCombo</value>
+  </data>
+  <data name="&gt;&gt;fillCombo.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ImageStylePicker, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;fillCombo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;fillCombo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="displayFill.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="displayFill.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="displayFill.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 16</value>
+  </data>
+  <data name="displayFill.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="displayFill.Text" xml:space="preserve">
+    <value>Display fill</value>
+  </data>
+  <data name="&gt;&gt;displayFill.Name" xml:space="preserve">
+    <value>displayFill</value>
+  </data>
+  <data name="&gt;&gt;displayFill.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;displayFill.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;displayFill.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 104</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FillStyleEditor</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

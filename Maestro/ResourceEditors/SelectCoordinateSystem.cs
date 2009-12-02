@@ -63,7 +63,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys m_coordsysCodeCoordSys = null;
 		private OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys m_selectedCoordsys = null;
 
-		private Globalizator.Globalizator m_globalizor = null;
 		private System.Windows.Forms.Label CoordinateWait;
 		private System.Windows.Forms.ComboBox EPSGCodeText;
 		private System.Windows.Forms.ComboBox CoordSysCodeText;
@@ -103,7 +102,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			m_globalizor = new  Globalizator.Globalizator(this);
 		}
 
 		/// <summary>
@@ -128,330 +126,224 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.CoordinateSystemLabel = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.WKTText = new System.Windows.Forms.TextBox();
-			this.SelectByListGroup = new System.Windows.Forms.GroupBox();
-			this.CoordinateSystem = new System.Windows.Forms.ComboBox();
-			this.CoordinateCategory = new System.Windows.Forms.ComboBox();
-			this.SelectByList = new System.Windows.Forms.RadioButton();
-			this.SelectByWKTGroup = new System.Windows.Forms.GroupBox();
-			this.ValidateWKT = new System.Windows.Forms.Button();
-			this.SelectByWKT = new System.Windows.Forms.RadioButton();
-			this.SelectByCoordSysCode = new System.Windows.Forms.RadioButton();
-			this.SelectByCoordSysCodeGroup = new System.Windows.Forms.GroupBox();
-			this.ValidateCoordSysCode = new System.Windows.Forms.Button();
-			this.label5 = new System.Windows.Forms.Label();
-			this.SelectByEPSGCode = new System.Windows.Forms.RadioButton();
-			this.SelectByEPSGCodeGroup = new System.Windows.Forms.GroupBox();
-			this.ValidateEPSG = new System.Windows.Forms.Button();
-			this.label4 = new System.Windows.Forms.Label();
-			this.OKBtn = new System.Windows.Forms.Button();
-			this.CancelBtn = new System.Windows.Forms.Button();
-			this.CoordinateWait = new System.Windows.Forms.Label();
-			this.EPSGCodeText = new System.Windows.Forms.ComboBox();
-			this.CoordSysCodeText = new System.Windows.Forms.ComboBox();
-			this.SelectByListGroup.SuspendLayout();
-			this.SelectByWKTGroup.SuspendLayout();
-			this.SelectByCoordSysCodeGroup.SuspendLayout();
-			this.SelectByEPSGCodeGroup.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label1.Location = new System.Drawing.Point(8, 24);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(120, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Coordinate Category";
-			// 
-			// CoordinateSystemLabel
-			// 
-			this.CoordinateSystemLabel.Enabled = false;
-			this.CoordinateSystemLabel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.CoordinateSystemLabel.Location = new System.Drawing.Point(8, 48);
-			this.CoordinateSystemLabel.Name = "CoordinateSystemLabel";
-			this.CoordinateSystemLabel.Size = new System.Drawing.Size(136, 16);
-			this.CoordinateSystemLabel.TabIndex = 1;
-			this.CoordinateSystemLabel.Text = "Coordinate System";
-			// 
-			// label3
-			// 
-			this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label3.Location = new System.Drawing.Point(8, 24);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(136, 16);
-			this.label3.TabIndex = 2;
-			this.label3.Text = "Well-Known-Text (WKT)";
-			// 
-			// WKTText
-			// 
-			this.WKTText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.WKTText.Location = new System.Drawing.Point(160, 24);
-			this.WKTText.Name = "WKTText";
-			this.WKTText.Size = new System.Drawing.Size(280, 20);
-			this.WKTText.TabIndex = 5;
-			this.WKTText.Text = "";
-			this.WKTText.TextChanged += new System.EventHandler(this.WKTText_TextChanged);
-			// 
-			// SelectByListGroup
-			// 
-			this.SelectByListGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.SelectByListGroup.Controls.Add(this.CoordinateSystem);
-			this.SelectByListGroup.Controls.Add(this.CoordinateCategory);
-			this.SelectByListGroup.Controls.Add(this.CoordinateSystemLabel);
-			this.SelectByListGroup.Controls.Add(this.label1);
-			this.SelectByListGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.SelectByListGroup.Location = new System.Drawing.Point(8, 8);
-			this.SelectByListGroup.Name = "SelectByListGroup";
-			this.SelectByListGroup.Size = new System.Drawing.Size(512, 80);
-			this.SelectByListGroup.TabIndex = 6;
-			this.SelectByListGroup.TabStop = false;
-			// 
-			// CoordinateSystem
-			// 
-			this.CoordinateSystem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.CoordinateSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CoordinateSystem.Enabled = false;
-			this.CoordinateSystem.Location = new System.Drawing.Point(160, 48);
-			this.CoordinateSystem.Name = "CoordinateSystem";
-			this.CoordinateSystem.Size = new System.Drawing.Size(344, 21);
-			this.CoordinateSystem.TabIndex = 3;
-			this.CoordinateSystem.SelectedIndexChanged += new System.EventHandler(this.CoordinateSystem_SelectedIndexChanged);
-			// 
-			// CoordinateCategory
-			// 
-			this.CoordinateCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.CoordinateCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CoordinateCategory.Location = new System.Drawing.Point(160, 24);
-			this.CoordinateCategory.Name = "CoordinateCategory";
-			this.CoordinateCategory.Size = new System.Drawing.Size(344, 21);
-			this.CoordinateCategory.TabIndex = 2;
-			this.CoordinateCategory.SelectedIndexChanged += new System.EventHandler(this.CoordinateCategory_SelectedIndexChanged);
-			// 
-			// SelectByList
-			// 
-			this.SelectByList.Checked = true;
-			this.SelectByList.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.SelectByList.Location = new System.Drawing.Point(16, 8);
-			this.SelectByList.Name = "SelectByList";
-			this.SelectByList.Size = new System.Drawing.Size(96, 16);
-			this.SelectByList.TabIndex = 4;
-			this.SelectByList.TabStop = true;
-			this.SelectByList.Text = "Select by list";
-			this.SelectByList.CheckedChanged += new System.EventHandler(this.SelectByList_CheckedChanged);
-			// 
-			// SelectByWKTGroup
-			// 
-			this.SelectByWKTGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.SelectByWKTGroup.Controls.Add(this.ValidateWKT);
-			this.SelectByWKTGroup.Controls.Add(this.WKTText);
-			this.SelectByWKTGroup.Controls.Add(this.label3);
-			this.SelectByWKTGroup.Enabled = false;
-			this.SelectByWKTGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.SelectByWKTGroup.Location = new System.Drawing.Point(8, 96);
-			this.SelectByWKTGroup.Name = "SelectByWKTGroup";
-			this.SelectByWKTGroup.Size = new System.Drawing.Size(512, 56);
-			this.SelectByWKTGroup.TabIndex = 7;
-			this.SelectByWKTGroup.TabStop = false;
-			// 
-			// ValidateWKT
-			// 
-			this.ValidateWKT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.ValidateWKT.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.ValidateWKT.Location = new System.Drawing.Point(448, 24);
-			this.ValidateWKT.Name = "ValidateWKT";
-			this.ValidateWKT.Size = new System.Drawing.Size(56, 24);
-			this.ValidateWKT.TabIndex = 6;
-			this.ValidateWKT.Text = "Validate";
-			this.ValidateWKT.Click += new System.EventHandler(this.ValidateWKT_Click);
-			// 
-			// SelectByWKT
-			// 
-			this.SelectByWKT.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.SelectByWKT.Location = new System.Drawing.Point(16, 96);
-			this.SelectByWKT.Name = "SelectByWKT";
-			this.SelectByWKT.Size = new System.Drawing.Size(112, 16);
-			this.SelectByWKT.TabIndex = 8;
-			this.SelectByWKT.Text = "Type WKT code";
-			this.SelectByWKT.CheckedChanged += new System.EventHandler(this.SelectByWKT_CheckedChanged);
-			// 
-			// SelectByCoordSysCode
-			// 
-			this.SelectByCoordSysCode.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.SelectByCoordSysCode.Location = new System.Drawing.Point(16, 160);
-			this.SelectByCoordSysCode.Name = "SelectByCoordSysCode";
-			this.SelectByCoordSysCode.Size = new System.Drawing.Size(184, 16);
-			this.SelectByCoordSysCode.TabIndex = 10;
-			this.SelectByCoordSysCode.Text = "Type coordinate system code";
-			this.SelectByCoordSysCode.CheckedChanged += new System.EventHandler(this.SelectByCoordSysCode_CheckedChanged);
-			// 
-			// SelectByCoordSysCodeGroup
-			// 
-			this.SelectByCoordSysCodeGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.SelectByCoordSysCodeGroup.Controls.Add(this.CoordSysCodeText);
-			this.SelectByCoordSysCodeGroup.Controls.Add(this.ValidateCoordSysCode);
-			this.SelectByCoordSysCodeGroup.Controls.Add(this.label5);
-			this.SelectByCoordSysCodeGroup.Enabled = false;
-			this.SelectByCoordSysCodeGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.SelectByCoordSysCodeGroup.Location = new System.Drawing.Point(8, 160);
-			this.SelectByCoordSysCodeGroup.Name = "SelectByCoordSysCodeGroup";
-			this.SelectByCoordSysCodeGroup.Size = new System.Drawing.Size(512, 56);
-			this.SelectByCoordSysCodeGroup.TabIndex = 9;
-			this.SelectByCoordSysCodeGroup.TabStop = false;
-			// 
-			// ValidateCoordSysCode
-			// 
-			this.ValidateCoordSysCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.ValidateCoordSysCode.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.ValidateCoordSysCode.Location = new System.Drawing.Point(448, 24);
-			this.ValidateCoordSysCode.Name = "ValidateCoordSysCode";
-			this.ValidateCoordSysCode.Size = new System.Drawing.Size(56, 24);
-			this.ValidateCoordSysCode.TabIndex = 6;
-			this.ValidateCoordSysCode.Text = "Validate";
-			this.ValidateCoordSysCode.Click += new System.EventHandler(this.ValidateCoordSysCode_Click);
-			// 
-			// label5
-			// 
-			this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label5.Location = new System.Drawing.Point(8, 24);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(144, 16);
-			this.label5.TabIndex = 3;
-			this.label5.Text = "Coordinate system code";
-			// 
-			// SelectByEPSGCode
-			// 
-			this.SelectByEPSGCode.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.SelectByEPSGCode.Location = new System.Drawing.Point(16, 224);
-			this.SelectByEPSGCode.Name = "SelectByEPSGCode";
-			this.SelectByEPSGCode.Size = new System.Drawing.Size(184, 16);
-			this.SelectByEPSGCode.TabIndex = 12;
-			this.SelectByEPSGCode.Text = "Type EPSG code";
-			this.SelectByEPSGCode.CheckedChanged += new System.EventHandler(this.SelectByEPSGCode_CheckedChanged);
-			// 
-			// SelectByEPSGCodeGroup
-			// 
-			this.SelectByEPSGCodeGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.SelectByEPSGCodeGroup.Controls.Add(this.EPSGCodeText);
-			this.SelectByEPSGCodeGroup.Controls.Add(this.ValidateEPSG);
-			this.SelectByEPSGCodeGroup.Controls.Add(this.label4);
-			this.SelectByEPSGCodeGroup.Enabled = false;
-			this.SelectByEPSGCodeGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.SelectByEPSGCodeGroup.Location = new System.Drawing.Point(8, 224);
-			this.SelectByEPSGCodeGroup.Name = "SelectByEPSGCodeGroup";
-			this.SelectByEPSGCodeGroup.Size = new System.Drawing.Size(512, 56);
-			this.SelectByEPSGCodeGroup.TabIndex = 11;
-			this.SelectByEPSGCodeGroup.TabStop = false;
-			// 
-			// ValidateEPSG
-			// 
-			this.ValidateEPSG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.ValidateEPSG.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.ValidateEPSG.Location = new System.Drawing.Point(448, 24);
-			this.ValidateEPSG.Name = "ValidateEPSG";
-			this.ValidateEPSG.Size = new System.Drawing.Size(56, 24);
-			this.ValidateEPSG.TabIndex = 5;
-			this.ValidateEPSG.Text = "Validate";
-			this.ValidateEPSG.Click += new System.EventHandler(this.ValidateEPSG_Click);
-			// 
-			// label4
-			// 
-			this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label4.Location = new System.Drawing.Point(8, 24);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(144, 16);
-			this.label4.TabIndex = 3;
-			this.label4.Text = "Coordinate system code";
-			// 
-			// OKBtn
-			// 
-			this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.OKBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.OKBtn.Enabled = false;
-			this.OKBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.OKBtn.Location = new System.Drawing.Point(184, 288);
-			this.OKBtn.Name = "OKBtn";
-			this.OKBtn.Size = new System.Drawing.Size(80, 32);
-			this.OKBtn.TabIndex = 13;
-			this.OKBtn.Text = "OK";
-			this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
-			// 
-			// CancelBtn
-			// 
-			this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.CancelBtn.Location = new System.Drawing.Point(280, 288);
-			this.CancelBtn.Name = "CancelBtn";
-			this.CancelBtn.Size = new System.Drawing.Size(80, 32);
-			this.CancelBtn.TabIndex = 14;
-			this.CancelBtn.Text = "Cancel";
-			// 
-			// CoordinateWait
-			// 
-			this.CoordinateWait.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.CoordinateWait.Location = new System.Drawing.Point(8, 8);
-			this.CoordinateWait.Name = "CoordinateWait";
-			this.CoordinateWait.Size = new System.Drawing.Size(512, 272);
-			this.CoordinateWait.TabIndex = 15;
-			this.CoordinateWait.Text = "Loading coordinate system, please wait";
-			this.CoordinateWait.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// EPSGCodeText
-			// 
-			this.EPSGCodeText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.EPSGCodeText.Location = new System.Drawing.Point(168, 24);
-			this.EPSGCodeText.Name = "EPSGCodeText";
-			this.EPSGCodeText.Size = new System.Drawing.Size(272, 21);
-			this.EPSGCodeText.TabIndex = 6;
-			// 
-			// CoordSysCodeText
-			// 
-			this.CoordSysCodeText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.CoordSysCodeText.Location = new System.Drawing.Point(168, 24);
-			this.CoordSysCodeText.Name = "CoordSysCodeText";
-			this.CoordSysCodeText.Size = new System.Drawing.Size(272, 21);
-			this.CoordSysCodeText.TabIndex = 7;
-			// 
-			// SelectCoordinateSystem
-			// 
-			this.AcceptButton = this.OKBtn;
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.CancelButton = this.CancelBtn;
-			this.ClientSize = new System.Drawing.Size(528, 333);
-			this.Controls.Add(this.SelectByList);
-			this.Controls.Add(this.CancelBtn);
-			this.Controls.Add(this.OKBtn);
-			this.Controls.Add(this.SelectByEPSGCode);
-			this.Controls.Add(this.SelectByEPSGCodeGroup);
-			this.Controls.Add(this.SelectByCoordSysCode);
-			this.Controls.Add(this.SelectByCoordSysCodeGroup);
-			this.Controls.Add(this.SelectByWKT);
-			this.Controls.Add(this.SelectByWKTGroup);
-			this.Controls.Add(this.SelectByListGroup);
-			this.Controls.Add(this.CoordinateWait);
-			this.Name = "SelectCoordinateSystem";
-			this.Text = "SelectCoordinateSystem";
-			this.Load += new System.EventHandler(this.SelectCoordinateSystem_Load);
-			this.SelectByListGroup.ResumeLayout(false);
-			this.SelectByWKTGroup.ResumeLayout(false);
-			this.SelectByCoordSysCodeGroup.ResumeLayout(false);
-			this.SelectByEPSGCodeGroup.ResumeLayout(false);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectCoordinateSystem));
+            this.label1 = new System.Windows.Forms.Label();
+            this.CoordinateSystemLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.WKTText = new System.Windows.Forms.TextBox();
+            this.SelectByListGroup = new System.Windows.Forms.GroupBox();
+            this.CoordinateSystem = new System.Windows.Forms.ComboBox();
+            this.CoordinateCategory = new System.Windows.Forms.ComboBox();
+            this.SelectByList = new System.Windows.Forms.RadioButton();
+            this.SelectByWKTGroup = new System.Windows.Forms.GroupBox();
+            this.ValidateWKT = new System.Windows.Forms.Button();
+            this.SelectByWKT = new System.Windows.Forms.RadioButton();
+            this.SelectByCoordSysCode = new System.Windows.Forms.RadioButton();
+            this.SelectByCoordSysCodeGroup = new System.Windows.Forms.GroupBox();
+            this.CoordSysCodeText = new System.Windows.Forms.ComboBox();
+            this.ValidateCoordSysCode = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.SelectByEPSGCode = new System.Windows.Forms.RadioButton();
+            this.SelectByEPSGCodeGroup = new System.Windows.Forms.GroupBox();
+            this.EPSGCodeText = new System.Windows.Forms.ComboBox();
+            this.ValidateEPSG = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.OKBtn = new System.Windows.Forms.Button();
+            this.CancelBtn = new System.Windows.Forms.Button();
+            this.CoordinateWait = new System.Windows.Forms.Label();
+            this.SelectByListGroup.SuspendLayout();
+            this.SelectByWKTGroup.SuspendLayout();
+            this.SelectByCoordSysCodeGroup.SuspendLayout();
+            this.SelectByEPSGCodeGroup.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // CoordinateSystemLabel
+            // 
+            resources.ApplyResources(this.CoordinateSystemLabel, "CoordinateSystemLabel");
+            this.CoordinateSystemLabel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.CoordinateSystemLabel.Name = "CoordinateSystemLabel";
+            // 
+            // label3
+            // 
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // WKTText
+            // 
+            resources.ApplyResources(this.WKTText, "WKTText");
+            this.WKTText.Name = "WKTText";
+            this.WKTText.TextChanged += new System.EventHandler(this.WKTText_TextChanged);
+            // 
+            // SelectByListGroup
+            // 
+            resources.ApplyResources(this.SelectByListGroup, "SelectByListGroup");
+            this.SelectByListGroup.Controls.Add(this.CoordinateSystem);
+            this.SelectByListGroup.Controls.Add(this.CoordinateCategory);
+            this.SelectByListGroup.Controls.Add(this.CoordinateSystemLabel);
+            this.SelectByListGroup.Controls.Add(this.label1);
+            this.SelectByListGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SelectByListGroup.Name = "SelectByListGroup";
+            this.SelectByListGroup.TabStop = false;
+            // 
+            // CoordinateSystem
+            // 
+            resources.ApplyResources(this.CoordinateSystem, "CoordinateSystem");
+            this.CoordinateSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CoordinateSystem.Name = "CoordinateSystem";
+            this.CoordinateSystem.SelectedIndexChanged += new System.EventHandler(this.CoordinateSystem_SelectedIndexChanged);
+            // 
+            // CoordinateCategory
+            // 
+            resources.ApplyResources(this.CoordinateCategory, "CoordinateCategory");
+            this.CoordinateCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CoordinateCategory.Name = "CoordinateCategory";
+            this.CoordinateCategory.SelectedIndexChanged += new System.EventHandler(this.CoordinateCategory_SelectedIndexChanged);
+            // 
+            // SelectByList
+            // 
+            this.SelectByList.Checked = true;
+            resources.ApplyResources(this.SelectByList, "SelectByList");
+            this.SelectByList.Name = "SelectByList";
+            this.SelectByList.TabStop = true;
+            this.SelectByList.CheckedChanged += new System.EventHandler(this.SelectByList_CheckedChanged);
+            // 
+            // SelectByWKTGroup
+            // 
+            resources.ApplyResources(this.SelectByWKTGroup, "SelectByWKTGroup");
+            this.SelectByWKTGroup.Controls.Add(this.ValidateWKT);
+            this.SelectByWKTGroup.Controls.Add(this.WKTText);
+            this.SelectByWKTGroup.Controls.Add(this.label3);
+            this.SelectByWKTGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SelectByWKTGroup.Name = "SelectByWKTGroup";
+            this.SelectByWKTGroup.TabStop = false;
+            // 
+            // ValidateWKT
+            // 
+            resources.ApplyResources(this.ValidateWKT, "ValidateWKT");
+            this.ValidateWKT.Name = "ValidateWKT";
+            this.ValidateWKT.Click += new System.EventHandler(this.ValidateWKT_Click);
+            // 
+            // SelectByWKT
+            // 
+            resources.ApplyResources(this.SelectByWKT, "SelectByWKT");
+            this.SelectByWKT.Name = "SelectByWKT";
+            this.SelectByWKT.CheckedChanged += new System.EventHandler(this.SelectByWKT_CheckedChanged);
+            // 
+            // SelectByCoordSysCode
+            // 
+            resources.ApplyResources(this.SelectByCoordSysCode, "SelectByCoordSysCode");
+            this.SelectByCoordSysCode.Name = "SelectByCoordSysCode";
+            this.SelectByCoordSysCode.CheckedChanged += new System.EventHandler(this.SelectByCoordSysCode_CheckedChanged);
+            // 
+            // SelectByCoordSysCodeGroup
+            // 
+            resources.ApplyResources(this.SelectByCoordSysCodeGroup, "SelectByCoordSysCodeGroup");
+            this.SelectByCoordSysCodeGroup.Controls.Add(this.CoordSysCodeText);
+            this.SelectByCoordSysCodeGroup.Controls.Add(this.ValidateCoordSysCode);
+            this.SelectByCoordSysCodeGroup.Controls.Add(this.label5);
+            this.SelectByCoordSysCodeGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SelectByCoordSysCodeGroup.Name = "SelectByCoordSysCodeGroup";
+            this.SelectByCoordSysCodeGroup.TabStop = false;
+            // 
+            // CoordSysCodeText
+            // 
+            resources.ApplyResources(this.CoordSysCodeText, "CoordSysCodeText");
+            this.CoordSysCodeText.Name = "CoordSysCodeText";
+            // 
+            // ValidateCoordSysCode
+            // 
+            resources.ApplyResources(this.ValidateCoordSysCode, "ValidateCoordSysCode");
+            this.ValidateCoordSysCode.Name = "ValidateCoordSysCode";
+            this.ValidateCoordSysCode.Click += new System.EventHandler(this.ValidateCoordSysCode_Click);
+            // 
+            // label5
+            // 
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // SelectByEPSGCode
+            // 
+            resources.ApplyResources(this.SelectByEPSGCode, "SelectByEPSGCode");
+            this.SelectByEPSGCode.Name = "SelectByEPSGCode";
+            this.SelectByEPSGCode.CheckedChanged += new System.EventHandler(this.SelectByEPSGCode_CheckedChanged);
+            // 
+            // SelectByEPSGCodeGroup
+            // 
+            resources.ApplyResources(this.SelectByEPSGCodeGroup, "SelectByEPSGCodeGroup");
+            this.SelectByEPSGCodeGroup.Controls.Add(this.EPSGCodeText);
+            this.SelectByEPSGCodeGroup.Controls.Add(this.ValidateEPSG);
+            this.SelectByEPSGCodeGroup.Controls.Add(this.label4);
+            this.SelectByEPSGCodeGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SelectByEPSGCodeGroup.Name = "SelectByEPSGCodeGroup";
+            this.SelectByEPSGCodeGroup.TabStop = false;
+            // 
+            // EPSGCodeText
+            // 
+            resources.ApplyResources(this.EPSGCodeText, "EPSGCodeText");
+            this.EPSGCodeText.Name = "EPSGCodeText";
+            // 
+            // ValidateEPSG
+            // 
+            resources.ApplyResources(this.ValidateEPSG, "ValidateEPSG");
+            this.ValidateEPSG.Name = "ValidateEPSG";
+            this.ValidateEPSG.Click += new System.EventHandler(this.ValidateEPSG_Click);
+            // 
+            // label4
+            // 
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // OKBtn
+            // 
+            resources.ApplyResources(this.OKBtn, "OKBtn");
+            this.OKBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.OKBtn.Name = "OKBtn";
+            this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
+            // 
+            // CancelBtn
+            // 
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
+            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelBtn.Name = "CancelBtn";
+            // 
+            // CoordinateWait
+            // 
+            resources.ApplyResources(this.CoordinateWait, "CoordinateWait");
+            this.CoordinateWait.Name = "CoordinateWait";
+            // 
+            // SelectCoordinateSystem
+            // 
+            this.AcceptButton = this.OKBtn;
+            resources.ApplyResources(this, "$this");
+            this.CancelButton = this.CancelBtn;
+            this.Controls.Add(this.SelectByList);
+            this.Controls.Add(this.CancelBtn);
+            this.Controls.Add(this.OKBtn);
+            this.Controls.Add(this.SelectByEPSGCode);
+            this.Controls.Add(this.SelectByEPSGCodeGroup);
+            this.Controls.Add(this.SelectByCoordSysCode);
+            this.Controls.Add(this.SelectByCoordSysCodeGroup);
+            this.Controls.Add(this.SelectByWKT);
+            this.Controls.Add(this.SelectByWKTGroup);
+            this.Controls.Add(this.SelectByListGroup);
+            this.Controls.Add(this.CoordinateWait);
+            this.Name = "SelectCoordinateSystem";
+            this.Load += new System.EventHandler(this.SelectCoordinateSystem_Load);
+            this.SelectByListGroup.ResumeLayout(false);
+            this.SelectByWKTGroup.ResumeLayout(false);
+            this.SelectByWKTGroup.PerformLayout();
+            this.SelectByCoordSysCodeGroup.ResumeLayout(false);
+            this.SelectByEPSGCodeGroup.ResumeLayout(false);
+            this.ResumeLayout(false);
 
 		}
 		#endregion

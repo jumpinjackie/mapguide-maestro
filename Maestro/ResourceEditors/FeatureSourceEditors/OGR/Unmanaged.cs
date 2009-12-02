@@ -72,51 +72,38 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.BrowseFileButton = new System.Windows.Forms.Button();
-			this.FilepathText = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// BrowseFileButton
-			// 
-			this.BrowseFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BrowseFileButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.BrowseFileButton.Location = new System.Drawing.Point(224, 2);
-			this.BrowseFileButton.Name = "BrowseFileButton";
-			this.BrowseFileButton.Size = new System.Drawing.Size(24, 20);
-			this.BrowseFileButton.TabIndex = 8;
-			this.BrowseFileButton.Text = "...";
-			this.BrowseFileButton.Click += new System.EventHandler(this.BrowseFileButton_Click);
-			// 
-			// FilepathText
-			// 
-			this.FilepathText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.FilepathText.Location = new System.Drawing.Point(120, 2);
-			this.FilepathText.Name = "FilepathText";
-			this.FilepathText.Size = new System.Drawing.Size(104, 20);
-			this.FilepathText.TabIndex = 7;
-			this.FilepathText.Text = "textBox1";
-			this.FilepathText.TextChanged += new System.EventHandler(this.FilepathText_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(0, 2);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(112, 16);
-			this.label1.TabIndex = 6;
-			this.label1.Text = "Folder or file path";
-			// 
-			// Unmanaged
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(248, 24);
-			this.Controls.Add(this.BrowseFileButton);
-			this.Controls.Add(this.FilepathText);
-			this.Controls.Add(this.label1);
-			this.Name = "Unmanaged";
-			this.Size = new System.Drawing.Size(248, 24);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Unmanaged));
+            this.BrowseFileButton = new System.Windows.Forms.Button();
+            this.FilepathText = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // BrowseFileButton
+            // 
+            resources.ApplyResources(this.BrowseFileButton, "BrowseFileButton");
+            this.BrowseFileButton.Name = "BrowseFileButton";
+            this.BrowseFileButton.Click += new System.EventHandler(this.BrowseFileButton_Click);
+            // 
+            // FilepathText
+            // 
+            resources.ApplyResources(this.FilepathText, "FilepathText");
+            this.FilepathText.Name = "FilepathText";
+            this.FilepathText.TextChanged += new System.EventHandler(this.FilepathText_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // Unmanaged
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.BrowseFileButton);
+            this.Controls.Add(this.FilepathText);
+            this.Controls.Add(this.label1);
+            this.Name = "Unmanaged";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion
@@ -159,15 +146,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 		private void BrowseFileButton_Click(object sender, System.EventArgs e)
 		{
 			System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
-			nv.Add(".shp", "Shape file (*.shp)");
-			nv.Add(".mif", "MapInfo Interchange (*.mif)");
-			nv.Add(".tab", "MapInfo Native (*.tab)");
-			nv.Add(".sqlite", "SQLite database (*.sqlite)");
-			nv.Add(".gml", "GML file (*.gml)");
-			nv.Add(".dgn", "DGN file (*.dgn)");
-			nv.Add(".s57", "S-57 (*.s57)");
-			nv.Add("", "All files (*.*)");
-			string f = m_editor.BrowseUnmanagedData(null, nv);
+            nv.Add(".shp", Strings.Common.ShapeFiles);
+            nv.Add(".mif", Strings.Common.MapInfoInterchangeFiles);
+            nv.Add(".tab", Strings.Common.MapInfoNativeFiles);
+            nv.Add(".sqlite", Strings.Common.SQLiteFiles);
+            nv.Add(".gml", Strings.Common.GMLFiles);
+            nv.Add(".dgn", Strings.Common.DGNFiles);
+            nv.Add(".s57", Strings.Common.S57Files);
+            nv.Add("", Strings.Common.AllFiles);
+            string f = m_editor.BrowseUnmanagedData(null, nv);
 			if (f != null)
 				FilepathText.Text = f;
 		}

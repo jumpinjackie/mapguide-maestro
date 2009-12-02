@@ -40,7 +40,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		private string m_baseUrl;
 		public System.Windows.Forms.TextBox txtUrl;
 		private System.Windows.Forms.PictureBox PreviewPicture;
-		private Globalizator.Globalizator m_globalizor = null;
 
 		/// <summary>
 		/// Required designer variable.
@@ -53,7 +52,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			m_globalizor = new  Globalizator.Globalizator(this);
 		}
 
 		public void SetupCombos(ApplicationDefinitionTemplateInfoSet tp)
@@ -97,103 +95,80 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.TemplateCombo = new System.Windows.Forms.ComboBox();
-			this.txtUrl = new System.Windows.Forms.TextBox();
-			this.OKBtn = new System.Windows.Forms.Button();
-			this.CancelBtn = new System.Windows.Forms.Button();
-			this.PreviewPicture = new System.Windows.Forms.PictureBox();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label1.Location = new System.Drawing.Point(8, 16);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(64, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Template";
-			// 
-			// label2
-			// 
-			this.label2.Enabled = false;
-			this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label2.Location = new System.Drawing.Point(24, 40);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(40, 16);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "URL";
-			// 
-			// TemplateCombo
-			// 
-			this.TemplateCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.TemplateCombo.Location = new System.Drawing.Point(80, 16);
-			this.TemplateCombo.Name = "TemplateCombo";
-			this.TemplateCombo.Size = new System.Drawing.Size(352, 21);
-			this.TemplateCombo.TabIndex = 2;
-			this.TemplateCombo.SelectedIndexChanged += new System.EventHandler(this.TemplateCombo_SelectedIndexChanged);
-			// 
-			// txtUrl
-			// 
-			this.txtUrl.Location = new System.Drawing.Point(80, 40);
-			this.txtUrl.Name = "txtUrl";
-			this.txtUrl.ReadOnly = true;
-			this.txtUrl.Size = new System.Drawing.Size(352, 20);
-			this.txtUrl.TabIndex = 3;
-			this.txtUrl.Text = "";
-			// 
-			// OKBtn
-			// 
-			this.OKBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.OKBtn.Enabled = false;
-			this.OKBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.OKBtn.Location = new System.Drawing.Point(168, 72);
-			this.OKBtn.Name = "OKBtn";
-			this.OKBtn.Size = new System.Drawing.Size(80, 24);
-			this.OKBtn.TabIndex = 4;
-			this.OKBtn.Text = "OK";
-			// 
-			// CancelBtn
-			// 
-			this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.CancelBtn.Location = new System.Drawing.Point(288, 72);
-			this.CancelBtn.Name = "CancelBtn";
-			this.CancelBtn.Size = new System.Drawing.Size(80, 24);
-			this.CancelBtn.TabIndex = 5;
-			this.CancelBtn.Text = "Cancel";
-			// 
-			// PreviewPicture
-			// 
-			this.PreviewPicture.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.PreviewPicture.Location = new System.Drawing.Point(456, 8);
-			this.PreviewPicture.Name = "PreviewPicture";
-			this.PreviewPicture.Size = new System.Drawing.Size(128, 88);
-			this.PreviewPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.PreviewPicture.TabIndex = 6;
-			this.PreviewPicture.TabStop = false;
-			// 
-			// SelectTemplate
-			// 
-			this.AcceptButton = this.OKBtn;
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.CancelButton = this.CancelBtn;
-			this.ClientSize = new System.Drawing.Size(594, 109);
-			this.Controls.Add(this.PreviewPicture);
-			this.Controls.Add(this.CancelBtn);
-			this.Controls.Add(this.OKBtn);
-			this.Controls.Add(this.txtUrl);
-			this.Controls.Add(this.TemplateCombo);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "SelectTemplate";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "Select Template";
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectTemplate));
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TemplateCombo = new System.Windows.Forms.ComboBox();
+            this.txtUrl = new System.Windows.Forms.TextBox();
+            this.OKBtn = new System.Windows.Forms.Button();
+            this.CancelBtn = new System.Windows.Forms.Button();
+            this.PreviewPicture = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.PreviewPicture)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label2.Name = "label2";
+            // 
+            // TemplateCombo
+            // 
+            this.TemplateCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.TemplateCombo, "TemplateCombo");
+            this.TemplateCombo.Name = "TemplateCombo";
+            this.TemplateCombo.SelectedIndexChanged += new System.EventHandler(this.TemplateCombo_SelectedIndexChanged);
+            // 
+            // txtUrl
+            // 
+            resources.ApplyResources(this.txtUrl, "txtUrl");
+            this.txtUrl.Name = "txtUrl";
+            this.txtUrl.ReadOnly = true;
+            // 
+            // OKBtn
+            // 
+            this.OKBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            resources.ApplyResources(this.OKBtn, "OKBtn");
+            this.OKBtn.Name = "OKBtn";
+            // 
+            // CancelBtn
+            // 
+            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
+            this.CancelBtn.Name = "CancelBtn";
+            // 
+            // PreviewPicture
+            // 
+            this.PreviewPicture.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.PreviewPicture, "PreviewPicture");
+            this.PreviewPicture.Name = "PreviewPicture";
+            this.PreviewPicture.TabStop = false;
+            // 
+            // SelectTemplate
+            // 
+            this.AcceptButton = this.OKBtn;
+            resources.ApplyResources(this, "$this");
+            this.CancelButton = this.CancelBtn;
+            this.Controls.Add(this.PreviewPicture);
+            this.Controls.Add(this.CancelBtn);
+            this.Controls.Add(this.OKBtn);
+            this.Controls.Add(this.txtUrl);
+            this.Controls.Add(this.TemplateCombo);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "SelectTemplate";
+            ((System.ComponentModel.ISupportInitialize)(this.PreviewPicture)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

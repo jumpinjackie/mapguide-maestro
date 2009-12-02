@@ -90,88 +90,62 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.PageTitle = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.ShowNorthArrow = new System.Windows.Forms.CheckBox();
-			this.ShowLegend = new System.Windows.Forms.CheckBox();
-			this.ShowTitle = new System.Windows.Forms.CheckBox();
-			this.ShowPrintUI = new System.Windows.Forms.CheckBox();
-			this.SuspendLayout();
-			// 
-			// PageTitle
-			// 
-			this.PageTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.PageTitle.Location = new System.Drawing.Point(136, 10);
-			this.PageTitle.Name = "PageTitle";
-			this.PageTitle.Size = new System.Drawing.Size(472, 20);
-			this.PageTitle.TabIndex = 23;
-			this.PageTitle.Text = "";
-			this.PageTitle.TextChanged += new System.EventHandler(this.PageTitle_TextChanged);
-			// 
-			// label5
-			// 
-			this.label5.Location = new System.Drawing.Point(8, 10);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(128, 16);
-			this.label5.TabIndex = 22;
-			this.label5.Text = "Page title";
-			// 
-			// ShowNorthArrow
-			// 
-			this.ShowNorthArrow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ShowNorthArrow.Location = new System.Drawing.Point(8, 56);
-			this.ShowNorthArrow.Name = "ShowNorthArrow";
-			this.ShowNorthArrow.Size = new System.Drawing.Size(600, 16);
-			this.ShowNorthArrow.TabIndex = 25;
-			this.ShowNorthArrow.Text = "Show north arrow";
-			this.ShowNorthArrow.CheckedChanged += new System.EventHandler(this.ShowNorthArrow_CheckedChanged);
-			// 
-			// ShowLegend
-			// 
-			this.ShowLegend.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ShowLegend.Location = new System.Drawing.Point(8, 32);
-			this.ShowLegend.Name = "ShowLegend";
-			this.ShowLegend.Size = new System.Drawing.Size(600, 16);
-			this.ShowLegend.TabIndex = 24;
-			this.ShowLegend.Text = "Show legend";
-			this.ShowLegend.CheckedChanged += new System.EventHandler(this.ShowLegend_CheckedChanged);
-			// 
-			// ShowTitle
-			// 
-			this.ShowTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ShowTitle.Location = new System.Drawing.Point(8, 104);
-			this.ShowTitle.Name = "ShowTitle";
-			this.ShowTitle.Size = new System.Drawing.Size(600, 16);
-			this.ShowTitle.TabIndex = 27;
-			this.ShowTitle.Text = "Show title";
-			this.ShowTitle.CheckedChanged += new System.EventHandler(this.ShowTitle_CheckedChanged);
-			// 
-			// ShowPrintUI
-			// 
-			this.ShowPrintUI.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ShowPrintUI.Location = new System.Drawing.Point(8, 80);
-			this.ShowPrintUI.Name = "ShowPrintUI";
-			this.ShowPrintUI.Size = new System.Drawing.Size(600, 16);
-			this.ShowPrintUI.TabIndex = 26;
-			this.ShowPrintUI.Text = "Show print UI";
-			this.ShowPrintUI.CheckedChanged += new System.EventHandler(this.ShowPrintUI_CheckedChanged);
-			// 
-			// Print
-			// 
-			this.Controls.Add(this.ShowTitle);
-			this.Controls.Add(this.ShowPrintUI);
-			this.Controls.Add(this.ShowNorthArrow);
-			this.Controls.Add(this.ShowLegend);
-			this.Controls.Add(this.PageTitle);
-			this.Controls.Add(this.label5);
-			this.Name = "Print";
-			this.Size = new System.Drawing.Size(616, 128);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Print));
+            this.PageTitle = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ShowNorthArrow = new System.Windows.Forms.CheckBox();
+            this.ShowLegend = new System.Windows.Forms.CheckBox();
+            this.ShowTitle = new System.Windows.Forms.CheckBox();
+            this.ShowPrintUI = new System.Windows.Forms.CheckBox();
+            this.SuspendLayout();
+            // 
+            // PageTitle
+            // 
+            resources.ApplyResources(this.PageTitle, "PageTitle");
+            this.PageTitle.Name = "PageTitle";
+            this.PageTitle.TextChanged += new System.EventHandler(this.PageTitle_TextChanged);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // ShowNorthArrow
+            // 
+            resources.ApplyResources(this.ShowNorthArrow, "ShowNorthArrow");
+            this.ShowNorthArrow.Name = "ShowNorthArrow";
+            this.ShowNorthArrow.CheckedChanged += new System.EventHandler(this.ShowNorthArrow_CheckedChanged);
+            // 
+            // ShowLegend
+            // 
+            resources.ApplyResources(this.ShowLegend, "ShowLegend");
+            this.ShowLegend.Name = "ShowLegend";
+            this.ShowLegend.CheckedChanged += new System.EventHandler(this.ShowLegend_CheckedChanged);
+            // 
+            // ShowTitle
+            // 
+            resources.ApplyResources(this.ShowTitle, "ShowTitle");
+            this.ShowTitle.Name = "ShowTitle";
+            this.ShowTitle.CheckedChanged += new System.EventHandler(this.ShowTitle_CheckedChanged);
+            // 
+            // ShowPrintUI
+            // 
+            resources.ApplyResources(this.ShowPrintUI, "ShowPrintUI");
+            this.ShowPrintUI.Name = "ShowPrintUI";
+            this.ShowPrintUI.CheckedChanged += new System.EventHandler(this.ShowPrintUI_CheckedChanged);
+            // 
+            // Print
+            // 
+            this.Controls.Add(this.ShowTitle);
+            this.Controls.Add(this.ShowPrintUI);
+            this.Controls.Add(this.ShowNorthArrow);
+            this.Controls.Add(this.ShowLegend);
+            this.Controls.Add(this.PageTitle);
+            this.Controls.Add(this.label5);
+            this.Name = "Print";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

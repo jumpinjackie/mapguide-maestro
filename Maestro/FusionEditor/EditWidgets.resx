@@ -125,21 +125,21 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADs
-        MwAAAk1TRnQBSQFMAgEBCQEAAQ4BAAEEAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
-        AwABMAMAAQEBAAEgBgABMC4AAbECrQH/Aa4CqgH/BAABUwFfAbkB/wEwAUYBuwH/AT8BTwG5Af8BgQGF
-        AcMB/+AAAbUCsQH/AegB3AHYAf8CgQG7Af8BMQFLAdMB/wEtAWcB9QH/ASgBcwH8Af8BKwFsAfkB/wEx
-        AVUB5AH/AUsBVgG2Af/QAAGuAqoB/wGqAqYB/wQAAa4CqgH/AcYBvAHNAf8BNAFDAcoB/wE4AVsB9wH/
-        ATkBbgH+Af8BOQFuAf4B/wE5AW4B/gH/AToBYQH8Af8BNwFLAeEB/wGBAYUBwwH/yAABrgKqAf8B8QHi
-        AdwB/wHoAdwB2AH/AcICvAH/AcwBxgHFAf8BhAGBAbsB/wE3AUsB4QH/AXkBhAHzAf8BkAGjAfYB/wGQ
-        AaMB9gH/AY8BpQH2Af8BjAGbAfYB/wFSAWAB6wH/AT8BTwG5Af/IAAGuAqoB/wHxAeIB3AH/AfEB4AHa
-        Af8B8AHdAdYB/wHwAd0B1gH/AnsBuwH/AT0BTAHoAf8BvgHCAe8B/wHrAewB9QH/AesB7AH1Af8B6wHs
-        AfUB/wHrAewB9QH/AW8BegHqAf8BNAFAAbsB/8wAAc8ByAHGAf8B8QHiAdwB/wHxAeIB3AH/AcwBxgHF
-        Af8BdQF3AaIB/wFDAVAB3wH/AXEBfQH8Af8BgQGKAf4B/wGEAY4B/gH/AYQBjgH+Af8BeAGBAf4B/wFS
-        AWAB6wH/AVMBXwG5Af/EAAG9ArkB/wGxAq0B/wHXAdABzgH/AfEB4gHcAf8BzAHGAcUB/wgAAT8BTwG5
-        Af8BegGBAfEB/wGJAZMB/QH/AZEBmgH+Af8BiQGTAf0B/wGBAYYB9wH/AUsBVgHTAf8BnQGgAcYB/8AA
-        AbkCtgH/Ae4B5gHkAf8B9QHpAeUB/wH0AeYB4QH/AfQB5gHhAf8BrgKqAf8MAAFSAVsBvwH/AYIBiwHo
-        Af8BnAGjAfMB/wGPAZcB7gH/AV0BZwHPAf8BhAGBAbsB/wGuAqoB/8AAAb0CuQH/Ae4B5gHkAf8B9QHp
-        AeUB/wH1AekB5QH/AfUB6QHlAf8BsQKtAf8QAAF1AXcBogH/AoEBuwH/AoEBvAH/AcYBvAHNAf8B4wHZ
+        MwAAAk1TRnQBSQFMAgEBCQEAAQwBAAEMAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        AwABMAMAAQEBAAEgBgABMC4AAbECrQH/Aa4CqgH/BAABUgFeAbkB/wEvAUUBuwH/AT4BTgG5Af8BgQGF
+        AcMB/+AAAbUCsQH/AegB3AHYAf8CgQG7Af8BMAFKAdMB/wEsAWYB9QH/AScBcgH8Af8BKgFrAfkB/wEw
+        AVQB5AH/AUoBVQG2Af/QAAGuAqoB/wGqAqYB/wQAAa4CqgH/AcYBvAHNAf8BMwFCAcoB/wE3AVoB9wH/
+        ATgBbQH+Af8BOAFtAf4B/wE4AW0B/gH/ATkBYAH8Af8BNgFKAeEB/wGBAYUBwwH/yAABrgKqAf8B8QHi
+        AdwB/wHoAdwB2AH/AcICvAH/AcwBxgHFAf8BhAGBAbsB/wE2AUoB4QH/AXgBhAHzAf8BkAGjAfYB/wGQ
+        AaMB9gH/AY8BpQH2Af8BjAGbAfYB/wFRAV8B6wH/AT4BTgG5Af/IAAGuAqoB/wHxAeIB3AH/AfEB4AHa
+        Af8B8AHdAdYB/wHwAd0B1gH/AnoBuwH/ATwBSwHoAf8BvgHCAe8B/wHrAewB9QH/AesB7AH1Af8B6wHs
+        AfUB/wHrAewB9QH/AW4BeQHqAf8BMwE/AbsB/8wAAc8ByAHGAf8B8QHiAdwB/wHxAeIB3AH/AcwBxgHF
+        Af8BdAF2AaIB/wFCAU8B3wH/AXABfAH8Af8BgQGKAf4B/wGEAY4B/gH/AYQBjgH+Af8BdwGBAf4B/wFR
+        AV8B6wH/AVIBXgG5Af/EAAG9ArkB/wGxAq0B/wHXAdABzgH/AfEB4gHcAf8BzAHGAcUB/wgAAT4BTgG5
+        Af8BeQGBAfEB/wGJAZMB/QH/AZEBmgH+Af8BiQGTAf0B/wGBAYYB9wH/AUoBVQHTAf8BnQGgAcYB/8AA
+        AbkCtgH/Ae4B5gHkAf8B9QHpAeUB/wH0AeYB4QH/AfQB5gHhAf8BrgKqAf8MAAFRAVoBvwH/AYIBiwHo
+        Af8BnAGjAfMB/wGPAZcB7gH/AVwBZgHPAf8BhAGBAbsB/wGuAqoB/8AAAb0CuQH/Ae4B5gHkAf8B9QHp
+        AeUB/wH1AekB5QH/AfUB6QHlAf8BsQKtAf8QAAF0AXYBogH/AoEBuwH/AoEBvAH/AcYBvAHNAf8B4wHZ
         AdUB/wGuAqoB/8QAAcICvAH/AbUCsQH/Ac8BygHJAf8B9QHpAeUB/wHMAcYBxQH/Ac8ByAHGAf8IAAHM
         AcYBxQH/AcwBxgHFAf8B6AHcAdgB/wHRAcoByAH/AaoCpgH/AbkCtgH/0AABwgK8Af8B9QHpAeUB/wH1
         AekB5QH/AdEBygHIAf8BsQKtAf8BrgKqAf8BywLIAf8B9AHmAeEB/wHxAeIB3AH/AcICvAH/1AABsQKt
@@ -147,77 +147,77 @@
         AeIB3AH/AfEB4gHcAf8B9AHmAeEB/wGqAqYB/9AAAbUCsQH/AfMB6wHoAf8B8wHrAegB/wHMAcYBxQH/
         AdEBygHIAf8B8wHrAegB/wH1AekB5QH/AdEBygHIAf8BzAHGAcUB/wH0AeYB4QH/Ae4B5gHkAf8BqgKm
         Af/UAAG1ArEB/wG1ArEB/wQAAbkCtgH/AfUB6QHlAf8B8wHrAegB/wG1ArEB/wQAAa4CqgH/Aa4CqgH/
-        6AAB3gHZAdcB/wHoAeIB4AH/AcUCwwH/9AABuQK2Af8BuQK2Af//AEUAAUoBlQFVAf8BJwGSAT4B/wE2
-        AZEBRQH/AX4BqwGBAf8kAAGxAq0B/wGtAqkB/zgAAbECrQH/Aa4CqgH/BAABSgGVAVUB/wEnAZIBPgH/
-        ATYBkQFFAf8BfgGrAYEB/2gAAWwBowGIAf8BJgGjAUEB/wElAdcBbwH/AWEB5gGfAf8BPwHdAYEB/wEn
-        AbgBUAH/AUIBkAFLAf8cAAG1ArIB/wHpAd0B2AH/AekB3QHYAf8BtQKyAf8wAAG1ArEB/wHoAdwB2AH/
-        AX8BpQF7Af8BJgGjAUEB/wElAdcBbgH/AWEB5gGfAf8BQAHdAYEB/wEnAbgBUAH/AUIBkAFLAf8EAAGH
-        AcIB+AH/AXEBygH7Af8BLAHEAf0B/wEsAcQB/QH/ASwBxAH9Af8BLAHEAf0B/wEiAb4B/QH/ASIBvgH9
-        Af8BIgG+Af0B/wEiAb4B/QH/ARsBuwH9Af8BGwG7Af0B/wEgAbMB+wH/DAABhAHEAfYB/wFcAbkB9AH/
-        AawB6wH6Af8BwgHwAfsB/wHCAfAB+wH/AcIB8AH7Af8BwgHwAfsB/wGZAdABzAH/AScBlAEzAf8BKwHE
-        AVMB/wEuAdgBbQH/AeMB8gHpAf8BgAHgAZ8B/wEtAcwBWwH/ASoBpwE8Af8BfgGrAYEB/wwAAa0CqQH/
+        6AAB3gHZAdcB/wHoAeIB4AH/AcUCwwH/9AABuQK2Af8BuQK2Af//AEUAAUkBlQFUAf8BJgGSAT0B/wE1
+        AZEBRAH/AX0BqwGBAf8kAAGxAq0B/wGtAqkB/zgAAbECrQH/Aa4CqgH/BAABSQGVAVQB/wEmAZIBPQH/
+        ATUBkQFEAf8BfQGrAYEB/2gAAWsBowGIAf8BJQGjAUAB/wEkAdcBbgH/AWAB5gGfAf8BPgHdAYEB/wEm
+        AbgBTwH/AUEBkAFKAf8cAAG1ArIB/wHpAd0B2AH/AekB3QHYAf8BtQKyAf8wAAG1ArEB/wHoAdwB2AH/
+        AX4BpQF6Af8BJQGjAUAB/wEkAdcBbQH/AWAB5gGfAf8BPwHdAYEB/wEmAbgBTwH/AUEBkAFKAf8EAAGH
+        AcIB+AH/AXABygH7Af8BKwHEAf0B/wErAcQB/QH/ASsBxAH9Af8BKwHEAf0B/wEhAb4B/QH/ASEBvgH9
+        Af8BIQG+Af0B/wEhAb4B/QH/ARoBuwH9Af8BGgG7Af0B/wEfAbMB+wH/DAABhAHEAfYB/wFbAbkB9AH/
+        AawB6wH6Af8BwgHwAfsB/wHCAfAB+wH/AcIB8AH7Af8BwgHwAfsB/wGZAdABzAH/ASYBlAEyAf8BKgHE
+        AVIB/wEtAdgBbAH/AeMB8gHpAf8BgAHgAZ8B/wEsAcwBWgH/ASkBpwE7Af8BfQGrAYEB/wwAAa0CqQH/
         AaoCpgH/BAABrQKpAf8B8QHgAdoB/wHwAd4B2AH/AaYCogH/BAABpgKiAf8BqgKmAf8YAAGuAqoB/wGq
-        AqYB/wQAAa4CqgH/AcQByQG1Af8BJwGUATMB/wErAcQBUwH/AS4B2AFtAf8B4wHyAekB/wF/AeABnwH/
-        AS0BzAFbAf8BKgGnATwB/wF+AasBgQH/AZUBygH5Af8BhwHKAfkB/wFDAdkC/wFDAdkC/wE2AdIC/wE2
-        AdIC/wE2AdIC/wE2AdIC/wE2AdIC/wEzAdEC/wEzAdEC/wEuAc8C/wEuAc8C/wF+Ab8B8QH/CAABiwHH
-        AfYB/wGTAdsB+AH/AXQBzgH2Af8BoQHrAfoB/wGeAekB+gH/AZwB5gH6Af8BnAHmAfoB/wFcAagBhwH/
-        ASoBpwE8Af8BbwHKAX4B/wGDAdgBmQH/Ae4B9gHwAf8BsgHjAb8B/wGBAdMBjwH/AUMBswFOAf8BOAGN
-        AT4B/wgAAa0CqQH/AfEB4AHaAf8B7gHfAdoB/wHBAbsBugH/AcwBxgHFAf8B7gHbAdQB/wHuAdsB1AH/
+        AqYB/wQAAa4CqgH/AcQByQG1Af8BJgGUATIB/wEqAcQBUgH/AS0B2AFsAf8B4wHyAekB/wF+AeABnwH/
+        ASwBzAFaAf8BKQGnATsB/wF9AasBgQH/AZUBygH5Af8BhwHKAfkB/wFCAdkC/wFCAdkC/wE1AdIC/wE1
+        AdIC/wE1AdIC/wE1AdIC/wE1AdIC/wEyAdEC/wEyAdEC/wEtAc8C/wEtAc8C/wF9Ab8B8QH/CAABiwHH
+        AfYB/wGTAdsB+AH/AXMBzgH2Af8BoQHrAfoB/wGeAekB+gH/AZwB5gH6Af8BnAHmAfoB/wFbAagBhwH/
+        ASkBpwE7Af8BbgHKAX0B/wGDAdgBmQH/Ae4B9gHwAf8BsgHjAb8B/wGBAdMBjwH/AUIBswFNAf8BNwGN
+        AT0B/wgAAa0CqQH/AfEB4AHaAf8B7gHfAdoB/wHBAbsBugH/AcwBxgHFAf8B7gHbAdQB/wHuAdsB1AH/
         AdIBygHIAf8BwQG7AboB/wHuAdsB1AH/Ae4B2wHUAf8BqgKmAf8QAAGuAqoB/wHxAeIB3AH/AegB3AHY
-        Af8BwgK8Af8BzAHGAcUB/wF/AaUBewH/ASsBpQE2Af8BbwHKAX4B/wGDAdgBmQH/Ae4B9gHwAf8BsgHj
-        Ab8B/wGBAdMBjwH/AUMBswFOAf8BOAGOAT4B/wGYAcsB+QH/AXEBvgH4Af8BfAHoAf4B/wFSAeEC/wFS
-        AeEC/wFSAeEC/wFSAeEC/wFOAd8C/wFOAd8C/wFOAd8C/wFDAdkC/wFOAd8C/wFLAdcB/AH/AWQByAH4
-        Af8MAAGsAesB+gH/AVQBuAH0Af8BYwHbAfYB/wFXAdUB9QH/AVMB0AH1Af8BUwHQAfUB/wEyAZgBegH/
-        ASsBpQE2Af8BwgHgAcUB/wHtAfIB7QH/A/4B/wHyAfYB8gH/Ae0B8gHtAf8BZAG8AWwB/wEpAYgBMQH/
+        Af8BwgK8Af8BzAHGAcUB/wF+AaUBegH/ASoBpQE1Af8BbgHKAX0B/wGDAdgBmQH/Ae4B9gHwAf8BsgHj
+        Ab8B/wGBAdMBjwH/AUIBswFNAf8BNwGOAT0B/wGYAcsB+QH/AXABvgH4Af8BewHoAf4B/wFRAeEC/wFR
+        AeEC/wFRAeEC/wFRAeEC/wFNAd8C/wFNAd8C/wFNAd8C/wFCAdkC/wFNAd8C/wFKAdcB/AH/AWMByAH4
+        Af8MAAGsAesB+gH/AVMBuAH0Af8BYgHbAfYB/wFWAdUB9QH/AVIB0AH1Af8BUgHQAfUB/wExAZgBeQH/
+        ASoBpQE1Af8BwgHgAcUB/wHtAfIB7QH/A/4B/wHyAfYB8gH/Ae0B8gHtAf8BYwG8AWsB/wEoAYgBMAH/
         CAABsQKtAf8B8QHgAdoB/wHwAd4B2AH/AfAB3QHWAf8B8AHdAdYB/wHwAd4B2AH/AfAB3QHWAf8B7gHb
         AdQB/wHuAdgB0QH/Ae4B2wHUAf8B7gHbAdQB/wGxAq0B/xAAAa4CqgH/AfEB4gHcAf8B8QHgAdoB/wHw
-        Ad0B1gH/AfAB3QHWAf8BdQGhAW8B/wEuAagBOAH/AcIB4AHFAf8B7QHyAe0B/wP+Af8B8gH2AfIB/wHt
-        AfIB7QH/AWQBvAFsAf8BKQGIATEB/wGYAcsB+QH/AUEBugH6Af8BlQHjAf0B/wFjAekC/wFjAekC/wFj
-        AekC/wFjAekC/wFaAeUC/wFaAeUC/wFaAeUC/wFaAeUC/wFaAeUC/wFfAeEB/QH/AYQB6QH9Af8MAAGh
-        AeQB+AH/AWgBwAH1Af8BVwHVAfUB/wE6AccB8wH/ATcBxQHzAf8BMQG6AfEB/wEoAZgBlAH/ATUBpQE/
-        Af8BYwHIAWwB/wFvAcoBfgH/Ae0B8gHtAf8BogHYAacB/wFoAcoBcQH/AUYBtAFPAf8BSwGUAVIB/wwA
+        Ad0B1gH/AfAB3QHWAf8BdAGhAW4B/wEtAagBNwH/AcIB4AHFAf8B7QHyAe0B/wP+Af8B8gH2AfIB/wHt
+        AfIB7QH/AWMBvAFrAf8BKAGIATAB/wGYAcsB+QH/AUABugH6Af8BlQHjAf0B/wFiAekC/wFiAekC/wFi
+        AekC/wFiAekC/wFZAeUC/wFZAeUC/wFZAeUC/wFZAeUC/wFZAeUC/wFeAeEB/QH/AYQB6QH9Af8MAAGh
+        AeQB+AH/AWcBwAH1Af8BVgHVAfUB/wE5AccB8wH/ATYBxQHzAf8BMAG6AfEB/wEnAZgBlAH/ATQBpQE+
+        Af8BYgHIAWsB/wFuAcoBfQH/Ae0B8gHtAf8BogHYAacB/wFnAcoBcAH/AUUBtAFOAf8BSgGUAVEB/wwA
         Ac8ByAHGAf8B8QHgAdoB/wHxAeAB2gH/AcwBxgHFAf8BqgKmAf8BrQKpAf8ByAHCAcAB/wHwAd0B1gH/
-        Ae4B2wHUAf8B0QHIAcUB/wHFAcABvwH/FAABzwHIAcYB/wHxAeIB3AH/AfEB4gHcAf8BzAHGAcUB/wFx
-        AY8BcQH/ATUBpQE/Af8BYwHIAWwB/wF0AcwBewH/Ae0B8gHtAf8BogHYAacB/wFoAcoBcAH/AUYBtAFP
-        Af8BTAGUAVIB/wGYAcsB+QH/AT4ByQH9Af8BhwHKAfkB/wF2Ae4C/wF2Ae4C/wF2Ae4C/wFyAe4C/wFy
-        Ae4C/wFyAe4C/wFrAe0C/wFrAe0C/wFrAe0C/wFyAe4C/wGfAfwB/gH/AYEBwgHwAf8IAAGWAd0B9wH/
-        AYoB3AH4Af8BVAG4AfQB/wE6AccB8wH/ATQBwAHyAf8BMQG6AfEB/wEtAa8B4AH/ASkBiwE/Af8BbwHF
-        AXcB/wGBAdMBhQH/AdUB5gHWAf8BogHYAacB/wF2AcwBfgH/AT8BoAFHAf8BcgGeAagB/wQAAb0CuQH/
+        Ae4B2wHUAf8B0QHIAcUB/wHFAcABvwH/FAABzwHIAcYB/wHxAeIB3AH/AfEB4gHcAf8BzAHGAcUB/wFw
+        AY8BcAH/ATQBpQE+Af8BYgHIAWsB/wFzAcwBegH/Ae0B8gHtAf8BogHYAacB/wFnAcoBbwH/AUUBtAFO
+        Af8BSwGUAVEB/wGYAcsB+QH/AT0ByQH9Af8BhwHKAfkB/wF1Ae4C/wF1Ae4C/wF1Ae4C/wFxAe4C/wFx
+        Ae4C/wFxAe4C/wFqAe0C/wFqAe0C/wFqAe0C/wFxAe4C/wGfAfwB/gH/AYEBwgHwAf8IAAGWAd0B9wH/
+        AYoB3AH4Af8BUwG4AfQB/wE5AccB8wH/ATMBwAHyAf8BMAG6AfEB/wEsAa8B4AH/ASgBiwE+Af8BbgHF
+        AXYB/wGBAdMBhQH/AdUB5gHWAf8BogHYAacB/wF1AcwBfQH/AT4BoAFGAf8BcQGeAagB/wQAAb0CuQH/
         AbECrQH/AdcB0AHOAf8B8QHgAdoB/wHMAcYBxQH/DAABzAHGAcUB/wHFAcABvwH/AfAB3QHWAf8B0gHK
-        AcgB/wGqAqYB/wG1ArIB/wgAAb0CuQH/AbECrQH/AdcB0AHOAf8B8QHiAdwB/wHMAcYBxQH/CAABOAGO
-        AT4B/wFvAcUBdwH/AYEB0wGFAf8B1QHmAdYB/wGiAdgBpwH/AXQBzAF7Af8BPwGgAUcB/wGaAbcBmwH/
-        AZgBywH5Af8BVQHYAv8BTwG6AfgB/wHBAfQB/gH/AbUB9AH+Af8BtQH0Af4B/wG1AfQB/gH/AaUB9AH+
+        AcgB/wGqAqYB/wG1ArIB/wgAAb0CuQH/AbECrQH/AdcB0AHOAf8B8QHiAdwB/wHMAcYBxQH/CAABNwGO
+        AT0B/wFuAcUBdgH/AYEB0wGFAf8B1QHmAdYB/wGiAdgBpwH/AXMBzAF6Af8BPgGgAUYB/wGaAbcBmwH/
+        AZgBywH5Af8BVAHYAv8BTgG6AfgB/wHBAfQB/gH/AbUB9AH+Af8BtQH0Af4B/wG1AfQB/gH/AaUB9AH+
         Af8BiQHzAv8BiQHzAv8BiQHzAv8BhQHzAv8BhAHpAf0B/wG0A/8BgQHUAfgB/wgAAYoB0wH2Af8BngHp
-        AfoB/wFOAa4B8QH/AU0BvAHyAf8BTQG8AfIB/wFOAa4B8QH/AUcBtQHwAf8BPwGfAbsB/wE7AY8BTwH/
-        AX8BxAGBAf8BlQHVAZoB/wGHAc0BjQH/AVIBpAFZAf8BdwGbAYQB/wQAAbkCtgH/Ae4B5gHkAf8B9QHp
+        AfoB/wFNAa4B8QH/AUwBvAHyAf8BTAG8AfIB/wFNAa4B8QH/AUYBtQHwAf8BPgGfAbsB/wE6AY8BTgH/
+        AX4BxAGBAf8BlQHVAZoB/wGHAc0BjQH/AVEBpAFYAf8BdgGbAYQB/wQAAbkCtgH/Ae4B5gHkAf8B9QHp
         AeUB/wH0AeYB4QH/AfUB6QHlAf8BrQKpAf8QAAGqAqYB/wHwAd0B1gH/AfAB3QHWAf8B8AHeAdgB/wHp
-        Ad0B2AH/Aa0CqQH/AbkCtgH/Ae4B5gHkAf8B9QHpAeUB/wH0AeYB4QH/AfQB5gHhAf8BrgKqAf8MAAFM
-        AZQBUgH/AX8BxAGBAf8BlQHVAZoB/wGHAc0BjQH/AVMBpAFZAf8BfwGlAXsB/wGuAqoB/wGYAcsB+QH/
-        AXAB5QL/AUsB1wH8Af8BRgHBAfgB/wFGAcEB+AH/AUYBwQH4Af8BRgHBAfgB/wF6AcQB+AH/Ac0B9wH+
+        Ad0B2AH/Aa0CqQH/AbkCtgH/Ae4B5gHkAf8B9QHpAeUB/wH0AeYB4QH/AfQB5gHhAf8BrgKqAf8MAAFL
+        AZQBUQH/AX4BxAGBAf8BlQHVAZoB/wGHAc0BjQH/AVIBpAFYAf8BfgGlAXoB/wGuAqoB/wGYAcsB+QH/
+        AW8B5QL/AUoB1wH8Af8BRQHBAfgB/wFFAcEB+AH/AUUBwQH4Af8BRQHBAfgB/wF5AcQB+AH/Ac0B9wH+
         Af8BzQH3Af4B/wHBAfQB/gH/AcUB9wH+Af8BwQH0Af4B/wHaAf0B/gH/AcEB9AH+Af8IAAGBAckB9QH/
-        AaEB8QH6Af8BjAHhAfcB/wF8AcoB6wH/AWMBqAHOAf8BYgGmAc0B/wFfAaIBzQH/AV8BogHNAf8BXQGe
-        Ab0B/wFNAZMBgQH/AUQBkAFsAf8BWQGkAYEB/wFfAZMBswH/CAABvQK5Af8B7gHmAeQB/wH1AekB5QH/
+        AaEB8QH6Af8BjAHhAfcB/wF7AcoB6wH/AWIBqAHOAf8BYQGmAc0B/wFeAaIBzQH/AV4BogHNAf8BXAGe
+        Ab0B/wFMAZMBgQH/AUMBkAFrAf8BWAGkAYEB/wFeAZMBswH/CAABvQK5Af8B7gHmAeQB/wH1AekB5QH/
         AfUB6QHlAf8B9QHpAeUB/wGtAqkB/xAAAa0CqQH/AfEB4AHaAf8B8AHdAdYB/wHxAeAB2gH/AeMB2QHV
-        Af8BrQKpAf8BvQK5Af8B7gHmAeQB/wH1AekB5QH/AfUB6QHlAf8B9QHpAeUB/wGxAq0B/xAAAXEBjwFx
-        Af8BdQGhAW8B/wGBAaYBewH/AcQByQG1Af8B4wHZAdUB/wGuAqoB/wGYAcsB+QH/AYUB8wL/AW8B8AL/
-        AW8B8AL/AW8B8AL/AW8B8AL/AW8B8AL/AWYB4gH8Af8BYAHNAfoB/wFgAc0B+gH/AWABzQH6Af8BYAHN
-        AfoB/wFYAbkB+AH/EAABdQG/AfMB/wGhAfEB+gH/AaEB8QH6Af8BnAHuAfYB/wF/AcABzgH/AXsBvAHL
-        Af8BewG8AcsB/wF7AbwBywH/AXYBtQHKAf8BdgG1AcoB/wF5AbkB0QH/AZwB5gH6Af8BcgGuAewB/wwA
+        Af8BrQKpAf8BvQK5Af8B7gHmAeQB/wH1AekB5QH/AfUB6QHlAf8B9QHpAeUB/wGxAq0B/xAAAXABjwFw
+        Af8BdAGhAW4B/wGBAaYBegH/AcQByQG1Af8B4wHZAdUB/wGuAqoB/wGYAcsB+QH/AYUB8wL/AW4B8AL/
+        AW4B8AL/AW4B8AL/AW4B8AL/AW4B8AL/AWUB4gH8Af8BXwHNAfoB/wFfAc0B+gH/AV8BzQH6Af8BXwHN
+        AfoB/wFXAbkB+AH/EAABdAG/AfMB/wGhAfEB+gH/AaEB8QH6Af8BnAHuAfYB/wF+AcABzgH/AXoBvAHL
+        Af8BegG8AcsB/wF6AbwBywH/AXUBtQHKAf8BdQG1AcoB/wF4AbkB0QH/AZwB5gH6Af8BcQGuAewB/wwA
         AcEBuwG6Af8BtQKyAf8BzwHKAckB/wH1AekB5QH/Ac8ByAHGAf8BzwHKAckB/wgAAcwBxgHFAf8BzAHG
         AcUB/wHwAd4B2AH/AdIBygHIAf8BqgKmAf8BvQK5Af8IAAHCArwB/wG1ArEB/wHPAcoByQH/AfUB6QHl
         Af8BzAHGAcUB/wHPAcgBxgH/CAABzAHGAcUB/wHMAcYBxQH/AfEB4gHcAf8B0QHKAcgB/wGqAqYB/wG5
         ArYB/wQAAZgBywH5Af8BpAH+Av8BkAH+Av8BkAH+Av8BkAH+Av8BtAP/AbQD/wG0A/8BtAP/AbQD/wG0
-        A/8BtAP/AYEBzgH6Af8QAAFzAboB8QH/AbEB8wH5Af8BsQHzAfkB/wGxAfMB+QH/AbEB8wH5Af8BoQHr
+        A/8BtAP/AYEBzgH6Af8QAAFyAboB8QH/AbEB8wH5Af8BsQHzAfkB/wGxAfMB+QH/AbEB8wH5Af8BoQHr
         AfoB/wGqAeoB9wH/AawB6wH6Af8BrwHnAfQB/wGxAeQB9AH/AbEB5AH0Af8BsQHkAfQB/wGBAbsB7wH/
         FAABwQG7AboB/wH1AekB5QH/AfUB6QHlAf8BzwHKAckB/wGxAq0B/wGtAqkB/wHPAcoByQH/AfQB5gHh
         Af8B8QHgAdoB/wHBAbsBugH/GAABwgK8Af8B9QHpAeUB/wH1AekB5QH/AdEBygHIAf8BsQKtAf8BrgKq
         Af8BzwHKAckB/wH0AeYB4QH/AfEB4AHaAf8BwgK8Af8MAAGYAcsB+QH/AdQD/wHKA/8BygP/AdQD/wGH
-        AcIB+AH/MAABjQG8AfIB/wGNAbwB8gH/AY0BvAHyAf8MAAFnAZQBzwH/AdgB8wH2Af8B6QH3AfgB/wHp
+        AcIB+AH/MAABjQG8AfIB/wGNAbwB8gH/AY0BvAHyAf8MAAFmAZQBzwH/AdgB8wH2Af8B6QH3AfgB/wHp
         AfcB+AH/Ae4B9gHwAf8BhAHEAfYB/xAAAbMCsAH/AfEB6QHnAf8B9QHpAeUB/wH1AekB5QH/AfUB6QHl
         Af8B8QHpAecB/wH0AesB6AH/AfQB5gHhAf8B8QHgAdoB/wHxAeAB2gH/AfQB5gHhAf8BqgKmAf8QAAGx
         Aq0B/wHzAesB6AH/AfUB6QHlAf8B8wHrAegB/wH1AekB5QH/AfUB6QHlAf8B9QHpAeUB/wH0AeYB4QH/
         AfEB4gHcAf8B8QHiAdwB/wH0AeYB4QH/AaoCpgH/DAABlQHKAfkB/wGYAcsB+QH/AZgBywH5Af8BkwHI
-        AfkB/1AAAXMBnAHPAf8BcwGcAc8B/wFzAZwBzwH/AXEBlwHKAf8BeAGWAcgB/xAAAbUCsgH/AfEB6QHn
+        AfkB/1AAAXIBnAHPAf8BcgGcAc8B/wFyAZwBzwH/AXABlwHKAf8BdwGWAcgB/xAAAbUCsgH/AfEB6QHn
         Af8B8QHpAecB/wHPAcgBxgH/Ac8BygHJAf8B9QHtAeoB/wH0AesB6AH/AdIBygHIAf8BxALCAf8B9AHm
         AeEB/wHuAeYB5AH/AaoCpgH/EAABtQKxAf8B8wHrAegB/wHzAesB6AH/AcwBxgHFAf8B0QHKAcgB/wHz
         AesB6AH/AfUB6QHlAf8B0QHKAcgB/wHFAsMB/wH0AeYB4QH/Ae4B5gHkAf8BqgKmAf+UAAG1ArIB/wG1
@@ -225,72 +225,72 @@
         Af8EAAG5ArYB/wH1AekB5QH/AfMB6wHoAf8BtQKxAf8EAAGuAqoB/wGuAqoB/6gAAd4B2QHXAf8B7gHf
         AdoB/wHEAsIB/zQAAd4B2QHXAf8B6AHiAeAB/wHFAsMB/7QAAbkCtgH/AbkCtgH/OAABuQK2Af8BuQK2
         Af8gAAHFAsIB/wHBAr4B/wHBAr4B/wG+ArwB/wG+ArwB/wG+ArwB/wG+ArwB/wG+ArwB/wGBAZsBggH/
-        AUoBkwFUAf8BJwGSAT4B/wE3AZEBRgH/AWsBlAFvAf8BsAGyAa0B/wgAAcUCwgH/AcECvgH/AcECvgH/
-        Ab4CvAH/Ab4CvAH/Ab4CvAH/Ab4CvAH/Ab4CvAH/AYQBhgGoAf8BUgFdAbUB/wEwAUYBuwH/AT8BUAG5
-        Af8BcAF2AasB/wGwAa8BtAH/CAABxQLCAf8BwQK+Af8BwQK+Af8BvgK8Af8BvgK8Af8BvgK8Af8BvgK8
-        Af8BvgK8Af8BcAG2AXcB/wFZAcsBdAH/AVQBxwFtAf8BTgGzAVwB/wK5AbYB/wG+ArwB/wgAAcUCwgH/
-        AcECvgH/AcECvgH/Ab4CvAH/Ab4CvAH/Ab4CvAH/Ab4CvAH/Ab4CvAH/Ab4CvAH/AZABsQGOAf8BdgGv
-        AXoB/wG+ArwB/wG+ArwB/wG6ArgB/wgAAcECvgH/AfoB9QH0Af8B9wHvAewB/wH3Ae8B7AH/AfYB7AHp
-        Af8B9gHsAekB/wH2AewB6QH/AYEBqwGBAf8BJgGjAUEB/wEmAdcBbwH/AWEB5gGfAf8BQAHdAYEB/wEn
-        AbgBUQH/AT0BigFFAf8IAAHBAr4B/wH6AfUB9AH/AfcB7wHsAf8B9wHvAewB/wH2AewB6QH/AfYB7AHp
-        Af8B9gHsAekB/wGDAYYBwgH/ATEBSwHTAf8BLQFnAfUB/wEoAXMB/AH/ASsBbAH5Af8BMQFVAeQB/wFG
-        AVABsAH/CAABwQK+Af8B+gH1AfQB/wH3Ae8B7AH/AfcB7wHsAf8B9gHsAekB/wH2AewB6QH/AfYB7AHp
-        Af8B9AHmAeEB/wF+AcwBhAH/AXoB8AGOAf8BZwHkAXsB/wFQAcMBaQH/AfcB7wHsAf8BvgK8Af8IAAHB
+        AUkBkwFTAf8BJgGSAT0B/wE2AZEBRQH/AWoBlAFuAf8BsAGyAa0B/wgAAcUCwgH/AcECvgH/AcECvgH/
+        Ab4CvAH/Ab4CvAH/Ab4CvAH/Ab4CvAH/Ab4CvAH/AYQBhgGoAf8BUQFcAbUB/wEvAUUBuwH/AT4BTwG5
+        Af8BbwF1AasB/wGwAa8BtAH/CAABxQLCAf8BwQK+Af8BwQK+Af8BvgK8Af8BvgK8Af8BvgK8Af8BvgK8
+        Af8BvgK8Af8BbwG2AXYB/wFYAcsBcwH/AVMBxwFsAf8BTQGzAVsB/wK5AbYB/wG+ArwB/wgAAcUCwgH/
+        AcECvgH/AcECvgH/Ab4CvAH/Ab4CvAH/Ab4CvAH/Ab4CvAH/Ab4CvAH/Ab4CvAH/AZABsQGOAf8BdQGv
+        AXkB/wG+ArwB/wG+ArwB/wG6ArgB/wgAAcECvgH/AfoB9QH0Af8B9wHvAewB/wH3Ae8B7AH/AfYB7AHp
+        Af8B9gHsAekB/wH2AewB6QH/AYEBqwGBAf8BJQGjAUAB/wElAdcBbgH/AWAB5gGfAf8BPwHdAYEB/wEm
+        AbgBUAH/ATwBigFEAf8IAAHBAr4B/wH6AfUB9AH/AfcB7wHsAf8B9wHvAewB/wH2AewB6QH/AfYB7AHp
+        Af8B9gHsAekB/wGDAYYBwgH/ATABSgHTAf8BLAFmAfUB/wEnAXIB/AH/ASoBawH5Af8BMAFUAeQB/wFF
+        AU8BsAH/CAABwQK+Af8B+gH1AfQB/wH3Ae8B7AH/AfcB7wHsAf8B9gHsAekB/wH2AewB6QH/AfYB7AHp
+        Af8B9AHmAeEB/wF9AcwBhAH/AXkB8AGOAf8BZgHkAXoB/wFPAcMBaAH/AfcB7wHsAf8BvgK8Af8IAAHB
         Ar4B/wH6AfUB9AH/AfcB7wHsAf8B9wHvAewB/wH2AewB6AH/AfYB7AHoAf8B9gHsAegB/wH0AeYB4QH/
-        AdkB4AHMAf8BXgHRAXsB/wFdAdoBgQH/AbEB0gGpAf8B9wHvAewB/wG6ArgB/wgAAcUCwgH/AfoB9QH0
-        Af8B9AHmAeEB/wH0AeYB4QH/AfIB5AHeAf8B8gHkAd4B/wHDAcUBsAH/AScBlAEzAf8BKwHEAVMB/wEu
-        AdgBbQH/AeMB8gHpAf8BgAHgAZ8B/wEtAcwBWwH/ASoBpwE8Af8BgQGrAYEB/wQAAcUCwgH/AfoB9QH0
-        Af8B9AHmAeEB/wH0AeYB4QH/AfIB5AHeAf8B8gHkAd4B/wHFAbkByAH/ATQBQwHKAf8BOAFbAfcB/wE5
-        AW4B/gH/ATkBbgH+Af8BOQFuAf4B/wE6AWEB/AH/ATcBSwHhAf8BgQGFAcUB/wQAAcUCwgH/AfoB9QH0
-        Af8B9AHmAeEB/wH0AeYB4QH/AfIB5AHeAf8B8gHkAd4B/wHvAdsB1AH/Ae8B2wHUAf8BfAHJAYEB/wF6
-        AfABjgH/AWcB5AF7Af8BUAHDAWkB/wH0AeYB4QH/AboCuAH/CAABxQLCAf8B+gH1AfQB/wH0AeYB4QH/
-        AfQB5gHhAf8B8gHkAd4B/wHyAeQB3gH/AfAB3gHXAf8B6QHaAdAB/wFoAcYBdAH/AXgB8AGRAf8BaAHl
-        AX4B/wFRAcUBawH/AdcB3QHJAf8BvgK8Af8IAAHBAr4B/wH6AfUB9AH/AfcB7wHsAf8B7QHiAd4B/wHf
-        AdMB0AH/Ad8B0wHQAf8BfAGhAXcB/wErAaUBNgH/AW8BygF+Af8BgwHYAZkB/wHuAfYB8AH/AbIB4wG/
-        Af8BgQHTAY8B/wFDAbMBTgH/ATgBjgE+Af8EAAHBAr4B/wH6AfUB9AH/AfcB7wHsAf8B7QHiAd4B/wHf
-        AdMB0AH/Ad8B0wHQAf8CgQG3Af8BNwFLAeEB/wF5AYQB8wH/AY8BogH2Af8BjwGiAfYB/wGPAaUB9gH/
-        AYwBmwH2Af8BUgFgAesB/wE/AVABuQH/BAABwQK+Af8B+gH1AfQB/wH3Ae8B7AH/Ae0B4gHeAf8B3wHT
-        AdAB/wHfAdMB0AH/Ad0B0AHMAf8B3AHOAckB/wF3AcYBgQH/AXoB8AGOAf8BZwHkAXsB/wFQAcMBaQH/
+        AdkB4AHMAf8BXQHRAXoB/wFcAdoBgQH/AbEB0gGpAf8B9wHvAewB/wG6ArgB/wgAAcUCwgH/AfoB9QH0
+        Af8B9AHmAeEB/wH0AeYB4QH/AfIB5AHeAf8B8gHkAd4B/wHDAcUBsAH/ASYBlAEyAf8BKgHEAVIB/wEt
+        AdgBbAH/AeMB8gHpAf8BgAHgAZ8B/wEsAcwBWgH/ASkBpwE7Af8BgQGrAYEB/wQAAcUCwgH/AfoB9QH0
+        Af8B9AHmAeEB/wH0AeYB4QH/AfIB5AHeAf8B8gHkAd4B/wHFAbkByAH/ATMBQgHKAf8BNwFaAfcB/wE4
+        AW0B/gH/ATgBbQH+Af8BOAFtAf4B/wE5AWAB/AH/ATYBSgHhAf8BgQGFAcUB/wQAAcUCwgH/AfoB9QH0
+        Af8B9AHmAeEB/wH0AeYB4QH/AfIB5AHeAf8B8gHkAd4B/wHvAdsB1AH/Ae8B2wHUAf8BewHJAYEB/wF5
+        AfABjgH/AWYB5AF6Af8BTwHDAWgB/wH0AeYB4QH/AboCuAH/CAABxQLCAf8B+gH1AfQB/wH0AeYB4QH/
+        AfQB5gHhAf8B8gHkAd4B/wHyAeQB3gH/AfAB3gHXAf8B6QHaAdAB/wFnAcYBcwH/AXcB8AGRAf8BZwHl
+        AX0B/wFQAcUBagH/AdcB3QHJAf8BvgK8Af8IAAHBAr4B/wH6AfUB9AH/AfcB7wHsAf8B7QHiAd4B/wHf
+        AdMB0AH/Ad8B0wHQAf8BewGhAXYB/wEqAaUBNQH/AW4BygF9Af8BgwHYAZkB/wHuAfYB8AH/AbIB4wG/
+        Af8BgQHTAY8B/wFCAbMBTQH/ATcBjgE9Af8EAAHBAr4B/wH6AfUB9AH/AfcB7wHsAf8B7QHiAd4B/wHf
+        AdMB0AH/Ad8B0wHQAf8CgQG3Af8BNgFKAeEB/wF4AYQB8wH/AY8BogH2Af8BjwGiAfYB/wGPAaUB9gH/
+        AYwBmwH2Af8BUQFfAesB/wE+AU8BuQH/BAABwQK+Af8B+gH1AfQB/wH3Ae8B7AH/Ae0B4gHeAf8B3wHT
+        AdAB/wHfAdMB0AH/Ad0B0AHMAf8B3AHOAckB/wF2AcYBgQH/AXkB8AGOAf8BZgHkAXoB/wFPAcMBaAH/
         AfQB5gHhAf8BvgK8Af8IAAHBAr4B/wH6AfUB9AH/AfcB7wHsAf8B7QHiAd4B/wHhAdYB0gH/Ad0B0AHM
-        Af8B3QHQAcwB/wGBAcUBgQH/AW4B5QGLAf8BewHvAYsB/wFnAeQBewH/AVAB1QFqAf8BYQHDAXIB/wG1
-        AbYBtAH/CAABxQLCAf8B+gH1AfQB/wH4Ae8B7AH/Ae4B5QHiAf8B4QHZAdYB/wHhAdYB0gH/AW8BngFt
-        Af8BLgGoATgB/wHCAeABxQH/Ae0B8gHtAf8D/gH/AfIB9gHyAf8B7QHyAe0B/wFkAbwBbAH/ASkBiAEx
-        Af8EAAHFAsIB/wH6AfUB9AH/AfgB7wHsAf8B7gHlAeIB/wHhAdkB1gH/AeEB1gHSAf8BdQF3AbkB/wE9
-        AUsB6AH/Ab4BwgHvAf8B6wHsAfUB/wHrAewB9QH/AesB7AH1Af8B6wHsAfUB/wFvAXoB6gH/ATQBQAG7
+        Af8B3QHQAcwB/wGBAcUBgQH/AW0B5QGLAf8BegHvAYsB/wFmAeQBegH/AU8B1QFpAf8BYAHDAXEB/wG1
+        AbYBtAH/CAABxQLCAf8B+gH1AfQB/wH4Ae8B7AH/Ae4B5QHiAf8B4QHZAdYB/wHhAdYB0gH/AW4BngFs
+        Af8BLQGoATcB/wHCAeABxQH/Ae0B8gHtAf8D/gH/AfIB9gHyAf8B7QHyAe0B/wFjAbwBawH/ASgBiAEw
+        Af8EAAHFAsIB/wH6AfUB9AH/AfgB7wHsAf8B7gHlAeIB/wHhAdkB1gH/AeEB1gHSAf8BdAF2AbkB/wE8
+        AUoB6AH/Ab4BwgHvAf8B6wHsAfUB/wHrAewB9QH/AesB7AH1Af8B6wHsAfUB/wFuAXkB6gH/ATMBPwG7
         Af8EAAHFAsIB/wH6AfUB9AH/AfgB7wHsAf8B7gHlAeIB/wHhAdkB1gH/AeEB1wHUAf8B1wHSAckB/wHA
-        AcoBswH/AW8BxwF6Af8BegHwAY4B/wFnAeQBewH/AVABwwFpAf8B1gHdAccB/wGwAbcBrQH/CAABxQLC
-        Af8B+gH1AfQB/wH4Ae8B7AH/Ae4B5QHiAf8B4QHYAdYB/wHhAdYB0gH/AbwBzQGxAf8BWgHGAWYB/wFe
-        AdYBfgH/AXoB8AGOAf8BZwHkAXsB/wFPAc8BcQH/AVoBxgFmAf8BgQGpAYEB/wgAAcUCwgH/AfoB9QH0
-        Af8B+QHwAe0B/wHuAeUB4gH/AeEB2QHWAf8B4QHZAdYB/wGHAagBgwH/ATUBpQE/Af8BYwHIAWwB/wFv
-        AcoBfgH/Ae0B8gHtAf8BogHYAacB/wFpAcoBcAH/AUYBtAFPAf8BSgGTAVQB/wQAAcUCwgH/AfoB9QH0
-        Af8B+QHwAe0B/wHuAeUB4gH/AeEB2QHWAf8B4QHZAdYB/wKLAbkB/wFDAVEB3wH/AXEBfQH8Af8BgQGK
-        Af4B/wGEAY4B/gH/AYQBjgH+Af8BeAGBAf4B/wFSAWAB6wH/AVQBXgG8Af8EAAHFAsIB/wH6AfUB9AH/
-        AfkB8AHtAf8B7gHlAeIB/wHkAdwB2QH/AeEB2QHWAf8BwwHPAbkB/wFKAcYBXgH/AWQB3wGDAf8BegHw
-        AY4B/wFnAeQBewH/AVAB0wFvAf8BQwHDAWEB/wGGAasBhAH/CAABxQLCAf8B+gH1AfQB/wH5AfAB7QH/
-        Ae4B5QHiAf8B4QHYAdYB/wHhAdgB1gH/AeEB2AHWAf8B3wHVAdIB/wF5AcwBgQH/AXoB8AGOAf8BZwHk
-        AXsB/wFRAcUBawH/AfcB7wHsAf8BugK4Af8IAAHFAsIB/wH6AfUB9AH/AfkB8AHtAf8B9AHmAeEB/wHk
-        AdwB2QH/AeQB3AHZAf8B1AHSAcoB/wE4AY4BPgH/AW8BxQF3Af8BgQHTAYUB/wHVAeYB1gH/AaIB2AGn
-        Af8BdgHMAX4B/wE/AaABRwH/CAABxQLCAf8B+gH1AfQB/wH5AfAB7QH/AfQB5gHhAf8B5AHcAdkB/wHk
-        AdwB2QH/AdQBzQHTAf8BPwFQAbkB/wF6AYEB8QH/AYkBkwH9Af8BkQGaAf4B/wGJAZMB/QH/AYEBhgH3
-        Af8BSwFXAdMB/wgAAcUCwgH/AfoB9QH0Af8B+QHwAe0B/wHuAeUB4gH/AeQB3AHZAf8B5AHcAdkB/wHh
-        AdkB1gH/AaUB0QGfAf8BZQHhAYQB/wF6Ae8BiwH/AWcB5AF7Af8BUAHTAW8B/wF+AcwBhAH/Ab4CvAH/
+        AcoBswH/AW4BxwF5Af8BeQHwAY4B/wFmAeQBegH/AU8BwwFoAf8B1gHdAccB/wGwAbcBrQH/CAABxQLC
+        Af8B+gH1AfQB/wH4Ae8B7AH/Ae4B5QHiAf8B4QHYAdYB/wHhAdYB0gH/AbwBzQGxAf8BWQHGAWUB/wFd
+        AdYBfQH/AXkB8AGOAf8BZgHkAXoB/wFOAc8BcAH/AVkBxgFlAf8BgQGpAYEB/wgAAcUCwgH/AfoB9QH0
+        Af8B+QHwAe0B/wHuAeUB4gH/AeEB2QHWAf8B4QHZAdYB/wGHAagBgwH/ATQBpQE+Af8BYgHIAWsB/wFu
+        AcoBfQH/Ae0B8gHtAf8BogHYAacB/wFoAcoBbwH/AUUBtAFOAf8BSQGTAVMB/wQAAcUCwgH/AfoB9QH0
+        Af8B+QHwAe0B/wHuAeUB4gH/AeEB2QHWAf8B4QHZAdYB/wKLAbkB/wFCAVAB3wH/AXABfAH8Af8BgQGK
+        Af4B/wGEAY4B/gH/AYQBjgH+Af8BdwGBAf4B/wFRAV8B6wH/AVMBXQG8Af8EAAHFAsIB/wH6AfUB9AH/
+        AfkB8AHtAf8B7gHlAeIB/wHkAdwB2QH/AeEB2QHWAf8BwwHPAbkB/wFJAcYBXQH/AWMB3wGDAf8BeQHw
+        AY4B/wFmAeQBegH/AU8B0wFuAf8BQgHDAWAB/wGGAasBhAH/CAABxQLCAf8B+gH1AfQB/wH5AfAB7QH/
+        Ae4B5QHiAf8B4QHYAdYB/wHhAdgB1gH/AeEB2AHWAf8B3wHVAdIB/wF4AcwBgQH/AXkB8AGOAf8BZgHk
+        AXoB/wFQAcUBagH/AfcB7wHsAf8BugK4Af8IAAHFAsIB/wH6AfUB9AH/AfkB8AHtAf8B9AHmAeEB/wHk
+        AdwB2QH/AeQB3AHZAf8B1AHSAcoB/wE3AY4BPQH/AW4BxQF2Af8BgQHTAYUB/wHVAeYB1gH/AaIB2AGn
+        Af8BdQHMAX0B/wE+AaABRgH/CAABxQLCAf8B+gH1AfQB/wH5AfAB7QH/AfQB5gHhAf8B5AHcAdkB/wHk
+        AdwB2QH/AdQBzQHTAf8BPgFPAbkB/wF5AYEB8QH/AYkBkwH9Af8BkQGaAf4B/wGJAZMB/QH/AYEBhgH3
+        Af8BSgFWAdMB/wgAAcUCwgH/AfoB9QH0Af8B+QHwAe0B/wHuAeUB4gH/AeQB3AHZAf8B5AHcAdkB/wHh
+        AdkB1gH/AaUB0QGfAf8BZAHhAYQB/wF5Ae8BiwH/AWYB5AF6Af8BTwHTAW4B/wF9AcwBhAH/Ab4CvAH/
         CAABxQLCAf8B+gH1AfQB/wH5AfAB7QH/Ae4B5QHiAf8B5AHcAdkB/wHkAdwB2QH/AeEB2AHWAf8B4QHY
-        AdYB/wF6Ac4BgQH/AXoB8AGOAf8BZwHkAXsB/wFSAckBagH/AfYB7AHoAf8BvgK8Af8IAAHFAsIB/wH6
-        AfUB9AH/AfkB8AHtAf8B7gHlAeIB/wHkAdwB2QH/AeQB3AHZAf8B9gHsAekB/wGuAb0BqAH/AUcBlAFM
-        Af8BfwHEAYEB/wGVAdUBmgH/AYcBzQGNAf8BUwGkAVkB/wFsAZMBbQH/CAABxQLCAf8B+gH1AfQB/wH5
-        AfAB7QH/Ae4B5QHiAf8B5AHcAdkB/wHkAdwB2QH/AfcB7wHsAf8BsAGtAcUB/wFQAVkBvgH/AYIBiwHo
-        Af8BnAGjAfMB/wGPAZcB7gH/AV0BZwHPAf8BcAF2AasB/wgAAcUCwgH/AfoB9QH0Af8B+QHwAe0B/wHu
-        AeUB4gH/AeQB3AHZAf8B5AHcAdkB/wH2AewB6QH/AeQB3AHZAf8BfQHIAYEB/wFzAe0BkAH/AWkB5gGB
-        Af8BXwHHAW8B/wH2AewB6QH/Ab4CvAH/CAABxQLCAf8B+gH1AfQB/wH5AfAB7QH/Ae4B5QHiAf8B5AHc
-        AdkB/wHkAdwB2QH/AfYB7AHoAf8B5AHcAdkB/wF7AdEBgwH/AXoB8AGOAf8BZwHkAXsB/wFSAckBagH/
+        AdYB/wF5Ac4BgQH/AXkB8AGOAf8BZgHkAXoB/wFRAckBaQH/AfYB7AHoAf8BvgK8Af8IAAHFAsIB/wH6
+        AfUB9AH/AfkB8AHtAf8B7gHlAeIB/wHkAdwB2QH/AeQB3AHZAf8B9gHsAekB/wGuAb0BqAH/AUYBlAFL
+        Af8BfgHEAYEB/wGVAdUBmgH/AYcBzQGNAf8BUgGkAVgB/wFrAZMBbAH/CAABxQLCAf8B+gH1AfQB/wH5
+        AfAB7QH/Ae4B5QHiAf8B5AHcAdkB/wHkAdwB2QH/AfcB7wHsAf8BsAGtAcUB/wFPAVgBvgH/AYIBiwHo
+        Af8BnAGjAfMB/wGPAZcB7gH/AVwBZgHPAf8BbwF1AasB/wgAAcUCwgH/AfoB9QH0Af8B+QHwAe0B/wHu
+        AeUB4gH/AeQB3AHZAf8B5AHcAdkB/wH2AewB6QH/AeQB3AHZAf8BfAHIAYEB/wFyAe0BkAH/AWgB5gGB
+        Af8BXgHHAW4B/wH2AewB6QH/Ab4CvAH/CAABxQLCAf8B+gH1AfQB/wH5AfAB7QH/Ae4B5QHiAf8B5AHc
+        AdkB/wHkAdwB2QH/AfYB7AHoAf8B5AHcAdkB/wF6AdEBgwH/AXkB8AGOAf8BZgHkAXoB/wFRAckBaQH/
         AfcB7wHsAf8BvgK8Af8IAAHFAsIB/wH6AfUB9AH/AfkB8AHtAf8B7gHlAeIB/wHkAdwB2QH/AeQB3AHZ
-        Af8B7gHlAeIB/wHWAc4BzAH/Ad0B2wHTAf8BlgG3AZIB/wF7AakBegH/AXgBnwF3Af8BygHWAcQB/wG+
+        Af8B7gHlAeIB/wHWAc4BzAH/Ad0B2wHTAf8BlgG3AZIB/wF6AakBeQH/AXcBnwF2Af8BygHWAcQB/wG+
         ArwB/wgAAcUCwgH/AfoB9QH0Af8B+QHwAe0B/wHuAeUB4gH/AeQB3AHZAf8B4QHZAdYB/wH0AeYB4QH/
         AdYBzgHMAf8B3QHWAdwB/wKaAcgB/wKBAcMB/wKBAbcB/wHMAckB3AH/Ab4CvAH/CAABxQLCAf8B+gH1
         AfQB/wH5AfAB7QH/Ae4B5QHiAf8B5AHcAdkB/wHkAdwB2QH/Ae4B5QHiAf8B1gHOAcwB/wHlAeIB2gH/
-        AWsB1AF7Af8BXAHXAXoB/wG6AcgBsQH/AfcB7wHsAf8BvgK8Af8IAAHFAsIB/wH6AfUB9AH/AfkB8AHt
-        Af8B7gHlAeIB/wHkAdwB2QH/AeQB3AHZAf8B7gHlAeIB/wHWAc4BzAH/AX4B1AGGAf8BeAHwAZEB/wFo
-        AeUBfgH/AU8BzwFxAf8B+QHwAe0B/wG+ArwB/wgAAcUCwgH/AfsB+QH4Af8B+QHwAe0B/wHuAeUB4gH/
+        AWoB1AF6Af8BWwHXAXkB/wG6AcgBsQH/AfcB7wHsAf8BvgK8Af8IAAHFAsIB/wH6AfUB9AH/AfkB8AHt
+        Af8B7gHlAeIB/wHkAdwB2QH/AeQB3AHZAf8B7gHlAeIB/wHWAc4BzAH/AX0B1AGGAf8BdwHwAZEB/wFn
+        AeUBfQH/AU4BzwFwAf8B+QHwAe0B/wG+ArwB/wgAAcUCwgH/AfsB+QH4Af8B+QHwAe0B/wHuAeUB4gH/
         AeQB3AHZAf8B5AHcAdkB/wH0AeYB4QH/AdkB0gHPAf8B+QHwAe0B/wH5AfAB7QH/AfgB7wHsAf8B1AHS
         AcoB/wH6AfUB9AH/Ab4CvAH/CAABxQLCAf8B+wH5AfgB/wH5AfAB7QH/Ae4B5QHiAf8B5AHcAdkB/wHk
         AdwB2QH/Ae4B5QHiAf8B2QHSAc8B/wH5AfAB7QH/AfkB8AHtAf8B9wHvAewB/wHWAc4BzAH/AfoB9QH0
@@ -349,66 +349,816 @@
         AYABAwGAAQcBgAEHAYABBwGAAQcBgAEPAYABDwGAAQ8BgAEPCw==
 </value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="WidgetList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="WidgetList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="WidgetList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 420</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="WidgetList.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;WidgetList.Name" xml:space="preserve">
+    <value>WidgetList</value>
+  </data>
+  <data name="&gt;&gt;WidgetList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WidgetList.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;WidgetList.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>273, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="withUserInterfaceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="withUserInterfaceToolStripMenuItem.Text" xml:space="preserve">
+    <value>With user interface</value>
+  </data>
+  <data name="withoutUserInterfaceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="withoutUserInterfaceToolStripMenuItem.Text" xml:space="preserve">
+    <value>Without user interface</value>
+  </data>
   <data name="AddWidgetButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAfZJREFUOE+NU91L
-        U3EY9k+xYaIQ4vAi5kdUUGGidCFdiV14MVuDwouBA7WIyBs/CnehXfjVNpkYrNIaTIS5I3PMVsjcDJWj
-        0zEJx3b8uNwjzy/OkTmdDh72nnPe53mf5z2/U1RU4Dc35wFRqKfgs+j6FuSdJBYXpeuJuN2zIKjKyXv7
-        x0j+O9TuuVxfQFw4lUQ2E9JSCIHgH1FThDVdbCeOsJtIweFw5YvMzLg1gkokmSBxYycjwPpCAdryen2C
-        oE6lKC0vB8OC+FfOgD15EXiTEdhIMiMsBcJaI68JOmAcOtDejsczL3Kpk/nPyeenmAfMMI2/gsXRg9ll
-        PyLr8f8LpZIqQJvE+U03Dj3Ca78VIxEb+lbeo/lzEyx261kfXXDqr99RYZN2VQeG/ip0SCa8W+3GWiIC
-        Z2wCltBL3B+rxqcfI7lOmVvdNkVou9peCWOgVZAOlAMh8CLYhsff74HOtKi0TTI3vbaZFmDmqqlySLJP
-        kLPZLJQTRdRG7zPc6i3JF4htJMWrogPm1NtL0Rk0YTj2FumTFBbiXzGw2oP6b3fAeDnLpgv1kLDmtiuG
-        dGjyl6I9Vo59JY5R2YqnoTLcdt5E13Tn5d8IzwXd0EXt5A08jxZjNNGCN5s1aPipw8PBuqs/MPUk0uYT
-        2wMYPupw94M+Z/IpjPsBkYVyoksAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH2SURBVDhPjVPdS1NxGPZPsWGiEOLwIuZHVFBhonQhXYld
+        eDFbg8KLgQO1iMgbPwp3oV341TaZGKzSGkyEuSNzzFbI3AyVo9MxCcd2/LjcI88vzpE5nQ4e9p5z3ud5
+        n+c9v1NUVOA3N+cBUain4LPo+hbknSQWF6XribjdsyCoysl7+8dI/jvU7rlcX0BcOJVENhPSUgiB4B9R
+        U4Q1XWwnjrCbSMHhcOWLzMy4NYJKJJkgcWMnI8D6QgHa8np9gqBOpSgtLwfDgvhXzoA9eRF4kxHYSDIj
+        LAXCWiOvCTpgHDrQ3o7HMy9yqZP5z8nnp5gHzDCNv4LF0YPZZT8i6/H/C6WSKkCbxPlNNw49wmu/FSMR
+        G/pW3qP5cxMsdutZH11w6q/fUWGTdlUHhv4qdEgmvFvtxloiAmdsApbQS9wfq8anHyO5Tplb3TZFaLva
+        XgljoFWQDpQDIfAi2IbH3++BzrSotE0yN722mRZg5qqpckiyT5Cz2SyUE0XURu8z3OotyReIbSTFq6ID
+        5tTbS9EZNGE49hbpkxQW4l8xsNqD+m93wHg5y6YL9ZCw5rYrhnRo8peiPVaOfSWOUdmKp6Ey3HbeRNd0
+        5+XfCM8F3dBF7eQNPI8WYzTRgjebNWj4qcPDwbqrPzD1JNLmE9sDGD7qcPeDPmfyKYz7AZGFcqJLAAAA
+        AElFTkSuQmCC
 </value>
+  </data>
+  <data name="AddWidgetButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="AddWidgetButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 22</value>
+  </data>
+  <data name="AddWidgetButton.ToolTipText" xml:space="preserve">
+    <value>Add a new widget to the list</value>
+  </data>
+  <data name="RemoveWidgetButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="RemoveWidgetButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAdZJREFUOE+NU1sr
-        RFEY9V+UFKVcSpTyMoqIFwlPXkSS3PIgg4ZyySUPyqVEPExR82DqdAZlMo1xGZJr7rcOI0xjSI1ZrD2d
-        wxiGU6vznX2+b33rW3vviIgwj9ksgQiXE/bf7v4xTs8VWK1L/yMxmWZBkJWdr268UFwebc1onAHxY1cW
-        MplYsq3C7tgUMUkYc+3s+gmX1/eYmjKGkkxPm7QCtZDFBAsPz90CjH8koCyLZVEUqF1JSsl2+4pGwpyQ
-        EbjIEZYdTlFMuTa7U0vkN7F3qIhxqEDbHUmaE3Opnflm5+9dxqurIOv1sDQ3Y81iw/b+RcBQMqkEnI/4
-        7vRCfjaUrlZ4JkZwP9gLZ0kB5BbDZx5VsOv6xq4winJVBVJmCtz6OrwNdMA/1C/eL+2N2MrTwTY2GqyU
-        c6tuk4SyT7LS4GuogL9TD3+PIYCmGriKsiEV5nwSUDaLD07d2Dl6FJDr66FkJONhcR7eO1cQbuvKIafG
-        hRLQae4KFXDOM108PIZaPE/0BTDZi+fh7oCCj/GCzKYK9ZAwptuOtDi85CfAX5aowVecJIitbU2/3xGe
-        C6rh1m3pYuEtiYavMhKvpVG4zI2F+cPEP2+pehKZSMPk9Bgh+2vnd3DyCPgFLDOJAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHWSURBVDhPjVNbK0RRGPVflBSlXEqU8jKKiBcJT15Ektzy
+        IIOGcsklD8qlRDxMUfNg6nQGZTKNcRmSa+63DiNMY0iNWaw9ncMYhlOr8519vm9961t774iIMI/ZLIEI
+        lxP23+7+MU7PFVitS/8jMZlmQZCVna9uvFBcHm3NaJwB8WNXFjKZWLKtwu7YFDFJGHPt7PoJl9f3mJoy
+        hpJMT5u0ArWQxQQLD8/dAox/JKAsi2VRFKhdSUrJdvuKRsKckBG4yBGWHU5RTLk2u1NL5Dexd6iIcahA
+        2x1JmhNzqZ35ZufvXcarqyDr9bA0N2PNYsP2/kXAUDKpBJyP+O70Qn42lK5WeCZGcD/YC2dJAeQWw2ce
+        VbDr+sauMIpyVQVSZgrc+jq8DXTAP9Qv3i/tjdjK08E2NhqslHOrbpOEsk+y0uBrqIC/Uw9/jyGAphq4
+        irIhFeZ8ElA2iw9O3dg5ehSQ6+uhZCTjYXEe3jtXEG7ryiGnxoUS0GnuChVwzjNdPDyGWjxP9AUw2Yvn
+        4e6Ago/xgsymCvWQMKbbjrQ4vOQnwF+WqMFXnCSIrW1Nv98Rnguq4dZt6WLhLYmGrzISr6VRuMyNhfnD
+        xD9vqXoSmUjD5PQYIftr53dw8gj4BSwziQAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="RemoveWidgetButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="RemoveWidgetButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="RemoveWidgetButton.ToolTipText" xml:space="preserve">
+    <value>Remove the selected widget from the list</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="MoveWidgetUpButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="MoveWidgetUpButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAbZJREFUOE+NkstL
-        AlEYxRX/r3ZF0aJNEEVQREQYFAT2gMBF0iaI/oNWrSJRBNMIqcRXSZqJYpY2okahTYSPHsipc2NGJsfq
-        wuHOvTPf737n3DEavkb0IoVGTTaYTCYu1dFqtcQeZ45Go27o7+8zaj7iIhAI4/XtA7X6+686OvLB4XBB
-        F8Di6vNbhypyU+xx9vlOkL3Owm53aiHsQAEUSk/I3BSRykiQyjX1mWuerkgD0QMQwlOZD6F56VHATk8D
-        uJPKoB3VSjcAC2OJjGqrIr8ikkiLbjUAUhkivSoWeBotKIDYfQbOnLc74GcGBBBGC9eFEpaSM7CkR+AM
-        HwprHR3oAR4qDeF7LbyC7eo8rOVpmENj4P6/AEx+53IXNmkSm7IFS8UpmK8GYYuu/g1gsTfmx2iwF+v5
-        CWw9twHj/h7Y9jbat8AQaYEp0zeLk2lJBOY6O4YlZFYB0/5BhG5T2D9wtAH8w74BTeQKVcSv8kLR+C0i
-        FzdYCy5qALwd3Qz4gsoVX4SSWVnIGlnuAHg8h/odsAumrIhAhqZkQAu610gbFFv7qUX3HBbOhzEbGsKI
-        awBur1e18AnBRdHxkrLkPgAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGoSURBVDhPjZNNSwJRGIX9Ze1aRIs2gRRBERJhUBBoBUGL
+        pE0Q/YNWrSJRBEsJqcRGS9JUlMnURtQotImw7GNx6tyY0Wmmj4HDvXNn3ue+59wZm+3zSp7ncXwcQywW
+        N0hb40jt74fB900XC19e39F+evtVBwcR+HwBM4QAFrceXk1qqh2xxjESOULxsgiv12+E9AKq9XvIVzXk
+        ZQVKo63Pec/dNRkgVgBCuCvzIbSi3AkYs7hWGqAdPYufACxMZWTdVlN9QSJTEHYNAFIZIr1qFrgbLWiA
+        1I0Mfzn0M0ALsRfAOS1cVutw56bgKtjhj4eFNVMHVoDb5rPwvRxfxGZrFisNB5zSKLj+LwCT37rYhkeZ
+        wLrqgrs2CWd2EJ7k0t8AFodSUYyc9GO1Mo6Nhy5gLNoHz85a9xQYIi0wZfpmca6giMACp4dwSU4d4IgO
+        Qirlsbvn6wL4hX0BOihXW0hnK0LJdAmJ8yssn8wbADwdywz4gCrXHoVyRVVoJbFgAhh+rN4O2AVT1kQg
+        Q9MyoAXLYySEYmvfNR+cwdzZMKalIdgDAwiGQrqFDye15j0ss3xfAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="MoveWidgetUpButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="MoveWidgetUpButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="MoveWidgetUpButton.ToolTipText" xml:space="preserve">
+    <value>Move the selected widget up</value>
+  </data>
+  <data name="MoveWidgetDownButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="MoveWidgetDownButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAaJJREFUOE+Nks1L
-        AlEUxRX/s3DVxzJIaFNSEBQRpSAUIkEbQeo/aNHGjTFQISFCxkjCZCo5fqU5olKgKWF+hdw6t2bUNPHB
-        4fLevPvj3PNGr/teUlimZqOmMxgM2Gqr1+vxGSpWt9vRGY0z+qFL2IjiHbU7n9T46E6Uz+cnj0egsQA0
-        V+sdTZVai/4KgEw6MwqBAxVQKL1R6qnIAgBVTiqsi6tLblalOfkPABjyQc0VqgwLBETKK2WCm6kAsfgz
-        O8F4qOFIgt0OAUBFiLg0OMJLpckNp5kzciYdrAPRzvdGAOMyUEc4erTRSX2XbCUzbT7MTg+AA8x9GLWS
-        q24ha3GV1kILPMpUDtT0HWHLEADgiQC1ERUh2qU9DbAuzrMDr/e6/woIERlUam0OkRtlhYR7H60EF8km
-        mzQAMsDZgdveB/j9N7+AFr83mqVIloXUnaUNctasPxnE52jrdpl/Ku0/UB0o5QZBueI7K5GrUyT9SttB
-        s/YKGCGUTQxnMOgA8yEkVQBK+RRZoybaTy+ROyaMzwAQCOmOk0s4Jsv5jvZNDfELUGvRcbvlWMQAAAAA
-        SUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGQSURBVDhPjZJNSwJRFIb9fX0sg4Q2JQVBEVEOCIlI0EaQ
+        +gct2rgxBiokRMgYSTBTyfErzRGVAk0JS63FqffUHWcaEwdeDszc83DOM9dm+34SSZWiUYUU5cYU8Q4V
+        CYcjhPOWB42D4Sf13j4mBoBgULZCAEBzuzvU0+r06W8AKBVLVogRUGu8UOGhzgEAVc1rnLOLc24W0Vf5
+        DwAY/KBWam2GwUVVa5p9TAJkso88CdZDTaZyvK5JKKiQiEPGFZ5a79xwXDohX97LcSsePmcBCIlGgFjh
+        4N5FR90dcjUctHE3Mz0AE2Dv/bRE/q6TpPoKrcbneZWpJhD2vUmnCQDwRIBoRIVET2JXB6wpczxBKHQ5
+        ulCQCAetzoAlcqOqkXwbpuXYArlUuw6AA7xzBzwjQCRy9Qvo8/9GcyJV5sC6r7FOvo704yA7S5vXS3yp
+        9IskJtCaPUIq9VdOrtKlVPGZtmIO/S9ghXg5Z3ZgnAD7QZIIgIlqgaS0nfaKixTIyOMdAILA7rj45UNy
+        nm7r34TEL+U05clBT2lYAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="MoveWidgetDownButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="MoveWidgetDownButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="MoveWidgetDownButton.ToolTipText" xml:space="preserve">
+    <value>Move the selected widget down</value>
+  </data>
+  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 25</value>
+  </data>
+  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 445</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ZoomToSelection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>224, 88</value>
+  </data>
+  <data name="ZoomToSelection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 24</value>
+  </data>
+  <data name="ZoomToSelection.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;ZoomToSelection.Name" xml:space="preserve">
+    <value>ZoomToSelection</value>
+  </data>
+  <data name="&gt;&gt;ZoomToSelection.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.ZoomToSelection, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ZoomToSelection.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;ZoomToSelection.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ZoomOnClick.Location" type="System.Drawing.Point, System.Drawing">
+    <value>224, 56</value>
+  </data>
+  <data name="ZoomOnClick.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 24</value>
+  </data>
+  <data name="ZoomOnClick.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;ZoomOnClick.Name" xml:space="preserve">
+    <value>ZoomOnClick</value>
+  </data>
+  <data name="&gt;&gt;ZoomOnClick.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.ZoomOnClick, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ZoomOnClick.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;ZoomOnClick.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Zoom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>224, 32</value>
+  </data>
+  <data name="Zoom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 24</value>
+  </data>
+  <data name="Zoom.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;Zoom.Name" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="&gt;&gt;Zoom.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.Zoom, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Zoom.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;Zoom.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ViewSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 8</value>
+  </data>
+  <data name="ViewSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 24</value>
+  </data>
+  <data name="ViewSize.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;ViewSize.Name" xml:space="preserve">
+    <value>ViewSize</value>
+  </data>
+  <data name="&gt;&gt;ViewSize.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.ViewSize, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ViewSize.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;ViewSize.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ViewOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 152</value>
+  </data>
+  <data name="ViewOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 24</value>
+  </data>
+  <data name="ViewOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;ViewOptions.Name" xml:space="preserve">
+    <value>ViewOptions</value>
+  </data>
+  <data name="&gt;&gt;ViewOptions.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.ViewOptions, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ViewOptions.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;ViewOptions.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="TaskPane.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 128</value>
+  </data>
+  <data name="TaskPane.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 24</value>
+  </data>
+  <data name="TaskPane.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;TaskPane.Name" xml:space="preserve">
+    <value>TaskPane</value>
+  </data>
+  <data name="&gt;&gt;TaskPane.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.TaskPane, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;TaskPane.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;TaskPane.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="SelectWithin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 104</value>
+  </data>
+  <data name="SelectWithin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 24</value>
+  </data>
+  <data name="SelectWithin.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;SelectWithin.Name" xml:space="preserve">
+    <value>SelectWithin</value>
+  </data>
+  <data name="&gt;&gt;SelectWithin.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.SelectWithin, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;SelectWithin.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;SelectWithin.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="SelectRadius.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 80</value>
+  </data>
+  <data name="SelectRadius.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 24</value>
+  </data>
+  <data name="SelectRadius.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;SelectRadius.Name" xml:space="preserve">
+    <value>SelectRadius</value>
+  </data>
+  <data name="&gt;&gt;SelectRadius.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.SelectRadius, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;SelectRadius.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;SelectRadius.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="SelectPolygon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 56</value>
+  </data>
+  <data name="SelectPolygon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 24</value>
+  </data>
+  <data name="SelectPolygon.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;SelectPolygon.Name" xml:space="preserve">
+    <value>SelectPolygon</value>
+  </data>
+  <data name="&gt;&gt;SelectPolygon.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.SelectPolygon, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;SelectPolygon.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;SelectPolygon.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="Select.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 32</value>
+  </data>
+  <data name="Select.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 24</value>
+  </data>
+  <data name="Select.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;Select.Name" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="&gt;&gt;Select.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.Select, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Select.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;Select.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="SaveMap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 8</value>
+  </data>
+  <data name="SaveMap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 24</value>
+  </data>
+  <data name="SaveMap.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;SaveMap.Name" xml:space="preserve">
+    <value>SaveMap</value>
+  </data>
+  <data name="&gt;&gt;SaveMap.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.SaveMap, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;SaveMap.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;SaveMap.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="Print.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 152</value>
+  </data>
+  <data name="Print.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 24</value>
+  </data>
+  <data name="Print.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;Print.Name" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="&gt;&gt;Print.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.Print, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Print.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;Print.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="OverviewMap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 128</value>
+  </data>
+  <data name="OverviewMap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 24</value>
+  </data>
+  <data name="OverviewMap.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;OverviewMap.Name" xml:space="preserve">
+    <value>OverviewMap</value>
+  </data>
+  <data name="&gt;&gt;OverviewMap.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.OverviewMap, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;OverviewMap.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;OverviewMap.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="Measure.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 104</value>
+  </data>
+  <data name="Measure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 24</value>
+  </data>
+  <data name="Measure.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;Measure.Name" xml:space="preserve">
+    <value>Measure</value>
+  </data>
+  <data name="&gt;&gt;Measure.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.Measure, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Measure.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;Measure.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="MapMenu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 80</value>
+  </data>
+  <data name="MapMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 24</value>
+  </data>
+  <data name="MapMenu.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;MapMenu.Name" xml:space="preserve">
+    <value>MapMenu</value>
+  </data>
+  <data name="&gt;&gt;MapMenu.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.MapMenu, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;MapMenu.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;MapMenu.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="Legend.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 56</value>
+  </data>
+  <data name="Legend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 24</value>
+  </data>
+  <data name="Legend.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;Legend.Name" xml:space="preserve">
+    <value>Legend</value>
+  </data>
+  <data name="&gt;&gt;Legend.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.Legend, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Legend.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;Legend.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="InvokeScript.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 32</value>
+  </data>
+  <data name="InvokeScript.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 24</value>
+  </data>
+  <data name="InvokeScript.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;InvokeScript.Name" xml:space="preserve">
+    <value>InvokeScript</value>
+  </data>
+  <data name="&gt;&gt;InvokeScript.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.InvokeScript, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;InvokeScript.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;InvokeScript.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="Help.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 8</value>
+  </data>
+  <data name="Help.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 24</value>
+  </data>
+  <data name="Help.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;Help.Name" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="&gt;&gt;Help.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.Help, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Help.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;Help.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="ExtentHistory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 152</value>
+  </data>
+  <data name="ExtentHistory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 24</value>
+  </data>
+  <data name="ExtentHistory.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;ExtentHistory.Name" xml:space="preserve">
+    <value>ExtentHistory</value>
+  </data>
+  <data name="&gt;&gt;ExtentHistory.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.ExtentHistory, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ExtentHistory.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;ExtentHistory.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="EditableScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 128</value>
+  </data>
+  <data name="EditableScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 24</value>
+  </data>
+  <data name="EditableScale.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;EditableScale.Name" xml:space="preserve">
+    <value>EditableScale</value>
+  </data>
+  <data name="&gt;&gt;EditableScale.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.EditableScale, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;EditableScale.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;EditableScale.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="CursorPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 104</value>
+  </data>
+  <data name="CursorPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 24</value>
+  </data>
+  <data name="CursorPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;CursorPosition.Name" xml:space="preserve">
+    <value>CursorPosition</value>
+  </data>
+  <data name="&gt;&gt;CursorPosition.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.CursorPosition, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;CursorPosition.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;CursorPosition.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="BufferPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 80</value>
+  </data>
+  <data name="BufferPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 24</value>
+  </data>
+  <data name="BufferPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;BufferPanel.Name" xml:space="preserve">
+    <value>BufferPanel</value>
+  </data>
+  <data name="&gt;&gt;BufferPanel.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.BufferPanel, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BufferPanel.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;BufferPanel.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="Buffer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 56</value>
+  </data>
+  <data name="Buffer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 24</value>
+  </data>
+  <data name="Buffer.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;Buffer.Name" xml:space="preserve">
+    <value>Buffer</value>
+  </data>
+  <data name="&gt;&gt;Buffer.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.Buffer, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Buffer.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;Buffer.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="ActivityIndicator.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 32</value>
+  </data>
+  <data name="ActivityIndicator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 24</value>
+  </data>
+  <data name="ActivityIndicator.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ActivityIndicator.Name" xml:space="preserve">
+    <value>ActivityIndicator</value>
+  </data>
+  <data name="&gt;&gt;ActivityIndicator.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.ActivityIndicator, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ActivityIndicator.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;ActivityIndicator.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="About.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="About.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 24</value>
+  </data>
+  <data name="About.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;About.Name" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="&gt;&gt;About.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors.AboutURL, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;About.Parent" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;About.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="CustomEditors.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="CustomEditors.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 232</value>
+  </data>
+  <data name="CustomEditors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>445, 187</value>
+  </data>
+  <data name="CustomEditors.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;CustomEditors.Name" xml:space="preserve">
+    <value>CustomEditors</value>
+  </data>
+  <data name="&gt;&gt;CustomEditors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CustomEditors.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;CustomEditors.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="widgetEditorUI.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="widgetEditorUI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 80</value>
+  </data>
+  <data name="widgetEditorUI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>445, 152</value>
+  </data>
+  <data name="widgetEditorUI.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;widgetEditorUI.Name" xml:space="preserve">
+    <value>widgetEditorUI</value>
+  </data>
+  <data name="&gt;&gt;widgetEditorUI.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.WidgetEditorUI, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;widgetEditorUI.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;widgetEditorUI.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="widgetEditor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="widgetEditor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="widgetEditor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>445, 80</value>
+  </data>
+  <data name="widgetEditor.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;widgetEditor.Name" xml:space="preserve">
+    <value>widgetEditor</value>
+  </data>
+  <data name="&gt;&gt;widgetEditor.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.WidgetEditor, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;widgetEditor.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;widgetEditor.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>445, 419</value>
+  </data>
+  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Basic properties</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
+    <value>WidgetControl</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="GenericWidgetExtensions.DataSource" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -433,5 +1183,296 @@
         LXYxIiAvPgQDAAAADlN5c3RlbS5WZXJzaW9uBAAAAAZfTWFqb3IGX01pbm9yBl9CdWlsZAlfUmV2aXNp
         b24AAAAACAgICAIAAAAAAAAA//////////8L
 </value>
+  </data>
+  <data name="GenericWidgetExtensions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="GenericWidgetExtensions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="GenericWidgetExtensions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>445, 419</value>
+  </data>
+  <data name="GenericWidgetExtensions.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;GenericWidgetExtensions.Name" xml:space="preserve">
+    <value>GenericWidgetExtensions</value>
+  </data>
+  <data name="&gt;&gt;GenericWidgetExtensions.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.GenericWidgetExtensions, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;GenericWidgetExtensions.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;GenericWidgetExtensions.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>445, 419</value>
+  </data>
+  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Extended properties</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
+    <value>WidgetControl</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="WidgetControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="WidgetControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="WidgetControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>453, 445</value>
+  </data>
+  <data name="WidgetControl.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="WidgetControl.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;WidgetControl.Name" xml:space="preserve">
+    <value>WidgetControl</value>
+  </data>
+  <data name="&gt;&gt;WidgetControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WidgetControl.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;WidgetControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>187, 0</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>453, 445</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splitter1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 0</value>
+  </data>
+  <data name="splitter1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>3, 445</value>
+  </data>
+  <data name="splitter1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;splitter1.Name" xml:space="preserve">
+    <value>splitter1</value>
+  </data>
+  <data name="&gt;&gt;splitter1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Splitter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitter1.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;splitter1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>640, 445</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="CancelBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="CancelBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>328, 8</value>
+  </data>
+  <data name="CancelBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 32</value>
+  </data>
+  <data name="CancelBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="CancelBtn.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;CancelBtn.Name" xml:space="preserve">
+    <value>CancelBtn</value>
+  </data>
+  <data name="&gt;&gt;CancelBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CancelBtn.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;CancelBtn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="OKBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="OKBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 8</value>
+  </data>
+  <data name="OKBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 32</value>
+  </data>
+  <data name="OKBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="OKBtn.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.Name" xml:space="preserve">
+    <value>OKBtn</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 445</value>
+  </data>
+  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>640, 48</value>
+  </data>
+  <data name="panel4.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleBaseSize" type="System.Drawing.Size, System.Drawing">
+    <value>5, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>640, 493</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>EditWidgets</value>
+  </data>
+  <data name="&gt;&gt;toolbarImages.Name" xml:space="preserve">
+    <value>toolbarImages</value>
+  </data>
+  <data name="&gt;&gt;toolbarImages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AddWidgetButton.Name" xml:space="preserve">
+    <value>AddWidgetButton</value>
+  </data>
+  <data name="&gt;&gt;AddWidgetButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;withUserInterfaceToolStripMenuItem.Name" xml:space="preserve">
+    <value>withUserInterfaceToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;withUserInterfaceToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;withoutUserInterfaceToolStripMenuItem.Name" xml:space="preserve">
+    <value>withoutUserInterfaceToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;withoutUserInterfaceToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RemoveWidgetButton.Name" xml:space="preserve">
+    <value>RemoveWidgetButton</value>
+  </data>
+  <data name="&gt;&gt;RemoveWidgetButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MoveWidgetUpButton.Name" xml:space="preserve">
+    <value>MoveWidgetUpButton</value>
+  </data>
+  <data name="&gt;&gt;MoveWidgetUpButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MoveWidgetDownButton.Name" xml:space="preserve">
+    <value>MoveWidgetDownButton</value>
+  </data>
+  <data name="&gt;&gt;MoveWidgetDownButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>EditWidgets</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

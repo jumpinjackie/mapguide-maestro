@@ -42,8 +42,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private ArrayList m_providers;
 		private OSGeo.MapGuide.MaestroAPI.FeatureProviderRegistryFeatureProvider m_selected;
-		private Globalizator.Globalizator m_globalizor = null;
-
 
 		public SelectDataProvider(OSGeo.MapGuide.MaestroAPI.ServerConnectionI connection)
 			: this()
@@ -69,8 +67,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			
-			m_globalizor = new  Globalizator.Globalizator(this);
 		}
 
 		/// <summary>
@@ -95,6 +91,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectDataProvider));
             this.ProviderList = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ProviderComments = new System.Windows.Forms.Label();
@@ -104,65 +101,41 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // ProviderList
             // 
-            this.ProviderList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProviderList.Location = new System.Drawing.Point(16, 32);
+            resources.ApplyResources(this.ProviderList, "ProviderList");
             this.ProviderList.Name = "ProviderList";
-            this.ProviderList.Size = new System.Drawing.Size(232, 212);
-            this.ProviderList.TabIndex = 0;
             this.ProviderList.SelectedIndexChanged += new System.EventHandler(this.ProviderList_SelectedIndexChanged);
             this.ProviderList.DoubleClick += new System.EventHandler(this.ProviderList_DoubleClick);
             // 
             // label1
             // 
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label1.Location = new System.Drawing.Point(16, 16);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Providers on server:";
             // 
             // ProviderComments
             // 
-            this.ProviderComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.ProviderComments, "ProviderComments");
             this.ProviderComments.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ProviderComments.Location = new System.Drawing.Point(16, 248);
             this.ProviderComments.Name = "ProviderComments";
-            this.ProviderComments.Size = new System.Drawing.Size(232, 40);
-            this.ProviderComments.TabIndex = 2;
             // 
             // OKBtn
             // 
-            this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            resources.ApplyResources(this.OKBtn, "OKBtn");
             this.OKBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.OKBtn.Enabled = false;
-            this.OKBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.OKBtn.Location = new System.Drawing.Point(40, 304);
             this.OKBtn.Name = "OKBtn";
-            this.OKBtn.Size = new System.Drawing.Size(80, 32);
-            this.OKBtn.TabIndex = 3;
-            this.OKBtn.Text = "OK";
             this.OKBtn.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.CancelBtn.Location = new System.Drawing.Point(144, 304);
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(80, 32);
-            this.CancelBtn.TabIndex = 4;
-            this.CancelBtn.Text = "Cancel";
             this.CancelBtn.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // SelectDataProvider
             // 
             this.AcceptButton = this.OKBtn;
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(266, 352);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.OKBtn);
             this.Controls.Add(this.ProviderComments);
@@ -170,8 +143,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.Controls.Add(this.ProviderList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SelectDataProvider";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Select Data Provider";
             this.ResumeLayout(false);
 
 		}

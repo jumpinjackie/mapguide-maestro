@@ -112,7 +112,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripButton MoveLayerBottomButton;
         private ToolStripButton MoveLayerOrderTopButton;
         private ToolStripButton MoveLayerOrderBottomButton;
-		private Globalizator.Globalizator m_globalizor = null;
 
 		public MapEditor(EditorInterface editor, string resourceID)
 			: this()
@@ -146,7 +145,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			ctlGroupProperties.LayerPropertiesChanged += new EventHandler(ctlGroupProperties_LayerPropertiesChanged);
             ctlGroupProperties.GroupRenamed += new MapLayerGroupProperties.GroupRenameDelegate(ctlGroupProperties_GroupRenamed);
 
-			m_globalizor = new  Globalizator.Globalizator(this);
             bgColor.ResetColors();
         }
 
@@ -280,7 +278,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
                 trvBaseLayerGroups.BeginUpdate();
                 trvBaseLayerGroups.Nodes.Clear();
-                trvBaseLayerGroups.Nodes.Add(m_globalizor.Translate("Finite display scales"));
+                trvBaseLayerGroups.Nodes.Add(Strings.MapEditor.FiniteDisplayScalesName);
                 trvBaseLayerGroups.Nodes[0].Expand();
                 trvBaseLayerGroups.Nodes[0].ImageIndex = trvBaseLayerGroups.Nodes[0].SelectedImageIndex = 2;
 
@@ -459,34 +457,24 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // lable1
             // 
             this.lable1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lable1.Location = new System.Drawing.Point(16, 24);
+            resources.ApplyResources(this.lable1, "lable1");
             this.lable1.Name = "lable1";
-            this.lable1.Size = new System.Drawing.Size(120, 16);
-            this.lable1.TabIndex = 0;
-            this.lable1.Text = "Description";
             // 
             // label1
             // 
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label1.Location = new System.Drawing.Point(16, 56);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Coordinate system";
             // 
             // label2
             // 
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label2.Location = new System.Drawing.Point(16, 88);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Background color";
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.bgColor);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.btnSelectCoordSys);
@@ -496,35 +484,24 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(592, 224);
-            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Settings";
             // 
             // bgColor
             // 
-            this.bgColor.Location = new System.Drawing.Point(144, 88);
+            resources.ApplyResources(this.bgColor, "bgColor");
             this.bgColor.Name = "bgColor";
-            this.bgColor.Size = new System.Drawing.Size(216, 21);
-            this.bgColor.TabIndex = 10;
             this.bgColor.SelectedIndexChanged += new System.EventHandler(this.bgColor_SelectedIndexChanged);
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Location = new System.Drawing.Point(16, 120);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(557, 88);
-            this.panel1.TabIndex = 9;
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.SetZoom);
             this.groupBox2.Controls.Add(this.txtUpperY);
             this.groupBox2.Controls.Add(this.label8);
@@ -537,268 +514,176 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(554, 88);
-            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Initial map view";
             // 
             // SetZoom
             // 
-            this.SetZoom.Enabled = false;
-            this.SetZoom.Location = new System.Drawing.Point(408, 24);
+            resources.ApplyResources(this.SetZoom, "SetZoom");
             this.SetZoom.Name = "SetZoom";
-            this.SetZoom.Size = new System.Drawing.Size(104, 48);
-            this.SetZoom.TabIndex = 10;
-            this.SetZoom.Text = "Set view to current layers extent";
             this.SetZoom.Click += new System.EventHandler(this.SetZoom_Click);
             // 
             // txtUpperY
             // 
-            this.txtUpperY.Location = new System.Drawing.Point(280, 56);
+            resources.ApplyResources(this.txtUpperY, "txtUpperY");
             this.txtUpperY.Name = "txtUpperY";
-            this.txtUpperY.Size = new System.Drawing.Size(96, 20);
-            this.txtUpperY.TabIndex = 9;
             this.txtUpperY.TextChanged += new System.EventHandler(this.txtUpperY_TextChanged);
             // 
             // label8
             // 
             this.label8.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label8.Location = new System.Drawing.Point(256, 56);
+            resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(16, 16);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Y";
             // 
             // txtUpperX
             // 
-            this.txtUpperX.Location = new System.Drawing.Point(144, 56);
+            resources.ApplyResources(this.txtUpperX, "txtUpperX");
             this.txtUpperX.Name = "txtUpperX";
-            this.txtUpperX.Size = new System.Drawing.Size(96, 20);
-            this.txtUpperX.TabIndex = 7;
             this.txtUpperX.TextChanged += new System.EventHandler(this.txtUpperX_TextChanged);
             // 
             // label7
             // 
             this.label7.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label7.Location = new System.Drawing.Point(120, 56);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(16, 16);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "X";
             // 
             // txtLowerY
             // 
-            this.txtLowerY.Location = new System.Drawing.Point(280, 24);
+            resources.ApplyResources(this.txtLowerY, "txtLowerY");
             this.txtLowerY.Name = "txtLowerY";
-            this.txtLowerY.Size = new System.Drawing.Size(96, 20);
-            this.txtLowerY.TabIndex = 5;
             this.txtLowerY.TextChanged += new System.EventHandler(this.txtLowerY_TextChanged);
             // 
             // label6
             // 
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label6.Location = new System.Drawing.Point(256, 24);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(16, 16);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Y";
             // 
             // txtLowerX
             // 
-            this.txtLowerX.Location = new System.Drawing.Point(144, 24);
+            resources.ApplyResources(this.txtLowerX, "txtLowerX");
             this.txtLowerX.Name = "txtLowerX";
-            this.txtLowerX.Size = new System.Drawing.Size(96, 20);
-            this.txtLowerX.TabIndex = 3;
             this.txtLowerX.TextChanged += new System.EventHandler(this.txtLowerX_TextChanged);
             // 
             // label5
             // 
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label5.Location = new System.Drawing.Point(120, 24);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(16, 16);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "X";
             // 
             // label4
             // 
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label4.Location = new System.Drawing.Point(16, 56);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 16);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Upper right";
             // 
             // label3
             // 
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label3.Location = new System.Drawing.Point(16, 24);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 16);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Lower left";
             // 
             // btnSelectCoordSys
             // 
-            this.btnSelectCoordSys.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelectCoordSys.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnSelectCoordSys.Location = new System.Drawing.Point(549, 56);
+            resources.ApplyResources(this.btnSelectCoordSys, "btnSelectCoordSys");
             this.btnSelectCoordSys.Name = "btnSelectCoordSys";
-            this.btnSelectCoordSys.Size = new System.Drawing.Size(24, 20);
-            this.btnSelectCoordSys.TabIndex = 8;
-            this.btnSelectCoordSys.Text = "...";
             this.btnSelectCoordSys.Click += new System.EventHandler(this.btnSelectCoordSys_Click);
             // 
             // txtCoordsys
             // 
-            this.txtCoordsys.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCoordsys.Location = new System.Drawing.Point(144, 56);
+            resources.ApplyResources(this.txtCoordsys, "txtCoordsys");
             this.txtCoordsys.Name = "txtCoordsys";
             this.txtCoordsys.ReadOnly = true;
-            this.txtCoordsys.Size = new System.Drawing.Size(405, 20);
-            this.txtCoordsys.TabIndex = 5;
             // 
             // txtDescription
             // 
-            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDescription.Location = new System.Drawing.Point(144, 24);
+            resources.ApplyResources(this.txtDescription, "txtDescription");
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(429, 20);
-            this.txtDescription.TabIndex = 4;
             this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.panel4);
             this.groupBox3.Controls.Add(this.splitter1);
             this.groupBox3.Controls.Add(this.panel3);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox3.Location = new System.Drawing.Point(0, 232);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(592, 392);
-            this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Layers";
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.groupBox4);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(352, 16);
+            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(237, 373);
-            this.panel4.TabIndex = 4;
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.ctlFiniteDisplayScales);
             this.groupBox4.Controls.Add(this.ctlGroupProperties);
             this.groupBox4.Controls.Add(this.ctlLayerProperties);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox4.Location = new System.Drawing.Point(8, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(221, 368);
-            this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Layer properties";
             // 
             // ctlFiniteDisplayScales
             // 
-            this.ctlFiniteDisplayScales.AutoScroll = true;
-            this.ctlFiniteDisplayScales.AutoScrollMinSize = new System.Drawing.Size(337, 351);
-            this.ctlFiniteDisplayScales.Location = new System.Drawing.Point(32, 280);
+            resources.ApplyResources(this.ctlFiniteDisplayScales, "ctlFiniteDisplayScales");
             this.ctlFiniteDisplayScales.Name = "ctlFiniteDisplayScales";
-            this.ctlFiniteDisplayScales.Size = new System.Drawing.Size(200, 80);
-            this.ctlFiniteDisplayScales.TabIndex = 3;
-            this.ctlFiniteDisplayScales.Visible = false;
             // 
             // ctlGroupProperties
             // 
-            this.ctlGroupProperties.Location = new System.Drawing.Point(80, 96);
+            resources.ApplyResources(this.ctlGroupProperties, "ctlGroupProperties");
             this.ctlGroupProperties.Name = "ctlGroupProperties";
-            this.ctlGroupProperties.Size = new System.Drawing.Size(176, 240);
-            this.ctlGroupProperties.TabIndex = 1;
             // 
             // ctlLayerProperties
             // 
-            this.ctlLayerProperties.AutoScroll = true;
-            this.ctlLayerProperties.Location = new System.Drawing.Point(16, 88);
+            resources.ApplyResources(this.ctlLayerProperties, "ctlLayerProperties");
             this.ctlLayerProperties.Name = "ctlLayerProperties";
-            this.ctlLayerProperties.Size = new System.Drawing.Size(176, 184);
-            this.ctlLayerProperties.TabIndex = 0;
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(16, 24);
+            resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(256, 56);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "When a layer or a group is selected, properties for that item will be displayed h" +
-                "ere";
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(344, 16);
+            resources.ApplyResources(this.splitter1, "splitter1");
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(8, 373);
-            this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.tabLayers);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(3, 16);
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(341, 373);
-            this.panel3.TabIndex = 2;
             // 
             // tabLayers
             // 
-            this.tabLayers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tabLayers, "tabLayers");
             this.tabLayers.Controls.Add(this.tabLayerGroups);
             this.tabLayers.Controls.Add(this.tabDrawOrder);
             this.tabLayers.Controls.Add(this.tabBaseLayerGroups);
             this.tabLayers.ImageList = this.LayerToolbarImages;
-            this.tabLayers.Location = new System.Drawing.Point(8, 8);
             this.tabLayers.Name = "tabLayers";
             this.tabLayers.SelectedIndex = 0;
-            this.tabLayers.Size = new System.Drawing.Size(328, 352);
-            this.tabLayers.TabIndex = 0;
             // 
             // tabLayerGroups
             // 
             this.tabLayerGroups.Controls.Add(this.trvLayerGroups);
             this.tabLayerGroups.Controls.Add(this.tlbLayerGroups);
-            this.tabLayerGroups.Location = new System.Drawing.Point(4, 23);
+            resources.ApplyResources(this.tabLayerGroups, "tabLayerGroups");
             this.tabLayerGroups.Name = "tabLayerGroups";
-            this.tabLayerGroups.Size = new System.Drawing.Size(320, 325);
-            this.tabLayerGroups.TabIndex = 0;
-            this.tabLayerGroups.Text = "Layers by group";
             this.tabLayerGroups.UseVisualStyleBackColor = true;
             // 
             // trvLayerGroups
             // 
             this.trvLayerGroups.AllowDrop = true;
-            this.trvLayerGroups.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trvLayerGroups.ImageIndex = 0;
+            resources.ApplyResources(this.trvLayerGroups, "trvLayerGroups");
             this.trvLayerGroups.ImageList = this.TreeImages;
-            this.trvLayerGroups.Location = new System.Drawing.Point(0, 25);
             this.trvLayerGroups.Name = "trvLayerGroups";
-            this.trvLayerGroups.SelectedImageIndex = 0;
-            this.trvLayerGroups.Size = new System.Drawing.Size(320, 300);
-            this.trvLayerGroups.TabIndex = 0;
             this.trvLayerGroups.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvLayerGroups_DragDrop);
             this.trvLayerGroups.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvLayerGroups_AfterSelect);
             this.trvLayerGroups.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvLayerGroups_DragEnter);
@@ -828,140 +713,104 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveLayerBottomButton,
             this.toolStripSeparator4,
             this.ConvertToBaseLayerGroupButton});
-            this.tlbLayerGroups.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.tlbLayerGroups, "tlbLayerGroups");
             this.tlbLayerGroups.Name = "tlbLayerGroups";
             this.tlbLayerGroups.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tlbLayerGroups.Size = new System.Drawing.Size(320, 25);
-            this.tlbLayerGroups.TabIndex = 2;
             // 
             // AddGroupButton
             // 
             this.AddGroupButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddGroupButton.Image = ((System.Drawing.Image)(resources.GetObject("AddGroupButton.Image")));
-            this.AddGroupButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddGroupButton, "AddGroupButton");
             this.AddGroupButton.Name = "AddGroupButton";
-            this.AddGroupButton.Size = new System.Drawing.Size(23, 22);
-            this.AddGroupButton.ToolTipText = "Add a new group";
             this.AddGroupButton.Click += new System.EventHandler(this.AddGroupButton_Click);
             // 
             // RemoveGroupButton
             // 
             this.RemoveGroupButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RemoveGroupButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveGroupButton.Image")));
-            this.RemoveGroupButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.RemoveGroupButton, "RemoveGroupButton");
             this.RemoveGroupButton.Name = "RemoveGroupButton";
-            this.RemoveGroupButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveGroupButton.ToolTipText = "Remove the selected group and contents";
             this.RemoveGroupButton.Click += new System.EventHandler(this.RemoveGroupButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // AddLayerButton
             // 
             this.AddLayerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddLayerButton.Image = ((System.Drawing.Image)(resources.GetObject("AddLayerButton.Image")));
-            this.AddLayerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddLayerButton, "AddLayerButton");
             this.AddLayerButton.Name = "AddLayerButton";
-            this.AddLayerButton.Size = new System.Drawing.Size(23, 22);
-            this.AddLayerButton.ToolTipText = "Add a new layer to the map";
             this.AddLayerButton.Click += new System.EventHandler(this.AddLayerButton_Click);
             // 
             // RemoveLayerButton
             // 
             this.RemoveLayerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RemoveLayerButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveLayerButton.Image")));
-            this.RemoveLayerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.RemoveLayerButton, "RemoveLayerButton");
             this.RemoveLayerButton.Name = "RemoveLayerButton";
-            this.RemoveLayerButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveLayerButton.ToolTipText = "Remove a layer from the group";
             this.RemoveLayerButton.Click += new System.EventHandler(this.RemoveLayerButton_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // MoveLayerUpButton
             // 
             this.MoveLayerUpButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveLayerUpButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerUpButton.Image")));
-            this.MoveLayerUpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MoveLayerUpButton, "MoveLayerUpButton");
             this.MoveLayerUpButton.Name = "MoveLayerUpButton";
-            this.MoveLayerUpButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveLayerUpButton.ToolTipText = "Move the selected layer up";
             this.MoveLayerUpButton.Click += new System.EventHandler(this.MoveLayerUpButton_Click);
             // 
             // MoveLayerDownButton
             // 
             this.MoveLayerDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveLayerDownButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerDownButton.Image")));
-            this.MoveLayerDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MoveLayerDownButton, "MoveLayerDownButton");
             this.MoveLayerDownButton.Name = "MoveLayerDownButton";
-            this.MoveLayerDownButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveLayerDownButton.ToolTipText = "Move the selected layer down";
             this.MoveLayerDownButton.Click += new System.EventHandler(this.MoveLayerDownButton_Click);
             // 
             // MoveLayerTopButton
             // 
             this.MoveLayerTopButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveLayerTopButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerTopButton.Image")));
-            this.MoveLayerTopButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MoveLayerTopButton, "MoveLayerTopButton");
             this.MoveLayerTopButton.Name = "MoveLayerTopButton";
-            this.MoveLayerTopButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveLayerTopButton.ToolTipText = "Move the selected layer to the top";
             this.MoveLayerTopButton.Click += new System.EventHandler(this.MoveLayerTopButton_Click);
             // 
             // MoveLayerBottomButton
             // 
             this.MoveLayerBottomButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveLayerBottomButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerBottomButton.Image")));
-            this.MoveLayerBottomButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MoveLayerBottomButton, "MoveLayerBottomButton");
             this.MoveLayerBottomButton.Name = "MoveLayerBottomButton";
-            this.MoveLayerBottomButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveLayerBottomButton.Text = "toolStripButton2";
-            this.MoveLayerBottomButton.ToolTipText = "Move the selected layer to the bottom";
             this.MoveLayerBottomButton.Click += new System.EventHandler(this.MoveLayerBottomButton_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
             // 
             // ConvertToBaseLayerGroupButton
             // 
             this.ConvertToBaseLayerGroupButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ConvertToBaseLayerGroupButton.Image = ((System.Drawing.Image)(resources.GetObject("ConvertToBaseLayerGroupButton.Image")));
-            this.ConvertToBaseLayerGroupButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.ConvertToBaseLayerGroupButton, "ConvertToBaseLayerGroupButton");
             this.ConvertToBaseLayerGroupButton.Name = "ConvertToBaseLayerGroupButton";
-            this.ConvertToBaseLayerGroupButton.Size = new System.Drawing.Size(23, 22);
-            this.ConvertToBaseLayerGroupButton.ToolTipText = "Convert the selected group to a base layer group";
             this.ConvertToBaseLayerGroupButton.Click += new System.EventHandler(this.ConvertToBaseLayerGroupButton_Click);
             // 
             // tabDrawOrder
             // 
             this.tabDrawOrder.Controls.Add(this.lstDrawOrder);
             this.tabDrawOrder.Controls.Add(this.toolStrip1);
-            this.tabDrawOrder.Location = new System.Drawing.Point(4, 23);
+            resources.ApplyResources(this.tabDrawOrder, "tabDrawOrder");
             this.tabDrawOrder.Name = "tabDrawOrder";
-            this.tabDrawOrder.Size = new System.Drawing.Size(320, 325);
-            this.tabDrawOrder.TabIndex = 1;
-            this.tabDrawOrder.Text = "Layers by drawing order";
             this.tabDrawOrder.UseVisualStyleBackColor = true;
             // 
             // lstDrawOrder
             // 
             this.lstDrawOrder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
-            this.lstDrawOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.lstDrawOrder, "lstDrawOrder");
             this.lstDrawOrder.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lstDrawOrder.Location = new System.Drawing.Point(0, 25);
             this.lstDrawOrder.Name = "lstDrawOrder";
-            this.lstDrawOrder.Size = new System.Drawing.Size(320, 300);
             this.lstDrawOrder.SmallImageList = this.TreeImages;
-            this.lstDrawOrder.TabIndex = 0;
             this.lstDrawOrder.UseCompatibleStateImageBehavior = false;
             this.lstDrawOrder.View = System.Windows.Forms.View.Details;
             this.lstDrawOrder.SelectedIndexChanged += new System.EventHandler(this.lstDrawOrder_SelectedIndexChanged);
@@ -969,7 +818,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Width = 200;
+            resources.ApplyResources(this.columnHeader1, "columnHeader1");
             // 
             // toolStrip1
             // 
@@ -982,101 +831,72 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveLayerDownOrderButton,
             this.MoveLayerOrderTopButton,
             this.MoveLayerOrderBottomButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(320, 25);
-            this.toolStrip1.TabIndex = 2;
             // 
             // AddLayerOrderButton
             // 
             this.AddLayerOrderButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddLayerOrderButton.Image = ((System.Drawing.Image)(resources.GetObject("AddLayerOrderButton.Image")));
-            this.AddLayerOrderButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddLayerOrderButton, "AddLayerOrderButton");
             this.AddLayerOrderButton.Name = "AddLayerOrderButton";
-            this.AddLayerOrderButton.Size = new System.Drawing.Size(23, 22);
-            this.AddLayerOrderButton.ToolTipText = "Add a new layer to the map";
             this.AddLayerOrderButton.Click += new System.EventHandler(this.AddLayerOrderButton_Click);
             // 
             // RemoveLayerOrderButton
             // 
             this.RemoveLayerOrderButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RemoveLayerOrderButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveLayerOrderButton.Image")));
-            this.RemoveLayerOrderButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.RemoveLayerOrderButton, "RemoveLayerOrderButton");
             this.RemoveLayerOrderButton.Name = "RemoveLayerOrderButton";
-            this.RemoveLayerOrderButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveLayerOrderButton.ToolTipText = "Remove the selected layers from the map";
             this.RemoveLayerOrderButton.Click += new System.EventHandler(this.RemoveLayerOrderButton_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
             // MoveLayerUpOrderButton
             // 
             this.MoveLayerUpOrderButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveLayerUpOrderButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerUpOrderButton.Image")));
-            this.MoveLayerUpOrderButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MoveLayerUpOrderButton, "MoveLayerUpOrderButton");
             this.MoveLayerUpOrderButton.Name = "MoveLayerUpOrderButton";
-            this.MoveLayerUpOrderButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveLayerUpOrderButton.ToolTipText = "Move the selected layers up";
             this.MoveLayerUpOrderButton.Click += new System.EventHandler(this.MoveLayerUpOrderButton_Click);
             // 
             // MoveLayerDownOrderButton
             // 
             this.MoveLayerDownOrderButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveLayerDownOrderButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerDownOrderButton.Image")));
-            this.MoveLayerDownOrderButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MoveLayerDownOrderButton, "MoveLayerDownOrderButton");
             this.MoveLayerDownOrderButton.Name = "MoveLayerDownOrderButton";
-            this.MoveLayerDownOrderButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveLayerDownOrderButton.ToolTipText = "Move the selected layers down";
             this.MoveLayerDownOrderButton.Click += new System.EventHandler(this.MoveLayerDownOrderButton_Click);
             // 
             // MoveLayerOrderTopButton
             // 
             this.MoveLayerOrderTopButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveLayerOrderTopButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerOrderTopButton.Image")));
-            this.MoveLayerOrderTopButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MoveLayerOrderTopButton, "MoveLayerOrderTopButton");
             this.MoveLayerOrderTopButton.Name = "MoveLayerOrderTopButton";
-            this.MoveLayerOrderTopButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveLayerOrderTopButton.ToolTipText = "Move the selected layer to the top";
             this.MoveLayerOrderTopButton.Click += new System.EventHandler(this.MoveLayerOrderTopButton_Click);
             // 
             // MoveLayerOrderBottomButton
             // 
             this.MoveLayerOrderBottomButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveLayerOrderBottomButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveLayerOrderBottomButton.Image")));
-            this.MoveLayerOrderBottomButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MoveLayerOrderBottomButton, "MoveLayerOrderBottomButton");
             this.MoveLayerOrderBottomButton.Name = "MoveLayerOrderBottomButton";
-            this.MoveLayerOrderBottomButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveLayerOrderBottomButton.Text = "toolStripButton2";
-            this.MoveLayerOrderBottomButton.ToolTipText = "Move the selected layer to the bottom";
             this.MoveLayerOrderBottomButton.Click += new System.EventHandler(this.MoveLayerOrderBottomButton_Click);
             // 
             // tabBaseLayerGroups
             // 
             this.tabBaseLayerGroups.Controls.Add(this.trvBaseLayerGroups);
             this.tabBaseLayerGroups.Controls.Add(this.BaseLayerGroupToolStrip);
-            this.tabBaseLayerGroups.Location = new System.Drawing.Point(4, 23);
+            resources.ApplyResources(this.tabBaseLayerGroups, "tabBaseLayerGroups");
             this.tabBaseLayerGroups.Name = "tabBaseLayerGroups";
-            this.tabBaseLayerGroups.Size = new System.Drawing.Size(320, 325);
-            this.tabBaseLayerGroups.TabIndex = 2;
-            this.tabBaseLayerGroups.Text = "Base layer groups";
             this.tabBaseLayerGroups.UseVisualStyleBackColor = true;
             // 
             // trvBaseLayerGroups
             // 
             this.trvBaseLayerGroups.AllowDrop = true;
-            this.trvBaseLayerGroups.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.trvBaseLayerGroups, "trvBaseLayerGroups");
             this.trvBaseLayerGroups.HideSelection = false;
-            this.trvBaseLayerGroups.ImageIndex = 0;
             this.trvBaseLayerGroups.ImageList = this.TreeImages;
-            this.trvBaseLayerGroups.Location = new System.Drawing.Point(0, 25);
             this.trvBaseLayerGroups.Name = "trvBaseLayerGroups";
-            this.trvBaseLayerGroups.SelectedImageIndex = 0;
-            this.trvBaseLayerGroups.Size = new System.Drawing.Size(320, 300);
-            this.trvBaseLayerGroups.TabIndex = 4;
             this.trvBaseLayerGroups.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvBaseLayerGroups_AfterSelect);
             // 
             // BaseLayerGroupToolStrip
@@ -1095,111 +915,84 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ConvertBaseLayerGroupToDynamicGroup,
             this.toolStripSeparator8,
             this.activateMgCooker});
-            this.BaseLayerGroupToolStrip.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.BaseLayerGroupToolStrip, "BaseLayerGroupToolStrip");
             this.BaseLayerGroupToolStrip.Name = "BaseLayerGroupToolStrip";
             this.BaseLayerGroupToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.BaseLayerGroupToolStrip.Size = new System.Drawing.Size(320, 25);
-            this.BaseLayerGroupToolStrip.TabIndex = 3;
             // 
             // AddBaseLayerGroupButton
             // 
             this.AddBaseLayerGroupButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddBaseLayerGroupButton.Image = ((System.Drawing.Image)(resources.GetObject("AddBaseLayerGroupButton.Image")));
-            this.AddBaseLayerGroupButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddBaseLayerGroupButton, "AddBaseLayerGroupButton");
             this.AddBaseLayerGroupButton.Name = "AddBaseLayerGroupButton";
-            this.AddBaseLayerGroupButton.Size = new System.Drawing.Size(23, 22);
-            this.AddBaseLayerGroupButton.ToolTipText = "Add a new group";
             this.AddBaseLayerGroupButton.Click += new System.EventHandler(this.AddBaseLayerGroupButton_Click);
             // 
             // RemoveBaseLayerGroupButton
             // 
             this.RemoveBaseLayerGroupButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RemoveBaseLayerGroupButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveBaseLayerGroupButton.Image")));
-            this.RemoveBaseLayerGroupButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.RemoveBaseLayerGroupButton, "RemoveBaseLayerGroupButton");
             this.RemoveBaseLayerGroupButton.Name = "RemoveBaseLayerGroupButton";
-            this.RemoveBaseLayerGroupButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveBaseLayerGroupButton.ToolTipText = "Remove the selected group and contents";
             this.RemoveBaseLayerGroupButton.Click += new System.EventHandler(this.RemoveBaseLayerGroupButton_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
             // 
             // AddBaseLayerButton
             // 
             this.AddBaseLayerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddBaseLayerButton.Image = ((System.Drawing.Image)(resources.GetObject("AddBaseLayerButton.Image")));
-            this.AddBaseLayerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddBaseLayerButton, "AddBaseLayerButton");
             this.AddBaseLayerButton.Name = "AddBaseLayerButton";
-            this.AddBaseLayerButton.Size = new System.Drawing.Size(23, 22);
-            this.AddBaseLayerButton.ToolTipText = "Add a new layer to the map";
             this.AddBaseLayerButton.Click += new System.EventHandler(this.AddBaseLayerButton_Click);
             // 
             // RemoveBaseLayerButton
             // 
             this.RemoveBaseLayerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RemoveBaseLayerButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveBaseLayerButton.Image")));
-            this.RemoveBaseLayerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.RemoveBaseLayerButton, "RemoveBaseLayerButton");
             this.RemoveBaseLayerButton.Name = "RemoveBaseLayerButton";
-            this.RemoveBaseLayerButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveBaseLayerButton.ToolTipText = "Remove a layer from the group";
             this.RemoveBaseLayerButton.Click += new System.EventHandler(this.RemoveBaseLayerButton_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
             // 
             // MoveBaseLayerUpButton
             // 
             this.MoveBaseLayerUpButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveBaseLayerUpButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveBaseLayerUpButton.Image")));
-            this.MoveBaseLayerUpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MoveBaseLayerUpButton, "MoveBaseLayerUpButton");
             this.MoveBaseLayerUpButton.Name = "MoveBaseLayerUpButton";
-            this.MoveBaseLayerUpButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveBaseLayerUpButton.ToolTipText = "Move the selected layer up";
             this.MoveBaseLayerUpButton.Click += new System.EventHandler(this.MoveBaseLayerUpButton_Click);
             // 
             // MoveBaseLayerDownButton
             // 
             this.MoveBaseLayerDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveBaseLayerDownButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveBaseLayerDownButton.Image")));
-            this.MoveBaseLayerDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MoveBaseLayerDownButton, "MoveBaseLayerDownButton");
             this.MoveBaseLayerDownButton.Name = "MoveBaseLayerDownButton";
-            this.MoveBaseLayerDownButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveBaseLayerDownButton.ToolTipText = "Move the selected layer down";
             this.MoveBaseLayerDownButton.Click += new System.EventHandler(this.MoveBaseLayerDownButton_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
             // 
             // ConvertBaseLayerGroupToDynamicGroup
             // 
             this.ConvertBaseLayerGroupToDynamicGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ConvertBaseLayerGroupToDynamicGroup.Image = ((System.Drawing.Image)(resources.GetObject("ConvertBaseLayerGroupToDynamicGroup.Image")));
-            this.ConvertBaseLayerGroupToDynamicGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.ConvertBaseLayerGroupToDynamicGroup, "ConvertBaseLayerGroupToDynamicGroup");
             this.ConvertBaseLayerGroupToDynamicGroup.Name = "ConvertBaseLayerGroupToDynamicGroup";
-            this.ConvertBaseLayerGroupToDynamicGroup.Size = new System.Drawing.Size(23, 22);
-            this.ConvertBaseLayerGroupToDynamicGroup.ToolTipText = "Convert the selected group to regular group";
             this.ConvertBaseLayerGroupToDynamicGroup.Click += new System.EventHandler(this.ConvertBaseLayerGroupToDynamicGroup_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
             // 
             // activateMgCooker
             // 
             this.activateMgCooker.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.activateMgCooker.Image = ((System.Drawing.Image)(resources.GetObject("activateMgCooker.Image")));
-            this.activateMgCooker.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.activateMgCooker, "activateMgCooker");
             this.activateMgCooker.Name = "activateMgCooker";
-            this.activateMgCooker.Size = new System.Drawing.Size(23, 22);
-            this.activateMgCooker.Text = "toolStripButton1";
-            this.activateMgCooker.ToolTipText = "Click to activate MgCooker for pre-building tiles";
             this.activateMgCooker.Click += new System.EventHandler(this.activateMgCooker_Click);
             // 
             // LayerToolbarImages
@@ -1217,12 +1010,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // MapEditor
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(592, 626);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "MapEditor";
-            this.Size = new System.Drawing.Size(592, 626);
             this.Load += new System.EventHandler(this.MapEditor_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -1563,10 +1354,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             
 			OSGeo.MapGuide.MaestroAPI.MapLayerGroupType group = new OSGeo.MapGuide.MaestroAPI.MapLayerGroupType();
 			int i = 1;
-			string groupName = m_globalizor.Translate("New group");
+			string groupName = Strings.MapEditor.NewGroupBaseName;
 
 			while(ht.ContainsKey(groupName))
-				groupName = string.Format(m_globalizor.Translate("New group {0}"), + (i++));
+				groupName = string.Format(Strings.MapEditor.NewGroupBaseName + " {0}", + (i++));
 
 			group.Name = groupName;
             group.ShowInLegend = true;
@@ -1603,7 +1394,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     foreach (OSGeo.MapGuide.MaestroAPI.BaseMapLayerType layer in layers)
                         if (layer.ResourceId == layerid)
                         {
-                            if (MessageBox.Show(this, string.Format(m_globalizor.Translate("The layer {0} is already in the map, do you want it to appear twice?"), layerid), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
+                            if (MessageBox.Show(this, string.Format(Strings.MapEditor.DuplicateLayerInclusionConfirmation, layerid), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
                             {
                                 add = false;
                                 break;
@@ -1831,7 +1622,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch(Exception ex)
 			{
-				MessageBox.Show(this, string.Format(m_globalizor.Translate("Failed while creating map preview: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(this, string.Format(Strings.MapEditor.MapPreviewError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
 			return true;
@@ -1887,7 +1678,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
             if (m_map.BaseMapDefinition != null && m_map.BaseMapDefinition.BaseMapLayerGroup != null && m_map.BaseMapDefinition.BaseMapLayerGroup.Count > 0 && m_editor.Existing)
             {
-                if (MessageBox.Show(this, m_globalizor.Translate("This map contains base layers. Saving the map will clear any generated tiles\nDo you want to save the layer?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) != DialogResult.Yes)
+                if (MessageBox.Show(this, Strings.MapEditor.SaveMapWithBaseLayersWarning, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) != DialogResult.Yes)
                     throw new CancelException();
 
             }
@@ -1955,7 +1746,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					ml = lstDrawOrder.SelectedItems[0].Tag as OSGeo.MapGuide.MaestroAPI.MapLayerType;
 
 				if (ml == null)
-					throw new Exception(m_globalizor.Translate("No layer selected"));
+					throw new Exception(Strings.MapEditor.NoLayerSelectedError);
 
 				OSGeo.MapGuide.MaestroAPI.LayerDefinition ldef = m_editor.CurrentConnection.GetLayerDefinition(ml.ResourceId);
 
@@ -1967,7 +1758,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(this, string.Format(m_globalizor.Translate("Failed to get layer extent: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(this, string.Format(Strings.MapEditor.LayerExtentReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -2246,7 +2037,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     foreach (OSGeo.MapGuide.MaestroAPI.BaseMapLayerType layer in layers)
                         if (layer.ResourceId == layerid)
                         {
-                            if (MessageBox.Show(this, string.Format(m_globalizor.Translate("The layer {0} is already in the map, do you want it to appear twice?"), layerid), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
+                            if (MessageBox.Show(this, string.Format(Strings.MapEditor.DuplicateLayerInclusionConfirmation, layerid), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
                             {
                                 add = false;
                                 break;
@@ -2332,11 +2123,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
 
             if (groups.Count > 0)
-                if (MessageBox.Show(this, m_globalizor.Translate("The selected group has sub groups. These will be removed and all\nlayers will be moved to the selected group before being converted.\n\nDo you want to continue?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) != DialogResult.Yes)
+                if (MessageBox.Show(this, Strings.MapEditor.FlattenGroupsWarning, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) != DialogResult.Yes)
                     return;
 
             if (hasInvisible)
-                if (MessageBox.Show(this, m_globalizor.Translate("The selected group has one or more layers that are invisible.\nThe layers in a base layer are always visible.\nIf you convert the group, the layers will be made visible.\n\nDo you want to continue?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) != DialogResult.Yes)
+                if (MessageBox.Show(this, Strings.MapEditor.LayerVisibilityToggleWarning, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) != DialogResult.Yes)
                     return;
 
             groups.Add(g);
@@ -2388,9 +2179,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
         private void AddBaseLayerGroupButton_Click(object sender, EventArgs e)
         {
+            //TODO: Make sure we don't create multiple groups with the same name
             MaestroAPI.BaseMapLayerGroupCommonType g = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerGroupCommonType();
-            g.Name = m_globalizor.Translate("New group");
-            g.LegendLabel = m_globalizor.Translate("New group");
+            g.Name = Strings.MapEditor.NewGroupBaseName;
+            g.LegendLabel = Strings.MapEditor.NewGroupBaseName;
             g.BaseMapLayer = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerTypeCollection();
             g.ExpandInLegend = true;
             g.ShowInLegend = true;
@@ -2412,7 +2204,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         {
             if (m_editor.IsModified)
             {
-                MessageBox.Show(this, m_globalizor.Translate("This map is not yet saved. MgCooker can only process saved maps"), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(this, Strings.MapEditor.MgCookerNeedsSavedMapError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
@@ -2429,7 +2221,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             catch(Exception ex)
             {
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(m_globalizor.Translate("MgCooker threw an exception: {0}"), ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.MapEditor.MgCookerException, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

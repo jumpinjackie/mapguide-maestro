@@ -81,59 +81,45 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Target = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.Url = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Target
-			// 
-			this.Target.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Target.Location = new System.Drawing.Point(104, 8);
-			this.Target.Name = "Target";
-			this.Target.Size = new System.Drawing.Size(504, 20);
-			this.Target.TabIndex = 5;
-			this.Target.Text = "";
-			this.Target.TextChanged += new System.EventHandler(this.Target_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(72, 16);
-			this.label1.TabIndex = 4;
-			this.label1.Text = "Target";
-			// 
-			// Url
-			// 
-			this.Url.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Url.Location = new System.Drawing.Point(104, 32);
-			this.Url.Name = "Url";
-			this.Url.Size = new System.Drawing.Size(504, 20);
-			this.Url.TabIndex = 7;
-			this.Url.Text = "";
-			this.Url.TextChanged += new System.EventHandler(this.Url_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 32);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(72, 16);
-			this.label2.TabIndex = 6;
-			this.label2.Text = "Url";
-			// 
-			// Help
-			// 
-			this.Controls.Add(this.Url);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.Target);
-			this.Controls.Add(this.label1);
-			this.Name = "Help";
-			this.Size = new System.Drawing.Size(616, 64);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Help));
+            this.Target = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Url = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Target
+            // 
+            resources.ApplyResources(this.Target, "Target");
+            this.Target.Name = "Target";
+            this.Target.TextChanged += new System.EventHandler(this.Target_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // Url
+            // 
+            resources.ApplyResources(this.Url, "Url");
+            this.Url.Name = "Url";
+            this.Url.TextChanged += new System.EventHandler(this.Url_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // Help
+            // 
+            this.Controls.Add(this.Url);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Target);
+            this.Controls.Add(this.label1);
+            this.Name = "Help";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

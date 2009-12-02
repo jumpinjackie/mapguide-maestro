@@ -49,13 +49,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             {
                 m_owner = value;
                 conditionList.Owner = m_owner;
-                if (m_owner != null && m_owner.Globalizor != null)
-                {
-                    label1.Text = m_owner.Globalizor.Translate("Rule");
-                    ShowInLegend.Text = m_owner.Globalizor.Translate("Legendlabel");
-                    label3.Text = m_owner.Globalizor.Translate("Featurestyle");
-                    label4.Text = m_owner.Globalizor.Translate("Labelstyle");
-                }
             }
         }
 
@@ -161,7 +154,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             catch (Exception ex)
             {
                 m_owner.Editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format("An error occured: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.GenericError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

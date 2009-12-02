@@ -146,7 +146,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             GradientToColor.CurrentColor = Color.Green;
 
             ColumnCombo.Items.Clear();
-            ColumnCombo.Items.Add("<Select column>");
+            ColumnCombo.Items.Add(Strings.ThemeCreator.SelectColumnPlaceholder);
             ColumnCombo.SelectedIndex = 0;
 
             foreach (MaestroAPI.FeatureSetColumn col in m_schema.Columns)
@@ -187,7 +187,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
                 //Not really possible
                 if (col == null)
-                    throw new Exception("Invalid column name");
+                    throw new Exception(Strings.ThemeCreator.InvalidColumnNameError);
 
                 string filter = null; //Attempt raw reading initially
                 Exception rawEx = null; //Original exception
@@ -225,14 +225,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
                 if (rawEx != null)
                 {
-                    MessageBox.Show(this, string.Format("Unable to read data from the selected column: {0}", rawEx.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, string.Format(Strings.ThemeCreator.DataReadError, rawEx.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ColumnCombo.SelectedIndex = 0;
                     return;
                 }
 
                 if (m_values.Count == 0)
                 {
-                    MessageBox.Show(this,"The selected column had no non-null values and cannot be used.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, Strings.ThemeCreator.ColumnHasNoValidDataError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ColumnCombo.SelectedIndex = 0;
                     return;
                 }
@@ -242,7 +242,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 if (Array.IndexOf<Type>(NUMERIC_TYPES, col.Type) >= 0)
                 {
                     if (m_values.Count >= 100000)
-                        MessageBox.Show(this, "The selected column contains more than 100000 different values.\r\nThe calculated averages only accounts for the first 100000 distinct values.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(this, string.Format(Strings.ThemeCreator.TooMuchDataWarning, 100000), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     GroupPanel.Enabled = true;
                     RuleCountPanel.Enabled = true;
@@ -274,7 +274,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 {
                     if (m_values.Count > 100)
                     {
-                        MessageBox.Show(this, "The selected column contains more than 100 different values, and thus cannot be used for theming", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(this, string.Format(Strings.ThemeCreator.TooManyValuesError, 100), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ColumnCombo.SelectedIndex = 0;
                         return;
                     }
@@ -363,18 +363,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     double chunksize = (max - min) / colors.Length;
                     result.Add(new RuleItem(
                         string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" <= {1}", ColumnCombo.Text, FormatValue(chunksize + min)),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "Less than {0}", FormatValue(chunksize + min)), 
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.ThemeCreator.LessThanLabel, FormatValue(chunksize + min)), 
                         colors[0]));
 
                     for (int i = 1; i < colors.Length - 1; i++)
                         result.Add(new RuleItem(
                             string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1} AND \"{0}\" <= {2}", ColumnCombo.Text, FormatValue(min + (i * chunksize)), FormatValue(min + ((i + 1) * chunksize))),
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "Between {0} and {1}", FormatValue(min + (i * chunksize)), FormatValue(min + ((i + 1) * chunksize))),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.ThemeCreator.BetweenLabel, FormatValue(min + (i * chunksize)), FormatValue(min + ((i + 1) * chunksize))),
                             colors[i]));
 
                     result.Add(new RuleItem(
                         string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1}", ColumnCombo.Text, FormatValue(max - chunksize)),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "More than {0}", FormatValue(max - chunksize)), 
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.ThemeCreator.MoreThanLabel, FormatValue(max - chunksize)), 
                         colors[colors.Length - 1]));
                 }
                 else if (AggregateCombo.SelectedIndex == 1) //Standard Deviation
@@ -394,18 +394,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
                     result.Add(new RuleItem(
                         string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" < {1}", ColumnCombo.Text, FormatValue(lower + dev)),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "Less than {0}", FormatValue(lower + dev)),
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.ThemeCreator.LessThanLabel, FormatValue(lower + dev)),
                         colors[0]));
 
                     for (int i = 1; i < colors.Length - 1; i++)
                         result.Add(new RuleItem(
                             string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" >= {1} AND \"{0}\" < {2}", ColumnCombo.Text, FormatValue(lower + (i * dev)), FormatValue(lower + ((i + 1) * dev))),
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "Between {0} and {1}", FormatValue(lower + (i * dev)), FormatValue(lower + ((i + 1) * dev))),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.ThemeCreator.BetweenLabel, FormatValue(lower + (i * dev)), FormatValue(lower + ((i + 1) * dev))),
                             colors[i]));
 
                     result.Add(new RuleItem(
                         string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" >= {1}", ColumnCombo.Text, FormatValue(lower + (dev * (colors.Length - 1)))),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "More than {0}", FormatValue(lower + (dev * (colors.Length - 1)))),
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.ThemeCreator.MoreThanLabel, FormatValue(lower + (dev * (colors.Length - 1)))),
                         colors[colors.Length - 1]));
 
                 }
@@ -436,18 +436,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
                     result.Add(new RuleItem(
                         string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" <= {1}", ColumnCombo.Text, FormatValue(separators[0])),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "Less than {0}", FormatValue(separators[0])),
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.ThemeCreator.LessThanLabel, FormatValue(separators[0])),
                         colors[0]));
 
                     for (int i = 1; i < colors.Length - 1; i++)
                         result.Add(new RuleItem(
                             string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1} AND \"{0}\" <= {2}", ColumnCombo.Text, FormatValue(separators[i - 1]), FormatValue(separators[i])),
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "Between {0} and {1}", FormatValue(separators[i - 1]), FormatValue(separators[i])),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.ThemeCreator.BetweenLabel, FormatValue(separators[i - 1]), FormatValue(separators[i])),
                             colors[i]));
 
                     result.Add(new RuleItem(
                         string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1}", ColumnCombo.Text, FormatValue(separators[separators.Count - 1])),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "More than {0}", FormatValue(separators[separators.Count - 1])),
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.ThemeCreator.MoreThanLabel, FormatValue(separators[separators.Count - 1])),
                         colors[colors.Length - 1]));
                 }
             }
@@ -597,7 +597,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             {
                 if (m_values.Count > 100)
                 {
-                    MessageBox.Show(this, "The selected column contains more than 100 different values, and thus cannot be used for theming with individual values", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, string.Format(Strings.ThemeCreator.TooManyIndiviualValuesError, 100), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AggregateCombo.SelectedIndex = 0;
                     return;
                 }
@@ -647,7 +647,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
                 if (rules.Count > 1000)
                 {
-                    if (MessageBox.Show(this, "You are creating a large number of rules, this will likely result in Maestro becoming unresponsive\r\nDo you want to continue?", Application.ProductName, MessageBoxButtons.YesNoCancel) != DialogResult.Yes)
+                    if (MessageBox.Show(this, Strings.ThemeCreator.TooManyRulesWarning, Application.ProductName, MessageBoxButtons.YesNoCancel) != DialogResult.Yes)
                         return;
                 }
 
@@ -726,7 +726,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             catch(Exception ex)
             {
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format("An error occured: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                MessageBox.Show(this, string.Format(Strings.Common.GenericError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
             }
         }
 

@@ -75,7 +75,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox MapID;
 		private FusionEditor.FlyoutEditor flyoutEntry;
-		private Globalizator.Globalizator m_globalizor = null;
 		private System.Windows.Forms.Button ShowInBrowser;
 		private System.Windows.Forms.TextBox browserURL;
 		private System.Windows.Forms.Label label12;
@@ -112,8 +111,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 			containerEditor.ValueChanged += new ValueChangedDelegate(containerEditor_ValueChanged);
 			widgetEntry.ValueChanged += new ValueChangedDelegate(widgetEntry_ValueChanged);
 			flyoutEntry.ValueChanged += new ValueChangedDelegate(flyoutEntry_ValueChanged);
-
-			m_globalizor = new  Globalizator.Globalizator(this);
 		}
 
 		public ApplicationDefinitionEditor(EditorInterface editor)
@@ -210,7 +207,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 				}
 				else if (u as OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.SeparatorItemType  != null)
 				{
-					TreeNode tn = new TreeNode(m_globalizor.Translate("- Seperator -"));
+					TreeNode tn = new TreeNode(Strings.ApplicationDefinitionEditor.SeperatorMarker);
 					tn.Tag = u;
 					tn.ImageIndex = tn.SelectedImageIndex = 11;
 					parent.Add(tn);
@@ -290,6 +287,9 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.RemoveMapButton = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.flyoutEntry = new OSGeo.MapGuide.Maestro.FusionEditor.FlyoutEditor();
+            this.widgetEntry = new OSGeo.MapGuide.Maestro.FusionEditor.WidgetEntry();
+            this.containerEditor = new OSGeo.MapGuide.Maestro.FusionEditor.ContainerEditor();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.panel4 = new System.Windows.Forms.Panel();
             this.WidgetTree = new System.Windows.Forms.TreeView();
@@ -309,9 +309,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.ShowInBrowser = new System.Windows.Forms.Button();
             this.browserURL = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.flyoutEntry = new OSGeo.MapGuide.Maestro.FusionEditor.FlyoutEditor();
-            this.widgetEntry = new OSGeo.MapGuide.Maestro.FusionEditor.WidgetEntry();
-            this.containerEditor = new OSGeo.MapGuide.Maestro.FusionEditor.ContainerEditor();
             this.MapGroup.SuspendLayout();
             this.MapPropertiesPanel.SuspendLayout();
             this.overriddenMapExtents.SuspendLayout();
@@ -325,55 +322,34 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Title";
             // 
             // MapTitle
             // 
-            this.MapTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.MapTitle.Location = new System.Drawing.Point(128, 0);
+            resources.ApplyResources(this.MapTitle, "MapTitle");
             this.MapTitle.Name = "MapTitle";
-            this.MapTitle.Size = new System.Drawing.Size(568, 20);
-            this.MapTitle.TabIndex = 1;
-            this.MapTitle.Text = "textBox1";
             this.MapTitle.TextChanged += new System.EventHandler(this.MapTitle_TextChanged);
             // 
             // TemplateURL
             // 
-            this.TemplateURL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.TemplateURL.Location = new System.Drawing.Point(128, 24);
+            resources.ApplyResources(this.TemplateURL, "TemplateURL");
             this.TemplateURL.Name = "TemplateURL";
-            this.TemplateURL.Size = new System.Drawing.Size(536, 20);
-            this.TemplateURL.TabIndex = 3;
-            this.TemplateURL.Text = "textBox1";
             this.TemplateURL.TextChanged += new System.EventHandler(this.TemplateURL_TextChanged);
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(0, 24);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Template URL";
             // 
             // MapGroup
             // 
-            this.MapGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.MapGroup, "MapGroup");
             this.MapGroup.Controls.Add(this.MapPropertiesPanel);
             this.MapGroup.Controls.Add(this.splitter1);
             this.MapGroup.Controls.Add(this.panel1);
-            this.MapGroup.Location = new System.Drawing.Point(0, 56);
             this.MapGroup.Name = "MapGroup";
-            this.MapGroup.Size = new System.Drawing.Size(696, 176);
-            this.MapGroup.TabIndex = 4;
             this.MapGroup.TabStop = false;
-            this.MapGroup.Text = "Maps";
             // 
             // MapPropertiesPanel
             // 
@@ -387,64 +363,41 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.MapPropertiesPanel.Controls.Add(this.BrowseMapButton);
             this.MapPropertiesPanel.Controls.Add(this.MapResourceID);
             this.MapPropertiesPanel.Controls.Add(this.label3);
-            this.MapPropertiesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MapPropertiesPanel.Location = new System.Drawing.Point(208, 16);
+            resources.ApplyResources(this.MapPropertiesPanel, "MapPropertiesPanel");
             this.MapPropertiesPanel.Name = "MapPropertiesPanel";
-            this.MapPropertiesPanel.Size = new System.Drawing.Size(485, 157);
-            this.MapPropertiesPanel.TabIndex = 3;
-            this.MapPropertiesPanel.Visible = false;
             // 
             // MapID
             // 
-            this.MapID.Location = new System.Drawing.Point(128, 32);
+            resources.ApplyResources(this.MapID, "MapID");
             this.MapID.Name = "MapID";
-            this.MapID.Size = new System.Drawing.Size(352, 20);
-            this.MapID.TabIndex = 10;
-            this.MapID.Text = "textBox1";
             this.MapID.TextChanged += new System.EventHandler(this.MapID_TextChanged);
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(8, 32);
+            resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(104, 16);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Map ID";
             // 
             // MapSingleTileCheck
             // 
-            this.MapSingleTileCheck.Location = new System.Drawing.Point(280, 128);
+            resources.ApplyResources(this.MapSingleTileCheck, "MapSingleTileCheck");
             this.MapSingleTileCheck.Name = "MapSingleTileCheck";
-            this.MapSingleTileCheck.Size = new System.Drawing.Size(200, 16);
-            this.MapSingleTileCheck.TabIndex = 8;
-            this.MapSingleTileCheck.Text = "Single tiled";
             this.MapSingleTileCheck.CheckedChanged += new System.EventHandler(this.MapSingleTileCheck_CheckedChanged);
             // 
             // MapTypeCombo
             // 
-            this.MapTypeCombo.Location = new System.Drawing.Point(128, 128);
+            resources.ApplyResources(this.MapTypeCombo, "MapTypeCombo");
             this.MapTypeCombo.Name = "MapTypeCombo";
-            this.MapTypeCombo.Size = new System.Drawing.Size(128, 21);
-            this.MapTypeCombo.TabIndex = 7;
-            this.MapTypeCombo.Text = "comboBox1";
             this.MapTypeCombo.SelectedIndexChanged += new System.EventHandler(this.MapTypeCombo_SelectedIndexChanged);
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(8, 128);
+            resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(112, 16);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "MapType";
             // 
             // OverrideDisplayExtents
             // 
-            this.OverrideDisplayExtents.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.OverrideDisplayExtents.Location = new System.Drawing.Point(16, 64);
+            resources.ApplyResources(this.OverrideDisplayExtents, "OverrideDisplayExtents");
             this.OverrideDisplayExtents.Name = "OverrideDisplayExtents";
-            this.OverrideDisplayExtents.Size = new System.Drawing.Size(216, 16);
-            this.OverrideDisplayExtents.TabIndex = 5;
-            this.OverrideDisplayExtents.Text = "Override the maps initial display extents";
             this.OverrideDisplayExtents.CheckedChanged += new System.EventHandler(this.OverrideDisplayExtents_CheckedChanged);
             // 
             // overriddenMapExtents
@@ -456,131 +409,90 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.overriddenMapExtents.Controls.Add(this.label5);
             this.overriddenMapExtents.Controls.Add(this.label4);
             this.overriddenMapExtents.Controls.Add(this.label7);
-            this.overriddenMapExtents.Enabled = false;
-            this.overriddenMapExtents.Location = new System.Drawing.Point(8, 64);
+            resources.ApplyResources(this.overriddenMapExtents, "overriddenMapExtents");
             this.overriddenMapExtents.Name = "overriddenMapExtents";
-            this.overriddenMapExtents.Size = new System.Drawing.Size(472, 56);
-            this.overriddenMapExtents.TabIndex = 4;
             this.overriddenMapExtents.TabStop = false;
             this.overriddenMapExtents.Enter += new System.EventHandler(this.overriddenMapExtents_Enter);
             // 
             // label6
             // 
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label6.Location = new System.Drawing.Point(336, 24);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(16, 16);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "1:";
             // 
             // overrideScale
             // 
-            this.overrideScale.Location = new System.Drawing.Point(352, 24);
+            resources.ApplyResources(this.overrideScale, "overrideScale");
             this.overrideScale.Name = "overrideScale";
-            this.overrideScale.Size = new System.Drawing.Size(104, 20);
-            this.overrideScale.TabIndex = 5;
             this.overrideScale.TextChanged += new System.EventHandler(this.overrideScale_TextChanged);
             // 
             // overrideY
             // 
-            this.overrideY.Location = new System.Drawing.Point(184, 24);
+            resources.ApplyResources(this.overrideY, "overrideY");
             this.overrideY.Name = "overrideY";
-            this.overrideY.Size = new System.Drawing.Size(104, 20);
-            this.overrideY.TabIndex = 4;
             this.overrideY.TextChanged += new System.EventHandler(this.overrideY_TextChanged);
             // 
             // overrideX
             // 
-            this.overrideX.Location = new System.Drawing.Point(40, 24);
+            resources.ApplyResources(this.overrideX, "overrideX");
             this.overrideX.Name = "overrideX";
-            this.overrideX.Size = new System.Drawing.Size(104, 20);
-            this.overrideX.TabIndex = 3;
             this.overrideX.TextChanged += new System.EventHandler(this.overrideX_TextChanged);
             // 
             // label5
             // 
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label5.Location = new System.Drawing.Point(296, 24);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 16);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Scale";
             // 
             // label4
             // 
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label4.Location = new System.Drawing.Point(160, 24);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 16);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Y";
             // 
             // label7
             // 
             this.label7.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label7.Location = new System.Drawing.Point(16, 24);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(24, 16);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "X";
             // 
             // BrowseMapButton
             // 
-            this.BrowseMapButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BrowseMapButton.Location = new System.Drawing.Point(451, 8);
+            resources.ApplyResources(this.BrowseMapButton, "BrowseMapButton");
             this.BrowseMapButton.Name = "BrowseMapButton";
-            this.BrowseMapButton.Size = new System.Drawing.Size(24, 20);
-            this.BrowseMapButton.TabIndex = 2;
-            this.BrowseMapButton.Text = "...";
             this.BrowseMapButton.Click += new System.EventHandler(this.BrowseMapButton_Click);
             // 
             // MapResourceID
             // 
-            this.MapResourceID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.MapResourceID.Location = new System.Drawing.Point(128, 8);
+            resources.ApplyResources(this.MapResourceID, "MapResourceID");
             this.MapResourceID.Name = "MapResourceID";
             this.MapResourceID.ReadOnly = true;
-            this.MapResourceID.Size = new System.Drawing.Size(315, 20);
-            this.MapResourceID.TabIndex = 1;
-            this.MapResourceID.Text = "textBox1";
             this.MapResourceID.TextChanged += new System.EventHandler(this.MapResourceID_TextChanged);
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 16);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Map Resource";
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(200, 16);
+            resources.ApplyResources(this.splitter1, "splitter1");
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(8, 157);
-            this.splitter1.TabIndex = 2;
             this.splitter1.TabStop = false;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.MapList);
             this.panel1.Controls.Add(this.toolStrip1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(3, 16);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(197, 157);
-            this.panel1.TabIndex = 1;
             // 
             // MapList
             // 
-            this.MapList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MapList.Location = new System.Drawing.Point(0, 25);
+            resources.ApplyResources(this.MapList, "MapList");
             this.MapList.MultiSelect = false;
             this.MapList.Name = "MapList";
-            this.MapList.Size = new System.Drawing.Size(197, 132);
             this.MapList.SmallImageList = this.toolbarImages;
-            this.MapList.TabIndex = 0;
             this.MapList.UseCompatibleStateImageBehavior = false;
             this.MapList.View = System.Windows.Forms.View.List;
             this.MapList.SelectedIndexChanged += new System.EventHandler(this.MapList_SelectedIndexChanged);
@@ -608,86 +520,74 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddMapButton,
             this.RemoveMapButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(197, 25);
-            this.toolStrip1.TabIndex = 2;
             // 
             // AddMapButton
             // 
             this.AddMapButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddMapButton.Image = ((System.Drawing.Image)(resources.GetObject("AddMapButton.Image")));
-            this.AddMapButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddMapButton, "AddMapButton");
             this.AddMapButton.Name = "AddMapButton";
-            this.AddMapButton.Size = new System.Drawing.Size(23, 22);
-            this.AddMapButton.ToolTipText = "Add a map to the application";
             this.AddMapButton.Click += new System.EventHandler(this.AddMapButton_Click);
             // 
             // RemoveMapButton
             // 
             this.RemoveMapButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RemoveMapButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveMapButton.Image")));
-            this.RemoveMapButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.RemoveMapButton, "RemoveMapButton");
             this.RemoveMapButton.Name = "RemoveMapButton";
-            this.RemoveMapButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveMapButton.ToolTipText = "Remove the selected map from the application";
             this.RemoveMapButton.Click += new System.EventHandler(this.RemoveMapButton_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Controls.Add(this.splitter2);
             this.groupBox1.Controls.Add(this.panel4);
-            this.groupBox1.Location = new System.Drawing.Point(0, 264);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(696, 283);
-            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Widgets";
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.flyoutEntry);
             this.panel3.Controls.Add(this.widgetEntry);
             this.panel3.Controls.Add(this.containerEditor);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(208, 16);
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(485, 264);
-            this.panel3.TabIndex = 3;
+            // 
+            // flyoutEntry
+            // 
+            resources.ApplyResources(this.flyoutEntry, "flyoutEntry");
+            this.flyoutEntry.Name = "flyoutEntry";
+            // 
+            // widgetEntry
+            // 
+            resources.ApplyResources(this.widgetEntry, "widgetEntry");
+            this.widgetEntry.Name = "widgetEntry";
+            // 
+            // containerEditor
+            // 
+            resources.ApplyResources(this.containerEditor, "containerEditor");
+            this.containerEditor.Name = "containerEditor";
             // 
             // splitter2
             // 
-            this.splitter2.Location = new System.Drawing.Point(200, 16);
+            resources.ApplyResources(this.splitter2, "splitter2");
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(8, 264);
-            this.splitter2.TabIndex = 2;
             this.splitter2.TabStop = false;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.WidgetTree);
             this.panel4.Controls.Add(this.toolStrip2);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(3, 16);
+            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(197, 264);
-            this.panel4.TabIndex = 1;
             // 
             // WidgetTree
             // 
-            this.WidgetTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WidgetTree.ImageIndex = 0;
+            resources.ApplyResources(this.WidgetTree, "WidgetTree");
             this.WidgetTree.ImageList = this.toolbarImages;
-            this.WidgetTree.Location = new System.Drawing.Point(0, 25);
             this.WidgetTree.Name = "WidgetTree";
-            this.WidgetTree.SelectedImageIndex = 0;
-            this.WidgetTree.Size = new System.Drawing.Size(197, 239);
-            this.WidgetTree.TabIndex = 2;
             this.WidgetTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.WidgetTree_AfterSelect);
             // 
             // toolStrip2
@@ -702,12 +602,9 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.MoveWidgetDownButton,
             this.toolStripSeparator2,
             this.ConfigureWidgetsButton});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.toolStrip2, "toolStrip2");
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip2.Size = new System.Drawing.Size(197, 25);
-            this.toolStrip2.TabIndex = 3;
-            this.toolStrip2.Text = "toolStrip2";
             // 
             // AddWidgetButton
             // 
@@ -716,164 +613,99 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.seperatorToolStripMenuItem,
             this.submenuToolStripMenuItem,
             this.widgetToolStripMenuItem});
-            this.AddWidgetButton.Enabled = false;
-            this.AddWidgetButton.Image = ((System.Drawing.Image)(resources.GetObject("AddWidgetButton.Image")));
-            this.AddWidgetButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddWidgetButton, "AddWidgetButton");
             this.AddWidgetButton.Name = "AddWidgetButton";
-            this.AddWidgetButton.Size = new System.Drawing.Size(32, 22);
-            this.AddWidgetButton.ToolTipText = "Add a widget";
             // 
             // seperatorToolStripMenuItem
             // 
             this.seperatorToolStripMenuItem.Name = "seperatorToolStripMenuItem";
-            this.seperatorToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.seperatorToolStripMenuItem.Text = "Seperator";
+            resources.ApplyResources(this.seperatorToolStripMenuItem, "seperatorToolStripMenuItem");
             this.seperatorToolStripMenuItem.Click += new System.EventHandler(this.seperatorToolStripMenuItem_Click);
             // 
             // submenuToolStripMenuItem
             // 
             this.submenuToolStripMenuItem.Name = "submenuToolStripMenuItem";
-            this.submenuToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.submenuToolStripMenuItem.Text = "Submenu";
+            resources.ApplyResources(this.submenuToolStripMenuItem, "submenuToolStripMenuItem");
             this.submenuToolStripMenuItem.Click += new System.EventHandler(this.submenuToolStripMenuItem_Click);
             // 
             // widgetToolStripMenuItem
             // 
             this.widgetToolStripMenuItem.Name = "widgetToolStripMenuItem";
-            this.widgetToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.widgetToolStripMenuItem.Text = "Widget";
+            resources.ApplyResources(this.widgetToolStripMenuItem, "widgetToolStripMenuItem");
             this.widgetToolStripMenuItem.Click += new System.EventHandler(this.widgetToolStripMenuItem_Click);
             // 
             // AddContainerButton
             // 
             this.AddContainerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddContainerButton.Image = ((System.Drawing.Image)(resources.GetObject("AddContainerButton.Image")));
-            this.AddContainerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddContainerButton, "AddContainerButton");
             this.AddContainerButton.Name = "AddContainerButton";
-            this.AddContainerButton.Size = new System.Drawing.Size(23, 22);
-            this.AddContainerButton.Text = "Add a container";
             this.AddContainerButton.Click += new System.EventHandler(this.AddContainerButton_Click);
             // 
             // RemoveWidgetButton
             // 
             this.RemoveWidgetButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RemoveWidgetButton.Enabled = false;
-            this.RemoveWidgetButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveWidgetButton.Image")));
-            this.RemoveWidgetButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.RemoveWidgetButton, "RemoveWidgetButton");
             this.RemoveWidgetButton.Name = "RemoveWidgetButton";
-            this.RemoveWidgetButton.Size = new System.Drawing.Size(23, 22);
-            this.RemoveWidgetButton.ToolTipText = "Delete the selected item";
             this.RemoveWidgetButton.Click += new System.EventHandler(this.RemoveWidgetButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // MoveWidgetUpButton
             // 
             this.MoveWidgetUpButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveWidgetUpButton.Enabled = false;
-            this.MoveWidgetUpButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveWidgetUpButton.Image")));
-            this.MoveWidgetUpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MoveWidgetUpButton, "MoveWidgetUpButton");
             this.MoveWidgetUpButton.Name = "MoveWidgetUpButton";
-            this.MoveWidgetUpButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveWidgetUpButton.ToolTipText = "Move the selected item up";
             this.MoveWidgetUpButton.Click += new System.EventHandler(this.MoveWidgetUpButton_Click);
             // 
             // MoveWidgetDownButton
             // 
             this.MoveWidgetDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MoveWidgetDownButton.Enabled = false;
-            this.MoveWidgetDownButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveWidgetDownButton.Image")));
-            this.MoveWidgetDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.MoveWidgetDownButton, "MoveWidgetDownButton");
             this.MoveWidgetDownButton.Name = "MoveWidgetDownButton";
-            this.MoveWidgetDownButton.Size = new System.Drawing.Size(23, 22);
-            this.MoveWidgetDownButton.ToolTipText = "Move the selected item down";
             this.MoveWidgetDownButton.Click += new System.EventHandler(this.MoveWidgetDownButton_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // ConfigureWidgetsButton
             // 
             this.ConfigureWidgetsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ConfigureWidgetsButton.Image = ((System.Drawing.Image)(resources.GetObject("ConfigureWidgetsButton.Image")));
-            this.ConfigureWidgetsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.ConfigureWidgetsButton, "ConfigureWidgetsButton");
             this.ConfigureWidgetsButton.Name = "ConfigureWidgetsButton";
-            this.ConfigureWidgetsButton.Size = new System.Drawing.Size(23, 22);
-            this.ConfigureWidgetsButton.ToolTipText = "Configure avalible widgets";
             this.ConfigureWidgetsButton.Click += new System.EventHandler(this.ConfigureWidgetsButton_Click);
             // 
             // SelectTemplateBtn
             // 
-            this.SelectTemplateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SelectTemplateBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.SelectTemplateBtn.Location = new System.Drawing.Point(672, 24);
+            resources.ApplyResources(this.SelectTemplateBtn, "SelectTemplateBtn");
             this.SelectTemplateBtn.Name = "SelectTemplateBtn";
-            this.SelectTemplateBtn.Size = new System.Drawing.Size(24, 20);
-            this.SelectTemplateBtn.TabIndex = 12;
-            this.SelectTemplateBtn.Text = "...";
             this.SelectTemplateBtn.Click += new System.EventHandler(this.SelectTemplateBtn_Click);
             // 
             // ShowInBrowser
             // 
-            this.ShowInBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ShowInBrowser.Location = new System.Drawing.Point(560, 240);
+            resources.ApplyResources(this.ShowInBrowser, "ShowInBrowser");
             this.ShowInBrowser.Name = "ShowInBrowser";
-            this.ShowInBrowser.Size = new System.Drawing.Size(136, 20);
-            this.ShowInBrowser.TabIndex = 20;
-            this.ShowInBrowser.Text = "Show in browser";
             this.ShowInBrowser.Click += new System.EventHandler(this.ShowInBrowser_Click);
             // 
             // browserURL
             // 
-            this.browserURL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.browserURL.Location = new System.Drawing.Point(160, 240);
+            resources.ApplyResources(this.browserURL, "browserURL");
             this.browserURL.Name = "browserURL";
             this.browserURL.ReadOnly = true;
-            this.browserURL.Size = new System.Drawing.Size(392, 20);
-            this.browserURL.TabIndex = 19;
             // 
             // label12
             // 
             this.label12.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label12.Location = new System.Drawing.Point(0, 240);
+            resources.ApplyResources(this.label12, "label12");
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(144, 16);
-            this.label12.TabIndex = 18;
-            this.label12.Text = "View in browser";
-            // 
-            // flyoutEntry
-            // 
-            this.flyoutEntry.Location = new System.Drawing.Point(16, 128);
-            this.flyoutEntry.Name = "flyoutEntry";
-            this.flyoutEntry.Size = new System.Drawing.Size(392, 104);
-            this.flyoutEntry.TabIndex = 3;
-            // 
-            // widgetEntry
-            // 
-            this.widgetEntry.Location = new System.Drawing.Point(16, 88);
-            this.widgetEntry.Name = "widgetEntry";
-            this.widgetEntry.Size = new System.Drawing.Size(392, 40);
-            this.widgetEntry.TabIndex = 2;
-            this.widgetEntry.Visible = false;
-            // 
-            // containerEditor
-            // 
-            this.containerEditor.Location = new System.Drawing.Point(16, 8);
-            this.containerEditor.Name = "containerEditor";
-            this.containerEditor.Size = new System.Drawing.Size(400, 80);
-            this.containerEditor.TabIndex = 0;
-            this.containerEditor.Visible = false;
             // 
             // ApplicationDefinitionEditor
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(696, 544);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.ShowInBrowser);
             this.Controls.Add(this.browserURL);
             this.Controls.Add(this.label12);
@@ -885,7 +717,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "ApplicationDefinitionEditor";
-            this.Size = new System.Drawing.Size(696, 544);
             this.Load += new System.EventHandler(this.ApplicationDefinitionEditor_Load);
             this.MapGroup.ResumeLayout(false);
             this.MapPropertiesPanel.ResumeLayout(false);
@@ -1334,7 +1165,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 				m_editor.CurrentConnection.SaveResourceAs(m_appDef, m_tempResource);
 				string url = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL + TemplateURL.Text + "?ApplicationDefinition=" + System.Web.HttpUtility.UrlEncode(m_tempResource) + "&SESSION=" + System.Web.HttpUtility.UrlEncode(m_editor.CurrentConnection.SessionID);
 				if (!url.StartsWith("http://") && !url.StartsWith("https://"))
-					throw new Exception ("Malformed URL");
+					throw new Exception (Strings.ApplicationDefinitionEditor.MalformedURLError);
 
 				try
 				{
@@ -1355,7 +1186,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(this, String.Format(m_globalizor.Translate("Failed to launch browser: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(this, String.Format(Strings.ApplicationDefinitionEditor.BrowserLaunchError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		
 		}
@@ -1363,7 +1194,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
         private void AddMapButton_Click(object sender, EventArgs e)
         {
             MapGroupType mgr = new MapGroupType();
-            mgr.id = "New map";
+            mgr.id = Strings.ApplicationDefinitionEditor.NewMapName;
             mgr.InitialView = null;
             mgr.Map = new MapTypeCollection();
             OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.MapType mt = new OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.MapType();
@@ -1398,7 +1229,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
         private void AddContainerButton_Click(object sender, EventArgs e)
         {
             OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.UiItemContainerType c = new OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.UiItemContainerType();
-            c.Name = m_globalizor.Translate("New container");
+            c.Name = Strings.ApplicationDefinitionEditor.NewContainerName;
             c.Item = new UiItemTypeCollection();
             m_appDef.WidgetSet[0].Container.Add(c);
             UpdateDisplay();
@@ -1585,7 +1416,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
         {
             OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.FlyoutItemType flv = new OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.FlyoutItemType();
             flv.Item = new UiItemTypeCollection();
-            flv.Label = m_globalizor.Translate("New submenu");
+            flv.Label = Strings.ApplicationDefinitionEditor.NewSubMenuName;
             flv.Function = UiItemFunctionType.Flyout;
             AddItemToWidgetTree(flv);
         }

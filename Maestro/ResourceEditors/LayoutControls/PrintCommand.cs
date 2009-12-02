@@ -110,12 +110,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             // 
             // Layouts
             // 
-            this.Layouts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Layouts.IntegralHeight = false;
-            this.Layouts.Location = new System.Drawing.Point(0, 49);
+            resources.ApplyResources(this.Layouts, "Layouts");
             this.Layouts.Name = "Layouts";
-            this.Layouts.Size = new System.Drawing.Size(208, 82);
-            this.Layouts.TabIndex = 0;
             this.Layouts.SelectedIndexChanged += new System.EventHandler(this.Layouts_SelectedIndexChanged);
             // 
             // imageList
@@ -127,12 +123,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             // 
             // label1
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 24);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Display these printlayouts";
             // 
             // toolStrip
             // 
@@ -140,40 +132,31 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddPrintLayout,
             this.RemovePrintLayout});
-            this.toolStrip.Location = new System.Drawing.Point(0, 24);
+            resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip.Size = new System.Drawing.Size(208, 25);
-            this.toolStrip.TabIndex = 3;
             // 
             // AddPrintLayout
             // 
             this.AddPrintLayout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddPrintLayout.Image = ((System.Drawing.Image)(resources.GetObject("AddPrintLayout.Image")));
-            this.AddPrintLayout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.AddPrintLayout, "AddPrintLayout");
             this.AddPrintLayout.Name = "AddPrintLayout";
-            this.AddPrintLayout.Size = new System.Drawing.Size(23, 22);
             this.AddPrintLayout.Click += new System.EventHandler(this.AddPrintLayout_Click);
             // 
             // RemovePrintLayout
             // 
             this.RemovePrintLayout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RemovePrintLayout.Enabled = false;
-            this.RemovePrintLayout.Image = ((System.Drawing.Image)(resources.GetObject("RemovePrintLayout.Image")));
-            this.RemovePrintLayout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.RemovePrintLayout, "RemovePrintLayout");
             this.RemovePrintLayout.Name = "RemovePrintLayout";
-            this.RemovePrintLayout.Size = new System.Drawing.Size(23, 22);
             this.RemovePrintLayout.Click += new System.EventHandler(this.RemovePrintLayout_Click);
             // 
             // PrintCommand
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(208, 104);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.Layouts);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.label1);
             this.Name = "PrintCommand";
-            this.Size = new System.Drawing.Size(208, 131);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.ResumeLayout(false);

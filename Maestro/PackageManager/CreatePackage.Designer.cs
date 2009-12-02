@@ -28,6 +28,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreatePackage));
             this.label1 = new System.Windows.Forms.Label();
             this.ResourcePath = new System.Windows.Forms.TextBox();
             this.BrowseResourcePath = new System.Windows.Forms.Button();
@@ -49,157 +50,104 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 16);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Starting point";
             // 
             // ResourcePath
             // 
-            this.ResourcePath.Location = new System.Drawing.Point(128, 16);
+            resources.ApplyResources(this.ResourcePath, "ResourcePath");
             this.ResourcePath.Name = "ResourcePath";
-            this.ResourcePath.Size = new System.Drawing.Size(216, 20);
-            this.ResourcePath.TabIndex = 1;
             // 
             // BrowseResourcePath
             // 
-            this.BrowseResourcePath.Location = new System.Drawing.Point(344, 16);
+            resources.ApplyResources(this.BrowseResourcePath, "BrowseResourcePath");
             this.BrowseResourcePath.Name = "BrowseResourcePath";
-            this.BrowseResourcePath.Size = new System.Drawing.Size(24, 20);
-            this.BrowseResourcePath.TabIndex = 2;
-            this.BrowseResourcePath.Text = "...";
             this.BrowseResourcePath.UseVisualStyleBackColor = true;
             this.BrowseResourcePath.Click += new System.EventHandler(this.BrowseResourcePath_Click);
             // 
             // RemoveTargeOnRestore
             // 
-            this.RemoveTargeOnRestore.AutoSize = true;
-            this.RemoveTargeOnRestore.Location = new System.Drawing.Point(16, 96);
+            resources.ApplyResources(this.RemoveTargeOnRestore, "RemoveTargeOnRestore");
             this.RemoveTargeOnRestore.Name = "RemoveTargeOnRestore";
-            this.RemoveTargeOnRestore.Size = new System.Drawing.Size(197, 17);
-            this.RemoveTargeOnRestore.TabIndex = 3;
-            this.RemoveTargeOnRestore.Text = "Remove target folder when restoring";
             this.RemoveTargeOnRestore.UseVisualStyleBackColor = true;
             // 
             // EnableRestorePath
             // 
-            this.EnableRestorePath.AutoSize = true;
-            this.EnableRestorePath.Location = new System.Drawing.Point(16, 72);
+            resources.ApplyResources(this.EnableRestorePath, "EnableRestorePath");
             this.EnableRestorePath.Name = "EnableRestorePath";
-            this.EnableRestorePath.Size = new System.Drawing.Size(87, 17);
-            this.EnableRestorePath.TabIndex = 4;
-            this.EnableRestorePath.Text = "Restore path";
             this.EnableRestorePath.UseVisualStyleBackColor = true;
             this.EnableRestorePath.CheckedChanged += new System.EventHandler(this.EnableRestorePath_CheckedChanged);
             // 
             // RestorePath
             // 
-            this.RestorePath.Enabled = false;
-            this.RestorePath.Location = new System.Drawing.Point(176, 72);
+            resources.ApplyResources(this.RestorePath, "RestorePath");
             this.RestorePath.Name = "RestorePath";
-            this.RestorePath.Size = new System.Drawing.Size(168, 20);
-            this.RestorePath.TabIndex = 5;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 128);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(173, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Include these types in the package";
             // 
             // AllowedTypes
             // 
             this.AllowedTypes.FormattingEnabled = true;
-            this.AllowedTypes.Location = new System.Drawing.Point(16, 144);
+            resources.ApplyResources(this.AllowedTypes, "AllowedTypes");
             this.AllowedTypes.Name = "AllowedTypes";
-            this.AllowedTypes.Size = new System.Drawing.Size(352, 109);
-            this.AllowedTypes.TabIndex = 7;
             this.AllowedTypes.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.AllowedTypes_ItemCheck);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.CancelBtn);
             this.panel1.Controls.Add(this.OKBtn);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 274);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(383, 39);
-            this.panel1.TabIndex = 8;
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(191, 8);
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(80, 24);
-            this.CancelBtn.TabIndex = 1;
-            this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
             // 
             // OKBtn
             // 
-            this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.OKBtn.Location = new System.Drawing.Point(95, 8);
+            resources.ApplyResources(this.OKBtn, "OKBtn");
             this.OKBtn.Name = "OKBtn";
-            this.OKBtn.Size = new System.Drawing.Size(80, 24);
-            this.OKBtn.TabIndex = 0;
-            this.OKBtn.Text = "OK";
             this.OKBtn.UseVisualStyleBackColor = true;
             this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
             // 
             // BrowseTargetFilename
             // 
-            this.BrowseTargetFilename.Location = new System.Drawing.Point(344, 40);
+            resources.ApplyResources(this.BrowseTargetFilename, "BrowseTargetFilename");
             this.BrowseTargetFilename.Name = "BrowseTargetFilename";
-            this.BrowseTargetFilename.Size = new System.Drawing.Size(24, 20);
-            this.BrowseTargetFilename.TabIndex = 11;
-            this.BrowseTargetFilename.Text = "...";
             this.BrowseTargetFilename.UseVisualStyleBackColor = true;
             this.BrowseTargetFilename.Click += new System.EventHandler(this.BrowseTargetFilename_Click);
             // 
             // PackageFilename
             // 
-            this.PackageFilename.Location = new System.Drawing.Point(128, 40);
+            resources.ApplyResources(this.PackageFilename, "PackageFilename");
             this.PackageFilename.Name = "PackageFilename";
-            this.PackageFilename.Size = new System.Drawing.Size(216, 20);
-            this.PackageFilename.TabIndex = 10;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 40);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "File name";
             // 
             // saveFileDialog
             // 
             this.saveFileDialog.DefaultExt = "mgp";
-            this.saveFileDialog.Filter = "MapGuide Packages (*.mgp)|*.mgp|Zip files (*.zip)|*.zip|All files (*.*)|*.*";
-            this.saveFileDialog.Title = "Select where to store the file";
+            resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
             // 
             // LibraryLabel
             // 
-            this.LibraryLabel.AutoSize = true;
-            this.LibraryLabel.Enabled = false;
-            this.LibraryLabel.Location = new System.Drawing.Point(120, 72);
+            resources.ApplyResources(this.LibraryLabel, "LibraryLabel");
             this.LibraryLabel.Name = "LibraryLabel";
-            this.LibraryLabel.Size = new System.Drawing.Size(51, 13);
-            this.LibraryLabel.TabIndex = 12;
-            this.LibraryLabel.Text = "Library://";
             // 
             // CreatePackage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(383, 313);
             this.Controls.Add(this.LibraryLabel);
             this.Controls.Add(this.BrowseTargetFilename);
             this.Controls.Add(this.PackageFilename);
@@ -217,7 +165,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CreatePackage";
-            this.Text = "Create a new package";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

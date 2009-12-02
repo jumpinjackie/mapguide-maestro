@@ -87,240 +87,179 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(GeometryColumnsEditor));
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.PropertyPanel = new System.Windows.Forms.Panel();
-			this.panel3 = new System.Windows.Forms.Panel();
-			this.splitter1 = new System.Windows.Forms.Splitter();
-			this.TablePanel = new System.Windows.Forms.Panel();
-			this.label1 = new System.Windows.Forms.Label();
-			this.KeyColumn = new System.Windows.Forms.ComboBox();
-			this.ListImages = new System.Windows.Forms.ImageList(this.components);
-			this.XColumn = new System.Windows.Forms.ComboBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.YColumn = new System.Windows.Forms.ComboBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.ZColumn = new System.Windows.Forms.ComboBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.OKBtn = new System.Windows.Forms.Button();
-			this.CancelBtn = new System.Windows.Forms.Button();
-			this.GeometryPanel = new System.Windows.Forms.GroupBox();
-			this.GeometryEnabled = new System.Windows.Forms.CheckBox();
-			this.TableList = new System.Windows.Forms.ListView();
-			this.panel1.SuspendLayout();
-			this.PropertyPanel.SuspendLayout();
-			this.panel3.SuspendLayout();
-			this.TablePanel.SuspendLayout();
-			this.GeometryPanel.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// panel1
-			// 
-			this.panel1.Controls.Add(this.TableList);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-			this.panel1.Location = new System.Drawing.Point(0, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(168, 389);
-			this.panel1.TabIndex = 0;
-			// 
-			// PropertyPanel
-			// 
-			this.PropertyPanel.Controls.Add(this.GeometryEnabled);
-			this.PropertyPanel.Controls.Add(this.TablePanel);
-			this.PropertyPanel.Controls.Add(this.GeometryPanel);
-			this.PropertyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PropertyPanel.Location = new System.Drawing.Point(176, 0);
-			this.PropertyPanel.Name = "PropertyPanel";
-			this.PropertyPanel.Size = new System.Drawing.Size(360, 389);
-			this.PropertyPanel.TabIndex = 1;
-			// 
-			// panel3
-			// 
-			this.panel3.Controls.Add(this.CancelBtn);
-			this.panel3.Controls.Add(this.OKBtn);
-			this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel3.Location = new System.Drawing.Point(0, 389);
-			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(536, 48);
-			this.panel3.TabIndex = 2;
-			// 
-			// splitter1
-			// 
-			this.splitter1.Location = new System.Drawing.Point(168, 0);
-			this.splitter1.Name = "splitter1";
-			this.splitter1.Size = new System.Drawing.Size(8, 389);
-			this.splitter1.TabIndex = 3;
-			this.splitter1.TabStop = false;
-			// 
-			// TablePanel
-			// 
-			this.TablePanel.Controls.Add(this.KeyColumn);
-			this.TablePanel.Controls.Add(this.label1);
-			this.TablePanel.Dock = System.Windows.Forms.DockStyle.Top;
-			this.TablePanel.Location = new System.Drawing.Point(0, 0);
-			this.TablePanel.Name = "TablePanel";
-			this.TablePanel.Size = new System.Drawing.Size(360, 40);
-			this.TablePanel.TabIndex = 0;
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(88, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Key column";
-			// 
-			// KeyColumn
-			// 
-			this.KeyColumn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.KeyColumn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.KeyColumn.Location = new System.Drawing.Point(104, 8);
-			this.KeyColumn.Name = "KeyColumn";
-			this.KeyColumn.Size = new System.Drawing.Size(248, 21);
-			this.KeyColumn.TabIndex = 1;
-			this.KeyColumn.SelectedIndexChanged += new System.EventHandler(this.KeyColumn_SelectedIndexChanged);
-			// 
-			// ListImages
-			// 
-			this.ListImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-			this.ListImages.ImageSize = new System.Drawing.Size(16, 16);
-			this.ListImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ListImages.ImageStream")));
-			this.ListImages.TransparentColor = System.Drawing.Color.Transparent;
-			// 
-			// XColumn
-			// 
-			this.XColumn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.XColumn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.XColumn.Location = new System.Drawing.Point(120, 24);
-			this.XColumn.Name = "XColumn";
-			this.XColumn.Size = new System.Drawing.Size(216, 21);
-			this.XColumn.TabIndex = 3;
-			this.XColumn.SelectedIndexChanged += new System.EventHandler(this.XColumn_SelectedIndexChanged);
-			// 
-			// label6
-			// 
-			this.label6.Location = new System.Drawing.Point(16, 24);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(88, 16);
-			this.label6.TabIndex = 2;
-			this.label6.Text = "X Column";
-			// 
-			// YColumn
-			// 
-			this.YColumn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.YColumn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.YColumn.Location = new System.Drawing.Point(120, 48);
-			this.YColumn.Name = "YColumn";
-			this.YColumn.Size = new System.Drawing.Size(216, 21);
-			this.YColumn.TabIndex = 5;
-			this.YColumn.SelectedIndexChanged += new System.EventHandler(this.YColumn_SelectedIndexChanged);
-			// 
-			// label4
-			// 
-			this.label4.Location = new System.Drawing.Point(16, 48);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(88, 16);
-			this.label4.TabIndex = 4;
-			this.label4.Text = "Y Column";
-			// 
-			// ZColumn
-			// 
-			this.ZColumn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ZColumn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ZColumn.Location = new System.Drawing.Point(120, 72);
-			this.ZColumn.Name = "ZColumn";
-			this.ZColumn.Size = new System.Drawing.Size(216, 21);
-			this.ZColumn.TabIndex = 7;
-			this.ZColumn.SelectedIndexChanged += new System.EventHandler(this.ZColumn_SelectedIndexChanged);
-			// 
-			// label5
-			// 
-			this.label5.Location = new System.Drawing.Point(16, 72);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(88, 16);
-			this.label5.TabIndex = 6;
-			this.label5.Text = "Z Column";
-			// 
-			// OKBtn
-			// 
-			this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.OKBtn.Location = new System.Drawing.Point(160, 16);
-			this.OKBtn.Name = "OKBtn";
-			this.OKBtn.Size = new System.Drawing.Size(104, 24);
-			this.OKBtn.TabIndex = 0;
-			this.OKBtn.Text = "OK";
-			this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
-			// 
-			// CancelBtn
-			// 
-			this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.CancelBtn.Location = new System.Drawing.Point(280, 16);
-			this.CancelBtn.Name = "CancelBtn";
-			this.CancelBtn.Size = new System.Drawing.Size(104, 24);
-			this.CancelBtn.TabIndex = 1;
-			this.CancelBtn.Text = "Cancel";
-			// 
-			// GeometryPanel
-			// 
-			this.GeometryPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.GeometryPanel.Controls.Add(this.label6);
-			this.GeometryPanel.Controls.Add(this.label5);
-			this.GeometryPanel.Controls.Add(this.XColumn);
-			this.GeometryPanel.Controls.Add(this.label4);
-			this.GeometryPanel.Controls.Add(this.ZColumn);
-			this.GeometryPanel.Controls.Add(this.YColumn);
-			this.GeometryPanel.Location = new System.Drawing.Point(8, 40);
-			this.GeometryPanel.Name = "GeometryPanel";
-			this.GeometryPanel.Size = new System.Drawing.Size(344, 104);
-			this.GeometryPanel.TabIndex = 8;
-			this.GeometryPanel.TabStop = false;
-			// 
-			// GeometryEnabled
-			// 
-			this.GeometryEnabled.Location = new System.Drawing.Point(24, 40);
-			this.GeometryEnabled.Name = "GeometryEnabled";
-			this.GeometryEnabled.Size = new System.Drawing.Size(152, 16);
-			this.GeometryEnabled.TabIndex = 9;
-			this.GeometryEnabled.Text = "Geometry";
-			this.GeometryEnabled.CheckedChanged += new System.EventHandler(this.GeometryEnabled_CheckedChanged);
-			// 
-			// TableList
-			// 
-			this.TableList.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TableList.Location = new System.Drawing.Point(0, 0);
-			this.TableList.MultiSelect = false;
-			this.TableList.Name = "TableList";
-			this.TableList.Size = new System.Drawing.Size(168, 389);
-			this.TableList.SmallImageList = this.ListImages;
-			this.TableList.TabIndex = 1;
-			this.TableList.View = System.Windows.Forms.View.List;
-			this.TableList.SelectedIndexChanged += new System.EventHandler(this.TableList_SelectedIndexChanged);
-			// 
-			// GeometryColumnsEditor
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.CancelButton = this.CancelBtn;
-			this.ClientSize = new System.Drawing.Size(536, 437);
-			this.Controls.Add(this.PropertyPanel);
-			this.Controls.Add(this.splitter1);
-			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.panel3);
-			this.Name = "GeometryColumnsEditor";
-			this.Text = "GeometryColumnsEditor";
-			this.Load += new System.EventHandler(this.GeometryColumnsEditor_Load);
-			this.panel1.ResumeLayout(false);
-			this.PropertyPanel.ResumeLayout(false);
-			this.panel3.ResumeLayout(false);
-			this.TablePanel.ResumeLayout(false);
-			this.GeometryPanel.ResumeLayout(false);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeometryColumnsEditor));
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.TableList = new System.Windows.Forms.ListView();
+            this.ListImages = new System.Windows.Forms.ImageList(this.components);
+            this.PropertyPanel = new System.Windows.Forms.Panel();
+            this.GeometryEnabled = new System.Windows.Forms.CheckBox();
+            this.TablePanel = new System.Windows.Forms.Panel();
+            this.KeyColumn = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.GeometryPanel = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.XColumn = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ZColumn = new System.Windows.Forms.ComboBox();
+            this.YColumn = new System.Windows.Forms.ComboBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.CancelBtn = new System.Windows.Forms.Button();
+            this.OKBtn = new System.Windows.Forms.Button();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.panel1.SuspendLayout();
+            this.PropertyPanel.SuspendLayout();
+            this.TablePanel.SuspendLayout();
+            this.GeometryPanel.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.TableList);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
+            // TableList
+            // 
+            resources.ApplyResources(this.TableList, "TableList");
+            this.TableList.MultiSelect = false;
+            this.TableList.Name = "TableList";
+            this.TableList.SmallImageList = this.ListImages;
+            this.TableList.UseCompatibleStateImageBehavior = false;
+            this.TableList.View = System.Windows.Forms.View.List;
+            this.TableList.SelectedIndexChanged += new System.EventHandler(this.TableList_SelectedIndexChanged);
+            // 
+            // ListImages
+            // 
+            this.ListImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ListImages.ImageStream")));
+            this.ListImages.TransparentColor = System.Drawing.Color.Transparent;
+            this.ListImages.Images.SetKeyName(0, "");
+            this.ListImages.Images.SetKeyName(1, "");
+            // 
+            // PropertyPanel
+            // 
+            this.PropertyPanel.Controls.Add(this.GeometryEnabled);
+            this.PropertyPanel.Controls.Add(this.TablePanel);
+            this.PropertyPanel.Controls.Add(this.GeometryPanel);
+            resources.ApplyResources(this.PropertyPanel, "PropertyPanel");
+            this.PropertyPanel.Name = "PropertyPanel";
+            // 
+            // GeometryEnabled
+            // 
+            resources.ApplyResources(this.GeometryEnabled, "GeometryEnabled");
+            this.GeometryEnabled.Name = "GeometryEnabled";
+            this.GeometryEnabled.CheckedChanged += new System.EventHandler(this.GeometryEnabled_CheckedChanged);
+            // 
+            // TablePanel
+            // 
+            this.TablePanel.Controls.Add(this.KeyColumn);
+            this.TablePanel.Controls.Add(this.label1);
+            resources.ApplyResources(this.TablePanel, "TablePanel");
+            this.TablePanel.Name = "TablePanel";
+            // 
+            // KeyColumn
+            // 
+            resources.ApplyResources(this.KeyColumn, "KeyColumn");
+            this.KeyColumn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.KeyColumn.Name = "KeyColumn";
+            this.KeyColumn.SelectedIndexChanged += new System.EventHandler(this.KeyColumn_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // GeometryPanel
+            // 
+            resources.ApplyResources(this.GeometryPanel, "GeometryPanel");
+            this.GeometryPanel.Controls.Add(this.label6);
+            this.GeometryPanel.Controls.Add(this.label5);
+            this.GeometryPanel.Controls.Add(this.XColumn);
+            this.GeometryPanel.Controls.Add(this.label4);
+            this.GeometryPanel.Controls.Add(this.ZColumn);
+            this.GeometryPanel.Controls.Add(this.YColumn);
+            this.GeometryPanel.Name = "GeometryPanel";
+            this.GeometryPanel.TabStop = false;
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // XColumn
+            // 
+            resources.ApplyResources(this.XColumn, "XColumn");
+            this.XColumn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.XColumn.Name = "XColumn";
+            this.XColumn.SelectedIndexChanged += new System.EventHandler(this.XColumn_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // ZColumn
+            // 
+            resources.ApplyResources(this.ZColumn, "ZColumn");
+            this.ZColumn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ZColumn.Name = "ZColumn";
+            this.ZColumn.SelectedIndexChanged += new System.EventHandler(this.ZColumn_SelectedIndexChanged);
+            // 
+            // YColumn
+            // 
+            resources.ApplyResources(this.YColumn, "YColumn");
+            this.YColumn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.YColumn.Name = "YColumn";
+            this.YColumn.SelectedIndexChanged += new System.EventHandler(this.YColumn_SelectedIndexChanged);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.CancelBtn);
+            this.panel3.Controls.Add(this.OKBtn);
+            resources.ApplyResources(this.panel3, "panel3");
+            this.panel3.Name = "panel3";
+            // 
+            // CancelBtn
+            // 
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
+            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelBtn.Name = "CancelBtn";
+            // 
+            // OKBtn
+            // 
+            resources.ApplyResources(this.OKBtn, "OKBtn");
+            this.OKBtn.Name = "OKBtn";
+            this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
+            // 
+            // splitter1
+            // 
+            resources.ApplyResources(this.splitter1, "splitter1");
+            this.splitter1.Name = "splitter1";
+            this.splitter1.TabStop = false;
+            // 
+            // GeometryColumnsEditor
+            // 
+            resources.ApplyResources(this, "$this");
+            this.CancelButton = this.CancelBtn;
+            this.Controls.Add(this.PropertyPanel);
+            this.Controls.Add(this.splitter1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
+            this.Name = "GeometryColumnsEditor";
+            this.Load += new System.EventHandler(this.GeometryColumnsEditor_Load);
+            this.panel1.ResumeLayout(false);
+            this.PropertyPanel.ResumeLayout(false);
+            this.TablePanel.ResumeLayout(false);
+            this.GeometryPanel.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.ResumeLayout(false);
 
 		}
 		#endregion

@@ -28,6 +28,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WaitForOperation));
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.BackgroundWorker = new System.ComponentModel.BackgroundWorker();
@@ -36,18 +37,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(24, 40);
+            resources.ApplyResources(this.progressBar1, "progressBar1");
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(360, 23);
-            this.progressBar1.TabIndex = 0;
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Location = new System.Drawing.Point(168, 72);
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.CancelBtn.TabIndex = 1;
-            this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
@@ -61,26 +57,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 16);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Working...";
             // 
             // WaitForOperation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 103);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.progressBar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
             this.Name = "WaitForOperation";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Wait for operation to complete";
             this.Load += new System.EventHandler(this.WaitForOperation_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WaitForOperation_KeyPress);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WaitForOperation_FormClosing);

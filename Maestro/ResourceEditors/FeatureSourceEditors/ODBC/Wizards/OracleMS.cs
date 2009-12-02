@@ -98,36 +98,30 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizar
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Server = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Server
-			// 
-			this.Server.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Server.Location = new System.Drawing.Point(152, 8);
-			this.Server.Name = "Server";
-			this.Server.Size = new System.Drawing.Size(200, 20);
-			this.Server.TabIndex = 17;
-			this.Server.Text = "textBox2";
-			this.Server.TextChanged += new System.EventHandler(this.PropertyText_Changed);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 8);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(136, 16);
-			this.label2.TabIndex = 12;
-			this.label2.Text = "Server";
-			// 
-			// OracleMS
-			// 
-			this.Controls.Add(this.Server);
-			this.Controls.Add(this.label2);
-			this.Name = "OracleMS";
-			this.Size = new System.Drawing.Size(360, 32);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OracleMS));
+            this.Server = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Server
+            // 
+            resources.ApplyResources(this.Server, "Server");
+            this.Server.Name = "Server";
+            this.Server.TextChanged += new System.EventHandler(this.PropertyText_Changed);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // OracleMS
+            // 
+            this.Controls.Add(this.Server);
+            this.Controls.Add(this.label2);
+            this.Name = "OracleMS";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

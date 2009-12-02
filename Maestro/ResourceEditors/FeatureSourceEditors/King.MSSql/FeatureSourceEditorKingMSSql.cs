@@ -44,14 +44,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Windows.Forms.TextBox FDOClass;
 		private System.Windows.Forms.TextBox DSN;
 		private bool m_isUpdating = false;
-		private Globalizator.Globalizator m_globalizor;
 
 
 		public FeatureSourceEditorKingMSSql()
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-			m_globalizor = new Globalizator.Globalizator(this);
 		}
 
 		public FeatureSourceEditorKingMSSql(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource feature)
@@ -85,98 +83,70 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.Schema = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.FDOClass = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.DSN = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.credentials = new ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
-			this.toolTips = new System.Windows.Forms.ToolTip(this.components);
-			this.SuspendLayout();
-			// 
-			// Schema
-			// 
-			this.Schema.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Schema.Location = new System.Drawing.Point(112, 40);
-			this.Schema.Name = "Schema";
-			this.Schema.Size = new System.Drawing.Size(200, 20);
-			this.Schema.TabIndex = 42;
-			this.Schema.Text = "";
-			this.Schema.TextChanged += new System.EventHandler(this.Schema_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 40);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(96, 16);
-			this.label2.TabIndex = 41;
-			this.label2.Text = "Schema";
-			// 
-			// FDOClass
-			// 
-			this.FDOClass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.FDOClass.Location = new System.Drawing.Point(112, 72);
-			this.FDOClass.Name = "FDOClass";
-			this.FDOClass.Size = new System.Drawing.Size(200, 20);
-			this.FDOClass.TabIndex = 40;
-			this.FDOClass.Text = "";
-			this.FDOClass.TextChanged += new System.EventHandler(this.FDOClass_TextChanged);
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 72);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(96, 16);
-			this.label3.TabIndex = 39;
-			this.label3.Text = "King FDO Class";
-			// 
-			// DSN
-			// 
-			this.DSN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.DSN.Location = new System.Drawing.Point(112, 8);
-			this.DSN.Name = "DSN";
-			this.DSN.Size = new System.Drawing.Size(200, 20);
-			this.DSN.TabIndex = 38;
-			this.DSN.Text = "";
-			this.DSN.TextChanged += new System.EventHandler(this.DSN_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(96, 16);
-			this.label1.TabIndex = 37;
-			this.label1.Text = "DSN";
-			// 
-			// credentials
-			// 
-			this.credentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.credentials.Location = new System.Drawing.Point(8, 104);
-			this.credentials.Name = "credentials";
-			this.credentials.Size = new System.Drawing.Size(304, 152);
-			this.credentials.TabIndex = 36;
-			this.credentials.CredentialsChanged += new ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
-			// 
-			// FeatureSourceEditorKingMSSql
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(320, 264);
-			this.Controls.Add(this.Schema);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.FDOClass);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.DSN);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.credentials);
-			this.Name = "FeatureSourceEditorKingMSSql";
-			this.Size = new System.Drawing.Size(320, 264);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditorKingMSSql));
+            this.Schema = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.FDOClass = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.DSN = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.credentials = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
+            this.toolTips = new System.Windows.Forms.ToolTip(this.components);
+            this.SuspendLayout();
+            // 
+            // Schema
+            // 
+            resources.ApplyResources(this.Schema, "Schema");
+            this.Schema.Name = "Schema";
+            this.Schema.TextChanged += new System.EventHandler(this.Schema_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // FDOClass
+            // 
+            resources.ApplyResources(this.FDOClass, "FDOClass");
+            this.FDOClass.Name = "FDOClass";
+            this.FDOClass.TextChanged += new System.EventHandler(this.FDOClass_TextChanged);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // DSN
+            // 
+            resources.ApplyResources(this.DSN, "DSN");
+            this.DSN.Name = "DSN";
+            this.DSN.TextChanged += new System.EventHandler(this.DSN_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // credentials
+            // 
+            resources.ApplyResources(this.credentials, "credentials");
+            this.credentials.Name = "credentials";
+            this.credentials.CredentialsChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
+            // 
+            // FeatureSourceEditorKingMSSql
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.Schema);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.FDOClass);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.DSN);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.credentials);
+            this.Name = "FeatureSourceEditorKingMSSql";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

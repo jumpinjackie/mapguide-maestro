@@ -48,7 +48,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Diagnostics.Process m_externalProcess = null;
 		private System.Threading.Thread m_externalProcessWatcher = null;
 		private bool m_inUpdate = false;
-		private Globalizator.Globalizator m_globalizor = null;
         private ToolStrip toolBar;
         private ToolStripButton CopyClipboardButton;
         private ToolStripButton CutClipboardButton;
@@ -153,7 +152,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			m_globalizor = new  Globalizator.Globalizator(this);
 		}
 
 		//TODO: Add syntax higlighting for the editor
@@ -210,25 +208,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.panel2.Controls.Add(this.textEditor);
             this.panel2.Controls.Add(this.LockedMessagePanel);
             this.panel2.Controls.Add(this.toolBar);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(656, 525);
-            this.panel2.TabIndex = 1;
             // 
             // textEditor
             // 
             this.textEditor.AcceptsReturn = true;
             this.textEditor.AcceptsTab = true;
-            this.textEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textEditor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEditor.Location = new System.Drawing.Point(0, 93);
-            this.textEditor.MaxLength = 0;
-            this.textEditor.Multiline = true;
+            resources.ApplyResources(this.textEditor, "textEditor");
             this.textEditor.Name = "textEditor";
-            this.textEditor.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textEditor.Size = new System.Drawing.Size(656, 432);
-            this.textEditor.TabIndex = 0;
             this.textEditor.TextChanged += new System.EventHandler(this.textEditor_TextChanged);
             this.textEditor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEditor_KeyUp);
             // 
@@ -237,36 +225,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.LockedMessagePanel.Controls.Add(this.label3);
             this.LockedMessagePanel.Controls.Add(this.label2);
             this.LockedMessagePanel.Controls.Add(this.label1);
-            this.LockedMessagePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.LockedMessagePanel.Location = new System.Drawing.Point(0, 25);
+            resources.ApplyResources(this.LockedMessagePanel, "LockedMessagePanel");
             this.LockedMessagePanel.Name = "LockedMessagePanel";
-            this.LockedMessagePanel.Size = new System.Drawing.Size(656, 68);
-            this.LockedMessagePanel.TabIndex = 2;
-            this.LockedMessagePanel.Visible = false;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(8, 24);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(632, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "The text display will automatically update when the editor saves the file.";
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(8, 40);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(632, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Close the external program to restore editing functionality in this xml editor.";
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(632, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "The application associated with xml editing has been started.";
             // 
             // toolBar
             // 
@@ -282,95 +257,72 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ValidateButton,
             this.toolStripSeparator3,
             this.LaunchExternalEditorButton});
-            this.toolBar.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.toolBar, "toolBar");
             this.toolBar.Name = "toolBar";
             this.toolBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolBar.Size = new System.Drawing.Size(656, 25);
-            this.toolBar.TabIndex = 3;
             // 
             // CopyClipboardButton
             // 
             this.CopyClipboardButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CopyClipboardButton.Image = ((System.Drawing.Image)(resources.GetObject("CopyClipboardButton.Image")));
-            this.CopyClipboardButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.CopyClipboardButton, "CopyClipboardButton");
             this.CopyClipboardButton.Name = "CopyClipboardButton";
-            this.CopyClipboardButton.Size = new System.Drawing.Size(23, 22);
-            this.CopyClipboardButton.ToolTipText = "Copy selected text to the clipboard";
             this.CopyClipboardButton.Click += new System.EventHandler(this.CopyClipboardButton_Click);
             // 
             // CutClipboardButton
             // 
             this.CutClipboardButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CutClipboardButton.Image = ((System.Drawing.Image)(resources.GetObject("CutClipboardButton.Image")));
-            this.CutClipboardButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.CutClipboardButton, "CutClipboardButton");
             this.CutClipboardButton.Name = "CutClipboardButton";
-            this.CutClipboardButton.Size = new System.Drawing.Size(23, 22);
-            this.CutClipboardButton.ToolTipText = "Cut the selected text and place it in the clipboard";
             this.CutClipboardButton.Click += new System.EventHandler(this.CutClipboardButton_Click);
             // 
             // PasteClipboardButton
             // 
             this.PasteClipboardButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.PasteClipboardButton.Image = ((System.Drawing.Image)(resources.GetObject("PasteClipboardButton.Image")));
-            this.PasteClipboardButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.PasteClipboardButton, "PasteClipboardButton");
             this.PasteClipboardButton.Name = "PasteClipboardButton";
-            this.PasteClipboardButton.Size = new System.Drawing.Size(23, 22);
-            this.PasteClipboardButton.ToolTipText = "Paste text from the clipboard";
             this.PasteClipboardButton.Click += new System.EventHandler(this.PasteClipboardButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // UndoClipboardButton
             // 
             this.UndoClipboardButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.UndoClipboardButton.Image = ((System.Drawing.Image)(resources.GetObject("UndoClipboardButton.Image")));
-            this.UndoClipboardButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.UndoClipboardButton, "UndoClipboardButton");
             this.UndoClipboardButton.Name = "UndoClipboardButton";
-            this.UndoClipboardButton.Size = new System.Drawing.Size(23, 22);
-            this.UndoClipboardButton.ToolTipText = "Undo the last action";
             this.UndoClipboardButton.Click += new System.EventHandler(this.UndoClipboardButton_Click);
             // 
             // RedoClipboardButton
             // 
             this.RedoClipboardButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RedoClipboardButton.Image = ((System.Drawing.Image)(resources.GetObject("RedoClipboardButton.Image")));
-            this.RedoClipboardButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.RedoClipboardButton, "RedoClipboardButton");
             this.RedoClipboardButton.Name = "RedoClipboardButton";
-            this.RedoClipboardButton.Size = new System.Drawing.Size(23, 22);
-            this.RedoClipboardButton.ToolTipText = "Redo the last action";
             this.RedoClipboardButton.Click += new System.EventHandler(this.RedoClipboardButton_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // ValidateButton
             // 
             this.ValidateButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ValidateButton.Image = ((System.Drawing.Image)(resources.GetObject("ValidateButton.Image")));
-            this.ValidateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.ValidateButton, "ValidateButton");
             this.ValidateButton.Name = "ValidateButton";
-            this.ValidateButton.Size = new System.Drawing.Size(23, 22);
-            this.ValidateButton.Text = "Validate the current xml";
             this.ValidateButton.Click += new System.EventHandler(this.ValidateButton_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
             // LaunchExternalEditorButton
             // 
             this.LaunchExternalEditorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.LaunchExternalEditorButton.Image = ((System.Drawing.Image)(resources.GetObject("LaunchExternalEditorButton.Image")));
-            this.LaunchExternalEditorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.LaunchExternalEditorButton, "LaunchExternalEditorButton");
             this.LaunchExternalEditorButton.Name = "LaunchExternalEditorButton";
-            this.LaunchExternalEditorButton.Size = new System.Drawing.Size(23, 22);
-            this.LaunchExternalEditorButton.ToolTipText = "Launch the system editor associated with xml files";
             this.LaunchExternalEditorButton.Click += new System.EventHandler(this.LaunchExternalEditorButton_Click);
             // 
             // toolbarImages
@@ -389,7 +341,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.Controls.Add(this.panel2);
             this.Name = "XmlEditorControl";
-            this.Size = new System.Drawing.Size(656, 525);
+            resources.ApplyResources(this, "$this");
             this.Load += new System.EventHandler(this.XmlEditor_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -477,14 +429,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					System.IO.MemoryStream ms = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text));
 					object o = m_editor.CurrentConnection.DeserializeObject(m_serializeType, ms);
 					if (o.GetType() != m_serializeType)
-						throw new Exception(string.Format(m_globalizor.Translate("Item did not correspond to the desired type.\nXml gave type: {0}\nExpected type was: {1}"), o.GetType().FullName, m_serializeType.FullName));
+						throw new Exception(string.Format(Strings.XmlEditorControl.UnexpectedTypeError, o.GetType().FullName, m_serializeType.FullName));
 					m_serializedObject = o;
 				}
 				return true;
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(this, string.Format(m_globalizor.Translate("The entered xml failed to serialize into an object.\nError message is: {0}"), ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+				MessageBox.Show(this, string.Format(Strings.XmlEditorControl.SerializeError, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
 				return false;
 			}
 
@@ -632,7 +584,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             catch (Exception ex)
             {
                 EndExternalEditing(false);
-                MessageBox.Show(this, string.Format(m_globalizor.Translate("Failed to start external editor, most likely this means that theres is no external editor associated with xml files.\nError message was: {0}"), ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.XmlEditorControl.ExternalEditorError, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

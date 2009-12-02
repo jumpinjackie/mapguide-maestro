@@ -38,9 +38,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
 
             foreach(MaestroAPI.MapLayerGroupType g in mdef.LayerGroups)
                 if (g.ShowInLegend && g.LegendLabel.Trim().Length == 0)
-                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, string.Format("Group {0} does not have a legend label", g.Name)));
+                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, string.Format(Strings.MapDefinitionValidator.GroupMissingLabelInformation, g.Name)));
                 else if (g.ShowInLegend && g.LegendLabel.Trim().ToLower() == "layer group")
-                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, string.Format("Group {0} has the default legend label", g.Name)));
+                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, string.Format(Strings.MapDefinitionValidator.GroupHasDefaultLabelInformation, g.Name)));
 
             List<MaestroAPI.BaseMapLayerType> layers = new List<OSGeo.MapGuide.MaestroAPI.BaseMapLayerType>();
             foreach(MaestroAPI.BaseMapLayerType l in mdef.Layers)
@@ -54,7 +54,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
             foreach (MaestroAPI.BaseMapLayerType l in layers)
             {
                 if (l.ShowInLegend && (string.IsNullOrEmpty(l.LegendLabel) ||  l.LegendLabel.Trim().Length == 0))
-                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, string.Format("Layer {0} does not have a legend label", l.Name)));
+                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, string.Format(Strings.MapDefinitionValidator.LayerMissingLabelInformation, l.Name)));
                 
                 if (recurse)
                 {
@@ -74,17 +74,24 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                             geom = (ldef.Item as MaestroAPI.VectorLayerDefinitionType).Geometry;
 
                             if (string.IsNullOrEmpty(schema))
-                                issues.Add(new ValidationIssue(ldef, ValidationStatus.Error, string.Format("Layer {0} has an invalid Schema", l.ResourceId)));
+                                issues.Add(new ValidationIssue(ldef, ValidationStatus.Error, string.Format(Strings.MapDefinitionValidator.MissingLayerSchemaError, l.ResourceId)));
 
                             if (string.IsNullOrEmpty(geom))
-                                issues.Add(new ValidationIssue(ldef, ValidationStatus.Error, string.Format("Layer {0} has no geometry column", l.ResourceId)));
+                                issues.Add(new ValidationIssue(ldef, ValidationStatus.Error, string.Format(Strings.MapDefinitionValidator.MissingLayerGeometryColumnError, l.ResourceId)));
                         }
                         else if (ldef.Item is MaestroAPI.GridLayerDefinitionType)
                         {
                             schema = (ldef.Item as MaestroAPI.GridLayerDefinitionType).FeatureName;
+                            geom = (ldef.Item as MaestroAPI.GridLayerDefinitionType).Geometry;
+
+                            if (string.IsNullOrEmpty(schema))
+                                issues.Add(new ValidationIssue(ldef, ValidationStatus.Error, string.Format(Strings.MapDefinitionValidator.MissingLayerSchemaError, l.ResourceId)));
+
+                            if (string.IsNullOrEmpty(geom))
+                                issues.Add(new ValidationIssue(ldef, ValidationStatus.Error, string.Format(Strings.MapDefinitionValidator.MissingLayerGeometryColumnError, l.ResourceId)));
                         }
                         else
-                            issues.Add(new ValidationIssue(ldef, ValidationStatus.Warning, string.Format("Layer {0} is a type that is unsupported by Maestro", l.ResourceId)));
+                            issues.Add(new ValidationIssue(ldef, ValidationStatus.Warning, string.Format(Strings.MapDefinitionValidator.UnsupportedLayerTypeWarning, l.ResourceId)));
 
 
                         if (schema != null)
@@ -99,11 +106,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                                 {
                                     MaestroAPI.FdoSpatialContextList context = fs.GetSpatialInfo();
                                     if (context.SpatialContext == null || context.SpatialContext.Count == 0)
-                                        issues.Add(new ValidationIssue(fs, ValidationStatus.Warning, string.Format("{0} has no spatial context (eg. no coordinate system)", fs.ResourceId)));
+                                        issues.Add(new ValidationIssue(fs, ValidationStatus.Warning, string.Format(Strings.MapDefinitionValidator.MissingSpatialContextWarning, fs.ResourceId)));
                                     else
                                     {
                                         if (context.SpatialContext.Count > 1)
-                                            issues.Add(new ValidationIssue(fs, ValidationStatus.Information, string.Format("{0} has more than one spatial context, the following test results may be inacurate", fs.ResourceId)));
+                                            issues.Add(new ValidationIssue(fs, ValidationStatus.Information, string.Format(Strings.MapDefinitionValidator.MultipleSpatialContextsInformation, fs.ResourceId)));
 
 
                                         bool skipGeomCheck = false;
@@ -112,9 +119,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                                         if (context.SpatialContext[0].CoordinateSystemWkt != mdef.CoordinateSystem)
                                         {
                                             if (ldef.Item is MaestroAPI.GridLayerDefinitionType && mdef.CurrentConnection.SiteVersion <= MaestroAPI.SiteVersions.GetVersion(OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.MapGuideOS2_0_2))
-                                                issues.Add(new ValidationIssue(fs, ValidationStatus.Error, string.Format("{0} is a raster layer, and in another coordinate system than the map. No data will be displayed by the layer", fs.ResourceId)));
+                                                issues.Add(new ValidationIssue(fs, ValidationStatus.Error, string.Format(Strings.MapDefinitionValidator.RasterReprojectionError, fs.ResourceId)));
                                             else
-                                                issues.Add(new ValidationIssue(fs, ValidationStatus.Warning, string.Format("{0} has a different coordinate system than the map, this will impact performance as the coordinates are transformed while rendering the map. Maestro cannot validate the extent of the data.", fs.ResourceId)));
+                                                issues.Add(new ValidationIssue(fs, ValidationStatus.Warning, string.Format(Strings.MapDefinitionValidator.DataReprojectionWarning, fs.ResourceId)));
 
                                             skipGeomCheck = true;
                                         }
@@ -124,25 +131,25 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                                         {
                                             Topology.Geometries.IEnvelope env = fs.GetSpatialExtent(schema, geom);
                                             if (!env.Intersects(mapEnv))
-                                                issues.Add(new ValidationIssue(fs, ValidationStatus.Warning, string.Format("Data from {0} is not visible in the map's start extent", fs.ResourceId)));
+                                                issues.Add(new ValidationIssue(fs, ValidationStatus.Warning, string.Format(Strings.MapDefinitionValidator.DataOutsideMapWarning, fs.ResourceId)));
                                         }
                                     }
                                 }
                                 catch (Exception ex)
                                 {
-                                    issues.Add(new ValidationIssue(ldef, ValidationStatus.Error, string.Format("{0} could not be processed for spatial info: {1}", fs.ResourceId, ex.Message)));
+                                    issues.Add(new ValidationIssue(ldef, ValidationStatus.Error, string.Format(Strings.MapDefinitionValidator.ResourceReadError, fs.ResourceId, ex.Message)));
                                 }
                             }
                             catch (Exception ex)
                             {
-                                issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, string.Format("Layer {0}'s FeatureSource could not be read: {1}", l.ResourceId, ex.Message)));
+                                issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, string.Format(Strings.MapDefinitionValidator.FeatureSourceReadError, l.ResourceId, ex.Message)));
                             }
                         }
 
                     }
                     catch (Exception ex)
                     {
-                        issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, string.Format("Layer {0} could not be read: {1}", l.ResourceId, ex.Message)));
+                        issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, string.Format(Strings.MapDefinitionValidator.LayerReadError, l.ResourceId, ex.Message)));
                     }
                 }
             }

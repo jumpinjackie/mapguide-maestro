@@ -81,6 +81,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LineStyleEditor));
             this.colorCombo = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
             this.fillCombo = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ImageStylePicker();
             this.lblColor = new System.Windows.Forms.Label();
@@ -95,60 +96,38 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // colorCombo
             // 
-            this.colorCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorCombo.Location = new System.Drawing.Point(120, 64);
+            resources.ApplyResources(this.colorCombo, "colorCombo");
             this.colorCombo.Name = "colorCombo";
-            this.colorCombo.Size = new System.Drawing.Size(312, 21);
-            this.colorCombo.TabIndex = 11;
             // 
             // fillCombo
             // 
-            this.fillCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.fillCombo, "fillCombo");
             this.fillCombo.DisplayMember = "Name";
-            this.fillCombo.Location = new System.Drawing.Point(120, 0);
             this.fillCombo.Name = "fillCombo";
-            this.fillCombo.Size = new System.Drawing.Size(312, 21);
-            this.fillCombo.TabIndex = 9;
             this.fillCombo.TextWidth = 40;
             this.fillCombo.ValueMember = "Name";
             // 
             // lblColor
             // 
-            this.lblColor.Location = new System.Drawing.Point(0, 64);
+            resources.ApplyResources(this.lblColor, "lblColor");
             this.lblColor.Name = "lblColor";
-            this.lblColor.Size = new System.Drawing.Size(96, 16);
-            this.lblColor.TabIndex = 8;
-            this.lblColor.Text = "Color";
             // 
             // lblThickness
             // 
-            this.lblThickness.Location = new System.Drawing.Point(0, 32);
+            resources.ApplyResources(this.lblThickness, "lblThickness");
             this.lblThickness.Name = "lblThickness";
-            this.lblThickness.Size = new System.Drawing.Size(96, 16);
-            this.lblThickness.TabIndex = 7;
-            this.lblThickness.Text = "Thickness";
             // 
             // lblFill
             // 
-            this.lblFill.Location = new System.Drawing.Point(0, 8);
+            resources.ApplyResources(this.lblFill, "lblFill");
             this.lblFill.Name = "lblFill";
-            this.lblFill.Size = new System.Drawing.Size(96, 16);
-            this.lblFill.TabIndex = 6;
-            this.lblFill.Text = "Line style";
             // 
             // displayLine
             // 
             this.displayLine.Checked = true;
             this.displayLine.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.displayLine.Dock = System.Windows.Forms.DockStyle.Top;
-            this.displayLine.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.displayLine.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.displayLine, "displayLine");
             this.displayLine.Name = "displayLine";
-            this.displayLine.Size = new System.Drawing.Size(432, 16);
-            this.displayLine.TabIndex = 14;
-            this.displayLine.Text = "Display edge";
             this.displayLine.CheckedChanged += new System.EventHandler(this.displayLine_CheckedChanged);
             // 
             // panel1
@@ -159,27 +138,20 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.panel1.Controls.Add(this.lblThickness);
             this.panel1.Controls.Add(this.lblFill);
             this.panel1.Controls.Add(this.colorCombo);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 16);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(432, 88);
-            this.panel1.TabIndex = 15;
             // 
             // thicknessUpDown
             // 
-            this.thicknessUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.thicknessUpDown.Location = new System.Drawing.Point(120, 32);
+            resources.ApplyResources(this.thicknessUpDown, "thicknessUpDown");
             this.thicknessUpDown.Name = "thicknessUpDown";
-            this.thicknessUpDown.Size = new System.Drawing.Size(312, 20);
-            this.thicknessUpDown.TabIndex = 12;
             // 
             // LineStyleEditor
             // 
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.displayLine);
             this.Name = "LineStyleEditor";
-            this.Size = new System.Drawing.Size(432, 104);
+            resources.ApplyResources(this, "$this");
             this.Load += new System.EventHandler(this.LineStyleEditor_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.thicknessUpDown)).EndInit();

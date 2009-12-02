@@ -92,9 +92,9 @@ namespace OSGeo.MapGuide.Maestro
                             if (p.Value.Length > 0)
                             {
                                 sw.WriteLine(new string('*', 80));
-                                sw.WriteLine(string.Format("Validating file: {0}", p.Key));
+                                sw.WriteLine(string.Format(Strings.ValidationResults.ValidationProgressMessage, p.Key));
                                 foreach (ResourceValidators.ValidationIssue i in p.Value)
-                                    sw.WriteLine(string.Format("{0} - {1}: {2}", i.Status, i.Resource, i.Message));
+                                    sw.WriteLine(string.Format(Strings.ValidationResults.ValidationResultFormat, i.Status, i.Resource, i.Message));
 
                                 sw.WriteLine();
                             }
@@ -104,7 +104,7 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, "Failed to save file: " + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.ValidationResults.ValidationFailedError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

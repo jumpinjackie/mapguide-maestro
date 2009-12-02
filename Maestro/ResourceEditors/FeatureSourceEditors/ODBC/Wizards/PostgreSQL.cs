@@ -105,82 +105,60 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizar
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Database = new System.Windows.Forms.TextBox();
-			this.Port = new System.Windows.Forms.TextBox();
-			this.Server = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Database
-			// 
-			this.Database.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Database.Location = new System.Drawing.Point(152, 56);
-			this.Database.Name = "Database";
-			this.Database.Size = new System.Drawing.Size(200, 20);
-			this.Database.TabIndex = 19;
-			this.Database.Text = "textBox5";
-			this.Database.TextChanged += new System.EventHandler(this.PropertyText_Changed);
-			// 
-			// Port
-			// 
-			this.Port.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Port.Location = new System.Drawing.Point(152, 32);
-			this.Port.Name = "Port";
-			this.Port.Size = new System.Drawing.Size(200, 20);
-			this.Port.TabIndex = 18;
-			this.Port.Text = "textBox3";
-			this.Port.TextChanged += new System.EventHandler(this.PropertyText_Changed);
-			// 
-			// Server
-			// 
-			this.Server.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Server.Location = new System.Drawing.Point(152, 8);
-			this.Server.Name = "Server";
-			this.Server.Size = new System.Drawing.Size(200, 20);
-			this.Server.TabIndex = 17;
-			this.Server.Text = "textBox2";
-			this.Server.TextChanged += new System.EventHandler(this.PropertyText_Changed);
-			// 
-			// label5
-			// 
-			this.label5.Location = new System.Drawing.Point(8, 56);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(136, 16);
-			this.label5.TabIndex = 15;
-			this.label5.Text = "Database";
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 32);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(136, 16);
-			this.label3.TabIndex = 13;
-			this.label3.Text = "Port";
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 8);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(136, 16);
-			this.label2.TabIndex = 12;
-			this.label2.Text = "Server";
-			// 
-			// PostgreSQL
-			// 
-			this.Controls.Add(this.Database);
-			this.Controls.Add(this.Port);
-			this.Controls.Add(this.Server);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Name = "PostgreSQL";
-			this.Size = new System.Drawing.Size(360, 80);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PostgreSQL));
+            this.Database = new System.Windows.Forms.TextBox();
+            this.Port = new System.Windows.Forms.TextBox();
+            this.Server = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Database
+            // 
+            resources.ApplyResources(this.Database, "Database");
+            this.Database.Name = "Database";
+            this.Database.TextChanged += new System.EventHandler(this.PropertyText_Changed);
+            // 
+            // Port
+            // 
+            resources.ApplyResources(this.Port, "Port");
+            this.Port.Name = "Port";
+            this.Port.TextChanged += new System.EventHandler(this.PropertyText_Changed);
+            // 
+            // Server
+            // 
+            resources.ApplyResources(this.Server, "Server");
+            this.Server.Name = "Server";
+            this.Server.TextChanged += new System.EventHandler(this.PropertyText_Changed);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // PostgreSQL
+            // 
+            this.Controls.Add(this.Database);
+            this.Controls.Add(this.Port);
+            this.Controls.Add(this.Server);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Name = "PostgreSQL";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

@@ -43,13 +43,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Windows.Forms.Panel contentPanel;
 		private ResourceEditors.FeatureSourceEditors.Gdal.Simple simple;
 		private ResourceEditors.FeatureSourceEditors.Gdal.Composite composite;
-		private Globalizator.Globalizator m_globalizor;
 
 		public FeatureSourceEditorGdal()
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-			m_globalizor = new Globalizator.Globalizator(this);
 			simple.Visible = composite.Visible = false;
 			simple.Dock = composite.Dock = DockStyle.Fill;
 		}
@@ -59,8 +57,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			m_editor = editor;
 			m_feature = feature;
-			simple.SetItem(m_editor, m_feature, m_globalizor);
-			composite.SetItem(m_editor, m_feature, m_globalizor);
+			simple.SetItem(m_editor, m_feature);
+			composite.SetItem(m_editor, m_feature);
 
 			UpdateDisplay();
 		}
@@ -87,77 +85,58 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.toolTips = new System.Windows.Forms.ToolTip(this.components);
-			this.label1 = new System.Windows.Forms.Label();
-			this.TypeCombo = new System.Windows.Forms.ComboBox();
-			this.contentPanel = new System.Windows.Forms.Panel();
-			this.simple = new ResourceEditors.FeatureSourceEditors.Gdal.Simple();
-			this.composite = new ResourceEditors.FeatureSourceEditors.Gdal.Composite();
-			this.contentPanel.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(88, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Type";
-			// 
-			// TypeCombo
-			// 
-			this.TypeCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.TypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.TypeCombo.Items.AddRange(new object[] {
-														   "Single file or folder",
-														   "Composite"});
-			this.TypeCombo.Location = new System.Drawing.Point(104, 8);
-			this.TypeCombo.Name = "TypeCombo";
-			this.TypeCombo.Size = new System.Drawing.Size(272, 21);
-			this.TypeCombo.TabIndex = 1;
-			this.TypeCombo.SelectedIndexChanged += new System.EventHandler(this.TypeCombo_SelectedIndexChanged);
-			// 
-			// contentPanel
-			// 
-			this.contentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.contentPanel.Controls.Add(this.composite);
-			this.contentPanel.Controls.Add(this.simple);
-			this.contentPanel.Location = new System.Drawing.Point(8, 40);
-			this.contentPanel.Name = "contentPanel";
-			this.contentPanel.Size = new System.Drawing.Size(368, 296);
-			this.contentPanel.TabIndex = 2;
-			// 
-			// simple
-			// 
-			this.simple.AutoScroll = true;
-			this.simple.AutoScrollMinSize = new System.Drawing.Size(216, 40);
-			this.simple.Location = new System.Drawing.Point(16, 16);
-			this.simple.Name = "simple";
-			this.simple.Size = new System.Drawing.Size(216, 40);
-			this.simple.TabIndex = 0;
-			// 
-			// composite
-			// 
-			this.composite.Location = new System.Drawing.Point(8, 80);
-			this.composite.Name = "composite";
-			this.composite.Size = new System.Drawing.Size(344, 120);
-			this.composite.TabIndex = 1;
-			// 
-			// FeatureSourceEditorGdal
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(384, 32);
-			this.Controls.Add(this.contentPanel);
-			this.Controls.Add(this.TypeCombo);
-			this.Controls.Add(this.label1);
-			this.Name = "FeatureSourceEditorGdal";
-			this.Size = new System.Drawing.Size(384, 344);
-			this.contentPanel.ResumeLayout(false);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditorGdal));
+            this.toolTips = new System.Windows.Forms.ToolTip(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.TypeCombo = new System.Windows.Forms.ComboBox();
+            this.contentPanel = new System.Windows.Forms.Panel();
+            this.composite = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal.Composite();
+            this.simple = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal.Simple();
+            this.contentPanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // TypeCombo
+            // 
+            resources.ApplyResources(this.TypeCombo, "TypeCombo");
+            this.TypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TypeCombo.Items.AddRange(new object[] {
+            resources.GetString("TypeCombo.Items"),
+            resources.GetString("TypeCombo.Items1")});
+            this.TypeCombo.Name = "TypeCombo";
+            this.TypeCombo.SelectedIndexChanged += new System.EventHandler(this.TypeCombo_SelectedIndexChanged);
+            // 
+            // contentPanel
+            // 
+            resources.ApplyResources(this.contentPanel, "contentPanel");
+            this.contentPanel.Controls.Add(this.composite);
+            this.contentPanel.Controls.Add(this.simple);
+            this.contentPanel.Name = "contentPanel";
+            // 
+            // composite
+            // 
+            resources.ApplyResources(this.composite, "composite");
+            this.composite.Name = "composite";
+            // 
+            // simple
+            // 
+            resources.ApplyResources(this.simple, "simple");
+            this.simple.Name = "simple";
+            // 
+            // FeatureSourceEditorGdal
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.contentPanel);
+            this.Controls.Add(this.TypeCombo);
+            this.Controls.Add(this.label1);
+            this.Name = "FeatureSourceEditorGdal";
+            this.contentPanel.ResumeLayout(false);
+            this.ResumeLayout(false);
 
 		}
 		#endregion
@@ -168,8 +147,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			set 
 			{
 				m_feature = (OSGeo.MapGuide.MaestroAPI.FeatureSource)value;
-				simple.SetItem(m_editor, m_feature, m_globalizor);
-				composite.SetItem(m_editor, m_feature, m_globalizor);
+				simple.SetItem(m_editor, m_feature);
+				composite.SetItem(m_editor, m_feature);
 				UpdateDisplay();
 			}
 		}

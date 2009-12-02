@@ -74,83 +74,59 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.ButtonPanel = new System.Windows.Forms.Panel();
-			this.CancelBtn = new System.Windows.Forms.Button();
-			this.OKBtn = new System.Windows.Forms.Button();
-			this.FileList = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.ButtonPanel.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// ButtonPanel
-			// 
-			this.ButtonPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.ButtonPanel.Controls.Add(this.CancelBtn);
-			this.ButtonPanel.Controls.Add(this.OKBtn);
-			this.ButtonPanel.Location = new System.Drawing.Point(10, 36);
-			this.ButtonPanel.Name = "ButtonPanel";
-			this.ButtonPanel.Size = new System.Drawing.Size(500, 24);
-			this.ButtonPanel.TabIndex = 17;
-			// 
-			// CancelBtn
-			// 
-			this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.CancelBtn.Location = new System.Drawing.Point(258, 0);
-			this.CancelBtn.Name = "CancelBtn";
-			this.CancelBtn.Size = new System.Drawing.Size(96, 24);
-			this.CancelBtn.TabIndex = 13;
-			this.CancelBtn.Text = "Cancel";
-			// 
-			// OKBtn
-			// 
-			this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.OKBtn.Enabled = false;
-			this.OKBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.OKBtn.Location = new System.Drawing.Point(146, 0);
-			this.OKBtn.Name = "OKBtn";
-			this.OKBtn.Size = new System.Drawing.Size(96, 24);
-			this.OKBtn.TabIndex = 12;
-			this.OKBtn.Text = "OK";
-			this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
-			// 
-			// FileList
-			// 
-			this.FileList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.FileList.Location = new System.Drawing.Point(104, 8);
-			this.FileList.Name = "FileList";
-			this.FileList.Size = new System.Drawing.Size(400, 20);
-			this.FileList.TabIndex = 16;
-			this.FileList.Text = "";
-			this.FileList.TextChanged += new System.EventHandler(this.FileList_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(10, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(70, 16);
-			this.label1.TabIndex = 15;
-			this.label1.Text = "Folder path";
-			// 
-			// AddFolder
-			// 
-			this.AcceptButton = this.OKBtn;
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(520, 69);
-			this.Controls.Add(this.ButtonPanel);
-			this.Controls.Add(this.FileList);
-			this.Controls.Add(this.label1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "AddFolder";
-			this.Text = "Add folder";
-			this.ButtonPanel.ResumeLayout(false);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddFolder));
+            this.ButtonPanel = new System.Windows.Forms.Panel();
+            this.CancelBtn = new System.Windows.Forms.Button();
+            this.OKBtn = new System.Windows.Forms.Button();
+            this.FileList = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ButtonPanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // ButtonPanel
+            // 
+            resources.ApplyResources(this.ButtonPanel, "ButtonPanel");
+            this.ButtonPanel.Controls.Add(this.CancelBtn);
+            this.ButtonPanel.Controls.Add(this.OKBtn);
+            this.ButtonPanel.Name = "ButtonPanel";
+            // 
+            // CancelBtn
+            // 
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
+            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelBtn.Name = "CancelBtn";
+            // 
+            // OKBtn
+            // 
+            resources.ApplyResources(this.OKBtn, "OKBtn");
+            this.OKBtn.Name = "OKBtn";
+            this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
+            // 
+            // FileList
+            // 
+            resources.ApplyResources(this.FileList, "FileList");
+            this.FileList.Name = "FileList";
+            this.FileList.TextChanged += new System.EventHandler(this.FileList_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // AddFolder
+            // 
+            this.AcceptButton = this.OKBtn;
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.ButtonPanel);
+            this.Controls.Add(this.FileList);
+            this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "AddFolder";
+            this.ButtonPanel.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

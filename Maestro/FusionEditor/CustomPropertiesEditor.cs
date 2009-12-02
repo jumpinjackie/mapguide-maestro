@@ -68,27 +68,25 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.DataGrid = new System.Windows.Forms.DataGrid();
-			((System.ComponentModel.ISupportInitialize)(this.DataGrid)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// DataGrid
-			// 
-			this.DataGrid.DataMember = "";
-			this.DataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.DataGrid.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-			this.DataGrid.Location = new System.Drawing.Point(0, 0);
-			this.DataGrid.Name = "DataGrid";
-			this.DataGrid.Size = new System.Drawing.Size(384, 376);
-			this.DataGrid.TabIndex = 0;
-			// 
-			// CustomPropertiesEditor
-			// 
-			this.Controls.Add(this.DataGrid);
-			this.Name = "CustomPropertiesEditor";
-			this.Size = new System.Drawing.Size(384, 376);
-			((System.ComponentModel.ISupportInitialize)(this.DataGrid)).EndInit();
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomPropertiesEditor));
+            this.DataGrid = new System.Windows.Forms.DataGrid();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // DataGrid
+            // 
+            this.DataGrid.DataMember = "";
+            resources.ApplyResources(this.DataGrid, "DataGrid");
+            this.DataGrid.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.DataGrid.Name = "DataGrid";
+            // 
+            // CustomPropertiesEditor
+            // 
+            this.Controls.Add(this.DataGrid);
+            this.Name = "CustomPropertiesEditor";
+            resources.ApplyResources(this, "$this");
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).EndInit();
+            this.ResumeLayout(false);
 
 		}
 		#endregion

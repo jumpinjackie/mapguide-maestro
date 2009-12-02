@@ -36,8 +36,6 @@ namespace OSGeo.MapGuide.Maestro
         private ResourceDocumentHeaderType m_resourceHeader;
         private ResourceFolderHeaderType m_folderHeader;
 
-        private Globalizator.Globalizator m_globalizor = null;
-
         private bool m_isUpdating = false;
         private string[] m_srslist = null;
 
@@ -52,14 +50,14 @@ namespace OSGeo.MapGuide.Maestro
 
         private string[] StatusNames =
         {
-            "Read/write",
-            "Read only",
-            "No access",
-            "Read/write",
-            "Read only",
-            "No access",
-            "Inherited",
-            "Inherited"
+            Strings.ResourceProperties.ReadWriteAccess,
+            Strings.ResourceProperties.ReadOnlyAccess,
+            Strings.ResourceProperties.NoAccess,
+            Strings.ResourceProperties.ReadWriteAccess,
+            Strings.ResourceProperties.ReadOnlyAccess,
+            Strings.ResourceProperties.NoAccess,
+            Strings.ResourceProperties.InheritedAccess,
+            Strings.ResourceProperties.InheritedAccess
         };
 
         private object m_lock = new object();
@@ -87,9 +85,6 @@ namespace OSGeo.MapGuide.Maestro
         private ResourceProperties()
         {
             InitializeComponent();
-            m_globalizor = new Globalizator.Globalizator(this);
-            for (int i = 0; i < StatusNames.Length; i++)
-                StatusNames[i] = m_globalizor.Translate(StatusNames[i]);
         }
 
         private void ResourceProperties_Load(object sender, EventArgs e)
@@ -616,7 +611,7 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format(m_globalizor.Translate("Failed to save the resource properties: {0}"), ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.ResourceProperties.SaveError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -776,13 +771,13 @@ namespace OSGeo.MapGuide.Maestro
                                 srs = root["Bounds"].Attributes["SRS"].Value;
                         }
                         else
-                            throw new Exception("Missing bounds tag");
+                            throw new Exception(Strings.ResourceProperties.MissingBoundsError);
                     }
                 }
                 catch (Exception ex)
                 {
                     warnedEPSG = true;
-                    MessageBox.Show(this, string.Format("Failed to decode the current bounds,\nyou must re-enter the epsg code in the SRS tag manually.\nError message: {0}.", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Strings.ResourceProperties.BoundsDecodeError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 System.Globalization.CultureInfo ic = System.Globalization.CultureInfo.InvariantCulture;
@@ -799,7 +794,7 @@ namespace OSGeo.MapGuide.Maestro
 
                 if ((srs == "" || srs == "EPSG:????") && !warnedEPSG)
                 {
-                    MessageBox.Show(this, "You must manually enter the EPSG code for the generated bounds.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(this, Strings.ResourceProperties.EpsgMissingWarning, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     WMSBounds.SelectionStart = WMSBounds.Text.IndexOf("SRS=\"") + "SRS=\"".Length;
                     WMSBounds.SelectionLength = WMSBounds.Text.IndexOf("\"", WMSBounds.SelectionStart) - WMSBounds.SelectionStart;
                     WMSBounds.ScrollToCaret();
@@ -808,7 +803,7 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, "Failed to obtain the extent for the WMS data.\nError message: " + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.ResourceProperties.WMSBoundsReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -840,13 +835,13 @@ namespace OSGeo.MapGuide.Maestro
                         }
 
                 if (env == null)
-                    throw new Exception("No spatial data found in FeatureSource" + (failures ? ", one or more queries failed to execute" : ""));
+                    throw new Exception(failures ? Strings.ResourceProperties.NoSpatialDataWithFailuresError : Strings.ResourceProperties.NoSpatialDataError);
 
                 WFSBounds.Text = "<Bounds west=\"" + env.MinX.ToString(ic) + "\" east=\"" + env.MaxX.ToString(ic) + "\" south=\"" + env.MinY.ToString(ic) + "\" north=\"" + env.MaxY.ToString(ic) + "\" />";
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, "Failed to obtain the extent for the WFS data.\nError message: " + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.ResourceProperties.WFSBoundsReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -900,9 +895,9 @@ namespace OSGeo.MapGuide.Maestro
             if (e.Error != null || e.Result as object[] == null || (e.Result as object[]).Length != 2)
             {
                 if (e.Error != null)
-                    MessageBox.Show(this, m_globalizor.Translate(string.Format("Failed to read resource references: {0}", e.Error.Message)), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Strings.ResourceProperties.ReferenceReadSpecificError, e.Error.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
-                    MessageBox.Show(this, m_globalizor.Translate(string.Format("Failed to read resource references")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, Strings.ResourceProperties.ReferenceReadError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }

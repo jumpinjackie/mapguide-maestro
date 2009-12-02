@@ -48,7 +48,6 @@ namespace OSGeo.MapGuide.Maestro
         private Label label2;
         private LinkLabel ziplibLinkLabel;
         private LinkLabel colorBrewerlinkLabel;
-		private  Globalizator.Globalizator m_globalizor = null;
 
 		public FormAbout()
 		{
@@ -56,7 +55,6 @@ namespace OSGeo.MapGuide.Maestro
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			m_globalizor = new  Globalizator.Globalizator(this);
             this.Icon = FormMain.MaestroIcon;
         }
 
@@ -111,114 +109,75 @@ namespace OSGeo.MapGuide.Maestro
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(368, 8);
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(256, 256);
-            this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // linkLabel
             // 
-            this.linkLabel.Location = new System.Drawing.Point(16, 240);
+            resources.ApplyResources(this.linkLabel, "linkLabel");
             this.linkLabel.Name = "linkLabel";
-            this.linkLabel.Size = new System.Drawing.Size(328, 16);
-            this.linkLabel.TabIndex = 1;
             this.linkLabel.TabStop = true;
-            this.linkLabel.Text = "http://trac.osgeo.org/mapguide/wiki/maestro";
             this.linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_LinkClicked);
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 8);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(328, 24);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "MapGuide Maestro";
             // 
             // License
             // 
-            this.License.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.License.Location = new System.Drawing.Point(0, 0);
-            this.License.Multiline = true;
+            resources.ApplyResources(this.License, "License");
             this.License.Name = "License";
             this.License.ReadOnly = true;
-            this.License.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.License.Size = new System.Drawing.Size(320, 142);
-            this.License.TabIndex = 3;
-            this.License.Text = resources.GetString("License.Text");
             // 
             // Version
             // 
-            this.Version.Location = new System.Drawing.Point(16, 32);
+            resources.ApplyResources(this.Version, "Version");
             this.Version.Name = "Version";
-            this.Version.Size = new System.Drawing.Size(328, 16);
-            this.Version.TabIndex = 4;
-            this.Version.Text = "label2";
             // 
             // PayPalImage
             // 
             this.PayPalImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PayPalImage.Image = ((System.Drawing.Image)(resources.GetObject("PayPalImage.Image")));
-            this.PayPalImage.Location = new System.Drawing.Point(352, 8);
+            resources.ApplyResources(this.PayPalImage, "PayPalImage");
             this.PayPalImage.Name = "PayPalImage";
-            this.PayPalImage.Size = new System.Drawing.Size(72, 24);
-            this.PayPalImage.TabIndex = 5;
             this.PayPalImage.TabStop = false;
-            this.ToolTip.SetToolTip(this.PayPalImage, "Click here to open the donation page");
+            this.ToolTip.SetToolTip(this.PayPalImage, resources.GetString("PayPalImage.ToolTip"));
             this.PayPalImage.Click += new System.EventHandler(this.PayPalImage_Click);
             // 
             // Localization
             // 
-            this.Localization.Location = new System.Drawing.Point(16, 48);
+            resources.ApplyResources(this.Localization, "Localization");
             this.Localization.Name = "Localization";
-            this.Localization.Size = new System.Drawing.Size(328, 16);
-            this.Localization.TabIndex = 6;
-            this.Localization.Text = "label2";
             // 
             // tabControl
             // 
             this.tabControl.Controls.Add(this.licenseTab);
             this.tabControl.Controls.Add(this.creditsTab);
             this.tabControl.Controls.Add(this.thirdPartyTab);
-            this.tabControl.Location = new System.Drawing.Point(16, 64);
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(328, 168);
-            this.tabControl.TabIndex = 7;
             // 
             // licenseTab
             // 
             this.licenseTab.Controls.Add(this.License);
-            this.licenseTab.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.licenseTab, "licenseTab");
             this.licenseTab.Name = "licenseTab";
-            this.licenseTab.Size = new System.Drawing.Size(320, 142);
-            this.licenseTab.TabIndex = 0;
-            this.licenseTab.Text = "License";
             this.licenseTab.UseVisualStyleBackColor = true;
             // 
             // creditsTab
             // 
             this.creditsTab.Controls.Add(this.Credits);
-            this.creditsTab.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.creditsTab, "creditsTab");
             this.creditsTab.Name = "creditsTab";
-            this.creditsTab.Size = new System.Drawing.Size(320, 142);
-            this.creditsTab.TabIndex = 1;
-            this.creditsTab.Text = "Credits";
             this.creditsTab.UseVisualStyleBackColor = true;
             // 
             // Credits
             // 
-            this.Credits.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Credits.Location = new System.Drawing.Point(0, 0);
-            this.Credits.Multiline = true;
+            resources.ApplyResources(this.Credits, "Credits");
             this.Credits.Name = "Credits";
             this.Credits.ReadOnly = true;
-            this.Credits.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Credits.Size = new System.Drawing.Size(320, 142);
-            this.Credits.TabIndex = 4;
-            this.Credits.Text = resources.GetString("Credits.Text");
             // 
             // thirdPartyTab
             // 
@@ -226,61 +185,40 @@ namespace OSGeo.MapGuide.Maestro
             this.thirdPartyTab.Controls.Add(this.ziplibLinkLabel);
             this.thirdPartyTab.Controls.Add(this.tfnetLinkLabel);
             this.thirdPartyTab.Controls.Add(this.label2);
-            this.thirdPartyTab.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.thirdPartyTab, "thirdPartyTab");
             this.thirdPartyTab.Name = "thirdPartyTab";
-            this.thirdPartyTab.Size = new System.Drawing.Size(320, 142);
-            this.thirdPartyTab.TabIndex = 2;
-            this.thirdPartyTab.Text = "Thirdparty";
             this.thirdPartyTab.UseVisualStyleBackColor = true;
             // 
             // colorBrewerlinkLabel
             // 
-            this.colorBrewerlinkLabel.LinkArea = new System.Windows.Forms.LinkArea(84, 23);
-            this.colorBrewerlinkLabel.Location = new System.Drawing.Point(8, 72);
+            resources.ApplyResources(this.colorBrewerlinkLabel, "colorBrewerlinkLabel");
             this.colorBrewerlinkLabel.Name = "colorBrewerlinkLabel";
-            this.colorBrewerlinkLabel.Size = new System.Drawing.Size(304, 32);
-            this.colorBrewerlinkLabel.TabIndex = 3;
             this.colorBrewerlinkLabel.TabStop = true;
-            this.colorBrewerlinkLabel.Text = "This product includes color specifications and designs developed by Cynthia Brewe" +
-                "r (http://colorbrewer.org/).";
             this.colorBrewerlinkLabel.UseCompatibleTextRendering = true;
             this.colorBrewerlinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // ziplibLinkLabel
             // 
-            this.ziplibLinkLabel.AutoSize = true;
-            this.ziplibLinkLabel.Location = new System.Drawing.Point(8, 52);
+            resources.ApplyResources(this.ziplibLinkLabel, "ziplibLinkLabel");
             this.ziplibLinkLabel.Name = "ziplibLinkLabel";
-            this.ziplibLinkLabel.Size = new System.Drawing.Size(80, 13);
-            this.ziplibLinkLabel.TabIndex = 2;
             this.ziplibLinkLabel.TabStop = true;
-            this.ziplibLinkLabel.Text = "ICSharp Zip Lib";
             this.ziplibLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ziplibLinkLabel_LinkClicked);
             // 
             // tfnetLinkLabel
             // 
-            this.tfnetLinkLabel.AutoSize = true;
-            this.tfnetLinkLabel.Location = new System.Drawing.Point(8, 32);
+            resources.ApplyResources(this.tfnetLinkLabel, "tfnetLinkLabel");
             this.tfnetLinkLabel.Name = "tfnetLinkLabel";
-            this.tfnetLinkLabel.Size = new System.Drawing.Size(181, 13);
-            this.tfnetLinkLabel.TabIndex = 1;
             this.tfnetLinkLabel.TabStop = true;
-            this.tfnetLinkLabel.Text = "Topology Framework .NET (TF.NET)";
             this.tfnetLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.tfnetLinkLabel_LinkClicked);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(242, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "This program uses the following thirdparty libraries:";
             // 
             // FormAbout
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(632, 269);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.Localization);
             this.Controls.Add(this.PayPalImage);
@@ -292,8 +230,6 @@ namespace OSGeo.MapGuide.Maestro
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormAbout";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "About...";
             this.Load += new System.EventHandler(this.FormAbout_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayPalImage)).EndInit();
@@ -311,8 +247,8 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void FormAbout_Load(object sender, System.EventArgs e)
 		{
-			Version.Text = string.Format(m_globalizor.Translate("Version: {0}"), Application.ProductVersion);
-			Localization.Text = string.Format(m_globalizor.Translate("Selected language: {0}, OS Language: {1}"),  Globalizator.Globalizator.CurrentCulture.Name, System.Globalization.CultureInfo.CurrentUICulture.Name);
+			Version.Text = string.Format(Strings.FormAbout.VersionLabel, Application.ProductVersion);
+			Localization.Text = string.Format(Strings.FormAbout.LanguageLabel,  System.Threading.Thread.CurrentThread.CurrentUICulture, System.Globalization.CultureInfo.InstalledUICulture);
 		}
 
 		private void PayPalImage_Click(object sender, System.EventArgs e)

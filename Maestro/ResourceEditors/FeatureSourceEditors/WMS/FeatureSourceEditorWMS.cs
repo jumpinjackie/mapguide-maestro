@@ -42,13 +42,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.TextBox DefaultImageHeight;
 		private bool m_isUpdating = false;
-		private Globalizator.Globalizator m_globalizor;
 
 		public FeatureSourceEditorWMS()
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-			m_globalizor = new Globalizator.Globalizator(this);
 		}
 
 		public FeatureSourceEditorWMS(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource feature)
@@ -82,77 +80,55 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.Server = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.credentials = new ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
-			this.toolTips = new System.Windows.Forms.ToolTip(this.components);
-			this.DefaultImageHeight = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// Server
-			// 
-			this.Server.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.Server.Location = new System.Drawing.Point(152, 8);
-			this.Server.Name = "Server";
-			this.Server.Size = new System.Drawing.Size(120, 20);
-			this.Server.TabIndex = 38;
-			this.Server.Text = "";
-			this.Server.TextChanged += new System.EventHandler(this.Server_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(144, 16);
-			this.label1.TabIndex = 37;
-			this.label1.Text = "Server";
-			// 
-			// credentials
-			// 
-			this.credentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.credentials.AutoScroll = true;
-			this.credentials.AutoScrollMinSize = new System.Drawing.Size(264, 152);
-			this.credentials.Location = new System.Drawing.Point(8, 72);
-			this.credentials.Name = "credentials";
-			this.credentials.Size = new System.Drawing.Size(264, 152);
-			this.credentials.TabIndex = 36;
-			this.credentials.CredentialsChanged += new ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
-			// 
-			// DefaultImageHeight
-			// 
-			this.DefaultImageHeight.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.DefaultImageHeight.Location = new System.Drawing.Point(152, 40);
-			this.DefaultImageHeight.Name = "DefaultImageHeight";
-			this.DefaultImageHeight.Size = new System.Drawing.Size(120, 20);
-			this.DefaultImageHeight.TabIndex = 40;
-			this.DefaultImageHeight.Text = "";
-			this.DefaultImageHeight.TextChanged += new System.EventHandler(this.DefaultImageHeight_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 40);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(144, 16);
-			this.label2.TabIndex = 39;
-			this.label2.Text = "Default image height";
-			// 
-			// FeatureSourceEditorWMS
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(280, 232);
-			this.Controls.Add(this.DefaultImageHeight);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.Server);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.credentials);
-			this.Name = "FeatureSourceEditorWMS";
-			this.Size = new System.Drawing.Size(280, 232);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditorWMS));
+            this.Server = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.credentials = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials();
+            this.toolTips = new System.Windows.Forms.ToolTip(this.components);
+            this.DefaultImageHeight = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Server
+            // 
+            resources.ApplyResources(this.Server, "Server");
+            this.Server.Name = "Server";
+            this.Server.TextChanged += new System.EventHandler(this.Server_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // credentials
+            // 
+            resources.ApplyResources(this.credentials, "credentials");
+            this.credentials.Name = "credentials";
+            this.credentials.CredentialsChanged += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Credentials.CredentialsChangedDelegate(this.credentials_CredentialsChanged);
+            // 
+            // DefaultImageHeight
+            // 
+            resources.ApplyResources(this.DefaultImageHeight, "DefaultImageHeight");
+            this.DefaultImageHeight.Name = "DefaultImageHeight";
+            this.DefaultImageHeight.TextChanged += new System.EventHandler(this.DefaultImageHeight_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // FeatureSourceEditorWMS
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.DefaultImageHeight);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Server);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.credentials);
+            this.Name = "FeatureSourceEditorWMS";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

@@ -81,59 +81,45 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.MenuContainer = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.InitialTask = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// MenuContainer
-			// 
-			this.MenuContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.MenuContainer.Location = new System.Drawing.Point(104, 34);
-			this.MenuContainer.Name = "MenuContainer";
-			this.MenuContainer.Size = new System.Drawing.Size(504, 20);
-			this.MenuContainer.TabIndex = 11;
-			this.MenuContainer.Text = "";
-			this.MenuContainer.TextChanged += new System.EventHandler(this.MenuContainer_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 34);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(88, 16);
-			this.label2.TabIndex = 10;
-			this.label2.Text = "Menu container";
-			// 
-			// InitialTask
-			// 
-			this.InitialTask.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.InitialTask.Location = new System.Drawing.Point(104, 10);
-			this.InitialTask.Name = "InitialTask";
-			this.InitialTask.Size = new System.Drawing.Size(504, 20);
-			this.InitialTask.TabIndex = 9;
-			this.InitialTask.Text = "";
-			this.InitialTask.TextChanged += new System.EventHandler(this.InitialTask_TextChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 10);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(88, 16);
-			this.label1.TabIndex = 8;
-			this.label1.Text = "Initial task";
-			// 
-			// TaskPane
-			// 
-			this.Controls.Add(this.MenuContainer);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.InitialTask);
-			this.Controls.Add(this.label1);
-			this.Name = "TaskPane";
-			this.Size = new System.Drawing.Size(616, 64);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskPane));
+            this.MenuContainer = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.InitialTask = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // MenuContainer
+            // 
+            resources.ApplyResources(this.MenuContainer, "MenuContainer");
+            this.MenuContainer.Name = "MenuContainer";
+            this.MenuContainer.TextChanged += new System.EventHandler(this.MenuContainer_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // InitialTask
+            // 
+            resources.ApplyResources(this.InitialTask, "InitialTask");
+            this.InitialTask.Name = "InitialTask";
+            this.InitialTask.TextChanged += new System.EventHandler(this.InitialTask_TextChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // TaskPane
+            // 
+            this.Controls.Add(this.MenuContainer);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.InitialTask);
+            this.Controls.Add(this.label1);
+            this.Name = "TaskPane";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

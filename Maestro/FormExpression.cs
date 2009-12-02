@@ -71,14 +71,12 @@ namespace OSGeo.MapGuide.Maestro
         private FeatureSourceDescription.FeatureSourceSchema m_schema;
         private string m_providername;
         private ServerConnectionI m_connection;
-        private Globalizator.Globalizator m_globalizor = null;
         private string m_featureSource = null;
 
         public FormExpression()
         {
             InitializeComponent();
             InitAutoComplete();
-            m_globalizor = new Globalizator.Globalizator(this);
         }
 
         public string Expression
@@ -310,7 +308,7 @@ namespace OSGeo.MapGuide.Maestro
                 {
                     if (string.IsNullOrEmpty(_ttText))
                     {
-                        _ttText = string.Format("Property: {0}{1}Type: {2}", _propDef.Name, Environment.NewLine, _propDef.Type.Name);
+                        _ttText = string.Format(Strings.FormExpression.PropertyTooltip, _propDef.Name, _propDef.Type.Name);
                     }
                     return _ttText;
                 }
@@ -351,7 +349,7 @@ namespace OSGeo.MapGuide.Maestro
                 get
                 {
                     if (string.IsNullOrEmpty(_ttText))
-                        _ttText = string.Format("Function: {1}({2}){3}Description: {4}{3}Returns: {0}", GetReturnTypeString(), _func.Name, GetArgumentString(), Environment.NewLine, _func.Description);
+                        _ttText = string.Format(Strings.FormExpression.FunctionTooltip, GetReturnTypeString(), _func.Name, GetArgumentString(), _func.Description);
 
                     return _ttText;
                 }
@@ -781,7 +779,7 @@ namespace OSGeo.MapGuide.Maestro
                     ColumnValue.Tag = col.Type;
 
                     if (ColumnValue.Items.Count == 0)
-                        MessageBox.Show(this, "No values found in selected column", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(this, Strings.FormExpression.NoColumnValuesError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                     {
                         ColumnValue.Enabled = true;
@@ -791,7 +789,7 @@ namespace OSGeo.MapGuide.Maestro
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, string.Format("An error occured while reading column values: {0}", ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, string.Format(Strings.FormExpression.ColumnValueError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
         }
 

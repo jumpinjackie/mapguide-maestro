@@ -32,7 +32,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 	/// <summary>
 	/// Summary description for AboutURL.
 	/// </summary>
-	public class About : BasisWidgetEditor
+	public class AboutURL : BasisWidgetEditor
 	{
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox URLText;
@@ -41,7 +41,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		public About()
+		public AboutURL()
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
@@ -89,36 +89,30 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.URLText = new System.Windows.Forms.TextBox();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(72, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "URL";
-			// 
-			// URLText
-			// 
-			this.URLText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.URLText.Location = new System.Drawing.Point(104, 8);
-			this.URLText.Name = "URLText";
-			this.URLText.Size = new System.Drawing.Size(504, 20);
-			this.URLText.TabIndex = 1;
-			this.URLText.Text = "";
-			this.URLText.TextChanged += new System.EventHandler(this.URLText_TextChanged);
-			// 
-			// AboutURL
-			// 
-			this.Controls.Add(this.URLText);
-			this.Controls.Add(this.label1);
-			this.Name = "AboutURL";
-			this.Size = new System.Drawing.Size(616, 40);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutURL));
+            this.label1 = new System.Windows.Forms.Label();
+            this.URLText = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // URLText
+            // 
+            resources.ApplyResources(this.URLText, "URLText");
+            this.URLText.Name = "URLText";
+            this.URLText.TextChanged += new System.EventHandler(this.URLText_TextChanged);
+            // 
+            // AboutURL
+            // 
+            this.Controls.Add(this.URLText);
+            this.Controls.Add(this.label1);
+            this.Name = "AboutURL";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

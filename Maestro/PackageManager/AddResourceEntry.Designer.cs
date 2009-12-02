@@ -28,6 +28,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddResourceEntry));
             this.UseHeader = new System.Windows.Forms.CheckBox();
             this.BrowseHeaderButton = new System.Windows.Forms.Button();
             this.HeaderPath = new System.Windows.Forms.TextBox();
@@ -43,121 +44,76 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             // 
             // UseHeader
             // 
-            this.UseHeader.AutoSize = true;
-            this.UseHeader.Location = new System.Drawing.Point(8, 8);
+            resources.ApplyResources(this.UseHeader, "UseHeader");
             this.UseHeader.Name = "UseHeader";
-            this.UseHeader.Size = new System.Drawing.Size(77, 17);
-            this.UseHeader.TabIndex = 0;
-            this.UseHeader.Text = "Header file";
             this.UseHeader.UseVisualStyleBackColor = true;
             this.UseHeader.CheckedChanged += new System.EventHandler(this.UseHeader_CheckedChanged);
             // 
             // BrowseHeaderButton
             // 
-            this.BrowseHeaderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BrowseHeaderButton.Enabled = false;
-            this.BrowseHeaderButton.Location = new System.Drawing.Point(337, 8);
+            resources.ApplyResources(this.BrowseHeaderButton, "BrowseHeaderButton");
             this.BrowseHeaderButton.Name = "BrowseHeaderButton";
-            this.BrowseHeaderButton.Size = new System.Drawing.Size(24, 20);
-            this.BrowseHeaderButton.TabIndex = 1;
-            this.BrowseHeaderButton.Text = "...";
             this.BrowseHeaderButton.UseVisualStyleBackColor = true;
             this.BrowseHeaderButton.Click += new System.EventHandler(this.BrowseHeaderButton_Click);
             // 
             // HeaderPath
             // 
-            this.HeaderPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.HeaderPath.Enabled = false;
-            this.HeaderPath.Location = new System.Drawing.Point(112, 8);
+            resources.ApplyResources(this.HeaderPath, "HeaderPath");
             this.HeaderPath.Name = "HeaderPath";
-            this.HeaderPath.Size = new System.Drawing.Size(225, 20);
-            this.HeaderPath.TabIndex = 2;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 40);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Content file";
             // 
             // ContentPath
             // 
-            this.ContentPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.ContentPath.Location = new System.Drawing.Point(112, 40);
+            resources.ApplyResources(this.ContentPath, "ContentPath");
             this.ContentPath.Name = "ContentPath";
-            this.ContentPath.Size = new System.Drawing.Size(225, 20);
-            this.ContentPath.TabIndex = 4;
             this.ContentPath.TextChanged += new System.EventHandler(this.ContentPath_TextChanged);
             // 
             // BrowseContentButton
             // 
-            this.BrowseContentButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BrowseContentButton.Location = new System.Drawing.Point(337, 40);
+            resources.ApplyResources(this.BrowseContentButton, "BrowseContentButton");
             this.BrowseContentButton.Name = "BrowseContentButton";
-            this.BrowseContentButton.Size = new System.Drawing.Size(24, 20);
-            this.BrowseContentButton.TabIndex = 5;
-            this.BrowseContentButton.Text = "...";
             this.BrowseContentButton.UseVisualStyleBackColor = true;
             this.BrowseContentButton.Click += new System.EventHandler(this.BrowseContentButton_Click);
             // 
             // OKBtn
             // 
-            this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.OKBtn.Location = new System.Drawing.Point(108, 104);
+            resources.ApplyResources(this.OKBtn, "OKBtn");
             this.OKBtn.Name = "OKBtn";
-            this.OKBtn.Size = new System.Drawing.Size(75, 23);
-            this.OKBtn.TabIndex = 6;
-            this.OKBtn.Text = "OK";
             this.OKBtn.UseVisualStyleBackColor = true;
             this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(196, 104);
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.CancelBtn.TabIndex = 7;
-            this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
             // 
             // BrowseFileDialog
             // 
-            this.BrowseFileDialog.Filter = "All files (*.*)|*.*";
-            this.BrowseFileDialog.Title = "Select the file to use";
+            resources.ApplyResources(this.BrowseFileDialog, "BrowseFileDialog");
             // 
             // AlternateName
             // 
-            this.AlternateName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.AlternateName.Enabled = false;
-            this.AlternateName.Location = new System.Drawing.Point(112, 72);
+            resources.ApplyResources(this.AlternateName, "AlternateName");
             this.AlternateName.Name = "AlternateName";
-            this.AlternateName.Size = new System.Drawing.Size(225, 20);
-            this.AlternateName.TabIndex = 9;
             // 
             // UseAlternateName
             // 
-            this.UseAlternateName.AutoSize = true;
-            this.UseAlternateName.Location = new System.Drawing.Point(8, 72);
+            resources.ApplyResources(this.UseAlternateName, "UseAlternateName");
             this.UseAlternateName.Name = "UseAlternateName";
-            this.UseAlternateName.Size = new System.Drawing.Size(97, 17);
-            this.UseAlternateName.TabIndex = 8;
-            this.UseAlternateName.Text = "Alternate name";
             this.UseAlternateName.UseVisualStyleBackColor = true;
             this.UseAlternateName.CheckedChanged += new System.EventHandler(this.UseAlternateName_CheckedChanged);
             // 
             // AddResourceEntry
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(371, 135);
             this.Controls.Add(this.AlternateName);
             this.Controls.Add(this.UseAlternateName);
             this.Controls.Add(this.CancelBtn);
@@ -172,7 +128,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddResourceEntry";
-            this.Text = "Add a resource";
             this.Load += new System.EventHandler(this.AddResourceEntry_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

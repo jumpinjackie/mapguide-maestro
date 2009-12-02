@@ -30,13 +30,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
     public partial class FiniteDisplayScales : UserControl
     {
         private MaestroAPI.MapDefinition m_map;
-        private Globalizator.Globalizator m_globalizor;
         private EditorInterface m_editor;
 
         public FiniteDisplayScales()
         {
             InitializeComponent();
-            m_globalizor = new Globalizator.Globalizator(this);
         }
 
         internal void SetItem(EditorInterface editor, MaestroAPI.MapDefinition map)
@@ -51,9 +49,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             lstScales.Items.Clear();
             if (m_map.BaseMapDefinition != null && m_map.BaseMapDefinition.FiniteDisplayScale != null)
                 foreach (double d in m_map.BaseMapDefinition.FiniteDisplayScale)
-                    lstScales.Items.Add(d.ToString(m_globalizor.Culture));
+                    lstScales.Items.Add(d.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture));
 
-            listviewCount.Text = string.Format(m_globalizor.Translate("{0} scales"), lstScales.Items.Count);
+            listviewCount.Text = string.Format(Strings.FiniteDisplayScales.ScaleCountLabel, lstScales.Items.Count);
         }
 
         private void linearGeneration_CheckedChanged(object sender, EventArgs e)
@@ -69,7 +67,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
             
             if (m_map.BaseMapDefinition.FiniteDisplayScale.Count != 0)
-                if (MessageBox.Show(this, m_globalizor.Translate("Do you want to overwrite the existing scales?"), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) != DialogResult.Yes)
+                if (MessageBox.Show(this, Strings.FiniteDisplayScales.OverwriteConfirmation, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) != DialogResult.Yes)
                     return;
 
             OSGeo.MapGuide.MaestroAPI.DoubleCollection vals = new OSGeo.MapGuide.MaestroAPI.DoubleCollection();
@@ -136,7 +134,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private void lstScales_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
             double d;
-            if (!double.TryParse(e.Label, System.Globalization.NumberStyles.Float, m_globalizor.Culture, out d))
+            if (!double.TryParse(e.Label, System.Globalization.NumberStyles.Float, System.Threading.Thread.CurrentThread.CurrentUICulture, out d))
             {
                 e.CancelEdit = true;
                 return;
@@ -158,7 +156,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         {
             foreach(ListViewItem lvi in lstScales.SelectedItems)
                 for(int i = 0; i < m_map.BaseMapDefinition.FiniteDisplayScale.Count; i++)
-                    if (m_map.BaseMapDefinition.FiniteDisplayScale[i].ToString(m_globalizor.Culture) == lvi.Text)
+                    if (m_map.BaseMapDefinition.FiniteDisplayScale[i].ToString(System.Threading.Thread.CurrentThread.CurrentUICulture) == lvi.Text)
                     {
                         m_editor.HasChanged();
                         m_map.BaseMapDefinition.FiniteDisplayScale.RemoveAt(i);
@@ -195,7 +193,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             else
                 n = m_map.BaseMapDefinition.FiniteDisplayScale[m_map.BaseMapDefinition.FiniteDisplayScale.Count - 1] * 2;
 
-            ListViewItem lvi = lstScales.Items.Add(n.ToString(m_globalizor.Culture));
+            ListViewItem lvi = lstScales.Items.Add(n.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture));
             lstScales.SelectedItems.Clear();
             lstScales.EnsureVisible(lvi.Index);
             lvi.Selected = true;

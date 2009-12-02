@@ -47,100 +47,65 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             // 
             // conditionList
             // 
-            this.conditionList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.conditionList.AutoScroll = true;
+            resources.ApplyResources(this.conditionList, "conditionList");
             this.conditionList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.conditionList.Location = new System.Drawing.Point(0, 24);
             this.conditionList.Name = "conditionList";
             this.conditionList.Owner = null;
             this.conditionList.SelectedItem = null;
-            this.conditionList.Size = new System.Drawing.Size(592, 72);
-            this.conditionList.TabIndex = 2;
             this.conditionList.ItemChanged += new System.EventHandler(this.conditionList_ItemChanged);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 8);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Rule";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(304, 8);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Featurestyle";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(440, 8);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Labelstyle";
             // 
             // AddRuleButton
             // 
-            this.AddRuleButton.Image = ((System.Drawing.Image)(resources.GetObject("AddRuleButton.Image")));
-            this.AddRuleButton.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.AddRuleButton, "AddRuleButton");
             this.AddRuleButton.Name = "AddRuleButton";
-            this.AddRuleButton.Size = new System.Drawing.Size(32, 24);
-            this.AddRuleButton.TabIndex = 4;
-            this.toolTips.SetToolTip(this.AddRuleButton, "Add a new rule");
+            this.toolTips.SetToolTip(this.AddRuleButton, resources.GetString("AddRuleButton.ToolTip"));
             this.AddRuleButton.UseVisualStyleBackColor = true;
             this.AddRuleButton.Click += new System.EventHandler(this.AddRuleButton_Click);
             // 
             // CopyRuleButton
             // 
-            this.CopyRuleButton.Enabled = false;
-            this.CopyRuleButton.Image = ((System.Drawing.Image)(resources.GetObject("CopyRuleButton.Image")));
-            this.CopyRuleButton.Location = new System.Drawing.Point(136, 0);
+            resources.ApplyResources(this.CopyRuleButton, "CopyRuleButton");
             this.CopyRuleButton.Name = "CopyRuleButton";
-            this.CopyRuleButton.Size = new System.Drawing.Size(32, 24);
-            this.CopyRuleButton.TabIndex = 5;
-            this.toolTips.SetToolTip(this.CopyRuleButton, "Click to insert a copy of the current rule");
+            this.toolTips.SetToolTip(this.CopyRuleButton, resources.GetString("CopyRuleButton.ToolTip"));
             this.CopyRuleButton.UseVisualStyleBackColor = true;
             this.CopyRuleButton.Click += new System.EventHandler(this.CopyRuleButton_Click);
             // 
             // CreateThemeButton
             // 
-            this.CreateThemeButton.Image = ((System.Drawing.Image)(resources.GetObject("CreateThemeButton.Image")));
-            this.CreateThemeButton.Location = new System.Drawing.Point(104, 0);
+            resources.ApplyResources(this.CreateThemeButton, "CreateThemeButton");
             this.CreateThemeButton.Name = "CreateThemeButton";
-            this.CreateThemeButton.Size = new System.Drawing.Size(32, 24);
-            this.CreateThemeButton.TabIndex = 6;
-            this.toolTips.SetToolTip(this.CreateThemeButton, "Click to create a theme for the feature");
+            this.toolTips.SetToolTip(this.CreateThemeButton, resources.GetString("CreateThemeButton.ToolTip"));
             this.CreateThemeButton.UseVisualStyleBackColor = true;
             this.CreateThemeButton.Click += new System.EventHandler(this.CreateThemeButton_Click);
             // 
             // MoveRuleDownButton
             // 
-            this.MoveRuleDownButton.Enabled = false;
-            this.MoveRuleDownButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveRuleDownButton.Image")));
-            this.MoveRuleDownButton.Location = new System.Drawing.Point(544, 0);
+            resources.ApplyResources(this.MoveRuleDownButton, "MoveRuleDownButton");
             this.MoveRuleDownButton.Name = "MoveRuleDownButton";
-            this.MoveRuleDownButton.Size = new System.Drawing.Size(32, 24);
-            this.MoveRuleDownButton.TabIndex = 7;
-            this.toolTips.SetToolTip(this.MoveRuleDownButton, "Move the selected rule down");
+            this.toolTips.SetToolTip(this.MoveRuleDownButton, resources.GetString("MoveRuleDownButton.ToolTip"));
             this.MoveRuleDownButton.UseVisualStyleBackColor = true;
             this.MoveRuleDownButton.Click += new System.EventHandler(this.MoveRuleDownButton_Click);
             // 
             // MoveRuleUpButton
             // 
-            this.MoveRuleUpButton.Enabled = false;
-            this.MoveRuleUpButton.Image = ((System.Drawing.Image)(resources.GetObject("MoveRuleUpButton.Image")));
-            this.MoveRuleUpButton.Location = new System.Drawing.Point(512, 0);
+            resources.ApplyResources(this.MoveRuleUpButton, "MoveRuleUpButton");
             this.MoveRuleUpButton.Name = "MoveRuleUpButton";
-            this.MoveRuleUpButton.Size = new System.Drawing.Size(32, 24);
-            this.MoveRuleUpButton.TabIndex = 8;
-            this.toolTips.SetToolTip(this.MoveRuleUpButton, "Move the selected rule up");
+            this.toolTips.SetToolTip(this.MoveRuleUpButton, resources.GetString("MoveRuleUpButton.ToolTip"));
             this.MoveRuleUpButton.UseVisualStyleBackColor = true;
             this.MoveRuleUpButton.Click += new System.EventHandler(this.MoveRuleUpButton_Click);
             // 
@@ -155,34 +120,26 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(593, 24);
-            this.panel1.TabIndex = 1;
             // 
             // ShowInLegend
             // 
-            this.ShowInLegend.AutoSize = true;
+            resources.ApplyResources(this.ShowInLegend, "ShowInLegend");
             this.ShowInLegend.Checked = true;
             this.ShowInLegend.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowInLegend.Location = new System.Drawing.Point(176, 6);
             this.ShowInLegend.Name = "ShowInLegend";
-            this.ShowInLegend.Size = new System.Drawing.Size(84, 17);
-            this.ShowInLegend.TabIndex = 9;
-            this.ShowInLegend.Text = "Legendlabel";
-            this.toolTips.SetToolTip(this.ShowInLegend, "Check to show in legend (only avalible in LayerDefinition 1.3.0 and above)");
+            this.toolTips.SetToolTip(this.ShowInLegend, resources.GetString("ShowInLegend.ToolTip"));
             this.ShowInLegend.UseVisualStyleBackColor = true;
             this.ShowInLegend.CheckedChanged += new System.EventHandler(this.ShowInLegend_CheckedChanged);
             // 
             // ConditionListButtons
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.conditionList);
             this.Controls.Add(this.panel1);
             this.Name = "ConditionListButtons";
-            this.Size = new System.Drawing.Size(593, 97);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

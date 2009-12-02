@@ -104,82 +104,68 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.NameBox = new System.Windows.Forms.TextBox();
-			this.PositionCombo = new System.Windows.Forms.ComboBox();
-			this.TypeCombo = new System.Windows.Forms.ComboBox();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(64, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Name";
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 32);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(72, 16);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "Position";
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(8, 56);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(80, 16);
-			this.label3.TabIndex = 2;
-			this.label3.Text = "Type";
-			// 
-			// NameBox
-			// 
-			this.NameBox.Location = new System.Drawing.Point(104, 8);
-			this.NameBox.Name = "NameBox";
-			this.NameBox.Size = new System.Drawing.Size(288, 20);
-			this.NameBox.TabIndex = 3;
-			this.NameBox.Text = "textBox1";
-			this.NameBox.TextChanged += new System.EventHandler(this.NameBox_TextChanged);
-			// 
-			// PositionCombo
-			// 
-			this.PositionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.PositionCombo.Items.AddRange(new object[] {
-															   "",
-															   "top",
-															   "left",
-															   "bottom",
-															   "right"});
-			this.PositionCombo.Location = new System.Drawing.Point(104, 32);
-			this.PositionCombo.Name = "PositionCombo";
-			this.PositionCombo.Size = new System.Drawing.Size(288, 21);
-			this.PositionCombo.TabIndex = 4;
-			this.PositionCombo.SelectedIndexChanged += new System.EventHandler(this.PositionCombo_SelectedIndexChanged);
-			// 
-			// TypeCombo
-			// 
-			this.TypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.TypeCombo.Location = new System.Drawing.Point(104, 56);
-			this.TypeCombo.Name = "TypeCombo";
-			this.TypeCombo.Size = new System.Drawing.Size(288, 21);
-			this.TypeCombo.TabIndex = 5;
-			this.TypeCombo.SelectedIndexChanged += new System.EventHandler(this.TypeCombo_SelectedIndexChanged);
-			// 
-			// ContainerEditor
-			// 
-			this.Controls.Add(this.TypeCombo);
-			this.Controls.Add(this.PositionCombo);
-			this.Controls.Add(this.NameBox);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Name = "ContainerEditor";
-			this.Size = new System.Drawing.Size(392, 88);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContainerEditor));
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.NameBox = new System.Windows.Forms.TextBox();
+            this.PositionCombo = new System.Windows.Forms.ComboBox();
+            this.TypeCombo = new System.Windows.Forms.ComboBox();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // NameBox
+            // 
+            resources.ApplyResources(this.NameBox, "NameBox");
+            this.NameBox.Name = "NameBox";
+            this.NameBox.TextChanged += new System.EventHandler(this.NameBox_TextChanged);
+            // 
+            // PositionCombo
+            // 
+            this.PositionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PositionCombo.Items.AddRange(new object[] {
+            resources.GetString("PositionCombo.Items"),
+            resources.GetString("PositionCombo.Items1"),
+            resources.GetString("PositionCombo.Items2"),
+            resources.GetString("PositionCombo.Items3"),
+            resources.GetString("PositionCombo.Items4")});
+            resources.ApplyResources(this.PositionCombo, "PositionCombo");
+            this.PositionCombo.Name = "PositionCombo";
+            this.PositionCombo.SelectedIndexChanged += new System.EventHandler(this.PositionCombo_SelectedIndexChanged);
+            // 
+            // TypeCombo
+            // 
+            this.TypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.TypeCombo, "TypeCombo");
+            this.TypeCombo.Name = "TypeCombo";
+            this.TypeCombo.SelectedIndexChanged += new System.EventHandler(this.TypeCombo_SelectedIndexChanged);
+            // 
+            // ContainerEditor
+            // 
+            this.Controls.Add(this.TypeCombo);
+            this.Controls.Add(this.PositionCombo);
+            this.Controls.Add(this.NameBox);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Name = "ContainerEditor";
+            resources.ApplyResources(this, "$this");
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

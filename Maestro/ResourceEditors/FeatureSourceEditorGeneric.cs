@@ -51,7 +51,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private Hashtable propertyMap = null;
 		private ResourceEditors.ResourceDataEditor resourceDataEditor;
 		private bool inUpdate = false;
-		private Globalizator.Globalizator m_globalizor = null;
 
 		public FeatureSourceEditorGeneric(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource feature)
 			: this()
@@ -79,7 +78,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				if (m_provider == null)
 				{
 					if (m_feature.Parameter == null || m_feature.Parameter.Count == 0)
-						throw new Exception(m_globalizor.Translate("This featuresource cannot be edited, because the provider is not installed on the server, and the featuresource does not contain connection information"));
+						throw new Exception(Strings.FeatureSourceEditorGeneric.MissingProviderError);
 
 
 					foreach(OSGeo.MapGuide.MaestroAPI.NameValuePairType props in m_feature.Parameter)
@@ -143,7 +142,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
 			PropertyTable.RowChanged += new DataRowChangeEventHandler(PropertyTable_RowChanged);
-			m_globalizor = new Globalizator.Globalizator(this);
 		}
 
 		/// <summary> 
@@ -168,128 +166,114 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.properties = new System.Windows.Forms.DataGrid();
-			this.PropertyTable = new System.Data.DataTable();
-			this.PropertyColumn = new System.Data.DataColumn();
-			this.ValueColumn = new System.Data.DataColumn();
-			this.RealNameColumn = new System.Data.DataColumn();
-			this.PropertiesTableStyle = new System.Windows.Forms.DataGridTableStyle();
-			this.PropertyStyleColumn = new System.Windows.Forms.DataGridTextBoxColumn();
-			this.ValueStyleColumn = new System.Windows.Forms.DataGridTextBoxColumn();
-			this.PropertyDataSet = new System.Data.DataSet();
-			this.resourceDataEditor = new ResourceEditors.ResourceDataEditor();
-			((System.ComponentModel.ISupportInitialize)(this.properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.PropertyTable)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.PropertyDataSet)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// properties
-			// 
-			this.properties.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.properties.CaptionVisible = false;
-			this.properties.DataMember = "";
-			this.properties.DataSource = this.PropertyTable;
-			this.properties.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-			this.properties.Location = new System.Drawing.Point(0, 0);
-			this.properties.Name = "properties";
-			this.properties.Size = new System.Drawing.Size(408, 136);
-			this.properties.TabIndex = 3;
-			this.properties.TableStyles.AddRange(new System.Windows.Forms.DataGridTableStyle[] {
-																								   this.PropertiesTableStyle});
-			// 
-			// PropertyTable
-			// 
-			this.PropertyTable.Columns.AddRange(new System.Data.DataColumn[] {
-																				 this.PropertyColumn,
-																				 this.ValueColumn,
-																				 this.RealNameColumn});
-			this.PropertyTable.Constraints.AddRange(new System.Data.Constraint[] {
-																					 new System.Data.UniqueConstraint("Constraint1", new string[] {
-																																					  "Property"}, true)});
-			this.PropertyTable.PrimaryKey = new System.Data.DataColumn[] {
-																			 this.PropertyColumn};
-			this.PropertyTable.TableName = "Properties";
-			// 
-			// PropertyColumn
-			// 
-			this.PropertyColumn.AllowDBNull = false;
-			this.PropertyColumn.Caption = "Property";
-			this.PropertyColumn.ColumnName = "Property";
-			this.PropertyColumn.DefaultValue = "";
-			// 
-			// ValueColumn
-			// 
-			this.ValueColumn.Caption = "Value";
-			this.ValueColumn.ColumnName = "Value";
-			this.ValueColumn.DefaultValue = "";
-			// 
-			// RealNameColumn
-			// 
-			this.RealNameColumn.Caption = "RealName";
-			this.RealNameColumn.ColumnName = "RealName";
-			// 
-			// PropertiesTableStyle
-			// 
-			this.PropertiesTableStyle.AllowSorting = false;
-			this.PropertiesTableStyle.DataGrid = this.properties;
-			this.PropertiesTableStyle.GridColumnStyles.AddRange(new System.Windows.Forms.DataGridColumnStyle[] {
-																												   this.PropertyStyleColumn,
-																												   this.ValueStyleColumn});
-			this.PropertiesTableStyle.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-			this.PropertiesTableStyle.MappingName = "Properties";
-			this.PropertiesTableStyle.RowHeadersVisible = false;
-			// 
-			// PropertyStyleColumn
-			// 
-			this.PropertyStyleColumn.Format = "";
-			this.PropertyStyleColumn.FormatInfo = null;
-			this.PropertyStyleColumn.HeaderText = "Property";
-			this.PropertyStyleColumn.MappingName = "Property";
-			this.PropertyStyleColumn.ReadOnly = true;
-			this.PropertyStyleColumn.Width = 150;
-			// 
-			// ValueStyleColumn
-			// 
-			this.ValueStyleColumn.Format = "";
-			this.ValueStyleColumn.FormatInfo = null;
-			this.ValueStyleColumn.HeaderText = "Value";
-			this.ValueStyleColumn.MappingName = "Value";
-			this.ValueStyleColumn.Width = 150;
-			// 
-			// PropertyDataSet
-			// 
-			this.PropertyDataSet.DataSetName = "PropertyDataSet";
-			this.PropertyDataSet.Locale = new System.Globalization.CultureInfo("da-DK");
-			this.PropertyDataSet.Tables.AddRange(new System.Data.DataTable[] {
-																				 this.PropertyTable});
-			// 
-			// resourceDataEditor
-			// 
-			this.resourceDataEditor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.resourceDataEditor.Enabled = false;
-			this.resourceDataEditor.Location = new System.Drawing.Point(0, 144);
-			this.resourceDataEditor.Name = "resourceDataEditor";
-			this.resourceDataEditor.ResourceExists = false;
-			this.resourceDataEditor.ResourceID = null;
-			this.resourceDataEditor.Size = new System.Drawing.Size(408, 192);
-			this.resourceDataEditor.TabIndex = 6;
-			// 
-			// FeatureSourceEditorGeneric
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(408, 344);
-			this.Controls.Add(this.resourceDataEditor);
-			this.Controls.Add(this.properties);
-			this.Name = "FeatureSourceEditorGeneric";
-			this.Size = new System.Drawing.Size(408, 344);
-			this.Load += new System.EventHandler(this.FeatureSourceEditorGeneric_Load);
-			((System.ComponentModel.ISupportInitialize)(this.properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.PropertyTable)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.PropertyDataSet)).EndInit();
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditorGeneric));
+            this.properties = new System.Windows.Forms.DataGrid();
+            this.PropertyTable = new System.Data.DataTable();
+            this.PropertyColumn = new System.Data.DataColumn();
+            this.ValueColumn = new System.Data.DataColumn();
+            this.RealNameColumn = new System.Data.DataColumn();
+            this.PropertiesTableStyle = new System.Windows.Forms.DataGridTableStyle();
+            this.PropertyStyleColumn = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.ValueStyleColumn = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.PropertyDataSet = new System.Data.DataSet();
+            this.resourceDataEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor();
+            ((System.ComponentModel.ISupportInitialize)(this.properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertyTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertyDataSet)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // properties
+            // 
+            resources.ApplyResources(this.properties, "properties");
+            this.properties.CaptionVisible = false;
+            this.properties.DataMember = "";
+            this.properties.DataSource = this.PropertyTable;
+            this.properties.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.properties.Name = "properties";
+            this.properties.TableStyles.AddRange(new System.Windows.Forms.DataGridTableStyle[] {
+            this.PropertiesTableStyle});
+            // 
+            // PropertyTable
+            // 
+            this.PropertyTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.PropertyColumn,
+            this.ValueColumn,
+            this.RealNameColumn});
+            this.PropertyTable.Constraints.AddRange(new System.Data.Constraint[] {
+            new System.Data.UniqueConstraint("Constraint1", new string[] {
+                        "Property"}, true)});
+            this.PropertyTable.PrimaryKey = new System.Data.DataColumn[] {
+        this.PropertyColumn};
+            this.PropertyTable.TableName = "Properties";
+            // 
+            // PropertyColumn
+            // 
+            this.PropertyColumn.AllowDBNull = false;
+            this.PropertyColumn.Caption = "Property";
+            this.PropertyColumn.ColumnName = "Property";
+            this.PropertyColumn.DefaultValue = "";
+            // 
+            // ValueColumn
+            // 
+            this.ValueColumn.Caption = "Value";
+            this.ValueColumn.ColumnName = "Value";
+            this.ValueColumn.DefaultValue = "";
+            // 
+            // RealNameColumn
+            // 
+            this.RealNameColumn.Caption = "RealName";
+            this.RealNameColumn.ColumnName = "RealName";
+            // 
+            // PropertiesTableStyle
+            // 
+            this.PropertiesTableStyle.AllowSorting = false;
+            this.PropertiesTableStyle.DataGrid = this.properties;
+            this.PropertiesTableStyle.GridColumnStyles.AddRange(new System.Windows.Forms.DataGridColumnStyle[] {
+            this.PropertyStyleColumn,
+            this.ValueStyleColumn});
+            this.PropertiesTableStyle.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.PropertiesTableStyle.MappingName = "Properties";
+            this.PropertiesTableStyle.RowHeadersVisible = false;
+            // 
+            // PropertyStyleColumn
+            // 
+            this.PropertyStyleColumn.Format = "";
+            this.PropertyStyleColumn.FormatInfo = null;
+            resources.ApplyResources(this.PropertyStyleColumn, "PropertyStyleColumn");
+            this.PropertyStyleColumn.ReadOnly = true;
+            // 
+            // ValueStyleColumn
+            // 
+            this.ValueStyleColumn.Format = "";
+            this.ValueStyleColumn.FormatInfo = null;
+            resources.ApplyResources(this.ValueStyleColumn, "ValueStyleColumn");
+            // 
+            // PropertyDataSet
+            // 
+            this.PropertyDataSet.DataSetName = "PropertyDataSet";
+            this.PropertyDataSet.Locale = new System.Globalization.CultureInfo("da-DK");
+            this.PropertyDataSet.Tables.AddRange(new System.Data.DataTable[] {
+            this.PropertyTable});
+            // 
+            // resourceDataEditor
+            // 
+            resources.ApplyResources(this.resourceDataEditor, "resourceDataEditor");
+            this.resourceDataEditor.Editor = null;
+            this.resourceDataEditor.Name = "resourceDataEditor";
+            this.resourceDataEditor.ResourceExists = false;
+            this.resourceDataEditor.ResourceID = null;
+            // 
+            // FeatureSourceEditorGeneric
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.resourceDataEditor);
+            this.Controls.Add(this.properties);
+            this.Name = "FeatureSourceEditorGeneric";
+            this.Load += new System.EventHandler(this.FeatureSourceEditorGeneric_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertyTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertyDataSet)).EndInit();
+            this.ResumeLayout(false);
 
 		}
 		#endregion

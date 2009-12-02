@@ -118,19 +118,164 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="RuleCondition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 1</value>
+  </data>
+  <data name="RuleCondition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 20</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="RuleCondition.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;RuleCondition.Name" xml:space="preserve">
+    <value>RuleCondition</value>
+  </data>
+  <data name="&gt;&gt;RuleCondition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RuleCondition.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;RuleCondition.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="LegendLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>169, 1</value>
+  </data>
+  <data name="LegendLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 20</value>
+  </data>
+  <data name="LegendLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;LegendLabel.Name" xml:space="preserve">
+    <value>LegendLabel</value>
+  </data>
+  <data name="&gt;&gt;LegendLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LegendLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LegendLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="EditFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>143, 1</value>
+  </data>
+  <data name="EditFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 20</value>
+  </data>
+  <data name="EditFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="EditFilter.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;EditFilter.Name" xml:space="preserve">
+    <value>EditFilter</value>
+  </data>
+  <data name="&gt;&gt;EditFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EditFilter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;EditFilter.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="DeleteButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAe9JREFUOE+FU99L
-        U3EU3976G6SnoIcpk5rU7AebFjFBaRkRCCJEOmbqMmoOUxwLVhuBbhLLBhUVCD7aS5BPPokPQRDU7CGN
-        2noI79xcbNa8n+7nyBa3280vfOB7P+dzPpxz7vlaLSZn0deHSu6rRA80HLR408+tZlodP9/ajJXLXdgI
-        j+FbIi5Yn7wp3AunHaYmryeCWDplE/HWo1n8eDqH8rO0oPQ4BSU1jY3gEF6dsINag9HL4zZ8uT6A7ft3
-        gNkYdtNJHX4m76EYm8LnwT5Qayh7rdOFwsQoqtHbUGeidRPMzcidnBoJYis0jIznpL6dZa2s3CUPdm75
-        RYR4uG5SSxZOi5UCV5DtPgvmSBWc9ju3A5sayaCiVaHcnTQiEoIyHsD3G/2iZQ5zLQtdZ+Sj4nVi88lD
-        7HeUN6tQPK3ItDvAXDH41HFESE56v2MwYBnvNTcaFK5eRD42jnxiag8P9GBrbIHaegucAweSPXcMOxec
-        UHtPAz43MOL6g2va3dcmMbZKbX2INOD2sY28twXV3qNQfQ5gqEUHcoxRQ61hK7kcDBR77KgO2PArcAjq
-        6GEB7+QYo8awSKyC68nAx/ONUHqaUPbvJRK8k/vQYRfNP1e5tposjW/iradJzAjeyf33Mf39OPh3+IsJ
-        WRiT8xtNQweCAHQ6FwAAAABJRU5ErkJggg==
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAd9JREFUOE+NU99L
+        U2EY9m8JulhjUhObmswfEROUViLCQIRIhzVdi1pjTRwGyw3B6QibgwoJgi7zJqirrsQLQRBsdVGLmF6E
+        Z5st/NE6T+d5xybH49QPHnjP8z7fc973+96vrq7GeucexNueTgHjWjoD/6apHsv9PciEH2FrNib4Pv5A
+        uNc2S22jDyE/Pl4xiTi/kMCfV0nsLqYExRfzUOZnkPF78L7ZAmoNf166bMLPe8P4Pf0ESETxLzWnw8Hc
+        FHaiE/hxZxDU6gxY9pduOwohH0qRx1DjkaoJknGJyamTfuQDo0g7WvTtfNLK2uxzYP/hiIgQC1dNKpuF
+        03JF7y1kb14F90gVPOH1Niu2NZJJRatCeTpuxGQAStCLX/eHRMs9cju8Jn7sOW3Yfvkcpy1ldQWKownp
+        DqtcsRh867ooJE/6tGUwYBkbmhsNCrd7kYsGkZudKOOZHmyNLVBbbYHnwAPJXmvE/g0b1IFWwN0GjNkP
+        cVeL3e2SY6vUVg+RBrxGtpFzNqA0cAmq2wp4GnQgxxw11BqmksPBxI7LgtKwCX+956D6zgsYk2OOGsMg
+        sQqOJxNfr1+A4jJjd6S8kWBM7nOXRTTHjnJlNFka38SawyxmBGNyJz6mo4/jrM/5P2ymCdXdB/AVAAAA
+        AElFTkSuQmCC
 </value>
+  </data>
+  <data name="DeleteButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="DeleteButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 20</value>
+  </data>
+  <data name="DeleteButton.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;DeleteButton.Name" xml:space="preserve">
+    <value>DeleteButton</value>
+  </data>
+  <data name="&gt;&gt;DeleteButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DeleteButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DeleteButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LabelStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>441, 1</value>
+  </data>
+  <data name="LabelStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 20</value>
+  </data>
+  <data name="LabelStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;LabelStyle.Name" xml:space="preserve">
+    <value>LabelStyle</value>
+  </data>
+  <data name="&gt;&gt;LabelStyle.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ItemStyle, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;LabelStyle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LabelStyle.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="FeatureStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 1</value>
+  </data>
+  <data name="FeatureStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 20</value>
+  </data>
+  <data name="FeatureStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;FeatureStyle.Name" xml:space="preserve">
+    <value>FeatureStyle</value>
+  </data>
+  <data name="&gt;&gt;FeatureStyle.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ItemStyle, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;FeatureStyle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;FeatureStyle.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>577, 23</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Condition</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

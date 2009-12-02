@@ -89,118 +89,82 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.SourceCoordsys = new System.Windows.Forms.TextBox();
-			this.TargetCoordsys = new System.Windows.Forms.TextBox();
-			this.BrowseSource = new System.Windows.Forms.Button();
-			this.BrowseTarget = new System.Windows.Forms.Button();
-			this.OKBtn = new System.Windows.Forms.Button();
-			this.CancelBtn = new System.Windows.Forms.Button();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(120, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Source";
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(8, 32);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(120, 16);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "Target";
-			// 
-			// SourceCoordsys
-			// 
-			this.SourceCoordsys.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.SourceCoordsys.Location = new System.Drawing.Point(136, 8);
-			this.SourceCoordsys.Name = "SourceCoordsys";
-			this.SourceCoordsys.Size = new System.Drawing.Size(272, 20);
-			this.SourceCoordsys.TabIndex = 3;
-			this.SourceCoordsys.Text = "";
-			// 
-			// TargetCoordsys
-			// 
-			this.TargetCoordsys.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.TargetCoordsys.Location = new System.Drawing.Point(136, 32);
-			this.TargetCoordsys.Name = "TargetCoordsys";
-			this.TargetCoordsys.Size = new System.Drawing.Size(272, 20);
-			this.TargetCoordsys.TabIndex = 4;
-			this.TargetCoordsys.Text = "";
-			// 
-			// BrowseSource
-			// 
-			this.BrowseSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BrowseSource.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.BrowseSource.Location = new System.Drawing.Point(408, 8);
-			this.BrowseSource.Name = "BrowseSource";
-			this.BrowseSource.Size = new System.Drawing.Size(24, 20);
-			this.BrowseSource.TabIndex = 6;
-			this.BrowseSource.Text = "...";
-			this.BrowseSource.Click += new System.EventHandler(this.BrowseSource_Click);
-			// 
-			// BrowseTarget
-			// 
-			this.BrowseTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BrowseTarget.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.BrowseTarget.Location = new System.Drawing.Point(408, 32);
-			this.BrowseTarget.Name = "BrowseTarget";
-			this.BrowseTarget.Size = new System.Drawing.Size(24, 20);
-			this.BrowseTarget.TabIndex = 7;
-			this.BrowseTarget.Text = "...";
-			this.BrowseTarget.Click += new System.EventHandler(this.BrowseTarget_Click);
-			// 
-			// OKBtn
-			// 
-			this.OKBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.OKBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.OKBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.OKBtn.Location = new System.Drawing.Point(128, 64);
-			this.OKBtn.Name = "OKBtn";
-			this.OKBtn.Size = new System.Drawing.Size(80, 24);
-			this.OKBtn.TabIndex = 9;
-			this.OKBtn.Text = "OK";
-			this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
-			// 
-			// CancelBtn
-			// 
-			this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.CancelBtn.Location = new System.Drawing.Point(240, 64);
-			this.CancelBtn.Name = "CancelBtn";
-			this.CancelBtn.Size = new System.Drawing.Size(80, 24);
-			this.CancelBtn.TabIndex = 10;
-			this.CancelBtn.Text = "Cancel";
-			// 
-			// CoordinateSystemOverrideDialog
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.CancelButton = this.CancelBtn;
-			this.ClientSize = new System.Drawing.Size(440, 101);
-			this.Controls.Add(this.CancelBtn);
-			this.Controls.Add(this.OKBtn);
-			this.Controls.Add(this.BrowseTarget);
-			this.Controls.Add(this.BrowseSource);
-			this.Controls.Add(this.TargetCoordsys);
-			this.Controls.Add(this.SourceCoordsys);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "CoordinateSystemOverrideDialog";
-			this.ShowInTaskbar = false;
-			this.Text = "Edit coordinate system override";
-			this.Load += new System.EventHandler(this.CoordinateSystemOverrideDialog_Load);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CoordinateSystemOverrideDialog));
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SourceCoordsys = new System.Windows.Forms.TextBox();
+            this.TargetCoordsys = new System.Windows.Forms.TextBox();
+            this.BrowseSource = new System.Windows.Forms.Button();
+            this.BrowseTarget = new System.Windows.Forms.Button();
+            this.OKBtn = new System.Windows.Forms.Button();
+            this.CancelBtn = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // SourceCoordsys
+            // 
+            resources.ApplyResources(this.SourceCoordsys, "SourceCoordsys");
+            this.SourceCoordsys.Name = "SourceCoordsys";
+            // 
+            // TargetCoordsys
+            // 
+            resources.ApplyResources(this.TargetCoordsys, "TargetCoordsys");
+            this.TargetCoordsys.Name = "TargetCoordsys";
+            // 
+            // BrowseSource
+            // 
+            resources.ApplyResources(this.BrowseSource, "BrowseSource");
+            this.BrowseSource.Name = "BrowseSource";
+            this.BrowseSource.Click += new System.EventHandler(this.BrowseSource_Click);
+            // 
+            // BrowseTarget
+            // 
+            resources.ApplyResources(this.BrowseTarget, "BrowseTarget");
+            this.BrowseTarget.Name = "BrowseTarget";
+            this.BrowseTarget.Click += new System.EventHandler(this.BrowseTarget_Click);
+            // 
+            // OKBtn
+            // 
+            resources.ApplyResources(this.OKBtn, "OKBtn");
+            this.OKBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.OKBtn.Name = "OKBtn";
+            this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
+            // 
+            // CancelBtn
+            // 
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
+            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelBtn.Name = "CancelBtn";
+            // 
+            // CoordinateSystemOverrideDialog
+            // 
+            resources.ApplyResources(this, "$this");
+            this.CancelButton = this.CancelBtn;
+            this.Controls.Add(this.CancelBtn);
+            this.Controls.Add(this.OKBtn);
+            this.Controls.Add(this.BrowseTarget);
+            this.Controls.Add(this.BrowseSource);
+            this.Controls.Add(this.TargetCoordsys);
+            this.Controls.Add(this.SourceCoordsys);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "CoordinateSystemOverrideDialog";
+            this.ShowInTaskbar = false;
+            this.Load += new System.EventHandler(this.CoordinateSystemOverrideDialog_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion
@@ -219,7 +183,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			{
 				try { SourceCoordsys.Focus(); }
 				catch {}
-				MessageBox.Show(this, "Please enter a coordinate system", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show(this, Strings.CoordinateSystemOverrideDialog.CoordinateSystemMissingError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 				return;
 			}
 
@@ -227,7 +191,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			{
 				try { TargetCoordsys.Focus(); }
 				catch {}
-				MessageBox.Show(this, "Please enter a coordinate system", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show(this, Strings.CoordinateSystemOverrideDialog.CoordinateSystemMissingError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 				return;
 			}
 

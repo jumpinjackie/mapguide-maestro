@@ -37,7 +37,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
 
             WebLayout layout = resource as WebLayout;
             if (layout.Map == null || layout.Map.ResourceId == null)
-                issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format("Layout does not specify a map")));
+                issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Strings.WebLayoutValidator.MissingMapError)));
             else
             {
                 if (recurse)
@@ -52,13 +52,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                         {
                             Topology.Geometries.Envelope mapEnv = new Topology.Geometries.Envelope(mdef.Extents.MinX, mdef.Extents.MaxX, mdef.Extents.MinY, mdef.Extents.MaxY);
                             if (!mapEnv.Contains(layout.Map.InitialView.CenterX, layout.Map.InitialView.CenterY))
-                                issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, string.Format("Layout specifies a start view that is outside the map's initial extents")));
+                                issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, string.Format(Strings.WebLayoutValidator.StartViewOutsideExtentsWarning)));
                         }
 
                     }
                     catch (Exception ex)
                     {
-                        issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format("Error validating MapDefinition {0}, message: {1}", layout.Map.ResourceId, ex.Message)));
+                        issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Strings.WebLayoutValidator.MapValidationError, layout.Map.ResourceId, ex.Message)));
                     }
                 }
             }

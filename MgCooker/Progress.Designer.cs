@@ -44,110 +44,67 @@ namespace OSGeo.MapGuide.MgCooker
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.label1, "label1");
             this.label1.AutoEllipsis = true;
-            this.label1.Location = new System.Drawing.Point(72, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(432, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Rendering begins...";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Status";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 64);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Group";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 88);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Total";
             // 
             // tilePG
             // 
-            this.tilePG.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.tilePG.Location = new System.Drawing.Point(72, 64);
+            resources.ApplyResources(this.tilePG, "tilePG");
             this.tilePG.Maximum = 10000;
             this.tilePG.Name = "tilePG";
-            this.tilePG.Size = new System.Drawing.Size(432, 16);
             this.tilePG.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.tilePG.TabIndex = 6;
             // 
             // totalPG
             // 
-            this.totalPG.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.totalPG.Location = new System.Drawing.Point(72, 88);
+            resources.ApplyResources(this.totalPG, "totalPG");
             this.totalPG.Maximum = 10000;
             this.totalPG.Name = "totalPG";
-            this.totalPG.Size = new System.Drawing.Size(432, 16);
             this.totalPG.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.totalPG.TabIndex = 8;
             // 
             // button1
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Location = new System.Drawing.Point(216, 150);
+            resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 24);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Stop";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 112);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Finish";
             // 
             // finishEstimate
             // 
-            this.finishEstimate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.finishEstimate, "finishEstimate");
             this.finishEstimate.AutoEllipsis = true;
-            this.finishEstimate.Location = new System.Drawing.Point(72, 112);
             this.finishEstimate.Name = "finishEstimate";
-            this.finishEstimate.Size = new System.Drawing.Size(432, 16);
-            this.finishEstimate.TabIndex = 11;
-            this.finishEstimate.Text = "Not estimated";
             // 
             // tileCounter
             // 
-            this.tileCounter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tileCounter, "tileCounter");
             this.tileCounter.AutoEllipsis = true;
-            this.tileCounter.Location = new System.Drawing.Point(72, 40);
             this.tileCounter.Name = "tileCounter";
-            this.tileCounter.Size = new System.Drawing.Size(432, 16);
-            this.tileCounter.TabIndex = 13;
             // 
             // Progress
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 184);
             this.Controls.Add(this.tileCounter);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.finishEstimate);
@@ -159,11 +116,9 @@ namespace OSGeo.MapGuide.MgCooker
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Progress";
-            this.Text = "Progress";
             this.Load += new System.EventHandler(this.Progress_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Progress_FormClosing);
             this.ResumeLayout(false);

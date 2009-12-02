@@ -95,129 +95,94 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.DatabaseType = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.WizardPanel = new System.Windows.Forms.Panel();
-			this.oracleMS = new ResourceEditors.FeatureSourceEditors.ODBC.Wizards.OracleMS();
-			this.oracle = new ResourceEditors.FeatureSourceEditors.ODBC.Wizards.Oracle();
-			this.informix = new ResourceEditors.FeatureSourceEditors.ODBC.Wizards.Informix();
-			this.postgreSQL = new ResourceEditors.FeatureSourceEditors.ODBC.Wizards.PostgreSQL();
-			this.msSQL = new ResourceEditors.FeatureSourceEditors.ODBC.Wizards.MsSQL();
-			this.mySQL = new ResourceEditors.FeatureSourceEditors.ODBC.Wizards.MySQL();
-			this.WizardPanel.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// DatabaseType
-			// 
-			this.DatabaseType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.DatabaseType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.DatabaseType.Items.AddRange(new object[] {
-															  "MySQL",
-															  "SQL server",
-															  "Postgre SQL",
-															  "Informix",
-															  "Oracle (Microsoft driver)",
-															  "Oracle (Oracle driver)"});
-			this.DatabaseType.Location = new System.Drawing.Point(152, 0);
-			this.DatabaseType.Name = "DatabaseType";
-			this.DatabaseType.Size = new System.Drawing.Size(184, 21);
-			this.DatabaseType.TabIndex = 0;
-			this.DatabaseType.SelectedIndexChanged += new System.EventHandler(this.DatabaseType_SelectedIndexChanged);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(0, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(112, 16);
-			this.label1.TabIndex = 4;
-			this.label1.Text = "Database type";
-			// 
-			// WizardPanel
-			// 
-			this.WizardPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.WizardPanel.Controls.Add(this.oracleMS);
-			this.WizardPanel.Controls.Add(this.oracle);
-			this.WizardPanel.Controls.Add(this.informix);
-			this.WizardPanel.Controls.Add(this.postgreSQL);
-			this.WizardPanel.Controls.Add(this.msSQL);
-			this.WizardPanel.Controls.Add(this.mySQL);
-			this.WizardPanel.Location = new System.Drawing.Point(0, 24);
-			this.WizardPanel.Name = "WizardPanel";
-			this.WizardPanel.Size = new System.Drawing.Size(336, 120);
-			this.WizardPanel.TabIndex = 5;
-			// 
-			// oracleMS
-			// 
-			this.oracleMS.Location = new System.Drawing.Point(408, 144);
-			this.oracleMS.Name = "oracleMS";
-			this.oracleMS.Size = new System.Drawing.Size(104, 80);
-			this.oracleMS.TabIndex = 5;
-			this.oracleMS.Visible = false;
-			this.oracleMS.ConnectionStringUpdated += new ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
-			// 
-			// oracle
-			// 
-			this.oracle.Location = new System.Drawing.Point(400, 24);
-			this.oracle.Name = "oracle";
-			this.oracle.Size = new System.Drawing.Size(128, 88);
-			this.oracle.TabIndex = 4;
-			this.oracle.Visible = false;
-			this.oracle.ConnectionStringUpdated += new ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
-			// 
-			// informix
-			// 
-			this.informix.AutoScroll = true;
-			this.informix.AutoScrollMinSize = new System.Drawing.Size(360, 128);
-			this.informix.Location = new System.Drawing.Point(208, 104);
-			this.informix.Name = "informix";
-			this.informix.Size = new System.Drawing.Size(176, 80);
-			this.informix.TabIndex = 3;
-			this.informix.Visible = false;
-			this.informix.ConnectionStringUpdated += new ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
-			// 
-			// postgreSQL
-			// 
-			this.postgreSQL.Location = new System.Drawing.Point(192, 16);
-			this.postgreSQL.Name = "postgreSQL";
-			this.postgreSQL.Size = new System.Drawing.Size(176, 64);
-			this.postgreSQL.TabIndex = 2;
-			this.postgreSQL.Visible = false;
-			this.postgreSQL.ConnectionStringUpdated += new ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
-			// 
-			// msSQL
-			// 
-			this.msSQL.AutoScroll = true;
-			this.msSQL.AutoScrollMinSize = new System.Drawing.Size(360, 56);
-			this.msSQL.Location = new System.Drawing.Point(16, 96);
-			this.msSQL.Name = "msSQL";
-			this.msSQL.Size = new System.Drawing.Size(168, 64);
-			this.msSQL.TabIndex = 1;
-			this.msSQL.Visible = false;
-			this.msSQL.ConnectionStringUpdated += new ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
-			// 
-			// mySQL
-			// 
-			this.mySQL.Location = new System.Drawing.Point(16, 16);
-			this.mySQL.Name = "mySQL";
-			this.mySQL.Size = new System.Drawing.Size(168, 72);
-			this.mySQL.TabIndex = 0;
-			this.mySQL.Visible = false;
-			this.mySQL.ConnectionStringUpdated += new ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
-			// 
-			// Wizard
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(336, 144);
-			this.Controls.Add(this.WizardPanel);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.DatabaseType);
-			this.Name = "Wizard";
-			this.Size = new System.Drawing.Size(336, 144);
-			this.WizardPanel.ResumeLayout(false);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Wizard));
+            this.DatabaseType = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.WizardPanel = new System.Windows.Forms.Panel();
+            this.oracleMS = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizards.OracleMS();
+            this.oracle = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizards.Oracle();
+            this.informix = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizards.Informix();
+            this.postgreSQL = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizards.PostgreSQL();
+            this.msSQL = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizards.MsSQL();
+            this.mySQL = new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizards.MySQL();
+            this.WizardPanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // DatabaseType
+            // 
+            resources.ApplyResources(this.DatabaseType, "DatabaseType");
+            this.DatabaseType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DatabaseType.Items.AddRange(new object[] {
+            resources.GetString("DatabaseType.Items"),
+            resources.GetString("DatabaseType.Items1"),
+            resources.GetString("DatabaseType.Items2"),
+            resources.GetString("DatabaseType.Items3"),
+            resources.GetString("DatabaseType.Items4"),
+            resources.GetString("DatabaseType.Items5")});
+            this.DatabaseType.Name = "DatabaseType";
+            this.DatabaseType.SelectedIndexChanged += new System.EventHandler(this.DatabaseType_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // WizardPanel
+            // 
+            resources.ApplyResources(this.WizardPanel, "WizardPanel");
+            this.WizardPanel.Controls.Add(this.oracleMS);
+            this.WizardPanel.Controls.Add(this.oracle);
+            this.WizardPanel.Controls.Add(this.informix);
+            this.WizardPanel.Controls.Add(this.postgreSQL);
+            this.WizardPanel.Controls.Add(this.msSQL);
+            this.WizardPanel.Controls.Add(this.mySQL);
+            this.WizardPanel.Name = "WizardPanel";
+            // 
+            // oracleMS
+            // 
+            resources.ApplyResources(this.oracleMS, "oracleMS");
+            this.oracleMS.Name = "oracleMS";
+            this.oracleMS.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
+            // 
+            // oracle
+            // 
+            resources.ApplyResources(this.oracle, "oracle");
+            this.oracle.Name = "oracle";
+            this.oracle.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
+            // 
+            // informix
+            // 
+            resources.ApplyResources(this.informix, "informix");
+            this.informix.Name = "informix";
+            this.informix.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
+            // 
+            // postgreSQL
+            // 
+            resources.ApplyResources(this.postgreSQL, "postgreSQL");
+            this.postgreSQL.Name = "postgreSQL";
+            this.postgreSQL.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
+            // 
+            // msSQL
+            // 
+            resources.ApplyResources(this.msSQL, "msSQL");
+            this.msSQL.Name = "msSQL";
+            this.msSQL.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
+            // 
+            // mySQL
+            // 
+            resources.ApplyResources(this.mySQL, "mySQL");
+            this.mySQL.Name = "mySQL";
+            this.mySQL.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
+            // 
+            // Wizard
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.WizardPanel);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.DatabaseType);
+            this.Name = "Wizard";
+            this.WizardPanel.ResumeLayout(false);
+            this.ResumeLayout(false);
 
 		}
 		#endregion

@@ -75,51 +75,38 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Filebased
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.FilepathText = new System.Windows.Forms.TextBox();
-			this.BrowseFileButton = new System.Windows.Forms.Button();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(0, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(112, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Folder or file path";
-			// 
-			// FilepathText
-			// 
-			this.FilepathText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.FilepathText.Location = new System.Drawing.Point(120, 0);
-			this.FilepathText.Name = "FilepathText";
-			this.FilepathText.Size = new System.Drawing.Size(104, 20);
-			this.FilepathText.TabIndex = 1;
-			this.FilepathText.Text = "textBox1";
-			this.FilepathText.TextChanged += new System.EventHandler(this.FilepathText_TextChanged);
-			// 
-			// BrowseFileButton
-			// 
-			this.BrowseFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.BrowseFileButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.BrowseFileButton.Location = new System.Drawing.Point(224, 0);
-			this.BrowseFileButton.Name = "BrowseFileButton";
-			this.BrowseFileButton.Size = new System.Drawing.Size(24, 20);
-			this.BrowseFileButton.TabIndex = 2;
-			this.BrowseFileButton.Text = "...";
-			this.BrowseFileButton.Click += new System.EventHandler(this.BrowseFileButton_Click);
-			// 
-			// Unmanaged
-			// 
-			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(248, 24);
-			this.Controls.Add(this.BrowseFileButton);
-			this.Controls.Add(this.FilepathText);
-			this.Controls.Add(this.label1);
-			this.Name = "Unmanaged";
-			this.Size = new System.Drawing.Size(248, 24);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Unmanaged));
+            this.label1 = new System.Windows.Forms.Label();
+            this.FilepathText = new System.Windows.Forms.TextBox();
+            this.BrowseFileButton = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // FilepathText
+            // 
+            resources.ApplyResources(this.FilepathText, "FilepathText");
+            this.FilepathText.Name = "FilepathText";
+            this.FilepathText.TextChanged += new System.EventHandler(this.FilepathText_TextChanged);
+            // 
+            // BrowseFileButton
+            // 
+            resources.ApplyResources(this.BrowseFileButton, "BrowseFileButton");
+            this.BrowseFileButton.Name = "BrowseFileButton";
+            this.BrowseFileButton.Click += new System.EventHandler(this.BrowseFileButton_Click);
+            // 
+            // Unmanaged
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.BrowseFileButton);
+            this.Controls.Add(this.FilepathText);
+            this.Controls.Add(this.label1);
+            this.Name = "Unmanaged";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion
