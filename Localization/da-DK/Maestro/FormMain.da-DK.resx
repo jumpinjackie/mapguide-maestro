@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="PropertiesMenu.Text" type="System.String">
+    <value>Egenskaber</value>
+  </data>
+  <data name="EditAsXmlMenu.Text" type="System.String">
+    <value>Rediger som xml</value>
+  </data>
+  <data name="LoadFromXmlMenu.Text" type="System.String">
+    <value>Indlæs fra Xml...</value>
+  </data>
+  <data name="SaveXmlAsMenu.Text" type="System.String">
+    <value>Gem Xml som...</value>
+  </data>
+  <data name="CutMenu.Text" type="System.String">
+    <value>Klip</value>
+  </data>
+  <data name="CopyMenu.Text" type="System.String">
+    <value>Kopier</value>
+  </data>
+  <data name="PasteMenu.Text" type="System.String">
+    <value>Sæt ind</value>
+  </data>
+  <data name="DeleteMenu.Text" type="System.String">
+    <value>Slet</value>
+  </data>
+  <data name="NewMenu.Text" type="System.String">
+    <value>Ny</value>
+  </data>
+  <data name="AddResourceButton.ToolTipText" type="System.String">
+    <value>Opretter en ny resource</value>
+  </data>
+  <data name="DeleteResourceButton.ToolTipText" type="System.String">
+    <value>Sletter det valgte element</value>
+  </data>
+  <data name="ResourceTreeCopy.ToolTipText" type="System.String">
+    <value>Kopierer det valgte element ind i klippebordet</value>
+  </data>
+  <data name="ResourceTreeCut.ToolTipText" type="System.String">
+    <value>Klipper det valgte element til klippebordet</value>
+  </data>
+  <data name="ResourceTreePaste.ToolTipText" type="System.String">
+    <value>Indsætter det nuværende indhold af klippebordet</value>
+  </data>
+  <data name="ResourceTreeRefreshButton.ToolTipText" type="System.String">
+    <value>Gendindlæser træoversigten så den passer med serveren</value>
+  </data>
+  <data name="MainMenuNew.Text" type="System.String">
+    <value>Ny</value>
+  </data>
+  <data name="MainMenuOpen.Text" type="System.String">
+    <value>Åbn</value>
+  </data>
+  <data name="MainMenuClose.Text" type="System.String">
+    <value>Luk</value>
+  </data>
+  <data name="MainMenuSave.Text" type="System.String">
+    <value>Gem</value>
+  </data>
+  <data name="MainMenuSaveAs.Text" type="System.String">
+    <value>Gem som...</value>
+  </data>
+  <data name="MainMenuSaveAll.Text" type="System.String">
+    <value>Gem alle</value>
+  </data>
+  <data name="MainMenuEditAsXml.Text" type="System.String">
+    <value>Rediger som Xml</value>
+  </data>
+  <data name="MainMenuSaveAsXml.Text" type="System.String">
+    <value>Gem som Xml...</value>
+  </data>
+  <data name="MainMenuLoadFromXml.Text" type="System.String">
+    <value>Indlæs fra Xml...</value>
+  </data>
+  <data name="MainMenuChangePreferences.Text" type="System.String">
+    <value>Indstillinger...</value>
+  </data>
+  <data name="MainMenuChangeServer.Text" type="System.String">
+    <value>Skift server...</value>
+  </data>
+  <data name="OpenSiteAdmin.Text" type="System.String">
+    <value>Åbn Site Administrator...</value>
+  </data>
+  <data name="MainMenuExit.Text" type="System.String">
+    <value>Afslut</value>
+  </data>
+  <data name="menuItem2.Text" type="System.String">
+    <value>Filer</value>
+  </data>
+  <data name="MainMenuCut.Text" type="System.String">
+    <value>Klip</value>
+  </data>
+  <data name="MainMenuCopy.Text" type="System.String">
+    <value>Kopier</value>
+  </data>
+  <data name="MainMenuPaste.Text" type="System.String">
+    <value>Sæt ind</value>
+  </data>
+  <data name="MainMenuEdit.Text" type="System.String">
+    <value>Rediger</value>
+  </data>
+  <data name="createPackageToolStripMenuItem.Text" type="System.String">
+    <value>Opret pakke...</value>
+  </data>
+  <data name="modifyPackageToolStripMenuItem.Text" type="System.String">
+    <value>Rediger pakke...</value>
+  </data>
+  <data name="restorePackageToolStripMenuItem.Text" type="System.String">
+    <value>Gendan pakke...</value>
+  </data>
+  <data name="packagesToolStripMenuItem.Text" type="System.String">
+    <value>Pakker</value>
+  </data>
+  <data name="viewLastExceptionToolStripMenuItem.Text" type="System.String">
+    <value>Sidste fejl...</value>
+  </data>
+  <data name="MainMenuAbout.Text" type="System.String">
+    <value>Om programmet...</value>
+  </data>
+  <data name="menuItem3.Text" type="System.String">
+    <value>Hjælp</value>
+  </data>
+  <data name="SaveResourceButton.ToolTipText" type="System.String">
+    <value>Gemmer det aktive element</value>
+  </data>
+  <data name="SaveResourceAsButton.ToolTipText" type="System.String">
+    <value>Gemmer det aktive element under et andet navn</value>
+  </data>
+  <data name="PreviewButton.ToolTipText" type="System.String">
+    <value>Viser den grafiske tilstand af det aktive element</value>
+  </data>
+  <data name="EditAsXmlButton.ToolTipText" type="System.String">
+    <value>Redigerer det valgte element i en Xml editor</value>
+  </data>
+  <data name="ClosePageButton.ToolTipText" type="System.String">
+    <value>Lukker det aktive element</value>
+  </data>
+  <data name="$this.Text" type="System.String">
+    <value>MapGuide Maestro</value>
+  </data>
+</root>

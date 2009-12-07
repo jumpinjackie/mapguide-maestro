@@ -370,7 +370,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             this.dataGrid1.AllowSorting = false;
             this.dataGrid1.CaptionVisible = false;
-            this.dataGrid1.DataMember = "";
+            this.dataGrid1.DataMember = global::OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.Strings.BasicCommand.DuplicateRenameError;
             this.dataGrid1.DataSource = this.ViewerPropertiesTable;
             resources.ApplyResources(this.dataGrid1, "dataGrid1");
             this.dataGrid1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
@@ -398,14 +398,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             // 
             // dataGridTextBoxColumn2
             // 
-            this.dataGridTextBoxColumn2.Format = "";
+            this.dataGridTextBoxColumn2.Format = global::OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.Strings.BasicCommand.DuplicateRenameError;
             this.dataGridTextBoxColumn2.FormatInfo = null;
             resources.ApplyResources(this.dataGridTextBoxColumn2, "dataGridTextBoxColumn2");
             this.dataGridTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridTextBoxColumn1
             // 
-            this.dataGridTextBoxColumn1.Format = "";
+            this.dataGridTextBoxColumn1.Format = global::OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.Strings.BasicCommand.DuplicateRenameError;
             this.dataGridTextBoxColumn1.FormatInfo = null;
             resources.ApplyResources(this.dataGridTextBoxColumn1, "dataGridTextBoxColumn1");
             // 

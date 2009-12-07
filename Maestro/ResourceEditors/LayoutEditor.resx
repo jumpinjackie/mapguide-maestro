@@ -1102,7 +1102,7 @@
     <value>commandEditor</value>
   </data>
   <data name="&gt;&gt;commandEditor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.CommandEditor, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.CommandEditor, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;commandEditor.Parent" xml:space="preserve">
     <value>MenuBox</value>
@@ -1274,6 +1274,9 @@
   <data name="ToolbarCreateButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 22</value>
   </data>
+  <data name="ToolbarCreateButton.ToolTipText" xml:space="preserve">
+    <value>Create a new item</value>
+  </data>
   <data name="ToolbarToolstrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -1344,7 +1347,7 @@
     <value>0</value>
   </data>
   <metadata name="ContextToolstrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>715, 17</value>
+    <value>0, 0</value>
   </metadata>
   <data name="ContextAddButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1462,6 +1465,9 @@
   <data name="ContextCreateButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 22</value>
   </data>
+  <data name="ContextCreateButton.ToolTipText" xml:space="preserve">
+    <value>Create a new item</value>
+  </data>
   <data name="ContextToolstrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -1535,7 +1541,7 @@
     <value>0</value>
   </data>
   <metadata name="TaskToolstrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 54</value>
+    <value>0, 0</value>
   </metadata>
   <data name="TaskAddButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1652,6 +1658,9 @@
   </data>
   <data name="TaskCreateButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 22</value>
+  </data>
+  <data name="TaskCreateButton.ToolTipText" xml:space="preserve">
+    <value>Create a new item</value>
   </data>
   <data name="TaskToolstrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1899,34 +1908,33 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAe
-        BgAAAk1TRnQBSQFMAgEBAgEAAQwBAAEMAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
-        AwABEAMAAQEBAAEgBgABEP8AFwABTAIzAZIBTAIzAZMBTAIzAZMBTAIzAZMBTAIzAZMBTAIzAZMBTAIz
-        AZMBTAIzAZMBTAIzAZMBTAIzAZMBTAIzAZMBTAIzAZIDBAEFyAABMgItAU8BlAHJAfoB/wExAdAC/wEv
-        Ac8C/wEtAc4C/wErAc0C/wEoAcwC/wEmAcsC/wEkAcoC/wEiAckC/wEgAccC/wEdAcYC/wEbAcUB/gH/
-        AV0BJAErAdTIAAEyAi0BTwFZAakB9AH/AU8B3QL/AUUB2wL/AUQB2gL/AUIB2QL/AUAB2AL/AT4B1wL/
-        ATwB1gL/AToB1QL/ATgB1AL/ATYB0gL/ATQB0QH+Af8BXwEpAS4B2sgAATICLQFPAWkBzAH5Af8BvgH0
-        Af4B/wFaAeQC/wFYAeMC/wFWAeIC/wFVAeIC/wFTAeEC/wFRAeAC/wFPAd8C/wFNAd4C/wFLAd0C/wFK
-        AdwB/gH/AVkCKgG/ASECIAEwxAABMgItAU8BZQHTAv8BkAHHAfkB/wFpAewC/wFoAesC/wFnAesC/wFl
-        AeoC/wFkAeoC/wFjAekC/wFhAegC/wFgAegC/wFfAecC/wFdAeYB/gH/AVsCKgG/AV0BJAErAdQIAAFZ
-        AisBuAFYAioBuQFYAioBuQFYAioBuQFYAioBuQFYAioBuQFYAioBuQFYAioBuQFYAioBuQFYAioBuQFY
-        AioBuQFYAioBuQFYAioBuQFYAioBuQE8AjIBZoAAATICLQFPAW8B2QL/ASoBnwH1Af8BhwHwAv8BgQHw
-        Av8BgAHwAv8BfAHwAv8BeQHwAv8BdgHwAv8BdAHwAv8BcgHvAv8BcAHvAv8BbwHvAf4B/wFbAioBvwFf
-        ASwBLgHaCAADgQH/A6EB/wOqAf8DsQH/A7MB/wOsAf8DogH/A54B/wOeAf8DngH/A54B/wOeAf8DngH/
-        A6EB/wFcAiUBxoAAATICLQFPAYEB4wL/ATUBygH6Af8B4QH0Af4B/wHbAfcB/gH/AdsB9wH+Af8B2gH3
-        Af4B/wHYAfkB/gH/AZkB9AL/AZYB9AL/AZMB9AL/AZAB9AL/AY0B8wH+Af8BWwIqAb8BWwIqAb8BIwIi
-        ATQEAAOBAf8DgQH/A5AB/wOjAf8DsQH/A7EB/wOhAf8DjAH/A4cB/wOHAf8DhwH/A4cB/wOHAf8DnAH/
-        AVwCJQHGgAABMgItAU8BkgHuAv8BVwHkAv8BVwHkAv8BVwHkAv8BVwHkAv8BVwHkAv8BSAHGAfcB/wHq
-        AfkB/gH/AeYB+QH+Af8B5QH5Af4B/wHkAfkB/gH/AeMB+QH+Af8BkgJmAe8BkQJmAe8BXQEmASwB1wQA
-        A4EB/wOBAf8DgwH/A5QB/wOmAf8DsgH/A7AB/wOfAf8DjAH/A4gB/wOIAf8DiAH/A4gB/wOcAf8BXAIl
-        AcaAAAEyAi0BTwGnAfgC/wF5AfUC/wF5AfUC/wF5AfUC/wF5AfUC/wF5AfUC/wF5AfUC/wF5AfUC/wF5
-        AfUC/wF5AfUC/wF5AfUC/wF2AfEB/gH/EAADgAH/A4EB/wOBAf8DggH/A4MB/wODAf8DggH/A4EB/wOB
-        Af8DgQH/A34B/wN8Af8DegH/A3cB/wFcAiUBxoAAATICLQFPAcED/wGcA/8BnAP/AZwD/wHWAf0B/gH/
-        Ad8B+QH+Af8B3wH5Af4B/wHfAfkB/gH/Ad8B+QH+Af8B3wH5Af4B/wHfAfkB/gH/AdAB8gH9Af/MAAEy
-        Ai0BTwHpA/8B3AP/AdwD/wHdA/8BWAIsAbnsAAFAAjMBbwFAAjMBbwFAAjMBbwFAAjMBbwMIAQv/AP8A
-        /wDrAAFCAU0BPgcAAT4DAAEoAwABQAMAARADAAEBAQABAQUAAYAXAAP/AQAE/wQAAYABAwL/BQABAwL/
-        BQABAwL/BQABAQL/BQABAQGABgABAQGABwABgAcAAYAGAAEHAYAGAAEHAv8EAAEDA/8EAAGDA/8EAAT/
-        BAAE/wQABP8EAAs=
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAE
+        BgAAAk1TRnQBSQFMAgEBAgEAARQBAAEUAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        AwABEAMAAQEBAAEgBgABEP8AFwABTAJDAZIBTAJDAZMBTAJDAZMBTAJDAZMBTAJDAZMBTAJDAZMBTAJD
+        AZMBTAJDAZMBTAJDAZMBTAJDAZMBTAJDAZMBTAJDAZIDBAEFyAADMQFPAZQByQH6Af8BMAHQAv8BLgHP
+        Av8BLAHOAv8BKgHNAv8BJwHMAv8BJQHLAv8BIwHKAv8BIQHJAv8BHwHHAv8BHAHGAv8BGgHFAf4B/wFc
+        ATYBOwHUyAADMQFPAVgBqQH0Af8BTgHdAv8BRAHbAv8BQwHaAv8BQQHZAv8BPwHYAv8BPQHXAv8BOwHW
+        Av8BOQHVAv8BNwHUAv8BNQHSAv8BMwHRAf4B/wFeATcBOgHayAADMQFPAWgBzAH5Af8BvgH0Af4B/wFZ
+        AeQC/wFXAeMC/wFVAeIC/wFUAeIC/wFSAeEC/wFQAeAC/wFOAd8C/wFMAd4C/wFKAd0C/wFJAdwB/gH/
+        AVkCPgG/AyEBMMQAAzEBTwFkAdMC/wGQAccB+QH/AWgB7AL/AWcB6wL/AWYB6wL/AWQB6gL/AWMB6gL/
+        AWIB6QL/AWAB6AL/AV8B6AL/AV4B5wL/AVwB5gH+Af8BWQI+Ab8BXAE2ATsB1AgAAVcCPwG4AVgCPwG5
+        AVgCPwG5AVgCPwG5AVgCPwG5AVgCPwG5AVgCPwG5AVgCPwG5AVgCPwG5AVgCPwG5AVgCPwG5AVgCPwG5
+        AVgCPwG5AVgCPwG5ATwCOgFmgAADMQFPAW4B2QL/ASkBnwH1Af8BhwHwAv8BgQHwAv8BgAHwAv8BewHw
+        Av8BeAHwAv8BdQHwAv8BcwHwAv8BcQHvAv8BbwHvAv8BbgHvAf4B/wFZAj4BvwFeAjoB2ggAA4EB/wOh
+        Af8DqgH/A7EB/wOzAf8DrAH/A6IB/wOeAf8DngH/A54B/wOeAf8DngH/A54B/wOhAf8BWwI6AcaAAAMx
+        AU8BgQHjAv8BNAHKAfoB/wHhAfQB/gH/AdsB9wH+Af8B2wH3Af4B/wHaAfcB/gH/AdgB+QH+Af8BmQH0
+        Av8BlgH0Av8BkwH0Av8BkAH0Av8BjQHzAf4B/wFZAj4BvwFZAj4BvwMjATQEAAOBAf8DgQH/A5AB/wOj
+        Af8DsQH/A7EB/wOhAf8DjAH/A4cB/wOHAf8DhwH/A4cB/wOHAf8DnAH/AVsCOgHGgAADMQFPAZIB7gL/
+        AVYB5AL/AVYB5AL/AVYB5AL/AVYB5AL/AVYB5AL/AUcBxgH3Af8B6gH5Af4B/wHmAfkB/gH/AeUB+QH+
+        Af8B5AH5Af4B/wHjAfkB/gH/AYwCZQHvAYwCZQHvAV0BNQE5AdcEAAOBAf8DgQH/A4MB/wOUAf8DpgH/
+        A7IB/wOwAf8DnwH/A4wB/wOIAf8DiAH/A4gB/wOIAf8DnAH/AVsCOgHGgAADMQFPAacB+AL/AXgB9QL/
+        AXgB9QL/AXgB9QL/AXgB9QL/AXgB9QL/AXgB9QL/AXgB9QL/AXgB9QL/AXgB9QL/AXgB9QL/AXUB8QH+
+        Af8QAAOAAf8DgQH/A4EB/wOCAf8DgwH/A4MB/wOCAf8DgQH/A4EB/wOBAf8DfQH/A3sB/wN5Af8DdgH/
+        AVsCOgHGgAADMQFPAcED/wGcA/8BnAP/AZwD/wHWAf0B/gH/Ad8B+QH+Af8B3wH5Af4B/wHfAfkB/gH/
+        Ad8B+QH+Af8B3wH5Af4B/wHfAfkB/gH/AdAB8gH9Af/MAAMxAU8B6QP/AdwD/wHcA/8B3QP/AVgCQQG5
+        7AABQAI9AW8BQAI9AW8BQAI9AW8BQAI9AW8DCAEL/wD/AP8A6wABQgFNAT4HAAE+AwABKAMAAUADAAEQ
+        AwABAQEAAQEFAAGAFwAD/wEABP8EAAGAAQMC/wUAAQMC/wUAAQMC/wUAAQEC/wUAAQEBgAYAAQEBgAcA
+        AYAHAAGABgABBwGABgABBwL/BAABAwP/BAABgwP/BAAE/wQABP8EAAT/BAAL
 </value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

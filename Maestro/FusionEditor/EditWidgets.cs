@@ -81,8 +81,8 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton MoveWidgetUpButton;
         private ToolStripButton MoveWidgetDownButton;
-        private ToolStripMenuItem withUserInterfaceToolStripMenuItem;
-        private ToolStripMenuItem withoutUserInterfaceToolStripMenuItem;
+        private ToolStripMenuItem AddUIWidget;
+        private ToolStripMenuItem AddWidget;
 		
 		private OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.WidgetTypeCollection m_defaultWidgets;
 
@@ -133,8 +133,8 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.WidgetList = new System.Windows.Forms.ListView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.AddWidgetButton = new System.Windows.Forms.ToolStripDropDownButton();
-            this.withUserInterfaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.withoutUserInterfaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddUIWidget = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddWidget = new System.Windows.Forms.ToolStripMenuItem();
             this.RemoveWidgetButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MoveWidgetUpButton = new System.Windows.Forms.ToolStripButton();
@@ -237,22 +237,22 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             // 
             this.AddWidgetButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.AddWidgetButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.withUserInterfaceToolStripMenuItem,
-            this.withoutUserInterfaceToolStripMenuItem});
+            this.AddUIWidget,
+            this.AddWidget});
             resources.ApplyResources(this.AddWidgetButton, "AddWidgetButton");
             this.AddWidgetButton.Name = "AddWidgetButton";
             // 
-            // withUserInterfaceToolStripMenuItem
+            // AddUIWidget
             // 
-            this.withUserInterfaceToolStripMenuItem.Name = "withUserInterfaceToolStripMenuItem";
-            resources.ApplyResources(this.withUserInterfaceToolStripMenuItem, "withUserInterfaceToolStripMenuItem");
-            this.withUserInterfaceToolStripMenuItem.Click += new System.EventHandler(this.withUserInterfaceToolStripMenuItem_Click);
+            this.AddUIWidget.Name = "AddUIWidget";
+            resources.ApplyResources(this.AddUIWidget, "AddUIWidget");
+            this.AddUIWidget.Click += new System.EventHandler(this.withUserInterfaceToolStripMenuItem_Click);
             // 
-            // withoutUserInterfaceToolStripMenuItem
+            // AddWidget
             // 
-            this.withoutUserInterfaceToolStripMenuItem.Name = "withoutUserInterfaceToolStripMenuItem";
-            resources.ApplyResources(this.withoutUserInterfaceToolStripMenuItem, "withoutUserInterfaceToolStripMenuItem");
-            this.withoutUserInterfaceToolStripMenuItem.Click += new System.EventHandler(this.withoutUserInterfaceToolStripMenuItem_Click);
+            this.AddWidget.Name = "AddWidget";
+            resources.ApplyResources(this.AddWidget, "AddWidget");
+            this.AddWidget.Click += new System.EventHandler(this.withoutUserInterfaceToolStripMenuItem_Click);
             // 
             // RemoveWidgetButton
             // 

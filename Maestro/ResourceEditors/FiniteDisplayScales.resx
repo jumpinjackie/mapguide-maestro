@@ -154,7 +154,7 @@
     <value>0</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>116, 17</value>
+    <value>3, 124</value>
   </metadata>
   <data name="listviewCount.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 17</value>
@@ -187,7 +187,7 @@
     <value>1</value>
   </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>3, 16</value>
   </metadata>
   <data name="editScalesButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -208,9 +208,6 @@
   </data>
   <data name="editScalesButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
-  </data>
-  <data name="editScalesButton.Text" xml:space="preserve">
-    <value>toolStripButton1</value>
   </data>
   <data name="editScalesButton.ToolTipText" xml:space="preserve">
     <value>Edit the scales manually</value>
@@ -238,8 +235,8 @@
   <data name="RemoveScaleButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="RemoveScaleButton.Text" xml:space="preserve">
-    <value>toolStripButton2</value>
+  <data name="RemoveScaleButton.ToolTipText" xml:space="preserve">
+    <value>Remove the selected scalerange</value>
   </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>

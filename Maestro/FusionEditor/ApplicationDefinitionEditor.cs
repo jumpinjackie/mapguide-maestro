@@ -91,9 +91,9 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
         private ToolStripButton MoveWidgetDownButton;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton ConfigureWidgetsButton;
-        private ToolStripMenuItem seperatorToolStripMenuItem;
-        private ToolStripMenuItem submenuToolStripMenuItem;
-        private ToolStripMenuItem widgetToolStripMenuItem;
+        private ToolStripMenuItem AddWidgetSeperatorMenu;
+        private ToolStripMenuItem AddWidgetSubmenuMenu;
+        private ToolStripMenuItem AddWidgetEntryMenu;
 
 
 		private bool m_isUpdating = false;
@@ -295,9 +295,9 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.WidgetTree = new System.Windows.Forms.TreeView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.AddWidgetButton = new System.Windows.Forms.ToolStripDropDownButton();
-            this.seperatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.submenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.widgetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddWidgetSeperatorMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddWidgetSubmenuMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddWidgetEntryMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.AddContainerButton = new System.Windows.Forms.ToolStripButton();
             this.RemoveWidgetButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -610,29 +610,29 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             // 
             this.AddWidgetButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.AddWidgetButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.seperatorToolStripMenuItem,
-            this.submenuToolStripMenuItem,
-            this.widgetToolStripMenuItem});
+            this.AddWidgetSeperatorMenu,
+            this.AddWidgetSubmenuMenu,
+            this.AddWidgetEntryMenu});
             resources.ApplyResources(this.AddWidgetButton, "AddWidgetButton");
             this.AddWidgetButton.Name = "AddWidgetButton";
             // 
-            // seperatorToolStripMenuItem
+            // AddWidgetSeperatorMenu
             // 
-            this.seperatorToolStripMenuItem.Name = "seperatorToolStripMenuItem";
-            resources.ApplyResources(this.seperatorToolStripMenuItem, "seperatorToolStripMenuItem");
-            this.seperatorToolStripMenuItem.Click += new System.EventHandler(this.seperatorToolStripMenuItem_Click);
+            this.AddWidgetSeperatorMenu.Name = "AddWidgetSeperatorMenu";
+            resources.ApplyResources(this.AddWidgetSeperatorMenu, "AddWidgetSeperatorMenu");
+            this.AddWidgetSeperatorMenu.Click += new System.EventHandler(this.seperatorToolStripMenuItem_Click);
             // 
-            // submenuToolStripMenuItem
+            // AddWidgetSubmenuMenu
             // 
-            this.submenuToolStripMenuItem.Name = "submenuToolStripMenuItem";
-            resources.ApplyResources(this.submenuToolStripMenuItem, "submenuToolStripMenuItem");
-            this.submenuToolStripMenuItem.Click += new System.EventHandler(this.submenuToolStripMenuItem_Click);
+            this.AddWidgetSubmenuMenu.Name = "AddWidgetSubmenuMenu";
+            resources.ApplyResources(this.AddWidgetSubmenuMenu, "AddWidgetSubmenuMenu");
+            this.AddWidgetSubmenuMenu.Click += new System.EventHandler(this.submenuToolStripMenuItem_Click);
             // 
-            // widgetToolStripMenuItem
+            // AddWidgetEntryMenu
             // 
-            this.widgetToolStripMenuItem.Name = "widgetToolStripMenuItem";
-            resources.ApplyResources(this.widgetToolStripMenuItem, "widgetToolStripMenuItem");
-            this.widgetToolStripMenuItem.Click += new System.EventHandler(this.widgetToolStripMenuItem_Click);
+            this.AddWidgetEntryMenu.Name = "AddWidgetEntryMenu";
+            resources.ApplyResources(this.AddWidgetEntryMenu, "AddWidgetEntryMenu");
+            this.AddWidgetEntryMenu.Click += new System.EventHandler(this.widgetToolStripMenuItem_Click);
             // 
             // AddContainerButton
             // 

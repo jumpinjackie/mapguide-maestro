@@ -76,8 +76,21 @@ namespace OSGeo.MapGuide.Maestro
             foreach (System.Globalization.CultureInfo ci in m_supportedLanguages)
                 cmbLanguage.Items.Add(ci.DisplayName);
 
+            try
+            {
+                for (int i = 0; i < m_supportedLanguages.Count; i++)
+                    if (string.Compare(m_supportedLanguages[i].Name, System.Threading.Thread.CurrentThread.CurrentUICulture.Name, true) == 0)
+                    {
+                        cmbLanguage.SelectedIndex = i;
+                        break;
+                    }
+            }
+            catch { }
+
+
 			if (cmbLanguage.SelectedIndex < 0)
 				cmbLanguage.SelectedIndex = 0;
+
 
 		}
 
@@ -349,18 +362,6 @@ namespace OSGeo.MapGuide.Maestro
                 try { cmbServerUrl.SelectedIndex = m_sitelist.PreferedSite; }
                 catch { } 
 				chkAutoConnect.Checked = m_sitelist.AutoConnect;
-
-                try
-                {
-                    if (!string.IsNullOrEmpty(m_sitelist.GUILanguage))
-                        for(int i = 0; i < m_supportedLanguages.Count; i++)
-                            if (string.Compare(m_supportedLanguages[i].Name, m_sitelist.GUILanguage, true) == 0)
-                            {
-                                cmbLanguage.SelectedIndex = i;
-                                break;
-                            }
-                }
-                catch {}
 			}
 
             txtPassword_TextChanged(null, null);

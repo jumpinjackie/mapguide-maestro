@@ -1,0 +1,145 @@
+Document: ..\Maestro\Localization\fr-FR\Maestro.BrowseResource.fr-FR.resx
+Original key: Print layout
+Translated key: Print layout
+Value: Mise en page d'impression
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.FormMain.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.FormMain.AddFolderButton.ToolTipText
+Translated key: OSGeo.MapGuide.Maestro.FormMain.AddFolderButton.ToolTipText
+Value: Créer un nouveau dossier
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.LengthyOperation.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.LengthyOperation.columnHeader1.Text
+Translated key: OSGeo.MapGuide.Maestro.LengthyOperation.columnHeader1.Text
+Value: En-tête de colonne
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.PackageManager.PackageEditor.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.LoaderGroup.Text
+Translated key: Reading package contents ...
+Value: Lecture du contenu du paquetage, s.v.p. patientez...
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.PackageManager.PackageProgress.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.Text
+Translated key: OSGeo.MapGuide.MaestroAPI.PackageBuilder.PackageProgress.Text
+Value: Construction du paquetage
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.PackageManager.PackageProgress.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.label1.Text
+Translated key: OSGeo.MapGuide.MaestroAPI.PackageBuilder.PackageProgress.label1.Text
+Value: Fichier
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.PackageManager.PackageProgress.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.TotalLabel.Text
+Translated key: OSGeo.MapGuide.MaestroAPI.PackageBuilder.PackageProgress.TotalLabel.Text
+Value: Total
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.PackageManager.PackageProgress.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.label3.Text
+Translated key: OSGeo.MapGuide.MaestroAPI.PackageBuilder.PackageProgress.label3.Text
+Value: Opération
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.PackageManager.PackageProgress.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.CancelBtn.Text
+Translated key: OSGeo.MapGuide.MaestroAPI.PackageBuilder.PackageProgress.CancelBtn.Text
+Value: Annuler
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.FeatureSourceEditorBase.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.label2.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.label2.Text
+Value: La source d'entités peut être jointe avec d'autres propriétés et contenir des valeurs calculées à la volée.
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.FeatureSourceEditorMySQL.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorMySQL.label2.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.MySQL.FeatureSourceEditorMySQL.label2.Text
+Value: Port
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.FeatureSourceEditorODBC.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.wizard.msSQL.label5.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizard.msSQL.label5.Text
+Value: Base de données
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.FeatureSourceEditorODBC.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.wizard.msSQL.label2.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizard.msSQL.label2.Text
+Value: Serveur
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.FeatureSourceEditorOGR.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorOGR.managed.managedFileControl.toolStrip.Items[3].ToolTipText
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ManagedFileControl.toolStrip.Items[3].ToolTipText
+Value: Utiliser tous les fichiers dans la source d'entités comme source de données
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.FeatureSourceEditorOGR.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorOGR.managed.UseFolderButton.ToolTipText
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ManageFileControl.UseFolderButton.ToolTipText
+Value: Utiliser tous les fichiers dans la source d'entités comme source de données
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.FeatureSourceEditorSDF.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorSDF.LocationType.Items[0]
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Filebased.FilebasedFeatureSourceEditor.LocationType.Items[0]
+Value: Fichier interne au serveur MapGuide (Managed)Système de fichiers du serveur (Unmanaged)
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.FeatureSourceEditorSHP.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorSHP.unmanaged.label2.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.SHP.FeatureSourceEditorSHP.label2.Text
+Value: Chemin de fichier ou de dossier
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.FeatureSourceEditorSHP.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorSHP.ManagedEditor.label2.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Filebased.FilebasedFeatureSourceEditor.ManagedEditor.label2.Text
+Value: Chemin pour fichiers temporaires
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.FeatureSourceEditorSHP.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorSHP.ManagedEditor.UseFolderButton.ToolTipText
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Filebased.FilebasedFeatureSourceEditor.ManagedEditor.UseFolderButton.ToolTipText
+Value: Utiliser tous les fichiers dans la source d'entités comme source de données
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.WidthText.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.WidthText.Text
+Value: Largeur
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.ReferenceX.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.ReferenceX.Text
+Value: RéférenceX
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.ReferenceY.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.ReferenceY.Text
+Value: RéférenceY
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.LayerEditor.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditor.vectorLayer.groupBox1.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.VectorLayer.groupBox1.Text
+Value: Style de ligne
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.LayerEditor.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.Scalecontrols.OKBtn.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.Scalecontrols.OKBtn.Text
+Value: OK
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.LayerEditor.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.Scalecontrols.CancelBtn.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.Scalecontrols.CancelBtn.Text
+Value: Annuler
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.MapEditor.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.MgCooker.SetupRun.Text
+Translated key: OSGeo.MapGuide.Maestro.MgCooker.SetupRun.Text
+Value: Organiser une mosaïque
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.MapEditor.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.OKBtn.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.OKBtn.Text
+Value: OK
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.MapEditor.fr-FR.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.CancelBtn.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.CancelBtn.Text
+Value: Annuler
+
+Document: ..\Maestro\Localization\fr-FR\Maestro.ResourceEditors.ResourceDataEditor.fr-FR.resx
+Original key: Download of resource "{0}" failed.\nReason: {1}\nHow do you want to continue?
+Translated key: Download of file "{0}" failed.\nReason: {1}\nHow do you want to continue?
+Value: Le téléchargement de la ressource \"{0}\" a échoué.\nCause: {1}\nComment désirez-vous continuer?
+

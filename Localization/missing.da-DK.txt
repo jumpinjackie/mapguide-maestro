@@ -1,0 +1,120 @@
+Document: ..\Maestro\Localization\da-DK\Maestro.FormMain.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.FormMain.AddFolderButton.ToolTipText
+Translated key: OSGeo.MapGuide.Maestro.FormMain.AddFolderButton.ToolTipText
+Value: Opretter en ny mappe
+
+Document: ..\Maestro\Localization\da-DK\Maestro.PackageManager.PackageEditor.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.PackageManager.PackageEditor.LoaderGroup.Text
+Translated key: Reading package contents ...
+Value: Læser indholdet af pakke, vent venligst
+
+Document: ..\Maestro\Localization\da-DK\Maestro.PackageManager.PackageProgress.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.Text
+Translated key: OSGeo.MapGuide.MaestroAPI.PackageBuilder.PackageProgress.Text
+Value: Bygger pakke
+
+Document: ..\Maestro\Localization\da-DK\Maestro.PackageManager.PackageProgress.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.label1.Text
+Translated key: OSGeo.MapGuide.MaestroAPI.PackageBuilder.PackageProgress.label1.Text
+Value: Fil
+
+Document: ..\Maestro\Localization\da-DK\Maestro.PackageManager.PackageProgress.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.TotalLabel.Text
+Translated key: OSGeo.MapGuide.MaestroAPI.PackageBuilder.PackageProgress.TotalLabel.Text
+Value: Total
+
+Document: ..\Maestro\Localization\da-DK\Maestro.PackageManager.PackageProgress.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.label3.Text
+Translated key: OSGeo.MapGuide.MaestroAPI.PackageBuilder.PackageProgress.label3.Text
+Value: Operation
+
+Document: ..\Maestro\Localization\da-DK\Maestro.PackageManager.PackageProgress.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.PackageManager.PackageProgress.CancelBtn.Text
+Translated key: OSGeo.MapGuide.MaestroAPI.PackageBuilder.PackageProgress.CancelBtn.Text
+Value: Annuller
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.FeatureSourceEditorBase.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.label2.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorBase.label2.Text
+Value: En datakilde kan sammenkædes med andre datakilder og indeholde værdier der beregnes løbende.
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.FeatureSourceEditorMySQL.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorMySQL.label2.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.MySQL.FeatureSourceEditorMySQL.label2.Text
+Value: Port
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.FeatureSourceEditorODBC.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.wizard.msSQL.label5.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizard.msSQL.label5.Text
+Value: Database
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.FeatureSourceEditorODBC.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.wizard.msSQL.label2.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Wizard.msSQL.label2.Text
+Value: Server
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.FeatureSourceEditorOGR.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorOGR.managed.UseFolderButton.ToolTipText
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ManageFileControl.UseFolderButton.ToolTipText
+Value: Benyt mappen som datakilde
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.FeatureSourceEditorSHP.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorSHP.unmanaged.label2.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.SHP.FeatureSourceEditorSHP.label2.Text
+Value: Temp sti
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.FeatureSourceEditorSHP.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorSHP.managed.label2.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ManagedFileControl.label2.Text
+Value: Temp sti
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.FeatureSourceEditorSHP.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorSHP.managed.UseFolderButton.ToolTipText
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ManagedFileControl.UseFolderButton.ToolTipText
+Value: Brug alle filer i mappen som datakilde
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.WidthText.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.WidthText.Text
+Value: Bredde
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.ReferenceX.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.ReferenceX.Text
+Value: ReferenceX
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.da-DK.resx
+Original key: OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.ReferenceY.Text
+Translated key: OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.PointFeatureStyleEditor.ReferenceY.Text
+Value: ReferenceY
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.LayerEditor.da-DK.resx
+Original key: Line
+Translated key: Line
+Value: Linie
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.LayerEditor.da-DK.resx
+Original key: Feature
+Translated key: Feature
+Value: Geometri
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.LayerEditor.da-DK.resx
+Original key: Point
+Translated key: Point
+Value: Punkt
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.LayerEditor.da-DK.resx
+Original key: Could not open feature source: {0}, because {1}
+Translated key: Could not open feature source: {0}, because {1}
+Value: Kunne ikke åbne elementet: {0}, fordi {1}
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.LayerEditor.da-DK.resx
+Original key: <default>
+Translated key: <default>
+Value: <standard>
+
+Document: ..\Maestro\Localization\da-DK\Maestro.ResourceEditors.ResourceDataEditor.da-DK.resx
+Original key: Download of resource "{0}" failed.\nReason: {1}\nHow do you want to continue?
+Translated key: Download of file "{0}" failed.\nReason: {1}\nHow do you want to continue?
+Value: Download af filen \"{0}\" fejlede.\nÅrsag: {1}\nHvordan vil du fortsætte?
+
