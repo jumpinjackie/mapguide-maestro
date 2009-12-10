@@ -1,7 +1,8 @@
-@echo off
+rem @echo off
 rem MapGuide Maestro build script for windows
 rem
 rem Author: Jackie Ng (jumpinjackie@gmail.com)
+rem         Kenneth Skovhede (opensource@hexad.dk)
 rem
 rem This script will build all the MapGuide Maestro components, if the output path is specified
 rem it will also copy all binaries to the output path. Otherwise it will use the default
@@ -27,12 +28,15 @@ rem ==================================================
 SET OLDPATH=%PATH%
 SET TYPEACTION=build
 SET TYPEBUILD=Release
+SET ORIGDIR=%CD%
 
 rem ==================================================
 rem MapGuide Maestro vars
 rem ==================================================
 SET MAESTRO_DEV=%CD%\Maestro
+SET MAESTRO_LOCALIZATION=%CD%\Localization
 SET MAESTRO_OUTPUT=%CD%\InstallerTemp%TYPEBUILD%\MapGuideMaestro
+SET OUTPUT_ZIPFILE=bin\%TYPEBUILD%\MapGuide Maestro.zip
 SET MAESTRO_WIX=%CD%\Installer
 SET PARAFFIN_PATH=%MAESTRO_WIX%\paraffin.exe
 
@@ -54,6 +58,9 @@ rem SET XCOPY=xcopy /E /Y /I /F
 SET XCOPY=xcopy /E /Y /I /Q
 SET MSBUILD=msbuild.exe /nologo /p:Configuration=%TYPEBUILD% %MSBUILD_VERBOSITY% %MSBUILD_LOG%
 SET MSBUILD_CLEAN=msbuild.exe /nologo /m:%CPU_CORES% /p:Configuration=%TYPEBUILD% /t:Clean %MSBUILD_VERBOSITY%
+SET ZIP=%PROGRAMFILES%\7-zip\7z.exe
+SET DELTREE=rmdir /S /Q
+
 
 :study_params
 if (%1)==() goto start_build
@@ -128,9 +135,15 @@ if "%TYPEACTION%"=="regen" goto build
 
 :clean
 echo [Clean] MapGuide Maestro
-pushd %MAESTRO_DEV%
-%MSBUILD_CLEAN% OSGeo.MapGuide.Maestro.sln
+%DELTREE% "%MAESTRO_OUTPUT%"
+
+%MSBUILD_CLEAN% "MapGuide Maestro.sln"
+
+pushd %MAESTRO_LOCALIZATION%
+LocalizationTool.exe clean
 popd
+
+
 goto quit
 
 :update
@@ -138,40 +151,51 @@ echo [update] MapGuide Maestro
 pushd %MAESTRO_DEV%
 call "Update %TYPEBUILD% Environment.bat"
 popd
+pushd %MAESTRO_LOCALIZATION%
+LocalizationTool.exe update
+popd
+
 if not "%TYPEACTION%"=="buildinstall" goto quit
 
 :build
 echo [build] MapGuide Maestro
-pushd %MAESTRO_DEV%
-%MSBUILD% OSGeo.MapGuide.Maestro.sln
-popd
+%MSBUILD% "MapGuide Maestro.sln"
 if "%errorlevel%"=="1" goto error
 if not "%TYPEACTION%"=="buildinstall" goto quit
 
 :install
 echo [install] MapGuide Maestro
+%DELTREE% "%MAESTRO_OUTPUT%"
 %XCOPY% "%MAESTRO_DEV%\bin\%TYPEBUILD%" "%MAESTRO_OUTPUT%"
 del /Q "%MAESTRO_OUTPUT%"\*.vshost.*
 del /Q "%MAESTRO_OUTPUT%"\*.pdb
-del /Q "%MAESTRO_OUTPUT%"\Localization\default
+
+pushd %MAESTRO_LOCALIZATION%
+%DELTREE% compiled
+LocalizationTool.exe update
+LocalizationTool.exe build
+for /D %%d in ("compiled\*") do call :langbuild %%d
+popd
 
 pushd %MAESTRO_WIX%
-%PARAFFIN_PATH% -dir %MAESTRO_OUTPUT% -alias "%MAESTRO_OUTPUT%" -custom MAESTROBIN -dirref INSTALLLOCATION -multiple -guids incBinFiles.wxs -ext .pdb -direXclude .svn -direXclude Localization
-
-rem del /Q "%MAESTRO_WIX%\incLang.wxs"
-
-for /D %%d in ("%MAESTRO_OUTPUT%\Localization\*") do call :langbuild %%d
+"%PARAFFIN_PATH%" -dir %MAESTRO_OUTPUT% -alias "%MAESTRO_OUTPUT%" -custom MAESTROBIN -dirref INSTALLLOCATION -multiple -guids incBinFiles.wxs -ext .pdb -direXclude .svn
 
 %MSBUILD% Installer.sln
+if "%errorlevel%"=="1" goto error
+
+rem Move in localization files and build zip
+%XCOPY% "%MAESTRO_LOCALIZATION%\compiled\*" "%MAESTRO_OUTPUT%"
+del /Q "%OUTPUT_ZIPFILE%"
+"%ZIP%" a -r "bin\%TYPEBUILD%\MapGuide Maestro.zip" "%MAESTRO_OUTPUT%"
 popd
+
 if "%errorlevel%"=="1" goto error
 goto quit
 
 :langbuild
 set FOLDERNAME=
 for /f "tokens=*" %%a in ("%1") do set FOLDERNAME=%%~na
-%PARAFFIN_PATH% -dir %1 -alias %1 -custom MAESTROBIN_%FOLDERNAME% -dirref LANGLOCATION -multiple -guids incLocFiles.%FOLDERNAME%.wxs -ext .pdb -direXclude .svn -direXclude Localization
-rem echo "<?include incLocFiles.%FOLDERNAME%.wxs ?>" >> "%MAESTRO_WIX%\incLang.wxs"
+"%PARAFFIN_PATH%" -dir %1 -alias ..\Localization\%1 -custom MAESTROBIN_%FOLDERNAME% -dirref dir_MapGuideMaestro_0 -multiple -guids "%MAESTRO_WIX%\incLocFiles.%FOLDERNAME%.wxs" -ext .pdb -direXclude .svn
 goto end_of_program
 
 
@@ -216,4 +240,5 @@ SET XCOPY=
 SET MSBUILD=
 SET PARAFFIN_PATH=
 SET PATH=%OLDPATH%
+cd %ORIGDIR%"
 :end_of_program
