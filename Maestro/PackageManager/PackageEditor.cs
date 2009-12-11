@@ -58,8 +58,8 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             dlg.CheckPathExists = true;
             dlg.DefaultExt = ".mgp";
             dlg.Filter =
-                string.Format(Strings.PackageEditor.FiletypeMGP + "|{0}", "*.mgp") +
-                string.Format(Strings.PackageEditor.FiletypeZip + "|{0}", "*.zip") +
+                string.Format(Strings.PackageEditor.FiletypeMGP + "|{0}|", "*.mgp") +
+                string.Format(Strings.PackageEditor.FiletypeZip + "|{0}|", "*.zip") +
                 string.Format(Strings.PackageEditor.FiletypeAll + "|{0}", "*.*");
             dlg.FilterIndex = 0;
             dlg.Multiselect = false;
@@ -92,6 +92,9 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             }
             catch (Exception ex)
             {
+                if (ex is System.Reflection.TargetInvocationException && ex.InnerException != null)
+                    ex = ex.InnerException;
+
                 MessageBox.Show(this, string.Format(Strings.PackageEditor.PackageReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
@@ -461,6 +464,8 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             }
             catch (Exception ex)
             {
+                if (ex is System.Reflection.TargetInvocationException && ex.InnerException != null)
+                    ex = ex.InnerException;
                 MessageBox.Show(this, string.Format(Strings.PackageEditor.PackageBuildError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

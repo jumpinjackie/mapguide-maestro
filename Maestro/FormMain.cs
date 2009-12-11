@@ -2315,6 +2315,9 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch(Exception ex)
             {
+                if (ex is System.Reflection.TargetInvocationException && ex.InnerException != null)
+                    ex = ex.InnerException;
+
                 MessageBox.Show(this, string.Format(Strings.FormMain.PackageRestoreError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

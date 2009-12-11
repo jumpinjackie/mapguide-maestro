@@ -221,7 +221,6 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
                     foreach (ResourceDataListResourceData rd in rdl.ResourceData)
                         resourceData[doc.ResourceId].Add(rd);
 
-                    int i = 0;
                     int itemCount = resourceData[doc.ResourceId].Count + 1;
 
                     filemap.Add(new KeyValuePair<string, string>(filebase + "_CONTENT.xml", System.IO.Path.Combine(temppath, Guid.NewGuid().ToString())));
@@ -235,7 +234,7 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
 
                     foreach (ResourceDataListResourceData rd in rdl.ResourceData)
                     {
-                        filemap.Add(new KeyValuePair<string, string>(filebase + "_DATA_" + rd.Name, System.IO.Path.Combine(temppath, Guid.NewGuid().ToString())));
+                        filemap.Add(new KeyValuePair<string, string>(filebase + "_DATA_" + EncodeFilename(rd.Name), System.IO.Path.Combine(temppath, Guid.NewGuid().ToString())));
                         System.IO.FileInfo fi = new System.IO.FileInfo(filemap[filemap.Count - 1].Value);
                         using (System.IO.FileStream fs = new System.IO.FileStream(fi.FullName, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
                             m_connection.GetResourceData(doc.ResourceId, rd.Name).WriteTo(fs);
@@ -551,6 +550,7 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
 
         private void ZipDirectory(string zipfile, string folder, string comment, List<KeyValuePair<string, string>> filemap)
         {
+            ICSharpCode.SharpZipLib.Zip.ZipConstants.DefaultCodePage = System.Text.Encoding.UTF8.CodePage;
             ICSharpCode.SharpZipLib.Checksums.Crc32 crc = new ICSharpCode.SharpZipLib.Checksums.Crc32();
             using (System.IO.FileStream ofs = new System.IO.FileStream(zipfile, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
             using (ICSharpCode.SharpZipLib.Zip.ZipOutputStream zip = new ICSharpCode.SharpZipLib.Zip.ZipOutputStream(ofs))
@@ -578,7 +578,6 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
 
                         if (Progress != null)
                             Progress(ProgressType.Compressing, f.Key, filemap.Count, i++);
-
                     }
 
                     zip.Finish();
@@ -629,6 +628,7 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
 
                 List<KeyValuePair<string, string>> filemap = new List<KeyValuePair<string, string>>();
 
+                ICSharpCode.SharpZipLib.Zip.ZipConstants.DefaultCodePage = System.Text.Encoding.UTF8.CodePage;
                 using (ICSharpCode.SharpZipLib.Zip.ZipFile zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(sourcePackageFile))
                 {
                     zipfilecomment = zipfile.ZipFileComment;
@@ -717,16 +717,16 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
 
                         foreach (ResourceDataItem rdi in ri.Items)
                         {
-                            string targetpath = filebase + "_DATA_" + rdi.ResourceName;
+                            string targetpath = filebase + "_DATA_" + EncodeFilename(rdi.ResourceName);
                             if (rdi.EntryType == EntryTypeEnum.Added)
                             {
-                                filemap.Add(new KeyValuePair<string, string>(targetpath, rdi.Filename));
+                                filemap.Add(new KeyValuePair<string, string>(targetpath, System.IO.Path.Combine(tempfolder, Guid.NewGuid().ToString())));
                             }
                             else
                             {
                                 int index = FindZipEntry(zipfile, rdi.Filename);
                                 if (index < 0)
-                                    throw new Exception(string.Format(Strings.PackageBuilder.FileMissingError, ri.Contentpath));
+                                    throw new Exception(string.Format(Strings.PackageBuilder.FileMissingError, rdi.Filename));
 
                                 filemap.Add(new KeyValuePair<string, string>(targetpath, System.IO.Path.Combine(tempfolder, Guid.NewGuid().ToString())));
                                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
@@ -861,6 +861,7 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
             Dictionary<string, ResourceItem> resourceList = new Dictionary<string, ResourceItem>();
 
             ResourcePackageManifest manifest;
+            ICSharpCode.SharpZipLib.Zip.ZipConstants.DefaultCodePage = System.Text.Encoding.UTF8.CodePage;
             using (ICSharpCode.SharpZipLib.Zip.ZipFile zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(packageFile))
             {
                 int index = FindZipEntry(zipfile, "MgResourcePackageManifest.xml");
