@@ -230,10 +230,27 @@ namespace OSGeo.MapGuide.Maestro
                         {
                             string msg;
 
+                            string fullmsg;
                             if (errors.Count > 0)
-                                msg = string.Format(Strings.EditorInterface.SaveWithErrorsConfirmation, string.Join("\n", errors.ToArray()));
+                            {
+                                for (int i = 0; i < errors.Count; i++)
+                                    errors[i] = errors[i].Trim();
+                                fullmsg = string.Join("\n", errors.ToArray());
+                            }
                             else
-                                msg = string.Format(Strings.EditorInterface.SaveWithWarningsConfirmation, string.Join("\n", warnings.ToArray()));
+                            {
+                                for (int i = 0; i < warnings.Count; i++)
+                                    warnings[i] = warnings[i].Trim();
+                                fullmsg = string.Join("\n", warnings.ToArray());
+                            }
+
+                            if (fullmsg.Length > 512)
+                                fullmsg = string.Format(Strings.EditorInterface.ValidationMessageTooLong, fullmsg.Substring(1024));
+
+                            if (errors.Count > 0)
+                                msg = string.Format(Strings.EditorInterface.SaveWithErrorsConfirmation, fullmsg);
+                            else
+                                msg = string.Format(Strings.EditorInterface.SaveWithWarningsConfirmation, fullmsg);
 
                             if (MessageBox.Show(m_editor, msg, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) != DialogResult.Yes)
                                 return false;

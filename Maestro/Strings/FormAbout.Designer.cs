@@ -70,6 +70,15 @@ namespace OSGeo.MapGuide.Maestro.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MapGuide Version: {0} ({1}).
+        /// </summary>
+        internal static string ServerVersionLabel {
+            get {
+                return ResourceManager.GetString("ServerVersionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Version: {0}.
         /// </summary>
         internal static string VersionLabel {

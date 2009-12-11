@@ -2197,7 +2197,7 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void MainMenuAbout_Click(object sender, System.EventArgs e)
 		{
-			FormAbout dlg = new FormAbout();
+			FormAbout dlg = new FormAbout(m_connection);
 			dlg.ShowDialog(this);
 		}
 

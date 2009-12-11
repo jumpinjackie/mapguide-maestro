@@ -47,15 +47,23 @@ namespace OSGeo.MapGuide.Maestro
         private LinkLabel tfnetLinkLabel;
         private Label label2;
         private LinkLabel ziplibLinkLabel;
+        private Label ServerVersion;
         private LinkLabel colorBrewerlinkLabel;
+        private MaestroAPI.ServerConnectionI m_connection;
 
-		public FormAbout()
+		private FormAbout()
 		{
 			//
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
             this.Icon = FormMain.MaestroIcon;
+        }
+
+        public FormAbout(MaestroAPI.ServerConnectionI connection)
+            : this()
+        {
+            m_connection = connection;
         }
 
 		/// <summary>
@@ -99,6 +107,7 @@ namespace OSGeo.MapGuide.Maestro
             this.ziplibLinkLabel = new System.Windows.Forms.LinkLabel();
             this.tfnetLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
+            this.ServerVersion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayPalImage)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -216,9 +225,15 @@ namespace OSGeo.MapGuide.Maestro
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
+            // ServerVersion
+            // 
+            resources.ApplyResources(this.ServerVersion, "ServerVersion");
+            this.ServerVersion.Name = "ServerVersion";
+            // 
             // FormAbout
             // 
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.ServerVersion);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.Localization);
             this.Controls.Add(this.PayPalImage);
@@ -249,6 +264,13 @@ namespace OSGeo.MapGuide.Maestro
 		{
 			Version.Text = string.Format(Strings.FormAbout.VersionLabel, Application.ProductVersion);
 			Localization.Text = string.Format(Strings.FormAbout.LanguageLabel,  System.Threading.Thread.CurrentThread.CurrentUICulture, System.Globalization.CultureInfo.InstalledUICulture);
+
+            string match = "unknown version";
+            for(int i = 0; i < MaestroAPI.SiteVersions.SiteVersionNumbers.Length; i++)
+                if (m_connection.SiteVersion == MaestroAPI.SiteVersions.SiteVersionNumbers[i])
+                    match = ((MaestroAPI.KnownSiteVersions)i).ToString();
+
+            ServerVersion.Text = string.Format(Strings.FormAbout.ServerVersionLabel, m_connection.SiteVersion, match);
 		}
 
 		private void PayPalImage_Click(object sender, System.EventArgs e)

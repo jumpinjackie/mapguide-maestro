@@ -121,6 +121,10 @@
     <value>Selected language: {0}, OS Language: {1}</value>
     <comment>A label that displays the current language settings</comment>
   </data>
+  <data name="ServerVersionLabel" xml:space="preserve">
+    <value>MapGuide Version: {0} ({1})</value>
+    <comment>A label that displays the version of the current MapGuide server</comment>
+  </data>
   <data name="VersionLabel" xml:space="preserve">
     <value>Version: {0}</value>
     <comment>A label that displays the current version</comment>

@@ -110,5 +110,15 @@ namespace OSGeo.MapGuide.Maestro.Strings {
                 return ResourceManager.GetString("SaveWithWarningsConfirmation", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}... (text truncated)
+        ///.
+        /// </summary>
+        internal static string ValidationMessageTooLong {
+            get {
+                return ResourceManager.GetString("ValidationMessageTooLong", resourceCulture);
+            }
+        }
     }
 }

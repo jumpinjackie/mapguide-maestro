@@ -1014,10 +1014,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="linkLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 240</value>
+    <value>16, 256</value>
   </data>
   <data name="linkLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>328, 16</value>
@@ -1038,7 +1038,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;linkLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
@@ -1065,7 +1065,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="License.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -1138,7 +1138,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Version.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="PayPalImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1194,10 +1194,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
     <value>$this</value>
   </data>
   <data name="&gt;&gt;PayPalImage.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="Localization.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 48</value>
+    <value>16, 64</value>
   </data>
   <data name="Localization.Size" type="System.Drawing.Size, System.Drawing">
     <value>328, 16</value>
@@ -1218,7 +1218,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Localization.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="licenseTab.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -1445,7 +1445,7 @@ English and Danish translation:
     <value>2</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 64</value>
+    <value>16, 80</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>328, 168</value>
@@ -1463,6 +1463,33 @@ English and Danish translation:
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ServerVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ServerVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 48</value>
+  </data>
+  <data name="ServerVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 16</value>
+  </data>
+  <data name="ServerVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="ServerVersion.Text" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;ServerVersion.Name" xml:space="preserve">
+    <value>ServerVersion</value>
+  </data>
+  <data name="&gt;&gt;ServerVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ServerVersion.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ServerVersion.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1472,7 +1499,7 @@ English and Danish translation:
     <value>5, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>632, 269</value>
+    <value>632, 287</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
