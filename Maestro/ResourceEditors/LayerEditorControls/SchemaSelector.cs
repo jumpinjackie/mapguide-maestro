@@ -145,6 +145,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             resources.ApplyResources(this.Geometry, "Geometry");
             this.Geometry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Geometry.Name = "Geometry";
+            this.Geometry.Sorted = true;
             this.Geometry.SelectedIndexChanged += new System.EventHandler(this.Geometry_SelectedIndexChanged);
             // 
             // Schema
@@ -152,6 +153,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             resources.ApplyResources(this.Schema, "Schema");
             this.Schema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Schema.Name = "Schema";
+            this.Schema.Sorted = true;
             this.Schema.SelectedIndexChanged += new System.EventHandler(this.Schema_SelectedIndexChanged);
             // 
             // GeometryLabel
