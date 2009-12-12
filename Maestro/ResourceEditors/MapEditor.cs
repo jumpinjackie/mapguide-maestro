@@ -236,14 +236,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				}
 
 
-				lstDrawOrder.Items.Clear();
+                RefreshDrawOrderList();
+
 				foreach(OSGeo.MapGuide.MaestroAPI.MapLayerType layer in m_map.Layers)
 				{
-					ListViewItem lvi = new ListViewItem(layer.Name, m_editor.ResourceEditorMap.GetImageIndexFromResourceType("LayerDefinition"));
-					lvi.Tag = layer;
-					lvi.ImageIndex = 0;
-					lstDrawOrder.Items.Add(lvi);
-
 					TreeNode tn = new TreeNode(layer.Name, m_editor.ResourceEditorMap.GetImageIndexFromResourceType("LayerDefinition"), m_editor.ResourceEditorMap.GetImageIndexFromResourceType("LayerDefinition"));
 					tn.Tag = layer;
 					tn.ImageIndex = tn.SelectedImageIndex = 0;
@@ -311,6 +307,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 		}
 
+        private void RefreshDrawOrderList()
+        {
+			lstDrawOrder.Items.Clear();
+            foreach (OSGeo.MapGuide.MaestroAPI.MapLayerType layer in m_map.Layers)
+            {
+                ListViewItem lvi = new ListViewItem(layer.Name, m_editor.ResourceEditorMap.GetImageIndexFromResourceType("LayerDefinition"));
+                lvi.Tag = layer;
+                lvi.ImageIndex = 0;
+                lstDrawOrder.Items.Add(lvi);
+            }
+        }
 		private TreeNodeCollection FindParentNode(string fullpath)
 		{
             if (fullpath == null)
@@ -1203,6 +1210,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 				m_map.LayerGroups.RemoveAt(index);
 				trvLayerGroups.SelectedNode.Remove();
+                RefreshDrawOrderList();
 				m_editor.HasChanged();
 				return;
 			}

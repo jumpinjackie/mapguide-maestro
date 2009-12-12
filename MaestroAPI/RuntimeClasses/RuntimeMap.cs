@@ -72,6 +72,9 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 		{
 			if (map.CurrentConnection == null)
 				throw new Exception("Map must have a connection for construction to work");
+
+            map.SortGroupList();
+
             this.CurrentConnection = map.CurrentConnection;
 			this.m_resourceID = map.ResourceId;
 			base.m_resourceId = map.ResourceId;

@@ -37,7 +37,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
             MaestroAPI.MapDefinition mdef = resource as MaestroAPI.MapDefinition;
 
             foreach(MaestroAPI.MapLayerGroupType g in mdef.LayerGroups)
-                if (g.ShowInLegend && g.LegendLabel.Trim().Length == 0)
+                if (g.ShowInLegend && (g.LegendLabel == null || g.LegendLabel.Trim().Length == 0))
                     issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, string.Format(Strings.MapDefinitionValidator.GroupMissingLabelInformation, g.Name)));
                 else if (g.ShowInLegend && g.LegendLabel.Trim().ToLower() == "layer group")
                     issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, string.Format(Strings.MapDefinitionValidator.GroupHasDefaultLabelInformation, g.Name)));
@@ -60,7 +60,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                 else
                     nameCounter.Add(l.Name, l);
  
-                if (l.ShowInLegend && (string.IsNullOrEmpty(l.LegendLabel) ||  l.LegendLabel.Trim().Length == 0))
+                if (l.ShowInLegend && (string.IsNullOrEmpty(l.LegendLabel) || l.LegendLabel.Trim().Length == 0))
                     issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, string.Format(Strings.MapDefinitionValidator.LayerMissingLabelInformation, l.Name)));
                 
                 if (recurse)

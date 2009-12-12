@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI {
     
@@ -208,6 +209,63 @@ namespace OSGeo.MapGuide.MaestroAPI {
 				this.m_baseMapDefinition = value;
 			}
 		}
+
+        /// <summary>
+        /// Sorts the group list so parent groups are listed before child groups
+        /// </summary>
+        public void SortGroupList()
+        {
+            if (m_mapLayerGroup == null || m_mapLayerGroup.Count < 2)
+                return;
+
+            List<MapLayerGroupType> remaining = new List<MapLayerGroupType>();
+            List<MapLayerGroupType> mapped = new List<MapLayerGroupType>();
+            Dictionary<string, MapLayerGroupType> mappedElements = new Dictionary<string, MapLayerGroupType>();
+
+            foreach (MapLayerGroupType g in m_mapLayerGroup)
+                if (string.IsNullOrEmpty(g.Group))
+                {
+                    mapped.Add(g);
+                    if (mappedElements.ContainsKey(g.Name))
+                        throw new Exception(string.Format("The group {0} exists more than once", g.Name));
+                    mappedElements.Add(g.Name, g);
+                }
+                else
+                    remaining.Add(g);
+
+            bool anyRemoved = true;
+            while (remaining.Count > 0 && anyRemoved)
+            {
+                anyRemoved = false;
+                for (int i = 0; i < remaining.Count; i++)
+                {
+                    if (mappedElements.ContainsKey(remaining[i].Group))
+                    {
+                        anyRemoved = true;
+                        mapped.Add(remaining[i]);
+                        if (mappedElements.ContainsKey(remaining[i].Name))
+                            throw new Exception(string.Format("The group {0} exists more than once", remaining[i].Name));
+                        mappedElements.Add(remaining[i].Name, remaining[i]);
+                        remaining.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+
+            if (remaining.Count > 0)
+            {
+                List<string> names = new List<string>();
+                foreach (MapLayerGroupType g in remaining)
+                    names.Add(g.Name);
+                throw new Exception(string.Format("Found orphan groups: {0}", string.Join(",", names.ToArray())));
+            }
+
+            if (m_mapLayerGroup == null)
+                m_mapLayerGroup = new MapLayerGroupTypeCollection();
+            m_mapLayerGroup.Clear();
+            foreach (MapLayerGroupType g in mapped)
+                m_mapLayerGroup.Add(g);
+        }
 	}
 
 
