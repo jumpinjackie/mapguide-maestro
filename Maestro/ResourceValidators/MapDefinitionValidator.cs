@@ -51,8 +51,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                     foreach(MaestroAPI.BaseMapLayerType l in g.BaseMapLayer)
                         layers.Add(l);
 
+            Dictionary<string, MaestroAPI.BaseMapLayerType> nameCounter = new Dictionary<string, OSGeo.MapGuide.MaestroAPI.BaseMapLayerType>();
+
             foreach (MaestroAPI.BaseMapLayerType l in layers)
             {
+                if (nameCounter.ContainsKey(l.Name))
+                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, string.Format(Strings.MapDefinitionValidator.LayerNameDuplicateWarning, l.Name, l.ResourceId, nameCounter[l.Name].ResourceId)));
+                else
+                    nameCounter.Add(l.Name, l);
+ 
                 if (l.ShowInLegend && (string.IsNullOrEmpty(l.LegendLabel) ||  l.LegendLabel.Trim().Length == 0))
                     issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, string.Format(Strings.MapDefinitionValidator.LayerMissingLabelInformation, l.Name)));
                 

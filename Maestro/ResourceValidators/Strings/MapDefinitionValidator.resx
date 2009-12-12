@@ -141,6 +141,10 @@
     <value>Layer {0} does not have a legend label</value>
     <comment>An information message that is displayed if a layer has a blank legend label</comment>
   </data>
+  <data name="LayerNameDuplicateWarning" xml:space="preserve">
+    <value>The layer name {0} is used for both "{1}" and "{2}"</value>
+    <comment>A warning message that is displayed if two layers share the same layer name</comment>
+  </data>
   <data name="LayerReadError" xml:space="preserve">
     <value>Layer {0} could not be read: {1}</value>
     <comment>An error message that is displayed if a LayerDefinition fails to load</comment>

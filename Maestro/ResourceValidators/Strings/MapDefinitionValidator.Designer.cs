@@ -115,6 +115,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The layer name {0} is used for both &quot;{1}&quot; and &quot;{2}&quot;.
+        /// </summary>
+        internal static string LayerNameDuplicateWarning {
+            get {
+                return ResourceManager.GetString("LayerNameDuplicateWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Layer {0} could not be read: {1}.
         /// </summary>
         internal static string LayerReadError {
