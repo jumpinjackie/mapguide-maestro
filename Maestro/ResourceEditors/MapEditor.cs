@@ -1406,7 +1406,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
                     OSGeo.MapGuide.MaestroAPI.MapLayerType maplayer = new OSGeo.MapGuide.MaestroAPI.MapLayerType();
                     maplayer.ResourceId = layerid;
-                    maplayer.Name = new MaestroAPI.ResourceIdentifier(layerid).Name;
+                    maplayer.Name = maplayer.LegendLabel = new MaestroAPI.ResourceIdentifier(layerid).Name;
                     maplayer.Visible = true;
                     maplayer.ShowInLegend = true;
                     maplayer.ExpandInLegend = true;
