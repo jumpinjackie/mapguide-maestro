@@ -41,7 +41,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Windows.Forms.TabControl EditorTab;
 		private System.Windows.Forms.TabPage CustomEditorPage;
 		private System.Windows.Forms.TabPage GenericEditorPage;
-		private string m_realid = null;
 		private ResourceEditors.CoordinateSystemOverride CoordinateSystemOverride;
 		private System.Windows.Forms.Panel TestConnectionPanel;
 		private System.Windows.Forms.TextBox TestConnectionResult;
@@ -139,15 +138,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			: this()
 		{
 			m_editor = editor;
-			m_realid = resourceID;
-            string nid = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource, m_editor.CurrentConnection.SessionID);
-			editor.CurrentConnection.CopyResource(resourceID, nid, true);
-			m_feature = editor.CurrentConnection.GetFeatureSource(nid);
+			m_feature = editor.CurrentConnection.GetFeatureSource(resourceID);
 			CreateLayout(editor, m_feature);
 
 			if (m_child == null)
 				throw new Exception(Strings.FeatureSourceEditorBase.FeatureSourceCreationError);
-
 		}
 
 		private System.Type ResolveSpecificResourceEditor(EditorInterface editor, string providerName)
@@ -223,20 +218,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			get { return m_feature; }
 			set 
 			{
-				//TODO: If feature is edited by Xml, it won't update here
-				if (m_realid != null)
-				{
-					//Recopy
-					//m_editor.CurrentConnection.CopyResource(((OSGeo.MapGuide.MaestroAPI.FeatureSource)value).ResourceId, m_feature.ResourceId, true);
-					m_editor.CurrentConnection.SaveResourceAs(value, m_feature.ResourceId);
-					m_feature = m_editor.CurrentConnection.GetFeatureSource(m_feature.ResourceId);
-					m_child.Resource = m_feature;
-					if (m_childGeneric != null)
-						m_childGeneric.Resource = m_feature;
-					CoordinateSystemOverride.SetItem(m_editor, m_feature);
-					UpdateDisplay();
-				}
-			}
+                m_feature = (MaestroAPI.FeatureSource)value;
+				m_child.Resource = m_feature;
+				if (m_childGeneric != null)
+					m_childGeneric.Resource = m_feature;
+				CoordinateSystemOverride.SetItem(m_editor, m_feature);
+				UpdateDisplay();
+                m_child.UpdateDisplay();
+                if (m_childGeneric != null)
+                    m_childGeneric.UpdateDisplay();
+            }
 		}
 
 		public string ResourceId
@@ -430,12 +421,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 
 			if (!m_child.Save(savename))
-			{
-				m_editor.CurrentConnection.SaveResource(m_feature);
-				m_editor.CurrentConnection.CopyResource(m_feature.ResourceId, savename, true);
-				m_realid = savename;
+				m_editor.CurrentConnection.SaveResourceAs(m_feature, savename);
 
-			}
+            m_feature.ResourceId = savename;
 			return true;
 		}
 

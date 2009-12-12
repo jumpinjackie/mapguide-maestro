@@ -141,6 +141,10 @@ How do you want to continue?</value>
     <value>Select folder where downloaded files will be saved</value>
     <comment>The title for the dialog where the user can choose the location for the files that are being downloaded</comment>
   </data>
+  <data name="FailedToCreateCopyError" xml:space="preserve">
+    <value>Unable to create a temporary resource: {0}</value>
+    <comment>An error message that is displayed when the copy procedure fails</comment>
+  </data>
   <data name="IncludeSimilarFilesConfirmation" xml:space="preserve">
     <value>There exists {0} file(s) with similar names which may be required.
 Do you want to automatically add matching files?</value>
@@ -155,6 +159,10 @@ Do you want to overwrite?</value>
     <value>There already exists a resource file with the name "{0}".
 Do you want to overwrite the existing file?</value>
     <comment>A confirmation message that appears when the user attempts to overwrite an existing resource file</comment>
+  </data>
+  <data name="UnableToChangeEditModeError" xml:space="preserve">
+    <value>Unable to change edit mode after the user has modified the resource</value>
+    <comment>An internal error message that appears if the control is modified in an unsupported way</comment>
   </data>
   <data name="UpdateXmlDataError" xml:space="preserve">
     <value>Failed to update xml data: {0}</value>

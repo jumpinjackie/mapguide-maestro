@@ -262,6 +262,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.resourceDataEditor.Name = "resourceDataEditor";
             this.resourceDataEditor.ResourceExists = false;
             this.resourceDataEditor.ResourceID = null;
+            this.resourceDataEditor.UseTemporaryResource = false;
+            this.resourceDataEditor.ResourceDataChanged += new System.EventHandler(this.resourceDataEditor_ResourceDataChanged);
             // 
             // FeatureSourceEditorGeneric
             // 
@@ -335,5 +337,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         public bool SupportsPreview { get { return true; } }
         public bool SupportsValidate { get { return true; } }
         public bool SupportsProfiling { get { return false; } }
+
+        private void resourceDataEditor_ResourceDataChanged(object sender, EventArgs e)
+        {
+            m_editor.HasChanged();
+        }
     }
 }

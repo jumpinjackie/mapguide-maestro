@@ -1150,45 +1150,16 @@ namespace OSGeo.MapGuide.Maestro
 			get { return m_connection; }
 		}
 
-		public void CreateResource(object item, string itemType)
-		{
-			string resourceID = "Library://" + Guid.NewGuid().ToString() + "." + itemType;
-			System.Type ClassDef = m_editors.GetResourceEditorTypeFromResourceType(itemType);
-
-			if (ClassDef != null)
-				try 
-				{ 
-					EditorInterface edi = AddEditTab(ClassDef, resourceID, false);
-					if (item != null)
-						((IResourceEditorControl)edi.Page.Controls[0]).Resource = item;
-					tabItems.SelectedTab = edi.Page;
-					edi.HasChanged();
-				}
-				catch(Exception ex)
-				{
-                    if (ex as System.Reflection.TargetInvocationException != null)
-                        ex = ex.InnerException;
- 
-                    if (ex is CancelException)
-                        return;
-
-					MessageBox.Show(this, string.Format(Strings.FormMain.CreateResourceError, resourceID, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
-			else
-				MessageBox.Show(this, string.Format(Strings.FormMain.UnknownResourceTypeError, resourceID), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-		}
-
-
 		public void OpenResource(string resourceID)
 		{
 			OpenResource(resourceID, null);
 		}
 
-		public void OpenResource(string resourceID, System.Type type)
+		public void OpenResource(string resourceID, System.Type ControlType)
 		{
 			if (!m_userControls.ContainsKey(resourceID))
 			{
-				System.Type ClassDef = type;
+				System.Type ClassDef = ControlType;
 				
 				if (ClassDef == null)
 					ClassDef = m_editors.GetResourceEditorTypeFromResourceID(resourceID);
@@ -1196,7 +1167,7 @@ namespace OSGeo.MapGuide.Maestro
 					ClassDef = typeof(ResourceEditors.XmlEditorControl);
 
 				if (ClassDef != null)
-					try { AddEditTab(ClassDef, resourceID, true); }
+					try { AddEditTab(ClassDef, resourceID, resourceID.StartsWith("Library://")); }
 					catch (System.Reflection.TargetInvocationException tex) { MessageBox.Show(this, string.Format(Strings.FormMain.OpenFailedError, resourceID, tex.InnerException.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 					catch (Exception ex) { MessageBox.Show(this, string.Format(Strings.FormMain.OpenFailedError, resourceID, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 				else
@@ -1229,18 +1200,12 @@ namespace OSGeo.MapGuide.Maestro
 			if (existing)
 				tp = new TabPage(m_editors.GetResourceNameFromResourceID(resourceID));
 			else
-				tp = new TabPage(Strings.FormMain.NewResourceName);
+				tp = new TabPage(Strings.FormMain.NewResourceName + " *");
 
 			tp.ImageIndex = m_editors.GetImageIndexFromResourceID(resourceID);
 			EditorInterface edi = new EditorInterface(this, tp, resourceID, existing);
 
-			object[] args = null;
-			if (!existing)
-				args = new object[] {edi};
-			else
-				args = new object[] {edi, resourceID};
-
-			UserControl uc = (UserControl)Activator.CreateInstance(controlType, args );
+			UserControl uc = (UserControl)Activator.CreateInstance(controlType,  new object[] {edi, edi.TempResourceId} );
 
             /*tp.BackgroundImage = new System.Drawing.Bitmap("test.png");
             tp.BackgroundImageLayout = ImageLayout.Stretch;
@@ -1328,27 +1293,28 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void NewResourceMenu_Clicked(object sender, System.EventArgs e)
 		{
-			string filename = (string)m_templateMenuIndex[sender];
-			if (filename == null)
-				return;
+			CreateItem((string)m_templateMenuIndex[sender]);
+    	}
 
-			object o = null;
+        public void CreateItem(string templatefilename)
+        {
+            if (templatefilename == null)
+                return;
 
-			try
-			{
-				using(System.IO.FileStream fs = new System.IO.FileStream(filename, System.IO.FileMode.Open, System.IO.FileAccess.Read))
-					o = m_connection.DeserializeObject(m_editors.GetResourceInstanceTypeFromResourceID(filename), fs);
+            try
+            {
+                string tempname = "Session:" + m_connection.SessionID + "//" + Guid.NewGuid().ToString() + System.IO.Path.GetExtension(templatefilename);
+                using (System.IO.FileStream fs = new System.IO.FileStream(templatefilename, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                    m_connection.SetResourceXmlData(tempname, fs);
 
-			}
-			catch(Exception ex)
-			{
-				MessageBox.Show(this, string.Format(Strings.FormMain.TemplateLoadError, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return;
-			}
-
-			if (o != null)
-				CreateResource(o, m_editors.GetResourceTypeNameFromResourceID(filename));
-		}
+                OpenResource(tempname);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, string.Format(Strings.FormMain.TemplateLoadError, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
 
 		private void ResourceTree_ItemDrag(object sender, System.Windows.Forms.ItemDragEventArgs e)
 		{
@@ -1745,7 +1711,7 @@ namespace OSGeo.MapGuide.Maestro
 				if (edi.Page == tabItems.SelectedTab)
 				{
 					object resource = ((IResourceEditorControl)edi.Page.Controls[0]).Resource;
-                    ResourceEditors.XmlEditor dlg = new ResourceEditors.XmlEditor(resource, edi);
+                    ResourceEditors.XmlEditor dlg = new ResourceEditors.XmlEditor(resource, edi.ResourceID, edi);
 					if (dlg.ShowDialog() == DialogResult.OK)
 					{
 						object o = dlg.SerializedObject;
@@ -2414,13 +2380,13 @@ namespace OSGeo.MapGuide.Maestro
                 {
                     SaveResourceButton.Enabled =
                     SaveResourceAsButton.Enabled =
-                    EditAsXmlButton.Enabled =
                     ClosePageButton.Enabled = true;
 
                     IResourceEditorControl ei = edi.Page.Controls[0] as IResourceEditorControl;
                     PreviewButton.Enabled = ei.SupportsPreview;
                     ProfileButton.Enabled = ei.SupportsProfiling;
                     ValidateButton.Enabled = ei.SupportsValidate;
+                    EditAsXmlButton.Enabled = !(ei is ResourceEditors.XmlEditorControl);
                     TabPageContextMenu.Enabled = true;
                 }
             }

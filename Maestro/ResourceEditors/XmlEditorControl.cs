@@ -60,21 +60,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripButton LaunchExternalEditorButton;
 		private string m_resourceId = null;
+        private GroupBox ResourceDataGroup;
+        private ResourceDataEditor resourceDataEditor;
         private bool m_modified = false;
 
 		public XmlEditorControl(EditorInterface editor, string item)
-			: this(editor, editor.CurrentConnection.TryGetResourceType(item) == null ? editor.CurrentConnection.GetResourceXmlData(item) : editor.CurrentConnection.GetResource(item))
+			: this(editor, editor.CurrentConnection.TryGetResourceType(item) == null ? editor.CurrentConnection.GetResourceXmlData(item) : editor.CurrentConnection.GetResource(item), item)
 		{
             m_resourceId = item;
 		}
 
-        public XmlEditorControl(EditorInterface editor, object item)
+        public XmlEditorControl(EditorInterface editor, object item, string resourceId)
             : this(editor)
         {
             m_inUpdate = true;
             m_editor = editor;
 
-            m_resourceId = null;
+            m_resourceId = resourceId;
             m_serializeType = null;
             m_serializedObject = null;
 
@@ -82,7 +84,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
             if (item is byte[])
             {
-                textEditor.Text = System.Text.Encoding.UTF8.GetString(item as byte[]);               
+                try
+                {
+                    //Attempt to format this with indents etc.
+                    System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+                    doc.LoadXml(System.Text.Encoding.UTF8.GetString(item as byte[]));
+                    using (System.IO.StringWriter sw = new System.IO.StringWriter())
+                    {
+                        doc.WriteTo(new MaestroAPI.Utf8XmlWriter(sw));
+                        textEditor.Text = sw.GetStringBuilder().ToString();
+                    }
+                }
+                catch
+                {
+                    //Fallback, just display the text
+                    textEditor.Text = System.Text.Encoding.UTF8.GetString(item as byte[]);
+                }
             }
             else
             {
@@ -182,6 +199,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XmlEditorControl));
             this.panel2 = new System.Windows.Forms.Panel();
             this.textEditor = new System.Windows.Forms.TextBox();
+            this.ResourceDataGroup = new System.Windows.Forms.GroupBox();
             this.LockedMessagePanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -198,7 +216,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.LaunchExternalEditorButton = new System.Windows.Forms.ToolStripButton();
             this.toolbarImages = new System.Windows.Forms.ImageList(this.components);
+            this.resourceDataEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor();
             this.panel2.SuspendLayout();
+            this.ResourceDataGroup.SuspendLayout();
             this.LockedMessagePanel.SuspendLayout();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -206,6 +226,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // panel2
             // 
             this.panel2.Controls.Add(this.textEditor);
+            this.panel2.Controls.Add(this.ResourceDataGroup);
             this.panel2.Controls.Add(this.LockedMessagePanel);
             this.panel2.Controls.Add(this.toolBar);
             resources.ApplyResources(this.panel2, "panel2");
@@ -219,6 +240,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.textEditor.Name = "textEditor";
             this.textEditor.TextChanged += new System.EventHandler(this.textEditor_TextChanged);
             this.textEditor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEditor_KeyUp);
+            // 
+            // ResourceDataGroup
+            // 
+            this.ResourceDataGroup.Controls.Add(this.resourceDataEditor);
+            resources.ApplyResources(this.ResourceDataGroup, "ResourceDataGroup");
+            this.ResourceDataGroup.Name = "ResourceDataGroup";
+            this.ResourceDataGroup.TabStop = false;
             // 
             // LockedMessagePanel
             // 
@@ -337,6 +365,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolbarImages.Images.SetKeyName(5, "");
             this.toolbarImages.Images.SetKeyName(6, "");
             // 
+            // resourceDataEditor
+            // 
+            resources.ApplyResources(this.resourceDataEditor, "resourceDataEditor");
+            this.resourceDataEditor.Editor = null;
+            this.resourceDataEditor.Name = "resourceDataEditor";
+            this.resourceDataEditor.ResourceExists = false;
+            this.resourceDataEditor.ResourceID = null;
+            this.resourceDataEditor.ResourceDataChanged += new System.EventHandler(this.resourceDataEditor_ResourceDataChanged);
+            // 
             // XmlEditorControl
             // 
             this.Controls.Add(this.panel2);
@@ -345,6 +382,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.Load += new System.EventHandler(this.XmlEditor_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.ResourceDataGroup.ResumeLayout(false);
             this.LockedMessagePanel.ResumeLayout(false);
             this.toolBar.ResumeLayout(false);
             this.toolBar.PerformLayout();
@@ -491,6 +529,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		public bool Save(string savename)
 		{
+            resourceDataEditor.SaveChanges();
+
 			if (m_serializeType != null)
 			{
                 m_serializedObject = m_editor.CurrentConnection.DeserializeObject(m_serializeType, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(textEditor.Text)));
@@ -512,6 +552,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				m_inUpdate = true;
 				if (m_serializedObject != null && m_serializeType != null)
 					textEditor.Text = System.Text.Encoding.UTF8.GetString(m_editor.CurrentConnection.SerializeObject(m_serializedObject).ToArray());
+
+                ResourceDataGroup.Visible = m_resourceId != null;
+                if (m_resourceId != null)
+                {
+                    resourceDataEditor.Editor = m_editor;
+                    resourceDataEditor.ResourceExists = true;
+                    resourceDataEditor.ResourceID = m_resourceId;
+                }
 			}
 			finally
 			{
@@ -602,5 +650,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
         public bool Modified { get { return m_modified; } }
         public object SerializedObject { get { return m_serializedObject; } }
+
+        private void resourceDataEditor_ResourceDataChanged(object sender, EventArgs e)
+        {
+            m_modified = true;
+            if (m_editor != null && !(this.ParentForm is XmlEditor))
+                m_editor.HasChanged();
+        }
+
+        internal void SaveResourceData()
+        {
+            resourceDataEditor.SaveChanges();
+        }
     }
 }

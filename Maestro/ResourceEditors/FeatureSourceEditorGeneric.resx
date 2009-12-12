@@ -184,7 +184,7 @@
     <value>resourceDataEditor</value>
   </data>
   <data name="&gt;&gt;resourceDataEditor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;resourceDataEditor.Parent" xml:space="preserve">
     <value>$this</value>

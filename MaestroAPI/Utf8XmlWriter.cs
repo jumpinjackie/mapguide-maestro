@@ -30,14 +30,23 @@ namespace OSGeo.MapGuide.MaestroAPI
             //This creation of the UTF8 encoder removes the BOM
             //Which is required because MapGuide has trouble reading files with a BOM.
 			: base(s, new System.Text.UTF8Encoding(false, true)) 
-		{ 
-			//The MapGuide Studio parser is broken, it can't read Xml without whitespace :)
-			base.Formatting = System.Xml.Formatting.Indented; 
-			base.Indentation = 2; 
-			base.IndentChar = ' ';
+		{
+            Initialize();
 		}
 
-		public Utf8XmlWriter(System.IO.TextWriter w) : base(w) {}
+        private void Initialize()
+        {
+            //The MapGuide Studio parser is broken, it can't read Xml without whitespace :)
+            base.Formatting = System.Xml.Formatting.Indented;
+            base.Indentation = 2;
+            base.IndentChar = ' ';
+        }
+
+		public Utf8XmlWriter(System.IO.TextWriter w) : base(w) 
+        {
+            Initialize();
+        }
+
 		public override void WriteStartDocument() {Utf8WriteHeader();}
 		public override void WriteStartDocument(bool standalone) {Utf8WriteHeader();}
 

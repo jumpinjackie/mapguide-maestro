@@ -121,11 +121,6 @@
     <value>Copy {0} of {1}</value>
     <comment>The name of a new item that is a copy of an existing item</comment>
   </data>
-  <data name="CreateResourceError" xml:space="preserve">
-    <value>Unable to create the resource {0}
-Error message: {1}</value>
-    <comment>An error message that is displayed if the resource creation fails</comment>
-  </data>
   <data name="DeleteFolderAndResourcesConfirmation" xml:space="preserve">
     <value>If you delete the folder, any resource that references an item in the selected folder will become unusable.
 

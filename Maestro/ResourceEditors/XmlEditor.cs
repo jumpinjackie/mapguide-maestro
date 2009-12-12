@@ -48,10 +48,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             panel2.Controls.Add(m_xmlEditorControl);
         }
 
-		public XmlEditor(object item, EditorInterface editor)
+		public XmlEditor(object item, string resourceId, EditorInterface editor)
 			: this()
 		{
-            m_xmlEditorControl = new XmlEditorControl(editor, item);
+            m_xmlEditorControl = new XmlEditorControl(editor, item, resourceId);
             m_xmlEditorControl.Dock = DockStyle.Fill;
             panel2.Controls.Add(m_xmlEditorControl);
         }
@@ -149,6 +149,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			{
                 m_allowClose = true;
 				m_xmlEditorControl.EndExternalEditing();
+                m_xmlEditorControl.SaveResourceData();
 				this.DialogResult = DialogResult.OK;
 				this.Close();
 			}

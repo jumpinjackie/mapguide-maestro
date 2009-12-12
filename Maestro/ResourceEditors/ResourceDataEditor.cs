@@ -33,6 +33,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 	/// </summary>
 	public class ResourceDataEditor : System.Windows.Forms.UserControl
 	{
+        public event EventHandler ResourceDataChanged;
+
         private System.Windows.Forms.ImageList toolbarImages;
         private System.Windows.Forms.ColumnHeader columnHeader1;
 		private System.Windows.Forms.ListView ResourceDataFiles;
@@ -49,11 +51,31 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripButton ToggleDocumentsButton;
         private MenuItem EditResourceXmlMenu;
 
+        private bool m_useTempResource = true;
+
+        /// <summary>
+        /// Gets or sets a value that determines if the resource data editor 
+        /// should use a temporary resource for updating files.
+        /// Usually used when the user may cancel the edit.
+        /// </summary>
+        [Category("Behavior"), DefaultValue(true)]
+        public bool UseTemporaryResource 
+        {
+            get { return m_useTempResource; }
+            set 
+            { 
+                if (m_tempresourceid != null)
+                    throw new Exception(Strings.ResourceDataEditor.UnableToChangeEditModeError);
+                m_useTempResource = value; 
+            }
+        }
+
 		public ResourceDataEditor(EditorInterface editor, string resourceid)
 			: this()
 		{
             m_editor = editor;
-			m_resource = resourceid;
+			m_resourceid = resourceid;
+            m_tempresourceid = null;
 			this.Enabled = true;
 		}
 
@@ -212,7 +234,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		#endregion
 
 		private OSGeo.MapGuide.MaestroAPI.ResourceDataList m_resourceFiles;
-		private string m_resource;
+		private string m_resourceid;
+        private string m_tempresourceid;
 		private EditorInterface m_editor;
 
 		private void ResourceDataFiles_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -222,8 +245,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void RefreshFileList()
 		{
-			if (m_resourceExists && m_resource != null)
-				m_resourceFiles = m_editor.CurrentConnection.EnumerateResourceData(m_resource);
+            if (m_resourceExists)
+            {
+                if (m_tempresourceid != null)
+                    m_resourceFiles = m_editor.CurrentConnection.EnumerateResourceData(m_tempresourceid);
+                else if (m_resourceid != null)
+                    m_resourceFiles = m_editor.CurrentConnection.EnumerateResourceData(m_resourceid);
+            }
 		}
 
 		private void UpdateDisplay()
@@ -233,7 +261,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				ResourceDataFiles.BeginUpdate();
 				ResourceDataFiles.Items.Clear();
 
-				if (m_resourceExists && m_resource != null)
+				if (m_resourceExists && m_resourceid != null)
 				{
 					if (m_resourceFiles == null)
 						RefreshFileList();
@@ -606,6 +634,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			if (menu == null)
 				return;
 
+            if (ResourceDataFiles.SelectedItems.Count == 0)
+                return;
+
+            if (!EnsureTempResource())
+                return;
+
 			OSGeo.MapGuide.MaestroAPI.ResourceDataType targetType = (OSGeo.MapGuide.MaestroAPI.ResourceDataType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.ResourceDataType), menu.Text);
 			foreach(ListViewItem i in ResourceDataFiles.SelectedItems)
 			{
@@ -614,14 +648,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					try
 					{
 						retry = false;
-                        using (System.IO.Stream s = m_editor.CurrentConnection.GetResourceData(m_resource, i.Text))
+                        using (System.IO.Stream s = m_editor.CurrentConnection.GetResourceData(m_tempresourceid, i.Text))
 						{
-                            m_editor.CurrentConnection.DeleteResourceData(m_resource, i.Text);
-                            m_editor.HasChanged();
+                            m_editor.CurrentConnection.DeleteResourceData(m_tempresourceid, i.Text);
+                            if (ResourceDataChanged != null)
+                                ResourceDataChanged(this, null);
 
                             try
                             {
-                                m_editor.CurrentConnection.SetResourceData(m_resource, i.Text, targetType, s);
+                                m_editor.CurrentConnection.SetResourceData(m_tempresourceid, i.Text, targetType, s);
                             }
                             catch
                             {
@@ -629,7 +664,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                                 {
                                     //Attempt to recover the file
                                     s.Position = 0;
-                                    m_editor.CurrentConnection.SetResourceData(m_resource, i.Text, ((MaestroAPI.ResourceDataListResourceData)i.Tag).Type, s); 
+                                    m_editor.CurrentConnection.SetResourceData(m_tempresourceid, i.Text, ((MaestroAPI.ResourceDataListResourceData)i.Tag).Type, s); 
                                 }
                                 catch { }
                                 throw;
@@ -677,14 +712,30 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		public string ResourceID
 		{
-			get { return m_resource; }
+			get { return m_resourceid; }
 			set 
 			{
-				m_resource = value;
+                //It's faster if we don't clean up, and just let the session expire
+                /*if (m_tempresourceid != null)
+                {
+                    try { m_editor.CurrentConnection.DeleteResource(m_tempresourceid); }
+                    catch { }
+                }*/
+				m_resourceid = value;
+                m_tempresourceid = null;
 				RefreshFileList();
 				UpdateDisplay();
 			}
 		}
+
+        public void SaveChanges()
+        {
+            if (m_tempresourceid != null && m_resourceid != null && m_tempresourceid != m_resourceid)
+            {
+                m_editor.CurrentConnection.MoveResource(m_tempresourceid, m_resourceid, true);
+                m_tempresourceid = null;
+            }
+        }
 
 		public OSGeo.MapGuide.MaestroAPI.ServerConnectionI Connection
 		{
@@ -699,20 +750,54 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
         private void AddFileButton_Click(object sender, EventArgs e)
         {
-            if (AddFilesToResource(this, m_editor.CurrentConnection, m_resource, m_resourceFiles))
+            if (!EnsureTempResource())
+                return;
+
+            if (AddFilesToResource(this, m_editor.CurrentConnection, m_tempresourceid, m_resourceFiles))
             {
-                m_editor.HasChanged();
-                
+                if (ResourceDataChanged != null)
+                    ResourceDataChanged(this, null);
+
                 RefreshFileList();
                 UpdateDisplay();
             }
         }
 
+        private bool EnsureTempResource()
+        {
+            try
+            {
+                if (this.UseTemporaryResource)
+                {
+                    if (m_tempresourceid == null)
+                    {
+                        string tmp = "Session:" + m_editor.CurrentConnection.SessionID + "//" + Guid.NewGuid().ToString() + "." + new MaestroAPI.ResourceIdentifier(m_resourceid).Extension;
+                        m_editor.CurrentConnection.CopyResource(m_resourceid, tmp, true);
+                        m_tempresourceid = tmp;
+                    }
+                }
+                else
+                    m_tempresourceid = m_resourceid;
+            }
+            catch (Exception ex)
+            {
+                m_editor.SetLastException(ex);
+                MessageBox.Show(this, string.Format(Strings.ResourceDataEditor.FailedToCreateCopyError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
         private void DeleteFileButton_Click(object sender, EventArgs e)
         {
-            if (DeleteFilesFromResource(this, m_editor.CurrentConnection, m_resource, ResourceDataFiles))
+            if (!EnsureTempResource())
+                return;
+
+            if (DeleteFilesFromResource(this, m_editor.CurrentConnection, m_tempresourceid, ResourceDataFiles))
             {
-                m_editor.HasChanged();
+                if (ResourceDataChanged != null)
+                    ResourceDataChanged(this, null);
 
                 RefreshFileList();
                 UpdateDisplay();
@@ -721,7 +806,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
         private void DownloadFileButton_Click(object sender, EventArgs e)
         {
-            if (DownloadResourceFiles(this, m_editor.CurrentConnection, m_resource, ResourceDataFiles))
+            if (!EnsureTempResource())
+                return;
+
+            if (DownloadResourceFiles(this, m_editor.CurrentConnection, m_tempresourceid, ResourceDataFiles))
             {
                 RefreshFileList();
                 UpdateDisplay();
@@ -741,16 +829,20 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			    if (ResourceDataFiles.SelectedItems.Count != 1)
 				    return;
 
+                if (!EnsureTempResource())
+                    return;
+
                 XmlEditor dlg;
-                using (System.IO.StreamReader sr = new System.IO.StreamReader(m_editor.CurrentConnection.GetResourceData(m_resource, ResourceDataFiles.SelectedItems[0].Text), System.Text.Encoding.UTF8, true))
+                using (System.IO.StreamReader sr = new System.IO.StreamReader(m_editor.CurrentConnection.GetResourceData(m_tempresourceid, ResourceDataFiles.SelectedItems[0].Text), System.Text.Encoding.UTF8, true))
                     dlg = new XmlEditor(sr.ReadToEnd(), m_editor.CurrentConnection);
 
                 if (dlg.ShowDialog(this) == DialogResult.OK)
                 {
-                    using(System.IO.MemoryStream ms = new System.IO.MemoryStream(new System.Text.UTF8Encoding(false).GetBytes(dlg.EditorText)))
-                        m_editor.CurrentConnection.SetResourceData(m_resource, ResourceDataFiles.SelectedItems[0].Text, ((MaestroAPI.ResourceDataListResourceData)(ResourceDataFiles.SelectedItems[0].Tag)).Type, ms);
-                    
-                    m_editor.HasChanged();
+                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream(new System.Text.UTF8Encoding(false).GetBytes(dlg.EditorText)))
+                        m_editor.CurrentConnection.SetResourceData(m_tempresourceid, ResourceDataFiles.SelectedItems[0].Text, ((MaestroAPI.ResourceDataListResourceData)(ResourceDataFiles.SelectedItems[0].Tag)).Type, ms);
+
+                    if (ResourceDataChanged != null)
+                        ResourceDataChanged(this, null);
                 }
             }
             catch (Exception ex)

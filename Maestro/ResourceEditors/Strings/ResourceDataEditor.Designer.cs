@@ -110,6 +110,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to create a temporary resource: {0}.
+        /// </summary>
+        internal static string FailedToCreateCopyError {
+            get {
+                return ResourceManager.GetString("FailedToCreateCopyError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There exists {0} file(s) with similar names which may be required.
         ///Do you want to automatically add matching files?.
         /// </summary>
@@ -136,6 +145,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.Strings {
         internal static string OverwriteResourceFileConfirmation {
             get {
                 return ResourceManager.GetString("OverwriteResourceFileConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to change edit mode after the user has modified the resource.
+        /// </summary>
+        internal static string UnableToChangeEditModeError {
+            get {
+                return ResourceManager.GetString("UnableToChangeEditModeError", resourceCulture);
             }
         }
         

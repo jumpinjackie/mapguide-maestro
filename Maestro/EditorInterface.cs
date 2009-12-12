@@ -31,6 +31,7 @@ namespace OSGeo.MapGuide.Maestro
 		private FormMain m_editor;
 		private TabPage m_page;
 		private string m_resourceID;
+        private string m_tempresourceID;
 		private bool m_existing;
 		private static string m_lastPath;
 		public event EventHandler Closing;
@@ -41,6 +42,15 @@ namespace OSGeo.MapGuide.Maestro
 			m_page = page;
 			m_existing = exisiting;
 			m_resourceID = resid;
+            if (!exisiting)
+                m_tempresourceID = m_resourceID;
+            else
+            {
+                string tmp = "Session:" + m_editor.CurrentConnection.SessionID + "//" + Guid.NewGuid().ToString() + "." + new MaestroAPI.ResourceIdentifier(m_resourceID).Extension;
+                m_editor.CurrentConnection.CopyResource(m_resourceID, tmp, true);
+                m_tempresourceID = tmp;
+            }
+
             if (m_page != null)
                 m_page.ToolTipText = resid == null ? "" : resid;
 		}
@@ -71,11 +81,6 @@ namespace OSGeo.MapGuide.Maestro
 		public void EditItem(string resourceID)
 		{
 			m_editor.OpenResource(resourceID);
-		}
-
-		public void CreateItem(string itemtype)
-		{
-			m_editor.CreateResource(null, itemtype);
 		}
 
 		public void HasChanged()
@@ -245,7 +250,7 @@ namespace OSGeo.MapGuide.Maestro
                             }
 
                             if (fullmsg.Length > 512)
-                                fullmsg = string.Format(Strings.EditorInterface.ValidationMessageTooLong, fullmsg.Substring(1024));
+                                fullmsg = string.Format(Strings.EditorInterface.ValidationMessageTooLong, fullmsg.Substring(512));
 
                             if (errors.Count > 0)
                                 msg = string.Format(Strings.EditorInterface.SaveWithErrorsConfirmation, fullmsg);
@@ -277,11 +282,10 @@ namespace OSGeo.MapGuide.Maestro
                     if (resid != null)
                     {
                         //If the control handles the save, we only update the local items
-                        if (!((IResourceEditorControl)m_page.Controls[0]).Save(resid))
-                        {
-                            m_editor.CurrentConnection.SaveResourceAs(((IResourceEditorControl)m_page.Controls[0]).Resource, resid);
-                            ((IResourceEditorControl)m_page.Controls[0]).ResourceId = resid;
-                        }
+                        if (!((IResourceEditorControl)m_page.Controls[0]).Save(m_tempresourceID))
+                            m_editor.CurrentConnection.SaveResourceAs(((IResourceEditorControl)m_page.Controls[0]).Resource, m_tempresourceID);
+
+                        m_editor.CurrentConnection.CopyResource(m_tempresourceID, resid, true);
 
                         m_resourceID = resid;
                         m_page.Text = OSGeo.MapGuide.MaestroAPI.ResourceIdentifier.GetName(resid);
@@ -339,6 +343,11 @@ namespace OSGeo.MapGuide.Maestro
 		{
 			return Save(m_resourceID);
 		}
+
+        public string TempResourceId
+        {
+            get { return m_tempresourceID; }
+        }
 
         public DialogResult LengthyOperation(object caller, System.Reflection.MethodInfo mi)
         {

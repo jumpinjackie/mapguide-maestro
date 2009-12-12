@@ -52,12 +52,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		void EditItem(string resourceID);
 
 		/// <summary>
-		/// Instructs the editor to begin creating a new resource.
-		/// </summary>
-		/// <param name="itemType">The type of resource to create</param>
-		void CreateItem(string itemType);
-
-		/// <summary>
 		/// Notifies the main editor that the resource has changed. This will put an asterisk (*) in the resource editor title.
 		/// </summary>
 		void HasChanged();

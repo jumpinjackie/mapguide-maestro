@@ -70,16 +70,6 @@ namespace OSGeo.MapGuide.Maestro.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to create the resource {0}
-        ///Error message: {1}.
-        /// </summary>
-        internal static string CreateResourceError {
-            get {
-                return ResourceManager.GetString("CreateResourceError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to If you delete the folder, any resource that references an item in the selected folder will become unusable.
         ///
         ///Delete folder and all contents?.
