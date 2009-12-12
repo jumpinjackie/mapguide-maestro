@@ -1377,10 +1377,13 @@ namespace OSGeo.MapGuide.Maestro
                         return;
 
 				//We do not enumerate here, because it is SLOW
-				if (ResourceTree.SelectedNode.Nodes.Count == 0 && MessageBox.Show(this, Strings.FormMain.DeleteFolderConfirmation, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
-					return;
-				else if (MessageBox.Show(this, Strings.FormMain.DeleteFolderAndResourcesConfirmation, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3) != DialogResult.Yes)
-					return;
+                if (ResourceTree.SelectedNode.Nodes.Count == 0)
+                {
+                    if (MessageBox.Show(this, Strings.FormMain.DeleteFolderConfirmation, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
+                        return;
+                }
+                else if (MessageBox.Show(this, Strings.FormMain.DeleteFolderAndResourcesConfirmation, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3) != DialogResult.Yes)
+                    return;
 
 				try
 				{
@@ -1567,6 +1570,21 @@ namespace OSGeo.MapGuide.Maestro
                         foreach (string s in toClose)
                             if (!m_userControls[s].Close(true))
                                 return false;
+
+                        //Empty folders do not require updating
+                        TreeNode item = FindItem(targetpath, true);
+
+                        if (item != null && item.Nodes.Count == 1)
+                            ResourceTree.Cache.BuildNode(item, false);
+
+                        if (item != null && item.Nodes.Count == 0)
+                        {
+                            m_connection.MoveFolder(sourcepath, targetpath, false);
+
+                            if (refreshTree)
+                                RebuildDocumentTree();
+                            return true;
+                        }
                     }
                     else
                         if (m_userControls.ContainsKey(sourcepath))
