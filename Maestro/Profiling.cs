@@ -105,7 +105,7 @@ namespace OSGeo.MapGuide.Maestro
                 this.Invoke(new WriteStringDelegate(WriteString), text);
             else
             {
-                bool scroll = Results.SelectionLength == 0 && Results.SelectionStart == Results.Text.Length;
+                bool scroll = Math.Abs((Results.SelectionStart + Results.SelectionLength) - Results.Text.Length) < 20;
 
                 Results.Text += text + "\r\n";
                 if (scroll)
