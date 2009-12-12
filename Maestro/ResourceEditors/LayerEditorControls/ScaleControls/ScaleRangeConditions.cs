@@ -34,7 +34,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
 
         private VectorScaleRangeType m_vsc;
         private bool m_isUpdating = false;
+        private bool m_hasUnsupportedItems = false;
 
+        public bool HasUnsupportedItems { get { return m_hasUnsupportedItems; } }
 
         private VectorLayer m_owner;
 
@@ -65,6 +67,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
                 bool hasPoints = false;
                 bool hasLines = false;
                 bool hasAreas = false;
+                m_hasUnsupportedItems = false;
                 if (m_vsc.Items != null)
                     foreach (object o in m_vsc.Items)
                     {
@@ -83,6 +86,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
                             hasAreas = true;
                             areaConditionList.SetItem(m_vsc, o as AreaTypeStyleType);
                         }
+                        else
+                            m_hasUnsupportedItems = true;
                     }
 
                 DisplayPoints.Checked = hasPoints;

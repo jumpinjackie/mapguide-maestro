@@ -92,6 +92,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
         private ToolStripButton SortScalesByDisplayRangeButton;
 
         private FeatureSourceDescription.FeatureSourceSchema m_selectedSchema;
+        private bool m_hasReportedUnsupportedItems = false;
 
     	public VectorLayer()
 		{
@@ -614,6 +615,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 
                     scaleRangeList.SetItem(vl);
                     scaleRangeList.ResizeAuto();
+
+                    if (!m_hasReportedUnsupportedItems && scaleRangeList.HasUnsupportedItems)
+                    {
+                        m_hasReportedUnsupportedItems = true;
+                        MessageBox.Show(this, Strings.VectorLayer.UnsupportedItemsDetectedWarning, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
 				}
 			} 
 			finally

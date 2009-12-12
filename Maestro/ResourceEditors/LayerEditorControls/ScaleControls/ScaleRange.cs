@@ -37,6 +37,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         
         private VectorLayer m_owner;
 
+        public bool HasUnsupportedItems { get { return scaleRangeConditions.HasUnsupportedItems; } }
+
         public VectorLayer Owner
         {
             get { return m_owner; }

@@ -2022,24 +2022,17 @@ namespace OSGeo.MapGuide.Maestro
 									return;
 							}
 
-							object item = null;
-							using(System.IO.FileStream fs = System.IO.File.Open(OpenXmlFileDialog.FileName, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
-								item = m_connection.DeserializeObject(m_editors.GetResourceInstanceTypeFromResourceID(document.ResourceId), fs);
-							EditorInterface edir = new EditorInterface(this, new TabPage(m_editors.GetResourceNameFromResourceID(document.ResourceId)), document.ResourceId, true);
-							OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl c = new OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl(edir);
-							c.Resource = item;
-							c.ResourceId = document.ResourceId;
-							edir.Page.Controls.Add(c);
-							c.Dock = DockStyle.Fill;
-							tabItems.TabPages.Add(edir.Page);
-							tabItems.SelectedTab = edir.Page;
-							edir.HasChanged();
-							m_userControls.Add(document.ResourceId, edir);
-                            tabItems_SelectedIndexChanged(sender, e);
+                            string tmpid = "Session:" + m_connection.SessionID + "//" + Guid.NewGuid().ToString() + "." + new MaestroAPI.ResourceIdentifier(document.ResourceId).Extension;
+
+                            using (System.IO.FileStream fs = System.IO.File.Open(OpenXmlFileDialog.FileName, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
+                                m_connection.SetResourceXmlData(tmpid, fs);
+
+                            OpenResource(tmpid, typeof(ResourceEditors.XmlEditorControl));
 						}
 				}
 				catch (Exception ex)
 				{
+                    LastException = ex;
 					MessageBox.Show(this, string.Format(Strings.FormMain.XmlEditorError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}

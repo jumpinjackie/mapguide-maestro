@@ -77,5 +77,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.Strings {
                 return ResourceManager.GetString("SchemaMissingError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This layer contains items that are not supported by the editor.
+        ///If you save this layer they may be removed.
+        ///It is recommended that you open this layer with the xml editor instead..
+        /// </summary>
+        internal static string UnsupportedItemsDetectedWarning {
+            get {
+                return ResourceManager.GetString("UnsupportedItemsDetectedWarning", resourceCulture);
+            }
+        }
     }
 }

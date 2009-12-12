@@ -36,6 +36,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
         private VectorScaleRangeType m_selectedItem;
         private VectorLayer m_owner;
 
+        public bool HasUnsupportedItems
+        {
+            get
+            {
+                foreach (ScaleRange sr in this.ControlList.Controls)
+                    if (sr.HasUnsupportedItems)
+                        return true;
+
+                return false;
+            }
+        }
+
         public VectorLayer Owner
         {
             get { return m_owner; }
@@ -43,7 +55,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             {
                 m_owner = value;
                 foreach (ScaleRange sr in this.ControlList.Controls)
-                    sr.Owner = m_owner; ;
+                    sr.Owner = m_owner;
             }
         }
 
