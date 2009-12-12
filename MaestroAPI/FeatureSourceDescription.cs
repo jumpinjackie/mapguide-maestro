@@ -38,7 +38,6 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public FeatureSourceDescription(System.IO.Stream stream)
 		{
-            bool usingFdoSchema;
 			XmlDocument doc = new XmlDocument();
 			doc.Load(stream);
 
@@ -59,9 +58,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			mgr.AddNamespace("fdo", "http://fdo.osgeo.org/schemas");
 
 			XmlNodeList lst = root.SelectNodes("xs:schema/xs:complexType[@abstract='false']", mgr);
-
 			m_schemas = new FeatureSourceSchema[lst.Count];
-			for(int i = 0;i<lst.Count;i++)
+            for (int i = 0; i < m_schemas.Length; i++)
 				m_schemas[i] = new FeatureSourceSchema(lst[i], mgr);
 		}
 
@@ -109,9 +107,27 @@ namespace OSGeo.MapGuide.MaestroAPI
 				else
 					lst = node.SelectNodes("xs:complexContent/xs:extension/xs:sequence/xs:element", mgr);
 				
+
 				m_columns = new FeatureSetColumn[lst.Count];
 				for(int i = 0;i<lst.Count;i++)
 					m_columns[i] = new FeatureSetColumn(lst[i]);
+
+                XmlNode extension = node.SelectSingleNode("xs:complexContent/xs:extension", mgr);
+                if (extension != null && extension.Attributes["base"] != null)
+                {
+                    string extTypeName = extension.Attributes["base"].Value;
+                    extTypeName = extTypeName.Substring(extTypeName.IndexOf(":") + 1);
+
+                    XmlNode baseEl = node.ParentNode.SelectSingleNode("xs:complexType[@name='" + extTypeName + "']", mgr);
+                    if (baseEl != null)
+                    {
+                        FeatureSourceSchema tmpScm = new FeatureSourceSchema(baseEl, mgr);
+                        FeatureSetColumn[] tmpCol = new FeatureSetColumn[m_columns.Length + tmpScm.m_columns.Length];
+                        Array.Copy(m_columns, tmpCol, m_columns.Length);
+                        Array.Copy(tmpScm.m_columns, 0, tmpCol, m_columns.Length, tmpScm.m_columns.Length);
+                        m_columns = tmpCol;
+                    }
+                }
 			}
 
 			public string Name { get { return m_name; } }
