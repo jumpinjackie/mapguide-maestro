@@ -549,11 +549,119 @@
   <data name="colorGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 96</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 13</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Transparency</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>colorGroup</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 40</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 13</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Transparency</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>colorGroup</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="backgroundColor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="backgroundColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 72</value>
+  </data>
+  <data name="backgroundColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 49</value>
+  </data>
+  <data name="backgroundColor.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;backgroundColor.Name" xml:space="preserve">
+    <value>backgroundColor</value>
+  </data>
+  <data name="&gt;&gt;backgroundColor.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4358, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;backgroundColor.Parent" xml:space="preserve">
+    <value>colorGroup</value>
+  </data>
+  <data name="&gt;&gt;backgroundColor.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textColor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="textColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 16</value>
+  </data>
+  <data name="textColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 49</value>
+  </data>
+  <data name="textColor.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;textColor.Name" xml:space="preserve">
+    <value>textColor</value>
+  </data>
+  <data name="&gt;&gt;textColor.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4358, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;textColor.Parent" xml:space="preserve">
+    <value>colorGroup</value>
+  </data>
+  <data name="&gt;&gt;textColor.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="backgroundTypeCombo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="backgroundTypeCombo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 78</value>
+    <value>112, 128</value>
   </data>
   <data name="backgroundTypeCombo.Size" type="System.Drawing.Size, System.Drawing">
     <value>176, 21</value>
@@ -571,58 +679,10 @@
     <value>colorGroup</value>
   </data>
   <data name="&gt;&gt;backgroundTypeCombo.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="backgroundColor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="backgroundColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 46</value>
-  </data>
-  <data name="backgroundColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
-  </data>
-  <data name="backgroundColor.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;backgroundColor.Name" xml:space="preserve">
-    <value>backgroundColor</value>
-  </data>
-  <data name="&gt;&gt;backgroundColor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;backgroundColor.Parent" xml:space="preserve">
-    <value>colorGroup</value>
-  </data>
-  <data name="&gt;&gt;backgroundColor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="textColor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="textColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 14</value>
-  </data>
-  <data name="textColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
-  </data>
-  <data name="textColor.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;textColor.Name" xml:space="preserve">
-    <value>textColor</value>
-  </data>
-  <data name="&gt;&gt;textColor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;textColor.Parent" xml:space="preserve">
-    <value>colorGroup</value>
-  </data>
-  <data name="&gt;&gt;textColor.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 80</value>
+    <value>8, 130</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 16</value>
@@ -643,10 +703,10 @@
     <value>colorGroup</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 48</value>
+    <value>8, 72</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 16</value>
@@ -667,7 +727,7 @@
     <value>colorGroup</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 16</value>
@@ -691,13 +751,13 @@
     <value>colorGroup</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="colorGroup.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 240</value>
   </data>
   <data name="colorGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 112</value>
+    <value>296, 160</value>
   </data>
   <data name="colorGroup.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -865,7 +925,7 @@
     <value>5</value>
   </data>
   <data name="alignmentGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 360</value>
+    <value>0, 408</value>
   </data>
   <data name="alignmentGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>296, 112</value>
@@ -916,7 +976,7 @@
     <value>0</value>
   </data>
   <data name="previewGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 480</value>
+    <value>0, 528</value>
   </data>
   <data name="previewGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>296, 48</value>
@@ -976,10 +1036,10 @@
     <value>True</value>
   </data>
   <data name="$this.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
-    <value>296, 531</value>
+    <value>296, 576</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 531</value>
+    <value>296, 576</value>
   </data>
   <data name="&gt;&gt;UnitsTable.Name" xml:space="preserve">
     <value>UnitsTable</value>

@@ -31,15 +31,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 	/// Summary description for FillStyleEditor.
 	/// </summary>
 	public class FillStyleEditor : System.Windows.Forms.UserControl
-	{
-		public ResourceEditors.GeometryStyleEditors.ColorComboBox foregroundColor;
-		public ResourceEditors.GeometryStyleEditors.ColorComboBox backgroundColor;
+    {
 		public ResourceEditors.GeometryStyleEditors.ImageStylePicker fillCombo;
 
 		public System.Windows.Forms.CheckBox displayFill;
         private System.Windows.Forms.Label lblBackground;
         public Label lblForeground;
-		private System.Windows.Forms.Label lblFill;
+        private System.Windows.Forms.Label lblFill;
+        public ColorComboWithTransparency foregroundColor;
+        public Label lblForegroundTransparency;
+        public ColorComboWithTransparency backgroundColor;
+        public Label lblBackgroundTransparency;
 
 		/// <summary> 
 		/// Required designer variable.
@@ -51,12 +53,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
         
-            foregroundColor.AllowTransparent = true;
-            backgroundColor.AllowTransparent = true;
-
-            foregroundColor.ResetColors();
-            backgroundColor.ResetColors();
-
             fillCombo.Items.Clear();
             fillCombo.Items.AddRange(FeaturePreviewRender.FillImages);
         }
@@ -87,10 +83,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.lblBackground = new System.Windows.Forms.Label();
             this.lblForeground = new System.Windows.Forms.Label();
             this.lblFill = new System.Windows.Forms.Label();
-            this.foregroundColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
-            this.backgroundColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
             this.fillCombo = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ImageStylePicker();
             this.displayFill = new System.Windows.Forms.CheckBox();
+            this.foregroundColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency();
+            this.lblForegroundTransparency = new System.Windows.Forms.Label();
+            this.backgroundColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency();
+            this.lblBackgroundTransparency = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblBackground
@@ -108,16 +106,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             resources.ApplyResources(this.lblFill, "lblFill");
             this.lblFill.Name = "lblFill";
             // 
-            // foregroundColor
-            // 
-            resources.ApplyResources(this.foregroundColor, "foregroundColor");
-            this.foregroundColor.Name = "foregroundColor";
-            // 
-            // backgroundColor
-            // 
-            resources.ApplyResources(this.backgroundColor, "backgroundColor");
-            this.backgroundColor.Name = "backgroundColor";
-            // 
             // fillCombo
             // 
             resources.ApplyResources(this.fillCombo, "fillCombo");
@@ -134,12 +122,36 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.displayFill.Name = "displayFill";
             this.displayFill.CheckedChanged += new System.EventHandler(this.displayFill_CheckedChanged);
             // 
+            // foregroundColor
+            // 
+            resources.ApplyResources(this.foregroundColor, "foregroundColor");
+            this.foregroundColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.foregroundColor.Name = "foregroundColor";
+            // 
+            // lblForegroundTransparency
+            // 
+            resources.ApplyResources(this.lblForegroundTransparency, "lblForegroundTransparency");
+            this.lblForegroundTransparency.Name = "lblForegroundTransparency";
+            // 
+            // backgroundColor
+            // 
+            resources.ApplyResources(this.backgroundColor, "backgroundColor");
+            this.backgroundColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.backgroundColor.Name = "backgroundColor";
+            // 
+            // lblBackgroundTransparency
+            // 
+            resources.ApplyResources(this.lblBackgroundTransparency, "lblBackgroundTransparency");
+            this.lblBackgroundTransparency.Name = "lblBackgroundTransparency";
+            // 
             // FillStyleEditor
             // 
+            this.Controls.Add(this.lblBackgroundTransparency);
+            this.Controls.Add(this.backgroundColor);
+            this.Controls.Add(this.lblForegroundTransparency);
+            this.Controls.Add(this.foregroundColor);
             this.Controls.Add(this.displayFill);
             this.Controls.Add(this.fillCombo);
-            this.Controls.Add(this.backgroundColor);
-            this.Controls.Add(this.foregroundColor);
             this.Controls.Add(this.lblBackground);
             this.Controls.Add(this.lblForeground);
             this.Controls.Add(this.lblFill);
@@ -147,6 +159,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             resources.ApplyResources(this, "$this");
             this.Load += new System.EventHandler(this.FillStyleEditor_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion
@@ -160,6 +173,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			lblFill.Enabled = 
 			lblForeground.Enabled = 
 			lblBackground.Enabled = 
+            lblForegroundTransparency.Enabled = 
+            lblBackgroundTransparency.Enabled =
 			fillCombo.Enabled =
 			foregroundColor.Enabled =
 			backgroundColor.Enabled = 

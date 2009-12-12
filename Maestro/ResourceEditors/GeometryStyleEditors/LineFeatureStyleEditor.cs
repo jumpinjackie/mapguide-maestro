@@ -88,7 +88,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 			lineStyleEditor.displayLine.Visible = false;
 			lineStyleEditor.thicknessUpDown.ValueChanged +=new EventHandler(thicknessCombo_SelectedIndexChanged);
-			lineStyleEditor.colorCombo.SelectedIndexChanged += new EventHandler(colorCombo_SelectedIndexChanged);
+			lineStyleEditor.colorCombo.CurrentColorChanged += new EventHandler(colorCombo_CurrentValueChanged);
 			lineStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_SelectedIndexChanged);
 		}
 
@@ -134,10 +134,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 				if (st != null)
 				{
-				sizeUnitsCombo.SelectedValue = st.Unit.ToString();
+				    sizeUnitsCombo.SelectedValue = st.Unit.ToString();
 					//sizeContextCombo.SelectedValue = st.??;
                     if (st.ColorAsHTML == null)
-                        lineStyleEditor.colorCombo.CurrentColor = Color.White;
+                        lineStyleEditor.colorCombo.CurrentColor = Color.Black;
                     else
                         lineStyleEditor.colorCombo.CurrentColor = st.Color;
 
@@ -208,8 +208,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.AdvancedPanel = new System.Windows.Forms.Panel();
             this.compositePanel = new System.Windows.Forms.Panel();
             this.propertyPanel = new System.Windows.Forms.Panel();
-            this.previewGroup = new System.Windows.Forms.GroupBox();
-            this.previewPicture = new System.Windows.Forms.PictureBox();
             this.lineGroup = new System.Windows.Forms.GroupBox();
             this.lineStyleEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.LineStyleEditor();
             this.sizeGroup = new System.Windows.Forms.GroupBox();
@@ -223,18 +221,20 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.dataColumn4 = new System.Data.DataColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.previewGroup = new System.Windows.Forms.GroupBox();
+            this.previewPicture = new System.Windows.Forms.PictureBox();
             this.ComboBoxDataSet = new System.Data.DataSet();
             this.CompositeGroup.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.AdvancedPanel.SuspendLayout();
             this.compositePanel.SuspendLayout();
             this.propertyPanel.SuspendLayout();
-            this.previewGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
             this.lineGroup.SuspendLayout();
             this.sizeGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).BeginInit();
+            this.previewGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).BeginInit();
             this.SuspendLayout();
             // 
@@ -261,7 +261,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             resources.ApplyResources(this.CompositeGroup, "CompositeGroup");
             this.CompositeGroup.Name = "CompositeGroup";
             this.CompositeGroup.TabStop = false;
-            this.CompositeGroup.Enter += new System.EventHandler(this.CompositeGroup_Enter);
             // 
             // toolStrip1
             // 
@@ -310,27 +309,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // propertyPanel
             // 
-            this.propertyPanel.Controls.Add(this.previewGroup);
             this.propertyPanel.Controls.Add(this.lineGroup);
             this.propertyPanel.Controls.Add(this.sizeGroup);
             resources.ApplyResources(this.propertyPanel, "propertyPanel");
             this.propertyPanel.Name = "propertyPanel";
-            // 
-            // previewGroup
-            // 
-            this.previewGroup.Controls.Add(this.previewPicture);
-            resources.ApplyResources(this.previewGroup, "previewGroup");
-            this.previewGroup.Name = "previewGroup";
-            this.previewGroup.TabStop = false;
-            // 
-            // previewPicture
-            // 
-            resources.ApplyResources(this.previewPicture, "previewPicture");
-            this.previewPicture.BackColor = System.Drawing.Color.White;
-            this.previewPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.previewPicture.Name = "previewPicture";
-            this.previewPicture.TabStop = false;
-            this.previewPicture.Paint += new System.Windows.Forms.PaintEventHandler(this.previewPicture_Paint);
             // 
             // lineGroup
             // 
@@ -418,6 +400,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
+            // previewGroup
+            // 
+            this.previewGroup.Controls.Add(this.previewPicture);
+            resources.ApplyResources(this.previewGroup, "previewGroup");
+            this.previewGroup.Name = "previewGroup";
+            this.previewGroup.TabStop = false;
+            // 
+            // previewPicture
+            // 
+            resources.ApplyResources(this.previewPicture, "previewPicture");
+            this.previewPicture.BackColor = System.Drawing.Color.White;
+            this.previewPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.previewPicture.Name = "previewPicture";
+            this.previewPicture.TabStop = false;
+            this.previewPicture.Paint += new System.Windows.Forms.PaintEventHandler(this.previewPicture_Paint);
+            // 
             // ComboBoxDataSet
             // 
             this.ComboBoxDataSet.DataSetName = "ComboBoxDataSet";
@@ -429,6 +427,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // LineFeatureStyleEditor
             // 
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.previewGroup);
             this.Controls.Add(this.propertyPanel);
             this.Controls.Add(this.compositePanel);
             this.Controls.Add(this.AdvancedPanel);
@@ -440,12 +439,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.AdvancedPanel.ResumeLayout(false);
             this.compositePanel.ResumeLayout(false);
             this.propertyPanel.ResumeLayout(false);
-            this.previewGroup.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
             this.lineGroup.ResumeLayout(false);
             this.sizeGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).EndInit();
+            this.previewGroup.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).EndInit();
             this.ResumeLayout(false);
 
@@ -500,7 +499,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				Changed(this, new EventArgs());
 		}
 
-		private void colorCombo_SelectedIndexChanged(object sender, EventArgs e)
+		private void colorCombo_CurrentValueChanged(object sender, EventArgs e)
 		{
             if (isUpdating || this.CurrentStrokeType == null)
 				return;
@@ -578,14 +577,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		private void lineStyles_DrawItem(object sender, System.Windows.Forms.DrawItemEventArgs e)
 		{
 			e.DrawBackground();
-			if (e.Index >= 0 && e.Index < lineStyles.Items.Count)
+            if ((e.State & DrawItemState.Focus) != 0)
+                e.DrawFocusRectangle();
+            
+            if (e.Index >= 0 && e.Index < lineStyles.Items.Count)
 			{
 				OSGeo.MapGuide.MaestroAPI.StrokeTypeCollection col = new OSGeo.MapGuide.MaestroAPI.StrokeTypeCollection();
 				col.Add((OSGeo.MapGuide.MaestroAPI.StrokeType) lineStyles.Items[e.Index]);
-				FeaturePreviewRender.RenderPreviewLine(e.Graphics, new Rectangle(1, 1, e.Bounds.Width - 2, e.Bounds.Height - 2), col);		
+				FeaturePreviewRender.RenderPreviewLine(e.Graphics, new Rectangle(e.Bounds.Left + 1, e.Bounds.Top + 1, e.Bounds.Width - 2, e.Bounds.Height - 2), col);		
 			}
-			if ((e.State & DrawItemState.Focus) != 0)
-				e.DrawFocusRectangle();
 		}
 
         private void RemoveStyleButton_Click(object sender, EventArgs e)
@@ -614,11 +614,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             lineStyleEditor.lblColor.Enabled =
             AdvancedPanel.Enabled =
                 false;
-        }
-
-        private void CompositeGroup_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

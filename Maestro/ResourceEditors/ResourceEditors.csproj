@@ -365,6 +365,12 @@
     <Compile Include="GeometryStyleEditors\ColorComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="GeometryStyleEditors\ColorComboWithTransparency.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GeometryStyleEditors\ColorComboWithTransparency.Designer.cs">
+      <DependentUpon>ColorComboWithTransparency.cs</DependentUpon>
+    </Compile>
     <Compile Include="GeometryStyleEditors\CustomCombo.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1120,6 +1126,9 @@
     <EmbeddedResource Include="FiniteDisplayScales.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FiniteDisplayScales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeometryStyleEditors\ColorComboWithTransparency.resx">
+      <DependentUpon>ColorComboWithTransparency.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GeometryStyleEditors\Strings\ColorComboBox.resx">
       <Generator>ResXFileCodeGenerator</Generator>

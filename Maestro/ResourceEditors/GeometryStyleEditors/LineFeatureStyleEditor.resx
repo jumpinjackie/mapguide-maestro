@@ -175,7 +175,7 @@
     <value>0</value>
   </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>161, 17</value>
+    <value>3, 16</value>
   </metadata>
   <data name="AddStyleButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -226,7 +226,7 @@
     <value>3, 16</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 25</value>
+    <value>291, 25</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -250,7 +250,7 @@
     <value>16, 56</value>
   </data>
   <data name="lineStyles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 95</value>
+    <value>265, 95</value>
   </data>
   <data name="lineStyles.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -274,7 +274,7 @@
     <value>0, 0</value>
   </data>
   <data name="CompositeGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 160</value>
+    <value>297, 160</value>
   </data>
   <data name="CompositeGroup.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -301,7 +301,7 @@
     <value>0, 0</value>
   </data>
   <data name="AdvancedPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 48</value>
+    <value>297, 48</value>
   </data>
   <data name="AdvancedPanel.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -316,7 +316,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AdvancedPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="compositePanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -325,7 +325,7 @@
     <value>0, 48</value>
   </data>
   <data name="compositePanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 160</value>
+    <value>297, 160</value>
   </data>
   <data name="compositePanel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -340,70 +340,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;compositePanel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
-  <data name="previewPicture.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="previewPicture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 16</value>
-  </data>
-  <data name="previewPicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 24</value>
-  </data>
-  <data name="previewPicture.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;previewPicture.Name" xml:space="preserve">
-    <value>previewPicture</value>
-  </data>
-  <data name="&gt;&gt;previewPicture.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;previewPicture.Parent" xml:space="preserve">
-    <value>previewGroup</value>
-  </data>
-  <data name="&gt;&gt;previewPicture.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="previewGroup.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="previewGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 192</value>
-  </data>
-  <data name="previewGroup.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 12, 3, 3</value>
-  </data>
-  <data name="previewGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 48</value>
-  </data>
-  <data name="previewGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="previewGroup.Text" xml:space="preserve">
-    <value>Preview</value>
-  </data>
-  <data name="&gt;&gt;previewGroup.Name" xml:space="preserve">
-    <value>previewGroup</value>
-  </data>
-  <data name="&gt;&gt;previewGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;previewGroup.Parent" xml:space="preserve">
-    <value>propertyPanel</value>
-  </data>
-  <data name="&gt;&gt;previewGroup.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lineStyleEditor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="lineStyleEditor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="lineStyleEditor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 16</value>
+    <value>3, 16</value>
   </data>
   <data name="lineStyleEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 88</value>
+    <value>291, 133</value>
   </data>
   <data name="lineStyleEditor.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -412,7 +358,7 @@
     <value>lineStyleEditor</value>
   </data>
   <data name="&gt;&gt;lineStyleEditor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.LineStyleEditor, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.LineStyleEditor, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lineStyleEditor.Parent" xml:space="preserve">
     <value>lineGroup</value>
@@ -427,7 +373,7 @@
     <value>0, 80</value>
   </data>
   <data name="lineGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 112</value>
+    <value>297, 152</value>
   </data>
   <data name="lineGroup.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -445,7 +391,7 @@
     <value>propertyPanel</value>
   </data>
   <data name="&gt;&gt;lineGroup.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="sizeUnitsCombo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -454,7 +400,7 @@
     <value>120, 44</value>
   </data>
   <data name="sizeUnitsCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 21</value>
+    <value>169, 21</value>
   </data>
   <data name="sizeUnitsCombo.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -478,7 +424,7 @@
     <value>120, 12</value>
   </data>
   <data name="sizeContextCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 21</value>
+    <value>169, 21</value>
   </data>
   <data name="sizeContextCombo.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -550,7 +496,7 @@
     <value>0, 0</value>
   </data>
   <data name="sizeGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 80</value>
+    <value>297, 80</value>
   </data>
   <data name="sizeGroup.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -568,7 +514,7 @@
     <value>propertyPanel</value>
   </data>
   <data name="&gt;&gt;sizeGroup.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="propertyPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -577,7 +523,7 @@
     <value>0, 208</value>
   </data>
   <data name="propertyPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 240</value>
+    <value>297, 232</value>
   </data>
   <data name="propertyPanel.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -592,6 +538,60 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;propertyPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="previewPicture.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="previewPicture.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 16</value>
+  </data>
+  <data name="previewPicture.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 24</value>
+  </data>
+  <data name="previewPicture.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;previewPicture.Name" xml:space="preserve">
+    <value>previewPicture</value>
+  </data>
+  <data name="&gt;&gt;previewPicture.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;previewPicture.Parent" xml:space="preserve">
+    <value>previewGroup</value>
+  </data>
+  <data name="&gt;&gt;previewPicture.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="previewGroup.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="previewGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 440</value>
+  </data>
+  <data name="previewGroup.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 12, 3, 3</value>
+  </data>
+  <data name="previewGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 48</value>
+  </data>
+  <data name="previewGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="previewGroup.Text" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="&gt;&gt;previewGroup.Name" xml:space="preserve">
+    <value>previewGroup</value>
+  </data>
+  <data name="&gt;&gt;previewGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;previewGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;previewGroup.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="ComboBoxDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -604,10 +604,10 @@
     <value>True</value>
   </data>
   <data name="$this.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
-    <value>290, 480</value>
+    <value>290, 488</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 418</value>
+    <value>297, 488</value>
   </data>
   <data name="&gt;&gt;AddStyleButton.Name" xml:space="preserve">
     <value>AddStyleButton</value>

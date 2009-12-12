@@ -90,13 +90,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		private CheckBox MaintainAspectRatio;
 		private ComboBox RotationBox;
 		private Label label9;
-		private FillStyleEditor fillStyleEditor;
-		public ColorComboBox colorFontForeground;
+        private FillStyleEditor fillStyleEditor;
 		private Label lblForeground;
         private Panel panel1;
         private ToolStrip toolStrip1;
         private ToolStripButton FontBoldButton;
         private ToolStripButton FontItalicButton;
+        private ColorComboWithTransparency colorFontForeground;
+        private Label label11;
         private ToolStripButton FontUnderlineButton;
 
         public event EventHandler Changed;
@@ -119,24 +120,20 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			using(System.IO.MemoryStream ms = new System.IO.MemoryStream(SharedComboDataSet))
 				ComboBoxDataSet.ReadXml(ms);
 
-			// fix this by editing "PointStyleComboDataset.xml" to include fonts
 			fontCombo.Items.Clear();
-
             foreach (FontFamily f in new System.Drawing.Text.InstalledFontCollection().Families)
                 fontCombo.Items.Add(f.Name);
 
-			colorFontForeground.AllowTransparent = false;
-			colorFontForeground.ResetColors();
-			colorFontForeground.SelectedIndexChanged += new EventHandler(colourFontForeground_SelectedIndexChanged);
+			colorFontForeground.CurrentColorChanged += new EventHandler(colourFontForeground_CurrentColorChanged);
 
 			fillStyleEditor.displayFill.CheckedChanged += new EventHandler(displayFill_CheckedChanged);
 			fillStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_SelectedIndexChanged);
-			fillStyleEditor.foregroundColor.SelectedIndexChanged += new EventHandler(foregroundColor_SelectedIndexChanged);
-			fillStyleEditor.backgroundColor.SelectedIndexChanged +=new EventHandler(backgroundColor_SelectedIndexChanged);
+			fillStyleEditor.foregroundColor.CurrentColorChanged += new EventHandler(foregroundColor_CurrentColorChanged);
+			fillStyleEditor.backgroundColor.CurrentColorChanged +=new EventHandler(backgroundColor_CurrentColorChanged);
 
 			lineStyleEditor.displayLine.CheckedChanged +=new EventHandler(displayLine_CheckedChanged);
 			lineStyleEditor.thicknessUpDown.ValueChanged +=new EventHandler(thicknessCombo_SelectedIndexChanged);
-			lineStyleEditor.colorCombo.SelectedIndexChanged +=new EventHandler(colorCombo_SelectedIndexChanged);
+			lineStyleEditor.colorCombo.CurrentColorChanged +=new EventHandler(colorCombo_CurrentColorChanged);
 			lineStyleEditor.fillCombo.SelectedIndexChanged +=new EventHandler(fillCombo_Line_SelectedIndexChanged);
 
 			m_item = new OSGeo.MapGuide.MaestroAPI.PointSymbolization2DType();
@@ -326,7 +323,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.FontBoldButton = new System.Windows.Forms.ToolStripButton();
             this.FontItalicButton = new System.Windows.Forms.ToolStripButton();
             this.FontUnderlineButton = new System.Windows.Forms.ToolStripButton();
-            this.colorFontForeground = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
             this.lblForeground = new System.Windows.Forms.Label();
             this.comboBoxCharacter = new System.Windows.Forms.ComboBox();
             this.fontCombo = new System.Windows.Forms.ComboBox();
@@ -339,6 +335,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.MaintainAspectRatio = new System.Windows.Forms.CheckBox();
+            this.colorFontForeground = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RotationTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).BeginInit();
@@ -587,8 +585,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // groupBoxFont
             // 
             resources.ApplyResources(this.groupBoxFont, "groupBoxFont");
-            this.groupBoxFont.Controls.Add(this.panel1);
+            this.groupBoxFont.Controls.Add(this.label11);
             this.groupBoxFont.Controls.Add(this.colorFontForeground);
+            this.groupBoxFont.Controls.Add(this.panel1);
             this.groupBoxFont.Controls.Add(this.lblForeground);
             this.groupBoxFont.Controls.Add(this.comboBoxCharacter);
             this.groupBoxFont.Controls.Add(this.fontCombo);
@@ -636,12 +635,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             resources.ApplyResources(this.FontUnderlineButton, "FontUnderlineButton");
             this.FontUnderlineButton.Name = "FontUnderlineButton";
             this.FontUnderlineButton.Click += new System.EventHandler(this.FontUnderlineButton_Click);
-            // 
-            // colorFontForeground
-            // 
-            resources.ApplyResources(this.colorFontForeground, "colorFontForeground");
-            this.colorFontForeground.Name = "colorFontForeground";
-            this.colorFontForeground.SelectedIndexChanged += new System.EventHandler(this.colourFontForeground_SelectedIndexChanged);
             // 
             // lblForeground
             // 
@@ -718,6 +711,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             resources.ApplyResources(this.MaintainAspectRatio, "MaintainAspectRatio");
             this.MaintainAspectRatio.Name = "MaintainAspectRatio";
             // 
+            // colorFontForeground
+            // 
+            resources.ApplyResources(this.colorFontForeground, "colorFontForeground");
+            this.colorFontForeground.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorFontForeground.Name = "colorFontForeground";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
             // PointFeatureStyleEditor
             // 
             resources.ApplyResources(this, "$this");
@@ -741,6 +745,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).EndInit();
             this.groupBoxFont.ResumeLayout(false);
+            this.groupBoxFont.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -1001,7 +1006,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				Changed(this, new EventArgs());
 		}
 
-		private void foregroundColor_SelectedIndexChanged(object sender, EventArgs e)
+		private void foregroundColor_CurrentColorChanged(object sender, EventArgs e)
 		{
 			if (m_inUpdate)
 				return;
@@ -1013,7 +1018,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				Changed(this, new EventArgs());
 		}
 
-		private void backgroundColor_SelectedIndexChanged(object sender, EventArgs e)
+		private void backgroundColor_CurrentColorChanged(object sender, EventArgs e)
 		{
 			if (m_inUpdate)
 				return;
@@ -1038,7 +1043,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				Changed(this, new EventArgs());
 		}
 
-		private void colorCombo_SelectedIndexChanged(object sender, EventArgs e)
+		private void colorCombo_CurrentColorChanged(object sender, EventArgs e)
 		{
 			if (m_inUpdate)
 				return;
@@ -1062,7 +1067,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				Changed(this, new EventArgs());
 		}
 
-		private void colourFontForeground_SelectedIndexChanged(object sender, EventArgs e)
+		private void colourFontForeground_CurrentColorChanged(object sender, EventArgs e)
 		{
 			if (m_inUpdate)
 				return;

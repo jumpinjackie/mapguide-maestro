@@ -126,7 +126,7 @@
     <value>16, 16</value>
   </data>
   <data name="fillStyleEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 104</value>
+    <value>274, 144</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="fillStyleEditor.TabIndex" type="System.Int32, mscorlib">
@@ -136,13 +136,13 @@
     <value>fillStyleEditor</value>
   </data>
   <data name="&gt;&gt;fillStyleEditor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.FillStyleEditor, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.FillStyleEditor, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fillStyleEditor.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;fillStyleEditor.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="lineStyleEditor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -151,7 +151,7 @@
     <value>16, 16</value>
   </data>
   <data name="lineStyleEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 112</value>
+    <value>274, 136</value>
   </data>
   <data name="lineStyleEditor.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -160,7 +160,7 @@
     <value>lineStyleEditor</value>
   </data>
   <data name="&gt;&gt;lineStyleEditor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.LineStyleEditor, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.LineStyleEditor, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lineStyleEditor.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -172,10 +172,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="sizeUnitsCombo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 152</value>
+    <value>136, 184</value>
   </data>
   <data name="sizeUnitsCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 21</value>
+    <value>154, 21</value>
   </data>
   <data name="sizeUnitsCombo.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -196,10 +196,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="sizeContextCombo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 120</value>
+    <value>136, 152</value>
   </data>
   <data name="sizeContextCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 21</value>
+    <value>154, 21</value>
   </data>
   <data name="sizeContextCombo.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -217,7 +217,7 @@
     <value>1</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 152</value>
+    <value>16, 184</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 16</value>
@@ -241,7 +241,7 @@
     <value>2</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 120</value>
+    <value>16, 152</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 16</value>
@@ -271,7 +271,7 @@
     <value>0, 176</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 184</value>
+    <value>298, 208</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -294,89 +294,11 @@
   <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="percentageLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="percentageLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 128</value>
-  </data>
-  <data name="percentageLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 16</value>
-  </data>
-  <data name="percentageLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="percentageLabel.Text" xml:space="preserve">
-    <value>0%</value>
-  </data>
-  <data name="percentageLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="&gt;&gt;percentageLabel.Name" xml:space="preserve">
-    <value>percentageLabel</value>
-  </data>
-  <data name="&gt;&gt;percentageLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;percentageLabel.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;percentageLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="Transparency.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="Transparency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 120</value>
-  </data>
-  <data name="Transparency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 45</value>
-  </data>
-  <data name="Transparency.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Transparency.Name" xml:space="preserve">
-    <value>Transparency</value>
-  </data>
-  <data name="&gt;&gt;Transparency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Transparency.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;Transparency.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 128</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 16</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Transparency</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 168</value>
+    <value>298, 168</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -406,7 +328,7 @@
     <value>8, 16</value>
   </data>
   <data name="previewPicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 24</value>
+    <value>282, 24</value>
   </data>
   <data name="previewPicture.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -424,10 +346,10 @@
     <value>0</value>
   </data>
   <data name="previewGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 368</value>
+    <value>0, 392</value>
   </data>
   <data name="previewGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 48</value>
+    <value>298, 48</value>
   </data>
   <data name="previewGroup.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -457,10 +379,10 @@
     <value>True</value>
   </data>
   <data name="$this.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
-    <value>244, 416</value>
+    <value>300, 440</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 416</value>
+    <value>300, 440</value>
   </data>
   <data name="&gt;&gt;UnitsTable.Name" xml:space="preserve">
     <value>UnitsTable</value>

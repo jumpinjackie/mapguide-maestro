@@ -132,6 +132,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			Color foreground;
 			Color background;
 			string text = "";
+            OSGeo.MapGuide.MaestroAPI.BackgroundStyleType bgStyle;
+            
 
 			if (item == null || item.FontName == null)
 			{
@@ -139,6 +141,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				foreground = Color.Black;
 				background = Color.White;
 				text = Strings.Common.EmptyText;
+                bgStyle = OSGeo.MapGuide.MaestroAPI.BackgroundStyleType.Transparent;
 			}
 			else
 			{
@@ -146,6 +149,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				catch { font = new Font("Arial", 12); }
 				foreground = item.ForegroundColor;
 				background = item.BackgroundColor;
+                bgStyle = item.BackgroundStyle;
 
 				FontStyle fs = FontStyle.Regular;
 				if (item.Bold == "true")
@@ -159,10 +163,34 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				text = item.Text;
 			}
 
-			//TODO: Use the BagroundStyle to render rectangles and ghost effects
-		
-			using(Brush b = new SolidBrush(foreground))
-				g.DrawString(text, font, b, size);
+            if (bgStyle == OSGeo.MapGuide.MaestroAPI.BackgroundStyleType.Ghosted)
+            {
+                using (System.Drawing.Drawing2D.GraphicsPath pth = new System.Drawing.Drawing2D.GraphicsPath())
+                {
+                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+
+                    pth.AddString(text, font.FontFamily, (int)font.Style, font.Size * 1.25f, size.Location, StringFormat.GenericDefault);
+
+                    using (Pen p = new Pen(background, 1.5f))
+                        g.DrawPath(p, pth);
+
+                    using (Brush b = new SolidBrush(foreground))
+                        g.FillPath(b, pth);
+                }
+            }
+            else
+            {
+                if (bgStyle == OSGeo.MapGuide.MaestroAPI.BackgroundStyleType.Opaque)
+                {
+                    SizeF bgSize = g.MeasureString(text, font, new SizeF(size.Width, size.Height));
+                    using (Brush b = new SolidBrush(background))
+                        g.FillRectangle(b, new Rectangle(size.Top, size.Left, (int)bgSize.Width, (int)bgSize.Height));
+                }
+
+                using (Brush b = new SolidBrush(foreground))
+                    g.DrawString(text, font, b, size);
+            }
 		}
 
 		public static void RenderPreviewFontSymbol(Graphics g, Rectangle size, OSGeo.MapGuide.MaestroAPI.FontSymbolType item)

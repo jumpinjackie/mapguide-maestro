@@ -54,9 +54,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		private System.Windows.Forms.CheckBox underlineCheck;
 		private System.Windows.Forms.CheckBox italicCheck;
 		private System.Windows.Forms.CheckBox boldCheck;
-		private System.Windows.Forms.ComboBox backgroundTypeCombo;
-		private ColorComboBox backgroundColor;
-		private ColorComboBox textColor;
+        private System.Windows.Forms.ComboBox backgroundTypeCombo;
 		private System.Windows.Forms.ComboBox rotationCombo;
 		internal System.Windows.Forms.ComboBox verticalCombo;
 		internal System.Windows.Forms.ComboBox horizontalCombo;
@@ -92,6 +90,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		internal System.Windows.Forms.Label verticalLabel;
 		internal System.Windows.Forms.Label horizontalLabel;
         private CheckBox DisplayLabel;
+        private ColorComboWithTransparency textColor;
+        private Label label12;
+        private Label label11;
+        private ColorComboWithTransparency backgroundColor;
 		private bool isUpdating = false;
 
 		public event EventHandler Changed;
@@ -114,9 +116,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 			using(System.IO.MemoryStream ms = new System.IO.MemoryStream(SharedComboDataSet))
 				ComboBoxDataSet.ReadXml(ms);
-
-            backgroundColor.ResetColors();
-            textColor.ResetColors();
 		}
 
 		public void SetAvalibleColumns(string[] items)
@@ -221,12 +220,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.italicCheck = new System.Windows.Forms.CheckBox();
             this.boldCheck = new System.Windows.Forms.CheckBox();
             this.colorGroup = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.backgroundColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency();
+            this.textColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency();
             this.backgroundTypeCombo = new System.Windows.Forms.ComboBox();
             this.BackgroundTypeTable = new System.Data.DataTable();
             this.dataColumn9 = new System.Data.DataColumn();
             this.dataColumn10 = new System.Data.DataColumn();
-            this.backgroundColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
-            this.textColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -439,14 +440,40 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // colorGroup
             // 
             resources.ApplyResources(this.colorGroup, "colorGroup");
-            this.colorGroup.Controls.Add(this.backgroundTypeCombo);
+            this.colorGroup.Controls.Add(this.label12);
+            this.colorGroup.Controls.Add(this.label11);
             this.colorGroup.Controls.Add(this.backgroundColor);
             this.colorGroup.Controls.Add(this.textColor);
+            this.colorGroup.Controls.Add(this.backgroundTypeCombo);
             this.colorGroup.Controls.Add(this.label7);
             this.colorGroup.Controls.Add(this.label8);
             this.colorGroup.Controls.Add(this.label9);
             this.colorGroup.Name = "colorGroup";
             this.colorGroup.TabStop = false;
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // backgroundColor
+            // 
+            resources.ApplyResources(this.backgroundColor, "backgroundColor");
+            this.backgroundColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.backgroundColor.Name = "backgroundColor";
+            this.backgroundColor.CurrentColorChanged += new System.EventHandler(this.backgroundColor_SelectedIndexChanged);
+            // 
+            // textColor
+            // 
+            resources.ApplyResources(this.textColor, "textColor");
+            this.textColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.textColor.Name = "textColor";
+            this.textColor.CurrentColorChanged += new System.EventHandler(this.textColor_SelectedIndexChanged);
             // 
             // backgroundTypeCombo
             // 
@@ -472,18 +499,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // dataColumn10
             // 
             this.dataColumn10.ColumnName = "Value";
-            // 
-            // backgroundColor
-            // 
-            resources.ApplyResources(this.backgroundColor, "backgroundColor");
-            this.backgroundColor.Name = "backgroundColor";
-            this.backgroundColor.SelectedIndexChanged += new System.EventHandler(this.backgroundColor_SelectedIndexChanged);
-            // 
-            // textColor
-            // 
-            resources.ApplyResources(this.textColor, "textColor");
-            this.textColor.Name = "textColor";
-            this.textColor.SelectedIndexChanged += new System.EventHandler(this.textColor_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -656,6 +671,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             ((System.ComponentModel.ISupportInitialize)(this.FontTable)).EndInit();
             this.panel1.ResumeLayout(false);
             this.colorGroup.ResumeLayout(false);
+            this.colorGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundTypeTable)).EndInit();
             this.alignmentGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.RotationTable)).EndInit();

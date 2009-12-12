@@ -2977,7 +2977,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			}
 			set 
 			{
-				this.m_foregroundColor = Utility.SerializeHTMLColor(value, false);
+				this.m_foregroundColor = Utility.SerializeHTMLColor(value, true);
 			}
 		}
 
@@ -2998,7 +2998,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			}
 			set 
 			{
-				this.m_backgroundColor = Utility.SerializeHTMLColor(value, false);
+				this.m_backgroundColor = Utility.SerializeHTMLColor(value, true);
 			}
 		}
         
@@ -3470,7 +3470,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			}
 			set 
 			{
-				this.m_color = Utility.SerializeHTMLColor(value, false);
+				this.m_color = Utility.SerializeHTMLColor(value, true);
 			}
 		}
         
@@ -3791,7 +3791,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
             set
             {
-                this.m_foregroundColor = Utility.SerializeHTMLColor(value, false);
+                this.m_foregroundColor = Utility.SerializeHTMLColor(value, true);
             }
         }
 

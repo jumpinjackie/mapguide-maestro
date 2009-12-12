@@ -32,15 +32,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 	/// </summary>
 	public class LineStyleEditor : System.Windows.Forms.UserControl
 	{
-		public ResourceEditors.GeometryStyleEditors.ImageStylePicker fillCombo;
-
-        public ResourceEditors.GeometryStyleEditors.ColorComboBox colorCombo;
+        public ResourceEditors.GeometryStyleEditors.ImageStylePicker fillCombo;
         public Label lblColor;
 		private System.Windows.Forms.Label lblThickness;
 		private System.Windows.Forms.Label lblFill;
 		public System.Windows.Forms.CheckBox displayLine;
 		private System.Windows.Forms.Panel panel1;
-		public System.Windows.Forms.NumericUpDown thicknessUpDown;
+        public System.Windows.Forms.NumericUpDown thicknessUpDown;
+        private Label label1;
+        public ColorComboWithTransparency colorCombo;
 
 		/// <summary> 
 		/// Required designer variable.
@@ -51,9 +51,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-
-            colorCombo.AllowTransparent = false;
-            colorCombo.ResetColors();
 
             fillCombo.Items.Clear();
             fillCombo.Items.AddRange(FeaturePreviewRender.LineStyles);
@@ -82,22 +79,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		private void InitializeComponent()
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LineStyleEditor));
-            this.colorCombo = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
             this.fillCombo = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ImageStylePicker();
             this.lblColor = new System.Windows.Forms.Label();
             this.lblThickness = new System.Windows.Forms.Label();
             this.lblFill = new System.Windows.Forms.Label();
             this.displayLine = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.thicknessUpDown = new System.Windows.Forms.NumericUpDown();
+            this.colorCombo = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.thicknessUpDown)).BeginInit();
             this.SuspendLayout();
-            // 
-            // colorCombo
-            // 
-            resources.ApplyResources(this.colorCombo, "colorCombo");
-            this.colorCombo.Name = "colorCombo";
             // 
             // fillCombo
             // 
@@ -132,19 +125,31 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.colorCombo);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.thicknessUpDown);
             this.panel1.Controls.Add(this.fillCombo);
             this.panel1.Controls.Add(this.lblColor);
             this.panel1.Controls.Add(this.lblThickness);
             this.panel1.Controls.Add(this.lblFill);
-            this.panel1.Controls.Add(this.colorCombo);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // thicknessUpDown
             // 
             resources.ApplyResources(this.thicknessUpDown, "thicknessUpDown");
             this.thicknessUpDown.Name = "thicknessUpDown";
+            // 
+            // colorCombo
+            // 
+            resources.ApplyResources(this.colorCombo, "colorCombo");
+            this.colorCombo.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorCombo.Name = "colorCombo";
             // 
             // LineStyleEditor
             // 
@@ -166,15 +171,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void displayLine_CheckedChanged(object sender, System.EventArgs e)
 		{
-			lblFill.Enabled =
-			lblThickness.Enabled =
-			lblColor.Enabled = 
-			fillCombo.Enabled = 
-			thicknessUpDown.Enabled = 
-			colorCombo.Enabled = 
-				displayLine.Checked;
-
-		
+            panel1.Enabled = displayLine.Checked;
 		}
 
 	}
