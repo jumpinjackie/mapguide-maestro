@@ -126,6 +126,10 @@
 are you sure you want to remove the other projections?</value>
     <comment>A confirmation message that is displayed when the user switches to simple mode, and that may cause loss of data</comment>
   </data>
+  <data name="ResetOverrideQuestion" xml:space="preserve">
+    <value>Do you also want to reset your overriden coordinate system with the one found in the spatial content?</value>
+    <comment>A question displayed if the spatial content reports a different coordinate system than the existing</comment>
+  </data>
   <data name="SpatialContentNullError" xml:space="preserve">
     <value>Null content in spatial info</value>
     <comment>An error message that is displayed if the spatial content for the resource returns null</comment>

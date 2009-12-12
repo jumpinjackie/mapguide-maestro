@@ -521,11 +521,36 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     if (m_item.CurrentConnection == null)
                         m_item.CurrentConnection = m_editor.CurrentConnection;
 
+
+                    SpatialContextTypeCollection tmp = m_item.SupplementalSpatialContextInfo;
+                    try
+                    {
+
+                        //This is always a copy, so saving is always safe
+                        m_item.SupplementalSpatialContextInfo.Clear();
+                        m_editor.CurrentConnection.SaveResource(m_item);
+                    }
+                    finally
+                    {
+                        m_item.SupplementalSpatialContextInfo = tmp;
+                    }
+
                     FdoSpatialContextList lst = m_item.GetSpatialInfo();
-                    if (lst.SpatialContext.Count > 0)
-                        SourceCoordinateSystem.Text = lst.SpatialContext[0].Name;
-                    else
-                        SourceCoordinateSystem.Text = "Default";
+
+                    string sourceCoordsys = lst.SpatialContext.Count > 0 ? lst.SpatialContext[0].Name : "Default";
+                    string targetCoordsys = lst.SpatialContext.Count > 0 ? lst.SpatialContext[0].CoordinateSystemWkt : TargetCoordinateSystem.Text;
+
+                    DialogResult res = DialogResult.Yes;
+                    if (TargetCoordinateSystem.Text.Trim().Length != 0 && TargetCoordinateSystem.Text != lst.SpatialContext[0].CoordinateSystemWkt)
+                    {
+                        res = MessageBox.Show(this, Strings.CoordinateSystemOverride.ResetOverrideQuestion, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                        if (res == DialogResult.Cancel)
+                            return;
+                    }
+                   
+                    SourceCoordinateSystem.Text = lst.SpatialContext[0].Name;
+                    if (res == DialogResult.Yes)
+                        TargetCoordinateSystem.Text = lst.SpatialContext[0].CoordinateSystemWkt;
                 }
                 catch (Exception ex)
                 {

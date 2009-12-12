@@ -80,6 +80,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you also want to reset your overriden coordinate system with the one found in the spatial content?.
+        /// </summary>
+        internal static string ResetOverrideQuestion {
+            get {
+                return ResourceManager.GetString("ResetOverrideQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Null content in spatial info.
         /// </summary>
         internal static string SpatialContentNullError {
