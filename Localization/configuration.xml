@@ -23,7 +23,7 @@
 		<assembly name="OSGeo.MapGuide.Maestro.ResourceValidators" folder="Maestro\ResourceValidators" namespace="OSGeo.MapGuide.Maestro.ResourceValidators" />
 	
 		<!-- <keyfile>..\MaestroAPI\Maestroapi.key</keyfile> -->
-		<versionassembly>..\Maestro\bin\debug\Maestro.exe</versionassembly>
+		<versionassembly>..\Maestro\bin\release\Maestro.exe</versionassembly>
 		<sourcefolder>..</sourcefolder>
 		<outputfolder>compiled</outputfolder>
 		<productname>Maestro</productname>

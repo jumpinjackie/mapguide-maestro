@@ -1,4 +1,4 @@
-rem @echo off
+@echo off
 rem MapGuide Maestro build script for windows
 rem
 rem Author: Jackie Ng (jumpinjackie@gmail.com)

@@ -78,10 +78,10 @@
     <!-- Launch Maestro setup -->
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch MapGuide Maestro now" />
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
-    <CustomAction Id="LaunchApplication" FileKey="file_MAESTROBIN_5" Impersonate="yes" ExeCommand="" Return="asyncNoWait" />
+    <CustomAction Id="LaunchApplication" FileKey="file_MAESTROBIN_4" Impersonate="yes" ExeCommand="" Return="asyncNoWait" />
     
     <!-- TODO: Figure out why this does not work...
-    <Property Id="WixShellExecTarget" Value="[#comp_MAESTROBIN_5]" />
+    <Property Id="WixShellExecTarget" Value="[#comp_MAESTROBIN_4]" />
     <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" /> 
     -->
 
