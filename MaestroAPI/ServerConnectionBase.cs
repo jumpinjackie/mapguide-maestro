@@ -718,39 +718,62 @@ namespace OSGeo.MapGuide.MaestroAPI
 				if (!pi.CanRead || !pi.CanWrite || pi.GetIndexParameters().Length != 0 || pi.GetValue(o, null) == null)
 					continue;
 
-                //If we are at a ResourceId property, update it as needed
-				if (pi.Name == "ResourceId")
-				{
-					object v = pi.GetValue(o, null);
-					string current = v as string;
+                object v = pi.GetValue(o, null);
+                if (v == null)
+                    continue;
 
-					if (current != null)
-					{
-						if (folderupdates && current.StartsWith(oldresourcepath))
-							pi.SetValue(o, newresourcepath + current.Substring(oldresourcepath.Length), null);
-						else if (current == oldresourcepath)
-							pi.SetValue(o, newresourcepath, null); 
-					}
-				}
-				else if (pi.GetValue(o, null).GetType().GetInterface(typeof(System.Collections.ICollection).FullName) != null)
-				{
-                    //Handle collections
-					System.Collections.ICollection srcList = (System.Collections.ICollection)pi.GetValue(o, null);
-					foreach(object ox in srcList)
-						UpdateResourceReferences(ox, oldresourcepath, newresourcepath, folderupdates, visited);
-				}
-				else if (pi.GetValue(o, null).GetType().IsArray)
-				{
-                    //Handle arrays
-					System.Array sourceArr = (System.Array)pi.GetValue(o, null);
-					for(int i = 0; i < sourceArr.Length; i++)
-						UpdateResourceReferences(sourceArr.GetValue(i), oldresourcepath, newresourcepath, folderupdates, visited);
-				}
-                else if (pi.PropertyType.IsClass)
-                {
-                    //Handle subobjects
-                    UpdateResourceReferences(pi.GetValue(o, null), oldresourcepath, newresourcepath, folderupdates, visited);
-                }
+                if (v is string)
+
+                //If we are at a ResourceId property, update it as needed
+                    if (v is string)
+                    {
+                        bool isResId = pi.Name == "ResourceId";
+                        if (!isResId)
+                        {
+                            //Search for attributes
+                            object[] xmlAttrs = pi.GetCustomAttributes(typeof(System.Xml.Serialization.XmlElementAttribute), false);
+                            if (xmlAttrs != null)
+                                foreach (System.Xml.Serialization.XmlElementAttribute attr in xmlAttrs)
+                                    if (attr.Type == typeof(string) && attr.ElementName == "ResourceId")
+                                        if (pi.Name == "ResourceId")
+                                        {
+                                            isResId = true;
+                                            break;
+                                        }
+                        }
+
+                        if (isResId)
+                        {
+                            string current = v as string;
+
+                            if (current != null)
+                            {
+                                if (folderupdates && current.StartsWith(oldresourcepath))
+                                    pi.SetValue(o, newresourcepath + current.Substring(oldresourcepath.Length), null);
+                                else if (current == oldresourcepath)
+                                    pi.SetValue(o, newresourcepath, null);
+                            }
+                        }
+                    }
+                    else if (v is IEnumerable)
+                    {
+                        //Handle collections
+                        System.Collections.IEnumerable srcList = (System.Collections.IEnumerable)v;
+                        foreach (object ox in srcList)
+                            UpdateResourceReferences(ox, oldresourcepath, newresourcepath, folderupdates, visited);
+                    }
+                    else if (v.GetType().IsArray)
+                    {
+                        //Handle arrays
+                        System.Array sourceArr = (System.Array)v;
+                        for (int i = 0; i < sourceArr.Length; i++)
+                            UpdateResourceReferences(sourceArr.GetValue(i), oldresourcepath, newresourcepath, folderupdates, visited);
+                    }
+                    else if (v.GetType().IsClass)
+                    {
+                        //Handle subobjects
+                        UpdateResourceReferences(v, oldresourcepath, newresourcepath, folderupdates, visited);
+                    }
 			}
 
 		}
@@ -831,11 +854,18 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 				try
 				{
-					object o = GetResource(item.Itempath);
+                    System.Xml.XmlDocument d = new System.Xml.XmlDocument();
+                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream(GetResourceXmlData(item.Itempath)))
+                        d.Load(ms);
 
-					UpdateResourceReferences(o, oldpath, newpath, false);
+                    UpdateResourceReferences(d, oldpath, newpath, false);
+                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                    {
+                        d.Save(ms);
+                        ms.Position = 0;
 
-					SaveResourceAs(o, item.Itempath);
+                        SetResourceXmlData(item.Itempath, ms);
+                    }
 					item.Status = LengthyOperationCallbackArgs.LengthyOperationItem.OperationStatus.Success;
 				}
 				catch (Exception ex)
@@ -953,13 +983,20 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 				try
 				{
-					object o = GetResource(item.Itempath);
+                    System.Xml.XmlDocument d = new System.Xml.XmlDocument();
+                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream(GetResourceXmlData(item.Itempath)))
+                        d.Load(ms);
 
-					UpdateResourceReferences(o, oldpath, newpath, true);
+                    UpdateResourceReferences(d, oldpath, newpath, true);
+                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                    {
+                        d.Save(ms);
+                        ms.Position = 0;
 
-					SaveResourceAs(o, item.Itempath);
-					item.Status = LengthyOperationCallbackArgs.LengthyOperationItem.OperationStatus.Success;
-				}
+                        SetResourceXmlData(item.Itempath, ms);
+                    }
+                    item.Status = LengthyOperationCallbackArgs.LengthyOperationItem.OperationStatus.Success;
+                }
 				catch (Exception ex)
 				{
 					string s = ex.Message;
@@ -1073,13 +1110,20 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 				try
 				{
-					object o = GetResource(item.Itempath);
+                    System.Xml.XmlDocument d = new System.Xml.XmlDocument();
+                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream(GetResourceXmlData(item.Itempath)))
+                        d.Load(ms);
 
-					UpdateResourceReferences(o, oldpath, newpath, true);
+                    UpdateResourceReferences(d, oldpath, newpath, true);
+                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                    {
+                        d.Save(ms);
+                        ms.Position = 0;
 
-					SaveResourceAs(o, item.Itempath);
-					item.Status = LengthyOperationCallbackArgs.LengthyOperationItem.OperationStatus.Success;
-				}
+                        SetResourceXmlData(item.Itempath, ms);
+                    }
+                    item.Status = LengthyOperationCallbackArgs.LengthyOperationItem.OperationStatus.Success;
+                }
 				catch (Exception ex)
 				{
 					string s = ex.Message;

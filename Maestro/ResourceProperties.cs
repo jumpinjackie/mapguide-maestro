@@ -854,7 +854,11 @@ namespace OSGeo.MapGuide.Maestro
                     m_backgroundThread = System.Threading.Thread.CurrentThread;
 
                 string resourceId = (ResourceIdentifier)e.Argument;
-                ResourceReferenceList lst = m_connection.EnumerateResourceReferences(resourceId);
+
+                List<string> lst = new List<string>();
+                foreach (string s in  m_connection.EnumerateResourceReferences(resourceId).ResourceId)
+                    if (!lst.Contains(s))
+                        lst.Add(s);
 
                 System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
                 using(System.IO.MemoryStream ms = new System.IO.MemoryStream(m_connection.GetResourceXmlData(resourceId)))
@@ -863,7 +867,8 @@ namespace OSGeo.MapGuide.Maestro
                 List<KeyValuePair<System.Xml.XmlNode, string>> refs = Utility.GetResourceIdPointers(doc);
                 List<string> r = new List<string>();
                 foreach (KeyValuePair<System.Xml.XmlNode, string> s in refs)
-                    r.Add(s.Value);
+                    if (!r.Contains(s.Value))
+                        r.Add(s.Value);
                 e.Result = new object[] { lst, r };
             }
             catch(System.Threading.ThreadAbortException)
@@ -904,13 +909,13 @@ namespace OSGeo.MapGuide.Maestro
 
             OutReferences.Enabled = InReferences.Enabled = true;
 
-            ResourceReferenceList l1 = ((object[])e.Result)[0] as ResourceReferenceList;
+            List<string> l1 = ((object[])e.Result)[0] as List<string>;
             List<string> l2 = ((object[])e.Result)[1] as List<string>;
 
             foreach (string s in l2)
                 OutReferenceList.Items.Add(s, m_editor.GetImageIndexFromResourceID(s));
 
-            foreach (string s in l1.ResourceId)
+            foreach (string s in l1)
                 InReferenceList.Items.Add(s, m_editor.GetImageIndexFromResourceID(s));
 
             m_hasLoadedRefs = true;
