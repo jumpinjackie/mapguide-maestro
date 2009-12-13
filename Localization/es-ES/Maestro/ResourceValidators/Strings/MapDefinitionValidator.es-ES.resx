@@ -173,4 +173,8 @@
     <value>Layer {0} is a type that is unsupported by Maestro</value>
     <comment>A warning message that is displayed if a layer has a type that is not supported by Maestro</comment>
   </data>
+  <data name="LayerNameDuplicateWarning" xml:space="preserve">
+    <value>The layer name {0} is used for both "{1}" and "{2}"</value>
+    <comment>A warning message that is displayed if two layers share the same layer name</comment>
+  </data>
 </root>

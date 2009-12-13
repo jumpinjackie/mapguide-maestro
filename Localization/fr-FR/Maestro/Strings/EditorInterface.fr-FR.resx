@@ -143,4 +143,9 @@ Do you want to save it anyway?</value>
 Do you want to save it anyway?</value>
     <comment>A confirmation message displayed if the resource has warnings</comment>
   </data>
+  <data name="ValidationMessageTooLong" xml:space="preserve">
+    <value>{0}... (text truncated)
+</value>
+    <comment>A message displayed when the validation message is truncated</comment>
+  </data>
 </root>

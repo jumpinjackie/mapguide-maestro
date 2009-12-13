@@ -125,4 +125,8 @@
     <value>Versión: {0}</value>
     <comment>A label that displays the current version</comment>
   </data>
+  <data name="ServerVersionLabel" xml:space="preserve">
+    <value>MapGuide Version: {0} ({1})</value>
+    <comment>A label that displays the version of the current MapGuide server</comment>
+  </data>
 </root>

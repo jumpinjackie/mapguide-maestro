@@ -134,4 +134,8 @@ are you sure you want to remove the other projections?</value>
     <value>Spatial context info</value>
     <comment>The title of the dialog that displays spatial context information</comment>
   </data>
+  <data name="ResetOverrideQuestion" xml:space="preserve">
+    <value>Do you also want to reset your overriden coordinate system with the one found in the spatial content?</value>
+    <comment>A question displayed if the spatial content reports a different coordinate system than the existing</comment>
+  </data>
 </root>
