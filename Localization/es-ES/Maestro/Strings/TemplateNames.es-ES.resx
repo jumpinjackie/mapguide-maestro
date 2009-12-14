@@ -149,4 +149,8 @@
     <value>Librería de Símbolos</value>
     <comment>The name of the default Symbol Library template</comment>
   </data>
+  <data name="Compound_Symbol" xml:space="preserve">
+    <value>Sammensat symbol</value>
+    <comment>The name of the compound Symbol Definition template</comment>
+  </data>
 </root>
