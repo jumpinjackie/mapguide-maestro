@@ -748,7 +748,7 @@ namespace OSGeo.MapGuide.Maestro
                         try
                         {
                             retry = false;
-                            using (FeatureSetReader rd = m_connection.QueryFeatureSource(m_featureSource, m_schema.FullnameDecoded, null, new string[] { ColumnName.Text }))
+                            using (FeatureSetReader rd = m_connection.QueryFeatureSource(m_featureSource, m_schema.FullnameDecoded, filter, new string[] { ColumnName.Text }))
                                 while (rd.Read())
                                     if (rd.Row.IsValueNull(ColumnName.Text))
                                         hasNull = true;
@@ -759,6 +759,7 @@ namespace OSGeo.MapGuide.Maestro
                         {
                             if (filter == null && ex.Message.IndexOf("MgNullPropertyValueException") >= 0)
                             {
+                                hasNull = true;
                                 rawEx = ex;
                                 retry = true;
                                 filter = ColumnName.Text + " != NULL";

@@ -61,6 +61,15 @@ namespace OSGeo.MapGuide.Maestro.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sammensat symbol.
+        /// </summary>
+        internal static string Compound_Symbol {
+            get {
+                return ResourceManager.GetString("Compound_Symbol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dataconnection.
         /// </summary>
         internal static string Dataconnection {

@@ -1166,12 +1166,24 @@ namespace OSGeo.MapGuide.Maestro
 				if (ClassDef == null)
 					ClassDef = typeof(ResourceEditors.XmlEditorControl);
 
-				if (ClassDef != null)
-					try { AddEditTab(ClassDef, resourceID, resourceID.StartsWith("Library://")); }
-					catch (System.Reflection.TargetInvocationException tex) { MessageBox.Show(this, string.Format(Strings.FormMain.OpenFailedError, resourceID, tex.InnerException.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); }
-					catch (Exception ex) { MessageBox.Show(this, string.Format(Strings.FormMain.OpenFailedError, resourceID, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); }
-				else
-					MessageBox.Show(this, string.Format(Strings.FormMain.UnknownResourceTypeError, resourceID), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (ClassDef != null)
+                {
+                    try
+                    {
+                        AddEditTab(ClassDef, resourceID, resourceID.StartsWith("Library://"));
+                    }
+                    catch (Exception ex)
+                    {
+                        LastException = ex;
+                        Exception iex = ex;
+                        while (iex is System.Reflection.TargetInvocationException && iex.InnerException != null)
+                            iex = iex.InnerException;
+                        if (!(iex is CancelException))
+                            MessageBox.Show(this, string.Format(Strings.FormMain.OpenFailedError, resourceID, iex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                    MessageBox.Show(this, string.Format(Strings.FormMain.UnknownResourceTypeError, resourceID), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				
 			}
 			

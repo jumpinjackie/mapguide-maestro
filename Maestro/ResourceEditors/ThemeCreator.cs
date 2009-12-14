@@ -265,8 +265,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                             AggregateCombo.SelectedIndex = 0;
                         if (AggregateCombo.SelectedIndex == AggregateCombo.Items.Count - 1)
                             AggregateCombo.SelectedIndex = 0;
-
-                        RefreshColorBrewerSet();
                     }
 
                 }
@@ -296,6 +294,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                         true;
                 }
 
+                RefreshColorBrewerSet();
                 RefreshPreview();
             }
         }
@@ -574,6 +573,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             else
             {
+                if (ColorBrewerColorSet.SelectedItem == null)
+                    return new Color[0];
+
                 ColorBrewer c = ((ColorBrewer.ColorBrewerListItem)ColorBrewerColorSet.SelectedItem).Set;
                 if (c == null)
                     return new Color[0];

@@ -136,6 +136,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.AcceptButton = this.OKBtn;
             resources.ApplyResources(this, "$this");
+            this.CancelButton = this.CancelBtn;
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.OKBtn);
             this.Controls.Add(this.ProviderComments);

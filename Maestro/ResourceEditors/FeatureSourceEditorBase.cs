@@ -139,11 +139,26 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			m_editor = editor;
 			m_feature = editor.CurrentConnection.GetFeatureSource(resourceID);
+
+            if (string.IsNullOrEmpty(m_feature.Provider))
+            {
+                SelectDataProvider sdp = new SelectDataProvider(editor.CurrentConnection);
+                if (sdp.ShowDialog(this) != DialogResult.Cancel && sdp.SelectedProvider != null)
+                {
+                    m_feature.Provider = sdp.SelectedProvider.Name;
+                    m_feature.Parameter = new OSGeo.MapGuide.MaestroAPI.NameValuePairTypeCollection();
+                    foreach (OSGeo.MapGuide.MaestroAPI.FeatureProviderRegistryFeatureProviderConnectionProperty property in sdp.SelectedProvider.ConnectionProperties)
+                        m_feature.Parameter[property.Name] = property.DefaultValue;
+                }
+                else
+                    throw new CancelException();
+            }
+
 			CreateLayout(editor, m_feature);
 
-			if (m_child == null)
-				throw new Exception(Strings.FeatureSourceEditorBase.FeatureSourceCreationError);
-		}
+            if (m_child == null)
+                throw new Exception(Strings.FeatureSourceEditorBase.FeatureSourceCreationError);
+        }
 
 		private System.Type ResolveSpecificResourceEditor(EditorInterface editor, string providerName)
 		{
