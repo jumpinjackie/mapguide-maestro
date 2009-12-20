@@ -118,9 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="NoLayerSelectedError" xml:space="preserve">
-    <value>Please select a layer first</value>
+    <value>Vælg venligst et lag</value>
   </data>
   <data name="NoVectorLayerSelectedError" xml:space="preserve">
-    <value>The selected layer is not a vector layer, please select a vector layer</value>
+    <value>Det valgte lag er ikke et vektor lag.
+Vælg venligst et vektor lag.</value>
   </data>
 </root>

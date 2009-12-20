@@ -256,4 +256,52 @@
   <data name="$this.Text" type="System.String">
     <value>MapGuide Maestro</value>
   </data>
+  <data name="CopyResourceIdMenu.Text" xml:space="preserve">
+    <value>Kopier id til klippebord</value>
+  </data>
+  <data name="CopyResourceIdMenu.ToolTipText" xml:space="preserve">
+    <value>Kopierer det valgte elements id til klippebordet</value>
+  </data>
+  <data name="validateResourcesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Valider element</value>
+  </data>
+  <data name="DuplicateMenu.Text" xml:space="preserve">
+    <value>Opret kopi</value>
+  </data>
+  <data name="RenameMenu.Text" xml:space="preserve">
+    <value>Omdøb</value>
+  </data>
+  <data name="openToolStripMenuItem.Text" xml:space="preserve">
+    <value>Åbn</value>
+  </data>
+  <data name="ProfileButton.ToolTipText" xml:space="preserve">
+    <value>Giver deltaljer om hastigheden for delementer</value>
+  </data>
+  <data name="ValidateButton.ToolTipText" xml:space="preserve">
+    <value>Kontrollerer elementet for kendte fejl</value>
+  </data>
+  <data name="TabClosePageMenu.Text" xml:space="preserve">
+    <value>Luk</value>
+  </data>
+  <data name="TabSaveMenu.Text" xml:space="preserve">
+    <value>Gem</value>
+  </data>
+  <data name="TabSaveAsMenu.Text" xml:space="preserve">
+    <value>Gem som ...</value>
+  </data>
+  <data name="TabCopyIdMenu.Text" xml:space="preserve">
+    <value>Kopier id til klippebord</value>
+  </data>
+  <data name="SaveAsXmlDialog.Filter" xml:space="preserve">
+    <value>Xml filer (*.xml)|*.xml|Alle filer (*.*)|*.*</value>
+  </data>
+  <data name="SaveAsXmlDialog.Title" xml:space="preserve">
+    <value>Vælg hvilken fil der skal gemmes til</value>
+  </data>
+  <data name="OpenXmlFileDialog.Filter" xml:space="preserve">
+    <value>Xml filer (*.xml)|*.xml|Alle filer (*.*)|*.*</value>
+  </data>
+  <data name="OpenXmlFileDialog.Title" xml:space="preserve">
+    <value>Udpeg xml filen der skal indlæses</value>
+  </data>
 </root>

@@ -142,4 +142,10 @@
   <data name="$this.Text" type="System.String">
     <value>Opret en ny pakke</value>
   </data>
+  <data name="saveFileDialog.Filter" xml:space="preserve">
+    <value>MapGuide Pakker (*.mgp)|*.mgp|Zip filer (*.zip)|*.zip|Alle filer (*.*)|*.*</value>
+  </data>
+  <data name="saveFileDialog.Title" xml:space="preserve">
+    <value>Vælg hvor filen skal gemmes</value>
+  </data>
 </root>

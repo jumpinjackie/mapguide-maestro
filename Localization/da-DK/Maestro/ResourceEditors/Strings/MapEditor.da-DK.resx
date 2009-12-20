@@ -118,18 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DuplicateLayerInclusionConfirmation" xml:space="preserve">
-    <value>The layer {0} is already in the map, do you want it to appear twice?</value>
+    <value>Laget {0} er allerede i kortet, vil du tilføje det alligevel?</value>
     <comment>A confirmation message that is shown when the user attempts to include the same layer twice</comment>
   </data>
   <data name="FiniteDisplayScalesName" xml:space="preserve">
-    <value>Finite display scales</value>
+    <value>Zoom niveauer</value>
     <comment>The name displayed for finite display scales</comment>
   </data>
   <data name="FlattenGroupsWarning" xml:space="preserve">
-    <value>The selected group has sub groups. These will be removed and all
-layers will be moved to the selected group before being converted.
-
-Do you want to continue?</value>
+    <value>Den valgte gruppe har undergrupper. Disse vil blive fjernet og alle
+lag bliver flyttet til den valgte gruppe før konverteringen.
+Vil du konvertere gruppen?</value>
     <comment>A warning that is displayed if the user attempts to convert a group with subgroups to a baselayer group</comment>
   </data>
   <data name="LayerExtentReadError" xml:space="preserve">
@@ -137,11 +136,10 @@ Do you want to continue?</value>
     <comment>An error message that is displayed if the attempt to read the layer extents fail</comment>
   </data>
   <data name="LayerVisibilityToggleWarning" xml:space="preserve">
-    <value>The selected group has one or more layers that are invisible.
-The layers in a base layer are always visible.
-If you convert the group, the layers will be made visible.
-
-Do you want to continue?</value>
+    <value>Den valgte gruppe har et eller flere lag der ikke er synlige.
+Lag i en basis gruppe er altid synlige, og lagene bliver derfor 
+synlige når gruppen konverteres.
+Vil du forsætte med konverteringen?</value>
     <comment>A warning message that is displayed if the user attempts to convert an invisible layer to a baselayer</comment>
   </data>
   <data name="MapPreviewError" xml:space="preserve">
@@ -149,11 +147,11 @@ Do you want to continue?</value>
     <comment>An error message that is displayed if the map preview fails</comment>
   </data>
   <data name="MgCookerException" xml:space="preserve">
-    <value>MgCooker threw an exception: {0}</value>
+    <value>MgCooker gave en fejl: {0}</value>
     <comment>An error message that is displayed if MgCooker fails</comment>
   </data>
   <data name="MgCookerNeedsSavedMapError" xml:space="preserve">
-    <value>This map is not yet saved. MgCooker can only process saved maps</value>
+    <value>Dette kort er endnu ikke gemt. MgCooker kan kun arbejde på kort der er gemt.</value>
     <comment>An error message that is displayed if the user attempts to produce tiles for an unsaved map</comment>
   </data>
   <data name="NewGroupBaseName" xml:space="preserve">
@@ -165,8 +163,9 @@ Do you want to continue?</value>
     <comment>An error message that is displayed if the user has not selected a layer</comment>
   </data>
   <data name="SaveMapWithBaseLayersWarning" xml:space="preserve">
-    <value>This map contains base layers. Saving the map will clear any generated tiles.
-Do you want to save the map?</value>
+    <value>Dette kort indeholder basis lag.
+Hvis du gemmer kortet bliver alle dannede tiles slettet.
+Vil du gemme kortet?</value>
     <comment>A warning message that is displayed if the map contains baselayers, as that will result in all existing tiles being deleted</comment>
   </data>
 </root>

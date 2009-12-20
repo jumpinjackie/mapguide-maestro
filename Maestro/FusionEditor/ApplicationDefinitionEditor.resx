@@ -157,7 +157,7 @@
     <value>1</value>
   </data>
   <data name="MapTitle.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;MapTitle.Name" xml:space="preserve">
     <value>MapTitle</value>
@@ -184,7 +184,7 @@
     <value>3</value>
   </data>
   <data name="TemplateURL.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;TemplateURL.Name" xml:space="preserve">
     <value>TemplateURL</value>
@@ -235,7 +235,7 @@
     <value>10</value>
   </data>
   <data name="MapID.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;MapID.Name" xml:space="preserve">
     <value>MapID</value>
@@ -307,7 +307,7 @@
     <value>7</value>
   </data>
   <data name="MapTypeCombo.Text" xml:space="preserve">
-    <value>comboBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;MapTypeCombo.Name" xml:space="preserve">
     <value>MapTypeCombo</value>
@@ -595,7 +595,7 @@
     <value>1</value>
   </data>
   <data name="MapResourceID.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;MapResourceID.Name" xml:space="preserve">
     <value>MapResourceID</value>

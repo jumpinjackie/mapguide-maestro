@@ -118,8 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AssemblyLoadError" xml:space="preserve">
-    <value>Failed while loading assembly: {0}
-Error message: {1}</value>
+    <value>Fejlede under indlæsning af assembly: {0}
+Fejlbesked: {1}</value>
     <comment>An error message that is displayed if the assembly fails to load</comment>
   </data>
   <data name="FolderResourceName" xml:space="preserve">
@@ -127,19 +127,19 @@ Error message: {1}</value>
     <comment>The name of the folder type</comment>
   </data>
   <data name="InvalidResourceIdError" xml:space="preserve">
-    <value>Invalid Resource Identifier: {0}</value>
+    <value>Ugyldig resourceid: {0}</value>
     <comment>An error message that is displayed if an invalid resourceId is encountered</comment>
   </data>
   <data name="ResourceEditorLoadError" xml:space="preserve">
-    <value>Failed to load the resource editors: {0}</value>
+    <value>Kunne ikke indlæse editor: {0}</value>
     <comment>An error message that is displayed if the resource editors fail to load</comment>
   </data>
   <data name="TypeLoadError" xml:space="preserve">
-    <value>Failed to load type {0} from assembly: {1}</value>
+    <value>Kunne ikke indlæse type {0} fra assembly: {1}</value>
     <comment>An error message that is displayed if the specified type fails to load</comment>
   </data>
   <data name="TypeMissingInterfaceError" xml:space="preserve">
-    <value>Resource editor for {0} does not implement the required interface: {1}</value>
+    <value>Resource editor for {0} implementerer ikke det krævede interface: {1}</value>
     <comment>An error message that is displayed if the specified type is missing a required interface</comment>
   </data>
 </root>

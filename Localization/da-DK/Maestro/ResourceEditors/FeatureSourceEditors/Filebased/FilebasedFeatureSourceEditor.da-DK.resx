@@ -130,4 +130,7 @@
   <data name="ReadOnlyCheck.Text" type="System.String">
     <value>Skrivebeskyttet</value>
   </data>
+  <data name="LocationType.Items1" xml:space="preserve">
+    <value>På serverens filsystem (Unmanaged)</value>
+  </data>
 </root>

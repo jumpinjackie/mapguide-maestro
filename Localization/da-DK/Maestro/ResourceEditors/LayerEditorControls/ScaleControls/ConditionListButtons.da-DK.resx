@@ -127,4 +127,25 @@
   <data name="ShowInLegend.Text" type="System.String">
     <value>Signatur label</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Regel</value>
+  </data>
+  <data name="AddRuleButton.ToolTip" xml:space="preserve">
+    <value>Tilføj en ny regel</value>
+  </data>
+  <data name="CopyRuleButton.ToolTip" xml:space="preserve">
+    <value>Klik for at indsætte et kopi af den nuværende regel</value>
+  </data>
+  <data name="CreateThemeButton.ToolTip" xml:space="preserve">
+    <value>Klik for at oprette en tematisering</value>
+  </data>
+  <data name="MoveRuleDownButton.ToolTip" xml:space="preserve">
+    <value>Flyt den valgte regel ned</value>
+  </data>
+  <data name="MoveRuleUpButton.ToolTip" xml:space="preserve">
+    <value>Flyt den valgte regel op</value>
+  </data>
+  <data name="ShowInLegend.ToolTip" xml:space="preserve">
+    <value>Afkryds for at vise i signaturforklaringen (kun tilgængelig i LayerDefinition 1.3.0 og over)</value>
+  </data>
 </root>

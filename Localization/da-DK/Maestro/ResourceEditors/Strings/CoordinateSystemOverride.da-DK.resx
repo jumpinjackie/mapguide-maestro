@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CoordinateSystemLoadError" xml:space="preserve">
-    <value>Failed to retrive coordinate info: {0}</value>
+    <value>Kunne ikke hente koordinat information: {0}</value>
     <comment>An error message that is displayed when the coordinate system information for the spatial context fails to load</comment>
   </data>
   <data name="RemoveOverridesConfirmation" xml:space="preserve">
-    <value>Simple mode will remove all but the first overridden projection,
-are you sure you want to remove the other projections?</value>
+    <value>Simpel tilstand vil fjerne alle projektioner, undtagen den første.
+Er du sikker på at du vil fjerne disse projektioner?</value>
     <comment>A confirmation message that is displayed when the user switches to simple mode, and that may cause loss of data</comment>
   </data>
   <data name="SpatialContentNullError" xml:space="preserve">
-    <value>Null content in spatial info</value>
+    <value>Der er ingen indhold i datakildens spatiale information</value>
     <comment>An error message that is displayed if the spatial content for the resource returns null</comment>
   </data>
   <data name="SpatialContextInfoDialogTitle" xml:space="preserve">
-    <value>Spatial context info</value>
+    <value>Spatial information</value>
     <comment>The title of the dialog that displays spatial context information</comment>
   </data>
   <data name="ResetOverrideQuestion" xml:space="preserve">
-    <value>Do you also want to reset your overriden coordinate system with the one found in the spatial content?</value>
+    <value>Vil du også nulstille den valgte projektion til værdien som datakilden rapporterer?</value>
     <comment>A question displayed if the spatial content reports a different coordinate system than the existing</comment>
   </data>
 </root>

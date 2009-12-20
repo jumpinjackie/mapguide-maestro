@@ -139,4 +139,19 @@
   <data name="ConfigureButton.Text" type="System.String">
     <value>Indstil kolonner</value>
   </data>
+  <data name="ConnectionType.Items1" xml:space="preserve">
+    <value>Filer på serveren (Unmanaged)</value>
+  </data>
+  <data name="ConnectionType.Items2" xml:space="preserve">
+    <value>DSN (Navngivet ODBC)</value>
+  </data>
+  <data name="ConnectionType.Items3" xml:space="preserve">
+    <value>Kendt database type</value>
+  </data>
+  <data name="ConnectionType.Items4" xml:space="preserve">
+    <value>Brugertilpasset forbindelsesstreng</value>
+  </data>
+  <data name="ConnectionString.Text" xml:space="preserve">
+    <value>Forbindelsesstreng</value>
+  </data>
 </root>

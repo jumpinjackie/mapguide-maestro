@@ -118,11 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="NoAliasFoldersError" xml:space="preserve">
-    <value>There are no folders mapped. Please set up folders in the Alias section of the MapGuide Site Administrator</value>
+    <value>Der er ikke opsat mapper.
+Benyt venligst Site Administrator værktøjet til at tilføje mapper.</value>
     <comment>An error message displayed when there are no aliased folders</comment>
   </data>
   <data name="NoResourceSelectedError" xml:space="preserve">
-    <value>Please enter a path to the resource</value>
+    <value>Indtast venligts en sti til elementet.</value>
     <comment>An error message that is d</comment>
   </data>
 </root>

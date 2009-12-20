@@ -148,4 +148,13 @@
   <data name="RefreshButton.ToolTipText" type="System.String">
     <value>Genindlæs data fra de valgte elementer</value>
   </data>
+  <data name="OpenFileDialog.Filter" xml:space="preserve">
+    <value>PNG filer (*.png)|*.png|JPEG filer (*.jpg; *.jpeg)|*.jpg;*.jpeg|TIFF filer (*.tif, *.tiff)|*.tif;*.tiff|ECW filer (*.ecw)|*.ecw|MrSID filer (*.sid)|*.sid|GIF filer (*.gif)|*.gif|Alle filer (*.*)|*.*</value>
+  </data>
+  <data name="OpenFileDialog.Title" xml:space="preserve">
+    <value>Vælg de filer der skal tilføjes</value>
+  </data>
+  <data name="FolderBrowserDialog.Description" xml:space="preserve">
+    <value>Vælg mappen med filer der skal inkluderes</value>
+  </data>
 </root>

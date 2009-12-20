@@ -148,4 +148,27 @@
   <data name="$this.Text" type="System.String">
     <value>Log ind på en MapGuide Server</value>
   </data>
+  <data name="cmbServerUrl.ToolTip" xml:space="preserve">
+    <value>Indtast den fulde URL til MapAgent servicen her</value>
+  </data>
+  <data name="txtStartingpoint.ToolTip" xml:space="preserve">
+    <value>Indtast startmappen her</value>
+  </data>
+  <data name="txtUsername.ToolTip" xml:space="preserve">
+    <value>Indtast login brugernavnet her</value>
+  </data>
+  <data name="txtPassword.ToolTip" xml:space="preserve">
+    <value>Indtast login kodeordet her</value>
+  </data>
+  <data name="chkAutoConnect.ToolTip" xml:space="preserve">
+    <value>Afkryds denne box for at få Maestro til at logge automatisk ind på denne server ved opstart</value>
+  </data>
+  <data name="chkSavePassword.ToolTip" xml:space="preserve">
+    <value>Hvis denne boks er afkrydset, gemmes kodeordet på computeren i en ikke læsbar udgave.
+Bemærk at kodeordet IKKE er krypteret og kan læses af andre.
+Det betragtes som usikkert at gemme kodeordet på computeren, men kan gøre brugen af Maestro lettere.</value>
+  </data>
+  <data name="cmbLanguage.ToolTip" xml:space="preserve">
+    <value>Vælg dit foretrukne sprog her</value>
+  </data>
 </root>

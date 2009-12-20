@@ -125,7 +125,7 @@
     <value>Annuller</value>
   </data>
   <data name="lblHint.Text" type="System.String">
-    <value>Tryk Alt + Ret til at påberåbe sig automatisk udfyldning</value>
+    <value>Tryk Alt + Højre for at vise auto-fuldførelse</value>
   </data>
   <data name="btnProperties.Text" type="System.String">
     <value>Egenskaber</value>
@@ -137,6 +137,18 @@
     <value>Filter</value>
   </data>
   <data name="$this.Text" type="System.String">
-    <value>Udtryks editor</value>
+    <value>Rediger udtryk</value>
+  </data>
+  <data name="btnCondition.Text" xml:space="preserve">
+    <value>Betingelse</value>
+  </data>
+  <data name="btnDistance.Text" xml:space="preserve">
+    <value>Afstand</value>
+  </data>
+  <data name="LookupValues.ToolTipText" xml:space="preserve">
+    <value>Klik for at hente værdier fra den valgte kolonne</value>
+  </data>
+  <data name="ColumnName.ToolTipText" xml:space="preserve">
+    <value>Vælg kolonnen der skal læses værdier fra</value>
   </data>
 </root>

@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConnectionError" xml:space="preserve">
-    <value>Unable to connect: {0}</value>
+    <value>Kunne ikke forbinde: {0}</value>
     <comment>An error message that is displayed, when the initial connection fails</comment>
   </data>
   <data name="FileTypeAllFiles" xml:space="preserve">
-    <value>All files ({0})</value>
+    <value>Alle filer ({0})</value>
     <comment>The name displayed for the *.* filetype when the user is prompted to save a file</comment>
   </data>
   <data name="FileTypeShellScript" xml:space="preserve">
@@ -130,12 +130,12 @@
     <comment>The name displayed for the *.sh filetype when the user is prompted to save a file</comment>
   </data>
   <data name="InternalError" xml:space="preserve">
-    <value>An internal error occured: {0}</value>
+    <value>En intern fejl opstod: {0}</value>
     <comment>An error message that is displayed if an internal error occurs</comment>
   </data>
   <data name="MissingWebConfigFile" xml:space="preserve">
-    <value>The file {0} was not found, unable to use the Native connection method.
-Either copy in the file, or do not use the Native connection method</value>
+    <value>Filen {0} blev ikke fundet, og der kan derfor ikke anvendes MapGuide API.
+Kopier filen ind på den nævnte placering, eller brug ikke MapGuide API.</value>
     <comment>A message displayed when the webconfig.ini file is missing</comment>
   </data>
 </root>

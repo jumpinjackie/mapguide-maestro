@@ -232,4 +232,79 @@
   <data name="$this.Text" type="System.String">
     <value>Indstillinger for elementet</value>
   </data>
+  <data name="UsersAndGroups.ToolTip" xml:space="preserve">
+    <value>Højreklik for at ændre rettigheder</value>
+  </data>
+  <data name="AutoGenerateWMSBounds.ToolTip" xml:space="preserve">
+    <value>Klik for at indlæse koordinat grænser fra datakilden</value>
+  </data>
+  <data name="WMSBounds.ToolTip" xml:space="preserve">
+    <value>Denne værdi er xml elementet bounds, som indsættes direkte i xml resultatet. Benyt rediger knappen hvis du ikke er fortrolig med at redigere denne værdi manuelt.</value>
+  </data>
+  <data name="WMSOpaque.ToolTip" xml:space="preserve">
+    <value>Denne afkrydsningsboks afgør om laget tegnes ugennemsigtigt</value>
+  </data>
+  <data name="WMSQueryable.ToolTip" xml:space="preserve">
+    <value>Denne afkrydsningsboks afgør om der kan spørges på tooltips på laget.</value>
+  </data>
+  <data name="WMSAvalible.ToolTip" xml:space="preserve">
+    <value>Denne afkrydsningsboks afgør om laget er tilgængeligt.</value>
+  </data>
+  <data name="WMSMetadata.ToolTip" xml:space="preserve">
+    <value>Dette felt indeholder metadata der kan læses af mennesker</value>
+  </data>
+  <data name="WMSAbstract.ToolTip" xml:space="preserve">
+    <value>Dette felt indeholder et udrag der bekriver indholdet af laget</value>
+  </data>
+  <data name="WMSKeyWords.ToolTip" xml:space="preserve">
+    <value>Dette felt indeholder søgbare nøgleord, adskilt af mellemrum</value>
+  </data>
+  <data name="WMSTitle.ToolTip" xml:space="preserve">
+    <value>Dette felt indeholder lagets titel</value>
+  </data>
+  <data name="AutoGenerateWFSBounds.ToolTip" xml:space="preserve">
+    <value>Klik for at læse koordinat grænser fra datakilden</value>
+  </data>
+  <data name="WFSOtherSRS.ToolTip" xml:space="preserve">
+    <value>Dette felt indeholder et sekundært koordinatsystem, normalt i formatet EPSG:xxxx</value>
+  </data>
+  <data name="WFSPrimarySRS.ToolTip" xml:space="preserve">
+    <value>Dette felt indeholder det primære koordinatsystem, normalt i formatet EPSG:xxxx</value>
+  </data>
+  <data name="WFSBounds.ToolTip" xml:space="preserve">
+    <value>Denne værdi er xml elementet bounds, som indsættes direkte i xml resultatet. Benyt rediger knappen hvis du ikke er fortrolig med at redigere denne værdi manuelt.</value>
+  </data>
+  <data name="WFSAvalible.ToolTip" xml:space="preserve">
+    <value>Denne afkrydsningsboks afgør om laget er tilgængeligt.</value>
+  </data>
+  <data name="WFSMetadata.ToolTip" xml:space="preserve">
+    <value>Dette felt indeholder metadata der kan læses af mennesker</value>
+  </data>
+  <data name="WFSAbstract.ToolTip" xml:space="preserve">
+    <value>Dette felt indeholder et udrag der bekriver indholdet af laget</value>
+  </data>
+  <data name="WFSKeywords.ToolTip" xml:space="preserve">
+    <value>Dette felt indeholder søgbare nøgleord, adskilt af mellemrum</value>
+  </data>
+  <data name="WFSTitle.ToolTip" xml:space="preserve">
+    <value>Dette felt indeholder lagets titel</value>
+  </data>
+  <data name="ItemKey.HeaderText" xml:space="preserve">
+    <value>Nøgle</value>
+  </data>
+  <data name="ItemValue.HeaderText" xml:space="preserve">
+    <value>Værdi</value>
+  </data>
+  <data name="OutReferences.Text" xml:space="preserve">
+    <value>Dette element benytter</value>
+  </data>
+  <data name="InReferences.Text" xml:space="preserve">
+    <value>Dette element benyttes af</value>
+  </data>
+  <data name="ReferenceTab.Text" xml:space="preserve">
+    <value>Referencer</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Element ID</value>
+  </data>
 </root>

@@ -118,4 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="SaveReportBtn.Text" xml:space="preserve">
+    <value>Gem som fil...</value>
+  </data>
+  <data name="CancelBtn.Text" xml:space="preserve">
+    <value>Luk</value>
+  </data>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>Element</value>
+  </data>
+  <data name="columnHeader2.Text" xml:space="preserve">
+    <value>Besked</value>
+  </data>
+  <data name="saveFileDialog1.Filter" xml:space="preserve">
+    <value>Tekst filer (*.txt)|*.txt|Alle filer (*.*)|*.*</value>
+  </data>
+  <data name="saveFileDialog1.Title" xml:space="preserve">
+    <value>Angiv filen raporten skal skrives til</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Validerings resultater</value>
+  </data>
 </root>

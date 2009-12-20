@@ -130,4 +130,7 @@
   <data name="displayLine.Text" type="System.String">
     <value>Synlig kant</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Gennemsigtighed</value>
+  </data>
 </root>

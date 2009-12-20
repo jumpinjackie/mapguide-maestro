@@ -163,4 +163,7 @@
   <data name="$this.Text" type="System.String">
     <value>Vælg koordinat system</value>
   </data>
+  <data name="CoordinateWait.Text" xml:space="preserve">
+    <value>Indlæser koordinatsystemer, vent venligst</value>
+  </data>
 </root>

@@ -7,4 +7,67 @@
 	<ignore>...</ignore>
 	<ignore>Browser program</ignore>
 	<ignore>SRS</ignore>
+	<ignore>MapGuide Maestro</ignore>
+	<ignore>Stop</ignore>
+	<ignore>Tooltip</ignore>
+	<ignore>Url</ignore>
+	<ignore>Preview</ignore>
+	<ignore>X</ignore>
+	<ignore>Y</ignore>
+	<ignore>Type</ignore>
+	<ignore>Rotation</ignore>
+	<ignore>Symbol</ignore>
+	<ignore>0</ignore>
+	<ignore>1</ignore>
+	<ignore>WMS</ignore>
+	<ignore>WFS</ignore>
+	<ignore>Metadata</ignore>
+	<ignore>Data type</ignore>
+	<ignore>Download</ignore>
+	<ignore>Status bar</ignore>
+	
+	<ignore>Link</ignore>
+	<ignore>Filter</ignore>
+	<ignore>Minimum</ignore>
+
+	<ignore>Driver</ignore>
+	<ignore>Server</ignore>
+	<ignore>Database</ignore>
+	<ignore>Port</ignore>
+	<ignore>Script</ignore>
+	<ignore>Azimuth</ignore>
+	<ignore>Raster</ignore>
+	
+	<ignore>Shell Script ({0})</ignore>
+	<ignore>Spatial</ignore>
+	<ignore>Widget</ignore>
+	<ignore>MapAgent</ignore>
+	<ignore>olsoctcp</ignore>
+	<ignore>Service</ignore>
+	<ignore>Datastore</ignore>
+	<ignore>Database type</ignore>
+	<ignore>DSN</ignore>
+	<ignore>Prompt</ignore>
+	<ignore>U</ignore>
+	<ignore>Well-Known-Text (WKT)</ignore>
+	<ignore>Stream</ignore>
+	<ignore>application/octet-stream</ignore>
+	<ignore>text/xml</ignore>
+	<ignore>Library://</ignore>
+	<ignore>http://localhost/mapguide/mapagent/mapagent.fcgi</ignore>
+	<ignore>Administrator</ignore>
+	<ignore>admin</ignore>
+	
+	<ignore>Tooltip type</ignore>
+	<ignore>Format</ignore>
+	<ignore>Label</ignore>
+	<ignore>Tolerance</ignore>
+	<ignore>Server:</ignore>
+	<ignore>ColorBrewer</ignore>
+	<ignore>-&gt;</ignore>
+	<ignore>Status</ignore>
+	<ignore>Total</ignore>
+	<ignore>Anonymous</ignore>
+	<ignore>1:</ignore>
+	<ignore>Widgets</ignore>
 </root>

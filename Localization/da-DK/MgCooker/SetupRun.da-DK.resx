@@ -118,4 +118,100 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button3.Text" xml:space="preserve">
+    <value>Gem som script...</value>
+  </data>
+  <data name="button2.Text" xml:space="preserve">
+    <value>Luk</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Byg tiles nu</value>
+  </data>
+  <data name="saveFileDialog1.Filter" xml:space="preserve">
+    <value>Batch filer (*.bat)|*.bat|Alle filer (*.*)|*.*</value>
+  </data>
+  <data name="saveFileDialog1.Title" xml:space="preserve">
+    <value>Vælg hvilken fil scriptet skal gemmes i</value>
+  </data>
+  <data name="ModfiedOverrideWarning.Text" xml:space="preserve">
+    <value>Koordinater ændret</value>
+  </data>
+  <data name="ResetBounds.Text" xml:space="preserve">
+    <value>Nulstil</value>
+  </data>
+  <data name="BoundsOverride.Text" xml:space="preserve">
+    <value>Vælg andre grænser</value>
+  </data>
+  <data name="UseNativeAPI.Text" xml:space="preserve">
+    <value>Forbind med MapGuide API</value>
+  </data>
+  <data name="UseNativeAPI.ToolTip" xml:space="preserve">
+    <value>MapGuide API er formentlig hurtigere, men kræver at der findes ekstra binære filer, åbne porte og en webconfig.ini fil</value>
+  </data>
+  <data name="Password.ToolTip" xml:space="preserve">
+    <value>Kodeord der anvendes til at forbinde til serveren</value>
+  </data>
+  <data name="Username.ToolTip" xml:space="preserve">
+    <value>Brugernavnet der anvendes til at forbinde til serveren</value>
+  </data>
+  <data name="MapAgent.ToolTip" xml:space="preserve">
+    <value>Indtast URL til mapagent</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Kodeord</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Brugernavn</value>
+  </data>
+  <data name="RandomTileOrder.Text" xml:space="preserve">
+    <value>Dan tiles i tilfældig rækkefølge</value>
+  </data>
+  <data name="RandomTileOrder.ToolTip" xml:space="preserve">
+    <value>Vælg hvilke tiles der skal dannes tilfældig, istedet for i rækkefølge</value>
+  </data>
+  <data name="ThreadCount.ToolTip" xml:space="preserve">
+    <value>Antal samtidige forespørgsler til serveren</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Samtidige forspørgsler</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Tråde</value>
+  </data>
+  <data name="MetersPerUnit.ToolTip" xml:space="preserve">
+    <value>Antal meter pr. koordinatsystemsenhed</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Meter pr. enhed</value>
+  </data>
+  <data name="LimitTileset.Text" xml:space="preserve">
+    <value>Begræns antallet af tiles</value>
+  </data>
+  <data name="LimitTileset.ToolTip" xml:space="preserve">
+    <value>Sæt en grænse for antallet af tiles, bemærk at dette kan betyde at nogle tiles ikke bliver dannet</value>
+  </data>
+  <data name="UseOfficialMethod.Text" xml:space="preserve">
+    <value>Brug standard metode</value>
+  </data>
+  <data name="UseOfficialMethod.ToolTip" xml:space="preserve">
+    <value>Standard metoden er den mest præcise, men kræver at der opgives antallet af meter pr. koordinatsystem enheder</value>
+  </data>
+  <data name="MaxRowLimit.ToolTip" xml:space="preserve">
+    <value>Det maksimale antal rækker der skal dannes tiles for</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Max rækker</value>
+  </data>
+  <data name="MaxColLimit.ToolTip" xml:space="preserve">
+    <value>Det maksimale antal kolonner at danne tiles for</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Max kolonner</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Tile indstillinger</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Indstil tile bygning</value>
+  </data>
 </root>

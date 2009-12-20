@@ -122,7 +122,7 @@
     <comment>The label for the data column when the featuresource is a raster type</comment>
   </data>
   <data name="VectorLabel" xml:space="preserve">
-    <value>Geometry</value>
+    <value>Geometri</value>
     <comment>The label for the data column when the featuresource is a vector type</comment>
   </data>
 </root>

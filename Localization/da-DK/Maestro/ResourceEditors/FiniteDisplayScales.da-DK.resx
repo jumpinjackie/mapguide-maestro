@@ -118,4 +118,58 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>Målforhold</value>
+  </data>
+  <data name="listviewCount.Text" xml:space="preserve">
+    <value>500 zoom niveauer</value>
+  </data>
+  <data name="editScalesButton.ToolTipText" xml:space="preserve">
+    <value>Rediger målforholdene manuelt</value>
+  </data>
+  <data name="RemoveScaleButton.ToolTipText" xml:space="preserve">
+    <value>Fjern det valgte niveau</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Faste zoomniveauer</value>
+  </data>
+  <data name="LogarithmicGeneration.Text" xml:space="preserve">
+    <value>Logaritmisk</value>
+  </data>
+  <data name="linearGeneration.Text" xml:space="preserve">
+    <value>Lineær</value>
+  </data>
+  <data name="ExponentialGeneration.Text" xml:space="preserve">
+    <value>Eksponentiel</value>
+  </data>
+  <data name="RoundingOff.Text" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="PrettyRounding.Text" xml:space="preserve">
+    <value>Pæn</value>
+  </data>
+  <data name="RegularRounding.Text" xml:space="preserve">
+    <value>Almindelig</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Afrunding</value>
+  </data>
+  <data name="GenerateButton.Text" xml:space="preserve">
+    <value>Generer</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Metode</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Antal niveauer</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Max niveau</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Min niveau</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Generer zoom niveauer</value>
+  </data>
 </root>

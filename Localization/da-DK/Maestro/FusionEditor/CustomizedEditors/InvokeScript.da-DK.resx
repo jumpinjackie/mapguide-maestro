@@ -124,4 +124,7 @@
   <data name="label2.Text" type="System.String">
     <value>Target ramme</value>
   </data>
+  <data name="ScriptPicker.Items" xml:space="preserve">
+    <value>&lt; Vælg et indbygget script &gt;</value>
+  </data>
 </root>

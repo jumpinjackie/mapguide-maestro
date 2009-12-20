@@ -128,9 +128,15 @@
     <value>Tak til</value>
   </data>
   <data name="label2.Text" type="System.String">
-    <value>Dette program anvender disse tredjeparts moduler:</value>
+    <value>Dette program anvender de følgende tredjeparts komponenter:</value>
   </data>
   <data name="thirdPartyTab.Text" type="System.String">
-    <value>Tredjeparts moduler</value>
+    <value>Tredjeparts</value>
+  </data>
+  <data name="PayPalImage.ToolTip" xml:space="preserve">
+    <value>Klik her for at åbne donationssiden</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Om...</value>
   </data>
 </root>

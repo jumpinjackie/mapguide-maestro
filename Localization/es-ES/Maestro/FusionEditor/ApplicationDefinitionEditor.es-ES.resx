@@ -131,7 +131,7 @@
     <value>Un solo tiled</value>
   </data>
   <data name="MapTypeCombo.Text" type="System.String">
-    <value>comboBox1</value>
+    <value></value>
   </data>
   <data name="label8.Text" type="System.String">
     <value>Tipo de Mapa</value>

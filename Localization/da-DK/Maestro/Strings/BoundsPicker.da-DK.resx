@@ -118,42 +118,43 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoundsDecodeError" xml:space="preserve">
-    <value>Failed to decode the current bounds,
-you may enter new bounds, and these will replace the current.
-Error message: {0}</value>
+    <value>Kunne ikke indlæse koordinatsystemets grænser,
+du kan indtaste nye grænser, og disse vil erstatte de nuværende.
+Fejl besked: {0}</value>
     <comment>An error message that is displayed when the bounds fails to parse</comment>
   </data>
   <data name="IncompleBoundsError" xml:space="preserve">
-    <value>You have not entered all the required information.</value>
+    <value>Du har ikke indtastet de nødvendige oplysninger</value>
     <comment>An error message that is displayed if the user clicks OK before filling out all required fields</comment>
   </data>
   <data name="InvalidMaxXError" xml:space="preserve">
-    <value>Failed to convert the Max X value</value>
+    <value>Kunne ikke konvertere Max X værdien</value>
     <comment>An error message that is displayed when the Max X value is invalid</comment>
   </data>
   <data name="InvalidMaxYError" xml:space="preserve">
-    <value>Failed to convert the Max Y value</value>
+    <value>Kunne ikke konvertere Max Y værdien</value>
     <comment>An error message that is displayed when the Max Y value is invalid</comment>
   </data>
   <data name="InvalidMinXError" xml:space="preserve">
-    <value>Failed to convert the Min X value</value>
+    <value>Kunne ikke konvertere Min X værdien</value>
     <comment>An error message that is displayed when the Min X value is invalid</comment>
   </data>
   <data name="InvalidMinYError" xml:space="preserve">
-    <value>Failed to convert the Min Y value</value>
+    <value>Kunne ikke konvertere Min Y værdien</value>
     <comment>An error message that is displayed when the Min Y value is invalid</comment>
   </data>
   <data name="MissingBoundsError" xml:space="preserve">
-    <value>Missing bounds tag</value>
+    <value>Mangler bounds tag'et</value>
     <comment>An error message that indicates that there was no bound tag</comment>
   </data>
   <data name="NumbersInRegionalError" xml:space="preserve">
-    <value>The values you have entered appears to be in local regional format, but are required in US regional format.
-Do you want to convert the values?</value>
+    <value>De værdier du har indtastet ser ud til at være i lokalt format, men skal være i amerikansk format.
+Vil du konvertere værdierne?</value>
     <comment>A message that is displayed when it is detected that the user enters number in local format</comment>
   </data>
   <data name="UseInvalidCoordinatesWarning" xml:space="preserve">
-    <value>The coordinates you have entered appears to be invalid, do you want to use them anyway?</value>
+    <value>De indtastede koordinater ser ikke ud til at være gyldige.
+Vil du bruge dem alligevel?</value>
     <comment>A message displayed when the coordinates cannot be validated</comment>
   </data>
 </root>

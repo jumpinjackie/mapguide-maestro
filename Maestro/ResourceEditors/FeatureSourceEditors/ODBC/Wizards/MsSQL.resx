@@ -133,7 +133,7 @@
     <value>19</value>
   </data>
   <data name="Database.Text" xml:space="preserve">
-    <value>textBox5</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;Database.Name" xml:space="preserve">
     <value>Database</value>
@@ -160,7 +160,7 @@
     <value>17</value>
   </data>
   <data name="Server.Text" xml:space="preserve">
-    <value>textBox2</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;Server.Name" xml:space="preserve">
     <value>Server</value>

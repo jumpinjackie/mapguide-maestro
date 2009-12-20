@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MapInvalidError" xml:space="preserve">
-    <value>Map with ID {0} does not point to a valid map</value>
+    <value>Kort med ID {0} peger ikke på et gyldigt kort</value>
     <comment>An error message that is displayed if there is a MapID that does not reference a valid map</comment>
   </data>
   <data name="MapMissingError" xml:space="preserve">
-    <value>Fusion application does not specify a map</value>
+    <value>Fusion applikationen angiver ikke et kort</value>
     <comment>An error message that is displayed if the map is missing</comment>
   </data>
   <data name="MapValidationError" xml:space="preserve">
-    <value>Error validating MapDefinition {0}, message: {1}</value>
+    <value>Fejl under validering af MapDefinition {0}, besked: {1}</value>
     <comment>An error message that is displayed if an error occurs while validating a map</comment>
   </data>
   <data name="ViewOutsideMapExtents" xml:space="preserve">
-    <value>Fusion application specifies a start view that is outside the map's initial extents</value>
+    <value>Fusion applikationen angiver et visningsområde der er udenfor kortets udstrækning</value>
     <comment>An error message that is displayed if the start view is outside the defined map</comment>
   </data>
 </root>

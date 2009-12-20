@@ -118,4 +118,49 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label1.Text" xml:space="preserve">
+    <value>Kolonne</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Regelantal</value>
+  </data>
+  <data name="AggregateLabel.Text" xml:space="preserve">
+    <value>Grupperingsmetode</value>
+  </data>
+  <data name="OverwriteRules.Text" xml:space="preserve">
+    <value>Overskriv eksisterende regler</value>
+  </data>
+  <data name="AppendRules.Text" xml:space="preserve">
+    <value>Tilføj regler</value>
+  </data>
+  <data name="AggregateCombo.Items" xml:space="preserve">
+    <value>Lig med</value>
+  </data>
+  <data name="AggregateCombo.Items1" xml:space="preserve">
+    <value>Standard afvigelse</value>
+  </data>
+  <data name="AggregateCombo.Items2" xml:space="preserve">
+    <value>Kvartil</value>
+  </data>
+  <data name="AggregateCombo.Items3" xml:space="preserve">
+    <value>Individuel</value>
+  </data>
+  <data name="DataGroup.Text" xml:space="preserve">
+    <value>Data opsætning</value>
+  </data>
+  <data name="ChangeBaseStyleBtn.Text" xml:space="preserve">
+    <value>Skift basis stil</value>
+  </data>
+  <data name="GradientColors.Text" xml:space="preserve">
+    <value>Flydende</value>
+  </data>
+  <data name="DisplayGroup.Text" xml:space="preserve">
+    <value>Opsætning af udseende</value>
+  </data>
+  <data name="CancelBtn.Text" xml:space="preserve">
+    <value>Annuller</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Tema værktøj</value>
+  </data>
 </root>

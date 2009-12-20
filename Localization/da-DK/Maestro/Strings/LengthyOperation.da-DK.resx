@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CancelNotRecomendedConfirmation" xml:space="preserve">
-    <value>The main part of the operation has already been performed.
-If you cancel the remainder of this operation, some references may not be updated properly.
-Do you want to cancel the remainder of the operation?</value>
+    <value>Størstedelen af handlingen er allerede udført.
+Hvis du annulerer nu, vil nogle elementer formentlig ikke blive opdateret korrekt.
+Vil du alligevel annullere handlingen?</value>
     <comment>A confirmation message that is displayed if the user attempts to cancel the operation</comment>
   </data>
   <data name="CopyFolderCopyConfirmation" xml:space="preserve">
@@ -132,8 +132,8 @@ Do you want to cancel the remainder of the operation?</value>
     <comment>A confirmation message that is displayed with the list of resources that are about to be modified</comment>
   </data>
   <data name="ErrorOccuredRetryQuestion" xml:space="preserve">
-    <value>An error occured: {0}.
-Do you want to retry the operation?</value>
+    <value>En fejl opstod: {0}.
+Vil du forsøge igen?</value>
     <comment>A question that is displayed if the operation fails and the user can retry the operation</comment>
   </data>
   <data name="MissingMethodInternalError" xml:space="preserve">
@@ -149,15 +149,15 @@ Do you want to retry the operation?</value>
     <comment>A confirmation message that is displayed with the list of resources that are about to be modified</comment>
   </data>
   <data name="NotInitializedInternalError" xml:space="preserve">
-    <value>Please call the "InitializeDialog" method before displaying the dialog</value>
+    <value>Kald venligst "InitializeDialog" funktionen før dialogen vises.</value>
     <comment>An error message that is displayed if an internal error occurs</comment>
   </data>
   <data name="OperationFailedError" xml:space="preserve">
-    <value>An error occured while performing the operation: {0}</value>
+    <value>En fejl opstod under udførelse af handlingen: {0}</value>
     <comment>An error message that is displayed if the operation fails</comment>
   </data>
   <data name="OtherOperationConfirmation" xml:space="preserve">
-    <value>Confirm the list of files to be processed</value>
+    <value>Bekræft listen med filer der skal behandles</value>
     <comment>A confirmation message that is displayed with the list of resources that are about to be modified</comment>
   </data>
   <data name="UnknownOperationInternalError" xml:space="preserve">

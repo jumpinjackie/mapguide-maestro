@@ -131,7 +131,7 @@
     <value>Enkelt flise</value>
   </data>
   <data name="MapTypeCombo.Text" type="System.String">
-    <value>comboBox1</value>
+    <value></value>
   </data>
   <data name="label8.Text" type="System.String">
     <value>Kort type</value>
@@ -189,5 +189,11 @@
   </data>
   <data name="label12.Text" type="System.String">
     <value>Vis i browser</value>
+  </data>
+  <data name="AddMapButton.ToolTipText" xml:space="preserve">
+    <value>Tilføj et kort til applikationen</value>
+  </data>
+  <data name="RemoveMapButton.ToolTipText" xml:space="preserve">
+    <value>Fjern et kort fra applikationen</value>
   </data>
 </root>

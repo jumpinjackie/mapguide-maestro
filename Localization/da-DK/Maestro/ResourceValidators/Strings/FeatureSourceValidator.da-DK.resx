@@ -118,35 +118,35 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DefaultSpatialContextWarning" xml:space="preserve">
-    <value>Spatial context extent appears to be invalid (or default)</value>
+    <value>Spatiale grænser ser ud til at være ugyldige (eller standard værdien)</value>
     <comment>A warning message that is displayed if the spatial context has the default extent</comment>
   </data>
   <data name="EmptySpatialContextWarning" xml:space="preserve">
-    <value>Empty spatial context extent detected</value>
+    <value>Spatial information mangler</value>
     <comment>A warning message that is displayed when the spatial context is empty</comment>
   </data>
   <data name="NoSpatialContextWarning" xml:space="preserve">
-    <value>No spatial contexts found</value>
+    <value>Ingen spatial information fundet</value>
     <comment>A warning message that is displayed when the featuresource fails to report its spatial context</comment>
   </data>
   <data name="PrimaryKeyMissingInformation" xml:space="preserve">
-    <value>No primary key defined for class: {0}, features will not be selectable</value>
+    <value>Ingen primær nøgle i klasse: {0}, element vil ikke kunne vælges</value>
     <comment>An information message that is displayed if the schema has no primary key defined</comment>
   </data>
   <data name="PrimaryKeyReadError" xml:space="preserve">
-    <value>Failed to read identity properties: {0}</value>
+    <value>En fejl opstod under læsning af nøgler: {0}</value>
     <comment>An error message that is displayed if the primary key information could not be read</comment>
   </data>
   <data name="SchemaReadError" xml:space="preserve">
-    <value>Failed to read schema description: {0}</value>
+    <value>En fejl opstod under læsning af skema: {0}</value>
     <comment>An error message that is displayed if the schema information could not be read</comment>
   </data>
   <data name="ShemasMissingWarning" xml:space="preserve">
-    <value>No schemas found in datasource</value>
+    <value>Ingen skemaer fundet i datakilden</value>
     <comment>A warning message that is displayed if the featuresource has no schemas</comment>
   </data>
   <data name="SpatialContextReadError" xml:space="preserve">
-    <value>Failed to read spatial context: {0}</value>
+    <value>En fejl opstod under læsning af spatial information: {0}</value>
     <comment>An error message that is displayed if the spatial context could not be read</comment>
   </data>
 </root>

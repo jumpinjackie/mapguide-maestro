@@ -129,7 +129,7 @@
     <value>9</value>
   </data>
   <data name="NameBox.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;NameBox.Name" xml:space="preserve">
     <value>NameBox</value>
@@ -225,7 +225,7 @@
     <value>13</value>
   </data>
   <data name="ImageClassText.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;ImageClassText.Name" xml:space="preserve">
     <value>ImageClassText</value>
@@ -273,7 +273,7 @@
     <value>14</value>
   </data>
   <data name="ImageURLText.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;ImageURLText.Name" xml:space="preserve">
     <value>ImageURLText</value>
@@ -297,7 +297,7 @@
     <value>15</value>
   </data>
   <data name="TooltipBox.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;TooltipBox.Name" xml:space="preserve">
     <value>TooltipBox</value>

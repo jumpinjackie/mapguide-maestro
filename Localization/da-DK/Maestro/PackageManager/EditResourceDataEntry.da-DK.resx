@@ -139,4 +139,7 @@
   <data name="$this.Text" type="System.String">
     <value>Rediger detaljer for data filen</value>
   </data>
+  <data name="DataTypeBox.Items" xml:space="preserve">
+    <value>Fil</value>
+  </data>
 </root>

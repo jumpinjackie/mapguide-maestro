@@ -169,4 +169,22 @@
   <data name="$this.Text" type="System.String">
     <value>Pakke editor</value>
   </data>
+  <data name="BrowseResourceDataFile.Filter" xml:space="preserve">
+    <value>Alle filer (*.*)|*.*</value>
+  </data>
+  <data name="BrowseResourceDataFile.Title" xml:space="preserve">
+    <value>Vælg filen der skal tilføjes</value>
+  </data>
+  <data name="SaveResourceDataFile.Filter" xml:space="preserve">
+    <value>Alle filer (*.*)|*.*</value>
+  </data>
+  <data name="SaveResourceDataFile.Title" xml:space="preserve">
+    <value>Vælg hvor filen skal gemmes</value>
+  </data>
+  <data name="SavePackageDialog.Filter" xml:space="preserve">
+    <value>MapGuide Pakker (*.mgp)|*.mgp|Zip filer (*.zip)|*.zip|Alle filer (*.*)|*.*</value>
+  </data>
+  <data name="SavePackageDialog.Title" xml:space="preserve">
+    <value>Vælg hvor filen skal gemmes</value>
+  </data>
 </root>

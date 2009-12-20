@@ -139,4 +139,7 @@
   <data name="EditExtensions.Text" type="System.String">
     <value>Rediger udvidelser</value>
   </data>
+  <data name="EditConfigDocButton.Text" xml:space="preserve">
+    <value>Rediger konfigurationsdokument</value>
+  </data>
 </root>

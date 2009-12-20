@@ -133,7 +133,7 @@
     <value>33</value>
   </data>
   <data name="TooltipText.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;TooltipText.Name" xml:space="preserve">
     <value>TooltipText</value>
@@ -304,7 +304,7 @@
     <value>29</value>
   </data>
   <data name="ImageClassText.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;ImageClassText.Name" xml:space="preserve">
     <value>ImageClassText</value>
@@ -331,7 +331,7 @@
     <value>30</value>
   </data>
   <data name="ImageURLText.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;ImageURLText.Name" xml:space="preserve">
     <value>ImageURLText</value>
@@ -358,7 +358,7 @@
     <value>31</value>
   </data>
   <data name="LabelText.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;LabelText.Name" xml:space="preserve">
     <value>LabelText</value>
@@ -385,7 +385,7 @@
     <value>32</value>
   </data>
   <data name="StatusText.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;StatusText.Name" xml:space="preserve">
     <value>StatusText</value>

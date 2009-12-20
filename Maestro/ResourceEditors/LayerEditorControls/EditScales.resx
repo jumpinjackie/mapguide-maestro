@@ -211,7 +211,7 @@
     <value>1</value>
   </data>
   <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

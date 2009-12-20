@@ -118,63 +118,63 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DataOutsideMapWarning" xml:space="preserve">
-    <value>Data from {0} is not visible in the map's start extent</value>
+    <value>Data fra {0} er ikke synlig i kortets startudstrækning</value>
     <comment>A warning message that is displayed if a layer reports an extent that is outside the map's extent</comment>
   </data>
   <data name="DataReprojectionWarning" xml:space="preserve">
-    <value>{0} has a different coordinate system than the map, this will impact performance as the coordinates are transformed while rendering the map. Maestro cannot validate the extent of the data.</value>
+    <value>{0} har et andet koordinatsystem end kortet. Dette vil have indflydelse på ydelsen fordi koordinaternet transformeres når kortet tegnes. Maestro kan ikke validere udstrækningen.</value>
     <comment>A warning message that is displayed if a layer reports a coordinate system that differs from the map's.</comment>
   </data>
   <data name="FeatureSourceReadError" xml:space="preserve">
-    <value>Layer {0}'s FeatureSource could not be read: {1}</value>
+    <value>Datakilden for laget {0} kunne ikke læses: {1}</value>
     <comment>An error message that is displayed if a FeatureSource fails to load</comment>
   </data>
   <data name="GroupHasDefaultLabelInformation" xml:space="preserve">
-    <value>Group {0} has the default legend label</value>
+    <value>Gruppe {0} bruger standard gruppe label til signaturforklaring</value>
     <comment>An information message that is displayed if a group is assigned the default group label</comment>
   </data>
   <data name="GroupMissingLabelInformation" xml:space="preserve">
-    <value>Group {0} does not have a legend label</value>
+    <value>Gruppen {0} har ingen label til signaturforklaring</value>
     <comment>An information message that is displayed if a group has a blank legend label</comment>
   </data>
   <data name="LayerMissingLabelInformation" xml:space="preserve">
-    <value>Layer {0} does not have a legend label</value>
+    <value>Laget {0} har ingen label til signaturforklaring</value>
     <comment>An information message that is displayed if a layer has a blank legend label</comment>
   </data>
   <data name="LayerReadError" xml:space="preserve">
-    <value>Layer {0} could not be read: {1}</value>
+    <value>Laget {0} kunne ikke læses: {1}</value>
     <comment>An error message that is displayed if a LayerDefinition fails to load</comment>
   </data>
   <data name="MissingLayerGeometryColumnError" xml:space="preserve">
-    <value>Layer {0} has no geometry column</value>
+    <value>Lag {0} har ingen geomtrikolonne</value>
     <comment>An error message that is displayed if a layer has no geometry column specified</comment>
   </data>
   <data name="MissingLayerSchemaError" xml:space="preserve">
-    <value>Layer {0} has an invalid Schema</value>
+    <value>Laget {0} har et ugyldigt skema</value>
     <comment>An error message that is displayed if the layer has no schema specified</comment>
   </data>
   <data name="MissingSpatialContextWarning" xml:space="preserve">
-    <value>{0} has no spatial context (eg. no coordinate system)</value>
+    <value>{0} har ingen spatial information (f.eks. intet koordinatsystem)</value>
     <comment>A warning message that is displayed if the FeatureSource reports no spatial context</comment>
   </data>
   <data name="MultipleSpatialContextsInformation" xml:space="preserve">
-    <value>{0} has more than one spatial context, the following test results may be inacurate</value>
+    <value>{0} har mere end et koordinatsystem, de følgende tests kan være upræcise</value>
     <comment>An information message that is displayed if a FeatureSource reports multiple spatial contexts</comment>
   </data>
   <data name="RasterReprojectionError" xml:space="preserve">
-    <value>{0} is a raster layer, and in another coordinate system than the map. No data will be displayed by the layer</value>
+    <value>{0} er et raster lag, og i et andet koordinatsystem end kortet. Der vil ikke blive vist data for dette lag.</value>
     <comment>An error message that is displayed if a raster layer reports a different projection than the map, and the MapGuide server version does not support raster reprojection</comment>
   </data>
   <data name="ResourceReadError" xml:space="preserve">
-    <value>{0} could not be processed for spatial info: {1}</value>
+    <value>Der kunne ikke indhentes spatial information for {0}: {1}</value>
     <comment>An error message that is displayed if a resource fails to load</comment>
   </data>
   <data name="UnsupportedLayerTypeWarning" xml:space="preserve">
-    <value>Layer {0} is a type that is unsupported by Maestro</value>
+    <value>Lag {0} har en type der ikke er undersøttet af Maestro</value>
     <comment>A warning message that is displayed if a layer has a type that is not supported by Maestro</comment>
   </data>
   <data name="LayerNameDuplicateWarning" xml:space="preserve">
-    <value>The layer name {0} is used for both "{1}" and "{2}"</value>
+    <value>Lag navnet {0} bruges både til "{1}" og "{2}"</value>
     <comment>A warning message that is displayed if two layers share the same layer name</comment>
   </data>
 </root>

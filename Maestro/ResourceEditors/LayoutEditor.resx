@@ -205,7 +205,7 @@
     <value>5</value>
   </data>
   <data name="overrideScale.Text" xml:space="preserve">
-    <value>textBox3</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;overrideScale.Name" xml:space="preserve">
     <value>overrideScale</value>
@@ -229,7 +229,7 @@
     <value>4</value>
   </data>
   <data name="overrideY.Text" xml:space="preserve">
-    <value>textBox2</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;overrideY.Name" xml:space="preserve">
     <value>overrideY</value>
@@ -253,7 +253,7 @@
     <value>3</value>
   </data>
   <data name="overrideX.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;overrideX.Name" xml:space="preserve">
     <value>overrideX</value>
@@ -403,7 +403,7 @@
     <value>3</value>
   </data>
   <data name="LeftPaneWidth.Text" xml:space="preserve">
-    <value>textBox4</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;LeftPaneWidth.Name" xml:space="preserve">
     <value>LeftPaneWidth</value>
@@ -736,7 +736,7 @@
     <value>5</value>
   </data>
   <data name="RightPaneWidth.Text" xml:space="preserve">
-    <value>textBox5</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;RightPaneWidth.Name" xml:space="preserve">
     <value>RightPaneWidth</value>
@@ -865,7 +865,7 @@
     <value>4</value>
   </data>
   <data name="TitleText.Text" xml:space="preserve">
-    <value>textBox6</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;TitleText.Name" xml:space="preserve">
     <value>TitleText</value>
@@ -892,7 +892,7 @@
     <value>5</value>
   </data>
   <data name="MapResource.Text" xml:space="preserve">
-    <value>textBox7</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;MapResource.Name" xml:space="preserve">
     <value>MapResource</value>
@@ -952,7 +952,7 @@
     <value>11</value>
   </data>
   <data name="FeatureLinkTarget.Text" xml:space="preserve">
-    <value>textBox8</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;FeatureLinkTarget.Name" xml:space="preserve">
     <value>FeatureLinkTarget</value>
@@ -1027,7 +1027,7 @@
     <value>10</value>
   </data>
   <data name="HomePageURL.Text" xml:space="preserve">
-    <value>textBox9</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;HomePageURL.Name" xml:space="preserve">
     <value>HomePageURL</value>

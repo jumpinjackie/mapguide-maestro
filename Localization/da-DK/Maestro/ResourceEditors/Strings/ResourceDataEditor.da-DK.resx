@@ -118,9 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DeleteFailedQuestion" xml:space="preserve">
-    <value>Delete of resource "{0}" failed.
-Reason: {1}
-How do you want to continue?</value>
+    <value>Slet fejlede for elementet "{0}".
+
+Årsag: {1}
+
+Hvordan vil du fortsætte?</value>
     <comment>A question that is displayed when the file delete fails. The user can choose abort, retry or ignore</comment>
   </data>
   <data name="DeleteFileConfirmation" xml:space="preserve">
@@ -128,9 +130,11 @@ How do you want to continue?</value>
     <comment>A confirmation message that is displayed when the user attempts to delete files</comment>
   </data>
   <data name="DownloadFailedQuestion" xml:space="preserve">
-    <value>Download of file "{0}" failed.
-Reason: {1}
-How do you want to continue?</value>
+    <value>Download fejlede for filen"{0}".
+
+Årsag: {1}
+
+Hvordan vil du fortsætte?</value>
     <comment>A question that is displayed when the file download fails. The user can choose abort, retry or ignore</comment>
   </data>
   <data name="DownloadFileDialogTitle" xml:space="preserve">
@@ -142,28 +146,29 @@ How do you want to continue?</value>
     <comment>The title for the dialog where the user can choose the location for the files that are being downloaded</comment>
   </data>
   <data name="IncludeSimilarFilesConfirmation" xml:space="preserve">
-    <value>There exists {0} file(s) with similar names which may be required.
-Do you want to automatically add matching files?</value>
+    <value>Der findes {0} fil(er) med lignende navne, som måske er nødvendige.
+Vil du også uploade disse?</value>
     <comment>A confirmation message that is displayed when the user selects to upload a file, but the file appears to be one in a set of files</comment>
   </data>
   <data name="OverwriteLocalFileConfirmation" xml:space="preserve">
-    <value>The file "{0}" already exists. 
-Do you want to overwrite?</value>
+    <value>Filen "{0}" Findes i forvejen. 
+Vil du fortsætte?</value>
     <comment>A confirmation message that is displayed when the user attempts to overwrite an already existing file</comment>
   </data>
   <data name="OverwriteResourceFileConfirmation" xml:space="preserve">
-    <value>There already exists a resource file with the name "{0}".
-Do you want to overwrite the existing file?</value>
+    <value>Der findes allerede en fil med navnet "{0}".
+
+Vil du overskrive denne fil?</value>
     <comment>A confirmation message that appears when the user attempts to overwrite an existing resource file</comment>
   </data>
   <data name="UpdateXmlDataError" xml:space="preserve">
-    <value>Failed to update xml data: {0}</value>
+    <value>Kunne ikke uploade xml data: {0}</value>
     <comment>An error message that is displayed when the xml fails to save</comment>
   </data>
   <data name="UploadFailedQuestion" xml:space="preserve">
-    <value>Upload of file "{0}" failed.
-Reason: {1}
-How do you want to continue?</value>
+    <value>Upload af filen "{0}" Fejlede.
+Årsag: {1}
+Hvordan vil du forsætte?</value>
     <comment>A question that is displayed when the file upload fails. The user can choose abort, retry or ignore</comment>
   </data>
   <data name="UploadFilesDialogTitle" xml:space="preserve">
@@ -171,11 +176,11 @@ How do you want to continue?</value>
     <comment>The title for the dialog where the user select files to upload to the resource</comment>
   </data>
   <data name="UnableToChangeEditModeError" xml:space="preserve">
-    <value>Unable to change edit mode after the user has modified the resource</value>
+    <value>Kan ikke ændre redigerenstilstand efter at brugeren har ændret filer.</value>
     <comment>An internal error message that appears if the control is modified in an unsupported way</comment>
   </data>
   <data name="FailedToCreateCopyError" xml:space="preserve">
-    <value>Unable to create a temporary resource: {0}</value>
+    <value>Kunne ikke danne et midlertidig element: {0}</value>
     <comment>An error message that is displayed when the copy procedure fails</comment>
   </data>
 </root>

@@ -201,7 +201,7 @@
     <value>3</value>
   </data>
   <data name="NameBox.Text" xml:space="preserve">
-    <value>textBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;NameBox.Name" xml:space="preserve">
     <value>NameBox</value>

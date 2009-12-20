@@ -274,7 +274,7 @@
     <value>5</value>
   </data>
   <data name="minimumScale.Text" xml:space="preserve">
-    <value>comboBox1</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;minimumScale.Name" xml:space="preserve">
     <value>minimumScale</value>
@@ -304,7 +304,7 @@
     <value>6</value>
   </data>
   <data name="maximumScale.Text" xml:space="preserve">
-    <value>comboBox2</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;maximumScale.Name" xml:space="preserve">
     <value>maximumScale</value>

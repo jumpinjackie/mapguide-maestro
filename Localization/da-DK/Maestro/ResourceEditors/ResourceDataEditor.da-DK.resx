@@ -151,4 +151,7 @@
   <data name="ToggleDocumentsButton.ToolTipText" type="System.String">
     <value>Skifter display af datafiler and resource filer</value>
   </data>
+  <data name="EditResourceXmlMenu.Text" xml:space="preserve">
+    <value>Rediger som xml</value>
+  </data>
 </root>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="FileLoadError" xml:space="preserve">
-    <value>Failed to load files: {0}</value>
+    <value>Kunne ikke indlæse filer: {0}</value>
     <comment>An error message that is displayed when the specified files could not be loaded</comment>
   </data>
 </root>

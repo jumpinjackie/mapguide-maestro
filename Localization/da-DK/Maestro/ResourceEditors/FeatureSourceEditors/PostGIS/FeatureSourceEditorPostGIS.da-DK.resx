@@ -127,4 +127,16 @@
   <data name="label2.Text" type="System.String">
     <value>Port</value>
   </data>
+  <data name="Database.ToolTip" xml:space="preserve">
+    <value>Indtast database navnet her</value>
+  </data>
+  <data name="Server.ToolTip" xml:space="preserve">
+    <value>Indtast server navnet her, eller lad feltet være blankt for at anvende standardværdien localhost</value>
+  </data>
+  <data name="Port.ToolTip" xml:space="preserve">
+    <value>Indtast port nummer her, eller lad feltet være blankt for at anvende standardværdien 5432</value>
+  </data>
+  <data name="Datastore.ToolTip" xml:space="preserve">
+    <value>Indtast datastore (skema) navnet her</value>
+  </data>
 </root>

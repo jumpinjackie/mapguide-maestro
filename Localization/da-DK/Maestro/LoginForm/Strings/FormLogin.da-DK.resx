@@ -122,12 +122,12 @@
     <comment>An error message that is displayed when then connection failed</comment>
   </data>
   <data name="RestartForLanguageChange" xml:space="preserve">
-    <value>Please restart the application for the language change to take effect</value>
+    <value>Genstart programmet for få skiftet sproget</value>
     <comment>A message that is displayed if the user changes the language</comment>
   </data>
   <data name="UntestedServerVersion" xml:space="preserve">
-    <value>The current site version is newer than the version Maestro was tested against.
-Do you want to connect anyway?</value>
+    <value>Serveren har en nyere version end den som Maestro er testet med.
+Vil du forbinde alligevel?</value>
     <comment>A message that is displayed when the server version is newer than Maestro</comment>
   </data>
 </root>

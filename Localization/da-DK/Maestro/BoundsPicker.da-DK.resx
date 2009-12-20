@@ -142,10 +142,4 @@
   <data name="$this.Text" type="System.String">
     <value>Angiv datakildens grænser</value>
   </data>
-  <data name="CancelBtn.Text" xml:space="preserve">
-    <value>Annuller</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Indtast data udstrækning</value>
-  </data>
 </root>

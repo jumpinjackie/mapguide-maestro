@@ -118,63 +118,63 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConsoleCurrentGroup" xml:space="preserve">
-    <value>Current Group: \t{0} ({1} of {2})</value>
+    <value>Nuværende gruppe: \t{0} ({1} af {2})</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleCurrentMap" xml:space="preserve">
-    <value>Current Map:   \t{0} ({1} of {2})</value>
+    <value>Nuværende kort:  \t{0} ({1} af {2})</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleCurrentScale" xml:space="preserve">
-    <value>Current Scale: \t1:{0} ({1} of {2})</value>
+    <value>Nuværende zoom: \t1:{0} ({1} af {2})</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleCurrentTile" xml:space="preserve">
-    <value>Current Tile:  \t{0} of {1}</value>
+    <value>Nuværende tile:  \t{0} af {1}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleErrorSummary" xml:space="preserve">
-    <value>Error count: {0}, last exception: {1}</value>
+    <value>Antal fejl: {0}, sidste fejl: {1}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleGroupDuration" xml:space="preserve">
-    <value>Group estimate:  \t{0}</value>
+    <value>Gruppe estimat:  \t{0}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleGroupEstimate" xml:space="preserve">
-    <value>Group duration:  \t{0}</value>
+    <value>Gruppe varighed:  \t{0}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationBeginGroup" xml:space="preserve">
-    <value>{0}: Rendering group {1} ({3} of {4})</value>
+    <value>{0}: Renderer gruppe {1} ({3} af {4})</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationBeginMap" xml:space="preserve">
-    <value>{0}: Rendering map {1}</value>
+    <value>{0}: Renderer kort {1}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationBeginScale" xml:space="preserve">
-    <value>{0}: Rendering scale 1:{1} ({2} of {3})</value>
+    <value>{0}: Renderer niveau 1:{1} ({2} af {3})</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationFinishGroup" xml:space="preserve">
-    <value>{0}: Rendered group {1} in {2}</value>
+    <value>{0}: Renderede gruppe {1} på {2}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationFinishMap" xml:space="preserve">
-    <value>{0}: Rendered map {1} in {2}</value>
+    <value>{0}: Renderede kort {1} på {2}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationFinishScale" xml:space="preserve">
-    <value>{0}: Rendered scale 1:{1} in {2}</value>
+    <value>{0}: Renderede niveau 1:{1} på {2}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationFinishTile" xml:space="preserve">
-    <value>Processed {0} of {1} tiles in {2}, expected duration: {3}</value>
+    <value>Dannet {0} af {1} tiles på {2}, forventet varighed: {3}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleUpdateTime" xml:space="preserve">
-    <value>Update time:   \t{0}</value>
+    <value>Opdaterings tid:   \t{0}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
 </root>

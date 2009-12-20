@@ -118,12 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AllLayersName" xml:space="preserve">
-    <value>All layers</value>
+    <value>Alle lag</value>
     <comment>A display name for selecting all layers</comment>
   </data>
   <data name="LayerListReadError" xml:space="preserve">
-    <value>Failed to read layer list from {0}.
-Error message: {1}</value>
+    <value>Kunne ikke indlæse lag listen fra {0}.
+
+Fejl besked: {1}</value>
     <comment>An error message that is displayed when the layer list fails to load</comment>
   </data>
 </root>

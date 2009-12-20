@@ -119,6 +119,6 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Text" type="System.String">
-    <value>Vis detaljer for sidste undtagelse</value>
+    <value>Vis den sidste fejl i programmet</value>
   </data>
 </root>

@@ -136,4 +136,19 @@
   <data name="TargetHeader.Text" type="System.String">
     <value>Mål</value>
   </data>
+  <data name="DisplayRawXml.ToolTipText" xml:space="preserve">
+    <value>Klik her for at få vist spatial information</value>
+  </data>
+  <data name="ToggleSimpleModeButton.Text" xml:space="preserve">
+    <value>&lt;&lt;&lt; Simpel</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Kilde</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="ToggleExtendedModeButton.Text" xml:space="preserve">
+    <value>Udvidet &gt;&gt;&gt;</value>
+  </data>
 </root>

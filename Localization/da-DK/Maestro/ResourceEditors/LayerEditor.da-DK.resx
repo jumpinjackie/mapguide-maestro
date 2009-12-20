@@ -121,4 +121,10 @@
   <data name="label1.Text" type="System.String">
     <value>Datakilde</value>
   </data>
+  <data name="FeatureSource.Text" xml:space="preserve">
+    <value>&lt; Vælg en datakilde &gt;</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Lagets skema version</value>
+  </data>
 </root>

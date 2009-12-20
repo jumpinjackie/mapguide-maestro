@@ -130,4 +130,10 @@
   <data name="displayFill.Text" type="System.String">
     <value>Vis udfyldning</value>
   </data>
+  <data name="lblForegroundTransparency.Text" xml:space="preserve">
+    <value>Gennemsigtighed</value>
+  </data>
+  <data name="lblBackgroundTransparency.Text" xml:space="preserve">
+    <value>Gennemsigtighed</value>
+  </data>
 </root>

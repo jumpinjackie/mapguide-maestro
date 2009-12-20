@@ -122,21 +122,21 @@
     <comment>The list entry that represents all resource types</comment>
   </data>
   <data name="FolderMissingPrefix" xml:space="preserve">
-    <value>The folder must start with \"Library://\", do you want the starting folder to become:\n {0} ?</value>
+    <value>Mappen skal starte med "Library://", vil du have at startmappen bliver:\n {0} ?</value>
     <comment>A message that is displayed when the user has not entered a folder starting with Library://</comment>
   </data>
   <data name="InvalidRestorePathError" xml:space="preserve">
-    <value>An error occured while validating the restore path: {0}\nIt should have the format: \"Libray://folder/folder/\".</value>
+    <value>En fejl opstod under validering af gendannelsesstien: {0}\nDen skal have formatet: \"Libray://folder/folder/\".</value>
     <comment>A message that is displayed when the restore path does not validate</comment>
   </data>
   <data name="NoFolderSelected" xml:space="preserve">
-    <value>You have not selected a starting folder, do you want to back up the entire site?</value>
+    <value>Du har ikke valgt en start mappe, vil du lave en backup af hele serveren?</value>
     <comment>A message that is displayed when the user has not selected a folder to create  a folder from</comment>
   </data>
   <data name="NoRestorePathWarning" xml:space="preserve">
-    <value>You have selected to restore the package at another location, but not entered one.
-This will cause the package to be restored a the root of the resource tree.
-Are you sure this is what you want?</value>
+    <value>Du har valgt at pakken skal gendannes på en anden placering, men ikke angivet en. 
+Dette betyder at pakken bliver gendannet i roden af serveren.
+Er du sikke på at det er det du ønsker?</value>
     <comment>A message displayed when the user has not entered a restore path</comment>
   </data>
   <data name="NoTypesSelected" xml:space="preserve">
@@ -152,10 +152,10 @@ Are you sure this is what you want?</value>
     <comment>A message displayed when the package creation fails</comment>
   </data>
   <data name="RepositoryWipeWarning" xml:space="preserve">
-    <value>You have selected to restore the package at the root.
-You have also selected to delete the target before restoring.
-This will result in the entire repository being deleted and replaced with this package.
-Are you absolutely sure that is what you want?</value>
+    <value>Du har valgt at pakken skal gendannes ved roden.
+Du har også valgt at mappen skal slettes før gendannelse.
+Dette betyder at hele serverens indhold bliver overskrevet med denne pakke.
+Er du helt sikker på at det er det du ønsker?</value>
     <comment>A confirmation message displayed to the user, when creating a package that will completely wipe a repository</comment>
   </data>
   <data name="UnknownResourceTypes" xml:space="preserve">

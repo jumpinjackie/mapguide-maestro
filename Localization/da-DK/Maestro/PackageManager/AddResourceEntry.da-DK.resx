@@ -136,4 +136,10 @@
   <data name="$this.Text" type="System.String">
     <value>Tilføj et element</value>
   </data>
+  <data name="BrowseFileDialog.Filter" xml:space="preserve">
+    <value>Alle filer (*.*)|*.*</value>
+  </data>
+  <data name="BrowseFileDialog.Title" xml:space="preserve">
+    <value>Vælg filen der skal bruges</value>
+  </data>
 </root>

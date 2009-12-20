@@ -124,4 +124,10 @@
   <data name="label1.Text" type="System.String">
     <value>Server</value>
   </data>
+  <data name="Database.ToolTip" xml:space="preserve">
+    <value>Indtast database navnet her</value>
+  </data>
+  <data name="Server.ToolTip" xml:space="preserve">
+    <value>Indtast server navnet her, eller lad feltet være blankt for at anvende standardværdien localhost</value>
+  </data>
 </root>

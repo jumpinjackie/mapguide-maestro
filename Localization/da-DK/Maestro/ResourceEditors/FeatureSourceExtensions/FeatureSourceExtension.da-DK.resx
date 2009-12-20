@@ -118,4 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="AddExtensionButton.ToolTipText" xml:space="preserve">
+    <value>Tilføj en ny udvidelse</value>
+  </data>
+  <data name="AddComputationButton.ToolTipText" xml:space="preserve">
+    <value>Tilføj en ny beregnet egenskab</value>
+  </data>
+  <data name="AddJoinButton.ToolTipText" xml:space="preserve">
+    <value>Tilføj e ny database sammenkobling</value>
+  </data>
+  <data name="AddKeyButton.ToolTipText" xml:space="preserve">
+    <value>Tilføj en ny nøgleopsætning</value>
+  </data>
+  <data name="RemoveItemButton.ToolTipText" xml:space="preserve">
+    <value>Slet det markede element</value>
+  </data>
 </root>

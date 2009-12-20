@@ -122,7 +122,7 @@
     <comment>An error message that is displayed if the column configuration could not be read</comment>
   </data>
   <data name="CoordinateSystemError" xml:space="preserve">
-    <value>Failed to read current coordsys configuration: {0}</value>
+    <value>Kunne ikke læse koordinatsystemsopsætningen: {0}</value>
     <comment>An error message that is displayed if the coordinate system read operation failed</comment>
   </data>
   <data name="DatasourceLayoutReadError" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>An error message that is displayed if the datasource layout could not be read</comment>
   </data>
   <data name="SchemaRefreshError" xml:space="preserve">
-    <value>Failed to refresh schema: {0}</value>
+    <value>Kunne ikke genindlæse skema: {0}</value>
     <comment>An error message that is displayed if the schema refresh failed</comment>
   </data>
 </root>

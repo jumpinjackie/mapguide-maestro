@@ -130,21 +130,21 @@
     <comment>An error message displayed if the resource failed to save</comment>
   </data>
   <data name="SaveWithErrorsConfirmation" xml:space="preserve">
-    <value>The resource had the following errors:
+    <value>Elementet har følgende fejl:
 {0}
 
-Do you want to save it anyway?</value>
+Vil du gemme det alligevel?</value>
     <comment>A confirmation message displayed if the resource has errors</comment>
   </data>
   <data name="SaveWithWarningsConfirmation" xml:space="preserve">
-    <value>The resource had the following warnings:
+    <value>Elementet har følgende advarsler:
 {0}
 
-Do you want to save it anyway?</value>
+Vil du gemme det alligevel?</value>
     <comment>A confirmation message displayed if the resource has warnings</comment>
   </data>
   <data name="ValidationMessageTooLong" xml:space="preserve">
-    <value>{0}... (text truncated)
+    <value>{0}... (tekst afkortet)
 </value>
     <comment>A message displayed when the validation message is truncated</comment>
   </data>

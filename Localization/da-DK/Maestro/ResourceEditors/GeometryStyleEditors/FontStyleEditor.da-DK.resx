@@ -131,7 +131,7 @@
     <value>Størrelses forhold</value>
   </data>
   <data name="label2.Text" type="System.String">
-    <value>Font</value>
+    <value>Skrifttype</value>
   </data>
   <data name="label1.Text" type="System.String">
     <value>Egenskab</value>
@@ -146,7 +146,7 @@
     <value>F</value>
   </data>
   <data name="fontGroup.Text" type="System.String">
-    <value>Font</value>
+    <value>Skrifttype</value>
   </data>
   <data name="label7.Text" type="System.String">
     <value>Baggrundstype</value>
@@ -174,5 +174,14 @@
   </data>
   <data name="previewGroup.Text" type="System.String">
     <value>Preview</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Gennemsigtighed</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Gennemsigtighed</value>
+  </data>
+  <data name="DisplayLabel.Text" xml:space="preserve">
+    <value>Vis labels på objekter</value>
   </data>
 </root>

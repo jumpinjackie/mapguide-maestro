@@ -126,19 +126,19 @@
     <comment>A message displayed when a file copy fails</comment>
   </data>
   <data name="FiletypeAll" xml:space="preserve">
-    <value>All files ({0})</value>
+    <value>Alle filer ({0})</value>
     <comment>The text displayed when browsing for all file types</comment>
   </data>
   <data name="FiletypeMGP" xml:space="preserve">
-    <value>MapGuide Packages ({0})</value>
+    <value>MapGuide Pakker ({0})</value>
     <comment>The text displayed when browsing for MGP files</comment>
   </data>
   <data name="FiletypeZip" xml:space="preserve">
-    <value>Zip files ({0})</value>
+    <value>Zip filer ({0})</value>
     <comment>The text displayed when browsing for zip files</comment>
   </data>
   <data name="NewFolder" xml:space="preserve">
-    <value>New folder</value>
+    <value>Ny mappe</value>
     <comment>The default name of a new folder</comment>
   </data>
   <data name="PackageBuildError" xml:space="preserve">
@@ -150,7 +150,7 @@
     <comment>A message displayed when the package could not be read</comment>
   </data>
   <data name="SelectPackageFile" xml:space="preserve">
-    <value>Select the package file to edit</value>
+    <value>Vælg pakken der skal redigeres</value>
     <comment>The title of the dialog that the is used to pick the package file to edit</comment>
   </data>
 </root>

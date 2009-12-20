@@ -141,4 +141,10 @@ Manuel indtastning
   <data name="WriteProtected.Text" type="System.String">
     <value>Datakilden er skrivebeskyttet</value>
   </data>
+  <data name="ConnectionType.Items1" xml:space="preserve">
+    <value>Filer på serveren (Unmanaged)</value>
+  </data>
+  <data name="ConnectionType.Items12" xml:space="preserve">
+    <value>Brugertilpasset</value>
+  </data>
 </root>

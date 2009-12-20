@@ -118,59 +118,59 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DrawingLayerDefinitionNotSupportedWarning" xml:space="preserve">
-    <value>Only vector layers and raster layers are currently validated</value>
+    <value>På nuværende tidspunkt er det kun vektor og raster lag der valideres</value>
     <comment>A warning message that is displayed if the layer is not Grid or Vector</comment>
   </data>
   <data name="DrawingLayerNotSupportedWarning" xml:space="preserve">
-    <value>Maestro does not support DrawingLayers</value>
+    <value>Maestro undersætter ikke DrawingLayers</value>
     <comment>A warning message that is displayed if the layer is a DrawingLayer type</comment>
   </data>
   <data name="FeatureSourceLoadError" xml:space="preserve">
-    <value>Failed to load featuresource</value>
+    <value>Kunne ikke indlæse datakilden</value>
     <comment>An error message that is displayed if the featuresource fails to load</comment>
   </data>
   <data name="GeometryMissingError" xml:space="preserve">
-    <value>Failed to find geometry column {0} in schema {1} on featuresource {2}</value>
+    <value>Kunne ikke finde geomtri kolonnen {0} i skema {1}  fra datakilde {2}</value>
     <comment>An error message that is displayed if the geometry is not present in the selected schema</comment>
   </data>
   <data name="LayerNullError" xml:space="preserve">
-    <value>Layer is missing core information</value>
+    <value>Laget mangler grundinformationer</value>
     <comment>An error message that is displayed if the layer has a null reference</comment>
   </data>
   <data name="MinAndMaxScaleSwappedError" xml:space="preserve">
-    <value>The minimum scale ({0}) is larger than the maximum scale ({1})</value>
+    <value>Minimum niveauet ({0})  er større end maksimum niveauet ({1})</value>
     <comment>An error message that is displayed if the scale ranges are reversed</comment>
   </data>
   <data name="MissingFeatureSourceError" xml:space="preserve">
-    <value>No FeatureSource is assigned to the layer</value>
+    <value>Lager er ikke tildelt en datakilde</value>
     <comment>An error message that is displayed if the layer has no FeatureSource</comment>
   </data>
   <data name="MissingGeometryError" xml:space="preserve">
-    <value>No Geometry is assigned to the layer</value>
+    <value>Laget er ikke tildelt en geometrikolonne</value>
     <comment>An error message that is displayed if the layer has no geometry column selected</comment>
   </data>
   <data name="MissingScaleRangesError" xml:space="preserve">
-    <value>No scale ranges are defined, no data can be displayed</value>
+    <value>Ingen zoom niveauer er angivet, ingen data kan vises</value>
     <comment>An error message that is displayed if there are no scale ranges defined</comment>
   </data>
   <data name="MultipleScaleRangesWarning" xml:space="preserve">
-    <value>More than one scale ranges is defined, this is valid, but unsupported by Maestro</value>
+    <value>Mere end ét zoom niveau er angivet. Dette er gyldigt, men undersøttes ikke af Maestro</value>
     <comment>A warning message that is displayed if a raster layer has multiple scale ranges defined</comment>
   </data>
   <data name="ScaleRangesOverlapInformation" xml:space="preserve">
-    <value>The scale range {0}-{1} overlaps the range {2}-{3}</value>
+    <value>Zoom niveau {0}-{1} overlapper niveauet {2}-{3}</value>
     <comment>A warning message that is displayed if two scaleranges overlap</comment>
   </data>
   <data name="SchemaAndColumnReadFailedError" xml:space="preserve">
-    <value>Failed to validate column and schema</value>
+    <value>Kunne ikke validere kolonner og skema</value>
     <comment>An error message that is displayed if the schema and column read fails</comment>
   </data>
   <data name="SchemaMissingError" xml:space="preserve">
-    <value>Failed to find schema {0} in featuresource {1}</value>
+    <value>Kunne ikke finde skema {0} i datakilden {1}</value>
     <comment>An error message that is displayed if the selected schema is not present in the FeatureSource</comment>
   </data>
   <data name="UnsupportedLayerTypeWarning" xml:space="preserve">
-    <value>The layer has no type, or the type is unsupported by Maestro</value>
+    <value>Laget har ingen type, eller typen er ikke undersøttet af Maestro</value>
     <comment>A  warning message that is displayed if the layer type is unknown</comment>
   </data>
 </root>

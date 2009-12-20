@@ -184,4 +184,10 @@
   <data name="EnableAdvanced.Text" type="System.String">
     <value>Avancerede indstillinger</value>
   </data>
+  <data name="VisibleTo.Items" xml:space="preserve">
+    <value>Uendelig</value>
+  </data>
+  <data name="VisibleTo.Text" xml:space="preserve">
+    <value>Uendelig</value>
+  </data>
 </root>

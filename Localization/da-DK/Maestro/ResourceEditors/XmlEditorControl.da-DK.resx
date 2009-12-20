@@ -119,25 +119,25 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="CopyClipboardButton.ToolTipText" type="System.String">
-    <value>Copy selected text to the clipboard</value>
+    <value>Kopier den markerede tekst til klippebordet</value>
   </data>
   <data name="CutClipboardButton.ToolTipText" type="System.String">
-    <value>Cut the selected text and place it in the clipboard</value>
+    <value>Klip den markerede tekst til klippebordet</value>
   </data>
   <data name="PasteClipboardButton.ToolTipText" type="System.String">
-    <value>Paste text from the clipboard</value>
+    <value>Idnsæt tekst fra klippebordet</value>
   </data>
   <data name="UndoClipboardButton.ToolTipText" type="System.String">
-    <value>Undo the last action</value>
+    <value>Fortryd den sidste ændring</value>
   </data>
   <data name="RedoClipboardButton.ToolTipText" type="System.String">
-    <value>Redo the last action</value>
+    <value>Gentag den sidste ændring</value>
   </data>
   <data name="ValidateButton.ToolTipText" type="System.String">
-    <value>Validate the current xml</value>
+    <value>Valider den nuværende Xml</value>
   </data>
   <data name="LaunchExternalEditorButton.ToolTipText" type="System.String">
-    <value>Launch the system editor associated with xml files</value>
+    <value>Start programmet der er registreret til at åbne xml filer</value>
   </data>
   <data name="label3.Text" type="System.String">
     <value>Teksten herunder bliver automatisk opdateret når det eksterne program gemmer filen.</value>
@@ -147,5 +147,8 @@
   </data>
   <data name="label1.Text" type="System.String">
     <value>Programmet beregnet til Xml redigering er startet.</value>
+  </data>
+  <data name="ResourceDataGroup.Text" xml:space="preserve">
+    <value>Elementets datafiler</value>
   </data>
 </root>

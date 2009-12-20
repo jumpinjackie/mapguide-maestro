@@ -160,4 +160,37 @@
   <data name="MaintainAspectRatio.Text" type="System.String">
     <value>Bibehold størrelsesforhold</value>
   </data>
+  <data name="DisplayPoints.Text" xml:space="preserve">
+    <value>Vis punkter</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Gennemsigtighed</value>
+  </data>
+  <data name="FontBoldButton.Text" xml:space="preserve">
+    <value>F</value>
+  </data>
+  <data name="FontBoldButton.ToolTipText" xml:space="preserve">
+    <value>Vælg fed skrifttype</value>
+  </data>
+  <data name="FontItalicButton.Text" xml:space="preserve">
+    <value>K</value>
+  </data>
+  <data name="FontItalicButton.ToolTipText" xml:space="preserve">
+    <value>Vælg kursiv skrifttype</value>
+  </data>
+  <data name="FontUnderlineButton.ToolTipText" xml:space="preserve">
+    <value>Vælg understreget skrifttype</value>
+  </data>
+  <data name="lblForeground.Text" xml:space="preserve">
+    <value>Farve</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Skrifttype</value>
+  </data>
+  <data name="groupBoxFont.Text" xml:space="preserve">
+    <value>Skrifttype stil</value>
+  </data>
+  <data name="groupBoxSymbolLocation.Text" xml:space="preserve">
+    <value>Symbol placering</value>
+  </data>
 </root>

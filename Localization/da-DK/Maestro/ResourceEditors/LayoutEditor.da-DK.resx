@@ -262,4 +262,16 @@
   <data name="AddSeperatorItem.Text" type="System.String">
     <value>Adskiller</value>
   </data>
+  <data name="FeatureLinkTargetType.Items" xml:space="preserve">
+    <value>Opgaverude</value>
+  </data>
+  <data name="FeatureLinkTargetType.Items1" xml:space="preserve">
+    <value>Nyt vindue</value>
+  </data>
+  <data name="FeatureLinkTargetType.Items2" xml:space="preserve">
+    <value>Navngivet ramme</value>
+  </data>
+  <data name="TaskUpButton.ToolTipText" xml:space="preserve">
+    <value>Klik for at flytte det valgte element op</value>
+  </data>
 </root>

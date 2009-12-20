@@ -131,7 +131,7 @@
     <value>Tuile unique</value>
   </data>
   <data name="MapTypeCombo.Text" type="System.String">
-    <value>comboBox1</value>
+    <value></value>
   </data>
   <data name="label8.Text" type="System.String">
     <value>Type de carte</value>

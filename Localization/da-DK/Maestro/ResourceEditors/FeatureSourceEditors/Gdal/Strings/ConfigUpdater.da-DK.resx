@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ProgressProcessingFiles" xml:space="preserve">
-    <value>Processing files ...</value>
+    <value>Bearbejder filer ...</value>
     <comment>A message that is displayed while processing files</comment>
   </data>
 </root>

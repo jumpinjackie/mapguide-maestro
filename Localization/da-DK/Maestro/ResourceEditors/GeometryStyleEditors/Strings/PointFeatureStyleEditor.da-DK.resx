@@ -118,15 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="FontPreviewError" xml:space="preserve">
-    <value>Cannot Preview Font "{0}"</value>
+    <value>Kan ikke vise skrifttypen "{0}"</value>
     <comment>An error message that is displayed when the rendering fails, using the specified font</comment>
   </data>
   <data name="InsertionPointYError" xml:space="preserve">
-    <value>You have entered a non-numeric value in the Reference Y field. Due to a bug in MapGuide, this will likely give an error when saving.</value>
+    <value>Du har indtastet en værdi som ikke er et tal i Y reference feltet. 
+På grund af en fejl i MapGuide giver dette formentlig en fejl når du gemmer.</value>
     <comment>An error message that is displayed if the user attempts to use an expression as the InsertionPointY value (caused by an xsd bug in MapGuide)</comment>
   </data>
   <data name="SymbolTypeNotSupported" xml:space="preserve">
-    <value>Only symbols of type "Mark" and "Font" are currently supported</value>
+    <value>Der understøttes kun symboler af typen "Mark" og "Font" i nuværende udgave.</value>
     <comment>A message that is displayed when the user attempts to modify an item with an unsupported type</comment>
   </data>
 </root>

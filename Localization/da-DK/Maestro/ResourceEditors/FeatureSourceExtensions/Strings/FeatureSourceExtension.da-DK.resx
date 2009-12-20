@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="NewExtensionName" xml:space="preserve">
-    <value>New extension</value>
+    <value>Ny udvidelse</value>
     <comment>The default name for a new extension</comment>
   </data>
   <data name="NewJoinName" xml:space="preserve">
-    <value>New join</value>
+    <value>Ny sammenkobling</value>
     <comment>The default name for a new join</comment>
   </data>
   <data name="NewPropertyName" xml:space="preserve">
-    <value>New property</value>
+    <value>Ny egenskab</value>
     <comment>The default name for a new property</comment>
   </data>
 </root>
