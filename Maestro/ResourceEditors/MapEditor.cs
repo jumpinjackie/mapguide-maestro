@@ -1419,6 +1419,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     maplayer.ShowInLegend = true;
                     maplayer.ExpandInLegend = true;
                     maplayer.Selectable = false; //Better for performance
+
+                    if (tabLayers.SelectedTab == tabLayerGroups && trvLayerGroups.SelectedNode != null)
+                    {
+                        if (trvLayerGroups.SelectedNode.Tag is MaestroAPI.MapLayerGroupType)
+                            maplayer.Group = (trvLayerGroups.SelectedNode.Tag as MaestroAPI.MapLayerGroupType).Name;
+                        else if (trvLayerGroups.SelectedNode.Tag is MaestroAPI.MapLayerType)
+                            maplayer.Group = (trvLayerGroups.SelectedNode.Tag as MaestroAPI.MapLayerType).Group;
+                    }
+                    
+
                     m_map.Layers.Add(maplayer);
                     
                     lastItem = maplayer;
