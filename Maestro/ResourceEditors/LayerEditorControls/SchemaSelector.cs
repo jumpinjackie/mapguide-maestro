@@ -98,7 +98,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 							(m_layer.Item as OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType).FeatureName = schemaName;
 
 						if (SchemaChanged != null && Schema.SelectedIndex >= 0)
-							SchemaChanged(false, m_schemas[Schema.SelectedIndex]);
+							SchemaChanged(false, this.SelectedSchema);
 					}
 
 
@@ -194,7 +194,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 					(m_layer.Item as OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType).FeatureName = Schema.Text;
 
 				if (SchemaChanged != null)
-					SchemaChanged(true, m_schemas[Schema.SelectedIndex]);
+					SchemaChanged(true, this.SelectedSchema);
 
 				UpdateGeometry(true);
 				m_editor.HasChanged();
@@ -203,9 +203,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 			{
 				Geometry.Enabled = false;
 			}
-
-
 		}
+
+        [Browsable(false)]
+        public MaestroAPI.FeatureSourceDescription.FeatureSourceSchema SelectedSchema
+        {
+            get
+            {
+                if (Schema.SelectedIndex < 0)
+                    return null;
+
+                foreach (MaestroAPI.FeatureSourceDescription.FeatureSourceSchema s in m_schemas.Schemas)
+                    if (OSGeo.MapGuide.MaestroAPI.Utility.DecodeFDOName(s.Fullname) == Schema.Text)
+                        return s;
+
+                return null;
+            }
+        }
 
 		public bool IsRaster 
 		{
@@ -232,7 +246,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 
 				Geometry.Enabled = true;
 
-				foreach(OSGeo.MapGuide.MaestroAPI.FeatureSetColumn col in m_schemas[Schema.SelectedIndex].Columns)
+				foreach(OSGeo.MapGuide.MaestroAPI.FeatureSetColumn col in SelectedSchema.Columns)
 				{
 					if (!m_isRaster && col.Type == OSGeo.MapGuide.MaestroAPI.Utility.GeometryType)
 						Geometry.Items.Add(col.Name);
