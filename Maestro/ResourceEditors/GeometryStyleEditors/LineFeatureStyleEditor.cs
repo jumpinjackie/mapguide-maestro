@@ -76,7 +76,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                 ComboBoxDataSet.ReadXml(sr);
 
 			lineStyleEditor.displayLine.Visible = false;
-			lineStyleEditor.thicknessUpDown.ValueChanged +=new EventHandler(thicknessCombo_SelectedIndexChanged);
+			lineStyleEditor.thicknessUpDown.ValueChanged += new EventHandler(thicknessCombo_SelectedIndexChanged);
 			lineStyleEditor.colorCombo.CurrentColorChanged += new EventHandler(colorCombo_CurrentValueChanged);
 			lineStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_SelectedIndexChanged);
 		}

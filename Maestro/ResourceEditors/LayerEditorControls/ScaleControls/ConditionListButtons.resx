@@ -139,7 +139,7 @@
     <value>conditionList</value>
   </data>
   <data name="&gt;&gt;conditionList.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ConditionList, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ConditionList, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;conditionList.Parent" xml:space="preserve">
     <value>$this</value>
@@ -228,6 +228,9 @@
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="toolTips.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="AddRuleButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -252,9 +255,6 @@
   <data name="AddRuleButton.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <metadata name="toolTips.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="AddRuleButton.ToolTip" xml:space="preserve">
     <value>Add a new rule</value>
   </data>
@@ -431,24 +431,6 @@
   <data name="&gt;&gt;MoveRuleUpButton.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="ShowInLegend.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ShowInLegend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 6</value>
-  </data>
-  <data name="ShowInLegend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 17</value>
-  </data>
-  <data name="ShowInLegend.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="ShowInLegend.Text" xml:space="preserve">
-    <value>Legendlabel</value>
-  </data>
-  <data name="ShowInLegend.ToolTip" xml:space="preserve">
-    <value>Check to show in legend (only avalible in LayerDefinition 1.3.0 and above)</value>
-  </data>
   <data name="&gt;&gt;ShowInLegend.Name" xml:space="preserve">
     <value>ShowInLegend</value>
   </data>
@@ -485,6 +467,39 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="ShowInLegend.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ShowInLegend.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 6</value>
+  </data>
+  <data name="ShowInLegend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 17</value>
+  </data>
+  <data name="ShowInLegend.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="ShowInLegend.Text" xml:space="preserve">
+    <value>Show in Legend</value>
+  </data>
+  <data name="ShowInLegend.ToolTip" xml:space="preserve">
+    <value>Check to show in legend (only avalible in LayerDefinition 1.3.0 and above)</value>
+  </data>
+  <data name="&gt;&gt;ShowInLegend.Name" xml:space="preserve">
+    <value>ShowInLegend</value>
+  </data>
+  <data name="&gt;&gt;ShowInLegend.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ShowInLegend.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;ShowInLegend.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="toolTips.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
