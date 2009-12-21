@@ -30,8 +30,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 	/// </summary>
 	public class LineFeatureStyleEditor : System.Windows.Forms.UserControl
 	{
-		private static byte[] SharedComboDataSet = null;
-
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -70,21 +68,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		public LineFeatureStyleEditor()
 		{
-			if (SharedComboDataSet == null)
-			{
-				System.IO.Stream s = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "LineStyleComboDataset.xml");
-				byte[] buf = new byte[s.Length];
-				if (s.Read(buf, 0, (int)s.Length) != s.Length)
-					throw new Exception(OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.AssemblyDataInternalError);
-				SharedComboDataSet = buf;
-			}
-
 			//
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			using(System.IO.MemoryStream ms = new System.IO.MemoryStream(SharedComboDataSet))
-				ComboBoxDataSet.ReadXml(ms);
+            using (System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.GeometryStyleComboDataset))
+                ComboBoxDataSet.ReadXml(sr);
 
 			lineStyleEditor.displayLine.Visible = false;
 			lineStyleEditor.thicknessUpDown.ValueChanged +=new EventHandler(thicknessCombo_SelectedIndexChanged);

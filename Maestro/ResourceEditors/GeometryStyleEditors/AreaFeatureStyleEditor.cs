@@ -30,7 +30,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 	/// </summary>
 	public class AreaFeatureStyleEditor : System.Windows.Forms.UserControl
 	{
-		private static byte[] SharedComboDataSet = null;
 		private System.Windows.Forms.ComboBox sizeContextCombo;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
@@ -63,21 +62,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
         public AreaFeatureStyleEditor()
         {
-            if (SharedComboDataSet == null)
-            {
-                System.IO.Stream s = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "PointStyleComboDataset.xml");
-                byte[] buf = new byte[s.Length];
-                if (s.Read(buf, 0, (int)s.Length) != s.Length)
-                    throw new Exception(OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.AssemblyDataInternalError);
-                SharedComboDataSet = buf;
-            }
-
             //
             // Required for Windows Form Designer support
             //
             InitializeComponent();
-            using (System.IO.MemoryStream ms = new System.IO.MemoryStream(SharedComboDataSet))
-                ComboBoxDataSet.ReadXml(ms);
+            using (System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.GeometryStyleComboDataset))
+                ComboBoxDataSet.ReadXml(sr);
 
             fillStyleEditor.displayFill.CheckedChanged += new EventHandler(displayFill_CheckedChanged);
             fillStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_SelectedIndexChanged);

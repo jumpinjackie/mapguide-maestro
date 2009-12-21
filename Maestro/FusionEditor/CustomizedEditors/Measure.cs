@@ -50,6 +50,18 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		private System.Windows.Forms.ComboBox Type;
 		private System.Windows.Forms.ComboBox MeasureTooltipType;
 		private System.Windows.Forms.ComboBox Units;
+        private System.Data.DataSet MeasureTypeDataset;
+        private System.Data.DataTable MeasureTypeTable;
+        private System.Data.DataColumn dataColumn1;
+        private System.Data.DataColumn dataColumn2;
+        private System.Data.DataSet MeasureUnitsDataset;
+        private System.Data.DataTable MeasureUnitTable;
+        private System.Data.DataColumn dataColumn3;
+        private System.Data.DataColumn dataColumn4;
+        private System.Data.DataSet TooltipTypeDataset;
+        private System.Data.DataTable TooltipTypeTable;
+        private System.Data.DataColumn dataColumn5;
+        private System.Data.DataColumn dataColumn6;
 		private System.ComponentModel.IContainer components = null;
 
 		public Measure()
@@ -57,8 +69,14 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			// This call is required by the Windows Form Designer.
 			InitializeComponent();
 
-			// TODO: Add any initialization after the InitializeComponent call
-		}
+            //Fill datasets
+            using (System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.MeasureTypeDataset))
+                MeasureTypeDataset.ReadXml(sr);
+            using (System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.MeasureUnitsDataset))
+                MeasureUnitTable.ReadXml(sr);
+            using (System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.TooltipTypeDataset))
+                TooltipTypeDataset.ReadXml(sr);
+        }
 
 		/// <summary>
 		/// Clean up any resources being used.
@@ -91,10 +109,26 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 				MeasureTipPositionLeft.Text = GetSettingValue("MeasureTipPositionLeft");
 				MeasureTipPositionTop.Text = GetSettingValue("MeasureTipPositionTop");
 				MeasureTooltipContainer.Text = GetSettingValue("MeasureTooltipContainer");
-				MeasureTooltipType.Text = GetSettingValue("MeasureTooltipType");
-				Type.Text = GetSettingValue("Type");
 				Units.Text = GetSettingValue("Units");
-			}
+
+                Type.SelectedIndex = -1;
+                Type.SelectedValue = GetSettingValue("Type");
+
+                if (Type.SelectedIndex == -1)
+                    Type.Text = GetSettingValue("Type");
+
+                Units.SelectedIndex = -1;
+                Units.SelectedValue = GetSettingValue("Units");
+
+                if (Units.SelectedIndex == -1)
+                    Units.Text = GetSettingValue("Units");
+
+                MeasureTooltipType.SelectedIndex = -1;
+                MeasureTooltipType.SelectedValue = GetSettingValue("MeasureTooltipType");
+
+                if (MeasureTooltipType.SelectedIndex == -1)
+                    MeasureTooltipType.Text = GetSettingValue("MeasureTooltipType");
+            }
 			finally
 			{
 				m_isUpdating = false;
@@ -129,8 +163,26 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             this.FillStyle = new System.Windows.Forms.ComboBox();
             this.LineStyleColor = new System.Windows.Forms.ComboBox();
             this.Type = new System.Windows.Forms.ComboBox();
+            this.MeasureTypeTable = new System.Data.DataTable();
+            this.dataColumn1 = new System.Data.DataColumn();
+            this.dataColumn2 = new System.Data.DataColumn();
             this.MeasureTooltipType = new System.Windows.Forms.ComboBox();
+            this.TooltipTypeTable = new System.Data.DataTable();
+            this.dataColumn5 = new System.Data.DataColumn();
+            this.dataColumn6 = new System.Data.DataColumn();
             this.Units = new System.Windows.Forms.ComboBox();
+            this.MeasureUnitTable = new System.Data.DataTable();
+            this.dataColumn3 = new System.Data.DataColumn();
+            this.dataColumn4 = new System.Data.DataColumn();
+            this.MeasureTypeDataset = new System.Data.DataSet();
+            this.MeasureUnitsDataset = new System.Data.DataSet();
+            this.TooltipTypeDataset = new System.Data.DataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureTypeTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TooltipTypeTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureUnitTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureTypeDataset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureUnitsDataset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TooltipTypeDataset)).BeginInit();
             this.SuspendLayout();
             // 
             // DistancePrecision
@@ -239,29 +291,104 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             // Type
             // 
             resources.ApplyResources(this.Type, "Type");
-            this.Type.Items.AddRange(new object[] {
-            resources.GetString("Type.Items")});
+            this.Type.DataSource = this.MeasureTypeTable;
+            this.Type.DisplayMember = "Displayname";
             this.Type.Name = "Type";
+            this.Type.ValueMember = "Value";
+            this.Type.SelectedIndexChanged += new System.EventHandler(this.Type_TextChanged);
             this.Type.TextChanged += new System.EventHandler(this.Type_TextChanged);
+            // 
+            // MeasureTypeTable
+            // 
+            this.MeasureTypeTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.dataColumn1,
+            this.dataColumn2});
+            this.MeasureTypeTable.TableName = "MeasureType";
+            // 
+            // dataColumn1
+            // 
+            this.dataColumn1.Caption = "Value";
+            this.dataColumn1.ColumnName = "Value";
+            // 
+            // dataColumn2
+            // 
+            this.dataColumn2.Caption = "DisplayName";
+            this.dataColumn2.ColumnName = "Displayname";
             // 
             // MeasureTooltipType
             // 
             resources.ApplyResources(this.MeasureTooltipType, "MeasureTooltipType");
-            this.MeasureTooltipType.Items.AddRange(new object[] {
-            resources.GetString("MeasureTooltipType.Items"),
-            resources.GetString("MeasureTooltipType.Items1")});
+            this.MeasureTooltipType.DataSource = this.TooltipTypeTable;
+            this.MeasureTooltipType.DisplayMember = "Displayname";
             this.MeasureTooltipType.Name = "MeasureTooltipType";
+            this.MeasureTooltipType.ValueMember = "Value";
+            this.MeasureTooltipType.SelectedIndexChanged += new System.EventHandler(this.MeasureTooltipType_TextChanged);
             this.MeasureTooltipType.TextChanged += new System.EventHandler(this.MeasureTooltipType_TextChanged);
+            // 
+            // TooltipTypeTable
+            // 
+            this.TooltipTypeTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.dataColumn5,
+            this.dataColumn6});
+            this.TooltipTypeTable.TableName = "TooltipType";
+            // 
+            // dataColumn5
+            // 
+            this.dataColumn5.Caption = "Value";
+            this.dataColumn5.ColumnName = "Value";
+            // 
+            // dataColumn6
+            // 
+            this.dataColumn6.Caption = "DisplayName";
+            this.dataColumn6.ColumnName = "Displayname";
             // 
             // Units
             // 
             resources.ApplyResources(this.Units, "Units");
-            this.Units.Items.AddRange(new object[] {
-            resources.GetString("Units.Items"),
-            resources.GetString("Units.Items1"),
-            resources.GetString("Units.Items2")});
+            this.Units.DataSource = this.MeasureUnitTable;
+            this.Units.DisplayMember = "Displayname";
             this.Units.Name = "Units";
+            this.Units.ValueMember = "Value";
+            this.Units.SelectedIndexChanged += new System.EventHandler(this.Units_TextChanged);
             this.Units.TextChanged += new System.EventHandler(this.Units_TextChanged);
+            // 
+            // MeasureUnitTable
+            // 
+            this.MeasureUnitTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.dataColumn3,
+            this.dataColumn4});
+            this.MeasureUnitTable.TableName = "MeasureUnit";
+            // 
+            // dataColumn3
+            // 
+            this.dataColumn3.Caption = "Value";
+            this.dataColumn3.ColumnName = "Value";
+            // 
+            // dataColumn4
+            // 
+            this.dataColumn4.Caption = "DisplayName";
+            this.dataColumn4.ColumnName = "Displayname";
+            // 
+            // MeasureTypeDataset
+            // 
+            this.MeasureTypeDataset.DataSetName = "NewDataSet";
+            this.MeasureTypeDataset.Locale = new System.Globalization.CultureInfo("da-DK");
+            this.MeasureTypeDataset.Tables.AddRange(new System.Data.DataTable[] {
+            this.MeasureTypeTable});
+            // 
+            // MeasureUnitsDataset
+            // 
+            this.MeasureUnitsDataset.DataSetName = "NewDataSet";
+            this.MeasureUnitsDataset.Locale = new System.Globalization.CultureInfo("da-DK");
+            this.MeasureUnitsDataset.Tables.AddRange(new System.Data.DataTable[] {
+            this.MeasureUnitTable});
+            // 
+            // TooltipTypeDataset
+            // 
+            this.TooltipTypeDataset.DataSetName = "NewDataSet";
+            this.TooltipTypeDataset.Locale = new System.Globalization.CultureInfo("da-DK");
+            this.TooltipTypeDataset.Tables.AddRange(new System.Data.DataTable[] {
+            this.TooltipTypeTable});
             // 
             // Measure
             // 
@@ -289,6 +416,12 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             this.Controls.Add(this.label1);
             this.Name = "Measure";
             resources.ApplyResources(this, "$this");
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureTypeTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TooltipTypeTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureUnitTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureTypeDataset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureUnitsDataset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TooltipTypeDataset)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,7 +497,19 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			if (m_isUpdating || m_w == null)
 				return;
 
-			SetSettingValue("MeasureTooltipType", MeasureTooltipType.Text);
+            if (MeasureTooltipType.SelectedValue != null)
+                SetSettingValue("MeasureTooltipType", (string)MeasureTooltipType.SelectedValue);
+            else
+            {
+                foreach (System.Data.DataRow r in TooltipTypeTable.Rows)
+                    if (string.Equals((string)r["Displayname"], MeasureTooltipType.Text, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        SetSettingValue("MeasureTooltipType", (string)r["Value"]);
+                        return;
+                    }
+
+                SetSettingValue("MeasureTooltipType", MeasureTooltipType.Text);
+            }
 		}
 
 		private void Type_TextChanged(object sender, System.EventArgs e)
@@ -372,15 +517,39 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			if (m_isUpdating || m_w == null)
 				return;
 
-			SetSettingValue("Type", Type.Text);
-		}
+            if (Type.SelectedValue != null)
+                SetSettingValue("Type", (string)Type.SelectedValue);
+            else
+            {
+                foreach (System.Data.DataRow r in MeasureTypeTable.Rows)
+                    if (string.Equals((string)r["Displayname"], Type.Text, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        SetSettingValue("Type", (string)r["Value"]);
+                        return;
+                    }
+
+                SetSettingValue("Type", Type.Text);
+            }
+        }
 
 		private void Units_TextChanged(object sender, System.EventArgs e)
 		{
 			if (m_isUpdating || m_w == null)
 				return;
 
-			SetSettingValue("Units", Units.Text);
+            if (Units.SelectedValue != null)
+                SetSettingValue("Units", (string)Units.SelectedValue);
+            else
+            {
+                foreach (System.Data.DataRow r in MeasureUnitTable.Rows)
+                    if (string.Equals((string)r["Displayname"], Units.Text, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        SetSettingValue("Units", (string)r["Value"]);
+                        return;
+                    }
+
+                SetSettingValue("Units", Units.Text);
+            }
 		}
 	}
 }

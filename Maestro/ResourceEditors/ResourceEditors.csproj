@@ -659,7 +659,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <EmbeddedResource Include="blank_icon.gif" />
-    <EmbeddedResource Include="CommandTypesDataset.xml" />
     <EmbeddedResource Include="CoordinateSystemOverride.resx">
       <DependentUpon>CoordinateSystemOverride.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -868,7 +867,6 @@
       <DependentUpon>AreaFeatureStyleEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="GeometryStyleEditors\AreaStyleComboDataset.xml" />
     <EmbeddedResource Include="GeometryStyleEditors\CustomCombo.resx">
       <DependentUpon>CustomCombo.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -877,7 +875,6 @@
       <DependentUpon>FillStyleEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="GeometryStyleEditors\FontStyleComboDataset.xml" />
     <EmbeddedResource Include="GeometryStyleEditors\FontStyleEditor.resx">
       <DependentUpon>FontStyleEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -886,7 +883,6 @@
       <DependentUpon>LineFeatureStyleEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="GeometryStyleEditors\LineStyleComboDataset.xml" />
     <EmbeddedResource Include="GeometryStyleEditors\LineStyleEditor.resx">
       <DependentUpon>LineStyleEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -895,7 +891,6 @@
       <DependentUpon>PointFeatureStyleEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="GeometryStyleEditors\PointStyleComboDataset.xml" />
     <EmbeddedResource Include="GeometryStyleEditors\ScaleRangeEditor.resx">
       <DependentUpon>ScaleRangeEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1235,6 +1230,15 @@
     <None Include="ColorBrewer.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CommandTypesDataset.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FontStyleComboDataset.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GeometryStyleComboDataset.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

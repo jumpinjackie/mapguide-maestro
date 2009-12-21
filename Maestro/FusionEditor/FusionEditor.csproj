@@ -244,7 +244,6 @@
       <DependentUpon>CustomPropertiesEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Defaults.xml" />
     <EmbeddedResource Include="EditWidgets.resx">
       <DependentUpon>EditWidgets.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -442,6 +441,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Defaults.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DirectionTypeDataset.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GeometryOperationTypeDataset.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MeasureTypeDataset.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MeasureUnitsDataset.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PositionTypesDataset.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TooltipTypeDataset.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomDirectionDataset.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

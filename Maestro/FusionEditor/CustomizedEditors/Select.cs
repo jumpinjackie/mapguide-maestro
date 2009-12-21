@@ -33,6 +33,10 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		private System.Windows.Forms.TextBox Tolerance;
 		private System.Windows.Forms.ComboBox SelectionType;
 		private System.Windows.Forms.Label label2;
+        private System.Data.DataSet GeometryOperationTypeDataset;
+        private System.Data.DataTable GeometryOperationTypeTable;
+        private System.Data.DataColumn dataColumn1;
+        private System.Data.DataColumn dataColumn2;
 		private System.ComponentModel.IContainer components = null;
 
 		public Select()
@@ -40,8 +44,10 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			// This call is required by the Windows Form Designer.
 			InitializeComponent();
 
-			// TODO: Add any initialization after the InitializeComponent call
-		}
+            //Fill dataset
+            using (System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.GeometryOperationTypeDataset))
+                GeometryOperationTypeDataset.ReadXml(sr);
+        }
 
 		/// <summary>
 		/// Clean up any resources being used.
@@ -68,8 +74,13 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 
 				try { QueryActiveLayer.Checked = bool.Parse(GetSettingValue("QueryActiveLayer")); }
 				catch {}
-				Tolerance.Text = GetSettingValue("Tolerance"); 
-				SelectionType.Text = GetSettingValue("SelectionType"); 
+				Tolerance.Text = GetSettingValue("Tolerance");
+
+                SelectionType.SelectedIndex = -1;
+                SelectionType.SelectedValue = GetSettingValue("SelectionType");
+
+                if (SelectionType.SelectedIndex == -1)
+                    SelectionType.Text = GetSettingValue("SelectionType");
 			}
 			finally
 			{
@@ -89,7 +100,13 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             this.Tolerance = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SelectionType = new System.Windows.Forms.ComboBox();
+            this.GeometryOperationTypeTable = new System.Data.DataTable();
+            this.dataColumn1 = new System.Data.DataColumn();
+            this.dataColumn2 = new System.Data.DataColumn();
             this.label2 = new System.Windows.Forms.Label();
+            this.GeometryOperationTypeDataset = new System.Data.DataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.GeometryOperationTypeTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GeometryOperationTypeDataset)).BeginInit();
             this.SuspendLayout();
             // 
             // QueryActiveLayer
@@ -112,20 +129,41 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             // SelectionType
             // 
             resources.ApplyResources(this.SelectionType, "SelectionType");
-            this.SelectionType.Items.AddRange(new object[] {
-            resources.GetString("SelectionType.Items"),
-            resources.GetString("SelectionType.Items1"),
-            resources.GetString("SelectionType.Items2"),
-            resources.GetString("SelectionType.Items3"),
-            resources.GetString("SelectionType.Items4"),
-            resources.GetString("SelectionType.Items5")});
+            this.SelectionType.DataSource = this.GeometryOperationTypeTable;
+            this.SelectionType.DisplayMember = "Displayname";
             this.SelectionType.Name = "SelectionType";
+            this.SelectionType.ValueMember = "Value";
+            this.SelectionType.SelectedIndexChanged += new System.EventHandler(this.SelectionType_TextChanged);
             this.SelectionType.TextChanged += new System.EventHandler(this.SelectionType_TextChanged);
+            // 
+            // GeometryOperationTypeTable
+            // 
+            this.GeometryOperationTypeTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.dataColumn1,
+            this.dataColumn2});
+            this.GeometryOperationTypeTable.TableName = "GeometryOperationType";
+            // 
+            // dataColumn1
+            // 
+            this.dataColumn1.Caption = "Value";
+            this.dataColumn1.ColumnName = "Value";
+            // 
+            // dataColumn2
+            // 
+            this.dataColumn2.Caption = "DisplayName";
+            this.dataColumn2.ColumnName = "Displayname";
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
+            // 
+            // GeometryOperationTypeDataset
+            // 
+            this.GeometryOperationTypeDataset.DataSetName = "NewDataSet";
+            this.GeometryOperationTypeDataset.Locale = new System.Globalization.CultureInfo("da-DK");
+            this.GeometryOperationTypeDataset.Tables.AddRange(new System.Data.DataTable[] {
+            this.GeometryOperationTypeTable});
             // 
             // Select
             // 
@@ -136,6 +174,8 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             this.Controls.Add(this.label1);
             this.Name = "Select";
             resources.ApplyResources(this, "$this");
+            ((System.ComponentModel.ISupportInitialize)(this.GeometryOperationTypeTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GeometryOperationTypeDataset)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,7 +203,19 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			if (m_isUpdating || m_w == null)
 				return;
 
-			SetSettingValue("SelectionType", SelectionType.Text);
+            if (SelectionType.SelectedValue != null)
+                SetSettingValue("SelectionType", (string)SelectionType.SelectedValue);
+            else
+            {
+                foreach (System.Data.DataRow r in GeometryOperationTypeTable.Rows)
+                    if (string.Equals((string)r["Displayname"], SelectionType.Text, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        SetSettingValue("SelectionType", (string)r["Value"]);
+                        return;
+                    }
+
+                SetSettingValue("SelectionType", SelectionType.Text);
+            }
 		}
 	}
 }

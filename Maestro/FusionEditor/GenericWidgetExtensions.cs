@@ -87,6 +87,8 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 					r["Value"] = n.InnerXml;
 					ExtensionTable.Rows.Add(r);
 				}
+
+                this.DataSource = ExtensionTable;
 			}
 			finally
 			{

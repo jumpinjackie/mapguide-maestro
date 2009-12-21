@@ -117,41 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Text" type="System.String">
-    <value>Forbindelses type</value>
-  </data>
-  <data name="ConnectionType.Items" type="System.String">
-    <value>
-    Intern fil (Managed)
-    Fil på serveren (Unmanaged)
-    DSN (Nanvgivne ODBC datakilde)
-    Kendt database type
-    Indtast forbindelse manuelt
-    </value>
-  </data>
-  <data name="label2.Text" type="System.String">
-    <value>Connection string</value>
-  </data>
-  <data name="RefreshButton.Text" type="System.String">
-    <value>Genbyg skema</value>
-  </data>
-  <data name="ConfigureButton.Text" type="System.String">
-    <value>Indstil kolonner</value>
-  </data>
-  <data name="ConnectionType.Items1" xml:space="preserve">
-    <value>Filer på serveren (Unmanaged)</value>
+  <data name="ConnectionType.Items3" xml:space="preserve">
+    <value>Kendt database type</value>
   </data>
   <data name="ConnectionType.Items2" xml:space="preserve">
     <value>DSN (Navngivet ODBC)</value>
   </data>
-  <data name="ConnectionType.Items3" xml:space="preserve">
-    <value>Kendt database type</value>
+  <data name="ConnectionType.Items1" xml:space="preserve">
+    <value>Filer på serveren (Unmanaged)</value>
+  </data>
+  <data name="ConnectionString.Text" xml:space="preserve">
+    <value>Forbindelsesstreng</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Connection string</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Forbindelses type</value>
+  </data>
+  <data name="RefreshButton.Text" xml:space="preserve">
+    <value>Genbyg skema</value>
   </data>
   <data name="ConnectionType.Items4" xml:space="preserve">
     <value>Brugertilpasset forbindelsesstreng</value>
   </data>
-  <data name="ConnectionString.Text" xml:space="preserve">
-    <value>Forbindelsesstreng</value>
+  <data name="ConnectionType.Items" xml:space="preserve">
+    <value>Intern fil (Managed)</value>
+  </data>
+  <data name="ConfigureButton.Text" xml:space="preserve">
+    <value>Indstil kolonner</value>
+  </data>
+  <data name="ConnectionType.Items.Items3" xml:space="preserve">
+    <value>Known database type</value>
+  </data>
+  <data name="ConnectionType.Items.Items" xml:space="preserve">
+    <value>Internal file (Managed)</value>
+  </data>
+  <data name="ConnectionType.Items.Items1" xml:space="preserve">
+    <value>File on the server (Unmanaged)</value>
+  </data>
+  <data name="ConnectionType.Items.Items4" xml:space="preserve">
+    <value>Custom connectionstring</value>
+  </data>
+  <data name="ConnectionType.Items.Items2" xml:space="preserve">
+    <value>DSN (Named ODBC)</value>
   </data>
 </root>

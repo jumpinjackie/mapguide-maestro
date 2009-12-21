@@ -27,18 +27,15 @@ using OSGeo.MapGuide.MaestroAPI.ApplicationDefinition;
 namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 {
 	public class ViewOptions : FusionEditor.BasisWidgetEditor
-	{
-		private System.Windows.Forms.ComboBox DisplayUnits;
-		private System.Windows.Forms.Label label1;
+    {
+        private CheckBox DisplayUnits;
 		private System.ComponentModel.IContainer components = null;
 
 		public ViewOptions()
 		{
 			// This call is required by the Windows Form Designer.
 			InitializeComponent();
-
-			// TODO: Add any initialization after the InitializeComponent call
-		}
+        }
 
 		/// <summary>
 		/// Clean up any resources being used.
@@ -63,7 +60,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 				m_w = w;
 				this.Enabled = m_w != null;
 
-				DisplayUnits.Text = GetSettingValue("DisplayUnits"); 
+                DisplayUnits.Checked = GetSettingValue("DisplayUnits") == null || GetSettingValue("DisplayUnits").Trim().ToLower() == "true";
 			}
 			finally
 			{
@@ -79,42 +76,34 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		private void InitializeComponent()
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewOptions));
-            this.DisplayUnits = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.DisplayUnits = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // DisplayUnits
             // 
-            this.DisplayUnits.Items.AddRange(new object[] {
-            resources.GetString("DisplayUnits.Items"),
-            resources.GetString("DisplayUnits.Items1")});
             resources.ApplyResources(this.DisplayUnits, "DisplayUnits");
             this.DisplayUnits.Name = "DisplayUnits";
-            this.DisplayUnits.TextChanged += new System.EventHandler(this.DisplayUnits_TextChanged);
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            this.DisplayUnits.UseVisualStyleBackColor = true;
+            this.DisplayUnits.CheckedChanged += new System.EventHandler(this.DisplayUnits_CheckedChanged);
             // 
             // ViewOptions
             // 
             this.Controls.Add(this.DisplayUnits);
-            this.Controls.Add(this.label1);
             this.Name = "ViewOptions";
             resources.ApplyResources(this, "$this");
             this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion
 
-		private void DisplayUnits_TextChanged(object sender, System.EventArgs e)
-		{
-			if (m_isUpdating || m_w == null)
-				return;
+        private void DisplayUnits_CheckedChanged(object sender, EventArgs e)
+        {
+            if (m_isUpdating || m_w == null)
+                return;
 
-			SetSettingValue("DisplayUnits", DisplayUnits.Text);
-		}
+            SetSettingValue("DisplayUnits", DisplayUnits.Checked ? "true" : "false");
+        }
 	}
 }
 

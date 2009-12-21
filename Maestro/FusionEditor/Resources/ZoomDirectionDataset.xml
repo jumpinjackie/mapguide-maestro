@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ZoomDirectionDataset>
+	<ZoomDirection>
+		<Value>in</Value>
+		<Displayname>In</Displayname>
+	</ZoomDirection>
+
+	<ZoomDirection>
+		<Value>out</Value>
+		<Displayname>Out</Displayname>
+	</ZoomDirection>
+
+</ZoomDirectionDataset>

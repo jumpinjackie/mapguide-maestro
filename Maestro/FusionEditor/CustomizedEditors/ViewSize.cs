@@ -34,6 +34,10 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox Template;
 		private System.Windows.Forms.Label label2;
+        private System.Data.DataSet MeasureUnitsDataset;
+        private System.Data.DataTable MeasureUnitTable;
+        private System.Data.DataColumn dataColumn3;
+        private System.Data.DataColumn dataColumn4;
 		private System.ComponentModel.IContainer components = null;
 
 		public ViewSize()
@@ -41,8 +45,10 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			// This call is required by the Windows Form Designer.
 			InitializeComponent();
 
-			// TODO: Add any initialization after the InitializeComponent call
-		}
+            //Fill dataset
+            using (System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.MeasureUnitsDataset))
+                MeasureUnitTable.ReadXml(sr);
+        }
 
 		/// <summary>
 		/// Clean up any resources being used.
@@ -68,9 +74,13 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 				this.Enabled = m_w != null;
 
 				Precision.Text = GetSettingValue("Precision"); 
-				Template.Text = GetSettingValue("Template"); 
-				Units.Text = GetSettingValue("Units"); 
-			}
+				Template.Text = GetSettingValue("Template");
+                Units.SelectedIndex = -1;
+                Units.SelectedValue = GetSettingValue("Units");
+
+                if (Units.SelectedIndex == -1)
+                    Units.Text = GetSettingValue("Units");
+            }
 			finally
 			{
 				m_isUpdating = false;
@@ -86,22 +96,45 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewSize));
             this.Units = new System.Windows.Forms.ComboBox();
+            this.MeasureUnitTable = new System.Data.DataTable();
+            this.dataColumn3 = new System.Data.DataColumn();
+            this.dataColumn4 = new System.Data.DataColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.Precision = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Template = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.MeasureUnitsDataset = new System.Data.DataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureUnitTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureUnitsDataset)).BeginInit();
             this.SuspendLayout();
             // 
             // Units
             // 
-            this.Units.Items.AddRange(new object[] {
-            resources.GetString("Units.Items"),
-            resources.GetString("Units.Items1"),
-            resources.GetString("Units.Items2")});
             resources.ApplyResources(this.Units, "Units");
+            this.Units.DataSource = this.MeasureUnitTable;
+            this.Units.DisplayMember = "Displayname";
             this.Units.Name = "Units";
+            this.Units.ValueMember = "Value";
+            this.Units.SelectedIndexChanged += new System.EventHandler(this.Units_TextChanged);
             this.Units.TextChanged += new System.EventHandler(this.Units_TextChanged);
+            // 
+            // MeasureUnitTable
+            // 
+            this.MeasureUnitTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.dataColumn3,
+            this.dataColumn4});
+            this.MeasureUnitTable.TableName = "MeasureUnit";
+            // 
+            // dataColumn3
+            // 
+            this.dataColumn3.Caption = "Value";
+            this.dataColumn3.ColumnName = "Value";
+            // 
+            // dataColumn4
+            // 
+            this.dataColumn4.Caption = "DisplayName";
+            this.dataColumn4.ColumnName = "Displayname";
             // 
             // label1
             // 
@@ -130,6 +163,13 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
+            // MeasureUnitsDataset
+            // 
+            this.MeasureUnitsDataset.DataSetName = "NewDataSet";
+            this.MeasureUnitsDataset.Locale = new System.Globalization.CultureInfo("da-DK");
+            this.MeasureUnitsDataset.Tables.AddRange(new System.Data.DataTable[] {
+            this.MeasureUnitTable});
+            // 
             // ViewSize
             // 
             this.Controls.Add(this.Precision);
@@ -140,6 +180,8 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             this.Controls.Add(this.label1);
             this.Name = "ViewSize";
             resources.ApplyResources(this, "$this");
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureUnitTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureUnitsDataset)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,7 +209,19 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			if (m_isUpdating || m_w == null)
 				return;
 
-			SetSettingValue("Units", Units.Text);
+            if (Units.SelectedValue != null)
+                SetSettingValue("Units", (string)Units.SelectedValue);
+            else
+            {
+                foreach (System.Data.DataRow r in MeasureUnitTable.Rows)
+                    if (string.Equals((string)r["Displayname"], Units.Text, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        SetSettingValue("Units", (string)r["Value"]);
+                        return;
+                    }
+
+                SetSettingValue("Units", Units.Text);
+            }
 		}
 	}
 }

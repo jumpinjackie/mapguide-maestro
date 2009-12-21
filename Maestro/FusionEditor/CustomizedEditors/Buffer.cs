@@ -54,6 +54,10 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 		private System.Windows.Forms.TextBox BufferDistance;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.TextBox BufferDistanceInput;
+        private DataSet MeasureUnitsDataset;
+        private DataTable MeasureUnitTable;
+        private DataColumn dataColumn3;
+        private DataColumn dataColumn4;
 		/// <summary> 
 		/// Required designer variable.
 		/// </summary>
@@ -65,6 +69,10 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			InitializeComponent();
             BorderColor.ResetColors();
             FillColor.ResetColors();
+
+            //Fill dataset
+            using (System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.MeasureUnitsDataset))
+                MeasureUnitTable.ReadXml(sr);
 		}
 
 		/// <summary> 
@@ -94,7 +102,6 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 				catch { }
 				try	{ FillColor.CurrentColor = OSGeo.MapGuide.MaestroAPI.Utility.ParseHTMLColor(GetSettingValue("FillColor")); }
 				catch { }
-				BufferUnits.Text = GetSettingValue("BufferUnits");
 				BufferDistanceInput.Text = GetSettingValue("BufferDistanceInput");
 				LayerName.Text = GetSettingValue("LayerName");
 				FillColorInput.Text = GetSettingValue("FillColorInput");
@@ -102,8 +109,13 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 				BorderColorInput.Text = GetSettingValue("BorderColorInput"); 
 				LayerNameInput.Text = GetSettingValue("LayerNameInput");
 				BufferDistance.Text = GetSettingValue("BufferDistance");
-					
-			}
+
+                BufferUnits.SelectedIndex = -1;
+                BufferUnits.SelectedValue = GetSettingValue("BufferUnits");
+
+                if (BufferUnits.SelectedIndex == -1)
+                    BufferUnits.Text = GetSettingValue("BufferUnits");
+            }
 			finally
 			{
 				m_isUpdating = false;
@@ -122,6 +134,9 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Buffer));
             this.label1 = new System.Windows.Forms.Label();
             this.BufferUnits = new System.Windows.Forms.ComboBox();
+            this.MeasureUnitTable = new System.Data.DataTable();
+            this.dataColumn3 = new System.Data.DataColumn();
+            this.dataColumn4 = new System.Data.DataColumn();
             this.BorderColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.BufferDistanceInput = new System.Windows.Forms.TextBox();
@@ -140,6 +155,9 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             this.label9 = new System.Windows.Forms.Label();
             this.BufferDistance = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.MeasureUnitsDataset = new System.Data.DataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureUnitTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureUnitsDataset)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -150,11 +168,29 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             // BufferUnits
             // 
             resources.ApplyResources(this.BufferUnits, "BufferUnits");
-            this.BufferUnits.Items.AddRange(new object[] {
-            resources.GetString("BufferUnits.Items"),
-            resources.GetString("BufferUnits.Items1")});
+            this.BufferUnits.DataSource = this.MeasureUnitTable;
+            this.BufferUnits.DisplayMember = "Displayname";
             this.BufferUnits.Name = "BufferUnits";
+            this.BufferUnits.ValueMember = "Value";
+            this.BufferUnits.SelectedIndexChanged += new System.EventHandler(this.BufferUnits_TextChanged);
             this.BufferUnits.TextChanged += new System.EventHandler(this.BufferUnits_TextChanged);
+            // 
+            // MeasureUnitTable
+            // 
+            this.MeasureUnitTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.dataColumn3,
+            this.dataColumn4});
+            this.MeasureUnitTable.TableName = "MeasureUnit";
+            // 
+            // dataColumn3
+            // 
+            this.dataColumn3.Caption = "Value";
+            this.dataColumn3.ColumnName = "Value";
+            // 
+            // dataColumn4
+            // 
+            this.dataColumn4.Caption = "DisplayName";
+            this.dataColumn4.ColumnName = "Displayname";
             // 
             // BorderColor
             // 
@@ -255,6 +291,13 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
             // 
+            // MeasureUnitsDataset
+            // 
+            this.MeasureUnitsDataset.DataSetName = "NewDataSet";
+            this.MeasureUnitsDataset.Locale = new System.Globalization.CultureInfo("da-DK");
+            this.MeasureUnitsDataset.Tables.AddRange(new System.Data.DataTable[] {
+            this.MeasureUnitTable});
+            // 
             // Buffer
             // 
             this.Controls.Add(this.BufferDistance);
@@ -279,6 +322,8 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             this.Controls.Add(this.label1);
             this.Name = "Buffer";
             resources.ApplyResources(this, "$this");
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureUnitTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasureUnitsDataset)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,7 +335,19 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			if (m_isUpdating || m_w == null)
 				return;
 
-			SetSettingValue("BufferUnits", BufferUnits.Text);
+            if (BufferUnits.SelectedValue != null)
+                SetSettingValue("BufferUnits", (string)BufferUnits.SelectedValue);
+            else
+            {
+                foreach (System.Data.DataRow r in MeasureUnitTable.Rows)
+                    if (string.Equals((string)r["Displayname"], BufferUnits.Text, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        SetSettingValue("BufferUnits", (string)r["Value"]);
+                        return;
+                    }
+
+                SetSettingValue("BufferUnits", BufferUnits.Text);
+            }
 		}
 
 		private void BufferDistance_TextChanged(object sender, System.EventArgs e)

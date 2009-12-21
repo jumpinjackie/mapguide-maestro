@@ -1,13 +1,12 @@
 ﻿<root>
 	<configuration name="OSGeo.MapGuide">
 		<assembly name="Maestro" folder="Maestro" namespace="OSGeo.MapGuide.Maestro">
-			<exclude>Localization</exclude>
-			<exclude>bin</exclude>
-			<exclude>FusionEditor</exclude>
-			<exclude>LoginForm</exclude>
-			<exclude>ResourceBrowser</exclude>
-			<exclude>ResourceEditors</exclude>
-			<exclude>ResourceValidators</exclude>
+			<exclude>Maestro\FusionEditor</exclude>
+			<exclude>Maestro\LoginForm</exclude>
+			<exclude>Maestro\ResourceBrowser</exclude>
+			<exclude>Maestro\ResourceEditors</exclude>
+			<exclude>Maestro\ResourceValidators</exclude>
+			<exclude>MgCooker</exclude>
 		</assembly>
 
 		<!-- <assembly name="OSGeo.MapGuide.MaestroAPI.PackageBuilder" folder="PackageBuilder" namespace="OSGeo.MapGuide.MaestroAPI.PackageBuilder" />
@@ -16,7 +15,7 @@
 		</assembly> -->
 
 		<assembly name="OSGeo.MapGuide.Maestro.FusionEditor" folder="Maestro\FusionEditor" namespace="OSGeo.MapGuide.Maestro.FusionEditor" />
-		<assembly name="OSGeo.MapGuide.MgCooker" folder="MgCooker" namespace="OSGeo.MapGuide.MgCooker" />
+		<assembly name="MgCooker" folder="MgCooker" namespace="OSGeo.MapGuide.MgCooker" />
 		<assembly name="OSGeo.MapGuide.Maestro.LoginForm" folder="Maestro\LoginForm" namespace="OSGeo.MapGuide.Maestro" />
 		<assembly name="OSGeo.MapGuide.Maestro.ResourceBrowser" folder="Maestro\ResourceBrowser" namespace="OSGeo.MapGuide.Maestro.ResourceBrowser" />
 		<assembly name="OSGeo.MapGuide.Maestro.ResourceEditors" folder="Maestro\ResourceEditors" namespace="OSGeo.MapGuide.Maestro.ResourceEditors" />

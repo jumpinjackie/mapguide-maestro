@@ -147,12 +147,6 @@
   <data name="BufferUnits.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="BufferUnits.Items" xml:space="preserve">
-    <value>meters</value>
-  </data>
-  <data name="BufferUnits.Items1" xml:space="preserve">
-    <value>miles</value>
-  </data>
   <data name="BufferUnits.Location" type="System.Drawing.Point, System.Drawing">
     <value>136, 8</value>
   </data>
@@ -190,7 +184,7 @@
     <value>BorderColor</value>
   </data>
   <data name="&gt;&gt;BorderColor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4326, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BorderColor.Parent" xml:space="preserve">
     <value>$this</value>
@@ -286,7 +280,7 @@
     <value>FillColor</value>
   </data>
   <data name="&gt;&gt;FillColor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4326, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;FillColor.Parent" xml:space="preserve">
     <value>$this</value>
@@ -606,16 +600,43 @@
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="MeasureUnitsDataset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>568, 248</value>
   </data>
+  <data name="&gt;&gt;MeasureUnitTable.Name" xml:space="preserve">
+    <value>MeasureUnitTable</value>
+  </data>
+  <data name="&gt;&gt;MeasureUnitTable.Type" xml:space="preserve">
+    <value>System.Data.DataTable, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataColumn3.Name" xml:space="preserve">
+    <value>dataColumn3</value>
+  </data>
+  <data name="&gt;&gt;dataColumn3.Type" xml:space="preserve">
+    <value>System.Data.DataColumn, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataColumn4.Name" xml:space="preserve">
+    <value>dataColumn4</value>
+  </data>
+  <data name="&gt;&gt;dataColumn4.Type" xml:space="preserve">
+    <value>System.Data.DataColumn, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MeasureUnitsDataset.Name" xml:space="preserve">
+    <value>MeasureUnitsDataset</value>
+  </data>
+  <data name="&gt;&gt;MeasureUnitsDataset.Type" xml:space="preserve">
+    <value>System.Data.DataSet, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Buffer</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.FusionEditor.BasisWidgetEditor, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4326, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.BasisWidgetEditor, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

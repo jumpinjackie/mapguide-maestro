@@ -579,9 +579,6 @@
   <data name="Type.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="Type.Items" xml:space="preserve">
-    <value>both</value>
-  </data>
   <data name="Type.Location" type="System.Drawing.Point, System.Drawing">
     <value>136, 224</value>
   </data>
@@ -605,12 +602,6 @@
   </data>
   <data name="MeasureTooltipType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
-  </data>
-  <data name="MeasureTooltipType.Items" xml:space="preserve">
-    <value>static</value>
-  </data>
-  <data name="MeasureTooltipType.Items1" xml:space="preserve">
-    <value>dynamic</value>
   </data>
   <data name="MeasureTooltipType.Location" type="System.Drawing.Point, System.Drawing">
     <value>136, 200</value>
@@ -636,15 +627,6 @@
   <data name="Units.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="Units.Items" xml:space="preserve">
-    <value>meters</value>
-  </data>
-  <data name="Units.Items1" xml:space="preserve">
-    <value>miles</value>
-  </data>
-  <data name="Units.Items2" xml:space="preserve">
-    <value>none</value>
-  </data>
   <data name="Units.Location" type="System.Drawing.Point, System.Drawing">
     <value>136, 248</value>
   </data>
@@ -666,16 +648,97 @@
   <data name="&gt;&gt;Units.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="MeasureTypeDataset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="MeasureUnitsDataset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>183, 17</value>
+  </metadata>
+  <metadata name="TooltipTypeDataset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>351, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>616, 280</value>
   </data>
+  <data name="&gt;&gt;MeasureTypeTable.Name" xml:space="preserve">
+    <value>MeasureTypeTable</value>
+  </data>
+  <data name="&gt;&gt;MeasureTypeTable.Type" xml:space="preserve">
+    <value>System.Data.DataTable, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataColumn1.Name" xml:space="preserve">
+    <value>dataColumn1</value>
+  </data>
+  <data name="&gt;&gt;dataColumn1.Type" xml:space="preserve">
+    <value>System.Data.DataColumn, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataColumn2.Name" xml:space="preserve">
+    <value>dataColumn2</value>
+  </data>
+  <data name="&gt;&gt;dataColumn2.Type" xml:space="preserve">
+    <value>System.Data.DataColumn, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TooltipTypeTable.Name" xml:space="preserve">
+    <value>TooltipTypeTable</value>
+  </data>
+  <data name="&gt;&gt;TooltipTypeTable.Type" xml:space="preserve">
+    <value>System.Data.DataTable, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataColumn5.Name" xml:space="preserve">
+    <value>dataColumn5</value>
+  </data>
+  <data name="&gt;&gt;dataColumn5.Type" xml:space="preserve">
+    <value>System.Data.DataColumn, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataColumn6.Name" xml:space="preserve">
+    <value>dataColumn6</value>
+  </data>
+  <data name="&gt;&gt;dataColumn6.Type" xml:space="preserve">
+    <value>System.Data.DataColumn, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MeasureUnitTable.Name" xml:space="preserve">
+    <value>MeasureUnitTable</value>
+  </data>
+  <data name="&gt;&gt;MeasureUnitTable.Type" xml:space="preserve">
+    <value>System.Data.DataTable, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataColumn3.Name" xml:space="preserve">
+    <value>dataColumn3</value>
+  </data>
+  <data name="&gt;&gt;dataColumn3.Type" xml:space="preserve">
+    <value>System.Data.DataColumn, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataColumn4.Name" xml:space="preserve">
+    <value>dataColumn4</value>
+  </data>
+  <data name="&gt;&gt;dataColumn4.Type" xml:space="preserve">
+    <value>System.Data.DataColumn, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MeasureTypeDataset.Name" xml:space="preserve">
+    <value>MeasureTypeDataset</value>
+  </data>
+  <data name="&gt;&gt;MeasureTypeDataset.Type" xml:space="preserve">
+    <value>System.Data.DataSet, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MeasureUnitsDataset.Name" xml:space="preserve">
+    <value>MeasureUnitsDataset</value>
+  </data>
+  <data name="&gt;&gt;MeasureUnitsDataset.Type" xml:space="preserve">
+    <value>System.Data.DataSet, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TooltipTypeDataset.Name" xml:space="preserve">
+    <value>TooltipTypeDataset</value>
+  </data>
+  <data name="&gt;&gt;TooltipTypeDataset.Type" xml:space="preserve">
+    <value>System.Data.DataSet, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Measure</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.FusionEditor.BasisWidgetEditor, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4326, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.BasisWidgetEditor, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

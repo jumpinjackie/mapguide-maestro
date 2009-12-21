@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="GeometryStyleComboDataset" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GeometryStyleComboDataset.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="FontStyleComboDataset" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FontStyleComboDataset.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="CommandTypesDataset" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CommandTypesDataset.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

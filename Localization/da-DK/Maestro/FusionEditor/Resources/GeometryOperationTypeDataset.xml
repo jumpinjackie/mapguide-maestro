@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<GeometryOperationTypeDataset>
+	<GeometryOperationType>
+		<Value>CONTAINS</Value>
+		<Displayname>Contains</Displayname>
+	</GeometryOperationType>
+
+	<GeometryOperationType>
+		<Value>DISJOINT</Value>
+		<Displayname>Disjoint</Displayname>
+	</GeometryOperationType>
+
+	<GeometryOperationType>
+		<Value>INTERSECTS</Value>
+		<Displayname>Intersects</Displayname>
+	</GeometryOperationType>
+
+	<GeometryOperationType>
+		<Value>WITHIN</Value>
+		<Displayname>Within</Displayname>
+	</GeometryOperationType>
+
+	<GeometryOperationType>
+		<Value>INSIDE</Value>
+		<Displayname>Inside</Displayname>
+	</GeometryOperationType>
+
+	<GeometryOperationType>
+		<Value>ENVELOPEINTERSECTS</Value>
+		<Displayname>Envelope intersects</Displayname>
+	</GeometryOperationType>
+</GeometryOperationTypeDataset>

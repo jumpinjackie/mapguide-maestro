@@ -1,0 +1,594 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<ComboBoxDataSet>
+
+	<Font>
+		<Display>Arial</Display>
+		<Value>Arial</Value>
+	</Font>
+	<Font>
+		<Display>Arial Black</Display>
+		<Value>Arial Black</Value>
+	</Font>
+	<Font>
+		<Display>Arial Narrow</Display>
+		<Value>Arial Narrow</Value>
+	</Font>
+	<Font>
+		<Display>BankGothic Lt BT</Display>
+		<Value>ankGothic Lt BT</Value>
+	</Font>
+	<Font>
+		<Display>BankGothic Md BT</Display>
+		<Value>BankGothic Md BT</Value>
+	</Font>
+	<Font>
+		<Display>Book Antiqua</Display>
+		<Value>Book Antiqua</Value>
+	</Font>
+	<Font>
+		<Display>Bookman Old Style</Display>
+		<Value>Bookman Old Style</Value>
+	</Font>
+	<Font>
+		<Display>Century Gothic</Display>
+		<Value>Century Gothic</Value>
+	</Font>
+	<Font>
+		<Display>CityBlueprint</Display>
+		<Value>CityBlueprint</Value>
+	</Font>
+	<Font>
+		<Display>Comic Sans MS</Display>
+		<Value>Comic Sans MS</Value>
+	</Font>
+	<Font>
+		<Display>CommercialPi BT</Display>
+		<Value>CommercialPi BT</Value>
+	</Font>
+	<Font>
+		<Display>CommercialScript BT</Display>
+		<Value>CommercialScript BT</Value>
+	</Font>
+	<Font>
+		<Display>Complex</Display>
+		<Value>Complex</Value>
+	</Font>
+	<Font>
+		<Display>CountryBlueprint</Display>
+		<Value>CountryBlueprint</Value>
+	</Font>
+	<Font>
+		<Display>Courier New</Display>
+		<Value>Courier New</Value>
+	</Font>
+	<Font>
+		<Display>Dutch801 Rm BT</Display>
+		<Value>Dutch801 Rm BT</Value>
+	</Font>
+	<Font>
+		<Display>Dutch801 XBd BT</Display>
+		<Value>Dutch801 XBd BT</Value>
+	</Font>
+	<Font>
+		<Display>Estrangelo Edessa</Display>
+		<Value>Estrangelo Edessa</Value>
+	</Font>
+	<Font>
+		<Display>EuroRoman</Display>
+		<Value>EuroRoman</Value>
+	</Font>
+	<Font>
+		<Display>Franklin Gothic Medium</Display>
+		<Value>Franklin Gothic Medium</Value>
+	</Font>
+	<Font>
+		<Display>Garamond</Display>
+		<Value>Garamond</Value>
+	</Font>
+	<Font>
+		<Display>Gautami</Display>
+		<Value>Gautami</Value>
+	</Font>
+	<Font>
+		<Display>GDT</Display>
+		<Value>GDT</Value>
+	</Font>
+	<Font>
+		<Display>Georgia</Display>
+		<Value>Georgia</Value>
+	</Font>
+	<Font>
+		<Display>GothicE</Display>
+		<Value>GothicE</Value>
+	</Font>
+	<Font>
+		<Display>GothicG</Display>
+		<Value>GothicG</Value>
+	</Font>
+	<Font>
+		<Display>Gothicl</Display>
+		<Value>Gothicl</Value>
+	</Font>
+	<Font>
+		<Display>GreekC</Display>
+		<Value>GreekC</Value>
+	</Font>
+	<Font>
+		<Display>GreekS</Display>
+		<Value>GreekS</Value>
+	</Font>
+	<Font>
+		<Display>Haettenschweiler</Display>
+		<Value>Haettenschweiler</Value>
+	</Font>
+	<Font>
+		<Display>Impact</Display>
+		<Value>Impact</Value>
+	</Font>
+	<Font>
+		<Display>ISOCP</Display>
+		<Value>ISOCP</Value>
+	</Font>
+	<Font>
+		<Display>ISOCP2</Display>
+		<Value>ISOCP2</Value>
+	</Font>
+	<Font>
+		<Display>ISOCP3</Display>
+		<Value>ISOCP3</Value>
+	</Font>
+	<Font>
+		<Display>ISOCPEUR</Display>
+		<Value>Arial</Value>
+	</Font>
+	<Font>
+		<Display>ISOCT</Display>
+		<Value>ISOCT</Value>
+	</Font>
+	<Font>
+		<Display>ISOCT2</Display>
+		<Value>ISOCT2</Value>
+	</Font>
+	<Font>
+		<Display>ISOCT3</Display>
+		<Value>ISOCT3</Value>
+	</Font>
+	<Font>
+		<Display>ISOCTEUR</Display>
+		<Value>ISOCTEUR</Value>
+	</Font>
+	<Font>
+		<Display>Italic</Display>
+		<Value>Italic</Value>
+	</Font>
+	<Font>
+		<Display>ItalicC</Display>
+		<Value>ItalicC</Value>
+	</Font>
+	<Font>
+		<Display>ItalicT</Display>
+		<Value>ItalicT</Value>
+	</Font>
+	<Font>
+		<Display>Kartika</Display>
+		<Value>Kartika</Value>
+	</Font>
+	<Font>
+		<Display>Latha</Display>
+		<Value>Latha</Value>
+	</Font>
+	<Font>
+		<Display>Lucida Console</Display>
+		<Value>Lucida Console</Value>
+	</Font>
+	<Font>
+		<Display>Lucida Sans Unicode</Display>
+		<Value>Lucida Sans Unicode</Value>
+	</Font>
+	<Font>
+		<Display>Mangal</Display>
+		<Value>Mangal</Value>
+	</Font>
+	<Font>
+		<Display>Map Symbols</Display>
+		<Value>Map Symbols</Value>
+	</Font>
+	<Font>
+		<Display>MapInfo Arrows</Display>
+		<Value>MapInfo Arrows</Value>
+	</Font>
+	<Font>
+		<Display>MapInfo Cartographic</Display>
+		<Value>MapInfo Cartographic</Value>
+	</Font>
+	<Font>
+		<Display>MapInfo Dispersed Groups</Display>
+		<Value>MapInfo Dispersed Groups</Value>
+	</Font>
+	<Font>
+		<Display>MapInfo Miscellaneous</Display>
+		<Value>MapInfo Miscellaneous</Value>
+	</Font>
+	<Font>
+		<Display>MapInfo Oil&amp;Gas</Display>
+		<Value>MapInfo Oil&amp;Gas</Value>
+	</Font>
+	<Font>
+		<Display>MapInfo Real Estate</Display>
+		<Value>MapInfo Real Estate</Value>
+	</Font>
+	<Font>
+		<Display>MapInfo Shields</Display>
+		<Value>MapInfo Shields</Value>
+	</Font>
+	<Font>
+		<Display>MapInfo Symbols</Display>
+		<Value>MapInfo Symbols</Value>
+	</Font>
+	<Font>
+		<Display>MapInfo Transportation</Display>
+		<Value>MapInfo Transportation</Value>
+	</Font>
+	<Font>
+		<Display>MapInfo Weather</Display>
+		<Value>MapInfo Weather</Value>
+	</Font>
+	<Font>
+		<Display>Marlett</Display>
+		<Value>Marlett</Value>
+	</Font>
+	<Font>
+		<Display>Microsoft Sans Serif</Display>
+		<Value>Microsoft Sans Serif</Value>
+	</Font>
+	<Font>
+		<Display>Monospac821 BT</Display>
+		<Value>Monospac821 BT</Value>
+	</Font>
+	<Font>
+		<Display>Monotxt</Display>
+		<Value>Monotxt</Value>
+	</Font>
+	<Font>
+		<Display>MV Boli</Display>
+		<Value>MV Boli</Value>
+	</Font>
+	<Font>
+		<Display>Nina</Display>
+		<Value>Nina</Value>
+	</Font>
+	<Font>
+		<Display>Palatino Linotype</Display>
+		<Value>Palatino Linotype</Value>
+	</Font>
+	<Font>
+		<Display>PanRoman</Display>
+		<Value>PanRoman</Value>
+	</Font>
+	<Font>
+		<Display>Proxy 1</Display>
+		<Value>Proxy 1</Value>
+	</Font>
+	<Font>
+		<Display>Proxy 2</Display>
+		<Value>Proxy 2</Value>
+	</Font>
+	<Font>
+		<Display>Proxy 3</Display>
+		<Value>Proxy 3</Value>
+	</Font>
+	<Font>
+		<Display>Proxy 4</Display>
+		<Value>Proxy 4</Value>
+	</Font>
+	<Font>
+		<Display>Proxy 5</Display>
+		<Value>Proxy 5</Value>
+	</Font>
+	<Font>
+		<Display>Proxy 6</Display>
+		<Value>Proxy 6</Value>
+	</Font>
+	<Font>
+		<Display>Proxy 7</Display>
+		<Value>Proxy 7</Value>
+	</Font>
+	<Font>
+		<Display>Proxy 8</Display>
+		<Value>Proxy 8</Value>
+	</Font>
+	<Font>
+		<Display>Proxy 9</Display>
+		<Value>Proxy 9</Value>
+	</Font>
+	<Font>
+		<Display>Raavi</Display>
+		<Value>Raavi</Value>
+	</Font>
+	<Font>
+		<Display>RomanC</Display>
+		<Value>RomanC</Value>
+	</Font>
+	<Font>
+		<Display>RomanD</Display>
+		<Value>RomanD</Value>
+	</Font>
+	<Font>
+		<Display>RomanS</Display>
+		<Value>RomanS</Value>
+	</Font>
+	<Font>
+		<Display>RomanT</Display>
+		<Value>RomanT</Value>
+	</Font>
+	<Font>
+		<Display>Romantic</Display>
+		<Value>Romantic</Value>
+	</Font>
+	<Font>
+		<Display>SansSerif</Display>
+		<Value>SansSerif</Value>
+	</Font>
+	<Font>
+		<Display>ScriptC</Display>
+		<Value>ScriptC</Value>
+	</Font>
+	<Font>
+		<Display>ScriptS</Display>
+		<Value>ScriptS</Value>
+	</Font>
+	<Font>
+		<Display>Shruti</Display>
+		<Value>Shruti</Value>
+	</Font>
+	<Font>
+		<Display>Simplex</Display>
+		<Value>Simplex</Value>
+	</Font>
+	<Font>
+		<Display>Stylus BT</Display>
+		<Value>Stylus BT</Value>
+	</Font>
+	<Font>
+		<Display>SuperFrench</Display>
+		<Value>SuperFrench</Value>
+	</Font>
+	<Font>
+		<Display>Swis721 BdCnOul BT</Display>
+		<Value>Swis721 BdCnOul BT</Value>
+	</Font>
+	<Font>
+		<Display>Swis721 BdOul BT</Display>
+		<Value>Swis721 BdOul BT</Value>
+	</Font>
+	<Font>
+		<Display>Swis721 Blk BT</Display>
+		<Value>Swis721 Blk BT</Value>
+	</Font>
+	<Font>
+		<Display>Swis721 BlkCn BT</Display>
+		<Value>Swis721 BlkCn BT</Value>
+	</Font>
+	<Font>
+		<Display>Swis721 BlkEx BT</Display>
+		<Value>Swis721 BlkEx BT</Value>
+	</Font>
+	<Font>
+		<Display>Swis721 BlkOul BT</Display>
+		<Value>Swis721 BlkOul BT</Value>
+	</Font>
+	<Font>
+		<Display>Swis721 BT</Display>
+		<Value>Swis721 BT</Value>
+	</Font>
+	<Font>
+		<Display>Swis721 Cn BT</Display>
+		<Value>Swis721 Cn BT</Value>
+	</Font>
+	<Font>
+		<Display>Swis721 Ex BT</Display>
+		<Value>Swis721 Ex BT</Value>
+	</Font>
+	<Font>
+		<Display>Swis721 Lt BT</Display>
+		<Value>Swis721 Lt BT</Value>
+	</Font>
+	<Font>
+		<Display>Swis721 LtCn BT</Display>
+		<Value>Swis721 LtCn BT</Value>
+	</Font>
+	<Font>
+		<Display>Swis721 LtEx BT</Display>
+		<Value>Swis721 LtEx BT</Value>
+	</Font>
+	<Font>
+		<Display>Syastro</Display>
+		<Value>Syastro</Value>
+	</Font>
+	<Font>
+		<Display>Sylfaen</Display>
+		<Value>Sylfaen</Value>
+	</Font>
+	<Font>
+		<Display>Symap</Display>
+		<Value>Symap</Value>
+	</Font>
+	<Font>
+		<Display>Symath</Display>
+		<Value>Symath</Value>
+	</Font>
+	<Font>
+		<Display>Symbol</Display>
+		<Value>Symbol</Value>
+	</Font>
+	<Font>
+		<Display>Symeteo</Display>
+		<Value>Symeteo</Value>
+	</Font>
+	<Font>
+		<Display>Symusic</Display>
+		<Value>Symusic</Value>
+	</Font>
+	<Font>
+		<Display>Tahoma</Display>
+		<Value>Tahoma</Value>
+	</Font>
+	<Font>
+		<Display>Technic</Display>
+		<Value>Technic</Value>
+	</Font>
+	<Font>
+		<Display>TechnicBold</Display>
+		<Value>TechnicBold</Value>
+	</Font>
+	<Font>
+		<Display>TechnicLite</Display>
+		<Value>TechnicLite</Value>
+	</Font>
+	<Font>
+		<Display>Times New Roman</Display>
+		<Value>Times New Roman</Value>
+	</Font>
+	<Font>
+		<Display>Trebuchet MS</Display>
+		<Value>Trebuchet MS</Value>
+	</Font>
+	<Font>
+		<Display>Tunga</Display>
+		<Value>Tunga</Value>
+	</Font>
+	<Font>
+		<Display>Txt</Display>
+		<Value>Txt</Value>
+	</Font>
+	<Font>
+		<Display>UniversalMath1 BT</Display>
+		<Value>UniversalMath1 BT</Value>
+	</Font>
+	<Font>
+		<Display>Verdana</Display>
+		<Value>Verdana</Value>
+	</Font>
+	<Font>
+		<Display>Vineta BT</Display>
+		<Value>Vineta BT</Value>
+	</Font>
+	<Font>
+		<Display>Vrinda</Display>
+		<Value>Vrinda</Value>
+	</Font>
+	<Font>
+		<Display>Webdings</Display>
+		<Value>Webdings</Value>
+	</Font>
+	<Font>
+		<Display>Windings</Display>
+		<Value>Windings</Value>
+	</Font>
+	<Font>
+		<Display>Windings 2</Display>
+		<Value>Windings 2</Value>
+	</Font>
+	<Font>
+		<Display>Windings 3</Display>
+		<Value>Windings 3</Value>
+	</Font>
+	
+	<BackgroundType>
+		<Display>Ghosted</Display>
+		<Value>Ghosted</Value>
+	</BackgroundType>
+	<BackgroundType>
+		<Display>Opaque</Display>
+		<Value>Opaque</Value>
+	</BackgroundType>
+	<BackgroundType>
+		<Display>Transparent</Display>
+		<Value>Transparent</Value>
+	</BackgroundType>
+	
+	<Vertical>
+		<Display>Baseline</Display>
+		<Value>'Baseline'</Value>
+	</Vertical>
+	<Vertical>
+		<Display>Bottom</Display>
+		<Value>'Bottom'</Value>
+	</Vertical>
+	<Vertical>
+		<Display>Capline</Display>
+		<Value>'Capline'</Value>
+	</Vertical>
+	<Vertical>
+		<Display>Halfline</Display>
+		<Value>'Halfline'</Value>
+	</Vertical>
+	<Vertical>
+		<Display>Top</Display>
+		<Value>'Top'</Value>
+	</Vertical>
+
+	<Horizontal>
+		<Display>Center</Display>
+		<Value>'Center'</Value>
+	</Horizontal>
+
+	<SizeContext>
+		<Display>Device space</Display>
+		<Value>DeviceUnits</Value>
+	</SizeContext>
+	<SizeContext>
+		<Display>Map space</Display>
+		<Value>MappingUnits</Value>
+	</SizeContext>
+	
+	<Units>
+		<Display>Points</Display>
+		<Value>Points</Value>
+	</Units>
+	<Units>
+		<Display>Inches</Display>
+		<Value>Inches</Value>
+	</Units>
+	<Units>
+		<Display>Feet</Display>
+		<Value>Feet</Value>
+	</Units>
+	<Units>
+		<Display>Yards</Display>
+		<Value>Yards</Value>
+	</Units>
+	<Units>
+		<Display>Millimeters</Display>
+		<Value>Millimeters</Value>
+	</Units>
+	<Units>
+		<Display>Centimeters</Display>
+		<Value>Centimeters</Value>
+	</Units>
+	<Units>
+		<Display>Meters</Display>
+		<Value>Meters</Value>
+	</Units>
+	<Units>
+		<Display>Kilometers</Display>
+		<Value>Kilometers</Value>
+	</Units>
+
+	<Rotation>
+		<Display>0 degrees</Display>
+		<Value>0</Value>
+	</Rotation>
+	<Rotation>
+		<Display>30 degrees</Display>
+		<Value>30</Value>
+	</Rotation>
+	<Rotation>
+		<Display>45 degrees</Display>
+		<Value>45</Value>
+	</Rotation>
+	<Rotation>
+		<Display>90 degrees</Display>
+		<Value>90</Value>
+	</Rotation>	
+</ComboBoxDataSet>

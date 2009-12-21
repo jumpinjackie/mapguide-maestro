@@ -117,28 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DisplayUnits.Items" xml:space="preserve">
-    <value>meters</value>
-  </data>
-  <data name="DisplayUnits.Items1" xml:space="preserve">
-    <value>miles</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DisplayUnits.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="DisplayUnits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 10</value>
+    <value>8, 8</value>
   </data>
   <data name="DisplayUnits.Size" type="System.Drawing.Size, System.Drawing">
-    <value>504, 21</value>
+    <value>87, 17</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="DisplayUnits.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>0</value>
+  </data>
+  <data name="DisplayUnits.Text" xml:space="preserve">
+    <value>Display Units</value>
   </data>
   <data name="&gt;&gt;DisplayUnits.Name" xml:space="preserve">
     <value>DisplayUnits</value>
   </data>
   <data name="&gt;&gt;DisplayUnits.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;DisplayUnits.Parent" xml:space="preserve">
     <value>$this</value>
@@ -146,40 +146,16 @@
   <data name="&gt;&gt;DisplayUnits.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 12</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 16</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Display units</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>616, 40</value>
+    <value>107, 40</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ViewOptions</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.FusionEditor.BasisWidgetEditor, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4326, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.BasisWidgetEditor, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

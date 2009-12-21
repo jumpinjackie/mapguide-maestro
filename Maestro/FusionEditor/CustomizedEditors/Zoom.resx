@@ -216,11 +216,8 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="Direction.Items" xml:space="preserve">
-    <value>in</value>
-  </data>
-  <data name="Direction.Items1" xml:space="preserve">
-    <value>out</value>
+  <data name="Direction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="Direction.Location" type="System.Drawing.Point, System.Drawing">
     <value>104, 56</value>
@@ -267,16 +264,43 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="ZoomDirectionDataset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>616, 88</value>
   </data>
+  <data name="&gt;&gt;ZoomDirectionTable.Name" xml:space="preserve">
+    <value>ZoomDirectionTable</value>
+  </data>
+  <data name="&gt;&gt;ZoomDirectionTable.Type" xml:space="preserve">
+    <value>System.Data.DataTable, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataColumn5.Name" xml:space="preserve">
+    <value>dataColumn5</value>
+  </data>
+  <data name="&gt;&gt;dataColumn5.Type" xml:space="preserve">
+    <value>System.Data.DataColumn, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataColumn6.Name" xml:space="preserve">
+    <value>dataColumn6</value>
+  </data>
+  <data name="&gt;&gt;dataColumn6.Type" xml:space="preserve">
+    <value>System.Data.DataColumn, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ZoomDirectionDataset.Name" xml:space="preserve">
+    <value>ZoomDirectionDataset</value>
+  </data>
+  <data name="&gt;&gt;ZoomDirectionDataset.Type" xml:space="preserve">
+    <value>System.Data.DataSet, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Zoom</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.FusionEditor.BasisWidgetEditor, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4326, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.BasisWidgetEditor, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

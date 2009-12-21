@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<PositionTypesDataset>
+	<Position>
+		<Value>top</Value>
+		<Displayname>Top</Displayname>
+	</Position>
+
+	<Position>
+		<Value>left</Value>
+		<Displayname>Left</Displayname>
+	</Position>
+
+	<Position>
+		<Value>right</Value>
+		<Displayname>Right</Displayname>
+	</Position>
+
+	<Position>
+		<Value>bottom</Value>
+		<Displayname>Bottom</Displayname>
+	</Position>
+</PositionTypesDataset>

@@ -31,7 +31,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 	/// </summary>
 	public class LayoutEditor : System.Windows.Forms.UserControl, IResourceEditorControl
 	{
-		private static byte[] SharedComboDataSet = null;
 		private static Hashtable LoadedImages = null; 
 		public static ImageList LoadedImageList = null;
 		
@@ -1483,15 +1482,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void LoadMenuItems()
 		{
-			if (SharedComboDataSet == null)
-			{
-				System.IO.Stream s = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "CommandTypesDataset.xml");
-				byte[] buf = new byte[s.Length];
-				if (s.Read(buf, 0, (int)s.Length) != s.Length)
-					throw new Exception(Strings.LayoutEditor.AssemblyReadError);
-				SharedComboDataSet = buf;
-			}
-
 			if (LoadedImages == null)
 			{
 				LoadedImages = new Hashtable();
@@ -1512,12 +1502,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 						LoadedImageList.Images.Add(Image.FromFile(s));
 						LoadedImages.Add("../stdicons/" + System.IO.Path.GetFileName(s), LoadedImageList.Images.Count - 1);
 					}
-
-
 			}
 
-			using(System.IO.MemoryStream ms = new System.IO.MemoryStream(SharedComboDataSet))
-				CommandTypesDataset.ReadXml(ms);
+            using (System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.CommandTypesDataset))
+                CommandTypesDataset.ReadXml(sr);
 
 			BuiltInCommands = new Hashtable();
 			foreach(System.Data.DataRow dr in CommandTypesDataset.Tables[0].Rows)

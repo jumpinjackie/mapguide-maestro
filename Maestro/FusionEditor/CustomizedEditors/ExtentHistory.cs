@@ -30,12 +30,20 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 	{
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.ComboBox Direction;
+        private System.Data.DataSet DirectionTypesDataset;
+        private System.Data.DataTable DirectionUnitTable;
+        private System.Data.DataColumn dataColumn1;
+        private System.Data.DataColumn dataColumn2;
 		private System.ComponentModel.IContainer components = null;
 
 		public ExtentHistory()
 		{
 			// This call is required by the Windows Form Designer.
 			InitializeComponent();
+
+            //Fill dataset
+            using (System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.DirectionTypeDataset))
+                DirectionTypesDataset.ReadXml(sr);
 		}
 
 		/// <summary>
@@ -61,8 +69,12 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 				m_w = w;
 				this.Enabled = m_w != null;
 
-				Direction.Text = GetSettingValue("Direction");
-			}
+                Direction.SelectedIndex = -1;
+                Direction.SelectedValue = GetSettingValue("Direction");
+
+                if (Direction.SelectedIndex == -1)
+                    Direction.Text = GetSettingValue("Direction");
+            }
 			finally
 			{
 				m_isUpdating = false;
@@ -79,6 +91,12 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExtentHistory));
             this.label1 = new System.Windows.Forms.Label();
             this.Direction = new System.Windows.Forms.ComboBox();
+            this.DirectionUnitTable = new System.Data.DataTable();
+            this.dataColumn1 = new System.Data.DataColumn();
+            this.dataColumn2 = new System.Data.DataColumn();
+            this.DirectionTypesDataset = new System.Data.DataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.DirectionUnitTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DirectionTypesDataset)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -88,12 +106,37 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             // 
             // Direction
             // 
-            this.Direction.Items.AddRange(new object[] {
-            resources.GetString("Direction.Items"),
-            resources.GetString("Direction.Items1")});
             resources.ApplyResources(this.Direction, "Direction");
+            this.Direction.DataSource = this.DirectionUnitTable;
+            this.Direction.DisplayMember = "DisplayName";
             this.Direction.Name = "Direction";
+            this.Direction.ValueMember = "Value";
+            this.Direction.SelectedValueChanged += new System.EventHandler(this.Direction_TextChanged);
             this.Direction.TextChanged += new System.EventHandler(this.Direction_TextChanged);
+            // 
+            // DirectionUnitTable
+            // 
+            this.DirectionUnitTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.dataColumn1,
+            this.dataColumn2});
+            this.DirectionUnitTable.TableName = "DirectionUnit";
+            // 
+            // dataColumn1
+            // 
+            this.dataColumn1.Caption = "Value";
+            this.dataColumn1.ColumnName = "Value";
+            // 
+            // dataColumn2
+            // 
+            this.dataColumn2.Caption = "DisplayName";
+            this.dataColumn2.ColumnName = "Displayname";
+            // 
+            // DirectionTypesDataset
+            // 
+            this.DirectionTypesDataset.DataSetName = "NewDataSet";
+            this.DirectionTypesDataset.Locale = new System.Globalization.CultureInfo("da-DK");
+            this.DirectionTypesDataset.Tables.AddRange(new System.Data.DataTable[] {
+            this.DirectionUnitTable});
             // 
             // ExtentHistory
             // 
@@ -101,6 +144,8 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
             this.Controls.Add(this.label1);
             this.Name = "ExtentHistory";
             resources.ApplyResources(this, "$this");
+            ((System.ComponentModel.ISupportInitialize)(this.DirectionUnitTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DirectionTypesDataset)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -112,8 +157,20 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.CustomizedEditors
 			if (m_isUpdating || m_w == null)
 				return;
 
-			SetSettingValue("Direction", Direction.Text);
-		}
+            if (Direction.SelectedValue != null)
+                SetSettingValue("Direction", (string)Direction.SelectedValue);
+            else
+            {
+                foreach(System.Data.DataRow r in DirectionUnitTable.Rows)
+                    if (string.Equals((string)r["Displayname"], Direction.Text, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        SetSettingValue("Direction", (string)r["Value"]);
+                        return;
+                    }
+
+                SetSettingValue("Direction", Direction.Text);
+            }
+        }
 	}
 }
 

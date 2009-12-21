@@ -44,6 +44,10 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 
 		private bool m_isUpdating = false;
 		private ContainerType m_ct;
+        private DataSet PositionTypesDataset;
+        private DataTable PositionTable;
+        private DataColumn dataColumn1;
+        private DataColumn dataColumn2;
 		public event ValueChangedDelegate ValueChanged;
 
 		/// <summary> 
@@ -55,6 +59,10 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
+
+            //Fill dataset
+            using (System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.PositionTypesDataset))
+                PositionTypesDataset.ReadXml(sr);
 		}
 
 		public void SetItem(ContainerType ct)
@@ -64,7 +72,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 				m_isUpdating = true;
 				m_ct = ct;
 				NameBox.Text = ct.Name;
-				PositionCombo.SelectedIndex = PositionCombo.FindString(ct.Position);
+				PositionCombo.SelectedValue = ct.Position;
 				TypeCombo.SelectedIndex = TypeCombo.FindString(ct.Type);
 			}
 			finally
@@ -110,7 +118,13 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.label3 = new System.Windows.Forms.Label();
             this.NameBox = new System.Windows.Forms.TextBox();
             this.PositionCombo = new System.Windows.Forms.ComboBox();
+            this.PositionTable = new System.Data.DataTable();
+            this.dataColumn1 = new System.Data.DataColumn();
+            this.dataColumn2 = new System.Data.DataColumn();
             this.TypeCombo = new System.Windows.Forms.ComboBox();
+            this.PositionTypesDataset = new System.Data.DataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.PositionTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PositionTypesDataset)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -136,16 +150,30 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             // 
             // PositionCombo
             // 
+            this.PositionCombo.DataSource = this.PositionTable;
+            this.PositionCombo.DisplayMember = "Displayname";
             this.PositionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PositionCombo.Items.AddRange(new object[] {
-            resources.GetString("PositionCombo.Items"),
-            resources.GetString("PositionCombo.Items1"),
-            resources.GetString("PositionCombo.Items2"),
-            resources.GetString("PositionCombo.Items3"),
-            resources.GetString("PositionCombo.Items4")});
             resources.ApplyResources(this.PositionCombo, "PositionCombo");
             this.PositionCombo.Name = "PositionCombo";
+            this.PositionCombo.ValueMember = "Value";
             this.PositionCombo.SelectedIndexChanged += new System.EventHandler(this.PositionCombo_SelectedIndexChanged);
+            // 
+            // PositionTable
+            // 
+            this.PositionTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.dataColumn1,
+            this.dataColumn2});
+            this.PositionTable.TableName = "Position";
+            // 
+            // dataColumn1
+            // 
+            this.dataColumn1.Caption = "Value";
+            this.dataColumn1.ColumnName = "Value";
+            // 
+            // dataColumn2
+            // 
+            this.dataColumn2.Caption = "DisplayName";
+            this.dataColumn2.ColumnName = "Displayname";
             // 
             // TypeCombo
             // 
@@ -153,6 +181,13 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             resources.ApplyResources(this.TypeCombo, "TypeCombo");
             this.TypeCombo.Name = "TypeCombo";
             this.TypeCombo.SelectedIndexChanged += new System.EventHandler(this.TypeCombo_SelectedIndexChanged);
+            // 
+            // PositionTypesDataset
+            // 
+            this.PositionTypesDataset.DataSetName = "NewDataSet";
+            this.PositionTypesDataset.Locale = new System.Globalization.CultureInfo("da-DK");
+            this.PositionTypesDataset.Tables.AddRange(new System.Data.DataTable[] {
+            this.PositionTable});
             // 
             // ContainerEditor
             // 
@@ -164,6 +199,8 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
             this.Controls.Add(this.label1);
             this.Name = "ContainerEditor";
             resources.ApplyResources(this, "$this");
+            ((System.ComponentModel.ISupportInitialize)(this.PositionTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PositionTypesDataset)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,7 +222,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 			if (m_isUpdating || m_ct == null)
 				return;
 
-			m_ct.Position = PositionCombo.Text;
+			m_ct.Position = (string)PositionCombo.SelectedValue;
 			if (ValueChanged != null)
 				ValueChanged(this, m_ct);
 		}

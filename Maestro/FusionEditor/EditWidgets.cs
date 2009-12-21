@@ -93,7 +93,8 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 			//
 			InitializeComponent();
 			System.Xml.Serialization.XmlSerializer sr = new System.Xml.Serialization.XmlSerializer(typeof(OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.ApplicationDefinitionType));
-			m_defaultWidgets = ((OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.ApplicationDefinitionType)sr.Deserialize(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(this.GetType(), "Defaults.xml"))).WidgetSet[0].Widget;
+            using(System.IO.StringReader rd = new System.IO.StringReader(Properties.Resources.Defaults)) 
+			    m_defaultWidgets = ((OSGeo.MapGuide.MaestroAPI.ApplicationDefinition.ApplicationDefinitionType)sr.Deserialize(rd)).WidgetSet[0].Widget;
 			widgetEditor.DefaultWidgets = m_defaultWidgets;
 			widgetEditorUI.DefaultWidgets = m_defaultWidgets;
 
@@ -629,8 +630,10 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 				{
 					if (c.Name == wt.Type)
 					{
-						c.Dock = DockStyle.Fill;
-						c.Visible = true;
+                        //HACK: Setting the width cures a bug where the colorpickers have length 0 until resized
+                        c.Width = this.Width;
+                        c.Dock = DockStyle.Fill;
+                        c.Visible = true;
 						c.SetItem(wt);
 					}
 					else

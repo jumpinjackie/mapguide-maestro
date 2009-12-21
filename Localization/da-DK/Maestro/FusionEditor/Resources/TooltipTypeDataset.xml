@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TooltipTypeDataset>
+	<TooltipType>
+		<Value>static</Value>
+		<Displayname>Statisk</Displayname>
+	</TooltipType>
+
+	<TooltipType>
+		<Value>dynamic</Value>
+		<Displayname>Dynamisk</Displayname>
+	</TooltipType>
+
+</TooltipTypeDataset>

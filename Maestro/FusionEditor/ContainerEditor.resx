@@ -200,9 +200,6 @@
   <data name="NameBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="NameBox.Text" xml:space="preserve">
-    <value></value>
-  </data>
   <data name="&gt;&gt;NameBox.Name" xml:space="preserve">
     <value>NameBox</value>
   </data>
@@ -214,21 +211,6 @@
   </data>
   <data name="&gt;&gt;NameBox.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="PositionCombo.Items" xml:space="preserve">
-    <value />
-  </data>
-  <data name="PositionCombo.Items1" xml:space="preserve">
-    <value>top</value>
-  </data>
-  <data name="PositionCombo.Items2" xml:space="preserve">
-    <value>left</value>
-  </data>
-  <data name="PositionCombo.Items3" xml:space="preserve">
-    <value>bottom</value>
-  </data>
-  <data name="PositionCombo.Items4" xml:space="preserve">
-    <value>right</value>
   </data>
   <data name="PositionCombo.Location" type="System.Drawing.Point, System.Drawing">
     <value>104, 32</value>
@@ -272,11 +254,38 @@
   <data name="&gt;&gt;TypeCombo.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="PositionTypesDataset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>392, 88</value>
+  </data>
+  <data name="&gt;&gt;PositionTable.Name" xml:space="preserve">
+    <value>PositionTable</value>
+  </data>
+  <data name="&gt;&gt;PositionTable.Type" xml:space="preserve">
+    <value>System.Data.DataTable, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataColumn1.Name" xml:space="preserve">
+    <value>dataColumn1</value>
+  </data>
+  <data name="&gt;&gt;dataColumn1.Type" xml:space="preserve">
+    <value>System.Data.DataColumn, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataColumn2.Name" xml:space="preserve">
+    <value>dataColumn2</value>
+  </data>
+  <data name="&gt;&gt;dataColumn2.Type" xml:space="preserve">
+    <value>System.Data.DataColumn, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PositionTypesDataset.Name" xml:space="preserve">
+    <value>PositionTypesDataset</value>
+  </data>
+  <data name="&gt;&gt;PositionTypesDataset.Type" xml:space="preserve">
+    <value>System.Data.DataSet, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ContainerEditor</value>

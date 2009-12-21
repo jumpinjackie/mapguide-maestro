@@ -198,24 +198,6 @@
   <data name="SelectionType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="SelectionType.Items" xml:space="preserve">
-    <value>CONTAINS</value>
-  </data>
-  <data name="SelectionType.Items1" xml:space="preserve">
-    <value>DISJOINT</value>
-  </data>
-  <data name="SelectionType.Items2" xml:space="preserve">
-    <value>INTERSECTS</value>
-  </data>
-  <data name="SelectionType.Items3" xml:space="preserve">
-    <value>WITHIN</value>
-  </data>
-  <data name="SelectionType.Items4" xml:space="preserve">
-    <value>INSIDE</value>
-  </data>
-  <data name="SelectionType.Items5" xml:space="preserve">
-    <value>ENVELOPEINTERSECTS</value>
-  </data>
   <data name="SelectionType.Location" type="System.Drawing.Point, System.Drawing">
     <value>144, 56</value>
   </data>
@@ -261,16 +243,43 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="GeometryOperationTypeDataset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>616, 96</value>
   </data>
+  <data name="&gt;&gt;GeometryOperationTypeTable.Name" xml:space="preserve">
+    <value>GeometryOperationTypeTable</value>
+  </data>
+  <data name="&gt;&gt;GeometryOperationTypeTable.Type" xml:space="preserve">
+    <value>System.Data.DataTable, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataColumn1.Name" xml:space="preserve">
+    <value>dataColumn1</value>
+  </data>
+  <data name="&gt;&gt;dataColumn1.Type" xml:space="preserve">
+    <value>System.Data.DataColumn, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataColumn2.Name" xml:space="preserve">
+    <value>dataColumn2</value>
+  </data>
+  <data name="&gt;&gt;dataColumn2.Type" xml:space="preserve">
+    <value>System.Data.DataColumn, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GeometryOperationTypeDataset.Name" xml:space="preserve">
+    <value>GeometryOperationTypeDataset</value>
+  </data>
+  <data name="&gt;&gt;GeometryOperationTypeDataset.Type" xml:space="preserve">
+    <value>System.Data.DataSet, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Select</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.FusionEditor.BasisWidgetEditor, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4326, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.FusionEditor.BasisWidgetEditor, OSGeo.MapGuide.Maestro.FusionEditor, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
