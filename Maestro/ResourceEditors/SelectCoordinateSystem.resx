@@ -772,7 +772,7 @@
     <value>528, 333</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>SelectCoordinateSystem</value>
+    <value>Select coordinate system</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SelectCoordinateSystem</value>

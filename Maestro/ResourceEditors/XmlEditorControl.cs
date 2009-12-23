@@ -62,7 +62,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private string m_resourceId = null;
         private GroupBox ResourceDataGroup;
         private ResourceDataEditor resourceDataEditor;
+        private ToolStripLabel toolStripLabel1;
         private bool m_modified = false;
+        private string m_positionTemplate;
 
 		public XmlEditorControl(EditorInterface editor, string item)
 			: this(editor, editor.CurrentConnection.TryGetResourceType(item) == null ? editor.CurrentConnection.GetResourceXmlData(item) : editor.CurrentConnection.GetResource(item), item)
@@ -169,6 +171,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
+
+            m_positionTemplate = toolStripLabel1.Text;
+            toolStripLabel1.Text = String.Format(m_positionTemplate, 0, 0);
 		}
 
 		//TODO: Add syntax higlighting for the editor
@@ -216,6 +221,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.LaunchExternalEditorButton = new System.Windows.Forms.ToolStripButton();
             this.toolbarImages = new System.Windows.Forms.ImageList(this.components);
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.resourceDataEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor();
             this.panel2.SuspendLayout();
             this.ResourceDataGroup.SuspendLayout();
@@ -239,7 +245,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             resources.ApplyResources(this.textEditor, "textEditor");
             this.textEditor.Name = "textEditor";
             this.textEditor.TextChanged += new System.EventHandler(this.textEditor_TextChanged);
+            this.textEditor.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textEditor_MouseMove);
             this.textEditor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEditor_KeyUp);
+            this.textEditor.MouseUp += new System.Windows.Forms.MouseEventHandler(this.textEditor_MouseUp);
             // 
             // ResourceDataGroup
             // 
@@ -284,7 +292,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolStripSeparator2,
             this.ValidateButton,
             this.toolStripSeparator3,
-            this.LaunchExternalEditorButton});
+            this.LaunchExternalEditorButton,
+            this.toolStripLabel1});
             resources.ApplyResources(this.toolBar, "toolBar");
             this.toolBar.Name = "toolBar";
             this.toolBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -364,6 +373,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolbarImages.Images.SetKeyName(4, "");
             this.toolbarImages.Images.SetKeyName(5, "");
             this.toolbarImages.Images.SetKeyName(6, "");
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            resources.ApplyResources(this.toolStripLabel1, "toolStripLabel1");
             // 
             // resourceDataEditor
             // 
@@ -646,6 +661,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         {
             if (e.Control && e.KeyCode == Keys.A)
                 textEditor.SelectAll();
+
+            UpdateTextPosition();
+        }
+
+        private void UpdateTextPosition()
+        {
+            int line = textEditor.GetLineFromCharIndex(textEditor.SelectionStart + textEditor.SelectionLength);
+            int col = (textEditor.SelectionStart + textEditor.SelectionLength) - textEditor.GetFirstCharIndexFromLine(line);
+
+            toolStripLabel1.Text = String.Format(m_positionTemplate, line + 1, col + 1);
         }
 
         public bool Modified { get { return m_modified; } }
@@ -661,6 +686,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         internal void SaveResourceData()
         {
             resourceDataEditor.SaveChanges();
+        }
+
+        private void textEditor_MouseUp(object sender, MouseEventArgs e)
+        {
+            UpdateTextPosition();
+        }
+
+        private void textEditor_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.None)
+                UpdateTextPosition();
         }
     }
 }
