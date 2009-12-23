@@ -175,6 +175,7 @@ namespace OSGeo.MapGuide.Maestro
 			if (Closing != null)
 				Closing(this, null);
 
+            int index = m_editor.tabItems.TabPages.IndexOf(m_page);
 			m_editor.tabItems.TabPages.Remove(m_page);
 			
 			foreach(KeyValuePair<string, EditorInterface> de in m_editor.OpenResourceEditors)
@@ -183,6 +184,9 @@ namespace OSGeo.MapGuide.Maestro
 					m_editor.OpenResourceEditors.Remove(de.Key);
 					break;
 				}
+
+            if (m_editor.tabItems.TabPages.Count > 0 && m_editor.tabItems.SelectedIndex == 0)
+                m_editor.tabItems.SelectedIndex = Math.Max(0, Math.Min(index - 1, m_editor.tabItems.TabPages.Count));
 
 			return true;
 		}
