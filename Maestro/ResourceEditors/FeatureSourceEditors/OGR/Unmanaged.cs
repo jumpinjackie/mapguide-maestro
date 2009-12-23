@@ -146,14 +146,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 		private void BrowseFileButton_Click(object sender, System.EventArgs e)
 		{
 			System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
-            nv.Add(".shp", Strings.Common.ShapeFiles);
-            nv.Add(".mif", Strings.Common.MapInfoInterchangeFiles);
-            nv.Add(".tab", Strings.Common.MapInfoNativeFiles);
-            nv.Add(".sqlite", Strings.Common.SQLiteFiles);
-            nv.Add(".gml", Strings.Common.GMLFiles);
-            nv.Add(".dgn", Strings.Common.DGNFiles);
-            nv.Add(".s57", Strings.Common.S57Files);
-            nv.Add("", Strings.Common.AllFiles);
+            nv.Add(".shp", ResourceEditors.Strings.Common.ShapeFiles);
+            nv.Add(".mif", ResourceEditors.Strings.Common.MapInfoInterchangeFiles);
+            nv.Add(".tab", ResourceEditors.Strings.Common.MapInfoNativeFiles);
+            nv.Add(".sqlite", ResourceEditors.Strings.Common.SQLiteFiles);
+            nv.Add(".gml", ResourceEditors.Strings.Common.GMLFiles);
+            nv.Add(".dgn", ResourceEditors.Strings.Common.DGNFiles);
+            nv.Add(".s57", ResourceEditors.Strings.Common.S57Files);
+            nv.Add("", ResourceEditors.Strings.Common.AllFiles);
             string f = m_editor.BrowseUnmanagedData(null, nv);
 			if (f != null)
 				FilepathText.Text = f;

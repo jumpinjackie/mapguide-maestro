@@ -117,57 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label9.Text" type="System.String">
-    <value>Rotation</value>
-  </data>
-  <data name="label5.Text" type="System.String">
+  <data name="label5.Text" xml:space="preserve">
     <value>Højde</value>
   </data>
-  <data name="label4.Text" type="System.String">
-    <value>Bredde</value>
-  </data>
-  <data name="label3.Text" type="System.String">
-    <value>Størrelses enheder</value>
-  </data>
-  <data name="label2.Text" type="System.String">
-    <value>Størrelsesforhold</value>
-  </data>
-  <data name="label1.Text" type="System.String">
-    <value>Symbol</value>
-  </data>
-  <data name="groupBox1.Text" type="System.String">
-    <value>Symbol stil</value>
-  </data>
-  <data name="groupBox2.Text" type="System.String">
-    <value>Symbol udfyldning</value>
-  </data>
-  <data name="groupBox3.Text" type="System.String">
-    <value>Symbol kant</value>
-  </data>
-  <data name="groupBox4.Text" type="System.String">
+  <data name="groupBox4.Text" xml:space="preserve">
     <value>Preview</value>
   </data>
-  <data name="label8.Text" type="System.String">
-    <value>Y</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Størrelsesforhold</value>
   </data>
-  <data name="label7.Text" type="System.String">
-    <value>X</value>
-  </data>
-  <data name="label6.Text" type="System.String">
-    <value>Reference punkt</value>
-  </data>
-  <data name="MaintainAspectRatio.Text" type="System.String">
-    <value>Bibehold størrelsesforhold</value>
-  </data>
-  <data name="DisplayPoints.Text" xml:space="preserve">
-    <value>Vis punkter</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Gennemsigtighed</value>
-  </data>
-  <data name="FontBoldButton.Text" xml:space="preserve">
-    <value>F</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Symbol</value>
   </data>
   <data name="FontBoldButton.ToolTipText" xml:space="preserve">
     <value>Vælg fed skrifttype</value>
@@ -175,22 +135,119 @@
   <data name="FontItalicButton.Text" xml:space="preserve">
     <value>K</value>
   </data>
-  <data name="FontItalicButton.ToolTipText" xml:space="preserve">
-    <value>Vælg kursiv skrifttype</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Størrelses enheder</value>
   </data>
-  <data name="FontUnderlineButton.ToolTipText" xml:space="preserve">
-    <value>Vælg understreget skrifttype</value>
+  <data name="groupBoxSymbolLocation.Text" xml:space="preserve">
+    <value>Symbol placering</value>
   </data>
-  <data name="lblForeground.Text" xml:space="preserve">
-    <value>Farve</value>
+  <data name="DisplayPoints.Text" xml:space="preserve">
+    <value>Vis punkter</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Bredde</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Y</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Skrifttype</value>
   </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Rotation</value>
+  </data>
+  <data name="MaintainAspectRatio.Text" xml:space="preserve">
+    <value>Bibehold størrelsesforhold</value>
+  </data>
+  <data name="FontBoldButton.Text" xml:space="preserve">
+    <value>F</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Symbol kant</value>
+  </data>
+  <data name="FontItalicButton.ToolTipText" xml:space="preserve">
+    <value>Vælg kursiv skrifttype</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Reference punkt</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Symbol udfyldning</value>
+  </data>
+  <data name="FontUnderlineButton.ToolTipText" xml:space="preserve">
+    <value>Vælg understreget skrifttype</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Gennemsigtighed</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="lblForeground.Text" xml:space="preserve">
+    <value>Farve</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Symbol stil</value>
+  </data>
   <data name="groupBoxFont.Text" xml:space="preserve">
     <value>Skrifttype stil</value>
   </data>
-  <data name="groupBoxSymbolLocation.Text" xml:space="preserve">
-    <value>Symbol placering</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="colorFontForeground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 48</value>
+  </data>
+  <data name="DisplayPoints.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 17</value>
+  </data>
+  <data name="colorFontForeground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 56</value>
+  </data>
+  <data name="FontItalicButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
+        ymqkDYYXcCjDZOANURSjCNGFQUTsl4GXVMxKk62YU4fXQpaIlygHQxBRH8/zwvyaIAYe+HLgnPN8nue9
+        HA3nvDTq63oW/jm13XOwvPTB3DYFY5MH+bXfcN8ygfTSMSSXfESicQDxBqdYHwH29g9w2tnZ3UcguIvN
+        rR3417exuBJE5N1n/wfwLgXEOc38Bc6xNRHb+/y4nm49G0Bnit2zf9H6bkliE/jKuYxrd6oVgDWfjB+K
+        TWeKMyrGEVfowITvD9re/9ABVQrAhh0HHK+ZselMMaN/mvwtDb+aVqkA7HYIwIj3ysfluPTorJnP6Ezx
+        oHsD1s5ZXEktUwCOioB5f1CEPR9+wTG6iuiserTo8dkwng7HT/R+XUPF8xlcTjErAOdMcW6NW8STiwG8
+        7vej8oUPN/PsEv3t8Ao0TZP3T1u8uJRkUgAuSYHtO97oLxmXd5t9Ho8aPTK+GzntqNfrLm2fFoihwYOI
+        xGIF4KjoGBLzY1OrF9k6OOFxnwDC4wxIMX1G0pMhgVyMNyoA13PAtS7OrJk1PrC69LUdQWxuF6IybHrX
+        LRI7JrtZdoDAo1XmbjMyD+tjSXxGcXRmnYg5ttD9QuxDhN0uUgDOmbvNTpPOJaGAo2K36cyaGZvOFIfd
+        KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="FontBoldButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
+        ymqkDYYXcCjDZOANURSjCNGFQUTsl4GXVMxKk62YU4fXQpaIlygHQxBRH8/zwvyaIAYe+HLgnPN8nue9
+        HA3nvDTq63oW/jm13XOwvPTB3DYFY5MH+bXfcN8ygfTSMSSXfESicQDxBqdYHwH29g9w2tnZ3UcguIvN
+        rR3417exuBJE5N1n/wfwLgXEOc38Bc6xNRHb+/y4nm49G0Bnit2zf9H6bkliE/jKuYxrd6oVgDWfjB+K
+        TWeKMyrGEVfowITvD9re/9ABVQrAhh0HHK+ZselMMaN/mvwtDb+aVqkA7HYIwIj3ysfluPTorJnP6Ezx
+        oHsD1s5ZXEktUwCOioB5f1CEPR9+wTG6iuiserTo8dkwng7HT/R+XUPF8xlcTjErAOdMcW6NW8STiwG8
+        7vej8oUPN/PsEv3t8Ao0TZP3T1u8uJRkUgAuSYHtO97oLxmXd5t9Ho8aPTK+GzntqNfrLm2fFoihwYOI
+        xGIF4KjoGBLzY1OrF9k6OOFxnwDC4wxIMX1G0pMhgVyMNyoA13PAtS7OrJk1PrC69LUdQWxuF6IybHrX
+        LRI7JrtZdoDAo1XmbjMyD+tjSXxGcXRmnYg5ttD9QuxDhN0uUgDOmbvNTpPOJaGAo2K36cyaGZvOFIfd
+        KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 13</value>
+  </data>
+  <data name="FontUnderlineButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
+        ymqkDYYXcCjDZOANURSjCNGFQUTsl4GXVMxKk62YU4fXQpaIlygHQxBRH8/zwvyaIAYe+HLgnPN8nue9
+        HA3nvDTq63oW/jm13XOwvPTB3DYFY5MH+bXfcN8ygfTSMSSXfESicQDxBqdYHwH29g9w2tnZ3UcguIvN
+        rR3417exuBJE5N1n/wfwLgXEOc38Bc6xNRHb+/y4nm49G0Bnit2zf9H6bkliE/jKuYxrd6oVgDWfjB+K
+        TWeKMyrGEVfowITvD9re/9ABVQrAhh0HHK+ZselMMaN/mvwtDb+aVqkA7HYIwIj3ysfluPTorJnP6Ezx
+        oHsD1s5ZXEktUwCOioB5f1CEPR9+wTG6iuiserTo8dkwng7HT/R+XUPF8xlcTjErAOdMcW6NW8STiwG8
+        7vej8oUPN/PsEv3t8Ao0TZP3T1u8uJRkUgAuSYHtO97oLxmXd5t9Ho8aPTK+GzntqNfrLm2fFoihwYOI
+        xGIF4KjoGBLzY1OrF9k6OOFxnwDC4wxIMX1G0pMhgVyMNyoA13PAtS7OrJk1PrC69LUdQWxuF6IybHrX
+        LRI7JrtZdoDAo1XmbjMyD+tjSXxGcXRmnYg5ttD9QuxDhN0uUgDOmbvNTpPOJaGAo2K36cyaGZvOFIfd
+        KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
+</value>
   </data>
 </root>

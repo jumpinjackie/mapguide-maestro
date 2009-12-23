@@ -23,9 +23,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace OSGeo.MapGuide.Maestro.ResourceEditors
+namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.SHP
 {
-    public partial class FeatureSourceEditorSHP : ResourceEditors.FilebasedFeatureSourceEditor
+    public partial class FeatureSourceEditorSHP : ResourceEditors.FeatureSourceEditors.Filebased.FilebasedFeatureSourceEditor
     {
         public FeatureSourceEditorSHP(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource feature)
             : base(editor, feature, false, "DefaultFileLocation", GetFileTypes())

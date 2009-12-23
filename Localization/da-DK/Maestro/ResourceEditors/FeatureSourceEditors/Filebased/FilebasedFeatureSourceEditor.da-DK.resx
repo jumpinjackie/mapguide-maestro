@@ -122,15 +122,12 @@
     <value>Fil placering</value>
   </data>
   <data name="LocationType.Items" type="System.String">
-    <value>
-	Intern i MapGuide (Managed)
-	På serverens filsystem (Unmanaged)
-	</value>
+    <value>Intern i MapGuide (Managed)</value>
+  </data>
+  <data name="LocationType.Items1" type="System.String">
+    <value>På serverens filsystem (Unmanaged)</value>
   </data>
   <data name="ReadOnlyCheck.Text" type="System.String">
     <value>Skrivebeskyttet</value>
-  </data>
-  <data name="LocationType.Items1" xml:space="preserve">
-    <value>På serverens filsystem (Unmanaged)</value>
   </data>
 </root>

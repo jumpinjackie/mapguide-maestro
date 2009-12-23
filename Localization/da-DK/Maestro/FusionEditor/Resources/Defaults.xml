@@ -359,7 +359,7 @@
       <ImageUrl>images/icons/about.png</ImageUrl>
       <ImageClass />
       <Label>About</Label>
-      <Tooltip>Click to show information about this application</Tooltip>
+      <Tooltip>Klik for at vise oplysninger om denne applikation</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -388,8 +388,8 @@
       </Extension>
       <ImageUrl>images/icons/buffer.png</ImageUrl>
       <ImageClass />
-      <Label>Create a buffer</Label>
-      <Tooltip>Click to create a buffer</Tooltip>
+      <Label>Opret en buffer</Label>
+      <Tooltip>Klik for at oprette en buffer</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -401,8 +401,8 @@
       </Extension>
       <ImageUrl>images/icons/buffer.png</ImageUrl>
       <ImageClass />
-      <Label>Create a buffer</Label>
-      <Tooltip>Click to create a buffer</Tooltip>
+      <Label>Opret en buffer</Label>
+      <Tooltip>Klik for at oprette en buffer</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -412,8 +412,8 @@
       <Extension />
       <ImageUrl>images/icons/select-clear.png</ImageUrl>
       <ImageClass />
-      <Label>ClearSelection</Label>
-      <Tooltip>Click to clear the current selection</Tooltip>
+      <Label>Ryd valg</Label>
+      <Tooltip>Klik for at fjerne alle objekter fra valgmarkeringen</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -441,8 +441,8 @@
       </Extension>
       <ImageUrl>images/icons/view-back.png</ImageUrl>
       <ImageClass />
-      <Label>Previous View</Label>
-      <Tooltip>Navigate to the previous extents</Tooltip>
+      <Label>Forrige placering</Label>
+      <Tooltip>Gå til den forrige placering</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -454,8 +454,8 @@
       </Extension>
       <ImageUrl>images/icons/view-forward.png</ImageUrl>
       <ImageClass />
-      <Label>Next View</Label>
-      <Tooltip>Navigate to the previous extents</Tooltip>
+      <Label>Næste placering</Label>
+      <Tooltip>Gå til den næste placering</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -469,8 +469,8 @@
       </Extension>
       <ImageUrl>images/icons/help.png</ImageUrl>
       <ImageClass />
-      <Label>Help</Label>
-      <Tooltip>Click to get help</Tooltip>
+      <Label>Hjælp</Label>
+      <Tooltip>Klik for at få hjælp</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -481,8 +481,8 @@
       <Extension />
       <ImageUrl>images/icons/zoom-full.png</ImageUrl>
       <ImageClass />
-      <Label>Full Extent</Label>
-      <Tooltip>Click to zoom to the full map extents</Tooltip>
+      <Label>Vis hele kortet</Label>
+      <Tooltip>Klik for at zoome ud så hele kortet vises</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -510,8 +510,8 @@
       </Extension>
       <ImageUrl>images/icons/map-manager.png</ImageUrl>
       <ImageClass />
-      <Label>Map Menu</Label>
-      <Tooltip>Choose a map theme</Tooltip>
+      <Label>Kort menu</Label>
+      <Tooltip>Vælg et kort tema</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -534,8 +534,8 @@
       </Extension>
       <ImageUrl>images/icons/measure.png</ImageUrl>
       <ImageClass />
-      <Label>Measure</Label>
-      <Tooltip>Measure distances on the map</Tooltip>
+      <Label>Mål</Label>
+      <Tooltip>Mål afstande på kortet</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -562,8 +562,8 @@
       <Extension />
       <ImageUrl>images/icons/pan.png</ImageUrl>
       <ImageClass />
-      <Label>Pan</Label>
-      <Tooltip>Click and drag to pan the map</Tooltip>
+      <Label>Panorér</Label>
+      <Tooltip>Klik og træk for at panorere i kortet</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -579,8 +579,8 @@
       </Extension>
       <ImageUrl>images/icons/file-print.png</ImageUrl>
       <ImageClass />
-      <Label>Print</Label>
-      <Tooltip>Print the current map view</Tooltip>
+      <Label>Udskriv</Label>
+      <Tooltip>Udskriv det viste kort</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -591,8 +591,8 @@
       <Extension />
       <ImageUrl>images/icons/view-refresh.png</ImageUrl>
       <ImageClass />
-      <Label>Refresh map</Label>
-      <Tooltip>Click to redraw the map</Tooltip>
+      <Label>Gentegn kort</Label>
+      <Tooltip>Klik for at gentegne kortet</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -605,8 +605,8 @@
       </Extension>
       <ImageUrl>images/icons/file-save.png</ImageUrl>
       <ImageClass />
-      <Label>Save map</Label>
-      <Tooltip>Click to save the map as an image</Tooltip>
+      <Label>Gem kort</Label>
+      <Tooltip>Klik for at gemme kortet som et billede</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -621,8 +621,8 @@
       </Extension>
       <ImageUrl>images/icons/select.png</ImageUrl>
       <ImageClass />
-      <Label>Select</Label>
-      <Tooltip>Click to select features</Tooltip>
+      <Label>Vælg</Label>
+      <Tooltip>Klik for at vælge objekter</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -642,8 +642,8 @@
       </Extension>
       <ImageUrl>images/icons/select-polygon.png</ImageUrl>
       <ImageClass />
-      <Label>Select polygon</Label>
-      <Tooltip>Draw a polygon to perform a selection</Tooltip>
+      <Label>Vælg polygon</Label>
+      <Tooltip>Tegn et polgyn til at vælge udfra</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -659,8 +659,8 @@
       </Extension>
       <ImageUrl>images/icons/select-radius.png</ImageUrl>
       <ImageClass />
-      <Label>Select by radius</Label>
-      <Tooltip>Click to select within a radius</Tooltip>
+      <Label>Vælg med cirkel</Label>
+      <Tooltip>Klik for at vælge indenfor en cirkel</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -675,8 +675,8 @@
       </Extension>
       <ImageUrl>images/icons/select-features.png</ImageUrl>
       <ImageClass />
-      <Label>Select within</Label>
-      <Tooltip>Click to select features within this selection</Tooltip>
+      <Label>Vælg indenfor</Label>
+      <Tooltip>Klik for at vælge objekter indenfor de valgte objekter</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -698,8 +698,8 @@
       </Extension>
       <ImageUrl />
       <ImageClass />
-      <Label>ViewOptions</Label>
-      <Tooltip>Click to change the units displayed</Tooltip>
+      <Label>Indstillinger</Label>
+      <Tooltip>Klik for at ændre de viste indstillinger</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -724,8 +724,8 @@
       <ImageUrl>images/icons/zoom-in.png</ImageUrl>
       <ImageClass />
       <Label>Zoom</Label>
-      <Tooltip>Click or click and drag on the map to zoom in</Tooltip>
-      <StatusText>Click or click and drag on the map to zoom in</StatusText>
+      <Tooltip>Klik eller træk et rektangel for at zoome i kortet</Tooltip>
+      <StatusText>Klik eller træk et rektangel for at zoome i kortet</StatusText>
       <Disabled>false</Disabled>
     </Widget>
     <Widget xsi:type="UiWidgetType">
@@ -737,8 +737,8 @@
       </Extension>
       <ImageUrl>images/icons/zoom-out-fixed.png</ImageUrl>
       <ImageClass />
-      <Label>Zoom Out</Label>
-      <Tooltip>Click to zoom in</Tooltip>
+      <Label>Zoom ud</Label>
+      <Tooltip>Klik for at zoome ud</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -751,8 +751,8 @@
       </Extension>
       <ImageUrl>images/icons/zoom-in-fixed.png</ImageUrl>
       <ImageClass />
-      <Label>Zoom In</Label>
-      <Tooltip>Click to zoom in</Tooltip>
+      <Label>Zoom ind</Label>
+      <Tooltip>Klik for at zoome ind</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -766,8 +766,8 @@
       </Extension>
       <ImageUrl>images/icons/select-zoom.png</ImageUrl>
       <ImageClass />
-      <Label>Zoom to selection</Label>
-      <Tooltip>Click to zoom to the selection</Tooltip>
+      <Label>Zoom til valg</Label>
+      <Tooltip>Klik for at zoome til de valgte objekter</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -779,7 +779,7 @@
       <ImageUrl>images/icons/zoom-full.png</ImageUrl>
       <ImageClass />
       <Label />
-      <Tooltip>Click to zoom to the full map extents</Tooltip>
+      <Tooltip>Klik for at zoome til kortets startvisning</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -792,7 +792,7 @@
       <ImageUrl>images/icons/view-forward.png</ImageUrl>
       <ImageClass />
       <Label />
-      <Tooltip>Navigate to the previous extents</Tooltip>
+      <Tooltip>Gå til den forrige placering</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -804,7 +804,7 @@
       <ImageUrl>images/icons/pan.png</ImageUrl>
       <ImageClass />
       <Label />
-      <Tooltip>Click and drag to pan the map</Tooltip>
+      <Tooltip>Klik eller træk for at panorere</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -817,7 +817,7 @@
       <ImageUrl>images/icons/view-back.png</ImageUrl>
       <ImageClass />
       <Label />
-      <Tooltip>Navigate to the previous extents</Tooltip>
+      <Tooltip>Gå til forrige placering</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -833,7 +833,7 @@
       <ImageUrl>images/icons/select.png</ImageUrl>
       <ImageClass />
       <Label />
-      <Tooltip>Click to select features</Tooltip>
+      <Tooltip>Klik for at vælge objekter</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -848,8 +848,8 @@
       <ImageUrl>images/icons/zoom-in.png</ImageUrl>
       <ImageClass />
       <Label />
-      <Tooltip>Click or click and drag on the map to zoom in</Tooltip>
-      <StatusText>Click or click and drag on the map to zoom in</StatusText>
+      <Tooltip>Klik eller træk rektangler i kortet for at zoome ind</Tooltip>
+      <StatusText>Klik eller træk rektangler i kortet for at zoome ind</StatusText>
       <Disabled>false</Disabled>
     </Widget>
     <Widget xsi:type="UiWidgetType">
@@ -862,7 +862,7 @@
       <ImageUrl>images/icons/zoom-in-fixed.png</ImageUrl>
       <ImageClass />
       <Label />
-      <Tooltip>Click to zoom in</Tooltip>
+      <Tooltip>Klik for at zoome ind</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -876,7 +876,7 @@
       <ImageUrl>images/icons/zoom-out-fixed.png</ImageUrl>
       <ImageClass />
       <Label />
-      <Tooltip>Click to zoom in</Tooltip>
+      <Tooltip>Klik for at zoome ud</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -891,7 +891,7 @@
       <ImageUrl>images/icons/select-zoom.png</ImageUrl>
       <ImageClass />
       <Label />
-      <Tooltip>Click to zoom to the selection</Tooltip>
+      <Tooltip>Klik for at zoome til de valgte objekter</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -905,8 +905,8 @@
       </Extension>
       <ImageUrl>images/iconNavigator.gif</ImageUrl>
       <ImageClass />
-      <Label>Invoke script</Label>
-      <Tooltip>Display the overview map window</Tooltip>
+      <Label>Vis oversigtskort</Label>
+      <Tooltip>Viser oversigtskortet</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -920,8 +920,8 @@
       </Extension>
       <ImageUrl />
       <ImageClass />
-      <Label>Show Overview Map</Label>
-      <Tooltip>Display the overview map window</Tooltip>
+      <Label>Vis oversigtskortet</Label>
+      <Tooltip>Viser oversigtskortet</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -935,8 +935,8 @@
       </Extension>
       <ImageUrl />
       <ImageClass />
-      <Label>Show Task Pane</Label>
-      <Tooltip>Display the task pane window</Tooltip>
+      <Label>Vis opgave ruden</Label>
+      <Tooltip>Viser opgave ruden</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -950,8 +950,8 @@
       </Extension>
       <ImageUrl />
       <ImageClass />
-      <Label>Show Legend</Label>
-      <Tooltip>Display the legend window</Tooltip>
+      <Label>Vis signaturforklaring</Label>
+      <Tooltip>Viser signaturforklaringen</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>
@@ -965,8 +965,8 @@
       </Extension>
       <ImageUrl />
       <ImageClass />
-      <Label>Show Selection Window</Label>
-      <Tooltip>Display the selection window</Tooltip>
+      <Label>Vis valg vinduet</Label>
+      <Tooltip>Viser valg vinduet</Tooltip>
       <StatusText />
       <Disabled>false</Disabled>
     </Widget>

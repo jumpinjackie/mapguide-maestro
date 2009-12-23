@@ -217,7 +217,7 @@
     <Compile Include="FeatureSourceEditors\ManagedFileControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FeatureSourceEditors\MSQLSpatial\FeatureSourceEditorMSSQLSpatial.cs">
+    <Compile Include="FeatureSourceEditors\MSSQLSpatial\FeatureSourceEditorMSSQLSpatial.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FeatureSourceEditors\MySQL\FeatureSourceEditorMySQL.cs">
@@ -308,6 +308,11 @@
     </Compile>
     <Compile Include="FeatureSourceEditors\OGR\PostGIS.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\OGR\Strings\Managed.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Managed.resx</DependentUpon>
     </Compile>
     <Compile Include="FeatureSourceEditors\OGR\Unmanaged.cs">
       <SubType>UserControl</SubType>
@@ -711,7 +716,7 @@
       <DependentUpon>ManagedFileControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FeatureSourceEditors\MSQLSpatial\FeatureSourceEditorMSSQLSpatial.resx">
+    <EmbeddedResource Include="FeatureSourceEditors\MSSQLSpatial\FeatureSourceEditorMSSQLSpatial.resx">
       <DependentUpon>FeatureSourceEditorMSSQLSpatial.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -1104,6 +1109,10 @@
     <EmbeddedResource Include="FeatureSourceEditors\ODBC\Strings\FeatureSourceEditorODBC.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FeatureSourceEditorODBC.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\OGR\Strings\Managed.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Managed.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSourceEditors\SDF\FeatureSourceEditorSDF.resx">
       <DependentUpon>FeatureSourceEditorSDF.cs</DependentUpon>

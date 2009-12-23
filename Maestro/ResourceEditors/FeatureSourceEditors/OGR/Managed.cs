@@ -44,19 +44,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
             managedFileControl.toolStrip.Items.Insert(3, new ToolStripButton("", ToolbarImages.Images[0], new EventHandler(FileToolbar_ButtonClick)));
-            managedFileControl.toolStrip.Items[3].ToolTipText = "Use all files in the feature source as data source";
+            managedFileControl.toolStrip.Items[3].ToolTipText = Strings.Managed.UseAllFilesTooltip;
 
 			managedFileControl.NewDefaultSelected += new ResourceEditors.FeatureSourceEditors.ManagedFileControl.NewDefaultSelectedDelegate(managedFileControl_NewDefaultSelected);
 
 			System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
-			nv.Add(".shp", Strings.Common.ShapeFiles);
-			nv.Add(".mif", Strings.Common.MapInfoInterchangeFiles);
-			nv.Add(".tab", Strings.Common.MapInfoNativeFiles);
-			nv.Add(".sqlite", Strings.Common.SQLiteFiles);
-			nv.Add(".gml", Strings.Common.GMLFiles);
-			nv.Add(".dgn", Strings.Common.DGNFiles);
-			nv.Add(".s57", Strings.Common.S57Files);
-			nv.Add("", Strings.Common.AllFiles);
+			nv.Add(".shp", ResourceEditors.Strings.Common.ShapeFiles);
+            nv.Add(".mif", ResourceEditors.Strings.Common.MapInfoInterchangeFiles);
+            nv.Add(".tab", ResourceEditors.Strings.Common.MapInfoNativeFiles);
+            nv.Add(".sqlite", ResourceEditors.Strings.Common.SQLiteFiles);
+            nv.Add(".gml", ResourceEditors.Strings.Common.GMLFiles);
+            nv.Add(".dgn", ResourceEditors.Strings.Common.DGNFiles);
+            nv.Add(".s57", ResourceEditors.Strings.Common.S57Files);
+            nv.Add("", ResourceEditors.Strings.Common.AllFiles);
 			managedFileControl.FileTypes = nv;
 		}
 

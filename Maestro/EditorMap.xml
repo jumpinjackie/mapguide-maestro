@@ -9,7 +9,7 @@ The ResourceExtension, is the extension used in the server.
 The ImagePath is the path of the image/icon used to represent the resource.
 Alternative to the ImagePath are the fields:
 	ImageAssembly and ImageResourceName
-Those fields can used to load the image from an assembly.
+Those fields can be used to load the image from an assembly.
 
 ResourceEditorAssembly is the path of the assembly to load the resourceeditor from.
 ResourceEditroClass is the fully qualified typename for the editor control.
@@ -28,6 +28,17 @@ ResourceInstanceClass is the fully qualified typename for the resource instance.
 		<ResourceInstanceAssembly></ResourceInstanceAssembly>
 		<ResourceInstanceClass></ResourceInstanceClass>
 	</ResourceEditorEntry>
+  
+  
+This file will be overwritten by the installer, so make sure you have a backup,
+if you want to keep your modifications.
+  
+If you write your own editor, it must have a constructor with this signature:
+public classname(EditorInterface editor, string resourceId)
+and it must implement the interface IResourceEditorControl.
+  
+The resource given is always a temporary item, so feel free to save it if needs be.
+
 -->
 
 	<ResourceEditorEntry>

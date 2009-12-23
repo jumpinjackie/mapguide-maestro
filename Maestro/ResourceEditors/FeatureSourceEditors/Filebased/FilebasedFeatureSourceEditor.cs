@@ -24,7 +24,7 @@ using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
 
-namespace OSGeo.MapGuide.Maestro.ResourceEditors
+namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Filebased
 {
 	/// <summary>
 	/// Summary description for FilebasedFeaturesourceEditor.

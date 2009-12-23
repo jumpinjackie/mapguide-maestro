@@ -74,10 +74,10 @@
 
 	<Command>
 		<Command>Initial Map View</Command>
-		<Label>Initial Map View</Label>
-		<ToolTip>Initial map view</ToolTip>
+		<Label>Zoom til startposition</Label>
+		<ToolTip>Zoom til startposition</ToolTip>
 		<Action>Fit To Window</Action>
-		<Description>Fit the initial view of the map to the window</Description>
+		<Description>Zoomer ud og viser kortet i startpositionen</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_fitwindow.gif</EnabledIcon>		
@@ -86,10 +86,10 @@
 
 	<Command>
 		<Command>Invoke Script</Command>
-		<Label>Invoke Script</Label>
-		<ToolTip>Invoke script</ToolTip>
+		<Label>Aktiver script</Label>
+		<ToolTip>Aktiver script</ToolTip>
 		<Action>Invoke Script</Action>
-		<Description>Invoke a script command</Description>
+		<Description>Aktiver en script kommando</Description>
 		<Viewers>All</Viewers>
 		<Type>Custom</Type>
 		<EnabledIcon>../stdicons/icon_invokescript.gif</EnabledIcon>		
@@ -98,10 +98,10 @@
 
 	<Command>
 		<Command>Invoke URL</Command>
-		<Label>Invoke URL</Label>
-		<ToolTip>Invoke a command by accessing a URL</ToolTip>
+		<Label>Åbn Url</Label>
+		<ToolTip>Aktiver en kommando ved at åbne en Url</ToolTip>
 		<Action>Invoke URL</Action>
-		<Description>Invoke a URL command</Description>
+		<Description>Åbn Url</Description>
 		<Viewers>All</Viewers>
 		<Type>Custom</Type>
 		<EnabledIcon>../stdicons/icon_invokeurl.gif</EnabledIcon>		
@@ -110,10 +110,10 @@
 
 	<Command>
 		<Command>Measure</Command>
-		<Label>Measure</Label>
-		<ToolTip>Measure</ToolTip>
+		<Label>Mål</Label>
+		<ToolTip>Mål</ToolTip>
 		<Action>Measure</Action>
-		<Description>Measure distances on the map</Description>
+		<Description>Måler afstande på kortet</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_measure.gif</EnabledIcon>		
@@ -122,10 +122,10 @@
 
 	<Command>
 		<Command>Next View</Command>
-		<Label>Next View</Label>
-		<ToolTip>Next View</ToolTip>
+		<Label>Næste placering</Label>
+		<ToolTip>Næste placering</ToolTip>
 		<Action>Next View</Action>
-		<Description>Buffer</Description>
+		<Description>Viser næste placering</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_zoomnext.gif</EnabledIcon>		
@@ -134,10 +134,10 @@
 
 	<Command>
 		<Command>Pan</Command>
-		<Label>Pan</Label>
-		<ToolTip>Pan mode</ToolTip>
+		<Label>Panorér</Label>
+		<ToolTip>Panorér</ToolTip>
 		<Action>Pan</Action>
-		<Description>Drag the map to view areas out of range</Description>
+		<Description>Træk i kortet for at panorere</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_pan.gif</EnabledIcon>		
@@ -146,10 +146,10 @@
 
 	<Command>
 		<Command>Pan Down</Command>
-		<Label>Pan Down</Label>
-		<ToolTip>Pan down</ToolTip>
+		<Label>Panorér ned</Label>
+		<ToolTip>Panorér ned</ToolTip>
 		<Action>Pan Down</Action>
-		<Description>Pan down by a preset increment</Description>
+		<Description>Panorér ned</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_pandown.gif</EnabledIcon>		
@@ -158,10 +158,10 @@
 
 	<Command>
 		<Command>Pan Left</Command>
-		<Label>Pan Left</Label>
-		<ToolTip>Pan left</ToolTip>
+		<Label>Panorér venstre</Label>
+		<ToolTip>Panorér venstre</ToolTip>
 		<Action>Pan Left</Action>
-		<Description>Pan left by a preset increment</Description>
+		<Description>Panorér venstre</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_panleft.gif</EnabledIcon>		
@@ -170,10 +170,10 @@
 
 	<Command>
 		<Command>Pan Right</Command>
-		<Label>Pan Right</Label>
-		<ToolTip>Pan right</ToolTip>
+		<Label>Panorér højre</Label>
+		<ToolTip>Panorér højre</ToolTip>
 		<Action>Pan Right</Action>
-		<Description>Pan right by a preset increment</Description>
+		<Description>Panorér højre</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_panright.gif</EnabledIcon>		
@@ -182,10 +182,10 @@
 
 	<Command>
 		<Command>Pan Up</Command>
-		<Label>Pan Up</Label>
-		<ToolTip>Pan up</ToolTip>
+		<Label>Panorér op</Label>
+		<ToolTip>Panorér op</ToolTip>
 		<Action>Pan Up</Action>
-		<Description>Pan up by a preset increment</Description>
+		<Description>Panorér højre</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_panup.gif</EnabledIcon>		
@@ -194,10 +194,10 @@
 
 	<Command>
 		<Command>Previous View</Command>
-		<Label>Previous View</Label>
-		<ToolTip>Previous view</ToolTip>
+		<Label>Forrige placering</Label>
+		<ToolTip>Forrige placering</ToolTip>
 		<Action>Previous View</Action>
-		<Description>Go to previous view</Description>
+		<Description>Gå til forrige placering</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_zoomprev.gif</EnabledIcon>		
@@ -206,10 +206,10 @@
 
 	<Command>
 		<Command>Print</Command>
-		<Label>Print</Label>
-		<ToolTip>Print</ToolTip>
+		<Label>Udskriv</Label>
+		<ToolTip>Udskriv</ToolTip>
 		<Action>Print</Action>
-		<Description>Print with optional layout</Description>
+		<Description>Udskriv med layoutmuligheder</Description>
 		<Viewers>DWF</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_print.gif</EnabledIcon>		
@@ -218,10 +218,10 @@
 
 	<Command>
 		<Command>Refresh Map</Command>
-		<Label>Refresh Map</Label>
-		<ToolTip>Refresh map</ToolTip>
+		<Label>Gentegn kortet</Label>
+		<ToolTip>Gentegn kortet</ToolTip>
 		<Action>Refresh</Action>
-		<Description>Refresh map and reload all layers keeping current center and scale</Description>
+		<Description>Gentegner kortet</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_refreshmap.gif</EnabledIcon>		
@@ -230,10 +230,10 @@
 
 	<Command>
 		<Command>Search</Command>
-		<Label>Search</Label>
-		<ToolTip>Search</ToolTip>
+		<Label>Søg</Label>
+		<ToolTip>Søg</ToolTip>
 		<Action>Search</Action>
-		<Description>Perform a search</Description>
+		<Description>Udfører en søgning</Description>
 		<Viewers>All</Viewers>
 		<Type>Custom</Type>
 		<EnabledIcon>../stdicons/icon_search.gif</EnabledIcon>		
@@ -242,10 +242,10 @@
 
 	<Command>
 		<Command>Select</Command>
-		<Label>Select</Label>
-		<ToolTip>Select mode</ToolTip>
+		<Label>Vælg</Label>
+		<ToolTip>Vælg objekter</ToolTip>
 		<Action>Select</Action>
-		<Description>Select features by clicking and dragging</Description>
+		<Description>Vælg objekter ved at klikke eller trække</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_select.gif</EnabledIcon>		
@@ -254,10 +254,10 @@
 
 	<Command>
 		<Command>Select Polygon</Command>
-		<Label>Select Polygon</Label>
-		<ToolTip>Select polygon</ToolTip>
+		<Label>Vælg med polygon</Label>
+		<ToolTip>Vælg med polygon</ToolTip>
 		<Action>Select Polygon</Action>
-		<Description>Create a polygon to select all features that fall within</Description>
+		<Description>Vælg objekter ved at tegne et polygon</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_selectpolygon.gif</EnabledIcon>		
@@ -266,10 +266,10 @@
 
 	<Command>
 		<Command>Select Radius</Command>
-		<Label>Select Radius</Label>
-		<ToolTip>Select radius</ToolTip>
+		<Label>Vælg med cirkel</Label>
+		<ToolTip>Vælg med cirkel</ToolTip>
 		<Action>Select Radius</Action>
-		<Description>Click and drag to select all features inside the circle</Description>
+		<Description>Klik og træk for at vælge alle objekter indenfor en cirkel</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_selectradius.gif</EnabledIcon>		
@@ -278,10 +278,10 @@
 
 	<Command>
 		<Command>Select Within</Command>
-		<Label>Select Within</Label>
-		<ToolTip>Select within</ToolTip>
+		<Label>Vælg indenfor</Label>
+		<ToolTip>Vælg indenfor</ToolTip>
 		<Action>Select Within</Action>
-		<Description>Select features that fall within currently selected areas</Description>
+		<Description>Vælg objekter der er indenfor de valgte objekter</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_selectwithin.gif</EnabledIcon>		
@@ -290,10 +290,10 @@
 
 	<Command>
 		<Command>View Options</Command>
-		<Label>View Options</Label>
-		<ToolTip>View options</ToolTip>
+		<Label>Indstillinger</Label>
+		<ToolTip>Indstillinger</ToolTip>
 		<Action>View Options</Action>
-		<Description>View Options</Description>
+		<Description>Skift indstillinger</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_viewoptions.gif</EnabledIcon>		
@@ -302,10 +302,10 @@
 
 	<Command>
 		<Command>Zoom</Command>
-		<Label>Zoom Dynamic</Label>
-		<ToolTip>Zoom dynamic</ToolTip>
+		<Label>Zoom dynamisk</Label>
+		<ToolTip>Zoom dynamisk</ToolTip>
 		<Action>Zoom</Action>
-		<Description>Zoom dynamically by clicking and dragging</Description>
+		<Description>Zoom dynamisk ved at klikke og trække</Description>
 		<Viewers>DWF</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_zoom.gif</EnabledIcon>		
@@ -314,10 +314,10 @@
 
 	<Command>
 		<Command>Zoom In</Command>
-		<Label>Zoom In</Label>
-		<ToolTip>Zoom in</ToolTip>
+		<Label>Zoom Ind</Label>
+		<ToolTip>Zoom ind</ToolTip>
 		<Action>Zoom In</Action>
-		<Description>Zoom in by a preset increment</Description>
+		<Description>Zoom ind ved at klikke</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_zoomin.gif</EnabledIcon>		
@@ -326,10 +326,10 @@
 
 	<Command>
 		<Command>Zoom Out</Command>
-		<Label>Zoom Out</Label>
-		<ToolTip>Zoom out</ToolTip>
+		<Label>Zoom ud</Label>
+		<ToolTip>Zoom ud</ToolTip>
 		<Action>Zoom Out</Action>
-		<Description>Zoom out by a preset increment</Description>
+		<Description>Zoom ud ved at klikke</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_zoomout.gif</EnabledIcon>		
@@ -338,10 +338,10 @@
 
 	<Command>
 		<Command>Zoom Rectangle</Command>
-		<Label>Zoom Rectangle</Label>
-		<ToolTip>Zoom to rectangle</ToolTip>
+		<Label>Zoom rektangel</Label>
+		<ToolTip>Zoom rektangel</ToolTip>
 		<Action>Zoom Rectangle</Action>
-		<Description>Zoom in on an area</Description>
+		<Description>Zoom ind til et område</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_zoomrect.gif</EnabledIcon>		
@@ -350,10 +350,10 @@
 
 	<Command>
 		<Command>Zoom Selection</Command>
-		<Label>Zoom Selection</Label>
-		<ToolTip>Zoom to selection</ToolTip>
+		<Label>Zoom til valg</Label>
+		<ToolTip>Zoom til valg</ToolTip>
 		<Action>Zoom To Selection</Action>
-		<Description>Zoom to extents of selected features</Description>
+		<Description>Zoom for at vise de valgte objekter</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_zoomselect.gif</EnabledIcon>		
@@ -362,10 +362,10 @@
 
 	<Command>
 		<Command>Get Printable Page</Command>
-		<Label>Printable Page</Label>
-		<ToolTip>Get printable page</ToolTip>
+		<Label>Udksrift</Label>
+		<ToolTip>Udskrift</ToolTip>
 		<Action>Get Printable Page</Action>
-		<Description>Get printer-friendly page</Description>
+		<Description>Dan en side der kan udskrives</Description>
 		<Viewers>AJAX</Viewers>
 		<Type>Built-In</Type>
 		<EnabledIcon>../stdicons/icon_printablepage.gif</EnabledIcon>		

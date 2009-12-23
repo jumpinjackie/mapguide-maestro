@@ -117,20 +117,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="chkLayerShowInLegend.Text" type="System.String">
-    <value>Gruppe vises i signaturforklaringen</value>
-  </data>
-  <data name="chkLayerVisible.Text" type="System.String">
-    <value>Gruppen er synligt ved opstart</value>
-  </data>
-  <data name="label12.Text" type="System.String">
+  <data name="label12.Text" xml:space="preserve">
     <value>Tekst i signaturforklaring</value>
   </data>
-  <data name="chkLayerExpand.Text" type="System.String">
+  <data name="chkLayerVisible.Text" xml:space="preserve">
+    <value>Gruppen er synligt ved opstart</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Navn</value>
+  </data>
+  <data name="chkLayerExpand.Text" xml:space="preserve">
     <value>Gruppen er udvidet i signaturforklaringen</value>
   </data>
-  <data name="label10.Text" type="System.String">
-    <value>Navn</value>
+  <data name="chkLayerShowInLegend.Text" xml:space="preserve">
+    <value>Gruppe vises i signaturforklaringen</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="txtLayerLegendLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 20</value>
+  </data>
+  <data name="txtLayerLegendLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 40</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="txtLayername.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 8</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 13</value>
+  </data>
+  <data name="txtLayername.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 20</value>
   </data>
 </root>

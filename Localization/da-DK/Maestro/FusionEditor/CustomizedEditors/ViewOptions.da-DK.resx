@@ -121,4 +121,7 @@
   <data name="label1.Text" type="System.String">
     <value>Vis enheder</value>
   </data>
+  <data name="DisplayUnits.Text" xml:space="preserve">
+    <value>Visningsenheder</value>
+  </data>
 </root>

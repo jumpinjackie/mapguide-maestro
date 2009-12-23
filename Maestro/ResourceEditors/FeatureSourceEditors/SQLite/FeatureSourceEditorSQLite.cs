@@ -23,9 +23,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace OSGeo.MapGuide.Maestro.ResourceEditors
+namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.SQLite
 {
-    public partial class FeatureSourceEditorSQLite : ResourceEditors.FilebasedFeatureSourceEditor
+    public partial class FeatureSourceEditorSQLite : ResourceEditors.FeatureSourceEditors.Filebased.FilebasedFeatureSourceEditor
     {
         public FeatureSourceEditorSQLite(EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource feature)
             : base(editor, feature, false, "File", GetFileTypes())

@@ -142,37 +142,37 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
             // 
             resources.ApplyResources(this.oracleMS, "oracleMS");
             this.oracleMS.Name = "oracleMS";
-            this.oracleMS.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
+            this.oracleMS.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
             // 
             // oracle
             // 
             resources.ApplyResources(this.oracle, "oracle");
             this.oracle.Name = "oracle";
-            this.oracle.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
+            this.oracle.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
             // 
             // informix
             // 
             resources.ApplyResources(this.informix, "informix");
             this.informix.Name = "informix";
-            this.informix.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
+            this.informix.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
             // 
             // postgreSQL
             // 
             resources.ApplyResources(this.postgreSQL, "postgreSQL");
             this.postgreSQL.Name = "postgreSQL";
-            this.postgreSQL.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
+            this.postgreSQL.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
             // 
             // msSQL
             // 
             resources.ApplyResources(this.msSQL, "msSQL");
             this.msSQL.Name = "msSQL";
-            this.msSQL.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
+            this.msSQL.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
             // 
             // mySQL
             // 
             resources.ApplyResources(this.mySQL, "mySQL");
             this.mySQL.Name = "mySQL";
-            this.mySQL.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
+            this.mySQL.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdate);
             // 
             // Wizard
             // 

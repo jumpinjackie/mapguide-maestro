@@ -26,7 +26,7 @@ using System.Windows.Forms;
 using System.Collections.Specialized;
 using OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC;
 
-namespace OSGeo.MapGuide.Maestro.ResourceEditors
+namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
 {
 	/// <summary>
 	/// Summary description for FeautreSourceEditorODBC.
@@ -297,25 +297,25 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             resources.ApplyResources(this.dsn, "dsn");
             this.dsn.Name = "dsn";
-            this.dsn.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
+            this.dsn.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
             // 
             // managed
             // 
             resources.ApplyResources(this.managed, "managed");
             this.managed.Name = "managed";
-            this.managed.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
+            this.managed.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
             // 
             // unmanaged
             // 
             resources.ApplyResources(this.unmanaged, "unmanaged");
             this.unmanaged.Name = "unmanaged";
-            this.unmanaged.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
+            this.unmanaged.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
             // 
             // wizard
             // 
             resources.ApplyResources(this.wizard, "wizard");
             this.wizard.Name = "wizard";
-            this.wizard.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
+            this.wizard.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
             // 
             // ConnectionString
             // 
@@ -332,7 +332,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             resources.ApplyResources(this.credentials, "credentials");
             this.credentials.Name = "credentials";
-            this.credentials.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
+            this.credentials.ConnectionStringUpdated += new OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.FeatureSourceEditorODBC.ConnectionStringUpdatedDelegate(this.ConnectionStringUpdated);
             // 
             // RefreshButton
             // 

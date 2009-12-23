@@ -147,19 +147,4 @@
   <data name="ConfigureButton.Text" xml:space="preserve">
     <value>Indstil kolonner</value>
   </data>
-  <data name="ConnectionType.Items.Items3" xml:space="preserve">
-    <value>Known database type</value>
-  </data>
-  <data name="ConnectionType.Items.Items" xml:space="preserve">
-    <value>Internal file (Managed)</value>
-  </data>
-  <data name="ConnectionType.Items.Items1" xml:space="preserve">
-    <value>File on the server (Unmanaged)</value>
-  </data>
-  <data name="ConnectionType.Items.Items4" xml:space="preserve">
-    <value>Custom connectionstring</value>
-  </data>
-  <data name="ConnectionType.Items.Items2" xml:space="preserve">
-    <value>DSN (Named ODBC)</value>
-  </data>
 </root>

@@ -117,36 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Kant udseende</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Gennemsigtighed</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Enheder</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Udfylnings stil</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Størrelsesforhold</value>
-  </data>
-  <data name="previewGroup.Text" xml:space="preserve">
-    <value>Preview</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 13</value>
+  <data name="UseAllFilesTooltip" xml:space="preserve">
+    <value>Use all files in the feature source as data source</value>
+    <comment>A tooltip displayed for the button that enables the use of the folder as the resource</comment>
   </data>
 </root>

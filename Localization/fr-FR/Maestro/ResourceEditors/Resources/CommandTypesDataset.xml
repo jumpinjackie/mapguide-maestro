@@ -1,4 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- 
+  Note to translators:
+    You can only translate <Label>, <ToolTip> and <Description>
+    If you translate any of the others, the editor won't work!
+-->
+
 <CommandTypesDataset>
 	<Command>
 		<Command>About</Command>

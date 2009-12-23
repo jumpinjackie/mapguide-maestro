@@ -117,29 +117,72 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="applyLineStyle.Text" type="System.String">
-    <value>Anvend linie stil</value>
-  </data>
-  <data name="compositeLines.Text" type="System.String">
-    <value>Anvend sammensat linie stil</value>
-  </data>
-  <data name="CompositeGroup.Text" type="System.String">
-    <value>Sammensat linie</value>
-  </data>
-  <data name="previewGroup.Text" type="System.String">
+  <data name="previewGroup.Text" xml:space="preserve">
     <value>Preview</value>
   </data>
-  <data name="lineGroup.Text" type="System.String">
-    <value>Linie stil</value>
-  </data>
-  <data name="label3.Text" type="System.String">
-    <value>Størrelses enheder</value>
-  </data>
-  <data name="label2.Text" type="System.String">
+  <data name="label2.Text" xml:space="preserve">
     <value>Størrelsesforhold</value>
   </data>
-  <data name="sizeGroup.Text" type="System.String">
+  <data name="label3.Text" xml:space="preserve">
+    <value>Størrelses enheder</value>
+  </data>
+  <data name="sizeGroup.Text" xml:space="preserve">
     <value>Størrelse</value>
+  </data>
+  <data name="compositeLines.Text" xml:space="preserve">
+    <value>Anvend sammensat linie stil</value>
+  </data>
+  <data name="CompositeGroup.Text" xml:space="preserve">
+    <value>Sammensat linie</value>
+  </data>
+  <data name="lineGroup.Text" xml:space="preserve">
+    <value>Linie stil</value>
+  </data>
+  <data name="applyLineStyle.Text" xml:space="preserve">
+    <value>Anvend linie stil</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="RemoveStyleButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAH0SURBVDhPfZPfS1NhHMb9XwQRFIQ0iALBm91MUSLEsCtv
+        xIwof4AXw0GtQU2U6EJYXRVCEOqJijhsHPTIgSn+wsliMLUjUyynljq32dyTz3t4546bHvjwvudwvs/5
+        Ps/7PWVl59f8YgS6bsAwQjbkM65EVQPg+0UXC9OZfzhOnl5LMKjh66RSLEIBFu/9yeRJHKRgkRbPuNe0
+        aUSiJiYmPttFCgU2t/YRjcUFLOLKIqIoX/LYREoJsIBizIfr+uaeEJvSQ/hpboN28llc1cGvxAkWln8U
+        2EqLe9q1CTBhhkivhRa4X1qJ2nJhRyUFZIhSgBbM7WNhIRZZQ8jvx4zbhe8uF2Kz88UdXBaQIRrjCrR7
+        Tuz4nuHowzvsj45gqaMNn552X2RAC1KAX5WnEF5Yheq8jb/ufpy9eYmc/7VYU14XwncdpQVoQR6b6vNh
+        o7Ee2YFHyL1yIzfssRjsxW57E4L3my0R2QGHRgqsREyoPU+w47iFA11DMrFr43f/QwTu1FgCnDBa4ODw
+        vJfDGwIGZjpu4MjTh5P3IxZj57wdEh3Qnq0D+ifr8UNBSDUwV1+DVGstcl11ebIPbgph44W7uAN2wQGS
+        6N7nCDuqkeyoRPZxOTKdFYi3VENxNthDpA3CCbvMR68H39qaEGioEm3zCOVf+R87WeXQgnPczgAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 13</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 13</value>
+  </data>
+  <data name="AddStyleButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIISURBVDhPfZLfS1NhHMb9VxwpCRGWF6VJpBBRhN1EV2I3
+        4sbpykWFRZZJGEFKugILnP0QJ+FYGtTFXLR2QMYs2fK4UeqOs4GyqRx0asEefV47y+M59cID7+F838/7
+        fZ73W1S0syJfFASDMmR53FL8R/n9AbDetHgwn89jbf3Xf0WA1/vWDCGAh7OrWwZpOQ2Zlc0/2kAg8AlK
+        QjVD9gLmfy4j8WNBFKrptcKe3z7faEGGTqwAhGRWNsB8CJ1TlwSMWSTVtDGPfwF48Gs0UbBFOxOT08Ku
+        IVBSN7d+i0LdAm+jhf2AcPSbNUAPcS+Ae1qIfZ9B9/unuDZ0HU73VYSUsLkDK8BiJgfPmBdnXLW4G7qJ
+        Z1NP8GiiAxdf18HRY//7nLSgA/TkaYHtVnZWwClLuB9rhZKewmD8JVoizajtr7IGsG0+GdXu6UDVQDns
+        4w1oCUvIalkBuBJuxLl3NbjQc3oXonfAlHVAVFHh6JNQ4SmDnAyKw5xWDhf3dv9lHHpwYBfACaMFvvvs
+        fBaTsTkh54sbODJQKm7vjbdjNbeMj6kRdMXu4OzoSWHP0AH9U7MLmpBP/ozDLhvqQqVwxMuwqKXgTt7C
+        pchBHBsswe03reYO2AXT18Wi6lfFkKaL4U7Xo23mBM5/sOHUw+PGEGmD4oTt173nbSKwym4bah4fheRq
+        wvCITwC2AbpY3noXadHQAAAAAElFTkSuQmCC
+</value>
   </data>
 </root>

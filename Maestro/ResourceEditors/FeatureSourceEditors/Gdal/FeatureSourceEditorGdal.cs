@@ -25,7 +25,7 @@ using System.Data;
 using System.Windows.Forms;
 using OSGeo.MapGuide.Maestro;
 
-namespace OSGeo.MapGuide.Maestro.ResourceEditors
+namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 {
 	/// <summary>
 	/// Summary description for FeatureSourceEditorMSSQLSpatial.
