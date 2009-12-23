@@ -132,7 +132,7 @@ namespace OSGeo.MapGuide.Maestro
         private ToolStripMenuItem DuplicateMenu;
         private SaveFileDialog SaveAsXmlDialog;
         private OpenFileDialog OpenXmlFileDialog;
-        private string m_lastTooltip;
+        private string m_lastTabPageTooltip;
 
         public FormMain()
 		{
@@ -2494,11 +2494,20 @@ namespace OSGeo.MapGuide.Maestro
             for(int i = 0; i < tabItems.TabPages.Count; i++)
                 if (tabItems.GetTabRect(i).Contains(e.Location))
                 {
-                    TabPageTooltip.SetToolTip(tabItems, tabItems.TabPages[i].ToolTipText);
+                    if (m_lastTabPageTooltip != tabItems.TabPages[i].ToolTipText)
+                    {
+                        m_lastTabPageTooltip = tabItems.TabPages[i].ToolTipText;
+                        TabPageTooltip.SetToolTip(tabItems, tabItems.TabPages[i].ToolTipText);
+                    }
+
                     return;
                 }
 
-            TabPageTooltip.SetToolTip(tabItems, null);
+            if (m_lastTabPageTooltip != null)
+            {
+                m_lastTabPageTooltip = null;
+                TabPageTooltip.SetToolTip(tabItems, null);
+            }
         }
 
         private void tabItems_MouseLeave(object sender, EventArgs e)
