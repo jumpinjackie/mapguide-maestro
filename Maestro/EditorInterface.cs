@@ -385,6 +385,8 @@ namespace OSGeo.MapGuide.Maestro
 
         public bool IsModified { get { return m_page.Text.EndsWith(" *"); } }
 
+        public string ResourceId { get { return m_resourceID; } }
+
 		#endregion
 	}
 }

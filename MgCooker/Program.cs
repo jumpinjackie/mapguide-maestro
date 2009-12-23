@@ -290,7 +290,7 @@ namespace OSGeo.MapGuide.MgCooker
             Console.WriteLine(string.Format(Strings.Program.ConsoleUpdateTime.Replace("\\t", "\t"), DateTime.Now));
             Console.WriteLine(string.Format(Strings.Program.ConsoleCurrentMap.Replace("\\t", "\t"), map.ResourceId, mapCount, map.Parent.Maps.Count));
             Console.WriteLine(string.Format(Strings.Program.ConsoleCurrentGroup.Replace("\\t", "\t"), group, groupCount, map.Map.BaseMapDefinition.BaseMapLayerGroup.Count));
-            Console.WriteLine(string.Format(Strings.Program.ConsoleCurrentScale.Replace("\\t", "\t"), map.Map.BaseMapDefinition.FiniteDisplayScale[scaleindex], scaleindex, map.Map.BaseMapDefinition.FiniteDisplayScale.Count));
+            Console.WriteLine(string.Format(Strings.Program.ConsoleCurrentScale.Replace("\\t", "\t"), map.Map.BaseMapDefinition.FiniteDisplayScale[Array.IndexOf<int>(map.ScaleIndexMap, scaleindex)], Array.IndexOf<int>(map.ScaleIndexMap, scaleindex) + 1, map.Map.BaseMapDefinition.FiniteDisplayScale.Count));
             Console.WriteLine(string.Format(Strings.Program.ConsoleCurrentTile.Replace("\\t", "\t"), tileCount, totalTiles));
             Console.WriteLine();
             Console.WriteLine(string.Format(Strings.Program.ConsoleGroupDuration.Replace("\\t", "\t"), DateTime.Now - beginGroup));

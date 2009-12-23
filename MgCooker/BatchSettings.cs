@@ -397,6 +397,9 @@ namespace OSGeo.MapGuide.MgCooker
         /// </summary>
         public int ColTileOffset { get { return m_colTileOffset; } }
 
+        //The map's scales may have been modified, this array is a map of the new values
+        public int[] ScaleIndexMap { get { return m_scaleindexmap; } }
+
         /// <summary>
         /// Constructs a new map to be processed
         /// </summary>

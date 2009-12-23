@@ -2233,7 +2233,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 MaestroAPI.HttpServerConnection con = m_editor.CurrentConnection as MaestroAPI.HttpServerConnection;
                 args.Add("mapagent", con.ServerURI);
 
-                MgCooker.SetupRun dlg = new OSGeo.MapGuide.MgCooker.SetupRun(m_editor.CurrentConnection, new string[] { m_map.ResourceId }, args);
+                MgCooker.SetupRun dlg = new OSGeo.MapGuide.MgCooker.SetupRun(m_editor.CurrentConnection, new string[] { m_editor.ResourceId }, args);
                 dlg.ShowDialog(this);
             }
             catch(Exception ex)
