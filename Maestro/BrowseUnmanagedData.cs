@@ -61,11 +61,12 @@ namespace OSGeo.MapGuide.Maestro
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			FolderView.ImageList = OSGeo.MapGuide.Maestro.ResourceEditors.ShellIcons.ImageList;
-			ItemView.SmallImageList = OSGeo.MapGuide.Maestro.ResourceEditors.ShellIcons.ImageList;
-
 			OSGeo.MapGuide.Maestro.ResourceEditors.ShellIcons.AddIcon(FOLDER_IMAGE, imageList.Images[0]);
 			OSGeo.MapGuide.Maestro.ResourceEditors.ShellIcons.AddIcon(FOLDER_ALIAS, imageList.Images[1]);
+
+            FolderView.ImageList = OSGeo.MapGuide.Maestro.ResourceEditors.ShellIcons.ImageList;
+            ItemView.SmallImageList = OSGeo.MapGuide.Maestro.ResourceEditors.ShellIcons.ImageList;
+            
             this.Icon = FormMain.MaestroIcon;
         }
 
@@ -272,7 +273,9 @@ namespace OSGeo.MapGuide.Maestro
             // 
             // BrowseUnmanagedData
             // 
+            this.AcceptButton = this.OKButton;
             resources.ApplyResources(this, "$this");
+            this.CancelButton = this.CancelButton;
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.panel1);
@@ -447,7 +450,7 @@ namespace OSGeo.MapGuide.Maestro
 			if (FolderView.Nodes.Count > 0)
 				FolderView.SelectedNode = FolderView.Nodes[0];
 
-			if (m_startPath != null)
+			if (!string.IsNullOrEmpty(m_startPath) && m_startPath.StartsWith("%MG_DATA_PATH_ALIAS["))
 			{
 				string[] items = m_startPath.Replace("%MG_DATA_PATH_ALIAS[", "[").Replace("]%", "]/").Split('/');
 				TreeNodeCollection basis = FolderView.Nodes;

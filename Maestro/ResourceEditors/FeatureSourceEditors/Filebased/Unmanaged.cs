@@ -151,7 +151,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Filebased
 			/*System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
 			nv.Add(".sdf", "SDF Files (*.sdf)");
 			nv.Add("", "All files (*.*)");*/
-			string f = m_editor.BrowseUnmanagedData(null, m_fileTypes);
+			string f = m_editor.BrowseUnmanagedData(FilepathText.Text, m_fileTypes);
 			if (f != null)
 				FilepathText.Text = f;
 		}

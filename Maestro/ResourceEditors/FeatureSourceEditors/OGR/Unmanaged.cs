@@ -154,7 +154,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR
             nv.Add(".dgn", ResourceEditors.Strings.Common.DGNFiles);
             nv.Add(".s57", ResourceEditors.Strings.Common.S57Files);
             nv.Add("", ResourceEditors.Strings.Common.AllFiles);
-            string f = m_editor.BrowseUnmanagedData(null, nv);
+            string f = m_editor.BrowseUnmanagedData(FilepathText.Text, nv);
 			if (f != null)
 				FilepathText.Text = f;
 		}

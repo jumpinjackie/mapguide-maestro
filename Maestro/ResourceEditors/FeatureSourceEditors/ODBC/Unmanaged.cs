@@ -160,7 +160,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
             nv.Add(".xls", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.ExcelFiles);
             nv.Add(".dbf", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.dBaseFiles);
             nv.Add("", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.AllFiles);
-            string f = m_editor.BrowseUnmanagedData(null, nv);
+            string f = m_editor.BrowseUnmanagedData(FilepathText.Text, nv);
 			if (f != null)
 				FilepathText.Text = f;
 		}

@@ -198,6 +198,8 @@ namespace OSGeo.MapGuide.Maestro
 			umd.SetFileTypes(filetypes);
 			if (m_lastPath != null)
 				umd.SelectedText = m_lastPath;
+            if (startPath != null && startPath.StartsWith("%MG_DATA_PATH_ALIAS["))
+                umd.SelectedText = startPath;
 			if (umd.ShowDialog(m_editor) == DialogResult.OK)
 			{
 				m_lastPath = umd.SelectedText;

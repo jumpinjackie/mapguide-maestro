@@ -154,7 +154,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 		{
 			NameValueCollection nv = new NameValueCollection();
 			nv.Add("", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.AllFiles);
-			string s = m_editor.BrowseUnmanagedData("", nv);
+			string s = m_editor.BrowseUnmanagedData(Filepath.Text, nv);
 			if (s != null)
 				Filepath.Text = s;
 		}

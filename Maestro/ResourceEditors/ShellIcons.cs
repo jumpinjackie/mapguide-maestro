@@ -121,15 +121,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					DestroyIcon(shinfo.hIcon);
 					
 					m_imageList.Images.Add(tmp);
-					m_loadedImages.Add(type, m_imageList.Images.Count - 1);
+					m_loadedImages.Add(ext, m_imageList.Images.Count - 1);
 				}
 				catch
 				{
 				}
 			}
 
-			if (m_loadedImages.ContainsKey(type))
-				return (int)m_loadedImages[type];
+			if (m_loadedImages.ContainsKey(ext))
+				return (int)m_loadedImages[ext];
 			else
 				return 0;
 		}

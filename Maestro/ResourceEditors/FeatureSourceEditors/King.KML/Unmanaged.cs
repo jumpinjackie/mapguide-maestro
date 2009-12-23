@@ -135,7 +135,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.KingKML
 			System.Collections.Specialized.NameValueCollection nv = new System.Collections.Specialized.NameValueCollection();
 			nv.Add(".kml", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.KMLFiles);
 			nv.Add("", OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.AllFiles);
-			string f = m_editor.BrowseUnmanagedData(null, nv);
+			string f = m_editor.BrowseUnmanagedData(FilePath.Text, nv);
 			if (f != null)
 				FilePath.Text = f;
 		}
