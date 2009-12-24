@@ -121,6 +121,11 @@ namespace OSGeo.MapGuide.MgCooker
         /// </summary>
         private bool m_cancel;
 
+        /// <summary>
+        /// An event that can be used to pause MgCooker
+        /// </summary>
+        public System.Threading.ManualResetEvent PauseEvent = new System.Threading.ManualResetEvent(true);
+
         #region Events
         /// <summary>
         /// All maps are being rendered
@@ -171,6 +176,7 @@ namespace OSGeo.MapGuide.MgCooker
         {
             if (this.BeginRenderingMap != null)
                 this.BeginRenderingMap(CallbackStates.StartRenderMap, batchMap, null, -1, -1, -1, ref m_cancel);
+            PauseEvent.WaitOne();
         }
 
         internal void InvokeFinishRendering(BatchMap batchMap)
@@ -183,6 +189,7 @@ namespace OSGeo.MapGuide.MgCooker
         {
             if (this.BeginRenderingGroup != null)
                 this.BeginRenderingGroup(CallbackStates.StartRenderGroup, batchMap, group, -1, -1, -1, ref m_cancel);
+            PauseEvent.WaitOne();
         }
 
         internal void InvokeFinishRendering(BatchMap batchMap, string group)
@@ -195,6 +202,7 @@ namespace OSGeo.MapGuide.MgCooker
         {
             if (this.BeginRenderingScale != null)
                 this.BeginRenderingScale(CallbackStates.StartRenderScale, batchMap, group, scaleindex, -1, -1, ref m_cancel);
+            PauseEvent.WaitOne();
         }
 
         internal void InvokeFinishRendering(BatchMap batchMap, string group, int scaleindex)
@@ -207,6 +215,7 @@ namespace OSGeo.MapGuide.MgCooker
         {
             if (this.BeginRenderingTile != null)
                 this.BeginRenderingTile(CallbackStates.StartRenderTile, batchMap, group, scaleindex, row, col, ref m_cancel);
+            PauseEvent.WaitOne();
         }
 
         internal void InvokeFinishRendering(BatchMap batchMap, string group, int scaleindex, int row, int col)

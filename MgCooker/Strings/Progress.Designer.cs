@@ -98,6 +98,15 @@ namespace OSGeo.MapGuide.MgCooker.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MgCooker is now paused, click OK to resume rendering.
+        /// </summary>
+        internal static string PauseMessage {
+            get {
+                return ResourceManager.GetString("PauseMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0}, remaining time: {1}.
         /// </summary>
         internal static string RemainingTime {

@@ -36,10 +36,10 @@ namespace OSGeo.MapGuide.MgCooker
             this.tilePG = new System.Windows.Forms.ProgressBar();
             this.totalPG = new System.Windows.Forms.ProgressBar();
             this.button1 = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label4 = new System.Windows.Forms.Label();
             this.finishEstimate = new System.Windows.Forms.Label();
             this.tileCounter = new System.Windows.Forms.Label();
+            this.PauseBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -101,10 +101,18 @@ namespace OSGeo.MapGuide.MgCooker
             this.tileCounter.AutoEllipsis = true;
             this.tileCounter.Name = "tileCounter";
             // 
+            // PauseBtn
+            // 
+            resources.ApplyResources(this.PauseBtn, "PauseBtn");
+            this.PauseBtn.Name = "PauseBtn";
+            this.PauseBtn.UseVisualStyleBackColor = true;
+            this.PauseBtn.Click += new System.EventHandler(this.PauseBtn_Click);
+            // 
             // Progress
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.PauseBtn);
             this.Controls.Add(this.tileCounter);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.finishEstimate);
@@ -135,9 +143,9 @@ namespace OSGeo.MapGuide.MgCooker
         private System.Windows.Forms.ProgressBar tilePG;
         private System.Windows.Forms.ProgressBar totalPG;
         private System.Windows.Forms.Button button1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label finishEstimate;
         private System.Windows.Forms.Label tileCounter;
+        private System.Windows.Forms.Button PauseBtn;
     }
 }

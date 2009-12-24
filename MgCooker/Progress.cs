@@ -208,5 +208,13 @@ namespace OSGeo.MapGuide.MgCooker
                 e.Cancel = true;
             }
         }
+
+        private void PauseBtn_Click(object sender, EventArgs e)
+        {
+            m_bx.PauseEvent.Reset();
+            MessageBox.Show(this, Strings.Progress.PauseMessage, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            m_bx.PauseEvent.Set();
+        }
+
     }
 }

@@ -2539,6 +2539,7 @@ namespace OSGeo.MapGuide.Maestro
                     System.Reflection.PropertyInfo pi = ei.Resource.GetType().GetProperty("CurrentConnection");
                     if (pi != null && pi.CanWrite)
                         pi.SetValue(ei.Resource, this.CurrentConnection, null);
+
                     try
                     {
                         pi = ei.Resource.GetType().GetProperty("ResourceId");

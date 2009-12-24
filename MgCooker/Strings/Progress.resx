@@ -134,6 +134,10 @@ Please be patient.</value>
     <value>&lt; Inaccurate measure of remaining time &gt;</value>
     <comment>Text displayed when it is not possible to predict the remaning time</comment>
   </data>
+  <data name="PauseMessage" xml:space="preserve">
+    <value>MgCooker is now paused, click OK to resume rendering</value>
+    <comment>A text message displayed when MgCooker is paused</comment>
+  </data>
   <data name="RemainingTime" xml:space="preserve">
     <value>{0}, remaining time: {1}</value>
     <comment>Label that displays the remaining time</comment>

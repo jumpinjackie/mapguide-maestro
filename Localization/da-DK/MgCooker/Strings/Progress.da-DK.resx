@@ -142,4 +142,8 @@ Vent venligst.</value>
     <value>({0} tiles fejlede)</value>
     <comment>Text inserted in the CurrentTileCounter if any tiles are failed</comment>
   </data>
+  <data name="PauseMessage" xml:space="preserve">
+    <value>MgCooker er på pause, klik OK for at for at fortsætte</value>
+    <comment>A text message displayed when MgCooker is paused</comment>
+  </data>
 </root>
