@@ -184,4 +184,7 @@
   <data name="DisplayLabel.Text" xml:space="preserve">
     <value>Vis labels på objekter</value>
   </data>
+  <data name="sizeCombo.Items" xml:space="preserve">
+    <value>Udtryk...</value>
+  </data>
 </root>

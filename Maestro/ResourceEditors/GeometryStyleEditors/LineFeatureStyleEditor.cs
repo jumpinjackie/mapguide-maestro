@@ -59,14 +59,28 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		private System.Data.DataTable UnitsTable;
 		private System.Data.DataColumn dataColumn5;
 		private System.Data.DataColumn dataColumn6;
-		private bool isUpdating = false;
+		private bool m_inUpdate = false;
         private ToolStrip toolStrip1;
         private ToolStripButton AddStyleButton;
         private ToolStripButton RemoveStyleButton;
 
 		public event EventHandler Changed;
 
-		public LineFeatureStyleEditor()
+        private EditorInterface m_editor;
+        private MaestroAPI.FeatureSourceDescription.FeatureSourceSchema m_schema;
+        private string m_featureSource;
+        private string m_providername;
+
+        public LineFeatureStyleEditor(EditorInterface editor, MaestroAPI.FeatureSourceDescription.FeatureSourceSchema schema, string featureSource)
+            : this()
+        {
+            m_editor = editor;
+            m_schema = schema;
+            m_providername = m_editor.CurrentConnection.GetFeatureSource(featureSource).Provider;
+            m_featureSource = featureSource;
+        }
+
+		private LineFeatureStyleEditor()
 		{
 			//
 			// Required for Windows Form Designer support
@@ -76,8 +90,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                 ComboBoxDataSet.ReadXml(sr);
 
 			lineStyleEditor.displayLine.Visible = false;
-			lineStyleEditor.thicknessUpDown.ValueChanged += new EventHandler(thicknessCombo_SelectedIndexChanged);
-			lineStyleEditor.colorCombo.CurrentColorChanged += new EventHandler(colorCombo_CurrentValueChanged);
+            lineStyleEditor.thicknessCombo.SelectedIndexChanged += new EventHandler(thicknessCombo_SelectedIndexChanged);
+            lineStyleEditor.thicknessCombo.TextChanged += new EventHandler(thicknessCombo_TextChanged);
+            lineStyleEditor.colorCombo.CurrentColorChanged += new EventHandler(colorCombo_CurrentValueChanged);
 			lineStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_SelectedIndexChanged);
 		}
 
@@ -85,7 +100,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		{
 			try
 			{
-				isUpdating = true;
+				m_inUpdate = true;
 				applyLineStyle.Checked = (m_item != null && m_item.Count != 0);
 
 				lineStyles.Items.Clear();
@@ -102,17 +117,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			}
 			finally
 			{
-				isUpdating = false;
+				m_inUpdate = false;
 			}
 
 		}
 
 		private void UpdateDisplayForSelected()
 		{
-			bool prevUpdate = isUpdating;
+			bool prevUpdate = m_inUpdate;
 			try
 			{
-				isUpdating = true;
+				m_inUpdate = true;
 				OSGeo.MapGuide.MaestroAPI.StrokeType st = this.CurrentStrokeType;
 				sizeGroup.Enabled = 
 				lineGroup.Enabled =
@@ -136,17 +151,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                             lineStyleEditor.fillCombo.SelectedItem = i;
                             break;
                         }
-					double o;
-					if (double.TryParse(st.Thickness, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out o))
-						lineStyleEditor.thicknessUpDown.Value = (decimal)o;
-					else
-						lineStyleEditor.thicknessUpDown.Value = 0;
+
+                    lineStyleEditor.thicknessCombo.Text = st.Thickness;
 				}
 				previewPicture.Refresh();
 			} 
 			finally
 			{
-				isUpdating = prevUpdate;
+				m_inUpdate = prevUpdate;
 			}
 
 		}
@@ -430,6 +442,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.propertyPanel.ResumeLayout(false);
             this.lineGroup.ResumeLayout(false);
             this.sizeGroup.ResumeLayout(false);
+            this.sizeGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).EndInit();
             this.previewGroup.ResumeLayout(false);
@@ -448,7 +461,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void sizeContextCombo_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
+			if (m_inUpdate)
 				return;
 			//TODO: Where does this go?
 			if (Changed != null)
@@ -457,7 +470,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void sizeUnitsCombo_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating || this.CurrentStrokeType == null)
+			if (m_inUpdate || this.CurrentStrokeType == null)
 				return;
 			this.CurrentStrokeType.Unit = (OSGeo.MapGuide.MaestroAPI.LengthUnitType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.LengthUnitType), (string)sizeUnitsCombo.SelectedValue);
 			previewPicture.Refresh();
@@ -476,21 +489,35 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			}
 		}
 
-		private void thicknessCombo_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			if (isUpdating || this.CurrentStrokeType == null)
-				return;
-			this.CurrentStrokeType.Thickness = lineStyleEditor.thicknessUpDown.Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        private void thicknessCombo_TextChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate || lineStyleEditor.thicknessCombo.SelectedIndex != -1)
+                return;
 
-			previewPicture.Refresh();
-			lineStyles.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            //TODO: Validate
+            this.CurrentStrokeType.Thickness = lineStyleEditor.thicknessCombo.Text;
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
+
+        private void thicknessCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate || lineStyleEditor.thicknessCombo.SelectedIndex != lineStyleEditor.thicknessCombo.Items.Count - 1)
+                return;
+
+            string current = this.CurrentStrokeType.Thickness;
+            string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+            if (!string.IsNullOrEmpty(expr))
+                current = expr;
+
+            //This is required as we cannot update the text from within the SelectedIndexChanged event :(
+            BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), lineStyleEditor.thicknessCombo, current, expr != null);
+        }
 
 		private void colorCombo_CurrentValueChanged(object sender, EventArgs e)
 		{
-            if (isUpdating || this.CurrentStrokeType == null)
+            if (m_inUpdate || this.CurrentStrokeType == null)
 				return;
 			this.CurrentStrokeType.Color = lineStyleEditor.colorCombo.CurrentColor;
 			previewPicture.Refresh();
@@ -501,7 +528,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void fillCombo_SelectedIndexChanged(object sender, EventArgs e)
 		{
-            if (isUpdating || this.CurrentStrokeType == null)
+            if (m_inUpdate || this.CurrentStrokeType == null)
 				return;
 
             if (lineStyleEditor.fillCombo.SelectedItem as ImageStylePicker.NamedImage != null)
@@ -521,7 +548,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			previewGroup.Enabled =
 				applyLineStyle.Checked;
 
-            if (!isUpdating)
+            if (!m_inUpdate)
             {
                 if (!applyLineStyle.Checked)
                 {
@@ -536,7 +563,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                         m_item = new OSGeo.MapGuide.MaestroAPI.StrokeTypeCollection();
 
                     if (m_item.Count == 0)
-                        m_item.Add(new OSGeo.MapGuide.MaestroAPI.StrokeType());
+                        m_item.Add(DefaultItemGenerator.CreateStrokeType());
 
                     UpdateDisplay();
                 }
@@ -552,7 +579,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 			compositePanel.Visible = compositeLines.Checked;
 
-			if (isUpdating)
+			if (m_inUpdate)
 				return;
 			if (Changed != null)
 				Changed(this, new EventArgs());
@@ -591,11 +618,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
         private void AddStyleButton_Click(object sender, EventArgs e)
         {
-            m_item.Add(new OSGeo.MapGuide.MaestroAPI.StrokeType());
+            m_item.Add(DefaultItemGenerator.CreateStrokeType());
             UpdateDisplay();
             lineStyles.SelectedIndex = lineStyles.Items.Count - 1;
         }
-
 
         internal void SetupForTheming()
         {
@@ -603,6 +629,25 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             lineStyleEditor.lblColor.Enabled =
             AdvancedPanel.Enabled =
                 false;
+        }
+
+        public delegate void UpdateComboTextFromSelectChangedDelegate(ComboBox owner, string text, bool userChange);
+
+        private void UpdateComboTextFromSelectChanged(ComboBox owner, string text, bool userChange)
+        {
+            try
+            {
+                if (!userChange)
+                    m_inUpdate = true;
+                owner.SelectedIndex = -1;
+
+                owner.Text = text;
+            }
+            finally
+            {
+                if (!userChange)
+                    m_inUpdate = false;
+            }
         }
     }
 }

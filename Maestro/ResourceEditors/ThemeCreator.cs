@@ -815,19 +815,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             UserControl uc = null;
             if (m_ruleCollection is MaestroAPI.PointTypeStyleType)
             {
-                uc = new GeometryStyleEditors.PointFeatureStyleEditor();
+                uc = new GeometryStyleEditors.PointFeatureStyleEditor(m_editor, m_schema, m_layer.Item.ResourceId);
                 ((GeometryStyleEditors.PointFeatureStyleEditor)uc).Item = (MaestroAPI.PointSymbolization2DType)MaestroAPI.Utility.XmlDeepCopy(m_defaultItem);
                 ((GeometryStyleEditors.PointFeatureStyleEditor)uc).SetupForTheming();
             }
             else if (m_ruleCollection is MaestroAPI.LineTypeStyleType)
             {
-                uc = new GeometryStyleEditors.LineFeatureStyleEditor();
+                uc = new GeometryStyleEditors.LineFeatureStyleEditor(m_editor, m_schema, m_layer.Item.ResourceId);
                 ((GeometryStyleEditors.LineFeatureStyleEditor)uc).Item = (MaestroAPI.StrokeTypeCollection)MaestroAPI.Utility.XmlDeepCopy(m_defaultItem);
                 ((GeometryStyleEditors.LineFeatureStyleEditor)uc).SetupForTheming();
             }
             else if (m_ruleCollection is MaestroAPI.AreaTypeStyleType)
             {
-                uc = new GeometryStyleEditors.AreaFeatureStyleEditor();
+                uc = new GeometryStyleEditors.AreaFeatureStyleEditor(m_editor, m_schema, m_layer.Item.ResourceId);
                 ((GeometryStyleEditors.AreaFeatureStyleEditor)uc).Item = (MaestroAPI.AreaSymbolizationFillType)MaestroAPI.Utility.XmlDeepCopy(m_defaultItem);
                 ((GeometryStyleEditors.AreaFeatureStyleEditor)uc).SetupForTheming();
             }

@@ -31,7 +31,7 @@ namespace OSGeo.MapGuide.Maestro
 	/// </summary>
 	public class BrowseUnmanagedData : System.Windows.Forms.Form
 	{
-		private new System.Windows.Forms.Button CancelButton;
+		private new System.Windows.Forms.Button CancelBtn;
 		private System.Windows.Forms.Button OKButton;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Panel panel3;
@@ -138,7 +138,7 @@ namespace OSGeo.MapGuide.Maestro
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BrowseUnmanagedData));
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelBtn = new System.Windows.Forms.Button();
             this.OKButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -161,11 +161,11 @@ namespace OSGeo.MapGuide.Maestro
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // CancelButton
+            // CancelBtn
             // 
-            resources.ApplyResources(this.CancelButton, "CancelButton");
-            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.Name = "CancelButton";
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
+            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelBtn.Name = "CancelBtn";
             // 
             // OKButton
             // 
@@ -275,8 +275,7 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.AcceptButton = this.OKButton;
             resources.ApplyResources(this, "$this");
-            this.CancelButton = this.CancelButton;
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.panel1);
             this.Name = "BrowseUnmanagedData";

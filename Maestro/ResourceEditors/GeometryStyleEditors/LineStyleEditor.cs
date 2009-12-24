@@ -37,10 +37,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		private System.Windows.Forms.Label lblThickness;
 		private System.Windows.Forms.Label lblFill;
 		public System.Windows.Forms.CheckBox displayLine;
-		private System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.NumericUpDown thicknessUpDown;
+        private System.Windows.Forms.Panel panel1;
         private Label label1;
         public ColorComboWithTransparency colorCombo;
+        public ComboBox thicknessCombo;
 
 		/// <summary> 
 		/// Required designer variable.
@@ -85,11 +85,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.lblFill = new System.Windows.Forms.Label();
             this.displayLine = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.thicknessUpDown = new System.Windows.Forms.NumericUpDown();
+            this.thicknessCombo = new System.Windows.Forms.ComboBox();
             this.colorCombo = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.thicknessUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // fillCombo
@@ -125,9 +124,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.thicknessCombo);
             this.panel1.Controls.Add(this.colorCombo);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.thicknessUpDown);
             this.panel1.Controls.Add(this.fillCombo);
             this.panel1.Controls.Add(this.lblColor);
             this.panel1.Controls.Add(this.lblThickness);
@@ -135,21 +134,24 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // label1
+            // thicknessCombo
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // thicknessUpDown
-            // 
-            resources.ApplyResources(this.thicknessUpDown, "thicknessUpDown");
-            this.thicknessUpDown.Name = "thicknessUpDown";
+            resources.ApplyResources(this.thicknessCombo, "thicknessCombo");
+            this.thicknessCombo.FormattingEnabled = true;
+            this.thicknessCombo.Items.AddRange(new object[] {
+            resources.GetString("thicknessCombo.Items")});
+            this.thicknessCombo.Name = "thicknessCombo";
             // 
             // colorCombo
             // 
             resources.ApplyResources(this.colorCombo, "colorCombo");
             this.colorCombo.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.colorCombo.Name = "colorCombo";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // LineStyleEditor
             // 
@@ -159,7 +161,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             resources.ApplyResources(this, "$this");
             this.Load += new System.EventHandler(this.LineStyleEditor_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.thicknessUpDown)).EndInit();
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
 		}

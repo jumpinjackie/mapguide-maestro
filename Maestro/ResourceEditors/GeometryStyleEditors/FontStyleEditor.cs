@@ -93,36 +93,54 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
         private Label label12;
         private Label label11;
         private ColorComboWithTransparency backgroundColor;
-		private bool isUpdating = false;
+		private bool m_inUpdate = false;
 
 		public event EventHandler Changed;
 
-		public FontStyleEditor()
+        private EditorInterface m_editor;
+        private MaestroAPI.FeatureSourceDescription.FeatureSourceSchema m_schema;
+        private string m_featureSource;
+        private string m_providername;
+
+        public FontStyleEditor(EditorInterface editor, MaestroAPI.FeatureSourceDescription.FeatureSourceSchema schema, string featureSource)
+            : this()
+        {
+            m_editor = editor;
+            m_schema = schema;
+            m_providername = m_editor.CurrentConnection.GetFeatureSource(featureSource).Provider;
+            m_featureSource = featureSource;
+
+            propertyCombo.Items.Clear();
+            foreach (MaestroAPI.FeatureSetColumn col in m_schema.Columns)
+                if (col.Type != MaestroAPI.Utility.GeometryType && col.Type != MaestroAPI.Utility.RasterType)
+                propertyCombo.Items.Add(col.Name);
+            propertyCombo.Items.Add(Strings.FontStyleEditor.ExpressionItem);
+
+            fontCombo.Items.Clear();
+            foreach (FontFamily f in new System.Drawing.Text.InstalledFontCollection().Families)
+                fontCombo.Items.Add(f.Name);
+
+        }
+
+        private FontStyleEditor()
 		{
 			//
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
 
-            using(System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.FontStyleComboDataset))
+            using(System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.GeometryStyleComboDataset))
 				ComboBoxDataSet.ReadXml(sr);
-		}
+        }
 
-		public void SetAvalibleColumns(string[] items)
-		{
-			propertyCombo.Items.Clear();
-			if (items != null)
-				propertyCombo.Items.AddRange(items);
-			//propertyCombo.Items.Add("Expression...");
-		}
 
 		private void UpdateDisplay()
 		{
-			if (isUpdating)
+			if (m_inUpdate)
 				return;
 			try
 			{
-				isUpdating = true;
+				m_inUpdate = true;
 
                 if (m_item == null)
                 {
@@ -135,7 +153,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				propertyCombo.Text = m_item.Text;
 				propertyCombo.SelectedItem = m_item.Text;
 				if (m_item.FontName != null)
-					fontCombo.SelectedValue = m_item.FontName;
+					fontCombo.Text = m_item.FontName;
 				sizeContextCombo.SelectedValue = m_item.SizeContext.ToString();
 				unitsCombo.SelectedValue = m_item.Unit.ToString();
 				if (m_item.SizeX == null)
@@ -156,7 +174,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			}
 			finally
 			{
-				isUpdating = false;
+				m_inUpdate = false;
 			}
 		}
 
@@ -195,9 +213,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.dataColumn3 = new System.Data.DataColumn();
             this.dataColumn4 = new System.Data.DataColumn();
             this.fontCombo = new System.Windows.Forms.ComboBox();
-            this.FontTable = new System.Data.DataTable();
-            this.dataColumn1 = new System.Data.DataColumn();
-            this.dataColumn2 = new System.Data.DataColumn();
             this.propertyCombo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -209,6 +224,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.underlineCheck = new System.Windows.Forms.CheckBox();
             this.italicCheck = new System.Windows.Forms.CheckBox();
             this.boldCheck = new System.Windows.Forms.CheckBox();
+            this.FontTable = new System.Data.DataTable();
+            this.dataColumn1 = new System.Data.DataColumn();
+            this.dataColumn2 = new System.Data.DataColumn();
             this.colorGroup = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -244,8 +262,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.fontGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FontTable)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FontTable)).BeginInit();
             this.colorGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundTypeTable)).BeginInit();
             this.alignmentGroup.SuspendLayout();
@@ -279,6 +297,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // sizeCombo
             // 
             resources.ApplyResources(this.sizeCombo, "sizeCombo");
+            this.sizeCombo.Items.AddRange(new object[] {
+            resources.GetString("sizeCombo.Items")});
             this.sizeCombo.Name = "sizeCombo";
             this.sizeCombo.SelectedIndexChanged += new System.EventHandler(this.sizeCombo_SelectedIndexChanged);
             this.sizeCombo.TextChanged += new System.EventHandler(this.sizeCombo_TextChanged);
@@ -340,29 +360,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // fontCombo
             // 
             resources.ApplyResources(this.fontCombo, "fontCombo");
-            this.fontCombo.DataSource = this.FontTable;
-            this.fontCombo.DisplayMember = "Display";
             this.fontCombo.Name = "fontCombo";
-            this.fontCombo.ValueMember = "Value";
             this.fontCombo.SelectedIndexChanged += new System.EventHandler(this.fontCombo_SelectedIndexChanged);
             this.fontCombo.TextChanged += new System.EventHandler(this.fontCombo_TextChanged);
-            // 
-            // FontTable
-            // 
-            this.FontTable.Columns.AddRange(new System.Data.DataColumn[] {
-            this.dataColumn1,
-            this.dataColumn2});
-            this.FontTable.TableName = "Font";
-            // 
-            // dataColumn1
-            // 
-            this.dataColumn1.Caption = "Display";
-            this.dataColumn1.ColumnName = "Display";
-            // 
-            // dataColumn2
-            // 
-            this.dataColumn2.Caption = "Value";
-            this.dataColumn2.ColumnName = "Value";
             // 
             // propertyCombo
             // 
@@ -426,6 +426,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             resources.ApplyResources(this.boldCheck, "boldCheck");
             this.boldCheck.Name = "boldCheck";
             this.boldCheck.CheckedChanged += new System.EventHandler(this.boldCheck_CheckedChanged);
+            // 
+            // FontTable
+            // 
+            this.FontTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.dataColumn1,
+            this.dataColumn2});
+            this.FontTable.TableName = "Font";
+            // 
+            // dataColumn1
+            // 
+            this.dataColumn1.Caption = "Display";
+            this.dataColumn1.ColumnName = "Display";
+            // 
+            // dataColumn2
+            // 
+            this.dataColumn2.Caption = "Value";
+            this.dataColumn2.ColumnName = "Value";
             // 
             // colorGroup
             // 
@@ -525,6 +542,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.rotationCombo.Name = "rotationCombo";
             this.rotationCombo.ValueMember = "Value";
             this.rotationCombo.SelectedIndexChanged += new System.EventHandler(this.rotationCombo_SelectedIndexChanged);
+            this.rotationCombo.TextChanged += new System.EventHandler(this.rotationCombo_TextChanged);
             // 
             // RotationTable
             // 
@@ -548,10 +566,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             resources.ApplyResources(this.verticalCombo, "verticalCombo");
             this.verticalCombo.DataSource = this.VerticalTable;
             this.verticalCombo.DisplayMember = "Display";
-            this.verticalCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.verticalCombo.Name = "verticalCombo";
             this.verticalCombo.ValueMember = "Value";
             this.verticalCombo.SelectedIndexChanged += new System.EventHandler(this.verticalCombo_SelectedIndexChanged);
+            this.verticalCombo.TextChanged += new System.EventHandler(this.verticalCombo_TextChanged);
             // 
             // VerticalTable
             // 
@@ -573,10 +591,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             resources.ApplyResources(this.horizontalCombo, "horizontalCombo");
             this.horizontalCombo.DataSource = this.HorizontalTable;
             this.horizontalCombo.DisplayMember = "Display";
-            this.horizontalCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.horizontalCombo.Name = "horizontalCombo";
             this.horizontalCombo.ValueMember = "Value";
             this.horizontalCombo.SelectedIndexChanged += new System.EventHandler(this.horizontalCombo_SelectedIndexChanged);
+            this.horizontalCombo.TextChanged += new System.EventHandler(this.horizontalCombo_TextChanged);
             // 
             // HorizontalTable
             // 
@@ -656,14 +674,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.Controls.Add(this.alignmentGroup);
             this.Name = "FontStyleEditor";
             this.fontGroup.ResumeLayout(false);
+            this.fontGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FontTable)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FontTable)).EndInit();
             this.colorGroup.ResumeLayout(false);
             this.colorGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundTypeTable)).EndInit();
             this.alignmentGroup.ResumeLayout(false);
+            this.alignmentGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RotationTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HorizontalTable)).EndInit();
@@ -679,20 +699,23 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void propertyCombo_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
-				return;
-			m_item.Text = propertyCombo.Text; //(string)propertyCombo.SelectedItem;
-			previewPicture.Refresh();
+            if (propertyCombo.SelectedIndex == propertyCombo.Items.Count - 1)
+            {
+                string current = m_item.Text;
+                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                if (!string.IsNullOrEmpty(expr))
+                    current = expr;
 
-			if (Changed != null)
-				Changed(this, new EventArgs());
+                //This is required as we cannot update the text from within the SelectedIndexChanged event :(
+                BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), propertyCombo, current, expr != null);
+            }
 		}
 
 		private void fontCombo_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
+			if (m_inUpdate)
 				return;
-			m_item.FontName = (string)fontCombo.SelectedValue;
+			m_item.FontName = (string)fontCombo.Text;
 			previewPicture.Refresh();
 
 			if (Changed != null)
@@ -701,7 +724,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void sizeContextCombo_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
+			if (m_inUpdate)
 				return;
 			m_item.SizeContext = (OSGeo.MapGuide.MaestroAPI.SizeContextType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.SizeContextType), (string)sizeContextCombo.SelectedValue);
 			previewPicture.Refresh();
@@ -712,7 +735,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void unitsCombo_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
+			if (m_inUpdate)
 				return;
 			m_item.Unit = (OSGeo.MapGuide.MaestroAPI.LengthUnitType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.LengthUnitType), (string)unitsCombo.SelectedValue);
 			previewPicture.Refresh();
@@ -723,19 +746,21 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void sizeCombo_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
-				return;
-			//TODO: Validate
-			m_item.SizeX = m_item.SizeY = sizeCombo.Text;
-			previewPicture.Refresh();
+            if (sizeCombo.SelectedIndex == sizeCombo.Items.Count - 1)
+            {
+                string current = m_item.SizeX;
+                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                if (!string.IsNullOrEmpty(expr))
+                    current = expr;
 
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+                //This is required as we cannot update the text from within the SelectedIndexChanged event :(
+                BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), sizeCombo, current, expr != null);
+            }
+        }
 
 		private void boldCheck_CheckedChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
+			if (m_inUpdate)
 				return;
 			m_item.Bold = boldCheck.Checked ? "true" : null;
 			previewPicture.Refresh();
@@ -746,7 +771,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void italicCheck_CheckedChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
+			if (m_inUpdate)
 				return;
 			m_item.Italic = italicCheck.Checked ? "true" : null;
 			previewPicture.Refresh();
@@ -757,7 +782,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void underlineCheck_CheckedChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
+			if (m_inUpdate)
 				return;
 			m_item.Underlined = underlineCheck.Checked ? "true" : null;
 			previewPicture.Refresh();
@@ -768,7 +793,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void textColor_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
+			if (m_inUpdate)
 				return;
 			m_item.ForegroundColor = textColor.CurrentColor;
 			previewPicture.Refresh();
@@ -779,7 +804,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void backgroundColor_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
+			if (m_inUpdate)
 				return;
 			m_item.BackgroundColor = backgroundColor.CurrentColor;
 			previewPicture.Refresh();
@@ -790,7 +815,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void backgroundTypeCombo_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
+			if (m_inUpdate)
 				return;
 			m_item.BackgroundStyle = (OSGeo.MapGuide.MaestroAPI.BackgroundStyleType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.BackgroundStyleType), (string)backgroundTypeCombo.SelectedValue);
 			previewPicture.Refresh();
@@ -801,37 +826,60 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void horizontalCombo_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
-				return;
-			m_item.HorizontalAlignment = (string)horizontalCombo.SelectedValue;
-			previewPicture.Refresh();
+            if (m_inUpdate)
+                return;
 
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            if (horizontalCombo.SelectedIndex == horizontalCombo.Items.Count - 1)
+            {
+                string current = m_item.HorizontalAlignment;
+                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                if (!string.IsNullOrEmpty(expr))
+                    current = expr;
+
+                //This is required as we cannot update the text from within the SelectedIndexChanged event :(
+                BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), horizontalCombo, current, expr != null);
+            }
+            else if (horizontalCombo.SelectedIndex != -1)
+            {
+                m_item.HorizontalAlignment = (string)horizontalCombo.SelectedValue;
+            }
+        }
 
 		private void verticalCombo_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
-				return;
-			m_item.VerticalAlignment = (string)verticalCombo.SelectedValue;
-			previewPicture.Refresh();
+            if (verticalCombo.SelectedIndex == verticalCombo.Items.Count - 1)
+            {
+                string current = m_item.VerticalAlignment;
+                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                if (!string.IsNullOrEmpty(expr))
+                    current = expr;
 
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+                //This is required as we cannot update the text from within the SelectedIndexChanged event :(
+                BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), verticalCombo, current, expr != null);
+            }
+            else if (verticalCombo.SelectedIndex != -1)
+            {
+                m_item.VerticalAlignment = (string)verticalCombo.SelectedValue;
+            }
+        }
 
 		private void rotationCombo_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (isUpdating)
-				return;
-			//TODO: Validate
-			m_item.Rotation = sizeCombo.Text;
-			previewPicture.Refresh();
+            if (rotationCombo.SelectedIndex == rotationCombo.Items.Count - 1)
+            {
+                string current = m_item.Rotation;
+                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                if (!string.IsNullOrEmpty(expr))
+                    current = expr;
 
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+                //This is required as we cannot update the text from within the SelectedIndexChanged event :(
+                BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), rotationCombo, current, expr != null);
+            }
+            else if (rotationCombo.SelectedIndex != -1)
+            {
+                m_item.Rotation = (string)rotationCombo.SelectedValue;
+            }
+        }
 
 		private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
 		{
@@ -845,8 +893,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		private void propertyCombo_TextChanged(object sender, System.EventArgs e)
 		{
-			propertyCombo_SelectedIndexChanged(sender, e);
-		}
+            if (m_inUpdate || propertyCombo.SelectedIndex == propertyCombo.Items.Count - 1)
+                return;
+
+            m_item.Text = propertyCombo.Text;
+            previewPicture.Refresh();
+
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
 		public OSGeo.MapGuide.MaestroAPI.TextSymbolType Item
 		{
@@ -863,7 +918,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             foreach (Control c in this.Controls)
                 c.Enabled = c == DisplayLabel || DisplayLabel.Checked;
 
-            if (isUpdating)
+            if (m_inUpdate)
                 return;
 
             if (DisplayLabel.Checked)
@@ -883,7 +938,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
         private void sizeCombo_TextChanged(object sender, EventArgs e)
         {
-            sizeCombo_SelectedIndexChanged(sender, e);
+            if (m_inUpdate || sizeCombo.SelectedIndex != -1)
+                return;
+
+            //TODO: Validate
+            m_item.SizeX = m_item.SizeY = sizeCombo.Text;
+            previewPicture.Refresh();
+
+            if (Changed != null)
+                Changed(this, new EventArgs());
         }
 
         private void fontCombo_TextChanged(object sender, EventArgs e)
@@ -891,6 +954,62 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             fontCombo_SelectedIndexChanged(sender, e);
         }
 
+
+        public delegate void UpdateComboTextFromSelectChangedDelegate(ComboBox owner, string text, bool userChange);
+
+        private void UpdateComboTextFromSelectChanged(ComboBox owner, string text, bool userChange)
+        {
+            try
+            {
+                if (!userChange)
+                    m_inUpdate = true;
+                owner.SelectedIndex = -1;
+
+                owner.Text = text;
+            }
+            finally
+            {
+                if (!userChange)
+                    m_inUpdate = false;
+            }
+        }
+
+        private void horizontalCombo_TextChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate || horizontalCombo.SelectedIndex != -1)
+                return;
+
+            m_item.HorizontalAlignment = (string)horizontalCombo.SelectedValue;
+            previewPicture.Refresh();
+
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
+
+        private void verticalCombo_TextChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate || verticalCombo.SelectedIndex != -1)
+                return;
+
+            m_item.VerticalAlignment = (string)verticalCombo.SelectedValue;
+            previewPicture.Refresh();
+
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
+
+        private void rotationCombo_TextChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate || rotationCombo.SelectedIndex != -1)
+                return;
+
+            //TODO: Validate
+            m_item.Rotation = sizeCombo.Text;
+            previewPicture.Refresh();
+
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
 	}
 }

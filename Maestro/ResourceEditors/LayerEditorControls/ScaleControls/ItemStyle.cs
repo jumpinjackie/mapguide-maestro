@@ -123,24 +123,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             UserControl uc = null;
             if (isLabel)
             {
-                uc = new GeometryStyleEditors.FontStyleEditor();
+                uc = new GeometryStyleEditors.FontStyleEditor(m_owner.Editor, m_owner.Schema, m_owner.FeatureSourceId);
                 ((GeometryStyleEditors.FontStyleEditor)uc).Item = (TextSymbolType)Utility.DeepCopy(m_label);
-
-                ((GeometryStyleEditors.FontStyleEditor)uc).SetAvalibleColumns(m_owner.GetAvalibleColumns());
             }
             else if (isPoint)
             {
-                uc = new GeometryStyleEditors.PointFeatureStyleEditor();
+                uc = new GeometryStyleEditors.PointFeatureStyleEditor(m_owner.Editor, m_owner.Schema, m_owner.FeatureSourceId);
                 ((GeometryStyleEditors.PointFeatureStyleEditor)uc).Item = (PointSymbolization2DType)Utility.XmlDeepCopy(m_point);
             }
             else if (isLine)
             {
-                uc = new GeometryStyleEditors.LineFeatureStyleEditor();
+                uc = new GeometryStyleEditors.LineFeatureStyleEditor(m_owner.Editor, m_owner.Schema, m_owner.FeatureSourceId);
                 ((GeometryStyleEditors.LineFeatureStyleEditor)uc).Item = (StrokeTypeCollection)Utility.XmlDeepCopy(m_line);
             }
             else if (isArea)
             {
-                uc = new GeometryStyleEditors.AreaFeatureStyleEditor();
+                uc = new GeometryStyleEditors.AreaFeatureStyleEditor(m_owner.Editor, m_owner.Schema, m_owner.FeatureSourceId);
                 ((GeometryStyleEditors.AreaFeatureStyleEditor)uc).Item = (AreaSymbolizationFillType)Utility.XmlDeepCopy(m_area);
             }
 

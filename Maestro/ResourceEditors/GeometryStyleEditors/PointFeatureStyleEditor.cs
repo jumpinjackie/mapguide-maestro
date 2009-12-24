@@ -100,7 +100,21 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
         public event EventHandler Changed;
 
-		public PointFeatureStyleEditor()
+        private EditorInterface m_editor;
+        private MaestroAPI.FeatureSourceDescription.FeatureSourceSchema m_schema;
+        private string m_featureSource;
+        private string m_providername;
+
+        public PointFeatureStyleEditor(EditorInterface editor, MaestroAPI.FeatureSourceDescription.FeatureSourceSchema schema, string featureSource)
+            : this()
+        {
+            m_editor = editor;
+            m_schema = schema;
+            m_providername = m_editor.CurrentConnection.GetFeatureSource(featureSource).Provider;
+            m_featureSource = featureSource;
+        }
+
+		private PointFeatureStyleEditor()
 		{
 			//
 			// Required for Windows Form Designer support
@@ -121,7 +135,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			fillStyleEditor.backgroundColor.CurrentColorChanged +=new EventHandler(backgroundColor_CurrentColorChanged);
 
 			lineStyleEditor.displayLine.CheckedChanged +=new EventHandler(displayLine_CheckedChanged);
-			lineStyleEditor.thicknessUpDown.ValueChanged +=new EventHandler(thicknessCombo_SelectedIndexChanged);
+			lineStyleEditor.thicknessCombo.SelectedIndexChanged += new EventHandler(thicknessCombo_SelectedIndexChanged);
+            lineStyleEditor.thicknessCombo.TextChanged += new EventHandler(thicknessCombo_TextChanged);
 			lineStyleEditor.colorCombo.CurrentColorChanged +=new EventHandler(colorCombo_CurrentColorChanged);
 			lineStyleEditor.fillCombo.SelectedIndexChanged +=new EventHandler(fillCombo_Line_SelectedIndexChanged);
 
@@ -202,11 +217,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 							lineStyleEditor.fillCombo.SelectedIndex = lineStyleEditor.fillCombo.FindString(t.Edge.LineStyle);
 
 						lineStyleEditor.colorCombo.CurrentColor = t.Edge.Color;
-						double o;
-						if (double.TryParse(t.Edge.Thickness, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out o))
-							lineStyleEditor.thicknessUpDown.Value = (decimal)o;
-						else
-							lineStyleEditor.thicknessUpDown.Value = 0;
+						lineStyleEditor.thicknessCombo.Text = t.Edge.Thickness;
 					}
 
 					setUIForMarkSymbol(true);
@@ -307,6 +318,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.ComboBoxDataSet = new System.Data.DataSet();
             this.DisplayPoints = new System.Windows.Forms.CheckBox();
             this.groupBoxFont = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.colorFontForeground = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.FontBoldButton = new System.Windows.Forms.ToolStripButton();
@@ -324,8 +337,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.MaintainAspectRatio = new System.Windows.Forms.CheckBox();
-            this.colorFontForeground = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RotationTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).BeginInit();
@@ -368,7 +379,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.RotationBox.Name = "RotationBox";
             this.RotationBox.ValueMember = "Value";
             this.RotationBox.SelectedIndexChanged += new System.EventHandler(this.RotationBox_SelectedIndexChanged);
-            this.RotationBox.TextChanged += new System.EventHandler(this.Rotation_TextChanged);
+            this.RotationBox.TextChanged += new System.EventHandler(this.RotationBox_TextChanged);
             // 
             // RotationTable
             // 
@@ -395,6 +406,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // HeigthText
             // 
             resources.ApplyResources(this.HeigthText, "HeigthText");
+            this.HeigthText.Items.AddRange(new object[] {
+            resources.GetString("HeigthText.Items")});
             this.HeigthText.Name = "HeigthText";
             this.HeigthText.SelectedIndexChanged += new System.EventHandler(this.HeigthText_SelectedIndexChanged);
             this.HeigthText.TextChanged += new System.EventHandler(this.HeigthText_TextChanged);
@@ -402,6 +415,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             // WidthText
             // 
             resources.ApplyResources(this.WidthText, "WidthText");
+            this.WidthText.Items.AddRange(new object[] {
+            resources.GetString("WidthText.Items")});
             this.WidthText.Name = "WidthText";
             this.WidthText.SelectedIndexChanged += new System.EventHandler(this.WidthText_SelectedIndexChanged);
             this.WidthText.TextChanged += new System.EventHandler(this.WidthText_TextChanged);
@@ -584,6 +599,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.groupBoxFont.Name = "groupBoxFont";
             this.groupBoxFont.TabStop = false;
             // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // colorFontForeground
+            // 
+            resources.ApplyResources(this.colorFontForeground, "colorFontForeground");
+            this.colorFontForeground.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorFontForeground.Name = "colorFontForeground";
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.toolStrip1);
@@ -700,17 +726,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             resources.ApplyResources(this.MaintainAspectRatio, "MaintainAspectRatio");
             this.MaintainAspectRatio.Name = "MaintainAspectRatio";
             // 
-            // colorFontForeground
-            // 
-            resources.ApplyResources(this.colorFontForeground, "colorFontForeground");
-            this.colorFontForeground.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorFontForeground.Name = "colorFontForeground";
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
-            // 
             // PointFeatureStyleEditor
             // 
             resources.ApplyResources(this, "$this");
@@ -724,6 +739,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.Name = "PointFeatureStyleEditor";
             this.Load += new System.EventHandler(this.PointFeatureStyleEditor_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RotationTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).EndInit();
@@ -837,10 +853,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			if (m_inUpdate)
 				return;
 
-			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).SizeContext = (OSGeo.MapGuide.MaestroAPI.SizeContextType)Enum.Parse((typeof(OSGeo.MapGuide.MaestroAPI.SizeContextType)), (string)SizeContext.SelectedValue);
-			else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).SizeContext = (OSGeo.MapGuide.MaestroAPI.SizeContextType)Enum.Parse((typeof(OSGeo.MapGuide.MaestroAPI.SizeContextType)), (string)SizeContext.SelectedValue);
+            if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
+                ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).SizeContext = (OSGeo.MapGuide.MaestroAPI.SizeContextType)Enum.Parse((typeof(OSGeo.MapGuide.MaestroAPI.SizeContextType)), (string)SizeContext.SelectedValue);
+            else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+                ((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).SizeContext = (OSGeo.MapGuide.MaestroAPI.SizeContextType)Enum.Parse((typeof(OSGeo.MapGuide.MaestroAPI.SizeContextType)), (string)SizeContext.SelectedValue);
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
@@ -860,19 +876,49 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				Changed(this, new EventArgs());
 		}
 
+        public delegate void UpdateComboTextFromSelectChangedDelegate(ComboBox owner, string text, bool userChange);
+
+        private void UpdateComboTextFromSelectChanged(ComboBox owner, string text, bool userChange)
+        {
+            try
+            {
+                if (!userChange)
+                    m_inUpdate = true;
+                owner.SelectedIndex = -1;
+
+                owner.Text = text;
+            }
+            finally
+            {
+                if (!userChange)
+                    m_inUpdate = false;
+            }
+        }
+
 		private void WidthText_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (m_inUpdate)
 				return;
 
-			//TODO: Validate
-			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).SizeX = WidthText.Text;
-			else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).SizeX = WidthText.Text;
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
+            if (WidthText.SelectedIndex == WidthText.Items.Count - 1)
+            {
+                string current = null;
+                if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
+                    current = ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).SizeX;
+                else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+                    current = ((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).SizeX;
+
+                string expr = null;
+                if (current != null)
+                {
+                    expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                    if (!string.IsNullOrEmpty(expr))
+                        current = expr;
+                }
+
+                //This is required as we cannot update the text from within the SelectedIndexChanged event :(
+                BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), WidthText, current, expr != null);
+            }
 		}
 
 		private void HeigthText_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -880,14 +926,25 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			if (m_inUpdate)
 				return;
 
-			//TODO: Validate
-			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).SizeY = HeigthText.Text;
-			else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).SizeY = HeigthText.Text;
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
+            if (HeigthText.SelectedIndex == HeigthText.Items.Count - 1)
+            {
+                string current = null;
+                if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
+                    current = ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).SizeY;
+                else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+                    current = ((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).SizeY;
+
+                string expr = null;
+                if (current != null)
+                {
+                    expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                    if (!string.IsNullOrEmpty(expr))
+                        current = expr;
+                }
+
+                //This is required as we cannot update the text from within the SelectedIndexChanged event :(
+                BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), HeigthText, current, expr != null);
+            }
 		}
 
 		private void ReferenceX_TextChanged(object sender, System.EventArgs e)
@@ -935,14 +992,35 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 			if (m_inUpdate)
 				return;
 
-			//TODO: Validate
-			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).Rotation = (string)RotationBox.Text;
-			else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).Rotation = (string)RotationBox.Text;
-			previewPicture.Refresh();		
-			if (Changed != null)
-				Changed(this, new EventArgs());
+            if (RotationBox.SelectedIndex == RotationBox.Items.Count - 1)
+            {
+                string current = null;
+                if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
+                    current = ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).Rotation;
+                else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+                    current = ((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).Rotation;
+
+                string expr = null;
+                if (current != null)
+                {
+                    expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                    if (!string.IsNullOrEmpty(expr))
+                        current = expr;
+                }
+
+                //This is required as we cannot update the text from within the SelectedIndexChanged event :(
+                BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), RotationBox, current, expr != null);
+            }
+            else if (RotationBox.SelectedIndex != -1)
+            {
+                if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
+                    ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).Rotation = (string)RotationBox.SelectedValue;
+                else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+                    ((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).Rotation = (string)RotationBox.SelectedValue;
+
+                //RotationBox.SelectedIndex = -1;
+            }
+
 		}
 
 		private void displayFill_CheckedChanged(object sender, EventArgs e)
@@ -1019,18 +1097,40 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				Changed(this, new EventArgs());
 		}
 
-		private void thicknessCombo_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void thicknessCombo_TextChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate || lineStyleEditor.thicknessCombo.SelectedIndex != -1)
+                return;
+
+            //TODO: Validate
+            if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
+                ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).Edge.Thickness = lineStyleEditor.thicknessCombo.Text;
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
+
+        private void thicknessCombo_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (m_inUpdate)
+			if (m_inUpdate || lineStyleEditor.thicknessCombo.SelectedIndex != lineStyleEditor.thicknessCombo.Items.Count - 1)
 				return;
 
-			//TODO: Validate
-			if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-				((OSGeo.MapGuide.MaestroAPI.MarkSymbolType) m_item.Item).Edge.Thickness =  lineStyleEditor.thicknessUpDown.Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+                string current = null;
+                if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
+                    current = ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).Edge.Thickness;
+
+                string expr = null;
+                if (current != null)
+                {
+                    expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                    if (!string.IsNullOrEmpty(expr))
+                        current = expr;
+                }
+
+                //This is required as we cannot update the text from within the SelectedIndexChanged event :(
+                BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), lineStyleEditor.thicknessCombo, current, expr != null);
+        }
 
 		private void colorCombo_CurrentColorChanged(object sender, EventArgs e)
 		{
@@ -1154,17 +1254,47 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
         private void WidthText_TextChanged(object sender, EventArgs e)
         {
-            WidthText_SelectedIndexChanged(sender, e);
+            if (m_inUpdate || WidthText.SelectedIndex != -1)
+                return;
+
+            //TODO: Validate
+            if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
+                ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).SizeX = WidthText.Text;
+            else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+                ((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).SizeX = WidthText.Text;
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
         }
 
         private void HeigthText_TextChanged(object sender, EventArgs e)
         {
-            HeigthText_SelectedIndexChanged(sender, e);
+            if (m_inUpdate || HeigthText.SelectedIndex != -1)
+                return;
+
+            //TODO: Validate
+            if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
+                ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).SizeY = HeigthText.Text;
+            else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+                ((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).SizeY = HeigthText.Text;
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
         }
 
-		private void Rotation_TextChanged(object sender, EventArgs e)
+		private void RotationBox_TextChanged(object sender, EventArgs e)
 		{
-			RotationBox_SelectedIndexChanged(sender, e);
+            if (m_inUpdate || RotationBox.SelectedIndex != -1)
+                return;
+
+            //TODO: Validate
+            if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
+                ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).Rotation = (string)RotationBox.Text;
+            else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
+                ((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).Rotation = (string)RotationBox.Text;
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
 		}
 		
 		private void ReferenceY_Leave(object sender, EventArgs e)

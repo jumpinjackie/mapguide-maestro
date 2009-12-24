@@ -62,6 +62,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///
+        ///&lt;!-- 
+        ///  Note to translators:
+        ///    You can only translate &lt;Label&gt;, &lt;ToolTip&gt; and &lt;Description&gt;
+        ///    If you translate any of the others, the editor won&apos;t work!
+        ///--&gt;
+        ///
         ///&lt;CommandTypesDataset&gt;
         ///	&lt;Command&gt;
         ///		&lt;Command&gt;About&lt;/Command&gt;
@@ -72,52 +79,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.Properties {
         ///		&lt;Viewers&gt;All&lt;/Viewers&gt;
         ///		&lt;Type&gt;Built-In&lt;/Type&gt;
         ///		&lt;EnabledIcon&gt;&lt;/EnabledIcon&gt;		
-        ///		&lt;DisabledIcon&gt;&lt;/DisabledIcon&gt;
-        ///	&lt;/Command&gt;
-        ///
-        ///	&lt;Command&gt;
-        ///		&lt;Command&gt;Buffer&lt;/Command&gt;
-        ///		&lt;Label&gt;Buffer&lt;/Label&gt;
-        ///		&lt;ToolTip&gt;Buffer&lt;/ToolTip&gt;
-        ///		&lt;Action&gt;Buffer&lt;/Action&gt;
-        ///		&lt; [rest of string was truncated]&quot;;.
+        ///		&lt;D [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string CommandTypesDataset {
             get {
                 return ResourceManager.GetString("CommandTypesDataset", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt; 
-        ///&lt;ComboBoxDataSet&gt;
-        ///
-        ///	&lt;Font&gt;
-        ///		&lt;Display&gt;Arial&lt;/Display&gt;
-        ///		&lt;Value&gt;Arial&lt;/Value&gt;
-        ///	&lt;/Font&gt;
-        ///	&lt;Font&gt;
-        ///		&lt;Display&gt;Arial Black&lt;/Display&gt;
-        ///		&lt;Value&gt;Arial Black&lt;/Value&gt;
-        ///	&lt;/Font&gt;
-        ///	&lt;Font&gt;
-        ///		&lt;Display&gt;Arial Narrow&lt;/Display&gt;
-        ///		&lt;Value&gt;Arial Narrow&lt;/Value&gt;
-        ///	&lt;/Font&gt;
-        ///	&lt;Font&gt;
-        ///		&lt;Display&gt;BankGothic Lt BT&lt;/Display&gt;
-        ///		&lt;Value&gt;ankGothic Lt BT&lt;/Value&gt;
-        ///	&lt;/Font&gt;
-        ///	&lt;Font&gt;
-        ///		&lt;Display&gt;BankGothic Md BT&lt;/Display&gt;
-        ///		&lt;Value&gt;BankGothic Md BT&lt;/Value&gt;
-        ///	&lt;/Font&gt;
-        ///	&lt;Font&gt;
-        ///		&lt;Display&gt;Book  [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string FontStyleComboDataset {
-            get {
-                return ResourceManager.GetString("FontStyleComboDataset", resourceCulture);
             }
         }
         

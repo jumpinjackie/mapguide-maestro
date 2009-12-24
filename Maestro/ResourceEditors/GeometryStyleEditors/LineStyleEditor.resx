@@ -136,7 +136,7 @@
     <value>fillCombo</value>
   </data>
   <data name="&gt;&gt;fillCombo.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ImageStylePicker, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4358, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ImageStylePicker, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fillCombo.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -144,11 +144,14 @@
   <data name="&gt;&gt;fillCombo.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="lblColor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="lblColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 64</value>
   </data>
   <data name="lblColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 16</value>
+    <value>31, 13</value>
   </data>
   <data name="lblColor.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -168,11 +171,14 @@
   <data name="&gt;&gt;lblColor.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="lblThickness.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="lblThickness.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 32</value>
   </data>
   <data name="lblThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 16</value>
+    <value>56, 13</value>
   </data>
   <data name="lblThickness.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -192,11 +198,14 @@
   <data name="&gt;&gt;lblThickness.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="lblFill.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="lblFill.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 8</value>
   </data>
   <data name="lblFill.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 16</value>
+    <value>51, 13</value>
   </data>
   <data name="lblFill.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -246,6 +255,33 @@
   <data name="&gt;&gt;displayLine.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="thicknessCombo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="thicknessCombo.Items" xml:space="preserve">
+    <value>Expression...</value>
+  </data>
+  <data name="thicknessCombo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 32</value>
+  </data>
+  <data name="thicknessCombo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>312, 21</value>
+  </data>
+  <data name="thicknessCombo.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;thicknessCombo.Name" xml:space="preserve">
+    <value>thicknessCombo</value>
+  </data>
+  <data name="&gt;&gt;thicknessCombo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;thicknessCombo.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;thicknessCombo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="colorCombo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -262,13 +298,16 @@
     <value>colorCombo</value>
   </data>
   <data name="&gt;&gt;colorCombo.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4358, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorCombo.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;colorCombo.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -277,7 +316,7 @@
     <value>0, 96</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 16</value>
+    <value>72, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -295,30 +334,6 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="thicknessUpDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="thicknessUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 32</value>
-  </data>
-  <data name="thicknessUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 20</value>
-  </data>
-  <data name="thicknessUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;thicknessUpDown.Name" xml:space="preserve">
-    <value>thicknessUpDown</value>
-  </data>
-  <data name="&gt;&gt;thicknessUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;thicknessUpDown.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;thicknessUpDown.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">

@@ -133,4 +133,7 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Gennemsigtighed</value>
   </data>
+  <data name="thicknessCombo.Items" xml:space="preserve">
+    <value>Udtryk...</value>
+  </data>
 </root>

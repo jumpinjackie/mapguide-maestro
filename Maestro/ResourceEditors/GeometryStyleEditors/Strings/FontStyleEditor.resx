@@ -117,23 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="CancelButton.Text" xml:space="preserve">
-    <value>Annuller</value>
-  </data>
-  <data name="RefreshButton.Text" xml:space="preserve">
-    <value>Genindlæs</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Filtype</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Filnavn</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Udpeg data på serveren</value>
-  </data>
-  <data name="CancelBtn.Text" xml:space="preserve">
-    <value>Annuller</value>
+  <data name="ExpressionItem" xml:space="preserve">
+    <value>Expression...</value>
+    <comment>A value displayed in the combobox to activate the expression builder</comment>
   </data>
 </root>

@@ -405,6 +405,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ColorComboBox.resx</DependentUpon>
     </Compile>
+    <Compile Include="GeometryStyleEditors\Strings\FontStyleEditor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FontStyleEditor.resx</DependentUpon>
+    </Compile>
     <Compile Include="GeometryStyleEditors\Strings\PointFeatureStyleEditor.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1138,6 +1143,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ColorComboBox.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="GeometryStyleEditors\Strings\FontStyleEditor.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FontStyleEditor.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="GeometryStyleEditors\Strings\PointFeatureStyleEditor.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>PointFeatureStyleEditor.Designer.cs</LastGenOutput>
@@ -1242,9 +1251,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CommandTypesDataset.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FontStyleComboDataset.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\GeometryStyleComboDataset.xml" />

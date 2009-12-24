@@ -1099,6 +1099,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             m_editor.HasChanged();
         }
 
+        public string FeatureSourceId
+        {
+            get { return m_layer.Item.ResourceId; }
+        }
+
         /// <summary>
         /// Sort helper used to sort the scale ranges
         /// </summary>

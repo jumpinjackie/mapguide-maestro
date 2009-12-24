@@ -60,7 +60,21 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 		public event EventHandler Changed;
 
-        public AreaFeatureStyleEditor()
+        private EditorInterface m_editor;
+        private MaestroAPI.FeatureSourceDescription.FeatureSourceSchema m_schema;
+        private string m_featureSource;
+        private string m_providername;
+
+        public AreaFeatureStyleEditor(EditorInterface editor, MaestroAPI.FeatureSourceDescription.FeatureSourceSchema schema, string featureSource)
+            : this()
+        {
+            m_editor = editor;
+            m_schema = schema;
+            m_providername = m_editor.CurrentConnection.GetFeatureSource(featureSource).Provider;
+            m_featureSource = featureSource;
+        }
+
+        private AreaFeatureStyleEditor()
         {
             //
             // Required for Windows Form Designer support
@@ -75,7 +89,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             fillStyleEditor.backgroundColor.CurrentColorChanged += new EventHandler(backgroundColor_CurrentColorChanged);
 
             lineStyleEditor.displayLine.CheckedChanged += new EventHandler(displayLine_CheckedChanged);
-            lineStyleEditor.thicknessUpDown.ValueChanged += new EventHandler(thicknessCombo_SelectedIndexChanged);
+            lineStyleEditor.thicknessCombo.SelectedIndexChanged += new EventHandler(thicknessCombo_SelectedIndexChanged);
+            lineStyleEditor.thicknessCombo.TextChanged += new EventHandler(thicknessCombo_TextChanged);
             lineStyleEditor.colorCombo.CurrentColorChanged += new EventHandler(colorCombo_CurrentColorChanged);
             lineStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_Line_SelectedIndexChanged);
         }
@@ -302,11 +317,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 					if (m_item.Stroke.ColorAsHTML != null)
 						lineStyleEditor.colorCombo.CurrentColor = m_item.Stroke.Color;
 					lineStyleEditor.fillCombo.SelectedIndex = lineStyleEditor.fillCombo.FindString(m_item.Stroke.LineStyle);
-					double o;
-					if (double.TryParse(m_item.Stroke.Thickness, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out o))
-						lineStyleEditor.thicknessUpDown.Value = (decimal)o;
-					else
-						lineStyleEditor.thicknessUpDown.Value = 0;
+                    lineStyleEditor.thicknessCombo.Text = m_item.Stroke.Thickness;
 				}
 				m_inUpdate = true;
 
@@ -402,18 +413,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				Changed(this, new EventArgs());
 		}
 
-		private void thicknessCombo_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
-
-			//TODO: Validate
-			m_item.Stroke.Thickness = lineStyleEditor.thicknessUpDown.Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
-
 		private void colorCombo_CurrentColorChanged(object sender, EventArgs e)
 		{
 			if (m_inUpdate)
@@ -437,12 +436,63 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				Changed(this, new EventArgs());
 		}
 
+        private void thicknessCombo_TextChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate || lineStyleEditor.thicknessCombo.SelectedIndex != -1)
+                return;
+
+            //TODO: Validate
+            m_item.Stroke.Thickness = lineStyleEditor.thicknessCombo.Text;
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
+
+        private void thicknessCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate || lineStyleEditor.thicknessCombo.SelectedIndex != lineStyleEditor.thicknessCombo.Items.Count - 1)
+                return;
+
+            string current = null;
+            current = m_item.Stroke.Thickness;
+
+            string expr = null;
+            if (current != null)
+            {
+                expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                if (!string.IsNullOrEmpty(expr))
+                    current = expr;
+            }
+
+            //This is required as we cannot update the text from within the SelectedIndexChanged event :(
+            BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), lineStyleEditor.thicknessCombo, current, expr != null);
+        }
+
         internal void SetupForTheming()
         {
             fillStyleEditor.foregroundColor.Enabled =
             fillStyleEditor.lblForeground.Enabled =
             fillStyleEditor.displayFill.Enabled =
                 false;
+        }
+
+        public delegate void UpdateComboTextFromSelectChangedDelegate(ComboBox owner, string text, bool userChange);
+
+        private void UpdateComboTextFromSelectChanged(ComboBox owner, string text, bool userChange)
+        {
+            try
+            {
+                if (!userChange)
+                    m_inUpdate = true;
+                owner.SelectedIndex = -1;
+
+                owner.Text = text;
+            }
+            finally
+            {
+                if (!userChange)
+                    m_inUpdate = false;
+            }
         }
     }
 }

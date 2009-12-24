@@ -250,4 +250,10 @@
         KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="HeigthText.Items" xml:space="preserve">
+    <value>Udtryk...</value>
+  </data>
+  <data name="WidthText.Items" xml:space="preserve">
+    <value>Udtryk...</value>
+  </data>
 </root>

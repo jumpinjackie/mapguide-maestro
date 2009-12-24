@@ -91,4 +91,56 @@
 		<Display>90 degrees</Display>
 		<Value>90</Value>
 	</Rotation>
+  <Rotation>
+    <Display>Expression...</Display>
+    <Value>Expression...</Value>
+  </Rotation>
+
+  <BackgroundType>
+    <Display>Ghosted</Display>
+    <Value>Ghosted</Value>
+  </BackgroundType>
+  <BackgroundType>
+    <Display>Opaque</Display>
+    <Value>Opaque</Value>
+  </BackgroundType>
+  <BackgroundType>
+    <Display>Transparent</Display>
+    <Value>Transparent</Value>
+  </BackgroundType>
+
+  <Vertical>
+    <Display>Baseline</Display>
+    <Value>'Baseline'</Value>
+  </Vertical>
+  <Vertical>
+    <Display>Bottom</Display>
+    <Value>'Bottom'</Value>
+  </Vertical>
+  <Vertical>
+    <Display>Capline</Display>
+    <Value>'Capline'</Value>
+  </Vertical>
+  <Vertical>
+    <Display>Halfline</Display>
+    <Value>'Halfline'</Value>
+  </Vertical>
+  <Vertical>
+    <Display>Top</Display>
+    <Value>'Top'</Value>
+  </Vertical>
+  <Vertical>
+    <Display>Expression...</Display>
+    <Value>Expression...</Value>
+  </Vertical>
+
+  <Horizontal>
+    <Display>Center</Display>
+    <Value>'Center'</Value>
+  </Horizontal>
+  <Horizontal>
+    <Display>Expression...</Display>
+    <Value>Expression...</Value>
+  </Horizontal>
+
 </ComboBoxDataSet>
