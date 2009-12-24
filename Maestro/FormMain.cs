@@ -1229,7 +1229,7 @@ namespace OSGeo.MapGuide.Maestro
 			uc.Width = tp.Width - 32;
 			uc.Height = tp.Height - 32;
 			uc.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-			m_userControls.Add(edi.ResourceID, edi);
+			m_userControls.Add(edi.ResourceId, edi);
 			tabItems.TabPages.Add(tp);
 			return edi;
 		}
@@ -1699,7 +1699,7 @@ namespace OSGeo.MapGuide.Maestro
                         //If we save under a different name, reload the parent folder
                         try
                         {
-                            TreeNode c = FindItem(edi.ResourceID, true);
+                            TreeNode c = FindItem(edi.ResourceId, true);
                             if (c == null || c.Parent == null)
                                 RebuildDocumentTree(); //TODO: If the node is not open, skip the refresh
                             else
@@ -1723,7 +1723,7 @@ namespace OSGeo.MapGuide.Maestro
 				if (edi.Page == tabItems.SelectedTab)
 				{
 					object resource = ((IResourceEditorControl)edi.Page.Controls[0]).Resource;
-                    ResourceEditors.XmlEditor dlg = new ResourceEditors.XmlEditor(resource, edi.ResourceID, edi);
+                    ResourceEditors.XmlEditor dlg = new ResourceEditors.XmlEditor(resource, edi.ResourceId, edi);
 					if (dlg.ShowDialog() == DialogResult.OK)
 					{
 						object o = dlg.SerializedObject;
@@ -2534,23 +2534,34 @@ namespace OSGeo.MapGuide.Maestro
                 if (ei == null || ei.Resource == null)
                     return;
 
-
                 if (ei.ValidateResource(true))
                 {
                     System.Reflection.PropertyInfo pi = ei.Resource.GetType().GetProperty("CurrentConnection");
                     if (pi != null && pi.CanWrite)
                         pi.SetValue(ei.Resource, this.CurrentConnection, null);
-
-                    ResourceEditors.WaitForOperation wdlg = new ResourceEditors.WaitForOperation();
-                    wdlg.CancelAbortsThread = true;
-
-                    ResourceValidators.ValidationIssue[] issues = (ResourceValidators.ValidationIssue[])wdlg.RunOperationAsync(this, new ResourceEditors.WaitForOperation.DoBackgroundWork(ValidateBackgroundRunner), ei.Resource);
-                    if (issues.Length == 0)
-                        MessageBox.Show(this, Strings.FormMain.NoValidationProblems, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    else
+                    try
                     {
-                        ValidationResults dlg = new ValidationResults(ei.ResourceId, issues);
-                        dlg.ShowDialog(this);
+                        pi = ei.Resource.GetType().GetProperty("ResourceId");
+                        if (pi != null && pi.CanWrite)
+                            pi.SetValue(ei.Resource, edi.ResourceId, null);
+
+                        ResourceEditors.WaitForOperation wdlg = new ResourceEditors.WaitForOperation();
+                        wdlg.CancelAbortsThread = true;
+
+                        ResourceValidators.ValidationIssue[] issues = (ResourceValidators.ValidationIssue[])wdlg.RunOperationAsync(this, new ResourceEditors.WaitForOperation.DoBackgroundWork(ValidateBackgroundRunner), ei.Resource);
+                        if (issues.Length == 0)
+                            MessageBox.Show(this, Strings.FormMain.NoValidationProblems, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                        {
+                            ValidationResults dlg = new ValidationResults(ei.ResourceId, issues);
+                            dlg.ShowDialog(this);
+                        }
+                    }
+                    finally
+                    {
+                        pi = ei.Resource.GetType().GetProperty("ResourceId");
+                        if (pi != null && pi.CanWrite)
+                            pi.SetValue(ei.Resource, edi.TempResourceId, null);
                     }
                 }
 

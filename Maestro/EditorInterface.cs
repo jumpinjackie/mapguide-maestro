@@ -95,11 +95,6 @@ namespace OSGeo.MapGuide.Maestro
 			get { return m_page; }
 		}
 
-		public string ResourceID
-		{
-			get { return m_resourceID; }
-		}
-
         public string BrowseResource(string itemType)
         {
             string[] tmp = BrowseResource(new string[] { itemType }, false);

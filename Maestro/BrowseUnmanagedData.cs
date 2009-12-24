@@ -31,7 +31,7 @@ namespace OSGeo.MapGuide.Maestro
 	/// </summary>
 	public class BrowseUnmanagedData : System.Windows.Forms.Form
 	{
-		private new System.Windows.Forms.Button CancelBtn;
+		private System.Windows.Forms.Button CancelBtn;
 		private System.Windows.Forms.Button OKButton;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Panel panel3;
