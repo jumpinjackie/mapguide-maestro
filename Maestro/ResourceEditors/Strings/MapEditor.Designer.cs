@@ -100,6 +100,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occured while reading the layers projection: {0}.
+        /// </summary>
+        internal static string LayerProjectionReadError {
+            get {
+                return ResourceManager.GetString("LayerProjectionReadError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The selected group has one or more layers that are invisible.
         ///The layers in a base layer are always visible.
         ///If you convert the group, the layers will be made visible.
@@ -158,12 +167,40 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The extent for the layer was found, but no coordinate system was found.
+        /// </summary>
+        internal static string NoProjectionFoundWarning {
+            get {
+                return ResourceManager.GetString("NoProjectionFoundWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This map contains base layers. Saving the map will clear any generated tiles.
         ///Do you want to save the map?.
         /// </summary>
         internal static string SaveMapWithBaseLayersWarning {
             get {
                 return ResourceManager.GetString("SaveMapWithBaseLayersWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to use the projection from the layer
+        ///{0}?.
+        /// </summary>
+        internal static string UseLayerProjectionQuestion {
+            get {
+                return ResourceManager.GetString("UseLayerProjectionQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The data extent is in another projection than the map, do you also want to update the maps coordinate system?.
+        /// </summary>
+        internal static string UseNewProjectionQuestion {
+            get {
+                return ResourceManager.GetString("UseNewProjectionQuestion", resourceCulture);
             }
         }
     }

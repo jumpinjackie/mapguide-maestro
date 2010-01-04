@@ -1859,6 +1859,36 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
+        /// Returns the cordinate system sepcified by the featuresource. 
+        /// Returns null if the coordinate system could not be determined.
+        /// </summary>
+        /// <returns>The envelope for the data in the table</returns>
+        public string GetCordinateSystem()
+        {
+            if (this.CurrentConnection == null)
+                throw new System.Exception("No server set for object");
+
+            string featurename;
+
+            if (this.Item as VectorLayerDefinitionType != null)
+                featurename = (this.Item as VectorLayerDefinitionType).FeatureName;
+            else if (this.Item as GridLayerDefinitionType != null)
+                featurename = (this.Item as GridLayerDefinitionType).FeatureName;
+            else
+                return null;
+
+            FdoSpatialContextList context = this.CurrentConnection.GetSpatialContextInfo(this.Item.ResourceId, false);
+            if (context == null || context.SpatialContext == null ||context.SpatialContext.Count == 0)
+                return null;
+
+            foreach (FdoSpatialContextListSpatialContext cx in context.SpatialContext)
+                if (Utility.DecodeFDOName(cx.Name) == Utility.DecodeFDOName(featurename))
+                    return cx.CoordinateSystemWkt;
+
+            return context.SpatialContext[0].CoordinateSystemWkt;
+        }
+
+        /// <summary>
         /// Returns the spatial extent for the data mathcing the specified filter.
         /// </summary>
         /// <param name="filter">The filter to apply to the data</param>

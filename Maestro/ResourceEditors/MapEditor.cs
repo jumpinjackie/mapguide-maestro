@@ -1167,6 +1167,55 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void btnSelectCoordSys_Click(object sender, System.EventArgs e)
 		{
+            try
+            {
+                OSGeo.MapGuide.MaestroAPI.BaseMapLayerType ml = null;
+                if (tabLayers.SelectedTab == tabLayerGroups && trvLayerGroups.SelectedNode != null)
+                    ml = trvLayerGroups.SelectedNode.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerType;
+                else if (tabLayers.SelectedTab == tabDrawOrder && lstDrawOrder.SelectedItems.Count == 1)
+                    ml = lstDrawOrder.SelectedItems[0].Tag as OSGeo.MapGuide.MaestroAPI.MapLayerType;
+
+                if (ml == null)
+                {
+                    if (m_map.Layers.Count > 0)
+                        ml = m_map.Layers[0];
+                    else if (m_map.BaseMapDefinition != null && m_map.BaseMapDefinition.BaseMapLayerGroup != null && m_map.BaseMapDefinition.BaseMapLayerGroup.Count > 0)
+                    {
+                        foreach(MaestroAPI.BaseMapLayerGroupCommonType gr in m_map.BaseMapDefinition.BaseMapLayerGroup)
+                            if (gr.BaseMapLayer != null && gr.BaseMapLayer.Count > 0)
+                            {
+                                ml = gr.BaseMapLayer[0];
+                                break;
+                            }
+                    }
+                }
+
+                if (ml != null)
+                {
+                    OSGeo.MapGuide.MaestroAPI.LayerDefinition ldef = m_editor.CurrentConnection.GetLayerDefinition(ml.ResourceId);
+
+                    string projection = ldef.GetCordinateSystem();
+                    if (projection != null)
+                    {
+                        if (string.IsNullOrEmpty(m_map.CoordinateSystem) || m_map.CoordinateSystem != projection)
+                        {
+                            DialogResult res = MessageBox.Show(this, string.Format(Strings.MapEditor.UseLayerProjectionQuestion, ldef.ResourceId), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                            if (res == DialogResult.Cancel)
+                                return;
+                            else if (res == DialogResult.Yes)
+                            {
+                                m_map.CoordinateSystem = txtCoordsys.Text = projection;
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, string.Format(Strings.MapEditor.LayerProjectionReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 			SelectCoordinateSystem dlg = new SelectCoordinateSystem(m_editor.CurrentConnection);
 			dlg.SetWKT(m_map.CoordinateSystem);
 
@@ -1769,6 +1818,33 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				OSGeo.MapGuide.MaestroAPI.LayerDefinition ldef = m_editor.CurrentConnection.GetLayerDefinition(ml.ResourceId);
 
                 Topology.Geometries.IEnvelope env = ldef.GetSpatialExtent(true);
+
+                try
+                {
+                    string projection = ldef.GetCordinateSystem();
+                    if (projection == null)
+                        MessageBox.Show(this, Strings.MapEditor.NoProjectionFoundWarning, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                    {
+                        if (string.IsNullOrEmpty(m_map.CoordinateSystem))
+                        {
+                            m_map.CoordinateSystem = txtCoordsys.Text = projection;
+                        }
+                        else if (m_map.CoordinateSystem != projection)
+                        {
+                            DialogResult res = MessageBox.Show(this, Strings.MapEditor.UseNewProjectionQuestion, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                            if (res == DialogResult.Cancel)
+                                return;
+                            else if (res == DialogResult.Yes)
+                                m_map.CoordinateSystem = txtCoordsys.Text = projection;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, string.Format(Strings.MapEditor.LayerProjectionReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 txtLowerX.Text = env.MinX.ToString(System.Globalization.CultureInfo.CurrentUICulture);
                 txtLowerY.Text = env.MinY.ToString(System.Globalization.CultureInfo.CurrentUICulture);
                 txtUpperX.Text = env.MaxX.ToString(System.Globalization.CultureInfo.CurrentUICulture);
