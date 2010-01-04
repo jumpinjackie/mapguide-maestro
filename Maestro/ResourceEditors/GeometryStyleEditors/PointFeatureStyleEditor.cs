@@ -176,6 +176,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				// shared values
 				WidthText.Text = m_item.Item.SizeX;
 				HeigthText.Text = m_item.Item.SizeY;
+                RotationBox.SelectedIndex = -1;
 				RotationBox.Text = m_item.Item.Rotation;
 
 				SizeUnits.SelectedValue = m_item.Item.Unit;
@@ -885,6 +886,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                 if (!userChange)
                     m_inUpdate = true;
                 owner.SelectedIndex = -1;
+                
+                //HACK: Odd bug, don't remove
+                if (owner.SelectedIndex != -1)
+                    owner.SelectedIndex = -1;
 
                 owner.Text = text;
             }
@@ -1289,9 +1294,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
             //TODO: Validate
             if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.MarkSymbolType))
-                ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).Rotation = (string)RotationBox.Text;
+                ((OSGeo.MapGuide.MaestroAPI.MarkSymbolType)m_item.Item).Rotation = RotationBox.Text;
             else if (m_item.Item.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.FontSymbolType))
-                ((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).Rotation = (string)RotationBox.Text;
+                ((OSGeo.MapGuide.MaestroAPI.FontSymbolType)m_item.Item).Rotation = RotationBox.Text;
             previewPicture.Refresh();
             if (Changed != null)
                 Changed(this, new EventArgs());

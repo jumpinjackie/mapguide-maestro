@@ -167,10 +167,27 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				textColor.CurrentColor = m_item.ForegroundColor;
 				backgroundColor.CurrentColor = m_item.BackgroundColor;
 				backgroundTypeCombo.SelectedValue = m_item.BackgroundStyle.ToString();
-				if (m_item.HorizontalAlignment != null)
-					horizontalCombo.SelectedValue = m_item.HorizontalAlignment;
-				if (m_item.VerticalAlignment != null)
-					verticalCombo.SelectedValue = m_item.VerticalAlignment;
+                rotationCombo.SelectedIndex = -1;
+                rotationCombo.Text = m_item.Rotation;
+                if (m_item.HorizontalAlignment != null)
+                {
+                    horizontalCombo.SelectedValue = m_item.HorizontalAlignment;
+                    if (horizontalCombo.SelectedValue == null)
+                    {
+                        horizontalCombo.SelectedIndex = -1;
+                        horizontalCombo.Text = m_item.HorizontalAlignment;
+                    }
+                }
+
+                if (m_item.VerticalAlignment != null)
+                {
+                    verticalCombo.SelectedValue = m_item.VerticalAlignment;
+                    if (verticalCombo.SelectedValue == null)
+                    {
+                        verticalCombo.SelectedIndex = -1;
+                        verticalCombo.Text = m_item.VerticalAlignment;
+                    }
+                }
 			}
 			finally
 			{
@@ -965,6 +982,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                     m_inUpdate = true;
                 owner.SelectedIndex = -1;
 
+                //HACK: Odd bug, don't remove
+                if (owner.SelectedIndex != -1)
+                    owner.SelectedIndex = -1;
+
                 owner.Text = text;
             }
             finally
@@ -979,7 +1000,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             if (m_inUpdate || horizontalCombo.SelectedIndex != -1)
                 return;
 
-            m_item.HorizontalAlignment = (string)horizontalCombo.SelectedValue;
+            m_item.HorizontalAlignment = (string)horizontalCombo.Text;
             previewPicture.Refresh();
 
             if (Changed != null)
@@ -991,7 +1012,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             if (m_inUpdate || verticalCombo.SelectedIndex != -1)
                 return;
 
-            m_item.VerticalAlignment = (string)verticalCombo.SelectedValue;
+            m_item.VerticalAlignment = (string)verticalCombo.Text;
             previewPicture.Refresh();
 
             if (Changed != null)
@@ -1004,7 +1025,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                 return;
 
             //TODO: Validate
-            m_item.Rotation = sizeCombo.Text;
+            m_item.Rotation = rotationCombo.Text;
             previewPicture.Refresh();
 
             if (Changed != null)

@@ -641,6 +641,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                     m_inUpdate = true;
                 owner.SelectedIndex = -1;
 
+                //HACK: Odd bug, don't remove
+                if (owner.SelectedIndex != -1)
+                    owner.SelectedIndex = -1;
+
                 owner.Text = text;
             }
             finally
