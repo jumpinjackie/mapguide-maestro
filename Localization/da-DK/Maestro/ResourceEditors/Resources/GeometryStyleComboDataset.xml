@@ -122,7 +122,7 @@
 		<Value>'Capline'</Value>
 	</Vertical>
 	<Vertical>
-		<Display>Halfline</Display>
+		<Display>Halvlinie</Display>
 		<Value>'Halfline'</Value>
 	</Vertical>
 	<Vertical>
@@ -131,7 +131,7 @@
 	</Vertical>
 	<Vertical>
 		<Display>Expression...</Display>
-		<Value>Expression...</Value>
+		<Value>Udtryk...</Value>
 	</Vertical>
 
 	<Horizontal>
@@ -139,7 +139,7 @@
 		<Value>'Center'</Value>
 	</Horizontal>	
 	<Horizontal>
-		<Display>Expression...</Display>
+		<Display>Udtryk...</Display>
 		<Value>Expression...</Value>
 	</Horizontal>	
 </ComboBoxDataSet>
