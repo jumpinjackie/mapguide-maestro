@@ -80,7 +80,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                 {
                     string[] ids = feature.GetIdentityProperties(cl);
                     if (ids == null || ids.Length == 0)
-                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, Strings.FeatureSourceValidator.PrimaryKeyMissingInformation));
+                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, string.Format(Strings.FeatureSourceValidator.PrimaryKeyMissingInformation, cl)));
                 }
                 catch (Exception ex)
                 {

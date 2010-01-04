@@ -164,7 +164,7 @@
     <value>Synlig</value>
   </data>
   <data name="dataGridTextBoxColumn2.HeaderText" xml:space="preserve">
-    <value>Nacn</value>
+    <value>Navn</value>
   </data>
   <data name="dataGridTextBoxColumn1.HeaderText" xml:space="preserve">
     <value>Visning</value>
