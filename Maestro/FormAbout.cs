@@ -260,10 +260,17 @@ namespace OSGeo.MapGuide.Maestro
 		}
 		#endregion
 
+        /// <summary>
+        /// Dummy function used to create a thread to read the default locale from
+        /// </summary>
+        private void dummy_function() { }
+
 		private void FormAbout_Load(object sender, System.EventArgs e)
 		{
+            System.Threading.Thread tmp = new System.Threading.Thread(new System.Threading.ThreadStart(dummy_function));
+
 			Version.Text = string.Format(Strings.FormAbout.VersionLabel, Application.ProductVersion);
-			Localization.Text = string.Format(Strings.FormAbout.LanguageLabel,  System.Threading.Thread.CurrentThread.CurrentUICulture, System.Globalization.CultureInfo.InstalledUICulture);
+			Localization.Text = string.Format(Strings.FormAbout.LanguageLabel,  System.Threading.Thread.CurrentThread.CurrentUICulture, tmp.CurrentUICulture);
 
             string match = "unknown version";
             for(int i = 0; i < MaestroAPI.SiteVersions.SiteVersionNumbers.Length; i++)

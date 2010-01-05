@@ -130,8 +130,8 @@
 		<Value>'Top'</Value>
 	</Vertical>
 	<Vertical>
-		<Display>Expression...</Display>
-		<Value>Udtryk...</Value>
+		<Display>Udtryk...</Display>
+		<Value>Expression...</Value>
 	</Vertical>
 
 	<Horizontal>
