@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ExpressionItem" xml:space="preserve">
-    <value>Udtryk...</value>
+    <value>Expression...</value>
     <comment>A value displayed in the combobox to activate the expression builder</comment>
   </data>
 </root>
