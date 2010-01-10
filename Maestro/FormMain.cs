@@ -1003,7 +1003,13 @@ namespace OSGeo.MapGuide.Maestro
             }
 
             if (m_connection is MaestroAPI.HttpServerConnection)
-                ((MaestroAPI.HttpServerConnection)frm.Connection).UserAgent = "MapGuide Maestro v" + Application.ProductVersion;
+            {
+                this.Text = string.Format(Strings.FormMain.WindowTitleTemplate, Application.ProductName, ((MaestroAPI.HttpServerConnection)m_connection).BaseURL);
+                ((MaestroAPI.HttpServerConnection)m_connection).UserAgent = "MapGuide Maestro v" + Application.ProductVersion;
+            }
+            else
+                this.Text = string.Format(Strings.FormMain.WindowTitleTemplate, Application.ProductName, Strings.FormMain.NativeConnectionName);
+
 
             //Reset
             Program.ApplicationSettings = PreferedSiteList.Load();
@@ -2169,6 +2175,14 @@ namespace OSGeo.MapGuide.Maestro
                     ResourceTree.Cache.Connection = lg.Connection;
 					m_connection = lg.Connection;
 					RebuildDocumentTree();
+
+                    if (m_connection is OSGeo.MapGuide.MaestroAPI.HttpServerConnection)
+                    {
+                        this.Text = string.Format(Strings.FormMain.WindowTitleTemplate, Application.ProductName, ((MaestroAPI.HttpServerConnection)m_connection).BaseURL);
+                        ((MaestroAPI.HttpServerConnection)m_connection).UserAgent = "MapGuide Maestro v" + Application.ProductVersion;
+                    }
+                    else
+                        this.Text = string.Format(Strings.FormMain.WindowTitleTemplate, Application.ProductName, Strings.FormMain.NativeConnectionName);
 				}
 			}
 		}

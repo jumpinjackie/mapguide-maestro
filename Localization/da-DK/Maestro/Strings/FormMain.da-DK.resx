@@ -280,4 +280,12 @@ Vil du gemme ændringerne før programmet lukkes?</value>
     <value>En fejl opstod under forsøget på at åbne Xml editoren: {0}</value>
     <comment>An error message that is displayed if an error occurs while loading the xml editor</comment>
   </data>
+  <data name="WindowTitleTemplate" xml:space="preserve">
+    <value>{0} - {1}</value>
+    <comment>A template used to set the window title, {0} is the application name (MapGuide Maestro) {1} is the host URL</comment>
+  </data>
+  <data name="NativeConnectionName" xml:space="preserve">
+    <value>Native med Web.Config</value>
+    <comment>The name used for the connection if the connection type is native</comment>
+  </data>
 </root>

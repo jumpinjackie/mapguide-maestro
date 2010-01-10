@@ -183,6 +183,15 @@ namespace OSGeo.MapGuide.Maestro.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Native with Web.Config.
+        /// </summary>
+        internal static string NativeConnectionName {
+            get {
+                return ResourceManager.GetString("NativeConnectionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New folder.
         /// </summary>
         internal static string NewFolderName {
@@ -391,6 +400,15 @@ namespace OSGeo.MapGuide.Maestro.Strings {
         internal static string ValidationValidating {
             get {
                 return ResourceManager.GetString("ValidationValidating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} - {1}.
+        /// </summary>
+        internal static string WindowTitleTemplate {
+            get {
+                return ResourceManager.GetString("WindowTitleTemplate", resourceCulture);
             }
         }
         
