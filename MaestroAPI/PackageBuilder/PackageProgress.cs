@@ -125,11 +125,12 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
         /// <param name="sourcePackageFile">The package file that the new file is based on</param>
         /// <param name="items">The items that describes the layout of the new package</param>
         /// <param name="targetfile">The output package file</param>
+        /// <param name="insertEraseCommands">True if each resource should have a delete operation inserted before the actual operation, false otherwise</param>
         /// <returns>A DialogResult object that indicates the result of the operation</returns>
-        public static DialogResult RebuildPackage(Form owner, MaestroAPI.ServerConnectionI connection, string sourcePackageFile, List<ResourceItem> items, string targetfile)
+        public static DialogResult RebuildPackage(Form owner, MaestroAPI.ServerConnectionI connection, string sourcePackageFile, List<ResourceItem> items, string targetfile, bool insertEraseCommands)
         {
             PackageProgress pkgp = new PackageProgress();
-            pkgp.m_invokeArgs = new object[] { sourcePackageFile, items, targetfile};
+            pkgp.m_invokeArgs = new object[] { sourcePackageFile, items, targetfile, insertEraseCommands };
             pkgp.m_invokeObj = new PackageBuilder(connection);
             pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("RebuildPackage");
 

@@ -459,7 +459,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
             try
             {
-                if (PackageProgress.RebuildPackage(this, m_owner.CurrentConnection, m_filename, items, SavePackageDialog.FileName) != DialogResult.OK)
+                if (PackageProgress.RebuildPackage(this, m_owner.CurrentConnection, m_filename, items, SavePackageDialog.FileName, InsertDeleteCommands.Checked) != DialogResult.OK)
                     return;
             }
             catch (Exception ex)

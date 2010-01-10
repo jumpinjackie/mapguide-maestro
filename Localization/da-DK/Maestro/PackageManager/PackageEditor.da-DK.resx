@@ -187,4 +187,7 @@
   <data name="SavePackageDialog.Title" xml:space="preserve">
     <value>Vælg hvor filen skal gemmes</value>
   </data>
+  <data name="InsertDeleteCommands.Text" xml:space="preserve">
+    <value>Slet destinationen før indsættelse</value>
+  </data>
 </root>

@@ -29,10 +29,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PackageEditor));
-            this.ButtonPanel = new System.Windows.Forms.Panel();
-            this.CancelBtn = new System.Windows.Forms.Button();
-            this.OKBtn = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.MainGroup = new System.Windows.Forms.SplitContainer();
             this.ResourceTree = new System.Windows.Forms.TreeView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -56,45 +52,25 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.HeaderFilepath = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.ButtonPanel = new System.Windows.Forms.Panel();
+            this.CancelBtn = new System.Windows.Forms.Button();
+            this.OKBtn = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.BrowseResourceDataFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveResourceDataFile = new System.Windows.Forms.SaveFileDialog();
             this.SavePackageDialog = new System.Windows.Forms.SaveFileDialog();
-            this.ButtonPanel.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.InsertDeleteCommands = new System.Windows.Forms.CheckBox();
             this.MainGroup.Panel1.SuspendLayout();
             this.MainGroup.Panel2.SuspendLayout();
             this.MainGroup.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            this.ButtonPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ButtonPanel
-            // 
-            this.ButtonPanel.Controls.Add(this.CancelBtn);
-            this.ButtonPanel.Controls.Add(this.OKBtn);
-            resources.ApplyResources(this.ButtonPanel, "ButtonPanel");
-            this.ButtonPanel.Name = "ButtonPanel";
-            // 
-            // CancelBtn
-            // 
-            resources.ApplyResources(this.CancelBtn, "CancelBtn");
-            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.UseVisualStyleBackColor = true;
-            // 
-            // OKBtn
-            // 
-            resources.ApplyResources(this.OKBtn, "OKBtn");
-            this.OKBtn.Name = "OKBtn";
-            this.OKBtn.UseVisualStyleBackColor = true;
-            this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.MainGroup);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
             // 
             // MainGroup
             // 
@@ -104,6 +80,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             // MainGroup.Panel1
             // 
             this.MainGroup.Panel1.Controls.Add(this.ResourceTree);
+            this.MainGroup.Panel1.Controls.Add(this.panel1);
             this.MainGroup.Panel1.Controls.Add(this.toolStrip1);
             // 
             // MainGroup.Panel2
@@ -272,6 +249,33 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
+            // ButtonPanel
+            // 
+            this.ButtonPanel.Controls.Add(this.CancelBtn);
+            this.ButtonPanel.Controls.Add(this.OKBtn);
+            resources.ApplyResources(this.ButtonPanel, "ButtonPanel");
+            this.ButtonPanel.Name = "ButtonPanel";
+            // 
+            // CancelBtn
+            // 
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
+            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelBtn.Name = "CancelBtn";
+            this.CancelBtn.UseVisualStyleBackColor = true;
+            // 
+            // OKBtn
+            // 
+            resources.ApplyResources(this.OKBtn, "OKBtn");
+            this.OKBtn.Name = "OKBtn";
+            this.OKBtn.UseVisualStyleBackColor = true;
+            this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.MainGroup);
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
+            // 
             // BrowseResourceDataFile
             // 
             resources.ApplyResources(this.BrowseResourceDataFile, "BrowseResourceDataFile");
@@ -285,6 +289,18 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.SavePackageDialog.DefaultExt = "mgp";
             resources.ApplyResources(this.SavePackageDialog, "SavePackageDialog");
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.InsertDeleteCommands);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
+            // InsertDeleteCommands
+            // 
+            resources.ApplyResources(this.InsertDeleteCommands, "InsertDeleteCommands");
+            this.InsertDeleteCommands.Name = "InsertDeleteCommands";
+            this.InsertDeleteCommands.UseVisualStyleBackColor = true;
+            // 
             // PackageEditor
             // 
             resources.ApplyResources(this, "$this");
@@ -294,8 +310,6 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.Controls.Add(this.ButtonPanel);
             this.Name = "PackageEditor";
             this.Load += new System.EventHandler(this.PackageEditor_Load);
-            this.ButtonPanel.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.MainGroup.Panel1.ResumeLayout(false);
             this.MainGroup.Panel1.PerformLayout();
             this.MainGroup.Panel2.ResumeLayout(false);
@@ -307,6 +321,10 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             this.panel3.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.ButtonPanel.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -343,5 +361,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
         private System.Windows.Forms.SaveFileDialog SaveResourceDataFile;
         private System.Windows.Forms.ToolStripButton AddResourceButton;
         private System.Windows.Forms.SaveFileDialog SavePackageDialog;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox InsertDeleteCommands;
     }
 }

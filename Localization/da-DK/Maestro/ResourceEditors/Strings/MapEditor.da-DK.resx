@@ -169,20 +169,20 @@ Vil du gemme kortet?</value>
     <comment>A warning message that is displayed if the map contains baselayers, as that will result in all existing tiles being deleted</comment>
   </data>
   <data name="UseNewProjectionQuestion" xml:space="preserve">
-    <value>The data extent is in another projection than the map, do you also want to update the maps coordinate system?</value>
+    <value>Data udstrækningen er i en anden projektion end kortet, vil du også opdatere kortets projektion?</value>
     <comment>A question that is displayed if the maps projection differs from that of the featuresource</comment>
   </data>
   <data name="UseLayerProjectionQuestion" xml:space="preserve">
-    <value>Do you want to use the projection from the layer
+    <value>Vil du bruge projektionen fra laget
 {0}?</value>
     <comment>A question that is displayed if the user can choose to user the layer projection</comment>
   </data>
   <data name="NoProjectionFoundWarning" xml:space="preserve">
-    <value>The extent for the layer was found, but no coordinate system was found</value>
+    <value>Der blev fundet en udstrækning for laget, men intet koordinatsystem</value>
     <comment>A warning message that is displayed if the layers projection could not be read</comment>
   </data>
   <data name="LayerProjectionReadError" xml:space="preserve">
-    <value>An error occured while reading the layers projection: {0}</value>
+    <value>En fejl opstod under læsning af lagets projektion: {0}</value>
     <comment>An error message that is displayed if an error occurs while reading the data projection</comment>
   </data>
 </root>

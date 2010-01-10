@@ -70,4 +70,6 @@
 	<ignore>Anonymous</ignore>
 	<ignore>1:</ignore>
 	<ignore>Widgets</ignore>
+	
+	<ignore>Pause</ignore>
 </root>

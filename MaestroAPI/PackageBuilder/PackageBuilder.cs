@@ -610,8 +610,9 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
         /// </summary>
         /// <param name="sourcePackageFile">The MGP file to read existing items from</param>
         /// <param name="items">The list of items that should be present in the new package</param>
+        /// <param name="insertEraseCommands">True if each resource should have a delete operation inserted before the actual operation, false otherwise</param>
         /// <param name="targetfile">The output package filename</param>
-        public void RebuildPackage(string sourcePackageFile, List<ResourceItem> items, string targetfile)
+        public void RebuildPackage(string sourcePackageFile, List<ResourceItem> items, string targetfile, bool insertEraseCommands)
         {
             string tempfolder = System.IO.Path.GetTempPath();
             int opno = 1;
@@ -787,8 +788,6 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
                 manifest.Operations = new ResourcePackageManifestOperations();
                 manifest.Operations.Operation = new ResourcePackageManifestOperationsOperationCollection();
 
-                bool eraseFirst = true;
-
                 foreach (ResourceItem ri in items)
                     if (ri.IsFolder)
                     {
@@ -796,7 +795,7 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
                             manifest,
                             ri.ResourcePath,
                             RelativeName(ri.Headerpath, tempfolder).Replace('\\', '/'),
-                            eraseFirst);
+                            insertEraseCommands);
                     }
                     else
                     {
@@ -805,7 +804,7 @@ namespace OSGeo.MapGuide.MaestroAPI.PackageBuilder
                             ri.ResourcePath,
                             RelativeName(ri.Headerpath, tempfolder).Replace('\\', '/'),
                             RelativeName(ri.Contentpath, tempfolder).Replace('\\', '/'),
-                            eraseFirst);
+                            insertEraseCommands);
 
                         foreach (ResourceDataItem rdi in ri.Items)
                             AddResourceData(
