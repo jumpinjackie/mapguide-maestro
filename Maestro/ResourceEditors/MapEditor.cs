@@ -181,7 +181,20 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			{
 				m_isUpdating = true;
 
-				txtDescription.Text = m_map.Metadata.Replace("<MapDescription>", "").Replace("</MapDescription>", "");
+                try
+                {
+                    System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+                    doc.LoadXml("<root>" + m_map.Metadata + "</root>");
+                    if (doc["root"]["MapDescription"] != null)
+                        txtDescription.Text = doc["root"]["MapDescription"].InnerText;
+                    else
+                        txtDescription.Text = "";
+                }
+                catch
+                {
+                    txtDescription.Text = m_map.Metadata.Replace("<MapDescription>", "").Replace("</MapDescription>", "");
+                }
+
 				if (m_editor.CurrentConnection.CoordinateSystem == null || m_map.CoordinateSystem == null || m_map.CoordinateSystem.Length == 0 || !m_editor.CurrentConnection.CoordinateSystem.IsLoaded)
 					txtCoordsys.Text = m_map.CoordinateSystem;
 				else
@@ -1139,7 +1152,20 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			if (m_isUpdating)
 				return;
 
-			m_map.Metadata = "<MapDescription>" + txtDescription.Text + "</MapDescription>";
+            try
+            {
+                System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+                doc.LoadXml("<root>" + System.Web.HttpUtility.HtmlDecode(m_map.Metadata) + "</root>");
+                if (doc["root"]["MapDescription"] == null)
+                    doc["root"].AppendChild(doc.CreateElement("MapDescription"));
+
+                doc["root"]["MapDescription"].InnerText = txtDescription.Text;
+                m_map.Metadata = doc["root"].InnerXml;
+            }
+            catch
+            {
+                m_map.Metadata = "<MapDescription>" + txtDescription.Text + "</MapDescription>";
+            }
 			m_editor.HasChanged();
 		}
 
