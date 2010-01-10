@@ -132,6 +132,7 @@ namespace OSGeo.MapGuide.Maestro
         private ToolStripMenuItem DuplicateMenu;
         private SaveFileDialog SaveAsXmlDialog;
         private OpenFileDialog OpenXmlFileDialog;
+        private ToolStripMenuItem MainMenuCloseAll;
         private string m_lastTabPageTooltip;
 
         public FormMain()
@@ -259,6 +260,7 @@ namespace OSGeo.MapGuide.Maestro
             this.TabPageTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.SaveAsXmlDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenXmlFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.MainMenuCloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -557,6 +559,7 @@ namespace OSGeo.MapGuide.Maestro
             this.MainMenuNew,
             this.MainMenuOpen,
             this.MainMenuClose,
+            this.MainMenuCloseAll,
             this.menuItem17,
             this.MainMenuSave,
             this.MainMenuSaveAs,
@@ -611,8 +614,8 @@ namespace OSGeo.MapGuide.Maestro
             // 
             // MainMenuSaveAll
             // 
-            this.MainMenuSaveAll.Name = "MainMenuSaveAll";
             resources.ApplyResources(this.MainMenuSaveAll, "MainMenuSaveAll");
+            this.MainMenuSaveAll.Name = "MainMenuSaveAll";
             this.MainMenuSaveAll.Click += new System.EventHandler(this.MainMenuSaveAll_Click);
             // 
             // menuItem11
@@ -899,6 +902,12 @@ namespace OSGeo.MapGuide.Maestro
             // OpenXmlFileDialog
             // 
             resources.ApplyResources(this.OpenXmlFileDialog, "OpenXmlFileDialog");
+            // 
+            // MainMenuCloseAll
+            // 
+            resources.ApplyResources(this.MainMenuCloseAll, "MainMenuCloseAll");
+            this.MainMenuCloseAll.Name = "MainMenuCloseAll";
+            this.MainMenuCloseAll.Click += new System.EventHandler(this.MainMenuCloseAll_Click);
             // 
             // FormMain
             // 
@@ -2363,6 +2372,14 @@ namespace OSGeo.MapGuide.Maestro
             {
                 foreach (ToolStripItem b in toolStrip1.Items)
                     b.Enabled = false;
+
+                MainMenuClose.Enabled =
+                MainMenuCloseAll.Enabled =
+                MainMenuSave.Enabled =
+                MainMenuSaveAs.Enabled =
+                MainMenuSaveAll.Enabled =
+                    false;
+
                 TabPageContextMenu.Enabled = false;
             }
             else
@@ -2385,6 +2402,11 @@ namespace OSGeo.MapGuide.Maestro
                 {
                     SaveResourceButton.Enabled =
                     SaveResourceAsButton.Enabled =
+                    MainMenuClose.Enabled =
+                    MainMenuCloseAll.Enabled =
+                    MainMenuSave.Enabled = 
+                    MainMenuSaveAs.Enabled =
+                    MainMenuSaveAll.Enabled =
                     ClosePageButton.Enabled = true;
 
                     IResourceEditorControl ei = edi.Page.Controls[0] as IResourceEditorControl;
@@ -2737,6 +2759,13 @@ namespace OSGeo.MapGuide.Maestro
                 if (FindAndSelectNode(actualTargetPath))
                     ResourceTree.SelectedNode.BeginEdit();
             }
+        }
+
+        private void MainMenuCloseAll_Click(object sender, EventArgs e)
+        {
+            foreach (EditorInterface edi in new List<EditorInterface>(m_userControls.Values))
+                if (!edi.Close(true))
+                    return;
         }
 	}
 }

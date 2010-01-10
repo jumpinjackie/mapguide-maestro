@@ -304,4 +304,7 @@
   <data name="OpenXmlFileDialog.Title" xml:space="preserve">
     <value>Udpeg xml filen der skal indlæses</value>
   </data>
+  <data name="MainMenuCloseAll.Text" xml:space="preserve">
+    <value>Luk alle</value>
+  </data>
 </root>
