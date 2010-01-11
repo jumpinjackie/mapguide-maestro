@@ -1390,7 +1390,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 foreach (ListViewItem lvi in lstDrawOrder.SelectedItems)
                     selected.Add(lvi);
 
-                if (up)
+                if (!up)
                     selected.Reverse();
 
 				foreach(ListViewItem lvi in selected)
@@ -1501,11 +1501,20 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                             maplayer.Group = (trvLayerGroups.SelectedNode.Tag as MaestroAPI.MapLayerGroupType).Name;
                         else if (trvLayerGroups.SelectedNode.Tag is MaestroAPI.MapLayerType)
                             maplayer.Group = (trvLayerGroups.SelectedNode.Tag as MaestroAPI.MapLayerType).Group;
-                    }
-                    
 
-                    m_map.Layers.Add(maplayer);
-                    
+                        int index = 0;
+                        foreach (MaestroAPI.MapLayerType l in m_map.Layers)
+                            if (l.Group == maplayer.Group)
+                                index = Math.Max(index, m_map.Layers.IndexOf(l));
+
+                        if (index <= 0)
+                            m_map.Layers.Add(maplayer);
+                        else
+                            m_map.Layers.Insert(index + 1, maplayer);
+                    }
+                    else
+                        m_map.Layers.Add(maplayer);
+
                     lastItem = maplayer;
                 }
 

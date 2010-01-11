@@ -753,8 +753,63 @@ namespace OSGeo.MapGuide.MaestroAPI {
 	}
         
     public class MapLayerTypeCollection : System.Collections.CollectionBase {
-        
-        public MapLayerType this[int idx] {
+
+        /// <summary>
+        /// Gets or sets the index of a layer, given the layer name.
+        /// Is case sensitive but will search case insensitive if no layer matches with case sensitive.
+        /// </summary>
+        /// <param name="name">The name of the layer</param>
+        /// <returns>The index of the layer, or -1 if no such layer could be found</returns>
+        public int IndexOf(string name)
+        {
+            int rml = -1;
+            for (int i = 0; i < this.Count; i++)
+                if (this[i].Name == name)
+                    return i;
+                else if (rml == -1 && this[i].Name.ToLower() == name.ToLower())
+                    rml = i;
+
+            return rml;
+
+        }
+
+        /// <summary>
+        /// Gets a value indicating if the layer exists in the map.
+        /// Is case sensitive but will search case insensitive if no layer matches with case sensitive.
+        /// </summary>
+        /// <param name="name">The name of the layer</param>
+        /// <returns>True if the layer was found, false otherwise</returns>
+        public bool Contains(string name)
+        {
+            return IndexOf(name) != -1;
+        }
+
+        /// <summary>
+        /// Gets or sets a layer based on the layers name.
+        /// Is case sensitive but will search case insensitive if no layer matches with case sensitive.
+        /// </summary>
+        public MapLayerType this[string name]
+        {
+            get
+            {
+                int ix = IndexOf(name);
+                if (ix == -1)
+                    throw new IndexOutOfRangeException("The layer named: " + name + " was not found in the map");
+                else
+                    return this[ix];
+            }
+            set
+            {
+                int ix = IndexOf(name);
+                if (ix == -1)
+                    throw new IndexOutOfRangeException("The layer named: " + name + " was not found");
+                else
+                    this[ix] = value;
+            }
+        }
+
+        public MapLayerType this[int idx]
+        {
             get {
                 return ((MapLayerType)(base.InnerList[idx]));
             }
@@ -762,7 +817,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
                 base.InnerList[idx] = value;
             }
         }
-        
+
         public int Add(MapLayerType value) {
             return base.InnerList.Add(value);
         }
@@ -771,11 +826,71 @@ namespace OSGeo.MapGuide.MaestroAPI {
 		{
 			return base.InnerList.IndexOf(value);
 		}
+
+        public void Insert(int index, MapLayerType value)
+        {
+            base.InnerList.Insert(index, value);
+        }
     }
     
     public class MapLayerGroupTypeCollection : System.Collections.CollectionBase {
-        
-        public MapLayerGroupType this[int idx] {
+
+        /// <summary>
+        /// Gets or sets the index of a layer, given the layer name.
+        /// Is case sensitive but will search case insensitive if no layer matches with case sensitive.
+        /// </summary>
+        /// <param name="name">The name of the layer</param>
+        /// <returns>The index of the layer, or -1 if no such layer could be found</returns>
+        public int IndexOf(string name)
+        {
+            int rml = -1;
+            for (int i = 0; i < this.Count; i++)
+                if (this[i].Name == name)
+                    return i;
+                else if (rml == -1 && this[i].Name.ToLower() == name.ToLower())
+                    rml = i;
+
+            return rml;
+
+        }
+
+        /// <summary>
+        /// Gets a value indicating if the layer exists in the map.
+        /// Is case sensitive but will search case insensitive if no layer matches with case sensitive.
+        /// </summary>
+        /// <param name="name">The name of the layer</param>
+        /// <returns>True if the layer was found, false otherwise</returns>
+        public bool Contains(string name)
+        {
+            return IndexOf(name) != -1;
+        }
+
+        /// <summary>
+        /// Gets or sets a layer based on the layers name.
+        /// Is case sensitive but will search case insensitive if no layer matches with case sensitive.
+        /// </summary>
+        public MapLayerGroupType this[string name]
+        {
+            get
+            {
+                int ix = IndexOf(name);
+                if (ix == -1)
+                    throw new IndexOutOfRangeException("The layer named: " + name + " was not found in the map");
+                else
+                    return this[ix];
+            }
+            set
+            {
+                int ix = IndexOf(name);
+                if (ix == -1)
+                    throw new IndexOutOfRangeException("The layer named: " + name + " was not found");
+                else
+                    this[ix] = value;
+            }
+        }
+
+        public MapLayerGroupType this[int idx]
+        {
             get {
                 return ((MapLayerGroupType)(base.InnerList[idx]));
             }
