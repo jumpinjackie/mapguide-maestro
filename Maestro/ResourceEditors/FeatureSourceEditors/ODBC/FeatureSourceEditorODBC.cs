@@ -652,7 +652,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
 
             //Preserve the crs, if any
             if (m_crsNode != null)
-                schema.FirstChild.AppendChild(m_crsNode.CloneNode(true));
+                schema.FirstChild.AppendChild(schema.ImportNode(m_crsNode, true));
 
 			Hashtable approvedKeys = new Hashtable();
 
