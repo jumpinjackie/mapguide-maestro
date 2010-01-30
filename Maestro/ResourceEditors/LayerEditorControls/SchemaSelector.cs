@@ -97,6 +97,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 						else if (m_layer.Item as OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType != null)
 							(m_layer.Item as OSGeo.MapGuide.MaestroAPI.GridLayerDefinitionType).FeatureName = schemaName;
 
+                        m_editor.HasChanged();
+
 						if (SchemaChanged != null && Schema.SelectedIndex >= 0)
 							SchemaChanged(false, this.SelectedSchema);
 					}
