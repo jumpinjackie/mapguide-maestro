@@ -162,6 +162,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.sizeUnitsCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sizeUnitsCombo.Name = "sizeUnitsCombo";
             this.sizeUnitsCombo.ValueMember = "Value";
+            this.sizeUnitsCombo.SelectedIndexChanged += new System.EventHandler(this.sizeUnitsCombo_SelectedIndexChanged);
             // 
             // UnitsTable
             // 
@@ -188,6 +189,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
             this.sizeContextCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sizeContextCombo.Name = "sizeContextCombo";
             this.sizeContextCombo.ValueMember = "Value";
+            this.sizeContextCombo.SelectedIndexChanged += new System.EventHandler(this.sizeContextCombo_SelectedIndexChanged);
             // 
             // SizeContextTable
             // 
@@ -290,9 +292,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 
 			try
 			{
-				if (m_item == null)
+                m_inUpdate = true;
+                
+                if (m_item == null)
 				{
-					m_inUpdate = true;
 					fillStyleEditor.displayFill.Checked = false;
 					lineStyleEditor.displayLine.Checked = false;
 					return;
@@ -313,13 +316,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				if (m_item.Stroke != null)
 				{
 					sizeUnitsCombo.SelectedValue = m_item.Stroke.Unit.ToString();
-					//sizeContextCombo.SelectedValue = st.??;
+                    sizeContextCombo.SelectedValue = m_item.Stroke.SizeContext.ToString();
 					if (m_item.Stroke.ColorAsHTML != null)
 						lineStyleEditor.colorCombo.CurrentColor = m_item.Stroke.Color;
 					lineStyleEditor.fillCombo.SelectedIndex = lineStyleEditor.fillCombo.FindString(m_item.Stroke.LineStyle);
                     lineStyleEditor.thicknessCombo.Text = m_item.Stroke.Thickness;
 				}
-				m_inUpdate = true;
 
 				previewPicture.Refresh();
 			} 
@@ -497,6 +499,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
                 if (!userChange)
                     m_inUpdate = false;
             }
+        }
+
+        private void sizeContextCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate || m_item.Stroke == null)
+                return;
+
+            m_item.Stroke.SizeContext = (OSGeo.MapGuide.MaestroAPI.SizeContextType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.SizeContextType), (string)sizeContextCombo.SelectedValue);
+        }
+
+        private void sizeUnitsCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate || m_item.Stroke == null)
+                return;
+
+            m_item.Stroke.Unit = (OSGeo.MapGuide.MaestroAPI.LengthUnitType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.LengthUnitType), (string)sizeUnitsCombo.SelectedValue);
         }
     }
 }

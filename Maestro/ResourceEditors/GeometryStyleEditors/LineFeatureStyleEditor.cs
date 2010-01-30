@@ -139,7 +139,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 				if (st != null)
 				{
 				    sizeUnitsCombo.SelectedValue = st.Unit.ToString();
-					//sizeContextCombo.SelectedValue = st.??;
+                    sizeContextCombo.SelectedValue = st.SizeContext.ToString();
                     if (st.ColorAsHTML == null)
                         lineStyleEditor.colorCombo.CurrentColor = Color.Black;
                     else
@@ -463,8 +463,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors
 		{
 			if (m_inUpdate)
 				return;
-			//TODO: Where does this go?
-			if (Changed != null)
+            this.CurrentStrokeType.SizeContext = (OSGeo.MapGuide.MaestroAPI.SizeContextType)Enum.Parse(typeof(OSGeo.MapGuide.MaestroAPI.SizeContextType), (string)sizeContextCombo.SelectedValue);
+            previewPicture.Refresh();
+            lineStyles.Refresh();
+            if (Changed != null)
 				Changed(this, new EventArgs());
 		}
 
