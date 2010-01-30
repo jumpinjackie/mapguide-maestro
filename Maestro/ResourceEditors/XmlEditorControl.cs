@@ -205,6 +205,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.panel2 = new System.Windows.Forms.Panel();
             this.textEditor = new System.Windows.Forms.TextBox();
             this.ResourceDataGroup = new System.Windows.Forms.GroupBox();
+            this.resourceDataEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor();
             this.LockedMessagePanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -220,9 +221,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ValidateButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.LaunchExternalEditorButton = new System.Windows.Forms.ToolStripButton();
-            this.toolbarImages = new System.Windows.Forms.ImageList(this.components);
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.resourceDataEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.ResourceDataEditor();
+            this.toolbarImages = new System.Windows.Forms.ImageList(this.components);
             this.panel2.SuspendLayout();
             this.ResourceDataGroup.SuspendLayout();
             this.LockedMessagePanel.SuspendLayout();
@@ -255,6 +255,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             resources.ApplyResources(this.ResourceDataGroup, "ResourceDataGroup");
             this.ResourceDataGroup.Name = "ResourceDataGroup";
             this.ResourceDataGroup.TabStop = false;
+            // 
+            // resourceDataEditor
+            // 
+            resources.ApplyResources(this.resourceDataEditor, "resourceDataEditor");
+            this.resourceDataEditor.Editor = null;
+            this.resourceDataEditor.Name = "resourceDataEditor";
+            this.resourceDataEditor.ResourceExists = false;
+            this.resourceDataEditor.ResourceID = null;
+            this.resourceDataEditor.ResourceDataChanged += new System.EventHandler(this.resourceDataEditor_ResourceDataChanged);
             // 
             // LockedMessagePanel
             // 
@@ -362,6 +371,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.LaunchExternalEditorButton.Name = "LaunchExternalEditorButton";
             this.LaunchExternalEditorButton.Click += new System.EventHandler(this.LaunchExternalEditorButton_Click);
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            resources.ApplyResources(this.toolStripLabel1, "toolStripLabel1");
+            // 
             // toolbarImages
             // 
             this.toolbarImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("toolbarImages.ImageStream")));
@@ -373,21 +388,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolbarImages.Images.SetKeyName(4, "");
             this.toolbarImages.Images.SetKeyName(5, "");
             this.toolbarImages.Images.SetKeyName(6, "");
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            resources.ApplyResources(this.toolStripLabel1, "toolStripLabel1");
-            // 
-            // resourceDataEditor
-            // 
-            resources.ApplyResources(this.resourceDataEditor, "resourceDataEditor");
-            this.resourceDataEditor.Editor = null;
-            this.resourceDataEditor.Name = "resourceDataEditor";
-            this.resourceDataEditor.ResourceExists = false;
-            this.resourceDataEditor.ResourceID = null;
-            this.resourceDataEditor.ResourceDataChanged += new System.EventHandler(this.resourceDataEditor_ResourceDataChanged);
             // 
             // XmlEditorControl
             // 
