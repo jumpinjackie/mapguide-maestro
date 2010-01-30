@@ -1878,7 +1878,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return null;
 
             FdoSpatialContextList context = this.CurrentConnection.GetSpatialContextInfo(this.Item.ResourceId, false);
-            if (context == null || context.SpatialContext == null ||context.SpatialContext.Count == 0)
+            if (context == null || context.SpatialContext == null || context.SpatialContext.Count == 0)
                 return null;
 
             foreach (FdoSpatialContextListSpatialContext cx in context.SpatialContext)

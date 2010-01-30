@@ -132,6 +132,10 @@ layers will be moved to the selected group before being converted.
 Do you want to continue?</value>
     <comment>A warning that is displayed if the user attempts to convert a group with subgroups to a baselayer group</comment>
   </data>
+  <data name="LayerExtentMissingError" xml:space="preserve">
+    <value>No extent data was found for the layer.</value>
+    <comment>An error message that is displayed if the layer has no extent data.</comment>
+  </data>
   <data name="LayerExtentReadError" xml:space="preserve">
     <value>Failed to get layer extent: {0}</value>
     <comment>An error message that is displayed if the attempt to read the layer extents fail</comment>

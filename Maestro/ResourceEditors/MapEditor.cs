@@ -1854,6 +1854,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
                 Topology.Geometries.IEnvelope env = ldef.GetSpatialExtent(true);
 
+                if (env == null)
+                {
+                    MessageBox.Show(this, Strings.MapEditor.LayerExtentMissingError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 try
                 {
                     string projection = ldef.GetCordinateSystem();

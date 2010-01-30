@@ -91,6 +91,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No extent data was found for the layer..
+        /// </summary>
+        internal static string LayerExtentMissingError {
+            get {
+                return ResourceManager.GetString("LayerExtentMissingError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to get layer extent: {0}.
         /// </summary>
         internal static string LayerExtentReadError {
