@@ -151,7 +151,7 @@ Fejlbesked: {1}</value>
     <comment>A message written in the log when profiling runtime map rendering</comment>
   </data>
   <data name="LogMessageRenderingScales" xml:space="preserve">
-    <value>Rendering af zoomeniveauer:</value>
+    <value>Rendering af zoom niveauer:</value>
     <comment>A message written in the log when profiling a scale rendering</comment>
   </data>
   <data name="LogMessageRuntimeLayer" xml:space="preserve">

@@ -32,6 +32,7 @@ namespace OSGeo.MapGuide.Maestro
             this.panel1 = new System.Windows.Forms.Panel();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.Results = new System.Windows.Forms.TextBox();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +54,14 @@ namespace OSGeo.MapGuide.Maestro
             resources.ApplyResources(this.Results, "Results");
             this.Results.Name = "Results";
             this.Results.ReadOnly = true;
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerReportsProgress = true;
+            this.backgroundWorker.WorkerSupportsCancellation = true;
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
             // 
             // Profiling
             // 
@@ -77,5 +86,6 @@ namespace OSGeo.MapGuide.Maestro
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button CancelBtn;
         private System.Windows.Forms.TextBox Results;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }

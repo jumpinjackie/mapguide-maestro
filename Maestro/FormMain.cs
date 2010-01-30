@@ -2455,7 +2455,7 @@ namespace OSGeo.MapGuide.Maestro
             if (ei == null || ei.Resource == null)
                 return;
 
-            Profiling dlg = new Profiling(ei.Resource, m_connection);
+            Profiling dlg = new Profiling(ei.Resource, edi.ResourceId, m_connection);
             dlg.ShowDialog(this);
         }
 

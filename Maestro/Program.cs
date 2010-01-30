@@ -30,31 +30,7 @@ namespace OSGeo.MapGuide.Maestro
 		[STAThread()]
 		public static void Main(string[] args)
 		{
-            //System.Text.RegularExpressions.Regex m_filenameTransformer = new System.Text.RegularExpressions.Regex(@"[^A-Za-z0-9\.-\/]");
-            //System.Text.RegularExpressions.Match m = m_filenameTransformer.Match("xx���");
-
-            /*MaestroAPI.HttpServerConnection con = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri("http://localhost:8008/mapguide"), "Administrator", "admin", "da", true);
-            con.CreateRuntimeMap("Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition");
-            MaestroAPI.MapLayerType mlt = new OSGeo.MapGuide.MaestroAPI.MapLayerType();
-            mlt.ResourceId = "Library://Samples/Sheboygan/Layers/Buildings.LayerDefinition";
-            mlt.Parent = con.GetMapDefinition("Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition");
-            MaestroAPI.RuntimeClasses.RuntimeMapLayer rml = new OSGeo.MapGuide.MaestroAPI.RuntimeClasses.RuntimeMapLayer(mlt);*/
-            //MaestroAPI.FeatureSetReader fs = con.QueryFeatureSource("Library://JammerbugtGrundsalg/sqlite.FeatureSource", "Grunde", null, new string[] { "ID" });
-            //fs.Read();
-            //MaestroAPI.LayerDefinition ldef = con.CreateResourceObject<MaestroAPI.LayerDefinition>();
-
-            /*MaestroAPI.ResourceIdentifier ri = new OSGeo.MapGuide.MaestroAPI.ResourceIdentifier("Library://folder/");
-            string s = ri.Folder;
-            ri.Folder = "xfolder";
-            ri.Folder = "Library://yfolder";
-            ri = new OSGeo.MapGuide.MaestroAPI.ResourceIdentifier("Library://folder/mapdef.LayerDefinition");
-            ri.Folder = "xfolder";
-            ri.Folder = "Library://yfolder";
-            ri.Folder = "";
-            ri = new OSGeo.MapGuide.MaestroAPI.ResourceIdentifier("Library://");
-            s = ri.Folder;*/
-
-
+            //MaestroAPI.HttpServerConnection con = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri("http://localhost/mapguide"), "Administrator", "admin", "da", true);
 
 			try
 			{
