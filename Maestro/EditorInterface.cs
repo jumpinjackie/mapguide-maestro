@@ -251,7 +251,7 @@ namespace OSGeo.MapGuide.Maestro
                             }
 
                             if (fullmsg.Length > 512)
-                                fullmsg = string.Format(Strings.EditorInterface.ValidationMessageTooLong, fullmsg.Substring(512));
+                                fullmsg = string.Format(Strings.EditorInterface.ValidationMessageTooLong, fullmsg.Substring(0, 512));
 
                             if (errors.Count > 0)
                                 msg = string.Format(Strings.EditorInterface.SaveWithErrorsConfirmation, fullmsg);
