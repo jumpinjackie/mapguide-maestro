@@ -1329,6 +1329,22 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_cachedGroupList;
         }
 
+        public override bool ResourceExists(string resourceid)
+        {
+            try
+            {
+                string req = m_reqBuilder.ResourceExists(resourceid);
+                using (System.IO.Stream s = this.OpenRead(req))
+                using (System.IO.StreamReader sr = new System.IO.StreamReader(s))
+                    return sr.ReadToEnd().Trim().Equals("true", StringComparison.InvariantCultureIgnoreCase);
+            }
+            catch (Exception ex)
+            {
+                try { return base.ResourceExists(resourceid); }
+                catch { throw ex; } //Throw original error
+            }
+        }
+
 
         #region IDisposable Members
 

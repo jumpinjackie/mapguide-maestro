@@ -1199,6 +1199,23 @@ namespace OSGeo.MapGuide.MaestroAPI
             return req;
         }
 
+        public string ResourceExists(string resourceId)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "RESOURCEEXISTS");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", m_userAgent);
+
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            param.Add("RESOURCEID", resourceId);
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
         public string UserAgent
         {
             get { return m_userAgent; }

@@ -594,7 +594,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// </summary>
 		/// <param name="resourceid">The resource to look for</param>
 		/// <returns>True if the resource exists false otherwise. Also returns false on error.</returns>
-		public bool ResourceExists(string resourceid)
+		public virtual bool ResourceExists(string resourceid)
 		{
 			try
 			{

@@ -788,6 +788,21 @@ namespace OSGeo.MapGuide.MaestroAPI
             //ts.GetTile(new MgResourceIdentifier(mapdefinition), baselayergroup, col, row, scaleindex)
         }
 
+        public override bool ResourceExists(string resourceid)
+        {
+            try
+            {
+                MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
+                return res.ResourceExists(new MgResourceIdentifier(resourceid));
+            }
+            catch (Exception ex)
+            {
+                try { return base.ResourceExists(resourceid); }
+                catch { throw ex; } //Throw original error
+            }
+            
+        }
+
 		#endregion
 
         #region IDisposable Members
