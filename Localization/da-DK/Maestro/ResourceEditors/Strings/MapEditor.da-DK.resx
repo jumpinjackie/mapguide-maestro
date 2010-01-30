@@ -185,4 +185,8 @@ Vil du gemme kortet?</value>
     <value>En fejl opstod under læsning af lagets projektion: {0}</value>
     <comment>An error message that is displayed if an error occurs while reading the data projection</comment>
   </data>
+  <data name="LayerExtentMissingError" xml:space="preserve">
+    <value>Der blev ikke fundet en udstrækning for laget.</value>
+    <comment>An error message that is displayed if the layer has no extent data.</comment>
+  </data>
 </root>
