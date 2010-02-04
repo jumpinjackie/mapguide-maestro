@@ -500,7 +500,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 						}
 						catch (Exception ex)
 						{
-							switch(MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DeleteFailedQuestion, resourcename, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+                            switch (MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DeleteFailedQuestion, resourcename, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
 							{
 								case DialogResult.Abort:
 									return res;
@@ -560,7 +560,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 						}
 						catch(Exception ex)
 						{
-							switch(MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, items[0], ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+                            switch (MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, items[0], ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
 							{
 								case DialogResult.Abort:
 									return res;
@@ -607,7 +607,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 							}
 							catch(Exception ex)
 							{
-								switch(MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, item, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+                                switch (MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, item, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
 								{
 									case DialogResult.Abort:
 										return res;
@@ -673,7 +673,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					}
 					catch(Exception ex)
 					{
-						switch(MessageBox.Show(this, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, i.Text, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+                        m_editor.SetLastException(ex);
+                        switch (MessageBox.Show(this, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, i.Text, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
 						{
 							case DialogResult.Abort:
 								RefreshFileList();
@@ -847,6 +848,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                m_editor.SetLastException(ex);
                 MessageBox.Show(this, string.Format(Strings.ResourceDataEditor.UpdateXmlDataError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

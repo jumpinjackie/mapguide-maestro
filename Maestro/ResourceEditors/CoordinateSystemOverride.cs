@@ -426,6 +426,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                m_editor.SetLastException(ex);
                 MessageBox.Show(this, string.Format(Strings.CoordinateSystemOverride.CoordinateSystemLoadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -471,6 +472,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                m_editor.SetLastException(ex);
                 MessageBox.Show(this, string.Format(Strings.CoordinateSystemOverride.CoordinateSystemLoadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         
@@ -554,6 +556,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 }
                 catch (Exception ex)
                 {
+                    m_editor.SetLastException(ex);
                     MessageBox.Show(this, string.Format(Strings.CoordinateSystemOverride.CoordinateSystemLoadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

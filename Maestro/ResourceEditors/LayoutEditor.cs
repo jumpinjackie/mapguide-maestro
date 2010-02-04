@@ -1998,7 +1998,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(this, String.Format(Strings.LayoutEditor.BrowserLaunchError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                m_editor.SetLastException(ex);
+                MessageBox.Show(this, String.Format(Strings.LayoutEditor.BrowserLaunchError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 

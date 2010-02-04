@@ -1239,6 +1239,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                m_editor.SetLastException(ex);
                 MessageBox.Show(this, string.Format(Strings.MapEditor.LayerProjectionReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -1724,7 +1725,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch(Exception ex)
 			{
-				MessageBox.Show(this, string.Format(Strings.MapEditor.MapPreviewError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                m_editor.SetLastException(ex);
+                MessageBox.Show(this, string.Format(Strings.MapEditor.MapPreviewError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
 			return true;
@@ -1883,6 +1885,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 }
                 catch (Exception ex)
                 {
+                    m_editor.SetLastException(ex);
                     MessageBox.Show(this, string.Format(Strings.MapEditor.LayerProjectionReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
@@ -1893,7 +1896,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(this, string.Format(Strings.MapEditor.LayerExtentReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                m_editor.SetLastException(ex);
+                MessageBox.Show(this, string.Format(Strings.MapEditor.LayerExtentReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 

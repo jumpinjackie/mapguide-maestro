@@ -489,7 +489,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(this, string.Format(Strings.XmlEditorControl.SerializeError, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                if (m_editor != null)
+                    m_editor.SetLastException(ex);
+                MessageBox.Show(this, string.Format(Strings.XmlEditorControl.SerializeError, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
 				return false;
 			}
 
@@ -646,6 +648,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                if (m_editor != null)
+                    m_editor.SetLastException(ex);
                 EndExternalEditing(false);
                 MessageBox.Show(this, string.Format(Strings.XmlEditorControl.ExternalEditorError, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

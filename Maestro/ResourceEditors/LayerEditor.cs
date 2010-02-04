@@ -122,7 +122,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(this, string.Format(Strings.LayerEditor.SchemaReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                m_editor.SetLastException(ex);
+                MessageBox.Show(this, string.Format(Strings.LayerEditor.SchemaReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
 			}
 
 		}
@@ -610,7 +611,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch(Exception ex)
 			{
-				MessageBox.Show(this, string.Format(Strings.LayerEditor.MapPreviewError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                m_editor.SetLastException(ex);
+                MessageBox.Show(this, string.Format(Strings.LayerEditor.MapPreviewError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
             return true;

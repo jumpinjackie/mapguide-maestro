@@ -407,6 +407,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
             }
             catch (Exception ex)
             {
+                m_editor.SetLastException(ex);
                 MessageBox.Show(this, string.Format(Strings.Composite.FileLoadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

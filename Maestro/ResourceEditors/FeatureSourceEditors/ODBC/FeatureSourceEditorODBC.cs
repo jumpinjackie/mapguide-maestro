@@ -202,6 +202,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
                     }
                     catch (Exception ex)
                     {
+                        m_editor.SetLastException(ex);
                         MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Strings.FeatureSourceEditorODBC.CoordinateSystemError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -450,6 +451,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
                 }
                 catch (Exception ex)
                 {
+                    m_editor.SetLastException(ex);
                     MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Strings.FeatureSourceEditorODBC.CoordinateSystemError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -545,7 +547,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Strings.FeatureSourceEditorODBC.SchemaRefreshError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                m_editor.SetLastException(ex);
+                MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Strings.FeatureSourceEditorODBC.SchemaRefreshError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -850,7 +853,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
 				}
 				catch(Exception ex)
 				{
-					MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Strings.FeatureSourceEditorODBC.ConfigurationReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    m_editor.SetLastException(ex);
+                    MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Strings.FeatureSourceEditorODBC.ConfigurationReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return;
 				}
 			}
@@ -874,7 +878,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
 			}
 			catch(Exception ex)
 			{
-				MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Strings.FeatureSourceEditorODBC.DatasourceLayoutReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                m_editor.SetLastException(ex);
+                MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC.Strings.FeatureSourceEditorODBC.DatasourceLayoutReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 

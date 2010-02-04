@@ -490,6 +490,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                m_editor.SetLastException(ex);
                 MessageBox.Show(string.Format(Strings.FeatureSourceEditorBase.ResourceSaveError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -540,6 +541,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                m_editor.SetLastException(ex);
                 MessageBox.Show(this, string.Format(Strings.FeatureSourceEditorBase.XmlUpdateError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

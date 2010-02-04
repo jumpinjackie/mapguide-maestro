@@ -135,7 +135,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             try
             {
                 object owner = null;
-                object item = null;
 
                 if (m_point != null)
                     owner = m_point;

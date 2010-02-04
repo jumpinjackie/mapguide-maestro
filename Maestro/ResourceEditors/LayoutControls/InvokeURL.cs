@@ -372,7 +372,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(this, string.Format(Strings.InvokeURL.LayerListReadError, mapname, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                m_editor.SetLastException(ex);
+                MessageBox.Show(this, string.Format(Strings.InvokeURL.LayerListReadError, mapname, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 

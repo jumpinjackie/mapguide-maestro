@@ -1194,7 +1194,10 @@ namespace OSGeo.MapGuide.Maestro
                         while (iex is System.Reflection.TargetInvocationException && iex.InnerException != null)
                             iex = iex.InnerException;
                         if (!(iex is CancelException))
+                        {
+                            LastException = ex;
                             MessageBox.Show(this, string.Format(Strings.FormMain.OpenFailedError, resourceID, iex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 else
@@ -1307,6 +1310,7 @@ namespace OSGeo.MapGuide.Maestro
 			}
 			catch (Exception ex)
 			{
+                LastException = ex;
 				MessageBox.Show(this, string.Format(Strings.FormMain.SaveResourceError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
@@ -1338,6 +1342,7 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch (Exception ex)
             {
+                LastException = ex;
                 MessageBox.Show(this, string.Format(Strings.FormMain.TemplateLoadError, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -1384,6 +1389,7 @@ namespace OSGeo.MapGuide.Maestro
 				}
 				catch(Exception ex)
 				{
+                    LastException = ex;
 					MessageBox.Show(this, string.Format(Strings.FormMain.DeleteFolderError, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 
@@ -1406,6 +1412,7 @@ namespace OSGeo.MapGuide.Maestro
 				}
 				catch(Exception ex)
 				{
+                    LastException = ex;
 					MessageBox.Show(this, string.Format(Strings.FormMain.DeleteResourceError, ex.ToString()), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 
@@ -1781,6 +1788,7 @@ namespace OSGeo.MapGuide.Maestro
                     }
                     catch (Exception ex)
                     {
+                        LastException = ex;
                         MessageBox.Show(this, string.Format(Strings.FormMain.PreviewFailedError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 					break;
@@ -2024,6 +2032,7 @@ namespace OSGeo.MapGuide.Maestro
 				}
 				catch (Exception ex)
 				{
+                    LastException = ex;
 					MessageBox.Show(this, string.Format(Strings.FormMain.XmlEditorError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
@@ -2095,6 +2104,7 @@ namespace OSGeo.MapGuide.Maestro
 			}
 			catch(Exception ex)
 			{
+                LastException = ex;
 				MessageBox.Show(this, string.Format(Strings.FormMain.OpenResourceError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
@@ -2134,6 +2144,7 @@ namespace OSGeo.MapGuide.Maestro
 			}
 			catch(Exception ex)
 			{
+                LastException = ex;
 				MessageBox.Show(this, string.Format(Strings.FormMain.SaveResourceError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
@@ -2327,6 +2338,8 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch(Exception ex)
             {
+                LastException = ex;
+
                 if (ex is System.Reflection.TargetInvocationException && ex.InnerException != null)
                     ex = ex.InnerException;
 
