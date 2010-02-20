@@ -863,7 +863,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 			if (m_layer == null || m_layer.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType == null || inUpdate)
 				return;
 
-			bool updated = false;
 			OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType vldef = m_layer.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType;
 
 			if (vldef.PropertyMapping == null)
@@ -885,33 +884,24 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 						ns.Name = n;
 						ns.Value = (string)dr["Display"];
 						vldef.PropertyMapping.Add(ns);
-						updated = true;
 					}
 					else
 					{
 						if (vldef.PropertyMapping[i].Value != (string)dr["Display"])
-						{
 							vldef.PropertyMapping[i].Value = (string)dr["Display"];
-							updated = true;
-						}
 					}
 				}
 				else
 				{
 					if (i < vldef.PropertyMapping.Count)
-					{
 						vldef.PropertyMapping.RemoveAt(i);
-						updated = true;
-					}
 				}
 			}
 
 			if (vldef.PropertyMapping.Count == 0)
 				vldef.PropertyMapping = null;
 
-			if (updated)
-				m_editor.HasChanged();
-			
+		    m_editor.HasChanged();
 		}
 
         private void AddScaleRangeButton_Click(object sender, EventArgs e)
