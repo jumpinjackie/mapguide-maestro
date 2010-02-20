@@ -74,16 +74,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				if (uc.GetType() == typeof(FeatureSourceEditorGeneric))
 				{
 					Panel editorPanel = new Panel();
-					editorPanel.Top = EditorTab.Top;
-					editorPanel.Left = EditorTab.Left;
-					editorPanel.Width = EditorTab.Width;
-					editorPanel.Height = EditorTab.Height;
 					editorPanel.Controls.Clear();
 					editorPanel.Controls.Add(uc);
 					editorPanel.Anchor = EditorTab.Anchor;
 
 					this.Controls.Remove(EditorTab);
 					this.Controls.Add(editorPanel);
+                    editorPanel.Dock = DockStyle.Fill;
+                    editorPanel.BringToFront();
 					
 					m_childGeneric = (FeatureSourceEditorGeneric)m_child;
 				}
