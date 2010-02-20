@@ -59,6 +59,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.PostGIS
 			m_editor = editor;
 			m_feature = feature;
 
+            if (!m_editor.Existing && string.IsNullOrEmpty(m_feature.Parameter["DataStore"]))
+                m_feature.Parameter["DataStore"] = "public";
+
 			UpdateDisplay();
 		}
 
