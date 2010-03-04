@@ -30,6 +30,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public Selection(RuntimeClasses.RuntimeMap map, string xml)
             : this(map)
         {
+            FromXml(xml);
         }
 
         /// <summary>
@@ -90,6 +91,15 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
 
             return doc.OuterXml;
+        }
+
+        /// <summary>
+        /// Returns the selection Xml, the same as ToXml()
+        /// </summary>
+        /// <returns>The selection xml</returns>
+        public override string ToString()
+        {
+            return ToXml();
         }
 
         /// <summary>
