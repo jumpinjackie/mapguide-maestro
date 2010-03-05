@@ -213,6 +213,7 @@ namespace OSGeo.MapGuide.Maestro
             this.MainMenuNew = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuClose = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainMenuCloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem17 = new System.Windows.Forms.ToolStripSeparator();
             this.MainMenuSave = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuSaveAs = new System.Windows.Forms.ToolStripMenuItem();
@@ -260,7 +261,6 @@ namespace OSGeo.MapGuide.Maestro
             this.TabPageTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.SaveAsXmlDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenXmlFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.MainMenuCloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -289,6 +289,7 @@ namespace OSGeo.MapGuide.Maestro
             this.ResourceTree.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ResourceTree_KeyPress);
             this.ResourceTree.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ResourceTree_KeyUp);
             this.ResourceTree.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.ResourceTree_BeforeLabelEdit);
+            this.ResourceTree.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.ResourceTree_AfterExpand);
             this.ResourceTree.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.ResourceTree_ItemDrag);
             this.ResourceTree.DragOver += new System.Windows.Forms.DragEventHandler(this.ResourceTree_DragOver);
             // 
@@ -594,6 +595,12 @@ namespace OSGeo.MapGuide.Maestro
             resources.ApplyResources(this.MainMenuClose, "MainMenuClose");
             this.MainMenuClose.Name = "MainMenuClose";
             this.MainMenuClose.Click += new System.EventHandler(this.MainMenuClose_Click);
+            // 
+            // MainMenuCloseAll
+            // 
+            resources.ApplyResources(this.MainMenuCloseAll, "MainMenuCloseAll");
+            this.MainMenuCloseAll.Name = "MainMenuCloseAll";
+            this.MainMenuCloseAll.Click += new System.EventHandler(this.MainMenuCloseAll_Click);
             // 
             // menuItem17
             // 
@@ -903,12 +910,6 @@ namespace OSGeo.MapGuide.Maestro
             // 
             resources.ApplyResources(this.OpenXmlFileDialog, "OpenXmlFileDialog");
             // 
-            // MainMenuCloseAll
-            // 
-            resources.ApplyResources(this.MainMenuCloseAll, "MainMenuCloseAll");
-            this.MainMenuCloseAll.Name = "MainMenuCloseAll";
-            this.MainMenuCloseAll.Click += new System.EventHandler(this.MainMenuCloseAll_Click);
-            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
@@ -1123,7 +1124,7 @@ namespace OSGeo.MapGuide.Maestro
 
 			string item = new MaestroAPI.ResourceIdentifier(resourceID).Name;
 			foreach(TreeNode n in parent)
-				if (n.Text == item)
+                if (n.Tag is MaestroAPI.ResourceListResourceDocument && (n.Tag as MaestroAPI.ResourceListResourceDocument).ResourceId == resourceID)
 					return n;
 
             if (allowNotFound)
@@ -1704,6 +1705,7 @@ namespace OSGeo.MapGuide.Maestro
 				if (edi.Page == tabItems.SelectedTab)
 				{
 					edi.Save();
+					UpdateResourceTreeStatus();
 					return;
 				}
 		}
@@ -1814,6 +1816,10 @@ namespace OSGeo.MapGuide.Maestro
 			}
 		}
 
+		private void ResourceTree_AfterExpand(object sender, System.Windows.Forms.TreeViewEventArgs e)
+		{
+			UpdateResourceTreeStatus();
+		}
 
 		private void ResourceTree_DragOver(object sender, System.Windows.Forms.DragEventArgs e)
 		{
@@ -2442,9 +2448,88 @@ namespace OSGeo.MapGuide.Maestro
                     ValidateButton.Enabled = ei.SupportsValidate;
                     EditAsXmlButton.Enabled = !(ei is ResourceEditors.XmlEditorControl);
                     TabPageContextMenu.Enabled = true;
+				}
+            }
+
+			UpdateResourceTreeStatus();
+		}
+
+        /// <summary>
+        /// Resets all node background colors to transparent
+        /// </summary>
+        /// <param name="treeView">The tree to reset the colors for</param>
+		private void TreeViewResetStatus(TreeView treeView)
+		{
+            try
+            {
+                treeView.BeginUpdate();
+                Queue<TreeNodeCollection> nodes = new Queue<TreeNodeCollection>();
+                nodes.Enqueue(treeView.Nodes);
+                while (nodes.Count > 0)
+                {
+                    TreeNodeCollection n = nodes.Dequeue();
+                    foreach (TreeNode tn in n)
+                    {
+                        if (tn.Tag is MaestroAPI.ResourceListResourceDocument)
+                            tn.BackColor = Color.Transparent;
+
+                        if (tn.Nodes.Count > 0)
+                            nodes.Enqueue(tn.Nodes);
+                    }
                 }
             }
-        }
+            finally
+            {
+                treeView.EndUpdate();
+            }
+		}
+
+		public void UpdateResourceTreeStatus()
+		{
+            try
+            {
+                ResourceTree.BeginUpdate();
+
+                // start looping through open editors
+                foreach (EditorInterface ediThis in m_userControls.Values)
+                {
+                    TreeNode item = FindItem(ediThis.ResourceId, true);
+                    if (ediThis.IsClosing)
+                    {
+                        item.BackColor = Color.Transparent;
+                        continue;
+                    }
+
+                    if (item != null && item.Tag is MaestroAPI.ResourceListResourceDocument)
+                    {
+                        // highlight if current
+                        if (ediThis.Page != tabItems.SelectedTab)
+                            item.BackColor = ediThis.IsModified ? Color.FromArgb(255, 222, 233) : Color.FromArgb(222, 255, 233);
+                        else
+                        {
+                            item.BackColor = ediThis.IsModified ? Color.Pink : Color.FromArgb(182, 255, 193);
+
+                            //See if all parents are expanded
+                            TreeNode pa = item.Parent;
+                            while (pa != null && pa.IsExpanded)
+                                pa = pa.Parent;
+
+                            //We reached the root and all were expanded
+                            if (pa == null)
+                                ResourceTree.SelectedNode = item;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LastException = ex;
+            }
+            finally
+            {
+                ResourceTree.EndUpdate();
+            }
+		}
 
         private void tabItems_ControlAdded(object sender, ControlEventArgs e)
         {

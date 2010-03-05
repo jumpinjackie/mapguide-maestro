@@ -35,6 +35,7 @@ namespace OSGeo.MapGuide.Maestro
 		private bool m_existing;
 		private static string m_lastPath;
 		public event EventHandler Closing;
+		private bool m_IsClosing = false;
 
 		public EditorInterface(FormMain editor, TabPage page, string resid, bool exisiting)
 		{
@@ -88,12 +89,16 @@ namespace OSGeo.MapGuide.Maestro
 			if (m_page != null)
 				if (!m_page.Text.EndsWith("*"))
 					m_page.Text += " *";
+
+			m_editor.UpdateResourceTreeStatus();
 		}
 
 		internal TabPage Page
 		{
 			get { return m_page; }
 		}
+
+        public bool IsClosing { get { return m_IsClosing; } }
 
         public string BrowseResource(string itemType)
         {
@@ -166,6 +171,9 @@ namespace OSGeo.MapGuide.Maestro
 					case DialogResult.Cancel:
 						return false;
 				}
+
+			// this allows update of ResourceTree
+			m_IsClosing = true;
 
 			if (Closing != null)
 				Closing(this, null);
