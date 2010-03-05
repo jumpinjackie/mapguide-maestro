@@ -257,7 +257,7 @@ Vil du gemme ændringerne før programmet lukkes?</value>
     <comment>An error message that is displayed if the resource type is unknown</comment>
   </data>
   <data name="UpdateRelatedItemsConfirmation" xml:space="preserve">
-    <value>Vil du opdatere alle de elmenter der bliver berørt af handlingen?</value>
+    <value>Vil du opdatere alle de elementer der bliver berørt af handlingen?</value>
     <comment>A confirmation message that is displayed when Maestro is about to update related items</comment>
   </data>
   <data name="ValidationBuildingList" xml:space="preserve">
