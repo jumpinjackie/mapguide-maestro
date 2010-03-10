@@ -31,6 +31,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		private OSGeo.MapGuide.MgSiteConnection m_con;
 		private string m_locale;
 		private string m_sessionId;
+        private Version m_siteVersion = null;
 
 		private LocalNativeConnection()
 			: base()
@@ -395,6 +396,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 		{
 			get
 			{
+                if (m_siteVersion != null)
+                    return m_siteVersion;
+
                 try
                 {
                     MgSite site = m_con.GetSite();
@@ -406,14 +410,21 @@ namespace OSGeo.MapGuide.MaestroAPI
 
                     for (int i = 0; i < col.Count; i++)
                         if (col[i].Name == "ServerVersion")
-                            return new Version(((MgStringProperty)col[i]).GetValue());
+                        {
+                            m_siteVersion = new Version(((MgStringProperty)col[i]).GetValue());
+                            break;
+                        }
                 }
                 catch
                 {
                 }
 
+
                 //Default
-                return SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2);
+                if (m_siteVersion == null)
+                    m_siteVersion = SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2);
+
+                return m_siteVersion;
             }
 		}
 
