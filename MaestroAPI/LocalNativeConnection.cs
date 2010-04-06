@@ -95,14 +95,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             RestartSession();
         }
 
-        [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateConnection() instead")]
+        [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateLocalNativeConnection() instead")]
 		public LocalNativeConnection(string sessionid)
 			: this()
 		{
             InitConnection(sessionid);
 		}
 
-        [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateConnection() instead")]
+        [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateLocalNativeConnection() instead")]
 		public LocalNativeConnection(string configFile, string username, string password, string locale)
 			: this()
 		{

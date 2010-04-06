@@ -148,14 +148,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateConnection() instead")]
+        [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateHttpConnection() instead")]
 		public HttpServerConnection(Uri hosturl, string sessionid, string locale, bool allowUntestedVersion)
 			: this()
 		{
             InitConnection(hosturl, sessionid, locale, allowUntestedVersion);
 		}
 
-        [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateConnection() instead")]
+        [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateHttpConnection() instead")]
 		public HttpServerConnection(Uri hosturl, string username, string password, string locale, bool allowUntestedVersion)
 			: this()
 		{
