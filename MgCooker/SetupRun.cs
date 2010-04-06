@@ -161,7 +161,7 @@ namespace OSGeo.MapGuide.MgCooker
 
                 try
                 {
-                    con = new MaestroAPI.LocalNativeConnection(webconfig, Username.Text, Password.Text, null);
+                    con = OSGeo.MapGuide.MaestroAPI.ConnectionFactory.CreateLocalNativeConnection(webconfig, Username.Text, Password.Text, null);
                 }
                 catch (Exception ex)
                 {
@@ -173,7 +173,7 @@ namespace OSGeo.MapGuide.MgCooker
             {
                 try
                 {
-                    con = new MaestroAPI.HttpServerConnection(new Uri(MapAgent.Text), Username.Text, Password.Text, null, true);
+                    con = OSGeo.MapGuide.MaestroAPI.ConnectionFactory.CreateHttpConnection(new Uri(MapAgent.Text), Username.Text, Password.Text, null, true);
                 }
                 catch (Exception ex)
                 {

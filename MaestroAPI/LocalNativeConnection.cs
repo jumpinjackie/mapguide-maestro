@@ -19,6 +19,7 @@
 #endregion
 using System;
 using OSGeo.MapGuide;
+using System.Collections.Specialized;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -33,30 +34,79 @@ namespace OSGeo.MapGuide.MaestroAPI
 		private string m_sessionId;
         private Version m_siteVersion = null;
 
+        public const string PARAM_SESSION = "SessionId";
+        public const string PARAM_CONFIG = "ConfigFile";
+        public const string PARAM_USERNAME = "Username";
+        public const string PARAM_PASSWORD = "Password";
+        public const string PARAM_LOCALE = "Locale";
+
 		private LocalNativeConnection()
 			: base()
 		{
 		}
 
+        //This is the constructor used by ConnectionProviderRegistry.CreateConnection
+
+        internal LocalNativeConnection(NameValueCollection initParams)
+            : this()
+        {
+            if (initParams[PARAM_SESSION] != null)
+            {
+                string sessionid = initParams[PARAM_SESSION];
+
+                InitConnection(sessionid);
+            }
+            else
+            {
+                if (initParams[PARAM_CONFIG] == null)
+                    throw new ArgumentException("Missing connection parameter: " + PARAM_CONFIG);
+                if (initParams[PARAM_PASSWORD] == null)
+                    throw new ArgumentException("Missing connection parameter: " + PARAM_PASSWORD);
+                if (initParams[PARAM_USERNAME] == null)
+                    throw new ArgumentException("Missing connection parameter: " + PARAM_USERNAME);
+
+                string configFile = initParams[PARAM_CONFIG];
+                string password = initParams[PARAM_PASSWORD];
+                string username = initParams[PARAM_USERNAME];
+                string locale = null;
+                if (initParams[PARAM_LOCALE] != null)
+                    locale = initParams[PARAM_LOCALE];
+
+                InitConnection(configFile, username, password, locale);
+            }
+        }
+
+        private void InitConnection(string sessionid)
+        {
+            MgUserInformation mgui = new MgUserInformation(sessionid);
+            m_con = new MgSiteConnection();
+            m_con.Open(mgui);
+            m_sessionId = sessionid;
+        }
+
+        private void InitConnection(string configFile, string username, string password, string locale)
+        {
+            m_username = username;
+            m_password = password;
+            m_locale = locale;
+
+            OSGeo.MapGuide.MapGuideApi.MgInitializeWebTier(configFile);
+            //Throws an exception if it fails
+            RestartSession();
+        }
+
+        [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateConnection() instead")]
 		public LocalNativeConnection(string sessionid)
 			: this()
 		{
-			MgUserInformation mgui = new MgUserInformation(sessionid);
-			m_con = new MgSiteConnection(); 
-			m_con.Open(mgui);
-			m_sessionId = sessionid;
+            InitConnection(sessionid);
 		}
 
+        [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateConnection() instead")]
 		public LocalNativeConnection(string configFile, string username, string password, string locale)
 			: this()
 		{
-			m_username = username;
-			m_password = password;
-			m_locale = locale;
-			
-			OSGeo.MapGuide.MapGuideApi.MgInitializeWebTier(configFile);
-			//Throws an exception if it fails
-			RestartSession();
+            InitConnection(configFile, username, password, locale);
 		}
 
 

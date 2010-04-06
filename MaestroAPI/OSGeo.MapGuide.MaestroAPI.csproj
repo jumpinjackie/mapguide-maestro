@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{290B027E-3649-4A60-A9BF-0544831435E2}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -132,6 +132,8 @@
     <Compile Include="BinarySerializer\MgBinarySerializer.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ConnectionFactory.cs" />
+    <Compile Include="ConnectionProviderRegistry.cs" />
     <Compile Include="HttpCoordinateSystem.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -319,6 +321,9 @@
     <Compile Include="XmlValidator.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Content Include="ConnectionProviders.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Schemas\ApplicationDefinition-1.0.0.xsd">
       <SubType>Designer</SubType>
     </Content>

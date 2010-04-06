@@ -256,9 +256,9 @@ namespace OSGeo.MapGuide.MgCooker
                 System.Threading.AutoResetEvent ev = new System.Threading.AutoResetEvent(false);
 
                 if (Parent.Connection is HttpServerConnection)
-                    con = new HttpServerConnection(new Uri(((HttpServerConnection)Parent.Connection).ServerURI), Parent.Connection.SessionID, null, true);
+                    con = ConnectionFactory.CreateHttpConnection(new Uri(((HttpServerConnection)Parent.Connection).ServerURI), Parent.Connection.SessionID, null, true);
                 else
-                    con = new LocalNativeConnection(Parent.Connection.SessionID);
+                    con = ConnectionFactory.CreateLocalNativeConnection(Parent.Connection.SessionID);
 
 
                 while (!Parent.Cancel)

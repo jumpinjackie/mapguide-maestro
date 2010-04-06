@@ -46,68 +46,120 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		}
 
+        public const string PARAM_URL = "Url";
+        public const string PARAM_SESSION = "SessionId";
+        public const string PARAM_LOCALE = "Locale";
+        public const string PARAM_UNTESTED = "AllowUntestedVersion";
+        public const string PARAM_USERNAME = "Username";
+        public const string PARAM_PASSWORD = "Password";
+
+        private void InitConnection(Uri hosturl, string sessionid, string locale, bool allowUntestedVersion)
+        {
+            m_reqBuilder = new RequestBuilder(hosturl, locale, sessionid);
+            string req = m_reqBuilder.GetSiteVersion();
+            SiteVersion sv = null;
+            try
+            {
+                sv = (SiteVersion)DeserializeObject(typeof(SiteVersion), m_wc.OpenRead(req));
+            }
+            catch (Exception ex)
+            {
+                sv = null;
+                bool ok = false;
+                try
+                {
+                    //Retry, and append missing path, if applicable
+                    if (!hosturl.ToString().EndsWith("/mapagent/mapagent.fcgi"))
+                    {
+                        string tmp = hosturl.ToString();
+                        if (!tmp.EndsWith("/"))
+                            tmp += "/";
+                        hosturl = new Uri(tmp + "mapagent/mapagent.fcgi");
+                        m_reqBuilder = new RequestBuilder(hosturl, locale, sessionid);
+                        req = m_reqBuilder.GetSiteVersion();
+                        sv = (SiteVersion)DeserializeObject(typeof(SiteVersion), m_wc.OpenRead(req));
+                        ok = true;
+                    }
+                }
+                catch { }
+
+                if (!ok) //Report original error
+                    throw new Exception("Failed to connect, perhaps session is expired?\nExtended error info: " + ex.Message, ex);
+            }
+            if (!allowUntestedVersion)
+                ValidateVersion(sv);
+            m_siteVersion = new Version(sv.Version);
+        }
+
+        private void InitConnection(Uri hosturl, string username, string password, string locale, bool allowUntestedVersion)
+        {
+            m_reqBuilder = new RequestBuilder(hosturl, locale);
+            m_wc.Credentials = new NetworkCredential(username, password);
+            string req = m_reqBuilder.CreateSession();
+
+            m_username = username;
+            m_password = password;
+
+            try
+            {
+                this.RestartSession();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to connect, please check network connection and login information.\nExtended error info: " + ex.Message, ex);
+            }
+
+            if (!allowUntestedVersion)
+                ValidateVersion(m_siteVersion);
+            m_username = username;
+            m_password = password;
+        }
+
+        //This is the constructor used by ConnectionProviderRegistry.CreateConnection
+
+        internal HttpServerConnection(NameValueCollection initParams)
+            : this()
+        {
+            if (initParams[PARAM_URL] == null)
+                throw new ArgumentException("Missing required connection parameter: " + PARAM_URL);
+
+            string locale = null;
+            bool allowUntestedVersion = true;
+
+            if (initParams[PARAM_LOCALE] != null)
+                locale = initParams[PARAM_LOCALE];
+            if (initParams[PARAM_UNTESTED] != null)
+                bool.TryParse(initParams[PARAM_UNTESTED], out allowUntestedVersion);
+
+            if (initParams[PARAM_SESSION] != null) 
+            {
+                string sessionid = initParams[PARAM_SESSION];
+
+                InitConnection(new Uri(initParams[PARAM_URL]), sessionid, locale, allowUntestedVersion);
+            }
+            else //Assuming username/password combination
+            {
+                if (initParams[PARAM_USERNAME] == null)
+                    throw new ArgumentException("Missing required connection parameter: " + PARAM_USERNAME);
+                if (initParams[PARAM_PASSWORD] == null)
+                    throw new ArgumentException("Missing required connection parameter: " + PARAM_PASSWORD);
+
+                InitConnection(new Uri(initParams[PARAM_URL]), initParams[PARAM_USERNAME], initParams[PARAM_PASSWORD], locale, allowUntestedVersion);
+            }
+        }
+
+        [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateConnection() instead")]
 		public HttpServerConnection(Uri hosturl, string sessionid, string locale, bool allowUntestedVersion)
 			: this()
 		{
-			m_reqBuilder = new RequestBuilder(hosturl, locale, sessionid);
-			string req = m_reqBuilder.GetSiteVersion();
-			SiteVersion sv = null;
-			try
-			{
-				sv = (SiteVersion)DeserializeObject(typeof(SiteVersion), m_wc.OpenRead(req));
-			}
-			catch(Exception ex)
-			{
-				sv = null;
-				bool ok = false;
-				try
-				{
-					//Retry, and append missing path, if applicable
-					if (!hosturl.ToString().EndsWith("/mapagent/mapagent.fcgi"))
-					{
-						string tmp = hosturl.ToString();
-						if (!tmp.EndsWith("/"))
-							tmp += "/";
-						hosturl = new Uri(tmp + "mapagent/mapagent.fcgi");
-						m_reqBuilder = new RequestBuilder(hosturl, locale, sessionid);
-						req = m_reqBuilder.GetSiteVersion();
-						sv = (SiteVersion)DeserializeObject(typeof(SiteVersion), m_wc.OpenRead(req));
-						ok = true;
-					}
-				}
-				catch {}
-				
-				if (!ok) //Report original error
-					throw new Exception("Failed to connect, perhaps session is expired?\nExtended error info: " + ex.Message, ex);
-			}
-			if (!allowUntestedVersion)
-				ValidateVersion(sv);
-			m_siteVersion = new Version(sv.Version);
+            InitConnection(hosturl, sessionid, locale, allowUntestedVersion);
 		}
 
+        [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateConnection() instead")]
 		public HttpServerConnection(Uri hosturl, string username, string password, string locale, bool allowUntestedVersion)
 			: this()
 		{
-			m_reqBuilder = new RequestBuilder(hosturl, locale);
-			m_wc.Credentials = new NetworkCredential(username, password);
-			string req = m_reqBuilder.CreateSession();
-
-			m_username = username;
-			m_password = password;
-
-			try
-			{
-				this.RestartSession();
-			}
-			catch(Exception ex)
-			{
-				throw new Exception("Failed to connect, please check network connection and login information.\nExtended error info: " + ex.Message, ex);
-			}
-
-			if (!allowUntestedVersion)
-				ValidateVersion(m_siteVersion);
-			m_username = username;
-			m_password = password;
+            InitConnection(hosturl, username, password, locale, allowUntestedVersion);
 		}
 
 		public override string SessionID

@@ -176,11 +176,11 @@ namespace OSGeo.MapGuide.MgCooker
             if (connection == null)
             {
                 if (!opts.ContainsKey("native-connection"))
-                    connection = new OSGeo.MapGuide.MaestroAPI.HttpServerConnection(new Uri(mapagent), username, password, System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, true);
+                    connection = OSGeo.MapGuide.MaestroAPI.ConnectionFactory.CreateHttpConnection(new Uri(mapagent), username, password, System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, true);
                 else
                 {
                     string serverconfig = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "webconfig.ini");
-                    connection = new OSGeo.MapGuide.MaestroAPI.LocalNativeConnection(serverconfig, username, password, System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
+                    connection = OSGeo.MapGuide.MaestroAPI.ConnectionFactory.CreateLocalNativeConnection(serverconfig, username, password, System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
                 }
             }
 

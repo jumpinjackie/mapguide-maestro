@@ -242,7 +242,7 @@ namespace OSGeo.MapGuide.MgCooker
         /// <param name="password">The password to connect with</param>
         /// <param name="maps">A list of maps to process, leave empty to process all layers</param>
         public BatchSettings(string mapagent, string username, string password, params string[] maps)
-            : this(new MaestroAPI.HttpServerConnection(new Uri(mapagent), username, password, null, true), maps)
+            : this(MaestroAPI.ConnectionFactory.CreateHttpConnection(new Uri(mapagent), username, password, null, true), maps)
         {
         }
 
