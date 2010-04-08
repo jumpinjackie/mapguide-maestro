@@ -47,6 +47,10 @@ namespace OSGeo.MapGuide.MgCooker
             m_commandlineargs = args;
             m_coordinateOverrides = new Dictionary<string, OSGeo.MapGuide.MaestroAPI.Box2DType>();
 
+            MaestroAPI.HttpServerConnection hc = connection as MaestroAPI.HttpServerConnection;
+            if (hc != null)
+                MapAgent.Text = hc.ServerURI;
+
             if (m_commandlineargs.ContainsKey("mapdefinitions"))
                 m_commandlineargs.Remove("mapdefinitions");
             if (m_commandlineargs.ContainsKey("scaleindex"))
