@@ -1397,6 +1397,16 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        public string[] GetConnectionPropertyValues(string providerName, string propertyName, string partialConnectionString)
+        {
+            string req = m_reqBuilder.GetConnectionPropertyValues(providerName, propertyName, partialConnectionString);
+            using (System.IO.Stream s = this.OpenRead(req))
+            {
+                StringCollection strc = this.DeserializeObject<StringCollection>(s);
+                return strc.Item.ToArray();
+            }
+        }
+
 
         #region IDisposable Members
 
@@ -1434,6 +1444,5 @@ namespace OSGeo.MapGuide.MaestroAPI
             get { return m_reqBuilder.UserAgent; }
             set { m_reqBuilder.UserAgent = value; }
         }
-
     }
 }

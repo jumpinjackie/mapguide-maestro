@@ -75,6 +75,15 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>The provider name without version numbers</returns>
 		string RemoveVersionFromProviderName(string providername);
 
+        /// <summary>
+        /// Gets the possible values for a given connection property
+        /// </summary>
+        /// <param name="providerName">The FDO provider name</param>
+        /// <param name="propertyName">The property name</param>
+        /// <param name="partialConnectionString">A partial connection string if certain providers require such information</param>
+        /// <returns>A list of possible values for the given property</returns>
+        string[] GetConnectionPropertyValues(string providerName, string propertyName, string partialConnectionString);
+
 		/// <summary>
 		/// Returns an installed provider, given the name of the provider
 		/// </summary>

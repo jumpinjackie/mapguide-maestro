@@ -1216,11 +1216,28 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
+        public string GetConnectionPropertyValues(string providerName, string propertyName, string partialConnectionString)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "GETCONNECTIONPROPERTYVALUES");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", m_userAgent);
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            param.Add("PROVIDER", providerName);
+            param.Add("PROPERTY", propertyName);
+            param.Add("CONNECTIONSTRING", partialConnectionString);
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
         public string UserAgent
         {
             get { return m_userAgent; }
             set { m_userAgent = value; }
         }
-    
     }
 }

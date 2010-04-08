@@ -134,6 +134,7 @@
     </Compile>
     <Compile Include="ConnectionFactory.cs" />
     <Compile Include="ConnectionProviderRegistry.cs" />
+    <Compile Include="Generated\StringCollection-1.0.0.cs" />
     <Compile Include="HttpCoordinateSystem.cs">
       <SubType>Code</SubType>
     </Compile>

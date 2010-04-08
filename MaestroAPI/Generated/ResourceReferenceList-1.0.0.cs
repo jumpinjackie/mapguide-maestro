@@ -17,11 +17,9 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
-using System.Collections.Specialized;
+
 namespace OSGeo.MapGuide.MaestroAPI 
 {
-    
-    
     /// <remarks/>
     [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
     public class ResourceReferenceList {
@@ -34,12 +32,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 			get { return SchemaName; }
 			set { if (value != SchemaName) throw new System.Exception("Cannot set the schema name"); }
 		}
-		
-		private StringCollection m_resourceId;
+
+        private System.Collections.Specialized.StringCollection m_resourceId;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ResourceId")]
-        public StringCollection ResourceId {
+        public System.Collections.Specialized.StringCollection ResourceId
+        {
             get {
                 return this.m_resourceId;
             }

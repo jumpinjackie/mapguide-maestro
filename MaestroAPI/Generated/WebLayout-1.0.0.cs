@@ -17,7 +17,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
-using System.Collections.Specialized;
+
 namespace OSGeo.MapGuide.MaestroAPI 
 {
     
@@ -582,8 +582,8 @@ namespace OSGeo.MapGuide.MaestroAPI
     public class InvokeURLCommandType : TargetedCommandType {
         
         private string m_uRL;
-        
-        private StringCollection m_layerSet;
+
+        private System.Collections.Specialized.StringCollection m_layerSet;
         
         private ParameterPairTypeCollection m_additionalParameter;
         
@@ -601,7 +601,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("Layer", IsNullable=false)]
-        public StringCollection LayerSet {
+        public System.Collections.Specialized.StringCollection LayerSet {
             get {
                 return this.m_layerSet;
             }

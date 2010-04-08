@@ -111,7 +111,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
 
 		private void BrowseFileButton_Click(object sender, System.EventArgs e)
 		{
-			MessageBox.Show(this, OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.MissingMethod, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            OSGeo.MapGuide.MaestroAPI.ServerConnectionI conn = m_editor.CurrentConnection;
+            string[] values = conn.GetConnectionPropertyValues("OSGeo.ODBC", "DataSourceName", "");
+            DSNPicker picker = new DSNPicker(values);
+            if (picker.ShowDialog() == DialogResult.OK)
+            {
+                FilepathText.Text = picker.SelectedDSN;
+            }
 		}
 
 		public void SetItem(ResourceEditors.EditorInterface editor, OSGeo.MapGuide.MaestroAPI.FeatureSource item)

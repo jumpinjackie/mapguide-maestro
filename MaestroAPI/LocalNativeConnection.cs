@@ -864,6 +864,18 @@ namespace OSGeo.MapGuide.MaestroAPI
             
         }
 
+        public string[] GetConnectionPropertyValues(string providerName, string propertyName, string partialConnectionString)
+        {
+            MgFeatureService featSvc = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+            MgStringCollection result = featSvc.GetConnectionPropertyValues(providerName, propertyName, partialConnectionString);
+            string[] values = new string[result.GetCount()];
+            for (int i = 0; i < result.GetCount(); i++)
+            {
+                values[i] = result.GetItem(i);
+            }
+            return values;
+        }
+
 		#endregion
 
         #region IDisposable Members
@@ -894,6 +906,5 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         #endregion
-
     }
 }

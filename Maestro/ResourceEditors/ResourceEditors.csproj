@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{E324888B-4A05-46A7-8FB4-54452145128F}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -231,6 +231,12 @@
     </Compile>
     <Compile Include="FeatureSourceEditors\ODBC\DSN.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\DSNPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeatureSourceEditors\ODBC\DSNPicker.Designer.cs">
+      <DependentUpon>DSNPicker.cs</DependentUpon>
     </Compile>
     <Compile Include="FeatureSourceEditors\ODBC\FeatureSourceEditorODBC.cs">
       <SubType>UserControl</SubType>
@@ -1110,6 +1116,9 @@
     <EmbeddedResource Include="FeatureSourceEditors\King.KML\Unmanaged.resx">
       <DependentUpon>Unmanaged.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourceEditors\ODBC\DSNPicker.resx">
+      <DependentUpon>DSNPicker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSourceEditors\ODBC\Strings\FeatureSourceEditorODBC.resx">
       <Generator>ResXFileCodeGenerator</Generator>
