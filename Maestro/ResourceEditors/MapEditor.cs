@@ -704,6 +704,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             resources.ApplyResources(this.trvLayerGroups, "trvLayerGroups");
             this.trvLayerGroups.ImageList = this.TreeImages;
             this.trvLayerGroups.Name = "trvLayerGroups";
+            this.trvLayerGroups.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvLayerGroups_NodeMouseDoubleClick);
             this.trvLayerGroups.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvLayerGroups_DragDrop);
             this.trvLayerGroups.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvLayerGroups_AfterSelect);
             this.trvLayerGroups.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvLayerGroups_DragEnter);
@@ -833,6 +834,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.lstDrawOrder.SmallImageList = this.TreeImages;
             this.lstDrawOrder.UseCompatibleStateImageBehavior = false;
             this.lstDrawOrder.View = System.Windows.Forms.View.Details;
+            this.lstDrawOrder.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstDrawOrder_MouseDoubleClick);
             this.lstDrawOrder.SelectedIndexChanged += new System.EventHandler(this.lstDrawOrder_SelectedIndexChanged);
             this.lstDrawOrder.SizeChanged += new System.EventHandler(this.lstDrawOrder_SizeChanged);
             // 
@@ -917,6 +919,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.trvBaseLayerGroups.HideSelection = false;
             this.trvBaseLayerGroups.ImageList = this.TreeImages;
             this.trvBaseLayerGroups.Name = "trvBaseLayerGroups";
+            this.trvBaseLayerGroups.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvBaseLayerGroups_NodeMouseDoubleClick);
             this.trvBaseLayerGroups.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvBaseLayerGroups_AfterSelect);
             // 
             // BaseLayerGroupToolStrip
@@ -2382,6 +2385,42 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private void MoveLayerOrderBottomButton_Click(object sender, EventArgs e)
         {
             MoveSelectedLayers(false, true);
+        }
+
+        private void trvLayerGroups_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            var layer = e.Node.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerType;
+            if (layer != null)
+            {
+                OnLayerDoubleClicked(layer.ResourceId);
+            }
+        }
+
+        private void lstDrawOrder_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lstDrawOrder.SelectedItems.Count > 0)
+            {
+                var item = lstDrawOrder.SelectedItems[0];
+                var layer = item.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerType;
+                if (layer != null)
+                {
+                    OnLayerDoubleClicked(layer.ResourceId);
+                }
+            }
+        }
+
+        private void OnLayerDoubleClicked(string layerId)
+        {
+            m_editor.EditItem(layerId);
+        }
+
+        private void trvBaseLayerGroups_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            var layer = e.Node.Tag as OSGeo.MapGuide.MaestroAPI.BaseMapLayerType;
+            if (layer != null)
+            {
+                OnLayerDoubleClicked(layer.ResourceId);
+            }
         }
     }
 }
