@@ -57,6 +57,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             // 
             resources.ApplyResources(this.ResourcePath, "ResourcePath");
             this.ResourcePath.Name = "ResourcePath";
+            this.ResourcePath.Leave += new System.EventHandler(this.ResourcePath_Leave);
             // 
             // BrowseResourcePath
             // 

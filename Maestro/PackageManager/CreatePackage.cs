@@ -60,6 +60,8 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
 
         private void OKBtn_Click(object sender, EventArgs e)
         {
+            FixResourcePath();
+
             if (AllowedTypes.CheckedItems.Count == 0)
             {
                 MessageBox.Show(this, Strings.CreatePackage.NoTypesSelected, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -198,5 +200,16 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                 PackageFilename.Text = saveFileDialog.FileName;
         }
 
+        private void ResourcePath_Leave(object sender, EventArgs e)
+        {
+            FixResourcePath();
+        }
+
+        private void FixResourcePath()
+        {
+            //The resource id to be packaged must be a folder so check for trailing slash
+            if (!ResourcePath.Text.EndsWith("/"))
+                ResourcePath.Text += "/";
+        }
     }
 }
