@@ -335,7 +335,7 @@ namespace OSGeo.MapGuide.MgCooker
                                 sw.Write(",");
                             sw.Write(c.ScaleIndexes[i].ToString());
                         }
-
+                        sw.Write(" "); // dont forget the space after the list of scaleindexes ticket #1316
                         if (c.ExtentOverride != null)
                         {
                             sw.Write(" --extentoverride=");
