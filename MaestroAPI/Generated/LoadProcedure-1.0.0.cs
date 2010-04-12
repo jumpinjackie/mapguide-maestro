@@ -94,8 +94,8 @@ namespace OSGeo.MapGuide.MaestroAPI
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DwgLoadProcedureType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ShpLoadProcedureType))]
     public class LoadProcedureType {
-        
-        private StringCollection m_sourceFile;
+
+        private string[] m_sourceFile;
         
         private string m_rootPath;
         
@@ -129,11 +129,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         
         private string m_symbolLibrariesFolder;
         
-        private StringCollection m_resourceId;
+        private string[] m_resourceId;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("SourceFile")]
-        public StringCollection SourceFile {
+        public string[] SourceFile {
             get {
                 return this.m_sourceFile;
             }
@@ -306,7 +306,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ResourceId")]
-        public StringCollection ResourceId {
+        public string[] ResourceId {
             get {
                 return this.m_resourceId;
             }

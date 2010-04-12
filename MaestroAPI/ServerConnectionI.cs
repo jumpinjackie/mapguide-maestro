@@ -398,5 +398,14 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <typeparam name="T">The type of the object to create</typeparam>
         /// <returns>A new instance of the object</returns>
         T CreateResourceObject<T>();
+
+        /// <summary>
+        /// Executes the specified load procedure
+        /// </summary>
+        /// <param name="resourceID"></param>
+        /// <param name="ignoreUnsupportedFeatures"></param>
+        /// <param name="callback"></param>
+        /// <returns>A list of resource IDs that were created from the execution of this load procedure</returns>
+        string[] ExecuteLoadProcedure(string resourceID, bool ignoreUnsupportedFeatures, LengthyOperationProgressCallBack callback);
 	}
 }

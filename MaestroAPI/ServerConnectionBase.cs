@@ -100,7 +100,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			m_resourceTypeLookup.Add("ApplicationDefinition", typeof(ApplicationDefinition.ApplicationDefinitionType));
             m_resourceTypeLookup.Add("SymbolLibrary", typeof(SymbolLibraryType));
             m_resourceTypeLookup.Add("PrintLayout", typeof(PrintLayout));
-
+            m_resourceTypeLookup.Add("LoadProcedure", typeof(LoadProcedure));
 
 			m_schemasPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "Schemas");
 			m_username = null;
@@ -2117,6 +2117,445 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        /// <summary>
+        /// Executes the specified load procedure. Only SDF and SHP load procedures are supported.
+        /// Also note that the following load procedure features are ignored during execution:
+        ///  - Generalization of data
+        ///  - Conversion from SHP to SDF
+        ///  - SDF2 to SDF3 conversion
+        ///  - SDF3 duplicate key handling
+        /// </summary>
+        /// <param name="resourceID"></param>
+        /// <param name="ignoreUnsupportedFeatures">If false, will throw exceptions when executing a load procedure containing unsupported features.</param>
+        /// <param name="callback"></param>
+        /// <returns>A list of resource IDs that were created from the execution of this load procedure</returns>
+        public string[] ExecuteLoadProcedure(string resourceID, bool ignoreUnsupportedFeatures, LengthyOperationProgressCallBack callback)
+        {
+            //TODO: Localize callback messages
+            //TODO: Localize exception messages
+            //TODO: This would currently overwrite everything. In reality, the load procedure has
+            //a list of resource ids which are overwritable, anything not on the list is untouchable.
+            //I presume if this list is empty, then everything is overwritten and the resource list
+            //list is then assigned to the load procedure, which is then updated so that on subsequent runs,
+            //only resources in the list are overwritten instead of everything.
 
+            string[] resourcesCreatedOrUpdated = null;
+
+            if (!ResourceIdentifier.Validate(resourceID))
+                throw new ArgumentException("Invalid resource id: " + resourceID);
+
+            if (ResourceIdentifier.GetExtension(resourceID) != "LoadProcedure")
+                throw new ArgumentException("Not a load procedure resource id: " + resourceID);
+
+            LengthyOperationProgressCallBack cb = callback;
+
+            //Assign dummy callback if none specified
+            if (cb == null)
+                cb = delegate { };
+
+            LoadProcedure proc = (LoadProcedure)GetResource(resourceID);
+
+            //bool loadProcedureUpdated = false;
+            //bool updateGeneratedResourceIds = false;
+            
+            //TODO: SDF and SHP load procedures share lots of common logic. Merge the two 
+            //once everything's all good.
+
+            SdfLoadProcedureType sdfl = proc.Item as SdfLoadProcedureType;
+            ShpLoadProcedureType shpl = proc.Item as ShpLoadProcedureType;
+
+            if (sdfl != null)
+            {
+                if (!ignoreUnsupportedFeatures)
+                {
+                    //Anything less than 100% implies use of generalization
+                    if (sdfl.Generalization < 100.0)
+                    {
+                        throw new NotSupportedException("Generalization of data is not supported");
+                    }
+                }
+
+                resourcesCreatedOrUpdated = ExecuteSdfLoadProcedure(cb, sdfl);
+            }
+            else if (shpl != null)
+            {
+                if (!ignoreUnsupportedFeatures)
+                {
+                    //Anything less than 100% implies use of generalization
+                    if (shpl.Generalization < 100.0)
+                    {
+                        throw new NotSupportedException("Generalization of data is not supported");
+                    }
+                    //Can't do this because we don't have a portable .net FDO/MG Feature Service
+                    if (shpl.ConvertToSdf)
+                    {
+                        throw new NotSupportedException("Conversion of SHP files to SDF files is not supported");
+                    }
+                }
+                resourcesCreatedOrUpdated = ExecuteShpLoadProcedure(cb, shpl);
+            }
+            else //We don't support anything else (and probably never will)
+            {
+                throw new NotSupportedException("Unsupported load procedure type");
+            }
+
+            proc.Item.ResourceId = resourcesCreatedOrUpdated;
+            this.SaveResourceAs(proc, resourceID);
+
+            return resourcesCreatedOrUpdated;
+        }
+
+        private string[] ExecuteShpLoadProcedure(LengthyOperationProgressCallBack cb, ShpLoadProcedureType shpl)
+        {
+            List<string> resCreatedOrUpdated = new List<string>();
+
+            string[] shpFiles = shpl.SourceFile;
+            int pcPerFile = (int)(100 / shpFiles.Length);
+            int current = 0;
+
+            string fsRoot = shpl.SpatialDataSourcesPath + shpl.SpatialDataSourcesFolder;
+            string layerRoot = shpl.LayersPath + shpl.LayersFolder;
+
+            if (!fsRoot.EndsWith("/"))
+                fsRoot += "/";
+            if (!layerRoot.EndsWith("/"))
+                layerRoot += "/";
+
+            Dictionary<string, List<string>> extraFiles = new Dictionary<string, List<string>>();
+            //Unlike SDF, a SHP file actually consists of multiple files
+            foreach (string shp in shpFiles)
+            {
+                if (!extraFiles.ContainsKey(shp))
+                    extraFiles[shp] = new List<string>();
+                //we want to preserve casing for everything before the extension
+                string prefix = shp.Substring(0, shp.LastIndexOf(".") + 1);
+                extraFiles[shp].Add(prefix + "shx");
+                extraFiles[shp].Add(prefix + "dbf");
+                extraFiles[shp].Add(prefix + "idx");
+                extraFiles[shp].Add(prefix + "prj");
+                extraFiles[shp].Add(prefix + "cpg");
+
+                //TODO: Are we missing anything else?
+            }
+
+            foreach (string file in shpFiles)
+            {
+                bool success = false;
+                if (System.IO.File.Exists(file))
+                {
+                    string resName = System.IO.Path.GetFileNameWithoutExtension(file);
+                    string dataName = System.IO.Path.GetFileName(file);
+
+                    string fsId = fsRoot + resName + ".FeatureSource";
+                    string lyrId = layerRoot + resName + ".LayerDefinition";
+
+                    if (shpl.GenerateSpatialDataSources)
+                    {
+                        //Process is as follows:
+                        //
+                        // 1. Create and save feature source document.
+                        // 2. Upload sdf file as resource data for this document.
+                        // 3. Test the connection, it should check out.
+                        // 4. If no spatial contexts are detected, assign a default one from the load procedure and save the modified feature source.
+
+                        //Step 1: Create feature source document
+                        FeatureSource fs = new FeatureSource();
+                        fs.ResourceId = fsId;
+                        fs.Provider = "OSGeo.SHP";
+                        fs.Parameter = new NameValuePairTypeCollection();
+                        fs.Parameter.Add(new NameValuePairType() { Name = "DefaultFileLocation", Value = "%MG_DATA_FILE_PATH%" + dataName });
+
+                        this.SaveResource(fs);
+                        resCreatedOrUpdated.Add(fsId);
+                        cb(this, new LengthyOperationProgressArgs("Created: " + fsId, current));
+
+                        //TODO: When the infrastructure is available to us (ie. A portable .net FDO/MG Feature Service API wrapper)
+                        //Maybe then we can actually implement the generalization and conversion properties. Until then, we skip
+                        //these options
+
+                        //Step 2: Load resource data for document
+                        this.SetResourceData(fsId, dataName, ResourceDataType.File, System.IO.File.OpenRead(file));
+
+                        cb(this, new LengthyOperationProgressArgs("Loaded: " + file, current));
+
+                        //Load supplementary files
+                        foreach (string extraFile in extraFiles[file])
+                        {
+                            string dn = System.IO.Path.GetFileName(extraFile);
+                            if (System.IO.File.Exists(extraFile))
+                            {
+                                this.SetResourceData(fsId, dn, ResourceDataType.File, System.IO.File.OpenRead(extraFile));
+                                cb(this, new LengthyOperationProgressArgs("Loaded: " + extraFile, current));
+                            }
+                        }
+
+                        //Step 3: Test to make sure we're all good so far
+                        string result = this.TestConnection(fsId);
+
+                        //LocalNativeConnection returns this string, so I'm assuming this is the "success" result
+                        if (result == "No errors")
+                        {
+                            //Step 4: Test to see if default cs needs to be specified
+                            FdoSpatialContextList spatialContexts = this.GetSpatialContextInfo(fsId, false);
+                            if (spatialContexts.SpatialContext.Count == 0 && !string.IsNullOrEmpty(shpl.CoordinateSystem))
+                            {
+                                //Register the default CS from the load procedure
+                                fs.SupplementalSpatialContextInfo = new SpatialContextTypeCollection();
+                                fs.SupplementalSpatialContextInfo.Add(new SpatialContextType()
+                                {
+                                    Name = "Default",
+                                    CoordinateSystem = shpl.CoordinateSystem
+                                });
+
+                                //Update this feature source
+                                this.SaveResource(fs);
+
+                                cb(this, new LengthyOperationProgressArgs("Set default spatial context for: " + fsId, current));
+                            }
+                        }
+                    }
+
+                    if (shpl.GenerateLayers)
+                    {
+                        //Process is as follows
+                        //
+                        // 1. Describe the schema of the feature source
+                        // 2. If it contains at least one feature class, create a layer definition
+                        // 3. Set the following layer definition properties:
+                        //    - Feature Source: the feature source id
+                        //    - Feature Class: the first feature class in the schema
+                        //    - Geometry: the first geometry property in the first feature class
+                        // 4. Infer the supported geometry types for this feature class. Toggle supported styles accordingly.
+
+                        //Step 1: Describe the schema
+                        FeatureSourceDescription desc = DescribeFeatureSource(fsId);
+
+                        if (desc.Schemas.Length > 0)
+                        {
+                            //Step 2: Find the first feature class with a geometry property
+                            FeatureSourceDescription.FeatureSourceSchema clsDef = null;
+                            FeatureSetColumn geom = null;
+
+                            bool done = false;
+
+                            foreach (FeatureSourceDescription.FeatureSourceSchema cls in desc.Schemas)
+                            {
+                                if (done) break;
+
+                                foreach (FeatureSetColumn prop in cls.Columns)
+                                {
+                                    if (done) break;
+
+                                    if (typeof(Topology.Geometries.IGeometry).IsAssignableFrom(prop.Type))
+                                    {
+                                        clsDef = cls;
+                                        geom = prop;
+                                        done = true;
+                                    }
+                                }
+                            }
+
+                            if (clsDef != null && geom != null)
+                            {
+                                LayerDefinition ld = CreateResourceObject<LayerDefinition>();
+
+                                //Step 3: Assign default properties
+                                ld.ResourceId = lyrId;
+                                VectorLayerDefinitionType vld = ld.Item as VectorLayerDefinitionType;
+                                vld.ResourceId = fsId;
+                                vld.FeatureName = clsDef.Fullname;
+                                vld.Geometry = geom.Name;
+
+                                this.SaveResource(ld);
+                                resCreatedOrUpdated.Add(lyrId);
+                                cb(this, new LengthyOperationProgressArgs("Created: " + lyrId, current));
+
+                                //Step 4: Infer geometry storage support and remove unsupported styles
+                                //TODO: There doesn't seem to be a MaestroAPI way to figure out geometry storage types atm
+                            }
+                        }
+                    }
+
+                    success = true;
+                }
+                else
+                {
+                    cb(this, new LengthyOperationProgressArgs("File not found: " + file, current));
+                }
+
+                //This file is now fully processed, so increment progress
+                current += pcPerFile;
+
+                if (success)
+                {
+                    cb(this, new LengthyOperationProgressArgs("Success: " + file, current));
+                }
+            }
+
+            return resCreatedOrUpdated.ToArray();
+        }
+
+        private string[] ExecuteSdfLoadProcedure(LengthyOperationProgressCallBack cb, SdfLoadProcedureType sdfl)
+        {
+            List<string> resCreatedOrUpdated = new List<string>();
+
+            string[] files = sdfl.SourceFile;
+            int pcPerFile = (int)(100 / files.Length);
+            int current = 0;
+
+            string fsRoot = sdfl.SpatialDataSourcesPath + sdfl.SpatialDataSourcesFolder;
+            string layerRoot = sdfl.LayersPath + sdfl.LayersFolder;
+
+            if (!fsRoot.EndsWith("/"))
+                fsRoot += "/";
+            if (!layerRoot.EndsWith("/"))
+                layerRoot += "/";
+
+            foreach (string file in files)
+            {
+                bool success = false;
+                if (System.IO.File.Exists(file))
+                {
+                    //GOTCHA: We are assuming these SDF files are not SDF2 files. This is
+                    //because there is no multi-platform solution to convert SDF2 files to SDF3
+
+                    string resName = System.IO.Path.GetFileNameWithoutExtension(file);
+                    string dataName = System.IO.Path.GetFileName(file);
+                    string fsId = fsRoot + resName + ".FeatureSource";
+                    string lyrId = layerRoot + resName + ".LayerDefinition";
+
+                    if (sdfl.GenerateSpatialDataSources)
+                    {
+                        //Process is as follows:
+                        //
+                        // 1. Create and save feature source document.
+                        // 2. Upload sdf file as resource data for this document.
+                        // 3. Test the connection, it should check out.
+                        // 4. If no spatial contexts are detected, assign a default one from the load procedure and save the modified feature source.
+
+                        //Step 1: Create feature source document
+                        FeatureSource fs = new FeatureSource();
+                        fs.ResourceId = fsId;
+                        fs.Provider = "OSGeo.SDF";
+                        fs.Parameter = new NameValuePairTypeCollection();
+                        fs.Parameter.Add(new NameValuePairType() { Name = "File", Value = "%MG_DATA_FILE_PATH%" + dataName });
+
+                        this.SaveResource(fs);
+                        resCreatedOrUpdated.Add(fsId);
+                        cb(this, new LengthyOperationProgressArgs("Created: " + fsId, current));
+
+                        //TODO: When the infrastructure is available to us (ie. A portable .net FDO/MG Feature Service API wrapper)
+                        //Maybe then we can actually implement the generalization and duplicate record handling properties. Until then, we skip
+                        //these options
+
+                        //Step 2: Load resource data for document
+                        this.SetResourceData(fsId, dataName, ResourceDataType.File, System.IO.File.OpenRead(file));
+
+                        cb(this, new LengthyOperationProgressArgs("Loaded: " + file, current));
+
+                        //Step 3: Test to make sure we're all good so far
+                        string result = this.TestConnection(fsId);
+
+                        //LocalNativeConnection returns this string, so I'm assuming this is the "success" result
+                        if (result == "No errors")
+                        {
+                            //Step 4: Test to see if default cs needs to be specified
+                            FdoSpatialContextList spatialContexts = this.GetSpatialContextInfo(fsId, false);
+                            if (spatialContexts.SpatialContext.Count == 0 && !string.IsNullOrEmpty(sdfl.CoordinateSystem))
+                            {
+                                //Register the default CS from the load procedure
+                                fs.SupplementalSpatialContextInfo = new SpatialContextTypeCollection();
+                                fs.SupplementalSpatialContextInfo.Add(new SpatialContextType()
+                                {
+                                    Name = "Default",
+                                    CoordinateSystem = sdfl.CoordinateSystem
+                                });
+
+                                //Update this feature source
+                                this.SaveResource(fs);
+
+                                cb(this, new LengthyOperationProgressArgs("Set default spatial context for: " + fsId, current));
+                            }
+                        }
+                    }
+
+                    if (sdfl.GenerateLayers)
+                    {
+                        //Process is as follows
+                        //
+                        // 1. Describe the schema of the feature source
+                        // 2. If it contains at least one feature class, create a layer definition
+                        // 3. Set the following layer definition properties:
+                        //    - Feature Source: the feature source id
+                        //    - Feature Class: the first feature class in the schema
+                        //    - Geometry: the first geometry property in the first feature class
+                        // 4. Infer the supported geometry types for this feature class. Toggle supported styles accordingly.
+
+                        //Step 1: Describe the schema
+                        FeatureSourceDescription desc = DescribeFeatureSource(fsId);
+
+                        if (desc.Schemas.Length > 0)
+                        {
+                            //Step 2: Find the first feature class with a geometry property
+                            FeatureSourceDescription.FeatureSourceSchema clsDef = null;
+                            FeatureSetColumn geom = null;
+
+                            bool done = false;
+
+                            foreach (FeatureSourceDescription.FeatureSourceSchema cls in desc.Schemas)
+                            {
+                                if (done) break;
+
+                                foreach (FeatureSetColumn prop in cls.Columns)
+                                {
+                                    if (done) break;
+
+                                    if (typeof(Topology.Geometries.IGeometry).IsAssignableFrom(prop.Type))
+                                    {
+                                        clsDef = cls;
+                                        geom = prop;
+                                        done = true;
+                                    }
+                                }
+                            }
+
+                            if (clsDef != null && geom != null)
+                            {
+                                LayerDefinition ld = CreateResourceObject<LayerDefinition>();
+
+                                //Step 3: Assign default properties
+                                ld.ResourceId = lyrId;
+                                VectorLayerDefinitionType vld = ld.Item as VectorLayerDefinitionType;
+                                vld.ResourceId = fsId;
+                                vld.FeatureName = clsDef.Fullname;
+                                vld.Geometry = geom.Name;
+
+                                this.SaveResource(ld);
+                                resCreatedOrUpdated.Add(lyrId);
+                                cb(this, new LengthyOperationProgressArgs("Created: " + lyrId, current));
+
+                                //Step 4: Infer geometry storage support and remove unsupported styles
+                                //TODO: There doesn't seem to be a MaestroAPI way to figure out geometry storage types atm
+                            }
+                        }
+                    }
+
+                    success = true;
+                }
+                else
+                {
+                    cb(this, new LengthyOperationProgressArgs("File not found: " + file, current));
+                }
+
+                //This file is now fully processed, so increment progress
+                current += pcPerFile;
+
+                if (success)
+                {
+                    cb(this, new LengthyOperationProgressArgs("File processed: " + file, current));
+                }
+            }
+            return resCreatedOrUpdated.ToArray();
+        }
     }
 }
