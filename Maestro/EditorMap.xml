@@ -85,6 +85,17 @@ The resource given is always a temporary item, so feel free to save it if needs 
 		<ResourceInstanceClass>OSGeo.MapGuide.MaestroAPI.WebLayout</ResourceInstanceClass>
 	</ResourceEditorEntry>
 
+    <ResourceEditorEntry>
+        <DisplayName>Load Procedure</DisplayName>
+        <ResourceExtension>LoadProcedure</ResourceExtension>
+        <ImageAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ImageAssembly>
+        <ImageResourceName>OSGeo.MapGuide.Maestro.ResourceEditors.Icons.Unknown.ico</ImageResourceName>
+        <ResourceEditorAssembly>OSGeo.MapGuide.Maestro.ResourceEditors.dll</ResourceEditorAssembly>
+        <ResourceEditorClass>OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors.LoadProcedureCtrl</ResourceEditorClass>
+        <ResourceInstanceAssembly>OSGeo.MapGuide.MaestroAPI.dll</ResourceInstanceAssembly>
+        <ResourceInstanceClass>OSGeo.MapGuide.MaestroAPI.LoadProcedure</ResourceInstanceClass>
+    </ResourceEditorEntry>
+
 	<ResourceEditorEntry>
 		<DisplayName>Print layout</DisplayName>
 		<ResourceExtension>PrintLayout</ResourceExtension>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LoadProcedure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="LoadProcedure-1.0.0.xsd">
+    <ShpLoadProcedure>
+        <SourceFile />
+        <RootPath>Library://</RootPath>
+        <CoordinateSystem>LOCAL_CS["Non-Earth (Meter)",LOCAL_DATUM["Local Datum",0],UNIT["Meter", 1],AXIS["X",EAST],AXIS["Y",NORTH]]</CoordinateSystem>
+        <GenerateSpatialDataSources>true</GenerateSpatialDataSources>
+        <SpatialDataSourcesPath />
+        <SpatialDataSourcesFolder>Data</SpatialDataSourcesFolder>
+        <GenerateLayers>true</GenerateLayers>
+        <LayersPath />
+        <LayersFolder>Layers</LayersFolder>
+        <Generalization>100</Generalization>
+        <ConvertToSdf>false</ConvertToSdf>
+    </ShpLoadProcedure>
+</LoadProcedure>
