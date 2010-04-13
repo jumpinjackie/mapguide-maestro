@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lable1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lable1.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 24</value>
@@ -143,6 +147,9 @@
   <data name="&gt;&gt;lable1.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 56</value>
   </data>
@@ -166,6 +173,9 @@
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 88</value>
@@ -191,24 +201,14 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
-  </data>
-  <data name="bgColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 88</value>
-  </data>
-  <data name="bgColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 21</value>
-  </data>
-  <data name="bgColor.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
   </data>
   <data name="&gt;&gt;bgColor.Name" xml:space="preserve">
     <value>bgColor</value>
   </data>
   <data name="&gt;&gt;bgColor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox, OSGeo.MapGuide.Maestro.ResourceEditors, Version=2.0.0.4513, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bgColor.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -216,14 +216,278 @@
   <data name="&gt;&gt;bgColor.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnSelectCoordSys.Name" xml:space="preserve">
+    <value>btnSelectCoordSys</value>
+  </data>
+  <data name="&gt;&gt;btnSelectCoordSys.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSelectCoordSys.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnSelectCoordSys.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtCoordsys.Name" xml:space="preserve">
+    <value>txtCoordsys</value>
+  </data>
+  <data name="&gt;&gt;txtCoordsys.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCoordsys.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;txtCoordsys.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtDescription.Name" xml:space="preserve">
+    <value>txtDescription</value>
+  </data>
+  <data name="&gt;&gt;txtDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDescription.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;txtDescription.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>592, 224</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="panel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 120</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>557, 88</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="&gt;&gt;SetZoom.Name" xml:space="preserve">
+    <value>SetZoom</value>
+  </data>
+  <data name="&gt;&gt;SetZoom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SetZoom.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;SetZoom.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtUpperY.Name" xml:space="preserve">
+    <value>txtUpperY</value>
+  </data>
+  <data name="&gt;&gt;txtUpperY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtUpperY.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtUpperY.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtUpperX.Name" xml:space="preserve">
+    <value>txtUpperX</value>
+  </data>
+  <data name="&gt;&gt;txtUpperX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtUpperX.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtUpperX.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txtLowerY.Name" xml:space="preserve">
+    <value>txtLowerY</value>
+  </data>
+  <data name="&gt;&gt;txtLowerY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtLowerY.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtLowerY.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;txtLowerX.Name" xml:space="preserve">
+    <value>txtLowerX</value>
+  </data>
+  <data name="&gt;&gt;txtLowerX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtLowerX.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtLowerX.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>554, 88</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Initial map view</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="SetZoom.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="SetZoom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="SetZoom.Location" type="System.Drawing.Point, System.Drawing">
     <value>408, 24</value>
@@ -270,6 +534,9 @@
   <data name="&gt;&gt;txtUpperY.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>256, 56</value>
   </data>
@@ -314,6 +581,9 @@
   </data>
   <data name="&gt;&gt;txtUpperX.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 56</value>
@@ -360,6 +630,9 @@
   <data name="&gt;&gt;txtLowerY.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>256, 24</value>
   </data>
@@ -405,6 +678,9 @@
   <data name="&gt;&gt;txtLowerX.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 24</value>
   </data>
@@ -428,6 +704,9 @@
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 56</value>
@@ -453,6 +732,9 @@
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 24</value>
   </data>
@@ -477,56 +759,14 @@
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>554, 88</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Initial map view</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 120</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>557, 88</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="btnSelectCoordSys.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="btnSelectCoordSys.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
+  </data>
+  <data name="btnSelectCoordSys.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btnSelectCoordSys.Location" type="System.Drawing.Point, System.Drawing">
     <value>549, 56</value>
@@ -600,149 +840,8 @@
   <data name="&gt;&gt;txtDescription.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 224</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="groupBox3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
-  </data>
-  <data name="groupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="ctlFiniteDisplayScales.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ctlFiniteDisplayScales.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
-    <value>337, 351</value>
-  </data>
-  <data name="ctlFiniteDisplayScales.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 280</value>
-  </data>
-  <data name="ctlFiniteDisplayScales.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 80</value>
-  </data>
-  <data name="ctlFiniteDisplayScales.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="ctlFiniteDisplayScales.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;ctlFiniteDisplayScales.Name" xml:space="preserve">
-    <value>ctlFiniteDisplayScales</value>
-  </data>
-  <data name="&gt;&gt;ctlFiniteDisplayScales.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ctlFiniteDisplayScales.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;ctlFiniteDisplayScales.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ctlGroupProperties.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 96</value>
-  </data>
-  <data name="ctlGroupProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 240</value>
-  </data>
-  <data name="ctlGroupProperties.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ctlGroupProperties.Name" xml:space="preserve">
-    <value>ctlGroupProperties</value>
-  </data>
-  <data name="&gt;&gt;ctlGroupProperties.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerGroupProperties, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ctlGroupProperties.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;ctlGroupProperties.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="ctlLayerProperties.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ctlLayerProperties.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
-    <value>300, 304</value>
-  </data>
-  <data name="ctlLayerProperties.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 88</value>
-  </data>
-  <data name="ctlLayerProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 184</value>
-  </data>
-  <data name="ctlLayerProperties.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ctlLayerProperties.Name" xml:space="preserve">
-    <value>ctlLayerProperties</value>
-  </data>
-  <data name="&gt;&gt;ctlLayerProperties.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerProperties, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ctlLayerProperties.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;ctlLayerProperties.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 24</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>When a layer or a group is selected, properties for that item will be displayed here</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 0</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 368</value>
-  </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Layer properties</value>
   </data>
   <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
     <value>groupBox4</value>
@@ -780,6 +879,9 @@
   <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="splitter1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="splitter1.Location" type="System.Drawing.Point, System.Drawing">
     <value>344, 16</value>
   </data>
@@ -804,77 +906,9 @@
   <data name="tabLayers.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="trvLayerGroups.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="trvLayerGroups.ImageIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <metadata name="TreeImages.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>170, 17</value>
+  <metadata name="tlbLayerGroups.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
   </metadata>
-  <data name="TreeImages.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADs
-        CQAAAk1TRnQBSQFMAgEBAwEAARQBAAEUAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
-        AwABEAMAAQEBAAEgBgABEP8AKwAByQHBAb8B/wHjAdcB0gH/AbgBsAGvAf8BnwGdAZwB//AAAe4B4QHd
-        Af8B9AHlAeAB/wHzAeQB3gH/AfMB5AHeAf8B1gHIAcQB/wGpAaIBoQH/EAABhwHCAfgB/wGBAcoB+wH/
-        ATwBxAH9Af8BPAHEAf0B/wE8AcQB/QH/ATwBxAH9Af8BMgG+Af0B/wEyAb4B/QH/ATIBvgH9Af8BMgG+
-        Af0B/wErAbsB/QH/ASsBuwH9Af8BMAGzAfsB/xQAAx0BKgMdASogAAMFAQcDHQEqAx0BKlgAAc8BxgHD
-        Af8B9AHlAeAB/wH0AeUB4AH/AfMB5AHeAf8B8wHkAd4B/wHxAd8B2AH/AfEB3wHYAf8B6AHXAdAB/wHG
-        AboBtgH/AZ8BnQGcAf8EAAGVAcoB+QH/AYcBygH5Af8BUwHZAv8BUwHZAv8BRgHSAv8BRgHSAv8BRgHS
-        Av8BRgHSAv8BRgHSAv8BQwHRAv8BQwHRAv8BPgHPAv8BPgHPAv8BgQG/AfEB/xAAAwUB/ygAAzABTAMF
-        Af9UAAHLAcgBxwH/AfQB5QHgAf8B9QHpAeQB/wH0AeUB4AH/AfMB5AHeAf8B8wHkAd4B/wHxAd8B2AH/
-        AfEB3wHYAf8B8AHdAdYB/wHuAdsB1AH/AdsBygHEAf8EAAGYAcsB+QH/AYEBvgH4Af8BgQHoAf4B/wFi
-        AeEC/wFiAeEC/wFiAeEC/wFiAeEC/wFeAd8C/wFeAd8C/wFeAd8C/wFTAdkC/wFeAd8C/wFbAdcB/AH/
-        AXQByAH4Af8QAAMFAf8IAAFGAkEBfwMABAEBAgFFAkEBfQQAAygBPAMlATcEAAMvAUoDBQH/VAAB1QHM
-        AckB/wH1AekB5AH/AfQB5QHgAf8B9AHlAeAB/wHzAeQB3gH/AfMB5AHeAf8B8QHfAdgB/wHxAd8B2AH/
-        AfAB3QHWAf8B7gHbAdQB/wGkAZ4BnQH/BAABmAHLAfkB/wFRAboB+gH/AZUB4wH9Af8BcwHpAv8BcwHp
-        Av8BcwHpAv8BcwHpAv8BagHlAv8BagHlAv8BagHlAv8BagHlAv8BagHlAv8BbwHhAf0B/wGEAekB/QH/
-        EAADBQH/CAADBQH/AUUCQQF9AUgCQwGFAwUB/wQAAwUB/wMFAf8EAAMvAUoDBQH/UAABxgHCAcEB/wH1
-        AekB5AH/AfUB6QHkAf8B9QHpAeQB/wH0AeUB4AH/AfMB5AHeAf8B8wHkAd4B/wHxAd8B2AH/AfEB3wHY
-        Af8B8AHdAdYB/wHWAcgBxAH/CAABmAHLAfkB/wFOAckB/QH/AYcBygH5Af8BgQHuAv8BgQHuAv8BgQHu
-        Av8BgQHuAv8BgQHuAv8BgQHuAv8BewHtAv8BewHtAv8BewHtAv8BgQHuAv8BnwH8Af4B/wGBAcIB8AH/
-        DAADBQH/KAADLwFKAwUB/1AAAd0B1AHRAf8B9QHpAeQB/wH1AekB5AH/AfQB5QHgAf8B9AHlAeAB/wHz
-        AeQB3gH/AfMB5AHeAf8B8QHfAdgB/wHxAd8B2AH/Ae4B2wHUAf8BnwGdAZwB/wgAAZgBywH5Af8BZQHY
-        Av8BXwG6AfgB/wHBAfQB/gH/AbUB9AH+Af8BtQH0Af4B/wG1AfQB/gH/AaUB9AH+Af8BiQHzAv8BiQHz
-        Av8BiQHzAv8BhQHzAv8BhAHpAf0B/wG0A/8BgQHUAfgB/wwAAwUB/ygAAy8BSgMFAf9MAAHGAcIBwQH/
-        AfcB7AHoAf8B9QHpAeQB/wH1AekB5AH/AfUB6QHkAf8B9AHlAeAB/wHzAeQB3gH/AfMB5AHeAf8B8QHf
-        AdgB/wHxAd8B2AH/AcoBvgG7Af8MAAGYAcsB+QH/AYEB5QL/AVsB1wH8Af8BVgHBAfgB/wFWAcEB+AH/
-        AVYBwQH4Af8BVgHBAfgB/wGBAcQB+AH/Ac0B9wH+Af8BzQH3Af4B/wHBAfQB/gH/AcUB9wH+Af8BwQH0
-        Af4B/wHaAf0B/gH/AcEB9AH+Af8MAAMFAf8oAAMvAUoDBQH/TAAB5gHdAdoB/wH3AewB6AH/AfUB6QHk
-        Af8B9QHpAeQB/wH0AeUB4AH/AfQB5QHgAf8B8wHkAd4B/wHzAeQB3gH/AfEB3wHYAf8B7gHbAdQB/wGk
-        AZ4BnQH/DAABmAHLAfkB/wGFAfMC/wGBAfAC/wGBAfAC/wGBAfAC/wGBAfAC/wGBAfAC/wF2AeIB/AH/
-        AXABzQH6Af8BcAHNAfoB/wFwAc0B+gH/AXABzQH6Af8BaAG5AfgB/xQAAwUB/ygAAy8BSgMFAf9IAAHG
-        AcIBwQH/AfcB7AHoAf8B9wHsAegB/wH3AewB6AH/AfUB6QHkAf8B9QHpAeQB/wH0AeUB4AH/AfMB5AHe
-        Af8B8wHkAd4B/wHxAd8B2AH/AcABtgG0Af8QAAGYAcsB+QH/AaQB/gL/AZAB/gL/AZAB/gL/AZAB/gL/
-        AbQD/wG0A/8BtAP/AbQD/wG0A/8BtAP/AbQD/wGBAc4B+gH/FAADBQH/KAADLwFKAwUB/0gAAesB4wHg
-        Af8B9wHsAegB/wH3AewB6AH/AfUB6QHkAf8B9QHpAeQB/wH0AeUB4AH/AfQB5QHgAf8B8wHkAd4B/wHz
-        AeQB3gH/Ae4B2wHUAf8BpAGjAaIB/xAAAZgBywH5Af8B1AP/AcoD/wHKA/8B1AP/AYcBwgH4Af8wAAFX
-        AikB3wFJAkIBhyAAAwsBDwFXAkEBtwFXAikB30gAAc0CygH/Ac8BxgHDAf8B5gHdAdoB/wH3AewB6AH/
-        AfUB6QHkAf8B9QHpAeQB/wH0AeUB4AH/AfMB5AHeAf8B8wHkAd4B/wGzAa0BqwH/GAABlQHKAfkB/wGY
-        AcsB+QH/AZgBywH5Af8BkwHIAfkB/7wAAc8BxgHDAf8BzwHGAcMB/wHuAeEB3QH/AfQB5QHgAf8B8wHk
-        Ad4B/wHjAdcB0gH/9AABxgHAAb4B/wHZAc0ByQH/AbMBrQGrAf//ANkAAUIBTQE+BwABPgMAASgDAAFA
-        AwABEAMAAQEBAAEBBQABgBcAA/8BAAb/AgAB/AE/BP8CAAH8AQ8BAAEHAc8B8QIAAfgBAQEAAQMB3wH5
-        AgAB8AEBAQABAwHYAUkCAAHwAQEBAAEDAdgBSQIAAeABAwEAAQEB3wH5AgAB4AEDAQABAQHfAfkCAAHA
-        AQcBAAEBAd8B+QIAAcABBwEAAQcB3wH5AgABgAEPAQABBwHfAfkCAAGAAQ8BAwH/Ac8B8QIAAYABHwGH
-        A/8CAAHwAT8E/wIAAf4BPwT/AgAG/wIACw==
-</value>
-  </data>
-  <data name="trvLayerGroups.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="trvLayerGroups.SelectedImageIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="trvLayerGroups.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 300</value>
-  </data>
-  <data name="trvLayerGroups.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;trvLayerGroups.Name" xml:space="preserve">
     <value>trvLayerGroups</value>
   </data>
@@ -886,229 +920,6 @@
   </data>
   <data name="&gt;&gt;trvLayerGroups.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <metadata name="tlbLayerGroups.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>0, 0</value>
-  </metadata>
-  <data name="AddGroupButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIgSURBVDhP5ZL9S1NRGMf3p9QyMbAXiwovvQqJGlqEZEgt
-        yB8WwyytjJmWoaFoQ2vTtMbWfMlRoZgJviwcsqHetmmM1cCEhTJZS9vu3c7WDfbt7pTmzR/6AzrwgQOH
-        5/Oc50Um+z/OrL4Ma7CPSzHdfh2bKucsGqyx8XFWdwmE9yIeC1BCZBXEVi8VhMfK8J0flCAETYh9eQEh
-        +AqR5QFElgbX+TZeLRXwE9cghE0UsqqHy1qFd5bKddjhciR5P3oDgl+Pr/1XpILoTA0Njn1+gCB7Cy6z
-        As7nF+DsKqa8NZxDtTYHytajqO0pxJC2WCog7iYIAQPC/bliH3IoyXtoOAvjRgZ5LQdQa6vCE08bNM4G
-        FPbko/5pxR9JbKEd8U9NiIycAj+1H5x1N8Jj6fANpIFpTkGFXYX77jv44Pegz9sFtaMcWc8YmA2/S4kv
-        mRC1liDqOUMFvH0vFeg6toHp3QPltAJqVoUVboUKStkS5L05jnxd9q9f0E6L2cm8gkqicwWUmx07kdGb
-        CrtvkgYnEglwhKN3peUi0htTICNTzYjPa0FcV8WRiZMQe5HsdJIGcxEO9m2n2Tu9dXQHJhZfo8V9F7lD
-        R5Cp2ScKxKWIjBbRef8ITUpwzHVil06OAlsqLnt3IMAtwui7jbOONCqueanevJF/r2hjtxKHurdC9XEL
-        jP7zuLfA4OSIHNmth/8dvFF2uu0EMh/JcexhhiTzT7buzCsYIAZ2AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="AddGroupButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="AddGroupButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="AddGroupButton.ToolTipText" xml:space="preserve">
-    <value>Add a new group</value>
-  </data>
-  <data name="RemoveGroupButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAICSURBVDhP5ZPvS1NRHIf3vwQlNBI0ISqMgkY/tXqRaEvI
-        oCjWMrQVZUq5QmdlYSjZCGYQUWEoLNJJLTVdG27FCAqLEEapE+e8271zrT3de4Y/br7qdQcezoHDec45
-        n+85BsP/0UJOK4v4Oyz42mtYdfP5gVsssnIydK8KWfpMSpkSKPIksbdNekG838qC1KMjHXWhTD8lHX1O
-        4ucLEpGeJWKeOr1AelNNOu4SyLNOgt5LBAZsS/jd59D42FdL+oeTme4zekHy/RWxWJm4SdR/geCTSsYe
-        H2Wsq0Iwcr+cXts+3Cd2MtxQjq/JrBfIYQfpqYfEu3erOewSaOM59w6+3NmKt3Qbky3XkB45me1oJXSs
-        jN5G27JE+dZO6quDxKtSpNEi5r35xPuNTD3Lw7N9PZK9lt9tzWQ774peuVFH+KCJUHN1TpKKuEh6j5P8
-        dEgIpHcFQhC4vI7ve4vJXLSQdTSQvW3PUV9D9Mh++ipKcgKRtLq7PF4pJMkPJYIRSyGTpk3EBl+TnInq
-        mD5/Gs+WfAzyaAup8Tbk4Fm1ZGol1Cy0pDUCjWYmTAXiCnJX6zIP1LC1E+zZrAqG7ST6ykS9f80N6ogM
-        deIv3oByuJDsqY1LZMxFQjx0vX71i/z7ifquWgibjCSr8shY17Bwci2RA0ZeqiH+00fWAtMqoh175c5/
-        AILA04D3H/TXAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="RemoveGroupButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="RemoveGroupButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="RemoveGroupButton.ToolTipText" xml:space="preserve">
-    <value>Remove the selected group and contents</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="AddLayerButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGtSURBVDhPtZPbK4NhHMf9KSxESQ4XzkIhRC7kSnZDcyji
-        Qo0wISvkfEE0zUSEMuHCaXjHyyan2YZpMy1iYk53++p56tXwvsuN5+q5+X5+n9/T9/Hx+c+zts6A1Zsx
-        PaPGn+dsaLRgdg5hsT3C5njF1c0Ljo127wCW1WOLOYD50oHbhw/c3L3RMAcgEK8WVvs9DXJhPoDhwgml
-        UsVvQrQ5gJDBufUZ6sUN4VU89fkMCIBYDI8ovFuQ8E+A3mSDfLYXFaoqFPdIhC2OTi007AmY064iuz8d
-        su1aDBkG0KlvQ54qGy1zst8g8haegKOLa0S3R6CaKUfrSQPOHAZMmJSo0VUiZTSW34TVGb4M2uf7EDse
-        BsluIaR7ZXC6nBRQvleEzIVkavarYKQPXAfIzpGTwWCsmzTsdrvhenfRu2RFjBC5P78FB6mbkiFqIoBO
-        HzQ14+n9Eev2eXSdNCJDnUjXE6w4qfLSvhah/SLkbAeixBSMO5cdCmst8nVBFFw/LRUGrGlY+gfEHWLE
-        j/mh1OgLhaMATZY4ZC2LkNad8PcPRjRzB1IR0ytCUk/4t8mf6KjN6icojYsAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="AddLayerButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="AddLayerButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="AddLayerButton.ToolTipText" xml:space="preserve">
-    <value>Add a new layer to the map</value>
-  </data>
-  <data name="RemoveLayerButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGgSURBVDhPtZLbK4NhHMf9L0rKauVQQsrNlFjcTOGGkkPj
-        hmUrbSVWTEZEOSQbuZCr1bKmd6dmvdqcZmlz2rI0xqTZlpp9eV69mva+y42nfj1Xv8/v83yfX0HBfx7K
-        4gTt8WNn14A/z7HaDuB0neA6FEPo/g034TjOLu7yA2jaA4fzCP6re0SeUgg/JJhmFkAgeS2Cd1GmkW3m
-        Avgun6HTbXKbEG0WwGUQCL6ClMFo5X9Ktj6XAQEQi9W19fwWpDkbQHIgIVJzi9iXK7A9IOW3OD2/Zpqz
-        AW6jBRaJGBHNGOL6VcSWtDjubIVLo84FkSyyAYGvyXuiGryqZPiYn0RmeY65U+pReFtE3Ca02/djYF9Y
-        wm1jLdJyKTJTKmRmxr9LOYRoexNMbeJcCNkHdgcsihFE6ivxYqeQeIr+qkdZP8zVQm4LFmKdUCMkKkV8
-        fBhJ/ex3bWmRXJlmDMjzeFecrPIx5cJhrRApSRkyfeU/le6oYMCOCSU/gLLRzPdt9HbDKxIg0VWM9GAh
-        3nuKEG4WwMgXIp8SCcxcVwJTQ9WvyZ+P19UwHtXPEAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="RemoveLayerButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="RemoveLayerButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="RemoveLayerButton.ToolTipText" xml:space="preserve">
-    <value>Remove a layer from the group</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="MoveLayerUpButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFaSURBVDhPtZPPS8JgHMb9y7pGP6BLEGRQLYnqkJEVVAfJ
-        ugXRITrYIZGOGoNgRYE5bI6hy9Y0cWRNHFLZb4qOT7yD2SZ7ZZfe8/t83s/L9/n6fP95UucCJLmCRJKD
-        53fSfBaCeIVq7RW1xhfujE9cl+udAZIkIyNconLbwMPzD4zHbzNsAQiko4Veb5pBK+wGKGpPiMcP3E2I
-        tgWgGWj6B464NP0rdn03g7SmIlZgEd3b72xBwu2AG72JkBLAQnkIseME3UIpVs1wO2CtEMH2yyzCjQCm
-        RT92o1G6RTsgVkxgozaGzbdFLBkMZtQ+TCbH6RZSvtQyuKiW4Be7sX4/iq33P8BIpgvzOyF3COmD1QFS
-        JgJZledagAmhF2eqAk7I0S3sEFKiSH7ZAeBOs/RpWJ23V9kOYPgeb3uR4iVzBw7ZEwRZxmHgebGsi2F+
-        BcHcIKbEAQxz/Q6DXzBYvmreBkAhAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="MoveLayerUpButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="MoveLayerUpButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="MoveLayerUpButton.ToolTipText" xml:space="preserve">
-    <value>Move the selected layer up</value>
-  </data>
-  <data name="MoveLayerDownButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFISURBVDhPtZPNS8NAEMX79xmvouLJr4LopYiFiuChXqRS
-        EFHBoJXiQRCLWBBPMUVWXfpBlFSptlJpIopiCyoen8zKhqDdkIuBJbDw3vzezGwk8p+fccLAyzXs7ecR
-        uo5ZOAM7t9B4eEPT/cC9846rm1awAedlnLIKavVHPL1+wXn+FEcakEkgRbP1IoS/xX4D+66NbHanOwlh
-        SwMVAVHkj0x1lG74kmDd3kbSmhVncjcaTCHz+3tAwuXONBLuKMZ5r5ri0m54faDqkoAM0p0ZxJ0RYaDr
-        GTWFisBvYDJbTcFLVW+E3QiiTANNZHNLMRHaBxISiVGvYJj1IXE96EWYsnrE3fzhoppCmpBRsriAlDuB
-        VDv+04OqhqGchrUNPXg75SrTP3Yx5k2BIoR6F0aBizeQOzjGSmYVsVI/5m4HwolVFZaKf3N/A4miselp
-        EoRNAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="MoveLayerDownButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="MoveLayerDownButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="MoveLayerDownButton.ToolTipText" xml:space="preserve">
-    <value>Move the selected layer down</value>
-  </data>
-  <data name="MoveLayerTopButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF2SURBVDhPtZNNSwJRFIb9f4EkYdFCkBZhH0RRYiNm0SKl
-        iBA0cCGEtEyJoGhliowy4Yj5kaOkWGrlByVUtHzjXJhhsHFs08BhVu9zn3PuuQbDf36xGx6CWMFZ5Ap/
-        PieeSIFP51B7fEOj/Yl66wP5clMfIAgiknwWlYdnvPa/0ep8sZIBBNG1aDR7LDgcVgOK1S7C4VNtE9KW
-        AaMMqo0BLi7jo1vR0lcblOsDbPhLsLkj+hZy//Sn3qnodAov+tpwBN7B+XLakLtiTZkDnS4bUHjhqIVJ
-        Zx7TrnssBbvaEJqF2oAAq14Rpr0iC895myxs3MyxWncmf5sImZJyhbLBbkhiYdKnIojNMeJGaB8oKO/B
-        znEB5n1J6d8eGGDe/8KsuO2o9ixkCIFuCz3w2Q4sHgkUXvH1YeJEHBwG9bdTvcp0ExZPmYWtnicY7cL4
-        txFLCOwNRM+vEQqdYHYrw+Yw5ZIwsZYaDxh+fVYuxSBmRxozyzEF8ANFwNU8W/6ToAAAAABJRU5ErkJg
-        gg==
-</value>
-  </data>
-  <data name="MoveLayerTopButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="MoveLayerTopButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="MoveLayerTopButton.ToolTipText" xml:space="preserve">
-    <value>Move the selected layer to the top</value>
-  </data>
-  <data name="MoveLayerBottomButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFoSURBVDhPtZPLSwJRFIf9AyMQKcIe1LYSWlQEYRGWtdHJ
-        TYkYgrVwoRFIUYtMiSkm1Bzzgab5LPJBRBQtf3FuXBlsZnDTwIWBy+873z33XIPhP7/IlQgpUUAwdIaB
-        60RjNxBvUyjX3lB9/sRT8wPpfEMfIEkJXItJFEoveO1+o9n6YosDCKJrUW10WLA/rARkim34/UfqJqTN
-        AVoGdw9d+AOX2kdR01camNbvYd7MY3wtD/r/01Ruwc/f3wMKW+wNLO52GEj1VuRMudcHqq40oNDy3jtb
-        mgCy6DcInFbgCz6yEAeYrGntXkjxbO8KyeAwXMG0p46lg9/qc0Ibk446jI6cOoTmgYK8B2KyDbsngxlX
-        DfOuDqbsNQzZZCysXmhbcAiBKDwmlFj3R3cKMNqyGLbEGcS6EdKGKEfZ6ZYx627BvJJj4ZHtIhz7Kf3x
-        jsQk9gaOT87h9fqwJYQx4awMFtZ7eWSj3P8BguDJqKnh0WsAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="MoveLayerBottomButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="MoveLayerBottomButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="MoveLayerBottomButton.Text" xml:space="preserve">
-    <value>toolStripButton2</value>
-  </data>
-  <data name="MoveLayerBottomButton.ToolTipText" xml:space="preserve">
-    <value>Move the selected layer to the bottom</value>
-  </data>
-  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="ConvertToBaseLayerGroupButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGjSURBVDhPzZLbK4NhHMf9Q5SbXWnJOZQLRGipid455RWK
-        mENyihVZzoelhAuk3pFDhjfG5hy7wMjW8rYDe8277ebLnpUs3nHpqU/PzfP9PN/n6RcR8a/XhqYPa+Nd
-        0I524teir4fTIYfY4WoI/DV8gpXg1PWKS95uBuFzzxMcj1MEu3kMT6YhAn83Ace6UlzgtU7A756E06oG
-        u1wFlqGDLJYT7vUteFhqEBf47LPw7FfCtZII+0Is7LNSAjcpxaFGRqRMvyKMwDEHfisb/IEE7q0ovDCR
-        QTajwc1IYdPE43E8ATIm5rtEOB6B16wGz6aCN8Z87BIS/JR8kTWcpKPuKjdUIhgHSH2vpSPIbRMEUz32
-        DHLID+KgOEoGZUhD1VkGWu9l6HqmQyVv+m54dovg51aDPGnhtzHYNqlQfZ4J2lQIpaUUHQ6ahBs5CvRD
-        PpGGnY3tkyE03hSg2VoGlYsmgkC49C4XeRcpkJ8nokJXFF7SaZGTcIA2rgSV5hzknCVBdhoHSpf/+3T2
-        XLbjK8X61L+Hf3ofxWb97Waxz6ndqflW+x3QuGPd1UfMFwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="ConvertToBaseLayerGroupButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="ConvertToBaseLayerGroupButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="ConvertToBaseLayerGroupButton.ToolTipText" xml:space="preserve">
-    <value>Convert the selected group to a base layer group</value>
-  </data>
-  <data name="tlbLayerGroups.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tlbLayerGroups.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 25</value>
-  </data>
-  <data name="tlbLayerGroups.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
   </data>
   <data name="&gt;&gt;tlbLayerGroups.Name" xml:space="preserve">
     <value>tlbLayerGroups</value>
@@ -1146,21 +957,9 @@
   <data name="&gt;&gt;tabLayerGroups.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="columnHeader1.Width" type="System.Int32, mscorlib">
-    <value>200</value>
-  </data>
-  <data name="lstDrawOrder.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="lstDrawOrder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="lstDrawOrder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 300</value>
-  </data>
-  <data name="lstDrawOrder.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
   <data name="&gt;&gt;lstDrawOrder.Name" xml:space="preserve">
     <value>lstDrawOrder</value>
   </data>
@@ -1172,153 +971,6 @@
   </data>
   <data name="&gt;&gt;lstDrawOrder.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>408, 17</value>
-  </metadata>
-  <data name="AddLayerOrderButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGtSURBVDhPtZPbK4NhHMf9KSxESQ4XzkIhRC7kSnZDcyji
-        Qo0wISvkfEE0zUSEMuHCaXjHyyan2YZpMy1iYk53++p56tXwvsuN5+q5+X5+n9/T9/Hx+c+zts6A1Zsx
-        PaPGn+dsaLRgdg5hsT3C5njF1c0Ljo127wCW1WOLOYD50oHbhw/c3L3RMAcgEK8WVvs9DXJhPoDhwgml
-        UsVvQrQ5gJDBufUZ6sUN4VU89fkMCIBYDI8ovFuQ8E+A3mSDfLYXFaoqFPdIhC2OTi007AmY064iuz8d
-        su1aDBkG0KlvQ54qGy1zst8g8haegKOLa0S3R6CaKUfrSQPOHAZMmJSo0VUiZTSW34TVGb4M2uf7EDse
-        BsluIaR7ZXC6nBRQvleEzIVkavarYKQPXAfIzpGTwWCsmzTsdrvhenfRu2RFjBC5P78FB6mbkiFqIoBO
-        HzQ14+n9Eev2eXSdNCJDnUjXE6w4qfLSvhah/SLkbAeixBSMO5cdCmst8nVBFFw/LRUGrGlY+gfEHWLE
-        j/mh1OgLhaMATZY4ZC2LkNad8PcPRjRzB1IR0ytCUk/4t8mf6KjN6icojYsAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="AddLayerOrderButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="AddLayerOrderButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="AddLayerOrderButton.ToolTipText" xml:space="preserve">
-    <value>Add a new layer to the map</value>
-  </data>
-  <data name="RemoveLayerOrderButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGgSURBVDhPtZLbK4NhHMf9L0rKauVQQsrNlFjcTOGGkkPj
-        hmUrbSVWTEZEOSQbuZCr1bKmd6dmvdqcZmlz2rI0xqTZlpp9eV69mva+y42nfj1Xv8/v83yfX0HBfx7K
-        4gTt8WNn14A/z7HaDuB0neA6FEPo/g034TjOLu7yA2jaA4fzCP6re0SeUgg/JJhmFkAgeS2Cd1GmkW3m
-        Avgun6HTbXKbEG0WwGUQCL6ClMFo5X9Ktj6XAQEQi9W19fwWpDkbQHIgIVJzi9iXK7A9IOW3OD2/Zpqz
-        AW6jBRaJGBHNGOL6VcSWtDjubIVLo84FkSyyAYGvyXuiGryqZPiYn0RmeY65U+pReFtE3Ca02/djYF9Y
-        wm1jLdJyKTJTKmRmxr9LOYRoexNMbeJcCNkHdgcsihFE6ivxYqeQeIr+qkdZP8zVQm4LFmKdUCMkKkV8
-        fBhJ/ex3bWmRXJlmDMjzeFecrPIx5cJhrRApSRkyfeU/le6oYMCOCSU/gLLRzPdt9HbDKxIg0VWM9GAh
-        3nuKEG4WwMgXIp8SCcxcVwJTQ9WvyZ+P19UwHtXPEAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="RemoveLayerOrderButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="RemoveLayerOrderButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="RemoveLayerOrderButton.ToolTipText" xml:space="preserve">
-    <value>Remove the selected layers from the map</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="MoveLayerUpOrderButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFaSURBVDhPtZPPS8JgHMb9y7pGP6BLEGRQLYnqkJEVVAfJ
-        ugXRITrYIZGOGoNgRYE5bI6hy9Y0cWRNHFLZb4qOT7yD2SZ7ZZfe8/t83s/L9/n6fP95UucCJLmCRJKD
-        53fSfBaCeIVq7RW1xhfujE9cl+udAZIkIyNconLbwMPzD4zHbzNsAQiko4Veb5pBK+wGKGpPiMcP3E2I
-        tgWgGWj6B464NP0rdn03g7SmIlZgEd3b72xBwu2AG72JkBLAQnkIseME3UIpVs1wO2CtEMH2yyzCjQCm
-        RT92o1G6RTsgVkxgozaGzbdFLBkMZtQ+TCbH6RZSvtQyuKiW4Be7sX4/iq33P8BIpgvzOyF3COmD1QFS
-        JgJZledagAmhF2eqAk7I0S3sEFKiSH7ZAeBOs/RpWJ23V9kOYPgeb3uR4iVzBw7ZEwRZxmHgebGsi2F+
-        BcHcIKbEAQxz/Q6DXzBYvmreBkAhAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="MoveLayerUpOrderButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="MoveLayerUpOrderButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="MoveLayerUpOrderButton.ToolTipText" xml:space="preserve">
-    <value>Move the selected layers up</value>
-  </data>
-  <data name="MoveLayerDownOrderButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFISURBVDhPtZPNS8NAEMX79xmvouLJr4LopYiFiuChXqRS
-        EFHBoJXiQRCLWBBPMUVWXfpBlFSptlJpIopiCyoen8zKhqDdkIuBJbDw3vzezGwk8p+fccLAyzXs7ecR
-        uo5ZOAM7t9B4eEPT/cC9846rm1awAedlnLIKavVHPL1+wXn+FEcakEkgRbP1IoS/xX4D+66NbHanOwlh
-        SwMVAVHkj0x1lG74kmDd3kbSmhVncjcaTCHz+3tAwuXONBLuKMZ5r5ri0m54faDqkoAM0p0ZxJ0RYaDr
-        GTWFisBvYDJbTcFLVW+E3QiiTANNZHNLMRHaBxISiVGvYJj1IXE96EWYsnrE3fzhoppCmpBRsriAlDuB
-        VDv+04OqhqGchrUNPXg75SrTP3Yx5k2BIoR6F0aBizeQOzjGSmYVsVI/5m4HwolVFZaKf3N/A4miselp
-        EoRNAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="MoveLayerDownOrderButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="MoveLayerDownOrderButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="MoveLayerDownOrderButton.ToolTipText" xml:space="preserve">
-    <value>Move the selected layers down</value>
-  </data>
-  <data name="MoveLayerOrderTopButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF2SURBVDhPtZNNSwJRFIb9f4EkYdFCkBZhH0RRYiNm0SKl
-        iBA0cCGEtEyJoGhliowy4Yj5kaOkWGrlByVUtHzjXJhhsHFs08BhVu9zn3PuuQbDf36xGx6CWMFZ5Ap/
-        PieeSIFP51B7fEOj/Yl66wP5clMfIAgiknwWlYdnvPa/0ep8sZIBBNG1aDR7LDgcVgOK1S7C4VNtE9KW
-        AaMMqo0BLi7jo1vR0lcblOsDbPhLsLkj+hZy//Sn3qnodAov+tpwBN7B+XLakLtiTZkDnS4bUHjhqIVJ
-        Zx7TrnssBbvaEJqF2oAAq14Rpr0iC895myxs3MyxWncmf5sImZJyhbLBbkhiYdKnIojNMeJGaB8oKO/B
-        znEB5n1J6d8eGGDe/8KsuO2o9ixkCIFuCz3w2Q4sHgkUXvH1YeJEHBwG9bdTvcp0ExZPmYWtnicY7cL4
-        txFLCOwNRM+vEQqdYHYrw+Yw5ZIwsZYaDxh+fVYuxSBmRxozyzEF8ANFwNU8W/6ToAAAAABJRU5ErkJg
-        gg==
-</value>
-  </data>
-  <data name="MoveLayerOrderTopButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="MoveLayerOrderTopButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="MoveLayerOrderTopButton.ToolTipText" xml:space="preserve">
-    <value>Move the selected layer to the top</value>
-  </data>
-  <data name="MoveLayerOrderBottomButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFoSURBVDhPtZPLSwJRFIf9AyMQKcIe1LYSWlQEYRGWtdHJ
-        TYkYgrVwoRFIUYtMiSkm1Bzzgab5LPJBRBQtf3FuXBlsZnDTwIWBy+873z33XIPhP7/IlQgpUUAwdIaB
-        60RjNxBvUyjX3lB9/sRT8wPpfEMfIEkJXItJFEoveO1+o9n6YosDCKJrUW10WLA/rARkim34/UfqJqTN
-        AVoGdw9d+AOX2kdR01camNbvYd7MY3wtD/r/01Ruwc/f3wMKW+wNLO52GEj1VuRMudcHqq40oNDy3jtb
-        mgCy6DcInFbgCz6yEAeYrGntXkjxbO8KyeAwXMG0p46lg9/qc0Ibk446jI6cOoTmgYK8B2KyDbsngxlX
-        DfOuDqbsNQzZZCysXmhbcAiBKDwmlFj3R3cKMNqyGLbEGcS6EdKGKEfZ6ZYx627BvJJj4ZHtIhz7Kf3x
-        jsQk9gaOT87h9fqwJYQx4awMFtZ7eWSj3P8BguDJqKnh0WsAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="MoveLayerOrderBottomButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="MoveLayerOrderBottomButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="MoveLayerOrderBottomButton.Text" xml:space="preserve">
-    <value>toolStripButton2</value>
-  </data>
-  <data name="MoveLayerOrderBottomButton.ToolTipText" xml:space="preserve">
-    <value>Move the selected layer to the bottom</value>
-  </data>
-  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 25</value>
-  </data>
-  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
   </data>
   <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
     <value>toolStrip1</value>
@@ -1362,6 +1014,60 @@
   <data name="trvBaseLayerGroups.ImageIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <metadata name="TreeImages.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>170, 17</value>
+  </metadata>
+  <data name="TreeImages.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAQ
+        CgAAAk1TRnQBSQFMAgEBAwEAARQBAAEUAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        AwABEAMAAQEBAAEgBgABEP8AKwAByQHBAb8B/wHjAdcB0gH/AbgBsAGvAf8BnwGdAZwB//AAAe4B4QHd
+        Af8B9AHlAeAB/wHzAeQB3gH/AfMB5AHeAf8B1gHIAcQB/wGpAaIBoQH/EAABhwHCAfgB/wGBAcoB+wH/
+        AUEBxAH9Af8BQQHEAf0B/wFBAcQB/QH/AUEBxAH9Af8BNwG+Af0B/wE3Ab4B/QH/ATcBvgH9Af8BNwG+
+        Af0B/wEwAbsB/QH/ATABuwH9Af8BNQGzAfsB/xQAAR8CAQEqAR8CAQEqIAABBwIBAQcBHwIBASoBHwIB
+        ASpYAAHPAcYBwwH/AfQB5QHgAf8B9AHlAeAB/wHzAeQB3gH/AfMB5AHeAf8B8QHfAdgB/wHxAd8B2AH/
+        AegB1wHQAf8BxgG6AbYB/wGfAZ0BnAH/BAABlQHKAfkB/wGHAcoB+QH/AVgB2QL/AVgB2QL/AUsB0gL/
+        AUsB0gL/AUsB0gL/AUsB0gL/AUsB0gL/AUgB0QL/AUgB0QL/AUMBzwL/AUMBzwL/AYEBvwHxAf8QAAMK
+        Af8oAAExAgEBTAMKAf9UAAHLAcgBxwH/AfQB5QHgAf8B9QHpAeQB/wH0AeUB4AH/AfMB5AHeAf8B8wHk
+        Ad4B/wHxAd8B2AH/AfEB3wHYAf8B8AHdAdYB/wHuAdsB1AH/AdsBygHEAf8EAAGYAcsB+QH/AYEBvgH4
+        Af8BgQHoAf4B/wFnAeEC/wFnAeEC/wFnAeEC/wFnAeEC/wFjAd8C/wFjAd8C/wFjAd8C/wFYAdkC/wFj
+        Ad8C/wFgAdcB/AH/AXkByAH4Af8QAAMKAf8IAAFHAgEBfwECAwEBAwIBAQIBRgIBAX0EAAEpAgEBPAEm
+        AgEBNwQAATACAQFKAwoB/1QAAdUBzAHJAf8B9QHpAeQB/wH0AeUB4AH/AfQB5QHgAf8B8wHkAd4B/wHz
+        AeQB3gH/AfEB3wHYAf8B8QHfAdgB/wHwAd0B1gH/Ae4B2wHUAf8BpAGeAZ0B/wQAAZgBywH5Af8BVgG6
+        AfoB/wGVAeMB/QH/AXgB6QL/AXgB6QL/AXgB6QL/AXgB6QL/AW8B5QL/AW8B5QL/AW8B5QL/AW8B5QL/
+        AW8B5QL/AXQB4QH9Af8BhAHpAf0B/xAAAwoB/wgAAwoB/wFGAgEBfQFJAgIBhQMKAf8EAAMKAf8DCgH/
+        BAABMAIBAUoDCgH/UAABxgHCAcEB/wH1AekB5AH/AfUB6QHkAf8B9QHpAeQB/wH0AeUB4AH/AfMB5AHe
+        Af8B8wHkAd4B/wHxAd8B2AH/AfEB3wHYAf8B8AHdAdYB/wHWAcgBxAH/CAABmAHLAfkB/wFTAckB/QH/
+        AYcBygH5Af8BgQHuAv8BgQHuAv8BgQHuAv8BgQHuAv8BgQHuAv8BgQHuAv8BgAHtAv8BgAHtAv8BgAHt
+        Av8BgQHuAv8BnwH8Af4B/wGBAcIB8AH/DAADCgH/KAABMAIBAUoDCgH/UAAB3QHUAdEB/wH1AekB5AH/
+        AfUB6QHkAf8B9AHlAeAB/wH0AeUB4AH/AfMB5AHeAf8B8wHkAd4B/wHxAd8B2AH/AfEB3wHYAf8B7gHb
+        AdQB/wGfAZ0BnAH/CAABmAHLAfkB/wFqAdgC/wFkAboB+AH/AcEB9AH+Af8BtQH0Af4B/wG1AfQB/gH/
+        AbUB9AH+Af8BpQH0Af4B/wGJAfMC/wGJAfMC/wGJAfMC/wGFAfMC/wGEAekB/QH/AbQD/wGBAdQB+AH/
+        DAADCgH/KAABMAIBAUoDCgH/TAABxgHCAcEB/wH3AewB6AH/AfUB6QHkAf8B9QHpAeQB/wH1AekB5AH/
+        AfQB5QHgAf8B8wHkAd4B/wHzAeQB3gH/AfEB3wHYAf8B8QHfAdgB/wHKAb4BuwH/DAABmAHLAfkB/wGB
+        AeUC/wFgAdcB/AH/AVsBwQH4Af8BWwHBAfgB/wFbAcEB+AH/AVsBwQH4Af8BgQHEAfgB/wHNAfcB/gH/
+        Ac0B9wH+Af8BwQH0Af4B/wHFAfcB/gH/AcEB9AH+Af8B2gH9Af4B/wHBAfQB/gH/DAADCgH/KAABMAIB
+        AUoDCgH/TAAB5gHdAdoB/wH3AewB6AH/AfUB6QHkAf8B9QHpAeQB/wH0AeUB4AH/AfQB5QHgAf8B8wHk
+        Ad4B/wHzAeQB3gH/AfEB3wHYAf8B7gHbAdQB/wGkAZ4BnQH/DAABmAHLAfkB/wGFAfMC/wGBAfAC/wGB
+        AfAC/wGBAfAC/wGBAfAC/wGBAfAC/wF7AeIB/AH/AXUBzQH6Af8BdQHNAfoB/wF1Ac0B+gH/AXUBzQH6
+        Af8BbQG5AfgB/xQAAwoB/ygAATACAQFKAwoB/0gAAcYBwgHBAf8B9wHsAegB/wH3AewB6AH/AfcB7AHo
+        Af8B9QHpAeQB/wH1AekB5AH/AfQB5QHgAf8B8wHkAd4B/wHzAeQB3gH/AfEB3wHYAf8BwAG2AbQB/xAA
+        AZgBywH5Af8BpAH+Av8BkAH+Av8BkAH+Av8BkAH+Av8BtAP/AbQD/wG0A/8BtAP/AbQD/wG0A/8BtAP/
+        AYEBzgH6Af8UAAMKAf8oAAEwAgEBSgMKAf9IAAHrAeMB4AH/AfcB7AHoAf8B9wHsAegB/wH1AekB5AH/
+        AfUB6QHkAf8B9AHlAeAB/wH0AeUB4AH/AfMB5AHeAf8B8wHkAd4B/wHuAdsB1AH/AaQBowGiAf8QAAGY
+        AcsB+QH/AdQD/wHKA/8BygP/AdQD/wGHAcIB+AH/MAABXQINAd8BSgICAYcgAAENAgEBDwFYAgQBtwFd
+        Ag0B30gAAc0CygH/Ac8BxgHDAf8B5gHdAdoB/wH3AewB6AH/AfUB6QHkAf8B9QHpAeQB/wH0AeUB4AH/
+        AfMB5AHeAf8B8wHkAd4B/wGzAa0BqwH/GAABlQHKAfkB/wGYAcsB+QH/AZgBywH5Af8BkwHIAfkB/7wA
+        Ac8BxgHDAf8BzwHGAcMB/wHuAeEB3QH/AfQB5QHgAf8B8wHkAd4B/wHjAdcB0gH/9AABxgHAAb4B/wHZ
+        Ac0ByQH/AbMBrQGrAf//ANkAAUIBTQE+BwABPgMAASgDAAFAAwABEAMAAQEBAAEBBQABgBcAA/8BAAb/
+        AgAB/AE/BP8CAAH8AQ8BAAEHAc8B8QIAAfgBAQEAAQMB3wH5AgAB8AEBAQABAwHYAUkCAAHwAQEBAAED
+        AdgBSQIAAeABAwEAAQEB3wH5AgAB4AEDAQABAQHfAfkCAAHAAQcBAAEBAd8B+QIAAcABBwEAAQcB3wH5
+        AgABgAEPAQABBwHfAfkCAAGAAQ8BAwH/Ac8B8QIAAYABHwGHA/8CAAHwAT8E/wIAAf4BPwT/AgAG/wIA
+        Cw==
+</value>
+  </data>
   <data name="trvBaseLayerGroups.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 25</value>
   </data>
@@ -1389,200 +1095,6 @@
   <metadata name="BaseLayerGroupToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>0, 0</value>
   </metadata>
-  <data name="AddBaseLayerGroupButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIgSURBVDhP5ZL9S1NRGMf3p9QyMbAXiwovvQqJGlqEZEgt
-        yB8WwyytjJmWoaFoQ2vTtMbWfMlRoZgJviwcsqHetmmM1cCEhTJZS9vu3c7WDfbt7pTmzR/6AzrwgQOH
-        5/Oc50Um+z/OrL4Ma7CPSzHdfh2bKucsGqyx8XFWdwmE9yIeC1BCZBXEVi8VhMfK8J0flCAETYh9eQEh
-        +AqR5QFElgbX+TZeLRXwE9cghE0UsqqHy1qFd5bKddjhciR5P3oDgl+Pr/1XpILoTA0Njn1+gCB7Cy6z
-        As7nF+DsKqa8NZxDtTYHytajqO0pxJC2WCog7iYIAQPC/bliH3IoyXtoOAvjRgZ5LQdQa6vCE08bNM4G
-        FPbko/5pxR9JbKEd8U9NiIycAj+1H5x1N8Jj6fANpIFpTkGFXYX77jv44Pegz9sFtaMcWc8YmA2/S4kv
-        mRC1liDqOUMFvH0vFeg6toHp3QPltAJqVoUVboUKStkS5L05jnxd9q9f0E6L2cm8gkqicwWUmx07kdGb
-        CrtvkgYnEglwhKN3peUi0htTICNTzYjPa0FcV8WRiZMQe5HsdJIGcxEO9m2n2Tu9dXQHJhZfo8V9F7lD
-        R5Cp2ScKxKWIjBbRef8ITUpwzHVil06OAlsqLnt3IMAtwui7jbOONCqueanevJF/r2hjtxKHurdC9XEL
-        jP7zuLfA4OSIHNmth/8dvFF2uu0EMh/JcexhhiTzT7buzCsYIAZ2AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="AddBaseLayerGroupButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="AddBaseLayerGroupButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="AddBaseLayerGroupButton.ToolTipText" xml:space="preserve">
-    <value>Add a new group</value>
-  </data>
-  <data name="RemoveBaseLayerGroupButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAICSURBVDhP5ZPvS1NRHIf3vwQlNBI0ISqMgkY/tXqRaEvI
-        oCjWMrQVZUq5QmdlYSjZCGYQUWEoLNJJLTVdG27FCAqLEEapE+e8271zrT3de4Y/br7qdQcezoHDec45
-        n+85BsP/0UJOK4v4Oyz42mtYdfP5gVsssnIydK8KWfpMSpkSKPIksbdNekG838qC1KMjHXWhTD8lHX1O
-        4ucLEpGeJWKeOr1AelNNOu4SyLNOgt5LBAZsS/jd59D42FdL+oeTme4zekHy/RWxWJm4SdR/geCTSsYe
-        H2Wsq0Iwcr+cXts+3Cd2MtxQjq/JrBfIYQfpqYfEu3erOewSaOM59w6+3NmKt3Qbky3XkB45me1oJXSs
-        jN5G27JE+dZO6quDxKtSpNEi5r35xPuNTD3Lw7N9PZK9lt9tzWQ774peuVFH+KCJUHN1TpKKuEh6j5P8
-        dEgIpHcFQhC4vI7ve4vJXLSQdTSQvW3PUV9D9Mh++ipKcgKRtLq7PF4pJMkPJYIRSyGTpk3EBl+TnInq
-        mD5/Gs+WfAzyaAup8Tbk4Fm1ZGol1Cy0pDUCjWYmTAXiCnJX6zIP1LC1E+zZrAqG7ST6ykS9f80N6ogM
-        deIv3oByuJDsqY1LZMxFQjx0vX71i/z7ifquWgibjCSr8shY17Bwci2RA0ZeqiH+00fWAtMqoh175c5/
-        AILA04D3H/TXAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="RemoveBaseLayerGroupButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="RemoveBaseLayerGroupButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="RemoveBaseLayerGroupButton.ToolTipText" xml:space="preserve">
-    <value>Remove the selected group and contents</value>
-  </data>
-  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="AddBaseLayerButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGtSURBVDhPtZPbK4NhHMf9KSxESQ4XzkIhRC7kSnZDcyji
-        Qo0wISvkfEE0zUSEMuHCaXjHyyan2YZpMy1iYk53++p56tXwvsuN5+q5+X5+n9/T9/Hx+c+zts6A1Zsx
-        PaPGn+dsaLRgdg5hsT3C5njF1c0Ljo127wCW1WOLOYD50oHbhw/c3L3RMAcgEK8WVvs9DXJhPoDhwgml
-        UsVvQrQ5gJDBufUZ6sUN4VU89fkMCIBYDI8ovFuQ8E+A3mSDfLYXFaoqFPdIhC2OTi007AmY064iuz8d
-        su1aDBkG0KlvQ54qGy1zst8g8haegKOLa0S3R6CaKUfrSQPOHAZMmJSo0VUiZTSW34TVGb4M2uf7EDse
-        BsluIaR7ZXC6nBRQvleEzIVkavarYKQPXAfIzpGTwWCsmzTsdrvhenfRu2RFjBC5P78FB6mbkiFqIoBO
-        HzQ14+n9Eev2eXSdNCJDnUjXE6w4qfLSvhah/SLkbAeixBSMO5cdCmst8nVBFFw/LRUGrGlY+gfEHWLE
-        j/mh1OgLhaMATZY4ZC2LkNad8PcPRjRzB1IR0ytCUk/4t8mf6KjN6icojYsAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="AddBaseLayerButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="AddBaseLayerButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="AddBaseLayerButton.ToolTipText" xml:space="preserve">
-    <value>Add a new layer to the map</value>
-  </data>
-  <data name="RemoveBaseLayerButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGgSURBVDhPtZLbK4NhHMf9L0rKauVQQsrNlFjcTOGGkkPj
-        hmUrbSVWTEZEOSQbuZCr1bKmd6dmvdqcZmlz2rI0xqTZlpp9eV69mva+y42nfj1Xv8/v83yfX0HBfx7K
-        4gTt8WNn14A/z7HaDuB0neA6FEPo/g034TjOLu7yA2jaA4fzCP6re0SeUgg/JJhmFkAgeS2Cd1GmkW3m
-        Avgun6HTbXKbEG0WwGUQCL6ClMFo5X9Ktj6XAQEQi9W19fwWpDkbQHIgIVJzi9iXK7A9IOW3OD2/Zpqz
-        AW6jBRaJGBHNGOL6VcSWtDjubIVLo84FkSyyAYGvyXuiGryqZPiYn0RmeY65U+pReFtE3Ca02/djYF9Y
-        wm1jLdJyKTJTKmRmxr9LOYRoexNMbeJcCNkHdgcsihFE6ivxYqeQeIr+qkdZP8zVQm4LFmKdUCMkKkV8
-        fBhJ/ex3bWmRXJlmDMjzeFecrPIx5cJhrRApSRkyfeU/le6oYMCOCSU/gLLRzPdt9HbDKxIg0VWM9GAh
-        3nuKEG4WwMgXIp8SCcxcVwJTQ9WvyZ+P19UwHtXPEAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="RemoveBaseLayerButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="RemoveBaseLayerButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="RemoveBaseLayerButton.ToolTipText" xml:space="preserve">
-    <value>Remove a layer from the group</value>
-  </data>
-  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="MoveBaseLayerUpButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFaSURBVDhPtZPPS8JgHMb9y7pGP6BLEGRQLYnqkJEVVAfJ
-        ugXRITrYIZGOGoNgRYE5bI6hy9Y0cWRNHFLZb4qOT7yD2SZ7ZZfe8/t83s/L9/n6fP95UucCJLmCRJKD
-        53fSfBaCeIVq7RW1xhfujE9cl+udAZIkIyNconLbwMPzD4zHbzNsAQiko4Veb5pBK+wGKGpPiMcP3E2I
-        tgWgGWj6B464NP0rdn03g7SmIlZgEd3b72xBwu2AG72JkBLAQnkIseME3UIpVs1wO2CtEMH2yyzCjQCm
-        RT92o1G6RTsgVkxgozaGzbdFLBkMZtQ+TCbH6RZSvtQyuKiW4Be7sX4/iq33P8BIpgvzOyF3COmD1QFS
-        JgJZledagAmhF2eqAk7I0S3sEFKiSH7ZAeBOs/RpWJ23V9kOYPgeb3uR4iVzBw7ZEwRZxmHgebGsi2F+
-        BcHcIKbEAQxz/Q6DXzBYvmreBkAhAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="MoveBaseLayerUpButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="MoveBaseLayerUpButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="MoveBaseLayerUpButton.ToolTipText" xml:space="preserve">
-    <value>Move the selected layer up</value>
-  </data>
-  <data name="MoveBaseLayerDownButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFISURBVDhPtZPNS8NAEMX79xmvouLJr4LopYiFiuChXqRS
-        EFHBoJXiQRCLWBBPMUVWXfpBlFSptlJpIopiCyoen8zKhqDdkIuBJbDw3vzezGwk8p+fccLAyzXs7ecR
-        uo5ZOAM7t9B4eEPT/cC9846rm1awAedlnLIKavVHPL1+wXn+FEcakEkgRbP1IoS/xX4D+66NbHanOwlh
-        SwMVAVHkj0x1lG74kmDd3kbSmhVncjcaTCHz+3tAwuXONBLuKMZ5r5ri0m54faDqkoAM0p0ZxJ0RYaDr
-        GTWFisBvYDJbTcFLVW+E3QiiTANNZHNLMRHaBxISiVGvYJj1IXE96EWYsnrE3fzhoppCmpBRsriAlDuB
-        VDv+04OqhqGchrUNPXg75SrTP3Yx5k2BIoR6F0aBizeQOzjGSmYVsVI/5m4HwolVFZaKf3N/A4miselp
-        EoRNAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="MoveBaseLayerDownButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="MoveBaseLayerDownButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="MoveBaseLayerDownButton.ToolTipText" xml:space="preserve">
-    <value>Move the selected layer down</value>
-  </data>
-  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="ConvertBaseLayerGroupToDynamicGroup.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGvSURBVDhPzZLbK4NhHMf3B6Hc7EqLHMINyYQi2Rapd5iQ
-        Q045DNEia07DUsIFkiGHEosRqyVbmlOMtnZgL97NzZf9Xi7EbJee+vRcPN/v5/ld/ASCf302df1YH+/G
-        6qgSYQd9Ppz6FjIMV4FjLQhwdsKz0xda8mobQsA3R7hvJwnX1RgcVg3BXmrh3mgOLfDbtXjzTcBjV8Ow
-        VAmDXsGzwBDXxlbcLDaEFgRcM3jZL4d3ORmu+Xi4ZkSEc0KEQ10hSVcGSv8QuGfBbovBHgjh247Bkz6a
-        ZysWzmkR7LpENGiF6B4S/pRwJyPwX6nBGtLBHsd93EIqfkm8+ii0LcWg+iwNmoXiXwTHgzS+/66L56IJ
-        nLUe3GkN0b6WAIkpEQXmFMiOUlFmyoDcnE1IjDkQvBp78LIrxZtzjcexisD9CqHcZ6gsNiVBdp6F2nsJ
-        OjzlUHqq0OmtgMKc9/d+FO0l0c+lNjHqHmRUCpbbHuSotUnBnIjDLxhjykSzs4TKKq8CPQ4GLZdS+j34
-        FnZDg4E6az7Uj5WQH0mgsvRCZeXR2NSRCYKSRktu5OGIxvoMvQO52WFpNVhTqgAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="ConvertBaseLayerGroupToDynamicGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="ConvertBaseLayerGroupToDynamicGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="ConvertBaseLayerGroupToDynamicGroup.ToolTipText" xml:space="preserve">
-    <value>Convert the selected group to regular group</value>
-  </data>
-  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="activateMgCooker.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHrSURBVDhPhZLtS1NhGMb9T/rQx6ACyUVDyQjDaKAGQYOB
-        Ew2K9ilifrA+LDAMablFb1IM03DbMXMwj4O15VZ5iPly2Go0yzCzF0iwr4OdX3seOxK1owcunofzPPfv
-        vq77nLo6i2d44j0Xb8elgk90rO7VfN80dB13coLmyUFalCMcHjvJ+fBnHkdLu4Psty5wKhZgz9022tUw
-        9oiHpuQy+1IG7umNnQGdfkV2bA4fq3ZtpCP+EI9u4NAM6mMJDkaDuPoj1pCGgUt/LDfiSYV4sFzGm6/g
-        zBkcGOtj/4gTm/+cNeBqvIBttIeexDDqlwqhjxX6ixVcc1/lHITawn5rwBVlVRa0x4ZoVc7i1V5JBx3p
-        nIwk4wU6rQG+e3m8ehlnMrodxaGOc+K1gS21waHRMzh6B3cepHDRrf2UHe3jp2mZXaf+hcHeRBnxeXf9
-        H4L3Z3HfnOJoyMVxtUSD+ovW55t03SnguzZNOp2xhiws6GjaPJPPXnLDn8Hnn6NvIMvl3qcEApHq2Rsp
-        SxcCUHj7QUrsTaAo0vUSi0vv5JklxCwUl0Wxuf4NE3vLGCuf1rdtii7Z7JZlASoWV1G6uslEpsjlFmvH
-        WFv7wcxM6j8JZ9++bzL/aISV/Ja7mnNYqmY07YouQubg/l1NwG/XLb2y/7oFegAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="activateMgCooker.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="activateMgCooker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="activateMgCooker.Text" xml:space="preserve">
-    <value>toolStripButton1</value>
-  </data>
-  <data name="activateMgCooker.ToolTipText" xml:space="preserve">
-    <value>Click to activate MgCooker for pre-building tiles</value>
-  </data>
   <data name="BaseLayerGroupToolStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -1635,175 +1147,176 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABA
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABe
         JwAAAk1TRnQBSQFMAgEBCAEAARQBAAEUAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
-        AwABMAMAAQEBAAEgBgABMP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8ARgABgQHBAYEB/wFp
-        AcsBgQH/AWQBxwF9Af8BYQG2AW8B/zQAAWMBbwG5Af8BQAFWAbsB/wFPAV8BuQH/AYEBhQHDAf8gAAMW
-        AR4BWwI9AcYDHQEqAwIBAwQAAUcCQgGCAcsBgQFMAf8DAAEBIAADFgEeAVsCPQHGAx0BKgMCAQMBZQE0
-        ATEB2QHpAaQBZAH/AeIBmwFaAf8B4gGjAVcB/yAAAckBwQG+Af8B4wHXAdIB/wG4AbABrgH/AXcBsAGB
-        Af8BgQHwAY4B/wF3AeQBgQH/AV8BxQF4Af8kAAHJAcEBvgH/AeMB1wHSAf8BegF9AaEB/wFBAVsB0wH/
-        AT0BdwH1Af8BOAGBAfwB/wE7AXwB+QH/AUEBZQHkAf8BWwFmAbYB/xwAAZMCcQH3AfQB5gHhAf8B3AHG
-        AcIB/QGdAYYBgwH5AVcCQQG4Ae0BoQFsAf8B3gGDAV0B/wHLAYEBSwH/AwABARwAAZMCcQH3AfQB5gHh
-        Af8B3AHGAcIB/QGdAYYBgwH5AYYBOQExAfMB6AGOAWwB/wHdAYIBXQH/Ad4BkgFWAf8gAAHuAeEB3QH/
-        AfQB5gHhAf8B8gHkAd4B/wGBAcwBggH/AYEB8AGOAf8BdwHkAYEB/wFeAcEBdwH/JAAB7gHhAd0B/wHH
-        Ab4BzwH/AUQBUwHKAf8BSAFrAfcB/wFJAYAB/gH/AUkBgAH+Af8BSQGAAf4B/wFKAXEB/AH/AUcBWwHh
-        Af8BgQGFAcMB/xQAASwCKwFDAfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/Ac8BjwGBAf8B8wGmAXcB/wHg
-        AYIBaAH/AbQBVwE9Af8B3QGBAVsB/wHLAYEBSwH/AwABARQAASwCKwFDAfUB6AHjAf8B9AHmAeEB/wHz
-        AeQB3wH/AfIB4wHdAf8BvAFmAU0B/wHvAZUBdgH/AecBjQFqAf8B5QGZAWAB/wMLAQ8YAAHOAcUBwwH/
-        AfQB5gHhAf8B9AHmAeEB/wHyAeQB3gH/AYEBzAGCAf8BgQHwAY4B/wF3AeQBgQH/AV8BxQF4Af8BxgG6
-        AbYB/wGfAZsBmgH/GAABzgHFAcMB/wH0AeYB4QH/AYYBhQHAAf8BRwFbAeEB/wGBAYQB8wH/AZABowH2
-        Af8BkAGjAfYB/wGPAaUB9gH/AYwBmwH2Af8BYgFwAesB/wFRAVsBuAH/FAABnQGBAX8B+AH1AegB4wH/
-        AfQB5gHhAf8B0gGVAYMB/wHXAY0BVAH/AdUBhwFVAf8B6QGkAWYB/wHdAYIBWwH/AbUBWAE9Af8BzgGB
-        AU0B/wGwAVEBOQH/FAABnQGBAX8B+AH1AegB4wH/AfQB5gHhAf8B5wHIAb4B/wHhAboBrwH/AbwBYwFH
-        Af8B8AGWAXoB/wHuAZQBdQH/AewBoQFqAf8BpAFzAXAB+gFZAjwBwhAAAc4BxQHDAf8B9AHmAeEB/wH0
-        AeYB4QH/Ae4B4QHdAf8B1QHdAcQB/wGBAc0BgQH/AYEB8AGOAf8BdwHkAYEB/wFfAcUBeAH/AdEB0wG7
-        Af8BywHFAbYB/xQAAc4BxQHDAf8B9AHmAeEB/wH0AeYB4QH/AoEBvwH/AU0BXAHoAf8BvgHCAe8B/wHr
-        AewB9QH/AesB7AH1Af8B6wHsAfUB/wHrAewB9QH/AoEB6gH/AUQBUAG7Af8QAAFAAj0BcAH1AekB5QH/
-        AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AeQBwQG3Af8B7wGrAW8B/wHuAZQBdQH/AeYBiwFoAf8B2wGB
-        AVkB/wG1AVoBQAH/ATgCNgFcEAABQAI9AXAB9QHpAeUB/wH1AegB4wH/AfQB5gHhAf8B8gHjAd0B/wHV
-        AYkBUQH/AeYBjAFyAf8B7QGSAXgB/wHwAZYBegH/Ae0BkwFzAf8B6QGbAWgB/wFXAkABthAAAdUBzAHJ
-        Af8B9QHpAeQB/wH0AeYB4QH/AdUB3QHEAf8BXAHHAXAB/wF0Ad8BgwH/AYEB8AGOAf8BdwHkAYEB/wFg
-        AdMBgQH/AVMBwwFxAf8BgQGUAYEB/xQAAdUBzAHJAf8B9QHpAeQB/wH0AeYB4QH/AZcBlAHCAf8BUwFh
-        Ad8B/wKBAfwB/wGBAYoB/gH/AYQBjgH+Af8BhAGOAf4B/wKBAf4B/wFiAXAB6wH/AWMBbwG5Af8QAAGr
-        Ao4B+AH1AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHkAcEBtgH/AesBsAFnAf8B8QGsAXIB/wHwAZYBegH/
-        Ae4BkwFzAf8B5gGOAWcB/wHjAZ4BXQH/AZABPQEuAfYQAAGrAo4B+AH1AekB5QH/AfUB6AHjAf8B9AHm
-        AeEB/wHyAeMB3QH/AfEB4AHZAf8B1QGJAVIB/wHmAYoBcwH/Ae4BkwF5Af8B8gGiAXgB/wGSAU0BQAH8
-        AwcBCQwAAcYBwQHAAf8B9QHpAeQB/wH1AekB5AH/AfQB5gHhAf8B9AHmAeEB/wGsAdQBoAH/AXUB4QGE
-        Af8BgQHvAYsB/wF3AeQBgQH/AWAB0wGBAf8BdgGtAXsB/xQAAcYBwQHAAf8B9QHpAeQB/wH1AekB5AH/
-        AfQB5gHhAf8B4wHXAdoB/wFRAVsBuAH/AoEB8QH/AYkBkwH9Af8BkQGaAf4B/wGJAZMB/QH/AYEBhgH3
-        Af8BWwFmAdMB/xAAAVACQwGeAfYB6wHnAf8B9QHpAeUB/wH1AegB4wH/AfQB5gHhAf8B8wHkAd8B/wHy
-        AeMB3QH/Ab8BagFPAf8B7gGTAXkB/wHwAZcBegH/AfABpQFxAf8DKAE8EAABUAJDAZ4B9gHrAecB/wH1
-        AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHuAdoB0wH/AeEBnwFeAf8B6QGWAXEB/wHWAYkBUgH/AeoBmAFz
-        Af8BxAFiAUcB/wHpAZ4BZwH/AWMBNQE0AdUMAAHdAdQB0QH/AfUB6QHkAf8B9QHpAeQB/wH0AeYB4QH/
-        AfQB5gHhAf8B8gHkAd4B/wGCAc8BgQH/AYEB7QGQAf8BeQHmAYEB/wFwAccBgAH/ApoBlgH/FAAB3QHU
-        AdEB/wH1AekB5AH/AfUB6QHkAf8B9AHmAeEB/wH0AeYB4QH/Ab8BtgHMAf8BYwFrAb8B/wGCAYsB6AH/
-        AZwBowHzAf8BjwGXAe4B/wFsAXYBzwH/AYYBiwHHAf8QAAGzAZIBkAH3AfYB6wHnAf8B9QHpAeUB/wH1
-        AegB4wH/AfQB5gHhAf8B8wHkAd8B/wHyAeMB3QH/AcIBbgFQAf8B5wGLAXQB/wHvAZQBeQH/AfMBqAF2
-        Af8DAQECEAABswGSAZAB9wH2AesB5wH/AfUB6QHlAf8B9QHoAeMB/wH0AeYB4QH/AfMB5AHfAf8B7gHY
-        AdEB/wHgAZoBXgH/AecBiwFzAf8BygFqAUwB/wHxAZsBeAH/AWcBNQE0AdUMAAHGAcEBwAH/AfcB7AHo
-        Af8B9QHpAeQB/wH1AekB5AH/AfQB5gHhAf8B9AHmAeEB/wHyAeQB3gH/AesB4AHWAf8BeQHRAYEB/wFs
-        AdcBgQH/AawBtwGgAf8UAAHGAcEBwAH/AfcB7AHoAf8B9QHpAeQB/wH1AekB5AH/AfQB5gHhAf8B9AHm
-        AeEB/wH0AeYB4QH/AeMB1wHSAf8BlgGRAb4B/wKBAbwB/wKBAacB/xQAAV4CPgHJAfcB7QHpAf8B9gHr
-        AecB/wH1AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AfIB4wHdAf8BxQFzAVQB/wHeAYEBbAH/
-        AegBjQF1Af8B8gGmAXcB/xAAAV4CPgHJAfcB7QHpAf8B9gHrAecB/wH1AekB5QH/AfUB6AHjAf8B9AHm
-        AeEB/wHzAeQB3wH/AfIB4wHdAf8B7QHXAc8B/wHhAZsBXwH/AeoBkgF0Af8BZQE4ATQB1hAAAeYB3AHZ
-        Af8B9wHsAegB/wH1AekB5AH/AfUB6QHkAf8B9AHmAeEB/wH0AeYB4QH/AfIB5AHeAf8B8gHkAd4B/wHT
-        AdoBwAH/AbABzwGgAf8BnwGbAZoB/xQAAeYB3AHZAf8B9wHsAegB/wH1AekB5AH/AfUB6QHkAf8B9AHm
-        AeEB/wH0AeYB4QH/AfMB5AHeAf8B8wHkAd4B/wHxAeAB2gH/Ae0B2wHVAf8BnwGdAZwB/xAAAwQBBQHM
-        AbABrwH6AfcB7QHpAf8B9gHrAecB/wH1AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AfIB4wHd
-        Af8BxAFyAVIB/wHRAYEBTAH/AdEBggFOAf8B0gGDAU8B/wwAAwQBBQHMAbABrwH6AfcB7QHpAf8B9gHr
-        AecB/wH1AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AfIB4wHdAf8B8gHhAdsB/wHtAdUBzQH/
-        AWgBMgEwAd0QAAHGAcEBwAH/AfcB7AHoAf8B9wHsAegB/wH3AewB6AH/AfUB6QHkAf8B9AHmAeEB/wH0
-        AeYB4QH/AfIB5AHeAf8B8gHkAd4B/wHxAeAB2gH/AcABtgGzAf8UAAHGAcEBwAH/AfcB7AHoAf8B9wHs
-        AegB/wH3AewB6AH/AfUB6QHkAf8B9AHmAeEB/wH0AeYB4QH/AfMB5AHeAf8B8QHgAdoB/wHxAeAB2gH/
-        AcABtgGzAf8UAAFyAkcB5wH4Ae4B6wH/AfcB7QHpAf8B9gHrAecB/wH1AekB5QH/AfUB6AHjAf8B9AHm
-        AeEB/wHzAeQB3wH/AfIB4wHdAf8B8gHhAdsB/wG2AZYBkwH4AxMBGhAAAXICRwHnAfgB7gHrAf8B9wHt
+        AwABMAMAAQEBAAEgBgABMP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8ARgABgQHBAYEB/wFu
+        AcsBgQH/AWkBxwGBAf8BZgG2AXQB/zQAAWgBdAG5Af8BRQFbAbsB/wFUAWQBuQH/AYEBhQHDAf8gAAEX
+        AgEBHgFcAgcBxgEfAgEBKgEDAgEBAwQAAUgCAgGCAcsBgQFRAf8BAgMBIAABFwIBAR4BXAIHAcYBHwIB
+        ASoBAwIBAQMBYgIMAdkB6QGkAWkB/wHiAZsBXwH/AeIBowFcAf8gAAHJAcEBvgH/AeMB1wHSAf8BuAGw
+        Aa4B/wF8AbABgQH/AYEB8AGOAf8BfAHkAYEB/wFkAcUBfQH/JAAByQHBAb4B/wHjAdcB0gH/AX8BgQGh
+        Af8BRgFgAdMB/wFCAXwB9QH/AT0BgQH8Af8BQAGBAfkB/wFGAWoB5AH/AWABawG2Af8cAAGLAlIB9wH0
+        AeYB4QH/AdABuAG2Af0BkgFpAWYB+QFZAgQBuAHtAaEBcQH/Ad4BgwFiAf8BywGBAVAB/wECAwEcAAGL
+        AlIB9wH0AeYB4QH/AdABuAG2Af0BkgFpAWYB+QF7ASYBIAHzAegBjgFxAf8B3QGCAWIB/wHeAZIBWwH/
+        IAAB7gHhAd0B/wH0AeYB4QH/AfIB5AHeAf8BgQHMAYIB/wGBAfABjgH/AXwB5AGBAf8BYwHBAXwB/yQA
+        Ae4B4QHdAf8BxwG+Ac8B/wFJAVgBygH/AU0BcAH3Af8BTgGBAf4B/wFOAYEB/gH/AU4BgQH+Af8BTwF2
+        AfwB/wFMAWAB4QH/AYEBhQHDAf8UAAEtAgEBQwH1AegB4wH/AfQB5gHhAf8B8wHkAd8B/wHPAY8BgQH/
+        AfMBpgF8Af8B4AGCAW0B/wG0AVwBQgH/Ad0BgQFgAf8BywGBAVAB/wECAwEUAAEtAgEBQwH1AegB4wH/
+        AfQB5gHhAf8B8wHkAd8B/wHyAeMB3QH/AbwBawFSAf8B7wGVAXsB/wHnAY0BbwH/AeUBmQFlAf8BDQIB
+        AQ8YAAHOAcUBwwH/AfQB5gHhAf8B9AHmAeEB/wHyAeQB3gH/AYEBzAGCAf8BgQHwAY4B/wF8AeQBgQH/
+        AWQBxQF9Af8BxgG6AbYB/wGfAZsBmgH/GAABzgHFAcMB/wH0AeYB4QH/AYYBhQHAAf8BTAFgAeEB/wGB
+        AYQB8wH/AZABowH2Af8BkAGjAfYB/wGPAaUB9gH/AYwBmwH2Af8BZwF1AesB/wFWAWABuAH/FAABkwJj
+        AfgB9QHoAeMB/wH0AeYB4QH/AdIBlQGDAf8B1wGNAVkB/wHVAYcBWgH/AekBpAFrAf8B3QGCAWAB/wG1
+        AV0BQgH/Ac4BgQFSAf8BsAFWAT4B/xQAAZMCYwH4AfUB6AHjAf8B9AHmAeEB/wHnAcgBvgH/AeEBugGv
+        Af8BvAFoAUwB/wHwAZYBfwH/Ae4BlAF6Af8B7AGhAW8B/wGaAWEBXgH6AVoCBgHCEAABzgHFAcMB/wH0
+        AeYB4QH/AfQB5gHhAf8B7gHhAd0B/wHVAd0BxAH/AYEBzQGBAf8BgQHwAY4B/wF8AeQBgQH/AWQBxQF9
+        Af8B0QHTAbsB/wHLAcUBtgH/FAABzgHFAcMB/wH0AeYB4QH/AfQB5gHhAf8CgQG/Af8BUgFhAegB/wG+
+        AcIB7wH/AesB7AH1Af8B6wHsAfUB/wHrAewB9QH/AesB7AH1Af8CgQHqAf8BSQFVAbsB/xAAAUECAQFw
+        AfUB6QHlAf8B9QHoAeMB/wH0AeYB4QH/AfMB5AHfAf8B5AHBAbcB/wHvAasBdAH/Ae4BlAF6Af8B5gGL
+        AW0B/wHbAYEBXgH/AbUBXwFFAf8BOQIBAVwQAAFBAgEBcAH1AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHy
+        AeMB3QH/AdUBiQFWAf8B5gGMAXcB/wHtAZIBfQH/AfABlgF/Af8B7QGTAXgB/wHpAZsBbQH/AVcCBAG2
+        EAAB1QHMAckB/wH1AekB5AH/AfQB5gHhAf8B1QHdAcQB/wFhAccBdQH/AXkB3wGDAf8BgQHwAY4B/wF8
+        AeQBgQH/AWUB0wGBAf8BWAHDAXYB/wGBAZQBgQH/FAAB1QHMAckB/wH1AekB5AH/AfQB5gHhAf8BlwGU
+        AcIB/wFYAWYB3wH/AoEB/AH/AYEBigH+Af8BhAGOAf4B/wGEAY4B/gH/AoEB/gH/AWcBdQHrAf8BaAF0
+        AbkB/xAAAZ0CbQH4AfUB6QHlAf8B9QHoAeMB/wH0AeYB4QH/AeQBwQG2Af8B6wGwAWwB/wHxAawBdwH/
+        AfABlgF/Af8B7gGTAXgB/wHmAY4BbAH/AeMBngFiAf8BgAErASQB9hAAAZ0CbQH4AfUB6QHlAf8B9QHo
+        AeMB/wH0AeYB4QH/AfIB4wHdAf8B8QHgAdkB/wHVAYkBVwH/AeYBigF4Af8B7gGTAX4B/wHyAaIBfQH/
+        AYgBQwE2AfwBCAIBAQkMAAHGAcEBwAH/AfUB6QHkAf8B9QHpAeQB/wH0AeYB4QH/AfQB5gHhAf8BrAHU
+        AaAB/wF6AeEBhAH/AYEB7wGLAf8BfAHkAYEB/wFlAdMBgQH/AXsBrQGAAf8UAAHGAcEBwAH/AfUB6QHk
+        Af8B9QHpAeQB/wH0AeYB4QH/AeMB1wHaAf8BVgFgAbgB/wKBAfEB/wGJAZMB/QH/AZEBmgH+Af8BiQGT
+        Af0B/wGBAYYB9wH/AWABawHTAf8QAAFRAgIBngH2AesB5wH/AfUB6QHlAf8B9QHoAeMB/wH0AeYB4QH/
+        AfMB5AHfAf8B8gHjAd0B/wG/AW8BVAH/Ae4BkwF+Af8B8AGXAX8B/wHwAaUBdgH/ASkCAQE8EAABUQIC
+        AZ4B9gHrAecB/wH1AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHuAdoB0wH/AeEBnwFjAf8B6QGWAXYB/wHW
+        AYkBVwH/AeoBmAF4Af8BxAFnAUwB/wHpAZ4BbAH/AWMCDAHVDAAB3QHUAdEB/wH1AekB5AH/AfUB6QHk
+        Af8B9AHmAeEB/wH0AeYB4QH/AfIB5AHeAf8BggHPAYEB/wGBAe0BkAH/AX4B5gGBAf8BdQHHAYEB/wKa
+        AZYB/xQAAd0B1AHRAf8B9QHpAeQB/wH1AekB5AH/AfQB5gHhAf8B9AHmAeEB/wG/AbYBzAH/AWgBcAG/
+        Af8BggGLAegB/wGcAaMB8wH/AY8BlwHuAf8BcQF7Ac8B/wGGAYsBxwH/EAABogJpAfcB9gHrAecB/wH1
+        AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AfIB4wHdAf8BwgFzAVUB/wHnAYsBeQH/Ae8BlAF+
+        Af8B8wGoAXsB/wEDAgEBAhAAAaICaQH3AfYB6wHnAf8B9QHpAeUB/wH1AegB4wH/AfQB5gHhAf8B8wHk
+        Ad8B/wHuAdgB0QH/AeABmgFjAf8B5wGLAXgB/wHKAW8BUQH/AfEBmwF9Af8BZAIMAdUMAAHGAcEBwAH/
+        AfcB7AHoAf8B9QHpAeQB/wH1AekB5AH/AfQB5gHhAf8B9AHmAeEB/wHyAeQB3gH/AesB4AHWAf8BfgHR
+        AYEB/wFxAdcBgQH/AawBtwGgAf8UAAHGAcEBwAH/AfcB7AHoAf8B9QHpAeQB/wH1AekB5AH/AfQB5gHh
+        Af8B9AHmAeEB/wH0AeYB4QH/AeMB1wHSAf8BlgGRAb4B/wKBAbwB/wKBAacB/xQAAV4CCAHJAfcB7QHp
+        Af8B9gHrAecB/wH1AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AfIB4wHdAf8BxQF4AVkB/wHe
+        AYEBcQH/AegBjQF6Af8B8gGmAXwB/xAAAV4CCAHJAfcB7QHpAf8B9gHrAecB/wH1AekB5QH/AfUB6AHj
+        Af8B9AHmAeEB/wHzAeQB3wH/AfIB4wHdAf8B7QHXAc8B/wHhAZsBZAH/AeoBkgF5Af8BZAIMAdYQAAHm
+        AdwB2QH/AfcB7AHoAf8B9QHpAeQB/wH1AekB5AH/AfQB5gHhAf8B9AHmAeEB/wHyAeQB3gH/AfIB5AHe
+        Af8B0wHaAcAB/wGwAc8BoAH/AZ8BmwGaAf8UAAHmAdwB2QH/AfcB7AHoAf8B9QHpAeQB/wH1AekB5AH/
+        AfQB5gHhAf8B9AHmAeEB/wHzAeQB3gH/AfMB5AHeAf8B8QHgAdoB/wHtAdsB1QH/AZ8BnQGcAf8QAAEF
+        AgEBBQG1AZIBkQH6AfcB7QHpAf8B9gHrAecB/wH1AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/
+        AfIB4wHdAf8BxAF3AVcB/wHRAYEBUQH/AdEBggFTAf8B0gGDAVQB/wwAAQUCAQEFAbUBkgGRAfoB9wHt
         AekB/wH2AesB5wH/AfUB6QHlAf8B9QHoAeMB/wH0AeYB4QH/AfMB5AHfAf8B8gHjAd0B/wHyAeEB2wH/
-        AbYBlgGTAfgDEwEaEAAB6wHjAeAB/wH3AewB6AH/AfcB7AHoAf8B9QHpAeQB/wH1AekB5AH/AfQB5gHh
-        Af8B9AHmAeEB/wHyAeQB3gH/AfIB5AHeAf8B6gHaAdQB/wGkAqIB/xQAAesB4wHgAf8B9wHsAegB/wH3
-        AewB6AH/AfUB6QHkAf8B9QHpAeQB/wH0AeYB4QH/AfQB5gHhAf8B8wHkAd4B/wHzAeQB3gH/Ae0B2wHV
-        Af8BpAKiAf8QAAMSARkBzgKzAfoB+AHuAesB/wH3Ae0B6QH/AfYB6wHnAf8B9QHpAeUB/wH1AegB4wH/
-        AfQB5gHhAf8B8wHkAd8B/wHyAeMB3QH/AfIB4QHbAf8BVAJCAa8QAAMSARkBzgKzAfoB+AHuAesB/wH3
-        Ae0B6QH/AfYB6wHnAf8B9QHpAeUB/wH1AegB4wH/AfQB5gHhAf8B8wHkAd8B/wHyAeMB3QH/AfIB4QHb
-        Af8BVAJCAa8UAAHNAskB/wHOAcUBwwH/AeYB3AHZAf8B9wHsAegB/wH1AekB5AH/AfQB5gHhAf8B9AHm
-        AeEB/wHyAeQB3gH/AfIB5AHeAf8BtgGtAawB/xgAAc0CyQH/Ac4BxQHDAf8B5gHcAdkB/wH3AewB6AH/
-        AfUB6QHkAf8B9AHmAeEB/wH0AeYB4QH/AfMB5AHeAf8B8wHkAd4B/wGzAa0BqwH/GAADAQECAVICQwGn
-        Aa0CkAH5AfYB6wHnAf8B9QHpAeUB/wH1AegB4wH/AfQB5gHhAf8B8wHkAd8B/wHyAeMB3QH/AasBiwGI
-        AfgDDgETFAADAQECAVICQwGnAa0CkAH5AfYB6wHnAf8B9QHpAeUB/wH1AegB4wH/AfQB5gHhAf8B8wHk
-        Ad8B/wHyAeMB3QH/AasBiwGIAfgDDgETIAABxgHBAcAB/wHQAccBxQH/Ae4B4QHdAf8B9AHmAeEB/wHy
-        AeQB3gH/AeMB1wHSAf8oAAHGAcEBwAH/AdABxwHFAf8B7gHhAd0B/wH0AeYB4QH/AfMB5AHeAf8B4wHX
-        AdIB/ygAAx0BKQFsAkIB5AG3AZwBmQH5AfQB5gHhAf8B8wHkAd8B/wHyAeMB3QH/AUkCQgGIJAADHQEp
-        AWwCQgHkAbcBnAGZAfkB9AHmAeEB/wHzAeQB3wH/AfIB4wHdAf8BSQJCAYgwAAHFAb8BvgH/AdkBzQHJ
-        Af8BtgGtAawB/zQAAcUBvwG+Af8B2QHNAckB/wGzAa0BqwH/NAABPgI8AWsBoAGDAYEB+gGdAX8BfgH4
-        AwcBCjAAAT4CPAFrAaABgwGBAfoBnQF/AX4B+AMHAQr/AD0AAVoBlQFlAf8BNwGSAU4B/wFGAZEBVQH/
-        AYEBqwGBAf8wAAFjAW8BuQH/AUABVgG7Af8BTwFfAbkB/wGBAYUBwwH/MAABWgGVAWUB/wE3AZIBTgH/
-        AUYBkQFVAf8BgQGrAYEB/zQAAYkBywGMAf8wAAF8AaMBiAH/ATYBowFRAf8BNQHXAYEB/wFxAeYBnwH/
-        AU8B3QGBAf8BNwG4AWAB/wFSAZABWwH/JAACgQHIAf8BQQFbAdMB/wE9AXcB9QH/ATgBgQH8Af8BOwF8
-        AfkB/wFBAWUB5AH/AVsBZgG2Af8cAAHJAcEBvgH/AeMB1wHSAf8BdAGMAXQB/wE2AaMBUQH/ATUB1wGA
-        Af8BcQHmAZ8B/wFQAd0BgQH/ATcBuAFgAf8BUgGQAVsB/xwAAckBwQG+Af8B4wHXAdIB/wG4AbABrgH/
-        AZUBnwGTAf8BbAHMAYEB/wFtAdoBgQH/EAABhAHEAfYB/wFsAbkB9AH/AawB6wH6Af8BwgHwAfsB/wHC
-        AfAB+wH/AcIB8AH7Af8BwgHwAfsB/wGZAdABzAH/ATcBlAFDAf8BOwHEAWMB/wE+AdgBfQH/AeMB8gHp
-        Af8BgQHgAZ8B/wE9AcwBawH/AToBpwFMAf8BgQGrAYEB/wGEAcQB9gH/AWwBuQH0Af8BrAHrAfoB/wHC
-        AfAB+wH/AcIB8AH7Af8BwgHwAfsB/wHCAfAB+wH/AZoBwwHkAf8BQwFTAcoB/wFIAWsB9wH/AUkBgAH+
-        Af8BSQGAAf4B/wFJAYAB/gH/AUoBcQH8Af8BRwFbAeEB/wGBAYUBwwH/GAAB7gHhAd0B/wHGAcsBtwH/
-        ATcBlAFDAf8BOwHEAWMB/wE+AdgBfQH/AeMB8gHpAf8BgQHgAZ8B/wE9AcwBawH/AToBpwFMAf8BgQGr
-        AYEB/xgAAe4B4QHdAf8B9AHlAeAB/wHuAeEB3QH/AXkByAGBAf8BgQHwAZEB/wF4AeUBgQH/AWABxQF7
-        Af8MAAGLAccB9gH/AZMB2wH4Af8BgQHOAfYB/wGhAesB+gH/AZ4B6QH6Af8BnAHmAfoB/wGcAeYB+gH/
-        AWwBqAGHAf8BOgGnAUwB/wGBAcoBgQH/AYMB2AGZAf8B7gH2AfAB/wGyAeMBvwH/AYEB0wGPAf8BUwGz
-        AV4B/wFIAY0BTgH/AYsBxwH2Af8BkwHbAfgB/wGBAc4B9gH/AaEB6wH6Af8BngHpAfoB/wGcAeYB+gH/
-        AZwB5gH6Af8BcQGDAcsB/wFHAVsB4QH/AYEBhAHzAf8BjwGiAfYB/wGPAaIB9gH/AY8BogH2Af8BjAGb
-        AfYB/wFiAXAB6wH/AU8BXwG5Af8UAAHOAcUBwwH/AfQB5gHhAf8BgQGqAYEB/wE6AacBTAH/AYEBygGB
-        Af8BgwHYAZkB/wHuAfYB8AH/AbIB4wG/Af8BgQHTAY8B/wFTAbMBXgH/AUcBiwFNAf8UAAHOAcUBwwH/
-        AfQB5QHgAf8B9AHlAeAB/wGEAcsBgwH/AYAB5QGLAf8BgQHvAYsB/wF3AeQBgQH/AWAB1QF6Af8BYAGu
-        AXAB/wGbAZoBlgH/CAABrAHrAfoB/wFkAbgB9AH/AXMB2wH2Af8BZwHVAfUB/wFjAdAB9QH/AWMB0AH1
-        Af8BQgGYAYEB/wE7AaUBRgH/AcIB4AHFAf8B7QHyAe0B/wP+Af8B8gH2AfIB/wHtAfIB7QH/AXQBvAF8
-        Af8BOQGIAUEB/wQAAawB6wH6Af8BZAG4AfQB/wFzAdsB9gH/AWcB1QH1Af8BYwHQAfUB/wFjAdAB9QH/
-        AUgBgQHGAf8BTQFbAegB/wG+AcIB7wH/AesB7AH1Af8B6wHsAfUB/wHrAewB9QH/AesB7AH1Af8CgQHq
-        Af8BRAFQAbsB/xAAAc4BxQHDAf8B9AHmAeEB/wH0AeYB4QH/AYEBpAGBAf8BPgGoAUgB/wHCAeABxQH/
-        Ae0B8gHtAf8D/gH/AfIB9gHyAf8B7QHyAe0B/wF0AbwBfAH/ATkBiAFBAf8QAAHOAcUBwwH/AfQB5QHg
-        Af8B9QHpAeQB/wHOAdwBvgH/AWoBxQF2Af8BbgHWAYEB/wGBAfABjgH/AXcB5AGBAf8BXwHQAYEB/wFq
-        AcUBdgH/AYkBsgGBAf8IAAGhAeQB+AH/AXgBwAH1Af8BZwHVAfUB/wFKAccB8wH/AUcBxQHzAf8BQQG6
-        AfEB/wE4AZgBlAH/AUUBpQFPAf8BcwHIAXwB/wGBAcoBgQH/Ae0B8gHtAf8BogHYAacB/wF4AcoBgQH/
-        AVYBtAFfAf8BWwGUAWIB/wQAAaEB5AH4Af8BeAHAAfUB/wFnAdUB9QH/AUoBxwHzAf8BRwHFAfMB/wFB
-        AboB8QH/ATwBgQHLAf8BUwFgAd8B/wKBAfwB/wGBAYoB/gH/AYQBjgH+Af8BhAGOAf4B/wKBAf4B/wFi
-        AXAB6wH/AWMBbwG5Af8QAAHVAcwByQH/AfUB6QHkAf8B9AHmAeEB/wGTAbIBiwH/AUUBpQFPAf8BcwHI
-        AXwB/wGBAcoBgQH/Ae0B8gHtAf8BogHYAacB/wF5AcoBgQH/AVYBtAFfAf8BXAGUAWIB/xAAAdUBzAHJ
-        Af8B9QHpAeQB/wH0AeUB4AH/AfQB5QHgAf8B8wHkAd4B/wGBAdABgwH/AYEB8AGOAf8BdwHkAYEB/wFg
-        AcUBewH/Ae8B2wHUAf8BpAGeAZ0B/wgAAZYB3QH3Af8BigHcAfgB/wFkAbgB9AH/AUoBxwHzAf8BRAHA
-        AfIB/wFBAboB8QH/AT0BrwHgAf8BOQGLAU8B/wGBAcUBgQH/AYEB0wGFAf8B1QHmAdYB/wGiAdgBpwH/
-        AYEBzAGBAf8BTwGgAVcB/wGBAZ4BqAH/BAABlgHdAfcB/wGKAdwB+AH/AWQBuAH0Af8BSgHHAfMB/wFE
-        AcAB8gH/AUEBugHxAf8BPQGrAekB/wFAAVYBuwH/AYEBhAHzAf8BiQGTAf0B/wGRAZoB/gH/AYkBkwH9
-        Af8BgQGGAfcB/wFbAWYB0wH/AYEBiQHPAf8MAAHGAcEBwAH/AfUB6QHkAf8B9QHpAeQB/wH0AeYB4QH/
-        AeIB2wHRAf8BRwGLAU0B/wGBAcUBgQH/AYEB0wGFAf8B1QHmAdYB/wGiAdgBpwH/AYEBzAGBAf8BTwGg
-        AVcB/xAAAcYBwQHAAf8B9QHpAeQB/wH1AekB5AH/AfUB6QHkAf8B9AHlAeAB/wHzAeQB3gH/AYEB0AGD
-        Af8BgQHwAY4B/wF3AeQBgQH/AWEByQF6Af8B1AHFAcAB/wwAAYoB0wH2Af8BngHpAfoB/wFeAa4B8QH/
-        AV0BvAHyAf8BXQG8AfIB/wFeAa4B8QH/AVcBtQHwAf8BTwGfAbsB/wFLAY8BXwH/AYEBxAGBAf8BlQHV
-        AZoB/wGHAc0BjQH/AWIBpAFpAf8BgQGbAYQB/wgAAYoB0wH2Af8BngHpAfoB/wFeAa4B8QH/AV0BvAHy
-        Af8BXQG8AfIB/wFeAa4B8QH/AVcBtQHwAf8BUQGQAdkB/wFUAWQBwAH/AYIBiwHoAf8BnAGjAfMB/wGP
-        AZcB7gH/AWwBdgHPAf8BgQGDAbIB/xAAAd0B1AHRAf8B9QHpAeQB/wH1AekB5AH/AfQB5gHhAf8B9AHm
-        AeEB/wG9AcYBrwH/AVwBlAFiAf8BgQHEAYEB/wGVAdUBmgH/AYcBzQGNAf8BYgGkAWkB/wGBAa8BhAH/
-        EAAB3QHUAdEB/wH3AewB6AH/AfUB6QHkAf8B9AHlAeAB/wH0AeUB4AH/AfMB5AHeAf8BgQHQAYMB/wGB
-        AfABjgH/AXcB5AGBAf8BYQHJAXoB/wGfApsB/wwAAYEByQH1Af8BoQHxAfoB/wGMAeEB9wH/AYEBygHr
-        Af8BcwGoAc4B/wFyAaYBzQH/AW8BogHNAf8BbwGiAc0B/wFtAZ4BvQH/AV0BkwGBAf8BVAGQAXwB/wFp
-        AaQBgQH/AW8BkwGzAf8MAAGBAckB9QH/AaEB8QH6Af8BjAHhAfcB/wGBAcoB6wH/AXMBqAHOAf8BcgGm
-        Ac0B/wFvAaIBzQH/AW8BogHNAf8BbgGZAcYB/wFhAYEBsgH/AVoBewG1Af8BbgGBAcQB/wFxAYgByAH/
-        EAABxgHBAcAB/wH3AewB6AH/AfUB6QHkAf8B9QHpAeQB/wH0AeYB4QH/AfQB5gHhAf8B8wHkAd4B/wHh
-        AdgBzQH/AZIBrgGIAf8BgQGkAYEB/wF8AZEBegH/FAABxgHBAcAB/wH3AewB6AH/AfUB6QHkAf8B9QHp
-        AeQB/wH1AekB5AH/AfQB5QHgAf8B8wHkAd4B/wGBAdABgwH/AYEB8AGRAf8BeAHlAYEB/wFhAckBegH/
-        EAABgQG/AfMB/wGhAfEB+gH/AaEB8QH6Af8BnAHuAfYB/wGBAcABzgH/AYEBvAHLAf8BgQG8AcsB/wGB
-        AbwBywH/AYEBtQHKAf8BgQG1AcoB/wGBAbkB0QH/AZwB5gH6Af8BgQGuAewB/wwAAYEBvwHzAf8BoQHx
-        AfoB/wGhAfEB+gH/AZwB7gH2Af8BgQHAAc4B/wGBAbwBywH/AYEBvAHLAf8BgQG8AcsB/wGBAbUBygH/
-        AYEBtQHKAf8BgQG5AdEB/wGcAeYB+gH/AYEBrgHsAf8QAAHmAdwB2QH/AfcB7AHoAf8B9QHpAeQB/wH1
-        AekB5AH/AfQB5gHhAf8B9AHmAeEB/wHzAeQB3gH/AfMB5AHeAf8B8QHgAdoB/wHtAdsB1QH/AZ8BnQGc
-        Af8UAAHmAdwB2QH/AfcB7AHoAf8B9QHpAeQB/wH1AekB5AH/AfQB5QHgAf8B9AHlAeAB/wHzAeQB3gH/
-        AaAB1AGXAf8BgQHQAYMB/wGBAdABgwH/AXsBqAGBAf8QAAGBAboB8QH/AbEB8wH5Af8BsQHzAfkB/wGx
-        AfMB+QH/AbEB8wH5Af8BoQHrAfoB/wGqAeoB9wH/AawB6wH6Af8BrwHnAfQB/wGxAeQB9AH/AbEB5AH0
-        Af8BsQHkAfQB/wGBAbsB7wH/DAABgQG6AfEB/wGxAfMB+QH/AbEB8wH5Af8BsQHzAfkB/wGxAfMB+QH/
-        AaEB6wH6Af8BqgHqAfcB/wGsAesB+gH/Aa8B5wH0Af8BsQHkAfQB/wGxAeQB9AH/AbEB5AH0Af8BgQG7
-        Ae8B/wwAAcYBwQHAAf8B9wHsAegB/wH3AewB6AH/AfcB7AHoAf8B9QHpAeQB/wH0AeYB4QH/AfQB5gHh
-        Af8B8wHkAd4B/wHzAeQB3gH/AfEB4AHaAf8BwAG2AbMB/xQAAcYBwQHAAf8B9wHsAegB/wH3AewB6AH/
-        AfcB7AHoAf8B9QHpAeQB/wH1AekB5AH/AfQB5QHgAf8B8wHkAd4B/wHzAeQB3gH/AfMB5AHeAf8BwAG2
-        AbMB/xgAAY0BvAHyAf8BjQG8AfIB/wGNAbwB8gH/DAABdwGUAc8B/wHYAfMB9gH/AekB9wH4Af8B6QH3
-        AfgB/wHuAfYB8AH/AYQBxAH2Af8QAAGNAbwB8gH/AY0BvAHyAf8BjQG8AfIB/wwAAXcBlAHPAf8B2AHz
-        AfYB/wHpAfcB+AH/AekB9wH4Af8B6AH2AfcB/wGIAcEB7wH/DAAB6wHjAeAB/wH3AewB6AH/AfcB7AHo
-        Af8B9QHpAeQB/wH1AekB5AH/AfQB5gHhAf8B9AHmAeEB/wHzAeQB3gH/AfMB5AHeAf8B7QHbAdUB/wGk
-        AqIB/xQAAesB4wHgAf8B9wHsAegB/wH3AewB6AH/AfUB6QHkAf8B9QHpAeQB/wH0AeUB4AH/AfQB5QHg
-        Af8B8wHkAd4B/wHzAeQB3gH/Ae8B2wHUAf8BpAKiAf80AAGBAZwBzwH/AYEBnAHPAf8BgQGcAc8B/wGB
-        AZcBygH/AYEBlgHIAf8sAAGBAZwBzwH/AYEBnAHPAf8BgQGcAc8B/wGBAZcBygH/AYEBlgHIAf8MAAHN
-        AskB/wHOAcUBwwH/AeYB3AHZAf8B9wHsAegB/wH1AekB5AH/AfQB5gHhAf8B9AHmAeEB/wHzAeQB3gH/
-        AfMB5AHeAf8BswGtAasB/xgAAc0CyQH/Ac4BxQHDAf8B5gHcAdkB/wH3AewB6AH/AfUB6QHkAf8B9QHp
-        AeQB/wH0AeUB4AH/AfMB5AHeAf8B8wHkAd4B/wGzAa0BqwH/pAABxgHBAcAB/wHQAccBxQH/Ae4B4QHd
-        Af8B9AHmAeEB/wHzAeQB3gH/AeMB1wHSAf8oAAHGAcEBwAH/AdABxwHFAf8B7gHhAd0B/wH0AeUB4AH/
-        AfMB5AHeAf8B4wHXAdIB/7QAAcUBvwG+Af8B2QHNAckB/wGzAa0BqwH/NAABxQG/Ab4B/wHZAc0ByQH/
-        AbMBrQGrAf//ABkAAUIBTQE+BwABPgMAASgDAAFAAwABMAMAAQEBAAEBBQABgAEBFgAD/4EAAf8BhwH/
-        AcMB/AEjAfwBAwH8AQcB/AEBAfwBAQH8AQMB/AEHAfwBAAH4AQAB+AEBAfgBAQH4AQAB+AEAAfgBAAHw
-        AQEB8AEAAfABAAHwAQAB8AEBAfABAAHwAQAB8AEAAeABAwHgAQEB4AEBAeABAAHgAQMB4AEBAeABAQHg
-        AQEBwAEHAcABBwHAAQMBwAEDAcABBwHAAQcBgAEDAYABBwGAAQ8BgAEPAYABBwGAAQcBgAEPAYABDwEA
-        AQ8BAAEPAYABHwGAAR8BgAEPAYABDwHwAT8B8AE/AfABHwHwAR8B/gE/Af4BPwH+AR8B/gEfCf8BwwH/
-        AcMB/wHDAf8B7wH/AQEB/wEBAfwBAQH8AQ8EAAH8AQAB/AEHBAAB+AEAAfgBAQGAAQABgAEAAfABAAHw
-        AQEBgAEAAYABAAHwAQAB8AEBAYABAAGAAQAB4AEBAeABAwGAAQEBgAEBAeABAQHgAQMBgAEDAYABAwHA
-        AQcBwAEHAYABAwGAAQMBwAEHAcABBwGAAQMBgAEDAYABDwGAAQ8BxwEDAccBAwGAAQ8BgAEPAf8BgwH/
-        AYMBgAEfAYABHwT/AfABPwHwAT8E/wH+AT8B/gE/CP8L
+        Ae0B1QHNAf8BZQINAd0QAAHGAcEBwAH/AfcB7AHoAf8B9wHsAegB/wH3AewB6AH/AfUB6QHkAf8B9AHm
+        AeEB/wH0AeYB4QH/AfIB5AHeAf8B8gHkAd4B/wHxAeAB2gH/AcABtgGzAf8UAAHGAcEBwAH/AfcB7AHo
+        Af8B9wHsAegB/wH3AewB6AH/AfUB6QHkAf8B9AHmAeEB/wH0AeYB4QH/AfMB5AHeAf8B8QHgAdoB/wHx
+        AeAB2gH/AcABtgGzAf8UAAFrAhwB5wH4Ae4B6wH/AfcB7QHpAf8B9gHrAecB/wH1AekB5QH/AfUB6AHj
+        Af8B9AHmAeEB/wHzAeQB3wH/AfIB4wHdAf8B8gHhAdsB/wGhAXIBcAH4ARQCAQEaEAABawIcAecB+AHu
+        AesB/wH3Ae0B6QH/AfYB6wHnAf8B9QHpAeUB/wH1AegB4wH/AfQB5gHhAf8B8wHkAd8B/wHyAeMB3QH/
+        AfIB4QHbAf8BoQFyAXAB+AEUAgEBGhAAAesB4wHgAf8B9wHsAegB/wH3AewB6AH/AfUB6QHkAf8B9QHp
+        AeQB/wH0AeYB4QH/AfQB5gHhAf8B8gHkAd4B/wHyAeQB3gH/AeoB2gHUAf8BpAKiAf8UAAHrAeMB4AH/
+        AfcB7AHoAf8B9wHsAegB/wH1AekB5AH/AfUB6QHkAf8B9AHmAeEB/wH0AeYB4QH/AfMB5AHeAf8B8wHk
+        Ad4B/wHtAdsB1QH/AaQCogH/EAABFAIBARkBuAKUAfoB+AHuAesB/wH3Ae0B6QH/AfYB6wHnAf8B9QHp
+        AeUB/wH1AegB4wH/AfQB5gHhAf8B8wHkAd8B/wHyAeMB3QH/AfIB4QHbAf8BVgIDAa8QAAEUAgEBGQG4
+        ApQB+gH4Ae4B6wH/AfcB7QHpAf8B9gHrAecB/wH1AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/
+        AfIB4wHdAf8B8gHhAdsB/wFWAgMBrxQAAc0CyQH/Ac4BxQHDAf8B5gHcAdkB/wH3AewB6AH/AfUB6QHk
+        Af8B9AHmAeEB/wH0AeYB4QH/AfIB5AHeAf8B8gHkAd4B/wG2Aa0BrAH/GAABzQLJAf8BzgHFAcMB/wHm
+        AdwB2QH/AfcB7AHoAf8B9QHpAeQB/wH0AeYB4QH/AfQB5gHhAf8B8wHkAd4B/wHzAeQB3gH/AbMBrQGr
+        Af8YAAEDAgEBAgFUAgMBpwGcAnIB+QH2AesB5wH/AfUB6QHlAf8B9QHoAeMB/wH0AeYB4QH/AfMB5AHf
+        Af8B8gHjAd0B/wGdAWoBaQH4ARACAQETFAABAwIBAQIBVAIDAacBnAJyAfkB9gHrAecB/wH1AekB5QH/
+        AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AfIB4wHdAf8BnQFqAWkB+AEQAgEBEyAAAcYBwQHAAf8B0AHH
+        AcUB/wHuAeEB3QH/AfQB5gHhAf8B8gHkAd4B/wHjAdcB0gH/KAABxgHBAcAB/wHQAccBxQH/Ae4B4QHd
+        Af8B9AHmAeEB/wHzAeQB3gH/AeMB1wHSAf8oAAEeAgEBKQFnAhYB5AGoAX0BeQH5AfQB5gHhAf8B8wHk
+        Ad8B/wHyAeMB3QH/AUoCAgGIJAABHgIBASkBZwIWAeQBqAF9AXkB+QH0AeYB4QH/AfMB5AHfAf8B8gHj
+        Ad0B/wFKAgIBiDAAAcUBvwG+Af8B2QHNAckB/wG2Aa0BrAH/NAABxQG/Ab4B/wHZAc0ByQH/AbMBrQGr
+        Af80AAE/AgEBawGVAW0BawH6AZMBYwFhAfgBCQIBAQowAAE/AgEBawGVAW0BawH6AZMBYwFhAfgBCQIB
+        AQr/AD0AAV8BlQFqAf8BPAGSAVMB/wFLAZEBWgH/AYEBqwGBAf8wAAFoAXQBuQH/AUUBWwG7Af8BVAFk
+        AbkB/wGBAYUBwwH/MAABXwGVAWoB/wE8AZIBUwH/AUsBkQFaAf8BgQGrAYEB/zQAAYkBywGMAf8wAAGB
+        AaMBiAH/ATsBowFWAf8BOgHXAYEB/wF2AeYBnwH/AVQB3QGBAf8BPAG4AWUB/wFXAZABYAH/JAACgQHI
+        Af8BRgFgAdMB/wFCAXwB9QH/AT0BgQH8Af8BQAGBAfkB/wFGAWoB5AH/AWABawG2Af8cAAHJAcEBvgH/
+        AeMB1wHSAf8BeQGMAXkB/wE7AaMBVgH/AToB1wGBAf8BdgHmAZ8B/wFVAd0BgQH/ATwBuAFlAf8BVwGQ
+        AWAB/xwAAckBwQG+Af8B4wHXAdIB/wG4AbABrgH/AZUBnwGTAf8BcQHMAYEB/wFyAdoBgQH/EAABhAHE
+        AfYB/wFxAbkB9AH/AawB6wH6Af8BwgHwAfsB/wHCAfAB+wH/AcIB8AH7Af8BwgHwAfsB/wGZAdABzAH/
+        ATwBlAFIAf8BQAHEAWgB/wFDAdgBgQH/AeMB8gHpAf8BgQHgAZ8B/wFCAcwBcAH/AT8BpwFRAf8BgQGr
+        AYEB/wGEAcQB9gH/AXEBuQH0Af8BrAHrAfoB/wHCAfAB+wH/AcIB8AH7Af8BwgHwAfsB/wHCAfAB+wH/
+        AZoBwwHkAf8BSAFYAcoB/wFNAXAB9wH/AU4BgQH+Af8BTgGBAf4B/wFOAYEB/gH/AU8BdgH8Af8BTAFg
+        AeEB/wGBAYUBwwH/GAAB7gHhAd0B/wHGAcsBtwH/ATwBlAFIAf8BQAHEAWgB/wFDAdgBgQH/AeMB8gHp
+        Af8BgQHgAZ8B/wFCAcwBcAH/AT8BpwFRAf8BgQGrAYEB/xgAAe4B4QHdAf8B9AHlAeAB/wHuAeEB3QH/
+        AX4ByAGBAf8BgQHwAZEB/wF9AeUBgQH/AWUBxQGAAf8MAAGLAccB9gH/AZMB2wH4Af8BgQHOAfYB/wGh
+        AesB+gH/AZ4B6QH6Af8BnAHmAfoB/wGcAeYB+gH/AXEBqAGHAf8BPwGnAVEB/wGBAcoBgQH/AYMB2AGZ
+        Af8B7gH2AfAB/wGyAeMBvwH/AYEB0wGPAf8BWAGzAWMB/wFNAY0BUwH/AYsBxwH2Af8BkwHbAfgB/wGB
+        Ac4B9gH/AaEB6wH6Af8BngHpAfoB/wGcAeYB+gH/AZwB5gH6Af8BdgGDAcsB/wFMAWAB4QH/AYEBhAHz
+        Af8BjwGiAfYB/wGPAaIB9gH/AY8BogH2Af8BjAGbAfYB/wFnAXUB6wH/AVQBZAG5Af8UAAHOAcUBwwH/
+        AfQB5gHhAf8BgQGqAYEB/wE/AacBUQH/AYEBygGBAf8BgwHYAZkB/wHuAfYB8AH/AbIB4wG/Af8BgQHT
+        AY8B/wFYAbMBYwH/AUwBiwFSAf8UAAHOAcUBwwH/AfQB5QHgAf8B9AHlAeAB/wGEAcsBgwH/AYEB5QGL
+        Af8BgQHvAYsB/wF8AeQBgQH/AWUB1QF/Af8BZQGuAXUB/wGbAZoBlgH/CAABrAHrAfoB/wFpAbgB9AH/
+        AXgB2wH2Af8BbAHVAfUB/wFoAdAB9QH/AWgB0AH1Af8BRwGYAYEB/wFAAaUBSwH/AcIB4AHFAf8B7QHy
+        Ae0B/wP+Af8B8gH2AfIB/wHtAfIB7QH/AXkBvAGBAf8BPgGIAUYB/wQAAawB6wH6Af8BaQG4AfQB/wF4
+        AdsB9gH/AWwB1QH1Af8BaAHQAfUB/wFoAdAB9QH/AU0BgQHGAf8BUgFgAegB/wG+AcIB7wH/AesB7AH1
+        Af8B6wHsAfUB/wHrAewB9QH/AesB7AH1Af8CgQHqAf8BSQFVAbsB/xAAAc4BxQHDAf8B9AHmAeEB/wH0
+        AeYB4QH/AYEBpAGBAf8BQwGoAU0B/wHCAeABxQH/Ae0B8gHtAf8D/gH/AfIB9gHyAf8B7QHyAe0B/wF5
+        AbwBgQH/AT4BiAFGAf8QAAHOAcUBwwH/AfQB5QHgAf8B9QHpAeQB/wHOAdwBvgH/AW8BxQF7Af8BcwHW
+        AYEB/wGBAfABjgH/AXwB5AGBAf8BZAHQAYEB/wFvAcUBewH/AYkBsgGBAf8IAAGhAeQB+AH/AX0BwAH1
+        Af8BbAHVAfUB/wFPAccB8wH/AUwBxQHzAf8BRgG6AfEB/wE9AZgBlAH/AUoBpQFUAf8BeAHIAYEB/wGB
+        AcoBgQH/Ae0B8gHtAf8BogHYAacB/wF9AcoBgQH/AVsBtAFkAf8BYAGUAWcB/wQAAaEB5AH4Af8BfQHA
+        AfUB/wFsAdUB9QH/AU8BxwHzAf8BTAHFAfMB/wFGAboB8QH/AUEBgQHLAf8BWAFlAd8B/wKBAfwB/wGB
+        AYoB/gH/AYQBjgH+Af8BhAGOAf4B/wKBAf4B/wFnAXUB6wH/AWgBdAG5Af8QAAHVAcwByQH/AfUB6QHk
+        Af8B9AHmAeEB/wGTAbIBiwH/AUoBpQFUAf8BeAHIAYEB/wGBAcoBgQH/Ae0B8gHtAf8BogHYAacB/wF+
+        AcoBgQH/AVsBtAFkAf8BYQGUAWcB/xAAAdUBzAHJAf8B9QHpAeQB/wH0AeUB4AH/AfQB5QHgAf8B8wHk
+        Ad4B/wGBAdABgwH/AYEB8AGOAf8BfAHkAYEB/wFlAcUBgAH/Ae8B2wHUAf8BpAGeAZ0B/wgAAZYB3QH3
+        Af8BigHcAfgB/wFpAbgB9AH/AU8BxwHzAf8BSQHAAfIB/wFGAboB8QH/AUIBrwHgAf8BPgGLAVQB/wGB
+        AcUBgQH/AYEB0wGFAf8B1QHmAdYB/wGiAdgBpwH/AYEBzAGBAf8BVAGgAVwB/wGBAZ4BqAH/BAABlgHd
+        AfcB/wGKAdwB+AH/AWkBuAH0Af8BTwHHAfMB/wFJAcAB8gH/AUYBugHxAf8BQgGrAekB/wFFAVsBuwH/
+        AYEBhAHzAf8BiQGTAf0B/wGRAZoB/gH/AYkBkwH9Af8BgQGGAfcB/wFgAWsB0wH/AYEBiQHPAf8MAAHG
+        AcEBwAH/AfUB6QHkAf8B9QHpAeQB/wH0AeYB4QH/AeIB2wHRAf8BTAGLAVIB/wGBAcUBgQH/AYEB0wGF
+        Af8B1QHmAdYB/wGiAdgBpwH/AYEBzAGBAf8BVAGgAVwB/xAAAcYBwQHAAf8B9QHpAeQB/wH1AekB5AH/
+        AfUB6QHkAf8B9AHlAeAB/wHzAeQB3gH/AYEB0AGDAf8BgQHwAY4B/wF8AeQBgQH/AWYByQF/Af8B1AHF
+        AcAB/wwAAYoB0wH2Af8BngHpAfoB/wFjAa4B8QH/AWIBvAHyAf8BYgG8AfIB/wFjAa4B8QH/AVwBtQHw
+        Af8BVAGfAbsB/wFQAY8BZAH/AYEBxAGBAf8BlQHVAZoB/wGHAc0BjQH/AWcBpAFuAf8BgQGbAYQB/wgA
+        AYoB0wH2Af8BngHpAfoB/wFjAa4B8QH/AWIBvAHyAf8BYgG8AfIB/wFjAa4B8QH/AVwBtQHwAf8BVgGQ
+        AdkB/wFZAWkBwAH/AYIBiwHoAf8BnAGjAfMB/wGPAZcB7gH/AXEBewHPAf8BgQGDAbIB/xAAAd0B1AHR
+        Af8B9QHpAeQB/wH1AekB5AH/AfQB5gHhAf8B9AHmAeEB/wG9AcYBrwH/AWEBlAFnAf8BgQHEAYEB/wGV
+        AdUBmgH/AYcBzQGNAf8BZwGkAW4B/wGBAa8BhAH/EAAB3QHUAdEB/wH3AewB6AH/AfUB6QHkAf8B9AHl
+        AeAB/wH0AeUB4AH/AfMB5AHeAf8BgQHQAYMB/wGBAfABjgH/AXwB5AGBAf8BZgHJAX8B/wGfApsB/wwA
+        AYEByQH1Af8BoQHxAfoB/wGMAeEB9wH/AYEBygHrAf8BeAGoAc4B/wF3AaYBzQH/AXQBogHNAf8BdAGi
+        Ac0B/wFyAZ4BvQH/AWIBkwGBAf8BWQGQAYEB/wFuAaQBgQH/AXQBkwGzAf8MAAGBAckB9QH/AaEB8QH6
+        Af8BjAHhAfcB/wGBAcoB6wH/AXgBqAHOAf8BdwGmAc0B/wF0AaIBzQH/AXQBogHNAf8BcwGZAcYB/wFm
+        AYEBsgH/AV8BgAG1Af8BcwGBAcQB/wF2AYgByAH/EAABxgHBAcAB/wH3AewB6AH/AfUB6QHkAf8B9QHp
+        AeQB/wH0AeYB4QH/AfQB5gHhAf8B8wHkAd4B/wHhAdgBzQH/AZIBrgGIAf8BgQGkAYEB/wGBAZEBfwH/
+        FAABxgHBAcAB/wH3AewB6AH/AfUB6QHkAf8B9QHpAeQB/wH1AekB5AH/AfQB5QHgAf8B8wHkAd4B/wGB
+        AdABgwH/AYEB8AGRAf8BfQHlAYEB/wFmAckBfwH/EAABgQG/AfMB/wGhAfEB+gH/AaEB8QH6Af8BnAHu
+        AfYB/wGBAcABzgH/AYEBvAHLAf8BgQG8AcsB/wGBAbwBywH/AYEBtQHKAf8BgQG1AcoB/wGBAbkB0QH/
+        AZwB5gH6Af8BgQGuAewB/wwAAYEBvwHzAf8BoQHxAfoB/wGhAfEB+gH/AZwB7gH2Af8BgQHAAc4B/wGB
+        AbwBywH/AYEBvAHLAf8BgQG8AcsB/wGBAbUBygH/AYEBtQHKAf8BgQG5AdEB/wGcAeYB+gH/AYEBrgHs
+        Af8QAAHmAdwB2QH/AfcB7AHoAf8B9QHpAeQB/wH1AekB5AH/AfQB5gHhAf8B9AHmAeEB/wHzAeQB3gH/
+        AfMB5AHeAf8B8QHgAdoB/wHtAdsB1QH/AZ8BnQGcAf8UAAHmAdwB2QH/AfcB7AHoAf8B9QHpAeQB/wH1
+        AekB5AH/AfQB5QHgAf8B9AHlAeAB/wHzAeQB3gH/AaAB1AGXAf8BgQHQAYMB/wGBAdABgwH/AYABqAGB
+        Af8QAAGBAboB8QH/AbEB8wH5Af8BsQHzAfkB/wGxAfMB+QH/AbEB8wH5Af8BoQHrAfoB/wGqAeoB9wH/
+        AawB6wH6Af8BrwHnAfQB/wGxAeQB9AH/AbEB5AH0Af8BsQHkAfQB/wGBAbsB7wH/DAABgQG6AfEB/wGx
+        AfMB+QH/AbEB8wH5Af8BsQHzAfkB/wGxAfMB+QH/AaEB6wH6Af8BqgHqAfcB/wGsAesB+gH/Aa8B5wH0
+        Af8BsQHkAfQB/wGxAeQB9AH/AbEB5AH0Af8BgQG7Ae8B/wwAAcYBwQHAAf8B9wHsAegB/wH3AewB6AH/
+        AfcB7AHoAf8B9QHpAeQB/wH0AeYB4QH/AfQB5gHhAf8B8wHkAd4B/wHzAeQB3gH/AfEB4AHaAf8BwAG2
+        AbMB/xQAAcYBwQHAAf8B9wHsAegB/wH3AewB6AH/AfcB7AHoAf8B9QHpAeQB/wH1AekB5AH/AfQB5QHg
+        Af8B8wHkAd4B/wHzAeQB3gH/AfMB5AHeAf8BwAG2AbMB/xgAAY0BvAHyAf8BjQG8AfIB/wGNAbwB8gH/
+        DAABfAGUAc8B/wHYAfMB9gH/AekB9wH4Af8B6QH3AfgB/wHuAfYB8AH/AYQBxAH2Af8QAAGNAbwB8gH/
+        AY0BvAHyAf8BjQG8AfIB/wwAAXwBlAHPAf8B2AHzAfYB/wHpAfcB+AH/AekB9wH4Af8B6AH2AfcB/wGI
+        AcEB7wH/DAAB6wHjAeAB/wH3AewB6AH/AfcB7AHoAf8B9QHpAeQB/wH1AekB5AH/AfQB5gHhAf8B9AHm
+        AeEB/wHzAeQB3gH/AfMB5AHeAf8B7QHbAdUB/wGkAqIB/xQAAesB4wHgAf8B9wHsAegB/wH3AewB6AH/
+        AfUB6QHkAf8B9QHpAeQB/wH0AeUB4AH/AfQB5QHgAf8B8wHkAd4B/wHzAeQB3gH/Ae8B2wHUAf8BpAKi
+        Af80AAGBAZwBzwH/AYEBnAHPAf8BgQGcAc8B/wGBAZcBygH/AYEBlgHIAf8sAAGBAZwBzwH/AYEBnAHP
+        Af8BgQGcAc8B/wGBAZcBygH/AYEBlgHIAf8MAAHNAskB/wHOAcUBwwH/AeYB3AHZAf8B9wHsAegB/wH1
+        AekB5AH/AfQB5gHhAf8B9AHmAeEB/wHzAeQB3gH/AfMB5AHeAf8BswGtAasB/xgAAc0CyQH/Ac4BxQHD
+        Af8B5gHcAdkB/wH3AewB6AH/AfUB6QHkAf8B9QHpAeQB/wH0AeUB4AH/AfMB5AHeAf8B8wHkAd4B/wGz
+        Aa0BqwH/pAABxgHBAcAB/wHQAccBxQH/Ae4B4QHdAf8B9AHmAeEB/wHzAeQB3gH/AeMB1wHSAf8oAAHG
+        AcEBwAH/AdABxwHFAf8B7gHhAd0B/wH0AeUB4AH/AfMB5AHeAf8B4wHXAdIB/7QAAcUBvwG+Af8B2QHN
+        AckB/wGzAa0BqwH/NAABxQG/Ab4B/wHZAc0ByQH/AbMBrQGrAf//ABkAAUIBTQE+BwABPgMAASgDAAFA
+        AwABMAMAAQEBAAEBBQABgAEBFgAD/4EAAf8BhwH/AcMB/AEjAfwBAwH8AQcB/AEBAfwBAQH8AQMB/AEH
+        AfwBAAH4AQAB+AEBAfgBAQH4AQAB+AEAAfgBAAHwAQEB8AEAAfABAAHwAQAB8AEBAfABAAHwAQAB8AEA
+        AeABAwHgAQEB4AEBAeABAAHgAQMB4AEBAeABAQHgAQEBwAEHAcABBwHAAQMBwAEDAcABBwHAAQcBgAED
+        AYABBwGAAQ8BgAEPAYABBwGAAQcBgAEPAYABDwEAAQ8BAAEPAYABHwGAAR8BgAEPAYABDwHwAT8B8AE/
+        AfABHwHwAR8B/gE/Af4BPwH+AR8B/gEfCf8BwwH/AcMB/wHDAf8B7wH/AQEB/wEBAfwBAQH8AQ8EAAH8
+        AQAB/AEHBAAB+AEAAfgBAQGAAQABgAEAAfABAAHwAQEBgAEAAYABAAHwAQAB8AEBAYABAAGAAQAB4AEB
+        AeABAwGAAQEBgAEBAeABAQHgAQMBgAEDAYABAwHAAQcBwAEHAYABAwGAAQMBwAEHAcABBwGAAQMBgAED
+        AYABDwGAAQ8BxwEDAccBAwGAAQ8BgAEPAf8BgwH/AYMBgAEfAYABHwT/AfABPwHwAT8E/wH+AT8B/gE/
+        CP8L
 </value>
   </data>
   <data name="tabLayers.Location" type="System.Drawing.Point, System.Drawing">
@@ -1873,6 +1386,868 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;ctlFiniteDisplayScales.Name" xml:space="preserve">
+    <value>ctlFiniteDisplayScales</value>
+  </data>
+  <data name="&gt;&gt;ctlFiniteDisplayScales.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales, OSGeo.MapGuide.Maestro.ResourceEditors, Version=2.0.0.4513, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ctlFiniteDisplayScales.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ctlFiniteDisplayScales.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ctlGroupProperties.Name" xml:space="preserve">
+    <value>ctlGroupProperties</value>
+  </data>
+  <data name="&gt;&gt;ctlGroupProperties.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerGroupProperties, OSGeo.MapGuide.Maestro.ResourceEditors, Version=2.0.0.4513, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ctlGroupProperties.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ctlGroupProperties.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ctlLayerProperties.Name" xml:space="preserve">
+    <value>ctlLayerProperties</value>
+  </data>
+  <data name="&gt;&gt;ctlLayerProperties.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerProperties, OSGeo.MapGuide.Maestro.ResourceEditors, Version=2.0.0.4513, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ctlLayerProperties.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ctlLayerProperties.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 0</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 368</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Layer properties</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 24</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>When a layer or a group is selected, properties for that item will be displayed here</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="trvLayerGroups.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="trvLayerGroups.ImageIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="trvLayerGroups.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="trvLayerGroups.SelectedImageIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="trvLayerGroups.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 300</value>
+  </data>
+  <data name="trvLayerGroups.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;trvLayerGroups.Name" xml:space="preserve">
+    <value>trvLayerGroups</value>
+  </data>
+  <data name="&gt;&gt;trvLayerGroups.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trvLayerGroups.Parent" xml:space="preserve">
+    <value>tabLayerGroups</value>
+  </data>
+  <data name="&gt;&gt;trvLayerGroups.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="tlbLayerGroups.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <data name="tlbLayerGroups.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tlbLayerGroups.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 25</value>
+  </data>
+  <data name="tlbLayerGroups.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tlbLayerGroups.Name" xml:space="preserve">
+    <value>tlbLayerGroups</value>
+  </data>
+  <data name="&gt;&gt;tlbLayerGroups.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlbLayerGroups.Parent" xml:space="preserve">
+    <value>tabLayerGroups</value>
+  </data>
+  <data name="&gt;&gt;tlbLayerGroups.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="AddGroupButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAiBJREFUOE/lkv1L
+        U1EYx/en1DIxsBeLCi+9CokaWoRkSC3IHxbDLK2MmZahoWhDa9O0xtZ8yVGhmAm+LByyod62aYzVwISF
+        MllL2+7dztYN9u3ulObNH/oDOvCBA4fn85znRSb7P86svgxrsI9LMd1+HZsq5ywarLHxcVZ3CYT3Ih4L
+        UEJkFcRWLxWEx8rwnR+UIARNiH15ASH4CpHlAUSWBtf5Nl4tFfAT1yCETRSyqofLWoV3lsp12OFyJHk/
+        egOCX4+v/VekguhMDQ2OfX6AIHsLLrMCzucX4Owqprw1nEO1NgfK1qOo7SnEkLZYKiDuJggBA8L9uWIf
+        cijJe2g4C+NGBnktB1Brq8ITTxs0zgYU9uSj/mnFH0lsoR3xT02IjJwCP7UfnHU3wmPp8A2kgWlOQYVd
+        hfvuO/jg96DP2wW1oxxZzxiYDb9LiS+ZELWWIOo5QwW8fS8V6Dq2gendA+W0AmpWhRVuhQpK2RLkvTmO
+        fF32r1/QTovZybyCSqJzBZSbHTuR0ZsKu2+SBicSCXCEo3el5SLSG1MgI1PNiM9rQVxXxZGJkxB7kex0
+        kgZzEQ72bafZO711dAcmFl+jxX0XuUNHkKnZJwrEpYiMFtF5/whNSnDMdWKXTo4CWyoue3cgwC3C6LuN
+        s440Kq55qd68kX+vaGO3Eoe6t0L1cQuM/vO4t8Dg5Igc2a2H/x28UXa67QQyH8lx7GGGJPNPtu7MKxgg
+        BnYAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="AddGroupButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="AddGroupButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="AddGroupButton.ToolTipText" xml:space="preserve">
+    <value>Add a new group</value>
+  </data>
+  <data name="RemoveGroupButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgJJREFUOE/lk+9L
+        U1Ech/e/BCU0EjQhKoyCRj+1epFoS8igKNYytBVlSrlCZ2VhKNkIZhBRYSgs0kktNV0bbsUICosQRqkT
+        57zbvXOtPd17hj9uvup1Bx7OgcN5zjmf7zkGw//RQk4ri/g7LPjaa1h18/mBWyyycjJ0rwpZ+kxKmRIo
+        8iSxt016QbzfyoLUoyMddaFMPyUdfU7i5wsSkZ4lYp46vUB6U0067hLIs06C3ksEBmxL+N3n0PjYV0v6
+        h5OZ7jN6QfL9FbFYmbhJ1H+B4JNKxh4fZayrQjByv5xe2z7cJ3Yy3FCOr8msF8hhB+mph8S7d6s57BJo
+        4zn3Dr7c2Yq3dBuTLdeQHjmZ7WgldKyM3kbbskT51k7qq4PEq1Kk0SLmvfnE+41MPcvDs309kr2W323N
+        ZDvvil65UUf4oIlQc3VOkoq4SHqPk/x0SAikdwVCELi8ju97i8lctJB1NJC9bc9RX0P0yH76KkpyApG0
+        urs8XikkyQ8lghFLIZOmTcQGX5OcieqYPn8az5Z8DPJoC6nxNuTgWbVkaiXULLSkNQKNZiZMBeIKclfr
+        Mg/UsLUT7NmsCobtJPrKRL1/zQ3qiAx14i/egHK4kOypjUtkzEVCPHS9fvWL/PuJ+q5aCJuMJKvyyFjX
+        sHByLZEDRl6qIf7TR9YC0yqiHXvlzn8AgsDTgPcf9NcAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="RemoveGroupButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="RemoveGroupButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="RemoveGroupButton.ToolTipText" xml:space="preserve">
+    <value>Remove the selected group and contents</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="AddLayerButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAa1JREFUOE+1k9sr
+        g2Ecx/0pLERJDhfOQiFELuRKdkNzKOJCjTAhK+R8QTTNRIQy4cJpeMfLJqfZhmkzLWJiTnf76nnq1fC+
+        y43n6rn5fn6f39P38fH5z7O2zoDVmzE9o8af52xotGB2DmGxPcLmeMXVzQuOjXbvAJbVY4s5gPnSgduH
+        D9zcvdEwByAQrxZW+z0NcmE+gOHCCaVSxW9CtDmAkMG59RnqxQ3hVTz1+QwIgFgMjyi8W5DwT4DeZIN8
+        thcVqioU90iELY5OLTTsCZjTriK7Px2y7VoMGQbQqW9DniobLXOy3yDyFp6Ao4trRLdHoJopR+tJA84c
+        BkyYlKjRVSJlNJbfhNUZvgza5/sQOx4GyW4hpHtlcLqcFFC+V4TMhWRq9qtgpA9cB8jOkZPBYKybNOx2
+        u+F6d9G7ZEWMELk/vwUHqZuSIWoigE4fNDXj6f0R6/Z5dJ00IkOdSNcTrDip8tK+FqH9IuRsB6LEFIw7
+        lx0Kay3ydUEUXD8tFQasaVj6B8QdYsSP+aHU6AuFowBNljhkLYuQ1p3w9w9GNHMHUhHTK0JST/i3yZ/o
+        qM3qJyiNiwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="AddLayerButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="AddLayerButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="AddLayerButton.ToolTipText" xml:space="preserve">
+    <value>Add a new layer to the map</value>
+  </data>
+  <data name="RemoveLayerButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAaBJREFUOE+1ktsr
+        g2Ecx/0vSspq5VBCys2UWNxM4YaSQ+OGZSttJVZMRkQ5JBu5kKvVsqZ3p2a92pxmaXPasjTGpNmWmn15
+        Xr2a9r7Ljad+PVe/z+/zfJ9fQcF/HsriBO3xY2fXgD/PsdoO4HSd4DoUQ+j+DTfhOM4u7vIDaNoDh/MI
+        /qt7RJ5SCD8kmGYWQCB5LYJ3UaaRbeYC+C6fodNtcpsQbRbAZRAIvoKUwWjlf0q2PpcBARCL1bX1/Bak
+        ORtAciAhUnOL2JcrsD0g5bc4Pb9mmrMBbqMFFokYEc0Y4vpVxJa0OO5shUujzgWRLLIBga/Je6IavKpk
+        +JifRGZ5jrlT6lF4W0TcJrTb92NgX1jCbWMt0nIpMlMqZGbGv0s5hGh7E0xt4lwI2Qd2ByyKEUTqK/Fi
+        p5B4iv6qR1k/zNVCbgsWYp1QIyQqRXx8GEn97HdtaZFcmWYMyPN4V5ys8jHlwmGtEClJGTJ95T+V7qhg
+        wI4JJT+AstHM9230dsMrEiDRVYz0YCHee4oQbhbAyBcinxIJzFxXAlND1a/Jn4/X1TAe1c8QAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="RemoveLayerButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="RemoveLayerButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="RemoveLayerButton.ToolTipText" xml:space="preserve">
+    <value>Remove a layer from the group</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="MoveLayerUpButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAVpJREFUOE+1k89L
+        wmAcxv3LukY/oEsQZFAtieqQkRVUB8m6BdEhOtghkY4ag2BFgTlsjqHL1jRxZE0cUtlvio5PvIPZJntl
+        l97z+3zez8v3+fp8/3lS5wIkuYJEkoPnd9J8FoJ4hWrtFbXGF+6MT1yX650BkiQjI1yictvAw/MPjMdv
+        M2wBCKSjhV5vmkEr7AYoak+Ixw/cTYi2BaAZaPoHjrg0/St2fTeDtKYiVmAR3dvvbEHC7YAbvYmQEsBC
+        eQix4wTdQilWzXA7YK0QwfbLLMKNAKZFP3ajUbpFOyBWTGCjNobNt0UsGQxm1D5MJsfpFlK+1DK4qJbg
+        F7uxfj+Krfc/wEimC/M7IXcI6YPVAVImAlmV51qACaEXZ6oCTsjRLewQUqJIftkB4E6z9GlYnbdX2Q5g
+        +B5ve5HiJXMHDtkTBFnGYeB5sayLYX4FwdwgpsQBDHP9DoNfMFi+at4GQCEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="MoveLayerUpButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="MoveLayerUpButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="MoveLayerUpButton.ToolTipText" xml:space="preserve">
+    <value>Move the selected layer up</value>
+  </data>
+  <data name="MoveLayerDownButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAUhJREFUOE+1k81L
+        w0AQxfv3Ga+i4smvguiliIWK4KFepFIQUcGgleJBEItYEE8xRVZd+kGUVKm2UmkiimILKh6fzMqGoN2Q
+        i4ElsPDe/N7MbCTyn59xwsDLNezt5xG6jlk4Azu30Hh4Q9P9wL3zjqubVrAB52Wcsgpq9Uc8vX7Bef4U
+        RxqQSSBFs/UihL/FfgP7ro1sdqc7CWFLAxUBUeSPTHWUbviSYN3eRtKaFWdyNxpMIfP7e0DC5c40Eu4o
+        xnmvmuLSbnh9oOqSgAzSnRnEnRFhoOsZNYWKwG9gMltNwUtVb4TdCKJMA01kc0sxEdoHEhKJUa9gmPUh
+        cT3oRZiyesTd/OGimkKakFGyuICUO4FUO/7Tg6qGoZyGtQ09eDvlKtM/djHmTYEihHoXRoGLN5A7OMZK
+        ZhWxUj/mbgfCiVUVlop/c38DiaKx6WkShE0AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="MoveLayerDownButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="MoveLayerDownButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="MoveLayerDownButton.ToolTipText" xml:space="preserve">
+    <value>Move the selected layer down</value>
+  </data>
+  <data name="MoveLayerTopButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAXZJREFUOE+1k01L
+        AlEUhv1/gSRh0UKQFmEfRFFiI2bRIqWIEDRwIYS0TImgaGWKjDLhiPmRo6RYauUHJVS0fONcmGGwcWzT
+        wGFW73Ofc+65BsN/frEbHoJYwVnkCn8+J55IgU/nUHt8Q6P9iXrrA/lyUx8gCCKSfBaVh2e89r/R6nyx
+        kgEE0bVoNHssOBxWA4rVLsLhU20T0pYBowyqjQEuLuOjW9HSVxuU6wNs+EuwuSP6FnL/9Kfeqeh0Ci/6
+        2nAE3sH5ctqQu2JNmQOdLhtQeOGohUlnHtOueywFu9oQmoXagACrXhGmvSILz3mbLGzczLFadyZ/mwiZ
+        knKFssFuSGJh0qciiM0x4kZoHygo78HOcQHmfUnp3x4YYN7/wqy47aj2LGQIgW4LPfDZDiweCRRe8fVh
+        4kQcHAb1t1O9ynQTFk+Zha2eJxjtwvi3EUsI7A1Ez68RCp1gdivD5jDlkjCxlhoPGH59Vi7FIGZHGjPL
+        MQXwA0XA1Txb/pOgAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="MoveLayerTopButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="MoveLayerTopButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="MoveLayerTopButton.ToolTipText" xml:space="preserve">
+    <value>Move the selected layer to the top</value>
+  </data>
+  <data name="MoveLayerBottomButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAWhJREFUOE+1k8tL
+        AlEUh/0DIxApwh7UthJaVARhEZa10clNiRiCtXChEUhRi0yJKSbUHPOBpvks8kFEFC1/cW5cGWxmcNPA
+        hYHL7zvfPfdcg+E/v8iVCClRQDB0hoHrRGM3EG9TKNfeUH3+xFPzA+l8Qx8gSQlci0kUSi947X6j2fpi
+        iwMIomtRbXRYsD+sBGSKbfj9R+ompM0BWgZ3D134A5faR1HTVxqY1u9h3sxjfC0P+v/TVG7Bz9/fAwpb
+        7A0s7nYYSPVW5Ey51weqrjSg0PLeO1uaALLoNwicVuALPrIQB5isae1eSPFs7wrJ4DBcwbSnjqWD3+pz
+        QhuTjjqMjpw6hOaBgrwHYrINuyeDGVcN864Opuw1DNlkLKxeaFtwCIEoPCaUWPdHdwow2rIYtsQZxLoR
+        0oYoR9npljHrbsG8kmPhke0iHPsp/fGOxCT2Bo5PzuH1+rAlhDHhrAwW1nt5ZKPc/wGC4MmoqeHRawAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="MoveLayerBottomButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="MoveLayerBottomButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="MoveLayerBottomButton.Text" xml:space="preserve">
+    <value>toolStripButton2</value>
+  </data>
+  <data name="MoveLayerBottomButton.ToolTipText" xml:space="preserve">
+    <value>Move the selected layer to the bottom</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="ConvertToBaseLayerGroupButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAaNJREFUOE/Nktsr
+        g2Ecx/1DlJtdack5lAtEaKmJ3jnlFYqYQ3KKFVnOh6WEC6TekUOGN8bmHLvAyNbytgN7zbvt5suelSze
+        cempT8/N8/083+fpFxHxr9eGpg9r413Qjnbi16Kvh9Mhh9jhagj8NXyCleDU9YpL3m4G4XPPExyPUwS7
+        eQxPpiECfzcBx7pSXOC1TsDvnoTTqga7XAWWoYMslhPu9S14WGoQF/jss/DsV8K1kgj7Qizss1ICNynF
+        oUZGpEy/IozAMQd+Kxv8gQTurSi8MJFBNqPBzUhh08TjcTwBMibmu0Q4HoHXrAbPpoI3xnzsEhL8lHyR
+        NZyko+4qN1QiGAdIfa+lI8htEwRTPfYMcsgP4qA4SgZlSEPVWQZa72XoeqZDJW/6bnh2i+DnVoM8aeG3
+        Mdg2qVB9ngnaVAilpRQdDpqEGzkK9EM+kYadje2TITTeFKDZWgaViyaCQLj0Lhd5FymQnyeiQlcUXtJp
+        kZNwgDauBJXmHOScJUF2GgdKl//7dPZctuMrxfrUv4d/eh/FZv3tZrHPqd2p+Vb7HdC4Y93VR8wXAAAA
+        AElFTkSuQmCC
+</value>
+  </data>
+  <data name="ConvertToBaseLayerGroupButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="ConvertToBaseLayerGroupButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="ConvertToBaseLayerGroupButton.ToolTipText" xml:space="preserve">
+    <value>Convert the selected group to a base layer group</value>
+  </data>
+  <data name="columnHeader1.Width" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="lstDrawOrder.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="lstDrawOrder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="lstDrawOrder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 325</value>
+  </data>
+  <data name="lstDrawOrder.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lstDrawOrder.Name" xml:space="preserve">
+    <value>lstDrawOrder</value>
+  </data>
+  <data name="&gt;&gt;lstDrawOrder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lstDrawOrder.Parent" xml:space="preserve">
+    <value>tabDrawOrder</value>
+  </data>
+  <data name="&gt;&gt;lstDrawOrder.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 25</value>
+  </data>
+  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="toolStrip1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
+    <value>tabDrawOrder</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="AddLayerOrderButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAa1JREFUOE+1k9sr
+        g2Ecx/0pLERJDhfOQiFELuRKdkNzKOJCjTAhK+R8QTTNRIQy4cJpeMfLJqfZhmkzLWJiTnf76nnq1fC+
+        y43n6rn5fn6f39P38fH5z7O2zoDVmzE9o8af52xotGB2DmGxPcLmeMXVzQuOjXbvAJbVY4s5gPnSgduH
+        D9zcvdEwByAQrxZW+z0NcmE+gOHCCaVSxW9CtDmAkMG59RnqxQ3hVTz1+QwIgFgMjyi8W5DwT4DeZIN8
+        thcVqioU90iELY5OLTTsCZjTriK7Px2y7VoMGQbQqW9DniobLXOy3yDyFp6Ao4trRLdHoJopR+tJA84c
+        BkyYlKjRVSJlNJbfhNUZvgza5/sQOx4GyW4hpHtlcLqcFFC+V4TMhWRq9qtgpA9cB8jOkZPBYKybNOx2
+        u+F6d9G7ZEWMELk/vwUHqZuSIWoigE4fNDXj6f0R6/Z5dJ00IkOdSNcTrDip8tK+FqH9IuRsB6LEFIw7
+        lx0Kay3ydUEUXD8tFQasaVj6B8QdYsSP+aHU6AuFowBNljhkLYuQ1p3w9w9GNHMHUhHTK0JST/i3yZ/o
+        qM3qJyiNiwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="AddLayerOrderButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="AddLayerOrderButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="AddLayerOrderButton.ToolTipText" xml:space="preserve">
+    <value>Add a new layer to the map</value>
+  </data>
+  <data name="RemoveLayerOrderButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAaBJREFUOE+1ktsr
+        g2Ecx/0vSspq5VBCys2UWNxM4YaSQ+OGZSttJVZMRkQ5JBu5kKvVsqZ3p2a92pxmaXPasjTGpNmWmn15
+        Xr2a9r7Ljad+PVe/z+/zfJ9fQcF/HsriBO3xY2fXgD/PsdoO4HSd4DoUQ+j+DTfhOM4u7vIDaNoDh/MI
+        /qt7RJ5SCD8kmGYWQCB5LYJ3UaaRbeYC+C6fodNtcpsQbRbAZRAIvoKUwWjlf0q2PpcBARCL1bX1/Bak
+        ORtAciAhUnOL2JcrsD0g5bc4Pb9mmrMBbqMFFokYEc0Y4vpVxJa0OO5shUujzgWRLLIBga/Je6IavKpk
+        +JifRGZ5jrlT6lF4W0TcJrTb92NgX1jCbWMt0nIpMlMqZGbGv0s5hGh7E0xt4lwI2Qd2ByyKEUTqK/Fi
+        p5B4iv6qR1k/zNVCbgsWYp1QIyQqRXx8GEn97HdtaZFcmWYMyPN4V5ys8jHlwmGtEClJGTJ95T+V7qhg
+        wI4JJT+AstHM9230dsMrEiDRVYz0YCHee4oQbhbAyBcinxIJzFxXAlND1a/Jn4/X1TAe1c8QAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="RemoveLayerOrderButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="RemoveLayerOrderButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="RemoveLayerOrderButton.ToolTipText" xml:space="preserve">
+    <value>Remove the selected layers from the map</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="MoveLayerUpOrderButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAVpJREFUOE+1k89L
+        wmAcxv3LukY/oEsQZFAtieqQkRVUB8m6BdEhOtghkY4ag2BFgTlsjqHL1jRxZE0cUtlvio5PvIPZJntl
+        l97z+3zez8v3+fp8/3lS5wIkuYJEkoPnd9J8FoJ4hWrtFbXGF+6MT1yX650BkiQjI1yictvAw/MPjMdv
+        M2wBCKSjhV5vmkEr7AYoak+Ixw/cTYi2BaAZaPoHjrg0/St2fTeDtKYiVmAR3dvvbEHC7YAbvYmQEsBC
+        eQix4wTdQilWzXA7YK0QwfbLLMKNAKZFP3ajUbpFOyBWTGCjNobNt0UsGQxm1D5MJsfpFlK+1DK4qJbg
+        F7uxfj+Krfc/wEimC/M7IXcI6YPVAVImAlmV51qACaEXZ6oCTsjRLewQUqJIftkB4E6z9GlYnbdX2Q5g
+        +B5ve5HiJXMHDtkTBFnGYeB5sayLYX4FwdwgpsQBDHP9DoNfMFi+at4GQCEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="MoveLayerUpOrderButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="MoveLayerUpOrderButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="MoveLayerUpOrderButton.ToolTipText" xml:space="preserve">
+    <value>Move the selected layers up</value>
+  </data>
+  <data name="MoveLayerDownOrderButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAUhJREFUOE+1k81L
+        w0AQxfv3Ga+i4smvguiliIWK4KFepFIQUcGgleJBEItYEE8xRVZd+kGUVKm2UmkiimILKh6fzMqGoN2Q
+        i4ElsPDe/N7MbCTyn59xwsDLNezt5xG6jlk4Azu30Hh4Q9P9wL3zjqubVrAB52Wcsgpq9Uc8vX7Bef4U
+        RxqQSSBFs/UihL/FfgP7ro1sdqc7CWFLAxUBUeSPTHWUbviSYN3eRtKaFWdyNxpMIfP7e0DC5c40Eu4o
+        xnmvmuLSbnh9oOqSgAzSnRnEnRFhoOsZNYWKwG9gMltNwUtVb4TdCKJMA01kc0sxEdoHEhKJUa9gmPUh
+        cT3oRZiyesTd/OGimkKakFGyuICUO4FUO/7Tg6qGoZyGtQ09eDvlKtM/djHmTYEihHoXRoGLN5A7OMZK
+        ZhWxUj/mbgfCiVUVlop/c38DiaKx6WkShE0AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="MoveLayerDownOrderButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="MoveLayerDownOrderButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="MoveLayerDownOrderButton.ToolTipText" xml:space="preserve">
+    <value>Move the selected layers down</value>
+  </data>
+  <data name="MoveLayerOrderTopButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAXZJREFUOE+1k01L
+        AlEUhv1/gSRh0UKQFmEfRFFiI2bRIqWIEDRwIYS0TImgaGWKjDLhiPmRo6RYauUHJVS0fONcmGGwcWzT
+        wGFW73Ofc+65BsN/frEbHoJYwVnkCn8+J55IgU/nUHt8Q6P9iXrrA/lyUx8gCCKSfBaVh2e89r/R6nyx
+        kgEE0bVoNHssOBxWA4rVLsLhU20T0pYBowyqjQEuLuOjW9HSVxuU6wNs+EuwuSP6FnL/9Kfeqeh0Ci/6
+        2nAE3sH5ctqQu2JNmQOdLhtQeOGohUlnHtOueywFu9oQmoXagACrXhGmvSILz3mbLGzczLFadyZ/mwiZ
+        knKFssFuSGJh0qciiM0x4kZoHygo78HOcQHmfUnp3x4YYN7/wqy47aj2LGQIgW4LPfDZDiweCRRe8fVh
+        4kQcHAb1t1O9ynQTFk+Zha2eJxjtwvi3EUsI7A1Ez68RCp1gdivD5jDlkjCxlhoPGH59Vi7FIGZHGjPL
+        MQXwA0XA1Txb/pOgAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="MoveLayerOrderTopButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="MoveLayerOrderTopButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="MoveLayerOrderTopButton.ToolTipText" xml:space="preserve">
+    <value>Move the selected layer to the top</value>
+  </data>
+  <data name="MoveLayerOrderBottomButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAWhJREFUOE+1k8tL
+        AlEUh/0DIxApwh7UthJaVARhEZa10clNiRiCtXChEUhRi0yJKSbUHPOBpvks8kFEFC1/cW5cGWxmcNPA
+        hYHL7zvfPfdcg+E/v8iVCClRQDB0hoHrRGM3EG9TKNfeUH3+xFPzA+l8Qx8gSQlci0kUSi947X6j2fpi
+        iwMIomtRbXRYsD+sBGSKbfj9R+ompM0BWgZ3D134A5faR1HTVxqY1u9h3sxjfC0P+v/TVG7Bz9/fAwpb
+        7A0s7nYYSPVW5Ey51weqrjSg0PLeO1uaALLoNwicVuALPrIQB5isae1eSPFs7wrJ4DBcwbSnjqWD3+pz
+        QhuTjjqMjpw6hOaBgrwHYrINuyeDGVcN864Opuw1DNlkLKxeaFtwCIEoPCaUWPdHdwow2rIYtsQZxLoR
+        0oYoR9npljHrbsG8kmPhke0iHPsp/fGOxCT2Bo5PzuH1+rAlhDHhrAwW1nt5ZKPc/wGC4MmoqeHRawAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="MoveLayerOrderBottomButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="MoveLayerOrderBottomButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="MoveLayerOrderBottomButton.Text" xml:space="preserve">
+    <value>toolStripButton2</value>
+  </data>
+  <data name="MoveLayerOrderBottomButton.ToolTipText" xml:space="preserve">
+    <value>Move the selected layer to the bottom</value>
+  </data>
+  <data name="AddBaseLayerGroupButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAiBJREFUOE/lkv1L
+        U1EYx/en1DIxsBeLCi+9CokaWoRkSC3IHxbDLK2MmZahoWhDa9O0xtZ8yVGhmAm+LByyod62aYzVwISF
+        MllL2+7dztYN9u3ulObNH/oDOvCBA4fn85znRSb7P86svgxrsI9LMd1+HZsq5ywarLHxcVZ3CYT3Ih4L
+        UEJkFcRWLxWEx8rwnR+UIARNiH15ASH4CpHlAUSWBtf5Nl4tFfAT1yCETRSyqofLWoV3lsp12OFyJHk/
+        egOCX4+v/VekguhMDQ2OfX6AIHsLLrMCzucX4Owqprw1nEO1NgfK1qOo7SnEkLZYKiDuJggBA8L9uWIf
+        cijJe2g4C+NGBnktB1Brq8ITTxs0zgYU9uSj/mnFH0lsoR3xT02IjJwCP7UfnHU3wmPp8A2kgWlOQYVd
+        hfvuO/jg96DP2wW1oxxZzxiYDb9LiS+ZELWWIOo5QwW8fS8V6Dq2gendA+W0AmpWhRVuhQpK2RLkvTmO
+        fF32r1/QTovZybyCSqJzBZSbHTuR0ZsKu2+SBicSCXCEo3el5SLSG1MgI1PNiM9rQVxXxZGJkxB7kex0
+        kgZzEQ72bafZO711dAcmFl+jxX0XuUNHkKnZJwrEpYiMFtF5/whNSnDMdWKXTo4CWyoue3cgwC3C6LuN
+        s440Kq55qd68kX+vaGO3Eoe6t0L1cQuM/vO4t8Dg5Igc2a2H/x28UXa67QQyH8lx7GGGJPNPtu7MKxgg
+        BnYAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="AddBaseLayerGroupButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="AddBaseLayerGroupButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="AddBaseLayerGroupButton.ToolTipText" xml:space="preserve">
+    <value>Add a new group</value>
+  </data>
+  <data name="RemoveBaseLayerGroupButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgJJREFUOE/lk+9L
+        U1Ech/e/BCU0EjQhKoyCRj+1epFoS8igKNYytBVlSrlCZ2VhKNkIZhBRYSgs0kktNV0bbsUICosQRqkT
+        57zbvXOtPd17hj9uvup1Bx7OgcN5zjmf7zkGw//RQk4ri/g7LPjaa1h18/mBWyyycjJ0rwpZ+kxKmRIo
+        8iSxt016QbzfyoLUoyMddaFMPyUdfU7i5wsSkZ4lYp46vUB6U0067hLIs06C3ksEBmxL+N3n0PjYV0v6
+        h5OZ7jN6QfL9FbFYmbhJ1H+B4JNKxh4fZayrQjByv5xe2z7cJ3Yy3FCOr8msF8hhB+mph8S7d6s57BJo
+        4zn3Dr7c2Yq3dBuTLdeQHjmZ7WgldKyM3kbbskT51k7qq4PEq1Kk0SLmvfnE+41MPcvDs309kr2W323N
+        ZDvvil65UUf4oIlQc3VOkoq4SHqPk/x0SAikdwVCELi8ju97i8lctJB1NJC9bc9RX0P0yH76KkpyApG0
+        urs8XikkyQ8lghFLIZOmTcQGX5OcieqYPn8az5Z8DPJoC6nxNuTgWbVkaiXULLSkNQKNZiZMBeIKclfr
+        Mg/UsLUT7NmsCobtJPrKRL1/zQ3qiAx14i/egHK4kOypjUtkzEVCPHS9fvWL/PuJ+q5aCJuMJKvyyFjX
+        sHByLZEDRl6qIf7TR9YC0yqiHXvlzn8AgsDTgPcf9NcAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="RemoveBaseLayerGroupButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="RemoveBaseLayerGroupButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="RemoveBaseLayerGroupButton.ToolTipText" xml:space="preserve">
+    <value>Remove the selected group and contents</value>
+  </data>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="AddBaseLayerButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAa1JREFUOE+1k9sr
+        g2Ecx/0pLERJDhfOQiFELuRKdkNzKOJCjTAhK+R8QTTNRIQy4cJpeMfLJqfZhmkzLWJiTnf76nnq1fC+
+        y43n6rn5fn6f39P38fH5z7O2zoDVmzE9o8af52xotGB2DmGxPcLmeMXVzQuOjXbvAJbVY4s5gPnSgduH
+        D9zcvdEwByAQrxZW+z0NcmE+gOHCCaVSxW9CtDmAkMG59RnqxQ3hVTz1+QwIgFgMjyi8W5DwT4DeZIN8
+        thcVqioU90iELY5OLTTsCZjTriK7Px2y7VoMGQbQqW9DniobLXOy3yDyFp6Ao4trRLdHoJopR+tJA84c
+        BkyYlKjRVSJlNJbfhNUZvgza5/sQOx4GyW4hpHtlcLqcFFC+V4TMhWRq9qtgpA9cB8jOkZPBYKybNOx2
+        u+F6d9G7ZEWMELk/vwUHqZuSIWoigE4fNDXj6f0R6/Z5dJ00IkOdSNcTrDip8tK+FqH9IuRsB6LEFIw7
+        lx0Kay3ydUEUXD8tFQasaVj6B8QdYsSP+aHU6AuFowBNljhkLYuQ1p3w9w9GNHMHUhHTK0JST/i3yZ/o
+        qM3qJyiNiwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="AddBaseLayerButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="AddBaseLayerButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="AddBaseLayerButton.ToolTipText" xml:space="preserve">
+    <value>Add a new layer to the map</value>
+  </data>
+  <data name="RemoveBaseLayerButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAaBJREFUOE+1ktsr
+        g2Ecx/0vSspq5VBCys2UWNxM4YaSQ+OGZSttJVZMRkQ5JBu5kKvVsqZ3p2a92pxmaXPasjTGpNmWmn15
+        Xr2a9r7Ljad+PVe/z+/zfJ9fQcF/HsriBO3xY2fXgD/PsdoO4HSd4DoUQ+j+DTfhOM4u7vIDaNoDh/MI
+        /qt7RJ5SCD8kmGYWQCB5LYJ3UaaRbeYC+C6fodNtcpsQbRbAZRAIvoKUwWjlf0q2PpcBARCL1bX1/Bak
+        ORtAciAhUnOL2JcrsD0g5bc4Pb9mmrMBbqMFFokYEc0Y4vpVxJa0OO5shUujzgWRLLIBga/Je6IavKpk
+        +JifRGZ5jrlT6lF4W0TcJrTb92NgX1jCbWMt0nIpMlMqZGbGv0s5hGh7E0xt4lwI2Qd2ByyKEUTqK/Fi
+        p5B4iv6qR1k/zNVCbgsWYp1QIyQqRXx8GEn97HdtaZFcmWYMyPN4V5ys8jHlwmGtEClJGTJ95T+V7qhg
+        wI4JJT+AstHM9230dsMrEiDRVYz0YCHee4oQbhbAyBcinxIJzFxXAlND1a/Jn4/X1TAe1c8QAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="RemoveBaseLayerButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="RemoveBaseLayerButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="RemoveBaseLayerButton.ToolTipText" xml:space="preserve">
+    <value>Remove a layer from the group</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="MoveBaseLayerUpButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAVpJREFUOE+1k89L
+        wmAcxv3LukY/oEsQZFAtieqQkRVUB8m6BdEhOtghkY4ag2BFgTlsjqHL1jRxZE0cUtlvio5PvIPZJntl
+        l97z+3zez8v3+fp8/3lS5wIkuYJEkoPnd9J8FoJ4hWrtFbXGF+6MT1yX650BkiQjI1yictvAw/MPjMdv
+        M2wBCKSjhV5vmkEr7AYoak+Ixw/cTYi2BaAZaPoHjrg0/St2fTeDtKYiVmAR3dvvbEHC7YAbvYmQEsBC
+        eQix4wTdQilWzXA7YK0QwfbLLMKNAKZFP3ajUbpFOyBWTGCjNobNt0UsGQxm1D5MJsfpFlK+1DK4qJbg
+        F7uxfj+Krfc/wEimC/M7IXcI6YPVAVImAlmV51qACaEXZ6oCTsjRLewQUqJIftkB4E6z9GlYnbdX2Q5g
+        +B5ve5HiJXMHDtkTBFnGYeB5sayLYX4FwdwgpsQBDHP9DoNfMFi+at4GQCEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="MoveBaseLayerUpButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="MoveBaseLayerUpButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="MoveBaseLayerUpButton.ToolTipText" xml:space="preserve">
+    <value>Move the selected layer up</value>
+  </data>
+  <data name="MoveBaseLayerDownButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAUhJREFUOE+1k81L
+        w0AQxfv3Ga+i4smvguiliIWK4KFepFIQUcGgleJBEItYEE8xRVZd+kGUVKm2UmkiimILKh6fzMqGoN2Q
+        i4ElsPDe/N7MbCTyn59xwsDLNezt5xG6jlk4Azu30Hh4Q9P9wL3zjqubVrAB52Wcsgpq9Uc8vX7Bef4U
+        RxqQSSBFs/UihL/FfgP7ro1sdqc7CWFLAxUBUeSPTHWUbviSYN3eRtKaFWdyNxpMIfP7e0DC5c40Eu4o
+        xnmvmuLSbnh9oOqSgAzSnRnEnRFhoOsZNYWKwG9gMltNwUtVb4TdCKJMA01kc0sxEdoHEhKJUa9gmPUh
+        cT3oRZiyesTd/OGimkKakFGyuICUO4FUO/7Tg6qGoZyGtQ09eDvlKtM/djHmTYEihHoXRoGLN5A7OMZK
+        ZhWxUj/mbgfCiVUVlop/c38DiaKx6WkShE0AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="MoveBaseLayerDownButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="MoveBaseLayerDownButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="MoveBaseLayerDownButton.ToolTipText" xml:space="preserve">
+    <value>Move the selected layer down</value>
+  </data>
+  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="ConvertBaseLayerGroupToDynamicGroup.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAa9JREFUOE/Nktsr
+        g2Ecx/cHodzsSoscwg3JhCLZFql3mJBDTjkM0SJrTsNSwgWSIYcSixGrJVuaU4y2dmAv3s3Nl/1eLsRs
+        l5769Fw83+/n+V38BIJ/fTZ1/Vgf78bqqBJhB30+nPoWMgxXgWMtCHB2wrPTF1ryahtCwDdHuG8nCdfV
+        GBxWDcFeauHeaA4t8Nu1ePNNwGNXw7BUCYNewbPAENfGVtwsNoQWBFwzeNkvh3c5Ga75eLhmRIRzQoRD
+        XSFJVwZK/xC4Z8Fui8EeCOHbjsGTPppnKxbOaRHsukQ0aIXoHhL+lHAnI/BfqcEa0sEex33cQip+Sbz6
+        KLQtxaD6LA2aheJfBMeDNL7/rovnogmctR7caQ3RvpYAiSkRBeYUyI5SUWbKgNycTUiMORC8GnvwsivF
+        m3ONx7GKwP0KodxnqCw2JUF2noXaewk6POVQeqrQ6a2Awpz3934U7SXRz6U2MeoeZFQKltse5Ki1ScGc
+        iMMvGGPKRLOzhMoqrwI9DgYtl1L6PfgWdkODgTprPtSPlZAfSaCy9EJl5dHY1JEJgpJGS27k4YjG+gy9
+        A7nZYWk1WFOqAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ConvertBaseLayerGroupToDynamicGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="ConvertBaseLayerGroupToDynamicGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="ConvertBaseLayerGroupToDynamicGroup.ToolTipText" xml:space="preserve">
+    <value>Convert the selected group to regular group</value>
+  </data>
+  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="activateMgCooker.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAfNJREFUOE+Fkd9L
+        k1EYx/Vf6DrooosuggwkFw0lIwyjgRoEDQZONCjYVcS8sC4WGIa0nNAvKYYpuO01c6Cvg7XlVvkS88fL
+        VqNphplZkGC3g72fdo69EumrBx7O4Tzn+Tzf73MqKyzWwOgn9PUlmT1y4GCFx1lVafV2x31d3x3c8VHq
+        x3ppUE5xcvg8V0NfeR4psC/Efv8aF6IBDj1solkNYQ97qIsvcjRh4J7c2BvQ6ldkx/rQmXLXWlomnuLR
+        DRyaQXU0xvFIP67usDWkpuf6X8m1eBJBniwW8WZLODMGVcNdHBt0YvNfsQbcmshhG+qgIzaA+q1E8HOJ
+        7nwJ18x3OQcRTSG/NeCmsiILmqN9NCqX8WpvpYKWZEZakvYCrdYA36MsXr2IMx7ZtuJQRzj3zsCW2ODE
+        0CUcnb17D1KoaNd+yY72kYs0TK9R/drgcKyI+N59v7H/8TTue+OcDro4qxaoUX/T+GqTtgc5fLcnSSZT
+        1pC5OR1Nm2Xs5Rvu+lP4/DN09aS50fmCQCBczr2XYalCAHIflmSIswkURbpeYH7ho8xZQsxC8VgUm/u/
+        MHG2tLH8ZW1bpuiSTm9JFqB8fgWlrZ1UeJxMZn53G6urP5maSuwIoWz9xyazzwZZzm6p23UOC2WPplzR
+        RYQ5uP93E/AH8f+5ItFEzbcAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="activateMgCooker.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="activateMgCooker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="activateMgCooker.Text" xml:space="preserve">
+    <value>toolStripButton1</value>
+  </data>
+  <data name="activateMgCooker.ToolTipText" xml:space="preserve">
+    <value>Click to activate MgCooker for pre-building tiles</value>
+  </data>
+  <data name="ctlFiniteDisplayScales.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ctlFiniteDisplayScales.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>337, 351</value>
+  </data>
+  <data name="ctlFiniteDisplayScales.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 280</value>
+  </data>
+  <data name="ctlFiniteDisplayScales.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 80</value>
+  </data>
+  <data name="ctlFiniteDisplayScales.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="ctlFiniteDisplayScales.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;ctlFiniteDisplayScales.Name" xml:space="preserve">
+    <value>ctlFiniteDisplayScales</value>
+  </data>
+  <data name="&gt;&gt;ctlFiniteDisplayScales.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales, OSGeo.MapGuide.Maestro.ResourceEditors, Version=2.0.0.4513, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ctlFiniteDisplayScales.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ctlFiniteDisplayScales.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ctlGroupProperties.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 96</value>
+  </data>
+  <data name="ctlGroupProperties.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 240</value>
+  </data>
+  <data name="ctlGroupProperties.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ctlGroupProperties.Name" xml:space="preserve">
+    <value>ctlGroupProperties</value>
+  </data>
+  <data name="&gt;&gt;ctlGroupProperties.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerGroupProperties, OSGeo.MapGuide.Maestro.ResourceEditors, Version=2.0.0.4513, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ctlGroupProperties.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ctlGroupProperties.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ctlLayerProperties.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ctlLayerProperties.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>300, 304</value>
+  </data>
+  <data name="ctlLayerProperties.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 88</value>
+  </data>
+  <data name="ctlLayerProperties.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 184</value>
+  </data>
+  <data name="ctlLayerProperties.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ctlLayerProperties.Name" xml:space="preserve">
+    <value>ctlLayerProperties</value>
+  </data>
+  <data name="&gt;&gt;ctlLayerProperties.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerProperties, OSGeo.MapGuide.Maestro.ResourceEditors, Version=2.0.0.4513, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ctlLayerProperties.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ctlLayerProperties.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="bgColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 88</value>
+  </data>
+  <data name="bgColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 21</value>
+  </data>
+  <data name="bgColor.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;bgColor.Name" xml:space="preserve">
+    <value>bgColor</value>
+  </data>
+  <data name="&gt;&gt;bgColor.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox, OSGeo.MapGuide.Maestro.ResourceEditors, Version=2.0.0.4513, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bgColor.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;bgColor.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

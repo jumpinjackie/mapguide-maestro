@@ -388,7 +388,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bgColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.SetZoom = new System.Windows.Forms.Button();
@@ -408,9 +407,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.ctlFiniteDisplayScales = new OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales();
-            this.ctlGroupProperties = new OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerGroupProperties();
-            this.ctlLayerProperties = new OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerProperties();
             this.label9 = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -458,6 +454,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.activateMgCooker = new System.Windows.Forms.ToolStripButton();
             this.LayerToolbarImages = new System.Windows.Forms.ImageList(this.components);
+            this.ctlFiniteDisplayScales = new OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales();
+            this.ctlGroupProperties = new OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerGroupProperties();
+            this.ctlLayerProperties = new OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerProperties();
+            this.bgColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -506,12 +506,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            // 
-            // bgColor
-            // 
-            resources.ApplyResources(this.bgColor, "bgColor");
-            this.bgColor.Name = "bgColor";
-            this.bgColor.SelectedIndexChanged += new System.EventHandler(this.bgColor_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -647,21 +641,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
-            // 
-            // ctlFiniteDisplayScales
-            // 
-            resources.ApplyResources(this.ctlFiniteDisplayScales, "ctlFiniteDisplayScales");
-            this.ctlFiniteDisplayScales.Name = "ctlFiniteDisplayScales";
-            // 
-            // ctlGroupProperties
-            // 
-            resources.ApplyResources(this.ctlGroupProperties, "ctlGroupProperties");
-            this.ctlGroupProperties.Name = "ctlGroupProperties";
-            // 
-            // ctlLayerProperties
-            // 
-            resources.ApplyResources(this.ctlLayerProperties, "ctlLayerProperties");
-            this.ctlLayerProperties.Name = "ctlLayerProperties";
             // 
             // label9
             // 
@@ -826,6 +805,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             // lstDrawOrder
             // 
+            this.lstDrawOrder.AllowDrop = true;
             this.lstDrawOrder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             resources.ApplyResources(this.lstDrawOrder, "lstDrawOrder");
@@ -837,6 +817,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.lstDrawOrder.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstDrawOrder_MouseDoubleClick);
             this.lstDrawOrder.SelectedIndexChanged += new System.EventHandler(this.lstDrawOrder_SelectedIndexChanged);
             this.lstDrawOrder.SizeChanged += new System.EventHandler(this.lstDrawOrder_SizeChanged);
+            this.lstDrawOrder.DragDrop += new System.Windows.Forms.DragEventHandler(this.lstDrawOrder_DragDrop);
+            this.lstDrawOrder.DragEnter += new System.Windows.Forms.DragEventHandler(this.lstDrawOrder_DragEnter);
             // 
             // columnHeader1
             // 
@@ -920,7 +902,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.trvBaseLayerGroups.ImageList = this.TreeImages;
             this.trvBaseLayerGroups.Name = "trvBaseLayerGroups";
             this.trvBaseLayerGroups.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvBaseLayerGroups_NodeMouseDoubleClick);
+            this.trvBaseLayerGroups.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvBaseLayerGroups_DragDrop);
             this.trvBaseLayerGroups.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvBaseLayerGroups_AfterSelect);
+            this.trvBaseLayerGroups.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvBaseLayerGroups_DragEnter);
             // 
             // BaseLayerGroupToolStrip
             // 
@@ -1030,6 +1014,27 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.LayerToolbarImages.Images.SetKeyName(5, "");
             this.LayerToolbarImages.Images.SetKeyName(6, "MoveLayerBottom.ico");
             this.LayerToolbarImages.Images.SetKeyName(7, "MoveLayerTop.ico");
+            // 
+            // ctlFiniteDisplayScales
+            // 
+            resources.ApplyResources(this.ctlFiniteDisplayScales, "ctlFiniteDisplayScales");
+            this.ctlFiniteDisplayScales.Name = "ctlFiniteDisplayScales";
+            // 
+            // ctlGroupProperties
+            // 
+            resources.ApplyResources(this.ctlGroupProperties, "ctlGroupProperties");
+            this.ctlGroupProperties.Name = "ctlGroupProperties";
+            // 
+            // ctlLayerProperties
+            // 
+            resources.ApplyResources(this.ctlLayerProperties, "ctlLayerProperties");
+            this.ctlLayerProperties.Name = "ctlLayerProperties";
+            // 
+            // bgColor
+            // 
+            resources.ApplyResources(this.bgColor, "bgColor");
+            this.bgColor.Name = "bgColor";
+            this.bgColor.SelectedIndexChanged += new System.EventHandler(this.bgColor_SelectedIndexChanged);
             // 
             // MapEditor
             // 
@@ -1466,86 +1471,203 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		{
 			string[] resources = m_editor.BrowseResource("LayerDefinition", true);
 			if (resources != null && resources.Length > 0)
-			{
-                OSGeo.MapGuide.MaestroAPI.MapLayerType lastItem = null;
+                AddLayers(resources);
+		}
 
-                foreach (string layerid in resources)
+        private void AddLayers(string[] resources)
+        {
+            OSGeo.MapGuide.MaestroAPI.MapLayerType lastItem = null;
+
+            foreach (string layerid in resources)
+            {
+                bool add = LayerDoesNotExistOnMap(layerid);
+
+                if (!add)
+                    continue;
+
+                if (tabLayers.SelectedTab == tabDrawOrder)
                 {
-                    ArrayList layers = new ArrayList();
-                    layers.AddRange(m_map.Layers);
-                    if (m_map.BaseMapDefinition != null && m_map.BaseMapDefinition.BaseMapLayerGroup != null)
-                        foreach (MaestroAPI.BaseMapLayerGroupCommonType g in m_map.BaseMapDefinition.BaseMapLayerGroup)
-                            layers.AddRange(g.BaseMapLayer);
-
-                    bool add = true;
-                    foreach (OSGeo.MapGuide.MaestroAPI.BaseMapLayerType layer in layers)
-                        if (layer.ResourceId == layerid)
-                        {
-                            if (MessageBox.Show(this, string.Format(Strings.MapEditor.DuplicateLayerInclusionConfirmation, layerid), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
-                            {
-                                add = false;
-                                break;
-                            }
-                        }
-
-                    if (!add)
-                        continue;
-
-                    OSGeo.MapGuide.MaestroAPI.MapLayerType maplayer = new OSGeo.MapGuide.MaestroAPI.MapLayerType();
-                    maplayer.ResourceId = layerid;
-                    maplayer.Name = maplayer.LegendLabel = new MaestroAPI.ResourceIdentifier(layerid).Name;
-                    maplayer.Visible = true;
-                    maplayer.ShowInLegend = true;
-                    maplayer.ExpandInLegend = true;
-                    maplayer.Selectable = false; //Better for performance
-
-                    if (tabLayers.SelectedTab == tabLayerGroups && trvLayerGroups.SelectedNode != null)
-                    {
-                        if (trvLayerGroups.SelectedNode.Tag is MaestroAPI.MapLayerGroupType)
-                            maplayer.Group = (trvLayerGroups.SelectedNode.Tag as MaestroAPI.MapLayerGroupType).Name;
-                        else if (trvLayerGroups.SelectedNode.Tag is MaestroAPI.MapLayerType)
-                            maplayer.Group = (trvLayerGroups.SelectedNode.Tag as MaestroAPI.MapLayerType).Group;
-
-                        int index = 0;
-                        foreach (MaestroAPI.MapLayerType l in m_map.Layers)
-                            if (l.Group == maplayer.Group)
-                                index = Math.Max(index, m_map.Layers.IndexOf(l));
-
-                        if (index <= 0)
-                            m_map.Layers.Add(maplayer);
-                        else
-                            m_map.Layers.Insert(index + 1, maplayer);
-                    }
-                    else
-                        m_map.Layers.Add(maplayer);
+                    OSGeo.MapGuide.MaestroAPI.MapLayerType maplayer = AddMapLayerToModel(layerid, null);
 
                     lastItem = maplayer;
                 }
-
-                if (lastItem != null)
+                else if (tabLayers.SelectedTab == tabLayerGroups)
                 {
-                    m_editor.HasChanged();
-                    UpdateDisplay();
-                    if (tabLayers.SelectedTab == tabLayerGroups)
-                        SelectItemByTag(trvLayerGroups.Nodes, lastItem);
-                    else
-                        foreach (ListViewItem lvi in lstDrawOrder.Items)
-                            if (lvi.Tag == lastItem)
-                            {
-                                lstDrawOrder.SelectedItems.Clear();
-                                lvi.Selected = true;
-                                lvi.EnsureVisible();
-                                break;
-                            }
-                    try
-                    {
-                        ctlLayerProperties.txtLayername.SelectAll();
-                        ctlLayerProperties.txtLayername.Focus();
-                    }
-                    catch { }
+                    TreeNode targetNode = trvLayerGroups.SelectedNode;
+
+                    OSGeo.MapGuide.MaestroAPI.MapLayerType maplayer = AddMapLayerToModel(layerid, targetNode);
+
+                    lastItem = maplayer;
                 }
-			}
-		}
+                else if (tabLayers.SelectedTab == tabBaseLayerGroups)
+                {
+                    TreeNode targetNode = trvBaseLayerGroups.SelectedNode;
+
+                    OSGeo.MapGuide.MaestroAPI.MapLayerType maplayer = AddMapLayerToModel(layerid, targetNode);
+
+                    lastItem = maplayer;
+                }
+            }
+
+            if (lastItem != null)
+            {
+                m_editor.HasChanged();
+                UpdateDisplay();
+                if (tabLayers.SelectedTab == tabLayerGroups)
+                    SelectItemByTag(trvLayerGroups.Nodes, lastItem);
+                else
+                    foreach (ListViewItem lvi in lstDrawOrder.Items)
+                        if (lvi.Tag == lastItem)
+                        {
+                            lstDrawOrder.SelectedItems.Clear();
+                            lvi.Selected = true;
+                            lvi.EnsureVisible();
+                            break;
+                        }
+                try
+                {
+                    ctlLayerProperties.txtLayername.SelectAll();
+                    ctlLayerProperties.txtLayername.Focus();
+                }
+                catch { }
+            }
+        }
+
+        /// <summary>
+        /// Adds a new layer to the map definition model
+        /// </summary>
+        /// <param name="layerid">The layer definition resource id</param>
+        /// <param name="targetNode">An optional TreeNode from the layer groups treeview, that this new layer node will reside under</param>
+        /// <returns></returns>
+        private OSGeo.MapGuide.MaestroAPI.MapLayerType AddMapLayerToModel(string layerid, TreeNode groupNode)
+        {
+            OSGeo.MapGuide.MaestroAPI.MapLayerType maplayer = CreateDefaultMapLayer(layerid);
+
+            if (tabLayers.SelectedTab == tabLayerGroups && groupNode != null)
+            {
+                if (groupNode.Tag is MaestroAPI.MapLayerGroupType)
+                    maplayer.Group = (groupNode.Tag as MaestroAPI.MapLayerGroupType).Name;
+                else if (groupNode.Tag is MaestroAPI.MapLayerType)
+                    maplayer.Group = (groupNode.Tag as MaestroAPI.MapLayerType).Group;
+
+                int index = 0;
+                foreach (MaestroAPI.MapLayerType l in m_map.Layers)
+                    if (l.Group == maplayer.Group)
+                        index = Math.Max(index, m_map.Layers.IndexOf(l));
+
+                if (index <= 0)
+                    m_map.Layers.Add(maplayer);
+                else
+                    m_map.Layers.Insert(index + 1, maplayer);
+            }
+            else if (tabLayers.SelectedTab == tabBaseLayerGroups)
+            {
+                //The map must have one base layer group, if none exists create one
+                //and assign this layer to it. The next UpdateDisplay() will refresh
+                //the UI to reflect these changes.
+
+                MaestroAPI.BaseMapLayerGroupCommonType group = null;
+                if (groupNode != null)
+                {
+                    group = groupNode.Tag as MaestroAPI.BaseMapLayerGroupCommonType;
+                    if (group == null)
+                    {
+                        group = GetSelectedBaseLayerGroup();
+                    }
+                }
+                else
+                {
+                    //Tried to add a base layer without first specifying a folder
+                    group = GetSelectedBaseLayerGroup();
+                }
+
+                //Still no go?
+                if (group == null)
+                {
+                    group = FindFirstBaseMapGroup(null);
+                    
+                    //Guess we need to create one then
+                    if (group == null)
+                    {
+                        //Create and assign
+                        group = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerGroupCommonType();
+                        group.BaseMapLayer = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerTypeCollection();
+                        group.Name = "Base Layer Group"; //TODO: Localize
+                        group.LegendLabel = group.Name;
+                        group.ExpandInLegend = true;
+                        group.ShowInLegend = true;
+                        group.Visible = true;
+
+                        if (m_map.BaseMapDefinition.BaseMapLayerGroup == null)
+                            m_map.BaseMapDefinition.BaseMapLayerGroup = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerGroupCommonTypeCollection();
+
+                        m_map.BaseMapDefinition.BaseMapLayerGroup.Add(group);
+                    }
+                }
+                AddBaseLayers(group, new string[] { layerid });
+            }
+            else
+                m_map.Layers.Add(maplayer);
+            return maplayer;
+        }
+
+        private OSGeo.MapGuide.MaestroAPI.BaseMapLayerGroupCommonType FindFirstBaseMapGroup(TreeNode node)
+        {
+            if (node == null)
+            {
+                foreach (TreeNode n in trvBaseLayerGroups.Nodes)
+                {
+                    MaestroAPI.BaseMapLayerGroupCommonType g = n.Tag as MaestroAPI.BaseMapLayerGroupCommonType;
+                    if (g != null)
+                        return g;
+                }
+                return null;
+            }
+            else
+            {
+                foreach (TreeNode n in node.Nodes)
+                {
+                    MaestroAPI.BaseMapLayerGroupCommonType g = n.Tag as MaestroAPI.BaseMapLayerGroupCommonType;
+                    if (g != null)
+                        return g;
+                }
+                return null;
+            }
+        }
+
+        private static OSGeo.MapGuide.MaestroAPI.MapLayerType CreateDefaultMapLayer(string layerid)
+        {
+            OSGeo.MapGuide.MaestroAPI.MapLayerType maplayer = new OSGeo.MapGuide.MaestroAPI.MapLayerType();
+            maplayer.ResourceId = layerid;
+            maplayer.Name = maplayer.LegendLabel = new MaestroAPI.ResourceIdentifier(layerid).Name;
+            maplayer.Visible = true;
+            maplayer.ShowInLegend = true;
+            maplayer.ExpandInLegend = true;
+            maplayer.Selectable = false; //Better for performance
+            return maplayer;
+        }
+
+        private bool LayerDoesNotExistOnMap(string layerid)
+        {
+
+            ArrayList layers = new ArrayList();
+            layers.AddRange(m_map.Layers);
+            if (m_map.BaseMapDefinition != null && m_map.BaseMapDefinition.BaseMapLayerGroup != null)
+                foreach (MaestroAPI.BaseMapLayerGroupCommonType g in m_map.BaseMapDefinition.BaseMapLayerGroup)
+                    layers.AddRange(g.BaseMapLayer);
+
+            bool add = true;
+            foreach (OSGeo.MapGuide.MaestroAPI.BaseMapLayerType layer in layers)
+                if (layer.ResourceId == layerid)
+                {
+                    if (MessageBox.Show(this, string.Format(Strings.MapEditor.DuplicateLayerInclusionConfirmation, layerid), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
+                    {
+                        add = false;
+                        break;
+                    }
+                }
+            return add;
+        }
 
 		public object Resource
 		{
@@ -1799,47 +1921,187 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void trvLayerGroups_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
 		{
-			TreeNode source = e.Data.GetData(typeof(TreeNode)) as TreeNode;
-
-			if (source == null || source.TreeView != trvLayerGroups || source.Tag == null)
-				e.Effect = DragDropEffects.None;
-			else
-				e.Effect = DragDropEffects.Move;
+            CheckValidDropTarget(e);
 		}
+
+        private void lstDrawOrder_DragEnter(object sender, DragEventArgs e)
+        {
+            CheckValidDropTarget(e);
+        }
+
+        private static void CheckValidDropTarget(DragEventArgs e)
+        {
+            //Only requirement is that it's a TreeNode w/ tagged data.
+            //The actual drop operation will verify whether we can actually
+            //drop the dragged node.
+            TreeNode source = e.Data.GetData(typeof(TreeNode)) as TreeNode;
+
+            if (source == null || source.Tag == null)
+                e.Effect = DragDropEffects.None;
+            else
+                e.Effect = DragDropEffects.Move;
+        }
+
+        private void lstDrawOrder_DragDrop(object sender, DragEventArgs e)
+        {
+            TreeNode source = e.Data.GetData(typeof(TreeNode)) as TreeNode;
+            //Is an external drop
+            if (source.TreeView != trvBaseLayerGroups && source.TreeView != trvLayerGroups)
+            {
+                MaestroAPI.ResourceListResourceDocument doc = source.Tag as MaestroAPI.ResourceListResourceDocument;
+                if (doc != null)
+                {
+                    bool add = LayerDoesNotExistOnMap(doc.ResourceId);
+                    if (add)
+                    {
+                        //TODO: fine-grain drop handling. Right now, it will append to the
+                        //end of the draw order
+                        AddMapLayerToModel(doc.ResourceId, null);
+                        m_editor.HasChanged();
+                        UpdateDisplay();
+                    }
+                }
+            }
+        }
+
+        private void trvBaseLayerGroups_DragEnter(object sender, DragEventArgs e)
+        {
+            CheckValidDropTarget(e);
+        }
+
+        private void trvBaseLayerGroups_DragDrop(object sender, DragEventArgs e)
+        {
+            TreeNode source = e.Data.GetData(typeof(TreeNode)) as TreeNode;
+
+            //Internal drop
+            if (source.TreeView == trvBaseLayerGroups && source.TreeView != trvLayerGroups) 
+            {
+                Point pt = ((TreeView)sender).PointToClient(new Point(e.X, e.Y));
+                TreeNode target = ((TreeView)sender).GetNodeAt(pt);
+
+                if (source == null)
+                    return;
+
+                if (source == target)
+                    return;
+
+                source.Remove();
+
+                string group;
+                if (target == null || target.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerGroupType == null)
+                {
+                    group = "";
+                    trvBaseLayerGroups.Nodes.Add(source);
+                }
+                else
+                {
+                    group = target.Text;
+                    target.Nodes.Add(source);
+                    //If parent is not expanded, expand it so that we have visual confirmation the node was dropped
+                    if (!target.IsExpanded)
+                        target.Expand();
+                }
+
+                if (source.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerGroupType != null)
+                    (source.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerGroupType).Group = group;
+                else if (source.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerType != null)
+                    (source.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerType).Group = group;
+
+                m_editor.HasChanged();
+            }
+            else if (source.TreeView != trvBaseLayerGroups && source.TreeView != trvLayerGroups) //External drop from site explorer
+            {
+                MaestroAPI.ResourceListResourceDocument doc = source.Tag as MaestroAPI.ResourceListResourceDocument;
+                if (doc != null)
+                {
+                    //We only accept layer definition drops
+                    if (doc.ResourceId.EndsWith(".LayerDefinition"))
+                    {
+                        //Create maplayer w/ default valuess
+                        if (LayerDoesNotExistOnMap(doc.ResourceId))
+                        {
+                            Point pt = trvBaseLayerGroups.PointToClient(new Point(e.X, e.Y));
+                            TreeNode target = trvBaseLayerGroups.GetNodeAt(pt);
+                            var layer = AddMapLayerToModel(doc.ResourceId, target);
+                            m_editor.HasChanged();
+                            UpdateDisplay();
+
+                            //UpdateDisplay rebuilds the treenodes, so re-query the node
+                            //and see if it needs expansion
+                            target = trvBaseLayerGroups.GetNodeAt(pt);
+                            if (target != null && target.Nodes.Count > 0 && !target.IsExpanded)
+                                target.Expand();
+                        }
+                    }
+                }
+            }
+        }
 
 		private void trvLayerGroups_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
 		{
 			TreeNode source = e.Data.GetData(typeof(TreeNode)) as TreeNode;
 
-			Point pt = ((TreeView)sender).PointToClient(new Point(e.X, e.Y));
-			TreeNode target = ((TreeView)sender).GetNodeAt(pt);
+            if (source.TreeView == trvLayerGroups) //Internal drop
+            {
+                Point pt = ((TreeView)sender).PointToClient(new Point(e.X, e.Y));
+                TreeNode target = ((TreeView)sender).GetNodeAt(pt);
 
-			if (source == null || source.TreeView != trvLayerGroups)
-				return;
+                if (source == null)
+                    return;
 
-            if (source == target)
-                return;
+                if (source == target)
+                    return;
 
-			source.Remove();
-			
-			string group;
-			if (target == null || target.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerGroupType == null)
-			{
-				group = "";
-				trvLayerGroups.Nodes.Add(source);
-			}
-			else
-			{
-				group = target.Text;
-				target.Nodes.Add(source);
-			}
+                source.Remove();
 
-			if (source.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerGroupType != null)
-				(source.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerGroupType).Group = group;
-			else if (source.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerType != null)
-				(source.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerType).Group = group;
+                string group;
+                if (target == null || target.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerGroupType == null)
+                {
+                    group = "";
+                    trvLayerGroups.Nodes.Add(source);
+                }
+                else
+                {
+                    group = target.Text;
+                    target.Nodes.Add(source);
+                    //If parent is not expanded, expand it so that we have visual confirmation the node was dropped
+                    if (!target.IsExpanded)
+                        target.Expand();
+                }
 
-			m_editor.HasChanged();
+                if (source.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerGroupType != null)
+                    (source.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerGroupType).Group = group;
+                else if (source.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerType != null)
+                    (source.Tag as OSGeo.MapGuide.MaestroAPI.MapLayerType).Group = group;
+
+                m_editor.HasChanged();
+            }
+            else //External drop from site explorer
+            {
+                MaestroAPI.ResourceListResourceDocument doc = source.Tag as MaestroAPI.ResourceListResourceDocument;
+                if (doc != null)
+                {
+                    //We only accept layer definition drops
+                    if (doc.ResourceId.EndsWith(".LayerDefinition"))
+                    {
+                        //Create maplayer w/ default valuess
+                        if (LayerDoesNotExistOnMap(doc.ResourceId))
+                        {
+                            Point pt = trvLayerGroups.PointToClient(new Point(e.X, e.Y));
+                            TreeNode target = trvLayerGroups.GetNodeAt(pt);
+                            var layer = AddMapLayerToModel(doc.ResourceId, target);
+                            m_editor.HasChanged();
+                            UpdateDisplay();
+                            
+                            //UpdateDisplay rebuilds the treenodes, so re-query the node
+                            //and see if it needs expansion
+                            target = trvLayerGroups.GetNodeAt(pt);
+                            if (target != null && target.Nodes.Count > 0 && !target.IsExpanded)
+                                target.Expand();
+                        }
+                    }
+                }
+            }
 		}
 
 		private void SetZoom_Click(object sender, System.EventArgs e)
@@ -2150,15 +2412,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
         private void AddBaseLayerButton_Click(object sender, EventArgs e)
         {
+            AddBaseLayer();
+        }
+
+        private void AddBaseLayer()
+        {
             if (trvBaseLayerGroups.SelectedNode == null)
                 return;
 
-            MaestroAPI.BaseMapLayerGroupCommonType g;
-
-            if (trvBaseLayerGroups.SelectedNode.Parent != null)
-                g = trvBaseLayerGroups.SelectedNode.Parent.Tag as MaestroAPI.BaseMapLayerGroupCommonType;
-            else
-                g = trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerGroupCommonType;
+            MaestroAPI.BaseMapLayerGroupCommonType g = GetSelectedBaseLayerGroup();
 
             if (g == null)
                 return;
@@ -2166,54 +2428,85 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             string[] resources = m_editor.BrowseResource("LayerDefinition", true);
             if (resources != null && resources.Length > 0)
             {
-                OSGeo.MapGuide.MaestroAPI.BaseMapLayerType lastItem = null;
-
-                foreach (string layerid in resources)
-                {
-                    ArrayList layers = new ArrayList();
-                    layers.AddRange(m_map.Layers);
-                    foreach (MaestroAPI.BaseMapLayerGroupCommonType gx in m_map.BaseMapDefinition.BaseMapLayerGroup)
-                        layers.AddRange(gx.BaseMapLayer);
-
-                    bool add = true;
-                    foreach (OSGeo.MapGuide.MaestroAPI.BaseMapLayerType layer in layers)
-                        if (layer.ResourceId == layerid)
-                        {
-                            if (MessageBox.Show(this, string.Format(Strings.MapEditor.DuplicateLayerInclusionConfirmation, layerid), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
-                            {
-                                add = false;
-                                break;
-                            }
-                        }
-
-                    if (!add)
-                        continue;
-
-                    OSGeo.MapGuide.MaestroAPI.BaseMapLayerType maplayer = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerType();
-                    maplayer.ResourceId = layerid;
-                    maplayer.Name = new MaestroAPI.ResourceIdentifier(layerid).Name;
-                    maplayer.ShowInLegend = true;
-                    maplayer.ExpandInLegend = true;
-                    g.BaseMapLayer.Add(maplayer);
-
-                    lastItem = maplayer;
-                }
-
-                if (lastItem != null)
-                {
-                    m_editor.HasChanged();
-                    UpdateDisplay();
-
-                    SelectItemByTag(trvBaseLayerGroups.Nodes, lastItem);
-
-                    try
-                    {
-                        ctlLayerProperties.txtLayername.SelectAll();
-                        ctlLayerProperties.txtLayername.Focus();
-                    }
-                    catch { }
-                }
+                AddBaseLayers(g, resources);
             }
+        }
+
+        private MaestroAPI.BaseMapLayerGroupCommonType GetSelectedBaseLayerGroup()
+        {
+            MaestroAPI.BaseMapLayerGroupCommonType g;
+            if (trvBaseLayerGroups.SelectedNode == null)
+                return null;
+
+            if (trvBaseLayerGroups.SelectedNode.Parent != null)
+                g = trvBaseLayerGroups.SelectedNode.Parent.Tag as MaestroAPI.BaseMapLayerGroupCommonType;
+            else
+                g = trvBaseLayerGroups.SelectedNode.Tag as MaestroAPI.BaseMapLayerGroupCommonType;
+            return g;
+        }
+
+        private void AddBaseLayers(MaestroAPI.BaseMapLayerGroupCommonType g, string[] resources)
+        {
+            OSGeo.MapGuide.MaestroAPI.BaseMapLayerType lastItem = null;
+
+            foreach (string layerid in resources)
+            {
+                bool add = BaseLayerDoesNotExistOnMap(layerid);
+
+                if (!add)
+                    continue;
+
+                OSGeo.MapGuide.MaestroAPI.BaseMapLayerType maplayer = CreateDefaultBaseLayer(layerid);
+                g.BaseMapLayer.Add(maplayer);
+
+                lastItem = maplayer;
+            }
+
+            if (lastItem != null)
+            {
+                m_editor.HasChanged();
+                UpdateDisplay();
+
+                SelectItemByTag(trvBaseLayerGroups.Nodes, lastItem);
+
+                try
+                {
+                    ctlLayerProperties.txtLayername.SelectAll();
+                    ctlLayerProperties.txtLayername.Focus();
+                }
+                catch { }
+            }
+        }
+
+        private static OSGeo.MapGuide.MaestroAPI.BaseMapLayerType CreateDefaultBaseLayer(string layerid)
+        {
+            OSGeo.MapGuide.MaestroAPI.BaseMapLayerType maplayer = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerType();
+            maplayer.ResourceId = layerid;
+            maplayer.Name = new MaestroAPI.ResourceIdentifier(layerid).Name;
+            maplayer.LegendLabel = maplayer.Name;
+            maplayer.ShowInLegend = true;
+            maplayer.ExpandInLegend = true;
+            return maplayer;
+        }
+
+        private bool BaseLayerDoesNotExistOnMap(string layerid)
+        {
+            ArrayList layers = new ArrayList();
+            layers.AddRange(m_map.Layers);
+            foreach (MaestroAPI.BaseMapLayerGroupCommonType gx in m_map.BaseMapDefinition.BaseMapLayerGroup)
+                layers.AddRange(gx.BaseMapLayer);
+
+            bool add = true;
+            foreach (OSGeo.MapGuide.MaestroAPI.BaseMapLayerType layer in layers)
+                if (layer.ResourceId == layerid)
+                {
+                    if (MessageBox.Show(this, string.Format(Strings.MapEditor.DuplicateLayerInclusionConfirmation, layerid), Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
+                    {
+                        add = false;
+                        break;
+                    }
+                }
+            return add;
         }
 
         private void RemoveBaseLayerGroupButton_Click(object sender, EventArgs e)
