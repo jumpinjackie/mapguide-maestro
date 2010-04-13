@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C76FFEBF-F047-4BE8-983C-BF8BF3CFB3D9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -96,18 +96,22 @@
     <EmbeddedResource Include="Strings\BatchSettings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BatchSettings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\Program.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Program.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\Progress.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Progress.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\SetupRun.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SetupRun.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

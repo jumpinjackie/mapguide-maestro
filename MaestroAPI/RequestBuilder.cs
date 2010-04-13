@@ -481,6 +481,23 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return m_hosturi + "?" + EncodeParameters(param);
 		}
 
+        public string ExecuteSqlQuery(string featureSourceID, string sql)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "EXECUTESQLQUERY");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", m_userAgent);
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            param.Add("RESOURCEID", featureSourceID);
+            param.Add("SQL", sql);
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
 		public System.Net.WebRequest SelectFeatures(bool aggregate, string resourceId, string classname, string filter, string[] columns, NameValueCollection computedProperties, System.IO.Stream outStream)
 		{
 			NameValueCollection param = new NameValueCollection();

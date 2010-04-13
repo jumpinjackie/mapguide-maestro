@@ -24,6 +24,7 @@ using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
 using OSGeo.MapGuide.Maestro;
+using OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourcePreview;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors
 {
@@ -54,6 +55,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		private System.Windows.Forms.Button EditExtensions;
         private Panel panel1;
         private Button EditConfigDocButton;
+        private TabPage LocalPreviewPage;
 
 		/// <summary> 
 		/// Required designer variable.
@@ -100,6 +102,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 				CoordinateSystemOverride.SetItem(m_editor, feature);
 			}
+
+            FeatureSourcePreviewCtrl ctl = new FeatureSourcePreviewCtrl(m_editor, ProviderName.Text, m_editor.ResourceId);
+            ctl.Dock = DockStyle.Fill;
+
+            LocalPreviewPage.Controls.Clear();
+            LocalPreviewPage.Controls.Add(ctl);
+
+            //This feature is broken for any MG release < 2.2 so disable it.
+            Version ver = editor.CurrentConnection.SiteVersion;
+            Version supported = new Version(2, 2);
+            if (ver < supported)
+                EditorTab.Controls.Remove(LocalPreviewPage);
+            
 		}
 
 		public FeatureSourceEditorBase(EditorInterface editor)
@@ -287,11 +302,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.label1 = new System.Windows.Forms.Label();
             this.ProviderName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CoordinateSystemOverride = new OSGeo.MapGuide.Maestro.ResourceEditors.CoordinateSystemOverride();
             this.EditJoinPanel = new System.Windows.Forms.Panel();
             this.EditConfigDocButton = new System.Windows.Forms.Button();
             this.EditExtensions = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.CoordinateSystemOverride = new OSGeo.MapGuide.Maestro.ResourceEditors.CoordinateSystemOverride();
+            this.LocalPreviewPage = new System.Windows.Forms.TabPage();
             this.EditorTab.SuspendLayout();
             this.TestConnectionPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -303,6 +319,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.EditorTab.Controls.Add(this.CustomEditorPage);
             this.EditorTab.Controls.Add(this.GenericEditorPage);
+            this.EditorTab.Controls.Add(this.LocalPreviewPage);
             resources.ApplyResources(this.EditorTab, "EditorTab");
             this.EditorTab.Name = "EditorTab";
             this.EditorTab.SelectedIndex = 0;
@@ -312,11 +329,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             resources.ApplyResources(this.CustomEditorPage, "CustomEditorPage");
             this.CustomEditorPage.Name = "CustomEditorPage";
+            this.CustomEditorPage.UseVisualStyleBackColor = true;
             // 
             // GenericEditorPage
             // 
             resources.ApplyResources(this.GenericEditorPage, "GenericEditorPage");
             this.GenericEditorPage.Name = "GenericEditorPage";
+            this.GenericEditorPage.UseVisualStyleBackColor = true;
             // 
             // TestConnectionPanel
             // 
@@ -355,11 +374,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // CoordinateSystemOverride
-            // 
-            resources.ApplyResources(this.CoordinateSystemOverride, "CoordinateSystemOverride");
-            this.CoordinateSystemOverride.Name = "CoordinateSystemOverride";
-            // 
             // EditJoinPanel
             // 
             this.EditJoinPanel.Controls.Add(this.EditConfigDocButton);
@@ -385,6 +399,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.panel1.Controls.Add(this.label1);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // CoordinateSystemOverride
+            // 
+            resources.ApplyResources(this.CoordinateSystemOverride, "CoordinateSystemOverride");
+            this.CoordinateSystemOverride.Name = "CoordinateSystemOverride";
+            // 
+            // LocalPreviewPage
+            // 
+            resources.ApplyResources(this.LocalPreviewPage, "LocalPreviewPage");
+            this.LocalPreviewPage.Name = "LocalPreviewPage";
+            this.LocalPreviewPage.UseVisualStyleBackColor = true;
             // 
             // FeatureSourceEditorBase
             // 

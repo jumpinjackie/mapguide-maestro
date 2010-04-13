@@ -99,7 +99,16 @@ namespace OSGeo.MapGuide.MaestroAPI
 		void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream);
         void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback);
         void SetResourceXmlData(string resourceid, System.IO.Stream stream);
-		FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query);
+
+        /// <summary>
+        /// Executes a SQL query
+        /// </summary>
+        /// <param name="featureSourceID"></param>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        FeatureSetReader ExecuteSqlQuery(string featureSourceID, string sql);
+        
+        FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query);
 		FeatureSetReader QueryFeatureSource(string resourceID, string schema);
 		FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns);
         FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns, NameValueCollection computedProperties);
@@ -407,5 +416,5 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="callback"></param>
         /// <returns>A list of resource IDs that were created from the execution of this load procedure</returns>
         string[] ExecuteLoadProcedure(string resourceID, bool ignoreUnsupportedFeatures, LengthyOperationProgressCallBack callback);
-	}
+    }
 }

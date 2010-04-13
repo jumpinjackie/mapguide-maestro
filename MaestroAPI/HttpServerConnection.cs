@@ -475,6 +475,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 #endif
         }
 
+        public FeatureSetReader ExecuteSqlQuery(string featureSourceID, string sql)
+        {
+            ResourceIdentifier.Validate(featureSourceID, ResourceTypes.FeatureSource);
+            string req = m_reqBuilder.ExecuteSqlQuery(featureSourceID, sql);
+
+            return new FeatureSetReader(this.OpenRead(req));
+        }
 
 		public FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query)
 		{

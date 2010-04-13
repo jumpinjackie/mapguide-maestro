@@ -241,6 +241,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             res.SetResource(new MgResourceIdentifier(resourceid), rC, rH);
 		}
 
+        public FeatureSetReader ExecuteSqlQuery(string featureSourceID, string sql)
+        {
+            MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+            MgSqlDataReader reader = fes.ExecuteSqlQuery(new MgResourceIdentifier(featureSourceID), sql);
+            return new FeatureSetReader(reader);
+        }
+
 		public FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query)
 		{
 			return QueryFeatureSource(resourceID, schema, query, null);

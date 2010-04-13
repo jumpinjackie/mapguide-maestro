@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A47D6F9A-F58D-4A2E-8E88-09CD833A160E}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -269,14 +269,17 @@
     <EmbeddedResource Include="Strings\ApplicationDefinitionEditor.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ApplicationDefinitionEditor.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\EditWidgets.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EditWidgets.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\WidgetDefaults.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>WidgetDefaults.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WidgetEditor.resx">
       <DependentUpon>WidgetEditor.cs</DependentUpon>

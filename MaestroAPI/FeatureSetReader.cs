@@ -55,11 +55,11 @@ namespace OSGeo.MapGuide.MaestroAPI
 			if (m_reader.Name != "xml")
 				throw new Exception("Bad document");
 			m_reader.Read();
-			if (m_reader.Name != "FeatureSet" && m_reader.Name != "PropertySet")
+			if (m_reader.Name != "FeatureSet" && m_reader.Name != "PropertySet" && m_reader.Name != "RowSet")
 				throw new Exception("Bad document");
 
             m_reader.Read();
-            if (m_reader.Name != "xs:schema" && m_reader.Name != "PropertyDefinitions")
+            if (m_reader.Name != "xs:schema" && m_reader.Name != "PropertyDefinitions" && m_reader.Name != "ColumnDefinitions")
                 throw new Exception("Bad document");
 
 			XmlDocument doc = new XmlDocument();
@@ -75,25 +75,30 @@ namespace OSGeo.MapGuide.MaestroAPI
 				lst = doc.SelectNodes("xs:schema/xs:complexType/xs:sequence/xs:element", mgr);
             if (lst.Count == 0)
                 lst = doc.SelectNodes("PropertyDefinitions/PropertyDefinition");
+            if (lst.Count == 0)
+                lst = doc.SelectNodes("ColumnDefinitions/Column");
 			m_columns = new FeatureSetColumn[lst.Count];
 			for(int i = 0;i<lst.Count;i++)
 				m_columns[i] = new FeatureSetColumn(lst[i]);
 
 			m_row = null;
 
-			if (m_reader.Name != "Features" && m_reader.Name != "Properties")
+			if (m_reader.Name != "Features" && m_reader.Name != "Properties" && m_reader.Name != "Rows")
 				throw new Exception("Bad document");
 
 			m_reader.Read();
 
-			if (m_reader.Name == "Features")
-				m_reader = null; //No features :(
-            else if (m_reader.Name == "PropertyCollection")
+            if (m_reader.NodeType != XmlNodeType.EndElement)
             {
-                //OK
+                if (m_reader.Name == "Features")
+                    m_reader = null; //No features :(
+                else if (m_reader.Name == "PropertyCollection" || m_reader.Name == "Row")
+                {
+                    //OK
+                }
+                else if (m_reader.Name != "Feature")
+                    throw new Exception("Bad document");
             }
-            else if (m_reader.Name != "Feature")
-                throw new Exception("Bad document");
 		}
 
 		public FeatureSetColumn[] Columns
@@ -118,7 +123,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			else
 			{
 
-				if (m_reader == null || (m_reader.Name != "Feature" && m_reader.Name != "PropertyCollection"))
+				if (m_reader == null || (m_reader.Name != "Feature" && m_reader.Name != "PropertyCollection" && m_reader.Name != "Row"))
 				{
 					m_row = null;
 					return false;
@@ -128,12 +133,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 				XmlDocument doc = new XmlDocument();
 				doc.LoadXml(xmlfragment);
 
-                if (doc["Feature"] == null)
+                if (doc["Row"] != null)
+                    m_row = new FeatureSetRow(this, doc["Row"]);
+                else if (doc["Feature"] == null)
                     m_row = new FeatureSetRow(this, doc["PropertyCollection"]);
                 else
 				    m_row = new FeatureSetRow(this, doc["Feature"]);
 
-                if (m_reader.Name != "Feature" && m_reader.Name != "PropertyCollection")
+                if (m_reader.Name != "Feature" && m_reader.Name != "PropertyCollection" && m_reader.Name != "Row")
 				{
 					m_reader.Close();
 					m_reader = null;
@@ -175,7 +182,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		internal FeatureSetColumn(XmlNode node)
 		{
-            if (node.Name == "PropertyDefinition")
+            if (node.Name == "PropertyDefinition" || node.Name == "Column")
             {
                 m_name = node["Name"].InnerText;
                 m_allowNull = true;
@@ -229,7 +236,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
             else
             {
-
                 m_name = node.Attributes["name"].Value;
                 m_allowNull = node.Attributes["minOccurs"] != null && node.Attributes["minOccurs"].Value == "0";
                 if (node.Attributes["type"] != null && node.Attributes["type"].Value == "gml:AbstractGeometryType")
@@ -406,25 +412,29 @@ namespace OSGeo.MapGuide.MaestroAPI
 		internal FeatureSetRow(FeatureSetReader parent, XmlNode node)
 			: this(parent)
 		{
-			foreach(XmlNode p in node.SelectNodes("Property"))
-			{
-				int ordinal = GetOrdinal(p["Name"].InnerText);
-				if (!m_nulls[ordinal])
-					throw new Exception("Bad document, multiple: " + p["Name"].InnerText + " values in a single feature");
-				m_nulls[ordinal] = false;
+            string nodeName = "Property";
+            if (node.Name == "Row")
+                nodeName = "Column";
+
+            foreach (XmlNode p in node.SelectNodes(nodeName))
+            {
+                int ordinal = GetOrdinal(p["Name"].InnerText);
+                if (!m_nulls[ordinal])
+                    throw new Exception("Bad document, multiple: " + p["Name"].InnerText + " values in a single feature");
+                m_nulls[ordinal] = false;
 
                 if (parent.Columns[ordinal].Type == typeof(string) || parent.Columns[ordinal].Type == Utility.UnmappedType)
-					m_items[ordinal] = p["Value"].InnerText;
-				else if (parent.Columns[ordinal].Type == typeof(int))
-					m_items[ordinal] = XmlConvert.ToInt32(p["Value"].InnerText);
+                    m_items[ordinal] = p["Value"].InnerText;
+                else if (parent.Columns[ordinal].Type == typeof(int))
+                    m_items[ordinal] = XmlConvert.ToInt32(p["Value"].InnerText);
                 else if (parent.Columns[ordinal].Type == typeof(long))
                     m_items[ordinal] = XmlConvert.ToInt64(p["Value"].InnerText);
                 else if (parent.Columns[ordinal].Type == typeof(short))
-					m_items[ordinal] = XmlConvert.ToInt16(p["Value"].InnerText);
-				else if (parent.Columns[ordinal].Type == typeof(double))
-					m_items[ordinal] = XmlConvert.ToDouble(p["Value"].InnerText);
-				else if (parent.Columns[ordinal].Type == typeof(bool))
-					m_items[ordinal] = XmlConvert.ToBoolean(p["Value"].InnerText);
+                    m_items[ordinal] = XmlConvert.ToInt16(p["Value"].InnerText);
+                else if (parent.Columns[ordinal].Type == typeof(double))
+                    m_items[ordinal] = XmlConvert.ToDouble(p["Value"].InnerText);
+                else if (parent.Columns[ordinal].Type == typeof(bool))
+                    m_items[ordinal] = XmlConvert.ToBoolean(p["Value"].InnerText);
                 else if (parent.Columns[ordinal].Type == typeof(DateTime))
                 {
                     try
@@ -471,7 +481,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 }
                 else
                     throw new Exception("Unknown type: " + parent.Columns[ordinal].Type.FullName);
-			}
+            }
 		}
 
 		private FeatureSetReader m_parent;

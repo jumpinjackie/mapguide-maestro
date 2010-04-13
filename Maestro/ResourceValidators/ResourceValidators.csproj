@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{6CB2368F-3405-4E1D-8773-64CA49630AD4}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -147,22 +147,27 @@
     <EmbeddedResource Include="Strings\ApplicationDefinitionValidator.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ApplicationDefinitionValidator.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\FeatureSourceValidator.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FeatureSourceValidator.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\LayerDefinitionValidator.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LayerDefinitionValidator.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\MapDefinitionValidator.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MapDefinitionValidator.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\WebLayoutValidator.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>WebLayoutValidator.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

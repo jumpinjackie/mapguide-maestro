@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FD40B520-CC1B-41C7-B89B-693E0204EBCC}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -87,14 +87,17 @@
     <EmbeddedResource Include="Strings\BrowseResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BrowseResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\RepositoryCache.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RepositoryCache.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\ResourceTree.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceTree.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

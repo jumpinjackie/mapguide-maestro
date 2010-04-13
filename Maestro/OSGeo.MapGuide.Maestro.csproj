@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F3BADE4F-2581-4B65-9E15-412C294DB973}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -391,14 +391,17 @@
     <EmbeddedResource Include="PackageManager\Strings\AddResourceEntry.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AddResourceEntry.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="PackageManager\Strings\CreatePackage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CreatePackage.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="PackageManager\Strings\PackageEditor.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>PackageEditor.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Profiling.resx">
       <SubType>Designer</SubType>
@@ -416,54 +419,67 @@
     <EmbeddedResource Include="Strings\BoundsPicker.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BoundsPicker.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\BrowseUnmanagedData.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BrowseUnmanagedData.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\EditorInterface.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EditorInterface.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\FormAbout.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FormAbout.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\FormExpression.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FormExpression.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\FormMain.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FormMain.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\LengthyOperation.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LengthyOperation.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\Profiling.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Profiling.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\Program.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Program.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\ResourceEditorMap.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceEditorMap.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\ResourceProperties.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceProperties.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\TemplateNames.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TemplateNames.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\ValidationResults.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ValidationResults.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ValidationResults.resx">
       <SubType>Designer</SubType>

@@ -364,6 +364,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FeatureSourceExtension.resx</DependentUpon>
     </Compile>
+    <Compile Include="FeatureSourcePreview\ClassPreviewCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourcePreview\ClassPreviewCtrl.Designer.cs">
+      <DependentUpon>ClassPreviewCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSourcePreview\FeatureSourcePreviewCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourcePreview\FeatureSourcePreviewCtrl.Designer.cs">
+      <DependentUpon>FeatureSourcePreviewCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSourcePreview\Query\StandardQueryCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourcePreview\Query\StandardQueryCtrl.Designer.cs">
+      <DependentUpon>StandardQueryCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSourcePreview\SchemaViewCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourcePreview\SchemaViewCtrl.Designer.cs">
+      <DependentUpon>SchemaViewCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSourcePreview\SqlPreviewCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSourcePreview\SqlPreviewCtrl.Designer.cs">
+      <DependentUpon>SqlPreviewCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="FiniteDisplayScales.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1209,6 +1239,22 @@
       <LastGenOutput>FeatureSourceExtension.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourcePreview\ClassPreviewCtrl.resx">
+      <DependentUpon>ClassPreviewCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourcePreview\FeatureSourcePreviewCtrl.resx">
+      <DependentUpon>FeatureSourcePreviewCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourcePreview\Query\StandardQueryCtrl.resx">
+      <DependentUpon>StandardQueryCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSourcePreview\SchemaViewCtrl.resx">
+      <DependentUpon>SchemaViewCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="FiniteDisplayScales.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FiniteDisplayScales.cs</DependentUpon>
@@ -1382,6 +1428,10 @@
     <None Include="Resources\GeometryStyleComboDataset.xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FeatureSourcePreview\SqlPreviewCtrl.resx">
+      <DependentUpon>SqlPreviewCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Icons\Unknown.ico" />
     <EmbeddedResource Include="LoadProcedureEditors\AffectedResourceIdsDlg.resx">
       <DependentUpon>AffectedResourceIdsDlg.cs</DependentUpon>
