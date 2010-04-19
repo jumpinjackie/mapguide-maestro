@@ -90,8 +90,13 @@ namespace OSGeo.MapGuide.Maestro
 				if (!m_page.Text.EndsWith("*"))
 					m_page.Text += " *";
 
-			m_editor.UpdateResourceTreeStatus();
+            m_editor.UpdateResourceTreeStatus();
 		}
+
+        public void UpdateResourceStates()
+        {
+            m_editor.UpdateResourceTreeStatus();
+        }
 
 		internal TabPage Page
 		{

@@ -169,6 +169,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			UpdateDisplay();
 		}
 
+        private string sessionPreviewUrl;
+        private string libraryPreviewUrl;
+
 		public void UpdateDisplay()
 		{
 			if (m_isUpdating)
@@ -250,10 +253,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     ContextAddButton.DropDown =
                     TaskAddButton.DropDown = AddItemMenu;
 
-				if (m_editor.Existing)
-					browserURL.Text = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL + "mapviewerajax/?WEBLAYOUT=" + System.Web.HttpUtility.UrlEncode(m_layout.ResourceId);
-				else
-					browserURL.Text = "";
+                if (m_editor.Existing)
+                {
+                    sessionPreviewUrl = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL + "mapviewerajax/?WEBLAYOUT=" + System.Web.HttpUtility.UrlEncode(m_layout.ResourceId) + "&SESSION=" + m_editor.CurrentConnection.SessionID;
+                    libraryPreviewUrl = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL + "mapviewerajax/?WEBLAYOUT=" + System.Web.HttpUtility.UrlEncode(m_editor.ResourceId);
+                    browserURL.Text = libraryPreviewUrl;
+                }
+                else
+                    browserURL.Text = "";
 
 			}
 			finally
@@ -1651,7 +1658,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		public bool Preview()
 		{
-			ShowInBrowser_Click(null, null);
+            SaveSessionCopy();
+            DoPreview(sessionPreviewUrl);
 			return true;
 		}
 
@@ -1987,21 +1995,59 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		
 		}
 
-		private void ShowInBrowser_Click(object sender, System.EventArgs e)
-		{
-			try
-			{
-				m_editor.CurrentConnection.SaveResourceAs(m_layout, m_tempResource);
-				string url = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL + "mapviewerajax/?WEBLAYOUT=" + System.Web.HttpUtility.UrlEncode(m_tempResource) + "&SESSION=" + System.Web.HttpUtility.UrlEncode(m_editor.CurrentConnection.SessionID);
-
+        private void DoPreview(string url)
+        {
+            try 
+            {
                 m_editor.OpenUrl(url);
-			}
-			catch (Exception ex)
-			{
+            }
+            catch (Exception ex)
+            {
                 m_editor.SetLastException(ex);
                 MessageBox.Show(this, String.Format(Strings.LayoutEditor.BrowserLaunchError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
+            }
+        }
+
+		private void ShowInBrowser_Click(object sender, System.EventArgs e)
+		{
+            if (m_editor.IsModified)
+            {
+                var result = MessageBox.Show(Strings.LayoutEditor.UnsavedLayoutPreview, string.Empty, MessageBoxButtons.YesNoCancel);
+
+                //Yes = Save changes then preview
+                //No = Preview original (without unsaved changes)
+                //Cancel = Abort Preview
+                if (result == DialogResult.Cancel)
+                    return;
+
+                if (result == DialogResult.Yes)
+                {
+                    SaveSessionCopy();
+                    SaveLibraryCopy();
+
+                    //HACK: There is no formal interface to unset the editor's dirty state
+                    //Dirty state is simply indicated by the asterisk on the editor's tab
+                    //so remove the asterisk.
+                    var page = this.Parent as TabPage;
+                    if (page != null && page.Text.EndsWith(" *"))
+                        page.Text = page.Text.Substring(0, page.Text.Length - 2);
+
+                    m_editor.UpdateResourceStates();
+                }
+            }
+            DoPreview(libraryPreviewUrl);
 		}
+
+        private void SaveLibraryCopy()
+        {
+            m_editor.CurrentConnection.SaveResourceAs(m_layout, m_editor.ResourceId); //Library copy
+        }
+
+        private void SaveSessionCopy()
+        {
+            //m_editor.CurrentConnection.SaveResourceAs(m_layout, m_tempResource); //Session copy
+            m_editor.CurrentConnection.SaveResource(m_layout); //This is a session copy
+        }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {

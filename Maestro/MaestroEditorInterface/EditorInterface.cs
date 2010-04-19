@@ -56,6 +56,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 		/// </summary>
 		void HasChanged();
 
+        /// <summary>
+        /// Forces a check of the state of all opened resources (to update colors in the Site Explorer)
+        /// </summary>
+        void UpdateResourceStates();
+
 		/// <summary>
 		/// Request a browse dialog for the specified resource type
 		/// </summary>
