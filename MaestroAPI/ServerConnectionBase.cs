@@ -20,6 +20,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
+using System.Text;
+using System.IO;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -227,6 +230,27 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <returns>The deserialized object</returns>
 		virtual public object DeserializeObject(Type type, System.IO.Stream data)
 		{
+            //HACK: MGOS 2.2 outputs different capabilities xml (because it's actually the correct one!), so 
+            //without breaking support against 2.1 and older servers, we transform the xml to its pre-2.2 form
+            if (type == typeof(FdoProviderCapabilities) && this.SiteVersion < new Version(2, 2))
+            {
+                StringBuilder sb = null;
+                using (StreamReader reader = new StreamReader(data))
+                {
+                    sb = new StringBuilder(reader.ReadToEnd());
+                }
+
+                //Pre-2.2 the elements were suffixed with Collection, change the suffix to List
+
+                sb.Replace("FunctionDefinitionCollection>", "FunctionDefinitionList>");
+                sb.Replace("ArgumentDefinitionCollection>", "ArgumentDefinitionList>");
+
+                byte[] bytes = Encoding.UTF8.GetBytes(sb.ToString());
+
+                //Replace the original input stream
+                data = new MemoryStream(bytes);
+            }
+
 			//Must copy stream, because we will be reading it twice :(
 			//Once for validation, and once for deserialization
 			System.IO.MemoryStream ms = new System.IO.MemoryStream();

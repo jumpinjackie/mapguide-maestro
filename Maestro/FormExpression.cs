@@ -130,7 +130,7 @@ namespace OSGeo.MapGuide.Maestro
 
                 //Functions
                 SortedList<string, FdoProviderCapabilitiesExpressionFunctionDefinition> sortedFuncs = new SortedList<string, FdoProviderCapabilitiesExpressionFunctionDefinition>();
-                foreach (FdoProviderCapabilitiesExpressionFunctionDefinition func in caps.Expression.FunctionDefinitionCollection)
+                foreach (FdoProviderCapabilitiesExpressionFunctionDefinition func in caps.Expression.FunctionDefinitionList)
                 {
                     sortedFuncs.Add(func.Name, func);
                 }
@@ -144,7 +144,7 @@ namespace OSGeo.MapGuide.Maestro
                     btn.ToolTipText = func.Description;
                     string fmt = "{0}({1})";
                     List<string> args = new List<string>();
-                    foreach (FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition argDef in func.ArgumentDefinitionCollection)
+                    foreach (FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition argDef in func.ArgumentDefinitionList)
                     {
                         args.Add(argDef.Name.Trim());
                     }
@@ -155,7 +155,7 @@ namespace OSGeo.MapGuide.Maestro
                     };
                     btnFunctions.DropDown.Items.Add(btn);
                 }
-                LoadCompletableFunctions(caps.Expression.FunctionDefinitionCollection);
+                LoadCompletableFunctions(caps.Expression.FunctionDefinitionList);
 
                 //Spatial Operators
                 foreach (FdoProviderCapabilitiesFilterOperation op in caps.Filter.Spatial)
@@ -362,7 +362,7 @@ namespace OSGeo.MapGuide.Maestro
                 if (string.IsNullOrEmpty(_argStr))
                 {
                     List<string> tokens = new List<string>();
-                    foreach (FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition argDef in _func.ArgumentDefinitionCollection)
+                    foreach (FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition argDef in _func.ArgumentDefinitionList)
                     {
                         tokens.Add("[" + argDef.Name.Trim() + "]");
                     }

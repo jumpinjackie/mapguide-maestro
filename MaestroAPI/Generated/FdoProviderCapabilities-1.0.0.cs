@@ -505,7 +505,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("ArgumentDefinition", IsNullable=false)]
-        public FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionCollection ArgumentDefinitionCollection {
+        public FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionCollection ArgumentDefinitionList {
             get {
                 return this.m_argumentDefinitionList;
             }
@@ -578,7 +578,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("FunctionDefinition", IsNullable=false)]
-        public FdoProviderCapabilitiesExpressionFunctionDefinitionCollection FunctionDefinitionCollection {
+        public FdoProviderCapabilitiesExpressionFunctionDefinitionCollection FunctionDefinitionList {
             get {
                 return this.m_functionDefinitionList;
             }
