@@ -409,12 +409,14 @@ namespace OSGeo.MapGuide.MaestroAPI
         T CreateResourceObject<T>();
 
         /// <summary>
-        /// Executes the specified load procedure
+        /// Executes the specified load procedure. If this load procedure has not been executed before,
+        /// it will update the load procedure resource with the list of resource ids created. On subsequent
+        /// executions, it will only create or update resources from this list.
         /// </summary>
         /// <param name="resourceID"></param>
         /// <param name="ignoreUnsupportedFeatures"></param>
         /// <param name="callback"></param>
-        /// <returns>A list of resource IDs that were created from the execution of this load procedure</returns>
+        /// <returns>A list of resource IDs that were created or updated from the execution of this load procedure</returns>
         string[] ExecuteLoadProcedure(string resourceID, bool ignoreUnsupportedFeatures, LengthyOperationProgressCallBack callback);
     }
 }

@@ -128,14 +128,27 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors
         public override string[] GetAffectedResourceIds()
         {
             List<string> affected = new List<string>();
-            foreach (string f in sourceFilesCtrl1.SourceFiles)
+            LoadProcedure lp = this.Resource as LoadProcedure;
+            if (lp != null)
             {
-                string name = System.IO.Path.GetFileNameWithoutExtension(f);
+                SdfLoadProcedureType sdfl = lp.Item as SdfLoadProcedureType;
+                if (sdfl != null && sdfl.ResourceId != null)
+                {
+                    affected.AddRange(sdfl.ResourceId);
+                }
+            }
 
-                if (loadSettingsCtrl1.LoadFeatureSources)
-                    affected.Add(loadSettingsCtrl1.FeatureSourceRootPath + loadSettingsCtrl1.FeatureSourceFolderName + "/" + name + ".FeatureSource");
-                if (loadSettingsCtrl1.LoadLayers)
-                    affected.Add(loadSettingsCtrl1.LayerRootPath + loadSettingsCtrl1.LayerFolderName + "/" + name + ".LayerDefinition");
+            if (affected.Count == 0)
+            {
+                foreach (string f in sourceFilesCtrl1.SourceFiles)
+                {
+                    string name = System.IO.Path.GetFileNameWithoutExtension(f);
+
+                    if (loadSettingsCtrl1.LoadFeatureSources)
+                        affected.Add(loadSettingsCtrl1.FeatureSourceRootPath + loadSettingsCtrl1.FeatureSourceFolderName + "/" + name + ".FeatureSource");
+                    if (loadSettingsCtrl1.LoadLayers)
+                        affected.Add(loadSettingsCtrl1.LayerRootPath + loadSettingsCtrl1.LayerFolderName + "/" + name + ".LayerDefinition");
+                }
             }
             return affected.ToArray();
         }

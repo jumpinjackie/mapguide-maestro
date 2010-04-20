@@ -39,6 +39,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.sourceFilesCtrl1 = new OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors.SourceFilesCtrl();
+            this.lblNote = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numGeneralize)).BeginInit();
@@ -78,6 +79,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.lblNote);
             this.groupBox2.Controls.Add(this.chkConvertSdf);
             this.groupBox2.Controls.Add(this.btnBrowseCS);
             this.groupBox2.Controls.Add(this.numGeneralize);
@@ -172,6 +174,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors
             this.sourceFilesCtrl1.SourceFiles = new string[0];
             this.sourceFilesCtrl1.TabIndex = 0;
             // 
+            // lblNote
+            // 
+            this.lblNote.AutoSize = true;
+            this.lblNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNote.Location = new System.Drawing.Point(6, 72);
+            this.lblNote.Name = "lblNote";
+            this.lblNote.Size = new System.Drawing.Size(311, 13);
+            this.lblNote.TabIndex = 31;
+            this.lblNote.Text = "Note: Disabled features are not supported by Maestro";
+            // 
             // ShpLoadProcedureCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -203,5 +215,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkConvertSdf;
         protected System.Windows.Forms.Button btnBrowseCS;
+        private System.Windows.Forms.Label lblNote;
     }
 }

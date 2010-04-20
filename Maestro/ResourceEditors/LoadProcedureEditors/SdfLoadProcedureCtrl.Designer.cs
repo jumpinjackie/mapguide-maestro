@@ -31,6 +31,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.sourceFilesCtrl1 = new OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors.SourceFilesCtrl();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblNote = new System.Windows.Forms.Label();
             this.cmbSdfDuplicateStrategy = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.numGeneralize = new System.Windows.Forms.NumericUpDown();
@@ -40,6 +41,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.loadSettingsCtrl1 = new OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors.LoadSettingsCtrl();
+            this.lblNote2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numGeneralize)).BeginInit();
@@ -73,6 +75,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.lblNote2);
+            this.groupBox2.Controls.Add(this.lblNote);
             this.groupBox2.Controls.Add(this.cmbSdfDuplicateStrategy);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.numGeneralize);
@@ -86,6 +90,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Transformation";
+            // 
+            // lblNote
+            // 
+            this.lblNote.AutoSize = true;
+            this.lblNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNote.Location = new System.Drawing.Point(6, 98);
+            this.lblNote.Name = "lblNote";
+            this.lblNote.Size = new System.Drawing.Size(311, 13);
+            this.lblNote.TabIndex = 27;
+            this.lblNote.Text = "Note: Disabled features are not supported by Maestro";
             // 
             // cmbSdfDuplicateStrategy
             // 
@@ -185,6 +199,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors
             this.loadSettingsCtrl1.Size = new System.Drawing.Size(586, 102);
             this.loadSettingsCtrl1.TabIndex = 0;
             // 
+            // lblNote2
+            // 
+            this.lblNote2.AutoSize = true;
+            this.lblNote2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNote2.Location = new System.Drawing.Point(6, 117);
+            this.lblNote2.Name = "lblNote2";
+            this.lblNote2.Size = new System.Drawing.Size(497, 13);
+            this.lblNote2.TabIndex = 28;
+            this.lblNote2.Text = "Note: Do not use SDF2 files. Maestro does not support conversion from SDF2 to SDF" +
+                "3";
+            // 
             // SdfLoadProcedureCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,5 +242,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors
         private System.Windows.Forms.NumericUpDown numGeneralize;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbSdfDuplicateStrategy;
+        private System.Windows.Forms.Label lblNote;
+        private System.Windows.Forms.Label lblNote2;
     }
 }

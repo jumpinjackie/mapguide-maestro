@@ -187,6 +187,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors
 
         private void btnLoadResources_Click(object sender, EventArgs e)
         {
+            //Save the current resource before executing it
+            Save("");
+            _ed.CurrentConnection.SaveResourceAs(this.Resource, _resourceID);
+
             WaitForOperation dlg = new WaitForOperation();
             dlg.CancelAbortsThread = true;
 
@@ -213,6 +217,31 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors
             MaestroAPI.ServerConnectionI conn = (MaestroAPI.ServerConnectionI)args[0];
             string lpID = (string)args[1];
             conn.ExecuteLoadProcedure(lpID, true, cb);
+
+            //These would be equal if we're executing an unsaved load procedure
+            if (lpID != _ed.ResourceId)
+            {
+                //Copy current copy to the library version
+                conn.CopyResource(lpID, _ed.ResourceId, true);
+            }
+
+            //If the load procedure was executed for the first time, it would have been
+            //updated with the list of resources generated, so replace the current resource
+            //with the updated one.
+            this.Resource = conn.GetResource(lpID);
+
+            //Update the load procedure editor
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    UpdateDisplay();
+                }));
+            }
+            else
+            {
+                UpdateDisplay();
+            }
 
             return true;
         }
