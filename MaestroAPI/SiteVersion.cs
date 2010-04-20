@@ -26,39 +26,87 @@ namespace OSGeo.MapGuide.MaestroAPI
 	///</summary>
 	public enum KnownSiteVersions
 	{
-		MapGuideEP1_1,
-		MapGuideOS1_1,
-		MapGuideOS1_2,
-		MapGuideEP1_2,
-		MapGuideOS2_0B1,
-		MapGuideOS2_0,
-		MapGuideEP2009,
-        MapGuideOS2_0_2,
-        MapGuideEP2009_SP1,
-        MapGuideEP2010,
-        MapGuideEP2010_SP1,
-        MapGuideOS2_1,
+        /// <summary>
+        /// MapGuide Enterprise 2007
+        /// </summary>
+		MapGuideEP1_1,              
+        /// <summary>
+        /// MapGuide Open Source 1.1.0
+        /// </summary>
+		MapGuideOS1_1,              
+        /// <summary>
+        /// MapGuide Open Source 1.2.0
+        /// </summary>
+		MapGuideOS1_2,              
+        /// <summary>
+        /// MapGuide Enterprise 2008
+        /// </summary>
+		MapGuideEP1_2,              
+        /// <summary>
+        /// MapGuide Open Source 2.0.0 beta 1
+        /// </summary>
+		MapGuideOS2_0B1,            
+        /// <summary>
+        /// MapGuide Open Source 2.0.0
+        /// </summary>
+		MapGuideOS2_0,              
+        /// <summary>
+        /// MapGuide Enterprise 2009
+        /// </summary>
+		MapGuideEP2009,             
+        /// <summary>
+        /// MapGuide Open Source 2.0.2
+        /// </summary>
+        MapGuideOS2_0_2,            
+        /// <summary>
+        /// MapGuide Enterprise 2009 SP1
+        /// </summary>
+        MapGuideEP2009_SP1,         
+        /// <summary>
+        /// MapGuide Enterprise 2010
+        /// </summary>
+        MapGuideEP2010,             
+        /// <summary>
+        /// MapGuide Enterprise 2010 Update 1
+        /// </summary>
+        MapGuideEP2010_SP1,         
+        /// <summary>
+        /// MapGuide Enterprise 2010 Update 1b
+        /// </summary>
+        MapGuideEP2010_SP1b,        
+        /// <summary>
+        /// MapGuide Open Source 2.1.0
+        /// </summary>
+        MapGuideOS2_1,              
 	}
 
 	public class SiteVersions
 	{
-
+        /// <summary>
+        /// The array of supported site versions
+        /// </summary>
 		public static readonly Version[] SiteVersionNumbers = new Version[] 
 		{ 
-			new Version(1,0,0,17864), 
-			new Version(1,1,0,301), 
-			new Version(1,2,0,1307), 
-			new Version(1,2,0,4103), 
-			new Version(2,0,0,1402), 
-			new Version(2,0,0,2308),
-			new Version(2,0,0,3202),
-            new Version(2,0,2,3011),
-            new Version(2,0,2,3402),
-            new Version(2,1,0,3001),
-            new Version(2,1,0,3505),
-            new Version(2,1,0,4283),
+			new Version(1,0,0,17864),   //MGE 2007
+			new Version(1,1,0,301),     //MGOS 1.1.0
+			new Version(1,2,0,1307),    //MGOS 1.2.0
+			new Version(1,2,0,4103),    //MGE 2008
+			new Version(2,0,0,1402),    //MGOS 2.0.0 b1
+			new Version(2,0,0,2308),    //MGOS 2.0.0
+			new Version(2,0,0,3202),    //MGE 2009
+            new Version(2,0,2,3011),    //MGOS 2.0.2
+            new Version(2,0,2,3402),    //MGE 2009 SP1
+            new Version(2,1,0,3001),    //MGE 2010
+            new Version(2,1,0,3505),    //MGE 2010 Update 1
+            new Version(2,1,0,3701),    //MGE 2010 Update 1b
+            new Version(2,1,0,4283),    //MGOS 2.1.0
 		};
 
+        /// <summary>
+        /// Gets the specified version by the known site version identifier
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
 		public static Version GetVersion(KnownSiteVersions index)
 		{
 			return SiteVersionNumbers[(int)index];
