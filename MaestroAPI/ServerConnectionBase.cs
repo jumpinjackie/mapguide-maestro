@@ -242,8 +242,12 @@ namespace OSGeo.MapGuide.MaestroAPI
 
                 //Pre-2.2 the elements were suffixed with Collection, change the suffix to List
 
-                sb.Replace("FunctionDefinitionCollection>", "FunctionDefinitionList>");
-                sb.Replace("ArgumentDefinitionCollection>", "ArgumentDefinitionList>");
+                sb.Replace("<FunctionDefinitionCollection>", "<FunctionDefinitionList>");
+                sb.Replace("</FunctionDefinitionCollection>", "</FunctionDefinitionList>");
+                sb.Replace("<FunctionDefinitionCollection/>", "<FunctionDefinitionList/>");
+                sb.Replace("<ArgumentDefinitionCollection>", "<ArgumentDefinitionList>");
+                sb.Replace("</ArgumentDefinitionCollection>", "</ArgumentDefinitionList>");
+                sb.Replace("<ArgumentDefinitionCollection/>", "<ArgumentDefinitionList/>");
 
                 byte[] bytes = Encoding.UTF8.GetBytes(sb.ToString());
 
