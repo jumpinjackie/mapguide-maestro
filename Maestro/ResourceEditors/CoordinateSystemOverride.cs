@@ -58,6 +58,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private Button RemoveSimpleCoordinateOverrides;
         private ToolStripButton ToggleSimpleModeButton;
         private ToolStrip toolStrip;
+		private ToolStripButton toolStripButton_SelectAll;
 		private FeatureSource m_item = null;
 
 		public CoordinateSystemOverride()
@@ -93,6 +94,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.AddButton = new System.Windows.Forms.ToolStripButton();
             this.DeleteButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton_SelectAll = new System.Windows.Forms.ToolStripButton();
             this.EditButton = new System.Windows.Forms.ToolStripButton();
             this.RefreshButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -121,6 +123,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.AddButton,
             this.DeleteButton,
             this.toolStripSeparator1,
+            this.toolStripButton_SelectAll,
             this.EditButton,
             this.RefreshButton,
             this.toolStripSeparator2,
@@ -148,6 +151,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // toolStripButton_SelectAll
+            // 
+            this.toolStripButton_SelectAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.toolStripButton_SelectAll, "toolStripButton_SelectAll");
+            this.toolStripButton_SelectAll.Name = "toolStripButton_SelectAll";
+            this.toolStripButton_SelectAll.Click += new System.EventHandler(this.toolStripButton_SelectAll_Click);
             // 
             // EditButton
             // 
@@ -189,6 +199,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.SourceHeader,
             this.TargetHeader});
             resources.ApplyResources(this.ProjectionOverrides, "ProjectionOverrides");
+            this.ProjectionOverrides.FullRowSelect = true;
             this.ProjectionOverrides.Name = "ProjectionOverrides";
             this.ProjectionOverrides.UseCompatibleStateImageBehavior = false;
             this.ProjectionOverrides.View = System.Windows.Forms.View.Details;
@@ -319,7 +330,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
 		private void ProjectionOverrides_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			DeleteButton.Enabled = EditButton.Enabled = ProjectionOverrides.SelectedItems.Count == 1;
+			DeleteButton.Enabled = /*EditButton.Enabled =*/ ProjectionOverrides.SelectedItems.Count == 1;
+			EditButton.Enabled = ProjectionOverrides.SelectedItems.Count > 0;
 		}
 
 		private void ProjectionOverrides_DoubleClick(object sender, System.EventArgs e)
@@ -378,9 +390,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            if (ProjectionOverrides.SelectedItems.Count != 1)
+            if (0 == ProjectionOverrides.SelectedItems.Count)
                 return;
-            ListViewItem lvi = ProjectionOverrides.SelectedItems[0];
+
+			if (ProjectionOverrides.SelectedItems.Count > 1)
+			{
+				if (DialogResult.Yes != MessageBox.Show(this, "Are You Sure You Want to Apply Multiple Overrides?", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question ))
+					return;
+			}
+
+			ListViewItem lvi = ProjectionOverrides.SelectedItems[0];
             SpatialContextType sp = lvi.Tag as SpatialContextType;
             if (sp == null)
                 return;
@@ -389,15 +408,37 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
             if (dlg.ShowDialog(this) == DialogResult.OK)
             {
-                lvi.Text = sp.Name;
-                lvi.SubItems[1].Text = sp.CoordinateSystem;
+				if (ProjectionOverrides.SelectedItems.Count == 1)
+				{
+					ProjectionOverrides.SelectedItems[0].Text = sp.Name;
+					ProjectionOverrides.SelectedItems[0].SubItems[1].Text = sp.CoordinateSystem;
+				}
+				else
+				{
+					foreach (ListViewItem lviThis in ProjectionOverrides.SelectedItems)
+					{
+						// do not set name override when more than 1 element
+						// lviThis.Text = sp.Name;
+						lviThis.SubItems[1].Text = sp.CoordinateSystem;
+
+						// with a single selection (above) the SpatialContextType is actually overridden in the CoordinateSystemOverrideDialog
+						// but where we have multiples we need to apply the override to the actual underlying SpatialContextType objects individually
+						SpatialContextType spOverride = lviThis.Tag as SpatialContextType;
+						spOverride.CoordinateSystem = sp.CoordinateSystem;
+					}
+				}
+
                 m_editor.HasChanged();
             }
         }
 
-        private void RefreshButton_Click(object sender, EventArgs e)
-        {
-            try
+		private void RefreshButton_Click(object sender, EventArgs e)
+		{
+			RefreshCoordinateSystems();
+		}
+        private void RefreshCoordinateSystems()
+		{
+			try
             {
 
                 Hashtable ht = new Hashtable();
@@ -423,6 +464,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                         ProjectionOverrides.Items.Add(CreateLviFromSP(spt));
                         ht.Add(sp.Name, null);
                     }
+
+				SelectAllOverrides();
             }
             catch (Exception ex)
             {
@@ -475,8 +518,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 m_editor.SetLastException(ex);
                 MessageBox.Show(this, string.Format(Strings.CoordinateSystemOverride.CoordinateSystemLoadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        
-
         }
 
         private void ToggleExtendedModeButton_Click(object sender, EventArgs e)
@@ -484,6 +525,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             RefreshOverrideList();
             SimpleOverridePanel.Visible = false;
             ProjectionOverrides.Visible = toolStrip.Visible = true;
+
+			RefreshCoordinateSystems();
         }
 
         private void ToggleSimpleModeButton_Click(object sender, EventArgs e)
@@ -594,6 +637,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             if (SourceCoordinateSystem.Text.Length == 0)
                 LoadSimpleSourceProjection_Click(sender, e);
         }
-	
+
+		private void toolStripButton_SelectAll_Click(object sender, EventArgs e)
+		{
+			SelectAllOverrides();
+		}
+
+		private void SelectAllOverrides()
+		{
+			ProjectionOverrides.Focus();
+			foreach (ListViewItem lviThis in ProjectionOverrides.Items)
+				lviThis.Selected = true;
+		}
 	}
 }
