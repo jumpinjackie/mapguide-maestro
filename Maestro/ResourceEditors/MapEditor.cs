@@ -1598,6 +1598,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                         group.ShowInLegend = true;
                         group.Visible = true;
 
+                        if (m_map.BaseMapDefinition == null)
+                            m_map.BaseMapDefinition = new OSGeo.MapGuide.MaestroAPI.MapDefinitionTypeBaseMapDefinition();
+
                         if (m_map.BaseMapDefinition.BaseMapLayerGroup == null)
                             m_map.BaseMapDefinition.BaseMapLayerGroup = new OSGeo.MapGuide.MaestroAPI.BaseMapLayerGroupCommonTypeCollection();
 

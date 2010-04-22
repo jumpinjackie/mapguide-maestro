@@ -103,18 +103,28 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				CoordinateSystemOverride.SetItem(m_editor, feature);
 			}
 
-            FeatureSourcePreviewCtrl ctl = new FeatureSourcePreviewCtrl(m_editor, ProviderName.Text, m_editor.ResourceId);
-            ctl.Dock = DockStyle.Fill;
+            //This stuff is not applicable to raster providers
+            string provider = feature.Provider.ToUpper();
+            if (!provider.StartsWith("OSGEO.GDAL") &&
+                !provider.StartsWith("OSGEO.WMS") &&
+                !provider.StartsWith("AUTODESK.RASTER"))
+            {
+                FeatureSourcePreviewCtrl ctl = new FeatureSourcePreviewCtrl(m_editor, ProviderName.Text, m_editor.ResourceId);
+                ctl.Dock = DockStyle.Fill;
 
-            LocalPreviewPage.Controls.Clear();
-            LocalPreviewPage.Controls.Add(ctl);
+                LocalPreviewPage.Controls.Clear();
+                LocalPreviewPage.Controls.Add(ctl);
 
-            //This feature is broken for any MG release < 2.2 so disable it.
-            Version ver = editor.CurrentConnection.SiteVersion;
-            Version supported = new Version(2, 2);
-            if (ver < supported)
+                //This feature is broken for any MG release < 2.2 so disable it.
+                Version ver = editor.CurrentConnection.SiteVersion;
+                Version supported = new Version(2, 2);
+                if (ver < supported)
+                    EditorTab.Controls.Remove(LocalPreviewPage);
+            }
+            else
+            {
                 EditorTab.Controls.Remove(LocalPreviewPage);
-            
+            }
 		}
 
 		public FeatureSourceEditorBase(EditorInterface editor)
