@@ -193,6 +193,9 @@ namespace OSGeo.MapGuide.Maestro
             this.EditAsXmlMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.LoadFromXmlMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveXmlAsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.FindReplaceMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.FindReplaceChildrenMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.CutMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.CopyMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -202,7 +205,6 @@ namespace OSGeo.MapGuide.Maestro
             this.DeleteMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.NewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.RenameMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.FindReplaceMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ResourceTreeToolbar = new System.Windows.Forms.ToolStrip();
             this.AddResourceButton = new System.Windows.Forms.ToolStripDropDownButton();
@@ -270,8 +272,6 @@ namespace OSGeo.MapGuide.Maestro
             this.TabPageTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.SaveAsXmlDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenXmlFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.FindReplaceChildrenMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -391,6 +391,21 @@ namespace OSGeo.MapGuide.Maestro
             resources.ApplyResources(this.SaveXmlAsMenu, "SaveXmlAsMenu");
             this.SaveXmlAsMenu.Click += new System.EventHandler(this.SaveXmlAsMenu_Click);
             // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            resources.ApplyResources(this.toolStripSeparator10, "toolStripSeparator10");
+            // 
+            // FindReplaceMenu
+            // 
+            this.FindReplaceMenu.Name = "FindReplaceMenu";
+            resources.ApplyResources(this.FindReplaceMenu, "FindReplaceMenu");
+            // 
+            // FindReplaceChildrenMenu
+            // 
+            this.FindReplaceChildrenMenu.Name = "FindReplaceChildrenMenu";
+            resources.ApplyResources(this.FindReplaceChildrenMenu, "FindReplaceChildrenMenu");
+            // 
             // menuItem1
             // 
             this.menuItem1.Name = "menuItem1";
@@ -441,11 +456,6 @@ namespace OSGeo.MapGuide.Maestro
             this.RenameMenu.Name = "RenameMenu";
             resources.ApplyResources(this.RenameMenu, "RenameMenu");
             this.RenameMenu.Click += new System.EventHandler(this.RenameMenu_Click);
-            // 
-            // FindReplaceMenu
-            // 
-            this.FindReplaceMenu.Name = "FindReplaceMenu";
-            resources.ApplyResources(this.FindReplaceMenu, "FindReplaceMenu");
             // 
             // openToolStripMenuItem
             // 
@@ -935,16 +945,6 @@ namespace OSGeo.MapGuide.Maestro
             // OpenXmlFileDialog
             // 
             resources.ApplyResources(this.OpenXmlFileDialog, "OpenXmlFileDialog");
-            // 
-            // FindReplaceChildrenMenu
-            // 
-            this.FindReplaceChildrenMenu.Name = "FindReplaceChildrenMenu";
-            resources.ApplyResources(this.FindReplaceChildrenMenu, "FindReplaceChildrenMenu");
-            // 
-            // toolStripSeparator10
-            // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            resources.ApplyResources(this.toolStripSeparator10, "toolStripSeparator10");
             // 
             // FormMain
             // 
