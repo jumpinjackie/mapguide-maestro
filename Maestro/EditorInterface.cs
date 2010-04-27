@@ -50,7 +50,7 @@ namespace OSGeo.MapGuide.Maestro
 			EditorInterfaceConstructor(editor, page, resid, exisiting, szFind, szReplace);
 		}
 
-		public void EditorInterfaceConstructor(FormMain editor, TabPage page, string resid, bool exisiting, String szFind, String szReplace)
+		private void EditorInterfaceConstructor(FormMain editor, TabPage page, string resid, bool exisiting, String szFind, String szReplace)
 		{
 			m_szFind = szFind;
 			m_szReplace = szReplace;
