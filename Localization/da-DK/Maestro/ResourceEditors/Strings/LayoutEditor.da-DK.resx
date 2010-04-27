@@ -145,4 +145,8 @@
     <value>Der kan ikke oprettes undermenuer i arbejdslisten</value>
     <comment>An error message that is displayed if the user attempts to insert a submenu in the taskbar</comment>
   </data>
+  <data name="UnsavedLayoutPreview" xml:space="preserve">
+    <value>The Web Layout has unsaved changes. If you do not save, the original version of the Web Layout will be shown. Save first before viewing?</value>
+    <comment>en "View in browser" is clicked with unsaved changes</comment>
+  </data>
 </root>

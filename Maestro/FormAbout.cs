@@ -282,7 +282,7 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void PayPalImage_Click(object sender, System.EventArgs e)
 		{
-			Program.OpenUrl("https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=paypal%40hexad%2edk&item_name=Maestro&no_shipping=2&no_note=1&tax=0&currency_code=EUR&lc=DK&bn=PP%2dDonationsBF&charset=UTF%2d8");
+            Program.OpenUrl("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jumpinjackie%40gmail%2ecom&lc=AU&item_name=MapGuide%20Maestro%20Project&currency_code=AUD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted");
 		}
 
 		private void linkLabel_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)

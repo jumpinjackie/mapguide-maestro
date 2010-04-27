@@ -186,4 +186,8 @@ Do you want to save the map?</value>
     <value>An error occured while reading the layers projection: {0}</value>
     <comment>An error message that is displayed if an error occurs while reading the data projection</comment>
   </data>
+  <data name="LayerExtentMissingError" xml:space="preserve">
+    <value>No extent data was found for the layer.</value>
+    <comment>An error message that is displayed if the layer has no extent data.</comment>
+  </data>
 </root>

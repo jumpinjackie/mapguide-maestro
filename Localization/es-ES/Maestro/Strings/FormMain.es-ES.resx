@@ -280,4 +280,15 @@ Do you want to save the resources before closing?</value>
     <value>Error ocurrido mientras abrías el editor xml: {0}</value>
     <comment>An error message that is displayed if an error occurs while loading the xml editor</comment>
   </data>
+  <data name="WindowTitleTemplate" xml:space="preserve">
+    <value>{0} - {1}</value>
+    <comment>A template used to set the window title, {0} is the application name (MapGuide Maestro) {1} is the host URL</comment>
+  </data>
+  <data name="NativeConnectionName" xml:space="preserve">
+    <value>Native with Web.Config</value>
+    <comment>The name used for the connection if the connection type is native</comment>
+  </data>
+  <data name="FindReplaceTooltip" xml:space="preserve">
+    <value>Find any strings that match the pattern {0} and replace it with {1}</value>
+  </data>
 </root>

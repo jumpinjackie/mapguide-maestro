@@ -153,4 +153,12 @@
     <value>Sammensat symbol</value>
     <comment>The name of the compound Symbol Definition template</comment>
   </data>
+  <data name="Shp_Load_Procedure" xml:space="preserve">
+    <value>SHP Load Procedure</value>
+    <comment>The name of the default SHP Load Procedure template</comment>
+  </data>
+  <data name="Sdf_Load_Procedure" xml:space="preserve">
+    <value>SDF Load Procedure</value>
+    <comment>The name of the default SDF Load Procedure template</comment>
+  </data>
 </root>

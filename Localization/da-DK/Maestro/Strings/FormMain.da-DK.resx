@@ -288,4 +288,7 @@ Vil du gemme ændringerne før programmet lukkes?</value>
     <value>Native med Web.Config</value>
     <comment>The name used for the connection if the connection type is native</comment>
   </data>
+  <data name="FindReplaceTooltip" xml:space="preserve">
+    <value>Find any strings that match the pattern {0} and replace it with {1}</value>
+  </data>
 </root>
