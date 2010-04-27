@@ -23,6 +23,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace OSGeo.MapGuide.Maestro
 {
@@ -128,11 +129,17 @@ namespace OSGeo.MapGuide.Maestro
         private ToolStripSeparator toolStripSeparator9;
         private ToolStripMenuItem validateResourcesToolStripMenuItem;
         private ToolStripMenuItem RenameMenu;
+		
+		private ToolStripMenuItem FindReplaceMenu;
+		
         private ToolStripMenuItem openToolStripMenuItem;
         private ToolStripMenuItem DuplicateMenu;
         private SaveFileDialog SaveAsXmlDialog;
         private OpenFileDialog OpenXmlFileDialog;
         private ToolStripMenuItem MainMenuCloseAll;
+        private ToolStripMenuItem OpenAllChildrenMenu;
+        private ToolStripSeparator toolStripSeparator10;
+        private ToolStripMenuItem FindReplaceChildrenMenu;
         private string m_lastTabPageTooltip;
 
         public FormMain()
@@ -182,6 +189,7 @@ namespace OSGeo.MapGuide.Maestro
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.validateResourcesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem7 = new System.Windows.Forms.ToolStripSeparator();
+            this.OpenAllChildrenMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.EditAsXmlMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.LoadFromXmlMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveXmlAsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -194,6 +202,7 @@ namespace OSGeo.MapGuide.Maestro
             this.DeleteMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.NewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.RenameMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.FindReplaceMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ResourceTreeToolbar = new System.Windows.Forms.ToolStrip();
             this.AddResourceButton = new System.Windows.Forms.ToolStripDropDownButton();
@@ -261,6 +270,8 @@ namespace OSGeo.MapGuide.Maestro
             this.TabPageTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.SaveAsXmlDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenXmlFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.FindReplaceChildrenMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -302,9 +313,13 @@ namespace OSGeo.MapGuide.Maestro
             this.toolStripSeparator9,
             this.validateResourcesToolStripMenuItem,
             this.menuItem7,
+            this.OpenAllChildrenMenu,
             this.EditAsXmlMenu,
             this.LoadFromXmlMenu,
             this.SaveXmlAsMenu,
+            this.toolStripSeparator10,
+            this.FindReplaceMenu,
+            this.FindReplaceChildrenMenu,
             this.menuItem1,
             this.CutMenu,
             this.CopyMenu,
@@ -351,6 +366,12 @@ namespace OSGeo.MapGuide.Maestro
             // 
             this.menuItem7.Name = "menuItem7";
             resources.ApplyResources(this.menuItem7, "menuItem7");
+            // 
+            // OpenAllChildrenMenu
+            // 
+            this.OpenAllChildrenMenu.Name = "OpenAllChildrenMenu";
+            resources.ApplyResources(this.OpenAllChildrenMenu, "OpenAllChildrenMenu");
+            this.OpenAllChildrenMenu.Click += new System.EventHandler(this.EditAsXmlMenu_Click);
             // 
             // EditAsXmlMenu
             // 
@@ -420,6 +441,11 @@ namespace OSGeo.MapGuide.Maestro
             this.RenameMenu.Name = "RenameMenu";
             resources.ApplyResources(this.RenameMenu, "RenameMenu");
             this.RenameMenu.Click += new System.EventHandler(this.RenameMenu_Click);
+            // 
+            // FindReplaceMenu
+            // 
+            this.FindReplaceMenu.Name = "FindReplaceMenu";
+            resources.ApplyResources(this.FindReplaceMenu, "FindReplaceMenu");
             // 
             // openToolStripMenuItem
             // 
@@ -910,6 +936,16 @@ namespace OSGeo.MapGuide.Maestro
             // 
             resources.ApplyResources(this.OpenXmlFileDialog, "OpenXmlFileDialog");
             // 
+            // FindReplaceChildrenMenu
+            // 
+            this.FindReplaceChildrenMenu.Name = "FindReplaceChildrenMenu";
+            resources.ApplyResources(this.FindReplaceChildrenMenu, "FindReplaceChildrenMenu");
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            resources.ApplyResources(this.toolStripSeparator10, "toolStripSeparator10");
+            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
@@ -1079,10 +1115,44 @@ namespace OSGeo.MapGuide.Maestro
 
 			this.Refresh();
 
+            try
+            {
+                InitFindReplaceContextMenu();
+            }
+            catch { }
+
             //Auto reloads tree
             ResourceTree.Cache = new OSGeo.MapGuide.Maestro.ResourceBrowser.RepositoryCache(m_connection, m_editors);
             ResourceTree.Cache.CacheResetEvent += new EventHandler(Cache_CacheResetEvent);
 		}
+
+        private void InitFindReplaceContextMenu()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load("FindReplaceStrings.xml");
+
+            XmlNodeList strings = doc.SelectNodes("//Strings/String");
+            foreach (XmlNode str in strings)
+            {
+                try
+                {
+                    string find = str["Find"].InnerText;
+                    string repl = str["Replace"].InnerText;
+
+                    string tooltip = string.Format(Strings.FormMain.FindReplaceTooltip, find, repl);
+
+                    EventHandler handler = (sender, e) => { FindReplaceMenu_Click(find, repl); };
+
+                    var item = FindReplaceMenu.DropDown.Items.Add(repl, null, handler);
+                    item.ToolTipText = tooltip;
+
+                    //Can't reuse item references for different menus
+                    var item2 = FindReplaceChildrenMenu.DropDown.Items.Add(repl, null, handler);
+                    item2.ToolTipText = tooltip;
+                }
+                catch { }
+            }
+        }
 
         void Cache_CacheResetEvent(object sender, EventArgs e)
         {
@@ -1173,6 +1243,10 @@ namespace OSGeo.MapGuide.Maestro
 
 		public void OpenResource(string resourceID, System.Type ControlType)
 		{
+			OpenResource( resourceID, ControlType, null, null);
+		}
+		public void OpenResource(string resourceID, System.Type ControlType, String szFind, String szReplace)
+		{
 			if (!m_userControls.ContainsKey(resourceID))
 			{
 				System.Type ClassDef = ControlType;
@@ -1182,12 +1256,20 @@ namespace OSGeo.MapGuide.Maestro
 				if (ClassDef == null)
 					ClassDef = typeof(ResourceEditors.XmlEditorControl);
 
+				
+				if (!String.IsNullOrEmpty( szFind))
+					ClassDef = typeof(ResourceEditors.XmlEditorControl);
+				
+
                 if (ClassDef != null)
                 {
                     try
                     {
-                        AddEditTab(ClassDef, resourceID, resourceID.StartsWith("Library://"));
-                    }
+						if (! String.IsNullOrEmpty( szFind))
+							AddEditTab(ClassDef, resourceID, resourceID.StartsWith("Library://"), szFind, szReplace);
+						else
+						    AddEditTab(ClassDef, resourceID, resourceID.StartsWith("Library://"));
+					}
                     catch (Exception ex)
                     {
                         LastException = ex;
@@ -1203,12 +1285,10 @@ namespace OSGeo.MapGuide.Maestro
                 }
                 else
                     MessageBox.Show(this, string.Format(Strings.FormMain.UnknownResourceTypeError, resourceID), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				
 			}
 			
 			if (m_userControls.ContainsKey(resourceID))
 				tabItems.SelectedTab = ((EditorInterface)m_userControls[resourceID]).Page;
-
 		}
 
 
@@ -1227,6 +1307,11 @@ namespace OSGeo.MapGuide.Maestro
 
 		private EditorInterface AddEditTab(System.Type controlType, string resourceID, bool existing)
 		{
+			return AddEditTab(controlType, resourceID, existing, null, null);
+		}
+
+		private EditorInterface AddEditTab(System.Type controlType, string resourceID, bool existing, String szFind, String szReplace)
+		{
 			TabPage tp;
 			if (existing)
 				tp = new TabPage(m_editors.GetResourceNameFromResourceID(resourceID));
@@ -1234,8 +1319,14 @@ namespace OSGeo.MapGuide.Maestro
 				tp = new TabPage(Strings.FormMain.NewResourceName + " *");
 
 			tp.ImageIndex = m_editors.GetImageIndexFromResourceID(resourceID);
-			EditorInterface edi = new EditorInterface(this, tp, resourceID, existing);
-
+			
+			// EditorInterface edi = new EditorInterface(this, tp, resourceID, existing);
+			EditorInterface edi;
+			if (String.IsNullOrEmpty( szFind))
+				edi = new EditorInterface(this, tp, resourceID, existing);
+			else
+				edi = new EditorInterface(this, tp, resourceID, existing, szFind, szReplace);
+			
 			UserControl uc = (UserControl)Activator.CreateInstance(controlType,  new object[] {edi, edi.TempResourceId} );
 
             /*tp.BackgroundImage = new System.Drawing.Bitmap("test.png");
@@ -1290,11 +1381,26 @@ namespace OSGeo.MapGuide.Maestro
                         m.Enabled = true;
             }
 
+            var selNode = ResourceTree.SelectedNode;
+
             PropertiesMenu.Enabled =
-            CopyResourceIdMenu.Enabled = ResourceTree.SelectedNode != null;
-			PasteMenu.Enabled =  (ResourceTree.SelectedNode != null && m_clipboardBuffer != null);
+            CopyResourceIdMenu.Enabled = selNode != null;
+            PasteMenu.Enabled = (selNode != null && m_clipboardBuffer != null);
 			NewMenu.Enabled = true;
 
+            bool isFolder = (selNode != null && selNode.Tag.GetType() == typeof(MaestroAPI.ResourceListResourceFolder));
+
+            EditAsXmlMenu.Enabled = EditAsXmlButton.Enabled = !isFolder;
+
+            SaveXmlAsMenu.Enabled = !isFolder;
+
+            OpenAllChildrenMenu.Enabled = isFolder;
+            OpenAllChildrenMenu.Enabled = isFolder;
+
+            openToolStripMenuItem.Enabled = !isFolder;
+
+            FindReplaceMenu.Enabled = !isFolder;
+            FindReplaceChildrenMenu.Enabled = isFolder;
 		}
 
 		private void SaveXmlAsMenu_Click(object sender, System.EventArgs e)
@@ -2018,11 +2124,20 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void EditAsXmlMenu_Click(object sender, System.EventArgs e)
 		{
+			EditAsXmlMenuClick(null, null);
+		}
+		private void EditAsXmlMenuClick(String szFind)
+		{
+			EditAsXmlMenuClick(szFind, null);
+		}
+		private void EditAsXmlMenuClick(String szFind, String szReplace)
+		{
 			using(new WaitCursor(this))
 			{
 				try
 				{
 					if (ResourceTree.SelectedNode != null && ResourceTree.SelectedNode.Tag != null)
+					{
 						if (ResourceTree.SelectedNode.Tag.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument))
 						{
 							OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument document = (OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument)ResourceTree.SelectedNode.Tag;
@@ -2033,8 +2148,44 @@ namespace OSGeo.MapGuide.Maestro
 									return;
 							}
 
-							OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl));
+							if (!String.IsNullOrEmpty(szFind))
+								OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl), szFind, szReplace);
+							else
+								OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl));
 						}
+						else
+						{
+							if (ResourceTree.SelectedNode.Tag.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceFolder))
+							{
+								if (!ResourceTree.SelectedNode.IsExpanded)
+									ResourceTree.SelectedNode.Expand();
+
+								int iCount = ResourceTree.SelectedNode.Nodes.Count;
+								if (DialogResult.Yes != MessageBox.Show(this, "Are You Sure You Want to Open " + iCount + " Items?", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+									return;
+
+								foreach (TreeNode tnThis in ResourceTree.SelectedNode.Nodes)
+								{
+									// only deal with documents
+									if (tnThis.Tag.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument))
+									{
+										OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument document = (OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument)tnThis.Tag;
+										if (m_userControls.ContainsKey(document.ResourceId))
+										{
+											EditorInterface edi = (EditorInterface)m_userControls[document.ResourceId];
+											if (!edi.Close(true))
+												return;
+										}
+
+										if (!String.IsNullOrEmpty(szFind))
+											OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl), szFind, szReplace);
+										else
+											OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl));
+									}
+								}
+							}
+						}
+					}
 				}
 				catch (Exception ex)
 				{
@@ -2812,6 +2963,25 @@ namespace OSGeo.MapGuide.Maestro
             TreeNode node = ResourceTree.SelectedNode;
             node.BeginEdit();
         }
+
+		private void FindReplaceMenu_Click(String szFind, String szReplace)
+		{
+			TreeNode nodeSel = ResourceTree.SelectedNode;
+			if (null == nodeSel)
+				return;
+
+			string resid = null;
+			if (nodeSel.Tag as MaestroAPI.ResourceListResourceDocument != null)
+				resid = (nodeSel.Tag as MaestroAPI.ResourceListResourceDocument).ResourceId;
+			else if (nodeSel.Tag as MaestroAPI.ResourceListResourceFolder != null)
+				resid = (nodeSel.Tag as MaestroAPI.ResourceListResourceFolder).ResourceId;
+
+			if (null == resid)
+				return;
+	
+			// open for review
+			EditAsXmlMenuClick( szFind, szReplace);
+		}
 
         private void ReloadNode(TreeNode n)
         {

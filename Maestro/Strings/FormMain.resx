@@ -149,6 +149,9 @@ Delete the resource?</value>
     <value>Failed to load editor setup: {0}</value>
     <comment>An error message that is displayed if the editors fail to load</comment>
   </data>
+  <data name="FindReplaceTooltip" xml:space="preserve">
+    <value>Find any strings that match the pattern {0} and replace it with {1}</value>
+  </data>
   <data name="FirstCopyOfName" xml:space="preserve">
     <value>Copy of {0}</value>
     <comment>The name of a new item that is a copy of an existing item</comment>
