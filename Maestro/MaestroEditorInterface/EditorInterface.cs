@@ -170,11 +170,20 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         /// <param name="ex">The exception to register</param>
         void SetLastException(Exception ex);
 
-        /// <summary>
-        /// Returns the actual resourceId for the item.
-        /// Can only be used if Existing is true
-        /// </summary>
-        string ResourceId { get; }
+		/// <summary>
+		/// Returns the actual resourceId for the item.
+		/// Can only be used if Existing is true
+		/// </summary>
+		string ResourceId { get; }
 
+		/// <summary>
+		/// Returns the default "Find" string for the item.
+		/// </summary>
+		string getFind { get; }
+
+		/// <summary>
+		/// Returns the default "Replace" string for the item.
+		/// </summary>
+		string getReplace { get; }
 	}
 }

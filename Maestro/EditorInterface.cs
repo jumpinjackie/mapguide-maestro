@@ -36,9 +36,25 @@ namespace OSGeo.MapGuide.Maestro
 		private static string m_lastPath;
 		public event EventHandler Closing;
 		private bool m_IsClosing = false;
-
+		
+		public string m_szFind;
+		public string m_szReplace;
+		
 		public EditorInterface(FormMain editor, TabPage page, string resid, bool exisiting)
 		{
+			EditorInterfaceConstructor(editor, page, resid, exisiting, null, null);
+		}
+
+		public EditorInterface(FormMain editor, TabPage page, string resid, bool exisiting, String szFind, String szReplace)
+		{
+			EditorInterfaceConstructor(editor, page, resid, exisiting, szFind, szReplace);
+		}
+
+		public void EditorInterfaceConstructor(FormMain editor, TabPage page, string resid, bool exisiting, String szFind, String szReplace)
+		{
+			m_szFind = szFind;
+			m_szReplace = szReplace;
+		
 			m_editor = editor;
 			m_page = page;
 			m_existing = exisiting;
@@ -399,7 +415,11 @@ namespace OSGeo.MapGuide.Maestro
 
         public bool IsModified { get { return m_page.Text.EndsWith(" *"); } }
 
-        public string ResourceId { get { return m_resourceID; } }
+		public string ResourceId { get { return m_resourceID; } }
+
+		public string getFind { get { return m_szFind; } }
+
+        public string getReplace { get { return m_szReplace; } }
 
 		#endregion
 	}

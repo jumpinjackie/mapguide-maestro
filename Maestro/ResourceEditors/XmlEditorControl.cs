@@ -64,6 +64,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ResourceDataEditor resourceDataEditor;
         private ToolStripLabel toolStripLabel1;
         private bool m_modified = false;
+		private ToolStripSeparator toolStripSeparator4;
+		private ToolStripTextBox toolStripTextBox_Find;
+		private ToolStripLabel toolStripLabel_Find;
+		private ToolStripLabel toolStripLabel_Replace;
+		private ToolStripTextBox toolStripTextBox_Replace;
+		private ToolStripButton toolStripButton_FindAndReplace;
+		private ToolStripButton toolStripButton_FindNext;
+		private ToolStripSeparator toolStripSeparator5;
+        private ToolStripSeparator toolStripSeparator6;
         private string m_positionTemplate;
 
 		public XmlEditorControl(EditorInterface editor, string item)
@@ -122,7 +131,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             m_inUpdate = false;
             UpdateDisplay();
-        }
+
+			// set toolbar
+			String szFind = editor.getFind;
+			if (!String.IsNullOrEmpty(szFind))
+				toolStripTextBox_Find.Text = szFind;
+
+			String szReplace = editor.getReplace;
+			if (!String.IsNullOrEmpty(szReplace))
+				toolStripTextBox_Replace.Text = szReplace;
+
+			if ((!String.IsNullOrEmpty(szFind)) && (!String.IsNullOrEmpty(szReplace)))
+				XML_FindAndReplace_Click( szFind, szReplace, false);
+		}
 
 		public XmlEditorControl(EditorInterface editor)
 			: this()
@@ -221,8 +242,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ValidateButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.LaunchExternalEditorButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel_Find = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBox_Find = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButton_FindNext = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel_Replace = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBox_Replace = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButton_FindAndReplace = new System.Windows.Forms.ToolStripButton();
             this.toolbarImages = new System.Windows.Forms.ImageList(this.components);
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.panel2.SuspendLayout();
             this.ResourceDataGroup.SuspendLayout();
             this.LockedMessagePanel.SuspendLayout();
@@ -302,7 +332,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.ValidateButton,
             this.toolStripSeparator3,
             this.LaunchExternalEditorButton,
-            this.toolStripLabel1});
+            this.toolStripSeparator4,
+            this.toolStripLabel1,
+            this.toolStripLabel_Find,
+            this.toolStripTextBox_Find,
+            this.toolStripButton_FindNext,
+            this.toolStripSeparator5,
+            this.toolStripLabel_Replace,
+            this.toolStripTextBox_Replace,
+            this.toolStripButton_FindAndReplace,
+            this.toolStripSeparator6});
             resources.ApplyResources(this.toolBar, "toolBar");
             this.toolBar.Name = "toolBar";
             this.toolBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -371,11 +410,54 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.LaunchExternalEditorButton.Name = "LaunchExternalEditorButton";
             this.LaunchExternalEditorButton.Click += new System.EventHandler(this.LaunchExternalEditorButton_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripLabel1.Name = "toolStripLabel1";
             resources.ApplyResources(this.toolStripLabel1, "toolStripLabel1");
+            // 
+            // toolStripLabel_Find
+            // 
+            this.toolStripLabel_Find.Name = "toolStripLabel_Find";
+            resources.ApplyResources(this.toolStripLabel_Find, "toolStripLabel_Find");
+            // 
+            // toolStripTextBox_Find
+            // 
+            this.toolStripTextBox_Find.Name = "toolStripTextBox_Find";
+            resources.ApplyResources(this.toolStripTextBox_Find, "toolStripTextBox_Find");
+            // 
+            // toolStripButton_FindNext
+            // 
+            resources.ApplyResources(this.toolStripButton_FindNext, "toolStripButton_FindNext");
+            this.toolStripButton_FindNext.Name = "toolStripButton_FindNext";
+            this.toolStripButton_FindNext.Click += new System.EventHandler(this.toolStripButton_FindNext_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
+            // 
+            // toolStripLabel_Replace
+            // 
+            this.toolStripLabel_Replace.Name = "toolStripLabel_Replace";
+            resources.ApplyResources(this.toolStripLabel_Replace, "toolStripLabel_Replace");
+            // 
+            // toolStripTextBox_Replace
+            // 
+            this.toolStripTextBox_Replace.Name = "toolStripTextBox_Replace";
+            resources.ApplyResources(this.toolStripTextBox_Replace, "toolStripTextBox_Replace");
+            // 
+            // toolStripButton_FindAndReplace
+            // 
+            this.toolStripButton_FindAndReplace.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.toolStripButton_FindAndReplace, "toolStripButton_FindAndReplace");
+            this.toolStripButton_FindAndReplace.Name = "toolStripButton_FindAndReplace";
+            this.toolStripButton_FindAndReplace.Click += new System.EventHandler(this.toolStripButton_FindAndReplace_Click);
             // 
             // toolbarImages
             // 
@@ -388,6 +470,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolbarImages.Images.SetKeyName(4, "");
             this.toolbarImages.Images.SetKeyName(5, "");
             this.toolbarImages.Images.SetKeyName(6, "");
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
             // 
             // XmlEditorControl
             // 
@@ -702,5 +789,90 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             if (e.Button != MouseButtons.None)
                 UpdateTextPosition();
         }
-    }
+
+		private void toolStripButton_FindAndReplace_Click(object sender, EventArgs e)
+		{
+			String szFind = toolStripTextBox_Find.Text;
+			if (String.IsNullOrEmpty(szFind))
+			{
+				MessageBox.Show(this, "Cannot Find an Empty String", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				toolStripTextBox_Find.Focus();
+				return;
+			}
+			String szReplace = toolStripTextBox_Replace.Text;
+			if (String.IsNullOrEmpty(szFind))
+			{
+				MessageBox.Show(this, "Cannot Replace an Empty String", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				toolStripTextBox_Replace.Focus();
+				return;
+			}
+
+			XML_FindAndReplace_Click(szFind, szReplace, true);
+		}
+		public void XML_FindAndReplace_Click( String szFind, String szReplace, bool kFromUI)
+		{
+			// find start 
+			int iStartSearching = textEditor.SelectionStart;
+			if (textEditor.SelectionLength > 0)
+				iStartSearching++;
+
+			System.Text.RegularExpressions.Regex regexThis = new System.Text.RegularExpressions.Regex(szFind, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+			System.Text.RegularExpressions.Match matchThis = regexThis.Match(textEditor.Text, iStartSearching);
+
+			// look by regex, then simple find
+			String szFindInstance = "";
+			if (matchThis.Success)
+			{
+				int iRegExStart = matchThis.Index;
+				int iRegExLength = matchThis.Length;
+
+				// TODO: this is a rubbish hack for single occurrance - there is probably a better RegEx way to find/replace
+				szFindInstance = matchThis.ToString();
+			}
+			else
+			{
+				if (textEditor.Text.IndexOf(szFind, iStartSearching, StringComparison.OrdinalIgnoreCase) < 0)
+				{
+					if (kFromUI)
+						MessageBox.Show(this, "Failed to Find Another Item", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+					return;
+				}
+				szFindInstance = szFind;
+			}
+
+			String szHighlight;
+			if (String.IsNullOrEmpty(szReplace))
+				szHighlight = szFindInstance;
+			else
+			{
+				textEditor.Text = textEditor.Text.Replace(szFindInstance, szReplace);
+				szHighlight = szReplace;
+			}
+
+			int iFound = textEditor.Text.IndexOf(szHighlight, iStartSearching);
+			if (iFound > -1)
+			{
+				textEditor.Focus();
+				textEditor.Select(iFound, szHighlight.Length);
+				UpdateTextPosition();
+                textEditor.ScrollToCaret();
+
+				if (!String.IsNullOrEmpty(szReplace))
+					m_editor.HasChanged();
+			}
+		}
+
+		private void toolStripButton_FindNext_Click(object sender, EventArgs e)
+		{
+			String szFind = toolStripTextBox_Find.Text;
+			if (String.IsNullOrEmpty(szFind))
+			{
+				MessageBox.Show(this, "Cannot Find an Empty String", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				toolStripTextBox_Find.Focus();
+				return;
+			}
+
+			XML_FindAndReplace_Click(szFind, null, true);
+		}
+	}
 }
