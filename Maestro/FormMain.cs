@@ -1368,19 +1368,6 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void TreeContextMenu_Popup(object sender, CancelEventArgs e)
 		{
-			if (ResourceTree.SelectedNode == null || ResourceTree.SelectedNode.Tag == null)
-			{
-				foreach(ToolStripItem m in TreeContextMenu.Items)
-                    if (m as ToolStripMenuItem != null)
-					    m.Enabled = false;
-			}
-			else
-			{
-                foreach (ToolStripItem m in TreeContextMenu.Items)
-                    if (m as ToolStripMenuItem != null)
-                        m.Enabled = true;
-            }
-
             var selNode = ResourceTree.SelectedNode;
 
             PropertiesMenu.Enabled =
@@ -1388,7 +1375,8 @@ namespace OSGeo.MapGuide.Maestro
             PasteMenu.Enabled = (selNode != null && m_clipboardBuffer != null);
 			NewMenu.Enabled = true;
 
-            bool isFolder = (selNode != null && selNode.Tag.GetType() == typeof(MaestroAPI.ResourceListResourceFolder));
+            bool isRoot = (selNode != null && selNode.Level == 0);
+            bool isFolder = isRoot || (selNode != null && selNode.Tag.GetType() == typeof(MaestroAPI.ResourceListResourceFolder));
 
             EditAsXmlMenu.Enabled = EditAsXmlButton.Enabled = !isFolder;
 
@@ -1401,6 +1389,9 @@ namespace OSGeo.MapGuide.Maestro
 
             FindReplaceMenu.Enabled = !isFolder;
             FindReplaceChildrenMenu.Enabled = isFolder;
+
+            DeleteMenu.Enabled = !isRoot; //Can't delete the root of the repo
+            RenameMenu.Enabled = !isRoot; //Can't rename either
 		}
 
 		private void SaveXmlAsMenu_Click(object sender, System.EventArgs e)
@@ -2136,55 +2127,87 @@ namespace OSGeo.MapGuide.Maestro
 			{
 				try
 				{
-					if (ResourceTree.SelectedNode != null && ResourceTree.SelectedNode.Tag != null)
+                    bool isRoot = (ResourceTree.SelectedNode != null && ResourceTree.SelectedNode.Level == 0);
+					if (ResourceTree.SelectedNode != null && (ResourceTree.SelectedNode.Tag != null || isRoot))
 					{
-						if (ResourceTree.SelectedNode.Tag.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument))
-						{
-							OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument document = (OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument)ResourceTree.SelectedNode.Tag;
-							if (m_userControls.ContainsKey(document.ResourceId))
-							{
-								EditorInterface edi = (EditorInterface)m_userControls[document.ResourceId];
-								if (!edi.Close(true))
-									return;
-							}
+                        if (!isRoot)
+                        {
+                            if (ResourceTree.SelectedNode.Tag.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument))
+                            {
+                                OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument document = (OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument)ResourceTree.SelectedNode.Tag;
+                                if (m_userControls.ContainsKey(document.ResourceId))
+                                {
+                                    EditorInterface edi = (EditorInterface)m_userControls[document.ResourceId];
+                                    if (!edi.Close(true))
+                                        return;
+                                }
 
-							if (!String.IsNullOrEmpty(szFind))
-								OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl), szFind, szReplace);
-							else
-								OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl));
-						}
-						else
-						{
-							if (ResourceTree.SelectedNode.Tag.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceFolder))
-							{
-								if (!ResourceTree.SelectedNode.IsExpanded)
-									ResourceTree.SelectedNode.Expand();
+                                if (!String.IsNullOrEmpty(szFind))
+                                    OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl), szFind, szReplace);
+                                else
+                                    OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl));
+                            }
+                            else
+                            {
+                                if (ResourceTree.SelectedNode.Tag.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceFolder))
+                                {
+                                    if (!ResourceTree.SelectedNode.IsExpanded)
+                                        ResourceTree.SelectedNode.Expand();
 
-								int iCount = ResourceTree.SelectedNode.Nodes.Count;
-								if (DialogResult.Yes != MessageBox.Show(this, "Are You Sure You Want to Open " + iCount + " Items?", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-									return;
+                                    int iCount = GetDocumentNodeCount(ResourceTree.SelectedNode);
+                                    string msg = string.Format(Strings.FormMain.ConfirmMultipleOpen, iCount);
+                                    if (DialogResult.Yes != MessageBox.Show(this, msg, Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                                        return;
 
-								foreach (TreeNode tnThis in ResourceTree.SelectedNode.Nodes)
-								{
-									// only deal with documents
-									if (tnThis.Tag.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument))
-									{
-										OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument document = (OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument)tnThis.Tag;
-										if (m_userControls.ContainsKey(document.ResourceId))
-										{
-											EditorInterface edi = (EditorInterface)m_userControls[document.ResourceId];
-											if (!edi.Close(true))
-												return;
-										}
+                                    foreach (TreeNode tnThis in ResourceTree.SelectedNode.Nodes)
+                                    {
+                                        // Document nodes are tagged with the ResourceListResourceDocument class
+                                        if (tnThis.Tag.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument))
+                                        {
+                                            OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument document = (OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument)tnThis.Tag;
+                                            if (m_userControls.ContainsKey(document.ResourceId))
+                                            {
+                                                EditorInterface edi = (EditorInterface)m_userControls[document.ResourceId];
+                                                if (!edi.Close(true))
+                                                    return;
+                                            }
 
-										if (!String.IsNullOrEmpty(szFind))
-											OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl), szFind, szReplace);
-										else
-											OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl));
-									}
-								}
-							}
-						}
+                                            if (!String.IsNullOrEmpty(szFind))
+                                                OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl), szFind, szReplace);
+                                            else
+                                                OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            int iCount = GetDocumentNodeCount(ResourceTree.SelectedNode);
+                            string msg = string.Format(Strings.FormMain.ConfirmMultipleOpen, iCount);
+                            if (DialogResult.Yes != MessageBox.Show(this, msg, Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                                return;
+
+                            foreach (TreeNode tnThis in ResourceTree.SelectedNode.Nodes)
+                            {
+                                // only deal with documents
+                                if (tnThis.Tag.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument))
+                                {
+                                    OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument document = (OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument)tnThis.Tag;
+                                    if (m_userControls.ContainsKey(document.ResourceId))
+                                    {
+                                        EditorInterface edi = (EditorInterface)m_userControls[document.ResourceId];
+                                        if (!edi.Close(true))
+                                            return;
+                                    }
+
+                                    if (!String.IsNullOrEmpty(szFind))
+                                        OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl), szFind, szReplace);
+                                    else
+                                        OpenResource(document.ResourceId, typeof(OSGeo.MapGuide.Maestro.ResourceEditors.XmlEditorControl));
+                                }
+                            }
+                        }
 					}
 				}
 				catch (Exception ex)
@@ -2194,6 +2217,20 @@ namespace OSGeo.MapGuide.Maestro
 				}
 			}
 		}
+
+        private static int GetDocumentNodeCount(TreeNode treeNode)
+        {
+            int i = 0;
+            foreach (TreeNode tnThis in treeNode.Nodes)
+            {
+                // Document nodes are tagged with the ResourceListResourceDocument class
+                if (tnThis.Tag != null && tnThis.Tag.GetType() == typeof(OSGeo.MapGuide.MaestroAPI.ResourceListResourceDocument))
+                {
+                    i++;
+                }
+            }
+            return i;
+        }
 
 		private void LoadFromXmlMenu_Click(object sender, System.EventArgs e)
 		{
@@ -2924,6 +2961,8 @@ namespace OSGeo.MapGuide.Maestro
                 resid = (ResourceTree.SelectedNode.Tag as MaestroAPI.ResourceListResourceDocument).ResourceId;
             else if (ResourceTree.SelectedNode.Tag as MaestroAPI.ResourceListResourceFolder != null)
                 resid = (ResourceTree.SelectedNode.Tag as MaestroAPI.ResourceListResourceFolder).ResourceId;
+            else if (ResourceTree.SelectedNode.Level == 0)
+                resid = "Library://";
 
             if (resid == null)
                 return;
@@ -2971,10 +3010,12 @@ namespace OSGeo.MapGuide.Maestro
 				return;
 
 			string resid = null;
-			if (nodeSel.Tag as MaestroAPI.ResourceListResourceDocument != null)
-				resid = (nodeSel.Tag as MaestroAPI.ResourceListResourceDocument).ResourceId;
-			else if (nodeSel.Tag as MaestroAPI.ResourceListResourceFolder != null)
-				resid = (nodeSel.Tag as MaestroAPI.ResourceListResourceFolder).ResourceId;
+            if (nodeSel.Tag as MaestroAPI.ResourceListResourceDocument != null)
+                resid = (nodeSel.Tag as MaestroAPI.ResourceListResourceDocument).ResourceId;
+            else if (nodeSel.Tag as MaestroAPI.ResourceListResourceFolder != null)
+                resid = (nodeSel.Tag as MaestroAPI.ResourceListResourceFolder).ResourceId;
+            else if (nodeSel.Level == 0)
+                resid = "Library://";
 
 			if (null == resid)
 				return;

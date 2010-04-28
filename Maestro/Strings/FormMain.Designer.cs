@@ -61,6 +61,15 @@ namespace OSGeo.MapGuide.Maestro.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to open {0} items?.
+        /// </summary>
+        internal static string ConfirmMultipleOpen {
+            get {
+                return ResourceManager.GetString("ConfirmMultipleOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy {0} of {1}.
         /// </summary>
         internal static string CopyOfName {

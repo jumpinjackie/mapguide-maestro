@@ -49,7 +49,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                     issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, Strings.FeatureSourceValidator.NoSpatialContextWarning));
                 else
                     foreach (MaestroAPI.FdoSpatialContextListSpatialContext c in lst.SpatialContext)
-                        if (c.Extent == null)
+                        if (c.Extent == null || c.Extent.LowerLeftCoordinate == null || c.Extent.UpperRightCoordinate == null)
                             issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, Strings.FeatureSourceValidator.EmptySpatialContextWarning));
                         else if (double.Parse(c.Extent.LowerLeftCoordinate.X, ci) <= -1000000 && double.Parse(c.Extent.LowerLeftCoordinate.Y, ci) <= -1000000 && double.Parse(c.Extent.UpperRightCoordinate.X, ci) >= 1000000 && double.Parse(c.Extent.UpperRightCoordinate.Y, ci) >= 1000000)
                             issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, Strings.FeatureSourceValidator.DefaultSpatialContextWarning));

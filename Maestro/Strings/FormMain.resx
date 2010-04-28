@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConfirmMultipleOpen" xml:space="preserve">
+    <value>Are you sure you want to open {0} items?</value>
+    <comment>A confirmation message that is displayed when opening multiple items for editing</comment>
+  </data>
   <data name="CopyOfName" xml:space="preserve">
     <value>Copy {0} of {1}</value>
     <comment>The name of a new item that is a copy of an existing item</comment>
