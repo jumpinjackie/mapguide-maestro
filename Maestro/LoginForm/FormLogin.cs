@@ -93,6 +93,12 @@ namespace OSGeo.MapGuide.Maestro
 
             base.OnLoad(e);
             rdHttp.Checked = true;
+
+            //Mono = No LocalNativeConnection for you (for now...)
+            if (Environment.OSVersion.Platform == PlatformID.MacOSX || Environment.OSVersion.Platform == PlatformID.Unix)
+            {
+                rdTcpIp.Enabled = false;
+            }
         }
 
         private void OnEnableOk(object sender, EventArgs e)
