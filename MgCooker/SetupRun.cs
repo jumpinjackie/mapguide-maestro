@@ -39,6 +39,12 @@ namespace OSGeo.MapGuide.MgCooker
             InitializeComponent();
         }
 
+        internal SetupRun(string userName, string password, MaestroAPI.ServerConnectionI connection, string[] maps, Dictionary<string, string> args)
+            : this(connection, maps, args)
+        {
+            Username.Text = userName;
+            Password.Text = password;
+        }
 
         public SetupRun(MaestroAPI.ServerConnectionI connection, string[] maps, Dictionary<string, string> args)
             : this()

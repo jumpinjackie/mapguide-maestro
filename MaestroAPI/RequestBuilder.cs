@@ -1151,6 +1151,24 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
+        public string GetTileAnonymous(string mapdefinition, string groupname, int row, int col, int scaleindex, string format)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "GETTILEIMAGE");
+            param.Add("VERSION", "1.2.0");
+            param.Add("USERNAME", "Anonymous");
+            param.Add("PASSWORD", "");
+            param.Add("SCALEINDEX", scaleindex.ToString());
+            param.Add("MAPDEFINITION", mapdefinition);
+            param.Add("FORMAT", format);
+            param.Add("BASEMAPLAYERGROUPNAME", groupname);
+            param.Add("TILECOL", row.ToString());
+            param.Add("TILEROW", col.ToString());
+            param.Add("CLIENTAGENT", m_userAgent);
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
         public System.Net.WebRequest ApplyPackage(System.IO.Stream filestream, Utility.StreamCopyProgressDelegate callback)
         {
             if (m_sessionID == null)

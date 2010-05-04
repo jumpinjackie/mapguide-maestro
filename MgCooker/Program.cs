@@ -160,6 +160,9 @@ namespace OSGeo.MapGuide.MgCooker
 
             MaestroAPI.ServerConnectionI connection = null;
 
+            string[] maps = mapdefinitions.Split(',');
+
+            SetupRun sr = null;
             if (!opts.ContainsKey("username") || (!opts.ContainsKey("mapagent")))
             {
                 if (largs.IndexOf("/commandline") < 0 && largs.IndexOf("commandline") < 0)
@@ -170,6 +173,8 @@ namespace OSGeo.MapGuide.MgCooker
 
                     connection = frm.Connection;
                     mapagent = ((MaestroAPI.HttpServerConnection)connection).ServerURI;
+
+                    sr = new SetupRun(frm.Username, frm.Password, connection, maps, opts);
                 }
             }
 
@@ -184,11 +189,13 @@ namespace OSGeo.MapGuide.MgCooker
                 }
             }
 
-            string[] maps = mapdefinitions.Split(',');
+            
 
             if (largs.IndexOf("batch") < 0 && largs.IndexOf("/batch") < 0)
             {
-                SetupRun sr = new SetupRun(connection, maps, opts);
+                if (sr == null)
+                    sr = new SetupRun(connection, maps, opts);
+
                 sr.ShowDialog();
                 return;
             }

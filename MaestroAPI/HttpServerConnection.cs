@@ -38,6 +38,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 		private Hashtable m_cachedProviderCapabilities = null;
 		private Version m_siteVersion;
 
+        private bool mAnonymousUser = false;
+
 		internal HttpServerConnection()
 			: base()
 		{
@@ -45,6 +47,12 @@ namespace OSGeo.MapGuide.MaestroAPI
 			m_cachedProviderCapabilities = new Hashtable();
 
 		}
+
+        /// <summary>
+        /// Gets whether this connection was initialised with an Anonymous login. If it was, it will return true. 
+        /// If this was not, or it was initialised from an existing session id, then it will return false.
+        /// </summary>
+        public bool IsAnonymous { get { return mAnonymousUser; } }
 
         public const string PARAM_URL = "Url";
         public const string PARAM_SESSION = "SessionId";
@@ -99,6 +107,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             m_username = username;
             m_password = password;
+
+            mAnonymousUser = (username == "Anonymous");
 
             try
             {
@@ -1437,7 +1447,11 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public override System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
         {
-            string req = m_reqBuilder.GetTile(mapdefinition, baselayergroup, row, col, scaleindex, format, m_wc.Credentials == null);
+            string req = string.Empty;
+            if (mAnonymousUser)
+                req = m_reqBuilder.GetTileAnonymous(mapdefinition, baselayergroup, row, col, scaleindex, format);
+            else
+                req = m_reqBuilder.GetTile(mapdefinition, baselayergroup, row, col, scaleindex, format, m_wc.Credentials == null);
             return this.OpenRead(req);
         }
 
