@@ -298,7 +298,7 @@ namespace OSGeo.MapGuide.MgCooker
             // 
             resources.ApplyResources(this.ThreadCount, "ThreadCount");
             this.ThreadCount.Maximum = new decimal(new int[] {
-            20,
+            512,
             0,
             0,
             0});
