@@ -1029,7 +1029,7 @@ namespace OSGeo.MapGuide.Maestro
             frm.Icon = FormMain.MaestroIcon;
 
             frm.StartPosition = FormStartPosition.CenterParent;
-			frm.UseAutoConnect = true;
+			//frm.UseAutoConnect = true;
 
             if (frm.ShowDialog(this) == DialogResult.OK)
                 m_connection = frm.Connection;

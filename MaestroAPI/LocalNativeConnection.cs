@@ -885,6 +885,11 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		#endregion
 
+        public bool SupportsResourcePreviews
+        {
+            get { return false; }
+        }
+
         #region IDisposable Members
 
         public override void Dispose()

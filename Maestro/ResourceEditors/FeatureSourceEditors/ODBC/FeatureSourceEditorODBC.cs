@@ -897,7 +897,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
             Save(null);
             return true; 
         }
-        public bool SupportsPreview { get { return true; } }
+        public bool SupportsPreview { get { return m_editor.CurrentConnection.SupportsResourcePreviews; } }
         public bool SupportsValidate { get { return true; } }
         public bool SupportsProfiling { get { return false; } }
 

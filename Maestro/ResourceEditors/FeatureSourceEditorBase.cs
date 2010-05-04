@@ -530,7 +530,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
             return m_child.ValidateResource(recurse); 
         }
-        public bool SupportsPreview { get { return m_child.SupportsPreview; } }
+        public bool SupportsPreview { get { return m_editor.CurrentConnection.SupportsResourcePreviews && m_child.SupportsPreview; } }
         public bool SupportsValidate { get { return m_child.SupportsValidate; } }
         public bool SupportsProfiling { get { return m_child.SupportsProfiling; } }
 

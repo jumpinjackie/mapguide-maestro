@@ -292,7 +292,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.PostGIS
 
         public bool Profile() { return true; }
         public bool ValidateResource(bool recurse) { return true; }
-        public bool SupportsPreview { get { return true; } }
+        public bool SupportsPreview { get { return m_editor.CurrentConnection.SupportsResourcePreviews; } }
         public bool SupportsValidate { get { return true; } }
         public bool SupportsProfiling { get { return false; } }
     }

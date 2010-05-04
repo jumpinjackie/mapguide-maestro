@@ -1465,5 +1465,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             get { return m_reqBuilder.UserAgent; }
             set { m_reqBuilder.UserAgent = value; }
         }
+
+        public bool SupportsResourcePreviews
+        {
+            get { return true; }
+        }
     }
 }

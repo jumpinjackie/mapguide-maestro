@@ -418,5 +418,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="callback"></param>
         /// <returns>A list of resource IDs that were created or updated from the execution of this load procedure</returns>
         string[] ExecuteLoadProcedure(string resourceID, bool ignoreUnsupportedFeatures, LengthyOperationProgressCallBack callback);
+
+        /// <summary>
+        /// Indicates whether previewing capabilities are possible with this connection
+        /// </summary>
+        bool SupportsResourcePreviews { get; }
     }
 }
