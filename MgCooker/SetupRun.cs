@@ -311,6 +311,9 @@ namespace OSGeo.MapGuide.MgCooker
                 else
                     executable = System.IO.Path.Combine(Application.StartupPath, executable);
 
+                string exeName = System.IO.Path.GetFileName(executable);
+                string exePath = System.IO.Path.GetDirectoryName(executable);
+
                 executable = "\"" + executable + "\"";
 
                 using (System.IO.StreamWriter sw = new System.IO.StreamWriter(saveFileDialog1.FileName))
@@ -325,10 +328,26 @@ namespace OSGeo.MapGuide.MgCooker
                         sw.WriteLine("@echo off");
                     }
 
+                    //If on windows, wrap the exe call in a pushd/popd so that the executable is 
+                    //executed from its own directory
+
+                    if (System.Environment.OSVersion.Platform != PlatformID.MacOSX ||
+                        System.Environment.OSVersion.Platform != PlatformID.Unix)
+                    {
+                        sw.WriteLine("pushd \"" + exePath + "\"");
+                    }
 
                     foreach (Config c in ReadTree())
                     {
-                        sw.Write(executable);
+                        if (System.Environment.OSVersion.Platform != PlatformID.MacOSX ||
+                            System.Environment.OSVersion.Platform != PlatformID.Unix)
+                        {
+                            sw.Write(exeName);
+                        }
+                        else
+                        {
+                            sw.Write(executable);
+                        }
                         sw.Write(" batch");
                         sw.Write(" --mapdefinitions=\"");
                         sw.Write(c.MapDefinition);
@@ -356,6 +375,12 @@ namespace OSGeo.MapGuide.MgCooker
 
                         sw.Write(args.ToString());
                         sw.WriteLine();
+                    }
+
+                    if (System.Environment.OSVersion.Platform != PlatformID.MacOSX ||
+                        System.Environment.OSVersion.Platform != PlatformID.Unix)
+                    {
+                        sw.WriteLine("popd");
                     }
                 }
             }
