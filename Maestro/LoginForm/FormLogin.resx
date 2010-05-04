@@ -143,6 +143,9 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="cmbServerUrl.Location" type="System.Drawing.Point, System.Drawing">
     <value>96, 16</value>
   </data>
@@ -155,9 +158,6 @@
   <data name="cmbServerUrl.Text" xml:space="preserve">
     <value>http://localhost/mapguide/mapagent/mapagent.fcgi</value>
   </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="cmbServerUrl.ToolTip" xml:space="preserve">
     <value>Enter the full URL of the MapAgent service here</value>
   </data>
@@ -456,6 +456,9 @@
   <data name="&gt;&gt;chkSavePassword.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="cmbLanguage.Location" type="System.Drawing.Point, System.Drawing">
     <value>96, 144</value>
   </data>

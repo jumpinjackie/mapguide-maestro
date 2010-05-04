@@ -428,8 +428,11 @@ namespace OSGeo.MapGuide.Maestro
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            btnOK.Enabled = txtPassword.Text.Trim().Length > 0 && cmbServerUrl.Text.Length > 0 && txtUsername.Text.Length > 0;
+            btnOK.Enabled = cmbServerUrl.Text.Length > 0 && txtUsername.Text.Length > 0;
         }
 
+        public string Username { get { return txtUsername.Text; } }
+
+        public string Password { get { return txtPassword.Text; } }
 	}
 }
