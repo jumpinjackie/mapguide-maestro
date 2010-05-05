@@ -29,7 +29,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 	/// <summary>
 	/// Represents a set of results from a query
 	/// </summary>
-	public abstract class FeatureSetReader : IDisposable, IDataReader
+	public abstract class FeatureSetReader : IDisposable, IDataReader, IEnumerable<IDataRecord>
 	{
 		protected FeatureSetColumn[] m_columns;
 		protected FeatureSetRow m_row;
@@ -224,6 +224,48 @@ namespace OSGeo.MapGuide.MaestroAPI
         public object this[int i]
         {
             get { return m_row[GetName(i)]; }
+        }
+
+        internal class FeatureSetRowEnumerator : IEnumerator<IDataRecord>
+        {
+            private FeatureSetReader _parent;
+
+            public FeatureSetRowEnumerator(FeatureSetReader parent)
+            {
+                _parent = parent;
+            }
+
+            public IDataRecord Current
+            {
+                get { return _parent.Row; }
+            }
+
+            public void Dispose() { }
+
+            object System.Collections.IEnumerator.Current
+            {
+                get { return _parent.Row; }
+            }
+
+            public bool MoveNext()
+            {
+                return _parent.Read();
+            }
+
+            public void Reset()
+            {
+                throw new NotSupportedException();
+            }
+        }
+
+        public IEnumerator<IDataRecord> GetEnumerator()
+        {
+            return new FeatureSetRowEnumerator(this);
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return new FeatureSetRowEnumerator(this);
         }
     }
 

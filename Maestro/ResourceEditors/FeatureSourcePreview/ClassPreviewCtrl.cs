@@ -91,10 +91,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourcePreview
                     else
                         table.Columns.Add(col.Name, col.Type);
                 }
-                while (reader.Read())
+                //while (reader.Read())
+                foreach(FeatureSetRow row in reader)
                 {
                     var drow = table.NewRow();
-                    var row = reader.Row;
+                    //var row = reader.Row;
                     foreach (FeatureSetColumn col in reader.Columns)
                     {
                         if (!row.IsValueNull(col.Name))
