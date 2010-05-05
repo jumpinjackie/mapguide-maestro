@@ -110,7 +110,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 				m_columns = new FeatureSetColumn[lst.Count];
 				for(int i = 0;i<lst.Count;i++)
-					m_columns[i] = new FeatureSetColumn(lst[i]);
+                    m_columns[i] = new ClassPropertyColumn(lst[i]);
 
                 XmlNode extension = node.SelectSingleNode("xs:complexContent/xs:extension", mgr);
                 if (extension != null && extension.Attributes["base"] != null)
@@ -137,4 +137,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 			public FeatureSetColumn[] Columns { get { return m_columns; } }
 		}
 	}
+
+    internal class ClassPropertyColumn : XmlFeatureSetColumn
+    {
+        internal ClassPropertyColumn(XmlNode node) : base(node) { }
+    }
 }

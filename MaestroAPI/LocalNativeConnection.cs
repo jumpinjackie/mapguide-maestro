@@ -156,7 +156,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 			get
 			{
 				MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
-				return (FeatureProviderRegistryFeatureProviderCollection) base.DeserializeObject(typeof(ResourceList), Utility.MgStreamToNetStream(fes, fes.GetType().GetMethod("GetFeatureProviders"), new object[] { }));
+                var reg = (FeatureProviderRegistry)base.DeserializeObject(typeof(FeatureProviderRegistry), Utility.MgStreamToNetStream(fes, fes.GetType().GetMethod("GetFeatureProviders"), new object[] { }));
+                return reg.FeatureProvider;
 			}
 		}
 
@@ -188,7 +189,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public FdoProviderCapabilities GetProviderCapabilities(string provider)
 		{
-			MgFeatureService fes = this.Con.CreateService(MgServiceType.ResourceService) as MgFeatureService;
+			MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
 			return (FdoProviderCapabilities) base.DeserializeObject(typeof(FdoProviderCapabilities), Utility.MgStreamToNetStream(fes, fes.GetType().GetMethod("GetCapabilities"), new object[] { provider }));
 		}
 
@@ -205,12 +206,12 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceContent"), new object[] { new MgResourceIdentifier(resourceID) }).ToArray();
 		}
 
-		public override FeatureProviderRegistryFeatureProvider GetFeatureProvider(string providername)
-		{
-			MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
-			System.IO.MemoryStream ms = Utility.MgStreamToNetStream(fes, fes.GetType().GetMethod("GetCapabilities"), new object[] { providername });
-			return (FeatureProviderRegistryFeatureProvider)DeserializeObject(typeof(FeatureProviderRegistryFeatureProvider), ms);
-		}
+        //public override FeatureProviderRegistryFeatureProvider GetFeatureProvider(string providername)
+        //{
+        //    MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+        //    System.IO.MemoryStream ms = Utility.MgStreamToNetStream(fes, fes.GetType().GetMethod("GetCapabilities"), new object[] { providername });
+        //    return (FeatureProviderRegistryFeatureProvider)DeserializeObject(typeof(FeatureProviderRegistryFeatureProvider), ms);
+        //}
 
 		public System.IO.Stream GetMapDWF(string resourceID)
 		{
@@ -245,7 +246,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
             MgSqlDataReader reader = fes.ExecuteSqlQuery(new MgResourceIdentifier(featureSourceID), sql);
-            return new FeatureSetReader(reader);
+            return new MgFeatureSetReader(reader);
         }
 
 		public FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query)
@@ -277,8 +278,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (computedProperties != null && computedProperties.Count > 0)
                 foreach (string s in computedProperties.Keys)
                     mgf.AddComputedProperty(s, computedProperties[s]);
+
+            MgReader mr = fes.SelectFeatures(new MgResourceIdentifier(resourceID), schema, mgf);
+
             
-   			return new FeatureSetReader(fes.SelectFeatures(new MgResourceIdentifier(resourceID), schema, mgf));
+
+   			return new MgFeatureSetReader(mr);
 		}
 
         private FeatureSetReader AggregateQueryFeatureSourceCore(string resourceID, string schema, string query, string[] columns, System.Collections.Specialized.NameValueCollection computedProperties)
@@ -296,7 +301,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 foreach (string s in computedProperties.Keys)
                     mgf.AddComputedProperty(s, computedProperties[s]);
 
-            return new FeatureSetReader(fes.SelectAggregate(new MgResourceIdentifier(resourceID), schema, mgf));
+            return new MgFeatureSetReader(fes.SelectAggregate(new MgResourceIdentifier(resourceID), schema, mgf));
         }
 
         public override FeatureSetReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, string[] columns)

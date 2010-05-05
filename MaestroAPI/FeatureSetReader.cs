@@ -21,284 +21,227 @@ using System;
 using System.IO;
 using System.Xml;
 using Topology.Geometries;
+using System.Data;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
 	/// <summary>
 	/// Represents a set of results from a query
 	/// </summary>
-	public class FeatureSetReader : IDisposable
+	public abstract class FeatureSetReader : IDisposable, IDataReader
 	{
-		private FeatureSetColumn[] m_columns;
-		private FeatureSetRow m_row;
-		private XmlTextReader m_reader;
+		protected FeatureSetColumn[] m_columns;
+		protected FeatureSetRow m_row;
 
-		private OSGeo.MapGuide.MgReader m_rd;
+        protected Dictionary<string, int> _nameOrdinalMap;
 
-		public FeatureSetReader(OSGeo.MapGuide.MgReader rd)
-		{
-			m_rd = rd;
-			m_columns = new FeatureSetColumn[rd.GetPropertyCount()];
-			for(int i = 0; i < m_columns.Length; i++)
-				m_columns[i] = new FeatureSetColumn(rd.GetPropertyName(i), rd.GetPropertyType(rd.GetPropertyName(i)));
+        protected FeatureSetReader() { }
 
-		}
-
-		//TODO: Make internal
-		public FeatureSetReader(Stream m_source)
-		{
-			m_reader = new XmlTextReader(m_source);
-			m_reader.WhitespaceHandling = WhitespaceHandling.Significant;
-
-			//First we extract the response layout
-			m_reader.Read();
-			if (m_reader.Name != "xml")
-				throw new Exception("Bad document");
-			m_reader.Read();
-			if (m_reader.Name != "FeatureSet" && m_reader.Name != "PropertySet" && m_reader.Name != "RowSet")
-				throw new Exception("Bad document");
-
-            m_reader.Read();
-            if (m_reader.Name != "xs:schema" && m_reader.Name != "PropertyDefinitions" && m_reader.Name != "ColumnDefinitions")
-                throw new Exception("Bad document");
-
-			XmlDocument doc = new XmlDocument();
-			doc.LoadXml(m_reader.ReadOuterXml());
-			XmlNamespaceManager mgr = new XmlNamespaceManager(doc.NameTable);
-			mgr.AddNamespace("xs", "http://www.w3.org/2001/XMLSchema");
-			mgr.AddNamespace("gml", "http://www.opengis.net/gml");
-			mgr.AddNamespace("fdo", "http://fdo.osgeo.org/schemas");
-
-			//TODO: Assumes there is only one type returned... perhaps more can be returned....
-			XmlNodeList lst = doc.SelectNodes("xs:schema/xs:complexType/xs:complexContent/xs:extension/xs:sequence/xs:element", mgr);
-			if (lst.Count == 0)
-				lst = doc.SelectNodes("xs:schema/xs:complexType/xs:sequence/xs:element", mgr);
-            if (lst.Count == 0)
-                lst = doc.SelectNodes("PropertyDefinitions/PropertyDefinition");
-            if (lst.Count == 0)
-                lst = doc.SelectNodes("ColumnDefinitions/Column");
-			m_columns = new FeatureSetColumn[lst.Count];
-			for(int i = 0;i<lst.Count;i++)
-				m_columns[i] = new FeatureSetColumn(lst[i]);
-
-			m_row = null;
-
-			if (m_reader.Name != "Features" && m_reader.Name != "Properties" && m_reader.Name != "Rows")
-				throw new Exception("Bad document");
-
-			m_reader.Read();
-
-            if (m_reader.NodeType != XmlNodeType.EndElement)
+        /// <summary>
+        /// Initializes the column array for this reader. Must be called before
+        /// any reading operations commence.
+        /// </summary>
+        /// <param name="cols"></param>
+        protected void InitColumns(FeatureSetColumn[] cols)
+        {
+            m_columns = cols;
+            _nameOrdinalMap = new Dictionary<string, int>();
+            for (int i = 0; i < m_columns.Length; i++)
             {
-                if (m_reader.Name == "Features")
-                    m_reader = null; //No features :(
-                else if (m_reader.Name == "PropertyCollection" || m_reader.Name == "Row")
-                {
-                    //OK
-                }
-                else if (m_reader.Name != "Feature")
-                    throw new Exception("Bad document");
+                _nameOrdinalMap.Add(m_columns[i].Name, i);
             }
-		}
+        }
 
 		public FeatureSetColumn[] Columns
 		{
 			get { return m_columns; }
 		}
 
-		public bool Read()
-		{
-			if (m_rd != null)
-			{
-				bool next = m_rd.ReadNext();
-                if (!next)
-                {
-                    this.Dispose();
-                    return false;
-                }
+        public bool Read()
+        {
+            m_row = null;
+            bool next = ReadInternal();
+            if (next)
+            {
+                m_row = ProcessFeatureRow();
+            }
+            return next;
+        }
 
-				m_row = new FeatureSetRow(this, m_rd);
-				return next;
-			}
-			else
-			{
+        protected abstract bool ReadInternal();
 
-				if (m_reader == null || (m_reader.Name != "Feature" && m_reader.Name != "PropertyCollection" && m_reader.Name != "Row"))
-				{
-					m_row = null;
-					return false;
-				}
-
-				string xmlfragment = m_reader.ReadOuterXml();
-				XmlDocument doc = new XmlDocument();
-				doc.LoadXml(xmlfragment);
-
-                if (doc["Row"] != null)
-                    m_row = new FeatureSetRow(this, doc["Row"]);
-                else if (doc["Feature"] == null)
-                    m_row = new FeatureSetRow(this, doc["PropertyCollection"]);
-                else
-				    m_row = new FeatureSetRow(this, doc["Feature"]);
-
-                if (m_reader.Name != "Feature" && m_reader.Name != "PropertyCollection" && m_reader.Name != "Row")
-				{
-					m_reader.Close();
-					m_reader = null;
-				}
-
-				return true;
-			}
-		}
-
+        protected abstract FeatureSetRow ProcessFeatureRow();
+        
 		public FeatureSetRow Row
 		{
 			get { return m_row; }
 		}
 
+        public virtual void Dispose() { }
 
-        #region IDisposable Members
-
-        public void Dispose()
+        public void Close()
         {
-            if (m_rd != null)
-            {
-                m_rd.Close();
-                m_rd.Dispose();
-                m_rd = null;
-                m_row = null;
-            }
+            CloseInternal();
+            this.IsClosed = true;
         }
 
-        #endregion
+        protected abstract void CloseInternal();
+
+        public abstract int Depth { get; }
+
+        public abstract DataTable GetSchemaTable();
+
+        public bool IsClosed { get; private set; }
+
+        public bool NextResult()
+        {
+            return Read();
+        }
+
+        public abstract int RecordsAffected { get; }
+
+        public int FieldCount
+        {
+            get { return m_columns.Length; }
+        }
+
+        public virtual bool GetBoolean(int i)
+        {
+            return (bool)m_row[GetName(i)];
+        }
+
+        public virtual byte GetByte(int i)
+        {
+            return (byte)m_row[GetName(i)];
+        }
+
+        public virtual long GetBytes(int i, long fieldOffset, byte[] buffer, int bufferoffset, int length)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual char GetChar(int i)
+        {
+            return (char)m_row[GetName(i)];
+        }
+
+        public virtual long GetChars(int i, long fieldoffset, char[] buffer, int bufferoffset, int length)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual IDataReader GetData(int i)
+        {
+            return (IDataReader)m_row[GetName(i)];
+        }
+
+        public virtual string GetDataTypeName(int i)
+        {
+            return m_columns[i].Type.Name;
+        }
+
+        public virtual DateTime GetDateTime(int i)
+        {
+            return (DateTime)m_row[GetName(i)];
+        }
+
+        public virtual decimal GetDecimal(int i)
+        {
+            return (decimal)m_row[GetName(i)];
+        }
+
+        public virtual double GetDouble(int i)
+        {
+            return (double)m_row[GetName(i)];
+        }
+
+        public virtual Type GetFieldType(int i)
+        {
+            return m_columns[i].Type;
+        }
+
+        public float GetFloat(int i)
+        {
+            return (float)m_row[GetName(i)];
+        }
+
+        public virtual Guid GetGuid(int i)
+        {
+            return (Guid)m_row[GetName(i)];
+        }
+
+        public short GetInt16(int i)
+        {
+            return (short)m_row[GetName(i)];
+        }
+
+        public int GetInt32(int i)
+        {
+            return (int)m_row[GetName(i)];
+        }
+
+        public long GetInt64(int i)
+        {
+            return (long)m_row[GetName(i)];
+        }
+
+        public string GetName(int i)
+        {
+            return m_columns[i].Name;
+        }
+
+        public int GetOrdinal(string name)
+        {
+            return _nameOrdinalMap[name];
+        }
+
+        public string GetString(int i)
+        {
+            return (string)m_row[GetName(i)];
+        }
+
+        public object GetValue(int i)
+        {
+            return m_row[GetName(i)];
+        }
+
+        public int GetValues(object[] values)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsDBNull(int i)
+        {
+            return m_row.IsValueNull(i);
+        }
+
+        public object this[string name]
+        {
+            get { return m_row[name]; }
+        }
+
+        public object this[int i]
+        {
+            get { return m_row[GetName(i)]; }
+        }
     }
 
-	public class FeatureSetColumn
+	public abstract class FeatureSetColumn
 	{
-		internal FeatureSetColumn(string name, int type)
-		{
-			m_name = name;
-			m_type = Utility.ConvertMgTypeToNetType(type);
-		}
-
-		internal FeatureSetColumn(XmlNode node)
-		{
-            if (node.Name == "PropertyDefinition" || node.Name == "Column")
-            {
-                m_name = node["Name"].InnerText;
-                m_allowNull = true;
-                switch (node["Type"].InnerText.ToLower().Trim())
-                {
-                    case "string":
-                        m_type = typeof(string);
-                        break;
-                    case "byte":
-                        m_type = typeof(Byte);
-                        break;
-                    case "int32":
-                    case "int":
-                    case "integer":
-                        m_type = typeof(int);
-                        break;
-                    case "int16":
-                        m_type = typeof(short);
-                        break;
-                    case "int64":
-                    case "long":
-                        m_type = typeof(long);
-                        break;
-                    case "float":
-                    case "single":
-                        m_type = typeof(float);
-                        break;
-                    case "double":
-                    case "decimal":
-                        m_type = typeof(double);
-                        break;
-                    case "boolean":
-                    case "bool":
-                        m_type = typeof(bool);
-                        return;
-                    case "datetime":
-                    case "date":
-                        m_type = typeof(DateTime);
-                        break;
-                    case "raster":
-                        m_type = Utility.RasterType;
-                        break;
-                    case "geometry":
-                        m_type = Utility.GeometryType;
-                        break;
-                    default:
-                        //throw new Exception("Failed to find appropriate type for: " + node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value);
-                        m_type = Utility.UnmappedType;
-                        break;
-                }
-            }
-            else
-            {
-                m_name = node.Attributes["name"].Value;
-                m_allowNull = node.Attributes["minOccurs"] != null && node.Attributes["minOccurs"].Value == "0";
-                if (node.Attributes["type"] != null && node.Attributes["type"].Value == "gml:AbstractGeometryType")
-                    m_type = Utility.GeometryType;
-                else if (node["xs:simpleType"] == null)
-                    m_type = Utility.RasterType;
-                else
-                    switch (node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value.ToLower())
-                    {
-                        case "xs:string":
-                            m_type = typeof(string);
-                            break;
-                        case "fdo:byte":
-                            m_type = typeof(Byte);
-                            break;
-                        case "fdo:int32":
-                            m_type = typeof(int);
-                            break;
-                        case "fdo:int16":
-                            m_type = typeof(short);
-                            break;
-                        case "fdo:int64":
-                            m_type = typeof(long);
-                            break;
-                        case "xs:float":
-                        case "xs:single":
-                        case "fdo:single":
-                            m_type = typeof(float);
-                            break;
-                        case "xs:double":
-                        case "xs:decimal":
-                            m_type = typeof(double);
-                            break;
-                        case "xs:boolean":
-                            m_type = typeof(bool);
-                            return;
-                        case "xs:datetime":
-                            m_type = typeof(DateTime);
-                            break;
-                        default:
-                            //throw new Exception("Failed to find appropriate type for: " + node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value);
-                            m_type = Utility.UnmappedType;
-                            break;
-                    }
-            }
-		}
-
-		private string m_name;
-		private Type m_type;
-		private bool m_allowNull;
+		protected string m_name;
+        protected Type m_type;
+        protected bool m_allowNull;
 
 		public string Name { get { return m_name; } }
 		public Type Type { get { return m_type; } }
 	}
 
-	public class FeatureSetRow
+	public abstract class FeatureSetRow : IDataRecord
 	{
         private Topology.IO.WKTReader m_reader = null;
-        
-        private bool m_hasMgReader = true;
-        private Topology.IO.MapGuide.MgReader m_mgReader = null;
 
-        private Topology.IO.WKTReader Reader
+        protected Topology.IO.WKTReader Reader
         {
             get
             {
@@ -308,28 +251,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        private Topology.IO.MapGuide.MgReader MgReader
-        {
-            get
-            {
-                if (m_hasMgReader)
-                {
-                    try
-                    {
-                        m_mgReader = null;
-                        m_mgReader = new Topology.IO.MapGuide.MgReader();
-                    }
-                    catch
-                    {
-                        m_hasMgReader = false;
-                    }
-                }
-
-                return m_mgReader;
-            }
-        }
-
-		private FeatureSetRow(FeatureSetReader parent)
+        protected FeatureSetReader m_parent;
+        protected object[] m_items;
+        protected bool[] m_nulls;
+        protected bool[] m_lazyloadGeometry;
+        
+		protected FeatureSetRow(FeatureSetReader parent)
 		{
 			m_parent = parent;
 			m_items = new object[parent.Columns.Length];
@@ -342,183 +269,19 @@ namespace OSGeo.MapGuide.MaestroAPI
 			}
 		}
 
-		internal FeatureSetRow(FeatureSetReader parent, OSGeo.MapGuide.MgReader rd)
-			: this(parent)
-		{
-			for(int i = 0; i < m_parent.Columns.Length; i++)
-			{
-				string p = m_parent.Columns[i].Name;
-				int ordinal = GetOrdinal(p);
-				m_nulls[ordinal] = rd.IsNull(p);
-
-                if (!m_nulls[ordinal])
-                {
-                    if (parent.Columns[ordinal].Type == typeof(string))
-                        m_items[ordinal] = rd.GetString(p);
-                    else if (parent.Columns[ordinal].Type == typeof(int))
-                        m_items[ordinal] = rd.GetInt32(p);
-                    else if (parent.Columns[ordinal].Type == typeof(long))
-                        m_items[ordinal] = rd.GetInt64(p);
-                    else if (parent.Columns[ordinal].Type == typeof(short))
-                        m_items[ordinal] = rd.GetInt16(p);
-                    else if (parent.Columns[ordinal].Type == typeof(double))
-                        m_items[ordinal] = rd.GetDouble(p);
-                    else if (parent.Columns[ordinal].Type == typeof(float))
-                        m_items[ordinal] = rd.GetSingle(p);
-                    else if (parent.Columns[ordinal].Type == typeof(bool))
-                        m_items[ordinal] = rd.GetBoolean(p);
-                    else if (parent.Columns[ordinal].Type == typeof(DateTime))
-                    {
-                        MgDateTime t = rd.GetDateTime(p);
-                        try
-                        {
-                            m_items[ordinal] = new DateTime(t.Year, t.Month, t.Day, t.Hour, t.Minute, t.Second);
-                        }
-                        catch(Exception ex)
-                        {
-                            //Unfortunately FDO supports invalid dates, such as the 30th feb
-                            m_nulls[ordinal] = true;
-                            m_items[ordinal] = ex;
-                        }
-                    }
-                    else if (parent.Columns[ordinal].Type == Utility.GeometryType)
-                    {
-                        //TODO: Uncomment this once the Topology.Net API gets updated to 2.0.0
-                        //It is optional to include the Topology.IO.MapGuide dll
-                        /*if (this.MgReader != null)
-                            m_items[ordinal] = this.MgReader.ReadGeometry(ref rd, p);
-                        else*/
-                        {
-                            //No MapGuide dll, convert to WKT and then to internal representation
-                            System.IO.MemoryStream ms = Utility.MgStreamToNetStream(rd, rd.GetType().GetMethod("GetGeometry"), new string[] { p });
-                            OSGeo.MapGuide.MgAgfReaderWriter rdw = new OSGeo.MapGuide.MgAgfReaderWriter();
-                            OSGeo.MapGuide.MgGeometry g = rdw.Read(rd.GetGeometry(p));
-                            OSGeo.MapGuide.MgWktReaderWriter rdww = new OSGeo.MapGuide.MgWktReaderWriter();
-                            m_items[ordinal] = this.Reader.Read(rdww.Write(g));
-                        }
-                    }
-                    else if (parent.Columns[ordinal].Type == Utility.UnmappedType)
-                    {
-                        //Attempt to read it as a string
-                        try { m_items[ordinal] = rd.GetString(p); }
-                        catch { m_items[ordinal] = null; }
-                    }
-                    else
-                        throw new Exception("Unknown type: " + parent.Columns[ordinal].Type.FullName);
-                }
-			}
-		}
-
-		internal FeatureSetRow(FeatureSetReader parent, XmlNode node)
-			: this(parent)
-		{
-            string nodeName = "Property";
-            if (node.Name == "Row")
-                nodeName = "Column";
-
-            foreach (XmlNode p in node.SelectNodes(nodeName))
-            {
-                int ordinal = GetOrdinal(p["Name"].InnerText);
-                if (!m_nulls[ordinal])
-                    throw new Exception("Bad document, multiple: " + p["Name"].InnerText + " values in a single feature");
-                m_nulls[ordinal] = false;
-
-                if (parent.Columns[ordinal].Type == typeof(string) || parent.Columns[ordinal].Type == Utility.UnmappedType)
-                    m_items[ordinal] = p["Value"].InnerText;
-                else if (parent.Columns[ordinal].Type == typeof(int))
-                    m_items[ordinal] = XmlConvert.ToInt32(p["Value"].InnerText);
-                else if (parent.Columns[ordinal].Type == typeof(long))
-                    m_items[ordinal] = XmlConvert.ToInt64(p["Value"].InnerText);
-                else if (parent.Columns[ordinal].Type == typeof(short))
-                    m_items[ordinal] = XmlConvert.ToInt16(p["Value"].InnerText);
-                else if (parent.Columns[ordinal].Type == typeof(double))
-                    m_items[ordinal] = XmlConvert.ToDouble(p["Value"].InnerText);
-                else if (parent.Columns[ordinal].Type == typeof(bool))
-                    m_items[ordinal] = XmlConvert.ToBoolean(p["Value"].InnerText);
-                else if (parent.Columns[ordinal].Type == typeof(DateTime))
-                {
-                    try
-                    {
-                        //Fix for broken ODBC provider
-                        string v = p["Value"].InnerText;
-
-                        if (v.Trim().ToUpper().StartsWith("TIMESTAMP"))
-                            v = v.Trim().Substring("TIMESTAMP".Length).Trim();
-                        else if (v.Trim().ToUpper().StartsWith("DATE"))
-                            v = v.Trim().Substring("DATE".Length).Trim();
-                        else if (v.Trim().ToUpper().StartsWith("TIME"))
-                            v = v.Trim().Substring("TIME".Length).Trim();
-
-                        if (v != p["Value"].InnerText)
-                        {
-                            if (v.StartsWith("'"))
-                                v = v.Substring(1);
-                            if (v.EndsWith("'"))
-                                v = v.Substring(0, v.Length - 1);
-
-                            m_items[ordinal] = DateTime.Parse(v, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.NoCurrentDateDefault);
-                        }
-                        else
-                            m_items[ordinal] = XmlConvert.ToDateTime(v, XmlDateTimeSerializationMode.Unspecified);
-                    }
-                    catch (Exception ex)
-                    {
-                        //Unfortunately FDO supports invalid dates, such as the 30th feb
-                        m_nulls[ordinal] = true;
-                        m_items[ordinal] = ex;
-                    }
-                }
-                else if (parent.Columns[ordinal].Type == Utility.GeometryType)
-                {
-                    m_items[ordinal] = p["Value"].InnerText;
-                    if (string.IsNullOrEmpty(p["Value"].InnerText))
-                    {
-                        m_nulls[ordinal] = true;
-                        m_items[ordinal] = null;
-                    }
-                    else
-                        m_lazyloadGeometry[ordinal] = true;
-                }
-                else
-                    throw new Exception("Unknown type: " + parent.Columns[ordinal].Type.FullName);
-            }
-		}
-
-		private FeatureSetReader m_parent;
-		private object[] m_items;
-		private bool[] m_nulls;
-		private bool[] m_lazyloadGeometry;
-
+        [Obsolete("This will be gone in a future release. Use IsDBNull(int i) instead. To get the index use GetOrdinal(string name)")]
 		public bool IsValueNull(string name)
 		{
 			return IsValueNull(GetOrdinal(name));
 		}
 
+        [Obsolete("This will be gone in a future release. Use IsDBNull(int i) instead")]
 		public bool IsValueNull(int index)
 		{
 			if (index >= m_nulls.Length)
 				throw new InvalidOperationException("Index " + index.ToString() + ", was out of bounds");
 			else
 				return m_nulls[index];
-		}
-
-		public object this[int index]
-		{
-			get 
-			{
-				if (index >= m_items.Length)
-					throw new InvalidOperationException("Index " + index.ToString() + ", was out of bounds");
-				else
-				{
-					if (m_lazyloadGeometry[index] && !m_nulls[index])
-					{
-						m_items[index] = this.Reader.Read((string)m_items[index]);
-						m_lazyloadGeometry[index] = false;
-					}
-
-					return m_items[index];
-				}
-			}
 		}
 
 		public int GetOrdinal(string name)
@@ -553,5 +316,123 @@ namespace OSGeo.MapGuide.MaestroAPI
 				return this[GetOrdinal(name)];
 			}
 		}
-	}
+
+        public int FieldCount
+        {
+            get { return m_parent.Columns.Length; }
+        }
+
+        public bool GetBoolean(int i)
+        {
+            return (bool)m_items[i];
+        }
+
+        public byte GetByte(int i)
+        {
+            return (byte)m_items[i];
+        }
+
+        public long GetBytes(int i, long fieldOffset, byte[] buffer, int bufferoffset, int length)
+        {
+            throw new NotImplementedException();
+        }
+
+        public char GetChar(int i)
+        {
+            return (char)m_items[i];
+        }
+
+        public long GetChars(int i, long fieldoffset, char[] buffer, int bufferoffset, int length)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataReader GetData(int i)
+        {
+            return (IDataReader)m_items[i];
+        }
+
+        public string GetDataTypeName(int i)
+        {
+            return m_parent.Columns[i].Type.Name;
+        }
+
+        public DateTime GetDateTime(int i)
+        {
+            return (DateTime)m_items[i];
+        }
+
+        public decimal GetDecimal(int i)
+        {
+            return (decimal)m_items[i];
+        }
+
+        public double GetDouble(int i)
+        {
+            return (double)m_items[i];
+        }
+
+        public Type GetFieldType(int i)
+        {
+            return m_parent.Columns[i].Type;
+        }
+
+        public float GetFloat(int i)
+        {
+            return (float)m_items[i];
+        }
+
+        public Guid GetGuid(int i)
+        {
+            return (Guid)m_items[i];
+        }
+
+        public short GetInt16(int i)
+        {
+            return (short)m_items[i];
+        }
+
+        public int GetInt32(int i)
+        {
+            return (int)m_items[i];
+        }
+
+        public long GetInt64(int i)
+        {
+            return (long)m_items[i];
+        }
+
+        public string GetName(int i)
+        {
+            return m_parent.GetName(i);
+        }
+
+        public string GetString(int i)
+        {
+            return (string)m_items[i];
+        }
+
+        public object GetValue(int i)
+        {
+            return m_items[i];
+        }
+
+        public int GetValues(object[] values)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsDBNull(int index)
+        {
+            if (index >= m_nulls.Length)
+                throw new InvalidOperationException("Index " + index.ToString() + ", was out of bounds");
+            else
+                return m_nulls[index];
+        }
+
+        public object this[int i]
+        {
+            get { return m_items[i]; }
+        }
+    }
 }

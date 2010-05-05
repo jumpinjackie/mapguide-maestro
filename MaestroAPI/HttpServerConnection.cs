@@ -490,7 +490,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             ResourceIdentifier.Validate(featureSourceID, ResourceTypes.FeatureSource);
             string req = m_reqBuilder.ExecuteSqlQuery(featureSourceID, sql);
 
-            return new FeatureSetReader(this.OpenRead(req));
+            return new XmlFeatureSetReader(this.OpenRead(req));
         }
 
 		public FeatureSetReader QueryFeatureSource(string resourceID, string schema, string query)
@@ -532,7 +532,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     rs.Flush();
                 }
 
-                return new FeatureSetReader(req.GetResponse().GetResponseStream());
+                return new XmlFeatureSetReader(req.GetResponse().GetResponseStream());
             }
             catch (Exception ex)
             {

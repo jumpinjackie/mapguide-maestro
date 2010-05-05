@@ -104,6 +104,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 
             //This stuff is not applicable to raster providers
+            //TODO: Cleaner way to detect raster providers
             string provider = feature.Provider.ToUpper();
             if (!provider.StartsWith("OSGEO.GDAL") &&
                 !provider.StartsWith("OSGEO.WMS") &&
@@ -115,11 +116,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 LocalPreviewPage.Controls.Clear();
                 LocalPreviewPage.Controls.Add(ctl);
 
-                //This feature is broken for any MG release < 2.2 so disable it.
-                Version ver = editor.CurrentConnection.SiteVersion;
-                Version supported = new Version(2, 2);
-                if (ver < supported)
-                    EditorTab.Controls.Remove(LocalPreviewPage);
+                //HACK: When we split the ServerConnectionI implementations we'll need
+                //to deal with this
+                var conn = editor.CurrentConnection as MaestroAPI.LocalNativeConnection;
+                if (conn == null) //Must be HTTP
+                {
+                    //This feature is broken for any MG release < 2.2 so disable it.
+
+                    Version ver = editor.CurrentConnection.SiteVersion;
+                    Version supported = new Version(2, 2);
+                    if (ver < supported)
+                        EditorTab.Controls.Remove(LocalPreviewPage);
+                }
             }
             else
             {

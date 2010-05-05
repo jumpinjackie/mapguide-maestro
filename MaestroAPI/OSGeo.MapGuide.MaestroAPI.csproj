@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{290B027E-3649-4A60-A9BF-0544831435E2}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -90,7 +90,7 @@
   <ItemGroup>
     <Reference Include="MapGuideDotNetApi, Version=2.0.0.2308, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>MapGuideDotNetApi.dll</HintPath>
+      <HintPath>.\MapGuideDotNetApi.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -287,6 +287,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="LocalNativeCoordinateSystem.cs" />
+    <Compile Include="MgFeatureSetReader.cs" />
     <Compile Include="RequestBuilder.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -313,6 +314,7 @@
     <Compile Include="Utility.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="XmlFeatureSetReader.cs" />
     <Compile Include="XmlSerializer\XmlSerializerAttribute.cs">
       <SubType>Code</SubType>
     </Compile>
