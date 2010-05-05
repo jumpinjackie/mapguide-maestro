@@ -100,10 +100,17 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourcePreview
                     {
                         if (!row.IsValueNull(col.Name))
                         {
-                            if (col.Type == typeof(Topology.Geometries.IGeometry))
-                                drow[col.Name] = ((Topology.Geometries.IGeometry)row[col.Name]).AsText();
-                            else
-                                drow[col.Name] = row[col.Name];
+                            try
+                            {
+                                if (col.Type == typeof(Topology.Geometries.IGeometry))
+                                    drow[col.Name] = ((Topology.Geometries.IGeometry)row[col.Name]).AsText();
+                                else
+                                    drow[col.Name] = row[col.Name];
+                            }
+                            catch
+                            {
+                                drow[col.Name] = DBNull.Value;
+                            }
                         }
                         else
                         {
