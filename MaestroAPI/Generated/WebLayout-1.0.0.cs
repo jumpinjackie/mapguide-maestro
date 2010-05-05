@@ -18,6 +18,7 @@
 // 
 #endregion
 
+using System.Xml.Serialization;
 namespace OSGeo.MapGuide.MaestroAPI 
 {
     
@@ -25,14 +26,16 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// <remarks/>
     [System.Xml.Serialization.XmlRootAttribute("WebLayout", Namespace="", IsNullable=false)]
     public class WebLayout {
+
+        public static readonly string DefaultSchemaName = "WebLayout-1.0.0.xsd";
         
-		public static readonly string SchemaName = "WebLayout-1.0.0.xsd";
+		private string SchemaName = DefaultSchemaName;
         
 		[System.Xml.Serialization.XmlAttribute("noNamespaceSchemaLocation", Namespace="http://www.w3.org/2001/XMLSchema-instance")]
 		public string XsdSchema
 		{
 			get { return SchemaName; }
-			set { if (value != SchemaName) throw new System.Exception("Cannot set the schema name"); }
+            set { SchemaName = value; }
 		}
 
 		private string m_resourceId;
@@ -64,7 +67,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         private StatusBarType m_statusBar;
         private ZoomControlType m_zoomControl;
         private CommandTypeCollection m_commandSet;
-        
+
         /// <remarks/>
         public string Title {
             get {
@@ -83,6 +86,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             set {
                 this.m_map = value;
             }
+        }
+
+        //HACK: We can't bolt on extra properties as new schema versions are published. There's gotta be a cleaner way.
+        [XmlElement]
+        public bool EnablePingServer
+        {
+            get;
+            set;
         }
         
         /// <remarks/>

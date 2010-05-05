@@ -138,6 +138,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripMenuItem AddSeperatorItem;
         private ContextMenuStrip CreateCommandMenu;
         private ImageList FixedImages;
+        private CheckBox chkPing;
 		private string m_tempResource;
 
 		private enum ListViewColumns : int
@@ -157,7 +158,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			m_editor = editor;
 			m_layout = new OSGeo.MapGuide.MaestroAPI.WebLayout();
             m_tempResource = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, m_editor.CurrentConnection.SessionID);
-			UpdateDisplay();
+			
+            //HACK: There's gotta be a cleaner way
+            if (editor.CurrentConnection.SiteVersion >= new Version(2, 2))
+            {
+                chkPing.Enabled = true;
+            }
+            
+            UpdateDisplay();
 		}
 
 		public LayoutEditor(EditorInterface editor, string resourceID)
@@ -166,6 +174,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			m_editor = editor;
 			m_layout = editor.CurrentConnection.GetWebLayout(resourceID);
             m_tempResource = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, m_editor.CurrentConnection.SessionID);
+
+            //HACK: There's gotta be a cleaner way
+            if (editor.CurrentConnection.SiteVersion >= new Version(2, 2))
+            {
+                chkPing.Enabled = true;
+            }
+
 			UpdateDisplay();
 		}
 
@@ -206,6 +221,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					m_layout.TaskPane.TaskBar = new OSGeo.MapGuide.MaestroAPI.TaskBarType();
 
 				TitleText.Text = m_layout.Title;
+
+                //HACK: There's gotta be a better way
+                if (m_editor.CurrentConnection.SiteVersion >= new Version(2, 2))
+                {
+                    chkPing.Checked = m_layout.EnablePingServer;
+                }
 
 				MapResource.Text = m_layout.Map.ResourceId;
 				OverrideDisplayExtents.Checked = m_layout.Map.InitialView != null;
@@ -513,7 +534,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.dataColumn8 = new System.Data.DataColumn();
             this.dataColumn9 = new System.Data.DataColumn();
             this.MenuBox = new System.Windows.Forms.GroupBox();
-            this.commandEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.CommandEditor();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.MenuTabs = new System.Windows.Forms.TabControl();
             this.ToolbarTab = new System.Windows.Forms.TabPage();
@@ -556,6 +576,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.AddSeperatorItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateCommandMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.FixedImages = new System.Windows.Forms.ImageList(this.components);
+            this.chkPing = new System.Windows.Forms.CheckBox();
+            this.commandEditor = new OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls.CommandEditor();
             this.overriddenMapExtents.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -895,11 +917,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MenuBox.Name = "MenuBox";
             this.MenuBox.TabStop = false;
             // 
-            // commandEditor
-            // 
-            resources.ApplyResources(this.commandEditor, "commandEditor");
-            this.commandEditor.Name = "commandEditor";
-            // 
             // splitter2
             // 
             resources.ApplyResources(this.splitter2, "splitter2");
@@ -1209,9 +1226,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.FixedImages.Images.SetKeyName(0, "FolderOpen.ico");
             this.FixedImages.Images.SetKeyName(1, "Seperator.ico");
             // 
+            // chkPing
+            // 
+            resources.ApplyResources(this.chkPing, "chkPing");
+            this.chkPing.Name = "chkPing";
+            this.chkPing.UseVisualStyleBackColor = true;
+            this.chkPing.CheckedChanged += new System.EventHandler(this.chkPing_CheckedChanged);
+            // 
+            // commandEditor
+            // 
+            resources.ApplyResources(this.commandEditor, "commandEditor");
+            this.commandEditor.Name = "commandEditor";
+            // 
             // LayoutEditor
             // 
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.chkPing);
             this.Controls.Add(this.ShowInBrowser);
             this.Controls.Add(this.browserURL);
             this.Controls.Add(this.label12);
@@ -1219,15 +1249,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.Controls.Add(this.FeatureLinkTargetType);
             this.Controls.Add(this.FeatureLinkTarget);
             this.Controls.Add(this.HomePageURL);
-            this.Controls.Add(this.SelectMapButton);
-            this.Controls.Add(this.MapResource);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.OverrideDisplayExtents);
-            this.Controls.Add(this.overriddenMapExtents);
             this.Controls.Add(this.TitleText);
+            this.Controls.Add(this.MapResource);
+            this.Controls.Add(this.OverrideDisplayExtents);
+            this.Controls.Add(this.SelectMapButton);
+            this.Controls.Add(this.overriddenMapExtents);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
             this.Name = "LayoutEditor";
             this.overriddenMapExtents.ResumeLayout(false);
@@ -1279,6 +1309,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				m_editor.HasChanged();
 			}
 		}
+
+        private void chkPing_CheckedChanged(object sender, EventArgs e)
+        {
+            //HACK: Gotta be a better way
+            if (m_editor.CurrentConnection.SiteVersion >= new Version(2, 2))
+            {
+                if (m_isUpdating)
+                    return;
+
+                m_layout.EnablePingServer = chkPing.Checked;
+                m_editor.HasChanged();
+            }
+        }
 
 		private void OverrideDisplayExtents_CheckedChanged(object sender, System.EventArgs e)
 		{
