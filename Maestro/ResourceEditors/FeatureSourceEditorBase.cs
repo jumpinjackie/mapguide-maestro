@@ -105,10 +105,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
             //This stuff is not applicable to raster providers
             //TODO: Cleaner way to detect raster providers
-            string provider = feature.Provider.ToUpper();
-            if (!provider.StartsWith("OSGEO.GDAL") &&
-                !provider.StartsWith("OSGEO.WMS") &&
-                !provider.StartsWith("AUTODESK.RASTER"))
+            
+            if (IsRasterProvider(feature.Provider))
             {
                 FeatureSourcePreviewCtrl ctl = new FeatureSourcePreviewCtrl(m_editor, ProviderName.Text, m_editor.ResourceId);
                 ctl.Dock = DockStyle.Fill;
@@ -131,9 +129,18 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             else
             {
+                EditExtensions.Enabled = false;
                 EditorTab.Controls.Remove(LocalPreviewPage);
             }
 		}
+
+        private static bool IsRasterProvider(string providerName)
+        {
+            string provider = providerName.ToUpper();
+            return  !provider.StartsWith("OSGEO.GDAL") &&
+                    !provider.StartsWith("OSGEO.WMS") &&
+                    !provider.StartsWith("AUTODESK.RASTER");
+        }
 
 		public FeatureSourceEditorBase(EditorInterface editor)
 			: this()
