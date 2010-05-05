@@ -84,7 +84,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton MoveLayerUpButton;
         private ToolStripButton MoveLayerDownButton;
-        private ToolStrip toolStrip1;
+        private ToolStrip drawOrderToolStrip;
         private ToolStripButton RemoveLayerOrderButton;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripButton MoveLayerUpOrderButton;
@@ -388,6 +388,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bgColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.SetZoom = new System.Windows.Forms.Button();
@@ -407,6 +408,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.ctlFiniteDisplayScales = new OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales();
+            this.ctlGroupProperties = new OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerGroupProperties();
+            this.ctlLayerProperties = new OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerProperties();
             this.label9 = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -430,7 +434,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.tabDrawOrder = new System.Windows.Forms.TabPage();
             this.lstDrawOrder = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.drawOrderToolStrip = new System.Windows.Forms.ToolStrip();
             this.AddLayerOrderButton = new System.Windows.Forms.ToolStripButton();
             this.RemoveLayerOrderButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -454,10 +458,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.activateMgCooker = new System.Windows.Forms.ToolStripButton();
             this.LayerToolbarImages = new System.Windows.Forms.ImageList(this.components);
-            this.ctlFiniteDisplayScales = new OSGeo.MapGuide.Maestro.ResourceEditors.FiniteDisplayScales();
-            this.ctlGroupProperties = new OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerGroupProperties();
-            this.ctlLayerProperties = new OSGeo.MapGuide.Maestro.ResourceEditors.MapLayerProperties();
-            this.bgColor = new OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -469,7 +469,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.tabLayerGroups.SuspendLayout();
             this.tlbLayerGroups.SuspendLayout();
             this.tabDrawOrder.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.drawOrderToolStrip.SuspendLayout();
             this.tabBaseLayerGroups.SuspendLayout();
             this.BaseLayerGroupToolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -506,6 +506,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // bgColor
+            // 
+            resources.ApplyResources(this.bgColor, "bgColor");
+            this.bgColor.Name = "bgColor";
+            this.bgColor.SelectedIndexChanged += new System.EventHandler(this.bgColor_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -641,6 +647,21 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
+            // 
+            // ctlFiniteDisplayScales
+            // 
+            resources.ApplyResources(this.ctlFiniteDisplayScales, "ctlFiniteDisplayScales");
+            this.ctlFiniteDisplayScales.Name = "ctlFiniteDisplayScales";
+            // 
+            // ctlGroupProperties
+            // 
+            resources.ApplyResources(this.ctlGroupProperties, "ctlGroupProperties");
+            this.ctlGroupProperties.Name = "ctlGroupProperties";
+            // 
+            // ctlLayerProperties
+            // 
+            resources.ApplyResources(this.ctlLayerProperties, "ctlLayerProperties");
+            this.ctlLayerProperties.Name = "ctlLayerProperties";
             // 
             // label9
             // 
@@ -798,7 +819,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // tabDrawOrder
             // 
             this.tabDrawOrder.Controls.Add(this.lstDrawOrder);
-            this.tabDrawOrder.Controls.Add(this.toolStrip1);
+            this.tabDrawOrder.Controls.Add(this.drawOrderToolStrip);
             resources.ApplyResources(this.tabDrawOrder, "tabDrawOrder");
             this.tabDrawOrder.Name = "tabDrawOrder";
             this.tabDrawOrder.UseVisualStyleBackColor = true;
@@ -824,10 +845,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             // 
             resources.ApplyResources(this.columnHeader1, "columnHeader1");
             // 
-            // toolStrip1
+            // drawOrderToolStrip
             // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.drawOrderToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.drawOrderToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddLayerOrderButton,
             this.RemoveLayerOrderButton,
             this.toolStripSeparator3,
@@ -835,9 +856,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.MoveLayerDownOrderButton,
             this.MoveLayerOrderTopButton,
             this.MoveLayerOrderBottomButton});
-            resources.ApplyResources(this.toolStrip1, "toolStrip1");
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            resources.ApplyResources(this.drawOrderToolStrip, "drawOrderToolStrip");
+            this.drawOrderToolStrip.Name = "drawOrderToolStrip";
+            this.drawOrderToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             // 
             // AddLayerOrderButton
             // 
@@ -1015,27 +1036,6 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.LayerToolbarImages.Images.SetKeyName(6, "MoveLayerBottom.ico");
             this.LayerToolbarImages.Images.SetKeyName(7, "MoveLayerTop.ico");
             // 
-            // ctlFiniteDisplayScales
-            // 
-            resources.ApplyResources(this.ctlFiniteDisplayScales, "ctlFiniteDisplayScales");
-            this.ctlFiniteDisplayScales.Name = "ctlFiniteDisplayScales";
-            // 
-            // ctlGroupProperties
-            // 
-            resources.ApplyResources(this.ctlGroupProperties, "ctlGroupProperties");
-            this.ctlGroupProperties.Name = "ctlGroupProperties";
-            // 
-            // ctlLayerProperties
-            // 
-            resources.ApplyResources(this.ctlLayerProperties, "ctlLayerProperties");
-            this.ctlLayerProperties.Name = "ctlLayerProperties";
-            // 
-            // bgColor
-            // 
-            resources.ApplyResources(this.bgColor, "bgColor");
-            this.bgColor.Name = "bgColor";
-            this.bgColor.SelectedIndexChanged += new System.EventHandler(this.bgColor_SelectedIndexChanged);
-            // 
             // MapEditor
             // 
             resources.ApplyResources(this, "$this");
@@ -1059,8 +1059,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.tlbLayerGroups.PerformLayout();
             this.tabDrawOrder.ResumeLayout(false);
             this.tabDrawOrder.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.drawOrderToolStrip.ResumeLayout(false);
+            this.drawOrderToolStrip.PerformLayout();
             this.tabBaseLayerGroups.ResumeLayout(false);
             this.tabBaseLayerGroups.PerformLayout();
             this.BaseLayerGroupToolStrip.ResumeLayout(false);
