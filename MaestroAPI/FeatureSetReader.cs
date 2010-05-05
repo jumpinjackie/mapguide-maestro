@@ -474,7 +474,22 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public object this[int i]
         {
-            get { return m_items[i]; }
+            get 
+            {
+                if (i >= m_items.Length)
+                {
+                    throw new InvalidOperationException("Index " + i.ToString() + ", was out of bounds");
+                }
+                else
+                {
+                    if (m_lazyloadGeometry[i] && !m_nulls[i])
+                    {
+                        m_items[i] = this.Reader.Read((string)m_items[i]);
+                        m_lazyloadGeometry[i] = false;
+                    }
+                    return m_items[i];
+                }
+            }
         }
     }
 }
