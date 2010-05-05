@@ -2330,18 +2330,21 @@ namespace OSGeo.MapGuide.Maestro
 
 		private void SaveAllResources()
 		{
-			try
-			{
-				foreach(OSGeo.MapGuide.Maestro.EditorInterface edi in this.OpenResourceEditors.Values)
-					if (edi.Page.Text.EndsWith(" *"))
-						edi.Save();
-			}
-			catch(Exception ex)
-			{
+            try
+            {
+                foreach (OSGeo.MapGuide.Maestro.EditorInterface edi in this.OpenResourceEditors.Values)
+                    if (edi.Page.Text.EndsWith(" *"))
+                        edi.Save();
+            }
+            catch (Exception ex)
+            {
                 LastException = ex;
-				MessageBox.Show(this, string.Format(Strings.FormMain.SaveResourceError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-
+                MessageBox.Show(this, string.Format(Strings.FormMain.SaveResourceError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                UpdateResourceTreeStatus();
+            }
 		}
 
 		private void MainMenuSaveAsXml_Click(object sender, System.EventArgs e)
@@ -2672,14 +2675,19 @@ namespace OSGeo.MapGuide.Maestro
             }
 		}
 
-		public void UpdateResourceTreeStatus()
+        public void UpdateResourceTreeStatus()
+        {
+            UpdateResourceTreeStatus(m_userControls.Values);
+        }
+
+		private void UpdateResourceTreeStatus(IEnumerable<EditorInterface> editors)
 		{
             try
             {
                 ResourceTree.BeginUpdate();
 
                 // start looping through open editors
-                foreach (EditorInterface ediThis in m_userControls.Values)
+                foreach (EditorInterface ediThis in editors)
                 {
                     TreeNode item = FindItem(ediThis.ResourceId, true);
                     if (ediThis.IsClosing)
@@ -3086,9 +3094,13 @@ namespace OSGeo.MapGuide.Maestro
 
         private void MainMenuCloseAll_Click(object sender, EventArgs e)
         {
-            foreach (EditorInterface edi in new List<EditorInterface>(m_userControls.Values))
+            var editors = new List<EditorInterface>(m_userControls.Values);
+            foreach (EditorInterface edi in editors)
+            {
                 if (!edi.Close(true))
-                    return;
+                    break;
+            }
+            UpdateResourceTreeStatus(editors);
         }
 	}
 }
