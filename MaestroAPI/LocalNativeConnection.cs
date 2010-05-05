@@ -795,7 +795,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                 callback(0, fi.Length, fi.Length);
 
 			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
-            MgByteReader rd = new MgByteReader(filename, "application/octet-stream");
+            MgByteSource pkgSource = new MgByteSource(filename);
+            MgByteReader rd = pkgSource.GetReader();
             res.ApplyResourcePackage(rd);
             rd.Dispose();
 
