@@ -195,14 +195,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     txtDescription.Text = m_map.Metadata.Replace("<MapDescription>", "").Replace("</MapDescription>", "");
                 }
 
-				if (m_editor.CurrentConnection.CoordinateSystem == null || m_map.CoordinateSystem == null || m_map.CoordinateSystem.Length == 0 || !m_editor.CurrentConnection.CoordinateSystem.IsLoaded)
+				if (m_editor.CurrentConnection.CoordinateSystemCatalog == null || m_map.CoordinateSystem == null || m_map.CoordinateSystem.Length == 0 || !m_editor.CurrentConnection.CoordinateSystemCatalog.IsLoaded)
 					txtCoordsys.Text = m_map.CoordinateSystem;
 				else
 				{
 					try
 					{
-						string coordcode = m_editor.CurrentConnection.CoordinateSystem.ConvertWktToCoordinateSystemCode(m_map.CoordinateSystem);
-						txtCoordsys.Text = m_editor.CurrentConnection.CoordinateSystem.FindCoordSys(coordcode).ToString();
+						string coordcode = m_editor.CurrentConnection.CoordinateSystemCatalog.ConvertWktToCoordinateSystemCode(m_map.CoordinateSystem);
+						txtCoordsys.Text = m_editor.CurrentConnection.CoordinateSystemCatalog.FindCoordSys(coordcode).ToString();
 					}
 					catch
 					{

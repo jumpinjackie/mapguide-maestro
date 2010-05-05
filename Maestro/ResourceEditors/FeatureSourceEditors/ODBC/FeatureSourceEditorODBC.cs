@@ -405,7 +405,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.ODBC
                 string wkt = m_feature.SupplementalSpatialContextInfo[0].CoordinateSystem;
                 //m_feature.SupplementalSpatialContextInfo = null;
 
-                string name = m_editor.CurrentConnection.CoordinateSystem.ConvertWktToCoordinateSystemCode(wkt);
+                string name = m_editor.CurrentConnection.CoordinateSystemCatalog.ConvertWktToCoordinateSystemCode(wkt);
 
                 if (wkt != m_wkt)
                     //TODO: Figure out how to get the coordsys extent

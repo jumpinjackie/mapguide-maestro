@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{290B027E-3649-4A60-A9BF-0544831435E2}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -134,6 +134,9 @@
     </Compile>
     <Compile Include="ConnectionFactory.cs" />
     <Compile Include="ConnectionProviderRegistry.cs" />
+    <Compile Include="CoordinateSystem.cs" />
+    <Compile Include="CoordinateSystemCatalog.cs" />
+    <Compile Include="CoordinateSystemCategory.cs" />
     <Compile Include="Generated\StringCollection-1.0.0.cs" />
     <Compile Include="HttpCoordinateSystem.cs">
       <SubType>Code</SubType>
@@ -276,10 +279,12 @@
     <Compile Include="Generated\WebLayout-1.0.0.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="HttpCoordinateSystemCatalog.cs" />
+    <Compile Include="HttpCoordinateSystemCategory.cs" />
     <Compile Include="HttpServerConnection.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ICoordinateSystem.cs" />
+    <Compile Include="ICoordinateSystemCatalog.cs" />
     <Compile Include="LenghtyOperationCallbackArgs.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -287,6 +292,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="LocalNativeCoordinateSystem.cs" />
+    <Compile Include="LocalNativeCoordinateSystemCatalog.cs" />
+    <Compile Include="LocalNativeCoordinateSystemCategory.cs" />
     <Compile Include="MgFeatureSetReader.cs" />
     <Compile Include="RequestBuilder.cs">
       <SubType>Code</SubType>

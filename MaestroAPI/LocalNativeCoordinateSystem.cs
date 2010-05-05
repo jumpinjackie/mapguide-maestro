@@ -24,105 +24,42 @@ using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
-    public class LocalNativeCoordinateSystem : ICoordinateSystem
+    public class LocalNativeCoordinateSystem : CoordinateSystem
     {
-        private LocalNativeConnection m_con;
-        private HttpCoordinateSystem.Category[] m_categories;
-        private string m_coordLib = null;
-        internal OSGeo.MapGuide.MgCoordinateSystemFactory m_cf;
+        internal LocalNativeCoordinateSystem() : base() { }
 
-        internal LocalNativeCoordinateSystem(LocalNativeConnection con)
+        internal LocalNativeCoordinateSystem(CoordinateSystemCategory parent, MgPropertyCollection props) : base(parent)
         {
-            m_con = con;
-            m_cf = new MgCoordinateSystemFactory();
-        }
-
-        #region ICoordinateSystem Members
-
-        public HttpCoordinateSystem.Category[] Categories
-        {
-            get
+            for (int i = 0; i < props.Count; i++)
             {
-                if (m_categories == null)
+                switch (props[i].Name.ToLower())
                 {
-                    MgStringCollection c = m_cf.EnumerateCategories();
-                    HttpCoordinateSystem.Category[] data = new HttpCoordinateSystem.Category[c.GetCount()];
-
-                    for (int i = 0; i < c.GetCount(); i++)
-                        data[i] = new HttpCoordinateSystem.Category(this, c.GetItem(i));
-                    m_categories = data;
+                    case "code":
+                        m_code = (props[i] as MgStringProperty).Value;
+                        break;
+                    case "description":
+                        m_description = (props[i] as MgStringProperty).Value;
+                        break;
+                    case "projection":
+                        m_projection = (props[i] as MgStringProperty).Value;
+                        break;
+                    case "projection description":
+                        m_projectionDescription = (props[i] as MgStringProperty).Value;
+                        break;
+                    case "Datum":
+                        m_datum = (props[i] as MgStringProperty).Value;
+                        break;
+                    case "datum description":
+                        m_datumDescription = (props[i] as MgStringProperty).Value;
+                        break;
+                    case "ellipsoid":
+                        m_ellipsoid = (props[i] as MgStringProperty).Value;
+                        break;
+                    case "ellipsoid description":
+                        m_ellipsoidDescription = (props[i] as MgStringProperty).Value;
+                        break;
                 }
-
-                return m_categories;
             }
         }
-
-        public string ConvertCoordinateSystemCodeToWkt(string coordcode)
-        {
-            return m_cf.ConvertCoordinateSystemCodeToWkt(coordcode);
-        }
-
-        public string ConvertEpsgCodeToWkt(string epsg)
-        {
-            return m_cf.ConvertEpsgCodeToWkt(int.Parse(epsg));
-        }
-
-        public string ConvertWktToCoordinateSystemCode(string wkt)
-        {
-            return m_cf.ConvertWktToCoordinateSystemCode(wkt);
-        }
-
-        public string ConvertWktToEpsgCode(string wkt)
-        {
-            return m_cf.ConvertWktToEpsgCode(wkt).ToString();
-        }
-
-        public HttpCoordinateSystem.CoordSys[] Coordsys
-        {
-            get
-            {
-                ArrayList items = new ArrayList();
-                foreach (OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.Category cat in this.Categories)
-                    foreach (OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys coord in cat.Items)
-                        items.Add(coord);
-
-                return (HttpCoordinateSystem.CoordSys[])items.ToArray(typeof(HttpCoordinateSystem.CoordSys));
-            }
-        }
-
-        public HttpCoordinateSystem.CoordSys FindCoordSys(string coordcode)
-        {
-            try
-            {
-                foreach (OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.Category cat in this.Categories)
-                    foreach (OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys coord in cat.Items)
-                        if (coord.Code == coordcode)
-                            return coord;
-            }
-            catch
-            {
-            }
-
-            return null;
-        }
-
-        public bool IsValid(string wkt)
-        {
-            return m_cf.IsValid(wkt);
-        }
-
-        public string LibraryName
-        {
-            get
-            {
-                if (m_coordLib == null)
-                    m_coordLib = m_cf.GetBaseLibrary();
-                return m_coordLib;
-            }
-        }
-
-        public bool IsLoaded { get { return m_categories != null; } } 
-
-        #endregion
     }
 }

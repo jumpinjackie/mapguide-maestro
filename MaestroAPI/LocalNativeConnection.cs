@@ -491,10 +491,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 		}
 
 
-        private LocalNativeCoordinateSystem m_coordsys = null;
+        private ICoordinateSystemCatalog m_coordsys = null;
         //TODO: Figure out a strategy for cache invalidation 
         
-        public ICoordinateSystem CoordinateSystem
+        public ICoordinateSystemCatalog CoordinateSystemCatalog
 		{
             get
             {
@@ -503,7 +503,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 else
                 {
                     if (m_coordsys == null)
-                        m_coordsys = new LocalNativeCoordinateSystem(this);
+                        m_coordsys = new LocalNativeCoordinateSystemCatalog(this);
                     return m_coordsys;
                 }
             }

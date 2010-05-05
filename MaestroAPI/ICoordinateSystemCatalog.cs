@@ -20,15 +20,17 @@
 using System;
 namespace OSGeo.MapGuide.MaestroAPI
 {
-    public interface ICoordinateSystem
+    public interface ICoordinateSystemCatalog
     {
-        HttpCoordinateSystem.Category[] Categories { get; }
+        CoordinateSystemCategory[] Categories { get; }
         string ConvertCoordinateSystemCodeToWkt(string coordcode);
         string ConvertEpsgCodeToWkt(string epsg);
         string ConvertWktToCoordinateSystemCode(string wkt);
         string ConvertWktToEpsgCode(string wkt);
-        HttpCoordinateSystem.CoordSys[] Coordsys { get; }
-        HttpCoordinateSystem.CoordSys FindCoordSys(string coordcode);
+        CoordinateSystem[] Coordsys { get; }
+        CoordinateSystem[] EnumerateCoordinateSystems(string category);
+        CoordinateSystem FindCoordSys(string coordcode);
+        CoordinateSystem CreateEmptyCoordinateSystem();
         bool IsValid(string wkt);
         string LibraryName { get; }
         bool IsLoaded { get; }

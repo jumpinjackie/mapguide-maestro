@@ -436,7 +436,7 @@ namespace OSGeo.MapGuide.Maestro
                 try
                 {
                     List<string> items = new List<string>();
-                    foreach (OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys c in m_connection.CoordinateSystem.Coordsys)
+                    foreach (OSGeo.MapGuide.MaestroAPI.CoordinateSystem c in m_connection.CoordinateSystemCatalog.Coordsys)
                         if (c.Code.StartsWith("EPSG:"))
                             items.Add(c.Code);
 
@@ -723,7 +723,7 @@ namespace OSGeo.MapGuide.Maestro
                 if (m_srslist == null)
                 {
                     List<string> items = new List<string>();
-                    foreach (OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystem.CoordSys c in m_connection.CoordinateSystem.Coordsys)
+                    foreach (OSGeo.MapGuide.MaestroAPI.CoordinateSystem c in m_connection.CoordinateSystemCatalog.Coordsys)
                         if (c.Code.StartsWith("EPSG:"))
                             items.Add(c.Code);
 

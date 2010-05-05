@@ -753,10 +753,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public override Version SiteVersion { get { return m_siteVersion; } }
 
-		private HttpCoordinateSystem m_coordsys = null;
+        private ICoordinateSystemCatalog m_coordsys = null;
 		//TODO: Figure out a strategy for cache invalidation 
 		//TODO: Figure out if this can work with MapGuide EP 1.0 (just exclude it?)
-		public ICoordinateSystem CoordinateSystem 
+		public ICoordinateSystemCatalog CoordinateSystemCatalog 
 		{ 
 			get 
 			{ 
@@ -765,7 +765,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 				else
 				{	
 					if (m_coordsys == null)
-						m_coordsys = new HttpCoordinateSystem(this, m_reqBuilder);
+						m_coordsys = new HttpCoordinateSystemCatalog(this, m_reqBuilder);
 					return m_coordsys;
 				}
 			} 

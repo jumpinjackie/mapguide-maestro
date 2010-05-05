@@ -175,7 +175,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		RuntimeClasses.RuntimeMap GetRuntimeMap(string resourceID);
 		Version SiteVersion { get; }
 		bool DisableValidation { get; set; }
-		ICoordinateSystem CoordinateSystem { get; }
+		ICoordinateSystemCatalog CoordinateSystemCatalog { get; }
 		bool HasFolder(string folderpath);
 		void CreateFolder(string folderpath);
 
