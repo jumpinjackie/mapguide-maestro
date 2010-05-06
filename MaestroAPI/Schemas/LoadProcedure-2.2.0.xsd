@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.2.0">
+  <xs:element name="LoadProcedure">
+    <xs:annotation>
+      <xs:documentation>Specification of a load procedure</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="LoadProcedureTypeType">
+          <xs:attribute name="version" type="xs:string" fixed="2.2.0"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="LoadProcedureTypeType">
+    <xs:annotation>
+      <xs:documentation>Specification of a load procedure</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element name="SdfLoadProcedure" type="SdfLoadProcedureType">
+        <xs:annotation>
+          <xs:documentation>Load procedure for SDFs</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DwfLoadProcedure" type="DwfLoadProcedureType">
+        <xs:annotation>
+          <xs:documentation>Load procedure for DWFs</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ShpLoadProcedure" type="ShpLoadProcedureType">
+        <xs:annotation>
+          <xs:documentation>Load procedure for SHPs</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DwgLoadProcedure" type="DwgLoadProcedureType"/>
+      <xs:element name="RasterLoadProcedure" type="RasterLoadProcedureType"/>
+      <xs:element name="SQLiteLoadProcedure" type="SQLiteLoadProcedureType">
+        <xs:annotation>
+          <xs:documentation>Load procedure for SQLites</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="LoadProcedureType">
+    <xs:annotation>
+      <xs:documentation>Base type of the load procedures</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SourceFile" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>The list of input files for the load procedure</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RootPath" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The path in the site repository where the resources are created</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CoordinateSystem" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The default coordinate system to assign to the resulting data resources if none is found</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GenerateSpatialDataSources" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Indicates whether or not to generate spatial data sources</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SpatialDataSourcesPath" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The path to the folder in the site repository where the spatial data sources are created</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SpatialDataSourcesFolder" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The folder in the site repository under the Spatial Data Sources Path where the spatial data sources are created</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GenerateLayers" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Indicates whether or not to generate layers</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LayersPath" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The path to the folder in the site repository where the layers are created</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LayersFolder" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The folder in the site repository under the Layers Path where the layers are created</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GenerateMaps" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicates whether or not to generate maps</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MapsPath" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The path to the folder in the site repository where the maps are created</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MapsFolder" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The folder in the site repository under the Maps Path where the maps are created</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GenerateSymbolLibraries" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicates whether or not to generate symbol libraries</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SymbolLibrariesPath" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The path to the folder in the site repository where the symbol libraries are created</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SymbolLibrariesFolder" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The folder in the site repository under the Symbol Libraries Path where the symbol libraries are created</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ResourceId" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Zero or more ResourceIds that were created from the execution of the load procedure</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SdfLoadProcedureType">
+    <xs:annotation>
+      <xs:documentation>Extension of LoadProcedure for SDFs</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="LoadProcedureType">
+        <xs:sequence>
+          <xs:element name="Generalization" type="PercentageType">
+            <xs:annotation>
+              <xs:documentation>Reduces the point (or vertex) count of each map feature to the specified percentage of the original count</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="SdfKeyTreatment" type="SdfKeyTreatmentType">
+            <xs:annotation>
+              <xs:documentation>Specifies how the Sdf conversion step of an SdfLoadProcedure treats keys</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="SdfKeyTreatmentType">
+    <xs:annotation>
+      <xs:documentation>Specifies how the Sdf conversion step of an SdfLoadProcedure treats keys</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AutogenerateAll">
+        <xs:annotation>
+          <xs:documentation>All keys in the original Sdf file are replaced in the converted Sdf file by an automatically generated unique key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DiscardDuplicates">
+        <xs:annotation>
+          <xs:documentation>The keys in the original Sdf file are maintaind in the converted Sdf file, and only the first occurance of a feature associated with a duplicate key in the original Sdf file will be written to the converted Sdf file</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MergeDuplicates">
+        <xs:annotation>
+          <xs:documentation>The keys in the original Sdf file are maintaind in the converted Sdf file, and all of the features associated with a duplicate key in the original Sdf file will be merged into a single feature in the converted Sdf file</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+    <xs:complexType name="SQLiteLoadProcedureType">
+        <xs:annotation>
+            <xs:documentation>Extension of LoadProcedure for SQLites</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="LoadProcedureType">
+                <xs:sequence>
+                    <xs:element name="Generalization" type="PercentageType">
+                        <xs:annotation>
+                            <xs:documentation>Reduces the point (or vertex) count of each map feature to the specified percentage of the original count</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:simpleType name="OverlapTreatmentType">
+    <xs:annotation>
+      <xs:documentation>Specifies how to treat edge overlap when merging bitonal images.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None">
+        <xs:annotation>
+          <xs:documentation>No bitonal merge.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ForegroundOn">
+        <xs:annotation>
+          <xs:documentation>Forground pixels are the on bits.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ForegroundOff">
+        <xs:annotation>
+          <xs:documentation>Forground pixels are the off bits.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DwfLoadProcedureType">
+    <xs:annotation>
+      <xs:documentation>Extension of LoadProcedure for DWFs</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="LoadProcedureType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ShpLoadProcedureType">
+    <xs:annotation>
+      <xs:documentation>Extension of LoadProcedure for SHPs</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="LoadProcedureType">
+        <xs:sequence>
+          <xs:element name="Generalization" type="PercentageType">
+            <xs:annotation>
+              <xs:documentation>Reduces the point (or vertex) count of each map feature to the specified percentage of the original count</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ConvertToSdf" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>Indicates whether or not to convert to an SDF feature source</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GeoReferenceOverrideType">
+    <xs:annotation>
+      <xs:documentation>Override values to replace geo reference properties from the world file corresponding to the specified image source file.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SourceFile" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The path of the source file to which these geo reference overrides apply.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LocationX" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The X-coordinate override of the location specified in the world file corresponding to the specified source file.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LocationY" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The Y-coordinate override of the location specified in the world file corresponding to the specified source file.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ScaleX" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>the X-scale override to replace that specified in the world file corresponding to the specified source file.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ScaleY" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>the Y-scale override to replace that specified in the world file corresponding to the specified source file.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RasterLoadProcedureType">
+    <xs:annotation>
+      <xs:documentation>Extension of LoadProcedure for SHPs</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="LoadProcedureType">
+        <xs:sequence>
+          <xs:element name="FeatureSourceName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The base name of the FeatureSource to load.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="SubsampleFactor" type="xs:double">
+            <xs:annotation>
+              <xs:documentation>Subsample factor for reducing file size.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="OverlapTreatmentType" type="OverlapTreatmentType">
+            <xs:annotation>
+              <xs:documentation>Specifies how to treat edge overlap when merging bitonal images.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GeoReferenceOverride" type="GeoReferenceOverrideType" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The list of geo reference overrides.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="PercentageType">
+    <xs:annotation>
+      <xs:documentation>A percentage value</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DwgLoadProcedureType">
+    <xs:annotation>
+      <xs:documentation>Extension of LoadProcedure for DWGs and DXFs</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="LoadProcedureType">
+        <xs:sequence>
+          <xs:element name="FileComponents">
+            <xs:annotation>
+              <xs:documentation>List of DWG files and their layers to be extracted, whether selected or not.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FileComponent" type="DwgFileComponentType" maxOccurs="unbounded">
+                  <xs:annotation>
+                    <xs:documentation>One DWG file and its layers</xs:documentation>
+                  </xs:annotation>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Generalization" type="PercentageType">
+            <xs:annotation>
+              <xs:documentation>Reduces the point (or vertex) count of each map feature to the specified percentage of the original count</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ClosedPolylinesToPolygons" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>Indicates whether to convert closed polyline features to polygons</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DwgFileComponentType">
+    <xs:annotation>
+      <xs:documentation>Specifies a DWG file and its list of layers</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the DWG file</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LayerComponents">
+        <xs:annotation>
+          <xs:documentation>List of DWG layers</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="LayerComponent" type="DwgLayerComponentType" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>One DWG layer</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DwgLayerComponentType">
+    <xs:annotation>
+      <xs:documentation>Specifies a DWG file and its list of layers</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the layer</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Selected" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Indicates whether this layer is to be extracted when executing the Load Procedure</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

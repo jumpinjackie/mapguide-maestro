@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.2.0">
+  <xs:element name="SiteInformation">
+    <xs:annotation>
+      <xs:documentation>Site Status</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="SiteStatusType">
+          <xs:attribute name="version" type="xs:string" fixed="2.2.0"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+    <xs:complexType name="SiteStatusType">
+      <xs:sequence>
+        <xs:element name="Server">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DisplayName" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>The MapGuide server's display name.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="Status" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>The MapGuide server's status. Either Online or Offline</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ApiVersion" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>The MapGuide server's API version.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+</xs:schema>
