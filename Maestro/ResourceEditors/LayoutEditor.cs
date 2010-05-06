@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors
 {
@@ -156,15 +157,19 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			: this()
 		{
 			m_editor = editor;
-			m_layout = new OSGeo.MapGuide.MaestroAPI.WebLayout();
-            m_tempResource = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, m_editor.CurrentConnection.SessionID);
-			
             //HACK: There's gotta be a cleaner way
             if (editor.CurrentConnection.SiteVersion >= new Version(2, 2))
             {
+                m_layout = new OSGeo.MapGuide.MaestroAPI.WebLayout1_1();
                 chkPing.Enabled = true;
             }
-            
+            else
+            {
+                m_layout = new OSGeo.MapGuide.MaestroAPI.WebLayout();
+            }
+			
+            m_tempResource = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, m_editor.CurrentConnection.SessionID);
+			
             UpdateDisplay();
 		}
 
@@ -172,14 +177,31 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			: this()
 		{
 			m_editor = editor;
-			m_layout = editor.CurrentConnection.GetWebLayout(resourceID);
-            m_tempResource = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, m_editor.CurrentConnection.SessionID);
+            m_layout = null;
 
             //HACK: There's gotta be a cleaner way
-            if (editor.CurrentConnection.SiteVersion >= new Version(2, 2))
+            byte [] content = editor.CurrentConnection.GetResourceXmlData(resourceID);
+            using (var ms = new System.IO.MemoryStream(content))
             {
-                chkPing.Enabled = true;
+                try
+                {
+                    m_layout = editor.CurrentConnection.DeserializeObject<WebLayout>(ms);
+                }
+                catch
+                {
+                    m_layout = null;
+                }
+
+                if (m_layout == null) //Retry as 1.1.0
+                {
+                    ms.Position = 0;
+                    m_layout = editor.CurrentConnection.DeserializeObject<WebLayout1_1>(ms);
+                }
             }
+
+            m_layout.ResourceId = resourceID;
+
+            m_tempResource = new MaestroAPI.ResourceIdentifier(Guid.NewGuid().ToString(), OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, m_editor.CurrentConnection.SessionID);
 
 			UpdateDisplay();
 		}
@@ -223,9 +245,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				TitleText.Text = m_layout.Title;
 
                 //HACK: There's gotta be a better way
-                if (m_editor.CurrentConnection.SiteVersion >= new Version(2, 2))
+                WebLayout1_1 wl = m_layout as WebLayout1_1;
+                if (wl != null)
                 {
-                    chkPing.Checked = m_layout.EnablePingServer;
+                    chkPing.Checked = wl.EnablePingServer;
                 }
 
 				MapResource.Text = m_layout.Map.ResourceId;
@@ -1313,12 +1336,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private void chkPing_CheckedChanged(object sender, EventArgs e)
         {
             //HACK: Gotta be a better way
-            if (m_editor.CurrentConnection.SiteVersion >= new Version(2, 2))
+            var wl = m_layout as WebLayout1_1;
+            if (wl != null)
             {
                 if (m_isUpdating)
                     return;
 
-                m_layout.EnablePingServer = chkPing.Checked;
+                wl.EnablePingServer = chkPing.Checked;
                 m_editor.HasChanged();
             }
         }
@@ -1546,12 +1570,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 LoadedImageList.Images.Add(FixedImages.Images[1]);
 
 				string path = System.IO.Path.Combine(Application.StartupPath, "stdicons");
-				if (System.IO.Directory.Exists(path))
-					foreach(string s in System.IO.Directory.GetFiles(path, "*.gif"))
-					{
-						LoadedImageList.Images.Add(Image.FromFile(s));
-						LoadedImages.Add("../stdicons/" + System.IO.Path.GetFileName(s), LoadedImageList.Images.Count - 1);
-					}
+                if (System.IO.Directory.Exists(path))
+                {
+                    foreach (string s in System.IO.Directory.GetFiles(path, "*.gif"))
+                    {
+                        LoadedImageList.Images.Add(System.Drawing.Image.FromFile(s));
+                        LoadedImages.Add("../stdicons/" + System.IO.Path.GetFileName(s), LoadedImageList.Images.Count - 1);
+                    }
+                }
 			}
 
             using (System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.CommandTypesDataset))

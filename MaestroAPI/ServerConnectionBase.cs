@@ -1580,11 +1580,6 @@ namespace OSGeo.MapGuide.MaestroAPI
 			WebLayout wl = resource as WebLayout;
 			if (wl != null)
 			{
-                if (this.SiteVersion >= new Version(2, 2))
-                {
-                    wl.XsdSchema = "WebLayout-1.1.0.xsd";
-                }
-
 				if (wl.CommandSet != null)
 					foreach(CommandType cmd in wl.CommandSet)
 					{
