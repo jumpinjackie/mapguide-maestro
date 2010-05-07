@@ -18,155 +18,22 @@
 // 
 #endregion
 
-using System.Xml.Serialization;
 namespace OSGeo.MapGuide.MaestroAPI 
 {
-    [System.Xml.Serialization.XmlRootAttribute("WebLayout", Namespace = "", IsNullable = false)]
-    public class WebLayout1_1 : WebLayout
-    {
-        public WebLayout1_1()
-        {
-            this.XsdSchema = "WebLayout-1.1.0.xsd";
-        }
-
-        public override string Title
-        {
-            get
-            {
-                return base.Title;
-            }
-            set
-            {
-                base.Title = value;
-            }
-        }
-
-        public override MapType Map
-        {
-            get
-            {
-                return base.Map;
-            }
-            set
-            {
-                base.Map = value;
-            }
-        }
-
-        //HACK: We can't bolt on extra properties as new schema versions are published. There's gotta be a cleaner way.
-        //Having ech version as its own class is not pretty either, but it looks like a cleaner way
-        [XmlElement]
-        public bool EnablePingServer
-        {
-            get;
-            set;
-        }
-
-        public override ToolBarType ToolBar
-        {
-            get
-            {
-                return base.ToolBar;
-            }
-            set
-            {
-                base.ToolBar = value;
-            }
-        }
-
-        public override InformationPaneType InformationPane
-        {
-            get
-            {
-                return base.InformationPane;
-            }
-            set
-            {
-                base.InformationPane = value;
-            }
-        }
-
-        public override ContextMenuType ContextMenu
-        {
-            get
-            {
-                return base.ContextMenu;
-            }
-            set
-            {
-                base.ContextMenu = value;
-            }
-        }
-
-        public override TaskPaneType TaskPane
-        {
-            get
-            {
-                return base.TaskPane;
-            }
-            set
-            {
-                base.TaskPane = value;
-            }
-        }
-
-        public override StatusBarType StatusBar
-        {
-            get
-            {
-                return base.StatusBar;
-            }
-            set
-            {
-                base.StatusBar = value;
-            }
-        }
-
-        public override ZoomControlType ZoomControl
-        {
-            get
-            {
-                return base.ZoomControl;
-            }
-            set
-            {
-                base.ZoomControl = value;
-            }
-        }
-
-        public override CommandTypeCollection CommandSet
-        {
-            get
-            {
-                return base.CommandSet;
-            }
-            set
-            {
-                base.CommandSet = value;
-            }
-        }
-    }
+    
     
     /// <remarks/>
     [System.Xml.Serialization.XmlRootAttribute("WebLayout", Namespace="", IsNullable=false)]
     public class WebLayout {
-
-        //
-        // All top-level properties are virtual because newer versions (eg. 1.1.0) introduce new elements
-        // at certain positions in the xml document. XML documents are unfortunately sensitive to ordering/position
-        // and our classes must follow the same order.
-
-        public WebLayout()
-        {
-            this.XsdSchema = "WebLayout-1.0.0.xsd";
-        }
-
-        [System.Xml.Serialization.XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
-        public string XsdSchema
-        {
-            get;
-            set;
-        }
+        
+		public static readonly string SchemaName = "WebLayout-1.0.0.xsd";
+        
+		[System.Xml.Serialization.XmlAttribute("noNamespaceSchemaLocation", Namespace="http://www.w3.org/2001/XMLSchema-instance")]
+		public string XsdSchema
+		{
+			get { return SchemaName; }
+			set { if (value != SchemaName) throw new System.Exception("Cannot set the schema name"); }
+		}
 
 		private string m_resourceId;
 		[System.Xml.Serialization.XmlIgnore()]
@@ -197,9 +64,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         private StatusBarType m_statusBar;
         private ZoomControlType m_zoomControl;
         private CommandTypeCollection m_commandSet;
-
+        
         /// <remarks/>
-        public virtual string Title {
+        public string Title {
             get {
                 return this.m_title;
             }
@@ -209,7 +76,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
         
         /// <remarks/>
-        public virtual MapType Map {
+        public MapType Map {
             get {
                 return this.m_map;
             }
@@ -217,9 +84,9 @@ namespace OSGeo.MapGuide.MaestroAPI
                 this.m_map = value;
             }
         }
-
+        
         /// <remarks/>
-        public virtual ToolBarType ToolBar {
+        public ToolBarType ToolBar {
             get {
                 return this.m_toolBar;
             }
@@ -229,7 +96,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
         
         /// <remarks/>
-        public virtual InformationPaneType InformationPane {
+        public InformationPaneType InformationPane {
             get {
                 return this.m_informationPane;
             }
@@ -239,8 +106,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
         
         /// <remarks/>
-        public virtual ContextMenuType ContextMenu
-        {
+        public ContextMenuType ContextMenu {
             get {
                 return this.m_contextMenu;
             }
@@ -250,8 +116,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
         
         /// <remarks/>
-        public virtual TaskPaneType TaskPane
-        {
+        public TaskPaneType TaskPane {
             get {
                 return this.m_taskPane;
             }
@@ -261,8 +126,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
         
         /// <remarks/>
-        public virtual StatusBarType StatusBar
-        {
+        public StatusBarType StatusBar {
             get {
                 return this.m_statusBar;
             }
@@ -272,8 +136,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
         
         /// <remarks/>
-        public virtual ZoomControlType ZoomControl
-        {
+        public ZoomControlType ZoomControl {
             get {
                 return this.m_zoomControl;
             }
@@ -284,8 +147,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("Command", IsNullable=false)]
-        public virtual CommandTypeCollection CommandSet
-        {
+        public CommandTypeCollection CommandSet {
             get {
                 return this.m_commandSet;
             }
