@@ -22,6 +22,7 @@ using System.Net;
 using System.Xml;
 using System.Collections.Specialized;
 using System.Collections;
+using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -212,34 +213,36 @@ namespace OSGeo.MapGuide.MaestroAPI
 		public override string TestConnection(string featuresource)
 		{
 			string req = m_reqBuilder.TestConnection(featuresource);
-				
+            string result = string.Empty;
 			try
 			{
 				byte[] x = this.DownloadData(req);
+                result = Encoding.UTF8.GetString(x);
 			}
 			catch (WebException wex)
 			{
-				if (wex.Response != null)
-					try
-					{
-						string result = "";
-						using(System.IO.MemoryStream ms = new System.IO.MemoryStream())
-						{
-							Utility.CopyStream(wex.Response.GetResponseStream(), ms);
-							result = System.Text.Encoding.UTF8.GetString(ms.ToArray(), 0, (int)ms.Length);
-						}
+                if (wex.Response != null)
+                {
+                    try
+                    {
+                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                        {
+                            Utility.CopyStream(wex.Response.GetResponseStream(), ms);
+                            result = System.Text.Encoding.UTF8.GetString(ms.ToArray(), 0, (int)ms.Length);
+                        }
 
-						if (result.ToLower().IndexOf("<body>") > 0)
-							result = result.Substring(result.ToLower().IndexOf("<body>") + 6);
+                        if (result.ToLower().IndexOf("<body>") > 0)
+                            result = result.Substring(result.ToLower().IndexOf("<body>") + 6);
 
-						if (result.ToLower().IndexOf("</body>") > 0)
-							result = result.Substring(0, result.ToLower().IndexOf("</body>"));
+                        if (result.ToLower().IndexOf("</body>") > 0)
+                            result = result.Substring(0, result.ToLower().IndexOf("</body>"));
 
-						return result;
-					}
-					catch
-					{
-					}
+                        return result;
+                    }
+                    catch
+                    {
+                    }
+                }
 
 				if (wex.InnerException == null)
 					return wex.Message;
@@ -248,10 +251,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 			}
 			catch (Exception ex)
 			{
-				return ex.Message;
+				result = ex.Message;
 			}
 
-			return string.Empty;
+            return result;
 		}
 
 		public string TestConnection(string providername, NameValueCollection parameters)

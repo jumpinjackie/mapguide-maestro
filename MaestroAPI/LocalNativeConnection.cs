@@ -172,13 +172,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 				if (sb.Length > 0)
 					sb.Length--;
 			}
-			return fes.TestConnection(providername, sb.ToString()) ? "No errors" : "Unspecified errors";
+			return fes.TestConnection(providername, sb.ToString()) ? "True" : "Unspecified errors";
 		}
 
 		public override string TestConnection(string featuresource)
 		{
 			MgFeatureService fes = this.Con.CreateService(MgServiceType.FeatureService) as MgFeatureService;
-			return fes.TestConnection(new MgResourceIdentifier(featuresource)) ? "No errors" : "Unspecified errors";
+			return fes.TestConnection(new MgResourceIdentifier(featuresource)) ? "True" : "Unspecified errors";
 		}
 
 		public void DescribeSchema()

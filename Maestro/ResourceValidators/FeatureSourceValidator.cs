@@ -38,7 +38,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
             OSGeo.MapGuide.MaestroAPI.FeatureSource feature = resource as OSGeo.MapGuide.MaestroAPI.FeatureSource;
             //Note: Must be saved!
             string s = feature.CurrentConnection.TestConnection(feature.ResourceId);
-            if (s != null && s.Length != 0)
+            if (s.Trim().ToUpper() != true.ToString().ToUpper())
                 return new ValidationIssue[] { new ValidationIssue(feature, ValidationStatus.Error, s) };
 
             try
