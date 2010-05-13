@@ -136,12 +136,22 @@ namespace OSGeo.MapGuide.MaestroAPI
                             m_items[ordinal] = this.MgReader.ReadGeometry(ref rd, p);
                         else*/
                         {
-                            //No MapGuide dll, convert to WKT and then to internal representation
-                            System.IO.MemoryStream ms = Utility.MgStreamToNetStream(rd, rd.GetType().GetMethod("GetGeometry"), new string[] { p });
-                            OSGeo.MapGuide.MgAgfReaderWriter rdw = new OSGeo.MapGuide.MgAgfReaderWriter();
-                            OSGeo.MapGuide.MgGeometry g = rdw.Read(rd.GetGeometry(p));
-                            OSGeo.MapGuide.MgWktReaderWriter rdww = new OSGeo.MapGuide.MgWktReaderWriter();
-                            m_items[ordinal] = this.Reader.Read(rdww.Write(g));
+                            try
+                            {
+                                //No MapGuide dll, convert to WKT and then to internal representation
+                                System.IO.MemoryStream ms = Utility.MgStreamToNetStream(rd, rd.GetType().GetMethod("GetGeometry"), new string[] { p });
+                                OSGeo.MapGuide.MgAgfReaderWriter rdw = new OSGeo.MapGuide.MgAgfReaderWriter();
+                                OSGeo.MapGuide.MgGeometry g = rdw.Read(rd.GetGeometry(p));
+                                OSGeo.MapGuide.MgWktReaderWriter rdww = new OSGeo.MapGuide.MgWktReaderWriter();
+                                m_items[ordinal] = this.Reader.Read(rdww.Write(g));
+                            }
+                            catch (MgException ex)
+                            {
+                                //Just like the XmlFeatureSetReader, invalid geometry can bite us again
+                                m_nulls[ordinal] = true;
+                                m_items[ordinal] = ex.Message;
+                                ex.Dispose();
+                            }
                         }
                     }
                     else if (parent.Columns[ordinal].Type == Utility.UnmappedType)

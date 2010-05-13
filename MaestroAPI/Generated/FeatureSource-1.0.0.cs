@@ -222,7 +222,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
 
 		public FeatureSourceDescription DescribeSource()
 		{
-			return DescribeSource(null);
+			return DescribeSource("");
 		}
 
 		public FeatureSourceDescription DescribeSource(string schema)
