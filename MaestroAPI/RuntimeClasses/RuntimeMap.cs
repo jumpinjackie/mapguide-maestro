@@ -684,6 +684,9 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 		protected bool m_hasTooltips = false;
 		protected string m_schemaName = "";
 
+        //V2.2 Runtime extensions
+        protected string m_filter;
+
 		public new RuntimeMap Parent { get { return m_parent; } }
 		internal void SetParent(RuntimeMap parent) { m_parent = parent; }
 		protected new RuntimeMap m_parent = null;
@@ -911,6 +914,8 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 
 				m_featureSourceId = d.ReadInternalString();
 				m_featureName = d.ReadInternalString();
+                if (d.SiteVersion > SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_1))
+				    m_filter = d.ReadInternalString();
 				m_schemaName = d.ReadInternalString();
 				m_geometry = d.ReadInternalString();
 
@@ -993,6 +998,8 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 
 				s.WriteStringInternal(m_featureSourceId);
 				s.WriteStringInternal(m_featureName);
+                if (s.SiteVersion > SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_1))
+				    s.WriteStringInternal(m_filter);
 				s.WriteStringInternal(m_schemaName);
 				s.WriteStringInternal(m_geometry);
 
@@ -1028,6 +1035,12 @@ namespace OSGeo.MapGuide.MaestroAPI.RuntimeClasses
 			get { return m_featureName; }
 			set { m_featureName = value; }
 		}
+
+        public string Filter
+        {
+            get { return m_filter; }
+            set { m_filter = value; }
+        }
 
 		public string Geometry
 		{
