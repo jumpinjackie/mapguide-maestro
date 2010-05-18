@@ -134,6 +134,19 @@ namespace OSGeo.MapGuide.Maestro
                 var ci = cmbLanguage.SelectedItem as CultureInfo;
                 if (ci != null)
                 {
+                    return ci.Name;
+                }
+                return null;
+            }
+        }
+
+        public string Locale
+        {
+            get
+            {
+                var ci = cmbLanguage.SelectedItem as CultureInfo;
+                if (ci != null)
+                {
                     return ci.TwoLetterISOLanguageName;
                 }
                 return null;

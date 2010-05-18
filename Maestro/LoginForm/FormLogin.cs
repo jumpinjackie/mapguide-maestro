@@ -149,7 +149,7 @@ namespace OSGeo.MapGuide.Maestro
 
                     if (_selectedIndex == 0) //HTTP
                     {
-                        _conn = ConnectionFactory.CreateHttpConnection(new Uri(_http.Server), _http.Username, _http.Password, _http.Language, true);
+                        _conn = ConnectionFactory.CreateHttpConnection(new Uri(_http.Server), _http.Username, _http.Password, _http.Locale, true);
                         (_conn as HttpServerConnection).UserAgent = "MapGuide Maestro v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
                         //Update preferred site entry if it exists
