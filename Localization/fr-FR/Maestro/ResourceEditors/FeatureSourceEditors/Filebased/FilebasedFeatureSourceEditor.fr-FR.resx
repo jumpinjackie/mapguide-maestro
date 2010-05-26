@@ -122,9 +122,10 @@
     <value>Type de fichier</value>
   </data>
   <data name="LocationType.Items" type="System.String">
-    <value>
-	Fichier interne au serveur MapGuide (Managed)
-	Système de fichiers du serveur (Unmanaged)
+    <value>Fichier interne au serveur MapGuide (Géré)	</value>
+  </data>
+  <data name="LocationType.Items1" type="System.String">
+    <value>Système de fichiers du serveur (Non géré)
 	</value>
   </data>
   <data name="LocationType.Size" type="System.Drawing.Size, System.Drawing">

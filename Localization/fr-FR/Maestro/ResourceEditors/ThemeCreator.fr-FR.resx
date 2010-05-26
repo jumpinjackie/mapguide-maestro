@@ -117,5 +117,65 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CancelBtn.Text" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Colonne</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="AppendRules.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 17</value>
+  </data>
+  <data name="GradientColors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
+  </data>
+  <data name="ChangeBaseStyleBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 23</value>
+  </data>
+  <data name="AppendRules.Text" xml:space="preserve">
+    <value>Ajouter des règles</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="OverwriteRules.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 17</value>
+  </data>
+  <data name="PreviewGroup.Text" xml:space="preserve">
+    <value>Prévisualisation</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Créateur de thème</value>
+  </data>
+  <data name="ChangeBaseStyleBtn.Text" xml:space="preserve">
+    <value>Changer le style de base</value>
+  </data>
+  <data name="OverwriteRules.Text" xml:space="preserve">
+    <value>Remplacer les règles existantes</value>
+  </data>
+  <data name="DataGroup.Text" xml:space="preserve">
+    <value>Configuration des données</value>
+  </data>
+  <data name="GradientColors.Text" xml:space="preserve">
+    <value>Dégradé</value>
+  </data>
+  <data name="AggregateCombo.Items1" xml:space="preserve">
+    <value>Déviation Standard</value>
+  </data>
+  <data name="AggregateCombo.Items3" xml:space="preserve">
+    <value>Individuel</value>
+  </data>
+  <data name="DisplayGroup.Text" xml:space="preserve">
+    <value>Configuration de l'affichage</value>
+  </data>
+  <data name="AggregateCombo.Items" xml:space="preserve">
+    <value>Égal</value>
+  </data>
+  <data name="AggregateLabel.Text" xml:space="preserve">
+    <value>Méthode des lots</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Nombre de règles</value>
+  </data>
 </root>

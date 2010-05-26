@@ -118,63 +118,63 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConsoleCurrentGroup" xml:space="preserve">
-    <value>Current Group: \t{0} ({1} of {2})</value>
+    <value>Groupe actuel : \t{0} ({1} de {2})</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleCurrentMap" xml:space="preserve">
-    <value>Current Map:   \t{0} ({1} of {2})</value>
+    <value>Carte actuelle :   \t{0} ({1} de {2})</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleCurrentScale" xml:space="preserve">
-    <value>Current Scale: \t1:{0} ({1} of {2})</value>
+    <value>Échelle actuelle : \t1:{0} ({1} de {2})</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleCurrentTile" xml:space="preserve">
-    <value>Current Tile:  \t{0} of {1}</value>
+    <value>Tuile actuelle :  \t{0} def {1}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleErrorSummary" xml:space="preserve">
-    <value>Error count: {0}, last exception: {1}</value>
+    <value>Nombre d'erreurs : {0}, dernière exception: {1}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleGroupDuration" xml:space="preserve">
-    <value>Group estimate:  \t{0}</value>
+    <value>Estimation du groupe :  \t{0}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleGroupEstimate" xml:space="preserve">
-    <value>Group duration:  \t{0}</value>
+    <value>Durée du groupe :  \t{0}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationBeginGroup" xml:space="preserve">
-    <value>{0}: Rendering group {1} ({3} of {4})</value>
+    <value>{0}: Rendu du groupe {1} ({3} de {4})</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationBeginMap" xml:space="preserve">
-    <value>{0}: Rendering map {1}</value>
+    <value>{0}: Rendu de la carte {1}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationBeginScale" xml:space="preserve">
-    <value>{0}: Rendering scale 1:{1} ({2} of {3})</value>
+    <value>{0}: Rendu de l'échelle 1:{1} ({2} de {3})</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationFinishGroup" xml:space="preserve">
-    <value>{0}: Rendered group {1} in {2}</value>
+    <value>{0}: Groupe rendu {1} de {2}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationFinishMap" xml:space="preserve">
-    <value>{0}: Rendered map {1} in {2}</value>
+    <value>{0}: Carte rendue {1} de {2}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationFinishScale" xml:space="preserve">
-    <value>{0}: Rendered scale 1:{1} in {2}</value>
+    <value>{0}: Rendered scale 1:{1} en {2}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationFinishTile" xml:space="preserve">
-    <value>Processed {0} of {1} tiles in {2}, expected duration: {3}</value>
+    <value>Production de {0} de {1} tuiles en {2}, durée estimée: {3}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleUpdateTime" xml:space="preserve">
-    <value>Update time:   \t{0}</value>
+    <value>Mise à jour du temps :   \t{0}</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
 </root>

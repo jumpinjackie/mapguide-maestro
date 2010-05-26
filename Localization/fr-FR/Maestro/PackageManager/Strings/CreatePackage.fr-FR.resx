@@ -122,21 +122,21 @@
     <comment>The list entry that represents all resource types</comment>
   </data>
   <data name="FolderMissingPrefix" xml:space="preserve">
-    <value>The folder must start with \"Library://\", do you want the starting folder to become:\n {0} ?</value>
+    <value>Le répertoire doit débuter par \"Library://\", voulez-vous que le répertoire de départ soit :\n {0} ?</value>
     <comment>A message that is displayed when the user has not entered a folder starting with Library://</comment>
   </data>
   <data name="InvalidRestorePathError" xml:space="preserve">
-    <value>An error occured while validating the restore path: {0}\nIt should have the format: \"Libray://folder/folder/\".</value>
+    <value>Une erreur s'est produite lors de la validation du chemin de restauration : {0}\nLe chemin doit avoir le format t : \"Libray://dossier/dossier/\".</value>
     <comment>A message that is displayed when the restore path does not validate</comment>
   </data>
   <data name="NoFolderSelected" xml:space="preserve">
-    <value>You have not selected a starting folder, do you want to back up the entire site?</value>
+    <value>Vous n'avez pas sélectionné un dossier de départ, souhaitez-vous sauvegarder l'ensemble du site?</value>
     <comment>A message that is displayed when the user has not selected a folder to create  a folder from</comment>
   </data>
   <data name="NoRestorePathWarning" xml:space="preserve">
-    <value>You have selected to restore the package at another location, but not entered one.
-This will cause the package to be restored a the root of the resource tree.
-Are you sure this is what you want?</value>
+    <value>Vous avez choisi de restaurer le paquetage à un autre endroit, mais n'en avez pas entré un.
+Cela entraînera que le paquetage sera restaurer à la racine de l'arbre de la ressource.
+Etes-vous sûr que c'est ce que vous voulez?</value>
     <comment>A message displayed when the user has not entered a restore path</comment>
   </data>
   <data name="NoTypesSelected" xml:space="preserve">
@@ -152,10 +152,10 @@ Are you sure this is what you want?</value>
     <comment>A message displayed when the package creation fails</comment>
   </data>
   <data name="RepositoryWipeWarning" xml:space="preserve">
-    <value>You have selected to restore the package at the root.
-You have also selected to delete the target before restoring.
-This will result in the entire repository being deleted and replaced with this package.
-Are you absolutely sure that is what you want?</value>
+    <value>Vous avez choisi de restaurer le paquetage à la racine.
+Vous avez également choisi de supprimer la cible avant de restaurer.
+Cela se traduira par la suppression entière de la cible et son remplacement par ce paquetage.
+Êtes-vous absolument certain que c'est ce que vous voulez?</value>
     <comment>A confirmation message displayed to the user, when creating a package that will completely wipe a repository</comment>
   </data>
   <data name="UnknownResourceTypes" xml:space="preserve">

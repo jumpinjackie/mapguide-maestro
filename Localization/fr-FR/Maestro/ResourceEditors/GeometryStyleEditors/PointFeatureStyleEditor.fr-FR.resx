@@ -117,47 +117,182 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label9.Text" type="System.String">
-    <value>Rotation</value>
+  <data name="FontUnderlineButton.ToolTipText" xml:space="preserve">
+    <value>Définir la police soulignée</value>
   </data>
-  <data name="label5.Text" type="System.String">
-    <value>Hauteur</value>
+  <data name="FontItalicButton.ToolTipText" xml:space="preserve">
+    <value>Définir la police italique</value>
   </data>
-  <data name="label4.Text" type="System.String">
-    <value>Largeur</value>
-  </data>
-  <data name="label3.Text" type="System.String">
-    <value>Unités de dimensionnement</value>
-  </data>
-  <data name="label2.Text" type="System.String">
-    <value>Contexte de dimensionnement</value>
-  </data>
-  <data name="label1.Text" type="System.String">
-    <value>Symbole</value>
-  </data>
-  <data name="groupBox1.Text" type="System.String">
-    <value>Style de symbole</value>
-  </data>
-  <data name="groupBox2.Text" type="System.String">
+  <data name="groupBox2.Text" xml:space="preserve">
     <value>Remplissage de symbole</value>
   </data>
-  <data name="groupBox3.Text" type="System.String">
-    <value>Bordure de symbole</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Contexte de dimensionnement</value>
   </data>
-  <data name="groupBox4.Text" type="System.String">
-    <value>Prévisualisation</value>
+  <data name="lblForeground.Text" xml:space="preserve">
+    <value>Couleur</value>
   </data>
-  <data name="label8.Text" type="System.String">
+  <data name="label8.Text" xml:space="preserve">
     <value>Y</value>
   </data>
-  <data name="label7.Text" type="System.String">
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Prévisualisation</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
     <value>X</value>
   </data>
-  <data name="label6.Text" type="System.String">
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Style de symbole</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Largeur</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Police</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Unités de dimensionnement</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
     <value>Point de référence</value>
   </data>
-  <data name="MaintainAspectRatio.Text" type="System.String">
+  <data name="FontBoldButton.ToolTipText" xml:space="preserve">
+    <value>Définir la police grasse</value>
+  </data>
+  <data name="groupBoxFont.Text" xml:space="preserve">
+    <value>Style de police</value>
+  </data>
+  <data name="MaintainAspectRatio.Text" xml:space="preserve">
     <value>Maintenir le ratio d'aspect</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Hauteur</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Symbole</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Rotation</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Bordure de symbole</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Transparence</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 13</value>
+  </data>
+  <data name="groupBoxSymbolLocation.Text" xml:space="preserve">
+    <value>Position du symbole</value>
+  </data>
+  <data name="HeigthText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 21</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 13</value>
+  </data>
+  <data name="SizeUnits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 80</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="WidthText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 21</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="Symbol.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 21</value>
+  </data>
+  <data name="FontItalicButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
+        ymqkDYYXcCjDZOANURSjCNGFQUTsl4GXVMxKk62YU4fXQpaIlygHQxBRH8/zwvyaIAYe+HLgnPN8nue9
+        HA3nvDTq63oW/jm13XOwvPTB3DYFY5MH+bXfcN8ygfTSMSSXfESicQDxBqdYHwH29g9w2tnZ3UcguIvN
+        rR3417exuBJE5N1n/wfwLgXEOc38Bc6xNRHb+/y4nm49G0Bnit2zf9H6bkliE/jKuYxrd6oVgDWfjB+K
+        TWeKMyrGEVfowITvD9re/9ABVQrAhh0HHK+ZselMMaN/mvwtDb+aVqkA7HYIwIj3ysfluPTorJnP6Ezx
+        oHsD1s5ZXEktUwCOioB5f1CEPR9+wTG6iuiserTo8dkwng7HT/R+XUPF8xlcTjErAOdMcW6NW8STiwG8
+        7vej8oUPN/PsEv3t8Ao0TZP3T1u8uJRkUgAuSYHtO97oLxmXd5t9Ho8aPTK+GzntqNfrLm2fFoihwYOI
+        xGIF4KjoGBLzY1OrF9k6OOFxnwDC4wxIMX1G0pMhgVyMNyoA13PAtS7OrJk1PrC69LUdQWxuF6IybHrX
+        LRI7JrtZdoDAo1XmbjMyD+tjSXxGcXRmnYg5ttD9QuxDhN0uUgDOmbvNTpPOJaGAo2K36cyaGZvOFIfd
+        KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 13</value>
+  </data>
+  <data name="WidthText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 112</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 13</value>
+  </data>
+  <data name="SizeContext.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 21</value>
+  </data>
+  <data name="lblForeground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 13</value>
+  </data>
+  <data name="HeigthText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 144</value>
+  </data>
+  <data name="SizeContext.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 48</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 13</value>
+  </data>
+  <data name="FontBoldButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
+        ymqkDYYXcCjDZOANURSjCNGFQUTsl4GXVMxKk62YU4fXQpaIlygHQxBRH8/zwvyaIAYe+HLgnPN8nue9
+        HA3nvDTq63oW/jm13XOwvPTB3DYFY5MH+bXfcN8ygfTSMSSXfESicQDxBqdYHwH29g9w2tnZ3UcguIvN
+        rR3417exuBJE5N1n/wfwLgXEOc38Bc6xNRHb+/y4nm49G0Bnit2zf9H6bkliE/jKuYxrd6oVgDWfjB+K
+        TWeKMyrGEVfowITvD9re/9ABVQrAhh0HHK+ZselMMaN/mvwtDb+aVqkA7HYIwIj3ysfluPTorJnP6Ezx
+        oHsD1s5ZXEktUwCOioB5f1CEPR9+wTG6iuiserTo8dkwng7HT/R+XUPF8xlcTjErAOdMcW6NW8STiwG8
+        7vej8oUPN/PsEv3t8Ao0TZP3T1u8uJRkUgAuSYHtO97oLxmXd5t9Ho8aPTK+GzntqNfrLm2fFoihwYOI
+        xGIF4KjoGBLzY1OrF9k6OOFxnwDC4wxIMX1G0pMhgVyMNyoA13PAtS7OrJk1PrC69LUdQWxuF6IybHrX
+        LRI7JrtZdoDAo1XmbjMyD+tjSXxGcXRmnYg5ttD9QuxDhN0uUgDOmbvNTpPOJaGAo2K36cyaGZvOFIfd
+        KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="Symbol.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 16</value>
+  </data>
+  <data name="RotationBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 21</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="RotationBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 176</value>
+  </data>
+  <data name="SizeUnits.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 21</value>
+  </data>
+  <data name="FontUnderlineButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
+        ymqkDYYXcCjDZOANURSjCNGFQUTsl4GXVMxKk62YU4fXQpaIlygHQxBRH8/zwvyaIAYe+HLgnPN8nue9
+        HA3nvDTq63oW/jm13XOwvPTB3DYFY5MH+bXfcN8ygfTSMSSXfESicQDxBqdYHwH29g9w2tnZ3UcguIvN
+        rR3417exuBJE5N1n/wfwLgXEOc38Bc6xNRHb+/y4nm49G0Bnit2zf9H6bkliE/jKuYxrd6oVgDWfjB+K
+        TWeKMyrGEVfowITvD9re/9ABVQrAhh0HHK+ZselMMaN/mvwtDb+aVqkA7HYIwIj3ysfluPTorJnP6Ezx
+        oHsD1s5ZXEktUwCOioB5f1CEPR9+wTG6iuiserTo8dkwng7HT/R+XUPF8xlcTjErAOdMcW6NW8STiwG8
+        7vej8oUPN/PsEv3t8Ao0TZP3T1u8uJRkUgAuSYHtO97oLxmXd5t9Ho8aPTK+GzntqNfrLm2fFoihwYOI
+        xGIF4KjoGBLzY1OrF9k6OOFxnwDC4wxIMX1G0pMhgVyMNyoA13PAtS7OrJk1PrC69LUdQWxuF6IybHrX
+        LRI7JrtZdoDAo1XmbjMyD+tjSXxGcXRmnYg5ttD9QuxDhN0uUgDOmbvNTpPOJaGAo2K36cyaGZvOFIfd
+        KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="DisplayPoints.Text" xml:space="preserve">
+    <value>Afficher les points</value>
   </data>
 </root>

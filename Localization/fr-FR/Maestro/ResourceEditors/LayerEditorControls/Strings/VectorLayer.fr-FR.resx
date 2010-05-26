@@ -118,17 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="FeatureSourceReadError" xml:space="preserve">
-    <value>Failed to read FeatureSource: {0}</value>
+    <value>Impossible de lire la source d'entités : {0}</value>
     <comment>An error message that is displayed when the FeatureSource fails to read</comment>
   </data>
   <data name="SchemaMissingError" xml:space="preserve">
-    <value>Cannot display editor, because no schema was selected</value>
+    <value>Impossible d'afficher l'éditeur, car aucun schéma n'a été sélectionné</value>
     <comment>An error message that is displayed when the user attempts to perform an action that requires a schema present, but none is selected</comment>
   </data>
   <data name="UnsupportedItemsDetectedWarning" xml:space="preserve">
-    <value>This layer contains items that are not supported by the editor.
-If you save this layer they may be removed.
-It is recommended that you open this layer with the xml editor instead.</value>
+    <value>Cette couche contient des éléments qui ne sont pas supportés par l'éditeur.
+Si vous sauvegardez cette couche, ils peuvent être enlevés.
+Il est recommandé que vous ouvrez cette couche avec l'éditeur XML à la place</value>
     <comment>A warning message that is displayed if the layer has unsupported items</comment>
   </data>
 </root>

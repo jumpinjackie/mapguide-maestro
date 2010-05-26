@@ -124,4 +124,10 @@
   <data name="label1.Text" type="System.String">
     <value>Serveur</value>
   </data>
+  <data name="Database.ToolTip" xml:space="preserve">
+    <value>Entrez le nom de la base de données ici</value>
+  </data>
+  <data name="Server.ToolTip" xml:space="preserve">
+    <value>Entrez le nom du serveur ici, ou laissez vide pour la valeur par défaut qui est localhost</value>
+  </data>
 </root>

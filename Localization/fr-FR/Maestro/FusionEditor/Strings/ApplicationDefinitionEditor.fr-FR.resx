@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BrowserLaunchError" xml:space="preserve">
-    <value>Failed to launch browser: {0}</value>
+    <value>Impossible de lancer le navigateur : {0}</value>
     <comment>The message displayed when the browser fails to launch</comment>
   </data>
   <data name="MalformedURLError" xml:space="preserve">
-    <value>Malformed URL</value>
+    <value>URL incorrecte</value>
     <comment>An error message that indicates the internal URL generation failed</comment>
   </data>
   <data name="NewContainerName" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>The base name for a new container</comment>
   </data>
   <data name="NewMapName" xml:space="preserve">
-    <value>New Map</value>
+    <value>Nouvelle carte</value>
     <comment>The base name for a new map</comment>
   </data>
   <data name="NewSubMenuName" xml:space="preserve">

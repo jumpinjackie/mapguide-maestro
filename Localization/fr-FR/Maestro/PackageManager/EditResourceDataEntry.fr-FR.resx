@@ -163,4 +163,7 @@
   <data name="$this.Text" type="System.String">
     <value>Éditer les détails de la ressource</value>
   </data>
+  <data name="DataTypeBox.Items" xml:space="preserve">
+    <value>Fichier</value>
+  </data>
 </root>

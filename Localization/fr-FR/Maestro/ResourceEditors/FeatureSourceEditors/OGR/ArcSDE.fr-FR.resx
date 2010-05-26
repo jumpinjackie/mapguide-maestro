@@ -122,7 +122,7 @@
     <value>Serveur</value>
   </data>
   <data name="label2.Text" type="System.String">
-    <value>Instance</value>
+    <value>Exemple</value>
   </data>
   <data name="label3.Text" type="System.String">
     <value>Base de données</value>

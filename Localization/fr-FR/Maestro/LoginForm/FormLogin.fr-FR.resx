@@ -148,4 +148,16 @@
   <data name="$this.Text" type="System.String">
     <value>Connexion à un serveur MapGuide</value>
   </data>
+  <data name="cmbServerUrl.ToolTip" xml:space="preserve">
+    <value>Entrez l'URL complète du service MapAgent ici</value>
+  </data>
+  <data name="txtStartingpoint.ToolTip" xml:space="preserve">
+    <value>Entrez le répertoire initial ici</value>
+  </data>
+  <data name="txtUsername.ToolTip" xml:space="preserve">
+    <value>Entrez le nom d'utilisateur utilisé pour vous connecter ici</value>
+  </data>
+  <data name="txtPassword.ToolTip" xml:space="preserve">
+    <value>Entrez le mot de passe du site</value>
+  </data>
 </root>

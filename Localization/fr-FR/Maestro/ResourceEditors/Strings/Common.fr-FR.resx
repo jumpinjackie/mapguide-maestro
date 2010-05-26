@@ -118,63 +118,63 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AllFiles" xml:space="preserve">
-    <value>All Files (*.*)</value>
+    <value>Tous les fichiers (*.*)</value>
     <comment>The item displayed when browsing for files</comment>
   </data>
   <data name="ASCIIFiles" xml:space="preserve">
-    <value>ASCII file (*.asc)</value>
+    <value>Fichier ASCII (*.asc)</value>
     <comment>The item displayed when browsing for asc files</comment>
   </data>
   <data name="CSVFiles" xml:space="preserve">
-    <value>Comma separated values (*.csv)</value>
+    <value>Valeurs séparées par une virgule (*.csv)</value>
     <comment>The item displayed when browsing for csv files</comment>
   </data>
   <data name="dBaseFiles" xml:space="preserve">
-    <value>dBase database (*.dbf)</value>
+    <value>Base de données dBase (*.dbf)</value>
     <comment>The item displayed when browsing for dbf files</comment>
   </data>
   <data name="SQLiteDbFiles" xml:space="preserve">
-    <value>SQLite database (*.db)</value>
+    <value>Base de données SQLite (*.db)</value>
     <comment>The item displayed when browsing for db files</comment>
   </data>
   <data name="FirebirdFiles" xml:space="preserve">
-    <value>Firebird database (*.fdb)</value>
+    <value>Base de données Firebird (*.fdb)</value>
     <comment>The item displayed when browsing for fdb files</comment>
   </data>
   <data name="KMLFiles" xml:space="preserve">
-    <value>KML file (*.kml)</value>
+    <value>Fichier KML (*.kml)</value>
     <comment>The item displayed when browsing for KML files</comment>
   </data>
   <data name="AccessDatabaseFiles" xml:space="preserve">
-    <value>Access database (*.mdb)</value>
+    <value>Base de données Access (*.mdb)</value>
     <comment>The item displayed when browsing for mdb files</comment>
   </data>
   <data name="MissingMethod" xml:space="preserve">
-    <value>This method is not yet implemented</value>
+    <value>Cette méthode n'est pas encore implémentée</value>
     <comment>A message that is displayed when the user activates a feature that is not yet written</comment>
   </data>
   <data name="SQLiteFiles" xml:space="preserve">
-    <value>SQLite database (*.sqlite)</value>
+    <value>Base de données SQLite (*.sqlite)</value>
     <comment>The item displayed when browsing for sqlite files</comment>
   </data>
   <data name="TABFiles" xml:space="preserve">
-    <value>Tabulator seperated values (*.tab)</value>
+    <value>Valeurs séparées par une tabulation (*.tab)</value>
     <comment>The item displayed when browsing for tab files</comment>
   </data>
   <data name="TextFiles" xml:space="preserve">
-    <value>Text file (*.txt)</value>
+    <value>Ficheir Texte (*.txt)</value>
     <comment>The item displayed when browsing for txt files</comment>
   </data>
   <data name="ExcelFiles" xml:space="preserve">
-    <value>Excel spreadsheet (*.xls)</value>
+    <value>Tableur Excel (*.xls)</value>
     <comment>The item displayed when browsing for xls files</comment>
   </data>
   <data name="DGNFiles" xml:space="preserve">
-    <value>DGN file (*.dgn)</value>
+    <value>Fichier DGN (*.dgn)</value>
     <comment>The item displayed when browsing for dgn files</comment>
   </data>
   <data name="GMLFiles" xml:space="preserve">
-    <value>GML file (*.gml)</value>
+    <value>Fichier GML (*.gml)</value>
     <comment>The item displayed when browsing for gml files</comment>
   </data>
   <data name="MapInfoInterchangeFiles" xml:space="preserve">
@@ -190,15 +190,15 @@
     <comment>The item displayed when browsing for s57 files</comment>
   </data>
   <data name="ShapeFiles" xml:space="preserve">
-    <value>Shape file (*.shp)</value>
+    <value>Fichier Shape (*.shp)</value>
     <comment>The item displayed when browsing for shp files</comment>
   </data>
   <data name="SDFFiles" xml:space="preserve">
-    <value>SDF files (*.sdf)</value>
+    <value>Fichiers SDF (*.sdf)</value>
     <comment>The item displayed when browsing for sdf files</comment>
   </data>
   <data name="SQLite3Files" xml:space="preserve">
-    <value>SQLite3 files (*.sqlite3)</value>
+    <value>Fichiers SQLite3 (*.sqlite3)</value>
     <comment>The item displayed when browsing for sqlite3 files</comment>
   </data>
   <data name="AssemblyDataInternalError" xml:space="preserve">
@@ -206,19 +206,19 @@
     <comment>An error message displayed if an internal resource fails to load</comment>
   </data>
   <data name="GenericError" xml:space="preserve">
-    <value>An error occured: {0}</value>
+    <value>Une erreur s'est produite : {0}</value>
     <comment>An error message that is displayed when an unexpected error occurs</comment>
   </data>
   <data name="InfiniteValue" xml:space="preserve">
-    <value>infinite</value>
+    <value>infini</value>
     <comment>A value that is displayed when the value assigned is infinite</comment>
   </data>
   <data name="InvalidValueError" xml:space="preserve">
-    <value>Invalid value</value>
+    <value>Valeur invalide</value>
     <comment>An error message that is displayed when the entered value is invalid</comment>
   </data>
   <data name="EmptyText" xml:space="preserve">
-    <value>None</value>
+    <value>Aucun</value>
     <comment>The text used for rendering examples with no text data</comment>
   </data>
 </root>

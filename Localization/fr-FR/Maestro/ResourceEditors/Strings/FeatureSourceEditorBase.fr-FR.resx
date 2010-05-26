@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AssemblyLoadError" xml:space="preserve">
-    <value>Failed to load assembly {0} from file {1}.
-Error message: {2}</value>
+    <value>Échec lors du chargement de l'assemblage {0} à partir du fichier {1}.
+Message d'erreur : {2}</value>
     <comment>An error message that is displayed if there is an error loading a resource editor</comment>
   </data>
   <data name="ControlMissingError" xml:space="preserve">
-    <value>Failed to find the Control type: {0} in assembly: {1}</value>
+    <value>Impossible de trouver le type de Contrôle : {0} dans l'assemblage : {1}</value>
     <comment>An error message that is displayed if the named type is missing in the specified assembly</comment>
   </data>
   <data name="FeatureSourceCreationError" xml:space="preserve">
-    <value>Failed to create new datasource</value>
+    <value>Impossible de créer une nouvelle source de données</value>
     <comment>An error message that is displayed if the FeatureSource creation fails</comment>
   </data>
   <data name="FeatureSourceEditorMapInvalidError" xml:space="preserve">
-    <value>The setup file for the FeatureSource Editors is invalid.</value>
+    <value>Le fichier d'installation pour les éditeurs FeatureSource n'est pas valide.</value>
     <comment>An error message that is displayed if the setup file is invalid</comment>
   </data>
   <data name="FeatureSourceEditorMapMissingError" xml:space="preserve">
-    <value>The setup file for the FeatureSource Editors is missing. Please place it at: {0}</value>
+    <value>Le fichier d'installation pour les éditeurs FeatureSource est manquant. S'il vous plaît placez le à : {0}</value>
     <comment>An error message that is displayed if the setup file is missing</comment>
   </data>
   <data name="NoErrorsFound" xml:space="preserve">
@@ -143,12 +143,12 @@ Error message: {2}</value>
     <comment>A message that is displayed when no errors are reported from the provider</comment>
   </data>
   <data name="ResourceSaveError" xml:space="preserve">
-    <value>Unable to save resource, so it cannot be validated.
-Error message: {0}</value>
+    <value>Impossible d'enregistrer la ressource, de sorte qu'elle ne peut pas être validée.
+Message d'erreur : {0}</value>
     <comment>An error message that is displayed if the resource fails to save before the validation</comment>
   </data>
   <data name="XmlUpdateError" xml:space="preserve">
-    <value>Failed to update xml data: {0}</value>
+    <value>Impossible de mettre à jour des données XML : {0}</value>
     <comment>An error message that is displayed if the configuration document fails to save</comment>
   </data>
 </root>

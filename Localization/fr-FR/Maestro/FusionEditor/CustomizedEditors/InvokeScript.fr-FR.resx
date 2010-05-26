@@ -124,4 +124,7 @@
   <data name="label2.Text" type="System.String">
     <value>Cible</value>
   </data>
+  <data name="ScriptPicker.Items" xml:space="preserve">
+    <value>&lt; Sélectionnez un script prédéfini &gt;</value>
+  </data>
 </root>

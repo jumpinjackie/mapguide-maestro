@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ValidationFailedError" xml:space="preserve">
-    <value>Failed to save file: {0}</value>
+    <value>Échec de la sauvegarde du fichier : {0}</value>
     <comment>An error message that is displayed if the log was not saved</comment>
   </data>
   <data name="ValidationProgressMessage" xml:space="preserve">
-    <value>Validating resource: {0}</value>
+    <value>Validation de la ressource : {0}</value>
     <comment>The header text for a resource in the validation log</comment>
   </data>
   <data name="ValidationResultFormat" xml:space="preserve">

@@ -150,4 +150,13 @@
     <value>Actualiser les données cartographiques pour les éléments sélectionnés
 </value>
   </data>
+  <data name="OpenFileDialog.Filter" xml:space="preserve">
+    <value>Fichiers PNG (*.png)|*.png|Fichiers JPEG (*.jpg; *.jpeg)|*.jpg;*.jpeg|Format Tagged Image (*.tif, *.tiff)|*.tif;*.tiff|Fichiers Enhanced Wawelet (*.ecw)|*.ecw|Fichiers MrSID (*.sid)|*.sid|Fichiers GIF (*.gif)|*.gif|Tous les fichiers (*.*)|*.*</value>
+  </data>
+  <data name="OpenFileDialog.Title" xml:space="preserve">
+    <value>Sélectionnez les fichiers à ajouter.</value>
+  </data>
+  <data name="FolderBrowserDialog.Description" xml:space="preserve">
+    <value>Sélectionnez le dossier avec les fichiers à inclure.</value>
+  </data>
 </root>

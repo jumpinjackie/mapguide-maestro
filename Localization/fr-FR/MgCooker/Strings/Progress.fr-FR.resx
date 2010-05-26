@@ -118,32 +118,32 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AlreadyAborting" xml:space="preserve">
-    <value>I heard you the first time!
-Please be patient.</value>
+    <value>Je vous ai entendu la première fois!
+S'il vous plaît, soyez  patient.</value>
     <comment>A message that is displayed when the user clicks quit more than once</comment>
   </data>
   <data name="CurrentGroupStatus" xml:space="preserve">
-    <value>{0} in {1}</value>
+    <value>{0} en {1}</value>
     <comment>Label that identifies the current group and map, like &lt;group&gt; in &lt;map&gt;</comment>
   </data>
   <data name="CurrentTileCounter" xml:space="preserve">
-    <value>Tile {0:###,###,###,###} of {1:###,###,###,###} {2}</value>
+    <value>Tuile {0:###,###,###,###} de {1:###,###,###,###} {2}</value>
     <comment>Label that displays the current tile and the total number of tiles and number of failed tiles, eg: tile 1 of 100 (5 failed tiles)</comment>
   </data>
   <data name="InsufficientTimePassed" xml:space="preserve">
-    <value>&lt; Inaccurate measure of remaining time &gt;</value>
+    <value>&lt; Mesure inexacte de la durée restante &gt;</value>
     <comment>Text displayed when it is not possible to predict the remaning time</comment>
   </data>
   <data name="RemainingTime" xml:space="preserve">
-    <value>{0}, remaining time: {1}</value>
+    <value>{0}, temps restant : {1}</value>
     <comment>Label that displays the remaining time</comment>
   </data>
   <data name="TileErrorCount" xml:space="preserve">
-    <value>({0} failed tiles)</value>
+    <value>({0} tuiles échouées)</value>
     <comment>Text inserted in the CurrentTileCounter if any tiles are failed</comment>
   </data>
   <data name="PauseMessage" xml:space="preserve">
-    <value>MgCooker is now paused, click OK to resume rendering</value>
+    <value>MgCooker est actuellement en veille, cliquez sur OK pour reprendre le rendu</value>
     <comment>A text message displayed when MgCooker is paused</comment>
   </data>
 </root>

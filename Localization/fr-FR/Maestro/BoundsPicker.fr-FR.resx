@@ -119,16 +119,20 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Text" type="System.String">
-    <value>Min X</value>
+    <value>Min X
+</value>
   </data>
   <data name="label2.Text" type="System.String">
-    <value>Max X</value>
+    <value>Max X
+</value>
   </data>
   <data name="label3.Text" type="System.String">
-    <value>Min Y</value>
+    <value>Min Y
+</value>
   </data>
   <data name="label4.Text" type="System.String">
-    <value>Max Y</value>
+    <value>Max Y
+</value>
   </data>
   <data name="SRSLabel.Text" type="System.String">
     <value>SRS</value>
@@ -138,5 +142,10 @@
   </data>
   <data name="$this.Text" type="System.String">
     <value>Limites géographiques</value>
+  </data>
+  <data name="OKBtn.Text" xml:space="preserve">
+    <value>OK
+
+</value>
   </data>
 </root>

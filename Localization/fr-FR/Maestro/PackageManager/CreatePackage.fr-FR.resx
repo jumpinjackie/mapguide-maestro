@@ -148,4 +148,10 @@
   <data name="$this.Text" type="System.String">
     <value>Créer un nouveau paquetage</value>
   </data>
+  <data name="saveFileDialog.Filter" xml:space="preserve">
+    <value>Paquetages MapGuide (*.mgp)|*.mgp|Fichiers Zip (*.zip)|*.zip|Tous les fichiers (*.*)|*.*</value>
+  </data>
+  <data name="saveFileDialog.Title" xml:space="preserve">
+    <value>Sélectionnez l'endroit pour sauvegarder le fichier</value>
+  </data>
 </root>

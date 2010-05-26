@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MissingInitializationInternalError" xml:space="preserve">
-    <value>You must set the cache property before using the tree</value>
+    <value>Il faut définir la propriété "cache" avant l'utilisation de l'arborescence</value>
     <comment>An internal error message that is displayed if the tree is used i encountered</comment>
   </data>
 </root>

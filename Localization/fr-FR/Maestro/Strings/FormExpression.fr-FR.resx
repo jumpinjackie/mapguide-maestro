@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ColumnValueError" xml:space="preserve">
-    <value>An error occured while reading column values: {0}</value>
+    <value>Une erreur s'est produite lors de la lecture des valeurs de la colonne : {0}</value>
     <comment>An error message that is displayed when the column values could not be read</comment>
   </data>
   <data name="FunctionTooltip" xml:space="preserve">
-    <value>Function: {1}({2})
-Description: {3}
-Returns: {0}</value>
+    <value>Fonction : {1}({2})
+Description : {3}
+Retourne : {0}</value>
     <comment>The tooltip displayed in the text editor when the cursor is over a function name</comment>
   </data>
   <data name="NoColumnValuesError" xml:space="preserve">
-    <value>No values found in selected column</value>
+    <value>Aucune valeur trouvée dans la colonne sélectionnée</value>
     <comment>A message displayed when the column has no values</comment>
   </data>
   <data name="PropertyTooltip" xml:space="preserve">
-    <value>Property: {0}
+    <value>Propriété: {0}
 Type: {1}</value>
     <comment>The tooltip displayed in the text editor when the cursor is over a property</comment>
   </data>

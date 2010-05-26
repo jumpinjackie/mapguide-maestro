@@ -119,21 +119,43 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ConnectionType.Items" type="System.String">
-    <value>
-Fichier interne (Managed)
-Fichier sur le serveur (Unmanaged)
-DODS
-ArcSDE
-GRASS
-OGDI
-Informix
-PostGIS
-MySQL
-ODBC
-Oracle
-FME
-Chaîne de connexion personnalisée
-	</value>
+    <value>Fichier interne (Géré)</value>
+  </data>
+  <data name="ConnectionType.Items1" type="System.String">
+    <value>Fichier sur le serveur (Non géré)</value>
+  </data>
+  <data name="ConnectionType.Items2" type="System.String">
+    <value>DODS</value>
+  </data>
+  <data name="ConnectionType.Items3" type="System.String">
+    <value>ArcSDE	</value>
+  </data>
+  <data name="ConnectionType.Items4" type="System.String">
+    <value>GRASS</value>
+  </data>
+  <data name="ConnectionType.Items5" type="System.String">
+    <value>OGDI</value>
+  </data>
+  <data name="ConnectionType.Items6" type="System.String">
+    <value>Informix</value>
+  </data>
+  <data name="ConnectionType.Items7" type="System.String">
+    <value>PostGIS</value>
+  </data>
+  <data name="ConnectionType.Items8" type="System.String">
+    <value>MySQL	</value>
+  </data>
+  <data name="ConnectionType.Items9" type="System.String">
+    <value>ODBC	</value>
+  </data>
+  <data name="ConnectionType.Items10" type="System.String">
+    <value>Oracle	</value>
+  </data>
+  <data name="ConnectionType.Items11" type="System.String">
+    <value>FME	</value>
+  </data>
+  <data name="ConnectionType.Items12" type="System.String">
+    <value>Chaîne de connexion personnalisée</value>
   </data>
   <data name="label1.Text" type="System.String">
     <value>Type de connexion</value>

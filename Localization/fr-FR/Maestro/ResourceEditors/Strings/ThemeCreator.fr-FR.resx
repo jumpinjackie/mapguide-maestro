@@ -118,49 +118,49 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BetweenLabel" xml:space="preserve">
-    <value>Between {0} and {1}</value>
+    <value>Entre {0} et {1}</value>
     <comment>The label used for all "between" values in the graduated theme set</comment>
   </data>
   <data name="ColumnHasNoValidDataError" xml:space="preserve">
-    <value>The selected column had no non-null values and cannot be used.</value>
+    <value>La colonne sélectionnée n'avait pas de valeurs non-nulles et ne peut donc être utilisée.</value>
     <comment>An error message that is displayed if the user selects a column with no valid data</comment>
   </data>
   <data name="DataReadError" xml:space="preserve">
-    <value>Unable to read data from the selected column: {0}</value>
+    <value>Impossible de lire les données de la colonne sélectionnée : {0}</value>
     <comment>An error message that is displayed when the column read fails</comment>
   </data>
   <data name="InvalidColumnNameError" xml:space="preserve">
-    <value>Invalid column name</value>
+    <value>Nom de colonne invalide</value>
     <comment>An error message that is displayed when the column selected does not exist</comment>
   </data>
   <data name="LessThanLabel" xml:space="preserve">
-    <value>Less than {0}</value>
+    <value>Moins que {0}</value>
     <comment>The label used for the lowest value in the graduated theme set</comment>
   </data>
   <data name="MoreThanLabel" xml:space="preserve">
-    <value>More than {0}</value>
+    <value>Plus que {0}</value>
     <comment>The label used for the highest value in the graduated theme set</comment>
   </data>
   <data name="SelectColumnPlaceholder" xml:space="preserve">
-    <value>&lt;Select column&gt;</value>
+    <value>&lt;Choisir la colonne&gt;</value>
     <comment>A placeholder message displayed when the user has not yet selected a column</comment>
   </data>
   <data name="TooManyIndiviualValuesError" xml:space="preserve">
-    <value>The selected column contains more than {0} different values, and thus cannot be used for theming with individual values</value>
+    <value>La colonne sélectionnée contient plus de {0} valeurs différentes, et ne peut donc être utilisée pour la thématisation avec des valeurs individuelles.</value>
     <comment>An error message that is displayed if the selected column has too many distinct values</comment>
   </data>
   <data name="TooManyRulesWarning" xml:space="preserve">
-    <value>You are creating a large number of rules, this will likely result in Maestro becoming unresponsive.
-Do you want to continue?</value>
+    <value>Vous créez un grand nombre de règles, ce qui entraînera probablement Maestro à ne plus répondre.
+Désirez-vous continuer?</value>
     <comment>A warning message that is displayed if the user has selected options that will generate a very large number of rules</comment>
   </data>
   <data name="TooManyValuesError" xml:space="preserve">
-    <value>The selected column contains more than {0} different values, and thus cannot be used for theming</value>
+    <value>La colonne sélectionnée contient plus de {0} valeurs différentes, et ne peut donc être utilisée pour la thématisation.</value>
     <comment>An error message that is displayed if the selected column has too many distinct values</comment>
   </data>
   <data name="TooMuchDataWarning" xml:space="preserve">
-    <value>The selected column contains more than {0} different values.
-The calculated averages only accounts for the first {0} distinct values.</value>
+    <value>La colonne sélectionnée contient plus de {0} valeurs différentes.
+Les moyennes calculées ne tiennent compte que des {0} premièrs valeurs distinctes.</value>
     <comment>A warning message that is displayed if the dataset is too large</comment>
   </data>
 </root>

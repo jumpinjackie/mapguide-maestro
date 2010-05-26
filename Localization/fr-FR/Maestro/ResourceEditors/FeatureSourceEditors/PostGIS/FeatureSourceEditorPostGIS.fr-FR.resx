@@ -127,4 +127,19 @@
   <data name="label2.Text" type="System.String">
     <value>Port</value>
   </data>
+  <data name="Database.ToolTip" xml:space="preserve">
+    <value>Entrez le nom de la base de données ici</value>
+  </data>
+  <data name="Server.ToolTip" xml:space="preserve">
+    <value>Entrez le nom du serveur ici, ou laissez vide pour la valeur par défaut qui est localhost</value>
+  </data>
+  <data name="Port.ToolTip" xml:space="preserve">
+    <value>Entrez le port de communication ici, ou laissez vide pour la valeur par défaut qui est 5432</value>
+  </data>
+  <data name="Datastore.ToolTip" xml:space="preserve">
+    <value>Entrez le nom du magasin de données (schéma) ici</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Magasin de données (schéma)</value>
+  </data>
 </root>

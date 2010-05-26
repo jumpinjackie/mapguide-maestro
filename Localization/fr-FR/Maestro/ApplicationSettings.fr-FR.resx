@@ -134,7 +134,8 @@
     <value>Connexions sauvegardées</value>
   </data>
   <data name="OKBtn.Text" type="System.String">
-    <value>OK</value>
+    <value>OK
+</value>
   </data>
   <data name="CancelBtn.Text" type="System.String">
     <value>Annuler</value>
@@ -150,5 +151,21 @@
   </data>
   <data name="$this.Text" type="System.String">
     <value>Réglages de MapGuide Maestro </value>
+  </data>
+  <data name="SelectBrowser.Title" xml:space="preserve">
+    <value>Choisir le navigateur à utiliser
+</value>
+  </data>
+  <data name="SelectBrowser.Filter" xml:space="preserve">
+    <value>Exécutables (*.exe)|*.exe|Tous les fichiers (*.*)|*.*</value>
+  </data>
+  <data name="BrowseForBrowser.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="Connections.ToolTip" xml:space="preserve">
+    <value>Cliquer droite pour enlever une entrée</value>
+  </data>
+  <data name="BrowserCommand.ToolTip" xml:space="preserve">
+    <value>Laisser vide pour le navigateur par défaut sous Windows, et Firefox sous Linux.</value>
   </data>
 </root>

@@ -117,35 +117,167 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="CopyClipboardButton.ToolTipText" type="System.String">
+  <data name="CopyClipboardButton.ToolTipText" xml:space="preserve">
     <value>Copier le texte sélectionné au presse-papiers</value>
   </data>
-  <data name="CutClipboardButton.ToolTipText" type="System.String">
+  <data name="toolStripButton_FindAndReplace.Text" xml:space="preserve">
+    <value>Remplacer tout</value>
+  </data>
+  <data name="CutClipboardButton.ToolTipText" xml:space="preserve">
     <value>Couper le texte sélectionné et le placer dans le presse-papiers</value>
   </data>
-  <data name="PasteClipboardButton.ToolTipText" type="System.String">
-    <value>Coller le texte du presse-papiers</value>
-  </data>
-  <data name="UndoClipboardButton.ToolTipText" type="System.String">
-    <value>Annuler la dernière action</value>
-  </data>
-  <data name="RedoClipboardButton.ToolTipText" type="System.String">
-    <value>Refaire la dernière action</value>
-  </data>
-  <data name="ValidateButton.ToolTipText" type="System.String">
-    <value>Valider le Xml courant</value>
-  </data>
-  <data name="LaunchExternalEditorButton.ToolTipText" type="System.String">
+  <data name="LaunchExternalEditorButton.ToolTipText" xml:space="preserve">
     <value>Démarrer l'éditeur système associé aux fichiers Xml.</value>
   </data>
-  <data name="label3.Text" type="System.String">
-    <value>L'affichage du texte est mis à jour automatiquement lorsque l'éditeur enregistre le fichier.</value>
+  <data name="ValidateButton.ToolTipText" xml:space="preserve">
+    <value>Valider le Xml courant</value>
   </data>
-  <data name="label2.Text" type="System.String">
+  <data name="toolStripButton_FindNext.Text" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="UndoClipboardButton.ToolTipText" xml:space="preserve">
+    <value>Annuler la dernière action</value>
+  </data>
+  <data name="RedoClipboardButton.ToolTipText" xml:space="preserve">
+    <value>Refaire la dernière action</value>
+  </data>
+  <data name="toolStripLabel1.Text" xml:space="preserve">
+    <value>Ligne {0}, colonne {1}</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
     <value>Fermer le programme externe pour restaurer la fonctionnalité de modification dans cet éditeur Xml.</value>
   </data>
-  <data name="label1.Text" type="System.String">
+  <data name="toolStripLabel_Replace.Text" xml:space="preserve">
+    <value>Remplacer :</value>
+  </data>
+  <data name="PasteClipboardButton.ToolTipText" xml:space="preserve">
+    <value>Coller le texte du presse-papiers</value>
+  </data>
+  <data name="toolStripLabel_Find.Text" xml:space="preserve">
+    <value>Trouver :</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>L'affichage du texte est mis à jour automatiquement lorsque l'éditeur enregistre le fichier.</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
     <value>L'application associée à l'édition Xml a été démarré.</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="UndoClipboardButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAFCSURBVDhPY2AYPsAr5/B/inzjWn3uf0bzWRRDQgoO/3cr
+        O/U/oOPqf//ua/9BarzidmBa1DX/xv+I6XfBigrazv4HuQbEL1r26X/pss//S+d+/F8y4fX/tAkP/ies
+        fPXfo+7M/6yCvQiDkutP/0+c8QCsAKQxd/nb/2VT3/0vnfHhf/HU9/9zZ779n7D8Fdgl9in7/tuFbf1v
+        bL30f33DEYghrgXHwJqzmx/8L+x9AbatbOoHsAEgV/g0nP8fkrQTdxiB/JbV8whVM9DZSYuf/3eIxaMR
+        FuqBPTdQNINsz1v36b+F13rCMTNxwfX/8XMeg50Nwsj+9m+//L+7/wx+QzJqT/zP3Qj078KPYAzyc+7i
+        9/9T574CB5xj1gH8Bvin7vtvn3oAHLogDPIzGEdu/+8YvgWMnV1WEPYKRalwQDUDAL8r+U5gqfb8AAAA
+        AElFTkSuQmCC
+</value>
+  </data>
+  <data name="CopyClipboardButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAFgSURBVDhPjZPpTsJQEEZ5/6cg8QUwRhNJFKopIFaWQOFq
+        XQIGUklY3EDwx5gzZpAGizb5cqftnTPzzW0zQVATU6lUEcS975clny9K5q+LzfFoutYgnq3j04InudzB
+        bgiA/mAiJNpqcW7/UIBks3vpEAAkmIB03J1ULkNNBrKzCwOQQNzqPqr/9/lqS8vlp7TDmyTQAN1oIPe9
+        WFgLRV+Tx7OPLQW1UK7dBsRmAJmXtP8DWCgA2NN4risFOB3s6QEZAAsI0NGxp5uZB12xIuuS+OV18Q0o
+        V6o6QGufGfDMqvKc6oB7wzcFEfM+AaB66aKlydYBFetNp5WxZjOpt/tJAFXc7Uja0VQanaGceMGvHZil
+        q7pTmHbAMKDTlsmGaNbMP/aoThFspX7l9h3QOtXM3pnflMJ5U/xqtBsA2YbI4NzDs9ozNdzkf4DxbKEb
+        TcBM62NM87H5mxNzOrYSI3K/AOwHskWq+IlDAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ValidateButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAFbSURBVDhPnZJNSwJRGIXnj1VEhhSMqZO60JwsgnFaTDlh
+        VGNfqEVli1DatO0vlJQFFbYQiwyjsaJaiH1BGbQ/9d6FFIZcHbgM3HvPOc89vILQwqdmVcTO42hBKghi
+        ug2zt33QCj0IZcebM7FlujFlinCddbG/e8/JbyAfDdTEQ5dWBE47+cWJQoIhywUrS28a333cgfCdVEN3
+        7Ij86VLGhvXyIOQrG/SSCCrx3/ZT16m6A9qjsvRHL9SSA0rOUi82Lgz2pnnTBfvB32IoLfmmQXvwYuHn
+        Cf59X72B50TCkumDXpSxURmumczkDYYeeVYQr8iN0UfzvZi7CSByr7BEe7od/qwFm9UJLL4ojLDh1FEa
+        XVotBxF7GsPWp87W8kcIydcRcLUezUVBJESw8h7GWnWSERAJ98zTwJAJCcmAOlEPg/wGlEQk00Untr9C
+        rAvu9N8XycSz288l/gZEfvqeaO7BLwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ResourceDataGroup.Text" xml:space="preserve">
+    <value>Fichiers de ressources</value>
+  </data>
+  <data name="toolStripButton_FindNext.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAEQSURBVDhPY3jz8sZ/SjADJZpBerEaIJ198n/EpOv/vdsu
+        /bepOvtfL//Ef06XLVhditUAkOYp+1/+r1j35H/MvHv/nfpu/heL2k+8ASCbkTVrN1z5zx20m3gDQM6G
+        2QzSLFZy4T+z907iDQD5GeRsmGa2rLP/GT13EG+AYsoRVM3pZ0gzQBpoAMjZYJtBmkE4YC9+FzA4bPov
+        G3fwP0izcPZpVM0gA+KPgw1hcN36n0FrMdwweDSWTTz0Xzr5yH/RgrOYmmGuSD4JNqSsE+EalHRQ1rPv
+        P0vQvv+MIIUwTXg0Y02JINNBtqAYgsVmWBbAmhJRDMGjGWdeAEmADfHZBcbIfkbPfHhzI0gjPs0gwwCl
+        Qi2D8Y2gzAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="LaunchExternalEditorButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGYSURBVDhPrZPNSwJRFMXnzwvaBIUkWIuIIiraJFa0aNEi
+        KKKFhtGYBhUZrVoJpailTB86an5giaUpGZiVCNXqxrnxxsmslQM/ru/5zjn33WEkqRNP/4RCxnE/9Y0E
+        Cb/FGtUw6tP2e4a8/B/qsNlHnM2HZuLUa4mTaS7FDM6nNbA2mmNkmDyn5Y0ETS0otGRT2QRaCakQtxqY
+        LAkW4tDsisrC6cUwJ9ucKnUZj9hEEk6i9b+qYSzIVwHQgO4BD0my44CSN1VKZctcY+kyqZlnXqNirUe/
+        t7omk7TvPqTX+ic9VBqUu6towECgN4jEbjmo+NggWXY2DQql2ncXmQLFknkGhwUX0RyBcOSeO9IMdvfc
+        VHv74GS9SAhQQ8o1CwOhOJ0pGbpKlChXrJPdvkkSDKov7+yYzdeYdq1DJIimnn4bQIQkpAD/qUreQFTj
+        2B8h4Dm55G7QgdW63uwAG6IDDEmAqSOxFe0KLtcOvwEMRqS3SxbpqD86gAFmABPMQYCE/8B5vgIex9Y2
+        CfBuBZiyAIdb6cSHLH0Bnre5QIVXtbwAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="RedoClipboardButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAEnSURBVDhPY2AYmcDZf8N/rD73KDj2373hwn+/zqtg7FJ4
+        9n9EwSEUxbGZe/875B1DNSCl6SxYQ8KiZ//TOu79z+18/L9g6rv/pTPf/y9c/el/SM/d/75Ju//n5O8B
+        qwuZcAthQGn/pf/mcfvBpoJsBEnmLH8L1lw27QMYgwxLWfoKLAcyLHj6PbBhOCMwKPvg/6Cua2DbQZrT
+        e5//j2198D+k9uZ/r7JL//26bv73DN2I2wCYyc6Je8Deiu95DNcMcqV77aX/1lHbCBsAMsjUY93/iPmP
+        wTaDNDvlnQHTrqXHCRtQ23IcHGherZAYAWmGYa+mc4QNANkCsh3kZ5AhyDhw5p3/xfm7cRti7776v2PY
+        FjC2DdwAxjZ+61BwZOg6wq4Y/HkNANjW6HzIcFD9AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="PasteClipboardButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAH9SURBVDhPfZPNSxtRFMX9j2qhW8E/oFIKIt2J0iiGUhRs
+        F9KlLlwl3ZVWrNJKo4JfEMVgd1WnaqZT4yRvYsxojaYRomNi/KLtce6deRObQQcO7z1mzu+e++a9urqa
+        Z242Cqnp6VlEIpOo/ca3To48gvGpHl/fPcHy8gqMtOlpdHgICwMPIIYeIvO52Q8zF4L4s9ULqF2YinxE
+        LLYEWZlG0kTkNa4venEQbfIDsnPtLqANqWgQ4+8DrC/DAYyNOpqff4ZKuQu/Y0/vB/zTAygnn6NkdiC+
+        Mgh1IwxVDUHTwhB6GPFoP1YXa/aEE4hXIDPMIHD0Aii/hBAJlCtXPtH+0CZ7GykBt834awNSCRSty/90
+        bFWwuZWBsvq9+ncYkO/zKpOZAXaCWgCtC8VzxDWDQZwiO+EC7NjSLAGHBYs/TO/kkBQmi9bZ3Tys04oL
+        oAQndgK3Mo9nndwCVSNzLm+xWSbSxR6onWoC600VYJuRb/UAZKYkBCLgQeGMU9DcD3DNEC3QExobZQtU
+        lebU/8+kA6sCqIVbZqw1MUBWI9O6akBZT+GbomNjc5/fMWBvphvnmR77L9iyzwGfB7WNAVTl12EJ2VwJ
+        hnkMfbsILeWIWvPOwvaHxzDeNjgKNUCEGpH4Efd6lhACpXdPGegluOuq0mFRlDVHNHdFt1WKvDcjHMBO
+        1GrrBgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButton_FindAndReplace.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
+        ymqkDYYXcCjDZOANURSjCNGFQUTsl4GXVMxKk62YU4fXQpaIlygHQxBRH8/zwvyaIAYe+HLgnPN8nue9
+        HA3nvDTq63oW/jm13XOwvPTB3DYFY5MH+bXfcN8ygfTSMSSXfESicQDxBqdYHwH29g9w2tnZ3UcguIvN
+        rR3417exuBJE5N1n/wfwLgXEOc38Bc6xNRHb+/y4nm49G0Bnit2zf9H6bkliE/jKuYxrd6oVgDWfjB+K
+        TWeKMyrGEVfowITvD9re/9ABVQrAhh0HHK+ZselMMaN/mvwtDb+aVqkA7HYIwIj3ysfluPTorJnP6Ezx
+        oHsD1s5ZXEktUwCOioB5f1CEPR9+wTG6iuiserTo8dkwng7HT/R+XUPF8xlcTjErAOdMcW6NW8STiwG8
+        7vej8oUPN/PsEv3t8Ao0TZP3T1u8uJRkUgAuSYHtO97oLxmXd5t9Ho8aPTK+GzntqNfrLm2fFoihwYOI
+        xGIF4KjoGBLzY1OrF9k6OOFxnwDC4wxIMX1G0pMhgVyMNyoA13PAtS7OrJk1PrC69LUdQWxuF6IybHrX
+        LRI7JrtZdoDAo1XmbjMyD+tjSXxGcXRmnYg5ttD9QuxDhN0uUgDOmbvNTpPOJaGAo2K36cyaGZvOFIfd
+        KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="CutClipboardButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGCSURBVDhPhZFbSwJRFIX9WVEQCJE9hIhgRhcf0sxExSxD
+        kaBAogtBBEEE/YbCtLwUiqHOpJSZZIkJYoZdieh9xT4wZjqOA5s5w+y11rfPlsmannAkhuZvsbPPF+jc
+        4w+EuhocHvk79ySSaUhRUIAkZSh0jurzJ+jdik/opco7JAlIdPdQwWUm32aQ5HPI5stdR5QRZrX+g+b7
+        oNTH6nf3dAGbCIrlV2ZCVSjVkUjddE8XDAQRYVPdFmqQXJ/Yvj0bYbg3ebjWU3B7JVbXKtatXIFKYYzB
+        evCB6b065LozjDsuoLVGpcdQunKw77zAuvsGx/4XNMv3GLJnoPEWMTCfYdU3FhY3Ma9lMbtdw4Sbh82b
+        hn7rCYNmjqWTcGYuihF9kJ1Nlki7yfDCNdSuv/1TqsoSh8EZh9zGNQRE0KM6bjdQLuYaBiQkA88qzxop
+        VTV5ws692qC4waiTY7PT3CQmdOGCFRofQ++firG3WusTvwfTEsewLZ5EWwPNTUYG4+m/f7+92CQtLCQ+
+        0AAAAABJRU5ErkJggg==
+</value>
   </data>
 </root>

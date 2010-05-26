@@ -181,4 +181,7 @@
   <data name="$this.Text" type="System.String">
     <value>Sélectionner le système de coordonnées</value>
   </data>
+  <data name="CoordinateWait.Text" xml:space="preserve">
+    <value>Chargement du système de coordonnées, patientez s.v.p.</value>
+  </data>
 </root>

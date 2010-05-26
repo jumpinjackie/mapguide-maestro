@@ -127,4 +127,7 @@
   <data name="$this.Text" type="System.String">
     <value>Éditeur Xml</value>
   </data>
+  <data name="toolStripButton_FindAndReplace.Text" xml:space="preserve">
+    <value>Remplacer tout</value>
+  </data>
 </root>

@@ -121,4 +121,10 @@
   <data name="label1.Text" type="System.String">
     <value>Type</value>
   </data>
+  <data name="TypeCombo.Items" xml:space="preserve">
+    <value>Fichier ou répertoire unique</value>
+  </data>
+  <data name="TypeCombo.Items1" xml:space="preserve">
+    <value>Mode composite </value>
+  </data>
 </root>

@@ -118,7 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Text" type="System.String">
+  <data name="FilepathText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>174, 2</value>
+  </data>
+  <data name="FilepathText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
     <value>Chemin du dossier ou du fichier</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 20</value>
   </data>
 </root>

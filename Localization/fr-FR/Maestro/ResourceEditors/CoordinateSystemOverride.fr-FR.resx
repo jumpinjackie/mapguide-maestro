@@ -128,7 +128,7 @@
     <value>Éditer un système de coordonnées de remplacement</value>
   </data>
   <data name="RefreshButton.ToolTipText" type="System.String">
-    <value>Extraire les systèmes de coordonnées trouver dans la source d'entités.</value>
+    <value>Extraire les systèmes de coordonnées trouvés dans la source d'entités.</value>
   </data>
   <data name="DisplayRawXml.ToolTipText" type="System.String">
     <value>Cliquer ici pour voir l'information spatiale contextuelle</value>
@@ -147,5 +147,8 @@
   </data>
   <data name="ToggleExtendedModeButton.Text" type="System.String">
     <value>Étendu&gt;&gt;&gt;</value>
+  </data>
+  <data name="toolStripButton_SelectAll.Text" xml:space="preserve">
+    <value>Sélectionnez tout</value>
   </data>
 </root>

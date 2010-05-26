@@ -126,8 +126,8 @@
     <comment>An error message that is displayed if the preview operation fails</comment>
   </data>
   <data name="SchemaReadError" xml:space="preserve">
-    <value>Failed to read schema from data source.
-The operation gave the error message: {0}</value>
+    <value>Impossible de lire le schéma de la source de données.
+L'opération a donné le message d'erreur : {0}</value>
     <comment>An error message that is displayed if the schema could not be read</comment>
   </data>
   <data name="SelectFeatureSourceHint" xml:space="preserve">

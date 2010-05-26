@@ -118,35 +118,35 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DefaultSpatialContextWarning" xml:space="preserve">
-    <value>Spatial context extent appears to be invalid (or default)</value>
+    <value>Les limites du contexte spatial semblent invalides (ou par défaut)</value>
     <comment>A warning message that is displayed if the spatial context has the default extent</comment>
   </data>
   <data name="EmptySpatialContextWarning" xml:space="preserve">
-    <value>Empty spatial context extent detected</value>
+    <value>Détection d'un contexte spatial vide.</value>
     <comment>A warning message that is displayed when the spatial context is empty</comment>
   </data>
   <data name="NoSpatialContextWarning" xml:space="preserve">
-    <value>No spatial contexts found</value>
+    <value>Aucun contexte spatiale n'a été  trouvée.</value>
     <comment>A warning message that is displayed when the featuresource fails to report its spatial context</comment>
   </data>
   <data name="PrimaryKeyMissingInformation" xml:space="preserve">
-    <value>No primary key defined for class: {0}, features will not be selectable</value>
+    <value>Aucune clef primaire n'est définie pour la classe : {0}, les entités ne seront pas sélectionnables.</value>
     <comment>An information message that is displayed if the schema has no primary key defined</comment>
   </data>
   <data name="PrimaryKeyReadError" xml:space="preserve">
-    <value>Failed to read identity properties: {0}</value>
+    <value>Impossible de lire les propriétés d'identité : {0}</value>
     <comment>An error message that is displayed if the primary key information could not be read</comment>
   </data>
   <data name="SchemaReadError" xml:space="preserve">
-    <value>Failed to read schema description: {0}</value>
+    <value>Impossible de lire la description du schéma : {0}</value>
     <comment>An error message that is displayed if the schema information could not be read</comment>
   </data>
   <data name="ShemasMissingWarning" xml:space="preserve">
-    <value>No schemas found in datasource</value>
+    <value>Aucun schéma n'a été trouvé dans la source de données</value>
     <comment>A warning message that is displayed if the featuresource has no schemas</comment>
   </data>
   <data name="SpatialContextReadError" xml:space="preserve">
-    <value>Failed to read spatial context: {0}</value>
+    <value>Impossible de lire le contexte spatial : {0}</value>
     <comment>An error message that is displayed if the spatial context could not be read</comment>
   </data>
 </root>

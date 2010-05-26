@@ -117,35 +117,74 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Text" type="System.String">
-    <value>Unités</value>
-  </data>
-  <data name="label2.Text" type="System.String">
-    <value>Couleur de la bordure</value>
-  </data>
-  <data name="label3.Text" type="System.String">
-    <value>Distance Étiquette</value>
-  </data>
-  <data name="label4.Text" type="System.String">
-    <value>Couleur de remplissage</value>
-  </data>
-  <data name="label5.Text" type="System.String">
+  <data name="label5.Text" xml:space="preserve">
     <value>Nom de couche</value>
   </data>
-  <data name="label6.Text" type="System.String">
-    <value>Couleur de remplissage Étiquette</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 21</value>
   </data>
-  <data name="label7.Text" type="System.String">
-    <value>Unités du tampon Étiquette</value>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 20</value>
   </data>
-  <data name="label8.Text" type="System.String">
+  <data name="label2.Text" xml:space="preserve">
+    <value>Couleur de la bordure</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
     <value>Couleur de bordure Étiquette</value>
   </data>
-  <data name="label9.Text" type="System.String">
+  <data name="BorderColorInput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 200</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 21</value>
+  </data>
+  <data name="BufferUnitsInput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 20</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Unités du tampon Étiquette</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Distance Étiquette</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Couleur de remplissage</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 20</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Tampon Distance</value>
+  </data>
+  <data name="BorderColorInput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 20</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
     <value>Nom de couche Étiquette</value>
   </data>
-  <data name="label10.Text" type="System.String">
-    <value>Tampon Distance</value>
+  <data name="BufferUnitsInput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 176</value>
+  </data>
+  <data name="FillColorInput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 153</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Couleur de remplissage Étiquette</value>
+  </data>
+  <data name="FillColorInput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 20</value>
+  </data>
+  <data name="LayerNameInput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 20</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Unités</value>
+  </data>
+  <data name="LayerNameInput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 225</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 153</value>
   </data>
 </root>

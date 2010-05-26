@@ -117,20 +117,54 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="OperationDescription.Text" type="System.String">
+  <data name="$this.Text" xml:space="preserve">
+    <value>Confirmer des opérations sur des éléments connexes</value>
+  </data>
+  <data name="OperationDescription.Text" xml:space="preserve">
     <value>L'opération que vous avez démarrée nécessite que les ressources listées plus bas soient mises à jour</value>
   </data>
-  <data name="CancelBtn.Text" type="System.String">
-    <value>Annuler</value>
-  </data>
-  <data name="OKBtn.Text" type="System.String">
-    <value>OK</value>
-  </data>
-  <data name="label2.Text" type="System.String">
+  <data name="label2.Text" xml:space="preserve">
     <value>Progrès</value>
   </data>
-  <data name="$this.Text" type="System.String">
-    <value>Confirmer des opérations sur des éléments connexes</value>
+  <data name="CancelBtn.Text" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="OKBtn.Text" xml:space="preserve">
+    <value>OK
+</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>497, 32</value>
+  </data>
+  <data name="workList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>497, 0</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>497, 40</value>
+  </data>
+  <data name="CancelBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>264, 8</value>
+  </data>
+  <data name="ProgressPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>497, 40</value>
+  </data>
+  <data name="OKBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 8</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>497, 106</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 66</value>
+  </data>
+  <data name="ProgressPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="OperationDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>481, 16</value>
+  </data>
+  <data name="ProgressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>401, 24</value>
   </data>
 </root>

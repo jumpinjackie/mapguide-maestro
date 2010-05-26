@@ -119,12 +119,18 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="Filepath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124,  8</value>
+    <value>143, 8</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0,  8</value>
+    <value>3, 8</value>
   </data>
-  <data name="label1.Text" type="System.String">
+  <data name="label1.Text" xml:space="preserve">
     <value>Chemin vers le(s) fichier(s)</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 20</value>
+  </data>
+  <data name="Filepath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
   </data>
 </root>

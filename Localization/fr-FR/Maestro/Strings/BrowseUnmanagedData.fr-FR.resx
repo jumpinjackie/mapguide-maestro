@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="NoAliasFoldersError" xml:space="preserve">
-    <value>There are no folders mapped. Please set up folders in the Alias section of the MapGuide Site Administrator</value>
+    <value>Il n'ya pas de dossiers mappés. S'il vous plaît créer des dossiers dans la section Alias de l'administrateur de site MapGuide.</value>
     <comment>An error message displayed when there are no aliased folders</comment>
   </data>
   <data name="NoResourceSelectedError" xml:space="preserve">
-    <value>Please enter a path to the resource</value>
+    <value>S'il vous plaît entrer un chemin pour la ressource</value>
     <comment>An error message that is d</comment>
   </data>
 </root>

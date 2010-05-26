@@ -117,62 +117,104 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label6.Text" type="System.String">
-    <value>Style</value>
-  </data>
-  <data name="label5.Text" type="System.String">
-    <value>Dimension</value>
-  </data>
-  <data name="label4.Text" type="System.String">
-    <value>Unités</value>
-  </data>
-  <data name="label3.Text" type="System.String">
-    <value>Contexte de dimensionnement</value>
-  </data>
-  <data name="label2.Text" type="System.String">
-    <value>Police de caractères</value>
-  </data>
-  <data name="label1.Text" type="System.String">
-    <value>Propriété</value>
-  </data>
-  <data name="underlineCheck.Text" type="System.String">
-    <value>S</value>
-  </data>
-  <data name="italicCheck.Text" type="System.String">
-    <value>I</value>
-  </data>
-  <data name="boldCheck.Text" type="System.String">
-    <value>G</value>
-  </data>
-  <data name="fontGroup.Text" type="System.String">
-    <value>Police de caractères</value>
-  </data>
-  <data name="label7.Text" type="System.String">
-    <value>Type d'arrière-plan</value>
-  </data>
-  <data name="label8.Text" type="System.String">
-    <value>Arrière-plan</value>
-  </data>
-  <data name="label9.Text" type="System.String">
-    <value>Texte</value>
-  </data>
-  <data name="colorGroup.Text" type="System.String">
-    <value>Couleurs</value>
-  </data>
-  <data name="label10.Text" type="System.String">
-    <value>Rotation</value>
-  </data>
-  <data name="verticalLabel.Text" type="System.String">
+  <data name="verticalLabel.Text" xml:space="preserve">
     <value>Vertical</value>
   </data>
-  <data name="horizontalLabel.Text" type="System.String">
-    <value>Horizontal</value>
+  <data name="previewGroup.Text" xml:space="preserve">
+    <value>Prévisualisation</value>
   </data>
-  <data name="alignmentGroup.Text" type="System.String">
+  <data name="colorGroup.Text" xml:space="preserve">
+    <value>Couleurs</value>
+  </data>
+  <data name="underlineCheck.Text" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Arrière-plan</value>
+  </data>
+  <data name="alignmentGroup.Text" xml:space="preserve">
     <value>Alignement</value>
   </data>
-  <data name="previewGroup.Text" type="System.String">
-    <value>Prévisualisation</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Type d'arrière-plan</value>
+  </data>
+  <data name="italicCheck.Text" xml:space="preserve">
+    <value>I</value>
+  </data>
+  <data name="horizontalLabel.Text" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Unités</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Rotation</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Texte</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Contexte</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Transparence</value>
+  </data>
+  <data name="boldCheck.Text" xml:space="preserve">
+    <value>G</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Dimension</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Propriété</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Police de caractères</value>
+  </data>
+  <data name="fontGroup.Text" xml:space="preserve">
+    <value>Police de caractères</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Transparence</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 13</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 13</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 13</value>
+  </data>
+  <data name="DisplayLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 17</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 13</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="DisplayLabel.Text" xml:space="preserve">
+    <value>Afficher les étiquettes des entités</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 13</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
   </data>
 </root>

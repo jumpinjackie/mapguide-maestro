@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoundsDecodeError" xml:space="preserve">
-    <value>Failed to decode the current bounds,
-you must re-enter the epsg code in the SRS tag manually.
-Error message: {0}.</value>
+    <value>Impossible de décoder les limites actuelles,
+Vous devez réentrer manuellement le code EPSG dans la balise SRS.
+Message d'erreur : {0}.</value>
     <comment>An error message that is displayed if the bounds are in an unexpected format</comment>
   </data>
   <data name="EpsgMissingWarning" xml:space="preserve">
-    <value>You must manually enter the EPSG code for the generated bounds.</value>
+    <value>Vous devez fournir manuellement le code EPSG pour les limites générées.</value>
     <comment>A warning that is displayed when the user must re-enter the EPSG code</comment>
   </data>
   <data name="InheritedAccess" xml:space="preserve">
@@ -140,11 +140,11 @@ Error message: {0}.</value>
     <comment>A value that indicates that the user has no access to the resource</comment>
   </data>
   <data name="NoSpatialDataError" xml:space="preserve">
-    <value>No spatial data found in FeatureSource</value>
+    <value>Aucune donnée spatiale dans leFeatureSource.</value>
     <comment>An error message that is displayed if the attempt to read the data reveals that there are no spatial data in the featuresource</comment>
   </data>
   <data name="NoSpatialDataWithFailuresError" xml:space="preserve">
-    <value>No spatial data found in FeatureSource, one or more queries failed to execute</value>
+    <value>Aucune donnée spatiale dans leFeatureSource, une ou plusieurs requêtes n'ont pu être exécutées.</value>
     <comment>An error message that is displayed if the attempt to read the data reveals that there are no spatial data in the featuresource and that the resource produced an error</comment>
   </data>
   <data name="ReadOnlyAccess" xml:space="preserve">
@@ -156,11 +156,11 @@ Error message: {0}.</value>
     <comment>A value that indicates that the user has read/write access to the resource</comment>
   </data>
   <data name="ReferenceReadError" xml:space="preserve">
-    <value>Failed to read resource references</value>
+    <value>Impossible de lire les références de la ressource</value>
     <comment>An error message that is displayed when an attempt to read the resource references fail</comment>
   </data>
   <data name="ReferenceReadSpecificError" xml:space="preserve">
-    <value>Failed to read resource references: {0}</value>
+    <value>Impossible de lire les références de ressource : {0}</value>
     <comment>An error message that is displayed when an attempt to read the resource references fail</comment>
   </data>
   <data name="SaveError" xml:space="preserve">
@@ -168,13 +168,13 @@ Error message: {0}.</value>
     <comment>An error message that is displayed if the save operation fails</comment>
   </data>
   <data name="WFSBoundsReadError" xml:space="preserve">
-    <value>Failed to obtain the extent for the WFS data.
-Error message: {0}</value>
+    <value>Impossible d'obtenir l'étendue pour les données WFS.
+Message d'erreur : {0}</value>
     <comment>An error message that is displayed if the attempt to read the data bounds fail</comment>
   </data>
   <data name="WMSBoundsReadError" xml:space="preserve">
-    <value>Failed to obtain the extent for the WMS data.
-Error message: {0}</value>
+    <value>Impossible d'obtenir l'étendue pour les données WMS.
+Message d'erreur : {0}</value>
     <comment>An error message that is displayed if the attempt to read the data bounds fail</comment>
   </data>
 </root>

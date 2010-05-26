@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConnectionFailedError" xml:space="preserve">
-    <value>Failed to log on because: {0}</value>
+    <value>L'ouverture de la session a échoué car : {0}</value>
     <comment>An error message that is displayed when then connection failed</comment>
   </data>
   <data name="RestartForLanguageChange" xml:space="preserve">
-    <value>Please restart the application for the language change to take effect</value>
+    <value>S'il vous plaît redémarrer l'application pour que le changement de langue prenne effet</value>
     <comment>A message that is displayed if the user changes the language</comment>
   </data>
   <data name="UntestedServerVersion" xml:space="preserve">
-    <value>The current site version is newer than the version Maestro was tested against.
-Do you want to connect anyway?</value>
+    <value>La version actuelle du site est plus récente que la version testée de Maestro.
+Souhaitez vous connecter quand même?</value>
     <comment>A message that is displayed when the server version is newer than Maestro</comment>
   </data>
 </root>

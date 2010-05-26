@@ -122,6 +122,6 @@
     <value>Zoom facteur</value>
   </data>
   <data name="label2.Text" type="System.String">
-    <value>Max zoom dimension</value>
+    <value>Dimension maximale du zoom</value>
   </data>
 </root>

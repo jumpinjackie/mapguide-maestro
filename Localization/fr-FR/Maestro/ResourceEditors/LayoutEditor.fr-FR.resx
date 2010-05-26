@@ -117,170 +117,430 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Text" type="System.String">
-    <value>Texte pour la barre de titre du navigateur</value>
-  </data>
-  <data name="label2.Text" type="System.String">
-    <value>Ressource de la carte</value>
-  </data>
-  <data name="label5.Text" type="System.String">
-    <value>Échelle</value>
-  </data>
-  <data name="label4.Text" type="System.String">
-    <value>Y</value>
-  </data>
-  <data name="label3.Text" type="System.String">
-    <value>X</value>
-  </data>
-  <data name="OverrideDisplayExtents.Text" type="System.String">
-    <value>Remplacer les limites de l'affichage initial de la carte</value>
-  </data>
-  <data name="label7.Text" type="System.String">
-    <value>Largeur (en pixels)</value>
-  </data>
-  <data name="ItemPropertiesCheck.Text" type="System.String">
-    <value>Propertiés de l'item</value>
-  </data>
-  <data name="LayerControlCheck.Text" type="System.String">
-    <value>Contrôle de couche</value>
-  </data>
-  <data name="groupBox3.Text" type="System.String">
-    <value>Côté gauche</value>
-  </data>
-  <data name="label9.Text" type="System.String">
-    <value>(visionneur AJAX seulement)</value>
-  </data>
-  <data name="ZoomControlCheck.Text" type="System.String">
-    <value>Contrôle de zoom</value>
-  </data>
-  <data name="StatusBarCheck.Text" type="System.String">
-    <value>Barre d'état</value>
-  </data>
-  <data name="ContextMenuCheck.Text" type="System.String">
+  <data name="ContextMenuTab.Text" xml:space="preserve">
     <value>Menu contextuel</value>
   </data>
-  <data name="ToolbarCheck.Text" type="System.String">
-    <value>Barre d'outils</value>
-  </data>
-  <data name="groupBox4.Text" type="System.String">
-    <value>Carte / centre</value>
-  </data>
-  <data name="label8.Text" type="System.String">
-    <value>Largeur (en pixels)</value>
-  </data>
-  <data name="EditTaskBarBtn.Text" type="System.String">
-    <value>Éditer la barre des tâches</value>
-  </data>
-  <data name="TaskBarCheck.Text" type="System.String">
-    <value>Barre des tâches</value>
-  </data>
-  <data name="TaskPaneCheck.Text" type="System.String">
-    <value>Volet de tâches</value>
-  </data>
-  <data name="groupBox5.Text" type="System.String">
-    <value>Côté droit</value>
-  </data>
-  <data name="groupBox2.Text" type="System.String">
-    <value>Items visibles dans le visionneur</value>
-  </data>
-  <data name="TitleText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200,  0</value>
-  </data>
-  <data name="TitleText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336,  20</value>
-  </data>
-  <data name="MapResource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200,  24</value>
-  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="MapResource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312,  20</value>
+    <value>312, 20</value>
   </data>
-  <data name="label10.Text" type="System.String">
+  <data name="label10.Text" xml:space="preserve">
     <value>Hyperlien de l'entité cible</value>
   </data>
-  <data name="label11.Text" type="System.String">
-    <value>Tâche initiale dans Volet de tâches</value>
+  <data name="label9.Text" xml:space="preserve">
+    <value>(visionneur AJAX seulement)</value>
   </data>
-  <data name="ToolbarAddButton.ToolTipText" type="System.String">
-    <value>Cliquer pour ajouter un nouvel item</value>
+  <data name="MapResource.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 24</value>
   </data>
-  <data name="ToolbarDeleteButton.ToolTipText" type="System.String">
-    <value>Cliquer pour supprimer l'item sélectionné</value>
-  </data>
-  <data name="ToolbarUpButton.ToolTipText" type="System.String">
-    <value>Cliquer pour déplacer l'item sélectionné vers le haut</value>
-  </data>
-  <data name="ToolbarDownButton.ToolTipText" type="System.String">
-    <value>Cliquer pour déplacer l'item sélectionné vers le bas</value>
-  </data>
-  <data name="ToolbarCreateButton.ToolTipText" type="System.String">
-    <value>Cliquer pour créer une nouvelle commande personnalisée</value>
-  </data>
-  <data name="ToolbarTab.Text" type="System.String">
-    <value>Barre d'outils</value>
-  </data>
-  <data name="ContextAddButton.ToolTipText" type="System.String">
-    <value>Cliquer pour ajouter un nouvel item</value>
-  </data>
-  <data name="ContextDeleteButton.ToolTipText" type="System.String">
-    <value>Cliquer pour supprimer l'item sélectionné</value>
-  </data>
-  <data name="ContextUpButton.ToolTipText" type="System.String">
-    <value>Cliquer pour déplacer l'item sélectionné vers le haut</value>
-  </data>
-  <data name="ContextDownButton.ToolTipText" type="System.String">
-    <value>Cliquer pour déplacer l'item sélectionné vers le bas</value>
-  </data>
-  <data name="ContextCreateButton.ToolTipText" type="System.String">
-    <value>Cliquer pour créer une nouvelle commande personnalisée</value>
-  </data>
-  <data name="ContextMenuTab.Text" type="System.String">
-    <value>Menu contextuel</value>
-  </data>
-  <data name="TaskAddButton.ToolTipText" type="System.String">
-    <value>Cliquer pour ajouter un nouvel item</value>
-  </data>
-  <data name="TaskDeleteButton.ToolTipText" type="System.String">
-    <value>Cliquer pour supprimer l'item sélectionné</value>
-  </data>
-  <data name="TaskDownButton.ToolTipText" type="System.String">
-    <value>Cliquer pour déplacer l'item sélectionné vers le bas</value>
-  </data>
-  <data name="TaskCreateButton.ToolTipText" type="System.String">
-    <value>Cliquer pour créer une nouvelle commande personnalisée</value>
-  </data>
-  <data name="TaskFrameTab.Text" type="System.String">
-    <value>Menu des tâches</value>
-  </data>
-  <data name="MenuBox.Text" type="System.String">
-    <value>Menus</value>
-  </data>
-  <data name="browserURL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230,  20</value>
-  </data>
-  <data name="label12.Text" type="System.String">
-    <value>Vue dans le navigateur</value>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Tâche initiale (Volet de tâches)</value>
   </data>
   <data name="ShowInBrowser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>398,  360</value>
+    <value>398, 360</value>
   </data>
-  <data name="ShowInBrowser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146,  20</value>
+  <data name="ToolbarCreateButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGESURBVDhPhZNfS8JgFMb9hH2CPkLddNMH6KLL6Ka7QhAk
+        QiixYAOhGag1SzBMl73Of81/20TSSvHi5HPoXcq2FB7Opu/zO8858kYiv59isUTZ7ClL1x8J76hSyeQ1
+        ybO+mkod0mQ6pcHwjOWMvqjduaDxZO4pl7snVVWCIel0lGxnh00QnjuWylB3PGPdankymz3StDs/RFES
+        9G4Z3BkSZpU63Vc2SMhz2aTLqxtWLBb/g2jaARUKWxxddrN6UXJH29Tr7zMQEB7LclmBKfqDE+5aMXQy
+        G0dkvFl8GLVi1L0KGPaxtkhV3aWhrXAKUT+mmkgs4++xSYJqDZcwBsYKACg0my8YILujK4QUcrRytUkA
+        +QCIA0DfHnlx0Ul2x/zW8JM2AtBJxgYABmlCfSgKfg9NsAoASDQdNsAIZfXa/yMgKowwYWFPpfqaGYCK
+        cIITfM8W3pyll5bPCHMmv/ybNwGwrFZ3SqL94ckwxySF7wN3sHrz5DMOBikePw+/maFXNuSHH7+ofNrE
+        clL/AAAAAElFTkSuQmCC
+</value>
   </data>
-  <data name="ShowInBrowser.Text" type="System.String">
+  <data name="label1.Text" xml:space="preserve">
+    <value>Texte pour la barre de titre du navigateur</value>
+  </data>
+  <data name="TaskFrameTab.Text" xml:space="preserve">
+    <value>Menu des tâches</value>
+  </data>
+  <data name="ToolbarCheck.Text" xml:space="preserve">
+    <value>Barre d'outils</value>
+  </data>
+  <data name="ContextAddButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAHzSURBVDhPlZPbSxtBGMX9VwwaFETa+uAVMQUpLcW+iE9F
+        X8SE9cmAFi3GqhRLoRVN+qCC9xBFAhIDioQUYxYkJLSYmqZKNWlkqZCLLhq1Qk77Tdg060bUgcPO7n7z
+        mzNnZvLy/jWf7wt4fkshl4tn3+hJcjicoHpFo6JUKoXTsz8ZXVxeyd7pHwGs1mUlhABUEDu+vFHRxAWc
+        zg3s7e4pIfcB2FZWGUDm5K6AiJBAcPcXQmFBnkc2QPh9woqyFfgRhiSCSHlkwqSEKTTK4DbAUTSZGyCF
+        mAvg2f6GYbsRnYtd6LMOwB3wyJdADiRAWDiV2TevL+GJSYM37h6M73zCB98QGucboDNq/29nNkAKijKg
+        mSs/lkHPc3jrNyAg7MASnEW3twOPp6tyAyQHFNrgwhCqzA+g3WpGt4dDTIwxQLunFc/sGrww1qchkgM6
+        LOSABm8HwtBNcihbKAYfcrHBdFrFpMj6WkcLSt4VpAF0wiiDaOIcB5E4vvoPmPQzr/DQrGazjwUHcZyM
+        43PEhmF/H56u1LLlyRyQfdL+oci0zG+i1KRCg1sNXbAYR2IEU6HXaPIWodxSiN4lg9IBuaC9lkRFNXP5
+        4L7nY0p4if6f1Xi+pkLd+wp5iLQMEt246xqY6GeBVY6qoBl5BM7UBqstfSv/AtxW4JLSgfLrAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ContextUpButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGoSURBVDhPjZNNSwJRGIX9Ze1aRIs2gRRBERJhUBBoBUGL
+        pE0Q/YNWrSJRBEsJqcRGS9JUlMnURtQotImw7GNx6tyY0Wmmj4HDvXNn3ue+59wZm+3zSp7ncXwcQywW
+        N0hb40jt74fB900XC19e39F+evtVBwcR+HwBM4QAFrceXk1qqh2xxjESOULxsgiv12+E9AKq9XvIVzXk
+        ZQVKo63Pec/dNRkgVgBCuCvzIbSi3AkYs7hWGqAdPYufACxMZWTdVlN9QSJTEHYNAFIZIr1qFrgbLWiA
+        1I0Mfzn0M0ALsRfAOS1cVutw56bgKtjhj4eFNVMHVoDb5rPwvRxfxGZrFisNB5zSKLj+LwCT37rYhkeZ
+        wLrqgrs2CWd2EJ7k0t8AFodSUYyc9GO1Mo6Nhy5gLNoHz85a9xQYIi0wZfpmca6giMACp4dwSU4d4IgO
+        Qirlsbvn6wL4hX0BOihXW0hnK0LJdAmJ8yssn8wbADwdywz4gCrXHoVyRVVoJbFgAhh+rN4O2AVT1kQg
+        Q9MyoAXLYySEYmvfNR+cwdzZMKalIdgDAwiGQrqFDye15j0ss3xfAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="FeatureLinkTargetType.Items" xml:space="preserve">
+    <value>Volet des tâches</value>
+  </data>
+  <data name="OverrideDisplayExtents.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 22</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Carte / centre</value>
+  </data>
+  <data name="browserURL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 20</value>
+  </data>
+  <data name="ShowInBrowser.Text" xml:space="preserve">
     <value>Afficher dans le navigateur</value>
   </data>
-  <data name="AddBuiltInFunctionMenu.Text" type="System.String">
-    <value>Fonction prédéfinie</value>
+  <data name="TaskDownButton.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour déplacer l'item sélectionné vers le bas</value>
   </data>
-  <data name="AddCustomItemMenu.Text" type="System.String">
-    <value>Item personnalisé</value>
+  <data name="AddSubMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAATpJREFUOE9jYBge
+        4Oepqf9/np4BwScm/yfJVyBN//9fAeJTUHzl/49D7cQbAjbg3xIgnoDA/7cADcOOf52rQTUcbMDn1v//
+        P2Rh4D+PEv//OhuNgn/sDMZiwNPs/3+uu/3/cdARFR8p/f/v+1kI/nIQSB+F0H9vgWlwWIFdcCPg/49d
+        XhDJL1uR8FKg6zqRcOv/vy9bwN77caUBYcDfk5b/f55q////XSESzgWyofht2v//MAwU+/dn/v8PhxoR
+        BvzaZfP/7+Op//+/jEPFT0P//0fDfx9GgV0Bj2qQF37sy/n/70X5//8PfVHxfc///2H4ph2YDQ6rE/FI
+        BoASEcj5IAUgfMkQE1/U+/8fhM9rgvHH/ZUIA0CJ5vepnP9/j6ij4n2y//8i491i//8C8e/N0sQnMpKS
+        NLmKAabLv7H01bexAAAAAElFTkSuQmCC
+</value>
   </data>
-  <data name="AddSubMenuItem.Text" type="System.String">
+  <data name="ToolbarDownButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGQSURBVDhPjZJNSwJRFIb9fX0sg4Q2JQVBEVEOCIlI0EaQ
+        +gct2rgxBiokRMgYSTBTyfErzRGVAk0JS63FqffUHWcaEwdeDszc83DOM9dm+34SSZWiUYUU5cYU8Q4V
+        CYcjhPOWB42D4Sf13j4mBoBgULZCAEBzuzvU0+r06W8AKBVLVogRUGu8UOGhzgEAVc1rnLOLc24W0Vf5
+        DwAY/KBWam2GwUVVa5p9TAJkso88CdZDTaZyvK5JKKiQiEPGFZ5a79xwXDohX97LcSsePmcBCIlGgFjh
+        4N5FR90dcjUctHE3Mz0AE2Dv/bRE/q6TpPoKrcbneZWpJhD2vUmnCQDwRIBoRIVET2JXB6wpczxBKHQ5
+        ulCQCAetzoAlcqOqkXwbpuXYArlUuw6AA7xzBzwjQCRy9Qvo8/9GcyJV5sC6r7FOvo704yA7S5vXS3yp
+        9IskJtCaPUIq9VdOrtKlVPGZtmIO/S9ghXg5Z3ZgnAD7QZIIgIlqgaS0nfaKixTIyOMdAILA7rj45UNy
+        nm7r34TEL+U05clBT2lYAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ContextMenuCheck.Text" xml:space="preserve">
+    <value>Menu contextuel</value>
+  </data>
+  <data name="ContextAddButton.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour ajouter un nouvel item</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Échelle</value>
+  </data>
+  <data name="ContextUpButton.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour déplacer l'item sélectionné vers le haut</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Items visibles dans le visionneur</value>
+  </data>
+  <data name="AddSubMenuItem.Text" xml:space="preserve">
     <value>Sous-menu</value>
   </data>
-  <data name="AddSeperatorItem.Text" type="System.String">
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 16</value>
+  </data>
+  <data name="OverrideDisplayExtents.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 50</value>
+  </data>
+  <data name="TaskDeleteButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAHOSURBVDhPlZPdK0NhHMf9L0qKWnkpUWo3uxmRJOJqN/KS
+        vJaLZcUsTCQXK1yREi3ykpZZ2TqFLDLJW2ZoDWNmZsbsa7/ndMbZmXDq0+mc85zP+T7f5zwpKbHDbt8F
+        x21KsFo5do/OhNlsAY2XHDToNfyO5+BbnMRrekYCo3FBKiEBDbh/DP+I1/cKi2UDpyenUsl/BItLq0wg
+        SvJXwZXbh6OTS1y43OI+vgvcHj8blMjhsQsESYQ+4mVSw1QadfCb4Mb7klwglJhM4LAfgDMYYNOoYevr
+        w9nWjngKlEAQuNzPovi2WSPWy5Xw6LsRmJrAg2EYu6pKzLU0fC3nd4FQFHVAXzYp8+HXdOBjtB/RsRF2
+        DunUcJQpkguEBFSYSa+Hs6gQkc5GRAc0iA5pebracFddDHNVCS8REtDPQgno5f3DmKC1GR5FHnxWC4Le
+        OxG3HfVYK5DxAvrDqAOvLwTn1QP2HE7GqloNlyILAW07XiaHeaZjjA+yBDQ9UQKKT5xfPzE2TRy2C2UI
+        VWQjWpcTJ1KTy8Rcr0aagFLQWgtYdT1wKDIRVKUj0pSKcG0arkszsaCUi0ukaRC04xKZ0WmxUlmMNXkG
+        i01LuDzP78pPk+rn9YbBWMIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ToolbarCreateButton.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour créer une nouvelle commande personnalisée</value>
+  </data>
+  <data name="AddBuiltInFunctionMenu.Text" xml:space="preserve">
+    <value>Fonction prédéfinie</value>
+  </data>
+  <data name="ToolbarUpButton.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour déplacer l'item sélectionné vers le haut</value>
+  </data>
+  <data name="AddCustomItemMenu.Text" xml:space="preserve">
+    <value>Item personnalisé</value>
+  </data>
+  <data name="ContextDeleteButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAHOSURBVDhPlZPdK0NhHMf9L0qKWnkpUWo3uxmRJOJqN/KS
+        vJaLZcUsTCQXK1yREi3ykpZZ2TqFLDLJW2ZoDWNmZsbsa7/ndMbZmXDq0+mc85zP+T7f5zwpKbHDbt8F
+        x21KsFo5do/OhNlsAY2XHDToNfyO5+BbnMRrekYCo3FBKiEBDbh/DP+I1/cKi2UDpyenUsl/BItLq0wg
+        SvJXwZXbh6OTS1y43OI+vgvcHj8blMjhsQsESYQ+4mVSw1QadfCb4Mb7klwglJhM4LAfgDMYYNOoYevr
+        w9nWjngKlEAQuNzPovi2WSPWy5Xw6LsRmJrAg2EYu6pKzLU0fC3nd4FQFHVAXzYp8+HXdOBjtB/RsRF2
+        DunUcJQpkguEBFSYSa+Hs6gQkc5GRAc0iA5pebracFddDHNVCS8REtDPQgno5f3DmKC1GR5FHnxWC4Le
+        OxG3HfVYK5DxAvrDqAOvLwTn1QP2HE7GqloNlyILAW07XiaHeaZjjA+yBDQ9UQKKT5xfPzE2TRy2C2UI
+        VWQjWpcTJ1KTy8Rcr0aagFLQWgtYdT1wKDIRVKUj0pSKcG0arkszsaCUi0ukaRC04xKZ0WmxUlmMNXkG
+        i01LuDzP78pPk+rn9YbBWMIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="TaskBarCheck.Text" xml:space="preserve">
+    <value>Barre des tâches</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 16</value>
+  </data>
+  <data name="OverrideDisplayExtents.Text" xml:space="preserve">
+    <value>Remplacer les limites de l'affichage initial de la carte</value>
+  </data>
+  <data name="EditTaskBarBtn.Text" xml:space="preserve">
+    <value>Éditer la barre des tâches</value>
+  </data>
+  <data name="TaskDownButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGQSURBVDhPjZJNSwJRFIb9fX0sg4Q2JQVBEVEOCIlI0EaQ
+        +gct2rgxBiokRMgYSTBTyfErzRGVAk0JS63FqffUHWcaEwdeDszc83DOM9dm+34SSZWiUYUU5cYU8Q4V
+        CYcjhPOWB42D4Sf13j4mBoBgULZCAEBzuzvU0+r06W8AKBVLVogRUGu8UOGhzgEAVc1rnLOLc24W0Vf5
+        DwAY/KBWam2GwUVVa5p9TAJkso88CdZDTaZyvK5JKKiQiEPGFZ5a79xwXDohX97LcSsePmcBCIlGgFjh
+        4N5FR90dcjUctHE3Mz0AE2Dv/bRE/q6TpPoKrcbneZWpJhD2vUmnCQDwRIBoRIVET2JXB6wpczxBKHQ5
+        ulCQCAetzoAlcqOqkXwbpuXYArlUuw6AA7xzBzwjQCRy9Qvo8/9GcyJV5sC6r7FOvo704yA7S5vXS3yp
+        9IskJtCaPUIq9VdOrtKlVPGZtmIO/S9ghXg5Z3ZgnAD7QZIIgIlqgaS0nfaKixTIyOMdAILA7rj45UNy
+        nm7r34TEL+U05clBT2lYAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ToolbarUpButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGoSURBVDhPjZNNSwJRGIX9Ze1aRIs2gRRBERJhUBBoBUGL
+        pE0Q/YNWrSJRBEsJqcRGS9JUlMnURtQotImw7GNx6tyY0Wmmj4HDvXNn3ue+59wZm+3zSp7ncXwcQywW
+        N0hb40jt74fB900XC19e39F+evtVBwcR+HwBM4QAFrceXk1qqh2xxjESOULxsgiv12+E9AKq9XvIVzXk
+        ZQVKo63Pec/dNRkgVgBCuCvzIbSi3AkYs7hWGqAdPYufACxMZWTdVlN9QSJTEHYNAFIZIr1qFrgbLWiA
+        1I0Mfzn0M0ALsRfAOS1cVutw56bgKtjhj4eFNVMHVoDb5rPwvRxfxGZrFisNB5zSKLj+LwCT37rYhkeZ
+        wLrqgrs2CWd2EJ7k0t8AFodSUYyc9GO1Mo6Nhy5gLNoHz85a9xQYIi0wZfpmca6giMACp4dwSU4d4IgO
+        Qirlsbvn6wL4hX0BOihXW0hnK0LJdAmJ8yssn8wbADwdywz4gCrXHoVyRVVoJbFgAhh+rN4O2AVT1kQg
+        Q9MyoAXLYySEYmvfNR+cwdzZMKalIdgDAwiGQrqFDye15j0ss3xfAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="TaskAddButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAHzSURBVDhPlZPbSxtBGMX9VwwaFETa+uAVMQUpLcW+iE9F
+        X8SE9cmAFi3GqhRLoRVN+qCC9xBFAhIDioQUYxYkJLSYmqZKNWlkqZCLLhq1Qk77Tdg060bUgcPO7n7z
+        mzNnZvLy/jWf7wt4fkshl4tn3+hJcjicoHpFo6JUKoXTsz8ZXVxeyd7pHwGs1mUlhABUEDu+vFHRxAWc
+        zg3s7e4pIfcB2FZWGUDm5K6AiJBAcPcXQmFBnkc2QPh9woqyFfgRhiSCSHlkwqSEKTTK4DbAUTSZGyCF
+        mAvg2f6GYbsRnYtd6LMOwB3wyJdADiRAWDiV2TevL+GJSYM37h6M73zCB98QGucboDNq/29nNkAKijKg
+        mSs/lkHPc3jrNyAg7MASnEW3twOPp6tyAyQHFNrgwhCqzA+g3WpGt4dDTIwxQLunFc/sGrww1qchkgM6
+        LOSABm8HwtBNcihbKAYfcrHBdFrFpMj6WkcLSt4VpAF0wiiDaOIcB5E4vvoPmPQzr/DQrGazjwUHcZyM
+        43PEhmF/H56u1LLlyRyQfdL+oci0zG+i1KRCg1sNXbAYR2IEU6HXaPIWodxSiN4lg9IBuaC9lkRFNXP5
+        4L7nY0p4if6f1Xi+pkLd+wp5iLQMEt246xqY6GeBVY6qoBl5BM7UBqstfSv/AtxW4JLSgfLrAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="TaskUpButton.ToolTipText" xml:space="preserve">
+    <value>Cliquez pour monter l'item sélectionné</value>
+  </data>
+  <data name="TaskAddButton.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour ajouter un nouvel item</value>
+  </data>
+  <data name="ZoomControlCheck.Text" xml:space="preserve">
+    <value>Contrôle de zoom</value>
+  </data>
+  <data name="StatusBarCheck.Text" xml:space="preserve">
+    <value>Barre d'état</value>
+  </data>
+  <data name="TaskCreateButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGESURBVDhPhZNfS8JgFMb9hH2CPkLddNMH6KLL6Ka7QhAk
+        QiixYAOhGag1SzBMl73Of81/20TSSvHi5HPoXcq2FB7Opu/zO8858kYiv59isUTZ7ClL1x8J76hSyeQ1
+        ybO+mkod0mQ6pcHwjOWMvqjduaDxZO4pl7snVVWCIel0lGxnh00QnjuWylB3PGPdankymz3StDs/RFES
+        9G4Z3BkSZpU63Vc2SMhz2aTLqxtWLBb/g2jaARUKWxxddrN6UXJH29Tr7zMQEB7LclmBKfqDE+5aMXQy
+        G0dkvFl8GLVi1L0KGPaxtkhV3aWhrXAKUT+mmkgs4++xSYJqDZcwBsYKACg0my8YILujK4QUcrRytUkA
+        +QCIA0DfHnlx0Ul2x/zW8JM2AtBJxgYABmlCfSgKfg9NsAoASDQdNsAIZfXa/yMgKowwYWFPpfqaGYCK
+        cIITfM8W3pyll5bPCHMmv/ybNwGwrFZ3SqL94ckwxySF7wN3sHrz5DMOBikePw+/maFXNuSHH7+ofNrE
+        clL/AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ItemPropertiesCheck.Text" xml:space="preserve">
+    <value>Propertiés de l'item</value>
+  </data>
+  <data name="FeatureLinkTargetType.Items2" xml:space="preserve">
+    <value>Cadre nommé</value>
+  </data>
+  <data name="LayerControlCheck.Text" xml:space="preserve">
+    <value>Contrôle de couche</value>
+  </data>
+  <data name="FeatureLinkTargetType.Items1" xml:space="preserve">
+    <value>Nouvelle fenêtre</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Largeur (en pixels)</value>
+  </data>
+  <data name="ToolbarDeleteButton.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour supprimer l'item sélectionné</value>
+  </data>
+  <data name="TaskCreateButton.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour créer une nouvelle commande personnalisée</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Largeur (en pixels)</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="ContextCreateButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGESURBVDhPhZNfS8JgFMb9hH2CPkLddNMH6KLL6Ka7QhAk
+        QiixYAOhGag1SzBMl73Of81/20TSSvHi5HPoXcq2FB7Opu/zO8858kYiv59isUTZ7ClL1x8J76hSyeQ1
+        ybO+mkod0mQ6pcHwjOWMvqjduaDxZO4pl7snVVWCIel0lGxnh00QnjuWylB3PGPdankymz3StDs/RFES
+        9G4Z3BkSZpU63Vc2SMhz2aTLqxtWLBb/g2jaARUKWxxddrN6UXJH29Tr7zMQEB7LclmBKfqDE+5aMXQy
+        G0dkvFl8GLVi1L0KGPaxtkhV3aWhrXAKUT+mmkgs4++xSYJqDZcwBsYKACg0my8YILujK4QUcrRytUkA
+        +QCIA0DfHnlx0Ul2x/zW8JM2AtBJxgYABmlCfSgKfg9NsAoASDQdNsAIZfXa/yMgKowwYWFPpfqaGYCK
+        cIITfM8W3pyll5bPCHMmv/ybNwGwrFZ3SqL94ckwxySF7wN3sHrz5DMOBikePw+/maFXNuSHH7+ofNrE
+        clL/AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="TaskUpButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGoSURBVDhPjZNNSwJRGIX9Ze1aRIs2gRRBERJhUBBoBUGL
+        pE0Q/YNWrSJRBEsJqcRGS9JUlMnURtQotImw7GNx6tyY0Wmmj4HDvXNn3ue+59wZm+3zSp7ncXwcQywW
+        N0hb40jt74fB900XC19e39F+evtVBwcR+HwBM4QAFrceXk1qqh2xxjESOULxsgiv12+E9AKq9XvIVzXk
+        ZQVKo63Pec/dNRkgVgBCuCvzIbSi3AkYs7hWGqAdPYufACxMZWTdVlN9QSJTEHYNAFIZIr1qFrgbLWiA
+        1I0Mfzn0M0ALsRfAOS1cVutw56bgKtjhj4eFNVMHVoDb5rPwvRxfxGZrFisNB5zSKLj+LwCT37rYhkeZ
+        wLrqgrs2CWd2EJ7k0t8AFodSUYyc9GO1Mo6Nhy5gLNoHz85a9xQYIi0wZfpmca6giMACp4dwSU4d4IgO
+        Qirlsbvn6wL4hX0BOihXW0hnK0LJdAmJ8yssn8wbADwdywz4gCrXHoVyRVVoJbFgAhh+rN4O2AVT1kQg
+        Q9MyoAXLYySEYmvfNR+cwdzZMKalIdgDAwiGQrqFDye15j0ss3xfAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ToolbarTab.Text" xml:space="preserve">
+    <value>Barre d'outils</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Côté droit</value>
+  </data>
+  <data name="ToolbarAddButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAHzSURBVDhPlZPbSxtBGMX9VwwaFETa+uAVMQUpLcW+iE9F
+        X8SE9cmAFi3GqhRLoRVN+qCC9xBFAhIDioQUYxYkJLSYmqZKNWlkqZCLLhq1Qk77Tdg060bUgcPO7n7z
+        mzNnZvLy/jWf7wt4fkshl4tn3+hJcjicoHpFo6JUKoXTsz8ZXVxeyd7pHwGs1mUlhABUEDu+vFHRxAWc
+        zg3s7e4pIfcB2FZWGUDm5K6AiJBAcPcXQmFBnkc2QPh9woqyFfgRhiSCSHlkwqSEKTTK4DbAUTSZGyCF
+        mAvg2f6GYbsRnYtd6LMOwB3wyJdADiRAWDiV2TevL+GJSYM37h6M73zCB98QGucboDNq/29nNkAKijKg
+        mSs/lkHPc3jrNyAg7MASnEW3twOPp6tyAyQHFNrgwhCqzA+g3WpGt4dDTIwxQLunFc/sGrww1qchkgM6
+        LOSABm8HwtBNcihbKAYfcrHBdFrFpMj6WkcLSt4VpAF0wiiDaOIcB5E4vvoPmPQzr/DQrGazjwUHcZyM
+        43PEhmF/H56u1LLlyRyQfdL+oci0zG+i1KRCg1sNXbAYR2IEU6HXaPIWodxSiN4lg9IBuaC9lkRFNXP5
+        4L7nY0p4if6f1Xi+pkLd+wp5iLQMEt246xqY6GeBVY6qoBl5BM7UBqstfSv/AtxW4JLSgfLrAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="ToolbarAddButton.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour ajouter un nouvel item</value>
+  </data>
+  <data name="MenuBox.Text" xml:space="preserve">
+    <value>Menus</value>
+  </data>
+  <data name="TaskPaneCheck.Text" xml:space="preserve">
+    <value>Volet de tâches</value>
+  </data>
+  <data name="TaskDeleteButton.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour supprimer l'item sélectionné</value>
+  </data>
+  <data name="ContextDownButton.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour déplacer l'item sélectionné vers le bas</value>
+  </data>
+  <data name="ContextDeleteButton.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour supprimer l'item sélectionné</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Côté gauche</value>
+  </data>
+  <data name="AddItemMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 4</value>
+  </data>
+  <data name="ContextDownButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGQSURBVDhPjZJNSwJRFIb9fX0sg4Q2JQVBEVEOCIlI0EaQ
+        +gct2rgxBiokRMgYSTBTyfErzRGVAk0JS63FqffUHWcaEwdeDszc83DOM9dm+34SSZWiUYUU5cYU8Q4V
+        CYcjhPOWB42D4Sf13j4mBoBgULZCAEBzuzvU0+r06W8AKBVLVogRUGu8UOGhzgEAVc1rnLOLc24W0Vf5
+        DwAY/KBWam2GwUVVa5p9TAJkso88CdZDTaZyvK5JKKiQiEPGFZ5a79xwXDohX97LcSsePmcBCIlGgFjh
+        4N5FR90dcjUctHE3Mz0AE2Dv/bRE/q6TpPoKrcbneZWpJhD2vUmnCQDwRIBoRIVET2JXB6wpczxBKHQ5
+        ulCQCAetzoAlcqOqkXwbpuXYArlUuw6AA7xzBzwjQCRy9Qvo8/9GcyJV5sC6r7FOvo704yA7S5vXS3yp
+        9IskJtCaPUIq9VdOrtKlVPGZtmIO/S9ghXg5Z3ZgnAD7QZIIgIlqgaS0nfaKixTIyOMdAILA7rj45UNy
+        nm7r34TEL+U05clBT2lYAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ShowInBrowser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 20</value>
+  </data>
+  <data name="overrideScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>358, 24</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Vue dans le navigateur</value>
+  </data>
+  <data name="ToolbarDeleteButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAHOSURBVDhPlZPdK0NhHMf9L0qKWnkpUWo3uxmRJOJqN/KS
+        vJaLZcUsTCQXK1yREi3ykpZZ2TqFLDLJW2ZoDWNmZsbsa7/ndMbZmXDq0+mc85zP+T7f5zwpKbHDbt8F
+        x21KsFo5do/OhNlsAY2XHDToNfyO5+BbnMRrekYCo3FBKiEBDbh/DP+I1/cKi2UDpyenUsl/BItLq0wg
+        SvJXwZXbh6OTS1y43OI+vgvcHj8blMjhsQsESYQ+4mVSw1QadfCb4Mb7klwglJhM4LAfgDMYYNOoYevr
+        w9nWjngKlEAQuNzPovi2WSPWy5Xw6LsRmJrAg2EYu6pKzLU0fC3nd4FQFHVAXzYp8+HXdOBjtB/RsRF2
+        DunUcJQpkguEBFSYSa+Hs6gQkc5GRAc0iA5pebracFddDHNVCS8REtDPQgno5f3DmKC1GR5FHnxWC4Le
+        OxG3HfVYK5DxAvrDqAOvLwTn1QP2HE7GqloNlyILAW07XiaHeaZjjA+yBDQ9UQKKT5xfPzE2TRy2C2UI
+        VWQjWpcTJ1KTy8Rcr0aagFLQWgtYdT1wKDIRVKUj0pSKcG0arkszsaCUi0ukaRC04xKZ0WmxUlmMNXkG
+        i01LuDzP78pPk+rn9YbBWMIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="TitleText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 0</value>
+  </data>
+  <data name="ContextCreateButton.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour créer une nouvelle commande personnalisée</value>
+  </data>
+  <data name="TitleText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>336, 20</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="AddSeperatorItem.Text" xml:space="preserve">
     <value>Séparateur</value>
+  </data>
+  <data name="ToolbarDownButton.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour déplacer l'item sélectionné vers le bas</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Ressource de la carte</value>
+  </data>
+  <data name="AddSeperatorItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAGRJREFUOE/tUTEO
+        ACEI89t8gI2BkT8w8UEuNYGcbm4mdyYNIrRUHeNfl7wAM6eITKhqmlkDedUqop+Isu2jgANEkN09I2LG
+        EgBpxyJwQkYvxFoACSaV/dq/Le/Tlytc8hXftfEAV7KVrYWF7vAAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 20</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 32</value>
   </data>
 </root>

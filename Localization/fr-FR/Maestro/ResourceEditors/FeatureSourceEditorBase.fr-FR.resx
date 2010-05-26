@@ -117,29 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="CustomEditorPage.Text" type="System.String">
-    <value>Éditeur spécifique</value>
-  </data>
-  <data name="GenericEditorPage.Text" type="System.String">
-    <value>Éditeur générique</value>
-  </data>
-  <data name="TestConnectionResult.Text" type="System.String">
-    <value>Cliquer sur "Tester la connexion" pour tester avec les paramètres courants</value>
-  </data>
-  <data name="btnTest.Text" type="System.String">
+  <data name="btnTest.Text" xml:space="preserve">
     <value>Tester la connexion</value>
   </data>
-  <data name="label1.Text" type="System.String">
-    <value>Pourvoyeur</value>
+  <data name="EditConfigDocButton.Text" xml:space="preserve">
+    <value>Éditer document de configuration</value>
   </data>
-  <data name="groupBox1.Text" type="System.String">
+  <data name="EditExtensions.Text" xml:space="preserve">
+    <value>Éditer les extensions</value>
+  </data>
+  <data name="CustomEditorPage.Text" xml:space="preserve">
+    <value>Éditeur spécifique</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
     <value>Système de coordonnées de remplacement</value>
   </data>
-  <data name="EditConfigDocButton.Text" type="System.String">
-    <value>Éditer document de configuation</value>
+  <data name="LocalPreviewPage.Text" xml:space="preserve">
+    <value>Aperçu Local</value>
   </data>
-  <data name="EditExtensions.Text" type="System.String">
-    <value>Éditer les extensions</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Pourvoyeur</value>
+  </data>
+  <data name="TestConnectionResult.Text" xml:space="preserve">
+    <value>Cliquer sur "Tester la connexion" pour tester avec les paramètres courants</value>
+  </data>
+  <data name="GenericEditorPage.Text" xml:space="preserve">
+    <value>Éditeur générique</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="EditConfigDocButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>218, 8</value>
+  </data>
+  <data name="EditConfigDocButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 24</value>
   </data>
 </root>

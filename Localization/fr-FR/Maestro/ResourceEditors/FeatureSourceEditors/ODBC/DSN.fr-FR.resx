@@ -121,4 +121,7 @@
   <data name="label1.Text" type="System.String">
     <value>Nom DSN</value>
   </data>
+  <data name="FilepathText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 2</value>
+  </data>
 </root>

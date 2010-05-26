@@ -117,5 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Règle</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="LegendLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 20</value>
+  </data>
+  <data name="Filter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 0</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 21</value>
+  </data>
+  <data name="LegendLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 24</value>
+  </data>
+  <data name="Filter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 20</value>
+  </data>
+  <data name="ShowFeatures.Text" xml:space="preserve">
+    <value>Montrer les entités</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Étiquette de légende</value>
+  </data>
+  <data name="ShowLabels.Text" xml:space="preserve">
+    <value>Montrer les étiquettes des entités</value>
+  </data>
 </root>

@@ -118,18 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DuplicateLayerInclusionConfirmation" xml:space="preserve">
-    <value>The layer {0} is already in the map, do you want it to appear twice?</value>
+    <value>La couche {0} est déjà dans la carte, souhaitez-vous qu'elle apparaisse une autre fois?</value>
     <comment>A confirmation message that is shown when the user attempts to include the same layer twice</comment>
   </data>
   <data name="FiniteDisplayScalesName" xml:space="preserve">
-    <value>Finite display scales</value>
+    <value>Échelles d'affichage finies</value>
     <comment>The name displayed for finite display scales</comment>
   </data>
   <data name="FlattenGroupsWarning" xml:space="preserve">
-    <value>The selected group has sub groups. These will be removed and all
-layers will be moved to the selected group before being converted.
+    <value>Le groupe sélectionné a des sous-groupes. Ceux-ci seront enlevés et toutes les
+couches seront déplacées vers le groupe sélectionné avant que celui-ci soit transformé.
 
-Do you want to continue?</value>
+Désirez-vous continuer?</value>
     <comment>A warning that is displayed if the user attempts to convert a group with subgroups to a baselayer group</comment>
   </data>
   <data name="LayerExtentReadError" xml:space="preserve">
@@ -137,11 +137,11 @@ Do you want to continue?</value>
     <comment>An error message that is displayed if the attempt to read the layer extents fail</comment>
   </data>
   <data name="LayerVisibilityToggleWarning" xml:space="preserve">
-    <value>The selected group has one or more layers that are invisible.
-The layers in a base layer are always visible.
-If you convert the group, the layers will be made visible.
+    <value>Le groupe sélectionné a une ou plusieurs couches qui sont invisibles.
+Les couches dans une couche de base sont toujours visibles.
+Si vous convertissez le groupe, les couches deviendront visibles.
 
-Do you want to continue?</value>
+Voulez-vous continuer?.</value>
     <comment>A warning message that is displayed if the user attempts to convert an invisible layer to a baselayer</comment>
   </data>
   <data name="MapPreviewError" xml:space="preserve">
@@ -149,11 +149,11 @@ Do you want to continue?</value>
     <comment>An error message that is displayed if the map preview fails</comment>
   </data>
   <data name="MgCookerException" xml:space="preserve">
-    <value>MgCooker threw an exception: {0}</value>
+    <value>MgCooker a levé une exception : {0}</value>
     <comment>An error message that is displayed if MgCooker fails</comment>
   </data>
   <data name="MgCookerNeedsSavedMapError" xml:space="preserve">
-    <value>This map is not yet saved. MgCooker can only process saved maps</value>
+    <value>Cette carte n'est pas encore sauvegardée. MgCooker ne peut traiter que des cartes sauvegardées.</value>
     <comment>An error message that is displayed if the user attempts to produce tiles for an unsaved map</comment>
   </data>
   <data name="NewGroupBaseName" xml:space="preserve">
@@ -166,28 +166,29 @@ Do you want to continue?</value>
   </data>
   <data name="SaveMapWithBaseLayersWarning" xml:space="preserve">
     <value>This map contains base layers. Saving the map will clear any generated tiles.
-Do you want to save the map?</value>
+Do you want to save the map?
+Cette carte contient des couches de base. La sauvegarde de la carte détruira les tuiles générées.
+Voulez-vous sauvegarder la carte?</value>
     <comment>A warning message that is displayed if the map contains baselayers, as that will result in all existing tiles being deleted</comment>
   </data>
   <data name="UseNewProjectionQuestion" xml:space="preserve">
-    <value>The data extent is in another projection than the map, do you also want to update the maps coordinate system?</value>
+    <value>Les données d'étendue spatiale sont dans une autre projection que celle de la carte, désirez-vous également mettre à jour le système de coordonnées des cartes?</value>
     <comment>A question that is displayed if the maps projection differs from that of the featuresource</comment>
   </data>
   <data name="UseLayerProjectionQuestion" xml:space="preserve">
-    <value>Do you want to use the projection from the layer
-{0}?</value>
+    <value>Voulez-vous utiliser la projection de la couche {0}?</value>
     <comment>A question that is displayed if the user can choose to user the layer projection</comment>
   </data>
   <data name="NoProjectionFoundWarning" xml:space="preserve">
-    <value>The extent for the layer was found, but no coordinate system was found</value>
+    <value>L'étendue de la couche a été trouvée, mais aucun système de coordonnées n'a été trouvé.</value>
     <comment>A warning message that is displayed if the layers projection could not be read</comment>
   </data>
   <data name="LayerProjectionReadError" xml:space="preserve">
-    <value>An error occured while reading the layers projection: {0}</value>
+    <value>Une erreur s'est produite lors de la lecture de la projection des couches : {0}</value>
     <comment>An error message that is displayed if an error occurs while reading the data projection</comment>
   </data>
   <data name="LayerExtentMissingError" xml:space="preserve">
-    <value>No extent data was found for the layer.</value>
+    <value>Échec de la détermination des données de l'étendue spatiale pour cette couche.</value>
     <comment>An error message that is displayed if the layer has no extent data.</comment>
   </data>
 </root>

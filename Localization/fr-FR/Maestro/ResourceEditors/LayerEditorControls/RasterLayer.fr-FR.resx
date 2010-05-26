@@ -148,6 +148,9 @@
   <data name="EnableHillshade.Text" type="System.String">
     <value>Relief ombragé</value>
   </data>
+  <data name="EnableHillshade.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 16</value>
+  </data>
   <data name="label10.Text" type="System.String">
     <value>Altitude</value>
   </data>
@@ -169,6 +172,9 @@
   <data name="label7.Text" type="System.String">
     <value>Couleur de transparence</value>
   </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 16</value>
+  </data>
   <data name="label12.Text" type="System.String">
     <value>Bande</value>
   </data>
@@ -183,5 +189,11 @@
   </data>
   <data name="EnableAdvanced.Text" type="System.String">
     <value>Réglages avancés</value>
+  </data>
+  <data name="VisibleTo.Items" xml:space="preserve">
+    <value>Infini</value>
+  </data>
+  <data name="VisibleTo.Text" xml:space="preserve">
+    <value>Infini</value>
   </data>
 </root>

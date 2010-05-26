@@ -151,4 +151,7 @@
   <data name="ToggleDocumentsButton.ToolTipText" type="System.String">
     <value>Bascule l'affichage des fichiers de données et de ressources</value>
   </data>
+  <data name="EditResourceXmlMenu.Text" xml:space="preserve">
+    <value>Éditer comme xml</value>
+  </data>
 </root>

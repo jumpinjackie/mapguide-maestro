@@ -277,4 +277,43 @@
   <data name="$this.Text" type="System.String">
     <value>MapGuide Maestro</value>
   </data>
+  <data name="OpenXmlFileDialog.Filter" xml:space="preserve">
+    <value>Fichiers Xml (*.xml)|*.xml|Tous les fichiers (*.*)|*.*</value>
+  </data>
+  <data name="SaveAsXmlDialog.Filter" xml:space="preserve">
+    <value>Fichiers Xml (*.xml)|*.xml|Tous les fichiers (*.*)|*.*</value>
+  </data>
+  <data name="TabClosePageMenu.Text" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="MainMenuCloseAll.Text" xml:space="preserve">
+    <value>Fermer tout</value>
+  </data>
+  <data name="TabSaveMenu.Text" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="TabSaveAsMenu.Text" xml:space="preserve">
+    <value>Sauvegarder sous...</value>
+  </data>
+  <data name="OpenXmlFileDialog.Title" xml:space="preserve">
+    <value>Sélectionner le fichier xml à charger</value>
+  </data>
+  <data name="DuplicateMenu.Text" xml:space="preserve">
+    <value>Dupliquer</value>
+  </data>
+  <data name="TabCopyIdMenu.Text" xml:space="preserve">
+    <value>Copier Id au presse-papiers</value>
+  </data>
+  <data name="SaveAsXmlDialog.Title" xml:space="preserve">
+    <value>Choisir le nom de fichier sous lequel sauvegarder</value>
+  </data>
+  <data name="OpenAllChildrenMenu.Text" xml:space="preserve">
+    <value>Ouvrir les ressources enfants dans l'éditeur Xml</value>
+  </data>
+  <data name="FindReplaceMenu.Text" xml:space="preserve">
+    <value>Rechercher et remplacer dans les ressources</value>
+  </data>
+  <data name="FindReplaceChildrenMenu.Text" xml:space="preserve">
+    <value>Rechercher et remplacer dans les ressources enfants</value>
+  </data>
 </root>

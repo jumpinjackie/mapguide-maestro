@@ -118,38 +118,38 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ColorCountError" xml:space="preserve">
-    <value>Failed to read {0} color(s) in line {1}</value>
+    <value>Échec de la lecture de {0} couleur(s) dans la ligne {1}</value>
     <comment>An error message that is displayed if the expected color count does not match the actual count</comment>
   </data>
   <data name="DivergingName" xml:space="preserve">
-    <value>Diverging</value>
+    <value>Divergent</value>
     <comment>A display name for the Diverging data type</comment>
   </data>
   <data name="InvalidColorComponent" xml:space="preserve">
-    <value>Invalid {0} color component {1} in line {2}</value>
+    <value>Valeur {1} invalide à la ligne {2} pour la composante de couleur {0} </value>
     <comment>An error message that is displayed if a color component is outside the [0-255] range.
 {0} is the color component, eg. R, G or B
 {1} is the value read
 {2} is the line where the error was encountered</comment>
   </data>
   <data name="InvalidFieldCountError" xml:space="preserve">
-    <value>Invalid field count in line {0}</value>
+    <value>Compte invalide de champs à la ligne {0}</value>
     <comment>An error message that is displayed if the file has an invalid field count</comment>
   </data>
   <data name="InvalidRecordCountError" xml:space="preserve">
-    <value>Invalid record count in line {0}</value>
+    <value>Compte invalide d'enregistrements à la ligne {0}</value>
     <comment>An error message that is displayed if the file has an invalid error count</comment>
   </data>
   <data name="MissingColumnError" xml:space="preserve">
-    <value>Missing column "{0}"</value>
+    <value>Colonne manquante "{0}"</value>
     <comment>An error message that is displayed if the file is missing a required column</comment>
   </data>
   <data name="QualitativeName" xml:space="preserve">
-    <value>Qualitative</value>
+    <value>Qualitatif</value>
     <comment>A display name for the Qualitative data type</comment>
   </data>
   <data name="SequentialName" xml:space="preserve">
-    <value>Sequential</value>
+    <value>Séquentiel</value>
     <comment>A display name for the Sequential data type</comment>
   </data>
 </root>

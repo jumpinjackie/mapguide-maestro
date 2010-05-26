@@ -118,70 +118,70 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CloseButtonText" xml:space="preserve">
-    <value>Close</value>
+    <value>Fermer</value>
     <comment>The text on the close button</comment>
   </data>
   <data name="LayerDefinitionProfilingError" xml:space="preserve">
-    <value>Failed while profiling LayerDefinition: {0},
-Error message: {1}</value>
+    <value>Échec lors du profilage LayerDefinition : {0},
+Message d'erreur : {1}</value>
     <comment>An error message that is displayed when the layer definition profiling fails</comment>
   </data>
   <data name="LogMessageDone" xml:space="preserve">
-    <value>*** Done ***</value>
+    <value>*** Fait ***</value>
     <comment>A message written in the log to indicate that the operation is complete</comment>
   </data>
   <data name="LogMessageFeatureSource" xml:space="preserve">
-    <value>Profiling FeatureSource: {0}</value>
+    <value>Profilage FeatureSource : {0}</value>
     <comment>A message written in the log when profiling a featuresource</comment>
   </data>
   <data name="LogMessageIdentifyFetching" xml:space="preserve">
-    <value>Identity fetching:</value>
+    <value>Récupération d'identité :</value>
     <comment>A message written in the log when profiling identity fetching</comment>
   </data>
   <data name="LogMessageLayerDefinition" xml:space="preserve">
-    <value>Profiling LayerDefinition: {0}</value>
+    <value>Profilage LayerDefinition: {0}</value>
     <comment>A message written in the log when profiling a layerdefinition</comment>
   </data>
   <data name="LogMessageMapDefinition" xml:space="preserve">
-    <value>Profiling MapDefinition: {0}</value>
+    <value>Profiage MapDefinition: {0}</value>
     <comment>A message written in the log when profiling a mapdefinition</comment>
   </data>
   <data name="LogMessageRenderingMap" xml:space="preserve">
-    <value>Full map rendering:</value>
+    <value>Rendu complet de la carte :</value>
     <comment>A message written in the log when profiling runtime map rendering</comment>
   </data>
   <data name="LogMessageRenderingScales" xml:space="preserve">
-    <value>Rendering scales:</value>
+    <value>Échelles de redu :</value>
     <comment>A message written in the log when profiling a scale rendering</comment>
   </data>
   <data name="LogMessageRuntimeLayer" xml:space="preserve">
-    <value>Runtime layer creation:</value>
+    <value>Durée d'exécution de création de la carte :</value>
     <comment>A message written in the log when profiling a runtime layer creation</comment>
   </data>
   <data name="LogMessageRuntimeMap" xml:space="preserve">
-    <value>Total for runtime Map Generation:</value>
+    <value>Total pour l'exécution Map Generation:</value>
     <comment>A message written in the log when profiling runtime map generation</comment>
   </data>
   <data name="LogMessageRuntimeMapTotal" xml:space="preserve">
-    <value>Runtime map generation in one go:</value>
+    <value>Durée d'exécution de génération de la carte en une seule fois :</value>
     <comment>A message written in the log when profiling runtime map generation</comment>
   </data>
   <data name="LogMessageScaleRange" xml:space="preserve">
-    <value>Scalerange [{0} : {1}]:</value>
+    <value>Plage d'échelle [{0} : {1}]:</value>
     <comment>A message written in the log when profiling a certain scalerange</comment>
   </data>
   <data name="LogMessageUnsupportedResourceType" xml:space="preserve">
-    <value>The resource type is not supported for profiling</value>
+    <value>Le type de ressource n'est pas supporté pour le profilage</value>
     <comment>A message written in the log if a certain resource is not supported</comment>
   </data>
   <data name="MapRenderingError" xml:space="preserve">
-    <value>Failed while profiling MapDefinition rendering: {0},
-Error message: {1}</value>
+    <value>Échec lors du profilage du rendu du MapDefinition: {0},
+Message d'erreur : {1}</value>
     <comment>An error message displayed when profiling mapdefinition rendering fails</comment>
   </data>
   <data name="RuntimeMapProfilingError" xml:space="preserve">
-    <value>Failed while profiling MapDefinition runtime: {0},
-Error message: {1}</value>
+    <value>Échec lors du profilage d'exécution du MapDefinition : {0}
+Message d'erreur : {1}</value>
     <comment>An error message displayed when profiling a mapdefinition fails</comment>
   </data>
 </root>

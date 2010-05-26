@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="LanguageLabel" xml:space="preserve">
-    <value>Selected language: {0}, OS Language: {1}</value>
+    <value>Langue sélectionnée : {0}, Langue du SE : {1}</value>
     <comment>A label that displays the current language settings</comment>
   </data>
   <data name="VersionLabel" xml:space="preserve">
-    <value>Version: {0}</value>
+    <value>Version : {0}</value>
     <comment>A label that displays the current version</comment>
   </data>
   <data name="ServerVersionLabel" xml:space="preserve">
-    <value>MapGuide Version: {0} ({1})</value>
+    <value>Version MapGuide : {0} ({1})</value>
     <comment>A label that displays the version of the current MapGuide server</comment>
   </data>
 </root>

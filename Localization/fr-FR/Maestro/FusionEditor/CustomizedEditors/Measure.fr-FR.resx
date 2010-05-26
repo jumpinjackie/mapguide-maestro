@@ -117,38 +117,104 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Text" type="System.String">
-    <value>Distance précision</value>
-  </data>
-  <data name="label2.Text" type="System.String">
-    <value>Superficie précision</value>
-  </data>
-  <data name="label3.Text" type="System.String">
-    <value>Couleur de remplissage</value>
-  </data>
-  <data name="label4.Text" type="System.String">
-    <value>Couleur de la ligne</value>
-  </data>
-  <data name="label5.Text" type="System.String">
-    <value>Largeur de la ligne</value>
-  </data>
-  <data name="label6.Text" type="System.String">
-    <value>Type de mesure</value>
-  </data>
-  <data name="label7.Text" type="System.String">
-    <value>Type Infobulle</value>
-  </data>
-  <data name="label8.Text" type="System.String">
-    <value>Containeur Infobulle</value>
-  </data>
-  <data name="label9.Text" type="System.String">
+  <data name="label9.Text" xml:space="preserve">
     <value>Position haut Infobulle</value>
   </data>
-  <data name="label10.Text" type="System.String">
+  <data name="label8.Text" xml:space="preserve">
+    <value>Containeur Infobulle</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Couleur de la ligne</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Largeur de la ligne</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Type Infobulle</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Superficie précision</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Unités</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Couleur de remplissage</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Distance précision</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
     <value>Position gauche Infobulle </value>
   </data>
-  <data name="label11.Text" type="System.String">
-    <value>Unités</value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Type de mesure</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="MeasureTooltipContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 20</value>
+  </data>
+  <data name="FillStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 56</value>
+  </data>
+  <data name="DistancePrecision.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 8</value>
+  </data>
+  <data name="MeasureTooltipType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 200</value>
+  </data>
+  <data name="LineStyleWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 104</value>
+  </data>
+  <data name="AreaPrecision.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 32</value>
+  </data>
+  <data name="MeasureTipPositionTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 20</value>
+  </data>
+  <data name="MeasureTipPositionTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 152</value>
+  </data>
+  <data name="Units.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 21</value>
+  </data>
+  <data name="MeasureTooltipContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 176</value>
+  </data>
+  <data name="DistancePrecision.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 20</value>
+  </data>
+  <data name="LineStyleWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 20</value>
+  </data>
+  <data name="Units.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 248</value>
+  </data>
+  <data name="MeasureTipPositionLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 128</value>
+  </data>
+  <data name="LineStyleColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 21</value>
+  </data>
+  <data name="MeasureTipPositionLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 20</value>
+  </data>
+  <data name="AreaPrecision.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 20</value>
+  </data>
+  <data name="Type.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 21</value>
+  </data>
+  <data name="LineStyleColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 80</value>
+  </data>
+  <data name="Type.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 224</value>
+  </data>
+  <data name="FillStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 21</value>
+  </data>
+  <data name="MeasureTooltipType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 21</value>
   </data>
 </root>

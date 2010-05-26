@@ -121,4 +121,13 @@
   <data name="label1.Text" type="System.String">
     <value>Chemin du dossier ou du fichier</value>
   </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 16</value>
+  </data>
+  <data name="FilepathText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 0</value>
+  </data>
+  <data name="FilepathText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 20</value>
+  </data>
 </root>

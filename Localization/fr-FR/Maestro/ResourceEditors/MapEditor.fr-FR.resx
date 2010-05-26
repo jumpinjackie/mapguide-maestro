@@ -143,7 +143,7 @@
     <value>X</value>
   </data>
   <data name="label4.Text" type="System.String">
-    <value>En  haut à droite</value>
+    <value>En haut à droite</value>
   </data>
   <data name="label3.Text" type="System.String">
     <value>En bas à gauche</value>
@@ -212,7 +212,7 @@
     <value>Couches par ordre de dessin</value>
   </data>
   <data name="AddBaseLayerGroupButton.ToolTipText" type="System.String">
-    <value>Ajouter nouveau groupe</value>
+    <value>Ajouter un nouveau groupe</value>
   </data>
   <data name="RemoveBaseLayerGroupButton.ToolTipText" type="System.String">
     <value>Supprimer le groupe sélectionné et son contenu</value>

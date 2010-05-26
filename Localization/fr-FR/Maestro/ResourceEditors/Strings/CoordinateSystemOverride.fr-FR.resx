@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CoordinateSystemLoadError" xml:space="preserve">
-    <value>Failed to retrive coordinate info: {0}</value>
+    <value>Échec d'accès aux informations sur les coorodonnées : {0}</value>
     <comment>An error message that is displayed when the coordinate system information for the spatial context fails to load</comment>
   </data>
   <data name="RemoveOverridesConfirmation" xml:space="preserve">
-    <value>Simple mode will remove all but the first overridden projection,
-are you sure you want to remove the other projections?</value>
+    <value>Le mode simple supprime toutes les projections substituées sauf la première,
+êtes-vous sûr de vouloir supprimer les autres projections?</value>
     <comment>A confirmation message that is displayed when the user switches to simple mode, and that may cause loss of data</comment>
   </data>
   <data name="SpatialContentNullError" xml:space="preserve">
-    <value>Null content in spatial info</value>
+    <value>Null dans le contenu d'informations spatiales</value>
     <comment>An error message that is displayed if the spatial content for the resource returns null</comment>
   </data>
   <data name="SpatialContextInfoDialogTitle" xml:space="preserve">
-    <value>Spatial context info</value>
+    <value>Information du contexte spatial</value>
     <comment>The title of the dialog that displays spatial context information</comment>
   </data>
   <data name="ResetOverrideQuestion" xml:space="preserve">
-    <value>Do you also want to reset your overriden coordinate system with the one found in the spatial content?</value>
+    <value>Voulez-vous aussi réinitialiser le système de coordonnées substitué avec celui qui se trouve dans le contenu spatial?</value>
     <comment>A question displayed if the spatial content reports a different coordinate system than the existing</comment>
   </data>
 </root>

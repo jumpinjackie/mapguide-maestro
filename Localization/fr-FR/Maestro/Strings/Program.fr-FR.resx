@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="OpenLinkError" xml:space="preserve">
-    <value>Unable to open a browser window, please manually visit:
+    <value>Impossible d'ouvrir une fenêtre de navigateur, s'il vous plaît visitez manuellement :
 {0}</value>
     <comment>An error message that is displayed if a link fails to open</comment>
   </data>
   <data name="SeriousError" xml:space="preserve">
-    <value>A serious error occured: {0}</value>
+    <value>Une erreur grave s'est produite : {0}</value>
     <comment>An error message that is displayed if Maestro crashes</comment>
   </data>
 </root>

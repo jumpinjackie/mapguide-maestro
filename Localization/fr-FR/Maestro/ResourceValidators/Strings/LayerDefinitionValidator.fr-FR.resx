@@ -118,59 +118,59 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DrawingLayerDefinitionNotSupportedWarning" xml:space="preserve">
-    <value>Only vector layers and raster layers are currently validated</value>
+    <value>Seulement les couches vectorielles et matricielles sont actuellement validées.</value>
     <comment>A warning message that is displayed if the layer is not Grid or Vector</comment>
   </data>
   <data name="DrawingLayerNotSupportedWarning" xml:space="preserve">
-    <value>Maestro does not support DrawingLayers</value>
+    <value>Maestro ne prend pas en charge les couches de dessin.</value>
     <comment>A warning message that is displayed if the layer is a DrawingLayer type</comment>
   </data>
   <data name="FeatureSourceLoadError" xml:space="preserve">
-    <value>Failed to load featuresource</value>
+    <value>Impossible de charger le FeatureSource</value>
     <comment>An error message that is displayed if the featuresource fails to load</comment>
   </data>
   <data name="GeometryMissingError" xml:space="preserve">
-    <value>Failed to find geometry column {0} in schema {1} on featuresource {2}</value>
+    <value>Impossible de trouver la colonne Géométrie {0} dans le schéma {1} concernant le FeatureSource {2}</value>
     <comment>An error message that is displayed if the geometry is not present in the selected schema</comment>
   </data>
   <data name="LayerNullError" xml:space="preserve">
-    <value>Layer is missing core information</value>
+    <value>Il manque des informations de base à la couche.</value>
     <comment>An error message that is displayed if the layer has a null reference</comment>
   </data>
   <data name="MinAndMaxScaleSwappedError" xml:space="preserve">
-    <value>The minimum scale ({0}) is larger than the maximum scale ({1})</value>
+    <value>L'échelle minimale ({0}) est supérieure à l'échelle maximale ({1})</value>
     <comment>An error message that is displayed if the scale ranges are reversed</comment>
   </data>
   <data name="MissingFeatureSourceError" xml:space="preserve">
-    <value>No FeatureSource is assigned to the layer</value>
+    <value>Aucun FeatureSource n'est assigné la couche.</value>
     <comment>An error message that is displayed if the layer has no FeatureSource</comment>
   </data>
   <data name="MissingGeometryError" xml:space="preserve">
-    <value>No Geometry is assigned to the layer</value>
+    <value>Aucne Géométrie n'est assignée à la couche</value>
     <comment>An error message that is displayed if the layer has no geometry column selected</comment>
   </data>
   <data name="MissingScaleRangesError" xml:space="preserve">
-    <value>No scale ranges are defined, no data can be displayed</value>
+    <value>Aucune plage d'échelles n'a été définie, aucune données ne peut être affichées.</value>
     <comment>An error message that is displayed if there are no scale ranges defined</comment>
   </data>
   <data name="MultipleScaleRangesWarning" xml:space="preserve">
-    <value>More than one scale ranges is defined, this is valid, but unsupported by Maestro</value>
+    <value>Plus d'une plage d'échelle est définie, ceci est valide mais non supporté par Maestro.</value>
     <comment>A warning message that is displayed if a raster layer has multiple scale ranges defined</comment>
   </data>
   <data name="ScaleRangesOverlapInformation" xml:space="preserve">
-    <value>The scale range {0}-{1} overlaps the range {2}-{3}</value>
+    <value>La plage d'échelle {0}-{1} recoupe la plage {2}-{3}</value>
     <comment>A warning message that is displayed if two scaleranges overlap</comment>
   </data>
   <data name="SchemaAndColumnReadFailedError" xml:space="preserve">
-    <value>Failed to validate column and schema</value>
+    <value>Impossible de valider la colonne et le schéma</value>
     <comment>An error message that is displayed if the schema and column read fails</comment>
   </data>
   <data name="SchemaMissingError" xml:space="preserve">
-    <value>Failed to find schema {0} in featuresource {1}</value>
+    <value>Impossible de trouver le schéma {0} dans le FeatureSource {1}</value>
     <comment>An error message that is displayed if the selected schema is not present in the FeatureSource</comment>
   </data>
   <data name="UnsupportedLayerTypeWarning" xml:space="preserve">
-    <value>The layer has no type, or the type is unsupported by Maestro</value>
+    <value>La couche n'a pas de type, ou le type n'est pas supporté par Maestro.</value>
     <comment>A  warning message that is displayed if the layer type is unknown</comment>
   </data>
 </root>

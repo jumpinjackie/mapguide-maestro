@@ -124,4 +124,13 @@
   <data name="label1.Text" type="System.String">
     <value>Format</value>
   </data>
+  <data name="Format.Items" xml:space="preserve">
+    <value>png</value>
+  </data>
+  <data name="Format.Items1" xml:space="preserve">
+    <value>jpg</value>
+  </data>
+  <data name="Format.Items2" xml:space="preserve">
+    <value>gif</value>
+  </data>
 </root>

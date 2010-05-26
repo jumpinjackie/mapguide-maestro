@@ -136,4 +136,7 @@
   <data name="$this.Text" type="System.String">
     <value>Naviguer les données non gérées</value>
   </data>
+  <data name="CancelBtn.Text" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
 </root>

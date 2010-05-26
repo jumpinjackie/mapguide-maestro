@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoundsDecodeError" xml:space="preserve">
-    <value>Failed to decode the current bounds,
-you may enter new bounds, and these will replace the current.
-Error message: {0}</value>
+    <value>Impossible de décoder les limites actuelles,
+Vous pouvez entrer de nouvelles limites pour remplacer celles actuelles.
+Message d'erreur : {0}</value>
     <comment>An error message that is displayed when the bounds fails to parse</comment>
   </data>
   <data name="IncompleBoundsError" xml:space="preserve">
@@ -148,8 +148,8 @@ Error message: {0}</value>
     <comment>An error message that indicates that there was no bound tag</comment>
   </data>
   <data name="NumbersInRegionalError" xml:space="preserve">
-    <value>The values you have entered appears to be in local regional format, but are required in US regional format.
-Do you want to convert the values?</value>
+    <value>Les valeurs que vous avez entrées semblent être au format régional local, mais doivent être en format régional des États-Unis.
+Voulez-vous convertir les valeurs?</value>
     <comment>A message that is displayed when it is detected that the user enters number in local format</comment>
   </data>
   <data name="UseInvalidCoordinatesWarning" xml:space="preserve">

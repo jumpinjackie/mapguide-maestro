@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CloseWithoutSavingWarning" xml:space="preserve">
-    <value>Do you want to close this dialog and discard all changes?</value>
+    <value>Voulez-vous fermer cette boîte de dialogue et rejeter toutes les modifications?</value>
     <comment>A warning message that is displayed if the user attempts to close the dialog without saving changes</comment>
   </data>
 </root>

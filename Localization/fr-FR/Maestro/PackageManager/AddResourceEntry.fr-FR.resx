@@ -154,4 +154,11 @@
   <data name="$this.Text" type="System.String">
     <value>Ajouter une ressource</value>
   </data>
+  <data name="BrowseFileDialog.Filter" xml:space="preserve">
+    <value>Tous les fichiers (*.*)|*.*</value>
+  </data>
+  <data name="BrowseFileDialog.Title" xml:space="preserve">
+    <value>Sélectionnez le fichier à utiliser
+</value>
+  </data>
 </root>

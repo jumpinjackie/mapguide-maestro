@@ -118,67 +118,202 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="CancelBtn.Text" type="System.String">
-    <value>Annuler</value>
+  <data name="HeaderFilepath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 8</value>
   </data>
-  <data name="OKBtn.Text" type="System.String">
-    <value>OK</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Éditeur de paquetage</value>
   </data>
-  <data name="AddFolderButton.ToolTipText" type="System.String">
-    <value>Ajouter un nouveau dossier</value>
-  </data>
-  <data name="AddResourceButton.ToolTipText" type="System.String">
-    <value>Ajouter une nouvelle ressource au paquetage</value>
-  </data>
-  <data name="DeleteResourceButton.ToolTipText" type="System.String">
-    <value>Supprimer l'item sélectionné</value>
-  </data>
-  <data name="columnHeader1.Text" type="System.String">
-    <value>Nom de fichier</value>
-  </data>
-  <data name="columnHeader2.Text" type="System.String">
+  <data name="columnHeader2.Text" xml:space="preserve">
     <value>Type de contenu</value>
   </data>
-  <data name="columnHeader3.Text" type="System.String">
-    <value>Type de données</value>
-  </data>
-  <data name="columnHeader5.Text" type="System.String">
+  <data name="columnHeader5.Text" xml:space="preserve">
     <value>Fichier</value>
   </data>
-  <data name="AddResourceData.ToolTipText" type="System.String">
-    <value>Ajouter un fichier</value>
-  </data>
-  <data name="DeleteResourceData.ToolTipText" type="System.String">
-    <value>Supprimer le fichier sélectionné</value>
-  </data>
-  <data name="EditResourceData.ToolTipText" type="System.String">
-    <value>Éditer les métadonnées du fichier sélectionné</value>
-  </data>
-  <data name="SaveResourceData.ToolTipText" type="System.String">
-    <value>Enregister le fichier sélectionné</value>
-  </data>
-  <data name="label3.Text" type="System.String">
-    <value>Fichiers de données</value>
-  </data>
-  <data name="ContentFilePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110,  32</value>
-  </data>
-  <data name="ContentFilePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154,  20</value>
-  </data>
-  <data name="HeaderFilepath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110,  8</value>
-  </data>
-  <data name="HeaderFilepath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154,  20</value>
-  </data>
-  <data name="label2.Text" type="System.String">
+  <data name="label2.Text" xml:space="preserve">
     <value>Fichier de contenu</value>
   </data>
-  <data name="label1.Text" type="System.String">
+  <data name="DeleteResourceButton.ToolTipText" xml:space="preserve">
+    <value>Supprimer l'item sélectionné</value>
+  </data>
+  <data name="AddFolderButton.ToolTipText" xml:space="preserve">
+    <value>Ajouter un nouveau dossier</value>
+  </data>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>Nom de fichier</value>
+  </data>
+  <data name="columnHeader3.Text" xml:space="preserve">
+    <value>Type de données</value>
+  </data>
+  <data name="DeleteResourceData.ToolTipText" xml:space="preserve">
+    <value>Supprimer le fichier sélectionné</value>
+  </data>
+  <data name="SaveResourceData.ToolTipText" xml:space="preserve">
+    <value>Enregister le fichier sélectionné</value>
+  </data>
+  <data name="CancelBtn.Text" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="HeaderFilepath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 20</value>
+  </data>
+  <data name="AddResourceData.ToolTipText" xml:space="preserve">
+    <value>Ajouter un fichier</value>
+  </data>
+  <data name="EditResourceData.ToolTipText" xml:space="preserve">
+    <value>Éditer les métadonnées du fichier sélectionné</value>
+  </data>
+  <data name="AddResourceButton.ToolTipText" xml:space="preserve">
+    <value>Ajouter une nouvelle ressource au paquetage</value>
+  </data>
+  <data name="OKBtn.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ContentFilePath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 20</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Fichiers de données</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
     <value>Fichier d'en-tête</value>
   </data>
-  <data name="$this.Text" type="System.String">
-    <value>Éditeur de paquetage</value>
+  <data name="ContentFilePath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 32</value>
+  </data>
+  <data name="BrowseResourceDataFile.Title" xml:space="preserve">
+    <value>Sélectionnez un fichier à ajouter</value>
+  </data>
+  <data name="AddResourceButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIISURBVDhPfZLfS1NhHMb9VxwpCRGWF6VJpBBRhN1EV2I3
+        4sbpykWFRZZJGEFKugILnP0QJ+FYGtTFXLR2QMYs2fK4UeqOs4GyqRx0asEefV47y+M59cID7+F838/7
+        fZ73W1S0syJfFASDMmR53FL8R/n9AbDetHgwn89jbf3Xf0WA1/vWDCGAh7OrWwZpOQ2Zlc0/2kAg8AlK
+        QjVD9gLmfy4j8WNBFKrptcKe3z7faEGGTqwAhGRWNsB8CJ1TlwSMWSTVtDGPfwF48Gs0UbBFOxOT08Ku
+        IVBSN7d+i0LdAm+jhf2AcPSbNUAPcS+Ae1qIfZ9B9/unuDZ0HU73VYSUsLkDK8BiJgfPmBdnXLW4G7qJ
+        Z1NP8GiiAxdf18HRY//7nLSgA/TkaYHtVnZWwClLuB9rhZKewmD8JVoizajtr7IGsG0+GdXu6UDVQDns
+        4w1oCUvIalkBuBJuxLl3NbjQc3oXonfAlHVAVFHh6JNQ4SmDnAyKw5xWDhf3dv9lHHpwYBfACaMFvvvs
+        fBaTsTkh54sbODJQKm7vjbdjNbeMj6kRdMXu4OzoSWHP0AH9U7MLmpBP/ozDLhvqQqVwxMuwqKXgTt7C
+        pchBHBsswe03reYO2AXT18Wi6lfFkKaL4U7Xo23mBM5/sOHUw+PGEGmD4oTt173nbSKwym4bah4fheRq
+        wvCITwC2AbpY3noXadHQAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 13</value>
+  </data>
+  <data name="BrowseResourceDataFile.Filter" xml:space="preserve">
+    <value>Tous les fichiers (*.*)|*.*</value>
+  </data>
+  <data name="AddResourceData.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIISURBVDhPfZLfS1NhHMb9VxwpCRGWF6VJpBBRhN1EV2I3
+        4sbpykWFRZZJGEFKugILnP0QJ+FYGtTFXLR2QMYs2fK4UeqOs4GyqRx0asEefV47y+M59cID7+F838/7
+        fZ73W1S0syJfFASDMmR53FL8R/n9AbDetHgwn89jbf3Xf0WA1/vWDCGAh7OrWwZpOQ2Zlc0/2kAg8AlK
+        QjVD9gLmfy4j8WNBFKrptcKe3z7faEGGTqwAhGRWNsB8CJ1TlwSMWSTVtDGPfwF48Gs0UbBFOxOT08Ku
+        IVBSN7d+i0LdAm+jhf2AcPSbNUAPcS+Ae1qIfZ9B9/unuDZ0HU73VYSUsLkDK8BiJgfPmBdnXLW4G7qJ
+        Z1NP8GiiAxdf18HRY//7nLSgA/TkaYHtVnZWwClLuB9rhZKewmD8JVoizajtr7IGsG0+GdXu6UDVQDns
+        4w1oCUvIalkBuBJuxLl3NbjQc3oXonfAlHVAVFHh6JNQ4SmDnAyKw5xWDhf3dv9lHHpwYBfACaMFvvvs
+        fBaTsTkh54sbODJQKm7vjbdjNbeMj6kRdMXu4OzoSWHP0AH9U7MLmpBP/ozDLhvqQqVwxMuwqKXgTt7C
+        pchBHBsswe03reYO2AXT18Wi6lfFkKaL4U7Xo23mBM5/sOHUw+PGEGmD4oTt173nbSKwym4bah4fheRq
+        wvCITwC2AbpY3noXadHQAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="DeleteResourceData.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAH0SURBVDhPfZPfS1NhHMb9XwQRFIQ0iALBm91MUSLEsCtv
+        xIwof4AXw0GtQU2U6EJYXRVCEOqJijhsHPTIgSn+wsliMLUjUyynljq32dyTz3t4546bHvjwvudwvs/5
+        Ps/7PWVl59f8YgS6bsAwQjbkM65EVQPg+0UXC9OZfzhOnl5LMKjh66RSLEIBFu/9yeRJHKRgkRbPuNe0
+        aUSiJiYmPttFCgU2t/YRjcUFLOLKIqIoX/LYREoJsIBizIfr+uaeEJvSQ/hpboN28llc1cGvxAkWln8U
+        2EqLe9q1CTBhhkivhRa4X1qJ2nJhRyUFZIhSgBbM7WNhIRZZQ8jvx4zbhe8uF2Kz88UdXBaQIRrjCrR7
+        Tuz4nuHowzvsj45gqaMNn552X2RAC1KAX5WnEF5Yheq8jb/ufpy9eYmc/7VYU14XwncdpQVoQR6b6vNh
+        o7Ee2YFHyL1yIzfssRjsxW57E4L3my0R2QGHRgqsREyoPU+w47iFA11DMrFr43f/QwTu1FgCnDBa4ODw
+        vJfDGwIGZjpu4MjTh5P3IxZj57wdEh3Qnq0D+ifr8UNBSDUwV1+DVGstcl11ebIPbgph44W7uAN2wQGS
+        6N7nCDuqkeyoRPZxOTKdFYi3VENxNthDpA3CCbvMR68H39qaEGioEm3zCOVf+R87WeXQgnPczgAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
+  <data name="DeleteResourceButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAH0SURBVDhPfZPfS1NhHMb9XwQRFIQ0iALBm91MUSLEsCtv
+        xIwof4AXw0GtQU2U6EJYXRVCEOqJijhsHPTIgSn+wsliMLUjUyynljq32dyTz3t4546bHvjwvudwvs/5
+        Ps/7PWVl59f8YgS6bsAwQjbkM65EVQPg+0UXC9OZfzhOnl5LMKjh66RSLEIBFu/9yeRJHKRgkRbPuNe0
+        aUSiJiYmPttFCgU2t/YRjcUFLOLKIqIoX/LYREoJsIBizIfr+uaeEJvSQ/hpboN28llc1cGvxAkWln8U
+        2EqLe9q1CTBhhkivhRa4X1qJ2nJhRyUFZIhSgBbM7WNhIRZZQ8jvx4zbhe8uF2Kz88UdXBaQIRrjCrR7
+        Tuz4nuHowzvsj45gqaMNn552X2RAC1KAX5WnEF5Yheq8jb/ufpy9eYmc/7VYU14XwncdpQVoQR6b6vNh
+        o7Ee2YFHyL1yIzfssRjsxW57E4L3my0R2QGHRgqsREyoPU+w47iFA11DMrFr43f/QwTu1FgCnDBa4ODw
+        vJfDGwIGZjpu4MjTh5P3IxZj57wdEh3Qnq0D+ifr8UNBSDUwV1+DVGstcl11ebIPbgph44W7uAN2wQGS
+        6N7nCDuqkeyoRPZxOTKdFYi3VENxNthDpA3CCbvMR68H39qaEGioEm3zCOVf+R87WeXQgnPczgAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
+  <data name="SaveResourceData.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAHuSURBVDhPrZPLS1tREMb9WyyCLSgRXLVELEhEJCr1VUVR
+        Wogv3OlCpMVutJagGxGkio+VqIixVhM0D0OMBqK2tfGRG6M1EY2pr4CPhfp5ZyS5icaVXvg4c8988ztz
+        Bk5MzHN8FfUjeFcxgcpGM6o+WVH92RZVlCMPeeuaNAidrfzwA46N8witCJcI1/18ZvmoBCis1cNsP2FZ
+        f52GVoqD/+E5iguqpyRAlsqIMcMJJmb98B1ccSce7w1OAxdwuv0Qto6x8veK9/SWffYqP+okgKLchO7R
+        I/Rr9ti0YD+DY+0c+/4A9PNu2Ja9MFsDEIRr6Ey77E0rDQOkFBnxtecAbf07bJrSH2NG7IYKtSYXa0hz
+        yF0Mj2+z93WOQepAppyGqsmLhnYXn0SnRMjohU7UpNaH7wMb7E3M/CkBXqbrkJTvgrzEjs5eD9w7/7H0
+        xw3H+p0opr3OrjXU1M9Dli8gXhEF8Oa9DeqOfzy4VecuFwbl3NzDt9bfjwNkuesgQEv7NlYFX0QxQQhI
+        AFWt5WEH1E5y3jIDmtWiWQRQwX0FAYk5S5FXIEBC9iJDUossUJQt3K2lcyGlF8/ibe4MT5+8camD0hBj
+        5X14lWEAkWlAj0q8JhWT94W8VwLQwyAIUUnUUTQF8+T9otZKgKe86FtKqT3KP+87sAAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 13</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 13</value>
+  </data>
+  <data name="AddFolderButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIgSURBVDhP5ZL9S1NRGMf3p9QyMbAXiwovvQqJGlqEZEgt
+        yB8WwyytjJmWoaFoQ2vTtMbWfMlRoZgJviwcsqHetmmM1cCEhTJZS9vu3c7WDfbt7pTmzR/6AzrwgQOH
+        5/Oc50Um+z/OrL4Ma7CPSzHdfh2bKucsGqyx8XFWdwmE9yIeC1BCZBXEVi8VhMfK8J0flCAETYh9eQEh
+        +AqR5QFElgbX+TZeLRXwE9cghE0UsqqHy1qFd5bKddjhciR5P3oDgl+Pr/1XpILoTA0Njn1+gCB7Cy6z
+        As7nF+DsKqa8NZxDtTYHytajqO0pxJC2WCog7iYIAQPC/bliH3IoyXtoOAvjRgZ5LQdQa6vCE08bNM4G
+        FPbko/5pxR9JbKEd8U9NiIycAj+1H5x1N8Jj6fANpIFpTkGFXYX77jv44Pegz9sFtaMcWc8YmA2/S4kv
+        mRC1liDqOUMFvH0vFeg6toHp3QPltAJqVoUVboUKStkS5L05jnxd9q9f0E6L2cm8gkqicwWUmx07kdGb
+        CrtvkgYnEglwhKN3peUi0htTICNTzYjPa0FcV8WRiZMQe5HsdJIGcxEO9m2n2Tu9dXQHJhZfo8V9F7lD
+        R5Cp2ScKxKWIjBbRef8ITUpwzHVil06OAlsqLnt3IMAtwui7jbOONCqueanevJF/r2hjtxKHurdC9XEL
+        jP7zuLfA4OSIHNmth/8dvFF2uu0EMh/JcexhhiTzT7buzCsYIAZ2AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="EditResourceData.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAITSURBVDhPrZPfS1NxGMb9WwqhgmRBCAWroFiEzKKwUByO
+        BI3Ai8IupCi7CL2oq+ZFkRoZMtRE2dqPfsxaKs7cknmSo/OkM1tNN5xTV9701POG57iSburAw5fz/X7e
+        5334vucUFPyPp/ZKD07XunHhahAXr4f+KjJk6xv7ofe2nndhUssgOp3LU2wuC+qPM3UFJfZew+Bc3UsE
+        xzKikehXhJUVUSb7Dan0MobGN+R9eDync6zRE5TWDKAvkIE7uI74xySSqSxULSUG1PTMvOwpakIYstZq
+        v2Fgsb/Cva5FPHKt4cNsAqtrGyIWc13O/pIyOYu2/pywx2xbDA6VD6C5dVEOvIEpKWLXTtcCuj1xzM1/
+        lgS9nvdwdC4Jaz7rMxKYrM/RcEfVoxK+79TQ0AJRn0/FQnJd9DasoO6WhqKSp4bB7uN+WKoj8D4blJgE
+        m1rGUFr/XdTRNSLTGA5F8djpxoGKCeyy/GZgKovhYNUSHA9eCDwamUKTYxB3W18jMhGHEkvL7IttKZDd
+        1sBSo0kXzp1T4MpC6p2aloRm+yeYzqj5BnSj6/6KL5LA5XmDSze80nkopOByo0+KrzX7UVyZEIPCI07j
+        Dmiw92QY+8pmBGAXpmFR9xOfvscGbEQ2z2CH+SH2nAig6FREgE0drRrFYVvY2PvZmcVkd5rbjQS8HJrQ
+        lWKi7bR5Tvbm7S3fwb/80T8A7vlA4gQCq9EAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="SaveResourceDataFile.Filter" xml:space="preserve">
+    <value>Tous les fichiers (*.*)|*.*</value>
+  </data>
+  <data name="SaveResourceDataFile.Title" xml:space="preserve">
+    <value>Choisir où sauvegarder le fichier</value>
+  </data>
+  <data name="SavePackageDialog.Filter" xml:space="preserve">
+    <value>Paquetages MapGuide (*.mgp)|*.mgp|Fichiers Zip (*.zip)|*.zip|Tous les fichiers (*.*)|*.*</value>
+  </data>
+  <data name="SavePackageDialog.Title" xml:space="preserve">
+    <value>Sélectionnez l'endroit où stocker le fichier</value>
+  </data>
+  <data name="InsertDeleteCommands.Text" xml:space="preserve">
+    <value>Supprimer les cibles avant la restauration</value>
   </data>
 </root>

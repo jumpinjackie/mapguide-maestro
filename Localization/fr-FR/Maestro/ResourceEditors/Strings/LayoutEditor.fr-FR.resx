@@ -122,7 +122,7 @@
     <comment>An error message that is displayed if the assembly fails to load</comment>
   </data>
   <data name="BrowserLaunchError" xml:space="preserve">
-    <value>Failed to launch browser: {0}</value>
+    <value>Impossible de lancer le navigateur : {0}</value>
     <comment>An error message that is displayed if the browser launch fails</comment>
   </data>
   <data name="CommandNameLookupError" xml:space="preserve">
@@ -138,7 +138,7 @@
     <comment>The default name for a new submenu</comment>
   </data>
   <data name="SeparatorName" xml:space="preserve">
-    <value>- Separator</value>
+    <value>- Séparateur</value>
     <comment>The name displayed for a seperator in the command list</comment>
   </data>
   <data name="SubMenuInTaskBarError" xml:space="preserve">
@@ -146,7 +146,7 @@
     <comment>An error message that is displayed if the user attempts to insert a submenu in the taskbar</comment>
   </data>
   <data name="UnsavedLayoutPreview" xml:space="preserve">
-    <value>The Web Layout has unsaved changes. If you do not save, the original version of the Web Layout will be shown. Save first before viewing?</value>
+    <value>La mise en page Web a des changements non sauvegardés. Si vous ne les sauvegardez pas, alors la version originale de la mise en page Wep sera affichée. Désirez vous sauvegarder avant de visualiser?</value>
     <comment>en "View in browser" is clicked with unsaved changes</comment>
   </data>
 </root>

@@ -122,20 +122,20 @@
     <comment>The name of a folder resource type</comment>
   </data>
   <data name="InvalidNodeInternalError" xml:space="preserve">
-    <value>Invalid node passed to reload</value>
+    <value>Noeud invalide passé à recharger</value>
     <comment>An internal error message that is displayed if an unexpected node is encountered</comment>
   </data>
   <data name="PublishedTooltip" xml:space="preserve">
-    <value>{0} published: {1}</value>
+    <value>{0} a publié : {1}</value>
     <comment>An extra string that is added to the tooltip if the item is a LayerDefinition or FeatureSource.
 {0} is the service type, either WMS or WFS
 {1} is either true or false</comment>
   </data>
   <data name="ResourceTooltip" xml:space="preserve">
-    <value>Resource name: {0}
-Resource type: {1}
-Created: {2}
-Last modified: {3}</value>
+    <value>Nom de ressource : {0}
+Type de ressource : {1}
+Création : {2}
+Dernière modification : {3}</value>
     <comment>The tooltip displayed for all items.
 {0} is the resource name
 {1} is the resource type, eg LayerDefinition
@@ -143,7 +143,7 @@ Last modified: {3}</value>
 {3} is the time at which the resource was last modified</comment>
   </data>
   <data name="UnknownNodeInternalError" xml:space="preserve">
-    <value>Unknown node passed to reload</value>
+    <value>Noeud inconnu passé à recharger</value>
     <comment>An internal error message that is displayed if an unexpected node is encountered</comment>
   </data>
 </root>

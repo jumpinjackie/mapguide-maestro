@@ -117,26 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConnectionType.Items2" xml:space="preserve">
+    <value>DSN (ODBC)</value>
+  </data>
+  <data name="ConnectionType.Items3" xml:space="preserve">
+    <value>Type de base de données connu</value>
+  </data>
+  <data name="ConnectionType.Items1" xml:space="preserve">
+    <value>Fichier sur le serveur (Non géré)</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Text" type="System.String">
-    <value>Type de connexion</value>
+  <data name="RefreshButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 24</value>
   </data>
-  <data name="ConnectionType.Items" type="System.String">
-    <value>
-    Fichier interne (Managed)
-    Fichier sur le serveur (Unmanaged)
-    DSN (ODBC)
-    Type de base de données connu
-    Chaîne de connexion personnalisée
-    </value>
+  <data name="ConnectionType.Items4" xml:space="preserve">
+    <value>Chaîne de connexion personnalisée</value>
   </data>
-  <data name="label2.Text" type="System.String">
-    <value>Chaîne de connexion</value>
-  </data>
-  <data name="RefreshButton.Text" type="System.String">
+  <data name="RefreshButton.Text" xml:space="preserve">
     <value>Reconstruire le schéma</value>
   </data>
-  <data name="ConfigureButton.Text" type="System.String">
+  <data name="RefreshButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>406, 328</value>
+  </data>
+  <data name="ConnectionType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>175, 0</value>
+  </data>
+  <data name="ConnectionType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>374, 21</value>
+  </data>
+  <data name="ConfigureButton.Text" xml:space="preserve">
     <value>Configurer les colonnes</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Chaîne de connexion</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Type de connexion</value>
+  </data>
+  <data name="ConnectionType.Items" xml:space="preserve">
+    <value>Fichier interne (Géré)</value>
+  </data>
+  <data name="ConfigureButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 24</value>
+  </data>
+  <data name="ConnectionString.Text" xml:space="preserve">
+    <value>Chaîne de connexion</value>
   </data>
 </root>

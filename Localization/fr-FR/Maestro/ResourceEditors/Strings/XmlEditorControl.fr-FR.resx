@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ExternalEditorError" xml:space="preserve">
-    <value>Failed to start external editor, most likely this means that there is no external editor associated with xml files.
-Error message was: {0}</value>
+    <value>Impossible de démarrer l'éditeur externe, le plus probable, cela signifie qu'il n'y a pas un éditeur externe associé aux fichiers XML.
+Message d'erreur : {0}</value>
     <comment>An error message that is displayed when the external xml editor fails to launch</comment>
   </data>
   <data name="SerializeError" xml:space="preserve">
-    <value>The entered xml failed to serialize into an object.
-Error message is: {0}</value>
+    <value>Le XML entré n'a pu être converti en objet.
+Message d'erreur : {0}</value>
     <comment>An error message that is displayed if the entered xml is invalid</comment>
   </data>
   <data name="UnexpectedTypeError" xml:space="preserve">
-    <value>Item did not correspond to the desired type.
-Xml gave type: {0}
-Expected type was: {1}</value>
+    <value>L'item ne correspond pas au type désiré
+Xml donne le type : {0}
+Le type prévu est : {1}</value>
     <comment>An error message that is displayed if the entered xml serializes to an incorrect type</comment>
   </data>
 </root>

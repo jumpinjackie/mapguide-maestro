@@ -121,4 +121,16 @@
   <data name="label1.Text" type="System.String">
     <value>Type de base de données</value>
   </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 16</value>
+  </data>
+  <data name="DatabaseType.Items4" xml:space="preserve">
+    <value>Oracle (pilote Microsoft)</value>
+  </data>
+  <data name="DatabaseType.Items5" xml:space="preserve">
+    <value>Oracle (pilote Oracle)</value>
+  </data>
+  <data name="DatabaseType.Items1" xml:space="preserve">
+    <value>SQL Server</value>
+  </data>
 </root>

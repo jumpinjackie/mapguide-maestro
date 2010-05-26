@@ -139,4 +139,21 @@
   <data name="$this.Text" type="System.String">
     <value>Éditeur d'expression</value>
   </data>
+  <data name="btnSpatial.Text" xml:space="preserve">
+    <value>Spatial</value>
+  </data>
+  <data name="btnDistance.Text" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="btnCondition.Text" xml:space="preserve">
+    <value>Condition</value>
+  </data>
+  <data name="ColumnName.ToolTipText" xml:space="preserve">
+    <value>Sélectionner la colonne pour la lecture des valeurs</value>
+  <data name="LookupValues.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour afficher les valeurs de la colonne sélectionnée</value>
+  </data></data>
+  <data name="LookupValues.ToolTipText" xml:space="preserve">
+    <value>Cliquer pour afficher les valeurs de la colonne sélectionnée</value>
+  </data>
 </root>

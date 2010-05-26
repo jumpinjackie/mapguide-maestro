@@ -169,4 +169,7 @@
   <data name="groupBox2.Text" type="System.String">
     <value>Générer les échelles</value>
   </data>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>Échelle</value>
+  </data>
 </root>

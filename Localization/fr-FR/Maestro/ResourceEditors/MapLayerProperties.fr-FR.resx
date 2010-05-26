@@ -133,6 +133,9 @@
   <data name="label12.Text" type="System.String">
     <value>Étiquette de légende</value>
   </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 16</value>
+  </data>
   <data name="chkLayerExpand.Text" type="System.String">
     <value>La couche est développée dans la légende (si thème)</value>
   </data>

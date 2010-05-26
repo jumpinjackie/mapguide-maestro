@@ -154,6 +154,12 @@
   <data name="WMSClearHeaderButton.Text" type="System.String">
     <value>Effacer toutes les données WMS</value>
   </data>
+  <data name="WMSClearHeaderButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150,325</value>
+  </data>
+  <data name="WMSClearHeaderButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185,23</value>
+  </data>
   <data name="label4.Text" type="System.String">
     <value>Limites</value>
   </data>
@@ -179,7 +185,7 @@
     <value>Métadonnées</value>
   </data>
   <data name="label3.Text" type="System.String">
-    <value>Mots-clé</value>
+    <value>Mots-clés</value>
   </data>
   <data name="groupBox1.Text" type="System.String">
     <value>Description</value>
@@ -189,6 +195,12 @@
   </data>
   <data name="WFSClearHeaderButton.Text" type="System.String">
     <value>Effacer toutes les données WFS</value>
+  </data>
+  <data name="WFSClearHeaderButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150,325</value>
+  </data>
+  <data name="WFSClearHeaderButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185,23</value>
   </data>
   <data name="label12.Text" type="System.String">
     <value>Autre SRS</value>
@@ -215,7 +227,7 @@
     <value>Métadonnées</value>
   </data>
   <data name="label9.Text" type="System.String">
-    <value>Mots-clé</value>
+    <value>Mots-clés</value>
   </data>
   <data name="groupBox3.Text" type="System.String">
     <value>Description</value>
@@ -226,10 +238,92 @@
   <data name="ClearHeaderButton.Text" type="System.String">
     <value>Effacer toutes les métadonnées</value>
   </data>
+  <data name="ClearHeaderButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>165,328</value>
+  </data>
+  <data name="ClearHeaderButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180,23</value>
+  </data>
   <data name="CustomTab.Text" type="System.String">
     <value>Métadonnées</value>
   </data>
   <data name="$this.Text" type="System.String">
     <value>Propriétés des ressources</value>
+  </data>
+  <data name="ItemValue.HeaderText" xml:space="preserve">
+    <value>Valeur
+</value>
+  </data>
+  <data name="ItemKey.HeaderText" xml:space="preserve">
+    <value>Clé</value>
+  </data>
+  <data name="WFSTitle.ToolTip" xml:space="preserve">
+    <value>Ce champ contient le titre de la couche</value>
+  </data>
+  <data name="ReferenceTab.Text" xml:space="preserve">
+    <value>Références</value>
+  </data>
+  <data name="UsersAndGroups.ToolTip" xml:space="preserve">
+    <value>Cliquer à droite pour changer les droits d'accès</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Ressource ID</value>
+  </data>
+  <data name="InReferences.Text" xml:space="preserve">
+    <value>Cette ressource est référencée par</value>
+  </data>
+  <data name="OutReferences.Text" xml:space="preserve">
+    <value>Cette ressource référence</value>
+  </data>
+  <data name="WFSKeywords.ToolTip" xml:space="preserve">
+    <value>Ce champ contient des mots-clés de recherche, séparés par des espaces</value>
+  </data>
+  <data name="AutoGenerateWMSBounds.ToolTip" xml:space="preserve">
+    <value>Cliquer pour lire les limites actuelles de la source de données</value>
+  </data>
+  <data name="WMSOpaque.ToolTip" xml:space="preserve">
+    <value>Cette case à cocher détermine si la couche doit être rendue opaque</value>
+  </data>
+  <data name="WMSQueryable.ToolTip" xml:space="preserve">
+    <value>Cette case à cocher détermine si la couche peut être interrogée pour les infobulles et liens</value>
+  </data>
+  <data name="WMSAbstract.ToolTip" xml:space="preserve">
+    <value>Ce champ contient un résumé qui décrit la couche</value>
+  </data>
+  <data name="WMSMetadata.ToolTip" xml:space="preserve">
+    <value>Ce champ contient des métadonnées lisibles par une personne</value>
+  </data>
+  <data name="WMSKeyWords.ToolTip" xml:space="preserve">
+    <value>Ce champ contient des mots-clés de recherche, séparés par des espaces</value>
+  </data>
+  <data name="WMSTitle.ToolTip" xml:space="preserve">
+    <value>Ce champ contient le titre de la couche</value>
+  </data>
+  <data name="WMSAvalible.ToolTip" xml:space="preserve">
+    <value>Cette case à cocher contrôle la disponibilité de la couche</value>
+  </data>
+  <data name="AutoGenerateWFSBounds.ToolTip" xml:space="preserve">
+    <value>Cliquer pour lire les limites actuelles de la source de données</value>
+  </data>
+  <data name="WMSBounds.ToolTip" xml:space="preserve">
+    <value>Cette valeur est l'élément XML des limites qui est insérée directement dans la sortie XML. Utilisez le bouton d'édition (...) si vous êtes  mal à l'aise de modifier la valeur manuellement.</value>
+  </data>
+  <data name="WFSPrimarySRS.ToolTip" xml:space="preserve">
+    <value>Cette zone contient le système de référence spatiale primaire, généralement dans le format EPSG: xxxx</value>
+  </data>
+  <data name="WFSOtherSRS.ToolTip" xml:space="preserve">
+    <value>Cette zone contient le système de référence spatiale secondaire, généralement dans le format EPSG: xxxx</value>
+  </data>
+  <data name="WFSAvalible.ToolTip" xml:space="preserve">
+    <value>Cette case à cocher contrôle la disponibilité de la couche</value>
+  </data>
+  <data name="WFSMetadata.ToolTip" xml:space="preserve">
+    <value>Ce champ contient des métadonnées lisibles par une personne</value>
+  </data>
+  <data name="WFSAbstract.ToolTip" xml:space="preserve">
+    <value>Ce champ contient un résumé qui décrit la couche</value>
+  </data>
+  <data name="WFSBounds.ToolTip" xml:space="preserve">
+    <value>Cette valeur est l'élément XML des limites qui est insérée directement dans la sortie XML. Utilisez le bouton d'édition (...) si vous êtes  mal à l'aise de modifier la valeur manuellement.</value>
   </data>
 </root>

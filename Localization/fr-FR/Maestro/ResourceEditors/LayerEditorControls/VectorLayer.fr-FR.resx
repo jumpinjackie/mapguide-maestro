@@ -161,12 +161,18 @@
     <value>Trier la plage d'échelle par échelle d'affichage</value>
   </data>
   <data name="OpenInWindowButton.ToolTipText" type="System.String">
-    <value>Afficher la configuration d'échelle dans une fenêtre séparée</value>
+    <value>Afficher la configuration de style dans une fenêtre séparée</value>
   </data>
   <data name="CloseWindowButton.ToolTipText" type="System.String">
-    <value>Cliquer ici pour replacer le control dans l'éditeur</value>
+    <value>Cliquer ici pour replacer le contrôle dans l'éditeur</value>
   </data>
   <data name="ScaleRangeGroup.Text" type="System.String">
     <value>Style de couche</value>
+  </data>
+  <data name="dataGridTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="dataGridTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Affichage</value>
   </data>
 </root>

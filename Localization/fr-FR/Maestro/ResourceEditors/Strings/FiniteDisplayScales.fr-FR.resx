@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="OverwriteConfirmation" xml:space="preserve">
-    <value>Do you want to overwrite the existing scales?</value>
+    <value>Voulez-vous remplacer les échelles existantes?</value>
     <comment>An error message that is displayed when the user attempts to overwrite the existing finite display scales</comment>
   </data>
   <data name="ScaleCountLabel" xml:space="preserve">
-    <value>{0} scales</value>
+    <value>{0} échelles</value>
     <comment>A label that displays how many scales there are</comment>
   </data>
 </root>

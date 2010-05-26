@@ -121,4 +121,7 @@
   <data name="$this.Text" type="System.String">
     <value>Éditer l'affichage des échelles</value>
   </data>
+  <data name="CancelBtn.Text" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
 </root>

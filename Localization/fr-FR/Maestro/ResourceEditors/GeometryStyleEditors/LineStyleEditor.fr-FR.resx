@@ -130,4 +130,7 @@
   <data name="displayLine.Text" type="System.String">
     <value>Affichage de la bordure</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Transparence</value>
+  </data>
 </root>
