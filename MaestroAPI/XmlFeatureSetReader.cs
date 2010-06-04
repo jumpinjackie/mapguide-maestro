@@ -124,7 +124,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         protected override void CloseInternal()
         {
-            throw new NotImplementedException();
+            
         }
 
         public override int Depth
@@ -159,64 +159,72 @@ namespace OSGeo.MapGuide.MaestroAPI
                     throw new Exception("Bad document, multiple: " + p["Name"].InnerText + " values in a single feature");
                 m_nulls[ordinal] = false;
 
-                if (parent.Columns[ordinal].Type == typeof(string) || parent.Columns[ordinal].Type == Utility.UnmappedType)
-                    m_items[ordinal] = p["Value"].InnerText;
-                else if (parent.Columns[ordinal].Type == typeof(int))
-                    m_items[ordinal] = XmlConvert.ToInt32(p["Value"].InnerText);
-                else if (parent.Columns[ordinal].Type == typeof(long))
-                    m_items[ordinal] = XmlConvert.ToInt64(p["Value"].InnerText);
-                else if (parent.Columns[ordinal].Type == typeof(short))
-                    m_items[ordinal] = XmlConvert.ToInt16(p["Value"].InnerText);
-                else if (parent.Columns[ordinal].Type == typeof(double))
-                    m_items[ordinal] = XmlConvert.ToDouble(p["Value"].InnerText);
-                else if (parent.Columns[ordinal].Type == typeof(bool))
-                    m_items[ordinal] = XmlConvert.ToBoolean(p["Value"].InnerText);
-                else if (parent.Columns[ordinal].Type == typeof(DateTime))
+                XmlNode valueNode = p["Value"];
+                if (valueNode == null)
                 {
-                    try
-                    {
-                        //Fix for broken ODBC provider
-                        string v = p["Value"].InnerText;
-
-                        if (v.Trim().ToUpper().StartsWith("TIMESTAMP"))
-                            v = v.Trim().Substring("TIMESTAMP".Length).Trim();
-                        else if (v.Trim().ToUpper().StartsWith("DATE"))
-                            v = v.Trim().Substring("DATE".Length).Trim();
-                        else if (v.Trim().ToUpper().StartsWith("TIME"))
-                            v = v.Trim().Substring("TIME".Length).Trim();
-
-                        if (v != p["Value"].InnerText)
-                        {
-                            if (v.StartsWith("'"))
-                                v = v.Substring(1);
-                            if (v.EndsWith("'"))
-                                v = v.Substring(0, v.Length - 1);
-
-                            m_items[ordinal] = DateTime.Parse(v, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.NoCurrentDateDefault);
-                        }
-                        else
-                            m_items[ordinal] = XmlConvert.ToDateTime(v, XmlDateTimeSerializationMode.Unspecified);
-                    }
-                    catch (Exception ex)
-                    {
-                        //Unfortunately FDO supports invalid dates, such as the 30th feb
-                        m_nulls[ordinal] = true;
-                        m_items[ordinal] = ex;
-                    }
-                }
-                else if (parent.Columns[ordinal].Type == Utility.GeometryType)
-                {
-                    m_items[ordinal] = p["Value"].InnerText;
-                    if (string.IsNullOrEmpty(p["Value"].InnerText))
-                    {
-                        m_nulls[ordinal] = true;
-                        m_items[ordinal] = null;
-                    }
-                    else
-                        m_lazyloadGeometry[ordinal] = true;
+                    m_nulls[ordinal] = true;
                 }
                 else
-                    throw new Exception("Unknown type: " + parent.Columns[ordinal].Type.FullName);
+                {
+                    if (parent.Columns[ordinal].Type == typeof(string) || parent.Columns[ordinal].Type == Utility.UnmappedType)
+                        m_items[ordinal] = valueNode.InnerText;
+                    else if (parent.Columns[ordinal].Type == typeof(int))
+                        m_items[ordinal] = XmlConvert.ToInt32(valueNode.InnerText);
+                    else if (parent.Columns[ordinal].Type == typeof(long))
+                        m_items[ordinal] = XmlConvert.ToInt64(valueNode.InnerText);
+                    else if (parent.Columns[ordinal].Type == typeof(short))
+                        m_items[ordinal] = XmlConvert.ToInt16(valueNode.InnerText);
+                    else if (parent.Columns[ordinal].Type == typeof(double))
+                        m_items[ordinal] = XmlConvert.ToDouble(valueNode.InnerText);
+                    else if (parent.Columns[ordinal].Type == typeof(bool))
+                        m_items[ordinal] = XmlConvert.ToBoolean(valueNode.InnerText);
+                    else if (parent.Columns[ordinal].Type == typeof(DateTime))
+                    {
+                        try
+                        {
+                            //Fix for broken ODBC provider
+                            string v = valueNode.InnerText;
+
+                            if (v.Trim().ToUpper().StartsWith("TIMESTAMP"))
+                                v = v.Trim().Substring("TIMESTAMP".Length).Trim();
+                            else if (v.Trim().ToUpper().StartsWith("DATE"))
+                                v = v.Trim().Substring("DATE".Length).Trim();
+                            else if (v.Trim().ToUpper().StartsWith("TIME"))
+                                v = v.Trim().Substring("TIME".Length).Trim();
+
+                            if (v != valueNode.InnerText)
+                            {
+                                if (v.StartsWith("'"))
+                                    v = v.Substring(1);
+                                if (v.EndsWith("'"))
+                                    v = v.Substring(0, v.Length - 1);
+
+                                m_items[ordinal] = DateTime.Parse(v, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.NoCurrentDateDefault);
+                            }
+                            else
+                                m_items[ordinal] = XmlConvert.ToDateTime(v, XmlDateTimeSerializationMode.Unspecified);
+                        }
+                        catch (Exception ex)
+                        {
+                            //Unfortunately FDO supports invalid dates, such as the 30th feb
+                            m_nulls[ordinal] = true;
+                            m_items[ordinal] = ex;
+                        }
+                    }
+                    else if (parent.Columns[ordinal].Type == Utility.GeometryType)
+                    {
+                        m_items[ordinal] = valueNode.InnerText;
+                        if (string.IsNullOrEmpty(valueNode.InnerText))
+                        {
+                            m_nulls[ordinal] = true;
+                            m_items[ordinal] = null;
+                        }
+                        else
+                            m_lazyloadGeometry[ordinal] = true;
+                    }
+                    else
+                        throw new Exception("Unknown type: " + parent.Columns[ordinal].Type.FullName);
+                }
             }
 		}
     }
