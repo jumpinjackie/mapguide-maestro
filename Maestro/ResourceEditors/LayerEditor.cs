@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors
 {
@@ -122,8 +123,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch (Exception ex)
 			{
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Strings.LayerEditor.SchemaReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                MessageBox.Show(this, string.Format(Strings.LayerEditor.SchemaReadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
 			}
 
 		}
@@ -601,8 +603,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch(Exception ex)
 			{
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Strings.LayerEditor.MapPreviewError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.LayerEditor.MapPreviewError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
             return true;

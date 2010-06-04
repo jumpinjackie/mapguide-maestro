@@ -801,7 +801,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format(Strings.VectorLayer.FeatureSourceReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                MessageBox.Show(this, string.Format(Strings.VectorLayer.FeatureSourceReadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return null;
             }
 

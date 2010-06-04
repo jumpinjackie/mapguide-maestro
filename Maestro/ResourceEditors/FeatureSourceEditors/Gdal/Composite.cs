@@ -24,6 +24,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
 {
@@ -407,8 +408,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.Gdal
             }
             catch (Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Strings.Composite.FileLoadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.Composite.FileLoadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

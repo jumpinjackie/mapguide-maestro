@@ -469,8 +469,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Strings.CoordinateSystemOverride.CoordinateSystemLoadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.CoordinateSystemOverride.CoordinateSystemLoadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -515,8 +516,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Strings.CoordinateSystemOverride.CoordinateSystemLoadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.CoordinateSystemOverride.CoordinateSystemLoadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -599,8 +601,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 }
                 catch (Exception ex)
                 {
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                     m_editor.SetLastException(ex);
-                    MessageBox.Show(this, string.Format(Strings.CoordinateSystemOverride.CoordinateSystemLoadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Strings.CoordinateSystemOverride.CoordinateSystemLoadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

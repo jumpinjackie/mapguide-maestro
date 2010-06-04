@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro.ResourceValidators
 {
@@ -128,7 +129,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                 }
                 catch (Exception ex)
                 {
-                    issues.Add(new ValidationIssue(item, ValidationStatus.Error, "Failed in validator: " + ex.Message));
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                    issues.Add(new ValidationIssue(item, ValidationStatus.Error, "Failed in validator: " + msg));
                 }
             }
                 

@@ -149,7 +149,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                             {
                                 //Just like the XmlFeatureSetReader, invalid geometry can bite us again
                                 m_nulls[ordinal] = true;
-                                m_items[ordinal] = ex.Message;
+                                m_items[ordinal] = NestedExceptionMessageProcessor.GetFullMessage(ex);
                                 ex.Dispose();
                             }
                         }

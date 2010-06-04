@@ -24,6 +24,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro.PackageManager
 {
@@ -78,7 +79,8 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format(Strings.AddResourceEntry.FilenameValidationError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                MessageBox.Show(this, string.Format(Strings.AddResourceEntry.FilenameValidationError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

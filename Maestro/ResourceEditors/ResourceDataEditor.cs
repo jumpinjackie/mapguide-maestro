@@ -25,6 +25,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.Collections.Specialized;
 using System.Collections.Generic;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors
 {
@@ -400,6 +401,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             {
                 bool retry = true;
                 while (retry)
+                {
                     try
                     {
                         string filename = System.IO.Path.GetFileName(s);
@@ -449,13 +451,14 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     }
                     catch (Exception ex)
                     {
+                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                         if (worker.CancellationPending)
                         {
                             args.Cancel = true;
                             return res;
                         }
 
-                        switch (MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.UploadFailedQuestion, s, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+                        switch (MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.UploadFailedQuestion, s, msg), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
                         {
                             case DialogResult.Abort:
                                 return res;
@@ -464,6 +467,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                                 continue;
                         }
                     }
+                }
                 i++;
                 worker.ReportProgress((int)((i / (double)actualFiles.Count) * 100));
             }
@@ -500,7 +504,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 						}
 						catch (Exception ex)
 						{
-                            switch (MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DeleteFailedQuestion, resourcename, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+                            string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                            switch (MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DeleteFailedQuestion, resourcename, msg), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
 							{
 								case DialogResult.Abort:
 									return res;
@@ -560,7 +565,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 						}
 						catch(Exception ex)
 						{
-                            switch (MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, items[0], ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+                            string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                            switch (MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, items[0], msg), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
 							{
 								case DialogResult.Abort:
 									return res;
@@ -607,7 +613,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 							}
 							catch(Exception ex)
 							{
-                                switch (MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, item, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+                                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                                switch (MessageBox.Show(owner, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, item, msg), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
 								{
 									case DialogResult.Abort:
 										return res;
@@ -673,8 +680,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					}
 					catch(Exception ex)
 					{
+                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                         m_editor.SetLastException(ex);
-                        switch (MessageBox.Show(this, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, i.Text, ex.Message), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
+                        switch (MessageBox.Show(this, string.Format(Strings.ResourceDataEditor.DownloadFailedQuestion, i.Text, msg), Application.ProductName, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error))
 						{
 							case DialogResult.Abort:
 								RefreshFileList();
@@ -782,8 +790,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Strings.ResourceDataEditor.FailedToCreateCopyError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.ResourceDataEditor.FailedToCreateCopyError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -848,8 +857,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Strings.ResourceDataEditor.UpdateXmlDataError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.ResourceDataEditor.UpdateXmlDataError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

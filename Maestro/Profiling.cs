@@ -140,7 +140,8 @@ namespace OSGeo.MapGuide.Maestro
                 }
                 catch (Exception ex)
                 {
-                    backgroundWorker.ReportProgress(0, (string.Format(Strings.Profiling.LayerDefinitionProfilingError, resourceId, ex.Message)));
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                    backgroundWorker.ReportProgress(0, (string.Format(Strings.Profiling.LayerDefinitionProfilingError, resourceId, msg)));
                 }
             }
 
@@ -247,15 +248,19 @@ namespace OSGeo.MapGuide.Maestro
                     }
                     catch (Exception ex)
                     {
-                        backgroundWorker.ReportProgress(0, (string.Format(Strings.Profiling.LayerDefinitionProfilingError, ml.ResourceId, ex.Message)));
+                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                        backgroundWorker.ReportProgress(0, (string.Format(Strings.Profiling.LayerDefinitionProfilingError, ml.ResourceId, msg)));
                     }
                 }
 
                 if (mdef.BaseMapDefinition != null && mdef.BaseMapDefinition.BaseMapLayerGroup != null)
                 {
                     foreach (BaseMapLayerGroupCommonType g in mdef.BaseMapDefinition.BaseMapLayerGroup)
+                    {
                         if (g.BaseMapLayer != null)
+                        {
                             foreach (BaseMapLayerType ml in g.BaseMapLayer)
+                            {
                                 try
                                 {
                                     if (backgroundWorker.CancellationPending)
@@ -266,8 +271,12 @@ namespace OSGeo.MapGuide.Maestro
                                 }
                                 catch (Exception ex)
                                 {
-                                    backgroundWorker.ReportProgress(0, (string.Format(Strings.Profiling.LayerDefinitionProfilingError, ml.ResourceId, ex.Message)));
+                                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                                    backgroundWorker.ReportProgress(0, (string.Format(Strings.Profiling.LayerDefinitionProfilingError, ml.ResourceId, msg)));
                                 }
+                            }
+                        }
+                    }
                 }
             }
 
@@ -285,7 +294,8 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch (Exception ex)
             {
-                backgroundWorker.ReportProgress(0, (string.Format(Strings.Profiling.RuntimeMapProfilingError, resourceId, ex.Message)));
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                backgroundWorker.ReportProgress(0, (string.Format(Strings.Profiling.RuntimeMapProfilingError, resourceId, msg)));
             }
 
             string tmp2 = new ResourceIdentifier(Guid.NewGuid().ToString(), ResourceTypes.RuntimeMap, m_connection.SessionID);
@@ -309,7 +319,8 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch (Exception ex)
             {
-                backgroundWorker.ReportProgress(0, (string.Format(Strings.Profiling.MapRenderingError, resourceId, ex.Message)));
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                backgroundWorker.ReportProgress(0, (string.Format(Strings.Profiling.MapRenderingError, resourceId, msg)));
             }
             finally
             {

@@ -145,6 +145,11 @@ namespace OSGeo.MapGuide.Maestro
             {
                 try
 				{
+                    throw new Exception("Outer Message", 
+                        new Exception("Inner Message 1", 
+                            new Exception("Inner Message 2",
+                                new Exception("Inner Message 3"))));
+
                     PreferedSite ps = null;
 
                     if (_selectedIndex == 0) //HTTP
@@ -210,15 +215,13 @@ namespace OSGeo.MapGuide.Maestro
 
                     _conn.AutoRestartSession = true;
 
-                    
-					
 					this.DialogResult = DialogResult.OK;
 					this.Close();
-
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show(this, string.Format(Strings.FormLogin.ConnectionFailedError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                    MessageBox.Show(this, string.Format(Strings.FormLogin.ConnectionFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
             }
         }

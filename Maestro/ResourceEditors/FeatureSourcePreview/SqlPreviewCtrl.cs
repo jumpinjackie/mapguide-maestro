@@ -48,7 +48,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourcePreview
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(NestedExceptionMessageProcessor.GetFullMessage(ex));
             }
 
             if (reader != null)

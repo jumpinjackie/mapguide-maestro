@@ -24,6 +24,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Xml;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro
 {
@@ -1069,7 +1070,8 @@ namespace OSGeo.MapGuide.Maestro
 			}
 			catch(Exception ex)
 			{
-				MessageBox.Show(string.Format(Strings.FormMain.EditorLoadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+				MessageBox.Show(string.Format(Strings.FormMain.EditorLoadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				Application.Exit();
 				return;
 			}
@@ -1409,7 +1411,8 @@ namespace OSGeo.MapGuide.Maestro
 			catch (Exception ex)
 			{
                 LastException = ex;
-				MessageBox.Show(this, string.Format(Strings.FormMain.SaveResourceError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+				MessageBox.Show(this, string.Format(Strings.FormMain.SaveResourceError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
 		}
@@ -1887,8 +1890,9 @@ namespace OSGeo.MapGuide.Maestro
                     }
                     catch (Exception ex)
                     {
+                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                         LastException = ex;
-                        MessageBox.Show(this, string.Format(Strings.FormMain.PreviewFailedError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(this, string.Format(Strings.FormMain.PreviewFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 					break;
 				}
@@ -2212,8 +2216,9 @@ namespace OSGeo.MapGuide.Maestro
 				}
 				catch (Exception ex)
 				{
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                     LastException = ex;
-					MessageBox.Show(this, string.Format(Strings.FormMain.XmlEditorError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show(this, string.Format(Strings.FormMain.XmlEditorError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 		}
@@ -2262,8 +2267,9 @@ namespace OSGeo.MapGuide.Maestro
 				}
 				catch (Exception ex)
 				{
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                     LastException = ex;
-					MessageBox.Show(this, string.Format(Strings.FormMain.XmlEditorError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show(this, string.Format(Strings.FormMain.XmlEditorError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 		}
@@ -2298,8 +2304,9 @@ namespace OSGeo.MapGuide.Maestro
 			}
 			catch(Exception ex)
 			{
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 LastException = ex;
-				MessageBox.Show(this, string.Format(Strings.FormMain.OpenResourceError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(this, string.Format(Strings.FormMain.OpenResourceError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -2338,8 +2345,9 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch (Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 LastException = ex;
-                MessageBox.Show(this, string.Format(Strings.FormMain.SaveResourceError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.FormMain.SaveResourceError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -2533,14 +2541,14 @@ namespace OSGeo.MapGuide.Maestro
                 if (MaestroAPI.PackageBuilder.PackageProgress.UploadPackage(this, m_connection) == DialogResult.OK)
                     RebuildDocumentTree();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LastException = ex;
 
                 if (ex is System.Reflection.TargetInvocationException && ex.InnerException != null)
                     ex = ex.InnerException;
-
-                MessageBox.Show(this, string.Format(Strings.FormMain.PackageRestoreError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                MessageBox.Show(this, string.Format(Strings.FormMain.PackageRestoreError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -2902,6 +2910,7 @@ namespace OSGeo.MapGuide.Maestro
             catch (Exception ex)
             {
                 this.LastException = ex;
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 MessageBox.Show(this, string.Format(Strings.FormMain.ValidationError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
@@ -2944,7 +2953,8 @@ namespace OSGeo.MapGuide.Maestro
                     }
                     catch (Exception ex)
                     {
-                        issues.Add(new KeyValuePair<string, ResourceValidators.ValidationIssue[]>(s, new ResourceValidators.ValidationIssue[] { new OSGeo.MapGuide.Maestro.ResourceValidators.ValidationIssue(s, OSGeo.MapGuide.Maestro.ResourceValidators.ValidationStatus.Error, string.Format(Strings.FormMain.ValidationResourceLoadFailed, ex.Message)) }));
+                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                        issues.Add(new KeyValuePair<string, ResourceValidators.ValidationIssue[]>(s, new ResourceValidators.ValidationIssue[] { new OSGeo.MapGuide.Maestro.ResourceValidators.ValidationIssue(s, OSGeo.MapGuide.Maestro.ResourceValidators.ValidationStatus.Error, string.Format(Strings.FormMain.ValidationResourceLoadFailed, msg)) }));
                     }
                     i++;
                     worker.ReportProgress((int)((i / (double)documents.Count) * 100), s);
@@ -3000,8 +3010,9 @@ namespace OSGeo.MapGuide.Maestro
             { }
             catch (Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 this.LastException = ex;
-                MessageBox.Show(this, string.Format(Strings.FormMain.ValidationError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.FormMain.ValidationError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

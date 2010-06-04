@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Collections;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro
 {
@@ -189,7 +190,8 @@ namespace OSGeo.MapGuide.Maestro
                         }
                         catch (Exception ex)
                         {
-                            throw new Exception(string.Format(Strings.ResourceEditorMap.AssemblyLoadError, path, ex.Message), ex);
+                            string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                            throw new Exception(string.Format(Strings.ResourceEditorMap.AssemblyLoadError, path, msg), ex);
                         }
                         img = System.Drawing.Image.FromStream(asm.GetManifestResourceStream(e.ImageResourceName));
                     }
@@ -212,7 +214,8 @@ namespace OSGeo.MapGuide.Maestro
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception(string.Format(Strings.ResourceEditorMap.AssemblyLoadError, path, ex.Message), ex);
+                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                        throw new Exception(string.Format(Strings.ResourceEditorMap.AssemblyLoadError, path, msg), ex);
                     }
 
                     System.Type editorType = editorAsm.GetType(e.ResourceEditorClass, true, false);
@@ -228,7 +231,8 @@ namespace OSGeo.MapGuide.Maestro
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception(string.Format(Strings.ResourceEditorMap.AssemblyLoadError, path, ex.Message), ex);
+                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                        throw new Exception(string.Format(Strings.ResourceEditorMap.AssemblyLoadError, path, msg), ex);
                     }
                     System.Type instanceType = instanceAsm.GetType(e.ResourceInstanceClass, true, false);
 
@@ -254,7 +258,8 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch (Exception ex)
             {
-                throw new Exception(string.Format(Strings.ResourceEditorMap.ResourceEditorLoadError, ex.Message), ex);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                throw new Exception(string.Format(Strings.ResourceEditorMap.ResourceEditorLoadError, msg), ex);
             }
             finally
             {

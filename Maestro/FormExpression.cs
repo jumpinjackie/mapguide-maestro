@@ -790,7 +790,8 @@ namespace OSGeo.MapGuide.Maestro
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, string.Format(Strings.FormExpression.ColumnValueError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                    MessageBox.Show(this, string.Format(Strings.FormExpression.ColumnValueError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
         }
 

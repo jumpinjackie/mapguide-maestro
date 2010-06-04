@@ -1186,7 +1186,8 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(this, String.Format(Strings.ApplicationDefinitionEditor.BrowserLaunchError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+				MessageBox.Show(this, String.Format(Strings.ApplicationDefinitionEditor.BrowserLaunchError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		
 		}

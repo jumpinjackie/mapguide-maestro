@@ -58,7 +58,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                     }
                     catch (Exception ex)
                     {
-                        issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Strings.WebLayoutValidator.MapValidationError, layout.Map.ResourceId, ex.Message)));
+                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                        issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Strings.WebLayoutValidator.MapValidationError, layout.Map.ResourceId, msg)));
                     }
                 }
             }

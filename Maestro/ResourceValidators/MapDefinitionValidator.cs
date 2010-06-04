@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro.ResourceValidators
 {
@@ -144,19 +145,22 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                                 }
                                 catch (Exception ex)
                                 {
-                                    issues.Add(new ValidationIssue(ldef, ValidationStatus.Error, string.Format(Strings.MapDefinitionValidator.ResourceReadError, fs.ResourceId, ex.Message)));
+                                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                                    issues.Add(new ValidationIssue(ldef, ValidationStatus.Error, string.Format(Strings.MapDefinitionValidator.ResourceReadError, fs.ResourceId, msg)));
                                 }
                             }
                             catch (Exception ex)
                             {
-                                issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, string.Format(Strings.MapDefinitionValidator.FeatureSourceReadError, l.ResourceId, ex.Message)));
+                                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                                issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, string.Format(Strings.MapDefinitionValidator.FeatureSourceReadError, l.ResourceId, msg)));
                             }
                         }
 
                     }
                     catch (Exception ex)
                     {
-                        issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, string.Format(Strings.MapDefinitionValidator.LayerReadError, l.ResourceId, ex.Message)));
+                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                        issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, string.Format(Strings.MapDefinitionValidator.LayerReadError, l.ResourceId, msg)));
                     }
                 }
             }

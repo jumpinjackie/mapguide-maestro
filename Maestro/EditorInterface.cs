@@ -20,6 +20,7 @@
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro
 {
@@ -172,7 +173,8 @@ namespace OSGeo.MapGuide.Maestro
 				catch (Exception ex)
 				{
                     SetLastException(ex);
-					MessageBox.Show(m_editor, string.Format(Strings.EditorInterface.DeleteResourceError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+					MessageBox.Show(m_editor, string.Format(Strings.EditorInterface.DeleteResourceError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 		}
@@ -352,7 +354,8 @@ namespace OSGeo.MapGuide.Maestro
                 catch (Exception ex)
                 {
                     SetLastException(ex);
-                    MessageBox.Show(m_editor, string.Format(Strings.EditorInterface.SaveResourceError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                    MessageBox.Show(m_editor, string.Format(Strings.EditorInterface.SaveResourceError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 			}

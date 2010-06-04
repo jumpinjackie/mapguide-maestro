@@ -72,7 +72,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                             }
                             catch (Exception ex)
                             {
-                                issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, string.Format(Strings.ApplicationDefinitionValidator.MapValidationError, mapGroup.id, ex.Message)));
+                                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                                issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, string.Format(Strings.ApplicationDefinitionValidator.MapValidationError, mapGroup.id, msg)));
                             }
                         }
                 }

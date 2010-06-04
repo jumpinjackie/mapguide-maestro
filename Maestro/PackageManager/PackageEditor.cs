@@ -95,7 +95,8 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
                 if (ex is System.Reflection.TargetInvocationException && ex.InnerException != null)
                     ex = ex.InnerException;
 
-                MessageBox.Show(this, string.Format(Strings.PackageEditor.PackageReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                MessageBox.Show(this, string.Format(Strings.PackageEditor.PackageReadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
                 return;
@@ -239,6 +240,7 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             }
             catch (Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 MessageBox.Show(this, string.Format(Strings.PackageEditor.FileCopyError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -466,7 +468,9 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             {
                 if (ex is System.Reflection.TargetInvocationException && ex.InnerException != null)
                     ex = ex.InnerException;
-                MessageBox.Show(this, string.Format(Strings.PackageEditor.PackageBuildError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                MessageBox.Show(this, string.Format(Strings.PackageEditor.PackageBuildError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             finally

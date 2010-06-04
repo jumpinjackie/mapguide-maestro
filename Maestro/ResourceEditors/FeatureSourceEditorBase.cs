@@ -25,6 +25,7 @@ using System.Data;
 using System.Windows.Forms;
 using OSGeo.MapGuide.Maestro;
 using OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourcePreview;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors
 {
@@ -235,7 +236,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 						}
 						catch (Exception ex)
 						{
-							throw new Exception(string.Format(Strings.FeatureSourceEditorBase.AssemblyLoadError, pv.Provider, System.IO.Path.GetFullPath(pv.AssemblyPath), ex.Message), ex);
+                            string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+							throw new Exception(string.Format(Strings.FeatureSourceEditorBase.AssemblyLoadError, pv.Provider, System.IO.Path.GetFullPath(pv.AssemblyPath), msg), ex);
 						}
 						Type t = asm.GetType(pv.Control);
 						if (t == null)
@@ -516,7 +518,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch(Exception ex)
 			{
-				TestConnectionResult.Text = ex.Message;
+				TestConnectionResult.Text = NestedExceptionMessageProcessor.GetFullMessage(ex);
 			}
 		
 		}
@@ -538,8 +540,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(string.Format(Strings.FeatureSourceEditorBase.ResourceSaveError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(Strings.FeatureSourceEditorBase.ResourceSaveError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -589,8 +592,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Strings.FeatureSourceEditorBase.XmlUpdateError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.FeatureSourceEditorBase.XmlUpdateError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

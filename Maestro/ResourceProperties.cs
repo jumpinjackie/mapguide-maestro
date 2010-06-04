@@ -611,7 +611,8 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format(Strings.ResourceProperties.SaveError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                MessageBox.Show(this, string.Format(Strings.ResourceProperties.SaveError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -776,8 +777,9 @@ namespace OSGeo.MapGuide.Maestro
                 }
                 catch (Exception ex)
                 {
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                     warnedEPSG = true;
-                    MessageBox.Show(this, string.Format(Strings.ResourceProperties.BoundsDecodeError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Strings.ResourceProperties.BoundsDecodeError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 System.Globalization.CultureInfo ic = System.Globalization.CultureInfo.InvariantCulture;
@@ -803,7 +805,8 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format(Strings.ResourceProperties.WMSBoundsReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                MessageBox.Show(this, string.Format(Strings.ResourceProperties.WMSBoundsReadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -841,7 +844,8 @@ namespace OSGeo.MapGuide.Maestro
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format(Strings.ResourceProperties.WFSBoundsReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                MessageBox.Show(this, string.Format(Strings.ResourceProperties.WFSBoundsReadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Windows.Forms;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro
 {

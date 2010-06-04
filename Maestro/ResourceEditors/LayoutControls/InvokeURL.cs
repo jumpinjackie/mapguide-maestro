@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
 {
@@ -372,8 +373,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
 			}
 			catch (Exception ex)
 			{
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Strings.InvokeURL.LayerListReadError, mapname, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.InvokeURL.LayerListReadError, mapname, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 

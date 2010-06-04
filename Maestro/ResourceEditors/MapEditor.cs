@@ -24,6 +24,7 @@ using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors
 {
@@ -1247,8 +1248,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Strings.MapEditor.LayerProjectionReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.MapEditor.LayerProjectionReadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 			SelectCoordinateSystem dlg = new SelectCoordinateSystem(m_editor.CurrentConnection);
@@ -1853,8 +1855,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch(Exception ex)
 			{
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Strings.MapEditor.MapPreviewError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.MapEditor.MapPreviewError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
 			return true;
@@ -2153,8 +2156,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 }
                 catch (Exception ex)
                 {
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                     m_editor.SetLastException(ex);
-                    MessageBox.Show(this, string.Format(Strings.MapEditor.LayerProjectionReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Strings.MapEditor.LayerProjectionReadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 txtLowerX.Text = env.MinX.ToString(System.Globalization.CultureInfo.CurrentUICulture);
@@ -2164,8 +2168,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			}
 			catch (Exception ex)
 			{
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Strings.MapEditor.LayerExtentReadError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.MapEditor.LayerExtentReadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 

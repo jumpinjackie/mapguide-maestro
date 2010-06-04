@@ -117,7 +117,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
             catch (Exception ex)
             {
-                throw new Exception("Failed to connect, please check network connection and login information.\nExtended error info: " + ex.Message, ex);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                throw new Exception("Failed to connect, please check network connection and login information.\nExtended error info: " + msg, ex);
             }
 
             if (!allowUntestedVersion)
@@ -251,7 +252,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			}
 			catch (Exception ex)
 			{
-				result = ex.Message;
+				result = NestedExceptionMessageProcessor.GetFullMessage(ex);
 			}
 
             return result;
@@ -273,27 +274,29 @@ namespace OSGeo.MapGuide.MaestroAPI
 			}
 			catch (WebException wex)
 			{
-				if (wex.Response != null)
-					try
-					{
-						string result = "";
-						using(System.IO.MemoryStream ms = new System.IO.MemoryStream())
-						{
-							Utility.CopyStream(wex.Response.GetResponseStream(), ms);
-							result = System.Text.Encoding.UTF8.GetString(ms.ToArray(), 0, (int)ms.Length);
-						}
+                if (wex.Response != null)
+                {
+                    try
+                    {
+                        string result = "";
+                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                        {
+                            Utility.CopyStream(wex.Response.GetResponseStream(), ms);
+                            result = System.Text.Encoding.UTF8.GetString(ms.ToArray(), 0, (int)ms.Length);
+                        }
 
-						if (result.ToLower().IndexOf("<body>") > 0)
-							result = result.Substring(result.ToLower().IndexOf("<body>") + 6);
+                        if (result.ToLower().IndexOf("<body>") > 0)
+                            result = result.Substring(result.ToLower().IndexOf("<body>") + 6);
 
-						if (result.ToLower().IndexOf("</body>") > 0)
-							result = result.Substring(0, result.ToLower().IndexOf("</body>"));
+                        if (result.ToLower().IndexOf("</body>") > 0)
+                            result = result.Substring(0, result.ToLower().IndexOf("</body>"));
 
-						return result;
-					}
-					catch
-					{
-					}
+                        return result;
+                    }
+                    catch
+                    {
+                    }
+                }
 
 				if (wex.InnerException == null)
 					return wex.Message;
@@ -302,7 +305,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			}
 			catch (Exception ex)
 			{
-				return ex.Message;
+				return NestedExceptionMessageProcessor.GetFullMessage(ex);
 			}
 
 			return string.Empty;

@@ -93,7 +93,8 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format(Strings.CreatePackage.ValidateOutputfileError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                MessageBox.Show(this, string.Format(Strings.CreatePackage.ValidateOutputfileError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -113,7 +114,8 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format(Strings.CreatePackage.InvalidRestorePathError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                MessageBox.Show(this, string.Format(Strings.CreatePackage.InvalidRestorePathError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -136,8 +138,8 @@ namespace OSGeo.MapGuide.Maestro.PackageManager
             }
             catch (Exception ex)
             {
-                string s = ex.Message;
-                System.Windows.Forms.MessageBox.Show(string.Format(Strings.CreatePackage.PackageCreationFailedError, ex.Message), System.Windows.Forms.Application.ProductName, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                System.Windows.Forms.MessageBox.Show(string.Format(Strings.CreatePackage.PackageCreationFailedError, msg), System.Windows.Forms.Application.ProductName, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return;
             }
             this.Close();

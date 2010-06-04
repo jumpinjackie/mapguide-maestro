@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using OSGeo.MapGuide.Maestro;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro.ResourceValidators
 {
@@ -56,7 +57,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
             }
             catch (Exception ex)
             {
-                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Strings.FeatureSourceValidator.SpatialContextReadError, ex.Message)));
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Strings.FeatureSourceValidator.SpatialContextReadError, msg)));
             }
 
             List<string> classes = new List<string>();
@@ -71,11 +73,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
             }
             catch (Exception ex)
             {
-                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Strings.FeatureSourceValidator.SchemaReadError, ex.Message)));
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Strings.FeatureSourceValidator.SchemaReadError, msg)));
             }
 
 
             foreach (string cl in classes)
+            {
                 try
                 {
                     string[] ids = feature.GetIdentityProperties(cl);
@@ -84,8 +88,10 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                 }
                 catch (Exception ex)
                 {
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Strings.FeatureSourceValidator.PrimaryKeyReadError, ex.Message)));
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Strings.FeatureSourceValidator.PrimaryKeyReadError, msg)));
                 }
+            }
 
             return issues.ToArray();
         }

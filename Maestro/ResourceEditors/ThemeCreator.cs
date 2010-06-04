@@ -24,6 +24,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors
 {
@@ -539,7 +540,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 }
             }
 
-            Image prevImage = PreviewPicture.Image;
+            System.Drawing.Image prevImage = PreviewPicture.Image;
             PreviewPicture.Image = bmp;
             if (prevImage != null)
                 prevImage.Dispose();
@@ -727,8 +728,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch(Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Strings.Common.GenericError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                MessageBox.Show(this, string.Format(Strings.Common.GenericError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
             }
         }
 

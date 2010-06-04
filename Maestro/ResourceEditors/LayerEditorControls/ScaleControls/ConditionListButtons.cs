@@ -152,8 +152,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             }
             catch (Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_owner.Editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.GenericError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.GenericError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

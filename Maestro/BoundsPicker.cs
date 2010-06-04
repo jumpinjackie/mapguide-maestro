@@ -24,6 +24,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro
 {
@@ -80,7 +81,8 @@ namespace OSGeo.MapGuide.Maestro
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(this, string.Format(Strings.BoundsPicker.BoundsDecodeError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                    MessageBox.Show(this, string.Format(Strings.BoundsPicker.BoundsDecodeError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 }
             }
         }

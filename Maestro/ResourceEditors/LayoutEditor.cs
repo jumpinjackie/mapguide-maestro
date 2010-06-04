@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors
 {
@@ -1506,7 +1507,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				if (System.IO.Directory.Exists(path))
 					foreach(string s in System.IO.Directory.GetFiles(path, "*.gif"))
 					{
-						LoadedImageList.Images.Add(Image.FromFile(s));
+						LoadedImageList.Images.Add(System.Drawing.Image.FromFile(s));
 						LoadedImages.Add("../stdicons/" + System.IO.Path.GetFileName(s), LoadedImageList.Images.Count - 1);
 					}
 			}
@@ -2003,8 +2004,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             }
             catch (Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, String.Format(Strings.LayoutEditor.BrowserLaunchError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, String.Format(Strings.LayoutEditor.BrowserLaunchError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

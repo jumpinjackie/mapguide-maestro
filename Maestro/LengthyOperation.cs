@@ -22,6 +22,7 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro
 {
@@ -317,7 +318,8 @@ namespace OSGeo.MapGuide.Maestro
 					catch (System.Reflection.TargetInvocationException tex)
 					{
 						Exception ex = tex.InnerException;
-						switch (MessageBox.Show(string.Format(Strings.LengthyOperation.ErrorOccuredRetryQuestion, ex.Message), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1))
+                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+						switch (MessageBox.Show(string.Format(Strings.LengthyOperation.ErrorOccuredRetryQuestion, msg), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1))
 						{
 							case DialogResult.No:
 								throw;
@@ -331,7 +333,9 @@ namespace OSGeo.MapGuide.Maestro
 				{
 					if (ex.GetType() == typeof(System.Reflection.TargetInvocationException))
 						ex = ex.InnerException;
-					MessageBox.Show(string.Format(Strings.LengthyOperation.OperationFailedError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+					MessageBox.Show(string.Format(Strings.LengthyOperation.OperationFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			this.Invoke(new System.Threading.ThreadStart(CloseDialog));

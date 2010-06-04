@@ -24,6 +24,7 @@ using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
 {
@@ -439,8 +440,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayoutControls
             }
             catch (Exception ex)
             {
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.GenericError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, string.Format(OSGeo.MapGuide.Maestro.ResourceEditors.Strings.Common.GenericError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 		}
 

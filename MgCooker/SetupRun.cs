@@ -24,6 +24,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.MgCooker
 {
@@ -175,7 +176,8 @@ namespace OSGeo.MapGuide.MgCooker
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, string.Format(Strings.SetupRun.ConnectionError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                    MessageBox.Show(this, string.Format(Strings.SetupRun.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -187,7 +189,8 @@ namespace OSGeo.MapGuide.MgCooker
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, string.Format(Strings.SetupRun.ConnectionError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                    MessageBox.Show(this, string.Format(Strings.SetupRun.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -229,7 +232,8 @@ namespace OSGeo.MapGuide.MgCooker
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, string.Format(Strings.SetupRun.InternalError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                MessageBox.Show(this, string.Format(Strings.SetupRun.InternalError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
