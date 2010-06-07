@@ -25,7 +25,7 @@ popd
 
 "%PARAFFIN_PATH%" -dir %MAESTRO_OUTPUT% -alias "%MAESTRO_OUTPUT%" -custom MAESTROBIN -dirref INSTALLLOCATION -multiple -guids incBinFiles.wxs -ext .pdb -direXclude .svn
 
-WixProjBuilder.exe Maestro.wixproj
+msbuild.exe /p:Configuration=%TYPEBUILD% Maestro.wixproj
 
 rem Move in localization files and build zip
 %XCOPY% "%MAESTRO_LOCALIZATION%\compiled\*" "%MAESTRO_OUTPUT%"

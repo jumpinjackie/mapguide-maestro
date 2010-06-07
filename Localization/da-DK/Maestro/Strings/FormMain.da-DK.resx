@@ -291,4 +291,8 @@ Vil du gemme ændringerne før programmet lukkes?</value>
   <data name="FindReplaceTooltip" xml:space="preserve">
     <value>Find any strings that match the pattern {0} and replace it with {1}</value>
   </data>
+  <data name="ConfirmMultipleOpen" xml:space="preserve">
+    <value>Are you sure you want to open {0} items?</value>
+    <comment>A confirmation message that is displayed when opening multiple items for editing</comment>
+  </data>
 </root>

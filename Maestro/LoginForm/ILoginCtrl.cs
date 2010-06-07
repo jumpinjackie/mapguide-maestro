@@ -28,6 +28,8 @@ namespace OSGeo.MapGuide.Maestro
         string Username { get; }
         string Password { get; }
 
+        void UpdateLoginStatus();
+
         event EventHandler EnableOk;
         event EventHandler DisabledOk;
         event EventHandler CheckSavedPassword;

@@ -66,12 +66,17 @@ namespace OSGeo.MapGuide.Maestro
 
         public event EventHandler CheckSavedPassword = delegate { };
 
-        private void txtWebConfig_TextChanged(object sender, EventArgs e)
+        public void UpdateLoginStatus()
         {
             if (this.WebConfigPath.Trim().Length > 0 && File.Exists(this.WebConfigPath))
                 EnableOk(this, EventArgs.Empty);
             else
                 DisabledOk(this, EventArgs.Empty);
+        }
+
+        private void txtWebConfig_TextChanged(object sender, EventArgs e)
+        {
+            UpdateLoginStatus();
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)

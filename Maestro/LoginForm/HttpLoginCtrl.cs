@@ -76,7 +76,7 @@ namespace OSGeo.MapGuide.Maestro
                 cmbLanguage.SelectedIndex = selected;
 
             _loading = false;
-            UpdateButtonStatus();
+            UpdateLoginStatus();
         }
 
         public PreferedSite[] GetSites()
@@ -155,10 +155,10 @@ namespace OSGeo.MapGuide.Maestro
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            UpdateButtonStatus();
+            UpdateLoginStatus();
         }
 
-        private void UpdateButtonStatus()
+        public void UpdateLoginStatus()
         {
             if (this.Username.Trim().Length > 0 && this.Server.Trim().Length > 0)
                 EnableOk(this, EventArgs.Empty);

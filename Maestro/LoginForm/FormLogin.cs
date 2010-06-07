@@ -122,21 +122,30 @@ namespace OSGeo.MapGuide.Maestro
             loginPanel.Controls.Add(c);
         }
 
+        private void UpdateLoginControl()
+        {
+            if (rdHttp.Checked)
+                _selectedIndex = 0;
+            else
+                _selectedIndex = 1;
+            
+            SetLoginControl((Control)_controls[_selectedIndex]);
+            _controls[_selectedIndex].UpdateLoginStatus();
+        }
+
         private void rdHttp_CheckedChanged(object sender, EventArgs e)
         {
-            _selectedIndex = 0;
-            SetLoginControl((Control)_controls[_selectedIndex]);
+            UpdateLoginControl();
         }
 
         private void rdTcpIp_CheckedChanged(object sender, EventArgs e)
         {
-            _selectedIndex = 1;
-            SetLoginControl((Control)_controls[_selectedIndex]);
+            UpdateLoginControl();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            this.DialogResult = DialogResult.Cancel;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -145,11 +154,6 @@ namespace OSGeo.MapGuide.Maestro
             {
                 try
 				{
-                    throw new Exception("Outer Message", 
-                        new Exception("Inner Message 1", 
-                            new Exception("Inner Message 2",
-                                new Exception("Inner Message 3"))));
-
                     PreferedSite ps = null;
 
                     if (_selectedIndex == 0) //HTTP
