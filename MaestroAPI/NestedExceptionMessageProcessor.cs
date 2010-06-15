@@ -46,6 +46,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 sb.Append(innerPrefix + ex.Message);
                 ex = ex.InnerException;
             }
+            sb.Append(innerPrefix + ex.Message);
             return sb.ToString();
         }
     }
