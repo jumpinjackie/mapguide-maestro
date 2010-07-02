@@ -131,6 +131,9 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 			UpdateDisplay();
 		}
 
+        private string sessionPreviewUrl;
+        private string libraryPreviewUrl;
+
 		public void UpdateDisplay()
 		{
 			try
@@ -741,9 +744,34 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 
 		public bool Preview()
 		{
-			ShowInBrowser_Click(null, null);
+			//ShowInBrowser_Click(null, null);
+            SaveSessionCopy();
+            DoPreview(sessionPreviewUrl);
 			return true;
 		}
+
+        private void SaveLibraryCopy()
+        {
+            m_editor.CurrentConnection.SaveResourceAs(m_appDef, m_editor.ResourceId);
+        }
+
+        private void SaveSessionCopy()
+        {
+            m_editor.CurrentConnection.SaveResourceAs(m_appDef, m_appDef.ResourceId);
+        }
+
+        private void DoPreview(string url)
+        {
+            try
+            {
+                m_editor.OpenUrl(url);
+            }
+            catch (Exception ex)
+            {
+                m_editor.SetLastException(ex); 
+                MessageBox.Show(this, String.Format(Strings.ApplicationDefinitionEditor.BrowserLaunchError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            }
+        }
 
 		private void ApplicationDefinitionEditor_Load(object sender, System.EventArgs e)
 		{
@@ -1065,10 +1093,18 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 
 		private void TemplateURL_TextChanged(object sender, System.EventArgs e)
 		{
-			if (m_editor.Existing)
-				browserURL.Text = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL + TemplateURL.Text + "?ApplicationDefinition=" + System.Web.HttpUtility.UrlEncode(m_appDef.ResourceId);
-			else
-				browserURL.Text = "";
+            if (m_editor.Existing)
+            {
+                //browserURL.Text = ((OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection).BaseURL + TemplateURL.Text + "?ApplicationDefinition=" + System.Web.HttpUtility.UrlEncode(m_appDef.ResourceId);
+                var htcon = (OSGeo.MapGuide.MaestroAPI.HttpServerConnection)m_editor.CurrentConnection;
+
+                sessionPreviewUrl = htcon.BaseURL + TemplateURL.Text + "?ApplicationDefinition=" + System.Web.HttpUtility.UrlEncode(m_appDef.ResourceId) + "&Session=" + htcon.SessionID;
+                libraryPreviewUrl = htcon.BaseURL + TemplateURL.Text + "?ApplicationDefinition=" + System.Web.HttpUtility.UrlEncode(m_editor.ResourceId);
+
+                browserURL.Text = libraryPreviewUrl;
+            }
+            else
+                browserURL.Text = "";
 
 			if (m_isUpdating)
 				return;
@@ -1160,6 +1196,33 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
 
 		private void ShowInBrowser_Click(object sender, System.EventArgs e)
 		{
+            if (m_editor.IsModified)
+            {
+                var result = MessageBox.Show(Strings.ApplicationDefinitionEditor.UnsavedLayoutPreview, string.Empty, MessageBoxButtons.YesNoCancel);
+
+                //Yes = Save changes then preview
+                //No = Preview original (without unsaved changes)
+                //Cancel = Abort Preview
+                if (result == DialogResult.Cancel)
+                    return;
+
+                if (result == DialogResult.Yes)
+                {
+                    SaveSessionCopy();
+                    SaveLibraryCopy();
+
+                    //HACK: There is no formal interface to unset the editor's dirty state
+                    //Dirty state is simply indicated by the asterisk on the editor's tab
+                    //so remove the asterisk.
+                    var page = this.Parent as TabPage;
+                    if (page != null && page.Text.EndsWith(" *"))
+                        page.Text = page.Text.Substring(0, page.Text.Length - 2);
+
+                    m_editor.UpdateResourceStates();
+                }
+            }
+            DoPreview(libraryPreviewUrl);
+            /*
 			try
 			{
 				m_editor.CurrentConnection.SaveResourceAs(m_appDef, m_tempResource);
@@ -1189,7 +1252,7 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
 				MessageBox.Show(this, String.Format(Strings.ApplicationDefinitionEditor.BrowserLaunchError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-		
+		    */
 		}
 
         private void AddMapButton_Click(object sender, EventArgs e)

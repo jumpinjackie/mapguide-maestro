@@ -113,5 +113,14 @@ namespace OSGeo.MapGuide.Maestro.FusionEditor.Strings {
                 return ResourceManager.GetString("SeperatorMarker", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Application Definition has unsaved changes. If you do not save, the original version of the Application Definition will be shown. Save first before viewing?.
+        /// </summary>
+        internal static string UnsavedLayoutPreview {
+            get {
+                return ResourceManager.GetString("UnsavedLayoutPreview", resourceCulture);
+            }
+        }
     }
 }
