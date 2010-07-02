@@ -120,11 +120,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 var conn = editor.CurrentConnection as MaestroAPI.LocalNativeConnection;
                 if (conn == null) //Must be HTTP
                 {
-                    //This feature is broken for any MG release < 2.2 so disable it.
-
                     Version ver = editor.CurrentConnection.SiteVersion;
-                    Version supported = new Version(2, 2);
-                    if (ver < supported)
+
+                    //Ticket #708 fix landed on this revision, so disable local preview for versions
+                    //older than this
+                    Version versionFix = new Version(2, 2, 0, 4939);
+                    if (ver <= versionFix || ver == SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP2011))
                         EditorTab.Controls.Remove(LocalPreviewPage);
                 }
             }

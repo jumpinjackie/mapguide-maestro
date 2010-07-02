@@ -77,7 +77,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// MapGuide Open Source 2.1.0
         /// </summary>
-        MapGuideOS2_1,              
+        MapGuideOS2_1,
+        /// <summary>
+        /// MapGuide Enterprise 2011
+        /// </summary>
+        MapGuideEP2011,   
 	}
 
 	public class SiteVersions
@@ -100,6 +104,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             new Version(2,1,0,3505),    //MGE 2010 Update 1
             new Version(2,1,0,3701),    //MGE 2010 Update 1b
             new Version(2,1,0,4283),    //MGOS 2.1.0
+            new Version(2,2,0,5305),    //MGE 2011
 		};
 
         /// <summary>
