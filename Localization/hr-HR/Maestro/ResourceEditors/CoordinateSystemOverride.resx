@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="AddButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAjhJREFUOE+tk8tP
+        E1EUxvkzYOvKjQs3uHPlxsSERKPGmNiq+Egb4yM+kqIVSWN5jJ1KeTRClaIYwVraChKHUqwlLbWkaWkB
+        5eGjQOnMWGhLQxEXn3MH6TiuauJNvpycm3N+57tnMmVl/+M8fb+qtXrXFp+8S8Pi4fHIzaONYWEaWoFx
+        MAnKtYT6/gR0tq+o7V3AnZ55aLpnPxRnd3nTfL7wE/+i613Tm0XA49HvYnPPVCesMTMskRaYw0aYQk0w
+        BPVo8NdB59Oi1qvBbc9NsfZyRxxFQMcIL16Wekitqj0qAczCe8nlcx9bkkhttSksAVqEZe0AiIvesZTM
+        jC0gz/lsAQo6JAHogWXkNrbQ52dhIwpweBVgYQ+ycAgiABId4ykMTqTweSWHE43jEoByLiIrAOxBTpzs
+        +B13bPztYG45i6P3/RJAb/+GTH4LrhCH1xNyDYU50YHB3o2r7QqcN1RB0XAQVXdrJEBd3xesrf8AKSZn
+        OMLLdvCw34J7L09jIN6KSJIBPazCcXoPKtUVlPgptS8WRAAjNJLmPzUS5aEUJjpjRjinm0Uw5T4H2n1B
+        AJQXRIDm2SesCgDP5Pbk0ZjcwaGavXgT75S5ck22Yp+6YvsZN6wzSOc2wWUKSKY3kODywqbXMbeUxcdE
+        Bvuv7EITcwZ6RilC9G+VcgfXLFNjl8yx/MW2KM42h3HKEMLJxiCO6QM4rPPhwC01jlC78YCpBplMIsmL
+        Oyjlj65UldcLDTlim0SSk75faWGfFMT7btcAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="AddButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="AddButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="AddButton.ToolTipText" xml:space="preserve">
+    <value>Add a new coordinate system override</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DeleteButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="DeleteButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAkdJREFUOE+tk91P
+        UnEYxynkD+iuG9vspu76C9pa2KU3beGaW11oy2rU5gqLFTnHJMG3iVOWUVLZ1BGRxSB5i3AgYkwl7cXQ
+        BEQ4J14lINv4ds4poNMVbT3bd7+d357v5/me5+xwOP+jHr1JSDSOZOjB6zjUNhJ3LSSGZ2JQGrcxYIig
+        ZzqMO8+CkGq/oGMygFvjnyF++Gm+PHvMESez+R/4F10dWy2UAfftXxnz+Mo9aPwqqBeHoPINQOlVoM8j
+        Q7erE1KnBB0OMW7aREzvldF3KANGrSRzWW3RvRdHlioAFfW+9OUTZ6wq0b0tSl8FMEQtqwSgU0zORllh
+        tG72M5nO42y/twLof7mFTG4XU64YtLTcBJ66Y9B5YtBTogH0qZ+LwrAQxfp2BqflcxVAz/MQ0hRA5yGY
+        yfrfZynG3wnWttI41eWqAGS6TaSyu5j2EnixwJbRRzAJjMpu2JoOw8Lnwdp4ANLzFyqAzqkNJHe+g26m
+        y7xIsnZgH1FgWXQUeUMviqsmfJtow/ylIzDza4TMp5RMBBjADGWkzX/KukTCJDiIHGXGYAPQvg/oqgMp
+        PwYTn7vOAMSPPyJBAWzLvybb/ewEdOziWx0rVfL2fpiP1xQZwDXNe8QzBRCpPCLxHIJEltr0DtbCaXwI
+        pmAR1CKrbgYoU0HEQYLSZisXphPcMANoU6/MClX+bOvwEpoHfTjT50WT3AOBzI2TUicUwstwnzuESHsd
+        iBs8BFr2wNzAKxrr94qr/pmdjbXXX9VzN+jY1BkqmX8C/jSd15eszyMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="DeleteButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="DeleteButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="DeleteButton.ToolTipText" xml:space="preserve">
+    <value>Delete a coordinate system override</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="toolStripButton_SelectAll.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAjpJREFUOE+tk/1P
+        UlEYx/3b+hNatbW19UO1tTZrlrrFMl1jUMRySi93Q16VRo4ISWFjhCiEImduakIBJgL38nK5cbkQF4/V
+        07mH6UZS/tLZvj8953yez753d2Dgf5y51foN+0rdZw4LyBTikcFXQvqFAnr8Lo/Urn007txDY44sUs1+
+        sffdZwsLwaZ8hM7KPUsq1hdgWq7Rx3OJjwV7JPfdHGaxMVTAU/59rPNmscaTxnpvHo87s3jMkeHu29O+
+        HpAxyFOAe0Nst2SM+6XZxrj8TcZNGXPD1lSuB8AEyhRgCfFYkA7xbCL+w7bK/rKEBSCdgMFfAr23CKQT
+        ULtyMPFmD0gnoLKnNyhIKU0BzASrdLszVoeWfHRmhq3JDgU8WywiqY0RMaEG5uUafezYnQHbDgOGxFN4
+        EnsE6shDmFhRwYPQKJ3fMX4CClA+WYMAXvg5amD8wNML/zrK/NarrS5A+/YAiU2MppZYXJM6mAlUKOB1
+        pPLXKPPrhs0uYMSWQoIko2kCqLcO8XNS2jFAsXCtlU/J8A0Zrk4muoAhU9I0yGxHSMOY5dt4cpEF0gnM
+        xyrgUkIASjzxCnjWy7CEyvC1JMFl3XoXcHxGrClOaHQ40gmQTsAdr9LN/QwybAMuamK9gCFzcuE2s53V
+        ug9AbGHwJqrwHlVPDKgFMXCTfM6LcEET7QWcmNhSIEgdqIoycEIbMsUGffBnruiiP/v+G3dNu9FBZqd1
+        8+UWXJvehEvaNTivjpzKudGA5zcwaaIzRXBFZAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButton_SelectAll.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButton_SelectAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButton_SelectAll.Text" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="EditButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="EditButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAoZJREFUOE+tk+1L
+        U1Ecx/0Tet3LiHoR9Rf0JoNK6IWFQaS5F6JEJUGU2sphQ5kP04yZLm2mmaZjrmmrNR+mc3Prasjdo9Oc
+        D/Nhbrerc+quc41v9950Swgp6MCXc/hxvp/zPT/OSUn5H6NtZE3UalxffD1MQ2Gg0DhAob4vAJnOj9qP
+        K5D2LqH8vQ+lqnmUdHlR3D4D4ZvpscTZLUaa2mJi+Bc9aHHvJADNQ995c7vrFVodcijIOsgnaiEbr0IN
+        IUGFRYxSkwglRiGeGAr4vfeanEgAmgYpvvi3g9t7u8GWBMjZ+3LFDlPgUH0e7Ian/Tq+9ZSBVFwA+eJU
+        Np+ijm3WPoBL0WVePRBGZV3F9koP/IZChOxaYHMZ63YVLFWXVnnAM+0ywpFdKC0BqDhZg+i2BqAmAtCw
+        Mhg7QLueIrrYC/9wFSIONX7Mm2FvzmN4gLRnERssQE0E+ZM1ezO3ZigjaGcx4hEzIt67oMfyMdmWA+Jl
+        LghZ+gkeIFEvILS1i97xID58TWrIrMGa4xHijBXbMwIwvkyE3ULMtqTjjkSVbKJYOYf1zSh0E78S9JMU
+        /G72zuOFe+ZsMAs3sOF8jNnGy/CQYxBUf0kCRJ1eHtDHGjmzXvcOLn0BG3sEzFwOdnw3EWKTTDekQT/q
+        hMcXQlalJQkQvp3CGgsw2ClMjbLmT0LYdLVYIq5hey4TNFkEr+IKdkNLfEIOIJD+BnjYOgk6vINgiIGy
+        4jwQnoenMQMG4VGMytNgkl7EpJ3kjfvKqjTHEy/xvsJlzpc7tm7V2yDOO4OotQ5R4jmIsnPoyDuOXHEn
+        rpaaDii1oE/zx4+ccfYIIxGcjA2Up8X6q1ON2qLTxw778T8Ban6cSCiwAWQAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="EditButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="EditButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="EditButton.ToolTipText" xml:space="preserve">
+    <value>Edit a coordinate system override</value>
+  </data>
+  <data name="RefreshButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAq9JREFUOE+VkutP
+        UmEcx4/rVX9DbdVSS5u2ajm3etGbXraWpTnvShpqSRlsRkaFDpaKmTHBvKemomleNsx7KimhohIaZmo5
+        L4CKCl4w4ds5xw3WVpv9tu9+z37n+X7O93nOcSntXuHZ4RJth/2w3W4nbHaC2KU6ubDZQeyS3SkbYdsF
+        9UwlCHP3Iagq/rhstGz9wv+IXTy2TZupKuxcos3l2nyUaKQoGBZDOpSFV6p0ZCqFqNSWom36A9SLgxAq
+        n2B90wpW3hc4AHntRhqwn0pRcPFcwUecZMQJkLboacDbHr1D7RoTemY0yFKng9XFQHxbBG7LQ8Hvfghe
+        BwchJQ+cALF8wQGgUlT1LmJyTQeROhX5o2I0TFSjTleJd1/LIRt7gwptEdhNd3Al5/IkfYwXTXPkuXYg
+        +6RHDaU+A6TqQkjUmajXyZDSw0Vk3U2EVPkhSc4CuzEeV7OZzgQZ9bNYIwG1SgN9De/JzlOwwWwOxa3G
+        IDxuTXZcD6uGiURZAvwFCviKfA/SCYS1P7Bq2UGDyoDGgT1N6TdhWLPCuG6Fbs6Mb/MbGJ81I6kmGXrT
+        Bm4Iep0J+LJpmMxWyIf2ErQOG//4IEskRNDMd8yMq1sIF/U7AbzK7zSghTRSZkoT8xYsmCxYIlMkVt9D
+        VFEEdOSMEkMSiXMcL3izPOAZ6zZDcMt0WCEBHaN7b+7UOBM8qucgrioK0WWhuPD0PHy4ZxAouQZRPx+M
+        kmC4Mo7lEpyScSyvb8NARptf3sRPgwVTC2YEvvYDsyICkkERxKo0vPwsJP/MVGT0P6PnrlFHB46EH7pE
+        JBZoe+9KNRZmzggY2UMIy1QhOE2JAGEfgsUxCCsIQFDudZy+74lT8e44EXMcHtEXjbR5P3WW7dXlneAx
+        up+9f93j708cOBnrJvsX4DeqQITXu9ek3wAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="RefreshButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="RefreshButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="RefreshButton.ToolTipText" xml:space="preserve">
+    <value>Fetch coordinate systems found in the featuresource</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="DisplayRawXml.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAfNJREFUOE+Nkk1L
+        G1EUhiP5RaW7opWIVaEU7KobqV1IceFKBN1ZaQIFF21RqYKb+lE0Gg2IOp3GaRqMXzWNGAgdP4JRU1to
+        alsT5s7Y8Op7ZWrDGOmFwx245zznOXdumet8xWJxCGHys2gVCgWX2+12ceeyLNNVXV1V5kiMRlcgzFPk
+        8ta1oaoLCASCuBLA4uxPs2R8PxbQtA/Y3tp2QmjwvwBFUSWgyORfwP7hpQW7MmjGPZE8hr5zgL30F4RC
+        2uUoNoBJc8pFwYiWQMNQEHf6mtE9vYHM1zwWlwTYgLZFgEgkKi+RCXsHJpS1FCqHH6NivAN1837c0rLo
+        mUlJ8Nt3JQBH3ywJYFKbfwiesXK0RvxoT/zBzYl+VLxolxaxDQOfddNpQH0CuL/SDvFIHYVvPSIBHv99
+        eHqbkNrPYVP/hdWPwgngXPaMU+EMWlZ2pMXd0CJuzCXwsM+HdCaHyWBemjjugAB254xM7ByNo3asCzXv
+        T/Dg9RbCy2nMqjl8SmavByR1jmFIiLKQRnB2F6vxrFRn8ab+Q54VGfCFXRgYkv5mXGBgUOBlr4EnTw2o
+        4d/wPsvLYkIk/PxB/X3S/I0E8IDR5RW4V2+huUWg/LaF5z0naGg0ZLENKGlgW9CEMN68HXYD5jgMOAaD
+        5FLBIvvMBpwBO0nTvzD33ogAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="DisplayRawXml.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="DisplayRawXml.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="DisplayRawXml.ToolTipText" xml:space="preserve">
+    <value>Click here to view the spatial context information</value>
+  </data>
+  <data name="ToggleSimpleModeButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="ToggleSimpleModeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 22</value>
+  </data>
+  <data name="ToggleSimpleModeButton.Text" xml:space="preserve">
+    <value>&lt;&lt;&lt; Simple</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ToggleSimpleModeButton.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>Overlay</value>
+  </data>
+  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>648, 25</value>
+  </data>
+  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Name" xml:space="preserve">
+    <value>toolStrip</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="SourceHeader.Text" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="SourceHeader.Width" type="System.Int32, mscorlib">
+    <value>288</value>
+  </data>
+  <data name="TargetHeader.Text" xml:space="preserve">
+    <value>Target</value>
+  </data>
+  <data name="TargetHeader.Width" type="System.Int32, mscorlib">
+    <value>297</value>
+  </data>
+  <data name="ProjectionOverrides.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="ProjectionOverrides.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 73</value>
+  </data>
+  <data name="ProjectionOverrides.Size" type="System.Drawing.Size, System.Drawing">
+    <value>648, 135</value>
+  </data>
+  <data name="ProjectionOverrides.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;ProjectionOverrides.Name" xml:space="preserve">
+    <value>ProjectionOverrides</value>
+  </data>
+  <data name="&gt;&gt;ProjectionOverrides.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ProjectionOverrides.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ProjectionOverrides.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 20</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 13</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>SimpleOverridePanel</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="SourceCoordinateSystem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 16</value>
+  </data>
+  <data name="SourceCoordinateSystem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 20</value>
+  </data>
+  <data name="SourceCoordinateSystem.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;SourceCoordinateSystem.Name" xml:space="preserve">
+    <value>SourceCoordinateSystem</value>
+  </data>
+  <data name="&gt;&gt;SourceCoordinateSystem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SourceCoordinateSystem.Parent" xml:space="preserve">
+    <value>SimpleOverridePanel</value>
+  </data>
+  <data name="&gt;&gt;SourceCoordinateSystem.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="TargetCoordinateSystem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>296, 16</value>
+  </data>
+  <data name="TargetCoordinateSystem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 20</value>
+  </data>
+  <data name="TargetCoordinateSystem.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;TargetCoordinateSystem.Name" xml:space="preserve">
+    <value>TargetCoordinateSystem</value>
+  </data>
+  <data name="&gt;&gt;TargetCoordinateSystem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TargetCoordinateSystem.Parent" xml:space="preserve">
+    <value>SimpleOverridePanel</value>
+  </data>
+  <data name="&gt;&gt;TargetCoordinateSystem.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>248, 20</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Target</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>SimpleOverridePanel</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="BrowseSimpleOverrideButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAtdJREFUOE+Fk21I
+        k1EUxzej+tKLKU6zmtvjnJu0pWwGZmplSCAUkpaZJRNtU3TT5nxBxNc0a2VpppZaUomZGga9OK0sc/N1
+        y00sEWx+zLBPfjLy33MfcEMpuvDAvc85/x/nnvs/bNaGxYlx52zlbE5ib2JFumxx4ZPw6srqN/xmvV1Z
+        +tX2vWtpcaOGObuGbmfvU3ppKd2e5RP3j0JryESVsQyVxhJk9aXheFMY+HSM5Lgd2cleB3ENocUqr5b9
+        VQJoDCrUWK6hfroGjV9q0TBTi7rpG9CbK6F6pUDAFQokdx2EUP0rfKB4mYDi8XxU2UpQbS7HyIIRI3Yj
+        7k7dRoW1CIWjOUjoPQ0hnUs0TBUeJ904pLRDbUHIGEpFrlmDYmsBSk2FWFut1iYUTeVCO5mBtEEFDrZK
+        mOt4xrpzWHsveerEej4iu0KQMpwIzaQS+eZsFAxpHYBGSx0DzpxIhWIoHhGdwRBf55EqdCxuutcbaZMA
+        4c/lSHp/FpoPKug+apDXl+0A3DHdQtZgOtLeJePCQBxCe4IgoTVEy+Jlec9KW/wQ3BOAh9Zmh+hfm7EF
+        E+TdYkib/UC0DOAADZD3iNFgqf0vwGT/BFm3yAlgrnBPAFmXCLH9USgwqlA+oUa16bID9sRWj7JxNfKG
+        VUjqj4Xsmch5hbUmBncIcWxAhJhRCS5aApFikjsAV6eUOD8ZiFMmCSIMYsjahc4mekTvYp5R9kCAKIMf
+        4i1CKGdFUH+WOAA1X5ORMiNC3IQ/Il8LEdQqYJ6R2J7xAl0FbSQuwjoFODfmC/U8hfw5Iew/bbAv2XBz
+        LgbpcxTOmHxx+KkA/uVcp5EIYId8G2NlER2I6KCQOEpBZ/dB2Q8uShe50M7zkDBCIbydAskhuWR21s0D
+        gZBKqBzvZaneBxGP+Yh+wUN0Lw/hj/iQ6rkgMWJhMjt/nUjG2nRPSGPJ6/A0u2fJR/bkH7H9RuEfjdr+
+        bRFU9Q0AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="BrowseSimpleOverrideButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>448, 14</value>
+  </data>
+  <data name="BrowseSimpleOverrideButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="BrowseSimpleOverrideButton.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;BrowseSimpleOverrideButton.Name" xml:space="preserve">
+    <value>BrowseSimpleOverrideButton</value>
+  </data>
+  <data name="&gt;&gt;BrowseSimpleOverrideButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BrowseSimpleOverrideButton.Parent" xml:space="preserve">
+    <value>SimpleOverridePanel</value>
+  </data>
+  <data name="&gt;&gt;BrowseSimpleOverrideButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="RemoveSimpleCoordinateOverrides.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAtBJREFUOE+FU+tL
+        k1EYdxJU30JKzQ9eVjO2MS9b3ktXkpsUahKRYjdyZm1ObS0zTdPQ1KWb2tR5yfRPqEhB+lAfKiiiqHDz
+        g9pNofR9py423Xx/nbNVogQe+HHOeS6/8zzPeR6e34ZVHrE7MHT71rNbeLz0bf7+EVTt4rgpD/B0xrUy
+        ZJic+bHRx3vPDQ7gGUXhuuEYgePlyWOYrr2G2fYWzJqaMVWtw4tcJaiO2uSF7OStI8kJCuCZROEDoynR
+        +FJ1BXZLB34N9sA53AvnUC8cA11gu42Y1qsxkiQBtV1HQllH4kX4WqrCkqEeK50tWLWYwPV3guvrwGp3
+        G1ba72CxqQafL53BE2JLfbxRaMKCA2lotqOpWKgqg6fhBjhjA9B1F7AYgR4CswFc62246ytgr9DAqkjG
+        cLTAoeeHBPq1CcP0z5MlmDmhwPLVYnB1esBwCzA1Ah1NPlDC5lpwNTq4ylX4fjwdz0gqJAq9X6c4YvRj
+        mhTzROjQngdDomDqr4NprCa46UNDFZi6CjCVWrCac5jLkuMD8aG+fv1Re2y2QzLYM5Mxf78bmy3m7Wuw
+        yiRY5TL0Ed81AmUi5s2tm/mDefMKrCJxjYCG8UlOUiDChQu5YJsrwZpqwN6rBWsmu5ns9ExlTZX4WV6I
+        uYwE0LS9KbT+LWJGHJZzEsCdPgAUpQHqVKDkDy6Te5EcXMFBuLIT8O1I3FoRi0ODvN9oTZfCniOFpyAW
+        XJEU0BBoY31Qy8Cp9sOTLwWbLcP4Yan3G2nbe3uBfKXucbwQU5kxWMqXwKMSgiuJBFcm8EG9D+5CERZP
+        RWFSGQNq+6+RKEHmrh3eVn5IFFalBEy+GM5iAdylfLi1fDgvRoLJE2Oc6B4RG2pLZ2fdPFASGslg9F7H
+        WIoI7xViTGSLMJElwjtyHksR4gHR0Zfp7Px3IqmQ1oQWllbYIuHbKOiZdixt+42OvwEV6h1ZlyguLQAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="RemoveSimpleCoordinateOverrides.Location" type="System.Drawing.Point, System.Drawing">
+    <value>496, 14</value>
+  </data>
+  <data name="RemoveSimpleCoordinateOverrides.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="RemoveSimpleCoordinateOverrides.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;RemoveSimpleCoordinateOverrides.Name" xml:space="preserve">
+    <value>RemoveSimpleCoordinateOverrides</value>
+  </data>
+  <data name="&gt;&gt;RemoveSimpleCoordinateOverrides.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RemoveSimpleCoordinateOverrides.Parent" xml:space="preserve">
+    <value>SimpleOverridePanel</value>
+  </data>
+  <data name="&gt;&gt;RemoveSimpleCoordinateOverrides.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LoadSimpleSourceProjection.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAjFJREFUOE9jYCAC
+        qM/VMNXZrJtOhFLsSoCaO+13m/7QWKKpT5Qhmsu1zHS36fXqbtXbDtS8y3Sb4fMFr1P/m2wyuCRfL8+O
+        0xDZMjlWvR36c2JPO/9rvRv5f+rztP+z3mT9n/U26//kD0X/G++E/9dapdWD0wCg5lmV1/3/z36W/L/z
+        Qcz/diCe+ir9/5SPRf87P5T8n/op/3/EIYe/6gs1HDEM0VqhbRNx0uFf2jm3/ybbDc/rbNLt196g06S9
+        Tvv2jDfp/6cBNfc+jf8fut/un+YSzckYBgD9vMJou8EL7TU63siS5psNb3fci/jvs9vqu+YyzXnKE5Sx
+        ByQwwI6rzVZXQtas1KUkDPTzM80VWnXydfJiRMUASJHyBBV5rdXa3UDNu9A1qc5Uc1Gfr47pBZBCjYUa
+        1jrrdFaHHLb/XX094D/Q5tkwA8QTJBjV5qmnaS3U+K42Ry0LMww26B5PO+vxf8qrlP8T3mf/L78KNGCZ
+        5iaNxRoFGos0Og2XaV9PPerw33Kl3nuZYhkBDAO012r3N94J+98CjPeyp4n/W55E/6+87ve/4ILH/+LL
+        Hv+7Hwb+j9xr/V9ttloK1rCQzpPmMF6vd7n3Wez/ykdR/1sfhf2vvhvwv/K2z/+iS+7/PTeb/labo16G
+        NyBVpqgaeO+0+NF2N+i/5mKNe3pLtc5qLtA4qD5XvUehRVGTqFgA+rfcdr3hf9Wpql5EaUBXJBYpxqS+
+        QGORVLYUNzEGAAC1S+xjDmcIBwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="LoadSimpleSourceProjection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>208, 14</value>
+  </data>
+  <data name="LoadSimpleSourceProjection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="LoadSimpleSourceProjection.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;LoadSimpleSourceProjection.Name" xml:space="preserve">
+    <value>LoadSimpleSourceProjection</value>
+  </data>
+  <data name="&gt;&gt;LoadSimpleSourceProjection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LoadSimpleSourceProjection.Parent" xml:space="preserve">
+    <value>SimpleOverridePanel</value>
+  </data>
+  <data name="&gt;&gt;LoadSimpleSourceProjection.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ToggleExtendedModeButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>536, 14</value>
+  </data>
+  <data name="ToggleExtendedModeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 24</value>
+  </data>
+  <data name="ToggleExtendedModeButton.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="ToggleExtendedModeButton.Text" xml:space="preserve">
+    <value>Extended &gt;&gt;&gt;</value>
+  </data>
+  <data name="&gt;&gt;ToggleExtendedModeButton.Name" xml:space="preserve">
+    <value>ToggleExtendedModeButton</value>
+  </data>
+  <data name="&gt;&gt;ToggleExtendedModeButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToggleExtendedModeButton.Parent" xml:space="preserve">
+    <value>SimpleOverridePanel</value>
+  </data>
+  <data name="&gt;&gt;ToggleExtendedModeButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="SimpleOverridePanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="SimpleOverridePanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="SimpleOverridePanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>648, 48</value>
+  </data>
+  <data name="SimpleOverridePanel.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;SimpleOverridePanel.Name" xml:space="preserve">
+    <value>SimpleOverridePanel</value>
+  </data>
+  <data name="&gt;&gt;SimpleOverridePanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SimpleOverridePanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SimpleOverridePanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>648, 208</value>
+  </data>
+  <data name="&gt;&gt;AddButton.Name" xml:space="preserve">
+    <value>AddButton</value>
+  </data>
+  <data name="&gt;&gt;AddButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DeleteButton.Name" xml:space="preserve">
+    <value>DeleteButton</value>
+  </data>
+  <data name="&gt;&gt;DeleteButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButton_SelectAll.Name" xml:space="preserve">
+    <value>toolStripButton_SelectAll</value>
+  </data>
+  <data name="&gt;&gt;toolStripButton_SelectAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EditButton.Name" xml:space="preserve">
+    <value>EditButton</value>
+  </data>
+  <data name="&gt;&gt;EditButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RefreshButton.Name" xml:space="preserve">
+    <value>RefreshButton</value>
+  </data>
+  <data name="&gt;&gt;RefreshButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DisplayRawXml.Name" xml:space="preserve">
+    <value>DisplayRawXml</value>
+  </data>
+  <data name="&gt;&gt;DisplayRawXml.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToggleSimpleModeButton.Name" xml:space="preserve">
+    <value>ToggleSimpleModeButton</value>
+  </data>
+  <data name="&gt;&gt;ToggleSimpleModeButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SourceHeader.Name" xml:space="preserve">
+    <value>SourceHeader</value>
+  </data>
+  <data name="&gt;&gt;SourceHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TargetHeader.Name" xml:space="preserve">
+    <value>TargetHeader</value>
+  </data>
+  <data name="&gt;&gt;TargetHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>CoordinateSystemOverride</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

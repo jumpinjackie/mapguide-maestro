@@ -1,0 +1,146 @@
+<?xml version="1.0" standalone="yes"?>
+<ComboBoxDataSet>
+	<SymbolMark>
+		<Display>Square</Display>
+		<Value>Square</Value>
+	</SymbolMark>
+	<SymbolMark>
+		<Display>Circle</Display>
+		<Value>Circle</Value>
+	</SymbolMark>
+	<SymbolMark>
+		<Display>Triangle</Display>
+		<Value>Triangle</Value>
+	</SymbolMark>
+	<SymbolMark>
+		<Display>Star</Display>
+		<Value>Star</Value>
+	</SymbolMark>
+	<SymbolMark>
+		<Display>Cross</Display>
+		<Value>Cross</Value>
+	</SymbolMark>
+	<SymbolMark>
+		<Display>X - Mark</Display>
+		<Value>X</Value>
+	</SymbolMark>
+	<SymbolMark>
+		<Display>Font...</Display>
+		<Value></Value>
+	</SymbolMark>
+	<SymbolMark>
+		<Display>Symbol...</Display>
+		<Value></Value>
+	</SymbolMark>
+	
+	<SizeContext>
+		<Display>Device space</Display>
+		<Value>DeviceUnits</Value>
+	</SizeContext>
+	<SizeContext>
+		<Display>Map space</Display>
+		<Value>MappingUnits</Value>
+	</SizeContext>
+	
+	<Units>
+		<Display>Points</Display>
+		<Value>Points</Value>
+	</Units>
+	<Units>
+		<Display>Inches</Display>
+		<Value>Inches</Value>
+	</Units>
+	<Units>
+		<Display>Feet</Display>
+		<Value>Feet</Value>
+	</Units>
+	<Units>
+		<Display>Yards</Display>
+		<Value>Yards</Value>
+	</Units>
+	<Units>
+		<Display>Millimeters</Display>
+		<Value>Millimeters</Value>
+	</Units>
+	<Units>
+		<Display>Centimeters</Display>
+		<Value>Centimeters</Value>
+	</Units>
+	<Units>
+		<Display>Meters</Display>
+		<Value>Meters</Value>
+	</Units>
+	<Units>
+		<Display>Kilometers</Display>
+		<Value>Kilometers</Value>
+	</Units>
+
+	<Rotation>
+		<Display>0 degrees</Display>
+		<Value>0</Value>
+	</Rotation>
+	<Rotation>
+		<Display>30 degrees</Display>
+		<Value>30</Value>
+	</Rotation>
+	<Rotation>
+		<Display>45 degrees</Display>
+		<Value>45</Value>
+	</Rotation>
+	<Rotation>
+		<Display>90 degrees</Display>
+		<Value>90</Value>
+	</Rotation>
+  <Rotation>
+    <Display>Expression...</Display>
+    <Value>Expression...</Value>
+  </Rotation>
+
+  <BackgroundType>
+    <Display>Ghosted</Display>
+    <Value>Ghosted</Value>
+  </BackgroundType>
+  <BackgroundType>
+    <Display>Opaque</Display>
+    <Value>Opaque</Value>
+  </BackgroundType>
+  <BackgroundType>
+    <Display>Transparent</Display>
+    <Value>Transparent</Value>
+  </BackgroundType>
+
+  <Vertical>
+    <Display>Baseline</Display>
+    <Value>'Baseline'</Value>
+  </Vertical>
+  <Vertical>
+    <Display>Bottom</Display>
+    <Value>'Bottom'</Value>
+  </Vertical>
+  <Vertical>
+    <Display>Capline</Display>
+    <Value>'Capline'</Value>
+  </Vertical>
+  <Vertical>
+    <Display>Halfline</Display>
+    <Value>'Halfline'</Value>
+  </Vertical>
+  <Vertical>
+    <Display>Top</Display>
+    <Value>'Top'</Value>
+  </Vertical>
+  <Vertical>
+    <Display>Expression...</Display>
+    <Value>Expression...</Value>
+  </Vertical>
+
+  <Horizontal>
+    <Display>Center</Display>
+    <Value>'Center'</Value>
+  </Horizontal>
+  <Horizontal>
+    <Display>Expression...</Display>
+    <Value>Expression...</Value>
+  </Horizontal>
+
+</ComboBoxDataSet>

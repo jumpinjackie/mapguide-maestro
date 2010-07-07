@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="menuItem2.Text" xml:space="preserve">
+    <value>Datoteka</value>
+  </data>
+  <data name="MainMenuNew.Text" xml:space="preserve">
+    <value>Nova</value>
+  </data>
+  <data name="MainMenuOpen.Text" xml:space="preserve">
+    <value>Otvori</value>
+  </data>
+  <data name="MainMenuClose.Text" xml:space="preserve">
+    <value>Zatvori</value>
+  </data>
+  <data name="MainMenuCloseAll.Text" xml:space="preserve">
+    <value>Zatvori sve</value>
+  </data>
+  <data name="MainMenuSave.Text" xml:space="preserve">
+    <value>Spremi</value>
+  </data>
+  <data name="MainMenuSaveAs.Text" xml:space="preserve">
+    <value>Spremi kao...</value>
+  </data>
+  <data name="MainMenuSaveAll.Text" xml:space="preserve">
+    <value>Spremi sve</value>
+  </data>
+  <data name="MainMenuEditAsXml.Text" xml:space="preserve">
+    <value>Uredi kao Xml</value>
+  </data>
+  <data name="MainMenuSaveAsXml.Text" xml:space="preserve">
+    <value>Spremi kao  Xml...</value>
+  </data>
+  <data name="MainMenuLoadFromXml.Text" xml:space="preserve">
+    <value>Učitaj iz Xml-a...</value>
+  </data>
+  <data name="MainMenuChangePreferences.Text" xml:space="preserve">
+    <value>Postavke...</value>
+  </data>
+  <data name="PropertiesMenu.Text" xml:space="preserve">
+    <value>Svojstva</value>
+  </data>
+  <data name="MainMenuExit.Text" xml:space="preserve">
+    <value>Izlaz</value>
+  </data>
+  <data name="openToolStripMenuItem.Text" xml:space="preserve">
+    <value>Otvori</value>
+  </data>
+  <data name="MainMenuEdit.Text" xml:space="preserve">
+    <value>Uređivanje</value>
+  </data>
+  <data name="TabClosePageMenu.Text" xml:space="preserve">
+    <value>Zatvori</value>
+  </data>
+  <data name="CopyResourceIdMenu.Text" xml:space="preserve">
+    <value>Kopiraj id u međuspremnik</value>
+  </data>
+  <data name="SaveXmlAsMenu.Text" xml:space="preserve">
+    <value>Spremi Xml kao...</value>
+  </data>
+  <data name="CopyMenu.Text" xml:space="preserve">
+    <value>Kopiraj</value>
+  </data>
+  <data name="NewMenu.Text" xml:space="preserve">
+    <value>Novo</value>
+  </data>
+  <data name="MainMenuCopy.Text" xml:space="preserve">
+    <value>Kopiraj</value>
+  </data>
+  <data name="MainMenuCut.Text" xml:space="preserve">
+    <value>Izreži</value>
+  </data>
+  <data name="MainMenuPaste.Text" xml:space="preserve">
+    <value>Zalijepi</value>
+  </data>
+  <data name="CutMenu.Text" xml:space="preserve">
+    <value>Izreži</value>
+  </data>
+  <data name="PasteMenu.Text" xml:space="preserve">
+    <value>Zalijepi</value>
+  </data>
+  <data name="DeleteMenu.Text" xml:space="preserve">
+    <value>Izbriši</value>
+  </data>
+  <data name="RenameMenu.Text" xml:space="preserve">
+    <value>Preimenuj</value>
+  </data>
+  <data name="menuItem3.Text" xml:space="preserve">
+    <value>Pomoć</value>
+  </data>
+  <data name="TabSaveMenu.Text" xml:space="preserve">
+    <value>Spremi</value>
+  </data>
+  <data name="TabSaveAsMenu.Text" xml:space="preserve">
+    <value>Spremi kao...</value>
+  </data>
+  <data name="TabCopyIdMenu.Text" xml:space="preserve">
+    <value>Kopiraj id u međuspremnik</value>
+  </data>
+  <data name="CopyResourceIdMenu.ToolTipText" xml:space="preserve">
+    <value>Kopira trenutno označeni id resursa u međuspremnik</value>
+  </data>
+  <data name="EditAsXmlMenu.Text" xml:space="preserve">
+    <value>Uredi resurs u xml uređivaču</value>
+  </data>
+  <data name="DuplicateMenu.Text" xml:space="preserve">
+    <value>Dupliciraj</value>
+  </data>
+  <data name="AddResourceButton.ToolTipText" xml:space="preserve">
+    <value>Kreiraj novi resurs</value>
+  </data>
+  <data name="DeleteResourceButton.ToolTipText" xml:space="preserve">
+    <value>Obriši označeni resurs ili mapu</value>
+  </data>
+  <data name="ResourceTreeCopy.ToolTipText" xml:space="preserve">
+    <value>Kopiraj trenutni resurs ili mapu</value>
+  </data>
+  <data name="MainMenuChangeServer.Text" xml:space="preserve">
+    <value>Promjena poslužitelja...</value>
+  </data>
+  <data name="OpenSiteAdmin.Text" xml:space="preserve">
+    <value>Otvori administratorsku stranicu...</value>
+  </data>
+  <data name="createPackageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Kreiraj paket...</value>
+  </data>
+  <data name="modifyPackageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Izmijeni paket...</value>
+  </data>
+  <data name="restorePackageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Obnovi paket...</value>
+  </data>
+  <data name="packagesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Paketi</value>
+  </data>
+  <data name="viewLastExceptionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Zadnja iznimka...</value>
+  </data>
+  <data name="MainMenuAbout.Text" xml:space="preserve">
+    <value>O programu...</value>
+  </data>
+  <data name="SaveResourceButton.ToolTipText" xml:space="preserve">
+    <value>Spremi trenutni resurs</value>
+  </data>
+  <data name="SaveResourceAsButton.ToolTipText" xml:space="preserve">
+    <value>Spremi trenutni resurs pod drugim imenom</value>
+  </data>
+  <data name="PreviewButton.ToolTipText" xml:space="preserve">
+    <value>Pretpregled stavke</value>
+  </data>
+  <data name="EditAsXmlButton.ToolTipText" xml:space="preserve">
+    <value>Uredi trenutni resurs u xml uređivaču</value>
+  </data>
+  <data name="ClosePageButton.ToolTipText" xml:space="preserve">
+    <value>Zatvori trenutnu stranicu</value>
+  </data>
+  <data name="SaveAsXmlDialog.Filter" xml:space="preserve">
+    <value>Xml datoteke (*.xml)|*.xml|Sve datoteke (*.*)|*.*</value>
+  </data>
+  <data name="OpenXmlFileDialog.Filter" xml:space="preserve">
+    <value>Xml datoteke (*.xml)|*.xml|Sve datoteke (*.*)|*.*</value>
+  </data>
+  <data name="LoadFromXmlMenu.Text" xml:space="preserve">
+    <value>Učitaj iz Xml-a...</value>
+  </data>
+  <data name="FindReplaceMenu.Text" xml:space="preserve">
+    <value>Pronađi i zamijeni u resursu</value>
+  </data>
+  <data name="ResourceTreeRefreshButton.ToolTipText" xml:space="preserve">
+    <value>Osvježi stablo za prikaz trenutnog stanja poslužitelja</value>
+  </data>
+  <data name="OpenXmlFileDialog.Title" xml:space="preserve">
+    <value>Odaberi xml datoteku za učitavanje</value>
+  </data>
+  <data name="ResourceTreeCut.ToolTipText" xml:space="preserve">
+    <value>Izreži trenutni resurs ili mapu</value>
+  </data>
+  <data name="ResourceTreePaste.ToolTipText" xml:space="preserve">
+    <value>Zalijepi trenutni sadržaj</value>
+  </data>
+  <data name="ValidateButton.ToolTipText" xml:space="preserve">
+    <value>Provjeri greške trenutnog resursa</value>
+  </data>
+  <data name="validateResourcesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Provjeri resurse</value>
+  </data>
+  <data name="OpenAllChildrenMenu.Text" xml:space="preserve">
+    <value>Otvori podresurs sa xml uređivačem</value>
+  </data>
+  <data name="FindReplaceChildrenMenu.Text" xml:space="preserve">
+    <value>Pronađi i zamijeni u podresursu</value>
+  </data>
+  <data name="ProfileButton.ToolTipText" xml:space="preserve">
+    <value>Vremenski detalji trenutnog resursa</value>
+  </data>
+  <data name="SaveAsXmlDialog.Title" xml:space="preserve">
+    <value>Odaberi naziv datoteke za spremanje</value>
+  </data>
+</root>

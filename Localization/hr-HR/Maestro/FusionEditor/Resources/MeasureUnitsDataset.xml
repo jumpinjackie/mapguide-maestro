@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MeasureUnitsDataset>
+	<MeasureUnit>
+		<Value>meters</Value>
+		<Displayname>Meters</Displayname>
+	</MeasureUnit>
+
+	<MeasureUnit>
+		<Value>miles</Value>
+		<Displayname>Miles</Displayname>
+	</MeasureUnit>
+
+	<MeasureUnit>
+		<Value>none</Value>
+		<Displayname>None</Displayname>
+	</MeasureUnit>
+
+  <MeasureUnit>
+    <Value>degrees</Value>
+    <Displayname>Degrees</Displayname>
+  </MeasureUnit>
+</MeasureUnitsDataset>

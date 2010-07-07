@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ConnectionType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="ConnectionType.Items" xml:space="preserve">
+    <value>Internal file (Managed)</value>
+  </data>
+  <data name="ConnectionType.Items1" xml:space="preserve">
+    <value>File on the server (Unmanaged)</value>
+  </data>
+  <data name="ConnectionType.Items2" xml:space="preserve">
+    <value>DODS</value>
+  </data>
+  <data name="ConnectionType.Items3" xml:space="preserve">
+    <value>ArcSDE</value>
+  </data>
+  <data name="ConnectionType.Items4" xml:space="preserve">
+    <value>GRASS</value>
+  </data>
+  <data name="ConnectionType.Items5" xml:space="preserve">
+    <value>OGDI</value>
+  </data>
+  <data name="ConnectionType.Items6" xml:space="preserve">
+    <value>Informix</value>
+  </data>
+  <data name="ConnectionType.Items7" xml:space="preserve">
+    <value>PostGIS</value>
+  </data>
+  <data name="ConnectionType.Items8" xml:space="preserve">
+    <value>MySQL</value>
+  </data>
+  <data name="ConnectionType.Items9" xml:space="preserve">
+    <value>ODBC</value>
+  </data>
+  <data name="ConnectionType.Items10" xml:space="preserve">
+    <value>Oracle</value>
+  </data>
+  <data name="ConnectionType.Items11" xml:space="preserve">
+    <value>FME</value>
+  </data>
+  <data name="ConnectionType.Items12" xml:space="preserve">
+    <value>Custom connectionstring</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ConnectionType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 0</value>
+  </data>
+  <data name="ConnectionType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 21</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ConnectionType.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;ConnectionType.Name" xml:space="preserve">
+    <value>ConnectionType</value>
+  </data>
+  <data name="&gt;&gt;ConnectionType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ConnectionType.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ConnectionType.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 0</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 16</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Connection Type</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ProviderPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="fme.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="fme.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>224, 64</value>
+  </data>
+  <data name="fme.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 400</value>
+  </data>
+  <data name="fme.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 32</value>
+  </data>
+  <data name="fme.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;fme.Name" xml:space="preserve">
+    <value>fme</value>
+  </data>
+  <data name="&gt;&gt;fme.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.FME, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;fme.Parent" xml:space="preserve">
+    <value>ProviderPanel</value>
+  </data>
+  <data name="&gt;&gt;fme.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="informix.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="informix.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>280, 264</value>
+  </data>
+  <data name="informix.Location" type="System.Drawing.Point, System.Drawing">
+    <value>384, 296</value>
+  </data>
+  <data name="informix.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 80</value>
+  </data>
+  <data name="informix.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;informix.Name" xml:space="preserve">
+    <value>informix</value>
+  </data>
+  <data name="&gt;&gt;informix.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.Informix, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;informix.Parent" xml:space="preserve">
+    <value>ProviderPanel</value>
+  </data>
+  <data name="&gt;&gt;informix.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ogdi.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ogdi.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>264, 168</value>
+  </data>
+  <data name="ogdi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>384, 200</value>
+  </data>
+  <data name="ogdi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 80</value>
+  </data>
+  <data name="ogdi.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;ogdi.Name" xml:space="preserve">
+    <value>ogdi</value>
+  </data>
+  <data name="&gt;&gt;ogdi.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.OGDI, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ogdi.Parent" xml:space="preserve">
+    <value>ProviderPanel</value>
+  </data>
+  <data name="&gt;&gt;ogdi.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grass.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="grass.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>264, 136</value>
+  </data>
+  <data name="grass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>384, 104</value>
+  </data>
+  <data name="grass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 80</value>
+  </data>
+  <data name="grass.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;grass.Name" xml:space="preserve">
+    <value>grass</value>
+  </data>
+  <data name="&gt;&gt;grass.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.Grass, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;grass.Parent" xml:space="preserve">
+    <value>ProviderPanel</value>
+  </data>
+  <data name="&gt;&gt;grass.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="arcSDE.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="arcSDE.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>312, 296</value>
+  </data>
+  <data name="arcSDE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>384, 8</value>
+  </data>
+  <data name="arcSDE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 80</value>
+  </data>
+  <data name="arcSDE.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;arcSDE.Name" xml:space="preserve">
+    <value>arcSDE</value>
+  </data>
+  <data name="&gt;&gt;arcSDE.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.ArcSDE, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;arcSDE.Parent" xml:space="preserve">
+    <value>ProviderPanel</value>
+  </data>
+  <data name="&gt;&gt;arcSDE.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="dods.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dods.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>208, 32</value>
+  </data>
+  <data name="dods.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 296</value>
+  </data>
+  <data name="dods.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 80</value>
+  </data>
+  <data name="dods.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;dods.Name" xml:space="preserve">
+    <value>dods</value>
+  </data>
+  <data name="&gt;&gt;dods.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.DODS, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dods.Parent" xml:space="preserve">
+    <value>ProviderPanel</value>
+  </data>
+  <data name="&gt;&gt;dods.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="custom.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="custom.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>312, 56</value>
+  </data>
+  <data name="custom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 296</value>
+  </data>
+  <data name="custom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 80</value>
+  </data>
+  <data name="custom.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;custom.Name" xml:space="preserve">
+    <value>custom</value>
+  </data>
+  <data name="&gt;&gt;custom.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.Custom, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;custom.Parent" xml:space="preserve">
+    <value>ProviderPanel</value>
+  </data>
+  <data name="&gt;&gt;custom.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="mySQL.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="mySQL.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>312, 352</value>
+  </data>
+  <data name="mySQL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>208, 200</value>
+  </data>
+  <data name="mySQL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 88</value>
+  </data>
+  <data name="mySQL.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;mySQL.Name" xml:space="preserve">
+    <value>mySQL</value>
+  </data>
+  <data name="&gt;&gt;mySQL.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.MySQL, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;mySQL.Parent" xml:space="preserve">
+    <value>ProviderPanel</value>
+  </data>
+  <data name="&gt;&gt;mySQL.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="oracle.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="oracle.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>296, 288</value>
+  </data>
+  <data name="oracle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 208</value>
+  </data>
+  <data name="oracle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 80</value>
+  </data>
+  <data name="oracle.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;oracle.Name" xml:space="preserve">
+    <value>oracle</value>
+  </data>
+  <data name="&gt;&gt;oracle.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.Oracle, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;oracle.Parent" xml:space="preserve">
+    <value>ProviderPanel</value>
+  </data>
+  <data name="&gt;&gt;oracle.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="odbc.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="odbc.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>368, 424</value>
+  </data>
+  <data name="odbc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 112</value>
+  </data>
+  <data name="odbc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 80</value>
+  </data>
+  <data name="odbc.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;odbc.Name" xml:space="preserve">
+    <value>odbc</value>
+  </data>
+  <data name="&gt;&gt;odbc.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.ODBC, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;odbc.Parent" xml:space="preserve">
+    <value>ProviderPanel</value>
+  </data>
+  <data name="&gt;&gt;odbc.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="postGIS.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="postGIS.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>280, 296</value>
+  </data>
+  <data name="postGIS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 104</value>
+  </data>
+  <data name="postGIS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 88</value>
+  </data>
+  <data name="postGIS.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;postGIS.Name" xml:space="preserve">
+    <value>postGIS</value>
+  </data>
+  <data name="&gt;&gt;postGIS.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.PostGIS, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;postGIS.Parent" xml:space="preserve">
+    <value>ProviderPanel</value>
+  </data>
+  <data name="&gt;&gt;postGIS.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="managed.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="managed.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>200, 96</value>
+  </data>
+  <data name="managed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 8</value>
+  </data>
+  <data name="managed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 88</value>
+  </data>
+  <data name="managed.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;managed.Name" xml:space="preserve">
+    <value>managed</value>
+  </data>
+  <data name="&gt;&gt;managed.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.Managed, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;managed.Parent" xml:space="preserve">
+    <value>ProviderPanel</value>
+  </data>
+  <data name="&gt;&gt;managed.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="unmanaged.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="unmanaged.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>248, 24</value>
+  </data>
+  <data name="unmanaged.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 8</value>
+  </data>
+  <data name="unmanaged.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 80</value>
+  </data>
+  <data name="unmanaged.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;unmanaged.Name" xml:space="preserve">
+    <value>unmanaged</value>
+  </data>
+  <data name="&gt;&gt;unmanaged.Type" xml:space="preserve">
+    <value>OSGeo.MapGuide.Maestro.ResourceEditors.FeatureSourceEditors.OGR.Unmanaged, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;unmanaged.Parent" xml:space="preserve">
+    <value>ProviderPanel</value>
+  </data>
+  <data name="&gt;&gt;unmanaged.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="ProviderPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 48</value>
+  </data>
+  <data name="ProviderPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 448</value>
+  </data>
+  <data name="ProviderPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;ProviderPanel.Name" xml:space="preserve">
+    <value>ProviderPanel</value>
+  </data>
+  <data name="&gt;&gt;ProviderPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ProviderPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ProviderPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="WriteProtected.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="WriteProtected.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 24</value>
+  </data>
+  <data name="WriteProtected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 16</value>
+  </data>
+  <data name="WriteProtected.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="WriteProtected.Text" xml:space="preserve">
+    <value>Data source is write protected</value>
+  </data>
+  <data name="&gt;&gt;WriteProtected.Name" xml:space="preserve">
+    <value>WriteProtected</value>
+  </data>
+  <data name="&gt;&gt;WriteProtected.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WriteProtected.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;WriteProtected.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>416, 264</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>576, 504</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FeatureSourceEditorOGR</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>
