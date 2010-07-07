@@ -75,6 +75,10 @@
       <ComponentGroupRef Id="group_MAESTROBIN_fr_FR" />
     </Feature>
 
+    <Feature Id="hr_HR_LanguageFeature" Title="Croatian translation files" Level="1" Description="Installs the required files for displaying the MapGuide Maestro userinterface in Croatian (hr-HR)." AllowAdvertise="no" TypicalDefault="install" InstallDefault="local" >
+        <ComponentGroupRef Id="group_MAESTROBIN_hr_HR" />
+    </Feature>
+
     <!-- Launch Maestro setup -->
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch MapGuide Maestro now" />
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />

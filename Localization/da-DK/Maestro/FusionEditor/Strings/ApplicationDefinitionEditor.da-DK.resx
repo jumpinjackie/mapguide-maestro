@@ -141,4 +141,8 @@
     <value>- Adskilder -</value>
     <comment>The text displayed in the tree when a seperator is inserted</comment>
   </data>
+  <data name="UnsavedLayoutPreview" xml:space="preserve">
+    <value>The Application Definition has unsaved changes. If you do not save, the original version of the Application Definition will be shown. Save first before viewing?</value>
+    <comment>en "View in browser" is clicked with unsaved changes</comment>
+  </data>
 </root>

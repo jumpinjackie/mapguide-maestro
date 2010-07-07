@@ -1,5 +1,5 @@
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Maestro", "Maestro.wixproj", "{B8651092-0DBD-4B82-B9D5-8E4B4C8EC7B2}"
 EndProject
 Global
