@@ -79,6 +79,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not obtain identity properties for {0}. This class either has no identity properties and/or is derived from a view with no uniquely identifiable columns. Attempting to create feature joins from this class may produce unexpected results..
+        /// </summary>
+        internal static string NoPrimaryKeyOrView {
+            get {
+                return ResourceManager.GetString("NoPrimaryKeyOrView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No spatial contexts found.
         /// </summary>
         internal static string NoSpatialContextWarning {

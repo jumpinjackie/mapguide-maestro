@@ -83,13 +83,24 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                 try
                 {
                     string[] ids = feature.GetIdentityProperties(cl);
+                    //According to my tests, this code path never gets reached because the 
+                    //MG server will incorrectly throw MgClassNotFoundException when querying
+                    //a class with no identity properties. Nevertheless we'll leave this in, if/when
+                    //this logic is fixed server-side.
                     if (ids == null || ids.Length == 0)
                         issues.Add(new ValidationIssue(feature, ValidationStatus.Information, string.Format(Strings.FeatureSourceValidator.PrimaryKeyMissingInformation, cl)));
                 }
                 catch (Exception ex)
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Strings.FeatureSourceValidator.PrimaryKeyReadError, msg)));
+                    if (msg.IndexOf("MgClassNotFoundException") >= 0)
+                    {
+                        issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, string.Format(Strings.FeatureSourceValidator.NoPrimaryKeyOrView, cl)));
+                    }
+                    else
+                    {
+                        issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Strings.FeatureSourceValidator.PrimaryKeyReadError, msg)));
+                    }
                 }
             }
 
