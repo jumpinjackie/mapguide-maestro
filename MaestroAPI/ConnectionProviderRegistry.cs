@@ -39,13 +39,23 @@ namespace OSGeo.MapGuide.MaestroAPI
         static Dictionary<string, Type> _ctors;
         static List<ConnectionProviderEntry> _providers;
 
+        static string _dllRoot;
+
         static ConnectionProviderRegistry()
         {
             _ctors = new Dictionary<string, Type>();
             _providers = new List<ConnectionProviderEntry>();
 
+            var path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+            path = System.IO.Path.Combine(path, PROVIDER_CONFIG);
+
+            //Convert file uri to path syntax
+            path = path.Substring(6).Replace('/', '\\');
+
+            _dllRoot = System.IO.Path.GetDirectoryName(path);
+
             XmlDocument doc = new XmlDocument();
-            doc.Load(PROVIDER_CONFIG);
+            doc.Load(path);
 
             XmlNodeList providers = doc.SelectNodes("//ConnectionProviderRegistry/ConnectionProvider");
             foreach (XmlNode prov in providers)
@@ -54,6 +64,9 @@ namespace OSGeo.MapGuide.MaestroAPI
                 string desc = prov["Description"].InnerText;
                 string dll = prov["Assembly"].InnerText;
                 string type = prov["Type"].InnerText;
+
+                if (!System.IO.Path.IsPathRooted(dll))
+                    dll = System.IO.Path.Combine(_dllRoot, dll);
 
                 Assembly asm = Assembly.LoadFrom(dll);
                 Type t = asm.GetType(type);
