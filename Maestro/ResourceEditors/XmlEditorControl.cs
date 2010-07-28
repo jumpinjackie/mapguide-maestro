@@ -840,14 +840,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				szFindInstance = szFind;
 			}
 
-			String szHighlight;
-			if (String.IsNullOrEmpty(szReplace))
-				szHighlight = szFindInstance;
-			else
-			{
-				textEditor.Text = textEditor.Text.Replace(szFindInstance, szReplace);
-				szHighlight = szReplace;
-			}
+            textEditor.Text = textEditor.Text.Replace(szFindInstance, szReplace);
+            String szHighlight = szReplace;
 
 			int iFound = textEditor.Text.IndexOf(szHighlight, iStartSearching);
 			if (iFound > -1)
