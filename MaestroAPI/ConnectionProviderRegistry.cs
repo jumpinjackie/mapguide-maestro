@@ -78,16 +78,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         private static NameValueCollection ParseConnectionString(string connectionString)
         {
-            NameValueCollection values = new NameValueCollection();
-            string[] tokens = connectionString.Split(';');
-            foreach (string tok in tokens)
-            {
-                string[] nameValue = tok.Split('=');
+            System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
+            builder.ConnectionString = connectionString;
 
-                if (nameValue.Length == 2)
-                {
-                    values.Add(nameValue[0], nameValue[1]);
-                }
+            NameValueCollection values = new NameValueCollection();
+            
+            foreach (string key in builder.Keys)
+            {
+                values.Add(key, builder[key].ToString());
             }
             return values;
         }

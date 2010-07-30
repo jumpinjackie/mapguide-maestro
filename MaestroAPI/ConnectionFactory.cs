@@ -19,23 +19,16 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public static ServerConnectionI CreateHttpConnection(Uri hosturl, string sessionid, string locale, bool allowUntestedVersion)
         {
+            System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
+            builder[HttpServerConnection.PARAM_URL] = hosturl.ToString();
+            builder[HttpServerConnection.PARAM_SESSION] = sessionid;
+            builder[HttpServerConnection.PARAM_UNTESTED] = allowUntestedVersion;
             string connStr = string.Empty;
-            if (string.IsNullOrEmpty(locale))
+            if (!string.IsNullOrEmpty(locale))
             {
-                connStr = string.Format("{0}={1};{2}={3};{4}={5}",
-                    HttpServerConnection.PARAM_URL, hosturl.ToString(),
-                    HttpServerConnection.PARAM_SESSION, sessionid,
-                    HttpServerConnection.PARAM_UNTESTED, allowUntestedVersion);
+                builder[HttpServerConnection.PARAM_LOCALE] = locale;
             }
-            else
-            {
-                connStr = string.Format("{0}={1};{2}={3};{4}={5};{6}={7}",
-                    HttpServerConnection.PARAM_URL, hosturl.ToString(),
-                    HttpServerConnection.PARAM_SESSION, sessionid,
-                    HttpServerConnection.PARAM_LOCALE, locale,
-                    HttpServerConnection.PARAM_UNTESTED, allowUntestedVersion);
-            }
-            return ConnectionProviderRegistry.CreateConnection("Maestro.Http", connStr);
+            return ConnectionProviderRegistry.CreateConnection("Maestro.Http", builder.ToString());
         }
 
         /// <summary>
@@ -49,25 +42,17 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public static ServerConnectionI CreateHttpConnection(Uri hosturl, string username, string password, string locale, bool allowUntestedVersion)
         {
-            string connStr = string.Empty;
-            if (string.IsNullOrEmpty(locale))
+            System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
+            builder[HttpServerConnection.PARAM_URL] = hosturl.ToString();
+            builder[HttpServerConnection.PARAM_USERNAME] = username;
+            builder[HttpServerConnection.PARAM_PASSWORD] = password;
+            builder[HttpServerConnection.PARAM_UNTESTED] = allowUntestedVersion;
+            
+            if (!string.IsNullOrEmpty(locale))
             {
-                connStr = string.Format("{0}={1};{2}={3};{4}={5};{6}={7}",
-                    HttpServerConnection.PARAM_URL, hosturl.ToString(),
-                    HttpServerConnection.PARAM_USERNAME, username,
-                    HttpServerConnection.PARAM_PASSWORD, password,
-                    HttpServerConnection.PARAM_UNTESTED, allowUntestedVersion);
+                builder[HttpServerConnection.PARAM_LOCALE] = locale;
             }
-            else
-            {
-                connStr = string.Format("{0}={1};{2}={3};{4}={5};{6}={7};{8}={9}",
-                    HttpServerConnection.PARAM_URL, hosturl.ToString(),
-                    HttpServerConnection.PARAM_USERNAME, username,
-                    HttpServerConnection.PARAM_PASSWORD, password,
-                    HttpServerConnection.PARAM_LOCALE, locale,
-                    HttpServerConnection.PARAM_UNTESTED, allowUntestedVersion);
-            }
-            return ConnectionProviderRegistry.CreateConnection("Maestro.Http", connStr);
+            return ConnectionProviderRegistry.CreateConnection("Maestro.Http", builder.ToString());
         }
 
         /// <summary>
@@ -80,23 +65,15 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public static ServerConnectionI CreateLocalNativeConnection(string configFile, string username, string password, string locale)
         {
-            string connStr = string.Empty;
-            if (string.IsNullOrEmpty(locale))
+            System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
+            builder[LocalNativeConnection.PARAM_CONFIG] = configFile;
+            builder[LocalNativeConnection.PARAM_USERNAME] = username;
+            builder[LocalNativeConnection.PARAM_PASSWORD] = password;
+            if (!string.IsNullOrEmpty(locale))
             {
-                connStr = string.Format("{0}={1};{2}={3};{4}={5}",
-                    LocalNativeConnection.PARAM_CONFIG, configFile,
-                    LocalNativeConnection.PARAM_USERNAME, username,
-                    LocalNativeConnection.PARAM_PASSWORD, password);
+                builder[LocalNativeConnection.PARAM_LOCALE] = locale;
             }
-            else
-            {
-                connStr = string.Format("{0}={1};{2}={3};{4}={5};{6}={7}",
-                    LocalNativeConnection.PARAM_CONFIG, configFile,
-                    LocalNativeConnection.PARAM_USERNAME, username,
-                    LocalNativeConnection.PARAM_PASSWORD, password,
-                    LocalNativeConnection.PARAM_LOCALE, locale);
-            }
-            return ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", connStr);
+            return ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", builder.ToString());
         }
 
         /// <summary>
@@ -106,7 +83,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public static ServerConnectionI CreateLocalNativeConnection(string sessionid)
         {
-            return ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", LocalNativeConnection.PARAM_SESSION + "=" + sessionid);
+            System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
+            builder[LocalNativeConnection.PARAM_SESSION] = sessionid;
+            return ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", sessionid);
         }
     }
 }
