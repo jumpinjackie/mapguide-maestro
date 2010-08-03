@@ -142,7 +142,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				toolStripTextBox_Replace.Text = szReplace;
 
 			if ((!String.IsNullOrEmpty(szFind)) && (!String.IsNullOrEmpty(szReplace)))
-				XML_FindAndReplace_Click( szFind, szReplace, false);
+				XML_FindAndReplace_Click( szFind, szReplace, false, true);
 		}
 
 		public XmlEditorControl(EditorInterface editor)
@@ -807,9 +807,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				return;
 			}
 
-			XML_FindAndReplace_Click(szFind, szReplace, true);
+			XML_FindAndReplace_Click(szFind, szReplace, true, true);
 		}
-		public void XML_FindAndReplace_Click( String szFind, String szReplace, bool kFromUI)
+		public void XML_FindAndReplace_Click( String szFind, String szReplace, bool kFromUI, bool replace)
 		{
 			// find start 
 			int iStartSearching = textEditor.SelectionStart;
@@ -840,8 +840,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				szFindInstance = szFind;
 			}
 
-            textEditor.Text = textEditor.Text.Replace(szFindInstance, szReplace);
-            String szHighlight = szReplace;
+            String szHighlight = string.Empty;
+            if (replace)
+            {
+                textEditor.Text = textEditor.Text.Replace(szFindInstance, szReplace);
+                szHighlight = szReplace;
+            }
+            else
+            {
+                szHighlight = szFind;
+            }
 
 			int iFound = textEditor.Text.IndexOf(szHighlight, iStartSearching);
 			if (iFound > -1)
@@ -866,7 +874,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 				return;
 			}
 
-			XML_FindAndReplace_Click(szFind, null, true);
+			XML_FindAndReplace_Click(szFind, null, true, false);
 		}
 	}
 }
