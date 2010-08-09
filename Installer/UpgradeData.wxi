@@ -3,7 +3,7 @@
   <?define UpgradeCode="A7C2ECB3-1991-47B9-A22E-8844BB95CAE2" ?>
 
   <!-- Remember to change product version on each install -->
-  <?define ProductVersion="2.1.0.4996" ?>
+  <?define ProductVersion="2.1.1.5078" ?>
 
   <?define Manufacturer="Open Source Geospatial Foundation" ?>
 

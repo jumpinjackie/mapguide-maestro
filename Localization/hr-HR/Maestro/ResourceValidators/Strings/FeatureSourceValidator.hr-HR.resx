@@ -149,4 +149,8 @@
     <value>Failed to read spatial context: {0}</value>
     <comment>An error message that is displayed if the spatial context could not be read</comment>
   </data>
+  <data name="NoPrimaryKeyOrView" xml:space="preserve">
+    <value>Could not obtain identity properties for {0}. This class either has no identity properties and/or is derived from a view with no uniquely identifiable columns. Attempting to create feature joins from this class may produce unexpected results.</value>
+    <comment>A warning message that is displayed when we can't obtain identity properties from a class because it is a view</comment>
+  </data>
 </root>
