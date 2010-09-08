@@ -299,6 +299,7 @@
     <Compile Include="RequestBuilder.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ReservedChar.cs" />
     <Compile Include="ResourceIdentifier.cs" />
     <Compile Include="RuntimeClasses\RuntimeMap.cs">
       <SubType>Code</SubType>

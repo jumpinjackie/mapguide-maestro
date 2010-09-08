@@ -612,17 +612,15 @@ namespace OSGeo.MapGuide.MaestroAPI {
 				if (m_parent == null)
 					return null;
 
-				string s = this.GetFullPath("/", m_parent);
+                string s = this.GetFullPath(ReservedChar.PATH_SEPARATOR, m_parent);
 				MapLayerTypeCollection layers = new MapLayerTypeCollection();
 				foreach(MapLayerType ml in m_parent.Layers)
-					if (ml.GetFullPath("/", m_parent).StartsWith(s))
+                    if (ml.GetFullPath(ReservedChar.PATH_SEPARATOR, m_parent).StartsWith(s))
 						layers.Add(ml);
 
 				return layers;
 			}
 		}
-
-
     }
     
     /// <remarks/>

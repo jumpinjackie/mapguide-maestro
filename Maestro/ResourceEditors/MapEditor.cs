@@ -157,15 +157,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             int index = m_map.LayerGroups.IndexOf((OSGeo.MapGuide.MaestroAPI.MapLayerGroupType)trvLayerGroups.SelectedNode.Tag);
             if (index >= 0)
             {
-                string new_folder_path = m_map.LayerGroups[index].GetFullPath("/", m_map) + "/";
-                string prev_folder_path = new_folder_path.Substring(0, new_folder_path.Length - args.NewName.Length - 1) + args.PreviousName + "/";
+                string new_folder_path = m_map.LayerGroups[index].GetFullPath(ReservedChar.PATH_SEPARATOR, m_map) + ReservedChar.PATH_SEPARATOR;
+                string prev_folder_path = new_folder_path.Substring(0, new_folder_path.Length - args.NewName.Length - 1) + args.PreviousName + ReservedChar.PATH_SEPARATOR;
 
                 for (int i = 0; i < m_map.Layers.Count; i++)
-                    if (m_map.Layers[i].Group == args.PreviousName && m_map.Layers[i].GetFullPath("/", m_map) == null)
+                    if (m_map.Layers[i].Group == args.PreviousName && m_map.Layers[i].GetFullPath(ReservedChar.PATH_SEPARATOR, m_map) == null)
                         m_map.Layers[i].Group = args.NewName;
 
                 for (int i = 0; i < m_map.LayerGroups.Count; i++)
-                    if (m_map.LayerGroups[i].Group == args.PreviousName && m_map.LayerGroups[i].GetFullPath("/", m_map) == null)
+                    if (m_map.LayerGroups[i].Group == args.PreviousName && m_map.LayerGroups[i].GetFullPath(ReservedChar.PATH_SEPARATOR, m_map) == null)
                         m_map.LayerGroups[i].Group = args.NewName;
 
                 m_editor.HasChanged();
@@ -227,7 +227,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					ArrayList toRemove = new ArrayList();
 					foreach(OSGeo.MapGuide.MaestroAPI.MapLayerGroupType group in unmapped)
 					{
-						TreeNodeCollection parent = FindParentNode(group.GetFullPath("/", m_map));
+                        TreeNodeCollection parent = FindParentNode(group.GetFullPath(ReservedChar.PATH_SEPARATOR, m_map));
 						if (parent != null)
 						{
 							TreeNode tn = new TreeNode(group.Name, m_editor.ResourceEditorMap.FolderIcon, m_editor.ResourceEditorMap.FolderIcon);
@@ -258,7 +258,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 					tn.Tag = layer;
 					tn.ImageIndex = tn.SelectedImageIndex = 0;
 
-					TreeNodeCollection parent = FindParentNode(layer.GetFullPath("/", m_map));
+                    var path = layer.GetFullPath(ReservedChar.PATH_SEPARATOR, m_map);
+                    TreeNodeCollection parent = FindParentNode(path);
                     if (parent == null)
                     {
                         layer.Group = "";
@@ -337,7 +338,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             if (fullpath == null)
                 return null;
 
-			string[] path = fullpath.Split('/');
+			string[] path = fullpath.Split(Char.Parse(ReservedChar.PATH_SEPARATOR));
 			TreeNodeCollection nodes = trvLayerGroups.Nodes;
 			bool found = true;
 			for(int i = 0; i < path.Length - 1; i++)
@@ -1272,11 +1273,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 			int index = m_map.LayerGroups.IndexOf((OSGeo.MapGuide.MaestroAPI.MapLayerGroupType)trvLayerGroups.SelectedNode.Tag);
 			if (index >= 0)
 			{
-                string folder_path = m_map.LayerGroups[index].GetFullPath("/", m_map) + "/";
+                string folder_path = m_map.LayerGroups[index].GetFullPath(ReservedChar.PATH_SEPARATOR, m_map) + ReservedChar.PATH_SEPARATOR;
 
                 for (int i = 0; i < m_map.Layers.Count; i++)
                 {
-                    string path = m_map.Layers[i].GetFullPath("/", m_map);
+                    string path = m_map.Layers[i].GetFullPath(ReservedChar.PATH_SEPARATOR, m_map);
                     if (path.StartsWith(folder_path))
                     {
                         m_map.Layers.RemoveAt(i);
@@ -1286,7 +1287,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
                 for (int i = 0; i < m_map.LayerGroups.Count; i++)
                 {
-                    string path = m_map.LayerGroups[i].GetFullPath("/", m_map);
+                    string path = m_map.LayerGroups[i].GetFullPath(ReservedChar.PATH_SEPARATOR, m_map);
                     if (path.StartsWith(folder_path))
                     {
                         m_map.LayerGroups.RemoveAt(i);
@@ -2543,13 +2544,13 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
             List<MaestroAPI.MapLayerType> layers = new List<OSGeo.MapGuide.MaestroAPI.MapLayerType>();
             List<MaestroAPI.MapLayerGroupType> groups = new List<OSGeo.MapGuide.MaestroAPI.MapLayerGroupType>();
-            
-            string grouppath = g.GetFullPath("/", m_map) + "/";
+
+            string grouppath = g.GetFullPath(ReservedChar.PATH_SEPARATOR, m_map) + ReservedChar.PATH_SEPARATOR;
 
             bool hasInvisible = false;
             foreach (MaestroAPI.MapLayerType l in m_map.Layers)
             {
-                string lpath = l.GetFullPath("/", m_map);
+                string lpath = l.GetFullPath(ReservedChar.PATH_SEPARATOR, m_map);
                 if (lpath != null && lpath.StartsWith(grouppath))
                 {
                     layers.Add(l);
@@ -2560,7 +2561,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
 
             foreach (MaestroAPI.MapLayerGroupType lg in m_map.LayerGroups)
             {
-                string lpath = lg.GetFullPath("/", m_map);
+                string lpath = lg.GetFullPath(ReservedChar.PATH_SEPARATOR, m_map);
                 if (lpath != null && lpath.StartsWith(grouppath))
                     groups.Add(lg);
             }
