@@ -151,12 +151,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
             else //Assuming username/password combination
             {
+                string pwd = initParams[PARAM_PASSWORD] ?? string.Empty;
                 if (initParams[PARAM_USERNAME] == null)
                     throw new ArgumentException("Missing required connection parameter: " + PARAM_USERNAME);
-                if (initParams[PARAM_PASSWORD] == null)
-                    throw new ArgumentException("Missing required connection parameter: " + PARAM_PASSWORD);
-
-                InitConnection(new Uri(initParams[PARAM_URL]), initParams[PARAM_USERNAME], initParams[PARAM_PASSWORD], locale, allowUntestedVersion);
+                
+                InitConnection(new Uri(initParams[PARAM_URL]), initParams[PARAM_USERNAME], pwd, locale, allowUntestedVersion);
             }
         }
 
