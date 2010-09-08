@@ -60,13 +60,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 if (initParams[PARAM_CONFIG] == null)
                     throw new ArgumentException("Missing connection parameter: " + PARAM_CONFIG);
-                if (initParams[PARAM_PASSWORD] == null)
-                    throw new ArgumentException("Missing connection parameter: " + PARAM_PASSWORD);
+                
                 if (initParams[PARAM_USERNAME] == null)
                     throw new ArgumentException("Missing connection parameter: " + PARAM_USERNAME);
 
                 string configFile = initParams[PARAM_CONFIG];
-                string password = initParams[PARAM_PASSWORD];
+                string password = initParams[PARAM_PASSWORD] ?? string.Empty;
                 string username = initParams[PARAM_USERNAME];
                 string locale = null;
                 if (initParams[PARAM_LOCALE] != null)
