@@ -46,11 +46,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             _ctors = new Dictionary<string, Type>();
             _providers = new List<ConnectionProviderEntry>();
 
-            var path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
-            path = System.IO.Path.Combine(path, PROVIDER_CONFIG);
-
-            //Convert file uri to path syntax
-            path = path.Substring(6).Replace('/', '\\');
+            var dir = System.IO.Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
+            var path = System.IO.Path.Combine(dir, PROVIDER_CONFIG);
 
             _dllRoot = System.IO.Path.GetDirectoryName(path);
 
