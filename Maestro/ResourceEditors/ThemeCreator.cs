@@ -199,7 +199,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                     retry = false;
                     try
                     {
-                        using (MaestroAPI.FeatureSetReader rd = m_editor.CurrentConnection.QueryFeatureSource(m_layer.Item.ResourceId, m_schema.Fullname, filter, new string[] { col.Name }))
+                        using (MaestroAPI.FeatureSetReader rd = m_editor.CurrentConnection.QueryFeatureSource(m_layer.Item.ResourceId, m_schema.FullnameDecoded, filter, new string[] { col.Name }))
                             while (rd.Read() && m_values.Count < 100000) //No more than 100.000 records in memory
                                 if (!rd.Row.IsValueNull(col.Name))
                                 {
