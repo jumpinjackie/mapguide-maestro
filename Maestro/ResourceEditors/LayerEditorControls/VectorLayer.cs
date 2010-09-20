@@ -379,6 +379,7 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             this.dataGrid1.RowHeadersVisible = false;
             this.dataGrid1.TableStyles.AddRange(new System.Windows.Forms.DataGridTableStyle[] {
             this.dataGridTableStyle1});
+            this.dataGrid1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dataGrid1_MouseUp);
             // 
             // dataGridTableStyle1
             // 
@@ -864,46 +865,51 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
 			if (m_layer == null || m_layer.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType == null || inUpdate)
 				return;
 
-			OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType vldef = m_layer.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType;
-
-			if (vldef.PropertyMapping == null)
-				vldef.PropertyMapping = new NameStringPairTypeCollection();
-
-			foreach(DataRow dr in ViewerPropertiesTable.Rows)
-			{
-				string n = (string)dr["Name"];
-				int i;
-				for(i = 0; i < vldef.PropertyMapping.Count; i++)
-					if (vldef.PropertyMapping[i].Name == n)
-						break;
-
-				if ((bool)dr["Visible"] == true)
-				{
-					if (i >= vldef.PropertyMapping.Count)
-					{
-						NameStringPairType ns = new NameStringPairType();
-						ns.Name = n;
-						ns.Value = (string)dr["Display"];
-						vldef.PropertyMapping.Add(ns);
-					}
-					else
-					{
-						if (vldef.PropertyMapping[i].Value != (string)dr["Display"])
-							vldef.PropertyMapping[i].Value = (string)dr["Display"];
-					}
-				}
-				else
-				{
-					if (i < vldef.PropertyMapping.Count)
-						vldef.PropertyMapping.RemoveAt(i);
-				}
-			}
-
-			if (vldef.PropertyMapping.Count == 0)
-				vldef.PropertyMapping = null;
-
-		    m_editor.HasChanged();
+            UpdateLayerProperties();
 		}
+
+        private void UpdateLayerProperties()
+        {
+            OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType vldef = m_layer.Item as OSGeo.MapGuide.MaestroAPI.VectorLayerDefinitionType;
+
+            if (vldef.PropertyMapping == null)
+                vldef.PropertyMapping = new NameStringPairTypeCollection();
+
+            foreach (DataRow dr in ViewerPropertiesTable.Rows)
+            {
+                string n = (string)dr["Name"];
+                int i;
+                for (i = 0; i < vldef.PropertyMapping.Count; i++)
+                    if (vldef.PropertyMapping[i].Name == n)
+                        break;
+
+                if ((bool)dr["Visible"] == true)
+                {
+                    if (i >= vldef.PropertyMapping.Count)
+                    {
+                        NameStringPairType ns = new NameStringPairType();
+                        ns.Name = n;
+                        ns.Value = (string)dr["Display"];
+                        vldef.PropertyMapping.Add(ns);
+                    }
+                    else
+                    {
+                        if (vldef.PropertyMapping[i].Value != (string)dr["Display"])
+                            vldef.PropertyMapping[i].Value = (string)dr["Display"];
+                    }
+                }
+                else
+                {
+                    if (i < vldef.PropertyMapping.Count)
+                        vldef.PropertyMapping.RemoveAt(i);
+                }
+            }
+
+            if (vldef.PropertyMapping.Count == 0)
+                vldef.PropertyMapping = null;
+
+            m_editor.HasChanged();
+        }
 
         private void AddScaleRangeButton_Click(object sender, EventArgs e)
         {
@@ -1138,6 +1144,24 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls
             #endregion
         }
 
+        //http://www.syncfusion.com/FAQ/windowsforms/faq_c44c.aspx#q945q
+        private void dataGrid1_MouseUp(object sender, MouseEventArgs e)
+        {
+            DataGrid.HitTestInfo hti = this.dataGrid1.HitTest(e.X, e.Y);
+            try
+            {
+                if (hti.Type == DataGrid.HitTestType.Cell &&
+                     hti.Column == 0)
+                {
+                    this.dataGrid1[hti.Row, hti.Column] = !(bool)this.dataGrid1[hti.Row, hti.Column];
+                    UpdateLayerProperties();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            } 
+        }
 	}	
 	
 }
