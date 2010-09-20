@@ -18,6 +18,7 @@
 // 
 #endregion
 
+using System;
 namespace OSGeo.MapGuide.MaestroAPI 
 {
     
@@ -25,14 +26,34 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// <remarks/>
     [System.Xml.Serialization.XmlRootAttribute("WebLayout", Namespace="", IsNullable=false)]
     public class WebLayout {
-        
+        [System.Xml.Serialization.XmlIgnore]
 		public static readonly string SchemaName = "WebLayout-1.0.0.xsd";
+
+        [System.Xml.Serialization.XmlIgnore]
+        public static readonly string SchemaName1_1 = "WebLayout-1.1.0.xsd";
         
+        [System.Xml.Serialization.XmlIgnore]
+        public static string [] ValidSchemaNames 
+        { 
+            get 
+            { 
+                return new string[] { SchemaName, SchemaName1_1 }; 
+            }
+        }
+
+        private string _xsdSchema = SchemaName;
+
 		[System.Xml.Serialization.XmlAttribute("noNamespaceSchemaLocation", Namespace="http://www.w3.org/2001/XMLSchema-instance")]
 		public string XsdSchema
 		{
-			get { return SchemaName; }
-			set { if (value != SchemaName) throw new System.Exception("Cannot set the schema name"); }
+            get { return _xsdSchema; }
+			set 
+            { 
+                if (Array.IndexOf(ValidSchemaNames, value) < 0) 
+                    throw new System.Exception("Cannot set the schema name");
+
+                _xsdSchema = value;
+            }
 		}
 
 		private string m_resourceId;
@@ -57,6 +78,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         private string m_title;
         private MapType m_map;
+        private string m_ping;
         private ToolBarType m_toolBar;
         private InformationPaneType m_informationPane;
         private ContextMenuType m_contextMenu;
@@ -84,6 +106,30 @@ namespace OSGeo.MapGuide.MaestroAPI
                 this.m_map = value;
             }
         }
+
+        [System.Xml.Serialization.XmlElement()]
+        public string EnablePingServer
+        {
+            get 
+            {
+                if (this.XsdSchema == SchemaName1_1)
+                {
+                    if (string.IsNullOrEmpty(m_ping))
+                        m_ping = true.ToString();
+
+                    return m_ping.ToLower();
+                }
+                return null; 
+            }
+            set 
+            {
+                if (value != null)
+                    m_ping = value.ToLower();
+                else
+                    m_ping = value;
+            }
+        }
+
         
         /// <remarks/>
         public ToolBarType ToolBar {
@@ -154,6 +200,24 @@ namespace OSGeo.MapGuide.MaestroAPI
             set {
                 this.m_commandSet = value;
             }
+        }
+
+        public void ConvertToVersion(System.Version version)
+        {
+            string xsd = "WebLayout-" + version.ToString() + ".xsd";
+            this.XsdSchema = xsd;
+
+            //Remove the EnablePingServer element if 1.0.0
+            if (version == new Version(1, 0, 0))
+            {
+                this.EnablePingServer = null;
+            }
+        }
+
+        public string GetVersion()
+        {
+            //x.y.z = 5 characters
+            return this.XsdSchema.Substring("WebLayout-".Length, 5);
         }
     }
     

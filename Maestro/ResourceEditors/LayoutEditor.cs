@@ -139,6 +139,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         private ToolStripMenuItem AddSeperatorItem;
         private ContextMenuStrip CreateCommandMenu;
         private ImageList FixedImages;
+        private Label label13;
+        private ComboBox cmbVersion;
+        private CheckBox chkPingServer;
 		private string m_tempResource;
 
 		private enum ListViewColumns : int
@@ -263,6 +266,15 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 else
                     browserURL.Text = "";
 
+                cmbVersion.SelectedIndex = cmbVersion.FindStringExact(m_layout.GetVersion());
+
+                Version ver = new Version(cmbVersion.SelectedItem.ToString());
+                chkPingServer.Enabled = (ver > BASE_VERSION);
+
+                if (chkPingServer.Enabled)
+                {
+                    chkPingServer.Checked = Convert.ToBoolean(m_layout.EnablePingServer);
+                }
 			}
 			finally
 			{
@@ -557,6 +569,9 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.AddSeperatorItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateCommandMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.FixedImages = new System.Windows.Forms.ImageList(this.components);
+            this.label13 = new System.Windows.Forms.Label();
+            this.cmbVersion = new System.Windows.Forms.ComboBox();
+            this.chkPingServer = new System.Windows.Forms.CheckBox();
             this.overriddenMapExtents.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -1210,26 +1225,52 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
             this.FixedImages.Images.SetKeyName(0, "FolderOpen.ico");
             this.FixedImages.Images.SetKeyName(1, "Seperator.ico");
             // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // cmbVersion
+            // 
+            this.cmbVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVersion.FormattingEnabled = true;
+            this.cmbVersion.Items.AddRange(new object[] {
+            resources.GetString("cmbVersion.Items"),
+            resources.GetString("cmbVersion.Items1")});
+            resources.ApplyResources(this.cmbVersion, "cmbVersion");
+            this.cmbVersion.Name = "cmbVersion";
+            this.cmbVersion.SelectedIndexChanged += new System.EventHandler(this.cmbVersion_SelectedIndexChanged);
+            // 
+            // chkPingServer
+            // 
+            resources.ApplyResources(this.chkPingServer, "chkPingServer");
+            this.chkPingServer.Name = "chkPingServer";
+            this.chkPingServer.UseVisualStyleBackColor = true;
+            this.chkPingServer.CheckedChanged += new System.EventHandler(this.chkPingServer_CheckedChanged);
+            // 
             // LayoutEditor
             // 
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.chkPingServer);
+            this.Controls.Add(this.cmbVersion);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.MenuBox);
+            this.Controls.Add(this.SelectMapButton);
             this.Controls.Add(this.ShowInBrowser);
             this.Controls.Add(this.browserURL);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.MenuBox);
+            this.Controls.Add(this.MapResource);
             this.Controls.Add(this.FeatureLinkTargetType);
             this.Controls.Add(this.FeatureLinkTarget);
             this.Controls.Add(this.HomePageURL);
-            this.Controls.Add(this.SelectMapButton);
-            this.Controls.Add(this.MapResource);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.OverrideDisplayExtents);
-            this.Controls.Add(this.overriddenMapExtents);
             this.Controls.Add(this.TitleText);
+            this.Controls.Add(this.OverrideDisplayExtents);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.overriddenMapExtents);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Name = "LayoutEditor";
             this.overriddenMapExtents.ResumeLayout(false);
             this.overriddenMapExtents.PerformLayout();
@@ -2169,5 +2210,31 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         public bool SupportsPreview { get { return m_editor.CurrentConnection.SupportsResourcePreviews; } }
         public bool SupportsValidate { get { return true; } }
         public bool SupportsProfiling { get { return false; } }
+
+        static readonly Version BASE_VERSION = new Version(1, 0, 0);
+
+        private void cmbVersion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_isUpdating || cmbVersion.SelectedIndex < 0)
+                return;
+
+            Version ver = new Version(cmbVersion.SelectedItem.ToString());
+            chkPingServer.Enabled = (ver > BASE_VERSION);
+
+            m_layout.ConvertToVersion(ver);
+
+            if (chkPingServer.Enabled)
+            {
+                chkPingServer.Checked = Convert.ToBoolean(m_layout.EnablePingServer);
+            }
+
+            m_editor.HasChanged();
+        }
+
+        private void chkPingServer_CheckedChanged(object sender, EventArgs e)
+        {
+            m_layout.EnablePingServer = (chkPingServer.Checked).ToString();
+            m_editor.HasChanged();
+        }
     }
 }
