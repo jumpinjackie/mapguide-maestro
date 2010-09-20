@@ -2434,15 +2434,53 @@ namespace OSGeo.MapGuide.MaestroAPI
                                     ld.ResourceId = lyrId;
                                     VectorLayerDefinitionType vld = ld.Item as VectorLayerDefinitionType;
                                     vld.ResourceId = fsId;
-                                    vld.FeatureName = clsDef.Fullname;
+                                    vld.FeatureName = clsDef.FullnameDecoded;
                                     vld.Geometry = geom.Name;
+
+                                    //Step 4: Infer geometry storage support and remove unsupported styles
+                                    object obj = geom.GetMetadata(GeometryMetadata.GEOM_TYPES);
+                                    if (obj != null)
+                                    {
+                                        List<string> geomTypes = new List<string>();
+                                        geomTypes.AddRange(obj.ToString().Trim().Split(' '));
+
+                                        var scale = vld.VectorScaleRange[0];
+
+                                        if (!geomTypes.Contains(GeometryMetadata.GEOM_TYPE_POINT))
+                                        {
+                                            for (int i = scale.Items.Count - 1; i >= 0; i--)
+                                            {
+                                                if (typeof(PointTypeStyleType).IsAssignableFrom(scale.Items[i].GetType()))
+                                                {
+                                                    scale.Items.RemoveAt(i);
+                                                }
+                                            }
+                                        }
+                                        if (!geomTypes.Contains(GeometryMetadata.GEOM_TYPE_CURVE))
+                                        {
+                                            for (int i = scale.Items.Count - 1; i >= 0; i--)
+                                            {
+                                                if (typeof(LineTypeStyleType).IsAssignableFrom(scale.Items[i].GetType()))
+                                                {
+                                                    scale.Items.RemoveAt(i);
+                                                }
+                                            }
+                                        }
+                                        if (!geomTypes.Contains(GeometryMetadata.GEOM_TYPE_SURFACE))
+                                        {
+                                            for (int i = scale.Items.Count - 1; i >= 0; i--)
+                                            {
+                                                if (typeof(AreaTypeStyleType).IsAssignableFrom(scale.Items[i].GetType()))
+                                                {
+                                                    scale.Items.RemoveAt(i);
+                                                }
+                                            }
+                                        }
+                                    }
 
                                     this.SaveResource(ld);
                                     resCreatedOrUpdated.Add(lyrId);
                                     cb(this, new LengthyOperationProgressArgs("Created: " + lyrId, current));
-
-                                    //Step 4: Infer geometry storage support and remove unsupported styles
-                                    //TODO: There doesn't seem to be a MaestroAPI way to figure out geometry storage types atm
                                 }
                             }
                         }
@@ -2640,12 +2678,50 @@ namespace OSGeo.MapGuide.MaestroAPI
                                     vld.FeatureName = clsDef.Fullname;
                                     vld.Geometry = geom.Name;
 
+                                    //Step 4: Infer geometry storage support and remove unsupported styles
+                                    object obj = geom.GetMetadata(GeometryMetadata.GEOM_TYPES);
+                                    if (obj != null)
+                                    {
+                                        List<string> geomTypes = new List<string>();
+                                        geomTypes.AddRange(obj.ToString().Trim().Split(' '));
+
+                                        var scale = vld.VectorScaleRange[0];
+
+                                        if (!geomTypes.Contains(GeometryMetadata.GEOM_TYPE_POINT))
+                                        {
+                                            for (int i = scale.Items.Count - 1; i >= 0; i--)
+                                            {
+                                                if (typeof(PointTypeStyleType).IsAssignableFrom(scale.Items[i].GetType()))
+                                                {
+                                                    scale.Items.RemoveAt(i);
+                                                }
+                                            }
+                                        }
+                                        if (!geomTypes.Contains(GeometryMetadata.GEOM_TYPE_CURVE))
+                                        {
+                                            for (int i = scale.Items.Count - 1; i >= 0; i--)
+                                            {
+                                                if (typeof(LineTypeStyleType).IsAssignableFrom(scale.Items[i].GetType()))
+                                                {
+                                                    scale.Items.RemoveAt(i);
+                                                }
+                                            }
+                                        }
+                                        if (!geomTypes.Contains(GeometryMetadata.GEOM_TYPE_SURFACE))
+                                        {
+                                            for (int i = scale.Items.Count - 1; i >= 0; i--)
+                                            {
+                                                if (typeof(AreaTypeStyleType).IsAssignableFrom(scale.Items[i].GetType()))
+                                                {
+                                                    scale.Items.RemoveAt(i);
+                                                }
+                                            }
+                                        }
+                                    }
+
                                     this.SaveResource(ld);
                                     resCreatedOrUpdated.Add(lyrId);
                                     cb(this, new LengthyOperationProgressArgs("Created: " + lyrId, current));
-
-                                    //Step 4: Infer geometry storage support and remove unsupported styles
-                                    //TODO: There doesn't seem to be a MaestroAPI way to figure out geometry storage types atm
                                 }
                             }
                         }

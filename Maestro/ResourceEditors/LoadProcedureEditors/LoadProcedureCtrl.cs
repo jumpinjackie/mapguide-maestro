@@ -200,6 +200,8 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LoadProcedureEditors
             try
             {
                 dlg.RunOperationAsync(ownerForm, worker, _ed.CurrentConnection, _resourceID);
+                MessageBox.Show("Load Procedure completed");
+                _ed.RefreshTree();
             }
             catch (CancelException)
             {

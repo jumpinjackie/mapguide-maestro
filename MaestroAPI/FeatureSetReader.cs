@@ -271,12 +271,26 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 	public abstract class FeatureSetColumn
 	{
+        protected System.Collections.Hashtable m_metadata = new System.Collections.Hashtable();
+
 		protected string m_name;
         protected Type m_type;
         protected bool m_allowNull;
 
 		public string Name { get { return m_name; } }
 		public Type Type { get { return m_type; } }
+
+        public System.Collections.ICollection MetadataKeys { get { return m_metadata.Keys; } }
+
+        public object GetMetadata(string key)
+        {
+            return m_metadata[key];
+        }
+
+        public void SetMetadata(string key, object value)
+        {
+            m_metadata[key] = value;
+        }
 	}
 
 	public abstract class FeatureSetRow : IDataRecord

@@ -412,6 +412,11 @@ namespace OSGeo.MapGuide.Maestro
             Program.OpenUrl(url);
         }
 
+        public void RefreshTree()
+        {
+            m_editor.RebuildDocumentTree();
+        }
+
         public bool UseFusionPreview { get { return Program.ApplicationSettings.UseFusionPreview; } }
 
         public void SetLastException(Exception ex) { m_editor.LastException = ex; }

@@ -61,6 +61,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
         /// </summary>
         void UpdateResourceStates();
 
+        /// <summary>
+        /// Forces a refresh of the Site Explorer
+        /// </summary>
+        void RefreshTree();
+
 		/// <summary>
 		/// Request a browse dialog for the specified resource type
 		/// </summary>

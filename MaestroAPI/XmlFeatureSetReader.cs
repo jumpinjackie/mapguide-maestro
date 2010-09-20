@@ -229,6 +229,16 @@ namespace OSGeo.MapGuide.MaestroAPI
 		}
     }
 
+    public class GeometryMetadata
+    {
+        public const string GEOM_TYPES = "GEOM_TYPES";
+
+        public const string GEOM_TYPE_POINT = "point";
+        public const string GEOM_TYPE_CURVE = "curve";
+        public const string GEOM_TYPE_SURFACE = "surface";
+        public const string GEOM_TYPE_SOLID = "solid";
+    }
+
     public class XmlFeatureSetColumn : FeatureSetColumn
     {
         internal XmlFeatureSetColumn(XmlNode node) : base()
@@ -290,10 +300,16 @@ namespace OSGeo.MapGuide.MaestroAPI
                 m_name = node.Attributes["name"].Value;
                 m_allowNull = node.Attributes["minOccurs"] != null && node.Attributes["minOccurs"].Value == "0";
                 if (node.Attributes["type"] != null && node.Attributes["type"].Value == "gml:AbstractGeometryType")
+                {
                     m_type = Utility.GeometryType;
+                    this.SetMetadata(GeometryMetadata.GEOM_TYPES, node.Attributes["fdo:geometricTypes"].Value);
+                }
                 else if (node["xs:simpleType"] == null)
+                {
                     m_type = Utility.RasterType;
+                }
                 else
+                {
                     switch (node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value.ToLower())
                     {
                         case "xs:string":
@@ -331,6 +347,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                             m_type = Utility.UnmappedType;
                             break;
                     }
+                }
             }
 		}
     }
