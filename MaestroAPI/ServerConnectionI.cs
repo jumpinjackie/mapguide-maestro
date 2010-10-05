@@ -423,5 +423,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Indicates whether previewing capabilities are possible with this connection
         /// </summary>
         bool SupportsResourcePreviews { get; }
+
+        /// <summary>
+        /// Returns information about the current site server
+        /// </summary>
+        /// <returns></returns>
+        SiteInformation GetSiteInformation();
     }
 }

@@ -1269,6 +1269,20 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
+        public string GetSiteInfo()
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "GETSITEINFO");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", m_userAgent);
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
         public string UserAgent
         {
             get { return m_userAgent; }

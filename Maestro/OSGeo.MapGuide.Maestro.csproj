@@ -264,6 +264,12 @@
     <Compile Include="ResourceProperties.Designer.cs">
       <DependentUpon>ResourceProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServerStatusMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServerStatusMonitor.Designer.cs">
+      <DependentUpon>ServerStatusMonitor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Strings\BoundsPicker.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -417,6 +423,9 @@
     <EmbeddedResource Include="ResourceProperties.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ResourceProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServerStatusMonitor.resx">
+      <DependentUpon>ServerStatusMonitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\BoundsPicker.resx">
       <Generator>ResXFileCodeGenerator</Generator>

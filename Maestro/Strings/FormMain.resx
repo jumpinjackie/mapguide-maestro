@@ -164,6 +164,9 @@ Delete the resource?</value>
     <value>Item not found: {0}</value>
     <comment>An error message that is displayed if an internal error occurs</comment>
   </data>
+  <data name="LastUpdated" xml:space="preserve">
+    <value>Last Updated: </value>
+  </data>
   <data name="LocateNodeInternalError" xml:space="preserve">
     <value>Failed to find node with name {0}, while looking for: {1}</value>
     <comment>An error message that is displayed if an internal error occurs</comment>
@@ -246,6 +249,9 @@ Closing this application will loose the changes.
 Do you want to save the resources before closing?</value>
     <comment>A confirmation message that is displayed when the user attempts to close the application while there are unsaved resources</comment>
   </data>
+  <data name="SiteAdminNotSupported" xml:space="preserve">
+    <value>Cannot invoke Site Administrator from this connection</value>
+  </data>
   <data name="TemplateLoadError" xml:space="preserve">
     <value>Failed to load template: {0}</value>
     <comment>An error message that is displayed when a template fails to load</comment>
@@ -257,6 +263,15 @@ Do you want to save the resources before closing?</value>
   <data name="TooManyFoldersInternalError" xml:space="preserve">
     <value>Internal error, more than 100 new folders is usually an indication of an error</value>
     <comment>An error message that is displayed when an internal error occurs</comment>
+  </data>
+  <data name="UnitsKb" xml:space="preserve">
+    <value>KB</value>
+  </data>
+  <data name="UnitsMs" xml:space="preserve">
+    <value>ms</value>
+  </data>
+  <data name="UnitsSeconds" xml:space="preserve">
+    <value>s</value>
   </data>
   <data name="UnknownResourceTypeError" xml:space="preserve">
     <value>Unable to determine the resource type for: {0}</value>

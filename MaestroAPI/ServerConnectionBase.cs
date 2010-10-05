@@ -2743,5 +2743,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
             return resCreatedOrUpdated.ToArray();
         }
+
+        public abstract SiteInformation GetSiteInformation();
     }
 }

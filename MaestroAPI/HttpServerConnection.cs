@@ -1509,6 +1509,15 @@ namespace OSGeo.MapGuide.MaestroAPI
             return this.OpenRead(req);
         }
 
+        public override SiteInformation GetSiteInformation()
+        {
+            var req = m_reqBuilder.GetSiteInfo();
+            using (var s = this.OpenRead(req))
+            {
+                return this.DeserializeObject<SiteInformation>(s);
+            }
+        }
+
         /// <summary>
         /// Gets or sets the agent reported to MapGuide. 
         /// Free form text, will appear in the log files.

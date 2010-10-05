@@ -25,6 +25,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Xml;
 using OSGeo.MapGuide.MaestroAPI;
+using System.Diagnostics;
 
 namespace OSGeo.MapGuide.Maestro
 {
@@ -141,6 +142,9 @@ namespace OSGeo.MapGuide.Maestro
         private ToolStripMenuItem OpenAllChildrenMenu;
         private ToolStripSeparator toolStripSeparator10;
         private ToolStripMenuItem FindReplaceChildrenMenu;
+        private ToolStripMenuItem toolsToolStripMenuItem;
+        private ToolStripMenuItem serverStatusMonitorToolStripMenuItem;
+        private ToolStripMenuItem siteAdministratorToolStripMenuItem;
         private string m_lastTabPageTooltip;
 
         public FormMain()
@@ -273,6 +277,9 @@ namespace OSGeo.MapGuide.Maestro
             this.TabPageTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.SaveAsXmlDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenXmlFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serverStatusMonitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.siteAdministratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TreeContextMenu.SuspendLayout();
             this.ResourceTreeToolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -586,6 +593,7 @@ namespace OSGeo.MapGuide.Maestro
             this.menuItem2,
             this.MainMenuEdit,
             this.packagesToolStripMenuItem,
+            this.toolsToolStripMenuItem,
             this.menuItem3});
             resources.ApplyResources(this.MainMenu, "MainMenu");
             this.MainMenu.Name = "MainMenu";
@@ -947,6 +955,26 @@ namespace OSGeo.MapGuide.Maestro
             // 
             resources.ApplyResources(this.OpenXmlFileDialog, "OpenXmlFileDialog");
             // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serverStatusMonitorToolStripMenuItem,
+            this.siteAdministratorToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
+            // 
+            // serverStatusMonitorToolStripMenuItem
+            // 
+            this.serverStatusMonitorToolStripMenuItem.Name = "serverStatusMonitorToolStripMenuItem";
+            resources.ApplyResources(this.serverStatusMonitorToolStripMenuItem, "serverStatusMonitorToolStripMenuItem");
+            this.serverStatusMonitorToolStripMenuItem.Click += new System.EventHandler(this.serverStatusMonitorToolStripMenuItem_Click);
+            // 
+            // siteAdministratorToolStripMenuItem
+            // 
+            this.siteAdministratorToolStripMenuItem.Name = "siteAdministratorToolStripMenuItem";
+            resources.ApplyResources(this.siteAdministratorToolStripMenuItem, "siteAdministratorToolStripMenuItem");
+            this.siteAdministratorToolStripMenuItem.Click += new System.EventHandler(this.siteAdministratorToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
@@ -1033,7 +1061,10 @@ namespace OSGeo.MapGuide.Maestro
 			//frm.UseAutoConnect = true;
 
             if (frm.ShowDialog(this) == DialogResult.OK)
+            {
                 m_connection = frm.Connection;
+                ServerStatusMonitor.Init(m_connection);
+            }
             else
             {
                 Application.Exit();
@@ -2390,6 +2421,7 @@ namespace OSGeo.MapGuide.Maestro
 					ResourceTree.Nodes.Clear();
                     ResourceTree.Cache.Connection = lg.Connection;
 					m_connection = lg.Connection;
+                    ServerStatusMonitor.Init(m_connection);
 					RebuildDocumentTree();
 
                     if (m_connection is OSGeo.MapGuide.MaestroAPI.HttpServerConnection)
@@ -3112,6 +3144,24 @@ namespace OSGeo.MapGuide.Maestro
                     break;
             }
             UpdateResourceTreeStatus(editors);
+        }
+
+        private void serverStatusMonitorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ServerStatusMonitor.ShowWindow();
+        }
+
+        private void siteAdministratorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var htcon = m_connection as HttpServerConnection;
+            if (htcon != null)
+            {
+                Process.Start(htcon.BaseURL + "mapadmin/login.php");
+            }
+            else
+            {
+                MessageBox.Show(Strings.FormMain.SiteAdminNotSupported);
+            }
         }
 	}
 }
