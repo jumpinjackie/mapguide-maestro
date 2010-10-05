@@ -520,6 +520,29 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors
                 map.Layers.Add(l);
 
                 m_editor.CurrentConnection.SaveResourceAs(m_layer, templayer);
+
+                //Try to infer CS from layer
+                var ldf = (LayerDefinition)m_editor.CurrentConnection.GetResource(templayer);
+                var feats = (FeatureSource)m_editor.CurrentConnection.GetResource(ldf.Item.ResourceId);
+                var scList = feats.GetSpatialInfo();
+                if (scList.SpatialContext.Count > 0)
+                {
+                    string wkt = string.Empty;
+                    foreach (FdoSpatialContextListSpatialContext sc in scList.SpatialContext)
+                    {
+                        if (sc.IsActive)
+                        {
+                            wkt = sc.CoordinateSystemWkt;
+                            continue;
+                        }
+                    }
+                    if (string.IsNullOrEmpty(wkt))
+                        map.CoordinateSystem = scList.SpatialContext[0].CoordinateSystemWkt;
+
+                    if (!string.IsNullOrEmpty(wkt))
+                        map.CoordinateSystem = wkt;
+                }
+
                 m_editor.CurrentConnection.SaveResourceAs(map, tempmap);
 
                 if (m_editor.UseFusionPreview)
