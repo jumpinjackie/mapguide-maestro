@@ -877,7 +877,56 @@ namespace OSGeo.MapGuide.MaestroAPI
 			//Do nothing... there is no return value
 		}
 
+        public override bool MoveFolderWithReferences(string oldpath, string newpath, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress)
+        {
+            if (this.SiteVersion >= new Version(2, 2)) //new way
+            {
+                //Unfortunately because this is all batched server-side, there is no
+                //meaningful way to track progress
+                LengthyOperationProgressArgs la = new LengthyOperationProgressArgs("Moving resource...", -1); //LOCALIZEME
+                if (progress != null)
+                    progress(this, la);
 
+                oldpath = FixAndValidateFolderPath(oldpath);
+                newpath = FixAndValidateFolderPath(newpath);
+
+                string req = m_reqBuilder.MoveResource(oldpath, newpath, true);
+                req += "&CASCADE=1";
+
+                using (System.IO.Stream resp = this.OpenRead(req))
+                    resp.ReadByte();
+
+                return true;
+            }
+            else //old way
+            {
+                return base.MoveFolderWithReferences(oldpath, newpath, callback, progress);
+            }
+        }
+
+        public override bool MoveResourceWithReferences(string oldpath, string newpath, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress)
+        {
+            if (this.SiteVersion >= new Version(2, 2)) //new way
+            {
+                //Unfortunately because this is all batched server-side, there is no
+                //meaningful way to track progress
+                LengthyOperationProgressArgs la = new LengthyOperationProgressArgs("Moving resource...", -1); //LOCALIZEME
+                if (progress != null)
+                    progress(this, la);
+
+                string req = m_reqBuilder.MoveResource(oldpath, newpath, true);
+                req += "&CASCADE=1";
+
+                using (System.IO.Stream resp = this.OpenRead(req))
+                    resp.ReadByte();
+
+                return true;
+            }
+            else //old way
+            {
+                return base.MoveResourceWithReferences(oldpath, newpath, callback, progress);
+            }
+        }
 
 		public override System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
 		{

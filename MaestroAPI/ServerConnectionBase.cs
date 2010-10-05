@@ -815,7 +815,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="callback">A callback delegate, being called for non progress reporting events.</param>
 		/// <param name="progress">A callback delegate, being called for progress reporting events.</param>
 		/// <returns></returns>
-		public bool MoveResourceWithReferences(string oldpath, string newpath, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress)
+		public virtual bool MoveResourceWithReferences(string oldpath, string newpath, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress)
 		{
 			LengthyOperationProgressArgs la = new LengthyOperationProgressArgs("Moving resource...", -1);
 
@@ -922,7 +922,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <param name="callback">A callback delegate, being called for non progress reporting events.</param>
 		/// <param name="progress">A callback delegate, being called for progress reporting events.</param>
 		/// <returns></returns>
-		public bool MoveFolderWithReferences(string oldpath, string newpath, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress)
+		public virtual bool MoveFolderWithReferences(string oldpath, string newpath, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress)
 		{
 			oldpath = FixAndValidateFolderPath(oldpath);
 			newpath = FixAndValidateFolderPath(newpath);
