@@ -895,7 +895,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             get
             {
                 if (_admin == null)
+                {
                     _admin = new MgServerAdmin();
+                    _admin.Open(new MgUserInformation(this.SessionID)); 
+                }
 
                 return _admin;
             }
@@ -911,68 +914,63 @@ namespace OSGeo.MapGuide.MaestroAPI
             var props = this.ServerAdmin.GetInformationProperties();
 
             var prop = props.GetItem(MgServerInformationProperties.DisplayName);
-            info.SiteServer.DisplayName = GetValue(prop);
+            info.SiteServer.DisplayName = ((MgStringProperty)prop).GetValue();
 
             prop = props.GetItem(MgServerInformationProperties.OperatingSystemVersion);
-            info.SiteServer.OperatingSystem.Version = GetValue(prop);
+            info.SiteServer.OperatingSystem.Version = ((MgStringProperty)prop).GetValue();
 
             prop = props.GetItem(MgServerInformationProperties.TotalPhysicalMemory);
-            info.SiteServer.OperatingSystem.TotalPhysicalMemory = GetValue(prop);
+            info.SiteServer.OperatingSystem.TotalPhysicalMemory = ((MgInt64Property)prop).GetValue().ToString();
 
             prop = props.GetItem(MgServerInformationProperties.TotalVirtualMemory);
-            info.SiteServer.OperatingSystem.TotalVirtualMemory = GetValue(prop);
+            info.SiteServer.OperatingSystem.TotalVirtualMemory = ((MgInt64Property)prop).GetValue().ToString();
 
             prop = props.GetItem(MgServerInformationProperties.AvailablePhysicalMemory);
-            info.SiteServer.OperatingSystem.AvailablePhysicalMemory = GetValue(prop);
+            info.SiteServer.OperatingSystem.AvailablePhysicalMemory = ((MgInt64Property)prop).GetValue().ToString();
 
             prop = props.GetItem(MgServerInformationProperties.AvailableVirtualMemory);
-            info.SiteServer.OperatingSystem.AvailableVirtualMemory = GetValue(prop);
+            info.SiteServer.OperatingSystem.AvailableVirtualMemory = ((MgInt64Property)prop).GetValue().ToString();
 
             prop = props.GetItem(MgServerInformationProperties.Status);
-            info.SiteServer.Status = GetValue(prop);
+            info.SiteServer.Status = ((MgBooleanProperty)prop).GetValue() ? "Online" : "Offline";
 
             prop = props.GetItem(MgServerInformationProperties.ServerVersion);
-            info.SiteServer.Version = GetValue(prop);
+            info.SiteServer.Version = ((MgStringProperty)prop).GetValue();
 
             prop = props.GetItem(MgServerInformationProperties.TotalActiveConnections);
-            info.Statistics.ActiveConnections = GetValue(prop);
+            info.Statistics.ActiveConnections = ((MgInt32Property)prop).GetValue().ToString();
 
             prop = props.GetItem(MgServerInformationProperties.AdminOperationsQueueCount);
-            info.Statistics.AdminOperationsQueueCount = GetValue(prop);
+            info.Statistics.AdminOperationsQueueCount = ((MgInt32Property)prop).GetValue().ToString();
 
             prop = props.GetItem(MgServerInformationProperties.AverageOperationTime);
-            info.Statistics.AverageOperationTime = GetValue(prop);
+            info.Statistics.AverageOperationTime = ((MgInt64Property)prop).GetValue().ToString();
 
             prop = props.GetItem(MgServerInformationProperties.ClientOperationsQueueCount);
-            info.Statistics.ClientOperationsQueueCount = GetValue(prop);
+            info.Statistics.ClientOperationsQueueCount = ((MgInt32Property)prop).GetValue().ToString();
 
             prop = props.GetItem(MgServerInformationProperties.CpuUtilization);
-            info.Statistics.CpuUtilization = GetValue(prop);
+            info.Statistics.CpuUtilization = ((MgInt32Property)prop).GetValue().ToString();
 
             prop = props.GetItem(MgServerInformationProperties.SiteOperationsQueueCount);
-            info.Statistics.SiteOperationsQueueCount = GetValue(prop);
+            info.Statistics.SiteOperationsQueueCount = ((MgInt32Property)prop).GetValue().ToString();
 
             prop = props.GetItem(MgServerInformationProperties.TotalConnections);
-            info.Statistics.TotalConnections = GetValue(prop);
+            info.Statistics.TotalConnections = ((MgInt32Property)prop).GetValue().ToString();
 
             prop = props.GetItem(MgServerInformationProperties.TotalProcessedOperations);
-            info.Statistics.TotalOperationsProcessed = GetValue(prop);
+            info.Statistics.TotalOperationsProcessed = ((MgInt32Property)prop).GetValue().ToString();
 
             prop = props.GetItem(MgServerInformationProperties.TotalReceivedOperations);
-            info.Statistics.TotalOperationsReceived = GetValue(prop);
+            info.Statistics.TotalOperationsReceived = ((MgInt32Property)prop).GetValue().ToString();
 
             prop = props.GetItem(MgServerInformationProperties.TotalOperationTime);
-            info.Statistics.TotalOperationTime = GetValue(prop);
+            info.Statistics.TotalOperationTime = ((MgInt64Property)prop).GetValue().ToString();
 
             prop = props.GetItem(MgServerInformationProperties.Uptime);
-            info.Statistics.Uptime = GetValue(prop);
+            info.Statistics.Uptime = ((MgInt64Property)prop).GetValue().ToString();
 
             return info;
-        }
-
-        private string GetValue(MgProperty prop)
-        {
-            throw new NotImplementedException();
         }
 
 		#endregion
