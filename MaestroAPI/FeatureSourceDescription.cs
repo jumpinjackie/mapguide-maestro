@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Xml;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -57,10 +58,41 @@ namespace OSGeo.MapGuide.MaestroAPI
 			mgr.AddNamespace("gml", "http://www.opengis.net/gml");
 			mgr.AddNamespace("fdo", "http://fdo.osgeo.org/schemas");
 
+            var keys = new Dictionary<string, string[]>();
+            var classMap = new Dictionary<string, FeatureSourceSchema>();
 			XmlNodeList lst = root.SelectNodes("xs:schema/xs:complexType[@abstract='false']", mgr);
 			m_schemas = new FeatureSourceSchema[lst.Count];
             for (int i = 0; i < m_schemas.Length; i++)
-				m_schemas[i] = new FeatureSourceSchema(lst[i], mgr);
+            {
+                m_schemas[i] = new FeatureSourceSchema(lst[i], mgr);
+                classMap.Add(m_schemas[i].FullnameDecoded, m_schemas[i]);
+            }
+            XmlNodeList keyNodes = root.SelectNodes("xs:schema/xs:element[@abstract='false']", mgr);
+            foreach (XmlNode keyNode in keyNodes)
+            {
+                var typeAttr = keyNode.Attributes["type"];
+                if (typeAttr != null)
+                {
+                    string clsName = typeAttr.Value.Substring(0, typeAttr.Value.Length - 4); //class name is suffixed with type
+                    if (classMap.ContainsKey(clsName))
+                    {
+                        List<string> keyFieldNames = new List<string>();
+
+                        var cls = classMap[clsName];
+                        XmlNodeList keyFields = keyNode.SelectNodes("xs:key/xs:field", mgr);
+                        foreach (XmlNode keyField in keyFields)
+                        {
+                            var xpathAttr = keyField.Attributes["xpath"];
+                            if (xpathAttr != null)
+                            {
+                                keyFieldNames.Add(xpathAttr.Value);
+                            }
+                        }
+
+                        cls.MarkIdentityProperties(keyFieldNames);
+                    }
+                }
+            }
 		}
 
 		public FeatureSourceSchema[] Schemas { get { return m_schemas; } }
@@ -135,7 +167,32 @@ namespace OSGeo.MapGuide.MaestroAPI
 			public string Fullname { get { return m_schema == null ? m_name : m_schema + ":" + m_name; } }
             public string FullnameDecoded { get { return Utility.DecodeFDOName(this.Fullname); } }
 			public FeatureSetColumn[] Columns { get { return m_columns; } }
-		}
+
+            internal void MarkIdentityProperties(IEnumerable<string> keyFieldNames)
+            {
+                foreach (var name in keyFieldNames)
+                {
+                    foreach (var col in m_columns)
+                    {
+                        if (col.Name.Equals(name))
+                        {
+                            col.IsIdentity = true;
+                        }
+                    }
+                }
+            }
+
+            public string[] GetIdentityProperties()
+            {
+                List<string> keys = new List<string>();
+                foreach (var col in m_columns)
+                {
+                    if (col.IsIdentity)
+                        keys.Add(col.Name);
+                }
+                return keys.ToArray();
+            }
+        }
 	}
 
     internal class ClassPropertyColumn : XmlFeatureSetColumn

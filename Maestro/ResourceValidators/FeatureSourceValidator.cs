@@ -62,14 +62,12 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
             }
 
             List<string> classes = new List<string>();
+            MaestroAPI.FeatureSourceDescription fsd = null;
             try
             {
-                MaestroAPI.FeatureSourceDescription fsd = feature.DescribeSource();
+                fsd = feature.DescribeSource();
                 if (fsd == null || fsd.Schemas == null || fsd.Schemas.Length == 0)
                     issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, Strings.FeatureSourceValidator.ShemasMissingWarning));
-                else
-                    foreach (MaestroAPI.FeatureSourceDescription.FeatureSourceSchema scm in fsd.Schemas)
-                        classes.Add(scm.FullnameDecoded);
             }
             catch (Exception ex)
             {
@@ -77,31 +75,16 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                 issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Strings.FeatureSourceValidator.SchemaReadError, msg)));
             }
 
-
-            foreach (string cl in classes)
+            foreach (var cls in fsd.Schemas)
             {
-                try
-                {
-                    string[] ids = feature.GetIdentityProperties(cl);
-                    //According to my tests, this code path never gets reached because the 
-                    //MG server will incorrectly throw MgClassNotFoundException when querying
-                    //a class with no identity properties. Nevertheless we'll leave this in, if/when
-                    //this logic is fixed server-side.
-                    if (ids == null || ids.Length == 0)
-                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, string.Format(Strings.FeatureSourceValidator.PrimaryKeyMissingInformation, cl)));
-                }
-                catch (Exception ex)
-                {
-                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    if (msg.IndexOf("MgClassNotFoundException") >= 0)
-                    {
-                        issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, string.Format(Strings.FeatureSourceValidator.NoPrimaryKeyOrView, cl)));
-                    }
-                    else
-                    {
-                        issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Strings.FeatureSourceValidator.PrimaryKeyReadError, msg)));
-                    }
-                }
+                var ids = cls.GetIdentityProperties();
+                //string[] ids = feature.GetIdentityProperties(cl);
+                //According to my tests, this code path never gets reached because the 
+                //MG server will incorrectly throw MgClassNotFoundException when querying
+                //a class with no identity properties. Nevertheless we'll leave this in, if/when
+                //this logic is fixed server-side.
+                if (ids == null || ids.Length == 0)
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Information, string.Format(Strings.FeatureSourceValidator.PrimaryKeyMissingInformation, cls.FullnameDecoded)));
             }
 
             return issues.ToArray();

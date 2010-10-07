@@ -279,6 +279,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public string Name { get { return m_name; } }
 		public Type Type { get { return m_type; } }
+        public bool IsIdentity { get; internal set; }
 
         public System.Collections.ICollection MetadataKeys { get { return m_metadata.Keys; } }
 

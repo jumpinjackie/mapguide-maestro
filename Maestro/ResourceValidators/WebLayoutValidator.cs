@@ -37,9 +37,39 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
 
             WebLayout layout = resource as WebLayout;
             if (layout.Map == null || layout.Map.ResourceId == null)
+            {
                 issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Strings.WebLayoutValidator.MissingMapError)));
+            }
             else
             {
+                //Check for duplicate command names
+                var cmdSet = layout.CommandSet;
+                Dictionary<string, CommandType> cmds = new Dictionary<string, CommandType>();
+                foreach (CommandType cmd in cmdSet)
+                {
+                    if (cmds.ContainsKey(cmd.Name))
+                        issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Strings.WebLayoutValidator.DuplicateCommandName, cmd.Name)));
+                    else
+                        cmds[cmd.Name] = cmd;
+                }
+
+                //Check for duplicate property references in search commands
+                foreach (CommandType cmd in cmdSet)
+                {
+                    if (cmd is SearchCommandType)
+                    {
+                        SearchCommandType search = (SearchCommandType)cmd;
+                        Dictionary<string, string> resColProps = new Dictionary<string, string>();
+                        foreach (ResultColumnType resCol in search.ResultColumns)
+                        {
+                            if (resColProps.ContainsKey(resCol.Property))
+                                issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Strings.WebLayoutValidator.DuplicateSearchResultColumn, search.Name, resCol.Property)));
+                            else
+                                resColProps.Add(resCol.Property, resCol.Property);
+                        }
+                    }
+                }
+
                 if (recurse)
                 {
                     try
