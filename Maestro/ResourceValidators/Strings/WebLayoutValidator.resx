@@ -131,6 +131,15 @@
     <value>Layout does not specify a map</value>
     <comment>An error message that is displayed if no map is specified in the layout</comment>
   </data>
+  <data name="NonExistentMenuCommandReference" xml:space="preserve">
+    <value>Context Menu contains a reference to a command that doesn't exist: {0}</value>
+  </data>
+  <data name="NonExistentTaskPaneCommandReference" xml:space="preserve">
+    <value>Task Pane contains a reference to a command that does not exist: {0}</value>
+  </data>
+  <data name="NonExistentToolbarCommandReference" xml:space="preserve">
+    <value>Toolbar contains a reference to a command that does not exist: {0}</value>
+  </data>
   <data name="StartViewOutsideExtentsWarning" xml:space="preserve">
     <value>Layout specifies a start view that is outside the map's initial extents</value>
     <comment>A warning message that is displayed if the layout specifies a start center point that is outside the map's specified extents</comment>

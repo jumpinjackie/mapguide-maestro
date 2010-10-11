@@ -70,6 +70,37 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators
                     }
                 }
 
+                //Check for command references to non-existent commands
+                foreach (UIItemType item in layout.ContextMenu.MenuItem)
+                {
+                    if (item.Function == UIItemFunctionType.Command)
+                    {
+                        CommandItemType cmdRef = (CommandItemType)item;
+                        if (!cmds.ContainsKey(cmdRef.Command))
+                            issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Strings.WebLayoutValidator.NonExistentMenuCommandReference, cmdRef.Command)));
+                    }
+                }
+
+                foreach (UIItemType item in layout.TaskPane.TaskBar.MenuButton)
+                {
+                    if (item.Function == UIItemFunctionType.Command)
+                    {
+                        CommandItemType cmdRef = (CommandItemType)item;
+                        if (!cmds.ContainsKey(cmdRef.Command))
+                            issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Strings.WebLayoutValidator.NonExistentTaskPaneCommandReference, cmdRef.Command)));
+                    }
+                }
+
+                foreach (UIItemType item in layout.ToolBar.Button)
+                {
+                    if (item.Function == UIItemFunctionType.Command)
+                    {
+                        CommandItemType cmdRef = (CommandItemType)item;
+                        if (!cmds.ContainsKey(cmdRef.Command))
+                            issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Strings.WebLayoutValidator.NonExistentToolbarCommandReference, cmdRef.Command)));
+                    }
+                }
+
                 if (recurse)
                 {
                     try

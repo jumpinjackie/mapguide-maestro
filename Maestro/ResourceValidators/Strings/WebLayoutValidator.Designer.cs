@@ -97,6 +97,33 @@ namespace OSGeo.MapGuide.Maestro.ResourceValidators.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Context Menu contains a reference to a command that doesn&apos;t exist: {0}.
+        /// </summary>
+        internal static string NonExistentMenuCommandReference {
+            get {
+                return ResourceManager.GetString("NonExistentMenuCommandReference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Pane contains a reference to a command that does not exist: {0}.
+        /// </summary>
+        internal static string NonExistentTaskPaneCommandReference {
+            get {
+                return ResourceManager.GetString("NonExistentTaskPaneCommandReference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toolbar contains a reference to a command that does not exist: {0}.
+        /// </summary>
+        internal static string NonExistentToolbarCommandReference {
+            get {
+                return ResourceManager.GetString("NonExistentToolbarCommandReference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Layout specifies a start view that is outside the map&apos;s initial extents.
         /// </summary>
         internal static string StartViewOutsideExtentsWarning {
