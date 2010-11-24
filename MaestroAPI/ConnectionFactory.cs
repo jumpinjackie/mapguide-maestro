@@ -85,7 +85,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
             builder[LocalNativeConnection.PARAM_SESSION] = sessionid;
-            return ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", sessionid);
+            return ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", builder.ToString());
         }
     }
 }
