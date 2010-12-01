@@ -525,8 +525,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public override void CopyResource(string oldpath, string newpath, bool overwrite)
 		{
+            MgResourceIdentifier newId = new MgResourceIdentifier(newpath);
 			MgResourceService res = this.Con.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			res.CopyResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
+			res.CopyResource(new MgResourceIdentifier(oldpath), newId, overwrite);
+
+            //HACK: force timestamp update on target
+            MgByteReader content = res.GetResourceContent(newId);
+            content.Rewind();
+            res.SetResource(newId, content, null);
 		}
 
 		public override void CopyFolder(string oldpath, string newpath, bool overwrite)

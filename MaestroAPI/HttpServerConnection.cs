@@ -23,6 +23,7 @@ using System.Xml;
 using System.Collections.Specialized;
 using System.Collections;
 using System.Text;
+using System.IO;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -842,6 +843,12 @@ namespace OSGeo.MapGuide.MaestroAPI
 				resp.ReadByte();
 			//Do nothing... there is no return value
 
+            //HACK: Force timestamp update on target
+            var content = GetResourceXmlData(newpath);
+            using (var ms = new MemoryStream(content))
+            {
+                SetResourceXmlData(newpath, ms);
+            }
 		}
 
 		public override void CopyFolder(string oldpath, string newpath, bool overwrite)
