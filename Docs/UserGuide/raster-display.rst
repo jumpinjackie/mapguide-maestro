@@ -1,2 +1,0 @@
-Displaying Raster Data
-----------------------

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="Types-1.0.0.xsd"/>
+  <xs:element name="User">
+    <xs:annotation>
+      <xs:documentation>User</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="FullName" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>User full name</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Password" type="PasswordType">
+          <xs:annotation>
+            <xs:documentation>User password (storage format only, not visible externally)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Description" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>User description</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

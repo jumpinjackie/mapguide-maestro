@@ -1,0 +1,2069 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<fdo:DataStore xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" xmlns:fdo="http://fdo.osgeo.org/schemas" xmlns:fds="http://fdo.osgeo.org/schemas/fds">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fdo.osgeo.org/schemas/feature/dbo" xmlns:fdo="http://fdo.osgeo.org/schemas" xmlns:gml="http://www.opengis.net/gml" xmlns:dbo="http://fdo.osgeo.org/schemas/feature/dbo" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:element name="rtable1" type="dbo:rtable1Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="rtable1Key">
+<xs:selector xpath=".//rtable1"/>
+<xs:field xpath="ID"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="rtable1Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="FK_RTABLE1_TABLE1" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="TABLE1_ID012345678901234567890">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="dbo_rtable1_FK_RTABLE1_TABLE1" refer="dbo:table1_rtable1AKey">
+<xs:selector xpath=".//rtable1"/>
+<xs:field xpath="ID3456789012345678901234567890"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="ID">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TABLE1_ID012345678901234567890">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="rtable2" type="dbo:rtable2Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="rtable2Key">
+<xs:selector xpath=".//rtable2"/>
+<xs:field xpath="ID"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="rtable2Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="FK_RTABLE2_TABLE1" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="TABLE1_ID">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="dbo_rtable2_FK_RTABLE2_TABLE1" refer="dbo:table1_rtable2AKey">
+<xs:selector xpath=".//rtable2"/>
+<xs:field xpath="ID3456789012345678901234567890"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="FK_RTABLE2_TABLE3" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="TABLE3_KEY1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TABLE3_KEY2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="dbo_rtable2_FK_RTABLE2_TABLE3" refer="dbo:table3_rtable2AKey">
+<xs:selector xpath=".//rtable2"/>
+<xs:field xpath="KEY1"/>
+<xs:field xpath="KEY2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="ID">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TABLE1_ID">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="TABLE3_KEY1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TABLE3_KEY2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="rtable7" type="dbo:rtable7Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="rtable7Key">
+<xs:selector xpath=".//rtable7"/>
+<xs:field xpath="ID"/>
+</xs:key>
+<xs:unique name="rtable7Key_0">
+<xs:selector xpath=".//rtable7"/>
+<xs:field xpath="TABLE7_ID12345678901234567890"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="rtable7Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID">
+<xs:simpleType>
+<xs:restriction base="fdo:int64"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TABLE7_ID12345678901234567890" fdo:readOnly="true" fdo:autogenerated="true">
+<xs:simpleType>
+<xs:restriction base="fdo:int64"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="table1" type="dbo:table1Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="table1Key">
+<xs:selector xpath=".//table1"/>
+<xs:field xpath="ID3456789012345678901234567890"/>
+</xs:key>
+<xs:key name="table1_rtable1AKey">
+<xs:selector xpath=".//dbo"/>
+<xs:field xpath="ID3456789012345678901234567890"/>
+</xs:key>
+<xs:key name="table1_rtable2AKey">
+<xs:selector xpath=".//dbo"/>
+<xs:field xpath="ID3456789012345678901234567890"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="table1Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="BINARY_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:hexBinary"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="BLOB_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:hexBinary"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="BOOL_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="fdo:byte"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="BYTE_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="fdo:byte"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="CHAR1_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="CHAR5_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="5"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="DECIMAL_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value="5"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="DOUBLE_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:double"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="ID3456789012345678901234567890">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="INSERT_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="25"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="INT16_COLUMN345678901234567890" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="fdo:int16">
+<xs:maxExclusive value="20000"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="INT32_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="INT64_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="fdo:int64"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="INT_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="LONG_STRING" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="8000"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="MONEY_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="19"/>
+<xs:fractionDigits value="4"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NCHAR_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NEW_GEOM_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:hexBinary"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="NTEXT_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="1073741823"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NUMERIC_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value="5"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NVARCHAR_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="OBJECT_NAME" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="128"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="REAL_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:double"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="SINGLE_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:double"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="SMALLDATETIME_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:dateTime"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="SMALLMONEY_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value="4"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TEXT_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="2147483647"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TIMESTAMP_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:dateTime"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="TINYINT_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="fdo:byte"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="UNIQUEID_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="36"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="VARBINARY_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:hexBinary"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="table3" type="dbo:table3Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="table3Key">
+<xs:selector xpath=".//table3"/>
+<xs:field xpath="KEY1"/>
+<xs:field xpath="KEY2"/>
+</xs:key>
+<xs:key name="table3_rtable2AKey">
+<xs:selector xpath=".//dbo"/>
+<xs:field xpath="KEY1"/>
+<xs:field xpath="KEY2"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="table3Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="DOUBLE_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:double"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="KEY1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="KEY2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="table4" type="dbo:table4Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="table4Key">
+<xs:selector xpath=".//table4"/>
+<xs:field xpath="ID"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="table4Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="GEOM_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:hexBinary"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="ID">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="INT16_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="fdo:int16"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="table7" type="dbo:table7Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="table7Key">
+<xs:selector xpath=".//table7"/>
+<xs:field xpath="ID"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="table7Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID" fdo:readOnly="true" fdo:autogenerated="true">
+<xs:simpleType>
+<xs:restriction base="fdo:int64"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="view1" type="dbo:view1Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="view1Key">
+<xs:selector xpath=".//view1"/>
+<xs:field xpath="ID3456789012345678901234567890"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="view1Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="BYTE_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="fdo:byte"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="DEC_COL_RENAME" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value="5"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="ID3456789012345678901234567890">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="view3" type="dbo:view3Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="view3Key">
+<xs:selector xpath=".//view3"/>
+<xs:field xpath="ID"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="view3Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="GEOM_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:hexBinary"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="ID">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="INT16_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="fdo:int16"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fdo.osgeo.org/schemas/feature/guest" xmlns:fdo="http://fdo.osgeo.org/schemas" xmlns:gml="http://www.opengis.net/gml" xmlns:guest="http://fdo.osgeo.org/schemas/feature/guest" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:element name="vertable1" type="guest:vertable1Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertable1Key">
+<xs:selector xpath=".//vertable1"/>
+<xs:field xpath="id1"/>
+</xs:key>
+<xs:unique name="vertable1Key_0">
+<xs:selector xpath=".//vertable1"/>
+<xs:field xpath="name"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="vertable1Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="guest_vertable_vertablelookup1" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="guest_vertable1_guest_vertable_vertablelookup1" refer="guest:vertablelookup1_vertable1AKey">
+<xs:selector xpath=".//vertable1"/>
+<xs:field xpath="id2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="guest_vertable_vertablelookupb1" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="idb1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="guest_vertable1_guest_vertable_vertablelookupb1" refer="guest:vertablelookupb1_vertable1AKey">
+<xs:selector xpath=".//vertable1"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="id1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32">
+<xs:maxExclusive value="1"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="vertable2" type="guest:vertable2Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertable2Key">
+<xs:selector xpath=".//vertable2"/>
+<xs:field xpath="id1"/>
+</xs:key>
+<xs:unique name="vertable2Key_0">
+<xs:selector xpath=".//vertable2"/>
+<xs:field xpath="name"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="vertable2Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="guest_vertable_vertablelookup2" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="guest_vertable2_guest_vertable_vertablelookup2" refer="guest:vertablelookup2_vertable2AKey">
+<xs:selector xpath=".//vertable2"/>
+<xs:field xpath="id2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="guest_vertable_vertablelookupb2" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="idb1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="guest_vertable2_guest_vertable_vertablelookupb2" refer="guest:vertablelookupb2_vertable2AKey">
+<xs:selector xpath=".//vertable2"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="id1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32">
+<xs:maxExclusive value="2"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="vertable3" type="guest:vertable3Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertable3Key">
+<xs:selector xpath=".//vertable3"/>
+<xs:field xpath="id1"/>
+</xs:key>
+<xs:unique name="vertable3Key_0">
+<xs:selector xpath=".//vertable3"/>
+<xs:field xpath="name"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="vertable3Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="guest_vertable_vertablelookup3" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="guest_vertable3_guest_vertable_vertablelookup3" refer="guest:vertablelookup3_vertable3AKey">
+<xs:selector xpath=".//vertable3"/>
+<xs:field xpath="id2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="guest_vertable_vertablelookupb3" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="idb1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="guest_vertable3_guest_vertable_vertablelookupb3" refer="guest:vertablelookupb3_vertable3AKey">
+<xs:selector xpath=".//vertable3"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="id1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32">
+<xs:maxExclusive value="3"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="vertable4" type="guest:vertable4Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertable4Key">
+<xs:selector xpath=".//vertable4"/>
+<xs:field xpath="id1"/>
+</xs:key>
+<xs:unique name="vertable4Key_0">
+<xs:selector xpath=".//vertable4"/>
+<xs:field xpath="name"/>
+</xs:unique>
+<xs:unique name="vertable4Key_1">
+<xs:selector xpath=".//vertable4"/>
+<xs:field xpath="id2"/>
+<xs:field xpath="idb1"/>
+<xs:field xpath="idb2"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="vertable4Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="guest_vertable_vertablelookup4" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="guest_vertable4_guest_vertable_vertablelookup4" refer="guest:vertablelookup4_vertable4AKey">
+<xs:selector xpath=".//vertable4"/>
+<xs:field xpath="id2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="guest_vertable_vertablelookupb4" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="idb1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="guest_vertable4_guest_vertable_vertablelookupb4" refer="guest:vertablelookupb4_vertable4AKey">
+<xs:selector xpath=".//vertable4"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="id1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32">
+<xs:maxExclusive value="4"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="vertable5" type="guest:vertable5Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertable5Key">
+<xs:selector xpath=".//vertable5"/>
+<xs:field xpath="id1"/>
+</xs:key>
+<xs:unique name="vertable5Key_0">
+<xs:selector xpath=".//vertable5"/>
+<xs:field xpath="name"/>
+</xs:unique>
+<xs:unique name="vertable5Key_1">
+<xs:selector xpath=".//vertable5"/>
+<xs:field xpath="id2"/>
+<xs:field xpath="idb1"/>
+<xs:field xpath="idb2"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="vertable5Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="guest_vertable_vertablelookup5" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="guest_vertable5_guest_vertable_vertablelookup5" refer="guest:vertablelookup5_vertable5AKey">
+<xs:selector xpath=".//vertable5"/>
+<xs:field xpath="id2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="guest_vertable_vertablelookupb5" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="idb1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="guest_vertable5_guest_vertable_vertablelookupb5" refer="guest:vertablelookupb5_vertable5AKey">
+<xs:selector xpath=".//vertable5"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="id1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32">
+<xs:maxExclusive value="5"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="idb2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="vertablelookup1" type="guest:vertablelookup1Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertablelookup1Key">
+<xs:selector xpath=".//vertablelookup1"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:key name="vertablelookup1_vertable1AKey">
+<xs:selector xpath=".//guest"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:unique name="vertablelookup1Key_0">
+<xs:selector xpath=".//vertablelookup1"/>
+<xs:field xpath="name"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="vertablelookup1Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="vertablelookup2" type="guest:vertablelookup2Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertablelookup2Key">
+<xs:selector xpath=".//vertablelookup2"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:key name="vertablelookup2_vertable2AKey">
+<xs:selector xpath=".//guest"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:unique name="vertablelookup2Key_0">
+<xs:selector xpath=".//vertablelookup2"/>
+<xs:field xpath="name"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="vertablelookup2Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="vertablelookup3" type="guest:vertablelookup3Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertablelookup3Key">
+<xs:selector xpath=".//vertablelookup3"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:key name="vertablelookup3_vertable3AKey">
+<xs:selector xpath=".//guest"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:unique name="vertablelookup3Key_0">
+<xs:selector xpath=".//vertablelookup3"/>
+<xs:field xpath="name"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="vertablelookup3Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="vertablelookup4" type="guest:vertablelookup4Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertablelookup4Key">
+<xs:selector xpath=".//vertablelookup4"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:key name="vertablelookup4_vertable4AKey">
+<xs:selector xpath=".//guest"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:unique name="vertablelookup4Key_0">
+<xs:selector xpath=".//vertablelookup4"/>
+<xs:field xpath="name"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="vertablelookup4Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="vertablelookup5" type="guest:vertablelookup5Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertablelookup5Key">
+<xs:selector xpath=".//vertablelookup5"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:key name="vertablelookup5_vertable5AKey">
+<xs:selector xpath=".//guest"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:unique name="vertablelookup5Key_0">
+<xs:selector xpath=".//vertablelookup5"/>
+<xs:field xpath="name"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="vertablelookup5Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="vertablelookupb1" type="guest:vertablelookupb1Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertablelookupb1Key">
+<xs:selector xpath=".//vertablelookupb1"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:key name="vertablelookupb1_vertable1AKey">
+<xs:selector xpath=".//guest"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="vertablelookupb1Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="id1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="vertablelookupb2" type="guest:vertablelookupb2Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertablelookupb2Key">
+<xs:selector xpath=".//vertablelookupb2"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:key name="vertablelookupb2_vertable2AKey">
+<xs:selector xpath=".//guest"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="vertablelookupb2Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="id1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="vertablelookupb3" type="guest:vertablelookupb3Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertablelookupb3Key">
+<xs:selector xpath=".//vertablelookupb3"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:key name="vertablelookupb3_vertable3AKey">
+<xs:selector xpath=".//guest"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="vertablelookupb3Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="id1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="vertablelookupb4" type="guest:vertablelookupb4Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertablelookupb4Key">
+<xs:selector xpath=".//vertablelookupb4"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:key name="vertablelookupb4_vertable4AKey">
+<xs:selector xpath=".//guest"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="vertablelookupb4Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="id1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="vertablelookupb5" type="guest:vertablelookupb5Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="vertablelookupb5Key">
+<xs:selector xpath=".//vertablelookupb5"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:key>
+<xs:key name="vertablelookupb5_vertable5AKey">
+<xs:selector xpath=".//guest"/>
+<xs:field xpath="id1"/>
+<xs:field xpath="id2"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="vertablelookupb5Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="id1">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="id2">
+<xs:simpleType>
+<xs:restriction base="fdo:int32"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="name">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>
+<SchemaMapping xmlns:rdb="http://fdordbms.osgeo.org/schemas" xmlns="http://www.autodesk.com/isd/fdo/SqlServerProvider" textInRow="NotInRow" provider="Autodesk.SqlServer.3.5" name="dbo">
+<complexType name="rtable1Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_dbo_rtable1" name="dbo.rtable1"/>
+</complexType>
+<complexType name="rtable2Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_dbo_rtable2" name="dbo.rtable2"/>
+</complexType>
+<complexType name="rtable7Type" identityIsGloballyUnique="false" identitySeed="1" identityIncrement="1" identityPropertyName="TABLE7_ID12345678901234567890">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_dbo_rtable7" name="dbo.rtable7"/>
+</complexType>
+<complexType name="table1Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_dbo_table1" name="dbo.table1"/>
+</complexType>
+<complexType name="table3Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_dbo_table3" name="dbo.table3"/>
+</complexType>
+<complexType name="table4Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_dbo_table4" name="dbo.table4"/>
+</complexType>
+<complexType name="table7Type" identityIsGloballyUnique="false" identitySeed="1" identityIncrement="1" identityPropertyName="ID">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_dbo_table7" name="dbo.table7"/>
+</complexType>
+<complexType name="view1Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_dbo_view1" name="dbo.view1"/>
+</complexType>
+<complexType name="view3Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_dbo_view3" name="dbo.view3"/>
+</complexType>
+</SchemaMapping>
+<SchemaMapping xmlns:rdb="http://fdordbms.osgeo.org/schemas" xmlns="http://www.autodesk.com/isd/fdo/SqlServerProvider" textInRow="NotInRow" provider="Autodesk.SqlServer.3.5" name="guest">
+<complexType name="vertable1Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertable1" name="guest.vertable1"/>
+<element name="id1">
+<Column name="id1"/>
+</element>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="idb1">
+<Column name="idb1"/>
+</element>
+<element name="idb2">
+<Column name="idb2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+<complexType name="vertable2Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertable2" name="guest.vertable2"/>
+<element name="id1">
+<Column name="id1"/>
+</element>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="idb1">
+<Column name="idb1"/>
+</element>
+<element name="idb2">
+<Column name="idb2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+<complexType name="vertable3Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertable3" name="guest.vertable3"/>
+<element name="id1">
+<Column name="id1"/>
+</element>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="idb1">
+<Column name="idb1"/>
+</element>
+<element name="idb2">
+<Column name="idb2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+<complexType name="vertable4Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertable4" name="guest.vertable4"/>
+<element name="id1">
+<Column name="id1"/>
+</element>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="idb1">
+<Column name="idb1"/>
+</element>
+<element name="idb2">
+<Column name="idb2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+<complexType name="vertable5Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertable5" name="guest.vertable5"/>
+<element name="id1">
+<Column name="id1"/>
+</element>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="idb1">
+<Column name="idb1"/>
+</element>
+<element name="idb2">
+<Column name="idb2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+<complexType name="vertablelookup1Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertablelookup1" name="guest.vertablelookup1"/>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+<complexType name="vertablelookup2Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertablelookup2" name="guest.vertablelookup2"/>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+<complexType name="vertablelookup3Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertablelookup3" name="guest.vertablelookup3"/>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+<complexType name="vertablelookup4Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertablelookup4" name="guest.vertablelookup4"/>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+<complexType name="vertablelookup5Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertablelookup5" name="guest.vertablelookup5"/>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+<complexType name="vertablelookupb1Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertablelookupb1" name="guest.vertablelookupb1"/>
+<element name="id1">
+<Column name="id1"/>
+</element>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+<complexType name="vertablelookupb2Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertablelookupb2" name="guest.vertablelookupb2"/>
+<element name="id1">
+<Column name="id1"/>
+</element>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+<complexType name="vertablelookupb3Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertablelookupb3" name="guest.vertablelookupb3"/>
+<element name="id1">
+<Column name="id1"/>
+</element>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+<complexType name="vertablelookupb4Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertablelookupb4" name="guest.vertablelookupb4"/>
+<element name="id1">
+<Column name="id1"/>
+</element>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+<complexType name="vertablelookupb5Type" identityIsGloballyUnique="false" identitySeed="0" identityIncrement="0" identityPropertyName="">
+<Table tableFilegroup="PRIMARY" textInRow="NotInRow" pkeyName="pk_guest_vertablelookupb5" name="guest.vertablelookupb5"/>
+<element name="id1">
+<Column name="id1"/>
+</element>
+<element name="id2">
+<Column name="id2"/>
+</element>
+<element name="name">
+<Column name="name"/>
+</element>
+</complexType>
+</SchemaMapping>
+</fdo:DataStore>

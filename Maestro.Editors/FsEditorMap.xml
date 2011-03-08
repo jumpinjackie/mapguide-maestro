@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+This file allows the feature source editor to resolve the correct specialized
+editor based on the given provider name of the feature source. If the editor
+cannot locate this file or fails to parse the entries defined here, the default
+generic editor will be used
+-->
+<FeatureSourceEditorMap>
+    <Editor provider="OSGeo.Gdal" type="Maestro.Editors.FeatureSource.Providers.Gdal.GdalProviderCtrl" />
+    <Editor provider="OSGeo.ODBC" type="Maestro.Editors.FeatureSource.Providers.Odbc.OdbcProviderCtrl" />
+    <Editor provider="OSGeo.SDF" type="Maestro.Editors.FeatureSource.Providers.Sdf.SdfFileCtrl" />
+    <Editor provider="OSGeo.SQLite" type="Maestro.Editors.FeatureSource.Providers.SQLite.SQLiteFileCtrl" />
+    <Editor provider="OSGeo.SHP" type="Maestro.Editors.FeatureSource.Providers.Shp.ShpFileCtrl" />
+    <Editor provider="OSGeo.SQLServerSpatial" type="Maestro.Editors.FeatureSource.Providers.Rdbms.SqlServerSpatialCtrl" />
+    <Editor provider="OSGeo.MySQL" type="Maestro.Editors.FeatureSource.Providers.Rdbms.MySqlCtrl" />
+    <Editor provider="OSGeo.PostgreSQL" type="Maestro.Editors.FeatureSource.Providers.Rdbms.PostgreSqlCtrl" />
+</FeatureSourceEditorMap>

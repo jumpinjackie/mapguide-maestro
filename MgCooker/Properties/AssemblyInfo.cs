@@ -1,23 +1,4 @@
-#region Disclaimer / License
-// Copyright (C) 2009, Kenneth Skovhede
-// http://www.hexad.dk, opensource@hexad.dk
-// 
-// This library is free software; you can redistribute it and/or
-// modify it under the terms of the GNU Lesser General Public
-// License as published by the Free Software Foundation; either
-// version 2.1 of the License, or (at your option) any later version.
-// 
-// This library is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// Lesser General Public License for more details.
-// 
-// You should have received a copy of the GNU Lesser General Public
-// License along with this library; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -25,11 +6,8 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MgCooker")]
-[assembly: AssemblyDescription("A tile pre-cooker program for MapGuide")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HexaD")]
-[assembly: AssemblyProduct("MapGuide Maestro")]
-[assembly: AssemblyCopyright("Copyright © HexaD 2009 LGPL")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyProduct("MgCooker")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -39,14 +17,4 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b9090c0f-e01c-4bb9-908c-5063aa9ad9b9")]
-
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-[assembly: AssemblyVersion("2.1.4.5245")]
-[assembly: AssemblyFileVersion("2.1.4.5245")]
+[assembly: Guid("d7062967-45e9-419a-b577-97f6ebf8e7cc")]

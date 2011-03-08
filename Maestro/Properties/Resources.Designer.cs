@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSGeo.MapGuide.Maestro.Properties {
+namespace Maestro.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace OSGeo.MapGuide.Maestro.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OSGeo.MapGuide.Maestro.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Maestro.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,31 +60,12 @@ namespace OSGeo.MapGuide.Maestro.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap bricks {
+        /// <summary>
+        ///   Looks up a localized string similar to It seems you&apos;re not running Windows. I assume you must be running Mono then. Please take note that some things may not work as intended in Mono. .
+        /// </summary>
+        internal static string Warn_Mono {
             get {
-                object obj = ResourceManager.GetObject("bricks", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bullet_go {
-            get {
-                object obj = ResourceManager.GetObject("bullet_go", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap sum {
-            get {
-                object obj = ResourceManager.GetObject("sum", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap table {
-            get {
-                object obj = ResourceManager.GetObject("table", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("Warn_Mono", resourceCulture);
             }
         }
     }

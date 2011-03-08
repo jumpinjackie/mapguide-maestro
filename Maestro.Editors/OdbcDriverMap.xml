@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+This file allows the ODBC Known Driver connection builder to load builders of known
+ODBC drivers. Connection builders specified in this file must inherit from the 
+Maestro.Editors.FeatureSource.Providers.Odbc.OdbcDriverInfo class
+
+To create your own ODBC driver connection builder, extend the OdbcDriverInfo class. Define the
+appropriate driver connection properties (control the PropertyGrid display using the
+System.ComponentModel.DisplayNameAttribute and System.ComponentModel.DescriptionAttribute) and
+override the ToOdbcConnectionString() method to turn this into the matching ODBC connection string
+
+Once that is done, register the fully-qualified type in this file and it will be picked up by
+the connection builder.
+-->
+<OdbcDriverMap>
+    <Driver name="SQL Server" type="Maestro.Editors.FeatureSource.Providers.Odbc.Drivers.SqlServerDriver" />
+</OdbcDriverMap>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://tempuri.org/EtudeData.xsd" xmlns:NameSpace1="http://www.axilog.fr" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mstns="http://tempuri.org/EtudeData.xsd" xmlns="http://tempuri.org/EtudeData.xsd" elementFormDefault="qualified" id="EtudeData">
+  <xs:element name="ROOT">
+    <xs:annotation>
+      <xs:documentation>Element racine de l'etude</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="A" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="A">
+    <xs:annotation>
+      <xs:documentation>DOC A</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="B">
+          <xs:annotation>
+            <xs:documentation>DOC REF B</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="mstns:ROOT"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="B">
+    <xs:annotation>
+      <xs:documentation>DOC B</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ELEMENT_B" type="xs:int" nillable="true">
+          <xs:annotation>
+            <xs:documentation>DOC ELEMENT_B</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

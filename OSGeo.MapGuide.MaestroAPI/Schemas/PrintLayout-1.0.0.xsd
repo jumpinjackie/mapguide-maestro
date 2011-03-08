@@ -1,0 +1,102 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="PrintLayout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="PageProperties">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BackgroundColor" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Red" type="xs:integer" minOccurs="0"/>
+                    <xs:element name="Blue" type="xs:integer" minOccurs="0"/>
+                    <xs:element name="Green" type="xs:integer" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LayoutProperties">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ShowTitle" type="xs:boolean" minOccurs="0"/>
+              <xs:element name="ShowLegend" type="xs:boolean" minOccurs="0"/>
+              <xs:element name="ShowScaleBar" type="xs:boolean" minOccurs="0"/>
+              <xs:element name="ShowNorthArrow" type="xs:boolean" minOccurs="0"/>
+              <xs:element name="ShowURL" type="xs:boolean" minOccurs="0"/>
+              <xs:element name="ShowDateTime" type="xs:boolean" minOccurs="0"/>
+              <xs:element name="ShowCustomLogos" type="xs:boolean" minOccurs="0"/>
+              <xs:element name="ShowCustomText" type="xs:boolean" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CustomLogos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Logo" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Position" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Left" type="xs:float"/>
+                          <xs:element name="Bottom" type="xs:float"/>
+                          <xs:element name="Units" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ResourceId" type="xs:string" minOccurs="0"/>
+                    <xs:element name="Name" type="xs:string" minOccurs="0"/>
+                    <xs:element name="Size" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Width" type="xs:float"/>
+                          <xs:element name="Height" type="xs:float"/>
+                          <xs:element name="Units" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Rotation" type="xs:float" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CustomText">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Text" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Position" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Left" type="xs:float"/>
+                          <xs:element name="Bottom" type="xs:float"/>
+                          <xs:element name="Units" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Font" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Name" type="xs:string"/>
+                          <xs:element name="Height" type="xs:float"/>
+                          <xs:element name="Units" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Value" type="xs:string" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

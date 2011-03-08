@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:mstns="http://tempuri.org/ArrayOfArray.xsd" elementFormDefault="qualified" targetNamespace="http://tempuri.org/ArrayOfArray.xsd" id="ArrayOfArray" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence minOccurs="0">
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="Element" type="mstns:element" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="element">
+    <xs:sequence minOccurs="0">
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FirstName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

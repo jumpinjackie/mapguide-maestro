@@ -1,2 +1,0 @@
-Understanding the profile results
----------------------------------

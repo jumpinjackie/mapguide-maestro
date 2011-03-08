@@ -25,14 +25,18 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using System.Collections.Specialized;
 
-namespace OSGeo.MapGuide.MgCooker
+namespace MgCooker
 {
     public partial class SetupRun : Form
     {
-        private MaestroAPI.ServerConnectionI m_connection;
+        private IServerConnection m_connection;
         private Dictionary<string, string> m_commandlineargs;
-        private Dictionary<string, MaestroAPI.Box2DType> m_coordinateOverrides;
+        private Dictionary<string, IEnvelope> m_coordinateOverrides;
         private bool m_isUpdating = false;
 
         private SetupRun()
@@ -40,23 +44,24 @@ namespace OSGeo.MapGuide.MgCooker
             InitializeComponent();
         }
 
-        internal SetupRun(string userName, string password, MaestroAPI.ServerConnectionI connection, string[] maps, Dictionary<string, string> args)
+        internal SetupRun(string userName, string password, IServerConnection connection, string[] maps, Dictionary<string, string> args)
             : this(connection, maps, args)
         {
             Username.Text = userName;
             Password.Text = password;
         }
 
-        public SetupRun(MaestroAPI.ServerConnectionI connection, string[] maps, Dictionary<string, string> args)
+        public SetupRun(IServerConnection connection, string[] maps, Dictionary<string, string> args)
             : this()
         {
             m_connection = connection;
             m_commandlineargs = args;
-            m_coordinateOverrides = new Dictionary<string, OSGeo.MapGuide.MaestroAPI.Box2DType>();
+            m_coordinateOverrides = new Dictionary<string, IEnvelope>();
 
-            MaestroAPI.HttpServerConnection hc = connection as MaestroAPI.HttpServerConnection;
-            if (hc != null)
-                MapAgent.Text = hc.ServerURI;
+            //HttpServerConnection hc = connection as HttpServerConnection;
+            var url = connection.GetCustomProperty("BaseUrl");
+            if (url != null)
+                MapAgent.Text = url.ToString();
 
             if (m_commandlineargs.ContainsKey("mapdefinitions"))
                 m_commandlineargs.Remove("mapdefinitions");
@@ -112,7 +117,7 @@ namespace OSGeo.MapGuide.MgCooker
             if (maps == null || maps.Length == 0 || (maps.Length == 1 && maps[0].Trim().Length == 0))
             {
                 List<string> tmp = new List<string>();
-                foreach (MaestroAPI.ResourceListResourceDocument doc in m_connection.GetRepositoryResources("Library://", "MapDefinition").Items)
+                foreach (ResourceListResourceDocument doc in m_connection.ResourceService.GetRepositoryResources("Library://", "MapDefinition").Items)
                     tmp.Add(doc.ResourceId);
                 maps = tmp.ToArray();
             }
@@ -120,21 +125,24 @@ namespace OSGeo.MapGuide.MgCooker
             MapTree.Nodes.Clear();
             foreach (string m in maps)
             {
-                MaestroAPI.MapDefinition mdef = m_connection.GetMapDefinition(m);
-                if (mdef.BaseMapDefinition != null && mdef.BaseMapDefinition.FiniteDisplayScale != null && mdef.BaseMapDefinition.BaseMapLayerGroup != null && mdef.BaseMapDefinition.BaseMapLayerGroup.Count > 0)
+                IMapDefinition mdef = (IMapDefinition)m_connection.ResourceService.GetResource(m);
+                IBaseMapDefinition baseMap = mdef.BaseMap;
+                if (baseMap != null &&
+                    baseMap.ScaleCount > 0 && 
+                    baseMap.HasGroups())
                 {
                     TreeNode mn = MapTree.Nodes.Add(m);
                     //mn.Checked = true;
                     mn.ImageIndex = mn.SelectedImageIndex = 0;
                     mn.Tag = mdef;
-                    foreach (MaestroAPI.BaseMapLayerGroupCommonType g in mdef.BaseMapDefinition.BaseMapLayerGroup)
+                    foreach (var g in baseMap.BaseMapLayerGroup)
                     {
                         TreeNode gn = mn.Nodes.Add(g.Name);
                         gn.Tag = g;
                         //gn.Checked = true;
                         gn.ImageIndex = gn.SelectedImageIndex = 1;
 
-                        foreach (double d in mdef.BaseMapDefinition.FiniteDisplayScale)
+                        foreach (double d in baseMap.FiniteDisplayScale)
                         {
                             TreeNode sn = gn.Nodes.Add(d.ToString(System.Globalization.CultureInfo.CurrentUICulture));
                             //sn.Checked = true;
@@ -159,25 +167,31 @@ namespace OSGeo.MapGuide.MgCooker
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MaestroAPI.ServerConnectionI con = null;
+            IServerConnection con = null;
 
             if (UseNativeAPI.Checked)
             {
                 string webconfig = System.IO.Path.Combine(Application.StartupPath, "webconfig.ini");
                 if (!System.IO.File.Exists(webconfig))
                 {
-                    MessageBox.Show(this, string.Format(Strings.SetupRun.MissingWebConfigFile, webconfig), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Properties.Resources.MissingWebConfigFile, webconfig), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 try
                 {
-                    con = OSGeo.MapGuide.MaestroAPI.ConnectionFactory.CreateLocalNativeConnection(webconfig, Username.Text, Password.Text, null);
+                    var initP = new NameValueCollection();
+
+                    initP["ConfigFile"] = webconfig;
+                    initP["Username"] = Username.Text;
+                    initP["Password"] = Password.Text;
+
+                    con = ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", initP);
                 }
                 catch (Exception ex)
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    MessageBox.Show(this, string.Format(Strings.SetupRun.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Properties.Resources.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -185,12 +199,19 @@ namespace OSGeo.MapGuide.MgCooker
             {
                 try
                 {
-                    con = OSGeo.MapGuide.MaestroAPI.ConnectionFactory.CreateHttpConnection(new Uri(MapAgent.Text), Username.Text, Password.Text, null, true);
+                    var initP = new NameValueCollection();
+
+                    initP["Url"] = MapAgent.Text;
+                    initP["Username"] = Username.Text;
+                    initP["Password"] = Password.Text;
+                    initP["AllowUntestedVersion"] = "true";
+
+                    con = ConnectionProviderRegistry.CreateConnection("Maestro.Http", initP);
                 }
                 catch (Exception ex)
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    MessageBox.Show(this, string.Format(Strings.SetupRun.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Properties.Resources.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -233,7 +254,7 @@ namespace OSGeo.MapGuide.MgCooker
             catch (Exception ex)
             {
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                MessageBox.Show(this, string.Format(Strings.SetupRun.InternalError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Properties.Resources.InternalError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -264,9 +285,9 @@ namespace OSGeo.MapGuide.MgCooker
             public string MapDefinition;
             public string Group;
             public int[] ScaleIndexes;
-            public MaestroAPI.Box2DType ExtentOverride = null;
+            public IEnvelope ExtentOverride = null;
 
-            public Config(string MapDefinition, string Group, int[] ScaleIndexes, MaestroAPI.Box2DType ExtentOverride)
+            public Config(string MapDefinition, string Group, int[] ScaleIndexes, IEnvelope ExtentOverride)
             {
                 this.MapDefinition = MapDefinition;
                 this.Group = Group;
@@ -279,8 +300,8 @@ namespace OSGeo.MapGuide.MgCooker
         {
             if (System.Environment.OSVersion.Platform == PlatformID.Unix)
                 saveFileDialog1.Filter = 
-                    string.Format(Strings.SetupRun.FileTypeShellScript + "|{0}", "*.sh") +
-                    string.Format(Strings.SetupRun.FileTypeAllFiles + "|{0}", "*.*");
+                    string.Format(Properties.Resources.FileTypeShellScript + "|{0}", "*.sh") +
+                    string.Format(Properties.Resources.FileTypeAllFiles + "|{0}", "*.*");
 
             if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
@@ -463,11 +484,11 @@ namespace OSGeo.MapGuide.MgCooker
                 while (root.Parent != null)
                     root = root.Parent;
 
-                MaestroAPI.Box2DType box;
+                IEnvelope box;
                 if (m_coordinateOverrides.ContainsKey(root.Text))
                     box = m_coordinateOverrides[root.Text];
                 else
-                    box = ((MaestroAPI.MapDefinition)root.Tag).Extents;
+                    box = ((IMapDefinition)root.Tag).Extents;
 
                 BoundsOverride.Tag = root;
 
@@ -510,13 +531,9 @@ namespace OSGeo.MapGuide.MgCooker
 
             if (!m_coordinateOverrides.ContainsKey(root.Text))
             {
-                MaestroAPI.Box2DType newbox = new OSGeo.MapGuide.MaestroAPI.Box2DType();
-                MaestroAPI.Box2DType origbox = ((MaestroAPI.MapDefinition)root.Tag).Extents;
-
-                newbox.MinX = origbox.MinX;
-                newbox.MinY = origbox.MinY;
-                newbox.MaxX = origbox.MaxX;
-                newbox.MaxY = origbox.MaxY;
+                //IEnvelope newbox = new OSGeo.MapGuide.IEnvelope();
+                IEnvelope origbox = ((IMapDefinition)root.Tag).Extents;
+                IEnvelope newbox = origbox.Clone();
 
                 m_coordinateOverrides.Add(root.Text, newbox);
             }

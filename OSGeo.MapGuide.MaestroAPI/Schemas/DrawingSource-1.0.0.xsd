@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="DrawingSource">
+    <xs:annotation>
+      <xs:documentation>A drawing source is a definition that provides part of the information required to connect to a particular drawing</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="SourceName" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Specifies the source (pathname) of the drawing</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="CoordinateSpace" type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Specifies the coordinate space that is assigned to the drawing. Default is LL84, if none specified.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Sheet" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" type="xs:string"/>
+              <xs:element name="Extent">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="MinX" type="xs:double"/>
+                    <xs:element name="MinY" type="xs:double"/>
+                    <xs:element name="MaxX" type="xs:double"/>
+                    <xs:element name="MaxY" type="xs:double"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

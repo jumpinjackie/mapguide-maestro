@@ -20,8 +20,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.Common;
 
-namespace OSGeo.MapGuide.MgCooker
+namespace MgCooker
 {
     /// <summary>
     /// This delegate is used to monitor progress on tile rendering
@@ -106,7 +109,7 @@ namespace OSGeo.MapGuide.MgCooker
         /// <summary>
         /// A reference to the connection
         /// </summary>
-        private MaestroAPI.ServerConnectionI m_connection;
+        private IServerConnection m_connection;
         /// <summary>
         /// The list of maps
         /// </summary>
@@ -242,17 +245,17 @@ namespace OSGeo.MapGuide.MgCooker
         /// <param name="password">The password to connect with</param>
         /// <param name="maps">A list of maps to process, leave empty to process all layers</param>
         public BatchSettings(string mapagent, string username, string password, params string[] maps)
-            : this(MaestroAPI.ConnectionFactory.CreateHttpConnection(new Uri(mapagent), username, password, null, true), maps)
+            : this(ConnectionProviderRegistry.CreateConnection("Maestro.Http", "Url", mapagent, "Username", username, "Password", password, "AllowUntestedVersions", "true"), maps)
         {
         }
 
-        public BatchSettings(MaestroAPI.ServerConnectionI connection)
+        public BatchSettings(IServerConnection connection)
         {
             m_connection = connection;
             m_maps = new List<BatchMap>();
         }
 
-        public BatchSettings(MaestroAPI.ServerConnectionI connection, params string[] maps)
+        public BatchSettings(IServerConnection connection, params string[] maps)
         {
             m_connection = connection;
             m_maps = new List<BatchMap>();
@@ -260,7 +263,7 @@ namespace OSGeo.MapGuide.MgCooker
             if (maps == null || maps.Length == 0 || (maps.Length == 1 && maps[0].Trim().Length == 0))
             {
                 List<string> tmp = new List<string>();
-                foreach (MaestroAPI.ResourceListResourceDocument doc in m_connection.GetRepositoryResources("Library://", "MapDefinition").Items)
+                foreach (var doc in m_connection.ResourceService.GetRepositoryResources("Library://", "MapDefinition").Children)
                     tmp.Add(doc.ResourceId);
                 maps = tmp.ToArray();
             }
@@ -320,7 +323,7 @@ namespace OSGeo.MapGuide.MgCooker
         /// <summary>
         /// The connection to the server
         /// </summary>
-        public MaestroAPI.ServerConnectionI Connection { get { return m_connection; } }
+        public IServerConnection Connection { get { return m_connection; } }
         /// <summary>
         /// The list of maps to proccess
         /// </summary>
@@ -349,12 +352,12 @@ namespace OSGeo.MapGuide.MgCooker
         /// <summary>
         /// The map read from MapGuide
         /// </summary>
-        private MaestroAPI.MapDefinition m_mapdefinition;
+        private IMapDefinition m_mapdefinition;
 
         /// <summary>
         /// The max extent of the map
         /// </summary>
-        private MaestroAPI.Box2DType m_maxExtent;
+        private IEnvelope m_maxExtent;
 
         /// <summary>
         /// The list of baselayer group names
@@ -417,22 +420,24 @@ namespace OSGeo.MapGuide.MgCooker
         public BatchMap(BatchSettings parent, string map)
         {
             m_parent = parent;
-            m_mapdefinition = parent.Connection.GetMapDefinition(map);
+            m_mapdefinition = (IMapDefinition)parent.Connection.ResourceService.GetResource(map);
+            var baseMap = m_mapdefinition.BaseMap;
 
-            if (m_mapdefinition.BaseMapDefinition != null && m_mapdefinition.BaseMapDefinition.FiniteDisplayScale != null && m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.Count != 0)
+            if (baseMap != null &&
+                baseMap.ScaleCount > 0)
             {
-                m_groups = new string[m_mapdefinition.BaseMapDefinition.BaseMapLayerGroup.Count];
-                for (int i = 0; i < m_mapdefinition.BaseMapDefinition.BaseMapLayerGroup.Count; i++)
-                    m_groups[i] = m_mapdefinition.BaseMapDefinition.BaseMapLayerGroup[i].Name;
+                m_groups = new string[baseMap.GroupCount];
+                for (int i = 0; i < baseMap.GroupCount; i++)
+                    m_groups[i] = baseMap.GetGroupAt(i).Name;
 
-                m_maxscale = m_mapdefinition.BaseMapDefinition.FiniteDisplayScale[m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.Count - 1];
+                m_maxscale = baseMap.GetMaxScale();
                 CalculateDimensions();
             }
         }
 
         public void CalculateDimensions()
         {
-            int[] tmp = new int[this.Map.BaseMapDefinition.FiniteDisplayScale.Count];
+            int[] tmp = new int[this.Map.BaseMap.ScaleCount];
             for (int i = 0; i < tmp.Length; i++)
                 tmp[i] = i;
 
@@ -441,14 +446,14 @@ namespace OSGeo.MapGuide.MgCooker
 
         public void CalculateDimensionsInternal()
         {
-            if (m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.Count == 0)
+            if (m_mapdefinition.BaseMap.ScaleCount == 0)
             {
                 m_scaleindexmap = new int[0];
                 m_dimensions = new long[0][];
                 return;
             }
 
-            MaestroAPI.Box2DType extents = this.MaxExtent ?? m_mapdefinition.Extents;
+            IEnvelope extents = this.MaxExtent ?? m_mapdefinition.Extents;
             double maxscale = m_maxscale;
 
             m_dimensions = new long[this.Resolutions][];
@@ -461,7 +466,7 @@ namespace OSGeo.MapGuide.MgCooker
             for (int i = this.Resolutions - 1; i >= 0; i--)
             {
                 long rows, cols;
-                double scale = m_mapdefinition.BaseMapDefinition.FiniteDisplayScale[i];
+                double scale = m_mapdefinition.BaseMap.GetScaleAt(i);
 
                 if (m_parent.Config.UseOfficialMethod)
                 {
@@ -531,9 +536,9 @@ namespace OSGeo.MapGuide.MgCooker
             List<int> keys = new List<int>(s.Keys);
             keys.Reverse();
 
-            for (int i = m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.Count - 1; i >= 0; i--)
+            for (int i = m_mapdefinition.BaseMap.ScaleCount - 1; i >= 0; i--)
                 if (!keys.Contains(i))
-                    m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.RemoveAt(i);
+                    m_mapdefinition.BaseMap.RemoveScaleAt(i);
 
             CalculateDimensionsInternal();
 
@@ -575,10 +580,10 @@ namespace OSGeo.MapGuide.MgCooker
         {
             get
             {
-                if (m_mapdefinition.BaseMapDefinition == null || m_mapdefinition.BaseMapDefinition.FiniteDisplayScale == null)
+                if (m_mapdefinition.BaseMap == null || m_mapdefinition.BaseMap.ScaleCount == 0)
                     return 0;
                 else
-                    return m_mapdefinition.BaseMapDefinition.FiniteDisplayScale.Count;
+                    return m_mapdefinition.BaseMap.ScaleCount;
             }
         }
 
@@ -599,12 +604,12 @@ namespace OSGeo.MapGuide.MgCooker
 
                 //If the MaxExtents are different from the actual bounds, we need a start offset offset
 
-                RenderThreads settings = new RenderThreads(this, m_parent, m_scaleindexmap[scaleindex], group, m_mapdefinition.ResourceId, rows, cols, m_rowTileOffset, m_colTileOffset, m_parent.Config.RandomizeTileSequence);
+                RenderThreads settings = new RenderThreads(this, m_parent, m_scaleindexmap[scaleindex], group, m_mapdefinition.ResourceID, rows, cols, m_rowTileOffset, m_colTileOffset, m_parent.Config.RandomizeTileSequence);
                 
                 settings.RunAndWait();
 
                 if (settings.TileSet.Count != 0 && !m_parent.Cancel)
-                    throw new Exception(Strings.BatchSettings.ThreadFailureError);
+                    throw new Exception(Properties.Resources.ThreadFailureError);
             }
 
             m_parent.InvokeFinishRendering(this, group, scaleindex);
@@ -654,7 +659,7 @@ namespace OSGeo.MapGuide.MgCooker
         /// <summary>
         /// Gets or sets the maximum extent used to calculate the tiles
         /// </summary>
-        public MaestroAPI.Box2DType MaxExtent
+        public IEnvelope MaxExtent
         {
             get
             {
@@ -670,12 +675,12 @@ namespace OSGeo.MapGuide.MgCooker
         /// <summary>
         /// Gets the resourceId for the map
         /// </summary>
-        public string ResourceId { get { return m_mapdefinition.ResourceId; } }
+        public string ResourceId { get { return m_mapdefinition.ResourceID; } }
 
         /// <summary>
         /// Gets the MapDefintion
         /// </summary>
-        public MaestroAPI.MapDefinition Map { get { return m_mapdefinition; } }
+        public IMapDefinition Map { get { return m_mapdefinition; } }
 
         /// <summary>
         /// Gets a reference to the parent

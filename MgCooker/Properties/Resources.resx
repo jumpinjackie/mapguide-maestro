@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlreadyAborting" xml:space="preserve">
+    <value>I heard you the first time!
+Please be patient.</value>
+    <comment>A message that is displayed when the user clicks quit more than once</comment>
+  </data>
+  <data name="ConnectionError" xml:space="preserve">
+    <value>Unable to connect: {0}</value>
+    <comment>An error message that is displayed, when the initial connection fails</comment>
+  </data>
+  <data name="ConsoleCurrentGroup" xml:space="preserve">
+    <value>Current Group: \t{0} ({1} of {2})</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="ConsoleCurrentMap" xml:space="preserve">
+    <value>Current Map:   \t{0} ({1} of {2})</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="ConsoleCurrentScale" xml:space="preserve">
+    <value>Current Scale: \t1:{0} ({1} of {2})</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="ConsoleCurrentTile" xml:space="preserve">
+    <value>Current Tile:  \t{0} of {1}</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="ConsoleErrorSummary" xml:space="preserve">
+    <value>Error count: {0}, last exception: {1}</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="ConsoleGroupDuration" xml:space="preserve">
+    <value>Group estimate:  \t{0}</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="ConsoleGroupEstimate" xml:space="preserve">
+    <value>Group duration:  \t{0}</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="ConsoleOperationBeginGroup" xml:space="preserve">
+    <value>{0}: Rendering group {1} ({3} of {4})</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="ConsoleOperationBeginMap" xml:space="preserve">
+    <value>{0}: Rendering map {1}</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="ConsoleOperationBeginScale" xml:space="preserve">
+    <value>{0}: Rendering scale 1:{1} ({2} of {3})</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="ConsoleOperationFinishGroup" xml:space="preserve">
+    <value>{0}: Rendered group {1} in {2}</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="ConsoleOperationFinishMap" xml:space="preserve">
+    <value>{0}: Rendered map {1} in {2}</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="ConsoleOperationFinishScale" xml:space="preserve">
+    <value>{0}: Rendered scale 1:{1} in {2}</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="ConsoleOperationFinishTile" xml:space="preserve">
+    <value>Processed {0} of {1} tiles in {2}, expected duration: {3}</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="ConsoleUpdateTime" xml:space="preserve">
+    <value>Update time:   \t{0}</value>
+    <comment>Text displayed in the console to report progress</comment>
+  </data>
+  <data name="CurrentGroupStatus" xml:space="preserve">
+    <value>{0} in {1}</value>
+    <comment>Label that identifies the current group and map, like &lt;group&gt; in &lt;map&gt;</comment>
+  </data>
+  <data name="CurrentTileCounter" xml:space="preserve">
+    <value>Tile {0:###,###,###,###} of {1:###,###,###,###} {2}</value>
+    <comment>Label that displays the current tile and the total number of tiles and number of failed tiles, eg: tile 1 of 100 (5 failed tiles)</comment>
+  </data>
+  <data name="FileTypeAllFiles" xml:space="preserve">
+    <value>All files ({0})</value>
+    <comment>The name displayed for the *.* filetype when the user is prompted to save a file</comment>
+  </data>
+  <data name="FileTypeShellScript" xml:space="preserve">
+    <value>Shell Script ({0})</value>
+    <comment>The name displayed for the *.sh filetype when the user is prompted to save a file</comment>
+  </data>
+  <data name="InsufficientTimePassed" xml:space="preserve">
+    <value>&lt; Inaccurate measure of remaining time &gt;</value>
+    <comment>Text displayed when it is not possible to predict the remaning time</comment>
+  </data>
+  <data name="InternalError" xml:space="preserve">
+    <value>An internal error occured: {0}</value>
+    <comment>An error message that is displayed if an internal error occurs</comment>
+  </data>
+  <data name="MissingWebConfigFile" xml:space="preserve">
+    <value>The file {0} was not found, unable to use the Native connection method.
+Either copy in the file, or do not use the Native connection method</value>
+    <comment>A message displayed when the webconfig.ini file is missing</comment>
+  </data>
+  <data name="PauseMessage" xml:space="preserve">
+    <value>MgCooker is now paused, click OK to resume rendering</value>
+    <comment>A text message displayed when MgCooker is paused</comment>
+  </data>
+  <data name="RemainingTime" xml:space="preserve">
+    <value>{0}, remaining time: {1}</value>
+    <comment>Label that displays the remaining time</comment>
+  </data>
+  <data name="ThreadFailureError" xml:space="preserve">
+    <value>All threads crashed, and the tile set was only partially created</value>
+    <comment>An error message that displays if the render threads crash</comment>
+  </data>
+  <data name="TileErrorCount" xml:space="preserve">
+    <value>({0} failed tiles)</value>
+    <comment>Text inserted in the CurrentTileCounter if any tiles are failed</comment>
+  </data>
+</root>

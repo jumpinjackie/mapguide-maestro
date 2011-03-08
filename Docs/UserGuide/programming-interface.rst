@@ -1,2 +1,0 @@
-Picking a Programming Interface
--------------------------------

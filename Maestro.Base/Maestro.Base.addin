@@ -1,0 +1,578 @@
+﻿<AddIn name="Maestro.Base"
+       author="Jackie Ng"
+       url="http://trac.osgeo.org/mapguide/wiki/maestro"
+       description="Base Component for MapGuide Maestro"
+       addInManagerHidden="preinstalled">
+
+    <Manifest>
+        <Identity name="Maestro.Base" />
+    </Manifest>
+
+    <Runtime>
+        <Import assembly="../Maestro.Base.dll">
+            <ConditionEvaluator name="DebugMode" class="Maestro.Base.Commands.Conditions.DebugModeConditionEvaluator" />
+            <ConditionEvaluator name="IsConnected" class="Maestro.Base.Commands.Conditions.IsConnectedConditionEvaluator" />
+            <ConditionEvaluator name="NotConnected" class="Maestro.Base.Commands.Conditions.NotConnectedConditionEvaluator" />
+            <ConditionEvaluator name="IsNotRoot" class="Maestro.Base.Commands.Conditions.SelectedRootItemConditionEvaluator" />
+            <ConditionEvaluator name="EditorFunction" class="Maestro.Base.Commands.Conditions.ActiveEditorConditionEvaluator" />
+            <ConditionEvaluator name="CanClose" class="Maestro.Base.Commands.Conditions.CloseableDocumentConditionEvaluator" />
+            <ConditionEvaluator name="SelectedItem" class="Maestro.Base.Commands.Conditions.SelectedItemConditionEvaluator" />
+            <ConditionEvaluator name="CanPaste" class="Maestro.Base.Commands.Conditions.PasteConditionEvaluator" />
+            <ConditionEvaluator name="CanCutOrCopy" class="Maestro.Base.Commands.Conditions.CutCopyConditionEvaluator" />
+            <ConditionEvaluator name="MultipleSelected" class="Maestro.Base.Commands.Conditions.MultipleSelectedItemConditionEvaluator" />
+            <ConditionEvaluator name="HasDocuments" class="Maestro.Base.Commands.Conditions.NonZeroDocumentConditionEvaluator" />
+        </Import>
+    </Runtime>
+
+    <!-- Registered preference tabs -->
+    <Path name="/Maestro/Preferences">
+        <Class id="GeneralPrefs" class="Maestro.Base.UI.Preferences.GeneralPreferencesCtrl" />
+    </Path>
+
+    <!-- Registered drop handlers -->
+    <Path name="/Maestro/DragDropHandlers">
+        <Class id="MgpHandler" class="Maestro.Base.Services.DragDropHandlers.PackageFileHandler" />
+        <Class id="SdfHandler" class="Maestro.Base.Services.DragDropHandlers.SdfFileHandler" />
+        <Class id="ShpHandler" class="Maestro.Base.Services.DragDropHandlers.ShpFileHandler" />
+        <Class id="SltHandler" class="Maestro.Base.Services.DragDropHandlers.SltFileHandler" />
+        <Class id="XmlResHandler" class="Maestro.Base.Services.DragDropHandlers.XmlResFileHandler" />
+    </Path>
+    
+    <!-- Registered editors -->
+    <Path name="/Maestro/Editors">
+        <Class id="FusionEditor100" class="Maestro.Base.Editor.FusionEditorFactory" />
+        <Class id="DrawingSourceEditor100" class="Maestro.Base.Editor.DrawingSourceEditorFactory" />
+        <Class id="FeatureSourceEditor100" class="Maestro.Base.Editor.FeatureSourceEditorFactory" />
+        <Class id="LayerDefinitionEditor100" class="Maestro.Base.Editor.LayerDefinitionEditorFactory" />
+        <Class id="LoadProcedureEditor100" class="Maestro.Base.Editor.LoadProcedureEditorFactory" />
+        <Class id="MapDefinitionEditor100" class="Maestro.Base.Editor.MapDefinitionEditorFactory" />
+        <Class id="PrintLayoutEditor100" class="Maestro.Base.Editor.PrintLayoutEditorFactory" />
+        <Class id="SymbolDefinitionEditor100" class="Maestro.Base.Editor.SymbolDefinitionEditorFactory" />
+        <Class id="WebLayoutEditor100" class="Maestro.Base.Editor.WebLayoutEditorFactory" />
+    </Path>
+
+    <!-- Registered System Templates -->
+    <Path name="/Maestro/NewItemTemplates">
+        <Class id="FlexLayout100" class="Maestro.Base.Templates.ApplicationDefinitionItemTemplate" />
+        <Class id="DrawingSource100" class="Maestro.Base.Templates.DrawingSourceItemTemplate" />
+        <Class id="FeatureSource100" class="Maestro.Base.Templates.FeatureSourceItemTemplate" />
+        <Class id="VectorLayerDefinition100" class="Maestro.Base.Templates.VectorLayerDefinitionItemTemplate" />
+        <Class id="RasterLayerDefinition100" class="Maestro.Base.Templates.RasterLayerDefinitionItemTemplate" />
+        <Class id="DrawingLayerDefinition100" class="Maestro.Base.Templates.DrawingLayerDefinitionItemTemplate" />
+        <Class id="MapDefinition100" class="Maestro.Base.Templates.MapDefinitionItemTemplate" />
+        <Class id="PrintLayout100" class="Maestro.Base.Templates.PrintLayoutItemTemplate" />
+        <Class id="SdfLoadProcedure100" class="Maestro.Base.Templates.SdfLoadProcedureItemTemplate" />
+        <Class id="ShpLoadProcedure100" class="Maestro.Base.Templates.ShpLoadProcedureItemTemplate" />
+        <Class id="DwfLoadProcedure100" class="Maestro.Base.Templates.DwfLoadProcedureItemTemplate" />
+        <Class id="SimpleSymbol100" class="Maestro.Base.Templates.SimpleSymbolDefinitionItemTemplate" />
+        <Class id="CompoundSymbol100" class="Maestro.Base.Templates.CompoundSymbolDefinitionItemTemplate" />
+        <Class id="WebLayout100" class="Maestro.Base.Templates.WebLayoutItemTemplate" />
+    </Path>
+    
+    <!-- Main Menu Definition -->
+    <Path name="/Maestro/Shell/MainMenu">
+        <MenuItem id="Menu_File"
+                  type="Menu"
+                  label="${res:Menu_File}">
+            <Condition action="Disable" name="IsConnected">
+                <MenuItem id="Connect"
+                          label="${res:Menu_File_Connect}"
+                          icon="plug__plus"
+                          class="Maestro.Base.Commands.LoginCommand" />
+            </Condition>
+            <Condition action="Disable" name="NotConnected">
+                <MenuItem id="NewItem"
+                          label="${res:Menu_File_NewResource}"
+                          icon="document__plus"
+                          class="Maestro.Base.Commands.NewItemCommand" />
+            </Condition>
+            <MenuItem type="Separator" />
+            <Condition action="Disable" name="EditorFunction">
+                <Condition action="Disable" name="EditorFunction" property="CanSave">
+                    <MenuItem id="Save"
+                              icon="disk"
+                              label="${res:Menu_File_SaveResource}"
+                              tooltip="${res:Menu_File_SaveResource}"
+                              shortcut="Control|S"
+                              class="Maestro.Base.Commands.SaveResourceCommand" />
+                </Condition>
+                <MenuItem id="SaveAs"
+                          icon="disk__arrow"
+                          label="${res:Menu_File_SaveResourceAs}"
+                          tooltip="${res:Menu_File_SaveResourceAs}"
+                          class="Maestro.Base.Commands.SaveResourceAsCommand" />
+                <Condition action="Disable" name="HasDocuments">
+                    <MenuItem id="SaveAll"
+                              icon="disks"
+                              label="${res:Menu_File_SaveAll}"
+                              tooltip="${res:Menu_File_SaveAll}"
+                              shortcut="Control|Shift|S"
+                              class="Maestro.Base.Commands.SaveAllCommand" />
+                </Condition>
+            </Condition>
+            <MenuItem type="Separator" />
+            <MenuItem id="Menu_File_Quit"
+                      label="${res:Menu_File_Quit}"
+                      class="Maestro.Base.Commands.QuitCommand" />
+        </MenuItem>
+        <MenuItem id="Menu_Edit"
+                  type="Menu"
+                  label="${res:Menu_Edit}">
+            <Condition action="Disable" name="IsNotRoot">
+                <Condition action="Disable" name="CanCutOrCopy">
+                    <MenuItem id="CopyItem"
+                              icon="document_copy"
+                              label="${res:Menu_Edit_Copy}"
+                              shortcut="Control|C"
+                              class="Maestro.Base.Commands.CopyCommand" />
+                    <MenuItem id="CutItem"
+                              label="${res:Menu_Edit_Cut}"
+                              icon="scissors_blue"
+                              shortcut="Control|X"
+                              class="Maestro.Base.Commands.CutCommand" />
+                </Condition>
+            </Condition>
+            <Condition action="Disable" name="CanPaste">
+                <MenuItem id="PasteItem"
+                          label="${res:Menu_Edit_Paste}"
+                          icon="clipboard_paste"
+                          shortcut="Control|V"
+                          class="Maestro.Base.Commands.PasteCommand" />
+            </Condition>
+        </MenuItem>
+        <!-- For testing various APIs, disabled for releases -->
+        <Condition action="Exclude" name="DebugMode">
+            <MenuItem id="Menu_Test"
+                      type="Menu"
+                      label="Test">
+                <MenuItem id="Menu_Test_OpenResource"
+                          label="Open Resource"
+                          class="Maestro.Base.Commands.Test.OpenResourceCommand" />
+                <MenuItem id="Menu_Test_OpenResourceStartingPoint"
+                          label="Open Resource (from starting point)"
+                          class="Maestro.Base.Commands.Test.OpenResourceFromStartingPointCommand" />
+                <MenuItem id="Menu_Test_OpenResourceWithFilter"
+                          label="Open Resource (with filter)"
+                          class="Maestro.Base.Commands.Test.OpenResourceWithFilterCommand" />
+                <MenuItem id="Menu_Test_OpenFolder"
+                          label="Open Folder"
+                          class="Maestro.Base.Commands.Test.OpenFolderCommand" />
+                <MenuItem id="Menu_Test_SaveResource"
+                          label="Save Resource"
+                          class="Maestro.Base.Commands.Test.SaveResourceCommand" />
+                <MenuItem id="Menu_Test_SaveResourceWithFilter"
+                          label="Save Resource (with filter)"
+                          class="Maestro.Base.Commands.Test.SaveResourceWithFilterCommand" />
+                <MenuItem id="Menu_Test_OpenUnmanagedFile"
+                          label="Open Unmanaged Resource"
+                          class="Maestro.Base.Commands.Test.OpenUnmanagedResourceCommand" />
+                <MenuItem id="Menu_Test_SelectCoordSys"
+                          label="Select Coordinate System"
+                          class="Maestro.Base.Commands.Test.OpenCoordinateSystemPickerCommand" />
+                <MenuItem id="Menu_Test_OpenSymbolBrowser"
+                          label="Open Symbol Browser"
+                          class="Maestro.Base.Commands.Test.OpenSymbolBrowserCommand" />
+                <MenuItem id="Menu_Test_SelectFdoProvider"
+                          label="Select FDO Provider"
+                          class="Maestro.Base.Commands.Test.SelectFdoProviderCommand" />
+            </MenuItem>
+        </Condition>
+        <!-- -->
+        <MenuItem id="Menu_Tools"
+                  type="Menu"
+                  label="${res:Menu_Tools}">
+            <MenuItem id="MgCooker"
+                      label="${res:MgCooker}"
+                      class="Maestro.Base.Commands.MgCookerCommand"/>
+            <MenuItem id="LocalFsPreview"
+                      label="${res:LocalFsPreview}"
+                      class="Maestro.Base.Commands.LocalFeatureSourcePreviewCommand"/>
+            <MenuItem id="ServerMonitor"
+                      label="${res:ServerMonitor}"
+                      class="Maestro.Base.Commands.ServerMonitorCommand"/>
+            <MenuItem id="CacheView"
+                      label="${res:CacheView}"
+                      class="Maestro.Base.Commands.CacheViewerCommand"/>
+            <MenuItem type="Separator" />
+            <MenuItem id="Menu_Tools_Options"
+                      label="${res:Menu_Tools_Options}"
+                      icon="application_task"
+                      class="Maestro.Base.Commands.OptionsCommand"/>
+        </MenuItem>
+        <MenuItem id="Menu_Window"
+                  type="Menu"
+                  label="${res:Menu_Window}">
+            <Condition action="Disable" name="CanClose">
+                <MenuItem id="CloseDocument"
+                          label="${res:Menu_File_CloseActiveDocument}"
+                          tooltip="${res:Menu_File_CloseActiveDocument}"
+                          shortcut="Control|F4"
+                          icon="cross"
+                          class="Maestro.Base.Commands.CloseActiveDocumentCommand" />
+            </Condition>
+            <Condition action="Disable" name="HasDocuments">
+                <MenuItem id="CloseAll"
+                          label="${res:Menu_File_CloseAll}"
+                          tooltip="${res:Menu_File_CloseAll}"
+                          icon="cross"
+                          shortcut="Control|Shift|F4"
+                          class="Maestro.Base.Commands.CloseAllDocumentsCommand" />
+            </Condition>
+        </MenuItem>
+        <MenuItem id="Menu_Package"
+                  type="Menu"
+                  label="${res:Menu_Package}">
+            <MenuItem id="CreatePackage"
+                      icon="box__plus"
+                      label="${res:SiteExplorer_SelectedFolder_CreatePackage}"
+                      class="Maestro.Base.Commands.CreatePackageCommand" />
+            <MenuItem id="LoadPackage"
+                      icon="box__arrow"
+                      label="${res:Menu_Package_LoadPackage}"
+                      class="Maestro.Base.Commands.LoadPackageCommand" />
+        </MenuItem>
+        <MenuItem id="Menu_Help"
+                  type="Menu"
+                  label="${res:Menu_Help}">
+            <MenuItem id="Menu_Help_About"
+                      label="${res:Menu_Help_About}"
+                      class="Maestro.Base.Commands.AboutCommand" />
+        </MenuItem>
+    </Path>
+
+    <!-- Auto-start commands -->
+    <Path name="/Workspace/Autostart">
+        <Class id="Startup" class="Maestro.Base.Commands.StartupCommand" />
+    </Path>
+
+    <!-- Application-level services -->
+    <Path name="/Maestro/ApplicationServices">
+        <Class id="DragDropHandlerService" class="Maestro.Base.Services.DragDropHandlerService" />
+        <Class id="ClipboardService" class="Maestro.Base.Services.ClipboardService" />
+        <Class id="ServerConnectionManager" class="Maestro.Base.Services.ServerConnectionManager" />
+        <Class id="UrlLauncher" class="Maestro.Base.Services.UrlLauncherService" />
+        <Class id="OpenResourceManager" class="Maestro.Base.Services.OpenResourceManager" />
+        <Class id="ViewContentManager" class="Maestro.Base.Services.ViewContentManager" />
+        <Class id="NewItemTemplateService" class="Maestro.Base.Services.NewItemTemplateService" />
+    </Path>
+
+    <!-- Singleton view content -->
+    <Path name="/Maestro/Shell/SingleViewContent">
+        <Class id="MessageViewer" class="Maestro.Base.UI.MessageViewer" />
+        <Class id="OutboundRequestViewer" class="Maestro.Base.UI.OutboundRequestViewer" />
+    </Path>
+    
+    <!-- Toolbar Definition -->
+    <Path name="/Maestro/Shell/Toolbars/Main">
+        <Condition action="Disable" name="IsConnected">
+            <ToolbarItem id="Connect"
+                         icon="plug__plus"
+                         label="${res:Menu_File_Connect}"
+                         tooltip="${res:Menu_File_Connect}"
+                         class="Maestro.Base.Commands.LoginCommand" />
+        </Condition>
+        <Condition action="Disable" name="NotConnected">
+            <ToolbarItem id="NewItem"
+                         icon="document__plus"
+                         label="${res:Menu_File_NewResource}"
+                         tooltip="${res:Menu_File_NewResource}"
+                         class="Maestro.Base.Commands.NewItemCommand" />
+            <ToolbarItem id="Disconnect"
+                         icon="plug--minus"
+                         label="${res:SiteExplorer_Disconnect}"
+                         tooltip="${res:SiteExplorer_Disconnect}"
+                         class="Maestro.Base.Commands.SiteExplorer.DisconnectCommand" />
+            <ToolbarItem type="Separator" />
+            <Condition action="Disable" name="CanCutOrCopy">
+                <ToolbarItem id="CopyItem"
+                             icon="document_copy"
+                             tooltip="${res:Menu_Edit_Copy}"
+                             class="Maestro.Base.Commands.CopyCommand" />
+                <ToolbarItem id="CutItem"
+                             icon="scissors_blue"
+                             tooltip="${res:Menu_Edit_Cut}"
+                             class="Maestro.Base.Commands.CutCommand" />
+            </Condition>
+            <Condition action="Disable" name="CanPaste">
+                <ToolbarItem id="PasteItem"
+                             icon="clipboard_paste"
+                             tooltip="${res:Menu_Edit_Paste}"
+                             class="Maestro.Base.Commands.PasteCommand" />
+            </Condition>
+            <ToolbarItem type="Separator" />
+        </Condition>
+        <Condition action="Disable" name="EditorFunction">
+            <Condition action="Disable" name="EditorFunction" property="CanSave">
+                <ToolbarItem id="Save"
+                             icon="disk"
+                             tooltip="${res:Menu_File_SaveResource}"
+                             class="Maestro.Base.Commands.SaveResourceCommand" />
+            </Condition>
+            <ToolbarItem id="SaveAs"
+                         icon="disk__arrow"
+                         tooltip="${res:Menu_File_SaveResourceAs}"
+                         class="Maestro.Base.Commands.SaveResourceAsCommand" />
+            <Condition action="Disable" name="HasDocuments">
+                <ToolbarItem id="SaveAll"
+                             icon="disks"
+                             tooltip="${res:Menu_File_SaveAll}"
+                             class="Maestro.Base.Commands.SaveAllCommand" />
+            </Condition>
+        </Condition>
+        <ToolbarItem type="Separator" />
+        <Condition action="Disable" name="EditorFunction" property="CanPreview">
+            <ToolbarItem id="Preview"
+                         icon="document_search_result"
+                         tooltip="${res:Menu_File_PreviewResource}"
+                         class="Maestro.Base.Commands.PreviewResourceCommand" />
+        </Condition>
+        <Condition action="Disable" name="EditorFunction" property="CanEditAsXml">
+            <ToolbarItem id="XmlEdit"
+                         icon="document_code"
+                         tooltip="${res:Menu_File_EditResourceWithXml}"
+                         class="Maestro.Base.Commands.EditAsXmlCommand" />
+        </Condition>
+        <Condition action="Disable" name="EditorFunction" property="CanProfile">
+            <ToolbarItem id="Profile"
+                         icon="clock"
+                         tooltip="${res:Menu_File_ProfileResource}"
+                         class="Maestro.Base.Commands.NotImplementedCommand" />
+        </Condition>
+        <Condition action="Disable" name="EditorFunction" property="CanValidate">
+            <ToolbarItem id="Validate"
+                         icon="tick"
+                         tooltip="${res:Menu_File_ValidateResource}"
+                         class="Maestro.Base.Commands.SiteExplorer.ValidateCommand" />
+        </Condition>
+        <!-- 
+        Only needed if our custom drawn close buttons don't appear on document
+        tabs (I'm looking at you Mono). So far this isn't the case. 
+        
+        This command is a fallback in case there are problems.
+        -->
+        <!--
+        <ToolbarItem type="Separator" />
+        <Condition action="Disable" name="CanClose">
+            <ToolbarItem id="CloseDocument"
+                         tooltip="${res:Menu_File_CloseActiveDocument}"
+                         icon="cross"
+                         class="Maestro.Base.Commands.CloseActiveDocumentCommand" />
+        </Condition>
+        -->
+    </Path>
+    
+    <!-- Site Explorer Toolbar -->
+    <Path name="/Maestro/Shell/SiteExplorer/Toolbar">
+        <Condition action="Disable" name="NotConnected">
+            <ToolbarItem id="NewItem"
+                         label="${res:Menu_File_NewResource}"
+                         icon="document__plus"
+                         class="Maestro.Base.Commands.NewItemCommand" />
+            <ToolbarItem type="Separator" />
+            <Condition action="Disable" name="SelectedItem">
+                <ToolbarItem id="DeleteItem"
+                             icon="cross_script"
+                             class="Maestro.Base.Commands.SiteExplorer.DeleteSelectedItemsCommand" />
+            </Condition>
+            <ToolbarItem id="SiteExplorer_Refresh"
+                         icon="arrow-circle-045-left"
+                         class="Maestro.Base.Commands.SiteExplorer.RefreshCommand" />
+        </Condition>
+    </Path>
+    
+    <!-- Site Explorer Context Menu -->
+    <Path name="/Maestro/Shell/SiteExplorer/SelectedFolder">
+        <Condition action="Disable" name="SelectedItem" type="Folder">
+            <MenuItem id="NewItem"
+                      icon="document__plus"
+                      label="${res:Menu_File_NewResource}"
+                      tooltip="${res:Menu_File_NewResource}"
+                      class="Maestro.Base.Commands.NewItemCommand" />
+            <MenuItem id="NewItem"
+                      icon="folder__plus"
+                      label="${res:SiteExplorer_NewFolder}"
+                      tooltip="${res:SiteExplorer_NewFolder}"
+                      class="Maestro.Base.Commands.SiteExplorer.NewFolderCommand" />
+            <MenuItem id="Rename"
+                      label="${res:SiteExplorer_SelectedItem_Rename}"
+                      class="Maestro.Base.Commands.SiteExplorer.RenameCommand" />
+            <MenuItem type="Separator" />
+            <MenuItem id="CreatePackage"
+                      icon="box__plus"
+                      label="${res:SiteExplorer_SelectedFolder_CreatePackage}"
+                      class="Maestro.Base.Commands.CreatePackageCommand" />
+            <MenuItem type="Separator" />
+            <Condition action="Disable" name="IsNotRoot">
+                <Condition action="Disable" name="CanCutOrCopy">
+                    <MenuItem id="Copy"
+                              icon="document_copy"
+                              label="${res:SiteExplorer_SelectedItem_Copy}"
+                              class="Maestro.Base.Commands.CopyCommand" />
+                    <MenuItem id="Cut"
+                              icon="scissors_blue"
+                              label="${res:SiteExplorer_SelectedItem_Cut}"
+                              class="Maestro.Base.Commands.CutCommand" />
+                </Condition>
+            </Condition>
+            <Condition action="Disable" name="CanPaste">
+                <MenuItem id="Paste"
+                          icon="clipboard_paste"
+                          label="${res:SiteExplorer_SelectedFolder_Paste}"
+                          class="Maestro.Base.Commands.PasteCommand" />
+            </Condition>
+            <MenuItem type="Separator" />
+            <Condition action="Disable" name="IsNotRoot">
+                <MenuItem id="Delete"
+                          icon="cross_script"
+                          label="${res:SiteExplorer_SelectedItem_Delete}"
+                          class="Maestro.Base.Commands.SiteExplorer.DeleteSelectedItemsCommand" />
+            </Condition>
+            <MenuItem id="Validate"
+                      icon="tick"
+                      label="${res:SiteExplorer_ValidateResources}"
+                      class="Maestro.Base.Commands.SiteExplorer.ValidateCommand" />
+            <MenuItem type="Separator" />
+            <MenuItem id="Properties"
+                      label="${res:SiteExplorer_SelectedItem_Properties}"
+                      class="Maestro.Base.Commands.SiteExplorer.ResourcePropertiesCommand" />
+        </Condition>
+    </Path>
+
+    <!-- Site Explorer Context Menu -->
+    <Path name="/Maestro/Shell/SiteExplorer/SelectedFolders">
+        <Condition action="Disable" name="MultipleSelected">
+            <Condition action="Disable" name="CanCutOrCopy">
+                <MenuItem id="Copy"
+                          icon="document_copy"
+                          label="${res:SiteExplorer_SelectedItem_Copy}"
+                          class="Maestro.Base.Commands.CopyCommand" />
+                <MenuItem id="Cut"
+                          icon="scissors_blue"
+                          label="${res:SiteExplorer_SelectedItem_Cut}"
+                          class="Maestro.Base.Commands.CutCommand" />
+            </Condition>
+            <MenuItem id="Validate"
+                      icon="tick"
+                      label="${res:SiteExplorer_ValidateResources}"
+                      class="Maestro.Base.Commands.SiteExplorer.ValidateCommand" />
+            <MenuItem type="Separator" />
+            <MenuItem id="Delete"
+                      icon="cross_script"
+                      label="${res:SiteExplorer_SelectedItem_Delete}"
+                      class="Maestro.Base.Commands.SiteExplorer.DeleteSelectedItemsCommand" />
+        </Condition>
+    </Path>
+
+    <!-- Site Explorer Context Menu -->
+    <Path name="/Maestro/Shell/SiteExplorer/SelectedDocument">
+        <Condition action="Disable" name="SelectedItem">
+            <MenuItem id="Open"
+                      label="${res:SiteExplorer_SelectedItem_Open}"
+                      class="Maestro.Base.Commands.SiteExplorer.OpenResourceCommand" />
+            <MenuItem id="OpenXml"
+                      icon="document_code"
+                      label="${res:SiteExplorer_SelectedItem_OpenWithXmlEditor}"
+                      class="Maestro.Base.Commands.SiteExplorer.OpenWithXmlEditorCommand" />
+            <MenuItem id="Rename"
+                      label="${res:SiteExplorer_SelectedItem_Rename}"
+                      class="Maestro.Base.Commands.SiteExplorer.RenameCommand" />
+            <MenuItem id="Delete"
+                      icon="cross_script"
+                      label="${res:SiteExplorer_SelectedItem_Delete}"
+                      class="Maestro.Base.Commands.SiteExplorer.DeleteSelectedItemsCommand" />
+            <MenuItem type="Separator" />
+            <Condition action="Disable" name="CanCutOrCopy">
+                <MenuItem id="Copy"
+                          icon="document_copy"
+                          label="${res:SiteExplorer_SelectedItem_Copy}"
+                          class="Maestro.Base.Commands.CopyCommand" />
+                <MenuItem id="Cut"
+                          icon="scissors_blue"
+                          label="${res:SiteExplorer_SelectedItem_Cut}"
+                          class="Maestro.Base.Commands.CutCommand" />
+            </Condition>
+            <MenuItem type="Separator" />
+            <MenuItem id="Migrate"
+                      label="${res:SiteExplorer_Migrate}"
+                      class="Maestro.Base.Commands.SiteExplorer.MigrateResourceCommand" />
+            <MenuItem id="CopyMoveToServer"
+                      label="${res:SiteExplorer_CopyMoveToServer}"
+                      class="Maestro.Base.Commands.SiteExplorer.CopyMoveToAnotherServerCommand" />
+            <MenuItem type="Separator" />
+            <MenuItem id="Repoint"
+                      icon="document__arrow"
+                      label="${res:SiteExplorer_Repoint}"
+                      class="Maestro.Base.Commands.SiteExplorer.RepointCommand" />
+            <MenuItem id="Validate"
+                      icon="tick"
+                      label="${res:SiteExplorer_ValidateResources}"
+                      class="Maestro.Base.Commands.SiteExplorer.ValidateCommand" />
+            <MenuItem type="Separator" />
+            <MenuItem id="Properties"
+                      label="${res:SiteExplorer_SelectedItem_Properties}"
+                      class="Maestro.Base.Commands.SiteExplorer.ResourcePropertiesCommand" />
+        </Condition>
+    </Path>
+
+    <!-- Site Explorer Context Menu -->
+    <Path name="/Maestro/Shell/SiteExplorer/SelectedDocuments">
+        <Condition action="Disable" name="MultipleSelected">
+            <MenuItem id="Open"
+                      label="${res:SiteExplorer_SelectedItem_Open}"
+                      class="Maestro.Base.Commands.SiteExplorer.OpenResourceCommand" />
+            <MenuItem id="Delete"
+                      icon="cross_script"
+                      label="${res:SiteExplorer_SelectedItem_Delete}"
+                      class="Maestro.Base.Commands.SiteExplorer.DeleteSelectedItemsCommand" />
+            <MenuItem type="Separator" />
+            <Condition action="Disable" name="CanCutOrCopy">
+                <MenuItem id="Copy"
+                          icon="document_copy"
+                          label="${res:SiteExplorer_SelectedItem_Copy}"
+                          class="Maestro.Base.Commands.CopyCommand" />
+                <MenuItem id="Cut"
+                          icon="scissors_blue"
+                          label="${res:SiteExplorer_SelectedItem_Cut}"
+                          class="Maestro.Base.Commands.CutCommand" />
+            </Condition>
+            <MenuItem type="Separator" />
+            <MenuItem id="Migrate"
+                      label="${res:SiteExplorer_MigrateResources}"
+                      class="Maestro.Base.Commands.SiteExplorer.MigrateSelectedResourcesCommand" />
+            <MenuItem type="Separator" />
+            <MenuItem id="Validate"
+                      icon="tick"
+                      label="${res:SiteExplorer_ValidateResources}"
+                      class="Maestro.Base.Commands.SiteExplorer.ValidateCommand" />
+        </Condition>
+    </Path>
+
+    <!-- Site Explorer Context Menu -->
+    <Path name="/Maestro/Shell/SiteExplorer/SelectedMixedResources">
+        <Condition action="Disable" name="MultipleSelected">
+            <MenuItem id="Open"
+                      label="${res:SiteExplorer_SelectedItem_Open}"
+                      class="Maestro.Base.Commands.SiteExplorer.OpenResourceCommand" />
+            <MenuItem id="Delete"
+                      icon="cross_script"
+                      label="${res:SiteExplorer_SelectedItem_Delete}"
+                      class="Maestro.Base.Commands.SiteExplorer.DeleteSelectedItemsCommand" />
+            <MenuItem type="Separator" />
+            <Condition action="Disable" name="CanCutOrCopy">
+                <MenuItem id="Copy"
+                          icon="document_copy"
+                          label="${res:SiteExplorer_SelectedItem_Copy}"
+                          class="Maestro.Base.Commands.CopyCommand" />
+                <MenuItem id="Cut"
+                          icon="scissors_blue"
+                          label="${res:SiteExplorer_SelectedItem_Cut}"
+                          class="Maestro.Base.Commands.CutCommand" />
+            </Condition>
+            <MenuItem id="Validate"
+                      icon="tick"
+                      label="${res:SiteExplorer_ValidateResources}"
+                      class="Maestro.Base.Commands.SiteExplorer.ValidateCommand" />
+        </Condition>
+    </Path>
+    
+</AddIn>

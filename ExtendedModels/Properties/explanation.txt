@@ -1,0 +1,1 @@
+This is satisfy the relative path of SignedAssemblyInfo.cs

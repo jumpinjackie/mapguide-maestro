@@ -1,0 +1,532 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F1E2F468-5030-4DBA-968C-9620284AFAA1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Maestro.Base</RootNamespace>
+    <AssemblyName>Maestro.Base</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\out\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\out\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aga.Controls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=fcc90fbf924463a3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\bin\Release\Aga.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Maestro.Editors, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\bin\Maestro.Editors.dll</HintPath>
+    </Reference>
+    <Reference Include="Maestro.Login, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\bin\Maestro.Login.dll</HintPath>
+    </Reference>
+    <Reference Include="Maestro.Packaging, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\bin\Maestro.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Maestro.Shared.UI, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\bin\Maestro.Shared.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.MaestroAPI, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\bin\OSGeo.MapGuide.MaestroAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Commands\AboutCommand.cs" />
+    <Compile Include="Commands\CacheViewerCommand.cs" />
+    <Compile Include="Commands\CloseActiveDocumentCommand.cs" />
+    <Compile Include="Commands\CloseAllDocumentsCommand.cs" />
+    <Compile Include="Commands\Conditions\ActiveEditorConditionEvaluator.cs" />
+    <Compile Include="Commands\Conditions\CloseableDocumentConditionEvaluator.cs" />
+    <Compile Include="Commands\Conditions\CutCopyConditionEvaluator.cs" />
+    <Compile Include="Commands\Conditions\IsConnectedConditionEvaluator.cs" />
+    <Compile Include="Commands\Conditions\MultipleSelectedItemConditionEvaluator.cs" />
+    <Compile Include="Commands\Conditions\NotConnectedConditionEvaluator.cs" />
+    <Compile Include="Commands\Conditions\DebugModeConditionEvaluator.cs" />
+    <Compile Include="Commands\Conditions\PasteConditionEvaluator.cs" />
+    <Compile Include="Commands\Conditions\SelectedItemConditionEvaluator.cs" />
+    <Compile Include="Commands\Conditions\SelectedRootItemConditionEvaluator.cs" />
+    <Compile Include="Commands\Conditions\NonZeroDocumentConditionEvaluator.cs" />
+    <Compile Include="Commands\CopyCommand.cs" />
+    <Compile Include="Commands\CreatePackageCommand.cs" />
+    <Compile Include="Commands\CutCommand.cs" />
+    <Compile Include="Commands\EditAsXmlCommand.cs" />
+    <Compile Include="Commands\LoadPackageCommand.cs" />
+    <Compile Include="Commands\LocalFeatureSourcePreviewCommand.cs" />
+    <Compile Include="Commands\LoginCommand.cs" />
+    <Compile Include="Commands\LogoutCommand.cs" />
+    <Compile Include="Commands\MgCookerCommand.cs" />
+    <Compile Include="Commands\NewItemCommand.cs" />
+    <Compile Include="Commands\NotImplementedCommand.cs" />
+    <Compile Include="Commands\OptionsCommand.cs" />
+    <Compile Include="Commands\PasteCommand.cs" />
+    <Compile Include="Commands\PreviewResourceCommand.cs" />
+    <Compile Include="Commands\ProfileResourceCommand.cs" />
+    <Compile Include="Commands\QuitCommand.cs" />
+    <Compile Include="Commands\SaveAllCommand.cs" />
+    <Compile Include="Commands\SaveResourceAsCommand.cs" />
+    <Compile Include="Commands\SaveResourceCommand.cs" />
+    <Compile Include="Commands\ServerMonitorCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\DeleteSelectedItemsCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\DisconnectCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\CopyMoveToAnotherServerCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\MigrateResourceCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\NewFolderCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\OpenResourceCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\OpenWithXmlEditorCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\RefreshCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\RenameCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\RepointCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\ResourcePropertiesCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\ValidateCommand.cs" />
+    <Compile Include="Commands\StartupCommand.cs" />
+    <Compile Include="Commands\Test\OpenCoordinateSystemPickerCommand.cs" />
+    <Compile Include="Commands\Test\OpenResourceCommand.cs" />
+    <Compile Include="Commands\Test\OpenSymbolBrowserCommand.cs" />
+    <Compile Include="Commands\Test\OpenUnmanagedResourceCommand.cs" />
+    <Compile Include="Commands\Test\SelectFdoProviderCommand.cs" />
+    <Compile Include="Commands\Test\TestCommands.cs" />
+    <Compile Include="Commands\XmlEditCommand.cs" />
+    <Compile Include="Editor\DrawingSourceEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\DrawingSourceEditor.Designer.cs">
+      <DependentUpon>DrawingSourceEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\EditorContentBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\EditorContentBase.Designer.cs">
+      <DependentUpon>EditorContentBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\FeatureSourceEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\FeatureSourceEditor.Designer.cs">
+      <DependentUpon>FeatureSourceEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\FsEditorOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\FsEditorOptionPanel.Designer.cs">
+      <DependentUpon>FsEditorOptionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\FusionEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\FusionEditor.Designer.cs">
+      <DependentUpon>FusionEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\IEditorFactory.cs" />
+    <Compile Include="Editor\IEditorViewContent.cs" />
+    <Compile Include="Editor\LayerDefinitionEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\LayerDefinitionEditor.Designer.cs">
+      <DependentUpon>LayerDefinitionEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\LoadProcedureEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\LoadProcedureEditor.Designer.cs">
+      <DependentUpon>LoadProcedureEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\MapDefinitionEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\MapDefinitionEditor.Designer.cs">
+      <DependentUpon>MapDefinitionEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\PrintLayoutEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\PrintLayoutEditor.Designer.cs">
+      <DependentUpon>PrintLayoutEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\ResourceEditorService.cs" />
+    <Compile Include="Editor\ResourcePreviewEngine.cs" />
+    <Compile Include="Editor\SymbolDefinitionEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\SymbolDefinitionEditor.Designer.cs">
+      <DependentUpon>SymbolDefinitionEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\WebLayoutEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\WebLayoutEditor.Designer.cs">
+      <DependentUpon>WebLayoutEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\XmlEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\XmlEditor.Designer.cs">
+      <DependentUpon>XmlEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\XmlEditorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\XmlEditorDialog.Designer.cs">
+      <DependentUpon>XmlEditorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Events\EventWatcher.cs" />
+    <Compile Include="ISubView.cs" />
+    <Compile Include="IViewContent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ClipboardService.cs" />
+    <Compile Include="Services\DragDropHandlerService.cs" />
+    <Compile Include="Services\DragDropHandlers\PackageFileHandler.cs" />
+    <Compile Include="Services\DragDropHandlers\SltFileHandler.cs" />
+    <Compile Include="Services\DragDropHandlers\SdfFileHandler.cs" />
+    <Compile Include="Services\DragDropHandlers\ShpFileHandler.cs" />
+    <Compile Include="Services\DragDropHandlers\XmlResFileHandler.cs" />
+    <Compile Include="Services\IDragDropHandler.cs" />
+    <Compile Include="Services\NewItemTemplateService.cs" />
+    <Compile Include="Services\OpenResourceManager.cs" />
+    <Compile Include="Services\ServerConnectionManager.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
+    <Compile Include="Services\ServiceRegistry.cs" />
+    <Compile Include="Services\UrlLauncherService.cs" />
+    <Compile Include="Services\ViewContentManager.cs" />
+    <Compile Include="Templates\ApplicationDefinitionItemTemplate.cs" />
+    <Compile Include="Templates\DrawingLayerDefinitionItemTemplate.cs" />
+    <Compile Include="Templates\DrawingSourceItemTemplate.cs" />
+    <Compile Include="Templates\DwfLoadProcedureItemTemplate.cs" />
+    <Compile Include="Templates\FeatureSourceItemTemplate.cs" />
+    <Compile Include="Templates\ItemTemplate.cs" />
+    <Compile Include="Templates\RasterLayerDefinitionItemTemplate.cs" />
+    <Compile Include="Templates\VectorLayerDefinitionItemTemplate.cs" />
+    <Compile Include="Templates\MapDefinitionItemTemplate.cs" />
+    <Compile Include="Templates\PrintLayoutItemTemplate.cs" />
+    <Compile Include="Templates\SdfLoadProcedureItemTemplate.cs" />
+    <Compile Include="Templates\ShpLoadProcedureItemTemplate.cs" />
+    <Compile Include="Templates\SymbolDefinitionItemTemplate.cs" />
+    <Compile Include="Templates\UserItemTemplate.cs" />
+    <Compile Include="Templates\WebLayoutItemTemplate.cs" />
+    <Compile Include="UI\AboutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\BoundsPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\BoundsPicker.designer.cs">
+      <DependentUpon>BoundsPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BroadcastTextWriter.cs" />
+    <Compile Include="UI\ISiteExplorer.cs" />
+    <Compile Include="UI\MessageViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MessageViewer.Designer.cs">
+      <DependentUpon>MessageViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NewResourceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewResourceDialog.Designer.cs">
+      <DependentUpon>NewResourceDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\OutboundRequestViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\OutboundRequestViewer.Designer.cs">
+      <DependentUpon>OutboundRequestViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Packaging\CreatePackageDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Packaging\CreatePackageDialog.Designer.cs">
+      <DependentUpon>CreatePackageDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Preferences\ConfigProperties.cs" />
+    <Compile Include="UI\Preferences\GeneralPreferencesCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Preferences\GeneralPreferencesCtrl.Designer.cs">
+      <DependentUpon>GeneralPreferencesCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Preferences\IPreferenceSheet.cs" />
+    <Compile Include="UI\Preferences\OptionsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Preferences\OptionsDialog.Designer.cs">
+      <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\RenameItemDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\RenameItemDialog.Designer.cs">
+      <DependentUpon>RenameItemDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\RepointerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\RepointerDialog.Designer.cs">
+      <DependentUpon>RepointerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\RepositoryTreeModel.cs" />
+    <Compile Include="UI\ResourceIconCache.cs" />
+    <Compile Include="UI\ResourcePropertiesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ResourcePropertiesDialog.Designer.cs">
+      <DependentUpon>ResourcePropertiesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SingletonViewContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SingletonViewContent.Designer.cs">
+      <DependentUpon>SingletonViewContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SiteExplorer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SiteExplorer.Designer.cs">
+      <DependentUpon>SiteExplorer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabFactory.cs" />
+    <Compile Include="UI\SiteExplorerDragDropHandler.cs" />
+    <Compile Include="UI\ValidationResultsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ValidationResultsDialog.Designer.cs">
+      <DependentUpon>ValidationResultsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewContentBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewContentBase.Designer.cs">
+      <DependentUpon>ViewContentBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workbench.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Workbench.Designer.cs">
+      <DependentUpon>Workbench.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZonedContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZonedContainer.Designer.cs">
+      <DependentUpon>ZonedContainer.cs</DependentUpon>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Maestro.Base.addin" />
+    <None Include="Resources\document--arrow.png" />
+    <None Include="Resources\disks.png" />
+    <None Include="Resources\box--plus.png" />
+    <None Include="Resources\box--arrow.png" />
+    <None Include="Resources\folder--plus.png" />
+    <None Include="Resources\cross.png" />
+    <None Include="Resources\blueprints.png" />
+    <None Include="Resources\folder-horizontal.png" />
+    <None Include="Resources\document.png" />
+    <None Include="Resources\printer.png" />
+    <None Include="Resources\map.png" />
+    <None Include="Resources\layer.png" />
+    <None Include="Resources\images-stack.png" />
+    <None Include="Resources\database-share.png" />
+    <None Include="Resources\database--arrow.png" />
+    <None Include="Resources\applications-stack.png" />
+    <None Include="Resources\application-sidebar-list.png" />
+    <None Include="Resources\application-browser.png" />
+    <None Include="Resources\reports-stack.png" />
+    <None Include="Resources\cross-small.png" />
+    <None Include="Resources\tick.png" />
+    <None Include="Resources\clock.png" />
+    <None Include="Resources\document-code.png" />
+    <None Include="Resources\document-search-result.png" />
+    <None Include="Resources\disk--arrow.png" />
+    <None Include="Resources\disk.png" />
+    <None Include="Resources\application-task.png" />
+    <None Include="Resources\plug--plus.png" />
+    <None Include="Resources\plug--arrow.png" />
+    <None Include="Resources\cross-script.png" />
+    <None Include="Resources\document-copy.png" />
+    <None Include="Resources\scissors-blue.png" />
+    <None Include="Resources\clipboard-paste.png" />
+    <None Include="Resources\document--plus.png" />
+    <None Include="Resources\loading.gif" />
+    <None Include="Resources\navigation.png" />
+    <None Include="Resources\navigation-180-white.png" />
+    <None Include="Resources\navigation-180.png" />
+    <None Include="Resources\navigation-000-white.png" />
+    <None Include="Resources\cross-circle.png" />
+    <None Include="Resources\arrow-180.png" />
+    <None Include="Resources\arrow.png" />
+    <None Include="Resources\arrow-circle-045-left.png" />
+    <None Include="Resources\plug--minus.png" />
+    <None Include="Resources\server.png" />
+    <None Include="Resources\MapGuide Maestro.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Editor\DrawingSourceEditor.resx">
+      <DependentUpon>DrawingSourceEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\EditorContentBase.resx">
+      <DependentUpon>EditorContentBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\FeatureSourceEditor.resx">
+      <DependentUpon>FeatureSourceEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\FsEditorOptionPanel.resx">
+      <DependentUpon>FsEditorOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\FusionEditor.resx">
+      <DependentUpon>FusionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\LayerDefinitionEditor.resx">
+      <DependentUpon>LayerDefinitionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\LoadProcedureEditor.resx">
+      <DependentUpon>LoadProcedureEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\MapDefinitionEditor.resx">
+      <DependentUpon>MapDefinitionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\PrintLayoutEditor.resx">
+      <DependentUpon>PrintLayoutEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\SymbolDefinitionEditor.resx">
+      <DependentUpon>SymbolDefinitionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\WebLayoutEditor.resx">
+      <DependentUpon>WebLayoutEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\XmlEditor.resx">
+      <DependentUpon>XmlEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\XmlEditorDialog.resx">
+      <DependentUpon>XmlEditorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AboutDialog.resx">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BoundsPicker.resx">
+      <DependentUpon>BoundsPicker.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MessageViewer.resx">
+      <DependentUpon>MessageViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewResourceDialog.resx">
+      <DependentUpon>NewResourceDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\OutboundRequestViewer.resx">
+      <DependentUpon>OutboundRequestViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Packaging\CreatePackageDialog.resx">
+      <DependentUpon>CreatePackageDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Preferences\GeneralPreferencesCtrl.resx">
+      <DependentUpon>GeneralPreferencesCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Preferences\OptionsDialog.resx">
+      <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RenameItemDialog.resx">
+      <DependentUpon>RenameItemDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RepointerDialog.resx">
+      <DependentUpon>RepointerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ResourcePropertiesDialog.resx">
+      <DependentUpon>ResourcePropertiesDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SingletonViewContent.resx">
+      <DependentUpon>SingletonViewContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SiteExplorer.resx">
+      <DependentUpon>SiteExplorer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ValidationResultsDialog.resx">
+      <DependentUpon>ValidationResultsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewContentBase.resx">
+      <DependentUpon>ViewContentBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workbench.resx">
+      <DependentUpon>Workbench.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZonedContainer.resx">
+      <DependentUpon>ZonedContainer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MaestroFsPreview\MaestroFsPreview.csproj">
+      <Project>{59BE5E18-17B6-431D-836E-C0AABA6D69E8}</Project>
+      <Name>MaestroFsPreview</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj">
+      <Project>{857CA1A3-FC88-4BE0-AB6A-D1EE772AB288}</Project>
+      <Name>ICSharpCode.Core.WinForms</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj">
+      <Project>{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}</Project>
+      <Name>ICSharpCode.Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="PropertySet" type="PropertySetType">
+    <xs:annotation>
+      <xs:documentation>This schema defines the return structure of Fdo Select operation</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="PropertySetType">
+    <xs:sequence>
+      <xs:element name="PropertyDefinitions">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="PropertyDefinitionsType">
+              <xs:sequence>
+                <xs:element name="PropertyDefinition" type="PropertyDefinitionType" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Properties">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="PropertiesType">
+              <xs:sequence>
+                <xs:element name="PropertyCollection" minOccurs="0" maxOccurs="unbounded">
+                  <xs:complexType>
+                    <xs:complexContent>
+                      <xs:extension base="PropertyCollectionType">
+                        <xs:sequence>
+                          <xs:element name="Property" type="PropertyType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                      </xs:extension>
+                    </xs:complexContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PropertyDefinitionsType"/>
+  <xs:complexType name="PropertiesType"/>
+  <xs:complexType name="PropertyType">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PropertyCollectionType"/>
+  <xs:complexType name="PropertyDefinitionType">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Type">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="boolean"/>
+            <xs:enumeration value="byte"/>
+            <xs:enumeration value="datetime"/>
+            <xs:enumeration value="decimal"/>
+            <xs:enumeration value="double"/>
+            <xs:enumeration value="int16"/>
+            <xs:enumeration value="int32"/>
+            <xs:enumeration value="int64"/>
+            <xs:enumeration value="single"/>
+            <xs:enumeration value="string"/>
+            <xs:enumeration value="blob"/>
+            <xs:enumeration value="clob"/>
+            <xs:enumeration value="geometry"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

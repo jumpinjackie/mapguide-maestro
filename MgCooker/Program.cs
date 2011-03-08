@@ -21,8 +21,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Duplicati.CommandLine;
+using Maestro.Login;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.MaestroAPI;
+using System.Collections.Specialized;
+using OSGeo.MapGuide.ObjectModels;
 
-namespace OSGeo.MapGuide.MgCooker
+namespace MgCooker
 {
     public class Program
     {
@@ -50,21 +55,7 @@ namespace OSGeo.MapGuide.MgCooker
         {
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.DoEvents();
-
-            try
-            {
-                OSGeo.MapGuide.Maestro.PreferedSiteList sites = OSGeo.MapGuide.Maestro.PreferedSiteList.Load();
-                if (!string.IsNullOrEmpty(sites.GUILanguage))
-                {
-                    System.Threading.Thread.CurrentThread.CurrentUICulture =
-                    System.Threading.Thread.CurrentThread.CurrentCulture =
-                        System.Globalization.CultureInfo.GetCultureInfo(sites.GUILanguage);
-                }
-            }
-            catch
-            {
-            }
-
+            PreferredSiteList.InitCulture();
 
             //Parameters:
             //mapagent=
@@ -91,7 +82,7 @@ namespace OSGeo.MapGuide.MgCooker
             string DPI = "";
             string metersPerUnit = "";
 
-            MaestroAPI.Box2DType overrideExtents = null;
+            IEnvelope overrideExtents = null;
             
             List<string> largs = new List<string>(args);
             Dictionary<string, string> opts = CommandLineParser.ExtractOptions(largs);
@@ -138,11 +129,7 @@ namespace OSGeo.MapGuide.MgCooker
                         double.TryParse(parts[3], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out maxy)
                         )
                     {
-                        overrideExtents = new OSGeo.MapGuide.MaestroAPI.Box2DType();
-                        overrideExtents.MinX = minx;
-                        overrideExtents.MinY = miny;
-                        overrideExtents.MaxX = maxx;
-                        overrideExtents.MaxY = maxy;
+                        overrideExtents = ObjectFactory.CreateEnvelope(minx, miny, maxx, maxy);
                     }
                 }
             }
@@ -158,7 +145,7 @@ namespace OSGeo.MapGuide.MgCooker
             }
 
 
-            MaestroAPI.ServerConnectionI connection = null;
+            IServerConnection connection = null;
 
             string[] maps = mapdefinitions.Split(',');
 
@@ -167,12 +154,16 @@ namespace OSGeo.MapGuide.MgCooker
             {
                 if (largs.IndexOf("/commandline") < 0 && largs.IndexOf("commandline") < 0)
                 {
-                    Maestro.FormLogin frm = new OSGeo.MapGuide.Maestro.FormLogin();
+                    var frm = new LoginDialog();
                     if (frm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                         return;
 
                     connection = frm.Connection;
-                    mapagent = ((MaestroAPI.HttpServerConnection)connection).ServerURI;
+                    try
+                    {
+                        mapagent = connection.GetCustomProperty("BaseUrl").ToString();
+                    }
+                    catch { }
 
                     sr = new SetupRun(frm.Username, frm.Password, connection, maps, opts);
                 }
@@ -180,12 +171,27 @@ namespace OSGeo.MapGuide.MgCooker
 
             if (connection == null)
             {
+                var initP = new NameValueCollection();
                 if (!opts.ContainsKey("native-connection"))
-                    connection = OSGeo.MapGuide.MaestroAPI.ConnectionFactory.CreateHttpConnection(new Uri(mapagent), username, password, System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, true);
+                {
+                    initP["Url"] = mapagent;
+                    initP["Username"] = username;
+                    initP["Password"] = password;
+                    initP["Locale"] = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+                    initP["AllowUntestedVersion"] = "true";
+
+                    connection = ConnectionProviderRegistry.CreateConnection("Maestro.Http", initP);
+                }
                 else
                 {
                     string serverconfig = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "webconfig.ini");
-                    connection = OSGeo.MapGuide.MaestroAPI.ConnectionFactory.CreateLocalNativeConnection(serverconfig, username, password, System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
+
+                    initP["ConfigFile"] = serverconfig;
+                    initP["Username"] = username;
+                    initP["Password"] = password;
+                    initP["Locale"] = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+
+                    connection = ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", initP);
                 }
             }
 
@@ -294,19 +300,19 @@ namespace OSGeo.MapGuide.MgCooker
         {
             if (hasConsole)
                 Console.Clear();
-            Console.WriteLine(string.Format(Strings.Program.ConsoleUpdateTime.Replace("\\t", "\t"), DateTime.Now));
-            Console.WriteLine(string.Format(Strings.Program.ConsoleCurrentMap.Replace("\\t", "\t"), map.ResourceId, mapCount, map.Parent.Maps.Count));
-            Console.WriteLine(string.Format(Strings.Program.ConsoleCurrentGroup.Replace("\\t", "\t"), group, groupCount, map.Map.BaseMapDefinition.BaseMapLayerGroup.Count));
-            Console.WriteLine(string.Format(Strings.Program.ConsoleCurrentScale.Replace("\\t", "\t"), map.Map.BaseMapDefinition.FiniteDisplayScale[Array.IndexOf<int>(map.ScaleIndexMap, scaleindex)], Array.IndexOf<int>(map.ScaleIndexMap, scaleindex) + 1, map.Map.BaseMapDefinition.FiniteDisplayScale.Count));
-            Console.WriteLine(string.Format(Strings.Program.ConsoleCurrentTile.Replace("\\t", "\t"), tileCount, totalTiles));
+            Console.WriteLine(string.Format(Properties.Resources.ConsoleUpdateTime.Replace("\\t", "\t"), DateTime.Now));
+            Console.WriteLine(string.Format(Properties.Resources.ConsoleCurrentMap.Replace("\\t", "\t"), map.ResourceId, mapCount, map.Parent.Maps.Count));
+            Console.WriteLine(string.Format(Properties.Resources.ConsoleCurrentGroup.Replace("\\t", "\t"), group, groupCount, map.Map.BaseMap.GroupCount));
+            Console.WriteLine(string.Format(Properties.Resources.ConsoleCurrentScale.Replace("\\t", "\t"), map.Map.BaseMap.GetScaleAt(Array.IndexOf<int>(map.ScaleIndexMap, scaleindex)), Array.IndexOf<int>(map.ScaleIndexMap, scaleindex) + 1, map.Map.BaseMap.ScaleCount));
+            Console.WriteLine(string.Format(Properties.Resources.ConsoleCurrentTile.Replace("\\t", "\t"), tileCount, totalTiles));
             Console.WriteLine();
-            Console.WriteLine(string.Format(Strings.Program.ConsoleGroupDuration.Replace("\\t", "\t"), DateTime.Now - beginGroup));
-            Console.WriteLine(string.Format(Strings.Program.ConsoleGroupEstimate.Replace("\\t", "\t"), new TimeSpan(prevDuration.Ticks * totalTiles)));
+            Console.WriteLine(string.Format(Properties.Resources.ConsoleGroupDuration.Replace("\\t", "\t"), DateTime.Now - beginGroup));
+            Console.WriteLine(string.Format(Properties.Resources.ConsoleGroupEstimate.Replace("\\t", "\t"), new TimeSpan(prevDuration.Ticks * totalTiles)));
 
             if (exceptionList.Count != 0)
             {
                 Console.WriteLine();
-                Console.WriteLine(string.Format(Strings.Program.ConsoleErrorSummary, exceptionList.Count, exceptionList[exceptionList.Count - 1].ToString()));
+                Console.WriteLine(string.Format(Properties.Resources.ConsoleErrorSummary, exceptionList.Count, exceptionList[exceptionList.Count - 1].ToString()));
             }
         }
 
@@ -315,7 +321,7 @@ namespace OSGeo.MapGuide.MgCooker
         {
             TimeSpan duration = DateTime.Now - beginGroup;
             if (m_logableProgress)
-                Console.WriteLine(string.Format(Strings.Program.ConsoleOperationFinishGroup, DateTime.Now, group, duration));
+                Console.WriteLine(string.Format(Properties.Resources.ConsoleOperationFinishGroup, DateTime.Now, group, duration));
         }
 
         static void bx_BeginRenderingGroup(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
@@ -324,7 +330,7 @@ namespace OSGeo.MapGuide.MgCooker
             beginGroup = DateTime.Now;
 
             if (m_logableProgress)
-                Console.WriteLine(string.Format(Strings.Program.ConsoleOperationBeginGroup, beginGroup, group, 1, 1));
+                Console.WriteLine(string.Format(Properties.Resources.ConsoleOperationBeginGroup, beginGroup, group, 1, 1));
 
             tileRuns = new List<TimeSpan>();
             tileCount = 0;
@@ -357,7 +363,7 @@ namespace OSGeo.MapGuide.MgCooker
 
 
                 if (m_logableProgress)
-                    Console.WriteLine(string.Format(Strings.Program.ConsoleOperationFinishTile, tileCount, totalTiles, group, duration));
+                    Console.WriteLine(string.Format(Properties.Resources.ConsoleOperationFinishTile, tileCount, totalTiles, group, duration));
                 else
                     DisplayProgress(map, group, scaleindex, row, column, ref cancel);
             }
@@ -372,14 +378,14 @@ namespace OSGeo.MapGuide.MgCooker
         {
             TimeSpan duration = DateTime.Now - beginScale;
             if (m_logableProgress)
-                Console.WriteLine(string.Format(Strings.Program.ConsoleOperationFinishScale, DateTime.Now, map.Map.BaseMapDefinition.FiniteDisplayScale[scaleindex], duration));
+                Console.WriteLine(string.Format(Properties.Resources.ConsoleOperationFinishScale, DateTime.Now, map.Map.BaseMap.GetScaleAt(scaleindex), duration));
         }
 
         static void bx_BeginRenderingScale(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             beginScale = DateTime.Now;
             if (m_logableProgress)
-                Console.WriteLine(string.Format(Strings.Program.ConsoleOperationBeginScale, beginMap, map.Map.BaseMapDefinition.FiniteDisplayScale[scaleindex], scaleindex, map.Resolutions));
+                Console.WriteLine(string.Format(Properties.Resources.ConsoleOperationBeginScale, beginMap, map.Map.BaseMap.GetScaleAt(scaleindex), scaleindex, map.Resolutions));
         }
 
         static void bx_FinishRenderingMap(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
@@ -387,7 +393,7 @@ namespace OSGeo.MapGuide.MgCooker
             groupCount = 0;
             TimeSpan duration = DateTime.Now - beginMap;
             if (m_logableProgress)
-                Console.WriteLine(string.Format(Strings.Program.ConsoleOperationFinishMap, DateTime.Now, map.ResourceId, duration));
+                Console.WriteLine(string.Format(Properties.Resources.ConsoleOperationFinishMap, DateTime.Now, map.ResourceId, duration));
         }
 
         static void bx_BeginRenderingMap(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
@@ -395,7 +401,7 @@ namespace OSGeo.MapGuide.MgCooker
             mapCount++;
             beginMap = DateTime.Now;
             if (m_logableProgress)
-                Console.WriteLine(string.Format(Strings.Program.ConsoleOperationBeginMap, beginMap, map.ResourceId));
+                Console.WriteLine(string.Format(Properties.Resources.ConsoleOperationBeginMap, beginMap, map.ResourceId));
         }
     }
 }

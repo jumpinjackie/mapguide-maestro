@@ -1,0 +1,838 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Menu_Tools_Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cross-circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cross-circle.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="document__plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\document--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Service_Init_Url_Launcher" xml:space="preserve">
+    <value>Initialized: URL Launcher</value>
+  </data>
+  <data name="Menu_File_DeleteResource" xml:space="preserve">
+    <value>Delete Resource</value>
+  </data>
+  <data name="Content_Messages" xml:space="preserve">
+    <value>Messages</value>
+  </data>
+  <data name="Menu_Tools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="Menu_Help_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="arrow-180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow-180.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="plug--minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plug--minus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scissors_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scissors-blue.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MapGuide_Maestro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MapGuide Maestro.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Service_Init_Open_Resource_Manager" xml:space="preserve">
+    <value>Initialized: Open Resource Manager</value>
+  </data>
+  <data name="plug__arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plug--arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Edit_Paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="navigation-000-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\navigation-000-white.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clipboard_paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clipboard-paste.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Content_SiteExplorer" xml:space="preserve">
+    <value>Site Explorer</value>
+  </data>
+  <data name="document_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\document-copy.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="server" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\server.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="SiteExplorer_Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="plug__plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plug--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Edit_Cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="Service_Init_Server_Connection_Manager" xml:space="preserve">
+    <value>Initialized: Server Connection Manager</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="About_VersionLabel" xml:space="preserve">
+    <value>Version: {0}</value>
+    <comment>A label that displays the current version</comment>
+  </data>
+  <data name="SiteExplorer_Disconnect" xml:space="preserve">
+    <value>Disconnect</value>
+  </data>
+  <data name="navigation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\navigation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_File_Quit" xml:space="preserve">
+    <value>Quit</value>
+  </data>
+  <data name="Browser_Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="About_ServerVersionLabel" xml:space="preserve">
+    <value>MapGuide Version: {0} ({1})</value>
+    <comment>A label that displays the version of the current MapGuide server</comment>
+  </data>
+  <data name="About_LanguageLabel" xml:space="preserve">
+    <value>Selected language: {0}, OS Language: {1}</value>
+    <comment>A label that displays the current language settings</comment>
+  </data>
+  <data name="application_task" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\application-task.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="navigation-180-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\navigation-180-white.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_File_Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="navigation-180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\navigation-180.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_File_NewResource" xml:space="preserve">
+    <value>New Resource</value>
+  </data>
+  <data name="Browser_Complete" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Menu_Edit_Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="Menu_File_Connect" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="arrow-circle-045-left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow-circle-045-left.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Content_WebBrowser" xml:space="preserve">
+    <value>Embedded Web Browser</value>
+  </data>
+  <data name="cross_script" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cross-script.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="disk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\disk.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clock.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="disk__arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\disk--arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="document_code" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\document-code.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="document_search_result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\document-search-result.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tick.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cross_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cross-small.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Log_Saved" xml:space="preserve">
+    <value>Message Log saved to {0}</value>
+  </data>
+  <data name="Menu_View_MessageLog" xml:space="preserve">
+    <value>Message Log</value>
+  </data>
+  <data name="reports_stack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reports-stack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Service_Init_ViewContent_Manager" xml:space="preserve">
+    <value>Initialized: View Content Manager</value>
+  </data>
+  <data name="Error_Closeable_Singleton_Content" xml:space="preserve">
+    <value>Singleton view content cannot be closed by users. The AllowUserClose property must return false</value>
+  </data>
+  <data name="Error_ViewContent_Not_Registered" xml:space="preserve">
+    <value>The specified view content type is not registered in any addin files: {0}</value>
+  </data>
+  <data name="Error_ViewContent_Type_Not_Singleton" xml:space="preserve">
+    <value>The specified view content type is not a singleton: {0}</value>
+  </data>
+  <data name="applications_stack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\applications-stack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="application_browser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\application-browser.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="application_sidebar_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\application-sidebar-list.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="database_share" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\database-share.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="database__arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\database--arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="images_stack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images-stack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="layer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\layer.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="map" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\map.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\printer.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="document" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\document.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="folder_horizontal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\folder-horizontal.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blueprints" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blueprints.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SiteExplorer_SelectedFolder_CreatePackage" xml:space="preserve">
+    <value>Package folder</value>
+  </data>
+  <data name="Menu_Package_LoadPackage" xml:space="preserve">
+    <value>Load Package</value>
+  </data>
+  <data name="SiteExplorer_SelectedFolder_Paste" xml:space="preserve">
+    <value>Paste into this folder</value>
+  </data>
+  <data name="SiteExplorer_SelectedItem_Copy" xml:space="preserve">
+    <value>Copy selected item(s)</value>
+  </data>
+  <data name="SiteExplorer_SelectedItem_Cut" xml:space="preserve">
+    <value>Cut selected items(s)</value>
+  </data>
+  <data name="SiteExplorer_SelectedItem_Delete" xml:space="preserve">
+    <value>Delete selected item(s)</value>
+  </data>
+  <data name="SiteExplorer_SelectedItem_Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="SiteExplorer_SelectedItem_Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="Content_Welcome" xml:space="preserve">
+    <value>Getting Started</value>
+  </data>
+  <data name="cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cross.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_File_CloseActiveDocument" xml:space="preserve">
+    <value>Close Active Document</value>
+  </data>
+  <data name="Menu_File_EditResourceWithXml" xml:space="preserve">
+    <value>Edit Resource with XML Editor</value>
+  </data>
+  <data name="Menu_File_PreviewResource" xml:space="preserve">
+    <value>Preview Resource</value>
+  </data>
+  <data name="Menu_File_ProfileResource" xml:space="preserve">
+    <value>Profile Resource</value>
+  </data>
+  <data name="Menu_File_SaveResource" xml:space="preserve">
+    <value>Save Resource</value>
+  </data>
+  <data name="Menu_File_SaveResourceAs" xml:space="preserve">
+    <value>Save Resource As</value>
+  </data>
+  <data name="Menu_File_ValidateResource" xml:space="preserve">
+    <value>Validate Resource</value>
+  </data>
+  <data name="TPL_ADF_DESC" xml:space="preserve">
+    <value>Create a new Fusion Application Definition (Flexible Layout)</value>
+  </data>
+  <data name="TPL_ADF_NAME" xml:space="preserve">
+    <value>Application Definition</value>
+  </data>
+  <data name="TPL_CATEGORY_DEFAULT" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="TPL_CATEGORY_USERDEF" xml:space="preserve">
+    <value>User Defined</value>
+  </data>
+  <data name="TPL_DS_DESC" xml:space="preserve">
+    <value>Create a new Drawing Source</value>
+  </data>
+  <data name="TPL_DS_NAME" xml:space="preserve">
+    <value>Drawing Source</value>
+  </data>
+  <data name="TPL_FS_DESC" xml:space="preserve">
+    <value>Create a new Feature Source</value>
+  </data>
+  <data name="TPL_FS_NAME" xml:space="preserve">
+    <value>Feature Source</value>
+  </data>
+  <data name="TPL_VLDF_DESC" xml:space="preserve">
+    <value>Create a new Vector Layer Definition using the v1.0.0 schema</value>
+  </data>
+  <data name="TPL_VLDF_NAME" xml:space="preserve">
+    <value>Vector Layer Definition (v1.0.0)</value>
+  </data>
+  <data name="TPL_LP_SDF_DESC" xml:space="preserve">
+    <value>Create a new SDF Load Procedure</value>
+  </data>
+  <data name="TPL_LP_SDF_NAME" xml:space="preserve">
+    <value>SDF Load Procedure</value>
+  </data>
+  <data name="TPL_LP_SHP_DESC" xml:space="preserve">
+    <value>Create a new SHP Load Procedure</value>
+  </data>
+  <data name="TPL_LP_SHP_NAME" xml:space="preserve">
+    <value>SHP Load Procedure</value>
+  </data>
+  <data name="TPL_MDF_DESC" xml:space="preserve">
+    <value>Create a new Map Definition</value>
+  </data>
+  <data name="TPL_MDF_NAME" xml:space="preserve">
+    <value>Map Definition</value>
+  </data>
+  <data name="TPL_PL_DESC" xml:space="preserve">
+    <value>Create a new Print Layout</value>
+  </data>
+  <data name="TPL_PL_NAME" xml:space="preserve">
+    <value>Print Layout</value>
+  </data>
+  <data name="TPL_SSD_DESC" xml:space="preserve">
+    <value>Create a new Simple Symbol Definition</value>
+  </data>
+  <data name="TPL_SSD_NAME" xml:space="preserve">
+    <value>Simple Symbol Definition</value>
+  </data>
+  <data name="TPL_WL_DESC" xml:space="preserve">
+    <value>Create a new Web Layout using the v1.0.0 schema</value>
+  </data>
+  <data name="TPL_WL_NAME" xml:space="preserve">
+    <value>Web Layout (v1.0.0)</value>
+  </data>
+  <data name="SITE_EXPLORER_TOOLTIP_TEMPLATE" xml:space="preserve">
+    <value>Resource Name: {1}{0}Resource Type: {2}{0}Created: {3}{0}Last Modified: {4}{0}Owner: {5}</value>
+  </data>
+  <data name="ResProp_BoundsDecodeError" xml:space="preserve">
+    <value>Failed to decode the current bounds,
+you must re-enter the epsg code in the SRS tag manually.
+Error message: {0}.</value>
+    <comment>An error message that is displayed if the bounds are in an unexpected format</comment>
+  </data>
+  <data name="ResProp_EpsgMissingWarning" xml:space="preserve">
+    <value>You must manually enter the EPSG code for the generated bounds.</value>
+    <comment>A warning that is displayed when the user must re-enter the EPSG code</comment>
+  </data>
+  <data name="ResProp_InheritedAccess" xml:space="preserve">
+    <value>Inherited</value>
+    <comment>A value that indicates that the user has inherited access to the resource</comment>
+  </data>
+  <data name="ResProp_MissingBoundsError" xml:space="preserve">
+    <value>Missing bounds tag</value>
+    <comment>An error message that is shown if the resource is missing an expected bounds tag</comment>
+  </data>
+  <data name="ResProp_NoAccess" xml:space="preserve">
+    <value>No access</value>
+    <comment>A value that indicates that the user has no access to the resource</comment>
+  </data>
+  <data name="ResProp_NoSpatialDataError" xml:space="preserve">
+    <value>No spatial data found in FeatureSource</value>
+    <comment>An error message that is displayed if the attempt to read the data reveals that there are no spatial data in the featuresource</comment>
+  </data>
+  <data name="ResProp_NoSpatialDataWithFailuresError" xml:space="preserve">
+    <value>No spatial data found in FeatureSource, one or more queries failed to execute</value>
+    <comment>An error message that is displayed if the attempt to read the data reveals that there are no spatial data in the featuresource and that the resource produced an error</comment>
+  </data>
+  <data name="ResProp_ReadOnlyAccess" xml:space="preserve">
+    <value>Read only</value>
+    <comment>A value that indicates that the user has readonly access to the resource</comment>
+  </data>
+  <data name="ResProp_ReadWriteAccess" xml:space="preserve">
+    <value>Read/write</value>
+    <comment>A value that indicates that the user has read/write access to the resource</comment>
+  </data>
+  <data name="ResProp_ReferenceReadError" xml:space="preserve">
+    <value>Failed to read resource references</value>
+    <comment>An error message that is displayed when an attempt to read the resource references fail</comment>
+  </data>
+  <data name="ResProp_ReferenceReadSpecificError" xml:space="preserve">
+    <value>Failed to read resource references: {0}</value>
+    <comment>An error message that is displayed when an attempt to read the resource references fail</comment>
+  </data>
+  <data name="ResProp_SaveError" xml:space="preserve">
+    <value>Failed to save the resource properties: {0}</value>
+    <comment>An error message that is displayed if the save operation fails</comment>
+  </data>
+  <data name="ResProp_WFSBoundsReadError" xml:space="preserve">
+    <value>Failed to obtain the extent for the WFS data.
+Error message: {0}</value>
+    <comment>An error message that is displayed if the attempt to read the data bounds fail</comment>
+  </data>
+  <data name="ResProp_WMSBoundsReadError" xml:space="preserve">
+    <value>Failed to obtain the extent for the WMS data.
+Error message: {0}</value>
+    <comment>An error message that is displayed if the attempt to read the data bounds fail</comment>
+  </data>
+  <data name="BoundsPicker_BoundsDecodeError" xml:space="preserve">
+    <value>Failed to decode the current bounds,
+you may enter new bounds, and these will replace the current.
+Error message: {0}</value>
+    <comment>An error message that is displayed when the bounds fails to parse</comment>
+  </data>
+  <data name="BoundsPicker_IncompleBoundsError" xml:space="preserve">
+    <value>You have not entered all the required information.</value>
+    <comment>An error message that is displayed if the user clicks OK before filling out all required fields</comment>
+  </data>
+  <data name="BoundsPicker_InvalidMaxXError" xml:space="preserve">
+    <value>Failed to convert the Max X value</value>
+    <comment>An error message that is displayed when the Max X value is invalid</comment>
+  </data>
+  <data name="BoundsPicker_InvalidMaxYError" xml:space="preserve">
+    <value>Failed to convert the Max Y value</value>
+    <comment>An error message that is displayed when the Max Y value is invalid</comment>
+  </data>
+  <data name="BoundsPicker_InvalidMinXError" xml:space="preserve">
+    <value>Failed to convert the Min X value</value>
+    <comment>An error message that is displayed when the Min X value is invalid</comment>
+  </data>
+  <data name="BoundsPicker_InvalidMinYError" xml:space="preserve">
+    <value>Failed to convert the Min Y value</value>
+    <comment>An error message that is displayed when the Min Y value is invalid</comment>
+  </data>
+  <data name="BoundsPicker_MissingBoundsError" xml:space="preserve">
+    <value>Missing bounds tag</value>
+    <comment>An error message that indicates that there was no bound tag</comment>
+  </data>
+  <data name="BoundsPicker_NumbersInRegionalError" xml:space="preserve">
+    <value>The values you have entered appears to be in local regional format, but are required in US regional format.
+Do you want to convert the values?</value>
+    <comment>A message that is displayed when it is detected that the user enters number in local format</comment>
+  </data>
+  <data name="BoundsPicker_UseInvalidCoordinatesWarning" xml:space="preserve">
+    <value>The coordinates you have entered appears to be invalid, do you want to use them anyway?</value>
+    <comment>A message displayed when the coordinates cannot be validated</comment>
+  </data>
+  <data name="SiteExplorer_SelectedItem_Properties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="EditorRegistered" xml:space="preserve">
+    <value>Registered Editor: {0}</value>
+  </data>
+  <data name="OpenResourceManager_SkipEditorRegistration" xml:space="preserve">
+    <value>Skipping registration of editor: {0} because an existing editor is already registered to handle {1} v{2}</value>
+  </data>
+  <data name="TPL_USER_DEFINED" xml:space="preserve">
+    <value>User Defined Resource Template</value>
+  </data>
+  <data name="TPL_CSD_DESC" xml:space="preserve">
+    <value>Create a new Compund Symbol Definition</value>
+  </data>
+  <data name="TPL_CSD_NAME" xml:space="preserve">
+    <value>Compound Symbol Definition</value>
+  </data>
+  <data name="ValidationBuildingList" xml:space="preserve">
+    <value>Building resource list...</value>
+    <comment>A message that is displayed while building the list of resources to validate</comment>
+  </data>
+  <data name="ValidationResourceLoadFailed" xml:space="preserve">
+    <value>Failed to load resource: {0}</value>
+    <comment>An error message that is displayed if an error occurs while validating the resource</comment>
+  </data>
+  <data name="SiteExplorer_ValidateResources" xml:space="preserve">
+    <value>Validate</value>
+  </data>
+  <data name="ValidationValidating" xml:space="preserve">
+    <value>Validating ...</value>
+    <comment>A message that is displayed while the validator runs</comment>
+  </data>
+  <data name="ValidationFailedError" xml:space="preserve">
+    <value>Failed to save file: {0}</value>
+    <comment>An error message that is displayed if the log was not saved</comment>
+  </data>
+  <data name="ValidationProgressMessage" xml:space="preserve">
+    <value>Validating resource: {0}</value>
+    <comment>The header text for a resource in the validation log</comment>
+  </data>
+  <data name="ValidationResultFormat" xml:space="preserve">
+    <value>{0} - {1}: {2}</value>
+    <comment>The format used to write the results into the log file.
+{0} is the status, eg. warning
+{1} is the resource id
+{2} is the validation message</comment>
+  </data>
+  <data name="ValidationNoIssues" xml:space="preserve">
+    <value>No issues found during validation</value>
+  </data>
+  <data name="ResourceAlreadyOpened" xml:space="preserve">
+    <value>This resource is already opened in another editor</value>
+  </data>
+  <data name="SiteExplorer_SelectedItem_OpenWithXmlEditor" xml:space="preserve">
+    <value>Open Resource with XML Editor</value>
+  </data>
+  <data name="SelectFdoProvider" xml:space="preserve">
+    <value>Select FDO Provider</value>
+  </data>
+  <data name="Filter_Sdf_Files" xml:space="preserve">
+    <value>Autodesk SDF (*.sdf)|*.sdf</value>
+  </data>
+  <data name="Filter_Shp_Files" xml:space="preserve">
+    <value>ESRI Shapefile (*.shp)|*.shp</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Are you sure you want to delete?</value>
+  </data>
+  <data name="Global.QuestionText" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  <data name="SiteExplorer_NewFolder" xml:space="preserve">
+    <value>New Folder</value>
+  </data>
+  <data name="folder__plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\folder--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RenameTo" xml:space="preserve">
+    <value>Rename to</value>
+  </data>
+  <data name="Content_OutboundRequests" xml:space="preserve">
+    <value>Outbound Requests</value>
+  </data>
+  <data name="Filter_Mgp_Files" xml:space="preserve">
+    <value>MapGuide Package File (*.mgp)|*.mgp</value>
+  </data>
+  <data name="Menu_Package" xml:space="preserve">
+    <value>Package</value>
+  </data>
+  <data name="Prefs_General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="SelectTemplatePath" xml:space="preserve">
+    <value>Select the user template path</value>
+  </data>
+  <data name="ConfirmResetPrefs" xml:space="preserve">
+    <value>You are about to reset all preferences to default values. Are you sure you want to do this?</value>
+  </data>
+  <data name="PrefsRestartRequired" xml:space="preserve">
+    <value>A restart is required for some changes to take effect. Restart now?</value>
+  </data>
+  <data name="ItemsCopied" xml:space="preserve">
+    <value>{0} items copied and placed in clipboard</value>
+  </data>
+  <data name="ItemsCut" xml:space="preserve">
+    <value>{0} items cut and placed in clipboard</value>
+  </data>
+  <data name="NewResource" xml:space="preserve">
+    <value>New Resource</value>
+  </data>
+  <data name="CloseUnsavedResource" xml:space="preserve">
+    <value>This resource {0} has unsaved changes. Close and discard these changes?</value>
+  </data>
+  <data name="FixErrorsBeforeSaving" xml:space="preserve">
+    <value>Validation detected errors in your resource, please fix them before saving this resource</value>
+  </data>
+  <data name="Global.ErrorText" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="TPL_DLDF_DESC" xml:space="preserve">
+    <value>Create a new Drawing Layer Definition</value>
+  </data>
+  <data name="TPL_DLDF_NAME" xml:space="preserve">
+    <value>Drawing Layer Definition</value>
+  </data>
+  <data name="TPL_RLDF_DESC" xml:space="preserve">
+    <value>Create a new Raster Layer Definition using the v1.0.0 schema</value>
+  </data>
+  <data name="TPL_RLDF_NAME" xml:space="preserve">
+    <value>Raster Layer Definition (v1.0.0)</value>
+  </data>
+  <data name="box__arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\box--arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="box__plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\box--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Filter_Dwf_Files" xml:space="preserve">
+    <value>Autodesk DWF (*.dwf)|*.dwf</value>
+  </data>
+  <data name="TPL_LP_DWF_DESC" xml:space="preserve">
+    <value>Create a DWF Load Procedure</value>
+  </data>
+  <data name="TPL_LP_DWF_NAME" xml:space="preserve">
+    <value>DWF Load Procedure</value>
+  </data>
+  <data name="ConfirmMove" xml:space="preserve">
+    <value>Are you sure you want to move the following resources?</value>
+  </data>
+  <data name="SdfHandlerAction" xml:space="preserve">
+    <value>Create a SDF Feature Source</value>
+  </data>
+  <data name="ShpHandlerAction" xml:space="preserve">
+    <value>Create a SHP Feature Source</value>
+  </data>
+  <data name="SltHandlerAction" xml:space="preserve">
+    <value>Create a SQLite Feature Source</value>
+  </data>
+  <data name="XmlResHandlerAction" xml:space="preserve">
+    <value>Load this resource into the Site Repository</value>
+  </data>
+  <data name="LayerSubTypeNotSupported" xml:space="preserve">
+    <value>Could not determine the sub-layer type or this type is not currently supported</value>
+  </data>
+  <data name="ConfirmCloseEditors" xml:space="preserve">
+    <value>You have open editors with unsaved changes. Continue anyway?</value>
+  </data>
+  <data name="ConfirmDeleteOpenResource" xml:space="preserve">
+    <value>You are about to delete one or more resources which are currently open in an editor. Close these editors and proceed with delete?</value>
+  </data>
+  <data name="TabClose" xml:space="preserve">
+    <value>Close this tab</value>
+  </data>
+  <data name="TabCloseExceptThis" xml:space="preserve">
+    <value>Close all tabs except this</value>
+  </data>
+  <data name="ItemsMigrated" xml:space="preserve">
+    <value>{0} items migrated</value>
+  </data>
+  <data name="SiteExplorer_CopyMoveToServer" xml:space="preserve">
+    <value>Copy/Move selected items to another server</value>
+  </data>
+  <data name="FilterExecutables" xml:space="preserve">
+    <value>Executables|*.exe</value>
+  </data>
+  <data name="LocalFsPreview" xml:space="preserve">
+    <value>Local Feature Source Preview</value>
+  </data>
+  <data name="MgCooker" xml:space="preserve">
+    <value>MgCooker</value>
+  </data>
+  <data name="LocateExecutable" xml:space="preserve">
+    <value>Locate executable: {0}</value>
+  </data>
+  <data name="ServerMonitor" xml:space="preserve">
+    <value>Server Status Monitor</value>
+  </data>
+  <data name="ResourceMigrated" xml:space="preserve">
+    <value>Resource Migrated: {0}</value>
+  </data>
+  <data name="SiteExplorer_Migrate" xml:space="preserve">
+    <value>Migrate</value>
+  </data>
+  <data name="ClipboardAction" xml:space="preserve">
+    <value>{0} item {1} into {2}</value>
+  </data>
+  <data name="MoveFailure" xml:space="preserve">
+    <value>Failed to move {0} to {1}</value>
+  </data>
+  <data name="NewMap" xml:space="preserve">
+    <value>New Map</value>
+  </data>
+  <data name="NotSessionBasedId" xml:space="preserve">
+    <value>Resource ID must not be session based</value>
+  </data>
+  <data name="PreviewMap" xml:space="preserve">
+    <value>Preview Map</value>
+  </data>
+  <data name="UnpreviewableResourceType" xml:space="preserve">
+    <value>The resource type cannot be previewed</value>
+  </data>
+  <data name="XmlEditor" xml:space="preserve">
+    <value>XML Editor:</value>
+  </data>
+  <data name="disks" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\disks.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_File_SaveAll" xml:space="preserve">
+    <value>Save All</value>
+  </data>
+  <data name="Menu_File_CloseAll" xml:space="preserve">
+    <value>Close All Documents</value>
+  </data>
+  <data name="Menu_Window" xml:space="preserve">
+    <value>Window</value>
+  </data>
+  <data name="MgpHandlerAction" xml:space="preserve">
+    <value>Load this package file</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ConfirmLoadPackage" xml:space="preserve">
+    <value>Are you sure you want to load this package file?</value>
+  </data>
+  <data name="ProgressUpdatingReferences" xml:space="preserve">
+    <value>Updating References</value>
+  </data>
+  <data name="ResourcesRepointed" xml:space="preserve">
+    <value>{0} resources re-pointed to {1}</value>
+  </data>
+  <data name="document__arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\document--arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ResourceNotRepointable" xml:space="preserve">
+    <value>This selected resource is not re-pointable</value>
+  </data>
+  <data name="SiteExplorer_Repoint" xml:space="preserve">
+    <value>Repoint this resource</value>
+  </data>
+  <data name="ConfirmBaseMapInvalidation" xml:space="preserve">
+    <value>This map definition has tiled layers. Saving this map definition will reset the tile cache if these layer existed when you first edited this map. Continue with save?</value>
+  </data>
+  <data name="ConfirmBaseMapInvalidationFeatureSourceSave" xml:space="preserve">
+    <value>This feature source is refrenced by at least one tiled layer in the following maps: {0} Saving this feature source may reset the cached tiles of these maps. Continue with save?</value>
+  </data>
+  <data name="ConfirmBaseMapInvalidationLayerSave" xml:space="preserve">
+    <value>This layer is used as a tiled layer in the following maps: {0} Saving this layer may reset the cached tiles of these maps. Continue with save?</value>
+  </data>
+  <data name="CacheView" xml:space="preserve">
+    <value>View Feature Source Cache</value>
+  </data>
+</root>

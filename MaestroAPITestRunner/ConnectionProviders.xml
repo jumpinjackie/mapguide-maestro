@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ConnectionProviderRegistry>
+    <ConnectionProvider>
+        <Name>Maestro.Http</Name>
+        <Description>Connection using the mapagent http API</Description>
+        <Assembly>OSGeo.MapGuide.MaestroAPI.Http.dll</Assembly>
+        <Type>OSGeo.MapGuide.MaestroAPI.HttpServerConnection</Type>
+    </ConnectionProvider>
+    <!-- 
+    If you want to use the Maestro.LocalNative provider, you need to set up
+    assembly binding redirection by editing Maestro.exe.config. See these links
+    below for more information:
+    
+    http://trac.osgeo.org/mapguide/wiki/maestro/MaestroAPI/MapGuideDotNetApiVersions
+    
+    http://themapguyde.blogspot.com/2010/10/using-maestro-in-native-mode-with.html
+    -->
+    <ConnectionProvider>
+        <Name>Maestro.LocalNative</Name>
+        <Description>Connection using the MapGuide Web API</Description>
+        <Assembly>OSGeo.MapGuide.MaestroAPI.Native.dll</Assembly>
+        <Type>OSGeo.MapGuide.MaestroAPI.LocalNativeConnection</Type>
+    </ConnectionProvider>
+</ConnectionProviderRegistry>

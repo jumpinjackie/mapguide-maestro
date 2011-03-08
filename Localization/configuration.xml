@@ -1,28 +1,18 @@
 ﻿<root>
 	<configuration name="OSGeo.MapGuide">
-		<assembly name="Maestro" folder="Maestro" namespace="OSGeo.MapGuide.Maestro">
-			<exclude>Maestro\FusionEditor</exclude>
-			<exclude>Maestro\LoginForm</exclude>
-			<exclude>Maestro\ResourceBrowser</exclude>
-			<exclude>Maestro\ResourceEditors</exclude>
-			<exclude>Maestro\ResourceValidators</exclude>
-			<exclude>MgCooker</exclude>
-		</assembly>
+		<assembly name="Maestro" folder="Maestro" namespace="Maestro" />
+		<assembly name="Maestro.AddIn.ExtendedObjectModels" folder="Maestro.AddIn.ExtendedObjectModels" namespace="Maestro.AddIn.ExtendedObjectModels" />
+		<assembly name="Maestro.Base" folder="Maestro.Base" namespace="Maestro.Base" />
+		<assembly name="Maestro.Editors" folder="Maestro.Editors" namespace="Maestro.Editors" />
+		<assembly name="Maestro.Login" folder="Maestro.Login" namespace="Maestro.Login" />
+		<assembly name="Maestro.Packaging" folder="Maestro.Packaging" namespace="Maestro.Packaging" />
+		<assembly name="Maestro.Shared.UI" folder="Maestro.Shared.UI" namespace="Maestro.Shared.UI" />
+		<assembly name="MaestroFsPreview" folder="MaestroFsPreview" namespace="MaestroFsPreview" />
+		<assembly name="MgCooker" folder="MgCooker" namespace="MgCooker" />
+		<assembly name="OSGeo.MapGuide.MaestroAPI" folder="OSGeo.MapGuide.MaestroAPI" namespace="OSGeo.MapGuide.MaestroAPI" />
 
-		<!-- <assembly name="OSGeo.MapGuide.MaestroAPI.PackageBuilder" folder="PackageBuilder" namespace="OSGeo.MapGuide.MaestroAPI.PackageBuilder" />
-		<assembly name="OSGeo.MapGuide.MaestroAPI" folder="MaestroAPI" namespace="OSGeo.MapGuide.MaestroAPI">
-			<exclude>PackageBuilder</exclude>
-		</assembly> -->
-
-		<assembly name="OSGeo.MapGuide.Maestro.FusionEditor" folder="Maestro\FusionEditor" namespace="OSGeo.MapGuide.Maestro.FusionEditor" />
-		<assembly name="MgCooker" folder="MgCooker" namespace="OSGeo.MapGuide.MgCooker" />
-		<assembly name="OSGeo.MapGuide.Maestro.LoginForm" folder="Maestro\LoginForm" namespace="OSGeo.MapGuide.Maestro" />
-		<assembly name="OSGeo.MapGuide.Maestro.ResourceBrowser" folder="Maestro\ResourceBrowser" namespace="OSGeo.MapGuide.Maestro.ResourceBrowser" />
-		<assembly name="OSGeo.MapGuide.Maestro.ResourceEditors" folder="Maestro\ResourceEditors" namespace="OSGeo.MapGuide.Maestro.ResourceEditors" />
-		<assembly name="OSGeo.MapGuide.Maestro.ResourceValidators" folder="Maestro\ResourceValidators" namespace="OSGeo.MapGuide.Maestro.ResourceValidators" />
-	
 		<!-- <keyfile>..\MaestroAPI\Maestroapi.key</keyfile> -->
-		<versionassembly>..\Maestro\bin\release\Maestro.exe</versionassembly>
+		<versionassembly>..\out\Release\Maestro.exe</versionassembly>
 		<sourcefolder>..</sourcefolder>
 		<outputfolder>compiled</outputfolder>
 		<productname>Maestro</productname>

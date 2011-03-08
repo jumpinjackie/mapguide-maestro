@@ -1,0 +1,1903 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5AD2CDBA-952E-4148-98A1-31D2E0D540D5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Maestro.Editors</RootNamespace>
+    <AssemblyName>Maestro.Editors</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\SDK\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\SDK\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\SDK\bin\Maestro.Editors.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Thirdparty\SharpZipLib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Common\ColorComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\ColorComboWithTransparency.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\ColorComboWithTransparency.designer.cs">
+      <DependentUpon>ColorComboWithTransparency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CoordinateSystemPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\CoordinateSystemPicker.Designer.cs">
+      <DependentUpon>CoordinateSystemPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CustomCombo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\EditorBindableCollapsiblePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\ExpressionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\ExpressionEditor.designer.cs">
+      <DependentUpon>ExpressionEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ImageStylePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\GenericItemSelectionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\GenericItemSelectionDialog.Designer.cs">
+      <DependentUpon>GenericItemSelectionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ResourceDataCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\ResourceDataCtrl.Designer.cs">
+      <DependentUpon>ResourceDataCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SourceDataCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\SourceDataCtrl.Designer.cs">
+      <DependentUpon>SourceDataCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SymbolPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\SymbolPicker.Designer.cs">
+      <DependentUpon>SymbolPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\UnmanagedFileBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\UnmanagedFileBrowser.Designer.cs">
+      <DependentUpon>UnmanagedFileBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnostics\FdoCacheViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diagnostics\FdoCacheViewer.Designer.cs">
+      <DependentUpon>FdoCacheViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnostics\ServerStatusMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diagnostics\ServerStatusMonitor.designer.cs">
+      <DependentUpon>ServerStatusMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DrawingSource\DrawingSourceEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DrawingSource\DrawingSourceEditorCtrl.Designer.cs">
+      <DependentUpon>DrawingSourceEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DrawingSource\SourceSectionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DrawingSource\SourceSectionCtrl.Designer.cs">
+      <DependentUpon>SourceSectionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditorBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\CoordSysOverrideCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\CoordSysOverrideCtrl.Designer.cs">
+      <DependentUpon>CoordSysOverrideCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\CoordSys\CoordSysOverrideDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\CoordSys\CoordSysOverrideDialog.Designer.cs">
+      <DependentUpon>CoordSysOverrideDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\ExtensionsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\ExtensionsCtrl.Designer.cs">
+      <DependentUpon>ExtensionsCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Extensions\CalculationSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Extensions\CalculationSettings.Designer.cs">
+      <DependentUpon>CalculationSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Extensions\ExtendedClassSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Extensions\ExtendedClassSettings.Designer.cs">
+      <DependentUpon>ExtendedClassSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Extensions\JoinSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Extensions\JoinSettings.Designer.cs">
+      <DependentUpon>JoinSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Extensions\SelectJoinKeyDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Extensions\SelectJoinKeyDialog.Designer.cs">
+      <DependentUpon>SelectJoinKeyDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\FeatureSourceEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\FeatureSourceEditorCtrl.Designer.cs">
+      <DependentUpon>FeatureSourceEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\FsEditorMap.cs" />
+    <Compile Include="FeatureSource\Preview\IQueryControl.cs" />
+    <Compile Include="FeatureSource\Preview\LocalFeatureSourcePreviewCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Preview\LocalFeatureSourcePreviewCtrl.Designer.cs">
+      <DependentUpon>LocalFeatureSourcePreviewCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Preview\PreviewPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Preview\PreviewPane.Designer.cs">
+      <DependentUpon>PreviewPane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Preview\SqlQueryCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Preview\SqlQueryCtrl.Designer.cs">
+      <DependentUpon>SqlQueryCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Preview\StandardQueryCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Preview\StandardQueryCtrl.Designer.cs">
+      <DependentUpon>StandardQueryCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\FileBasedCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\FileBasedCtrl.Designer.cs">
+      <DependentUpon>FileBasedCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Gdal\CompositeFileCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Gdal\CompositeFileCtrl.Designer.cs">
+      <DependentUpon>CompositeFileCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Gdal\GdalProviderCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Gdal\GdalProviderCtrl.Designer.cs">
+      <DependentUpon>GdalProviderCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Gdal\SingleFileCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Gdal\SingleFileCtrl.Designer.cs">
+      <DependentUpon>SingleFileCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\GenericCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\GenericCtrl.Designer.cs">
+      <DependentUpon>GenericCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\Drivers\OracleDriver.cs" />
+    <Compile Include="FeatureSource\Providers\Odbc\Drivers\OracleMsDriver.cs" />
+    <Compile Include="FeatureSource\Providers\Odbc\Drivers\SqlServerDriver.cs" />
+    <Compile Include="FeatureSource\Providers\Odbc\OdbcDriverInfo.cs" />
+    <Compile Include="FeatureSource\Providers\Odbc\OdbcDriverMap.cs" />
+    <Compile Include="FeatureSource\Providers\Odbc\OdbcProviderCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\OdbcProviderCtrl.Designer.cs">
+      <DependentUpon>OdbcProviderCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\OverrideEditor\TableConfigCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\OverrideEditor\TableConfigCtrl.Designer.cs">
+      <DependentUpon>TableConfigCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\OverrideEditor\TableConfigurationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\OverrideEditor\TableConfigurationDialog.Designer.cs">
+      <DependentUpon>TableConfigurationDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\OverrideEditor\TableOverrideItem.cs" />
+    <Compile Include="FeatureSource\Providers\Odbc\SubEditors\ConnectionStringCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\SubEditors\ConnectionStringCtrl.Designer.cs">
+      <DependentUpon>ConnectionStringCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\SubEditors\DSNCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\SubEditors\DSNCtrl.Designer.cs">
+      <DependentUpon>DSNCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\SubEditors\IOdbcSubEditor.cs" />
+    <Compile Include="FeatureSource\Providers\Odbc\SubEditors\KnownDriversCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\SubEditors\KnownDriversCtrl.Designer.cs">
+      <DependentUpon>KnownDriversCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\SubEditors\ManagedCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\SubEditors\ManagedCtrl.Designer.cs">
+      <DependentUpon>ManagedCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\SubEditors\UnmanagedCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Odbc\SubEditors\UnmanagedCtrl.Designer.cs">
+      <DependentUpon>UnmanagedCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Rdbms\MySqlCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Rdbms\MySqlCtrl.Designer.cs">
+      <DependentUpon>MySqlCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Rdbms\PostgreSqlCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Rdbms\PostgreSqlCtrl.Designer.cs">
+      <DependentUpon>PostgreSqlCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Rdbms\RdbmsBaseCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Rdbms\RdbmsBaseCtrl.Designer.cs">
+      <DependentUpon>RdbmsBaseCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Rdbms\SqlServerSpatialCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Rdbms\SqlServerSpatialCtrl.Designer.cs">
+      <DependentUpon>SqlServerSpatialCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Sdf\SdfFileCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Sdf\SdfFileCtrl.Designer.cs">
+      <DependentUpon>SdfFileCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Shp\ShpFileCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Shp\ShpFileCtrl.Designer.cs">
+      <DependentUpon>ShpFileCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\SQLite\SQLiteFileCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\SQLite\SQLiteFileCtrl.Designer.cs">
+      <DependentUpon>SQLiteFileCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\FlexibleLayoutEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\FlexibleLayoutEditor.Designer.cs">
+      <DependentUpon>FlexibleLayoutEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\FlexibleLayoutEditorContext.cs" />
+    <Compile Include="Fusion\FlexLayoutSettingsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\FlexLayoutSettingsCtrl.Designer.cs">
+      <DependentUpon>FlexLayoutSettingsCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\FusionWidgetEditorMap.cs" />
+    <Compile Include="Fusion\MapCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\MapCtrl.Designer.cs">
+      <DependentUpon>MapCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\MapSettingsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\MapSettingsCtrl.Designer.cs">
+      <DependentUpon>MapSettingsCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\NewWidgetDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fusion\NewWidgetDialog.Designer.cs">
+      <DependentUpon>NewWidgetDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetManagementDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetManagementDialog.Designer.cs">
+      <DependentUpon>WidgetManagementDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditorFactory.cs" />
+    <Compile Include="Fusion\WidgetEditors\AboutWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\AboutWidgetCtrl.Designer.cs">
+      <DependentUpon>AboutWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\ActivityIndicatorWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\ActivityIndicatorWidgetCtrl.Designer.cs">
+      <DependentUpon>ActivityIndicatorWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\BufferPanelWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\BufferPanelWidgetCtrl.Designer.cs">
+      <DependentUpon>BufferPanelWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\BufferWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\BufferWidgetCtrl.Designer.cs">
+      <DependentUpon>BufferWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\CenterSelectionWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\CenterSelectionWidgetCtrl.Designer.cs">
+      <DependentUpon>CenterSelectionWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\ClearSelectionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\ClearSelectionCtrl.Designer.cs">
+      <DependentUpon>ClearSelectionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\ColorPickerWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\ColorPickerWidgetCtrl.Designer.cs">
+      <DependentUpon>ColorPickerWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\CursorPositionWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\CursorPositionWidgetCtrl.Designer.cs">
+      <DependentUpon>CursorPositionWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\EditableScaleWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\EditableScaleWidgetCtrl.Designer.cs">
+      <DependentUpon>EditableScaleWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\ExtentHistoryWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\ExtentHistoryWidgetCtrl.Designer.cs">
+      <DependentUpon>ExtentHistoryWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\FeatureInfoWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\FeatureInfoWidgetCtrl.Designer.cs">
+      <DependentUpon>FeatureInfoWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\GenericWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\GenericWidgetCtrl.Designer.cs">
+      <DependentUpon>GenericWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\HelpWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\HelpWidgetCtrl.Designer.cs">
+      <DependentUpon>HelpWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\InitialMapViewWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\InitialMapViewWidgetCtrl.Designer.cs">
+      <DependentUpon>InitialMapViewWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\InvokeScriptWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\InvokeScriptWidgetCtrl.Designer.cs">
+      <DependentUpon>InvokeScriptWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\IWidgetEditor.cs" />
+    <Compile Include="Fusion\WidgetEditors\LegendWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\LegendWidgetCtrl.Designer.cs">
+      <DependentUpon>LegendWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\LinkToViewWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\LinkToViewWidgetCtrl.Designer.cs">
+      <DependentUpon>LinkToViewWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\MapMenuWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\MapMenuWidgetCtrl.Designer.cs">
+      <DependentUpon>MapMenuWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\MapTipWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\MapTipWidgetCtrl.Designer.cs">
+      <DependentUpon>MapTipWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\MeasureWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\MeasureWidgetCtrl.Designer.cs">
+      <DependentUpon>MeasureWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\NavigatorWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\NavigatorWidgetCtrl.Designer.cs">
+      <DependentUpon>NavigatorWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\PanWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\PanWidgetCtrl.Designer.cs">
+      <DependentUpon>PanWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\RefreshMapWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\RefreshMapWidgetCtrl.Designer.cs">
+      <DependentUpon>RefreshMapWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\SelectionPanelWidgetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\SelectionPanelWidgetCtrl.Designer.cs">
+      <DependentUpon>SelectionPanelWidgetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\WidgetEditorBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\WidgetEditorBase.Designer.cs">
+      <DependentUpon>WidgetEditorBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetReferenceCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetReferenceCtrl.Designer.cs">
+      <DependentUpon>WidgetReferenceCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\WidgetSettingsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetSettingsCtrl.Designer.cs">
+      <DependentUpon>WidgetSettingsCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\ResourceDataPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Generic\ResourceDataPanel.Designer.cs">
+      <DependentUpon>ResourceDataPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ResourcePicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\ResourcePicker.Designer.cs">
+      <DependentUpon>ResourcePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\XmlEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Generic\XmlEditorCtrl.Designer.cs">
+      <DependentUpon>XmlEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\XmlValidationResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generic\XmlValidationResult.Designer.cs">
+      <DependentUpon>XmlValidationResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IEditorBindable.cs" />
+    <Compile Include="IEditorService.cs" />
+    <Compile Include="LayerDefinition\DrawingLayerEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\DrawingLayerEditorCtrl.Designer.cs">
+      <DependentUpon>DrawingLayerEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Drawing\DrawingLayerSettingsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Drawing\DrawingLayerSettingsCtrl.Designer.cs">
+      <DependentUpon>DrawingLayerSettingsCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\LayerPropertiesSectionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\LayerPropertiesSectionCtrl.Designer.cs">
+      <DependentUpon>LayerPropertiesSectionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\RasterLayerEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\RasterLayerEditorCtrl.Designer.cs">
+      <DependentUpon>RasterLayerEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Raster\RasterLayerAdvancedSectionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Raster\RasterLayerAdvancedSectionCtrl.Designer.cs">
+      <DependentUpon>RasterLayerAdvancedSectionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Raster\RasterLayerSettingsSectionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Raster\RasterLayerSettingsSectionCtrl.Designer.cs">
+      <DependentUpon>RasterLayerSettingsSectionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Raster\RasterLayerVisibilitySectionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Raster\RasterLayerVisibilitySectionCtrl.Designer.cs">
+      <DependentUpon>RasterLayerVisibilitySectionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\VectorLayerEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\VectorLayerEditorCtrl.Designer.cs">
+      <DependentUpon>VectorLayerEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\FeaturePreviewRender.cs" />
+    <Compile Include="LayerDefinition\Vector\Scales\Condition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\Condition.designer.cs">
+      <DependentUpon>Condition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\ConditionList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\ConditionList.designer.cs">
+      <DependentUpon>ConditionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\ConditionListButtons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\ConditionListButtons.designer.cs">
+      <DependentUpon>ConditionListButtons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\EditorTemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\EditorTemplateForm.designer.cs">
+      <DependentUpon>EditorTemplateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\ItemStyle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\ItemStyle.designer.cs">
+      <DependentUpon>ItemStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\ScaleRange.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\ScaleRange.designer.cs">
+      <DependentUpon>ScaleRange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\ScaleRangeConditions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\ScaleRangeConditions.designer.cs">
+      <DependentUpon>ScaleRangeConditions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\ScaleRangeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\ScaleRangeList.designer.cs">
+      <DependentUpon>ScaleRangeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\StyleEditors\AreaFeatureStyleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\StyleEditors\FillStyleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\StyleEditors\FontStyleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\StyleEditors\LineFeatureStyleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\StyleEditors\LineStyleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\StyleEditors\PointFeatureStyleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\StyleEditors\ScaleRangeEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Thematics\ColorBrewer.cs" />
+    <Compile Include="LayerDefinition\Vector\Thematics\ThemeCreator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Thematics\ThemeCreator.designer.cs">
+      <DependentUpon>ThemeCreator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\VectorLayerSettingsSectionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\VectorLayerSettingsSectionCtrl.Designer.cs">
+      <DependentUpon>VectorLayerSettingsSectionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\VectorLayerStyleSectionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\VectorLayerStyleSectionCtrl.Designer.cs">
+      <DependentUpon>VectorLayerStyleSectionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadProcedure\DwfTransformationCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoadProcedure\DwfTransformationCtrl.Designer.cs">
+      <DependentUpon>DwfTransformationCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadProcedure\ExecuteCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoadProcedure\ExecuteCtrl.Designer.cs">
+      <DependentUpon>ExecuteCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadProcedure\InputFilesCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoadProcedure\InputFilesCtrl.Designer.cs">
+      <DependentUpon>InputFilesCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadProcedure\LoadProcedureEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoadProcedure\LoadProcedureEditorCtrl.Designer.cs">
+      <DependentUpon>LoadProcedureEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadProcedure\SdfTransformationCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoadProcedure\SdfTransformationCtrl.Designer.cs">
+      <DependentUpon>SdfTransformationCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadProcedure\LoadTargetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoadProcedure\LoadTargetCtrl.Designer.cs">
+      <DependentUpon>LoadTargetCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadProcedure\ShpTransformationCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoadProcedure\ShpTransformationCtrl.Designer.cs">
+      <DependentUpon>ShpTransformationCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadProcedure\SqliteTransformationCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoadProcedure\SqliteTransformationCtrl.Designer.cs">
+      <DependentUpon>SqliteTransformationCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapDefinition\FiniteScaleListCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\FiniteScaleListCtrl.Designer.cs">
+      <DependentUpon>FiniteScaleListCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapDefinition\GroupPropertiesCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\GroupPropertiesCtrl.Designer.cs">
+      <DependentUpon>GroupPropertiesCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapDefinition\LayerPropertiesCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\LayerPropertiesCtrl.Designer.cs">
+      <DependentUpon>LayerPropertiesCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapDefinition\ManualScaleEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\ManualScaleEditor.Designer.cs">
+      <DependentUpon>ManualScaleEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapDefinition\MapDefinitionEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\MapDefinitionEditorCtrl.Designer.cs">
+      <DependentUpon>MapDefinitionEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapDefinition\MapLayersSectionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\MapLayersSectionCtrl.Designer.cs">
+      <DependentUpon>MapLayersSectionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapDefinition\MapSettingsSectionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\MapSettingsSectionCtrl.Designer.cs">
+      <DependentUpon>MapSettingsSectionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapDefinition\MapTreeModels.cs" />
+    <Compile Include="MapDefinition\ScaleListGenerator.cs" />
+    <Compile Include="Migration\CopyMoveToServerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Migration\CopyMoveToServerDialog.Designer.cs">
+      <DependentUpon>CopyMoveToServerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migration\MigrateDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Migration\MigrateDialog.Designer.cs">
+      <DependentUpon>MigrateDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintLayout\LogoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintLayout\LogoDialog.Designer.cs">
+      <DependentUpon>LogoDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintLayout\PrintCustomLogosSectionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PrintLayout\PrintCustomLogosSectionCtrl.Designer.cs">
+      <DependentUpon>PrintCustomLogosSectionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintLayout\PrintCustomTextSectionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PrintLayout\PrintCustomTextSectionCtrl.Designer.cs">
+      <DependentUpon>PrintCustomTextSectionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintLayout\PrintLayoutEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PrintLayout\PrintLayoutEditorCtrl.Designer.cs">
+      <DependentUpon>PrintLayoutEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintLayout\PrintPagePropertiesSectionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PrintLayout\PrintPagePropertiesSectionCtrl.Designer.cs">
+      <DependentUpon>PrintPagePropertiesSectionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintLayout\TextDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintLayout\TextDialog.Designer.cs">
+      <DependentUpon>TextDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="WebLayout\CommandIconCache.cs" />
+    <Compile Include="WebLayout\Commands\InvokeScriptCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WebLayout\Commands\InvokeScriptCtrl.Designer.cs">
+      <DependentUpon>InvokeScriptCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebLayout\Commands\InvokeURLCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WebLayout\Commands\InvokeURLCtrl.Designer.cs">
+      <DependentUpon>InvokeURLCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebLayout\Commands\SearchCmdCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WebLayout\Commands\SearchCmdCtrl.Designer.cs">
+      <DependentUpon>SearchCmdCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebLayout\CustomCommandPropertyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WebLayout\CustomCommandPropertyCtrl.Designer.cs">
+      <DependentUpon>CustomCommandPropertyCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebLayout\MenuEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WebLayout\MenuEditorCtrl.Designer.cs">
+      <DependentUpon>MenuEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebLayout\MenuModel.cs" />
+    <Compile Include="WebLayout\WebLayoutCommandsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WebLayout\WebLayoutCommandsCtrl.Designer.cs">
+      <DependentUpon>WebLayoutCommandsCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebLayout\WebLayoutEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WebLayout\WebLayoutEditorCtrl.Designer.cs">
+      <DependentUpon>WebLayoutEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebLayout\WebLayoutMenusCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WebLayout\WebLayoutMenusCtrl.Designer.cs">
+      <DependentUpon>WebLayoutMenusCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebLayout\WebLayoutSettingsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WebLayout\WebLayoutSettingsCtrl.Designer.cs">
+      <DependentUpon>WebLayoutSettingsCtrl.cs</DependentUpon>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Common\ColorComboBox.resx">
+      <DependentUpon>ColorComboBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\ColorComboWithTransparency.resx">
+      <DependentUpon>ColorComboWithTransparency.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\CoordinateSystemPicker.resx">
+      <DependentUpon>CoordinateSystemPicker.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\CustomCombo.resx">
+      <DependentUpon>CustomCombo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\EditorBindableCollapsiblePanel.resx">
+      <DependentUpon>EditorBindableCollapsiblePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\ExpressionEditor.resx">
+      <DependentUpon>ExpressionEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\ImageStylePicker.resx">
+      <DependentUpon>ImageStylePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\GenericItemSelectionDialog.resx">
+      <DependentUpon>GenericItemSelectionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\ResourceDataCtrl.resx">
+      <DependentUpon>ResourceDataCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\SourceDataCtrl.resx">
+      <DependentUpon>SourceDataCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\SymbolPicker.resx">
+      <DependentUpon>SymbolPicker.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\UnmanagedFileBrowser.resx">
+      <DependentUpon>UnmanagedFileBrowser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diagnostics\FdoCacheViewer.resx">
+      <DependentUpon>FdoCacheViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diagnostics\ServerStatusMonitor.resx">
+      <DependentUpon>ServerStatusMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DrawingSource\DrawingSourceEditorCtrl.resx">
+      <DependentUpon>DrawingSourceEditorCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DrawingSource\SourceSectionCtrl.resx">
+      <DependentUpon>SourceSectionCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\CoordSysOverrideCtrl.resx">
+      <DependentUpon>CoordSysOverrideCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\CoordSys\CoordSysOverrideDialog.resx">
+      <DependentUpon>CoordSysOverrideDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\ExtensionsCtrl.resx">
+      <DependentUpon>ExtensionsCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Extensions\CalculationSettings.resx">
+      <DependentUpon>CalculationSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Extensions\ExtendedClassSettings.resx">
+      <DependentUpon>ExtendedClassSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Extensions\JoinSettings.resx">
+      <DependentUpon>JoinSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Extensions\SelectJoinKeyDialog.resx">
+      <DependentUpon>SelectJoinKeyDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\FeatureSourceEditorCtrl.resx">
+      <DependentUpon>FeatureSourceEditorCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Preview\LocalFeatureSourcePreviewCtrl.resx">
+      <DependentUpon>LocalFeatureSourcePreviewCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Preview\PreviewPane.resx">
+      <DependentUpon>PreviewPane.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Preview\SqlQueryCtrl.resx">
+      <DependentUpon>SqlQueryCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Preview\StandardQueryCtrl.resx">
+      <DependentUpon>StandardQueryCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\FileBasedCtrl.resx">
+      <DependentUpon>FileBasedCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Gdal\CompositeFileCtrl.resx">
+      <DependentUpon>CompositeFileCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Gdal\GdalProviderCtrl.resx">
+      <DependentUpon>GdalProviderCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Gdal\SingleFileCtrl.resx">
+      <DependentUpon>SingleFileCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\GenericCtrl.resx">
+      <DependentUpon>GenericCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Odbc\OdbcProviderCtrl.resx">
+      <DependentUpon>OdbcProviderCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Odbc\OverrideEditor\TableConfigCtrl.resx">
+      <DependentUpon>TableConfigCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Odbc\OverrideEditor\TableConfigurationDialog.resx">
+      <DependentUpon>TableConfigurationDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Odbc\SubEditors\ConnectionStringCtrl.resx">
+      <DependentUpon>ConnectionStringCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Odbc\SubEditors\DSNCtrl.resx">
+      <DependentUpon>DSNCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Odbc\SubEditors\KnownDriversCtrl.resx">
+      <DependentUpon>KnownDriversCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Odbc\SubEditors\ManagedCtrl.resx">
+      <DependentUpon>ManagedCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Odbc\SubEditors\UnmanagedCtrl.resx">
+      <DependentUpon>UnmanagedCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Rdbms\MySqlCtrl.resx">
+      <DependentUpon>MySqlCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Rdbms\PostgreSqlCtrl.resx">
+      <DependentUpon>PostgreSqlCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Rdbms\RdbmsBaseCtrl.resx">
+      <DependentUpon>RdbmsBaseCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Rdbms\SqlServerSpatialCtrl.resx">
+      <DependentUpon>SqlServerSpatialCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Sdf\SdfFileCtrl.resx">
+      <DependentUpon>SdfFileCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Shp\ShpFileCtrl.resx">
+      <DependentUpon>ShpFileCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\SQLite\SQLiteFileCtrl.resx">
+      <DependentUpon>SQLiteFileCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\FlexibleLayoutEditor.resx">
+      <DependentUpon>FlexibleLayoutEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\FlexLayoutSettingsCtrl.resx">
+      <DependentUpon>FlexLayoutSettingsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\MapCtrl.resx">
+      <DependentUpon>MapCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\MapSettingsCtrl.resx">
+      <DependentUpon>MapSettingsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\NewWidgetDialog.resx">
+      <DependentUpon>NewWidgetDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetManagementDialog.resx">
+      <DependentUpon>WidgetManagementDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\AboutWidgetCtrl.resx">
+      <DependentUpon>AboutWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\ActivityIndicatorWidgetCtrl.resx">
+      <DependentUpon>ActivityIndicatorWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\BufferPanelWidgetCtrl.resx">
+      <DependentUpon>BufferPanelWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\BufferWidgetCtrl.resx">
+      <DependentUpon>BufferWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\CenterSelectionWidgetCtrl.resx">
+      <DependentUpon>CenterSelectionWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\ClearSelectionCtrl.resx">
+      <DependentUpon>ClearSelectionCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\ColorPickerWidgetCtrl.resx">
+      <DependentUpon>ColorPickerWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\CursorPositionWidgetCtrl.resx">
+      <DependentUpon>CursorPositionWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\EditableScaleWidgetCtrl.resx">
+      <DependentUpon>EditableScaleWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\ExtentHistoryWidgetCtrl.resx">
+      <DependentUpon>ExtentHistoryWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\FeatureInfoWidgetCtrl.resx">
+      <DependentUpon>FeatureInfoWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\GenericWidgetCtrl.resx">
+      <DependentUpon>GenericWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\HelpWidgetCtrl.resx">
+      <DependentUpon>HelpWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\InitialMapViewWidgetCtrl.resx">
+      <DependentUpon>InitialMapViewWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\InvokeScriptWidgetCtrl.resx">
+      <DependentUpon>InvokeScriptWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\LegendWidgetCtrl.resx">
+      <DependentUpon>LegendWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\LinkToViewWidgetCtrl.resx">
+      <DependentUpon>LinkToViewWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\MapMenuWidgetCtrl.resx">
+      <DependentUpon>MapMenuWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\MapTipWidgetCtrl.resx">
+      <DependentUpon>MapTipWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\MeasureWidgetCtrl.resx">
+      <DependentUpon>MeasureWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\NavigatorWidgetCtrl.resx">
+      <DependentUpon>NavigatorWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\PanWidgetCtrl.resx">
+      <DependentUpon>PanWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\RefreshMapWidgetCtrl.resx">
+      <DependentUpon>RefreshMapWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\SelectionPanelWidgetCtrl.resx">
+      <DependentUpon>SelectionPanelWidgetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\WidgetEditorBase.resx">
+      <DependentUpon>WidgetEditorBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetReferenceCtrl.resx">
+      <DependentUpon>WidgetReferenceCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetSettingsCtrl.resx">
+      <DependentUpon>WidgetSettingsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generic\ResourceDataPanel.resx">
+      <DependentUpon>ResourceDataPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\ResourcePicker.resx">
+      <DependentUpon>ResourcePicker.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generic\XmlEditorCtrl.resx">
+      <DependentUpon>XmlEditorCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generic\XmlValidationResult.resx">
+      <DependentUpon>XmlValidationResult.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\DrawingLayerEditorCtrl.resx">
+      <DependentUpon>DrawingLayerEditorCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Drawing\DrawingLayerSettingsCtrl.resx">
+      <DependentUpon>DrawingLayerSettingsCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\LayerPropertiesSectionCtrl.resx">
+      <DependentUpon>LayerPropertiesSectionCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\RasterLayerEditorCtrl.resx">
+      <DependentUpon>RasterLayerEditorCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Raster\RasterLayerAdvancedSectionCtrl.resx">
+      <DependentUpon>RasterLayerAdvancedSectionCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Raster\RasterLayerSettingsSectionCtrl.resx">
+      <DependentUpon>RasterLayerSettingsSectionCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Raster\RasterLayerVisibilitySectionCtrl.resx">
+      <DependentUpon>RasterLayerVisibilitySectionCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\VectorLayerEditorCtrl.resx">
+      <DependentUpon>VectorLayerEditorCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\Condition.resx">
+      <DependentUpon>Condition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\ConditionList.resx">
+      <DependentUpon>ConditionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\ConditionListButtons.resx">
+      <DependentUpon>ConditionListButtons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\EditorTemplateForm.resx">
+      <DependentUpon>EditorTemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\ItemStyle.resx">
+      <DependentUpon>ItemStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\ScaleRange.resx">
+      <DependentUpon>ScaleRange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\ScaleRangeConditions.resx">
+      <DependentUpon>ScaleRangeConditions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\ScaleRangeList.resx">
+      <DependentUpon>ScaleRangeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\StyleEditors\AreaFeatureStyleEditor.resx">
+      <DependentUpon>AreaFeatureStyleEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\StyleEditors\FillStyleEditor.resx">
+      <DependentUpon>FillStyleEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\StyleEditors\FontStyleEditor.resx">
+      <DependentUpon>FontStyleEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\StyleEditors\LineFeatureStyleEditor.resx">
+      <DependentUpon>LineFeatureStyleEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\StyleEditors\LineStyleEditor.resx">
+      <DependentUpon>LineStyleEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\StyleEditors\PointFeatureStyleEditor.resx">
+      <DependentUpon>PointFeatureStyleEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\StyleEditors\ScaleRangeEditor.resx">
+      <DependentUpon>ScaleRangeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Thematics\ThemeCreator.resx">
+      <DependentUpon>ThemeCreator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\VectorLayerSettingsSectionCtrl.resx">
+      <DependentUpon>VectorLayerSettingsSectionCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\VectorLayerStyleSectionCtrl.resx">
+      <DependentUpon>VectorLayerStyleSectionCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadProcedure\DwfTransformationCtrl.resx">
+      <DependentUpon>DwfTransformationCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadProcedure\ExecuteCtrl.resx">
+      <DependentUpon>ExecuteCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadProcedure\InputFilesCtrl.resx">
+      <DependentUpon>InputFilesCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadProcedure\LoadProcedureEditorCtrl.resx">
+      <DependentUpon>LoadProcedureEditorCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadProcedure\LoadTargetCtrl.resx">
+      <DependentUpon>LoadTargetCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadProcedure\SdfTransformationCtrl.resx">
+      <DependentUpon>SdfTransformationCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadProcedure\ShpTransformationCtrl.resx">
+      <DependentUpon>ShpTransformationCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadProcedure\SqliteTransformationCtrl.resx">
+      <DependentUpon>SqliteTransformationCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapDefinition\FiniteScaleListCtrl.resx">
+      <DependentUpon>FiniteScaleListCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapDefinition\GroupPropertiesCtrl.resx">
+      <DependentUpon>GroupPropertiesCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapDefinition\LayerPropertiesCtrl.resx">
+      <DependentUpon>LayerPropertiesCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapDefinition\ManualScaleEditor.resx">
+      <DependentUpon>ManualScaleEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapDefinition\MapDefinitionEditorCtrl.resx">
+      <DependentUpon>MapDefinitionEditorCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapDefinition\MapLayersSectionCtrl.resx">
+      <DependentUpon>MapLayersSectionCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapDefinition\MapSettingsSectionCtrl.resx">
+      <DependentUpon>MapSettingsSectionCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migration\CopyMoveToServerDialog.resx">
+      <DependentUpon>CopyMoveToServerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migration\MigrateDialog.resx">
+      <DependentUpon>MigrateDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintLayout\LogoDialog.resx">
+      <DependentUpon>LogoDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintLayout\PrintCustomLogosSectionCtrl.resx">
+      <DependentUpon>PrintCustomLogosSectionCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintLayout\PrintCustomTextSectionCtrl.resx">
+      <DependentUpon>PrintCustomTextSectionCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintLayout\PrintLayoutEditorCtrl.resx">
+      <DependentUpon>PrintLayoutEditorCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintLayout\PrintPagePropertiesSectionCtrl.resx">
+      <DependentUpon>PrintPagePropertiesSectionCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintLayout\TextDialog.resx">
+      <DependentUpon>TextDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebLayout\Commands\InvokeScriptCtrl.resx">
+      <DependentUpon>InvokeScriptCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebLayout\Commands\InvokeURLCtrl.resx">
+      <DependentUpon>InvokeURLCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebLayout\Commands\SearchCmdCtrl.resx">
+      <DependentUpon>SearchCmdCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebLayout\CustomCommandPropertyCtrl.resx">
+      <DependentUpon>CustomCommandPropertyCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebLayout\MenuEditorCtrl.resx">
+      <DependentUpon>MenuEditorCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebLayout\WebLayoutCommandsCtrl.resx">
+      <DependentUpon>WebLayoutCommandsCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebLayout\WebLayoutEditorCtrl.resx">
+      <DependentUpon>WebLayoutEditorCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebLayout\WebLayoutMenusCtrl.resx">
+      <DependentUpon>WebLayoutMenusCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebLayout\WebLayoutSettingsCtrl.resx">
+      <DependentUpon>WebLayoutSettingsCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Maestro.Packaging\Maestro.Packaging.csproj">
+      <Project>{0EA33E36-9C33-4D60-B378-B87FADAA0F40}</Project>
+      <Name>Maestro.Packaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj">
+      <Project>{CFD19053-2172-41D3-8460-0FD2123A1E88}</Project>
+      <Name>Maestro.Shared.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
+      <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
+      <Name>OSGeo.MapGuide.MaestroAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Thirdparty\TreeViewAdv\Aga.Controls\Aga.Controls.csproj">
+      <Project>{E73BB233-D88B-44A7-A98F-D71EE158381D}</Project>
+      <Name>Aga.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document--plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document--minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drive-download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application--minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application--plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application-export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application-import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application--arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application-search-result.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\script--arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globe--arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sql-join-inner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sql-join-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sql-join-right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\databases-relation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database--plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\function.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sql-join.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross-script.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drive-upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick-circle-frame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-return-180.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-270.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-090.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus-circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus-circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document-copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sort-number.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-circle-135.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sql.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magnifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table--arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross-circle-frame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\control-stop-square.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\control.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document--pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder-horizontal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scissors-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard-paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-curve.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-curve-180-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-2701.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exclamation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit-indent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globe--pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globe--plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globe--minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\server.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder--minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder--plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer--minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer--plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layers-stack-arrange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layers-stack-arrange-back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\property.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\block.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\funnel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ruler.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CommandTypesDataset.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColorBrewer.csv" />
+    <None Include="Resources\GeometryStyleComboDataset.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ui-splitter-horizontal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ui-menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_back.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_back_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_buffer.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_buffer_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_clearselect.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_clearselect_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_copy.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_copy_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_ctxarrow.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_fitwindow.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_fitwindow_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_forward.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_forward_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_help.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_help_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_home.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_home_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_invokescript.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_invokescript_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_invokeurl.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_invokeurl_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_measure.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_measure_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_menuarrow.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_menuarrow_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_menuarrowup.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_menuarrowup_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_null.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_pan.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_pan_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_pandown.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_pandown_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_panleft.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_panleft_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_panright.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_panright_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_panup.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_panup_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_plotdwf.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_plotdwf_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_popupscrolldown.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_popupscrolldown_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_popupscrollup.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_popupscrollup_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_print.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_print_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_printablepage.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_printablepage_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_refreshmap.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_refreshmap_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_restorecenter.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_restorecenter_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_search.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_search_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_select.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_select_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_selectpolygon.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_selectpolygon_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_selectradius.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_selectradius_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_selectwithin.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_selectwithin_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_tasks.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_tasks_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_viewoptions.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_viewoptions_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_zoom.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_zoom_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_zoomin.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_zoomin_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_zoomnext.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_zoomnext_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_zoomout.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_zoomout_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_zoomprev.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_zoomprev_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_zoomrect.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_zoomrect_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_zoomselect.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_zoomselect_disabled.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FsEditorMap.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OdbcDriverMap.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\document.png" />
+    <None Include="Resources\ui-separator.png" />
+    <None Include="Resources\gear--plus.png" />
+    <None Include="Resources\gear--pencil.png" />
+    <None Include="Resources\gear--minus.png" />
+    <None Include="Resources\gear--exclamation.png" />
+    <None Include="Resources\gear--arrow.png" />
+    <None Include="Resources\gear.png" />
+    <None Include="Resources\map--plus.png" />
+    <None Include="Resources\map--minus.png" />
+    <None Include="Resources\question-frame.png" />
+    <None Include="Resources\map--arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DrawingSource\Preview\" />
+    <Folder Include="SymbolDefinition\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

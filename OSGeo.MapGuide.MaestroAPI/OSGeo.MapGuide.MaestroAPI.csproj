@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OSGeo.MapGuide.MaestroAPI</RootNamespace>
+    <AssemblyName>OSGeo.MapGuide.MaestroAPI</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\SDK\bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;LDF_100, WL_100, MDF_100, SYM_100, LP_100</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\SDK\bin\</OutputPath>
+    <DefineConstants>TRACE;LDF_100, WL_100, MDF_100, SYM_100, LP_100</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\SDK\bin\OSGeo.MapGuide.MaestroAPI.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ciloci.Flee, Version=0.9.26.0, Culture=neutral, PublicKeyToken=c8526a021ef298ed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Thirdparty\Flee\lib\Ciloci.Flee.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Topology, Version=1.0.8.24721, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Thirdparty\TF.NET\Topology.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Generated\ApplicationDefinition-1.0.0.designer.cs">
+      <Link>ObjectModels\ApplicationDefinition-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\ApplicationDefinitionInfo-1.0.0.designer.cs">
+      <Link>ObjectModels\ApplicationDefinitionInfo-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\BatchPropertyCollection-1.0.0.designer.cs">
+      <Link>ObjectModels\BatchPropertyCollection-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\DataStoreList-1.0.0.designer.cs">
+      <Link>ObjectModels\DataStoreList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\DrawingSectionList-1.0.0.designer.cs">
+      <Link>ObjectModels\DrawingSectionList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\DrawingSectionResourceList-1.0.0.designer.cs">
+      <Link>ObjectModels\DrawingSectionResourceList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\DrawingSource-1.0.0.designer.cs">
+      <Link>ObjectModels\DrawingSource-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\Envelope-1.0.0.designer.cs">
+      <Link>ObjectModels\Envelope-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\FdoLongTransactionList-1.0.0.designer.cs">
+      <Link>ObjectModels\FdoLongTransactionList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\FdoProviderCapabilities-1.0.0.designer.cs">
+      <Link>ObjectModels\FdoProviderCapabilities-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\FdoSpatialContextList-1.0.0.designer.cs">
+      <Link>ObjectModels\FdoSpatialContextList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\FeatureProviderRegistry-1.0.0.designer.cs">
+      <Link>ObjectModels\FeatureProviderRegistry-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\FeatureSet-1.0.0.designer.cs">
+      <Link>ObjectModels\FeatureSet-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\FeatureSource-1.0.0.designer.cs">
+      <Link>ObjectModels\FeatureSource-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\Group-1.0.0.designer.cs">
+      <Link>ObjectModels\Group-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\GroupList-1.0.0.designer.cs">
+      <Link>ObjectModels\GroupList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\LayerDefinition-1.0.0.designer.cs">
+      <Link>ObjectModels\LayerDefinition-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\LoadProcedure-1.0.0.designer.cs">
+      <Link>ObjectModels\LoadProcedure-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\MapDefinition-1.0.0.designer.cs">
+      <Link>ObjectModels\MapDefinition-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\PrintLayout-1.0.0.designer.cs">
+      <Link>ObjectModels\PrintLayout-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\RepositoryList-1.0.0.designer.cs">
+      <Link>ObjectModels\RepositoryList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\ResourceDataList-1.0.0.designer.cs">
+      <Link>ObjectModels\ResourceDataList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\ResourceList-1.0.0.designer.cs">
+      <Link>ObjectModels\ResourceList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\ResourcePackageManifest-1.0.0.designer.cs">
+      <Link>ObjectModels\ResourcePackageManifest-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\ResourceReferenceList-1.0.0.designer.cs">
+      <Link>ObjectModels\ResourceReferenceList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\Role-1.0.0.designer.cs">
+      <Link>ObjectModels\Role-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\SelectAggregate-1.0.0.designer.cs">
+      <Link>ObjectModels\SelectAggregate-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\Server-1.0.0.designer.cs">
+      <Link>ObjectModels\Server-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\ServerList-1.0.0.designer.cs">
+      <Link>ObjectModels\ServerList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\SiteInformation-1.0.0.designer.cs">
+      <Link>ObjectModels\SiteInformation-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\SiteVersion-1.0.0.designer.cs">
+      <Link>ObjectModels\SiteVersion-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\StringCollection-1.0.0.designer.cs">
+      <Link>ObjectModels\StringCollection-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\SymbolDefinition-1.0.0.designer.cs">
+      <Link>ObjectModels\SymbolDefinition-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\SymbolLibrary-1.0.0.designer.cs">
+      <Link>ObjectModels\SymbolLibrary-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\Types-1.0.0.designer.cs">
+      <Link>ObjectModels\Types-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\UnmanagedDataList-1.0.0.designer.cs">
+      <Link>ObjectModels\UnmanagedDataList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\User-1.0.0.designer.cs">
+      <Link>ObjectModels\User-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\UserList-1.0.0.designer.cs">
+      <Link>ObjectModels\UserList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\WebLayout-1.0.0.designer.cs">
+      <Link>ObjectModels\WebLayout-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Properties\SignedAssemblyInfo.cs">
+      <Link>SignedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ArgumentParser.cs" />
+    <Compile Include="BindingListExtensions.cs" />
+    <Compile Include="Commands\IGetFdoCacheInfo.cs" />
+    <Compile Include="Commands\IGetResourceContents.cs" />
+    <Compile Include="Capability\ConnectionCapabilities.cs" />
+    <Compile Include="Check.cs" />
+    <Compile Include="Commands\CommandType.cs" />
+    <Compile Include="Commands\ExecuteLoadProcedure.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="CoordinateSystem\ActualCoordinateSystem.cs" />
+    <Compile Include="CoordinateSystem\DegreeBasedCoordinateSystem.cs" />
+    <Compile Include="CoordinateSystem\CoordinateSystemBase.cs" />
+    <Compile Include="CoordinateSystem\FeetBasedCoordinateSystem.cs" />
+    <Compile Include="CoordinateSystem\ISimpleTransform.cs" />
+    <Compile Include="CoordinateSystem\MeterBasedCoordinateSystem.cs" />
+    <Compile Include="Exceptions\CustomPropertyNotFoundException.cs" />
+    <Compile Include="Exceptions\ExpressionException.cs" />
+    <Compile Include="Exceptions\MaestroException.cs" />
+    <Compile Include="Exceptions\NestedExceptionMessageProcessor.cs" />
+    <Compile Include="Exceptions\ResourceConversionException.cs" />
+    <Compile Include="Exceptions\SerializationException.cs" />
+    <Compile Include="Exceptions\UnsupportedResourceTypeException.cs" />
+    <Compile Include="Exceptions\UnsupportedServiceTypeException.cs" />
+    <Compile Include="Expression\ExpressionEngine.cs" />
+    <Compile Include="Expression\ExpressionFeatureReader.cs" />
+    <Compile Include="Expression\FdoFunctionNamespace.cs" />
+    <Compile Include="Expression\MgFunctionNamespace.cs" />
+    <Compile Include="Feature\ClrFdoTypeMap.cs" />
+    <Compile Include="Feature\FeatureBase.cs" />
+    <Compile Include="Feature\FeatureReaderBase.cs" />
+    <Compile Include="Feature\IFeatureReader.cs" />
+    <Compile Include="Feature\IReader.cs" />
+    <Compile Include="Feature\PropertyValue.cs" />
+    <Compile Include="Feature\ReaderBase.cs" />
+    <Compile Include="Feature\RecordBase.cs" />
+    <Compile Include="ObjectModels\IFdoSpatialContext.cs" />
+    <Compile Include="SchemaOverrides\GdalConfigurationDocument.cs" />
+    <Compile Include="SchemaOverrides\GdalRasterItem.cs" />
+    <Compile Include="SchemaOverrides\OdbcTableItem.cs" />
+    <Compile Include="SchemaOverrides\WmsConfigurationDocument.cs" />
+    <Compile Include="Schema\ClassDefinition.cs" />
+    <Compile Include="Schema\DataPropertyDefinition.cs" />
+    <Compile Include="Schema\FeatureSchema.cs" />
+    <Compile Include="Schema\GeometricPropertyDefinition.cs" />
+    <Compile Include="Schema\IFdoSerializable.cs" />
+    <Compile Include="Schema\PropertyDefinition.cs" />
+    <Compile Include="Schema\RasterPropertyDefinition.cs" />
+    <Compile Include="Schema\SchemaElement.cs" />
+    <Compile Include="IConnectionCapabilities.cs" />
+    <Compile Include="IO\ReadOnlyRewindableStream.cs" />
+    <Compile Include="MaestroApiProviderAttribute.cs" />
+    <Compile Include="ConnectionProviderRegistry.cs" />
+    <Compile Include="CoordinateSystem\CoordinateSystem.cs" />
+    <Compile Include="CoordinateSystem\CoordinateSystemCatalog.cs" />
+    <Compile Include="CoordinateSystem\CoordinateSystemCategory.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Schema\FeatureSourceDescription.cs" />
+    <Compile Include="CoordinateSystem\ICoordinateSystemCatalog.cs" />
+    <Compile Include="CrossConnection\ResourceMigrator.cs" />
+    <Compile Include="Mapping\MapObservable.cs" />
+    <Compile Include="Mapping\MapSelection.cs" />
+    <Compile Include="Mapping\RuntimeMap.cs" />
+    <Compile Include="Mapping\RuntimeMapGroup.cs" />
+    <Compile Include="Mapping\RuntimeMapLayer.cs" />
+    <Compile Include="MgServerConnectionBase.cs" />
+    <Compile Include="ObjectModels\ApplicationDefinition.cs" />
+    <Compile Include="ObjectModels\ApplicationDefinitionInfo.cs" />
+    <Compile Include="ObjectModels\ApplicationDefinitionInterfaces.cs" />
+    <Compile Include="ObjectModels\DrawingSource.cs" />
+    <Compile Include="ObjectModels\DrawingSourceInterfaces.cs" />
+    <Compile Include="ObjectModels\FeatureSourceInterfaces.cs" />
+    <Compile Include="ObjectModels\Geometries.cs" />
+    <Compile Include="ObjectModels\GridLayerDefinitionImpl.cs" />
+    <Compile Include="ObjectModels\Envelope.cs" />
+    <Compile Include="ObjectModels\FeatureSource.cs" />
+    <Compile Include="ObjectModels\IRepositoryItem.cs" />
+    <Compile Include="ObjectModels\LayerFactory.cs" />
+    <Compile Include="ObjectModels\LoadProcedureInterfaces.cs" />
+    <Compile Include="ObjectModels\LoadProcFactory.cs" />
+    <Compile Include="ObjectModels\MapDefinitionInterfaces.cs" />
+    <Compile Include="ObjectModels\PrintLayoutInterfaces.cs" />
+    <Compile Include="ObjectModels\SymbolInterfaces.cs" />
+    <Compile Include="ObjectModels\SymbolLibraryInterfaces.cs" />
+    <Compile Include="ObjectModels\VectorLayerDefinitionImpl.cs" />
+    <Compile Include="ObjectModels\LayerInterfaceExtensions.cs" />
+    <Compile Include="ObjectModels\LayerInterfaces.cs" />
+    <Compile Include="ObjectModels\LoadProcedure.cs" />
+    <Compile Include="ObjectModels\MapDefinition.cs" />
+    <Compile Include="ObjectModels\ObjectFactory.cs" />
+    <Compile Include="ObjectModels\PrintLayout.cs" />
+    <Compile Include="ObjectModels\ResourceItems.cs" />
+    <Compile Include="ObjectModels\ResourceList.cs" />
+    <Compile Include="ObjectModels\ResourcePackageManifest.cs" />
+    <Compile Include="ObjectModels\SymbolDefinition.cs" />
+    <Compile Include="ObjectModels\SymbolLibrary.cs" />
+    <Compile Include="ObjectModels\UnmanagedDataList.cs" />
+    <Compile Include="ObjectModels\UntypedResource.cs" />
+    <Compile Include="ObjectModels\WebLayout.cs" />
+    <Compile Include="ObjectModels\WebLayoutInterfaces.cs" />
+    <Compile Include="Platform.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceTypeRegistry.cs" />
+    <Compile Include="Resource\Validation\ApplicationDefinitionValidator.cs" />
+    <Compile Include="Resource\Validation\BaseLayerDefinitionValidator.cs" />
+    <Compile Include="Resource\Validation\BaseLoadProcedureValidator.cs" />
+    <Compile Include="Resource\Validation\BaseWebLayoutValidator.cs" />
+    <Compile Include="Resource\Conversion\IResourceConverter.cs" />
+    <Compile Include="Resource\Conversion\ResourceConverter.cs" />
+    <Compile Include="Resource\Conversion\ResourceUpgrader.cs" />
+    <Compile Include="Resource\IResource.cs" />
+    <Compile Include="Resource\IResourceValidator.cs" />
+    <Compile Include="Resource\IVersionedEntity.cs" />
+    <Compile Include="Resource\ResourceIdentifier.cs" />
+    <Compile Include="Resource\ResourceSchemaChain.cs" />
+    <Compile Include="Resource\ResourceTypeDescriptor.cs" />
+    <Compile Include="Resource\ResourceContentVersionChecker.cs" />
+    <Compile Include="Resource\Validation\DrawingSourceValidator.cs" />
+    <Compile Include="Resource\Validation\FeatureSourceValidator.cs" />
+    <Compile Include="Resource\Validation\LayerDefinitionValidator.cs" />
+    <Compile Include="Resource\Validation\LoadProcedureValidator.cs" />
+    <Compile Include="Resource\Validation\MapDefinitionValidator.cs" />
+    <Compile Include="Resource\Validation\PrintLayoutValidator.cs" />
+    <Compile Include="Resource\Validation\ResourceValidationContext.cs" />
+    <Compile Include="Resource\Validation\ResourceValidatorLoader.cs" />
+    <Compile Include="Resource\Validation\ResourceValidatorSet.cs" />
+    <Compile Include="Resource\Validation\SymbolDefinitionValidator.cs" />
+    <Compile Include="Resource\Validation\SymbolLibraryValidator.cs" />
+    <Compile Include="Resource\Validation\ValidationResultSet.cs" />
+    <Compile Include="Resource\Validation\WebLayoutValidator.cs" />
+    <Compile Include="SchemaOverrides\ConfigurationDocument.cs" />
+    <Compile Include="SchemaOverrides\GenericConfigurationDocument.cs" />
+    <Compile Include="SchemaOverrides\OdbcConfigurationDocument.cs" />
+    <Compile Include="SchemaOverrides\RasterConfigurationDocument.cs" />
+    <Compile Include="SchemaOverrides\RasterFileItem.cs" />
+    <Compile Include="SchemaOverrides\RasterItem.cs" />
+    <Compile Include="SchemaOverrides\RasterWmsItem.cs" />
+    <Compile Include="Schema\XmlNamespaces.cs" />
+    <Compile Include="Serialization\Enums.cs" />
+    <Compile Include="Serialization\IBinarySerializable.cs" />
+    <Compile Include="Serialization\MgBinaryDeserializer.cs" />
+    <Compile Include="Serialization\MgBinarySerializer.cs" />
+    <Compile Include="Services\IDrawingService.cs" />
+    <Compile Include="Services\IFeatureService.cs" />
+    <Compile Include="Services\IFusionService.cs" />
+    <Compile Include="Services\IMappingService.cs" />
+    <Compile Include="Services\IResourceService.cs" />
+    <Compile Include="IServerConnection.cs" />
+    <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\ISiteService.cs" />
+    <Compile Include="Services\ITileService.cs" />
+    <Compile Include="LengthyOperationCallbackArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PlatformConnectionBase.cs" />
+    <Compile Include="Services\ServiceType.cs" />
+    <Compile Include="SiteVersion.cs" />
+    <Compile Include="Utf8XmlWriter.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="XmlValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Schemas\ApplicationDefinition-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\ApplicationDefinitionInfo-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\BatchPropertyCollection-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\DataStoreList-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\DrawingSectionList-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\DrawingSectionResourceList-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\DrawingSource-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\Envelope-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\FdoLongTransactionList-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\FdoProviderCapabilities-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\FdoProviderCapabilities-1.1.0.xsd">
+    </None>
+    <None Include="Schemas\FdoSpatialContextList-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\FeatureProviderRegistry-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\FeatureSet-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\FeatureSource-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\Group-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\GroupList-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\LayerDefinition-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\LayerDefinition-1.1.0.xsd">
+    </None>
+    <None Include="Schemas\LayerDefinition-1.2.0.xsd">
+    </None>
+    <None Include="Schemas\LayerDefinition-1.3.0.xsd">
+    </None>
+    <None Include="Schemas\LoadProcedure-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\LoadProcedure-1.1.0.xsd">
+    </None>
+    <None Include="Schemas\LoadProcedure-2.2.0.xsd">
+    </None>
+    <None Include="Schemas\MapDefinition-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\PlatformCommon-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\PrintLayout-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\RepositoryContent-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\RepositoryList-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\ResourceDataList-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\ResourceDocumentHeader-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\ResourceFolderHeader-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\ResourceList-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\ResourcePackageManifest-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\ResourceReferenceList-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\ResourceSecurity-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\Role-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\SelectAggregate-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\Server-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\ServerList-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\SiteInformation-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\SiteInformation-2.2.0.xsd">
+    </None>
+    <None Include="Schemas\SiteStatus-2.2.0.xsd">
+    </None>
+    <None Include="Schemas\SiteVersion-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\SiteVersion-2.2.0.xsd">
+    </None>
+    <None Include="Schemas\SqlSelect-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\StringCollection-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\SymbolDefinition-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\SymbolDefinition-1.1.0.xsd">
+    </None>
+    <None Include="Schemas\SymbolLibrary-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\Types-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\UnmanagedDataList-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\User-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\UserList-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\WebLayout-1.0.0.xsd">
+    </None>
+    <None Include="Schemas\WebLayout-1.1.0.xsd">
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ConnectionProviders.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ObjectModels\readme.txt" />
+    <None Include="Resources\BaseTemplate.ApplicationDefinition.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

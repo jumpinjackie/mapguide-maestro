@@ -1,2 +1,0 @@
-Using Coordinate System Overrides
----------------------------------

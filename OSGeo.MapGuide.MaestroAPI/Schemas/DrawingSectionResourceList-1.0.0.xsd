@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="DrawingSectionResourceList-1.0.0.xsd"/>
+  <xs:element name="DrawingSectionResourceList">
+    <xs:annotation>
+      <xs:documentation>Drawing Section Resource list</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SectionResource">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Href" type="xs:string"/>
+              <xs:element name="Role" type="xs:string"/>
+              <xs:element name="Mime" type="xs:string"/>
+              <xs:element name="Title" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

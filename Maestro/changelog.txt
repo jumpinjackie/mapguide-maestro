@@ -1,0 +1,94 @@
+﻿Test Build 4
+------------
+ - Added drag/drop package loading
+ - Added resource re-pointer function as suggested by Jason Birch
+ - Added warnings about tiled map invalidation when saving any possible affected resource
+ - Add API to create runtime map and infer the meters-per-unit value. Uses TF.net for HTTP implementation and MgCoordinateSystem for Local implementation
+ - Resource Data UI prompts confirmation on delete and when downloading, will show the downloaded location.
+ - Fix layer up/down drag/drop reordering in Map Definition editor
+ - Fix Coodinate System not being set in SHP load procedure editor
+ - Fix feature source extension nodes not being deleted on remove
+ - Improve validation performance by skipping already validated resources and caching commonly accessed objects.
+ - More fusion editor progress:
+    - Drag/drop map support
+    - Remaining missing functionality:
+       - Add/Remove/Edit containers
+       - Widget set configuration
+		  - Add new widget from WidgetInfo
+		  - Edit widget parameters
+		  - Remove widget from widget set
+
+Test Build 3
+------------
+
+ - Migrated: Runtime Map API, with batched layer loading support improving create performance
+ - Specialized SQLite editor
+ - Partially migrated Fusion editor w/ Commerical Map Layer support
+ - API: Resource change events for IResourceService
+ - API: IGetResourceContents custom command
+
+Test Build 2
+------------
+
+ - Drag and drop support
+   - Create feature sources from dropped SDF/SHP/SQLite files
+   - Create matching resource from dropped XML document
+ - Migrated: MgCooker.exe
+ - Migrated: Offical MapGuide API support.
+ - Migrated: Server Status Monitor
+ - Added drag/drop support for Resource Data UI
+ - New validation rules for DWF-based layers
+ - Make creating a new resource remember where you right-click so speed up the saving process.
+ - Resource Dialog fixes and UX enhancements
+ - Mono fixes related to XML and UI sizing.
+ - Added inter-server migration tools
+	- Move/Copy resources to a folder on another server with option to overwrite existing resources
+	- Copy selected resource (and its dependencies) to the same path on another server, with choices of which dependent resources to copy and whether to overwrite existing resources.
+
+Test Build 1
+------------
+
+First public preview release of Maestro 3.0.
+ 
+ - Redesigned User Interface
+	- Now driven by the SharpDevelop Core framework
+		- Allows for easy customization of user interfaces.
+		- AddIn infrastructure allows for easy addition of new functionality.	 
+	- Site Explorer now uses the TreeViewAdv control, allowing for multiple selections and commands that operate on multiple selected resources. This control is compatible with Mono.
+		- Some example commands which were previously not possible.
+			- Delete selected resources
+			- Validate selected resources
+			- Package selected resources
+ - Rewritten resource editor infrastructure
+	- One editor per resource type / version
+	- Uses the INotifyPropertyChanged databinding infrastructure
+	- Allow for upgrades to newer versions of a resource type (eg. LayerDefinition 1.0.0 to LayerDefinition 1.3.0). Upgrades are manual and explicit, with a firefox-style notification bar to indicate whether a resource can be upgraded.
+	- Resources types and/or versions without a specialized editor default to the XML editor.
+	- Support for browsing Symbol Libraries
+	- Flexible new resource templates
+	- New specialized editors for
+		- Drawing Source
+		- Print Layout
+	- Enhancements to existing specialized editors
+		- Web Layout
+			- Support for importing/exporting custom commands.
+	- Editor library can be used outside of Maestro.exe as long as you implement the core service interfaces (IResourceService, IFeatureService)
+ - Redesigned core API
+	- ServerConnectionI -> IServerConnection
+		- Connection interface is now separated into service specific sub-interfaces
+			- IResourceService
+			- IFeatureService
+			- etc.
+	- Cleaner resource object model
+		- All top-level resource classes implement a common IResource interface
+		- Base library includes resource classes generated from v1.0.0 xsd schemas.
+		- Classes generated from newer xsd schemas reside in their own separate assembly.
+	- New connections capabilities API
+		- Allows interrogation of supported features/commands depending on implementation and mapguide server version.
+	- Custom command API
+		- Allows for custom functionality which may only work for newer versions of MapGuide.
+ - Other New Features and Changes
+	- Load Procedure validation support
+	- API and UI support for listening to outbound requests. You can now view outbound requests of your MapGuide Server connections
+	- Validation no longer logs redundant messages. All errors, warnings and other messages are unique for each resource being validated. You won't get repeats
+ 

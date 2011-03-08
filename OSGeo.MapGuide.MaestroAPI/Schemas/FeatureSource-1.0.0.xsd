@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="PlatformCommon-1.0.0.xsd"/>
+  <xs:element name="FeatureSource" type="FeatureSourceType">
+    <xs:annotation>
+      <xs:documentation>Describes the information needed to connect to a feature source</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="FeatureSourceType">
+    <xs:sequence>
+      <xs:element name="Provider" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Name of provider</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Parameter" type="NameValuePairType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Collection of name value pairs for connecting to a data source</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SupplementalSpatialContextInfo" type="SpatialContextType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Additional information for a spatial context when the coordinate system is missing from the feature source</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ConfigurationDocument" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Configuration information needed for certain providers</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LongTransaction" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The long transaction to use when connected to the provider</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Extension" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>A set of extensions for the data source information</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="CalculatedProperty" type="CalculatedPropertyType" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Zero or more calculated properties from attributes from the same feature class</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="AttributeRelate" type="AttributeRelateType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Name" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Name of the extension</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="FeatureClass" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>The feature class that is being extended; this is the class whose attributes are used for joining other attribute classes</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="version" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>Version number of this schema</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="NameValuePairType">
+    <xs:annotation>
+      <xs:documentation>A type describing name and value pairs</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Text for the name of parameter</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Value" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Text for value of parameter</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="RelateTypeEnum">
+    <xs:annotation>
+      <xs:documentation>Enum for join types</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LeftOuter"/>
+      <xs:enumeration value="RightOuter"/>
+      <xs:enumeration value="Inner"/>
+      <xs:enumeration value="Association"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="CalculatedPropertyType">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Name of property</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Expression" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Expression for the property</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RelatePropertyType">
+    <xs:sequence>
+      <xs:element name="FeatureClassProperty" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Name of property (field) in feature class </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AttributeClassProperty" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Name of property (field) in attribute class</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttributeRelateType">
+    <xs:sequence>
+      <xs:element name="RelateProperty" type="RelatePropertyType" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Array of pairs of feature class properties (fields) and attribute class properties (fields) that define a join</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AttributeClass" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Name of class the feature class is joined to</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ResourceId" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Identifies the resource id of the attribute class</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Name of the relationship that defines a join</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AttributeNameDelimiter" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Delimiter symbol to be used by the UI to present an extended attribute</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RelateType" type="RelateTypeEnum" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Type of the join</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ForceOneToOne" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Force 1 : 1 in the case of 1 : many </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SpatialContextType">
+    <xs:annotation>
+      <xs:documentation>A type describing spatial context for this feature source</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Name of the spatial context</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CoordinateSystem" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Coordinate system used for this spatial context</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:simpleType name="EmptyType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VersionType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d+\.\d+\.\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PasswordType">
+    <xs:union memberTypes="EmptyType">
+      <xs:simpleType>
+        <xs:restriction base="xs:hexBinary">
+          <xs:minLength value="8"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="IpAddressType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d+\.\d+\.\d+.\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

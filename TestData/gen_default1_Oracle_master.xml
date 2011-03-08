@@ -1,0 +1,2556 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<fdo:DataStore xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" xmlns:fdo="http://fdo.osgeo.org/schemas" xmlns:fds="http://fdo.osgeo.org/schemas/fds">
+<gml:DerivedCRS gml:id="sc_1">
+<gml:metaDataProperty>
+<gml:GenericMetaData>
+<fdo:XYTolerance>
+0.001000</fdo:XYTolerance>
+</gml:GenericMetaData>
+</gml:metaDataProperty>
+<gml:remarks>
+Spatial context from Oracle metadata</gml:remarks>
+<gml:srsName>
+sc_1</gml:srsName>
+<gml:validArea>
+<gml:boundingBox>
+<gml:pos>
+-2000000.000000 -2000000.000000</gml:pos>
+<gml:pos>
+2000000.000000 2000000.000000</gml:pos>
+</gml:boundingBox>
+</gml:validArea>
+<gml:baseCRS xlink:href="http://fdo.osgeo.org/crs#default_cartesian"/>
+<gml:definedByConversion xlink:href="http://fdo.osgeo.org/coord_conversions#identity"/>
+<gml:derivedCRSType codeSpace="http://fdo.osgeo.org/crs_types">
+geographic</gml:derivedCRSType>
+<gml:usesCS xlink:href="http://fdo.osgeo.org/cs#default_cartesian"/>
+</gml:DerivedCRS>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fdo.osgeo.org/schemas/feature/AutoGen" xmlns:fdo="http://fdo.osgeo.org/schemas" xmlns:gml="http://www.opengis.net/gml" xmlns:AutoGen="http://fdo.osgeo.org/schemas/feature/AutoGen" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType name="RAWTABLE1Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:complexType>
+<xs:element name="RAWTABLE2" type="AutoGen:RAWTABLE2Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="RAWTABLE2Key">
+<xs:selector xpath=".//RAWTABLE2"/>
+<xs:field xpath="ID"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="RAWTABLE2Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="RTABLE1" type="AutoGen:RTABLE1Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="RTABLE1Key">
+<xs:selector xpath=".//RTABLE1"/>
+<xs:field xpath="ID"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="RTABLE1Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="FK_RTABLE1_TABLE1" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="TABLE1_ID012345678901234567890">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="AutoGen_RTABLE1_FK_RTABLE1_TABLE1" refer="AutoGen:TABLE1_RTABLE1AKey">
+<xs:selector xpath=".//RTABLE1"/>
+<xs:field xpath="ID3456789012345678901234567890"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="ID">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TABLE1_ID012345678901234567890">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="RTABLE2" type="AutoGen:RTABLE2Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="RTABLE2Key">
+<xs:selector xpath=".//RTABLE2"/>
+<xs:field xpath="ID"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="RTABLE2Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="FK_RTABLE2_TABLE1" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="TABLE1_ID">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="AutoGen_RTABLE2_FK_RTABLE2_TABLE1" refer="AutoGen:TABLE1_RTABLE2AKey">
+<xs:selector xpath=".//RTABLE2"/>
+<xs:field xpath="ID3456789012345678901234567890"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="FK_RTABLE2_TABLE3" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="TABLE3_KEY1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TABLE3_KEY2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="AutoGen_RTABLE2_FK_RTABLE2_TABLE3" refer="AutoGen:TABLE3_RTABLE2AKey">
+<xs:selector xpath=".//RTABLE2"/>
+<xs:field xpath="KEY1"/>
+<xs:field xpath="KEY2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="ID">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TABLE1_ID">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TABLE3_KEY1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TABLE3_KEY2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="RTABLE5" type="AutoGen:RTABLE5Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="RTABLE5Key">
+<xs:selector xpath=".//RTABLE5"/>
+<xs:field xpath="ID"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="RTABLE5Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value="2"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TABLE5_ID">
+<xs:simpleType>
+<xs:restriction base="xs:double"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="RTABLE6" type="AutoGen:RTABLE6Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="RTABLE6Key">
+<xs:selector xpath=".//RTABLE6"/>
+<xs:field xpath="ID"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="RTABLE6Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value="2"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TABLE6_ID1">
+<xs:simpleType>
+<xs:restriction base="xs:double"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="TABLE6_ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="RTABLE7" type="AutoGen:RTABLE7Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="RTABLE7Key">
+<xs:selector xpath=".//RTABLE7"/>
+<xs:field xpath="ID"/>
+</xs:key>
+<xs:unique name="RTABLE7Key_0">
+<xs:selector xpath=".//RTABLE7"/>
+<xs:field xpath="TABLE7_ID12345678901234567890"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="RTABLE7Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="FK_RTABLE7_TABLE7" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="TABLE7_ID12345678901234567890">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="20"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="AutoGen_RTABLE7_FK_RTABLE7_TABLE7" refer="AutoGen:TABLE7_RTABLE7AKey">
+<xs:selector xpath=".//RTABLE7"/>
+<xs:field xpath="ID"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="ID">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="20"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TABLE7_ID12345678901234567890">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="20"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="TABLE1" type="AutoGen:TABLE1Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="TABLE1Key">
+<xs:selector xpath=".//TABLE1"/>
+<xs:field xpath="ID3456789012345678901234567890"/>
+</xs:key>
+<xs:key name="TABLE1_RTABLE1AKey">
+<xs:selector xpath=".//AutoGen"/>
+<xs:field xpath="ID3456789012345678901234567890"/>
+</xs:key>
+<xs:key name="TABLE1_RTABLE2AKey">
+<xs:selector xpath=".//AutoGen"/>
+<xs:field xpath="ID3456789012345678901234567890"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="TABLE1Type" abstract="false" fdo:hasGeometry="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="gml:AbstractFeatureType">
+<xs:sequence>
+<xs:element name="BINARY_DOUBLE_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:double"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="BINARY_FLOAT_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:float"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="BLOB_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:hexBinary"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="BOOL_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="1"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="BYTE_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="3"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="DECIMAL_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value="5"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="DOUBLE_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:double"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="FLOAT_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:double"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="GEOM_COLUMN_2D_MEASURE" type="gml:AbstractGeometryType" fdo:hasMeasure="false" fdo:hasElevation="false" fdo:srsName="sc_1" fdo:geometricTypes="point curve surface " fdo:geometryTypes="point multipoint linestring multilinestring curvestring multicurvestring polygon multipolygon curvepolygon multicurvepolygon ">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="GEOM_COLUMN_3D" type="gml:AbstractGeometryType" fdo:hasMeasure="false" fdo:hasElevation="true" fdo:srsName="Default" fdo:geometricTypes="point curve surface " fdo:geometryTypes="point multipoint linestring multilinestring curvestring multicurvestring polygon multipolygon curvepolygon multicurvepolygon ">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="GEOM_COLUMN_3D_MEASURE" type="gml:AbstractGeometryType" fdo:hasMeasure="false" fdo:hasElevation="true" fdo:srsName="Default" fdo:geometricTypes="point curve surface " fdo:geometryTypes="point multipoint linestring multilinestring curvestring multicurvestring polygon multipolygon curvepolygon multicurvepolygon ">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="ID3456789012345678901234567890">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="INSERT_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="25"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="INT16_COLUMN345678901234567890" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="5"/>
+<xs:fractionDigits value=""/>
+<xs:maxExclusive value="20000"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="INT32_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="INT64_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="20"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="INTERVAL_DAY_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="INTERVAL_YEAR_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="LONG_STRING" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="4000"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NCHAR_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NEW_GEOM_COLUMN" type="gml:AbstractGeometryType" fdo:hasMeasure="false" fdo:hasElevation="false" fdo:srsName="sc_1" fdo:geometricTypes="point curve surface " fdo:geometryTypes="point multipoint linestring multilinestring curvestring multicurvestring polygon multipolygon curvepolygon multicurvepolygon ">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="NVARCHAR_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="5"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="OBJECT_NAME" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="30"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="SINGLE_CHAR_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="SINGLE_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:double"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="TIMESTAMP_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="TABLE3" type="AutoGen:TABLE3Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="TABLE3Key">
+<xs:selector xpath=".//TABLE3"/>
+<xs:field xpath="KEY1"/>
+<xs:field xpath="KEY2"/>
+</xs:key>
+<xs:key name="TABLE3_RTABLE2AKey">
+<xs:selector xpath=".//AutoGen"/>
+<xs:field xpath="KEY1"/>
+<xs:field xpath="KEY2"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="TABLE3Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="DOUBLE_COLUMN" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:double"/>
+</xs:simpleType>
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="KEY1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="KEY2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="TABLE4" type="AutoGen:TABLE4Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="TABLE4Key">
+<xs:selector xpath=".//TABLE4"/>
+<xs:field xpath="ID"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="TABLE4Type" abstract="false" fdo:geometryName="GEOM_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="gml:AbstractFeatureType">
+<xs:sequence>
+<xs:element name="GEOM_COLUMN" type="gml:AbstractGeometryType" fdo:hasMeasure="false" fdo:hasElevation="true" fdo:srsName="Default" fdo:geometricTypes="point curve surface " fdo:geometryTypes="point multipoint linestring multilinestring curvestring multicurvestring polygon multipolygon curvepolygon multicurvepolygon ">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="ID">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="INT16_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="5"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="TABLE5" type="AutoGen:TABLE5Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="TABLE5Key">
+<xs:selector xpath=".//TABLE5"/>
+<xs:field xpath="ID"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="TABLE5Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value="2"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="TABLE6" type="AutoGen:TABLE6Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="TABLE6Key">
+<xs:selector xpath=".//TABLE6"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="TABLE6Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value="2"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="TABLE7" type="AutoGen:TABLE7Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="TABLE7Key">
+<xs:selector xpath=".//TABLE7"/>
+<xs:field xpath="ID"/>
+</xs:key>
+<xs:key name="TABLE7_RTABLE7AKey">
+<xs:selector xpath=".//AutoGen"/>
+<xs:field xpath="ID"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="TABLE7Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="20"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLE1" type="AutoGen:VERTABLE1Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLE1Key">
+<xs:selector xpath=".//VERTABLE1"/>
+<xs:field xpath="ID1"/>
+</xs:key>
+<xs:unique name="VERTABLE1Key_0">
+<xs:selector xpath=".//VERTABLE1"/>
+<xs:field xpath="NAME"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="VERTABLE1Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+<xs:maxExclusive value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="VERTABLE1_VERTABLELOOKUP1" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="AutoGen_VERTABLE1_VERTABLE1_VERTABLELOOKUP1" refer="AutoGen:VERTABLELOOKUP1_VERTABLE1AKey">
+<xs:selector xpath=".//VERTABLE1"/>
+<xs:field xpath="ID2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="VERTABLE1_VERTABLELOOKUPB1" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="IDB1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="AutoGen_VERTABLE1_VERTABLE1_VERTABLELOOKUPB1" refer="AutoGen:VERTABLELOOKUPB1_VERTABLE1AKey">
+<xs:selector xpath=".//VERTABLE1"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:keyref>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLE2" type="AutoGen:VERTABLE2Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLE2Key">
+<xs:selector xpath=".//VERTABLE2"/>
+<xs:field xpath="ID1"/>
+</xs:key>
+<xs:unique name="VERTABLE2Key_0">
+<xs:selector xpath=".//VERTABLE2"/>
+<xs:field xpath="NAME"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="VERTABLE2Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+<xs:maxExclusive value="2"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="VERTABLE2_VERTABLELOOKUP2" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="AutoGen_VERTABLE2_VERTABLE2_VERTABLELOOKUP2" refer="AutoGen:VERTABLELOOKUP2_VERTABLE2AKey">
+<xs:selector xpath=".//VERTABLE2"/>
+<xs:field xpath="ID2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="VERTABLE2_VERTABLELOOKUPB2" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="IDB1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="AutoGen_VERTABLE2_VERTABLE2_VERTABLELOOKUPB2" refer="AutoGen:VERTABLELOOKUPB2_VERTABLE2AKey">
+<xs:selector xpath=".//VERTABLE2"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:keyref>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLE3" type="AutoGen:VERTABLE3Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLE3Key">
+<xs:selector xpath=".//VERTABLE3"/>
+<xs:field xpath="ID1"/>
+</xs:key>
+<xs:unique name="VERTABLE3Key_0">
+<xs:selector xpath=".//VERTABLE3"/>
+<xs:field xpath="NAME"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="VERTABLE3Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+<xs:maxExclusive value="3"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="VERTABLE3_VERTABLELOOKUP3" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="AutoGen_VERTABLE3_VERTABLE3_VERTABLELOOKUP3" refer="AutoGen:VERTABLELOOKUP3_VERTABLE3AKey">
+<xs:selector xpath=".//VERTABLE3"/>
+<xs:field xpath="ID2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="VERTABLE3_VERTABLELOOKUPB3" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="IDB1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="AutoGen_VERTABLE3_VERTABLE3_VERTABLELOOKUPB3" refer="AutoGen:VERTABLELOOKUPB3_VERTABLE3AKey">
+<xs:selector xpath=".//VERTABLE3"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:keyref>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLE4" type="AutoGen:VERTABLE4Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLE4Key">
+<xs:selector xpath=".//VERTABLE4"/>
+<xs:field xpath="ID1"/>
+</xs:key>
+<xs:unique name="VERTABLE4Key_0">
+<xs:selector xpath=".//VERTABLE4"/>
+<xs:field xpath="ID2"/>
+<xs:field xpath="IDB1"/>
+<xs:field xpath="IDB2"/>
+</xs:unique>
+<xs:unique name="VERTABLE4Key_1">
+<xs:selector xpath=".//VERTABLE4"/>
+<xs:field xpath="NAME"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="VERTABLE4Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+<xs:maxExclusive value="4"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="VERTABLE4_VERTABLELOOKUP4" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="AutoGen_VERTABLE4_VERTABLE4_VERTABLELOOKUP4" refer="AutoGen:VERTABLELOOKUP4_VERTABLE4AKey">
+<xs:selector xpath=".//VERTABLE4"/>
+<xs:field xpath="ID2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="VERTABLE4_VERTABLELOOKUPB4" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="IDB1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="AutoGen_VERTABLE4_VERTABLE4_VERTABLELOOKUPB4" refer="AutoGen:VERTABLELOOKUPB4_VERTABLE4AKey">
+<xs:selector xpath=".//VERTABLE4"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:keyref>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLE5" type="AutoGen:VERTABLE5Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLE5Key">
+<xs:selector xpath=".//VERTABLE5"/>
+<xs:field xpath="ID1"/>
+</xs:key>
+<xs:unique name="VERTABLE5Key_0">
+<xs:selector xpath=".//VERTABLE5"/>
+<xs:field xpath="ID2"/>
+<xs:field xpath="IDB1"/>
+<xs:field xpath="IDB2"/>
+</xs:unique>
+<xs:unique name="VERTABLE5Key_1">
+<xs:selector xpath=".//VERTABLE5"/>
+<xs:field xpath="NAME"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="VERTABLE5Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+<xs:maxExclusive value="5"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="VERTABLE5_VERTABLELOOKUP5" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="AutoGen_VERTABLE5_VERTABLE5_VERTABLELOOKUP5" refer="AutoGen:VERTABLELOOKUP5_VERTABLE5AKey">
+<xs:selector xpath=".//VERTABLE5"/>
+<xs:field xpath="ID2"/>
+</xs:keyref>
+</xs:element>
+<xs:element name="VERTABLE5_VERTABLELOOKUPB5" minOccurs="0" maxOccurs="1" fdo:multiplicity="" fdo:deleteRule="Break" fdo:defaultIdentity="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="IDB1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="IDB2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:keyref name="AutoGen_VERTABLE5_VERTABLE5_VERTABLELOOKUPB5" refer="AutoGen:VERTABLELOOKUPB5_VERTABLE5AKey">
+<xs:selector xpath=".//VERTABLE5"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:keyref>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLELOOKUP1" type="AutoGen:VERTABLELOOKUP1Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLELOOKUP1Key">
+<xs:selector xpath=".//VERTABLELOOKUP1"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:key name="VERTABLELOOKUP1_VERTABLE1AKey">
+<xs:selector xpath=".//AutoGen"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:unique name="VERTABLELOOKUP1Key_0">
+<xs:selector xpath=".//VERTABLELOOKUP1"/>
+<xs:field xpath="NAME"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="VERTABLELOOKUP1Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLELOOKUP2" type="AutoGen:VERTABLELOOKUP2Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLELOOKUP2Key">
+<xs:selector xpath=".//VERTABLELOOKUP2"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:key name="VERTABLELOOKUP2_VERTABLE2AKey">
+<xs:selector xpath=".//AutoGen"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:unique name="VERTABLELOOKUP2Key_0">
+<xs:selector xpath=".//VERTABLELOOKUP2"/>
+<xs:field xpath="NAME"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="VERTABLELOOKUP2Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLELOOKUP3" type="AutoGen:VERTABLELOOKUP3Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLELOOKUP3Key">
+<xs:selector xpath=".//VERTABLELOOKUP3"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:key name="VERTABLELOOKUP3_VERTABLE3AKey">
+<xs:selector xpath=".//AutoGen"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:unique name="VERTABLELOOKUP3Key_0">
+<xs:selector xpath=".//VERTABLELOOKUP3"/>
+<xs:field xpath="NAME"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="VERTABLELOOKUP3Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLELOOKUP4" type="AutoGen:VERTABLELOOKUP4Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLELOOKUP4Key">
+<xs:selector xpath=".//VERTABLELOOKUP4"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:key name="VERTABLELOOKUP4_VERTABLE4AKey">
+<xs:selector xpath=".//AutoGen"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:unique name="VERTABLELOOKUP4Key_0">
+<xs:selector xpath=".//VERTABLELOOKUP4"/>
+<xs:field xpath="NAME"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="VERTABLELOOKUP4Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLELOOKUP5" type="AutoGen:VERTABLELOOKUP5Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLELOOKUP5Key">
+<xs:selector xpath=".//VERTABLELOOKUP5"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:key name="VERTABLELOOKUP5_VERTABLE5AKey">
+<xs:selector xpath=".//AutoGen"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:unique name="VERTABLELOOKUP5Key_0">
+<xs:selector xpath=".//VERTABLELOOKUP5"/>
+<xs:field xpath="NAME"/>
+</xs:unique>
+</xs:element>
+<xs:complexType name="VERTABLELOOKUP5Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLELOOKUPB1" type="AutoGen:VERTABLELOOKUPB1Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLELOOKUPB1Key">
+<xs:selector xpath=".//VERTABLELOOKUPB1"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:key name="VERTABLELOOKUPB1_VERTABLE1AKey">
+<xs:selector xpath=".//AutoGen"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VERTABLELOOKUPB1Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLELOOKUPB2" type="AutoGen:VERTABLELOOKUPB2Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLELOOKUPB2Key">
+<xs:selector xpath=".//VERTABLELOOKUPB2"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:key name="VERTABLELOOKUPB2_VERTABLE2AKey">
+<xs:selector xpath=".//AutoGen"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VERTABLELOOKUPB2Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLELOOKUPB3" type="AutoGen:VERTABLELOOKUPB3Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLELOOKUPB3Key">
+<xs:selector xpath=".//VERTABLELOOKUPB3"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:key name="VERTABLELOOKUPB3_VERTABLE3AKey">
+<xs:selector xpath=".//AutoGen"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VERTABLELOOKUPB3Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLELOOKUPB4" type="AutoGen:VERTABLELOOKUPB4Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLELOOKUPB4Key">
+<xs:selector xpath=".//VERTABLELOOKUPB4"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:key name="VERTABLELOOKUPB4_VERTABLE4AKey">
+<xs:selector xpath=".//AutoGen"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VERTABLELOOKUPB4Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERTABLELOOKUPB5" type="AutoGen:VERTABLELOOKUPB5Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERTABLELOOKUPB5Key">
+<xs:selector xpath=".//VERTABLELOOKUPB5"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+<xs:key name="VERTABLELOOKUPB5_VERTABLE5AKey">
+<xs:selector xpath=".//AutoGen"/>
+<xs:field xpath="ID1"/>
+<xs:field xpath="ID2"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VERTABLELOOKUPB5Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="ID2">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERVIEW1" type="AutoGen:VERVIEW1Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERVIEW1Key">
+<xs:selector xpath=".//VERVIEW1"/>
+<xs:field xpath="ID1"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VERVIEW1Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERVIEW2" type="AutoGen:VERVIEW2Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERVIEW2Key">
+<xs:selector xpath=".//VERVIEW2"/>
+<xs:field xpath="ID1"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VERVIEW2Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERVIEW3" type="AutoGen:VERVIEW3Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERVIEW3Key">
+<xs:selector xpath=".//VERVIEW3"/>
+<xs:field xpath="ID1"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VERVIEW3Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERVIEW4" type="AutoGen:VERVIEW4Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERVIEW4Key">
+<xs:selector xpath=".//VERVIEW4"/>
+<xs:field xpath="ID1"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VERVIEW4Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERVIEW5" type="AutoGen:VERVIEW5Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERVIEW5Key">
+<xs:selector xpath=".//VERVIEW5"/>
+<xs:field xpath="ID1"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VERVIEW5Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="ID1">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VERVIEWB1" type="AutoGen:VERVIEWB1Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERVIEWB1Key">
+<xs:selector xpath=".//VERVIEWB1"/>
+<xs:field xpath="NAME"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VERVIEWB1Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="VERVIEWB2Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="VERVIEWB3" type="AutoGen:VERVIEWB3Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERVIEWB3Key">
+<xs:selector xpath=".//VERVIEWB3"/>
+<xs:field xpath="NAME"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VERVIEWB3Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="VERVIEWB4Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="VERVIEWB5" type="AutoGen:VERVIEWB5Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VERVIEWB5Key">
+<xs:selector xpath=".//VERVIEWB5"/>
+<xs:field xpath="NAME"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VERVIEWB5Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="NAME">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VIEW1" type="AutoGen:VIEW1Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VIEW1Key">
+<xs:selector xpath=".//VIEW1"/>
+<xs:field xpath="ID3456789012345678901234567890"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VIEW1Type" abstract="false">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="fdo:ClassType">
+<xs:sequence>
+<xs:element name="BYTE_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="3"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="DEC_COL_RENAME" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value="5"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="ID3456789012345678901234567890">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VIEW3" type="AutoGen:VIEW3Type" abstract="false" substitutionGroup="gml:_Feature">
+<xs:key name="VIEW3Key">
+<xs:selector xpath=".//VIEW3"/>
+<xs:field xpath="STRING_COLUMN"/>
+</xs:key>
+</xs:element>
+<xs:complexType name="VIEW3Type" abstract="false" fdo:geometryName="GEOM_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="gml:AbstractFeatureType">
+<xs:sequence>
+<xs:element name="GEOM_COLUMN" type="gml:AbstractGeometryType" fdo:hasMeasure="false" fdo:hasElevation="true" fdo:srsName="Default" fdo:geometricTypes="point curve surface " fdo:geometryTypes="point multipoint linestring multilinestring curvestring multicurvestring polygon multipolygon curvepolygon multicurvepolygon ">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+</xs:element>
+<xs:element name="ID">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="10"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="INT16_COLUMN" minOccurs="0">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="5"/>
+<xs:fractionDigits value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="STRING_COLUMN">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>
+</fdo:DataStore>

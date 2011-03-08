@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="FeatureProviderCapabilities" type="FdoProviderCapabilities"/>
+  <xs:complexType name="FdoProviderCapabilities">
+    <xs:sequence>
+      <xs:element name="Provider">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="Name" type="xs:string" use="required"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Connection" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ThreadCapability">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="SingleThreaded"/>
+                  <xs:enumeration value="PerConnectionThreaded"/>
+                  <xs:enumeration value="PerCommandThreaded"/>
+                  <xs:enumeration value="MultiThreaded"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="SpatialContextExtent">
+              <xs:annotation>
+                <xs:documentation>Static or Dynamic. Could be enumeration here.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Type" maxOccurs="unbounded">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Static"/>
+                        <xs:enumeration value="Dynamic"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SupportsLocking" type="xs:boolean"/>
+            <xs:element name="SupportsTimeout" type="xs:boolean"/>
+            <xs:element name="SupportsTransactions" type="xs:boolean"/>
+            <xs:element name="SupportsLongTransactions" type="xs:boolean"/>
+            <xs:element name="SupportsSQL" type="xs:boolean"/>
+            <xs:element name="SupportsConfiguration" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Schema" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Class">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Type" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation>Class or FeatureClass enum value here</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Class"/>
+                        <xs:enumeration value="FeatureClass"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Data">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Type" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation>Enum of data types  Boolean, Byte, DateTime, Decimal, Double, Int16, Int32, Int64, Single, String, BLOB, CLOB, UniqueID  </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Boolean"/>
+                        <xs:enumeration value="Byte"/>
+                        <xs:enumeration value="DateTime"/>
+                        <xs:enumeration value="Decimal"/>
+                        <xs:enumeration value="Double"/>
+                        <xs:enumeration value="Int16"/>
+                        <xs:enumeration value="Int32"/>
+                        <xs:enumeration value="Int64"/>
+                        <xs:enumeration value="Single"/>
+                        <xs:enumeration value="String"/>
+                        <xs:enumeration value="BLOB"/>
+                        <xs:enumeration value="CLOB"/>
+                        <xs:enumeration value="UniqueID"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SupportsInheritance" type="xs:boolean"/>
+            <xs:element name="SupportsMultipleSchemas" type="xs:boolean"/>
+            <xs:element name="SupportsObjectProperties" type="xs:boolean"/>
+            <xs:element name="SupportsAssociationProperties" type="xs:boolean"/>
+            <xs:element name="SupportsSchemaOverrides" type="xs:boolean"/>
+            <xs:element name="SupportsNetworkModel" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Command" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="SupportedCommands">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Name" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation>Following is the possible list of commands
+                        Select,Insert,Delete,Update,DescribeSchema,ApplySchema,DestroySchema,ActivateSpatialContext,CreateSpatialContext,DestroySpatialContext,GetSpatialContexts,
+                        CreateMeasureUnit,DestroyMeasureUnit,GetMeasureUnits,SQLCommand,AcquireLock,GetLockInfo,GetLockedObjects,GetLockOwners,ReleaseLock,
+                        ActivateLongTransaction,CommitLongTransaction,CreateLongTransaction,GetLongTransactions,FreezeLongTransaction,RollbackLongTransaction,
+                        ActivateLongTransactionCheckpoint,CreateLongTransactionCheckpoint,GetLongTransactionCheckpoints,RollbackLongTransactionCheckpoint,
+                        ChangeLongTransactionPrivileges,GetLongTransactionPrivileges,ChangeLongTransactionSet,GetLongTransactionsInSet,FirstProviderCommand
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Select"/>
+                        <xs:enumeration value="Insert"/>
+                        <xs:enumeration value="Delete"/>
+                        <xs:enumeration value="Update"/>
+                        <xs:enumeration value="DescribeSchema"/>
+                        <xs:enumeration value="ApplySchema"/>
+                        <xs:enumeration value="DestroySchema"/>
+                        <xs:enumeration value="ActivateSpatialContext"/>
+                        <xs:enumeration value="CreateSpatialContext"/>
+                        <xs:enumeration value="DestroySpatialContext"/>
+                        <xs:enumeration value="GetSpatialContexts"/>
+                        <xs:enumeration value="CreateMeasureUnit"/>
+                        <xs:enumeration value="DestroyMeasureUnit"/>
+                        <xs:enumeration value="GetMeasureUnits"/>
+                        <xs:enumeration value="SQLCommand"/>
+                        <xs:enumeration value="AcquireLock"/>
+                        <xs:enumeration value="GetLockInfo"/>
+                        <xs:enumeration value="GetLockedObjects"/>
+                        <xs:enumeration value="GetLockOwners"/>
+                        <xs:enumeration value="ReleaseLock"/>
+                        <xs:enumeration value="ActivateLongTransaction"/>
+                        <xs:enumeration value="CommitLongTransaction"/>
+                        <xs:enumeration value="CreateLongTransaction"/>
+                        <xs:enumeration value="GetLongTransactions"/>
+                        <xs:enumeration value="FreezeLongTransaction"/>
+                        <xs:enumeration value="RollbackLongTransaction"/>
+                        <xs:enumeration value="ActivateLongTransactionCheckpoint"/>
+                        <xs:enumeration value="CreateLongTransactionCheckpoint"/>
+                        <xs:enumeration value="GetLongTransactionCheckpoints"/>
+                        <xs:enumeration value="RollbackLongTransactionCheckpoint"/>
+                        <xs:enumeration value="ChangeLongTransactionPrivileges"/>
+                        <xs:enumeration value="GetLongTransactionPrivileges"/>
+                        <xs:enumeration value="ChangeLongTransactionSet"/>
+                        <xs:enumeration value="GetLongTransactionsInSet"/>
+                        <xs:enumeration value="FirstProviderCommand"/>
+                        <xs:enumeration value="DeactivateLongTransaction"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SupportsParameters" type="xs:boolean"/>
+            <xs:element name="SupportsTimeout" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Filter" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Condition" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Type" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation>List of ConditionType is as follows: Comparison,Like,In,Null,Spatial,Distance</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Comparison"/>
+                        <xs:enumeration value="Like"/>
+                        <xs:enumeration value="In"/>
+                        <xs:enumeration value="Null"/>
+                        <xs:enumeration value="Spatial"/>
+                        <xs:enumeration value="Distance"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Spatial" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Operation" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation>List of spatial operations : Contains,Crosses, Disjoint,Equals, Intersects,Overlaps,Touches,Within, CoveredBy,Inside</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Contains"/>
+                        <xs:enumeration value="Crosses"/>
+                        <xs:enumeration value="Disjoint"/>
+                        <xs:enumeration value="Equals"/>
+                        <xs:enumeration value="Intersects"/>
+                        <xs:enumeration value="Overlaps"/>
+                        <xs:enumeration value="Touches"/>
+                        <xs:enumeration value="Within"/>
+                        <xs:enumeration value="CoveredBy"/>
+                        <xs:enumeration value="Inside"/>
+                        <xs:enumeration value="EnvelopeIntersects"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Distance" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Operation" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation>List of distance operations : Beyond, Within</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Beyond"/>
+                        <xs:enumeration value="Within"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SupportsGeodesicDistance" type="xs:boolean"/>
+            <xs:element name="SupportsNonLiteralGeometricOperations" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Expression" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Type">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Name" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation>List of Expression types are Basic, Function, Parameter</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Basic"/>
+                        <xs:enumeration value="Function"/>
+                        <xs:enumeration value="Parameter"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="FunctionDefinitionList" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="FunctionDefinition" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="Name" type="xs:string"/>
+                        <xs:element name="Description" type="xs:string" minOccurs="0"/>
+                        <xs:element name="ReturnType">
+                          <xs:annotation>
+                            <xs:documentation>Enum of data types  Boolean, Byte, DateTime, Decimal, Double, Int16, Int32, Int64, Single, String, BLOB, CLOB, UniqueID  </xs:documentation>
+                          </xs:annotation>
+                          <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                              <xs:enumeration value="Boolean"/>
+                              <xs:enumeration value="Byte"/>
+                              <xs:enumeration value="DateTime"/>
+                              <xs:enumeration value="Decimal"/>
+                              <xs:enumeration value="Double"/>
+                              <xs:enumeration value="Int16"/>
+                              <xs:enumeration value="Int32"/>
+                              <xs:enumeration value="Int64"/>
+                              <xs:enumeration value="Single"/>
+                              <xs:enumeration value="String"/>
+                              <xs:enumeration value="BLOB"/>
+                              <xs:enumeration value="CLOB"/>
+                              <xs:enumeration value="UniqueID"/>
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="ArgumentDefinitionList" minOccurs="0">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="ArgumentDefinition" maxOccurs="unbounded">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element name="Name" type="xs:string"/>
+                                    <xs:element name="Description" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="DataType">
+                                      <xs:annotation>
+                                        <xs:documentation>Enum of data types  Boolean, Byte, DateTime, Decimal, Double, Int16, Int32, Int64, Single, String, BLOB, CLOB, UniqueID  </xs:documentation>
+                                      </xs:annotation>
+                                      <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                          <xs:enumeration value="Boolean"/>
+                                          <xs:enumeration value="Byte"/>
+                                          <xs:enumeration value="DateTime"/>
+                                          <xs:enumeration value="Decimal"/>
+                                          <xs:enumeration value="Double"/>
+                                          <xs:enumeration value="Int16"/>
+                                          <xs:enumeration value="Int32"/>
+                                          <xs:enumeration value="Int64"/>
+                                          <xs:enumeration value="Single"/>
+                                          <xs:enumeration value="String"/>
+                                          <xs:enumeration value="BLOB"/>
+                                          <xs:enumeration value="CLOB"/>
+                                          <xs:enumeration value="UniqueID"/>
+                                        </xs:restriction>
+                                      </xs:simpleType>
+                                    </xs:element>
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Raster">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="SupportsRaster" type="xs:boolean"/>
+            <xs:element name="SupportsStitching" type="xs:boolean"/>
+            <xs:element name="SupportsSubsampling" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Topology" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="SupportsTopology" type="xs:boolean"/>
+            <xs:element name="SupportsTopologicalHierarchy" type="xs:boolean"/>
+            <xs:element name="BreaksCurveCrossingsAutomatically" type="xs:boolean"/>
+            <xs:element name="ActivatesTopologyByArea" type="xs:boolean"/>
+            <xs:element name="ConstrainsFeatureMovements" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Geometry" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Types">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Type" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation>Enum of geometry types None, Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, MultiGeometry, CurveString, CurvePolygon, MultiCurveString, MultiCurvePolygon</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="None"/>
+                        <xs:enumeration value="Point"/>
+                        <xs:enumeration value="LineString"/>
+                        <xs:enumeration value="Polygon"/>
+                        <xs:enumeration value="MultiPoint"/>
+                        <xs:enumeration value="MultiLineString"/>
+                        <xs:enumeration value="MultiPolygon"/>
+                        <xs:enumeration value="MultiGeometry"/>
+                        <xs:enumeration value="CurveString"/>
+                        <xs:enumeration value="CurvePolygon"/>
+                        <xs:enumeration value="MultiCurveString"/>
+                        <xs:enumeration value="MultiCurvePolygon"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Components">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Type" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation>Enum of geometry component types LinearRing, ArcSegment, LinearSegment, CurveRing</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="LinearRing"/>
+                        <xs:enumeration value="ArcSegment"/>
+                        <xs:enumeration value="LinearSegment"/>
+                        <xs:enumeration value="CurveRing"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Dimensionality" type="xs:integer"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

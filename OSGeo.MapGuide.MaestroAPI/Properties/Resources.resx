@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADF_MapInvalidError" xml:space="preserve">
+    <value>Map with ID {0} does not point to a valid map</value>
+    <comment>An error message that is displayed if there is a MapID that does not reference a valid map</comment>
+  </data>
+  <data name="ADF_MapMissingError" xml:space="preserve">
+    <value>Fusion application does not specify a map</value>
+    <comment>An error message that is displayed if the map is missing</comment>
+  </data>
+  <data name="ADF_MapValidationError" xml:space="preserve">
+    <value>Error validating MapDefinition {0}, message: {1}</value>
+    <comment>An error message that is displayed if an error occurs while validating a map</comment>
+  </data>
+  <data name="ADF_ViewOutsideMapExtents" xml:space="preserve">
+    <value>Fusion application specifies a start view that is outside the map's initial extents</value>
+    <comment>An error message that is displayed if the start view is outside the defined map</comment>
+  </data>
+  <data name="CannotCreateLoadProcedureSubType" xml:space="preserve">
+    <value>Could not create load procedure of type: </value>
+  </data>
+  <data name="CopiedResource" xml:space="preserve">
+    <value>Copied resource: {0}</value>
+  </data>
+  <data name="DS_NoCoordinateSpace" xml:space="preserve">
+    <value>No coordinate system specified. The coordinate system if not specified will default to LL84</value>
+  </data>
+  <data name="DS_NoSourceSpecified" xml:space="preserve">
+    <value>No source DWF file specified</value>
+  </data>
+  <data name="ERR_BAD_DOCUMENT_NO_ROOT_ATTRIBUTES" xml:space="preserve">
+    <value>Bad Document: Expected attributes at the root level node</value>
+  </data>
+  <data name="ERR_CANNOT_DOWNGRADE_OLDER_RESOURCE" xml:space="preserve">
+    <value>Resource cannot be downgraded. It is already older than the version this converter can downgrade to</value>
+  </data>
+  <data name="ERR_CANNOT_UPGRADE_NEWER_RESOURCE" xml:space="preserve">
+    <value>Resource cannot be upgraded. It is already newer than what this converter can upgrade to</value>
+  </data>
+  <data name="ERR_CONVERTER_ALREADY_REGISTERED" xml:space="preserve">
+    <value>A resource converter for {0} is already registered</value>
+  </data>
+  <data name="ERR_FS_NO_ALIAS" xml:space="preserve">
+    <value>This feature source does not connect an externally aliased file</value>
+  </data>
+  <data name="ERR_FS_NO_EMBEDDED_DATA" xml:space="preserve">
+    <value>This feature source does not connect to an embedded data file</value>
+  </data>
+  <data name="ERR_NO_DOWNGRADE_PATH" xml:space="preserve">
+    <value>There is no downgrade path to the desired resource version</value>
+  </data>
+  <data name="ERR_NO_REGISTERED_VALIDATOR" xml:space="preserve">
+    <value>There is no registered validator for {0} v{1}. Validation cannot be performed</value>
+    <comment>A warning message that is displayed if there is no registered validator for the specified resource and version</comment>
+  </data>
+  <data name="ERR_NO_SERIALIZER" xml:space="preserve">
+    <value>Could not find matching serializer for this resource: </value>
+  </data>
+  <data name="ERR_NO_UPGRADE_PATH" xml:space="preserve">
+    <value>There is no upgrade path to the desired resource version</value>
+  </data>
+  <data name="ERR_RESOURCE_NOT_ATTACHED" xml:space="preserve">
+    <value>No connection attached to this resource</value>
+  </data>
+  <data name="ERR_SERIALIZER_ALREADY_REGISTERED" xml:space="preserve">
+    <value>A resource serializer has already been registered for {0} v{1}</value>
+  </data>
+  <data name="FactoryMethodAlreadyRegistered" xml:space="preserve">
+    <value>Factory method already registered for version: </value>
+  </data>
+  <data name="FS_ConnectionTestFailed" xml:space="preserve">
+    <value>Connection test failed</value>
+    <comment>An error message that is displayed if a connection test on the feature source failed</comment>
+  </data>
+  <data name="FS_DefaultSpatialContextWarning" xml:space="preserve">
+    <value>Spatial context extent appears to be invalid (or default)</value>
+    <comment>A warning message that is displayed if the spatial context has the default extent</comment>
+  </data>
+  <data name="FS_EmptySpatialContextWarning" xml:space="preserve">
+    <value>Empty spatial context extent detected</value>
+    <comment>A warning message that is displayed when the spatial context is empty</comment>
+  </data>
+  <data name="FS_NoPrimaryKeyOrView" xml:space="preserve">
+    <value>Could not obtain identity properties for {0}. This class either has no identity properties and/or is derived from a view with no uniquely identifiable columns. Attempting to create feature joins from this class may produce unexpected results.</value>
+    <comment>A warning message that is displayed when we can't obtain identity properties from a class because it is a view</comment>
+  </data>
+  <data name="FS_NoSpatialContextWarning" xml:space="preserve">
+    <value>No spatial contexts found. If this feature source is strictly used for Feature Joins, this warning can be safely ignored</value>
+    <comment>A warning message that is displayed when the featuresource fails to report its spatial context</comment>
+  </data>
+  <data name="FS_PrimaryKeyMissingInformation" xml:space="preserve">
+    <value>No primary key defined for class: {0}, features will not be selectable and feature joins on this class may produce unexpected results</value>
+    <comment>An information message that is displayed if the schema has no primary key defined</comment>
+  </data>
+  <data name="FS_PrimaryKeyReadError" xml:space="preserve">
+    <value>Failed to read identity properties: {0}</value>
+    <comment>An error message that is displayed if the primary key information could not be read</comment>
+  </data>
+  <data name="FS_SchemaReadError" xml:space="preserve">
+    <value>Failed to read schema description: {0}</value>
+    <comment>An error message that is displayed if the schema information could not be read</comment>
+  </data>
+  <data name="FS_SchemasMissingWarning" xml:space="preserve">
+    <value>No schemas found in datasource</value>
+    <comment>A warning message that is displayed if the featuresource has no schemas</comment>
+  </data>
+  <data name="FS_SpatialContextReadError" xml:space="preserve">
+    <value>Failed to read spatial context: {0}</value>
+    <comment>An error message that is displayed if the spatial context could not be read</comment>
+  </data>
+  <data name="LDF_DrawingSourceError" xml:space="preserve">
+    <value>Failed to load specified Drawing Source</value>
+  </data>
+  <data name="LDF_FeatureSourceLoadError" xml:space="preserve">
+    <value>Failed to load specified Feature Source</value>
+    <comment>An error message that is displayed if the featuresource fails to load</comment>
+  </data>
+  <data name="LDF_GeometryMissingError" xml:space="preserve">
+    <value>Failed to find geometry column {0} in schema {1} on featuresource {2}</value>
+    <comment>An error message that is displayed if the geometry is not present in the selected schema</comment>
+  </data>
+  <data name="LDF_LayerNullError" xml:space="preserve">
+    <value>Layer is missing core information</value>
+    <comment>An error message that is displayed if the layer has a null reference</comment>
+  </data>
+  <data name="LDF_MinAndMaxScaleSwappedError" xml:space="preserve">
+    <value>The minimum scale ({0}) is larger than the maximum scale ({1})</value>
+    <comment>An error message that is displayed if the scale ranges are reversed</comment>
+  </data>
+  <data name="LDF_MissingFeatureSourceError" xml:space="preserve">
+    <value>No FeatureSource is assigned to the layer</value>
+    <comment>An error message that is displayed if the layer has no FeatureSource</comment>
+  </data>
+  <data name="LDF_MissingGeometryError" xml:space="preserve">
+    <value>No Geometry is assigned to the layer</value>
+    <comment>An error message that is displayed if the layer has no geometry column selected</comment>
+  </data>
+  <data name="LDF_MissingScaleRangesError" xml:space="preserve">
+    <value>No scale ranges are defined, no data can be displayed</value>
+    <comment>An error message that is displayed if there are no scale ranges defined</comment>
+  </data>
+  <data name="LDF_MultipleScaleRangesWarning" xml:space="preserve">
+    <value>More than one scale ranges is defined, this is valid, but unsupported by Maestro</value>
+    <comment>A warning message that is displayed if a raster layer has multiple scale ranges defined</comment>
+  </data>
+  <data name="LDF_ScaleRangesOverlapInformation" xml:space="preserve">
+    <value>The scale range {0}-{1} overlaps the range {2}-{3}</value>
+    <comment>A warning message that is displayed if two scaleranges overlap</comment>
+  </data>
+  <data name="LDF_SchemaAndColumnReadFailedError" xml:space="preserve">
+    <value>Failed to validate column and schema</value>
+    <comment>An error message that is displayed if the schema and column read fails</comment>
+  </data>
+  <data name="LDF_SchemaMissingError" xml:space="preserve">
+    <value>Failed to find schema {0} in featuresource {1}</value>
+    <comment>An error message that is displayed if the selected schema is not present in the FeatureSource</comment>
+  </data>
+  <data name="LDF_SheetLayerNotFound" xml:space="preserve">
+    <value>Referenced sheet layer {0} not found in sheet {1} of referenced Drawing Source</value>
+  </data>
+  <data name="LDF_SheetNotFound" xml:space="preserve">
+    <value>Referenced sheet {0} not found in referenced Drawing Source</value>
+  </data>
+  <data name="LDF_UnsupportedLayerTypeWarning" xml:space="preserve">
+    <value>The layer has no type, or the type is unsupported by Maestro</value>
+    <comment>A  warning message that is displayed if the layer type is unknown</comment>
+  </data>
+  <data name="LoadProcFactoryMethodAlreadyRegistered" xml:space="preserve">
+    <value>Factory method already registered for load procedure type: </value>
+  </data>
+  <data name="LPROC_ConvertToSdf3NotSupported" xml:space="preserve">
+    <value>Convert to SDF option is not supported by Maestro</value>
+    <comment>A warning message about the lack of SDF conversion support</comment>
+  </data>
+  <data name="LPROC_DWFNotSupported" xml:space="preserve">
+    <value>DWF Load Procedures cannot be executed by Maestro</value>
+    <comment>A warning message indicating the lack of DWF support in Maestro</comment>
+  </data>
+  <data name="LPROC_DWGNotSupported" xml:space="preserve">
+    <value>DWG Load Procedures cannot be executed by Maestro</value>
+    <comment>A warning message indicating the lack of DWG support in Maestro</comment>
+  </data>
+  <data name="LPROC_GeneralizationNotSupported" xml:space="preserve">
+    <value>Generalization of source data is not supported by Maestro</value>
+    <comment>A warning message about the lack of Generalization support</comment>
+  </data>
+  <data name="LPROC_RasterNotSupported" xml:space="preserve">
+    <value>Raster Load Procedures cannot be executed by Maestro</value>
+    <comment>A warning message about the lack of Raster support</comment>
+  </data>
+  <data name="LPROC_Sdf2OptionsNotSupported" xml:space="preserve">
+    <value>SDF 2 Migration options are not supported by Maestro. Ensure your source files are SDF3 files.</value>
+    <comment>A warning message about the lack of SDF2 support</comment>
+  </data>
+  <data name="LPROC_SourceFileNotFound" xml:space="preserve">
+    <value>Source file not found: {0}</value>
+    <comment>An error message indicating that a source file in the load procedure does not exist</comment>
+  </data>
+  <data name="MDF_DataOutsideMapWarning" xml:space="preserve">
+    <value>Data from {0} is not visible in the map's start extent</value>
+    <comment>A warning message that is displayed if a layer reports an extent that is outside the map's extent</comment>
+  </data>
+  <data name="MDF_DataReprojectionWarning" xml:space="preserve">
+    <value>{0} has a different coordinate system than the map, this will impact performance as the coordinates are transformed while rendering the map. Maestro cannot validate the extent of the data.</value>
+    <comment>A warning message that is displayed if a layer reports a coordinate system that differs from the map's.</comment>
+  </data>
+  <data name="MDF_FeatureSourceReadError" xml:space="preserve">
+    <value>Layer {0}'s FeatureSource could not be read: {1}</value>
+    <comment>An error message that is displayed if a FeatureSource fails to load</comment>
+  </data>
+  <data name="MDF_GroupHasDefaultLabelInformation" xml:space="preserve">
+    <value>Group {0} has the default legend label</value>
+    <comment>An information message that is displayed if a group is assigned the default group label</comment>
+  </data>
+  <data name="MDF_GroupMissingLabelInformation" xml:space="preserve">
+    <value>Group {0} does not have a legend label</value>
+    <comment>An information message that is displayed if a group has a blank legend label</comment>
+  </data>
+  <data name="MDF_LayerMissingLabelInformation" xml:space="preserve">
+    <value>Layer {0} does not have a legend label</value>
+    <comment>An information message that is displayed if a layer has a blank legend label</comment>
+  </data>
+  <data name="MDF_LayerNameDuplicateWarning" xml:space="preserve">
+    <value>The layer name {0} is used for both "{1}" and "{2}"</value>
+    <comment>A warning message that is displayed if two layers share the same layer name</comment>
+  </data>
+  <data name="MDF_LayerReadError" xml:space="preserve">
+    <value>Layer {0} could not be read: {1}</value>
+    <comment>An error message that is displayed if a LayerDefinition fails to load</comment>
+  </data>
+  <data name="MDF_MissingLayerGeometryColumnError" xml:space="preserve">
+    <value>Layer {0} has no geometry column</value>
+    <comment>An error message that is displayed if a layer has no geometry column specified</comment>
+  </data>
+  <data name="MDF_MissingLayerSchemaError" xml:space="preserve">
+    <value>Layer {0} has an invalid Schema</value>
+    <comment>An error message that is displayed if the layer has no schema specified</comment>
+  </data>
+  <data name="MDF_MissingSpatialContextWarning" xml:space="preserve">
+    <value>{0} has no spatial context (eg. no coordinate system)</value>
+    <comment>A warning message that is displayed if the FeatureSource reports no spatial context</comment>
+  </data>
+  <data name="MDF_MultipleSpatialContextsInformation" xml:space="preserve">
+    <value>{0} has more than one spatial context, the following test results may be inacurate</value>
+    <comment>An information message that is displayed if a FeatureSource reports multiple spatial contexts</comment>
+  </data>
+  <data name="MDF_RasterReprojectionError" xml:space="preserve">
+    <value>{0} is a raster layer, and in another coordinate system than the map. No data will be displayed by the layer</value>
+    <comment>An error message that is displayed if a raster layer reports a different projection than the map, and the MapGuide server version does not support raster reprojection</comment>
+  </data>
+  <data name="MDF_ResourceReadError" xml:space="preserve">
+    <value>{0} could not be processed for spatial info: {1}</value>
+    <comment>An error message that is displayed if a resource fails to load</comment>
+  </data>
+  <data name="MDF_UnsupportedLayerTypeWarning" xml:space="preserve">
+    <value>Layer {0} is a type that is unsupported by Maestro</value>
+    <comment>A warning message that is displayed if a layer has a type that is not supported by Maestro</comment>
+  </data>
+  <data name="MovedResource" xml:space="preserve">
+    <value>Moved resource: {0}</value>
+  </data>
+  <data name="MovingResource" xml:space="preserve">
+    <value>Moving resource ...</value>
+  </data>
+  <data name="NotAFolder" xml:space="preserve">
+    <value>Not a folder resource id: {0}</value>
+  </data>
+  <data name="PrecondFailure" xml:space="preserve">
+    <value>Precondition failure: </value>
+  </data>
+  <data name="PrecondStringEmpty" xml:space="preserve">
+    <value>String is empty: </value>
+  </data>
+  <data name="PrecondValueNull" xml:space="preserve">
+    <value>Value is null: </value>
+  </data>
+  <data name="RequiredServiceNotSupported" xml:space="preserve">
+    <value>This connection does not support required service: </value>
+  </data>
+  <data name="TemplateUrlNotFound" xml:space="preserve">
+    <value>Could not find template url for template: </value>
+  </data>
+  <data name="UnknownLayerVersion" xml:space="preserve">
+    <value>Unknown layer version: </value>
+  </data>
+  <data name="UnknownWebLayoutVersion" xml:space="preserve">
+    <value>Unknown web layout version: </value>
+  </data>
+  <data name="UnsupportedLoadProcedureType" xml:space="preserve">
+    <value>Unsupported Load Procedure Type</value>
+  </data>
+  <data name="WL_DuplicateCommandName" xml:space="preserve">
+    <value>There web layout has more than one command named: {0}</value>
+  </data>
+  <data name="WL_DuplicateSearchResultColumn" xml:space="preserve">
+    <value>The search command {0} references more than one property named {1}</value>
+  </data>
+  <data name="WL_MapValidationError" xml:space="preserve">
+    <value>Error validating MapDefinition {0}, message: {1}</value>
+    <comment>An error message that is displayed if the map validation fails</comment>
+  </data>
+  <data name="WL_MissingMapError" xml:space="preserve">
+    <value>Layout does not specify a map</value>
+    <comment>An error message that is displayed if no map is specified in the layout</comment>
+  </data>
+  <data name="WL_NonExistentMenuCommandReference" xml:space="preserve">
+    <value>Context Menu contains a reference to a command that doesn't exist: {0}</value>
+  </data>
+  <data name="WL_NonExistentTaskPaneCommandReference" xml:space="preserve">
+    <value>Task Pane contains a reference to a command that does not exist: {0}</value>
+  </data>
+  <data name="WL_NonExistentToolbarCommandReference" xml:space="preserve">
+    <value>Toolbar contains a reference to a command that does not exist: {0}</value>
+  </data>
+  <data name="WL_StartViewOutsideExtentsWarning" xml:space="preserve">
+    <value>Layout specifies a start view that is outside the map's initial extents</value>
+    <comment>A warning message that is displayed if the layout specifies a start center point that is outside the map's specified extents</comment>
+  </data>
+  <data name="ADF_Flyout_SelectMore" xml:space="preserve">
+    <value>Select More</value>
+  </data>
+  <data name="ADF_Flyout_View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="ADF_Flyout_Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="ADF_Widget_Buffer_Desc" xml:space="preserve">
+    <value>Create buffers around the selected features</value>
+  </data>
+  <data name="ADF_Widget_Buffer_Label" xml:space="preserve">
+    <value>Buffer</value>
+  </data>
+  <data name="ADF_Widget_Measure_Desc" xml:space="preserve">
+    <value>Measure distances and areas on the map</value>
+  </data>
+  <data name="ADF_Widget_Measure_Label" xml:space="preserve">
+    <value>Measure</value>
+  </data>
+  <data name="ADF_Widget_NextView_Desc" xml:space="preserve">
+    <value>Go to next view</value>
+  </data>
+  <data name="ADF_Widget_NextView_Label" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="ADF_Widget_PreviousView_Desc" xml:space="preserve">
+    <value>Go to previous view</value>
+  </data>
+  <data name="ADF_Widget_PreviousView_Label" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="ADF_Widget_ZoomIn_Desc" xml:space="preserve">
+    <value>Zoom in by a preset increment</value>
+  </data>
+  <data name="ADF_Widget_ZoomIn_Label" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="ADF_Widget_ZoomOut_Desc" xml:space="preserve">
+    <value>Zoom out by a preset increment</value>
+  </data>
+  <data name="ADF_Widget_ZoomOut_Label" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BaseTemplate_ApplicationDefinition" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BaseTemplate.ApplicationDefinition.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+</root>

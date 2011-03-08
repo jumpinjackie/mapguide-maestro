@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+  <xs:include schemaLocation="PlatformCommon-1.0.0.xsd"/>
+  <xs:element name="LayerDefinition">
+    <xs:annotation>
+      <xs:documentation>The specification of the data source and stylization for a layer.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="LayerDefinitionType">
+          <xs:attribute name="version" type="xs:string" use="required"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="LayerDefinitionType">
+    <xs:annotation>
+      <xs:documentation>Encapsulates the definition of a map layer.</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element name="DrawingLayerDefinition" type="DrawingLayerDefinitionType">
+        <xs:annotation>
+          <xs:documentation>A layer with a drawing (i.e., DWF) data source.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="VectorLayerDefinition" type="VectorLayerDefinitionType">
+        <xs:annotation>
+          <xs:documentation>A layer with a vector data source; and stylization specification for the datum's geometry types.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GridLayerDefinition" type="GridLayerDefinitionType">
+        <xs:annotation>
+          <xs:documentation>A layer with a raster or grid data source.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>******************** Common types for all layer types ********************</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="BaseLayerDefinitionType">
+    <xs:annotation>
+      <xs:documentation>Specifies common properties for all layer types.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ResourceId" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Link to the drawing data source.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Opacity" default="1.0" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Opacity at which to display the rendered data.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:double">
+            <xs:minInclusive value="0.0"/>
+            <xs:maxInclusive value="1.0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>******************** Drawing layer ********************</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="DrawingLayerDefinitionType">
+    <xs:annotation>
+      <xs:documentation>A layer with a drawing (i.e., DWF) data source.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BaseLayerDefinitionType">
+        <xs:sequence>
+          <xs:element name="Sheet" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The sheet of the DWF to use.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="LayerFilter" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The layers to show from the specified sheet.  Show all layers if this is not specified.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="MinScale" type="xs:double" default="0.0" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The zoomed in part of the scale range.  Defaults to 0 if not specified.  Inclusive.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="MaxScale" type="xs:double" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The zoomed out part of the scale range.  Defaults to the application's maximum value if not specified.  Exclusive.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>******************** Vector layer ********************</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="VectorLayerDefinitionType">
+    <xs:annotation>
+      <xs:documentation>A layer with a vector data source; and stylization specification for the datum's geometry types.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BaseLayerDefinitionType">
+        <xs:sequence>
+          <xs:element name="FeatureName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Either a feature class or named extension.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="FeatureNameType" type="FeatureNameType"/>
+          <xs:element name="Filter" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>A boolean FDO expression that specifies which features to return.  No filter means pass all features through.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PropertyMapping" type="NameStringPairType" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>Specifies which properties to expose to the user and its corresponding friendly name.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Geometry" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies the geometry property that should be used to get the geometries.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Url" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>An optional URL associated with each feature.  This is a string FDO expression.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ToolTip" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The text to put into the tooltip for displayed features.  This is a string FDO expression.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="VectorScaleRange" type="VectorScaleRangeType" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The stylization to be applied to the features for a given scale range.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="FeatureNameType">
+    <xs:annotation>
+      <xs:documentation>Enumeration describing whether the features are coming from a feature class or named extension</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FeatureClass"/>
+      <xs:enumeration value="NamedExtension"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="VectorScaleRangeType">
+    <xs:annotation>
+      <xs:documentation>The stylization to be applied to the vector features for a given scale range.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MinScale" type="xs:double" default="0.0" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The zoomed in part of the scale range.  Defaults to 0 if not specified.  Inclusive.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MaxScale" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The zoomed out part of the scale range.  Defaults to the application's maximum value if not specified.  Exclusive.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Note that where there is no style specified for a particular geometry type a default styling should be used.</xs:documentation>
+        </xs:annotation>
+        <xs:element name="AreaTypeStyle" type="AreaTypeStyleType">
+          <xs:annotation>
+            <xs:documentation>Style specification of a polygon geometry type.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="LineTypeStyle" type="LineTypeStyleType">
+          <xs:annotation>
+            <xs:documentation>Style specification of a line geometry type.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="PointTypeStyle" type="PointTypeStyleType">
+          <xs:annotation>
+            <xs:documentation>Style specification of a point geometry type.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PointTypeStyleType">
+    <xs:annotation>
+      <xs:documentation>Style specification of a point geometry type.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="DisplayAsText" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Create a text layer.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AllowOverpost" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Allows labels from any map layer (including the current layer) to obscure features on the current layer.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PointRule" type="PointRuleType" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>One or more PointRules defining the PointTypeStyle.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PointRuleType">
+    <xs:annotation>
+      <xs:documentation>Style rule for a point geometry type.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LegendLabel" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The label for the Rule to be displayed in the legend.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Filter" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>A filter for the Rule.  This is a boolean FDO expression.  Any features that pass this filter are styled using this rule's stylization.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Label" type="TextSymbolType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>A label for the Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice minOccurs="0">
+        <xs:element name="PointSymbolization2D" type="PointSymbolization2DType"/>
+      </xs:choice>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PointSymbolizationType">
+    <xs:annotation>
+      <xs:documentation>Base point symbolization type.</xs:documentation>
+    </xs:annotation>
+  </xs:complexType>
+  <xs:complexType name="PointSymbolization2DType">
+    <xs:annotation>
+      <xs:documentation>The different types of point geometries.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Mark" type="MarkSymbolType">
+          <xs:annotation>
+            <xs:documentation>A predefined shape such as a square or circle.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Image" type="ImageSymbolType">
+          <xs:annotation>
+            <xs:documentation>A raster or image symbol.  Note that these do not scale well, but sometimes this is all that you have.  Supported formats are application specific.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Font" type="FontSymbolType">
+          <xs:annotation>
+            <xs:documentation>A symbol specified using a font character.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="W2D" type="W2DSymbolType">
+          <xs:annotation>
+            <xs:documentation>A vector symbol defined using a W2D stream.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Block" type="BlockSymbolType">
+          <xs:annotation>
+            <xs:documentation>A vector symbol specifed from a block.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LineTypeStyleType">
+    <xs:annotation>
+      <xs:documentation>Style specification of a line geometry type.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LineRule" type="LineRuleType" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Rules to define a theme.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LineRuleType">
+    <xs:annotation>
+      <xs:documentation>Style rule for a line geometry type.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LegendLabel" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The label for the Rule to be displayed in the legend.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Filter" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>A filter for the Rule.  This is a boolean FDO expression.  Any features that pass this filter are styled using this rule's stylization.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Label" type="TextSymbolType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>A label for the Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="LineSymbolization2D" type="StrokeType"/>
+      </xs:choice>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AreaSymbolizationType">
+    <xs:annotation>
+      <xs:documentation>Symbolization characteristics for areas.</xs:documentation>
+    </xs:annotation>
+  </xs:complexType>
+  <xs:complexType name="AreaSymbolizationFillType">
+    <xs:annotation>
+      <xs:documentation>Describes the style of a polygon.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="AreaSymbolizationType">
+        <xs:sequence>
+          <xs:element name="Fill" type="FillType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The style of the polygon fill.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Stroke" type="StrokeType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The style of the polygon edge.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AreaTypeStyleType">
+    <xs:annotation>
+      <xs:documentation>Style specification of a polygon geometry type.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AreaRule" type="AreaRuleType" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Rules to define a theme.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AreaRuleType">
+    <xs:annotation>
+      <xs:documentation>Style rule for an area geometry type.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LegendLabel" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The label for the Rule to be displayed in the legend.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Filter" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>A filter for the Rule.  This is a boolean FDO expression.  Any features that pass this filter are styled using this rule's stylization.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Label" type="TextSymbolType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>A label for the Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice>
+        <xs:element name="AreaSymbolization2D" type="AreaSymbolizationFillType">
+          <xs:annotation>
+            <xs:documentation>The stylization of the polygon geometry.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StrokeType">
+    <xs:annotation>
+      <xs:documentation>Encapsulates the stylization of a line.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LineStyle" type="xs:string"/>
+      <xs:element name="Thickness" type="xs:string"/>
+      <xs:element name="Color" type="xs:string"/>
+      <xs:element name="Unit" type="LengthUnitType">
+        <xs:annotation>
+          <xs:documentation>Unit of measurement that the thickness is specified in</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FillType">
+    <xs:annotation>
+      <xs:documentation>Encapsulates the stylization of a polygon's fill.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FillPattern" type="xs:string"/>
+      <xs:element name="ForegroundColor" type="xs:string"/>
+      <xs:element name="BackgroundColor" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The background color.  Not applicable to solid fills.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="BackgroundStyleType">
+    <xs:annotation>
+      <xs:documentation>The possible background styles of a TextSymbol.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Transparent"/>
+      <xs:enumeration value="Opaque"/>
+      <xs:enumeration value="Ghosted"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SizeContextType">
+    <xs:annotation>
+      <xs:documentation>Whether the sizes are specified as sizes on the earth or on the user's display device.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MappingUnits"/>
+      <xs:enumeration value="DeviceUnits"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LengthUnitType">
+    <xs:annotation>
+      <xs:documentation>The measurement units that linear sizes are specified in.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Millimeters"/>
+      <xs:enumeration value="Centimeters"/>
+      <xs:enumeration value="Meters"/>
+      <xs:enumeration value="Kilometers"/>
+      <xs:enumeration value="Inches"/>
+      <xs:enumeration value="Feet"/>
+      <xs:enumeration value="Yards"/>
+      <xs:enumeration value="Miles"/>
+      <xs:enumeration value="Points"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TextSymbolType">
+    <xs:annotation>
+      <xs:documentation>Encapsulates the text label stylization used to label features, and for FontSymbols.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="SymbolType">
+        <xs:sequence>
+          <xs:element name="Text" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The text of the TextSymbol.  This is a string FDO expression.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="FontName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The font to use.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ForegroundColor" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The color of the text.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="BackgroundColor" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The text background color.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="BackgroundStyle" type="BackgroundStyleType">
+            <xs:annotation>
+              <xs:documentation>The background style</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="HorizontalAlignment" type="xs:string" default="'Center'" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>A string FDO expression for the horizontal alignment.  Must evaluate to one of the HorizontalAlignmentType enums.  Only applicable to text styles.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="VerticalAlignment" type="xs:string" default="'Baseline'" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>A string FDO expression for the vertical alignment.  Must evaluate to one of the VerticalAlignmentType enums.  Only applicable to text and line styles.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Bold" type="xs:string" default="false" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Specifies if the label should be in a bold font.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Italic" type="xs:string" default="false" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Specifies if the font should be italicized.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Underlined" type="xs:string" default="false" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Specifies if the text should be underlined.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="AdvancedPlacement" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Optional element which specifies that a more advanced labeling algorithm should be used with the AJAX viewer.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ScaleLimit" type="xs:double" minOccurs="0">
+                  <xs:annotation>
+                    <xs:documentation>The maximum amount any label is allowed to shrink in order to fit into the feature.  For example, 0.8 means that the label can shrink until it is 80% of the original size.  1.0 means that the label cannot shrink.  If not specified, the application should assume 1.0.  If set to 0.0 or less then the advanced placement option is disabled.</xs:documentation>
+                  </xs:annotation>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SymbolType">
+    <xs:annotation>
+      <xs:documentation>Defines common properties for all symbols.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Unit" type="LengthUnitType">
+        <xs:annotation>
+          <xs:documentation>The units that the sizes are specified in.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SizeContext" type="SizeContextType">
+        <xs:annotation>
+          <xs:documentation>Whether the sizes are with respect to the earth or the user's display device.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SizeX" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Width of the symbol.  This is a double FDO expression.  Does not apply to font symbols.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SizeY" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Height of the symbol.  This is a double FDO expression.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Rotation" type="xs:string" default="0.0" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Amount to rotate the symbol in degrees.  This is a double FDO expression.  Does not apply to line labels.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MaintainAspect" type="xs:boolean" default="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Hint for the UI only.  When the user enters a constant size for the width or height, the other dimension should be adjusted accordingly.  Does not apply to font symbols or labels.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="InsertionPointX" type="xs:string" default="0.5" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>X offset for the symbol specified in symbol space.  Does not apply to labels.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="InsertionPointY" type="xs:double" default="0.5" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Y offset for the symbol specified in symbol space.  Does not apply to labels.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MarkSymbolType">
+    <xs:annotation>
+      <xs:documentation>Stylization of a predefined shape (ShapeType).</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="SymbolType">
+        <xs:sequence>
+          <xs:element name="Shape" type="ShapeType"/>
+          <xs:element name="Fill" type="FillType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>No fill is drawn if not specified.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Edge" type="StrokeType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>No edge is drawn if not specified.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="NameStringPairType">
+    <xs:annotation>
+      <xs:documentation>Used by vector layer definition to hold properties that can be displayed to the end user, and the friendly name to display it as.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the property to expose.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Value" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name to show the end user.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ShapeType">
+    <xs:annotation>
+      <xs:documentation>SLD supports square, circle, triangle, star, cross, and X.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Square"/>
+      <xs:enumeration value="Circle"/>
+      <xs:enumeration value="Triangle"/>
+      <xs:enumeration value="Star"/>
+      <xs:enumeration value="Cross"/>
+      <xs:enumeration value="X"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ImageSymbolType">
+    <xs:annotation>
+      <xs:documentation>Symbols that are comprised of a raster.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="SymbolType">
+        <xs:sequence>
+          <xs:choice>
+            <xs:element name="Image">
+              <xs:annotation>
+                <xs:documentation>Reference to the image.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ResourceId">
+                    <xs:annotation>
+                      <xs:documentation>The reference to the resource.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="LibraryItemName" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>If ResourceId specifies a library, this identifies the name of a library item.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Content" type="xs:hexBinary">
+              <xs:annotation>
+                <xs:documentation>BinHex data for image.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+          <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FontSymbolType">
+    <xs:annotation>
+      <xs:documentation>Symbols that are specified by a font and character.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="SymbolType">
+        <xs:sequence>
+          <xs:element name="FontName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>If the font is not installed, the actual font used is application dependent.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Character" type="xs:string"/>
+          <xs:element name="Bold" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="Italic" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="Underlined" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="ForegroundColor" type="xs:string"/>
+          <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="W2DSymbolType">
+    <xs:annotation>
+      <xs:documentation>A symbol using a W2D stream.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="SymbolType">
+        <xs:sequence>
+          <xs:element name="W2DSymbol">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ResourceId">
+                  <xs:annotation>
+                    <xs:documentation>The reference to the symbol library.</xs:documentation>
+                  </xs:annotation>
+                </xs:element>
+                <xs:element name="LibraryItemName">
+                  <xs:annotation>
+                    <xs:documentation>The W2D stream in the symbol library.</xs:documentation>
+                  </xs:annotation>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="FillColor" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>If specified all polygon fills in the symbol are drawn in this color.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="LineColor" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>If specified all lines in the symbol are drawn in this color.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="TextColor" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>If specified all text in the symbol is drawn in this color.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BlockSymbolType">
+    <xs:annotation>
+      <xs:documentation>A block symbol.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="SymbolType">
+        <xs:sequence>
+          <xs:element name="DrawingName" type="xs:string"/>
+          <xs:element name="BlockName" type="xs:string"/>
+          <xs:element name="BlockColor" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Static color.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="LayerColor" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Static color.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>******************** Grid layer ********************</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="GridLayerDefinitionType">
+    <xs:annotation>
+      <xs:documentation>A layer for raster or grid data.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BaseLayerDefinitionType">
+        <xs:sequence>
+          <xs:element name="FeatureName" type="xs:string"/>
+          <xs:element name="Geometry" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies the geometry property that should be used to get the geometries.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Filter" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>A boolean FDO expression that specifies which features to return.  No filter means pass all features through.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GridScaleRange" type="GridScaleRangeType" maxOccurs="unbounded"/>
+          <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ChannelBandType">
+    <xs:annotation>
+      <xs:documentation>Defines how to scale numbers into a color channel.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Band" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Name of the band.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LowBand" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Default is low value found in band.  Band values less than this are snapped to this number.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="HighBand" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Default is high value found in band.  Band values greater than this are snapped to this number.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LowChannel" type="xs:unsignedByte" default="0" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Default is 0.  Range is 0:255.  LowBand is mapped to this number.  LowChannel can be greater than HighChannel.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="HighChannel" type="xs:unsignedByte" default="255" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Default is 255.  Range is 0:255.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GridColorBandsType">
+    <xs:annotation>
+      <xs:documentation>Specifies a color using distinct RGB values.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RedBand" type="ChannelBandType"/>
+      <xs:element name="GreenBand" type="ChannelBandType"/>
+      <xs:element name="BlueBand" type="ChannelBandType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GridColorType">
+    <xs:annotation>
+      <xs:documentation>The color to use for a grid rule.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="ExplicitColor" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Explicit ARGB color.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Band" type="xs:string"/>
+        <xs:element name="Bands" type="GridColorBandsType"/>
+      </xs:choice>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GridColorRuleType">
+    <xs:annotation>
+      <xs:documentation>Encapsulate a style for a grid source.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LegendLabel" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The label for the Rule to be displayed in the legend.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Filter" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>A filter for the Rule.  This is a boolean FDO expression.  Any features that pass this filter are styled using this rule's stylization.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Label" type="TextSymbolType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>A label for the Rule.  Does not apply to GridColorRule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Color" type="GridColorType"/>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HillShadeType">
+    <xs:annotation>
+      <xs:documentation>Specifies how to shade given a band and a light source.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Band" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Name of the band used for the computation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Azimuth" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>Azimuth of the sun in degrees.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Altitude" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>Altitude of the sun in degrees.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ScaleFactor" type="xs:double" default="1.0" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The scale factor applied to the band prior to computing hillshade.  Defaults to 1 if not specified.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GridColorStyleType">
+    <xs:annotation>
+      <xs:documentation>Specifies how to style each pixel.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="HillShade" type="HillShadeType" minOccurs="0"/>
+      <xs:element name="TransparencyColor" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>If a pixel color prior to factoring in HillShade is this value then the pixel is transparent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BrightnessFactor" type="xs:double" default="0.0" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Default is 0.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ContrastFactor" type="xs:double" default="0.0" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Default is 0.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ColorRule" type="GridColorRuleType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GridSurfaceStyleType">
+    <xs:annotation>
+      <xs:documentation>Specifies how to calculate pixel elevations.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Band" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Band to use for 3D data.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ZeroValue" type="xs:double" default="0.0" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Determines which input value is mapped to zero elevation.  Defaults to 0 if not specified.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ScaleFactor" type="xs:double" default="1.0" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Determines how to scale the inputs into a consistent elevation.  Defaults to 1 if not specified.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DefaultColor" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The default color to use if no ColorStyle is defined at a pixel.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GridScaleRangeType">
+    <xs:annotation>
+      <xs:documentation>The stylization for a specified scale range.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MinScale" type="xs:double" default="0.0" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The zoomed in part of the scale range.  Defaults to 0 if not specified.  Inclusive.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MaxScale" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The zoomed out part of the scale range.  Defaults to the application's maximum value if not specified.  Exclusive.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SurfaceStyle" type="GridSurfaceStyleType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Defines the height field of the grid.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ColorStyle" type="GridColorStyleType" minOccurs="0"/>
+      <xs:element name="RebuildFactor" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>When the user has zoomed in by this amount, a request for more detailed raster data is made.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

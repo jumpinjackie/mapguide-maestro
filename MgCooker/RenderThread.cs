@@ -21,8 +21,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Services;
 
-namespace OSGeo.MapGuide.MgCooker
+namespace MgCooker
 {
     public class RenderThreads
     {
@@ -252,21 +253,9 @@ namespace OSGeo.MapGuide.MgCooker
             try
             {
                 //Create a copy of the connection for local usage
-                ServerConnectionI con;
+                IServerConnection con = Parent.Connection.Clone();
+                var tileSvc = (ITileService)con.GetService((int)ServiceType.Tile);
                 System.Threading.AutoResetEvent ev = new System.Threading.AutoResetEvent(false);
-
-                if (Parent.Connection is HttpServerConnection)
-                {
-                    HttpServerConnection hc = Parent.Connection as HttpServerConnection;
-                    if (hc.IsAnonymous)
-                        con = ConnectionFactory.CreateHttpConnection(new Uri(hc.ServerURI), "Anonymous", "", null, true);
-                    else
-                        con = ConnectionFactory.CreateHttpConnection(new Uri(hc.ServerURI), Parent.Connection.SessionID, null, true);
-                }
-                else
-                {
-                    con = ConnectionFactory.CreateLocalNativeConnection(Parent.Connection.SessionID);
-                }
 
 
                 while (!Parent.Cancel)
@@ -288,7 +277,7 @@ namespace OSGeo.MapGuide.MgCooker
                     if (round == null) //No data, but producer is still running
                         System.Threading.Thread.Sleep(500);
                     else
-                        RenderTile(ev, con, round.Value.Key, round.Value.Value, Scale, Group);
+                        RenderTile(ev, tileSvc, round.Value.Key, round.Value.Value, Scale, Group);
                 }
 
 
@@ -309,7 +298,7 @@ namespace OSGeo.MapGuide.MgCooker
         /// <param name="col">The column index of the tile</param>
         /// <param name="scaleindex">The scale index of the tile</param>
         /// <param name="group">The name of the baselayer group</param>
-        public void RenderTile(System.Threading.EventWaitHandle ev, ServerConnectionI connection, long row, long col, int scaleindex, string group)
+        public void RenderTile(System.Threading.EventWaitHandle ev, ITileService tileSvc, long row, long col, int scaleindex, string group)
         {
             ev.Reset();
             lock (SyncLock)
@@ -331,7 +320,7 @@ namespace OSGeo.MapGuide.MgCooker
                 {
                     if (!Parent.Cancel)
                         if (Parent.Config.RenderMethod == null)
-                            connection.GetTile(MapDefinition, group, (int)col, (int)row, scaleindex, "PNG").Dispose();
+                            tileSvc.GetTile(MapDefinition, group, (int)col, (int)row, scaleindex, "PNG").Dispose();
                         else
                             Parent.Config.RenderMethod(MapDefinition, group, (int)col, (int)row, scaleindex);
 

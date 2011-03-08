@@ -1,0 +1,39 @@
+﻿<AddIn name="Maestro.AddIn.ExtendedObjectModels"
+       author="Jackie Ng"
+       url="http://trac.osgeo.org/mapguide/wiki/maestro"
+       description="MapGuide Maestro AddIn to support extended versions of the core MapGuide resource schemas"
+       addInManagerHidden="preinstalled">
+
+    <Manifest>
+        <Identity name="Maestro.AddIn.ExtendedObjectModels" />
+    </Manifest>
+
+    <Runtime>
+        <Import assembly="../../Maestro.Base.dll" />
+        <Import assembly="Maestro.AddIn.ExtendedObjectModels.dll" />
+    </Runtime>
+
+    <!-- Registered editors -->
+    <Path name="/Maestro/Editors">
+        <Class id="LoadProcedureEditor110" class="Maestro.AddIn.ExtendedObjectModels.Editor.LoadProcedure110EditorFactory" />
+        <Class id="LoadProcedureEditor220" class="Maestro.AddIn.ExtendedObjectModels.Editor.LoadProcedure220EditorFactory" />
+        <Class id="LayerDefinitionEditor110" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition110EditorFactory" />
+        <Class id="LayerDefinitionEditor120" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition120EditorFactory" />
+        <Class id="LayerDefinitionEditor130" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition130EditorFactory" />
+        <Class id="WebLayoutEditor110" class="Maestro.AddIn.ExtendedObjectModels.Editor.WebLayout110EditorFactory" />
+    </Path>
+
+    <!-- Registered System Templates -->
+    <Path name="/Maestro/NewItemTemplates">
+        <Class id="VectorLayerDefinition110" class="Maestro.AddIn.ExtendedObjectModels.Templates.VectorLayer110ItemTemplate" />
+        <Class id="VectorLayerDefinition120" class="Maestro.AddIn.ExtendedObjectModels.Templates.VectorLayer120ItemTemplate" />
+        <Class id="VectorLayerDefinition130" class="Maestro.AddIn.ExtendedObjectModels.Templates.VectorLayer130ItemTemplate" />
+        <Class id="SQLiteLoadProcedure" class="Maestro.AddIn.ExtendedObjectModels.Templates.SQLiteLoadProcedureItemTemplate" />
+        <Class id="WebLayout110" class="Maestro.AddIn.ExtendedObjectModels.Templates.WebLayout110ItemTemplate" />
+    </Path>
+
+    <!-- Auto-start commands -->
+    <Path name="/Workspace/Autostart">
+        <Class id="Startup" class="Maestro.AddIn.ExtendedObjectModels.Commands.StartupCommand" />
+    </Path>
+</AddIn>
