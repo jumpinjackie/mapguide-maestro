@@ -1,4 +1,12 @@
-﻿Test Build 4
+﻿3.0 Beta 1
+----------
+ - Added GDAL specialized feature source editor
+ - Added ODBC specialized feature source editor
+ - Fusion editor now has basic widget management (ie. Most widget will use a generic XML editor)
+ - Added Raster Layer Defintion editor (ported from 2.x)
+ - Fix validation failing on raster feature sources
+
+Test Build 4
 ------------
  - Added drag/drop package loading
  - Added resource re-pointer function as suggested by Jason Birch

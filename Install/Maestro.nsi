@@ -2,9 +2,10 @@
 ; NSIS Installer script for MapGuide Maestro
 ; based off the same script for FDO Toolbox
 ;
-;
 ; Author: Jackie Ng (jumpinjackie@gmail.com) 
 ;----------------------------------------------------------------------
+
+;TODO: Figure out how to brand this installer
 
 ;----------------------
 ; Include NSIS headers
@@ -53,6 +54,9 @@ RequestExecutionLevel admin
 !endif
 
 # Installer vars
+Icon "Maestro.ico"
+LicenseData "LGPL21.rtf"
+
 !define INST_PRODUCT "MapGuide Maestro"
 !if ${SLN_CONFIG} == "Release"
 !define INST_PRODUCT_QUALIFIED "${INST_PRODUCT} ${RELEASE_VERSION}"
@@ -157,6 +161,7 @@ LicenseData "${INST_SRC}\${INST_LICENSE}"
 
 # default section
 Section 
+
 	; Windows > Vista
 	SetShellVarContext all
 
@@ -211,6 +216,28 @@ Section
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WebLayout-1.1.0.dll"
 	File "${INST_OUTPUT_MAESTRO}\Topology.dll"
     File "${INST_OUTPUT_MAESTRO}\Topology.IO.MapGuide.dll"
+    
+    # pdbs, we'll leave them in for the beta period duration
+    File "${INST_OUTPUT_MAESTRO}\Aga.Controls.pdb"
+    File "${INST_OUTPUT_MAESTRO}\Maestro.pdb"
+    File "${INST_OUTPUT_MAESTRO}\MaestroFsPreview.pdb"
+    File "${INST_OUTPUT_MAESTRO}\MgCooker.pdb"
+    File "${INST_OUTPUT_MAESTRO}\MgCookerCmd.pdb"
+	File "${INST_OUTPUT_MAESTRO}\Maestro.Base.pdb"
+	File "${INST_OUTPUT_MAESTRO}\Maestro.Editors.pdb"
+	File "${INST_OUTPUT_MAESTRO}\Maestro.Login.pdb"
+    File "${INST_OUTPUT_MAESTRO}\Maestro.Packaging.pdb"
+	File "${INST_OUTPUT_MAESTRO}\Maestro.Shared.UI.pdb"
+	File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.pdb"
+	File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.Http.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.Native.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.1.0.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.2.0.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.3.0.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LoadProcedure-1.1.0.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LoadProcedure-2.2.0.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.SymbolDefinition-1.1.0.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WebLayout-1.1.0.pdb"
 	
 	# main executables
 	File "${INST_OUTPUT_MAESTRO}\${EXE_MAESTRO}"
@@ -241,8 +268,8 @@ Section
 	CreateDirectory "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}"
 	
 	CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\${LNK_MAESTRO}.lnk" "$INSTDIR\${EXE_MAESTRO}"
-	#CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\MgCooker.lnk" "$INSTDIR\MgCooker.exe"
-    #CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Maestro Feature Source Preview.lnk" "$INSTDIR\MaestroFsPreview.exe"
+	CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\MgCooker.lnk" "$INSTDIR\MgCooker.exe"
+    CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Maestro Feature Source Preview.lnk" "$INSTDIR\MaestroFsPreview.exe"
 	#CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\User Documentation.lnk" "$INSTDIR\${HELP_USER}"
 	#CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Core API Documentation.lnk" "$INSTDIR\${HELP_API}"
 	CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Uninstall.lnk" "$INSTDIR\uninstall.exe"
