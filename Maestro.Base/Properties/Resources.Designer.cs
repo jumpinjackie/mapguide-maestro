@@ -1481,6 +1481,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Migrate Resources.
+        /// </summary>
+        internal static string SiteExplorer_MigrateResources {
+            get {
+                return ResourceManager.GetString("SiteExplorer_MigrateResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Folder.
         /// </summary>
         internal static string SiteExplorer_NewFolder {

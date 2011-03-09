@@ -835,4 +835,7 @@ Do you want to convert the values?</value>
   <data name="CacheView" xml:space="preserve">
     <value>View Feature Source Cache</value>
   </data>
+  <data name="SiteExplorer_MigrateResources" xml:space="preserve">
+    <value>Migrate Resources</value>
+  </data>
 </root>
