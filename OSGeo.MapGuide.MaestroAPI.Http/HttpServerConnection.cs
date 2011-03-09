@@ -1106,10 +1106,15 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 					if (!ok)
 					{
-						if (throwException) //Report original error
-							throw new Exception("Failed to connect, perhaps session is expired?\nExtended error info: " + NestedExceptionMessageProcessor.GetFullMessage(ex), ex);
-						else
-							return false;
+                        if (throwException) //Report original error
+                        {
+                            if (ex is WebException) //These exceptions, we just want the underlying message. No need for 50 bajillion nested exceptions
+                                throw;
+                            else //We don't know what this could be so grab everything
+                                throw new Exception("Failed to connect, perhaps session is expired?\nExtended error info: " + ex.Message, ex);
+                        }
+                        else
+                            return false;
 					}
 				}
 

@@ -26,6 +26,7 @@ using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using System.Reflection;
 
 namespace Maestro.Login
 {
@@ -179,7 +180,7 @@ namespace Maestro.Login
             using (new WaitCursor(this))
             {
                 try
-				{
+                {
                     PreferedSite ps = null;
 
                     if (_selectedIndex == 0) //HTTP
@@ -250,7 +251,7 @@ namespace Maestro.Login
                         }
                         catch (Exception)
                         {
-                            
+
                         }
                     }
                     else //Native
@@ -265,17 +266,23 @@ namespace Maestro.Login
 
                     _conn.AutoRestartSession = true;
 
-                    
-					
-					this.DialogResult = DialogResult.OK;
-					this.Close();
 
-				}
-				catch (Exception ex)
-				{
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+
+                }
+                catch (TargetInvocationException ex) 
+                {
+                    //We don't care about the outer exception
+                    string msg = ex.InnerException.Message;
+                    MessageBox.Show(this, string.Format(Strings.FormLogin.ConnectionFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-					MessageBox.Show(this, string.Format(Strings.FormLogin.ConnectionFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
+                    MessageBox.Show(this, string.Format(Strings.FormLogin.ConnectionFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
