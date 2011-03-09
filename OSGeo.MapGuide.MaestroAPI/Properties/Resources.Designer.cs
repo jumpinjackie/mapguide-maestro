@@ -917,6 +917,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unknown Symbol Definition version: .
+        /// </summary>
+        internal static string UnknownSymbolDefVersion {
+            get {
+                return ResourceManager.GetString("UnknownSymbolDefVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknown web layout version: .
         /// </summary>
         internal static string UnknownWebLayoutVersion {

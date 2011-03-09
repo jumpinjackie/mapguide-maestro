@@ -32,6 +32,9 @@ using Ldf130 = OSGeo.MapGuide.ObjectModels.LayerDefinition_1_3_0;
 using Lp110 = OSGeo.MapGuide.ObjectModels.LoadProcedure_1_1_0;
 using Lp220 = OSGeo.MapGuide.ObjectModels.LoadProcedure_2_2_0;
 using WL110 = OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0;
+
+using Sym110 = OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0;
+
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using OSGeo.MapGuide.ObjectModels;
@@ -98,6 +101,13 @@ namespace Maestro.AddIn.ExtendedObjectModels.Commands
                 new ResourceDeserializationCallback(WL110.WebLayoutEntryPoint.Deserialize));
             ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(1, 1, 0), new WebLayoutCreatorFunc(WL110.WebLayoutEntryPoint.CreateDefault));
 
+            //Symbol Definition 1.1.0
+            ResourceTypeRegistry.RegisterResource(
+                new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition, "1.1.0"),
+                new ResourceSerializationCallback(Sym110.SymbolDefEntryPoint.Serialize),
+                new ResourceDeserializationCallback(Sym110.SymbolDefEntryPoint.Deserialize));
+            ObjectFactory.RegisterCompoundSymbolFactoryMethod(new Version(1, 1, 0), new CompoundSymbolDefCreatorFunc(Sym110.SymbolDefEntryPoint.CreateDefaultCompound));
+            ObjectFactory.RegisterSimpleSymbolFactoryMethod(new Version(1, 1, 0), new SimpleSymbolDefCreatorFunc(Sym110.SymbolDefEntryPoint.CreateDefaultSimple));
         }
     }
 }

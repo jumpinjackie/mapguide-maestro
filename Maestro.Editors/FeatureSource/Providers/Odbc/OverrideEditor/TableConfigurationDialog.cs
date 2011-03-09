@@ -10,7 +10,7 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
 {
-    public partial class TableConfigurationDialog : Form
+    internal partial class TableConfigurationDialog : Form
     {
         private BindingList<TableOverrideItem> _tables;
 

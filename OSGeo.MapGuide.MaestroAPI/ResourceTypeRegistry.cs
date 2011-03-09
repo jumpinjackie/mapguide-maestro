@@ -159,13 +159,13 @@ namespace OSGeo.MapGuide.MaestroAPI
                         var node = doc.SelectSingleNode("//SimpleSymbolDefinition");
                         if (node != null)
                         {
-                            return SimpleSymbolDefinition.Deserialize(xml);
+                            return OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition.Deserialize(xml);
                         }
                         else
                         {
                             node = doc.SelectSingleNode("//CompoundSymbolDefinition");
                             if (node != null)
-                                return CompoundSymbolDefinition.Deserialize(xml);
+                                return OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition.Deserialize(xml);
                             else //WTF?
                                 throw new SerializationException("Could not determine symbol type"); //LOCALIZE
                         }

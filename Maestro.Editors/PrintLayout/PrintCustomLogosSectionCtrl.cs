@@ -31,7 +31,8 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.PrintLayout
 {
-    [ToolboxItem(true)]
+    //[ToolboxItem(true)]
+    [ToolboxItem(false)]
     internal partial class PrintCustomLogosSectionCtrl : EditorBindableCollapsiblePanel
     {
         public PrintCustomLogosSectionCtrl()

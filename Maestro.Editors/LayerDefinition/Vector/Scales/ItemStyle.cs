@@ -30,6 +30,7 @@ using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
+    [ToolboxItem(false)]
     internal partial class ItemStyle : UserControl
     {
         private ITextSymbol m_label;

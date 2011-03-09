@@ -29,6 +29,7 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Editors.MapDefinition
 {
+    [ToolboxItem(false)]
     internal partial class GroupPropertiesCtrl : UserControl
     {
         private GroupPropertiesCtrl()

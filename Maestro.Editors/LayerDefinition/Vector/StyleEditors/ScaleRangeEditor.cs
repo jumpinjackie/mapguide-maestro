@@ -29,6 +29,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 	/// <summary>
 	/// Summary description for ScaleRangeEditor.
 	/// </summary>
+    [ToolboxItem(false)]
 	internal class ScaleRangeEditor : System.Windows.Forms.UserControl
 	{
 		/// <summary> 

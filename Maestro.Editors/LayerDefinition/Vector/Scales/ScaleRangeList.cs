@@ -31,6 +31,7 @@ using Maestro.Editors.LayerDefinition;
 
 namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls
 {
+    [ToolboxItem(false)]
     internal partial class ScaleRangeList : UserControl
     {
         private IVectorLayerDefinition m_vldef;

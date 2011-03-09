@@ -29,6 +29,7 @@ using OSGeo.MapGuide.MaestroAPI.Feature;
 
 namespace Maestro.Editors.FeatureSource.Preview
 {
+    [ToolboxItem(false)]
     internal partial class SqlQueryCtrl : UserControl, IQueryControl
     {
         private SqlQueryCtrl()

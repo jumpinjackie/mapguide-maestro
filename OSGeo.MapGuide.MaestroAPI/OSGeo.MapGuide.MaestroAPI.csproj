@@ -208,6 +208,7 @@
     <Compile Include="Feature\ReaderBase.cs" />
     <Compile Include="Feature\RecordBase.cs" />
     <Compile Include="ObjectModels\IFdoSpatialContext.cs" />
+    <Compile Include="ObjectModels\SymbolDefFactory.cs" />
     <Compile Include="SchemaOverrides\GdalConfigurationDocument.cs" />
     <Compile Include="SchemaOverrides\GdalRasterItem.cs" />
     <Compile Include="SchemaOverrides\OdbcTableItem.cs" />

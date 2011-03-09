@@ -29,7 +29,8 @@ using System.Collections.Specialized;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
 {
-    public partial class ManagedCtrl : EditorBase, IOdbcSubEditor
+    [ToolboxItem(false)]
+    internal partial class ManagedCtrl : EditorBase, IOdbcSubEditor
     {
         public ManagedCtrl()
         {

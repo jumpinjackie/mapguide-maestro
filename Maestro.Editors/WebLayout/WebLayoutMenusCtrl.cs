@@ -32,7 +32,8 @@ using System.Diagnostics;
 
 namespace Maestro.Editors.WebLayout
 {
-    [ToolboxItem(true)]
+    //[ToolboxItem(true)]
+    [ToolboxItem(false)]
     internal partial class WebLayoutMenusCtrl : EditorBindableCollapsiblePanel
     {
         public WebLayoutMenusCtrl()

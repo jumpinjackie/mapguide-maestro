@@ -27,7 +27,8 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class NavigatorWidgetCtrl : WidgetEditorBase
+    [ToolboxItem(false)]
+    internal partial class NavigatorWidgetCtrl : WidgetEditorBase
     {
         public NavigatorWidgetCtrl()
         {

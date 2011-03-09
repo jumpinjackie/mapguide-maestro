@@ -31,6 +31,7 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.FeatureSource.Extensions
 {
+    [ToolboxItem(false)]
     internal partial class ExtendedClassSettings : UserControl, IEditorBindable
     {
         private ExtendedClassSettings()

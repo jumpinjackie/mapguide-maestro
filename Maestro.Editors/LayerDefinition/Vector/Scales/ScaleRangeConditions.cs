@@ -30,6 +30,7 @@ using OSGeo.MapGuide.ObjectModels;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
+    [ToolboxItem(false)]
     internal partial class ScaleRangeConditions: UserControl
     {
         public event EventHandler ItemChanged;

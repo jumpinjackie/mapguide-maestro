@@ -31,6 +31,7 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Editors.LoadProcedure
 {
+    [ToolboxItem(false)]
     internal partial class SdfTransformationCtrl : EditorBindableCollapsiblePanel
     {
         public SdfTransformationCtrl()

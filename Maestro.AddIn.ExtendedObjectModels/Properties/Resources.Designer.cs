@@ -74,6 +74,24 @@ namespace Maestro.AddIn.ExtendedObjectModels.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to A description for this symbol.
+        /// </summary>
+        internal static string DefaultSymbolDescription {
+            get {
+                return ResourceManager.GetString("DefaultSymbolDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MySymbol.
+        /// </summary>
+        internal static string DefaultSymbolName {
+            get {
+                return ResourceManager.GetString("DefaultSymbolName", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap document {
             get {
                 object obj = ResourceManager.GetObject("document", resourceCulture);
@@ -148,6 +166,24 @@ namespace Maestro.AddIn.ExtendedObjectModels.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a new Compund Symbol Definition using the v1.1.0 schema.
+        /// </summary>
+        internal static string TPL_CSD_DESC {
+            get {
+                return ResourceManager.GetString("TPL_CSD_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compound Symbol Definition (v1.1.0).
+        /// </summary>
+        internal static string TPL_CSD_NAME {
+            get {
+                return ResourceManager.GetString("TPL_CSD_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new SQLite Load Procedure.
         /// </summary>
         internal static string TPL_LP_SQLITE_DESC {
@@ -162,6 +198,24 @@ namespace Maestro.AddIn.ExtendedObjectModels.Properties {
         internal static string TPL_LP_SQLITE_NAME {
             get {
                 return ResourceManager.GetString("TPL_LP_SQLITE_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new Simple Symbol Definition using the v1.1.0 schema.
+        /// </summary>
+        internal static string TPL_SSD_DESC {
+            get {
+                return ResourceManager.GetString("TPL_SSD_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simple Symbol Definition (v1.1.0).
+        /// </summary>
+        internal static string TPL_SSD_NAME {
+            get {
+                return ResourceManager.GetString("TPL_SSD_NAME", resourceCulture);
             }
         }
         

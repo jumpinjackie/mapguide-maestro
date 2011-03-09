@@ -27,6 +27,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.LoadProcedure
 {
+    [ToolboxItem(false)]
     internal partial class ExecuteCtrl : UserControl
     {
         internal event EventHandler Execute;

@@ -27,7 +27,8 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class RefreshMapWidgetCtrl : WidgetEditorBase
+    [ToolboxItem(false)]
+    internal partial class RefreshMapWidgetCtrl : WidgetEditorBase
     {
         public RefreshMapWidgetCtrl()
         {

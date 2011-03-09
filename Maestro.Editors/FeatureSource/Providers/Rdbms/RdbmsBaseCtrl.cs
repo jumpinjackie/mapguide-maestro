@@ -32,6 +32,7 @@ using Maestro.Editors.FeatureSource.Providers.Odbc;
 
 namespace Maestro.Editors.FeatureSource.Providers.Rdbms
 {
+    [ToolboxItem(false)]
     internal partial class RdbmsBaseCtrl : EditorBindableCollapsiblePanel
     {
         public RdbmsBaseCtrl()

@@ -34,6 +34,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 	/// <summary>
 	/// Summary description for FontStyleEditor.
 	/// </summary>
+    [ToolboxItem(false)]
 	internal class FontStyleEditor : System.Windows.Forms.UserControl
 	{
 		private System.Windows.Forms.Label label1;

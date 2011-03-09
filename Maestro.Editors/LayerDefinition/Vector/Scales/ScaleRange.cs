@@ -30,6 +30,7 @@ using System.Threading;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
+    [ToolboxItem(false)]
     internal partial class ScaleRange : UserControl
     {
         private IVectorScaleRange m_vsc;

@@ -29,7 +29,8 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class InitialMapViewWidgetCtrl : UserControl, IWidgetEditor
+    [ToolboxItem(false)]
+    internal partial class InitialMapViewWidgetCtrl : UserControl, IWidgetEditor
     {
         public InitialMapViewWidgetCtrl()
         {

@@ -32,7 +32,8 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Editors.LayerDefinition.Vector
 {
-    [ToolboxItem(true)]
+    [ToolboxItem(false)]
+    //[ToolboxItem(true)]
     internal partial class VectorLayerStyleSectionCtrl : EditorBindableCollapsiblePanel
     {
         public VectorLayerStyleSectionCtrl()

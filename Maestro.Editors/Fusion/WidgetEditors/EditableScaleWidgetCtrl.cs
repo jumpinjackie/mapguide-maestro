@@ -29,7 +29,8 @@ using System.Globalization;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class EditableScaleWidgetCtrl : UserControl, IWidgetEditor
+    [ToolboxItem(false)]
+    internal partial class EditableScaleWidgetCtrl : UserControl, IWidgetEditor
     {
         public EditableScaleWidgetCtrl()
         {

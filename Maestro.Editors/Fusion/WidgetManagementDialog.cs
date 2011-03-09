@@ -28,7 +28,7 @@ using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 
 namespace Maestro.Editors.Fusion
 {
-    public partial class WidgetManagementDialog : Form, INotifyResourceChanged
+    internal partial class WidgetManagementDialog : Form, INotifyResourceChanged
     {
         private IApplicationDefinition _appDef;
         private FlexibleLayoutEditorContext _context;

@@ -32,6 +32,7 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.MapDefinition
 {
+    [ToolboxItem(false)]
     internal partial class LayerPropertiesCtrl : UserControl
     {
         private LayerPropertiesCtrl()

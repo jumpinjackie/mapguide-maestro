@@ -53,6 +53,14 @@ namespace OSGeo.MapGuide.ObjectModels
     /// Factory method signature for creating web layouts
     /// </summary>
     public delegate IWebLayout WebLayoutCreatorFunc(string mapDefinitionId);
+    /// <summary>
+    /// Factory method signature for creating compound symbol definitions
+    /// </summary>
+    public delegate ICompoundSymbolDefinition CompoundSymbolDefCreatorFunc();
+    /// <summary>
+    /// Factory methods signature for creating simple symbol definitions
+    /// </summary>
+    public delegate ISimpleSymbolDefinition SimpleSymbolDefCreatorFunc();
 
     /// <summary>
     /// Factory class to create MapGuide resource objects with either pre-defined or
@@ -74,12 +82,16 @@ namespace OSGeo.MapGuide.ObjectModels
         private static Dictionary<Version, LayerCreatorFunc> _layerFactories;
         private static Dictionary<LoadType, LoadProcCreatorFunc> _loadProcFactories;
         private static Dictionary<Version, WebLayoutCreatorFunc> _wlFactories;
+        private static Dictionary<Version, SimpleSymbolDefCreatorFunc> _simpleSymbolFactories;
+        private static Dictionary<Version, CompoundSymbolDefCreatorFunc> _compoundSymbolFactories;
         
         static ObjectFactory()
         {
             _layerFactories = new Dictionary<Version,LayerCreatorFunc>();
             _wlFactories = new Dictionary<Version, WebLayoutCreatorFunc>();
             _loadProcFactories = new Dictionary<LoadType, LoadProcCreatorFunc>();
+            _simpleSymbolFactories = new Dictionary<Version, SimpleSymbolDefCreatorFunc>();
+            _compoundSymbolFactories = new Dictionary<Version, CompoundSymbolDefCreatorFunc>();
 
             _layerFactories.Add(
                 new Version(1, 0, 0),
@@ -98,6 +110,40 @@ namespace OSGeo.MapGuide.ObjectModels
             _wlFactories.Add(
                 new Version(1, 0, 0),
                 new WebLayoutCreatorFunc(OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0.WebLayoutEntryPoint.CreateDefault));
+
+            _compoundSymbolFactories.Add(
+                new Version(1, 0, 0),
+                new CompoundSymbolDefCreatorFunc(OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition.CreateDefault));
+
+            _simpleSymbolFactories.Add(
+                new Version(1, 0, 0),
+                new SimpleSymbolDefCreatorFunc(OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition.CreateDefault));
+        }
+
+        /// <summary>
+        /// Registers the compound symbol factory method
+        /// </summary>
+        /// <param name="ver"></param>
+        /// <param name="func"></param>
+        public static void RegisterCompoundSymbolFactoryMethod(Version ver, CompoundSymbolDefCreatorFunc func)
+        {
+            if (_compoundSymbolFactories.ContainsKey(ver))
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.FactoryMethodAlreadyRegistered + ver);
+
+            _compoundSymbolFactories[ver] = func;
+        }
+
+        /// <summary>
+        /// Regsiters the simple symbol factory method
+        /// </summary>
+        /// <param name="ver"></param>
+        /// <param name="func"></param>
+        public static void RegisterSimpleSymbolFactoryMethod(Version ver, SimpleSymbolDefCreatorFunc func)
+        {
+            if (_simpleSymbolFactories.ContainsKey(ver))
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.FactoryMethodAlreadyRegistered + ver);
+
+            _simpleSymbolFactories[ver] = func;
         }
 
         /// <summary>
@@ -287,11 +333,18 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="owner">The owner.</param>
         /// <returns></returns>
-        public static SimpleSymbolDefinition CreateSimpleSymbol(IServerConnection owner)
+        public static ISimpleSymbolDefinition CreateSimpleSymbol(IServerConnection owner, Version version, string name, string description)
         {
             Check.NotNull(owner, "owner");
 
-            return new SimpleSymbolDefinition() { CurrentConnection = owner };
+            if (!_simpleSymbolFactories.ContainsKey(version))
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownSymbolDefVersion + version.ToString());
+
+            var simp = _simpleSymbolFactories[version]();
+            simp.CurrentConnection = owner;
+            simp.Name = name;
+            simp.Description = description;
+            return simp;
         }
 
         /// <summary>
@@ -299,11 +352,18 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="owner">The owner.</param>
         /// <returns></returns>
-        public static CompoundSymbolDefinition CreateCompoundSymbol(IServerConnection owner)
+        public static ICompoundSymbolDefinition CreateCompoundSymbol(IServerConnection owner, Version version, string name, string description)
         {
             Check.NotNull(owner, "owner");
 
-            return new CompoundSymbolDefinition() { CurrentConnection = owner };
+            if (!_compoundSymbolFactories.ContainsKey(version))
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownSymbolDefVersion + version.ToString());
+
+            var comp = _compoundSymbolFactories[version]();
+            comp.CurrentConnection = owner;
+            comp.Name = name;
+            comp.Description = description;
+            return comp;
         }
 
         static readonly string[] parameterizedWidgets = 

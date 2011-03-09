@@ -28,7 +28,8 @@ using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class HelpWidgetCtrl : UserControl, IWidgetEditor
+    [ToolboxItem(false)]
+    internal partial class HelpWidgetCtrl : UserControl, IWidgetEditor
     {
         public HelpWidgetCtrl()
         {

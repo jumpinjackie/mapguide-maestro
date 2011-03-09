@@ -30,6 +30,7 @@ using System.IO;
 
 namespace Maestro.Editors.FeatureSource.Providers.Shp
 {
+    [ToolboxItem(false)]
     internal partial class ShpFileCtrl : FileBasedCtrl
     {
         public ShpFileCtrl()

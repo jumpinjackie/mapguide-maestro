@@ -29,7 +29,8 @@ using OSGeo.MapGuide.ObjectModels.FeatureSource;
 
 namespace Maestro.Editors.FeatureSource.Providers.Gdal
 {
-    public partial class GdalProviderCtrl : EditorBindableCollapsiblePanel
+    [ToolboxItem(false)]
+    internal partial class GdalProviderCtrl : EditorBindableCollapsiblePanel
     {
         public GdalProviderCtrl()
         {

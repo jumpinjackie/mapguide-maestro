@@ -477,6 +477,24 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to A description for this symbol.
+        /// </summary>
+        internal static string DefaultSymbolDescription {
+            get {
+                return ResourceManager.GetString("DefaultSymbolDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MySymbol.
+        /// </summary>
+        internal static string DefaultSymbolName {
+            get {
+                return ResourceManager.GetString("DefaultSymbolName", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap disk {
             get {
                 object obj = ResourceManager.GetObject("disk", resourceCulture);
@@ -1677,7 +1695,7 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a new Compund Symbol Definition.
+        ///   Looks up a localized string similar to Create a new Compund Symbol Definition using the v1.0.0 schema.
         /// </summary>
         internal static string TPL_CSD_DESC {
             get {
@@ -1686,7 +1704,7 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Compound Symbol Definition.
+        ///   Looks up a localized string similar to Compound Symbol Definition (v1.0.0).
         /// </summary>
         internal static string TPL_CSD_NAME {
             get {
@@ -1857,7 +1875,7 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a new Simple Symbol Definition.
+        ///   Looks up a localized string similar to Create a new Simple Symbol Definition using the v1.0.0 schema.
         /// </summary>
         internal static string TPL_SSD_DESC {
             get {
@@ -1866,7 +1884,7 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Simple Symbol Definition.
+        ///   Looks up a localized string similar to Simple Symbol Definition (v1.0.0).
         /// </summary>
         internal static string TPL_SSD_NAME {
             get {

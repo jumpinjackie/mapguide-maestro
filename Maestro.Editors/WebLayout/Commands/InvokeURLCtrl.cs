@@ -31,6 +31,7 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Editors.WebLayout.Commands
 {
+    [ToolboxItem(false)]
     internal partial class InvokeURLCtrl : EditorBase
     {
         public InvokeURLCtrl()

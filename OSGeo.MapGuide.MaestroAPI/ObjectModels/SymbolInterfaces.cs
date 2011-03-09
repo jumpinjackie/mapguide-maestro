@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 
 namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
 {
@@ -154,7 +155,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     /// <summary>
     /// Base interface of all symbol definitions
     /// </summary>
-    public interface ISymbolDefinitionBase
+    public interface ISymbolDefinitionBase : IResource
     {
         /// <summary>
         /// Gets or sets the name.
@@ -178,19 +179,19 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// Gets the graphics.
         /// </summary>
         /// <value>The graphics.</value>
-        IEnumerable<IGraphics> Graphics { get; }
+        IEnumerable<IGraphicBase> Graphics { get; }
 
         /// <summary>
         /// Adds the graphics.
         /// </summary>
         /// <param name="graphics">The graphics.</param>
-        void AddGraphics(IGraphics graphics);
+        void AddGraphics(IGraphicBase graphics);
 
         /// <summary>
         /// Removes the graphics.
         /// </summary>
         /// <param name="graphics">The graphics.</param>
-        void RemoveGraphics(IGraphics graphics);
+        void RemoveGraphics(IGraphicBase graphics);
 
         /// <summary>
         /// Gets or sets the resize box.
@@ -326,12 +327,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <summary>
         /// Specifies the horizontal offset to apply to the symbol origin, in mm.  This offset is applied before the symbol is scaled and rotated.  Defaults to 0
         /// </summary>
-        double OriginOffsetX { get; set; }
+        double? OriginOffsetX { get; set; }
 
         /// <summary>
         /// Specifies the vertical offset to apply to the symbol origin, in mm.  This offset is applied before the symbol is scaled and rotated.  Defaults to 0
         /// </summary>
-        double OriginOffsetY { get; set; }
+        double? OriginOffsetY { get; set; }
     }
 
     /// <summary>
@@ -600,7 +601,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// Gets or sets the type of the data.
         /// </summary>
         /// <value>The type of the data.</value>
-        DataType DataType { get; set; }
+        string DataType { get; set; }
     }
 
     /// <summary>
@@ -681,7 +682,11 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <summary>
         /// Inlined definition
         /// </summary>
-        Inline
+        Inline,
+        /// <summary>
+        /// Undefined
+        /// </summary>
+        Undefined
     }
 
     /// <summary>
@@ -1271,5 +1276,30 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     #endregion
 
     #region Symbol Definition 1.1.0 interfaces
+    /// <summary>
+    /// An extension of the text element to support rich text
+    /// </summary>
+    public interface IText2 : IText
+    {
+        /// <summary>
+        /// Gets or sets the type of rich text markup used to render the contents
+        /// </summary>
+        string Markup { get; set; }
+
+        /// <summary>
+        /// Gets or sets the text style attribute to create a line that runs on top of the text
+        /// </summary>
+        string Overlined { get; set; }
+
+        /// <summary>
+        /// Gets or sets the skew of shear angle to be applied to the text
+        /// </summary>
+        string ObliqueAngle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the width scale applied to inter character spacing independent of the font character spacing
+        /// </summary>
+        string TrackSpacing { get; set; }
+    }
     #endregion
 }

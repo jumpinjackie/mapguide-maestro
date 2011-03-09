@@ -36,6 +36,7 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.FeatureSource
 {
+    [ToolboxItem(false)]
     internal partial class ExtensionsCtrl : EditorBindableCollapsiblePanel
     {
         public ExtensionsCtrl()

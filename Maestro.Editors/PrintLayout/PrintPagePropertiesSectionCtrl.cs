@@ -30,7 +30,8 @@ using OSGeo.MapGuide.ObjectModels.PrintLayout;
 
 namespace Maestro.Editors.PrintLayout
 {
-    [ToolboxItem(true)]
+    //[ToolboxItem(true)]
+    [ToolboxItem(false)]
     internal partial class PrintPagePropertiesSectionCtrl : EditorBindableCollapsiblePanel
     {
         public PrintPagePropertiesSectionCtrl()

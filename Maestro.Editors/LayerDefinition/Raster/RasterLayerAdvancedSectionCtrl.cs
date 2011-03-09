@@ -30,8 +30,8 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.LayerDefinition.Raster
 {
-    [ToolboxItem(true)]
-    public partial class RasterLayerAdvancedSectionCtrl : EditorBindableCollapsiblePanel
+    [ToolboxItem(false)]
+    internal partial class RasterLayerAdvancedSectionCtrl : EditorBindableCollapsiblePanel
     {
         public RasterLayerAdvancedSectionCtrl()
         {

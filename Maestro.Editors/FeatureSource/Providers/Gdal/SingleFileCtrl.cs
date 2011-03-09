@@ -30,7 +30,8 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Editors.FeatureSource.Providers.Gdal
 {
-    public partial class SingleFileCtrl : EditorBase
+    [ToolboxItem(false)]
+    internal partial class SingleFileCtrl : EditorBase
     {
         public SingleFileCtrl()
         {

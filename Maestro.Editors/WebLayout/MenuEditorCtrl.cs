@@ -30,6 +30,7 @@ using System.Diagnostics;
 
 namespace Maestro.Editors.WebLayout
 {
+    [ToolboxItem(false)]
     internal partial class MenuEditorCtrl : EditorBase
     {
         public MenuEditorCtrl()

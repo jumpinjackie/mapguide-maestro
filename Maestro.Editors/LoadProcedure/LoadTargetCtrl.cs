@@ -30,6 +30,7 @@ using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 
 namespace Maestro.Editors.LoadProcedure
 {
+    [ToolboxItem(false)]
     internal partial class LoadTargetCtrl : EditorBindableCollapsiblePanel
     {
         public LoadTargetCtrl()

@@ -27,7 +27,8 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class CenterSelectionWidgetCtrl : WidgetEditorBase
+    [ToolboxItem(false)]
+    internal partial class CenterSelectionWidgetCtrl : WidgetEditorBase
     {
         public CenterSelectionWidgetCtrl()
         {

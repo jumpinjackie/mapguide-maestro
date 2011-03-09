@@ -10,7 +10,8 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
 {
-    public partial class TableConfigCtrl : UserControl
+    [ToolboxItem(false)]
+    internal partial class TableConfigCtrl : UserControl
     {
         public TableConfigCtrl()
         {

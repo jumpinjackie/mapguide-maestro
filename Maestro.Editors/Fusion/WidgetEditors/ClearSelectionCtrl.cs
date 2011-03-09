@@ -27,7 +27,8 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class ClearSelectionCtrl : WidgetEditorBase
+    [ToolboxItem(false)]
+    internal partial class ClearSelectionCtrl : WidgetEditorBase
     {
         public ClearSelectionCtrl()
         {

@@ -38,6 +38,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 	/// <summary>
 	/// Summary description for PointFeatureStyleEditor.
 	/// </summary>
+    [ToolboxItem(false)]
 	internal class PointFeatureStyleEditor : System.Windows.Forms.UserControl
 	{
 		private System.Windows.Forms.GroupBox groupBox1;

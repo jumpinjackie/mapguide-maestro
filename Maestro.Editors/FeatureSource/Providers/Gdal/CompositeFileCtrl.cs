@@ -37,6 +37,7 @@ using System.Collections.Specialized;
 
 namespace Maestro.Editors.FeatureSource.Providers.Gdal
 {
+    [ToolboxItem(false)]
     internal partial class CompositeFileCtrl : EditorBase
     {
         internal CompositeFileCtrl()

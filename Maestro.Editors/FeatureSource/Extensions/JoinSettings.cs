@@ -33,6 +33,7 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.FeatureSource.Extensions
 {
+    [ToolboxItem(false)]
     internal partial class JoinSettings : UserControl, IEditorBindable
     {
         private JoinSettings()

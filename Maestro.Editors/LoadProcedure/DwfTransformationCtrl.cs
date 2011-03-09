@@ -30,6 +30,7 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Editors.LoadProcedure
 {
+    [ToolboxItem(false)]
     internal partial class DwfTransformationCtrl : EditorBindableCollapsiblePanel
     {
         public DwfTransformationCtrl()

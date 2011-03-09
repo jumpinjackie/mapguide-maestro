@@ -36,6 +36,7 @@ using Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc
 {
+    [ToolboxItem(false)]
     internal partial class OdbcProviderCtrl : EditorBindableCollapsiblePanel
     {
         enum OdbcConnectionMethod

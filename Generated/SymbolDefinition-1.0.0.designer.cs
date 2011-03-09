@@ -5,7 +5,7 @@
 //    <NameSpace>OSGeo.MapGuide.ObjectModels.SymbolDefinition</NameSpace><Collection>BindingList</Collection><codeType>CSharp</codeType><EnableDataBinding>True</EnableDataBinding><EnableLasyLoading>False</EnableLasyLoading><HidePrivateFieldInIDE>True</HidePrivateFieldInIDE><EnableSummaryComment>True</EnableSummaryComment><IncludeSerializeMethod>True</IncludeSerializeMethod><UseBaseClass>False</UseBaseClass><GenerateCloneMethod>True</GenerateCloneMethod><GenerateDataContracts>False</GenerateDataContracts><CodeBaseTag>Net20</CodeBaseTag><SerializeMethodName>Serialize</SerializeMethodName><DeserializeMethodName>Deserialize</DeserializeMethodName><SaveToFileMethodName>SaveToFile</SaveToFileMethodName><LoadFromFileMethodName>LoadFromFile</LoadFromFileMethodName><GenerateXMLAttributes>True</GenerateXMLAttributes><AutomaticProperties>False</AutomaticProperties><DisableDebug>False</DisableDebug><CustomUsings></CustomUsings><ExcludeIncludedTypes>False</ExcludeIncludedTypes><EnableInitializeFields>False</EnableInitializeFields>
 //  </auto-generated>
 // ------------------------------------------------------------------------------
-namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition {
+namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0 {
     using System;
     using System.Diagnostics;
     using System.Xml.Serialization;
@@ -13,215 +13,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition {
     using System.Xml.Schema;
     using System.ComponentModel;
     using System.IO;
-    
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.3.0.33572")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-    [System.Xml.Serialization.XmlRootAttribute("SimpleSymbolDefinition", Namespace="", IsNullable=false)]
-    public partial class SimpleSymbolDefinition1 : SimpleSymbolDefinition, System.ComponentModel.INotifyPropertyChanged {
-        
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        private string versionField;
-        
-        private static System.Xml.Serialization.XmlSerializer serializer;
-        
-        public SimpleSymbolDefinition1() {
-            this.versionField = "1.0.0";
-        }
-        
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string version {
-            get {
-                return this.versionField;
-            }
-            set {
-                if ((this.versionField != null)) {
-                    if ((versionField.Equals(value) != true)) {
-                        this.versionField = value;
-                        this.OnPropertyChanged("version");
-                    }
-                }
-                else {
-                    this.versionField = value;
-                    this.OnPropertyChanged("version");
-                }
-            }
-        }
-        
-        private static System.Xml.Serialization.XmlSerializer Serializer {
-            get {
-                if ((serializer == null)) {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(SimpleSymbolDefinition1));
-                }
-                return serializer;
-            }
-        }
-        
-        //public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        //public virtual void OnPropertyChanged(string info) {
-        //    System.ComponentModel.PropertyChangedEventHandler handler = this.PropertyChanged;
-        //    if ((handler != null)) {
-        //        handler(this, new System.ComponentModel.PropertyChangedEventArgs(info));
-        //    }
-        //}
-        
-        #region Serialize/Deserialize
-        /// <summary>
-        /// Serializes current SimpleSymbolDefinition1 object into an XML document
-        /// </summary>
-        /// <returns>string XML value</returns>
-        public virtual string Serialize() {
-            System.IO.StreamReader streamReader = null;
-            System.IO.MemoryStream memoryStream = null;
-            try {
-                memoryStream = new System.IO.MemoryStream();
-                Serializer.Serialize(memoryStream, this);
-                memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
-                streamReader = new System.IO.StreamReader(memoryStream);
-                return streamReader.ReadToEnd();
-            }
-            finally {
-                if ((streamReader != null)) {
-                    streamReader.Dispose();
-                }
-                if ((memoryStream != null)) {
-                    memoryStream.Dispose();
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Deserializes workflow markup into an SimpleSymbolDefinition1 object
-        /// </summary>
-        /// <param name="xml">string workflow markup to deserialize</param>
-        /// <param name="obj">Output SimpleSymbolDefinition1 object</param>
-        /// <param name="exception">output Exception value if deserialize failed</param>
-        /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out SimpleSymbolDefinition1 obj, out System.Exception exception) {
-            exception = null;
-            obj = default(SimpleSymbolDefinition1);
-            try {
-                obj = Deserialize(xml);
-                return true;
-            }
-            catch (System.Exception ex) {
-                exception = ex;
-                return false;
-            }
-        }
-        
-        public static bool Deserialize(string xml, out SimpleSymbolDefinition1 obj) {
-            System.Exception exception = null;
-            return Deserialize(xml, out obj, out exception);
-        }
-        
-        public static SimpleSymbolDefinition1 Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
-            try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((SimpleSymbolDefinition1)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
-            }
-            finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Serializes current SimpleSymbolDefinition1 object into file
-        /// </summary>
-        /// <param name="fileName">full path of outupt xml file</param>
-        /// <param name="exception">output Exception value if failed</param>
-        /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
-            exception = null;
-            try {
-                SaveToFile(fileName);
-                return true;
-            }
-            catch (System.Exception e) {
-                exception = e;
-                return false;
-            }
-        }
-        
-        public virtual void SaveToFile(string fileName) {
-            System.IO.StreamWriter streamWriter = null;
-            try {
-                string xmlString = Serialize();
-                System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
-                streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
-                streamWriter.Close();
-            }
-            finally {
-                if ((streamWriter != null)) {
-                    streamWriter.Dispose();
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Deserializes xml markup from file into an SimpleSymbolDefinition1 object
-        /// </summary>
-        /// <param name="fileName">string xml file to load and deserialize</param>
-        /// <param name="obj">Output SimpleSymbolDefinition1 object</param>
-        /// <param name="exception">output Exception value if deserialize failed</param>
-        /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out SimpleSymbolDefinition1 obj, out System.Exception exception) {
-            exception = null;
-            obj = default(SimpleSymbolDefinition1);
-            try {
-                obj = LoadFromFile(fileName);
-                return true;
-            }
-            catch (System.Exception ex) {
-                exception = ex;
-                return false;
-            }
-        }
-        
-        public static bool LoadFromFile(string fileName, out SimpleSymbolDefinition1 obj) {
-            System.Exception exception = null;
-            return LoadFromFile(fileName, out obj, out exception);
-        }
-        
-        public static SimpleSymbolDefinition1 LoadFromFile(string fileName) {
-            System.IO.FileStream file = null;
-            System.IO.StreamReader sr = null;
-            try {
-                file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
-                sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
-                sr.Close();
-                file.Close();
-                return Deserialize(xmlString);
-            }
-            finally {
-                if ((file != null)) {
-                    file.Dispose();
-                }
-                if ((sr != null)) {
-                    sr.Dispose();
-                }
-            }
-        }
-        #endregion
-        
-        #region Clone method
-        /// <summary>
-        /// Create a clone of this SimpleSymbolDefinition1 object
-        /// </summary>
-        public virtual SimpleSymbolDefinition1 Clone() {
-            return ((SimpleSymbolDefinition1)(this.MemberwiseClone()));
-        }
-        #endregion
-    }
+    using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
     
     /// <summary>
     /// A 2D simple symbol for stylization.
@@ -254,6 +46,32 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition {
         [EditorBrowsable(EditorBrowsableState.Never)]
         private ExtendedDataType extendedData1Field;
         
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        private string versionField;
+        
+        public SimpleSymbolDefinition() {
+            this.versionField = "1.0.0";
+        }
+        
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string version {
+            get {
+                return this.versionField;
+            }
+            set {
+                if ((this.versionField != null)) {
+                    if ((versionField.Equals(value) != true)) {
+                        this.versionField = value;
+                        this.OnPropertyChanged("version");
+                    }
+                }
+                else {
+                    this.versionField = value;
+                    this.OnPropertyChanged("version");
+                }
+            }
+        }
+
         private static System.Xml.Serialization.XmlSerializer serializer;
         
         /// <summary>
@@ -5462,6 +5280,32 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition {
         [EditorBrowsable(EditorBrowsableState.Never)]
         private ExtendedDataType extendedData1Field;
         
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        private string versionField;
+        
+        public CompoundSymbolDefinition() {
+            this.versionField = "1.0.0";
+        }
+        
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string version {
+            get {
+                return this.versionField;
+            }
+            set {
+                if ((this.versionField != null)) {
+                    if ((versionField.Equals(value) != true)) {
+                        this.versionField = value;
+                        this.OnPropertyChanged("version");
+                    }
+                }
+                else {
+                    this.versionField = value;
+                    this.OnPropertyChanged("version");
+                }
+            }
+        }
+
         private static System.Xml.Serialization.XmlSerializer serializer;
         
         [System.Xml.Serialization.XmlElementAttribute("SimpleSymbol")]
@@ -5669,214 +5513,6 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition {
         /// </summary>
         public virtual CompoundSymbolDefinition Clone() {
             return ((CompoundSymbolDefinition)(this.MemberwiseClone()));
-        }
-        #endregion
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.3.0.33572")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-    [System.Xml.Serialization.XmlRootAttribute("CompoundSymbolDefinition", Namespace="", IsNullable=false)]
-    public partial class CompoundSymbolDefinition1 : CompoundSymbolDefinition, System.ComponentModel.INotifyPropertyChanged {
-        
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        private string versionField;
-        
-        private static System.Xml.Serialization.XmlSerializer serializer;
-        
-        public CompoundSymbolDefinition1() {
-            this.versionField = "1.0.0";
-        }
-        
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string version {
-            get {
-                return this.versionField;
-            }
-            set {
-                if ((this.versionField != null)) {
-                    if ((versionField.Equals(value) != true)) {
-                        this.versionField = value;
-                        this.OnPropertyChanged("version");
-                    }
-                }
-                else {
-                    this.versionField = value;
-                    this.OnPropertyChanged("version");
-                }
-            }
-        }
-        
-        private static System.Xml.Serialization.XmlSerializer Serializer {
-            get {
-                if ((serializer == null)) {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(CompoundSymbolDefinition1));
-                }
-                return serializer;
-            }
-        }
-        
-        //public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        //public virtual void OnPropertyChanged(string info) {
-        //    System.ComponentModel.PropertyChangedEventHandler handler = this.PropertyChanged;
-        //    if ((handler != null)) {
-        //        handler(this, new System.ComponentModel.PropertyChangedEventArgs(info));
-        //    }
-        //}
-        
-        #region Serialize/Deserialize
-        /// <summary>
-        /// Serializes current CompoundSymbolDefinition1 object into an XML document
-        /// </summary>
-        /// <returns>string XML value</returns>
-        public virtual string Serialize() {
-            System.IO.StreamReader streamReader = null;
-            System.IO.MemoryStream memoryStream = null;
-            try {
-                memoryStream = new System.IO.MemoryStream();
-                Serializer.Serialize(memoryStream, this);
-                memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
-                streamReader = new System.IO.StreamReader(memoryStream);
-                return streamReader.ReadToEnd();
-            }
-            finally {
-                if ((streamReader != null)) {
-                    streamReader.Dispose();
-                }
-                if ((memoryStream != null)) {
-                    memoryStream.Dispose();
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Deserializes workflow markup into an CompoundSymbolDefinition1 object
-        /// </summary>
-        /// <param name="xml">string workflow markup to deserialize</param>
-        /// <param name="obj">Output CompoundSymbolDefinition1 object</param>
-        /// <param name="exception">output Exception value if deserialize failed</param>
-        /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out CompoundSymbolDefinition1 obj, out System.Exception exception) {
-            exception = null;
-            obj = default(CompoundSymbolDefinition1);
-            try {
-                obj = Deserialize(xml);
-                return true;
-            }
-            catch (System.Exception ex) {
-                exception = ex;
-                return false;
-            }
-        }
-        
-        public static bool Deserialize(string xml, out CompoundSymbolDefinition1 obj) {
-            System.Exception exception = null;
-            return Deserialize(xml, out obj, out exception);
-        }
-        
-        public static CompoundSymbolDefinition1 Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
-            try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((CompoundSymbolDefinition1)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
-            }
-            finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Serializes current CompoundSymbolDefinition1 object into file
-        /// </summary>
-        /// <param name="fileName">full path of outupt xml file</param>
-        /// <param name="exception">output Exception value if failed</param>
-        /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
-            exception = null;
-            try {
-                SaveToFile(fileName);
-                return true;
-            }
-            catch (System.Exception e) {
-                exception = e;
-                return false;
-            }
-        }
-        
-        public virtual void SaveToFile(string fileName) {
-            System.IO.StreamWriter streamWriter = null;
-            try {
-                string xmlString = Serialize();
-                System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
-                streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
-                streamWriter.Close();
-            }
-            finally {
-                if ((streamWriter != null)) {
-                    streamWriter.Dispose();
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Deserializes xml markup from file into an CompoundSymbolDefinition1 object
-        /// </summary>
-        /// <param name="fileName">string xml file to load and deserialize</param>
-        /// <param name="obj">Output CompoundSymbolDefinition1 object</param>
-        /// <param name="exception">output Exception value if deserialize failed</param>
-        /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out CompoundSymbolDefinition1 obj, out System.Exception exception) {
-            exception = null;
-            obj = default(CompoundSymbolDefinition1);
-            try {
-                obj = LoadFromFile(fileName);
-                return true;
-            }
-            catch (System.Exception ex) {
-                exception = ex;
-                return false;
-            }
-        }
-        
-        public static bool LoadFromFile(string fileName, out CompoundSymbolDefinition1 obj) {
-            System.Exception exception = null;
-            return LoadFromFile(fileName, out obj, out exception);
-        }
-        
-        public static CompoundSymbolDefinition1 LoadFromFile(string fileName) {
-            System.IO.FileStream file = null;
-            System.IO.StreamReader sr = null;
-            try {
-                file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
-                sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
-                sr.Close();
-                file.Close();
-                return Deserialize(xmlString);
-            }
-            finally {
-                if ((file != null)) {
-                    file.Dispose();
-                }
-                if ((sr != null)) {
-                    sr.Dispose();
-                }
-            }
-        }
-        #endregion
-        
-        #region Clone method
-        /// <summary>
-        /// Create a clone of this CompoundSymbolDefinition1 object
-        /// </summary>
-        public virtual CompoundSymbolDefinition1 Clone() {
-            return ((CompoundSymbolDefinition1)(this.MemberwiseClone()));
         }
         #endregion
     }

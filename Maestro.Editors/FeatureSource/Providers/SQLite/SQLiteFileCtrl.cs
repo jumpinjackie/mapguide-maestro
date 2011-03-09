@@ -29,6 +29,7 @@ using System.Diagnostics;
 
 namespace Maestro.Editors.FeatureSource.Providers.SQLite
 {
+    [ToolboxItem(false)]
     internal partial class SQLiteFileCtrl : FileBasedCtrl
     {
         public SQLiteFileCtrl()

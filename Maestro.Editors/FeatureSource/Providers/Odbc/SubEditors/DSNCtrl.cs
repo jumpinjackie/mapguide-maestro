@@ -30,7 +30,8 @@ using OSGeo.MapGuide.ObjectModels.FeatureSource;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
 {
-    public partial class DSNCtrl : EditorBase, IOdbcSubEditor
+    [ToolboxItem(false)]
+    internal partial class DSNCtrl : EditorBase, IOdbcSubEditor
     {
         public DSNCtrl()
         {

@@ -27,7 +27,8 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class PanWidgetCtrl : WidgetEditorBase
+    [ToolboxItem(false)]
+    internal partial class PanWidgetCtrl : WidgetEditorBase
     {
         public PanWidgetCtrl()
         {

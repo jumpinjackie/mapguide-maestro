@@ -33,6 +33,7 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Editors.FeatureSource
 {
+    [ToolboxItem(false)]
     internal partial class CoordSysOverrideCtrl : EditorBindableCollapsiblePanel
     {
         public CoordSysOverrideCtrl()

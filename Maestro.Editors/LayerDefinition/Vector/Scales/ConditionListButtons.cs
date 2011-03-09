@@ -32,6 +32,7 @@ using Maestro.Editors.LayerDefinition.Vector.Thematics;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
+    [ToolboxItem(false)]
     internal partial class ConditionListButtons : UserControl
     {
         private IPointVectorStyle m_point;

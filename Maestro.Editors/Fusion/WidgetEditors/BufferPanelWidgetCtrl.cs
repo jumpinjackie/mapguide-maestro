@@ -29,7 +29,8 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class BufferPanelWidgetCtrl : UserControl, IWidgetEditor, INotifyPropertyChanged
+    [ToolboxItem(false)]
+    internal partial class BufferPanelWidgetCtrl : UserControl, IWidgetEditor, INotifyPropertyChanged
     {
         public BufferPanelWidgetCtrl()
         {

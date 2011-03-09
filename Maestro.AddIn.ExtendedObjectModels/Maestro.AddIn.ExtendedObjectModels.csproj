@@ -102,6 +102,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Templates\SQLiteLoadProcedureItemTemplate.cs" />
+    <Compile Include="Templates\SymbolDefinition110ItemTemplate.cs" />
     <Compile Include="Templates\VectorLayer130ItemTemplate.cs" />
     <Compile Include="Templates\VectorLayer120ItemTemplate.cs" />
     <Compile Include="Templates\VectorLayer110ItemTemplate.cs" />

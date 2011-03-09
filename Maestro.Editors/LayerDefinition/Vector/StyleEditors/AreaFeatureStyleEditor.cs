@@ -33,6 +33,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 	/// <summary>
 	/// Summary description for AreaFeatureStyleEditor.
 	/// </summary>
+    [ToolboxItem(false)]
 	internal class AreaFeatureStyleEditor : System.Windows.Forms.UserControl
 	{
 		private System.Windows.Forms.ComboBox sizeContextCombo;

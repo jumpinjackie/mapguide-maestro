@@ -35,7 +35,8 @@ using System.Diagnostics;
 
 namespace Maestro.Editors.Fusion
 {
-    public partial class MapCtrl : UserControl
+    [ToolboxItem(false)]
+    internal partial class MapCtrl : UserControl
     {
         const string G_NORMAL_MAP = "G_NORMAL_MAP";
         const string G_SATELLITE_MAP = "G_SATELLITE_MAP";

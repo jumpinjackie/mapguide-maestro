@@ -34,8 +34,9 @@ namespace Maestro.Editors.Fusion
 {
     internal delegate void TemplateChangeEventHandler(IApplicationDefinitionTemplateInfo selectedTemplate);
 
-    [ToolboxItem(true)]
-    public partial class FlexLayoutSettingsCtrl : EditorBindableCollapsiblePanel
+    [ToolboxItem(false)]
+    //[ToolboxItem(true)]
+    internal partial class FlexLayoutSettingsCtrl : EditorBindableCollapsiblePanel
     {
         public FlexLayoutSettingsCtrl()
         {

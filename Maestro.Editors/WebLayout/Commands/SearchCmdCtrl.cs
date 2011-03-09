@@ -35,6 +35,7 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.WebLayout.Commands
 {
+    [ToolboxItem(false)]
     internal partial class SearchCmdCtrl : EditorBase
     {
         public SearchCmdCtrl()

@@ -29,7 +29,8 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class ExtentHistoryWidgetCtrl : UserControl, IWidgetEditor
+    [ToolboxItem(false)]
+    internal partial class ExtentHistoryWidgetCtrl : UserControl, IWidgetEditor
     {
         public ExtentHistoryWidgetCtrl()
         {

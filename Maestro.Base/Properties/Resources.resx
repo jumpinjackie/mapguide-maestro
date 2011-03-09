@@ -449,10 +449,10 @@
     <value>Print Layout</value>
   </data>
   <data name="TPL_SSD_DESC" xml:space="preserve">
-    <value>Create a new Simple Symbol Definition</value>
+    <value>Create a new Simple Symbol Definition using the v1.0.0 schema</value>
   </data>
   <data name="TPL_SSD_NAME" xml:space="preserve">
-    <value>Simple Symbol Definition</value>
+    <value>Simple Symbol Definition (v1.0.0)</value>
   </data>
   <data name="TPL_WL_DESC" xml:space="preserve">
     <value>Create a new Web Layout using the v1.0.0 schema</value>
@@ -575,10 +575,10 @@ Do you want to convert the values?</value>
     <value>User Defined Resource Template</value>
   </data>
   <data name="TPL_CSD_DESC" xml:space="preserve">
-    <value>Create a new Compund Symbol Definition</value>
+    <value>Create a new Compund Symbol Definition using the v1.0.0 schema</value>
   </data>
   <data name="TPL_CSD_NAME" xml:space="preserve">
-    <value>Compound Symbol Definition</value>
+    <value>Compound Symbol Definition (v1.0.0)</value>
   </data>
   <data name="ValidationBuildingList" xml:space="preserve">
     <value>Building resource list...</value>
@@ -837,5 +837,11 @@ Do you want to convert the values?</value>
   </data>
   <data name="SiteExplorer_MigrateResources" xml:space="preserve">
     <value>Migrate Resources</value>
+  </data>
+  <data name="DefaultSymbolDescription" xml:space="preserve">
+    <value>A description for this symbol</value>
+  </data>
+  <data name="DefaultSymbolName" xml:space="preserve">
+    <value>MySymbol</value>
   </data>
 </root>

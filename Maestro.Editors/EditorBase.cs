@@ -22,9 +22,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using System.ComponentModel;
 
 namespace Maestro.Editors
 {
+    [ToolboxItem(false)]
     /// <summary>
     /// Base class of all resource editors
     /// </summary>

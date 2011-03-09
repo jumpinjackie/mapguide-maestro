@@ -35,8 +35,8 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Editors.LayerDefinition.Raster
 {
-    [ToolboxItem(true)]
-    public partial class RasterLayerSettingsSectionCtrl : EditorBindableCollapsiblePanel
+    [ToolboxItem(false)]
+    internal partial class RasterLayerSettingsSectionCtrl : EditorBindableCollapsiblePanel
     {
         public RasterLayerSettingsSectionCtrl()
         {

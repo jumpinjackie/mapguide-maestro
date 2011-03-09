@@ -30,6 +30,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 	/// <summary>
 	/// Summary description for FillStyleEditor.
 	/// </summary>
+    [ToolboxItem(false)]
 	internal class FillStyleEditor : System.Windows.Forms.UserControl
     {
 		public ImageStylePicker fillCombo;

@@ -29,7 +29,8 @@ using Maestro.Editors.Generic;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class MapMenuWidgetCtrl : UserControl, IWidgetEditor
+    [ToolboxItem(false)]
+    internal partial class MapMenuWidgetCtrl : UserControl, IWidgetEditor
     {
         public MapMenuWidgetCtrl()
         {

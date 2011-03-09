@@ -35,7 +35,8 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.LayerDefinition.Vector
 {
-    [ToolboxItem(true)]
+    //[ToolboxItem(true)]
+    [ToolboxItem(false)]
     internal partial class VectorLayerSettingsSectionCtrl : EditorBindableCollapsiblePanel
     {
         public VectorLayerSettingsSectionCtrl()

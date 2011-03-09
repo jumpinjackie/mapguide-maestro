@@ -35,6 +35,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 	/// <summary>
 	/// Summary description for LineFeatureStyleEditor.
 	/// </summary>
+    [ToolboxItem(false)]
 	internal class LineFeatureStyleEditor : System.Windows.Forms.UserControl
 	{
 		/// <summary>

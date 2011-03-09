@@ -21,7 +21,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\SDK\bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;SYM_DEF_110</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -41,6 +41,12 @@
   <ItemGroup>
     <Compile Include="..\..\Generated\SymbolDefinition-1.1.0.designer.cs">
       <Link>SymbolDefinition-1.1.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\OSGeo.MapGuide.MaestroAPI\ObjectModels\SymbolDefFactory.cs">
+      <Link>SymbolDefFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\OSGeo.MapGuide.MaestroAPI\ObjectModels\SymbolDefinition.cs">
+      <Link>SymbolDefinition.cs</Link>
     </Compile>
     <Compile Include="..\..\Properties\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>

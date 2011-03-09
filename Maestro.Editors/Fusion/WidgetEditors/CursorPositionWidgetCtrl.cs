@@ -29,7 +29,8 @@ using System.Globalization;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class CursorPositionWidgetCtrl : UserControl, IWidgetEditor
+    [ToolboxItem(false)]
+    internal partial class CursorPositionWidgetCtrl : UserControl, IWidgetEditor
     {
         public CursorPositionWidgetCtrl()
         {

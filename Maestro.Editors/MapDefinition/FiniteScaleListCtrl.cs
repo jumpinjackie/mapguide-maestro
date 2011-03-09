@@ -29,6 +29,7 @@ using OSGeo.MapGuide.ObjectModels.MapDefinition;
 
 namespace Maestro.Editors.MapDefinition
 {
+    [ToolboxItem(false)]
     internal partial class FiniteScaleListCtrl : UserControl
     {
         internal FiniteScaleListCtrl()

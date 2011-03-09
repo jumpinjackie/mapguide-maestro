@@ -27,7 +27,8 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class SelectionPanelWidgetCtrl : WidgetEditorBase
+    [ToolboxItem(false)]
+    internal partial class SelectionPanelWidgetCtrl : WidgetEditorBase
     {
         public SelectionPanelWidgetCtrl()
         {

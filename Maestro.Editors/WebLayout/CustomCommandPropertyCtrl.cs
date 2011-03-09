@@ -30,6 +30,7 @@ using Maestro.Editors.WebLayout.Commands;
 
 namespace Maestro.Editors.WebLayout
 {
+    [ToolboxItem(false)]
     internal partial class CustomCommandPropertyCtrl : EditorBase
     {
         public CustomCommandPropertyCtrl()

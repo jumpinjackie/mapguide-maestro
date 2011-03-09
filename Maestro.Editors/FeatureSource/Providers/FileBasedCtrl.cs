@@ -29,6 +29,7 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Editors.FeatureSource.Providers
 {
+    [ToolboxItem(false)]
     internal partial class FileBasedCtrl : EditorBindableCollapsiblePanel
     {
         public FileBasedCtrl()

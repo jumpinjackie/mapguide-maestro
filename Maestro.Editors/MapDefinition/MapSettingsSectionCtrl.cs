@@ -35,7 +35,8 @@ using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 
 namespace Maestro.Editors.MapDefinition
 {
-    [ToolboxItem(true)]
+    //[ToolboxItem(true)]
+    [ToolboxItem(false)]
     internal partial class MapSettingsSectionCtrl : EditorBindableCollapsiblePanel
     {
         public MapSettingsSectionCtrl()

@@ -31,8 +31,9 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.Fusion
 {
-    [ToolboxItem(true)]
-    public partial class WidgetSettingsCtrl : EditorBindableCollapsiblePanel
+    [ToolboxItem(false)]
+    //[ToolboxItem(true)]
+    internal partial class WidgetSettingsCtrl : EditorBindableCollapsiblePanel
     {
         public WidgetSettingsCtrl()
         {

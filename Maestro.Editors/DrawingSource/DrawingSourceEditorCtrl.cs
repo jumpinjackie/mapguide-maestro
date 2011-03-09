@@ -30,6 +30,7 @@ namespace Maestro.Editors.DrawingSource
     /// <summary>
     /// Editor control for Drawing Sources
     /// </summary>
+    [ToolboxItem(false)]
     public partial class DrawingSourceEditorCtrl : EditorBase
     {
         /// <summary>

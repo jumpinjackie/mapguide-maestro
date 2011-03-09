@@ -32,7 +32,8 @@ using OSGeo.MapGuide.ObjectModels.DrawingSource;
 
 namespace Maestro.Editors.DrawingSource
 {
-    [ToolboxItem(true)]
+    //[ToolboxItem(true)]
+    [ToolboxItem(false)]
     internal partial class SourceSectionCtrl : EditorBindableCollapsiblePanel
     {
         public SourceSectionCtrl()

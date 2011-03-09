@@ -27,7 +27,8 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class MeasureWidgetCtrl : UserControl
+    [ToolboxItem(false)]
+    internal partial class MeasureWidgetCtrl : UserControl
     {
         public MeasureWidgetCtrl()
         {

@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Maestro.Shared.UI;
+using System.ComponentModel;
 
 namespace Maestro.Editors.Common
 {
@@ -28,6 +29,7 @@ namespace Maestro.Editors.Common
     /// An extension of <see cref="CollapsiblePanel"/> with a default implementation of the 
     /// <see cref="IEditorBindable"/> interface
     /// </summary>
+    [ToolboxItem(false)]
     public class EditorBindableCollapsiblePanel : CollapsiblePanel, IEditorBindable
     {
         /// <summary>

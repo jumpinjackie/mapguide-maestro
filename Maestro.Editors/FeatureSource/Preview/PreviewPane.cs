@@ -34,7 +34,7 @@ using OSGeo.MapGuide.MaestroAPI.Feature;
 namespace Maestro.Editors.FeatureSource.Preview
 {
     //TODO: IGeometry objects do not currently display (we should be showing the WKT form)
-
+    [ToolboxItem(false)]
     internal partial class PreviewPane : UserControl, IQueryControl
     {
         private PreviewPane()

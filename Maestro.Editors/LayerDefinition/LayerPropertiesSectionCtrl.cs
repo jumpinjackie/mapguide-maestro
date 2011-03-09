@@ -12,7 +12,8 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Editors.LayerDefinition
 {
-    [ToolboxItem(true)]
+    //[ToolboxItem(true)]
+    [ToolboxItem(false)]
     internal partial class LayerPropertiesSectionCtrl : EditorBindableCollapsiblePanel
     {
         public LayerPropertiesSectionCtrl()

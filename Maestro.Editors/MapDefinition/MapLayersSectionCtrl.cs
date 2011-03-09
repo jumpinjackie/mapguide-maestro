@@ -39,7 +39,8 @@ namespace Maestro.Editors.MapDefinition
     /// </summary>
     public delegate void OpenLayerEventHandler(object sender, string layerResourceId);
 
-    [ToolboxItem(true)]
+    //[ToolboxItem(true)]
+    [ToolboxItem(false)]
     internal partial class MapLayersSectionCtrl : EditorBindableCollapsiblePanel
     {
         public MapLayersSectionCtrl()

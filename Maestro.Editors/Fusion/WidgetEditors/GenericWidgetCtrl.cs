@@ -32,7 +32,8 @@ namespace Maestro.Editors.Fusion.WidgetEditors
     /// <summary>
     /// A generic widget editor that edits the underlying XML content
     /// </summary>
-    public partial class GenericWidgetCtrl : UserControl, IWidgetEditor
+    [ToolboxItem(false)]
+    internal partial class GenericWidgetCtrl : UserControl, IWidgetEditor
     {
         public GenericWidgetCtrl()
         {

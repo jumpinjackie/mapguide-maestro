@@ -28,7 +28,8 @@ using System.Collections.Specialized;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
 {
-    public partial class KnownDriversCtrl : EditorBase, IOdbcSubEditor
+    [ToolboxItem(false)]
+    internal partial class KnownDriversCtrl : EditorBase, IOdbcSubEditor
     {
         public KnownDriversCtrl()
         {

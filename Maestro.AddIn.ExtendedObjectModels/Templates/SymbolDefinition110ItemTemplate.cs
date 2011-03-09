@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -22,17 +22,18 @@ using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
-using Res = Maestro.Base.Properties.Resources;
+using Res = Maestro.AddIn.ExtendedObjectModels.Properties.Resources;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels;
+using Maestro.Base.Templates;
 
-namespace Maestro.Base.Templates
+namespace Maestro.AddIn.ExtendedObjectModels.Templates
 {
-    public class SimpleSymbolDefinitionItemTemplate : ItemTemplate
+    public class SimpleSymbolDefinitionItem110Template : ItemTemplate
     {
-        public SimpleSymbolDefinitionItemTemplate()
+        public SimpleSymbolDefinitionItem110Template()
         {
-            Category = Res.TPL_CATEGORY_DEFAULT;
+            Category = Res.TPL_CATEGORY_MGOS20;
             Icon = Res.images_stack;
             Description = Res.TPL_SSD_DESC;
             Name = Res.TPL_SSD_NAME;
@@ -43,21 +44,21 @@ namespace Maestro.Base.Templates
         {
             get
             {
-                return new Version(1, 2);
+                return new Version(2, 0);
             }
         }
 
         public override IResource CreateItem(IServerConnection conn)
         {
-            return ObjectFactory.CreateSimpleSymbol(conn, new Version(1, 0, 0), Res.DefaultSymbolName, Res.DefaultSymbolDescription);
+            return ObjectFactory.CreateSimpleSymbol(conn, new Version(1, 1, 0), Res.DefaultSymbolName, Res.DefaultSymbolDescription);
         }
     }
 
-    public class CompoundSymbolDefinitionItemTemplate : ItemTemplate
+    public class CompoundSymbolDefinition110ItemTemplate : ItemTemplate
     {
-        public CompoundSymbolDefinitionItemTemplate()
+        public CompoundSymbolDefinition110ItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_DEFAULT;
+            Category = Res.TPL_CATEGORY_MGOS20;
             Icon = Res.images_stack;
             Description = Res.TPL_CSD_DESC;
             Name = Res.TPL_CSD_NAME;
@@ -68,13 +69,13 @@ namespace Maestro.Base.Templates
         {
             get
             {
-                return new Version(1, 2);
+                return new Version(2, 0);
             }
         }
 
         public override IResource CreateItem(IServerConnection conn)
         {
-            return ObjectFactory.CreateCompoundSymbol(conn, new Version(1, 0, 0), Res.DefaultSymbolName, Res.DefaultSymbolDescription);
+            return ObjectFactory.CreateCompoundSymbol(conn, new Version(1, 1, 0), Res.DefaultSymbolName, Res.DefaultSymbolDescription);
         }
     }
 }

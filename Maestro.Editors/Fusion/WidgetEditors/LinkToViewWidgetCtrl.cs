@@ -27,7 +27,8 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class LinkToViewWidgetCtrl : WidgetEditorBase
+    [ToolboxItem(false)]
+    internal partial class LinkToViewWidgetCtrl : WidgetEditorBase
     {
         public LinkToViewWidgetCtrl()
         {

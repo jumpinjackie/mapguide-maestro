@@ -29,6 +29,7 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
+    [ToolboxItem(false)]
     internal partial class Condition : UserControl
     {
         private IPointRule m_prt;

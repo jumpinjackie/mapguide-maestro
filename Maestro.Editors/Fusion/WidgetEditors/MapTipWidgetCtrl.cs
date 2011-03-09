@@ -27,7 +27,8 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class MapTipWidgetCtrl : UserControl
+    [ToolboxItem(false)]
+    internal partial class MapTipWidgetCtrl : UserControl
     {
         public MapTipWidgetCtrl()
         {

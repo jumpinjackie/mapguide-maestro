@@ -31,8 +31,9 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.LayerDefinition.Raster
 {
-    [ToolboxItem(true)]
-    public partial class RasterLayerVisibilitySectionCtrl : EditorBindableCollapsiblePanel
+    //[ToolboxItem(true)]
+    [ToolboxItem(false)]
+    internal partial class RasterLayerVisibilitySectionCtrl : EditorBindableCollapsiblePanel
     {
         public RasterLayerVisibilitySectionCtrl()
         {

@@ -28,7 +28,8 @@ using System.Collections.Specialized;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
 {
-    public partial class UnmanagedCtrl : EditorBase, IOdbcSubEditor
+    [ToolboxItem(false)]
+    internal partial class UnmanagedCtrl : EditorBase, IOdbcSubEditor
     {
         public UnmanagedCtrl()
         {

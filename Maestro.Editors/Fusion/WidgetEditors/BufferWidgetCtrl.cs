@@ -32,7 +32,8 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
-    public partial class BufferWidgetCtrl : UserControl, IWidgetEditor, INotifyPropertyChanged
+    [ToolboxItem(false)]
+    internal partial class BufferWidgetCtrl : UserControl, IWidgetEditor, INotifyPropertyChanged
     {
         public BufferWidgetCtrl()
         {

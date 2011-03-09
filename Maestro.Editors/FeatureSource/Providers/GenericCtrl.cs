@@ -35,6 +35,7 @@ using Maestro.Editors.FeatureSource.Providers.Odbc;
 
 namespace Maestro.Editors.FeatureSource.Providers
 {
+    [ToolboxItem(false)]
     internal partial class GenericCtrl : EditorBindableCollapsiblePanel
     {
         internal GenericCtrl()

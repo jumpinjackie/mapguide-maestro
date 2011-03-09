@@ -29,6 +29,7 @@ using OSGeo.MapGuide.ObjectModels.WebLayout;
 
 namespace Maestro.Editors.WebLayout.Commands
 {
+    [ToolboxItem(false)]
     internal partial class InvokeScriptCtrl : UserControl
     {
         public InvokeScriptCtrl()

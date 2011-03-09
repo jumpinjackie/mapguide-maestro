@@ -28,7 +28,8 @@ using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 
 namespace Maestro.Editors.Fusion
 {
-    public partial class WidgetReferenceCtrl : UserControl
+    [ToolboxItem(false)]
+    internal partial class WidgetReferenceCtrl : UserControl
     {
         private WidgetReferenceCtrl()
         {

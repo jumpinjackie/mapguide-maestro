@@ -28,7 +28,7 @@ using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 
 namespace Maestro.Editors.Fusion
 {
-    public partial class NewWidgetDialog : Form
+    internal partial class NewWidgetDialog : Form
     {
         private IApplicationDefinition _appDef;
         private FlexibleLayoutEditorContext _context;

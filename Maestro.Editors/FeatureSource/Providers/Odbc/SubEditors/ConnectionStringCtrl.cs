@@ -28,7 +28,8 @@ using System.Collections.Specialized;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
 {
-    public partial class ConnectionStringCtrl : EditorBase, IOdbcSubEditor
+    [ToolboxItem(false)]
+    internal partial class ConnectionStringCtrl : EditorBase, IOdbcSubEditor
     {
         public ConnectionStringCtrl()
         {

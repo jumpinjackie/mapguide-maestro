@@ -27,6 +27,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.FeatureSource.Providers.Rdbms
 {
+    [ToolboxItem(false)]
     internal partial class SqlServerSpatialCtrl : RdbmsBaseCtrl
     {
         public SqlServerSpatialCtrl()

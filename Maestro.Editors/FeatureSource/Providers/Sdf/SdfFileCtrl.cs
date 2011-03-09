@@ -29,6 +29,7 @@ using System.Diagnostics;
 
 namespace Maestro.Editors.FeatureSource.Providers.Sdf
 {
+    [ToolboxItem(false)]
     internal partial class SdfFileCtrl : FileBasedCtrl
     {
         public SdfFileCtrl()
