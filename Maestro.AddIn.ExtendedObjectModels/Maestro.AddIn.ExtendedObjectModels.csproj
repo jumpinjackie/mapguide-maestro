@@ -73,7 +73,7 @@
       <HintPath>..\SDK\bin\OSGeo.MapGuide.ObjectModels.LoadProcedure-2.2.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.ObjectModels.SymbolDefinition-1.1.0, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
+    <Reference Include="OSGeo.MapGuide.ObjectModels.SymbolDefinition-1.1.0, Version=3.0.0.5610, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDK\bin\OSGeo.MapGuide.ObjectModels.SymbolDefinition-1.1.0.dll</HintPath>
       <Private>False</Private>
