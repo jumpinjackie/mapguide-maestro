@@ -65,6 +65,7 @@
             this.trvResources.Expanding += new System.EventHandler<Aga.Controls.Tree.TreeViewAdvEventArgs>(this.trvResources_Expanding);
             this.trvResources.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvResources_DragEnter);
             this.trvResources.KeyUp += new System.Windows.Forms.KeyEventHandler(this.trvResources_KeyUp);
+            this.trvResources.KeyDown += new System.Windows.Forms.KeyEventHandler(this.trvResources_KeyDown);
             this.trvResources.Expanded += new System.EventHandler<Aga.Controls.Tree.TreeViewAdvEventArgs>(this.trvResources_Expanded);
             this.trvResources.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvResources_ItemDrag);
             // 

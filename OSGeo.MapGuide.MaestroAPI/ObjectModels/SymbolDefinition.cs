@@ -120,6 +120,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             get { return true; }
         }
 
+        [XmlIgnore]
         IEnumerable<IGraphicBase> ISimpleSymbolDefinition.Graphics
         {
             get 
@@ -149,6 +150,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         IResizeBox ISimpleSymbolDefinition.ResizeBox
         {
             get
@@ -161,6 +163,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         IPointUsage ISimpleSymbolDefinition.PointUsage
         {
             get
@@ -173,6 +176,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         ILineUsage ISimpleSymbolDefinition.LineUsage
         {
             get
@@ -185,6 +189,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         IAreaUsage ISimpleSymbolDefinition.AreaUsage
         {
             get
@@ -197,6 +202,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         IParameterDefinition ISimpleSymbolDefinition.ParameterDefinition
         {
             get { return parameterDefinitionField; }
@@ -209,7 +215,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
     partial class Text : IText
 #endif
     {
-
+        [XmlIgnore]
         bool? IText.Bold
         {
             get
@@ -228,6 +234,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         bool? IText.Italic
         {
             get
@@ -246,6 +253,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         bool? IText.Underlined
         {
             get
@@ -264,6 +272,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IText.Height
         {
             get
@@ -282,6 +291,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         bool? IText.HeightScalable
         {
             get
@@ -300,6 +310,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IText.Angle
         {
             get
@@ -318,6 +329,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IText.PositionX
         {
             get
@@ -336,6 +348,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IText.PositionY
         {
             get
@@ -354,6 +367,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IText.LineSpacing
         {
             get
@@ -372,6 +386,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         ITextFrame IText.Frame
         {
             get
@@ -387,6 +402,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class TextFrame : ITextFrame
     {
+        [XmlIgnore]
         double? ITextFrame.OffsetX
         {
             get
@@ -405,6 +421,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? ITextFrame.OffsetY
         {
             get
@@ -426,6 +443,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class ResizeBox : IResizeBox
     {
+        [XmlIgnore]
         double? IResizeBox.SizeX
         {
             get
@@ -444,6 +462,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IResizeBox.SizeY
         {
             get
@@ -462,6 +481,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IResizeBox.PositionX
         {
             get
@@ -480,6 +500,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IResizeBox.PositionY
         {
             get
@@ -501,6 +522,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class Graphics : IGraphics
     {
+        [XmlIgnore]
         public IEnumerable<IGraphicBase> Elements
         {
             get 
@@ -538,6 +560,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class Parameter : IParameter
     {
+        [XmlIgnore]
         string IParameter.DataType
         {
             get
@@ -558,6 +581,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class ParameterDefinition : IParameterDefinition
     {
+        [XmlIgnore]
         IEnumerable<IParameter> IParameterDefinition.Parameter
         {
             get 
@@ -590,6 +614,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class LineUsage : ILineUsage
     {
+        [XmlIgnore]
         double? ILineUsage.StartOffset
         {
             get
@@ -608,6 +633,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? ILineUsage.EndOffset
         {
             get
@@ -626,6 +652,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? ILineUsage.Repeat
         {
             get
@@ -644,6 +671,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? ILineUsage.VertexAngleLimit
         {
             get
@@ -662,6 +690,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         IPath ILineUsage.DefaultPath
         {
             get
@@ -674,7 +703,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
-
+        [XmlIgnore]
         double? IUsageBase.Angle
         {
             get
@@ -696,6 +725,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class PointUsage : IPointUsage
     {
+        [XmlIgnore]
         double? IPointUsage.OriginOffsetX
         {
             get
@@ -714,6 +744,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IPointUsage.OriginOffsetY
         {
             get
@@ -732,6 +763,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         string IUsageBase.AngleControl
         {
             get
@@ -744,6 +776,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IUsageBase.Angle
         {
             get
@@ -765,6 +798,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class AreaUsage : IAreaUsage
     {
+        [XmlIgnore]
         double? IAreaUsage.OriginX
         {
             get
@@ -783,6 +817,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IAreaUsage.OriginY
         {
             get
@@ -801,6 +836,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IAreaUsage.RepeatX
         {
             get
@@ -819,6 +855,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IAreaUsage.RepeatY
         {
             get
@@ -837,6 +874,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IAreaUsage.BufferWidth
         {
             get
@@ -855,6 +893,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IUsageBase.Angle
         {
             get
@@ -876,6 +915,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class Path : IPath
     {
+        [XmlIgnore]
         double? IPath.LineWeight
         {
             get
@@ -894,6 +934,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         bool? IPath.LineWeightScalable
         {
             get
@@ -912,6 +953,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         double? IPath.LineMiterLimit
         {
             get
@@ -1010,6 +1052,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             get { return true; }
         }
 
+        [XmlIgnore]
         IEnumerable<ISimpleSymbolReferenceBase> ICompoundSymbolDefinition.SimpleSymbol
         {
             get 
@@ -1042,6 +1085,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class SimpleSymbol : ISimpleSymbolInlineReference, ISimpleSymbolLibraryReference
     {
+        [XmlIgnore]
         ISimpleSymbolDefinition ISimpleSymbolInlineReference.SimpleSymbolDefinition
         {
             get
@@ -1054,6 +1098,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         public SimpleSymbolReferenceType Type
         {
             get 
@@ -1069,6 +1114,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         string ISimpleSymbolLibraryReference.ResourceId
         {
             get
@@ -1092,6 +1138,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
  
     partial class ImageReference : ISymbolLibraryReference
     {
+        [XmlIgnore]
         SymbolInstanceType ISymbolInstanceReference.Type
         {
             get { return SymbolInstanceType.Reference; }

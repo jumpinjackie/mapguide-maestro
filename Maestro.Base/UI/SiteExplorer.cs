@@ -472,5 +472,32 @@ namespace Maestro.Base.UI
                 new DeleteSelectedItemsCommand().Run();
             }
         }
+
+        private void trvResources_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Note: Even though the attached context menu has the shortcuts specified
+            //for Cut/Copy/Paste, I'm guessing the TreeViewAdv control is muffling the
+            //event. Nevertheless this handler's got it covered and keeping those 
+            //shortcuts there is useful as a visual reference, even if they don't work
+            //the original way.
+
+            //Note: We handle keydown when intercepting pressing the Control+C/X/V
+            //because the keys are not actually released yet.
+            if (e.Control)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.C:
+                        new CopyCommand().Run();
+                        break;
+                    case Keys.X:
+                        new CutCommand().Run();
+                        break;
+                    case Keys.V:
+                        new PasteCommand().Run();
+                        break;
+                }
+            }
+        }
     }
 }

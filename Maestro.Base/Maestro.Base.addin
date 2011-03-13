@@ -125,12 +125,10 @@
                     <MenuItem id="CopyItem"
                               icon="document_copy"
                               label="${res:Menu_Edit_Copy}"
-                              shortcut="Control|C"
                               class="Maestro.Base.Commands.CopyCommand" />
                     <MenuItem id="CutItem"
                               label="${res:Menu_Edit_Cut}"
                               icon="scissors_blue"
-                              shortcut="Control|X"
                               class="Maestro.Base.Commands.CutCommand" />
                 </Condition>
             </Condition>
@@ -138,7 +136,6 @@
                 <MenuItem id="PasteItem"
                           label="${res:Menu_Edit_Paste}"
                           icon="clipboard_paste"
-                          shortcut="Control|V"
                           class="Maestro.Base.Commands.PasteCommand" />
             </Condition>
         </MenuItem>
@@ -409,10 +406,12 @@
                     <MenuItem id="Copy"
                               icon="document_copy"
                               label="${res:SiteExplorer_SelectedItem_Copy}"
+                              shortcut="Control|C"
                               class="Maestro.Base.Commands.CopyCommand" />
                     <MenuItem id="Cut"
                               icon="scissors_blue"
                               label="${res:SiteExplorer_SelectedItem_Cut}"
+                              shortcut="Control|X"
                               class="Maestro.Base.Commands.CutCommand" />
                 </Condition>
             </Condition>
@@ -420,6 +419,7 @@
                 <MenuItem id="Paste"
                           icon="clipboard_paste"
                           label="${res:SiteExplorer_SelectedFolder_Paste}"
+                          shortcut="Control|V"
                           class="Maestro.Base.Commands.PasteCommand" />
             </Condition>
             <MenuItem type="Separator" />
@@ -447,10 +447,12 @@
                 <MenuItem id="Copy"
                           icon="document_copy"
                           label="${res:SiteExplorer_SelectedItem_Copy}"
+                          shortcut="Control|C"
                           class="Maestro.Base.Commands.CopyCommand" />
                 <MenuItem id="Cut"
                           icon="scissors_blue"
                           label="${res:SiteExplorer_SelectedItem_Cut}"
+                          shortcut="Control|X"
                           class="Maestro.Base.Commands.CutCommand" />
             </Condition>
             <MenuItem id="Validate"
@@ -487,10 +489,12 @@
                 <MenuItem id="Copy"
                           icon="document_copy"
                           label="${res:SiteExplorer_SelectedItem_Copy}"
+                          shortcut="Control|C"
                           class="Maestro.Base.Commands.CopyCommand" />
                 <MenuItem id="Cut"
                           icon="scissors_blue"
                           label="${res:SiteExplorer_SelectedItem_Cut}"
+                          shortcut="Control|X"
                           class="Maestro.Base.Commands.CutCommand" />
             </Condition>
             <MenuItem type="Separator" />
@@ -531,10 +535,12 @@
                 <MenuItem id="Copy"
                           icon="document_copy"
                           label="${res:SiteExplorer_SelectedItem_Copy}"
+                          shortcut="Control|C"
                           class="Maestro.Base.Commands.CopyCommand" />
                 <MenuItem id="Cut"
                           icon="scissors_blue"
                           label="${res:SiteExplorer_SelectedItem_Cut}"
+                          shortcut="Control|X"
                           class="Maestro.Base.Commands.CutCommand" />
             </Condition>
             <MenuItem type="Separator" />
@@ -564,10 +570,12 @@
                 <MenuItem id="Copy"
                           icon="document_copy"
                           label="${res:SiteExplorer_SelectedItem_Copy}"
+                          shortcut="Control|C"
                           class="Maestro.Base.Commands.CopyCommand" />
                 <MenuItem id="Cut"
                           icon="scissors_blue"
                           label="${res:SiteExplorer_SelectedItem_Cut}"
+                          shortcut="Control|X"
                           class="Maestro.Base.Commands.CutCommand" />
             </Condition>
             <MenuItem id="Validate"
