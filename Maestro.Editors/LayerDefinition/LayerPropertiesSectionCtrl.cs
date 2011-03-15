@@ -166,6 +166,7 @@ namespace Maestro.Editors.LayerDefinition
                     _vl.RemovePropertyMapping(nsp);
                 }
             }
+            OnResourceChanged();
         }
 
         private void grdProperties_CellEndEdit(object sender, DataGridViewCellEventArgs e)
