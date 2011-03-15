@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sample ODBC config document from Trac ticket #1478 -->
+<fdo:DataStore xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" xmlns:fdo="http://fdo.osgeo.org/schemas" xmlns:fds="http://fdo.osgeo.org/schemas/fds">
+  <gml:DerivedCRS gml:id="CSRS.UTM-20N">
+    <gml:remarks>CSRS.UTM-20N</gml:remarks>
+    <gml:srsName>CSRS.UTM-20N</gml:srsName>
+    <gml:validArea>
+      <gml:boundingBox>
+        <gml:pos>339513.880000 5259234.580000</gml:pos>
+        <gml:pos>341580.170000 5260543.600000</gml:pos>
+      </gml:boundingBox>
+    </gml:validArea>
+    <gml:baseCRS>
+      <fdo:WKTCRS gml:id="CSRS.UTM-20N">
+        <gml:srsName>CSRS.UTM-20N</gml:srsName>
+        <fdo:WKT>PROJCS["CSRS.UTM-20N",GEOGCS["LL-CSRS",DATUM["CSRS",SPHEROID["GRS1980",6378137.000,298.25722210]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]],PROJECTION["Transverse_Mercator"],PARAMETER["false_easting",500000.000],PARAMETER["false_northing",0.000],PARAMETER["central_meridian",-63.00000000000000],PARAMETER["scale_factor",0.9996],PARAMETER["latitude_of_origin",0.000],UNIT["Meter",1.00000000000000]]</fdo:WKT>
+      </fdo:WKTCRS>
+    </gml:baseCRS>
+    <gml:definedByConversion xlink:href="http://fdo.osgeo.org/coord_conversions#identity" />
+    <gml:derivedCRSType codeSpace="http://fdo.osgeo.org/crs_types">geographic</gml:derivedCRSType>
+    <gml:usesCS xlink:href="http://fdo.osgeo.org/cs#default_cartesian" />
+  </gml:DerivedCRS>
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fdo.osgeo.org/schemas/feature/Default" xmlns:fdo="http://fdo.osgeo.org/schemas" xmlns:gml="http://www.opengis.net/gml" xmlns:Default="http://fdo.osgeo.org/schemas/feature/Default" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="Dig_Sheet" type="Default:Dig_SheetType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="Dig_SheetKey">
+        <xs:selector xpath=".//Dig_Sheet" />
+        <xs:field xpath="Item_ID" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="Dig_SheetType" abstract="false" fdo:hasGeometry="false">
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Item_ID">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Anom_Typ" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="MEC_Typ" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="MPPEH_Typ" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Rc_Itm_Cnt" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Descript" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Nomenclat" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Depth" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Angle" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Itm_Length" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Itm_Width" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Weight" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Weigh_Tot" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Date" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:dateTime" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Fin_Dispos" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Fin_DisDat" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:dateTime" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Post_X_Res" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Photo_Nam" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Comment" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="Photos" type="Default:PhotosType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="PhotosKey">
+        <xs:selector xpath=".//Photos" />
+        <xs:field xpath="ID" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="PhotosType" abstract="false" fdo:hasGeometry="false">
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="ID">
+              <xs:simpleType>
+                <xs:restriction base="fdo:int32" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Filename" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Subfolder" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Comments" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Date" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:dateTime" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="Targets" type="Default:TargetsType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="TargetsKey">
+        <xs:selector xpath=".//Targets" />
+        <xs:field xpath="Target_ID" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="TargetsType" abstract="false" fdo:hasGeometry="false">
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Target_ID">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Northing" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:double" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Easting" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:double" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Channel1" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Channel3" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Comment" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="All_Data" type="Default:All_DataType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="All_DataKey">
+        <xs:selector xpath=".//All_Data" />
+        <xs:field xpath="Target_ID" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="All_DataType" abstract="false" fdo:geometryName="Geometry">
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Target_ID">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Channel1" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Channel3" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Comment" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Anom_Typ" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="MEC_Typ" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="MPPEH_Typ" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Descript" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Depth" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Angle" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Itm_Length" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Itm_Width" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Weight" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Weigh_Tot" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Geometry" type="gml:AbstractGeometryType" fdo:hasMeasure="false" fdo:hasElevation="true" fdo:srsName="CSRS.UTM-20N" fdo:geometricTypes="point " fdo:geometryTypes="point multipoint ">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="DND" type="Default:DNDType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="DNDKey">
+        <xs:selector xpath=".//DND" />
+        <xs:field xpath="Item_ID" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="DNDType" abstract="false" fdo:geometryName="Geometry">
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Item_ID">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Anom_Typ" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="MEC_Typ" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="MPPEH_Typ" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Rc_Itm_Cnt" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Descript" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Nomenclat" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Depth" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Angle" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Itm_Length" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Itm_Width" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Weight" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Weigh_Tot" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:float" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Date" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:dateTime" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Fin_Dispos" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Fin_DisDat" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:dateTime" />
+              </xs:simpleType>
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Post_X_Res" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Photo_Nam" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Comment" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Geometry" type="gml:AbstractGeometryType" fdo:hasMeasure="false" fdo:hasElevation="true" fdo:srsName="CSRS.UTM-20N" fdo:geometricTypes="point " fdo:geometryTypes="point multipoint ">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:schema>
+  <SchemaMapping xmlns:rdb="http://fdordbms.osgeo.org/schemas" xmlns="http://fdoodbc.osgeo.org/schemas" provider="OSGeo.ODBC.3.2" name="Default">
+    <complexType name="Dig_SheetType">
+      <Table name="Dig_Sheet" />
+      <element name="Item_ID">
+        <Column name="Item_ID" />
+      </element>
+      <element name="Anom_Typ">
+        <Column name="Anom_Typ" />
+      </element>
+      <element name="MEC_Typ">
+        <Column name="MEC_Typ" />
+      </element>
+      <element name="MPPEH_Typ">
+        <Column name="MPPEH_Typ" />
+      </element>
+      <element name="Rc_Itm_Cnt">
+        <Column name="Rc_Itm_Cnt" />
+      </element>
+      <element name="Descript">
+        <Column name="Descript" />
+      </element>
+      <element name="Nomenclat">
+        <Column name="Nomenclat" />
+      </element>
+      <element name="Depth">
+        <Column name="Depth" />
+      </element>
+      <element name="Angle">
+        <Column name="Angle" />
+      </element>
+      <element name="Itm_Length">
+        <Column name="Itm_Length" />
+      </element>
+      <element name="Itm_Width">
+        <Column name="Itm_Width" />
+      </element>
+      <element name="Weight">
+        <Column name="Weight" />
+      </element>
+      <element name="Weigh_Tot">
+        <Column name="Weigh_Tot" />
+      </element>
+      <element name="Date">
+        <Column name="Date" />
+      </element>
+      <element name="Fin_Dispos">
+        <Column name="Fin_Dispos" />
+      </element>
+      <element name="Fin_DisDat">
+        <Column name="Fin_DisDat" />
+      </element>
+      <element name="Post_X_Res">
+        <Column name="Post_X_Res" />
+      </element>
+      <element name="Photo_Nam">
+        <Column name="Photo_Nam" />
+      </element>
+      <element name="Comment">
+        <Column name="Comment" />
+      </element>
+    </complexType>
+    <complexType name="PhotosType">
+      <Table name="Photos" />
+      <element name="ID">
+        <Column name="ID" />
+      </element>
+      <element name="Filename">
+        <Column name="Filename" />
+      </element>
+      <element name="Subfolder">
+        <Column name="Subfolder" />
+      </element>
+      <element name="Comments">
+        <Column name="Comments" />
+      </element>
+      <element name="Date">
+        <Column name="Date" />
+      </element>
+    </complexType>
+    <complexType name="TargetsType">
+      <Table name="Targets" />
+      <element name="Target_ID">
+        <Column name="Target_ID" />
+      </element>
+      <element name="Northing">
+        <Column name="Northing" />
+      </element>
+      <element name="Easting">
+        <Column name="Easting" />
+      </element>
+      <element name="Channel1">
+        <Column name="Channel1" />
+      </element>
+      <element name="Channel3">
+        <Column name="Channel3" />
+      </element>
+      <element name="Comment">
+        <Column name="Comment" />
+      </element>
+    </complexType>
+    <complexType name="All_DataType">
+      <Table name="All_Data" />
+      <element name="Target_ID">
+        <Column name="Target_ID" />
+      </element>
+      <element name="Channel1">
+        <Column name="Channel1" />
+      </element>
+      <element name="Channel3">
+        <Column name="Channel3" />
+      </element>
+      <element name="Comment">
+        <Column name="Comment" />
+      </element>
+      <element name="Anom_Typ">
+        <Column name="Anom_Typ" />
+      </element>
+      <element name="MEC_Typ">
+        <Column name="MEC_Typ" />
+      </element>
+      <element name="MPPEH_Typ">
+        <Column name="MPPEH_Typ" />
+      </element>
+      <element name="Descript">
+        <Column name="Descript" />
+      </element>
+      <element name="Depth">
+        <Column name="Depth" />
+      </element>
+      <element name="Angle">
+        <Column name="Angle" />
+      </element>
+      <element name="Itm_Length">
+        <Column name="Itm_Length" />
+      </element>
+      <element name="Itm_Width">
+        <Column name="Itm_Width" />
+      </element>
+      <element name="Weight">
+        <Column name="Weight" />
+      </element>
+      <element name="Weigh_Tot">
+        <Column name="Weigh_Tot" />
+      </element>
+      <element name="Geometry" xColumnName="Easting" yColumnName="Northing" />
+    </complexType>
+    <complexType name="DNDType">
+      <Table name="DND" />
+      <element name="Item_ID">
+        <Column name="Item_ID" />
+      </element>
+      <element name="Anom_Typ">
+        <Column name="Anom_Typ" />
+      </element>
+      <element name="MEC_Typ">
+        <Column name="MEC_Typ" />
+      </element>
+      <element name="MPPEH_Typ">
+        <Column name="MPPEH_Typ" />
+      </element>
+      <element name="Rc_Itm_Cnt">
+        <Column name="Rc_Itm_Cnt" />
+      </element>
+      <element name="Descript">
+        <Column name="Descript" />
+      </element>
+      <element name="Nomenclat">
+        <Column name="Nomenclat" />
+      </element>
+      <element name="Depth">
+        <Column name="Depth" />
+      </element>
+      <element name="Angle">
+        <Column name="Angle" />
+      </element>
+      <element name="Itm_Length">
+        <Column name="Itm_Length" />
+      </element>
+      <element name="Itm_Width">
+        <Column name="Itm_Width" />
+      </element>
+      <element name="Weight">
+        <Column name="Weight" />
+      </element>
+      <element name="Weigh_Tot">
+        <Column name="Weigh_Tot" />
+      </element>
+      <element name="Date">
+        <Column name="Date" />
+      </element>
+      <element name="Fin_Dispos">
+        <Column name="Fin_Dispos" />
+      </element>
+      <element name="Fin_DisDat">
+        <Column name="Fin_DisDat" />
+      </element>
+      <element name="Post_X_Res">
+        <Column name="Post_X_Res" />
+      </element>
+      <element name="Photo_Nam">
+        <Column name="Photo_Nam" />
+      </element>
+      <element name="Comment">
+        <Column name="Comment" />
+      </element>
+      <element name="Geometry" xColumnName="Easting" yColumnName="Northing" />
+    </complexType>
+  </SchemaMapping>
+</fdo:DataStore>

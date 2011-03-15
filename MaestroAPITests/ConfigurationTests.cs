@@ -32,6 +32,13 @@ namespace MaestroAPITests
     public class ConfigurationTests
     {
         [Test]
+        public void TestOdbcLoad()
+        {
+            var conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\odbc_example_config.xml")) as OdbcConfigurationDocument;
+            Assert.NotNull(conf);
+        }
+
+        [Test]
         public void TestOdbcSaveLoad()
         {
             var schema = new FeatureSchema("Default", "Test schema");

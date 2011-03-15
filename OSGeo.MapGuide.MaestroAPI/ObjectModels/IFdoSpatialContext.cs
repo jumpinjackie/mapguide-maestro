@@ -182,57 +182,71 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             if (!node.Name.Equals("gml:DerivedCRS"))
                 throw new Exception("Bad document. Expected element gml:DerivedCRS"); //LOCALIZEME
 
+            //Start off as dynamic, until we find a bounding box. Then we set it to static
+            this.ExtentType = FdoSpatialContextListSpatialContextExtentType.Dynamic;
+
             var meta = node["gml:metaDataProperty"];
-            var genMeta = meta["gml:GenericMetaData"];
+            if (meta != null)
+            {
+                var genMeta = meta["gml:GenericMetaData"];
 
-            var scType = genMeta["fdo:SCExtentType"];
-            var xyTol = genMeta["fdo:XYTolerance"];
-            var zTol = genMeta["fdo:ZTolerance"];
+                var scType = genMeta["fdo:SCExtentType"];
+                var xyTol = genMeta["fdo:XYTolerance"];
+                var zTol = genMeta["fdo:ZTolerance"];
 
-            this.ExtentType = (scType == null || scType.InnerText == "dynamic") ? FdoSpatialContextListSpatialContextExtentType.Dynamic : FdoSpatialContextListSpatialContextExtentType.Static;
+                //this.ExtentType = (scType == null || scType.InnerText == "dynamic") ? FdoSpatialContextListSpatialContextExtentType.Dynamic : FdoSpatialContextListSpatialContextExtentType.Static;
 
-            double xy_tol;
-            double z_tol;
+                double xy_tol;
+                double z_tol;
 
-            if (double.TryParse(xyTol.InnerText, out xy_tol))
-                this.XYTolerance = xy_tol;
+                if (double.TryParse(xyTol.InnerText, out xy_tol))
+                    this.XYTolerance = xy_tol;
 
-            if (double.TryParse(zTol.InnerText, out z_tol))
-                this.ZTolerance = z_tol;
+                if (double.TryParse(zTol.InnerText, out z_tol))
+                    this.ZTolerance = z_tol;
+            }
+            else
+            {
+                this.XYTolerance = 0.0001;
+                this.ZTolerance = 0.0001;
+            }
 
             var remarks = node["gml:remarks"];
             var srsName = node["gml:srsName"];
             var ext = node["gml:validArea"];
             var baseCrs = node["gml:baseCRS"];
 
-            //Anything we read in *must* be static!
-            this.ExtentType = FdoSpatialContextListSpatialContextExtentType.Static;
             this.Name = srsName.InnerText;
             this.Description = remarks.InnerText;
 
             var bbox = ext["gml:boundingBox"];
-            var ll = bbox.FirstChild;
-            var ur = bbox.LastChild;
-
-            var llt = ll.InnerText.Split(' ');
-            var urt = ur.InnerText.Split(' ');
-
-            if (llt.Length != 2 || urt.Length != 2)
-                throw new Exception("Bad document. Invalid bounding box"); //LOCALIZEME
-
-            this.Extent = new FdoSpatialContextListSpatialContextExtent()
+            if (bbox != null)
             {
-                LowerLeftCoordinate = new FdoSpatialContextListSpatialContextExtentLowerLeftCoordinate()
+                var ll = bbox.FirstChild;
+                var ur = bbox.LastChild;
+
+                var llt = ll.InnerText.Split(' ');
+                var urt = ur.InnerText.Split(' ');
+
+                if (llt.Length != 2 || urt.Length != 2)
+                    throw new Exception("Bad document. Invalid bounding box"); //LOCALIZEME
+
+                this.Extent = new FdoSpatialContextListSpatialContextExtent()
                 {
-                    X = llt[0],
-                    Y = llt[1]
-                },
-                UpperRightCoordinate = new FdoSpatialContextListSpatialContextExtentUpperRightCoordinate()
-                {
-                    X = urt[0],
-                    Y = urt[1]
-                }
-            };
+                    LowerLeftCoordinate = new FdoSpatialContextListSpatialContextExtentLowerLeftCoordinate()
+                    {
+                        X = llt[0],
+                        Y = llt[1]
+                    },
+                    UpperRightCoordinate = new FdoSpatialContextListSpatialContextExtentUpperRightCoordinate()
+                    {
+                        X = urt[0],
+                        Y = urt[1]
+                    }
+                };
+
+                this.ExtentType = FdoSpatialContextListSpatialContextExtentType.Static;
+            }
 
             if (baseCrs.HasAttribute("xlink:href"))
             {

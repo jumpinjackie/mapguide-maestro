@@ -80,11 +80,11 @@ namespace MaestroAPITests
             var sl2 = sl.Clone();
             Assert.AreNotSame(sl, sl2);
 
-            var ssd = new SimpleSymbolDefinition();
+            var ssd = ObjectFactory.CreateSimpleSymbol(conn, new Version(1, 0, 0), "Test", "Test Symbol");
             var ssd2 = ssd.Clone();
             Assert.AreNotSame(ssd, ssd2);
 
-            var csd = new CompoundSymbolDefinition();
+            var csd = ObjectFactory.CreateCompoundSymbol(conn, new Version(1, 0, 0), "Test", "Test Symbol");
             var csd2 = csd.Clone();
             Assert.AreNotSame(csd, csd2);
 
@@ -265,7 +265,7 @@ namespace MaestroAPITests
             }
             #endregion
 
-            res = ObjectFactory.CreateSimpleSymbol(conn);
+            res = ObjectFactory.CreateSimpleSymbol(conn, new Version(1, 0, 0), "Test", "Test Symbol");
             #region Simple Symbol Definition
             try
             {
@@ -298,7 +298,7 @@ namespace MaestroAPITests
             }
             #endregion
 
-            res = ObjectFactory.CreateCompoundSymbol(conn);
+            res = ObjectFactory.CreateCompoundSymbol(conn, new Version(1, 0, 0), "Test", "Test Symbol");
             #region Compound Symbol Definition
             try
             {
@@ -461,11 +461,11 @@ namespace MaestroAPITests
             var wl2 = conv.Upgrade(wl, targetVer);
             Assert.AreSame(wl, wl2);
 
-            var ssd = ObjectFactory.CreateSimpleSymbol(conn);
+            var ssd = ObjectFactory.CreateSimpleSymbol(conn, new Version(1, 0, 0), "Test", "Test Symbol");
             var ssd2 = conv.Upgrade(ssd, targetVer);
             Assert.AreSame(ssd, ssd2);
 
-            var csd = ObjectFactory.CreateCompoundSymbol(conn);
+            var csd = ObjectFactory.CreateCompoundSymbol(conn, new Version(1, 0, 0), "Test", "Test Symbol");
             var csd2 = conv.Upgrade(csd, targetVer);
             Assert.AreSame(csd, csd2);
 
