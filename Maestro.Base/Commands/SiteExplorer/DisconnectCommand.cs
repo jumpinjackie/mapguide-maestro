@@ -31,6 +31,17 @@ namespace Maestro.Base.Commands.SiteExplorer
         {
             var wb = Workbench.Instance;
             var svc = ServiceRegistry.GetService<ServerConnectionManager>();
+            if (!CancelDisconnect())
+            {
+                var name = wb.ActiveSiteExplorer.ConnectionName;
+                svc.RemoveConnection(name);
+            }
+        }
+
+        internal static bool CancelDisconnect()
+        {
+            var wb = Workbench.Instance;
+            var svc = ServiceRegistry.GetService<ServerConnectionManager>();
             var omgr = ServiceRegistry.GetService<OpenResourceManager>();
             if (wb.ActiveSiteExplorer != null)
             {
@@ -48,7 +59,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                     }
 
                     if (dirty && !MessageService.AskQuestion(Properties.Resources.ConfirmCloseEditors))
-                        return;
+                        return true;
                 }
 
                 var editors = omgr.OpenEditors;
@@ -56,10 +67,8 @@ namespace Maestro.Base.Commands.SiteExplorer
                 {
                     ed.Close(true);
                 }
-
-                var name = wb.ActiveSiteExplorer.ConnectionName;
-                svc.RemoveConnection(name);
             }
+            return false;
         }
     }
 }

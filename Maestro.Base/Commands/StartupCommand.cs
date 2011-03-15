@@ -29,6 +29,7 @@ using Maestro.Base.Editor;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using Props = ICSharpCode.Core.PropertyService;
 using Maestro.Base.UI.Preferences;
+using System.Windows.Forms;
 
 namespace Maestro.Base.Commands
 {
@@ -45,6 +46,7 @@ namespace Maestro.Base.Commands
             Workbench.WorkbenchInitialized += (sender, e) =>
             {
                 var wb = Workbench.Instance;
+                wb.FormClosing += new System.Windows.Forms.FormClosingEventHandler(OnWorkbenchClosing);
                 wb.Text = "MapGuide Maestro";
 
                 var mgr = ServiceRegistry.GetService<ViewContentManager>();
@@ -56,9 +58,12 @@ namespace Maestro.Base.Commands
                     mgr.OpenContent<OutboundRequestViewer>(ViewRegion.Bottom);
 
                 new LoginCommand().Run();
-
-                
             };
+        }
+
+        void OnWorkbenchClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            e.Cancel = Maestro.Base.Commands.SiteExplorer.DisconnectCommand.CancelDisconnect();   
         }
     }
 }

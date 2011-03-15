@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ICSharpCode.Core;
+using Maestro.Base.Commands.SiteExplorer;
 
 namespace Maestro.Base.Commands
 {
@@ -29,7 +30,7 @@ namespace Maestro.Base.Commands
         public override void Run()
         {
             Workbench wb = Workbench.Instance;
-            if (wb != null)
+            if (wb != null && !DisconnectCommand.CancelDisconnect())
             {
                 wb.Close();
             }
