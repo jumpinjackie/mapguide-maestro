@@ -58,6 +58,7 @@ namespace Maestro.Editors.LayerDefinition.Raster
             try
             {
                 _edsvc = service;
+                _edsvc.RegisterCustomNotifier(this);
                 _rl = (IRasterLayerDefinition)((ILayerDefinition)service.GetEditedResource()).SubLayer;
 
                 _activeRange = _rl.GetScaleRangeAt(0);
