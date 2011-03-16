@@ -96,6 +96,8 @@ namespace Maestro.Editors.Fusion
                 tplImageList.Images.Add(tpl.PreviewImageUrl, img);
             }
 
+            lstTemplates.Focus(); //Item doesn't get selected when ListView doesn't have focus
+
             foreach (var tpl in templates.TemplateInfo)
             {
                 var item = new ListViewItem();
@@ -104,10 +106,10 @@ namespace Maestro.Editors.Fusion
                 item.Text = tpl.Name;
                 item.ImageKey = tpl.PreviewImageUrl;
 
+                lstTemplates.Items.Add(item);
+
                 if (tpl.LocationUrl == _flexLayout.TemplateUrl)
                     item.Selected = true;
-
-                lstTemplates.Items.Add(item);
             }
         }
 
