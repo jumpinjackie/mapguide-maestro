@@ -52,9 +52,25 @@ namespace Maestro.Base.Commands.SiteExplorer
                             foreach (var i in items)
                             {
                                 omgr.CloseEditors(i.ResourceId, true);
+
+                                foreach (var ed in omgr.OpenEditors)
+                                {
+                                    if (i.IsFolder && ed.EditorService.ResourceID.StartsWith(i.ResourceId))
+                                    {
+                                        ed.Close(true);
+                                    }
+                                }
                             }
                             DoDelete(wb, resSvc, items);
                         }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        return;
                     }
 
                     //Refresh the parent. Multi-select is only allowed from same parent
@@ -80,7 +96,8 @@ namespace Maestro.Base.Commands.SiteExplorer
             bool isDeletingOpenResource = false;
             foreach (var ed in editors)
             {
-                if (resIds.ContainsKey(ed.EditorService.ResourceID))
+                string resId = ed.EditorService.ResourceID;
+                if (resIds.ContainsKey(resId) || IsChild(resIds, resId))
                 {
                     isDeletingOpenResource = true;
                     break;
@@ -91,6 +108,16 @@ namespace Maestro.Base.Commands.SiteExplorer
                 return false;
 
             return true;
+        }
+
+        private static bool IsChild(Dictionary<string, string> resIds, string resId)
+        {
+            foreach (var r in resIds.Keys)
+            {
+                if (ResourceIdentifier.IsFolderResource(r) && resId.StartsWith(r))
+                    return true;
+            }
+            return false;
         }
 
         private void DoDelete(Workbench wb, OSGeo.MapGuide.MaestroAPI.Services.IResourceService resSvc, RepositoryItem[] items)
