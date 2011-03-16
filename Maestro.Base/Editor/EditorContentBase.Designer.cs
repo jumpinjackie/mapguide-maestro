@@ -54,6 +54,7 @@
             resources.ApplyResources(this.btnUpgrade, "btnUpgrade");
             this.btnUpgrade.Name = "btnUpgrade";
             this.btnUpgrade.UseVisualStyleBackColor = true;
+            this.btnUpgrade.Click += new System.EventHandler(this.btnUpgrade_Click);
             // 
             // panelBody
             // 

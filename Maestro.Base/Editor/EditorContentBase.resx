@@ -150,6 +150,9 @@
   <data name="btnUpgrade.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
+  <data name="btnUpgrade.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnUpgrade.Location" type="System.Drawing.Point, System.Drawing">
     <value>526, 8</value>
   </data>
@@ -232,6 +235,6 @@
     <value>EditorContentBase</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Base.ViewContentBase, Maestro.Base, Version=3.0.0.5334, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Base.ViewContentBase, Maestro.Base, Version=3.0.0.5610, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

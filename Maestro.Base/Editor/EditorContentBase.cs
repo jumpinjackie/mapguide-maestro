@@ -266,5 +266,10 @@ namespace Maestro.Base.Editor
             this.DiscardChangesOnClose = discardChanges;
             base.Close();
         }
+
+        private void btnUpgrade_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
