@@ -844,4 +844,10 @@ Do you want to convert the values?</value>
   <data name="DefaultSymbolName" xml:space="preserve">
     <value>MySymbol</value>
   </data>
+  <data name="Required" xml:space="preserve">
+    <value>Required</value>
+  </data>
+  <data name="FolderNameExists" xml:space="preserve">
+    <value>Folder name already exists</value>
+  </data>
 </root>

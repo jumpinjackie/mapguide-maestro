@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Text;
 using ICSharpCode.Core;
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -46,14 +47,27 @@ namespace Maestro.Base.Commands.SiteExplorer
                         counter++;
                         name = defaultName + counter;
                     }
-                    //conn.ResourceService.CreateFolder(item.ResourceId + name);
-                    conn.ResourceService.SetResourceXmlData(item.ResourceId + name + "/", null);
-                    var path = item.Model.GetPath(item);
-                    item.Model.RaiseStructureChanged(new Aga.Controls.Tree.TreeModelEventArgs(path, new object[0]));
 
-                    //Expand so user can see this new folder
-                    exp.ExpandNode(item.ResourceId);
-                    exp.SelectNode(item.ResourceId + name + "/");
+                    List<string> folderNames = new List<string>();
+                    foreach (var child in item.Children)
+                    {
+                        if (child.IsFolder)
+                            folderNames.Add(child.Name);
+                    }
+
+                    var diag = new NewFolderDialog(name, folderNames.ToArray());
+                    if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        name = diag.FolderName;
+                        //conn.ResourceService.CreateFolder(item.ResourceId + name);
+                        conn.ResourceService.SetResourceXmlData(item.ResourceId + name + "/", null);
+                        var path = item.Model.GetPath(item);
+                        item.Model.RaiseStructureChanged(new Aga.Controls.Tree.TreeModelEventArgs(path, new object[0]));
+
+                        //Expand so user can see this new folder
+                        exp.ExpandNode(item.ResourceId);
+                        exp.SelectNode(item.ResourceId + name + "/");
+                    }
                 }
             }
         }

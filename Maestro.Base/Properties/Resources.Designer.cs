@@ -663,6 +663,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Folder name already exists.
+        /// </summary>
+        internal static string FolderNameExists {
+            get {
+                return ResourceManager.GetString("FolderNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string Global_ErrorText {
@@ -1198,6 +1207,15 @@ namespace Maestro.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("reports_stack", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Required.
+        /// </summary>
+        internal static string Required {
+            get {
+                return ResourceManager.GetString("Required", resourceCulture);
             }
         }
         
