@@ -60,6 +60,7 @@ namespace Maestro.Base.Editor
             _fsvc = service.FeatureService;
             _rsvc = service.ResourceService;
             _edsvc = service;
+            _edsvc.RegisterCustomNotifier(this);
             this.ConfigEnabled = _caps.Connection.SupportsConfiguration;
         }
 
@@ -124,6 +125,7 @@ namespace Maestro.Base.Editor
             {
                 content = dlg.XmlContent;
                 _fs.SetConfigurationContent(content);
+                OnResourceChanged();
             }
         }
     }
