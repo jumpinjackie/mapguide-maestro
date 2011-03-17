@@ -413,7 +413,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Spatial context extent appears to be invalid (or default).
+        ///   Looks up a localized string similar to Spatial context extent appears to be invalid (or is the default extent returned by FDO provider. Meaning it very likely does not truly represent the extent of your data).
         /// </summary>
         internal static string FS_DefaultSpatialContextWarning {
             get {

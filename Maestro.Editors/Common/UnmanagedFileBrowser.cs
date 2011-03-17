@@ -139,6 +139,21 @@ namespace Maestro.Editors.Common
             }
         }
 
+        /// <summary>
+        /// Gets or sets whether multiple selections are allowed
+        /// </summary>
+        public bool AllowMultipleSelection
+        {
+            get { return lstResources.MultiSelect; }
+            set
+            {
+                if (value && this.SelectFoldersOnly)
+                    throw new InvalidOperationException(Properties.Resources.UnmanagedBrowserMultiSelectionNotAllowed);
+
+                lstResources.MultiSelect = value;
+            }
+        }
+
         private UnmanagedFileBrowser()
         {
             InitializeComponent();
@@ -165,10 +180,26 @@ namespace Maestro.Editors.Common
         {
             get 
             {
-                var path = txtItem.Text;
-                var leftpart = path.Substring(0, path.IndexOf("]"));
-                var rightpart = path.Substring(path.IndexOf("]") + 1);
-                return "%MG_DATA_PATH_ALIAS" + leftpart + "]%" + rightpart;
+                return SelectedItems[0];
+            }
+        }
+
+        /// <summary>
+        /// Gets the selected items
+        /// </summary>
+        public string[] SelectedItems
+        {
+            get
+            {
+                List<string> items = new List<string>();
+                string[] tokens = txtItem.Text.Split('\t');
+                foreach (var path in tokens)
+                {
+                    var leftpart = path.Substring(0, path.IndexOf("]"));
+                    var rightpart = path.Substring(path.IndexOf("]") + 1);
+                    items.Add("%MG_DATA_PATH_ALIAS" + leftpart + "]%" + rightpart);
+                }
+                return items.ToArray();
             }
         }
 
@@ -293,6 +324,15 @@ namespace Maestro.Editors.Common
             if (lstResources.SelectedItems.Count == 1)
             {
                 txtItem.Text = lstResources.SelectedItems[0].Name;
+            }
+            else
+            {
+                List<string> names = new List<string>();
+                foreach (ListViewItem item in lstResources.SelectedItems)
+                {
+                    names.Add(item.Name);
+                }
+                txtItem.Text = string.Join("\t", names.ToArray());
             }
         }
 

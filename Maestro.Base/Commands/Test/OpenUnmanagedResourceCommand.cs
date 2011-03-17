@@ -46,4 +46,26 @@ namespace Maestro.Base.Commands.Test
             }
         }
     }
+
+    public class OpenUnmanagedResourceMultipleCommand : AbstractMenuCommand
+    {
+        public override void Run()
+        {
+            var wb = Workbench.Instance;
+            var exp = wb.ActiveSiteExplorer;
+            var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
+            var conn = mgr.GetConnection(exp.ConnectionName);
+
+            var picker = new UnmanagedFileBrowser(conn.ResourceService);
+            picker.AllowMultipleSelection = true;
+            if (picker.ShowDialog(wb) == System.Windows.Forms.DialogResult.OK)
+            {
+                MessageService.ShowMessage(string.Join(Environment.NewLine, picker.SelectedItems));
+            }
+            else
+            {
+                MessageService.ShowMessage("Cancelled");
+            }
+        }
+    }
 }

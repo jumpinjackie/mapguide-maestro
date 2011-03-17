@@ -190,7 +190,7 @@
     <comment>An error message that is displayed if a connection test on the feature source failed</comment>
   </data>
   <data name="FS_DefaultSpatialContextWarning" xml:space="preserve">
-    <value>Spatial context extent appears to be invalid (or default)</value>
+    <value>Spatial context extent appears to be invalid (or is the default extent returned by FDO provider. Meaning it very likely does not truly represent the extent of your data)</value>
     <comment>A warning message that is displayed if the spatial context has the default extent</comment>
   </data>
   <data name="FS_EmptySpatialContextWarning" xml:space="preserve">

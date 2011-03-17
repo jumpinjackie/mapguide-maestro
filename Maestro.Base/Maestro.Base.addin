@@ -165,6 +165,9 @@
                 <MenuItem id="Menu_Test_OpenUnmanagedFile"
                           label="Open Unmanaged Resource"
                           class="Maestro.Base.Commands.Test.OpenUnmanagedResourceCommand" />
+                <MenuItem id="Menu_Test_OpenUnmanagedFileMultiple"
+                          label="Open Multiple Unmanaged Resources"
+                          class="Maestro.Base.Commands.Test.OpenUnmanagedResourceMultipleCommand" />
                 <MenuItem id="Menu_Test_SelectCoordSys"
                           label="Select Coordinate System"
                           class="Maestro.Base.Commands.Test.OpenCoordinateSystemPickerCommand" />

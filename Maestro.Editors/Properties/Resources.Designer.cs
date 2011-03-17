@@ -2583,6 +2583,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Multiple selection is not allowed when SelectFoldersOnly is set to true.
+        /// </summary>
+        internal static string UnmanagedBrowserMultiSelectionNotAllowed {
+            get {
+                return ResourceManager.GetString("UnmanagedBrowserMultiSelectionNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating Configuration Document.
         /// </summary>
         internal static string UpdatingConfiguration {

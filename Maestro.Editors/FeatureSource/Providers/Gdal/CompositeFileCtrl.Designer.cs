@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompositeFileCtrl));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnAdd = new System.Windows.Forms.ToolStripSplitButton();
-            this.browseFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.browseFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.lstView = new System.Windows.Forms.ListView();
             this.imgList = new System.Windows.Forms.ImageList(this.components);
@@ -41,6 +38,9 @@
             this.btnRebuild = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnAdd = new System.Windows.Forms.ToolStripDropDownButton();
+            this.browseFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.browseFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,33 +54,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(504, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.browseFilesToolStripMenuItem,
-            this.browseFolderToolStripMenuItem});
-            this.btnAdd.Image = global::Maestro.Editors.Properties.Resources.plus_circle;
-            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(61, 22);
-            this.btnAdd.Text = "Add";
-            // 
-            // browseFilesToolStripMenuItem
-            // 
-            this.browseFilesToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.document;
-            this.browseFilesToolStripMenuItem.Name = "browseFilesToolStripMenuItem";
-            this.browseFilesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.browseFilesToolStripMenuItem.Text = "Browse Files";
-            this.browseFilesToolStripMenuItem.Click += new System.EventHandler(this.browseFilesToolStripMenuItem_Click);
-            // 
-            // browseFolderToolStripMenuItem
-            // 
-            this.browseFolderToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.folder_horizontal;
-            this.browseFolderToolStripMenuItem.Name = "browseFolderToolStripMenuItem";
-            this.browseFolderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.browseFolderToolStripMenuItem.Text = "Browse Folder";
-            this.browseFolderToolStripMenuItem.Click += new System.EventHandler(this.browseFolderToolStripMenuItem_Click);
             // 
             // btnDelete
             // 
@@ -140,6 +113,33 @@
             // 
             this.openFileDialog.Multiselect = true;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.browseFilesToolStripMenuItem,
+            this.browseFolderToolStripMenuItem});
+            this.btnAdd.Image = global::Maestro.Editors.Properties.Resources.plus_circle;
+            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(58, 22);
+            this.btnAdd.Text = "Add";
+            // 
+            // browseFilesToolStripMenuItem
+            // 
+            this.browseFilesToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.document;
+            this.browseFilesToolStripMenuItem.Name = "browseFilesToolStripMenuItem";
+            this.browseFilesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.browseFilesToolStripMenuItem.Text = "Browse Files";
+            this.browseFilesToolStripMenuItem.Click += new System.EventHandler(this.browseFilesToolStripMenuItem_Click);
+            // 
+            // browseFolderToolStripMenuItem
+            // 
+            this.browseFolderToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.folder_horizontal;
+            this.browseFolderToolStripMenuItem.Name = "browseFolderToolStripMenuItem";
+            this.browseFolderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.browseFolderToolStripMenuItem.Text = "Browse Folder";
+            this.browseFolderToolStripMenuItem.Click += new System.EventHandler(this.browseFolderToolStripMenuItem_Click);
+            // 
             // CompositeFileCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,12 +163,12 @@
         private System.Windows.Forms.ListView lstView;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRebuild;
-        private System.Windows.Forms.ToolStripSplitButton btnAdd;
         private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.ImageList imgList;
-        private System.Windows.Forms.ToolStripMenuItem browseFilesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem browseFolderToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.ToolStripDropDownButton btnAdd;
+        private System.Windows.Forms.ToolStripMenuItem browseFilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem browseFolderToolStripMenuItem;
     }
 }

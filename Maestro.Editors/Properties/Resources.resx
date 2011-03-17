@@ -1139,4 +1139,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="WidgetNameExists" xml:space="preserve">
     <value>A widget named {0} already exists</value>
   </data>
+  <data name="UnmanagedBrowserMultiSelectionNotAllowed" xml:space="preserve">
+    <value>Multiple selection is not allowed when SelectFoldersOnly is set to true</value>
+  </data>
 </root>
