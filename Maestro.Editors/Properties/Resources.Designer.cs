@@ -531,6 +531,15 @@ namespace Maestro.Editors.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Error loading WMS configuration document: {0}. A default document will be created.
+        /// </summary>
+        internal static string ErrorLoadingWmsConfig {
+            get {
+                return ResourceManager.GetString("ErrorLoadingWmsConfig", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap exclamation {
             get {
                 object obj = ResourceManager.GetObject("exclamation", resourceCulture);
@@ -2086,6 +2095,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter the name.
+        /// </summary>
+        internal static string PromptName {
+            get {
+                return ResourceManager.GetString("PromptName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find possible values for enumerable property.
         /// </summary>
         internal static string PropEnumNoValues {
@@ -2470,6 +2488,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Feature Class.
+        /// </summary>
+        internal static string TitleNewFeatureClass {
+            get {
+                return ResourceManager.GetString("TitleNewFeatureClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The selected column contains more than {0} different values, and thus cannot be used for theming with individual values.
         /// </summary>
         internal static string TooManyIndiviualValuesError {
@@ -2624,6 +2651,15 @@ namespace Maestro.Editors.Properties {
         internal static string WidgetUpdated {
             get {
                 return ResourceManager.GetString("WidgetUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WMS layers updated.
+        /// </summary>
+        internal static string WmsLayersUpdated {
+            get {
+                return ResourceManager.GetString("WmsLayersUpdated", resourceCulture);
             }
         }
         

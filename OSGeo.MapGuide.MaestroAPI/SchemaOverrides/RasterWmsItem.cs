@@ -23,29 +23,147 @@ using System.Text;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels;
 using System.Drawing;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
-    public class RasterWmsItem : RasterItem
+    public class RasterWmsItem : IFdoSerializable
     {
-        public RasterWmsItem(string name) { this.Name = name; }
+        public class WmsImageFormat
+        {
+            public const string PNG = "PNG";
+            public const string TIF = "TIF";
+            public const string JPG = "JPG";
+            public const string GIF = "GIF";
+        }
 
-        public int ImageFormat { get; set; }
+        internal RasterWmsItem() { }
 
-        public string WmsStyle { get; set; }
+        public RasterWmsItem(string className, string rasterPropertyName)
+        {
+            this.FeatureClass = className;
+            this.RasterPropertyName = rasterPropertyName;
+        }
+
+        public string FeatureClass { get; set; }
+
+        public string RasterPropertyName { get; set; }
+
+        public string ElevationDimension { get; set; }
+
+        public string ImageFormat { get; set; }
+
+        private List<WmsLayerDefinition> _layers = new List<WmsLayerDefinition>();
+
+        public WmsLayerDefinition[] Layers { get { return _layers.ToArray(); } }
+
+        public void AddLayer(WmsLayerDefinition layer) { _layers.Add(layer); }
+
+        public void RemoveLayer(WmsLayerDefinition layer) { _layers.Remove(layer); }
+
+        public string Time { get; set; }
+
+        public string SpatialContextName { get; set; }
 
         public bool IsTransparent { get; set; }
 
         public Color BackgroundColor { get; set; }
 
-        public override void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
+        public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
-            throw new NotImplementedException();
+            var rasterDef = doc.CreateElement("RasterDefinition");
+            var n = doc.CreateAttribute("name");
+            n.Value = this.RasterPropertyName;
+            rasterDef.Attributes.Append(n);
+            {
+                var format = doc.CreateElement("Format");
+                format.InnerText = this.ImageFormat;
+
+                var transparent = doc.CreateElement("Transparent");
+                transparent.InnerText = this.IsTransparent ? "true" : "false";
+
+                var bgcolor = doc.CreateElement("BackgroundColor");
+                bgcolor.InnerText = "0x" + Utility.SerializeHTMLColor(this.BackgroundColor, false);
+
+                var time = doc.CreateElement("Time");
+                time.InnerText = this.Time;
+
+                var elevation = doc.CreateElement("Elevation");
+                elevation.InnerText = this.ElevationDimension;
+
+                var sc = doc.CreateElement("SpatialContext");
+                sc.InnerText = this.SpatialContextName;
+
+                rasterDef.AppendChild(format);
+                rasterDef.AppendChild(transparent);
+                rasterDef.AppendChild(bgcolor);
+                rasterDef.AppendChild(time);
+                rasterDef.AppendChild(elevation);
+                rasterDef.AppendChild(sc);
+
+                foreach (var layer in this.Layers)
+                {
+                    layer.WriteXml(doc, rasterDef);
+                }
+            };
+
+            currentNode.AppendChild(rasterDef);
         }
 
-        public override void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
+        public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            throw new NotImplementedException();
+            if (node.Name != "RasterDefinition")
+                throw new Exception("Bad document. Expected element: RasterDefinition");
+
+            var fc = node.ParentNode.Attributes["name"].Value;
+            this.FeatureClass = fc.Substring(0, fc.Length - "Type".Length);
+
+            var format = node["Format"];
+            var transparent = node["Transparent"];
+            var bgcolor = node["BackgroundColor"];
+            var time = node["Time"];
+            var elevation = node["Elevation"];
+            var sc = node["SpatialContext"];
+
+            if (format != null)
+                this.ImageFormat = format.InnerText;
+
+            if (transparent != null)
+                this.IsTransparent = (transparent.InnerText.ToLower() == "true");
+
+            if (bgcolor != null)
+            {
+                if (bgcolor.InnerText.StartsWith("0x"))
+                    this.BackgroundColor = ColorTranslator.FromHtml("#" + bgcolor.InnerText.Substring(2));
+                else
+                    this.BackgroundColor = ColorTranslator.FromHtml("#" + bgcolor.InnerText);
+            }
+
+            if (time != null)
+                this.Time = time.InnerText;
+
+            if (elevation != null)
+                this.ElevationDimension = elevation.InnerText;
+
+            if (sc != null)
+                this.SpatialContextName = sc.InnerText;
+
+            foreach (XmlNode ln in node.ChildNodes)
+            {
+                if (ln.Name == "Layer")
+                {
+                    var layer = new WmsLayerDefinition();
+                    layer.ReadXml(ln, mgr);
+
+                    this.AddLayer(layer);
+                }
+            }
+        }
+
+        public void RemoveAllLayers()
+        {
+            _layers.Clear();
         }
     }
 }

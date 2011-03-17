@@ -24,11 +24,36 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
-    public class WmsConfigurationDocument : RasterConfigurationDocumentBase<RasterWmsItem>
+    public class WmsConfigurationDocument : ConfigurationDocument
     {
+        private List<RasterWmsItem> _rasterItems = new List<RasterWmsItem>();
+
+        public RasterWmsItem[] RasterOverrides { get { return _rasterItems.ToArray(); } }
+
+        public void AddRasterItem(RasterWmsItem item) { _rasterItems.Add(item); }
+
+        public void RemoveRasterItem(RasterWmsItem item) { _rasterItems.Remove(item); }
+
         protected override void WriteSchemaMappings(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
-            throw new NotImplementedException();
+            var map = doc.CreateElement("SchemaMapping");
+            map.SetAttribute("provider", "OSGeo.WMS.3.2");
+            map.SetAttribute("xmlns", "http://fdowms.osgeo.org/schemas");
+            map.SetAttribute("name", base._schemas[0].Name);
+            {
+                foreach(var ritem in _rasterItems)
+                {
+                    var ctype = doc.CreateElement("complexType");
+                    var ctypeName = doc.CreateAttribute("name");
+                    ctypeName.Value = ritem.FeatureClass + "Type";
+                    ctype.Attributes.Append(ctypeName);
+                    {
+                        ritem.WriteXml(doc, ctype);
+                    }
+                    map.AppendChild(ctype);
+                }
+            }
+            currentNode.AppendChild(map);
         }
 
         protected override void ReadSchemaMappings(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
@@ -57,24 +82,14 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                     if (cn == null)
                         throw new Exception("Bad document. Expected attribute: name"); //LOCALIZEME
 
-                    string className = sn.Value + ":" + cn.Value.Substring(0, cn.Value.Length - "Type".Length);
-
-                    var rdf = clsMap.SelectSingleNode("RasterDefinition");
-                    if (rdf == null)
+                    var rdf = clsMap.FirstChild;
+                    if (rdf == null || rdf.Name != "RasterDefinition")
                         throw new Exception("Bad document. Expected element: RasterDefinition"); //LOCALIZEME
 
-                    var rdfName = rdf.Attributes["name"];
-                    if (rdfName == null)
-                        throw new Exception("Bad document. Expected attribute: name"); //LOCALIZEME
+                    RasterWmsItem item = new RasterWmsItem();
+                    item.ReadXml(rdf, mgr);
 
-                    RasterItem item = new RasterWmsItem(rdfName.Value);
-
-                    if (item == null)
-                        throw new Exception("Bad document. Provider " + prv.Value + " is not supported for this configuration document"); //LOCALIZEME
-
-                    item.Parent = this;
-
-                    item.ReadXml(clsMap, mgr);
+                    this.AddRasterItem(item);
                 }
             }
         }

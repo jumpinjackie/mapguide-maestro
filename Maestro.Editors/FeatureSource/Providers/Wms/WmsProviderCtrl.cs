@@ -39,26 +39,45 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
 
         private IEditorService _service;
         private IFeatureSource _fs;
+        private bool _init = false;
 
         public override void Bind(IEditorService service)
         {
-            _service = service;
-            _service.RegisterCustomNotifier(this);
-            _fs = (IFeatureSource)_service.GetEditedResource();
+            _init = true;
+            try
+            {
+                _service = service;
+                _service.RegisterCustomNotifier(this);
+                _fs = (IFeatureSource)_service.GetEditedResource();
+
+                txtFeatureServer.Text = _fs.GetConnectionProperty("FeatureServer");
+                txtUsername.Text = _fs.GetConnectionProperty("Username");
+                txtPassword.Text = _fs.GetConnectionProperty("Password");
+            }
+            finally
+            {
+                _init = false;
+            }
         }
 
         private void txtFeatureServer_TextChanged(object sender, EventArgs e)
         {
+            if (_init)
+                return;
             _fs.SetConnectionProperty("FeatureServer", txtFeatureServer.Text);
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
+            if (_init)
+                return;
             _fs.SetConnectionProperty("Username", txtUsername.Text);
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
+            if (_init)
+                return;
             _fs.SetConnectionProperty("Password", txtPassword.Text);
         }
 
@@ -73,7 +92,13 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
 
         private void btnAdvanced_Click(object sender, EventArgs e)
         {
-
+            _service.SyncSessionCopy();
+            var diag = new WmsAdvancedConfigurationDialog(_service);
+            if (diag.ShowDialog() == DialogResult.OK)
+            {
+                _fs.SetConfigurationContent(diag.Document.ToXml());
+                OnResourceChanged();
+            }
         }
     }
 }

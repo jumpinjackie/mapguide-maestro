@@ -1142,4 +1142,16 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="UnmanagedBrowserMultiSelectionNotAllowed" xml:space="preserve">
     <value>Multiple selection is not allowed when SelectFoldersOnly is set to true</value>
   </data>
+  <data name="ErrorLoadingWmsConfig" xml:space="preserve">
+    <value>Error loading WMS configuration document: {0}. A default document will be created</value>
+  </data>
+  <data name="WmsLayersUpdated" xml:space="preserve">
+    <value>WMS layers updated</value>
+  </data>
+  <data name="PromptName" xml:space="preserve">
+    <value>Enter the name</value>
+  </data>
+  <data name="TitleNewFeatureClass" xml:space="preserve">
+    <value>New Feature Class</value>
+  </data>
 </root>

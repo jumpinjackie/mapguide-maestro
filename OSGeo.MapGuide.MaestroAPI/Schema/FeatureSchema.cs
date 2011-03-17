@@ -156,5 +156,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 }
             }
         }
+
+        public void RemoveClass(string className)
+        {
+            var cls = GetClass(className);
+            if (cls != null)
+                RemoveClass(cls);
+        }
     }
 }

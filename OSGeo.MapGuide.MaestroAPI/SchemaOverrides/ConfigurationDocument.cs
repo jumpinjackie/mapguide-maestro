@@ -38,6 +38,10 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             _schemas = new List<FeatureSchema>();
         }
 
+        public IFdoSpatialContext[] SpatialContexts { get { return _spatialContexts.ToArray(); } }
+
+        public FeatureSchema[] Schemas { get { return _schemas.ToArray(); } }
+
         public void AddSpatialContext(IFdoSpatialContext context) { _spatialContexts.Add(context); }
 
         public void RemoveSpatialContext(IFdoSpatialContext context) { _spatialContexts.Remove(context); }

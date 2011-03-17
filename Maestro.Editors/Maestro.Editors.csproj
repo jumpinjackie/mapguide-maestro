@@ -74,6 +74,12 @@
     <Compile Include="Common\ExpressionEditor.designer.cs">
       <DependentUpon>ExpressionEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\GenericInputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\GenericInputDialog.Designer.cs">
+      <DependentUpon>GenericInputDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\ImageStylePicker.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -334,6 +340,18 @@
     </Compile>
     <Compile Include="FeatureSource\Providers\SQLite\SQLiteFileCtrl.Designer.cs">
       <DependentUpon>SQLiteFileCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Wms\RasterDefinitionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Wms\RasterDefinitionCtrl.Designer.cs">
+      <DependentUpon>RasterDefinitionCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Wms\WmsAdvancedConfigurationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Wms\WmsAdvancedConfigurationDialog.Designer.cs">
+      <DependentUpon>WmsAdvancedConfigurationDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="FeatureSource\Providers\Wms\WmsProviderCtrl.cs">
       <SubType>UserControl</SubType>
@@ -934,6 +952,9 @@
       <DependentUpon>ExpressionEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Common\GenericInputDialog.resx">
+      <DependentUpon>GenericInputDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Common\ImageStylePicker.resx">
       <DependentUpon>ImageStylePicker.cs</DependentUpon>
     </EmbeddedResource>
@@ -1080,6 +1101,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSource\Providers\SQLite\SQLiteFileCtrl.resx">
       <DependentUpon>SQLiteFileCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Wms\RasterDefinitionCtrl.resx">
+      <DependentUpon>RasterDefinitionCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Wms\WmsAdvancedConfigurationDialog.resx">
+      <DependentUpon>WmsAdvancedConfigurationDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSource\Providers\Wms\WmsProviderCtrl.resx">
       <DependentUpon>WmsProviderCtrl.cs</DependentUpon>

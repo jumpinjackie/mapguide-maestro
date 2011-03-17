@@ -109,10 +109,10 @@
             // 
             // WmsProviderCtrl
             // 
-            resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.HeaderText = "WMS Feature Source";
             this.Name = "WmsProviderCtrl";
+            resources.ApplyResources(this, "$this");
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
             this.ResumeLayout(false);

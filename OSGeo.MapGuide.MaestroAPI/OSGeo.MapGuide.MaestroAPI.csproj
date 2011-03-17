@@ -213,6 +213,7 @@
     <Compile Include="SchemaOverrides\GdalRasterItem.cs" />
     <Compile Include="SchemaOverrides\OdbcTableItem.cs" />
     <Compile Include="SchemaOverrides\WmsConfigurationDocument.cs" />
+    <Compile Include="SchemaOverrides\WmsLayerDefinition.cs" />
     <Compile Include="Schema\ClassDefinition.cs" />
     <Compile Include="Schema\DataPropertyDefinition.cs" />
     <Compile Include="Schema\FeatureSchema.cs" />
@@ -309,9 +310,6 @@
     <Compile Include="SchemaOverrides\ConfigurationDocument.cs" />
     <Compile Include="SchemaOverrides\GenericConfigurationDocument.cs" />
     <Compile Include="SchemaOverrides\OdbcConfigurationDocument.cs" />
-    <Compile Include="SchemaOverrides\RasterConfigurationDocument.cs" />
-    <Compile Include="SchemaOverrides\RasterFileItem.cs" />
-    <Compile Include="SchemaOverrides\RasterItem.cs" />
     <Compile Include="SchemaOverrides\RasterWmsItem.cs" />
     <Compile Include="Schema\XmlNamespaces.cs" />
     <Compile Include="Serialization\Enums.cs" />
