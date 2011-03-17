@@ -183,14 +183,17 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="txtStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 252</value>
+    <value>132, 229</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtStatus.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="txtStatus.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
   <data name="txtStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 20</value>
+    <value>294, 46</value>
   </data>
   <data name="txtStatus.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -238,13 +241,13 @@
     <value>19, 229</value>
   </data>
   <data name="chkReadOnly.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 17</value>
+    <value>76, 17</value>
   </data>
   <data name="chkReadOnly.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="chkReadOnly.Text" xml:space="preserve">
-    <value>Feature Source is Read-Only</value>
+    <value>Read-Only</value>
   </data>
   <data name="&gt;&gt;chkReadOnly.Name" xml:space="preserve">
     <value>chkReadOnly</value>

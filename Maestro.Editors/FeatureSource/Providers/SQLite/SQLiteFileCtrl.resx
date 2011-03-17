@@ -183,14 +183,17 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="txtStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 250</value>
+    <value>143, 232</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtStatus.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="txtStatus.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
   <data name="txtStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 20</value>
+    <value>283, 49</value>
   </data>
   <data name="txtStatus.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>

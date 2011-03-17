@@ -26,6 +26,7 @@ using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System.Diagnostics;
+using Maestro.Shared.UI;
 
 namespace Maestro.Editors.FeatureSource.Providers.SQLite
 {
@@ -37,11 +38,13 @@ namespace Maestro.Editors.FeatureSource.Providers.SQLite
             InitializeComponent();
         }
 
+        private IEditorService _service;
         private IFeatureSource _fs;
 
         public override void Bind(IEditorService service)
         {
             base.Bind(service);
+            _service = service;
             _fs = service.GetEditedResource() as IFeatureSource;
             Debug.Assert(_fs != null);
 
@@ -97,7 +100,11 @@ namespace Maestro.Editors.FeatureSource.Providers.SQLite
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            txtStatus.Text = string.Format(Properties.Resources.FdoConnectionStatus, _fs.TestConnection());
+            using (new WaitCursor(this))
+            {
+                _service.SyncSessionCopy();
+                txtStatus.Text = string.Format(Properties.Resources.FdoConnectionStatus, _fs.TestConnection());
+            }
         }
     }
 }

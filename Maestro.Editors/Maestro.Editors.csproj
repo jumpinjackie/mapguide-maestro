@@ -335,6 +335,12 @@
     <Compile Include="FeatureSource\Providers\SQLite\SQLiteFileCtrl.Designer.cs">
       <DependentUpon>SQLiteFileCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="FeatureSource\Providers\Wms\WmsProviderCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Wms\WmsProviderCtrl.Designer.cs">
+      <DependentUpon>WmsProviderCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fusion\FlexibleLayoutEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1074,6 +1080,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSource\Providers\SQLite\SQLiteFileCtrl.resx">
       <DependentUpon>SQLiteFileCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Wms\WmsProviderCtrl.resx">
+      <DependentUpon>WmsProviderCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fusion\FlexibleLayoutEditor.resx">
       <DependentUpon>FlexibleLayoutEditor.cs</DependentUpon>

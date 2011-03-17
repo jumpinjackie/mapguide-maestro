@@ -129,6 +129,9 @@
   <data name="txtTestResult.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="txtTestResult.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
   <data name="txtTestResult.Size" type="System.Drawing.Size, System.Drawing">
     <value>516, 33</value>
   </data>
@@ -244,7 +247,7 @@
     <value>resDataCtrl</value>
   </data>
   <data name="&gt;&gt;resDataCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ResourceDataCtrl, Maestro.Editors, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.ResourceDataCtrl, Maestro.Editors, Version=3.0.0.5610, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;resDataCtrl.Parent" xml:space="preserve">
     <value>contentPanel</value>
@@ -490,6 +493,6 @@
     <value>GenericCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=3.0.0.5610, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

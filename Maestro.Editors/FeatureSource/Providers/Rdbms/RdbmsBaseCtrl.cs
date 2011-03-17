@@ -45,14 +45,14 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
             this.HeaderText = this.Title;
         }
 
-        private IEditorService _edsvc;
+        private IEditorService _service;
         private IFeatureSource _fs;
 
         public override void Bind(IEditorService service)
         {
-            _edsvc = service;
-            _edsvc.RegisterCustomNotifier(this);
-            _fs = _edsvc.GetEditedResource() as IFeatureSource;
+            _service = service;
+            _service.RegisterCustomNotifier(this);
+            _fs = _service.GetEditedResource() as IFeatureSource;
 
             //Set the field values
             txtService.Text = _fs.GetConnectionProperty("Service");
@@ -127,7 +127,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
                 string reason = string.Empty;
                 try
                 {
-                    var dstore = _edsvc.FeatureService.EnumerateDataStores(this.Provider, GetPartialConnectionString());
+                    var dstore = _service.FeatureService.EnumerateDataStores(this.Provider, GetPartialConnectionString());
                     values = ConvertToArray(dstore);
                 }
                 catch (Exception ex) { reason = ex.ToString(); }
@@ -153,6 +153,15 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
                 values.Add(ds.Name);
             }
             return values.ToArray();
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            using (new WaitCursor(this))
+            {
+                _service.SyncSessionCopy();
+                txtStatus.Text = string.Format(Properties.Resources.FdoConnectionStatus, _fs.TestConnection());
+            }
         }
     }
 }

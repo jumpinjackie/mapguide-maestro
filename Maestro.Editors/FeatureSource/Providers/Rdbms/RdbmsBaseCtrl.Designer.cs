@@ -40,6 +40,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cmbDataStore = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtStatus = new System.Windows.Forms.TextBox();
+            this.btnTest = new System.Windows.Forms.Button();
             this.contentPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -47,6 +49,8 @@
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.txtStatus);
+            this.contentPanel.Controls.Add(this.btnTest);
             this.contentPanel.Controls.Add(this.groupBox2);
             this.contentPanel.Controls.Add(this.groupBox1);
             resources.ApplyResources(this.contentPanel, "contentPanel");
@@ -121,12 +125,26 @@
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
+            // txtStatus
+            // 
+            resources.ApplyResources(this.txtStatus, "txtStatus");
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.ReadOnly = true;
+            // 
+            // btnTest
+            // 
+            resources.ApplyResources(this.btnTest, "btnTest");
+            this.btnTest.Name = "btnTest";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // RdbmsBaseCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Name = "RdbmsBaseCtrl";
             resources.ApplyResources(this, "$this");
             this.contentPanel.ResumeLayout(false);
+            this.contentPanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -148,5 +166,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Button btnConnect;
+        private System.Windows.Forms.TextBox txtStatus;
+        private System.Windows.Forms.Button btnTest;
     }
 }

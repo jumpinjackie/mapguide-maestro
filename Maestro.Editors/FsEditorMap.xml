@@ -14,4 +14,5 @@ generic editor will be used
     <Editor provider="OSGeo.SQLServerSpatial" type="Maestro.Editors.FeatureSource.Providers.Rdbms.SqlServerSpatialCtrl" />
     <Editor provider="OSGeo.MySQL" type="Maestro.Editors.FeatureSource.Providers.Rdbms.MySqlCtrl" />
     <Editor provider="OSGeo.PostgreSQL" type="Maestro.Editors.FeatureSource.Providers.Rdbms.PostgreSqlCtrl" />
+    <Editor provider="OSGeo.WMS" type="Maestro.Editors.FeatureSource.Providers.Wms.WmsProviderCtrl" />
 </FeatureSourceEditorMap>
