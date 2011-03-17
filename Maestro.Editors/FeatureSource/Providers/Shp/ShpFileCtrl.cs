@@ -73,9 +73,17 @@ namespace Maestro.Editors.FeatureSource.Providers.Shp
             }
         }
 
+        protected override string FileFdoProperty
+        {
+            get
+            {
+                return "DefaultFileLocation";
+            }
+        }
+
         private void MarkSelected()
         {
-            var file = _fs.GetConnectionProperty("DefaultFileLocation");
+            var file = _fs.GetConnectionProperty(this.FileFdoProperty);
             if (!string.IsNullOrEmpty(file))
             {
                 if (_fs.UsesEmbeddedDataFiles)
@@ -84,10 +92,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Shp
                     var df = _fs.GetEmbeddedDataName();
                     resDataCtrl.MarkedFile = df;
                 }
-                else if (_fs.UsesAliasedDataFiles)
+                else //if (_fs.UsesAliasedDataFiles)
                 {
-                    rdUnmanaged.Checked = true;
                     txtAlias.Text = file;
+                    rdUnmanaged.Checked = true;
                 }
             }
         }
@@ -101,14 +109,19 @@ namespace Maestro.Editors.FeatureSource.Providers.Shp
         protected override void OnResourceMarked(string dataName)
         {
             var newValue = "%MG_DATA_FILE_PATH%" + dataName;
-            var currValue = _fs.GetConnectionProperty("DefaultFileLocation");
+            var currValue = _fs.GetConnectionProperty(this.FileFdoProperty);
             if (!newValue.Equals(currValue))
-                _fs.SetConnectionProperty("DefaultFileLocation", newValue);
+                _fs.SetConnectionProperty(this.FileFdoProperty, newValue);
         }
 
         protected override bool CanSelectFolders()
         {
             return true;
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            txtStatus.Text = string.Format(Properties.Resources.FdoConnectionStatus, _fs.TestConnection());
         }
     }
 }

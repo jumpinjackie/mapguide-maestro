@@ -30,16 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SQLiteFileCtrl));
             this.chkUseFdoMetadata = new System.Windows.Forms.CheckBox();
+            this.btnTest = new System.Windows.Forms.Button();
+            this.txtStatus = new System.Windows.Forms.TextBox();
             this.contentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.txtStatus);
             this.contentPanel.Controls.Add(this.chkUseFdoMetadata);
+            this.contentPanel.Controls.Add(this.btnTest);
+            this.contentPanel.Controls.SetChildIndex(this.btnTest, 0);
             this.contentPanel.Controls.SetChildIndex(this.chkUseFdoMetadata, 0);
             this.contentPanel.Controls.SetChildIndex(this.resDataCtrl, 0);
             this.contentPanel.Controls.SetChildIndex(this.rdManaged, 0);
             this.contentPanel.Controls.SetChildIndex(this.rdUnmanaged, 0);
+            this.contentPanel.Controls.SetChildIndex(this.txtStatus, 0);
             // 
             // chkUseFdoMetadata
             // 
@@ -48,9 +54,21 @@
             this.chkUseFdoMetadata.UseVisualStyleBackColor = true;
             this.chkUseFdoMetadata.CheckedChanged += new System.EventHandler(this.chkUseFdoMetadata_CheckedChanged);
             // 
+            // btnTest
+            // 
+            resources.ApplyResources(this.btnTest, "btnTest");
+            this.btnTest.Name = "btnTest";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
+            // txtStatus
+            // 
+            resources.ApplyResources(this.txtStatus, "txtStatus");
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.ReadOnly = true;
+            // 
             // SQLiteFileCtrl
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.HeaderText = "SQLite Feature Source";
             this.Name = "SQLiteFileCtrl";
@@ -63,5 +81,7 @@
         #endregion
 
         private System.Windows.Forms.CheckBox chkUseFdoMetadata;
+        private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.TextBox txtStatus;
     }
 }

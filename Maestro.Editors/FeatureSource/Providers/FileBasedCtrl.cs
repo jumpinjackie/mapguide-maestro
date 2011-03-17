@@ -26,6 +26,7 @@ using System.Text;
 using System.Windows.Forms;
 using Maestro.Shared.UI;
 using Maestro.Editors.Common;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 
 namespace Maestro.Editors.FeatureSource.Providers
 {
@@ -77,9 +78,21 @@ namespace Maestro.Editors.FeatureSource.Providers
             }
         }
 
+        protected virtual string FileFdoProperty { get { return "File"; } }
+
         protected virtual bool CanSelectFolders()
         {
             return false;
+        }
+
+        private void txtAlias_TextChanged(object sender, EventArgs e)
+        {
+            if (rdUnmanaged.Checked)
+            {
+                var fs = (IFeatureSource)_service.GetEditedResource();
+                fs.SetConnectionProperty(this.FileFdoProperty, txtAlias.Text);
+                OnResourceChanged();
+            }
         }
     }
 }

@@ -76,6 +76,7 @@
             // 
             resources.ApplyResources(this.txtAlias, "txtAlias");
             this.txtAlias.Name = "txtAlias";
+            this.txtAlias.TextChanged += new System.EventHandler(this.txtAlias_TextChanged);
             // 
             // btnBrowseAlias
             // 

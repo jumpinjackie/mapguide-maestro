@@ -56,7 +56,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Sdf
 
         private void MarkSelected()
         {
-            var file = _fs.GetConnectionProperty("File");
+            var file = _fs.GetConnectionProperty(this.FileFdoProperty);
             if (!string.IsNullOrEmpty(file))
             {
                 if (_fs.UsesEmbeddedDataFiles)
@@ -65,10 +65,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Sdf
                     var df = _fs.GetEmbeddedDataName();
                     resDataCtrl.MarkedFile = df;
                 }
-                else if (_fs.UsesAliasedDataFiles)
+                else //if (_fs.UsesAliasedDataFiles)
                 {
-                    rdUnmanaged.Checked = true;
                     txtAlias.Text = file;
+                    rdUnmanaged.Checked = true;
                 }
             }
         }
@@ -90,9 +90,14 @@ namespace Maestro.Editors.FeatureSource.Providers.Sdf
         protected override void OnResourceMarked(string dataName)
         {
             string fileProp = "%MG_DATA_FILE_PATH%" + dataName;
-            string currFileProp = _fs.GetConnectionProperty("File");
+            string currFileProp = _fs.GetConnectionProperty(this.FileFdoProperty);
             if (!currFileProp.Equals(fileProp))
-                _fs.SetConnectionProperty("File", fileProp);
+                _fs.SetConnectionProperty(this.FileFdoProperty, fileProp);
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            txtStatus.Text = string.Format(Properties.Resources.FdoConnectionStatus, _fs.TestConnection());
         }
     }
 }

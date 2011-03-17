@@ -56,7 +56,7 @@ namespace Maestro.Editors.FeatureSource.Providers.SQLite
 
         private void MarkSelected()
         {
-            var file = _fs.GetConnectionProperty("File");
+            var file = _fs.GetConnectionProperty(this.FileFdoProperty);
             if (!string.IsNullOrEmpty(file))
             {
                 if (_fs.UsesEmbeddedDataFiles)
@@ -66,9 +66,9 @@ namespace Maestro.Editors.FeatureSource.Providers.SQLite
                     resDataCtrl.MarkedFile = df;
                 }
                 else //if (_fs.UsesAliasedDataFiles)
-                {
-                    rdUnmanaged.Checked = true;
+                {   
                     txtAlias.Text = file;
+                    rdUnmanaged.Checked = true;
                 }
             }
         }
@@ -82,9 +82,9 @@ namespace Maestro.Editors.FeatureSource.Providers.SQLite
         protected override void OnResourceMarked(string dataName)
         {
             string fileProp = "%MG_DATA_FILE_PATH%" + dataName;
-            string currFileProp = _fs.GetConnectionProperty("File");
+            string currFileProp = _fs.GetConnectionProperty(this.FileFdoProperty);
             if (!currFileProp.Equals(fileProp))
-                _fs.SetConnectionProperty("File", fileProp);
+                _fs.SetConnectionProperty(this.FileFdoProperty, fileProp);
         }
 
         private void chkUseFdoMetadata_CheckedChanged(object sender, EventArgs e)
@@ -93,6 +93,11 @@ namespace Maestro.Editors.FeatureSource.Providers.SQLite
             var currValue = _fs.GetConnectionProperty("UseFdoMetadata");
             if (!newValue.Equals(currValue))
                 _fs.SetConnectionProperty("UseFdoMetadata", newValue);
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            txtStatus.Text = string.Format(Properties.Resources.FdoConnectionStatus, _fs.TestConnection());
         }
     }
 }
