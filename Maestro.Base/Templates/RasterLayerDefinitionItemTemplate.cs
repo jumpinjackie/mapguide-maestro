@@ -24,6 +24,8 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using Res = Maestro.Base.Properties.Resources;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
+using Maestro.Editors.Generic;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace Maestro.Base.Templates
 {
@@ -43,13 +45,30 @@ namespace Maestro.Base.Templates
         {
             get
             {
-                return new Version(99, 0);
+                return new Version(2, 0);
             }
         }
 
         public override IResource CreateItem(IServerConnection conn)
         {
-            return ObjectFactory.CreateDefaultLayer(conn, OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Raster, new Version(1, 0, 0));
+            using (var picker = new ResourcePicker(conn.ResourceService, ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource))
+            {
+                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    var lyr = ObjectFactory.CreateDefaultLayer(conn, OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Raster, new Version(1, 0, 0));
+                    var rl = (IRasterLayerDefinition)lyr.SubLayer;
+                    rl.ResourceId = picker.ResourceID;
+                    //Stub these for now, validation will ensure this never makes it
+                    //into the session repository until all validation errors pass
+                    rl.FeatureName = string.Empty;
+                    rl.Geometry = string.Empty;
+                    return lyr;
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
     }
 }

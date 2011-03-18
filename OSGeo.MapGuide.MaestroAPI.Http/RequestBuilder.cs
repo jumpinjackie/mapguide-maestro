@@ -1047,7 +1047,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("SESSION", m_sessionID);
 			param.Add("FORMAT", "text/xml");
 			param.Add("RESOURCEID", resourceID);
-			param.Add("ACTIVEONLY", activeOnly ? "0" : "1");
+			param.Add("ACTIVEONLY", activeOnly ? "1" : "0");
             param.Add("CLIENTAGENT", m_userAgent);
 
 			if (m_locale != null)

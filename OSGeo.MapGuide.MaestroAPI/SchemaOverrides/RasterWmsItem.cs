@@ -118,6 +118,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 
             var fc = node.ParentNode.Attributes["name"].Value;
             this.FeatureClass = fc.Substring(0, fc.Length - "Type".Length);
+            this.RasterPropertyName = node.Attributes["name"].Value;
 
             var format = node["Format"];
             var transparent = node["Transparent"];

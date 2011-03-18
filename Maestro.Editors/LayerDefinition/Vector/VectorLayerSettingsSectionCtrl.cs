@@ -73,12 +73,12 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
         protected override void OnLoad(EventArgs e)
         {
+            if (_cachedDesc == null)
+                _cachedDesc = _edsvc.FeatureService.DescribeFeatureSource(txtFeatureSource.Text);
+
             //Init cached schemas and selected class
             if (!string.IsNullOrEmpty(txtFeatureClass.Text))
-            {
-                if (_cachedDesc == null)
-                    _cachedDesc = _edsvc.FeatureService.DescribeFeatureSource(txtFeatureSource.Text);
-
+            {                
                 var cls = _cachedDesc.GetClass(txtFeatureClass.Text);
                 if (cls != null)
                 {

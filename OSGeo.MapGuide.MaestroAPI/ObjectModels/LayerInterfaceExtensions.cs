@@ -249,7 +249,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
                         catch //Default to extents of active spatial context
                         {
                             var scList = conn.FeatureService.GetSpatialContextInfo(layer.SubLayer.ResourceId, true);
-                            if (scList.SpatialContext.Count == 1)
+                            if (scList.SpatialContext.Count > 0)
                             {
                                 var sc = scList.SpatialContext[0];
                                 return ObjectFactory.CreateEnvelope(
@@ -272,7 +272,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
                         catch //Default to extents of active spatial context
                         {
                             var scList = conn.FeatureService.GetSpatialContextInfo(layer.SubLayer.ResourceId, true);
-                            if (scList.SpatialContext.Count == 1)
+                            if (scList.SpatialContext.Count > 0)
                             {
                                 var sc = scList.SpatialContext[0];
                                 return ObjectFactory.CreateEnvelope(

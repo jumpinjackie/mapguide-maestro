@@ -58,21 +58,35 @@ namespace Maestro.Editors.LayerDefinition.Raster
             Debug.Assert(_rl != null);
 
             TextBoxBinder.BindText(txtFeatureSource, _rl, "ResourceId");
-
             TextBoxBinder.BindText(txtFeatureClass, _rl, "FeatureName");
             TextBoxBinder.BindText(txtGeometry, _rl, "Geometry");
+            _rl.PropertyChanged += OnRasterLayerPropertyChanged;
+        }
+
+        void OnRasterLayerPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            OnResourceChanged();
+        }
+
+        protected override void UnsubscribeEventHandlers()
+        {
+            if (_rl != null)
+            {
+                _rl.PropertyChanged -= OnRasterLayerPropertyChanged;
+            }
+            base.UnsubscribeEventHandlers();
         }
 
         private FeatureSourceDescription _cachedDesc;
 
         protected override void OnLoad(EventArgs e)
         {
+            if (_cachedDesc == null)
+                _cachedDesc = _edsvc.FeatureService.DescribeFeatureSource(txtFeatureSource.Text);
+
             //Init cached schemas and selected class
             if (!string.IsNullOrEmpty(txtFeatureClass.Text))
             {
-                if (_cachedDesc == null)
-                    _cachedDesc = _edsvc.FeatureService.DescribeFeatureSource(txtFeatureSource.Text);
-
                 var cls = _cachedDesc.GetClass(txtFeatureClass.Text);
                 if (cls != null)
                 {

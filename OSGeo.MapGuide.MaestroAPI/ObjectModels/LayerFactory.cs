@@ -102,7 +102,34 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
         public void CreateRasterLayer()
         {
-            this.Item = new GridLayerDefinitionType();
+            var gl = new GridLayerDefinitionType()
+            {
+                GridScaleRange = new System.ComponentModel.BindingList<GridScaleRangeType>(),
+            };
+
+            gl.AddGridScaleRange(new GridScaleRangeType()
+            {
+                ColorStyle = new GridColorStyleType()
+                {
+                    ColorRule = new System.ComponentModel.BindingList<GridColorRuleType>() 
+                    { 
+                        new GridColorRuleType() { 
+                            LegendLabel = string.Empty,
+                            Color = new GridColorType() 
+                        },
+                        new GridColorRuleType() { 
+                            LegendLabel = string.Empty,
+                            Color = new GridColorType()
+                        }
+                    }
+                },
+                RebuildFactor = 1.0
+            });
+
+            gl.GetScaleRangeAt(0).ColorStyle.GetColorRuleAt(0).Color.SetValue("000000");
+            gl.GetScaleRangeAt(0).ColorStyle.GetColorRuleAt(1).Color.SetValue("FFFFFF");
+
+            this.Item = gl;
         }
 
         public void CreateDrawingLayer()
