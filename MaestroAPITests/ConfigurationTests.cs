@@ -25,6 +25,7 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System.IO;
+using System.Drawing;
 
 namespace MaestroAPITests
 {
@@ -136,11 +137,71 @@ namespace MaestroAPITests
         {
 
         }
+        
+        [Test]
+        public void TestWmsLoad()
+        {
+            var conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\NASA_WMS_config_doc.xml")) as WmsConfigurationDocument;
+            Assert.NotNull(conf);
+        }
 
         [Test]
         public void TestWmsSaveLoad()
         {
+            var conf = new WmsConfigurationDocument();
 
+            var schema = new FeatureSchema("WMS", "");
+            var cls = new ClassDefinition("NASAWMSGlobalPan", "");
+            cls.AddProperty(new DataPropertyDefinition("Id", "")
+            {
+                DataType = DataPropertyType.String,
+                Length = 256,
+                IsNullable = false
+            }, true);
+            cls.AddProperty(new RasterPropertyDefinition("Image", "")
+            {
+                DefaultImageXSize = 800,
+                DefaultImageYSize = 800
+            });
+
+            schema.AddClass(cls);
+            conf.AddSchema(schema);
+
+            var item = new RasterWmsItem(cls.Name, "Image");
+            item.ImageFormat = RasterWmsItem.WmsImageFormat.PNG;
+            item.IsTransparent = true;
+            item.BackgroundColor = ColorTranslator.FromHtml("#FFFFFF");
+            item.Time = "current";
+            item.ElevationDimension = "0";
+            item.SpatialContextName = "EPSG:4326";
+
+            for (int i = 0; i < 5; i++)
+            {
+                item.AddLayer(new WmsLayerDefinition("Layer" + i));
+            }
+
+            conf.AddRasterItem(item);
+
+            string path = "WmsConfigTest.xml";
+            File.WriteAllText(path, conf.ToXml());
+
+            conf = null;
+            string xml = File.ReadAllText(path);
+            conf = ConfigurationDocument.LoadXml(xml) as WmsConfigurationDocument;
+            Assert.NotNull(conf);
+
+            Assert.AreEqual(1, conf.RasterOverrides.Length);
+
+            var ritem = conf.RasterOverrides[0];
+
+            Assert.AreEqual(item.ImageFormat, ritem.ImageFormat);
+            Assert.AreEqual(item.IsTransparent, ritem.IsTransparent);
+            Assert.AreEqual(item.BackgroundColor, ritem.BackgroundColor);
+            Assert.AreEqual(item.Time, ritem.Time);
+            Assert.AreEqual(item.ElevationDimension, ritem.ElevationDimension);
+            Assert.AreEqual(item.SpatialContextName, ritem.SpatialContextName);
+
+            Assert.AreEqual(5, item.Layers.Length);
         }
     }
 }

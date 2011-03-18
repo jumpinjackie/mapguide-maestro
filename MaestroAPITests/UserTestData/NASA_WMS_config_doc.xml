@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This configuration document is from the Fdo WMS notes (http://trac.osgeo.org/fdo/wiki/FdoWmsNotes) -->
+<fdo:DataStore xmlns:fdo="http://fdo.osgeo.org/schemas" xmlns:gml="http://www.opengis.net/gml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://fdo.osgeo.org/schemas" xsi:schemaLocation="http://fdo.osgeo.org/schemas FdoDocument.xsd">
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fdo.osgeo.org/schemas/feature/WMS" xmlns:fdo="http://fdo.osgeo.org/schemas" xmlns:WMS="http://fdo.osgeo.org/schemas/feature/WMS" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="NASAWMSGlobalPan" type="WMS:NASAWMSGlobalPanType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="NASAWMSGlobalPanKey">
+        <xs:selector xpath=".//NASAWMSGlobalPan"/>
+        <xs:field xpath="Id"/>
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="NASAWMSGlobalPanType" abstract="false">
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="800" fdo:defaultImageYSize="600">
+              <xs:annotation>
+                <xs:appinfo source="http://fdo.osgeo.org/schemas">
+                  <fdo:DefaultDataModel organization="Row" bitsPerPixel="32" tileSizeX="100" tileSizeY="100"/>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:schema>
+  <SchemaMapping provider="OSGeo.WMS.3.1" name="WMS" xmlns="http://fdowms.osgeo.org/schemas">
+    <complexType name="NASAWMSGlobalPanType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <Transparent>true</Transparent>
+        <BackgroundColor>0xFFFFFF</BackgroundColor>
+        <Time>current</Time>
+        <Elevation>0</Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="global_mosaic">
+          <Style/>
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+  </SchemaMapping>
+</fdo:DataStore>
