@@ -62,6 +62,8 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 
         public void RemoveLayer(WmsLayerDefinition layer) { _layers.Remove(layer); }
 
+        public bool UseTileCache { get; set; }
+
         public string Time { get; set; }
 
         public string SpatialContextName { get; set; }
@@ -86,6 +88,9 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                 var bgcolor = doc.CreateElement("BackgroundColor");
                 bgcolor.InnerText = "0x" + Utility.SerializeHTMLColor(this.BackgroundColor, false);
 
+                var useTileCache = doc.CreateElement("UseTileCache");
+                useTileCache.InnerText = this.UseTileCache ? "true" : "false";
+
                 var time = doc.CreateElement("Time");
                 time.InnerText = this.Time;
 
@@ -97,6 +102,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 
                 rasterDef.AppendChild(format);
                 rasterDef.AppendChild(transparent);
+                rasterDef.AppendChild(useTileCache);
                 rasterDef.AppendChild(bgcolor);
                 rasterDef.AppendChild(time);
                 rasterDef.AppendChild(elevation);
@@ -122,6 +128,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 
             var format = node["Format"];
             var transparent = node["Transparent"];
+            var useTileCache = node["UseTileCache"];
             var bgcolor = node["BackgroundColor"];
             var time = node["Time"];
             var elevation = node["Elevation"];
@@ -133,12 +140,22 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             if (transparent != null)
                 this.IsTransparent = (transparent.InnerText.ToLower() == "true");
 
+            if (useTileCache != null)
+                this.UseTileCache = (useTileCache.InnerText.ToLower() == "true");
+
             if (bgcolor != null)
             {
-                if (bgcolor.InnerText.StartsWith("0x"))
-                    this.BackgroundColor = ColorTranslator.FromHtml("#" + bgcolor.InnerText.Substring(2));
-                else
-                    this.BackgroundColor = ColorTranslator.FromHtml("#" + bgcolor.InnerText);
+                if (!string.IsNullOrEmpty(bgcolor.InnerText))
+                {
+                    if (bgcolor.InnerText.StartsWith("0x"))
+                        this.BackgroundColor = ColorTranslator.FromHtml("#" + bgcolor.InnerText.Substring(2));
+                    else
+                        this.BackgroundColor = ColorTranslator.FromHtml("#" + bgcolor.InnerText);
+                }
+                else 
+                {
+                    this.BackgroundColor = default(Color);
+                }
             }
 
             if (time != null)

@@ -419,6 +419,8 @@ namespace Maestro.Base.UI
         private string [] MoveResources(ICollection<string> resIds, string folderId)
         {
             var wb = Workbench.Instance;
+            var notMoved = new List<string>();
+            var omgr = ServiceRegistry.GetService<OpenResourceManager>();
             var dlg = new ProgressDialog();
             var worker = new ProgressDialog.DoBackgroundWork((w, e, args) =>
             {
@@ -439,12 +441,18 @@ namespace Maestro.Base.UI
                         //moved instead of the folder itself!
                         var rid = new ResourceIdentifier(r);
                         var target = folderId + rid.Name + "/";
-                        //_conn.ResourceService.MoveFolderWithReferences(r, target, null, cb);
                         _conn.ResourceService.MoveResourceWithReferences(r, target, null, cb);
                     }
                     else
-                        _conn.ResourceService.MoveResourceWithReferences(r, folderId, null, cb);
-                    //string msg = string.Format("Moving {0} to {1}", r, folderId);
+                    {
+                        var rid = new ResourceIdentifier(r);
+                        var target = folderId + rid.Name + "." + rid.Extension;
+
+                        if (!omgr.IsOpen(target))
+                            _conn.ResourceService.MoveResourceWithReferences(r, target, null, cb);
+                        else
+                            notMoved.Add(r);
+                    }
                 }
 
                 //Collect affected folders and refresh them
@@ -462,6 +470,10 @@ namespace Maestro.Base.UI
             });
 
             var affectedFolders = (IEnumerable<string>)dlg.RunOperationAsync(wb, worker, folderId, resIds);
+
+            if (notMoved.Count > 0)
+                MessageService.ShowMessage(string.Format(Properties.Resources.NotCopiedOrMovedDueToOpenEditors, Environment.NewLine + string.Join(Environment.NewLine, notMoved.ToArray())));
+
             return new List<string>(affectedFolders).ToArray();
         }
 

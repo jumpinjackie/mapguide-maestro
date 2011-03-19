@@ -217,7 +217,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             var baseCrs = node["gml:baseCRS"];
 
             this.Name = srsName.InnerText;
-            this.Description = remarks.InnerText;
+            this.Description = (remarks != null) ? remarks.InnerText : string.Empty;
 
             var bbox = ext["gml:boundingBox"];
             if (bbox != null)

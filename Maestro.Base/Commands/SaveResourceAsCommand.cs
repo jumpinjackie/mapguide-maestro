@@ -36,6 +36,7 @@ namespace Maestro.Base.Commands
             var wb = Workbench.Instance;
             var exp = wb.ActiveSiteExplorer;
             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
+            var omgr = ServiceRegistry.GetService<OpenResourceManager>();
             var conn = connMgr.GetConnection(exp.ConnectionName);
             var ed = wb.ActiveDocumentView as IEditorViewContent;
             
@@ -48,6 +49,12 @@ namespace Maestro.Base.Commands
 
                     if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
+                        if (omgr.IsOpen(picker.ResourceID))
+                        {
+                            MessageService.ShowMessage(string.Format(Properties.Resources.CannotSaveToResourceAlreadyOpened, picker.ResourceID));
+                            return;
+                        }
+
                         using (new WaitCursor(wb))
                         {
                             ed.EditorService.SaveAs(picker.ResourceID);

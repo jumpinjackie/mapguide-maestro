@@ -29,6 +29,7 @@ using OSGeo.MapGuide.ObjectModels.FeatureSource;
 
 namespace Maestro.Editors.FeatureSource.Providers.Wms
 {
+    [ToolboxItem(false)]
     public partial class RasterDefinitionCtrl : UserControl
     {
         private RasterWmsItem _item;

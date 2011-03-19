@@ -62,7 +62,8 @@ namespace Maestro.Base.Commands
                 LoggingService.InfoFormatted(Properties.Resources.ClipboardAction, item.ClipboardState, item.ResourceId, folder.ResourceId);
                 
                 //Keep testing until we find a target resource identifier that 
-                //doesn't already exists
+                //doesn't already exists. Note this would automatically guard against any resources in this folder
+                //that may already be open in an editor
                 var rid = new ResourceIdentifier(item.ResourceId);
                 var name = rid.IsFolder ? (rid.Name + "/") : (rid.Name + "." + rid.ResourceType.ToString());
                 var resId = folder.ResourceId + name;
@@ -87,9 +88,13 @@ namespace Maestro.Base.Commands
                 if (item.ClipboardState == RepositoryItem.ClipboardAction.Copy)
                 {
                     if (item.IsFolder)
+                    {
                         conn.ResourceService.CopyFolderWithReferences(item.ResourceId, resId, null, null);
+                    }
                     else
+                    {
                         conn.ResourceService.CopyResource(item.ResourceId, resId, false);
+                    }
                 }
                 else if (item.ClipboardState == RepositoryItem.ClipboardAction.Cut)
                 {

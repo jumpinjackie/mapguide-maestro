@@ -34,6 +34,7 @@ namespace Maestro.Base.Commands.SiteExplorer
         {
             var wb = Workbench.Instance;
             var exp = wb.ActiveSiteExplorer;
+            var omgr = ServiceRegistry.GetService<OpenResourceManager>();
             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = connMgr.GetConnection(exp.ConnectionName);
             if (exp.SelectedItems.Length == 1)
@@ -47,6 +48,12 @@ namespace Maestro.Base.Commands.SiteExplorer
                     {
                         names.Add(item.Name);
                     }
+                }
+
+                if (!current.IsFolder && omgr.IsOpen(current.ResourceId))
+                {
+                    MessageService.ShowMessage(Properties.Resources.CannotRenameAlreadyOpenedResource);
+                    return;
                 }
 
                 var dlg = new RenameItemDialog(current.Name, names);
@@ -63,6 +70,12 @@ namespace Maestro.Base.Commands.SiteExplorer
                     {
                         oldid = parent.ResourceId + current.Name + "." + current.ResourceType;
                         newid = parent.ResourceId + dlg.NewName + "." + current.ResourceType;
+                    }
+
+                    if (omgr.IsOpen(newid))
+                    {
+                        MessageService.ShowMessage(string.Format(Properties.Resources.CannotRenameToResourceAlreadyOpened, newid));
+                        return;
                     }
 
                     var prog = new ProgressDialog();

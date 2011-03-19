@@ -850,4 +850,25 @@ Do you want to convert the values?</value>
   <data name="FolderNameExists" xml:space="preserve">
     <value>Folder name already exists</value>
   </data>
+  <data name="UpdatingOpenReferences" xml:space="preserve">
+    <value>Updating open editors of {0} to {1}</value>
+  </data>
+  <data name="ClosingOpenEditor" xml:space="preserve">
+    <value>Closing open editor of {0}</value>
+  </data>
+  <data name="UpdatedOpenEditor" xml:space="preserve">
+    <value>Open editor updated to {0}</value>
+  </data>
+  <data name="CannotRenameAlreadyOpenedResource" xml:space="preserve">
+    <value>Cannot rename resource as it is already opened by another editor</value>
+  </data>
+  <data name="CannotRenameToResourceAlreadyOpened" xml:space="preserve">
+    <value>Cannot rename resource to {0} as it is already opened by another editor</value>
+  </data>
+  <data name="CannotSaveToResourceAlreadyOpened" xml:space="preserve">
+    <value>Cannot save to {0} as it is already opened by another editor</value>
+  </data>
+  <data name="NotCopiedOrMovedDueToOpenEditors" xml:space="preserve">
+    <value>The following resources were not copied or moved because they would be overwriting resources currently open: {0}</value>
+  </data>
 </root>

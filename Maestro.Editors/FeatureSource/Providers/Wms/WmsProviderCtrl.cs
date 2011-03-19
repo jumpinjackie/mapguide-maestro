@@ -30,6 +30,7 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Editors.FeatureSource.Providers.Wms
 {
+    [ToolboxItem(false)]
     public partial class WmsProviderCtrl : EditorBindableCollapsiblePanel
     {
         public WmsProviderCtrl()

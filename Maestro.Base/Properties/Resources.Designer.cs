@@ -268,6 +268,33 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot rename resource as it is already opened by another editor.
+        /// </summary>
+        internal static string CannotRenameAlreadyOpenedResource {
+            get {
+                return ResourceManager.GetString("CannotRenameAlreadyOpenedResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot rename resource to {0} as it is already opened by another editor.
+        /// </summary>
+        internal static string CannotRenameToResourceAlreadyOpened {
+            get {
+                return ResourceManager.GetString("CannotRenameToResourceAlreadyOpened", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot save to {0} as it is already opened by another editor.
+        /// </summary>
+        internal static string CannotSaveToResourceAlreadyOpened {
+            get {
+                return ResourceManager.GetString("CannotSaveToResourceAlreadyOpened", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap clipboard_paste {
             get {
                 object obj = ResourceManager.GetObject("clipboard_paste", resourceCulture);
@@ -297,6 +324,15 @@ namespace Maestro.Base.Properties {
         internal static string CloseUnsavedResource {
             get {
                 return ResourceManager.GetString("CloseUnsavedResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Closing open editor of {0}.
+        /// </summary>
+        internal static string ClosingOpenEditor {
+            get {
+                return ResourceManager.GetString("ClosingOpenEditor", resourceCulture);
             }
         }
         
@@ -1109,6 +1145,15 @@ namespace Maestro.Base.Properties {
         internal static string NewResource {
             get {
                 return ResourceManager.GetString("NewResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The following resources were not copied or moved because they would be overwriting resources currently open: {0}.
+        /// </summary>
+        internal static string NotCopiedOrMovedDueToOpenEditors {
+            get {
+                return ResourceManager.GetString("NotCopiedOrMovedDueToOpenEditors", resourceCulture);
             }
         }
         
@@ -1961,6 +2006,24 @@ namespace Maestro.Base.Properties {
         internal static string UnpreviewableResourceType {
             get {
                 return ResourceManager.GetString("UnpreviewableResourceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open editor updated to {0}.
+        /// </summary>
+        internal static string UpdatedOpenEditor {
+            get {
+                return ResourceManager.GetString("UpdatedOpenEditor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating open editors of {0} to {1}.
+        /// </summary>
+        internal static string UpdatingOpenReferences {
+            get {
+                return ResourceManager.GetString("UpdatingOpenReferences", resourceCulture);
             }
         }
         

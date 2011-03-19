@@ -32,13 +32,21 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 
         public string Name { get; set; }
 
+        public string Style { get; set; }
+
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             var layer = doc.CreateElement("Layer");
             var n = doc.CreateAttribute("name");
             n.Value = this.Name;
             layer.Attributes.Append(n);
-            layer.AppendChild(doc.CreateElement("Style"));
+            {
+                var style = doc.CreateElement("Style");
+                var s = doc.CreateAttribute("name");
+                s.Value = this.Style;
+                style.Attributes.Append(s);
+                layer.AppendChild(style);
+            }
             currentNode.AppendChild(layer);
         }
 
@@ -50,6 +58,16 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             var n = node.Attributes["name"];
             if (n == null)
                 throw new Exception("Bad document. Expected attribute: name");
+
+            var style = node.FirstChild;
+            if (style != null)
+            {
+                var s = style.Attributes["name"];
+                if (s != null)
+                {
+                    this.Style = s.Value;
+                }
+            }
 
             this.Name = n.Value;
         }

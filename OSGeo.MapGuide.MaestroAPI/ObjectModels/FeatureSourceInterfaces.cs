@@ -380,6 +380,20 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         }
 
         /// <summary>
+        /// Gets the names of all the feature classes in the specified schema of this feature source
+        /// </summary>
+        /// <param name="fs"></param>
+        /// <param name="schemaName"></param>
+        /// <returns></returns>
+        public static string[] GetClassNames(this IFeatureSource fs, string schemaName)
+        {
+            Check.NotNull(fs, "fs");
+            Check.NotEmpty(schemaName, "schemaName");
+
+            return fs.CurrentConnection.FeatureService.GetClassNames(fs.ResourceID, schemaName);
+        }
+
+        /// <summary>
         /// Sets the connection properties of the feature source
         /// </summary>
         /// <param name="fs"></param>
