@@ -759,6 +759,15 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to The following items were not moved due to being already open in an editor: {0}.
+        /// </summary>
+        internal static string ItemsNotMovedDueToBeingOpen {
+            get {
+                return ResourceManager.GetString("ItemsNotMovedDueToBeingOpen", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap layer {
             get {
                 object obj = ResourceManager.GetObject("layer", resourceCulture);
@@ -1149,7 +1158,7 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The following resources were not copied or moved because they would be overwriting resources currently open: {0}.
+        ///   Looks up a localized string similar to The following resources were not copied or moved because they would be overwriting resources currently open: {0}The following resources were not moved because they are currently open: {1}.
         /// </summary>
         internal static string NotCopiedOrMovedDueToOpenEditors {
             get {

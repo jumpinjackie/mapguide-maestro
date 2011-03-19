@@ -869,6 +869,9 @@ Do you want to convert the values?</value>
     <value>Cannot save to {0} as it is already opened by another editor</value>
   </data>
   <data name="NotCopiedOrMovedDueToOpenEditors" xml:space="preserve">
-    <value>The following resources were not copied or moved because they would be overwriting resources currently open: {0}</value>
+    <value>The following resources were not copied or moved because they would be overwriting resources currently open: {0}The following resources were not moved because they are currently open: {1}</value>
+  </data>
+  <data name="ItemsNotMovedDueToBeingOpen" xml:space="preserve">
+    <value>The following items were not moved due to being already open in an editor: {0}</value>
   </data>
 </root>

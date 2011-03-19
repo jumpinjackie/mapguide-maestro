@@ -296,6 +296,7 @@ namespace Maestro.Base.UI
                             item.Reset();
                             break;
                     }
+                    trvResources.Invalidate();
                 }
             }
         }
@@ -419,7 +420,8 @@ namespace Maestro.Base.UI
         private string [] MoveResources(ICollection<string> resIds, string folderId)
         {
             var wb = Workbench.Instance;
-            var notMoved = new List<string>();
+            var notMovedToTarget = new List<string>();
+            var notMovedFromSource = new List<string>();
             var omgr = ServiceRegistry.GetService<OpenResourceManager>();
             var dlg = new ProgressDialog();
             var worker = new ProgressDialog.DoBackgroundWork((w, e, args) =>
@@ -447,11 +449,16 @@ namespace Maestro.Base.UI
                     {
                         var rid = new ResourceIdentifier(r);
                         var target = folderId + rid.Name + "." + rid.Extension;
+                        if (omgr.IsOpen(r))
+                        {
+                            notMovedFromSource.Add(r);
+                            continue;
+                        }
 
                         if (!omgr.IsOpen(target))
                             _conn.ResourceService.MoveResourceWithReferences(r, target, null, cb);
                         else
-                            notMoved.Add(r);
+                            notMovedToTarget.Add(r);
                     }
                 }
 
@@ -471,8 +478,13 @@ namespace Maestro.Base.UI
 
             var affectedFolders = (IEnumerable<string>)dlg.RunOperationAsync(wb, worker, folderId, resIds);
 
-            if (notMoved.Count > 0)
-                MessageService.ShowMessage(string.Format(Properties.Resources.NotCopiedOrMovedDueToOpenEditors, Environment.NewLine + string.Join(Environment.NewLine, notMoved.ToArray())));
+            if (notMovedToTarget.Count > 0 || notMovedFromSource.Count > 0)
+            {
+                MessageService.ShowMessage(string.Format(
+                    Properties.Resources.NotCopiedOrMovedDueToOpenEditors,
+                    Environment.NewLine + string.Join(Environment.NewLine, notMovedToTarget.ToArray()) + Environment.NewLine,
+                    Environment.NewLine + string.Join(Environment.NewLine, notMovedFromSource.ToArray()) + Environment.NewLine));
+            }
 
             return new List<string>(affectedFolders).ToArray();
         }

@@ -53,7 +53,8 @@ namespace Maestro.Base.Commands
                 return;
 
             var folder = exp.SelectedItems[0];
-
+            var sourceItemsNotMoved = new List<string>();
+            
             //.net FX 2.0 hack to compensate for lack of set collection
             Dictionary<string, string> folders = new Dictionary<string, string>();
 
@@ -98,6 +99,15 @@ namespace Maestro.Base.Commands
                 }
                 else if (item.ClipboardState == RepositoryItem.ClipboardAction.Cut)
                 {
+                    if (!item.IsFolder)
+                    {
+                        if (omgr.IsOpen(item.ResourceId))
+                        {
+                            sourceItemsNotMoved.Add(item.ResourceId);
+                            continue;
+                        }
+                    }
+
                     //TODO: Should we prompt? That may be equivalent to saying
                     //"Shall I break your resources because you're moving" isn't it?
                     var res = conn.ResourceService.MoveResourceWithReferences(item.ResourceId, resId, null, null);
@@ -107,6 +117,9 @@ namespace Maestro.Base.Commands
                         folders[item.Parent.ResourceId] = item.Parent.ResourceId;
                 }
             }
+
+            if (sourceItemsNotMoved.Count > 0)
+                MessageService.ShowMessage(string.Format(Properties.Resources.ItemsNotMovedDueToBeingOpen, Environment.NewLine + string.Join(Environment.NewLine, sourceItemsNotMoved.ToArray())));
 
             ResetItems(omgr, itemsToPaste);
             exp.RefreshModel(folder.ResourceId);
