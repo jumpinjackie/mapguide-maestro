@@ -138,8 +138,20 @@ namespace Maestro.Base.Services
                 };
                 ed.ViewContentClosed += (sender, e) =>
                 {
-                    _openItems.Remove(resourceId);
-                    siteExp.FlagNode(resourceId, NodeFlagAction.None);
+                    _openItems.Remove(ed.EditorService.ResourceID);
+                    siteExp.FlagNode(ed.EditorService.ResourceID, NodeFlagAction.None);
+                };
+                ed.EditorService.Saved += (sender, e) =>
+                {
+                    //If saved from new resource, the resource id would be session based
+                    //So we need to update this to the new resource id has defined by the
+                    //editor service
+                    if (_openItems.ContainsKey(resourceId))
+                    {
+                        var ed2 = _openItems[resourceId];
+                        _openItems.Remove(resourceId);
+                        _openItems[ed.EditorService.ResourceID] = ed2;
+                    }
                 };
                 ed.DirtyStateChanged += (sender, e) =>
                 {
