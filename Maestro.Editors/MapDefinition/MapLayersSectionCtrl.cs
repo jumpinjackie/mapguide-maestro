@@ -46,6 +46,55 @@ namespace Maestro.Editors.MapDefinition
         public MapLayersSectionCtrl()
         {
             InitializeComponent();
+            trvBaseLayers.KeyUp += new KeyEventHandler(trvBaseLayers_KeyUp);
+            trvLayerDrawingOrder.KeyUp += new KeyEventHandler(trvLayerDrawingOrder_KeyUp);
+            trvLayersGroup.KeyUp += new KeyEventHandler(trvLayersGroup_KeyUp);
+        }
+
+        void trvLayersGroup_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                var group = GetSelectedLayerGroupItem() as GroupItem;
+                var layer = GetSelectedLayerGroupItem() as LayerItem;
+                if (layer != null)
+                {
+                    RemoveSelectedLayerGroupItem(layer);
+                }
+                else if (group != null)
+                {
+                    RemoveSelectedLayerGroupItem(group);
+                }
+            }
+        }
+
+        void trvLayerDrawingOrder_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                var layer = GetSelectedDrawOrderItem() as LayerItem;
+                if (layer != null)
+                {
+                    RemoveSelectedDrawOrderLayerItem(layer);
+                }
+            }
+        }
+
+        void trvBaseLayers_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                var group = GetSelectedTiledLayerItem() as BaseLayerGroupItem;
+                var layer = GetSelectedTiledLayerItem() as BaseLayerItem;
+                if (group != null)
+                {
+                    RemoveSelectedTiledLayerItem(group);
+                }
+                else if (layer != null)
+                {
+                    RemoveSelectedTiledLayerItem(layer);
+                }
+            }
         }
 
         private IMapDefinition _map;
@@ -158,6 +207,11 @@ namespace Maestro.Editors.MapDefinition
         private void btnRemoveGroup_Click(object sender, EventArgs e)
         {
             var group = GetSelectedLayerGroupItem() as GroupItem;
+            RemoveSelectedLayerGroupItem(group);
+        }
+
+        private void RemoveSelectedLayerGroupItem(GroupItem group)
+        {
             _map.RemoveGroup(group.Tag);
             propertiesPanel.Controls.Clear();
             _grpLayerModel.Invalidate();
@@ -183,10 +237,15 @@ namespace Maestro.Editors.MapDefinition
             var layer = GetSelectedLayerGroupItem() as LayerItem;
             if (layer != null)
             {
-                _map.RemoveLayer(layer.Tag);
-                propertiesPanel.Controls.Clear();
-                this.RefreshModels();
+                RemoveSelectedLayerGroupItem(layer);
             }
+        }
+
+        private void RemoveSelectedLayerGroupItem(LayerItem layer)
+        {
+            _map.RemoveLayer(layer.Tag);
+            propertiesPanel.Controls.Clear();
+            this.RefreshModels();
         }
 
         private void btnConvertLayerGroupToBaseGroup_Click(object sender, EventArgs e)
@@ -218,10 +277,15 @@ namespace Maestro.Editors.MapDefinition
             var layer = GetSelectedDrawOrderItem() as LayerItem;
             if (layer != null)
             {
-                _map.RemoveLayer(layer.Tag);
-                propertiesPanel.Controls.Clear();
-                this.RefreshModels();
+                RemoveSelectedDrawOrderLayerItem(layer);
             }
+        }
+
+        private void RemoveSelectedDrawOrderLayerItem(LayerItem layer)
+        {
+            _map.RemoveLayer(layer.Tag);
+            propertiesPanel.Controls.Clear();
+            this.RefreshModels();
         }
 
         private void btnDLMoveLayerUp_Click(object sender, EventArgs e)
@@ -379,10 +443,15 @@ namespace Maestro.Editors.MapDefinition
             var group = GetSelectedTiledLayerItem() as BaseLayerGroupItem;
             if (group != null)
             {
-                _map.BaseMap.RemoveBaseLayerGroup(group.Tag);
-                propertiesPanel.Controls.Clear();
-                _tiledLayerModel.Invalidate();
+                RemoveSelectedTiledLayerItem(group);
             }
+        }
+
+        private void RemoveSelectedTiledLayerItem(BaseLayerGroupItem group)
+        {
+            _map.BaseMap.RemoveBaseLayerGroup(group.Tag);
+            propertiesPanel.Controls.Clear();
+            _tiledLayerModel.Invalidate();
         }
 
         private void btnAddBaseLayer_Click(object sender, EventArgs e)
@@ -478,11 +547,16 @@ namespace Maestro.Editors.MapDefinition
             var layer = GetSelectedTiledLayerItem() as BaseLayerItem;
             if (layer != null)
             {
-                var grp = layer.Parent;
-                grp.RemoveBaseMapLayer(layer.Tag);
-                propertiesPanel.Controls.Clear();
-                _tiledLayerModel.Invalidate();
+                RemoveSelectedTiledLayerItem(layer);
             }
+        }
+
+        private void RemoveSelectedTiledLayerItem(BaseLayerItem layer)
+        {
+            var grp = layer.Parent;
+            grp.RemoveBaseMapLayer(layer.Tag);
+            propertiesPanel.Controls.Clear();
+            _tiledLayerModel.Invalidate();
         }
 
         private void btnMoveBaseLayerUp_Click(object sender, EventArgs e)
