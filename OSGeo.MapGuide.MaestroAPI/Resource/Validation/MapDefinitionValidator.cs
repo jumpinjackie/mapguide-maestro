@@ -69,10 +69,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 layers.Add(l);
 
             if (mdef.BaseMap != null && mdef.BaseMap.HasGroups())
+            {
+                if (mdef.BaseMap.ScaleCount == 0)
+                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, Properties.Resources.MDF_NoFiniteDisplayScalesSpecified));
+
                 foreach (IBaseMapGroup g in mdef.BaseMap.BaseMapLayerGroup)
+                {
                     foreach (IBaseMapLayer l in g.BaseMapLayer)
                         layers.Add(l);
-
+                }
+            }
             Dictionary<string, IBaseMapLayer> nameCounter = new Dictionary<string, IBaseMapLayer>();
             
             foreach (IBaseMapLayer l in layers)

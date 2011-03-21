@@ -809,6 +809,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Map Definition contains tiled layers but has no finite display scales defined.
+        /// </summary>
+        internal static string MDF_NoFiniteDisplayScalesSpecified {
+            get {
+                return ResourceManager.GetString("MDF_NoFiniteDisplayScalesSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} is a raster layer, and in another coordinate system than the map. No data will be displayed by the layer.
         /// </summary>
         internal static string MDF_RasterReprojectionError {

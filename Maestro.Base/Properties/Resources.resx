@@ -874,4 +874,7 @@ Do you want to convert the values?</value>
   <data name="ItemsNotMovedDueToBeingOpen" xml:space="preserve">
     <value>The following items were not moved due to being already open in an editor: {0}</value>
   </data>
+  <data name="NoFiniteDisplayScalesSpecified" xml:space="preserve">
+    <value>This Map Definition has tiled layers but has no finite display scales defined. Define some display scales.</value>
+  </data>
 </root>

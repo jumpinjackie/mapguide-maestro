@@ -159,6 +159,7 @@ namespace Maestro.Editors.MapDefinition
         {
             var group = GetSelectedLayerGroupItem() as GroupItem;
             _map.RemoveGroup(group.Tag);
+            propertiesPanel.Controls.Clear();
             _grpLayerModel.Invalidate();
         }
 
@@ -183,6 +184,7 @@ namespace Maestro.Editors.MapDefinition
             if (layer != null)
             {
                 _map.RemoveLayer(layer.Tag);
+                propertiesPanel.Controls.Clear();
                 this.RefreshModels();
             }
         }
@@ -217,6 +219,7 @@ namespace Maestro.Editors.MapDefinition
             if (layer != null)
             {
                 _map.RemoveLayer(layer.Tag);
+                propertiesPanel.Controls.Clear();
                 this.RefreshModels();
             }
         }
@@ -377,6 +380,7 @@ namespace Maestro.Editors.MapDefinition
             if (group != null)
             {
                 _map.BaseMap.RemoveBaseLayerGroup(group.Tag);
+                propertiesPanel.Controls.Clear();
                 _tiledLayerModel.Invalidate();
             }
         }
@@ -476,6 +480,7 @@ namespace Maestro.Editors.MapDefinition
             {
                 var grp = layer.Parent;
                 grp.RemoveBaseMapLayer(layer.Tag);
+                propertiesPanel.Controls.Clear();
                 _tiledLayerModel.Invalidate();
             }
         }
@@ -770,7 +775,7 @@ namespace Maestro.Editors.MapDefinition
             var rids = e.Data.GetData(typeof(ResourceIdentifier[])) as ResourceIdentifier[];
             if (rids != null && rids.Length > 0)
             {
-                var node = trvLayersGroup.GetNodeAt(trvLayersGroup.PointToClient(new Point(e.X, e.Y)));
+                var node = trvBaseLayers.GetNodeAt(trvBaseLayers.PointToClient(new Point(e.X, e.Y)));
 
                 IBaseMapGroup group = null;
                 if (node != null && node.Tag is BaseLayerGroupItem)
@@ -783,14 +788,14 @@ namespace Maestro.Editors.MapDefinition
                 {
                     _map.InitBaseMap();
                     group = _map.BaseMap.AddBaseLayerGroup(GenerateBaseGroupName(_map));
+                }
 
-                    foreach (var rid in rids)
+                foreach (var rid in rids)
+                {
+                    if (rid.ResourceType == ResourceTypes.LayerDefinition)
                     {
-                        if (rid.ResourceType == ResourceTypes.LayerDefinition)
-                        {
-                            group.AddLayer(GenerateBaseLayerName(rid.ToString(), _map.BaseMap), rid.ToString());
-                            added++;
-                        }
+                        group.AddLayer(GenerateBaseLayerName(rid.ToString(), _map.BaseMap), rid.ToString());
+                        added++;
                     }
                 }
             }

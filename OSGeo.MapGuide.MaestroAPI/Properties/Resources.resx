@@ -485,4 +485,7 @@
   <data name="UnknownSymbolDefVersion" xml:space="preserve">
     <value>Unknown Symbol Definition version: </value>
   </data>
+  <data name="MDF_NoFiniteDisplayScalesSpecified" xml:space="preserve">
+    <value>The Map Definition contains tiled layers but has no finite display scales defined</value>
+  </data>
 </root>

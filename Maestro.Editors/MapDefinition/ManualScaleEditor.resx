@@ -129,6 +129,9 @@
   <data name="txtScales.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="txtScales.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
   <data name="txtScales.Size" type="System.Drawing.Size, System.Drawing">
     <value>267, 219</value>
   </data>

@@ -61,9 +61,9 @@ namespace Maestro.Editors.MapDefinition
 
         void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "LegendLabel")
+            if (e.PropertyName == "Name")
             {
-                this.Text = this.Tag.LegendLabel;
+                this.Text = this.Tag.Name;
             }
         }
     }
@@ -78,9 +78,9 @@ namespace Maestro.Editors.MapDefinition
 
         void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "LegendLabel")
+            if (e.PropertyName == "Name")
             {
-                this.Text = this.Tag.LegendLabel;
+                this.Text = this.Tag.Name;
             }
         }
     }
@@ -102,9 +102,9 @@ namespace Maestro.Editors.MapDefinition
 
         void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "LegendLabel")
+            if (e.PropertyName == "Name")
             {
-                this.Text = this.Tag.LegendLabel;
+                this.Text = this.Tag.Name;
             }
         }
     }
@@ -119,9 +119,9 @@ namespace Maestro.Editors.MapDefinition
 
         void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "LegendLabel")
+            if (e.PropertyName == "Name")
             {
-                this.Text = this.Tag.LegendLabel;
+                this.Text = this.Tag.Name;
             }
         }
     }

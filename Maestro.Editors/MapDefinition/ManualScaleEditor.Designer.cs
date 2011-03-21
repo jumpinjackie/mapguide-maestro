@@ -36,6 +36,7 @@
             // 
             // txtScales
             // 
+            this.txtScales.AcceptsReturn = true;
             resources.ApplyResources(this.txtScales, "txtScales");
             this.txtScales.Name = "txtScales";
             // 

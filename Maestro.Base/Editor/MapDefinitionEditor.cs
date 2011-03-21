@@ -50,13 +50,27 @@ namespace Maestro.Base.Editor
 
         protected override void OnBeforeSave(object sender, CancelEventArgs e)
         {
+            var mdf = (IMapDefinition)_edsvc.GetEditedResource();
+            //Unfortunately we can't hook in the standard validation as the act of
+            //committing the xml content back, will trigger the invalid XML content error
+            //before the standard validation is performed. So check this one particular
+            //validation rule here before we go ahead
+            if (mdf.BaseMap != null && mdf.BaseMap.HasLayers())
+            {
+                if (mdf.BaseMap.ScaleCount == 0)
+                {
+                    MessageService.ShowMessage(Properties.Resources.NoFiniteDisplayScalesSpecified);
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
             if (_edsvc.IsNew)
             {
                 base.OnBeforeSave(sender, e);
                 return;
             }
 
-            var mdf = (IMapDefinition)_edsvc.GetEditedResource();
             if (mdf.BaseMap != null)
             {
                 if (mdf.BaseMap.HasLayers())

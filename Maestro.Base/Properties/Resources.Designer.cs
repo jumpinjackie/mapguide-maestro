@@ -1158,6 +1158,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This Map Definition has tiled layers but has no finite display scales defined. Define some display scales..
+        /// </summary>
+        internal static string NoFiniteDisplayScalesSpecified {
+            get {
+                return ResourceManager.GetString("NoFiniteDisplayScalesSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The following resources were not copied or moved because they would be overwriting resources currently open: {0}The following resources were not moved because they are currently open: {1}.
         /// </summary>
         internal static string NotCopiedOrMovedDueToOpenEditors {
