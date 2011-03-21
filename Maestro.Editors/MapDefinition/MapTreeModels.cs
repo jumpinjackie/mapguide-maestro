@@ -217,7 +217,8 @@ namespace Maestro.Editors.MapDefinition
             {
                 foreach (var group in _map.MapLayerGroup)
                 {
-                    yield return new GroupItem(group);
+                    if (string.IsNullOrEmpty(group.Group))
+                        yield return new GroupItem(group);
                 }
 
                 foreach (var layer in _map.GetLayersWithoutGroups())

@@ -680,39 +680,101 @@ namespace Maestro.Editors.MapDefinition
         private void trvLayersGroup_DragDrop(object sender, DragEventArgs e)
         {
             var rids = e.Data.GetData(typeof(ResourceIdentifier[])) as ResourceIdentifier[];
-            if (rids == null || rids.Length == 0)
-                return;
-
-            IMapLayerGroup parent = null;
-            var node = trvLayersGroup.GetNodeAt(trvLayersGroup.PointToClient(new Point(e.X, e.Y)));
-            if (node != null)
+            var nodes = e.Data.GetData(typeof(TreeNodeAdv[])) as TreeNodeAdv[];
+            if (rids != null && rids.Length > 0)
             {
-                var gi = node.Tag as GroupItem;
-                if (gi != null)
-                    parent = gi.Tag;
-            }
+                IMapLayerGroup parent = null;
+                var node = trvLayersGroup.GetNodeAt(trvLayersGroup.PointToClient(new Point(e.X, e.Y)));
+                if (node != null)
+                {
+                    var gi = node.Tag as GroupItem;
+                    if (gi != null)
+                        parent = gi.Tag;
+                }
 
-            int added = 0;
-            foreach (var rid in rids)
-            {
-                if (rid.ResourceType == ResourceTypes.LayerDefinition)
-                { 
-                    var name = GenerateLayerName(rid.ToString(), _map);
-                    var layer = _map.AddLayer(parent == null ? null : parent.Name, name, rid.ToString());
-                    added++;
+                int added = 0;
+                foreach (var rid in rids)
+                {
+                    if (rid.ResourceType == ResourceTypes.LayerDefinition)
+                    {
+                        var name = GenerateLayerName(rid.ToString(), _map);
+                        var layer = _map.AddLayer(parent == null ? null : parent.Name, name, rid.ToString());
+                        added++;
+                    }
+                }
+
+                if (added > 0)
+                {
+                    //TODO: Fine-grain invalidation
+                    RefreshModels();
                 }
             }
-
-            if (added > 0)
+            else if (nodes != null && nodes.Length > 0)
             {
-                //TODO: Fine-grain invalidation
-                RefreshModels();
+                IMapLayerGroup parent = null;
+                var node = trvLayersGroup.GetNodeAt(trvLayersGroup.PointToClient(new Point(e.X, e.Y)));
+                if (node != null)
+                {
+                    var gi = node.Tag as GroupItem;
+                    var li = node.Tag as LayerItem;
+                    if (gi != null)
+                        parent = gi.Tag;
+                    else if (li != null)
+                        parent = _map.GetGroupByName(li.Tag.Group);
+                }
+
+                if (parent != null)
+                {
+                    int moved = 0;
+                    //Add to this group
+                    foreach (var n in nodes)
+                    {
+                        var gi = n.Tag as GroupItem;
+                        var li = n.Tag as LayerItem;
+
+                        //Re-assign parent
+                        if (gi != null)
+                        {
+                            gi.Tag.Group = parent.Name;
+                            moved++;
+                        }
+                        else if (li != null)
+                        {
+                            li.Tag.Group = parent.Name;
+                            moved++;
+                        }
+                    }
+
+                    if (moved > 0)
+                    {
+                        //TODO: Fine-grain invalidation
+                        RefreshModels();
+                    }
+                }
             }
         }
 
         private void trvLayersGroup_DragOver(object sender, DragEventArgs e)
         {
-            HandleDragOver(e);
+            var data = e.Data.GetData(typeof(TreeNodeAdv[])) as TreeNodeAdv[];
+            if (data == null)
+            {
+                HandleDragOver(e);
+            }
+            else
+            {
+                var li = data[0].Tag as LayerItem;
+                var gi = data[0].Tag as GroupItem;
+                if (li == null && gi == null)
+                {
+                    e.Effect = DragDropEffects.None;
+                    return;
+                }
+                else
+                {
+                    e.Effect = DragDropEffects.Move;
+                }
+            }
         }
 
         private static void HandleDragOver(DragEventArgs e)
@@ -887,7 +949,24 @@ namespace Maestro.Editors.MapDefinition
 
         private void trvBaseLayers_DragOver(object sender, DragEventArgs e)
         {
-            HandleDragOver(e);
+            var data = e.Data.GetData(typeof(TreeNodeAdv[])) as TreeNodeAdv[];
+            if (data == null)
+            {
+                HandleDragOver(e);
+            }
+            else
+            {
+                var li = data[0].Tag as BaseLayerItem;
+                if (li == null)
+                {
+                    e.Effect = DragDropEffects.None;
+                    return;
+                }
+                else
+                {
+                    e.Effect = DragDropEffects.Move;
+                }
+            }
         }
     }
 }
