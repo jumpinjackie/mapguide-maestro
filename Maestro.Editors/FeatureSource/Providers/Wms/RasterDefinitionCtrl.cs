@@ -26,20 +26,23 @@ using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using Maestro.Editors.Common;
 
 namespace Maestro.Editors.FeatureSource.Providers.Wms
 {
     [ToolboxItem(false)]
     public partial class RasterDefinitionCtrl : UserControl
     {
+        private WmsConfigurationDocument _config;
         private RasterWmsItem _item;
         private IEditorService _edsvc;
         private IFeatureSource _fs;
 
-        public RasterDefinitionCtrl(RasterWmsItem item, IEditorService edsvc)
+        public RasterDefinitionCtrl(WmsConfigurationDocument config, RasterWmsItem item, IEditorService edsvc)
         {
             InitializeComponent();
             cmbBackground.ResetColors();
+            _config = config;
 
             _fs = (IFeatureSource)edsvc.GetEditedResource();
             _item = item;
@@ -87,21 +90,31 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             lnkUpdate.Enabled = true;
         }
 
-        private void btnSelectEpsg_Click(object sender, EventArgs e)
+        private void btnSelectCs_Click(object sender, EventArgs e)
         {
-            var conn = _fs.CurrentConnection;
-            string cswkt = _edsvc.GetCoordinateSystem();
-            if (!string.IsNullOrEmpty(cswkt))
+            List<string> names = new List<string>();
+            foreach (var sn in _config.SpatialContexts)
             {
-                //We want epsg form
-                try
-                {
-                    txtEpsg.Text = "EPSG:" + conn.CoordinateSystemCatalog.ConvertWktToEpsgCode(cswkt);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, Properties.Resources.TitleError);
-                }
+                names.Add(sn.Name);
+            }
+
+            var item = GenericItemSelectionDialog.SelectItem(null, null, names.ToArray());
+            if (item != null)
+            {
+                txtEpsg.Text = item;
+            }
+        }
+
+        private void btnSelectFormat_Click(object sender, EventArgs e)
+        {
+            string[] formats = { RasterWmsItem.WmsImageFormat.GIF, 
+                                 RasterWmsItem.WmsImageFormat.JPG,
+                                 RasterWmsItem.WmsImageFormat.PNG,
+                                 RasterWmsItem.WmsImageFormat.TIF };
+            var item = GenericItemSelectionDialog.SelectItem(null, null, formats);
+            if (item != null)
+            {
+                txtImageFormat.Text = item;
             }
         }
     }

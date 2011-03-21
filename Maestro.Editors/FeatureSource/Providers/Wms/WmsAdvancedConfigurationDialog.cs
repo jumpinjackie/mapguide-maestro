@@ -44,6 +44,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
         public WmsAdvancedConfigurationDialog(IEditorService service)
         {
             InitializeComponent();
+            grdSpatialContexts.AutoGenerateColumns = false;
             _items = new BindingList<RasterWmsItem>();
             _service = service;
             _fs = (IFeatureSource)_service.GetEditedResource();
@@ -68,6 +69,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
 
             _items = new BindingList<RasterWmsItem>(new List<RasterWmsItem>(_config.RasterOverrides));
             lstFeatureClasses.DataSource = _items;
+            grdSpatialContexts.DataSource = _config.SpatialContexts;
         }
 
         private WmsConfigurationDocument BuildDefaultWmsDocument()
@@ -79,11 +81,17 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             var schema = new FeatureSchema(schemaName, "");
             doc.AddSchema(schema);
 
+            foreach (var sc in contexts.SpatialContext)
+            {
+                doc.AddSpatialContext(sc);
+            }
+
             var defaultSc = contexts.SpatialContext[0];
 
             foreach (var clsName in clsNames)
             {
-                var cls = new ClassDefinition(clsName, "");
+                var className = clsName.Split(':')[1];
+                var cls = new ClassDefinition(className, "");
                 cls.AddProperty(new DataPropertyDefinition("Id", "")
                 {
                     DataType = DataPropertyType.String,
@@ -144,7 +152,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             var item = (RasterWmsItem)lstFeatureClasses.SelectedItem;
             grpRaster.Controls.Clear();
 
-            var ctrl = new RasterDefinitionCtrl(item, _service);
+            var ctrl = new RasterDefinitionCtrl(_config, item, _service);
             ctrl.Dock = DockStyle.Fill;
             grpRaster.Controls.Add(ctrl);
 
@@ -194,6 +202,29 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
 
             _items.Add(item);
              */
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            _config = BuildDefaultWmsDocument();
+            _items.Clear();
+            foreach (var ov in _config.RasterOverrides)
+            {
+                _items.Add(ov);
+            }
+            grdSpatialContexts.DataSource = _config.SpatialContexts;
+        }
+
+        private void grdSpatialContexts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1)
+            {
+                string wkt = _service.GetCoordinateSystem();
+                if (!string.IsNullOrEmpty(wkt))
+                {
+                    grdSpatialContexts[e.ColumnIndex, e.RowIndex].Value = wkt;
+                }
+            }
         }
     }
 }

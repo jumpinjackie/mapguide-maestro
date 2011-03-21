@@ -144,7 +144,7 @@ namespace Maestro.Base.Services
                 ed.EditorService.Saved += (sender, e) =>
                 {
                     //If saved from new resource, the resource id would be session based
-                    //So we need to update this to the new resource id has defined by the
+                    //So we need to update this to the new resource id as defined by the
                     //editor service
                     if (_openItems.ContainsKey(resourceId))
                     {

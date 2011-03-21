@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSelectEpsg = new System.Windows.Forms.Button();
-            this.txtEpsg = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtElevation = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -39,41 +37,24 @@
             this.chkTransparent = new System.Windows.Forms.CheckBox();
             this.txtImageFormat = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lnkUpdate = new System.Windows.Forms.LinkLabel();
-            this.txtLayers = new System.Windows.Forms.TextBox();
             this.cmbBackground = new Maestro.Editors.Common.ColorComboBox();
+            this.txtLayers = new System.Windows.Forms.TextBox();
+            this.lnkUpdate = new System.Windows.Forms.LinkLabel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtEpsg = new System.Windows.Forms.TextBox();
+            this.btnSelectCs = new System.Windows.Forms.Button();
+            this.btnSelectFormat = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnSelectEpsg
-            // 
-            this.btnSelectEpsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelectEpsg.Location = new System.Drawing.Point(239, 134);
-            this.btnSelectEpsg.Name = "btnSelectEpsg";
-            this.btnSelectEpsg.Size = new System.Drawing.Size(24, 23);
-            this.btnSelectEpsg.TabIndex = 23;
-            this.btnSelectEpsg.Text = "...";
-            this.btnSelectEpsg.UseVisualStyleBackColor = true;
-            this.btnSelectEpsg.Click += new System.EventHandler(this.btnSelectEpsg_Click);
-            // 
-            // txtEpsg
-            // 
-            this.txtEpsg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEpsg.Location = new System.Drawing.Point(108, 136);
-            this.txtEpsg.Name = "txtEpsg";
-            this.txtEpsg.Size = new System.Drawing.Size(125, 20);
-            this.txtEpsg.TabIndex = 22;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(5, 139);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 13);
+            this.label6.Size = new System.Drawing.Size(50, 13);
             this.label6.TabIndex = 21;
-            this.label6.Text = "EPSG Code";
+            this.label6.Text = "Layer CS";
             // 
             // txtElevation
             // 
@@ -136,7 +117,8 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtImageFormat.Location = new System.Drawing.Point(108, 3);
             this.txtImageFormat.Name = "txtImageFormat";
-            this.txtImageFormat.Size = new System.Drawing.Size(155, 20);
+            this.txtImageFormat.ReadOnly = true;
+            this.txtImageFormat.Size = new System.Drawing.Size(119, 20);
             this.txtImageFormat.TabIndex = 13;
             // 
             // label2
@@ -147,6 +129,40 @@
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 12;
             this.label2.Text = "Image Format";
+            // 
+            // cmbBackground
+            // 
+            this.cmbBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbBackground.FormattingEnabled = true;
+            this.cmbBackground.Location = new System.Drawing.Point(108, 57);
+            this.cmbBackground.Name = "cmbBackground";
+            this.cmbBackground.Size = new System.Drawing.Size(155, 21);
+            this.cmbBackground.TabIndex = 16;
+            // 
+            // txtLayers
+            // 
+            this.txtLayers.AcceptsReturn = true;
+            this.txtLayers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLayers.Location = new System.Drawing.Point(3, 16);
+            this.txtLayers.Multiline = true;
+            this.txtLayers.Name = "txtLayers";
+            this.txtLayers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtLayers.Size = new System.Drawing.Size(249, 87);
+            this.txtLayers.TabIndex = 0;
+            this.txtLayers.TextChanged += new System.EventHandler(this.txtLayers_TextChanged);
+            // 
+            // lnkUpdate
+            // 
+            this.lnkUpdate.AutoSize = true;
+            this.lnkUpdate.Enabled = false;
+            this.lnkUpdate.Location = new System.Drawing.Point(170, 0);
+            this.lnkUpdate.Name = "lnkUpdate";
+            this.lnkUpdate.Size = new System.Drawing.Size(42, 13);
+            this.lnkUpdate.TabIndex = 1;
+            this.lnkUpdate.TabStop = true;
+            this.lnkUpdate.Text = "Update";
+            this.lnkUpdate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkUpdate_LinkClicked);
             // 
             // groupBox1
             // 
@@ -162,47 +178,46 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Layers (one line per layer name)";
             // 
-            // lnkUpdate
+            // txtEpsg
             // 
-            this.lnkUpdate.AutoSize = true;
-            this.lnkUpdate.Enabled = false;
-            this.lnkUpdate.Location = new System.Drawing.Point(170, 0);
-            this.lnkUpdate.Name = "lnkUpdate";
-            this.lnkUpdate.Size = new System.Drawing.Size(42, 13);
-            this.lnkUpdate.TabIndex = 1;
-            this.lnkUpdate.TabStop = true;
-            this.lnkUpdate.Text = "Update";
-            this.lnkUpdate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkUpdate_LinkClicked);
-            // 
-            // txtLayers
-            // 
-            this.txtLayers.AcceptsReturn = true;
-            this.txtLayers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtLayers.Location = new System.Drawing.Point(3, 16);
-            this.txtLayers.Multiline = true;
-            this.txtLayers.Name = "txtLayers";
-            this.txtLayers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLayers.Size = new System.Drawing.Size(249, 87);
-            this.txtLayers.TabIndex = 0;
-            this.txtLayers.TextChanged += new System.EventHandler(this.txtLayers_TextChanged);
-            // 
-            // cmbBackground
-            // 
-            this.cmbBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtEpsg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbBackground.FormattingEnabled = true;
-            this.cmbBackground.Location = new System.Drawing.Point(108, 57);
-            this.cmbBackground.Name = "cmbBackground";
-            this.cmbBackground.Size = new System.Drawing.Size(155, 21);
-            this.cmbBackground.TabIndex = 16;
+            this.txtEpsg.Location = new System.Drawing.Point(108, 136);
+            this.txtEpsg.Name = "txtEpsg";
+            this.txtEpsg.ReadOnly = true;
+            this.txtEpsg.Size = new System.Drawing.Size(119, 20);
+            this.txtEpsg.TabIndex = 25;
+            // 
+            // btnSelectCs
+            // 
+            this.btnSelectCs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelectCs.Location = new System.Drawing.Point(233, 134);
+            this.btnSelectCs.Name = "btnSelectCs";
+            this.btnSelectCs.Size = new System.Drawing.Size(30, 23);
+            this.btnSelectCs.TabIndex = 26;
+            this.btnSelectCs.Text = "...";
+            this.btnSelectCs.UseVisualStyleBackColor = true;
+            this.btnSelectCs.Click += new System.EventHandler(this.btnSelectCs_Click);
+            // 
+            // btnSelectFormat
+            // 
+            this.btnSelectFormat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelectFormat.Location = new System.Drawing.Point(233, 1);
+            this.btnSelectFormat.Name = "btnSelectFormat";
+            this.btnSelectFormat.Size = new System.Drawing.Size(30, 23);
+            this.btnSelectFormat.TabIndex = 27;
+            this.btnSelectFormat.Text = "...";
+            this.btnSelectFormat.UseVisualStyleBackColor = true;
+            this.btnSelectFormat.Click += new System.EventHandler(this.btnSelectFormat_Click);
             // 
             // RasterDefinitionCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnSelectEpsg);
+            this.Controls.Add(this.btnSelectFormat);
+            this.Controls.Add(this.btnSelectCs);
             this.Controls.Add(this.txtEpsg);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtElevation);
             this.Controls.Add(this.label5);
@@ -224,8 +239,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnSelectEpsg;
-        private System.Windows.Forms.TextBox txtEpsg;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtElevation;
         private System.Windows.Forms.Label label5;
@@ -236,8 +249,11 @@
         private System.Windows.Forms.CheckBox chkTransparent;
         private System.Windows.Forms.TextBox txtImageFormat;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtLayers;
         private System.Windows.Forms.LinkLabel lnkUpdate;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtEpsg;
+        private System.Windows.Forms.Button btnSelectCs;
+        private System.Windows.Forms.Button btnSelectFormat;
     }
 }

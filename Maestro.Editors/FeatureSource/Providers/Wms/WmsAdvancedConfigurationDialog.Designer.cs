@@ -39,8 +39,15 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnRemove = new System.Windows.Forms.ToolStripButton();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grdSpatialContexts = new System.Windows.Forms.DataGridView();
+            this.COL_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.COL_CS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdSpatialContexts)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -112,12 +119,57 @@
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
+            // btnReset
+            // 
+            resources.ApplyResources(this.btnReset, "btnReset");
+            this.btnReset.Name = "btnReset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.grdSpatialContexts);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // grdSpatialContexts
+            // 
+            this.grdSpatialContexts.AllowUserToAddRows = false;
+            this.grdSpatialContexts.AllowUserToDeleteRows = false;
+            this.grdSpatialContexts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdSpatialContexts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.COL_NAME,
+            this.COL_CS});
+            resources.ApplyResources(this.grdSpatialContexts, "grdSpatialContexts");
+            this.grdSpatialContexts.Name = "grdSpatialContexts";
+            this.grdSpatialContexts.ReadOnly = true;
+            this.grdSpatialContexts.RowHeadersVisible = false;
+            this.grdSpatialContexts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdSpatialContexts_CellContentClick);
+            // 
+            // COL_NAME
+            // 
+            this.COL_NAME.DataPropertyName = "Name";
+            resources.ApplyResources(this.COL_NAME, "COL_NAME");
+            this.COL_NAME.Name = "COL_NAME";
+            this.COL_NAME.ReadOnly = true;
+            // 
+            // COL_CS
+            // 
+            this.COL_CS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.COL_CS.DataPropertyName = "CoordinateSystemWkt";
+            resources.ApplyResources(this.COL_CS, "COL_CS");
+            this.COL_CS.Name = "COL_CS";
+            this.COL_CS.ReadOnly = true;
+            // 
             // WmsAdvancedConfigurationDialog
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -129,6 +181,8 @@
             this.groupBox2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdSpatialContexts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,5 +200,10 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.ToolStripButton btnRemove;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView grdSpatialContexts;
+        private System.Windows.Forms.DataGridViewTextBoxColumn COL_NAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn COL_CS;
     }
 }
