@@ -1,4 +1,18 @@
-﻿3.0 Beta 1
+﻿3.0 Beta 2
+----------
+ - Added WMS specialized feature source editor
+ - Added missing connection testing functionality for various specialized feature source editors
+ - New dialog for creating folders
+ - Fix: Open resources are protected from cut/copy/paste/rename operations
+ - Fix: Add missing raster layer definition item template
+ - Fix: Assorted Map Definition editor defects
+ - Fix: Missing dirty state notifications on various editor components.
+ - Fix: Deleting a directory does not close editors of child resources
+ - Fix: Prompt to save unsaved resources when exiting.
+ - Fix: Cut/Copy/Paste commands occasionally don't work in XML editor
+ - Fix: Cannot create symbol definitions for given item templates.
+
+3.0 Beta 1
 ----------
  - Added GDAL specialized feature source editor
  - Added ODBC specialized feature source editor
