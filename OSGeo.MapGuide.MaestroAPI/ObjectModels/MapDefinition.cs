@@ -639,6 +639,25 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
             }
         }
 
+        public int GetIndex(IBaseMapLayer layer)
+        {
+            var bl = layer as BaseMapLayerType;
+            if (bl != null)
+            {
+                return this.BaseMapLayer.IndexOf(bl);
+            }
+            return -1;
+        }
+
+        public void InsertLayer(int index, IBaseMapLayer layer)
+        {
+            var bl = layer as BaseMapLayerType;
+            if (bl != null)
+            {
+                this.BaseMapLayer.Insert(index, bl);
+            }
+        }
+
         public IBaseMapLayer AddLayer(string layerName, string resourceId)
         {
             BaseMapLayerType layer = new BaseMapLayerType()

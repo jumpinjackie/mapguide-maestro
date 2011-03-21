@@ -907,10 +907,11 @@ namespace Maestro.Editors.MapDefinition
 
         private void trvBaseLayers_DragDrop(object sender, DragEventArgs e)
         {
-            int added = 0;
             var rids = e.Data.GetData(typeof(ResourceIdentifier[])) as ResourceIdentifier[];
+            var data = e.Data.GetData(typeof(TreeNodeAdv[])) as TreeNodeAdv[];
             if (rids != null && rids.Length > 0)
             {
+                int added = 0;
                 var node = trvBaseLayers.GetNodeAt(trvBaseLayers.PointToClient(new Point(e.X, e.Y)));
 
                 IBaseMapGroup group = null;
@@ -934,11 +935,59 @@ namespace Maestro.Editors.MapDefinition
                         added++;
                     }
                 }
-            }
 
-            if (added > 0)
+                if (added > 0)
+                {
+                    _tiledLayerModel.Invalidate();
+                }
+            }
+            else if (data != null && data.Length == 1)
             {
-                _tiledLayerModel.Invalidate();
+                var li = data[0].Tag as BaseLayerItem;
+                if (li != null)
+                {
+                    IBaseMapLayer sourceLayer = li.Tag;
+                    IBaseMapLayer targetLayer = null;
+                    IBaseMapGroup targetGroup = null;
+                    var node = trvBaseLayers.GetNodeAt(trvBaseLayers.PointToClient(new Point(e.X, e.Y)));
+                    if (node != null)
+                    {
+                        var tli = node.Tag as BaseLayerItem;
+                        var tlg = node.Tag as BaseLayerGroupItem;
+                        if (tli != null)
+                            targetLayer = tli.Tag;
+                        else if (tlg != null)
+                            targetGroup = tlg.Tag;
+                    }
+
+                    if (sourceLayer != null && targetLayer != null && sourceLayer != targetLayer)
+                    {
+                        var srcGroup = _map.BaseMap.GetGroupForLayer(sourceLayer);
+                        var dstGroup = _map.BaseMap.GetGroupForLayer(targetLayer);
+
+                        if (srcGroup != null)
+                        {
+                            if (srcGroup == dstGroup)
+                            {
+                                int idx = srcGroup.GetIndex(targetLayer);
+                                if (idx >= 0)
+                                {
+                                    srcGroup.RemoveBaseMapLayer(sourceLayer);
+                                    srcGroup.InsertLayer(idx, sourceLayer);
+
+                                    _tiledLayerModel.Invalidate();
+                                }
+                            }
+                            else
+                            {
+                                srcGroup.RemoveBaseMapLayer(sourceLayer);
+                                dstGroup.InsertLayer(0, targetLayer);
+
+                                _tiledLayerModel.Invalidate();
+                            }
+                        }
+                    }
+                }
             }
         }
 

@@ -250,6 +250,26 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         }
 
         /// <summary>
+        /// Gets the parent group for the specified layer
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="layer"></param>
+        /// <returns></returns>
+        public static IBaseMapGroup GetGroupForLayer(this IBaseMapDefinition map, IBaseMapLayer layer)
+        {
+            Check.NotNull(map, "map");
+            foreach (var group in map.BaseMapLayerGroup)
+            {
+                foreach (var tl in group.BaseMapLayer)
+                {
+                    if (tl == layer)
+                        return group;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
         /// Gets whether this base map group has tiled layers
         /// </summary>
         /// <param name="grp"></param>
@@ -638,6 +658,20 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// </summary>
         /// <param name="layer">The layer.</param>
         void RemoveBaseMapLayer(IBaseMapLayer layer);
+
+        /// <summary>
+        /// Insert the base map layer at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="layer"></param>
+        void InsertLayer(int index, IBaseMapLayer layer);
+
+        /// <summary>
+        /// Gets the index of the specified layer
+        /// </summary>
+        /// <param name="layer"></param>
+        /// <returns></returns>
+        int GetIndex(IBaseMapLayer layer);
 
         /// <summary>
         /// Moves the specified layer up.
