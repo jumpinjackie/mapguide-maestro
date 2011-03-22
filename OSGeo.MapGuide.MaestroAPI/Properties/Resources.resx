@@ -488,4 +488,7 @@
   <data name="MDF_NoFiniteDisplayScalesSpecified" xml:space="preserve">
     <value>The Map Definition contains tiled layers but has no finite display scales defined</value>
   </data>
+  <data name="ADF_MapWithIncompatibleCommericalCs" xml:space="preserve">
+    <value>The Map Definition {0} has a coordinate system that is not EPSG:3857. This map is in a group containing one or more commerical base layers. The specified Map Definition may not correctly display or line up with the commerical base layers.</value>
+  </data>
 </root>

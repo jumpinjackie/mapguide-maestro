@@ -107,7 +107,7 @@ namespace Maestro.Editors.Fusion
             if (grp != null)
             {
                 propertiesPanel.Controls.Clear();
-                var mapCtrl = new MapCtrl(_flexLayout, grp, _edsvc.ResourceService);
+                var mapCtrl = new MapCtrl(_flexLayout, grp, _edsvc);
                 mapCtrl.Dock = DockStyle.Fill;
                 propertiesPanel.Controls.Add(mapCtrl);
             }

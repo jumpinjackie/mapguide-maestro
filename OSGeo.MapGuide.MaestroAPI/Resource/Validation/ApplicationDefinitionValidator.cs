@@ -67,26 +67,38 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 {
                     foreach (IMapGroup mapGroup in fusionApp.MapSet.MapGroups)
                     {
+                        bool checkCmsProjection = false;
+                        List<IMapDefinition> mapDefsInGroup = new List<IMapDefinition>();
                         foreach (IMap map in mapGroup.Map)
                         {
+                            if (IsCommercialOverlay(map))
+                            {
+                                checkCmsProjection = true;
+                            }
                             try
                             {
-                                if (map.Extension == null || string.IsNullOrEmpty(map.GetMapDefinition()))
+                                if (map.Type.ToLower() == "mapguide")
                                 {
-                                    issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, string.Format(Properties.Resources.ADF_MapInvalidError, mapGroup.id)));
-                                }
-                                else
-                                {
-                                    IMapDefinition mdef = (IMapDefinition)context.GetResource(map.GetMapDefinition());
-
-                                    issues.AddRange(ResourceValidatorSet.Validate(context, mdef, true));
-
-                                    IEnvelope mapEnv = ObjectFactory.CreateEnvelope(mdef.Extents.MinX, mdef.Extents.MaxX, mdef.Extents.MinY, mdef.Extents.MaxY);
-
-                                    if (mapGroup.InitialView != null)
+                                    var mdfId = map.GetMapDefinition();
+                                    if (string.IsNullOrEmpty(mdfId) || !resource.CurrentConnection.ResourceService.ResourceExists(mdfId))
                                     {
-                                        if (!mapEnv.Contains(mapGroup.InitialView.CenterX, mapGroup.InitialView.CenterY))
-                                            issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, string.Format(Properties.Resources.ADF_ViewOutsideMapExtents)));
+                                        issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, string.Format(Properties.Resources.ADF_MapInvalidError, mapGroup.id)));
+                                    }
+                                    else
+                                    {
+                                        IMapDefinition mdef = (IMapDefinition)context.GetResource(mdfId);
+                                        mapDefsInGroup.Add(mdef);
+
+                                        if (recurse)
+                                            issues.AddRange(ResourceValidatorSet.Validate(context, mdef, true));
+
+                                        IEnvelope mapEnv = ObjectFactory.CreateEnvelope(mdef.Extents.MinX, mdef.Extents.MaxX, mdef.Extents.MinY, mdef.Extents.MaxY);
+
+                                        if (mapGroup.InitialView != null)
+                                        {
+                                            if (!mapEnv.Contains(mapGroup.InitialView.CenterX, mapGroup.InitialView.CenterY))
+                                                issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, string.Format(Properties.Resources.ADF_ViewOutsideMapExtents)));
+                                        }
                                     }
                                 }
                             }
@@ -96,6 +108,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                                 issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, string.Format(Properties.Resources.ADF_MapValidationError, mapGroup.id, msg)));
                             }
                         }
+
+                        if (checkCmsProjection)
+                        {
+                            foreach (var mdf in mapDefsInGroup)
+                            {
+                                var wkt = mdf.CoordinateSystem;
+                                var csCode = resource.CurrentConnection.CoordinateSystemCatalog.ConvertWktToCoordinateSystemCode(wkt);
+                                if (csCode.ToUpper() != "WGS84.PSEUDOMERCATOR")
+                                {
+                                    issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, string.Format(Properties.Resources.ADF_MapWithIncompatibleCommericalCs, mdf.ResourceID)));
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -103,6 +128,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             context.MarkValidated(resource.ResourceID);
 
             return issues.ToArray();
+        }
+
+        private static bool IsCommercialOverlay(IMap map)
+        {
+            string type = map.Type.ToLower();
+            return type == "google" || type == "virtualearth" || type == "yahoo";
         }
 
         /// <summary>

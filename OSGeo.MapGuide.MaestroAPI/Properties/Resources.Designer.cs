@@ -115,6 +115,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Map Definition {0} has a coordinate system that is not EPSG:3857. This map is in a group containing one or more commerical base layers. The specified Map Definition may not correctly display or line up with the commerical base layers..
+        /// </summary>
+        internal static string ADF_MapWithIncompatibleCommericalCs {
+            get {
+                return ResourceManager.GetString("ADF_MapWithIncompatibleCommericalCs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fusion application specifies a start view that is outside the map&apos;s initial extents.
         /// </summary>
         internal static string ADF_ViewOutsideMapExtents {

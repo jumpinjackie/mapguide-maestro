@@ -975,7 +975,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             set
             {
                 if (!this.Type.Equals("MapGuide"))
-                    throw new InvalidOperationException("Overlay options are only applicable to MapGuide maps");
+                    throw new InvalidOperationException("Overlay options are only applicable to MapGuide maps"); //LOCALIZEME
 
                 if (value == null)
                 {
@@ -1024,9 +1024,9 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
                     el.RemoveAll();
 
-                    var n = AppDefDocument.Instance.CreateElement("isBaseLayer");
-                    var t = AppDefDocument.Instance.CreateElement("useOverlay");
-                    var p = AppDefDocument.Instance.CreateElement("projection");
+                    var n = el.OwnerDocument.CreateElement("isBaseLayer");
+                    var t = el.OwnerDocument.CreateElement("useOverlay");
+                    var p = el.OwnerDocument.CreateElement("projection");
 
                     n.InnerText = value.IsBaseLayer.ToString().ToLower();
                     t.InnerText = value.UseOverlay.ToString().ToLower();

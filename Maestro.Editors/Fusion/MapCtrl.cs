@@ -36,7 +36,7 @@ using System.Diagnostics;
 namespace Maestro.Editors.Fusion
 {
     [ToolboxItem(false)]
-    internal partial class MapCtrl : UserControl
+    internal partial class MapCtrl : UserControl, INotifyResourceChanged
     {
         const string G_NORMAL_MAP = "G_NORMAL_MAP";
         const string G_SATELLITE_MAP = "G_SATELLITE_MAP";
@@ -57,12 +57,13 @@ namespace Maestro.Editors.Fusion
         private MapCtrl()
         {
             InitializeComponent();
+            cmbSelectionColor.ResetColors();
+            this.Disposed += new EventHandler(OnDisposed);
         }
 
         private IMap _map;
         private IMapGroup _group;
         private IMapView _initialView;
-        private IResourceService _resSvc;
 
         private Dictionary<string, CmsMap> _cmsMaps;
 
@@ -146,9 +147,12 @@ namespace Maestro.Editors.Fusion
 
         private bool _noEvents = true;
         private IApplicationDefinition _appDef;
+        private IEditorService _edsvc;
 
-        public MapCtrl(IApplicationDefinition appDef, IMapGroup group, IResourceService resSvc) : this() 
+        public MapCtrl(IApplicationDefinition appDef, IMapGroup group, IEditorService edService) : this() 
         {
+            _edsvc = edService;
+            _edsvc.RegisterCustomNotifier(this);
             _appDef = appDef;
             _group = group;
 
@@ -157,12 +161,60 @@ namespace Maestro.Editors.Fusion
                 if (map.Type.Equals("MapGuide"))
                 {
                     _map = map;
-                    break;
+                }
+                else
+                {
+                    var cmsOpts = map.CmsMapOptions;
+                    if (cmsOpts != null)
+                    {
+                        switch (cmsOpts.Type)
+                        {
+                            case G_HYBRID_MAP:
+                                chkGoogHybrid.Checked = true;
+                                break;
+                            case G_NORMAL_MAP:
+                                chkGoogStreets.Checked = true;
+                                break;
+                            case G_SATELLITE_MAP:
+                                chkGoogSatellite.Checked = true;
+                                break;
+                            case BING_AERIAL:
+                                chkBingSatellite.Checked = true;
+                                break;
+                            case BING_HYBRID:
+                                chkBingHybrid.Checked = true;
+                                break;
+                            case BING_ROAD:
+                                chkBingStreets.Checked = true;
+                                break;
+                            case YAHOO_MAP_HYB:
+                                chkYahooHybrid.Checked = true;
+                                break;
+                            case YAHOO_MAP_REG:
+                                chkYahooStreets.Checked = true;
+                                break;
+                            case YAHOO_MAP_SAT:
+                                chkYahooSatellite.Checked = true;
+                                break;
+                        }
+                    }
                 }
             }
 
+            string googUrl = _appDef.GetValue("GoogleScript");
+            string yahooUrl = _appDef.GetValue("YahooScript");
+
+            if (!string.IsNullOrEmpty(googUrl))
+            {
+                txtGoogApiKey.Text = googUrl.Substring(GOOGLE_URL.Length);
+            }
+            if (!string.IsNullOrEmpty(yahooUrl))
+            {
+                txtYahooApiKey.Text = yahooUrl.Substring(YAHOO_URL.Length);
+            }
+            EvaluateCmsStates();
+
             _initialView = _group.InitialView;
-            _resSvc = resSvc;
             _cmsMaps = new Dictionary<string, CmsMap>();
             chkOverride.Checked = (_initialView != null);
 
@@ -180,25 +232,38 @@ namespace Maestro.Editors.Fusion
             {
                 double d;
                 if (double.TryParse(txtViewX.Text, out d))
+                {
                     _initialView.CenterX = d;
+                    OnResourceChanged();
+                }
             };
             txtViewY.TextChanged += (s, e) =>
             {
                 double d;
                 if (double.TryParse(txtViewY.Text, out d))
+                {
                     _initialView.CenterY = d;
+                    OnResourceChanged();
+                }
             };
             txtViewScale.TextChanged += (s, e) =>
             {
                 double d;
                 if (double.TryParse(txtViewScale.Text, out d))
+                {
                     _initialView.Scale = d;
+                    OnResourceChanged();
+                }
             };
 
             TextBoxBinder.BindText(txtMapId, group, "id");
 
             txtMapDefinition.Text = _map.GetMapDefinition();
-            txtMapDefinition.TextChanged += (s, e) => { _map.SetMapDefinition(txtMapDefinition.Text); };
+            txtMapDefinition.TextChanged += (s, e) => 
+            { 
+                _map.SetMapDefinition(txtMapDefinition.Text);
+                OnResourceChanged();
+            };
 
             CheckBoxBinder.BindChecked(chkSingleTiled, _map, "SingleTile");
 
@@ -218,10 +283,28 @@ namespace Maestro.Editors.Fusion
             cmbSelectionColor.SelectedIndexChanged += (s, e) => 
             {
                 _map.SetValue("SelectionColor", "0x" + Utility.SerializeHTMLColor(cmbSelectionColor.CurrentColor, true));
+                OnResourceChanged();
             };
-            chkSelectionAsOverlay.CheckedChanged += (s, e) => { _map.SetValue("SelectionAsOverlay", chkSelectionAsOverlay.Checked.ToString().ToLower()); };
+            chkSelectionAsOverlay.CheckedChanged += (s, e) => 
+            { 
+                _map.SetValue("SelectionAsOverlay", chkSelectionAsOverlay.Checked.ToString().ToLower());
+                OnResourceChanged();
+            };
             
             _noEvents = false;
+        }
+
+        void OnDisposed(object sender, EventArgs e)
+        {
+            var handler = this.ResourceChanged;
+            if (handler != null)
+            {
+                foreach (var h in handler.GetInvocationList())
+                {
+                    this.ResourceChanged -= (EventHandler)h;
+                }
+                this.ResourceChanged = null;
+            }
         }
 
         private void InitCmsMaps(IMapGroup group)
@@ -229,7 +312,7 @@ namespace Maestro.Editors.Fusion
             foreach (var map in group.Map)
             {
                 var opts = map.CmsMapOptions;
-                if (opts != null && _cmsMaps.ContainsKey(opts.Type))
+                if (opts != null && !_cmsMaps.ContainsKey(opts.Type))
                 {
                     _cmsMaps[opts.Type] = new CmsMap(map) { IsEnabled = true };
                 }
@@ -266,15 +349,18 @@ namespace Maestro.Editors.Fusion
                 _group.InitialView = _initialView;
             else
                 _group.InitialView = null;
+
+            OnResourceChanged();
         }
 
         private void btnBrowseMdf_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_resSvc, ResourceTypes.MapDefinition, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edsvc.ResourceService, ResourceTypes.MapDefinition, ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
                     txtMapDefinition.Text = picker.ResourceID;
+                    OnResourceChanged();
                 }
             }
         }
@@ -315,6 +401,8 @@ namespace Maestro.Editors.Fusion
                 _map.OverlayOptions = _map.CreateOverlayOptions(false, true, "EPSG:900913");
             else
                 _map.OverlayOptions = null;
+
+            OnResourceChanged();
         }
 
         private bool IsUsingCmsLayers()
@@ -330,6 +418,9 @@ namespace Maestro.Editors.Fusion
 
         private void chkBingStreets_CheckedChanged(object sender, EventArgs e)
         {
+            if (_noEvents)
+                return;
+
             if (chkBingStreets.Checked)
                 _appDef.SetValue("VirtualEarthScript", BING_URL);
             SetCmsAvailability(BING_ROAD, chkBingStreets.Checked);
@@ -337,6 +428,9 @@ namespace Maestro.Editors.Fusion
 
         private void chkBingSatellite_CheckedChanged(object sender, EventArgs e)
         {
+            if (_noEvents)
+                return;
+
             if (chkBingSatellite.Checked)
                 _appDef.SetValue("VirtualEarthScript", BING_URL);
             SetCmsAvailability(BING_AERIAL, chkBingSatellite.Checked);
@@ -344,6 +438,9 @@ namespace Maestro.Editors.Fusion
 
         private void chkBingHybrid_CheckedChanged(object sender, EventArgs e)
         {
+            if (_noEvents)
+                return;
+
             if (chkBingHybrid.Checked)
                 _appDef.SetValue("VirtualEarthScript", BING_URL);
             SetCmsAvailability(BING_HYBRID, chkBingHybrid.Checked);
@@ -351,36 +448,54 @@ namespace Maestro.Editors.Fusion
 
         private void chkGoogStreets_CheckedChanged(object sender, EventArgs e)
         {
+            if (_noEvents)
+                return;
+
             SetCmsAvailability(G_NORMAL_MAP, chkGoogStreets.Checked);
             EvaluateCmsStates();
         }
 
         private void chkGoogSatellite_CheckedChanged(object sender, EventArgs e)
         {
+            if (_noEvents)
+                return;
+
             SetCmsAvailability(G_SATELLITE_MAP, chkGoogSatellite.Checked);
             EvaluateCmsStates();
         }
 
         private void chkGoogHybrid_CheckedChanged(object sender, EventArgs e)
         {
+            if (_noEvents)
+                return;
+
             SetCmsAvailability(G_HYBRID_MAP, chkGoogHybrid.Checked);
             EvaluateCmsStates();
         }
 
         private void chkYahooStreets_CheckedChanged(object sender, EventArgs e)
         {
+            if (_noEvents)
+                return;
+
             SetCmsAvailability(YAHOO_MAP_REG, chkYahooStreets.Checked);
             EvaluateCmsStates();
         }
 
         private void chkYahooSatellite_CheckedChanged(object sender, EventArgs e)
         {
+            if (_noEvents)
+                return;
+
             SetCmsAvailability(YAHOO_MAP_SAT, chkYahooSatellite.Checked);
             EvaluateCmsStates();
         }
 
         private void chkYahooHybrid_CheckedChanged(object sender, EventArgs e)
         {
+            if (_noEvents)
+                return;
+
             SetCmsAvailability(YAHOO_MAP_HYB, chkYahooHybrid.Checked);
             EvaluateCmsStates();
         }
@@ -407,16 +522,31 @@ namespace Maestro.Editors.Fusion
 
         private void txtGoogApiKey_TextChanged(object sender, EventArgs e)
         {
+            if (_noEvents)
+                return;
+
             _appDef.SetValue("GoogleScript", GOOGLE_URL + txtGoogApiKey.Text);
         }
 
         private void txtYahooApiKey_TextChanged(object sender, EventArgs e)
         {
+            if (_noEvents)
+                return;
+
             _appDef.SetValue("YahooScript", YAHOO_URL + txtGoogApiKey.Text);
         }
 
         const string GOOGLE_URL = "http://maps.google.com/maps?file=api&amp;v=2&amp;key=";
         const string YAHOO_URL = "http://api.maps.yahoo.com/ajaxymap?v=3.0&amp;appid=";
         const string BING_URL = "http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.2";
+
+        private void OnResourceChanged()
+        {
+            var handler = this.ResourceChanged;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        public event EventHandler ResourceChanged;
     }
 }
