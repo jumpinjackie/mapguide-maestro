@@ -305,6 +305,9 @@ namespace Maestro.Editors.Fusion
         private void btnManageWidgets_Click(object sender, EventArgs e)
         {
             new WidgetManagementDialog(_flexLayout, _edsvc, _context).ShowDialog();
+            //Widget references may have been removed, so rebuild
+            trvWidgets.Nodes.Clear();
+            InitWidgetSet();
         }
 
         private void trvWidgets_AfterSelect(object sender, TreeViewEventArgs e)

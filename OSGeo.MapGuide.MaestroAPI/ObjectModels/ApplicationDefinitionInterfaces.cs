@@ -625,7 +625,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
             IWidget matchingWidget = null;
             foreach (var set in appDef.WidgetSets)
             {
-                if (matchingSet != null)
+                if (matchingSet == null)
                 {
                     foreach (var wgt in set.Widgets)
                     {
