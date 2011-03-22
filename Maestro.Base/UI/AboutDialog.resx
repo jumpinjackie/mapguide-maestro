@@ -1087,10 +1087,10 @@
     <value>3</value>
   </data>
   <data name="License.Text" xml:space="preserve">
-    <value>Copyright (C) 2009, Kenneth Skovhede
-http://www.hexad.dk, opensource@hexad.dk
+    <value>Copyright (C) 2010-2011, Jackie Ng (jumpinjackie@gmail.com)
 
-Copyright (C) 2010, Jackie Ng (jumpinjackie@gmail.com)
+Copyright (C) 2009, Kenneth Skovhede
+http://www.hexad.dk, opensource@hexad.dk
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -1142,9 +1142,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   <data name="&gt;&gt;Version.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="PayPalImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhTAAZAIcAAP///whlle3t7QAzaQIBAf6kAv5SBHGYsCMlYqy4xOUCI9fn5xBaYMPJ0QINb9TW
@@ -1183,6 +1180,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   <data name="PayPalImage.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="PayPalImage.ToolTip" xml:space="preserve">
     <value>Click here to open the donation page</value>
   </data>
@@ -1198,9 +1198,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   <data name="&gt;&gt;PayPalImage.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="Localization.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 64</value>
   </data>
@@ -1248,6 +1245,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   </data>
   <data name="&gt;&gt;licenseTab.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="Credits.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="Credits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Credits.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Credits.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="Credits.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 185</value>
+  </data>
+  <data name="Credits.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="Credits.Text" xml:space="preserve">
+    <value>Programming:
+  Kenneth Skovhede
+  Jackie NG
+  Crispin, 1Spatial Group Ltd</value>
   </data>
   <data name="&gt;&gt;Credits.Name" xml:space="preserve">
     <value>Credits</value>
@@ -1530,50 +1551,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   </data>
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="Credits.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="Credits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="Credits.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Credits.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
-  </data>
-  <data name="Credits.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 185</value>
-  </data>
-  <data name="Credits.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="Credits.Text" xml:space="preserve">
-    <value>Programming:
-  Kenneth Skovhede
-  Jackie NG
-  Crispin, 1Spatial Group Ltd
-Spanish translation:
-  José Manuel Cerrejón González
-French Translation:
-  Pierre Cardinal
-Artwork:
-  Kenneth Skovhede
-English and Danish translation:
-  Kenneth Skovhede</value>
-  </data>
-  <data name="&gt;&gt;Credits.Name" xml:space="preserve">
-    <value>Credits</value>
-  </data>
-  <data name="&gt;&gt;Credits.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Credits.Parent" xml:space="preserve">
-    <value>creditsTab</value>
-  </data>
-  <data name="&gt;&gt;Credits.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="ServerVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>

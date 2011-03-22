@@ -109,6 +109,7 @@ namespace Maestro.Base.UI
             this.creditsTab = new System.Windows.Forms.TabPage();
             this.Credits = new System.Windows.Forms.TextBox();
             this.thirdPartyTab = new System.Windows.Forms.TabPage();
+            this.lnkAdvTreeView = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.lnkSharpDevelop = new System.Windows.Forms.LinkLabel();
             this.colorBrewerlinkLabel = new System.Windows.Forms.LinkLabel();
@@ -116,7 +117,6 @@ namespace Maestro.Base.UI
             this.tfnetLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.ServerVersion = new System.Windows.Forms.Label();
-            this.lnkAdvTreeView = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayPalImage)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -210,6 +210,13 @@ namespace Maestro.Base.UI
             this.thirdPartyTab.Name = "thirdPartyTab";
             this.thirdPartyTab.UseVisualStyleBackColor = true;
             // 
+            // lnkAdvTreeView
+            // 
+            resources.ApplyResources(this.lnkAdvTreeView, "lnkAdvTreeView");
+            this.lnkAdvTreeView.Name = "lnkAdvTreeView";
+            this.lnkAdvTreeView.TabStop = true;
+            this.lnkAdvTreeView.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkAdvTreeView_LinkClicked);
+            // 
             // linkLabel1
             // 
             resources.ApplyResources(this.linkLabel1, "linkLabel1");
@@ -256,13 +263,6 @@ namespace Maestro.Base.UI
             // 
             resources.ApplyResources(this.ServerVersion, "ServerVersion");
             this.ServerVersion.Name = "ServerVersion";
-            // 
-            // lnkAdvTreeView
-            // 
-            resources.ApplyResources(this.lnkAdvTreeView, "lnkAdvTreeView");
-            this.lnkAdvTreeView.Name = "lnkAdvTreeView";
-            this.lnkAdvTreeView.TabStop = true;
-            this.lnkAdvTreeView.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkAdvTreeView_LinkClicked);
             // 
             // AboutDialog
             // 

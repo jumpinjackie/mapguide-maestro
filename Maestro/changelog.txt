@@ -11,6 +11,8 @@
  - Fix: Prompt to save unsaved resources when exiting.
  - Fix: Cut/Copy/Paste commands occasionally don't work in XML editor
  - Fix: Cannot create symbol definitions for given item templates.
+ - Fix: Assorted Fusion editor defects
+ - Fix: Text field MaxLength of 32767 lifted to int32.MaxValue in XML Editor
 
 3.0 Beta 1
 ----------
