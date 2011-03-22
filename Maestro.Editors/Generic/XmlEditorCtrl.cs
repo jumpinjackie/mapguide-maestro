@@ -51,6 +51,7 @@ namespace Maestro.Editors.Generic
         public XmlEditorCtrl()
         {
             InitializeComponent();
+            txtXmlContent.MaxLength = int.MaxValue;
         }
 
         /// <summary>
