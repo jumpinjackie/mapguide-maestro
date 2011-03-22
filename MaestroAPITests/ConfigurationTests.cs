@@ -143,6 +143,9 @@ namespace MaestroAPITests
         {
             var conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\NASA_WMS_config_doc.xml")) as WmsConfigurationDocument;
             Assert.NotNull(conf);
+
+            conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\wms_config_example1.xml")) as WmsConfigurationDocument;
+            Assert.NotNull(conf);
         }
 
         [Test]

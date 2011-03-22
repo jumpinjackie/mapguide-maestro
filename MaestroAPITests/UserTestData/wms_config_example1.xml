@@ -1,0 +1,1661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+WMS configuration document for 
+
+http://nowcoast.noaa.gov/wms/com.esri.wms.Esrimap/obs
+ -->
+<fdo:DataStore xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" xmlns:fdo="http://fdo.osgeo.org/schemas" xmlns:fds="http://fdo.osgeo.org/schemas/fds">
+  <gml:DerivedCRS gml:id="EPSG:4326">
+    <gml:metaDataProperty>
+      <gml:GenericMetaData>
+        <fdo:XYTolerance>0.001000</fdo:XYTolerance>
+        <fdo:ZTolerance>0.001000</fdo:ZTolerance>
+      </gml:GenericMetaData>
+    </gml:metaDataProperty>
+    <gml:srsName>EPSG:4326</gml:srsName>
+    <gml:validArea>
+      <gml:boundingBox>
+        <gml:pos>-180.000000 -90.000000</gml:pos>
+        <gml:pos>180.000000 90.000000</gml:pos>
+      </gml:boundingBox>
+    </gml:validArea>
+    <gml:baseCRS>
+      <fdo:WKTCRS gml:id="EPSG:4326">
+        <gml:srsName>EPSG:4326</gml:srsName>
+        <fdo:WKT>GEOGCS["LL84",DATUM["WGS84",SPHEROID["WGS84",6378137.000,298.25722293]],PRIMEM["Greenwich",0],UNIT["Degree",0.01745329251994]]</fdo:WKT>
+      </fdo:WKTCRS>
+    </gml:baseCRS>
+    <gml:definedByConversion xlink:href="http://fdo.osgeo.org/coord_conversions#identity" />
+    <gml:derivedCRSType codeSpace="http://fdo.osgeo.org/crs_types">geographic</gml:derivedCRSType>
+    <gml:usesCS xlink:href="http://fdo.osgeo.org/cs#default_cartesian" />
+  </gml:DerivedCRS>
+  <gml:DerivedCRS gml:id="EPSG:4269">
+    <gml:metaDataProperty>
+      <gml:GenericMetaData>
+        <fdo:XYTolerance>0.001000</fdo:XYTolerance>
+        <fdo:ZTolerance>0.001000</fdo:ZTolerance>
+      </gml:GenericMetaData>
+    </gml:metaDataProperty>
+    <gml:srsName>EPSG:4269</gml:srsName>
+    <gml:validArea>
+      <gml:boundingBox>
+        <gml:pos>-180.000000 -90.000000</gml:pos>
+        <gml:pos>180.000000 90.000000</gml:pos>
+      </gml:boundingBox>
+    </gml:validArea>
+    <gml:baseCRS>
+      <fdo:WKTCRS gml:id="EPSG:4269">
+        <gml:srsName>EPSG:4269</gml:srsName>
+        <fdo:WKT>GEOGCS["LL83",DATUM["NAD83",SPHEROID["GRS1980",6378137.000,298.25722210]],PRIMEM["Greenwich",0],UNIT["Degree",0.01745329251994]]</fdo:WKT>
+      </fdo:WKTCRS>
+    </gml:baseCRS>
+    <gml:definedByConversion xlink:href="http://fdo.osgeo.org/coord_conversions#identity" />
+    <gml:derivedCRSType codeSpace="http://fdo.osgeo.org/crs_types">geographic</gml:derivedCRSType>
+    <gml:usesCS xlink:href="http://fdo.osgeo.org/cs#default_cartesian" />
+  </gml:DerivedCRS>
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fdo.osgeo.org/schemas/feature/WMSLayers" xmlns:fdo="http://fdo.osgeo.org/schemas" xmlns:gml="http://www.opengis.net/gml" xmlns:WMSLayers="http://fdo.osgeo.org/schemas/feature/WMSLayers" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:element name="world_countries_label" type="WMSLayers:world_countries_labelType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="world_countries_labelKey">
+        <xs:selector xpath=".//world_countries_label" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="world_countries_labelType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - World Countries Labels</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="world_countries" type="WMSLayers:world_countriesType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="world_countriesKey">
+        <xs:selector xpath=".//world_countries" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="world_countriesType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - World Countries</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="world_rivers" type="WMSLayers:world_riversType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="world_riversKey">
+        <xs:selector xpath=".//world_rivers" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="world_riversType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - World Rivers</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="world_lakes" type="WMSLayers:world_lakesType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="world_lakesKey">
+        <xs:selector xpath=".//world_lakes" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="world_lakesType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - World Lakes</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="great_lakes" type="WMSLayers:great_lakesType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="great_lakesKey">
+        <xs:selector xpath=".//great_lakes" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="great_lakesType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - Great Lakes</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="us_states_gen" type="WMSLayers:us_states_genType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="us_states_genKey">
+        <xs:selector xpath=".//us_states_gen" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="us_states_genType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - US States - General</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="us_canada_back" type="WMSLayers:us_canada_backType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="us_canada_backKey">
+        <xs:selector xpath=".//us_canada_back" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="us_canada_backType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - US/Canada Background</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="provinces" type="WMSLayers:provincesType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="provincesKey">
+        <xs:selector xpath=".//provinces" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="provincesType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - Canadian Provinces</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="counties" type="WMSLayers:countiesType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="countiesKey">
+        <xs:selector xpath=".//counties" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="countiesType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - US County Borders</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="artcc" type="WMSLayers:artccType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="artccKey">
+        <xs:selector xpath=".//artcc" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="artccType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - Air Route Traffic Ctrl Ctr Boundaries</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="rivers" type="WMSLayers:riversType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="riversKey">
+        <xs:selector xpath=".//rivers" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="riversType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - Rivers</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="lakes" type="WMSLayers:lakesType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="lakesKey">
+        <xs:selector xpath=".//lakes" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="lakesType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - Lakes</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="watersheds" type="WMSLayers:watershedsType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="watershedsKey">
+        <xs:selector xpath=".//watersheds" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="watershedsType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - Watersheds</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="coastal_labels" type="WMSLayers:coastal_labelsType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="coastal_labelsKey">
+        <xs:selector xpath=".//coastal_labels" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="coastal_labelsType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - Coastal Labels</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="RAS_GOES_I4" type="WMSLayers:RAS_GOES_I4Type" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="RAS_GOES_I4Key">
+        <xs:selector xpath=".//RAS_GOES_I4" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="RAS_GOES_I4Type" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>GOES IR Image</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="RAS_GOES" type="WMSLayers:RAS_GOESType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="RAS_GOESKey">
+        <xs:selector xpath=".//RAS_GOES" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="RAS_GOESType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>GOES Visible Image</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="RAS_RIDGE_NEXRAD" type="WMSLayers:RAS_RIDGE_NEXRADType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="RAS_RIDGE_NEXRADKey">
+        <xs:selector xpath=".//RAS_RIDGE_NEXRAD" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="RAS_RIDGE_NEXRADType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Weather Radar Mosaic</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="urban_areas_fill" type="WMSLayers:urban_areas_fillType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="urban_areas_fillKey">
+        <xs:selector xpath=".//urban_areas_fill" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="urban_areas_fillType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - Urban Areas Fill</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="urban_areas_outline" type="WMSLayers:urban_areas_outlineType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="urban_areas_outlineKey">
+        <xs:selector xpath=".//urban_areas_outline" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="urban_areas_outlineType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - Urban Areas Outline</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="major_roads" type="WMSLayers:major_roadsType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="major_roadsKey">
+        <xs:selector xpath=".//major_roads" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="major_roadsType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - Major Roads</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="us_interstates" type="WMSLayers:us_interstatesType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="us_interstatesKey">
+        <xs:selector xpath=".//us_interstates" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="us_interstatesType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - US Interstates</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="us_runways" type="WMSLayers:us_runwaysType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="us_runwaysKey">
+        <xs:selector xpath=".//us_runways" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="us_runwaysType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - Airport Runway Footprints</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="us_cities" type="WMSLayers:us_citiesType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="us_citiesKey">
+        <xs:selector xpath=".//us_cities" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="us_citiesType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - US Cities</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="tc_warn_breakpoints" type="WMSLayers:tc_warn_breakpointsType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="tc_warn_breakpointsKey">
+        <xs:selector xpath=".//tc_warn_breakpoints" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="tc_warn_breakpointsType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - Coastal Watch/Warning Breakpoints</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="marine_sanctuaries" type="WMSLayers:marine_sanctuariesType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="marine_sanctuariesKey">
+        <xs:selector xpath=".//marine_sanctuaries" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="marine_sanctuariesType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - National Marine Sanctuaries</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="eez" type="WMSLayers:eezType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="eezKey">
+        <xs:selector xpath=".//eez" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="eezType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Map Background - Exclusive Economic Zone</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="OBS_MAR_SWHFT" type="WMSLayers:OBS_MAR_SWHFTType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="OBS_MAR_SWHFTKey">
+        <xs:selector xpath=".//OBS_MAR_SWHFT" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="OBS_MAR_SWHFTType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Significant Wave Height (feet)</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="OBS_MAR_SSTF" type="WMSLayers:OBS_MAR_SSTFType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="OBS_MAR_SSTFKey">
+        <xs:selector xpath=".//OBS_MAR_SSTF" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="OBS_MAR_SSTFType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Sea Surface Temp (deg F)</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="OBS_MET_VIS" type="WMSLayers:OBS_MET_VISType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="OBS_MET_VISKey">
+        <xs:selector xpath=".//OBS_MET_VIS" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="OBS_MET_VISType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Visibility (miles)</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="OBS_MET_PRES" type="WMSLayers:OBS_MET_PRESType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="OBS_MET_PRESKey">
+        <xs:selector xpath=".//OBS_MET_PRES" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="OBS_MET_PRESType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Mean Sea Level Pressure (mb)</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="OBS_MET_WIND" type="WMSLayers:OBS_MET_WINDType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="OBS_MET_WINDKey">
+        <xs:selector xpath=".//OBS_MET_WIND" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="OBS_MET_WINDType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Wind (knots)</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="OBS_MET_DP" type="WMSLayers:OBS_MET_DPType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="OBS_MET_DPKey">
+        <xs:selector xpath=".//OBS_MET_DP" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="OBS_MET_DPType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Dew Point Temp (deg F)</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="OBS_MET_TEMP" type="WMSLayers:OBS_MET_TEMPType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="OBS_MET_TEMPKey">
+        <xs:selector xpath=".//OBS_MET_TEMP" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="OBS_MET_TEMPType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Air Temp (deg F)</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="OBS_MET_ID" type="WMSLayers:OBS_MET_IDType" abstract="false" substitutionGroup="gml:_Feature">
+      <xs:key name="OBS_MET_IDKey">
+        <xs:selector xpath=".//OBS_MET_ID" />
+        <xs:field xpath="Id" />
+      </xs:key>
+    </xs:element>
+    <xs:complexType name="OBS_MET_IDType" abstract="false" fdo:hasGeometry="false">
+      <xs:annotation>
+        <xs:documentation>Station ID</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="gml:AbstractFeatureType">
+          <xs:sequence>
+            <xs:element name="Id">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="256" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Image" type="fdo:RasterPropertyType" fdo:defaultImageXSize="1024" fdo:defaultImageYSize="1024" fdo:srsName="EPSG:4326">
+              <xs:annotation>
+                <xs:documentation />
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:schema>
+  <SchemaMapping provider="OSGeo.WMS.3.5" name="WMSLayers" xmlns="http://fdowms.osgeo.org/schemas">
+    <complexType name="world_countries_labelType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:world_countries_label">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="world_countriesType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:world_countries">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="world_riversType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:world_rivers">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="world_lakesType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:world_lakes">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="great_lakesType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:great_lakes">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="us_states_genType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:us_states_gen">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="us_canada_backType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:us_canada_back">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="provincesType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:provinces">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="countiesType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:counties">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="artccType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:artcc">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="riversType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:rivers">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="lakesType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:lakes">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="watershedsType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:watersheds">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="coastal_labelsType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:coastal_labels">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="RAS_GOES_I4Type">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:RAS_GOES_I4">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="RAS_GOESType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:RAS_GOES">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="RAS_RIDGE_NEXRADType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:RAS_RIDGE_NEXRAD">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="urban_areas_fillType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:urban_areas_fill">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="urban_areas_outlineType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:urban_areas_outline">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="major_roadsType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:major_roads">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="us_interstatesType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:us_interstates">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="us_runwaysType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:us_runways">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="us_citiesType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:us_cities">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="tc_warn_breakpointsType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:tc_warn_breakpoints">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="marine_sanctuariesType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:marine_sanctuaries">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="eezType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:eez">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="OBS_MAR_SWHFTType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:OBS_MAR_SWHFT">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="OBS_MAR_SSTFType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:OBS_MAR_SSTF">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="OBS_MET_VISType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:OBS_MET_VIS">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="OBS_MET_PRESType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:OBS_MET_PRES">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="OBS_MET_WINDType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:OBS_MET_WIND">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="OBS_MET_DPType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:OBS_MET_DP">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="OBS_MET_TEMPType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:OBS_MET_TEMP">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+    <complexType name="OBS_MET_IDType">
+      <RasterDefinition name="Image">
+        <Format>PNG</Format>
+        <FormatType>image/png</FormatType>
+        <Transparent>true</Transparent>
+        <UseTileCache>false</UseTileCache>
+        <BackgroundColor></BackgroundColor>
+        <Time></Time>
+        <Elevation></Elevation>
+        <SpatialContext>EPSG:4326</SpatialContext>
+        <Layer name="WMS_Schema:OBS_MET_ID">
+          <Style name="default" />
+        </Layer>
+      </RasterDefinition>
+    </complexType>
+  </SchemaMapping>
+</fdo:DataStore>
