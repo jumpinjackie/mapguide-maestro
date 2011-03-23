@@ -79,12 +79,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             if (vldef != null)
             {
                 if (string.IsNullOrEmpty(vldef.FeatureName))
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinitionMissingFeatureSource, Properties.Resources.LDF_MissingFeatureSourceError));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_MissingFeatureSource, Properties.Resources.LDF_MissingFeatureSourceError));
                 if (string.IsNullOrEmpty(vldef.Geometry))
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinitionMissingGeometry, Properties.Resources.LDF_MissingGeometryError));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_MissingGeometry, Properties.Resources.LDF_MissingGeometryError));
 
                 if (vldef.VectorScaleRange == null || !vldef.HasVectorScaleRanges())
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinitionMissingScaleRanges, Properties.Resources.LDF_MissingScaleRangesError));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_MissingScaleRanges, Properties.Resources.LDF_MissingScaleRangesError));
                 else
                 {
                     //Test for overlapping scale ranges
