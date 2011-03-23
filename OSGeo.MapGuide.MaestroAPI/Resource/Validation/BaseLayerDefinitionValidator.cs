@@ -74,17 +74,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             List<ValidationIssue> issues = new List<ValidationIssue>();
 
             if (ldef.SubLayer == null)
-                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, Properties.Resources.LDF_LayerNullError));
+                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_LayerNull, Properties.Resources.LDF_LayerNullError));
             
             if (vldef != null)
             {
                 if (string.IsNullOrEmpty(vldef.FeatureName))
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, Properties.Resources.LDF_MissingFeatureSourceError));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinitionMissingFeatureSource, Properties.Resources.LDF_MissingFeatureSourceError));
                 if (string.IsNullOrEmpty(vldef.Geometry))
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, Properties.Resources.LDF_MissingGeometryError));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinitionMissingGeometry, Properties.Resources.LDF_MissingGeometryError));
 
                 if (vldef.VectorScaleRange == null || !vldef.HasVectorScaleRanges())
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, Properties.Resources.LDF_MissingScaleRangesError));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinitionMissingScaleRanges, Properties.Resources.LDF_MissingScaleRangesError));
                 else
                 {
                     //Test for overlapping scale ranges
@@ -103,23 +103,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         min = Math.Min(min, sr.Value);
                         max = Math.Max(max, sr.Key);
                         if (sr.Key < sr.Value)
-                            issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format(Properties.Resources.LDF_MinAndMaxScaleSwappedError, sr.Value, sr.Key)));
+                            issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_MinMaxScaleSwapped, string.Format(Properties.Resources.LDF_MinAndMaxScaleSwappedError, sr.Value, sr.Key)));
                     }
+
+                    ranges.Sort(CompareScales);
 
                     //TODO: Detect gaps in scale ranges
                     for (int i = 0; i < ranges.Count; i++)
                         for (int j = i + 1; j < ranges.Count; j++)
                             if (ranges[i].Key > ranges[j].Value || ranges[i].Value > ranges[j].Value)
-                                issues.Add(new ValidationIssue(resource, ValidationStatus.Information, string.Format(Properties.Resources.LDF_ScaleRangesOverlapInformation, ranges[i].Value, ranges[i].Key, ranges[j].Value, ranges[j].Key)));
+                                issues.Add(new ValidationIssue(resource, ValidationStatus.Information, ValidationStatusCode.Info_LayerDefinition_ScaleRangeOverlap, string.Format(Properties.Resources.LDF_ScaleRangesOverlapInformation, ranges[i].Value, ranges[i].Key, ranges[j].Value, ranges[j].Key)));
 
                 }
             }
             else if (gldef != null)
             {
                 if (gldef.GridScaleRange == null || gldef.GridScaleRangeCount == 0)
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, Properties.Resources.LDF_MissingScaleRangesError));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_NoGridScaleRanges, Properties.Resources.LDF_MissingScaleRangesError));
                 else if (gldef.GridScaleRangeCount != 1)
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, Properties.Resources.LDF_MultipleScaleRangesWarning));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LayerDefinition_MultipleGridScaleRanges, Properties.Resources.LDF_MultipleScaleRangesWarning));
             }
             else if (dldef != null)
             {
@@ -130,7 +132,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 }
                 catch (Exception)
                 {
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, Properties.Resources.LDF_DrawingSourceError));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_DrawingSourceError, Properties.Resources.LDF_DrawingSourceError));
                 }
 
                 if (dws != null)
@@ -153,7 +155,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 
                         if (sheet == null)
                         {
-                            issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format(Properties.Resources.LDF_SheetNotFound, dldef.Sheet)));
+                            issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_DrawingSourceSheetNotFound, string.Format(Properties.Resources.LDF_SheetNotFound, dldef.Sheet)));
                         }
                         else
                         {
@@ -173,7 +175,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                                 foreach (var sl in specifiedLayers)
                                 {
                                     if (!dwLayers.ContainsKey(sl.Trim()))
-                                        issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format(Properties.Resources.LDF_SheetLayerNotFound, sl.Trim(), sheet.Name)));
+                                        issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_DrawingSourceSheetLayerNotFound, string.Format(Properties.Resources.LDF_SheetLayerNotFound, sl.Trim(), sheet.Name)));
                                 }
                             }
                         }
@@ -182,7 +184,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             }
             else
             {
-                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, Properties.Resources.LDF_UnsupportedLayerTypeWarning));
+                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LayerDefinition_UnsupportedLayerType, Properties.Resources.LDF_UnsupportedLayerTypeWarning));
             }
 
             if (recurse)
@@ -199,7 +201,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                     }
                     catch (Exception)
                     {
-                        issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format(Properties.Resources.LDF_FeatureSourceLoadError)));
+                        issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_FeatureSourceLoadError, string.Format(Properties.Resources.LDF_FeatureSourceLoadError)));
                     }
 
                     if (fs != null)
@@ -245,7 +247,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                                                     }
                                                 }
                                                 if (!found)
-                                                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format(Properties.Resources.LDF_SchemaMissingError, qualClassName, fs.ResourceID)));
+                                                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_ClassNotFound, string.Format(Properties.Resources.LDF_SchemaMissingError, qualClassName, fs.ResourceID)));
                                             }
                                         }
 
@@ -255,13 +257,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                             }
 
                             if (!foundSchema)
-                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format(Properties.Resources.LDF_SchemaMissingError, qualClassName, fs.ResourceID)));
+                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_ClassNotFound, string.Format(Properties.Resources.LDF_SchemaMissingError, qualClassName, fs.ResourceID)));
                             else if (!foundGeometry)
-                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, string.Format(Properties.Resources.LDF_GeometryMissingError, geometry, qualClassName, fs.ResourceID)));
+                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_GeometryNotFound, string.Format(Properties.Resources.LDF_GeometryMissingError, geometry, qualClassName, fs.ResourceID)));
                         }
                         catch (Exception)
                         {
-                            issues.Add(new ValidationIssue(fs, ValidationStatus.Error, string.Format(Properties.Resources.LDF_SchemaAndColumnReadFailedError)));
+                            issues.Add(new ValidationIssue(fs, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_Generic, string.Format(Properties.Resources.LDF_SchemaAndColumnReadFailedError)));
                         }
                     }
                 }
@@ -279,6 +281,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         public abstract ResourceTypeDescriptor SupportedResourceAndVersion
         {
             get;
+        }
+
+        private static int CompareScales(KeyValuePair<double, double> rangeA, KeyValuePair<double, double> rangeB)
+        {
+            //We are comparing from scales of both ranges
+            return rangeA.Key.CompareTo(rangeB.Key);
         }
     }
 }

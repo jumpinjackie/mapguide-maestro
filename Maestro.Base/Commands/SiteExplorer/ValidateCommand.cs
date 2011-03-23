@@ -132,15 +132,13 @@ namespace Maestro.Base.Commands.SiteExplorer
                 IResource item = null;
                 try
                 {
-                    //TODO: This will validate resources multiple times, if they are referenced by
-                    //resources inside the folder
                     item = _conn.ResourceService.GetResource(s);
                     set.AddIssues(ResourceValidatorSet.Validate(context, item, true));
                 }
                 catch (Exception ex)
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    set.AddIssue(new ValidationIssue(item, ValidationStatus.Error, string.Format(Properties.Resources.ValidationResourceLoadFailed, msg)));
+                    set.AddIssue(new ValidationIssue(item, ValidationStatus.Error, ValidationStatusCode.Error_General_ValidationError, string.Format(Properties.Resources.ValidationResourceLoadFailed, msg)));
                 }
                 i++;
                 worker.ReportProgress((int)((i / (double)documents.Count) * 100), s);

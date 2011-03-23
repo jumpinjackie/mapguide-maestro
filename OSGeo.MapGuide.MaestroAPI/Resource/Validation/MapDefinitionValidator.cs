@@ -60,9 +60,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 
             foreach (IMapLayerGroup g in mdef.MapLayerGroup)
                 if (g.ShowInLegend && (g.LegendLabel == null || g.LegendLabel.Trim().Length == 0))
-                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, string.Format(Properties.Resources.MDF_GroupMissingLabelInformation, g.Name)));
+                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, ValidationStatusCode.Info_MapDefinition_GroupMissingLabelInformation, string.Format(Properties.Resources.MDF_GroupMissingLabelInformation, g.Name)));
                 else if (g.ShowInLegend && g.LegendLabel.Trim().ToLower() == "layer group")
-                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, string.Format(Properties.Resources.MDF_GroupHasDefaultLabelInformation, g.Name)));
+                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, ValidationStatusCode.Info_MapDefinition_GroupHasDefaultLabel, string.Format(Properties.Resources.MDF_GroupHasDefaultLabelInformation, g.Name)));
 
             List<IBaseMapLayer> layers = new List<IBaseMapLayer>();
             foreach (IBaseMapLayer l in mdef.MapLayer)
@@ -71,7 +71,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             if (mdef.BaseMap != null && mdef.BaseMap.HasGroups())
             {
                 if (mdef.BaseMap.ScaleCount == 0)
-                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, Properties.Resources.MDF_NoFiniteDisplayScalesSpecified));
+                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, ValidationStatusCode.Error_MapDefinition_NoFiniteDisplayScales, Properties.Resources.MDF_NoFiniteDisplayScalesSpecified));
 
                 foreach (IBaseMapGroup g in mdef.BaseMap.BaseMapLayerGroup)
                 {
@@ -84,12 +84,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             foreach (IBaseMapLayer l in layers)
             {
                 if (nameCounter.ContainsKey(l.Name))
-                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, string.Format(Properties.Resources.MDF_LayerNameDuplicateWarning, l.Name, l.ResourceId, nameCounter[l.Name].ResourceId)));
+                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, ValidationStatusCode.Warning_MapDefinition_DuplicateLayerName, string.Format(Properties.Resources.MDF_LayerNameDuplicateWarning, l.Name, l.ResourceId, nameCounter[l.Name].ResourceId)));
                 else
                     nameCounter.Add(l.Name, l);
 
                 if (l.ShowInLegend && (string.IsNullOrEmpty(l.LegendLabel) || l.LegendLabel.Trim().Length == 0))
-                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, string.Format(Properties.Resources.MDF_LayerMissingLabelInformation, l.Name)));
+                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, ValidationStatusCode.Warning_MapDefinition_LayerMissingLegendLabel, string.Format(Properties.Resources.MDF_LayerMissingLabelInformation, l.Name)));
 
                 if (recurse)
                 {
@@ -126,11 +126,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                                     FdoSpatialContextList scList = context.GetSpatialContexts(fs.ResourceID);
 
                                     if (scList.SpatialContext == null || scList.SpatialContext.Count == 0)
-                                        issues.Add(new ValidationIssue(fs, ValidationStatus.Warning, string.Format(Properties.Resources.MDF_MissingSpatialContextWarning, fs.ResourceID)));
+                                        issues.Add(new ValidationIssue(fs, ValidationStatus.Warning, ValidationStatusCode.Warning_MapDefinition_MissingSpatialContext, string.Format(Properties.Resources.MDF_MissingSpatialContextWarning, fs.ResourceID)));
                                     else
                                     {
                                         if (scList.SpatialContext.Count > 1)
-                                            issues.Add(new ValidationIssue(fs, ValidationStatus.Information, string.Format(Properties.Resources.MDF_MultipleSpatialContextsInformation, fs.ResourceID)));
+                                            issues.Add(new ValidationIssue(fs, ValidationStatus.Information, ValidationStatusCode.Info_MapDefinition_MultipleSpatialContexts, string.Format(Properties.Resources.MDF_MultipleSpatialContextsInformation, fs.ResourceID)));
 
 
                                         bool skipGeomCheck = false;
@@ -139,9 +139,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                                         if (scList.SpatialContext[0].CoordinateSystemWkt != mdef.CoordinateSystem)
                                         {
                                             if (layer.SubLayer.LayerType == LayerType.Raster && mdef.CurrentConnection.SiteVersion <= SiteVersions.GetVersion(OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.MapGuideOS2_0_2))
-                                                issues.Add(new ValidationIssue(fs, ValidationStatus.Error, string.Format(Properties.Resources.MDF_RasterReprojectionError, fs.ResourceID)));
+                                                issues.Add(new ValidationIssue(fs, ValidationStatus.Error, ValidationStatusCode.Error_MapDefinition_RasterReprojection, string.Format(Properties.Resources.MDF_RasterReprojectionError, fs.ResourceID)));
                                             else
-                                                issues.Add(new ValidationIssue(fs, ValidationStatus.Warning, string.Format(Properties.Resources.MDF_DataReprojectionWarning, fs.ResourceID)));
+                                                issues.Add(new ValidationIssue(fs, ValidationStatus.Warning, ValidationStatusCode.Warning_MapDefinition_LayerReprojection, string.Format(Properties.Resources.MDF_DataReprojectionWarning, fs.ResourceID)));
 
                                             skipGeomCheck = true;
                                         }
@@ -150,20 +150,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                                         {
                                             var env = fs.GetSpatialExtent(vl.FeatureName, vl.Geometry);
                                             if (!env.Intersects(mapEnv))
-                                                issues.Add(new ValidationIssue(fs, ValidationStatus.Warning, string.Format(Properties.Resources.MDF_DataOutsideMapWarning, fs.ResourceID)));
+                                                issues.Add(new ValidationIssue(fs, ValidationStatus.Warning, ValidationStatusCode.Warning_MapDefinition_DataOutsideMapBounds, string.Format(Properties.Resources.MDF_DataOutsideMapWarning, fs.ResourceID)));
                                         }
                                     }
                                 }
                                 catch (Exception ex)
                                 {
                                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                                    issues.Add(new ValidationIssue(layer, ValidationStatus.Error, string.Format(Properties.Resources.MDF_ResourceReadError, fs.ResourceID, msg)));
+                                    issues.Add(new ValidationIssue(layer, ValidationStatus.Error, ValidationStatusCode.Error_MapDefinition_ResourceRead, string.Format(Properties.Resources.MDF_ResourceReadError, fs.ResourceID, msg)));
                                 }
                             }
                             catch (Exception ex)
                             {
                                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                                issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, string.Format(Properties.Resources.MDF_FeatureSourceReadError, l.ResourceId, msg)));
+                                issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, ValidationStatusCode.Error_MapDefinition_FeatureSourceRead, string.Format(Properties.Resources.MDF_FeatureSourceReadError, l.ResourceId, msg)));
                             }
                         }
 
@@ -171,7 +171,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                     catch (Exception ex)
                     {
                         string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                        issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, string.Format(Properties.Resources.MDF_LayerReadError, l.ResourceId, msg)));
+                        issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, ValidationStatusCode.Error_MapDefinition_LayerRead, string.Format(Properties.Resources.MDF_LayerReadError, l.ResourceId, msg)));
                     }
                 }
             }

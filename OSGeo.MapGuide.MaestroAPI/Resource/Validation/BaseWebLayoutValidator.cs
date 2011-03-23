@@ -62,7 +62,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             IWebLayout layout = resource as IWebLayout;
             if (layout.Map == null || layout.Map.ResourceId == null)
             {
-                issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Properties.Resources.WL_MissingMapError)));
+                issues.Add(new ValidationIssue(layout, ValidationStatus.Error, ValidationStatusCode.Error_WebLayout_MissingMap, string.Format(Properties.Resources.WL_MissingMapError)));
             }
             else
             {
@@ -72,7 +72,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 foreach (ICommand cmd in cmdSet.Commands)
                 {
                     if (cmds.ContainsKey(cmd.Name))
-                        issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Properties.Resources.WL_DuplicateCommandName, cmd.Name)));
+                        issues.Add(new ValidationIssue(layout, ValidationStatus.Error, ValidationStatusCode.Error_WebLayout_DuplicateCommandName, string.Format(Properties.Resources.WL_DuplicateCommandName, cmd.Name)));
                     else
                         cmds[cmd.Name] = cmd;
                 }
@@ -87,7 +87,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         foreach (IResultColumn resCol in search.ResultColumns.Column)
                         {
                             if (resColProps.ContainsKey(resCol.Property))
-                                issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Properties.Resources.WL_DuplicateSearchResultColumn, search.Name, resCol.Property)));
+                                issues.Add(new ValidationIssue(layout, ValidationStatus.Error, ValidationStatusCode.Error_WebLayout_DuplicateSearchCommandResultColumn, string.Format(Properties.Resources.WL_DuplicateSearchResultColumn, search.Name, resCol.Property)));
                             else
                                 resColProps.Add(resCol.Property, resCol.Property);
                         }
@@ -101,7 +101,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                     {
                         ICommandItem cmdRef = (ICommandItem)item;
                         if (!cmds.ContainsKey(cmdRef.Command))
-                            issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Properties.Resources.WL_NonExistentMenuCommandReference, cmdRef.Command)));
+                            issues.Add(new ValidationIssue(layout, ValidationStatus.Error, ValidationStatusCode.Error_WebLayout_NonExistentCommandReference, string.Format(Properties.Resources.WL_NonExistentMenuCommandReference, cmdRef.Command)));
                     }
                 }
 
@@ -111,7 +111,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                     {
                         ICommandItem cmdRef = (ICommandItem)item;
                         if (!cmds.ContainsKey(cmdRef.Command))
-                            issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Properties.Resources.WL_NonExistentTaskPaneCommandReference, cmdRef.Command)));
+                            issues.Add(new ValidationIssue(layout, ValidationStatus.Error, ValidationStatusCode.Error_WebLayout_NonExistentTaskPaneCommandReference, string.Format(Properties.Resources.WL_NonExistentTaskPaneCommandReference, cmdRef.Command)));
                     }
                 }
 
@@ -121,7 +121,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                     {
                         ICommandItem cmdRef = (ICommandItem)item;
                         if (!cmds.ContainsKey(cmdRef.Command))
-                            issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Properties.Resources.WL_NonExistentToolbarCommandReference, cmdRef.Command)));
+                            issues.Add(new ValidationIssue(layout, ValidationStatus.Error, ValidationStatusCode.Error_WebLayout_NonExistentToolbarCommandReference, string.Format(Properties.Resources.WL_NonExistentToolbarCommandReference, cmdRef.Command)));
                     }
                 }
 
@@ -137,14 +137,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         {
                             var mapEnv = ObjectFactory.CreateEnvelope(mdef.Extents.MinX, mdef.Extents.MaxX, mdef.Extents.MinY, mdef.Extents.MaxY);
                             if (!mapEnv.Contains(layout.Map.InitialView.CenterX, layout.Map.InitialView.CenterY))
-                                issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, string.Format(Properties.Resources.WL_StartViewOutsideExtentsWarning)));
+                                issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, ValidationStatusCode.Warning_WebLayout_InitialViewOutsideMapExtents, string.Format(Properties.Resources.WL_StartViewOutsideExtentsWarning)));
                         }
 
                     }
                     catch (Exception ex)
                     {
                         string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                        issues.Add(new ValidationIssue(layout, ValidationStatus.Error, string.Format(Properties.Resources.WL_MapValidationError, layout.Map.ResourceId, msg)));
+                        issues.Add(new ValidationIssue(layout, ValidationStatus.Error, ValidationStatusCode.Error_WebLayout_Generic, string.Format(Properties.Resources.WL_MapValidationError, layout.Map.ResourceId, msg)));
                     }
                 }
             }

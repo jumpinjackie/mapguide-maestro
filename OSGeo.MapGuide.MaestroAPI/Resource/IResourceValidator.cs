@@ -57,7 +57,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <param name="res">The res.</param>
         /// <param name="stat">The stat.</param>
         /// <param name="msg">The MSG.</param>
-        public ValidationIssue(IResource res, ValidationStatus stat, string msg)
+        public ValidationIssue(IResource res, ValidationStatus stat, ValidationStatusCode code, string msg)
         {
             Check.NotNull(res, "res");
             Check.NotEmpty(msg, "msg");
@@ -65,7 +65,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
             this.Resource = res;
             this.Status = stat;
             this.Message = msg;
+            this.StatusCode = code;
         }
+
+        /// <summary>
+        /// Gets the validation status code
+        /// </summary>
+        public ValidationStatusCode StatusCode { get; private set; }
 
         /// <summary>
         /// Gets the message for the validation issue
@@ -103,7 +109,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
             ValidationIssue vi = (ValidationIssue)obj;
             return this.Resource.ResourceID.Equals(vi.Resource.ResourceID) &&
                    this.Message.Equals(vi.Message) &&
-                   this.Status == vi.Status;
+                   this.Status == vi.Status &&
+                   this.StatusCode == vi.StatusCode;
         }
 
         /// <summary>
@@ -121,6 +128,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
                 hash = hash * 23 + this.Resource.ResourceID.GetHashCode();
                 hash = hash * 23 + this.Message.GetHashCode();
                 hash = hash * 23 + this.Status.GetHashCode();
+                hash = hash * 23 + this.StatusCode.GetHashCode();
 
                 return hash;
             }

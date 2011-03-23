@@ -58,25 +58,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             //Note: Must be saved!
             string s = feature.CurrentConnection.FeatureService.TestConnection(feature.ResourceID);
             if (s.Trim().ToUpper() != true.ToString().ToUpper())
-                return new ValidationIssue[] { new ValidationIssue(feature, ValidationStatus.Error, Properties.Resources.FS_ConnectionTestFailed) };
+                return new ValidationIssue[] { new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_ConnectionTestFailed, Properties.Resources.FS_ConnectionTestFailed) };
 
             try
             {
                 System.Globalization.CultureInfo ci = System.Globalization.CultureInfo.InvariantCulture;
                 FdoSpatialContextList lst = context.GetSpatialContexts(feature.ResourceID);
                 if (lst == null || lst.SpatialContext == null || lst.SpatialContext.Count == 0)
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, Properties.Resources.FS_NoSpatialContextWarning));
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_NoSpatialContext, Properties.Resources.FS_NoSpatialContextWarning));
                 else
                     foreach (FdoSpatialContextListSpatialContext c in lst.SpatialContext)
                         if (c.Extent == null || c.Extent.LowerLeftCoordinate == null || c.Extent.UpperRightCoordinate == null)
-                            issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, Properties.Resources.FS_EmptySpatialContextWarning));
+                            issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_EmptySpatialContext, Properties.Resources.FS_EmptySpatialContextWarning));
                         else if (double.Parse(c.Extent.LowerLeftCoordinate.X, ci) <= -1000000 && double.Parse(c.Extent.LowerLeftCoordinate.Y, ci) <= -1000000 && double.Parse(c.Extent.UpperRightCoordinate.X, ci) >= 1000000 && double.Parse(c.Extent.UpperRightCoordinate.Y, ci) >= 1000000)
-                            issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, Properties.Resources.FS_DefaultSpatialContextWarning));
+                            issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_DefaultSpatialContext, Properties.Resources.FS_DefaultSpatialContextWarning));
             }
             catch (Exception ex)
             {
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Properties.Resources.FS_SpatialContextReadError, msg)));
+                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SpatialContextReadError, string.Format(Properties.Resources.FS_SpatialContextReadError, msg)));
             }
 
             List<string> classes = new List<string>();
@@ -85,12 +85,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             {
                 fsd = context.DescribeFeatureSource(feature.ResourceID);
                 if (fsd == null || fsd.Schemas.Length == 0)
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, Properties.Resources.FS_SchemasMissingWarning));
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_NoSchemasFound, Properties.Resources.FS_SchemasMissingWarning));
             }
             catch (Exception ex)
             {
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, string.Format(Properties.Resources.FS_SchemaReadError, msg)));
+                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SchemaReadError, string.Format(Properties.Resources.FS_SchemaReadError, msg)));
             }
 
 
@@ -98,7 +98,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             {
                 var ids = cl.IdentityProperties;
                 if (ids.Count == 0)
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Information, string.Format(Properties.Resources.FS_PrimaryKeyMissingInformation, cl.QualifiedName)));
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Information, ValidationStatusCode.Info_FeatureSource_NoPrimaryKey, string.Format(Properties.Resources.FS_PrimaryKeyMissingInformation, cl.QualifiedName)));
             }
 
             context.MarkValidated(resource.ResourceID);

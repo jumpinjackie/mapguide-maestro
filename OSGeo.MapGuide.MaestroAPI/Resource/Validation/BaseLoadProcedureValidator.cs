@@ -59,31 +59,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 
             if (loadProc.Type == LoadType.Dwg)
             {
-                set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, Properties.Resources.LPROC_DWGNotSupported));
+                set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LoadProcedure_DwgNotSupported, Properties.Resources.LPROC_DWGNotSupported));
                 return set.GetAllIssues(); //all she wrote
             }
 
             if (loadProc.Type == LoadType.Raster)
             {
-                set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, Properties.Resources.LPROC_RasterNotSupported));
+                set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LoadProcedure_RasterNotSupported, Properties.Resources.LPROC_RasterNotSupported));
                 return set.GetAllIssues(); //all she wrote
             }
 
             if (loadProc.Type == LoadType.Sdf)
             {
-                set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, Properties.Resources.LPROC_Sdf2OptionsNotSupported));
-                set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, Properties.Resources.LPROC_GeneralizationNotSupported));
+                set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LoadProcedure_Sdf2OptionsNotSupported, Properties.Resources.LPROC_Sdf2OptionsNotSupported));
+                set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LoadProcedure_GeneralizationNotSupported, Properties.Resources.LPROC_GeneralizationNotSupported));
             }
 
             if (loadProc.Type == LoadType.Shp)
             {
-                set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, Properties.Resources.LPROC_ConvertToSdf3NotSupported));
-                set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, Properties.Resources.LPROC_GeneralizationNotSupported));
+                set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LoadProcedure_ConvertToSdf3NotSupported, Properties.Resources.LPROC_ConvertToSdf3NotSupported));
+                set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LoadProcedure_GeneralizationNotSupported, Properties.Resources.LPROC_GeneralizationNotSupported));
             }
 
             if (loadProc.Type == LoadType.Sqlite)
             {
-                set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, Properties.Resources.LPROC_GeneralizationNotSupported));
+                set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LoadProcedure_GeneralizationNotSupported, Properties.Resources.LPROC_GeneralizationNotSupported));
             }
 
             var fproc = loadProc as IBaseLoadProcedure;
@@ -93,7 +93,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 {
                     if (!System.IO.File.Exists(fn))
                     {
-                        set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, string.Format(Properties.Resources.LPROC_SourceFileNotFound, fn)));
+                        set.AddIssue(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LoadProcedure_SourceFileNotFound, string.Format(Properties.Resources.LPROC_SourceFileNotFound, fn)));
                     }
                 }
             }

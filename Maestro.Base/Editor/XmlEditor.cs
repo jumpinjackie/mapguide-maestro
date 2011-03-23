@@ -107,11 +107,11 @@ namespace Maestro.Base.Editor
             var issues = new List<ValidationIssue>();
             foreach (string err in errors)
             {
-                issues.Add(new ValidationIssue(this.Resource, ValidationStatus.Error, err));
+                issues.Add(new ValidationIssue(this.Resource, ValidationStatus.Error, ValidationStatusCode.Error_General_ValidationError, err));
             }
             foreach (string warn in warnings)
             {
-                issues.Add(new ValidationIssue(this.Resource, ValidationStatus.Warning, warn));
+                issues.Add(new ValidationIssue(this.Resource, ValidationStatus.Warning, ValidationStatusCode.Warning_General_ValidationWarning, warn));
             }
 
             //Put through ValidationResultSet to weed out redundant messages

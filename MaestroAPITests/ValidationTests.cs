@@ -31,6 +31,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace MaestroAPITests
 {
@@ -57,9 +58,9 @@ namespace MaestroAPITests
             var res3 = mocks.NewMock<IResource>();
             Expect.AtLeastOnce.On(res3).GetProperty("ResourceID").Will(Return.Value("Library://Test.FeatureSource"));
 
-            var msg1 = new ValidationIssue(res1, ValidationStatus.Error, "Epic Fail");
-            var msg2 = new ValidationIssue(res2, ValidationStatus.Error, "Epic Fail");
-            var msg3 = new ValidationIssue(res3, ValidationStatus.Error, "Not so epic fail");
+            var msg1 = new ValidationIssue(res1, ValidationStatus.Error, ValidationStatusCode.Dummy, "Epic Fail");
+            var msg2 = new ValidationIssue(res2, ValidationStatus.Error, ValidationStatusCode.Dummy, "Epic Fail");
+            var msg3 = new ValidationIssue(res3, ValidationStatus.Error, ValidationStatusCode.Dummy, "Not so epic fail");
 
             Assert.AreEqual(msg1.GetHashCode(), msg2.GetHashCode());
             Assert.IsTrue(msg1.Equals(msg2));
@@ -81,9 +82,9 @@ namespace MaestroAPITests
             var res3 = mocks.NewMock<IResource>();
             Expect.AtLeastOnce.On(res3).GetProperty("ResourceID").Will(Return.Value("Library://Test.FeatureSource"));
 
-            var msg1 = new ValidationIssue(res1, ValidationStatus.Error, "Epic Fail");
-            var msg2 = new ValidationIssue(res2, ValidationStatus.Error, "Epic Fail");
-            var msg3 = new ValidationIssue(res3, ValidationStatus.Error, "Not so epic fail");
+            var msg1 = new ValidationIssue(res1, ValidationStatus.Error, ValidationStatusCode.Dummy, "Epic Fail");
+            var msg2 = new ValidationIssue(res2, ValidationStatus.Error, ValidationStatusCode.Dummy, "Epic Fail");
+            var msg3 = new ValidationIssue(res3, ValidationStatus.Error, ValidationStatusCode.Dummy, "Not so epic fail");
 
             var set = new ValidationResultSet();
             set.AddIssues(new ValidationIssue[] { msg1, msg2, msg3 });
@@ -472,6 +473,86 @@ namespace MaestroAPITests
 
             //Not supported
             Assert.AreEqual(1, set.GetAllIssues().Length);
+        }
+
+        [Test]
+        public void TestLayerScaleRangeOverlap()
+        {
+            var mock = new Mockery();
+            var conn = mock.NewMock<IServerConnection>();
+            var ldf1 = ObjectFactory.CreateDefaultLayer(conn, OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Vector, new Version(1, 0, 0));
+            ldf1.ResourceID = "Library://Test/Foo.LayerDefinition";
+
+            var vl1 = (IVectorLayerDefinition)ldf1.SubLayer;
+            vl1.ResourceId = "Library://Test/Foo.FeatureSource";
+            vl1.FeatureName = "Foo:Bar";
+            vl1.Geometry = "Geometry";
+
+            var vsr1 = ldf1.CreateVectorScaleRange();
+            var vsr2 = ldf1.CreateVectorScaleRange();
+
+            vsr1.MaxScale = 9999;
+            vsr2.MinScale = 9384;
+            vsr2.MaxScale = 11000;
+
+            vl1.RemoveAllScaleRanges();
+            vl1.AddVectorScaleRange(vsr1);
+            vl1.AddVectorScaleRange(vsr2);
+
+            var featSvc = new MockFeatureService();
+            var resSvc = new MockResourceService();
+
+            var validator = new LayerDefinitionValidator();
+
+            var context = new ResourceValidationContext(resSvc, featSvc);
+            var issues = validator.Validate(context, ldf1, false);
+
+            bool hasIssue = false;
+            foreach (var issue in issues)
+            {
+                if (issue.StatusCode == ValidationStatusCode.Info_LayerDefinition_ScaleRangeOverlap)
+                {
+                    hasIssue = true;
+                    break;
+                }
+            }
+
+            Assert.True(hasIssue);
+            
+            //Case described in trac #1472
+            var ldf2 = ObjectFactory.CreateDefaultLayer(conn, OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Vector, new Version(1, 0, 0));
+            ldf2.ResourceID = "Library://Test/Foo.LayerDefinition";
+
+            var vl2 = (IVectorLayerDefinition)ldf2.SubLayer;
+            vl2.ResourceId = "Library://Test/Foo.FeatureSource";
+            vl2.FeatureName = "Foo:Bar";
+            vl2.Geometry = "Geometry";
+
+            vsr1 = ldf2.CreateVectorScaleRange();
+            vsr2 = ldf2.CreateVectorScaleRange();
+
+            vsr1.MinScale = 10000;
+            vsr2.MinScale = 9384;
+            vsr2.MaxScale = 9999;
+
+            vl2.RemoveAllScaleRanges();
+            vl2.AddVectorScaleRange(vsr1);
+            vl2.AddVectorScaleRange(vsr2);
+
+            context = new ResourceValidationContext(resSvc, featSvc);
+            issues = validator.Validate(context, ldf2, false);
+
+            hasIssue = false;
+            foreach (var issue in issues)
+            {
+                if (issue.StatusCode == ValidationStatusCode.Info_LayerDefinition_ScaleRangeOverlap)
+                {
+                    hasIssue = true;
+                    break;
+                }
+            }
+
+            Assert.False(hasIssue);
         }
     }
 }
