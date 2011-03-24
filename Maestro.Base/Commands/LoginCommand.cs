@@ -40,6 +40,11 @@ namespace Maestro.Base.Commands
             {
                 var conn = login.Connection;
 
+                //TODO: Determine if this is a http connection. If not,
+                //wrap it in an IServerConnection decorator that will do all the
+                //request dispatch broadcasting. This will solve trac #1505 and will
+                //work for any future non-http implementations
+
                 var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
                 Debug.Assert(mgr != null);
 

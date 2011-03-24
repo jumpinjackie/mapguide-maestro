@@ -68,7 +68,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
-		private System.Windows.Forms.ComboBox HeigthText;
+		private System.Windows.Forms.ComboBox HeightText;
 		private System.Windows.Forms.ComboBox WidthText;
 		private System.Windows.Forms.ComboBox SizeUnits;
 		private System.Windows.Forms.ComboBox SizeContext;
@@ -188,10 +188,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     m_item.Symbol = _factory.CreateDefaultMarkSymbol();
 
 				// shared values
-                WidthText.Text = DoubleToString(m_item.Symbol.SizeX);
-                HeigthText.Text = DoubleToString(m_item.Symbol.SizeY);
+                WidthText.Text = m_item.Symbol.SizeX;
+                HeightText.Text = m_item.Symbol.SizeY;
                 RotationBox.SelectedIndex = -1;
-                RotationBox.Text = DoubleToString(m_item.Symbol.Rotation);
+                RotationBox.Text = m_item.Symbol.Rotation;
 
                 SizeUnits.SelectedValue = m_item.Symbol.Unit;
                 SizeContext.SelectedValue = m_item.Symbol.SizeContext.ToString();
@@ -201,13 +201,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 				{
                     MaintainAspectRatio.Checked = m_item.Symbol.MaintainAspect;
 					double d;
-                    ReferenceX.Text = DoubleToString(m_item.Symbol.InsertionPointX);
+                    if (double.TryParse(m_item.Symbol.InsertionPointX, NumberStyles.Float, CultureInfo.InvariantCulture, out d))
+                        ReferenceX.Text = d.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture);
+                    else
+                        ReferenceX.Text = m_item.Symbol.InsertionPointX;
 
-                    //if (double.TryParse(m_item.Item.InsertionPointY, NumberStyles.Float, CultureInfo.InvariantCulture, out d))
-                    //    ReferenceY.Text = d.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture);
-                    //else
-                    //    ReferenceY.Text = m_item.Item.InsertionPointY;
-                    ReferenceY.Text = DoubleToString(m_item.Symbol.InsertionPointY);
+                    if (double.TryParse(m_item.Symbol.InsertionPointY, NumberStyles.Float, CultureInfo.InvariantCulture, out d))
+                        ReferenceY.Text = d.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture);
+                    else
+                        ReferenceY.Text = m_item.Symbol.InsertionPointY;
 
                     IMarkSymbol t = (IMarkSymbol)m_item.Symbol;
 					Symbol.SelectedValue = t.Shape.ToString();
@@ -303,7 +305,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.dataColumn7 = new System.Data.DataColumn();
             this.dataColumn8 = new System.Data.DataColumn();
             this.label9 = new System.Windows.Forms.Label();
-            this.HeigthText = new System.Windows.Forms.ComboBox();
+            this.HeightText = new System.Windows.Forms.ComboBox();
             this.WidthText = new System.Windows.Forms.ComboBox();
             this.SizeUnits = new System.Windows.Forms.ComboBox();
             this.UnitsTable = new System.Data.DataTable();
@@ -371,7 +373,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.RotationBox);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.HeigthText);
+            this.groupBox1.Controls.Add(this.HeightText);
             this.groupBox1.Controls.Add(this.WidthText);
             this.groupBox1.Controls.Add(this.SizeUnits);
             this.groupBox1.Controls.Add(this.SizeContext);
@@ -418,12 +420,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             // 
             // HeigthText
             // 
-            resources.ApplyResources(this.HeigthText, "HeigthText");
-            this.HeigthText.Items.AddRange(new object[] {
+            resources.ApplyResources(this.HeightText, "HeigthText");
+            this.HeightText.Items.AddRange(new object[] {
             resources.GetString("HeigthText.Items")});
-            this.HeigthText.Name = "HeigthText";
-            this.HeigthText.SelectedIndexChanged += new System.EventHandler(this.HeigthText_SelectedIndexChanged);
-            this.HeigthText.TextChanged += new System.EventHandler(this.HeigthText_TextChanged);
+            this.HeightText.Name = "HeigthText";
+            this.HeightText.SelectedIndexChanged += new System.EventHandler(this.HeigthText_SelectedIndexChanged);
+            this.HeightText.TextChanged += new System.EventHandler(this.HeightText_TextChanged);
             // 
             // WidthText
             // 
@@ -839,9 +841,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 {
                     m_lastFont = _factory.CreateDefaultFontSymbol();
                     m_lastFont.SizeContext = SizeContextType.DeviceUnits;
-                    m_lastFont.Rotation = 0.0;
-                    m_lastFont.SizeX = 10;
-                    m_lastFont.SizeY = 10;
+                    m_lastFont.Rotation = "0";
+                    m_lastFont.SizeX = "10";
+                    m_lastFont.SizeY = "10";
                     m_lastFont.Unit = LengthUnitType.Points;
                 }
 
@@ -919,7 +921,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             {
                 string current = null;
                 if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font)
-                    current = DoubleToString(m_item.Symbol.SizeX);
+                    current = m_item.Symbol.SizeX;
 
                 string expr = null;
                 if (current != null)
@@ -939,11 +941,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 			if (m_inUpdate)
 				return;
 
-            if (HeigthText.SelectedIndex == HeigthText.Items.Count - 1)
+            if (HeightText.SelectedIndex == HeightText.Items.Count - 1)
             {
                 string current = null;
                 if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font)
-                    current = DoubleToString(m_item.Symbol.SizeY);
+                    current = m_item.Symbol.SizeY;
 
                 string expr = null;
                 if (current != null)
@@ -954,7 +956,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 }
 
                 //This is required as we cannot update the text from within the SelectedIndexChanged event :(
-                BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), HeigthText, current, expr != null);
+                BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), HeightText, current, expr != null);
             }
 		}
 
@@ -967,11 +969,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             {
                 double d;
                 if (ReferenceX.Text.Trim().Length == 0)
-                    m_item.Symbol.InsertionPointY = 0.5;
+                    m_item.Symbol.InsertionPointY = "0.5";
                 else if (double.TryParse(ReferenceX.Text, System.Globalization.NumberStyles.Float, System.Threading.Thread.CurrentThread.CurrentUICulture, out d) || double.TryParse(ReferenceX.Text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d))
-                    m_item.Symbol.InsertionPointX = StringToDouble(Math.Min(Math.Max(0.0, d), 1.0).ToString(System.Globalization.CultureInfo.InvariantCulture));
+                    m_item.Symbol.InsertionPointX = Math.Min(Math.Max(0.0, d), 1.0).ToString(System.Globalization.CultureInfo.InvariantCulture);
                 else
-                    m_item.Symbol.InsertionPointX = StringToDouble(ReferenceX.Text);
+                    m_item.Symbol.InsertionPointX = ReferenceX.Text;
             }
 			previewPicture.Refresh();		
 			if (Changed != null)
@@ -987,9 +989,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             {
                 double d;
                 if (double.TryParse(ReferenceY.Text, System.Globalization.NumberStyles.Float, System.Threading.Thread.CurrentThread.CurrentUICulture, out d) || double.TryParse(ReferenceY.Text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d))
-                    m_item.Symbol.InsertionPointY = Math.Min(Math.Max(0.0, d), 1.0);
+                    m_item.Symbol.InsertionPointY = Math.Min(Math.Max(0.0, d), 1.0).ToString(System.Globalization.CultureInfo.InvariantCulture);
                 else
-                    m_item.Symbol.InsertionPointY = 0.5;
+                    m_item.Symbol.InsertionPointY = "0.5";
             }
 			previewPicture.Refresh();		
 			if (Changed != null)
@@ -1005,7 +1007,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             {
                 string current = null;
                 if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font)
-                    current = DoubleToString(m_item.Symbol.Rotation);
+                    current = m_item.Symbol.Rotation;
 
                 string expr = null;
                 if (current != null)
@@ -1021,7 +1023,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             else if (RotationBox.SelectedIndex != -1)
             {
                 if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font)
-                    m_item.Symbol.Rotation = StringToDouble((string)RotationBox.SelectedValue);
+                    m_item.Symbol.Rotation = (string)RotationBox.SelectedValue;
 
                 //RotationBox.SelectedIndex = -1;
             }
@@ -1279,22 +1281,22 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             //TODO: Validate
             if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font)
-                m_item.Symbol.SizeX = StringToDouble(WidthText.Text);
+                m_item.Symbol.SizeX = WidthText.Text;
             previewPicture.Refresh();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
 
-        private void HeigthText_TextChanged(object sender, EventArgs e)
+        private void HeightText_TextChanged(object sender, EventArgs e)
         {
-            if (m_inUpdate || HeigthText.SelectedIndex != -1)
+            if (m_inUpdate || HeightText.SelectedIndex != -1)
                 return;
 
             //TODO: Validate
             if (m_item.Symbol.Type == PointSymbolType.Mark)
-                m_item.Symbol.SizeY = StringToDouble(HeigthText.Text);
+                m_item.Symbol.SizeY = HeightText.Text;
             else if (m_item.Symbol.Type == PointSymbolType.Font)
-                m_item.Symbol.SizeY = StringToDouble(HeigthText.Text);
+                m_item.Symbol.SizeY = HeightText.Text;
             previewPicture.Refresh();
             if (Changed != null)
                 Changed(this, new EventArgs());
@@ -1307,9 +1309,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             //TODO: Validate
             if (m_item.Symbol.Type == PointSymbolType.Mark)
-                m_item.Symbol.Rotation = StringToDouble(RotationBox.Text);
+                m_item.Symbol.Rotation = RotationBox.Text;
             else if (m_item.Symbol.Type == PointSymbolType.Font)
-                m_item.Symbol.Rotation = StringToDouble(RotationBox.Text);
+                m_item.Symbol.Rotation = RotationBox.Text;
             previewPicture.Refresh();
             if (Changed != null)
                 Changed(this, new EventArgs());
@@ -1317,10 +1319,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		
 		private void ReferenceY_Leave(object sender, EventArgs e)
         {
-            //double d;
-            //if (m_item.Item is IMarkSymbol)
-            //    if (!double.TryParse(((IMarkSymbol)m_item.Item).InsertionPointY, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d))
-            //        MessageBox.Show(this, Properties.Resources.InsertionPointYError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            double d;
+            if (m_item.Symbol is IMarkSymbol)
+                if (!double.TryParse(((IMarkSymbol)m_item.Symbol).InsertionPointY, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d))
+                    MessageBox.Show(this, Properties.Resources.InsertionPointYError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void FontBoldButton_Click(object sender, EventArgs e)

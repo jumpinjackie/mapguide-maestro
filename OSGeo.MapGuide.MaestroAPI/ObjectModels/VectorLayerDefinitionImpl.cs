@@ -814,75 +814,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
 
         [XmlIgnore]
-        double? ISymbol.SizeX
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(this.SizeX))
-                    return null;
-
-                double d;
-                if (double.TryParse(this.SizeX, out d))
-                    return d;
-
-                return null;
-            }
-            set
-            {
-                if (!value.HasValue)
-                    this.SizeX = null;
-                else
-                    this.SizeX = value.Value.ToString(CultureInfo.InvariantCulture);
-            }
-        }
-
-        [XmlIgnore]
-        double? ISymbol.SizeY
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(this.SizeY))
-                    return null;
-
-                double d;
-                if (double.TryParse(this.SizeY, out d))
-                    return d;
-
-                return null;
-            }
-            set
-            {
-                if (!value.HasValue)
-                    this.SizeY = null;
-                else
-                    this.SizeY = value.Value.ToString(CultureInfo.InvariantCulture);
-            }
-        }
-
-        [XmlIgnore]
-        double? ISymbol.Rotation
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(this.Rotation))
-                    return null;
-
-                double d;
-                if (double.TryParse(this.Rotation, out d))
-                    return d;
-
-                return null;
-            }
-            set
-            {
-                if (!value.HasValue)
-                    this.Rotation = null;
-                else
-                    this.Rotation = value.Value.ToString(CultureInfo.InvariantCulture);
-            }
-        }
-
-        [XmlIgnore]
         bool ISymbol.MaintainAspect
         {
             get
@@ -896,53 +827,20 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
 
         [XmlIgnore]
-        double? ISymbol.InsertionPointX
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(this.InsertionPointX))
-                    return null;
-
-                double d;
-                if (double.TryParse(this.InsertionPointX, out d))
-                    return d;
-                else
-                    return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.InsertionPointX = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.InsertionPointX = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? ISymbol.InsertionPointY
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(this.InsertionPointX))
-                    return null;
-
-                double d;
-                if (double.TryParse(this.InsertionPointX, out d))
-                    return d;
-                else
-                    return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.InsertionPointY = value.Value;
-
-                //TODO: throw exception?
-            }
-        }
-
-        [XmlIgnore]
         public abstract PointSymbolType Type { get; }
+
+        [XmlIgnore]
+        string ISymbol.InsertionPointY
+        {
+            get
+            {
+                return this.InsertionPointY.ToString();
+            }
+            set
+            {
+                this.InsertionPointY = Convert.ToDouble(value);
+            }
+        }
     }
 
     partial class FontSymbolType : IFontSymbol

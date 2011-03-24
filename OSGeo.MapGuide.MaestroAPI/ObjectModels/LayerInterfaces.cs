@@ -879,17 +879,17 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <summary>
         /// Gets or sets the width of the symbol. This is a double FDO expression. Does not apply to font symbols
         /// </summary>
-        double? SizeX { get; set; }
+        string SizeX { get; set; }
 
         /// <summary>
         /// Gets or sets the height of the symbol. This is a double FDO expression.
         /// </summary>
-        double? SizeY { get; set; }
+        string SizeY { get; set; }
 
         /// <summary>
         /// Gets or sets the amount to rotate the symbol in degrees. This is a double FDO expression. Does not apply to line labels
         /// </summary>
-        double? Rotation { get; set; }
+        string Rotation { get; set; }
 
         /// <summary>
         /// Hint for the UI only. When the user enters a constant size for the width or height, the other dimension should be adjusted accordingly.  Does not apply to font symbols or labels.
@@ -897,14 +897,14 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         bool MaintainAspect { get; set; }
 
         /// <summary>
-        /// Gets or sets the X offset for the symbol specified in symbol space.  Does not apply to labels.
+        /// Gets or sets the X offset for the symbol specified in symbol space. This is a double FDO expression. Does not apply to labels.
         /// </summary>
-        double? InsertionPointX { get; set; }
+        string InsertionPointX { get; set; }
 
         /// <summary>
-        /// Gets or sets the Y offset for the symbol specified in symbol space.  Does not apply to labels.
+        /// Gets or sets the Y offset for the symbol specified in symbol space. This is a double FDO expression. Does not apply to labels.
         /// </summary>
-        double? InsertionPointY { get; set; }
+        string InsertionPointY { get; set; }
     }
 
     /// <summary>

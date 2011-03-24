@@ -184,7 +184,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 backgroundColor.CurrentColor = Utility.ParseHTMLColor(m_item.BackgroundColor);
 				backgroundTypeCombo.SelectedValue = m_item.BackgroundStyle.ToString();
                 rotationCombo.SelectedIndex = -1;
-                rotationCombo.Text = m_item.Rotation.HasValue ? m_item.Rotation.ToString() : "";
+                rotationCombo.Text = m_item.Rotation;
                 if (m_item.HorizontalAlignment != null)
                 {
                     horizontalCombo.SelectedValue = m_item.HorizontalAlignment;
@@ -781,7 +781,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		{
             if (sizeCombo.SelectedIndex == sizeCombo.Items.Count - 1)
             {
-                string current = m_item.SizeX.HasValue ? m_item.SizeX.ToString() : string.Empty;
+                string current = m_item.SizeX;
                 string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
                 if (!string.IsNullOrEmpty(expr))
                     current = expr;
@@ -900,7 +900,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		{
             if (rotationCombo.SelectedIndex == rotationCombo.Items.Count - 1)
             {
-                string current = m_item.Rotation.HasValue ? m_item.Rotation.Value.ToString() : string.Empty;
+                string current = m_item.Rotation;
                 string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
                 if (!string.IsNullOrEmpty(expr))
                     current = expr;
@@ -910,7 +910,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             }
             else if (rotationCombo.SelectedIndex != -1)
             {
-                m_item.Rotation = StringToDouble((string)rotationCombo.SelectedValue);
+                m_item.Rotation = (string)rotationCombo.SelectedValue;
             }
         }
 
@@ -983,7 +983,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             //TODO: Validate
-            m_item.SizeX = m_item.SizeY = StringToDouble(sizeCombo.Text);
+            m_item.SizeX = m_item.SizeY = sizeCombo.Text;
             previewPicture.Refresh();
 
             if (Changed != null)
@@ -1049,7 +1049,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             //TODO: Validate
-            m_item.Rotation = StringToDouble(rotationCombo.Text);
+            m_item.Rotation = rotationCombo.Text;
             previewPicture.Refresh();
 
             if (Changed != null)
