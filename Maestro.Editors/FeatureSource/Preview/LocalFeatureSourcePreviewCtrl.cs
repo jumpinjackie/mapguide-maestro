@@ -184,6 +184,7 @@ namespace Maestro.Editors.FeatureSource.Preview
                     pane.Dock = DockStyle.Fill;
                     page.Controls.Add(pane);
                     tabPreviews.TabPages.Add(page);
+                    tabPreviews.SelectedIndex = tabPreviews.TabPages.IndexOf(page);
                     hasSql = true;
                 }
             }
@@ -196,7 +197,10 @@ namespace Maestro.Editors.FeatureSource.Preview
                 pane.Dock = DockStyle.Fill;
                 page.Controls.Add(pane);
                 tabPreviews.TabPages.Add(page);
+                tabPreviews.SelectedIndex = tabPreviews.TabPages.IndexOf(page);
             }
+
+            btnClose.Enabled = (tabPreviews.TabPages.Count > 0);
         }
 
         ClassDefinition GetSelectedClass()
@@ -224,6 +228,46 @@ namespace Maestro.Editors.FeatureSource.Preview
                     btnStandard.Enabled = false;
                     btnSql.Enabled = false;
                     break;
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            if (tabPreviews.SelectedIndex >= 0)
+            {
+                //This is almost the same tab removal logic from TabFactory.cs in Maestro.Base
+                //done this way to remove any doubts about Mono
+
+                int idx = -1;
+                //HACK: Mono (2.4) will chuck a hissy fit if we remove
+                //a tab from a TabControl that has a selected tab so we
+                //have to null the selected tab, but this cause weird
+                //visual effects once the tab is removed, so we record
+                //the selected index, so we can assign the one beside it
+                //to be the selected tab after removal.
+                idx = tabPreviews.SelectedIndex;
+                var tab = tabPreviews.TabPages[idx];
+                tabPreviews.SelectedTab = null;
+                tabPreviews.TabPages.RemoveAt(idx);
+
+                if ((QueryMode)tab.Tag == QueryMode.SQL)
+                    hasSql = false;
+
+                if (idx > 0)
+                {
+                    idx--;
+                    tabPreviews.SelectedIndex = idx;
+                }
+                else
+                {
+                    //Set to first tab if available.
+                    if (tabPreviews.TabCount > 0)
+                    {
+                        tabPreviews.SelectedIndex = 0;
+                    }
+                }
+
+                btnClose.Enabled = (tabPreviews.TabPages.Count > 0);
             }
         }
     }

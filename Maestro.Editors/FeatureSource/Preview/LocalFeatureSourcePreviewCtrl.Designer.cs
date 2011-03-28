@@ -39,6 +39,7 @@
             this.btnSql = new System.Windows.Forms.ToolStripButton();
             this.btnStandard = new System.Windows.Forms.ToolStripButton();
             this.tabPreviews = new System.Windows.Forms.TabControl();
+            this.btnClose = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -83,7 +84,8 @@
             this.btnRefresh,
             this.toolStripSeparator1,
             this.btnSql,
-            this.btnStandard});
+            this.btnStandard,
+            this.btnClose});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -121,6 +123,15 @@
             this.tabPreviews.Name = "tabPreviews";
             this.tabPreviews.SelectedIndex = 0;
             // 
+            // btnClose
+            // 
+            this.btnClose.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnClose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.btnClose, "btnClose");
+            this.btnClose.Image = global::Maestro.Editors.Properties.Resources.cross;
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // LocalFeatureSourcePreviewCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -148,5 +159,6 @@
         private System.Windows.Forms.TreeView trvSchema;
         private System.Windows.Forms.ImageList schemaImageList;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnClose;
     }
 }
