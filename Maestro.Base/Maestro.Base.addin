@@ -183,6 +183,9 @@
         <MenuItem id="Menu_Tools"
                   type="Menu"
                   label="${res:Menu_Tools}">
+            <MenuItem id="SiteAdmin"
+                      label="${res:SiteAdministrator}"
+                      class="Maestro.Base.Commands.SiteAdministratorCommand"/>
             <MenuItem id="MgCooker"
                       label="${res:MgCooker}"
                       class="Maestro.Base.Commands.MgCookerCommand"/>

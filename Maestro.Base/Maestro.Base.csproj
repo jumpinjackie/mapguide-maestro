@@ -101,6 +101,7 @@
     <Compile Include="Commands\SaveResourceAsCommand.cs" />
     <Compile Include="Commands\SaveResourceCommand.cs" />
     <Compile Include="Commands\ServerMonitorCommand.cs" />
+    <Compile Include="Commands\SiteAdministratorCommand.cs" />
     <Compile Include="Commands\SiteExplorer\DeleteSelectedItemsCommand.cs" />
     <Compile Include="Commands\SiteExplorer\DisconnectCommand.cs" />
     <Compile Include="Commands\SiteExplorer\CopyMoveToAnotherServerCommand.cs" />

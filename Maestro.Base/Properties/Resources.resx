@@ -877,4 +877,7 @@ Do you want to convert the values?</value>
   <data name="NoFiniteDisplayScalesSpecified" xml:space="preserve">
     <value>This Map Definition has tiled layers but has no finite display scales defined. Define some display scales.</value>
   </data>
+  <data name="SiteAdministrator" xml:space="preserve">
+    <value>Site Administrator</value>
+  </data>
 </root>

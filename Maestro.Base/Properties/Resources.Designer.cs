@@ -1553,6 +1553,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Site Administrator.
+        /// </summary>
+        internal static string SiteAdministrator {
+            get {
+                return ResourceManager.GetString("SiteAdministrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy/Move selected items to another server.
         /// </summary>
         internal static string SiteExplorer_CopyMoveToServer {
