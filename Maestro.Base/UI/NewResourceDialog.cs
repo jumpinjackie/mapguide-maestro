@@ -33,7 +33,7 @@ namespace Maestro.Base.UI
 {
     public partial class NewResourceDialog : Form
     {
-        private static string _lastSelectedCategory;
+        private static List<string> _lastSelectedCategoies = new List<string>();
 
         private NewResourceDialog()
         {
@@ -56,11 +56,16 @@ namespace Maestro.Base.UI
         {
             lstCategories.DataSource = _nits.GetCategories();
 
-            if (!string.IsNullOrEmpty(_lastSelectedCategory))
+            if (_lastSelectedCategoies.Count > 0)
             {
-                var idx = lstCategories.Items.IndexOf(_lastSelectedCategory);
-                if (idx >= 0)
-                    lstCategories.SelectedIndex = idx;
+                foreach (var cat in _lastSelectedCategoies)
+                {
+                    var idx = lstCategories.Items.IndexOf(cat);
+                    if (idx >= 0)
+                    {
+                        lstCategories.SetSelected(idx, true);
+                    }
+                }
             }
         }
 
@@ -69,48 +74,81 @@ namespace Maestro.Base.UI
             this.DialogResult = DialogResult.Cancel;
         }
 
+        private string[] GetSelectedCategories()
+        {
+            List<string> categories = new List<string>();
+            foreach (var item in lstCategories.SelectedItems)
+            {
+                categories.Add(item.ToString());
+            }
+            return categories.ToArray();
+        }
+
         private void lstCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstCategories.SelectedItem != null)
+            if (lstCategories.SelectedItems.Count > 0)
             {
                 string cat = lstCategories.SelectedItem.ToString();
-                LoadTemplates(_nits.GetItemTemplates(cat, _siteVersion));
+                LoadTemplates(_nits.GetItemTemplates(GetSelectedCategories(), _siteVersion));
 
                 txtDescription.Text = string.Empty;
                 btnOK.Enabled = false;
+            }
+            else
+            {
+                lstTemplates.Clear();
+                lstTemplates.Groups.Clear();
+                tplImgList.Images.Clear();
             }
         }
 
         private ImageList tplImgList = new ImageList();
 
-        private void LoadTemplates(ItemTemplate[] templates)
+        private void LoadTemplates(Maestro.Base.Services.NewItemTemplateService.TemplateSet templSet)
         {
             lstTemplates.Clear();
             tplImgList.Images.Clear();
-            tplImgList.Images.Add(Properties.Resources.document);
-            foreach (var tpl in templates)
+            lstTemplates.Groups.Clear();
+            Dictionary<string, ListViewGroup> groups = new Dictionary<string, ListViewGroup>();
+            foreach (var cat in templSet.GetCategories())
             {
-                var li = new ListViewItem();
-                li.Name = tpl.Name;
-                li.Text = tpl.Name;
-                li.ToolTipText = tpl.Description;
+                var grp = new ListViewGroup();
+                grp.Name = cat;
+                grp.Header = cat;
 
-                if (tpl.Icon == null)
-                {
-                    li.ImageIndex = 0;
-                }
-                else
-                {
-                    tplImgList.Images.Add(tpl.Icon);
-                    li.ImageIndex = tplImgList.Images.Count - 1;
-                }
+                lstTemplates.Groups.Add(grp);
 
-                li.Tag = tpl;
-
-                lstTemplates.Items.Add(li);
+                groups.Add(cat, grp);
             }
-            lstTemplates.SmallImageList = tplImgList;
-            lstTemplates.LargeImageList = tplImgList;
+            foreach (var cat in templSet.GetCategories())
+            {
+                tplImgList.Images.Add(Properties.Resources.document);
+                foreach (var tpl in templSet.GetTemplatesForCategory(cat))
+                {
+                    var li = new ListViewItem();
+                    li.Name = tpl.Name;
+                    li.Text = tpl.Name;
+                    li.ToolTipText = tpl.Description;
+
+                    if (tpl.Icon == null)
+                    {
+                        li.ImageIndex = 0;
+                    }
+                    else
+                    {
+                        tplImgList.Images.Add(tpl.Icon);
+                        li.ImageIndex = tplImgList.Images.Count - 1;
+                    }
+
+                    li.Tag = tpl;
+
+                    li.Group = groups[cat];
+
+                    lstTemplates.Items.Add(li);
+                }
+                lstTemplates.SmallImageList = tplImgList;
+                lstTemplates.LargeImageList = tplImgList;
+            }
         }
 
         private void lstTemplates_SelectedIndexChanged(object sender, EventArgs e)
@@ -143,7 +181,7 @@ namespace Maestro.Base.UI
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            RememberSelectedCategory();
+            RememberSelectedCategories();
             this.DialogResult = DialogResult.OK;
         }
 
@@ -162,9 +200,13 @@ namespace Maestro.Base.UI
             }
         }
 
-        private void RememberSelectedCategory()
+        private void RememberSelectedCategories()
         {
-            _lastSelectedCategory = lstCategories.SelectedItem.ToString();
+            _lastSelectedCategoies.Clear();
+            foreach (var item in lstCategories.SelectedItems)
+            {
+                _lastSelectedCategoies.Add(item.ToString());
+            }
         }
 
         private void lstTemplates_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -175,7 +217,7 @@ namespace Maestro.Base.UI
                 lstTemplates.SelectedItems.Clear();
                 item.Selected = true;
 
-                RememberSelectedCategory();
+                RememberSelectedCategories();
                 this.DialogResult = DialogResult.OK;
             }
         }

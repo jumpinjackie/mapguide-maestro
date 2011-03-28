@@ -92,20 +92,51 @@ namespace Maestro.Base.Services
             return values.ToArray();
         }
 
-        public ItemTemplate[] GetItemTemplates(string category, Version siteVersion)
+        public class TemplateSet
         {
-            if (_templates.ContainsKey(category))
+            private Dictionary<string, List<ItemTemplate>> _templates;
+
+            internal TemplateSet(IEnumerable<ItemTemplate> templates)
             {
-                var templates = new List<ItemTemplate>();
-                foreach (var tpl in _templates[category])
+                _templates = new Dictionary<string,List<ItemTemplate>>();
+                foreach (var tpl in templates)
                 {
-                    if (siteVersion >= tpl.MinimumSiteVersion)
-                        templates.Add(tpl);
+                    if (!_templates.ContainsKey(tpl.Category))
+                        _templates[tpl.Category] = new List<ItemTemplate>();
+
+                    _templates[tpl.Category].Add(tpl);
                 }
-                return templates.ToArray();
+                foreach (var key in _templates.Keys)
+                {
+                    _templates[key].Sort();
+                }
             }
 
-            return new ItemTemplate[0];
+            public IEnumerable<string> GetCategories() { return _templates.Keys; }
+
+            public IEnumerable<ItemTemplate> GetTemplatesForCategory(string category)
+            {
+                return _templates[category];
+            }
+        }
+
+        public TemplateSet GetItemTemplates(string[] categories, Version siteVersion)
+        {
+            List<ItemTemplate> templates = new List<ItemTemplate>();
+            foreach (var cat in categories)
+            {
+                if (_templates.ContainsKey(cat))
+                {
+                    var matches = new List<ItemTemplate>();
+                    foreach (var tpl in _templates[cat])
+                    {
+                        if (siteVersion >= tpl.MinimumSiteVersion)
+                            matches.Add(tpl);
+                    }
+                    templates.AddRange(matches);
+                }
+            }
+            return new TemplateSet(templates.ToArray());
         }
     }
 }

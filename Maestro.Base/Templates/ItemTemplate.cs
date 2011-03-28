@@ -28,7 +28,7 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Base.Templates
 {
-    public abstract class ItemTemplate
+    public abstract class ItemTemplate : IComparable<ItemTemplate>
     {
         public string Name { get; set; }
 
@@ -57,5 +57,10 @@ namespace Maestro.Base.Templates
         /// <param name="conn">The server connection</param>
         /// <returns>a new resource, null if the user cancelled during this process</returns>
         public abstract IResource CreateItem(IServerConnection conn);
+
+        public int CompareTo(ItemTemplate other)
+        {
+            return this.Name.CompareTo(other.Name);
+        }
     }
 }

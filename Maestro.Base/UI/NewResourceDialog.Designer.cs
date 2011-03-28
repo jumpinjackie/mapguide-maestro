@@ -54,6 +54,7 @@
             resources.ApplyResources(this.lstCategories, "lstCategories");
             this.lstCategories.FormattingEnabled = true;
             this.lstCategories.Name = "lstCategories";
+            this.lstCategories.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstCategories.SelectedIndexChanged += new System.EventHandler(this.lstCategories_SelectedIndexChanged);
             // 
             // label1
