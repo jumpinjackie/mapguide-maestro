@@ -40,8 +40,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// resource type
         /// </summary>
         /// <param name="context"></param>
-        /// <param name="resource"></param>
-        /// <param name="recurse"></param>
+        /// <param name="resource">The resource to be validated</param>
+        /// <param name="recurse">Indicates whether to also validate resources this resource depends on</param>
         /// <returns></returns>
         ValidationIssue[] Validate(ResourceValidationContext context, IResource resource, bool recurse);
     }

@@ -63,62 +63,61 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, ValidationStatusCode.Error_Fusion_MissingMap, string.Format(Properties.Resources.ADF_MapMissingError)));
             else
             {
-                if (recurse)
+                foreach (IMapGroup mapGroup in fusionApp.MapSet.MapGroups)
                 {
-                    foreach (IMapGroup mapGroup in fusionApp.MapSet.MapGroups)
+                    bool checkCmsProjection = false;
+                    List<IMapDefinition> mapDefsInGroup = new List<IMapDefinition>();
+                    foreach (IMap map in mapGroup.Map)
                     {
-                        bool checkCmsProjection = false;
-                        List<IMapDefinition> mapDefsInGroup = new List<IMapDefinition>();
-                        foreach (IMap map in mapGroup.Map)
+                        if (IsCommercialOverlay(map))
                         {
-                            if (IsCommercialOverlay(map))
+                            checkCmsProjection = true;
+                        }
+                        try
+                        {
+                            if (map.Type.ToLower() == "mapguide")
                             {
-                                checkCmsProjection = true;
-                            }
-                            try
-                            {
-                                if (map.Type.ToLower() == "mapguide")
+                                var mdfId = map.GetMapDefinition();
+                                if (string.IsNullOrEmpty(mdfId) || !resource.CurrentConnection.ResourceService.ResourceExists(mdfId))
                                 {
-                                    var mdfId = map.GetMapDefinition();
-                                    if (string.IsNullOrEmpty(mdfId) || !resource.CurrentConnection.ResourceService.ResourceExists(mdfId))
+                                    issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, ValidationStatusCode.Error_Fusion_InvalidMap, string.Format(Properties.Resources.ADF_MapInvalidError, mapGroup.id)));
+                                }
+                                else
+                                {
+                                    IMapDefinition mdef = (IMapDefinition)context.GetResource(mdfId);
+                                    mapDefsInGroup.Add(mdef);
+
+                                    IEnvelope mapEnv = ObjectFactory.CreateEnvelope(mdef.Extents.MinX, mdef.Extents.MaxX, mdef.Extents.MinY, mdef.Extents.MaxY);
+
+                                    if (mapGroup.InitialView != null)
                                     {
-                                        issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, ValidationStatusCode.Error_Fusion_InvalidMap, string.Format(Properties.Resources.ADF_MapInvalidError, mapGroup.id)));
+                                        if (!mapEnv.Contains(mapGroup.InitialView.CenterX, mapGroup.InitialView.CenterY))
+                                            issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, ValidationStatusCode.Warning_Fusion_InitialViewOutsideMapExtents, string.Format(Properties.Resources.ADF_ViewOutsideMapExtents)));
                                     }
-                                    else
+
+                                    if (recurse)
                                     {
-                                        IMapDefinition mdef = (IMapDefinition)context.GetResource(mdfId);
-                                        mapDefsInGroup.Add(mdef);
-
-                                        if (recurse)
-                                            issues.AddRange(ResourceValidatorSet.Validate(context, mdef, true));
-
-                                        IEnvelope mapEnv = ObjectFactory.CreateEnvelope(mdef.Extents.MinX, mdef.Extents.MaxX, mdef.Extents.MinY, mdef.Extents.MaxY);
-
-                                        if (mapGroup.InitialView != null)
-                                        {
-                                            if (!mapEnv.Contains(mapGroup.InitialView.CenterX, mapGroup.InitialView.CenterY))
-                                                issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, ValidationStatusCode.Warning_Fusion_InitialViewOutsideMapExtents, string.Format(Properties.Resources.ADF_ViewOutsideMapExtents)));
-                                        }
+                                        issues.AddRange(ResourceValidatorSet.Validate(context, mdef, recurse));
                                     }
                                 }
-                            }
-                            catch (Exception ex)
-                            {
-                                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                                issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, ValidationStatusCode.Error_Fusion_MapValidationError, string.Format(Properties.Resources.ADF_MapValidationError, mapGroup.id, msg)));
                             }
                         }
-
-                        if (checkCmsProjection)
+                        catch (Exception ex)
                         {
-                            foreach (var mdf in mapDefsInGroup)
+                            string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                            issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, ValidationStatusCode.Error_Fusion_MapValidationError, string.Format(Properties.Resources.ADF_MapValidationError, mapGroup.id, msg)));
+                        }
+                    }
+
+                    if (checkCmsProjection)
+                    {
+                        foreach (var mdf in mapDefsInGroup)
+                        {
+                            var wkt = mdf.CoordinateSystem;
+                            var csCode = resource.CurrentConnection.CoordinateSystemCatalog.ConvertWktToCoordinateSystemCode(wkt);
+                            if (csCode.ToUpper() != "WGS84.PSEUDOMERCATOR")
                             {
-                                var wkt = mdf.CoordinateSystem;
-                                var csCode = resource.CurrentConnection.CoordinateSystemCatalog.ConvertWktToCoordinateSystemCode(wkt);
-                                if (csCode.ToUpper() != "WGS84.PSEUDOMERCATOR")
-                                {
-                                    issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_Fusion_MapCoordSysIncompatibleWithCommericalLayers, string.Format(Properties.Resources.ADF_MapWithIncompatibleCommericalCs, mdf.ResourceID)));
-                                }
+                                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_Fusion_MapCoordSysIncompatibleWithCommericalLayers, string.Format(Properties.Resources.ADF_MapWithIncompatibleCommericalCs, mdf.ResourceID)));
                             }
                         }
                     }

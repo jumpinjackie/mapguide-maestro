@@ -125,27 +125,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                     }
                 }
 
-                if (recurse)
+                try
                 {
-                    try
+                    IMapDefinition mdef = (IMapDefinition)context.GetResource(layout.Map.ResourceId);
+                    if (layout.Map.InitialView != null)
                     {
-                        IMapDefinition mdef = (IMapDefinition)context.GetResource(layout.Map.ResourceId);
+                        var mapEnv = ObjectFactory.CreateEnvelope(mdef.Extents.MinX, mdef.Extents.MaxX, mdef.Extents.MinY, mdef.Extents.MaxY);
+                        if (!mapEnv.Contains(layout.Map.InitialView.CenterX, layout.Map.InitialView.CenterY))
+                            issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, ValidationStatusCode.Warning_WebLayout_InitialViewOutsideMapExtents, string.Format(Properties.Resources.WL_StartViewOutsideExtentsWarning)));
+                    }
 
+                    if (recurse)
+                    {
                         issues.AddRange(ResourceValidatorSet.Validate(context, mdef, true));
-
-                        if (layout.Map.InitialView != null)
-                        {
-                            var mapEnv = ObjectFactory.CreateEnvelope(mdef.Extents.MinX, mdef.Extents.MaxX, mdef.Extents.MinY, mdef.Extents.MaxY);
-                            if (!mapEnv.Contains(layout.Map.InitialView.CenterX, layout.Map.InitialView.CenterY))
-                                issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, ValidationStatusCode.Warning_WebLayout_InitialViewOutsideMapExtents, string.Format(Properties.Resources.WL_StartViewOutsideExtentsWarning)));
-                        }
-
                     }
-                    catch (Exception ex)
-                    {
-                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                        issues.Add(new ValidationIssue(layout, ValidationStatus.Error, ValidationStatusCode.Error_WebLayout_Generic, string.Format(Properties.Resources.WL_MapValidationError, layout.Map.ResourceId, msg)));
-                    }
+                }
+                catch (Exception ex)
+                {
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                    issues.Add(new ValidationIssue(layout, ValidationStatus.Error, ValidationStatusCode.Error_WebLayout_Generic, string.Format(Properties.Resources.WL_MapValidationError, layout.Map.ResourceId, msg)));
                 }
             }
 

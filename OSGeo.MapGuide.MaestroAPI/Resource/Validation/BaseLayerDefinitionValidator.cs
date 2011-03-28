@@ -180,6 +180,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                             }
                         }
                     }
+
+                    if (recurse)
+                    {
+                        issues.AddRange(ResourceValidatorSet.Validate(context, dws, recurse));
+                    }
                 }
             }
             else
@@ -187,84 +192,86 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LayerDefinition_UnsupportedLayerType, Properties.Resources.LDF_UnsupportedLayerTypeWarning));
             }
 
-            if (recurse)
+            if (vldef != null || gldef != null)
             {
-                if (vldef != null || gldef != null)
-                {
-                    //Load referenced feature source
-                    IFeatureSource fs = null;
+                //Load referenced feature source
+                IFeatureSource fs = null;
 
+                try
+                {
+                    fs = (IFeatureSource)context.GetResource(ldef.SubLayer.ResourceId);
+                    issues.AddRange(ResourceValidatorSet.Validate(context, fs, recurse));
+                }
+                catch (Exception)
+                {
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_FeatureSourceLoadError, string.Format(Properties.Resources.LDF_FeatureSourceLoadError)));
+                }
+
+                if (fs != null)
+                {
+                    //Verify specified feature class and geometry check out
                     try
                     {
-                        fs = (IFeatureSource)context.GetResource(ldef.SubLayer.ResourceId);
-                        issues.AddRange(ResourceValidatorSet.Validate(context, fs, recurse));
+                        string qualClassName = vldef == null ? gldef.FeatureName : vldef.FeatureName;
+                        string geometry = vldef == null ? gldef.Geometry : vldef.Geometry;
+
+                        bool foundSchema = false;
+                        bool foundGeometry = false;
+
+                        FeatureSourceDescription desc = context.DescribeFeatureSource(ldef.SubLayer.ResourceId);
+                        foreach (FeatureSchema fsc in desc.Schemas)
+                        {
+                            foreach (ClassDefinition scm in fsc.Classes)
+                            {
+                                if (scm.QualifiedName == qualClassName)
+                                {
+                                    foundSchema = true;
+
+                                    foreach (PropertyDefinition col in scm.Properties)
+                                    {
+                                        if (col.Name == geometry)
+                                        {
+                                            foundGeometry = true;
+                                            break;
+                                        }
+                                    }
+
+                                    if (vldef != null && vldef.PropertyMapping != null)
+                                    {
+                                        foreach (INameStringPair s in vldef.PropertyMapping)
+                                        {
+                                            bool found = false;
+                                            foreach (PropertyDefinition col in scm.Properties)
+                                            {
+                                                if (col.Name == s.Name)
+                                                {
+                                                    found = true;
+                                                    break;
+                                                }
+                                            }
+                                            if (!found)
+                                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_ClassNotFound, string.Format(Properties.Resources.LDF_SchemaMissingError, qualClassName, fs.ResourceID)));
+                                        }
+                                    }
+
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (!foundSchema)
+                            issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_ClassNotFound, string.Format(Properties.Resources.LDF_SchemaMissingError, qualClassName, fs.ResourceID)));
+                        else if (!foundGeometry)
+                            issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_GeometryNotFound, string.Format(Properties.Resources.LDF_GeometryMissingError, geometry, qualClassName, fs.ResourceID)));
                     }
                     catch (Exception)
                     {
-                        issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_FeatureSourceLoadError, string.Format(Properties.Resources.LDF_FeatureSourceLoadError)));
+                        issues.Add(new ValidationIssue(fs, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_Generic, string.Format(Properties.Resources.LDF_SchemaAndColumnReadFailedError)));
                     }
 
-                    if (fs != null)
+                    if (recurse)
                     {
-                        //Verify specified feature class and geometry check out
-                        try
-                        {
-                            string qualClassName = vldef == null ? gldef.FeatureName : vldef.FeatureName;
-                            string geometry = vldef == null ? gldef.Geometry : vldef.Geometry;
-
-                            bool foundSchema = false;
-                            bool foundGeometry = false;
-
-                            FeatureSourceDescription desc = context.DescribeFeatureSource(ldef.SubLayer.ResourceId);
-                            foreach (FeatureSchema fsc in desc.Schemas)
-                            {
-                                foreach (ClassDefinition scm in fsc.Classes)
-                                {
-                                    if (scm.QualifiedName == qualClassName)
-                                    {
-                                        foundSchema = true;
-
-                                        foreach (PropertyDefinition col in scm.Properties)
-                                        {
-                                            if (col.Name == geometry)
-                                            {
-                                                foundGeometry = true;
-                                                break;
-                                            }
-                                        }
-
-                                        if (vldef != null && vldef.PropertyMapping != null)
-                                        {
-                                            foreach (INameStringPair s in vldef.PropertyMapping)
-                                            {
-                                                bool found = false;
-                                                foreach (PropertyDefinition col in scm.Properties)
-                                                {
-                                                    if (col.Name == s.Name)
-                                                    {
-                                                        found = true;
-                                                        break;
-                                                    }
-                                                }
-                                                if (!found)
-                                                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_ClassNotFound, string.Format(Properties.Resources.LDF_SchemaMissingError, qualClassName, fs.ResourceID)));
-                                            }
-                                        }
-
-                                        break;
-                                    }
-                                }
-                            }
-
-                            if (!foundSchema)
-                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_ClassNotFound, string.Format(Properties.Resources.LDF_SchemaMissingError, qualClassName, fs.ResourceID)));
-                            else if (!foundGeometry)
-                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_GeometryNotFound, string.Format(Properties.Resources.LDF_GeometryMissingError, geometry, qualClassName, fs.ResourceID)));
-                        }
-                        catch (Exception)
-                        {
-                            issues.Add(new ValidationIssue(fs, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_Generic, string.Format(Properties.Resources.LDF_SchemaAndColumnReadFailedError)));
-                        }
+                        issues.AddRange(ResourceValidatorSet.Validate(context, fs, recurse));
                     }
                 }
             }
