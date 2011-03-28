@@ -33,6 +33,7 @@ namespace Maestro.Base.UI
 {
     public partial class NewResourceDialog : Form
     {
+        private static bool _subsequentRun = false;
         private static List<string> _lastSelectedCategoies = new List<string>();
 
         private NewResourceDialog()
@@ -56,9 +57,24 @@ namespace Maestro.Base.UI
         {
             lstCategories.DataSource = _nits.GetCategories();
 
-            if (_lastSelectedCategoies.Count > 0)
+            if (_subsequentRun)
             {
-                foreach (var cat in _lastSelectedCategoies)
+                if (_lastSelectedCategoies.Count > 0)
+                {
+                    foreach (var cat in _lastSelectedCategoies)
+                    {
+                        var idx = lstCategories.Items.IndexOf(cat);
+                        if (idx >= 0)
+                        {
+                            lstCategories.SetSelected(idx, true);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                //First run, select all categories
+                foreach (var cat in _nits.GetCategories())
                 {
                     var idx = lstCategories.Items.IndexOf(cat);
                     if (idx >= 0)
@@ -207,6 +223,9 @@ namespace Maestro.Base.UI
             {
                 _lastSelectedCategoies.Add(item.ToString());
             }
+
+            if (!_subsequentRun)
+                _subsequentRun = true;
         }
 
         private void lstTemplates_MouseDoubleClick(object sender, MouseEventArgs e)
