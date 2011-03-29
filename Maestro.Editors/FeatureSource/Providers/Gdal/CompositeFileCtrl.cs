@@ -102,7 +102,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
         // This should really come from GetSchemaMapping, but it's broken:  minX, minY, maxX, maxY
         private const string TEMPLATE_CFG = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><fdo:DataStore xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:gml=\"http://www.opengis.net/gml\" xmlns:fdo=\"http://fdo.osgeo.org/schemas\" xmlns:fds=\"http://fdo.osgeo.org/schemas/fds\"><gml:DerivedCRS gml:id=\"Default\"><gml:metaDataProperty><gml:GenericMetaData><fdo:SCExtentType>dynamic</fdo:SCExtentType><fdo:XYTolerance>0.001000</fdo:XYTolerance><fdo:ZTolerance>0.001000</fdo:ZTolerance></gml:GenericMetaData></gml:metaDataProperty><gml:remarks>System generated default FDO Spatial Context</gml:remarks><gml:srsName>Default</gml:srsName><gml:validArea><gml:boundingBox><gml:pos>{0} {1}</gml:pos><gml:pos>{2} {3}</gml:pos></gml:boundingBox></gml:validArea><gml:baseCRS>" +
             "<fdo:WKTCRS gml:id=\"Default\"><gml:srsName>Default</gml:srsName><fdo:WKT>LOCAL_CS[\"*XY-MT*\",LOCAL_DATUM[\"*X-Y*\",10000],UNIT[\"Meter\", 1],AXIS[\"X\",EAST],AXIS[\"Y\",NORTH]]</fdo:WKT></fdo:WKTCRS></gml:baseCRS><gml:definedByConversion xlink:href=\"http://fdo.osgeo.org/coord_conversions#identity\"/><gml:derivedCRSType codeSpace=\"http://fdo.osgeo.org/crs_types\">geographic</gml:derivedCRSType><gml:usesCS xlink:href=\"http://fdo.osgeo.org/cs#default_cartesian\"/></gml:DerivedCRS><xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:fdo=\"http://fdo.osgeo.org/schemas\" xmlns:gml=\"http://www.opengis.net/gml\" xmlns:default=\"http://fdo.osgeo.org/schemas/feature/default\" targetNamespace=\"http://fdo.osgeo.org/schemas/feature/default\" elementFormDefault=\"qualified\" attributeFormDefault=\"unqualified\"><xs:annotation><xs:appinfo source=\"http://fdo.osgeo.org/schemas\"/></xs:annotation><xs:element name=\"default\" type=\"default:defaultType\" abstract=\"false\" substitutionGroup=\"gml:_Feature\"><xs:key name=\"defaultKey\"><xs:selector xpath=\".//default\"/>" +
-            "<xs:field xpath=\"FeatId\"/></xs:key></xs:element><xs:complexType name=\"defaultType\" abstract=\"false\" fdo:hasGeometry=\"false\"><xs:annotation><xs:appinfo source=\"http://fdo.osgeo.org/schemas\"/></xs:annotation><xs:complexContent><xs:extension base=\"gml:AbstractFeatureType\"><xs:sequence><xs:element name=\"FeatId\"><xs:annotation><xs:appinfo source=\"http://fdo.osgeo.org/schemas\"/></xs:annotation><xs:simpleType><xs:restriction base=\"xs:string\"><xs:maxLength value=\"256\"/></xs:restriction></xs:simpleType></xs:element><xs:element name=\"Image\" type=\"fdo:RasterPropertyType\" fdo:defaultImageXSize=\"1024\" fdo:defaultImageYSize=\"1024\" fdo:srsName=\"Default\"><xs:annotation>" +
+            "<xs:field xpath=\"FeatId\"/></xs:key></xs:element><xs:complexType name=\"defaultType\" abstract=\"false\" fdo:hasGeometry=\"false\"><xs:annotation><xs:appinfo source=\"http://fdo.osgeo.org/schemas\"/></xs:annotation><xs:complexContent><xs:extension base=\"gml:AbstractFeatureType\"><xs:sequence><xs:element name=\"FeatId\"><xs:annotation><xs:appinfo source=\"http://fdo.osgeo.org/schemas\"/></xs:annotation><xs:simpleType><xs:restriction base=\"xs:string\"><xs:maxLength value=\"256\"/></xs:restriction></xs:simpleType></xs:element><xs:element name=\"Raster\" type=\"fdo:RasterPropertyType\" fdo:defaultImageXSize=\"1024\" fdo:defaultImageYSize=\"1024\" fdo:srsName=\"Default\"><xs:annotation>" +
             "<xs:appinfo source=\"http://fdo.osgeo.org/schemas\"><fdo:DefaultDataModel dataModelType=\"Bitonal\" dataType=\"Unknown\" organization=\"Pixel\" bitsPerPixel=\"1\" tileSizeX=\"256\" tileSizeY=\"256\"/></xs:appinfo></xs:annotation></xs:element></xs:sequence></xs:extension></xs:complexContent></xs:complexType></xs:schema><SchemaMapping xmlns=\"http://fdogrfp.osgeo.org/schemas\" provider=\"OSGeo.Gdal.3.2\" name=\"default\"></SchemaMapping></fdo:DataStore>";
 
 
@@ -141,6 +141,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
             {
                 files.Add(item.Text);
             }
+            lstView.Clear(); //Clear now. It will be repopulated after rebuild
             DoUpdateConfiguration(files.ToArray(), new string[0]);
         }
 
@@ -216,6 +217,23 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
             var result = new UpdateConfigResult() { Added = new List<string>(), Removed = new List<string>() };
 
+            //Remove first
+            foreach (var remove in toRemove)
+            {
+                var dir = Path.GetDirectoryName(remove);
+                var loc = FindLocation(conf, dir);
+                if (null != loc)
+                {
+                    loc.RemoveItem(Path.GetFileName(remove));
+                    result.Removed.Add(remove);
+                    if (loc.Items.Length == 0)
+                        conf.RemoveLocation(loc);
+                }
+                progress += unit;
+                worker.ReportProgress(progress, string.Format(Properties.Resources.ProcessedItem, remove));
+            }
+
+            //Then add
             foreach (var add in toAdd)
             {
                 var dir = Path.GetDirectoryName(add);
@@ -258,21 +276,6 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
                 progress += unit;
                 worker.ReportProgress(progress, string.Format(Properties.Resources.ProcessedItem, add));
-            }
-
-            foreach (var remove in toRemove)
-            {
-                var dir = Path.GetDirectoryName(remove);
-                var loc = FindLocation(conf, dir);
-                if (null != loc)
-                {
-                    loc.RemoveItem(Path.GetFileName(remove));
-                    result.Removed.Add(remove);
-                    if (loc.Items.Length == 0)
-                        conf.RemoveLocation(loc);
-                }
-                progress += unit;
-                worker.ReportProgress(progress, string.Format(Properties.Resources.ProcessedItem, remove));
             }
 
             return result;
