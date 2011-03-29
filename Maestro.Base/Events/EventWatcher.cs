@@ -25,18 +25,43 @@ using System.Diagnostics;
 using Maestro.Base.UI;
 using Maestro.Editors.Diagnostics;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using ICSharpCode.Core;
+using System.Windows.Forms;
 
 namespace Maestro.Base.Events
 {
     public static class EventWatcher
     {
+        private static Timer _keepAliveTimer;
+
         internal static void Initialize()
         {
+            _keepAliveTimer = new Timer();
+            _keepAliveTimer.Interval = 60000;
+            _keepAliveTimer.Tick += OnKeepAliveTimerElapsed;
             var svc = ServiceRegistry.GetService<ServerConnectionManager>();
             Debug.Assert(svc != null);
 
             svc.ConnectionAdded += new ServerConnectionEventHandler(OnConnectionAdded);
             svc.ConnectionRemoved += new ServerConnectionEventHandler(OnConnectionRemoved);
+
+            LoggingService.Info("Starting session keep-alive timer");
+            _keepAliveTimer.Start();
+        }
+
+        static void OnKeepAliveTimerElapsed(object sender, EventArgs e)
+        {
+            var svc = ServiceRegistry.GetService<ServerConnectionManager>();
+            foreach (var name in svc.GetConnectionNames())
+            {
+                var conn = svc.GetConnection(name);
+                string sessionId = conn.SessionID;
+                if (!string.IsNullOrEmpty(sessionId))
+                {
+                    conn.FeatureService.GetProviderCapabilities("OSGeo.SDF");
+                    LoggingService.Info("Session kept alive: " + sessionId);
+                }
+            }
         }
 
         static void OnConnectionRemoved(object sender, string name)
