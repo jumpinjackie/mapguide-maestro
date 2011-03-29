@@ -212,7 +212,7 @@ namespace Maestro.Editors.Common
                 {
                     if (this.SelectFoldersOnly)
                     {
-                        txtItem.Text = mdl.Name;
+                        txtItem.Text = mdl.Tag.UnmanagedDataId;
                         return;
                     }
                     else
