@@ -508,8 +508,14 @@
                       label="${res:SiteExplorer_Migrate}"
                       class="Maestro.Base.Commands.SiteExplorer.MigrateResourceCommand" />
             <MenuItem id="CopyMoveToServer"
+                      icon="server__arrow"
                       label="${res:SiteExplorer_CopyMoveToServer}"
                       class="Maestro.Base.Commands.SiteExplorer.CopyMoveToAnotherServerCommand" />
+            <MenuItem type="Separator" />
+            <MenuItem id="SaveResource"
+                      label="${res:SiteExplorer_SaveResource}"
+                      icon="disk"
+                      class="Maestro.Base.Commands.SiteExplorer.SaveResourceContentToDiskCommand" />
             <MenuItem type="Separator" />
             <MenuItem id="Repoint"
                       icon="document__arrow"

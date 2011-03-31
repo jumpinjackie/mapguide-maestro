@@ -1448,6 +1448,15 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Saved resource content to {0}.
+        /// </summary>
+        internal static string SavedResource {
+            get {
+                return ResourceManager.GetString("SavedResource", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap scissors_blue {
             get {
                 object obj = ResourceManager.GetObject("scissors_blue", resourceCulture);
@@ -1485,6 +1494,13 @@ namespace Maestro.Base.Properties {
         internal static System.Drawing.Bitmap server {
             get {
                 object obj = ResourceManager.GetObject("server", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap server__arrow {
+            get {
+                object obj = ResourceManager.GetObject("server__arrow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1621,6 +1637,15 @@ namespace Maestro.Base.Properties {
         internal static string SiteExplorer_Repoint {
             get {
                 return ResourceManager.GetString("SiteExplorer_Repoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Resource XML.
+        /// </summary>
+        internal static string SiteExplorer_SaveResource {
+            get {
+                return ResourceManager.GetString("SiteExplorer_SaveResource", resourceCulture);
             }
         }
         

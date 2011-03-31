@@ -100,6 +100,7 @@
     <Compile Include="Commands\SaveAllCommand.cs" />
     <Compile Include="Commands\SaveResourceAsCommand.cs" />
     <Compile Include="Commands\SaveResourceCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\SaveResourceContentToDiskCommand.cs" />
     <Compile Include="Commands\ServerMonitorCommand.cs" />
     <Compile Include="Commands\SiteAdministratorCommand.cs" />
     <Compile Include="Commands\SiteExplorer\DeleteSelectedItemsCommand.cs" />
@@ -360,6 +361,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maestro.Base.addin" />
+    <None Include="Resources\server--arrow.png" />
     <None Include="Resources\document--arrow.png" />
     <None Include="Resources\disks.png" />
     <None Include="Resources\box--plus.png" />
