@@ -533,7 +533,7 @@ namespace Maestro.Editors.Fusion
             if (_noEvents)
                 return;
 
-            _appDef.SetValue("YahooScript", YAHOO_URL + txtGoogApiKey.Text);
+            _appDef.SetValue("YahooScript", YAHOO_URL + txtYahooApiKey.Text);
         }
 
         const string GOOGLE_URL = "http://maps.google.com/maps?file=api&amp;v=2&amp;key=";

@@ -72,8 +72,8 @@ LicenseData "LGPL21.rtf"
 !define PROJECT_URL "http://trac.osgeo.org/mapguide/wiki/maestro"
 !define INST_SRC "."
 !define INST_LICENSE "..\Maestro\license.txt"
-#!define INST_OUTPUT "MapGuide Maestro-${SLN_CONFIG}-${RELEASE_VERSION}-${CPU}-Setup.exe"
-!define INST_OUTPUT "MapGuide Maestro-${SLN_CONFIG}-${RELEASE_VERSION}-Setup.exe"
+#!define INST_OUTPUT "MapGuideMaestro-${SLN_CONFIG}-${RELEASE_VERSION}-${CPU}-Setup.exe"
+!define INST_OUTPUT "MapGuideMaestro-${SLN_CONFIG}-${RELEASE_VERSION}-Setup.exe"
 
 # We'll disable this for preview releases, because release version will not be a valid version string
 

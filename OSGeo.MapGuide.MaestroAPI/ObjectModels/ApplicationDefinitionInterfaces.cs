@@ -861,10 +861,13 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
             Check.NotNull(ext, "ext");
             Check.NotEmpty(name, "name");
 
-            var el = ext.Extension.Content.FindElementByName(name);
-            if (el != null)
+            if (ext.Extension.Content != null)
             {
-                return el.InnerText;
+                var el = ext.Extension.Content.FindElementByName(name);
+                if (el != null)
+                {
+                    return el.InnerText;
+                }
             }
             return string.Empty;
         }

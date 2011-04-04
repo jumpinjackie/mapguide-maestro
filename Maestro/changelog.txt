@@ -1,4 +1,15 @@
-﻿3.0 Beta 2
+﻿3.0 Beta 3
+----------
+ - Added a command to purge cached information for a feature source
+ - Added resource validation error codes
+ - UI layout tweaks for the ODBC Feature Source editor
+ - Fix: Added missing button to close tabs in Feature Source Preview tool
+ - Fix: Prevent ODBC feature source editor configuration/reset functionality if connection is not valid
+ - Fix: Added missing Site Administrator command
+ - Fix: Usability tweaks for the New Resource Dialog
+ - Fix: Refined Load Procedure logic for handling default Coordinate Systems
+
+3.0 Beta 2
 ----------
  - Added WMS specialized feature source editor
  - Added missing connection testing functionality for various specialized feature source editors
