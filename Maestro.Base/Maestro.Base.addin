@@ -21,6 +21,7 @@
             <ConditionEvaluator name="CanCutOrCopy" class="Maestro.Base.Commands.Conditions.CutCopyConditionEvaluator" />
             <ConditionEvaluator name="MultipleSelected" class="Maestro.Base.Commands.Conditions.MultipleSelectedItemConditionEvaluator" />
             <ConditionEvaluator name="HasDocuments" class="Maestro.Base.Commands.Conditions.NonZeroDocumentConditionEvaluator" />
+            <ConditionEvaluator name="ResourceType" class="Maestro.Base.Commands.Conditions.ResourceTypeConditionEvaluator" />
         </Import>
     </Runtime>
 
@@ -194,6 +195,7 @@
                       class="Maestro.Base.Commands.LocalFeatureSourcePreviewCommand"/>
             <MenuItem id="ServerMonitor"
                       label="${res:ServerMonitor}"
+                      icon="system_monitor"
                       class="Maestro.Base.Commands.ServerMonitorCommand"/>
             <MenuItem id="CacheView"
                       label="${res:CacheView}"
@@ -490,6 +492,13 @@
                       icon="cross_script"
                       label="${res:SiteExplorer_SelectedItem_Delete}"
                       class="Maestro.Base.Commands.SiteExplorer.DeleteSelectedItemsCommand" />
+            <MenuItem type="Separator" />
+            <Condition action="Disable" name="ResourceType" types="FeatureSource,LayerDefinition">
+                <MenuItem id="PurgeFsCache"
+                          label="${res:SiteExplorer_PurgeFsCache}"
+                          icon="arrow_circle_double"
+                          class="Maestro.Base.Commands.SiteExplorer.PurgeFeatureSourceCacheCommand" />
+            </Condition>
             <MenuItem type="Separator" />
             <Condition action="Disable" name="CanCutOrCopy">
                 <MenuItem id="Copy"

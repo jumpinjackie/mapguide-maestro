@@ -78,6 +78,7 @@
     <Compile Include="Commands\Conditions\NotConnectedConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\DebugModeConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\PasteConditionEvaluator.cs" />
+    <Compile Include="Commands\Conditions\ResourceTypeConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\SelectedItemConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\SelectedRootItemConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\NonZeroDocumentConditionEvaluator.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Commands\SaveAllCommand.cs" />
     <Compile Include="Commands\SaveResourceAsCommand.cs" />
     <Compile Include="Commands\SaveResourceCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\PurgeFeatureSourceCacheCommand.cs" />
     <Compile Include="Commands\SiteExplorer\SaveResourceContentToDiskCommand.cs" />
     <Compile Include="Commands\ServerMonitorCommand.cs" />
     <Compile Include="Commands\SiteAdministratorCommand.cs" />
@@ -361,6 +363,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maestro.Base.addin" />
+    <None Include="Resources\arrow-circle-double.png" />
+    <None Include="Resources\system-monitor.png" />
     <None Include="Resources\server--arrow.png" />
     <None Include="Resources\document--arrow.png" />
     <None Include="Resources\disks.png" />

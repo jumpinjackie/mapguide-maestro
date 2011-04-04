@@ -136,6 +136,13 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap arrow_circle_double {
+            get {
+                object obj = ResourceManager.GetObject("arrow_circle_double", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap blueprints {
             get {
                 object obj = ResourceManager.GetObject("blueprints", resourceCulture);
@@ -1457,6 +1464,15 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Schema information for {0} purged.
+        /// </summary>
+        internal static string SchemaInformationPurged {
+            get {
+                return ResourceManager.GetString("SchemaInformationPurged", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap scissors_blue {
             get {
                 object obj = ResourceManager.GetObject("scissors_blue", resourceCulture);
@@ -1623,6 +1639,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Purge Cached Schema Information.
+        /// </summary>
+        internal static string SiteExplorer_PurgeFsCache {
+            get {
+                return ResourceManager.GetString("SiteExplorer_PurgeFsCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Refresh.
         /// </summary>
         internal static string SiteExplorer_Refresh {
@@ -1745,6 +1770,13 @@ namespace Maestro.Base.Properties {
         internal static string SltHandlerAction {
             get {
                 return ResourceManager.GetString("SltHandlerAction", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap system_monitor {
+            get {
+                object obj = ResourceManager.GetObject("system_monitor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
