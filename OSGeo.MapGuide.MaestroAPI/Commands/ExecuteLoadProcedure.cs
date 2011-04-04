@@ -328,23 +328,72 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                             string result = this.Parent.FeatureService.TestConnection(fsId);
 
                             //LocalNativeConnection returns this string, so I'm assuming this is the "success" result
-                            if (result == "No errors")
+                            if (result == "No errors" || result.ToLower() == "true")
                             {
                                 //Step 4: Test to see if default cs needs to be specified
                                 FdoSpatialContextList spatialContexts = this.Parent.FeatureService.GetSpatialContextInfo(fsId, false);
-                                if (spatialContexts.SpatialContext.Count == 0 && !string.IsNullOrEmpty(shpl.CoordinateSystem))
+                                if (!string.IsNullOrEmpty(shpl.CoordinateSystem))
                                 {
-                                    //Register the default CS from the load procedure
-                                    fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType()
+                                    bool hasPrj = false;
+                                    //If there is no prj file, we can just upload one with the specified WKT
+                                    foreach (var resd in fs.EnumerateResourceData())
                                     {
-                                        Name = "Default",
-                                        CoordinateSystem = shpl.CoordinateSystem
-                                    });
+                                        if (resd.Name == resName + ".prj")
+                                        {
+                                            hasPrj = true;
+                                            break;
+                                        }
+                                    }
+                                    //Case 1: No .prj file. Most probable
+                                    if (!hasPrj)
+                                    {
+                                        string tmp = System.IO.Path.GetTempFileName();
+                                        System.IO.File.WriteAllText(tmp, shpl.CoordinateSystem);
 
-                                    //Update this feature source
-                                    this.Parent.ResourceService.SaveResource(fs);
+                                        using (var fsr = System.IO.File.OpenRead(tmp))
+                                        {
+                                            fs.SetResourceData(resName + ".prj", ResourceDataType.File, fsr);
+                                            cb(this, new LengthyOperationProgressArgs("Uploaded: " + resName + ".prj", current));
+                                        }
 
-                                    cb(this, new LengthyOperationProgressArgs("Set default spatial context for: " + fsId, current));
+                                        try
+                                        {
+                                            System.IO.File.Delete(tmp);
+                                        }
+                                        catch { }
+                                    }
+                                    else if (spatialContexts.SpatialContext.Count == 0) //Case 2: No Spatial contexts. Declare one using SupplementalContextInfo
+                                    {
+                                        //Register the default CS from the load procedure
+                                        fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType()
+                                        {
+                                            Name = "Default",
+                                            CoordinateSystem = shpl.CoordinateSystem
+                                        });
+
+                                        //Update this feature source
+                                        this.Parent.ResourceService.SaveResource(fs);
+
+                                        cb(this, new LengthyOperationProgressArgs("Set default spatial context for: " + fsId, current));
+                                    }
+                                    else if (spatialContexts.SpatialContext.Count == 1) //Case 3: One spatial context with blank WKT. Override it using the SupplementalContextInfo
+                                    {
+                                        var sc = spatialContexts.SpatialContext[0];
+                                        if (string.IsNullOrEmpty(sc.CoordinateSystemWkt))
+                                        {
+                                            //Register the default CS from the load procedure
+                                            fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType()
+                                            {
+                                                Name = sc.Name,
+                                                CoordinateSystem = shpl.CoordinateSystem
+                                            });
+
+                                            //Update this feature source
+                                            this.Parent.ResourceService.SaveResource(fs);
+
+                                            cb(this, new LengthyOperationProgressArgs("Set default spatial context for: " + fsId, current));
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -590,23 +639,45 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                 string result = this.Parent.FeatureService.TestConnection(fsId);
 
                                 //LocalNativeConnection returns this string, so I'm assuming this is the "success" result
-                                if (result == "No errors")
+                                if (result == "No errors" || result.ToLower() == "true")
                                 {
                                     //Step 4: Test to see if default cs needs to be specified
                                     FdoSpatialContextList spatialContexts = this.Parent.FeatureService.GetSpatialContextInfo(fsId, false);
-                                    if (spatialContexts.SpatialContext.Count == 0 && !string.IsNullOrEmpty(proc.CoordinateSystem))
+                                    if (!string.IsNullOrEmpty(proc.CoordinateSystem))
                                     {
-                                        //Register the default CS from the load procedure
-                                        fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType()
+                                        //Case 1: No spatial contexts. Register one using SupplementalContextInfo
+                                        if (spatialContexts.SpatialContext.Count == 0)
                                         {
-                                            Name = "Default",
-                                            CoordinateSystem = proc.CoordinateSystem
-                                        });
+                                            //Register the default CS from the load procedure
+                                            fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType()
+                                            {
+                                                Name = "Default",
+                                                CoordinateSystem = proc.CoordinateSystem
+                                            });
 
-                                        //Update this feature source
-                                        this.Parent.ResourceService.SaveResource(fs);
+                                            //Update this feature source
+                                            this.Parent.ResourceService.SaveResource(fs);
 
-                                        cb(this, new LengthyOperationProgressArgs("Set default spatial context for: " + fsId, current));
+                                            cb(this, new LengthyOperationProgressArgs("Set default spatial context for: " + fsId, current));
+                                        }
+                                        else if (spatialContexts.SpatialContext.Count == 1) //Case 2: One spatial context, but its WKT is blank. Override using SupplementalContextInfo
+                                        {
+                                            var sc = spatialContexts.SpatialContext[0];
+                                            if (string.IsNullOrEmpty(sc.CoordinateSystemWkt))
+                                            {
+                                                //Register the default CS from the load procedure
+                                                fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType()
+                                                {
+                                                    Name = sc.Name,
+                                                    CoordinateSystem = proc.CoordinateSystem
+                                                });
+
+                                                //Update this feature source
+                                                this.Parent.ResourceService.SaveResource(fs);
+
+                                                cb(this, new LengthyOperationProgressArgs("Set default spatial context for: " + fsId, current));
+                                            }
+                                        }
                                     }
                                 }
                             }
