@@ -159,8 +159,11 @@
   <data name="txtConnectionStatus.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="txtConnectionStatus.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
   <data name="txtConnectionStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>495, 27</value>
+    <value>367, 65</value>
   </data>
   <data name="txtConnectionStatus.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -178,10 +181,10 @@
     <value>0</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 237</value>
+    <value>151, 237</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>501, 46</value>
+    <value>373, 84</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -203,21 +206,6 @@
   </data>
   <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
-  </data>
-  <data name="txtConnStr.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="txtConnStr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 16</value>
-  </data>
-  <data name="txtConnStr.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtConnStr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>495, 24</value>
-  </data>
-  <data name="txtConnStr.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
   </data>
   <data name="&gt;&gt;txtConnStr.Name" xml:space="preserve">
     <value>txtConnStr</value>
@@ -259,10 +247,10 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 289</value>
+    <value>23, 298</value>
   </data>
   <data name="btnReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>122, 23</value>
   </data>
   <data name="btnReset.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -286,10 +274,10 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnEditSchema.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 289</value>
+    <value>23, 269</value>
   </data>
   <data name="btnEditSchema.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 23</value>
+    <value>122, 23</value>
   </data>
   <data name="btnEditSchema.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -316,7 +304,7 @@
     <value>False</value>
   </data>
   <data name="btnTest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 289</value>
+    <value>23, 240</value>
   </data>
   <data name="btnTest.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 23</value>
@@ -405,6 +393,33 @@
   <data name="&gt;&gt;contentPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="txtConnStr.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="txtConnStr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
+  </data>
+  <data name="txtConnStr.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtConnStr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>495, 24</value>
+  </data>
+  <data name="txtConnStr.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txtConnStr.Name" xml:space="preserve">
+    <value>txtConnStr</value>
+  </data>
+  <data name="&gt;&gt;txtConnStr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtConnStr.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtConnStr.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -415,6 +430,6 @@
     <value>OdbcProviderCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=3.0.0.5654, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
