@@ -1852,6 +1852,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not determine the validity of this feature source. Please test the connection first to ensure a valid connection..
+        /// </summary>
+        internal static string NoConnectionSet {
+            get {
+                return ResourceManager.GetString("NoConnectionSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have not selected a starting folder, do you want to back up the entire site?.
         /// </summary>
         internal static string NoFolderSelected {

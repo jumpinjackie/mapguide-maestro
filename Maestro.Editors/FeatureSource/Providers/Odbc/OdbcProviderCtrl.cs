@@ -208,6 +208,12 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
 
         private void btnEditSchema_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(_fs.ConnectionString))
+            {
+                MessageBox.Show(Properties.Resources.NoConnectionSet);
+                return;
+            }
+
             if (string.IsNullOrEmpty(_defaultSchemaName))
             {
                 var names = _fs.GetSchemaNames();
@@ -274,6 +280,12 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
 
         private void btnReset_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(_fs.ConnectionString))
+            {
+                MessageBox.Show(Properties.Resources.NoConnectionSet);
+                return;
+            }
+
             _fs.SetConfigurationContent(null);
             _fs.ConfigurationDocument = null;
             _service.SyncSessionCopy();

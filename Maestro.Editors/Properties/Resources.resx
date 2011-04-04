@@ -1154,4 +1154,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="TitleNewFeatureClass" xml:space="preserve">
     <value>New Feature Class</value>
   </data>
+  <data name="NoConnectionSet" xml:space="preserve">
+    <value>Could not determine the validity of this feature source. Please test the connection first to ensure a valid connection.</value>
+  </data>
 </root>
