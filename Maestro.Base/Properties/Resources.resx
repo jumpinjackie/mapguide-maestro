@@ -901,4 +901,10 @@ Do you want to convert the values?</value>
   <data name="SchemaInformationPurged" xml:space="preserve">
     <value>Schema information for {0} purged</value>
   </data>
+  <data name="ResourceDuplicated" xml:space="preserve">
+    <value>Resource Duplicated: {0} ( =&gt; {1})</value>
+  </data>
+  <data name="SiteExplorer_DuplicateResources" xml:space="preserve">
+    <value>Duplicate Resources</value>
+  </data>
 </root>

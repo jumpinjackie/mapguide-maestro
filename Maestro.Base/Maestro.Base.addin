@@ -492,6 +492,10 @@
                       icon="cross_script"
                       label="${res:SiteExplorer_SelectedItem_Delete}"
                       class="Maestro.Base.Commands.SiteExplorer.DeleteSelectedItemsCommand" />
+            <MenuItem id="Duplicate"
+                      icon="document_copy"
+                      label="${res:SiteExplorer_DuplicateResources}"
+                      class="Maestro.Base.Commands.SiteExplorer.DuplicateResourceCommand" />
             <MenuItem type="Separator" />
             <Condition action="Disable" name="ResourceType" types="FeatureSource,LayerDefinition">
                 <MenuItem id="PurgeFsCache"
@@ -551,6 +555,10 @@
                       icon="cross_script"
                       label="${res:SiteExplorer_SelectedItem_Delete}"
                       class="Maestro.Base.Commands.SiteExplorer.DeleteSelectedItemsCommand" />
+            <MenuItem id="Duplicate"
+                      icon="document_copy"
+                      label="${res:SiteExplorer_DuplicateResources}"
+                      class="Maestro.Base.Commands.SiteExplorer.DuplicateResourceCommand" />
             <MenuItem type="Separator" />
             <Condition action="Disable" name="CanCutOrCopy">
                 <MenuItem id="Copy"

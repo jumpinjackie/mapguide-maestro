@@ -1299,6 +1299,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resource Duplicated: {0} ( =&gt; {1}).
+        /// </summary>
+        internal static string ResourceDuplicated {
+            get {
+                return ResourceManager.GetString("ResourceDuplicated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resource Migrated: {0}.
         /// </summary>
         internal static string ResourceMigrated {
@@ -1608,6 +1617,15 @@ namespace Maestro.Base.Properties {
         internal static string SiteExplorer_Disconnect {
             get {
                 return ResourceManager.GetString("SiteExplorer_Disconnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duplicate Resources.
+        /// </summary>
+        internal static string SiteExplorer_DuplicateResources {
+            get {
+                return ResourceManager.GetString("SiteExplorer_DuplicateResources", resourceCulture);
             }
         }
         
