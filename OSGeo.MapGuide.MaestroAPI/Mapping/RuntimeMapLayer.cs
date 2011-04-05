@@ -75,6 +75,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.IdentityProperties = new PropertyInfo[0];
             this.ObjectId = Guid.NewGuid().ToString();
             this.Parent = parent;
+            this.Group = string.Empty;
         }
 
         internal RuntimeMapLayer(RuntimeMap parent, ILayerDefinition ldf)
@@ -84,7 +85,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
             this.LayerDefinitionID = ldf.ResourceID;
             this.ExpandInLegend = false;
-            this.Group = null;
             this.Name = ResourceIdentifier.GetName(ldf.ResourceID);
             this.Selectable = true;
             this.ShowInLegend = true;

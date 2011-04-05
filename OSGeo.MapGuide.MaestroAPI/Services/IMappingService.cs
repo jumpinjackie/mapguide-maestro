@@ -31,6 +31,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
     public interface IMappingService : IService
     {
         /// <summary>
+        /// Creates a new runtime map instance from an existing map definition.
+        /// </summary>
+        /// <param name="mapDef"></param>
+        /// <returns></returns>
+        RuntimeMap CreateMap(IMapDefinition mapDef);
+
+        /// <summary>
+        /// Creates a new runtime map instance from an existing map definition. Meters per unit
+        /// is calculated from the Coordinate System WKT of the map definition.
+        /// </summary>
+        /// <param name="mapDef"></param>
+        /// <param name="metersPerUnit"></param>
+        /// <returns></returns>
+        RuntimeMap CreateMap(IMapDefinition mapDef, double metersPerUnit);
+
+        /// <summary>
         /// Creates a new runtime map instance from an existing map definition. Meters per unit
         /// is calculated from the Coordinate System WKT of the map definition.
         /// </summary>

@@ -127,5 +127,13 @@ namespace Maestro.Base.Editor
 
             base.OnBeforeSave(sender, e);
         }
+
+        public override bool CanProfile
+        {
+            get
+            {
+                return true;
+            }
+        }
     }
 }

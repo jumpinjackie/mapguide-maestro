@@ -302,6 +302,12 @@
     <Compile Include="UI\Preferences\OptionsDialog.Designer.cs">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ProfilingDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProfilingDialog.Designer.cs">
+      <DependentUpon>ProfilingDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\RenameItemDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -489,6 +495,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Preferences\OptionsDialog.resx">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProfilingDialog.resx">
+      <DependentUpon>ProfilingDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\RenameItemDialog.resx">
       <DependentUpon>RenameItemDialog.cs</DependentUpon>

@@ -27,6 +27,7 @@ using System.Drawing;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using System.ComponentModel;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -49,11 +50,21 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
                 OnPropertyChanged("BackgroundColor");
             }
         }
+
+        protected void DetachChangeListeners()
+        {
+            var handler = this.PropertyChanged;
+            foreach (var h in handler.GetInvocationList())
+            {
+                this.PropertyChanged -= (PropertyChangedEventHandler)h;
+            }
+            handler = null;
+        }
     }
 
     partial class MapDefinition : IMapDefinition
     {
-        internal MapDefinition() { } 
+        internal MapDefinition() { }
 
         private static readonly Version RES_VERSION = new Version(1, 0, 0);
 
@@ -109,7 +120,9 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
 
         object ICloneable.Clone()
         {
-            return this.Clone();
+            var mdf = this.Clone();
+            mdf.DetachChangeListeners();
+            return mdf;
         }
 
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]

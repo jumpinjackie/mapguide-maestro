@@ -37,7 +37,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         internal RuntimeMapGroup() 
         {
             _disableChangeTracking = true;
-
+            this.Group = "";
             this.Type = kNormal;
             this.ObjectId = Guid.NewGuid().ToString();
         }

@@ -326,6 +326,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string CloseButtonText {
+            get {
+                return ResourceManager.GetString("CloseButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This resource {0} has unsaved changes. Close and discard these changes?.
         /// </summary>
         internal static string CloseUnsavedResource {
@@ -1252,6 +1261,153 @@ namespace Maestro.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("printer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed while profiling LayerDefinition: {0},
+        ///Error message: {1}.
+        /// </summary>
+        internal static string Prof_LayerDefinitionProfilingError {
+            get {
+                return ResourceManager.GetString("Prof_LayerDefinitionProfilingError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to *** Done ***.
+        /// </summary>
+        internal static string Prof_LogMessageDone {
+            get {
+                return ResourceManager.GetString("Prof_LogMessageDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profiling FeatureSource: {0}.
+        /// </summary>
+        internal static string Prof_LogMessageFeatureSource {
+            get {
+                return ResourceManager.GetString("Prof_LogMessageFeatureSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identity fetching (ms): .
+        /// </summary>
+        internal static string Prof_LogMessageIdentifyFetching {
+            get {
+                return ResourceManager.GetString("Prof_LogMessageIdentifyFetching", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profiling LayerDefinition: {0}.
+        /// </summary>
+        internal static string Prof_LogMessageLayerDefinition {
+            get {
+                return ResourceManager.GetString("Prof_LogMessageLayerDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profiling MapDefinition: {0}.
+        /// </summary>
+        internal static string Prof_LogMessageMapDefinition {
+            get {
+                return ResourceManager.GetString("Prof_LogMessageMapDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full map rendering (ms): .
+        /// </summary>
+        internal static string Prof_LogMessageRenderingMap {
+            get {
+                return ResourceManager.GetString("Prof_LogMessageRenderingMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rendering scales (ms): .
+        /// </summary>
+        internal static string Prof_LogMessageRenderingScales {
+            get {
+                return ResourceManager.GetString("Prof_LogMessageRenderingScales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Runtime layer creation (ms): .
+        /// </summary>
+        internal static string Prof_LogMessageRuntimeLayer {
+            get {
+                return ResourceManager.GetString("Prof_LogMessageRuntimeLayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total for runtime Map Generation (ms): .
+        /// </summary>
+        internal static string Prof_LogMessageRuntimeMap {
+            get {
+                return ResourceManager.GetString("Prof_LogMessageRuntimeMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Runtime map generation in one go (ms):.
+        /// </summary>
+        internal static string Prof_LogMessageRuntimeMapTotal {
+            get {
+                return ResourceManager.GetString("Prof_LogMessageRuntimeMapTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time to render scale range [{0} : {1}] (ms):  .
+        /// </summary>
+        internal static string Prof_LogMessageScaleRange {
+            get {
+                return ResourceManager.GetString("Prof_LogMessageScaleRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The resource type is not supported for profiling.
+        /// </summary>
+        internal static string Prof_LogMessageUnsupportedResourceType {
+            get {
+                return ResourceManager.GetString("Prof_LogMessageUnsupportedResourceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed while profiling MapDefinition rendering: {0},
+        ///Error message: {1}.
+        /// </summary>
+        internal static string Prof_MapRenderingError {
+            get {
+                return ResourceManager.GetString("Prof_MapRenderingError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rendered image size is: {0}.
+        /// </summary>
+        internal static string Prof_MapRenderingImageSize {
+            get {
+                return ResourceManager.GetString("Prof_MapRenderingImageSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed while profiling MapDefinition runtime: {0},
+        ///Error message: {1}.
+        /// </summary>
+        internal static string Prof_RuntimeMapProfilingError {
+            get {
+                return ResourceManager.GetString("Prof_RuntimeMapProfilingError", resourceCulture);
             }
         }
         

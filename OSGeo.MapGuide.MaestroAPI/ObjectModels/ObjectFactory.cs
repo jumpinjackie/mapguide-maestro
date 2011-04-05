@@ -206,6 +206,30 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
+        /// Creates the web layout. The schema version used is the highest supported one by the connection 
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="mapDefinitionId"></param>
+        /// <returns></returns>
+        public static IWebLayout CreateWebLayout(IServerConnection owner, string mapDefinitionId)
+        {
+            var ver = owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.WebLayout);
+            return CreateWebLayout(owner, ver, mapDefinitionId);
+        }
+
+        /// <summary>
+        /// Creates the default layer. The schema version used is the highest supported one by the connection
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static ILayerDefinition CreateDefaultLayer(IServerConnection owner, LayerType type)
+        {
+            var ver = owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.LayerDefinition);
+            return CreateDefaultLayer(owner, type, ver);
+        }
+
+        /// <summary>
         /// Creates the default layer.
         /// </summary>
         /// <param name="owner">The owner.</param>
@@ -348,6 +372,19 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
+        /// Creates the simple symbol. The schema version used is the highest supported one by the connection 
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
+        public static ISimpleSymbolDefinition CreateSimpleSymbol(IServerConnection owner, string name, string description)
+        {
+            var ver = owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.SymbolDefinition);
+            return CreateSimpleSymbol(owner, ver, name, description);
+        }
+
+        /// <summary>
         /// Creates the compound symbol.
         /// </summary>
         /// <param name="owner">The owner.</param>
@@ -364,6 +401,19 @@ namespace OSGeo.MapGuide.ObjectModels
             comp.Name = name;
             comp.Description = description;
             return comp;
+        }
+
+        /// <summary>
+        /// Creates the compound symbol. The schema version used is the highest supported one by the connection 
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
+        public static ICompoundSymbolDefinition CreateCompoundSymbol(IServerConnection owner, string name, string description)
+        {
+            var ver = owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.SymbolDefinition);
+            return CreateCompoundSymbol(owner, ver, name, description);
         }
 
         static readonly string[] parameterizedWidgets = 

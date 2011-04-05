@@ -907,4 +907,74 @@ Do you want to convert the values?</value>
   <data name="SiteExplorer_DuplicateResources" xml:space="preserve">
     <value>Duplicate Resources</value>
   </data>
+  <data name="CloseButtonText" xml:space="preserve">
+    <value>Close</value>
+    <comment>The text on the close button</comment>
+  </data>
+  <data name="Prof_LayerDefinitionProfilingError" xml:space="preserve">
+    <value>Failed while profiling LayerDefinition: {0},
+Error message: {1}</value>
+    <comment>An error message that is displayed when the layer definition profiling fails</comment>
+  </data>
+  <data name="Prof_LogMessageDone" xml:space="preserve">
+    <value>*** Done ***</value>
+    <comment>A message written in the log to indicate that the operation is complete</comment>
+  </data>
+  <data name="Prof_LogMessageFeatureSource" xml:space="preserve">
+    <value>Profiling FeatureSource: {0}</value>
+    <comment>A message written in the log when profiling a featuresource</comment>
+  </data>
+  <data name="Prof_LogMessageIdentifyFetching" xml:space="preserve">
+    <value>Identity fetching (ms): </value>
+    <comment>A message written in the log when profiling identity fetching</comment>
+  </data>
+  <data name="Prof_LogMessageLayerDefinition" xml:space="preserve">
+    <value>Profiling LayerDefinition: {0}</value>
+    <comment>A message written in the log when profiling a layerdefinition</comment>
+  </data>
+  <data name="Prof_LogMessageMapDefinition" xml:space="preserve">
+    <value>Profiling MapDefinition: {0}</value>
+    <comment>A message written in the log when profiling a mapdefinition</comment>
+  </data>
+  <data name="Prof_LogMessageRenderingMap" xml:space="preserve">
+    <value>Full map rendering (ms): </value>
+    <comment>A message written in the log when profiling runtime map rendering</comment>
+  </data>
+  <data name="Prof_LogMessageRenderingScales" xml:space="preserve">
+    <value>Rendering scales (ms): </value>
+    <comment>A message written in the log when profiling a scale rendering</comment>
+  </data>
+  <data name="Prof_LogMessageRuntimeLayer" xml:space="preserve">
+    <value>Runtime layer creation (ms): </value>
+    <comment>A message written in the log when profiling a runtime layer creation</comment>
+  </data>
+  <data name="Prof_LogMessageRuntimeMap" xml:space="preserve">
+    <value>Total for runtime Map Generation (ms): </value>
+    <comment>A message written in the log when profiling runtime map generation</comment>
+  </data>
+  <data name="Prof_LogMessageRuntimeMapTotal" xml:space="preserve">
+    <value>Runtime map generation in one go (ms):</value>
+    <comment>A message written in the log when profiling runtime map generation</comment>
+  </data>
+  <data name="Prof_LogMessageScaleRange" xml:space="preserve">
+    <value>Time to render scale range [{0} : {1}] (ms):  </value>
+    <comment>A message written in the log when profiling a certain scalerange</comment>
+  </data>
+  <data name="Prof_LogMessageUnsupportedResourceType" xml:space="preserve">
+    <value>The resource type is not supported for profiling</value>
+    <comment>A message written in the log if a certain resource is not supported</comment>
+  </data>
+  <data name="Prof_MapRenderingError" xml:space="preserve">
+    <value>Failed while profiling MapDefinition rendering: {0},
+Error message: {1}</value>
+    <comment>An error message displayed when profiling mapdefinition rendering fails</comment>
+  </data>
+  <data name="Prof_RuntimeMapProfilingError" xml:space="preserve">
+    <value>Failed while profiling MapDefinition runtime: {0},
+Error message: {1}</value>
+    <comment>An error message displayed when profiling a mapdefinition fails</comment>
+  </data>
+  <data name="Prof_MapRenderingImageSize" xml:space="preserve">
+    <value>Rendered image size is: {0}</value>
+  </data>
 </root>

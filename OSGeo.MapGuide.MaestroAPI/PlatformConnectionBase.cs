@@ -1703,8 +1703,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         protected virtual double InferMPU(string csWkt, double units)
         {
-            var cs = CoordinateSystemBase.Create(csWkt);
-            return cs.MetersPerUnitX * units;
+            try
+            {
+                var cs = CoordinateSystemBase.Create(csWkt);
+                return cs.MetersPerUnitX * units;
+            }
+            catch { return 1.0; }
         }
 
         /// <summary>
@@ -1739,6 +1743,30 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             var mdf = (IMapDefinition)GetResource(baseMapDefinitionId);
             return CreateMap(runtimeMapResourceId, mdf, metersPerUnit);
+        }
+
+        /// <summary>
+        /// Creates a new runtime map instance from an existing map definition.  The runtime map resource id is calculated from the 
+        /// current session id and the name component of the Map Definition resource id
+        /// </summary>
+        /// <param name="mdf"></param>
+        /// <returns></returns>
+        public RuntimeMap CreateMap(IMapDefinition mdf)
+        {
+            var rid = new ResourceIdentifier(ResourceIdentifier.GetName(mdf.ResourceID), ResourceTypes.RuntimeMap, this.SessionID);
+            return CreateMap(rid.ToString(), mdf);
+        }
+
+        /// <summary>
+        /// Creates a new runtime map instance from an existing map definition. The runtime map resource id is calculated from the 
+        /// current session id and the name component of the Map Definition resource id
+        /// </summary>
+        /// <param name="mdf"></param>
+        /// <returns></returns>
+        public RuntimeMap CreateMap(IMapDefinition mdf, double metersPerUnit)
+        {
+            var rid = new ResourceIdentifier(ResourceIdentifier.GetName(mdf.ResourceID), ResourceTypes.RuntimeMap, this.SessionID);
+            return CreateMap(rid.ToString(), mdf, metersPerUnit);
         }
 
         /// <summary>

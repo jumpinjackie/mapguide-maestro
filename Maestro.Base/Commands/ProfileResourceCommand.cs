@@ -20,10 +20,27 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ICSharpCode.Core;
+using Maestro.Base.UI;
+using Maestro.Base.Services;
 
 namespace Maestro.Base.Commands
 {
-    internal class ProfileResourceCommand : NotImplementedCommand
+    internal class ProfileResourceCommand : AbstractMenuCommand
     {
+        public override void Run()
+        {
+            var wb = Workbench.Instance;
+            var ed = wb.ActiveEditor;
+            if (ed != null)
+            {
+                var exp = wb.ActiveSiteExplorer;
+                var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
+                var conn = connMgr.GetConnection(exp.ConnectionName);
+                var res = ed.EditorService.GetEditedResource();
+                var diag = new ProfilingDialog(res, res.ResourceID, conn);
+                diag.ShowDialog(wb);
+            }
+        }
     }
 }

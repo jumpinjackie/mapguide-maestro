@@ -343,7 +343,7 @@
             <ToolbarItem id="Profile"
                          icon="clock"
                          tooltip="${res:Menu_File_ProfileResource}"
-                         class="Maestro.Base.Commands.NotImplementedCommand" />
+                         class="Maestro.Base.Commands.ProfileResourceCommand" />
         </Condition>
         <Condition action="Disable" name="EditorFunction" property="CanValidate">
             <ToolbarItem id="Validate"
