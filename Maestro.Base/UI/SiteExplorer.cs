@@ -495,6 +495,10 @@ namespace Maestro.Base.UI
             {
                 new DeleteSelectedItemsCommand().Run();
             }
+            else if (e.KeyCode == Keys.F2)
+            {
+                new RenameCommand().Run();
+            }
         }
 
         private void trvResources_KeyDown(object sender, KeyEventArgs e)
