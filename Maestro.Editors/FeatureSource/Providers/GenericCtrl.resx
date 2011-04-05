@@ -235,10 +235,10 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="resDataCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 175</value>
+    <value>357, 62</value>
   </data>
   <data name="resDataCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>654, 102</value>
+    <value>313, 220</value>
   </data>
   <data name="resDataCtrl.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -247,7 +247,7 @@
     <value>resDataCtrl</value>
   </data>
   <data name="&gt;&gt;resDataCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ResourceDataCtrl, Maestro.Editors, Version=3.0.0.5610, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.ResourceDataCtrl, Maestro.Editors, Version=3.0.0.5676, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;resDataCtrl.Parent" xml:space="preserve">
     <value>contentPanel</value>
@@ -259,7 +259,7 @@
     <value>True</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 159</value>
+    <value>355, 46</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 13</value>
@@ -310,13 +310,13 @@
     <value>6</value>
   </data>
   <data name="grdConnectionParameters.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+    <value>Top, Bottom, Left</value>
   </data>
   <data name="grdConnectionParameters.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 62</value>
   </data>
   <data name="grdConnectionParameters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>654, 85</value>
+    <value>335, 220</value>
   </data>
   <data name="grdConnectionParameters.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -397,11 +397,20 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;contentPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <metadata name="ctxEnumerable.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="ctxEnumerable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 48</value>
+  </data>
+  <data name="&gt;&gt;ctxEnumerable.Name" xml:space="preserve">
+    <value>ctxEnumerable</value>
+  </data>
+  <data name="&gt;&gt;ctxEnumerable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="pickAValueToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
   </data>
@@ -414,18 +423,18 @@
   <data name="pickADataStoreFromListToolStripMenuItem.Text" xml:space="preserve">
     <value>Pick a data store from list</value>
   </data>
-  <data name="ctxEnumerable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 48</value>
-  </data>
-  <data name="&gt;&gt;ctxEnumerable.Name" xml:space="preserve">
-    <value>ctxEnumerable</value>
-  </data>
-  <data name="&gt;&gt;ctxEnumerable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <metadata name="ctxProperty.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>149, 17</value>
   </metadata>
+  <data name="ctxProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 70</value>
+  </data>
+  <data name="&gt;&gt;ctxProperty.Name" xml:space="preserve">
+    <value>ctxProperty</value>
+  </data>
+  <data name="&gt;&gt;ctxProperty.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="pickAnAliasedFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 22</value>
   </data>
@@ -443,15 +452,6 @@
   </data>
   <data name="mGDATAFILEPATHToolStripMenuItem.Text" xml:space="preserve">
     <value>Use active resource data file</value>
-  </data>
-  <data name="ctxProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 70</value>
-  </data>
-  <data name="&gt;&gt;ctxProperty.Name" xml:space="preserve">
-    <value>ctxProperty</value>
-  </data>
-  <data name="&gt;&gt;ctxProperty.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -493,6 +493,6 @@
     <value>GenericCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=3.0.0.5610, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=3.0.0.5676, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
