@@ -1,4 +1,9 @@
-﻿3.0 Beta 3
+﻿ - Add F2 keybinding to rename selected item in Site Explorer
+ - Fix: Added missing duplicate resource command from 2.x
+ - Fix: Added missing profiling feature from 2.x
+ - Fix: UI layout changes for Generic Feature Source Editor
+
+3.0 Beta 3
 ----------
  - Added a command to purge cached information for a feature source
  - Added resource validation error codes
