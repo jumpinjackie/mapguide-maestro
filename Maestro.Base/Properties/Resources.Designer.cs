@@ -2214,7 +2214,7 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Defined Resource Template.
+        ///   Looks up a localized string similar to User Defined Resource Templates.
         /// </summary>
         internal static string TPL_USER_DEFINED {
             get {

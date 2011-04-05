@@ -50,7 +50,7 @@ namespace Maestro.Base.Templates
         {
             this.Description = description;
 
-            this.Category = Res.TPL_CATEGORY_DEFAULT;
+            this.Category = Res.TPL_CATEGORY_USERDEF;
             this.Icon = Res.document;
             this.Name = name;
             this.TemplatePath = templatePath;

@@ -571,9 +571,6 @@ Do you want to convert the values?</value>
   <data name="OpenResourceManager_SkipEditorRegistration" xml:space="preserve">
     <value>Skipping registration of editor: {0} because an existing editor is already registered to handle {1} v{2}</value>
   </data>
-  <data name="TPL_USER_DEFINED" xml:space="preserve">
-    <value>User Defined Resource Template</value>
-  </data>
   <data name="TPL_CSD_DESC" xml:space="preserve">
     <value>Create a new Compund Symbol Definition using the v1.0.0 schema</value>
   </data>
@@ -976,5 +973,8 @@ Error message: {1}</value>
   </data>
   <data name="Prof_MapRenderingImageSize" xml:space="preserve">
     <value>Rendered image size is: {0}</value>
+  </data>
+  <data name="TPL_USER_DEFINED" xml:space="preserve">
+    <value>User Defined Resource Templates</value>
   </data>
 </root>
