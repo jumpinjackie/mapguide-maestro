@@ -92,9 +92,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 LineStyle = CreateDefaultLineStyle(),
                 PointStyle = CreateDefaultPointStyle()
             };
-            defaultRange.AreaStyle.AddRule(CreateDefaultAreaRule());
-            defaultRange.LineStyle.AddRule(CreateDefaultLineRule());
-            defaultRange.PointStyle.AddRule(CreateDefaultPointRule());
             vl.VectorScaleRange.Add(defaultRange);
 
             this.Item = vl;
@@ -177,26 +174,32 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
         public IPointVectorStyle CreateDefaultPointStyle()
         {
-            return new PointTypeStyleType()
+            IPointVectorStyle pts = new PointTypeStyleType()
             {
                 PointRule = new System.ComponentModel.BindingList<PointRuleType>()
             };
+            pts.AddRule(CreateDefaultPointRule());
+            return pts;
         }
 
         public ILineVectorStyle CreateDefaultLineStyle()
         {
-            return new LineTypeStyleType()
+            ILineVectorStyle lts = new LineTypeStyleType()
             {
                 LineRule = new System.ComponentModel.BindingList<LineRuleType>()
             };
+            lts.AddRule(CreateDefaultLineRule());
+            return lts;
         }
 
         public IAreaVectorStyle CreateDefaultAreaStyle()
         {
-            return new AreaTypeStyleType()
+            IAreaVectorStyle ats = new AreaTypeStyleType()
             {
                 AreaRule = new System.ComponentModel.BindingList<AreaRuleType>()
             };
+            ats.AddRule(CreateDefaultAreaRule());
+            return ats;
         }
 
         public IVectorScaleRange CreateVectorScaleRange()

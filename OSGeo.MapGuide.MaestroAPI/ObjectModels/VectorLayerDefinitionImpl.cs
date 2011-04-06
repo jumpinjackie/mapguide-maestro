@@ -278,6 +278,17 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
+        int IVectorStyle.RuleCount 
+        { 
+            get 
+            {
+                if (this.AreaRule != null)
+                    return this.AreaRule.Count;
+                return 0;
+            } 
+        }
+
         void IAreaVectorStyle.RemoveAllRules()
         {
             this.AreaRule.Clear();
@@ -344,6 +355,17 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 {
                     yield return pr;
                 }
+            }
+        }
+
+        [XmlIgnore]
+        int IVectorStyle.RuleCount
+        {
+            get
+            {
+                if (this.PointRule != null)
+                    return this.PointRule.Count;
+                return 0;
             }
         }
 
@@ -423,6 +445,17 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 {
                     yield return lr;
                 }
+            }
+        }
+
+        [XmlIgnore]
+        int IVectorStyle.RuleCount
+        {
+            get
+            {
+                if (this.LineRule != null)
+                    return this.LineRule.Count;
+                return 0;
             }
         }
 

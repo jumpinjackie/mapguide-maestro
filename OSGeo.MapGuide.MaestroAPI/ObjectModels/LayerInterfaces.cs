@@ -596,6 +596,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// Gets the type of this style specification
         /// </summary>
         StyleType StyleType { get; }
+
+        int RuleCount { get; }
     }
 
     /// <summary>

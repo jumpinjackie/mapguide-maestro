@@ -137,9 +137,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     m_vsc.PointStyle = pst;
                     pointConditionList.SetItem(m_vsc, pst);
                 }
-
-                pointConditionList.AddRule();
-
+                else
+                {
+                    if (m_vsc.PointStyle.RuleCount == 0)
+                        pointConditionList.AddRule();
+                }
             }
             else
             {
@@ -171,8 +173,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     m_vsc.LineStyle = ls;
                     lineConditionList.SetItem(m_vsc, ls);
                 }
-
-                lineConditionList.AddRule();
+                else
+                {
+                    if (m_vsc.LineStyle.RuleCount == 0)
+                        lineConditionList.AddRule();
+                }
             }
             else
             {
@@ -204,8 +209,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     m_vsc.AreaStyle = ast;
                     areaConditionList.SetItem(m_vsc, ast);
                 }
-
-                areaConditionList.AddRule();
+                else
+                {
+                    if (m_vsc.AreaStyle.RuleCount == 0)
+                        areaConditionList.AddRule();
+                }
             }
             else
             {

@@ -74,8 +74,8 @@ namespace Maestro.Editors.LayerDefinition.Vector
             if (scaleRangeList.SelectedItem == null)
                 return;
             IVectorScaleRange vsc = scaleRangeList.SelectedItem;
-            scaleRangeList.RemoveScaleRange(scaleRangeList.SelectedItem);
-            _vl.RemoveVectorScaleRange(scaleRangeList.SelectedItem);
+            scaleRangeList.RemoveScaleRange(vsc);
+            _vl.RemoveVectorScaleRange(vsc);
 
             _edsvc.HasChanged();
         }
