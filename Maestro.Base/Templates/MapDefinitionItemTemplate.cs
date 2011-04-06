@@ -39,7 +39,7 @@ namespace Maestro.Base.Templates
             ResourceType = ResourceTypes.MapDefinition.ToString();
         }
 
-        public override IResource CreateItem(IServerConnection conn)
+        public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             return ObjectFactory.CreateMapDefinition(conn, Properties.Resources.NewMap);
         }

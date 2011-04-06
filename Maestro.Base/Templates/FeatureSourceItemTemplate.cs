@@ -40,7 +40,7 @@ namespace Maestro.Base.Templates
             ResourceType = ResourceTypes.FeatureSource.ToString();
         }
 
-        public override IResource CreateItem(IServerConnection conn)
+        public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             var provider = GenericItemSelectionDialog.SelectItem(
                 Properties.Resources.SelectFdoProvider,

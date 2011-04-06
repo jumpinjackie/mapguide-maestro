@@ -59,7 +59,7 @@ namespace Maestro.Base.Templates
             this.ResourceType = _res.ResourceType.ToString();
         }
 
-        public override IResource CreateItem(IServerConnection conn)
+        public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             IResource res = (IResource)_res.Clone();
             res.CurrentConnection = conn;

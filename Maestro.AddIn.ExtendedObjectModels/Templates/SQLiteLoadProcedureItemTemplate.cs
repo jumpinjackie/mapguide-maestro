@@ -51,7 +51,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
             }
         }
 
-        public override IResource CreateItem(IServerConnection conn)
+        public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             using (var dlg = DialogFactory.OpenFile())
             {

@@ -49,11 +49,12 @@ namespace Maestro.Base.Templates
             }
         }
 
-        public override IResource CreateItem(IServerConnection conn)
+        public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             //This is to just ensure we have a functional template when it's created
             using (var picker = new ResourcePicker(conn.ResourceService, ResourceTypes.MapDefinition, ResourcePickerMode.OpenResource))
             {
+                picker.SetStartingPoint(startPoint);
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     var flex = ObjectFactory.CreateFlexibleLayout(conn, FusionTemplateNames.Slate);

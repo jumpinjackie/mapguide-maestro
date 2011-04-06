@@ -50,7 +50,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
             }
         }
 
-        public override IResource CreateItem(IServerConnection conn)
+        public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             return ObjectFactory.CreateWebLayout(conn, new Version(1, 1, 0), string.Empty);
         }

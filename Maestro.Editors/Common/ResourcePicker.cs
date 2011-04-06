@@ -104,6 +104,9 @@ namespace Maestro.Editors.Generic
         /// <param name="folderId">The folder id.</param>
         public void SetStartingPoint(string folderId)
         {
+            if (string.IsNullOrEmpty(folderId))
+                return;
+
             if (!ResourceIdentifier.IsFolderResource(folderId))
                 throw new ArgumentException(string.Format(Properties.Resources.NotAFolder, folderId));
             _model.NavigateTo(folderId);

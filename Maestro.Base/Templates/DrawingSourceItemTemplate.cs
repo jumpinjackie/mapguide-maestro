@@ -39,7 +39,7 @@ namespace Maestro.Base.Templates
             ResourceType = ResourceTypes.DrawingSource.ToString();
         }
 
-        public override IResource CreateItem(IServerConnection conn)
+        public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             return ObjectFactory.CreateDrawingSource(conn);
         }

@@ -54,7 +54,7 @@ namespace Maestro.Base.Commands
             {
                 var tpl = dlg.SelectedTemplate;
                 
-                var res = tpl.CreateItem(conn);
+                var res = tpl.CreateItem(startPoint, conn);
                 if (res != null)
                 {
                     res.ResourceID = "Session:" + conn.SessionID + "//" + Guid.NewGuid().ToString() + "." + res.ResourceType.ToString();

@@ -41,7 +41,7 @@ namespace Maestro.Base.Templates
             ResourceType = ResourceTypes.LoadProcedure.ToString();
         }
 
-        public override IResource CreateItem(IServerConnection conn)
+        public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             using (var dlg = DialogFactory.OpenFile())
             {

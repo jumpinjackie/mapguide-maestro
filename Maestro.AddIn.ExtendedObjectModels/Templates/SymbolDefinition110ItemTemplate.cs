@@ -48,7 +48,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
             }
         }
 
-        public override IResource CreateItem(IServerConnection conn)
+        public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             return ObjectFactory.CreateSimpleSymbol(conn, new Version(1, 1, 0), Res.DefaultSymbolName, Res.DefaultSymbolDescription);
         }
@@ -73,7 +73,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
             }
         }
 
-        public override IResource CreateItem(IServerConnection conn)
+        public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             return ObjectFactory.CreateCompoundSymbol(conn, new Version(1, 1, 0), Res.DefaultSymbolName, Res.DefaultSymbolDescription);
         }

@@ -40,10 +40,11 @@ namespace Maestro.Base.Templates
             ResourceType = ResourceTypes.LayerDefinition.ToString();
         }
 
-        public override IResource CreateItem(IServerConnection conn)
+        public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             using (var picker = new ResourcePicker(conn.ResourceService, ResourceTypes.DrawingSource, ResourcePickerMode.OpenResource))
             {
+                picker.SetStartingPoint(startPoint);
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     var ldf = ObjectFactory.CreateDefaultLayer(conn, OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Drawing, new Version(1, 0, 0));

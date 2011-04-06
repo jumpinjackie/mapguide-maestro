@@ -39,7 +39,7 @@ namespace Maestro.Base.Templates
             ResourceType = ResourceTypes.WebLayout.ToString();
         }
 
-        public override IResource CreateItem(IServerConnection conn)
+        public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             return ObjectFactory.CreateWebLayout(conn, new Version(1, 0, 0), string.Empty);
         }
