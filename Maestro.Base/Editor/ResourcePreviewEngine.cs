@@ -69,7 +69,10 @@ namespace Maestro.Base.Editor
 
             //Create temp map definition to house our current layer
             var mdfId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".MapDefinition";
-            var mdf = ObjectFactory.CreateMapDefinition(conn, Properties.Resources.PreviewMap, ldf.GetCoordinateSystemWkt(), ldf.GetSpatialExtent(true));
+            var extent = ldf.GetSpatialExtent(true);
+
+            //TODO: Based on the visible scales in this layer, size this extents accordingly
+            var mdf = ObjectFactory.CreateMapDefinition(conn, Properties.Resources.PreviewMap, ldf.GetCoordinateSystemWkt(), extent);
 
             mdf.AddLayer(null, ResourceIdentifier.GetName(ldf.ResourceID), ldf.ResourceID);
 
@@ -79,6 +82,10 @@ namespace Maestro.Base.Editor
             {
                 //Create temp web layout to house this map
                 var wl = ObjectFactory.CreateWebLayout(_edSvc.GetEditedResource().CurrentConnection, new Version(1, 0, 0), mdfId);
+
+                //Add a custom zoom command (to assist previews of layers that aren't [0, infinity] scale)
+                AttachZoomToScaleCommand(wl);
+
                 var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".WebLayout";
 
                 conn.ResourceService.SaveResourceAs(wl, resId);
@@ -99,6 +106,28 @@ namespace Maestro.Base.Editor
             return url;
         }
 
+        private static void AttachZoomToScaleCommand(IWebLayout wl)
+        {
+            var cmd = wl.CreateInvokeScriptCommand();
+            cmd.Name = "ZoomScale";
+            cmd.Label = "Zoom to Scale"; //LOCALIZEME
+            cmd.Tooltip = "Zoom to a specified scale";
+            cmd.Script = @"
+                var map = parent.parent.GetMapFrame();
+                var center = map.GetCenter();
+                var scale = parseFloat(prompt('Enter the scale:'));
+                map.ZoomToView(center.X, center.Y, scale, true);
+                ";
+
+            cmd.TargetViewer = TargetViewerType.Ajax;
+            cmd.ImageURL = "../stdicons/icon_zoom.gif";
+
+            wl.CommandSet.AddCommand(cmd);
+
+            var item = wl.CreateCommandItem(cmd.Name);
+            wl.ToolBar.AddItem(item);
+        }
+
         private string GenerateMapPreviewUrl(IResource res)
         {
             string url = _rootUrl;
@@ -116,6 +145,10 @@ namespace Maestro.Base.Editor
             {
                 //Create temp web layout to house this map
                 var wl = ObjectFactory.CreateWebLayout(_edSvc.GetEditedResource().CurrentConnection, new Version(1, 0, 0), mdfId);
+
+                //Add a custom zoom command (to assist previews of layers that aren't [0, infinity] scale)
+                AttachZoomToScaleCommand(wl);
+
                 var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".WebLayout";
 
                 conn.ResourceService.SaveResourceAs(wl, resId);
