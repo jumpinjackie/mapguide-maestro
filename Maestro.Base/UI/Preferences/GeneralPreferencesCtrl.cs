@@ -56,6 +56,8 @@ namespace Maestro.Base.UI.Preferences
             chkMessages.Checked = msg;
             var outb = Props.Get(ConfigProperties.ShowOutboundRequests, true);
             chkOutbound.Checked = outb;
+            var validate = Props.Get(ConfigProperties.ValidateOnSave, true);
+            chkValidateOnSave.Checked = validate;
 
             txtFsPreview.Text = Props.Get(ConfigProperties.LocalFsPreviewPath, "");
             txtMgCooker.Text = Props.Get(ConfigProperties.MgCookerPath, "");
@@ -98,6 +100,7 @@ namespace Maestro.Base.UI.Preferences
             Apply(ConfigProperties.LocalFsPreviewPath, txtFsPreview.Text);
             Apply(ConfigProperties.OpenColor, (Color)cmbOpenedColor.CurrentColor);
             Apply(ConfigProperties.DirtyColor, (Color)cmbModifiedColor.CurrentColor);
+            Apply(ConfigProperties.ValidateOnSave, chkValidateOnSave.Checked);
 
             //These changes require restart
             if (Apply(ConfigProperties.ShowMessages, chkMessages.Checked ? "True" : "False"))

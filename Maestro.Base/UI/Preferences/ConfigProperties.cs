@@ -37,6 +37,7 @@ namespace Maestro.Base.UI.Preferences
         public const string DirtyColor = "General.DirtyColor";
         public const string MgCookerPath = "General.MgCookerPath";
         public const string LocalFsPreviewPath = "General.LocalFsPreviewPath";
+        public const string ValidateOnSave = "General.ValidateResourceOnSave";
 
         internal static void ApplyDefaults()
         {
@@ -48,6 +49,7 @@ namespace Maestro.Base.UI.Preferences
             Props.Set(ConfigProperties.DirtyColor, Color.Pink);
             Props.Set(ConfigProperties.MgCookerPath, Path.Combine(FileUtility.ApplicationRootPath, "MgCooker.exe"));
             Props.Set(ConfigProperties.LocalFsPreviewPath, Path.Combine(FileUtility.ApplicationRootPath, "MaestroFsPreview.exe"));
+            Props.Set(ConfigProperties.ValidateOnSave, true);
         }
     }
 }

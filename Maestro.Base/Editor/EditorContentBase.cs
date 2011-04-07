@@ -30,6 +30,7 @@ using Maestro.Editors;
 using ICSharpCode.Core;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using Maestro.Base.UI;
+using Maestro.Base.UI.Preferences;
 
 namespace Maestro.Base.Editor
 {
@@ -105,16 +106,25 @@ namespace Maestro.Base.Editor
             _svc.UpdateResourceContent(GetXmlContent());
             try
             {
-                var errors = new List<ValidationIssue>(ValidateEditedResource()).ToArray();
-                if (errors.Length > 0)
+                var validate = PropertyService.Get(ConfigProperties.ValidateOnSave, true);
+                if (validate)
                 {
-                    MessageService.ShowError(Properties.Resources.FixErrorsBeforeSaving);
-                    ValidationResultsDialog diag = new ValidationResultsDialog(this.Resource.ResourceID, errors);
-                    diag.ShowDialog(Workbench.Instance);
-                    e.Cancel = true;
+                    var errors = new List<ValidationIssue>(ValidateEditedResource()).ToArray();
+                    if (errors.Length > 0)
+                    {
+                        MessageService.ShowError(Properties.Resources.FixErrorsBeforeSaving);
+                        ValidationResultsDialog diag = new ValidationResultsDialog(this.Resource.ResourceID, errors);
+                        diag.ShowDialog(Workbench.Instance);
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        e.Cancel = false;
+                    }
                 }
                 else
                 {
+                    LoggingService.Info("Skipping validation on save");
                     e.Cancel = false;
                 }
             }
