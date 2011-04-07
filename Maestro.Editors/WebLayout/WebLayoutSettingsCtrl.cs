@@ -56,9 +56,11 @@ namespace Maestro.Editors.WebLayout
         {
             _edsvc = service;
             _edsvc.RegisterCustomNotifier(this);
+            _edsvc.Saved += OnSaved;
 
             _wl = (IWebLayout)_edsvc.GetEditedResource();
-
+            GeneratePreviewUrl();
+            
             _view = _wl.Map.InitialView;
             if (_view == null)
             {
@@ -110,6 +112,35 @@ namespace Maestro.Editors.WebLayout
             _wl.ZoomControl.PropertyChanged += OnWebLayoutPropertyChanged;
         }
 
+        private void GeneratePreviewUrl()
+        {
+            btnShowInBrowser.Enabled = false;
+            txtAjaxViewerUrl.Text = string.Empty;
+            try
+            {
+                var conn = _wl.CurrentConnection;
+                string baseUrl = conn.GetCustomProperty("BaseUrl").ToString();
+                if (!baseUrl.EndsWith("/"))
+                    baseUrl += "/";
+
+                if (!_edsvc.IsNew)
+                {
+                    txtAjaxViewerUrl.Text = baseUrl + "mapviewerajax/?WEBLAYOUT=" + _edsvc.ResourceID;
+                    btnShowInBrowser.Enabled = true;
+                }
+                else
+                {
+                    txtAjaxViewerUrl.Text = Properties.Resources.PreviewUrlNotAvailable;
+                }
+            }
+            catch { }
+        }
+
+        void OnSaved(object sender, EventArgs e)
+        {
+            GeneratePreviewUrl();
+        }
+
         void OnWebLayoutPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             OnResourceChanged();
@@ -119,6 +150,8 @@ namespace Maestro.Editors.WebLayout
         {
             try
             {
+                _edsvc.Saved -= OnSaved;
+
                 if (_wl != null)
                 {
                     _wl.PropertyChanged -= OnWebLayoutPropertyChanged;
@@ -189,6 +222,11 @@ namespace Maestro.Editors.WebLayout
                     _wl.Map.ResourceId = picker.ResourceID;
                 }
             }
+        }
+
+        private void btnShowInBrowser_Click(object sender, EventArgs e)
+        {
+            _edsvc.OpenUrl(txtAjaxViewerUrl.Text);
         }
     }
 }

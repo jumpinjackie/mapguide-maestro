@@ -334,6 +334,7 @@
             resources.ApplyResources(this.btnShowInBrowser, "btnShowInBrowser");
             this.btnShowInBrowser.Name = "btnShowInBrowser";
             this.btnShowInBrowser.UseVisualStyleBackColor = true;
+            this.btnShowInBrowser.Click += new System.EventHandler(this.btnShowInBrowser_Click);
             // 
             // chkPingServer
             // 

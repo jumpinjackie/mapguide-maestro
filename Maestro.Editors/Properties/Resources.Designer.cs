@@ -2077,6 +2077,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Preview URL is not currently available.
+        /// </summary>
+        internal static string PreviewUrlNotAvailable {
+            get {
+                return ResourceManager.GetString("PreviewUrlNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Processed: {0}.
         /// </summary>
         internal static string ProcessedItem {

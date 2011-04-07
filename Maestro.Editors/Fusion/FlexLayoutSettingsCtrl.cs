@@ -46,12 +46,16 @@ namespace Maestro.Editors.Fusion
         private IFusionService _fsvc;
         private IApplicationDefinition _flexLayout;
         private string _baseUrl;
+        private IEditorService _edsvc;
 
         public override void Bind(IEditorService service)
         {
+            _edsvc = service;
+            _edsvc.RegisterCustomNotifier(this);
+            
             try
             {
-                _fsvc = (IFusionService)service.GetService((int)ServiceType.Fusion);
+                _fsvc = (IFusionService)_edsvc.GetService((int)ServiceType.Fusion);
                 _baseUrl = service.GetCustomProperty("BaseUrl").ToString();
 
                 if (!_baseUrl.EndsWith("/"))
@@ -61,12 +65,52 @@ namespace Maestro.Editors.Fusion
             {
                 throw new NotSupportedException(Properties.Resources.IncompatibleConnection);
             }
-            service.RegisterCustomNotifier(this);
+
+            _edsvc.Saved += OnSaved;
             _flexLayout = (IApplicationDefinition)service.GetEditedResource();
+
             TextBoxBinder.BindText(txtTemplateUrl, _flexLayout, "TemplateUrl");
             TextBoxBinder.BindText(txtTitle, _flexLayout, "Title");
             var templates = _fsvc.GetApplicationTemplates();
             InitializeTemplateList(templates);
+
+            GeneratePreviewUrl();
+        }
+
+        protected override void UnsubscribeEventHandlers()
+        {
+            _edsvc.Saved -= OnSaved;
+            base.UnsubscribeEventHandlers();
+        }
+
+        void OnSaved(object sender, EventArgs e)
+        {
+            GeneratePreviewUrl();
+        }
+
+        private void GeneratePreviewUrl()
+        {
+            btnShowInBrowser.Enabled = false;
+            txtPublicUrl.Text = string.Empty;
+
+            try
+            {
+                var conn = _flexLayout.CurrentConnection;
+                string baseUrl = conn.GetCustomProperty("BaseUrl").ToString();
+                if (!baseUrl.EndsWith("/"))
+                    baseUrl += "/";
+
+                if (!_edsvc.IsNew)
+                {
+                    txtPublicUrl.Text = baseUrl + txtTemplateUrl.Text + "?ApplicationDefinition=" + _edsvc.ResourceID;
+                    btnShowInBrowser.Enabled = true;
+                }
+                else
+                {
+                    txtPublicUrl.Text = Properties.Resources.PreviewUrlNotAvailable;
+                }
+            }
+            catch { }
         }
 
         private void InitializeTemplateList(IApplicationDefinitionTemplateInfoSet templates)
@@ -122,12 +166,18 @@ namespace Maestro.Editors.Fusion
                 var item = lstTemplates.SelectedItems[0];
                 var template = (IApplicationDefinitionTemplateInfo)item.Tag;
                 txtTemplateUrl.Text = template.LocationUrl;
+                GeneratePreviewUrl();
                 var handler = this.TemplateChanged;
                 if (handler != null)
                 {
                     handler(template);
                 }
             }
+        }
+
+        private void btnShowInBrowser_Click(object sender, EventArgs e)
+        {
+            _edsvc.OpenUrl(txtPublicUrl.Text);
         }
     }
 }

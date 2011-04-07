@@ -126,7 +126,7 @@
     <value>0, 0</value>
   </data>
   <data name="settingsCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 238</value>
+    <value>681, 285</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="settingsCtrl.TabIndex" type="System.Int32, mscorlib">
@@ -136,7 +136,7 @@
     <value>settingsCtrl</value>
   </data>
   <data name="&gt;&gt;settingsCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.Fusion.FlexLayoutSettingsCtrl, Maestro.Editors, Version=3.0.0.5334, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Fusion.FlexLayoutSettingsCtrl, Maestro.Editors, Version=3.0.0.5676, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;settingsCtrl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -148,10 +148,10 @@
     <value>Top</value>
   </data>
   <data name="mapsCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 238</value>
+    <value>0, 285</value>
   </data>
   <data name="mapsCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 490</value>
+    <value>681, 490</value>
   </data>
   <data name="mapsCtrl.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -160,7 +160,7 @@
     <value>mapsCtrl</value>
   </data>
   <data name="&gt;&gt;mapsCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.Fusion.MapSettingsCtrl, Maestro.Editors, Version=3.0.0.5334, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Fusion.MapSettingsCtrl, Maestro.Editors, Version=3.0.0.5676, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;mapsCtrl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -172,10 +172,10 @@
     <value>Top</value>
   </data>
   <data name="widgetsCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 728</value>
+    <value>0, 775</value>
   </data>
   <data name="widgetsCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 319</value>
+    <value>681, 319</value>
   </data>
   <data name="widgetsCtrl.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -184,7 +184,7 @@
     <value>widgetsCtrl</value>
   </data>
   <data name="&gt;&gt;widgetsCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.Fusion.WidgetSettingsCtrl, Maestro.Editors, Version=3.0.0.5334, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Fusion.WidgetSettingsCtrl, Maestro.Editors, Version=3.0.0.5676, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;widgetsCtrl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -195,19 +195,16 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
   <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 574</value>
+    <value>681, 574</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FlexibleLayoutEditor</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.EditorBase, Maestro.Editors, Version=3.0.0.5334, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.EditorBase, Maestro.Editors, Version=3.0.0.5676, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
