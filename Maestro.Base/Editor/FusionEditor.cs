@@ -39,13 +39,24 @@ namespace Maestro.Base.Editor
 
         private IResource _res;
         private IEditorService _edsvc;
+        private bool _init = false;
 
         protected override void Bind(IEditorService service)
         {
-            _edsvc = service;
-            _res = _edsvc.GetEditedResource();
+            if (!_init)
+            {
+                _edsvc = service;
+                _res = _edsvc.GetEditedResource();
+                _init = true;
+            }
 
-            flexEditor.Bind(service);
+            panelBody.Controls.Clear();
+
+            var flexEditor = new FlexibleLayoutEditor();
+            flexEditor.Dock = DockStyle.Fill;
+            panelBody.Controls.Add(flexEditor);
+
+            flexEditor.Bind(_edsvc);
         }
     }
 }

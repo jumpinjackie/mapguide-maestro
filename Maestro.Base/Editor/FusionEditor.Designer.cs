@@ -28,32 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FusionEditor));
-            this.flexEditor = new Maestro.Editors.Fusion.FlexibleLayoutEditor();
-            this.panelBody.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelBody
-            // 
-            this.panelBody.Controls.Add(this.flexEditor);
-            // 
-            // flexEditor
-            // 
-            resources.ApplyResources(this.flexEditor, "flexEditor");
-            this.flexEditor.Name = "flexEditor";
             // 
             // FusionEditor
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Name = "FusionEditor";
-            this.panelBody.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Maestro.Editors.Fusion.FlexibleLayoutEditor flexEditor;
     }
 }

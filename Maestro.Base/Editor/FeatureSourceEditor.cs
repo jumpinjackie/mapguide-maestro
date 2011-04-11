@@ -28,6 +28,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.Editors;
 using ICSharpCode.Core;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using Maestro.Editors.FeatureSource;
 
 namespace Maestro.Base.Editor
 {
@@ -40,16 +41,29 @@ namespace Maestro.Base.Editor
 
         private IResource _res;
         private IEditorService _edsvc;
+        private bool _init = false;
 
         protected override void Bind(IEditorService service)
         {
-            _edsvc = service;
-            _res = _edsvc.GetEditedResource();
+            if (!_init)
+            {
+                _edsvc = service;
+                _res = _edsvc.GetEditedResource();
+                _init = true;
+            }
+
+            panelBody.Controls.Clear();
+
+            var fsEditor = new FeatureSourceEditorCtrl();
+            fsEditor.Dock = DockStyle.Fill;
+            panelBody.Controls.Add(fsEditor);
+
             var fsOpts = new FsEditorOptionPanel();
             fsOpts.Dock = DockStyle.Top;
-            fsOpts.Bind(service);
-            fsEditorCtrl.Controls.Add(fsOpts);
-            fsEditorCtrl.Bind(service);
+            fsOpts.Bind(_edsvc);
+            fsEditor.Controls.Add(fsOpts);
+
+            fsEditor.Bind(_edsvc);
         }
 
         protected override void OnBeforeSave(object sender, CancelEventArgs e)

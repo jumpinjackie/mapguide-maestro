@@ -45,14 +45,19 @@ namespace Maestro.Base.Editor
 
         private ILayerDefinition _res;
         private IEditorService _edsvc;
+        private bool _init = false;
 
         protected override void Bind(Maestro.Editors.IEditorService service)
         {
-            panelBody.Controls.Clear();
+            if (!_init)
+            {
+                _edsvc = service;
+                _res = service.GetEditedResource() as ILayerDefinition;
+                Debug.Assert(_res != null);
+                _init = true;
+            }
 
-            _edsvc = service;
-            _res = service.GetEditedResource() as ILayerDefinition;
-            Debug.Assert(_res != null);
+            panelBody.Controls.Clear();
 
             var vl = _res.SubLayer as IVectorLayerDefinition;
             var gl = _res.SubLayer as IRasterLayerDefinition;

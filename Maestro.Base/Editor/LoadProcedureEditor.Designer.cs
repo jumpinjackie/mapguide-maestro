@@ -28,31 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoadProcedureEditor));
-            this.lpEditor = new Maestro.Editors.LoadProcedure.LoadProcedureEditorCtrl();
-            this.panelBody.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelBody
-            // 
-            this.panelBody.Controls.Add(this.lpEditor);
-            // 
-            // lpEditor
-            // 
-            resources.ApplyResources(this.lpEditor, "lpEditor");
-            this.lpEditor.Name = "lpEditor";
             // 
             // LoadProcedureEditor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Name = "LoadProcedureEditor";
-            this.panelBody.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Maestro.Editors.LoadProcedure.LoadProcedureEditorCtrl lpEditor;
     }
 }

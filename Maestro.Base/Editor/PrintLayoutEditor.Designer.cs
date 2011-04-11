@@ -28,31 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrintLayoutEditor));
-            this.printLayoutEditorCtrl = new Maestro.Editors.PrintLayout.PrintLayoutEditorCtrl();
-            this.panelBody.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelBody
-            // 
-            this.panelBody.Controls.Add(this.printLayoutEditorCtrl);
-            // 
-            // printLayoutEditorCtrl
-            // 
-            resources.ApplyResources(this.printLayoutEditorCtrl, "printLayoutEditorCtrl");
-            this.printLayoutEditorCtrl.Name = "printLayoutEditorCtrl";
             // 
             // PrintLayoutEditor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Name = "PrintLayoutEditor";
-            this.panelBody.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Maestro.Editors.PrintLayout.PrintLayoutEditorCtrl printLayoutEditorCtrl;
     }
 }

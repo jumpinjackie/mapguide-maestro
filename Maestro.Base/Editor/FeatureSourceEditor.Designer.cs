@@ -28,31 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeatureSourceEditor));
-            this.fsEditorCtrl = new Maestro.Editors.FeatureSource.FeatureSourceEditorCtrl();
-            this.panelBody.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelBody
-            // 
-            this.panelBody.Controls.Add(this.fsEditorCtrl);
-            // 
-            // fsEditorCtrl
-            // 
-            resources.ApplyResources(this.fsEditorCtrl, "fsEditorCtrl");
-            this.fsEditorCtrl.Name = "fsEditorCtrl";
             // 
             // FeatureSourceEditor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Name = "FeatureSourceEditor";
-            this.panelBody.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Maestro.Editors.FeatureSource.FeatureSourceEditorCtrl fsEditorCtrl;
     }
 }

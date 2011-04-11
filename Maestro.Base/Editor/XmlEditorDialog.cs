@@ -32,7 +32,7 @@ using Maestro.Editors;
 
 namespace Maestro.Base.Editor
 {
-    public partial class XmlEditorDialog : Form
+    public partial class XmlEditorDialog : Form, INotifyResourceChanged
     {
         private XmlEditorCtrl _ed;
         private IEditorService _edSvc;
@@ -50,6 +50,23 @@ namespace Maestro.Base.Editor
             : this()
         {
             _edSvc = edsvc;
+            _edSvc.RegisterCustomNotifier(this);
+            this.Disposed += new EventHandler(OnDisposed);
+        }
+
+        void OnDisposed(object sender, EventArgs e)
+        {
+            //Same as EditorBindableCollapsiblePanel.UnsubscribeEventHandlers()
+            var handler = this.ResourceChanged;
+            if (handler != null)
+            {
+                foreach (var h in handler.GetInvocationList())
+                {
+                    this.ResourceChanged -= (EventHandler)h;
+                }
+                //In case we left out something (shouldn't be)
+                this.ResourceChanged = null;
+            }
         }
 
         protected override void OnLoad(EventArgs e)
@@ -116,13 +133,15 @@ namespace Maestro.Base.Editor
             _enableResourceTypeValidation = true;
         }
 
+        private string _lastSnapshot;
+
         /// <summary>
         /// Gets or sets the XML content for this dialog.
         /// </summary>
         public string XmlContent
         {
             get { return _ed.XmlContent; }
-            set { _ed.XmlContent = value; }
+            set { _ed.XmlContent = _lastSnapshot = value; }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -132,7 +151,18 @@ namespace Maestro.Base.Editor
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (_lastSnapshot != _ed.XmlContent)
+                OnResourceChanged();
             this.DialogResult = DialogResult.OK;
         }
+
+        private void OnResourceChanged()
+        {
+            var handler = this.ResourceChanged;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        public event EventHandler ResourceChanged;
     }
 }

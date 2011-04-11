@@ -28,31 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DrawingSourceEditor));
-            this.dsEditorCtrl = new Maestro.Editors.DrawingSource.DrawingSourceEditorCtrl();
-            this.panelBody.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelBody
-            // 
-            this.panelBody.Controls.Add(this.dsEditorCtrl);
-            // 
-            // dsEditorCtrl
-            // 
-            resources.ApplyResources(this.dsEditorCtrl, "dsEditorCtrl");
-            this.dsEditorCtrl.Name = "dsEditorCtrl";
             // 
             // DrawingSourceEditor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Name = "DrawingSourceEditor";
-            this.panelBody.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Maestro.Editors.DrawingSource.DrawingSourceEditorCtrl dsEditorCtrl;
     }
 }

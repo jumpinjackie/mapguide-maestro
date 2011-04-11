@@ -24,6 +24,7 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using Maestro.Editors.WebLayout;
 
 namespace Maestro.Base.Editor
 {
@@ -34,11 +35,14 @@ namespace Maestro.Base.Editor
             InitializeComponent();
         }
 
-        private Maestro.Editors.IEditorService _edSvc;
-
         protected override void Bind(Maestro.Editors.IEditorService service)
         {
-            _edSvc = service;
+            panelBody.Controls.Clear();
+
+            var webLayoutEditorCtrl = new WebLayoutEditorCtrl();
+            webLayoutEditorCtrl.Dock = DockStyle.Fill;
+            panelBody.Controls.Add(webLayoutEditorCtrl);
+
             webLayoutEditorCtrl.Bind(service);
         }
     }

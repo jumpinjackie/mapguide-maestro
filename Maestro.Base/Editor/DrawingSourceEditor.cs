@@ -40,12 +40,23 @@ namespace Maestro.Base.Editor
         private IResource _res;
         private IEditorService _edsvc;
 
+        private bool _init = false;
+
         protected override void Bind(IEditorService service)
         {
-            _edsvc = service;
-            _res = _edsvc.GetEditedResource();
-            _edsvc.BeforeSave += new CancelEventHandler(OnBeforeSave);
-            dsEditorCtrl.Bind(service);
+            if (!_init)
+            {
+                _edsvc = service;
+                _res = _edsvc.GetEditedResource();
+                //_edsvc.BeforeSave += new CancelEventHandler(OnBeforeSave);
+                _init = true;
+            }
+            
+            var dsEditor = new DrawingSourceEditor();
+            dsEditor.Dock = DockStyle.Fill;
+            dsEditor.Controls.Add(dsEditor);
+
+            dsEditor.Bind(_edsvc);
         }
     }
 }

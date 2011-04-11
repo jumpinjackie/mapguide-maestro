@@ -76,6 +76,8 @@ namespace Maestro.Base.Editor
                 this.CanUpgrade = _svc.IsUpgradeAvailable;
 
                 Bind(_svc);
+                //Do dirty state check
+                OnDirtyStateChanged(this, EventArgs.Empty);
             }
         }
 

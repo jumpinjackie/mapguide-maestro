@@ -28,32 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WebLayoutEditor));
-            this.webLayoutEditorCtrl = new Maestro.Editors.WebLayout.WebLayoutEditorCtrl();
-            this.panelBody.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelBody
-            // 
-            this.panelBody.Controls.Add(this.webLayoutEditorCtrl);
-            // 
-            // webLayoutEditorCtrl
-            // 
-            resources.ApplyResources(this.webLayoutEditorCtrl, "webLayoutEditorCtrl");
-            this.webLayoutEditorCtrl.Name = "webLayoutEditorCtrl";
             // 
             // WebLayoutEditor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Name = "WebLayoutEditor";
-            this.panelBody.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Maestro.Editors.WebLayout.WebLayoutEditorCtrl webLayoutEditorCtrl;
 
     }
 }

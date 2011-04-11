@@ -91,6 +91,9 @@ namespace Maestro.Base.Editor
 
         protected override void Bind(IEditorService service)
         {
+            //NOTE: This is exempt from #1656 requirements because this will never be called when returing
+            //from an XML editor because IT IS the xml editor!
+
             _edSvc = service;
             _edSvc.RegisterCustomNotifier(editor);
             editor.Bind(_edSvc);

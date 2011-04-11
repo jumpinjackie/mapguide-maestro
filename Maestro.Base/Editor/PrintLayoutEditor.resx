@@ -117,36 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="printLayoutEditorCtrl.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="printLayoutEditorCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="printLayoutEditorCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="printLayoutEditorCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>614, 520</value>
-  </data>
-  <data name="printLayoutEditorCtrl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;printLayoutEditorCtrl.Name" xml:space="preserve">
-    <value>printLayoutEditorCtrl</value>
-  </data>
-  <data name="&gt;&gt;printLayoutEditorCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.PrintLayout.PrintLayoutEditorCtrl, Maestro.Editors, Version=3.0.0.5334, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;printLayoutEditorCtrl.Parent" xml:space="preserve">
-    <value>panelBody</value>
-  </data>
-  <data name="&gt;&gt;printLayoutEditorCtrl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;panelBody.Name" xml:space="preserve">
     <value>panelBody</value>
   </data>
@@ -166,6 +136,6 @@
     <value>PrintLayoutEditor</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Base.Editor.EditorContentBase, Maestro.Base, Version=3.0.0.5334, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Base.Editor.EditorContentBase, Maestro.Base, Version=3.0.0.5676, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

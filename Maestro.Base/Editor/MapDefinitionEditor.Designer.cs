@@ -28,31 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapDefinitionEditor));
-            this.mapEditorCtrl = new Maestro.Editors.MapDefinition.MapDefinitionEditorCtrl();
-            this.panelBody.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelBody
-            // 
-            this.panelBody.Controls.Add(this.mapEditorCtrl);
-            // 
-            // mapEditorCtrl
-            // 
-            resources.ApplyResources(this.mapEditorCtrl, "mapEditorCtrl");
-            this.mapEditorCtrl.Name = "mapEditorCtrl";
             // 
             // MapDefinitionEditor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Name = "MapDefinitionEditor";
-            this.panelBody.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Maestro.Editors.MapDefinition.MapDefinitionEditorCtrl mapEditorCtrl;
     }
 }

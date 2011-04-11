@@ -24,6 +24,7 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using Maestro.Editors.LoadProcedure;
 
 namespace Maestro.Base.Editor
 {
@@ -36,6 +37,12 @@ namespace Maestro.Base.Editor
 
         protected override void Bind(Maestro.Editors.IEditorService service)
         {
+            panelBody.Controls.Clear();
+
+            var lpEditor = new LoadProcedureEditorCtrl();
+            lpEditor.Dock = DockStyle.Fill;
+            panelBody.Controls.Add(lpEditor);
+
             lpEditor.Bind(service);
         }
     }
