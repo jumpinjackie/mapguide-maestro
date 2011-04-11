@@ -28,6 +28,7 @@
     <!-- Registered preference tabs -->
     <Path name="/Maestro/Preferences">
         <Class id="GeneralPrefs" class="Maestro.Base.UI.Preferences.GeneralPreferencesCtrl" />
+        <Class id="EditorPrefs" class="Maestro.Base.UI.Preferences.EditorPreferencesCtrl" />
     </Path>
 
     <!-- Registered drop handlers -->

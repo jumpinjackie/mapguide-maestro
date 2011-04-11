@@ -263,18 +263,57 @@ namespace Maestro.Editors.Generic
 
         private void btnValidate_Click(object sender, EventArgs e)
         {
+            PerformValidation(false, false);
+        }
+
+        /// <summary>
+        /// Performs validation of the XML content
+        /// </summary>
+        /// <param name="silentSuccess">If true will not show a success dialog on successful validation</param>
+        /// <returns>true if validation was successful, false otherwise</returns>
+        public bool PerformValidation(bool silentSuccess, bool errorsOnly)
+        {
             if (this.Validator != null)
             {
-                string[] errors;
-                string[] warnings;
+                string[] errors = new string[0];
+                string[] warnings = new string[0];
 
-                this.Validator(out errors, out warnings);
+                try
+                {
+                    this.Validator(out errors, out warnings);
+                }
+                catch (XmlException ex)
+                {
+                    var err = new List<string>(errors);
+                    err.Add(ex.Message);
+                    errors = err.ToArray();
+                }
 
                 if (errors.Length > 0 || warnings.Length > 0)
-                    new XmlValidationResult(errors, warnings).Show();
+                {
+                    if (errorsOnly)
+                    {
+                        if (errors.Length > 0)
+                        {
+                            new XmlValidationResult(errors, new string[0]).Show();
+                            return false;
+                        }
+                        return true;
+                    }
+                    else
+                    {
+                        new XmlValidationResult(errors, warnings).Show();
+                    }
+                    return false;
+                }
                 else
-                    MessageBox.Show(Properties.Resources.XmlDocIsValid);
+                {
+                    if (!silentSuccess)
+                        MessageBox.Show(Properties.Resources.XmlDocIsValid);
+                    return true;
+                }
             }
+            return true;
         }
 
         private void btnFormat_Click(object sender, EventArgs e)

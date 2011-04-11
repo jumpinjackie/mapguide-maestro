@@ -28,29 +28,26 @@ namespace OSGeo.MapGuide.MaestroAPI
 	using System.Xml;
 	using System.Xml.Schema;
 	using System.Text;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
 
 	///<summary>
 	/// Class that makes XSD validation
 	///</summary>
-	public class XMLValidator
+	public class XmlValidator
 	{
-		// Validation Error Count
-		private int ErrorsCount = 0;
+        private List<string> warnings = new List<string>();
+        private List<string> errors = new List<string>();
 
-		// Validation Error Message
-		private string ErrorMessage = "";
+        public ReadOnlyCollection<string> ValidationWarnings
+        {
+            get { return this.warnings.AsReadOnly(); }
+        }
 
-        /// <summary>
-        /// Default validation handler method
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="args">The <see cref="System.Xml.Schema.ValidationEventArgs"/> instance containing the event data.</param>
-		public void ValidationHandler(object sender,
-			ValidationEventArgs args)
-		{
-			ErrorMessage = ErrorMessage + args.Message + "\r\n";
-			ErrorsCount ++;
-		}
+        public ReadOnlyCollection<string> ValidationErrors
+        {
+            get { return this.errors.AsReadOnly(); }
+        }
 
         /// <summary>
         /// Validates the specified XML.
@@ -59,20 +56,34 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="xsd">The XSD.</param>
 		public void Validate(System.IO.Stream xml, XmlSchema xsd)
 		{
-			// Declare local objects
-			XmlValidatingReader vr = new XmlValidatingReader( xml, XmlNodeType.Document, null);
-			vr.Schemas.Add(xsd);
+            this.warnings.Clear();
+            this.errors.Clear();
 
-			// Add validation event handler
-			vr.ValidationType = ValidationType.Schema;
-			vr.ValidationEventHandler += new ValidationEventHandler(ValidationHandler);
+            var config = new XmlReaderSettings();
+            if (xsd != null)
+                config.Schemas.Add(xsd);
+            config.ValidationType = ValidationType.Schema;
+            config.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
+            config.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
+            config.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
+            //This will trap all the errors and warnings that are raised
+            config.ValidationEventHandler += (s, e) =>
+            {
+                var ex = e.Exception;
+                if (e.Severity == XmlSeverityType.Warning)
+                {
+                    this.warnings.Add(string.Format(Properties.Resources.XmlValidationIssueTemplate, ex.LineNumber, ex.LinePosition, ex.Message));
+                }
+                else
+                {
+                    this.errors.Add(string.Format(Properties.Resources.XmlValidationIssueTemplate, ex.LineNumber, ex.LinePosition, ex.Message));
+                }
+            };
 
-			// Validate XML data
-			while(vr.Read());
-
-			// Raise exception, if XML validation fails
-			if (ErrorsCount > 0)
-				throw new Exception(ErrorMessage);
+            using (var reader = XmlReader.Create(xml, config))
+            {
+                while (reader.Read()) { } //Trigger the validation
+            }
 		}
 	}
 }

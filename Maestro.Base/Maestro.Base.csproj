@@ -289,6 +289,12 @@
       <DependentUpon>CreatePackageDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Preferences\ConfigProperties.cs" />
+    <Compile Include="UI\Preferences\EditorPreferencesCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Preferences\EditorPreferencesCtrl.Designer.cs">
+      <DependentUpon>EditorPreferencesCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Preferences\GeneralPreferencesCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -489,6 +495,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Packaging\CreatePackageDialog.resx">
       <DependentUpon>CreatePackageDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Preferences\EditorPreferencesCtrl.resx">
+      <DependentUpon>EditorPreferencesCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Preferences\GeneralPreferencesCtrl.resx">
       <DependentUpon>GeneralPreferencesCtrl.cs</DependentUpon>

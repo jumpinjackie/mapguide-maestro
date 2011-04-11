@@ -53,7 +53,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 		/// <summary>
 		/// The current XML validator
 		/// </summary>
-		protected XMLValidator m_validator;
+		protected XmlValidator m_validator;
 
 		/// <summary>
 		/// The path of Xsd schemas 
@@ -78,7 +78,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             ResourceTypeRegistry.Init();
             
             m_serializers = new Hashtable();
-            m_validator = new XMLValidator();
+            m_validator = new XmlValidator();
             m_cachedSchemas = new Hashtable();
             m_schemasPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "Schemas");
 		}

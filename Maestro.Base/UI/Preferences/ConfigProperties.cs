@@ -38,18 +38,50 @@ namespace Maestro.Base.UI.Preferences
         public const string MgCookerPath = "General.MgCookerPath";
         public const string LocalFsPreviewPath = "General.LocalFsPreviewPath";
         public const string ValidateOnSave = "General.ValidateResourceOnSave";
+        public const string XsdSchemaPath = "Editor.XsdSchemaPath";
 
         internal static void ApplyDefaults()
         {
-            Props.Set(ConfigProperties.PreviewViewerType, "AJAX");
-            Props.Set(ConfigProperties.UserTemplatesDirectory, Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates"));
-            Props.Set(ConfigProperties.ShowMessages, true);
-            Props.Set(ConfigProperties.ShowOutboundRequests, true);
-            Props.Set(ConfigProperties.OpenColor, Color.LightGreen);
-            Props.Set(ConfigProperties.DirtyColor, Color.Pink);
-            Props.Set(ConfigProperties.MgCookerPath, Path.Combine(FileUtility.ApplicationRootPath, "MgCooker.exe"));
-            Props.Set(ConfigProperties.LocalFsPreviewPath, Path.Combine(FileUtility.ApplicationRootPath, "MaestroFsPreview.exe"));
-            Props.Set(ConfigProperties.ValidateOnSave, true);
+            ApplyGeneralDefaults();
+            ApplyEditorDefaults();
         }
+
+        internal static void ApplyEditorDefaults()
+        {
+            Props.Set(ConfigProperties.ValidateOnSave, DefaultValidateOnSave);
+            Props.Set(ConfigProperties.XsdSchemaPath, DefaultXsdSchemaPath);
+        }
+
+        internal static void ApplyGeneralDefaults()
+        {
+            Props.Set(ConfigProperties.PreviewViewerType, DefaultPreviewViewerType);
+            Props.Set(ConfigProperties.UserTemplatesDirectory, DefaultUserTemplatesDirectory);
+            Props.Set(ConfigProperties.ShowMessages, DefaultShowMessages);
+            Props.Set(ConfigProperties.ShowOutboundRequests, DefaultShowOutboundRequests);
+            Props.Set(ConfigProperties.OpenColor, DefaultOpenColor);
+            Props.Set(ConfigProperties.DirtyColor, DefaultDirtyColor);
+            Props.Set(ConfigProperties.MgCookerPath, DefaultMgCookerPath);
+            Props.Set(ConfigProperties.LocalFsPreviewPath, DefaultLocalFsPreviewPath);
+        }
+
+        public static string DefaultMgCookerPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "MgCooker.exe"); } }
+
+        public static string DefaultLocalFsPreviewPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "MaestroFsPreview.exe"); } }
+
+        public static Color DefaultOpenColor { get { return Color.LightGreen; } }
+
+        public static Color DefaultDirtyColor { get { return Color.Pink; } }
+
+        public static bool DefaultShowMessages { get { return true; } }
+
+        public static bool DefaultShowOutboundRequests { get { return true; } }
+
+        public static bool DefaultValidateOnSave { get { return true; } }
+
+        public static string DefaultXsdSchemaPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "Schemas"); } }
+
+        public static string DefaultPreviewViewerType { get { return "AJAX"; } }
+
+        public static string DefaultUserTemplatesDirectory { get { return Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates"); } }
     }
 }

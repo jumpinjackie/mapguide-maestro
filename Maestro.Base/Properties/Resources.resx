@@ -977,4 +977,7 @@ Error message: {1}</value>
   <data name="TPL_USER_DEFINED" xml:space="preserve">
     <value>User Defined Resource Templates</value>
   </data>
+  <data name="Prefs_Editor" xml:space="preserve">
+    <value>Editors</value>
+  </data>
 </root>

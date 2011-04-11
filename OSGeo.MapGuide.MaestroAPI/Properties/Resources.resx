@@ -491,4 +491,7 @@
   <data name="ADF_MapWithIncompatibleCommericalCs" xml:space="preserve">
     <value>The Map Definition {0} has a coordinate system that is not EPSG:3857. This map is in a group containing one or more commerical base layers. The specified Map Definition may not correctly display or line up with the commerical base layers.</value>
   </data>
+  <data name="XmlValidationIssueTemplate" xml:space="preserve">
+    <value>Line {0}, Char {1}: {2}</value>
+  </data>
 </root>

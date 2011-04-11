@@ -1032,5 +1032,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
                 return ResourceManager.GetString("WL_StartViewOutsideExtentsWarning", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Line {0}, Char {1}: {2}.
+        /// </summary>
+        internal static string XmlValidationIssueTemplate {
+            get {
+                return ResourceManager.GetString("XmlValidationIssueTemplate", resourceCulture);
+            }
+        }
     }
 }

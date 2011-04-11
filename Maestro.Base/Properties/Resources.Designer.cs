@@ -1231,6 +1231,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Editors.
+        /// </summary>
+        internal static string Prefs_Editor {
+            get {
+                return ResourceManager.GetString("Prefs_Editor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to General.
         /// </summary>
         internal static string Prefs_General {

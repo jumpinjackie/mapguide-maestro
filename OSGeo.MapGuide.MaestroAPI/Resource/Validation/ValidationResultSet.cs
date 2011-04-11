@@ -108,6 +108,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         }
 
         /// <summary>
+        /// Gets all issues filtered by the specified validation status types
+        /// </summary>
+        /// <param name="statTypes"></param>
+        /// <returns></returns>
+        public ValidationIssue[] GetAllIssues(params ValidationStatus[] statTypes)
+        {
+            var issues = new List<ValidationIssue>();
+            foreach (string resId in _issues.Keys)
+            {
+                foreach (var issue in _issues[resId].Keys)
+                {
+                    if (Array.IndexOf(statTypes, issue.Status) >= 0)
+                        issues.Add(issue);
+                }
+            }
+            return issues.ToArray();
+        }
+
+        /// <summary>
         /// Adds the issue.
         /// </summary>
         /// <param name="issue">The issue.</param>

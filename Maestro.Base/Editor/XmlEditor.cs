@@ -33,6 +33,8 @@ using System.Xml;
 using Maestro.Editors;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
+using System.Xml.Schema;
+using Maestro.Base.UI.Preferences;
 
 namespace Maestro.Base.Editor
 {
@@ -42,6 +44,13 @@ namespace Maestro.Base.Editor
         {
             InitializeComponent();
             editor.Validator = new XmlValidationCallback(ValidateXml);
+            this.XsdPath = PropertyService.Get(ConfigProperties.XsdSchemaPath, ConfigProperties.DefaultXsdSchemaPath);
+        }
+
+        public string XsdPath
+        {
+            get;
+            set;
         }
 
         private void ValidateXml(out string[] errors, out string[] warnings)
@@ -83,8 +92,66 @@ namespace Maestro.Base.Editor
                 }
             }
 
+            //Finally verify the content itself
+            var xml = this.XmlContent;
+            var xsd = GetXsd(res.ValidatingSchema);
+            var validator = new XmlValidator();
+            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+            {
+                validator.Validate(ms, xsd);
+            }
+
+            err.AddRange(validator.ValidationErrors);
+            warn.AddRange(validator.ValidationWarnings);
+
+            /*
+            var xml = this.XmlContent;
+            var config = new XmlReaderSettings();
+            
+            config.ValidationType = ValidationType.Schema;
+            config.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
+            config.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
+            config.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
+            //This will trap all the errors and warnings that are raised
+            config.ValidationEventHandler += (s, e) =>
+            {
+                if (e.Severity == XmlSeverityType.Warning)
+                {
+                    warn.Add(e.Message);
+                }
+                else
+                {
+                    err.Add(e.Message);
+                }
+            };
+
+            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+            {
+                using (var reader = XmlReader.Create(ms, config))
+                {
+                    while (reader.Read()) { } //Trigger the validation
+                }
+            }*/
+
             errors = err.ToArray();
             warnings = warn.ToArray();
+        }
+
+        private XmlSchema GetXsd(string xsdFile)
+        {
+            string path = xsdFile;
+
+            if (!string.IsNullOrEmpty(this.XsdPath))
+                path = Path.Combine(this.XsdPath, xsdFile);
+
+            if (File.Exists(path))
+            {
+                ValidationEventHandler handler = (s, e) =>
+                {
+                };
+                return XmlSchema.Read(File.OpenRead(path), handler);
+            }
+            return null;
         }
 
         private IEditorService _edSvc;
@@ -119,7 +186,9 @@ namespace Maestro.Base.Editor
 
             //Put through ValidationResultSet to weed out redundant messages
             var set = new ValidationResultSet(issues);
-            return set.GetAllIssues();
+
+            //Only care about errors. Warnings and other types should not derail us from saving
+            return set.GetAllIssues(ValidationStatus.Error);
         }
 
         public override string GetXmlContent()

@@ -29,6 +29,9 @@ using System.IO;
 using OSGeo.MapGuide.MaestroAPI;
 using System.Xml;
 using Maestro.Editors;
+using System.Xml.Schema;
+using Maestro.Base.UI.Preferences;
+using ICSharpCode.Core;
 
 namespace Maestro.Base.Editor
 {
@@ -44,6 +47,13 @@ namespace Maestro.Base.Editor
             _ed.Validator = new XmlValidationCallback(ValidateXml);
             _ed.Dock = DockStyle.Fill;
             contentPanel.Controls.Add(_ed);
+            this.XsdPath = PropertyService.Get(ConfigProperties.XsdSchemaPath, ConfigProperties.DefaultXsdSchemaPath);
+        }
+
+        public string XsdPath
+        {
+            get;
+            set;
         }
 
         public XmlEditorDialog(IEditorService edsvc)
@@ -81,49 +91,6 @@ namespace Maestro.Base.Editor
             private set;
         }
 
-        private void ValidateXml(out string[] errors, out string[] warnings)
-        {
-            errors = new string[0];
-            warnings = new string[0];
-
-            List<string> err = new List<string>();
-            List<string> warn = new List<string>();
-
-            var res = this.ResourceType;
-
-            //Test for well-formedness
-            try
-            {
-                XmlDocument doc = new XmlDocument();
-                doc.LoadXml(this.XmlContent);
-            }
-            catch (XmlException ex)
-            {
-                err.Add(ex.Message);
-            }
-
-            //Test that this is serializable
-            try
-            {
-                if (_enableResourceTypeValidation)
-                {
-                    //Test by simply attempting to deserialize the current xml content
-                    using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(this.XmlContent)))
-                    {
-                        //Use original resource type to determine how to deserialize
-                        var obj = ResourceTypeRegistry.Deserialize(this.ResourceType, ms);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                err.Add(ex.Message);
-            }
-
-            errors = err.ToArray();
-            warnings = warn.ToArray();
-        }
-
         private bool _enableResourceTypeValidation = false;
 
         public void SetXmlContent(string xml, ResourceTypes type)
@@ -144,6 +111,107 @@ namespace Maestro.Base.Editor
             set { _ed.XmlContent = _lastSnapshot = value; }
         }
 
+        private XmlSchema GetXsd(string xsdFile)
+        {
+            string path = xsdFile;
+
+            if (!string.IsNullOrEmpty(this.XsdPath))
+                path = Path.Combine(this.XsdPath, xsdFile);
+
+            if (File.Exists(path))
+            {
+                ValidationEventHandler handler = (s, e) =>
+                {
+                };
+                return XmlSchema.Read(File.OpenRead(path), handler);
+            }
+            return null;
+        }
+
+        private void ValidateXml(out string[] errors, out string[] warnings)
+        {
+            errors = new string[0];
+            warnings = new string[0];
+
+            List<string> err = new List<string>();
+            List<string> warn = new List<string>();
+
+            var res = _edSvc.GetEditedResource();
+
+            //Test for well-formedness
+            try
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(_ed.XmlContent);
+            }
+            catch (XmlException ex)
+            {
+                err.Add(ex.Message);
+            }
+
+            //If strongly-typed, test that this is serializable
+            if (res.IsStronglyTyped)
+            {
+                try
+                {
+                    //Test by simply attempting to deserialize the current xml content
+                    using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(_ed.XmlContent)))
+                    {
+                        //Use original resource type to determine how to deserialize
+                        var obj = ResourceTypeRegistry.Deserialize(res.ResourceType, ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    err.Add(ex.Message);
+                }
+            }
+
+            //Finally verify the content itself
+            var xml = this.XmlContent;
+            var xsd = GetXsd(res.ValidatingSchema);
+            var validator = new XmlValidator();
+            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+            {
+                validator.Validate(ms, xsd);
+            }
+
+            err.AddRange(validator.ValidationErrors);
+            warn.AddRange(validator.ValidationWarnings);
+
+            /*
+            var xml = this.XmlContent;
+            var config = new XmlReaderSettings();
+            
+            config.ValidationType = ValidationType.Schema;
+            config.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
+            config.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
+            config.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
+            //This will trap all the errors and warnings that are raised
+            config.ValidationEventHandler += (s, e) =>
+            {
+                if (e.Severity == XmlSeverityType.Warning)
+                {
+                    warn.Add(e.Message);
+                }
+                else
+                {
+                    err.Add(e.Message);
+                }
+            };
+
+            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+            {
+                using (var reader = XmlReader.Create(ms, config))
+                {
+                    while (reader.Read()) { } //Trigger the validation
+                }
+            }*/
+
+            errors = err.ToArray();
+            warnings = warn.ToArray();
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
@@ -151,9 +219,12 @@ namespace Maestro.Base.Editor
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (_lastSnapshot != _ed.XmlContent)
-                OnResourceChanged();
-            this.DialogResult = DialogResult.OK;
+            if (_ed.PerformValidation(true, true))
+            {
+                if (_lastSnapshot != _ed.XmlContent)
+                    OnResourceChanged();
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
         private void OnResourceChanged()

@@ -56,11 +56,10 @@ namespace Maestro.Base.UI.Preferences
             chkMessages.Checked = msg;
             var outb = Props.Get(ConfigProperties.ShowOutboundRequests, true);
             chkOutbound.Checked = outb;
-            var validate = Props.Get(ConfigProperties.ValidateOnSave, true);
-            chkValidateOnSave.Checked = validate;
+            
 
-            txtFsPreview.Text = Props.Get(ConfigProperties.LocalFsPreviewPath, "");
-            txtMgCooker.Text = Props.Get(ConfigProperties.MgCookerPath, "");
+            txtFsPreview.Text = Props.Get(ConfigProperties.LocalFsPreviewPath, ConfigProperties.DefaultLocalFsPreviewPath);
+            txtMgCooker.Text = Props.Get(ConfigProperties.MgCookerPath, ConfigProperties.DefaultMgCookerPath);
 
             cmbOpenedColor.CurrentColor = Props.Get(ConfigProperties.OpenColor, Color.LightGreen);
             cmbModifiedColor.CurrentColor = Props.Get(ConfigProperties.DirtyColor, Color.Pink);
@@ -100,7 +99,6 @@ namespace Maestro.Base.UI.Preferences
             Apply(ConfigProperties.LocalFsPreviewPath, txtFsPreview.Text);
             Apply(ConfigProperties.OpenColor, (Color)cmbOpenedColor.CurrentColor);
             Apply(ConfigProperties.DirtyColor, (Color)cmbModifiedColor.CurrentColor);
-            Apply(ConfigProperties.ValidateOnSave, chkValidateOnSave.Checked);
 
             //These changes require restart
             if (Apply(ConfigProperties.ShowMessages, chkMessages.Checked ? "True" : "False"))
@@ -126,7 +124,7 @@ namespace Maestro.Base.UI.Preferences
 
         public void ApplyDefaults()
         {
-            ConfigProperties.ApplyDefaults();
+            ConfigProperties.ApplyGeneralDefaults();
         }
 
         private void btnBrowseMgCooker_Click(object sender, EventArgs e)
