@@ -1160,4 +1160,10 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="PreviewUrlNotAvailable" xml:space="preserve">
     <value>The Preview URL is not currently available</value>
   </data>
+  <data name="QuestionResetFsOverrideList" xml:space="preserve">
+    <value>Reset Feature Source override list?</value>
+  </data>
+  <data name="TitleQuestion" xml:space="preserve">
+    <value>Question</value>
+  </data>
 </root>

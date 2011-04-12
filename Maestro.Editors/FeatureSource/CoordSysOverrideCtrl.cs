@@ -76,6 +76,7 @@ namespace Maestro.Editors.FeatureSource
             {
                 grdOverrides.Rows[e.RowIndex].Selected = true;
             }
+            btnApplyAll.Enabled = grdOverrides.SelectedRows.Count > 0;
         }
 
         private void grdOverrides_SelectionChanged(object sender, EventArgs e)
@@ -111,6 +112,46 @@ namespace Maestro.Editors.FeatureSource
                 UpdateSpatialContextList();
                 OnResourceChanged();
             }
+        }
+
+        private void btnApplyAll_Click(object sender, EventArgs e)
+        {
+            string wkt = _ed.GetCoordinateSystem();
+            if (!string.IsNullOrEmpty(wkt))
+            {
+                foreach (DataGridViewRow row in grdOverrides.SelectedRows)
+                {
+                    var sci = (ISpatialContextInfo)row.DataBoundItem;
+                    sci.CoordinateSystem = wkt;
+                }
+                UpdateSpatialContextList();
+            }
+        }
+
+        private void btnLoadFromSc_Click(object sender, EventArgs e)
+        {
+            if (grdOverrides.Rows.Count > 0)
+            {
+                if (MessageBox.Show(Properties.Resources.QuestionResetFsOverrideList, Properties.Resources.TitleQuestion, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    var sco = new List<ISpatialContextInfo>(_fs.SupplementalSpatialContextInfo);
+                    foreach (var s in sco)
+                    {
+                        _fs.RemoveSpatialContextOverride(s);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            var scList = _fs.GetSpatialInfo(false);
+            foreach (var sc in scList.SpatialContext)
+            {
+                _fs.AddSpatialContextOverride(sc.Name, sc.CoordinateSystemWkt);
+            }
+            UpdateSpatialContextList();
         }
     }
 }

@@ -33,6 +33,9 @@
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnApplyAll = new System.Windows.Forms.ToolStripButton();
+            this.btnLoadFromSc = new System.Windows.Forms.ToolStripButton();
             this.grdOverrides = new System.Windows.Forms.DataGridView();
             this.COL_SOURCE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.COL_TARGET = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,7 +55,10 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAdd,
             this.btnEdit,
-            this.btnDelete});
+            this.btnDelete,
+            this.toolStripSeparator1,
+            this.btnApplyAll,
+            this.btnLoadFromSc});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -76,6 +82,25 @@
             this.btnDelete.Image = global::Maestro.Editors.Properties.Resources.globe__minus;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // btnApplyAll
+            // 
+            resources.ApplyResources(this.btnApplyAll, "btnApplyAll");
+            this.btnApplyAll.Image = global::Maestro.Editors.Properties.Resources.globe__arrow;
+            this.btnApplyAll.Name = "btnApplyAll";
+            this.btnApplyAll.Click += new System.EventHandler(this.btnApplyAll_Click);
+            // 
+            // btnLoadFromSc
+            // 
+            this.btnLoadFromSc.Image = global::Maestro.Editors.Properties.Resources.globe__plus;
+            resources.ApplyResources(this.btnLoadFromSc, "btnLoadFromSc");
+            this.btnLoadFromSc.Name = "btnLoadFromSc";
+            this.btnLoadFromSc.Click += new System.EventHandler(this.btnLoadFromSc_Click);
             // 
             // grdOverrides
             // 
@@ -132,5 +157,8 @@
         private System.Windows.Forms.ToolStripButton btnEdit;
         private System.Windows.Forms.DataGridViewTextBoxColumn COL_SOURCE;
         private System.Windows.Forms.DataGridViewTextBoxColumn COL_TARGET;
+        private System.Windows.Forms.ToolStripButton btnApplyAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnLoadFromSc;
     }
 }

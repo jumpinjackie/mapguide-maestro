@@ -2173,6 +2173,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset Feature Source override list?.
+        /// </summary>
+        internal static string QuestionResetFsOverrideList {
+            get {
+                return ResourceManager.GetString("QuestionResetFsOverrideList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RDBMS Feature Source.
         /// </summary>
         internal static string RdbmsFeatureSource {
@@ -2511,6 +2520,15 @@ namespace Maestro.Editors.Properties {
         internal static string TitleNewFeatureClass {
             get {
                 return ResourceManager.GetString("TitleNewFeatureClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question.
+        /// </summary>
+        internal static string TitleQuestion {
+            get {
+                return ResourceManager.GetString("TitleQuestion", resourceCulture);
             }
         }
         

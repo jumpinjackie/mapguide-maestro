@@ -195,6 +195,36 @@
   <data name="btnDelete.Text" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnApplyAll.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnApplyAll.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnApplyAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 22</value>
+  </data>
+  <data name="btnApplyAll.Text" xml:space="preserve">
+    <value>Apply CS to all</value>
+  </data>
+  <data name="btnApplyAll.ToolTipText" xml:space="preserve">
+    <value>Apply the same coordinate system to all selected overrides</value>
+  </data>
+  <data name="btnLoadFromSc.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnLoadFromSc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
+  </data>
+  <data name="btnLoadFromSc.Text" xml:space="preserve">
+    <value>Load Defaults</value>
+  </data>
+  <data name="btnLoadFromSc.ToolTipText" xml:space="preserve">
+    <value>Load overrides from current list of spatial contexts</value>
+  </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -258,6 +288,24 @@
   <data name="&gt;&gt;btnDelete.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnApplyAll.Name" xml:space="preserve">
+    <value>btnApplyAll</value>
+  </data>
+  <data name="&gt;&gt;btnApplyAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLoadFromSc.Name" xml:space="preserve">
+    <value>btnLoadFromSc</value>
+  </data>
+  <data name="&gt;&gt;btnLoadFromSc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;COL_SOURCE.Name" xml:space="preserve">
     <value>COL_SOURCE</value>
   </data>
@@ -274,6 +322,6 @@
     <value>CoordSysOverrideCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=3.0.0.5676, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
