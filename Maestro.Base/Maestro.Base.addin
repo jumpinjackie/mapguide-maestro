@@ -331,24 +331,28 @@
         <Condition action="Disable" name="EditorFunction" property="CanPreview">
             <ToolbarItem id="Preview"
                          icon="document_search_result"
+                         label="${res:Toolbar_Preview}"
                          tooltip="${res:Menu_File_PreviewResource}"
                          class="Maestro.Base.Commands.PreviewResourceCommand" />
         </Condition>
         <Condition action="Disable" name="EditorFunction" property="CanEditAsXml">
             <ToolbarItem id="XmlEdit"
                          icon="document_code"
+                         label="${res:Toolbar_EditAsXml}"
                          tooltip="${res:Menu_File_EditResourceWithXml}"
                          class="Maestro.Base.Commands.EditAsXmlCommand" />
         </Condition>
         <Condition action="Disable" name="EditorFunction" property="CanProfile">
             <ToolbarItem id="Profile"
                          icon="clock"
+                         label="${res:Toolbar_Profile}"
                          tooltip="${res:Menu_File_ProfileResource}"
                          class="Maestro.Base.Commands.ProfileResourceCommand" />
         </Condition>
         <Condition action="Disable" name="EditorFunction" property="CanValidate">
             <ToolbarItem id="Validate"
                          icon="tick"
+                         label="${res:Toolbar_Validate}"
                          tooltip="${res:Menu_File_ValidateResource}"
                          class="Maestro.Base.Commands.SiteExplorer.ValidateCommand" />
         </Condition>

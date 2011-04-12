@@ -1989,6 +1989,42 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit as XML.
+        /// </summary>
+        internal static string Toolbar_EditAsXml {
+            get {
+                return ResourceManager.GetString("Toolbar_EditAsXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preview.
+        /// </summary>
+        internal static string Toolbar_Preview {
+            get {
+                return ResourceManager.GetString("Toolbar_Preview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile.
+        /// </summary>
+        internal static string Toolbar_Profile {
+            get {
+                return ResourceManager.GetString("Toolbar_Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validate.
+        /// </summary>
+        internal static string Toolbar_Validate {
+            get {
+                return ResourceManager.GetString("Toolbar_Validate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new Fusion Application Definition (Flexible Layout).
         /// </summary>
         internal static string TPL_ADF_DESC {
