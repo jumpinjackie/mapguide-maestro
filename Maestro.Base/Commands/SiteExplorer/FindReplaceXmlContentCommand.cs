@@ -61,23 +61,15 @@ namespace Maestro.Base.Commands.SiteExplorer
                                 continue;
                             }
                         }
-                        
-                        //Do the find/replace
-                        using (var s = conn.ResourceService.GetResourceXmlData(item.ResourceId))
-                        {
-                            using (var sr = new StreamReader(s))
-                            {
-                                string xml = sr.ReadToEnd();
-                                xml = xml.Replace(diag.FindToken, diag.ReplaceToken);
-                                using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
-                                {
-                                    conn.ResourceService.SetResourceXmlData(item.ResourceId, ms);
-                                }
-                                //Re-open in XML editor for user review
-                                omgr.Open(item.ResourceId, conn, true, wb.ActiveSiteExplorer);
-                                replaced++;
-                            }
-                        }
+
+                        //Re-open in XML editor for user review
+                        var ed = (XmlEditor)omgr.Open(item.ResourceId, conn, true, wb.ActiveSiteExplorer);
+
+                        //Do the find/replace. Dirty state would be triggered if any replacements were made
+                        //It is then up to the user to review the change and decide whether to save or not
+                        ed.FindAndReplace(diag.FindToken, diag.ReplaceToken);
+
+                        replaced++;
                     }
                 }
             }

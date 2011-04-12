@@ -216,5 +216,10 @@ namespace Maestro.Base.Editor
             _edSvc.ResourceService.SetResourceXmlData(_edSvc.EditedResourceID, new MemoryStream(Encoding.UTF8.GetBytes(this.XmlContent)));
             //base.SyncSessionCopy();
         }
+
+        internal void FindAndReplace(string find, string replace)
+        {
+            editor.FindAndReplace(find, replace);
+        }
     }
 }

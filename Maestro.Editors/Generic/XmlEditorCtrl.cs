@@ -151,7 +151,7 @@ namespace Maestro.Editors.Generic
             FindAndReplace(txtFind.Text, txtReplace.Text);
         }
 
-        private void FindAndReplace(string szFind, string szReplace)
+        public void FindAndReplace(string szFind, string szReplace)
         {
             var textEditor = txtXmlContent;
 
