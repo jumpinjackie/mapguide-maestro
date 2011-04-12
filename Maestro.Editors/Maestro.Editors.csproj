@@ -74,6 +74,12 @@
     <Compile Include="Common\ExpressionEditor.designer.cs">
       <DependentUpon>ExpressionEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\FindReplaceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\FindReplaceDialog.Designer.cs">
+      <DependentUpon>FindReplaceDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\GenericInputDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -951,6 +957,9 @@
     <EmbeddedResource Include="Common\ExpressionEditor.resx">
       <DependentUpon>ExpressionEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\FindReplaceDialog.resx">
+      <DependentUpon>FindReplaceDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Common\GenericInputDialog.resx">
       <DependentUpon>GenericInputDialog.cs</DependentUpon>

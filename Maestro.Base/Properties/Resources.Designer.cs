@@ -1438,6 +1438,15 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Replaced XML content in: {0}.
+        /// </summary>
+        internal static string ReplacedXmlContent {
+            get {
+                return ResourceManager.GetString("ReplacedXmlContent", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap reports_stack {
             get {
                 object obj = ResourceManager.GetObject("reports_stack", resourceCulture);
@@ -1487,6 +1496,15 @@ namespace Maestro.Base.Properties {
         internal static string ResourceNotRepointable {
             get {
                 return ResourceManager.GetString("ResourceNotRepointable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} resources processed.
+        /// </summary>
+        internal static string ResourcesProcessed {
+            get {
+                return ResourceManager.GetString("ResourcesProcessed", resourceCulture);
             }
         }
         
@@ -1795,6 +1813,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Find and Replace XML content.
+        /// </summary>
+        internal static string SiteExplorer_FindReplaceXml {
+            get {
+                return ResourceManager.GetString("SiteExplorer_FindReplaceXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Migrate.
         /// </summary>
         internal static string SiteExplorer_Migrate {
@@ -1944,6 +1971,15 @@ namespace Maestro.Base.Properties {
         internal static string SiteExplorer_ValidateResources {
             get {
                 return ResourceManager.GetString("SiteExplorer_ValidateResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skipping resource: {0}.
+        /// </summary>
+        internal static string SkippingResource {
+            get {
+                return ResourceManager.GetString("SkippingResource", resourceCulture);
             }
         }
         

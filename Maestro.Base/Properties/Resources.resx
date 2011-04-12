@@ -992,4 +992,16 @@ Error message: {1}</value>
   <data name="Toolbar_Validate" xml:space="preserve">
     <value>Validate</value>
   </data>
+  <data name="SkippingResource" xml:space="preserve">
+    <value>Skipping resource: {0}</value>
+  </data>
+  <data name="ReplacedXmlContent" xml:space="preserve">
+    <value>Replaced XML content in: {0}</value>
+  </data>
+  <data name="ResourcesProcessed" xml:space="preserve">
+    <value>{0} resources processed</value>
+  </data>
+  <data name="SiteExplorer_FindReplaceXml" xml:space="preserve">
+    <value>Find and Replace XML content</value>
+  </data>
 </root>
