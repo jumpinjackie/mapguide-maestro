@@ -154,7 +154,11 @@ namespace Maestro.Base
 
                 var tabRect = tab.GetTabRect(e.Index);
 
-                e.Graphics.FillRectangle(new SolidBrush(SystemColors.ControlLightLight), tabRect);
+                if (e.Index == tab.SelectedIndex)
+                    e.Graphics.FillRectangle(new SolidBrush(SystemColors.ControlLightLight), tabRect);
+                else
+                    e.Graphics.FillRectangle(new SolidBrush(SystemColors.ControlLight), tabRect);
+
                 e.Graphics.DrawString(title, f, TitleBrush, new Point(r.X, r.Y));
 
                 if (draw)
