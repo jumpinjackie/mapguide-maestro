@@ -30,6 +30,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 	using System.Text;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using OSGeo.MapGuide.MaestroAPI.Resource;
 
 	///<summary>
 	/// Class that makes XSD validation
@@ -53,15 +54,18 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Validates the specified XML.
         /// </summary>
         /// <param name="xml">The XML.</param>
-        /// <param name="xsd">The XSD.</param>
-		public void Validate(System.IO.Stream xml, XmlSchema xsd)
+        /// <param name="xsds">The array of <see cref="T:System.Xml.Schema.XmlSchema"/> objects to validate against.</param>
+		public void Validate(System.IO.Stream xml, XmlSchema[] xsds)
 		{
             this.warnings.Clear();
             this.errors.Clear();
 
             var config = new XmlReaderSettings();
-            if (xsd != null)
-                config.Schemas.Add(xsd);
+            if (xsds != null && xsds.Length > 0)
+            {
+                foreach(var xsd in xsds)
+                    config.Schemas.Add(xsd);
+            }
             config.ValidationType = ValidationType.Schema;
             config.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
             config.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
@@ -85,5 +89,100 @@ namespace OSGeo.MapGuide.MaestroAPI
                 while (reader.Read()) { } //Trigger the validation
             }
 		}
+
+        private static XmlSchema GetXsd(string xsdPath, string xsdFile)
+        {
+            string path = xsdFile;
+
+            if (!string.IsNullOrEmpty(xsdPath))
+                path = Path.Combine(xsdPath, xsdFile);
+
+            if (File.Exists(path))
+            {
+                ValidationEventHandler handler = (s, e) =>
+                {
+                };
+                return XmlSchema.Read(File.OpenRead(path), handler);
+            }
+            return null;
+        }
+
+        public static void ValidateResourceXmlContent(string xmlContent, string xsdPath, out string[] errors, out string[] warnings)
+        {
+            errors = new string[0];
+            warnings = new string[0];
+
+            List<string> err = new List<string>();
+            List<string> warn = new List<string>();
+
+            //Test for well-formedness
+            try
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(xmlContent);
+            }
+            catch (XmlException ex)
+            {
+                err.Add(ex.Message);
+            }
+
+            IResource res = null;
+            //Test for serializablility
+            try
+            {
+                //Use original resource type to determine how to deserialize
+                res = ResourceTypeRegistry.Deserialize(xmlContent);
+            }
+            catch (Exception ex)
+            {
+                err.Add(ex.Message);
+            }
+
+            if (res != null)
+            {
+                //Finally verify the content itself
+                var xml = xmlContent;
+                var xsds = new Dictionary<string, XmlSchema>();
+                var xsd = GetXsd(xsdPath, res.ValidatingSchema);
+                if (xsd != null)
+                    xsds.Add(res.ValidatingSchema, xsd);
+
+                //HACK: Yes this is hard-coded because XmlSchema's dependency resolution sucks!
+
+                //Nearly all relevant xsds include this anyway so add it to the set
+                var pc = GetXsd(xsdPath, "PlatformCommon-1.0.0.xsd");
+                if (pc != null)
+                    xsds.Add("PlatformCommon-1.0.0.xsd", pc);
+
+                if (res.ResourceType == ResourceTypes.LayerDefinition)
+                {
+                    string version = res.ResourceVersion.ToString();
+                    if (version.StartsWith("1.1.0"))
+                    {
+                        var sym = GetXsd(xsdPath, "SymbolDefinition-1.0.0.xsd");
+                        if (sym != null)
+                            xsds.Add("SymbolDefinition-1.0.0.xsd", sym);
+                    }
+                    else if (version.StartsWith("1.2.0") || version.StartsWith("1.3.0"))
+                    {
+                        var sym = GetXsd(xsdPath, "SymbolDefinition-1.1.0.xsd");
+                        if (sym != null)
+                            xsds.Add("SymbolDefinition-1.1.0.xsd", sym);
+                    }
+                }
+
+                var validator = new XmlValidator();
+                using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+                {
+                    validator.Validate(ms, new List<XmlSchema>(xsds.Values).ToArray());
+                }
+
+                err.AddRange(validator.ValidationErrors);
+                warn.AddRange(validator.ValidationWarnings);
+            }
+
+            errors = err.ToArray();
+            warnings = warn.ToArray();
+        }
 	}
 }

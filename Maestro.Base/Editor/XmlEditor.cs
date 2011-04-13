@@ -55,103 +55,7 @@ namespace Maestro.Base.Editor
 
         private void ValidateXml(out string[] errors, out string[] warnings)
         {
-            errors = new string[0];
-            warnings = new string[0];
-
-            List<string> err = new List<string>();
-            List<string> warn = new List<string>();
-
-            var res = this.Resource;
-
-            //Test for well-formedness
-            try
-            {
-                XmlDocument doc = new XmlDocument();
-                doc.LoadXml(editor.XmlContent);
-            }
-            catch (XmlException ex)
-            {
-                err.Add(ex.Message);
-            }
-
-            //If strongly-typed, test that this is serializable
-            if (res.IsStronglyTyped)
-            {
-                try
-                {
-                    //Test by simply attempting to deserialize the current xml content
-                    using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(editor.XmlContent)))
-                    {
-                        //Use original resource type to determine how to deserialize
-                        var obj = ResourceTypeRegistry.Deserialize(res.ResourceType, ms);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    err.Add(ex.Message);
-                }
-            }
-
-            //Finally verify the content itself
-            var xml = this.XmlContent;
-            var xsd = GetXsd(res.ValidatingSchema);
-            var validator = new XmlValidator();
-            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
-            {
-                validator.Validate(ms, xsd);
-            }
-
-            err.AddRange(validator.ValidationErrors);
-            warn.AddRange(validator.ValidationWarnings);
-
-            /*
-            var xml = this.XmlContent;
-            var config = new XmlReaderSettings();
-            
-            config.ValidationType = ValidationType.Schema;
-            config.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
-            config.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
-            config.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
-            //This will trap all the errors and warnings that are raised
-            config.ValidationEventHandler += (s, e) =>
-            {
-                if (e.Severity == XmlSeverityType.Warning)
-                {
-                    warn.Add(e.Message);
-                }
-                else
-                {
-                    err.Add(e.Message);
-                }
-            };
-
-            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
-            {
-                using (var reader = XmlReader.Create(ms, config))
-                {
-                    while (reader.Read()) { } //Trigger the validation
-                }
-            }*/
-
-            errors = err.ToArray();
-            warnings = warn.ToArray();
-        }
-
-        private XmlSchema GetXsd(string xsdFile)
-        {
-            string path = xsdFile;
-
-            if (!string.IsNullOrEmpty(this.XsdPath))
-                path = Path.Combine(this.XsdPath, xsdFile);
-
-            if (File.Exists(path))
-            {
-                ValidationEventHandler handler = (s, e) =>
-                {
-                };
-                return XmlSchema.Read(File.OpenRead(path), handler);
-            }
-            return null;
+            XmlValidator.ValidateResourceXmlContent(editor.XmlContent, this.XsdPath, out errors, out warnings);
         }
 
         private IEditorService _edSvc;
@@ -186,6 +90,20 @@ namespace Maestro.Base.Editor
 
             //Put through ValidationResultSet to weed out redundant messages
             var set = new ValidationResultSet(issues);
+
+            try
+            {
+                var res = ResourceTypeRegistry.Deserialize(editor.XmlContent);
+                var context = new ResourceValidationContext(_edSvc.ResourceService, _edSvc.FeatureService);
+                //We don't care about dependents, we just want to validate *this* resource
+                var resIssues = ResourceValidatorSet.Validate(context, res, false);
+                set.AddIssues(resIssues);
+            }
+            catch 
+            { 
+                //This can fail because the XML may be for something that Maestro does not offer a strongly-typed class for yet.
+                //So the XML may be legit, just not for this version of Maestro that is doing the validating
+            }
 
             //Only care about errors. Warnings and other types should not derail us from saving
             return set.GetAllIssues(ValidationStatus.Error);
