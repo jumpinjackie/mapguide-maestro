@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="Aga.Controls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=fcc90fbf924463a3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\Release\Aga.Controls.dll</HintPath>
+      <HintPath>..\SDK\bin\Aga.Controls.dll</HintPath>
     </Reference>
     <Reference Include="Maestro.Editors, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
