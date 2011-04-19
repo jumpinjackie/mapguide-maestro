@@ -206,52 +206,73 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
         //This is ODBC, so there will only be one
         private string _defaultSchemaName;
 
-        private void btnEditSchema_Click(object sender, EventArgs e)
+        private bool CheckValidConnection()
         {
             if (string.IsNullOrEmpty(_fs.ConnectionString))
             {
-                MessageBox.Show(Properties.Resources.NoConnectionSet);
-                return;
+                if (this.ChildEditor != null)
+                {
+                    var props = this.ChildEditor.ConnectionProperties;
+                    _fs.ApplyConnectionProperties(props);
+                }
             }
 
-            if (string.IsNullOrEmpty(_defaultSchemaName))
+            //Flush back to session before testing
+            _service.SyncSessionCopy();
+
+            string result = _fs.TestConnection();
+            if (!result.ToLower().Equals("true"))
             {
-                var names = _fs.GetSchemaNames();
-                if (names.Length == 1)
+                MessageBox.Show(string.Format(Properties.Resources.InvalidConnection, result), Properties.Resources.TitleError);
+                return false;
+            }
+
+            return true;
+        }
+
+        private void btnEditSchema_Click(object sender, EventArgs e)
+        {
+            if (CheckValidConnection())
+            {
+                if (string.IsNullOrEmpty(_defaultSchemaName))
                 {
-                    _defaultSchemaName = names[0];
+                    var names = _fs.GetSchemaNames();
+                    if (names.Length == 1)
+                    {
+                        _defaultSchemaName = names[0];
+                    }
+                    else
+                    {
+                        MessageBox.Show(Properties.Resources.NoSchemasInFeatureSource);
+                        return;
+                    }
+                }
+
+                string xml = _fs.GetConfigurationContent();
+                if (!string.IsNullOrEmpty(xml))
+                {
+                    _doc = (OdbcConfigurationDocument)ConfigurationDocument.LoadXml(xml);
                 }
                 else
                 {
-                    MessageBox.Show(Properties.Resources.NoSchemasInFeatureSource);
-                    return;
+                    if (_doc == null)
+                    {
+                        BuildDefaultDocument();
+                    }
                 }
-            }
 
-            string xml = _fs.GetConfigurationContent();
-            if (!string.IsNullOrEmpty(xml))
-            {
-                _doc = (OdbcConfigurationDocument)ConfigurationDocument.LoadXml(xml);
-            }
-            else
-            {
-                if (_doc == null)
+                var diag = new TableConfigurationDialog(_doc, _defaultSchemaName);
+                if (diag.ShowDialog() == DialogResult.OK)
                 {
-                    BuildDefaultDocument();
+                    _doc.ClearMappings();
+                    foreach (var table in diag.ConfiguredTables)
+                    {
+                        _doc.AddOverride(table);
+                    }
+                    string updatedContent = _doc.ToXml();
+                    _fs.SetConfigurationContent(updatedContent);
+                    OnResourceChanged();
                 }
-            }
-
-            var diag = new TableConfigurationDialog(_doc, _defaultSchemaName);
-            if (diag.ShowDialog() == DialogResult.OK)
-            {
-                _doc.ClearMappings();
-                foreach (var table in diag.ConfiguredTables)
-                {
-                    _doc.AddOverride(table);
-                }
-                string updatedContent = _doc.ToXml();
-                _fs.SetConfigurationContent(updatedContent);
-                OnResourceChanged();
             }
         }
 
@@ -280,17 +301,14 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(_fs.ConnectionString))
+            if (CheckValidConnection())
             {
-                MessageBox.Show(Properties.Resources.NoConnectionSet);
-                return;
+                _fs.SetConfigurationContent(null);
+                _fs.ConfigurationDocument = null;
+                _service.SyncSessionCopy();
+                BuildDefaultDocument();
+                MessageBox.Show(Properties.Resources.ConfigurationDocumentReset);
             }
-
-            _fs.SetConfigurationContent(null);
-            _fs.ConfigurationDocument = null;
-            _service.SyncSessionCopy();
-            BuildDefaultDocument();
-            MessageBox.Show(Properties.Resources.ConfigurationDocumentReset);
         }
     }
 }

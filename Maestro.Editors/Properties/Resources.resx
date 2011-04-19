@@ -1154,9 +1154,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="TitleNewFeatureClass" xml:space="preserve">
     <value>New Feature Class</value>
   </data>
-  <data name="NoConnectionSet" xml:space="preserve">
-    <value>Could not determine the validity of this feature source. Please test the connection first to ensure a valid connection.</value>
-  </data>
   <data name="PreviewUrlNotAvailable" xml:space="preserve">
     <value>The Preview URL is not currently available</value>
   </data>
@@ -1165,5 +1162,8 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   </data>
   <data name="TitleQuestion" xml:space="preserve">
     <value>Question</value>
+  </data>
+  <data name="InvalidConnection" xml:space="preserve">
+    <value>This is not a valid connection: {0}</value>
   </data>
 </root>

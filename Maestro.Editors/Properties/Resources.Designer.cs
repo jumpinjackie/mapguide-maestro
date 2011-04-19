@@ -1568,6 +1568,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is not a valid connection: {0}.
+        /// </summary>
+        internal static string InvalidConnection {
+            get {
+                return ResourceManager.GetString("InvalidConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid field count in line {0}.
         /// </summary>
         internal static string InvalidFieldCountError {
@@ -1848,15 +1857,6 @@ namespace Maestro.Editors.Properties {
         internal static string NoColumnValuesError {
             get {
                 return ResourceManager.GetString("NoColumnValuesError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Could not determine the validity of this feature source. Please test the connection first to ensure a valid connection..
-        /// </summary>
-        internal static string NoConnectionSet {
-            get {
-                return ResourceManager.GetString("NoConnectionSet", resourceCulture);
             }
         }
         

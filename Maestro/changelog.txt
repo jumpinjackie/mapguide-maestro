@@ -1,4 +1,19 @@
-﻿ - Add F2 keybinding to rename selected item in Site Explorer
+﻿3.0 RC1
+-------
+ 
+ - Fix: Automatically test the connection first before editing or resetting an ODBC configuration document. Abort the process if connection test fails.
+ - Add an option to determine whether to validate resources on save
+ - Fix: Web Layout and Fusion editors didn't show the generated publish URL
+ - Fix: Layer Definition editor did not update the underlying XML content when deleting a vector scale range.
+ - Fix: Adding a new vector scale range in the Layer Definition editor did not create a default area/line/point rule
+ - Fix: When the "Show Area/Line/Point style checkbox is ticked, the Layer Definition editor would always create a new default rule 
+ - Fix: Add missing coordinate system override functionality from 2.x
+ - Fix: Editors not re-initializing themselves properly after saving, when using Edit As XML command.
+ - Added more labels for main toolbar commands
+ - XML Editor: Add support for validating XML content against local XSD files
+ - Inactive document tabs are now colored differently to distinguish between active/inactive tabs
+ - Fix: Add missing find/replace in XML content functionality
+ - Add F2 keybinding to rename selected item in Site Explorer
  - Fix: Added missing duplicate resource command from 2.x
  - Fix: Added missing profiling feature from 2.x
  - Fix: UI layout changes for Generic Feature Source Editor
