@@ -330,7 +330,7 @@
     <value>resDataCtrl</value>
   </data>
   <data name="&gt;&gt;resDataCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.Generic.ResourceDataPanel, Maestro.Editors, Version=3.0.0.5610, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Generic.ResourceDataPanel, Maestro.Editors, Version=3.0.0.5708, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;resDataCtrl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -450,6 +450,6 @@
     <value>XmlEditorCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.EditorBase, Maestro.Editors, Version=3.0.0.5610, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.EditorBase, Maestro.Editors, Version=3.0.0.5708, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -501,6 +501,13 @@ namespace Maestro.Editors.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap document_task {
+            get {
+                object obj = ResourceManager.GetObject("document_task", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap drive_download {
             get {
                 object obj = ResourceManager.GetObject("drive-download", resourceCulture);

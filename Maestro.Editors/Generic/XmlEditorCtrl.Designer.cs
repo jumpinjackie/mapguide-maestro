@@ -128,7 +128,7 @@
             // btnValidate
             // 
             this.btnValidate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnValidate.Image = global::Maestro.Editors.Properties.Resources.tick;
+            this.btnValidate.Image = global::Maestro.Editors.Properties.Resources.document_task;
             resources.ApplyResources(this.btnValidate, "btnValidate");
             this.btnValidate.Name = "btnValidate";
             this.btnValidate.Click += new System.EventHandler(this.btnValidate_Click);

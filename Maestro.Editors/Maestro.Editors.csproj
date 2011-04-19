@@ -1920,6 +1920,7 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\document-task.png" />
     <None Include="Resources\document.png" />
     <None Include="Resources\ui-separator.png" />
     <None Include="Resources\gear--plus.png" />
