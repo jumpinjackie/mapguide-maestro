@@ -54,11 +54,14 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         protected void DetachChangeListeners()
         {
             var handler = this.PropertyChanged;
-            foreach (var h in handler.GetInvocationList())
+            if (handler != null)
             {
-                this.PropertyChanged -= (PropertyChangedEventHandler)h;
+                foreach (var h in handler.GetInvocationList())
+                {
+                    this.PropertyChanged -= (PropertyChangedEventHandler)h;
+                }
+                handler = null;
             }
-            handler = null;
         }
     }
 
