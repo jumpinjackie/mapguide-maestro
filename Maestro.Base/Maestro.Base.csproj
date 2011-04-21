@@ -191,6 +191,12 @@
     <Compile Include="Editor\SymbolDefinitionEditor.Designer.cs">
       <DependentUpon>SymbolDefinitionEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editor\UnsupportedEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UnsupportedEditorControl.Designer.cs">
+      <DependentUpon>UnsupportedEditorControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editor\WebLayoutEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -457,6 +463,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editor\SymbolDefinitionEditor.resx">
       <DependentUpon>SymbolDefinitionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UnsupportedEditorControl.resx">
+      <DependentUpon>UnsupportedEditorControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editor\WebLayoutEditor.resx">
       <DependentUpon>WebLayoutEditor.cs</DependentUpon>

@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -24,38 +24,17 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using Maestro.Editors.LoadProcedure;
-using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 
 namespace Maestro.Base.Editor
 {
-    public partial class LoadProcedureEditor : EditorContentBase
+    /// <summary>
+    /// A placeholder control for resource sub-types that cannot be edited with a specialized editor
+    /// </summary>
+    public partial class UnsupportedEditorControl : UserControl
     {
-        public LoadProcedureEditor()
+        public UnsupportedEditorControl()
         {
             InitializeComponent();
-        }
-
-        protected override void Bind(Maestro.Editors.IEditorService service)
-        {
-            panelBody.Controls.Clear();
-            var lp = (ILoadProcedure)service.GetEditedResource();
-            //DWG and Raster load procedures cannot be edited with this editor so load placeholder
-            if (lp.SubType.Type == LoadType.Dwg ||
-                lp.SubType.Type == LoadType.Raster)
-            {
-                var ctrl = new UnsupportedEditorControl();
-                ctrl.Dock = DockStyle.Fill;
-                panelBody.Controls.Add(ctrl);
-            }
-            else
-            {
-                var lpEditor = new LoadProcedureEditorCtrl();
-                lpEditor.Dock = DockStyle.Fill;
-                panelBody.Controls.Add(lpEditor);
-
-                lpEditor.Bind(service);
-            }
         }
     }
 }
