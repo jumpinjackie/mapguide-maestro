@@ -572,6 +572,17 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     }
 
     /// <summary>
+    /// The stylization to be applied to the vector features for a given scale range. Supports composite styles
+    /// </summary>
+    public interface IVectorScaleRange2 : IVectorScaleRange
+    {
+        /// <summary>
+        /// Gets or sets the composite style for this scale range
+        /// </summary>
+        ICompositeTypeStyle CompositeStyle { get; set; }
+    }
+
+    /// <summary>
     /// Represents a name-value pair
     /// </summary>
     public interface INameStringPair
@@ -616,7 +627,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <summary>
         /// 
         /// </summary>
-        Point
+        Point,
+        /// <summary>
+        /// 
+        /// </summary>
+        Composite
     }
 
     /// <summary>
@@ -1526,7 +1541,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// Represents a composite style definition
     /// </summary>
-    public interface ICompositeTypeStyle
+    public interface ICompositeTypeStyle : IVectorStyle
     {
         /// <summary>
         /// Gets the composite rules.

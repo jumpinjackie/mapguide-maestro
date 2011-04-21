@@ -42,6 +42,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #endif
 {
     using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
     abstract partial class BaseLayerDefinitionType : ISubLayerDefinition
     {
@@ -78,8 +79,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
     }
 
-
     partial class VectorScaleRangeType : IVectorScaleRange
+#if LDF_120 || LDF_130
+        , IVectorScaleRange2
+#endif
     {
         #region Missing generated stuff
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -242,6 +245,69 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             return this.Clone();
         }
+
+#if LDF_120
+        [XmlIgnore]
+        public ICompositeTypeStyle CompositeStyle
+        {
+            get
+            {
+                foreach (var item in this.itemsField)
+                {
+                    if (typeof(ICompositeTypeStyle).IsAssignableFrom(item.GetType()))
+                        return (ICompositeTypeStyle)item;
+                }
+
+                return null;
+            }
+            set
+            {
+                //Remove old one if it exists
+                var item = this.CompositeStyle;
+                if (item != null)
+                {
+                    this.itemsField.Remove(item);
+                }
+                //Put the new one in if it is not null
+                if (value != null)
+                {
+                    this.itemsField.Add(value);
+                }
+            }
+        }
+#elif LDF_130
+        [XmlIgnore]
+        public ICompositeTypeStyle CompositeStyle
+        {
+            get
+            {
+                foreach (var item in this.itemsField)
+                {
+                    if (typeof(ICompositeTypeStyle2).IsAssignableFrom(item.GetType()))
+                        return (ICompositeTypeStyle2)item;
+                }
+
+                return null;
+            }
+            set
+            {
+                //Remove old one if it exists
+                var item = this.CompositeStyle;
+                if (item != null)
+                {
+                    this.itemsField.Remove(item);
+                }
+                //Put the new one in if it is not null
+                if (value != null)
+                {
+                    if (typeof(ICompositeTypeStyle2).IsAssignableFrom(value.GetType()))
+                        throw new InvalidOperationException("Assigned value does not implement ICompositeTypeStyle2");
+
+                    this.itemsField.Add(value);
+                }
+            }
+        }
+#endif
     }
 
     partial class StrokeType : IStroke
@@ -263,6 +329,156 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return FillType.Deserialize(this.Serialize());
         }
     }
+
+    #region Composite Symbolization support (needs more work. Currently this is just to make the layer editor properly detect such features)
+
+#if LDF_120 || LDF_130
+    partial class CompositeTypeStyle
+#if LDF_120
+        : ICompositeTypeStyle
+#else
+        : ICompositeTypeStyle2
+#endif
+    {
+        IEnumerable<ICompositeRule> ICompositeTypeStyle.CompositeRule
+        {
+            get 
+            {
+                foreach (var rule in this.CompositeRule)
+                {
+                    yield return rule;
+                }
+            }
+        }
+
+        public void AddCompositeRule(ICompositeRule compRule)
+        {
+            var rule = compRule as CompositeRule;
+            if (rule != null)
+            {
+                this.CompositeRule.Add(rule);
+            }
+        }
+
+        public void RemoveCompositeRule(ICompositeRule compRule)
+        {
+            var rule = compRule as CompositeRule;
+            if (rule != null)
+            {
+                this.CompositeRule.Remove(rule);
+            }
+        }
+
+        public StyleType StyleType
+        {
+            get { return StyleType.Composite; }
+        }
+
+        public int RuleCount
+        {
+            get { return this.CompositeRule.Count; }
+        }
+    }
+
+    partial class CompositeRule : ICompositeRule
+    {
+        [XmlIgnore]
+        ICompositeSymbolization ICompositeRule.CompositeSymbolization
+        {
+            get
+            {
+                return this.CompositeSymbolization;
+            }
+            set
+            {
+                this.CompositeSymbolization = (CompositeSymbolization)value;
+            }
+        }
+    }
+
+    partial class CompositeSymbolization : ICompositeSymbolization
+    {
+        IEnumerable<OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISymbolInstance> ICompositeSymbolization.SymbolInstance
+        {
+            get 
+            {
+                foreach (var sym in this.SymbolInstance)
+                {
+                    yield return sym;
+                }
+            }
+        }
+
+        public void AddSymbolInstance(OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISymbolInstance inst)
+        {
+            var sym = inst as SymbolInstance;
+            if (sym != null)
+                this.SymbolInstance.Add(sym);
+        }
+
+        public void RemoveSymbolInstance(OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISymbolInstance inst)
+        {
+            var sym = inst as SymbolInstance;
+            if (sym != null)
+                this.SymbolInstance.Remove(sym);
+        }
+    }
+
+    partial class SymbolInstance : ISymbolInstance
+    {
+        [XmlIgnore]
+        public ISymbolInstanceReference Reference
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        IParameterOverrideCollection ISymbolInstance.ParameterOverrides
+        {
+            get { return this.ParameterOverrides; }
+        }
+    }
+
+    partial class ParameterOverrides : IParameterOverrideCollection
+    {
+        IEnumerable<IParameterOverride> IParameterOverrideCollection.Override
+        {
+            get
+            {
+                foreach (var ov in this.Override)
+                {
+                    yield return ov;
+                }
+            }
+        }
+
+        public void AddOverride(IParameterOverride ov)
+        {
+            var o = ov as Override;
+            if (o != null)
+                this.Override.Add(o);
+        }
+
+        public void RemoveOverride(IParameterOverride ov)
+        {
+            var o = ov as Override;
+            if (o != null)
+                this.Override.Remove(o);
+        }
+    }
+
+    partial class Override : IParameterOverride
+    {
+    }
+
+#endif
+    #endregion
 
     partial class AreaTypeStyleType : IAreaVectorStyle
     {

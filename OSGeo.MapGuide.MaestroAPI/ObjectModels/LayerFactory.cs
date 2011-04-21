@@ -84,6 +84,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             var vl = new VectorLayerDefinitionType();
 
+            //TODO: Create composite type style if 1.2 or 1.3 schema
+
             vl.VectorScaleRange = new System.ComponentModel.BindingList<VectorScaleRangeType>();
             var defaultRange = new VectorScaleRangeType()
             {

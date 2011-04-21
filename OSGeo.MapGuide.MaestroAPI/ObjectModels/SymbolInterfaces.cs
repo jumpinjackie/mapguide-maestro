@@ -62,22 +62,22 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <summary>
         /// Gets or sets the X scale
         /// </summary>
-        double? ScaleX { get; set; }
+        string ScaleX { get; set; }
 
         /// <summary>
         /// Gets or sets the Y scale
         /// </summary>
-        double? ScaleY { get; set; }
+        string ScaleY { get; set; }
 
         /// <summary>
         /// Gets or sets the X insertion offset
         /// </summary>
-        double? InsertionOffsetX { get; set; }
+        string InsertionOffsetX { get; set; }
 
         /// <summary>
         /// Gets or sets the Y insertion offset
         /// </summary>
-        double? InsertionOffsetY { get; set; }
+        string InsertionOffsetY { get; set; }
 
         /// <summary>
         /// Gets or sets the size context
@@ -87,22 +87,22 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <summary>
         /// Gets or sets whether to draw this instance last
         /// </summary>
-        bool? DrawLast { get; set; }
+        string DrawLast { get; set; }
 
         /// <summary>
         /// Gets or sets whether to check the exclusion region
         /// </summary>
-        bool? CheckExclusionRegion { get; set; }
+        string CheckExclusionRegion { get; set; }
 
         /// <summary>
         /// Gets or sets whether to add this instance to the exclusion region
         /// </summary>
-        bool? AddToExclusionRegion { get; set; }
+        string AddToExclusionRegion { get; set; }
 
         /// <summary>
         /// Gets or sets the position algorithm
         /// </summary>
-        string PositionAlgorithm { get; set; }
+        string PositioningAlgorithm { get; set; }
     }
 
     /// <summary>
