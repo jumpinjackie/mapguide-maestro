@@ -91,7 +91,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 if (l.ShowInLegend && (string.IsNullOrEmpty(l.LegendLabel) || l.LegendLabel.Trim().Length == 0))
                     issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, ValidationStatusCode.Warning_MapDefinition_LayerMissingLegendLabel, string.Format(Properties.Resources.MDF_LayerMissingLabelInformation, l.Name)));
 
-                var mapEnv = ObjectFactory.CreateEnvelope(mdef.Extents.MinX, mdef.Extents.MaxX, mdef.Extents.MinY, mdef.Extents.MaxY);
+                var mapEnv = ObjectFactory.CreateEnvelope(mdef.Extents.MinX, mdef.Extents.MinY, mdef.Extents.MaxX, mdef.Extents.MaxY);
 
                 try
                 {
