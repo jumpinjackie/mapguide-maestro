@@ -191,7 +191,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                 {
                     sproc.ResourceId.Add(it);
                 }
-                this.Parent.ResourceService.SaveResourceAs(proc, this.ResourceID);
+                //Before we'd save here, but instead let's mark the resource as dirty from the user side
             }
             return resourcesCreatedOrUpdated;
         }

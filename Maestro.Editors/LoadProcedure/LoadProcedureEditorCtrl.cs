@@ -122,6 +122,11 @@ namespace Maestro.Editors.LoadProcedure
                 var result = pdlg.RunOperationAsync(this.ParentForm, worker, _ed, _lp);
                 MessageBox.Show(Properties.Resources.OperationCompleted);
                 _ed.RequestRefresh(_lp.SubType.RootPath);
+
+                //Load procedure may have modified this resource as part of executioin
+                _ed.SyncSessionCopy();
+                //HACK: Force dirty state as successful execution writes some extra XML content to the resource
+                _ed.MarkDirty();
             }
             catch (CancelException)
             {

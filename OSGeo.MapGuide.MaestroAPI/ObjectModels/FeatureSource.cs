@@ -266,14 +266,24 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
         {
             var sp = sc as SpatialContextType;
             if (sp != null)
+            {
+                if (this.SupplementalSpatialContextInfo == null)
+                    this.SupplementalSpatialContextInfo = new System.ComponentModel.BindingList<SpatialContextType>();
+
                 this.SupplementalSpatialContextInfo.Add(sp);
+            }
         }
 
         void IFeatureSource.RemoveSpatialContextOverride(ISpatialContextInfo sc)
         {
             var sp = sc as SpatialContextType;
             if (sp != null)
+            {
+                if (this.SupplementalSpatialContextInfo == null)
+                    return;
+
                 this.SupplementalSpatialContextInfo.Remove(sp);
+            }
         }
 
         [XmlIgnore]

@@ -49,7 +49,14 @@ namespace Maestro.Base.Templates
                 dlg.Filter = Properties.Resources.Filter_Dwf_Files;
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    return ObjectFactory.CreateLoadProcedure(conn, LoadType.Dwf, dlg.FileNames);
+                    var proc = ObjectFactory.CreateLoadProcedure(conn, LoadType.Dwf, dlg.FileNames);
+                    if (!string.IsNullOrEmpty(startPoint) && ResourceIdentifier.IsFolderResource(startPoint))
+                    {
+                        proc.SubType.RootPath = startPoint;
+                        proc.SubType.SpatialDataSourcesPath = startPoint;
+                        proc.SubType.LayersPath = startPoint;
+                    }
+                    return proc;
                 }
                 return null;
             }

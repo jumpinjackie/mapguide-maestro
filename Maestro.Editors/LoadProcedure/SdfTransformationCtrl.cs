@@ -55,7 +55,7 @@ namespace Maestro.Editors.LoadProcedure
             TextBoxBinder.BindText(txtCoordinateSystem, sdflp, "CoordinateSystem");
             NumericBinder.BindValueChanged(numGeneralizePercentage, sdflp, "Generalization");
             cmbSdfConflictStrategy.DataSource = Enum.GetValues(typeof(SdfKeyTreatmentType));
-            ComboBoxBinder.BindSelectedIndexChanged(cmbSdfConflictStrategy, "SelectedItem", sdflp, "SdfKeyTreatement");
+            ComboBoxBinder.BindSelectedIndexChanged(cmbSdfConflictStrategy, "SelectedItem", sdflp, "SdfKeyTreatment");
         }
 
         private void btnBrowseCs_Click(object sender, EventArgs e)

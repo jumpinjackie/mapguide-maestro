@@ -172,6 +172,11 @@ namespace Maestro.Editors
         bool IsDirty { get; }
 
         /// <summary>
+        /// Forces the edited resource to be marked as dirty
+        /// </summary>
+        void MarkDirty();
+
+        /// <summary>
         /// Raised when the edited resource has changed
         /// </summary>
         event EventHandler DirtyStateChanged;

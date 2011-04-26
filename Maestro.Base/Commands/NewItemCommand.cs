@@ -62,7 +62,10 @@ namespace Maestro.Base.Commands
 
                     var ed = orm.Open(res.ResourceID, conn, false, exp);
                     if (!string.IsNullOrEmpty(startPoint))
+                    {
                         ed.EditorService.SuggestedSaveFolder = startPoint;
+                        ed.EditorService.MarkDirty();
+                    }
                 }
             }
         }

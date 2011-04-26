@@ -90,8 +90,7 @@ namespace Maestro.Base.Editor
 
         void OnResourcePropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            this.IsDirty = true;
-            OnDirtyStateChanged();
+            MarkDirty();
         }
 
         void OnDirtyStateChanged()
@@ -105,6 +104,12 @@ namespace Maestro.Base.Editor
         {
             get;
             private set;
+        }
+
+        public void MarkDirty()
+        {
+            this.IsDirty = true;
+            OnDirtyStateChanged();
         }
 
         public bool IsNew

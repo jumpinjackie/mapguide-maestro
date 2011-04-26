@@ -73,6 +73,9 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
         protected override void OnLoad(EventArgs e)
         {
+            if (this.DesignMode)
+                return;
+
             if (_cachedDesc == null)
                 _cachedDesc = _edsvc.FeatureService.DescribeFeatureSource(txtFeatureSource.Text);
 

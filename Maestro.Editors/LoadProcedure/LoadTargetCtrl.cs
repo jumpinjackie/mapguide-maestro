@@ -39,22 +39,40 @@ namespace Maestro.Editors.LoadProcedure
         }
 
         private IEditorService _service;
+        private ILoadProcedure _loadProc;
+        private IBaseLoadProcedure _fProc;
 
         public override void Bind(IEditorService service)
         {
             service.RegisterCustomNotifier(this);
 
             _service = service;
-            var lp = _service.GetEditedResource() as ILoadProcedure;
-            var fproc = lp.SubType;
-            
-            TextBoxBinder.BindText(txtTargetRoot, fproc, "RootPath");
-            CheckBoxBinder.BindChecked(chkCreateFeatureSources, fproc, "GenerateSpatialDataSources");
-            CheckBoxBinder.BindChecked(chkCreateLayers, fproc, "GenerateLayers");
-            TextBoxBinder.BindText(txtFeatureSourceRoot, fproc, "SpatialDataSourcesPath");
-            TextBoxBinder.BindText(txtFeatureFolderName, fproc, "SpatialDataSourcesFolder");
-            TextBoxBinder.BindText(txtLayerRoot, fproc, "LayersPath");
-            TextBoxBinder.BindText(txtLayerFolderName, fproc, "LayersFolder");
+            _loadProc = _service.GetEditedResource() as ILoadProcedure;
+            _fProc = _loadProc.SubType;
+
+            TextBoxBinder.BindText(txtTargetRoot, _fProc, "RootPath");
+            CheckBoxBinder.BindChecked(chkCreateFeatureSources, _fProc, "GenerateSpatialDataSources");
+            CheckBoxBinder.BindChecked(chkCreateLayers, _fProc, "GenerateLayers");
+            TextBoxBinder.BindText(txtFeatureSourceRoot, _fProc, "SpatialDataSourcesPath");
+            TextBoxBinder.BindText(txtFeatureFolderName, _fProc, "SpatialDataSourcesFolder");
+            TextBoxBinder.BindText(txtLayerRoot, _fProc, "LayersPath");
+            TextBoxBinder.BindText(txtLayerFolderName, _fProc, "LayersFolder");
+
+            _fProc.PropertyChanged += OnLoadProcedurePropertyChanged;
+        }
+
+        protected override void UnsubscribeEventHandlers()
+        {
+            if (_fProc != null)
+            {
+                _fProc.PropertyChanged -= OnLoadProcedurePropertyChanged;
+            }
+            base.UnsubscribeEventHandlers();
+        }
+
+        void OnLoadProcedurePropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            OnResourceChanged();
         }
 
         private void btnBrowseRoot_Click(object sender, EventArgs e)

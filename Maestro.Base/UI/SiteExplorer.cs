@@ -119,11 +119,17 @@ namespace Maestro.Base.UI
                 var rid = new ResourceIdentifier(resId);
                 if (!rid.IsFolder)
                     resId = rid.ParentFolder;
-                
+
                 //If this node is not initially expanded, we get NRE on refresh
                 ExpandNode(resId);
 
                 var path = _model.GetPathFromResourceId(resId);
+                while (path == null)
+                {
+                    resId = ResourceIdentifier.GetParentFolder(resId);
+                    path = _model.GetPathFromResourceId(resId);
+                }
+
                 var node = trvResources.FindNode(path, true);
                 if (node != null)
                 {

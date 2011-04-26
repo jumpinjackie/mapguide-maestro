@@ -363,7 +363,11 @@ namespace OSGeo.MapGuide.MaestroAPI
 		{
 			foreach(string s in param.Keys)
 			{
-				System.IO.MemoryStream content = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(param[s]));
+                string val = param[s];
+                if (string.IsNullOrEmpty(val))
+                    continue;
+
+                System.IO.MemoryStream content = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(val));
 				AppendFormContent(s, null, boundary, responseStream, content, null);
 			}
 		}

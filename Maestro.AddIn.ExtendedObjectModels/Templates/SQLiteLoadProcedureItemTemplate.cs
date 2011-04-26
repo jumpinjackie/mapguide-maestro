@@ -59,7 +59,14 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
                 dlg.Filter = Properties.Resources.Filter_Sqlite_Files;
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    return ObjectFactory.CreateLoadProcedure(conn, LoadType.Sqlite, dlg.FileNames);
+                    var proc = ObjectFactory.CreateLoadProcedure(conn, LoadType.Sqlite, dlg.FileNames);
+                    if (!string.IsNullOrEmpty(startPoint) && ResourceIdentifier.IsFolderResource(startPoint))
+                    {
+                        proc.SubType.RootPath = startPoint;
+                        proc.SubType.SpatialDataSourcesPath = startPoint;
+                        proc.SubType.LayersPath = startPoint;
+                    }
+                    return proc;
                 }
                 return null;
             }
