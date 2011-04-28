@@ -92,7 +92,7 @@
             </Condition>
             <MenuItem type="Separator" />
             <Condition action="Disable" name="EditorFunction">
-                <Condition action="Disable" name="EditorFunction" property="CanSave">
+                <Condition action="Disable" name="HasDocuments">
                     <MenuItem id="Save"
                               icon="disk"
                               label="${res:Menu_File_SaveResource}"
@@ -310,7 +310,7 @@
             <ToolbarItem type="Separator" />
         </Condition>
         <Condition action="Disable" name="EditorFunction">
-            <Condition action="Disable" name="EditorFunction" property="CanSave">
+            <Condition action="Disable" name="HasDocuments">
                 <ToolbarItem id="Save"
                              icon="disk"
                              tooltip="${res:Menu_File_SaveResource}"
