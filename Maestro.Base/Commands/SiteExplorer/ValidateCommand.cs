@@ -33,10 +33,8 @@ using Maestro.Base.UI;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
-    internal class ValidateCommand : AbstractMenuCommand
+    internal class ValidateCommand : BaseValidateCommand
     {
-        private IServerConnection _conn;
-
         public override void Run()
         {
             var wb = Workbench.Instance;
@@ -55,96 +53,10 @@ namespace Maestro.Base.Commands.SiteExplorer
                     args[i] = items[i].ResourceId;
                 }
 
-                var issues = (ValidationIssue[])pdlg.RunOperationAsync(wb, new ProgressDialog.DoBackgroundWork(BackgroundValidate), items[0].ResourceId);
+                var issues = (ValidationIssue[])pdlg.RunOperationAsync(wb, new ProgressDialog.DoBackgroundWork(BackgroundValidate), args);
 
-                if (issues != null)
-                {
-                    if (issues.Length > 0)
-                    {
-                        //Sigh! LINQ would've made this code so simple...
-
-                        var sort = new Dictionary<string, List<ValidationIssue>>();
-                        foreach (var issue in issues)
-                        {
-                            string resId = issue.Resource.ResourceID;
-                            if (!sort.ContainsKey(resId))
-                                sort[resId] = new List<ValidationIssue>();
-
-                            sort[resId].Add(issue);
-                        }
-
-                        var groupedIssues = new List<KeyValuePair<string, ValidationIssue[]>>();
-                        foreach (var kvp in sort)
-                        {
-                            groupedIssues.Add(
-                                new KeyValuePair<string, ValidationIssue[]>(
-                                    kvp.Key,
-                                    kvp.Value.ToArray()));
-                        }
-
-                        var resDlg = new ValidationResultsDialog(groupedIssues);
-                        resDlg.Show();
-                    }
-                    else
-                    {
-                        MessageService.ShowMessage(Properties.Resources.ValidationNoIssues);
-                    }
-                }
+                CollectAndDisplayIssues(issues);
             }
-        }
-
-        private object BackgroundValidate(BackgroundWorker worker, DoWorkEventArgs e, params object[] args)
-        {
-            //Collect all documents to be validated. Some of these selected items
-            //may be folders.
-            var documents = new List<string>();
-            foreach (object a in args)
-            {
-                string rid = a.ToString();
-                if (ResourceIdentifier.Validate(rid))
-                {
-                    var resId = new ResourceIdentifier(rid);
-                    if (resId.IsFolder)
-                    {
-                        foreach (IRepositoryItem o in _conn.ResourceService.GetRepositoryResources((string)args[0]).Children)
-                        {
-                            if (!o.IsFolder)
-                            {
-                                documents.Add(o.ResourceId);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        documents.Add(rid);
-                    }
-                }
-            }
-
-            worker.ReportProgress(0);
-            var context = new ResourceValidationContext(_conn.ResourceService, _conn.FeatureService);
-
-            var set = new ValidationResultSet();
-            int i = 0;
-            foreach (string s in documents)
-            {
-                worker.ReportProgress((int)((i / (double)documents.Count) * 100), s);
-                IResource item = null;
-                try
-                {
-                    item = _conn.ResourceService.GetResource(s);
-                    set.AddIssues(ResourceValidatorSet.Validate(context, item, true));
-                }
-                catch (Exception ex)
-                {
-                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    set.AddIssue(new ValidationIssue(item, ValidationStatus.Error, ValidationStatusCode.Error_General_ValidationError, string.Format(Properties.Resources.ValidationResourceLoadFailed, msg)));
-                }
-                i++;
-                worker.ReportProgress((int)((i / (double)documents.Count) * 100), s);
-            }
-
-            return set.GetAllIssues();
         }
     }
 }

@@ -1011,6 +1011,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Validate Edited Resource.
+        /// </summary>
+        internal static string Menu_File_ValidateEditedResource {
+            get {
+                return ResourceManager.GetString("Menu_File_ValidateEditedResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Validate Resource.
         /// </summary>
         internal static string Menu_File_ValidateResource {

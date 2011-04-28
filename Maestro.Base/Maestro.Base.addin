@@ -353,8 +353,8 @@
             <ToolbarItem id="Validate"
                          icon="tick"
                          label="${res:Toolbar_Validate}"
-                         tooltip="${res:Menu_File_ValidateResource}"
-                         class="Maestro.Base.Commands.SiteExplorer.ValidateCommand" />
+                         tooltip="${res:Menu_File_ValidateEditedResource}"
+                         class="Maestro.Base.Commands.ValidateEditedResourceCommand" />
         </Condition>
         <!-- 
         Only needed if our custom drawn close buttons don't appear on document

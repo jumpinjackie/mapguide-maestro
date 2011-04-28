@@ -126,6 +126,7 @@
     <Compile Include="Commands\Test\OpenUnmanagedResourceCommand.cs" />
     <Compile Include="Commands\Test\SelectFdoProviderCommand.cs" />
     <Compile Include="Commands\Test\TestCommands.cs" />
+    <Compile Include="Commands\ValidateEditedResourceCommand.cs" />
     <Compile Include="Commands\XmlEditCommand.cs" />
     <Compile Include="Editor\DrawingSourceEditor.cs">
       <SubType>UserControl</SubType>
