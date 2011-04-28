@@ -34,6 +34,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI;
 using System.Collections.Specialized;
+using Maestro.Editors.Common;
 
 namespace Maestro.Editors.FeatureSource.Providers.Gdal
 {
@@ -90,6 +91,13 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
         private void AddRasterItem(string dir, GdalRasterItem item)
         {
+            foreach (ListViewItem li in lstView.Items)
+            {
+                //A list view item of the same file name exist. Abort.
+                if (((GdalRasterItem)li.Tag).FileName == item.FileName)
+                    return;
+            }
+
             ListViewItem lvi = new ListViewItem();
             lvi.Name = Path.Combine(dir, item.FileName);
             lvi.Text = lvi.Name;
@@ -155,13 +163,18 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
         private void DoUpdateConfiguration(string[] toAdd, string[] toRemove)
         {
+            DoUpdateConfiguration(toAdd, toRemove, false);
+        }
+
+        private void DoUpdateConfiguration(string[] toAdd, string[] toRemove, bool isAlias)
+        {
             if (_conf == null)
                 BuildDefaultDocument();
 
             var pdlg = new ProgressDialog();
             pdlg.CancelAbortsThread = true;
             var worker = new ProgressDialog.DoBackgroundWork(UpdateConfigurationDocument);
-            var result = (UpdateConfigResult)pdlg.RunOperationAsync(null, worker, _conf, _fs.CurrentConnection, toAdd, toRemove);
+            var result = (UpdateConfigResult)pdlg.RunOperationAsync(null, worker, _conf, _fs.CurrentConnection, toAdd, toRemove, isAlias);
             if (result.Added.Count > 0 || result.Removed.Count > 0)
             {
                 _fs.SetConfigurationContent(_conf.ToXml());
@@ -173,8 +186,18 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                 }
                 foreach (var added in result.Added)
                 {
-                    var dir = Path.GetDirectoryName(added);
-                    var fileName = Path.GetFileName(added);
+                    string dir = null;
+                    string fileName = null;
+                    if (isAlias)
+                    {
+                        dir = added.Substring(0, added.LastIndexOf("\\"));
+                        fileName = added.Substring(added.LastIndexOf("\\") + 1);
+                    }
+                    else
+                    {
+                        dir = Path.GetDirectoryName(added);
+                        fileName = Path.GetFileName(added);
+                    }
 
                     foreach (var loc in _conf.RasterLocations)
                     {
@@ -208,6 +231,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
             IServerConnection conn = (IServerConnection)args[1];
             string [] toAdd = args[2] as string[];
             string [] toRemove = args[3] as string[];
+            bool isAlias = (bool)args[4];
 
             worker.ReportProgress(0, Properties.Resources.UpdatingConfiguration);
 
@@ -220,11 +244,21 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
             //Remove first
             foreach (var remove in toRemove)
             {
-                var dir = Path.GetDirectoryName(remove);
+                string dir = null;
+                if (isAlias)
+                {
+                    dir = remove.Substring(0, remove.LastIndexOf("\\"));
+                }
+                else
+                {
+                    dir = Path.GetDirectoryName(remove);
+                }
+
                 var loc = FindLocation(conf, dir);
                 if (null != loc)
                 {
-                    loc.RemoveItem(Path.GetFileName(remove));
+                    string f = isAlias ? remove.Substring(remove.LastIndexOf("\\") + 1) : Path.GetFileName(remove);
+                    loc.RemoveItem(f);
                     result.Removed.Add(remove);
                     if (loc.Items.Length == 0)
                         conf.RemoveLocation(loc);
@@ -236,7 +270,15 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
             //Then add
             foreach (var add in toAdd)
             {
-                var dir = Path.GetDirectoryName(add);
+                string dir = null;
+                if (isAlias)
+                {
+                    dir = add.Substring(0, add.LastIndexOf("/"));
+                }
+                else
+                {
+                    dir = Path.GetDirectoryName(add);
+                }
                 var loc = conf.AddLocation(dir);
 
                 //Create a temp feature source to attempt interrogation of extents
@@ -252,7 +294,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                 
                 var raster = new GdalRasterItem()
                 {
-                    FileName = Path.GetFileName(add)
+                    FileName = isAlias ? add.Substring(add.LastIndexOf("/") + 1) : Path.GetFileName(add)
                 };
 
                 if (scList.SpatialContext.Count > 0)
@@ -308,6 +350,69 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                 files.AddRange(Directory.GetFiles(folderBrowserDialog.SelectedPath, "*.bmp"));
 
                 DoUpdateConfiguration(files.ToArray(), new string[0]);
+            }
+        }
+
+        private void browseAliasedFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var picker = new UnmanagedFileBrowser(_service.ResourceService))
+            {
+                picker.AllowMultipleSelection = true;
+                if (picker.ShowDialog() == DialogResult.OK)
+                {
+                    DoUpdateConfiguration(picker.SelectedItems, new string[0], true);
+                }
+            }
+        }
+
+        private void browseAliasedFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var picker = new UnmanagedFileBrowser(_service.ResourceService))
+            {
+                picker.AllowMultipleSelection = false;
+                picker.SelectFoldersOnly = true;
+                if (picker.ShowDialog() == DialogResult.OK)
+                {
+                    List<string> files = new List<string>();
+                    var folder = picker.SelectedItem;
+                    if (!string.IsNullOrEmpty(folder))
+                    {
+                        folder = folder.Replace("%MG_DATA_PATH_ALIAS[", "[")
+                                       .Replace("]%", "]");
+                    }
+                    var list = _service.ResourceService.EnumerateUnmanagedData(folder, string.Empty, false, UnmanagedDataTypes.Files);
+                    var extensions = new List<string>(new string[] { 
+                        ".png",
+                        ".jpg",
+                        ".jpeg",
+                        ".tif",
+                        ".tiff",
+                        ".ecw",
+                        ".sid",
+                        ".dem",
+                        ".gif",
+                        ".bmp"
+                    });
+                    foreach (var f in list.Items)
+                    {
+                        var file = f as OSGeo.MapGuide.ObjectModels.Common.UnmanagedDataListUnmanagedDataFile;
+                        if (file != null)
+                        {
+                            foreach (var ext in extensions)
+                            {
+                                if (file.FileName.ToLower().EndsWith(ext))
+                                {
+                                    var leftpart = file.UnmanagedDataId.Substring(0, file.UnmanagedDataId.IndexOf("]"));
+                                    var rightpart = file.UnmanagedDataId.Substring(file.UnmanagedDataId.IndexOf("]") + 1);
+                                    var item = "%MG_DATA_PATH_ALIAS" + leftpart + "]%" + rightpart;
+                                    files.Add(item);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    DoUpdateConfiguration(files.ToArray(), new string[0], true);
+                }
             }
         }
     }

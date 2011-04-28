@@ -27,15 +27,24 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
     public class GdalRasterLocationItem : IFdoSerializable
     {
-        private List<GdalRasterItem> _items = new List<GdalRasterItem>();
+        private Dictionary<string, GdalRasterItem> _items = new Dictionary<string, GdalRasterItem>();
 
         public string Location { get; set; }
 
-        public void AddItem(GdalRasterItem item) { _items.Add(item); }
+        public void AddItem(GdalRasterItem item) 
+        {
+            if (!_items.ContainsKey(item.FileName))
+                _items.Add(item.FileName, item);
+            else
+                _items[item.FileName] = item;
+        }
 
-        public void RemoveItem(GdalRasterItem item) { _items.Remove(item); }
+        public void RemoveItem(GdalRasterItem item) 
+        { 
+            _items.Remove(item.FileName); 
+        }
 
-        public GdalRasterItem[] Items { get { return _items.ToArray(); } }
+        public GdalRasterItem[] Items { get { return new List<GdalRasterItem>(_items.Values).ToArray(); } }
 
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
@@ -44,7 +53,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             locName.Value = this.Location;
             loc.Attributes.Append(locName);
 
-            foreach (var item in _items)
+            foreach (var item in _items.Values)
             {
                 item.WriteXml(doc, loc);   
             }
@@ -71,17 +80,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 
         public void RemoveItem(string fileName)
         {
-            GdalRasterItem item = null;
-            foreach (var raster in _items)
-            {
-                if (raster.FileName == fileName)
-                {
-                    item = raster;
-                }
-            }
-
-            if (item != null)
-                _items.Remove(item);
+            _items.Remove(fileName);
         }
     }
 

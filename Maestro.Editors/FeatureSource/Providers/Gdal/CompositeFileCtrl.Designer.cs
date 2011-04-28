@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompositeFileCtrl));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnAdd = new System.Windows.Forms.ToolStripDropDownButton();
+            this.browseFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.browseFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.lstView = new System.Windows.Forms.ListView();
             this.imgList = new System.Windows.Forms.ImageList(this.components);
@@ -38,9 +41,9 @@
             this.btnRebuild = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnAdd = new System.Windows.Forms.ToolStripDropDownButton();
-            this.browseFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.browseFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.browseAliasedFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.browseAliasedFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +57,36 @@
             this.toolStrip1.Size = new System.Drawing.Size(504, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.browseFilesToolStripMenuItem,
+            this.browseFolderToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.browseAliasedFileToolStripMenuItem,
+            this.browseAliasedFolderToolStripMenuItem});
+            this.btnAdd.Image = global::Maestro.Editors.Properties.Resources.plus_circle;
+            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(58, 22);
+            this.btnAdd.Text = "Add";
+            // 
+            // browseFilesToolStripMenuItem
+            // 
+            this.browseFilesToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.document;
+            this.browseFilesToolStripMenuItem.Name = "browseFilesToolStripMenuItem";
+            this.browseFilesToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.browseFilesToolStripMenuItem.Text = "Browse Files";
+            this.browseFilesToolStripMenuItem.Click += new System.EventHandler(this.browseFilesToolStripMenuItem_Click);
+            // 
+            // browseFolderToolStripMenuItem
+            // 
+            this.browseFolderToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.folder_horizontal;
+            this.browseFolderToolStripMenuItem.Name = "browseFolderToolStripMenuItem";
+            this.browseFolderToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.browseFolderToolStripMenuItem.Text = "Browse Folder";
+            this.browseFolderToolStripMenuItem.Click += new System.EventHandler(this.browseFolderToolStripMenuItem_Click);
             // 
             // btnDelete
             // 
@@ -113,32 +146,26 @@
             // 
             this.openFileDialog.Multiselect = true;
             // 
-            // btnAdd
+            // browseAliasedFileToolStripMenuItem
             // 
-            this.btnAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.browseFilesToolStripMenuItem,
-            this.browseFolderToolStripMenuItem});
-            this.btnAdd.Image = global::Maestro.Editors.Properties.Resources.plus_circle;
-            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(58, 22);
-            this.btnAdd.Text = "Add";
+            this.browseAliasedFileToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.document;
+            this.browseAliasedFileToolStripMenuItem.Name = "browseAliasedFileToolStripMenuItem";
+            this.browseAliasedFileToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.browseAliasedFileToolStripMenuItem.Text = "Browse Aliased File";
+            this.browseAliasedFileToolStripMenuItem.Click += new System.EventHandler(this.browseAliasedFileToolStripMenuItem_Click);
             // 
-            // browseFilesToolStripMenuItem
+            // browseAliasedFolderToolStripMenuItem
             // 
-            this.browseFilesToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.document;
-            this.browseFilesToolStripMenuItem.Name = "browseFilesToolStripMenuItem";
-            this.browseFilesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.browseFilesToolStripMenuItem.Text = "Browse Files";
-            this.browseFilesToolStripMenuItem.Click += new System.EventHandler(this.browseFilesToolStripMenuItem_Click);
+            this.browseAliasedFolderToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.folder_horizontal;
+            this.browseAliasedFolderToolStripMenuItem.Name = "browseAliasedFolderToolStripMenuItem";
+            this.browseAliasedFolderToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.browseAliasedFolderToolStripMenuItem.Text = "Browse Aliased Folder";
+            this.browseAliasedFolderToolStripMenuItem.Click += new System.EventHandler(this.browseAliasedFolderToolStripMenuItem_Click);
             // 
-            // browseFolderToolStripMenuItem
+            // toolStripSeparator1
             // 
-            this.browseFolderToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.folder_horizontal;
-            this.browseFolderToolStripMenuItem.Name = "browseFolderToolStripMenuItem";
-            this.browseFolderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.browseFolderToolStripMenuItem.Text = "Browse Folder";
-            this.browseFolderToolStripMenuItem.Click += new System.EventHandler(this.browseFolderToolStripMenuItem_Click);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(186, 6);
             // 
             // CompositeFileCtrl
             // 
@@ -170,5 +197,8 @@
         private System.Windows.Forms.ToolStripDropDownButton btnAdd;
         private System.Windows.Forms.ToolStripMenuItem browseFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem browseFolderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem browseAliasedFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem browseAliasedFolderToolStripMenuItem;
     }
 }
