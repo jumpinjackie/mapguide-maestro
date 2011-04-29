@@ -47,8 +47,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.GroupBox groupBox3;
+		private System.Windows.Forms.GroupBox grpSymbolFill;
+		private System.Windows.Forms.GroupBox grpSymbolBorder;
 		private System.Windows.Forms.GroupBox groupBox4;
 		private System.Windows.Forms.PictureBox previewPicture;
 		private System.Data.DataSet ComboBoxDataSet;
@@ -114,6 +114,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         private ClassDefinition m_schema;
         private string m_featureSource;
         private string m_providername;
+        private GroupBox grpW2DStyle;
+        private CheckBox chkW2DTextColor;
+        private ColorComboWithTransparency cmbW2DTextColor;
+        private CheckBox chkW2DLineColor;
+        private ColorComboWithTransparency cmbW2DLineColor;
+        private CheckBox chkW2DFillColor;
+        private ColorComboWithTransparency cmbW2DFillColor;
         private ILayerElementFactory _factory;
 
         public PointFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource)
@@ -129,6 +136,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_featureSource = featureSource;
 
             m_item = _factory.CreateDefaultPointSymbolization2D();
+        }
+
+        public PointFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource, Image currentW2D)
+            : this(editor, schema, featureSource)
+        {
+            grpW2DStyle.Tag = currentW2D;
         }
 
 		private PointFeatureStyleEditor()
@@ -158,13 +171,21 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 			lineStyleEditor.fillCombo.SelectedIndexChanged +=new EventHandler(fillCombo_Line_SelectedIndexChanged);
 		}
 
-		private void setUIForMarkSymbol(bool enabled)
+		private void setUIForMarkSymbol(bool isMark)
 		{
-            groupBoxSymbolLocation.Enabled = enabled;
-            groupBox2.Enabled = enabled;
-            groupBox3.Enabled = enabled;
+            groupBoxSymbolLocation.Enabled = isMark;
+            grpSymbolFill.Enabled = isMark;
+            grpSymbolBorder.Enabled = isMark;
 
-            groupBoxFont.Enabled = !enabled;
+            groupBoxFont.Enabled = false;
+            grpW2DStyle.Enabled = false;
+
+            if (!isMark)
+            {
+                //Determine if it is font or w2d
+                groupBoxFont.Enabled = (m_item.Symbol.Type == PointSymbolType.Font);
+                grpW2DStyle.Enabled = (m_item.Symbol.Type == PointSymbolType.W2D);
+            }
 		}
 
 		private void UpdateDisplay()
@@ -242,7 +263,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 					IFontSymbol f = (IFontSymbol)m_item.Symbol;
 
 					// TODO: Dislike this hard coding, but with association from 'Shape' the 'Font...' string cannot be found or set from the Symbol combobox
-					Symbol.SelectedIndex = 6;
+					Symbol.SelectedIndex = 6; //Font
 
                     fontCombo.SelectedIndex = fontCombo.FindString(f.FontName);
                     if (string.Compare(fontCombo.Text, f.FontName, true) == 0)
@@ -263,9 +284,30 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
 					setUIForMarkSymbol(false);
 				}
-				else
-					//TODO: Fix this
-					MessageBox.Show(this, Properties.Resources.SymbolTypeNotSupported, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else if (m_item.Symbol.Type == PointSymbolType.W2D)
+                {
+                    // TODO: Dislike this hard coding, but with association from 'Shape' the 'Font...' string cannot be found or set from the Symbol combobox
+                    Symbol.SelectedIndex = 7; //Symbol
+                    var sym = (IW2DSymbol)m_item.Symbol;
+
+                    chkW2DFillColor.Checked = (sym.FillColor != null);
+                    chkW2DLineColor.Checked = (sym.LineColor != null);
+                    chkW2DTextColor.Checked = (sym.TextColor != null);
+
+                    if (chkW2DFillColor.Checked)
+                        cmbW2DFillColor.CurrentColor = Utility.ParseHTMLColor(sym.FillColor);
+
+                    if (chkW2DLineColor.Checked)
+                        cmbW2DLineColor.CurrentColor = Utility.ParseHTMLColor(sym.LineColor);
+
+                    if (chkW2DTextColor.Checked)
+                        cmbW2DTextColor.CurrentColor = Utility.ParseHTMLColor(sym.TextColor);
+
+                    setUIForMarkSymbol(false);
+                }
+                else
+                    //TODO: Fix this
+                    MessageBox.Show(this, Properties.Resources.SymbolTypeNotSupported, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 				previewPicture.Refresh();
 			} 
@@ -324,17 +366,17 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.fillStyleEditor = new FillStyleEditor();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lineStyleEditor = new LineStyleEditor();
+            this.grpSymbolFill = new System.Windows.Forms.GroupBox();
+            this.fillStyleEditor = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.FillStyleEditor();
+            this.grpSymbolBorder = new System.Windows.Forms.GroupBox();
+            this.lineStyleEditor = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.LineStyleEditor();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.previewPicture = new System.Windows.Forms.PictureBox();
             this.ComboBoxDataSet = new System.Data.DataSet();
             this.DisplayPoints = new System.Windows.Forms.CheckBox();
             this.groupBoxFont = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.colorFontForeground = new ColorComboWithTransparency();
+            this.colorFontForeground = new Maestro.Editors.Common.ColorComboWithTransparency();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.FontBoldButton = new System.Windows.Forms.ToolStripButton();
@@ -352,13 +394,20 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.MaintainAspectRatio = new System.Windows.Forms.CheckBox();
+            this.grpW2DStyle = new System.Windows.Forms.GroupBox();
+            this.chkW2DTextColor = new System.Windows.Forms.CheckBox();
+            this.cmbW2DTextColor = new Maestro.Editors.Common.ColorComboWithTransparency();
+            this.chkW2DLineColor = new System.Windows.Forms.CheckBox();
+            this.cmbW2DLineColor = new Maestro.Editors.Common.ColorComboWithTransparency();
+            this.chkW2DFillColor = new System.Windows.Forms.CheckBox();
+            this.cmbW2DFillColor = new Maestro.Editors.Common.ColorComboWithTransparency();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RotationTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SymbolMarkTable)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.grpSymbolFill.SuspendLayout();
+            this.grpSymbolBorder.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).BeginInit();
@@ -366,6 +415,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBoxSymbolLocation.SuspendLayout();
+            this.grpW2DStyle.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -418,12 +468,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
             // 
-            // HeigthText
+            // HeightText
             // 
-            resources.ApplyResources(this.HeightText, "HeigthText");
+            resources.ApplyResources(this.HeightText, "HeightText");
             this.HeightText.Items.AddRange(new object[] {
-            resources.GetString("HeigthText.Items")});
-            this.HeightText.Name = "HeigthText";
+            resources.GetString("HeightText.Items")});
+            this.HeightText.Name = "HeightText";
             this.HeightText.SelectedIndexChanged += new System.EventHandler(this.HeigthText_SelectedIndexChanged);
             this.HeightText.TextChanged += new System.EventHandler(this.HeightText_TextChanged);
             // 
@@ -542,24 +592,24 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // groupBox2
+            // grpSymbolFill
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.fillStyleEditor);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            resources.ApplyResources(this.grpSymbolFill, "grpSymbolFill");
+            this.grpSymbolFill.Controls.Add(this.fillStyleEditor);
+            this.grpSymbolFill.Name = "grpSymbolFill";
+            this.grpSymbolFill.TabStop = false;
             // 
             // fillStyleEditor
             // 
             resources.ApplyResources(this.fillStyleEditor, "fillStyleEditor");
             this.fillStyleEditor.Name = "fillStyleEditor";
             // 
-            // groupBox3
+            // grpSymbolBorder
             // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Controls.Add(this.lineStyleEditor);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
+            resources.ApplyResources(this.grpSymbolBorder, "grpSymbolBorder");
+            this.grpSymbolBorder.Controls.Add(this.lineStyleEditor);
+            this.grpSymbolBorder.Name = "grpSymbolBorder";
+            this.grpSymbolBorder.TabStop = false;
             // 
             // lineStyleEditor
             // 
@@ -741,16 +791,71 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             resources.ApplyResources(this.MaintainAspectRatio, "MaintainAspectRatio");
             this.MaintainAspectRatio.Name = "MaintainAspectRatio";
             // 
+            // grpW2DStyle
+            // 
+            this.grpW2DStyle.Controls.Add(this.chkW2DTextColor);
+            this.grpW2DStyle.Controls.Add(this.cmbW2DTextColor);
+            this.grpW2DStyle.Controls.Add(this.chkW2DLineColor);
+            this.grpW2DStyle.Controls.Add(this.cmbW2DLineColor);
+            this.grpW2DStyle.Controls.Add(this.chkW2DFillColor);
+            this.grpW2DStyle.Controls.Add(this.cmbW2DFillColor);
+            resources.ApplyResources(this.grpW2DStyle, "grpW2DStyle");
+            this.grpW2DStyle.Name = "grpW2DStyle";
+            this.grpW2DStyle.TabStop = false;
+            // 
+            // chkW2DTextColor
+            // 
+            resources.ApplyResources(this.chkW2DTextColor, "chkW2DTextColor");
+            this.chkW2DTextColor.Name = "chkW2DTextColor";
+            this.chkW2DTextColor.UseVisualStyleBackColor = true;
+            this.chkW2DTextColor.CheckedChanged += new System.EventHandler(this.chkW2DTextColor_CheckedChanged);
+            // 
+            // cmbW2DTextColor
+            // 
+            resources.ApplyResources(this.cmbW2DTextColor, "cmbW2DTextColor");
+            this.cmbW2DTextColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cmbW2DTextColor.Name = "cmbW2DTextColor";
+            this.cmbW2DTextColor.CurrentColorChanged += new System.EventHandler(this.cmbW2DTextColor_SelectedIndexChanged);
+            // 
+            // chkW2DLineColor
+            // 
+            resources.ApplyResources(this.chkW2DLineColor, "chkW2DLineColor");
+            this.chkW2DLineColor.Name = "chkW2DLineColor";
+            this.chkW2DLineColor.UseVisualStyleBackColor = true;
+            this.chkW2DLineColor.CheckedChanged += new System.EventHandler(this.chkW2DLineColor_CheckedChanged);
+            // 
+            // cmbW2DLineColor
+            // 
+            resources.ApplyResources(this.cmbW2DLineColor, "cmbW2DLineColor");
+            this.cmbW2DLineColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cmbW2DLineColor.Name = "cmbW2DLineColor";
+            this.cmbW2DLineColor.CurrentColorChanged += new System.EventHandler(this.cmbW2DLineColor_SelectedIndexChanged);
+            // 
+            // chkW2DFillColor
+            // 
+            resources.ApplyResources(this.chkW2DFillColor, "chkW2DFillColor");
+            this.chkW2DFillColor.Name = "chkW2DFillColor";
+            this.chkW2DFillColor.UseVisualStyleBackColor = true;
+            this.chkW2DFillColor.CheckedChanged += new System.EventHandler(this.chkW2DFillColor_CheckedChanged);
+            // 
+            // cmbW2DFillColor
+            // 
+            resources.ApplyResources(this.cmbW2DFillColor, "cmbW2DFillColor");
+            this.cmbW2DFillColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cmbW2DFillColor.Name = "cmbW2DFillColor";
+            this.cmbW2DFillColor.CurrentColorChanged += new System.EventHandler(this.cmbW2DFillColor_SelectedIndexChanged);
+            // 
             // PointFeatureStyleEditor
             // 
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.grpW2DStyle);
             this.Controls.Add(this.groupBoxSymbolLocation);
             this.Controls.Add(this.groupBoxFont);
             this.Controls.Add(this.DisplayPoints);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.grpSymbolFill);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.grpSymbolBorder);
             this.Name = "PointFeatureStyleEditor";
             this.Load += new System.EventHandler(this.PointFeatureStyleEditor_Load);
             this.groupBox1.ResumeLayout(false);
@@ -759,8 +864,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SymbolMarkTable)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
+            this.grpSymbolFill.ResumeLayout(false);
+            this.grpSymbolBorder.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).EndInit();
@@ -772,6 +877,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.toolStrip1.PerformLayout();
             this.groupBoxSymbolLocation.ResumeLayout(false);
             this.groupBoxSymbolLocation.PerformLayout();
+            this.grpW2DStyle.ResumeLayout(false);
+            this.grpW2DStyle.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -786,13 +893,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
 		{
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-			if (m_item != null && m_item.Symbol.Type == PointSymbolType.Mark)
-				FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IMarkSymbol)m_item.Symbol);
-			else if (m_item != null && m_item.Symbol.Type == PointSymbolType.Font)
+            if (m_item != null && m_item.Symbol.Type == PointSymbolType.Mark)
+                FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IMarkSymbol)m_item.Symbol);
+            else if (m_item != null && m_item.Symbol.Type == PointSymbolType.Font)
                 FeaturePreviewRender.RenderPreviewFontSymbol(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IFontSymbol)m_item.Symbol);
-			else
+            else if (m_item != null && m_item.Symbol.Type == PointSymbolType.W2D)
+                FeaturePreviewRender.RenderW2DImage(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IW2DSymbol)m_item.Symbol, grpW2DStyle.Tag as Image);
+            else
                 FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), null);
 		}
+
+        private IW2DSymbol m_lastSymbol;
+
+        internal Image W2DSymbolPreviewImage { get { return grpW2DStyle.Tag as Image; } }
 
 		private void Symbol_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
@@ -818,6 +931,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             if (isSymbol)
             {
+                //W2D symbol is not selected, so invalidate
+                grpW2DStyle.Tag = null;
+
                 bool update = m_item.Symbol != m_lastMark;
 
                 if (m_lastMark == null)
@@ -830,8 +946,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 if (update)
                     UpdateDisplay();
             }
-			else if (Symbol.SelectedIndex == 6)
+			else if (Symbol.SelectedIndex == 6) //Font
 			{
+                //W2D symbol is not selected, so invalidate
+                grpW2DStyle.Tag = null;
+
 			    // user wants to change away FROM a valid 'Mark' symbol type
 			    // if ("Font..." == Symbol.SelectedText)
 
@@ -852,11 +971,40 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 if (update)
                     UpdateDisplay();
             }
-			else
-			{
-				MessageBox.Show(this, Properties.Resources.SymbolTypeNotSupported, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-				return;
-			}
+            else if (Symbol.SelectedIndex == 7) //Symbol
+            {
+                using (var picker = new SymbolPicker(m_editor.GetEditedResource().CurrentConnection))
+                {
+                    if (picker.ShowDialog() == DialogResult.OK)
+                    {
+                        bool update = m_item.Symbol != m_lastSymbol;
+                        if (m_lastSymbol == null)
+                        {
+                            m_lastSymbol = _factory.CreateDefaultW2DSymbol(picker.SymbolLibrary, picker.SymbolName);
+                            m_lastSymbol.SizeContext = SizeContextType.DeviceUnits;
+                            m_lastSymbol.Rotation = "0";
+                            m_lastSymbol.SizeX = "10";
+                            m_lastSymbol.SizeY = "10";
+                            m_lastSymbol.Unit = LengthUnitType.Points;
+                        }
+
+                        m_item.Symbol = m_lastSymbol;
+                        //Store the W2D preview image
+                        grpW2DStyle.Tag = picker.SymbolImage;
+                        setUIForMarkSymbol(false);
+                        if (update)
+                            UpdateDisplay();
+                    }
+                }
+            }
+            else
+            {
+                //W2D symbol is not selected, so invalidate
+                grpW2DStyle.Tag = null;
+
+                MessageBox.Show(this, Properties.Resources.SymbolTypeNotSupported, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
 			previewPicture.Refresh();
 			if (Changed != null)
@@ -872,6 +1020,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 ((IMarkSymbol)m_item.Symbol).SizeContext = (SizeContextType)Enum.Parse((typeof(SizeContextType)), (string)SizeContext.SelectedValue);
             else if (m_item.Symbol.Type == PointSymbolType.Font)
                 ((IFontSymbol)m_item.Symbol).SizeContext = (SizeContextType)Enum.Parse((typeof(SizeContextType)), (string)SizeContext.SelectedValue);
+            else if (m_item.Symbol.Type == PointSymbolType.W2D)
+                ((IW2DSymbol)m_item.Symbol).SizeContext = (SizeContextType)Enum.Parse((typeof(SizeContextType)), (string)SizeContext.SelectedValue);
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
@@ -882,7 +1032,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 			if (m_inUpdate)
 				return;
 
-			if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font)
+			if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font || m_item.Symbol.Type == PointSymbolType.W2D)
                 m_item.Symbol.Unit = (LengthUnitType)Enum.Parse(typeof(LengthUnitType), (string)SizeUnits.SelectedValue);
 			previewPicture.Refresh();
 			if (Changed != null)
@@ -920,7 +1070,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (WidthText.SelectedIndex == WidthText.Items.Count - 1)
             {
                 string current = null;
-                if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font)
+                if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font || m_item.Symbol.Type == PointSymbolType.W2D)
                     current = m_item.Symbol.SizeX;
 
                 string expr = null;
@@ -944,7 +1094,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (HeightText.SelectedIndex == HeightText.Items.Count - 1)
             {
                 string current = null;
-                if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font)
+                if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font || m_item.Symbol.Type == PointSymbolType.W2D)
                     current = m_item.Symbol.SizeY;
 
                 string expr = null;
@@ -1006,7 +1156,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (RotationBox.SelectedIndex == RotationBox.Items.Count - 1)
             {
                 string current = null;
-                if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font)
+                if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font || m_item.Symbol.Type == PointSymbolType.W2D)
                     current = m_item.Symbol.Rotation;
 
                 string expr = null;
@@ -1022,7 +1172,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             }
             else if (RotationBox.SelectedIndex != -1)
             {
-                if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font)
+                if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font || m_item.Symbol.Type == PointSymbolType.W2D)
                     m_item.Symbol.Rotation = (string)RotationBox.SelectedValue;
 
                 //RotationBox.SelectedIndex = -1;
@@ -1280,7 +1430,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             //TODO: Validate
-            if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font)
+            if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font || m_item.Symbol.Type == PointSymbolType.W2D)
                 m_item.Symbol.SizeX = WidthText.Text;
             previewPicture.Refresh();
             if (Changed != null)
@@ -1297,6 +1447,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 m_item.Symbol.SizeY = HeightText.Text;
             else if (m_item.Symbol.Type == PointSymbolType.Font)
                 m_item.Symbol.SizeY = HeightText.Text;
+            else if (m_item.Symbol.Type == PointSymbolType.W2D)
+                m_item.Symbol.SizeY = HeightText.Text;
             previewPicture.Refresh();
             if (Changed != null)
                 Changed(this, new EventArgs());
@@ -1311,6 +1463,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (m_item.Symbol.Type == PointSymbolType.Mark)
                 m_item.Symbol.Rotation = RotationBox.Text;
             else if (m_item.Symbol.Type == PointSymbolType.Font)
+                m_item.Symbol.Rotation = RotationBox.Text;
+            else if (m_item.Symbol.Type == PointSymbolType.W2D)
                 m_item.Symbol.Rotation = RotationBox.Text;
             previewPicture.Refresh();
             if (Changed != null)
@@ -1382,6 +1536,127 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             DisplayPoints.Enabled =
             fillStyleEditor.displayFill.Enabled =
                 false;
+        }
+
+        private void chkW2DFillColor_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbW2DFillColor.Enabled = chkW2DFillColor.Checked;
+
+            if (m_inUpdate)
+                return;
+
+            var sym = m_item.Symbol as IW2DSymbol;
+            if (sym == null)
+                return;
+
+            if (!chkW2DFillColor.Checked)
+            {
+                sym.FillColor = null;
+            }
+            else
+            {
+                if (sym.FillColor != null)
+                    cmbW2DFillColor.CurrentColor = Utility.ParseHTMLColor(sym.FillColor);
+            }
+        }
+
+        private void chkW2DLineColor_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbW2DLineColor.Enabled = chkW2DLineColor.Checked;
+            if (m_inUpdate)
+                return;
+
+            var sym = m_item.Symbol as IW2DSymbol;
+            if (sym == null)
+                return;
+
+            if (!chkW2DLineColor.Checked)
+            {
+                sym.LineColor = null;
+            }
+            else
+            {
+                if (sym.LineColor != null)
+                    cmbW2DLineColor.CurrentColor = Utility.ParseHTMLColor(sym.LineColor);
+            }
+        }
+
+        private void chkW2DTextColor_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbW2DTextColor.Enabled = chkW2DTextColor.Checked;
+            if (m_inUpdate)
+                return;
+
+            var sym = m_item.Symbol as IW2DSymbol;
+            if (sym == null)
+                return;
+
+            if (!chkW2DTextColor.Checked)
+            {
+                sym.TextColor = null;
+            }
+            else
+            {
+                if (sym.TextColor != null)
+                    cmbW2DTextColor.CurrentColor = Utility.ParseHTMLColor(sym.TextColor);
+            }
+        }
+
+        private void cmbW2DFillColor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!chkW2DFillColor.Checked)
+                return;
+
+            if (m_inUpdate)
+                return;
+
+            var sym = m_item.Symbol as IW2DSymbol;
+            if (sym == null)
+                return;
+
+            sym.FillColor = Utility.SerializeHTMLColor(cmbW2DFillColor.CurrentColor, true);
+
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
+
+        private void cmbW2DLineColor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!chkW2DLineColor.Checked)
+                return;
+
+            if (m_inUpdate)
+                return;
+
+            var sym = m_item.Symbol as IW2DSymbol;
+            if (sym == null)
+                return;
+
+            sym.LineColor = Utility.SerializeHTMLColor(cmbW2DLineColor.CurrentColor, true);
+
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
+
+        private void cmbW2DTextColor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!chkW2DTextColor.Checked)
+                return;
+
+            if (m_inUpdate)
+                return;
+
+            var sym = m_item.Symbol as IW2DSymbol;
+            if (sym == null)
+                return;
+
+            sym.TextColor = Utility.SerializeHTMLColor(cmbW2DTextColor.CurrentColor, true);
+
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
         }
     }
 }

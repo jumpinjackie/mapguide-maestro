@@ -26,6 +26,7 @@ using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using Maestro.Editors.Common;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
@@ -41,6 +42,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         public event EventHandler ItemChanged;
 
         private VectorLayerEditorCtrl m_owner;
+        private IServerConnection _conn;
 
         public VectorLayerEditorCtrl Owner
         {
@@ -53,9 +55,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
         }
 
-        public Condition()
+        private Condition()
         {
             InitializeComponent();
+        }
+
+        public Condition(IServerConnection conn)
+            : this()
+        {
+            _conn = conn;
         }
 
         public void SetItem(IPointRule prt)
@@ -86,7 +94,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 {
                     RuleCondition.Text = m_prt.Filter;
                     LegendLabel.Text = m_prt.LegendLabel;
-                    FeatureStyle.SetItem(m_prt, m_prt.PointSymbolization2D);
+                    Image w2d = null;
+                    //Determine if this is a w2d symbol style
+                    if (m_prt.PointSymbolization2D.Symbol.Type == PointSymbolType.W2D)
+                    {
+                        var sym = (IW2DSymbol)m_prt.PointSymbolization2D.Symbol;
+                        w2d = SymbolPicker.GetSymbol(_conn, sym.W2DSymbol.ResourceId, sym.W2DSymbol.LibraryItemName);
+                    }
+                    FeatureStyle.SetItem(m_prt, m_prt.PointSymbolization2D, w2d);
                     LabelStyle.SetItem(m_prt, m_prt.Label);
                 }
                 else if (m_lrt != null)

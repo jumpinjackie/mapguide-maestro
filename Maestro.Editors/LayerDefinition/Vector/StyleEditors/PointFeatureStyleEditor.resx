@@ -174,31 +174,31 @@
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="HeigthText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="HeightText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="HeigthText.Items" xml:space="preserve">
+  <data name="HeightText.Items" xml:space="preserve">
     <value>Expression...</value>
   </data>
-  <data name="HeigthText.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="HeightText.Location" type="System.Drawing.Point, System.Drawing">
     <value>128, 144</value>
   </data>
-  <data name="HeigthText.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="HeightText.Size" type="System.Drawing.Size, System.Drawing">
     <value>208, 21</value>
   </data>
-  <data name="HeigthText.TabIndex" type="System.Int32, mscorlib">
+  <data name="HeightText.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="&gt;&gt;HeigthText.Name" xml:space="preserve">
-    <value>HeigthText</value>
+  <data name="&gt;&gt;HeightText.Name" xml:space="preserve">
+    <value>HeightText</value>
   </data>
-  <data name="&gt;&gt;HeigthText.Type" xml:space="preserve">
+  <data name="&gt;&gt;HeightText.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;HeigthText.Parent" xml:space="preserve">
+  <data name="&gt;&gt;HeightText.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;HeigthText.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;HeightText.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="WidthText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -457,9 +457,9 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
-  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="grpSymbolFill.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="fillStyleEditor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -478,39 +478,39 @@
     <value>fillStyleEditor</value>
   </data>
   <data name="&gt;&gt;fillStyleEditor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.FillStyleEditor, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.FillStyleEditor, Maestro.Editors, Version=3.0.0.5708, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fillStyleEditor.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grpSymbolFill</value>
   </data>
   <data name="&gt;&gt;fillStyleEditor.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 440</value>
+  <data name="grpSymbolFill.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 540</value>
   </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="grpSymbolFill.Size" type="System.Drawing.Size, System.Drawing">
     <value>344, 168</value>
   </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="grpSymbolFill.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="grpSymbolFill.Text" xml:space="preserve">
     <value>Symbol fill</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="&gt;&gt;grpSymbolFill.Name" xml:space="preserve">
+    <value>grpSymbolFill</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+  <data name="&gt;&gt;grpSymbolFill.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;grpSymbolFill.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;grpSymbolFill.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
-  <data name="groupBox3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="grpSymbolBorder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="lineStyleEditor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -529,37 +529,37 @@
     <value>lineStyleEditor</value>
   </data>
   <data name="&gt;&gt;lineStyleEditor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.LineStyleEditor, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.LineStyleEditor, Maestro.Editors, Version=3.0.0.5708, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lineStyleEditor.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+    <value>grpSymbolBorder</value>
   </data>
   <data name="&gt;&gt;lineStyleEditor.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 616</value>
+  <data name="grpSymbolBorder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 714</value>
   </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="grpSymbolBorder.Size" type="System.Drawing.Size, System.Drawing">
     <value>344, 152</value>
   </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+  <data name="grpSymbolBorder.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
+  <data name="grpSymbolBorder.Text" xml:space="preserve">
     <value>Symbol border</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="&gt;&gt;grpSymbolBorder.Name" xml:space="preserve">
+    <value>grpSymbolBorder</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+  <data name="&gt;&gt;grpSymbolBorder.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;grpSymbolBorder.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;grpSymbolBorder.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="groupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -589,7 +589,7 @@
     <value>0</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 776</value>
+    <value>0, 869</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>344, 48</value>
@@ -598,7 +598,7 @@
     <value>7</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
-    <value>Preview</value>
+    <value>Preview (Note: Approximation only. May not be accurate)</value>
   </data>
   <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
     <value>groupBox4</value>
@@ -610,10 +610,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <metadata name="ComboBoxDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>122, 17</value>
   </metadata>
   <data name="DisplayPoints.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -640,7 +640,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DisplayPoints.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="groupBoxFont.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -691,7 +691,7 @@
     <value>colorFontForeground</value>
   </data>
   <data name="&gt;&gt;colorFontForeground.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.ColorComboWithTransparency, Maestro.Editors, Version=3.0.0.5708, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorFontForeground.Parent" xml:space="preserve">
     <value>groupBoxFont</value>
@@ -943,7 +943,7 @@
     <value>6</value>
   </data>
   <data name="groupBoxFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 240</value>
+    <value>0, 316</value>
   </data>
   <data name="groupBoxFont.Size" type="System.Drawing.Size, System.Drawing">
     <value>344, 112</value>
@@ -964,7 +964,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBoxFont.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="groupBoxSymbolLocation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1144,7 +1144,7 @@
     <value>6</value>
   </data>
   <data name="groupBoxSymbolLocation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 360</value>
+    <value>0, 238</value>
   </data>
   <data name="groupBoxSymbolLocation.Size" type="System.Drawing.Size, System.Drawing">
     <value>344, 72</value>
@@ -1165,6 +1165,198 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBoxSymbolLocation.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkW2DTextColor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkW2DTextColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkW2DTextColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 77</value>
+  </data>
+  <data name="chkW2DTextColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 17</value>
+  </data>
+  <data name="chkW2DTextColor.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="chkW2DTextColor.Text" xml:space="preserve">
+    <value>Text Color</value>
+  </data>
+  <data name="&gt;&gt;chkW2DTextColor.Name" xml:space="preserve">
+    <value>chkW2DTextColor</value>
+  </data>
+  <data name="&gt;&gt;chkW2DTextColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkW2DTextColor.Parent" xml:space="preserve">
+    <value>grpW2DStyle</value>
+  </data>
+  <data name="&gt;&gt;chkW2DTextColor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cmbW2DTextColor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="cmbW2DTextColor.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cmbW2DTextColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 73</value>
+  </data>
+  <data name="cmbW2DTextColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 21</value>
+  </data>
+  <data name="cmbW2DTextColor.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;cmbW2DTextColor.Name" xml:space="preserve">
+    <value>cmbW2DTextColor</value>
+  </data>
+  <data name="&gt;&gt;cmbW2DTextColor.Type" xml:space="preserve">
+    <value>Maestro.Editors.Common.ColorComboWithTransparency, Maestro.Editors, Version=3.0.0.5708, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmbW2DTextColor.Parent" xml:space="preserve">
+    <value>grpW2DStyle</value>
+  </data>
+  <data name="&gt;&gt;cmbW2DTextColor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkW2DLineColor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkW2DLineColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkW2DLineColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 50</value>
+  </data>
+  <data name="chkW2DLineColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 17</value>
+  </data>
+  <data name="chkW2DLineColor.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="chkW2DLineColor.Text" xml:space="preserve">
+    <value>Line Color</value>
+  </data>
+  <data name="&gt;&gt;chkW2DLineColor.Name" xml:space="preserve">
+    <value>chkW2DLineColor</value>
+  </data>
+  <data name="&gt;&gt;chkW2DLineColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkW2DLineColor.Parent" xml:space="preserve">
+    <value>grpW2DStyle</value>
+  </data>
+  <data name="&gt;&gt;chkW2DLineColor.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cmbW2DLineColor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="cmbW2DLineColor.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cmbW2DLineColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 46</value>
+  </data>
+  <data name="cmbW2DLineColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 21</value>
+  </data>
+  <data name="cmbW2DLineColor.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;cmbW2DLineColor.Name" xml:space="preserve">
+    <value>cmbW2DLineColor</value>
+  </data>
+  <data name="&gt;&gt;cmbW2DLineColor.Type" xml:space="preserve">
+    <value>Maestro.Editors.Common.ColorComboWithTransparency, Maestro.Editors, Version=3.0.0.5708, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmbW2DLineColor.Parent" xml:space="preserve">
+    <value>grpW2DStyle</value>
+  </data>
+  <data name="&gt;&gt;cmbW2DLineColor.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkW2DFillColor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkW2DFillColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 23</value>
+  </data>
+  <data name="chkW2DFillColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="chkW2DFillColor.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="chkW2DFillColor.Text" xml:space="preserve">
+    <value>Fill Color</value>
+  </data>
+  <data name="&gt;&gt;chkW2DFillColor.Name" xml:space="preserve">
+    <value>chkW2DFillColor</value>
+  </data>
+  <data name="&gt;&gt;chkW2DFillColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkW2DFillColor.Parent" xml:space="preserve">
+    <value>grpW2DStyle</value>
+  </data>
+  <data name="&gt;&gt;chkW2DFillColor.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cmbW2DFillColor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="cmbW2DFillColor.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cmbW2DFillColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 19</value>
+  </data>
+  <data name="cmbW2DFillColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 21</value>
+  </data>
+  <data name="cmbW2DFillColor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cmbW2DFillColor.Name" xml:space="preserve">
+    <value>cmbW2DFillColor</value>
+  </data>
+  <data name="&gt;&gt;cmbW2DFillColor.Type" xml:space="preserve">
+    <value>Maestro.Editors.Common.ColorComboWithTransparency, Maestro.Editors, Version=3.0.0.5708, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmbW2DFillColor.Parent" xml:space="preserve">
+    <value>grpW2DStyle</value>
+  </data>
+  <data name="&gt;&gt;cmbW2DFillColor.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="grpW2DStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 434</value>
+  </data>
+  <data name="grpW2DStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 100</value>
+  </data>
+  <data name="grpW2DStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="grpW2DStyle.Text" xml:space="preserve">
+    <value>Override W2D Symbol Colors (Note: Not reflected in preview)</value>
+  </data>
+  <data name="&gt;&gt;grpW2DStyle.Name" xml:space="preserve">
+    <value>grpW2DStyle</value>
+  </data>
+  <data name="&gt;&gt;grpW2DStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpW2DStyle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpW2DStyle.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1177,7 +1369,7 @@
     <value>344, 824</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 824</value>
+    <value>344, 921</value>
   </data>
   <data name="&gt;&gt;RotationTable.Name" xml:space="preserve">
     <value>RotationTable</value>

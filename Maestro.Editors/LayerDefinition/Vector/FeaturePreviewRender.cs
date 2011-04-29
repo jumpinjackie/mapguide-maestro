@@ -358,8 +358,26 @@ namespace Maestro.Editors.LayerDefinition.Vector
 				using(Pen p = new Pen(string.IsNullOrEmpty(item.Edge.Color) ? Color.White : Utility.ParseHTMLColor(item.Edge.Color), /* float.Parse(item.Edge.Thickness) */ 1)) //TODO: Calculate appropriate thickness
 					g.DrawPolygon(p, points); //TODO: Implement line dash
 			}
-		
 		}
+
+        public static void RenderW2DImage(Graphics graphics, Rectangle rectangle, IW2DSymbol symb, Image image)
+        {
+            //TODO: This will currently just draw the default W2D image, it will not consider color overrides nor size parameters
+            //But something is better than nothing at the moment.
+            
+            if (image != null)
+            {
+                //Start from center
+                var location = new Point(rectangle.Width / 2, rectangle.Height / 2);
+
+                //Displace according to image size
+                location.X -= image.Width / 2;
+                location.Y -= image.Height / 2;
+
+                //Draw the result. 
+                graphics.DrawImage(image, location);
+            }
+        }
 
         public static Point[] Rotate(Point[] points, Point center, double radians)
         {
@@ -470,5 +488,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
 			return retval;
 		}*/
-	}
+
+        
+    }
 }

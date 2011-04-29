@@ -169,7 +169,7 @@
     <value>lineConditionList</value>
   </data>
   <data name="&gt;&gt;lineConditionList.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ConditionListButtons, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=3.0.0.5708, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lineConditionList.Parent" xml:space="preserve">
     <value>$this</value>
@@ -193,7 +193,7 @@
     <value>7</value>
   </data>
   <data name="DisplayPoints.Text" xml:space="preserve">
-    <value>Display points</value>
+    <value>Display points (Note: Symbol previews only show the symbol. It doesn't consider color overrides or size/rotation settings)</value>
   </data>
   <data name="&gt;&gt;DisplayPoints.Name" xml:space="preserve">
     <value>DisplayPoints</value>
@@ -226,7 +226,7 @@
     <value>pointConditionList</value>
   </data>
   <data name="&gt;&gt;pointConditionList.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ConditionListButtons, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=3.0.0.5708, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pointConditionList.Parent" xml:space="preserve">
     <value>$this</value>
@@ -283,7 +283,7 @@
     <value>areaConditionList</value>
   </data>
   <data name="&gt;&gt;areaConditionList.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ConditionListButtons, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=3.0.0.5708, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;areaConditionList.Parent" xml:space="preserve">
     <value>$this</value>
@@ -342,9 +342,6 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>597, 334</value>
   </data>

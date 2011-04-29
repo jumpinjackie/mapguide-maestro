@@ -10176,14 +10176,15 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_1_0
     public partial class W2DSymbolTypeW2DSymbol : System.ComponentModel.INotifyPropertyChanged {
         
         [EditorBrowsable(EditorBrowsableState.Never)]
-        private object resourceIdField;
+        private string resourceIdField;
         
         [EditorBrowsable(EditorBrowsableState.Never)]
-        private object libraryItemNameField;
+        private string libraryItemNameField;
         
         private static System.Xml.Serialization.XmlSerializer serializer;
-        
-        public object ResourceId {
+
+        public string ResourceId
+        {
             get {
                 return this.resourceIdField;
             }
@@ -10200,8 +10201,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_1_0
                 }
             }
         }
-        
-        public object LibraryItemName {
+
+        public string LibraryItemName
+        {
             get {
                 return this.libraryItemNameField;
             }

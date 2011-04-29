@@ -322,6 +322,14 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// </summary>
         /// <returns></returns>
         IFontSymbol CreateDefaultFontSymbol();
+
+        /// <summary>
+        /// Creates a W2D symbol from a Symbol Library
+        /// </summary>
+        /// <param name="symbolLibrary"></param>
+        /// <param name="symbolName"></param>
+        /// <returns></returns>
+        IW2DSymbol CreateDefaultW2DSymbol(string symbolLibrary, string symbolName);
     }
 
     /// <summary>

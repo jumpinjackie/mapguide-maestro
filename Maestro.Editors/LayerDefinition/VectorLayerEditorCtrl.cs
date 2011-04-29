@@ -34,6 +34,8 @@ namespace Maestro.Editors.LayerDefinition
         private IEditorService _edsvc;
         private IVectorLayerDefinition _vl;
 
+        internal IEditorService EditorService { get { return _edsvc; } }
+
         /// <summary>
         /// Sets the initial state of this editor and sets up any databinding
         /// within such that user interface changes will propagate back to the

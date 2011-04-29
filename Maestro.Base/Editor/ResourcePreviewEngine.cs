@@ -74,7 +74,13 @@ namespace Maestro.Base.Editor
             //TODO: Based on the visible scales in this layer, size this extents accordingly
             var mdf = ObjectFactory.CreateMapDefinition(conn, Properties.Resources.PreviewMap, ldf.GetCoordinateSystemWkt(), extent);
 
-            mdf.AddLayer(null, ResourceIdentifier.GetName(ldf.ResourceID), ldf.ResourceID);
+            var layer = mdf.AddLayer(null, ResourceIdentifier.GetName(_edSvc.ResourceID), ldf.ResourceID);
+
+            //Use feature source as name/label if new and unsaved
+            if (_edSvc.IsNew)
+                layer.Name = layer.LegendLabel = ResourceIdentifier.GetName(ldf.SubLayer.ResourceId);
+            else
+                layer.Name = layer.LegendLabel = ResourceIdentifier.GetName(_edSvc.ResourceID);
 
             conn.ResourceService.SaveResourceAs(mdf, mdfId);
 

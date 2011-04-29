@@ -37,6 +37,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private IPointSymbolization2D m_point;
         private IList<IStroke> m_line;
         private IAreaSymbolizationFill m_area;
+        private Image m_w2dsymbol;
 
         private object m_parent;
 
@@ -44,6 +45,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private bool isPoint = false;
         private bool isLine = false;
         private bool isArea = false;
+        private bool isW2dSymbol = false;
 
         public event EventHandler ItemChanged;
 
@@ -73,10 +75,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             SetItemInternal(parent, label);
         }
 
-        public void SetItem(IPointRule parent, IPointSymbolization2D point)
+        public void SetItem(IPointRule parent, IPointSymbolization2D point, Image img)
         {
-            isPoint = true;
+            isPoint = (point.Symbol.Type != PointSymbolType.W2D);
+            isW2dSymbol = (point.Symbol.Type == PointSymbolType.W2D);
             SetItemInternal(parent, point);
+            m_w2dsymbol = img;
         }
 
         public void SetItem(ILineRule parent, IEnumerable<IStroke> line)
@@ -97,6 +101,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             m_label = item as ITextSymbol;
             m_point = item as IPointSymbolization2D;
             m_area = item as IAreaSymbolizationFill;
+            m_w2dsymbol = item as Image;
 
             if (item is IEnumerable<IStroke>)
                 m_line = new List<IStroke>((IEnumerable<IStroke>)item);
@@ -114,10 +119,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
             else if (m_point != null)
             {
-                if (((IPointSymbolization2D)m_point).Symbol.Type == PointSymbolType.Mark)
-					FeaturePreviewRender.RenderPreviewPoint(e.Graphics, rect, m_point.Symbol as IMarkSymbol);
-                else if (((IPointSymbolization2D)m_point).Symbol.Type == PointSymbolType.Font)
+                if (m_point.Symbol.Type == PointSymbolType.Mark)
+                    FeaturePreviewRender.RenderPreviewPoint(e.Graphics, rect, m_point.Symbol as IMarkSymbol);
+                else if (m_point.Symbol.Type == PointSymbolType.Font)
                     FeaturePreviewRender.RenderPreviewFontSymbol(e.Graphics, rect, m_point.Symbol as IFontSymbol);
+                else if (m_point.Symbol.Type == PointSymbolType.W2D)
+                    FeaturePreviewRender.RenderW2DImage(e.Graphics, rect, m_point.Symbol as IW2DSymbol, m_w2dsymbol);
 			}
             else if (m_line != null)
             {
@@ -138,6 +145,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             {
                 uc = new FontStyleEditor(m_owner.Editor, m_owner.Schema, m_owner.FeatureSourceId);
                 ((FontStyleEditor)uc).Item = m_label == null ? null : (ITextSymbol)m_label.Clone(); //(ITextSymbol)Utility.DeepCopy(m_label);
+            }
+            else if (isW2dSymbol)
+            {
+                uc = new PointFeatureStyleEditor(m_owner.Editor, m_owner.Schema, m_owner.FeatureSourceId, m_w2dsymbol);
+                ((PointFeatureStyleEditor)uc).Item = m_point == null ? null : (IPointSymbolization2D)m_point.Clone(); //(IPointSymbolization2D)Utility.XmlDeepCopy(m_point);
             }
             else if (isPoint)
             {
@@ -176,10 +188,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                         if (ItemChanged != null)
                             ItemChanged(m_label, null);
                     }
-                    else if (isPoint)
+                    else if (isPoint || isW2dSymbol)
                     {
+                        //We need to update this boolean state
+                        var w2d = ((PointFeatureStyleEditor)uc).W2DSymbolPreviewImage;
+                        isPoint = (w2d == null);
+                        isW2dSymbol = (w2d != null);
+
                         m_point = ((PointFeatureStyleEditor)uc).Item;
                         ((IPointRule)m_parent).PointSymbolization2D = m_point;
+
+                        m_w2dsymbol = w2d;
+
                         if (ItemChanged != null)
                             ItemChanged(m_point, null);
                     }

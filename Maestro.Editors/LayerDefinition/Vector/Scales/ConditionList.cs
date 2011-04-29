@@ -135,7 +135,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             if (rule == null)
                 return null;
 
-            Condition c = new Condition();
+            //Not pretty, but we need a server connection to fetch DWF symbol thumbnails for previewing
+            Condition c = new Condition(m_owner.EditorService.GetEditedResource().CurrentConnection);
 
             if (rule as IPointRule != null)
                 c.SetItem(rule as IPointRule);

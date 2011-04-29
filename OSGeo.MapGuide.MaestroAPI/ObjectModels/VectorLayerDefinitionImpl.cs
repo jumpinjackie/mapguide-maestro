@@ -1343,32 +1343,6 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
     partial class W2DSymbolTypeW2DSymbol : ISymbolReference
     {
         [XmlIgnore]
-        string ISymbolReference.ResourceId
-        {
-            get
-            {
-                return this.ResourceId == null ? string.Empty : this.ResourceId.ToString();
-            }
-            set
-            {
-                this.ResourceId = value;
-            }
-        }
-
-        [XmlIgnore]
-        string ISymbolReference.LibraryItemName
-        {
-            get
-            {
-                return this.LibraryItemName == null ? string.Empty : this.LibraryItemName.ToString();
-            }
-            set
-            {
-                this.LibraryItemName = value;
-            }
-        }
-
-        [XmlIgnore]
         ImageSymbolReferenceType IBaseImageSymbol.Type
         {
             get { return ImageSymbolReferenceType.SymbolReference; }

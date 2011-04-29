@@ -323,5 +323,18 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 VerticalAlignment = "'Baseline'"
             };
         }
+
+
+        public IW2DSymbol CreateDefaultW2DSymbol(string symbolLibrary, string symbolName)
+        {
+            return new W2DSymbolType()
+            {
+                W2DSymbol = new W2DSymbolTypeW2DSymbol()
+                {
+                    ResourceId = symbolLibrary,
+                    LibraryItemName = symbolName
+                },
+            };
+        }
     }
 }
