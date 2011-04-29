@@ -1,4 +1,20 @@
-﻿3.0 RC1
+﻿3.0 Final
+---------
+
+ - Add editor support for point styles with dwf symbols. Note that symbol previews are not perfect, but this is better than seeing nothing.
+ - Fix: Ugly layer legend labels when previewing a layer
+ - Fix: Badly generated W2D symbol reference class in the generated Layer Definition schema.
+ - Fix: Save command is enabled regardless of dirty state
+ - Fix: Validate command on toolbar did not validate the resource of active editor
+ - Add an unsupported placeholder UI when opening a Load Procedure or Layer Definition in a specialized editor that contains unsupported elements.
+ - Fix: New resources did not default to dirty state, allowing a save.
+ - Fix: Folder of new Load Procedure should default to where it was made
+ - Fix: Map Definition validation error on extents due to incorrect extent construction.
+ - XML Editor validation icon change (to distinguish from main validation command)
+ - Aliased file/directory support for building GDAL configuration documents via the editor
+ - Fix: GdalRasterLocationItem could have multiple children of the same file name
+
+3.0 RC1
 -------
  
  - Fix: Automatically test the connection first before editing or resetting an ODBC configuration document. Abort the process if connection test fails.
