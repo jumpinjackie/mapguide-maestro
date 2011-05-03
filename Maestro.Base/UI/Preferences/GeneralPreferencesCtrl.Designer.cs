@@ -50,6 +50,7 @@
             this.cmbOpenedColor = new Maestro.Editors.Common.ColorComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.chkShowTipOfTheDay = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -95,6 +96,7 @@
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.chkShowTipOfTheDay);
             this.groupBox1.Controls.Add(this.chkOutbound);
             this.groupBox1.Controls.Add(this.chkMessages);
             this.groupBox1.Name = "groupBox1";
@@ -192,6 +194,12 @@
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
+            // chkShowTipOfTheDay
+            // 
+            resources.ApplyResources(this.chkShowTipOfTheDay, "chkShowTipOfTheDay");
+            this.chkShowTipOfTheDay.Name = "chkShowTipOfTheDay";
+            this.chkShowTipOfTheDay.UseVisualStyleBackColor = true;
+            // 
             // GeneralPreferencesCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -240,5 +248,6 @@
         private System.Windows.Forms.Label label5;
         private Maestro.Editors.Common.ColorComboBox cmbModifiedColor;
         private Maestro.Editors.Common.ColorComboBox cmbOpenedColor;
+        private System.Windows.Forms.CheckBox chkShowTipOfTheDay;
     }
 }

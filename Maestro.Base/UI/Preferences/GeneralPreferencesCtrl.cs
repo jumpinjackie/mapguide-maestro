@@ -56,6 +56,8 @@ namespace Maestro.Base.UI.Preferences
             chkMessages.Checked = msg;
             var outb = Props.Get(ConfigProperties.ShowOutboundRequests, true);
             chkOutbound.Checked = outb;
+            var totd = Props.Get(ConfigProperties.ShowTipOfTheDay, ConfigProperties.DefaultShowTipOfTheDay);
+            chkShowTipOfTheDay.Checked = totd;
             
 
             txtFsPreview.Text = Props.Get(ConfigProperties.LocalFsPreviewPath, ConfigProperties.DefaultLocalFsPreviewPath);
@@ -99,6 +101,7 @@ namespace Maestro.Base.UI.Preferences
             Apply(ConfigProperties.LocalFsPreviewPath, txtFsPreview.Text);
             Apply(ConfigProperties.OpenColor, (Color)cmbOpenedColor.CurrentColor);
             Apply(ConfigProperties.DirtyColor, (Color)cmbModifiedColor.CurrentColor);
+            Apply(ConfigProperties.ShowTipOfTheDay, chkShowTipOfTheDay.Checked);
 
             //These changes require restart
             if (Apply(ConfigProperties.ShowMessages, chkMessages.Checked ? "True" : "False"))

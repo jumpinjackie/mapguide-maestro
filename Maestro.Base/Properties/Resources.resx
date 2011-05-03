@@ -1007,4 +1007,10 @@ Error message: {1}</value>
   <data name="Menu_File_ValidateEditedResource" xml:space="preserve">
     <value>Validate Edited Resource</value>
   </data>
+  <data name="TipNumber" xml:space="preserve">
+    <value>Tip: {0} of {1}</value>
+  </data>
+  <data name="Menu_Help_Totd" xml:space="preserve">
+    <value>Tip of the Day</value>
+  </data>
 </root>

@@ -1,4 +1,9 @@
-﻿3.0 Final
+﻿3.1
+---
+
+ - Added a tip of the day dialog that is shown on startup (this can be turned off)
+
+3.0 Final
 ---------
 
  - Add editor support for point styles with dwf symbols. Note that symbol previews are not perfect, but this is better than seeing nothing.

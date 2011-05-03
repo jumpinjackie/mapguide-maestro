@@ -39,6 +39,7 @@ namespace Maestro.Base.UI.Preferences
         public const string LocalFsPreviewPath = "General.LocalFsPreviewPath";
         public const string ValidateOnSave = "General.ValidateResourceOnSave";
         public const string XsdSchemaPath = "Editor.XsdSchemaPath";
+        public const string ShowTipOfTheDay = "General.ShowTipOfTheDay";
 
         internal static void ApplyDefaults()
         {
@@ -62,7 +63,10 @@ namespace Maestro.Base.UI.Preferences
             Props.Set(ConfigProperties.DirtyColor, DefaultDirtyColor);
             Props.Set(ConfigProperties.MgCookerPath, DefaultMgCookerPath);
             Props.Set(ConfigProperties.LocalFsPreviewPath, DefaultLocalFsPreviewPath);
+            Props.Set(ConfigProperties.ShowTipOfTheDay, DefaultShowTipOfTheDay);
         }
+
+        public static bool DefaultShowTipOfTheDay { get { return true; } }
 
         public static string DefaultMgCookerPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "MgCooker.exe"); } }
 

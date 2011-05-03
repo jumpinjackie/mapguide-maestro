@@ -178,6 +178,7 @@ Section
 	# directories
 	File /r "${INST_OUTPUT_MAESTRO}\WebStudio"
 	File /r "${INST_OUTPUT_MAESTRO}\AddIns"
+    File /r "${INST_OUTPUT_MAESTRO}\Data"
 	
 	# docs
 	#File "${INST_OUTPUT_MAESTRO}\${HELP_USER}"

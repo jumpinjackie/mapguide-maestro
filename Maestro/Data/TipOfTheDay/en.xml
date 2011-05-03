@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Tips>
+    <TipOfTheDay>
+        If you find bugs or have an idea for a new feature, file an issue on Trac
+
+        http://trac.osgeo.org/mapguide
+
+        Please be a descriptive as possible when filing issues. For bugs, a 
+        step-by-step process of reproducing the bug is very helpful.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        Drag and drop a MapGuide package file into the Site Explorer to load it
+
+        Similarly, drag and drop a SDF, SHP or SQLite file to create a
+        Feature Source of the same type.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        The Edit as XML toolbar command allows you to edit the XML content of any
+        open resource.
+
+        Once complete, the open editor will be re-initialized with the latest
+        XML content.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        Resource validation can detect and diagnose many common MapGuide problems.
+
+        To validate a resource, right click it in the Site Explorer and choose 
+        "Validate"
+    </TipOfTheDay>
+    <TipOfTheDay>
+        The Site Explorer supports multiple selection. You can now copy/move/validate
+        multiple selected resources at once!
+    </TipOfTheDay>
+    <TipOfTheDay>
+        Have a lot of custom commands in your Web Layout?
+
+        You can use the Import/Export functionality in the Web Layout editor to copy
+        and move these commands between web layouts.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        If Maestro cannot find a specialized editor that supports the resource you 
+        want to open, it will use the XML editor as a fallback option.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        The New Resource dialog supports custom user resource templates.
+
+        Simply drop your XML file into the User Template directory and the New Resource
+        dialog will load this template under the "User Defined" category.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        Items in the Site Explorer are colored based on whether they are open and/or
+        have been edited.
+        
+        You can configure these colors in the Maestro options.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        The Local Feature Source Preview tool is a powerful way to inspect the data
+        and structure of any Feature Source. 
+        
+        This tool is accessible from the Tools menu and also the Feature Source 
+        editor.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        MgCooker is a utility to pre-generate tiles, resulting in faster tiled maps.
+
+        This tool is accessible from the Tools menu and also the Map Definition
+        editor.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        If you want to use Google/Bing/Yahoo maps with Fusion, your Map Definition
+        needs to be in the Popular Visualisation Mercator coordinate system. 
+        
+        The coordinate system code for this is WGS84.PseudoMercator
+    </TipOfTheDay>
+    <TipOfTheDay>
+        If you want to use Google/Bing/Yahoo maps with Fusion, Google and Yahoo maps
+        require API keys. Bing does not require API keys. 
+        
+        Please carefully read the terms and conditions of each respective mapping 
+        provider.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        Previews of Symbols from a Symbol Library in the Layer Definition editor will 
+        currently only show the Symbol as-is. It won't take into account the size and 
+        color override settings of your point rule.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        Want to know what's new in this release? Check out the changelog.txt in the
+        Maestro installation directory.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        Check out the author's blog for other MapGuide, Maestro and FDO tips and tricks.
+        
+        http://themapguyde.blogspot.com
+    </TipOfTheDay>
+    <TipOfTheDay>
+        Do you find Maestro very useful for you? Consider making a Paypal donation to
+        the author. 
+        
+        The donation link is in the about dialog under: Help - About
+    </TipOfTheDay>
+    <TipOfTheDay>
+        The coordinate system picker allows fast coordinate system lookup by code, WKT 
+        and EPSG number.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        The repointer context command allows you to redirect all current references 
+        to the selected resource to reference another resource of your choice.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        You can clear any cached feature source schema information by right-clicking
+        the feature source in the Site Explorer and selecting the 
+        "Purge Cached Schema Information" context menu command.
+    </TipOfTheDay>
+    <TipOfTheDay>
+        Maestro only supports a sub-set of Load Procedures. Maestro does not support 
+        the following Load Procedure types:
+        
+         - DWG Load Procedure type and any of its associated options
+         - Raster Load Procedure type and any of its associated options
+         - Convert to SDF option (SDF/SHP Load Procedures)
+         - Generalization of data
+         - SDF2 to SDF3 conversion
+    </TipOfTheDay>
+</Tips>

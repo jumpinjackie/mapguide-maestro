@@ -1047,6 +1047,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tip of the Day.
+        /// </summary>
+        internal static string Menu_Help_Totd {
+            get {
+                return ResourceManager.GetString("Menu_Help_Totd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Package.
         /// </summary>
         internal static string Menu_Package {
@@ -2030,6 +2039,15 @@ namespace Maestro.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("tick", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tip: {0} of {1}.
+        /// </summary>
+        internal static string TipNumber {
+            get {
+                return ResourceManager.GetString("TipNumber", resourceCulture);
             }
         }
         

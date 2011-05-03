@@ -285,6 +285,33 @@
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="chkShowTipOfTheDay.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkShowTipOfTheDay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>242, 19</value>
+  </data>
+  <data name="chkShowTipOfTheDay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 17</value>
+  </data>
+  <data name="chkShowTipOfTheDay.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="chkShowTipOfTheDay.Text" xml:space="preserve">
+    <value>Tip of the day</value>
+  </data>
+  <data name="&gt;&gt;chkShowTipOfTheDay.Name" xml:space="preserve">
+    <value>chkShowTipOfTheDay</value>
+  </data>
+  <data name="&gt;&gt;chkShowTipOfTheDay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkShowTipOfTheDay.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;chkShowTipOfTheDay.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="chkOutbound.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -310,7 +337,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;chkOutbound.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="chkMessages.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -337,7 +364,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;chkMessages.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 93</value>
@@ -562,7 +589,7 @@
     <value>cmbModifiedColor</value>
   </data>
   <data name="&gt;&gt;cmbModifiedColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=3.0.0.5676, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=3.0.0.5728, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cmbModifiedColor.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -583,7 +610,7 @@
     <value>cmbOpenedColor</value>
   </data>
   <data name="&gt;&gt;cmbOpenedColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=3.0.0.5676, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=3.0.0.5728, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cmbOpenedColor.Parent" xml:space="preserve">
     <value>groupBox3</value>
