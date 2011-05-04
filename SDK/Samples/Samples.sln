@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawMap", "DrawMap\DrawMap.csproj", "{30EA9CAC-7DFA-4434-87F4-0AB226F2D305}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryFeatureSource", "QueryFeatureSource\QueryFeatureSource.csproj", "{7C572B2A-5E77-4AB4-B8AD-1172D3E725EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30EA9CAC-7DFA-4434-87F4-0AB226F2D305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30EA9CAC-7DFA-4434-87F4-0AB226F2D305}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30EA9CAC-7DFA-4434-87F4-0AB226F2D305}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30EA9CAC-7DFA-4434-87F4-0AB226F2D305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C572B2A-5E77-4AB4-B8AD-1172D3E725EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C572B2A-5E77-4AB4-B8AD-1172D3E725EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C572B2A-5E77-4AB4-B8AD-1172D3E725EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C572B2A-5E77-4AB4-B8AD-1172D3E725EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
