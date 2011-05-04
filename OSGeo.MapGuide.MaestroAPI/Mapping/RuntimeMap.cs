@@ -184,6 +184,44 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
+        /// Sets the width, height and initial view scale
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        public void InitialiseDisplayParameters(int width, int height)
+        {
+            this.DisplayWidth = width;
+            this.DisplayHeight = height;
+
+            var ext = this.MapExtent;
+            
+            var orgX1 = ext.MinX;
+            var orgY2 = ext.MinY;
+            var orgX2 = ext.MaxX;
+            var orgY1 = ext.MaxY;
+
+            if ((orgX1 - orgX2) == 0 || (orgY1 - orgY2) == 0)
+            {
+                orgX1 = -.1;
+                orgX2 = .1;
+                orgY1 = -.1;
+                orgY2 = .1;
+            }
+
+            var scale = CalculateScale(Math.Abs(orgX2 - orgX1), Math.Abs(orgY2 - orgY1), this.DisplayWidth, this.DisplayHeight);
+            this.ViewScale = scale;
+        }
+
+        private double CalculateScale(double mcsW, double mcsH, int devW, int devH)
+        {
+            var mpp = 0.0254 / this.DisplayDpi;
+            if (devH * mcsW < devW * mcsH)
+                return mcsW * this.MetersPerUnit / (devW * mpp);
+            else
+                return mcsH * this.MetersPerUnit / (devH * mpp);
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="RuntimeMap"/> class.
         /// </summary>
         /// <param name="mdf">The map definition to create this map from.</param>

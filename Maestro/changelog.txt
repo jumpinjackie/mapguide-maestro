@@ -1,6 +1,8 @@
 ﻿3.1
 ---
 
+ - This is the first release with a public SDK and samples demonstrating using the Maestro API.
+ - Fix: Map Definition resource id field in a WebLayout 1.1.0 editor does not update when changed.
  - Added a tip of the day dialog that is shown on startup (this can be turned off)
 
 3.0 Final
