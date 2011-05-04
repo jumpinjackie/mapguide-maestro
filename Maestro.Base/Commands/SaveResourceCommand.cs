@@ -34,9 +34,16 @@ namespace Maestro.Base.Commands
             var ed = wb.ActiveDocumentView as IEditorViewContent;
             if (ed != null)
             {
-                using (new WaitCursor(wb))
+                if (ed.IsNew)
                 {
-                    ed.EditorService.Save();
+                    new SaveResourceAsCommand().Run();
+                }
+                else
+                {
+                    using (new WaitCursor(wb))
+                    {
+                        ed.EditorService.Save();
+                    }
                 }
             }
         }
