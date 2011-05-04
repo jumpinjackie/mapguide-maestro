@@ -492,6 +492,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0 {
             }
         }
         
+        /*
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         public virtual void OnPropertyChanged(string info) {
@@ -499,7 +500,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0 {
             if ((handler != null)) {
                 handler(this, new System.ComponentModel.PropertyChangedEventArgs(info));
             }
-        }
+        }*/
         
         #region Serialize/Deserialize
         /// <summary>
