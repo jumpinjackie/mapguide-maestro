@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawMap", "DrawMap\DrawMap.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryFeatureSource", "QueryFeatureSource\QueryFeatureSource.csproj", "{7C572B2A-5E77-4AB4-B8AD-1172D3E725EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchemaViewer", "SchemaViewer\SchemaViewer.csproj", "{6105DB0C-65F5-47DF-B3AE-36A430EC16E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{7C572B2A-5E77-4AB4-B8AD-1172D3E725EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C572B2A-5E77-4AB4-B8AD-1172D3E725EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C572B2A-5E77-4AB4-B8AD-1172D3E725EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6105DB0C-65F5-47DF-B3AE-36A430EC16E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6105DB0C-65F5-47DF-B3AE-36A430EC16E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6105DB0C-65F5-47DF-B3AE-36A430EC16E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6105DB0C-65F5-47DF-B3AE-36A430EC16E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
