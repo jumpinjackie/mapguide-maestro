@@ -84,6 +84,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             Check.NotNull(ldf, "ldf");
 
             this.LayerDefinitionID = ldf.ResourceID;
+            if (ldf.SubLayer.LayerType == LayerType.Vector)
+            {
+                var vl = ((IVectorLayerDefinition)ldf.SubLayer);
+                this.QualifiedClassName = vl.FeatureName;
+                this.GeometryPropertyName = vl.Geometry;
+                this.FeatureSourceID = vl.ResourceId;
+            }
+            else if (ldf.SubLayer.LayerType == LayerType.Raster)
+            {
+                var rl = ((IRasterLayerDefinition)ldf.SubLayer);
+                this.QualifiedClassName = rl.FeatureName;
+                this.GeometryPropertyName = rl.Geometry;
+                this.FeatureSourceID = rl.ResourceId;
+            }
+
             this.ExpandInLegend = false;
             this.Name = ResourceIdentifier.GetName(ldf.ResourceID);
             this.Selectable = true;
@@ -212,6 +227,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             {
                 SetField(ref _group, value, "Group");
             }
+        }
+
+        /// <summary>
+        /// Sets the display order of this layer
+        /// </summary>
+        /// <param name="priority"></param>
+        public void SetDrawOrder(double priority)
+        {
+            this.DisplayOrder = priority;
         }
 
         /// <summary>
