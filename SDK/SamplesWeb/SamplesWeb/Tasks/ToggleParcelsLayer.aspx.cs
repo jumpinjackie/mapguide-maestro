@@ -30,6 +30,7 @@ using System.Web.UI.WebControls.WebParts;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
+using System.Text;
 
 namespace SamplesWeb.Tasks
 {
@@ -72,7 +73,7 @@ namespace SamplesWeb.Tasks
                     throw new Exception("Layer group not found");
                 }
 
-                RuntimeMapLayer layer = rtMap.AddLayer("Library://Samples/Sheboygan/Layers/Parcels.LayerDefinition", group);
+                RuntimeMapLayer layer = rtMap.CreateLayer("Library://Samples/Sheboygan/Layers/Parcels.LayerDefinition", group);
 
                 layer.LegendLabel = "Parcels";
                 layer.ShowInLegend = true;
@@ -85,9 +86,8 @@ namespace SamplesWeb.Tasks
                 //So for a layer to be drawn above something else, its draw order must be
                 //less than that particular layer.
 
-                //FIXME: trac #1681
-                RuntimeMapLayer islands = rtMap.GetLayerByName("Islands");
-                layer.SetDrawOrder(islands.DisplayOrder - 0.0000001);
+                int index = rtMap.IndexOfLayer("Islands");
+                rtMap.InsertLayer(index, layer);
 
                 rtMap.Save();
 
@@ -98,6 +98,31 @@ namespace SamplesWeb.Tasks
 
                 lblMessage.Text = "Parcels layer added again";
             }
+
+            rtMap = mpSvc.OpenMap(rtMapId);
+            DumpMap(rtMap);
+        }
+
+        //This method dumps the runtime state of the map. I personally
+        //used this method to debug this sample as I was developing it.
+        //
+        //It's been kept here for reference.
+        private void DumpMap(RuntimeMap rtMap)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<p>Debugging</p>");
+            sb.Append("Name: " + rtMap.Name + "<br/>");
+            sb.Append("Layers: <br/>");
+            sb.Append("<ul>");
+            foreach (var layer in rtMap.Layers)
+            {
+                sb.Append("<li>Name: " + layer.Name + " (Selectable: " + layer.Selectable + ", Visible: " + layer.Visible + ")<br/>");
+                sb.Append("Group: " + layer.Group + "<br/>");
+                sb.Append("Draw Order: " + layer.DisplayOrder + "</li>");
+            }
+            sb.Append("</ul>");
+
+            debug.InnerHtml = sb.ToString();
         }
     }
 }

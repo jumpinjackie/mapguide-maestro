@@ -12,6 +12,9 @@
         <asp:Label ID="lblMessage" runat="server"></asp:Label>
         <br />
         <a href="javascript:history.go(-1)">Go back</a>
+        <br />
+        <div id="debug" runat="server">
+        </div>
     </div>
     </form>
 </body>
