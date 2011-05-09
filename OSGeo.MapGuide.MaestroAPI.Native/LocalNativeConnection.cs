@@ -37,6 +37,8 @@ using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Native.Commands;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using System.Drawing;
+using System.Globalization;
 
 namespace OSGeo.MapGuide.MaestroAPI.Native
 {
@@ -614,6 +616,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             var result = Utility.MgStreamToNetStream(rnd, rnd.GetType().GetMethod("RenderDynamicOverlay", types), args);
 
             LogMethodCall("MgRenderingService::RenderDynamicOverlay", true, "MgMap", "MgSelection", format, keepSelection.ToString());
+
+            return result;
+        }
+
+        public Stream RenderMapLegend(RuntimeMap map, int width, int height, System.Drawing.Color backgroundColor, string format)
+        {
+            MgRenderingService rnd = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+
+            MgMap mmap = new MgMap();
+            mmap.Open(res, map.Name);
+            MgSelection sel = new MgSelection(mmap);
+
+            MgColor color = new MgColor(backgroundColor);
+
+            object[] args = new object[] { mmap, width, height, color, format };
+            Type[] types = new Type[] { args[0].GetType(), args[1].GetType(), args[2].GetType(), args[3].GetType(), args[4].GetType() };
+            var result = Utility.MgStreamToNetStream(rnd, rnd.GetType().GetMethod("RenderMapLegend", types), args);
+
+            LogMethodCall("MgRenderingService::RenderMapLegend", true, "MgMap", width.ToString(CultureInfo.InvariantCulture), height.ToString(CultureInfo.InvariantCulture), "#" + ColorTranslator.ToHtml(backgroundColor), format);
 
             return result;
         }

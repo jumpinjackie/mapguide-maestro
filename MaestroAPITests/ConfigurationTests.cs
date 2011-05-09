@@ -146,6 +146,9 @@ namespace MaestroAPITests
 
             conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\wms_config_example1.xml")) as WmsConfigurationDocument;
             Assert.NotNull(conf);
+
+            conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\wms_config_example2.xml")) as WmsConfigurationDocument;
+            Assert.NotNull(conf);
         }
 
         [Test]

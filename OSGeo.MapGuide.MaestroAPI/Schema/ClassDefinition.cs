@@ -418,7 +418,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
             //Process identity properties
             var parent = node.ParentNode;
-            var key = parent.SelectSingleNode("xs:element[@name='" + this.Name + "']/xs:key", mgr);
+            var key = parent.SelectSingleNode("xs:element[@name=\"" + this.Name + "\"]/xs:key", mgr);
             if (key != null)
             {
                 var fields = key.SelectNodes("xs:field", mgr);

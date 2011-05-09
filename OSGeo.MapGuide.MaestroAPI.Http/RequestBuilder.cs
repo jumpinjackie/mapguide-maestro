@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Specialized;
 using OSGeo.MapGuide.ObjectModels.Common;
+using System.Globalization;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -1552,6 +1553,24 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("SESSION", m_sessionID);
             param.Add("FORMAT", "text/xml");
             param.Add("CLIENTAGENT", m_userAgent);
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
+        internal string RenderMapLegend(string mapName, int width, int height, string color, string format)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "GETMAPLEGENDIMAGE");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("MAPNAME", mapName);
+            param.Add("CLIENTAGENT", m_userAgent);
+
+            if (format != null && format.Length != 0)
+                param.Add("FORMAT", format);
+
+            param.Add("WIDTH", width.ToString(CultureInfo.InvariantCulture));
+            param.Add("HEIGHT", height.ToString(CultureInfo.InvariantCulture));
 
             return m_hosturi + "?" + EncodeParameters(param);
         }

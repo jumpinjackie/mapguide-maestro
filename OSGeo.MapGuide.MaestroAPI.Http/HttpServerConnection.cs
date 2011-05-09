@@ -42,6 +42,7 @@ using OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0;
 using OSGeo.MapGuide.MaestroAPI.Http.Commands;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using System.Drawing;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -902,6 +903,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
                 return resp.GetResponseStream();
             }
+        }
+
+        public Stream RenderMapLegend(RuntimeMap map, int width, int height, System.Drawing.Color backgroundColor, string format)
+        {
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            string req = m_reqBuilder.RenderMapLegend(map.Name, width, height, ColorTranslator.ToHtml(backgroundColor), format);
+
+            return this.OpenRead(req);
         }
 
 		public override System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)

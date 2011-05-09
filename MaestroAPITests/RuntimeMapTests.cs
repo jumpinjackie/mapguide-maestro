@@ -43,6 +43,7 @@ namespace MaestroAPITests
     using OSGeo.MapGuide.ObjectModels.LoadProcedure;
     using System.Diagnostics;
     using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
+    using System.Drawing;
 
     [SetUpFixture]
     public class TestBootstrap
@@ -360,6 +361,56 @@ namespace MaestroAPITests
 
         #region render helpers
 
+        private static void RenderLegendAndVerifyConvenience(RuntimeMap map, int width, int height, string fileName, string format)
+        {
+            using (var stream = map.RenderMapLegend(width, height, Color.White, format))
+            {
+                using (var ms = new MemoryStream())
+                using (var ms2 = new MemoryStream())
+                using (var fs = new FileStream(fileName, FileMode.OpenOrCreate))
+                {
+                    Utility.CopyStream(stream, ms);
+                    Utility.CopyStream(ms, ms2);
+                    Utility.CopyStream(ms, fs);
+                    //See if System.Drawing.Image accepts this
+                    try
+                    {
+                        using (var img = System.Drawing.Image.FromStream(ms))
+                        { }
+                    }
+                    catch (Exception ex)
+                    {
+                        Assert.Fail(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private static void RenderLegendAndVerify(IMappingService mapSvc, RuntimeMap map, int width, int height, string fileName, string format)
+        {
+            using (var stream = mapSvc.RenderMapLegend(map, width, height, Color.White, format))
+            {
+                using (var ms = new MemoryStream())
+                using (var ms2 = new MemoryStream())
+                using (var fs = new FileStream(fileName, FileMode.OpenOrCreate))
+                {
+                    Utility.CopyStream(stream, ms);
+                    Utility.CopyStream(ms, ms2);
+                    Utility.CopyStream(ms, fs);
+                    //See if System.Drawing.Image accepts this
+                    try
+                    {
+                        using (var img = System.Drawing.Image.FromStream(ms))
+                        { }
+                    }
+                    catch (Exception ex)
+                    {
+                        Assert.Fail(ex.Message);
+                    }
+                }
+            }
+        }
+
         private static void RenderDynamicOverlayAndVerifyConvenience(RuntimeMap map, string fileName, string format)
         {
             using (var stream = map.RenderDynamicOverlay(format, true))
@@ -529,6 +580,94 @@ namespace MaestroAPITests
             RenderDynamicOverlayAndVerifyConvenience(map, "TestRenderOverlay12kConvenience_ParcelsBackOn.png", "PNG");
         }
 
+        public virtual void TestMapManipulation()
+        {
+            //Render a map of sheboygan at 12k
+            //Verify that layer removal and addition produces the expected rendered result
+
+            var resSvc = _conn.ResourceService;
+            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            Assert.NotNull(mapSvc);
+
+            var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
+            Assert.NotNull(mdf);
+
+            //FIXME: We have a problem. Can we calculate this value without MgCoordinateSystem and just using the WKT?
+            //The answer to this will answer whether we can actually support the Rendering Service API over http 
+            //using pure client-side runtime maps 
+            //
+            //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
+            //for this particular map.
+            double metersPerUnit = 111319.490793274;
+            var cs = CoordinateSystemBase.Create(mdf.CoordinateSystem);
+            metersPerUnit = cs.MetersPerUnitX;
+            Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
+
+            var mid = "Session:" + _conn.SessionID + "//TestMapManipulation.Map";
+            var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
+            map.ViewScale = 12000;
+            map.DisplayWidth = 1024;
+            map.DisplayHeight = 1024;
+            map.DisplayDpi = 96;
+
+            //Doesn't exist yet because save isn't called
+            Assert.IsTrue(!resSvc.ResourceExists(mid));
+            map.Save();
+
+            //Render default
+            RenderAndVerify(mapSvc, map, "TestMapManipulation12kWithRail.png", "PNG");
+            RenderAndVerifyConvenience(map, "TestMapManipulation12kConvenienceWithRail.png", "PNG");
+            RenderDynamicOverlayAndVerify(mapSvc, map, "TestMapManipulationOverlay12kWithRail.png", "PNG");
+            RenderDynamicOverlayAndVerifyConvenience(map, "TestMapManipulationOverlay12kConvenienceWithRail.png", "PNG");
+
+            RenderLegendAndVerify(mapSvc, map, 200, 600, "TestLegend12kWithRail.png", "PNG");
+            RenderLegendAndVerifyConvenience(map, 200, 600, "TestLegend12kConvenienceWithRail.png", "PNG");
+
+            //Remove parcels
+            var rail = map.GetLayerByName("Rail");
+            Assert.NotNull(rail);
+            map.RemoveLayer(rail);
+            map.Save();
+
+            //Render again
+            RenderAndVerify(mapSvc, map, "TestMapManipulation12k_RailRemoved.png", "PNG");
+            RenderAndVerifyConvenience(map, "TestMapManipulation12kConvenience_RailRemoved.png", "PNG");
+            RenderDynamicOverlayAndVerify(mapSvc, map, "TestMapManipulationOverlay12k_RailRemoved.png", "PNG");
+            RenderDynamicOverlayAndVerifyConvenience(map, "TestMapManipulationOverlay12kConvenience_RailRemoved.png", "PNG");
+
+            RenderLegendAndVerify(mapSvc, map, 200, 600, "TestLegend12k_RailRemoved.png", "PNG");
+            RenderLegendAndVerifyConvenience(map, 200, 600, "TestLegend12kConvenience_RailRemoved.png", "PNG");
+
+            //Add rail again
+            rail = null;
+            rail = map.GetLayerByName("Rail");
+            Assert.Null(rail);
+
+            rail = map.CreateLayer("Library://UnitTests/Layers/Rail.LayerDefinition", null);
+            rail.LegendLabel = "Rail";
+            rail.Visible = true;
+            rail.ShowInLegend = true;
+            rail.ExpandInLegend = true;
+
+            map.InsertLayer(0, rail);
+
+            //map.AddLayer(rail);
+            //Set draw order above parcels
+            //var parcels = map.GetLayerByName("Parcels");
+            //rail.SetDrawOrder(parcels.DisplayOrder - 0.000001);
+
+            map.Save();
+
+            //Render again. Rail should be above parcels
+            RenderAndVerify(mapSvc, map, "TestMapManipulation12k_RailReAdded.png", "PNG");
+            RenderAndVerifyConvenience(map, "TestMapManipulation12kConvenience_RailReAdded.png", "PNG");
+            RenderDynamicOverlayAndVerify(mapSvc, map, "TestMapManipulationOverlay12k_RailReAdded.png", "PNG");
+            RenderDynamicOverlayAndVerifyConvenience(map, "TestMapManipulationOverlay12kConvenience_RailReAdded.png", "PNG");
+
+            RenderLegendAndVerify(mapSvc, map, 200, 600, "TestLegend12k_RailReAdded.png", "PNG");
+            RenderLegendAndVerifyConvenience(map, 200, 600, "TestLegend12kConvenience_RailReAdded.png", "PNG");
+        }
+
         public virtual void TestResourceEvents()
         {
             bool deleteCalled = false;
@@ -615,7 +754,7 @@ namespace MaestroAPITests
         }
     }
 
-    [TestFixture(Ignore = true)]
+    [TestFixture(Ignore = false)]
     public class HttpRuntimeMapTests : RuntimeMapTests
     {
         protected override IServerConnection CreateTestConnection()
@@ -654,6 +793,12 @@ namespace MaestroAPITests
         public override void TestRender12k()
         {
             base.TestRender12k();
+        }
+
+        [Test]
+        public override void TestMapManipulation()
+        {
+            base.TestMapManipulation();
         }
 
         [Test]
@@ -702,6 +847,12 @@ namespace MaestroAPITests
         public override void TestRender12k()
         {
             base.TestRender12k();
+        }
+
+        [Test]
+        public override void TestMapManipulation()
+        {
+            base.TestMapManipulation();
         }
 
         [Test]

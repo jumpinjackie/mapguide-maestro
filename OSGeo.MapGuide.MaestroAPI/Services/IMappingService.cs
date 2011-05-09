@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
+using System.Drawing;
 
 namespace OSGeo.MapGuide.MaestroAPI.Services
 {
@@ -205,178 +206,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="clip">if set to <c>true</c> [clip].</param>
         /// <returns></returns>
         System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip);
-        /*
-        /// <summary>
-        /// Creates a runtime map on the server. 
-        /// The map name will be the name of the resource, without path information.
-        /// This is equivalent to the way the AJAX viewer creates the runtime map.
-        /// </summary>
-        /// <param name="resourceID">The mapDefinition resource id</param>
-        void CreateRuntimeMap(string resourceID);
 
         /// <summary>
-        /// Creates a runtime map on the server
+        /// Renders the legend for the specified <see cref="RuntimeMap"/> to the requested size and format
         /// </summary>
-        /// <param name="resourceID">The target resource id for the runtime map</param>
-        /// <param name="mapdefinition">The mapdefinition to base the map on</param>
-        void CreateRuntimeMap(string resourceID, string mapdefinition);
-
-        /// <summary>
-        /// Creates a runtime map on the server
-        /// </summary>
-        /// <param name="resourceID">The target resource id for the runtime map</param>
-        /// <param name="map">The mapdefinition to base the map on</param>
-        void CreateRuntimeMap(string resourceID, IMapDefinition map);
-
-        /// <summary>
-        /// Creates a runtime map on the server
-        /// </summary>
-        /// <param name="resourceID">The target resource id for the runtime map</param>
-        /// <param name="map">The mapdefinition to base the map on</param>
-        void CreateRuntimeMap(string resourceID, RuntimeMapBase map);
-
-        /// <summary>
-        /// Updates an existing runtime map
-        /// </summary>
-        /// <param name="resourceID">The target resource id for the runtime map</param>
-        /// <param name="map">The runtime map to update with</param>
-        void SaveRuntimeMap(string resourceID, RuntimeMapBase map);
-
-        /// <summary>
-        /// Gets the runtime map.
-        /// </summary>
-        /// <param name="resourceID">The resource ID.</param>
+        /// <param name="map"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="backgroundColor"></param>
+        /// <param name="format"></param>
         /// <returns></returns>
-        RuntimeMapBase GetRuntimeMap(string resourceID);
-
-        /// <summary>
-        /// Renders the runtime map.
-        /// </summary>
-        /// <param name="resourceId">The resource id.</param>
-        /// <param name="x">The x.</param>
-        /// <param name="y">The y.</param>
-        /// <param name="scale">The scale.</param>
-        /// <param name="width">The width.</param>
-        /// <param name="height">The height.</param>
-        /// <param name="dpi">The dpi.</param>
-        /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi);
-        /// <summary>
-        /// Renders the runtime map.
-        /// </summary>
-        /// <param name="resourceId">The resource id.</param>
-        /// <param name="x1">The x1.</param>
-        /// <param name="y1">The y1.</param>
-        /// <param name="x2">The x2.</param>
-        /// <param name="y2">The y2.</param>
-        /// <param name="width">The width.</param>
-        /// <param name="height">The height.</param>
-        /// <param name="dpi">The dpi.</param>
-        /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi);
-
-        /// <summary>
-        /// Renders the runtime map.
-        /// </summary>
-        /// <param name="resourceId">The resource id.</param>
-        /// <param name="x">The x.</param>
-        /// <param name="y">The y.</param>
-        /// <param name="scale">The scale.</param>
-        /// <param name="width">The width.</param>
-        /// <param name="height">The height.</param>
-        /// <param name="dpi">The dpi.</param>
-        /// <param name="format">The format.</param>
-        /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format);
-        /// <summary>
-        /// Renders the runtime map.
-        /// </summary>
-        /// <param name="resourceId">The resource id.</param>
-        /// <param name="x1">The x1.</param>
-        /// <param name="y1">The y1.</param>
-        /// <param name="x2">The x2.</param>
-        /// <param name="y2">The y2.</param>
-        /// <param name="width">The width.</param>
-        /// <param name="height">The height.</param>
-        /// <param name="dpi">The dpi.</param>
-        /// <param name="format">The format.</param>
-        /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format);
-
-        /// <summary>
-        /// Renders the runtime map.
-        /// </summary>
-        /// <param name="resourceId">The resource id.</param>
-        /// <param name="x">The x.</param>
-        /// <param name="y">The y.</param>
-        /// <param name="scale">The scale.</param>
-        /// <param name="width">The width.</param>
-        /// <param name="height">The height.</param>
-        /// <param name="dpi">The dpi.</param>
-        /// <param name="format">The format.</param>
-        /// <param name="clip">if set to <c>true</c> [clip].</param>
-        /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format, bool clip);
-        /// <summary>
-        /// Renders the runtime map.
-        /// </summary>
-        /// <param name="resourceId">The resource id.</param>
-        /// <param name="x1">The x1.</param>
-        /// <param name="y1">The y1.</param>
-        /// <param name="x2">The x2.</param>
-        /// <param name="y2">The y2.</param>
-        /// <param name="width">The width.</param>
-        /// <param name="height">The height.</param>
-        /// <param name="dpi">The dpi.</param>
-        /// <param name="format">The format.</param>
-        /// <param name="clip">if set to <c>true</c> [clip].</param>
-        /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip);
-
-        /// <summary>
-        /// Sets the selection of a map
-        /// </summary>
-        /// <param name="runtimeMap">The resourceID of the runtime map</param>
-        /// <param name="selectionXml">The selection xml</param>
-        void SetSelectionXml(string runtimeMap, string selectionXml);
-
-        /// <summary>
-        /// Gets the selection from a map
-        /// </summary>
-        /// <param name="runtimeMap">The resourceID of the runtime map</param>
-        /// <returns>The selection xml</returns>
-        string GetSelectionXml(string runtimeMap);
-
-
-        /// <summary>
-        /// Selects features from a runtime map, returning a selection Xml.
-        /// </summary>
-        /// <param name="runtimemap">The map to query. NOT a resourceID, only the map name!</param>
-        /// <param name="wkt">The WKT of the geometry to query with (always uses intersection)</param>
-        /// <param name="persist">True if the selection should be saved in the runtime map, false otherwise.</param>
-        /// <param name="attributes">The type of layer to include in the query</param>
-        /// <param name="raw">True if the result should contain the tooltip and link info</param>
-        /// <returns>The selection Xml, or an empty string if there were no data.</returns>
-        string QueryMapFeatures(string runtimemap, string wkt, bool persist, QueryMapFeaturesLayerAttributes attributes, bool raw);
-
-        /// <summary>
-        /// Selects features from a runtime map, returning a selection Xml.
-        /// </summary>
-        /// <param name="runtimemap">The map to query. NOT a resourceID, only the map name!</param>
-        /// <param name="wkt">The WKT of the geometry to query with (always uses intersection)</param>
-        /// <param name="persist">True if the selection should be saved in the runtime map, false otherwise.</param>
-        /// <returns>The selection Xml, or an empty string if there were no data.</returns>
-        string QueryMapFeatures(string runtimemap, string wkt, bool persist);
-
-        /// <summary>
-        /// Renders a minature bitmap of the layers style
-        /// </summary>
-        /// <param name="scale">The scale for the bitmap to match</param>
-        /// <param name="layerdefinition">The layer the image should represent</param>
-        /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
-        /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
-        /// <returns>The minature bitmap</returns>
-        System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type);
-        */
+        System.IO.Stream RenderMapLegend(RuntimeMap map, int width, int height, Color backgroundColor, string format);
     }
 }

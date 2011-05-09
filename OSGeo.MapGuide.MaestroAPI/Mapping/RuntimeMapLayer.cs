@@ -230,15 +230,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
-        /// Sets the display order of this layer
-        /// </summary>
-        /// <param name="priority"></param>
-        public void SetDrawOrder(double priority)
-        {
-            this.DisplayOrder = priority;
-        }
-
-        /// <summary>
         /// Gets the layer definition ID.
         /// </summary>
         /// <value>The layer definition ID.</value>
