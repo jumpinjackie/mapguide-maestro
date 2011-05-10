@@ -494,4 +494,7 @@
   <data name="XmlValidationIssueTemplate" xml:space="preserve">
     <value>Line {0}, Char {1}: {2}</value>
   </data>
+  <data name="ERR_SERVICE_NOT_SUPPORTED" xml:space="preserve">
+    <value>Service Type not supported: {0}</value>
+  </data>
 </root>

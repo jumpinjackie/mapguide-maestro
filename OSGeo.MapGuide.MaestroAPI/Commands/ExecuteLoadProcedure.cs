@@ -30,6 +30,7 @@ using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.Collections.Specialized;
+using OSGeo.MapGuide.ObjectModels.DrawingSource;
 
 namespace OSGeo.MapGuide.MaestroAPI.Commands
 {
@@ -573,7 +574,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                 // 2. Upload dwf file as resource data for this document.
 
                                 //Step 1: Create and save drawing source document.
-                                var ds = ObjectFactory.CreateDrawingSource(this.Parent);
+                                IDrawingSource ds = ObjectFactory.CreateDrawingSource(this.Parent);
                                 ds.SourceName = dataName;
                                 ds.CoordinateSpace = proc.CoordinateSystem;
                                 ds.ResourceID = dsId;
@@ -596,6 +597,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                         var sht = ds.CreateSheet(sect.Name, 0, 0, 0, 0);
                                         ds.AddSheet(sht);
                                     }
+
+                                    this.Parent.ResourceService.SaveResource(ds);
+
+                                    ds.UpdateExtents();
+                                    
                                     this.Parent.ResourceService.SaveResource(ds);
                                 }
                             }

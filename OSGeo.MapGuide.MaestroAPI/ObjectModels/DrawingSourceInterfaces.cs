@@ -22,6 +22,9 @@ using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using System.IO;
 
 namespace OSGeo.MapGuide.ObjectModels.DrawingSource
 {
@@ -93,5 +96,72 @@ namespace OSGeo.MapGuide.ObjectModels.DrawingSource
         /// </summary>
         /// <value>The extent.</value>
         IEnvelope Extent { get; set; }
+    }
+
+    public static class DrawingSourceExtensions
+    {
+        /// <summary>
+        /// Updates the extents of all sheets based on their respective AutoCAD Viewport Data in the embedded PIA resource
+        /// </summary>
+        /// <param name="source"></param>
+        public static void UpdateExtents(this IDrawingSource source)
+        {
+            Check.NotNull(source, "source");
+            Check.NotEmpty(source.ResourceID, "source.ResourceID");
+
+            //Need drawing service
+            if (Array.IndexOf(source.CurrentConnection.Capabilities.SupportedServices, (int)ServiceType.Drawing) < 0)
+                throw new NotSupportedException(string.Format(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ERR_SERVICE_NOT_SUPPORTED, ServiceType.Drawing.ToString()));
+
+            var drawSvc = (IDrawingService)source.CurrentConnection.GetService((int)ServiceType.Drawing);
+
+            foreach (var sht in source.Sheet)
+            {
+                var list = drawSvc.EnumerateDrawingSectionResources(source.ResourceID, sht.Name);
+                foreach (var res in list.SectionResource)
+                {
+                    if (res.Role == "AutoCAD Viewport Data")
+                    {
+                        using (var stream = drawSvc.GetSectionResource(source.ResourceID, res.Href))
+                        {
+                            //This is text content
+                            using (var sr = new StreamReader(stream))
+                            {
+                                try
+                                {
+                                    string content = sr.ReadToEnd();
+
+                                    //Viewport parameters are:
+                                    //
+                                    // llx
+                                    // lly
+                                    // urx
+                                    // ury
+                                    //
+                                    //A the first space after each number of each parameter marks the end of that value
+
+                                    int idx = content.IndexOf("llx") + 4; // 4 - length of "llx="
+                                    string sllx = content.Substring(idx, content.IndexOf(" ", idx) - idx);
+                                    idx = content.IndexOf("lly") + 4; // 4 - length of "lly="
+                                    string slly = content.Substring(idx, content.IndexOf(" ", idx) - idx);
+                                    idx = content.IndexOf("urx") + 4; // 4 - length of "urx="
+                                    string surx = content.Substring(idx, content.IndexOf(" ", idx) - idx);
+                                    idx = content.IndexOf("ury") + 4; // 4 - length of "ury="
+                                    string sury = content.Substring(idx, content.IndexOf(" ", idx) - idx);
+
+                                    //Update extents
+                                    sht.Extent = ObjectFactory.CreateEnvelope(
+                                        Convert.ToDouble(sllx),
+                                        Convert.ToDouble(slly),
+                                        Convert.ToDouble(surx),
+                                        Convert.ToDouble(sury));
+                                }
+                                catch { }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

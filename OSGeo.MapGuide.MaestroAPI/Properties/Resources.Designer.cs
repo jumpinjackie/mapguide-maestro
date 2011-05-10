@@ -404,6 +404,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Service Type not supported: {0}.
+        /// </summary>
+        internal static string ERR_SERVICE_NOT_SUPPORTED {
+            get {
+                return ResourceManager.GetString("ERR_SERVICE_NOT_SUPPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Factory method already registered for version: .
         /// </summary>
         internal static string FactoryMethodAlreadyRegistered {
