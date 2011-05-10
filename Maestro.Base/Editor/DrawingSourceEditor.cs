@@ -27,6 +27,7 @@ using System.Windows.Forms;
 using ICSharpCode.Core;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.Editors;
+using Maestro.Editors.DrawingSource;
 
 namespace Maestro.Base.Editor
 {
@@ -52,9 +53,9 @@ namespace Maestro.Base.Editor
                 _init = true;
             }
             
-            var dsEditor = new DrawingSourceEditor();
+            var dsEditor = new DrawingSourceEditorCtrl();
             dsEditor.Dock = DockStyle.Fill;
-            dsEditor.Controls.Add(dsEditor);
+            panelBody.Controls.Add(dsEditor);
 
             dsEditor.Bind(_edsvc);
         }
