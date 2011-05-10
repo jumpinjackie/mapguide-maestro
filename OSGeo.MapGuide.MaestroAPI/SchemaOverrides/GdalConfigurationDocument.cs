@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
@@ -40,6 +41,23 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         public bool RemoveLocation(GdalRasterLocationItem item)
         {
             return _items.Remove(item.Location);
+        }
+
+        /// <summary>
+        /// Calculates the combined extent that encompasses all the raster images in this document.
+        /// </summary>
+        /// <returns></returns>
+        public IEnvelope CalculateExtent()
+        {
+            IEnvelope env = null;
+            foreach (var loc in _items.Values)
+            {
+                if (env == null)
+                    env = loc.CalculateExtents();
+                else
+                    env.ExpandToInclude(loc.CalculateExtents());
+            }
+            return env;
         }
 
         public GdalRasterLocationItem AddLocation(string directory)

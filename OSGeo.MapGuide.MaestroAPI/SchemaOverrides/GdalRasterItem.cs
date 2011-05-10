@@ -22,12 +22,16 @@ using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.IO;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
     public class GdalRasterLocationItem : IFdoSerializable
     {
         private Dictionary<string, GdalRasterItem> _items = new Dictionary<string, GdalRasterItem>();
+
+        private IEnvelope _extents;
 
         public string Location { get; set; }
 
@@ -37,6 +41,23 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                 _items.Add(item.FileName, item);
             else
                 _items[item.FileName] = item;
+        }
+
+        /// <summary>
+        /// Calculates the combined extents of all the raster images in this specified location
+        /// </summary>
+        /// <returns>null if there are no raster images. Otherwise returns the combined extent</returns>
+        public IEnvelope CalculateExtents()
+        {
+            IEnvelope env = null;
+            foreach (var item in _items.Values)
+            {
+                if (env == null)
+                    env = ObjectFactory.CreateEnvelope(item.MinX, item.MinY, item.MaxX, item.MaxY);
+                else
+                    env.ExpandToInclude(ObjectFactory.CreateEnvelope(item.MinX, item.MinY, item.MaxX, item.MaxY));
+            }
+            return env;
         }
 
         public void RemoveItem(GdalRasterItem item) 

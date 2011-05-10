@@ -320,6 +320,11 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                 worker.ReportProgress(progress, string.Format(Properties.Resources.ProcessedItem, add));
             }
 
+            //Re-calculate combined extent for spatial context
+            var env = conf.CalculateExtent();
+            if (env != null)
+                conf.SpatialContexts[0].Extent = env;
+
             return result;
         }
 

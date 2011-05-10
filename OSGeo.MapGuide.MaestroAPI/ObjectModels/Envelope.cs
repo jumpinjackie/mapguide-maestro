@@ -95,6 +95,8 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         public static void ExpandToInclude(this IEnvelope env, IEnvelope e1)
         {
             Check.NotNull(env, "env");
+            if (e1 == null)
+                return;
 
             if (e1.MinX < env.MinX)
                 env.MinX = e1.MinX;

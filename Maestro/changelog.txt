@@ -3,6 +3,12 @@
 
  - This is the first release with a public SDK and samples demonstrating using the Maestro API.
  - Fix: Map Definition resource id field in a WebLayout 1.1.0 editor does not update when changed.
+ - Fix: DWF Load Procedure not settings sheet extents.
+ - Fix: Exception when opening drawing sources.
+ - Fix: Exception when deserializing configuration documents with non-english characters.
+ - Fix: Overall extent of GDAL configuraton document not being the computed aggregate of all raster images when rebuilding.
+ - Add an API to control RuntimeMapLayer draw order.
+ - Extend the IMappingService API to support rendering map legend images.
  - Added a tip of the day dialog that is shown on startup (this can be turned off)
 
 3.0 Final
