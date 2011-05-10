@@ -19,3 +19,9 @@ SchemaViewer
 
 This sample demonstrates using the Maestro API to describe and present the schema(s) of a feature source in a WinForms TreeView. Each
 selected node can be shown in the WinForms PropertyGrid beside it.
+
+DwfInspector
+------------
+
+This sample demonstrates using the Maestro API to describe and inspect a Drawing Source or a DWF file, which can be uploaded
+as a temporary Drawing Source
