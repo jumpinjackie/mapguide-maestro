@@ -1,5 +1,5 @@
-Understanding Applications
-==========================
+Understanding MapGuide Applications
+===================================
 
 Web Layouts
 -----------
