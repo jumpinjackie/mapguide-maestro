@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtFilePath = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
+            this.btnBrowseAlias = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -43,17 +44,28 @@
             // 
             resources.ApplyResources(this.txtFilePath, "txtFilePath");
             this.txtFilePath.Name = "txtFilePath";
+            this.txtFilePath.TextChanged += new System.EventHandler(this.txtFilePath_TextChanged);
             // 
             // btnBrowse
             // 
             resources.ApplyResources(this.btnBrowse, "btnBrowse");
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // btnBrowseAlias
+            // 
+            resources.ApplyResources(this.btnBrowseAlias, "btnBrowseAlias");
+            this.btnBrowseAlias.Image = global::Maestro.Editors.Properties.Resources.document;
+            this.btnBrowseAlias.Name = "btnBrowseAlias";
+            this.btnBrowseAlias.UseVisualStyleBackColor = true;
+            this.btnBrowseAlias.Click += new System.EventHandler(this.btnBrowseAlias_Click);
             // 
             // UnmanagedCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnBrowseAlias);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.txtFilePath);
             this.Controls.Add(this.label1);
@@ -68,5 +80,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFilePath;
         private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.Button btnBrowseAlias;
     }
 }

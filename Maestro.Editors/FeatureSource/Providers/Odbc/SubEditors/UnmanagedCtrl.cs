@@ -25,6 +25,8 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections.Specialized;
+using Maestro.Editors.Common;
+using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
 {
@@ -36,9 +38,12 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             InitializeComponent();
         }
 
+        private IResourceService _resSvc;
+
         public override void Bind(IEditorService service)
         {
             service.RegisterCustomNotifier(this);
+            _resSvc = service.ResourceService;
         }
 
         public Control Content
@@ -105,5 +110,37 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         }
 
         public event EventHandler ConnectionChanged;
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            using (var open = new OpenFileDialog())
+            {
+                open.Filter = Properties.Resources.OdbcDriverAccess + "|*.mdb|" +
+                              Properties.Resources.OdbcDriverAccess64 + "|*.accdb|" + 
+                              Properties.Resources.OdbcDriverExcel + "|*.xls|" +
+                              Properties.Resources.OdbcDriverExcel64 + "|*.xlsx, *.xlsm, *.xlsb";
+
+                if (open.ShowDialog() == DialogResult.OK)
+                {
+                    txtFilePath.Text = open.FileName;
+                }
+            }
+        }
+
+        private void btnBrowseAlias_Click(object sender, EventArgs e)
+        {
+            using (var picker = new UnmanagedFileBrowser(_resSvc))
+            {
+                if (picker.ShowDialog() == DialogResult.OK)
+                {
+                    txtFilePath.Text = picker.SelectedItem;
+                }
+            }
+        }
+
+        private void txtFilePath_TextChanged(object sender, EventArgs e)
+        {
+            OnConnectionChanged();
+        }
     }
 }
