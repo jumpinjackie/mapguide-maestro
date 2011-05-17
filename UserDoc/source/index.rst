@@ -9,7 +9,7 @@ Maestro User Guide
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    
    introduction
    installation
@@ -17,10 +17,15 @@ Contents:
    differences
    
    user_interface
+   publish_workflow
    
+   understanding_load_procedures
    understanding_feature_sources
+   understanding_drawing_sources
    understanding_layers
+   understanding_maps
    understanding_applications
+   understanding_print_layouts
    
    edit_xml
    resource_validation
