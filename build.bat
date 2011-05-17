@@ -79,7 +79,7 @@ pushd Maestro
 %MSBUILD% Maestro.sln
 popd
 pushd UserDoc
-make html
+call make.bat html
 popd
 pushd UserDoc\build\html
 xcopy /S /Y *.* %SLNDIR%\out\%TYPEBUILD%\UserDoc\

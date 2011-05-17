@@ -179,6 +179,7 @@ Section
 	File /r "${INST_OUTPUT_MAESTRO}\WebStudio"
 	File /r "${INST_OUTPUT_MAESTRO}\AddIns"
     File /r "${INST_OUTPUT_MAESTRO}\Data"
+    File /r "${INST_OUTPUT_MAESTRO}\UserDoc"
 	
 	# docs
 	#File "${INST_OUTPUT_MAESTRO}\${HELP_USER}"
