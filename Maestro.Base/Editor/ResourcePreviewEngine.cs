@@ -90,7 +90,7 @@ namespace Maestro.Base.Editor
                 var wl = ObjectFactory.CreateWebLayout(_edSvc.GetEditedResource().CurrentConnection, new Version(1, 0, 0), mdfId);
 
                 //Add a custom zoom command (to assist previews of layers that aren't [0, infinity] scale)
-                AttachZoomToScaleCommand(wl);
+                AttachPreviewCommands(wl);
 
                 var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".WebLayout";
 
@@ -112,7 +112,7 @@ namespace Maestro.Base.Editor
             return url;
         }
 
-        private static void AttachZoomToScaleCommand(IWebLayout wl)
+        private static void AttachPreviewCommands(IWebLayout wl)
         {
             var cmd = wl.CreateInvokeScriptCommand();
             cmd.Name = "ZoomScale";
@@ -130,8 +130,29 @@ namespace Maestro.Base.Editor
 
             wl.CommandSet.AddCommand(cmd);
 
-            var item = wl.CreateCommandItem(cmd.Name);
-            wl.ToolBar.AddItem(item);
+            var cmd2 = wl.CreateInvokeScriptCommand();
+            cmd2.Name = "GetMapKml";
+            cmd2.Label = "Get KML";
+            cmd2.Description = "Gets the current map as a KML document";
+            cmd2.Tooltip = "Gets the current map as a KML document";
+
+            cmd2.Script = @"
+                var map = parent.parent.GetMapFrame();
+                var url = ""../mapagent/mapagent.fcgi?OPERATION=GETMAPKML&VERSION=1.0.0&FORMAT=KML&DISPLAYDPI=96&MAPDEFINITION=" + wl.Map.ResourceId + @""";
+                url += ""&SESSION="" + map.GetSessionId();
+                window.open(url);";
+
+            cmd2.TargetViewer = TargetViewerType.Ajax;
+            cmd2.ImageURL = "../stdicons/icon_invokescript.gif";
+
+            wl.CommandSet.AddCommand(cmd2);
+            
+            var zoomScale = wl.CreateCommandItem(cmd.Name);
+            var menu = wl.CreateFlyout("Tools", "Tools", "Extra tools", "", "", 
+                wl.CreateCommandItem("ZoomScale"),
+                wl.CreateCommandItem("GetMapKml")
+            );
+            wl.ToolBar.AddItem(menu);
         }
 
         private string GenerateMapPreviewUrl(IResource res)
@@ -153,7 +174,7 @@ namespace Maestro.Base.Editor
                 var wl = ObjectFactory.CreateWebLayout(_edSvc.GetEditedResource().CurrentConnection, new Version(1, 0, 0), mdfId);
 
                 //Add a custom zoom command (to assist previews of layers that aren't [0, infinity] scale)
-                AttachZoomToScaleCommand(wl);
+                AttachPreviewCommands(wl);
 
                 var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".WebLayout";
 
