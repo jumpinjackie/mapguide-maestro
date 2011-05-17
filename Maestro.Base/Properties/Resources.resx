@@ -1013,4 +1013,10 @@ Error message: {1}</value>
   <data name="Menu_Help_Totd" xml:space="preserve">
     <value>Tip of the Day</value>
   </data>
+  <data name="HelpFileNotFound" xml:space="preserve">
+    <value>Could not find help file</value>
+  </data>
+  <data name="Menu_Help_UserGuide" xml:space="preserve">
+    <value>User Guide</value>
+  </data>
 </root>

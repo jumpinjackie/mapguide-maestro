@@ -5,6 +5,7 @@ SET PLATFORM=Any CPU
 SET RELEASE_VERSION=3.0.0
 SET OLDPATH=%PATH%
 SET PATH=%PATH%;%CD%\Thirdparty\NSIS;C:\Windows\Microsoft.NET\Framework\v3.5
+SET SLNDIR=%CD%
 
 :study_params
 if (%1)==() goto start_build
@@ -76,6 +77,12 @@ pushd SDK
 popd
 pushd Maestro
 %MSBUILD% Maestro.sln
+popd
+pushd UserDoc
+make html
+popd
+pushd UserDoc\build\html
+xcopy /S /Y *.* %SLNDIR%\out\%TYPEBUILD%\UserDoc\
 popd
 pushd Install
 %MAKENSIS% Maestro.nsi

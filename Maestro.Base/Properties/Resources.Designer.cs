@@ -741,6 +741,15 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find help file.
+        /// </summary>
+        internal static string HelpFileNotFound {
+            get {
+                return ResourceManager.GetString("HelpFileNotFound", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap images_stack {
             get {
                 object obj = ResourceManager.GetObject("images_stack", resourceCulture);
@@ -1052,6 +1061,15 @@ namespace Maestro.Base.Properties {
         internal static string Menu_Help_Totd {
             get {
                 return ResourceManager.GetString("Menu_Help_Totd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Guide.
+        /// </summary>
+        internal static string Menu_Help_UserGuide {
+            get {
+                return ResourceManager.GetString("Menu_Help_UserGuide", resourceCulture);
             }
         }
         

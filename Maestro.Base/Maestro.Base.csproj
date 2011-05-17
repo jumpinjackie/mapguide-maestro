@@ -127,6 +127,7 @@
     <Compile Include="Commands\Test\SelectFdoProviderCommand.cs" />
     <Compile Include="Commands\Test\TestCommands.cs" />
     <Compile Include="Commands\TipOfTheDayCommand.cs" />
+    <Compile Include="Commands\UserGuideCommand.cs" />
     <Compile Include="Commands\ValidateEditedResourceCommand.cs" />
     <Compile Include="Commands\XmlEditCommand.cs" />
     <Compile Include="Editor\DrawingSourceEditor.cs">

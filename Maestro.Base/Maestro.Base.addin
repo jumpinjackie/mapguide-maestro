@@ -242,6 +242,9 @@
         <MenuItem id="Menu_Help"
                   type="Menu"
                   label="${res:Menu_Help}">
+            <MenuItem id="Menu_Help_UserGuide"
+                      label="${res:Menu_Help_UserGuide}"
+                      class="Maestro.Base.Commands.UserGuideCommand" />
             <MenuItem id="Menu_Help_Totd"
                       label="${res:Menu_Help_Totd}"
                       class="Maestro.Base.Commands.TipOfTheDayCommand" />
