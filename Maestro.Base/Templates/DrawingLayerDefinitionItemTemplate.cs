@@ -26,6 +26,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Base.Templates
 {
@@ -49,6 +50,14 @@ namespace Maestro.Base.Templates
                 {
                     var ldf = ObjectFactory.CreateDefaultLayer(conn, OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Drawing, new Version(1, 0, 0));
                     ldf.SubLayer.ResourceId = picker.ResourceID;
+                    var dl = ((IDrawingLayerDefinition)ldf.SubLayer);
+                    dl.LayerFilter = "";
+                    dl.MinScale = 0;
+
+                    IDrawingService dwSvc = (IDrawingService)conn.GetService((int)ServiceType.Drawing);
+                    var sheets = dwSvc.EnumerateDrawingSections(picker.ResourceID);
+                    dl.Sheet = sheets.Section[0].Name;
+
                     return ldf;
                 }
                 return null;
