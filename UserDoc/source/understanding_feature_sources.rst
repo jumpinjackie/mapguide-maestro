@@ -42,21 +42,52 @@ The Generic Editor
 Maestro provides a specialized feature source editor for the most frequently used FDO providers. For third party or other unrecognised FDO providers, a generic editor is
 available to configure the connection parameters to your particular data store.
 
-.. image:: images/fs_generic.png
+.. figure:: images/fs_generic.png
+   
+   *The Generic Feature Source Editor*
+
+If a connection property involves an embedded data file, upload the file first as a **Resource Data File** and you can reference it 
+by prefixing `%MG_DATA_FILE_PATH%` in front of the resource data file name.
 
 Coordinate System Overrides
 ---------------------------
 
-TODO
+The Coordinate System Overrides section of the editor allows you to override the coordinate systems of this Feature Source. 
 
-.. image:: images/fs_cs_overrides.png
+.. figure:: images/fs_cs_overrides.png
+   
+   *The Coordinate System Overrides Editor*
+
+For example, a Feature Source may report an Arbitrary or incorrectly specified coordinate system, but the actual geometries themselves 
+have real world geographical relevance. You can use this editor to replace this Arbitrary coordinate system with a different coordinate 
+system. 
+
+This is  important if you require MapGuide to transform data. The source and target coordinate systems need to be correct. This override 
+mechanism allows you to fix the source side of the transformation.
 
 Joins and Extensions
 --------------------
 
-TODO
+The Joins and Extensions section of the editor allows you to define **Extended Feature Classes**.
 
-.. image:: images/fs_extensions.png
+.. figure:: images/fs_extensions.png
+
+   *The Joins and Extensions Editor*
+
+Extended Feature Classes extend a given feature class in the edited feature source with:
+
+ * Extra calculated properties derived from FDO expressions
+ * Extra properties from another Feature Class in another Feature Source by performing a **Feature Join**
+ 
+If extending a Feature Class via a **Feature Join** you may choose the type of join to perform:
+
+ * Left Outer
+ * Right Outer
+ * Inner 
+ 
+Also you have to specify at least one property from both participating Feature Classes that will be joined on.
+
+Finally you can force a 1-to-1 cardinality to avoid redundant secondary Feature Class attributes for each primary feature or vice versa.
 
 .. note::
 

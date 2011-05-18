@@ -1,7 +1,11 @@
+.. _maestro-differences:
+
 Differences between Maestro and MapGuide Studio
 ===============================================
 
-Note: As of the 2012 release, MapGuide Enterprise is now known as Autodesk Infrastructure Map Server and the MapGuide Studio product is now called Autodesk Infrastructure Studio. This section will refer to these products by their old names.
+.. note::
+
+ As of the 2012 release, MapGuide Enterprise is now known as Autodesk Infrastructure Map Server and the MapGuide Studio product is now called Autodesk Infrastructure Studio. This section will refer to these products by their old names.
 
 Both Maestro and MapGuide Studio fulfill the same purpose: To create, author and publish spatial data on a MapGuide Server. However there are some main differences:
 
