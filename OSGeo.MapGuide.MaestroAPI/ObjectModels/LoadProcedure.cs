@@ -129,7 +129,7 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0
     {
         public void AddFile(string file)
         {
-            if (this.sourceFileField.Contains(file))
+            if (!this.sourceFileField.Contains(file))
             {
                 this.sourceFileField.Add(file);
             }

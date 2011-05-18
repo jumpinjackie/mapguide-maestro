@@ -67,6 +67,7 @@ namespace Maestro.Editors.LoadProcedure
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     _lpt.AddFiles(dlg.FileNames);
+                    OnResourceChanged();
                 }
             }
         }
@@ -99,6 +100,7 @@ namespace Maestro.Editors.LoadProcedure
                 {
                     _lpt.RemoveFile(f);
                 }
+                OnResourceChanged();
             }
         }
     }

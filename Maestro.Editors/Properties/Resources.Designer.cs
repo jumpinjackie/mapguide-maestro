@@ -699,7 +699,7 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Autodesk SDF (*.sdf)|*.*.
+        ///   Looks up a localized string similar to Autodesk SDF (*.sdf)|*.sdf.
         /// </summary>
         internal static string FilterSdf {
             get {
@@ -708,7 +708,7 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ESRI Shape File (*.shp)|*.*.
+        ///   Looks up a localized string similar to ESRI Shape File (*.shp)|*.shp.
         /// </summary>
         internal static string FilterShp {
             get {
