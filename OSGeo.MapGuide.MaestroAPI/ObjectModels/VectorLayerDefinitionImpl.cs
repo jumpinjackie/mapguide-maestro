@@ -310,7 +310,11 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 #endif
     }
 
+#if LDF_100
     partial class StrokeType : IStroke
+#else
+    partial class StrokeType : IStroke, IStroke2
+#endif
     {
         internal StrokeType() { }
 
@@ -318,6 +322,14 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
         {
             return StrokeType.Deserialize(this.Serialize());
         }
+
+#if LDF_100
+#else
+        IStroke2 ICloneableLayerElement<IStroke2>.Clone()
+        {
+            return StrokeType.Deserialize(this.Serialize());
+        }
+#endif
     }
 
     partial class FillType : IFill

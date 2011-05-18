@@ -835,6 +835,18 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     }
 
     /// <summary>
+    /// Encapsulates the stylization of a line. Supported in Layer Definition schema
+    /// 1.1.0 and newer
+    /// </summary>
+    public interface IStroke2 : IStroke, ICloneableLayerElement<IStroke2>
+    {
+        /// <summary>
+        /// Gets or sets the size context of the thickness units
+        /// </summary>
+        SizeContextType SizeContext { get; set; }
+    }
+
+    /// <summary>
     /// Symbolization characteristics for areas.
     /// </summary>
     public interface IAreaSymbolizationFill : ICloneableLayerElement<IAreaSymbolizationFill>

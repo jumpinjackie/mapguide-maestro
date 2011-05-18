@@ -126,6 +126,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 				if (lineStyles.Items.Count > 0)
 					lineStyles.SelectedIndex = 0;
 
+                if (!compositeLines.Checked)
+                {
+                    var st2 = m_item[0] as IStroke2;
+                    if (st2 != null)
+                        sizeContextCombo.SelectedValue = st2.SizeContext;
+                    else
+                        sizeContextCombo.Enabled = false; //Must be a 1.0.0 schema line rule
+                }
+
 				UpdateDisplayForSelected();
 
 			}
@@ -479,11 +488,16 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		{
 			if (m_inUpdate)
 				return;
-            //this.CurrentStrokeType.SizeContext = (SizeContextType)Enum.Parse(typeof(SizeContextType), (string)sizeContextCombo.SelectedValue);
-            previewPicture.Refresh();
-            lineStyles.Refresh();
-            if (Changed != null)
-				Changed(this, new EventArgs());
+
+            var st2 = this.CurrentStrokeType as IStroke2;
+            if (st2 != null)
+            {
+                st2.SizeContext = (SizeContextType)Enum.Parse(typeof(SizeContextType), (string)sizeContextCombo.SelectedValue);
+                previewPicture.Refresh();
+                lineStyles.Refresh();
+                if (Changed != null)
+                    Changed(this, new EventArgs());
+            }
 		}
 
 		private void sizeUnitsCombo_SelectedIndexChanged(object sender, System.EventArgs e)
