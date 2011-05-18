@@ -592,8 +592,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                 {
                                     foreach(var sect in list.Section)
                                     {
-                                        //TODO: Extract CS and extent info of each sheet and reg them into the document content
-                                        //DWF files are ZIP files, so we have the ability to peek at its internals
                                         var sht = ds.CreateSheet(sect.Name, 0, 0, 0, 0);
                                         ds.AddSheet(sht);
                                     }

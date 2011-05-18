@@ -310,6 +310,10 @@ namespace Maestro.Editors.Common
             }
         }
 
+        public bool ContainsFile(string name)
+        {
+            return lstDataFiles.Items.ContainsKey(name);
+        }
 
         private void lstDataFiles_SelectedIndexChanged(object sender, EventArgs e)
         {

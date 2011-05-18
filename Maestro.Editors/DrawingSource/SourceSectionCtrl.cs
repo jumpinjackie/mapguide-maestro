@@ -51,10 +51,15 @@ namespace Maestro.Editors.DrawingSource
             _dws = (IDrawingSource)service.GetEditedResource();
 
             resDataCtrl.Init(service);
-            resDataCtrl.DataListChanged += (sender, e) => { OnResourceChanged(); };
+            resDataCtrl.DataListChanged += new EventHandler(OnResourceDataListChanged);
             resDataCtrl.ResourceDataMarked += new ResourceDataSelectionEventHandler(OnResourceDataMarked);
             TextBoxBinder.BindText(txtSourceCs, _dws, "CoordinateSpace");
             MarkSelected();
+        }
+
+        void OnResourceDataListChanged(object sender, EventArgs e)
+        {
+            OnResourceChanged();
         }
 
         private void MarkSelected()
@@ -68,9 +73,25 @@ namespace Maestro.Editors.DrawingSource
 
         void OnResourceDataMarked(object sender, string dataName)
         {
-            if (!dataName.Equals(_dws.SourceName))
+            _dws.SourceName = dataName;
+
+            //Re-calc sheet extents for this DWF
+            using (new WaitCursor(this))
             {
-                _dws.SourceName = dataName;
+                _dws.RemoveAllSheets();
+                _edSvc.SyncSessionCopy();
+
+                //Re-populate sheets
+                IDrawingService dwSvc = (IDrawingService)_dws.CurrentConnection.GetService((int)ServiceType.Drawing);
+                var sheets = dwSvc.EnumerateDrawingSections(_dws.ResourceID);
+                foreach (var sht in sheets.Section)
+                {
+                    _dws.AddSheet(_dws.CreateSheet(sht.Name, 0, 0, 0, 0));
+                }
+
+                _edSvc.SyncSessionCopy();
+                //Re-calc extents
+                _dws.UpdateExtents();
             }
         }
 
