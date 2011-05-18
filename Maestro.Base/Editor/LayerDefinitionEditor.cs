@@ -105,8 +105,8 @@ namespace Maestro.Base.Editor
         {
             foreach (var vsr in vl.VectorScaleRange)
             {
-                var vsr2 = vsr as IVectorScaleRange2;
-                if (vsr2 != null && vsr2.CompositeStyle != null)
+                var vsr3 = vsr as IVectorScaleRange3;
+                if (vsr3 != null && vsr3.CompositeStyle != null)
                     return true;
             }
             return false;

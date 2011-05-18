@@ -80,8 +80,11 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
     }
 
     partial class VectorScaleRangeType : IVectorScaleRange
-#if LDF_120 || LDF_130
+#if LDF_110
         , IVectorScaleRange2
+#endif
+#if LDF_120 || LDF_130
+        , IVectorScaleRange3
 #endif
     {
         #region Missing generated stuff
@@ -308,7 +311,32 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
             }
         }
 #endif
+
+#if LDF_100
+#else
+        IElevationSettings IVectorScaleRange2.ElevationSettings
+        {
+            get { return this.ElevationSettings; }
+            set { this.ElevationSettings = (ElevationSettingsType)value; }
+        }
+
+        IElevationSettings IVectorScaleRange2.Create(string zOffset, string zExtrusion, ElevationTypeType zOffsetType, LengthUnitType unit)
+        {
+            return new ElevationSettingsType()
+            {
+                ZOffset = zOffset,
+                ZOffsetType = zOffsetType,
+                ZExtrusion = zExtrusion,
+                Unit = unit
+            };
+        }
+#endif
     }
+
+#if LDF_100
+#else
+    partial class ElevationSettingsType : IElevationSettings { }
+#endif
 
 #if LDF_100
     partial class StrokeType : IStroke

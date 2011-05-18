@@ -580,9 +580,36 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     }
 
     /// <summary>
-    /// The stylization to be applied to the vector features for a given scale range. Supports composite styles
+    /// The stylization to be applied to the vector features for a given scale range. Supports elevation
+    /// and extrusion settings.
+    /// 
+    /// Supported by Layer Definition 1.1.0 and higher
     /// </summary>
     public interface IVectorScaleRange2 : IVectorScaleRange
+    {
+        /// <summary>
+        /// Creates a new instance of <see cref="IElevationSettings"/>. This instance is detached
+        /// and needs to be assigned to the <see cref="ElevationSettings"/> property to take effect.
+        /// </summary>
+        /// <param name="zOffset"></param>
+        /// <param name="zExtrusion"></param>
+        /// <param name="zOffsetType"></param>
+        /// <param name="unit"></param>
+        /// <returns></returns>
+        IElevationSettings Create(string zOffset, string zExtrusion, ElevationTypeType zOffsetType, LengthUnitType unit);
+
+        /// <summary>
+        /// Gets or sets the elevation settings
+        /// </summary>
+        IElevationSettings ElevationSettings { get; set; }
+    }
+
+    /// <summary>
+    /// The stylization to be applied to the vector features for a given scale range. Supports composite styles.
+    /// 
+    /// Supported by Layer Definition 1.2.0 and higher
+    /// </summary>
+    public interface IVectorScaleRange3 : IVectorScaleRange2
     {
         /// <summary>
         /// Gets or sets the composite style for this scale range
