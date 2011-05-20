@@ -97,6 +97,27 @@ namespace Maestro.Base.Services
             return GetRegisteredEditor(rtd);
         }
 
+        internal void RenameResourceId(string oldId, string newId, ISiteExplorer siteExp)
+        {
+            Check.NotEmpty(oldId, "oldId");
+            Check.NotEmpty(newId, "newId");
+            Check.NotNull(siteExp, "siteExp");
+
+            if (oldId.Equals(newId))
+                return;
+
+            //Original must exist and new id must not
+            if (_openItems.ContainsKey(oldId) && !_openItems.ContainsKey(newId))
+            {
+                var ed = _openItems[oldId];
+                _openItems.Remove(oldId);
+                _openItems[newId] = ed;
+
+                siteExp.FlagNode(oldId, NodeFlagAction.None);
+                siteExp.FlagNode(newId, NodeFlagAction.HighlightOpen);
+            }
+        }
+
         /// <summary>
         /// Opens the specified resource using its assigned editor. If the resource is already
         /// open, the the existing editor view is activated instead. If the resource has no assigned

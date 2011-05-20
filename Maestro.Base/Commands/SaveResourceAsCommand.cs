@@ -57,7 +57,10 @@ namespace Maestro.Base.Commands
 
                         using (new WaitCursor(wb))
                         {
+                            var oldId = ed.EditorService.ResourceID;
                             ed.EditorService.SaveAs(picker.ResourceID);
+                            if (oldId != ed.EditorService.ResourceID)
+                                omgr.RenameResourceId(oldId, ed.EditorService.ResourceID, exp);
 
                             try
                             {
