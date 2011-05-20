@@ -1169,4 +1169,13 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="InvalidConnection" xml:space="preserve">
     <value>This is not a valid connection: {0}</value>
   </data>
+  <data name="ErrorMapExtentCalculationFailed" xml:space="preserve">
+    <value>Could not transform extents of any layer in this Map Definition. You will have to specify the extents manually.</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="WarningMapExtentCalculation" xml:space="preserve">
+    <value>Could not transform extents of one or more layers in this Map Definition. These extents have not been factored into the computed result.</value>
+  </data>
 </root>

@@ -219,6 +219,87 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             return string.Empty;
         }
 
+        public static IEnvelope GetSpatialExtent(this ILayerDefinition layer, bool allowFallbackToContextInformation, out string csWkt)
+        {
+            csWkt = null;
+            Check.NotNull(layer, "layer");
+            if (layer.CurrentConnection == null)
+                throw new System.Exception("No server set for object");
+
+            var conn = layer.CurrentConnection;
+            switch (layer.SubLayer.LayerType)
+            {
+                case LayerType.Vector:
+                    {
+                        IEnvelope env = null;
+                        try
+                        {
+                            env = conn.FeatureService.GetSpatialExtent(layer.SubLayer.ResourceId, ((IVectorLayerDefinition)layer.SubLayer).FeatureName, ((IVectorLayerDefinition)layer.SubLayer).Geometry);
+                            return env;
+                        }
+                        catch //Default to extents of active spatial context
+                        {
+                            var scList = conn.FeatureService.GetSpatialContextInfo(layer.SubLayer.ResourceId, true);
+                            if (scList.SpatialContext.Count > 0)
+                            {
+                                var sc = scList.SpatialContext[0];
+                                return ObjectFactory.CreateEnvelope(
+                                    Convert.ToDouble(sc.Extent.LowerLeftCoordinate.X),
+                                    Convert.ToDouble(sc.Extent.LowerLeftCoordinate.Y),
+                                    Convert.ToDouble(sc.Extent.UpperRightCoordinate.X),
+                                    Convert.ToDouble(sc.Extent.UpperRightCoordinate.Y));
+                            }
+                            return null;
+                        }
+                    }
+                case LayerType.Raster:
+                    {
+                        IEnvelope env = null;
+                        try
+                        {
+                            env = conn.FeatureService.GetSpatialExtent(layer.SubLayer.ResourceId, ((IRasterLayerDefinition)layer.SubLayer).FeatureName, ((IRasterLayerDefinition)layer.SubLayer).Geometry);
+                            return env;
+                        }
+                        catch //Default to extents of active spatial context
+                        {
+                            var scList = conn.FeatureService.GetSpatialContextInfo(layer.SubLayer.ResourceId, true);
+                            if (scList.SpatialContext.Count > 0)
+                            {
+                                var sc = scList.SpatialContext[0];
+                                return ObjectFactory.CreateEnvelope(
+                                    Convert.ToDouble(sc.Extent.LowerLeftCoordinate.X),
+                                    Convert.ToDouble(sc.Extent.LowerLeftCoordinate.Y),
+                                    Convert.ToDouble(sc.Extent.UpperRightCoordinate.X),
+                                    Convert.ToDouble(sc.Extent.UpperRightCoordinate.Y));
+                            }
+                            return null;
+                        }
+                    }
+                default:
+                    {
+                        int[] services = conn.Capabilities.SupportedServices;
+                        if (Array.IndexOf(services, (int)ServiceType.Drawing) >= 0)
+                        {
+                            var sheet = ((IDrawingLayerDefinition)layer.SubLayer).Sheet;
+                            var dws = (IDrawingSource)conn.ResourceService.GetResource(((IDrawingLayerDefinition)layer.SubLayer).ResourceId);
+
+                            if (dws.Sheet != null)
+                            {
+                                //find matching sheet
+                                foreach (var sht in dws.Sheet)
+                                {
+                                    if (sheet.Equals(sht.Name))
+                                    {
+                                        return ObjectFactory.CreateEnvelope(sht.Extent.MinX, sht.Extent.MinY, sht.Extent.MaxX, sht.Extent.MaxY);
+                                    }
+                                }
+                            }
+                        }
+                        return null;
+                    }
+            }
+        }
+
         /// <summary>
         /// Returns the spatial extent of the data.
         /// This is calculated by asking the underlying featuresource for the minimum rectangle that

@@ -32,6 +32,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System.Globalization;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -239,38 +240,83 @@ namespace Maestro.Editors.MapDefinition
                         }
                     }
                 }
-                var env = Util.GetCombinedExtents(layers);
-
-                _map.SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
+                
+                var env = Util.GetCombinedExtents(_map, layers);
+                if (env != null)
+                {
+                    _map.SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
+                    MessageBox.Show(Properties.Resources.WarningMapExtentCalculation, Properties.Resources.TitleWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show(Properties.Resources.ErrorMapExtentCalculationFailed, Properties.Resources.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         internal class Util
         {
-            public static IEnvelope GetCombinedExtents(IEnumerable<ILayerDefinition> layers)
+            public static IEnvelope GetCombinedExtents(IMapDefinition mapDef, IEnumerable<ILayerDefinition> layers)
             {
                 Check.NotNull(layers, "layers");
                 IEnvelope env = null;
                 foreach (var layer in layers)
                 {
                     var e1 = layer.GetSpatialExtent(true);
-                    if (env == null)
+                    var wkt = layer.GetCoordinateSystemWkt();
+                    if (wkt != mapDef.CoordinateSystem)
                     {
-                        env = e1;
+                        e1 = TransformEnvelope(e1, wkt, mapDef.CoordinateSystem);
+                    }
+
+                    if (e1 != null)
+                    {
+                        if (env == null)
+                        {
+                            env = e1;
+                        }
+                        else
+                        {
+                            if (e1.MinX < env.MinX)
+                                env.MinX = e1.MinX;
+                            if (e1.MinY < env.MinY)
+                                env.MinY = e1.MinY;
+                            if (e1.MaxX > env.MaxX)
+                                env.MaxX = e1.MaxX;
+                            if (e1.MaxY > env.MaxY)
+                                env.MaxY = e1.MaxY;
+                        }
                     }
                     else
                     {
-                        if (e1.MinX < env.MinX)
-                            env.MinX = e1.MinX;
-                        if (e1.MinY < env.MinY)
-                            env.MinY = e1.MinY;
-                        if (e1.MaxX > env.MaxX)
-                            env.MaxX = e1.MaxX;
-                        if (e1.MaxY > env.MaxY)
-                            env.MaxY = e1.MaxY;
+                        System.Diagnostics.Trace.TraceWarning("Could not transform extent of layer " + layer.ResourceID + " to the map definition's coordinate system. Extents ignored");
                     }
                 }
                 return env;
+            }
+
+            private static IEnvelope TransformEnvelope(IEnvelope env, string srcCsWkt, string dstCsWkt)
+            {
+                try
+                {
+                    var trans = new DefaultSimpleTransform(srcCsWkt, dstCsWkt);
+
+                    var oldExt = env;
+
+                    double llx;
+                    double lly;
+                    double urx;
+                    double ury;
+
+                    trans.Transform(oldExt.MinX, oldExt.MinY, out llx, out lly);
+                    trans.Transform(oldExt.MaxX, oldExt.MaxY, out urx, out ury);
+
+                    return ObjectFactory.CreateEnvelope(llx, lly, urx, ury);
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
     }
