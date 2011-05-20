@@ -35,6 +35,7 @@ using ICSharpCode.Core;
 using System.IO;
 using System.Diagnostics;
 using OSGeo.MapGuide.MaestroAPI;
+using Maestro.Editors.FeatureSource;
 
 namespace Maestro.Base.Editor
 {
@@ -127,6 +128,11 @@ namespace Maestro.Base.Editor
                 _fs.SetConfigurationContent(content);
                 OnResourceChanged();
             }
+        }
+
+        private void btnSpatialContexts_Click(object sender, EventArgs e)
+        {
+            new SpatialContextsDialog(_fs).ShowDialog();
         }
     }
 }

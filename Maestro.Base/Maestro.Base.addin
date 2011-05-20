@@ -512,11 +512,17 @@
             <MenuItem id="FindReplaceXml"
                       label="${res:SiteExplorer_FindReplaceXml}"
                       class="Maestro.Base.Commands.SiteExplorer.FindReplaceXmlContentCommand" />
+            <MenuItem type="Separator" />
             <Condition action="Disable" name="ResourceType" types="FeatureSource,LayerDefinition">
                 <MenuItem id="PurgeFsCache"
                           label="${res:SiteExplorer_PurgeFsCache}"
                           icon="arrow_circle_double"
                           class="Maestro.Base.Commands.SiteExplorer.PurgeFeatureSourceCacheCommand" />
+            </Condition>
+            <Condition action="Disable" name="ResourceType" types="FeatureSource">
+                <MenuItem id="ShowSpatialContexts"
+                          label="${res:SiteExplorer_ShowSpatialContexts}"
+                          class="Maestro.Base.Commands.SiteExplorer.ShowSpatialContextsCommand" />
             </Condition>
             <MenuItem type="Separator" />
             <Condition action="Disable" name="CanCutOrCopy">

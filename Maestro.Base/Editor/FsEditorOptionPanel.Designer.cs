@@ -31,11 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FsEditorOptionPanel));
             this.btnLocalPreview = new System.Windows.Forms.Button();
             this.btnEditConfiguration = new System.Windows.Forms.Button();
+            this.btnSpatialContexts = new System.Windows.Forms.Button();
             this.contentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.btnSpatialContexts);
             this.contentPanel.Controls.Add(this.btnEditConfiguration);
             this.contentPanel.Controls.Add(this.btnLocalPreview);
             resources.ApplyResources(this.contentPanel, "contentPanel");
@@ -54,6 +56,13 @@
             this.btnEditConfiguration.UseVisualStyleBackColor = true;
             this.btnEditConfiguration.Click += new System.EventHandler(this.btnEditConfiguration_Click);
             // 
+            // btnSpatialContexts
+            // 
+            resources.ApplyResources(this.btnSpatialContexts, "btnSpatialContexts");
+            this.btnSpatialContexts.Name = "btnSpatialContexts";
+            this.btnSpatialContexts.UseVisualStyleBackColor = true;
+            this.btnSpatialContexts.Click += new System.EventHandler(this.btnSpatialContexts_Click);
+            // 
             // FsEditorOptionPanel
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -69,5 +78,6 @@
 
         private System.Windows.Forms.Button btnEditConfiguration;
         private System.Windows.Forms.Button btnLocalPreview;
+        private System.Windows.Forms.Button btnSpatialContexts;
     }
 }

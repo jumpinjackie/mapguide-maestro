@@ -2002,6 +2002,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show Spatial Contexts.
+        /// </summary>
+        internal static string SiteExplorer_ShowSpatialContexts {
+            get {
+                return ResourceManager.GetString("SiteExplorer_ShowSpatialContexts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Validate.
         /// </summary>
         internal static string SiteExplorer_ValidateResources {

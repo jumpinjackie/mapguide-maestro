@@ -497,4 +497,7 @@
   <data name="ERR_SERVICE_NOT_SUPPORTED" xml:space="preserve">
     <value>Service Type not supported: {0}</value>
   </data>
+  <data name="NullString" xml:space="preserve">
+    <value>(null)</value>
+  </data>
 </root>

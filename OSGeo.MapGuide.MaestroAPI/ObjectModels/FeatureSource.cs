@@ -442,3 +442,23 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
 
     partial class RelatePropertyType : IRelateProperty { }
 }
+
+namespace OSGeo.MapGuide.ObjectModels.Common
+{
+    using System.Threading;
+
+    partial class FdoSpatialContextListSpatialContextExtent
+    {
+        public override string ToString()
+        {
+            if (this.LowerLeftCoordinate == null || this.UpperRightCoordinate == null)
+                return OSGeo.MapGuide.MaestroAPI.Properties.Resources.NullString;
+
+            return string.Format(Thread.CurrentThread.CurrentUICulture, "({0},{1},{2},{3})",
+                this.LowerLeftCoordinate.X,
+                this.LowerLeftCoordinate.Y,
+                this.UpperRightCoordinate.X,
+                this.UpperRightCoordinate.Y);
+        }
+    }
+}

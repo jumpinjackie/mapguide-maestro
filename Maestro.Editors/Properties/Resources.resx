@@ -1178,4 +1178,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="WarningMapExtentCalculation" xml:space="preserve">
     <value>Could not transform extents of one or more layers in this Map Definition. These extents have not been factored into the computed result.</value>
   </data>
+  <data name="SpatialContextsFound" xml:space="preserve">
+    <value>{0} spatial contexts found</value>
+  </data>
 </root>

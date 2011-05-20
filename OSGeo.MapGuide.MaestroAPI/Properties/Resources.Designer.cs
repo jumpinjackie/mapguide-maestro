@@ -890,6 +890,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (null).
+        /// </summary>
+        internal static string NullString {
+            get {
+                return ResourceManager.GetString("NullString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Precondition failure: .
         /// </summary>
         internal static string PrecondFailure {

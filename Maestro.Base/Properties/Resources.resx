@@ -1019,4 +1019,7 @@ Error message: {1}</value>
   <data name="Menu_Help_UserGuide" xml:space="preserve">
     <value>User Guide</value>
   </data>
+  <data name="SiteExplorer_ShowSpatialContexts" xml:space="preserve">
+    <value>Show Spatial Contexts</value>
+  </data>
 </root>
