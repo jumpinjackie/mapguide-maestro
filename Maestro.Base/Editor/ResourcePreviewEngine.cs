@@ -69,10 +69,11 @@ namespace Maestro.Base.Editor
 
             //Create temp map definition to house our current layer
             var mdfId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".MapDefinition";
-            var extent = ldf.GetSpatialExtent(true);
+            string csWkt;
+            var extent = ldf.GetSpatialExtent(true, out csWkt);
 
             //TODO: Based on the visible scales in this layer, size this extents accordingly
-            var mdf = ObjectFactory.CreateMapDefinition(conn, Properties.Resources.PreviewMap, ldf.GetCoordinateSystemWkt(), extent);
+            var mdf = ObjectFactory.CreateMapDefinition(conn, Properties.Resources.PreviewMap, csWkt, extent);
 
             var layer = mdf.AddLayer(null, ResourceIdentifier.GetName(_edSvc.ResourceID), ldf.ResourceID);
 

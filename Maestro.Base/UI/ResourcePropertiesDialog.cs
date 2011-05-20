@@ -795,8 +795,9 @@ namespace Maestro.Base.UI
 
                 System.Globalization.CultureInfo ic = System.Globalization.CultureInfo.InvariantCulture;
                 ILayerDefinition ldef = (ILayerDefinition)m_connection.ResourceService.GetResource(m_resourceId);
-                var env = ldef.GetSpatialExtent(true);
-
+                string csWkt;
+                var env = ldef.GetSpatialExtent(true, out csWkt);
+                //TODO: Convert wkt to EPSG code and use that?
                 //TODO: Convert to lon/lat
 
                 bounds = "<Bounds west=\"" + env.MinX.ToString(ic) + "\" east=\"" + env.MaxX.ToString(ic) + "\" south=\"" + env.MinY.ToString(ic) + "\" north=\"" + env.MaxY.ToString(ic) + "\" ";

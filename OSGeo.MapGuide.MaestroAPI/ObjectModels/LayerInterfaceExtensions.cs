@@ -219,6 +219,17 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             return string.Empty;
         }
 
+        /// <summary>
+        /// Returns the spatial extent of the data.
+        /// This is calculated by asking the underlying featuresource for the minimum rectangle that
+        /// contains all the features in the specified table. If the <paramref name="allowFallbackToContextInformation"/>
+        /// is set to true, and the query fails, the code will attempt to read this information
+        /// from the spatial context information instead.
+        /// </summary>
+        /// <param name="layer">The layer definition</param>
+        /// <param name="allowFallbackToContextInformation">If true, will default to the extents of the active spatial context.</param>
+        /// <param name="csWkt">The coordinate system WKT that this extent corresponds to</param>
+        /// <returns></returns>
         public static IEnvelope GetSpatialExtent(this ILayerDefinition layer, bool allowFallbackToContextInformation, out string csWkt)
         {
             csWkt = null;
@@ -232,47 +243,56 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
                 case LayerType.Vector:
                     {
                         IEnvelope env = null;
+                        IFdoSpatialContext activeSc = null;
                         try
-                        {
-                            env = conn.FeatureService.GetSpatialExtent(layer.SubLayer.ResourceId, ((IVectorLayerDefinition)layer.SubLayer).FeatureName, ((IVectorLayerDefinition)layer.SubLayer).Geometry);
-                            return env;
-                        }
-                        catch //Default to extents of active spatial context
                         {
                             var scList = conn.FeatureService.GetSpatialContextInfo(layer.SubLayer.ResourceId, true);
                             if (scList.SpatialContext.Count > 0)
                             {
-                                var sc = scList.SpatialContext[0];
-                                return ObjectFactory.CreateEnvelope(
-                                    Convert.ToDouble(sc.Extent.LowerLeftCoordinate.X),
-                                    Convert.ToDouble(sc.Extent.LowerLeftCoordinate.Y),
-                                    Convert.ToDouble(sc.Extent.UpperRightCoordinate.X),
-                                    Convert.ToDouble(sc.Extent.UpperRightCoordinate.Y));
+                                activeSc = scList.SpatialContext[0];
                             }
-                            return null;
+                            //TODO: Check if ones like SQL Server will return the WKT, otherwise we'll need to bring in the
+                            //CS catalog to do CS code to WKT conversion.
+                            csWkt = activeSc.CoordinateSystemWkt;
+
+                            //This can fail if SpatialExtents() aggregate function is not supported
+                            env = conn.FeatureService.GetSpatialExtent(layer.SubLayer.ResourceId, ((IVectorLayerDefinition)layer.SubLayer).FeatureName, ((IVectorLayerDefinition)layer.SubLayer).Geometry);
+                            return env;
+                        }
+                        catch 
+                        {
+                            //Which in that case, default to extents of active spatial context
+                            if (activeSc != null && activeSc.Extent != null)
+                                return activeSc.Extent.Clone();
+                            else
+                                return null;
                         }
                     }
                 case LayerType.Raster:
                     {
                         IEnvelope env = null;
+                        IFdoSpatialContext activeSc = null;
                         try
                         {
+                            var scList = conn.FeatureService.GetSpatialContextInfo(layer.SubLayer.ResourceId, true);
+                            if (scList.SpatialContext.Count > 0)
+                            {
+                                activeSc = scList.SpatialContext[0];
+                            }
+
+                            //TODO: Would any raster provider *not* return a WKT?
+                            csWkt = activeSc.CoordinateSystemWkt;
+
+                            //Can fail if SpatialExtents() aggregate function is not supported
                             env = conn.FeatureService.GetSpatialExtent(layer.SubLayer.ResourceId, ((IRasterLayerDefinition)layer.SubLayer).FeatureName, ((IRasterLayerDefinition)layer.SubLayer).Geometry);
                             return env;
                         }
                         catch //Default to extents of active spatial context
                         {
-                            var scList = conn.FeatureService.GetSpatialContextInfo(layer.SubLayer.ResourceId, true);
-                            if (scList.SpatialContext.Count > 0)
-                            {
-                                var sc = scList.SpatialContext[0];
-                                return ObjectFactory.CreateEnvelope(
-                                    Convert.ToDouble(sc.Extent.LowerLeftCoordinate.X),
-                                    Convert.ToDouble(sc.Extent.LowerLeftCoordinate.Y),
-                                    Convert.ToDouble(sc.Extent.UpperRightCoordinate.X),
-                                    Convert.ToDouble(sc.Extent.UpperRightCoordinate.Y));
-                            }
-                            return null;
+                            if (activeSc != null && activeSc.Extent != null)
+                                return activeSc.Extent.Clone();
+                            else
+                                return null;
                         }
                     }
                 default:
@@ -290,96 +310,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
                                 {
                                     if (sheet.Equals(sht.Name))
                                     {
-                                        return ObjectFactory.CreateEnvelope(sht.Extent.MinX, sht.Extent.MinY, sht.Extent.MaxX, sht.Extent.MaxY);
-                                    }
-                                }
-                            }
-                        }
-                        return null;
-                    }
-            }
-        }
-
-        /// <summary>
-        /// Returns the spatial extent of the data.
-        /// This is calculated by asking the underlying featuresource for the minimum rectangle that
-        /// contains all the features in the specified table. If the <paramref name="allowFallbackToContextInformation"/>
-        /// is set to true, and the query fails, the code will attempt to read this information
-        /// from the spatial context information instead.
-        /// </summary>
-        /// <param name="layer">The layer.</param>
-        /// <param name="allowFallbackToContextInformation">True to allow reading spatial extents from the spatial context information, if the spatial query fails.</param>
-        /// <returns>The envelope for the data in the table</returns>
-        public static IEnvelope GetSpatialExtent(this ILayerDefinition layer, bool allowFallbackToContextInformation)
-        {
-            Check.NotNull(layer, "layer");
-            if (layer.CurrentConnection == null)
-                throw new System.Exception("No server set for object");
-
-            var conn = layer.CurrentConnection;
-            switch (layer.SubLayer.LayerType)
-            {
-                case LayerType.Vector:
-                    {
-                        IEnvelope env = null;
-                        try
-                        {
-                            env = conn.FeatureService.GetSpatialExtent(layer.SubLayer.ResourceId, ((IVectorLayerDefinition)layer.SubLayer).FeatureName, ((IVectorLayerDefinition)layer.SubLayer).Geometry);
-                            return env;
-                        }
-                        catch //Default to extents of active spatial context
-                        {
-                            var scList = conn.FeatureService.GetSpatialContextInfo(layer.SubLayer.ResourceId, true);
-                            if (scList.SpatialContext.Count > 0)
-                            {
-                                var sc = scList.SpatialContext[0];
-                                return ObjectFactory.CreateEnvelope(
-                                    Convert.ToDouble(sc.Extent.LowerLeftCoordinate.X),
-                                    Convert.ToDouble(sc.Extent.LowerLeftCoordinate.Y),
-                                    Convert.ToDouble(sc.Extent.UpperRightCoordinate.X),
-                                    Convert.ToDouble(sc.Extent.UpperRightCoordinate.Y));
-                            }
-                            return null;
-                        }
-                    }
-                case LayerType.Raster:
-                    {
-                        IEnvelope env = null;
-                        try
-                        {
-                            env = conn.FeatureService.GetSpatialExtent(layer.SubLayer.ResourceId, ((IRasterLayerDefinition)layer.SubLayer).FeatureName, ((IRasterLayerDefinition)layer.SubLayer).Geometry);
-                            return env;
-                        }
-                        catch //Default to extents of active spatial context
-                        {
-                            var scList = conn.FeatureService.GetSpatialContextInfo(layer.SubLayer.ResourceId, true);
-                            if (scList.SpatialContext.Count > 0)
-                            {
-                                var sc = scList.SpatialContext[0];
-                                return ObjectFactory.CreateEnvelope(
-                                    Convert.ToDouble(sc.Extent.LowerLeftCoordinate.X),
-                                    Convert.ToDouble(sc.Extent.LowerLeftCoordinate.Y),
-                                    Convert.ToDouble(sc.Extent.UpperRightCoordinate.X),
-                                    Convert.ToDouble(sc.Extent.UpperRightCoordinate.Y));
-                            }
-                            return null;
-                        }
-                    }
-                default:
-                    {
-                        int[] services = conn.Capabilities.SupportedServices;
-                        if (Array.IndexOf(services, (int)ServiceType.Drawing) >= 0)
-                        {
-                            var sheet = ((IDrawingLayerDefinition)layer.SubLayer).Sheet;
-                            var dws = (IDrawingSource)conn.ResourceService.GetResource(((IDrawingLayerDefinition)layer.SubLayer).ResourceId);
-
-                            if (dws.Sheet != null)
-                            {
-                                //find matching sheet
-                                foreach (var sht in dws.Sheet)
-                                {
-                                    if (sheet.Equals(sht.Name))
-                                    {
+                                        csWkt = dws.CoordinateSpace;
                                         return ObjectFactory.CreateEnvelope(sht.Extent.MinX, sht.Extent.MinY, sht.Extent.MaxX, sht.Extent.MaxY);
                                     }
                                 }

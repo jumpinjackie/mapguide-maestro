@@ -240,12 +240,14 @@ namespace Maestro.Editors.MapDefinition
                         }
                     }
                 }
-                
-                var env = Util.GetCombinedExtents(_map, layers);
+
+                bool hasFailures = false;
+                var env = Util.GetCombinedExtents(_map, layers, out hasFailures);
                 if (env != null)
                 {
                     _map.SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
-                    MessageBox.Show(Properties.Resources.WarningMapExtentCalculation, Properties.Resources.TitleWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (hasFailures)
+                        MessageBox.Show(Properties.Resources.WarningMapExtentCalculation, Properties.Resources.TitleWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
@@ -256,17 +258,20 @@ namespace Maestro.Editors.MapDefinition
 
         internal class Util
         {
-            public static IEnvelope GetCombinedExtents(IMapDefinition mapDef, IEnumerable<ILayerDefinition> layers)
+            public static IEnvelope GetCombinedExtents(IMapDefinition mapDef, IEnumerable<ILayerDefinition> layers, out bool hasFailures)
             {
+                hasFailures = false;
                 Check.NotNull(layers, "layers");
                 IEnvelope env = null;
                 foreach (var layer in layers)
                 {
-                    var e1 = layer.GetSpatialExtent(true);
-                    var wkt = layer.GetCoordinateSystemWkt();
+                    string wkt;
+                    var e1 = layer.GetSpatialExtent(true, out wkt);
                     if (wkt != mapDef.CoordinateSystem)
                     {
-                        e1 = TransformEnvelope(e1, wkt, mapDef.CoordinateSystem);
+                        //Transform if not the same, otherwise assume either arbitrary or same as the map
+                        if (!string.IsNullOrEmpty(wkt))
+                            e1 = Utility.TransformEnvelope(e1, wkt, mapDef.CoordinateSystem);
                     }
 
                     if (e1 != null)
@@ -289,35 +294,14 @@ namespace Maestro.Editors.MapDefinition
                     }
                     else
                     {
+                        hasFailures = true;
                         System.Diagnostics.Trace.TraceWarning("Could not transform extent of layer " + layer.ResourceID + " to the map definition's coordinate system. Extents ignored");
                     }
                 }
                 return env;
             }
 
-            private static IEnvelope TransformEnvelope(IEnvelope env, string srcCsWkt, string dstCsWkt)
-            {
-                try
-                {
-                    var trans = new DefaultSimpleTransform(srcCsWkt, dstCsWkt);
-
-                    var oldExt = env;
-
-                    double llx;
-                    double lly;
-                    double urx;
-                    double ury;
-
-                    trans.Transform(oldExt.MinX, oldExt.MinY, out llx, out lly);
-                    trans.Transform(oldExt.MaxX, oldExt.MaxY, out urx, out ury);
-
-                    return ObjectFactory.CreateEnvelope(llx, lly, urx, ury);
-                }
-                catch
-                {
-                    return null;
-                }
-            }
+            
         }
     }
 }

@@ -24,6 +24,8 @@ using System.Collections.Generic;
 using OSGeo.MapGuide.MaestroAPI.IO;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.Collections.Specialized;
+using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -693,6 +695,30 @@ namespace OSGeo.MapGuide.MaestroAPI
                         items.Enqueue(pi.GetValue(o, null));
                     }
                 }
+            }
+        }
+
+        public static OSGeo.MapGuide.ObjectModels.Common.IEnvelope TransformEnvelope(OSGeo.MapGuide.ObjectModels.Common.IEnvelope env, string srcCsWkt, string dstCsWkt)
+        {
+            try
+            {
+                var trans = new DefaultSimpleTransform(srcCsWkt, dstCsWkt);
+
+                var oldExt = env;
+
+                double llx;
+                double lly;
+                double urx;
+                double ury;
+
+                trans.Transform(oldExt.MinX, oldExt.MinY, out llx, out lly);
+                trans.Transform(oldExt.MaxX, oldExt.MaxY, out urx, out ury);
+
+                return ObjectFactory.CreateEnvelope(llx, lly, urx, ury);
+            }
+            catch
+            {
+                return null;
             }
         }
     }

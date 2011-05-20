@@ -219,19 +219,42 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
 
             if (this.MapLayer.Count == 1) //First one
             {
-                var ldf = (ILayerDefinition)this.CurrentConnection.ResourceService.GetResource(layer.ResourceId);
-                if (string.IsNullOrEmpty(this.CoordinateSystem))
-                {
-                    this.CoordinateSystem = ldf.GetCoordinateSystemWkt();
-                }
-                if (IsEmpty(this.Extents))
-                {
-                    var env = ldf.GetSpatialExtent(true);
-                    ((IMapDefinition)this).SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
-                }
+                OnFirstLayerAdded(layer);
             }
 
             return layer;
+        }
+
+        private void OnFirstLayerAdded(MapLayerType layer)
+        {
+            string csWkt;
+            var ldf = (ILayerDefinition)this.CurrentConnection.ResourceService.GetResource(layer.ResourceId);
+            var env = ldf.GetSpatialExtent(true, out csWkt);
+
+            if (!string.IsNullOrEmpty(csWkt) && string.IsNullOrEmpty(this.CoordinateSystem))
+            {
+                this.CoordinateSystem = csWkt;
+            }
+            if (IsEmpty(this.Extents))
+            {
+                if (string.IsNullOrEmpty(csWkt) || csWkt.Equals(this.CoordinateSystem))
+                {
+                    ((IMapDefinition)this).SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(csWkt)) //Assume arbitrary or same as map
+                    {
+                        ((IMapDefinition)this).SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
+                    }
+                    else
+                    {
+                        var env2 = Utility.TransformEnvelope(env, csWkt, this.CoordinateSystem);
+                        if (env2 != null)
+                            ((IMapDefinition)this).SetExtents(env2.MinX, env2.MinY, env2.MaxX, env2.MaxY);
+                    }
+                }
+            }
         }
 
 
@@ -279,16 +302,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
 
             if (this.MapLayer.Count == 1) //First one
             {
-                var ldf = (ILayerDefinition)this.CurrentConnection.ResourceService.GetResource(layer.ResourceId);
-                if (string.IsNullOrEmpty(this.CoordinateSystem))
-                {
-                    this.CoordinateSystem = ldf.GetCoordinateSystemWkt();
-                }
-                if (IsEmpty(this.Extents))
-                {
-                    var env = ldf.GetSpatialExtent(true);
-                    ((IMapDefinition)this).SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
-                }
+                OnFirstLayerAdded(layer);
             }
 
             return layer;
