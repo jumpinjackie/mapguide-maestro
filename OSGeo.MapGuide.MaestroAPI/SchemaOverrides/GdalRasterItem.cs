@@ -24,6 +24,7 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.IO;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels;
+using System.Globalization;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
@@ -145,7 +146,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                     img.Attributes.Append(imgName);
                     {
                         var bounds = doc.CreateElement("Bounds");
-                        bounds.InnerXml = string.Format("<MinX>{0}</MinX><MinY>{1}</MinY><MaxX>{2}</MaxX><MaxY>{3}</MaxY>", this.MinX, this.MinY, this.MaxX, this.MaxY);
+                        bounds.InnerXml = string.Format(CultureInfo.InvariantCulture, "<MinX>{0}</MinX><MinY>{1}</MinY><MaxX>{2}</MaxX><MaxY>{3}</MaxY>", this.MinX, this.MinY, this.MaxX, this.MaxY);
 
                         img.AppendChild(bounds);
                     }
