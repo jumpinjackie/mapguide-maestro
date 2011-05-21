@@ -1,15 +1,25 @@
 ﻿3.1
 ---
 
+ - Now comes with a user guide!
+ - Added a tip of the day dialog that is shown on startup (this can be turned off)
  - This is the first release with a public SDK and samples demonstrating using the Maestro API.
+ - Generated Web Layout previews now have a KML export command
+ - Add a command to view all spatial contexts of a feature source
+ - API: Re-worked the RuntimeMap API so that draw order of layers can be manipulated like a collection.
+ - API: Add APIs to GdalConfigurationDocument to allow calculation of combined extents.
+ - API: Extend the IMappingService API to support rendering map legend images.
  - Fix: Map Definition resource id field in a WebLayout 1.1.0 editor does not update when changed.
  - Fix: DWF Load Procedure not settings sheet extents.
+ - Fix: Site Explorer items incorrectly highlighted when an existing resource is saved under a different resource ID.
  - Fix: Exception when opening drawing sources.
+ - Fix: Set/Update sheet extents when marking a embedded DWF resource.
+ - Fix: MgDbXmlException when creating a new Drawing Layer Definition from New Resource dialog.
  - Fix: Exception when deserializing configuration documents with non-english characters.
  - Fix: Overall extent of GDAL configuraton document not being the computed aggregate of all raster images when rebuilding.
- - Add an API to control RuntimeMapLayer draw order.
- - Extend the IMappingService API to support rendering map legend images.
- - Added a tip of the day dialog that is shown on startup (this can be turned off)
+ - Fix: Adding files to a Load Procedure does nothing.
+ - Fix: Setting size context in Line Style editor does nothing.
+ - Save Resource button is now always enabled. Clicking it on a new resource will do the same thing as clicking Save Resource As
 
 3.0 Final
 ---------
