@@ -448,7 +448,7 @@
     <value>0</value>
   </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>3, 16</value>
   </metadata>
   <data name="btnEditScalesManually.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>

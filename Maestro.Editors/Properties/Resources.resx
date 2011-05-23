@@ -1181,4 +1181,10 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="SpatialContextsFound" xml:space="preserve">
     <value>{0} spatial contexts found</value>
   </data>
+  <data name="LayerGroupConvertedToBaseLayerGroup" xml:space="preserve">
+    <value>Layer Group ({0}) successfully converted to Base Layer Group ({1})</value>
+  </data>
+  <data name="NoScalesToGenerate" xml:space="preserve">
+    <value>Number of Scales to generate cannot be less than or equal to 0</value>
+  </data>
 </root>

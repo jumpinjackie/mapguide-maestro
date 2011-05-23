@@ -119,6 +119,7 @@ namespace Maestro.Editors.MapDefinition
         {
             _doLayerModel.Invalidate();
             _grpLayerModel.Invalidate();
+            _tiledLayerModel.Invalidate();
         }
 
         public event OpenLayerEventHandler RequestLayerOpen;
@@ -212,9 +213,10 @@ namespace Maestro.Editors.MapDefinition
 
         private void RemoveSelectedLayerGroupItem(GroupItem group)
         {
-            _map.RemoveGroup(group.Tag);
+            _map.RemoveLayerGroupAndChildLayers(group.Tag.Name);
             propertiesPanel.Controls.Clear();
             _grpLayerModel.Invalidate();
+            _doLayerModel.Invalidate();
         }
 
         private void btnGRPAddLayer_Click(object sender, EventArgs e)
@@ -253,8 +255,38 @@ namespace Maestro.Editors.MapDefinition
             var group = GetSelectedLayerGroupItem() as GroupItem;
             if (group != null)
             {
-                //...
-                throw new NotImplementedException();
+                var layGroup = group.Tag;
+                var layers = _map.GetLayersForGroup(layGroup.Name);
+
+                if (_map.BaseMap == null)
+                    _map.InitBaseMap();
+
+                int counter = 1;
+                string groupName = layGroup.Name;
+                var blg = _map.BaseMap.GetGroup(groupName);
+                while (blg != null)
+                {
+                    groupName = layGroup.Name + " (" + counter + ")";
+                    counter++;
+
+                    blg = _map.BaseMap.GetGroup(groupName);
+                }
+                blg = _map.BaseMap.AddBaseLayerGroup(groupName);
+                blg.LegendLabel = layGroup.LegendLabel;
+
+                foreach (var layer in layers)
+                {
+                    var bl = blg.AddLayer(layer.Name, layer.ResourceId);
+                    bl.LegendLabel = layer.LegendLabel;
+                    bl.Selectable = layer.Selectable;
+                    bl.ShowInLegend = layer.ShowInLegend;
+                    bl.ExpandInLegend = layer.ExpandInLegend;
+                }
+
+                _map.RemoveLayerGroupAndChildLayers(layGroup.Name);
+                MessageBox.Show(string.Format(Properties.Resources.LayerGroupConvertedToBaseLayerGroup, layGroup.Name, groupName));
+                this.RefreshModels();
+                tabControl1.SelectedIndex = 2; //Switch to Base Layer Groups
             }
         }
 

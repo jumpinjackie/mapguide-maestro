@@ -107,6 +107,12 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnGenerateScales_Click(object sender, EventArgs e)
         {
+            if (numScales.Value == 0)
+            {
+                MessageBox.Show(this, Properties.Resources.NoScalesToGenerate, Properties.Resources.TitleError, MessageBoxButtons.OK);
+                return;
+            }
+
             if (lstDisplayScales.Items.Count > 0)
             {
                 if (MessageBox.Show(this, Properties.Resources.OverwriteDisplayScales, Properties.Resources.Confirm, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)

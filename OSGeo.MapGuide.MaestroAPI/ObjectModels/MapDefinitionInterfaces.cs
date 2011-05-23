@@ -411,6 +411,37 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
     public static class MapDefinitionExtensions
     {
         /// <summary>
+        /// Removes a layer group and all layers associated with this group
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="groupName"></param>
+        /// <returns>The number of layers removed. Returns 0 if the group is empty or does not exist</returns>
+        public static int RemoveLayerGroupAndChildLayers(this IMapDefinition map, string groupName)
+        {
+            Check.NotNull(map, "map");
+            Check.NotEmpty(groupName, "groupName");
+
+            var group = map.GetGroupByName(groupName);
+            if (group != null)
+            {
+                List<IMapLayer> layers = new List<IMapLayer>(map.GetLayersForGroup(groupName));
+
+                int removed = 0;
+                //Remove layers first
+                foreach (var l in layers)
+                {
+                    map.RemoveLayer(l);
+                    removed++;
+                }
+                //Then the group
+                map.RemoveGroup(group);
+
+                return removed;
+            }
+            return 0;
+        }
+
+        /// <summary>
         /// Get a layer by its name
         /// </summary>
         /// <param name="map"></param>

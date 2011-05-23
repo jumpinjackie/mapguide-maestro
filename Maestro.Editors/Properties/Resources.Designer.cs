@@ -1712,6 +1712,15 @@ namespace Maestro.Editors.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Layer Group ({0}) successfully converted to Base Layer Group ({1}).
+        /// </summary>
+        internal static string LayerGroupConvertedToBaseLayerGroup {
+            get {
+                return ResourceManager.GetString("LayerGroupConvertedToBaseLayerGroup", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap layers_stack_arrange {
             get {
                 object obj = ResourceManager.GetObject("layers-stack-arrange", resourceCulture);
@@ -1902,6 +1911,15 @@ namespace Maestro.Editors.Properties {
         internal static string NoRestorePathWarning {
             get {
                 return ResourceManager.GetString("NoRestorePathWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of Scales to generate cannot be less than or equal to 0.
+        /// </summary>
+        internal static string NoScalesToGenerate {
+            get {
+                return ResourceManager.GetString("NoScalesToGenerate", resourceCulture);
             }
         }
         
