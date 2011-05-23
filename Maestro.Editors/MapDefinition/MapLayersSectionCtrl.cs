@@ -762,33 +762,31 @@ namespace Maestro.Editors.MapDefinition
                         parent = _map.GetGroupByName(li.Tag.Group);
                 }
 
-                if (parent != null)
+                int moved = 0;
+                //Add to this group
+                foreach (var n in nodes)
                 {
-                    int moved = 0;
-                    //Add to this group
-                    foreach (var n in nodes)
-                    {
-                        var gi = n.Tag as GroupItem;
-                        var li = n.Tag as LayerItem;
+                    var gi = n.Tag as GroupItem;
+                    var li = n.Tag as LayerItem;
 
-                        //Re-assign parent
-                        if (gi != null)
-                        {
-                            gi.Tag.Group = parent.Name;
-                            moved++;
-                        }
-                        else if (li != null)
-                        {
-                            li.Tag.Group = parent.Name;
-                            moved++;
-                        }
-                    }
-
-                    if (moved > 0)
+                    //Re-assign parent
+                    if (gi != null)
                     {
-                        //TODO: Fine-grain invalidation
-                        RefreshModels();
+                        gi.Tag.Group = parent == null ? string.Empty : parent.Name;
+                        moved++;
                     }
+                    else if (li != null)
+                    {
+                        li.Tag.Group = parent == null ? string.Empty : parent.Name;
+                        moved++;
+                    }
+                }
+
+                if (moved > 0)
+                {
+                    //TODO: Fine-grain invalidation
+                    RefreshModels();
+                    OnResourceChanged();
                 }
             }
         }
