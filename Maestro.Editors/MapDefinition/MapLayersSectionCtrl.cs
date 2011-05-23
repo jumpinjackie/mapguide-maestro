@@ -394,6 +394,13 @@ namespace Maestro.Editors.MapDefinition
             RestoreSelection<BaseLayerItem>(trvBaseLayers, (tag) => { return tag.Tag == item.Tag; });
         }
 
+        private void RestoreBaseLayerSelection(IBaseMapLayer layer)
+        {
+            //The node tag will probably be different, but the wrapped
+            //instance is what we're checking for
+            RestoreSelection<BaseLayerItem>(trvBaseLayers, (tag) => { return tag.Tag == layer; });
+        }
+
         private void RestoreDrawOrderSelection(LayerItem layer)
         {
             //The node tag will probably be different, but the wrapped
@@ -982,9 +989,10 @@ namespace Maestro.Editors.MapDefinition
                     IBaseMapLayer targetLayer = null;
                     IBaseMapGroup targetGroup = null;
                     var node = trvBaseLayers.GetNodeAt(trvBaseLayers.PointToClient(new Point(e.X, e.Y)));
+                    BaseLayerItem tli = null;
                     if (node != null)
                     {
-                        var tli = node.Tag as BaseLayerItem;
+                        tli = node.Tag as BaseLayerItem;
                         var tlg = node.Tag as BaseLayerGroupItem;
                         if (tli != null)
                             targetLayer = tli.Tag;
@@ -1008,6 +1016,10 @@ namespace Maestro.Editors.MapDefinition
                                     srcGroup.InsertLayer(idx, sourceLayer);
 
                                     _tiledLayerModel.Invalidate();
+
+                                    //Keep group expanded
+                                    if (tli != null)
+                                        RestoreBaseLayerSelection(sourceLayer);
                                 }
                             }
                             else
@@ -1016,6 +1028,10 @@ namespace Maestro.Editors.MapDefinition
                                 dstGroup.InsertLayer(0, targetLayer);
 
                                 _tiledLayerModel.Invalidate();
+
+                                //Keep group expanded
+                                if (tli != null)
+                                    RestoreBaseLayerSelection(targetLayer);
                             }
                         }
                     }
