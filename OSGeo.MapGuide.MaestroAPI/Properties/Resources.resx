@@ -500,4 +500,10 @@
   <data name="NullString" xml:space="preserve">
     <value>(null)</value>
   </data>
+  <data name="MDF_GroupWithNonExistentGroup" xml:space="preserve">
+    <value>Layer Group ({0}) belongs to a non-existent Layer Group ({1})</value>
+  </data>
+  <data name="MDF_LayerWithNonExistentGroup" xml:space="preserve">
+    <value>Layer ({0}) belongs to a non-existent Layer Group ({1})</value>
+  </data>
 </root>

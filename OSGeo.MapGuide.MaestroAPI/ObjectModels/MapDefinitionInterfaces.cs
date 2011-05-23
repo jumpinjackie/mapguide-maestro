@@ -468,7 +468,6 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         public static IMapLayerGroup GetGroupByName(this IMapDefinition map, string name)
         {
             Check.NotNull(map, "map");
-            Check.NotEmpty(name, "name");
             foreach (var group in map.MapLayerGroup)
             {
                 if (name.Equals(group.Name))
@@ -508,7 +507,6 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         public static IEnumerable<IMapLayer> GetLayersForGroup(this IMapDefinition map, string name)
         {
             Check.NotNull(map, "map");
-            Check.NotEmpty(name, "name");
             foreach (var layer in map.MapLayer)
             {
                 if (name.Equals(layer.Group))

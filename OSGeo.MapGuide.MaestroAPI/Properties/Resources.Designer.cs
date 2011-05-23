@@ -764,6 +764,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Layer Group ({0}) belongs to a non-existent Layer Group ({1}).
+        /// </summary>
+        internal static string MDF_GroupWithNonExistentGroup {
+            get {
+                return ResourceManager.GetString("MDF_GroupWithNonExistentGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Layer {0} does not have a legend label.
         /// </summary>
         internal static string MDF_LayerMissingLabelInformation {
@@ -787,6 +796,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         internal static string MDF_LayerReadError {
             get {
                 return ResourceManager.GetString("MDF_LayerReadError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Layer ({0}) belongs to a non-existent Layer Group ({1}).
+        /// </summary>
+        internal static string MDF_LayerWithNonExistentGroup {
+            get {
+                return ResourceManager.GetString("MDF_LayerWithNonExistentGroup", resourceCulture);
             }
         }
         

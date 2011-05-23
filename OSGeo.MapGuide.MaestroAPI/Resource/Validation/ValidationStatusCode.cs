@@ -60,7 +60,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Warning_MapDefinition_MissingSpatialContext,
         Warning_MapDefinition_LayerReprojection,
         Warning_MapDefinition_DataOutsideMapBounds,
-
+        
         Warning_Fusion_InitialViewOutsideMapExtents = 3401,
         Warning_Fusion_MapCoordSysIncompatibleWithCommericalLayers,
 
@@ -82,6 +82,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Error_MapDefinition_ResourceRead,
         Error_MapDefinition_FeatureSourceRead,
         Error_MapDefinition_LayerRead,
+        Error_MapDefinition_LayerWithNonExistentGroup,
+        Error_MapDefinition_GroupWithNonExistentGroup,
 
         Error_Fusion_MissingMap = 5301,
         Error_Fusion_InvalidMap,

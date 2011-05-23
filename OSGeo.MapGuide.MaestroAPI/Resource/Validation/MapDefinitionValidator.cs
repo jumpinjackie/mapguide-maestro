@@ -59,10 +59,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             IMapDefinition mdef = resource as IMapDefinition;
 
             foreach (IMapLayerGroup g in mdef.MapLayerGroup)
+            {
                 if (g.ShowInLegend && (g.LegendLabel == null || g.LegendLabel.Trim().Length == 0))
                     issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, ValidationStatusCode.Info_MapDefinition_GroupMissingLabelInformation, string.Format(Properties.Resources.MDF_GroupMissingLabelInformation, g.Name)));
                 else if (g.ShowInLegend && g.LegendLabel.Trim().ToLower() == "layer group")
                     issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, ValidationStatusCode.Info_MapDefinition_GroupHasDefaultLabel, string.Format(Properties.Resources.MDF_GroupHasDefaultLabelInformation, g.Name)));
+
+                if (!string.IsNullOrEmpty(g.Group))
+                {
+                    var grp = mdef.GetGroupByName(g.Group);
+                    if (grp == null)
+                        issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, ValidationStatusCode.Error_MapDefinition_GroupWithNonExistentGroup, string.Format(Properties.Resources.MDF_GroupWithNonExistentGroup, g.Name, g.Group)));
+                }
+            }
 
             List<IBaseMapLayer> layers = new List<IBaseMapLayer>();
             foreach (IBaseMapLayer l in mdef.MapLayer)
@@ -87,6 +96,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                     issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, ValidationStatusCode.Warning_MapDefinition_DuplicateLayerName, string.Format(Properties.Resources.MDF_LayerNameDuplicateWarning, l.Name, l.ResourceId, nameCounter[l.Name].ResourceId)));
                 else
                     nameCounter.Add(l.Name, l);
+
+                var ml = l as IMapLayer;
+                if (ml != null && !string.IsNullOrEmpty(ml.Group))
+                {
+                    var grp = mdef.GetGroupByName(ml.Group);
+                    if (grp == null)
+                        issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, ValidationStatusCode.Error_MapDefinition_LayerWithNonExistentGroup, string.Format(Properties.Resources.MDF_LayerWithNonExistentGroup, ml.Name, ml.Group)));
+                }
 
                 if (l.ShowInLegend && (string.IsNullOrEmpty(l.LegendLabel) || l.LegendLabel.Trim().Length == 0))
                     issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, ValidationStatusCode.Warning_MapDefinition_LayerMissingLegendLabel, string.Format(Properties.Resources.MDF_LayerMissingLabelInformation, l.Name)));
