@@ -35,6 +35,7 @@ using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI;
 using System.Collections.Specialized;
 using Maestro.Editors.Common;
+using System.Globalization;
 
 namespace Maestro.Editors.FeatureSource.Providers.Gdal
 {
@@ -299,10 +300,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
                 if (scList.SpatialContext.Count > 0)
                 {
-                    raster.MinX = Convert.ToDouble(scList.SpatialContext[0].Extent.LowerLeftCoordinate.X);
-                    raster.MinY = Convert.ToDouble(scList.SpatialContext[0].Extent.LowerLeftCoordinate.Y);
-                    raster.MaxX = Convert.ToDouble(scList.SpatialContext[0].Extent.UpperRightCoordinate.X);
-                    raster.MaxY = Convert.ToDouble(scList.SpatialContext[0].Extent.UpperRightCoordinate.Y);
+                    raster.MinX = Convert.ToDouble(scList.SpatialContext[0].Extent.LowerLeftCoordinate.X, CultureInfo.InvariantCulture);
+                    raster.MinY = Convert.ToDouble(scList.SpatialContext[0].Extent.LowerLeftCoordinate.Y, CultureInfo.InvariantCulture);
+                    raster.MaxX = Convert.ToDouble(scList.SpatialContext[0].Extent.UpperRightCoordinate.X, CultureInfo.InvariantCulture);
+                    raster.MaxY = Convert.ToDouble(scList.SpatialContext[0].Extent.UpperRightCoordinate.Y, CultureInfo.InvariantCulture);
                 }
                 else
                 {
