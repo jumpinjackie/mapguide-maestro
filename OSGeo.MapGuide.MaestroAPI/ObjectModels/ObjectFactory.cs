@@ -68,7 +68,7 @@ namespace OSGeo.MapGuide.ObjectModels
     /// as this ensures that there are no null child properties where the XML schema forbids
     /// it.
     /// 
-    /// By default this class will only create v1.0.0 of any specified top-level resource. In order to be able to create
+    /// By default this class will only create v1.0.0 of any specified top-level resource unless specified. In order to be able to create
     /// newer versions, you need to register the appropriate methods that can create resources of this version:
     /// 
     ///  - <see cref="RegisterLayerFactoryMethod"/> for Layer Definitions

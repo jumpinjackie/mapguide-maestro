@@ -19,36 +19,17 @@
 #endregion
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System.Runtime.CompilerServices;
 
-namespace Maestro.Editors.LayerDefinition
+namespace Maestro.Packaging
 {
     /// <summary>
-    /// Editor control for Grid (Raster) Layer Definitions
+    /// The <c>Maestro.Packaging</c> namespace provides classes and UI components for the construction and loading of
+    /// MapGuide Packages
     /// </summary>
-    public partial class RasterLayerEditorCtrl : EditorBase
+    [CompilerGenerated]
+    class NamespaceDoc
     {
-        public RasterLayerEditorCtrl()
-        {
-            InitializeComponent();
-        }
-
-        private IRasterLayerDefinition _rldf;
-        private IEditorService _edsvc;
-
-        public override void Bind(IEditorService service)
-        {
-            _edsvc = service;
-            _rldf = (IRasterLayerDefinition)((ILayerDefinition)_edsvc.GetEditedResource()).SubLayer;
-            _edsvc.RegisterCustomNotifier(this);
-            rasterLayerSettingsSectionCtrl.Bind(_edsvc);
-            rasterLayerVisibilitySectionCtrl.Bind(_edsvc);
-            rasterLayerAdvancedSectionCtrl.Bind(_edsvc);
-        }
     }
 }

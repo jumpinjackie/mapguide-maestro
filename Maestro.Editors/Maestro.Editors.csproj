@@ -95,6 +95,7 @@
     <Compile Include="Common\GenericItemSelectionDialog.Designer.cs">
       <DependentUpon>GenericItemSelectionDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\NsDoc.cs" />
     <Compile Include="Common\ResourceDataCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -125,6 +126,7 @@
     <Compile Include="Diagnostics\FdoCacheViewer.Designer.cs">
       <DependentUpon>FdoCacheViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Diagnostics\NsDoc.cs" />
     <Compile Include="Diagnostics\ServerStatusMonitor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +139,7 @@
     <Compile Include="DrawingSource\DrawingSourceEditorCtrl.Designer.cs">
       <DependentUpon>DrawingSourceEditorCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DrawingSource\NsDoc.cs" />
     <Compile Include="DrawingSource\SourceSectionCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -195,6 +198,7 @@
       <DependentUpon>FeatureSourceEditorCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="FeatureSource\FsEditorMap.cs" />
+    <Compile Include="FeatureSource\NsDoc.cs" />
     <Compile Include="FeatureSource\Preview\IQueryControl.cs" />
     <Compile Include="FeatureSource\Preview\LocalFeatureSourcePreviewCtrl.cs">
       <SubType>UserControl</SubType>
@@ -403,6 +407,8 @@
     <Compile Include="Fusion\NewWidgetDialog.Designer.cs">
       <DependentUpon>NewWidgetDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fusion\NsDoc.cs" />
+    <Compile Include="Fusion\WidgetEditors\NsDoc.cs" />
     <Compile Include="Fusion\WidgetManagementDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -573,6 +579,7 @@
     <Compile Include="Fusion\WidgetSettingsCtrl.Designer.cs">
       <DependentUpon>WidgetSettingsCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generic\NsDoc.cs" />
     <Compile Include="Generic\ResourceDataPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -617,6 +624,7 @@
     <Compile Include="LayerDefinition\LayerPropertiesSectionCtrl.Designer.cs">
       <DependentUpon>LayerPropertiesSectionCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="LayerDefinition\NsDoc.cs" />
     <Compile Include="LayerDefinition\RasterLayerEditorCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -760,6 +768,7 @@
     <Compile Include="LoadProcedure\LoadProcedureEditorCtrl.Designer.cs">
       <DependentUpon>LoadProcedureEditorCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoadProcedure\NsDoc.cs" />
     <Compile Include="LoadProcedure\SdfTransformationCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -827,6 +836,7 @@
       <DependentUpon>MapSettingsSectionCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="MapDefinition\MapTreeModels.cs" />
+    <Compile Include="MapDefinition\NsDoc.cs" />
     <Compile Include="MapDefinition\ScaleListGenerator.cs" />
     <Compile Include="Migration\CopyMoveToServerDialog.cs">
       <SubType>Form</SubType>
@@ -840,12 +850,15 @@
     <Compile Include="Migration\MigrateDialog.Designer.cs">
       <DependentUpon>MigrateDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migration\NsDoc.cs" />
+    <Compile Include="NsDoc.cs" />
     <Compile Include="PrintLayout\LogoDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PrintLayout\LogoDialog.Designer.cs">
       <DependentUpon>LogoDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrintLayout\NsDoc.cs" />
     <Compile Include="PrintLayout\PrintCustomLogosSectionCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -882,6 +895,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SymbolDefinition\NsDoc.cs" />
     <Compile Include="WebLayout\CommandIconCache.cs" />
     <Compile Include="WebLayout\Commands\InvokeScriptCtrl.cs">
       <SubType>UserControl</SubType>
@@ -914,6 +928,7 @@
       <DependentUpon>MenuEditorCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="WebLayout\MenuModel.cs" />
+    <Compile Include="WebLayout\NsDoc.cs" />
     <Compile Include="WebLayout\WebLayoutCommandsCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1945,7 +1960,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DrawingSource\Preview\" />
-    <Folder Include="SymbolDefinition\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

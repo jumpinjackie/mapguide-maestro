@@ -47,6 +47,7 @@
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="NsDoc.cs" />
     <Compile Include="PackageBuilder.cs" />
     <Compile Include="PackageProgress.cs">
       <SubType>Form</SubType>
