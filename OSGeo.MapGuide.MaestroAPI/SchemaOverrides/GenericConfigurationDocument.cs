@@ -24,6 +24,10 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
+    /// <summary>
+    /// Represents a generic configuration document. Customisation is done by manipulating the individual
+    /// XML content.
+    /// </summary>
     public class GenericConfigurationDocument : ConfigurationDocument
     {
         private XmlNode[] _mappings;

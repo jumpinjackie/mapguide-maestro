@@ -28,14 +28,24 @@ using System.Globalization;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
+    /// <summary>
+    /// Represents a directory of raster images in a GDAL configuration document
+    /// </summary>
     public class GdalRasterLocationItem : IFdoSerializable
     {
         private Dictionary<string, GdalRasterItem> _items = new Dictionary<string, GdalRasterItem>();
 
         private IEnvelope _extents;
 
+        /// <summary>
+        /// Gets or sets the directory
+        /// </summary>
         public string Location { get; set; }
 
+        /// <summary>
+        /// Adds the specified raster image reference
+        /// </summary>
+        /// <param name="item"></param>
         public void AddItem(GdalRasterItem item) 
         {
             if (!_items.ContainsKey(item.FileName))
@@ -61,11 +71,18 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             return env;
         }
 
+        /// <summary>
+        /// Removes the specified raster image reference
+        /// </summary>
+        /// <param name="item"></param>
         public void RemoveItem(GdalRasterItem item) 
         { 
             _items.Remove(item.FileName); 
         }
 
+        /// <summary>
+        /// Gets all the raster image references in this location
+        /// </summary>
         public GdalRasterItem[] Items { get { return new List<GdalRasterItem>(_items.Values).ToArray(); } }
 
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
@@ -100,22 +117,44 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             }
         }
 
+        /// <summary>
+        /// Removes the specified raster image
+        /// </summary>
+        /// <param name="fileName"></param>
         public void RemoveItem(string fileName)
         {
             _items.Remove(fileName);
         }
     }
 
+    /// <summary>
+    /// Represents a raster image location and its extents.
+    /// </summary>
     public class GdalRasterItem : IFdoSerializable
     {
+        /// <summary>
+        /// Gets or sets the raster image file name
+        /// </summary>
         public string FileName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the minimum X value of this raster extent
+        /// </summary>
         public double MinX { get; set; }
 
+        /// <summary>
+        /// Gets or sets the minimum Y value of this raster extent
+        /// </summary>
         public double MinY { get; set; }
 
+        /// <summary>
+        /// Gets or sets the maximum X value of this raster extent
+        /// </summary>
         public double MaxX { get; set; }
 
+        /// <summary>
+        /// Gets or sets the maximum Y value of this raster extent
+        /// </summary>
         public double MaxY { get; set; }
 
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)

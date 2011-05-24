@@ -26,6 +26,9 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
+    /// <summary>
+    /// The base class of all configuration documents
+    /// </summary>
     public abstract class ConfigurationDocument : IFdoSerializable
     {
         protected List<IFdoSpatialContext> _spatialContexts;

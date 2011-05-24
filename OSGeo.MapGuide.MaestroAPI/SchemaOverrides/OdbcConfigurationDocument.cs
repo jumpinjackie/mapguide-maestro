@@ -25,20 +25,36 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
+    /// <summary>
+    /// Represents a configuration document for the ODBC provider. The ODBC configuration document allows you to declare
+    /// certain tables as point feature classes by specifying the X, Y and optionally Z columns of the table
+    /// </summary>
     public class OdbcConfigurationDocument : ConfigurationDocument
     {
         private List<OdbcTableItem> _tables;
 
         public OdbcConfigurationDocument() { _tables = new List<OdbcTableItem>(); }
 
+        /// <summary>
+        /// Adds the specified table override
+        /// </summary>
+        /// <param name="item"></param>
         public void AddOverride(OdbcTableItem item) 
         { 
             _tables.Add(item);
             item.Parent = this;
         }
 
+        /// <summary>
+        /// Removes all table overrides
+        /// </summary>
         public void ClearMappings() { _tables.Clear(); }
 
+        /// <summary>
+        /// Gets the table overrides for the specified schema
+        /// </summary>
+        /// <param name="schemaName"></param>
+        /// <returns></returns>
         public List<OdbcTableItem> GetMappingsForSchema(string schemaName)
         {
             List<OdbcTableItem> items = new List<OdbcTableItem>();
@@ -103,6 +119,12 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             }
         }
 
+        /// <summary>
+        /// Gets the table override for the specific feature class name.
+        /// </summary>
+        /// <param name="schemaName"></param>
+        /// <param name="className"></param>
+        /// <returns></returns>
         public OdbcTableItem GetOverride(string schemaName, string className)
         {
             foreach (var item in _tables)

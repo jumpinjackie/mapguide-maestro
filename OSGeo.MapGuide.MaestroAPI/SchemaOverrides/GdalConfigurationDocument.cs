@@ -25,10 +25,19 @@ using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
+    /// <summary>
+    /// A configuration document for the GDAL raster provider. A GDAL configuration document serves as a raster image catalog. Allowing
+    /// the GDAL provider to optimally select the correct raster images to return for the given queried extents.
+    /// </summary>
     public class GdalConfigurationDocument : ConfigurationDocument
     {
         private Dictionary<string, GdalRasterLocationItem> _items = new Dictionary<string, GdalRasterLocationItem>();
 
+        /// <summary>
+        /// Adds the specified raster location to this document
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public GdalRasterLocationItem AddLocation(GdalRasterLocationItem item)
         {
             if (!_items.ContainsKey(item.Location))
@@ -38,6 +47,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             return _items[item.Location];
         }
 
+        /// <summary>
+        /// Removes the specified raster location from this document
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public bool RemoveLocation(GdalRasterLocationItem item)
         {
             return _items.Remove(item.Location);
@@ -60,6 +74,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             return env;
         }
 
+        /// <summary>
+        /// Adds the specified directory to this document
+        /// </summary>
+        /// <param name="directory"></param>
+        /// <returns></returns>
         public GdalRasterLocationItem AddLocation(string directory)
         {
             if (_items.ContainsKey(directory))
@@ -68,6 +87,9 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             return AddLocation(new GdalRasterLocationItem() { Location = directory });
         }
 
+        /// <summary>
+        /// Gets an array of all the raster locations for this document
+        /// </summary>
         public GdalRasterLocationItem[] RasterLocations { get { return new List<GdalRasterLocationItem>(_items.Values).ToArray(); } }
 
         protected override void WriteSchemaMappings(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)

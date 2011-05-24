@@ -24,20 +24,41 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
+    /// <summary>
+    /// Represents a table override. A table override allows a table to be configured as a point feature class
+    /// </summary>
     public class OdbcTableItem : IFdoSerializable
     {
         internal OdbcConfigurationDocument Parent { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the feature schema
+        /// </summary>
         public string SchemaName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the feature class this override is applicable to
+        /// </summary>
         public string ClassName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the spatial context the point geometries will be applicable to
+        /// </summary>
         public string SpatialContextName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the column which contains the X coordinates of the point features
+        /// </summary>
         public string XColumn { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the column which contains the Y coordinates of the point features
+        /// </summary>
         public string YColumn { get; set; }
-
+        
+        /// <summary>
+        /// Gets or sets the name of the column which contains the Z coordinates of the point features
+        /// </summary>
         public string ZColumn { get; set; }
 
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)

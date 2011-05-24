@@ -24,14 +24,28 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
+    /// <summary>
+    /// Represents a configuration document for the WMS provider.
+    /// </summary>
     public class WmsConfigurationDocument : ConfigurationDocument
     {
         private List<RasterWmsItem> _rasterItems = new List<RasterWmsItem>();
 
+        /// <summary>
+        /// Gets an array of the added override items
+        /// </summary>
         public RasterWmsItem[] RasterOverrides { get { return _rasterItems.ToArray(); } }
 
+        /// <summary>
+        /// Adds the specified override item
+        /// </summary>
+        /// <param name="item"></param>
         public void AddRasterItem(RasterWmsItem item) { _rasterItems.Add(item); }
 
+        /// <summary>
+        /// Removes the specified override item
+        /// </summary>
+        /// <param name="item"></param>
         public void RemoveRasterItem(RasterWmsItem item) { _rasterItems.Remove(item); }
 
         protected override void WriteSchemaMappings(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
