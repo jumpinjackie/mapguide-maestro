@@ -20,7 +20,7 @@
     <FrameworkVersion>.NET 2.0.50727</FrameworkVersion>
     <HelpTitle>MapGuide Maestro API Documentation</HelpTitle>
     <IndentHtml>True</IndentHtml>
-    <PresentationStyle>Prototype</PresentationStyle>
+    <PresentationStyle>vs2005</PresentationStyle>
     <SandcastlePath>
     </SandcastlePath>
     <DocumentationSources>
@@ -37,7 +37,21 @@
     </DocumentationSources>
     <VisibleItems>Attributes, InheritedMembers, Protected, SealedProtected</VisibleItems>
     <ApiFilter>
-    </ApiFilter>
+      <Filter entryType="Namespace" fullName="Maestro.Editors.FeatureSource.Preview" isExposed="False" />
+<Filter entryType="Namespace" fullName="Maestro.Editors.FeatureSource.Providers.Odbc" isExposed="False" />
+<Filter entryType="Namespace" fullName="Maestro.Editors.FeatureSource.Providers.Odbc.Drivers" isExposed="False" />
+<Filter entryType="Namespace" fullName="Maestro.Editors.FeatureSource.Providers.Wms" isExposed="False" />
+<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0" isExposed="False" />
+<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0" isExposed="False" />
+<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0" isExposed="False" />
+<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0" isExposed="False" />
+<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0" isExposed="False" />
+<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0" isExposed="False" />
+<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0" isExposed="False" />
+<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0" isExposed="False" />
+<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.SymbolLibrary_1_0_0" isExposed="False" />
+<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0" isExposed="False" />
+<Filter entryType="Namespace" fullName="System.Runtime.CompilerServices" isExposed="False" /></ApiFilter>
     <SdkLinkType>None</SdkLinkType>
     <FeedbackEMailAddress>jumpinjackie@gmail.com</FeedbackEMailAddress>
     <WebsiteSdkLinkType>None</WebsiteSdkLinkType>
