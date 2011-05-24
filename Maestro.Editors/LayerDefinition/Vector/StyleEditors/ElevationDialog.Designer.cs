@@ -28,61 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ElevationDialog));
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.chkEnabled = new System.Windows.Forms.CheckBox();
             this.grpSettings = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtZOffset = new System.Windows.Forms.TextBox();
-            this.txtZExtrusion = new System.Windows.Forms.TextBox();
-            this.cmbZOffsetType = new System.Windows.Forms.ComboBox();
-            this.cmbUnits = new System.Windows.Forms.ComboBox();
-            this.btnZOffset = new System.Windows.Forms.Button();
             this.btnZExtrusion = new System.Windows.Forms.Button();
+            this.btnZOffset = new System.Windows.Forms.Button();
+            this.cmbUnits = new System.Windows.Forms.ComboBox();
+            this.cmbZOffsetType = new System.Windows.Forms.ComboBox();
+            this.txtZExtrusion = new System.Windows.Forms.TextBox();
+            this.txtZOffset = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(25, 247);
+            resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(106, 247);
+            resources.ApplyResources(this.btnCancel, "btnCancel");
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // chkEnabled
             // 
-            this.chkEnabled.AutoSize = true;
-            this.chkEnabled.Location = new System.Drawing.Point(12, 12);
+            resources.ApplyResources(this.chkEnabled, "chkEnabled");
             this.chkEnabled.Name = "chkEnabled";
-            this.chkEnabled.Size = new System.Drawing.Size(106, 17);
-            this.chkEnabled.TabIndex = 2;
-            this.chkEnabled.Text = "Settings Enabled";
             this.chkEnabled.UseVisualStyleBackColor = true;
             this.chkEnabled.CheckedChanged += new System.EventHandler(this.chkEnabled_CheckedChanged);
             // 
             // grpSettings
             // 
-            this.grpSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.grpSettings, "grpSettings");
             this.grpSettings.Controls.Add(this.btnZExtrusion);
             this.grpSettings.Controls.Add(this.btnZOffset);
             this.grpSettings.Controls.Add(this.cmbUnits);
@@ -93,119 +81,83 @@
             this.grpSettings.Controls.Add(this.label3);
             this.grpSettings.Controls.Add(this.label2);
             this.grpSettings.Controls.Add(this.label1);
-            this.grpSettings.Location = new System.Drawing.Point(12, 36);
             this.grpSettings.Name = "grpSettings";
-            this.grpSettings.Size = new System.Drawing.Size(169, 205);
-            this.grpSettings.TabIndex = 3;
             this.grpSettings.TabStop = false;
             // 
-            // label1
+            // btnZExtrusion
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Z Offset";
+            resources.ApplyResources(this.btnZExtrusion, "btnZExtrusion");
+            this.btnZExtrusion.Name = "btnZExtrusion";
+            this.btnZExtrusion.UseVisualStyleBackColor = true;
+            this.btnZExtrusion.Click += new System.EventHandler(this.btnZExtrusion_Click);
             // 
-            // label2
+            // btnZOffset
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 104);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Z Offset Type";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Z Extrusion";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Units";
-            // 
-            // txtZOffset
-            // 
-            this.txtZOffset.Location = new System.Drawing.Point(10, 37);
-            this.txtZOffset.Name = "txtZOffset";
-            this.txtZOffset.Size = new System.Drawing.Size(114, 20);
-            this.txtZOffset.TabIndex = 4;
-            this.txtZOffset.TextChanged += new System.EventHandler(this.txtZOffset_TextChanged);
-            // 
-            // txtZExtrusion
-            // 
-            this.txtZExtrusion.Location = new System.Drawing.Point(10, 78);
-            this.txtZExtrusion.Name = "txtZExtrusion";
-            this.txtZExtrusion.Size = new System.Drawing.Size(114, 20);
-            this.txtZExtrusion.TabIndex = 5;
-            this.txtZExtrusion.TextChanged += new System.EventHandler(this.txtZExtrusion_TextChanged);
-            // 
-            // cmbZOffsetType
-            // 
-            this.cmbZOffsetType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbZOffsetType.FormattingEnabled = true;
-            this.cmbZOffsetType.Location = new System.Drawing.Point(10, 120);
-            this.cmbZOffsetType.Name = "cmbZOffsetType";
-            this.cmbZOffsetType.Size = new System.Drawing.Size(144, 21);
-            this.cmbZOffsetType.TabIndex = 6;
-            this.cmbZOffsetType.SelectedIndexChanged += new System.EventHandler(this.cmbZOffsetType_SelectedIndexChanged);
+            resources.ApplyResources(this.btnZOffset, "btnZOffset");
+            this.btnZOffset.Name = "btnZOffset";
+            this.btnZOffset.UseVisualStyleBackColor = true;
+            this.btnZOffset.Click += new System.EventHandler(this.btnZOffset_Click);
             // 
             // cmbUnits
             // 
             this.cmbUnits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUnits.FormattingEnabled = true;
-            this.cmbUnits.Location = new System.Drawing.Point(10, 167);
+            resources.ApplyResources(this.cmbUnits, "cmbUnits");
             this.cmbUnits.Name = "cmbUnits";
-            this.cmbUnits.Size = new System.Drawing.Size(144, 21);
-            this.cmbUnits.TabIndex = 7;
             this.cmbUnits.SelectedIndexChanged += new System.EventHandler(this.cmbUnits_SelectedIndexChanged);
             // 
-            // btnZOffset
+            // cmbZOffsetType
             // 
-            this.btnZOffset.Location = new System.Drawing.Point(130, 35);
-            this.btnZOffset.Name = "btnZOffset";
-            this.btnZOffset.Size = new System.Drawing.Size(24, 23);
-            this.btnZOffset.TabIndex = 8;
-            this.btnZOffset.Text = "...";
-            this.btnZOffset.UseVisualStyleBackColor = true;
-            this.btnZOffset.Click += new System.EventHandler(this.btnZOffset_Click);
+            this.cmbZOffsetType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbZOffsetType.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbZOffsetType, "cmbZOffsetType");
+            this.cmbZOffsetType.Name = "cmbZOffsetType";
+            this.cmbZOffsetType.SelectedIndexChanged += new System.EventHandler(this.cmbZOffsetType_SelectedIndexChanged);
             // 
-            // btnZExtrusion
+            // txtZExtrusion
             // 
-            this.btnZExtrusion.Location = new System.Drawing.Point(130, 76);
-            this.btnZExtrusion.Name = "btnZExtrusion";
-            this.btnZExtrusion.Size = new System.Drawing.Size(24, 23);
-            this.btnZExtrusion.TabIndex = 9;
-            this.btnZExtrusion.Text = "...";
-            this.btnZExtrusion.UseVisualStyleBackColor = true;
-            this.btnZExtrusion.Click += new System.EventHandler(this.btnZExtrusion_Click);
+            resources.ApplyResources(this.txtZExtrusion, "txtZExtrusion");
+            this.txtZExtrusion.Name = "txtZExtrusion";
+            this.txtZExtrusion.TextChanged += new System.EventHandler(this.txtZExtrusion_TextChanged);
+            // 
+            // txtZOffset
+            // 
+            resources.ApplyResources(this.txtZOffset, "txtZOffset");
+            this.txtZOffset.Name = "txtZOffset";
+            this.txtZOffset.TextChanged += new System.EventHandler(this.txtZOffset_TextChanged);
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // ElevationDialog
             // 
             this.AcceptButton = this.btnSave;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(193, 282);
+            resources.ApplyResources(this, "$this");
             this.ControlBox = false;
             this.Controls.Add(this.grpSettings);
             this.Controls.Add(this.chkEnabled);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Name = "ElevationDialog";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "KML Elevation/Extrusion Settings";
             this.grpSettings.ResumeLayout(false);
             this.grpSettings.PerformLayout();
             this.ResumeLayout(false);
