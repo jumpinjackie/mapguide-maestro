@@ -84,6 +84,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="readme.txt" />
+    <Content Include="Tasks\AddTracksLayer.aspx" />
     <Content Include="Tasks\ToggleParcelsLayer.aspx" />
     <Content Include="Tasks\Home.aspx" />
     <Content Include="Web.config" />
@@ -100,6 +101,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tasks\AddTracksLayer.aspx.cs">
+      <DependentUpon>AddTracksLayer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\AddTracksLayer.aspx.designer.cs">
+      <DependentUpon>AddTracksLayer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tasks\ToggleParcelsLayer.aspx.cs">
       <DependentUpon>ToggleParcelsLayer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -132,12 +140,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49241</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost/mapguide/SamplesWeb/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>

@@ -48,6 +48,9 @@ namespace SamplesWeb
             var mdfId = "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition";
             if (conn.ResourceService.ResourceExists(mdfId))
             {
+                //Here's an example of pre-processing the WebLayout before loading it
+                //in the AJAX viewer.
+
                 //Create a WebLayout. By default the version created will be 
                 //the latest supported one on the mapguide server we've connected to. For example
                 //connecting to MGOS 2.2 will create a version 1.1.0 WebLayout. All the known
