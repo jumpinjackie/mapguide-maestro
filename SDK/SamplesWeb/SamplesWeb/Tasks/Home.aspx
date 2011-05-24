@@ -7,12 +7,15 @@
     <title>Home</title>
     <script type="text/javascript">
     
-        function Go(url)
+        function Go(url, extraParams)
         {
             var map = parent.parent.GetMapFrame();
             
             url += "?SESSION=" + map.GetSessionId();
             url += "&MAPNAME=" + map.GetMapName();
+            
+            if (extraParams)
+                url += "&" + extraParams;
             
             window.location = url;
         }
@@ -24,8 +27,10 @@
     
     <p>Samples</p>
     <ul>
-        <li><a href="#" onclick="Go('ToggleParcelsLayer.aspx')">Toggle Parcels Layer</a></li>
-        <li><a href="#" onclick="Go('AddTracksLayer.aspx')">Add Tracks Layer</a></li>
+        <li><a href="#" onclick="Go('ToggleParcelsLayer.aspx',null)">Add/Remove Parcels Layer</a></li>
+        <li><a href="#" onclick="Go('AddTracksLayer.aspx',null)">Add Tracks Layer</a></li>
+        <li><a href="#" onclick="Go('ToggleGroupVisibility.aspx','GROUPNAME=Base Map')">Toggle "Base Map" Group</a></li>
+        <li><a href="#" onclick="Go('ToggleLayerVisibility.aspx','LAYERNAME=Parcels')">Toggle "Parcels" Layer</a></li>
     </ul>
 </body>
 </html>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ToggleParcelsLayer.aspx.cs" Inherits="SamplesWeb.Tasks.ToggleParcelsLayer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ToggleGroupVisibility.aspx.cs" Inherits="SamplesWeb.Tasks.ToggleGroupVisibility" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

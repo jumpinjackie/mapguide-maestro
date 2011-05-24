@@ -85,6 +85,8 @@
     <Content Include="Global.asax" />
     <Content Include="readme.txt" />
     <Content Include="Tasks\AddTracksLayer.aspx" />
+    <Content Include="Tasks\ToggleGroupVisibility.aspx" />
+    <Content Include="Tasks\ToggleLayerVisibility.aspx" />
     <Content Include="Tasks\ToggleParcelsLayer.aspx" />
     <Content Include="Tasks\Home.aspx" />
     <Content Include="Web.config" />
@@ -107,6 +109,20 @@
     </Compile>
     <Compile Include="Tasks\AddTracksLayer.aspx.designer.cs">
       <DependentUpon>AddTracksLayer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\ToggleGroupVisibility.aspx.cs">
+      <DependentUpon>ToggleGroupVisibility.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\ToggleGroupVisibility.aspx.designer.cs">
+      <DependentUpon>ToggleGroupVisibility.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\ToggleLayerVisibility.aspx.cs">
+      <DependentUpon>ToggleLayerVisibility.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\ToggleLayerVisibility.aspx.designer.cs">
+      <DependentUpon>ToggleLayerVisibility.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tasks\ToggleParcelsLayer.aspx.cs">
       <DependentUpon>ToggleParcelsLayer.aspx</DependentUpon>
