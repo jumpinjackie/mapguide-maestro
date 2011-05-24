@@ -521,6 +521,9 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
     #endregion
 
     partial class AreaTypeStyleType : IAreaVectorStyle
+#if LDF_130
+        , IAreaVectorStyle2
+#endif
     {
         [XmlIgnore]
         IEnumerable<IAreaRule> IAreaVectorStyle.Rules
@@ -601,6 +604,9 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
     }
 
     partial class PointTypeStyleType : IPointVectorStyle
+#if LDF_130
+        , IPointVectorStyle2
+#endif
     {
         [XmlIgnore]
         public IEnumerable<IPointRule> Rules
@@ -691,6 +697,9 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
     }
 
     partial class LineTypeStyleType : ILineVectorStyle
+#if LDF_130
+        , ILineVectorStyle2
+#endif
     {
         [XmlIgnore]
         public IEnumerable<ILineRule> Rules

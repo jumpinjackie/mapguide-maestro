@@ -36,6 +36,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             this.panel2 = new System.Windows.Forms.Panel();
             this.scaleRangeConditions = new ScaleRangeConditions();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnElevation = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +63,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnElevation);
             this.panel1.Controls.Add(this.MinScale);
             this.panel1.Controls.Add(this.MaxScale);
             resources.ApplyResources(this.panel1, "panel1");
@@ -83,14 +85,22 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // btnElevation
+            // 
+            this.btnElevation.Image = global::Maestro.Editors.Properties.Resources.ruler;
+            resources.ApplyResources(this.btnElevation, "btnElevation");
+            this.btnElevation.Name = "btnElevation";
+            this.btnElevation.UseVisualStyleBackColor = true;
+            this.btnElevation.Click += new System.EventHandler(this.btnElevation_Click);
+            // 
             // ScaleRange
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.scaleRangeConditions);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "ScaleRange";
+            resources.ApplyResources(this, "$this");
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
@@ -105,5 +115,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Button btnElevation;
     }
 }

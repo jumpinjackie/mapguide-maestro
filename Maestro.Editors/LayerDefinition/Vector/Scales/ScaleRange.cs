@@ -27,9 +27,12 @@ using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System.Threading;
+using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
+    //NOTE: Be careful when opening this in the Winforms designer. Chance of designer code fubar is very high!
+
     [ToolboxItem(false)]
     internal partial class ScaleRange : UserControl
     {
@@ -79,6 +82,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 m_vsc = vsc;
                 MaxScale.Text = m_vsc.MaxScale.HasValue ? m_vsc.MaxScale.Value.ToString(Thread.CurrentThread.CurrentUICulture) : Properties.Resources.InfiniteValue;
                 MinScale.Text = m_vsc.MinScale.HasValue ? m_vsc.MinScale.Value.ToString(Thread.CurrentThread.CurrentUICulture) : Properties.Resources.InfiniteValue;
+
+                //Check if elevation is supported
+                var vsr2 = m_vsc as IVectorScaleRange2;
+                btnElevation.Enabled = (vsr2 != null);
 
                 scaleRangeConditions.SetItem(m_vsc);
             }
@@ -168,6 +175,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         {
             scaleRangeConditions.ResizeAuto();
             this.Height = this.GetPreferedHeight();
+        }
+
+        private void btnElevation_Click(object sender, EventArgs e)
+        {
+            var vsr2 = m_vsc as IVectorScaleRange2;
+            if (vsr2 != null)
+            {
+                if (new ElevationDialog(m_owner.EditorService, vsr2, m_owner.FeatureSourceId, m_owner.Schema, m_owner.GetFdoProvider()).ShowDialog() == DialogResult.OK)
+                {
+                    m_owner.FlagDirty();
+                }
+            }
         }
     }
 }

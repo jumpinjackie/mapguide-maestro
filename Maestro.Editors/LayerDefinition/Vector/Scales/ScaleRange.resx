@@ -141,7 +141,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;MinScale.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="MaxScale.Items" xml:space="preserve">
     <value>infinite</value>
@@ -165,7 +165,37 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;MaxScale.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="btnElevation.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btnElevation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 39</value>
+  </data>
+  <data name="btnElevation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 23</value>
+  </data>
+  <data name="btnElevation.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnElevation.Text" xml:space="preserve">
+    <value>KML Elevation</value>
+  </data>
+  <data name="btnElevation.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;btnElevation.Name" xml:space="preserve">
+    <value>btnElevation</value>
+  </data>
+  <data name="&gt;&gt;btnElevation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnElevation.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;btnElevation.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -232,7 +262,7 @@
     <value>scaleRangeConditions</value>
   </data>
   <data name="&gt;&gt;scaleRangeConditions.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ScaleRangeConditions, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ScaleRangeConditions, Maestro.Editors, Version=3.0.0.5728, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;scaleRangeConditions.Parent" xml:space="preserve">
     <value>$this</value>
@@ -246,9 +276,6 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>802, 338</value>
   </data>

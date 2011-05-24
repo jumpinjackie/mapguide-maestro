@@ -29,6 +29,7 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.ObjectModels;
 using Maestro.Editors.LayerDefinition.Vector.Thematics;
+using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
@@ -104,6 +105,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             m_line = item as ILineVectorStyle;
             m_area = item as IAreaVectorStyle;
 
+            var ar2 = m_area as IAreaVectorStyle2;
+            var pt2 = m_point as IPointVectorStyle2;
+            var ln2 = m_line as ILineVectorStyle2;
+
+            //Check if we're working with a 1.3.0 schema
+            ShowInLegend.Enabled = (ar2 != null || pt2 != null || ln2 != null);            
         }
 
         public void AddRule()
@@ -252,8 +259,25 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private void ShowInLegend_CheckedChanged(object sender, EventArgs e)
         {
-            
-        }
+            var ar2 = m_area as IAreaVectorStyle2;
+            var pt2 = m_point as IPointVectorStyle2;
+            var ln2 = m_line as ILineVectorStyle2;
 
+            if (ar2 != null)
+            {
+                ar2.ShowInLegend = ShowInLegend.Checked;
+                m_owner.FlagDirty();
+            }
+            else if (pt2 != null)
+            {
+                pt2.ShowInLegend = ShowInLegend.Checked;
+                m_owner.FlagDirty();
+            }
+            else if (ln2 != null)
+            {
+                ln2.ShowInLegend = ShowInLegend.Checked;
+                m_owner.FlagDirty();
+            }
+        }
     }
 }

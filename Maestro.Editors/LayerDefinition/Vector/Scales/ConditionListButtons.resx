@@ -139,7 +139,7 @@
     <value>conditionList</value>
   </data>
   <data name="&gt;&gt;conditionList.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleControls.ConditionList, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionList, Maestro.Editors, Version=3.0.0.5728, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;conditionList.Parent" xml:space="preserve">
     <value>$this</value>
@@ -181,13 +181,13 @@
     <value>304, 8</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
+    <value>69, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Featurestyle</value>
+    <value>Feature Style</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -208,13 +208,13 @@
     <value>440, 8</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 13</value>
+    <value>59, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Labelstyle</value>
+    <value>Label Style</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -231,21 +231,6 @@
   <metadata name="toolTips.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="AddRuleButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+Nk+9L
-        U2EUx/1Lls55vSsnmisoSVFDgl6EZDFsFJNZC+yaXiqXiK0NxVgtXJKSjAoMoTJ8UdGMIJa7iXO3NukH
-        gex14N/wre+B3Rpr1QMHzj33nM9zfj1VVRWON+5BR6RVhHolvzL7nmAtjtzrgJ68gMl0SIT64flD2H3V
-        URmkP7yIhikHhpIBxMwbmN2KYe7zDO6aM4hv3UQ0O4nAC5/40Lfs5vqwDb7nfZjYGMVU/hqms2G8L6RF
-        CInkxnF9Q0PfynEoEVspgGkffNCMwdQARrPDmMgFETLGUDyJ3DzGP16GvjmI82/6sT/hAmOsLJzRGnQ9
-        OQD/mhda5qxAgindAsyZcbHxny/lQetyMxgjAHa4caEObc/cOLPai6G3AVxZ+ymvhi3AHeO22Hk7fQhg
-        jEyHY+KH+6kT93MLVlAlhT1peaxKDGMtAI1s1r+OUXhXCiiWQEDvajeC6QDCGQ3TxojFWszPygRYGkso
-        ZmAtGBuyb0lB52sVPesunDab4DfcFiD2pR+nNptwzHChPelEyyPlVxPZSI5kb8KB7mQdPKaCc19VaB9c
-        JQD/JxUnMvXoeqlI/SVjJISL1L5kh3fdDm3bDn27GoWdvMitbz1iO2nUig99yzaR66n+BrlU2IXQd5sI
-        YQS3LdaIzx9XuUhkao1RmzgfXakWoU5bWdp/e6L/+5x/AIne8ctKOU3sAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="AddRuleButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -273,21 +258,8 @@
   <data name="CopyRuleButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="CopyRuleButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAWBJREFUOE+Nk+lO
-        wlAQRnn/pyDxBTBGE0kUqikgVpZA4WpdAgZSSVjcQPDHmDNmkAaLNvlyp+2dM/PNbTNBUBNTqVQRxL3v
-        lyWfL0rmr4vN8Wi61iCerePTgie53MFuCID+YCIk2mpxbv9QgGSze+kQACSYgHTcnVQuQ00GsrMLA5BA
-        3Oo+qv/3+WpLy+WntMObJNAA3Wgg971YWAtFX5PHs48tBbVQrt0GxGYAmZe0/wNYKADY03iuKwU4Hezp
-        ARkACwjQ0bGnm5kHXbEi65L45XXxDShXqjpAa58Z8Myq8pzqgHvDNwUR8z4BoHrpoqXJ1gEV602nlbFm
-        M6m3+0kAVdztSNrRVBqdoZx4wa8dmKWrulOYdsAwoNOWyYZo1sw/9qhOEWylfuX2HdA61czemd+UwnlT
-        /Gq0GwDZhsjg3MOz2jM13OR/gPFsoRtNwEzrY0zzsfmbE3M6thIjcr8A7AeyRar4iUMAAAAASUVORK5C
-        YII=
-</value>
-  </data>
   <data name="CopyRuleButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 0</value>
+    <value>138, 0</value>
   </data>
   <data name="CopyRuleButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 24</value>
@@ -327,7 +299,7 @@
 </value>
   </data>
   <data name="CreateThemeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 0</value>
+    <value>106, 0</value>
   </data>
   <data name="CreateThemeButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 24</value>
@@ -352,19 +324,6 @@
   </data>
   <data name="MoveRuleDownButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="MoveRuleDownButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAZBJREFUOE+Nkk1L
-        AlEUhv19fSyDhDYlBUERUQ4IiUjQRpD6By3auDEGKiREyBhJMFPJ8SvNEZUCTQlLrcWp99QdZxoTB14O
-        zNzzcM4z12b7fhJJlaJRhRTlxhTxDhUJhyOE85YHjYPhJ/XePiYGgGBQtkIAQHO7O9TT6vTpbwAoFUtW
-        iBFQa7xQ4aHOAQBVzWucs4tzbhbRV/kPABj8oFZqbYbBRVVrmn1MAmSyjzwJ1kNNpnK8rkkoqJCIQ8YV
-        nlrv3HBcOiFf3stxKx4+ZwEIiUaAWOHg3kVH3R1yNRy0cTczPQATYO/9tET+rpOk+gqtxud5lakmEPa9
-        SacJAPBEgGhEhURPYlcHrClzPEEodDm6UJAIB63OgCVyo6qRfBum5dgCuVS7DoADvHMHPCNAJHL1C+jz
-        /0ZzIlXmwLqvsU6+jvTjIDtLm9dLfKn0iyQm0Jo9Qir1V06u0qVU8Zm2Yg79L2CFeDlndmCcAPtBkgiA
-        iWqBpLSd9oqLFMjI4x0AgsDuuPjlQ3KebuvfhMQv5TTlyUFPaVgAAAAASUVORK5CYII=
-</value>
   </data>
   <data name="MoveRuleDownButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>544, 0</value>
@@ -393,20 +352,6 @@
   <data name="MoveRuleUpButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="MoveRuleUpButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAahJREFUOE+Nk01L
-        AlEYhf1l7VpEizaBFEEREmFQEGgFQYukTRD9g1atIlEESwmpxEZL0lSUydRG1Ci0ibDsY3Hq3JjRaaaP
-        gcO9c2fe577n3Bmb7fNKnudxfBxDLBY3SFvjSO3vh8H3TRcLX17f0X56+1UHBxH4fAEzhAAWtx5eTWqq
-        HbHGMRI5QvGyCK/Xb4T0Aqr1e8hXNeRlBUqjrc95z901GSBWAEK4K/MhtKLcCRizuFYaoB09i58ALExl
-        ZN1WU31BIlMQdg0AUhkivWoWuBstaIDUjQx/OfQzQAuxF8A5LVxW63DnpuAq2OGPh4U1UwdWgNvms/C9
-        HF/EZmsWKw0HnNIouP4vAJPfutiGR5nAuuqCuzYJZ3YQnuTS3wAWh1JRjJz0Y7Uyjo2HLmAs2gfPzlr3
-        FBgiLTBl+mZxrqCIwAKnh3BJTh3giA5CKuWxu+frAviFfQE6KFdbSGcrQsl0CYnzKyyfzBsAPB3LDPiA
-        KtcehXJFVWglsWACGH6s3g7YBVPWRCBD0zKgBctjJIRia981H5zB3NkwpqUh2AMDCIZCuoUPJ7XmPSyz
-        fF8AAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="MoveRuleUpButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>512, 0</value>
   </data>
@@ -430,6 +375,27 @@
   </data>
   <data name="&gt;&gt;MoveRuleUpButton.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="ShowInLegend.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ShowInLegend.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 6</value>
+  </data>
+  <data name="ShowInLegend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 17</value>
+  </data>
+  <data name="ShowInLegend.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="ShowInLegend.Text" xml:space="preserve">
+    <value>Show In Legend</value>
+  </data>
+  <metadata name="toolTips.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="ShowInLegend.ToolTip" xml:space="preserve">
+    <value>Check to show in legend (only avalible in LayerDefinition 1.3.0 and above). This can toggle legend visibility without removing your defined style rules</value>
   </data>
   <data name="&gt;&gt;ShowInLegend.Name" xml:space="preserve">
     <value>ShowInLegend</value>
@@ -467,45 +433,9 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="ShowInLegend.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ShowInLegend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 6</value>
-  </data>
-  <data name="ShowInLegend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 17</value>
-  </data>
-  <data name="ShowInLegend.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="ShowInLegend.Text" xml:space="preserve">
-    <value>Show in Legend</value>
-  </data>
-  <data name="ShowInLegend.ToolTip" xml:space="preserve">
-    <value>Check to show in legend (only avalible in LayerDefinition 1.3.0 and above)</value>
-  </data>
-  <data name="&gt;&gt;ShowInLegend.Name" xml:space="preserve">
-    <value>ShowInLegend</value>
-  </data>
-  <data name="&gt;&gt;ShowInLegend.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ShowInLegend.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;ShowInLegend.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="toolTips.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>593, 97</value>
   </data>

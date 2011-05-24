@@ -93,6 +93,14 @@ namespace Maestro.Editors.LayerDefinition
             
         }
 
+        internal void FlagDirty() { OnResourceChanged(); }
+
+        internal string GetFdoProvider()
+        {
+            var fs = (IFeatureSource)_edsvc.ResourceService.GetResource(_vl.ResourceId);
+            return fs.Provider;
+        }
+
         internal ClassDefinition Schema
         {
             get { return resSettings.GetSelectedClass(); }

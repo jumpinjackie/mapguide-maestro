@@ -30,7 +30,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConditionListButtons));
-            this.conditionList = new ConditionList();
+            this.conditionList = new Maestro.Editors.LayerDefinition.Vector.Scales.ConditionList();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -71,6 +71,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             // 
             // AddRuleButton
             // 
+            this.AddRuleButton.Image = global::Maestro.Editors.Properties.Resources.plus_circle;
             resources.ApplyResources(this.AddRuleButton, "AddRuleButton");
             this.AddRuleButton.Name = "AddRuleButton";
             this.toolTips.SetToolTip(this.AddRuleButton, resources.GetString("AddRuleButton.ToolTip"));
@@ -80,6 +81,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             // CopyRuleButton
             // 
             resources.ApplyResources(this.CopyRuleButton, "CopyRuleButton");
+            this.CopyRuleButton.Image = global::Maestro.Editors.Properties.Resources.document_copy;
             this.CopyRuleButton.Name = "CopyRuleButton";
             this.toolTips.SetToolTip(this.CopyRuleButton, resources.GetString("CopyRuleButton.ToolTip"));
             this.CopyRuleButton.UseVisualStyleBackColor = true;
@@ -96,6 +98,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             // MoveRuleDownButton
             // 
             resources.ApplyResources(this.MoveRuleDownButton, "MoveRuleDownButton");
+            this.MoveRuleDownButton.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
             this.MoveRuleDownButton.Name = "MoveRuleDownButton";
             this.toolTips.SetToolTip(this.MoveRuleDownButton, resources.GetString("MoveRuleDownButton.ToolTip"));
             this.MoveRuleDownButton.UseVisualStyleBackColor = true;
@@ -104,6 +107,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             // MoveRuleUpButton
             // 
             resources.ApplyResources(this.MoveRuleUpButton, "MoveRuleUpButton");
+            this.MoveRuleUpButton.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
             this.MoveRuleUpButton.Name = "MoveRuleUpButton";
             this.toolTips.SetToolTip(this.MoveRuleUpButton, resources.GetString("MoveRuleUpButton.ToolTip"));
             this.MoveRuleUpButton.UseVisualStyleBackColor = true;
@@ -135,11 +139,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             // 
             // ConditionListButtons
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.conditionList);
             this.Controls.Add(this.panel1);
             this.Name = "ConditionListButtons";
+            resources.ApplyResources(this, "$this");
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

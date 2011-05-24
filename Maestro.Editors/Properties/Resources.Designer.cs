@@ -2252,6 +2252,13 @@ namespace Maestro.Editors.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap ruler1 {
+            get {
+                object obj = ResourceManager.GetObject("ruler1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Save Resource.
         /// </summary>
