@@ -23,6 +23,10 @@ using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Schema
 {
+    /// <summary>
+    /// Has the information needed to create or completely describe a raster property. This class encapsulates the information 
+    /// necessary to insert a 'new' raster, in the absence of any other information, for the properties defined using this schema element. 
+    /// </summary>
     public class RasterPropertyDefinition : PropertyDefinition
     {
         public RasterPropertyDefinition(string name, string description)
@@ -31,16 +35,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             this.Description = description;
         }
 
+        /// <summary>
+        /// Gets or sets the default size of image file in the horizontal direction in pixels (number of columns). 
+        /// </summary>
         public int DefaultImageXSize { get; set; }
 
+        /// <summary>
+        /// Gets or sets the default size of an image file in the vertical direction in pixels (number of rows). 
+        /// </summary>
         public int DefaultImageYSize { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether this property's value can be null. 
+        /// </summary>
         public bool IsNullable { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether this property is read-only. 
+        /// </summary>
         public bool IsReadOnly { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Spatial Context name associated to this raster property. 
+        /// </summary>
         public string SpatialContextAssociation { get; set; }
 
+        /// <summary>
+        /// Gets the type of property definition
+        /// </summary>
         public override PropertyDefinitionType Type
         {
             get { return PropertyDefinitionType.Raster; }

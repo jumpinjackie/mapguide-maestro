@@ -52,6 +52,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             this.Description = description;
         }
 
+        /// <summary>
+        /// Gets or sets the base class
+        /// </summary>
         public ClassDefinition BaseClass { get; set; }
 
         /// <summary>
@@ -314,6 +317,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
         public FeatureSchema Parent { get; internal set; }
 
+        /// <summary>
+        /// Gets a Property Definition by its name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>The matching property definition. null if none found</returns>
         public PropertyDefinition FindProperty(string name)
         {
             foreach (var prop in _properties)
@@ -324,6 +332,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             return null;
         }
 
+        /// <summary>
+        /// Gets the qualified name of this class. The qualified name takes the form [Schema Name]:[Class Name]
+        /// </summary>
         public string QualifiedName { get { return this.Parent != null ? this.Parent.Name + ":" + this.Name : this.Name; } }
 
         public void WriteXml(XmlDocument doc, XmlNode currentNode)

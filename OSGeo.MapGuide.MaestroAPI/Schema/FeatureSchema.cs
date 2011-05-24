@@ -25,8 +25,10 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.Schema
 {
-    //TODO: Expand on documentation as this is an important class
-
+    /// <summary>
+    /// Contains all of the classes and relationships that make up a particular data model. This class is used to 
+    /// represent the internal logical structure of a Feature Source
+    /// </summary>
     public class FeatureSchema : SchemaElement, IFdoSerializable
     {
         private List<ClassDefinition> _classes;
@@ -73,6 +75,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             return false;
         }
 
+        /// <summary>
+        /// Returns the Class Definition by its name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>The matching Class Definition. null if it doesn't exist</returns>
         public ClassDefinition GetClass(string name)
         {
             foreach (var cls in _classes)
@@ -157,6 +164,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             }
         }
 
+        /// <summary>
+        /// Removes a class definition by its name
+        /// </summary>
+        /// <param name="className"></param>
         public void RemoveClass(string className)
         {
             var cls = GetClass(className);

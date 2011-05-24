@@ -26,7 +26,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     /// <summary>
     /// A set of XML namespaces commonly used in FDO XML documents
     /// </summary>
-    public class XmlNamespaces
+    public static class XmlNamespaces
     {
         /// <summary>
         /// XML Schema namespace

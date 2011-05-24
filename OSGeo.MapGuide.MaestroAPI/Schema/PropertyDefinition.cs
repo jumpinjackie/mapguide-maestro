@@ -95,6 +95,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
         public abstract void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr);
 
+        /// <summary>
+        /// Parses the specified XML node into a Property Definition
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
+        /// <returns></returns>
         public static PropertyDefinition Parse(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             PropertyDefinition prop = null;

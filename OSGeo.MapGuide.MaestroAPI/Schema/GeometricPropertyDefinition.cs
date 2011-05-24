@@ -27,6 +27,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     /// <summary>
     /// Defines the valid types of geometric storage in a geometric property
     /// </summary>
+    [Flags]
     public enum FeatureGeometricType
     {
         Point = 1,
@@ -68,16 +69,33 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             this.Description = description;
         }
 
+        /// <summary>
+        /// Gets or sets a Boolean value that indicates if this geometric property is read-only. 
+        /// </summary>
         public bool IsReadOnly { get; set; }
 
+        /// <summary>
+        /// Gets or sets a Boolean value that indicates if the geometry of this property includes measurement values that can be used for dynamic segmentation. 
+        /// </summary>
         public bool HasMeasure { get; set; }
 
+        /// <summary>
+        /// Gets or sets a Boolean value that indicates if the geometry of this property include elevation values. 
+        /// </summary>
         public bool HasElevation { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Spatial Context name associated to this geometric property. 
+        /// </summary>
         public string SpatialContextAssociation { get; set; }
 
         private FeatureGeometricType _geometricTypes;
 
+        /// <summary>
+        /// Gets or sets the <see cref="T:OSGeo.MapGuide.MaestroAPI.Schema.FeatureGeometricType"/> that can be stored in this geometric 
+        /// property. The returned value may be any combination of the values from the <see cref="T:OSGeo.MapGuide.MaestroAPI.Schema.FeatureGeometricType"/> 
+        /// enumeration combined via a bit-wise or operation. 
+        /// </summary>
         public FeatureGeometricType GeometricTypes
         {
             get { return _geometricTypes; }
@@ -118,6 +136,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
         private SpecificGeometryType[] _sgts;
 
+        /// <summary>
+        /// Gets or sets the specific set of geometry types that can be stored in this geometric property. The provided value is a 
+        /// list of geometry types that are supported. Usually, one specific type is supported, but there can be more than one. 
+        /// </summary>
         public SpecificGeometryType[] SpecificGeometryTypes
         {
             get { return _sgts; }
@@ -179,6 +201,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             }
         }
 
+        /// <summary>
+        /// Gets the type of property definition
+        /// </summary>
         public override PropertyDefinitionType Type
         {
             get { return PropertyDefinitionType.Geometry; }
@@ -229,6 +254,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             return string.Join(" ", values.ToArray());
         }
 
+        /// <summary>
+        /// Gets an array of the individual <see cref="T:OSGeo.MapGuide.MaestroAPI.Schema.FeatureGeometricType"/> values that
+        /// compose the final masked value that is returned by the <see cref="M:OSGeo.MapGuide.MaestroAPI.GeometricPropertyDefinition.GeometricTypes"/>
+        /// property
+        /// </summary>
+        /// <returns></returns>
         public FeatureGeometricType[] GetIndividualGeometricTypes()
         {
             List<FeatureGeometricType> gts = new List<FeatureGeometricType>();

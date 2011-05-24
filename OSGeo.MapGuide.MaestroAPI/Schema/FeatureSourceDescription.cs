@@ -31,7 +31,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     }
 
 	/// <summary>
-	/// Class that represents a the layout of a datasource
+	/// Class that represents a the layout of a feature source
 	/// </summary>
 	public class FeatureSourceDescription
     {
@@ -61,10 +61,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             this.Schemas = schemas.ToArray();
         }
 
+        /// <summary>
+        /// Gets whether this description is a partial description (ie. It doesn't represent the full feature source)
+        /// </summary>
         public bool IsPartial { get; internal set; }
 
+        /// <summary>
+        /// Gets an array of feature schemas in this feature source
+        /// </summary>
         public FeatureSchema[] Schemas { get; private set; }
 
+        /// <summary>
+        /// Gets a feature schema by its name
+        /// </summary>
+        /// <param name="schemaName"></param>
+        /// <returns>The matching feature schema. null if not found</returns>
         public FeatureSchema GetSchema(string schemaName)
         {
             foreach (var fsc in this.Schemas)
@@ -77,6 +88,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             return null;
         }
 
+        /// <summary>
+        /// Gets an array of feature schema names
+        /// </summary>
         public string[] SchemaNames
         {
             get
@@ -90,6 +104,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             }
         }
 
+        /// <summary>
+        /// Gets all the Class Definitions in this feature source. In the event of identically named Class Definitions beloning
+        /// in different parent schemas. Use the <see cref="M:OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition.QualifiedName"/> property
+        /// to distinguish them.
+        /// </summary>
         public IEnumerable<ClassDefinition> AllClasses
         {
             get
@@ -104,6 +123,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             }
         }
 
+        /// <summary>
+        /// Gets the specified class definition by its name and parent schema name
+        /// </summary>
+        /// <param name="schemaName"></param>
+        /// <param name="className"></param>
+        /// <returns>The matching class definition. null if not found</returns>
         public ClassDefinition GetClass(string schemaName, string className)
         {
             var fsc = GetSchema(schemaName);
@@ -230,6 +255,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         */
         #endregion
 
+        /// <summary>
+        /// Gets whether there are any class definitions
+        /// </summary>
+        /// <returns></returns>
         public bool HasClasses()
         {
             if (this.Schemas.Length == 0)
@@ -243,6 +272,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             return false;
         }
 
+        /// <summary>
+        /// Gets the specified class definition by its fully qualified name
+        /// </summary>
+        /// <param name="qualifiedName"></param>
+        /// <returns>The matching class definition. null if not found</returns>
         public ClassDefinition GetClass(string qualifiedName)
         {
             Check.NotEmpty(qualifiedName, "qualifiedName");
@@ -253,114 +287,4 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             return GetClass(tokens[0], tokens[1]);
         }
     }
-
-    
-    /*
-    internal class ClassPropertyColumn : FeatureSetColumn
-    {
-        internal ClassPropertyColumn(XmlNode node)
-            : base()
-		{
-            if (node.Name == "PropertyDefinition" || node.Name == "Column")
-            {
-                m_name = node["Name"].InnerText;
-                m_allowNull = true;
-                switch (node["Type"].InnerText.ToLower().Trim())
-                {
-                    case "string":
-                        m_type = typeof(string);
-                        break;
-                    case "byte":
-                        m_type = typeof(Byte);
-                        break;
-                    case "int32":
-                    case "int":
-                    case "integer":
-                        m_type = typeof(int);
-                        break;
-                    case "int16":
-                        m_type = typeof(short);
-                        break;
-                    case "int64":
-                    case "long":
-                        m_type = typeof(long);
-                        break;
-                    case "float":
-                    case "single":
-                        m_type = typeof(float);
-                        break;
-                    case "double":
-                    case "decimal":
-                        m_type = typeof(double);
-                        break;
-                    case "boolean":
-                    case "bool":
-                        m_type = typeof(bool);
-                        return;
-                    case "datetime":
-                    case "date":
-                        m_type = typeof(DateTime);
-                        break;
-                    case "raster":
-                        m_type = Utility.RasterType;
-                        break;
-                    case "geometry":
-                        m_type = Utility.GeometryType;
-                        break;
-                    default:
-                        //throw new Exception("Failed to find appropriate type for: " + node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value);
-                        m_type = Utility.UnmappedType;
-                        break;
-                }
-            }
-            else
-            {
-                m_name = node.Attributes["name"].Value;
-                m_allowNull = node.Attributes["minOccurs"] != null && node.Attributes["minOccurs"].Value == "0";
-                if (node.Attributes["type"] != null && node.Attributes["type"].Value == "gml:AbstractGeometryType")
-                    m_type = Utility.GeometryType;
-                else if (node["xs:simpleType"] == null)
-                    m_type = Utility.RasterType;
-                else
-                    switch (node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value.ToLower())
-                    {
-                        case "xs:string":
-                            m_type = typeof(string);
-                            break;
-                        case "fdo:byte":
-                            m_type = typeof(Byte);
-                            break;
-                        case "fdo:int32":
-                            m_type = typeof(int);
-                            break;
-                        case "fdo:int16":
-                            m_type = typeof(short);
-                            break;
-                        case "fdo:int64":
-                            m_type = typeof(long);
-                            break;
-                        case "xs:float":
-                        case "xs:single":
-                        case "fdo:single":
-                            m_type = typeof(float);
-                            break;
-                        case "xs:double":
-                        case "xs:decimal":
-                            m_type = typeof(double);
-                            break;
-                        case "xs:boolean":
-                            m_type = typeof(bool);
-                            return;
-                        case "xs:datetime":
-                            m_type = typeof(DateTime);
-                            break;
-                        default:
-                            //throw new Exception("Failed to find appropriate type for: " + node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value);
-                            m_type = Utility.UnmappedType;
-                            break;
-                    }
-            }
-		}
-    }
-     */
 }
