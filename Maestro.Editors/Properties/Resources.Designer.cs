@@ -2156,6 +2156,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use Office 2010 Drivers? (these are 64-bit compatible).
+        /// </summary>
+        internal static string PromptUseOffice2010Drivers {
+            get {
+                return ResourceManager.GetString("PromptUseOffice2010Drivers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find possible values for enumerable property.
         /// </summary>
         internal static string PropEnumNoValues {
