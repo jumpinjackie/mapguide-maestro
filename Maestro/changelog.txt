@@ -6,9 +6,11 @@
  - This is the first release with a public SDK and samples demonstrating using the Maestro API.
  - Generated Web Layout previews now have a KML export command
  - Add a command to view all spatial contexts of a feature source
+ - Implement layer editor support for KML extrusion (RFC16). Thanks to James Murphy for test data needed in implementing this.
  - API: Re-worked the RuntimeMap API so that draw order of layers can be manipulated like a collection.
  - API: Add APIs to GdalConfigurationDocument to allow calculation of combined extents.
  - API: Extend the IMappingService API to support rendering map legend images.
+ - Fix: Show In Legend checkbox does nothing in the Layer Editor
  - Fix: Map Definition resource id field in a WebLayout 1.1.0 editor does not update when changed.
  - Fix: DWF Load Procedure not settings sheet extents.
  - Fix: Site Explorer items incorrectly highlighted when an existing resource is saved under a different resource ID.
