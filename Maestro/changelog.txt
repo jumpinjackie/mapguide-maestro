@@ -19,6 +19,7 @@
  - Fix: Overall extent of GDAL configuraton document not being the computed aggregate of all raster images when rebuilding.
  - Fix: Adding files to a Load Procedure does nothing.
  - Fix: Setting size context in Line Style editor does nothing.
+ - Fix: Incorrect raster extent calculation on a GDAL configuration document for non-english systems (thanks Gunter Becker for suggested fix).
  - Save Resource button is now always enabled. Clicking it on a new resource will do the same thing as clicking Save Resource As
 
 3.0 Final
