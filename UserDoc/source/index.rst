@@ -28,11 +28,13 @@ Contents:
    understanding_print_layouts
    
    edit_xml
+   expr_editor
    resource_validation
    packaging
    mgcooker
    localpreview
    other_tools
+   other_resources
 
 Indices and tables
 ==================
