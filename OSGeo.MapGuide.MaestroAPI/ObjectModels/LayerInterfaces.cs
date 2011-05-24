@@ -723,6 +723,13 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// Removes all current rules
         /// </summary>
         void RemoveAllRules();
+
+        /// <summary>
+        /// Gets the line rule at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        ILineRule GetRuleAt(int index);
     }
 
     /// <summary>

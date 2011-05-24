@@ -724,6 +724,11 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
             }
         }
 
+        public ILineRule GetRuleAt(int index)
+        {
+            return this.LineRule[index];
+        }
+
         public void RemoveAllRules()
         {
             this.LineRule.Clear();
