@@ -183,11 +183,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
 			m_stream.Write(BitConverter.GetBytes(value), 0, UInt64Len);
 		}
 
+        /*
 		private void Write(float value)
 		{
 			Write(new MgArgumentPacket(MgPacketHeader.ArgumentSimple, MgArgumentType.Float, null, (ulong)FloatLen));
 			m_stream.Write(BitConverter.GetBytes(value), 0, FloatLen);
-		}
+		}*/
 
         /// <summary>
         /// Writes the specified value.
@@ -296,6 +297,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
 				m_stream.Write(BitConverter.GetBytes((UInt32)value.Length), 0, UInt32Len);
 		}
 
+        /*
         /// <summary>
         /// Writes the specified value.
         /// </summary>
@@ -351,7 +353,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
 			m_stream.Write(BitConverter.GetBytes((UInt32)value.ControlID), 0, UInt32Len);
 			WriteStreamEnd();
 		}
-
+        */
         /// <summary>
         /// Writes the raw.
         /// </summary>

@@ -515,15 +515,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             
         }
 
-        private static void CopyNodeRecursive(System.Xml.XmlNode n1, System.Xml.XmlNode n2)
-        {
-            foreach (System.Xml.XmlAttribute attr in n1.Attributes)
-                n2.Attributes.Append(n2.OwnerDocument.CreateAttribute(attr.Name)).Value = attr.Value;
-
-            foreach (System.Xml.XmlNode n in n1.ChildNodes)
-                CopyNodeRecursive(n, n2.AppendChild(n2.OwnerDocument.CreateElement(n.Name)));
-        }
-
         /// <summary>
         /// Formats a number of bytes to a human readable format, ea.: 2.56 Kb
         /// </summary>

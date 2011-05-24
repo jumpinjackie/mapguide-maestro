@@ -36,10 +36,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         /// Gets the name of the ColorBrewer set
         /// </summary>
         public string Name { get { return m_name; } }
+        /*
         /// <summary>
         /// Gets the assigned type for the ColorBrewer set
         /// </summary>
         public string Type { get { return m_type; } }
+         */
         /// <summary>
         /// Gets the ordered list of colors to use
         /// </summary>

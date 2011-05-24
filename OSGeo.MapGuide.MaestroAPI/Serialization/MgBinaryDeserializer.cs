@@ -47,7 +47,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
 			m_stream = stream;
 			m_siteVersion = siteversion;
 		}
-
+        
+        /*
 		private MgStreamHeader ReadStreamHeader()
 		{
 			MgStreamHeader h = new MgStreamHeader();
@@ -56,7 +57,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
 			h.StreamVersion = BitConverter.ToUInt32(ReadStream(MgBinarySerializer.UInt32Len), 0);
 			h.StreamDataHdr = (MgStreamHeaderValues)BitConverter.ToUInt32(ReadStream(MgBinarySerializer.UInt32Len), 0);
 			return h;
-		}
+		}*/
 
 		private MgArgumentPacket ReadArgumentPacket()
 		{

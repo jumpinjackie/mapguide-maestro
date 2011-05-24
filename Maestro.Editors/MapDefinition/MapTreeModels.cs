@@ -151,7 +151,7 @@ namespace Maestro.Editors.MapDefinition
         }
 
         public event EventHandler<TreeModelEventArgs> NodesRemoved;
-
+        
         protected void OnStructureChanged(TreePathEventArgs e)
         {
             var handler = this.StructureChanged;

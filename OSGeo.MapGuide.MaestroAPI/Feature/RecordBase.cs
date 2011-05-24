@@ -33,7 +33,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         protected Dictionary<string, PropertyValue> _values;
         protected Dictionary<int, string> _ordinalMap;
 
-        public RecordBase()
+        protected RecordBase()
         {
             _values = new Dictionary<string, PropertyValue>();
             _ordinalMap = new Dictionary<int, string>();

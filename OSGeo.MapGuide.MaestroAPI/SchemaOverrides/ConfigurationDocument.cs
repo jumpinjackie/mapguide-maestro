@@ -32,7 +32,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 
         protected List<FeatureSchema> _schemas;
 
-        public ConfigurationDocument() 
+        protected ConfigurationDocument() 
         { 
             _spatialContexts = new List<IFdoSpatialContext>();
             _schemas = new List<FeatureSchema>();

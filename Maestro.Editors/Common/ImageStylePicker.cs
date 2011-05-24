@@ -167,11 +167,5 @@ namespace Maestro.Editors.Common
 				set { m_name = value; }
 			}
 		}
-
-        internal void Bind(object dataSource, string dataMember)
-        {
-            //We're binding to the name of the image
-            this.DataBindings.Add("Text", dataSource, dataMember);
-        }
     }
 }

@@ -37,7 +37,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// </summary>
         /// <param name="parent">The parent.</param>
         /// <param name="name">The name.</param>
-        public CoordinateSystemCategory(ICoordinateSystemCatalog parent, string name)
+        protected CoordinateSystemCategory(ICoordinateSystemCatalog parent, string name)
 		{
 			m_name = name;
 			_parent = parent;
