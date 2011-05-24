@@ -59,6 +59,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aga.Controls", "..\Thirdparty\TreeViewAdv\Aga.Controls\Aga.Controls.csproj", "{E73BB233-D88B-44A7-A98F-D71EE158381D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestroAPITests", "..\MaestroAPITests\MaestroAPITests.csproj", "{351D49A3-2E4A-4EC3-AFC2-D56598F44F51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestroAPITestRunner", "..\MaestroAPITestRunner\MaestroAPITestRunner.csproj", "{50C12B5C-387C-4007-A1D1-CB181CB474CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +161,14 @@ Global
 		{E73BB233-D88B-44A7-A98F-D71EE158381D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E73BB233-D88B-44A7-A98F-D71EE158381D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E73BB233-D88B-44A7-A98F-D71EE158381D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{351D49A3-2E4A-4EC3-AFC2-D56598F44F51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{351D49A3-2E4A-4EC3-AFC2-D56598F44F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{351D49A3-2E4A-4EC3-AFC2-D56598F44F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{351D49A3-2E4A-4EC3-AFC2-D56598F44F51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50C12B5C-387C-4007-A1D1-CB181CB474CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50C12B5C-387C-4007-A1D1-CB181CB474CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50C12B5C-387C-4007-A1D1-CB181CB474CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50C12B5C-387C-4007-A1D1-CB181CB474CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
