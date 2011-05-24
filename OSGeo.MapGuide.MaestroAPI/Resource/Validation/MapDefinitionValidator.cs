@@ -93,7 +93,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             foreach (IBaseMapLayer l in layers)
             {
                 if (nameCounter.ContainsKey(l.Name))
-                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, ValidationStatusCode.Warning_MapDefinition_DuplicateLayerName, string.Format(Properties.Resources.MDF_LayerNameDuplicateWarning, l.Name, l.ResourceId, nameCounter[l.Name].ResourceId)));
+                    issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, ValidationStatusCode.Error_MapDefinition_DuplicateLayerName, string.Format(Properties.Resources.MDF_LayerNameDuplicateWarning, l.Name, l.ResourceId, nameCounter[l.Name].ResourceId)));
                 else
                     nameCounter.Add(l.Name, l);
 

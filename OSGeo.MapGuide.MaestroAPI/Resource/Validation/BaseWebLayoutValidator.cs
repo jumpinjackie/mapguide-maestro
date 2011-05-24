@@ -101,7 +101,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                     {
                         ICommandItem cmdRef = (ICommandItem)item;
                         if (!cmds.ContainsKey(cmdRef.Command))
-                            issues.Add(new ValidationIssue(layout, ValidationStatus.Error, ValidationStatusCode.Error_WebLayout_NonExistentCommandReference, string.Format(Properties.Resources.WL_NonExistentMenuCommandReference, cmdRef.Command)));
+                            issues.Add(new ValidationIssue(layout, ValidationStatus.Error, ValidationStatusCode.Error_WebLayout_NonExistentContextMenuCommandReference, string.Format(Properties.Resources.WL_NonExistentMenuCommandReference, cmdRef.Command)));
                     }
                 }
 
