@@ -36,4 +36,150 @@ namespace OSGeo.MapGuide.ObjectModels
     class NamespaceDoc
     {
     }
+
+    namespace ApplicationDefinition
+    {
+        /// <summary>
+        /// The <c>OSGeo.MapGuide.ObjectModels.ApplicationDefinition</c> namespace provides interfaces for working with
+        /// Application Definition resources
+        /// </summary>
+        [CompilerGenerated]
+        class NamespaceDoc
+        {
+        }
+    }
+
+    namespace Capabilities
+    {
+        /// <summary>
+        /// The <c>OSGeo.MapGuide.ObjectModels.Capabilities</c> namespace provides classes for working with common
+        /// elements in mapagent GETPROVIDERCAPABILITIES responses. The classes have been automatically generated from the 
+        /// respective MapGuide XML schemas.
+        /// </summary>
+        [CompilerGenerated]
+        class NamespaceDoc
+        {
+        }
+    }
+
+    namespace Common
+    {
+        /// <summary>
+        /// The <c>OSGeo.MapGuide.ObjectModels.Common</c> namespace provides classes for working with common
+        /// elements in mapagent responses. The classes have been automatically generated from the respective MapGuide
+        /// XML schemas.
+        /// </summary>
+        [CompilerGenerated]
+        class NamespaceDoc
+        {
+        }
+    }
+
+    namespace DrawingSource
+    {
+        /// <summary>
+        /// The <c>OSGeo.MapGuide.ObjectModels.DrawingSource</c> namespace provides interfaces for working with
+        /// Drawing Source resources
+        /// </summary>
+        [CompilerGenerated]
+        class NamespaceDoc
+        {
+        }
+    }
+
+    namespace FeatureSource
+    {
+        /// <summary>
+        /// The <c>OSGeo.MapGuide.ObjectModels.FeatureSource</c> namespace provides interfaces for working with
+        /// Feature Source resources
+        /// </summary>
+        [CompilerGenerated]
+        class NamespaceDoc
+        {
+        }
+    }
+
+    namespace LayerDefinition
+    {
+        /// <summary>
+        /// The <c>OSGeo.MapGuide.ObjectModels.LayerDefinition</c> namespace provides interfaces for working with
+        /// Layer Definition resources
+        /// </summary>
+        [CompilerGenerated]
+        class NamespaceDoc
+        {
+        }
+    }
+
+    namespace LoadProcedure
+    {
+        /// <summary>
+        /// The <c>OSGeo.MapGuide.ObjectModels.LoadProcedure</c> namespace provides interfaces for working with
+        /// Load Procedure resources
+        /// </summary>
+        [CompilerGenerated]
+        class NamespaceDoc
+        {
+        }
+    }
+
+    namespace MapDefinition
+    {
+        /// <summary>
+        /// The <c>OSGeo.MapGuide.ObjectModels.MapDefinition</c> namespace provides interfaces for working with
+        /// Map Definition resources
+        /// </summary>
+        [CompilerGenerated]
+        class NamespaceDoc
+        {
+        }
+    }
+
+    namespace PrintLayout
+    {
+        /// <summary>
+        /// The <c>OSGeo.MapGuide.ObjectModels.PrintLayout</c> namespace provides interfaces for working with
+        /// Print Layout resources
+        /// </summary>
+        [CompilerGenerated]
+        class NamespaceDoc
+        {
+        }
+    }
+
+    namespace SymbolDefinition
+    {
+        /// <summary>
+        /// The <c>OSGeo.MapGuide.ObjectModels.SymbolDefinition</c> namespace provides interfaces for working with
+        /// Symbol Definition resources
+        /// </summary>
+        [CompilerGenerated]
+        class NamespaceDoc
+        {
+        }
+    }
+
+    namespace SymbolLibrary
+    {
+        /// <summary>
+        /// The <c>OSGeo.MapGuide.ObjectModels.SymbolLibrary</c> namespace provides interfaces for working with
+        /// Symbol Library resources
+        /// </summary>
+        [CompilerGenerated]
+        class NamespaceDoc
+        {
+        }
+    }
+
+    namespace WebLayout
+    {
+        /// <summary>
+        /// The <c>OSGeo.MapGuide.ObjectModels.WebLayout</c> namespace provides interfaces for working with
+        /// Web Layout resources
+        /// </summary>
+        [CompilerGenerated]
+        class NamespaceDoc
+        {
+        }
+    }
 }
