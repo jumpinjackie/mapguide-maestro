@@ -7,6 +7,8 @@
  - Generated Web Layout previews now have a KML export command
  - Add a command to view all spatial contexts of a feature source
  - Implement layer editor support for KML extrusion (RFC16). Thanks to James Murphy for test data needed in implementing this.
+ - API: Add missing Visible property to ITaskPane
+ - API: Small adjustment to selection APIs
  - API: Re-worked the RuntimeMap API so that draw order of layers can be manipulated like a collection.
  - API: Add APIs to GdalConfigurationDocument to allow calculation of combined extents.
  - API: Extend the IMappingService API to support rendering map legend images.

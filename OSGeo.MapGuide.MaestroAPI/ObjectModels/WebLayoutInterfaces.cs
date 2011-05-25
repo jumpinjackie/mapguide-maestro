@@ -772,6 +772,11 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     public interface ITaskPane : IWebLayoutResizableControl, INotifyPropertyChanged
     {
         /// <summary>
+        /// Gets or sets whether this control is visible
+        /// </summary>
+        bool Visible { get; set; }
+
+        /// <summary>
         /// Gets or sets the url of the initial task.
         /// </summary>
         /// <value>The url of the initial task.</value>
