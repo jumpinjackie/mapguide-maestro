@@ -51,11 +51,29 @@ namespace SamplesWeb
                 //Here's an example of pre-processing the WebLayout before loading it
                 //in the AJAX viewer.
 
+                //This technique can also be used to do things like:
+                //
+                // 1. Overriding the initial view 
+                
+
                 //Create a WebLayout. By default the version created will be 
                 //the latest supported one on the mapguide server we've connected to. For example
                 //connecting to MGOS 2.2 will create a version 1.1.0 WebLayout. All the known
                 //resource versions have been registered on startup (see Global.asax.cs)
                 IWebLayout wl = ObjectFactory.CreateWebLayout(conn, mdfId);
+
+                //What is IWebLayout2? It is an extension of IWebLayout that supports the ping server property.
+                //This is the interface equivalent of WebLayout 1.1.0 schema. Most schema revisions in MapGuide
+                //are additive and incremental, and our Object Model interfaces follow the same pattern. All new
+                //interfaces inherit from their ancestor interface
+                //
+                //Anyway, what we want to do is if we created a 1.1.0 WebLayout, is to switch on the ping server
+                //property, thus preventing session expiry
+                IWebLayout2 wl2 = wl as IWebLayout2;
+                if (wl2 != null)
+                    wl2.EnablePingServer = true;
+
+                wl.Title = "Maestro API Web Samples";
                 wl.TaskPane.InitialTask = "../SamplesWeb/Tasks/Home.aspx";
 
                 string resId = "Session:" + conn.SessionID + "//Sheboygan.WebLayout";

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Serialization;
 using System.Xml;
+using OSGeo.MapGuide.MaestroAPI.Feature;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
@@ -121,6 +122,52 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
 
             /// <summary>
+            /// Adds records from the specified reader into this selection
+            /// </summary>
+            /// <param name="reader">The reader</param>
+            /// <param name="limit">The maximum number of records to add. Specify -1 for all</param>
+            /// <returns>Number of records added</returns>
+            public int AddFeatures(IReader reader, int limit)
+            {
+                int added = 0;
+                if (limit < 0)
+                {
+                    while (reader.ReadNext())
+                    {
+                        AddFeature(reader);
+                        added++;
+                    }
+                }
+                else
+                {
+                    while (reader.ReadNext() && added < limit)
+                    {
+                        AddFeature(reader);
+                        added++;
+                    }
+                }
+                reader.Close();
+                return added;
+            }
+
+            /// <summary>
+            /// Adds the specified record to the selection
+            /// </summary>
+            /// <param name="record"></param>
+            public void AddFeature(IRecord record)
+            {
+                var idProps = m_layer.IdentityProperties;
+                object[] values = new object[idProps.Length];
+                for (int i = 0; i < idProps.Length; i++)
+                {
+                    var prop = idProps[i];
+                    //Don't null check because identity property values cannot be null
+                    values[i] = record[prop.Name];
+                }
+                Add(values);
+            }
+
+            /// <summary>
             /// Encodes the given combined keyset into an ID string for use in the Xml
             /// </summary>
             /// <param name="values">The combined key</param>
@@ -171,45 +218,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             /// <returns>The composite value key</returns>
             public object[] ParseIDString(string id)
             {
-                int index = 0;
-                byte[] data = Convert.FromBase64String(id);
-                object[] tmp = new object[m_layer.IdentityProperties.Length];
-                for (int i = 0; i < m_layer.IdentityProperties.Length; i++)
-                {
-                    Type type = m_layer.IdentityProperties[i].Type;
-
-                    if (type == typeof(short))
-                    {
-                        tmp[i] = BitConverter.ToInt16(data, index);
-                        index += MgBinarySerializer.UInt16Len;
-                    }
-                    else if (type == typeof(int))
-                    {
-                        tmp[i] = BitConverter.ToInt32(data, index);
-                        index += MgBinarySerializer.UInt32Len;
-                    }
-                    else if (type == typeof(long))
-                    {
-                        tmp[i] = BitConverter.ToInt64(data, index);
-                        index += MgBinarySerializer.UInt64Len;
-                    }
-                    else if (type == typeof(string))
-                    {
-                        int pos = index;
-                        while (pos < data.Length && data[pos] != 0)
-                            pos++;
-
-                        if (pos >= data.Length)
-                            throw new Exception("Bad null encoded string");
-
-                        tmp[i] = System.Text.Encoding.UTF8.GetString(data, index, pos - index);
-                        index = pos + 1;
-                    }
-                    else
-                        throw new Exception(string.Format("The type {0} is not supported for primary keys", type.ToString()));
-                }
-
-                return tmp;
+                return m_layer.ParseSelectionValues(id);
             }
 
             /// <summary>
@@ -537,7 +546,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 if (_layers[i].Layer.ObjectId == layer.ObjectId)
                     return i;
 
-            return 1;
+            return -1;
         }
 
         /// <summary>
@@ -589,7 +598,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
-        /// Gets or sets the selection layer at a given index
+        /// Gets the selection layer at a given index
         /// </summary>
         /// <param name="index">The index to get or set the item for</param>
         /// <returns>The item at the given index</returns>
@@ -598,12 +607,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             get
             {
                 return _layers[IndexOf(index)];
-            }
-            set
-            {
-                if (value == null)
-                    throw new ArgumentNullException();
-                _layers[IndexOf(index)] = value;
             }
         }
 
@@ -630,7 +633,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public void Add(RuntimeMapLayer layer)
         {
             if (!Contains(layer))
-                Add(new LayerSelection(layer));
+            {
+                var sel = new LayerSelection(layer);
+                Add(sel);
+            }
         }
 
         /// <summary>

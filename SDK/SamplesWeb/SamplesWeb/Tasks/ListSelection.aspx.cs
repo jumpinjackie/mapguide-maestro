@@ -63,7 +63,7 @@ namespace SamplesWeb.Tasks
                 for (int i = 0; i < selection.Count; i++)
                 {
                     MapSelection.LayerSelection layerSel = selection[i];
-                    sb.Append("<p>Layer: " + layerSel.Layer.Name + "(" + layerSel.Count + ")");
+                    sb.Append("<p>Layer: " + layerSel.Layer.Name + " (" + layerSel.Count + " selected item)");
                     sb.Append("<table>");
                     
                     for (int j = 0; j < layerSel.Count; j++)
@@ -76,6 +76,11 @@ namespace SamplesWeb.Tasks
                             sb.Append(values[k].ToString());
                             sb.Append("</td>");
                         }
+                        sb.AppendFormat("<td><a href='FeatureInfo.aspx?MAPNAME={0}&SESSION={1}&LAYERID={2}&ID={3}'>More Info</a></td>",
+                            rtMap.Name,
+                            conn.SessionID,
+                            layerSel.Layer.ObjectId,
+                            HttpUtility.UrlEncode(layerSel.EncodeIDString(values)));
                         sb.Append("</tr>");
                     }
                     sb.Append("</table>");
@@ -87,7 +92,7 @@ namespace SamplesWeb.Tasks
             }
             else
             {
-                lblMessage.Text = "Nothing selected";
+                lblMessage.Text = "Nothing selected. Select some features first then run this sample again.";
             }
         }
     }

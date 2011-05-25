@@ -35,16 +35,20 @@
     </script>
 </head>
 <body>
-    <form
-    <p>At any time, click the <strong>home button</strong> in the task bar to return to this list of samples.</p>
-    
-    <p>Samples</p>
+    <h3>Samples</h3>
+    <hr />
+    <p>At any time, click the <strong>home button</strong> in the task bar or the <strong>Go back</strong> link to return to this list of samples.</p>
+    <p>Map/Layer Manipulation:</p>
     <ul>
         <li><a href="#" onclick="Go('../SamplesWeb/Tasks/ToggleParcelsLayer.aspx')">Add/Remove Parcels Layer</a></li>
         <li><a href="#" onclick="Go('../SamplesWeb/Tasks/AddTracksLayer.aspx')">Add Tracks Layer</a></li>
-        <li><a href="#" onclick="Go('../SamplesWeb/Tasks/ListSelection.aspx')">List Selected Features</a></li>
         <li><a href="#" onclick="Go('../SamplesWeb/Tasks/ToggleGroupVisibility.aspx','GROUPNAME','Base Map')">Toggle "Base Map" Group</a></li>
         <li><a href="#" onclick="Go('../SamplesWeb/Tasks/ToggleLayerVisibility.aspx','LAYERNAME','Parcels')">Toggle "Parcels" Layer</a></li>
+    </ul>
+    <p>Feature Selection:</p>
+    <ul>
+        <li><a href="#" onclick="Go('../SamplesWeb/Tasks/ListSelection.aspx')">List Selected Features</a></li>
+        <li><a href="#" onclick="Go('../SamplesWeb/Tasks/SetSelectedFeatures.aspx')">Set Selected Features</a></li>
     </ul>
 </body>
 </html>

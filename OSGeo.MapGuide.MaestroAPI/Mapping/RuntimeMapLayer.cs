@@ -524,6 +524,49 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
         }
 
+        public object[] ParseSelectionValues(string encodedId)
+        {
+            int index = 0;
+            byte[] data = Convert.FromBase64String(encodedId);
+            object[] tmp = new object[this.IdentityProperties.Length];
+            for (int i = 0; i < this.IdentityProperties.Length; i++)
+            {
+                Type type = this.IdentityProperties[i].Type;
+
+                if (type == typeof(short))
+                {
+                    tmp[i] = BitConverter.ToInt16(data, index);
+                    index += MgBinarySerializer.UInt16Len;
+                }
+                else if (type == typeof(int))
+                {
+                    tmp[i] = BitConverter.ToInt32(data, index);
+                    index += MgBinarySerializer.UInt32Len;
+                }
+                else if (type == typeof(long))
+                {
+                    tmp[i] = BitConverter.ToInt64(data, index);
+                    index += MgBinarySerializer.UInt64Len;
+                }
+                else if (type == typeof(string))
+                {
+                    int pos = index;
+                    while (pos < data.Length && data[pos] != 0)
+                        pos++;
+
+                    if (pos >= data.Length)
+                        throw new Exception("Bad null encoded string");
+
+                    tmp[i] = System.Text.Encoding.UTF8.GetString(data, index, pos - index);
+                    index = pos + 1;
+                }
+                else
+                    throw new Exception(string.Format("The type {0} is not supported for primary keys", type.ToString()));
+            }
+
+            return tmp;
+        }
+
         /// <summary>
         /// Initializes this instance with the specified binary stream
         /// </summary>

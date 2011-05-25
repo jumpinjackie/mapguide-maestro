@@ -85,7 +85,9 @@
     <Content Include="Global.asax" />
     <Content Include="readme.txt" />
     <Content Include="Tasks\AddTracksLayer.aspx" />
+    <Content Include="Tasks\FeatureInfo.aspx" />
     <Content Include="Tasks\ListSelection.aspx" />
+    <Content Include="Tasks\SetSelectedFeatures.aspx" />
     <Content Include="Tasks\ToggleGroupVisibility.aspx" />
     <Content Include="Tasks\ToggleLayerVisibility.aspx" />
     <Content Include="Tasks\ToggleParcelsLayer.aspx" />
@@ -111,12 +113,26 @@
     <Compile Include="Tasks\AddTracksLayer.aspx.designer.cs">
       <DependentUpon>AddTracksLayer.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Tasks\FeatureInfo.aspx.cs">
+      <DependentUpon>FeatureInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\FeatureInfo.aspx.designer.cs">
+      <DependentUpon>FeatureInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tasks\ListSelection.aspx.cs">
       <DependentUpon>ListSelection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Tasks\ListSelection.aspx.designer.cs">
       <DependentUpon>ListSelection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\SetSelectedFeatures.aspx.cs">
+      <DependentUpon>SetSelectedFeatures.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\SetSelectedFeatures.aspx.designer.cs">
+      <DependentUpon>SetSelectedFeatures.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tasks\ToggleGroupVisibility.aspx.cs">
       <DependentUpon>ToggleGroupVisibility.aspx</DependentUpon>
