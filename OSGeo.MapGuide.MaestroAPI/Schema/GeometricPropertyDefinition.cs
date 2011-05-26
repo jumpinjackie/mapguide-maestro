@@ -226,12 +226,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
         public override void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            var gt = node.Attributes["fdo:geometricTypes"];
-            var gt2 = node.Attributes["fdo:geometryTypes"];
-            var gtro = node.Attributes["fdo:geometryReadOnly"];
-            var hms = node.Attributes["fdo:hasMeasure"];
-            var hev = node.Attributes["fdo:hasElevation"];
-            var srs = node.Attributes["fdo:srsName"];
+            var gt = Utility.GetFdoAttribute(node, "geometricTypes");
+            var gt2 = Utility.GetFdoAttribute(node, "geometryTypes");
+            var gtro = Utility.GetFdoAttribute(node, "geometryReadOnly");
+            var hms = Utility.GetFdoAttribute(node, "hasMeasure");
+            var hev = Utility.GetFdoAttribute(node, "hasElevation");
+            var srs = Utility.GetFdoAttribute(node, "srsName");
 
             this.GeometricTypes = ProcessGeometricTypes(gt.Value);
             if (gt2 != null)

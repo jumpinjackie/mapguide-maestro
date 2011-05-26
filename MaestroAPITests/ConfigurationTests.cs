@@ -40,6 +40,13 @@ namespace MaestroAPITests
         }
 
         [Test]
+        public void TestOdbcLoad2()
+        {
+            var conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\odbc_example_config2.xml")) as OdbcConfigurationDocument;
+            Assert.NotNull(conf);
+        }
+
+        [Test]
         public void TestOdbcSaveLoad()
         {
             var schema = new FeatureSchema("Default", "Test schema");
@@ -133,21 +140,23 @@ namespace MaestroAPITests
         }
 
         [Test]
-        public void TestGdalSaveLoad()
-        {
-
-        }
-        
-        [Test]
         public void TestWmsLoad()
         {
             var conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\NASA_WMS_config_doc.xml")) as WmsConfigurationDocument;
             Assert.NotNull(conf);
+        }
 
-            conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\wms_config_example1.xml")) as WmsConfigurationDocument;
+        [Test]
+        public void TestWmsLoad2()
+        {
+            var conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\wms_config_example1.xml")) as WmsConfigurationDocument;
             Assert.NotNull(conf);
+        }
 
-            conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\wms_config_example2.xml")) as WmsConfigurationDocument;
+        [Test]
+        public void TestWmsLoad3()
+        {
+            var conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\wms_config_example2.xml")) as WmsConfigurationDocument;
             Assert.NotNull(conf);
         }
 

@@ -82,9 +82,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
         public override void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            var dix = node.Attributes["fdo:defaultImageXSize"];
-            var diy = node.Attributes["fdo:defaultImageYSize"];
-            var srs = node.Attributes["fdo:srsName"];
+            var dix = Utility.GetFdoAttribute(node, "defaultImageXSize");
+            var diy = Utility.GetFdoAttribute(node, "defaultImageYSize");
+            var srs = Utility.GetFdoAttribute(node, "srsName");
+            var ro = Utility.GetFdoAttribute(node, "readOnly");
 
             this.DefaultImageXSize = Convert.ToInt32(dix.Value);
             this.DefaultImageYSize = Convert.ToInt32(diy.Value);
@@ -92,7 +93,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             //TODO: Just copypasta'd from DataPropertyDefinition assuming the same attributes would be used 
             //to indicate nullability and read-only states. Would be nice to verify with an actual example property
             this.IsNullable = (node.Attributes["minOccurs"] != null && node.Attributes["minOccurs"].Value == "0");
-            this.IsReadOnly = (node.Attributes["fdo:readOnly"] != null && node.Attributes["fdo:readOnly"].Value == "true");
+            this.IsReadOnly = (ro != null && ro.Value == "true");
 
             this.SpatialContextAssociation = (srs != null ? srs.Value : string.Empty);
         }

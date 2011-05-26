@@ -26,6 +26,7 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.Collections.Specialized;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.ObjectModels;
+using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -711,6 +712,37 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 return null;
             }
+        }
+
+        /// <summary>
+        /// Gets an fdo-related attribute from the specified xml element using the
+        /// unqualified name and trying again with the fdo: qualifier if it didn't exist
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        internal static XmlAttribute GetFdoAttribute(XmlNode node, string name)
+        {
+            var att = node.Attributes[name];
+            if (att == null)
+                return node.Attributes["fdo:" + name];
+
+            return att;
+        }
+
+        /// <summary>
+        /// Gets an fdo-related element from the specified xml element using the
+        /// unqualified name and trying again with the fdo: qualifier if it didn't exist
+        /// </summary>
+        /// <param name="el"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        internal static XmlElement GetFdoElement(XmlElement el, string name)
+        {
+            var element = el[name];
+            if (element == null)
+                return el["fdo:" + name];
+            return element;
         }
     }
 }

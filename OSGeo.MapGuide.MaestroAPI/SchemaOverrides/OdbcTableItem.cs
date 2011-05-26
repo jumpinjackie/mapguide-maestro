@@ -123,7 +123,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             this.SchemaName = sn.Value;
 
             var cn = node.Attributes["name"];
-            this.ClassName = cn.Value.Substring(0, cn.Value.Length - "Type".Length);
+            this.ClassName = Utility.DecodeFDOName(cn.Value.Substring(0, cn.Value.Length - "Type".Length));
 
             var cls = this.Parent.GetClass(this.SchemaName, this.ClassName);
             if (!string.IsNullOrEmpty(cls.DefaultGeometryPropertyName))

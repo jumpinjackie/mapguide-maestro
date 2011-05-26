@@ -421,7 +421,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             }
 
             //Set designated geometry property
-            var geom = node.Attributes["fdo:geometryName"];
+            var geom = Utility.GetFdoAttribute(node, "geometryName");
+
             if (geom != null)
                 this.DefaultGeometryPropertyName = geom.Value;
 

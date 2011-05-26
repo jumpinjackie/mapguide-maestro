@@ -23,6 +23,7 @@ using System.Text;
 using System.Xml.Serialization;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.Globalization;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.ObjectModels.Common
 {
@@ -190,9 +191,9 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             {
                 var genMeta = meta["gml:GenericMetaData"];
 
-                var scType = genMeta["fdo:SCExtentType"];
-                var xyTol = genMeta["fdo:XYTolerance"];
-                var zTol = genMeta["fdo:ZTolerance"];
+                var scType = Utility.GetFdoElement(genMeta, "SCExtentType");
+                var xyTol = Utility.GetFdoElement(genMeta, "XYTolerance");
+                var zTol = Utility.GetFdoElement(genMeta, "ZTolerance");
 
                 //this.ExtentType = (scType == null || scType.InnerText == "dynamic") ? FdoSpatialContextListSpatialContextExtentType.Dynamic : FdoSpatialContextListSpatialContextExtentType.Static;
 
@@ -254,11 +255,13 @@ namespace OSGeo.MapGuide.ObjectModels.Common
                 this.CoordinateSystemName = href.Substring(href.LastIndexOf("#") + 1);
             }
 
-            if (baseCrs["fdo:WKTCRS"] != null)
+            var wktCrs = Utility.GetFdoElement(baseCrs, "WKTCRS");
+            if (wktCrs != null)
             {
-                if (baseCrs["fdo:WKTCRS"]["fdo:WKT"] != null)
+                var wkt = Utility.GetFdoElement(wktCrs, "WKT");
+                if (wkt != null)
                 {
-                    this.CoordinateSystemWkt = baseCrs["fdo:WKTCRS"]["fdo:WKT"].InnerText;
+                    this.CoordinateSystemWkt = wkt.InnerText;
                 }
             }
         }
