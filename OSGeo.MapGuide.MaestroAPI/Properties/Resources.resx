@@ -506,4 +506,7 @@
   <data name="MDF_LayerWithNonExistentGroup" xml:space="preserve">
     <value>Layer ({0}) belongs to a non-existent Layer Group ({1})</value>
   </data>
+  <data name="ERR_NOT_RESOURCE_CONTENT_XML" xml:space="preserve">
+    <value>XML content does not match any known resource</value>
+  </data>
 </root>

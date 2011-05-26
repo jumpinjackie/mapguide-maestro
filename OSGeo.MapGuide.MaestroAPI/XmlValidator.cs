@@ -31,6 +31,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using OSGeo.MapGuide.MaestroAPI.Resource;
+    using OSGeo.MapGuide.MaestroAPI.Exceptions;
 
 	///<summary>
 	/// Class that makes XSD validation
@@ -135,7 +136,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
             catch (Exception ex)
             {
-                err.Add(ex.Message);
+                if (!(ex is SerializationException))
+                    err.Add(ex.Message);
+                else
+                    res = null;
             }
 
             if (res != null)

@@ -91,6 +91,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
                 {
                     //Parse version number from ResourceType-x.y.z.xsd
                     string xsd = xr.GetAttribute("xsi:noNamespaceSchemaLocation");
+                    if (xsd == null)
+                        return null;
+
                     int start = (xsd.LastIndexOf("-"));
                     int end = xsd.IndexOf(".xsd") - 1;
                     version = xsd.Substring(start + 1, xsd.Length - end);

@@ -386,6 +386,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to XML content does not match any known resource.
+        /// </summary>
+        internal static string ERR_NOT_RESOURCE_CONTENT_XML {
+            get {
+                return ResourceManager.GetString("ERR_NOT_RESOURCE_CONTENT_XML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No connection attached to this resource.
         /// </summary>
         internal static string ERR_RESOURCE_NOT_ATTACHED {
