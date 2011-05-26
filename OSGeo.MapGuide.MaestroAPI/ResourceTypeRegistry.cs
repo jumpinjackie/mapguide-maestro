@@ -275,7 +275,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             var checker = new ResourceContentVersionChecker(xml);
             var rd = checker.GetVersion();
-            if (rd != null)
+            if (rd == null)
                 throw new SerializationException(Properties.Resources.ERR_NOT_RESOURCE_CONTENT_XML);
 
             if (!_serializers.ContainsKey(rd))
