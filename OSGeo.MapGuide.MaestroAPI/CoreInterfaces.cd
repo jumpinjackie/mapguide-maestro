@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.IServerConnection">
+    <Position X="25.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEgAAEBAAABEAAAAGSABIAAAAEAAAEAlAAAAQAFA=</HashCode>
+      <FileName>IServerConnection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.IConnectionCapabilities">
+    <Position X="28.5" Y="4" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAIAAAgAAAAAAAAFAABAAAAAAAAAAA=</HashCode>
+      <FileName>IConnectionCapabilities.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog">
+    <Position X="28.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AKEAAAQAAAAAAAAIAAgAABAACAAEEQAAAAAAAAAAAIA=</HashCode>
+      <FileName>CoordinateSystem\ICoordinateSystemCatalog.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService">
+    <Position X="0.5" Y="7.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAAACACAAAAAAAAAABAAAgAIAAAACAAAAAAAAAQ=</HashCode>
+      <FileName>Services\IDrawingService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.ITileService">
+    <Position X="6.75" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ITileService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService">
+    <Position X="15" Y="7.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAIAAMCAAAAECIABAgAAAIABAAAAAAABEAAACA=</HashCode>
+      <FileName>Services\IFeatureService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.IFusionService">
+    <Position X="3.75" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAQAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Services\IFusionService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.IMappingService">
+    <Position X="9.5" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAEAAAAAEAAAAEAAAEAA=</HashCode>
+      <FileName>Services\IMappingService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.IResourceService">
+    <Position X="18.5" Y="7.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAoACAgU0BEAAEAAAAAIICGEJAAEUIAAAAWBAEAAA=</HashCode>
+      <FileName>Services\IResourceService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.IService" Collapsed="true">
+    <Position X="10.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\IService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.ISiteService">
+    <Position X="12.25" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAgAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Services\ISiteService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Resource.IResource">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAACAIAAQAAAACAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Resource\IResource.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource" Collapsed="true">
+    <Position X="0.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAwGgAAAAAAAAAAQIAAAAQAQkSAAIAAAABg=</HashCode>
+      <FileName>ObjectModels\FeatureSourceInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource" Collapsed="true">
+    <Position X="3" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAgEgAAAAAAAAAACAAAgAAAAAAAAAEAA=</HashCode>
+      <FileName>ObjectModels\DrawingSourceInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition" Collapsed="true">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjectModels\LayerInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition" Collapsed="true">
+    <Position X="7.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACMAAACIBAAAAAAQAABAAAQQAAAgAEIAwAAACAJEAAA=</HashCode>
+      <FileName>ObjectModels\MapDefinitionInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout" Collapsed="true">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gCAAAQCAABAAAUBAAQAAABIIAABAIBBgAACAAIADCRg=</HashCode>
+      <FileName>ObjectModels\WebLayoutInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout2" Collapsed="true">
+    <Position X="9.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjectModels\WebLayoutInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout" Collapsed="true">
+    <Position X="12" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQEQAAECAAAAAAABABICAAAgAAAAAAgAIAAAAAEAAAA=</HashCode>
+      <FileName>ObjectModels\PrintLayoutInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition" Collapsed="true">
+    <Position X="14.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQEAAAABAEIAAAACAAAAAAABAAAEIAQgAAQAAQE=</HashCode>
+      <FileName>ObjectModels\ApplicationDefinitionInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.ObjectModels.LoadProcedure.ILoadProcedure" Collapsed="true">
+    <Position X="16.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjectModels\LoadProcedureInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.ObjectModels.SymbolLibrary.ISymbolLibrary" Collapsed="true">
+    <Position X="18.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>ObjectModels\SymbolLibraryInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISymbolDefinitionBase" Collapsed="true">
+    <Position X="22.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjectModels\SymbolInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISimpleSymbolDefinition" Collapsed="true">
+    <Position X="21" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAEAAAAgAAAAAAAACAAAAAAgAAAAAwAAAAg=</HashCode>
+      <FileName>ObjectModels\SymbolInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ICompoundSymbolDefinition" Collapsed="true">
+    <Position X="23.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQgAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>ObjectModels\SymbolInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
