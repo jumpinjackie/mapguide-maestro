@@ -472,7 +472,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ObjectModels\readme.txt" />
-    <None Include="CoreInterfaces.cd" />
+    <None Include="CoreTypes.cd" />
     <None Include="Resources\BaseTemplate.ApplicationDefinition.xml" />
   </ItemGroup>
   <ItemGroup>

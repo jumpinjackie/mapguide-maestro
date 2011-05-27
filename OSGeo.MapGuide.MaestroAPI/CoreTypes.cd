@@ -1,5 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry">
+    <Position X="25.75" Y="6.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAEAAAAAAAEAAAAAAAAAAAIQAAAAAAIEABAAAAA=</HashCode>
+      <FileName>ConnectionProviderRegistry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSGeo.MapGuide.ObjectModels.ObjectFactory">
+    <Position X="28.5" Y="6.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>iaANAgAABERABAAAAAoAkAAgAAAACABAQAhAgCCAAEg=</HashCode>
+      <FileName>ObjectModels\ObjectFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSGeo.MapGuide.MaestroAPI.ResourceTypeRegistry">
+    <Position X="31.75" Y="6.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAACBACAAAAAACAAAAAAA=</HashCode>
+      <FileName>ResourceTypeRegistry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.IServerConnection">
     <Position X="25.75" Y="0.5" Width="2.5" />
     <TypeIdentifier>
