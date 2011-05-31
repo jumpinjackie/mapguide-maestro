@@ -143,6 +143,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                     return DataPropertyType.Int16;
                 case "fdo:int32":
                 case "xs:int32":
+                case "xs:int":
                     return DataPropertyType.Int32;
                 case "fdo:int64":
                 case "xs:int64":
