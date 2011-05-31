@@ -73,7 +73,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// DWF-based Symbol Library
         /// </summary>
-        SymbolLibrary
+        SymbolLibrary,
+        /// <summary>
+        /// A watermark
+        /// </summary>
+        WatermarkDefinition,
 	}
 
     /// <summary>

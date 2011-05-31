@@ -171,6 +171,18 @@ namespace OSGeo.MapGuide.ObjectModels
         }
     }
 
+    namespace WatermarkDefinition
+    {
+        /// <summary>
+        /// The <c>OSGeo.MapGuide.ObjectModels.WatermarkDefinition</c> namespace provides interfaces for working with
+        /// Watermark Definition resources
+        /// </summary>
+        [CompilerGenerated]
+        class NamespaceDoc
+        {
+        }
+    }
+
     namespace WebLayout
     {
         /// <summary>

@@ -37,6 +37,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_1_0
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_2_0
 #elif LDF_130
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_3_0
+#elif LDF_230
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0
 #else
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #endif
@@ -83,7 +85,7 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 #if LDF_110
         , IVectorScaleRange2
 #endif
-#if LDF_120 || LDF_130
+#if LDF_120 || LDF_130 || LDF_230
         , IVectorScaleRange3
 #endif
     {
@@ -278,7 +280,7 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
                 }
             }
         }
-#elif LDF_130
+#elif LDF_130 || LDF_230
         [XmlIgnore]
         public ICompositeTypeStyle CompositeStyle
         {
@@ -372,7 +374,7 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
     #region Composite Symbolization support (needs more work. Currently this is just to make the layer editor properly detect such features)
 
-#if LDF_120 || LDF_130
+#if LDF_120 || LDF_130 || LDF_230
     partial class CompositeTypeStyle
 #if LDF_120
         : ICompositeTypeStyle
@@ -521,7 +523,7 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
     #endregion
 
     partial class AreaTypeStyleType : IAreaVectorStyle
-#if LDF_130
+#if LDF_130 || LDF_230
         , IAreaVectorStyle2
 #endif
     {
@@ -604,7 +606,7 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
     }
 
     partial class PointTypeStyleType : IPointVectorStyle
-#if LDF_130
+#if LDF_130 || LDF_230
         , IPointVectorStyle2
 #endif
     {
@@ -697,7 +699,7 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
     }
 
     partial class LineTypeStyleType : ILineVectorStyle
-#if LDF_130
+#if LDF_130 || LDF_230
         , ILineVectorStyle2
 #endif
     {

@@ -35,6 +35,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestroAPITests", "..\Maest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestroAPITestRunner", "..\MaestroAPITestRunner\MaestroAPITestRunner.csproj", "{50C12B5C-387C-4007-A1D1-CB181CB474CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.LayerDefinition-2.3.0", "..\ExtendedModels\LayerDefinition-2.3.0\OSGeo.MapGuide.ObjectModels.LayerDefinition-2.3.0.csproj", "{F976A709-D9DB-407E-A4CD-2CEA31C6B1D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.MapDefinition-2.3.0", "..\ExtendedModels\MapDefinition-2.3.0\OSGeo.MapGuide.ObjectModels.MapDefinition-2.3.0.csproj", "{C8DB3E77-3AF4-471D-A214-69DBEB32750E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +113,14 @@ Global
 		{50C12B5C-387C-4007-A1D1-CB181CB474CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50C12B5C-387C-4007-A1D1-CB181CB474CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50C12B5C-387C-4007-A1D1-CB181CB474CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F976A709-D9DB-407E-A4CD-2CEA31C6B1D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F976A709-D9DB-407E-A4CD-2CEA31C6B1D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F976A709-D9DB-407E-A4CD-2CEA31C6B1D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F976A709-D9DB-407E-A4CD-2CEA31C6B1D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8DB3E77-3AF4-471D-A214-69DBEB32750E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8DB3E77-3AF4-471D-A214-69DBEB32750E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8DB3E77-3AF4-471D-A214-69DBEB32750E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8DB3E77-3AF4-471D-A214-69DBEB32750E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -106,28 +106,28 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource" Collapsed="true">
-    <Position X="0.75" Y="3.75" Width="1.5" />
+    <Position X="6" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAAwGgAAAAAAAAAAQIAAAAQAQkSAAIAAAABg=</HashCode>
       <FileName>ObjectModels\FeatureSourceInterfaces.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource" Collapsed="true">
-    <Position X="3" Y="3.75" Width="1.5" />
+    <Position X="7.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAABAgEgAAAAAAAAAACAAAgAAAAAAAAAEAA=</HashCode>
       <FileName>ObjectModels\DrawingSourceInterfaces.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition" Collapsed="true">
-    <Position X="5.25" Y="3.75" Width="1.5" />
+    <Position X="9.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
       <FileName>ObjectModels\LayerInterfaces.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition" Collapsed="true">
-    <Position X="7.5" Y="3.75" Width="1.5" />
+    <Position X="10" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACMAAACIBAAAAAAQAABAAAQQAAAgAEIAwAAACAJEAAA=</HashCode>
       <FileName>ObjectModels\MapDefinitionInterfaces.cs</FileName>
@@ -148,49 +148,49 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout" Collapsed="true">
-    <Position X="12" Y="3.75" Width="1.5" />
+    <Position X="11.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQEQAAECAAAAAAABABICAAAgAAAAAAgAIAAAAAEAAAA=</HashCode>
       <FileName>ObjectModels\PrintLayoutInterfaces.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition" Collapsed="true">
-    <Position X="14.25" Y="3.75" Width="1.5" />
+    <Position X="14.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAQEAAAABAEIAAAACAAAAAAABAAAEIAQgAAQAAQE=</HashCode>
       <FileName>ObjectModels\ApplicationDefinitionInterfaces.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.ObjectModels.LoadProcedure.ILoadProcedure" Collapsed="true">
-    <Position X="16.5" Y="3.75" Width="1.5" />
+    <Position X="14.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ObjectModels\LoadProcedureInterfaces.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.ObjectModels.SymbolLibrary.ISymbolLibrary" Collapsed="true">
-    <Position X="18.75" Y="3.75" Width="1.5" />
+    <Position X="13.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>ObjectModels\SymbolLibraryInterfaces.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISymbolDefinitionBase" Collapsed="true">
-    <Position X="22.25" Y="3.75" Width="1.5" />
+    <Position X="15.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ObjectModels\SymbolInterfaces.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISimpleSymbolDefinition" Collapsed="true">
-    <Position X="21" Y="5.25" Width="1.5" />
+    <Position X="17" Y="5" Width="2" />
     <TypeIdentifier>
       <HashCode>CAAAAAAAAAEAAAAgAAAAAAAACAAAAAAgAAAAAwAAAAg=</HashCode>
       <FileName>ObjectModels\SymbolInterfaces.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ICompoundSymbolDefinition" Collapsed="true">
-    <Position X="23.25" Y="5.25" Width="1.5" />
+    <Position X="14.25" Y="5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQgAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>ObjectModels\SymbolInterfaces.cs</FileName>

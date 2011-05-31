@@ -163,6 +163,9 @@
     <Compile Include="..\Generated\UserList-1.0.0.designer.cs">
       <Link>ObjectModels\UserList-1.0.0.designer.cs</Link>
     </Compile>
+    <Compile Include="..\Generated\WatermarkDefinition-2.3.0.designer.cs">
+      <Link>ObjectModels\WatermarkDefinition-2.3.0.designer.cs</Link>
+    </Compile>
     <Compile Include="..\Generated\WebLayout-1.0.0.designer.cs">
       <Link>ObjectModels\WebLayout-1.0.0.designer.cs</Link>
     </Compile>
@@ -220,6 +223,8 @@
     <Compile Include="ObjectModels\IFdoSpatialContext.cs" />
     <Compile Include="ObjectModels\NsDoc.cs" />
     <Compile Include="ObjectModels\SymbolDefFactory.cs" />
+    <Compile Include="ObjectModels\WatermarkImpl.cs" />
+    <Compile Include="ObjectModels\WatermarkInterfaces.cs" />
     <Compile Include="Resource\Conversion\NsDoc.cs" />
     <Compile Include="Resource\NsDoc.cs" />
     <Compile Include="Resource\Validation\NsDoc.cs" />

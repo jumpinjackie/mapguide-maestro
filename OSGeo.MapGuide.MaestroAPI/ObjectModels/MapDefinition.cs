@@ -31,7 +31,11 @@ using System.ComponentModel;
 
 #pragma warning disable 1591, 0114, 0108
 
+#if MDF_230
+namespace OSGeo.MapGuide.ObjectModels.MapDefinition_2_3_0
+#else
 namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
+#endif
 {
     partial class MapDefinitionType
     {
@@ -66,6 +70,9 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
     }
 
     partial class MapDefinition : IMapDefinition
+#if MDF_230
+        , IMapDefinition2
+#endif
     {
         internal MapDefinition() { }
 
@@ -517,6 +524,36 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
                 OnPropertyChanged("MapLayer");
             }
         }
+
+#if MDF_230
+        IEnumerable<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark> IMapDefinition2.Watermarks
+        {
+            get 
+            {
+                foreach (var wm in this.Watermarks)
+                    yield return wm;
+            }
+        }
+
+        void IMapDefinition2.AddWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
+        {
+            var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType;
+            if (wm != null)
+                this.Watermarks.Add(wm);
+        }
+
+        void IMapDefinition2.RemoveWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
+        {
+            var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType;
+            if (wm != null)
+                this.Watermarks.Remove(wm);
+        }
+
+        int IMapDefinition2.WatermarkCount
+        {
+            get { return this.Watermarks.Count; }
+        }
+#endif
     }
 
     partial class Box2DType : IEnvelope

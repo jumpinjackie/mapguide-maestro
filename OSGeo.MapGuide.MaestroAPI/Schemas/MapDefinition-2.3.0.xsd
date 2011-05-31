@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.3.0">
+  <xs:include schemaLocation="WatermarkDefinition-2.3.0.xsd"/>
+  <xs:complexType name="Box2DType">
+    <xs:annotation>
+      <xs:documentation>Box2D encapsulates the the coordinates of a box in 2-D space</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MinX" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>Minimum x-coordinate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MaxX" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>Maximum x-coordinate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MinY" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>Minimum y-coordinate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MaxY" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>Maximum y-coordinate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MapLayerCommonType">
+    <xs:annotation>
+      <xs:documentation>MapLayerCommonType is a common superclass of MapLayerType and BaseMapLayerType.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Name of the MapLayer</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ResourceId" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>ResourceId of the MapLayer</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Selectable" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Whether or not the Layer can be selected</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ShowInLegend" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Whether or not the Layer should be shown in the legend</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LegendLabel" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Label to be shown for the Layer in the legend</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExpandInLegend" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Whether or not the Layer should be expanded in the legend.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MapLayerType">
+    <xs:annotation>
+      <xs:documentation>MapLayerType encapsulates the properties of a map layer, including its group and options about how it should be displayed.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MapLayerCommonType">
+        <xs:sequence>
+          <xs:element name="Visible" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>Whether this layer's visiblity should be visible or not when it first comes into range</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Group" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Group of which the MapLayer is a member of</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BaseMapLayerType">
+    <xs:annotation>
+      <xs:documentation>BaseMapLayerType encapsulates the properties of a BaseMapLayer.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MapLayerCommonType">
+        <xs:sequence>
+          <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MapLayerGroupCommonType">
+    <xs:annotation>
+      <xs:documentation>MapLayerGroupCommonType is a common superclass of MapLayerGroupType and BaseMapLayerGroupType.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of this LayerGroup</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Visible" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Whether this group's visiblity should be visible or not when it first comes into range</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ShowInLegend" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Whether or not the LayerGroup should be shown in the legend</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExpandInLegend" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Whether or not the LayerGroup should be initially expanded in the legend</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LegendLabel" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Label to be shown for the LayerGroup in the legend</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MapLayerGroupType">
+    <xs:annotation>
+      <xs:documentation>MapLayerGroupType encapsulates the properties of a MapLayerGroup.  Its extension to MapLayerGroupCommonType is that the MapLayerGroup itself can also be in a MapLayerGroup.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MapLayerGroupCommonType">
+        <xs:sequence>
+          <xs:element name="Group" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The group that contains the MapLayerGroup</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BaseMapLayerGroupType">
+    <xs:annotation>
+      <xs:documentation>BaseMapLayerGroupType encapsulates the properties of a BaseMapLayerGroup.  It extends MapLayerGroupCommonType by holding the layers in the group.  The base map layer groups defines what layers are used to render a tile set in the HTML viewer.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MapLayerGroupCommonType">
+        <xs:sequence>
+          <xs:element name="BaseMapLayer" type="BaseMapLayerType" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The layers that are part of this group. The order of the layers represents the draw order, layers first is the list are drawn over top of layers later in the list.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MapDefinitionType">
+    <xs:annotation>
+      <xs:documentation>MapDefinitionType encapsulates a MapDefinition, which houses a collection of MapLayers and their groups.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the MapDefinition</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CoordinateSystem" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The coordinate system as WKT used by the MapDefinition</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Extents" type="Box2DType">
+        <xs:annotation>
+          <xs:documentation>A bounding box around the area of the MapDefinition</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BackgroundColor" type="xs:hexBinary">
+        <xs:annotation>
+          <xs:documentation>The background color to be used with the MapDefinition</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Metadata" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Metadata regarding the MapDefinition</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MapLayer" type="MapLayerType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Zero or more MapLayers that make up the MapDefinition. The order of the layers represents the draw order, layers first is the list are drawn over top of layers later in the list.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MapLayerGroup" type="MapLayerGroupType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Zero or more MapLayerGroups that make up the MapDefinition</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BaseMapDefinition" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The base map.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="FiniteDisplayScale" type="xs:double" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>The display scales that the base map layers will have tiles available. Applies to the HTML viewer.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="BaseMapLayerGroup" type="BaseMapLayerGroupType" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>A group of layers that is used to compose a tiled layer in the HTML viewer</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Watermarks" type="WatermarkInstanceCollectionType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The collection of watermarks used in the map.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MapDefinition">
+    <xs:annotation>
+      <xs:documentation>A MapDefinition defines the collection of layers, groupings of layers, and base map</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MapDefinitionType">
+          <xs:attribute name="version" type="xs:string" use="required" fixed="2.3.0"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

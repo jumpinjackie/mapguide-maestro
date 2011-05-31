@@ -34,6 +34,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_1_0
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_2_0
 #elif LDF_130
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_3_0
+#elif LDF_230
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0
 #else
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #endif
