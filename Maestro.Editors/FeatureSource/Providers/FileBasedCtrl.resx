@@ -121,11 +121,38 @@
   <data name="unmanagedPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="btnBrowseAliasFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnBrowseAliasFolder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnBrowseAliasFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>375, 2</value>
+  </data>
+  <data name="btnBrowseAliasFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnBrowseAliasFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseAliasFolder.Name" xml:space="preserve">
+    <value>btnBrowseAliasFolder</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseAliasFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseAliasFolder.Parent" xml:space="preserve">
+    <value>unmanagedPanel</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseAliasFolder.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 8</value>
   </data>
@@ -148,34 +175,31 @@
     <value>unmanagedPanel</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
-  <data name="btnBrowseAlias.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="btnBrowseAliasFile.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="btnBrowseAlias.Location" type="System.Drawing.Point, System.Drawing">
-    <value>373, 3</value>
+  <data name="btnBrowseAliasFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>344, 2</value>
   </data>
-  <data name="btnBrowseAlias.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 23</value>
+  <data name="btnBrowseAliasFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
   </data>
-  <data name="btnBrowseAlias.TabIndex" type="System.Int32, mscorlib">
+  <data name="btnBrowseAliasFile.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="btnBrowseAlias.Text" xml:space="preserve">
-    <value>...</value>
+  <data name="&gt;&gt;btnBrowseAliasFile.Name" xml:space="preserve">
+    <value>btnBrowseAliasFile</value>
   </data>
-  <data name="&gt;&gt;btnBrowseAlias.Name" xml:space="preserve">
-    <value>btnBrowseAlias</value>
-  </data>
-  <data name="&gt;&gt;btnBrowseAlias.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnBrowseAliasFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnBrowseAlias.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnBrowseAliasFile.Parent" xml:space="preserve">
     <value>unmanagedPanel</value>
   </data>
-  <data name="&gt;&gt;btnBrowseAlias.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;btnBrowseAliasFile.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="txtAlias.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -184,7 +208,7 @@
     <value>111, 5</value>
   </data>
   <data name="txtAlias.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 20</value>
+    <value>227, 20</value>
   </data>
   <data name="txtAlias.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -199,7 +223,7 @@
     <value>unmanagedPanel</value>
   </data>
   <data name="&gt;&gt;txtAlias.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="unmanagedPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>19, 189</value>
@@ -301,7 +325,7 @@
     <value>resDataCtrl</value>
   </data>
   <data name="&gt;&gt;resDataCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ResourceDataCtrl, Maestro.Editors, Version=3.0.0.5610, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.ResourceDataCtrl, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;resDataCtrl.Parent" xml:space="preserve">
     <value>contentPanel</value>
@@ -334,6 +358,6 @@
     <value>FileBasedCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=3.0.0.5610, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

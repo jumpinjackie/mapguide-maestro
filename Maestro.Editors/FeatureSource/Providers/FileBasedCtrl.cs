@@ -56,6 +56,8 @@ namespace Maestro.Editors.FeatureSource.Providers
         {
             _service = service;
             _service.RegisterCustomNotifier(this);
+            btnBrowseAliasFile.Enabled = true;
+            btnBrowseAliasFolder.Enabled = CanSelectFolders();
             resDataCtrl.Init(service);
             resDataCtrl.DataListChanged += (sender, e) => { OnResourceChanged(); };
             resDataCtrl.ResourceDataMarked += (sender, e) => { OnResourceMarked(e); };
@@ -70,7 +72,19 @@ namespace Maestro.Editors.FeatureSource.Providers
         {
             using (var picker = new UnmanagedFileBrowser(_service.ResourceService))
             {
-                picker.SelectFoldersOnly = CanSelectFolders();
+                picker.SelectFoldersOnly = false;
+                if (picker.ShowDialog() == DialogResult.OK)
+                {
+                    txtAlias.Text = picker.SelectedItem;
+                }
+            }
+        }
+
+        private void btnBrowseAliasFolder_Click(object sender, EventArgs e)
+        {
+            using (var picker = new UnmanagedFileBrowser(_service.ResourceService))
+            {
+                picker.SelectFoldersOnly = true;
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
                     txtAlias.Text = picker.SelectedItem;
