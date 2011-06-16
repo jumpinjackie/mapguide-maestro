@@ -151,8 +151,8 @@ namespace Maestro.Base.Editor
             var cmd3 = wl.CreateInvokeScriptCommand();
             cmd3.Name = "GetExtents";
             cmd3.Label = "Get Extents";
-            cmd3.Description = "Gets the current map as a KML document";
-            cmd3.Tooltip = "Gets the current map as a KML document";
+            cmd3.Description = "Displays the current map extents";
+            cmd3.Tooltip = "Displays the current map extents";
 
             cmd3.Script = @"
                 var map = parent.parent.GetMapFrame();
