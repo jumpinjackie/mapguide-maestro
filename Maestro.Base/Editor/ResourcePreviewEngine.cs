@@ -147,11 +147,28 @@ namespace Maestro.Base.Editor
             cmd2.ImageURL = "../stdicons/icon_invokescript.gif";
 
             wl.CommandSet.AddCommand(cmd2);
+
+            var cmd3 = wl.CreateInvokeScriptCommand();
+            cmd3.Name = "GetExtents";
+            cmd3.Label = "Get Extents";
+            cmd3.Description = "Gets the current map as a KML document";
+            cmd3.Tooltip = "Gets the current map as a KML document";
+
+            cmd3.Script = @"
+                var map = parent.parent.GetMapFrame();
+                alert('Map Extents\n\nLower Left: ' + map.extX1 + ', ' + map.extY2 + '\nUpper Right: ' + map.extX2 + ', ' + map.extY1);
+                ";
+
+            cmd3.TargetViewer = TargetViewerType.Ajax;
+            cmd3.ImageURL = "../stdicons/icon_invokescript.gif";
+
+            wl.CommandSet.AddCommand(cmd3);
             
             var zoomScale = wl.CreateCommandItem(cmd.Name);
             var menu = wl.CreateFlyout("Tools", "Tools", "Extra tools", "", "", 
                 wl.CreateCommandItem("ZoomScale"),
-                wl.CreateCommandItem("GetMapKml")
+                wl.CreateCommandItem("GetMapKml"),
+                wl.CreateCommandItem("GetExtents")
             );
             wl.ToolBar.AddItem(menu);
         }
