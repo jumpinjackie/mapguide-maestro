@@ -118,6 +118,12 @@ namespace Maestro.Editors.FeatureSource.Preview
                         classNode.Tag = cls;
                         classNode.ImageIndex = classNode.SelectedImageIndex = IDX_CLASS;
 
+                        classNode.ToolTipText = string.Format(Properties.Resources.FsPreview_ClassNodeTooltip,
+                            cls.Name,
+                            cls.Description,
+                            cls.DefaultGeometryPropertyName,
+                            Environment.NewLine);
+
                         foreach (var prop in cls.Properties)
                         {
                             var propNode = new TreeNode(prop.Name);
@@ -125,11 +131,56 @@ namespace Maestro.Editors.FeatureSource.Preview
                             propNode.Tag = prop;
 
                             if (prop.Type == PropertyDefinitionType.Geometry)
+                            {
+                                var g = (GeometricPropertyDefinition)prop;
                                 propNode.ImageIndex = propNode.SelectedImageIndex = IDX_GEOMETRY;
-                            else if (prop.Type == PropertyDefinitionType.Data && cls.IdentityProperties.Contains((DataPropertyDefinition)prop))
-                                propNode.ImageIndex = propNode.SelectedImageIndex = IDX_IDENTITY;
+                                propNode.ToolTipText = string.Format(Properties.Resources.FsPreview_GeometryPropertyNodeTooltip,
+                                    g.Name,
+                                    g.Description,
+                                    g.GeometryTypesToString(),
+                                    g.IsReadOnly,
+                                    g.HasElevation,
+                                    g.HasMeasure,
+                                    g.SpatialContextAssociation,
+                                    Environment.NewLine);
+                            }
+                            else if (prop.Type == PropertyDefinitionType.Data)
+                            {
+                                var d = (DataPropertyDefinition)prop;
+                                if (cls.IdentityProperties.Contains((DataPropertyDefinition)prop))
+                                    propNode.ImageIndex = propNode.SelectedImageIndex = IDX_IDENTITY;
+                                else
+                                    propNode.ImageIndex = propNode.SelectedImageIndex = IDX_PROP;
+
+                                propNode.ToolTipText = string.Format(Properties.Resources.FsPreview_DataPropertyNodeTooltip,
+                                    d.Name,
+                                    d.Description,
+                                    d.DataType.ToString(),
+                                    d.IsNullable,
+                                    d.IsReadOnly,
+                                    d.Length,
+                                    d.Precision,
+                                    d.Scale,
+                                    Environment.NewLine);
+                            }
+                            else if (prop.Type == PropertyDefinitionType.Raster)
+                            {
+                                var r = (RasterPropertyDefinition)prop;
+                                propNode.ImageIndex = propNode.SelectedImageIndex = IDX_RASTER;
+
+                                propNode.ToolTipText = string.Format(Properties.Resources.FsPreview_RasterPropertyNodeTooltip,
+                                    r.Name,
+                                    r.Description,
+                                    r.IsNullable,
+                                    r.DefaultImageXSize,
+                                    r.DefaultImageYSize,
+                                    r.SpatialContextAssociation,
+                                    Environment.NewLine);
+                            }
                             else
+                            {
                                 propNode.ImageIndex = propNode.SelectedImageIndex = IDX_PROP;
+                            }
 
                             classNode.Nodes.Add(propNode);
                         }

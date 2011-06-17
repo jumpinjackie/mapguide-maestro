@@ -243,7 +243,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             this.SpatialContextAssociation = (srs != null ? srs.Value : string.Empty);
         }
 
-        private string GeometryTypesToString()
+        public string GeometryTypesToString()
         {
             List<string> values = new List<string>();
             var gts = GetIndividualGeometricTypes();

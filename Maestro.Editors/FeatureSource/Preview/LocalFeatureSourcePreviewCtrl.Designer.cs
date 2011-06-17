@@ -38,8 +38,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSql = new System.Windows.Forms.ToolStripButton();
             this.btnStandard = new System.Windows.Forms.ToolStripButton();
-            this.tabPreviews = new System.Windows.Forms.TabControl();
             this.btnClose = new System.Windows.Forms.ToolStripButton();
+            this.tabPreviews = new System.Windows.Forms.TabControl();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -65,6 +65,7 @@
             resources.ApplyResources(this.trvSchema, "trvSchema");
             this.trvSchema.ImageList = this.schemaImageList;
             this.trvSchema.Name = "trvSchema";
+            this.trvSchema.ShowNodeToolTips = true;
             this.trvSchema.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvSchema_AfterSelect);
             // 
             // schemaImageList
@@ -117,12 +118,6 @@
             this.btnStandard.Name = "btnStandard";
             this.btnStandard.Click += new System.EventHandler(this.btnStandard_Click);
             // 
-            // tabPreviews
-            // 
-            resources.ApplyResources(this.tabPreviews, "tabPreviews");
-            this.tabPreviews.Name = "tabPreviews";
-            this.tabPreviews.SelectedIndex = 0;
-            // 
             // btnClose
             // 
             this.btnClose.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -131,6 +126,12 @@
             this.btnClose.Image = global::Maestro.Editors.Properties.Resources.cross;
             this.btnClose.Name = "btnClose";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // tabPreviews
+            // 
+            resources.ApplyResources(this.tabPreviews, "tabPreviews");
+            this.tabPreviews.Name = "tabPreviews";
+            this.tabPreviews.SelectedIndex = 0;
             // 
             // LocalFeatureSourcePreviewCtrl
             // 

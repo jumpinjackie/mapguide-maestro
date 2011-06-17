@@ -869,6 +869,42 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name: {0}{3}Description: {1}{3}Geometry Property: {2}.
+        /// </summary>
+        internal static string FsPreview_ClassNodeTooltip {
+            get {
+                return ResourceManager.GetString("FsPreview_ClassNodeTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: {0}{8}Description: {1}{8}Data Type: {2}{8}Nullable: {3}{8}Read Only: {4}{8}Length: {5}{8}Precision: {6}{8}Scale: {7}.
+        /// </summary>
+        internal static string FsPreview_DataPropertyNodeTooltip {
+            get {
+                return ResourceManager.GetString("FsPreview_DataPropertyNodeTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: {0}{7}Description: {1}{7}Geometry Types: {2}{7}Read Only: {3}{7}Has Elevation: {4}{7}Has Measure: {5}{7}Spatial Context: {6}.
+        /// </summary>
+        internal static string FsPreview_GeometryPropertyNodeTooltip {
+            get {
+                return ResourceManager.GetString("FsPreview_GeometryPropertyNodeTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: {0}{6}Description: {1}{6}Nullable: {2}{6}Image X Size: {3}{6}Image Y Size: {4}{6}Spatial Context: {5}.
+        /// </summary>
+        internal static string FsPreview_RasterPropertyNodeTooltip {
+            get {
+                return ResourceManager.GetString("FsPreview_RasterPropertyNodeTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SQL Server Spatial Feature Source.
         /// </summary>
         internal static string FsSqlServerSpatial {
