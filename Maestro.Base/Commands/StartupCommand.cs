@@ -45,6 +45,7 @@ namespace Maestro.Base.Commands
 
             Workbench.WorkbenchInitialized += (sender, e) =>
             {
+                ServiceRegistry.GetService<NewItemTemplateService>().InitUserTemplates();
                 var wb = Workbench.Instance;
                 wb.FormClosing += new System.Windows.Forms.FormClosingEventHandler(OnWorkbenchClosing);
                 wb.Text = "MapGuide Maestro";

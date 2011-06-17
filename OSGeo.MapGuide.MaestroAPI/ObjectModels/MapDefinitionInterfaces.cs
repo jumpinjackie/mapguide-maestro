@@ -216,29 +216,9 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
     /// <summary>
     /// Represents a Map Definition with support for watermarks. Corresponds to schema version 2.3.0
     /// </summary>
-    public interface IMapDefinition2 : IMapDefinition
+    public interface IMapDefinition2 : IMapDefinition, IWatermarkCollection
     {
-        /// <summary>
-        /// Gets the watermarks used by this map definition
-        /// </summary>
-        IEnumerable<IWatermark> Watermarks { get; }
-
-        /// <summary>
-        /// Adds a watermark
-        /// </summary>
-        /// <param name="watermark"></param>
-        void AddWatermark(IWatermark watermark);
-
-        /// <summary>
-        /// Removes the specified watermark
-        /// </summary>
-        /// <param name="watermark"></param>
-        void RemoveWatermark(IWatermark watermark);
-
-        /// <summary>
-        /// Gets the number of watermarks used by this map definition
-        /// </summary>
-        int WatermarkCount { get; }
+        
     }
 
     /// <summary>

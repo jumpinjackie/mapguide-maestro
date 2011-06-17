@@ -383,5 +383,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             else
                 throw new ArgumentException();
         }
+
+        public override OSGeo.MapGuide.ObjectModels.Common.ExpressionDataType ExpressionType
+        {
+            get { return OSGeo.MapGuide.ObjectModels.Common.ExpressionDataType.Geometry; }
+        }
     }
 }

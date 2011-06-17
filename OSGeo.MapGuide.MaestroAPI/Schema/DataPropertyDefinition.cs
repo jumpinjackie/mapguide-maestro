@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Globalization;
 using System.Xml;
+using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI.Schema
 {
@@ -211,6 +212,41 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                    this.DataType == DataPropertyType.Int32 ||
                    this.DataType == DataPropertyType.Int64 ||
                    this.DataType == DataPropertyType.Single;
+        }
+
+        static ExpressionDataType GetExpressionType(DataPropertyType dt)
+        {
+            switch (dt)
+            {
+                case DataPropertyType.Blob:
+                    return ExpressionDataType.Data_Blob;
+                case DataPropertyType.Boolean:
+                    return ExpressionDataType.Data_Boolean;
+                case DataPropertyType.Byte:
+                    return ExpressionDataType.Data_Byte;
+                case DataPropertyType.Clob:
+                    return ExpressionDataType.Data_Clob;
+                case DataPropertyType.DateTime:
+                    return ExpressionDataType.Data_DateTime;
+                case DataPropertyType.Double:
+                    return ExpressionDataType.Data_Double;
+                case DataPropertyType.Int16:
+                    return ExpressionDataType.Data_Int16;
+                case DataPropertyType.Int32:
+                    return ExpressionDataType.Data_Int32;
+                case DataPropertyType.Int64:
+                    return ExpressionDataType.Data_Int64;
+                case DataPropertyType.Single:
+                    return ExpressionDataType.Data_Single;
+                case DataPropertyType.String:
+                    return ExpressionDataType.Data_String;
+            }
+            throw new ArgumentException();
+        }
+
+        public override ExpressionDataType ExpressionType
+        {
+            get { return GetExpressionType(this.DataType); }
         }
     }
 }

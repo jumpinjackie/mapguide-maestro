@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI.Schema
 {
@@ -79,7 +80,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     /// <summary>
     /// Base class of all property definitions
     /// </summary>
-    public abstract class PropertyDefinition : SchemaElement, IFdoSerializable
+    public abstract class PropertyDefinition : SchemaElement, IFdoSerializable, IExpressionPropertySource
     {
         /// <summary>
         /// Gets the parent class definition
@@ -130,6 +131,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 throw new NotSupportedException("Unrecognized element. Only a subset of the FDO logical schema is supported here"); //LOCALIZEME
 
             return prop;
+        }
+
+        public abstract ExpressionDataType ExpressionType
+        {
+            get;
         }
     }
 }

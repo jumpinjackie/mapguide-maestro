@@ -24,6 +24,8 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using Maestro.Editors.SymbolDefinition;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
 namespace Maestro.Base.Editor
 {
@@ -36,7 +38,23 @@ namespace Maestro.Base.Editor
 
         protected override void Bind(Maestro.Editors.IEditorService service)
         {
-            
+            panelBody.Controls.Clear();
+            var ssym = service.GetEditedResource() as ISimpleSymbolDefinition;
+            var csym = service.GetEditedResource() as ICompoundSymbolDefinition;
+            if (ssym != null)
+            {
+                var ssymCtrl = new SimpleSymbolDefinitionEditorCtrl();
+                ssymCtrl.Dock = DockStyle.Fill;
+                panelBody.Controls.Add(ssymCtrl);
+                ssymCtrl.Bind(service);
+            }
+            else if (csym != null)
+            {
+                var csymCtrl = new CompoundSymbolDefinitionEditorCtrl();
+                csymCtrl.Dock = DockStyle.Fill;
+                panelBody.Controls.Add(csymCtrl);
+                csymCtrl.Bind(service);
+            }
         }
     }
 }

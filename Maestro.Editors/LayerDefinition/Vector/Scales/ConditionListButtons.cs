@@ -33,12 +33,13 @@ using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
-    [ToolboxItem(false)]
+    [ToolboxItem(true)]
     internal partial class ConditionListButtons : UserControl
     {
         private IPointVectorStyle m_point;
         private ILineVectorStyle m_line;
         private IAreaVectorStyle m_area;
+        private ICompositeTypeStyle m_comp;
 
         private IVectorScaleRange m_parent;
         private object m_lastSelection;
@@ -97,6 +98,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             conditionList.SetItem(parent, area);
         }
 
+        public void SetItem(IVectorScaleRange parent, ICompositeTypeStyle comp)
+        {
+            SetItemInternal(parent, comp);
+            conditionList.SetItem(parent, comp);
+        }
 
         private void SetItemInternal(IVectorScaleRange parent, object item)
         {
@@ -104,13 +110,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             m_point = item as IPointVectorStyle;
             m_line = item as ILineVectorStyle;
             m_area = item as IAreaVectorStyle;
+            m_comp = item as ICompositeTypeStyle;
 
             var ar2 = m_area as IAreaVectorStyle2;
             var pt2 = m_point as IPointVectorStyle2;
             var ln2 = m_line as ILineVectorStyle2;
+            var cm2 = m_comp as ICompositeTypeStyle2;
 
             //Check if we're working with a 1.3.0 schema
-            ShowInLegend.Enabled = (ar2 != null || pt2 != null || ln2 != null);            
+            ShowInLegend.Enabled = (ar2 != null || pt2 != null || ln2 != null || cm2 != null);            
         }
 
         public void AddRule()
@@ -137,7 +145,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 IAreaRule art = _factory.CreateDefaultAreaRule();
                 conditionList.AddRuleControl(art).Focus();
                 m_area.AddRule(art);
-
+            }
+            else if (m_comp != null)
+            {
+                ICompositeRule cr = _factory.CreateDefaultCompositeRule();
+                conditionList.AddRuleControl(cr).Focus();
+                m_comp.AddCompositeRule(cr);
             }
 
             if (ItemChanged != null)

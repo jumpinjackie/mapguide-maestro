@@ -35,6 +35,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private IPointVectorStyle m_point;
         private ILineVectorStyle m_line;
         private IAreaVectorStyle m_area;
+        private ICompositeTypeStyle m_comp;
 
         private IVectorScaleRange m_parent;
         private object m_selectedItem;
@@ -75,6 +76,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             SetItemInternal(parent, area);
         }
 
+        public void SetItem(IVectorScaleRange parent, ICompositeTypeStyle comp)
+        {
+            SetItemInternal(parent, comp);
+        }
+
         public object SelectedItem 
         { 
             get { return m_selectedItem; }
@@ -99,6 +105,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             m_point = item as IPointVectorStyle;
             m_line = item as ILineVectorStyle;
             m_area = item as IAreaVectorStyle;
+            m_comp = item as ICompositeTypeStyle;
 
             this.Controls.Clear();
 
@@ -122,6 +129,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     foreach (IAreaRule art in m_area.Rules)
                         AddRuleControl(art);
                 }
+                else if (m_comp != null)
+                {
+                    foreach (ICompositeRule comp in m_comp.CompositeRule)
+                        AddRuleControl(comp);
+                }
             }
             finally
             {
@@ -144,6 +156,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 c.SetItem(rule as ILineRule);
             else if (rule as IAreaRule != null)
                 c.SetItem(rule as IAreaRule);
+            else if (rule as ICompositeRule != null)
+                c.SetItem(rule as ICompositeRule);
 
             c.Owner = m_owner;
             c.Dock = DockStyle.Top;
@@ -183,13 +197,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private void SignalItemChanged()
         {
-            if (ItemChanged != null)
+            var handler = this.ItemChanged;
+            if (handler != null)
+            {
                 if (m_point != null)
-                    ItemChanged(m_point, null);
+                    handler(m_point, null);
                 else if (m_line != null)
-                    ItemChanged(m_line, null);
+                    handler(m_line, null);
                 else if (m_area != null)
-                    ItemChanged(m_area, null);
+                    handler(m_area, null);
+                else if (m_comp != null)
+                    handler(m_comp, null);
+            }
         }
 
         void Rule_ItemChanged(object sender, EventArgs e)
@@ -253,6 +272,21 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 if (remove != null)
                     m_area.RemoveRule(remove);
             }
+            else if (m_comp != null)
+            {
+                ICompositeRule remove = null;
+                foreach (var comp in m_comp.CompositeRule)
+                {
+                    if (comp == sender)
+                    {
+                        remove = comp;
+                        break;
+                    }
+                }
+
+                if (remove != null)
+                    m_comp.RemoveCompositeRule(remove);
+            }
 
             SignalItemChanged();
             
@@ -288,6 +322,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     ic = (System.Collections.IList)m_line.Rules;
                 else if (m_area != null)
                     ic = (System.Collections.IList)m_area.Rules;
+                else if (m_comp != null)
+                    ic = (System.Collections.IList)m_comp.CompositeRule;
 
                 pos = ic.IndexOf(selectedRule);
                 if ((!down && pos > 0) || (down && pos < ic.Count - 1 && pos > 0))

@@ -44,12 +44,46 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #endif
 {
     using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+    using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+    using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 
     abstract partial class BaseLayerDefinitionType : ISubLayerDefinition
+#if LDF_230
+        , ISubLayerDefinition2
+#endif
     {
         [XmlIgnore]
         public abstract LayerType LayerType { get; }
+
+#if LDF_230
+        IEnumerable<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark> IWatermarkCollection.Watermarks
+        {
+            get 
+            {
+                foreach (var wm in this.Watermarks)
+                    yield return wm;
+            }
+        }
+
+        void IWatermarkCollection.AddWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
+        {
+            var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType;
+            if (wm != null)
+                this.Watermarks.Add(wm);
+        }
+
+        void IWatermarkCollection.RemoveWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
+        {
+            var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType;
+            if (wm != null)
+                this.Watermarks.Remove(wm);
+        }
+
+        int IWatermarkCollection.WatermarkCount
+        {
+            get { return this.Watermarks.Count; }
+        }
+#endif
     }
 
     partial class NameStringPairType : INameStringPair

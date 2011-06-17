@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
 {
@@ -222,6 +223,55 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// </summary>
         /// <value>The parameter definition.</value>
         IParameterDefinition ParameterDefinition { get; }
+
+        /// <summary>
+        /// Creates an image reference
+        /// </summary>
+        /// <param name="resourceId"></param>
+        /// <param name="dataName"></param>
+        /// <returns></returns>
+        IImageReference CreateImageReference(string resourceId, string dataName);
+
+        /// <summary>
+        /// Creates an inline image
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        IInlineImage CreateInlineImage(byte[] content);
+
+        /// <summary>
+        /// Creates a point usage context
+        /// </summary>
+        /// <returns></returns>
+        IPointUsage CreatePointUsage();
+
+        /// <summary>
+        /// Creates a line usage context
+        /// </summary>
+        /// <returns></returns>
+        ILineUsage CreateLineUsage();
+
+        /// <summary>
+        /// Creates an area usage context
+        /// </summary>
+        /// <returns></returns>
+        IAreaUsage CreateAreaUsage();
+
+        /// <summary>
+        /// Creates a resize box
+        /// </summary>
+        /// <returns></returns>
+        IResizeBox CreateResizeBox();
+
+        ITextFrame CreateFrame();
+
+        ITextGraphic CreateTextGraphics();
+
+        IPathGraphic CreatePathGraphics();
+
+        IImageGraphic CreateImageGraphics();
+
+        IParameter CreateParameter();
     }
 
     /// <summary>
@@ -246,6 +296,20 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// </summary>
         /// <param name="sym">The sym.</param>
         void RemoveSimpleSymbol(ISimpleSymbolReferenceBase sym);
+
+        /// <summary>
+        /// Creates an inline symbol definition reference
+        /// </summary>
+        /// <param name="sym"></param>
+        /// <returns></returns>
+        ISimpleSymbolReferenceBase CreateSimpleSymbol(ISimpleSymbolDefinition sym);
+
+        /// <summary>
+        /// Creates a resource id based symbol reference
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        ISimpleSymbolReferenceBase CreateSymbolReference(string resourceId);
     }
 
     /// <summary>
@@ -280,22 +344,22 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <summary>
         /// Gets or sets initial width of the resize box, in mm.  This must be greater than or equal to zero
         /// </summary>
-        double? SizeX { get; set; }
+        string SizeX { get; set; }
 
         /// <summary>
         /// Gets or sets initial height of the resize box, in mm.  This must be greater than or equal to zero
         /// </summary>
-        double? SizeY { get; set; }
+        string SizeY { get; set; }
 
         /// <summary>
         /// Gets or sets initial x-coordinate of the resize box center, in mm
         /// </summary>
-        double? PositionX { get; set; }
+        string PositionX { get; set; }
 
         /// <summary>
         /// Gets or sets initial y-coordinate of the resize box center, in mm
         /// </summary>
-        double? PositionY { get; set; }
+        string PositionY { get; set; }
 
         /// <summary>
         /// Gets or sets how the resize box grows in size.  This must evaluate to one of: GrowInX, GrowInY, GrowInXY, or GrowInXYMaintainAspect (default).
@@ -316,7 +380,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <summary>
         /// Specifies the symbol angle, in degrees.  Only applies if AngleControl evaluates to FromAngle.  Defaults to 0
         /// </summary>
-        double? Angle { get; set; }
+        string Angle { get; set; }
     }
 
     /// <summary>
@@ -327,12 +391,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <summary>
         /// Specifies the horizontal offset to apply to the symbol origin, in mm.  This offset is applied before the symbol is scaled and rotated.  Defaults to 0
         /// </summary>
-        double? OriginOffsetX { get; set; }
+        string OriginOffsetX { get; set; }
 
         /// <summary>
         /// Specifies the vertical offset to apply to the symbol origin, in mm.  This offset is applied before the symbol is scaled and rotated.  Defaults to 0
         /// </summary>
-        double? OriginOffsetY { get; set; }
+        string OriginOffsetY { get; set; }
     }
 
     /// <summary>
@@ -356,25 +420,25 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// Gets or sets the start offset.
         /// </summary>
         /// <value>The start offset.</value>
-        double? StartOffset { get; set; }
+        string StartOffset { get; set; }
 
         /// <summary>
         /// Gets or sets the end offset.
         /// </summary>
         /// <value>The end offset.</value>
-        double? EndOffset { get; set; }
+        string EndOffset { get; set; }
 
         /// <summary>
         /// Gets or sets the repeat value
         /// </summary>
         /// <value>The repeat value.</value>
-        double? Repeat { get; set; }
+        string Repeat { get; set; }
 
         /// <summary>
         /// Gets or sets the vertex angle limit.
         /// </summary>
         /// <value>The vertex angle limit.</value>
-        double? VertexAngleLimit { get; set; }
+        string VertexAngleLimit { get; set; }
 
         /// <summary>
         /// Gets or sets the vertex join.
@@ -392,7 +456,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// Gets or sets the default path.
         /// </summary>
         /// <value>The default path.</value>
-        IPath DefaultPath { get; set; }
+        IPathGraphic DefaultPath { get; set; }
     }
 
     /// <summary>
@@ -416,31 +480,31 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// Gets or sets the X origin.
         /// </summary>
         /// <value>The X origin.</value>
-        double? OriginX { get; set; }
+        string OriginX { get; set; }
 
         /// <summary>
         /// Gets or sets the Y origin.
         /// </summary>
         /// <value>The Y origin.</value>
-        double? OriginY { get; set; }
+        string OriginY { get; set; }
 
         /// <summary>
         /// Gets or sets the X repeat value.
         /// </summary>
         /// <value>The X repeat value.</value>
-        double? RepeatX { get; set; }
+        string RepeatX { get; set; }
 
         /// <summary>
         /// Gets or sets the Y repeat value
         /// </summary>
         /// <value>The Y repeat value.</value>
-        double? RepeatY { get; set; }
+        string RepeatY { get; set; }
 
         /// <summary>
         /// Gets or sets the width of the buffer.
         /// </summary>
         /// <value>The width of the buffer.</value>
-        double? BufferWidth { get; set; }
+        string BufferWidth { get; set; }
     }
 
     /// <summary>
@@ -571,7 +635,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     /// <summary>
     /// Defines a parameter
     /// </summary>
-    public interface IParameter
+    public interface IParameter : IExpressionPropertySource
     {
         /// <summary>
         /// Gets or sets the identifier.
@@ -704,7 +768,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     /// <summary>
     /// A path
     /// </summary>
-    public interface IPath : IGraphicBase
+    public interface IPathGraphic : IGraphicBase
     {
         /// <summary>
         /// Gets or sets the geometry.
@@ -728,13 +792,13 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// Gets or sets the line weight.
         /// </summary>
         /// <value>The line weight.</value>
-        double? LineWeight { get; set; }
+        string LineWeight { get; set; }
 
         /// <summary>
         /// Gets or sets the line weight scalable.
         /// </summary>
         /// <value>The line weight scalable.</value>
-        bool? LineWeightScalable { get; set; }
+        string LineWeightScalable { get; set; }
 
         /// <summary>
         /// Gets or sets the line cap.
@@ -752,13 +816,13 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// Gets or sets the line miter limit.
         /// </summary>
         /// <value>The line miter limit.</value>
-        double? LineMiterLimit { get; set; }
+        string LineMiterLimit { get; set; }
     }
 
     /// <summary>
     /// An image reference
     /// </summary>
-    public interface IImageReference
+    public interface IImageReference : IImageBase
     {
         /// <summary>
         /// Gets or sets the resource id.
@@ -788,52 +852,60 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         Inline
     }
 
+    public interface IImageGraphic : IGraphicBase
+    {
+        /// <summary>
+        /// Gets or sets the image content
+        /// </summary>
+        IImageBase Item { get; set; }
+
+        /// <summary>
+        /// Gets or sets the size X.
+        /// </summary>
+        /// <value>The size X.</value>
+        string SizeX { get; set; }
+
+        /// <summary>
+        /// Gets or sets the size Y.
+        /// </summary>
+        /// <value>The size Y.</value>
+        string SizeY { get; set; }
+
+        /// <summary>
+        /// Gets or sets the size scalable.
+        /// </summary>
+        /// <value>The size scalable.</value>
+        string SizeScalable { get; set; }
+
+        /// <summary>
+        /// Gets or sets the angle.
+        /// </summary>
+        /// <value>The angle.</value>
+        string Angle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the position X.
+        /// </summary>
+        /// <value>The position X.</value>
+        string PositionX { get; set; }
+
+        /// <summary>
+        /// Gets or sets the position Y.
+        /// </summary>
+        /// <value>The position Y.</value>
+        string PositionY { get; set; }
+    }
+
     /// <summary>
     /// An image graphic
     /// </summary>
-    public interface IImageBase : IGraphicBase
+    public interface IImageBase
     {
         /// <summary>
         /// Gets the type.
         /// </summary>
         /// <value>The type.</value>
         ImageType Type { get; }
-
-        /// <summary>
-        /// Gets or sets the size X.
-        /// </summary>
-        /// <value>The size X.</value>
-        double? SizeX { get; set; }
-
-        /// <summary>
-        /// Gets or sets the size Y.
-        /// </summary>
-        /// <value>The size Y.</value>
-        double? SizeY { get; set; }
-
-        /// <summary>
-        /// Gets or sets the size scalable.
-        /// </summary>
-        /// <value>The size scalable.</value>
-        bool? SizeScalable { get; set; }
-
-        /// <summary>
-        /// Gets or sets the angle.
-        /// </summary>
-        /// <value>The angle.</value>
-        double? Angle { get; set; }
-
-        /// <summary>
-        /// Gets or sets the position X.
-        /// </summary>
-        /// <value>The position X.</value>
-        double? PositionX { get; set; }
-
-        /// <summary>
-        /// Gets or sets the position Y.
-        /// </summary>
-        /// <value>The position Y.</value>
-        double? PositionY { get; set; }
     }
 
     /// <summary>
@@ -893,7 +965,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     /// <summary>
     /// Text graphics
     /// </summary>
-    public interface IText : IGraphicBase
+    public interface ITextGraphic : IGraphicBase
     {
         /// <summary>
         /// Gets or sets the content.
@@ -911,49 +983,49 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// Gets or sets the bold.
         /// </summary>
         /// <value>The bold.</value>
-        bool? Bold { get; set; }
+        string Bold { get; set; }
 
         /// <summary>
         /// Gets or sets the italic.
         /// </summary>
         /// <value>The italic.</value>
-        bool? Italic { get; set; }
+        string Italic { get; set; }
 
         /// <summary>
         /// Gets or sets the underlined.
         /// </summary>
         /// <value>The underlined.</value>
-        bool? Underlined { get; set; }
+        string Underlined { get; set; }
 
         /// <summary>
         /// Gets or sets the height.
         /// </summary>
         /// <value>The height.</value>
-        double? Height { get; set; }
+        string Height { get; set; }
 
         /// <summary>
         /// Gets or sets the height scalable.
         /// </summary>
         /// <value>The height scalable.</value>
-        bool? HeightScalable { get; set; }
+        string HeightScalable { get; set; }
 
         /// <summary>
         /// Gets or sets the angle.
         /// </summary>
         /// <value>The angle.</value>
-        double? Angle { get; set; }
+        string Angle { get; set; }
 
         /// <summary>
         /// Gets or sets the position X.
         /// </summary>
         /// <value>The position X.</value>
-        double? PositionX { get; set; }
+        string PositionX { get; set; }
 
         /// <summary>
         /// Gets or sets the position Y.
         /// </summary>
         /// <value>The position Y.</value>
-        double? PositionY { get; set; }
+        string PositionY { get; set; }
 
         /// <summary>
         /// Gets or sets the horizontal alignment.
@@ -977,7 +1049,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// Gets or sets the line spacing.
         /// </summary>
         /// <value>The line spacing.</value>
-        double? LineSpacing { get; set; }
+        string LineSpacing { get; set; }
 
         /// <summary>
         /// Gets or sets the color of the text.
@@ -1279,7 +1351,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     /// <summary>
     /// An extension of the text element to support rich text
     /// </summary>
-    public interface IText2 : IText
+    public interface ITextGraphic2 : ITextGraphic
     {
         /// <summary>
         /// Gets or sets the type of rich text markup used to render the contents

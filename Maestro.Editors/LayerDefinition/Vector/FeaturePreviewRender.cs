@@ -489,6 +489,11 @@ namespace Maestro.Editors.LayerDefinition.Vector
 			return retval;
 		}*/
 
-        
+
+
+        internal static void RenderNoPreview(Graphics graphics, Rectangle rect)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

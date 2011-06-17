@@ -138,6 +138,13 @@ namespace Maestro.Editors.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap arrow {
+            get {
+                object obj = ResourceManager.GetObject("arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap arrow_090 {
             get {
                 object obj = ResourceManager.GetObject("arrow-090", resourceCulture);
@@ -522,10 +529,26 @@ namespace Maestro.Editors.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap edit {
+            get {
+                object obj = ResourceManager.GetObject("edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap edit_indent {
             get {
                 object obj = ResourceManager.GetObject("edit-indent", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Watermark Instance.
+        /// </summary>
+        internal static string EditWatermarkInstance {
+            get {
+                return ResourceManager.GetString("EditWatermarkInstance", resourceCulture);
             }
         }
         
@@ -704,6 +727,15 @@ namespace Maestro.Editors.Properties {
         internal static string FilterDwf {
             get {
                 return ResourceManager.GetString("FilterDwf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Portable Network Graphics (*.png)|*.png.
+        /// </summary>
+        internal static string FilterPng {
+            get {
+                return ResourceManager.GetString("FilterPng", resourceCulture);
             }
         }
         
@@ -1529,6 +1561,13 @@ namespace Maestro.Editors.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap image {
+            get {
+                object obj = ResourceManager.GetObject("image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to This connection is not compatible.
         /// </summary>
@@ -1712,6 +1751,13 @@ namespace Maestro.Editors.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap layer_shape_curve {
+            get {
+                object obj = ResourceManager.GetObject("layer-shape-curve", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Layer Group ({0}) successfully converted to Base Layer Group ({1}).
         /// </summary>
@@ -1777,6 +1823,13 @@ namespace Maestro.Editors.Properties {
         internal static System.Drawing.Bitmap map__plus {
             get {
                 object obj = ResourceManager.GetObject("map--plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap marker {
+            get {
+                object obj = ResourceManager.GetObject("marker", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2254,6 +2307,15 @@ namespace Maestro.Editors.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Resource doesn&apos;t exist.
+        /// </summary>
+        internal static string ResourceDoesntExist {
+            get {
+                return ResourceManager.GetString("ResourceDoesntExist", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap ruler {
             get {
                 object obj = ResourceManager.GetObject("ruler", resourceCulture);
@@ -2515,6 +2577,33 @@ namespace Maestro.Editors.Properties {
             get {
                 object obj = ResourceManager.GetObject("sum", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;image&gt;.
+        /// </summary>
+        internal static string SymbolGraphicsImagePlaceholder {
+            get {
+                return ResourceManager.GetString("SymbolGraphicsImagePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;path&gt;.
+        /// </summary>
+        internal static string SymbolGraphicsPathPlaceholder {
+            get {
+                return ResourceManager.GetString("SymbolGraphicsPathPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;text&gt;.
+        /// </summary>
+        internal static string SymbolGraphicsTextPlaceholder {
+            get {
+                return ResourceManager.GetString("SymbolGraphicsTextPlaceholder", resourceCulture);
             }
         }
         

@@ -1,0 +1,1672 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="symAreaRepeatY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 98</value>
+  </data>
+  <data name="symAreaRepeatY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="symAreaRepeatY.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="symAreaRepeatY.ToolTip" xml:space="preserve">
+    <value>The vertical separation between symbols, in mm.  Defaults to 0</value>
+  </data>
+  <data name="&gt;&gt;symAreaRepeatY.Name" xml:space="preserve">
+    <value>symAreaRepeatY</value>
+  </data>
+  <data name="&gt;&gt;symAreaRepeatY.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symAreaRepeatY.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;symAreaRepeatY.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="symAreaOriginY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 72</value>
+  </data>
+  <data name="symAreaOriginY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symAreaOriginY.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="symAreaOriginY.ToolTip" xml:space="preserve">
+    <value>The y-coordinate of the symbol grid origin, in mm.  Only applies if OriginControl evaluates to Global or Local.  Defaults to 0</value>
+  </data>
+  <data name="&gt;&gt;symAreaOriginY.Name" xml:space="preserve">
+    <value>symAreaOriginY</value>
+  </data>
+  <data name="&gt;&gt;symAreaOriginY.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symAreaOriginY.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;symAreaOriginY.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="symAreaAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 46</value>
+  </data>
+  <data name="symAreaAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symAreaAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <data name="symAreaAngle.ToolTip" xml:space="preserve">
+    <value>Specifies the angle of each repeating symbol, in degrees.  Only applies if AngleControl evaluates to FromAngle.  Defaults to 0</value>
+  </data>
+  <data name="&gt;&gt;symAreaAngle.Name" xml:space="preserve">
+    <value>symAreaAngle</value>
+  </data>
+  <data name="&gt;&gt;symAreaAngle.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symAreaAngle.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;symAreaAngle.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="symAreaOriginControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 19</value>
+  </data>
+  <data name="symAreaOriginControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symAreaOriginControl.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="symAreaOriginControl.ToolTip" xml:space="preserve">
+    <value>Specifies how the symbol grid origin is defined.  This must evaluate to one of: Global (default), Local, or Centroid</value>
+  </data>
+  <data name="&gt;&gt;symAreaOriginControl.Name" xml:space="preserve">
+    <value>symAreaOriginControl</value>
+  </data>
+  <data name="&gt;&gt;symAreaOriginControl.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symAreaOriginControl.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;symAreaOriginControl.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="symAreaBufferWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 124</value>
+  </data>
+  <data name="symAreaBufferWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symAreaBufferWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="symAreaBufferWidth.ToolTip" xml:space="preserve">
+    <value>The width, in mm, of the buffer zone relative to the polygon boundary in which the symbol is rendered.  Defaults to 0</value>
+  </data>
+  <data name="&gt;&gt;symAreaBufferWidth.Name" xml:space="preserve">
+    <value>symAreaBufferWidth</value>
+  </data>
+  <data name="&gt;&gt;symAreaBufferWidth.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symAreaBufferWidth.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;symAreaBufferWidth.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="symAreaRepeatX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 98</value>
+  </data>
+  <data name="symAreaRepeatX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symAreaRepeatX.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="symAreaRepeatX.ToolTip" xml:space="preserve">
+    <value>The horizontal separation between symbols, in mm.  Defaults to 0</value>
+  </data>
+  <data name="&gt;&gt;symAreaRepeatX.Name" xml:space="preserve">
+    <value>symAreaRepeatX</value>
+  </data>
+  <data name="&gt;&gt;symAreaRepeatX.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symAreaRepeatX.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;symAreaRepeatX.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="symAreaOriginX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 72</value>
+  </data>
+  <data name="symAreaOriginX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symAreaOriginX.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="symAreaOriginX.ToolTip" xml:space="preserve">
+    <value>The x-coordinate of the symbol grid origin, in mm.  Only applies if OriginControl evaluates to Global or Local.  Defaults to 0</value>
+  </data>
+  <data name="&gt;&gt;symAreaOriginX.Name" xml:space="preserve">
+    <value>symAreaOriginX</value>
+  </data>
+  <data name="&gt;&gt;symAreaOriginX.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symAreaOriginX.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;symAreaOriginX.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="symAreaClippingControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 45</value>
+  </data>
+  <data name="symAreaClippingControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symAreaClippingControl.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="symAreaClippingControl.ToolTip" xml:space="preserve">
+    <value>Specifies the clipping behavior of the symbol at polygon boundaries.  This must evaluate to one of: Clip (default), Inside, or Overlap</value>
+  </data>
+  <data name="&gt;&gt;symAreaClippingControl.Name" xml:space="preserve">
+    <value>symAreaClippingControl</value>
+  </data>
+  <data name="&gt;&gt;symAreaClippingControl.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symAreaClippingControl.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;symAreaClippingControl.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="symAreaAngleControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 19</value>
+  </data>
+  <data name="symAreaAngleControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symAreaAngleControl.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="symAreaAngleControl.ToolTip" xml:space="preserve">
+    <value>Specifies how the symbol angle is defined.  This must evaluate to one of: FromAngle (default) or FromGeometry</value>
+  </data>
+  <data name="&gt;&gt;symAreaAngleControl.Name" xml:space="preserve">
+    <value>symAreaAngleControl</value>
+  </data>
+  <data name="&gt;&gt;symAreaAngleControl.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symAreaAngleControl.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;symAreaAngleControl.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 127</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 13</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Buffer Width</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 101</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Repeat Y</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 101</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Repeat X</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 75</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Origin Y</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="label21.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 49</value>
+  </data>
+  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 13</value>
+  </data>
+  <data name="label21.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Angle</value>
+  </data>
+  <data name="&gt;&gt;label21.Name" xml:space="preserve">
+    <value>label21</value>
+  </data>
+  <data name="&gt;&gt;label21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="label22.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 75</value>
+  </data>
+  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="label22.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Origin X</value>
+  </data>
+  <data name="&gt;&gt;label22.Name" xml:space="preserve">
+    <value>label22</value>
+  </data>
+  <data name="&gt;&gt;label22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="label23.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 48</value>
+  </data>
+  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 13</value>
+  </data>
+  <data name="label23.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Clipping Control</value>
+  </data>
+  <data name="&gt;&gt;label23.Name" xml:space="preserve">
+    <value>label23</value>
+  </data>
+  <data name="&gt;&gt;label23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="label24.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="label24.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Origin Control</value>
+  </data>
+  <data name="&gt;&gt;label24.Name" xml:space="preserve">
+    <value>label24</value>
+  </data>
+  <data name="&gt;&gt;label24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="label25.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label25.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 22</value>
+  </data>
+  <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="label25.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Angle Control</value>
+  </data>
+  <data name="&gt;&gt;label25.Name" xml:space="preserve">
+    <value>label25</value>
+  </data>
+  <data name="&gt;&gt;label25.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label25.Parent" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="grpArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 369</value>
+  </data>
+  <data name="grpArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>528, 156</value>
+  </data>
+  <data name="grpArea.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;grpArea.Name" xml:space="preserve">
+    <value>grpArea</value>
+  </data>
+  <data name="&gt;&gt;grpArea.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpArea.Parent" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;grpArea.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="symLineVertexMiterLimit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 124</value>
+  </data>
+  <data name="symLineVertexMiterLimit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symLineVertexMiterLimit.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="symLineVertexMiterLimit.ToolTip" xml:space="preserve">
+    <value>The limit to use when drawing miter vertex joins.  A miter vertex join is trimmed if the ratio of the miter length to symbol height is greater than the miter limit.  If specified this must be greater than zero.  Defaults to 5</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexMiterLimit.Name" xml:space="preserve">
+    <value>symLineVertexMiterLimit</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexMiterLimit.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexMiterLimit.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexMiterLimit.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="symLineVertexAngleLimit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 98</value>
+  </data>
+  <data name="symLineVertexAngleLimit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symLineVertexAngleLimit.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="symLineVertexAngleLimit.ToolTip" xml:space="preserve">
+    <value>Specifies the limiting angle, in degrees, by a which the feature geometry can change before some of the VertexControl options take effect.  If specified this must be greater than or equal to zero.  Defaults to 0</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexAngleLimit.Name" xml:space="preserve">
+    <value>symLineVertexAngleLimit</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexAngleLimit.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexAngleLimit.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexAngleLimit.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="symLineEndOffset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 72</value>
+  </data>
+  <data name="symLineEndOffset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symLineEndOffset.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="symLineEndOffset.ToolTip" xml:space="preserve">
+    <value>Specifies where the symbol distribution ends, relative to the end of the feature.  Defaults to 0</value>
+  </data>
+  <data name="&gt;&gt;symLineEndOffset.Name" xml:space="preserve">
+    <value>symLineEndOffset</value>
+  </data>
+  <data name="&gt;&gt;symLineEndOffset.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symLineEndOffset.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;symLineEndOffset.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="symLineAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 46</value>
+  </data>
+  <data name="symLineAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symLineAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="symLineAngle.ToolTip" xml:space="preserve">
+    <value>Specifies the symbol angle, in degrees.  Only applies if AngleControl evaluates to FromAngle.  Defaults to 0</value>
+  </data>
+  <data name="&gt;&gt;symLineAngle.Name" xml:space="preserve">
+    <value>symLineAngle</value>
+  </data>
+  <data name="&gt;&gt;symLineAngle.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symLineAngle.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;symLineAngle.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="symLineUnitsControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 19</value>
+  </data>
+  <data name="symLineUnitsControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symLineUnitsControl.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="symLineUnitsControl.ToolTip" xml:space="preserve">
+    <value>Specifies whether the distribution parameters are interpreted as absolute values (in mm) or parametric values.  This must evaluate to one of: Absolute (default) or Parametric</value>
+  </data>
+  <data name="&gt;&gt;symLineUnitsControl.Name" xml:space="preserve">
+    <value>symLineUnitsControl</value>
+  </data>
+  <data name="&gt;&gt;symLineUnitsControl.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symLineUnitsControl.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;symLineUnitsControl.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="symLineVertexJoin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 124</value>
+  </data>
+  <data name="symLineVertexJoin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symLineVertexJoin.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="symLineVertexJoin.ToolTip" xml:space="preserve">
+    <value>Specifies the wrapping behavior at vertices for all graphic elements.  Only applies if VertexControl evaluates to OverlapWrap.  This must evaluate to one of: None, Bevel, Round (default), or Miter</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexJoin.Name" xml:space="preserve">
+    <value>symLineVertexJoin</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexJoin.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexJoin.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexJoin.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="symLineRepeat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 98</value>
+  </data>
+  <data name="symLineRepeat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symLineRepeat.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="symLineRepeat.ToolTip" xml:space="preserve">
+    <value>Specifies the separation between repeating symbols.  Defaults to 0</value>
+  </data>
+  <data name="&gt;&gt;symLineRepeat.Name" xml:space="preserve">
+    <value>symLineRepeat</value>
+  </data>
+  <data name="&gt;&gt;symLineRepeat.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symLineRepeat.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;symLineRepeat.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="symLineStartOffset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 72</value>
+  </data>
+  <data name="symLineStartOffset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symLineStartOffset.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="symLineStartOffset.ToolTip" xml:space="preserve">
+    <value>Specifies where the symbol distribution begins, relative to the start of the feature.  Defaults to 0</value>
+  </data>
+  <data name="&gt;&gt;symLineStartOffset.Name" xml:space="preserve">
+    <value>symLineStartOffset</value>
+  </data>
+  <data name="&gt;&gt;symLineStartOffset.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symLineStartOffset.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;symLineStartOffset.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="symLineVertexControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 45</value>
+  </data>
+  <data name="symLineVertexControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symLineVertexControl.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="symLineVertexControl.ToolTip" xml:space="preserve">
+    <value>Specifies the symbol behavior at vertices.  This must evaluate to one of: OverlapNone (default), OverlapDirect, OverlapNoWrap, or OverlapWrap</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexControl.Name" xml:space="preserve">
+    <value>symLineVertexControl</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexControl.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexControl.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;symLineVertexControl.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="symLineAngleControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 19</value>
+  </data>
+  <data name="symLineAngleControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symLineAngleControl.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="symLineAngleControl.ToolTip" xml:space="preserve">
+    <value>Specifies how the symbol angle is defined.  This must evaluate to one of: FromAngle or FromGeometry (default)</value>
+  </data>
+  <data name="&gt;&gt;symLineAngleControl.Name" xml:space="preserve">
+    <value>symLineAngleControl</value>
+  </data>
+  <data name="&gt;&gt;symLineAngleControl.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symLineAngleControl.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;symLineAngleControl.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="button2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>391, 151</value>
+  </data>
+  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="button2.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="button2.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="&gt;&gt;button2.Name" xml:space="preserve">
+    <value>button2</value>
+  </data>
+  <data name="&gt;&gt;button2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>310, 151</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="textBox16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 153</value>
+  </data>
+  <data name="textBox16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 20</value>
+  </data>
+  <data name="textBox16.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="textBox16.ToolTip" xml:space="preserve">
+    <value>Specifies the default path attributes to use when drawing the symbol.  These apply to any centerline that gets drawn where the symbol can't draw, and to path elements that don't specify attributes.  The geometry contained in this path is ignored and should be empty</value>
+  </data>
+  <data name="&gt;&gt;textBox16.Name" xml:space="preserve">
+    <value>textBox16</value>
+  </data>
+  <data name="&gt;&gt;textBox16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox16.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;textBox16.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="label20.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 156</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 13</value>
+  </data>
+  <data name="label20.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Default Path</value>
+  </data>
+  <data name="&gt;&gt;label20.Name" xml:space="preserve">
+    <value>label20</value>
+  </data>
+  <data name="&gt;&gt;label20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="label19.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 127</value>
+  </data>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 13</value>
+  </data>
+  <data name="label19.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Vertex Join</value>
+  </data>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
+  </data>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 127</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 13</value>
+  </data>
+  <data name="label18.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Vertex Miter Limit</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 101</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 13</value>
+  </data>
+  <data name="label17.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Vertex Angle Limit</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 101</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 13</value>
+  </data>
+  <data name="label16.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Repeat</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 75</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 13</value>
+  </data>
+  <data name="label14.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>End Offset</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 49</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 13</value>
+  </data>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Angle</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 75</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="label15.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Start Offset</value>
+  </data>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 48</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Vertex Control</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 13</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Units Control</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 22</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Angle Control</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="grpLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 148</value>
+  </data>
+  <data name="grpLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>528, 192</value>
+  </data>
+  <data name="grpLine.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;grpLine.Name" xml:space="preserve">
+    <value>grpLine</value>
+  </data>
+  <data name="&gt;&gt;grpLine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpLine.Parent" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;grpLine.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="symPointOriginOffsetY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 49</value>
+  </data>
+  <data name="symPointOriginOffsetY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symPointOriginOffsetY.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="symPointOriginOffsetY.ToolTip" xml:space="preserve">
+    <value>Specifies the vertical offset to apply to the symbol origin, in mm.  This offset is applied before the symbol is scaled and rotated.  Defaults to 0</value>
+  </data>
+  <data name="&gt;&gt;symPointOriginOffsetY.Name" xml:space="preserve">
+    <value>symPointOriginOffsetY</value>
+  </data>
+  <data name="&gt;&gt;symPointOriginOffsetY.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symPointOriginOffsetY.Parent" xml:space="preserve">
+    <value>grpPoint</value>
+  </data>
+  <data name="&gt;&gt;symPointOriginOffsetY.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="symPointAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 23</value>
+  </data>
+  <data name="symPointAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symPointAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="symPointAngle.ToolTip" xml:space="preserve">
+    <value>Specifies the symbol angle, in degrees.  Only applies if AngleControl evaluates to FromAngle.  Defaults to 0</value>
+  </data>
+  <data name="&gt;&gt;symPointAngle.Name" xml:space="preserve">
+    <value>symPointAngle</value>
+  </data>
+  <data name="&gt;&gt;symPointAngle.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symPointAngle.Parent" xml:space="preserve">
+    <value>grpPoint</value>
+  </data>
+  <data name="&gt;&gt;symPointAngle.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="symPointOriginOffsetX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 49</value>
+  </data>
+  <data name="symPointOriginOffsetX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symPointOriginOffsetX.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="symPointOriginOffsetX.ToolTip" xml:space="preserve">
+    <value>Specifies the horizontal offset to apply to the symbol origin, in mm.  This offset is applied before the symbol is scaled and rotated.  Defaults to 0</value>
+  </data>
+  <data name="&gt;&gt;symPointOriginOffsetX.Name" xml:space="preserve">
+    <value>symPointOriginOffsetX</value>
+  </data>
+  <data name="&gt;&gt;symPointOriginOffsetX.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symPointOriginOffsetX.Parent" xml:space="preserve">
+    <value>grpPoint</value>
+  </data>
+  <data name="&gt;&gt;symPointOriginOffsetX.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="symPointAngleControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 23</value>
+  </data>
+  <data name="symPointAngleControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symPointAngleControl.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="symPointAngleControl.ToolTip" xml:space="preserve">
+    <value>Specifies how the symbol angle is defined. This must evaluate to on of:  FromAngle (default), or FromGeometry</value>
+  </data>
+  <data name="&gt;&gt;symPointAngleControl.Name" xml:space="preserve">
+    <value>symPointAngleControl</value>
+  </data>
+  <data name="&gt;&gt;symPointAngleControl.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symPointAngleControl.Parent" xml:space="preserve">
+    <value>grpPoint</value>
+  </data>
+  <data name="&gt;&gt;symPointAngleControl.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 52</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 13</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Origin Offset Y</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>grpPoint</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 52</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 13</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Origin Offset X</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>grpPoint</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 26</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 13</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Angle</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>grpPoint</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 26</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Angle Control</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>grpPoint</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="grpPoint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 39</value>
+  </data>
+  <data name="grpPoint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>528, 80</value>
+  </data>
+  <data name="grpPoint.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;grpPoint.Name" xml:space="preserve">
+    <value>grpPoint</value>
+  </data>
+  <data name="&gt;&gt;grpPoint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpPoint.Parent" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;grpPoint.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkArea.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 346</value>
+  </data>
+  <data name="chkArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 17</value>
+  </data>
+  <data name="chkArea.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="chkArea.Text" xml:space="preserve">
+    <value>Define Area (Polygon) Usage Context</value>
+  </data>
+  <data name="chkArea.ToolTip" xml:space="preserve">
+    <value>Check to allow this Symbol Definition to be used in the context of polygons</value>
+  </data>
+  <data name="&gt;&gt;chkArea.Name" xml:space="preserve">
+    <value>chkArea</value>
+  </data>
+  <data name="&gt;&gt;chkArea.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkArea.Parent" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;chkArea.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkLine.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 125</value>
+  </data>
+  <data name="chkLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 17</value>
+  </data>
+  <data name="chkLine.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="chkLine.Text" xml:space="preserve">
+    <value>Define Line Usage Context</value>
+  </data>
+  <data name="chkLine.ToolTip" xml:space="preserve">
+    <value>Check to allow this Symbol Definition to be used in the context of lines
+</value>
+  </data>
+  <data name="&gt;&gt;chkLine.Name" xml:space="preserve">
+    <value>chkLine</value>
+  </data>
+  <data name="&gt;&gt;chkLine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkLine.Parent" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;chkLine.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="chkPoint.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkPoint.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPoint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 16</value>
+  </data>
+  <data name="chkPoint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 17</value>
+  </data>
+  <data name="chkPoint.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="chkPoint.Text" xml:space="preserve">
+    <value>Define Point Usage Context</value>
+  </data>
+  <data name="chkPoint.ToolTip" xml:space="preserve">
+    <value>Check to allow this Symbol Definition to be used in the context of points</value>
+  </data>
+  <data name="&gt;&gt;chkPoint.Name" xml:space="preserve">
+    <value>chkPoint</value>
+  </data>
+  <data name="&gt;&gt;chkPoint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPoint.Parent" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;chkPoint.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="contentPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 541</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.Name" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 568</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>UsageContextsCtrl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

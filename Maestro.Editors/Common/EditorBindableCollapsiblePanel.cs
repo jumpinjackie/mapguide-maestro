@@ -74,6 +74,8 @@ namespace Maestro.Editors.Common
             }
         }
 
+        internal void RaiseResourceChanged() { OnResourceChanged(); }
+
         /// <summary>
         /// Raises the <see cref="ResourceChanged"/> event. If overridden in the derived class, be sure
         /// to call the base class method to ensure the event is properly raised.

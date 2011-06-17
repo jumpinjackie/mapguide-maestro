@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.MapDefinition-2.3.0", "..\ExtendedModels\MapDefinition-2.3.0\OSGeo.MapGuide.ObjectModels.MapDefinition-2.3.0.csproj", "{C8DB3E77-3AF4-471D-A214-69DBEB32750E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0", "..\ExtendedModels\WatermarkDefinition-2.3.0\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0.csproj", "{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -181,6 +183,10 @@ Global
 		{C8DB3E77-3AF4-471D-A214-69DBEB32750E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8DB3E77-3AF4-471D-A214-69DBEB32750E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8DB3E77-3AF4-471D-A214-69DBEB32750E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

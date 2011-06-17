@@ -50,16 +50,20 @@ namespace Maestro.Base.Services
                 LoggingService.Info("Registered default template: " + tp.GetType()); //LOCALIZE
             }
 
+            LoggingService.Info("Initialized: New Item Template Service"); //LOCALIZE
+        }
+
+        internal void InitUserTemplates()
+        {
             if (!_templates.ContainsKey(Res.TPL_CATEGORY_USERDEF))
                 _templates[Res.TPL_CATEGORY_USERDEF] = new List<ItemTemplate>();
 
-            UserItemTemplate [] utpls = ScanUserTemplates();
+            UserItemTemplate[] utpls = ScanUserTemplates();
             foreach (var ut in utpls)
             {
                 _templates[Res.TPL_CATEGORY_USERDEF].Add(ut);
                 LoggingService.Info("Adding user template: " + ut.TemplatePath);
             }
-            LoggingService.Info("Initialized: New Item Template Service"); //LOCALIZE
         }
 
         private UserItemTemplate[] ScanUserTemplates()

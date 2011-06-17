@@ -14,6 +14,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
     using System.ComponentModel;
     using System.IO;
     using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+    using OSGeo.MapGuide.ObjectModels.Common;
     
     /// <summary>
     /// A 2D simple symbol for stylization.
@@ -491,7 +492,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("true")]
+        //[System.ComponentModel.DefaultValueAttribute("true")]
         public string SizeScalable {
             get {
                 return this.sizeScalableField;
@@ -510,7 +511,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string Angle {
             get {
                 return this.angleField;
@@ -529,7 +530,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string PositionX {
             get {
                 return this.positionXField;
@@ -548,7 +549,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string PositionY {
             get {
                 return this.positionYField;
@@ -1025,7 +1026,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// The optional rendering pass in which this symbol definition draws.  If specified this must be greater than or equal to zero.  Defaults to 0.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("0")]
+        //[System.ComponentModel.DefaultValueAttribute("0")]
         public string RenderingPass {
             get {
                 return this.renderingPassField;
@@ -1238,208 +1239,6 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class ExtendedDataType : System.ComponentModel.INotifyPropertyChanged {
-        
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        private BindingList<System.Xml.XmlElement> anyField;
-        
-        private static System.Xml.Serialization.XmlSerializer serializer;
-        
-        [System.Xml.Serialization.XmlAnyElementAttribute()]
-        public BindingList<System.Xml.XmlElement> Any {
-            get {
-                return this.anyField;
-            }
-            set {
-                if ((this.anyField != null)) {
-                    if ((anyField.Equals(value) != true)) {
-                        this.anyField = value;
-                        this.OnPropertyChanged("Any");
-                    }
-                }
-                else {
-                    this.anyField = value;
-                    this.OnPropertyChanged("Any");
-                }
-            }
-        }
-        
-        private static System.Xml.Serialization.XmlSerializer Serializer {
-            get {
-                if ((serializer == null)) {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(ExtendedDataType));
-                }
-                return serializer;
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        public virtual void OnPropertyChanged(string info) {
-            System.ComponentModel.PropertyChangedEventHandler handler = this.PropertyChanged;
-            if ((handler != null)) {
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(info));
-            }
-        }
-        
-        #region Serialize/Deserialize
-        /// <summary>
-        /// Serializes current ExtendedDataType object into an XML document
-        /// </summary>
-        /// <returns>string XML value</returns>
-        public virtual string Serialize() {
-            System.IO.StreamReader streamReader = null;
-            System.IO.MemoryStream memoryStream = null;
-            try {
-                memoryStream = new System.IO.MemoryStream();
-                Serializer.Serialize(memoryStream, this);
-                memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
-                streamReader = new System.IO.StreamReader(memoryStream);
-                return streamReader.ReadToEnd();
-            }
-            finally {
-                if ((streamReader != null)) {
-                    streamReader.Dispose();
-                }
-                if ((memoryStream != null)) {
-                    memoryStream.Dispose();
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Deserializes workflow markup into an ExtendedDataType object
-        /// </summary>
-        /// <param name="xml">string workflow markup to deserialize</param>
-        /// <param name="obj">Output ExtendedDataType object</param>
-        /// <param name="exception">output Exception value if deserialize failed</param>
-        /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out ExtendedDataType obj, out System.Exception exception) {
-            exception = null;
-            obj = default(ExtendedDataType);
-            try {
-                obj = Deserialize(xml);
-                return true;
-            }
-            catch (System.Exception ex) {
-                exception = ex;
-                return false;
-            }
-        }
-        
-        public static bool Deserialize(string xml, out ExtendedDataType obj) {
-            System.Exception exception = null;
-            return Deserialize(xml, out obj, out exception);
-        }
-        
-        public static ExtendedDataType Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
-            try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((ExtendedDataType)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
-            }
-            finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Serializes current ExtendedDataType object into file
-        /// </summary>
-        /// <param name="fileName">full path of outupt xml file</param>
-        /// <param name="exception">output Exception value if failed</param>
-        /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
-            exception = null;
-            try {
-                SaveToFile(fileName);
-                return true;
-            }
-            catch (System.Exception e) {
-                exception = e;
-                return false;
-            }
-        }
-        
-        public virtual void SaveToFile(string fileName) {
-            System.IO.StreamWriter streamWriter = null;
-            try {
-                string xmlString = Serialize();
-                System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
-                streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
-                streamWriter.Close();
-            }
-            finally {
-                if ((streamWriter != null)) {
-                    streamWriter.Dispose();
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Deserializes xml markup from file into an ExtendedDataType object
-        /// </summary>
-        /// <param name="fileName">string xml file to load and deserialize</param>
-        /// <param name="obj">Output ExtendedDataType object</param>
-        /// <param name="exception">output Exception value if deserialize failed</param>
-        /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out ExtendedDataType obj, out System.Exception exception) {
-            exception = null;
-            obj = default(ExtendedDataType);
-            try {
-                obj = LoadFromFile(fileName);
-                return true;
-            }
-            catch (System.Exception ex) {
-                exception = ex;
-                return false;
-            }
-        }
-        
-        public static bool LoadFromFile(string fileName, out ExtendedDataType obj) {
-            System.Exception exception = null;
-            return LoadFromFile(fileName, out obj, out exception);
-        }
-        
-        public static ExtendedDataType LoadFromFile(string fileName) {
-            System.IO.FileStream file = null;
-            System.IO.StreamReader sr = null;
-            try {
-                file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
-                sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
-                sr.Close();
-                file.Close();
-                return Deserialize(xmlString);
-            }
-            finally {
-                if ((file != null)) {
-                    file.Dispose();
-                }
-                if ((sr != null)) {
-                    sr.Dispose();
-                }
-            }
-        }
-        #endregion
-        
-        #region Clone method
-        /// <summary>
-        /// Create a clone of this ExtendedDataType object
-        /// </summary>
-        public virtual ExtendedDataType Clone() {
-            return ((ExtendedDataType)(this.MemberwiseClone()));
-        }
-        #endregion
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.3.0.33572")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=true)]
     public partial class Parameter : System.ComponentModel.INotifyPropertyChanged {
         
@@ -1554,7 +1353,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// An optional explicit declaration of data type or data usage context.  This is a hint used by the UI when assigning a value to this parameter.  Defaults to String.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute(DataType2.String)]
+        //[System.ComponentModel.DefaultValueAttribute(DataType2.String)]
         public DataType2 DataType {
             get {
                 return this.dataTypeField;
@@ -2027,6 +1826,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         private static System.Xml.Serialization.XmlSerializer serializer;
         
         public AreaUsage() {
+            /*
             this.angleControlField = "\'FromAngle\'";
             this.originControlField = "\'Global\'";
             this.clippingControlField = "\'Clip\'";
@@ -2036,12 +1836,13 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             this.repeatXField = "0.0";
             this.repeatYField = "0.0";
             this.bufferWidthField = "0.0";
+             */
         }
         
         /// <summary>
         /// Specifies how the symbol angle is defined.  This must evaluate to one of: FromAngle (default) or FromGeometry.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("\'FromAngle\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'FromAngle\'")]
         public string AngleControl {
             get {
                 return this.angleControlField;
@@ -2063,7 +1864,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// Specifies how the symbol grid origin is defined.  This must evaluate to one of: Global (default), Local, or Centroid.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("\'Global\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'Global\'")]
         public string OriginControl {
             get {
                 return this.originControlField;
@@ -2085,7 +1886,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// Specifies the clipping behavior of the symbol at polygon boundaries.  This must evaluate to one of: Clip (default), Inside, or Overlap.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("\'Clip\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'Clip\'")]
         public string ClippingControl {
             get {
                 return this.clippingControlField;
@@ -2107,7 +1908,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// Specifies the angle of each repeating symbol, in degrees.  If AngleControl evaluates to FromAngle then this specifies the absolute angle of the symbol.  If AngleControl evaluates to FromGeometry then this specifies the symbol angle relative to the geometry.  Defaults to 0.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string Angle {
             get {
                 return this.angleField;
@@ -2129,7 +1930,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// The x-coordinate of the symbol grid origin, in mm.  Only applies if OriginControl evaluates to Global or Local.  Defaults to 0.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string OriginX {
             get {
                 return this.originXField;
@@ -2151,7 +1952,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// The y-coordinate of the symbol grid origin, in mm.  Only applies if OriginControl evaluates to Global or Local.  Defaults to 0.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string OriginY {
             get {
                 return this.originYField;
@@ -2173,7 +1974,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// The horizontal separation between symbols, in mm.  Defaults to 0.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string RepeatX {
             get {
                 return this.repeatXField;
@@ -2195,7 +1996,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// The vertical separation between symbols, in mm.  Defaults to 0.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string RepeatY {
             get {
                 return this.repeatYField;
@@ -2217,7 +2018,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// The width, in mm, of the buffer zone relative to the polygon boundary in which the symbol is rendered.  Defaults to 0.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string BufferWidth {
             get {
                 return this.bufferWidthField;
@@ -2475,6 +2276,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         private static System.Xml.Serialization.XmlSerializer serializer;
         
         public LineUsage() {
+            /*
             this.angleControlField = "\'FromGeometry\'";
             this.unitsControlField = "\'Absolute\'";
             this.vertexControlField = "\'OverlapWrap\'";
@@ -2483,12 +2285,13 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             this.vertexAngleLimitField = "0.0";
             this.vertexJoinField = "\'Round\'";
             this.vertexMiterLimitField = "5.0";
+             */
         }
         
         /// <summary>
         /// Specifies how the symbol angle is defined.  This must evaluate to one of: FromAngle or FromGeometry (default).
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("\'FromGeometry\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'FromGeometry\'")]
         public string AngleControl {
             get {
                 return this.angleControlField;
@@ -2510,7 +2313,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// Specifies whether the distribution parameters are interpreted as absolute values (in mm) or parametric values.  This must evaluate to one of: Absolute (default) or Parametric.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("\'Absolute\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'Absolute\'")]
         public string UnitsControl {
             get {
                 return this.unitsControlField;
@@ -2532,7 +2335,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// Specifies the symbol behavior at vertices.  This must evaluate to one of: OverlapNone, OverlapDirect, or OverlapWrap (default).
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("\'OverlapWrap\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'OverlapWrap\'")]
         public string VertexControl {
             get {
                 return this.vertexControlField;
@@ -2554,7 +2357,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// Specifies the angle of each repeating symbol, in degrees.  If AngleControl evaluates to FromAngle then this specifies the absolute angle of the symbol.  If AngleControl evaluates to FromGeometry then this specifies the symbol angle relative to the geometry.  Defaults to 0.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string Angle {
             get {
                 return this.angleField;
@@ -2618,7 +2421,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// Specifies the separation between repeating symbols.  Defaults to 0.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string Repeat {
             get {
                 return this.repeatField;
@@ -2640,7 +2443,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// Specifies the limiting angle, in degrees, by a which the feature geometry can change before some of the VertexControl options take effect.  If specified this must be greater than or equal to zero.  Defaults to 0.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string VertexAngleLimit {
             get {
                 return this.vertexAngleLimitField;
@@ -2662,7 +2465,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// Specifies the wrapping behavior at vertices for all graphic elements.  Only applies if VertexControl evaluates to OverlapWrap.  This must evaluate to one of: None, Bevel, Round (default), or Miter.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("\'Round\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'Round\'")]
         public string VertexJoin {
             get {
                 return this.vertexJoinField;
@@ -2684,7 +2487,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// The limit to use when drawing miter vertex joins.  A miter vertex join is trimmed if the ratio of the miter length to symbol height is greater than the miter limit.  If specified this must be greater than zero.  Defaults to 5.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("5.0")]
+        //[System.ComponentModel.DefaultValueAttribute("5.0")]
         public string VertexMiterLimit {
             get {
                 return this.vertexMiterLimitField;
@@ -3012,7 +2815,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string LineWeight {
             get {
                 return this.lineWeightField;
@@ -3031,7 +2834,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("true")]
+        //[System.ComponentModel.DefaultValueAttribute("true")]
         public string LineWeightScalable {
             get {
                 return this.lineWeightScalableField;
@@ -3050,7 +2853,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("\'Round\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'Round\'")]
         public string LineCap {
             get {
                 return this.lineCapField;
@@ -3069,7 +2872,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("\'Round\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'Round\'")]
         public string LineJoin {
             get {
                 return this.lineJoinField;
@@ -3088,7 +2891,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("5.0")]
+        //[System.ComponentModel.DefaultValueAttribute("5.0")]
         public string LineMiterLimit {
             get {
                 return this.lineMiterLimitField;
@@ -3316,7 +3119,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             this.resizeControlField = "\'ResizeNone\'";
         }
         
-        [System.ComponentModel.DefaultValueAttribute("\'ResizeNone\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'ResizeNone\'")]
         public string ResizeControl {
             get {
                 return this.resizeControlField;
@@ -3639,7 +3442,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("false")]
+        //[System.ComponentModel.DefaultValueAttribute("false")]
         public string Bold {
             get {
                 return this.boldField;
@@ -3658,7 +3461,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("false")]
+        //[System.ComponentModel.DefaultValueAttribute("false")]
         public string Italic {
             get {
                 return this.italicField;
@@ -3677,7 +3480,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("false")]
+        //[System.ComponentModel.DefaultValueAttribute("false")]
         public string Underlined {
             get {
                 return this.underlinedField;
@@ -3696,7 +3499,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("false")]
+        //[System.ComponentModel.DefaultValueAttribute("false")]
         public string Overlined {
             get {
                 return this.overlinedField;
@@ -3715,7 +3518,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string ObliqueAngle {
             get {
                 return this.obliqueAngleField;
@@ -3734,7 +3537,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("1.0")]
+        //[System.ComponentModel.DefaultValueAttribute("1.0")]
         public string TrackSpacing {
             get {
                 return this.trackSpacingField;
@@ -3753,7 +3556,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("4.0")]
+        //[System.ComponentModel.DefaultValueAttribute("4.0")]
         public string Height {
             get {
                 return this.heightField;
@@ -3772,7 +3575,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("true")]
+        //[System.ComponentModel.DefaultValueAttribute("true")]
         public string HeightScalable {
             get {
                 return this.heightScalableField;
@@ -3791,7 +3594,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string Angle {
             get {
                 return this.angleField;
@@ -3810,7 +3613,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string PositionX {
             get {
                 return this.positionXField;
@@ -3829,7 +3632,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string PositionY {
             get {
                 return this.positionYField;
@@ -3848,7 +3651,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("\'Center\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'Center\'")]
         public string HorizontalAlignment {
             get {
                 return this.horizontalAlignmentField;
@@ -3867,7 +3670,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("\'Halfline\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'Halfline\'")]
         public string VerticalAlignment {
             get {
                 return this.verticalAlignmentField;
@@ -3886,7 +3689,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("\'FromAlignment\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'FromAlignment\'")]
         public string Justification {
             get {
                 return this.justificationField;
@@ -3905,7 +3708,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("1.05")]
+        //[System.ComponentModel.DefaultValueAttribute("1.05")]
         public string LineSpacing {
             get {
                 return this.lineSpacingField;
@@ -3924,7 +3727,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("ff000000")]
+        //[System.ComponentModel.DefaultValueAttribute("ff000000")]
         public string TextColor {
             get {
                 return this.textColorField;
@@ -3979,7 +3782,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("\'Plain\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'Plain\'")]
         public string Markup {
             get {
                 return this.markupField;
@@ -4253,7 +4056,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string OffsetX {
             get {
                 return this.offsetXField;
@@ -4272,7 +4075,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
             }
         }
         
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string OffsetY {
             get {
                 return this.offsetYField;
@@ -4509,16 +4312,18 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         private static System.Xml.Serialization.XmlSerializer serializer;
         
         public PointUsage() {
+            /*
             this.angleControlField = "\'FromAngle\'";
             this.angleField = "0.0";
             this.originOffsetXField = "0.0";
             this.originOffsetYField = "0.0";
+             */
         }
         
         /// <summary>
         /// Specifies how the symbol angle is defined.  This must evaluate to one of: FromAngle (default) or FromGeometry.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("\'FromAngle\'")]
+        //[System.ComponentModel.DefaultValueAttribute("\'FromAngle\'")]
         public string AngleControl {
             get {
                 return this.angleControlField;
@@ -4540,7 +4345,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// Specifies the symbol angle, in degrees.  If AngleControl evaluates to FromAngle then this specifies the absolute angle of the symbol.  If AngleControl evaluates to FromGeometry then this specifies the symbol angle relative to the geometry.  Defaults to 0.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string Angle {
             get {
                 return this.angleField;
@@ -4562,7 +4367,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// Specifies the horizontal offset to apply to the symbol origin, in mm.  This offset is applied before the symbol is scaled and rotated.  Defaults to 0.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string OriginOffsetX {
             get {
                 return this.originOffsetXField;
@@ -4584,7 +4389,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         /// <summary>
         /// Specifies the vertical offset to apply to the symbol origin, in mm.  This offset is applied before the symbol is scaled and rotated.  Defaults to 0.
         /// </summary>
-        [System.ComponentModel.DefaultValueAttribute("0.0")]
+        //[System.ComponentModel.DefaultValueAttribute("0.0")]
         public string OriginOffsetY {
             get {
                 return this.originOffsetYField;

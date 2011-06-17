@@ -704,6 +704,18 @@
     <Compile Include="LayerDefinition\Vector\Scales\ScaleRangeList.designer.cs">
       <DependentUpon>ScaleRangeList.cs</DependentUpon>
     </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\SymbolInstancesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\SymbolInstancesDialog.Designer.cs">
+      <DependentUpon>SymbolInstancesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\SymbolInstanceSettingsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\SymbolInstanceSettingsCtrl.Designer.cs">
+      <DependentUpon>SymbolInstanceSettingsCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="LayerDefinition\Vector\StyleEditors\AreaFeatureStyleEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -901,7 +913,141 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SymbolDefinition\AdvancedSettingsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\AdvancedSettingsCtrl.Designer.cs">
+      <DependentUpon>AdvancedSettingsCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\CompoundSymbolDefinitionEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\CompoundSymbolDefinitionEditorCtrl.Designer.cs">
+      <DependentUpon>CompoundSymbolDefinitionEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\GeneralSettingsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\GeneralSettingsCtrl.Designer.cs">
+      <DependentUpon>GeneralSettingsCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\GraphicsEditors\ImageDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\GraphicsEditors\ImageDialog.Designer.cs">
+      <DependentUpon>ImageDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\GraphicsEditors\PathDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\GraphicsEditors\PathDialog.Designer.cs">
+      <DependentUpon>PathDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\GraphicsEditors\TextDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\GraphicsEditors\TextDialog.Designer.cs">
+      <DependentUpon>TextDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SymbolDefinition\NsDoc.cs" />
+    <Compile Include="SymbolDefinition\ParametersCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\ParametersCtrl.Designer.cs">
+      <DependentUpon>ParametersCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\ParameterSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\ParameterSelector.Designer.cs">
+      <DependentUpon>ParameterSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\SimpleSymbolDefinitionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\SimpleSymbolDefinitionDialog.Designer.cs">
+      <DependentUpon>SimpleSymbolDefinitionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\SimpleSymbolDefinitionEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\SimpleSymbolDefinitionEditorCtrl.Designer.cs">
+      <DependentUpon>SimpleSymbolDefinitionEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\SimpleSymbolReferenceCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\SimpleSymbolReferenceCtrl.Designer.cs">
+      <DependentUpon>SimpleSymbolReferenceCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\SymbolEditorService.cs" />
+    <Compile Include="SymbolDefinition\SymbolField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\SymbolField.Designer.cs">
+      <DependentUpon>SymbolField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\SymbolGraphicsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\SymbolGraphicsCtrl.Designer.cs">
+      <DependentUpon>SymbolGraphicsCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\SymbolParameterDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\SymbolParameterDialog.Designer.cs">
+      <DependentUpon>SymbolParameterDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\SymbolParameterEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\SymbolParameterEditor.Designer.cs">
+      <DependentUpon>SymbolParameterEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\UsageContextsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\UsageContextsCtrl.Designer.cs">
+      <DependentUpon>UsageContextsCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WatermarkDefinition\NsDoc.cs" />
+    <Compile Include="WatermarkDefinition\TilePositionEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WatermarkDefinition\TilePositionEditor.Designer.cs">
+      <DependentUpon>TilePositionEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WatermarkDefinition\WatermarkCollectionEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WatermarkDefinition\WatermarkCollectionEditorCtrl.Designer.cs">
+      <DependentUpon>WatermarkCollectionEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WatermarkDefinition\WatermarkEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WatermarkDefinition\WatermarkEditorCtrl.Designer.cs">
+      <DependentUpon>WatermarkEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WatermarkDefinition\WatermarkInstanceEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WatermarkDefinition\WatermarkInstanceEditor.Designer.cs">
+      <DependentUpon>WatermarkInstanceEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WatermarkDefinition\WatermarkInstanceEditorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WatermarkDefinition\WatermarkInstanceEditorDialog.Designer.cs">
+      <DependentUpon>WatermarkInstanceEditorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WatermarkDefinition\XYPositionEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WatermarkDefinition\XYPositionEditor.Designer.cs">
+      <DependentUpon>XYPositionEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="WebLayout\CommandIconCache.cs" />
     <Compile Include="WebLayout\Commands\InvokeScriptCtrl.cs">
       <SubType>UserControl</SubType>
@@ -1317,6 +1463,12 @@
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\ScaleRangeList.resx">
       <DependentUpon>ScaleRangeList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\SymbolInstancesDialog.resx">
+      <DependentUpon>SymbolInstancesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\SymbolInstanceSettingsCtrl.resx">
+      <DependentUpon>SymbolInstanceSettingsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\StyleEditors\AreaFeatureStyleEditor.resx">
       <DependentUpon>AreaFeatureStyleEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -1439,6 +1591,73 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\AdvancedSettingsCtrl.resx">
+      <DependentUpon>AdvancedSettingsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\CompoundSymbolDefinitionEditorCtrl.resx">
+      <DependentUpon>CompoundSymbolDefinitionEditorCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\GeneralSettingsCtrl.resx">
+      <DependentUpon>GeneralSettingsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\GraphicsEditors\ImageDialog.resx">
+      <DependentUpon>ImageDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\GraphicsEditors\PathDialog.resx">
+      <DependentUpon>PathDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\GraphicsEditors\TextDialog.resx">
+      <DependentUpon>TextDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\ParametersCtrl.resx">
+      <DependentUpon>ParametersCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\ParameterSelector.resx">
+      <DependentUpon>ParameterSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\SimpleSymbolDefinitionDialog.resx">
+      <DependentUpon>SimpleSymbolDefinitionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\SimpleSymbolDefinitionEditorCtrl.resx">
+      <DependentUpon>SimpleSymbolDefinitionEditorCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\SimpleSymbolReferenceCtrl.resx">
+      <DependentUpon>SimpleSymbolReferenceCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\SymbolField.resx">
+      <DependentUpon>SymbolField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\SymbolGraphicsCtrl.resx">
+      <DependentUpon>SymbolGraphicsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\SymbolParameterDialog.resx">
+      <DependentUpon>SymbolParameterDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\SymbolParameterEditor.resx">
+      <DependentUpon>SymbolParameterEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\UsageContextsCtrl.resx">
+      <DependentUpon>UsageContextsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WatermarkDefinition\TilePositionEditor.resx">
+      <DependentUpon>TilePositionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WatermarkDefinition\WatermarkCollectionEditorCtrl.resx">
+      <DependentUpon>WatermarkCollectionEditorCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WatermarkDefinition\WatermarkEditorCtrl.resx">
+      <DependentUpon>WatermarkEditorCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WatermarkDefinition\WatermarkInstanceEditor.resx">
+      <DependentUpon>WatermarkInstanceEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WatermarkDefinition\WatermarkInstanceEditorDialog.resx">
+      <DependentUpon>WatermarkInstanceEditorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WatermarkDefinition\XYPositionEditor.resx">
+      <DependentUpon>XYPositionEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WebLayout\Commands\InvokeScriptCtrl.resx">
       <DependentUpon>InvokeScriptCtrl.cs</DependentUpon>
@@ -1953,6 +2172,11 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\image.png" />
+    <None Include="Resources\layer-shape-curve.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\marker.png" />
+    <None Include="Resources\arrow.png" />
     <None Include="Resources\ruler1.png" />
     <None Include="Resources\document-task.png" />
     <None Include="Resources\document.png" />

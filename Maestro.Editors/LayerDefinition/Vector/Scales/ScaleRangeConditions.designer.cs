@@ -37,6 +37,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             this.areaConditionList = new ConditionListButtons();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitter2 = new System.Windows.Forms.Splitter();
+            this.splitter3 = new System.Windows.Forms.Splitter();
+            this.DisplayComposite = new System.Windows.Forms.CheckBox();
+            this.compositeConditionList = new ConditionListButtons();
             this.SuspendLayout();
             // 
             // DisplayLines
@@ -102,10 +105,32 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             this.splitter2.Name = "splitter2";
             this.splitter2.TabStop = false;
             // 
+            // splitter3
+            // 
+            resources.ApplyResources(this.splitter3, "splitter3");
+            this.splitter3.Name = "splitter3";
+            this.splitter3.TabStop = false;
+            // 
+            // DisplayComposite
+            // 
+            resources.ApplyResources(this.DisplayComposite, "DisplayComposite");
+            this.DisplayComposite.Checked = true;
+            this.DisplayComposite.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.DisplayComposite.Name = "DisplayComposite";
+            this.DisplayComposite.UseVisualStyleBackColor = true;
+            // 
+            // compositeConditionList
+            // 
+            resources.ApplyResources(this.compositeConditionList, "compositeConditionList");
+            this.compositeConditionList.Name = "compositeConditionList";
+            this.compositeConditionList.Owner = null;
+            // 
             // ScaleRangeConditions
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.compositeConditionList);
+            this.Controls.Add(this.DisplayComposite);
+            this.Controls.Add(this.splitter3);
             this.Controls.Add(this.areaConditionList);
             this.Controls.Add(this.DisplayAreas);
             this.Controls.Add(this.splitter2);
@@ -115,6 +140,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             this.Controls.Add(this.pointConditionList);
             this.Controls.Add(this.DisplayPoints);
             this.Name = "ScaleRangeConditions";
+            resources.ApplyResources(this, "$this");
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,5 +156,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private System.Windows.Forms.CheckBox DisplayAreas;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Splitter splitter2;
+        private System.Windows.Forms.Splitter splitter3;
+        private System.Windows.Forms.CheckBox DisplayComposite;
+        private ConditionListButtons compositeConditionList;
     }
 }

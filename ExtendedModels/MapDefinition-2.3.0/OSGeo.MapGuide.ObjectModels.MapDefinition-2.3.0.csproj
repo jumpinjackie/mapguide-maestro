@@ -64,6 +64,10 @@
       <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WatermarkDefinition-2.3.0\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0.csproj">
+      <Project>{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}</Project>
+      <Name>OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

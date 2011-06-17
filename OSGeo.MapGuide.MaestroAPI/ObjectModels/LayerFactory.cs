@@ -338,5 +338,14 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 },
             };
         }
+
+        public ICompositeRule CreateDefaultCompositeRule()
+        {
+#if LDF_100
+            throw new NotImplementedException();
+#else
+            throw new NotImplementedException();
+#endif
+        }
     }
 }

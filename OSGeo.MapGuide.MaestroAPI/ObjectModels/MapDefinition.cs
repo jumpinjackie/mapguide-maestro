@@ -28,6 +28,7 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System.ComponentModel;
+using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -526,7 +527,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         }
 
 #if MDF_230
-        IEnumerable<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark> IMapDefinition2.Watermarks
+        IEnumerable<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark> IWatermarkCollection.Watermarks
         {
             get 
             {
@@ -535,21 +536,21 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
             }
         }
 
-        void IMapDefinition2.AddWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
+        void IWatermarkCollection.AddWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
         {
             var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType;
             if (wm != null)
                 this.Watermarks.Add(wm);
         }
 
-        void IMapDefinition2.RemoveWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
+        void IWatermarkCollection.RemoveWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
         {
             var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType;
             if (wm != null)
                 this.Watermarks.Remove(wm);
         }
 
-        int IMapDefinition2.WatermarkCount
+        int IWatermarkCollection.WatermarkCount
         {
             get { return this.Watermarks.Count; }
         }

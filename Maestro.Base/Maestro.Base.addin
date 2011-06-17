@@ -49,9 +49,7 @@
         <Class id="LoadProcedureEditor100" class="Maestro.Base.Editor.LoadProcedureEditorFactory" />
         <Class id="MapDefinitionEditor100" class="Maestro.Base.Editor.MapDefinitionEditorFactory" />
         <Class id="PrintLayoutEditor100" class="Maestro.Base.Editor.PrintLayoutEditorFactory" />
-        <!--
         <Class id="SymbolDefinitionEditor100" class="Maestro.Base.Editor.SymbolDefinitionEditorFactory" />
-        -->
         <Class id="WebLayoutEditor100" class="Maestro.Base.Editor.WebLayoutEditorFactory" />
     </Path>
 

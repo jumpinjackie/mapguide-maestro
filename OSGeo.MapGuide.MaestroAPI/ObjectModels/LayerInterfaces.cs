@@ -29,6 +29,7 @@ using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI;
 using System.ComponentModel;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
 {
@@ -330,6 +331,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="symbolName"></param>
         /// <returns></returns>
         IW2DSymbol CreateDefaultW2DSymbol(string symbolLibrary, string symbolName);
+
+        ICompositeRule CreateDefaultCompositeRule();
     }
 
     /// <summary>
@@ -358,6 +361,14 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// Gets or sets the resource id which is the data source for this layer
         /// </summary>
         string ResourceId { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the base of all layer definitions. Based on Layer Definition schema
+    /// version 2.3.0
+    /// </summary>
+    public interface ISubLayerDefinition2 : ISubLayerDefinition, IWatermarkCollection
+    {
     }
 
     /// <summary>

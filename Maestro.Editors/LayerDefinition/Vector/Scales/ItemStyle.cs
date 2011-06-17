@@ -37,6 +37,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private IPointSymbolization2D m_point;
         private IList<IStroke> m_line;
         private IAreaSymbolizationFill m_area;
+        private ICompositeSymbolization m_comp;
         private Image m_w2dsymbol;
 
         private object m_parent;
@@ -45,6 +46,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private bool isPoint = false;
         private bool isLine = false;
         private bool isArea = false;
+        private bool isComp = false;
         private bool isW2dSymbol = false;
 
         public event EventHandler ItemChanged;
@@ -77,8 +79,16 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         public void SetItem(IPointRule parent, IPointSymbolization2D point, Image img)
         {
-            isPoint = (point.Symbol.Type != PointSymbolType.W2D);
-            isW2dSymbol = (point.Symbol.Type == PointSymbolType.W2D);
+            if (point == null)
+            {
+                isPoint = false;
+                isW2dSymbol = false;
+            }
+            else
+            {
+                isPoint = (point.Symbol.Type != PointSymbolType.W2D);
+                isW2dSymbol = (point.Symbol.Type == PointSymbolType.W2D);
+            }
             SetItemInternal(parent, point);
             m_w2dsymbol = img;
         }
@@ -95,12 +105,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             SetItemInternal(parent, area);
         }
 
+        public void SetItem(ICompositeRule parent, ICompositeSymbolization comp)
+        {
+            isComp = true;
+            SetItemInternal(parent, comp);
+        }
+
         private void SetItemInternal(object parent, object item)
         {
             m_parent = parent;
             m_label = item as ITextSymbol;
             m_point = item as IPointSymbolization2D;
             m_area = item as IAreaSymbolizationFill;
+            m_comp = item as ICompositeSymbolization;
             m_w2dsymbol = item as Image;
 
             if (item is IEnumerable<IStroke>)
@@ -134,6 +151,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             {
                 FeaturePreviewRender.RenderPreviewArea(e.Graphics, rect, m_area);
             }
+            else if (m_comp != null)
+            {
+                FeaturePreviewRender.RenderNoPreview(e.Graphics, rect);
+            }
             else
                 FeaturePreviewRender.RenderPreviewFont(e.Graphics, rect, null);
         }
@@ -165,6 +186,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             {
                 uc = new AreaFeatureStyleEditor(m_owner.Editor, m_owner.Schema, m_owner.FeatureSourceId);
                 ((AreaFeatureStyleEditor)uc).Item = m_area == null ? null : (IAreaSymbolizationFill)m_area.Clone(); //(IAreaSymbolizationFill)Utility.XmlDeepCopy(m_area);
+            }
+            else if (isComp)
+            {
+                var diag = new SymbolInstancesDialog(m_owner.Editor, m_comp);
             }
 
             if (uc != null)

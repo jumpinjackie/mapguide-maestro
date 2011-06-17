@@ -97,5 +97,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
             this.SpatialContextAssociation = (srs != null ? srs.Value : string.Empty);
         }
+
+        public override OSGeo.MapGuide.ObjectModels.Common.ExpressionDataType ExpressionType
+        {
+            get { return OSGeo.MapGuide.ObjectModels.Common.ExpressionDataType.Raster; }
+        }
     }
 }

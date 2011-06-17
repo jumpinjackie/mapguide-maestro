@@ -64,22 +64,10 @@ namespace Maestro.Base.Editor
             var dl = _res.SubLayer as IDrawingLayerDefinition;
             if (vl != null)
             {
-                //TODO: This is a stopgap measure until we have proper editor support for Composite Type styles.
-                //Until then, we check if it has composite style rules. Show a placeholder if we find any because this
-                //editor cannot edit them
-                if (HasCompositeRules(vl))
-                {
-                    var ed = new UnsupportedEditorControl();
-                    ed.Dock = DockStyle.Fill;
-                    panelBody.Controls.Add(ed);
-                }
-                else
-                {
-                    var ed = new VectorLayerEditorCtrl();
-                    ed.Bind(service);
-                    ed.Dock = DockStyle.Fill;
-                    panelBody.Controls.Add(ed);
-                }
+                var ed = new VectorLayerEditorCtrl();
+                ed.Bind(service);
+                ed.Dock = DockStyle.Fill;
+                panelBody.Controls.Add(ed);
             }
             else if (gl != null)
             {

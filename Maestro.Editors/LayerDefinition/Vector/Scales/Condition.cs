@@ -36,6 +36,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private IPointRule m_prt;
         private ILineRule m_lrt;
         private IAreaRule m_art;
+        private ICompositeRule m_comp;
         private bool m_isUpdating = false;
 
         public event EventHandler ItemDeleted;
@@ -81,11 +82,17 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             SetItemInternal(art);
         }
 
+        public void SetItem(ICompositeRule comp)
+        {
+            SetItemInternal(comp);
+        }
+
         private void SetItemInternal(object item)
         {
             m_prt = item as IPointRule;
             m_lrt = item as ILineRule;
             m_art = item as IAreaRule;
+            m_comp = item as ICompositeRule;
 
             try
             {
@@ -95,14 +102,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     RuleCondition.Text = m_prt.Filter;
                     LegendLabel.Text = m_prt.LegendLabel;
                     Image w2d = null;
-                    //Determine if this is a w2d symbol style
-                    if (m_prt.PointSymbolization2D.Symbol.Type == PointSymbolType.W2D)
+                    if (m_prt.PointSymbolization2D != null)
                     {
-                        var sym = (IW2DSymbol)m_prt.PointSymbolization2D.Symbol;
-                        w2d = SymbolPicker.GetSymbol(_conn, sym.W2DSymbol.ResourceId, sym.W2DSymbol.LibraryItemName);
+                        //Determine if this is a w2d symbol style
+                        if (m_prt.PointSymbolization2D.Symbol.Type == PointSymbolType.W2D)
+                        {
+                            var sym = (IW2DSymbol)m_prt.PointSymbolization2D.Symbol;
+                            w2d = SymbolPicker.GetSymbol(_conn, sym.W2DSymbol.ResourceId, sym.W2DSymbol.LibraryItemName);
+                        }
                     }
                     FeatureStyle.SetItem(m_prt, m_prt.PointSymbolization2D, w2d);
                     LabelStyle.SetItem(m_prt, m_prt.Label);
+                    LabelStyle.Visible = true;
                 }
                 else if (m_lrt != null)
                 {
@@ -110,6 +121,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     LegendLabel.Text = m_lrt.LegendLabel;
                     FeatureStyle.SetItem(m_lrt, m_lrt.Strokes);
                     LabelStyle.SetItem(m_lrt, m_lrt.Label);
+                    LabelStyle.Visible = true;
                 }
                 else if (m_art != null)
                 {
@@ -117,6 +129,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     LegendLabel.Text = m_art.LegendLabel;
                     FeatureStyle.SetItem(m_art, m_art.AreaSymbolization2D);
                     LabelStyle.SetItem(m_art, m_art.Label);
+                    LabelStyle.Visible = true;
+                }
+                else if (m_comp != null)
+                {
+                    RuleCondition.Text = m_comp.Filter;
+                    LegendLabel.Text = m_comp.LegendLabel;
+                    FeatureStyle.SetItem(m_comp, m_comp.CompositeSymbolization);
+                    LabelStyle.Visible = false;
                 }
             }
             finally
@@ -135,6 +155,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     return m_lrt;
                 else if (m_art != null)
                     return m_art;
+                else if (m_comp != null)
+                    return m_comp;
                 else
                     return null;
             }

@@ -28,6 +28,7 @@ using System.Globalization;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using System.Xml;
 using System.IO;
+using OSGeo.MapGuide.ObjectModels.Common;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -37,22 +38,13 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0
 namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 #endif
 {
-    partial class SimpleSymbolDefinition : ISimpleSymbolDefinition
+    partial class SymbolDefinitionBase : ISymbolDefinitionBase
     {
-        public static SimpleSymbolDefinition CreateDefault()
-        {
-            var simpleSym = new SimpleSymbolDefinition()
-            {
-                Graphics = new System.ComponentModel.BindingList<GraphicBase>(),
-                ParameterDefinition = new ParameterDefinition()
-                {
-                    Parameter = new System.ComponentModel.BindingList<Parameter>()
-                }
-            };
-            return simpleSym;
-        }
-
+#if SYM_DEF_110
+        private static readonly Version RES_VERSION = new Version(1, 1, 0);
+#else
         private static readonly Version RES_VERSION = new Version(1, 0, 0);
+#endif
 
         [XmlIgnore]
         public OSGeo.MapGuide.MaestroAPI.IServerConnection CurrentConnection
@@ -108,9 +100,13 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         }
 
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
-        public string ValidatingSchema 
-        { 
+        public string ValidatingSchema
+        {
+#if SYM_DEF_110
+            get { return "SymbolDefinition-1.1.0.xsd"; }
+#else
             get { return "SymbolDefinition-1.0.0.xsd"; }
+#endif
             set { }
         }
 
@@ -118,6 +114,22 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         public bool IsStronglyTyped
         {
             get { return true; }
+        }
+    }
+
+    partial class SimpleSymbolDefinition : ISimpleSymbolDefinition
+    {
+        public static SimpleSymbolDefinition CreateDefault()
+        {
+            var simpleSym = new SimpleSymbolDefinition()
+            {
+                Graphics = new System.ComponentModel.BindingList<GraphicBase>(),
+                ParameterDefinition = new ParameterDefinition()
+                {
+                    Parameter = new System.ComponentModel.BindingList<Parameter>()
+                }
+            };
+            return simpleSym;
         }
 
         [XmlIgnore]
@@ -207,187 +219,132 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         {
             get { return parameterDefinitionField; }
         }
+
+
+        public IImageReference CreateImageReference(string resourceId, string dataName)
+        {
+            return new ImageReference()
+            {
+                ResourceId = resourceId,
+                LibraryItemName = dataName
+            };
+        }
+
+        public IInlineImage CreateInlineImage(byte[] content)
+        {
+            return new InlineImage() { Content = content };
+        }
+
+        public IPointUsage CreatePointUsage()
+        {
+            return new PointUsage()
+            {
+                //Angle = "0",
+                //AngleControl = "'FromAngle'",
+                //OriginOffsetX = "0.0",
+                //OriginOffsetY = "0.0"
+            };
+        }
+
+        public ILineUsage CreateLineUsage()
+        {
+            return new LineUsage()
+            {
+                //Angle = "0",
+                //AngleControl = "'FromGeometry'",
+                /*
+                DefaultPath = new Path()
+                {
+                    
+                },*/
+                //EndOffset = "0",
+                //Repeat = "0",
+                //StartOffset = "0",
+                //UnitsControl = "'Absolute'",
+                //VertexAngleLimit = "0",
+                //VertexControl = "'OverlapNone'",
+                //VertexJoin = "'Round'",
+                //VertexMiterLimit = "5"
+            };
+        }
+
+        public IAreaUsage CreateAreaUsage()
+        {
+            return new AreaUsage()
+            {
+                //Angle = "0",
+                //AngleControl = "'FromAngle'",
+                //BufferWidth = "0",
+                //ClippingControl = "'Clip'",
+                //OriginControl = "'Global'",
+                //OriginX = "0",
+                //OriginY = "0",
+                //RepeatX = "0",
+                //RepeatY = "0"
+            };
+        }
+
+        public IResizeBox CreateResizeBox()
+        {
+            return new ResizeBox()
+            {
+                SizeX = "1.0",
+                SizeY = "1.0",
+                PositionX = "0.0",
+                PositionY = "0.0",
+                GrowControl = "\'GrowInXYMaintainAspect\'"
+            };
+        }
+
+
+        public ITextFrame CreateFrame()
+        {
+            return new TextFrame() { };
+        }
+
+        public ITextGraphic CreateTextGraphics()
+        {
+            return new Text() { };
+        }
+
+        public IPathGraphic CreatePathGraphics()
+        {
+            return new Path() { };
+        }
+
+        public IImageGraphic CreateImageGraphics()
+        {
+            return new Image() { };
+        }
+
+        public IParameter CreateParameter()
+        {
+            return new Parameter() { };
+        }
+    }
+
+    public class InlineImage : IInlineImage
+    {
+        public byte[] Content
+        {
+            get;
+            set;
+        }
+
+        public ImageType Type
+        {
+            get { return ImageType.Inline; }
+        }
     }
 
 #if SYM_DEF_110
-    partial class Text : IText2
+    partial class Text : ITextGraphic2
 #else
-    partial class Text : IText
+    partial class Text : ITextGraphic
 #endif
     {
         [XmlIgnore]
-        bool? IText.Bold
-        {
-            get
-            {
-                bool b;
-                if (!bool.TryParse(this.Bold, out b))
-                    return b;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.Bold = value.Value ? "true" : "false";
-                else
-                    this.Bold = null;
-            }
-        }
-
-        [XmlIgnore]
-        bool? IText.Italic
-        {
-            get
-            {
-                bool b;
-                if (!bool.TryParse(this.Italic, out b))
-                    return b;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.Italic = value.Value ? "true" : "false";
-                else
-                    this.Italic = null;
-            }
-        }
-
-        [XmlIgnore]
-        bool? IText.Underlined
-        {
-            get
-            {
-                bool b;
-                if (!bool.TryParse(this.Underlined, out b))
-                    return b;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.Underlined = value.Value ? "true" : "false";
-                else
-                    this.Underlined = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IText.Height
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.Height, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.Height = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.Height = null;
-            }
-        }
-
-        [XmlIgnore]
-        bool? IText.HeightScalable
-        {
-            get
-            {
-                bool b;
-                if (!bool.TryParse(this.HeightScalable, out b))
-                    return b;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.HeightScalable = value.Value ? "true" : "false";
-                else
-                    this.HeightScalable = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IText.Angle
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.Angle, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.Angle = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.Angle = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IText.PositionX
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.PositionX, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.PositionX = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.PositionX = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IText.PositionY
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.PositionY, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.PositionY = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.PositionY = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IText.LineSpacing
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.LineSpacing, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.LineSpacing = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.LineSpacing = null;
-            }
-        }
-
-        [XmlIgnore]
-        ITextFrame IText.Frame
+        ITextFrame ITextGraphic.Frame
         {
             get
             {
@@ -443,81 +400,6 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class ResizeBox : IResizeBox
     {
-        [XmlIgnore]
-        double? IResizeBox.SizeX
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.SizeX, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.SizeX = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.SizeX = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IResizeBox.SizeY
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.SizeY, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.SizeY = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.SizeY = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IResizeBox.PositionX
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.PositionX, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.PositionX = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.PositionX = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IResizeBox.PositionY
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.PositionY, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.PositionY = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.PositionY = null;
-            }
-        }
     }
 
     partial class Graphics : IGraphics
@@ -576,6 +458,112 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 #endif
             }
         }
+
+        string IExpressionPropertySource.Name
+        {
+            get { return this.Identifier; }
+        }
+
+        string IExpressionPropertySource.Description
+        {
+            get { return this.Description; }
+        }
+
+#if SYM_DEF_110
+        static ExpressionDataType GetExpressionType(DataType2 dt)
+        {
+            switch (dt)
+            {
+                case DataType2.Angle:
+                    return ExpressionDataType.Sym_Angle;
+                case DataType2.Bold:
+                    return ExpressionDataType.Sym_Bold;
+                case DataType2.Boolean:
+                    return ExpressionDataType.Sym_Boolean;
+                case DataType2.Color:
+                    return ExpressionDataType.Sym_Color;
+                case DataType2.Content:
+                    return ExpressionDataType.Sym_Content; 
+                case DataType2.EndOffset:
+                    return ExpressionDataType.Sym_EndOffset;
+                case DataType2.FillColor:
+                    return ExpressionDataType.Sym_FillColor;
+                case DataType2.FontHeight:
+                    return ExpressionDataType.Sym_FontHeight;
+                case DataType2.FontName:
+                    return ExpressionDataType.Sym_FontName;
+                case DataType2.FrameFillColor:
+                    return ExpressionDataType.Sym_FrameFillColor;
+                case DataType2.FrameLineColor:
+                    return ExpressionDataType.Sym_FrameLineColor;
+                case DataType2.GhostColor:
+                    return ExpressionDataType.Sym_GhostColor;
+                case DataType2.HorizontalAlignment:
+                    return ExpressionDataType.Sym_HorizontalAlignment;
+                case DataType2.Integer:
+                    return ExpressionDataType.Sym_Integer;
+                case DataType2.Italic:
+                    return ExpressionDataType.Sym_Italic;
+                case DataType2.Justification:
+                    return ExpressionDataType.Sym_Justification;
+                case DataType2.LineColor:
+                    return ExpressionDataType.Sym_LineColor;
+                case DataType2.LineSpacing:
+                    return ExpressionDataType.Sym_LineSpacing;
+                case DataType2.LineWeight:
+                    return ExpressionDataType.Sym_LineWeight;
+                case DataType2.Markup:
+                    return ExpressionDataType.Sym_Markup;
+                case DataType2.ObliqueAngle:
+                    return ExpressionDataType.Sym_ObliqueAngle;
+                case DataType2.Overlined:
+                    return ExpressionDataType.Sym_Overlined;
+                case DataType2.Real:
+                    return ExpressionDataType.Sym_Real;
+                case DataType2.RepeatX:
+                    return ExpressionDataType.Sym_RepeatX;
+                case DataType2.RepeatY:
+                    return ExpressionDataType.Sym_RepeatY;
+                case DataType2.StartOffset:
+                    return ExpressionDataType.Sym_StartOffset;
+                case DataType2.String:
+                    return ExpressionDataType.Sym_String;
+                case DataType2 .TextColor:
+                    return ExpressionDataType.Sym_TextColor;
+                case DataType2.TrackSpacing:
+                    return ExpressionDataType.Sym_TrackSpacing;
+                case DataType2.Underlined:
+                    return ExpressionDataType.Sym_Underlined;
+                case DataType2.VerticalAlignment:
+                    return ExpressionDataType.Sym_VerticalAlignment;
+            }
+            throw new ArgumentException();
+        }
+#else
+        static ExpressionDataType GetExpressionType(DataType dt)
+        {
+            switch (dt)
+            {
+                case DataType.Boolean:
+                    return ExpressionDataType.Sym_Boolean;
+                case DataType.Color:
+                    return ExpressionDataType.Sym_Color;
+                case DataType.Integer:
+                    return ExpressionDataType.Sym_Integer;
+                case DataType.Real:
+                    return ExpressionDataType.Sym_Real;
+                case DataType.String:
+                    return ExpressionDataType.Sym_String;
+            }
+            throw new ArgumentException();
+        }
+#endif
+
+
+        ExpressionDataType IExpressionPropertySource.ExpressionType
+        {
+            get { return GetExpressionType(this.DataType); }
+        }
     }
  
 
@@ -615,83 +603,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
     partial class LineUsage : ILineUsage
     {
         [XmlIgnore]
-        double? ILineUsage.StartOffset
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.StartOffset, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.StartOffset = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.StartOffset = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? ILineUsage.EndOffset
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.EndOffset, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.EndOffset = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.EndOffset = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? ILineUsage.Repeat
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.Repeat, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.Repeat = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.Repeat = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? ILineUsage.VertexAngleLimit
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.VertexAngleLimit, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.VertexAngleLimit = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.VertexAngleLimit = null;
-            }
-        }
-
-        [XmlIgnore]
-        IPath ILineUsage.DefaultPath
+        IPathGraphic ILineUsage.DefaultPath
         {
             get
             {
@@ -702,275 +614,21 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
                 this.DefaultPath = (Path)value;
             }
         }
-
-        [XmlIgnore]
-        double? IUsageBase.Angle
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.Angle, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.Angle = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.Angle = null;
-            }
-        }
     }
 
     partial class PointUsage : IPointUsage
     {
-        [XmlIgnore]
-        double? IPointUsage.OriginOffsetX
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.OriginOffsetX, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.OriginOffsetX = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.OriginOffsetX = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IPointUsage.OriginOffsetY
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.OriginOffsetY, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.OriginOffsetY = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.OriginOffsetY = null;
-            }
-        }
-
-        [XmlIgnore]
-        string IUsageBase.AngleControl
-        {
-            get
-            {
-                return this.AngleControl;
-            }
-            set
-            {
-                this.AngleControl = value;
-            }
-        }
-
-        [XmlIgnore]
-        double? IUsageBase.Angle
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.Angle, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.Angle = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.Angle = null;
-            }
-        }
+        
     }
 
     partial class AreaUsage : IAreaUsage
     {
-        [XmlIgnore]
-        double? IAreaUsage.OriginX
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.OriginX, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.OriginX = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.OriginX = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IAreaUsage.OriginY
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.OriginY, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.OriginY = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.OriginY = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IAreaUsage.RepeatX
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.RepeatX, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.RepeatX = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.RepeatX = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IAreaUsage.RepeatY
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.RepeatY, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.RepeatY = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.RepeatY = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IAreaUsage.BufferWidth
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.BufferWidth, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.BufferWidth = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.BufferWidth = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IUsageBase.Angle
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.Angle, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.Angle = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.Angle = null;
-            }
-        }
+        
     }
 
-    partial class Path : IPath
+    partial class Path : IPathGraphic
     {
-        [XmlIgnore]
-        double? IPath.LineWeight
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.LineWeight, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.LineWeight = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.LineWeight = null;
-            }
-        }
-
-        [XmlIgnore]
-        bool? IPath.LineWeightScalable
-        {
-            get
-            {
-                bool b;
-                if (!bool.TryParse(this.LineWeightScalable, out b))
-                    return b;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.LineWeightScalable = value.Value ? "true" : "false";
-                else
-                    this.LineWeightScalable = null;
-            }
-        }
-
-        [XmlIgnore]
-        double? IPath.LineMiterLimit
-        {
-            get
-            {
-                double d;
-                if (!double.TryParse(this.LineMiterLimit, out d))
-                    return d;
-                return null;
-            }
-            set
-            {
-                if (value.HasValue)
-                    this.LineMiterLimit = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.LineMiterLimit = null;
-            }
-        }
+        
     }
 
     partial class CompoundSymbolDefinition : ICompoundSymbolDefinition
@@ -982,74 +640,6 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
                 SimpleSymbol = new System.ComponentModel.BindingList<SimpleSymbol>(),
             };
             return sym;
-        }
-
-        private static readonly Version RES_VERSION = new Version(1, 0, 0);
-
-        [XmlIgnore]
-        public OSGeo.MapGuide.MaestroAPI.IServerConnection CurrentConnection
-        {
-            get;
-            set;
-        }
-
-        private string _resId;
-
-        [XmlIgnore]
-        public string ResourceID
-        {
-            get
-            {
-                return _resId;
-            }
-            set
-            {
-                if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException("Not a valid resource identifier"); //LOCALIZE
-
-                var res = new ResourceIdentifier(value);
-                if (res.Extension != ResourceTypes.SymbolDefinition.ToString())
-                    throw new InvalidOperationException("Invalid resource identifier for this type of object: " + res.Extension); //LOCALIZE
-
-                _resId = value;
-                this.OnPropertyChanged("ResourceID");
-            }
-        }
-
-        [XmlIgnore]
-        public ResourceTypes ResourceType
-        {
-            get
-            {
-                return ResourceTypes.SymbolDefinition;
-            }
-        }
-
-        [XmlIgnore]
-        public Version ResourceVersion
-        {
-            get
-            {
-                return RES_VERSION;
-            }
-        }
-
-        object ICloneable.Clone()
-        {
-            return this.Clone();
-        }
-
-        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
-        public string ValidatingSchema
-        {
-            get { return "SymbolDefinition-1.0.0.xsd"; }
-            set { }
-        }
-
-        [XmlIgnore]
-        public bool IsStronglyTyped
-        {
-            get { return true; }
         }
 
         [XmlIgnore]
@@ -1080,6 +670,16 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             {
                 this.SimpleSymbol.Remove(symb);
             }
+        }
+
+        public ISimpleSymbolReferenceBase CreateSimpleSymbol(ISimpleSymbolDefinition sym)
+        {
+            return new SimpleSymbol() { Item = (SimpleSymbolDefinition)sym };
+        }
+
+        public ISimpleSymbolReferenceBase CreateSymbolReference(string resourceId)
+        {
+            return new SimpleSymbol() { Item = resourceId };
         }
     }
 
@@ -1135,13 +735,52 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
     }
+
+    partial class Image : IImageGraphic
+    {
+        IImageBase IImageGraphic.Item
+        {
+            get
+            {
+                byte[] content = this.Item as byte[];
+                ImageReference imageRef = this.Item as ImageReference;
+                if (content != null)
+                    return new InlineImage() { Content = content };
+                else if (imageRef != null)
+                    return imageRef;
+                else
+                    return null;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    var inline = value as IInlineImage;
+                    var imageRef = value as IImageReference;
+                    if (inline != null)
+                        this.Item = inline.Content;
+                    else if (imageRef != null)
+                        this.Item = (ImageReference)imageRef;
+                }
+                else
+                {
+                    this.Item = null;
+                }
+            }
+        }
+    }
  
-    partial class ImageReference : ISymbolLibraryReference
+    partial class ImageReference : ISymbolLibraryReference, IImageReference
     {
         [XmlIgnore]
         SymbolInstanceType ISymbolInstanceReference.Type
         {
             get { return SymbolInstanceType.Reference; }
+        }
+
+        ImageType IImageBase.Type
+        {
+            get { return ImageType.Reference; }
         }
     }
 }

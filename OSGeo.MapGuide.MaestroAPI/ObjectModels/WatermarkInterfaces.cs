@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using System.ComponentModel;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
 namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
 {
@@ -107,7 +108,7 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
         /// <summary>
         /// Gets or sets a symbol definition defining the content of the watermark
         /// </summary>
-        object Content { get; set; }
+        ISymbolDefinitionBase Content { get; set; }
 
         /// <summary>
         /// Gets or sets the appearance of the watermark
@@ -118,6 +119,12 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
         /// Gets or sets the position of the watermark
         /// </summary>
         IPosition Position { get; set; }
+
+        /// <summary>
+        /// Creates an new watermark instance from this definition
+        /// </summary>
+        /// <returns></returns>
+        IWatermark CreateInstance();
     }
 
     /// <summary>
@@ -241,6 +248,34 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
     }
 
     /// <summary>
+    /// Defines a collection of <see cref="IWatermark"/> instances
+    /// </summary>
+    public interface IWatermarkCollection
+    {
+        /// <summary>
+        /// Gets the watermarks used by this map definition
+        /// </summary>
+        IEnumerable<IWatermark> Watermarks { get; }
+
+        /// <summary>
+        /// Adds a watermark
+        /// </summary>
+        /// <param name="watermark"></param>
+        void AddWatermark(IWatermark watermark);
+
+        /// <summary>
+        /// Removes the specified watermark
+        /// </summary>
+        /// <param name="watermark"></param>
+        void RemoveWatermark(IWatermark watermark);
+
+        /// <summary>
+        /// Gets the number of watermarks used by this map definition
+        /// </summary>
+        int WatermarkCount { get; }
+    }
+
+    /// <summary>
     /// A watermark instance used in a map definition or layer definition
     /// </summary>
     public interface IWatermark
@@ -269,5 +304,11 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
         /// If specified, overrides the position of the watermark definition
         /// </summary>
         IPosition PositionOverride { get; set; }
+
+        IWatermarkAppearance CreateDefaultAppearance();
+
+        IXYPosition CreateDefaultXYPosition();
+
+        ITilePosition CreateDefaultTilePosition();
     }
 }

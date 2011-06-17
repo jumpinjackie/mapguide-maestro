@@ -71,6 +71,8 @@ namespace Maestro.Editors
             }
         }
 
+        internal void RaiseResourceChanged() { OnResourceChanged(); }
+
         /// <summary>
         /// Called when [resource changed].
         /// </summary>
