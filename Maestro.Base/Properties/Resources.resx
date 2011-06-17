@@ -1022,4 +1022,7 @@ Error message: {1}</value>
   <data name="SiteExplorer_ShowSpatialContexts" xml:space="preserve">
     <value>Show Spatial Contexts</value>
   </data>
+  <data name="KeepAliveFailed" xml:space="preserve">
+    <value>Failed to keep session alive. This would happen if connectivity to the MapGuide Server has been lost (it has been stopped or restarted). Refresh the Site Explorer to create a new session. Also close any existing editors and re-open them.</value>
+  </data>
 </root>

@@ -1,0 +1,9 @@
+Maestro Error Report
+====================
+
+Version: {0}
+Date: {1}
+
+Message: {2}
+
+Details: {3}

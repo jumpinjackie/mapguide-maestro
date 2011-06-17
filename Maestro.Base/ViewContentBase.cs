@@ -26,6 +26,7 @@ using System.Text;
 using System.Windows.Forms;
 using ICSharpCode.Core.WinForms;
 using ICSharpCode.Core;
+using Maestro.Shared.UI;
 
 namespace Maestro.Base
 {
@@ -86,7 +87,7 @@ namespace Maestro.Base
 
         public void ShowError(Exception ex)
         {
-            MessageService.ShowError(ex);
+            ErrorDialog.Show(ex);
         }
 
         public void ShowError(string message)

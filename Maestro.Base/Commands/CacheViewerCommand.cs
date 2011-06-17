@@ -24,6 +24,7 @@ using ICSharpCode.Core;
 using Maestro.Base.Services;
 using Maestro.Editors.Diagnostics;
 using OSGeo.MapGuide.MaestroAPI.Commands;
+using Maestro.Shared.UI;
 
 namespace Maestro.Base.Commands
 {
@@ -42,7 +43,7 @@ namespace Maestro.Base.Commands
             }
             catch (Exception ex)
             {
-                MessageService.ShowError(ex.Message);
+                ErrorDialog.Show(ex);
             }
         }
     }

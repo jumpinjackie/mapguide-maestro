@@ -58,8 +58,15 @@ namespace Maestro.Base.Events
                 string sessionId = conn.SessionID;
                 if (!string.IsNullOrEmpty(sessionId))
                 {
-                    conn.FeatureService.GetProviderCapabilities("OSGeo.SDF");
-                    LoggingService.Info("Session kept alive: " + sessionId);
+                    try
+                    {
+                        conn.FeatureService.GetProviderCapabilities("OSGeo.SDF");
+                        LoggingService.Info("Session kept alive: " + sessionId);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageService.ShowError(Properties.Resources.KeepAliveFailed);
+                    }
                 }
             }
         }

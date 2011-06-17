@@ -30,6 +30,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using ICSharpCode.Core.WinForms;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using Maestro.Login;
+using Maestro.Shared.UI;
 
 namespace Maestro
 {
@@ -134,7 +135,7 @@ namespace Maestro
                 }
                 catch (Exception ex)
                 {
-                    MessageService.ShowError(ex, "Error storing properties");
+                    ErrorDialog.Show("Error storing properties", ex.ToString());
                 }
             }
             LoggingService.Info("Application shutdown");
@@ -147,7 +148,7 @@ namespace Maestro
 
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            MessageService.ShowError(e.Exception);
+            ErrorDialog.Show(e.Exception);
         }
     }
 }

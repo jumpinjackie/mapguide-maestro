@@ -31,6 +31,7 @@ using ICSharpCode.Core;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using Maestro.Base.UI;
 using Maestro.Base.UI.Preferences;
+using Maestro.Shared.UI;
 
 namespace Maestro.Base.Editor
 {
@@ -132,7 +133,7 @@ namespace Maestro.Base.Editor
             }
             catch (Exception ex)
             {
-                MessageService.ShowError(ex);
+                ErrorDialog.Show(ex);
                 e.Cancel = true;
             }
         }

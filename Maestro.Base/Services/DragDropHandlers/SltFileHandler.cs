@@ -24,6 +24,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using System.IO;
 using ICSharpCode.Core;
 using OSGeo.MapGuide.ObjectModels;
+using Maestro.Shared.UI;
 
 namespace Maestro.Base.Services.DragDropHandlers
 {
@@ -73,7 +74,7 @@ namespace Maestro.Base.Services.DragDropHandlers
             }
             catch (Exception ex)
             {
-                MessageService.ShowError(ex);
+                ErrorDialog.Show(ex);
                 return false;
             }
         }

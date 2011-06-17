@@ -23,6 +23,7 @@ using System.Text;
 using System.IO;
 using ICSharpCode.Core;
 using Maestro.Packaging;
+using Maestro.Shared.UI;
 
 namespace Maestro.Base.Services.DragDropHandlers
 {
@@ -64,7 +65,7 @@ namespace Maestro.Base.Services.DragDropHandlers
             }
             catch (Exception ex)
             {
-                MessageService.ShowError(ex);
+                ErrorDialog.Show(ex);
                 return false;
             }
         }

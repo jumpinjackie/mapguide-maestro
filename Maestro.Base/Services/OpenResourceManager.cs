@@ -25,6 +25,7 @@ using Maestro.Base.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Base.Editor;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using Maestro.Shared.UI;
 
 namespace Maestro.Base.Services
 {
@@ -203,7 +204,7 @@ namespace Maestro.Base.Services
             }
             catch (Exception ex)
             {
-                MessageService.ShowError(ex);
+                ErrorDialog.Show(ex);
                 return null;
             }
         }
