@@ -29,6 +29,9 @@ using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System.Collections;
 using Maestro.Editors.Common;
+using System.Globalization;
+using Maestro.Editors.LayerDefinition.Vector.Scales;
+using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
 
 namespace Maestro.Editors.LayerDefinition.Vector
 {
@@ -39,6 +42,9 @@ namespace Maestro.Editors.LayerDefinition.Vector
         public VectorLayerStyleSectionCtrl()
         {
             InitializeComponent();
+            cmbMinScale.Items.Add("0");
+            cmbMaxScale.Items.Add(Properties.Resources.Infinity);
+            lstScaleRanges.DataSource = _scales;
         }
 
         private ILayerElementFactory _factory;
@@ -52,40 +58,35 @@ namespace Maestro.Editors.LayerDefinition.Vector
             var res = (ILayerDefinition)service.GetEditedResource();
             _vl = (IVectorLayerDefinition)res.SubLayer;
             _factory = (ILayerElementFactory)res;
-
-            scaleRangeList.SetItem(_vl);
-            scaleRangeList.ResizeAuto();
-
+            BindScaleList(_vl.VectorScaleRange);
             EvaluateCommands();
         }
 
-        public VectorLayerEditorCtrl Owner
-        {
-            set { scaleRangeList.Owner = value; }
-        }
+        public VectorLayerEditorCtrl Owner { get; internal set; }
+
+        public ILayerElementFactory Factory { get { return _factory; } }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddScaleRange(_factory.CreateVectorScaleRange());
+            AddScaleRange(new VectorScaleRange() { Item = _factory.CreateVectorScaleRange() });
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (scaleRangeList.SelectedItem == null)
-                return;
-            IVectorScaleRange vsc = scaleRangeList.SelectedItem;
-            scaleRangeList.RemoveScaleRange(vsc);
-            _vl.RemoveVectorScaleRange(vsc);
-
-            _edsvc.HasChanged();
+            var vsc = lstScaleRanges.SelectedItem as VectorScaleRange;
+            if (vsc != null)
+            {
+                RemoveScaleRange(vsc);
+            }
         }
 
         private void btnDuplicate_Click(object sender, EventArgs e)
         {
-            if (scaleRangeList.SelectedItem == null)
-                return;
-
-            AddScaleRange(scaleRangeList.SelectedItem.Clone());
+            var vsc = lstScaleRanges.SelectedItem as VectorScaleRange;
+            if (vsc != null)
+            {
+                AddScaleRange(vsc.Clone());
+            }
         }
 
         private void btnSort_Click(object sender, EventArgs e)
@@ -111,10 +112,84 @@ namespace Maestro.Editors.LayerDefinition.Vector
             }
 
             //Refresh display
-            scaleRangeList.SetItem(_vl);
-            scaleRangeList.ResizeAuto();
+            BindScaleList(_vl.VectorScaleRange);
 
             _edsvc.HasChanged();
+        }
+
+        private BindingList<VectorScaleRange> _scales = new BindingList<VectorScaleRange>();
+
+        private void BindScaleList(IEnumerable<IVectorScaleRange> scales)
+        {
+            _scales.Clear();
+            foreach (var scale in scales)
+            {
+                _scales.Add(new VectorScaleRange() { Item = scale });
+            }
+        }
+
+        class VectorScaleRange : INotifyPropertyChanged
+        {
+            public IVectorScaleRange Item { get; set; }
+
+            public string ScaleDisplayString
+            {
+                get
+                {
+                    return string.Format("{0} : {1}",
+                        this.Item.MinScale.HasValue ? this.Item.MinScale.Value.ToString(CultureInfo.InvariantCulture) : "0",
+                        this.Item.MaxScale.HasValue ? this.Item.MaxScale.Value.ToString(CultureInfo.InvariantCulture) : Properties.Resources.Infinity);
+                }
+            }
+
+            public bool SupportsElevation
+            {
+                get
+                {
+                    var it = this.Item as IVectorScaleRange2;
+                    return (it != null);
+                }
+            }
+
+            public double? MinScale
+            {
+                get
+                {
+                    return this.Item.MinScale;
+                }
+                set
+                {
+                    this.Item.MinScale = value;
+                    OnPropertyChanged("ScaleDisplayString");
+                }
+            }
+
+            public double? MaxScale
+            {
+                get
+                {
+                    return this.Item.MaxScale;
+                }
+                set
+                {
+                    this.Item.MaxScale = value;
+                    OnPropertyChanged("ScaleDisplayString");
+                }
+            }
+
+            internal VectorScaleRange Clone()
+            {
+                return new VectorScaleRange() { Item = this.Item.Clone() };
+            }
+
+            private void OnPropertyChanged(string name)
+            {
+                var handler = this.PropertyChanged;
+                if (handler != null)
+                    handler(this, new PropertyChangedEventArgs(name));
+            }
+
+            public event PropertyChangedEventHandler PropertyChanged;
         }
 
         /// <summary>
@@ -152,35 +227,146 @@ namespace Maestro.Editors.LayerDefinition.Vector
             }
         }
 
-        private void AddScaleRange(IVectorScaleRange vsc)
+        private void RemoveScaleRange(VectorScaleRange vsc)
         {
-            if (_vl == null)
-                return;
-
-            _vl.AddVectorScaleRange(vsc);
-            Control c = scaleRangeList.AddScaleRange(vsc);
-            scaleRangeList.ResizeAuto();
-            _edsvc.HasChanged();
-
-            try { c.Focus(); }
-            catch { }
+            _scales.Remove(vsc);
+            _vl.RemoveVectorScaleRange(vsc.Item);
+            if (_rangeCtrls.ContainsKey(vsc))
+            {
+                _rangeCtrls[vsc].Dispose();
+                _rangeCtrls.Remove(vsc);
+            }
         }
 
-        private void scaleRangeList_ItemChanged(object sender, EventArgs e)
+        private void AddScaleRange(VectorScaleRange vsc)
         {
-            scaleRangeList.ResizeAuto();
-            _edsvc.HasChanged();
-        }
-
-        private void scaleRangeList_SelectionChanged(object sender, EventArgs e)
-        {
-            EvaluateCommands();
+            _scales.Add(vsc);
+            _vl.AddVectorScaleRange(vsc.Item);
+            
         }
 
         private void EvaluateCommands()
         {
-            btnDelete.Enabled = btnDuplicate.Enabled = scaleRangeList.SelectedItem != null;
+            btnDelete.Enabled = btnDuplicate.Enabled = lstScaleRanges.SelectedItem != null;
             btnSort.Enabled = _vl.HasVectorScaleRanges();
+        }
+
+        private Dictionary<VectorScaleRange, VectorScaleRangeCtrl> _rangeCtrls = new Dictionary<VectorScaleRange, VectorScaleRangeCtrl>();
+
+        private void lstScaleRanges_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var vsc = lstScaleRanges.SelectedItem as VectorScaleRange;
+            if (vsc != null)
+            {
+                try
+                {
+                    _update = true;
+
+                    if (vsc.Item.MinScale.HasValue)
+                        cmbMinScale.Text = vsc.Item.MinScale.Value.ToString(CultureInfo.InvariantCulture);
+                    else
+                        cmbMinScale.SelectedIndex = 0;
+
+                    if (vsc.Item.MaxScale.HasValue)
+                        cmbMaxScale.Text = vsc.Item.MaxScale.Value.ToString(CultureInfo.InvariantCulture);
+                    else
+                        cmbMaxScale.SelectedIndex = 0;
+
+                    grpScaleRange.Text = string.Format("{0} ({1})", Properties.Resources.ScaleRange, vsc.ScaleDisplayString);
+                    grpScaleRange.Controls.Clear();
+
+                    btnKmlElevation.Enabled = vsc.SupportsElevation;
+
+                    VectorScaleRangeCtrl ctrl = null;
+                    if (!_rangeCtrls.ContainsKey(vsc))
+                    {
+                        ctrl = new VectorScaleRangeCtrl(vsc.Item, this);
+                        ctrl.Dock = DockStyle.Fill;
+                        _rangeCtrls[vsc] = ctrl;
+                    }
+                    else
+                    {
+                        ctrl = _rangeCtrls[vsc];
+                    }
+                    grpScaleRange.Controls.Add(ctrl);
+                }
+                finally
+                {
+                    _update = false;
+                }
+            }
+        }
+
+        private bool _update = false;
+
+        private void cmbMinScale_TextChanged(object sender, EventArgs e)
+        {
+            if (_update) return;
+            errorProvider.Clear();
+
+            var vsc = lstScaleRanges.SelectedItem as VectorScaleRange;
+            if (vsc != null)
+            {
+                if (cmbMinScale.Text == "0")
+                {
+                    vsc.MinScale = null;
+                }
+                else
+                {
+                    double o;
+                    if (double.TryParse(cmbMinScale.Text, System.Globalization.NumberStyles.Number, System.Threading.Thread.CurrentThread.CurrentUICulture, out o))
+                    {
+                        vsc.MinScale = o;
+                        errorProvider.SetError(cmbMinScale, null);
+                    }
+                    else
+                    {
+                        errorProvider.SetError(cmbMinScale, Properties.Resources.InvalidValueError);
+                    }
+                }
+                OnResourceChanged();
+            }
+        }
+
+        private void cmbMaxScale_TextChanged(object sender, EventArgs e)
+        {
+            if (_update) return;
+            errorProvider.Clear();
+
+            var vsc = lstScaleRanges.SelectedItem as VectorScaleRange;
+            if (vsc != null)
+            {
+                if (cmbMaxScale.Text == Properties.Resources.Infinity)
+                {
+                    vsc.MaxScale = null;
+                }
+                else
+                {
+                    double o;
+                    if (double.TryParse(cmbMaxScale.Text, System.Globalization.NumberStyles.Number, System.Threading.Thread.CurrentThread.CurrentUICulture, out o))
+                    {
+                        vsc.MaxScale = o;
+                        errorProvider.SetError(cmbMaxScale, null);
+                    }
+                    else
+                    {
+                        errorProvider.SetError(cmbMaxScale, Properties.Resources.InvalidValueError);
+                    }
+                }
+                OnResourceChanged();
+            }
+        }
+
+        private void btnKmlElevation_Click(object sender, EventArgs e)
+        {
+            var vsc = lstScaleRanges.SelectedItem as VectorScaleRange;
+            if (vsc != null && vsc.SupportsElevation)
+            {
+                if (new ElevationDialog(_edsvc, (IVectorScaleRange2)vsc.Item, Owner.FeatureSourceId, Owner.Schema, Owner.GetFdoProvider()).ShowDialog() == DialogResult.OK)
+                {
+                    OnResourceChanged();
+                }
+            }
         }
     }
 }

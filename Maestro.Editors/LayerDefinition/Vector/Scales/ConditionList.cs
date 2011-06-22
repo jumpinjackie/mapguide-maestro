@@ -45,6 +45,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private VectorLayerEditorCtrl m_owner;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public VectorLayerEditorCtrl Owner
         {
             get { return m_owner; }
@@ -81,6 +82,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             SetItemInternal(parent, comp);
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public object SelectedItem 
         { 
             get { return m_selectedItem; }

@@ -24,6 +24,7 @@ namespace Maestro.Editors.LayerDefinition
         {
             InitializeComponent();
             resSettings.FeatureClassChanged += new EventHandler(OnFeatureClassChanged);
+            layerStyles.Owner = this;
         }
 
         void OnFeatureClassChanged(object sender, EventArgs e)
@@ -50,7 +51,6 @@ namespace Maestro.Editors.LayerDefinition
             service.RegisterCustomNotifier(this);
             resSettings.Bind(service);
             layerProperties.Bind(service);
-            layerStyles.Owner = this;
             layerStyles.Bind(service);
         }
 

@@ -33,7 +33,7 @@ using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
-    [ToolboxItem(false)]
+    [ToolboxItem(true)]
     internal partial class ConditionListButtons : UserControl
     {
         private IPointVectorStyle m_point;
@@ -49,6 +49,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private VectorLayerEditorCtrl m_owner;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public VectorLayerEditorCtrl Owner
         {
             get { return m_owner; }
@@ -61,12 +62,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private ILayerElementFactory _factory;
 
-        internal ConditionListButtons()
+        public ConditionListButtons()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             conditionList.SelectionChanged += new EventHandler(conditionList_SelectionChanged);
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         internal ILayerElementFactory Factory
         {
             get { return _factory; }

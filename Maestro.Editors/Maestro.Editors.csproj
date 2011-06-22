@@ -686,24 +686,6 @@
     <Compile Include="LayerDefinition\Vector\Scales\ItemStyle.designer.cs">
       <DependentUpon>ItemStyle.cs</DependentUpon>
     </Compile>
-    <Compile Include="LayerDefinition\Vector\Scales\ScaleRange.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LayerDefinition\Vector\Scales\ScaleRange.designer.cs">
-      <DependentUpon>ScaleRange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LayerDefinition\Vector\Scales\ScaleRangeConditions.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LayerDefinition\Vector\Scales\ScaleRangeConditions.designer.cs">
-      <DependentUpon>ScaleRangeConditions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LayerDefinition\Vector\Scales\ScaleRangeList.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LayerDefinition\Vector\Scales\ScaleRangeList.designer.cs">
-      <DependentUpon>ScaleRangeList.cs</DependentUpon>
-    </Compile>
     <Compile Include="LayerDefinition\Vector\Scales\SymbolInstancesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -715,6 +697,12 @@
     </Compile>
     <Compile Include="LayerDefinition\Vector\Scales\SymbolInstanceSettingsCtrl.Designer.cs">
       <DependentUpon>SymbolInstanceSettingsCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\VectorScaleRangeCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\VectorScaleRangeCtrl.Designer.cs">
+      <DependentUpon>VectorScaleRangeCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="LayerDefinition\Vector\StyleEditors\AreaFeatureStyleEditor.cs">
       <SubType>UserControl</SubType>
@@ -1454,20 +1442,14 @@
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\ItemStyle.resx">
       <DependentUpon>ItemStyle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LayerDefinition\Vector\Scales\ScaleRange.resx">
-      <DependentUpon>ScaleRange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LayerDefinition\Vector\Scales\ScaleRangeConditions.resx">
-      <DependentUpon>ScaleRangeConditions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LayerDefinition\Vector\Scales\ScaleRangeList.resx">
-      <DependentUpon>ScaleRangeList.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\SymbolInstancesDialog.resx">
       <DependentUpon>SymbolInstancesDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\SymbolInstanceSettingsCtrl.resx">
       <DependentUpon>SymbolInstanceSettingsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\VectorScaleRangeCtrl.resx">
+      <DependentUpon>VectorScaleRangeCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\StyleEditors\AreaFeatureStyleEditor.resx">
       <DependentUpon>AreaFeatureStyleEditor.cs</DependentUpon>

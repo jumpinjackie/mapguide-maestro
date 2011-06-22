@@ -1238,4 +1238,7 @@ Returns: {0}</value>
   <data name="FsPreview_RasterPropertyNodeTooltip" xml:space="preserve">
     <value>Name: {0}{6}Description: {1}{6}Nullable: {2}{6}Image X Size: {3}{6}Image Y Size: {4}{6}Spatial Context: {5}</value>
   </data>
+  <data name="ScaleRange" xml:space="preserve">
+    <value>Scale Range</value>
+  </data>
 </root>

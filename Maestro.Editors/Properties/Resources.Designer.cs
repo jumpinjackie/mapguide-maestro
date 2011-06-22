@@ -2384,6 +2384,15 @@ namespace Maestro.Editors.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Scale Range.
+        /// </summary>
+        internal static string ScaleRange {
+            get {
+                return ResourceManager.GetString("ScaleRange", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap scissors_blue {
             get {
                 object obj = ResourceManager.GetObject("scissors-blue", resourceCulture);

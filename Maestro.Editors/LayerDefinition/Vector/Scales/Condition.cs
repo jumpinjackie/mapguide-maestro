@@ -45,6 +45,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private VectorLayerEditorCtrl m_owner;
         private IServerConnection _conn;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public VectorLayerEditorCtrl Owner
         {
             get { return m_owner; }
@@ -145,6 +146,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public object Item
         {
             get
