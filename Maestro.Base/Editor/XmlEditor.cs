@@ -128,6 +128,20 @@ namespace Maestro.Base.Editor
             }
         }
 
+        public override string SetupPreviewUrl(string mapguideRootUrl)
+        {
+            //Save the current resource to another session copy
+            string resId = "Session:" + this.EditorService.SessionID + "//" + Guid.NewGuid() + "." + this.Resource.ResourceType.ToString();
+            this.EditorService.ResourceService.SetResourceXmlData(resId, new MemoryStream(Encoding.UTF8.GetBytes(this.XmlContent)));
+
+            //Copy any resource data
+            var previewCopy = this.EditorService.ResourceService.GetResource(resId);
+            this.Resource.CopyResourceDataTo(previewCopy);
+
+            //Now feed it to the preview engine
+            return new ResourcePreviewEngine(mapguideRootUrl, this.EditorService).GeneratePreviewUrl(previewCopy);
+        }
+
         public override void SyncSessionCopy()
         {
             //Write our XML changes back into the edited resource copy and re-read
