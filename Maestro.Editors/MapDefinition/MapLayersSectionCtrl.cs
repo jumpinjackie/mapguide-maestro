@@ -387,6 +387,31 @@ namespace Maestro.Editors.MapDefinition
                 tree.SelectedNode = selectedNode;
         }
 
+        private static void ExpandNode<TaggedType>(TreeViewAdv tree, Predicate<TaggedType> predicate) where TaggedType : class
+        {
+            //Restore selection
+            TreeNodeAdv selectedNode = null;
+            foreach (var node in tree.AllNodes)
+            {
+                var tag = node.Tag as TaggedType;
+
+                if (tag != null && predicate(tag))
+                {
+                    selectedNode = node;
+                    break;
+                }
+            }
+            if (selectedNode != null)
+            {
+                var n = selectedNode;
+                while (n != null)
+                {
+                    n.Expand();
+                    n = n.Parent;
+                }
+            }
+        }
+
         private void RestoreBaseLayerSelection(BaseLayerItem item)
         {
             //The node tag will probably be different, but the wrapped
@@ -723,7 +748,8 @@ namespace Maestro.Editors.MapDefinition
             if (rids != null && rids.Length > 0)
             {
                 IMapLayerGroup parent = null;
-                var node = trvLayersGroup.GetNodeAt(trvLayersGroup.PointToClient(new Point(e.X, e.Y)));
+                var clientPt = trvLayersGroup.PointToClient(new Point(e.X, e.Y));
+                var node = trvLayersGroup.GetNodeAt(clientPt);
                 if (node != null)
                 {
                     var gi = node.Tag as GroupItem;
@@ -746,12 +772,15 @@ namespace Maestro.Editors.MapDefinition
                 {
                     //TODO: Fine-grain invalidation
                     RefreshModels();
+                    if (parent != null)
+                        ExpandNode<GroupItem>(trvLayersGroup, (tag) => { return tag.Tag == parent; });
                 }
             }
             else if (nodes != null && nodes.Length > 0)
             {
                 IMapLayerGroup parent = null;
-                var node = trvLayersGroup.GetNodeAt(trvLayersGroup.PointToClient(new Point(e.X, e.Y)));
+                var clientPt = trvLayersGroup.PointToClient(new Point(e.X, e.Y));
+                var node = trvLayersGroup.GetNodeAt(clientPt);
                 if (node != null)
                 {
                     var gi = node.Tag as GroupItem;
@@ -786,6 +815,8 @@ namespace Maestro.Editors.MapDefinition
                 {
                     //TODO: Fine-grain invalidation
                     RefreshModels();
+                    if (parent != null)
+                        ExpandNode<GroupItem>(trvLayersGroup, (tag) => { return tag.Tag == parent; });
                     OnResourceChanged();
                 }
             }
