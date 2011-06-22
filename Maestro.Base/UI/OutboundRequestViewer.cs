@@ -28,6 +28,7 @@ using Maestro.Shared.UI;
 using System.IO;
 using ICSharpCode.Core;
 using Maestro.Base.Services;
+using Maestro.Base.UI.Preferences;
 
 namespace Maestro.Base.UI
 {
@@ -38,17 +39,22 @@ namespace Maestro.Base.UI
             InitializeComponent();
             this.Title = this.Description = Properties.Resources.Content_OutboundRequests;
 
-            var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
-            connMgr.ConnectionAdded += (s, args) =>
+            //This is okay because changing the value requires a restart, so it will either be listening
+            //or not and that will remain in effect for the duration of the application running.
+            if (PropertyService.Get(ConfigProperties.ShowOutboundRequests, ConfigProperties.DefaultShowOutboundRequests))
             {
-                var conn = connMgr.GetConnection(args);
-                conn.RequestDispatched += OnRequestDispatched;
-            };
-            connMgr.ConnectionRemoving += (s, ce) =>
-            {
-                var conn = connMgr.GetConnection(ce.ConnectionName);
-                conn.RequestDispatched -= OnRequestDispatched;
-            };
+                var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
+                connMgr.ConnectionAdded += (s, args) =>
+                {
+                    var conn = connMgr.GetConnection(args);
+                    conn.RequestDispatched += OnRequestDispatched;
+                };
+                connMgr.ConnectionRemoving += (s, ce) =>
+                {
+                    var conn = connMgr.GetConnection(ce.ConnectionName);
+                    conn.RequestDispatched -= OnRequestDispatched;
+                };
+            }
         }
 
         protected override void OnLoad(EventArgs e)
