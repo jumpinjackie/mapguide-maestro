@@ -89,17 +89,6 @@ namespace Maestro.Base.Editor
             }
         }
 
-        private static bool HasCompositeRules(IVectorLayerDefinition vl)
-        {
-            foreach (var vsr in vl.VectorScaleRange)
-            {
-                var vsr3 = vsr as IVectorScaleRange3;
-                if (vsr3 != null && vsr3.CompositeStyle != null)
-                    return true;
-            }
-            return false;
-        }
-
         protected override void OnBeforeSave(object sender, CancelEventArgs e)
         {
             if (_edsvc.IsNew)

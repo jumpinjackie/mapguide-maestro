@@ -67,11 +67,11 @@ namespace OSGeo.MapGuide.Maestro.ResourceEditors.LayerEditorControls.ScaleContro
             // 
             // ScaleRangeList
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.ControlList);
             this.Controls.Add(this.panel1);
             this.Name = "ScaleRangeList";
+            resources.ApplyResources(this, "$this");
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

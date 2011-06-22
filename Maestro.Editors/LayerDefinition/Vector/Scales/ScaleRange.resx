@@ -205,7 +205,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 330</value>
+    <value>160, 462</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -226,7 +226,7 @@
     <value>Bottom</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 330</value>
+    <value>0, 462</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>802, 8</value>
@@ -253,7 +253,7 @@
     <value>160, 0</value>
   </data>
   <data name="scaleRangeConditions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>642, 330</value>
+    <value>642, 462</value>
   </data>
   <data name="scaleRangeConditions.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -262,7 +262,7 @@
     <value>scaleRangeConditions</value>
   </data>
   <data name="&gt;&gt;scaleRangeConditions.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ScaleRangeConditions, Maestro.Editors, Version=3.0.0.5728, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ScaleRangeConditions, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;scaleRangeConditions.Parent" xml:space="preserve">
     <value>$this</value>
@@ -277,7 +277,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>802, 338</value>
+    <value>802, 470</value>
   </data>
   <data name="&gt;&gt;errorProvider.Name" xml:space="preserve">
     <value>errorProvider</value>

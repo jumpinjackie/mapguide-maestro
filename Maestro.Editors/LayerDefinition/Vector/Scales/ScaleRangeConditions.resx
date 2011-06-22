@@ -399,8 +399,11 @@
   <data name="&gt;&gt;DisplayComposite.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="compositeConditionList.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="compositeConditionList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+    <value>Top</value>
   </data>
   <data name="compositeConditionList.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 359</value>

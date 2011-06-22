@@ -116,11 +116,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
     }
 
     partial class VectorScaleRangeType : IVectorScaleRange
-#if LDF_110
+#if !LDF_100
         , IVectorScaleRange2
-#endif
-#if LDF_120 || LDF_130 || LDF_230
-        , IVectorScaleRange3
 #endif
     {
         #region Missing generated stuff
@@ -285,7 +282,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return this.Clone();
         }
 
-#if LDF_120
+#if LDF_110 || LDF_120
         [XmlIgnore]
         public ICompositeTypeStyle CompositeStyle
         {
@@ -405,156 +402,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return FillType.Deserialize(this.Serialize());
         }
     }
-
-    #region Composite Symbolization support (needs more work. Currently this is just to make the layer editor properly detect such features)
-
-#if LDF_120 || LDF_130 || LDF_230
-    partial class CompositeTypeStyle
-#if LDF_120
-        : ICompositeTypeStyle
-#else
-        : ICompositeTypeStyle2
-#endif
-    {
-        IEnumerable<ICompositeRule> ICompositeTypeStyle.CompositeRule
-        {
-            get 
-            {
-                foreach (var rule in this.CompositeRule)
-                {
-                    yield return rule;
-                }
-            }
-        }
-
-        public void AddCompositeRule(ICompositeRule compRule)
-        {
-            var rule = compRule as CompositeRule;
-            if (rule != null)
-            {
-                this.CompositeRule.Add(rule);
-            }
-        }
-
-        public void RemoveCompositeRule(ICompositeRule compRule)
-        {
-            var rule = compRule as CompositeRule;
-            if (rule != null)
-            {
-                this.CompositeRule.Remove(rule);
-            }
-        }
-
-        public StyleType StyleType
-        {
-            get { return StyleType.Composite; }
-        }
-
-        public int RuleCount
-        {
-            get { return this.CompositeRule.Count; }
-        }
-    }
-
-    partial class CompositeRule : ICompositeRule
-    {
-        [XmlIgnore]
-        ICompositeSymbolization ICompositeRule.CompositeSymbolization
-        {
-            get
-            {
-                return this.CompositeSymbolization;
-            }
-            set
-            {
-                this.CompositeSymbolization = (CompositeSymbolization)value;
-            }
-        }
-    }
-
-    partial class CompositeSymbolization : ICompositeSymbolization
-    {
-        IEnumerable<OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISymbolInstance> ICompositeSymbolization.SymbolInstance
-        {
-            get 
-            {
-                foreach (var sym in this.SymbolInstance)
-                {
-                    yield return sym;
-                }
-            }
-        }
-
-        public void AddSymbolInstance(OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISymbolInstance inst)
-        {
-            var sym = inst as SymbolInstance;
-            if (sym != null)
-                this.SymbolInstance.Add(sym);
-        }
-
-        public void RemoveSymbolInstance(OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISymbolInstance inst)
-        {
-            var sym = inst as SymbolInstance;
-            if (sym != null)
-                this.SymbolInstance.Remove(sym);
-        }
-    }
-
-    partial class SymbolInstance : ISymbolInstance
-    {
-        [XmlIgnore]
-        public ISymbolInstanceReference Reference
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        IParameterOverrideCollection ISymbolInstance.ParameterOverrides
-        {
-            get { return this.ParameterOverrides; }
-        }
-    }
-
-    partial class ParameterOverrides : IParameterOverrideCollection
-    {
-        IEnumerable<IParameterOverride> IParameterOverrideCollection.Override
-        {
-            get
-            {
-                foreach (var ov in this.Override)
-                {
-                    yield return ov;
-                }
-            }
-        }
-
-        public void AddOverride(IParameterOverride ov)
-        {
-            var o = ov as Override;
-            if (o != null)
-                this.Override.Add(o);
-        }
-
-        public void RemoveOverride(IParameterOverride ov)
-        {
-            var o = ov as Override;
-            if (o != null)
-                this.Override.Remove(o);
-        }
-    }
-
-    partial class Override : IParameterOverride
-    {
-    }
-
-#endif
-    #endregion
 
     partial class AreaTypeStyleType : IAreaVectorStyle
 #if LDF_130 || LDF_230
@@ -1809,4 +1656,216 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return this.VectorScaleRange[index];
         }
     }
+    #region Composite Symbolization
+#if !LDF_100
+
+    partial class CompositeRule : ICompositeRule
+    {
+        [XmlIgnore]
+        ICompositeSymbolization ICompositeRule.CompositeSymbolization
+        {
+            get
+            {
+                return this.CompositeSymbolization;
+            }
+            set
+            {
+                this.CompositeSymbolization = (CompositeSymbolization)value;
+            }
+        }
+    }
+
+    partial class CompositeSymbolization : ICompositeSymbolization
+    {
+        [XmlIgnore]
+        IEnumerable<ISymbolInstance> ICompositeSymbolization.SymbolInstance
+        {
+            get 
+            {
+                foreach (var sym in this.SymbolInstance)
+                {
+                    yield return sym;
+                }
+            }
+        }
+
+        public void AddSymbolInstance(ISymbolInstance inst)
+        {
+            var sym = inst as SymbolInstance;
+            if (sym != null)
+                this.SymbolInstance.Add(sym);
+        }
+
+        public void RemoveSymbolInstance(ISymbolInstance inst)
+        {
+            var sym = inst as SymbolInstance;
+            if (sym != null)
+                this.SymbolInstance.Remove(sym);
+        }
+    }
+
+    partial class SymbolInstance : ISymbolInstance
+    {
+        [XmlIgnore]
+        IParameterOverrideCollection ISymbolInstance.ParameterOverrides
+        {
+            get { return this.ParameterOverrides; }
+        }
+
+        [XmlIgnore]
+        public ISymbolInstanceReference Reference
+        {
+            get
+            {
+                var libId = this.Item as string;
+#if LDF_110
+                var simpSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition;
+                var compSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition;
+#else
+                var simpSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.SimpleSymbolDefinition;
+                var compSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.CompoundSymbolDefinition;
+#endif
+                if (libId != null)
+                    return new SymbolInstanceLibrary() { ResourceId = libId };
+                else if (simpSym != null)
+                    return new SymbolInstanceInline() { SymbolDefinition = simpSym };
+                else if (compSym != null)
+                    return new SymbolInstanceInline() { SymbolDefinition = compSym };
+                return null;
+            }
+            set
+            {
+                var sr = value as ISymbolLibraryReference;
+                var ir = value as IInlineSimpleSymbolReference;
+                if (sr != null)
+                {
+                    this.Item = sr.ResourceId;
+                }
+                else if (ir != null)
+                {
+#if LDF_110
+                    if (ir.SymbolDefinition.Type == SymbolDefinitionType.Simple)
+                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition)ir.SymbolDefinition;
+                    else if (ir.SymbolDefinition.Type == SymbolDefinitionType.Compound)
+                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition)ir.SymbolDefinition;
+#else
+                    if (ir.SymbolDefinition.Type == SymbolDefinitionType.Simple)
+                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.SimpleSymbolDefinition)ir.SymbolDefinition;
+                    else if (ir.SymbolDefinition.Type == SymbolDefinitionType.Compound)
+                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.CompoundSymbolDefinition)ir.SymbolDefinition;
+#endif
+                }
+                this.Item = null;
+            }
+        }
+    }
+
+    partial class SymbolInstanceLibrary : ISymbolLibraryReference
+    {
+        [XmlIgnore]
+        public string ResourceId
+        {
+            get;
+            set;
+        }
+
+        [XmlIgnore]
+        public SymbolInstanceType Type
+        {
+            get { return SymbolInstanceType.Reference; }
+        }
+    }
+
+    partial class SymbolInstanceInline : IInlineSimpleSymbolReference
+    {
+        [XmlIgnore]
+        public ISymbolDefinitionBase SymbolDefinition
+        {
+            get;
+            set;
+        }
+
+        [XmlIgnore]
+        public SymbolInstanceType Type
+        {
+            get { return SymbolInstanceType.Inline; }
+        }
+    }
+
+    partial class ParameterOverrides : IParameterOverrideCollection
+    {
+        [XmlIgnore]
+        IEnumerable<IParameterOverride> IParameterOverrideCollection.Override
+        {
+            get 
+            {
+                foreach (var ov in this.Override)
+                {
+                    yield return ov;
+                }
+            }
+        }
+
+        public void AddOverride(IParameterOverride ov)
+        {
+            var o = ov as Override;
+            if (o != null)
+                this.Override.Add(o);
+        }
+
+        public void RemoveOverride(IParameterOverride ov)
+        {
+            var o = ov as Override;
+            if (o != null)
+                this.Override.Remove(o);
+        }
+    }
+
+    partial class Override : IParameterOverride
+    {
+
+    }
+
+    partial class CompositeTypeStyle : ICompositeTypeStyle
+    {
+        [XmlIgnore]
+        IEnumerable<ICompositeRule> ICompositeTypeStyle.CompositeRule
+        {
+            get 
+            {
+                foreach (var cr in this.CompositeRule)
+                {
+                    yield return cr;
+                }
+            }
+        }
+
+        public void AddCompositeRule(ICompositeRule compRule)
+        {
+            var cr = compRule as CompositeRule;
+            if (cr != null)
+                this.CompositeRule.Add(cr);
+        }
+
+        public void RemoveCompositeRule(ICompositeRule compRule)
+        {
+            var cr = compRule as CompositeRule;
+            if (cr != null)
+                this.CompositeRule.Remove(cr);
+        }
+
+        [XmlIgnore]
+        public StyleType StyleType
+        {
+            get { return StyleType.Composite; }
+        }
+
+        [XmlIgnore]
+        public int RuleCount
+        {
+            get { return this.CompositeRule.Count; }
+        }
+    }
+#endif
+    #endregion
 }

@@ -36,13 +36,9 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// </summary>
         Reference,
         /// <summary>
-        /// An inline simple symbol definition
+        /// An inline symbol definition
         /// </summary>
-        Simple,
-        /// <summary>
-        /// An inline compound symbol definition
-        /// </summary>
-        Compound
+        Inline
     }
 
     /// <summary>
@@ -137,7 +133,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <summary>
         /// Gets or sets the inline definition
         /// </summary>
-        ISimpleSymbolDefinition SimpleSymbolDefinition { get; set; } 
+        ISymbolDefinitionBase SymbolDefinition { get; set; } 
     }
 
     /// <summary>
@@ -152,6 +148,21 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     }
 
     #region Symbol Definition 1.0.0 interfaces
+
+    /// <summary>
+    /// Indicates the type of symbol definition
+    /// </summary>
+    public enum SymbolDefinitionType
+    {
+        /// <summary>
+        /// A simple symbol definition
+        /// </summary>
+        Simple,
+        /// <summary>
+        /// A compound symbol definition
+        /// </summary>
+        Compound
+    }
 
     /// <summary>
     /// Base interface of all symbol definitions
@@ -169,6 +180,11 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// </summary>
         /// <value>The description.</value>
         string Description { get; set; }
+
+        /// <summary>
+        /// Gets the type of symbol definition
+        /// </summary>
+        SymbolDefinitionType Type { get; }
     }
 
     /// <summary>

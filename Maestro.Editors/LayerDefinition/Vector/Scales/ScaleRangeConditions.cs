@@ -52,6 +52,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 pointConditionList.Owner = m_owner;
                 lineConditionList.Owner = m_owner;
                 areaConditionList.Owner = m_owner;
+                compositeConditionList.Owner = m_owner;
             }
         }
 
@@ -71,6 +72,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 lineConditionList.Factory = value;
                 pointConditionList.Factory = value;
                 areaConditionList.Factory = value;
+                compositeConditionList.Factory = value;
             }
         }
 
@@ -84,11 +86,16 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 bool hasPoints = false;
                 bool hasLines = false;
                 bool hasAreas = false;
+                bool hasComposite = false;
                 m_hasUnsupportedItems = false;
 
                 var ps = m_vsc.PointStyle;
                 var ls = m_vsc.LineStyle;
                 var ars = m_vsc.AreaStyle;
+                ICompositeTypeStyle cs = null;
+                var vsr2 = m_vsc as IVectorScaleRange2;
+                if (vsr2 != null)
+                    cs = vsr2.CompositeStyle;
                 if (ps != null)
                 {
                     hasPoints = true;
@@ -104,12 +111,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     hasAreas = true;
                     areaConditionList.SetItem(m_vsc, ars);
                 }
+                if (cs != null)
+                {
+                    hasComposite = true;
+                    compositeConditionList.SetItem(vsr2, cs);
+                }
 
-                m_hasUnsupportedItems = !hasPoints && !hasLines && !hasAreas;
+                m_hasUnsupportedItems = !hasPoints && !hasLines && !hasAreas && !hasComposite;
 
                 DisplayPoints.Checked = hasPoints;
                 DisplayLines.Checked = hasLines;
                 DisplayAreas.Checked = hasAreas;
+                DisplayComposite.Checked = hasComposite;
+                DisplayComposite.Visible = (vsr2 != null);
             }
             finally
             {
@@ -225,6 +239,45 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 SignalItemChanged();
         }
 
+        private void DisplayComposite_CheckedChanged(object sender, EventArgs e)
+        {
+            compositeConditionList.Visible = DisplayComposite.Checked;
+            var vsr2 = m_vsc as IVectorScaleRange2;
+            if (vsr2 == null)
+                return;
+
+            if (DisplayComposite.Checked)
+            {
+                if (DisplayComposite.Tag != null)
+                {
+                    vsr2.CompositeStyle = (ICompositeTypeStyle)DisplayComposite.Tag;
+                    DisplayComposite.Tag = null;
+                }
+
+                bool hasComposite = vsr2.CompositeStyle != null;
+
+                if (!hasComposite)
+                {
+                    var cst = _factory.CreateDefaultCompositeStyle();
+                    vsr2.CompositeStyle = cst;
+                    compositeConditionList.SetItem(vsr2, cst);
+                }
+                else
+                {
+                    if (vsr2.CompositeStyle.RuleCount == 0)
+                        compositeConditionList.AddRule();
+                }
+            }
+            else
+            {
+                DisplayComposite.Tag = vsr2.CompositeStyle;
+                vsr2.CompositeStyle = null;
+            }
+
+            if (!m_isUpdating)
+                SignalItemChanged();
+        }
+
         private void SignalItemChanged()
         {
             if (ItemChanged != null)
@@ -265,6 +318,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             pointConditionList.ResizeAuto();
             lineConditionList.ResizeAuto();
             areaConditionList.ResizeAuto();
+            compositeConditionList.ResizeAuto();
             this.Height = this.GetPreferedHeight();
         }
     }

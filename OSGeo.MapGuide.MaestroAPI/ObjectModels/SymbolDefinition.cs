@@ -38,7 +38,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0
 namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 #endif
 {
-    partial class SymbolDefinitionBase : ISymbolDefinitionBase
+    abstract partial class SymbolDefinitionBase : ISymbolDefinitionBase
     {
 #if SYM_DEF_110
         private static readonly Version RES_VERSION = new Version(1, 1, 0);
@@ -115,6 +115,9 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         {
             get { return true; }
         }
+
+        [XmlIgnore]
+        public abstract SymbolDefinitionType Type { get; }
     }
 
     partial class SimpleSymbolDefinition : ISimpleSymbolDefinition
@@ -320,6 +323,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         public IParameter CreateParameter()
         {
             return new Parameter() { };
+        }
+
+        [XmlIgnore]
+        public override SymbolDefinitionType Type
+        {
+            get { return SymbolDefinitionType.Simple; }
         }
     }
 
@@ -680,6 +689,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         public ISimpleSymbolReferenceBase CreateSymbolReference(string resourceId)
         {
             return new SimpleSymbol() { Item = resourceId };
+        }
+
+        [XmlIgnore]
+        public override SymbolDefinitionType Type
+        {
+            get { return SymbolDefinitionType.Compound; }
         }
     }
 

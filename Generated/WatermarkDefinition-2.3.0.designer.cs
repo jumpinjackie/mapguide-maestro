@@ -522,7 +522,7 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0 {
         /// WatermarkDefinitionTypeContent class constructor
         /// </summary>
         public WatermarkDefinitionTypeContent() {
-            this.itemField = new SymbolDefinitionBase();
+            //this.itemField = new SymbolDefinitionBase();
         }
         
         [System.Xml.Serialization.XmlElementAttribute("CompoundSymbolDefinition", typeof(CompoundSymbolDefinition), Order=0)]

@@ -118,10 +118,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             this.DisplayComposite.CheckState = System.Windows.Forms.CheckState.Checked;
             this.DisplayComposite.Name = "DisplayComposite";
             this.DisplayComposite.UseVisualStyleBackColor = true;
+            this.DisplayComposite.CheckedChanged += new System.EventHandler(this.DisplayComposite_CheckedChanged);
             // 
             // compositeConditionList
             // 
             resources.ApplyResources(this.compositeConditionList, "compositeConditionList");
+            this.compositeConditionList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.compositeConditionList.Name = "compositeConditionList";
             this.compositeConditionList.Owner = null;
             // 

@@ -333,6 +333,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         IW2DSymbol CreateDefaultW2DSymbol(string symbolLibrary, string symbolName);
 
         ICompositeRule CreateDefaultCompositeRule();
+
+        ICompositeTypeStyle CreateDefaultCompositeStyle();
     }
 
     /// <summary>
@@ -613,15 +615,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// Gets or sets the elevation settings
         /// </summary>
         IElevationSettings ElevationSettings { get; set; }
-    }
 
-    /// <summary>
-    /// The stylization to be applied to the vector features for a given scale range. Supports composite styles.
-    /// 
-    /// Supported by Layer Definition 1.2.0 and higher
-    /// </summary>
-    public interface IVectorScaleRange3 : IVectorScaleRange2
-    {
         /// <summary>
         /// Gets or sets the composite style for this scale range
         /// </summary>

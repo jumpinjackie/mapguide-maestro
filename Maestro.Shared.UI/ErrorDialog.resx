@@ -183,6 +183,9 @@
   <data name="txtMessage.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="txtMessage.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
   <data name="txtMessage.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 53</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="txtDetails.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="txtDetails.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
   </data>
   <data name="txtDetails.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 210</value>

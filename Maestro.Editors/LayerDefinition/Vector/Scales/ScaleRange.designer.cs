@@ -33,10 +33,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             this.MinScale = new System.Windows.Forms.ComboBox();
             this.MaxScale = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnElevation = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.scaleRangeConditions = new ScaleRangeConditions();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnElevation = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -69,6 +69,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
+            // btnElevation
+            // 
+            this.btnElevation.Image = global::Maestro.Editors.Properties.Resources.ruler;
+            resources.ApplyResources(this.btnElevation, "btnElevation");
+            this.btnElevation.Name = "btnElevation";
+            this.btnElevation.UseVisualStyleBackColor = true;
+            this.btnElevation.Click += new System.EventHandler(this.btnElevation_Click);
+            // 
             // panel2
             // 
             resources.ApplyResources(this.panel2, "panel2");
@@ -84,14 +92,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // btnElevation
-            // 
-            this.btnElevation.Image = global::Maestro.Editors.Properties.Resources.ruler;
-            resources.ApplyResources(this.btnElevation, "btnElevation");
-            this.btnElevation.Name = "btnElevation";
-            this.btnElevation.UseVisualStyleBackColor = true;
-            this.btnElevation.Click += new System.EventHandler(this.btnElevation_Click);
             // 
             // ScaleRange
             // 

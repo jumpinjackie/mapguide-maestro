@@ -344,7 +344,26 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #if LDF_100
             throw new NotImplementedException();
 #else
+            return new CompositeRule()
+            {
+                CompositeSymbolization = new CompositeSymbolization()
+                {
+                    
+                }
+            };
+#endif
+        }
+
+
+        public ICompositeTypeStyle CreateDefaultCompositeStyle()
+        {
+#if LDF_100
             throw new NotImplementedException();
+#else
+            return new CompositeTypeStyle()
+            {
+                CompositeRule = new System.ComponentModel.BindingList<CompositeRule>()
+            };
 #endif
         }
     }

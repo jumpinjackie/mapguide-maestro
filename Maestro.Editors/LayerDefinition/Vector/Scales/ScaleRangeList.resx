@@ -235,7 +235,7 @@
     <value>0, 24</value>
   </data>
   <data name="ControlList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>790, 377</value>
+    <value>790, 511</value>
   </data>
   <data name="ControlList.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -255,11 +255,8 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>790, 401</value>
+    <value>790, 535</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ScaleRangeList</value>
