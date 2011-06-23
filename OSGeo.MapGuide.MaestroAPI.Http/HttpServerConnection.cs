@@ -1579,7 +1579,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             using (System.IO.Stream s = this.OpenRead(req))
             {
                 var list = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.Common.StringCollection>(s);
-                return list.Item.ToArray();
+                //Workaround for #1727
+                var dict = new Dictionary<string, string>();
+                foreach (var it in list.Item)
+                {
+                    if (!dict.ContainsKey(it))
+                        dict.Add(it, it);
+                }
+                return new List<string>(dict.Values).ToArray();
             }
         }
 
