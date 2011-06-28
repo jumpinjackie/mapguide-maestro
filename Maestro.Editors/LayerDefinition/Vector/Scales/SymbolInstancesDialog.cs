@@ -28,6 +28,9 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using Maestro.Editors.SymbolDefinition;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using Maestro.Editors.LayerDefinition.Vector.Scales.SymbolInstanceEditors;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
@@ -36,11 +39,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private IEditorService _edSvc;
         private ICompositeSymbolization _comp;
 
-        public SymbolInstancesDialog(IEditorService edSvc, ICompositeSymbolization comp)
+        private ClassDefinition _cls;
+        private string _provider;
+        private string _featureSourceId;
+
+        public SymbolInstancesDialog(IEditorService edSvc, ICompositeSymbolization comp, ClassDefinition cls, string provider, string featureSourceId)
         {
             InitializeComponent();
             _edSvc = edSvc;
             _comp = comp;
+
+            _cls = cls;
+            _provider = provider;
+            _featureSourceId = featureSourceId;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -56,26 +67,59 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
                     var symRef = _comp.CreateSymbolReference(picker.ResourceID);
-                    //var ctrl = new SimpleSymbolReferenceCtrl(_edSvc.ResourceService, symRef);
-                    
-                    //var ctrl2 = new SymbolInstanceSettingsCtrl(
+                    AddInstance(symRef);
                 }
             }
         }
 
+        private void AddInstance(ISymbolInstance symRef)
+        {
+            var li = new ListViewItem();
+            li.ImageIndex = (symRef.Reference.Type == SymbolInstanceType.Reference) ? 0 : 1;
+            li.Tag = symRef;
+            if (li.ImageIndex == 0)
+                li.Text = ((ISymbolInstanceReferenceLibrary)symRef.Reference).ResourceId;
+            else
+                li.Text = Properties.Resources.InlineSymbolDefinition;
+
+            lstInstances.Items.Add(li);
+            _comp.AddSymbolInstance(symRef);
+            li.Selected = (lstInstances.Items.Count == 1);
+        }
+
         private void inlineSimpleSymbolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            throw new NotImplementedException();
         }
 
         private void inlineCompoundSymbolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            throw new NotImplementedException();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (lstInstances.SelectedItems.Count == 1)
+            {
+                var it = lstInstances.SelectedItems[0];
+                ISymbolInstance symRef = (ISymbolInstance)it.Tag;
+                _comp.RemoveSymbolInstance(symRef);
+                lstInstances.Items.Remove(it);
+            }
+        }
 
+        private void lstInstances_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstInstances.SelectedItems.Count == 1)
+            {
+                var it = lstInstances.SelectedItems[0];
+                ISymbolInstance symRef = (ISymbolInstance)it.Tag;
+                var c = new SymbolInstanceSettingsCtrl();
+                c.SetContent(symRef, _edSvc, _cls, _provider, _featureSourceId);
+                c.Dock = DockStyle.Fill;
+                splitContainer1.Panel2.Controls.Clear();
+                splitContainer1.Panel2.Controls.Add(c);
+            }
         }
     }
 }

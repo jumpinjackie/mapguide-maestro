@@ -1709,16 +1709,24 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         IEnumerable<IParameterOverride> Override { get; }
 
         /// <summary>
-        /// Adds the override.
+        /// Adds the parameter override.
         /// </summary>
-        /// <param name="ov">The ov.</param>
+        /// <param name="ov">The parameter override</param>
         void AddOverride(IParameterOverride ov);
 
         /// <summary>
-        /// Removes the override.
+        /// Removes the parameter override.
         /// </summary>
-        /// <param name="ov">The ov.</param>
+        /// <param name="ov">The parameter override</param>
         void RemoveOverride(IParameterOverride ov);
+
+        /// <summary>
+        /// Creates a parameter override
+        /// </summary>
+        /// <param name="symbol">The symbol name</param>
+        /// <param name="name">The name of the parameter to override</param>
+        /// <returns></returns>
+        IParameterOverride CreateParameterOverride(string symbol, string name);
     }
 
     /// <summary>

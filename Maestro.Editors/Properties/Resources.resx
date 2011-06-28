@@ -1241,4 +1241,10 @@ Returns: {0}</value>
   <data name="ScaleRange" xml:space="preserve">
     <value>Scale Range</value>
   </data>
+  <data name="InlineSymbolDefinition" xml:space="preserve">
+    <value>Inline Symbol Definition</value>
+  </data>
+  <data name="ParameterOverrideExists" xml:space="preserve">
+    <value>Parameter Override already specified</value>
+  </data>
 </root>

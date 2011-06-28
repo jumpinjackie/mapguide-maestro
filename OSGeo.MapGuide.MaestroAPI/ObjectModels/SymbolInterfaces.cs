@@ -23,6 +23,7 @@ using System.Text;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
 {
@@ -116,14 +117,14 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     /// <summary>
     /// Represents a symbol instance reference by a resource id
     /// </summary>
-    public interface ISymbolLibraryReference : ISymbolInstanceReference, IResourceIdReference
+    public interface ISymbolInstanceReferenceLibrary : ISymbolInstanceReference, IResourceIdReference
     {
     }
 
     /// <summary>
     /// Represents a symbol instance reference by a inline definition
     /// </summary>
-    public interface IInlineSimpleSymbolReference : ISymbolInstanceReference
+    public interface ISymbolInstanceReferenceInline : ISymbolInstanceReference
     {
         /// <summary>
         /// Gets or sets the inline definition
@@ -131,15 +132,51 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         ISymbolDefinitionBase SymbolDefinition { get; set; } 
     }
 
-    /// <summary>
-    /// Represents a symbol instance reference by a inline definition
-    /// </summary>
-    public interface IInlineCompoundSymbolReference : ISymbolInstanceReference
+    public static class SymbolDefExtensions
     {
-        /// <summary>
-        /// Gets or sets the inline definition
-        /// </summary>
-        ICompoundSymbolDefinition CompoundSymbolDefinition { get; set; }
+        public static IEnumerable<IParameter> GetParameters(this ISymbolDefinitionBase sym)
+        {
+            Check.NotNull(sym, "sym");
+            if (sym.Type == SymbolDefinitionType.Simple)
+                return ((ISimpleSymbolDefinition)sym).GetParameters();
+            else
+                return ((ICompoundSymbolDefinition)sym).GetParameters();
+        }
+
+        public static IEnumerable<IParameter> GetParameters(this ISimpleSymbolDefinition ssym)
+        {
+            Check.NotNull(ssym, "ssym");
+            return ssym.ParameterDefinition.Parameter;
+        }
+
+        public static IEnumerable<IParameter> GetParameters(this ICompoundSymbolDefinition csym)
+        {
+            Check.NotNull(csym, "csym");
+            Check.NotNull(csym.CurrentConnection, "csym.CurrentConnection");
+            List<IParameter> p = new List<IParameter>();
+            foreach (var sym in csym.SimpleSymbol)
+            {
+                if (sym.Type == SimpleSymbolReferenceType.Inline)
+                {
+                    ISimpleSymbolInlineReference ssir = (ISimpleSymbolInlineReference)sym;
+                    p.AddRange(ssir.SimpleSymbolDefinition.GetParameters());
+                }
+                else if (sym.Type == SimpleSymbolReferenceType.Library)
+                {
+                    ISimpleSymbolLibraryReference sslr = (ISimpleSymbolLibraryReference)sym;
+                    var symDef = (ISymbolDefinitionBase)csym.CurrentConnection.ResourceService.GetResource(sslr.ResourceId);
+                    if (symDef.Type == SymbolDefinitionType.Simple)
+                    {
+                        p.AddRange(((ISimpleSymbolDefinition)symDef).GetParameters());
+                    }
+                    else 
+                    {
+                        p.AddRange(((ICompoundSymbolDefinition)symDef).GetParameters());
+                    }
+                }
+            }
+            return p;
+        }
     }
 
     #region Symbol Definition 1.0.0 interfaces
@@ -321,6 +358,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <param name="p"></param>
         /// <returns></returns>
         ISimpleSymbolReferenceBase CreateSymbolReference(string resourceId);
+
+        /// <summary>
+        /// Purges root element attributes from all inline Simple Symbol Definitions. This should be called
+        /// before serialization
+        /// </summary>
+        void PurgeSimpleSymbolAttributes();
     }
 
     /// <summary>

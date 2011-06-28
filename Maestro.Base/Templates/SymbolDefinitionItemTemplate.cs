@@ -33,7 +33,7 @@ namespace Maestro.Base.Templates
         public SimpleSymbolDefinitionItemTemplate()
         {
             Category = Res.TPL_CATEGORY_DEFAULT;
-            Icon = Res.images_stack;
+            Icon = Res.marker;
             Description = Res.TPL_SSD_DESC;
             Name = Res.TPL_SSD_NAME;
             ResourceType = ResourceTypes.SymbolDefinition.ToString();
@@ -58,7 +58,7 @@ namespace Maestro.Base.Templates
         public CompoundSymbolDefinitionItemTemplate()
         {
             Category = Res.TPL_CATEGORY_DEFAULT;
-            Icon = Res.images_stack;
+            Icon = Res.marker;
             Description = Res.TPL_CSD_DESC;
             Name = Res.TPL_CSD_NAME;
             ResourceType = ResourceTypes.SymbolDefinition.ToString();

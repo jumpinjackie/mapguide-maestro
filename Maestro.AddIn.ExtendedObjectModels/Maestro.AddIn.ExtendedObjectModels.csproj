@@ -112,6 +112,7 @@
     <Content Include="Manifest.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\marker.png" />
     <None Include="Resources\application-browser.png" />
     <None Include="Resources\map.png" />
     <None Include="Resources\layer.png" />

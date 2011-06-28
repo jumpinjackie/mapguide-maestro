@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SymbolInstancesDialog));
             this.btnClose = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstInstances = new System.Windows.Forms.ListView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripDropDownButton();
             this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,17 +66,28 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.listView1);
+            this.groupBox1.Controls.Add(this.lstInstances);
             this.groupBox1.Controls.Add(this.toolStrip1);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // listView1
+            // lstInstances
             // 
-            resources.ApplyResources(this.listView1, "listView1");
-            this.listView1.Name = "listView1";
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            resources.ApplyResources(this.lstInstances, "lstInstances");
+            this.lstInstances.LargeImageList = this.imageList1;
+            this.lstInstances.Name = "lstInstances";
+            this.lstInstances.SmallImageList = this.imageList1;
+            this.lstInstances.UseCompatibleStateImageBehavior = false;
+            this.lstInstances.View = System.Windows.Forms.View.List;
+            this.lstInstances.SelectedIndexChanged += new System.EventHandler(this.lstInstances_SelectedIndexChanged);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "arrow.png");
+            this.imageList1.Images.SetKeyName(1, "marker.png");
             // 
             // toolStrip1
             // 
@@ -145,12 +158,13 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lstInstances;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton btnAdd;
         private System.Windows.Forms.ToolStripMenuItem referenceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inlineSimpleSymbolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inlineCompoundSymbolToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btnDelete;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

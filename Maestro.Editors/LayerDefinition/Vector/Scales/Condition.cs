@@ -208,6 +208,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 m_lrt.LegendLabel = LegendLabel.Text;
             else if (m_art != null)
                 m_art.LegendLabel = LegendLabel.Text;
+            else if (m_comp != null)
+                m_comp.LegendLabel = LegendLabel.Text;
 
             SignalChanged();
         }
@@ -231,6 +233,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             {
                 if (ItemChanged != null)
                     ItemChanged(m_art, null);
+            }
+            else if (m_comp != null)
+            {
+                if (ItemChanged != null)
+                    ItemChanged(m_comp, null);
             }
         }
 

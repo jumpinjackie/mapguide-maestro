@@ -330,7 +330,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
     /// <summary>
     /// Represents a resource id reference
     /// </summary>
-    public interface IResourceIdReference
+    public interface IResourceIdReference : INotifyPropertyChanged
     {
         /// <summary>
         /// Gets or sets the resource id.

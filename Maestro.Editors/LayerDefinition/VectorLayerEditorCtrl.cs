@@ -101,7 +101,7 @@ namespace Maestro.Editors.LayerDefinition
             return fs.Provider;
         }
 
-        internal ClassDefinition Schema
+        internal ClassDefinition SelectedClass
         {
             get { return resSettings.GetSelectedClass(); }
         }

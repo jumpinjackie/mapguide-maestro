@@ -54,15 +54,13 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             //HACK: We have to peek at the XML to determine if this is simple or compound.
             var doc = new XmlDocument();
             doc.LoadXml(xml);
-            var node = doc.SelectSingleNode("//SimpleSymbolDefinition");
-            if (node != null)
+            if (doc.DocumentElement.Name == "SimpleSymbolDefinition")
             {
                 return SimpleSymbolDefinition.Deserialize(xml);
             }
             else
             {
-                node = doc.SelectSingleNode("//CompoundSymbolDefinition");
-                if (node != null)
+                if (doc.DocumentElement.Name == "CompoundSymbolDefinition")
                     return CompoundSymbolDefinition.Deserialize(xml);
                 else //WTF?
                     throw new SerializationException("Could not determine symbol type"); //LOCALIZE

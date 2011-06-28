@@ -28,6 +28,7 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using OSGeo.MapGuide.ObjectModels;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
+using Maestro.Shared.UI;
 
 namespace Maestro.Editors.SymbolDefinition
 {
@@ -49,6 +50,10 @@ namespace Maestro.Editors.SymbolDefinition
             service.RegisterCustomNotifier(this);
             _edSvc = service;
             _compSym = (ICompoundSymbolDefinition)_edSvc.GetEditedResource();
+            _compSym.PurgeSimpleSymbolAttributes();
+
+            TextBoxBinder.BindText(txtName, _compSym, "Name");
+            TextBoxBinder.BindText(txtDescription, _compSym, "Description");
 
             foreach (var symRef in _compSym.SimpleSymbol)
             {
@@ -90,6 +95,11 @@ namespace Maestro.Editors.SymbolDefinition
             {
                 var inline = (ISimpleSymbolInlineReference)symRef;
                 li.Text = inline.SimpleSymbolDefinition.Name;
+                inline.SimpleSymbolDefinition.PropertyChanged += (s, e) =>
+                {
+                    if (e.PropertyName == "Name" && li != null)
+                        li.Text = inline.SimpleSymbolDefinition.Name;
+                };
                 li.ImageIndex = 0;
                 li.Tag = symRef;
                 lstSymbols.Items.Add(li);
@@ -120,6 +130,7 @@ namespace Maestro.Editors.SymbolDefinition
             var sym = ObjectFactory.CreateSimpleSymbol(_compSym.CurrentConnection, _compSym.ResourceVersion, "", "");
             var symRef = _compSym.CreateSimpleSymbol(sym);
             AddSymbolReference(symRef);
+            _compSym.AddSimpleSymbol(symRef);
         }
 
         private void lstSymbols_SelectedIndexChanged(object sender, EventArgs e)

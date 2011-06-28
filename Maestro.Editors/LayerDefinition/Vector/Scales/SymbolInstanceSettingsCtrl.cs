@@ -24,21 +24,152 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
-    public partial class SymbolInstanceSettingsCtrl : UserControl
+    using SymbolInstanceEditors;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+
+    internal partial class SymbolInstanceSettingsCtrl : UserControl
     {
         public SymbolInstanceSettingsCtrl()
         {
             InitializeComponent();
+            grdOverrides.DataSource = _params;
         }
 
-        public void SetContent(Control c)
+        private BindingList<IParameterOverride> _params = new BindingList<IParameterOverride>();
+        private ISymbolInstance _symRef;
+        private IEditorService _edSvc;
+
+        private ClassDefinition _cls;
+        private string _provider;
+        private string _featureSourceId;
+
+        public void SetContent(ISymbolInstance symRef, IEditorService edSvc, ClassDefinition cls, string provider, string featureSourceId)
         {
+            _symRef = symRef;
+            _edSvc = edSvc;
+
+            _cls = cls;
+            _provider = provider;
+            _featureSourceId = featureSourceId;
+
+            _params.Clear();
+            //Add existing overrides
+            foreach (var p in symRef.ParameterOverrides.Override)
+            {
+                _params.Add(p);
+            }
+            //Now add available parameters
+            PopulateAvailableParameters();
             grpSettings.Controls.Clear();
+            Control c = CreateEditor(symRef, edSvc.ResourceService);
             c.Dock = DockStyle.Fill;
             grpSettings.Controls.Add(c);
+        }
+
+        private void PopulateAvailableParameters()
+        {
+            btnAdd.DropDown.Items.Clear();
+            if (_symRef.Reference.Type == SymbolInstanceType.Reference)
+            {
+                var sym = (ISymbolDefinitionBase)_edSvc.ResourceService.GetResource(((ISymbolInstanceReferenceLibrary)_symRef.Reference).ResourceId);
+                foreach (var p in sym.GetParameters())
+                {
+                    var param = p;
+                    var btn = btnAdd.DropDown.Items.Add(p.Name, null, (s, e) =>
+                    {
+                        AddParameterOverride(sym, param);
+                    });
+                }
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        private void AddParameterOverride(ISymbolDefinitionBase sym, IParameter param)
+        {
+            foreach (var p in _params)
+            {
+                if (p.ParameterIdentifier == param.Name)
+                {
+                    MessageBox.Show(Properties.Resources.ParameterOverrideExists);
+                    return;
+                }
+            }
+
+            var ov = _symRef.ParameterOverrides.CreateParameterOverride(sym.Name, param.Name);
+            ov.SymbolName = sym.Name;
+
+            _params.Add(ov);
+            _symRef.ParameterOverrides.AddOverride(ov);
+            this.RaiseDirty();
+        }
+
+        private void RaiseDirty()
+        {
+            var handler = this.Dirty;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        public event EventHandler Dirty;
+
+        private Control CreateEditor(ISymbolInstance symRef, IResourceService resSvc)
+        {
+            Check.NotNull(symRef, "symRef");
+            var ed = new SymbolInstanceSettingsCtrl();
+            if (symRef.Reference.Type == SymbolInstanceType.Reference)
+            {
+                return new ReferenceCtrl((ISymbolInstanceReferenceLibrary)symRef.Reference, resSvc);
+            }
+            else
+            {
+                throw new NotImplementedException();
+
+                var inline = (ISymbolInstanceReferenceInline)symRef.Reference;
+                if (inline.SymbolDefinition.Type == SymbolDefinitionType.Simple)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+            return ed;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (grdOverrides.SelectedRows.Count == 1)
+            {
+                var ov = (IParameterOverride)grdOverrides.SelectedRows[0].DataBoundItem;
+                string expr = _edSvc.EditExpression(ov.ParameterValue, _cls, _provider, _featureSourceId);
+                if (expr != null)
+                {
+                    ov.ParameterValue = expr;
+                    this.RaiseDirty();
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (grdOverrides.SelectedRows.Count == 1)
+            {
+                var ov = (IParameterOverride)grdOverrides.SelectedRows[0].DataBoundItem;
+                _params.Remove(ov);
+                _symRef.ParameterOverrides.RemoveOverride(ov);
+                this.RaiseDirty();
+            }
         }
     }
 }

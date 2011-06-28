@@ -1632,6 +1632,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inline Symbol Definition.
+        /// </summary>
+        internal static string InlineSymbolDefinition {
+            get {
+                return ResourceManager.GetString("InlineSymbolDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have entered a non-numeric value in the Reference Y field. Due to a bug in MapGuide, this will likely give an error when saving..
         /// </summary>
         internal static string InsertionPointYError {
@@ -2189,6 +2198,15 @@ namespace Maestro.Editors.Properties {
         internal static string PackageReadError {
             get {
                 return ResourceManager.GetString("PackageReadError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter Override already specified.
+        /// </summary>
+        internal static string ParameterOverrideExists {
+            get {
+                return ResourceManager.GetString("ParameterOverrideExists", resourceCulture);
             }
         }
         

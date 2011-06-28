@@ -99,14 +99,16 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             return this.Clone();
         }
 
+#if SYM_DEF_110
+        protected string _vschema = "SymbolDefinition-1.1.0.xsd";
+#else
+        protected string _vschema = "SymbolDefinition-1.0.0.xsd";
+#endif
+
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
         public string ValidatingSchema
         {
-#if SYM_DEF_110
-            get { return "SymbolDefinition-1.1.0.xsd"; }
-#else
-            get { return "SymbolDefinition-1.0.0.xsd"; }
-#endif
+            get { return _vschema; }
             set { }
         }
 
@@ -122,6 +124,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class SimpleSymbolDefinition : ISimpleSymbolDefinition
     {
+        internal void RemoveSchemaAttributes()
+        {
+            _vschema = null;
+            versionField = null;
+        }
+
         public static SimpleSymbolDefinition CreateDefault()
         {
             var simpleSym = new SimpleSymbolDefinition()
@@ -683,7 +691,9 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
         public ISimpleSymbolReferenceBase CreateSimpleSymbol(ISimpleSymbolDefinition sym)
         {
-            return new SimpleSymbol() { Item = (SimpleSymbolDefinition)sym };
+            var s = (SimpleSymbolDefinition)sym;
+            s.RemoveSchemaAttributes();
+            return new SimpleSymbol() { Item = s };
         }
 
         public ISimpleSymbolReferenceBase CreateSymbolReference(string resourceId)
@@ -695,6 +705,18 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         public override SymbolDefinitionType Type
         {
             get { return SymbolDefinitionType.Compound; }
+        }
+
+        public void PurgeSimpleSymbolAttributes()
+        {
+            foreach (var sym in this.SimpleSymbol)
+            {
+                if (sym.Type == SimpleSymbolReferenceType.Inline)
+                {
+                    var s = (SimpleSymbolDefinition)sym.Item;
+                    s.RemoveSchemaAttributes();
+                }
+            }
         }
     }
 
@@ -785,7 +807,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         }
     }
  
-    partial class ImageReference : ISymbolLibraryReference, IImageReference
+    partial class ImageReference : ISymbolInstanceReferenceLibrary, IImageReference
     {
         [XmlIgnore]
         SymbolInstanceType ISymbolInstanceReference.Type

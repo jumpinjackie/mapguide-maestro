@@ -129,6 +129,13 @@ namespace Maestro.AddIn.ExtendedObjectModels.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap marker {
+            get {
+                object obj = ResourceManager.GetObject("marker", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to MapGuide Open Source 1.2 / MapGuide Enterprise 2008.
         /// </summary>

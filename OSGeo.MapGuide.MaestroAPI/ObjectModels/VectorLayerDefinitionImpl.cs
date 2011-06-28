@@ -1705,10 +1705,13 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
         public ISymbolInstance CreateSymbolReference(string resourceId)
         {
-            return new SymbolInstance() 
-            { 
+            return new SymbolInstance()
+            {
                 Item = resourceId,
                 ParameterOverrides = new ParameterOverrides()
+                {
+                    Override = new BindingList<Override>()
+                },
             };
         }
     }
@@ -1744,8 +1747,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             }
             set
             {
-                var sr = value as ISymbolLibraryReference;
-                var ir = value as IInlineSimpleSymbolReference;
+                var sr = value as ISymbolInstanceReferenceLibrary;
+                var ir = value as ISymbolInstanceReferenceInline;
                 if (sr != null)
                 {
                     this.Item = sr.ResourceId;
@@ -1769,13 +1772,21 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
     }
 
-    partial class SymbolInstanceLibrary : ISymbolLibraryReference
+    partial class SymbolInstanceLibrary : ISymbolInstanceReferenceLibrary
     {
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        private string _resId;
+
         [XmlIgnore]
         public string ResourceId
         {
-            get;
-            set;
+            get { return _resId; }
+            set 
+            { 
+                if (_resId == value) return;
+                _resId = value;
+                OnPropertyChanged("ResourceId");
+            }
         }
 
         [XmlIgnore]
@@ -1783,9 +1794,18 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             get { return SymbolInstanceType.Reference; }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string name)
+        {
+            var handler = this.PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(name));
+        }
     }
 
-    partial class SymbolInstanceInline : IInlineSimpleSymbolReference
+    partial class SymbolInstanceInline : ISymbolInstanceReferenceInline
     {
         [XmlIgnore]
         public ISymbolDefinitionBase SymbolDefinition
@@ -1828,6 +1848,15 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             if (o != null)
                 this.Override.Remove(o);
         }
+
+        public IParameterOverride CreateParameterOverride(string symbol, string name)
+        {
+            return new Override()
+            {
+                ParameterIdentifier = name, 
+                SymbolName = symbol
+            };
+        }
     }
 
     partial class Override : IParameterOverride
@@ -1836,6 +1865,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
     }
 
     partial class CompositeTypeStyle : ICompositeTypeStyle
+#if LDF_130 || LDF_230
+        , ICompositeTypeStyle2
+#endif
     {
         [XmlIgnore]
         IEnumerable<ICompositeRule> ICompositeTypeStyle.CompositeRule

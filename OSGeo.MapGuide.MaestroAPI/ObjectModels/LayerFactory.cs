@@ -346,9 +346,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #else
             return new CompositeRule()
             {
+                LegendLabel = "",
                 CompositeSymbolization = new CompositeSymbolization()
                 {
-                    
+                    SymbolInstance = new System.ComponentModel.BindingList<SymbolInstance>()  
                 }
             };
 #endif

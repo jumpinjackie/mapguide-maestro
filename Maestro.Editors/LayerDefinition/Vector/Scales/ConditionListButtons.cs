@@ -178,7 +178,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 ThemeCreator dlg = new ThemeCreator(
                     m_owner.Editor, 
                     layer,
-                    m_owner.Schema, 
+                    m_owner.SelectedClass, 
                     owner);
                 if (dlg.ShowDialog(this) == DialogResult.OK)
                 {

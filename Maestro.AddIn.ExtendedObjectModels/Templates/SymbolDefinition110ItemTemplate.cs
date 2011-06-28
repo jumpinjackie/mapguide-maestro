@@ -34,7 +34,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
         public SimpleSymbolDefinitionItem110Template()
         {
             Category = Res.TPL_CATEGORY_MGOS20;
-            Icon = Res.images_stack;
+            Icon = Res.marker;
             Description = Res.TPL_SSD_DESC;
             Name = Res.TPL_SSD_NAME;
             ResourceType = ResourceTypes.SymbolDefinition.ToString();
@@ -59,7 +59,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
         public CompoundSymbolDefinition110ItemTemplate()
         {
             Category = Res.TPL_CATEGORY_MGOS20;
-            Icon = Res.images_stack;
+            Icon = Res.marker;
             Description = Res.TPL_CSD_DESC;
             Name = Res.TPL_CSD_NAME;
             ResourceType = ResourceTypes.SymbolDefinition.ToString();

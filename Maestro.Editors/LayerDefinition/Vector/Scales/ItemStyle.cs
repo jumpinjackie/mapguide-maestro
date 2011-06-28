@@ -164,32 +164,32 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             UserControl uc = null;
             if (isLabel)
             {
-                uc = new FontStyleEditor(m_owner.Editor, m_owner.Schema, m_owner.FeatureSourceId);
+                uc = new FontStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId);
                 ((FontStyleEditor)uc).Item = m_label == null ? null : (ITextSymbol)m_label.Clone(); //(ITextSymbol)Utility.DeepCopy(m_label);
             }
             else if (isW2dSymbol)
             {
-                uc = new PointFeatureStyleEditor(m_owner.Editor, m_owner.Schema, m_owner.FeatureSourceId, m_w2dsymbol);
+                uc = new PointFeatureStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId, m_w2dsymbol);
                 ((PointFeatureStyleEditor)uc).Item = m_point == null ? null : (IPointSymbolization2D)m_point.Clone(); //(IPointSymbolization2D)Utility.XmlDeepCopy(m_point);
             }
             else if (isPoint)
             {
-                uc = new PointFeatureStyleEditor(m_owner.Editor, m_owner.Schema, m_owner.FeatureSourceId);
+                uc = new PointFeatureStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId);
                 ((PointFeatureStyleEditor)uc).Item = m_point == null ? null : (IPointSymbolization2D)m_point.Clone(); //(IPointSymbolization2D)Utility.XmlDeepCopy(m_point);
             }
             else if (isLine)
             {
-                uc = new LineFeatureStyleEditor(m_owner.Editor, m_owner.Schema, m_owner.FeatureSourceId, _factory);
+                uc = new LineFeatureStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId, _factory);
                 ((LineFeatureStyleEditor)uc).Item = m_line == null ? null : LayerElementCloningUtil.CloneStrokes(m_line);//(IList<IStroke>)Utility.XmlDeepCopy(m_line);
             }
             else if (isArea)
             {
-                uc = new AreaFeatureStyleEditor(m_owner.Editor, m_owner.Schema, m_owner.FeatureSourceId);
+                uc = new AreaFeatureStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId);
                 ((AreaFeatureStyleEditor)uc).Item = m_area == null ? null : (IAreaSymbolizationFill)m_area.Clone(); //(IAreaSymbolizationFill)Utility.XmlDeepCopy(m_area);
             }
             else if (isComp)
             {
-                var diag = new SymbolInstancesDialog(m_owner.Editor, m_comp);
+                var diag = new SymbolInstancesDialog(m_owner.Editor, m_comp, m_owner.SelectedClass, m_owner.GetFdoProvider(), m_owner.FeatureSourceId);
                 diag.ShowDialog();
                 return;
             }

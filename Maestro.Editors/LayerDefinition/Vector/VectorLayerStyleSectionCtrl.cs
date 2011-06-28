@@ -362,7 +362,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
             var vsc = lstScaleRanges.SelectedItem as VectorScaleRange;
             if (vsc != null && vsc.SupportsElevation)
             {
-                if (new ElevationDialog(_edsvc, (IVectorScaleRange2)vsc.Item, Owner.FeatureSourceId, Owner.Schema, Owner.GetFdoProvider()).ShowDialog() == DialogResult.OK)
+                if (new ElevationDialog(_edsvc, (IVectorScaleRange2)vsc.Item, Owner.FeatureSourceId, Owner.SelectedClass, Owner.GetFdoProvider()).ShowDialog() == DialogResult.OK)
                 {
                     OnResourceChanged();
                 }
