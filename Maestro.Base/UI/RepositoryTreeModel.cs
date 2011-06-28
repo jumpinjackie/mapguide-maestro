@@ -88,6 +88,9 @@ namespace Maestro.Base.UI
                     case ResourceTypes.PrintLayout:
                         this.Icon = Properties.Resources.printer;
                         break;
+                    case ResourceTypes.SymbolDefinition:
+                        this.Icon = Properties.Resources.marker;
+                        break;
                     default:
                         this.Icon = Properties.Resources.document;
                         break;

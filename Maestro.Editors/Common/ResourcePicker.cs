@@ -47,6 +47,7 @@ namespace Maestro.Editors.Generic
         const int RES_PRINTLAYOUT = 6;
         const int RES_DRAWINGSOURCE = 7;
         const int RES_APPLICATIONDEFINITION = 8;
+        const int RES_SYMBOLDEFINITION = 9;
 
         private ResourceTypes[] _resTypes;
 
@@ -252,7 +253,15 @@ namespace Maestro.Editors.Generic
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (_mode == ResourcePickerMode.SaveResource)
+            if (_mode == ResourcePickerMode.OpenResource)
+            {
+                if (!_resSvc.ResourceExists(txtResourceId.Text))
+                {
+                    MessageBox.Show(Properties.Resources.ResourceDoesntExist);
+                    return;
+                }
+            }
+            else if (_mode == ResourcePickerMode.SaveResource)
             {
                 if (ResourceIdentifier.IsFolderResource(txtResourceId.Text))
                 {
@@ -347,6 +356,9 @@ namespace Maestro.Editors.Generic
                                 break;
                             case ResourceTypes.WebLayout:
                                 li.ImageIndex = RES_WEBLAYOUT;
+                                break;
+                            case ResourceTypes.SymbolDefinition:
+                                li.ImageIndex = RES_SYMBOLDEFINITION;
                                 break;
                             default:
                                 li.ImageIndex = RES_UNKNOWN;

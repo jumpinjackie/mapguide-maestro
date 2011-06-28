@@ -866,6 +866,13 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap marker {
+            get {
+                object obj = ResourceManager.GetObject("marker", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>

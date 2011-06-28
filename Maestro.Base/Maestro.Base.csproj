@@ -393,6 +393,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maestro.Base.addin" />
+    <None Include="Resources\marker.png" />
     <None Include="Resources\arrow-circle-double.png" />
     <None Include="Resources\system-monitor.png" />
     <None Include="Resources\server--arrow.png" />
