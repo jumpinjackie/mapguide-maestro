@@ -166,6 +166,6 @@ namespace Maestro.Editors.Common
 				get { return m_name; }
 				set { m_name = value; }
 			}
-		}
+        }
     }
 }

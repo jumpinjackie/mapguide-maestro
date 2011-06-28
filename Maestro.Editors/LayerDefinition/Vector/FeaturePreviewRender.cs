@@ -25,6 +25,7 @@ using Maestro.Editors.Common;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System.Collections.Generic;
 using OSGeo.MapGuide.MaestroAPI;
+using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
 
 namespace Maestro.Editors.LayerDefinition.Vector
 {
@@ -418,8 +419,8 @@ namespace Maestro.Editors.LayerDefinition.Vector
 		{
 			get
 			{
-				if (m_fillImages == null)
-					m_fillImages = ReadImagesFromDisk("WebStudio" + System.IO.Path.DirectorySeparatorChar.ToString() + "areas"); //typeof(GeometryStyleEditors.ImageStylePicker).Namespace + ".Fillstyles");
+                if (m_fillImages == null)
+                    m_fillImages = StyleImageCache.FillImages; //ReadImagesFromDisk("WebStudio" + System.IO.Path.DirectorySeparatorChar.ToString() + "areas"); //typeof(GeometryStyleEditors.ImageStylePicker).Namespace + ".Fillstyles");
 				return m_fillImages;
 			}
 		}
@@ -428,68 +429,11 @@ namespace Maestro.Editors.LayerDefinition.Vector
 		{
 			get
 			{
-				if (m_lineStyles  == null)
-					m_lineStyles = ReadImagesFromDisk("WebStudio" + System.IO.Path.DirectorySeparatorChar.ToString() + "lines");  //typeof(GeometryStyleEditors.ImageStylePicker).Namespace + ".Linestyles");
+                if (m_lineStyles == null)
+                    m_lineStyles = StyleImageCache.LineStyles; //ReadImagesFromDisk("WebStudio" + System.IO.Path.DirectorySeparatorChar.ToString() + "lines");  //typeof(GeometryStyleEditors.ImageStylePicker).Namespace + ".Linestyles");
 				return m_lineStyles;
 			}
 		}
-
-		private static ImageStylePicker.NamedImage[] ReadImagesFromDisk(string folderpath)
-		{
-			string path = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, folderpath);
-			if (!System.IO.Directory.Exists(path))
-				return new ImageStylePicker.NamedImage[0];
-
-			string[] filenames = System.IO.Directory.GetFiles(path, "*.png");
-			ArrayList lst = new ArrayList();
-			foreach(string s in filenames)
-			{
-				Image img = Image.FromFile(s);
-				//For some odd reason these have borders around
-				if (img.Width == 120 && img.Height == 20)
-				{
-					Bitmap bmp = new Bitmap(115, 18);
-					using (Graphics g = Graphics.FromImage(bmp))
-					{
-						g.Clear(Color.Transparent);
-						g.DrawImage(img, new Rectangle(new Point(0,0), bmp.Size), new Rectangle(2, 1, 115, 18), GraphicsUnit.Pixel);
-					}
-					img = bmp;
-				}
-
-				lst.Add(
-					new ImageStylePicker.NamedImage
-					(System.IO.Path.GetFileNameWithoutExtension(s), img)
-					);
-			}
-			return (ImageStylePicker.NamedImage[])lst.ToArray(typeof(ImageStylePicker.NamedImage));
-		}
-
-		/*private static GeometryStyleEditors.ImageStylePicker.NamedImage[] ReadImages(string assemblypath)
-		{
-			SortedList lst = new SortedList();
-			System.Reflection.Assembly asm = System.Reflection.Assembly.GetExecutingAssembly();
-			string itemnamespace = assemblypath;
-			foreach(string s in asm.GetManifestResourceNames())
-				if (s.StartsWith(itemnamespace) && s.ToLower().EndsWith(".gif"))
-				{
-					Image img = Bitmap.FromStream(asm.GetManifestResourceStream(s));
-					string imagename = s.Substring(itemnamespace.Length + 1, s.LastIndexOf(".") - itemnamespace.Length - 1); 
-					string index = imagename.Substring(0, imagename.IndexOf("."));
-					imagename = imagename.Substring(index.Length + 1);
-
-					lst.Add(index, new GeometryStyleEditors.ImageStylePicker.NamedImage(imagename, img));
-				}
-
-			GeometryStyleEditors.ImageStylePicker.NamedImage[] retval = new GeometryStyleEditors.ImageStylePicker.NamedImage[lst.Count];
-			int i = 0;
-			foreach(GeometryStyleEditors.ImageStylePicker.NamedImage nm in lst.Values)
-				retval[i++] = nm;
-
-			return retval;
-		}*/
-
-
 
         internal static void RenderNoPreview(Graphics graphics, Rectangle rect)
         {
