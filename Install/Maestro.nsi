@@ -176,7 +176,6 @@ Section
 	SetOutPath $INSTDIR
 	
 	# directories
-	File /r "${INST_OUTPUT_MAESTRO}\WebStudio"
 	File /r "${INST_OUTPUT_MAESTRO}\AddIns"
     File /r "${INST_OUTPUT_MAESTRO}\Data"
     File /r "${INST_OUTPUT_MAESTRO}\UserDoc"
