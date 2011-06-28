@@ -1667,6 +1667,13 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// </summary>
         /// <param name="inst">The inst.</param>
         void RemoveSymbolInstance(ISymbolInstance inst);
+
+        /// <summary>
+        /// Creates a symbol reference.
+        /// </summary>
+        /// <param name="resourceId"></param>
+        /// <returns></returns>
+        ISymbolInstance CreateSymbolReference(string resourceId);
     }
 
     /// <summary>

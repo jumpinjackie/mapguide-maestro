@@ -33,5 +33,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         {
             InitializeComponent();
         }
+
+        public void SetContent(Control c)
+        {
+            grpSettings.Controls.Clear();
+            c.Dock = DockStyle.Fill;
+            grpSettings.Controls.Add(c);
+        }
     }
 }

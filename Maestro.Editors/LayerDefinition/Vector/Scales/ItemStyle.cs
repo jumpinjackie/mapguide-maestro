@@ -190,6 +190,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             else if (isComp)
             {
                 var diag = new SymbolInstancesDialog(m_owner.Editor, m_comp);
+                diag.ShowDialog();
+                return;
             }
 
             if (uc != null)

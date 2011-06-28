@@ -1702,6 +1702,15 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             if (sym != null)
                 this.SymbolInstance.Remove(sym);
         }
+
+        public ISymbolInstance CreateSymbolReference(string resourceId)
+        {
+            return new SymbolInstance() 
+            { 
+                Item = resourceId,
+                ParameterOverrides = new ParameterOverrides()
+            };
+        }
     }
 
     partial class SymbolInstance : ISymbolInstance

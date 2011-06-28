@@ -25,6 +25,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using Maestro.Editors.SymbolDefinition;
+using Maestro.Editors.Generic;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
@@ -38,6 +41,41 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             InitializeComponent();
             _edSvc = edSvc;
             _comp = comp;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void referenceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            splitContainer1.Panel2.Controls.Clear();
+            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.SymbolDefinition, ResourcePickerMode.OpenResource))
+            {
+                if (picker.ShowDialog() == DialogResult.OK)
+                {
+                    var symRef = _comp.CreateSymbolReference(picker.ResourceID);
+                    //var ctrl = new SimpleSymbolReferenceCtrl(_edSvc.ResourceService, symRef);
+                    
+                    //var ctrl2 = new SymbolInstanceSettingsCtrl(
+                }
+            }
+        }
+
+        private void inlineSimpleSymbolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void inlineCompoundSymbolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

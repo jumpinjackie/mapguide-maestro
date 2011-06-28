@@ -68,6 +68,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 lineList.Owner = parent.Owner;
                 areaList.Owner = parent.Owner;
 
+                pointList.Factory = parent.Factory;
+                lineList.Factory = parent.Factory;
+                areaList.Factory = parent.Factory;
+
                 if (_pts == null)
                     _pts = parent.Factory.CreateDefaultPointStyle();
 
@@ -97,6 +101,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     chkComposite.Checked = (_cts != null);
 
                     compList.Owner = parent.Owner;
+                    compList.Factory = parent.Factory;
                     if (_cts == null)
                         _cts = parent.Factory.CreateDefaultCompositeStyle();
 

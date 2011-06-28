@@ -28,17 +28,18 @@ using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace Maestro.Editors.SymbolDefinition
 {
     internal partial class SimpleSymbolReferenceCtrl : UserControl
     {
         private IResourceService _resSvc;
-        private ISimpleSymbolLibraryReference _symRef;
+        private IResourceIdReference _symRef;
 
         private bool _init = false;
 
-        public SimpleSymbolReferenceCtrl(IResourceService resSvc, ISimpleSymbolLibraryReference symRef)
+        public SimpleSymbolReferenceCtrl(IResourceService resSvc, IResourceIdReference symRef)
         {
             InitializeComponent();
             _resSvc = resSvc;

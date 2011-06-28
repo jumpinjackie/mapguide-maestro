@@ -730,7 +730,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         }
 
         [XmlIgnore]
-        string ISimpleSymbolLibraryReference.ResourceId
+        string IResourceIdReference.ResourceId
         {
             get
             {

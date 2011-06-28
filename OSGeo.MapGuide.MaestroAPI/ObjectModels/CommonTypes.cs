@@ -326,4 +326,16 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         Sym_RepeatX,
         Sym_RepeatY
     }
+
+    /// <summary>
+    /// Represents a resource id reference
+    /// </summary>
+    public interface IResourceIdReference
+    {
+        /// <summary>
+        /// Gets or sets the resource id.
+        /// </summary>
+        /// <value>The resource id.</value>
+        string ResourceId { get; set; }
+    }
 }

@@ -116,13 +116,8 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     /// <summary>
     /// Represents a symbol instance reference by a resource id
     /// </summary>
-    public interface ISymbolLibraryReference : ISymbolInstanceReference
+    public interface ISymbolLibraryReference : ISymbolInstanceReference, IResourceIdReference
     {
-        /// <summary>
-        /// Gets or sets the resource id.
-        /// </summary>
-        /// <value>The resource id.</value>
-        string ResourceId { get; set; }
     }
 
     /// <summary>
@@ -729,13 +724,8 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     /// <summary>
     /// Represents a simple symbol reference by resource id
     /// </summary>
-    public interface ISimpleSymbolLibraryReference : ISimpleSymbolReferenceBase
+    public interface ISimpleSymbolLibraryReference : ISimpleSymbolReferenceBase, IResourceIdReference
     {
-        /// <summary>
-        /// Gets or sets the resource id.
-        /// </summary>
-        /// <value>The resource id.</value>
-        string ResourceId { get; set; }
     }
 
     /// <summary>

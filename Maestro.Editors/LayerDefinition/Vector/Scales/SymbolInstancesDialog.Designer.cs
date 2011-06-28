@@ -34,11 +34,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btnAdd = new System.Windows.Forms.ToolStripDropDownButton();
             this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inlineSimpleSymbolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inlineCompoundSymbolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -50,6 +50,7 @@
             resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.Name = "btnClose";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // splitContainer1
             // 
@@ -78,46 +79,48 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1,
-            this.toolStripButton1});
+            this.btnAdd,
+            this.btnDelete});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
-            // toolStripDropDownButton1
+            // btnAdd
             // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.referenceToolStripMenuItem,
             this.inlineSimpleSymbolToolStripMenuItem,
             this.inlineCompoundSymbolToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = global::Maestro.Editors.Properties.Resources.plus_circle;
-            resources.ApplyResources(this.toolStripDropDownButton1, "toolStripDropDownButton1");
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.btnAdd.Image = global::Maestro.Editors.Properties.Resources.plus_circle;
+            resources.ApplyResources(this.btnAdd, "btnAdd");
+            this.btnAdd.Name = "btnAdd";
             // 
             // referenceToolStripMenuItem
             // 
             this.referenceToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.arrow;
             this.referenceToolStripMenuItem.Name = "referenceToolStripMenuItem";
             resources.ApplyResources(this.referenceToolStripMenuItem, "referenceToolStripMenuItem");
+            this.referenceToolStripMenuItem.Click += new System.EventHandler(this.referenceToolStripMenuItem_Click);
             // 
             // inlineSimpleSymbolToolStripMenuItem
             // 
             this.inlineSimpleSymbolToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.marker;
             this.inlineSimpleSymbolToolStripMenuItem.Name = "inlineSimpleSymbolToolStripMenuItem";
             resources.ApplyResources(this.inlineSimpleSymbolToolStripMenuItem, "inlineSimpleSymbolToolStripMenuItem");
+            this.inlineSimpleSymbolToolStripMenuItem.Click += new System.EventHandler(this.inlineSimpleSymbolToolStripMenuItem_Click);
             // 
             // inlineCompoundSymbolToolStripMenuItem
             // 
             this.inlineCompoundSymbolToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.marker;
             this.inlineCompoundSymbolToolStripMenuItem.Name = "inlineCompoundSymbolToolStripMenuItem";
             resources.ApplyResources(this.inlineCompoundSymbolToolStripMenuItem, "inlineCompoundSymbolToolStripMenuItem");
+            this.inlineCompoundSymbolToolStripMenuItem.Click += new System.EventHandler(this.inlineCompoundSymbolToolStripMenuItem_Click);
             // 
-            // toolStripButton1
+            // btnDelete
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::Maestro.Editors.Properties.Resources.cross_script;
-            resources.ApplyResources(this.toolStripButton1, "toolStripButton1");
-            this.toolStripButton1.Name = "toolStripButton1";
+            this.btnDelete.Image = global::Maestro.Editors.Properties.Resources.cross_script;
+            resources.ApplyResources(this.btnDelete, "btnDelete");
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // SymbolInstancesDialog
             // 
@@ -144,10 +147,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripDropDownButton btnAdd;
         private System.Windows.Forms.ToolStripMenuItem referenceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inlineSimpleSymbolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inlineCompoundSymbolToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton btnDelete;
     }
 }

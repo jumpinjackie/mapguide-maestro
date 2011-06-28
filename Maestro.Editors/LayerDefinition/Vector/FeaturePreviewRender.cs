@@ -493,7 +493,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
         internal static void RenderNoPreview(Graphics graphics, Rectangle rect)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
