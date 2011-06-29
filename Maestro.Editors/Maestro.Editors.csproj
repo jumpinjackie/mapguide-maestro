@@ -47,11 +47,6 @@
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="AreaPatterns.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AreaPatterns.resx</DependentUpon>
-    </Compile>
     <Compile Include="Common\ColorComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1108,10 +1103,6 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AreaPatterns.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AreaPatterns.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Common\ColorComboBox.resx">
       <DependentUpon>ColorComboBox.cs</DependentUpon>
       <SubType>Designer</SubType>
