@@ -253,10 +253,10 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0 {
         /// WatermarkDefinitionType class constructor
         /// </summary>
         public WatermarkDefinitionType() {
-            this.extendedData1Field = new ExtendedDataType();
-            this.positionField = new WatermarkDefinitionTypePosition();
-            this.appearanceField = new WatermarkAppearanceType();
-            this.contentField = new WatermarkDefinitionTypeContent();
+            //this.extendedData1Field = new ExtendedDataType();
+            //this.positionField = new WatermarkDefinitionTypePosition();
+            //this.appearanceField = new WatermarkAppearanceType();
+            //this.contentField = new WatermarkDefinitionTypeContent();
         }
         
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]

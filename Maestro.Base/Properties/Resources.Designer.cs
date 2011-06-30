@@ -2293,7 +2293,7 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a new Map Definition.
+        ///   Looks up a localized string similar to Create a new Map Definition using the v1.0.0 schema.
         /// </summary>
         internal static string TPL_MDF_DESC {
             get {
@@ -2302,7 +2302,7 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Map Definition.
+        ///   Looks up a localized string similar to Map Definition (v1.0.0).
         /// </summary>
         internal static string TPL_MDF_NAME {
             get {

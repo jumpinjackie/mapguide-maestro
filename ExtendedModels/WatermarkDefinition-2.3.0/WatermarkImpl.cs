@@ -25,9 +25,44 @@ using System.Xml.Serialization;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using System.IO;
 
 namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0
 {
+    using Sdf110 = SymbolDefinition_1_1_0;
+
+    public static class WdfEntryPoint
+    {
+        public static WatermarkDefinition CreateDefault(SymbolDefinitionType type)
+        {
+            var wdf = new WatermarkDefinition()
+            {
+                Appearance = new WatermarkAppearanceType(),
+                Content = new WatermarkDefinitionTypeContent()
+                {
+                    Item = (type == SymbolDefinitionType.Simple) ? (Sdf110.SymbolDefinitionBase)Sdf110.SymbolDefEntryPoint.CreateDefaultSimple() : (Sdf110.SymbolDefinitionBase)Sdf110.SymbolDefEntryPoint.CreateDefaultCompound()
+                },
+                Position = new WatermarkDefinitionTypePosition()
+                {
+                    Item = new XYPositionType()
+                }
+            };
+            wdf.Content.Item.Name = wdf.Content.Item.Description = "";
+            wdf.Content.Item.RemoveSchemaAttributes();
+            return wdf;
+        }
+
+        public static IResource Deserialize(string xml)
+        {
+            return WatermarkDefinition.Deserialize(xml);
+        }
+
+        public static Stream Serialize(IResource res)
+        {
+            return res.SerializeToStream();
+        }
+    }
+
     partial class WatermarkDefinition : IWatermarkDefinition
     {
         private static readonly Version RES_VERSION = new Version(2, 3, 0);

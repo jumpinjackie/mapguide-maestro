@@ -980,6 +980,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unknown Map Definition version: .
+        /// </summary>
+        internal static string UnknownMapDefinitionVersion {
+            get {
+                return ResourceManager.GetString("UnknownMapDefinitionVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknown Symbol Definition version: .
         /// </summary>
         internal static string UnknownSymbolDefVersion {
@@ -989,7 +998,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unknown web layout version: .
+        ///   Looks up a localized string similar to Unknown Watermark Definition version: .
+        /// </summary>
+        internal static string UnknownWatermarkDefinitionVersion {
+            get {
+                return ResourceManager.GetString("UnknownWatermarkDefinitionVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown Web Layout version: .
         /// </summary>
         internal static string UnknownWebLayoutVersion {
             get {

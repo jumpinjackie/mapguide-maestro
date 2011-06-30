@@ -38,6 +38,7 @@ using OSGeo.MapGuide.ObjectModels.SymbolLibrary;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0;
 using System.Collections.Specialized;
+using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 
 namespace OSGeo.MapGuide.ObjectModels
 {
@@ -58,9 +59,19 @@ namespace OSGeo.MapGuide.ObjectModels
     /// </summary>
     public delegate ICompoundSymbolDefinition CompoundSymbolDefCreatorFunc();
     /// <summary>
-    /// Factory methods signature for creating simple symbol definitions
+    /// Factory method signature for creating simple symbol definitions
     /// </summary>
     public delegate ISimpleSymbolDefinition SimpleSymbolDefCreatorFunc();
+    /// <summary>
+    /// Factory method signature for creating watermarks
+    /// </summary>
+    /// <returns></returns>
+    public delegate IWatermarkDefinition WatermarkCreatorFunc(SymbolDefinitionType type);
+    /// <summary>
+    /// Factory method signature for creating map definitions
+    /// </summary>
+    /// <returns></returns>
+    public delegate IMapDefinition MapDefinitionCreatorFunc();
 
     /// <summary>
     /// Factory class to create MapGuide resource objects with either pre-defined or
@@ -84,6 +95,8 @@ namespace OSGeo.MapGuide.ObjectModels
         private static Dictionary<Version, WebLayoutCreatorFunc> _wlFactories;
         private static Dictionary<Version, SimpleSymbolDefCreatorFunc> _simpleSymbolFactories;
         private static Dictionary<Version, CompoundSymbolDefCreatorFunc> _compoundSymbolFactories;
+        private static Dictionary<Version, MapDefinitionCreatorFunc> _mapDefinitionFactories;
+        private static Dictionary<Version, WatermarkCreatorFunc> _watermarkFactories;
         
         static ObjectFactory()
         {
@@ -92,6 +105,8 @@ namespace OSGeo.MapGuide.ObjectModels
             _loadProcFactories = new Dictionary<LoadType, LoadProcCreatorFunc>();
             _simpleSymbolFactories = new Dictionary<Version, SimpleSymbolDefCreatorFunc>();
             _compoundSymbolFactories = new Dictionary<Version, CompoundSymbolDefCreatorFunc>();
+            _mapDefinitionFactories = new Dictionary<Version, MapDefinitionCreatorFunc>();
+            _watermarkFactories = new Dictionary<Version, WatermarkCreatorFunc>();
 
             _layerFactories.Add(
                 new Version(1, 0, 0),
@@ -118,6 +133,10 @@ namespace OSGeo.MapGuide.ObjectModels
             _simpleSymbolFactories.Add(
                 new Version(1, 0, 0),
                 new SimpleSymbolDefCreatorFunc(OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition.CreateDefault));
+
+            _mapDefinitionFactories.Add(
+                new Version(1, 0, 0),
+                new MapDefinitionCreatorFunc(OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0.MdfEntryPoint.CreateDefault));
         }
 
         /// <summary>
@@ -183,6 +202,32 @@ namespace OSGeo.MapGuide.ObjectModels
                 throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.FactoryMethodAlreadyRegistered + version);
 
             _wlFactories[version] = method;
+        }
+
+        /// <summary>
+        /// Register the map definition factory method
+        /// </summary>
+        /// <param name="version"></param>
+        /// <param name="method"></param>
+        public static void RegisterMapDefinitionFactoryMethod(Version version, MapDefinitionCreatorFunc method)
+        {
+            if (_mapDefinitionFactories.ContainsKey(version))
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.FactoryMethodAlreadyRegistered + version);
+
+            _mapDefinitionFactories[version] = method;
+        }
+
+        /// <summary>
+        /// Registers the Watermark Definition factory method
+        /// </summary>
+        /// <param name="version"></param>
+        /// <param name="method"></param>
+        public static void RegisterWatermarkDefinitionFactoryMethod(Version version, WatermarkCreatorFunc method)
+        {
+            if (_watermarkFactories.ContainsKey(version))
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.FactoryMethodAlreadyRegistered + version);
+
+            _watermarkFactories[version] = method;
         }
 
         /// <summary>
@@ -301,36 +346,62 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
-        /// Creates the map definition.
+        /// Create a Watermark Definition
         /// </summary>
-        /// <param name="owner">The owner.</param>
-        /// <param name="name">The name.</param>
+        /// <param name="owner"></param>
+        /// <param name="type"></param>
         /// <returns></returns>
-        public static IMapDefinition CreateMapDefinition(IServerConnection owner, string name)
+        public static IWatermarkDefinition CreateWatermark(IServerConnection owner, SymbolDefinitionType type)
+        {
+            Check.NotNull(owner, "owner");
+            return CreateWatermark(owner, type, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.WatermarkDefinition));
+        }
+
+        /// <summary>
+        /// Creates a Watermark Definition
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="type"></param>
+        /// <param name="version"></param>
+        /// <returns></returns>
+        public static IWatermarkDefinition CreateWatermark(IServerConnection owner, SymbolDefinitionType type, Version version)
         {
             Check.NotNull(owner, "owner");
 
-            return new OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0.MapDefinition() { 
-                CurrentConnection = owner,
-                CoordinateSystem = string.Empty,
-                Extents = new OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0.Box2DType() { MaxX = 0.0, MaxY = 0.0, MinX = 0.0, MinY = 0.0 },
-                Name = name,
-                BackgroundColor = Color.White,
-                MapLayer = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0.MapLayerType>(),
-                MapLayerGroup = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0.MapLayerGroupType>(),
-            };
+            if (!_watermarkFactories.ContainsKey(version))
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownWatermarkDefinitionVersion + version.ToString());
+
+            return _watermarkFactories[version](type);
         }
 
         /// <summary>
         /// Creates the map definition.
         /// </summary>
-        /// <param name="owner">The owner.</param>
-        /// <param name="name">The name.</param>
-        /// <param name="coordinateSystemWkt">The coordinate system WKT.</param>
+        /// <param name="owner"></param>
+        /// <param name="version"></param>
+        /// <param name="name"></param>
         /// <returns></returns>
-        public static IMapDefinition CreateMapDefinition(IServerConnection owner, string name, string coordinateSystemWkt)
+        public static IMapDefinition CreateMapDefinition(IServerConnection owner, Version version, string name)
         {
-            var map = CreateMapDefinition(owner, name);
+            Check.NotNull(owner, "owner");
+
+            if (!_mapDefinitionFactories.ContainsKey(version))
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownMapDefinitionVersion + version.ToString());
+
+            return _mapDefinitionFactories[version]();
+        }
+
+        /// <summary>
+        /// Creates the map definition.
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="ver"></param>
+        /// <param name="name"></param>
+        /// <param name="coordinateSystemWkt"></param>
+        /// <returns></returns>
+        public static IMapDefinition CreateMapDefinition(IServerConnection owner, Version ver, string name, string coordinateSystemWkt)
+        {
+            var map = CreateMapDefinition(owner, ver, name);
             map.CoordinateSystem = coordinateSystemWkt;
 
             return map;
@@ -339,21 +410,64 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// Creates the map definition.
         /// </summary>
-        /// <param name="owner">The owner.</param>
-        /// <param name="name">The name.</param>
-        /// <param name="coordinateSystemWkt">The coordinate system WKT.</param>
-        /// <param name="env">The env.</param>
+        /// <param name="owner"></param>
+        /// <param name="ver"></param>
+        /// <param name="name"></param>
+        /// <param name="coordinateSystemWkt"></param>
+        /// <param name="env"></param>
         /// <returns></returns>
-        public static IMapDefinition CreateMapDefinition(IServerConnection owner, string name, string coordinateSystemWkt, IEnvelope env)
+        public static IMapDefinition CreateMapDefinition(IServerConnection owner, Version ver, string name, string coordinateSystemWkt, IEnvelope env)
         {
-            var map = CreateMapDefinition(owner, name, coordinateSystemWkt);
+            var map = CreateMapDefinition(owner, ver, name, coordinateSystemWkt);
             map.Extents = env;
 
             return map;
         }
 
         /// <summary>
-        /// Creates the simple symbol.
+        /// Creates the map definition.
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static IMapDefinition CreateMapDefinition(IServerConnection owner, string name)
+        {
+            Check.NotNull(owner, "owner");
+
+            return CreateMapDefinition(owner, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition), name);
+        }
+
+        /// <summary>
+        /// Creates the map definition.
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="name"></param>
+        /// <param name="coordinateSystemWkt"></param>
+        /// <returns></returns>
+        public static IMapDefinition CreateMapDefinition(IServerConnection owner, string name, string coordinateSystemWkt)
+        {
+            Check.NotNull(owner, "owner");
+
+            return CreateMapDefinition(owner, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition), name, coordinateSystemWkt);
+        }
+
+        /// <summary>
+        /// Creates the map definition.
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="name"></param>
+        /// <param name="coordinateSystemWkt"></param>
+        /// <param name="env"></param>
+        /// <returns></returns>
+        public static IMapDefinition CreateMapDefinition(IServerConnection owner, string name, string coordinateSystemWkt, IEnvelope env)
+        {
+            Check.NotNull(owner, "owner");
+
+            return CreateMapDefinition(owner, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition), name, coordinateSystemWkt, env);
+        }
+
+        /// <summary>
+        /// Creates a simple symbol definition.
         /// </summary>
         /// <param name="owner">The owner.</param>
         /// <returns></returns>
@@ -372,7 +486,7 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
-        /// Creates the simple symbol. The schema version used is the highest supported one by the connection 
+        /// Creates a simple symbol definition. The schema version used is the highest supported one by the connection 
         /// </summary>
         /// <param name="owner"></param>
         /// <param name="name"></param>

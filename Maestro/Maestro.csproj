@@ -79,34 +79,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDK\bin\OSGeo.MapGuide.MaestroAPI.Native.dll</HintPath>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.ObjectModels.LayerDefinition-1.1.0, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.1.0.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.MapGuide.ObjectModels.LayerDefinition-1.2.0, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.2.0.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.MapGuide.ObjectModels.LayerDefinition-1.3.0, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.3.0.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.MapGuide.ObjectModels.LoadProcedure-1.1.0, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\OSGeo.MapGuide.ObjectModels.LoadProcedure-1.1.0.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.MapGuide.ObjectModels.LoadProcedure-2.2.0, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\OSGeo.MapGuide.ObjectModels.LoadProcedure-2.2.0.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.MapGuide.ObjectModels.SymbolDefinition-1.1.0, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\OSGeo.MapGuide.ObjectModels.SymbolDefinition-1.1.0.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.MapGuide.ObjectModels.WebLayout-1.1.0, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\OSGeo.MapGuide.ObjectModels.WebLayout-1.1.0.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -409,6 +381,10 @@
     <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj">
       <Project>{F1E2F468-5030-4DBA-968C-9620284AFAA1}</Project>
       <Name>Maestro.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSGeo.MapGuide.ExtendedObjectModels\OSGeo.MapGuide.ExtendedObjectModels.csproj">
+      <Project>{B3A2B816-9F41-4857-A111-09D2DF2550D6}</Project>
+      <Name>OSGeo.MapGuide.ExtendedObjectModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj">
       <Project>{857CA1A3-FC88-4BE0-AB6A-D1EE772AB288}</Project>

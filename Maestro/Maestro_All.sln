@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.Base", "..\Maestro.Base\Maestro.Base.csproj", "{F1E2F468-5030-4DBA-968C-9620284AFAA1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestroFsPreview", "..\MaestroFsPreview\MaestroFsPreview.csproj", "{59BE5E18-17B6-431D-836E-C0AABA6D69E8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{07588440-5F9F-4C30-AA06-9CF30BA6DDE6} = {07588440-5F9F-4C30-AA06-9CF30BA6DDE6}
+		{5AD2CDBA-952E-4148-98A1-31D2E0D540D5} = {5AD2CDBA-952E-4148-98A1-31D2E0D540D5}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.ExtendedObjectModels", "..\Maestro.AddIn.ExtendedObjectModels\Maestro.AddIn.ExtendedObjectModels.csproj", "{32BA7DF6-1AFA-441D-9231-5624C5920706}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -26,6 +30,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.ExtendedObjec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MgCooker", "..\MgCooker\MgCooker.csproj", "{C7DCF771-5982-4859-A17F-01126E6F9BA6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{07588440-5F9F-4C30-AA06-9CF30BA6DDE6} = {07588440-5F9F-4C30-AA06-9CF30BA6DDE6}
+		{80FA3158-8B5F-48D1-A393-0378AFE48A7E} = {80FA3158-8B5F-48D1-A393-0378AFE48A7E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MgCooker.Cmd", "..\MgCooker.Cmd\MgCooker.Cmd.csproj", "{0FD82B7B-1264-410F-86D1-47E9CCACD68E}"
 EndProject
@@ -68,6 +76,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.MapDefinition-2.3.0", "..\ExtendedModels\MapDefinition-2.3.0\OSGeo.MapGuide.ObjectModels.MapDefinition-2.3.0.csproj", "{C8DB3E77-3AF4-471D-A214-69DBEB32750E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0", "..\ExtendedModels\WatermarkDefinition-2.3.0\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0.csproj", "{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ExtendedObjectModels", "..\OSGeo.MapGuide.ExtendedObjectModels\OSGeo.MapGuide.ExtendedObjectModels.csproj", "{B3A2B816-9F41-4857-A111-09D2DF2550D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -187,6 +197,10 @@ Global
 		{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3A2B816-9F41-4857-A111-09D2DF2550D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A2B816-9F41-4857-A111-09D2DF2550D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A2B816-9F41-4857-A111-09D2DF2550D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A2B816-9F41-4857-A111-09D2DF2550D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

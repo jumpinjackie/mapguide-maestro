@@ -40,15 +40,34 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_2_3_0
                 return serializer;
             }
         }
-        /*
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        public virtual void OnPropertyChanged(string info) {
-            System.ComponentModel.PropertyChangedEventHandler handler = this.PropertyChanged;
-            if ((handler != null)) {
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(info));
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        private string versionField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string version
+        {
+            get
+            {
+                return this.versionField;
             }
-        }*/
+            set
+            {
+                if ((this.versionField != null))
+                {
+                    if ((versionField.Equals(value) != true))
+                    {
+                        this.versionField = value;
+                        this.OnPropertyChanged("version");
+                    }
+                }
+                else
+                {
+                    this.versionField = value;
+                    this.OnPropertyChanged("version");
+                }
+            }
+        }
         
         #region Serialize/Deserialize
         /// <summary>

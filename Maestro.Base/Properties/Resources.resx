@@ -437,10 +437,10 @@
     <value>SHP Load Procedure</value>
   </data>
   <data name="TPL_MDF_DESC" xml:space="preserve">
-    <value>Create a new Map Definition</value>
+    <value>Create a new Map Definition using the v1.0.0 schema</value>
   </data>
   <data name="TPL_MDF_NAME" xml:space="preserve">
-    <value>Map Definition</value>
+    <value>Map Definition (v1.0.0)</value>
   </data>
   <data name="TPL_PL_DESC" xml:space="preserve">
     <value>Create a new Print Layout</value>

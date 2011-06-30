@@ -29,6 +29,7 @@ using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System.ComponentModel;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
+using System.IO;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -70,14 +71,49 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         }
     }
 
+    public static class MdfEntryPoint
+    {
+        public static MapDefinition CreateDefault()
+        {
+            return new MapDefinition()
+            {
+                Name = "",
+                CoordinateSystem = string.Empty,
+                Extents = new Box2DType() { MaxX = 0.0, MaxY = 0.0, MinX = 0.0, MinY = 0.0 },
+                BackgroundColor = Color.White,
+                MapLayer = new System.ComponentModel.BindingList<MapLayerType>(),
+                MapLayerGroup = new System.ComponentModel.BindingList<MapLayerGroupType>(),
+            };
+        }
+
+        public static IResource Deserialize(string xml)
+        {
+            return MapDefinition.Deserialize(xml);
+        }
+
+        public static Stream Serialize(IResource res)
+        {
+            return res.SerializeToStream();
+        }
+    }
+
     partial class MapDefinition : IMapDefinition
 #if MDF_230
         , IMapDefinition2
 #endif
     {
-        internal MapDefinition() { }
+        internal MapDefinition() 
+        { 
+#if MDF_230
+            this.versionField = "2.3.0";
+#endif
+        }
 
+#if MDF_230
+        private static readonly Version RES_VERSION = new Version(2, 3, 0);
+#else
         private static readonly Version RES_VERSION = new Version(1, 0, 0);
+#endif
 
         [XmlIgnore]
         public OSGeo.MapGuide.MaestroAPI.IServerConnection CurrentConnection
@@ -139,7 +175,11 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
         public string ValidatingSchema 
         { 
+#if MDF_230
+            get { return "MapDefinition-2.3.0.xsd"; }
+#else
             get { return "MapDefinition-1.0.0.xsd"; }
+#endif
             set { }
         }
 

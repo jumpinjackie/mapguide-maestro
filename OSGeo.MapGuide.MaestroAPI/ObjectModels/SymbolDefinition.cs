@@ -40,6 +40,8 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 {
     abstract partial class SymbolDefinitionBase : ISymbolDefinitionBase
     {
+        public abstract void RemoveSchemaAttributes();
+
 #if SYM_DEF_110
         private static readonly Version RES_VERSION = new Version(1, 1, 0);
 #else
@@ -124,7 +126,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class SimpleSymbolDefinition : ISimpleSymbolDefinition
     {
-        internal void RemoveSchemaAttributes()
+        public override void RemoveSchemaAttributes()
         {
             _vschema = null;
             versionField = null;
@@ -650,6 +652,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class CompoundSymbolDefinition : ICompoundSymbolDefinition
     {
+        public override void RemoveSchemaAttributes()
+        {
+            _vschema = null;
+            versionField = null;
+        }
+
         public static CompoundSymbolDefinition CreateDefault()
         {
             var sym = new CompoundSymbolDefinition()

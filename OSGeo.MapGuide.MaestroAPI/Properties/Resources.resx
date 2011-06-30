@@ -401,7 +401,7 @@
     <value>Unknown layer version: </value>
   </data>
   <data name="UnknownWebLayoutVersion" xml:space="preserve">
-    <value>Unknown web layout version: </value>
+    <value>Unknown Web Layout version: </value>
   </data>
   <data name="UnsupportedLoadProcedureType" xml:space="preserve">
     <value>Unsupported Load Procedure Type</value>
@@ -508,5 +508,11 @@
   </data>
   <data name="ERR_NOT_RESOURCE_CONTENT_XML" xml:space="preserve">
     <value>XML content does not match any known resource</value>
+  </data>
+  <data name="UnknownMapDefinitionVersion" xml:space="preserve">
+    <value>Unknown Map Definition version: </value>
+  </data>
+  <data name="UnknownWatermarkDefinitionVersion" xml:space="preserve">
+    <value>Unknown Watermark Definition version: </value>
   </data>
 </root>
