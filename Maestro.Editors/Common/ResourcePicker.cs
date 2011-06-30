@@ -66,7 +66,8 @@ namespace Maestro.Editors.Generic
                 ResourceTypes.PrintLayout,
                 ResourceTypes.SymbolDefinition,
                 ResourceTypes.SymbolLibrary,
-                ResourceTypes.WebLayout
+                ResourceTypes.WebLayout,
+                ResourceTypes.WatermarkDefinition
             };
             cmbResourceFilter.DataSource = _resTypes;
         }

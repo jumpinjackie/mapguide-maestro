@@ -21,6 +21,9 @@
         <Class id="LayerDefinitionEditor120" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition120EditorFactory" />
         <Class id="LayerDefinitionEditor130" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition130EditorFactory" />
         <Class id="WebLayoutEditor110" class="Maestro.AddIn.ExtendedObjectModels.Editor.WebLayout110EditorFactory" />
+        <Class id="LayerDefinitionEditor230" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition230EditorFactory" />
+        <Class id="MapDefinition230" class="Maestro.AddIn.ExtendedObjectModels.Editor.MapDefinition230EditorFactory" />
+        <Class id="WatermarkDefinition230" class="Maestro.AddIn.ExtendedObjectModels.Editor.WatermarkDefinition230EditorFactory" />
     </Path>
 
     <!-- Registered System Templates -->

@@ -125,6 +125,10 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
         /// </summary>
         /// <returns></returns>
         IWatermark CreateInstance();
+
+        IXYPosition CreateXYPosition();
+
+        ITilePosition CreateTilePosition();
     }
 
     /// <summary>

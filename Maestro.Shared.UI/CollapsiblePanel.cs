@@ -78,6 +78,7 @@ namespace Maestro.Shared.UI
         /// </summary>
         /// <value>The header text.</value>
         [Category("Collapsible Panel Header")]
+        [Localizable(true)]
         public string HeaderText
         {
             get { return lblHeaderText.Text; }

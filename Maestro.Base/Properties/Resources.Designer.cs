@@ -610,6 +610,13 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap edit {
+            get {
+                object obj = ResourceManager.GetObject("edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Registered Editor: {0}.
         /// </summary>

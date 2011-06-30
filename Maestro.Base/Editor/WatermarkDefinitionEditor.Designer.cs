@@ -1,6 +1,6 @@
-﻿namespace Maestro.Editors.WatermarkDefinition
+﻿namespace Maestro.Base.Editor
 {
-    partial class WatermarkEditorCtrl
+    partial class WatermarkDefinitionEditor
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,19 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WatermarkEditorCtrl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WatermarkDefinitionEditor));
             this.SuspendLayout();
             // 
-            // WatermarkEditorCtrl
+            // WatermarkDefinitionEditor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Name = "WatermarkDefinitionEditor";
             resources.ApplyResources(this, "$this");
-            this.Name = "WatermarkEditorCtrl";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
     }
 }

@@ -217,6 +217,11 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// Gets the type of symbol definition
         /// </summary>
         SymbolDefinitionType Type { get; }
+
+        /// <summary>
+        /// Purges the schema and version attributes when serializing back to XML
+        /// </summary>
+        void RemoveSchemaAttributes();
     }
 
     /// <summary>

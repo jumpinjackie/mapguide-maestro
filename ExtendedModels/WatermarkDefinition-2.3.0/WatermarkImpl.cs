@@ -192,6 +192,25 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0
                 Usage = UsageType.All
             };
         }
+
+
+        public IXYPosition CreateXYPosition()
+        {
+            return new XYPositionType()
+            {
+                XPosition = new HorizontalPositionType(),
+                YPosition = new VerticalPositionType()
+            };
+        }
+
+        public ITilePosition CreateTilePosition()
+        {
+            return new TilePositionType()
+            {
+                HorizontalPosition = new HorizontalPositionType(),
+                VerticalPosition = new VerticalPositionType()
+            };
+        }
     }
 
     partial class WatermarkType : IWatermark

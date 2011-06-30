@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.Core.WinForms", "..\Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj", "{857CA1A3-FC88-4BE0-AB6A-D1EE772AB288}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.Base", "..\Maestro.Base\Maestro.Base.csproj", "{F1E2F468-5030-4DBA-968C-9620284AFAA1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CFD19053-2172-41D3-8460-0FD2123A1E88} = {CFD19053-2172-41D3-8460-0FD2123A1E88}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestroFsPreview", "..\MaestroFsPreview\MaestroFsPreview.csproj", "{59BE5E18-17B6-431D-836E-C0AABA6D69E8}"
 	ProjectSection(ProjectDependencies) = postProject

@@ -201,6 +201,12 @@
     <Compile Include="Editor\UnsupportedEditorControl.Designer.cs">
       <DependentUpon>UnsupportedEditorControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editor\WatermarkDefinitionEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\WatermarkDefinitionEditor.Designer.cs">
+      <DependentUpon>WatermarkDefinitionEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editor\WebLayoutEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -393,6 +399,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maestro.Base.addin" />
+    <None Include="Resources\edit.png" />
     <None Include="Resources\marker.png" />
     <None Include="Resources\arrow-circle-double.png" />
     <None Include="Resources\system-monitor.png" />
@@ -477,6 +484,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editor\UnsupportedEditorControl.resx">
       <DependentUpon>UnsupportedEditorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\WatermarkDefinitionEditor.resx">
+      <DependentUpon>WatermarkDefinitionEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editor\WebLayoutEditor.resx">
       <DependentUpon>WebLayoutEditor.cs</DependentUpon>

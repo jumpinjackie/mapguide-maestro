@@ -24,52 +24,63 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using Maestro.Editors.Common;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
-using Maestro.Editors.SymbolDefinition;
-using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using Maestro.Shared.UI;
 
 namespace Maestro.Editors.WatermarkDefinition
 {
-    public partial class WatermarkEditorCtrl : EditorBase
+    [ToolboxItem(false)]
+    public partial class WatermarkSettingsCtrl : EditorBindableCollapsiblePanel
     {
-        public WatermarkEditorCtrl()
+        public WatermarkSettingsCtrl()
         {
             InitializeComponent();
         }
 
         private IWatermarkDefinition _wm;
+        private ITilePosition _tile;
+        private IXYPosition _xy;
 
         public override void Bind(IEditorService service)
         {
-            this.Controls.Clear();
+            service.RegisterCustomNotifier(this);
             _wm = (IWatermarkDefinition)service.GetEditedResource();
-            _wm.Content.RemoveSchemaAttributes(); //Sanity
 
-            var wmSettings = new WatermarkSettingsCtrl();
-            wmSettings.Bind(service);
+            NumericBinder.BindValueChanged(numRotation, _wm.Appearance, "Rotation");
+            NumericBinder.BindValueChanged(numTransparency, _wm.Appearance, "Transparency");
 
-            Control symControl = null;
-            if (_wm.Content.Type == SymbolDefinitionType.Simple)
+            if (_wm.Position.Type == PositionType.Tile)
+                _tile = (ITilePosition)_wm.Position;
+            else if (_wm.Position.Type == PositionType.XY)
+                _xy = (IXYPosition)_wm.Position;
+
+            if (_tile == null)
             {
-                var ctrl = new SimpleSymbolDefinitionEditorCtrl();
-                ctrl.Bind(new SymbolEditorService(service, _wm.Content));
-                symControl = ctrl;
+                _tile = _wm.CreateTilePosition();
+                rdXY.Checked = true;
             }
-            else if (_wm.Content.Type == SymbolDefinitionType.Compound)
+            else if (_xy == null)
             {
-                var ctrl = new CompoundSymbolDefinitionEditorCtrl();
-                ctrl.Bind(new SymbolEditorService(service, _wm.Content));
-                symControl = ctrl;
+                _xy = _wm.CreateXYPosition();
+                rdTile.Checked = true;
             }
+        }
 
-            if (symControl != null)
+        private void OnPositionCheckChanged(object sender, EventArgs e)
+        {
+            grpPositionSettings.Controls.Clear();
+            Control c = null;
+            if (rdTile.Checked)
+                c = new TilePositionEditor(_tile);
+            else if (rdXY.Checked)
+                c = new XYPositionEditor(_xy);
+
+            if (c != null)
             {
-                symControl.Dock = DockStyle.Top;
-                this.Controls.Add(symControl);
+                c.Dock = DockStyle.Fill;
+                grpPositionSettings.Controls.Add(c);
             }
-
-            wmSettings.Dock = DockStyle.Top;
-            this.Controls.Add(wmSettings);
         }
     }
 }

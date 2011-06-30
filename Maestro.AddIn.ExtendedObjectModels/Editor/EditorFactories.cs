@@ -88,6 +88,54 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
         }
     }
 
+    internal class LayerDefinition230EditorFactory : IEditorFactory
+    {
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+
+        public LayerDefinition230EditorFactory()
+        {
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition, "2.3.0");
+        }
+
+        public IEditorViewContent Create()
+        {
+            //Use the same 1.0.0 editor for now
+            return new LayerDefinitionEditor();
+        }
+    }
+
+    internal class MapDefinition230EditorFactory : IEditorFactory
+    {
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+
+        public MapDefinition230EditorFactory()
+        {
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, "2.3.0");
+        }
+
+        public IEditorViewContent Create()
+        {
+            //Use the same 1.0.0 editor for now
+            return new MapDefinitionEditor();
+        }
+    }
+
+    internal class WatermarkDefinition230EditorFactory : IEditorFactory
+    {
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+
+        public WatermarkDefinition230EditorFactory()
+        {
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WatermarkDefinition, "2.3.0");
+        }
+
+        public IEditorViewContent Create()
+        {
+            //Use the same 1.0.0 editor for now
+            return new WatermarkDefinitionEditor();
+        }
+    }
+
     internal class LoadProcedure110EditorFactory : IEditorFactory
     {
         public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }

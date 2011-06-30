@@ -194,6 +194,10 @@
       <Link>Schemas\LayerDefinition-1.3.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LayerDefinition-2.3.0.xsd">
+      <Link>Schemas\LayerDefinition-2.3.0.xsd</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LoadProcedure-1.0.0.xsd">
       <Link>Schemas\LoadProcedure-1.0.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -208,6 +212,10 @@
     </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\MapDefinition-1.0.0.xsd">
       <Link>Schemas\MapDefinition-1.0.0.xsd</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\MapDefinition-2.3.0.xsd">
+      <Link>Schemas\MapDefinition-2.3.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\PlatformCommon-1.0.0.xsd">
@@ -324,6 +332,10 @@
     </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\UserList-1.0.0.xsd">
       <Link>Schemas\UserList-1.0.0.xsd</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WatermarkDefinition-2.3.0.xsd">
+      <Link>Schemas\WatermarkDefinition-2.3.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-1.0.0.xsd">

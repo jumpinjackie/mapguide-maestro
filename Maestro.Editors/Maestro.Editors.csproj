@@ -1037,6 +1037,12 @@
     <Compile Include="WatermarkDefinition\WatermarkInstanceEditorDialog.Designer.cs">
       <DependentUpon>WatermarkInstanceEditorDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="WatermarkDefinition\WatermarkSettingsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WatermarkDefinition\WatermarkSettingsCtrl.Designer.cs">
+      <DependentUpon>WatermarkSettingsCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="WatermarkDefinition\XYPositionEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2376,6 +2382,9 @@
     <EmbeddedResource Include="Resources\points\star.png" />
     <EmbeddedResource Include="Resources\points\triangle.png" />
     <EmbeddedResource Include="Resources\points\x.png" />
+    <EmbeddedResource Include="WatermarkDefinition\WatermarkSettingsCtrl.resx">
+      <DependentUpon>WatermarkSettingsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Resources\image.png" />
     <None Include="Resources\layer-shape-curve.png" />
     <None Include="Resources\edit.png" />

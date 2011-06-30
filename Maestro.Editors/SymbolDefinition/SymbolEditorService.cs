@@ -30,9 +30,9 @@ namespace Maestro.Editors.SymbolDefinition
     internal class SymbolEditorService : IEditorService
     {
         private IEditorService _inner;
-        private ISimpleSymbolDefinition _symDef;
+        private ISymbolDefinitionBase _symDef;
 
-        public SymbolEditorService(IEditorService edSvc, ISimpleSymbolDefinition symDef)
+        public SymbolEditorService(IEditorService edSvc, ISymbolDefinitionBase symDef)
         {
             _inner = edSvc;
             _symDef = symDef;
