@@ -81,6 +81,11 @@ namespace Maestro.Editors.WatermarkDefinition
                 c.Dock = DockStyle.Fill;
                 grpPositionSettings.Controls.Add(c);
             }
+
+            if (rdTile.Checked)
+                _wm.Position = _tile;
+            else if (rdXY.Checked)
+                _wm.Position = _xy;
         }
     }
 }

@@ -233,11 +233,21 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0
         {
             get
             {
-                return this.PositionOverride.Item;
+                return this.PositionOverride == null ? null : this.PositionOverride.Item;
             }
             set
             {
-                this.PositionOverride.Item = (PositionType)value;
+                if (value == null)
+                {
+                    this.PositionOverride = null;
+                }
+                else
+                {
+                    if (this.PositionOverride == null)
+                        this.PositionOverride = new WatermarkTypePositionOverride();
+
+                    this.PositionOverride.Item = (PositionType)value;
+                }
             }
         }
 
@@ -271,7 +281,13 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0
 
         public ITilePosition CreateDefaultTilePosition()
         {
-            throw new NotImplementedException();
+            return new TilePositionType()
+            {
+                VerticalPosition = new VerticalPositionType(),
+                HorizontalPosition = new HorizontalPositionType(),
+                TileHeight = 200,
+                TileWidth = 200
+            };
         }
     }
 

@@ -25,6 +25,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using Maestro.Editors.WatermarkDefinition;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -57,6 +58,20 @@ namespace Maestro.Editors.MapDefinition
 
             mapSettingsCtrl.Bind(service);
             mapLayersCtrl.Bind(service);
+
+            var mp2 = _map as IMapDefinition2;
+            if (mp2 != null)
+            {
+                this.Controls.Remove(mapSettingsCtrl);
+                this.Controls.Remove(mapLayersCtrl);
+
+                var wm = new WatermarkCollectionEditorCtrl(service.ResourceService, mp2);
+                wm.Dock = DockStyle.Fill;
+
+                this.Controls.Add(wm);
+                this.Controls.Add(mapLayersCtrl);
+                this.Controls.Add(mapSettingsCtrl);
+            }
 
             mapLayersCtrl.RequestLayerOpen += new OpenLayerEventHandler(OnRequestLayerOpen);
         }

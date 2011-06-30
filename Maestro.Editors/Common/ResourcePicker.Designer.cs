@@ -96,6 +96,7 @@
             this.resImageList.Images.SetKeyName(7, "blueprints.png");
             this.resImageList.Images.SetKeyName(8, "applications-stack.png");
             this.resImageList.Images.SetKeyName(9, "marker.png");
+            this.resImageList.Images.SetKeyName(10, "edit.png");
             // 
             // btnOK
             // 

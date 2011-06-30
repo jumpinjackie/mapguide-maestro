@@ -44,6 +44,7 @@ namespace Maestro.Editors.WatermarkDefinition
         public WatermarkCollectionEditorCtrl(IResourceService resSvc, IWatermarkCollection watermarks)
         {
             InitializeComponent();
+            grdWatermarks.AutoGenerateColumns = false;
             _watermarks = watermarks;
             _resSvc = resSvc;
             _list = new BindingList<IWatermark>();

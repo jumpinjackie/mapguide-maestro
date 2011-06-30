@@ -48,6 +48,7 @@ namespace Maestro.Editors.Generic
         const int RES_DRAWINGSOURCE = 7;
         const int RES_APPLICATIONDEFINITION = 8;
         const int RES_SYMBOLDEFINITION = 9;
+        const int RES_WATERMARK = 10;
 
         private ResourceTypes[] _resTypes;
 
@@ -360,6 +361,9 @@ namespace Maestro.Editors.Generic
                                 break;
                             case ResourceTypes.SymbolDefinition:
                                 li.ImageIndex = RES_SYMBOLDEFINITION;
+                                break;
+                            case ResourceTypes.WatermarkDefinition:
+                                li.ImageIndex = RES_WATERMARK;
                                 break;
                             default:
                                 li.ImageIndex = RES_UNKNOWN;

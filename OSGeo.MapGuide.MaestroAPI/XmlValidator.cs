@@ -197,6 +197,10 @@ namespace OSGeo.MapGuide.MaestroAPI
                     string version = res.ResourceVersion.ToString();
                     if (version.StartsWith("2.3.0"))
                     {
+                        var sym = GetXsd(xsdPath, "SymbolDefinition-1.1.0.xsd");
+                        if (sym != null)
+                            xsds.Add("SymbolDefinition-1.1.0.xsd", sym);
+
                         var wmd = GetXsd(xsdPath, "WatermarkDefinition-2.3.0.xsd");
                         if (wmd != null)
                             xsds.Add("WatermarkDefinition-2.3.0.xsd", wmd);

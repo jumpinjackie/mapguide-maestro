@@ -48,11 +48,12 @@ namespace Maestro.Editors.WatermarkDefinition
             InitializeComponent();
             _watermark = watermark;
             _resSvc = resSvc;
-
+            cmbUsage.DataSource = Enum.GetValues(typeof(UsageType));
             try
             {
                 _init = true;
 
+                cmbUsage.SelectedItem = _watermark.Usage;
                 txtResourceId.Text = _watermark.ResourceId;
                 txtName.Text = _watermark.Name;
 

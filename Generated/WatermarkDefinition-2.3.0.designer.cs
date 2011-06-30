@@ -2311,9 +2311,6 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0 {
         private static System.Xml.Serialization.XmlSerializer serializer;
         
         public WatermarkType() {
-            this.extendedData1Field = new ExtendedDataType();
-            this.positionOverrideField = new WatermarkTypePositionOverride();
-            this.appearanceOverrideField = new WatermarkAppearanceType();
             this.usageField = UsageType.All;
         }
         
