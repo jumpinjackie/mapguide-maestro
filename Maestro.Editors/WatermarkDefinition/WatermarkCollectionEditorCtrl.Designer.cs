@@ -88,9 +88,11 @@
             resources.ApplyResources(this.grdWatermarks, "grdWatermarks");
             this.grdWatermarks.Name = "grdWatermarks";
             this.grdWatermarks.ReadOnly = true;
+            this.grdWatermarks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdWatermarks_CellClick);
             // 
             // COL_NAME
             // 
+            this.COL_NAME.DataPropertyName = "Name";
             resources.ApplyResources(this.COL_NAME, "COL_NAME");
             this.COL_NAME.Name = "COL_NAME";
             this.COL_NAME.ReadOnly = true;
@@ -98,6 +100,7 @@
             // COL_RESID
             // 
             this.COL_RESID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.COL_RESID.DataPropertyName = "ResourceId";
             resources.ApplyResources(this.COL_RESID, "COL_RESID");
             this.COL_RESID.Name = "COL_RESID";
             this.COL_RESID.ReadOnly = true;
@@ -105,9 +108,8 @@
             // WatermarkCollectionEditorCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "Watermarks";
-            this.Name = "WatermarkCollectionEditorCtrl";
             resources.ApplyResources(this, "$this");
+            this.Name = "WatermarkCollectionEditorCtrl";
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -120,11 +122,11 @@
         #endregion
 
         private System.Windows.Forms.DataGridView grdWatermarks;
-        private System.Windows.Forms.DataGridViewTextBoxColumn COL_NAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn COL_RESID;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.ToolStripButton btnEdit;
         private System.Windows.Forms.ToolStripButton btnRemove;
+        private System.Windows.Forms.DataGridViewTextBoxColumn COL_NAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn COL_RESID;
     }
 }

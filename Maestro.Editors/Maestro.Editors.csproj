@@ -1019,6 +1019,12 @@
     <Compile Include="WatermarkDefinition\WatermarkCollectionEditorCtrl.Designer.cs">
       <DependentUpon>WatermarkCollectionEditorCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="WatermarkDefinition\WatermarkContentCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WatermarkDefinition\WatermarkContentCtrl.Designer.cs">
+      <DependentUpon>WatermarkContentCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="WatermarkDefinition\WatermarkEditorCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2382,6 +2388,9 @@
     <EmbeddedResource Include="Resources\points\star.png" />
     <EmbeddedResource Include="Resources\points\triangle.png" />
     <EmbeddedResource Include="Resources\points\x.png" />
+    <EmbeddedResource Include="WatermarkDefinition\WatermarkContentCtrl.resx">
+      <DependentUpon>WatermarkContentCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WatermarkDefinition\WatermarkSettingsCtrl.resx">
       <DependentUpon>WatermarkSettingsCtrl.cs</DependentUpon>
     </EmbeddedResource>

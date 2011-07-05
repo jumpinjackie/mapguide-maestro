@@ -325,6 +325,11 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         IImageGraphic CreateImageGraphics();
 
         IParameter CreateParameter();
+
+        /// <summary>
+        /// Removes all graphic elements
+        /// </summary>
+        void ClearGraphics();
     }
 
     /// <summary>
@@ -808,6 +813,25 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     }
 
     /// <summary>
+    /// Defines the valid types of graphic elements
+    /// </summary>
+    public enum GraphicElementType
+    {
+        /// <summary>
+        /// Text
+        /// </summary>
+        Text,
+        /// <summary>
+        /// Images
+        /// </summary>
+        Image,
+        /// <summary>
+        /// A linear path containing one or more segments
+        /// </summary>
+        Path
+    }
+
+    /// <summary>
     /// Represents the base interface of all graphics
     /// </summary>
     public interface IGraphicBase
@@ -817,6 +841,11 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// </summary>
         /// <value>The resize control.</value>
         string ResizeControl { get; set; }
+
+        /// <summary>
+        /// Gets the type of graphic element
+        /// </summary>
+        GraphicElementType Type { get; }
     }
 
     /// <summary>

@@ -39,14 +39,14 @@ namespace Maestro.Editors.WatermarkDefinition
             InitializeComponent();
             _pos = pos;
 
-            cmbHorizontalAlignment.DataSource = Enum.GetValues(typeof(HorizontalAlignmentType));
-            cmbVerticalAlignment.DataSource = Enum.GetValues(typeof(VerticalAlignmentType));
-            cmbHorizontalUnits.DataSource = Enum.GetValues(typeof(UnitType));
-            cmbVerticalUnits.DataSource = Enum.GetValues(typeof(UnitType));
-
             try
             {
                 _init = true;
+
+                cmbHorizontalAlignment.DataSource = Enum.GetValues(typeof(HorizontalAlignmentType));
+                cmbVerticalAlignment.DataSource = Enum.GetValues(typeof(VerticalAlignmentType));
+                cmbHorizontalUnits.DataSource = Enum.GetValues(typeof(UnitType));
+                cmbVerticalUnits.DataSource = Enum.GetValues(typeof(UnitType));
 
                 numTileWidth.Value = Convert.ToDecimal(_pos.TileWidth);
                 numTileHeight.Value = Convert.ToDecimal(_pos.TileHeight);

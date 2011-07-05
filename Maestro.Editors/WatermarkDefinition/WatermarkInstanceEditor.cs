@@ -48,11 +48,12 @@ namespace Maestro.Editors.WatermarkDefinition
             InitializeComponent();
             _watermark = watermark;
             _resSvc = resSvc;
-            cmbUsage.DataSource = Enum.GetValues(typeof(UsageType));
+            
             try
             {
                 _init = true;
 
+                cmbUsage.DataSource = Enum.GetValues(typeof(UsageType));
                 cmbUsage.SelectedItem = _watermark.Usage;
                 txtResourceId.Text = _watermark.ResourceId;
                 txtName.Text = _watermark.Name;
@@ -90,6 +91,7 @@ namespace Maestro.Editors.WatermarkDefinition
 
                         rdOvPosXY.Checked = true;
                     }
+                    TilePos_CheckedChanged(this, EventArgs.Empty);
                 }
 
                 Debug.Assert(_ovTilePosition != null);
@@ -134,29 +136,38 @@ namespace Maestro.Editors.WatermarkDefinition
 
         private void txtResourceId_TextChanged(object sender, EventArgs e)
         {
+            if (_init)
+                return;
+
             _watermark.ResourceId = txtResourceId.Text;
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
+            if (_init)
+                return;
+
             _watermark.Name = txtName.Text;
         }
 
         private void cmbUsage_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_init)
+                return;
+
             _watermark.Usage = (UsageType)cmbUsage.SelectedItem;
         }
 
         private void chkOverrideAppearance_CheckedChanged(object sender, EventArgs e)
         {
+            if (_init)
+                return;
+
             numOvTransparency.Enabled = numOvRotation.Enabled = chkOverrideAppearance.Checked;
 
             if (chkOverrideAppearance.Checked)
             {
-                if (rdOvPosXY.Checked)
-                    _watermark.PositionOverride = _ovXyPosition;
-                else if (rdOvTilePos.Checked)
-                    _watermark.PositionOverride = _ovTilePosition;
+                _watermark.AppearanceOverride = _ovAppearance;
             }
             else
             {
@@ -166,16 +177,37 @@ namespace Maestro.Editors.WatermarkDefinition
 
         private void chkOverridePosition_CheckedChanged(object sender, EventArgs e)
         {
+            if (_init)
+                return;
+
             rdOvPosXY.Enabled = rdOvTilePos.Enabled = ovPosPanel.Enabled = chkOverridePosition.Checked;
+
+            if (chkOverridePosition.Checked)
+            {
+                if (rdOvPosXY.Checked)
+                    _watermark.PositionOverride = _ovXyPosition;
+                else if (rdOvTilePos.Checked)
+                    _watermark.PositionOverride = _ovTilePosition;
+            }
+            else
+            {
+                _watermark.PositionOverride = null;
+            }
         }
 
         private void numOvTransparency_ValueChanged(object sender, EventArgs e)
         {
+            if (_init)
+                return;
+
             _ovAppearance.Transparency = Convert.ToDouble(numOvTransparency.Value);
         }
 
         private void numOvRotation_ValueChanged(object sender, EventArgs e)
         {
+            if (_init)
+                return;
+
             _ovAppearance.Rotation = Convert.ToDouble(numOvRotation.Value);
         }
     }

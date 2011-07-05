@@ -41,35 +41,11 @@ namespace Maestro.Editors.WatermarkDefinition
 
         public override void Bind(IEditorService service)
         {
-            this.Controls.Clear();
             _wm = (IWatermarkDefinition)service.GetEditedResource();
             _wm.Content.RemoveSchemaAttributes(); //Sanity
 
-            var wmSettings = new WatermarkSettingsCtrl();
+            wmContent.Bind(service);
             wmSettings.Bind(service);
-
-            Control symControl = null;
-            if (_wm.Content.Type == SymbolDefinitionType.Simple)
-            {
-                var ctrl = new SimpleSymbolDefinitionEditorCtrl();
-                ctrl.Bind(new SymbolEditorService(service, _wm.Content));
-                symControl = ctrl;
-            }
-            else if (_wm.Content.Type == SymbolDefinitionType.Compound)
-            {
-                var ctrl = new CompoundSymbolDefinitionEditorCtrl();
-                ctrl.Bind(new SymbolEditorService(service, _wm.Content));
-                symControl = ctrl;
-            }
-
-            if (symControl != null)
-            {
-                symControl.Dock = DockStyle.Top;
-                this.Controls.Add(symControl);
-            }
-
-            wmSettings.Dock = DockStyle.Top;
-            this.Controls.Add(wmSettings);
         }
     }
 }

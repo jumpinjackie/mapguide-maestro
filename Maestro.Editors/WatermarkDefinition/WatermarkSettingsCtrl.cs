@@ -30,7 +30,7 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Editors.WatermarkDefinition
 {
-    [ToolboxItem(false)]
+    [ToolboxItem(true)]
     public partial class WatermarkSettingsCtrl : EditorBindableCollapsiblePanel
     {
         public WatermarkSettingsCtrl()

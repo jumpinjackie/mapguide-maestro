@@ -157,6 +157,11 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
 
+        void ISimpleSymbolDefinition.ClearGraphics()
+        {
+            this.Graphics.Clear();
+        }
+
         void ISimpleSymbolDefinition.AddGraphics(IGraphicBase graphics)
         {
             var g = graphics as GraphicBase;
@@ -363,6 +368,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 #endif
     {
         [XmlIgnore]
+        public override GraphicElementType Type
+        {
+            get { return GraphicElementType.Text; }
+        }
+
+        [XmlIgnore]
         ITextFrame ITextGraphic.Frame
         {
             get
@@ -454,9 +465,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         }
     }
 
-    partial class GraphicBase : IGraphicBase
+    abstract partial class GraphicBase : IGraphicBase
     {
-        
+        public abstract GraphicElementType Type
+        {
+            get;
+        }
     }
 
     partial class Parameter : IParameter
@@ -647,7 +661,11 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class Path : IPathGraphic
     {
-        
+        [XmlIgnore]
+        public override GraphicElementType Type
+        {
+            get { return GraphicElementType.Path; }
+        }
     }
 
     partial class CompoundSymbolDefinition : ICompoundSymbolDefinition
@@ -783,6 +801,13 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class Image : IImageGraphic
     {
+        [XmlIgnore]
+        public override GraphicElementType Type
+        {
+            get { return GraphicElementType.Image; }
+        }
+
+        [XmlIgnore]
         IImageBase IImageGraphic.Item
         {
             get

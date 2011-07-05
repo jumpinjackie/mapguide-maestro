@@ -3120,7 +3120,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0 {
         private static System.Xml.Serialization.XmlSerializer serializer;
         
         public GraphicBase() {
-            this.resizeControlField = "\'ResizeNone\'";
+            //this.resizeControlField = "\'ResizeNone\'";
         }
         
         //[System.ComponentModel.DefaultValueAttribute("\'ResizeNone\'")]

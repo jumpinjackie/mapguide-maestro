@@ -29,18 +29,41 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WatermarkEditorCtrl));
+            this.wmSettings = new Maestro.Editors.WatermarkDefinition.WatermarkSettingsCtrl();
+            this.wmContent = new Maestro.Editors.WatermarkDefinition.WatermarkContentCtrl();
             this.SuspendLayout();
+            // 
+            // wmSettings
+            // 
+            this.wmSettings.ContentBackgroundColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.wmSettings, "wmSettings");
+            this.wmSettings.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
+            this.wmSettings.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.wmSettings.Name = "wmSettings";
+            // 
+            // wmContent
+            // 
+            this.wmContent.ContentBackgroundColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.wmContent, "wmContent");
+            this.wmContent.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
+            this.wmContent.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.wmContent.Name = "wmContent";
             // 
             // WatermarkEditorCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.wmContent);
+            this.Controls.Add(this.wmSettings);
             this.Name = "WatermarkEditorCtrl";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private WatermarkSettingsCtrl wmSettings;
+        private WatermarkContentCtrl wmContent;
 
     }
 }

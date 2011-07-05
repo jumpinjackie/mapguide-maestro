@@ -98,5 +98,15 @@ namespace Maestro.Editors.WatermarkDefinition
                 }
             }
         }
+
+        private void grdWatermarks_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnEdit.Enabled = btnRemove.Enabled = false;
+            if (e.RowIndex >= 0)
+            {
+                grdWatermarks.Rows[e.RowIndex].Selected = true;
+                btnEdit.Enabled = btnRemove.Enabled = true;
+            }
+        }
     }
 }
