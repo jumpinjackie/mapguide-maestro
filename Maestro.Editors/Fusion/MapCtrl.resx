@@ -538,7 +538,7 @@
     <value>cmbSelectionColor</value>
   </data>
   <data name="&gt;&gt;cmbSelectionColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=3.0.0.5334, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cmbSelectionColor.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -571,7 +571,37 @@
     <value>1</value>
   </data>
   <data name="grpCms.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="chkGoogTerrain.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkGoogTerrain.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkGoogTerrain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 89</value>
+  </data>
+  <data name="chkGoogTerrain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 17</value>
+  </data>
+  <data name="chkGoogTerrain.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="chkGoogTerrain.Text" xml:space="preserve">
+    <value>Terrain</value>
+  </data>
+  <data name="&gt;&gt;chkGoogTerrain.Name" xml:space="preserve">
+    <value>chkGoogTerrain</value>
+  </data>
+  <data name="&gt;&gt;chkGoogTerrain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkGoogTerrain.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;chkGoogTerrain.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="chkGoogStreets.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -598,7 +628,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;chkGoogStreets.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="chkGoogSatellite.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -625,7 +655,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;chkGoogSatellite.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="chkGoogHybrid.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -652,19 +682,19 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;chkGoogHybrid.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
     <value>132, 30</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 90</value>
+    <value>114, 114</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
-    <value>Google Maps</value>
+    <value>Google Maps V3</value>
   </data>
   <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
     <value>groupBox5</value>
@@ -763,7 +793,7 @@
     <value>23, 30</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 90</value>
+    <value>99, 114</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -865,10 +895,10 @@
     <value>2</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>234, 30</value>
+    <value>252, 30</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 90</value>
+    <value>103, 114</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -895,7 +925,7 @@
     <value>False</value>
   </data>
   <data name="txtYahooApiKey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 216</value>
+    <value>23, 182</value>
   </data>
   <data name="txtYahooApiKey.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -918,41 +948,11 @@
   <data name="&gt;&gt;txtYahooApiKey.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="txtGoogApiKey.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="txtGoogApiKey.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="txtGoogApiKey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 150</value>
-  </data>
-  <data name="txtGoogApiKey.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtGoogApiKey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>442, 36</value>
-  </data>
-  <data name="txtGoogApiKey.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;txtGoogApiKey.Name" xml:space="preserve">
-    <value>txtGoogApiKey</value>
-  </data>
-  <data name="&gt;&gt;txtGoogApiKey.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtGoogApiKey.Parent" xml:space="preserve">
-    <value>grpCms</value>
-  </data>
-  <data name="&gt;&gt;txtGoogApiKey.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 200</value>
+    <value>20, 166</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>243, 13</value>
@@ -973,40 +973,13 @@
     <value>grpCms</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 134</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>249, 13</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Google Maps API Key (Required for Google Layers)</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>grpCms</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="grpCms.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 185</value>
   </data>
   <data name="grpCms.Size" type="System.Drawing.Size, System.Drawing">
-    <value>486, 278</value>
+    <value>486, 238</value>
   </data>
   <data name="grpCms.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1029,11 +1002,8 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>492, 466</value>
+    <value>492, 426</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MapCtrl</value>

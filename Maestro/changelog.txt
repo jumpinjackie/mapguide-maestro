@@ -1,7 +1,9 @@
 ﻿3.5 beta 1
 ----------
+
  - Watermark Definition editor
  - Symbol Definition editor (simple and compound). Currently supports the 1.0.0 schema feature set.
+ - Updated Fusion editor to use Google Maps V3
  - Maestro.Editors library is now fully self-contained, not requiring the WebStudio directory for pattern images.
  - Preview Web Layouts now include a new command to report current map extents.
  - Exceptions are now displayed in a more flexible error dialog.

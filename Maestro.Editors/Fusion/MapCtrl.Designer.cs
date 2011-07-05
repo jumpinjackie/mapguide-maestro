@@ -49,6 +49,7 @@
             this.cmbSelectionColor = new Maestro.Editors.Common.ColorComboBox();
             this.grpCms = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.chkGoogTerrain = new System.Windows.Forms.CheckBox();
             this.chkGoogStreets = new System.Windows.Forms.CheckBox();
             this.chkGoogSatellite = new System.Windows.Forms.CheckBox();
             this.chkGoogHybrid = new System.Windows.Forms.CheckBox();
@@ -61,9 +62,7 @@
             this.chkYahooSatellite = new System.Windows.Forms.CheckBox();
             this.chkYahooHybrid = new System.Windows.Forms.CheckBox();
             this.txtYahooApiKey = new System.Windows.Forms.TextBox();
-            this.txtGoogApiKey = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.grpCms.SuspendLayout();
@@ -196,20 +195,26 @@
             this.grpCms.Controls.Add(this.groupBox4);
             this.grpCms.Controls.Add(this.groupBox3);
             this.grpCms.Controls.Add(this.txtYahooApiKey);
-            this.grpCms.Controls.Add(this.txtGoogApiKey);
             this.grpCms.Controls.Add(this.label7);
-            this.grpCms.Controls.Add(this.label6);
             this.grpCms.Name = "grpCms";
             this.grpCms.TabStop = false;
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.chkGoogTerrain);
             this.groupBox5.Controls.Add(this.chkGoogStreets);
             this.groupBox5.Controls.Add(this.chkGoogSatellite);
             this.groupBox5.Controls.Add(this.chkGoogHybrid);
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
+            // 
+            // chkGoogTerrain
+            // 
+            resources.ApplyResources(this.chkGoogTerrain, "chkGoogTerrain");
+            this.chkGoogTerrain.Name = "chkGoogTerrain";
+            this.chkGoogTerrain.UseVisualStyleBackColor = true;
+            this.chkGoogTerrain.CheckedChanged += new System.EventHandler(this.chkGoogTerrain_CheckedChanged);
             // 
             // chkGoogStreets
             // 
@@ -298,29 +303,18 @@
             this.txtYahooApiKey.Name = "txtYahooApiKey";
             this.txtYahooApiKey.TextChanged += new System.EventHandler(this.txtYahooApiKey_TextChanged);
             // 
-            // txtGoogApiKey
-            // 
-            resources.ApplyResources(this.txtGoogApiKey, "txtGoogApiKey");
-            this.txtGoogApiKey.Name = "txtGoogApiKey";
-            this.txtGoogApiKey.TextChanged += new System.EventHandler(this.txtGoogApiKey_TextChanged);
-            // 
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
             // MapCtrl
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.grpCms);
             this.Controls.Add(this.groupBox2);
             this.Name = "MapCtrl";
+            resources.ApplyResources(this, "$this");
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -367,12 +361,11 @@
         private System.Windows.Forms.CheckBox chkBingHybrid;
         private System.Windows.Forms.CheckBox chkBingSatellite;
         private System.Windows.Forms.CheckBox chkBingStreets;
-        private System.Windows.Forms.TextBox txtGoogApiKey;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtYahooApiKey;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox chkGoogTerrain;
     }
 }

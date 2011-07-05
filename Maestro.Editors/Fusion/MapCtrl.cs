@@ -38,9 +38,10 @@ namespace Maestro.Editors.Fusion
     [ToolboxItem(false)]
     internal partial class MapCtrl : UserControl, INotifyResourceChanged
     {
-        const string G_NORMAL_MAP = "G_NORMAL_MAP";
-        const string G_SATELLITE_MAP = "G_SATELLITE_MAP";
-        const string G_HYBRID_MAP = "G_HYBRID_MAP";
+        const string G_NORMAL_MAP = "ROADMAP";
+        const string G_SATELLITE_MAP = "SATELLITE";
+        const string G_HYBRID_MAP = "HYBRID";
+        const string G_PHYSICAL_MAP = "TERRAIN";
 
         const string YAHOO_MAP_REG = "YAHOO_MAP_REG";
         const string YAHOO_MAP_SAT = "YAHOO_MAP_SAT";
@@ -178,6 +179,9 @@ namespace Maestro.Editors.Fusion
                             case G_SATELLITE_MAP:
                                 chkGoogSatellite.Checked = true;
                                 break;
+                            case G_PHYSICAL_MAP:
+                                chkGoogTerrain.Checked = true;
+                                break;
                             case BING_AERIAL:
                                 chkBingSatellite.Checked = true;
                                 break;
@@ -204,10 +208,6 @@ namespace Maestro.Editors.Fusion
             string googUrl = _appDef.GetValue("GoogleScript");
             string yahooUrl = _appDef.GetValue("YahooScript");
 
-            if (!string.IsNullOrEmpty(googUrl))
-            {
-                txtGoogApiKey.Text = googUrl.Substring(GOOGLE_URL.Length);
-            }
             if (!string.IsNullOrEmpty(yahooUrl))
             {
                 txtYahooApiKey.Text = yahooUrl.Substring(YAHOO_URL.Length);
@@ -219,7 +219,7 @@ namespace Maestro.Editors.Fusion
             chkOverride.Checked = (_initialView != null);
 
             InitCmsMaps(group);
-            Debug.Assert(_cmsMaps.Count == 9);
+            Debug.Assert(_cmsMaps.Count == 10);
 
             if (_initialView == null)
                 _initialView = group.CreateInitialView(0.0, 0.0, 0.0);
@@ -320,11 +320,13 @@ namespace Maestro.Editors.Fusion
 
             //Check for maps unaccounted for, these will be disabled
             if (!_cmsMaps.ContainsKey(G_HYBRID_MAP))
-                _cmsMaps[G_HYBRID_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, "Google Maps Hybrid", G_HYBRID_MAP)) { IsEnabled = false };
+                _cmsMaps[G_HYBRID_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, "Google Hybrid", G_HYBRID_MAP)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(G_NORMAL_MAP))
-                _cmsMaps[G_NORMAL_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, "Google Maps Street", G_NORMAL_MAP)) { IsEnabled = false };
+                _cmsMaps[G_NORMAL_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, "Google Streets", G_NORMAL_MAP)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(G_SATELLITE_MAP))
-                _cmsMaps[G_SATELLITE_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, "Google Maps Satellite", G_SATELLITE_MAP)) { IsEnabled = false };
+                _cmsMaps[G_SATELLITE_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, "Google Satellite", G_SATELLITE_MAP)) { IsEnabled = false };
+            if (!_cmsMaps.ContainsKey(G_PHYSICAL_MAP))
+                _cmsMaps[G_PHYSICAL_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, "Google Physical", G_PHYSICAL_MAP)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(YAHOO_MAP_HYB))
                 _cmsMaps[YAHOO_MAP_HYB] = new CmsMap(group.CreateCmsMapEntry(Type_Yahoo, true, "Yahoo! Maps Hybrid", YAHOO_MAP_HYB)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(YAHOO_MAP_REG))
@@ -451,8 +453,9 @@ namespace Maestro.Editors.Fusion
             if (_noEvents)
                 return;
 
+            if (chkGoogStreets.Checked)
+                _appDef.SetValue("GoogleScript", GOOGLE_URL);
             SetCmsAvailability(G_NORMAL_MAP, chkGoogStreets.Checked);
-            EvaluateCmsStates();
         }
 
         private void chkGoogSatellite_CheckedChanged(object sender, EventArgs e)
@@ -460,8 +463,9 @@ namespace Maestro.Editors.Fusion
             if (_noEvents)
                 return;
 
+            if (chkGoogSatellite.Checked)
+                _appDef.SetValue("GoogleScript", GOOGLE_URL);
             SetCmsAvailability(G_SATELLITE_MAP, chkGoogSatellite.Checked);
-            EvaluateCmsStates();
         }
 
         private void chkGoogHybrid_CheckedChanged(object sender, EventArgs e)
@@ -469,8 +473,19 @@ namespace Maestro.Editors.Fusion
             if (_noEvents)
                 return;
 
+            if (chkGoogHybrid.Checked)
+                _appDef.SetValue("GoogleScript", GOOGLE_URL);
             SetCmsAvailability(G_HYBRID_MAP, chkGoogHybrid.Checked);
-            EvaluateCmsStates();
+        }
+
+        private void chkGoogTerrain_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_noEvents)
+                return;
+
+            if (chkGoogTerrain.Checked)
+                _appDef.SetValue("GoogleScript", GOOGLE_URL);
+            SetCmsAvailability(G_PHYSICAL_MAP, chkGoogTerrain.Checked);
         }
 
         private void chkYahooStreets_CheckedChanged(object sender, EventArgs e)
@@ -502,7 +517,6 @@ namespace Maestro.Editors.Fusion
 
         private void EvaluateCmsStates()
         {
-            txtGoogApiKey.Enabled = IsGoogleMapsEnabled();
             txtYahooApiKey.Enabled = IsYahooMapsEnabled();
         }
 
@@ -510,7 +524,8 @@ namespace Maestro.Editors.Fusion
         {
             return chkGoogHybrid.Checked ||
                    chkGoogSatellite.Checked ||
-                   chkGoogStreets.Checked;
+                   chkGoogStreets.Checked ||
+                   chkGoogTerrain.Checked;
         }
 
         private bool IsYahooMapsEnabled()
@@ -518,14 +533,6 @@ namespace Maestro.Editors.Fusion
             return chkYahooHybrid.Checked ||
                    chkYahooSatellite.Checked ||
                    chkYahooStreets.Checked;
-        }
-
-        private void txtGoogApiKey_TextChanged(object sender, EventArgs e)
-        {
-            if (_noEvents)
-                return;
-
-            _appDef.SetValue("GoogleScript", GOOGLE_URL + txtGoogApiKey.Text);
         }
 
         private void txtYahooApiKey_TextChanged(object sender, EventArgs e)
@@ -536,7 +543,7 @@ namespace Maestro.Editors.Fusion
             _appDef.SetValue("YahooScript", YAHOO_URL + txtYahooApiKey.Text);
         }
 
-        const string GOOGLE_URL = "http://maps.google.com/maps?file=api&amp;v=2&amp;key=";
+        const string GOOGLE_URL = "http://maps.google.com/maps/api/js?sensor=false";
         const string YAHOO_URL = "http://api.maps.yahoo.com/ajaxymap?v=3.0&amp;appid=";
         const string BING_URL = "http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.2";
 
