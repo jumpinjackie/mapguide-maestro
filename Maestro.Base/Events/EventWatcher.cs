@@ -49,6 +49,8 @@ namespace Maestro.Base.Events
             _keepAliveTimer.Start();
         }
 
+        static bool smShowingError = false;
+
         static void OnKeepAliveTimerElapsed(object sender, EventArgs e)
         {
             var svc = ServiceRegistry.GetService<ServerConnectionManager>();
@@ -65,7 +67,18 @@ namespace Maestro.Base.Events
                     }
                     catch (Exception ex)
                     {
-                        MessageService.ShowError(Properties.Resources.KeepAliveFailed);
+                        if (smShowingError)
+                            return;
+
+                        try
+                        {
+                            smShowingError = true;
+                            MessageService.ShowError(Properties.Resources.KeepAliveFailed);
+                        }
+                        finally
+                        {
+                            smShowingError = false;
+                        }
                     }
                 }
             }

@@ -54,7 +54,11 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0
 
         public static IResource Deserialize(string xml)
         {
-            return WatermarkDefinition.Deserialize(xml);
+            IWatermarkDefinition wdf = WatermarkDefinition.Deserialize(xml);
+            if (wdf.Content != null)
+                wdf.Content.RemoveSchemaAttributes();
+
+            return wdf;
         }
 
         public static Stream Serialize(IResource res)

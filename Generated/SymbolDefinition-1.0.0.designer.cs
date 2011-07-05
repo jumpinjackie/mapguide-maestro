@@ -428,12 +428,14 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0 {
         private static System.Xml.Serialization.XmlSerializer serializer;
         
         public Image() {
+            /*
             this.sizeXField = "1.0";
             this.sizeYField = "1.0";
             this.sizeScalableField = "true";
             this.angleField = "0.0";
             this.positionXField = "0.0";
             this.positionYField = "0.0";
+             */
         }
         
         [System.Xml.Serialization.XmlElementAttribute("Content", typeof(byte[]), DataType="base64Binary")]
@@ -2758,11 +2760,13 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0 {
         private static System.Xml.Serialization.XmlSerializer serializer;
         
         public Path() {
+            /*
             this.lineWeightField = "0.0";
             this.lineWeightScalableField = "true";
             this.lineCapField = "\'Round\'";
             this.lineJoinField = "\'Round\'";
             this.lineMiterLimitField = "5.0";
+             */
         }
         
         public string Geometry {
@@ -3378,6 +3382,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0 {
         private static System.Xml.Serialization.XmlSerializer serializer;
         
         public Text() {
+            /*
             this.fontNameField = "\'Arial\'";
             this.boldField = "false";
             this.italicField = "false";
@@ -3392,6 +3397,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0 {
             this.justificationField = "\'FromAlignment\'";
             this.lineSpacingField = "1.05";
             this.textColorField = "ff000000";
+             */
         }
         
         public string Content {
