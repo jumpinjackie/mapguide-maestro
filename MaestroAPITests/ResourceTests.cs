@@ -55,6 +55,12 @@ namespace MaestroAPITests
             //Generated classes have built in Clone() methods. Verify they check out
             _mocks = new Mockery();
             var conn = _mocks.NewMock<IServerConnection>();
+            var caps = _mocks.NewMock<IConnectionCapabilities>();
+            Stub.On(conn).GetProperty("Capabilities").Will(Return.Value(caps));
+            foreach (var rt in Enum.GetValues(typeof(ResourceTypes)))
+            {
+                Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt).Will(Return.Value(new Version(1, 0, 0)));
+            }
 
             var app = ObjectFactory.DeserializeEmbeddedFlexLayout();
             var app2 = app.Clone();
@@ -97,7 +103,13 @@ namespace MaestroAPITests
         public void TestValidResourceIdentifiers()
         {
             var conn = _mocks.NewMock<IServerConnection>();
-            
+            var caps = _mocks.NewMock<IConnectionCapabilities>();
+            Stub.On(conn).GetProperty("Capabilities").Will(Return.Value(caps));
+            foreach (var rt in Enum.GetValues(typeof(ResourceTypes)))
+            {
+                Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt).Will(Return.Value(new Version(1, 0, 0)));
+            }
+
             //Verify that only valid resource identifiers can be assigned to certain resource types.
 
             IResource res = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF");
@@ -437,6 +449,12 @@ namespace MaestroAPITests
             //Verify origial reference is returned if we're converting a resource to the same version
             _mocks = new Mockery();
             var conn = _mocks.NewMock<IServerConnection>();
+            var caps = _mocks.NewMock<IConnectionCapabilities>();
+            Stub.On(conn).GetProperty("Capabilities").Will(Return.Value(caps));
+            foreach (var rt in Enum.GetValues(typeof(ResourceTypes)))
+            {
+                Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt).Will(Return.Value(new Version(1, 0, 0)));
+            }
 
             var conv = new ResourceConverter(new List<IResourceConverter>());
             var targetVer = new Version(1, 0, 0);

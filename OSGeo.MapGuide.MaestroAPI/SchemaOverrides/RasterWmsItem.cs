@@ -82,6 +82,26 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                 var format = doc.CreateElement("Format");
                 format.InnerText = this.ImageFormat;
 
+                var mimeType = doc.CreateElement("FormatType");
+                if (!string.IsNullOrEmpty(this.ImageFormat))
+                {
+                    switch (this.ImageFormat)
+                    {
+                        case WmsImageFormat.GIF:
+                            mimeType.InnerText = "image/gif";
+                            break;
+                        case WmsImageFormat.JPG:
+                            mimeType.InnerText = "image/jpg";
+                            break;
+                        case WmsImageFormat.PNG:
+                            mimeType.InnerText = "image/png";
+                            break;
+                        case WmsImageFormat.TIF:
+                            mimeType.InnerText = "image/tif";
+                            break;
+                    }
+                }
+
                 var transparent = doc.CreateElement("Transparent");
                 transparent.InnerText = this.IsTransparent ? "true" : "false";
 
@@ -101,6 +121,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                 sc.InnerText = this.SpatialContextName;
 
                 rasterDef.AppendChild(format);
+                rasterDef.AppendChild(mimeType);
                 rasterDef.AppendChild(transparent);
                 rasterDef.AppendChild(useTileCache);
                 rasterDef.AppendChild(bgcolor);

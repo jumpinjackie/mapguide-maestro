@@ -101,7 +101,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
 
             var crs = doc.CreateElement("gml", "DerivedCRS", XmlNamespaces.GML);
             {
-                crs.SetAttribute("id", this.Name);
+                crs.SetAttribute("id", XmlNamespaces.GML, this.Name);
                 var meta = doc.CreateElement("gml", "metaDataProperty", XmlNamespaces.GML);
                 crs.AppendChild(meta);
                 {

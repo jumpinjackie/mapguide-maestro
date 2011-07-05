@@ -536,6 +536,21 @@ namespace OSGeo.MapGuide.MaestroAPI
         private static System.Text.RegularExpressions.Regex EncRegExp = new System.Text.RegularExpressions.Regex(@"(\-x([0-9]|[a-e]|[A-E])([0-9]|[a-e]|[A-E])\-)|(\-dot\-)|(\-colon\-)", System.Text.RegularExpressions.RegexOptions.Compiled);
 
         /// <summary>
+        /// FDO encodes a string
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string EncodeFDOName(string name)
+        {
+            return name.Replace("\"", "-x22-")
+                       .Replace("&", "-x26-")
+                       .Replace("'", "-x27-")
+                       .Replace("<", "-x3C-")
+                       .Replace(">", "-x3E-")
+                       .Replace(" ", "-x20-");
+        }
+
+        /// <summary>
         /// Converts FDO encoded characters into their original character.
         /// Encoded characters have the form -x00-.
         /// </summary>

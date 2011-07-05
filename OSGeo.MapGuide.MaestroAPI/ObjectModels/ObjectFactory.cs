@@ -371,7 +371,9 @@ namespace OSGeo.MapGuide.ObjectModels
             if (!_watermarkFactories.ContainsKey(version))
                 throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownWatermarkDefinitionVersion + version.ToString());
 
-            return _watermarkFactories[version](type);
+            var wdf = _watermarkFactories[version](type);
+            wdf.CurrentConnection = owner;
+            return wdf;
         }
 
         /// <summary>
@@ -388,7 +390,9 @@ namespace OSGeo.MapGuide.ObjectModels
             if (!_mapDefinitionFactories.ContainsKey(version))
                 throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownMapDefinitionVersion + version.ToString());
 
-            return _mapDefinitionFactories[version]();
+            var mdf = _mapDefinitionFactories[version]();
+            mdf.CurrentConnection = owner;
+            return mdf;
         }
 
         /// <summary>

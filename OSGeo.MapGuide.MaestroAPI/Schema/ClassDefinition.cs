@@ -196,125 +196,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             return removed;
         }
 
-        #region old impl
-        /*
-        private string m_name;
-        private string m_schema;
-        private FeatureSetColumn[] m_columns;
-
-        internal ClassDefinition(XmlNode node, XmlNamespaceManager mgr)
-        {
-            XmlNode root = node.ParentNode;
-            if (root.NodeType == XmlNodeType.XmlDeclaration)
-                root = root.NextSibling;
-            m_schema = root.Attributes["targetNamespace"] == null ? null : root.Attributes["targetNamespace"].Value;
-            if (m_schema != null && m_schema.IndexOf("/") > 0)
-                m_schema = m_schema.Substring(m_schema.LastIndexOf("/") + 1);
-            m_name = node.Attributes["name"].Value;
-            if (m_name.EndsWith("Type"))
-                m_name = m_name.Substring(0, m_name.Length - "Type".Length);
-
-            XmlNodeList lst;
-            if (node.ChildNodes.Count == 0)
-            {
-                m_columns = new FeatureSetColumn[0];
-                return;
-            }
-            else if (node.FirstChild.Name == "xs:sequence")
-                lst = node.SelectNodes("xs:sequence/xs:element", mgr);
-            else
-                lst = node.SelectNodes("xs:complexContent/xs:extension/xs:sequence/xs:element", mgr);
-
-
-            m_columns = new FeatureSetColumn[lst.Count];
-            for (int i = 0; i < lst.Count; i++)
-                m_columns[i] = new ClassPropertyColumn(lst[i]);
-
-            XmlNode extension = node.SelectSingleNode("xs:complexContent/xs:extension", mgr);
-            if (extension != null && extension.Attributes["base"] != null)
-            {
-                string extTypeName = extension.Attributes["base"].Value;
-                extTypeName = extTypeName.Substring(extTypeName.IndexOf(":") + 1);
-
-                XmlNode baseEl = node.ParentNode.SelectSingleNode("xs:complexType[@name='" + extTypeName + "']", mgr);
-                if (baseEl != null)
-                {
-                    ClassDefinition tmpScm = new ClassDefinition(baseEl, mgr);
-                    FeatureSetColumn[] tmpCol = new FeatureSetColumn[m_columns.Length + tmpScm.m_columns.Length];
-                    Array.Copy(m_columns, tmpCol, m_columns.Length);
-                    Array.Copy(tmpScm.m_columns, 0, tmpCol, m_columns.Length, tmpScm.m_columns.Length);
-                    m_columns = tmpCol;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets the name of this class definition
-        /// </summary>
-        public string Name { get { return m_name; } }
-
-        /// <summary>
-        /// Gets the name of the schema which this class definition belongs to
-        /// </summary>
-        public string SchemaName { get { return m_schema; } }
-
-        /// <summary>
-        /// Gets the fully qualified name of this class definition ([schema_name]:[name])
-        /// </summary>
-        public string QualifiedName { get { return m_schema == null ? m_name : m_schema + ":" + m_name; } }
-
-        /// <summary>
-        /// Gets the decoded fully qualified name of this class definition ([schema_name]:[name])
-        /// </summary>
-        public string QualifiedNameDecoded { get { return Utility.DecodeFDOName(this.QualifiedName); } }
-
-        /// <summary>
-        /// Gets an array of columns defining the properties in this class definition
-        /// </summary>
-        public FeatureSetColumn[] Columns { get { return m_columns; } }
-
-        /// <summary>
-        /// Returns a <see cref="System.String"/> that represents this instance.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="System.String"/> that represents this instance.
-        /// </returns>
-        public override string ToString()
-        {
-            return this.QualifiedName;
-        }
-
-        internal void MarkIdentityProperties(IEnumerable<string> keyFieldNames)
-        {
-            foreach (var name in keyFieldNames)
-            {
-                foreach (var col in m_columns)
-                {
-                    if (col.Name.Equals(name))
-                    {
-                        col.IsIdentity = true;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets an array of names of the identity properties
-        /// </summary>
-        /// <returns></returns>
-        public string[] GetIdentityProperties()
-        {
-            List<string> keys = new List<string>();
-            foreach (var col in m_columns)
-            {
-                if (col.IsIdentity)
-                    keys.Add(col.Name);
-            }
-            return keys.ToArray();
-        }
-         */
-        #endregion
-
         public FeatureSchema Parent { get; internal set; }
 
         /// <summary>
@@ -344,16 +225,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             if (_identity.Count > 0)
             {
                 id = doc.CreateElement("xs", "element", XmlNamespaces.XS);
-                id.SetAttribute("name", this.Name);
-                id.SetAttribute("type", this.Parent.Name + ":" + this.Name + "Type");
+                var en = Utility.EncodeFDOName(this.Name);
+                id.SetAttribute("name", en); //TODO: May need encoding
+                id.SetAttribute("type", this.Parent.Name + ":" + en + "Type");
                 id.SetAttribute("abstract", this.IsAbstract.ToString().ToLower());
                 id.SetAttribute("substitutionGroup", "gml:_Feature");
 
                 var key = doc.CreateElement("xs", "key", XmlNamespaces.XS);
-                key.SetAttribute("name", this.Name + "Key");
+                key.SetAttribute("name", en + "Key");
 
                 var selector = doc.CreateElement("xs", "selector", XmlNamespaces.XS);
-                selector.SetAttribute("xpath", ".//" + this.Name);
+                selector.SetAttribute("xpath", ".//" + en);
 
                 key.AppendChild(selector);
 
@@ -378,6 +260,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 {
                     ctype.SetAttribute("geometryName", XmlNamespaces.FDO, geom.Name);
                 }
+            }
+            else
+            {
+                ctype.SetAttribute("hasGeometry", XmlNamespaces.FDO, "false");
             }
 
             var cnt = doc.CreateElement("xs", "complexContent", XmlNamespaces.XS);

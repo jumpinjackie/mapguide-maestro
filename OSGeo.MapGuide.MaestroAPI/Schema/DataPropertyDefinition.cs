@@ -183,6 +183,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             {
                 var max = doc.CreateElement("xs", "maxLength", XmlNamespaces.XS);
                 max.SetAttribute("value", this.Length.ToString(CultureInfo.InvariantCulture));
+
+                rest.AppendChild(max);
             }
             
             currentNode.AppendChild(prop);
