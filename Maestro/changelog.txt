@@ -1,4 +1,25 @@
-﻿3.1
+﻿3.5 beta 1
+----------
+ - Watermark Definition editor
+ - Symbol Definition editor (simple and compound). Currently supports the 1.0.0 schema feature set.
+ - Maestro.Editors library is now fully self-contained, not requiring the WebStudio directory for pattern images.
+ - Preview Web Layouts now include a new command to report current map extents.
+ - Exceptions are now displayed in a more flexible error dialog.
+ - Class and Property nodes in Local Feature Source preview now show tooltips (ala FDO Toolbox).
+ - Layer Definition editor has been re-structured to consume less vertical screen space.
+ - Assorted icon updates for Symbol Definition and Watermark Definition resources.
+ - API: Lots of changes to Symbol Definitions and Watermarks
+ - API: New ExtendedObjectModel library which provides easy plumbing to register > 1.0.0 resource types with the ObjectFactory
+ - Fix: Request failure when outbound requests window turned off.
+ - Fix: Client-side workaround for ENUMERATEDRAWINGLAYERS potentially returning duplicate layer names.
+ - Fix: Generic XML editor does not preview currently edited XML content.
+ - Fix: Resource templates based on > 1.0.0 schema versions not being picked up by the new resource dialog
+ - Fix: Exception thrown when opening Layer Definition with no point symbolization
+ - Fix: Cleaner error message instead of the current ugly exception message when MapGuide connection is lost
+ - Fix: Incorrect validation error when saving XML configuration document in the Feature Source
+ - Fix: Assorted defects in reading and writing XML configuration documents
+
+3.1
 ---
 
  - Now comes with a user guide!
