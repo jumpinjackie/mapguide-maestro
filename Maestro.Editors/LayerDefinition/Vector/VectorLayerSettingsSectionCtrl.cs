@@ -110,6 +110,11 @@ namespace Maestro.Editors.LayerDefinition.Vector
         private void txtFeatureSource_TextChanged(object sender, EventArgs e)
         {
             _cachedDesc = _edsvc.FeatureService.DescribeFeatureSource(txtFeatureSource.Text);
+
+            if (string.IsNullOrEmpty(txtFeatureClass.Text))
+            {
+                SetFeatureClass(_cachedDesc.Schemas[0].Classes[0]);
+            }
         }
 
         internal event EventHandler FeatureClassChanged;
@@ -202,37 +207,42 @@ namespace Maestro.Editors.LayerDefinition.Vector
             var item = GenericItemSelectionDialog.SelectItem(null, null, list, "QualifiedName", "QualifiedName");
             if (item != null)
             {
-                txtFeatureClass.Text = item.QualifiedName;
-                _selectedClass = item;
-                
-                //See if geometry needs invalidation
-                bool invalidate = true;
-                foreach (var col in item.Properties)
-                {
-                    if (col.Type == PropertyDefinitionType.Geometry && col.Name.Equals(txtGeometry.Text))
-                    {
-                        invalidate = false;
-                        break;
-                    }
-                }
-                if (invalidate)
-                {
-                    txtGeometry.Text = string.Empty;
-                }
-
-                //See if we can auto-assign geometry
-                List<PropertyDefinition> geoms = new List<PropertyDefinition>();
-                foreach (var col in _selectedClass.Properties)
-                {
-                    if (col.Type == PropertyDefinitionType.Geometry)
-                        geoms.Add(col);
-                }
-
-                if (geoms.Count == 1)
-                    txtGeometry.Text = geoms[0].Name;
-
-                OnFeatureClassChanged();
+                SetFeatureClass(item);
             }
+        }
+
+        private void SetFeatureClass(ClassDefinition item)
+        {
+            txtFeatureClass.Text = item.QualifiedName;
+            _selectedClass = item;
+
+            //See if geometry needs invalidation
+            bool invalidate = true;
+            foreach (var col in item.Properties)
+            {
+                if (col.Type == PropertyDefinitionType.Geometry && col.Name.Equals(txtGeometry.Text))
+                {
+                    invalidate = false;
+                    break;
+                }
+            }
+            if (invalidate)
+            {
+                txtGeometry.Text = string.Empty;
+            }
+
+            //See if we can auto-assign geometry
+            List<PropertyDefinition> geoms = new List<PropertyDefinition>();
+            foreach (var col in _selectedClass.Properties)
+            {
+                if (col.Type == PropertyDefinitionType.Geometry)
+                    geoms.Add(col);
+            }
+
+            if (geoms.Count == 1)
+                txtGeometry.Text = geoms[0].Name;
+
+            OnFeatureClassChanged();
         }
 
         private void btnBrowseGeometry_Click(object sender, EventArgs e)
