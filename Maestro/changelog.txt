@@ -10,7 +10,8 @@
  - Class and Property nodes in Local Feature Source preview now show tooltips (ala FDO Toolbox).
  - Layer Definition editor has been re-structured to consume less vertical screen space.
  - Assorted icon updates for Symbol Definition and Watermark Definition resources.
- - API: Lots of changes to Symbol Definitions and Watermarks
+ - API: Lots of API changes to Symbol Definitions and Watermarks
+ - API: ObjectFactory API changes to allow creating Map Definitions and Symbol Definitions of different versions
  - API: New ExtendedObjectModel library which provides easy plumbing to register > 1.0.0 resource types with the ObjectFactory
  - Fix: Request failure when outbound requests window turned off.
  - Fix: Client-side workaround for ENUMERATEDRAWINGLAYERS potentially returning duplicate layer names.
