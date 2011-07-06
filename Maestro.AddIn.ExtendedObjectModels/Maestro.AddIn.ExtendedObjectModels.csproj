@@ -45,6 +45,10 @@
       <HintPath>..\SDK\bin\Maestro.Shared.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="OSGeo.MapGuide.ExtendedObjectModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SDK\bin\OSGeo.MapGuide.ExtendedObjectModels.dll</HintPath>
+    </Reference>
     <Reference Include="OSGeo.MapGuide.MaestroAPI, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDK\bin\OSGeo.MapGuide.MaestroAPI.dll</HintPath>
@@ -95,11 +99,6 @@
     <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj">
       <Project>{F1E2F468-5030-4DBA-968C-9620284AFAA1}</Project>
       <Name>Maestro.Base</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\OSGeo.MapGuide.ExtendedObjectModels\OSGeo.MapGuide.ExtendedObjectModels.csproj">
-      <Project>{B3A2B816-9F41-4857-A111-09D2DF2550D6}</Project>
-      <Name>OSGeo.MapGuide.ExtendedObjectModels</Name>
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj">
