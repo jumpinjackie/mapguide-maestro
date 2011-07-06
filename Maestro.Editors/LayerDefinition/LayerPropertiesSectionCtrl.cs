@@ -72,7 +72,9 @@ namespace Maestro.Editors.LayerDefinition
 
         internal void PopulatePropertyList()
         {
-            if (string.IsNullOrEmpty(_vl.FeatureName))
+            //NOTE: This is being called before _vl is assigned in mono
+            //so guard against it
+            if (_vl == null || string.IsNullOrEmpty(_vl.FeatureName))
                 return;
 
             //TODO: Should just fetch the class definition

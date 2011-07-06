@@ -28,9 +28,13 @@ using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using Maestro.Base.Services;
 using Maestro.Base.Templates;
+using OSGeo.MapGuide.MaestroAPI;
+using System.Threading;
 
 namespace Maestro.Base.UI
 {
+    //FIXME: Exceptions thrown in Mono centered around a non-existent image
+
     public partial class NewResourceDialog : Form
     {
         private static bool _subsequentRun = false;
@@ -57,29 +61,39 @@ namespace Maestro.Base.UI
         {
             lstCategories.DataSource = _nits.GetCategories();
 
-            if (_subsequentRun)
+            if (Platform.IsRunningOnMono)
             {
-                if (_lastSelectedCategoies.Count > 0)
+                //Sorry, you mono users will have to manually select
+                //the other categories due to dodgy ImageList/ListView
+                //implementation
+                lstCategories.SetSelected(0, true);
+            }
+            else
+            {
+                if (_subsequentRun)
                 {
-                    foreach (var cat in _lastSelectedCategoies)
+                    if (_lastSelectedCategoies.Count > 0)
+                    {
+                        foreach (var cat in _lastSelectedCategoies)
+                        {
+                            var idx = lstCategories.Items.IndexOf(cat);
+                            if (idx >= 0)
+                            {
+                                lstCategories.SetSelected(idx, true);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    //First run, select all categories
+                    foreach (var cat in _nits.GetCategories())
                     {
                         var idx = lstCategories.Items.IndexOf(cat);
                         if (idx >= 0)
                         {
                             lstCategories.SetSelected(idx, true);
                         }
-                    }
-                }
-            }
-            else
-            {
-                //First run, select all categories
-                foreach (var cat in _nits.GetCategories())
-                {
-                    var idx = lstCategories.Items.IndexOf(cat);
-                    if (idx >= 0)
-                    {
-                        lstCategories.SetSelected(idx, true);
                     }
                 }
             }
@@ -125,6 +139,10 @@ namespace Maestro.Base.UI
             lstTemplates.Clear();
             tplImgList.Images.Clear();
             lstTemplates.Groups.Clear();
+
+            lstTemplates.SmallImageList = tplImgList;
+            lstTemplates.LargeImageList = tplImgList;
+
             Dictionary<string, ListViewGroup> groups = new Dictionary<string, ListViewGroup>();
             foreach (var cat in templSet.GetCategories())
             {
@@ -162,8 +180,7 @@ namespace Maestro.Base.UI
 
                     lstTemplates.Items.Add(li);
                 }
-                lstTemplates.SmallImageList = tplImgList;
-                lstTemplates.LargeImageList = tplImgList;
+                
             }
         }
 
