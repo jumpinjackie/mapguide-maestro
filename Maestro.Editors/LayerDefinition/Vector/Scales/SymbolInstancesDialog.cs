@@ -52,6 +52,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             _cls = cls;
             _provider = provider;
             _featureSourceId = featureSourceId;
+
+            foreach (var inst in _comp.SymbolInstance)
+                AddInstance(inst, false);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -67,12 +70,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
                     var symRef = _comp.CreateSymbolReference(picker.ResourceID);
-                    AddInstance(symRef);
+                    AddInstance(symRef, true);
                 }
             }
         }
 
-        private void AddInstance(ISymbolInstance symRef)
+        private void AddInstance(ISymbolInstance symRef, bool add)
         {
             var li = new ListViewItem();
             li.ImageIndex = (symRef.Reference.Type == SymbolInstanceType.Reference) ? 0 : 1;
@@ -83,7 +86,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 li.Text = Properties.Resources.InlineSymbolDefinition;
 
             lstInstances.Items.Add(li);
-            _comp.AddSymbolInstance(symRef);
+            if (add)
+                _comp.AddSymbolInstance(symRef);
             li.Selected = (lstInstances.Items.Count == 1);
         }
 
