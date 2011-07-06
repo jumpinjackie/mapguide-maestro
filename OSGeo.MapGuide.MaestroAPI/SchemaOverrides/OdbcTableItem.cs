@@ -67,7 +67,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             if (cls != null)
             {
                 var ctype = doc.CreateElement("complexType");
-                ctype.SetAttribute("name", this.ClassName + "Type");
+                ctype.SetAttribute("name", Utility.EncodeFDOName(this.ClassName) + "Type");
                 {
                     var table = doc.CreateElement("Table");
                     table.SetAttribute("name", this.ClassName);
@@ -83,7 +83,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                             }
 
                             var el = doc.CreateElement("element");
-                            el.SetAttribute("name", prop.Name);
+                            el.SetAttribute("name", Utility.EncodeFDOName(prop.Name));
 
                             var col = doc.CreateElement("Column");
                             col.SetAttribute("name", prop.Name);

@@ -76,6 +76,11 @@ namespace Maestro.Editors.FeatureSource.Providers.Sdf
             }
         }
 
+        protected override string[] GetUnmanagedFileExtensions()
+        {
+            return new string[] { "sdf" };
+        }
+
         protected override void OnResourceChanged()
         {
             base.OnResourceChanged();

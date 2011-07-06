@@ -222,10 +222,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         {
             XmlElement id = null;
 
+            var en = Utility.EncodeFDOName(this.Name);
             if (_identity.Count > 0)
             {
                 id = doc.CreateElement("xs", "element", XmlNamespaces.XS);
-                var en = Utility.EncodeFDOName(this.Name);
+                
                 id.SetAttribute("name", en); //TODO: May need encoding
                 id.SetAttribute("type", this.Parent.Name + ":" + en + "Type");
                 id.SetAttribute("abstract", this.IsAbstract.ToString().ToLower());
@@ -251,7 +252,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
             //Now write class body
             var ctype = doc.CreateElement("xs", "complexType", XmlNamespaces.XS);
-            ctype.SetAttribute("name", this.Name + "Type"); //TODO: This may have been decoded. Should it be re-encoded?
+            ctype.SetAttribute("name", en + "Type"); //TODO: This may have been decoded. Should it be re-encoded?
             ctype.SetAttribute("abstract", this.IsAbstract.ToString().ToLower());
             if (!string.IsNullOrEmpty(this.DefaultGeometryPropertyName))
             {
@@ -292,6 +293,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
         public void ReadXml(XmlNode node, XmlNamespaceManager mgr)
         {
+            var en = Utility.EncodeFDOName(this.Name);
  	        var abn = node.Attributes["abstract"];
             if (abn != null)
                 this.IsAbstract = Convert.ToBoolean(abn.Value);
@@ -316,7 +318,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
             //Process identity properties
             var parent = node.ParentNode;
-            var key = parent.SelectSingleNode("xs:element[@name=\"" + this.Name + "\"]/xs:key", mgr);
+            var key = parent.SelectSingleNode("xs:element[@name=\"" + en + "\"]/xs:key", mgr);
             if (key != null)
             {
                 var fields = key.SelectNodes("xs:field", mgr);

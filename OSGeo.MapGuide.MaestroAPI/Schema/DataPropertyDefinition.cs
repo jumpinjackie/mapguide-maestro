@@ -164,8 +164,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
         public override void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
+            var en = Utility.EncodeFDOName(this.Name);
+
             var prop = doc.CreateElement("xs", "element", XmlNamespaces.XS);
-            prop.SetAttribute("name", this.Name); //TODO: This may have been decoded. Should it be re-encoded?
+            prop.SetAttribute("name", en);
             prop.SetAttribute("minOccurs", this.IsNullable ? "0" : "1");
             if (this.IsReadOnly)
                 prop.SetAttribute("readOnly", XmlNamespaces.FDO, this.IsReadOnly.ToString().ToLower());

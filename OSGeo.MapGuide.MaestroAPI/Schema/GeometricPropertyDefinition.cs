@@ -211,8 +211,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
         public override void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
+            var en = Utility.EncodeFDOName(this.Name);
+
             var geom = doc.CreateElement("xs", "element", XmlNamespaces.XS);
-            geom.SetAttribute("name", this.Name); //TODO: This may have been decoded. Should it be re-encoded?
+            geom.SetAttribute("name", en); //TODO: This may have been decoded. Should it be re-encoded?
             geom.SetAttribute("type", "gml:AbstractGeometryType");
             geom.SetAttribute("hasMeasure", XmlNamespaces.FDO, this.HasMeasure.ToString().ToLower());
             geom.SetAttribute("hasElevation", XmlNamespaces.FDO, this.HasElevation.ToString().ToLower());

@@ -70,24 +70,22 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         {
             foreach (var fs in _schemas)
             {
+                var map = doc.CreateElement("SchemaMapping");
+                //The version is required for data compatiblity with FDO. I don't think
+                //the actual value matters. So use a safe version of FDO
+                map.SetAttribute("provider", "OSGeo.ODBC.3.2");
+                map.SetAttribute("xmlns:rdb", "http://fdordbms.osgeo.org/schemas");
+                map.SetAttribute("xmlns", "http://fdoodbc.osgeo.org/schemas");
+                map.SetAttribute("name", fs.Name);
                 var items = GetMappingsForSchema(fs.Name);
                 if (items.Count > 0)
                 {
-                    var map = doc.CreateElement("SchemaMapping");
-                    //The version is required for data compatiblity with FDO. I don't think
-                    //the actual value matters. So use a safe version of FDO
-                    map.SetAttribute("provider", "OSGeo.ODBC.3.2"); 
-                    map.SetAttribute("xmlns:rdb", "http://fdordbms.osgeo.org/schemas");
-                    map.SetAttribute("xmlns", "http://fdoodbc.osgeo.org/schemas");
-                    map.SetAttribute("name", fs.Name);
-
                     foreach (var item in items)
                     {
                         item.WriteXml(doc, map);
                     }
-
-                    currentNode.AppendChild(map);
                 }
+                currentNode.AppendChild(map);
             }
         }
 

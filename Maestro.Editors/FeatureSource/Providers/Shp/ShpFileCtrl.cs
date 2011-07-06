@@ -76,6 +76,11 @@ namespace Maestro.Editors.FeatureSource.Providers.Shp
             }
         }
 
+        protected override string[] GetUnmanagedFileExtensions()
+        {
+            return new string[] { "shp" };
+        }
+
         protected override string FileFdoProperty
         {
             get

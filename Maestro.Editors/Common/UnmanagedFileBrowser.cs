@@ -27,6 +27,7 @@ using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using Aga.Controls.Tree;
 using OSGeo.MapGuide.ObjectModels.Common;
+using System.IO;
 
 namespace Maestro.Editors.Common
 {
@@ -157,6 +158,7 @@ namespace Maestro.Editors.Common
         private UnmanagedFileBrowser()
         {
             InitializeComponent();
+            _fileExtensions = new List<string>();
         }
 
         private IResourceService _resSvc;
@@ -170,6 +172,25 @@ namespace Maestro.Editors.Common
         {
             _resSvc = resSvc;
             trvFolders.Model = new FolderTreeModel(_resSvc);
+        }
+
+        private List<string> _fileExtensions;
+
+        /// <summary>
+        /// Gets or sets the file extensions to filter the files by. If empty, no filtering
+        /// will be done
+        /// </summary>
+        public string[] Extensions
+        {
+            get { return _fileExtensions.ToArray(); }
+            set
+            {
+                _fileExtensions.Clear();
+                for (int i = 0; i < value.Length; i++)
+                {
+                    _fileExtensions.Add(value[i].ToLower());
+                }
+            }
         }
 
         /// <summary>
@@ -230,15 +251,26 @@ namespace Maestro.Editors.Common
             lstResources.Items.Clear();
             foreach (var item in list.Items)
             {
-                if (typeof(UnmanagedDataListUnmanagedDataFile).IsAssignableFrom(item.GetType()))
+                var f = item as UnmanagedDataListUnmanagedDataFile;
+                if (f != null)
                 {
-                    var file = (UnmanagedDataListUnmanagedDataFile)item;
-                    var li = new ListViewItem();
-                    li.Name = file.UnmanagedDataId;
-                    li.Text = file.FileName;
-                    li.ImageIndex = GetImageIndex(li.Text);
+                    var ext = Path.GetExtension(f.FileName);
+                    if (string.IsNullOrEmpty(ext))
+                        continue;
 
-                    lstResources.Items.Add(li);
+                    if (_fileExtensions.Count > 0 && !_fileExtensions.Contains(ext.ToLower().Substring(1)))
+                        continue;
+
+                    if (typeof(UnmanagedDataListUnmanagedDataFile).IsAssignableFrom(item.GetType()))
+                    {
+                        var file = (UnmanagedDataListUnmanagedDataFile)item;
+                        var li = new ListViewItem();
+                        li.Name = file.UnmanagedDataId;
+                        li.Text = file.FileName;
+                        li.ImageIndex = GetImageIndex(li.Text);
+
+                        lstResources.Items.Add(li);
+                    }
                 }
             }
         }

@@ -68,10 +68,13 @@ namespace Maestro.Editors.FeatureSource.Providers
             
         }
 
+        protected virtual string[] GetUnmanagedFileExtensions() { return new string[0]; }
+
         private void btnBrowseAlias_Click(object sender, EventArgs e)
         {
             using (var picker = new UnmanagedFileBrowser(_service.ResourceService))
             {
+                picker.Extensions = GetUnmanagedFileExtensions();
                 picker.SelectFoldersOnly = false;
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
