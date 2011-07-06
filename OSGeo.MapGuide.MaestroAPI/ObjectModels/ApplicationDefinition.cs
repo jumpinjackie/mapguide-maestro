@@ -272,11 +272,13 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             };
         }
 
+        [XmlIgnore]
         IMapSet IApplicationDefinition.MapSet
         {
             get { return this; }
         }
 
+        [XmlIgnore]
         IExtension IExtensibleElement.Extension
         {
             get
@@ -285,6 +287,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         IEnumerable<IMapGroup> IMapSet.MapGroups
         {
             get 
@@ -296,6 +299,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         int IMapSet.MapGroupCount
         {
             get { return this.MapSet.Count; }
@@ -321,6 +325,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         public IEnumerable<IWidgetSet> WidgetSets
         {
             get 
@@ -370,6 +375,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             get { return this.Item.Count; }
         }
 
+        [XmlIgnore]
         public IEnumerable<IUIItem> Items
         {
             get
@@ -451,11 +457,13 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
     partial class FlyoutItemType : IFlyoutItem
     {
+        [XmlIgnore]
         public int ItemCount
         {
             get { return this.Item.Count; }
         }
 
+        [XmlIgnore]
         public IEnumerable<IUIItem> Items
         {
             get 
@@ -547,6 +555,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
     partial class WidgetSetType : IWidgetSet
     {
+        [XmlIgnore]
         public IEnumerable<IWidgetContainer> Containers
         {
             get 
@@ -558,6 +567,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         public int ContainerCount
         {
             get { return this.Container.Count; }
@@ -583,6 +593,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         IMapWidget IWidgetSet.MapWidget
         {
             get 
@@ -591,12 +602,13 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             }
         }
 
-
+        [XmlIgnore]
         public int WidgetCount
         {
             get { return this.Widget.Count; }
         }
 
+        [XmlIgnore]
         public IEnumerable<IWidget> Widgets
         {
             get 
@@ -629,6 +641,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
     partial class ContainerType : IWidgetContainer
     {
+        [XmlIgnore]
         IExtension IExtensibleElement.Extension
         {
             get { return this.Extension; }
@@ -637,6 +650,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
     partial class WidgetType : IWidget 
     {
+        [XmlIgnore]
         IExtension IExtensibleElement.Extension
         {
             get
@@ -710,6 +724,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             return new MapViewType() { CenterX = x, CenterY = y, Scale = scale };
         }
 
+        [XmlIgnore]
         int IMapGroup.MapCount
         {
             get
@@ -723,6 +738,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             return (IMap)this.Map[index];
         }
 
+        [XmlIgnore]
         IMapView IMapGroup.InitialView
         {
             get
@@ -735,6 +751,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         IEnumerable<IMap> IMapGroup.Map
         {
             get 
@@ -766,6 +783,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         IExtension IExtensibleElement.Extension
         {
             get
@@ -799,6 +817,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
     partial class MapType : IMap
     {
+        [XmlIgnore]
         IExtension IExtensibleElement.Extension
         {
             get
@@ -807,6 +826,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
         bool IMap.SingleTile
         {
             get
