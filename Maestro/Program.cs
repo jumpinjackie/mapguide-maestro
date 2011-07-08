@@ -70,6 +70,7 @@ namespace Maestro
             ResourceValidatorLoader.LoadStockValidators();
 
             AppDomain.CurrentDomain.AssemblyLoad += new AssemblyLoadEventHandler(CurrentDomain_AssemblyLoad);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
             // Get a reference to the entry assembly (Startup.exe)
             Assembly exe = typeof(Program).Assembly;
@@ -139,6 +140,15 @@ namespace Maestro
                 }
             }
             LoggingService.Info("Application shutdown");
+        }
+
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            var ex = e.ExceptionObject as Exception;
+            if (ex != null)
+            {
+                ErrorDialog.Show(ex);
+            }
         }
 
         static void CurrentDomain_AssemblyLoad(object sender, AssemblyLoadEventArgs args)
