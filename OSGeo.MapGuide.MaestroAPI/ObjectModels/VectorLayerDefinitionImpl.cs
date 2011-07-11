@@ -336,7 +336,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 //Put the new one in if it is not null
                 if (value != null)
                 {
-                    if (typeof(ICompositeTypeStyle2).IsAssignableFrom(value.GetType()))
+                    if (!typeof(ICompositeTypeStyle2).IsAssignableFrom(value.GetType()))
                         throw new InvalidOperationException("Assigned value does not implement ICompositeTypeStyle2");
 
                     this.itemsField.Add(value);
