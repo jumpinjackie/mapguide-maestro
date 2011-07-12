@@ -23,8 +23,14 @@ using System.Text;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.Drivers
 {
+    /// <summary>
+    /// Oracle odbc connection string builder
+    /// </summary>
     public class OracleMsDriver : OdbcDriverInfo
     {
+        /// <summary>
+        /// Gets the built connection string
+        /// </summary>
         public override string OdbcConnectionString
         {
             get

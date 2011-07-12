@@ -31,7 +31,7 @@ using Maestro.Editors.Common;
 namespace Maestro.Editors.FeatureSource.Providers.Wms
 {
     [ToolboxItem(false)]
-    public partial class RasterDefinitionCtrl : UserControl
+    internal partial class RasterDefinitionCtrl : UserControl
     {
         private WmsConfigurationDocument _config;
         private RasterWmsItem _item;

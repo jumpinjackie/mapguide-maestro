@@ -27,6 +27,9 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.SymbolDefinition
 {
+    /// <summary>
+    /// A resource editor for Simple Symbol Definitions
+    /// </summary>
     [ToolboxItem(true)]
     public partial class SimpleSymbolDefinitionEditorCtrl : EditorBase
     {

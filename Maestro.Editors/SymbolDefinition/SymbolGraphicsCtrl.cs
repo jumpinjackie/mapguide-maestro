@@ -30,8 +30,8 @@ using Maestro.Editors.SymbolDefinition.GraphicsEditors;
 
 namespace Maestro.Editors.SymbolDefinition
 {
-    [ToolboxItem(true)]
-    public partial class SymbolGraphicsCtrl : EditorBindableCollapsiblePanel
+    [ToolboxItem(false)]
+    internal partial class SymbolGraphicsCtrl : EditorBindableCollapsiblePanel
     {
         public SymbolGraphicsCtrl()
         {

@@ -125,7 +125,5 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         {
             get { return this; }
         }
-
-        public event EventHandler ResourceChanged;
     }
 }

@@ -73,6 +73,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
         }
     }
 
+    /// <summary>
+    /// Thrown when an ODBC driver is not found
+    /// </summary>
     [global::System.Serializable]
     public class OdbcDriverNotFoundException : Exception
     {

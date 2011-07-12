@@ -29,8 +29,8 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
 namespace Maestro.Editors.SymbolDefinition
 {
-    [ToolboxItem(true)]
-    public partial class AdvancedSettingsCtrl : EditorBindableCollapsiblePanel
+    [ToolboxItem(false)]
+    internal partial class AdvancedSettingsCtrl : EditorBindableCollapsiblePanel
     {
         public AdvancedSettingsCtrl()
         {

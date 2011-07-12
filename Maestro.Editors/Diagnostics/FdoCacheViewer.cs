@@ -29,10 +29,17 @@ using System.IO;
 
 namespace Maestro.Editors.Diagnostics
 {
+    /// <summary>
+    /// Provides a simple user interface to display the results of a <see cref="T:OSGeo.MapGuide.MaestroAPI.Commands.IGetFdoCacheInfo"/> command
+    /// </summary>
     public partial class FdoCacheViewer : Form
     {
         private IGetFdoCacheInfo _cmd;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="cache"></param>
         public FdoCacheViewer(IGetFdoCacheInfo cache)
         {
             InitializeComponent();

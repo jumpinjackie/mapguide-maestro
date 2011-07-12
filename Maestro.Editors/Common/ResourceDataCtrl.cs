@@ -141,8 +141,16 @@ namespace Maestro.Editors.Common
             BindResourceList();
         }
 
+        /// <summary>
+        /// A event handler for uploaded resources
+        /// </summary>
+        /// <param name="dataName"></param>
+        /// <param name="origPath"></param>
         public delegate void ResourceUploadEventHandler(string dataName, string origPath);
 
+        /// <summary>
+        /// Raised when a data file has been uploaded as resource data
+        /// </summary>
         public event ResourceUploadEventHandler ResourceDataUploaded;
 
         private void btnAdd_Click(object sender, EventArgs e)

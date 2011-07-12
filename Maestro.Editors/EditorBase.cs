@@ -26,10 +26,10 @@ using System.ComponentModel;
 
 namespace Maestro.Editors
 {
-    [ToolboxItem(false)]
     /// <summary>
     /// Base class of all resource editors
     /// </summary>
+    [ToolboxItem(false)]
     public class EditorBase : UserControl, IEditorBindable
     {
         /// <summary>

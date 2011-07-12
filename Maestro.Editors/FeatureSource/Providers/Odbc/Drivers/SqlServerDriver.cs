@@ -24,20 +24,38 @@ using System.ComponentModel;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.Drivers
 {
+    /// <summary>
+    /// SQL Server ODBC connection string builder
+    /// </summary>
     public class SqlServerDriver : OdbcDriverInfo
     {
+        /// <summary>
+        /// The SQL Server Name
+        /// </summary>
         [Description("The SQL Server Name")]
         public string ServerName { get; set; }
 
+        /// <summary>
+        /// The SQL Server database
+        /// </summary>
         [Description("The SQL Server database")]
         public string Database { get; set; }
 
+        /// <summary>
+        /// The user name
+        /// </summary>
         [Description("Username")]
         public string UserName { get; set; }
 
+        /// <summary>
+        /// The password
+        /// </summary>
         [Description("Password")]
         public string Password { get; set; }
 
+        /// <summary>
+        /// Gets the built connection string
+        /// </summary>
         public override string OdbcConnectionString
         {
             get

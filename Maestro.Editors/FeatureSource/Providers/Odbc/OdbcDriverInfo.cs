@@ -23,8 +23,14 @@ using System.Text;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc
 {
+    /// <summary>
+    /// The base class of all ODBC connection string builders
+    /// </summary>
     public abstract class OdbcDriverInfo
     {
+        /// <summary>
+        /// Gets the built connection string
+        /// </summary>
         public abstract string OdbcConnectionString { get; set; }
     }
 }

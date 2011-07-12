@@ -26,6 +26,9 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.Fusion
 {
+    /// <summary>
+    /// A helper class for widget editors
+    /// </summary>
     public class FlexibleLayoutEditorContext
     {
         private IFusionService _service;
@@ -34,6 +37,10 @@ namespace Maestro.Editors.Fusion
         private IApplicationDefinitionTemplateInfoSet _templateSet;
         private IApplicationDefinitionContainerInfoSet _containerSet;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="service"></param>
         public FlexibleLayoutEditorContext(IFusionService service)
         {
             _service = service;
@@ -43,6 +50,11 @@ namespace Maestro.Editors.Fusion
             _containerSet = _service.GetApplicationContainers();
         }
 
+        /// <summary>
+        /// Gets information about a particular widget (by name)
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public IWidgetInfo GetWidgetInfo(string name)
         {
             Check.NotEmpty(name, "name");
@@ -54,11 +66,20 @@ namespace Maestro.Editors.Fusion
             return null;
         }
 
+        /// <summary>
+        /// Gets information about all widgets
+        /// </summary>
+        /// <returns></returns>
         public IWidgetInfo[] GetAllWidgets()
         {
             return new List<IWidgetInfo>(_widgetSet.WidgetInfo).ToArray();
         }
 
+        /// <summary>
+        /// Gets information about a specific container
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public IApplicationDefinitionContainerInfo GetContainerInfo(string name)
         {
             Check.NotEmpty(name, "name");
@@ -70,6 +91,11 @@ namespace Maestro.Editors.Fusion
             return null;
         }
 
+        /// <summary>
+        /// Gets information about a specific template
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public IApplicationDefinitionTemplateInfo GetTemplateInfo(string name)
         {
             Check.NotEmpty(name, "name");

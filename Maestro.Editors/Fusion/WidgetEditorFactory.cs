@@ -26,6 +26,9 @@ namespace Maestro.Editors.Fusion
 {
     using WidgetEditors;
 
+    /// <summary>
+    /// A widget editor factory class
+    /// </summary>
     public static class WidgetEditorFactory
     {
         private static Dictionary<string, Type> _editorTypes;

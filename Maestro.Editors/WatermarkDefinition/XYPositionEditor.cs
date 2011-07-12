@@ -28,7 +28,8 @@ using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 
 namespace Maestro.Editors.WatermarkDefinition
 {
-    public partial class XYPositionEditor : UserControl
+    [ToolboxItem(false)]
+    internal partial class XYPositionEditor : UserControl
     {
         private IXYPosition _pos;
         private bool _init = false;

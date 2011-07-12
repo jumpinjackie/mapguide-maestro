@@ -30,8 +30,14 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
 namespace Maestro.Editors.WatermarkDefinition
 {
+    /// <summary>
+    /// Editor control for Watermark Definitions
+    /// </summary>
     public partial class WatermarkEditorCtrl : EditorBase
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public WatermarkEditorCtrl()
         {
             InitializeComponent();

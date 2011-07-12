@@ -34,7 +34,7 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
-    public partial class SymbolInstancesDialog : Form
+    internal partial class SymbolInstancesDialog : Form
     {
         private IEditorService _edSvc;
         private ICompositeSymbolization _comp;

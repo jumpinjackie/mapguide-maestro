@@ -33,7 +33,8 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.WatermarkDefinition
 {
-    public partial class WatermarkCollectionEditorCtrl : CollapsiblePanel
+    [ToolboxItem(false)]
+    internal partial class WatermarkCollectionEditorCtrl : CollapsiblePanel
     {
         private IWatermarkCollection _watermarks;
 

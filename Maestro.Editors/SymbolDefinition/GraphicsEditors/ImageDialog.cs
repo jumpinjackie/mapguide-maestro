@@ -33,7 +33,7 @@ using Maestro.Editors.Generic;
 
 namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
 {
-    public partial class ImageDialog : Form
+    internal partial class ImageDialog : Form
     {
         private ISimpleSymbolDefinition _ssd;
         private IImageGraphic _image;

@@ -27,7 +27,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.SymbolDefinition
 {
-    public partial class SymbolParameterEditor : Form
+    internal partial class SymbolParameterEditor : Form
     {
         public SymbolParameterEditor()
         {

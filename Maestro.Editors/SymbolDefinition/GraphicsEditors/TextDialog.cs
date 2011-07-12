@@ -30,7 +30,7 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
 {
-    public partial class TextDialog : Form
+    internal partial class TextDialog : Form
     {
         private ISimpleSymbolDefinition _sym;
         private EditorBindableCollapsiblePanel _ed;

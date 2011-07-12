@@ -24,34 +24,37 @@
     <SandcastlePath>
     </SandcastlePath>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.MaestroAPI.dll" />
-      <DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.MaestroAPI.xml" />
-      <DocumentationSource sourceFile="..\SDK\bin\Maestro.Packaging.dll" />
-      <DocumentationSource sourceFile="..\SDK\bin\Maestro.Packaging.xml" />
       <DocumentationSource sourceFile="..\SDK\bin\Maestro.Editors.dll" />
       <DocumentationSource sourceFile="..\SDK\bin\Maestro.Editors.xml" />
       <DocumentationSource sourceFile="..\SDK\bin\Maestro.Login.dll" />
       <DocumentationSource sourceFile="..\SDK\bin\Maestro.Login.xml" />
+      <DocumentationSource sourceFile="..\SDK\bin\Maestro.Packaging.dll" />
+      <DocumentationSource sourceFile="..\SDK\bin\Maestro.Packaging.xml" />
       <DocumentationSource sourceFile="..\SDK\bin\Maestro.Shared.UI.dll" />
       <DocumentationSource sourceFile="..\SDK\bin\Maestro.Shared.UI.xml" />
+      <DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.ExtendedObjectModels.dll" />
+      <DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.ExtendedObjectModels.xml" />
+      <DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.MaestroAPI.dll" />
+      <DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.MaestroAPI.xml" />
     </DocumentationSources>
     <VisibleItems>Attributes, InheritedMembers, Protected, SealedProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="Maestro.Editors.FeatureSource.Preview" isExposed="False" />
-<Filter entryType="Namespace" fullName="Maestro.Editors.FeatureSource.Providers.Odbc" isExposed="False" />
-<Filter entryType="Namespace" fullName="Maestro.Editors.FeatureSource.Providers.Odbc.Drivers" isExposed="False" />
-<Filter entryType="Namespace" fullName="Maestro.Editors.FeatureSource.Providers.Wms" isExposed="False" />
-<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0" isExposed="False" />
-<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0" isExposed="False" />
-<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0" isExposed="False" />
-<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0" isExposed="False" />
-<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0" isExposed="False" />
-<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0" isExposed="False" />
-<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0" isExposed="False" />
-<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0" isExposed="False" />
-<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.SymbolLibrary_1_0_0" isExposed="False" />
-<Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0" isExposed="False" />
-<Filter entryType="Namespace" fullName="System.Runtime.CompilerServices" isExposed="False" /></ApiFilter>
+      <Filter entryType="Namespace" fullName="Maestro.Editors.FeatureSource.Providers.Odbc" isExposed="False" />
+      <Filter entryType="Namespace" fullName="Maestro.Editors.FeatureSource.Providers.Odbc.Drivers" isExposed="False" />
+      <Filter entryType="Namespace" fullName="Maestro.Editors.FeatureSource.Providers.Wms" isExposed="False" />
+      <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0" isExposed="False" />
+      <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0" isExposed="False" />
+      <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0" isExposed="False" />
+      <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0" isExposed="False" />
+      <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0" isExposed="False" />
+      <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0" isExposed="False" />
+      <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0" isExposed="False" />
+      <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0" isExposed="False" />
+      <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.SymbolLibrary_1_0_0" isExposed="False" />
+      <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0" isExposed="False" />
+      <Filter entryType="Namespace" fullName="System.Runtime.CompilerServices" isExposed="False" />
+    </ApiFilter>
     <SdkLinkType>None</SdkLinkType>
     <FeedbackEMailAddress>jumpinjackie@gmail.com</FeedbackEMailAddress>
     <WebsiteSdkLinkType>None</WebsiteSdkLinkType>
@@ -63,6 +66,21 @@
     <RootNamespaceContainer>True</RootNamespaceContainer>
     <Preliminary>False</Preliminary>
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
+    <ProjectSummary>&amp;lt%3bsummary&amp;gt%3b
+This is the reference documentation for the MapGuide Maestro API. The API consists of:
+
+&amp;lt%3blist type=&amp;quot%3bbullet&amp;quot%3b&amp;gt%3b
+   &amp;lt%3bitem&amp;gt%3b&amp;lt%3bdescription&amp;gt%3bThe Maestro API core %28OSGeo.MapGuide.MaestroAPI.dll%29&amp;lt%3b/description&amp;gt%3b&amp;lt%3b/item&amp;gt%3b
+   &amp;lt%3bitem&amp;gt%3b&amp;lt%3bdescription&amp;gt%3bThe Maestro Extended Object Model Helper %28OSGeo.MapGuide.ExtendedObjectModels.dll%29&amp;lt%3b/description&amp;gt%3b&amp;lt%3b/item&amp;gt%3b
+   &amp;lt%3bitem&amp;gt%3b&amp;lt%3bdescription&amp;gt%3bThe Maestro Editor UI library %28Maestro.Editors.dll%29&amp;lt%3b/description&amp;gt%3b&amp;lt%3b/item&amp;gt%3b
+   &amp;lt%3bitem&amp;gt%3b&amp;lt%3bdescription&amp;gt%3bThe Maestro Packaging library %28Maestro.Packaging.dll%29&amp;lt%3b/description&amp;gt%3b&amp;lt%3b/item&amp;gt%3b
+   &amp;lt%3bitem&amp;gt%3b&amp;lt%3bdescription&amp;gt%3bThe Maestro Login UI library %28Maestro.Login.dll%29&amp;lt%3b/description&amp;gt%3b&amp;lt%3b/item&amp;gt%3b
+   &amp;lt%3bitem&amp;gt%3b&amp;lt%3bdescription&amp;gt%3bThe Maestro Shared UI library %28Maestro.Shared.UI.dll%29&amp;lt%3b/description&amp;gt%3b&amp;lt%3b/item&amp;gt%3b
+&amp;lt%3b/list&amp;gt%3b
+
+Public classes, interfaces and types defined within these libraries are covered in this document.
+&amp;lt%3b/summary&amp;gt%3b</ProjectSummary>
+    <RootNamespaceTitle>MapGuide Maestro API Documentation</RootNamespaceTitle>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional

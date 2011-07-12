@@ -18,20 +18,19 @@
 // 
 #endregion
 using System;
-using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
-using System.Windows.Forms;
 using System.Data;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System.Drawing;
+using System.Globalization;
+using System.Threading;
+using System.Windows.Forms;
 using Maestro.Editors.Common;
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using System.Globalization;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.ObjectModels;
-using System.Threading;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {

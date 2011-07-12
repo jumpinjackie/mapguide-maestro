@@ -34,6 +34,9 @@ using System.Reflection;
 
 namespace Maestro.Editors.SymbolDefinition
 {
+    /// <summary>
+    /// A UI control for editing symbol definition settings
+    /// </summary>
     [ToolboxItem(true)]
     [Designer(typeof(SymbolFieldDesigner))]
     public partial class SymbolField : UserControl

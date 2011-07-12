@@ -34,11 +34,17 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// <see cref="T:OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry"/> class.
     /// 
     /// All implementations supports the base services of the MapGuide Geospatial API:
-    ///  - Resource Service (<see cref="T:OSGeo.MapGuide.MaestroAPI.Services.IResourceService"/>) for manipulation of repositories and resources
-    ///  - Feature Service (<see cref="T:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService"/>) an abstraction layer for querying feature data in 
-    ///  technology-independent manner.
-    ///  - Coordinate System Catalog (<see cref="T:OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog"/> for querying coordinate 
-    ///  systems and for translating WKT, cs code and EPSG codes to other forms
+    /// <list type="bullet">
+    ///     <item>
+    ///         <description>Resource Service (<see cref="T:OSGeo.MapGuide.MaestroAPI.Services.IResourceService"/>) for manipulation of repositories and resources</description>
+    ///     </item>
+    ///     <item>
+    ///         <description>Feature Service (<see cref="T:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService"/>) an abstraction layer for querying feature data in technology-independent manner.</description>
+    ///     </item>
+    ///     <item>
+    ///         <description>Coordinate System Catalog (<see cref="T:OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog"/> for querying coordinate systems and for translating WKT, cs code and EPSG codes to other forms</description>    
+    ///     </item> 
+    /// </list>
     ///  
     /// Additional services are supported at various levels depending on the implementation. 
     /// The <see cref="P:OSGeo.MapGuide.MaestroAPI.IServerConnection.Capabilities"/> property provides information about 

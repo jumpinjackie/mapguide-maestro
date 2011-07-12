@@ -29,13 +29,25 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
+    /// <summary>
+    /// Base widget editor class
+    /// </summary>
     public partial class WidgetEditorBase : UserControl, IWidgetEditor
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public WidgetEditorBase()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Initializes the editor
+        /// </summary>
+        /// <param name="widget"></param>
+        /// <param name="context"></param>
+        /// <param name="edsvc"></param>
         public void Setup(IWidget widget, FlexibleLayoutEditorContext context, IEditorService edsvc)
         {
             TextBoxBinder.BindText(txtName, widget, "Name");
@@ -43,6 +55,9 @@ namespace Maestro.Editors.Fusion.WidgetEditors
             TextBoxBinder.BindText(txtLocation, widget, "Location");
         }
 
+        /// <summary>
+        /// Gets the underyling Windows Forms control
+        /// </summary>
         public Control Content
         {
             get { return this; }

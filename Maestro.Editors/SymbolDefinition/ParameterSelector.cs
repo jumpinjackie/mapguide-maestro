@@ -28,7 +28,7 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
 namespace Maestro.Editors.SymbolDefinition
 {
-    public partial class ParameterSelector : Form
+    internal partial class ParameterSelector : Form
     {
         private List<IParameter> _unfiltered;
         private List<IParameter> _filtered;

@@ -188,9 +188,8 @@
             // VectorLayerStyleSectionCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "Layer Styles";
-            this.Name = "VectorLayerStyleSectionCtrl";
             resources.ApplyResources(this, "$this");
+            this.Name = "VectorLayerStyleSectionCtrl";
             this.contentPanel.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

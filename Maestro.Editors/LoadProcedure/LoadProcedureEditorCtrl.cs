@@ -146,10 +146,5 @@ namespace Maestro.Editors.LoadProcedure
 
             return proc.CurrentConnection.ExecuteLoadProcedure(proc, cb, true);
         }
-
-        /// <summary>
-        /// Occurs when [resource changed].
-        /// </summary>
-        public event EventHandler ResourceChanged;
     }
 }

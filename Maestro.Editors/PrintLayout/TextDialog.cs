@@ -64,7 +64,7 @@ namespace Maestro.Editors.PrintLayout
             set { txtFontName.Text = value; }
         }
 
-        public float FontHeight
+        public new float FontHeight
         {
             get { return Convert.ToSingle(numFontHeight.Value); }
             set { numFontHeight.Value = Convert.ToDecimal(value); }

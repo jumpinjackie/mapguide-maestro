@@ -27,7 +27,7 @@ using OSGeo.MapGuide.MaestroAPI;
 namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
 {
     /// <summary>
-    /// Defines how to handle duplicate SDF2 keys
+    /// Defines how to handle duplicate SDF2 keys (not supported by Maestro)
     /// </summary>
     [System.SerializableAttribute()]
     public enum SdfKeyTreatmentType
@@ -48,27 +48,27 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
     public enum LoadType
     {
         /// <summary>
-        /// 
+        /// A Load Procedure for SDF 3.0 files
         /// </summary>
         Sdf,
         /// <summary>
-        /// 
+        /// A Load Procedure for SHP files
         /// </summary>
         Shp,
         /// <summary>
-        /// 
+        /// A Load Procedure for DWF files
         /// </summary>
         Dwf,
         /// <summary>
-        /// 
+        /// A Load Procedure for Raster files (not supported by Maestro)
         /// </summary>
         Raster,
         /// <summary>
-        /// 
+        /// A Load Procedure for DWG files (not supported by Maestro)
         /// </summary>
         Dwg,
         /// <summary>
-        /// 
+        /// A Load Procedure for SQLite files
         /// </summary>
         Sqlite
     }
@@ -102,7 +102,28 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
     }
 
     /// <summary>
-    /// Base type of all load procedures
+    /// Base type of all load procedures. All Load Procedures at the minimum require 
+    /// the following information:
+    /// 
+    /// <list type="number">
+    ///     <item>
+    ///         <description>A list of source files.</description>
+    ///     </item>
+    ///     <item>
+    ///         <description>The root path to load into</description>
+    ///     </item>
+    ///     <item>
+    ///         <description>The folder where spatial data sources will be created [optional, but useless if not specified]</description>
+    ///     </item>
+    ///     <item>
+    ///         <description>The folder where layers will be created [optional. dependent on #3]</description>
+    ///     </item>
+    /// </list>
+    /// 
+    /// Once initialized, load procedures can be executed via <see cref="M:OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.ExecuteLoadProcedure(OSGeo.MapGuide.ObjectModels.LoadProcedure.ILoadProcedure,OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack,System.Boolean)"/> method
+    /// 
+    /// Because Load Procedures are also resources, they can be saved into the library repository via the <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResource(OSGeo.MapGuide.MaestroAPI.Resource.IResource)"/> method
+    /// and retrieved from the repository via the <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResource(System.String)"/> method
     /// </summary>
     public interface IBaseLoadProcedure : INotifyPropertyChanged
     {
@@ -143,7 +164,9 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
         string CoordinateSystem { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [generate spatial data sources].
+        /// Gets or sets a value indicating whether to create a spatial data source for each source
+        /// file. The spatial data sources will be created under the <see cref="SpatialDataSourcesFolder"/>
+        /// under the <see cref="SpatialDataSourcesPath"/>
         /// </summary>
         /// <value>
         /// 	<c>true</c> if [generate spatial data sources]; otherwise, <c>false</c>.
@@ -163,7 +186,8 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
         string SpatialDataSourcesFolder { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [generate layers].
+        /// Gets or sets a value indicating whether to create a layer for each spatial data source that
+        /// is created. This will be created in the <see cref="LayersFolder"/> under the <see cref="LayersPath"/>
         /// </summary>
         /// <value><c>true</c> if [generate layers]; otherwise, <c>false</c>.</value>
         bool GenerateLayers { get; set; }
@@ -181,19 +205,19 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
         string LayersFolder { get; set; }
 
         /// <summary>
-        /// Gets or sets the generate maps.
+        /// Gets or sets the generate maps. Not supported by Maestro
         /// </summary>
         /// <value>The generate maps.</value>
         bool? GenerateMaps { get; set; }
 
         /// <summary>
-        /// Gets or sets the maps path.
+        /// Gets or sets the maps path. Not supported by Maestro
         /// </summary>
         /// <value>The maps path.</value>
         string MapsPath { get; set; }
 
         /// <summary>
-        /// Gets or sets the maps folder.
+        /// Gets or sets the maps folder. Not supported by Maestro
         /// </summary>
         /// <value>The maps folder.</value>
         string MapsFolder { get; set; }

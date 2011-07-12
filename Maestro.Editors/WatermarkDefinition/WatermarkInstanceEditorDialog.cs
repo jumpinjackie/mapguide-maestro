@@ -29,7 +29,7 @@ using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 
 namespace Maestro.Editors.WatermarkDefinition
 {
-    public partial class WatermarkInstanceEditorDialog : Form
+    internal partial class WatermarkInstanceEditorDialog : Form
     {
         private WatermarkInstanceEditor _ed;
 

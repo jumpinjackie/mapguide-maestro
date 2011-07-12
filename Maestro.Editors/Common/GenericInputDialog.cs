@@ -27,6 +27,9 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Common
 {
+    /// <summary>
+    /// A simple generic dialog to capture user input
+    /// </summary>
     public partial class GenericInputDialog : Form
     {
         public GenericInputDialog()

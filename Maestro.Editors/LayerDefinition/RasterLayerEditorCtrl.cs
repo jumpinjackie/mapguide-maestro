@@ -33,6 +33,9 @@ namespace Maestro.Editors.LayerDefinition
     /// </summary>
     public partial class RasterLayerEditorCtrl : EditorBase
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public RasterLayerEditorCtrl()
         {
             InitializeComponent();

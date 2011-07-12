@@ -30,6 +30,9 @@ using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Editors.FeatureSource
 {
+    /// <summary>
+    /// A dialog that displays the spatial contexts of a feature source
+    /// </summary>
     public partial class SpatialContextsDialog : Form
     {
         private SpatialContextsDialog()

@@ -28,7 +28,8 @@ using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 
 namespace Maestro.Editors.WatermarkDefinition
 {
-    public partial class TilePositionEditor : UserControl
+    [ToolboxItem(false)]
+    internal partial class TilePositionEditor : UserControl
     {
         private ITilePosition _pos;
 

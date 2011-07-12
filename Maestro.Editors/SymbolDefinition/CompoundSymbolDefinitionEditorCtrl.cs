@@ -32,6 +32,10 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Editors.SymbolDefinition
 {
+    /// <summary>
+    /// A resource editor for Compound Symbol Definitions
+    /// </summary>
+    [ToolboxItem(true)]
     public partial class CompoundSymbolDefinitionEditorCtrl : EditorBase
     {
         const int IDX_SYMBOL = 0;

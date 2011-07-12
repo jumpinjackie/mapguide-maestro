@@ -26,6 +26,9 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.Fusion
 {
+    /// <summary>
+    /// Maintains the collection of specialized widget editors
+    /// </summary>
     public static class FusionWidgetEditorMap
     {
         static Dictionary<string, Type> _edTypes;

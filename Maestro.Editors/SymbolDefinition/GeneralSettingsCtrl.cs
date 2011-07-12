@@ -30,8 +30,8 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Editors.SymbolDefinition
 {
-    [ToolboxItem(true)]
-    public partial class GeneralSettingsCtrl : EditorBindableCollapsiblePanel
+    [ToolboxItem(false)]
+    internal partial class GeneralSettingsCtrl : EditorBindableCollapsiblePanel
     {
         public GeneralSettingsCtrl()
         {

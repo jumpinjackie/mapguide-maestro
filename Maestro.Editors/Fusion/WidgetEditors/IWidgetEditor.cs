@@ -25,10 +25,22 @@ using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
+    /// <summary>
+    /// The base interface for widget editors
+    /// </summary>
     public interface IWidgetEditor
     {
+        /// <summary>
+        /// Initializes the editor
+        /// </summary>
+        /// <param name="widget"></param>
+        /// <param name="context"></param>
+        /// <param name="edsvc"></param>
         void Setup(IWidget widget, FlexibleLayoutEditorContext context, IEditorService edsvc);
 
+        /// <summary>
+        /// Gets the underyling Windows Forms control
+        /// </summary>
         Control Content { get; }
     }
 }

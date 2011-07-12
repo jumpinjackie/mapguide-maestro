@@ -28,10 +28,18 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
 namespace Maestro.Editors.SymbolDefinition
 {
+    /// <summary>
+    /// A dialog-based version of the <see cref="SimpleSymbolDefinitionEditorCtrl"/>
+    /// </summary>
     public partial class SimpleSymbolDefinitionDialog : Form
     {
         private IEditorService _edSvc;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="edSvc"></param>
+        /// <param name="symDef"></param>
         public SimpleSymbolDefinitionDialog(IEditorService edSvc, ISimpleSymbolDefinition symDef)
         {
             InitializeComponent();

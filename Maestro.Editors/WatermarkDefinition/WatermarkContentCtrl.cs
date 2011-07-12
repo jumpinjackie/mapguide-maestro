@@ -31,8 +31,8 @@ using Maestro.Editors.SymbolDefinition.GraphicsEditors;
 
 namespace Maestro.Editors.WatermarkDefinition
 {
-    [ToolboxItem(true)]
-    public partial class WatermarkContentCtrl : EditorBindableCollapsiblePanel
+    [ToolboxItem(false)]
+    internal partial class WatermarkContentCtrl : EditorBindableCollapsiblePanel
     {
         public WatermarkContentCtrl()
         {

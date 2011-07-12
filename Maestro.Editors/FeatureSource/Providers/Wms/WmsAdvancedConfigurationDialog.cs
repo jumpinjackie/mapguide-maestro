@@ -32,7 +32,7 @@ using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace Maestro.Editors.FeatureSource.Providers.Wms
 {
-    public partial class WmsAdvancedConfigurationDialog : Form
+    internal partial class WmsAdvancedConfigurationDialog : Form
     {
         private IEditorService _service;
         private WmsConfigurationDocument _config;
