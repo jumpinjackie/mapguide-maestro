@@ -5,6 +5,9 @@
 	- Fix broken support for Layer Definitions using the 2.3.0 schema
 	- Enabled previews for Watermark Definition editor
  - Show resources in sorted order in the Resource Picker
+ - Productivity enhancements
+	- New name for Rename dialog defaults to current name and field is focused
+	- New Setup Standard Folder Structure command 
 
 3.5 beta 1
 ----------

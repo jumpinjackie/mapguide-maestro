@@ -1031,4 +1031,25 @@ Error message: {1}</value>
   <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Folder_Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Folder_Layers" xml:space="preserve">
+    <value>Layers</value>
+  </data>
+  <data name="Folder_Layouts" xml:space="preserve">
+    <value>Layouts</value>
+  </data>
+  <data name="Folder_Maps" xml:space="preserve">
+    <value>Maps</value>
+  </data>
+  <data name="Folder_Symbols" xml:space="preserve">
+    <value>Symbols</value>
+  </data>
+  <data name="Folder_Watermarks" xml:space="preserve">
+    <value>Watermarks</value>
+  </data>
+  <data name="SiteExplorer_CreateFolderStructure" xml:space="preserve">
+    <value>Create Standard Folder Structure</value>
+  </data>
 </root>

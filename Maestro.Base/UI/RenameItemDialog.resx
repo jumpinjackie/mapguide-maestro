@@ -129,7 +129,7 @@
     <value>54, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>6</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Old Name</value>
@@ -156,7 +156,7 @@
     <value>60, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>8</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>New Name</value>
@@ -183,7 +183,7 @@
     <value>153, 17</value>
   </data>
   <data name="chkOverwrite.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="chkOverwrite.Text" xml:space="preserve">
     <value>Overwrite existing resource</value>
@@ -210,7 +210,7 @@
     <value>209, 17</value>
   </data>
   <data name="chkUpdateRefs.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="chkUpdateRefs.Text" xml:space="preserve">
     <value>Update any references to this resource</value>
@@ -241,7 +241,7 @@
     <value>75, 23</value>
   </data>
   <data name="btnRename.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="btnRename.Text" xml:space="preserve">
     <value>Rename</value>
@@ -268,7 +268,7 @@
     <value>75, 23</value>
   </data>
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="btnCancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -295,7 +295,7 @@
     <value>238, 20</value>
   </data>
   <data name="txtOld.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;txtOld.Name" xml:space="preserve">
     <value>txtOld</value>
@@ -319,7 +319,7 @@
     <value>238, 20</value>
   </data>
   <data name="txtNew.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;txtNew.Name" xml:space="preserve">
     <value>txtNew</value>
@@ -343,7 +343,7 @@
     <value>104, 13</value>
   </data>
   <data name="lblExists.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>5</value>
   </data>
   <data name="lblExists.Text" xml:space="preserve">
     <value>Name already exists!</value>

@@ -40,6 +40,16 @@ namespace Maestro.Base.UI
         {
             txtOld.Text = oldName;
             existingNames.AddRange(names);
+            txtNew.Text = oldName;
+            txtNew_MouseLeave(this, EventArgs.Empty);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            //NOTE: This only can work when txtNew is the first item in the tab order.
+            txtNew.Focus();
+            txtNew.SelectionStart = txtNew.Text.Length;
+            txtNew.SelectionLength = 0;
         }
 
         public string NewName

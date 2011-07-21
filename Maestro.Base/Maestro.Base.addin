@@ -410,6 +410,10 @@
                       label="${res:SiteExplorer_NewFolder}"
                       tooltip="${res:SiteExplorer_NewFolder}"
                       class="Maestro.Base.Commands.SiteExplorer.NewFolderCommand" />
+            <MenuItem id="SetupFolders"
+                      label="${res:SiteExplorer_CreateFolderStructure}"
+                      tooltip="${res:SiteExplorer_CreateFolderStructure}"
+                      class="Maestro.Base.Commands.SiteExplorer.SetupFolderStructureCommand" />
             <MenuItem id="Rename"
                       label="${res:SiteExplorer_SelectedItem_Rename}"
                       class="Maestro.Base.Commands.SiteExplorer.RenameCommand" />

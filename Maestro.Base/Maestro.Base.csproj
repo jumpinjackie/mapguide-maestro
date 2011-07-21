@@ -118,6 +118,7 @@
     <Compile Include="Commands\SiteExplorer\RenameCommand.cs" />
     <Compile Include="Commands\SiteExplorer\RepointCommand.cs" />
     <Compile Include="Commands\SiteExplorer\ResourcePropertiesCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\SetupFolderStructureCommand.cs" />
     <Compile Include="Commands\SiteExplorer\ShowSpatialContextsCommand.cs" />
     <Compile Include="Commands\SiteExplorer\ValidateCommand.cs" />
     <Compile Include="Commands\StartupCommand.cs" />
