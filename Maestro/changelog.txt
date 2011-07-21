@@ -8,6 +8,7 @@
  - Productivity enhancements
 	- New name for Rename dialog defaults to current name and field is focused
 	- New Setup Standard Folder Structure command 
+ - Fix: minx > maxx and miny > maxy errors during validation
 
 3.5 beta 1
 ----------
