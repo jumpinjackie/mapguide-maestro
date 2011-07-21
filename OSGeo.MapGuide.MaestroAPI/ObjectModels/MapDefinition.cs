@@ -83,6 +83,9 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
                 BackgroundColor = Color.White,
                 MapLayer = new System.ComponentModel.BindingList<MapLayerType>(),
                 MapLayerGroup = new System.ComponentModel.BindingList<MapLayerGroupType>(),
+#if MDF_230
+                Watermarks = new BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType>()
+#endif
             };
         }
 

@@ -30,6 +30,7 @@ using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 
 namespace Maestro.Base.Editor
 {
@@ -173,6 +174,16 @@ namespace Maestro.Base.Editor
             wl.ToolBar.AddItem(menu);
         }
 
+        private string GenerateWatermarkPreviewUrl(IWatermarkDefinition wmd)
+        {
+            //We demand a 2.3.0 Map Definition
+            IMapDefinition2 map = (IMapDefinition2)ObjectFactory.CreateMapDefinition(wmd.CurrentConnection, new Version(2, 3, 0), "Watermark Definition Preview");
+            map.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]";
+            map.Extents = ObjectFactory.CreateEnvelope(-1000000, -1000000, 1000000, 1000000);
+            map.AddWatermark(wmd.CreateInstance());
+            return GenerateMapPreviewUrl(map);
+        }
+
         private string GenerateMapPreviewUrl(IResource res)
         {
             string url = _rootUrl;
@@ -262,6 +273,8 @@ namespace Maestro.Base.Editor
                     return GenerateMapPreviewUrl(res);
                 case ResourceTypes.WebLayout:
                     return GenerateWebLayoutPreviewUrl(res);
+                case ResourceTypes.WatermarkDefinition:
+                    return GenerateWatermarkPreviewUrl((IWatermarkDefinition)res);
                 default:
                     throw new InvalidOperationException(Properties.Resources.UnpreviewableResourceType);
             }
@@ -273,7 +286,8 @@ namespace Maestro.Base.Editor
             ResourceTypes.ApplicationDefinition,
             ResourceTypes.LayerDefinition,
             ResourceTypes.MapDefinition,
-            ResourceTypes.WebLayout
+            ResourceTypes.WebLayout,
+            ResourceTypes.WatermarkDefinition
         };
 
         internal static bool IsPreviewableType(OSGeo.MapGuide.MaestroAPI.ResourceTypes rt)
