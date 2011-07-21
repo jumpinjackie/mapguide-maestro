@@ -56,6 +56,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         public abstract LayerType LayerType { get; }
 
 #if LDF_230
+        [XmlIgnore]
         IEnumerable<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark> IWatermarkCollection.Watermarks
         {
             get 
@@ -79,6 +80,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 this.Watermarks.Remove(wm);
         }
 
+        [XmlIgnore]
         int IWatermarkCollection.WatermarkCount
         {
             get { return this.Watermarks.Count; }
@@ -1380,6 +1382,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         private static readonly Version RES_VERSION = new Version(1, 2, 0);
         #elif LDF_130
         private static readonly Version RES_VERSION = new Version(1, 3, 0);
+        #elif LDF_230
+        private static readonly Version RES_VERSION = new Version(2, 3, 0);
         #else
         private static readonly Version RES_VERSION = new Version(1, 0, 0);
         #endif
@@ -1446,6 +1450,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             get { return "LayerDefinition-1.2.0.xsd"; }
 #elif LDF_130
             get { return "LayerDefinition-1.3.0.xsd"; }
+#elif LDF_230
+            get { return "LayerDefinition-2.3.0.xsd"; }
 #else
             get { return "LayerDefinition-1.0.0.xsd"; }
 #endif

@@ -9,6 +9,7 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using Maestro.Editors.WatermarkDefinition;
 
 namespace Maestro.Editors.LayerDefinition
 {
@@ -52,6 +53,23 @@ namespace Maestro.Editors.LayerDefinition
             resSettings.Bind(service);
             layerProperties.Bind(service);
             layerStyles.Bind(service);
+
+            //Add watermark component if supported
+            var sl2 = _vl as ISubLayerDefinition2;
+            if (sl2 != null)
+            {
+                this.Controls.Remove(resSettings);
+                this.Controls.Remove(layerProperties);
+                this.Controls.Remove(layerStyles);
+
+                var wm = new WatermarkCollectionEditorCtrl(service.ResourceService, sl2);
+                wm.Dock = DockStyle.Top;
+
+                this.Controls.Add(wm);
+                this.Controls.Add(layerStyles);
+                this.Controls.Add(layerProperties);
+                this.Controls.Add(resSettings);
+            }
         }
 
         /// <summary>

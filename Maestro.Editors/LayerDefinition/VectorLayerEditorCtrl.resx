@@ -121,12 +121,15 @@
   <data name="resSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="resSettings.HeaderText" xml:space="preserve">
+    <value>Resource Settings</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="resSettings.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="resSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 267</value>
+    <value>621, 267</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="resSettings.TabIndex" type="System.Int32, mscorlib">
@@ -136,7 +139,7 @@
     <value>resSettings</value>
   </data>
   <data name="&gt;&gt;resSettings.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.VectorLayerSettingsSectionCtrl, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.VectorLayerSettingsSectionCtrl, Maestro.Editors, Version=3.5.0.5977, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;resSettings.Parent" xml:space="preserve">
     <value>$this</value>
@@ -147,11 +150,14 @@
   <data name="layerProperties.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="layerProperties.HeaderText" xml:space="preserve">
+    <value>Layer Properties Visible in Viewer</value>
+  </data>
   <data name="layerProperties.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 267</value>
   </data>
   <data name="layerProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 235</value>
+    <value>621, 235</value>
   </data>
   <data name="layerProperties.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -160,7 +166,7 @@
     <value>layerProperties</value>
   </data>
   <data name="&gt;&gt;layerProperties.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.LayerPropertiesSectionCtrl, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.LayerPropertiesSectionCtrl, Maestro.Editors, Version=3.5.0.5977, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;layerProperties.Parent" xml:space="preserve">
     <value>$this</value>
@@ -171,11 +177,14 @@
   <data name="layerStyles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="layerStyles.HeaderText" xml:space="preserve">
+    <value>Layer Styles</value>
+  </data>
   <data name="layerStyles.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 502</value>
   </data>
   <data name="layerStyles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 539</value>
+    <value>621, 432</value>
   </data>
   <data name="layerStyles.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -184,7 +193,7 @@
     <value>layerStyles</value>
   </data>
   <data name="&gt;&gt;layerStyles.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.VectorLayerStyleSectionCtrl, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.VectorLayerStyleSectionCtrl, Maestro.Editors, Version=3.5.0.5977, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;layerStyles.Parent" xml:space="preserve">
     <value>$this</value>
@@ -199,12 +208,12 @@
     <value>True</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 530</value>
+    <value>621, 530</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>VectorLayerEditorCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.EditorBase, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.EditorBase, Maestro.Editors, Version=3.5.0.5977, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

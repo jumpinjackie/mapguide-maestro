@@ -40,7 +40,6 @@
             resources.ApplyResources(this.resSettings, "resSettings");
             this.resSettings.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.resSettings.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resSettings.HeaderText = "Resource Settings";
             this.resSettings.Name = "resSettings";
             // 
             // layerProperties
@@ -49,7 +48,6 @@
             resources.ApplyResources(this.layerProperties, "layerProperties");
             this.layerProperties.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.layerProperties.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.layerProperties.HeaderText = "Layer Properties Visible in Viewer";
             this.layerProperties.Name = "layerProperties";
             // 
             // layerStyles
@@ -58,7 +56,6 @@
             resources.ApplyResources(this.layerStyles, "layerStyles");
             this.layerStyles.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.layerStyles.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.layerStyles.HeaderText = "Layer Styles";
             this.layerStyles.Name = "layerStyles";
             // 
             // VectorLayerEditorCtrl

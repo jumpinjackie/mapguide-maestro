@@ -84,7 +84,12 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
         public void CreateVectorLayer()
         {
-            var vl = new VectorLayerDefinitionType();
+            var vl = new VectorLayerDefinitionType()
+            {
+#if LDF_230
+                Watermarks = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType>()
+#endif
+            };
 
             //TODO: Create composite type style if 1.2 or 1.3 schema
 
@@ -94,7 +99,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 Items = new System.ComponentModel.BindingList<object>(),
                 AreaStyle = CreateDefaultAreaStyle(),
                 LineStyle = CreateDefaultLineStyle(),
-                PointStyle = CreateDefaultPointStyle()
+                PointStyle = CreateDefaultPointStyle(),
+#if LDF_100 || LDF_110
+#else
+                CompositeStyle = CreateDefaultCompositeStyle()
+#endif
             };
             vl.VectorScaleRange.Add(defaultRange);
 
@@ -361,10 +370,16 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #if LDF_100
             throw new NotImplementedException();
 #else
-            return new CompositeTypeStyle()
+            var cts = new CompositeTypeStyle()
             {
-                CompositeRule = new System.ComponentModel.BindingList<CompositeRule>()
+                CompositeRule = new System.ComponentModel.BindingList<CompositeRule>(),
+#if LDF_110 || LDF_120
+#else
+                ShowInLegend = true,
+#endif
             };
+            cts.AddCompositeRule(CreateDefaultCompositeRule());
+            return cts;
 #endif
         }
     }
