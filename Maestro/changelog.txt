@@ -1,4 +1,12 @@
-﻿3.5 beta 1
+﻿3.5 beta 2
+----------
+
+ - Improved AIMS 2012 support
+	- Fix broken support for Layer Definitions using the 2.3.0 schema
+	- Enabled previews for Watermark Definition editor
+ - Show resources in sorted order in the Resource Picker
+
+3.5 beta 1
 ----------
 
  - Watermark Definition editor

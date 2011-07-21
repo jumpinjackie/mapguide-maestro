@@ -322,61 +322,64 @@ namespace Maestro.Editors.Generic
         private void PopulateDocumentList(ResourceList list)
         {
             lstResources.Clear();
+            SortedList<string, ResourceListResourceDocument> items = new SortedList<string, ResourceListResourceDocument>();
             foreach (var item in list.Items)
             {
                 var doc = item as ResourceListResourceDocument;
                 if (doc != null)
+                    items.Add(doc.Name, doc);
+            }
+            foreach (var doc in items.Values)
+            {
+                var li = new ListViewItem(doc.Name);
+                li.Tag = doc;
+
+                try
                 {
-                    var li = new ListViewItem(doc.Name);
-                    li.Tag = doc;
-
-                    try
+                    var rt = ResourceIdentifier.GetResourceType(doc.ResourceId);
+                    switch (rt)
                     {
-                        var rt = ResourceIdentifier.GetResourceType(doc.ResourceId);
-                        switch (rt)
-                        {
-                            case ResourceTypes.ApplicationDefinition:
-                                li.ImageIndex = RES_APPLICATIONDEFINITION;
-                                break;
-                            case ResourceTypes.DrawingSource:
-                                li.ImageIndex = RES_DRAWINGSOURCE;
-                                break;
-                            case ResourceTypes.FeatureSource:
-                                li.ImageIndex = RES_FEATURESOURCE;
-                                break;
-                            case ResourceTypes.LayerDefinition:
-                                li.ImageIndex = RES_LAYERDEFINITION;
-                                break;
-                            case ResourceTypes.MapDefinition:
-                                li.ImageIndex = RES_MAPDEFINITION;
-                                break;
-                            case ResourceTypes .PrintLayout:
-                                li.ImageIndex = RES_PRINTLAYOUT;
-                                break;
-                            case ResourceTypes.SymbolLibrary:
-                                li.ImageIndex = RES_SYMBOLLIBRARY;
-                                break;
-                            case ResourceTypes.WebLayout:
-                                li.ImageIndex = RES_WEBLAYOUT;
-                                break;
-                            case ResourceTypes.SymbolDefinition:
-                                li.ImageIndex = RES_SYMBOLDEFINITION;
-                                break;
-                            case ResourceTypes.WatermarkDefinition:
-                                li.ImageIndex = RES_WATERMARK;
-                                break;
-                            default:
-                                li.ImageIndex = RES_UNKNOWN;
-                                break;
-                        }
+                        case ResourceTypes.ApplicationDefinition:
+                            li.ImageIndex = RES_APPLICATIONDEFINITION;
+                            break;
+                        case ResourceTypes.DrawingSource:
+                            li.ImageIndex = RES_DRAWINGSOURCE;
+                            break;
+                        case ResourceTypes.FeatureSource:
+                            li.ImageIndex = RES_FEATURESOURCE;
+                            break;
+                        case ResourceTypes.LayerDefinition:
+                            li.ImageIndex = RES_LAYERDEFINITION;
+                            break;
+                        case ResourceTypes.MapDefinition:
+                            li.ImageIndex = RES_MAPDEFINITION;
+                            break;
+                        case ResourceTypes.PrintLayout:
+                            li.ImageIndex = RES_PRINTLAYOUT;
+                            break;
+                        case ResourceTypes.SymbolLibrary:
+                            li.ImageIndex = RES_SYMBOLLIBRARY;
+                            break;
+                        case ResourceTypes.WebLayout:
+                            li.ImageIndex = RES_WEBLAYOUT;
+                            break;
+                        case ResourceTypes.SymbolDefinition:
+                            li.ImageIndex = RES_SYMBOLDEFINITION;
+                            break;
+                        case ResourceTypes.WatermarkDefinition:
+                            li.ImageIndex = RES_WATERMARK;
+                            break;
+                        default:
+                            li.ImageIndex = RES_UNKNOWN;
+                            break;
                     }
-                    catch
-                    {
-                        li.ImageIndex = RES_UNKNOWN;
-                    }
-
-                    lstResources.Items.Add(li);
                 }
+                catch
+                {
+                    li.ImageIndex = RES_UNKNOWN;
+                }
+
+                lstResources.Items.Add(li);
             }
         }
 
