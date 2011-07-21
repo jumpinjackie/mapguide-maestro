@@ -130,7 +130,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                     IMapDefinition mdef = (IMapDefinition)context.GetResource(layout.Map.ResourceId);
                     if (layout.Map.InitialView != null)
                     {
-                        var mapEnv = ObjectFactory.CreateEnvelope(mdef.Extents.MinX, mdef.Extents.MaxX, mdef.Extents.MinY, mdef.Extents.MaxY);
+                        var mapEnv = ObjectFactory.CreateEnvelope(mdef.Extents.MinX, mdef.Extents.MinY, mdef.Extents.MaxX, mdef.Extents.MaxY);
                         if (!mapEnv.Contains(layout.Map.InitialView.CenterX, layout.Map.InitialView.CenterY))
                             issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, ValidationStatusCode.Warning_WebLayout_InitialViewOutsideMapExtents, string.Format(Properties.Resources.WL_StartViewOutsideExtentsWarning)));
                     }

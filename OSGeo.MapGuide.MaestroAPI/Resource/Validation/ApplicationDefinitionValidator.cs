@@ -87,7 +87,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                                     IMapDefinition mdef = (IMapDefinition)context.GetResource(mdfId);
                                     mapDefsInGroup.Add(mdef);
 
-                                    IEnvelope mapEnv = ObjectFactory.CreateEnvelope(mdef.Extents.MinX, mdef.Extents.MaxX, mdef.Extents.MinY, mdef.Extents.MaxY);
+                                    IEnvelope mapEnv = ObjectFactory.CreateEnvelope(mdef.Extents.MinX, mdef.Extents.MinY, mdef.Extents.MaxX, mdef.Extents.MaxY);
 
                                     if (mapGroup.InitialView != null)
                                     {
