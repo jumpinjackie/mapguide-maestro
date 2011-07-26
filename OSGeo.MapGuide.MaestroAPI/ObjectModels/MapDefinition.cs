@@ -91,7 +91,12 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
 
         public static IResource Deserialize(string xml)
         {
-            return MapDefinition.Deserialize(xml);
+            var mdf = MapDefinition.Deserialize(xml);
+            foreach (var group in mdf.MapLayerGroup)
+            {
+                group.Parent = mdf;
+            }
+            return mdf;
         }
 
         public static Stream Serialize(IResource res)

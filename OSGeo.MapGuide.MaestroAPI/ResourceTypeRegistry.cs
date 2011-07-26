@@ -132,8 +132,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                 ResourceTypeDescriptor.MapDefinition,
                 new ResourceSerializer()
                 {
-                    Serialize = (res) => { return res.SerializeToStream(); },
-                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0.MapDefinition.Deserialize(xml); }
+                    Serialize = (res) => { return OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0.MdfEntryPoint.Serialize(res); },
+                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0.MdfEntryPoint.Deserialize(xml); }
                 });
 
             //PrintLayout 1.0.0

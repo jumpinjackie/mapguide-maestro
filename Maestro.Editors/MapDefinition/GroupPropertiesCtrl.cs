@@ -44,7 +44,19 @@ namespace Maestro.Editors.MapDefinition
         {
             group.PropertyChanged += new PropertyChangedEventHandler(OnGroupChanged);
 
-            TextBoxBinder.BindText(txtName, group, "Name");
+            //TextBoxBinder.BindText(txtName, group, "Name");
+            IMapDefinition mdf = group.Parent;
+            string currentName = group.Name;
+            txtName.Text = currentName;
+            txtName.TextChanged += (s, e) =>
+            {
+                string newName = txtName.Text;
+                group.Name = newName;
+                mdf.UpdateDynamicGroupName(currentName, newName);
+                System.Diagnostics.Debug.WriteLine(string.Format("Updated group name {0} -> {1}", currentName, newName));
+                currentName = newName;
+            };
+
             TextBoxBinder.BindText(txtLegendLabel, group, "LegendLabel");
 
             CheckBoxBinder.BindChecked(chkExpanded, group, "ExpandInLegend");

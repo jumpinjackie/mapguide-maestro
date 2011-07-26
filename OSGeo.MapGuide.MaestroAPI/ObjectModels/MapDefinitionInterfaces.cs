@@ -420,6 +420,23 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
     public static class MapDefinitionExtensions
     {
         /// <summary>
+        /// Updates the group name references of all layers belonging to a particular group
+        /// </summary>
+        /// <param name="oldGroupName"></param>
+        /// <param name="newGroupName"></param>
+        public static void UpdateDynamicGroupName(this IMapDefinition map, string oldGroupName, string newGroupName)
+        {
+            Check.NotNull(map, "map");
+            Check.NotEmpty(oldGroupName, "oldGroupName");
+            Check.NotEmpty(newGroupName, "newGroupName");
+            var layers = map.GetLayersForGroup(oldGroupName);
+            foreach (var l in layers)
+            {
+                l.Group = newGroupName;
+            }
+        }
+
+        /// <summary>
         /// Removes a layer group and all layers associated with this group
         /// </summary>
         /// <param name="map"></param>
