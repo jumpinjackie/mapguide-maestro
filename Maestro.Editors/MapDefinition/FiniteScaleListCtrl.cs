@@ -74,11 +74,6 @@ namespace Maestro.Editors.MapDefinition
                         AddScaleToMap(_scales[e.NewIndex]);
                     }
                     break;
-                case ListChangedType.ItemDeleted:
-                    {
-                        RemoveScaleFromMap(_scales[e.NewIndex]);
-                    }
-                    break;
                 case ListChangedType.Reset:
                     {
                         ClearScales();
@@ -95,6 +90,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void RemoveScaleFromMap(double scale)
         {
+            _scales.Remove(scale);
             _map.InitBaseMap();
             _map.BaseMap.RemoveFiniteDisplayScale(scale);
         }
@@ -143,7 +139,7 @@ namespace Maestro.Editors.MapDefinition
             if (lstDisplayScales.SelectedItem != null)
             {
                 double scale = (double)lstDisplayScales.SelectedItem;
-                _scales.Remove(scale);
+                RemoveScaleFromMap(scale);
             }
         }
 
