@@ -93,8 +93,8 @@ namespace OSGeo.MapGuide.ExtendedObjectModels
                 new ResourceDeserializationCallback(Ldf130.LdfEntryPoint.Deserialize));
             ObjectFactory.RegisterLayerFactoryMethod(new Version(1, 3, 0), new LayerCreatorFunc(Ldf130.LdfEntryPoint.CreateDefault));
 
-            //Layer Definition 1.3.0
-            ResourceValidatorSet.RegisterValidator(new Ldf130.LayerDefinitionValidator());
+            //Layer Definition 2.3.0
+            ResourceValidatorSet.RegisterValidator(new Ldf230.LayerDefinitionValidator());
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.LayerDefinition, "2.3.0"),
                 new ResourceSerializationCallback(Ldf230.LdfEntryPoint.Serialize),
@@ -136,6 +136,7 @@ namespace OSGeo.MapGuide.ExtendedObjectModels
             ObjectFactory.RegisterSimpleSymbolFactoryMethod(new Version(1, 1, 0), new SimpleSymbolDefCreatorFunc(Sym110.SymbolDefEntryPoint.CreateDefaultSimple));
 
             //Map Definition 2.3.0
+            ResourceValidatorSet.RegisterValidator(new Mdf230.MapDefinitionValidator());
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.MapDefinition, "2.3.0"),
                 new ResourceSerializationCallback(Mdf230.MdfEntryPoint.Serialize),

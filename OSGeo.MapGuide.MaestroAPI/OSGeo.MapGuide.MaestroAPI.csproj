@@ -224,6 +224,7 @@
     <Compile Include="ObjectModels\WatermarkInterfaces.cs" />
     <Compile Include="Resource\Conversion\NsDoc.cs" />
     <Compile Include="Resource\NsDoc.cs" />
+    <Compile Include="Resource\Validation\BaseMapDefinitionValidator.cs" />
     <Compile Include="Resource\Validation\NsDoc.cs" />
     <Compile Include="Resource\Validation\ValidationStatusCode.cs" />
     <Compile Include="SchemaOverrides\GdalConfigurationDocument.cs" />
