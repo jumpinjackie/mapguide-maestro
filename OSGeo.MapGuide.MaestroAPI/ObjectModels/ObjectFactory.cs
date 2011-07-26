@@ -945,7 +945,25 @@ namespace OSGeo.MapGuide.ObjectModels
                 CurrentConnection = owner,
                 CustomLogos = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0.PrintLayoutLogo>(),
                 CustomText = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0.PrintLayoutText>(),
-                LayoutProperties = new OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0.PrintLayoutLayoutProperties(),
+                LayoutProperties = new OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0.PrintLayoutLayoutProperties()
+                {
+                    ShowCustomLogos = false,
+                    ShowCustomLogosSpecified = true,
+                    ShowCustomText = false,
+                    ShowCustomTextSpecified = true,
+                    ShowDateTime = false,
+                    ShowDateTimeSpecified = true,
+                    ShowLegend = false,
+                    ShowLegendSpecified = true,
+                    ShowNorthArrow = false,
+                    ShowNorthArrowSpecified = true,
+                    ShowScaleBar = false,
+                    ShowScaleBarSpecified = true,
+                    ShowTitle = false,
+                    ShowTitleSpecified = true,
+                    ShowURL = false,
+                    ShowURLSpecified = true
+                },
                 PageProperties = new OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0.PrintLayoutPageProperties()
                 {
                     BackgroundColor = new OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0.PrintLayoutPagePropertiesBackgroundColor()
