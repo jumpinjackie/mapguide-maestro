@@ -332,7 +332,11 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
         public IImageGraphic CreateImageGraphics()
         {
-            return new Image() { };
+            //default to empty inline content
+            return new Image() 
+            { 
+                Item = new byte[0]
+            };
         }
 
         public IParameter CreateParameter()

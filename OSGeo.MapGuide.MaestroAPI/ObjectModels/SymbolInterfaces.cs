@@ -940,6 +940,17 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <summary>
         /// Gets or sets the image content
         /// </summary>
+        /// <remarks>
+        /// If the object being returned is an inline image, the object is a fresh instance whose
+        /// byte array refers to the same instance. That is to say:
+        /// <code>
+        /// IInlineImage img1 = (IInlineImage)imageGraphic.Item;
+        /// IInlineImage img2 = (IInlineImage)imageGraphic.Item;
+        /// 
+        /// Object.ReferenceEquals(img1, img2);                 //false
+        /// Object.ReferenceEquals(img1.Content, img2.Content); //true
+        /// </code>
+        /// </remarks>
         IImageBase Item { get; set; }
 
         /// <summary>

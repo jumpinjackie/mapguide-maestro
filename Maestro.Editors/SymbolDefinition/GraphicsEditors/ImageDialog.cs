@@ -123,7 +123,11 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
 
         private void txtImageBase64_TextChanged(object sender, EventArgs e)
         {
+            //HACK: Leaky Abstraction. The impl of IImageGraphic.Item returns a new instance
+            //So these are not the same reference
             _imageInline.Content = Convert.FromBase64String(txtImageBase64.Text);
+            if (_image.Item.Type == ImageType.Inline)
+                _image.Item = _imageInline;
         }
 
         private void lnkLoadImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -134,7 +138,11 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
                 if (open.ShowDialog() == DialogResult.OK)
                 {
                     byte[] content = File.ReadAllBytes(open.FileName);
+                    //HACK: Leaky Abstraction. The impl of IImageGraphic.Item returns a new instance
+                    //So these are not the same reference
                     _imageInline.Content = content;
+                    if (_image.Item.Type == ImageType.Inline)
+                        _image.Item = _imageInline;
                     txtImageBase64.Text = Convert.ToBase64String(content);
                     txtImageBase64.Tag = content;
                 }
