@@ -205,6 +205,7 @@ Section
 	File "${INST_OUTPUT_MAESTRO}\Maestro.Login.dll"
     File "${INST_OUTPUT_MAESTRO}\Maestro.Packaging.dll"
 	File "${INST_OUTPUT_MAESTRO}\Maestro.Shared.UI.dll"
+    File "${INST_OUTPUT_MAESTRO}\NetTopologySuite.Merged.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ExtendedObjectModels.dll"
 	File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.dll"
 	File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.Http.dll"
@@ -219,8 +220,6 @@ Section
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.SymbolDefinition-1.1.0.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WebLayout-1.1.0.dll"
-	File "${INST_OUTPUT_MAESTRO}\Topology.dll"
-    File "${INST_OUTPUT_MAESTRO}\Topology.IO.MapGuide.dll"
     
     # pdbs, we'll leave them in for the beta period duration
     File "${INST_OUTPUT_MAESTRO}\Aga.Controls.pdb"
