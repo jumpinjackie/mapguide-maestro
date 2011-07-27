@@ -22,20 +22,21 @@ using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using GisSharpBlog.NetTopologySuite.IO;
 
 namespace OSGeo.MapGuide.MaestroAPI.Native
 {
     public class LocalNativeDataReader : ReaderBase
     {
         private MgDataReader _reader;
-        private Topology.IO.WKTReader _mgReader;
+        private WKTReader _mgReader;
         private MgAgfReaderWriter _agfRw;
         private MgWktReaderWriter _wktRw;
 
         public LocalNativeDataReader(MgDataReader reader) 
         {
             _reader = reader;
-            _mgReader = new Topology.IO.WKTReader();
+            _mgReader = new WKTReader();
             _agfRw = new MgAgfReaderWriter();
             _wktRw = new MgWktReaderWriter();
         }

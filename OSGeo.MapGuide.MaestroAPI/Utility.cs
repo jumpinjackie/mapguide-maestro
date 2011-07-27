@@ -19,7 +19,6 @@
 #endregion
 using System;
 using System.Drawing;
-using Topology.Geometries;
 using System.Collections.Generic;
 using OSGeo.MapGuide.MaestroAPI.IO;
 using OSGeo.MapGuide.MaestroAPI.Schema;
@@ -27,6 +26,7 @@ using System.Collections.Specialized;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.ObjectModels;
 using System.Xml;
+using GeoAPI.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -445,7 +445,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         public static Type GeometryType
         {
-            get { return typeof(Topology.Geometries.IGeometry); }
+            get { return typeof(IGeometry); }
         }
 
         /// <summary>

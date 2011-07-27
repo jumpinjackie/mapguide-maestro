@@ -20,9 +20,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Topology.Geometries;
 using System.Drawing;
-using Topology.CoordinateSystems;
+using ProjNet.CoordinateSystems;
+using GeoAPI.CoordinateSystems;
+using GeoAPI.Geometries;
+using GisSharpBlog.NetTopologySuite.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 {
@@ -62,14 +64,14 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 
             if (csb == null && coordSys != null)
             {
-                Topology.CoordinateSystems.IUnit unit = coordSys.GetUnits(0);
-                if (unit is Topology.CoordinateSystems.IAngularUnit)
+                IUnit unit = coordSys.GetUnits(0);
+                if (unit is IAngularUnit)
                 {
-                    double radians = (unit as Topology.CoordinateSystems.IAngularUnit).RadiansPerUnit;
+                    double radians = (unit as IAngularUnit).RadiansPerUnit;
                     csb = new DegreeBasedCoordinateSystem();
                 }
-                else if (unit is Topology.CoordinateSystems.ILinearUnit)
-                    csb = new MeterBasedCoordinateSystem(((Topology.CoordinateSystems.ILinearUnit)unit).MetersPerUnit, ((Topology.CoordinateSystems.ILinearUnit)unit).MetersPerUnit);
+                else if (unit is ILinearUnit)
+                    csb = new MeterBasedCoordinateSystem(((ILinearUnit)unit).MetersPerUnit, ((ILinearUnit)unit).MetersPerUnit);
             }
             
             if (csb == null)
@@ -136,8 +138,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         public double DistanceInMeters(double x1, double y1, double x2, double y2)
         {
             return DistanceInMeters(
-                new Topology.Geometries.Point(x1, y1),
-                new Topology.Geometries.Point(x2, y2));
+                new GisSharpBlog.NetTopologySuite.Geometries.Point(x1, y1),
+                new GisSharpBlog.NetTopologySuite.Geometries.Point(x2, y2));
         }
 
         /// <summary>

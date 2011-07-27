@@ -20,6 +20,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GeoAPI.CoordinateSystems.Transformations;
+using GeoAPI.CoordinateSystems;
+using ProjNet.CoordinateSystems;
+using ProjNet.CoordinateSystems.Transformations;
 
 namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 {
@@ -46,9 +50,9 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
     /// </summary>
     public class DefaultSimpleTransform : ISimpleTransform
     {
-        private Topology.CoordinateSystems.ICoordinateSystem _source;
-        private Topology.CoordinateSystems.ICoordinateSystem _target;
-        private Topology.CoordinateSystems.Transformations.ICoordinateTransformation _trans;
+        private ICoordinateSystem _source;
+        private ICoordinateSystem _target;
+        private ICoordinateTransformation _trans;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSimpleTransform"/> class.
@@ -57,10 +61,10 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="targetCsWkt">The target cs WKT.</param>
         public DefaultSimpleTransform(string sourceCsWkt, string targetCsWkt)
         {
-            var fact = new Topology.CoordinateSystems.CoordinateSystemFactory();
+            var fact = new CoordinateSystemFactory();
             _source = fact.CreateFromWkt(sourceCsWkt);
             _target = fact.CreateFromWkt(targetCsWkt);
-            var tfact = new Topology.CoordinateSystems.Transformations.CoordinateTransformationFactory();
+            var tfact = new CoordinateTransformationFactory();
             _trans = tfact.CreateFromCoordinateSystems(_source, _target);
         }
 

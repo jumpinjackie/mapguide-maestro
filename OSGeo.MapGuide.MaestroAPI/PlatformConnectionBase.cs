@@ -36,6 +36,7 @@ using OSGeo.MapGuide.ObjectModels.Common;
 using System.Collections.Specialized;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using GeoAPI.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -1565,7 +1566,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 {
                     if (fsr.ReadNext())
                     {
-                        Topology.Geometries.IGeometry geom = fsr["extent"] as Topology.Geometries.IGeometry;
+                        IGeometry geom = fsr["extent"] as IGeometry;
                         if (geom == null)
                         {
                             throw new Exception("No data found in resource: " + resourceID);

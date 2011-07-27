@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using GeoAPI.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI.Feature
 {
@@ -122,7 +123,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             return ((StringValue)_values[name]).Value;
         }
 
-        public Topology.Geometries.IGeometry GetGeometry(string name)
+        public IGeometry GetGeometry(string name)
         {
             return ((GeometryValue)_values[name]).Value;
         }
@@ -187,7 +188,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             return GetString(_ordinalMap[index]);
         }
 
-        public Topology.Geometries.IGeometry GetGeometry(int index)
+        public IGeometry GetGeometry(int index)
         {
             return GetGeometry(_ordinalMap[index]);
         }

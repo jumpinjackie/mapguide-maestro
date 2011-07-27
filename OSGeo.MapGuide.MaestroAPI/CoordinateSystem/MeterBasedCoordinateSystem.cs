@@ -20,8 +20,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Topology.Geometries;
 using System.Drawing;
+using GeoAPI.Geometries;
+using GisSharpBlog.NetTopologySuite.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 {
@@ -50,7 +51,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 
         public override double MetersPerUnitY { get { return UDM_Y; } }
 
-        protected override double CalculateScale(IEnvelope bbox, Size size)
+        protected override double CalculateScale(GeoAPI.Geometries.IEnvelope bbox, Size size)
         {
             double picture_width_in_meters = (size.Width / DPI) / IPM;
             double picture_height_in_meters = (size.Height / DPI) / IPM;
@@ -64,7 +65,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             return Math.Max(width_scale, height_scale);
         }
 
-        protected override Topology.Geometries.IEnvelope AdjustBoundingBox(IEnvelope bbox, double scale, Size size)
+        protected override IEnvelope AdjustBoundingBox(IEnvelope bbox, double scale, Size size)
         {
             double picture_width_in_meters = ((size.Width / DPI) / IPM) * scale; 
             double picture_height_in_meters = ((size.Height / DPI) / IPM) * scale;
@@ -75,7 +76,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             return new Envelope(bbox.Centre.X - (width_extent / 2), bbox.Centre.X + (width_extent / 2), bbox.Centre.Y - (height_extent / 2), bbox.Centre.Y + (height_extent / 2));
         }
 
-        protected override double DistanceInMeters(Topology.Geometries.IPoint p1, Topology.Geometries.IPoint p2)
+        protected override double DistanceInMeters(IPoint p1, IPoint p2)
         {
             double xdist = Math.Abs(p1.X - p2.X);
             double ydist = Math.Abs(p1.Y - p2.Y);

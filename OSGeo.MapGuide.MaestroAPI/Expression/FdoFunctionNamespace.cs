@@ -20,7 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Topology.Geometries;
+using GeoAPI.Geometries;
 
 #pragma warning disable 1591, 0114, 0108
 

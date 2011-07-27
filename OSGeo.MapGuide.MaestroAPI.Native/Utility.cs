@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using GeoAPI.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI.Native
 {
@@ -121,7 +122,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         /// </summary>
         public static Type GeometryType
         {
-            get { return typeof(Topology.Geometries.IGeometry); }
+            get { return typeof(IGeometry); }
         }
 
         /// <summary>
