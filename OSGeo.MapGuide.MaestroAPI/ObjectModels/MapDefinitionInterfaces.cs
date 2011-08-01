@@ -211,6 +211,18 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// <param name="idx"></param>
         /// <param name="layer"></param>
         void InsertLayer(int idx, IMapLayer layer);
+
+        /// <summary>
+        /// Moves a Map Group down the presentation order
+        /// </summary>
+        /// <param name="group"></param>
+        int MoveDownGroup(IMapLayerGroup group);
+
+        /// <summary>
+        /// Moves a Map Group up the presentation order
+        /// </summary>
+        /// <param name="group"></param>
+        int MoveUpGroup(IMapLayerGroup group);
     }
 
     /// <summary>

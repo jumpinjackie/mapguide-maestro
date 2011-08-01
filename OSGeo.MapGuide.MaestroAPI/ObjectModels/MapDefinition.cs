@@ -526,6 +526,58 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
             return -1;
         }
 
+        int IMapDefinition.MoveUpGroup(IMapLayerGroup group)
+        {
+            Check.NotNull(group, "group");
+            var grp = group as MapLayerGroupType;
+            if (grp != null)
+            {
+                var idx = this.MapLayerGroup.IndexOf(grp);
+                if (idx > 0)
+                {
+                    int idst = idx - 1;
+
+                    var src = this.MapLayerGroup[idx];
+                    var dst = this.MapLayerGroup[idst];
+
+                    this.MapLayerGroup[idx] = dst;
+                    this.MapLayerGroup[idst] = src;
+
+                    OnPropertyChanged("MapLayerGroup");
+
+                    return idst;
+                }
+            }
+
+            return -1;
+        }
+
+        int IMapDefinition.MoveDownGroup(IMapLayerGroup group)
+        {
+            Check.NotNull(group, "group");
+            var grp = group as MapLayerGroupType;
+            if (grp != null)
+            {
+                var idx = this.MapLayerGroup.IndexOf(grp);
+                if (idx < this.MapLayerGroup.Count - 1)
+                {
+                    int idst = idx + 1;
+
+                    var src = this.MapLayerGroup[idx];
+                    var dst = this.MapLayerGroup[idst];
+
+                    this.MapLayerGroup[idx] = dst;
+                    this.MapLayerGroup[idst] = src;
+
+                    OnPropertyChanged("MapLayerGroup");
+
+                    return idst;
+                }
+            }
+
+            return -1;
+        }
+
         int IMapDefinition.GetIndex(IMapLayerGroup group)
         {
             Check.NotNull(group, "group");

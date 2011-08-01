@@ -41,6 +41,9 @@
             this.btnGRPAddLayer = new System.Windows.Forms.ToolStripButton();
             this.btnGRPRemoveLayer = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnMoveGroupUp = new System.Windows.Forms.ToolStripButton();
+            this.btnMoveGroupDown = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.btnConvertLayerGroupToBaseGroup = new System.Windows.Forms.ToolStripButton();
             this.TAB_DRAWING_ORDER = new System.Windows.Forms.TabPage();
             this.trvLayerDrawingOrder = new Aga.Controls.Tree.TreeViewAdv();
@@ -148,6 +151,9 @@
             this.btnGRPAddLayer,
             this.btnGRPRemoveLayer,
             this.toolStripSeparator3,
+            this.btnMoveGroupUp,
+            this.btnMoveGroupDown,
+            this.toolStripSeparator7,
             this.btnConvertLayerGroupToBaseGroup});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
@@ -193,6 +199,27 @@
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            // 
+            // btnMoveGroupUp
+            // 
+            this.btnMoveGroupUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnMoveGroupUp.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
+            resources.ApplyResources(this.btnMoveGroupUp, "btnMoveGroupUp");
+            this.btnMoveGroupUp.Name = "btnMoveGroupUp";
+            this.btnMoveGroupUp.Click += new System.EventHandler(this.btnMoveGroupUp_Click);
+            // 
+            // btnMoveGroupDown
+            // 
+            this.btnMoveGroupDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnMoveGroupDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
+            resources.ApplyResources(this.btnMoveGroupDown, "btnMoveGroupDown");
+            this.btnMoveGroupDown.Name = "btnMoveGroupDown";
+            this.btnMoveGroupDown.Click += new System.EventHandler(this.btnMoveGroupDown_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
             // 
             // btnConvertLayerGroupToBaseGroup
             // 
@@ -446,9 +473,8 @@
             // MapLayersSectionCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "Layers";
-            this.Name = "MapLayersSectionCtrl";
             resources.ApplyResources(this, "$this");
+            this.Name = "MapLayersSectionCtrl";
             this.contentPanel.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.TAB_GROUP.ResumeLayout(false);
@@ -510,5 +536,8 @@
         private Aga.Controls.Tree.TreeViewAdv trvBaseLayers;
         private Aga.Controls.Tree.NodeControls.NodeIcon nodeIcon1;
         private Aga.Controls.Tree.NodeControls.NodeTextBox nodeTextBox1;
+        private System.Windows.Forms.ToolStripButton btnMoveGroupUp;
+        private System.Windows.Forms.ToolStripButton btnMoveGroupDown;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
     }
 }

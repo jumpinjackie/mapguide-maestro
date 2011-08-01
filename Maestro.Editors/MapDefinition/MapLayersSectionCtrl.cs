@@ -412,6 +412,13 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
+        private void RestoreGroupSelection(GroupItem item)
+        {
+            //The node tag will probably be different, but the wrapped
+            //instance is what we're checking for
+            RestoreSelection<GroupItem>(trvLayersGroup, (tag) => { return tag.Tag == item.Tag; });
+        }
+
         private void RestoreBaseLayerSelection(BaseLayerItem item)
         {
             //The node tag will probably be different, but the wrapped
@@ -635,6 +642,34 @@ namespace Maestro.Editors.MapDefinition
                 _tiledLayerModel.Invalidate(path);
 
                 RestoreBaseLayerSelection(layer);
+            }
+        }
+
+        private void btnMoveGroupUp_Click(object sender, EventArgs e)
+        {
+            var group = GetSelectedLayerGroupItem() as GroupItem;
+            if (group != null)
+            {
+                var mdf = group.Tag.Parent;
+                mdf.MoveUpGroup(group.Tag);
+
+                _grpLayerModel.Invalidate();
+
+                RestoreGroupSelection(group);
+            }
+        }
+
+        private void btnMoveGroupDown_Click(object sender, EventArgs e)
+        {
+            var group = GetSelectedLayerGroupItem() as GroupItem;
+            if (group != null)
+            {
+                var mdf = group.Tag.Parent;
+                mdf.MoveDownGroup(group.Tag);
+
+                _grpLayerModel.Invalidate();
+
+                RestoreGroupSelection(group);
             }
         }
 
