@@ -57,8 +57,12 @@ namespace Maestro.Editors.Fusion.WidgetEditors
         {
             using (var picker = new ResourcePicker(_edsvc.ResourceService, ResourcePickerMode.OpenFolder))
             {
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
+                    LastSelectedFolder.FolderId = picker.SelectedFolder;
                     txtFolder.Text = picker.ResourceID;
                 }
             }

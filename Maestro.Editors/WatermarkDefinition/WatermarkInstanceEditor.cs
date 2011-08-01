@@ -127,8 +127,12 @@ namespace Maestro.Editors.WatermarkDefinition
         {
             using (var picker = new ResourcePicker(_resSvc, ResourceTypes.WatermarkDefinition, ResourcePickerMode.OpenResource))
             {
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
+                    LastSelectedFolder.FolderId = picker.SelectedFolder;
                     txtResourceId.Text = picker.ResourceID;
                 }
             }

@@ -606,6 +606,7 @@
     </Compile>
     <Compile Include="IEditorBindable.cs" />
     <Compile Include="IEditorService.cs" />
+    <Compile Include="LastSelectedFolder.cs" />
     <Compile Include="LayerDefinition\DrawingLayerEditorCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>

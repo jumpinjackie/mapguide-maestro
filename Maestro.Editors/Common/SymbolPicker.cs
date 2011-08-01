@@ -253,11 +253,14 @@ namespace Maestro.Editors.Common
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_conn.ResourceService, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_conn.ResourceService, ResourceTypes.SymbolLibrary, ResourcePickerMode.OpenResource))
             {
-                picker.Filter = ResourceTypes.SymbolLibrary;
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
+                    LastSelectedFolder.FolderId = picker.SelectedFolder;
                     LoadSymbols(picker.ResourceID);
                     txtSymbolLibrary.Text = picker.ResourceID;
                 }

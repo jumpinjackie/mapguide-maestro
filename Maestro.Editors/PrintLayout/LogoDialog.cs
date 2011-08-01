@@ -119,8 +119,12 @@ namespace Maestro.Editors.PrintLayout
         {
             using (var picker = new ResourcePicker(_conn.ResourceService, ResourceTypes.SymbolLibrary, ResourcePickerMode.OpenResource))
             {
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
+                    LastSelectedFolder.FolderId = picker.SelectedFolder;
                     this.SymbolLibraryID = picker.ResourceID;
                     this.SymbolName = string.Empty;
                 }

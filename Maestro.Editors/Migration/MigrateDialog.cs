@@ -125,8 +125,12 @@ namespace Maestro.Editors.Migration
         {
             using (var picker = new ResourcePicker(_source.ResourceService, ResourcePickerMode.OpenResource))
             {
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
+                    LastSelectedFolder.FolderId = picker.SelectedFolder;
                     txtResourceId.Text = picker.ResourceID;
                 }
             }

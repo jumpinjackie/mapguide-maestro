@@ -60,8 +60,12 @@ namespace Maestro.Editors.WatermarkDefinition
         {
             using (var picker = new ResourcePicker(_resSvc, ResourceTypes.WatermarkDefinition, ResourcePickerMode.OpenResource))
             {
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
+                    LastSelectedFolder.FolderId = picker.SelectedFolder;
                     var wdf = (IWatermarkDefinition)_resSvc.GetResource(picker.ResourceID);
                     var wm = wdf.CreateInstance();
                     var diag = new WatermarkInstanceEditorDialog(_resSvc, wm);

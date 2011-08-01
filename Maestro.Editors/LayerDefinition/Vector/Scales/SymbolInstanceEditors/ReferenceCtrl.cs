@@ -51,8 +51,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales.SymbolInstanceEditors
                                                    ResourceTypes.SymbolDefinition, 
                                                    ResourcePickerMode.OpenResource))
             {
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
+                    LastSelectedFolder.FolderId = picker.SelectedFolder;
                     txtResourceId.Text = picker.ResourceID;
                 }
             }

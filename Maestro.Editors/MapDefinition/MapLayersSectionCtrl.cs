@@ -223,8 +223,12 @@ namespace Maestro.Editors.MapDefinition
         {
             using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.LayerDefinition, ResourcePickerMode.OpenResource))
             {
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
+                    LastSelectedFolder.FolderId = picker.SelectedFolder;
                     string layerId = picker.ResourceID;
                     var selGroup = GetSelectedLayerGroupItem() as GroupItem;
                     CreateLayer(layerId, selGroup == null ? null : selGroup.Tag);
@@ -294,8 +298,12 @@ namespace Maestro.Editors.MapDefinition
         {
             using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.LayerDefinition, ResourcePickerMode.OpenResource))
             {
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
+                    LastSelectedFolder.FolderId = picker.SelectedFolder;
                     string layerId = picker.ResourceID;
                     var selGroup = GetSelectedDrawOrderItem() as GroupItem;
                     CreateLayer(layerId, selGroup != null ? selGroup.Tag : null);
@@ -529,8 +537,12 @@ namespace Maestro.Editors.MapDefinition
         {
             using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.LayerDefinition, ResourcePickerMode.OpenResource))
             {
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
+                    LastSelectedFolder.FolderId = picker.SelectedFolder;
                     _map.InitBaseMap();
                     string layerId = picker.ResourceID;
                     IBaseMapGroup grp = null;

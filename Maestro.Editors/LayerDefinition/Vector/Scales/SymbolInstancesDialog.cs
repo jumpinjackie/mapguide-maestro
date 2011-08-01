@@ -67,8 +67,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             splitContainer1.Panel2.Controls.Clear();
             using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.SymbolDefinition, ResourcePickerMode.OpenResource))
             {
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
+                    LastSelectedFolder.FolderId = picker.SelectedFolder;
                     var symRef = _comp.CreateSymbolReference(picker.ResourceID);
                     AddInstance(symRef, true);
                 }

@@ -62,7 +62,14 @@ namespace Maestro.Editors.SymbolDefinition
                                                    ResourceTypes.SymbolDefinition,
                                                    ResourcePickerMode.OpenResource))
             {
-                txtResourceId.Text = picker.ResourceID;
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
+                if (picker.ShowDialog() == DialogResult.OK)
+                {
+                    LastSelectedFolder.FolderId = picker.ResourceID;
+                    txtResourceId.Text = picker.ResourceID;
+                }
             }
         }
 

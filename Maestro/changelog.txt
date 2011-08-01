@@ -5,10 +5,13 @@
     - Fix broken support for Layer Definitions using the 2.3.0 schema
     - Enabled previews for Watermark Definition editor
  - Show resources in sorted order in the Resource Picker
+ - Map Definition Editor now supports re-arranging the logical order of Map Groups
+ - Resource Picker now remembers last selected folder for most resource selection operations
  - Productivity enhancements
     - New name for Rename dialog defaults to current name and field is focused
     - New Setup Standard Folder Structure command 
  - API: TF.net dependency replaced with NetToplogySuite. References and namespaces need to be updated in consuming applications
+ - Fix: Changed Migrate Resources to Copy/Move resources command for multiple resource selection context menu
  - Fix: When renaming a group in the Map Definition Editor, layers belonging to it didn't have their references updated
  - Fix: Exception when adding a new Image to the graphics collection of a Simple Symbol Definition in editor
  - Fix: Exception when deleting all finite scale ranges in Map Defintion Editor

@@ -120,8 +120,12 @@ namespace Maestro.Editors.SymbolDefinition
                                                    ResourceTypes.SymbolDefinition,
                                                    ResourcePickerMode.OpenResource))
             {
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
+                    LastSelectedFolder.FolderId = picker.SelectedFolder;
                     var symRef = _compSym.CreateSymbolReference(picker.ResourceID);
                     AddSymbolReference(symRef);
                 }

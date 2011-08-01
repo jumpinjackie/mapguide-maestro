@@ -86,8 +86,12 @@ namespace Maestro.Editors.MapDefinition
         {
             using (var picker = new ResourcePicker(_resSvc, ResourceTypes.LayerDefinition, ResourcePickerMode.OpenResource))
             {
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
+                    LastSelectedFolder.FolderId = picker.SelectedFolder;
                     txtResourceId.Text = picker.ResourceID;
                 }
             }

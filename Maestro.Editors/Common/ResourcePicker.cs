@@ -109,9 +109,10 @@ namespace Maestro.Editors.Generic
         {
             if (string.IsNullOrEmpty(folderId))
                 return;
-
             if (!ResourceIdentifier.IsFolderResource(folderId))
                 throw new ArgumentException(string.Format(Properties.Resources.NotAFolder, folderId));
+            //if (!_resSvc.ResourceExists(folderId))
+            //    return;
             this.ActiveControl = trvFolders;
             _model.NavigateTo(folderId);
             this.SelectedFolder = folderId;

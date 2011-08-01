@@ -101,12 +101,18 @@ namespace Maestro.Editors.LayerDefinition.Raster
 
         private void btnBrowseFeatureSource_Click(object sender, EventArgs e)
         {
-            var picker = new ResourcePicker(_edsvc.ResourceService, ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource);
-            if (picker.ShowDialog() == DialogResult.OK)
+            using (var picker = new ResourcePicker(_edsvc.ResourceService, ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource))
             {
-                txtFeatureSource.Text = picker.ResourceID;
-                //Invalidate
-                _cachedFs = null;
+                if (LastSelectedFolder.IsSet)
+                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
+
+                if (picker.ShowDialog() == DialogResult.OK)
+                {
+                    LastSelectedFolder.FolderId = picker.SelectedFolder;
+                    txtFeatureSource.Text = picker.ResourceID;
+                    //Invalidate
+                    _cachedFs = null;
+                }
             }
         }
 
