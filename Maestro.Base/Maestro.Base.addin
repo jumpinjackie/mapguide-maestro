@@ -599,9 +599,10 @@
                           class="Maestro.Base.Commands.CutCommand" />
             </Condition>
             <MenuItem type="Separator" />
-            <MenuItem id="Migrate"
-                      label="${res:SiteExplorer_MigrateResources}"
-                      class="Maestro.Base.Commands.SiteExplorer.MigrateSelectedResourcesCommand" />
+            <MenuItem id="CopyMoveMultipleToServer"
+                      icon="server__arrow"
+                      label="${res:SiteExplorer_CopyMoveToServer}"
+                      class="Maestro.Base.Commands.SiteExplorer.CopyMoveToAnotherServerCommand" />
             <MenuItem type="Separator" />
             <MenuItem id="Validate"
                       icon="tick"
