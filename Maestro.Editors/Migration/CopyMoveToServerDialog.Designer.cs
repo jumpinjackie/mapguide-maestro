@@ -153,6 +153,7 @@
             resources.ApplyResources(this.chkOverwrite, "chkOverwrite");
             this.chkOverwrite.Name = "chkOverwrite";
             this.chkOverwrite.UseVisualStyleBackColor = true;
+            this.chkOverwrite.CheckedChanged += new System.EventHandler(this.chkOverwrite_CheckedChanged);
             // 
             // cmbAction
             // 
@@ -160,6 +161,7 @@
             this.cmbAction.FormattingEnabled = true;
             resources.ApplyResources(this.cmbAction, "cmbAction");
             this.cmbAction.Name = "cmbAction";
+            this.cmbAction.SelectedIndexChanged += new System.EventHandler(this.cmbAction_SelectedIndexChanged);
             // 
             // label2
             // 

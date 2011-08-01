@@ -112,8 +112,13 @@ namespace Maestro.Editors.Generic
 
             if (!ResourceIdentifier.IsFolderResource(folderId))
                 throw new ArgumentException(string.Format(Properties.Resources.NotAFolder, folderId));
+            this.ActiveControl = trvFolders;
             _model.NavigateTo(folderId);
+            this.SelectedFolder = folderId;
+            
         }
+
+        public string SelectedFolder { get; private set; }
 
         private ResourcePickerMode _mode = ResourcePickerMode.OpenResource;
 
@@ -230,6 +235,7 @@ namespace Maestro.Editors.Generic
         private void UpdateResourceId()
         {
             btnOK.Enabled = false;
+            this.SelectedFolder = txtFolder.Text;
             if (this.SelectFoldersOnly)
             {
                 txtResourceId.Text = txtFolder.Text;

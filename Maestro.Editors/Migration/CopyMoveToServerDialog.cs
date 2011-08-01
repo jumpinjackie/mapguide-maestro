@@ -53,6 +53,9 @@ namespace Maestro.Editors.Migration
         {
             _source = source;
             _target = target;
+
+            cmbAction.SelectedItem = _lastAction;
+            chkOverwrite.Checked = _overwrite;
         }
 
         private void lstResources_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,14 +63,25 @@ namespace Maestro.Editors.Migration
             EvaluateCommandState();
         }
 
+        //Used to persist state between dialog invocations
+        static string _lastSourceFolder;
+        static string _lastTargetFolder;
+        static MigrationAction _lastAction;
+        static bool _overwrite = false;
+
         private void btnAddResource_Click(object sender, EventArgs e)
         {
             using (var picker = new ResourcePicker(_source.ResourceService, ResourcePickerMode.OpenResource))
             {
+                if (!string.IsNullOrEmpty(_lastSourceFolder))
+                    picker.SetStartingPoint(_lastSourceFolder);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
                     if (!lstResources.Items.Contains(picker.ResourceID))
                         lstResources.Items.Add(picker.ResourceID);
+
+                    _lastSourceFolder = picker.SelectedFolder;
 
                     EvaluateCommandState();
                 }
@@ -78,16 +92,22 @@ namespace Maestro.Editors.Migration
         {
             using (var picker = new ResourcePicker(_source.ResourceService, ResourcePickerMode.OpenFolder))
             {
+                if (!string.IsNullOrEmpty(_lastSourceFolder))
+                    picker.SetStartingPoint(_lastSourceFolder);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
                     var folderId = picker.ResourceID;
-                    var list = _target.ResourceService.GetRepositoryResources(folderId);
+                    var list = _source.ResourceService.GetRepositoryResources(folderId);
 
                     foreach (var item in list.Children)
                     {
                         if (!item.IsFolder && !lstResources.Items.Contains(item.ResourceId))
                             lstResources.Items.Add(item.ResourceId);
                     }
+
+                    _lastSourceFolder = picker.SelectedFolder;
+
                     EvaluateCommandState();
                 }
             }
@@ -176,8 +196,12 @@ namespace Maestro.Editors.Migration
         {
             using (var picker = new ResourcePicker(_target.ResourceService, ResourcePickerMode.OpenFolder))
             {
+                if (!string.IsNullOrEmpty(_lastTargetFolder))
+                    picker.SetStartingPoint(_lastTargetFolder);
+
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
+                    _lastTargetFolder = picker.SelectedFolder;
                     txtTargetFolder.Text = picker.ResourceID;
                     EvaluateCommandState();
                 }
@@ -188,6 +212,16 @@ namespace Maestro.Editors.Migration
         {
             btnRemove.Enabled = (lstResources.SelectedItem != null) || (lstResources.SelectedItems != null && lstResources.SelectedItems.Count > 0);
             btnOK.Enabled = (lstResources.Items.Count > 0) && !string.IsNullOrEmpty(txtTargetFolder.Text);
+        }
+
+        private void cmbAction_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _lastAction = (MigrationAction)cmbAction.SelectedItem;
+        }
+
+        private void chkOverwrite_CheckedChanged(object sender, EventArgs e)
+        {
+            _overwrite = chkOverwrite.Checked;
         }
     }
 
