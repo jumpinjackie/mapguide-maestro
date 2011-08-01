@@ -216,13 +216,12 @@ namespace Maestro.Editors.Generic
 
         private void txtXmlContent_KeyUp(object sender, KeyEventArgs e)
         {
-            /*
             if (e.KeyData == (Keys.Control | Keys.A))
             {
                 txtXmlContent.SelectAll();
                 e.SuppressKeyPress = true;
                 e.Handled = true;
-            }
+            }/*
             else if (e.KeyData == (Keys.Control | Keys.C))
             {
                 txtXmlContent.Copy();
