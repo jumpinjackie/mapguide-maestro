@@ -79,6 +79,10 @@ namespace Maestro.Base.Editor
                 Bind(_svc);
                 //Do dirty state check
                 OnDirtyStateChanged(this, EventArgs.Empty);
+
+                //This is to ensure that save works when returning from
+                //XML edit mode
+                this.Focus();
             }
         }
 
