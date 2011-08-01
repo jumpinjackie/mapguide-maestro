@@ -59,6 +59,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                         LoggingService.Info("Created Folder: " + fid); //LOCALIZEME
                     }
                 }
+                exp.RefreshModel(current);
                 exp.ExpandNode(current);
             }
         }
