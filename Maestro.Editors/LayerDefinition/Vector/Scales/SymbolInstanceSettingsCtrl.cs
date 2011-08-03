@@ -33,6 +33,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+    using Maestro.Editors.SymbolDefinition;
 
     internal partial class SymbolInstanceSettingsCtrl : UserControl
     {
@@ -88,9 +89,21 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
                     });
                 }
             }
+            else if (_symRef.Reference.Type == SymbolInstanceType.Inline)
+            {
+                var inline = (ISymbolInstanceReferenceInline)_symRef.Reference;
+                foreach (var p in inline.SymbolDefinition.GetParameters())
+                {
+                    var param = p;
+                    var btn = btnAdd.DropDown.Items.Add(p.Name, null, (s, e) =>
+                    {
+                        AddParameterOverride(inline.SymbolDefinition, param);
+                    });
+                }
+            }
             else
             {
-                throw new NotImplementedException();
+                throw new Exception();
             }
         }
 
@@ -125,26 +138,27 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
         private Control CreateEditor(ISymbolInstance symRef, IResourceService resSvc)
         {
             Check.NotNull(symRef, "symRef");
-            var ed = new SymbolInstanceSettingsCtrl();
             if (symRef.Reference.Type == SymbolInstanceType.Reference)
             {
                 return new ReferenceCtrl((ISymbolInstanceReferenceLibrary)symRef.Reference, resSvc);
             }
             else
             {
-                throw new NotImplementedException();
-
                 var inline = (ISymbolInstanceReferenceInline)symRef.Reference;
+                var symEditor = new SymbolEditorService(_edSvc, inline.SymbolDefinition);
                 if (inline.SymbolDefinition.Type == SymbolDefinitionType.Simple)
                 {
-
+                    var sed = new SimpleSymbolDefinitionEditorCtrl();
+                    sed.Bind(symEditor);
+                    return sed;
                 }
                 else
                 {
-
+                    var sed = new CompoundSymbolDefinitionEditorCtrl();
+                    sed.Bind(symEditor);
+                    return sed;
                 }
             }
-            return ed;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

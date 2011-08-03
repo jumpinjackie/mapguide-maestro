@@ -1661,6 +1661,21 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
             return this.VectorScaleRange[index];
         }
+
+        [XmlIgnore]
+        Version IVectorLayerDefinition.SymbolDefinitionVersion
+        {
+            get
+            {
+#if LDF_110
+                return new Version(1, 0, 0);
+#elif LDF_120 || LDF_230
+                return new Version(1, 1, 0);
+#else
+                return null;
+#endif          
+            }
+        }
     }
     #region Composite Symbolization
 #if !LDF_100
@@ -1718,6 +1733,39 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 {
                     Override = new BindingList<Override>()
                 },
+            };
+        }
+
+
+        public ISymbolInstance CreateInlineSimpleSymbol(ISimpleSymbolDefinition symDef)
+        {
+            return new SymbolInstance()
+            {
+#if LDF_110
+                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition)symDef,
+#else
+                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.SimpleSymbolDefinition)symDef,
+#endif
+                ParameterOverrides = new ParameterOverrides()
+                {
+                    Override = new BindingList<Override>()
+                }
+            };
+        }
+
+        public ISymbolInstance CreateInlineCompoundSymbol(ICompoundSymbolDefinition compDef)
+        {
+            return new SymbolInstance()
+            {
+#if LDF_110
+                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition)compDef,
+#else
+                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.CompoundSymbolDefinition)compDef,
+#endif
+                ParameterOverrides = new ParameterOverrides()
+                {
+                    Override = new BindingList<Override>()
+                }
             };
         }
     }

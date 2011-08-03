@@ -428,9 +428,9 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0 {
         private static System.Xml.Serialization.XmlSerializer serializer;
         
         public Image() {
-            /*
             this.sizeXField = "1.0";
             this.sizeYField = "1.0";
+            /*
             this.sizeScalableField = "true";
             this.angleField = "0.0";
             this.positionXField = "0.0";

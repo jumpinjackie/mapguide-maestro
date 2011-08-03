@@ -25,6 +25,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using System.Drawing;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using System.IO;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -58,6 +59,38 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
         public static Stream Serialize(IResource res)
         {
+            var ldf = (ILayerDefinition)res;
+            var vl = ldf.SubLayer as IVectorLayerDefinition;
+            if (vl != null)
+            {
+                foreach (var vsr in vl.VectorScaleRange)
+                {
+                    var vsr2 = vsr as IVectorScaleRange2;
+                    if (vsr2 != null)
+                    {
+                        var cts = vsr2.CompositeStyle;
+                        if (cts != null)
+                        {
+                            foreach (var crs in cts.CompositeRule)
+                            {
+                                var csym = crs.CompositeSymbolization;
+                                if (csym != null)
+                                {
+                                    foreach (var si in csym.SymbolInstance)
+                                    {
+                                        if (si.Reference.Type == OSGeo.MapGuide.ObjectModels.SymbolDefinition.SymbolInstanceType.Inline)
+                                        {
+                                            var symBase = ((ISymbolInstanceReferenceInline)si.Reference).SymbolDefinition;
+                                            symBase.RemoveSchemaAttributes();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             return res.SerializeToStream();
         }
     }

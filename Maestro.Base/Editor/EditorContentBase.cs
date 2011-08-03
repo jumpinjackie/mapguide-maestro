@@ -92,7 +92,10 @@ namespace Maestro.Base.Editor
         /// <returns></returns>
         public virtual string GetXmlContent()
         {
-            return this.Resource.Serialize();
+            using (var sr = new System.IO.StreamReader(ResourceTypeRegistry.Serialize(this.Resource)))
+            {
+                return sr.ReadToEnd();
+            }
         }
 
         /// <summary>
@@ -257,7 +260,7 @@ namespace Maestro.Base.Editor
         {
             //Save the current resource to another session copy
             string resId = "Session:" + this.EditorService.SessionID + "//" + Guid.NewGuid() + "." + this.Resource.ResourceType.ToString();
-            this.EditorService.ResourceService.SetResourceXmlData(resId, this.Resource.SerializeToStream());
+            this.EditorService.ResourceService.SetResourceXmlData(resId, ResourceTypeRegistry.Serialize(this.Resource));
 
             //Copy any resource data
             var previewCopy = this.EditorService.ResourceService.GetResource(resId);

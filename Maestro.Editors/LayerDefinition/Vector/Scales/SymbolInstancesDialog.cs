@@ -31,6 +31,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using Maestro.Editors.LayerDefinition.Vector.Scales.SymbolInstanceEditors;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
@@ -62,6 +63,22 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             this.Close();
         }
 
+        private void AddInstance(ISymbolInstance symRef, bool add)
+        {
+            var li = new ListViewItem();
+            li.ImageIndex = (symRef.Reference.Type == SymbolInstanceType.Reference) ? 0 : 1;
+            li.Tag = symRef;
+            if (li.ImageIndex == 0)
+                li.Text = ((ISymbolInstanceReferenceLibrary)symRef.Reference).ResourceId;
+            else
+                li.Text = Properties.Resources.InlineSymbolDefinition;
+
+            lstInstances.Items.Add(li);
+            if (add)
+                _comp.AddSymbolInstance(symRef);
+            li.Selected = (lstInstances.Items.Count == 1);
+        }
+
         private void referenceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             splitContainer1.Panel2.Controls.Clear();
@@ -79,30 +96,34 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
         }
 
-        private void AddInstance(ISymbolInstance symRef, bool add)
-        {
-            var li = new ListViewItem();
-            li.ImageIndex = (symRef.Reference.Type == SymbolInstanceType.Reference) ? 0 : 1;
-            li.Tag = symRef;
-            if (li.ImageIndex == 0)
-                li.Text = ((ISymbolInstanceReferenceLibrary)symRef.Reference).ResourceId;
-            else
-                li.Text = Properties.Resources.InlineSymbolDefinition;
-
-            lstInstances.Items.Add(li);
-            if (add)
-                _comp.AddSymbolInstance(symRef);
-            li.Selected = (lstInstances.Items.Count == 1);
-        }
-
         private void inlineSimpleSymbolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var res = (ILayerDefinition)_edSvc.GetEditedResource();
+            var vl = (IVectorLayerDefinition)res.SubLayer;
+            if (vl.SymbolDefinitionVersion == null)
+                throw new InvalidOperationException("This Layer Definition version does not support composite symbolization");
+            var ssym = ObjectFactory.CreateSimpleSymbol(_edSvc.GetEditedResource().CurrentConnection, 
+                                                        vl.SymbolDefinitionVersion, 
+                                                        "InlineSimpleSymbol", 
+                                                        "Inline Simple Symbol");
+
+            var instance = _comp.CreateInlineSimpleSymbol(ssym);
+            AddInstance(instance, true);
         }
 
         private void inlineCompoundSymbolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var res = (ILayerDefinition)_edSvc.GetEditedResource();
+            var vl = (IVectorLayerDefinition)res.SubLayer;
+            if (vl.SymbolDefinitionVersion == null)
+                throw new InvalidOperationException("This Layer Definition version does not support composite symbolization");
+            var csym = ObjectFactory.CreateCompoundSymbol(_edSvc.GetEditedResource().CurrentConnection,
+                                                          vl.SymbolDefinitionVersion,
+                                                          "InlineCompoundSymbol",
+                                                          "Inline Compound Symbol");
+
+            var instance = _comp.CreateInlineCompoundSymbol(csym);
+            AddInstance(instance, true);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

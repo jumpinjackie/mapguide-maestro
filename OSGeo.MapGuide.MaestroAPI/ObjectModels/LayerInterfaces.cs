@@ -479,6 +479,12 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="pair"></param>
         /// <returns></returns>
         int MoveDown(INameStringPair pair);
+
+        /// <summary>
+        /// Gets the supported symbol definition version to use for composite symbolization.
+        /// If the Layer Definition does not support composite symbolization, null is returned
+        /// </summary>
+        Version SymbolDefinitionVersion { get; }
     }
 
     /// <summary>
@@ -1674,6 +1680,20 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="resourceId"></param>
         /// <returns></returns>
         ISymbolInstance CreateSymbolReference(string resourceId);
+
+        /// <summary>
+        /// Creates an inline simple symbol instance
+        /// </summary>
+        /// <param name="symDef"></param>
+        /// <returns></returns>
+        ISymbolInstance CreateInlineSimpleSymbol(ISimpleSymbolDefinition symDef);
+
+        /// <summary>
+        /// Creates an inline compound symbol instance
+        /// </summary>
+        /// <param name="compDef"></param>
+        /// <returns></returns>
+        ISymbolInstance CreateInlineCompoundSymbol(ICompoundSymbolDefinition compDef);
     }
 
     /// <summary>
