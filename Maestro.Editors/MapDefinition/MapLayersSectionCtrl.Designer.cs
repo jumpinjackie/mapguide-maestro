@@ -169,8 +169,8 @@
             // btnRemoveGroup
             // 
             this.btnRemoveGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRemoveGroup.Image = global::Maestro.Editors.Properties.Resources.folder__minus;
             resources.ApplyResources(this.btnRemoveGroup, "btnRemoveGroup");
+            this.btnRemoveGroup.Image = global::Maestro.Editors.Properties.Resources.folder__minus;
             this.btnRemoveGroup.Name = "btnRemoveGroup";
             this.btnRemoveGroup.Click += new System.EventHandler(this.btnRemoveGroup_Click);
             // 
@@ -190,8 +190,8 @@
             // btnGRPRemoveLayer
             // 
             this.btnGRPRemoveLayer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnGRPRemoveLayer.Image = global::Maestro.Editors.Properties.Resources.layer__minus;
             resources.ApplyResources(this.btnGRPRemoveLayer, "btnGRPRemoveLayer");
+            this.btnGRPRemoveLayer.Image = global::Maestro.Editors.Properties.Resources.layer__minus;
             this.btnGRPRemoveLayer.Name = "btnGRPRemoveLayer";
             this.btnGRPRemoveLayer.Click += new System.EventHandler(this.btnGRPRemoveLayer_Click);
             // 
@@ -203,16 +203,16 @@
             // btnMoveGroupUp
             // 
             this.btnMoveGroupUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnMoveGroupUp.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
             resources.ApplyResources(this.btnMoveGroupUp, "btnMoveGroupUp");
+            this.btnMoveGroupUp.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
             this.btnMoveGroupUp.Name = "btnMoveGroupUp";
             this.btnMoveGroupUp.Click += new System.EventHandler(this.btnMoveGroupUp_Click);
             // 
             // btnMoveGroupDown
             // 
             this.btnMoveGroupDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnMoveGroupDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
             resources.ApplyResources(this.btnMoveGroupDown, "btnMoveGroupDown");
+            this.btnMoveGroupDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
             this.btnMoveGroupDown.Name = "btnMoveGroupDown";
             this.btnMoveGroupDown.Click += new System.EventHandler(this.btnMoveGroupDown_Click);
             // 
@@ -224,8 +224,8 @@
             // btnConvertLayerGroupToBaseGroup
             // 
             this.btnConvertLayerGroupToBaseGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnConvertLayerGroupToBaseGroup.Image = global::Maestro.Editors.Properties.Resources.map__arrow;
             resources.ApplyResources(this.btnConvertLayerGroupToBaseGroup, "btnConvertLayerGroupToBaseGroup");
+            this.btnConvertLayerGroupToBaseGroup.Image = global::Maestro.Editors.Properties.Resources.map__arrow;
             this.btnConvertLayerGroupToBaseGroup.Name = "btnConvertLayerGroupToBaseGroup";
             this.btnConvertLayerGroupToBaseGroup.Click += new System.EventHandler(this.btnConvertLayerGroupToBaseGroup_Click);
             // 
@@ -297,8 +297,8 @@
             // btnDLRemoveLayer
             // 
             this.btnDLRemoveLayer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDLRemoveLayer.Image = global::Maestro.Editors.Properties.Resources.layer__minus;
             resources.ApplyResources(this.btnDLRemoveLayer, "btnDLRemoveLayer");
+            this.btnDLRemoveLayer.Image = global::Maestro.Editors.Properties.Resources.layer__minus;
             this.btnDLRemoveLayer.Name = "btnDLRemoveLayer";
             this.btnDLRemoveLayer.Click += new System.EventHandler(this.btnDLRemoveLayer_Click);
             // 
@@ -310,16 +310,16 @@
             // btnDLMoveLayerUp
             // 
             this.btnDLMoveLayerUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDLMoveLayerUp.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
             resources.ApplyResources(this.btnDLMoveLayerUp, "btnDLMoveLayerUp");
+            this.btnDLMoveLayerUp.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
             this.btnDLMoveLayerUp.Name = "btnDLMoveLayerUp";
             this.btnDLMoveLayerUp.Click += new System.EventHandler(this.btnDLMoveLayerUp_Click);
             // 
             // btnDLMoveLayerDown
             // 
             this.btnDLMoveLayerDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDLMoveLayerDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
             resources.ApplyResources(this.btnDLMoveLayerDown, "btnDLMoveLayerDown");
+            this.btnDLMoveLayerDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
             this.btnDLMoveLayerDown.Name = "btnDLMoveLayerDown";
             this.btnDLMoveLayerDown.Click += new System.EventHandler(this.btnDLMoveLayerDown_Click);
             // 
@@ -331,16 +331,16 @@
             // btnDLMoveLayerTop
             // 
             this.btnDLMoveLayerTop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDLMoveLayerTop.Image = global::Maestro.Editors.Properties.Resources.layers_stack_arrange;
             resources.ApplyResources(this.btnDLMoveLayerTop, "btnDLMoveLayerTop");
+            this.btnDLMoveLayerTop.Image = global::Maestro.Editors.Properties.Resources.layers_stack_arrange;
             this.btnDLMoveLayerTop.Name = "btnDLMoveLayerTop";
             this.btnDLMoveLayerTop.Click += new System.EventHandler(this.btnDLMoveLayerTop_Click);
             // 
             // btnDLMoveLayerBottom
             // 
             this.btnDLMoveLayerBottom.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDLMoveLayerBottom.Image = global::Maestro.Editors.Properties.Resources.layers_stack_arrange_back;
             resources.ApplyResources(this.btnDLMoveLayerBottom, "btnDLMoveLayerBottom");
+            this.btnDLMoveLayerBottom.Image = global::Maestro.Editors.Properties.Resources.layers_stack_arrange_back;
             this.btnDLMoveLayerBottom.Name = "btnDLMoveLayerBottom";
             this.btnDLMoveLayerBottom.Click += new System.EventHandler(this.btnDLMoveLayerBottom_Click);
             // 
@@ -412,8 +412,8 @@
             // btnRemoveBaseLayerGroup
             // 
             this.btnRemoveBaseLayerGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRemoveBaseLayerGroup.Image = global::Maestro.Editors.Properties.Resources.folder__minus;
             resources.ApplyResources(this.btnRemoveBaseLayerGroup, "btnRemoveBaseLayerGroup");
+            this.btnRemoveBaseLayerGroup.Image = global::Maestro.Editors.Properties.Resources.folder__minus;
             this.btnRemoveBaseLayerGroup.Name = "btnRemoveBaseLayerGroup";
             this.btnRemoveBaseLayerGroup.Click += new System.EventHandler(this.btnRemoveBaseLayerGroup_Click);
             // 
@@ -425,16 +425,16 @@
             // btnAddBaseLayer
             // 
             this.btnAddBaseLayer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAddBaseLayer.Image = global::Maestro.Editors.Properties.Resources.layer__plus;
             resources.ApplyResources(this.btnAddBaseLayer, "btnAddBaseLayer");
+            this.btnAddBaseLayer.Image = global::Maestro.Editors.Properties.Resources.layer__plus;
             this.btnAddBaseLayer.Name = "btnAddBaseLayer";
             this.btnAddBaseLayer.Click += new System.EventHandler(this.btnAddBaseLayer_Click);
             // 
             // btnRemoveBaseLayer
             // 
             this.btnRemoveBaseLayer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRemoveBaseLayer.Image = global::Maestro.Editors.Properties.Resources.layer__minus;
             resources.ApplyResources(this.btnRemoveBaseLayer, "btnRemoveBaseLayer");
+            this.btnRemoveBaseLayer.Image = global::Maestro.Editors.Properties.Resources.layer__minus;
             this.btnRemoveBaseLayer.Name = "btnRemoveBaseLayer";
             this.btnRemoveBaseLayer.Click += new System.EventHandler(this.btnRemoveBaseLayer_Click);
             // 
@@ -446,16 +446,16 @@
             // btnMoveBaseLayerUp
             // 
             this.btnMoveBaseLayerUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnMoveBaseLayerUp.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
             resources.ApplyResources(this.btnMoveBaseLayerUp, "btnMoveBaseLayerUp");
+            this.btnMoveBaseLayerUp.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
             this.btnMoveBaseLayerUp.Name = "btnMoveBaseLayerUp";
             this.btnMoveBaseLayerUp.Click += new System.EventHandler(this.btnMoveBaseLayerUp_Click);
             // 
             // btnMoveBaseLayerDown
             // 
             this.btnMoveBaseLayerDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnMoveBaseLayerDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
             resources.ApplyResources(this.btnMoveBaseLayerDown, "btnMoveBaseLayerDown");
+            this.btnMoveBaseLayerDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
             this.btnMoveBaseLayerDown.Name = "btnMoveBaseLayerDown";
             this.btnMoveBaseLayerDown.Click += new System.EventHandler(this.btnMoveBaseLayerDown_Click);
             // 

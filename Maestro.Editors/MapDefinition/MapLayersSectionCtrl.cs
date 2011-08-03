@@ -161,23 +161,47 @@ namespace Maestro.Editors.MapDefinition
             {
                 var layer = node.Tag as LayerItem;
                 var group = node.Tag as GroupItem;
+
+                btnGRPRemoveLayer.Enabled = false;
+                btnRemoveGroup.Enabled = false;
+                btnMoveGroupUp.Enabled = false;
+                btnMoveGroupDown.Enabled = false;
+                btnConvertLayerGroupToBaseGroup.Enabled = false;
+
                 if (layer != null)
                 {
-                    propertiesPanel.Controls.Clear();
-                    var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService);
-                    item.LayerChanged += (s, evt) => { OnResourceChanged(); };
-                    item.Dock = DockStyle.Fill;
-                    propertiesPanel.Controls.Add(item);
+                    OnDynamicLayerItemSelected(layer);
                 }
                 else if (group != null)
                 {
-                    propertiesPanel.Controls.Clear();
-                    var item = new GroupPropertiesCtrl(group.Tag);
-                    item.GroupChanged += (s, evt) => { OnResourceChanged(); };
-                    item.Dock = DockStyle.Fill;
-                    propertiesPanel.Controls.Add(item);
+                    OnDynamicGroupItemSelected(group);
                 }
             }
+        }
+
+        private void OnDynamicGroupItemSelected(GroupItem group)
+        {
+            btnRemoveGroup.Enabled = true;
+            btnMoveGroupUp.Enabled = true;
+            btnMoveGroupDown.Enabled = true;
+            btnConvertLayerGroupToBaseGroup.Enabled = true;
+
+            propertiesPanel.Controls.Clear();
+            var item = new GroupPropertiesCtrl(group.Tag);
+            item.GroupChanged += (s, evt) => { OnResourceChanged(); };
+            item.Dock = DockStyle.Fill;
+            propertiesPanel.Controls.Add(item);
+        }
+
+        private void OnDynamicLayerItemSelected(LayerItem layer)
+        {
+            btnGRPRemoveLayer.Enabled = true;
+
+            propertiesPanel.Controls.Clear();
+            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService);
+            item.LayerChanged += (s, evt) => { OnResourceChanged(); };
+            item.Dock = DockStyle.Fill;
+            propertiesPanel.Controls.Add(item);
         }
 
         private void trvLayerDrawingOrder_MouseClick(object sender, MouseEventArgs e)
@@ -186,29 +210,50 @@ namespace Maestro.Editors.MapDefinition
             if (node != null)
             {
                 var layer = node.Tag as LayerItem;
+                btnDLMoveLayerBottom.Enabled =
+                btnDLMoveLayerDown.Enabled =
+                btnDLMoveLayerTop.Enabled =
+                btnDLMoveLayerUp.Enabled =
+                btnDLRemoveLayer.Enabled = false;
+
                 if (layer != null)
                 {
-                    propertiesPanel.Controls.Clear();
-                    var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService);
-                    item.LayerChanged += (s, evt) => { OnResourceChanged(); };
-                    item.Dock = DockStyle.Fill;
-                    propertiesPanel.Controls.Add(item);
+                    OnDrawOrderLayerItemSelected(layer);
                 }
             }
+        }
+
+        private void OnDrawOrderLayerItemSelected(LayerItem layer)
+        {
+            btnDLMoveLayerBottom.Enabled =
+            btnDLMoveLayerDown.Enabled =
+            btnDLMoveLayerTop.Enabled =
+            btnDLMoveLayerUp.Enabled =
+            btnDLRemoveLayer.Enabled = true;
+
+            propertiesPanel.Controls.Clear();
+            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService);
+            item.LayerChanged += (s, evt) => { OnResourceChanged(); };
+            item.Dock = DockStyle.Fill;
+            propertiesPanel.Controls.Add(item);
         }
 
         private void btnAddGroup_Click(object sender, EventArgs e)
         {
             var selGroup = GetSelectedLayerGroupItem() as IMapLayerGroup;
-            CreateNewGroup(selGroup);
+            var newGroup = CreateNewGroup(selGroup);
 
             _grpLayerModel.Invalidate();
+            RestoreGroupSelection(newGroup);
         }
 
         private void btnRemoveGroup_Click(object sender, EventArgs e)
         {
             var group = GetSelectedLayerGroupItem() as GroupItem;
-            RemoveSelectedLayerGroupItem(group);
+            if (group != null)
+            {
+                RemoveSelectedLayerGroupItem(group);
+            }
         }
 
         private void RemoveSelectedLayerGroupItem(GroupItem group)
@@ -231,9 +276,9 @@ namespace Maestro.Editors.MapDefinition
                     LastSelectedFolder.FolderId = picker.SelectedFolder;
                     string layerId = picker.ResourceID;
                     var selGroup = GetSelectedLayerGroupItem() as GroupItem;
-                    CreateLayer(layerId, selGroup == null ? null : selGroup.Tag);
-
+                    var layer = CreateLayer(layerId, selGroup == null ? null : selGroup.Tag);
                     this.RefreshModels();
+                    RestoreLayerSelection(layer);
                 }
             }
         }
@@ -306,8 +351,9 @@ namespace Maestro.Editors.MapDefinition
                     LastSelectedFolder.FolderId = picker.SelectedFolder;
                     string layerId = picker.ResourceID;
                     var selGroup = GetSelectedDrawOrderItem() as GroupItem;
-                    CreateLayer(layerId, selGroup != null ? selGroup.Tag : null);
+                    var layer = CreateLayer(layerId, selGroup != null ? selGroup.Tag : null);
                     this.RefreshModels();
+                    RestoreDrawOrderSelection(layer);
                 }
             }
         }
@@ -377,8 +423,10 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        private static void RestoreSelection<TaggedType>(TreeViewAdv tree, Predicate<TaggedType> predicate) where TaggedType : class
+        private static TaggedType RestoreSelection<TaggedType>(TreeViewAdv tree, Predicate<TaggedType> predicate) where TaggedType : class
         {
+            TaggedType ret = null;
+
             //Restore selection
             TreeNodeAdv selectedNode = null;
             foreach (var node in tree.AllNodes)
@@ -388,11 +436,14 @@ namespace Maestro.Editors.MapDefinition
                 if (tag != null && predicate(tag))
                 {
                     selectedNode = node;
+                    ret = tag;
                     break;
                 }
             }
             if (selectedNode != null)
                 tree.SelectedNode = selectedNode;
+
+            return ret;
         }
 
         private static void ExpandNode<TaggedType>(TreeViewAdv tree, Predicate<TaggedType> predicate) where TaggedType : class
@@ -420,35 +471,79 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
+        private void RestoreLayerSelection(LayerItem item)
+        {
+            //The node tag will probably be different, but the wrapped
+            //instance is what we're checking for
+            var it = RestoreSelection<LayerItem>(trvLayersGroup, (tag) => { return tag.Tag == item.Tag; });
+            if (it != null)
+                OnDynamicLayerItemSelected(it);
+        }
+
+        private void RestoreLayerSelection(IMapLayer item)
+        {
+            //The node tag will probably be different, but the wrapped
+            //instance is what we're checking for
+            var it = RestoreSelection<LayerItem>(trvLayersGroup, (tag) => { return tag.Tag == item; });
+            if (it != null)
+                OnDynamicLayerItemSelected(it);
+        }
+
         private void RestoreGroupSelection(GroupItem item)
         {
             //The node tag will probably be different, but the wrapped
             //instance is what we're checking for
-            RestoreSelection<GroupItem>(trvLayersGroup, (tag) => { return tag.Tag == item.Tag; });
+            var it = RestoreSelection<GroupItem>(trvLayersGroup, (tag) => { return tag.Tag == item.Tag; });
+            if (it != null)
+                OnDynamicGroupItemSelected(it);
+        }
+
+        private void RestoreGroupSelection(IMapLayerGroup group)
+        {
+            //The node tag will probably be different, but the wrapped
+            //instance is what we're checking for
+            var it = RestoreSelection<GroupItem>(trvLayersGroup, (tag) => { return tag.Tag == group; });
+            if (it != null)
+                OnDynamicGroupItemSelected(it);
         }
 
         private void RestoreBaseLayerSelection(BaseLayerItem item)
         {
             //The node tag will probably be different, but the wrapped
             //instance is what we're checking for
-            RestoreSelection<BaseLayerItem>(trvBaseLayers, (tag) => { return tag.Tag == item.Tag; });
+            var it = RestoreSelection<BaseLayerItem>(trvBaseLayers, (tag) => { return tag.Tag == item.Tag; });
+            if (it != null)
+                OnBaseLayerItemSelected(it);
         }
 
         private void RestoreBaseLayerSelection(IBaseMapLayer layer)
         {
             //The node tag will probably be different, but the wrapped
             //instance is what we're checking for
-            RestoreSelection<BaseLayerItem>(trvBaseLayers, (tag) => { return tag.Tag == layer; });
+            var it = RestoreSelection<BaseLayerItem>(trvBaseLayers, (tag) => { return tag.Tag == layer; });
+            if (it != null)
+                OnBaseLayerItemSelected(it);
         }
 
         private void RestoreDrawOrderSelection(LayerItem layer)
         {
             //The node tag will probably be different, but the wrapped
             //instance is what we're checking for
-            RestoreSelection<LayerItem>(trvLayerDrawingOrder, (tag) => { return tag.Tag == layer.Tag; });
+            var lyr = RestoreSelection<LayerItem>(trvLayerDrawingOrder, (tag) => { return tag.Tag == layer.Tag; });
+            if (lyr != null)
+                OnDrawOrderLayerItemSelected(lyr);
         }
 
-        private void CreateNewGroup(IMapLayerGroup parentGroup)
+        private void RestoreDrawOrderSelection(IMapLayer layer)
+        {
+            //The node tag will probably be different, but the wrapped
+            //instance is what we're checking for
+            var lyr = RestoreSelection<LayerItem>(trvLayerDrawingOrder, (tag) => { return tag.Tag == layer; });
+            if (lyr != null)
+                OnDrawOrderLayerItemSelected(lyr);
+        }
+
+        private IMapLayerGroup CreateNewGroup(IMapLayerGroup parentGroup)
         {
             int counter = 0;
             string prefix = Properties.Resources.NewLayerGroup;
@@ -463,9 +558,11 @@ namespace Maestro.Editors.MapDefinition
             group = _map.AddGroup(prefix);
             if (parentGroup != null)
                 group.Group = parentGroup.Name;
+
+            return group;
         }
 
-        private void CreateLayer(string layerId, IMapLayerGroup parentGroup)
+        private IMapLayer CreateLayer(string layerId, IMapLayerGroup parentGroup)
         {
             int counter = 0;
             string prefix = ResourceIdentifier.GetName(layerId);
@@ -482,6 +579,8 @@ namespace Maestro.Editors.MapDefinition
                 layer = _map.AddLayer(parentGroup.Name, name, layerId);
             else
                 layer = _map.AddLayer(null, name, layerId);
+
+            return layer;
         }
 
         private object GetSelectedDrawOrderItem()
@@ -559,8 +658,9 @@ namespace Maestro.Editors.MapDefinition
                             grp = _map.BaseMap.AddBaseLayerGroup(GenerateBaseGroupName(_map));
                         }
                     }
-                    grp.AddLayer(GenerateBaseLayerName(layerId, _map.BaseMap), layerId);
+                    var bl = grp.AddLayer(GenerateBaseLayerName(layerId, _map.BaseMap), layerId);
                     _tiledLayerModel.Invalidate();
+                    RestoreBaseLayerSelection(bl);
                 }
             }
         }
@@ -708,31 +808,60 @@ namespace Maestro.Editors.MapDefinition
                 var layer = node.Tag as BaseLayerItem;
                 var group = node.Tag as BaseLayerGroupItem;
                 var scale = node.Tag as ScaleItem;
+
+                btnRemoveBaseLayerGroup.Enabled = false;
+                btnRemoveBaseLayer.Enabled = false;
+                btnMoveBaseLayerDown.Enabled = false;
+                btnMoveBaseLayerUp.Enabled = false;
+                btnAddBaseLayer.Enabled = false;
+
                 if (layer != null)
                 {
-                    propertiesPanel.Controls.Clear();
-                    var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService);
-                    item.LayerChanged += (s, evt) => { OnResourceChanged(); };
-                    item.Dock = DockStyle.Fill;
-                    propertiesPanel.Controls.Add(item);
+                    OnBaseLayerItemSelected(layer);
                 }
                 else if (group != null)
                 {
-                    propertiesPanel.Controls.Clear();
-                    var item = new GroupPropertiesCtrl(group.Tag);
-                    item.GroupChanged += (s, evt) => { OnResourceChanged(); };
-                    item.Dock = DockStyle.Fill;
-                    propertiesPanel.Controls.Add(item);
+                    OnBaseLayerGroupItemSelected(group);
                 }
                 else if (scale != null)
                 {
-                    propertiesPanel.Controls.Clear();
-                    var item = new FiniteScaleListCtrl(_map);
-                    
-                    item.Dock = DockStyle.Fill;
-                    propertiesPanel.Controls.Add(item);
+                    OnFiniteScaleListSelected();
                 }
             }
+        }
+
+        private void OnFiniteScaleListSelected()
+        {
+            propertiesPanel.Controls.Clear();
+            var item = new FiniteScaleListCtrl(_map);
+
+            item.Dock = DockStyle.Fill;
+            propertiesPanel.Controls.Add(item);
+        }
+
+        private void OnBaseLayerGroupItemSelected(BaseLayerGroupItem group)
+        {
+            btnAddBaseLayer.Enabled = true;
+            btnRemoveBaseLayerGroup.Enabled = true;
+
+            propertiesPanel.Controls.Clear();
+            var item = new GroupPropertiesCtrl(group.Tag);
+            item.GroupChanged += (s, evt) => { OnResourceChanged(); };
+            item.Dock = DockStyle.Fill;
+            propertiesPanel.Controls.Add(item);
+        }
+
+        private void OnBaseLayerItemSelected(BaseLayerItem layer)
+        {
+            btnRemoveBaseLayer.Enabled = true;
+            btnMoveBaseLayerDown.Enabled = true;
+            btnMoveBaseLayerUp.Enabled = true;
+
+            propertiesPanel.Controls.Clear();
+            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService);
+            item.LayerChanged += (s, evt) => { OnResourceChanged(); };
+            item.Dock = DockStyle.Fill;
+            propertiesPanel.Controls.Add(item);
         }
 
         private void trvBaseLayers_MouseDoubleClick(object sender, MouseEventArgs e)

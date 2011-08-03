@@ -204,6 +204,9 @@
   <data name="btnAddGroup.ToolTipText" xml:space="preserve">
     <value>Add a new group</value>
   </data>
+  <data name="btnRemoveGroup.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnRemoveGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -225,6 +228,9 @@
   <data name="btnGRPAddLayer.ToolTipText" xml:space="preserve">
     <value>Add a new layer</value>
   </data>
+  <data name="btnGRPRemoveLayer.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnGRPRemoveLayer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -237,6 +243,9 @@
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
+  <data name="btnMoveGroupUp.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnMoveGroupUp.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -245,6 +254,9 @@
   </data>
   <data name="btnMoveGroupUp.Text" xml:space="preserve">
     <value>Move the selected group up the logical order</value>
+  </data>
+  <data name="btnMoveGroupDown.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="btnMoveGroupDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -257,6 +269,9 @@
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
+  </data>
+  <data name="btnConvertLayerGroupToBaseGroup.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="btnConvertLayerGroupToBaseGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -357,6 +372,9 @@
   <data name="btnDLAddLayer.ToolTipText" xml:space="preserve">
     <value>Add new layer</value>
   </data>
+  <data name="btnDLRemoveLayer.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnDLRemoveLayer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -369,6 +387,9 @@
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
+  <data name="btnDLMoveLayerUp.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnDLMoveLayerUp.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -377,6 +398,9 @@
   </data>
   <data name="btnDLMoveLayerUp.ToolTipText" xml:space="preserve">
     <value>Move selected layer up</value>
+  </data>
+  <data name="btnDLMoveLayerDown.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="btnDLMoveLayerDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -390,6 +414,9 @@
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
+  <data name="btnDLMoveLayerTop.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnDLMoveLayerTop.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -398,6 +425,9 @@
   </data>
   <data name="btnDLMoveLayerTop.ToolTipText" xml:space="preserve">
     <value>Move selected layer to top</value>
+  </data>
+  <data name="btnDLMoveLayerBottom.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="btnDLMoveLayerBottom.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -498,6 +528,9 @@
   <data name="btnNewBaseLayerGroup.ToolTipText" xml:space="preserve">
     <value>Add a new group</value>
   </data>
+  <data name="btnRemoveBaseLayerGroup.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnRemoveBaseLayerGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -510,6 +543,9 @@
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
+  <data name="btnAddBaseLayer.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnAddBaseLayer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -518,6 +554,9 @@
   </data>
   <data name="btnAddBaseLayer.ToolTipText" xml:space="preserve">
     <value>Add a new layer</value>
+  </data>
+  <data name="btnRemoveBaseLayer.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="btnRemoveBaseLayer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -531,6 +570,9 @@
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
+  <data name="btnMoveBaseLayerUp.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnMoveBaseLayerUp.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -539,6 +581,9 @@
   </data>
   <data name="btnMoveBaseLayerUp.ToolTipText" xml:space="preserve">
     <value>Move selected layer up</value>
+  </data>
+  <data name="btnMoveBaseLayerDown.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="btnMoveBaseLayerDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
