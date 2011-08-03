@@ -4,6 +4,8 @@
  - Improved AIMS 2012 support
     - Fix broken support for Layer Definitions using the 2.3.0 schema
     - Enabled previews for Watermark Definition editor
+ - Layer Definition editor now supports inline symbol definitions for composite symbolization
+ - Enhanced usability for Map Definition editor
  - Show resources in sorted order in the Resource Picker
  - Map Definition Editor now supports re-arranging the logical order of Map Groups
  - Resource Picker now remembers last selected folder for most resource selection operations
