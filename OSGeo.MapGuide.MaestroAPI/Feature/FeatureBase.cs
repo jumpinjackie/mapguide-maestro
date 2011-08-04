@@ -32,11 +32,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     {
         private ClassDefinition _clsDef;
 
-        public PropertyValue GetValue(string name)
-        {
-            return _values[name];
-        }
-
         public FeatureBase(ClassDefinition clsDef) : base()
         {
             _clsDef = clsDef;

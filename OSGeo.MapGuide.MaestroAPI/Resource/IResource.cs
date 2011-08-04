@@ -58,14 +58,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         ResourceTypes ResourceType { get; }
 
         /// <summary>
-        /// Serializes this instance.
+        /// Serializes this instance to XML and returns the XML content. It is not recommended to call this method directly
+        /// instead use <see cref="M:OSGeo.MapGuide.MaestroAPI.ResourceTypeRegistry.Serialize"/> as that will invoke any pre-serialization
+        /// hooks that may have been set up for this particular resource.
         /// </summary>
         /// <returns></returns>
         string Serialize();
 
         /// <summary>
         /// Indicates whether this resource is strongly typed. If false it means the implementer
-        /// is a <see cref="UntypedResource"/> object. This usually means that the matching serializer
+        /// is a <see cref="T:OSGeo.MapGuide.ObjectModels.UntypedResource"/> object. This usually means that the matching serializer
         /// could not be found because the resource version is unrecognised.
         /// </summary>
         bool IsStronglyTyped { get; }

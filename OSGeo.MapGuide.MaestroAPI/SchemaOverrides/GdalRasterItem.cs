@@ -35,8 +35,6 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
     {
         private Dictionary<string, GdalRasterItem> _items = new Dictionary<string, GdalRasterItem>();
 
-        private IEnvelope _extents;
-
         /// <summary>
         /// Gets or sets the directory
         /// </summary>

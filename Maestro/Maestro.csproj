@@ -67,6 +67,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDK\bin\MapGuideDotNetApi.dll</HintPath>
     </Reference>
+    <Reference Include="NetTopologySuite.Merged, Version=1.8.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
+    </Reference>
     <Reference Include="OSGeo.MapGuide.ExtendedObjectModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDK\bin\OSGeo.MapGuide.ExtendedObjectModels.dll</HintPath>
@@ -89,14 +93,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Topology, Version=1.0.8.24721, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\Topology.dll</HintPath>
-    </Reference>
-    <Reference Include="Topology.IO.MapGuide, Version=1.0.8.40022, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\Topology.IO.MapGuide.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
