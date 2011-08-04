@@ -25,3 +25,8 @@ DwfInspector
 
 This sample demonstrates using the Maestro API to describe and inspect a Drawing Source or a DWF file, which can be uploaded
 as a temporary Drawing Source
+
+StandaloneWebLayoutEditor
+-------------------------
+
+This sample demonstrates using the Maestro.Editors library allowing you to re-use the resource editor UI components for use outside of MapGuide Maestro
