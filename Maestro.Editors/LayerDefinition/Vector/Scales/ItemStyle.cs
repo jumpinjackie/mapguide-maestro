@@ -191,6 +191,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             {
                 var diag = new SymbolInstancesDialog(m_owner.Editor, m_comp, m_owner.SelectedClass, m_owner.GetFdoProvider(), m_owner.FeatureSourceId);
                 diag.ShowDialog();
+                //HACK: Assume edits made
+                Owner.RaiseResourceChanged();
                 return;
             }
 

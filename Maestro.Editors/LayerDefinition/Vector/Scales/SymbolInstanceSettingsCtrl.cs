@@ -80,31 +80,32 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
             if (_symRef.Reference.Type == SymbolInstanceType.Reference)
             {
                 var sym = (ISymbolDefinitionBase)_edSvc.ResourceService.GetResource(((ISymbolInstanceReferenceLibrary)_symRef.Reference).ResourceId);
-                foreach (var p in sym.GetParameters())
-                {
-                    var param = p;
-                    var btn = btnAdd.DropDown.Items.Add(p.Name, null, (s, e) =>
-                    {
-                        AddParameterOverride(sym, param);
-                    });
-                }
+                PopulateParameterList(sym);
             }
             else if (_symRef.Reference.Type == SymbolInstanceType.Inline)
             {
                 var inline = (ISymbolInstanceReferenceInline)_symRef.Reference;
-                foreach (var p in inline.SymbolDefinition.GetParameters())
-                {
-                    var param = p;
-                    var btn = btnAdd.DropDown.Items.Add(p.Name, null, (s, e) =>
-                    {
-                        AddParameterOverride(inline.SymbolDefinition, param);
-                    });
-                }
+                PopulateParameterList(inline.SymbolDefinition);
             }
             else
             {
                 throw new Exception();
             }
+        }
+
+        private void PopulateParameterList(ISymbolDefinitionBase sym)
+        {
+            foreach (var p in sym.GetParameters())
+            {
+                var param = p;
+                var btn = new ToolStripButton(p.Name, null, (s, e) =>
+                {
+                    AddParameterOverride(sym, param);
+                });
+                btnAdd.DropDown.Items.Insert(0, btn);
+            }
+            btnAdd.DropDown.Items.Add(toolStripSeparator1);
+            btnAdd.DropDown.Items.Add(refreshToolStripMenuItem);
         }
 
         private void AddParameterOverride(ISymbolDefinitionBase sym, IParameter param)
@@ -184,6 +185,16 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
                 _symRef.ParameterOverrides.RemoveOverride(ov);
                 this.RaiseDirty();
             }
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PopulateAvailableParameters();
+        }
+
+        private void grdOverrides_SelectionChanged(object sender, EventArgs e)
+        {
+            btnEdit.Enabled = btnDelete.Enabled = (grdOverrides.SelectedRows.Count == 1);
         }
     }
 }

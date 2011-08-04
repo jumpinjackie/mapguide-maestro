@@ -341,7 +341,13 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
         public IParameter CreateParameter()
         {
-            return new Parameter() { };
+            return new Parameter() 
+            { 
+                Identifier = "",
+                DefaultValue = "",
+                Description = "",
+                DisplayName = "",
+            };
         }
 
         [XmlIgnore]
