@@ -909,6 +909,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ResourceEditorServiceBase.cs" />
     <Compile Include="SymbolDefinition\AdvancedSettingsCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>

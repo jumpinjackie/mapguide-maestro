@@ -1305,15 +1305,6 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resource ID must not be session based.
-        /// </summary>
-        internal static string NotSessionBasedId {
-            get {
-                return ResourceManager.GetString("NotSessionBasedId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Skipping registration of editor: {0} because an existing editor is already registered to handle {1} v{2}.
         /// </summary>
         internal static string OpenResourceManager_SkipEditorRegistration {

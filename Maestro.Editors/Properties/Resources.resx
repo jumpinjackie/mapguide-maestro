@@ -1247,4 +1247,7 @@ Returns: {0}</value>
   <data name="ParameterOverrideExists" xml:space="preserve">
     <value>Parameter Override already specified</value>
   </data>
+  <data name="NotSessionBasedId" xml:space="preserve">
+    <value>Resource ID must not be session based</value>
+  </data>
 </root>

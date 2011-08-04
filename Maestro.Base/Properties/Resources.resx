@@ -772,9 +772,6 @@ Do you want to convert the values?</value>
   <data name="NewMap" xml:space="preserve">
     <value>New Map</value>
   </data>
-  <data name="NotSessionBasedId" xml:space="preserve">
-    <value>Resource ID must not be session based</value>
-  </data>
   <data name="PreviewMap" xml:space="preserve">
     <value>Preview Map</value>
   </data>
