@@ -24,12 +24,13 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Schema;
+using Maestro.Editors.Generic;
+using Maestro.Editors;
+using Maestro.Editors.WebLayout;
 using OSGeo.MapGuide.ExtendedObjectModels;
 
-namespace SchemaViewer
+namespace StandaloneWebLayoutEditor
 {
     public partial class Form1 : Form
     {
@@ -39,6 +40,11 @@ namespace SchemaViewer
         }
 
         private IServerConnection _conn;
+
+        /// <summary>
+        /// The IEditorService interface provides all the required services needed by any resource editor
+        /// </summary>
+        private IEditorService _edSvc;
 
         protected override void OnLoad(EventArgs e)
         {
@@ -64,75 +70,67 @@ namespace SchemaViewer
             }
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void openWebLayoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //The ResourcePicker class, functions like a file dialog allowing the user
             //to easily select a given resource. In our case, we want the user to select
             //a Feature Source
             using (var picker = new ResourcePicker(_conn.ResourceService,
-                                                   ResourceTypes.FeatureSource,
+                                                   ResourceTypes.WebLayout,
                                                    ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
-                    txtFeatureSource.Text = picker.ResourceID;
-                    LoadFeatureSource(picker.ResourceID);
+                    LoadWebLayoutEditor(picker.ResourceID);
                 }
             }
         }
 
-        private void LoadFeatureSource(string featureSourceId)
+        private void LoadWebLayoutEditor(string webLayoutId)
         {
-            var desc = _conn.FeatureService.DescribeFeatureSource(featureSourceId);
-            treeView1.Nodes.Clear();
-            foreach (FeatureSchema schema in desc.Schemas)
+            //Tear down existing editor service if needed
+            if (_edSvc != null)
             {
-                var node = CreateSchemaNode(schema);
-                treeView1.Nodes.Add(node);
-            }
-        }
-
-        private TreeNode CreateSchemaNode(FeatureSchema schema)
-        {
-            var node = new TreeNode();
-            node.Name = schema.Name;
-            node.Text = schema.Name;
-
-            foreach (ClassDefinition cls in schema.Classes)
-            {
-                var clsNode = CreateClassNode(cls);
-                node.Nodes.Add(clsNode);
+                _edSvc.DirtyStateChanged -= OnDirtyStateChanged;
             }
 
-            node.Tag = schema;
+            _edSvc = new MyResourceEditorService(webLayoutId, _conn);
+            _edSvc.DirtyStateChanged += OnDirtyStateChanged;
+            //Each resource editor is named in the form: [Resource Type]EditorCtrl
+            var ed = new WebLayoutEditorCtrl();
+            ed.Dock = DockStyle.Fill;
 
-            return node;
+            panel1.Controls.Clear();
+            panel1.Controls.Add(ed);
+
+            //Bind() performs all the setup work. Do this after adding the control to whatever parent container
+            ed.Bind(_edSvc);
         }
 
-        private TreeNode CreateClassNode(ClassDefinition cls)
+        private void OnDirtyStateChanged(object sender, EventArgs e)
         {
-            var node = new TreeNode();
-            node.Name = cls.Name;
-            node.Text = cls.Name;
-
-            foreach (PropertyDefinition prop in cls.Properties)
-            {
-                var pNode = new TreeNode();
-                pNode.Name = prop.Name;
-                pNode.Text = prop.Name;
-
-                pNode.Tag = prop;
-
-                node.Nodes.Add(pNode);
-            }
-
-            node.Tag = cls;
-            return node;
+            //Update title
+            if (!this.Text.EndsWith(" *"))
+                this.Text += " *";
         }
 
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            propertyGrid1.SelectedObject = e.Node.Tag;
+            //The editor has been modify an in-memory model. This needs to be serialized back to
+            //the session copy first
+            _edSvc.SyncSessionCopy();
+            //Call save on the editor service to commit back the changes from the session copy
+            //back to the original resource
+            _edSvc.Save();
+            //Restore title
+            if (this.Text.EndsWith(" *"))
+                this.Text = this.Text.Substring(0, this.Text.Length - 2);
+            MessageBox.Show("Saved");
         }
     }
 }

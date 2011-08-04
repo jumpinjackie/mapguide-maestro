@@ -28,6 +28,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ExtendedObjectModels;
 
 namespace QueryFeatureSource
 {
@@ -42,6 +43,11 @@ namespace QueryFeatureSource
 
         protected override void OnLoad(EventArgs e)
         {
+            //This call is a one-time only call that will instantly register all known resource 
+            //version types and validators. This way you never have to manually reference a 
+            //ObjectModels assembly of the desired resource type you want to work with
+            ModelSetup.Initialize();
+
             //Anytime we work with the Maestro API, we require an IServerConnection
             //reference. The Maestro.Login.LoginDialog provides a UI to obtain such a 
             //reference.

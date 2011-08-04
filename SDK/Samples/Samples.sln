@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchemaViewer", "SchemaViewe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DwfInspector", "DwfInspector\DwfInspector.csproj", "{F568A956-4D93-46DF-856A-01883CA61CBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandaloneWebLayoutEditor", "StandaloneWebLayoutEditor\StandaloneWebLayoutEditor.csproj", "{6C2F72BB-7B46-4D82-99AC-31A5840A869D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{F568A956-4D93-46DF-856A-01883CA61CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F568A956-4D93-46DF-856A-01883CA61CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F568A956-4D93-46DF-856A-01883CA61CBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C2F72BB-7B46-4D82-99AC-31A5840A869D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C2F72BB-7B46-4D82-99AC-31A5840A869D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C2F72BB-7B46-4D82-99AC-31A5840A869D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C2F72BB-7B46-4D82-99AC-31A5840A869D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

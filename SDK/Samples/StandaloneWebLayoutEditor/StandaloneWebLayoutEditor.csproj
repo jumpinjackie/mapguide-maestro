@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F568A956-4D93-46DF-856A-01883CA61CBB}</ProjectGuid>
+    <ProjectGuid>{6C2F72BB-7B46-4D82-99AC-31A5840A869D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DwfInspector</RootNamespace>
-    <AssemblyName>DwfInspector</AssemblyName>
+    <RootNamespace>StandaloneWebLayoutEditor</RootNamespace>
+    <AssemblyName>StandaloneWebLayoutEditor</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,11 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Maestro.Editors, Version=3.0.0.5728, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Maestro.Editors, Version=3.5.0.5977, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\Maestro.Editors.dll</HintPath>
     </Reference>
-    <Reference Include="Maestro.Login, Version=3.0.0.5728, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Maestro.Login, Version=3.5.0.5977, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\Maestro.Login.dll</HintPath>
     </Reference>
@@ -43,7 +43,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\OSGeo.MapGuide.ExtendedObjectModels.dll</HintPath>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.MaestroAPI, Version=3.0.0.5728, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
+    <Reference Include="OSGeo.MapGuide.MaestroAPI, Version=3.5.0.5977, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\OSGeo.MapGuide.MaestroAPI.dll</HintPath>
     </Reference>
@@ -61,6 +61,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyResourceEditorService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -70,9 +71,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SectionInfoCtrl.resx">
-      <DependentUpon>SectionInfoCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -86,12 +84,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="SectionInfoCtrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="SectionInfoCtrl.Designer.cs">
-      <DependentUpon>SectionInfoCtrl.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
