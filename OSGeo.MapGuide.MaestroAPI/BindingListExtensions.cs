@@ -50,7 +50,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
     }
 }
-
+/*
 //A well known hack to get extension methods working in .net framework 2.0
 
 namespace System.Runtime.CompilerServices
@@ -62,4 +62,4 @@ namespace System.Runtime.CompilerServices
     {
 
     }
-}
+}*/

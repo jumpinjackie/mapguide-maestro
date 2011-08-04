@@ -39,7 +39,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Thirdparty\Flee\lib\Ciloci.Flee.dll</HintPath>
     </Reference>
-    <Reference Include="NetTopologySuite.Merged, Version=1.8.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
+    <Reference Include="NetTopologySuite.Merged, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
     </Reference>

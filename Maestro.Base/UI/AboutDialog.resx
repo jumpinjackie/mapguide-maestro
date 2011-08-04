@@ -1460,13 +1460,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
     <value>8, 52</value>
   </data>
   <data name="tfnetLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 13</value>
+    <value>99, 13</value>
   </data>
   <data name="tfnetLinkLabel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tfnetLinkLabel.Text" xml:space="preserve">
-    <value>Topology Framework .NET (TF.NET)</value>
+    <value>.net Topology Suite</value>
   </data>
   <data name="&gt;&gt;tfnetLinkLabel.Name" xml:space="preserve">
     <value>tfnetLinkLabel</value>

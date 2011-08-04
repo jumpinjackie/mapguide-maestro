@@ -336,7 +336,7 @@ namespace Maestro.Base.UI
 
         private void tfnetLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            _launcher.OpenUrl("http://code.google.com/p/tf-net/");
+            _launcher.OpenUrl("http://code.google.com/p/nettopologysuite/");
         }
 
         private void ziplibLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
