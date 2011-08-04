@@ -444,189 +444,6 @@ namespace MaestroAPITests
         }
 
         [Test]
-        public void TestNoConversionOnIdenticalVersion()
-        {
-            //Verify origial reference is returned if we're converting a resource to the same version
-            _mocks = new Mockery();
-            var conn = _mocks.NewMock<IServerConnection>();
-            var caps = _mocks.NewMock<IConnectionCapabilities>();
-            Stub.On(conn).GetProperty("Capabilities").Will(Return.Value(caps));
-            foreach (var rt in Enum.GetValues(typeof(ResourceTypes)))
-            {
-                Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt).Will(Return.Value(new Version(1, 0, 0)));
-            }
-
-            var conv = new ResourceConverter(new List<IResourceConverter>());
-            var targetVer = new Version(1, 0, 0);
-
-            var app = ObjectFactory.DeserializeEmbeddedFlexLayout();
-            var app2 = conv.Upgrade(app, targetVer);
-            Assert.AreSame(app, app2);
-
-            var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF");
-            var fs2 = conv.Upgrade(fs, targetVer);
-            Assert.AreSame(fs, fs2);
-
-            var ld = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector, new Version(1, 0, 0));
-            var ld2 = conv.Upgrade(ld, targetVer);
-            Assert.AreSame(ld, ld2);
-
-            var md = ObjectFactory.CreateMapDefinition(conn, "Test Map");
-            var md2 = conv.Upgrade(md, targetVer);
-            Assert.AreSame(md, md2);
-
-            var wl = ObjectFactory.CreateWebLayout(conn, new Version(1, 0, 0), "Library://Test.MapDefinition");
-            var wl2 = conv.Upgrade(wl, targetVer);
-            Assert.AreSame(wl, wl2);
-
-            var ssd = ObjectFactory.CreateSimpleSymbol(conn, new Version(1, 0, 0), "Test", "Test Symbol");
-            var ssd2 = conv.Upgrade(ssd, targetVer);
-            Assert.AreSame(ssd, ssd2);
-
-            var csd = ObjectFactory.CreateCompoundSymbol(conn, new Version(1, 0, 0), "Test", "Test Symbol");
-            var csd2 = conv.Upgrade(csd, targetVer);
-            Assert.AreSame(csd, csd2);
-
-            var pl = ObjectFactory.CreatePrintLayout(conn);
-            var pl2 = conv.Upgrade(pl, targetVer);
-            Assert.AreSame(pl, pl2);
-        }
-
-        [Test]
-        public void TestSingleUpgrade()
-        {
-            _mocks = new Mockery();
-
-            var orig = _mocks.NewMock<IResource>();
-            Stub.On(orig).GetProperty("ResourceVersion").Will(Return.Value(new Version(1, 0, 0)));
-            Stub.On(orig).GetProperty("ResourceType").Will(Return.Value(ResourceTypes.LayerDefinition));
-            Stub.On(orig).Method("Clone").WithAnyArguments().Will(Return.Value(orig));
-
-            var res2 = _mocks.NewMock<IResource>();
-            Stub.On(res2).GetProperty("ResourceType").Will(Return.Value(ResourceTypes.LayerDefinition));
-            Stub.On(res2).GetProperty("ResourceVersion").Will(Return.Value(new Version(1, 1, 0)));
-
-            var upg = _mocks.NewMock<IResourceConverter>();
-            Stub.On(upg).GetProperty("SourceVersion").Will(Return.Value(new Version(1, 0, 0)));
-            Stub.On(upg).GetProperty("TargetVersion").Will(Return.Value(new Version(1, 1, 0)));
-            Stub.On(upg).GetProperty("ResourceType").Will(Return.Value(ResourceTypes.LayerDefinition));
-            Stub.On(upg).Method("Convert").WithAnyArguments().Will(Return.Value(res2));
-
-            var upgList = new List<IResourceConverter>();
-            upgList.Add(upg);
-            var conv = new ResourceConverter(upgList);
-
-            var obj = conv.Upgrade(orig, new Version(1, 1, 0));
-            Assert.AreEqual(obj.ResourceVersion, new Version(1, 1, 0));
-
-            try
-            {
-                //No 1.0.0 -> 1.2.0 converter registered. Should fail.
-                obj = conv.Upgrade(orig, new Version(1, 2, 0));
-                Assert.Fail("An exception should've been thrown (no upgrade path)");
-            }
-            catch (ResourceConversionException)
-            {
-
-            }
-        }
-        
-        [Test]
-        [ExpectedException(typeof(ResourceConversionException))]
-        public void TestClashingUpgraders()
-        {
-            _mocks = new Mockery();
-            var upg = _mocks.NewMock<IResourceConverter>();
-            Stub.On(upg).GetProperty("SourceVersion").Will(Return.Value(new Version(1, 0, 0)));
-            Stub.On(upg).GetProperty("TargetVersion").Will(Return.Value(new Version(1, 1, 0)));
-            Stub.On(upg).GetProperty("ResourceType").Will(Return.Value(ResourceTypes.LayerDefinition));
-
-            var upg2 = _mocks.NewMock<IResourceConverter>();
-            Stub.On(upg2).GetProperty("SourceVersion").Will(Return.Value(new Version(1, 0, 0)));
-            Stub.On(upg2).GetProperty("TargetVersion").Will(Return.Value(new Version(1, 3, 0)));
-            Stub.On(upg2).GetProperty("ResourceType").Will(Return.Value(ResourceTypes.LayerDefinition));
-
-            var upgList = new List<IResourceConverter>();
-            upgList.Add(upg);
-            upgList.Add(upg2);
-            var conv = new ResourceConverter(upgList);
-        }
-
-        [Test]
-        public void TestIncrementalUpgrade()
-        {
-            //Verify a resource is upgraded to the correct version
-            //when going through multiple upgraders
-
-            _mocks = new Mockery();
-
-            var orig = _mocks.NewMock<IResource>();
-            Stub.On(orig).GetProperty("ResourceVersion").Will(Return.Value(new Version(1, 0, 0)));
-            Stub.On(orig).GetProperty("ResourceType").Will(Return.Value(ResourceTypes.LayerDefinition));
-            Stub.On(orig).Method("Clone").WithAnyArguments().Will(Return.Value(orig));
-
-            var orig11 = _mocks.NewMock<IResource>();
-            Stub.On(orig11).GetProperty("ResourceVersion").Will(Return.Value(new Version(1, 1, 0)));
-            Stub.On(orig11).GetProperty("ResourceType").Will(Return.Value(ResourceTypes.LayerDefinition));
-            Stub.On(orig11).Method("Clone").WithAnyArguments().Will(Return.Value(orig11));
-
-            var orig12 = _mocks.NewMock<IResource>();
-            Stub.On(orig12).GetProperty("ResourceVersion").Will(Return.Value(new Version(1, 2, 0)));
-            Stub.On(orig12).GetProperty("ResourceType").Will(Return.Value(ResourceTypes.LayerDefinition));
-            Stub.On(orig12).Method("Clone").WithAnyArguments().Will(Return.Value(orig12));
-
-            var upg = _mocks.NewMock<IResourceConverter>();
-            Stub.On(upg).GetProperty("SourceVersion").Will(Return.Value(new Version(1, 0, 0)));
-            Stub.On(upg).GetProperty("TargetVersion").Will(Return.Value(new Version(1, 1, 0)));
-            Stub.On(upg).GetProperty("ResourceType").Will(Return.Value(ResourceTypes.LayerDefinition));
-            Stub.On(upg).Method("Convert").WithAnyArguments().Will(Return.Value(orig11));
-
-            var upg2 = _mocks.NewMock<IResourceConverter>();
-            Stub.On(upg2).GetProperty("SourceVersion").Will(Return.Value(new Version(1, 1, 0)));
-            Stub.On(upg2).GetProperty("TargetVersion").Will(Return.Value(new Version(1, 2, 0)));
-            Stub.On(upg2).GetProperty("ResourceType").Will(Return.Value(ResourceTypes.LayerDefinition));
-            Stub.On(upg2).Method("Convert").WithAnyArguments().Will(Return.Value(orig12));
-
-            var upgList = new List<IResourceConverter>() { upg, upg2 };
-            var conv = new ResourceConverter(upgList);
-
-            var obj = conv.Upgrade(orig, new Version(1, 2, 0));
-            Assert.AreEqual(obj.ResourceVersion, new Version(1, 2, 0));
-        }
-
-        [Test]
-        [ExpectedException(typeof(ResourceConversionException))]
-        public void TestBrokenUpgradePath()
-        {
-            //Verify exception thrown when there is a version gap
-            //in the upgrade path
-
-            _mocks = new Mockery();
-            var upg = _mocks.NewMock<IResourceConverter>();
-            Stub.On(upg).GetProperty("SourceVersion").Will(Return.Value(new Version(1, 0, 0)));
-            Stub.On(upg).GetProperty("TargetVersion").Will(Return.Value(new Version(1, 1, 0)));
-            Stub.On(upg).GetProperty("ResourceType").Will(Return.Value(ResourceTypes.LayerDefinition));
-
-            var upg2 = _mocks.NewMock<IResourceConverter>();
-            Stub.On(upg2).GetProperty("SourceVersion").Will(Return.Value(new Version(1, 0, 0)));
-            Stub.On(upg2).GetProperty("TargetVersion").Will(Return.Value(new Version(1, 3, 0)));
-            Stub.On(upg2).GetProperty("ResourceType").Will(Return.Value(ResourceTypes.LayerDefinition));
-
-            var orig = _mocks.NewMock<IResource>();
-            Stub.On(orig).GetProperty("ResourceVersion").Will(Return.Value(new Version(1, 0, 0)));
-            Stub.On(orig).GetProperty("ResourceType").Will(Return.Value(ResourceTypes.LayerDefinition));
-            Stub.On(orig).Method("Clone").WithAnyArguments().Will(Return.Value(orig));
-
-            var upgList = new List<IResourceConverter>();
-            upgList.Add(upg);
-            upgList.Add(upg2);
-            var conv = new ResourceConverter(upgList);
-
-            //There's no 1.1.0 -> 1.2.0 upgrader registered. This should fail.
-            var obj = conv.Upgrade(orig, new Version(1, 3, 0));
-        }
-
-        [Test]
         public void TestWebLayout()
         {
             var conn = _mocks.NewMock<IServerConnection>();
@@ -781,6 +598,293 @@ namespace MaestroAPITests
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.WebLayout, "1.0.0");
             Assert.AreEqual(rtd.XsdName, "WebLayout-1.0.0.xsd");
+        }
+
+        [Test]
+        public void TestLayerDefinitionConversions()
+        {
+            var conn = _mocks.NewMock<IServerConnection>();
+            var conv = new ResourceObjectConverter();
+            var ldf = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector, new Version(1, 0, 0));
+
+            Assert.AreEqual("1.0.0", ldf.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("LayerDefinition-1.0.0.xsd", ldf.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("LayerDefinition-1.0.0.xsd", ldf.ValidatingSchema);
+            Assert.AreEqual(new Version(1, 0, 0), ldf.ResourceVersion);
+            
+            using (var fs = File.OpenWrite("LayerDef_100.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(ldf))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+
+            var ldf1 = (ILayerDefinition)conv.Convert(ldf, new Version(1, 1, 0));
+
+            Assert.AreEqual("1.1.0", ldf1.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("LayerDefinition-1.1.0.xsd", ldf1.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("LayerDefinition-1.1.0.xsd", ldf1.ValidatingSchema);
+            Assert.AreEqual(new Version(1, 1, 0), ldf1.ResourceVersion);
+            Assert.NotNull(ldf1.CurrentConnection);
+
+            using (var fs = File.OpenWrite("LayerDef_110.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(ldf1))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+
+            var ldf2 = (ILayerDefinition)conv.Convert(ldf1, new Version(1, 2, 0));
+
+            Assert.AreEqual("1.2.0", ldf2.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("LayerDefinition-1.2.0.xsd", ldf2.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("LayerDefinition-1.2.0.xsd", ldf2.ValidatingSchema);
+            Assert.AreEqual(new Version(1, 2, 0), ldf2.ResourceVersion);
+            Assert.NotNull(ldf2.CurrentConnection);
+
+            using (var fs = File.OpenWrite("LayerDef_120.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(ldf2))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+
+            var ldf3 = (ILayerDefinition)conv.Convert(ldf2, new Version(1, 3, 0));
+
+            Assert.AreEqual("1.3.0", ldf3.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("LayerDefinition-1.3.0.xsd", ldf3.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("LayerDefinition-1.3.0.xsd", ldf3.ValidatingSchema);
+            Assert.AreEqual(new Version(1, 3, 0), ldf3.ResourceVersion);
+            Assert.NotNull(ldf3.CurrentConnection);
+
+            using (var fs = File.OpenWrite("LayerDef_130.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(ldf3))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+
+            var ldf4 = (ILayerDefinition)conv.Convert(ldf2, new Version(2, 3, 0));
+
+            Assert.AreEqual("2.3.0", ldf4.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("LayerDefinition-2.3.0.xsd", ldf4.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("LayerDefinition-2.3.0.xsd", ldf4.ValidatingSchema);
+            Assert.AreEqual(new Version(2, 3, 0), ldf4.ResourceVersion);
+            Assert.NotNull(ldf4.CurrentConnection);
+            Assert.IsTrue(ldf4.SubLayer is ISubLayerDefinition2);
+
+            using (var fs = File.OpenWrite("LayerDef_230.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(ldf4))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+        }
+
+        [Test]
+        public void TestMapDefinitionConversions()
+        {
+            var conn = _mocks.NewMock<IServerConnection>();
+            var conv = new ResourceObjectConverter();
+
+            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "Test Map");
+
+            Assert.AreEqual("1.0.0", mdf.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("MapDefinition-1.0.0.xsd", mdf.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("MapDefinition-1.0.0.xsd", mdf.ValidatingSchema);
+            Assert.AreEqual(new Version(1, 0, 0), mdf.ResourceVersion);
+
+            using (var fs = File.OpenWrite("MapDef_100.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(mdf))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+
+            var mdf2 = (IMapDefinition)conv.Convert(mdf, new Version(2, 3, 0));
+
+            Assert.AreEqual("2.3.0", mdf2.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("MapDefinition-2.3.0.xsd", mdf2.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("MapDefinition-2.3.0.xsd", mdf2.ValidatingSchema);
+            Assert.AreEqual(new Version(2, 3, 0), mdf2.ResourceVersion);
+            Assert.NotNull(mdf2.CurrentConnection);
+            Assert.True(mdf2 is IMapDefinition2);
+
+            using (var fs = File.OpenWrite("MapDef_230.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(mdf2))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+        }
+
+        [Test]
+        public void TestLoadProcedureConversions()
+        {
+            var conn = _mocks.NewMock<IServerConnection>();
+            var conv = new ResourceObjectConverter();
+
+            var lproc = ObjectFactory.CreateLoadProcedure(conn, LoadType.Sdf);
+
+            Assert.AreEqual("1.0.0", lproc.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("LoadProcedure-1.0.0.xsd", lproc.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("LoadProcedure-1.0.0.xsd", lproc.ValidatingSchema);
+            Assert.AreEqual(new Version(1, 0, 0), lproc.ResourceVersion);
+
+            using (var fs = File.OpenWrite("LoadProc_100.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(lproc))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+
+            var lproc2 = (ILoadProcedure)conv.Convert(lproc, new Version(1, 1, 0));
+
+            Assert.AreEqual("1.1.0", lproc2.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("LoadProcedure-1.1.0.xsd", lproc2.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("LoadProcedure-1.1.0.xsd", lproc2.ValidatingSchema);
+            Assert.AreEqual(new Version(1, 1, 0), lproc2.ResourceVersion);
+            Assert.NotNull(lproc2.CurrentConnection);
+
+            using (var fs = File.OpenWrite("LoadProc_110.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(lproc2))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+
+            var lproc3 = (ILoadProcedure)conv.Convert(lproc2, new Version(2, 2, 0));
+
+            Assert.AreEqual("2.2.0", lproc3.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("LoadProcedure-2.2.0.xsd", lproc3.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("LoadProcedure-2.2.0.xsd", lproc3.ValidatingSchema);
+            Assert.AreEqual(new Version(2, 2, 0), lproc3.ResourceVersion);
+            Assert.NotNull(lproc3.CurrentConnection);
+
+            using (var fs = File.OpenWrite("LoadProc_220.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(lproc3))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+        }
+
+        [Test]
+        public void TestWebLayoutConversions()
+        {
+            var conn = _mocks.NewMock<IServerConnection>();
+            var conv = new ResourceObjectConverter();
+
+            var wl = ObjectFactory.CreateWebLayout(conn, new Version(1, 0, 0), "Library://Test.MapDefinition");
+
+            Assert.AreEqual("1.0.0", wl.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("WebLayout-1.0.0.xsd", wl.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("WebLayout-1.0.0.xsd", wl.ValidatingSchema);
+            Assert.AreEqual(new Version(1, 0, 0), wl.ResourceVersion);
+
+            using (var fs = File.OpenWrite("WebLayout_100.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(wl))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+
+            var wl2 = (IWebLayout)conv.Convert(wl, new Version(1, 1, 0));
+
+            Assert.AreEqual("1.1.0", wl2.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("WebLayout-1.1.0.xsd", wl2.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("WebLayout-1.1.0.xsd", wl2.ValidatingSchema);
+            Assert.AreEqual(new Version(1, 1, 0), wl2.ResourceVersion);
+            Assert.NotNull(wl2.CurrentConnection);
+            Assert.True(wl2 is IWebLayout2);
+
+            using (var fs = File.OpenWrite("WebLayout_110.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(wl2))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+        }
+
+        [Test]
+        public void TestSymbolDefinitionConversions()
+        {
+            var conn = _mocks.NewMock<IServerConnection>();
+            var conv = new ResourceObjectConverter();
+
+            var ssym = ObjectFactory.CreateSimpleSymbol(conn, new Version(1, 0, 0), "SimpleSymbolTest", "Test simple symbol");
+
+            Assert.AreEqual("1.0.0", ssym.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("SymbolDefinition-1.0.0.xsd", ssym.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("SymbolDefinition-1.0.0.xsd", ssym.ValidatingSchema);
+            Assert.AreEqual(new Version(1, 0, 0), ssym.ResourceVersion);
+
+            using (var fs = File.OpenWrite("SimpleSymDef_100.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(ssym))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+
+            var ssym2 = (ISimpleSymbolDefinition)conv.Convert(ssym, new Version(1, 1, 0));
+
+            Assert.AreEqual("1.1.0", ssym2.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("SymbolDefinition-1.1.0.xsd", ssym2.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("SymbolDefinition-1.1.0.xsd", ssym2.ValidatingSchema);
+            Assert.AreEqual(new Version(1, 1, 0), ssym2.ResourceVersion);
+            Assert.NotNull(ssym2.CurrentConnection);
+
+            using (var fs = File.OpenWrite("SimpleSymDef_110.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(ssym2))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+
+            var csym = ObjectFactory.CreateCompoundSymbol(conn, new Version(1, 0, 0), "CompoundSymbolTest", "Test compound symbol");
+
+            Assert.AreEqual("1.0.0", csym.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("SymbolDefinition-1.0.0.xsd", csym.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("SymbolDefinition-1.0.0.xsd", csym.ValidatingSchema);
+            Assert.AreEqual(new Version(1, 0, 0), csym.ResourceVersion);
+
+            using (var fs = File.OpenWrite("CompoundSymDef_100.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(csym))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+
+            var csym2 = (ICompoundSymbolDefinition)conv.Convert(csym, new Version(1, 1, 0));
+
+            Assert.AreEqual("1.1.0", csym2.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("SymbolDefinition-1.1.0.xsd", csym2.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("SymbolDefinition-1.1.0.xsd", csym2.ValidatingSchema);
+            Assert.AreEqual(new Version(1, 1, 0), csym2.ResourceVersion);
+            Assert.NotNull(csym2.CurrentConnection);
+
+            using (var fs = File.OpenWrite("CompoundSymDef_110.xml"))
+            {
+                using (var src = ResourceTypeRegistry.Serialize(csym2))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
         }
     }
 }

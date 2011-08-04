@@ -20,48 +20,45 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
 {
     /// <summary>
     /// Performs schematic upgrades of resources
     /// </summary>
-    public interface IResourceConversionService
+    public interface IResourceConverter
     {
         /// <summary>
-        /// Upgrades the resource
+        /// Converts the resource to the specified version
         /// </summary>
         /// <param name="resource">The resource.</param>
         /// <param name="targetVersion">The target version.</param>
         /// <returns></returns>
-        IResource Upgrade(IResource resource, Version targetVersion);
+        IResource Convert(IResource resource, Version targetVersion);
     }
 
-    /// <summary>
-    /// Converts a specified resource to a specified version
-    /// </summary>
-    public interface IResourceConverter
+    public class ResourceObjectConverter : IResourceConverter
     {
-        /// <summary>
-        /// Gets the type of resource this can convert
-        /// </summary>
-        ResourceTypes ResourceType { get; }
+        public IResource Convert(IResource resource, Version targetVersion)
+        {
+            var resVer = resource.GetResourceTypeDescriptor().Version;
+            var dstVer = string.Format("{0}.{1}.{2}", targetVersion.Major, targetVersion.Minor, targetVersion.Build);
+            var dstXsd = resource.ValidatingSchema.Replace(resVer, dstVer);
 
-        /// <summary>
-        /// Gets the version this converter can convert from
-        /// </summary>
-        Version SourceVersion { get; }
+            using (var sr = ResourceTypeRegistry.Serialize(resource))
+            {
+                using (var str = new StreamReader(sr))
+                {
+                    var xml = new StringBuilder(str.ReadToEnd());
+                    xml.Replace(resource.ValidatingSchema, dstXsd);
+                    xml.Replace("version=\"" + resVer, "version=\"" + dstVer);
 
-        /// <summary>
-        /// Gets the version this converter will convert to
-        /// </summary>
-        Version TargetVersion { get; }
-
-        /// <summary>
-        /// Converts the resource
-        /// </summary>
-        /// <param name="resource"></param>
-        /// <returns></returns>
-        IResource Convert(IResource resource);
+                    var convRes = ResourceTypeRegistry.Deserialize(xml.ToString());
+                    convRes.CurrentConnection = resource.CurrentConnection;
+                    return convRes;
+                }
+            }
+        }
     }
 }

@@ -305,8 +305,6 @@
     <Compile Include="Resource\Validation\BaseLoadProcedureValidator.cs" />
     <Compile Include="Resource\Validation\BaseWebLayoutValidator.cs" />
     <Compile Include="Resource\Conversion\IResourceConverter.cs" />
-    <Compile Include="Resource\Conversion\ResourceConverter.cs" />
-    <Compile Include="Resource\Conversion\ResourceUpgrader.cs" />
     <Compile Include="Resource\IResource.cs" />
     <Compile Include="Resource\IResourceValidator.cs" />
     <Compile Include="Resource\IVersionedEntity.cs" />
