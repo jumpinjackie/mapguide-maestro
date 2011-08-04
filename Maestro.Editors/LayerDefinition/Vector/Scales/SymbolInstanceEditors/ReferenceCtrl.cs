@@ -32,6 +32,7 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales.SymbolInstanceEditors
 {
+    [ToolboxItem(false)]
     internal partial class ReferenceCtrl : UserControl
     {
         private IResourceService _resSvc;

@@ -32,6 +32,7 @@ using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace Maestro.Editors.SymbolDefinition
 {
+    [ToolboxItem(false)]
     internal partial class SimpleSymbolReferenceCtrl : UserControl
     {
         private IResourceService _resSvc;

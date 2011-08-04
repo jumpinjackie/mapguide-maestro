@@ -33,7 +33,7 @@ using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
-    [ToolboxItem(true)]
+    [ToolboxItem(false)]
     internal partial class ConditionListButtons : UserControl
     {
         private IPointVectorStyle m_point;

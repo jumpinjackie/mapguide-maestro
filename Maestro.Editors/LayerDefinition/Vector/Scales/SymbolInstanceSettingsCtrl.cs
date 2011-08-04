@@ -30,11 +30,12 @@ using OSGeo.MapGuide.MaestroAPI;
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
     using SymbolInstanceEditors;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.MaestroAPI.Schema;
+    using OSGeo.MapGuide.MaestroAPI.Services;
+    using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+    using OSGeo.MapGuide.MaestroAPI.Schema;
     using Maestro.Editors.SymbolDefinition;
 
+    [ToolboxItem(false)]
     internal partial class SymbolInstanceSettingsCtrl : UserControl
     {
         public SymbolInstanceSettingsCtrl()

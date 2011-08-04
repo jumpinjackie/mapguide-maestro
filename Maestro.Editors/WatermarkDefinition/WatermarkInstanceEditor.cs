@@ -32,6 +32,7 @@ using System.Diagnostics;
 
 namespace Maestro.Editors.WatermarkDefinition
 {
+    [ToolboxItem(false)]
     internal partial class WatermarkInstanceEditor : UserControl
     {
         private IWatermark _watermark;

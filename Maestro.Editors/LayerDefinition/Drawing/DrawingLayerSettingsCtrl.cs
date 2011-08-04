@@ -30,7 +30,7 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace Maestro.Editors.LayerDefinition.Drawing
 {
-    [ToolboxItem(true)]
+    [ToolboxItem(false)]
     internal partial class DrawingLayerSettingsCtrl : CollapsiblePanel,IEditorBindable
     {
         public DrawingLayerSettingsCtrl()
