@@ -606,6 +606,9 @@ namespace MaestroAPITests
             var conn = _mocks.NewMock<IServerConnection>();
             var conv = new ResourceObjectConverter();
             var ldf = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector, new Version(1, 0, 0));
+            ldf.SubLayer.ResourceId = "Library://Samples/Sheboygan/Data/Parcels.FeatureSource";
+            ((IVectorLayerDefinition)ldf.SubLayer).FeatureName = "SHP_Schema:Parcels";
+            ((IVectorLayerDefinition)ldf.SubLayer).Geometry = "Geometry";
 
             Assert.AreEqual("1.0.0", ldf.GetResourceTypeDescriptor().Version);
             Assert.AreEqual("LayerDefinition-1.0.0.xsd", ldf.GetResourceTypeDescriptor().XsdName);
