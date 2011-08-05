@@ -9,9 +9,11 @@
  - Show resources in sorted order in the Resource Picker
  - Map Definition Editor now supports re-arranging the logical order of Map Groups
  - Resource Picker now remembers last selected folder for most resource selection operations
+ - Editors now support in-place upgrade of resources to the latest schema version supported
  - Productivity enhancements
     - New name for Rename dialog defaults to current name and field is focused
     - New Setup Standard Folder Structure command 
+ - API: Support for converting resources to a specified version
  - API: TF.net dependency replaced with NetToplogySuite. References and namespaces need to be updated in consuming applications
  - Fix: Changed Migrate Resources to Copy/Move resources command for multiple resource selection context menu
  - Fix: When renaming a group in the Map Definition Editor, layers belonging to it didn't have their references updated
