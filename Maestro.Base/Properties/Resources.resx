@@ -1049,4 +1049,7 @@ Error message: {1}</value>
   <data name="SiteExplorer_CreateFolderStructure" xml:space="preserve">
     <value>Create Standard Folder Structure</value>
   </data>
+  <data name="ResourceUpgraded" xml:space="preserve">
+    <value>Resource upgraded to schema version {0}.{1}.{2}</value>
+  </data>
 </root>

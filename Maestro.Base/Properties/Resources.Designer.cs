@@ -1622,6 +1622,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resource upgraded to schema version {0}.{1}.{2}.
+        /// </summary>
+        internal static string ResourceUpgraded {
+            get {
+                return ResourceManager.GetString("ResourceUpgraded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to decode the current bounds,
         ///you must re-enter the epsg code in the SRS tag manually.
         ///Error message: {0}..

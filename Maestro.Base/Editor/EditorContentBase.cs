@@ -32,6 +32,8 @@ using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using Maestro.Base.UI;
 using Maestro.Base.UI.Preferences;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
+using System.IO;
 
 namespace Maestro.Base.Editor
 {
@@ -289,7 +291,29 @@ namespace Maestro.Base.Editor
 
         private void btnUpgrade_Click(object sender, EventArgs e)
         {
+            var res = _svc.GetEditedResource();
+            var conn = res.CurrentConnection;
+            var ver = conn.Capabilities.GetMaxSupportedResourceVersion(res.ResourceType);
 
+            using (new WaitCursor(this))
+            {
+                var conv = new ResourceObjectConverter();
+                var res2 = conv.Convert(res, ver);
+                
+                using (var stream = ResourceTypeRegistry.Serialize(res2))
+                {
+                    using (var sr =new StreamReader(stream))
+                    {
+                        _svc.UpdateResourceContent(sr.ReadToEnd());
+                        ((ResourceEditorService)_svc).ReReadSessionResource();
+                    }
+                }
+                
+                //This will re-init everything
+                this.EditorService = this.EditorService;
+                MessageBox.Show(string.Format(Properties.Resources.ResourceUpgraded, ver.Major, ver.Minor, ver.Build));
+                this.EditorService.MarkDirty(); //It gets re-init with a clean slate, but an in-place upgrade is a dirty operation
+            }
         }
     }
 }
