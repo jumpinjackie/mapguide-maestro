@@ -58,6 +58,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
                     if (!SupportsFusion())
                         throw new UnsupportedResourceTypeException(ResourceTypes.ApplicationDefinition);
                     break;
+                case ResourceTypes.WatermarkDefinition:
+                    ver = GetMaxWatermarkDefinitionVersion();
+                    break;
+                case ResourceTypes.MapDefinition:
+                    ver = GetMaxMapDefinitionVersion();
+                    break;
                 case ResourceTypes.LayerDefinition:
                     ver = GetMaxLayerDefinitionVersion();
                     break;
@@ -93,6 +99,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         protected virtual bool SupportsFusion()
         {
             return (_parent.SiteVersion >= new Version(2, 0));
+        }
+
+        /// <summary>
+        /// Gets the max watermark definition version
+        /// </summary>
+        /// <returns></returns>
+        protected virtual Version GetMaxWatermarkDefinitionVersion()
+        {
+            return new Version(2, 3, 0);
         }
 
         /// <summary>
@@ -134,17 +149,32 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         }
 
         /// <summary>
+        /// Gets the max map definition version
+        /// </summary>
+        /// <returns></returns>
+        protected virtual Version GetMaxMapDefinitionVersion()
+        {
+            if (_parent.SiteVersion >= new Version(2, 3))
+                return new Version(2, 3, 0);
+
+            return new Version(1, 0, 0);
+        }
+
+        /// <summary>
         /// Gets the max layer definition version.
         /// </summary>
         /// <returns></returns>
         protected virtual Version GetMaxLayerDefinitionVersion()
         {
+            if (_parent.SiteVersion >= new Version(2, 3))
+                return new Version(2, 3, 0);
             if (_parent.SiteVersion >= new Version(2, 1))
                 return new Version(1, 3, 0);
             if (_parent.SiteVersion >= new Version(2, 0))
                 return new Version(1, 2, 0);
             if (_parent.SiteVersion >= new Version(1, 2))
                 return new Version(1, 1, 0);
+            
             return new Version(1, 0, 0);
         }
 
