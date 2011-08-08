@@ -175,6 +175,31 @@ This dialog allows you to control the two main aspects of an area style:
  
 Once again, the preview at the bottom of the dialog reflects your current style settings. 
 
+Composite Style Rules
+^^^^^^^^^^^^^^^^^^^^^
+
+Clicking the **...** button beside the previewed area style on the rule editor control will display the Symbol Instances Dialog
+
+.. figure:: images/ldf_vector_composite_rule.png
+
+ *A Composite Style Rule control*
+
+This dialog allows you to include references to existing Symbol Defintions or define such Symbol Definitions inline.
+
+.. figure:: images/ldf_symbol_instances_dialog.png
+
+ *The Symbol Instances Dialog*
+
+For each symbol definition you include (referenced or inline), you can provide override any parameter values that are exposed. You 
+can use FDO expressions for override parameter values.
+
+The inline symbol definitions use the same editors as the normal symbol definition editor. See :ref:`symbol_definitions`
+ 
+.. note::
+
+    Unlike Point/Line/Area styles, the preview is blank because rendering composite symbolization preview is not currently supported. The only
+    means of previewing your composite symbolization settings is trial and error with the current edited layer defintion.
+
 Label Settings
 ^^^^^^^^^^^^^^
 

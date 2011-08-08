@@ -23,6 +23,8 @@ Contents:
    understanding_feature_sources
    understanding_drawing_sources
    understanding_layers
+   understanding_symbol_definitions
+   understanding_watermarks
    understanding_maps
    understanding_applications
    understanding_print_layouts

@@ -48,7 +48,7 @@ you want to show as part of the query result, and any computed properties. Compu
 
 Once you have specified your query parameters, click **Run Query** to execute the query.
 
-.. figure:: images/fspreview_query_result.png
+.. figure:: images/fspreview_query_results.png
 
 .. note::
 
