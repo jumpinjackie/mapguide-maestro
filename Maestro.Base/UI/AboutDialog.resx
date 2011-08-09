@@ -1067,7 +1067,552 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="Version.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 32</value>
+  </data>
+  <data name="Version.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 16</value>
+  </data>
+  <data name="Version.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="Version.Text" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;Version.Name" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="&gt;&gt;Version.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Version.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Version.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="PayPalImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="PayPalImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>352, 8</value>
+  </data>
+  <data name="PayPalImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 24</value>
+  </data>
+  <data name="PayPalImage.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="PayPalImage.ToolTip" xml:space="preserve">
+    <value>Click here to open the donation page</value>
+  </data>
+  <data name="&gt;&gt;PayPalImage.Name" xml:space="preserve">
+    <value>PayPalImage</value>
+  </data>
+  <data name="&gt;&gt;PayPalImage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PayPalImage.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PayPalImage.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="Localization.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 64</value>
+  </data>
+  <data name="Localization.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 16</value>
+  </data>
+  <data name="Localization.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="Localization.Text" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;Localization.Name" xml:space="preserve">
+    <value>Localization</value>
+  </data>
+  <data name="&gt;&gt;Localization.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Localization.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Localization.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ServerVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ServerVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 48</value>
+  </data>
+  <data name="ServerVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 16</value>
+  </data>
+  <data name="ServerVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="ServerVersion.Text" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;ServerVersion.Name" xml:space="preserve">
+    <value>ServerVersion</value>
+  </data>
+  <data name="&gt;&gt;ServerVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ServerVersion.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ServerVersion.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="thirdPartyTab.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;lnkAdvTreeView.Name" xml:space="preserve">
+    <value>lnkAdvTreeView</value>
+  </data>
+  <data name="&gt;&gt;lnkAdvTreeView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lnkAdvTreeView.Parent" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;lnkAdvTreeView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Name" xml:space="preserve">
+    <value>linkLabel1</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Parent" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lnkSharpDevelop.Name" xml:space="preserve">
+    <value>lnkSharpDevelop</value>
+  </data>
+  <data name="&gt;&gt;lnkSharpDevelop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lnkSharpDevelop.Parent" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;lnkSharpDevelop.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;colorBrewerlinkLabel.Name" xml:space="preserve">
+    <value>colorBrewerlinkLabel</value>
+  </data>
+  <data name="&gt;&gt;colorBrewerlinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorBrewerlinkLabel.Parent" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;colorBrewerlinkLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;ziplibLinkLabel.Name" xml:space="preserve">
+    <value>ziplibLinkLabel</value>
+  </data>
+  <data name="&gt;&gt;ziplibLinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ziplibLinkLabel.Parent" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;ziplibLinkLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;tfnetLinkLabel.Name" xml:space="preserve">
+    <value>tfnetLinkLabel</value>
+  </data>
+  <data name="&gt;&gt;tfnetLinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tfnetLinkLabel.Parent" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;tfnetLinkLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="thirdPartyTab.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="thirdPartyTab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 185</value>
+  </data>
+  <data name="thirdPartyTab.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="thirdPartyTab.Text" xml:space="preserve">
+    <value>Thirdparty</value>
+  </data>
+  <data name="&gt;&gt;thirdPartyTab.Name" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;thirdPartyTab.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;thirdPartyTab.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;thirdPartyTab.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 13</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>This program uses the following thirdparty libraries</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tfnetLinkLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tfnetLinkLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="tfnetLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 52</value>
+  </data>
+  <data name="tfnetLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 13</value>
+  </data>
+  <data name="tfnetLinkLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tfnetLinkLabel.Text" xml:space="preserve">
+    <value>.net Topology Suite</value>
+  </data>
+  <data name="&gt;&gt;tfnetLinkLabel.Name" xml:space="preserve">
+    <value>tfnetLinkLabel</value>
+  </data>
+  <data name="&gt;&gt;tfnetLinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tfnetLinkLabel.Parent" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;tfnetLinkLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="ziplibLinkLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ziplibLinkLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ziplibLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 75</value>
+  </data>
+  <data name="ziplibLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 13</value>
+  </data>
+  <data name="ziplibLinkLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ziplibLinkLabel.Text" xml:space="preserve">
+    <value>ICSharp Zip Lib</value>
+  </data>
+  <data name="&gt;&gt;ziplibLinkLabel.Name" xml:space="preserve">
+    <value>ziplibLinkLabel</value>
+  </data>
+  <data name="&gt;&gt;ziplibLinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ziplibLinkLabel.Parent" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;ziplibLinkLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="colorBrewerlinkLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="colorBrewerlinkLabel.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
+    <value>84, 23</value>
+  </data>
+  <data name="colorBrewerlinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 172</value>
+  </data>
+  <data name="colorBrewerlinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 32</value>
+  </data>
+  <data name="colorBrewerlinkLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="colorBrewerlinkLabel.Text" xml:space="preserve">
+    <value>This product includes color specifications and designs developed by Cynthia Brewer (http://colorbrewer.org/).</value>
+  </data>
+  <data name="&gt;&gt;colorBrewerlinkLabel.Name" xml:space="preserve">
+    <value>colorBrewerlinkLabel</value>
+  </data>
+  <data name="&gt;&gt;colorBrewerlinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorBrewerlinkLabel.Parent" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;colorBrewerlinkLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lnkSharpDevelop.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lnkSharpDevelop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lnkSharpDevelop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 30</value>
+  </data>
+  <data name="lnkSharpDevelop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 13</value>
+  </data>
+  <data name="lnkSharpDevelop.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lnkSharpDevelop.Text" xml:space="preserve">
+    <value>Sharp Develop</value>
+  </data>
+  <data name="&gt;&gt;lnkSharpDevelop.Name" xml:space="preserve">
+    <value>lnkSharpDevelop</value>
+  </data>
+  <data name="&gt;&gt;lnkSharpDevelop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lnkSharpDevelop.Parent" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;lnkSharpDevelop.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="linkLabel1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="linkLabel1.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
+    <value>55, 29</value>
+  </data>
+  <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 127</value>
+  </data>
+  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 45</value>
+  </data>
+  <data name="linkLabel1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="linkLabel1.Text" xml:space="preserve">
+    <value>This product uses icons produced by Yusuke Kamiyamane (http://p.yusukekamiyamane.com) licensed under Creative Commons 3.0</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Name" xml:space="preserve">
+    <value>linkLabel1</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Parent" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lnkAdvTreeView.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lnkAdvTreeView.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lnkAdvTreeView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 98</value>
+  </data>
+  <data name="lnkAdvTreeView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 13</value>
+  </data>
+  <data name="lnkAdvTreeView.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lnkAdvTreeView.Text" xml:space="preserve">
+    <value>Advanced TreeView</value>
+  </data>
+  <data name="&gt;&gt;lnkAdvTreeView.Name" xml:space="preserve">
+    <value>lnkAdvTreeView</value>
+  </data>
+  <data name="&gt;&gt;lnkAdvTreeView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lnkAdvTreeView.Parent" xml:space="preserve">
+    <value>thirdPartyTab</value>
+  </data>
+  <data name="&gt;&gt;lnkAdvTreeView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Credits.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="Credits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Credits.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Credits.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="Credits.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 185</value>
+  </data>
+  <data name="Credits.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;Credits.Name" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="&gt;&gt;Credits.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Credits.Parent" xml:space="preserve">
+    <value>creditsTab</value>
+  </data>
+  <data name="&gt;&gt;Credits.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="creditsTab.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="creditsTab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 185</value>
+  </data>
+  <data name="creditsTab.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="creditsTab.Text" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="&gt;&gt;creditsTab.Name" xml:space="preserve">
+    <value>creditsTab</value>
+  </data>
+  <data name="&gt;&gt;creditsTab.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;creditsTab.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;creditsTab.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;License.Name" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="&gt;&gt;License.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;License.Parent" xml:space="preserve">
+    <value>licenseTab</value>
+  </data>
+  <data name="&gt;&gt;License.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="licenseTab.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="licenseTab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 185</value>
+  </data>
+  <data name="licenseTab.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="licenseTab.Text" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="&gt;&gt;licenseTab.Name" xml:space="preserve">
+    <value>licenseTab</value>
+  </data>
+  <data name="&gt;&gt;licenseTab.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;licenseTab.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;licenseTab.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="License.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -1118,419 +1663,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   <data name="&gt;&gt;License.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="Version.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 32</value>
-  </data>
-  <data name="Version.Size" type="System.Drawing.Size, System.Drawing">
-    <value>328, 16</value>
-  </data>
-  <data name="Version.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="Version.Text" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;Version.Name" xml:space="preserve">
-    <value>Version</value>
-  </data>
-  <data name="&gt;&gt;Version.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Version.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Version.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="PayPalImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
-  </data>
-  <data name="PayPalImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>352, 8</value>
-  </data>
-  <data name="PayPalImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 24</value>
-  </data>
-  <data name="PayPalImage.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="PayPalImage.ToolTip" xml:space="preserve">
-    <value>Click here to open the donation page</value>
-  </data>
-  <data name="&gt;&gt;PayPalImage.Name" xml:space="preserve">
-    <value>PayPalImage</value>
-  </data>
-  <data name="&gt;&gt;PayPalImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PayPalImage.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PayPalImage.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="Localization.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 64</value>
-  </data>
-  <data name="Localization.Size" type="System.Drawing.Size, System.Drawing">
-    <value>328, 16</value>
-  </data>
-  <data name="Localization.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="Localization.Text" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;Localization.Name" xml:space="preserve">
-    <value>Localization</value>
-  </data>
-  <data name="&gt;&gt;Localization.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Localization.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Localization.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="licenseTab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="licenseTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 185</value>
-  </data>
-  <data name="licenseTab.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="licenseTab.Text" xml:space="preserve">
-    <value>License</value>
-  </data>
-  <data name="&gt;&gt;licenseTab.Name" xml:space="preserve">
-    <value>licenseTab</value>
-  </data>
-  <data name="&gt;&gt;licenseTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;licenseTab.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;licenseTab.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="Credits.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="Credits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="Credits.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Credits.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
-  </data>
-  <data name="Credits.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 185</value>
-  </data>
-  <data name="Credits.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="Credits.Text" xml:space="preserve">
-    <value>Programming:
-  Kenneth Skovhede
-  Jackie NG
-  Crispin, 1Spatial Group Ltd</value>
-  </data>
-  <data name="&gt;&gt;Credits.Name" xml:space="preserve">
-    <value>Credits</value>
-  </data>
-  <data name="&gt;&gt;Credits.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Credits.Parent" xml:space="preserve">
-    <value>creditsTab</value>
-  </data>
-  <data name="&gt;&gt;Credits.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="creditsTab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="creditsTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 185</value>
-  </data>
-  <data name="creditsTab.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="creditsTab.Text" xml:space="preserve">
-    <value>Credits</value>
-  </data>
-  <data name="&gt;&gt;creditsTab.Name" xml:space="preserve">
-    <value>creditsTab</value>
-  </data>
-  <data name="&gt;&gt;creditsTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;creditsTab.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;creditsTab.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="thirdPartyTab.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lnkAdvTreeView.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lnkAdvTreeView.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lnkAdvTreeView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 98</value>
-  </data>
-  <data name="lnkAdvTreeView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 13</value>
-  </data>
-  <data name="lnkAdvTreeView.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="lnkAdvTreeView.Text" xml:space="preserve">
-    <value>Advanced TreeView</value>
-  </data>
-  <data name="&gt;&gt;lnkAdvTreeView.Name" xml:space="preserve">
-    <value>lnkAdvTreeView</value>
-  </data>
-  <data name="&gt;&gt;lnkAdvTreeView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lnkAdvTreeView.Parent" xml:space="preserve">
-    <value>thirdPartyTab</value>
-  </data>
-  <data name="&gt;&gt;lnkAdvTreeView.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="linkLabel1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="linkLabel1.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
-    <value>55, 29</value>
-  </data>
-  <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 127</value>
-  </data>
-  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>304, 45</value>
-  </data>
-  <data name="linkLabel1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="linkLabel1.Text" xml:space="preserve">
-    <value>This product uses icons produced by Yusuke Kamiyamane (http://p.yusukekamiyamane.com) licensed under Creative Commons 3.0</value>
-  </data>
-  <data name="&gt;&gt;linkLabel1.Name" xml:space="preserve">
-    <value>linkLabel1</value>
-  </data>
-  <data name="&gt;&gt;linkLabel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;linkLabel1.Parent" xml:space="preserve">
-    <value>thirdPartyTab</value>
-  </data>
-  <data name="&gt;&gt;linkLabel1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lnkSharpDevelop.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lnkSharpDevelop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lnkSharpDevelop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 30</value>
-  </data>
-  <data name="lnkSharpDevelop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 13</value>
-  </data>
-  <data name="lnkSharpDevelop.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="lnkSharpDevelop.Text" xml:space="preserve">
-    <value>Sharp Develop</value>
-  </data>
-  <data name="&gt;&gt;lnkSharpDevelop.Name" xml:space="preserve">
-    <value>lnkSharpDevelop</value>
-  </data>
-  <data name="&gt;&gt;lnkSharpDevelop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lnkSharpDevelop.Parent" xml:space="preserve">
-    <value>thirdPartyTab</value>
-  </data>
-  <data name="&gt;&gt;lnkSharpDevelop.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="colorBrewerlinkLabel.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
-    <value>84, 23</value>
-  </data>
-  <data name="colorBrewerlinkLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 172</value>
-  </data>
-  <data name="colorBrewerlinkLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>304, 32</value>
-  </data>
-  <data name="colorBrewerlinkLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="colorBrewerlinkLabel.Text" xml:space="preserve">
-    <value>This product includes color specifications and designs developed by Cynthia Brewer (http://colorbrewer.org/).</value>
-  </data>
-  <data name="&gt;&gt;colorBrewerlinkLabel.Name" xml:space="preserve">
-    <value>colorBrewerlinkLabel</value>
-  </data>
-  <data name="&gt;&gt;colorBrewerlinkLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colorBrewerlinkLabel.Parent" xml:space="preserve">
-    <value>thirdPartyTab</value>
-  </data>
-  <data name="&gt;&gt;colorBrewerlinkLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="ziplibLinkLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ziplibLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 75</value>
-  </data>
-  <data name="ziplibLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 13</value>
-  </data>
-  <data name="ziplibLinkLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="ziplibLinkLabel.Text" xml:space="preserve">
-    <value>ICSharp Zip Lib</value>
-  </data>
-  <data name="&gt;&gt;ziplibLinkLabel.Name" xml:space="preserve">
-    <value>ziplibLinkLabel</value>
-  </data>
-  <data name="&gt;&gt;ziplibLinkLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ziplibLinkLabel.Parent" xml:space="preserve">
-    <value>thirdPartyTab</value>
-  </data>
-  <data name="&gt;&gt;ziplibLinkLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tfnetLinkLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="tfnetLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 52</value>
-  </data>
-  <data name="tfnetLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 13</value>
-  </data>
-  <data name="tfnetLinkLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tfnetLinkLabel.Text" xml:space="preserve">
-    <value>.net Topology Suite</value>
-  </data>
-  <data name="&gt;&gt;tfnetLinkLabel.Name" xml:space="preserve">
-    <value>tfnetLinkLabel</value>
-  </data>
-  <data name="&gt;&gt;tfnetLinkLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tfnetLinkLabel.Parent" xml:space="preserve">
-    <value>thirdPartyTab</value>
-  </data>
-  <data name="&gt;&gt;tfnetLinkLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 8</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 13</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>This program uses the following thirdparty libraries</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>thirdPartyTab</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="thirdPartyTab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="thirdPartyTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 185</value>
-  </data>
-  <data name="thirdPartyTab.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="thirdPartyTab.Text" xml:space="preserve">
-    <value>Thirdparty</value>
-  </data>
-  <data name="&gt;&gt;thirdPartyTab.Name" xml:space="preserve">
-    <value>thirdPartyTab</value>
-  </data>
-  <data name="&gt;&gt;thirdPartyTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;thirdPartyTab.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;thirdPartyTab.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 80</value>
   </data>
@@ -1551,33 +1683,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   </data>
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="ServerVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ServerVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 48</value>
-  </data>
-  <data name="ServerVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>328, 16</value>
-  </data>
-  <data name="ServerVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="ServerVersion.Text" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;ServerVersion.Name" xml:space="preserve">
-    <value>ServerVersion</value>
-  </data>
-  <data name="&gt;&gt;ServerVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ServerVersion.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ServerVersion.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

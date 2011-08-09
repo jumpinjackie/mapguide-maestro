@@ -400,6 +400,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maestro.Base.addin" />
+    <None Include="Resources\Contributors.txt" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\marker.png" />
     <None Include="Resources\arrow-circle-double.png" />

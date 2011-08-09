@@ -1052,4 +1052,7 @@ Error message: {1}</value>
   <data name="ResourceUpgraded" xml:space="preserve">
     <value>Resource upgraded to schema version {0}.{1}.{2}</value>
   </data>
+  <data name="Contributors" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Contributors.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
 </root>

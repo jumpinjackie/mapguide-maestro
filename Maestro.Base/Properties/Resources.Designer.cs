@@ -487,6 +487,19 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Programming:
+        ///
+        ///	Jackie Ng
+        ///	Kenneth Skovhede
+        ///	Crispin Hoult.
+        /// </summary>
+        internal static string Contributors {
+            get {
+                return ResourceManager.GetString("Contributors", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap cross {
             get {
                 object obj = ResourceManager.GetObject("cross", resourceCulture);

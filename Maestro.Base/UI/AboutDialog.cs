@@ -35,26 +35,26 @@ namespace Maestro.Base.UI
 	{
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.LinkLabel linkLabel;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox License;
+        private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label Version;
 		private System.Windows.Forms.ToolTip ToolTip;
 		private System.Windows.Forms.PictureBox PayPalImage;
 		private System.ComponentModel.IContainer components;
-		private System.Windows.Forms.Label Localization;
-		private System.Windows.Forms.TabControl tabControl;
-		private System.Windows.Forms.TabPage licenseTab;
-		private System.Windows.Forms.TabPage creditsTab;
-		private System.Windows.Forms.TextBox Credits;
+        private System.Windows.Forms.Label Localization;
+        private Label ServerVersion;
         private TabPage thirdPartyTab;
+        private LinkLabel lnkAdvTreeView;
+        private LinkLabel linkLabel1;
+        private LinkLabel lnkSharpDevelop;
+        private LinkLabel colorBrewerlinkLabel;
+        private LinkLabel ziplibLinkLabel;
         private LinkLabel tfnetLinkLabel;
         private Label label2;
-        private LinkLabel ziplibLinkLabel;
-        private Label ServerVersion;
-        private LinkLabel colorBrewerlinkLabel;
-        private LinkLabel lnkSharpDevelop;
-        private LinkLabel linkLabel1;
-        private LinkLabel lnkAdvTreeView;
+        private TabPage creditsTab;
+        private TextBox Credits;
+        private TabPage licenseTab;
+        private TextBox License;
+        private TabControl tabControl;
         private IServerConnection m_connection;
 
 		private AboutDialog()
@@ -99,30 +99,30 @@ namespace Maestro.Base.UI
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.linkLabel = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.License = new System.Windows.Forms.TextBox();
             this.Version = new System.Windows.Forms.Label();
             this.PayPalImage = new System.Windows.Forms.PictureBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Localization = new System.Windows.Forms.Label();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.licenseTab = new System.Windows.Forms.TabPage();
+            this.ServerVersion = new System.Windows.Forms.Label();
+            this.thirdPartyTab = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tfnetLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.ziplibLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.colorBrewerlinkLabel = new System.Windows.Forms.LinkLabel();
+            this.lnkSharpDevelop = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.lnkAdvTreeView = new System.Windows.Forms.LinkLabel();
             this.creditsTab = new System.Windows.Forms.TabPage();
             this.Credits = new System.Windows.Forms.TextBox();
-            this.thirdPartyTab = new System.Windows.Forms.TabPage();
-            this.lnkAdvTreeView = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.lnkSharpDevelop = new System.Windows.Forms.LinkLabel();
-            this.colorBrewerlinkLabel = new System.Windows.Forms.LinkLabel();
-            this.ziplibLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.tfnetLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ServerVersion = new System.Windows.Forms.Label();
+            this.licenseTab = new System.Windows.Forms.TabPage();
+            this.License = new System.Windows.Forms.TextBox();
+            this.tabControl = new System.Windows.Forms.TabControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayPalImage)).BeginInit();
-            this.tabControl.SuspendLayout();
-            this.licenseTab.SuspendLayout();
-            this.creditsTab.SuspendLayout();
             this.thirdPartyTab.SuspendLayout();
+            this.creditsTab.SuspendLayout();
+            this.licenseTab.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -143,12 +143,6 @@ namespace Maestro.Base.UI
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // License
-            // 
-            resources.ApplyResources(this.License, "License");
-            this.License.Name = "License";
-            this.License.ReadOnly = true;
-            // 
             // Version
             // 
             resources.ApplyResources(this.Version, "Version");
@@ -168,34 +162,10 @@ namespace Maestro.Base.UI
             resources.ApplyResources(this.Localization, "Localization");
             this.Localization.Name = "Localization";
             // 
-            // tabControl
+            // ServerVersion
             // 
-            this.tabControl.Controls.Add(this.licenseTab);
-            this.tabControl.Controls.Add(this.creditsTab);
-            this.tabControl.Controls.Add(this.thirdPartyTab);
-            resources.ApplyResources(this.tabControl, "tabControl");
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            // 
-            // licenseTab
-            // 
-            this.licenseTab.Controls.Add(this.License);
-            resources.ApplyResources(this.licenseTab, "licenseTab");
-            this.licenseTab.Name = "licenseTab";
-            this.licenseTab.UseVisualStyleBackColor = true;
-            // 
-            // creditsTab
-            // 
-            this.creditsTab.Controls.Add(this.Credits);
-            resources.ApplyResources(this.creditsTab, "creditsTab");
-            this.creditsTab.Name = "creditsTab";
-            this.creditsTab.UseVisualStyleBackColor = true;
-            // 
-            // Credits
-            // 
-            resources.ApplyResources(this.Credits, "Credits");
-            this.Credits.Name = "Credits";
-            this.Credits.ReadOnly = true;
+            resources.ApplyResources(this.ServerVersion, "ServerVersion");
+            this.ServerVersion.Name = "ServerVersion";
             // 
             // thirdPartyTab
             // 
@@ -210,27 +180,24 @@ namespace Maestro.Base.UI
             this.thirdPartyTab.Name = "thirdPartyTab";
             this.thirdPartyTab.UseVisualStyleBackColor = true;
             // 
-            // lnkAdvTreeView
+            // label2
             // 
-            resources.ApplyResources(this.lnkAdvTreeView, "lnkAdvTreeView");
-            this.lnkAdvTreeView.Name = "lnkAdvTreeView";
-            this.lnkAdvTreeView.TabStop = true;
-            this.lnkAdvTreeView.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkAdvTreeView_LinkClicked);
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
             // 
-            // linkLabel1
+            // tfnetLinkLabel
             // 
-            resources.ApplyResources(this.linkLabel1, "linkLabel1");
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.UseCompatibleTextRendering = true;
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkIcons_Clicked);
+            resources.ApplyResources(this.tfnetLinkLabel, "tfnetLinkLabel");
+            this.tfnetLinkLabel.Name = "tfnetLinkLabel";
+            this.tfnetLinkLabel.TabStop = true;
+            this.tfnetLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.tfnetLinkLabel_LinkClicked);
             // 
-            // lnkSharpDevelop
+            // ziplibLinkLabel
             // 
-            resources.ApplyResources(this.lnkSharpDevelop, "lnkSharpDevelop");
-            this.lnkSharpDevelop.Name = "lnkSharpDevelop";
-            this.lnkSharpDevelop.TabStop = true;
-            this.lnkSharpDevelop.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSharpDevelop_LinkClicked);
+            resources.ApplyResources(this.ziplibLinkLabel, "ziplibLinkLabel");
+            this.ziplibLinkLabel.Name = "ziplibLinkLabel";
+            this.ziplibLinkLabel.TabStop = true;
+            this.ziplibLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ziplibLinkLabel_LinkClicked);
             // 
             // colorBrewerlinkLabel
             // 
@@ -240,29 +207,62 @@ namespace Maestro.Base.UI
             this.colorBrewerlinkLabel.UseCompatibleTextRendering = true;
             this.colorBrewerlinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkColorBrewer_Clicked);
             // 
-            // ziplibLinkLabel
+            // lnkSharpDevelop
             // 
-            resources.ApplyResources(this.ziplibLinkLabel, "ziplibLinkLabel");
-            this.ziplibLinkLabel.Name = "ziplibLinkLabel";
-            this.ziplibLinkLabel.TabStop = true;
-            this.ziplibLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ziplibLinkLabel_LinkClicked);
+            resources.ApplyResources(this.lnkSharpDevelop, "lnkSharpDevelop");
+            this.lnkSharpDevelop.Name = "lnkSharpDevelop";
+            this.lnkSharpDevelop.TabStop = true;
+            this.lnkSharpDevelop.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSharpDevelop_LinkClicked);
             // 
-            // tfnetLinkLabel
+            // linkLabel1
             // 
-            resources.ApplyResources(this.tfnetLinkLabel, "tfnetLinkLabel");
-            this.tfnetLinkLabel.Name = "tfnetLinkLabel";
-            this.tfnetLinkLabel.TabStop = true;
-            this.tfnetLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.tfnetLinkLabel_LinkClicked);
+            resources.ApplyResources(this.linkLabel1, "linkLabel1");
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.UseCompatibleTextRendering = true;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkIcons_Clicked);
             // 
-            // label2
+            // lnkAdvTreeView
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.lnkAdvTreeView, "lnkAdvTreeView");
+            this.lnkAdvTreeView.Name = "lnkAdvTreeView";
+            this.lnkAdvTreeView.TabStop = true;
+            this.lnkAdvTreeView.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkAdvTreeView_LinkClicked);
             // 
-            // ServerVersion
+            // creditsTab
             // 
-            resources.ApplyResources(this.ServerVersion, "ServerVersion");
-            this.ServerVersion.Name = "ServerVersion";
+            this.creditsTab.Controls.Add(this.Credits);
+            resources.ApplyResources(this.creditsTab, "creditsTab");
+            this.creditsTab.Name = "creditsTab";
+            this.creditsTab.UseVisualStyleBackColor = true;
+            // 
+            // Credits
+            // 
+            resources.ApplyResources(this.Credits, "Credits");
+            this.Credits.Name = "Credits";
+            this.Credits.ReadOnly = true;
+            // 
+            // licenseTab
+            // 
+            this.licenseTab.Controls.Add(this.License);
+            resources.ApplyResources(this.licenseTab, "licenseTab");
+            this.licenseTab.Name = "licenseTab";
+            this.licenseTab.UseVisualStyleBackColor = true;
+            // 
+            // License
+            // 
+            resources.ApplyResources(this.License, "License");
+            this.License.Name = "License";
+            this.License.ReadOnly = true;
+            // 
+            // tabControl
+            // 
+            this.tabControl.Controls.Add(this.licenseTab);
+            this.tabControl.Controls.Add(this.creditsTab);
+            this.tabControl.Controls.Add(this.thirdPartyTab);
+            resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
             // 
             // AboutDialog
             // 
@@ -282,13 +282,13 @@ namespace Maestro.Base.UI
             this.Load += new System.EventHandler(this.FormAbout_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayPalImage)).EndInit();
-            this.tabControl.ResumeLayout(false);
-            this.licenseTab.ResumeLayout(false);
-            this.licenseTab.PerformLayout();
-            this.creditsTab.ResumeLayout(false);
-            this.creditsTab.PerformLayout();
             this.thirdPartyTab.ResumeLayout(false);
             this.thirdPartyTab.PerformLayout();
+            this.creditsTab.ResumeLayout(false);
+            this.creditsTab.PerformLayout();
+            this.licenseTab.ResumeLayout(false);
+            this.licenseTab.PerformLayout();
+            this.tabControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
@@ -308,6 +308,7 @@ namespace Maestro.Base.UI
             _launcher = ServiceRegistry.GetService<UrlLauncherService>();
             Debug.Assert(_launcher != null);
 
+            Credits.Text = Properties.Resources.Contributors;
 			Version.Text = string.Format(Properties.Resources.About_VersionLabel, Application.ProductVersion);
             Localization.Text = string.Format(Properties.Resources.About_LanguageLabel, System.Threading.Thread.CurrentThread.CurrentUICulture, tmp.CurrentUICulture);
 
