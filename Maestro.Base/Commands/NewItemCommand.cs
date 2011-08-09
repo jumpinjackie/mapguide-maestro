@@ -53,13 +53,11 @@ namespace Maestro.Base.Commands
             if (dlg.ShowDialog(wb) == System.Windows.Forms.DialogResult.OK)
             {
                 var tpl = dlg.SelectedTemplate;
-                
                 var res = tpl.CreateItem(startPoint, conn);
                 if (res != null)
                 {
                     res.ResourceID = "Session:" + conn.SessionID + "//" + Guid.NewGuid().ToString() + "." + res.ResourceType.ToString();
                     conn.ResourceService.SaveResource(res);
-
                     var ed = orm.Open(res.ResourceID, conn, false, exp);
                     if (!string.IsNullOrEmpty(startPoint))
                     {

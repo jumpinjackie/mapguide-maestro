@@ -193,6 +193,7 @@ namespace Maestro.Base.UI
                 var tpl = (ItemTemplate)li.Tag;
 
                 txtDescription.Text = tpl.Description;
+                this.SelectedTemplate = tpl;
                 CheckButtonState();
             }
         }
@@ -223,14 +224,8 @@ namespace Maestro.Base.UI
         /// </summary>
         public ItemTemplate SelectedTemplate
         {
-            get
-            {
-                if (lstTemplates.SelectedItems.Count == 1)
-                {
-                    return (ItemTemplate)lstTemplates.SelectedItems[0].Tag;
-                }
-                return null;
-            }
+            get;
+            private set;
         }
 
         private void RememberSelectedCategories()
