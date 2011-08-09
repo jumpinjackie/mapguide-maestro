@@ -265,6 +265,22 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
+        /// Serializes the specified resource.
+        /// </summary>
+        /// <param name="res"></param>
+        /// <returns></returns>
+        public static string SerializeAsString(IResource res)
+        {
+            using (var stream = Serialize(res))
+            {
+                using (var sr = new StreamReader(stream))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
+        }
+
+        /// <summary>
         /// Deserializes the specified XML.
         /// </summary>
         /// <param name="xml">The XML.</param>

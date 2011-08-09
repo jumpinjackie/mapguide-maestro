@@ -1222,7 +1222,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="resourceid">The resourceid.</param>
         public void SaveResourceAs(OSGeo.MapGuide.MaestroAPI.Resource.IResource resource, string resourceid)
         {
-            var stream = resource.SerializeToStream();
+            var stream = ResourceTypeRegistry.Serialize(resource);
             SetResourceXmlData(resourceid, stream);
         }
 

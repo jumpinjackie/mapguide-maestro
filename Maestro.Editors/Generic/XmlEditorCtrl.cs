@@ -30,6 +30,7 @@ using System.IO;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.Generic
 {
@@ -359,7 +360,7 @@ namespace Maestro.Editors.Generic
         public override void Bind(IEditorService service)
         {
             var res = service.GetEditedResource();
-            this.XmlContent = res.Serialize();
+            this.XmlContent = ResourceTypeRegistry.SerializeAsString(res);
             InitResourceData(service);
         }
 
