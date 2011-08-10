@@ -68,6 +68,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                     var vsr2 = vsr as IVectorScaleRange2;
                     if (vsr2 != null)
                     {
+                        //FIXME: API is designed on wrong assumptions. 
+                        //http://trac.osgeo.org/mapguide/ticket/1776
                         var cts = vsr2.CompositeStyle;
                         if (cts != null)
                         {
