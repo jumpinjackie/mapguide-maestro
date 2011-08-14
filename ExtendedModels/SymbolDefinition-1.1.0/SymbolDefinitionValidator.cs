@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -20,24 +20,17 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
-namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
+namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0
 {
-    /// <summary>
-    /// Resource validator for Symbol Definitions
-    /// </summary>
     public class SymbolDefinitionValidator : BaseSymbolDefinitionValidator
     {
-        /// <summary>
-        /// Gets the resource type and version this validator supports
-        /// </summary>
-        /// <value></value>
         public override ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition, "1.0.0"); }
+            get { return new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition, "1.1.0"); }
         }
     }
 }

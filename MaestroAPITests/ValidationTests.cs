@@ -38,12 +38,6 @@ namespace MaestroAPITests
     [TestFixture]
     public class ValidationTests
     {
-        [TestFixtureSetUp]
-        public void FixtureSetup()
-        {
-            ResourceValidatorLoader.LoadStockValidators();
-        }
-
         [Test]
         public void TestUniqueIssues()
         {

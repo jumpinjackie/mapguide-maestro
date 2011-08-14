@@ -120,5 +120,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 
             Trace.TraceInformation("Validated: " + resourceId);
         }
+
+        public bool ResourceExists(string resourceId)
+        {
+            return _resSvc.ResourceExists(resourceId);
+        }
     }
 }

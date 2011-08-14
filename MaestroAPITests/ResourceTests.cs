@@ -41,6 +41,7 @@ using OSGeo.MapGuide.ObjectModels.PrintLayout;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using OSGeo.MapGuide.ObjectModels.SymbolLibrary;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
+using System.Diagnostics;
 
 namespace MaestroAPITests
 {
@@ -476,7 +477,7 @@ namespace MaestroAPITests
                         found = true;
                     }
                 }
-                Console.WriteLine("Found command (" + cmdName.ToString() + "): " + found);
+                Trace.TraceInformation("Found command (" + cmdName.ToString() + "): " + found);
                 Assert.IsTrue(found);
             }
         }

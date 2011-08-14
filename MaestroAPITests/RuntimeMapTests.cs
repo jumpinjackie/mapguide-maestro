@@ -50,6 +50,7 @@ namespace MaestroAPITests
         {
             if (!_registered)
             {
+                ResourceValidatorLoader.LoadStockValidators();
                 ModelSetup.Initialize();
                 _registered = true;
             }

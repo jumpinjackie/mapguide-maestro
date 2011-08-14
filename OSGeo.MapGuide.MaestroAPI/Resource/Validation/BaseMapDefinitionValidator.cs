@@ -77,6 +77,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 
             IMapDefinition mdef = resource as IMapDefinition;
 
+            if (string.IsNullOrEmpty(mdef.CoordinateSystem))
+            {
+                issues.Add(new ValidationIssue(mdef, ValidationStatus.Warning, ValidationStatusCode.Warning_MapDefinition_MissingCoordinateSystem, Properties.Resources.MDF_NoCoordinateSystem));
+            }
+
             foreach (IMapLayerGroup g in mdef.MapLayerGroup)
             {
                 if (g.ShowInLegend && (g.LegendLabel == null || g.LegendLabel.Trim().Length == 0))

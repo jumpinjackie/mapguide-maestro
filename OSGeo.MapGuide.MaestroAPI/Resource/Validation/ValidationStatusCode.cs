@@ -146,7 +146,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// to manually pan outside the extents to see this data.
         /// </summary>
         Warning_MapDefinition_DataOutsideMapBounds,
-        
+
+        Warning_MapDefinition_MissingCoordinateSystem,
+
         /// <summary>
         /// The specified initial view parameters lie outside the referenced Map Definition's extents. Usually means you will see nothing when the Fusion viewer loads.
         /// </summary>
@@ -171,6 +173,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// The web layout's initial view lies outside the referenced map definition's extents. Usually means you will see nothing when the AJAX viewer loads.
         /// </summary>
         Warning_WebLayout_InitialViewOutsideMapExtents = 3601,
+
+        /// <summary>
+        /// The simple symbol definition contains a symbol parameter that is not referenced
+        /// anywhere within the definition
+        /// </summary>
+        Warning_SymbolDefinition_SymbolParameterNotUsed = 3701,
         #endregion
 
         #region errors
@@ -354,6 +362,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// Source DWF file not specified
         /// </summary>
         Error_DrawingSource_NoSourceDwf = 5601,
+
+        /// <summary>
+        /// The simple symbol definition has no geometry usage contexts
+        /// </summary>
+        Error_SymbolDefinition_NoGeometryUsageContexts = 5701,
+
+        /// <summary>
+        /// The simple symbol definition contains an image graphic that references
+        /// a non-existent resource id
+        /// </summary>
+        Error_SymbolDefinition_ImageGraphicReferenceResourceIdNotFound,
+
+        /// <summary>
+        /// The simple symbol definition contains an image graphic that references
+        /// a non-existent resource data item
+        /// </summary>
+        Error_SymbolDefinition_ImageGraphicReferenceResourceDataNotFound,
         #endregion
     }
 }

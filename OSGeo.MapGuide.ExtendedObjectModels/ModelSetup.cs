@@ -128,6 +128,7 @@ namespace OSGeo.MapGuide.ExtendedObjectModels
             ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(1, 1, 0), new WebLayoutCreatorFunc(WL110.WebLayoutEntryPoint.CreateDefault));
 
             //Symbol Definition 1.1.0
+            ResourceValidatorSet.RegisterValidator(new Sym110.SymbolDefinitionValidator());
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition, "1.1.0"),
                 new ResourceSerializationCallback(Sym110.SymbolDefEntryPoint.Serialize),

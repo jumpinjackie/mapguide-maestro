@@ -271,10 +271,19 @@ namespace OSGeo.MapGuide.ObjectModels.Common
 
     public interface IExpressionPropertySource
     {
+        /// <summary>
+        /// Gets the name
+        /// </summary>
         string Name { get; }
 
+        /// <summary>
+        /// Gets the description
+        /// </summary>
         string Description { get; }
 
+        /// <summary>
+        /// Gets the expression data type
+        /// </summary>
         ExpressionDataType ExpressionType { get; }
     }
 

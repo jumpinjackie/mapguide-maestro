@@ -865,6 +865,12 @@ namespace MaestroAPITests
                             Assert.AreEqual(version, new Version(1, 1, 0));
                         }
                         break;
+                    case ResourceTypes.WatermarkDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 3, 0));
+                        }
+                        break;
                     case ResourceTypes.WebLayout:
                         {
                             var version = caps.GetMaxSupportedResourceVersion(type);

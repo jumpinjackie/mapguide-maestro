@@ -515,4 +515,19 @@
   <data name="UnknownWatermarkDefinitionVersion" xml:space="preserve">
     <value>Unknown Watermark Definition version: </value>
   </data>
+  <data name="SSDF_ImageGraphicReferenceResourceDataNotFound" xml:space="preserve">
+    <value>The simple symbol definition contains an image graphic that references a resource id {0} with a non-existent resource data {1}</value>
+  </data>
+  <data name="SSDF_ImageGraphicReferenceResourceIdNotFound" xml:space="preserve">
+    <value>The simple symbol definition contains an image graphic that references a non-existent resource id</value>
+  </data>
+  <data name="SSDF_NoGeometryUsageContext" xml:space="preserve">
+    <value>The Simple Symbol Definition has no geometry usage contexts specified.</value>
+  </data>
+  <data name="SSDF_SymbolParameterNotUsed" xml:space="preserve">
+    <value>The simple symbol definition contains a symbol parameter {0} that is not referenced anywhere within the definition</value>
+  </data>
+  <data name="MDF_NoCoordinateSystem" xml:space="preserve">
+    <value>Map Definition has no coordinate system</value>
+  </data>
 </root>
