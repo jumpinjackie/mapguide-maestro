@@ -623,6 +623,24 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Map extents calculation completed. Click Accept to use the calculated extents..
+        /// </summary>
+        internal static string ExtentsCalculationCompleted {
+            get {
+                return ResourceManager.GetString("ExtentsCalculationCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not transform extent of layer {0} to the map definition&apos;s coordinate system. Extents ignored.
+        /// </summary>
+        internal static string ExtentsTransformationFailed {
+            get {
+                return ResourceManager.GetString("ExtentsTransformationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to enumerate data stores. Reason: {0}.
         /// </summary>
         internal static string FailEnumDataStores {
@@ -2045,6 +2063,15 @@ namespace Maestro.Editors.Properties {
         internal static string NotAFolder {
             get {
                 return ResourceManager.GetString("NotAFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No transformation required.
+        /// </summary>
+        internal static string NoTransformationRequired {
+            get {
+                return ResourceManager.GetString("NoTransformationRequired", resourceCulture);
             }
         }
         

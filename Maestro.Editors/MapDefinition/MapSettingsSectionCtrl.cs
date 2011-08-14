@@ -223,85 +223,20 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnSetZoom_Click(object sender, EventArgs e)
         {
-            using (new WaitCursor(this))
+            var diag = new ExtentCalculationDialog(_map);
+            if (diag.ShowDialog() == DialogResult.OK)
             {
-                List<ILayerDefinition> layers = new List<ILayerDefinition>();
-                foreach (var lyr in _map.MapLayer)
-                {
-                    layers.Add((ILayerDefinition)_service.ResourceService.GetResource(lyr.ResourceId));
-                }
-                if (_map.BaseMap != null)
-                {
-                    foreach (var group in _map.BaseMap.BaseMapLayerGroup)
-                    {
-                        foreach (var layer in group.BaseMapLayer)
-                        {
-                            layers.Add((ILayerDefinition)_service.ResourceService.GetResource(layer.ResourceId));
-                        }
-                    }
-                }
-
-                bool hasFailures = false;
-                var env = Util.GetCombinedExtents(_map, layers, out hasFailures);
+                var env = diag.Extents;
                 if (env != null)
                 {
                     _map.SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
-                    if (hasFailures)
-                        MessageBox.Show(Properties.Resources.WarningMapExtentCalculation, Properties.Resources.TitleWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
                     MessageBox.Show(Properties.Resources.ErrorMapExtentCalculationFailed, Properties.Resources.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
 
-        internal class Util
-        {
-            public static IEnvelope GetCombinedExtents(IMapDefinition mapDef, IEnumerable<ILayerDefinition> layers, out bool hasFailures)
-            {
-                hasFailures = false;
-                Check.NotNull(layers, "layers");
-                IEnvelope env = null;
-                foreach (var layer in layers)
-                {
-                    string wkt;
-                    var e1 = layer.GetSpatialExtent(true, out wkt);
-                    if (wkt != mapDef.CoordinateSystem)
-                    {
-                        //Transform if not the same, otherwise assume either arbitrary or same as the map
-                        if (!string.IsNullOrEmpty(wkt))
-                            e1 = Utility.TransformEnvelope(e1, wkt, mapDef.CoordinateSystem);
-                    }
-
-                    if (e1 != null)
-                    {
-                        if (env == null)
-                        {
-                            env = e1;
-                        }
-                        else
-                        {
-                            if (e1.MinX < env.MinX)
-                                env.MinX = e1.MinX;
-                            if (e1.MinY < env.MinY)
-                                env.MinY = e1.MinY;
-                            if (e1.MaxX > env.MaxX)
-                                env.MaxX = e1.MaxX;
-                            if (e1.MaxY > env.MaxY)
-                                env.MaxY = e1.MaxY;
-                        }
-                    }
-                    else
-                    {
-                        hasFailures = true;
-                        System.Diagnostics.Trace.TraceWarning("Could not transform extent of layer " + layer.ResourceID + " to the map definition's coordinate system. Extents ignored");
-                    }
-                }
-                return env;
-            }
-
-            
         }
     }
 }

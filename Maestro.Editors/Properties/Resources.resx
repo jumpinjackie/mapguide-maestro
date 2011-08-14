@@ -1250,4 +1250,13 @@ Returns: {0}</value>
   <data name="NotSessionBasedId" xml:space="preserve">
     <value>Resource ID must not be session based</value>
   </data>
+  <data name="ExtentsCalculationCompleted" xml:space="preserve">
+    <value>Map extents calculation completed. Click Accept to use the calculated extents.</value>
+  </data>
+  <data name="ExtentsTransformationFailed" xml:space="preserve">
+    <value>Could not transform extent of layer {0} to the map definition's coordinate system. Extents ignored</value>
+  </data>
+  <data name="NoTransformationRequired" xml:space="preserve">
+    <value>No transformation required</value>
+  </data>
 </root>

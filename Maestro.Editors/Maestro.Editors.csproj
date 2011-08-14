@@ -807,6 +807,12 @@
     <Compile Include="LoadProcedure\SqliteTransformationCtrl.Designer.cs">
       <DependentUpon>SqliteTransformationCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="MapDefinition\ExtentCalculationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\ExtentCalculationDialog.Designer.cs">
+      <DependentUpon>ExtentCalculationDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="MapDefinition\FiniteScaleListCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2178,6 +2184,9 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="MapDefinition\ExtentCalculationDialog.resx">
+      <DependentUpon>ExtentCalculationDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\areas\Acad_iso02w100.png" />
     <EmbeddedResource Include="Resources\areas\Acad_iso03w100.png" />
     <EmbeddedResource Include="Resources\areas\Acad_iso04w100.png" />
