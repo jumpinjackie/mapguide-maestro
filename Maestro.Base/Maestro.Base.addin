@@ -122,6 +122,9 @@
                   label="${res:Menu_Edit}">
             <Condition action="Disable" name="IsNotRoot">
                 <Condition action="Disable" name="CanCutOrCopy">
+                    <MenuItem id="CopyResourceIds"
+                              label="${res:SiteExplorer_CopyResourceIds}"
+                              class="Maestro.Base.Commands.SiteExplorer.CopyResourceIdCommand" />
                     <MenuItem id="CopyItem"
                               icon="document_copy"
                               label="${res:Menu_Edit_Copy}"
@@ -425,6 +428,9 @@
             <MenuItem type="Separator" />
             <Condition action="Disable" name="IsNotRoot">
                 <Condition action="Disable" name="CanCutOrCopy">
+                    <MenuItem id="CopyResourceIds"
+                              label="${res:SiteExplorer_CopyResourceIds}"
+                              class="Maestro.Base.Commands.SiteExplorer.CopyResourceIdCommand" />
                     <MenuItem id="Copy"
                               icon="document_copy"
                               label="${res:SiteExplorer_SelectedItem_Copy}"
@@ -466,6 +472,9 @@
     <Path name="/Maestro/Shell/SiteExplorer/SelectedFolders">
         <Condition action="Disable" name="MultipleSelected">
             <Condition action="Disable" name="CanCutOrCopy">
+                <MenuItem id="CopyResourceIds"
+                          label="${res:SiteExplorer_CopyResourceIds}"
+                          class="Maestro.Base.Commands.SiteExplorer.CopyResourceIdCommand" />
                 <MenuItem id="Copy"
                           icon="document_copy"
                           label="${res:SiteExplorer_SelectedItem_Copy}"
@@ -528,6 +537,9 @@
             </Condition>
             <MenuItem type="Separator" />
             <Condition action="Disable" name="CanCutOrCopy">
+                <MenuItem id="CopyResourceIds"
+                          label="${res:SiteExplorer_CopyResourceIds}"
+                          class="Maestro.Base.Commands.SiteExplorer.CopyResourceIdCommand" />
                 <MenuItem id="Copy"
                           icon="document_copy"
                           label="${res:SiteExplorer_SelectedItem_Copy}"
@@ -587,6 +599,9 @@
                       class="Maestro.Base.Commands.SiteExplorer.FindReplaceXmlContentCommand" />
             <MenuItem type="Separator" />
             <Condition action="Disable" name="CanCutOrCopy">
+                <MenuItem id="CopyResourceIds"
+                          label="${res:SiteExplorer_CopyResourceIds}"
+                          class="Maestro.Base.Commands.SiteExplorer.CopyResourceIdCommand" />
                 <MenuItem id="Copy"
                           icon="document_copy"
                           label="${res:SiteExplorer_SelectedItem_Copy}"
@@ -623,6 +638,9 @@
                       class="Maestro.Base.Commands.SiteExplorer.DeleteSelectedItemsCommand" />
             <MenuItem type="Separator" />
             <Condition action="Disable" name="CanCutOrCopy">
+                <MenuItem id="CopyResourceIds"
+                          label="${res:SiteExplorer_CopyResourceIds}"
+                          class="Maestro.Base.Commands.SiteExplorer.CopyResourceIdCommand" />
                 <MenuItem id="Copy"
                           icon="document_copy"
                           label="${res:SiteExplorer_SelectedItem_Copy}"

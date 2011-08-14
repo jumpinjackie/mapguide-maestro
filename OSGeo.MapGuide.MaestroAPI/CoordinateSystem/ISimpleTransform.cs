@@ -44,15 +44,38 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 
     /// <summary>
     /// A simple transform that wraps the NTS coordinate system transformation APIs
-    /// 
-    /// This does not handle some of the more complex transformations like CS-Map can,
-    /// such as WGS84.PseudoMercator (required for Google/Yahoo/Bing underlays in fusion)
     /// </summary>
     public class DefaultSimpleTransform : ISimpleTransform
     {
         private ICoordinateSystem _source;
         private ICoordinateSystem _target;
         private ICoordinateTransformation _trans;
+
+        const string CSMAP_WGS84_PSEUDO_MERCATOR = @"PROJCS[""WGS84.PseudoMercator"",GEOGCS[""LL84"",DATUM[""WGS84"",SPHEROID[""WGS84"",6378137.000,298.25722293]],PRIMEM[""Greenwich"",0],UNIT[""Degree"",0.017453292519943295]],PROJECTION[""Popular Visualisation Pseudo Mercator""],PARAMETER[""false_easting"",0.000],PARAMETER[""false_northing"",0.000],PARAMETER[""central_meridian"",0.00000000000000],UNIT[""Meter"",1.00000000000000]]";
+
+        // Proj.Net cannot handle the WGS84.PseudoMercator WKT. Here's an alternative WKT that is Proj.Net compatible and produces
+        // approximately similar results:
+        //
+        // http://alastaira.wordpress.com/2011/01/23/the-google-maps-bing-maps-spherical-mercator-projection/
+        //
+        const string POPULAR_VISUALISATION_CRS = 
+@"PROJCS[""Popular Visualisation CRS / Mercator"",
+ GEOGCS[""Popular Visualisation CRS"",
+  DATUM[""WGS84"",
+    SPHEROID[""WGS84"", 6378137.0, 298.257223563, AUTHORITY[""EPSG"",""7059""]],
+  AUTHORITY[""EPSG"",""6055""]],
+ PRIMEM[""Greenwich"", 0, AUTHORITY[""EPSG"", ""8901""]],
+ UNIT[""degree"", 0.0174532925199433, AUTHORITY[""EPSG"", ""9102""]],
+ AXIS[""E"", EAST], AXIS[""N"", NORTH], AUTHORITY[""EPSG"",""4055""]],
+PROJECTION[""Mercator""],
+PARAMETER[""semi_minor"",6378137],
+PARAMETER[""False_Easting"", 0],
+PARAMETER[""False_Northing"", 0],
+PARAMETER[""Central_Meridian"", 0],
+PARAMETER[""Latitude_of_origin"", 0],
+UNIT[""metre"", 1, AUTHORITY[""EPSG"", ""9001""]],
+AXIS[""East"", EAST], AXIS[""North"", NORTH],
+AUTHORITY[""EPSG"",""3785""]]";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSimpleTransform"/> class.
@@ -61,9 +84,12 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="targetCsWkt">The target cs WKT.</param>
         public DefaultSimpleTransform(string sourceCsWkt, string targetCsWkt)
         {
+            //Check for and replace the WGS84.PseudoMercator WKT
+            string srcWkt = sourceCsWkt == CSMAP_WGS84_PSEUDO_MERCATOR ? POPULAR_VISUALISATION_CRS : sourceCsWkt;
+            string dstWkt = targetCsWkt == CSMAP_WGS84_PSEUDO_MERCATOR ? POPULAR_VISUALISATION_CRS : targetCsWkt;
             var fact = new CoordinateSystemFactory();
-            _source = fact.CreateFromWkt(sourceCsWkt);
-            _target = fact.CreateFromWkt(targetCsWkt);
+            _source = fact.CreateFromWkt(srcWkt);
+            _target = fact.CreateFromWkt(dstWkt);
             var tfact = new CoordinateTransformationFactory();
             _trans = tfact.CreateFromCoordinateSystems(_source, _target);
         }

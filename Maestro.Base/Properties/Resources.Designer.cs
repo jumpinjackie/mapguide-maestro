@@ -490,9 +490,23 @@ namespace Maestro.Base.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Programming:
         ///
-        ///	Jackie Ng
-        ///	Kenneth Skovhede
-        ///	Crispin Hoult.
+        ///  Jackie Ng (Maestro 2.0+)
+        ///  Kenneth Skovhede (Maestro 1.0 - 2.0)
+        ///	
+        ///Many thanks to the following people for providing patches and actively testing releases to help make Maestro a better quality applicaton for all:
+        ///
+        ///  Jason Birch
+        ///  Crispin Hoult
+        ///  Zac Spitzer
+        ///  Gunter Becker
+        ///  Andrew DeMerchant
+        ///  Gabriele Monfardini
+        ///  Gordon Luckett
+        ///
+        ///Many thanks to the following people who have translated Maestro into other languages:
+        ///
+        ///  José Manuel Cerrejón González (Spanish)
+        ///  Pierre Cardina [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Contributors {
             get {
@@ -1917,6 +1931,15 @@ namespace Maestro.Base.Properties {
         internal static string SiteExplorer_CopyMoveToServer {
             get {
                 return ResourceManager.GetString("SiteExplorer_CopyMoveToServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy Resource IDs to clipboard.
+        /// </summary>
+        internal static string SiteExplorer_CopyResourceIds {
+            get {
+                return ResourceManager.GetString("SiteExplorer_CopyResourceIds", resourceCulture);
             }
         }
         
