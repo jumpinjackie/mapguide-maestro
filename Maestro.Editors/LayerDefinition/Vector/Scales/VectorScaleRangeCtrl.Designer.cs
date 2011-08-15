@@ -33,10 +33,10 @@
             this.chkLine = new System.Windows.Forms.CheckBox();
             this.chkArea = new System.Windows.Forms.CheckBox();
             this.chkComposite = new System.Windows.Forms.CheckBox();
-            this.compList = new Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons();
             this.areaList = new Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons();
             this.lineList = new Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons();
             this.pointList = new Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons();
+            this.compList = new Maestro.Editors.LayerDefinition.Vector.Scales.CompositeStyleListCtrl();
             this.SuspendLayout();
             // 
             // chkPoint
@@ -67,12 +67,6 @@
             this.chkComposite.UseVisualStyleBackColor = true;
             this.chkComposite.CheckedChanged += new System.EventHandler(this.chkComposite_CheckedChanged);
             // 
-            // compList
-            // 
-            resources.ApplyResources(this.compList, "compList");
-            this.compList.Name = "compList";
-            this.compList.ItemChanged += new System.EventHandler(this.OnItemChanged);
-            // 
             // areaList
             // 
             resources.ApplyResources(this.areaList, "areaList");
@@ -90,6 +84,11 @@
             resources.ApplyResources(this.pointList, "pointList");
             this.pointList.Name = "pointList";
             this.pointList.ItemChanged += new System.EventHandler(this.OnItemChanged);
+            // 
+            // compList
+            // 
+            resources.ApplyResources(this.compList, "compList");
+            this.compList.Name = "compList";
             // 
             // VectorScaleRangeCtrl
             // 
@@ -117,7 +116,7 @@
         private System.Windows.Forms.CheckBox chkArea;
         private ConditionListButtons areaList;
         private System.Windows.Forms.CheckBox chkComposite;
-        private ConditionListButtons compList;
+        private CompositeStyleListCtrl compList;
 
 
     }

@@ -68,22 +68,23 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                     var vsr2 = vsr as IVectorScaleRange2;
                     if (vsr2 != null)
                     {
-                        //FIXME: API is designed on wrong assumptions. 
-                        //http://trac.osgeo.org/mapguide/ticket/1776
-                        var cts = vsr2.CompositeStyle;
-                        if (cts != null)
+                        var ctss = vsr2.CompositeStyle;
+                        if (ctss != null)
                         {
-                            foreach (var crs in cts.CompositeRule)
+                            foreach (var cts in ctss)
                             {
-                                var csym = crs.CompositeSymbolization;
-                                if (csym != null)
+                                foreach (var crs in cts.CompositeRule)
                                 {
-                                    foreach (var si in csym.SymbolInstance)
+                                    var csym = crs.CompositeSymbolization;
+                                    if (csym != null)
                                     {
-                                        if (si.Reference.Type == OSGeo.MapGuide.ObjectModels.SymbolDefinition.SymbolInstanceType.Inline)
+                                        foreach (var si in csym.SymbolInstance)
                                         {
-                                            var symBase = ((ISymbolInstanceReferenceInline)si.Reference).SymbolDefinition;
-                                            symBase.RemoveSchemaAttributes();
+                                            if (si.Reference.Type == OSGeo.MapGuide.ObjectModels.SymbolDefinition.SymbolInstanceType.Inline)
+                                            {
+                                                var symBase = ((ISymbolInstanceReferenceInline)si.Reference).SymbolDefinition;
+                                                symBase.RemoveSchemaAttributes();
+                                            }
                                         }
                                     }
                                 }
@@ -137,7 +138,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 PointStyle = CreateDefaultPointStyle(),
 #if LDF_100 || LDF_110
 #else
-                CompositeStyle = CreateDefaultCompositeStyle()
+                CompositeStyle = new ICompositeTypeStyle[] { CreateDefaultCompositeStyle() }
 #endif
             };
             vl.VectorScaleRange.Add(defaultRange);

@@ -34,7 +34,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private IPointVectorStyle _pts;
         private ILineVectorStyle _lns;
         private IAreaVectorStyle _ars;
-        private ICompositeTypeStyle _cts;
+        private BindingList<ICompositeTypeStyle> _cts;
 
         private VectorLayerStyleSectionCtrl _parent;
 
@@ -97,17 +97,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 var vsr2 = vsr as IVectorScaleRange2;
                 if (vsr2 != null)
                 {
-                    _cts = vsr2.CompositeStyle;
-                    chkComposite.Checked = (_cts != null);
+                    _cts = new BindingList<ICompositeTypeStyle>();
+                    foreach (var c in vsr2.CompositeStyle)
+                        _cts.Add(c);
 
+                    chkComposite.Checked = (_cts.Count > 0);
+                    
                     compList.Owner = parent.Owner;
                     compList.Factory = parent.Factory;
-                    if (_cts == null)
-                        _cts = parent.Factory.CreateDefaultCompositeStyle();
+                    if (_cts.Count == 0)
+                        _cts.Add(parent.Factory.CreateDefaultCompositeStyle());
 
-                    compList.SetItem(vsr, _cts);
-                    if (_cts.RuleCount == 0)
-                        compList.AddRule();
+                    compList.Load(vsr2, _cts);
                 }
                 else
                 {

@@ -214,7 +214,7 @@
     <value>6</value>
   </data>
   <data name="chkComposite.Text" xml:space="preserve">
-    <value>Display Composite</value>
+    <value>Display Composite (Note: Previews currently not supported)</value>
   </data>
   <data name="&gt;&gt;chkComposite.Name" xml:space="preserve">
     <value>chkComposite</value>
@@ -227,30 +227,6 @@
   </data>
   <data name="&gt;&gt;chkComposite.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="compList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="compList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 387</value>
-  </data>
-  <data name="compList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 108</value>
-  </data>
-  <data name="compList.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;compList.Name" xml:space="preserve">
-    <value>compList</value>
-  </data>
-  <data name="&gt;&gt;compList.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;compList.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;compList.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="areaList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -268,7 +244,7 @@
     <value>areaList</value>
   </data>
   <data name="&gt;&gt;areaList.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=3.5.0.6040, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;areaList.Parent" xml:space="preserve">
     <value>$this</value>
@@ -292,7 +268,7 @@
     <value>lineList</value>
   </data>
   <data name="&gt;&gt;lineList.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=3.5.0.6040, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lineList.Parent" xml:space="preserve">
     <value>$this</value>
@@ -316,13 +292,37 @@
     <value>pointList</value>
   </data>
   <data name="&gt;&gt;pointList.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=3.5.0.6040, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pointList.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pointList.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="compList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="compList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 387</value>
+  </data>
+  <data name="compList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>598, 108</value>
+  </data>
+  <data name="compList.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;compList.Name" xml:space="preserve">
+    <value>compList</value>
+  </data>
+  <data name="&gt;&gt;compList.Type" xml:space="preserve">
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.CompositeStyleListCtrl, Maestro.Editors, Version=3.5.0.6040, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;compList.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;compList.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

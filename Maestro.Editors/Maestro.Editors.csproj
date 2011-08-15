@@ -657,6 +657,12 @@
       <DependentUpon>VectorLayerEditorCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="LayerDefinition\Vector\FeaturePreviewRender.cs" />
+    <Compile Include="LayerDefinition\Vector\Scales\CompositeStyleListCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\CompositeStyleListCtrl.Designer.cs">
+      <DependentUpon>CompositeStyleListCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="LayerDefinition\Vector\Scales\Condition.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2184,6 +2190,9 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\CompositeStyleListCtrl.resx">
+      <DependentUpon>CompositeStyleListCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MapDefinition\ExtentCalculationDialog.resx">
       <DependentUpon>ExtentCalculationDialog.cs</DependentUpon>
     </EmbeddedResource>

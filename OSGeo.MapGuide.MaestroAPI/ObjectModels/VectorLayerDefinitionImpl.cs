@@ -286,62 +286,81 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
 #if LDF_110 || LDF_120
         [XmlIgnore]
-        public ICompositeTypeStyle CompositeStyle
+        public IEnumerable<ICompositeTypeStyle> CompositeStyle
         {
             get
             {
                 foreach (var item in this.itemsField)
                 {
                     if (typeof(ICompositeTypeStyle).IsAssignableFrom(item.GetType()))
-                        return (ICompositeTypeStyle)item;
+                        yield return (ICompositeTypeStyle)item;
                 }
-
-                return null;
             }
             set
             {
-                //Remove old one if it exists
-                var item = this.CompositeStyle;
-                if (item != null)
+                //Clear old ones
+                var remove = new List<object>();
+                foreach (var item in this.itemsField)
                 {
-                    this.itemsField.Remove(item);
+                    if (typeof(ICompositeTypeStyle).IsAssignableFrom(item.GetType()))
+                        remove.Add(item);
                 }
-                //Put the new one in if it is not null
+
+                foreach(var obj in remove)
+                {
+                    this.itemsField.Remove(obj);
+                }
+
+                //Put the new ones in if it is not null
                 if (value != null)
                 {
-                    this.itemsField.Add(value);
+                    foreach (var item in value)
+                    {
+                        if (!typeof(ICompositeTypeStyle).IsAssignableFrom(item.GetType()))
+                            throw new InvalidOperationException("Assigned value does not implement ICompositeTypeStyle");
+
+                        this.itemsField.Add(item);
+                    }
                 }
             }
         }
 #elif LDF_130 || LDF_230
         [XmlIgnore]
-        public ICompositeTypeStyle CompositeStyle
+        public IEnumerable<ICompositeTypeStyle> CompositeStyle
         {
             get
             {
                 foreach (var item in this.itemsField)
                 {
                     if (typeof(ICompositeTypeStyle2).IsAssignableFrom(item.GetType()))
-                        return (ICompositeTypeStyle2)item;
+                        yield return (ICompositeTypeStyle2)item;
                 }
-
-                return null;
             }
             set
             {
-                //Remove old one if it exists
-                var item = this.CompositeStyle;
-                if (item != null)
+                //Clear old ones
+                var remove = new List<object>();
+                foreach (var item in this.itemsField)
                 {
-                    this.itemsField.Remove(item);
+                    if (typeof(ICompositeTypeStyle2).IsAssignableFrom(item.GetType()))
+                        remove.Add(item);
                 }
-                //Put the new one in if it is not null
+
+                foreach(var obj in remove)
+                {
+                    this.itemsField.Remove(obj);
+                }
+
+                //Put the new ones in if it is not null
                 if (value != null)
                 {
-                    if (!typeof(ICompositeTypeStyle2).IsAssignableFrom(value.GetType()))
-                        throw new InvalidOperationException("Assigned value does not implement ICompositeTypeStyle2");
+                    foreach (var item in value)
+                    {
+                        if (!typeof(ICompositeTypeStyle2).IsAssignableFrom(item.GetType()))
+                            throw new InvalidOperationException("Assigned value does not implement ICompositeTypeStyle2");
 
-                    this.itemsField.Add(value);
+                        this.itemsField.Add(item);
+                    }
                 }
             }
         }

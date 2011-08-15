@@ -623,9 +623,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         IElevationSettings ElevationSettings { get; set; }
 
         /// <summary>
-        /// Gets or sets the composite style for this scale range
+        /// Gets or sets the composite styles for this scale range
         /// </summary>
-        ICompositeTypeStyle CompositeStyle { get; set; }
+        IEnumerable<ICompositeTypeStyle> CompositeStyle { get; set; }
     }
 
     /// <summary>
