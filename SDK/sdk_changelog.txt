@@ -4,6 +4,11 @@
 - New Desktop Samples
     - StandaloneWebLayoutEditor
 
+- General Notes:
+    - The Topology.dll reference has been replaced with NetTopologySuite.Merged.dll. If you reference this assembly, you
+      will need to update some namespace imports (anything under the Topology namespace will have to be changed). Visual Studio
+      can assist with updating namespace references.
+
 3.1
 ---
 
