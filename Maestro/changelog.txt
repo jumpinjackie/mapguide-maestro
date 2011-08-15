@@ -5,6 +5,7 @@
  - Map Extent calculation now is done through an informative progress dialog
  - New symbol definition validation rules
  - Added Proj.Net shortcut to support the WGS84.PseudoMercator coordinate system (note that results are not exactly the same as MgCoordinateSystem/CS-Map, but produces approximate results for purposes of setting Map Definition extents)
+ - Update layer editor to handle multiple composite styles per vector scale range
 
 3.5 beta 2
 ----------

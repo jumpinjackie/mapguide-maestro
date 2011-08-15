@@ -1,0 +1,16 @@
+3.5
+---
+
+- New Desktop Samples
+    - StandaloneWebLayoutEditor
+
+3.1
+---
+
+- Initial SDK release
+    - Desktop Samples
+        - DrawMap
+        - DwfInspector
+        - QueryFeatureSource
+        - SchemaViewer
+    - Web Sample
