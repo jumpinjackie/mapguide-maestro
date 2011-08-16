@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using ICSharpCode.Core;
 using Maestro.Base.Services;
@@ -44,6 +45,8 @@ namespace Maestro.Base.Commands.SiteExplorer
                 var items = exp.SelectedItems;
                 if (items.Length > 0)
                 {
+                    //Ascertain the parent connection that requires refresh post-delete
+                    string connName = items.First().ConnectionName;
                     if (MessageService.AskQuestion(Properties.Resources.ConfirmDelete))
                     {
                         if (ConfirmDeleteOpenResources(items, omgr.OpenEditors))
@@ -77,9 +80,9 @@ namespace Maestro.Base.Commands.SiteExplorer
                     //so we should get the same result
                     var parent = ResourceIdentifier.GetParentFolder(items[0].ResourceId);
                     if (parent == null) //root?
-                        exp.RefreshModel(null);
+                        exp.RefreshModel(connName);
                     else
-                        exp.RefreshModel(parent);
+                        exp.RefreshModel(connName, parent);
                 }
             }
         }

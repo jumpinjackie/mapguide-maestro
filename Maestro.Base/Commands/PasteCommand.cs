@@ -37,7 +37,8 @@ namespace Maestro.Base.Commands
             var clip = ServiceRegistry.GetService<ClipboardService>();
             var omgr = ServiceRegistry.GetService<OpenResourceManager>();
             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
-            var conn = connMgr.GetConnection(exp.ConnectionName);
+            var targetConnName = exp.ConnectionName;
+            var conn = connMgr.GetConnection(targetConnName);
 
             if (!clip.HasContent())
                 return;
@@ -57,67 +58,76 @@ namespace Maestro.Base.Commands
             
             //.net FX 2.0 hack to compensate for lack of set collection
             Dictionary<string, string> folders = new Dictionary<string, string>();
+            var notPasted = new List<RepositoryItem>();
 
             foreach (var item in itemsToPaste)
             {
-                LoggingService.InfoFormatted(Properties.Resources.ClipboardAction, item.ClipboardState, item.ResourceId, folder.ResourceId);
-                
-                //Keep testing until we find a target resource identifier that 
-                //doesn't already exists. Note this would automatically guard against any resources in this folder
-                //that may already be open in an editor
-                var rid = new ResourceIdentifier(item.ResourceId);
-                var name = rid.IsFolder ? (rid.Name + "/") : (rid.Name + "." + rid.ResourceType.ToString());
-                var resId = folder.ResourceId + name;
-                int counter = 0;
-                while (conn.ResourceService.ResourceExists(resId))
+                if (item.ConnectionName == targetConnName) //From same connection
                 {
-                    counter++;
+                    LoggingService.InfoFormatted(Properties.Resources.ClipboardAction, item.ClipboardState, item.ResourceId, folder.ResourceId);
 
-                    if (rid.IsFolder)
+                    //Keep testing until we find a target resource identifier that 
+                    //doesn't already exists. Note this would automatically guard against any resources in this folder
+                    //that may already be open in an editor
+                    var rid = new ResourceIdentifier(item.ResourceId);
+                    var name = rid.IsFolder ? (rid.Name + "/") : (rid.Name + "." + rid.ResourceType.ToString());
+                    var resId = folder.ResourceId + name;
+                    int counter = 0;
+                    while (conn.ResourceService.ResourceExists(resId))
                     {
-                        resId = folder.ResourceId + rid.Name + " (" + counter + ")/";
-                    }
-                    else
-                    {
-                        var rname = name.Substring(0, name.IndexOf("."));
-                        var type = name.Substring(name.IndexOf("."));
-                        rname += " (" + counter + ")";
-                        resId = folder.ResourceId + rname + type;
-                    }
-                }
+                        counter++;
 
-                if (item.ClipboardState == RepositoryItem.ClipboardAction.Copy)
-                {
-                    if (item.IsFolder)
-                    {
-                        conn.ResourceService.CopyFolderWithReferences(item.ResourceId, resId, null, null);
-                    }
-                    else
-                    {
-                        conn.ResourceService.CopyResource(item.ResourceId, resId, false);
-                    }
-                }
-                else if (item.ClipboardState == RepositoryItem.ClipboardAction.Cut)
-                {
-                    if (!item.IsFolder)
-                    {
-                        if (omgr.IsOpen(item.ResourceId))
+                        if (rid.IsFolder)
                         {
-                            sourceItemsNotMoved.Add(item.ResourceId);
-                            continue;
+                            resId = folder.ResourceId + rid.Name + " (" + counter + ")/";
+                        }
+                        else
+                        {
+                            var rname = name.Substring(0, name.IndexOf("."));
+                            var type = name.Substring(name.IndexOf("."));
+                            rname += " (" + counter + ")";
+                            resId = folder.ResourceId + rname + type;
                         }
                     }
 
-                    //TODO: Should we prompt? That may be equivalent to saying
-                    //"Shall I break your resources because you're moving" isn't it?
-                    var res = conn.ResourceService.MoveResourceWithReferences(item.ResourceId, resId, null, null);
-                    if (!res)
-                        LoggingService.InfoFormatted(Properties.Resources.MoveFailure, item.ResourceId, resId);
-                    else
-                        folders[item.Parent.ResourceId] = item.Parent.ResourceId;
+                    if (item.ClipboardState == RepositoryItem.ClipboardAction.Copy)
+                    {
+                        if (item.IsFolder)
+                        {
+                            conn.ResourceService.CopyFolderWithReferences(item.ResourceId, resId, null, null);
+                        }
+                        else
+                        {
+                            conn.ResourceService.CopyResource(item.ResourceId, resId, false);
+                        }
+                    }
+                    else if (item.ClipboardState == RepositoryItem.ClipboardAction.Cut)
+                    {
+                        if (!item.IsFolder)
+                        {
+                            if (omgr.IsOpen(item.ResourceId))
+                            {
+                                sourceItemsNotMoved.Add(item.ResourceId);
+                                continue;
+                            }
+                        }
+
+                        //TODO: Should we prompt? That may be equivalent to saying
+                        //"Shall I break your resources because you're moving" isn't it?
+                        var res = conn.ResourceService.MoveResourceWithReferences(item.ResourceId, resId, null, null);
+                        if (!res)
+                            LoggingService.InfoFormatted(Properties.Resources.MoveFailure, item.ResourceId, resId);
+                        else
+                            folders[item.Parent.ResourceId] = item.Parent.ResourceId;
+                    }
+                }
+                else
+                {
+                    //TODO: Revisit later
+                    MessageService.ShowError("Copy/Pasting between connections is currently not implemented");
+                    return;
                 }
             }
-
             if (sourceItemsNotMoved.Count > 0)
                 MessageService.ShowMessage(string.Format(Properties.Resources.ItemsNotMovedDueToBeingOpen, Environment.NewLine + string.Join(Environment.NewLine, sourceItemsNotMoved.ToArray())));
 

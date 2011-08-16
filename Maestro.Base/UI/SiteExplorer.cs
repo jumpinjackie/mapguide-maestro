@@ -139,7 +139,7 @@ namespace Maestro.Base.UI
 
                 //If this node is not initially expanded, we get NRE on refresh
                 ExpandNode(connectionName, resId);
-
+                
                 var path = _model.GetPathFromResourceId(connectionName, resId);
                 while (path == null)
                 {
@@ -157,7 +157,11 @@ namespace Maestro.Base.UI
                 trvResources.SelectedNode = node;
             }
             _model.Refresh();
-            trvResources.Root.Children[0].Expand();
+            if (!string.IsNullOrEmpty(resId))
+            {
+                SelectNode(connectionName, resId);
+            }
+            //trvResources.Root.Children[0].Expand();
         }
 
         private void trvResources_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -351,10 +355,10 @@ namespace Maestro.Base.UI
             var nodes = e.Item as TreeNodeAdv[];
             if (nodes != null)
             {
-                List<ResourceIdentifier> rids = new List<ResourceIdentifier>();
+                List<RepositoryItem> rids = new List<RepositoryItem>();
                 foreach (var n in nodes)
                 {
-                    rids.Add(new ResourceIdentifier(((RepositoryItem)n.Tag).ResourceId));
+                    rids.Add((RepositoryItem)n.Tag);
                 }
                 trvResources.DoDragDrop(rids.ToArray(), DragDropEffects.All);
             }
@@ -362,7 +366,7 @@ namespace Maestro.Base.UI
 
         private void trvResources_DragDrop(object sender, DragEventArgs e)
         {
-            var data = e.Data.GetData(typeof(ResourceIdentifier[])) as ResourceIdentifier[];
+            var data = e.Data.GetData(typeof(RepositoryItem[])) as RepositoryItem[];
             if (data == null)
             {
                 //See if the mouse is currently over a node
@@ -382,25 +386,29 @@ namespace Maestro.Base.UI
                 {
                     string connectionName = RepositoryTreeModel.GetParentConnectionName(item);
                     string folderId = item.ResourceId;
-                    List<string> resIds = new List<string>();
-                    foreach (var n in data)
-                    {
-                        resIds.Add(n.ToString());
-                    }
 
                     //I think it's nice to ask for confirmation
-                    if (resIds.Count > 0)
+                    if (data.Length > 0)
                     {
                         if (!MessageService.AskQuestion(Properties.Resources.ConfirmMove))
                             return;
                     }
 
-                    string[] folders = MoveResources(connectionName, resIds, folderId);
-
-                    foreach (var fid in folders)
+                    if (data.First().ConnectionName == connectionName)
                     {
-                        LoggingService.Info("Refreshing: " + fid);
-                        RefreshModel(fid);
+                        string[] folders = MoveResourcesWithinConnection(connectionName, data.Select(x => x.ResourceId).ToArray(), folderId);
+
+                        foreach (var fid in folders)
+                        {
+                            LoggingService.Info("Refreshing: " + fid + " on " + connectionName); //LOCALIZEME
+                            RefreshModel(connectionName, fid);
+                        }
+                    }
+                    else
+                    {
+                        //TODO: Revisit later
+                        MessageService.ShowError("Moving resources between connections is currently not implemented");
+                        return;
                     }
                 }
             }
@@ -408,7 +416,7 @@ namespace Maestro.Base.UI
 
         private void trvResources_DragOver(object sender, DragEventArgs e)
         {
-            var data = e.Data.GetData(typeof(ResourceIdentifier[])) as ResourceIdentifier[];
+            var data = e.Data.GetData(typeof(RepositoryItem[])) as RepositoryItem[];
             if (data == null)
             {
                 SiteExplorerDragDropHandler.OnDragEnter(this, e);
@@ -442,7 +450,7 @@ namespace Maestro.Base.UI
             // (eg. Create a Feature Source from a dragged SDF file)
         }
 
-        private string [] MoveResources(string connectionName, ICollection<string> resIds, string folderId)
+        private string [] MoveResourcesWithinConnection(string connectionName, ICollection<string> resIds, string folderId)
         {
             var wb = Workbench.Instance;
             var notMovedToTarget = new List<string>();

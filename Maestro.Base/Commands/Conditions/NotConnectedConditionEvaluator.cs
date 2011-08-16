@@ -34,8 +34,7 @@ namespace Maestro.Base.Commands.Conditions
                 if (wb.ActiveSiteExplorer != null)
                 {
                     var items = wb.ActiveSiteExplorer.SelectedItems;
-                    if (items.Length == 1)
-                        return items[0].IsRoot;
+                    return (items.Length > 0);
                 }
             }
             return false;

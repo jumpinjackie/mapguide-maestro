@@ -40,8 +40,9 @@ namespace Maestro.Base.Commands
                 var exp = wb.ActiveSiteExplorer;
                 if (exp != null)
                 {
-                    var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
-                    var conn = connMgr.GetConnection(exp.ConnectionName);
+                    //var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
+                    //var conn = connMgr.GetConnection(exp.ConnectionName);
+                    var conn = ed.Resource.CurrentConnection;
                     var launcher = ServiceRegistry.GetService<UrlLauncherService>();
 
                     //HACK: This is a bit dodgy as we assume we're dealing with the http
