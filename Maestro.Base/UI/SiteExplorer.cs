@@ -34,13 +34,12 @@ using Maestro.Base.UI.Preferences;
 using Maestro.Shared.UI;
 using Maestro.Base.Commands.SiteExplorer;
 using Maestro.Base.Commands;
+using System.Linq;
 
 namespace Maestro.Base.UI
 {
     public partial class SiteExplorer : ViewContentBase, ISiteExplorer
     {
-        private IServerConnection _conn;
-
         /// <summary>
         /// Internal use only. Do not invoke directly. Use <see cref="ViewContentManager"/> for that
         /// </summary>
@@ -73,6 +72,7 @@ namespace Maestro.Base.UI
         }
 
         private RepositoryTreeModel _model;
+        private ServerConnectionManager _connManager;
 
         protected override void OnLoad(EventArgs e)
         {
@@ -82,12 +82,11 @@ namespace Maestro.Base.UI
             var ts = ToolbarService.CreateToolStripItems("/Maestro/Shell/SiteExplorer/Toolbar", this, true);
             tsSiteExplorer.Items.AddRange(ts);
 
-            var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
-            _conn = mgr.GetConnection(this.ConnectionName);
+            _connManager = ServiceRegistry.GetService<ServerConnectionManager>();
 
             var omgr = ServiceRegistry.GetService<OpenResourceManager>();
-            var clip = ServiceRegistry.GetService<ClipboardService>(); 
-            _model = new RepositoryTreeModel(_conn, trvResources, this.ConnectionName, omgr, clip);
+            var clip = ServiceRegistry.GetService<ClipboardService>();
+            _model = new RepositoryTreeModel(_connManager, trvResources, omgr, clip);
             trvResources.Model = _model;
         }
 
@@ -107,12 +106,12 @@ namespace Maestro.Base.UI
             }
         }
 
-        public void RefreshModel()
+        public void RefreshModel(string connectionName)
         {
-            RefreshModel(null);
+            RefreshModel(connectionName, null);
         }
 
-        public void RefreshModel(string resId)
+        public void RefreshModel(string connectionName, string resId)
         {
             if (!string.IsNullOrEmpty(resId))
             {
@@ -121,13 +120,13 @@ namespace Maestro.Base.UI
                     resId = rid.ParentFolder;
 
                 //If this node is not initially expanded, we get NRE on refresh
-                ExpandNode(resId);
+                ExpandNode(connectionName, resId);
 
-                var path = _model.GetPathFromResourceId(resId);
+                var path = _model.GetPathFromResourceId(connectionName, resId);
                 while (path == null)
                 {
                     resId = ResourceIdentifier.GetParentFolder(resId);
-                    path = _model.GetPathFromResourceId(resId);
+                    path = _model.GetPathFromResourceId(connectionName, resId);
                 }
 
                 var node = trvResources.FindNode(path, true);
@@ -151,8 +150,9 @@ namespace Maestro.Base.UI
                 var item = node.Tag as RepositoryItem;
                 if (item != null && !item.IsFolder)
                 {
+                    var conn = _connManager.GetConnection(RepositoryTreeModel.GetParentConnectionName(item));
                     var resMgr = ServiceRegistry.GetService<OpenResourceManager>();
-                    resMgr.Open(item.ResourceId, _conn, false, this);
+                    resMgr.Open(item.ResourceId, conn, false, this);
                 }
             }
         }
@@ -248,12 +248,12 @@ namespace Maestro.Base.UI
         }
 
 
-        public void ExpandNode(string folderId)
+        public void ExpandNode(string connectionName, string folderId)
         {
             if ("Library://".Equals(folderId))
                 return;
 
-            var path = _model.GetPathFromResourceId(folderId);
+            var path = _model.GetPathFromResourceId(connectionName, folderId);
             if (path != null)
             {
                 var node = trvResources.FindNode(path, true);
@@ -264,9 +264,9 @@ namespace Maestro.Base.UI
             }
         }
 
-        public void SelectNode(string resourceId)
+        public void SelectNode(string connectionName, string resourceId)
         {
-            var path = _model.GetPathFromResourceId(resourceId);
+            var path = _model.GetPathFromResourceId(connectionName, resourceId);
             if (path != null)
             {
                 var node = trvResources.FindNode(path, true);
@@ -277,9 +277,9 @@ namespace Maestro.Base.UI
             }
         }
 
-        public void FlagNode(string resourceId, NodeFlagAction action)
+        public void FlagNode(string connectionName, string resourceId, NodeFlagAction action)
         {
-            var path = _model.GetPathFromResourceId(resourceId);
+            var path = _model.GetPathFromResourceId(connectionName, resourceId);
             if (path != null)
             {
                 var node = trvResources.FindNode(path, true);
@@ -362,6 +362,7 @@ namespace Maestro.Base.UI
                 var item = node.Tag as RepositoryItem;
                 if (item != null && item.IsFolder)
                 {
+                    string connectionName = RepositoryTreeModel.GetParentConnectionName(item);
                     string folderId = item.ResourceId;
                     List<string> resIds = new List<string>();
                     foreach (var n in data)
@@ -376,7 +377,7 @@ namespace Maestro.Base.UI
                             return;
                     }
 
-                    string[] folders = MoveResources(resIds, folderId);
+                    string[] folders = MoveResources(connectionName, resIds, folderId);
 
                     foreach (var fid in folders)
                     {
@@ -423,12 +424,14 @@ namespace Maestro.Base.UI
             // (eg. Create a Feature Source from a dragged SDF file)
         }
 
-        private string [] MoveResources(ICollection<string> resIds, string folderId)
+        private string [] MoveResources(string connectionName, ICollection<string> resIds, string folderId)
         {
             var wb = Workbench.Instance;
             var notMovedToTarget = new List<string>();
             var notMovedFromSource = new List<string>();
             var omgr = ServiceRegistry.GetService<OpenResourceManager>();
+            var conn = _connManager.GetConnection(connectionName);
+
             var dlg = new ProgressDialog();
             var worker = new ProgressDialog.DoBackgroundWork((w, e, args) =>
             {
@@ -449,7 +452,7 @@ namespace Maestro.Base.UI
                         //moved instead of the folder itself!
                         var rid = new ResourceIdentifier(r);
                         var target = folderId + rid.Name + "/";
-                        _conn.ResourceService.MoveResourceWithReferences(r, target, null, cb);
+                        conn.ResourceService.MoveResourceWithReferences(r, target, null, cb);
                     }
                     else
                     {
@@ -462,7 +465,7 @@ namespace Maestro.Base.UI
                         }
 
                         if (!omgr.IsOpen(target))
-                            _conn.ResourceService.MoveResourceWithReferences(r, target, null, cb);
+                            conn.ResourceService.MoveResourceWithReferences(r, target, null, cb);
                         else
                             notMovedToTarget.Add(r);
                     }
@@ -532,6 +535,11 @@ namespace Maestro.Base.UI
                         break;
                 }
             }
+        }
+
+        public string[] ConnectionNames
+        {
+            get { return _connManager.GetConnectionNames().ToArray(); }
         }
     }
 }

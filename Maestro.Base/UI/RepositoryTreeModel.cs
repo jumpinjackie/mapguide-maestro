@@ -40,11 +40,12 @@ namespace Maestro.Base.UI
 
         private bool _notify = false;
 
-        public RepositoryItem(IRepositoryItem item)
+        public RepositoryItem(string connectionName, IRepositoryItem item)
         {
             _name = string.Empty;
             _children = new Dictionary<string, RepositoryItem>();
 
+            this.ConnectionName = connectionName;
             this.CreatedDate = item.CreatedDate;
             this.ModifiedDate = item.ModifiedDate;
             this.Owner = item.Owner;
@@ -200,6 +201,12 @@ namespace Maestro.Base.UI
         }
 
         public string ResourceId
+        {
+            get;
+            internal set;
+        }
+
+        public string ConnectionName
         {
             get;
             internal set;
@@ -378,31 +385,28 @@ namespace Maestro.Base.UI
     /// </summary>
     public class RepositoryTreeModel : TreeModelBase
     {
-        private RepositoryItem _rootNode;
         private TreeViewAdv _tree;
-        private string _connectionName;
 
-        private IServerConnection _conn;
+        private ServerConnectionManager _connManager;
         private OpenResourceManager _openResMgr;
         private ClipboardService _clip;
 
-        public RepositoryTreeModel(IServerConnection conn, TreeViewAdv tree, string connName, OpenResourceManager openResMgr, ClipboardService clip)
+        public RepositoryTreeModel(ServerConnectionManager connManager, TreeViewAdv tree, OpenResourceManager openResMgr, ClipboardService clip)
         {
-            _conn = conn;
+            _connManager = connManager;
             _tree = tree;
-            _connectionName = connName;
             _openResMgr = openResMgr;
             _clip = clip;
         }
 
-        private System.Collections.IEnumerable GetSorted(ResourceList list)
+        private System.Collections.IEnumerable GetSorted(string connectionName, ResourceList list)
         {
             //Sort them before returning them
             SortedList<string, RepositoryItem> folders = new SortedList<string, RepositoryItem>();
             SortedList<string, RepositoryItem> docs = new SortedList<string, RepositoryItem>();
             foreach (var item in list.Children)
             {
-                var it = new RepositoryItem(item);
+                var it = new RepositoryItem(connectionName, item);
                 it.Model = this;
                 if (it.IsFolder)
                     folders.Add(it.ResourceId, it);
@@ -435,31 +439,45 @@ namespace Maestro.Base.UI
             item.ClipboardState = _clip.GetClipboardState(item.ResourceId);
         }
 
+        private Dictionary<string, RepositoryItem> _rootNodes = new Dictionary<string, RepositoryItem>();
+
         public override System.Collections.IEnumerable GetChildren(TreePath treePath)
         {
             if (treePath.IsEmpty())
             {
-                var list = _conn.ResourceService.GetRepositoryResources("Library://", 0);
-                if (list.Items.Count != 1)
+                foreach (var connName in _connManager.GetConnectionNames())
                 {
-                    throw new InvalidOperationException(); //Huh?
+                    var conn = _connManager.GetConnection(connName);
+
+                    var list = conn.ResourceService.GetRepositoryResources("Library://", 0);
+                    if (list.Items.Count != 1)
+                    {
+                        throw new InvalidOperationException(); //Huh?
+                    }
+                    var connNode = new RepositoryItem(connName, (IRepositoryItem)list.Items[0]);
+                    Debug.Assert(connNode.Parent == null);
+                    Debug.Assert(connNode.IsRoot);
+                    connNode.Name = connName;
+                    connNode.Model = this;
+                    _rootNodes[connName] = connNode;
+                    yield return connNode;
                 }
-                _rootNode = new RepositoryItem((IRepositoryItem)list.Items[0]);
-                _rootNode.Name = _connectionName;
-                _rootNode.Model = this;
-                yield return _rootNode;
             }
             else
             {
                 var node = treePath.LastNode as RepositoryItem;
                 if (node != null && node.IsFolder) //Can't enumerate children of documents
                 {
+                    string connName = GetParentConnectionName(node);
+                    var conn = _connManager.GetConnection(connName);
                     node.ClearChildrenWithoutNotification();
-                    var list = _conn.ResourceService.GetRepositoryResources(node.ResourceId, "", 1, false);
-                    foreach (RepositoryItem item in GetSorted(list))
+                    var list = conn.ResourceService.GetRepositoryResources(node.ResourceId, "", 1, false);
+                    foreach (RepositoryItem item in GetSorted(connName, list))
                     {
                         node.AddChildWithoutNotification(item);
                         ApplyCurrentItemState(item);
+                        Debug.Assert(item.Parent != null);
+                        Debug.Assert(!item.IsRoot);
                         yield return item;
                     }
                 }
@@ -467,6 +485,29 @@ namespace Maestro.Base.UI
                 {
                     yield break;
                 }
+            }
+        }
+
+        internal static string GetParentConnectionName(RepositoryItem item)
+        {
+            if (!string.IsNullOrEmpty(item.ConnectionName))
+                return item.ConnectionName;
+
+            var current = item.Parent;
+            if (current != null)
+            {
+                current = item.Parent;
+                while (current != null)
+                {
+                    current = current.Parent;
+                }
+                Debug.Assert(!string.IsNullOrEmpty(current.ConnectionName));
+                return current.ConnectionName;
+            }
+            else 
+            {
+                Debug.Assert(!string.IsNullOrEmpty(item.ConnectionName));
+                return item.ConnectionName;
             }
         }
 
@@ -494,14 +535,14 @@ namespace Maestro.Base.UI
 
         internal TreePath GetPath(RepositoryItem node)
         {
-            if (node == _rootNode)
+            if (node.IsRoot)
             {
                 return new TreePath(node);
             }
             else
             {
                 Stack<object> stack = new Stack<object>();
-                while (node != _rootNode)
+                while (!node.IsRoot)
                 {
                     stack.Push(node);
                     node = node.Parent;
@@ -516,10 +557,11 @@ namespace Maestro.Base.UI
             base.OnStructureChanged(args);
         }
 
-        internal TreePath GetPathFromResourceId(string resId)
+        internal TreePath GetPathFromResourceId(string connectionName, string resId)
         {
+            var rootNode = _rootNodes[connectionName];
             if ("Library://".Equals(resId))
-                return GetPath(_rootNode);
+                return GetPath(rootNode);
             
             string[] components = ResourceIdentifier.GetPath(resId).Split('/');
             if (!ResourceIdentifier.IsFolderResource(resId))
@@ -527,7 +569,7 @@ namespace Maestro.Base.UI
                 //Fix extension to last component
                 components[components.Length - 1] = components[components.Length - 1] + "." + ResourceIdentifier.GetResourceType(resId).ToString();
             }
-            RepositoryItem current = _rootNode;
+            RepositoryItem current = rootNode;
             for (int i = 0; i < components.Length; i++)
             {
                 if (current.Contains(components[i]))

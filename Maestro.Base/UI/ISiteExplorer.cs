@@ -20,45 +20,52 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Base.UI
 {
     public interface ISiteExplorer : IViewContent
     {
         /// <summary>
-        /// The name of the <see cref="IServerConnection"/> associated with this site explorer
+        /// The name of the active <see cref="IServerConnection"/> associated with this site explorer. The active connection
+        /// is the connection whose node or child nodes is currently selected
         /// </summary>
         string ConnectionName { get; }
 
         /// <summary>
+        /// Gets the array of connection names.
+        /// </summary>
+        string[] ConnectionNames { get; }
+
+        /// <summary>
         /// Refreshes the tree model
         /// </summary>
-        void RefreshModel();
+        void RefreshModel(string connectionName);
 
         /// <summary>
         /// Refreshes the tree model from the specified resource id 
         /// </summary>
         /// <param name="resId"></param>
-        void RefreshModel(string resId);
+        void RefreshModel(string connectionName, string resId);
 
         /// <summary>
         /// Expands the node indicated by the specified id
         /// </summary>
         /// <param name="folderId"></param>
-        void ExpandNode(string folderId);
+        void ExpandNode(string connectionName, string folderId);
 
         /// <summary>
         /// Selects the node indicated by the specified id
         /// </summary>
         /// <param name="resourceId"></param>
-        void SelectNode(string resourceId);
+        void SelectNode(string connectionName, string resourceId);
 
         /// <summary>
         /// Flags the node indicated by the specified action
         /// </summary>
         /// <param name="resourceId"></param>
         /// <param name="action"></param>
-        void FlagNode(string resourceId, NodeFlagAction action);
+        void FlagNode(string connectionName, string resourceId, NodeFlagAction action);
 
         /// <summary>
         /// Gets the items currently selected
@@ -89,5 +96,39 @@ namespace Maestro.Base.UI
         /// Reset node to default styles
         /// </summary>
         None
+    }
+}
+
+//This is a compatibility shim. Most existing consumers of these APIs operate based on the active connection anyway
+
+namespace Maestro.Base
+{
+    using UI;
+
+    internal static class SiteExplorerShims
+    {
+        public static void RefreshModel(this ISiteExplorer explorer)
+        {
+            Check.NotNull(explorer, "explorer");
+            explorer.RefreshModel(explorer.ConnectionName);
+        }
+
+        public static void ExpandNode(this ISiteExplorer explorer, string resId)
+        {
+            Check.NotNull(explorer, "explorer");
+            explorer.ExpandNode(explorer.ConnectionName, resId);
+        }
+
+        public static void FlagNode(this ISiteExplorer explorer, string resId, NodeFlagAction action)
+        {
+            Check.NotNull(explorer, "explorer");
+            explorer.FlagNode(explorer.ConnectionName, resId, action);
+        }
+
+        public static void SelectNode(this ISiteExplorer explorer, string resId)
+        {
+            Check.NotNull(explorer, "explorer");
+            explorer.SelectNode(explorer.ConnectionName, resId);
+        }
     }
 }
