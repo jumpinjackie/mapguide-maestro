@@ -49,6 +49,19 @@ namespace Maestro.Base.UI
             Application.Idle += new EventHandler(OnIdle);
             ndResource.ToolTipProvider = new RepositoryItemToolTipProvider();
             ndResource.DrawText += new EventHandler<Aga.Controls.Tree.NodeControls.DrawEventArgs>(OnNodeDrawText);
+
+            this.Title = Properties.Resources.Content_SiteExplorer;
+            this.Description = Properties.Resources.Content_SiteExplorer;
+
+            var ts = ToolbarService.CreateToolStripItems("/Maestro/Shell/SiteExplorer/Toolbar", this, true);
+            tsSiteExplorer.Items.AddRange(ts);
+
+            _connManager = ServiceRegistry.GetService<ServerConnectionManager>();
+
+            var omgr = ServiceRegistry.GetService<OpenResourceManager>();
+            var clip = ServiceRegistry.GetService<ClipboardService>();
+            _model = new RepositoryTreeModel(_connManager, trvResources, omgr, clip);
+            trvResources.Model = _model;
         }
 
         void OnIdle(object sender, EventArgs e)
@@ -62,13 +75,20 @@ namespace Maestro.Base.UI
 
         public string ConnectionName
         {
-            get;
-            private set;
-        }
-
-        public SiteExplorer(string name) : this()
-        {
-            this.ConnectionName = name;
+            get
+            {
+                if (trvResources.SelectedNode != null)
+                {
+                    var item = (RepositoryItem)trvResources.SelectedNode.Tag;
+                    return item.ConnectionName;
+                }
+                else if (trvResources.SelectedNodes != null && trvResources.SelectedNodes.Count > 0)
+                {
+                    var item = (RepositoryItem)trvResources.SelectedNodes[0].Tag;
+                    return item.ConnectionName;
+                }
+                return null;
+            }
         }
 
         private RepositoryTreeModel _model;
@@ -76,18 +96,7 @@ namespace Maestro.Base.UI
 
         protected override void OnLoad(EventArgs e)
         {
-            this.Title = Properties.Resources.Content_SiteExplorer;
-            this.Description = string.Format("{0}: {1}", Properties.Resources.Content_SiteExplorer, this.ConnectionName);
-
-            var ts = ToolbarService.CreateToolStripItems("/Maestro/Shell/SiteExplorer/Toolbar", this, true);
-            tsSiteExplorer.Items.AddRange(ts);
-
-            _connManager = ServiceRegistry.GetService<ServerConnectionManager>();
-
-            var omgr = ServiceRegistry.GetService<OpenResourceManager>();
-            var clip = ServiceRegistry.GetService<ClipboardService>();
-            _model = new RepositoryTreeModel(_connManager, trvResources, omgr, clip);
-            trvResources.Model = _model;
+            
         }
 
         public override bool AllowUserClose
@@ -103,6 +112,15 @@ namespace Maestro.Base.UI
             get
             {
                 return ViewRegion.Left;
+            }
+        }
+
+        public void FullRefresh()
+        {
+            _model.FullRefresh();
+            foreach(var node in trvResources.Root.Children)
+            {
+                node.Expand();
             }
         }
 

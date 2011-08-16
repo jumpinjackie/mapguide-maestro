@@ -168,10 +168,15 @@ namespace Maestro.Base.Editor
             UpdateTitle();
         }
 
+        private string GetTooltip(string item)
+        {
+            return string.Format(Properties.Resources.EditorTitleTemplate, item, Environment.NewLine, this.Resource.CurrentConnection.DisplayName);
+        }
+
         private void UpdateTitle()
         {
             this.Title = this.IsNew ? Properties.Resources.NewResource : ResourceIdentifier.GetName(_svc.ResourceID);
-            this.Description = this.IsNew ? Properties.Resources.NewResource : _svc.ResourceID;
+            this.Description = GetTooltip(this.IsNew ? Properties.Resources.NewResource : _svc.ResourceID);
         }
 
         const string DIRTY_PREFIX = "* ";

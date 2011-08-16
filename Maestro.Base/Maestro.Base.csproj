@@ -78,7 +78,6 @@
     <Compile Include="Commands\Conditions\ActiveEditorConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\CloseableDocumentConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\CutCopyConditionEvaluator.cs" />
-    <Compile Include="Commands\Conditions\IsConnectedConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\MultipleSelectedItemConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\NotConnectedConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\DebugModeConditionEvaluator.cs" />
@@ -94,7 +93,6 @@
     <Compile Include="Commands\LoadPackageCommand.cs" />
     <Compile Include="Commands\LocalFeatureSourcePreviewCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
-    <Compile Include="Commands\LogoutCommand.cs" />
     <Compile Include="Commands\MgCookerCommand.cs" />
     <Compile Include="Commands\NewItemCommand.cs" />
     <Compile Include="Commands\NotImplementedCommand.cs" />

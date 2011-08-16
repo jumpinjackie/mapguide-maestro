@@ -88,24 +88,35 @@ namespace Maestro.Base.Events
         {
             Workbench wb = Workbench.Instance;
             Debug.Assert(wb.ActiveSiteExplorer != null);
-            Debug.Assert(wb.ActiveSiteExplorer.ConnectionName == name);
+            var svc = ServiceRegistry.GetService<ServerConnectionManager>();
+            LoggingService.Info("There are now " + svc.GetConnectionNames().Count + " active connections"); //LOCALIZEME
+            //Debug.Assert(wb.ActiveSiteExplorer.ConnectionName == name);
 
-            wb.ActiveSiteExplorer = null;
-
+            /*
             //TODO: Review this API design when we do decide to support multiple
             //site connections
             ServerStatusMonitor.Init(null);
+             */
         }
 
         static void OnConnectionAdded(object sender, string name)
         {
-            var exp = new SiteExplorer(name);
             var wb = Workbench.Instance;
-            wb.ShowContent(exp);
+            if (wb.ActiveSiteExplorer == null)
+            {
+                var siteExp = new SiteExplorer();
+                wb.ShowContent(siteExp);
+            }
+
+            wb.ActiveSiteExplorer.RefreshModel(name);
+            
 
             var svc = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = svc.GetConnection(name);
-            
+
+            LoggingService.Info("There are now " + svc.GetConnectionNames().Count + " active connections"); //LOCALIZEME
+
+            /*
             ISiteService siteSvc = null;
             var svcTypes = conn.Capabilities.SupportedServices;
             if (Array.IndexOf(svcTypes, (int)ServiceType.Site) >= 0)
@@ -115,6 +126,7 @@ namespace Maestro.Base.Events
             //TODO: Review this API design when we do decide to support multiple
             //site connections
             ServerStatusMonitor.Init(siteSvc);
+             */
         }
     }
 }

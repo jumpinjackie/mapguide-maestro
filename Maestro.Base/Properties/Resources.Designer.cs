@@ -443,6 +443,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have already established such a connection.
+        /// </summary>
+        internal static string ConnectionAlreadyEstablished {
+            get {
+                return ResourceManager.GetString("ConnectionAlreadyEstablished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Messages.
         /// </summary>
         internal static string Content_Messages {
@@ -650,6 +659,15 @@ namespace Maestro.Base.Properties {
         internal static string EditorRegistered {
             get {
                 return ResourceManager.GetString("EditorRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource ID: {0}{1}Connection: {2}.
+        /// </summary>
+        internal static string EditorTitleTemplate {
+            get {
+                return ResourceManager.GetString("EditorTitleTemplate", resourceCulture);
             }
         }
         

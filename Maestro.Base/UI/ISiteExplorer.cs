@@ -38,6 +38,11 @@ namespace Maestro.Base.UI
         string[] ConnectionNames { get; }
 
         /// <summary>
+        /// Performs a full refresh of the tree model
+        /// </summary>
+        void FullRefresh();
+
+        /// <summary>
         /// Refreshes the tree model
         /// </summary>
         void RefreshModel(string connectionName);

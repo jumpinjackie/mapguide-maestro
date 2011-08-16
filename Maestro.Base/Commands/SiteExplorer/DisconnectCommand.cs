@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using ICSharpCode.Core;
 using Maestro.Base.Services;
@@ -35,6 +36,7 @@ namespace Maestro.Base.Commands.SiteExplorer
             {
                 var name = wb.ActiveSiteExplorer.ConnectionName;
                 svc.RemoveConnection(name);
+                wb.ActiveSiteExplorer.FullRefresh();
             }
         }
 

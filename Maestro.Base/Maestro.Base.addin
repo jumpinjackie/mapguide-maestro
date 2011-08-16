@@ -11,7 +11,6 @@
     <Runtime>
         <Import assembly="../Maestro.Base.dll">
             <ConditionEvaluator name="DebugMode" class="Maestro.Base.Commands.Conditions.DebugModeConditionEvaluator" />
-            <ConditionEvaluator name="IsConnected" class="Maestro.Base.Commands.Conditions.IsConnectedConditionEvaluator" />
             <ConditionEvaluator name="NotConnected" class="Maestro.Base.Commands.Conditions.NotConnectedConditionEvaluator" />
             <ConditionEvaluator name="IsNotRoot" class="Maestro.Base.Commands.Conditions.SelectedRootItemConditionEvaluator" />
             <ConditionEvaluator name="EditorFunction" class="Maestro.Base.Commands.Conditions.ActiveEditorConditionEvaluator" />
@@ -76,12 +75,10 @@
         <MenuItem id="Menu_File"
                   type="Menu"
                   label="${res:Menu_File}">
-            <Condition action="Disable" name="IsConnected">
-                <MenuItem id="Connect"
-                          label="${res:Menu_File_Connect}"
-                          icon="plug__plus"
-                          class="Maestro.Base.Commands.LoginCommand" />
-            </Condition>
+            <MenuItem id="Connect"
+                      label="${res:Menu_File_Connect}"
+                      icon="plug__plus"
+                      class="Maestro.Base.Commands.LoginCommand" />
             <Condition action="Disable" name="NotConnected">
                 <MenuItem id="NewItem"
                           label="${res:Menu_File_NewResource}"
@@ -280,13 +277,11 @@
     
     <!-- Toolbar Definition -->
     <Path name="/Maestro/Shell/Toolbars/Main">
-        <Condition action="Disable" name="IsConnected">
-            <ToolbarItem id="Connect"
-                         icon="plug__plus"
-                         label="${res:Menu_File_Connect}"
-                         tooltip="${res:Menu_File_Connect}"
-                         class="Maestro.Base.Commands.LoginCommand" />
-        </Condition>
+        <ToolbarItem id="Connect"
+                     icon="plug__plus"
+                     label="${res:Menu_File_Connect}"
+                     tooltip="${res:Menu_File_Connect}"
+                     class="Maestro.Base.Commands.LoginCommand" />
         <Condition action="Disable" name="NotConnected">
             <ToolbarItem id="NewItem"
                          icon="document__plus"

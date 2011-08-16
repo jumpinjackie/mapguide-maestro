@@ -523,6 +523,11 @@ namespace Maestro.Base.UI
             OnStructureChanged(new TreePathEventArgs(selected));
         }
 
+        internal void FullRefresh()
+        {
+            OnStructureChanged(new TreePathEventArgs());
+        }
+
         public override bool IsLeaf(TreePath treePath)
         {
             return !((RepositoryItem)treePath.LastNode).IsFolder;

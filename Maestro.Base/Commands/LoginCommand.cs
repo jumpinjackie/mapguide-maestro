@@ -48,9 +48,18 @@ namespace Maestro.Base.Commands
                 var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
                 Debug.Assert(mgr != null);
 
-                LoggingService.Info("Connection created: " + conn.DisplayName);
-                mgr.AddConnection(conn.DisplayName, conn);
+                // Connection display names should be unique. A duplicate means we are connecting to the same MG server
 
+                LoggingService.Info("Connection created: " + conn.DisplayName);
+                if (mgr.GetConnection(conn.DisplayName) == null)
+                {
+                    mgr.AddConnection(conn.DisplayName, conn);
+                    Workbench.Instance.ActiveSiteExplorer.FullRefresh();
+                }
+                else
+                {
+                    MessageService.ShowError(Properties.Resources.ConnectionAlreadyEstablished);
+                }
                 var vmgr = ServiceRegistry.GetService<ViewContentManager>();
             }
         }

@@ -31,7 +31,12 @@ namespace Maestro.Base.Commands.Conditions
             var wb = Workbench.Instance;
             if (wb != null)
             {
-                return wb.ActiveSiteExplorer != null;
+                if (wb.ActiveSiteExplorer != null)
+                {
+                    var items = wb.ActiveSiteExplorer.SelectedItems;
+                    if (items.Length == 1)
+                        return items[0].IsRoot;
+                }
             }
             return false;
         }

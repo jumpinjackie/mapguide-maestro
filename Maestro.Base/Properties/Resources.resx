@@ -1058,4 +1058,10 @@ Error message: {1}</value>
   <data name="SiteExplorer_CopyResourceIds" xml:space="preserve">
     <value>Copy Resource IDs to clipboard</value>
   </data>
+  <data name="ConnectionAlreadyEstablished" xml:space="preserve">
+    <value>You have already established such a connection</value>
+  </data>
+  <data name="EditorTitleTemplate" xml:space="preserve">
+    <value>Resource ID: {0}{1}Connection: {2}</value>
+  </data>
 </root>

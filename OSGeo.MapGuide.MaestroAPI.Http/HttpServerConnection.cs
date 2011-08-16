@@ -795,7 +795,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 				/*if (m_wc.Credentials as NetworkCredential != null)
 					s += " [" + (m_wc.Credentials as NetworkCredential).UserName + "]"; */
 
-				return s;
+				return s + " (v" + this.SiteVersion.ToString() + ")";
 			}
 		}
 
