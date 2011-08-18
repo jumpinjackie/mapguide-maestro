@@ -334,7 +334,10 @@ namespace Maestro.Editors.Generic
             {
                 var doc = item as ResourceListResourceDocument;
                 if (doc != null)
-                    items.Add(doc.Name, doc);
+                {
+                    string sortKey = doc.Name + "." + doc.ResourceType;
+                    items.Add(sortKey, doc);
+                }
             }
             foreach (var doc in items.Values)
             {
