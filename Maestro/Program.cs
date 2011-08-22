@@ -31,6 +31,7 @@ using ICSharpCode.Core.WinForms;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using Maestro.Login;
 using Maestro.Shared.UI;
+using System.Diagnostics;
 
 namespace Maestro
 {
@@ -60,6 +61,20 @@ namespace Maestro
             // Our application contains a .config file telling log4net to write
             // to System.Diagnostics.Trace.
             LoggingService.Info("Application start");
+
+            // Setup Platform.ini if required
+            if (!Platform.IsRunningOnMono)
+            {
+                if (!File.Exists("Platform.ini") && File.Exists("LocalConfigure.exe"))
+                {
+                    var proc = new ProcessStartInfo("LocalConfigure.exe");
+                    if (Environment.OSVersion.Version.Major >= 6)
+                        proc.Verb = "runas";
+
+                    var p = Process.Start(proc);
+                    p.WaitForExit();
+                }
+            }
 
             if (Platform.IsRunningOnMono)
             {

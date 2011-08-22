@@ -26,14 +26,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 {
     public class LocalNativeCoordinateSystemCatalog : CoordinateSystemCatalog
     {
-        private LocalNativeConnection m_con;
         private CoordinateSystemCategory[] m_categories;
         private string m_coordLib = null;
         internal OSGeo.MapGuide.MgCoordinateSystemFactory m_cf;
 
-        internal LocalNativeCoordinateSystemCatalog(LocalNativeConnection con)
+        internal LocalNativeCoordinateSystemCatalog()
         {
-            m_con = con;
             m_cf = new MgCoordinateSystemFactory();
         }
 
@@ -109,8 +107,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
             MgBatchPropertyCollection bp = m_cf.EnumerateCoordinateSystems(category);
             List<CoordinateSystemDefinitionBase> lst = new List<CoordinateSystemDefinitionBase>();
-            for (int i = 0; i < bp.Count; i++)
-                lst.Add(new LocalNativeCoordinateSystemDefinition(cat, bp[i]));
+            for (int i = 0; i < bp.GetCount(); i++)
+                lst.Add(new LocalNativeCoordinateSystemDefinition(cat, bp.GetItem(i)));
 
             return lst.ToArray();
         }

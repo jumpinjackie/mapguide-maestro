@@ -459,6 +459,7 @@ namespace Maestro.Base.UI
                     Debug.Assert(connNode.IsRoot);
                     connNode.Name = connName;
                     connNode.Model = this;
+
                     _rootNodes[connName] = connNode;
                     yield return connNode;
                 }

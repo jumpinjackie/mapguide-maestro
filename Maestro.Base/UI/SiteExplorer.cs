@@ -87,6 +87,11 @@ namespace Maestro.Base.UI
                     var item = (RepositoryItem)trvResources.SelectedNodes[0].Tag;
                     return item.ConnectionName;
                 }
+                else if (trvResources.Root.Children.Count == 1)
+                {
+                    var item = (RepositoryItem)trvResources.Root.Children[0].Tag;
+                    return item.ConnectionName;
+                }
                 return null;
             }
         }

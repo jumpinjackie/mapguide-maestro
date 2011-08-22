@@ -455,7 +455,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 else
                 {
                     if (m_coordsys == null)
-                        m_coordsys = new LocalNativeCoordinateSystemCatalog(this);
+                        m_coordsys = new LocalNativeCoordinateSystemCatalog();
                     return m_coordsys;
                 }
             }

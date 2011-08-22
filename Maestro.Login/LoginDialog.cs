@@ -27,6 +27,7 @@ using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using System.Reflection;
+using System.Collections.Specialized;
 
 namespace Maestro.Login
 {
@@ -42,7 +43,9 @@ namespace Maestro.Login
         private PreferredSiteList _siteList;
 
         private HttpLoginCtrl _http;
-        private LocalNativeLoginCtrl _local;
+        private LocalNativeLoginCtrl _localNative;
+        private LocalLoginCtrl _local;
+        
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginDialog"/> class.
@@ -51,18 +54,23 @@ namespace Maestro.Login
         {
             InitializeComponent();
             _http = new HttpLoginCtrl() { Dock = DockStyle.Fill };
-            _local = new LocalNativeLoginCtrl() { Dock = DockStyle.Fill };
+            _localNative = new LocalNativeLoginCtrl() { Dock = DockStyle.Fill };
+            _local = new LocalLoginCtrl() { Dock = DockStyle.Fill };
             _controls = new ILoginCtrl[] 
             {
                 _http,
-                _local
+                _localNative,
+                _local 
             };
             _controls[0].EnableOk += OnEnableOk;
             _controls[1].EnableOk += OnEnableOk;
+            _controls[2].EnableOk += OnEnableOk;
             _controls[0].CheckSavedPassword += (sender, e) => { chkSavePassword.Checked = true; };
             _controls[1].CheckSavedPassword += (sender, e) => { chkSavePassword.Checked = true; };
+            _controls[2].CheckSavedPassword += (sender, e) => { chkSavePassword.Checked = true; };
             _controls[0].DisabledOk += OnDisableOk;
             _controls[1].DisabledOk += OnDisableOk;
+            _controls[2].DisabledOk += OnDisableOk;
         }
 
         /// <summary>
@@ -129,6 +137,11 @@ namespace Maestro.Login
             {
                 rdTcpIp.Enabled = false;
             }
+
+            if (Platform.IsRunningOnMono)
+            {
+                rdLocal.Enabled = false;
+            }
         }
 
         private void OnEnableOk(object sender, EventArgs e)
@@ -166,6 +179,11 @@ namespace Maestro.Login
         }
 
         private void rdTcpIp_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateLoginControl();
+        }
+
+        private void rdLocal_CheckedChanged(object sender, EventArgs e)
         {
             UpdateLoginControl();
         }
@@ -254,14 +272,20 @@ namespace Maestro.Login
 
                         }
                     }
-                    else //Native
+                    else if (_selectedIndex == 1) //Native
                     {
                         System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
-                        builder["ConfigFile"] = _local.WebConfigPath;
-                        builder["Username"] = _local.Username;
-                        builder["Password"] = _local.Password;
+                        builder["ConfigFile"] = _localNative.WebConfigPath;
+                        builder["Username"] = _localNative.Username;
+                        builder["Password"] = _localNative.Password;
                         builder["Locale"] = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
                         _conn = ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", builder.ToString());
+                    }
+                    else //Local
+                    {
+                        NameValueCollection param = new NameValueCollection();
+                        param["ConfigFile"] = _local.PlatformConfigPath;
+                        _conn = ConnectionProviderRegistry.CreateConnection("Maestro.Local", param);
                     }
 
                     _conn.AutoRestartSession = true;
@@ -290,8 +314,10 @@ namespace Maestro.Login
         {
             if (rdHttp.Checked)
                 _selectedIndex = 0;
-            else
+            else if (rdTcpIp.Checked)
                 _selectedIndex = 1;
+            else
+                _selectedIndex = 2;
 
             SetLoginControl((Control)_controls[_selectedIndex]);
             _controls[_selectedIndex].UpdateLoginStatus();

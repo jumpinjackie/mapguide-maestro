@@ -39,6 +39,14 @@ namespace OSGeo.MapGuide.ObjectModels.Common
 
     partial class ResourceDocumentHeaderType
     {
+        public static ResourceDocumentHeaderType CreateDefault()
+        {
+            return new ResourceDocumentHeaderType()
+            {
+                Security = new ResourceSecurityType() { Inherited = true }
+            };
+        }
+
         internal ResourceDocumentHeaderType() { }
 
         //Required for saving/updating
@@ -53,6 +61,14 @@ namespace OSGeo.MapGuide.ObjectModels.Common
 
     partial class ResourceFolderHeaderType
     {
+        public static ResourceFolderHeaderType CreateDefault()
+        {
+            return new ResourceFolderHeaderType()
+            {
+                Security = new ResourceSecurityType() { Inherited = true }
+            };
+        }
+
         internal ResourceFolderHeaderType() { }
 
         //Required for saving/updating

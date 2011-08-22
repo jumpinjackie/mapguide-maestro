@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3DDF6501-0148-474C-8674-7C7DA49C7F02}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OSGeo.MapGuide.MaestroAPI.Local</RootNamespace>
+    <AssemblyName>OSGeo.MapGuide.MaestroAPI.Local</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;LOCAL_API</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;LOCAL_API</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NetTopologySuite.Merged, Version=1.8.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.Desktop, Version=2.4.0.0, Culture=neutral, PublicKeyToken=e75f9fd7cf82dc3f, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Maestro.AddIn.Local\OSGeo.MapGuide.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\LocalNativeCoordinateSystem.cs">
+      <Link>LocalNativeCoordinateSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\LocalNativeCoordinateSystemCatalog.cs">
+      <Link>LocalNativeCoordinateSystemCatalog.cs</Link>
+    </Compile>
+    <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\LocalNativeCoordinateSystemCategory.cs">
+      <Link>LocalNativeCoordinateSystemCategory.cs</Link>
+    </Compile>
+    <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\LocalNativeDataReader.cs">
+      <Link>LocalNativeDataReader.cs</Link>
+    </Compile>
+    <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\LocalNativeFeature.cs">
+      <Link>LocalNativeFeature.cs</Link>
+    </Compile>
+    <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\LocalNativeFeatureReader.cs">
+      <Link>LocalNativeFeatureReader.cs</Link>
+    </Compile>
+    <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\LocalNativeRecord.cs">
+      <Link>LocalNativeRecord.cs</Link>
+    </Compile>
+    <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\LocalNativeSqlReader.cs">
+      <Link>LocalNativeSqlReader.cs</Link>
+    </Compile>
+    <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\MgReadOnlyStream.cs">
+      <Link>MgReadOnlyStream.cs</Link>
+    </Compile>
+    <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\Utility.cs">
+      <Link>Utility.cs</Link>
+    </Compile>
+    <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Properties\SignedAssemblyInfo.cs">
+      <Link>SignedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="LocalCapabilities.cs" />
+    <Compile Include="LocalConnection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
+      <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
+      <Name>OSGeo.MapGuide.MaestroAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

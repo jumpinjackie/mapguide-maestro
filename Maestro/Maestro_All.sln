@@ -83,6 +83,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ExtendedObjectModels", "..\OSGeo.MapGuide.ExtendedObjectModels\OSGeo.MapGuide.ExtendedObjectModels.csproj", "{B3A2B816-9F41-4857-A111-09D2DF2550D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.Local", "..\OSGeo.MapGuide.MaestroAPI.Local\OSGeo.MapGuide.MaestroAPI.Local.csproj", "{3DDF6501-0148-474C-8674-7C7DA49C7F02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.Local", "..\Maestro.AddIn.Local\Maestro.AddIn.Local.csproj", "{2419F940-BFB7-4F3F-B5DA-1052EB4706E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalConfigure", "..\LocalConfigure\LocalConfigure.csproj", "{6EE16FFD-296E-42FF-B994-8902C27AA0F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -205,6 +211,18 @@ Global
 		{B3A2B816-9F41-4857-A111-09D2DF2550D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3A2B816-9F41-4857-A111-09D2DF2550D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3A2B816-9F41-4857-A111-09D2DF2550D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DDF6501-0148-474C-8674-7C7DA49C7F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DDF6501-0148-474C-8674-7C7DA49C7F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DDF6501-0148-474C-8674-7C7DA49C7F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DDF6501-0148-474C-8674-7C7DA49C7F02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2419F940-BFB7-4F3F-B5DA-1052EB4706E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2419F940-BFB7-4F3F-B5DA-1052EB4706E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2419F940-BFB7-4F3F-B5DA-1052EB4706E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2419F940-BFB7-4F3F-B5DA-1052EB4706E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EE16FFD-296E-42FF-B994-8902C27AA0F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE16FFD-296E-42FF-B994-8902C27AA0F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE16FFD-296E-42FF-B994-8902C27AA0F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE16FFD-296E-42FF-B994-8902C27AA0F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

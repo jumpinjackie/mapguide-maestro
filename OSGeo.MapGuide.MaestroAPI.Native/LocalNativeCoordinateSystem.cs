@@ -32,33 +32,35 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         internal LocalNativeCoordinateSystemDefinition(CoordinateSystemCategory parent, MgPropertyCollection props)
             : base(parent)
         {
-            for (int i = 0; i < props.Count; i++)
+            int pcount = props.GetCount();
+            for (int i = 0; i < pcount; i++)
             {
-                switch (props[i].Name.ToLower())
+                var prop = props.GetItem(i);
+                switch (prop.Name.ToLower())
                 {
                     case "code":
-                        m_code = (props[i] as MgStringProperty).Value;
+                        m_code = (prop as MgStringProperty).Value;
                         break;
                     case "description":
-                        m_description = (props[i] as MgStringProperty).Value;
+                        m_description = (prop as MgStringProperty).Value;
                         break;
                     case "projection":
-                        m_projection = (props[i] as MgStringProperty).Value;
+                        m_projection = (prop as MgStringProperty).Value;
                         break;
                     case "projection description":
-                        m_projectionDescription = (props[i] as MgStringProperty).Value;
+                        m_projectionDescription = (prop as MgStringProperty).Value;
                         break;
                     case "Datum":
-                        m_datum = (props[i] as MgStringProperty).Value;
+                        m_datum = (prop as MgStringProperty).Value;
                         break;
                     case "datum description":
-                        m_datumDescription = (props[i] as MgStringProperty).Value;
+                        m_datumDescription = (prop as MgStringProperty).Value;
                         break;
                     case "ellipsoid":
-                        m_ellipsoid = (props[i] as MgStringProperty).Value;
+                        m_ellipsoid = (prop as MgStringProperty).Value;
                         break;
                     case "ellipsoid description":
-                        m_ellipsoidDescription = (props[i] as MgStringProperty).Value;
+                        m_ellipsoidDescription = (prop as MgStringProperty).Value;
                         break;
                 }
             }

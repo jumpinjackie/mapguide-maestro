@@ -28,7 +28,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     /// Defines the valid types of geometric storage in a geometric property
     /// </summary>
     [Flags]
-    public enum FeatureGeometricType
+    public enum FeatureGeometricType : int
     {
         Point = 1,
         Curve = 2,

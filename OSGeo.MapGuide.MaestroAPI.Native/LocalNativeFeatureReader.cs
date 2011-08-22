@@ -39,6 +39,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             _mgReader = new WKTReader();
             _agfRw = new MgAgfReaderWriter();
             _wktRw = new MgWktReaderWriter();
+            base.ClassDefinition = Utility.ConvertClassDefinition(reader.GetClassDefinition());
+            base.FieldCount = reader.GetPropertyCount();
         }
 
         protected override IFeature ReadNextFeature()

@@ -57,6 +57,9 @@ namespace Maestro.Base.Events
             foreach (var name in svc.GetConnectionNames())
             {
                 var conn = svc.GetConnection(name);
+                if (conn.ProviderName.ToUpper().Equals("MAESTRO.LOCAL"))
+                    continue;
+
                 string sessionId = conn.SessionID;
                 if (!string.IsNullOrEmpty(sessionId))
                 {

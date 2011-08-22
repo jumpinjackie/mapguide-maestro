@@ -1,0 +1,20 @@
+﻿<AddIn name="Maestro.AddIn.Local"
+       author="Jackie Ng"
+       url="http://trac.osgeo.org/mapguide/wiki/maestro"
+       description="MapGuide Maestro AddIn to support local repository"
+       addInManagerHidden="preinstalled">
+
+    <Manifest>
+        <Identity name="Maestro.AddIn.Local" />
+    </Manifest>
+
+    <Runtime>
+        <Import assembly="../../Maestro.Base.dll" />
+        <Import assembly="Maestro.AddIn.Local.dll" />
+    </Runtime>
+
+    <!-- Auto-start commands -->
+    <Path name="/Workspace/Autostart">
+        <Class id="Startup" class="Maestro.AddIn.Local.Commands.StartupCommand" />
+    </Path>
+</AddIn>

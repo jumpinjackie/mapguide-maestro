@@ -28,7 +28,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     /// <summary>
     /// Defines the types of properties in a FDO class definition
     /// </summary>
-    public enum PropertyDefinitionType
+    public enum PropertyDefinitionType : int
     {
         Data = 100,
         Geometry = 102,
@@ -40,7 +40,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     /// <summary>
     /// Defines the valid types of property values
     /// </summary>
-    public enum PropertyValueType
+    public enum PropertyValueType : int
     {
         Blob = 10,
         Boolean = 1,
@@ -62,7 +62,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     /// <summary>
     /// Defines the valid data types of data properties
     /// </summary>
-    public enum DataPropertyType
+    public enum DataPropertyType : int
     {
         Blob = PropertyValueType.Blob,
         Boolean = PropertyValueType.Boolean,

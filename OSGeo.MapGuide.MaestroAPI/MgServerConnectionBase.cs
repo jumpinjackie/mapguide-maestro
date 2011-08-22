@@ -294,37 +294,5 @@ namespace OSGeo.MapGuide.MaestroAPI
         public abstract System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format);
 
         #endregion
-
-        #region Load Procedure
-
-        /// <summary>
-        /// Executes the load procedure.
-        /// </summary>
-        /// <param name="loadProc">The load proc.</param>
-        /// <param name="callback">The callback.</param>
-        /// <param name="ignoreUnsupported">if set to <c>true</c> [ignore unsupported].</param>
-        /// <returns></returns>
-        public virtual string[] ExecuteLoadProcedure(ILoadProcedure loadProc, OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack callback, bool ignoreUnsupported)
-        {
-            var cmd = new ExecuteLoadProcedure(GetInterface());
-            cmd.IgnoreUnsupportedFeatures = ignoreUnsupported;
-            return cmd.Execute(loadProc, callback);
-        }
-
-        /// <summary>
-        /// Executes the load procedure.
-        /// </summary>
-        /// <param name="resourceID">The resource ID.</param>
-        /// <param name="callback">The callback.</param>
-        /// <param name="ignoreUnsupported">if set to <c>true</c> [ignore unsupported].</param>
-        /// <returns></returns>
-        public virtual string[] ExecuteLoadProcedure(string resourceID, OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack callback, bool ignoreUnsupported)
-        {
-            var cmd = new ExecuteLoadProcedure(GetInterface());
-            cmd.IgnoreUnsupportedFeatures = ignoreUnsupported;
-            return cmd.Execute(resourceID, callback);
-        }
-
-        #endregion
     }
 }

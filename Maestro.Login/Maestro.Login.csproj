@@ -42,6 +42,12 @@
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="LocalLoginCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LocalLoginCtrl.Designer.cs">
+      <DependentUpon>LocalLoginCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="LocalLoginCtrl.resx">
+      <DependentUpon>LocalLoginCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginDialog.resx">
       <DependentUpon>LoginDialog.cs</DependentUpon>
       <SubType>Designer</SubType>

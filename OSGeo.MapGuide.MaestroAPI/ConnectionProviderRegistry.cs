@@ -58,6 +58,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
     }
 
+    public delegate IServerConnection ConnectionFactoryMethod(NameValueCollection initParams);
+
     /// <summary>
     /// The entry point of the Maestro API. The <see cref="ConnectionProviderRegistry"/> is used to create <see cref="IServerConnection"/>
     /// objects. <see cref="IServerConnection"/> is the root object of the Maestro API, and is where most of the functionality provided
@@ -106,14 +108,14 @@ namespace OSGeo.MapGuide.MaestroAPI
     {
         const string PROVIDER_CONFIG = "ConnectionProviders.xml";
 
-        static Dictionary<string, Type> _ctors;
+        static Dictionary<string, ConnectionFactoryMethod> _ctors;
         static List<ConnectionProviderEntry> _providers;
 
         static string _dllRoot;
 
         static ConnectionProviderRegistry()
         {
-            _ctors = new Dictionary<string, Type>();
+            _ctors = new Dictionary<string, ConnectionFactoryMethod>();
             _providers = new List<ConnectionProviderEntry>();
 
             var dir = System.IO.Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
@@ -143,7 +145,13 @@ namespace OSGeo.MapGuide.MaestroAPI
                     {
                         name = attr[0].Name.ToUpper();
                         desc = attr[0].Description;
-                        _ctors[name] = attr[0].ImplType;
+                        var impl = attr[0].ImplType;
+                        _ctors[name] = new ConnectionFactoryMethod((initParams) =>
+                        {
+                            BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.CreateInstance;
+                            IServerConnection conn = (IServerConnection)impl.InvokeMember(null, flags, null, null, new object[] { initParams });
+                            return conn;
+                        });
                         _providers.Add(new ConnectionProviderEntry(name, desc, attr[0].IsMultiPlatform));    
                     }
 
@@ -180,6 +188,20 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
+        /// Registers a new connection provider
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="method"></param>
+        public static void RegisterProvider(string provider, ConnectionFactoryMethod method)
+        {
+            string name = provider.ToUpper();
+            if (_ctors.ContainsKey(name))
+                throw new ArgumentException("Provider already registered: " + provider);
+
+            _ctors[name] = method;
+        }
+
+        /// <summary>
         /// Creates an initialized <see cref="IServerConnection"/> object given the provider name and connection string
         /// </summary>
         /// <param name="provider"></param>
@@ -195,13 +217,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (prv != null && !prv.IsMultiPlatform && Platform.IsRunningOnMono)
                 throw new NotSupportedException("The specified provider is not usable in your operating system");
 
-            Type t = _ctors[name];
+            ConnectionFactoryMethod method = _ctors[name];
 
             NameValueCollection initParams = ParseConnectionString(connectionString);
-
-            BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.CreateInstance;
-            IServerConnection conn = (IServerConnection)t.InvokeMember(null, flags, null, null, new object[] { initParams });
-            return conn;
+            return method(initParams);
         }
 
         /// <summary>
@@ -220,10 +239,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (prv != null && !prv.IsMultiPlatform && Platform.IsRunningOnMono)
                 throw new NotSupportedException("The specified provider is not usable in your operating system");
 
-            Type t = _ctors[name];
-            BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.CreateInstance;
-            IServerConnection conn = (IServerConnection)t.InvokeMember(null, flags, null, null, new object[] { connInitParams });
-            return conn;
+            var method = _ctors[name];
+            return method(connInitParams);
         }
 
         /// <summary>
