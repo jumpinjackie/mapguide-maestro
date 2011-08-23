@@ -117,5 +117,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         {
             return new LocalNativeCoordinateSystemDefinition();
         }
+
+        public override ISimpleTransform CreateTransform(string sourceWkt, string targetWkt)
+        {
+            return new LocalNativeSimpleTransform(sourceWkt, targetWkt);
+        }
     }
 }

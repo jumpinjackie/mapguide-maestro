@@ -225,7 +225,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// Indicates whether web-based previewing capabilities are possible with this connection
         /// </summary>
         /// <value></value>
-        public abstract bool SupportsResourcePreviewUrls
+        public abstract bool SupportsResourcePreviews
         {
             get;
         }

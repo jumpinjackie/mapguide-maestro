@@ -31,6 +31,7 @@ using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.IO;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
+using System.Diagnostics;
 
 namespace OSGeo.MapGuide.MaestroAPI.Local
 {
@@ -47,12 +48,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new LocalConnection(initParams);
         }
 
+        static bool _init = false;
+
         protected LocalConnection(NameValueCollection initParams) : base()
         {
             _sessionId = Guid.NewGuid().ToString();
             _configFile = initParams[PARAM_CONFIG];
 
+            var sw = new Stopwatch();
+            sw.Start();
             MgPlatform.Initialize(_configFile);
+            _init = true;
+            sw.Stop();
+            Trace.TraceInformation("MapGuide Platform initialized in {0}ms", sw.ElapsedMilliseconds);
         }
 
         public const string PROVIDER_NAME = "Maestro.Local";
@@ -60,6 +68,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         public override string ProviderName
         {
             get { return PROVIDER_NAME; }
+        }
+
+        public static ConnectionProviderEntry ProviderInfo
+        {
+            get
+            {
+                return new ConnectionProviderEntry(
+                    PROVIDER_NAME,
+                    "Connection using the MapGuide Desktop API", //LOCALIZEME
+                    false);
+            }
         }
 
         public override System.Collections.Specialized.NameValueCollection CloneParameters

@@ -58,6 +58,7 @@
     <Compile Include="LocalNativeDataReader.cs" />
     <Compile Include="LocalNativeFeature.cs" />
     <Compile Include="LocalNativeRecord.cs" />
+    <Compile Include="LocalNativeSimpleTransform.cs" />
     <Compile Include="LocalNativeSqlReader.cs" />
     <Compile Include="MgReadOnlyStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

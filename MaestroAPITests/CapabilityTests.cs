@@ -123,7 +123,7 @@ namespace MaestroAPITests
                         break;
                 }
             }
-            Assert.IsTrue(caps.SupportsResourcePreviewUrls);
+            Assert.IsTrue(caps.SupportsResourcePreviews);
             int[] services = caps.SupportedServices;
             foreach (ServiceType st in Enum.GetValues(typeof(ServiceType)))
             {
@@ -260,7 +260,7 @@ namespace MaestroAPITests
                         break;
                 }
             }
-            Assert.IsTrue(caps.SupportsResourcePreviewUrls);
+            Assert.IsTrue(caps.SupportsResourcePreviews);
             int[] services = caps.SupportedServices;
             foreach (ServiceType st in Enum.GetValues(typeof(ServiceType)))
             {
@@ -390,7 +390,7 @@ namespace MaestroAPITests
                         break;
                 }
             }
-            Assert.IsTrue(caps.SupportsResourcePreviewUrls);
+            Assert.IsTrue(caps.SupportsResourcePreviews);
             int[] services = caps.SupportedServices;
             foreach (ServiceType st in Enum.GetValues(typeof(ServiceType)))
             {
@@ -513,7 +513,7 @@ namespace MaestroAPITests
                         break;
                 }
             }
-            Assert.IsTrue(caps.SupportsResourcePreviewUrls);
+            Assert.IsTrue(caps.SupportsResourcePreviews);
             int[] services = caps.SupportedServices;
             foreach (ServiceType st in Enum.GetValues(typeof(ServiceType)))
             {
@@ -633,7 +633,7 @@ namespace MaestroAPITests
                         break;
                 }
             }
-            Assert.IsTrue(caps.SupportsResourcePreviewUrls);
+            Assert.IsTrue(caps.SupportsResourcePreviews);
             int[] services = caps.SupportedServices;
             foreach (ServiceType st in Enum.GetValues(typeof(ServiceType)))
             {
@@ -753,7 +753,7 @@ namespace MaestroAPITests
                         break;
                 }
             }
-            Assert.IsTrue(caps.SupportsResourcePreviewUrls);
+            Assert.IsTrue(caps.SupportsResourcePreviews);
             int[] services = caps.SupportedServices;
             foreach (ServiceType st in Enum.GetValues(typeof(ServiceType)))
             {
@@ -879,7 +879,7 @@ namespace MaestroAPITests
                         break;
                 }
             }
-            Assert.IsTrue(caps.SupportsResourcePreviewUrls);
+            Assert.IsTrue(caps.SupportsResourcePreviews);
             int[] services = caps.SupportedServices;
             foreach (ServiceType st in Enum.GetValues(typeof(ServiceType)))
             {

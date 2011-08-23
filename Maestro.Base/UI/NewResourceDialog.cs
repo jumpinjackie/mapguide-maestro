@@ -45,15 +45,13 @@ namespace Maestro.Base.UI
             InitializeComponent();
         }
 
-        private Version _siteVersion;
-        private IResourceService _resSvc;
+        private IServerConnection _conn;
         private NewItemTemplateService _nits;
 
-        public NewResourceDialog(IResourceService resSvc, Version siteVersion, NewItemTemplateService nits)
+        public NewResourceDialog(IServerConnection conn, NewItemTemplateService nits)
             : this()
         {
-            _siteVersion = siteVersion;
-            _resSvc = resSvc;
+            _conn = conn;
             _nits = nits;
         }
 
@@ -119,7 +117,7 @@ namespace Maestro.Base.UI
             if (lstCategories.SelectedItems.Count > 0)
             {
                 string cat = lstCategories.SelectedItem.ToString();
-                LoadTemplates(_nits.GetItemTemplates(GetSelectedCategories(), _siteVersion));
+                LoadTemplates(_nits.GetItemTemplates(GetSelectedCategories(), _conn.SiteVersion));
 
                 txtDescription.Text = string.Empty;
                 btnOK.Enabled = false;
@@ -159,6 +157,11 @@ namespace Maestro.Base.UI
                 tplImgList.Images.Add(Properties.Resources.document);
                 foreach (var tpl in templSet.GetTemplatesForCategory(cat))
                 {
+                    //This is to weed out resource types not supported by the current connection
+                    //we're working with
+                    if (!_conn.Capabilities.IsSupportedResourceType(tpl.ResourceType))
+                        continue;
+
                     var li = new ListViewItem();
                     li.Name = tpl.Name;
                     li.Text = tpl.Name;

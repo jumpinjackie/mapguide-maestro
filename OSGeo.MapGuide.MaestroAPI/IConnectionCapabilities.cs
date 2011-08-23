@@ -54,7 +54,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Indicates whether web-based previewing capabilities are possible with this connection
         /// </summary>
-        bool SupportsResourcePreviewUrls { get; }
+        bool SupportsResourcePreviews { get; }
 
         /// <summary>
         /// Indicates if this current connection supports the specified resource type

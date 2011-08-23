@@ -138,5 +138,10 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// </summary>
         /// <value></value>
         public abstract bool IsLoaded { get; }
+
+        public virtual ISimpleTransform CreateTransform(string sourceWkt, string targetWkt)
+        {
+            return new DefaultSimpleTransform(sourceWkt, targetWkt);
+        }
     }
 }

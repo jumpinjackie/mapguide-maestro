@@ -48,7 +48,7 @@ namespace Maestro.Base.Commands
             }
 
             if (dlg == null)
-                dlg = new NewResourceDialog(conn.ResourceService, conn.SiteVersion, nits);
+                dlg = new NewResourceDialog(conn, nits);
 
             if (dlg.ShowDialog(wb) == System.Windows.Forms.DialogResult.OK)
             {

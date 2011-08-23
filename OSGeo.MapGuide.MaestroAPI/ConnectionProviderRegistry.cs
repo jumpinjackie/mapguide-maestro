@@ -50,7 +50,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </value>
         public bool IsMultiPlatform { get; private set; }
 
-        internal ConnectionProviderEntry(string name, string desc, bool multiPlatform)
+        public ConnectionProviderEntry(string name, string desc, bool multiPlatform)
         {
             this.Name = name;
             this.Description = desc;
@@ -192,13 +192,14 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="provider"></param>
         /// <param name="method"></param>
-        public static void RegisterProvider(string provider, ConnectionFactoryMethod method)
+        public static void RegisterProvider(ConnectionProviderEntry entry, ConnectionFactoryMethod method)
         {
-            string name = provider.ToUpper();
+            string name = entry.Name.ToUpper();
             if (_ctors.ContainsKey(name))
-                throw new ArgumentException("Provider already registered: " + provider);
+                throw new ArgumentException("Provider already registered: " + entry.Name);
 
             _ctors[name] = method;
+            _providers.Add(entry);
         }
 
         /// <summary>

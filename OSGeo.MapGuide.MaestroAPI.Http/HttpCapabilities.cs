@@ -44,7 +44,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             }
         }
 
-        public override bool SupportsResourcePreviewUrls
+        public override bool SupportsResourcePreviews
         {
             get { return true; }
         }

@@ -66,6 +66,9 @@
     <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\LocalNativeRecord.cs">
       <Link>LocalNativeRecord.cs</Link>
     </Compile>
+    <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\LocalNativeSimpleTransform.cs">
+      <Link>LocalNativeSimpleTransform.cs</Link>
+    </Compile>
     <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\LocalNativeSqlReader.cs">
       <Link>LocalNativeSqlReader.cs</Link>
     </Compile>

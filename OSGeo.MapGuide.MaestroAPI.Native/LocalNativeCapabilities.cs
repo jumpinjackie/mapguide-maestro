@@ -52,7 +52,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             }
         }
 
-        public override bool SupportsResourcePreviewUrls
+        public override bool SupportsResourcePreviews
         {
             get { return true; }
         }

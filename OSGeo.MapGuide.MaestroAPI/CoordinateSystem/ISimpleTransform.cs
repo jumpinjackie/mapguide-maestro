@@ -30,7 +30,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
     /// <summary>
     /// A simple coordinate transformation interface
     /// </summary>
-    public interface ISimpleTransform
+    public interface ISimpleTransform : IDisposable
     {
         /// <summary>
         /// Transforms the specified point
@@ -82,7 +82,7 @@ AUTHORITY[""EPSG"",""3785""]]";
         /// </summary>
         /// <param name="sourceCsWkt">The source cs WKT.</param>
         /// <param name="targetCsWkt">The target cs WKT.</param>
-        public DefaultSimpleTransform(string sourceCsWkt, string targetCsWkt)
+        internal DefaultSimpleTransform(string sourceCsWkt, string targetCsWkt)
         {
             //Check for and replace the WGS84.PseudoMercator WKT
             string srcWkt = sourceCsWkt == CSMAP_WGS84_PSEUDO_MERCATOR ? POPULAR_VISUALISATION_CRS : sourceCsWkt;
@@ -109,6 +109,11 @@ AUTHORITY[""EPSG"",""3785""]]";
             double [] pts = _trans.MathTransform.Transform(new double[] { x, y });
             tx = pts[0];
             ty = pts[1];
+        }
+
+        public void Dispose()
+        {
+            
         }
     }
 }

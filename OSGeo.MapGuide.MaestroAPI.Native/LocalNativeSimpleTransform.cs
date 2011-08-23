@@ -20,26 +20,41 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using ICSharpCode.Core;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Local;
-using System.IO;
+using OSGeo.MapGuide;
+using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 
-namespace Maestro.AddIn.Local.Commands
+namespace OSGeo.MapGuide.MaestroAPI.Native
 {
-    public class StartupCommand : AbstractCommand
+    public class LocalNativeSimpleTransform : ISimpleTransform
     {
-        public override void Run()
+        private MgCoordinateSystemTransform _trans;
+
+        internal LocalNativeSimpleTransform(string sourceWkt, string targetWkt)
         {
-            if (!Platform.IsRunningOnMono)
+            var fact = new MgCoordinateSystemFactory();
+            var source = fact.Create(sourceWkt);
+            var target = fact.Create(targetWkt);
+
+            _trans = fact.GetTransform(source, target);
+        }
+
+        public void Transform(double x, double y, out double tx, out double ty)
+        {
+            tx = Double.NaN;
+            ty = Double.NaN;
+
+            var coord = _trans.Transform(x, y);
+
+            tx = coord.X;
+            ty = coord.Y;
+        }
+
+        public void Dispose()
+        {
+            if (_trans != null)
             {
-                ConnectionProviderRegistry.RegisterProvider(
-                    LocalConnection.ProviderInfo,
-                    LocalConnection.Create);
-            }
-            else
-            {
-                LoggingService.Info("Skipping local connection provider registration because I am guessing we're running Mono on Linux/Mac"); //LOCALIZEME
+                _trans.Dispose();
+                _trans = null;
             }
         }
     }

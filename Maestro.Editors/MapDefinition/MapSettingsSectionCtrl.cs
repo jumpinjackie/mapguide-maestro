@@ -187,16 +187,10 @@ namespace Maestro.Editors.MapDefinition
                 txtCoordinateSystem.Text = cs;
                 if (_map.Extents != null && !string.IsNullOrEmpty(oldCs) && !string.IsNullOrEmpty(cs) && !oldCs.Equals(cs))
                 {
-                    //NOTE: We really should be using CS-Map (MgCoordinateSystem) here as its
-                    //transformation capabilities are more comprehensive, but we'd break mono
-                    //compatibility by doing so. Unless of course, Linux swig'd assemblies are
-                    //identical to the windows one, allowing for a clean swap of the DllImport'ed
-                    //native library
-
                     //Transform current extents
                     try
                     {
-                        var trans = new DefaultSimpleTransform(oldCs, cs);
+                        var trans = _service.GetEditedResource().CurrentConnection.CoordinateSystemCatalog.CreateTransform(oldCs, cs);
 
                         var oldExt = _map.Extents;
 

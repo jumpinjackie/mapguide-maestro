@@ -221,7 +221,7 @@ namespace Maestro.Base.Editor
                 if (res != null)
                 {
                     var rt = res.ResourceType;
-                    return ResourcePreviewEngine.IsPreviewableType(rt) && res.CurrentConnection.Capabilities.SupportsResourcePreviewUrls;                    
+                    return ResourcePreviewEngine.IsPreviewableType(rt) && res.CurrentConnection.Capabilities.SupportsResourcePreviews;                    
                 }
                 return false;
             }

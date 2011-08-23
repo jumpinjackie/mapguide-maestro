@@ -123,12 +123,18 @@ namespace Maestro.Login
             rdHttp.Checked = true;
 
             var isNativeApiAvailable = false;
+            var isLocalApiAvailable = false;
             var providers = ConnectionProviderRegistry.GetProviders();
             foreach (var prv in providers)
             {
-                if (prv.Name.Equals("MAESTRO.LOCALNATIVE"))
+                if (prv.Name.ToUpper().Equals("MAESTRO.LOCALNATIVE"))
                 {
                     isNativeApiAvailable = true;
+                    break;
+                }
+                else if (prv.Name.ToUpper().Equals("MAESTRO.LOCAL"))
+                {
+                    isLocalApiAvailable = true;
                     break;
                 }
             }
@@ -138,7 +144,7 @@ namespace Maestro.Login
                 rdTcpIp.Enabled = false;
             }
 
-            if (Platform.IsRunningOnMono)
+            if (Platform.IsRunningOnMono || !isLocalApiAvailable)
             {
                 rdLocal.Enabled = false;
             }

@@ -52,7 +52,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
         }
 
-        public override bool SupportsResourcePreviewUrls
+        public override bool IsSupportedResourceType(string resourceType)
+        {
+            return resourceType != ResourceTypes.ApplicationDefinition.ToString() &&
+                   resourceType != ResourceTypes.WebLayout.ToString();
+        }
+
+        public override bool SupportsResourcePreviews
         {
             get { return true; }
         }

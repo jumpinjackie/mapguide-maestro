@@ -99,5 +99,13 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// Gets whether the coordinate system catalog has been loaded
         /// </summary>
         bool IsLoaded { get; }
+
+        /// <summary>
+        /// Creates a simple coordinate system transformation from the source and target WKT strings
+        /// </summary>
+        /// <param name="sourceWkt"></param>
+        /// <param name="targetWkt"></param>
+        /// <returns></returns>
+        ISimpleTransform CreateTransform(string sourceWkt, string targetWkt);
     }
 }
