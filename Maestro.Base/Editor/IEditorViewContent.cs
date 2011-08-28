@@ -92,13 +92,9 @@ namespace Maestro.Base.Editor
         bool IsDirty { get; }
 
         /// <summary>
-        /// Returns a URL that can be opened to preview this resource. If the
-        /// <see cref="CanBePreviewed"/> property is false, this method should
-        /// throw a <see cref="NotSupportedException"/>
+        /// Performs a preview of the edited resource
         /// </summary>
-        /// <param name="mapguideRootUrl"></param>
-        /// <returns></returns>
-        string SetupPreviewUrl(string mapguideRootUrl);
+        void Preview();
 
         /// <summary>
         /// Raised when the value of <see cref="IsDirty"/> changes

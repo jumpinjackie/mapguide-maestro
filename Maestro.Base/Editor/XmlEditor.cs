@@ -35,6 +35,7 @@ using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using System.Xml.Schema;
 using Maestro.Base.UI.Preferences;
+using Maestro.Base.Services;
 
 namespace Maestro.Base.Editor
 {
@@ -128,7 +129,7 @@ namespace Maestro.Base.Editor
             }
         }
 
-        public override string SetupPreviewUrl(string mapguideRootUrl)
+        public override void Preview()
         {
             //Save the current resource to another session copy
             string resId = "Session:" + this.EditorService.SessionID + "//" + Guid.NewGuid() + "." + this.Resource.ResourceType.ToString();
@@ -138,10 +139,12 @@ namespace Maestro.Base.Editor
             var previewCopy = this.EditorService.ResourceService.GetResource(resId);
             this.Resource.CopyResourceDataTo(previewCopy);
 
-            //Now feed it to the preview engine
-            return new ResourcePreviewEngine(mapguideRootUrl, this.EditorService).GeneratePreviewUrl(previewCopy);
+            var conn = previewCopy.CurrentConnection;
+            var previewer = ResourcePreviewerFactory.GetPreviewer(conn.ProviderName);
+            if (previewer != null)
+                previewer.Preview(previewCopy, this.EditorService);
         }
-
+        
         public override void SyncSessionCopy()
         {
             //Write our XML changes back into the edited resource copy and re-read

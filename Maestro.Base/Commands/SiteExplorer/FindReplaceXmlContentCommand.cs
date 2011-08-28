@@ -53,7 +53,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                         //the find/replace
                         if (omgr.IsOpen(item.ResourceId))
                         {
-                            omgr.CloseEditors(item.ResourceId, false);
+                            omgr.CloseEditors(conn, item.ResourceId, false);
                             //Still open. Must've said no
                             if (omgr.IsOpen(item.ResourceId))
                             {

@@ -34,6 +34,7 @@ using Maestro.Base.UI.Preferences;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
 using System.IO;
+using Maestro.Base.Services;
 
 namespace Maestro.Base.Editor
 {
@@ -220,8 +221,12 @@ namespace Maestro.Base.Editor
                 var res = this.Resource;
                 if (res != null)
                 {
-                    var rt = res.ResourceType;
-                    return ResourcePreviewEngine.IsPreviewableType(rt) && res.CurrentConnection.Capabilities.SupportsResourcePreviews;                    
+                    var type = res.CurrentConnection.ProviderName;
+                    var previewer = ResourcePreviewerFactory.GetPreviewer(type);
+                    if (previewer != null)
+                    {
+                        return previewer.IsPreviewable(res);
+                    }
                 }
                 return false;
             }
@@ -263,18 +268,12 @@ namespace Maestro.Base.Editor
             get { return true; }
         }
 
-        public virtual string SetupPreviewUrl(string mapguideRootUrl)
+        public virtual void Preview()
         {
-            //Save the current resource to another session copy
-            string resId = "Session:" + this.EditorService.SessionID + "//" + Guid.NewGuid() + "." + this.Resource.ResourceType.ToString();
-            this.EditorService.ResourceService.SetResourceXmlData(resId, ResourceTypeRegistry.Serialize(this.Resource));
-
-            //Copy any resource data
-            var previewCopy = this.EditorService.ResourceService.GetResource(resId);
-            this.Resource.CopyResourceDataTo(previewCopy);
-
-            //Now feed it to the preview engine
-            return new ResourcePreviewEngine(mapguideRootUrl, this.EditorService).GeneratePreviewUrl(previewCopy);
+            var conn = this.Resource.CurrentConnection;
+            var previewer = ResourcePreviewerFactory.GetPreviewer(conn.ProviderName);
+            if (previewer != null)
+                previewer.Preview(this.Resource, this.EditorService);
         }
 
         public virtual void SyncSessionCopy()

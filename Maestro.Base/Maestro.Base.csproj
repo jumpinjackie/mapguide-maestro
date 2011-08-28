@@ -71,6 +71,9 @@
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Properties\SignedAssemblyInfo2.cs">
+      <Link>SignedAssemblyInfo2.cs</Link>
+    </Compile>
     <Compile Include="Commands\AboutCommand.cs" />
     <Compile Include="Commands\CacheViewerCommand.cs" />
     <Compile Include="Commands\CloseActiveDocumentCommand.cs" />
@@ -249,6 +252,7 @@
     <Compile Include="Services\IDragDropHandler.cs" />
     <Compile Include="Services\NewItemTemplateService.cs" />
     <Compile Include="Services\OpenResourceManager.cs" />
+    <Compile Include="Services\ResourcePreviewerFactory.cs" />
     <Compile Include="Services\ServerConnectionManager.cs" />
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Services\ServiceRegistry.cs" />

@@ -31,24 +31,46 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OSGeo.MapGuide.Desktop, Version=2.4.0.0, Culture=neutral, PublicKeyToken=e75f9fd7cf82dc3f, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Properties\SignedAssemblyInfo.cs">
-      <Link>SignedAssemblyInfo.cs</Link>
+    <Compile Include="..\Properties\SignedAssemblyInfo2.cs">
+      <Link>SignedAssemblyInfo2.cs</Link>
     </Compile>
     <Compile Include="Commands\StartupCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\LocalPreviewer.cs" />
+    <Compile Include="UI\MapPreviewWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MapPreviewWindow.Designer.cs">
+      <DependentUpon>MapPreviewWindow.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj">
       <Project>{F1E2F468-5030-4DBA-968C-9620284AFAA1}</Project>
       <Name>Maestro.Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj">
+      <Project>{5AD2CDBA-952E-4148-98A1-31D2E0D540D5}</Project>
+      <Name>Maestro.Editors</Name>
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj">
@@ -252,6 +274,19 @@
     <Content Include="OSGeo.MapGuide.Desktop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\arrow-090.png" />
+    <None Include="Resources\arrow-180.png" />
+    <None Include="Resources\arrow.png" />
+    <None Include="Resources\arrow-270.png" />
+    <None Include="Resources\magnifier-zoom-in.png" />
+    <None Include="Resources\magnifier-zoom-out.png" />
+    <None Include="Resources\magnifier-zoom-fit.png" />
+    <None Include="Resources\lc_select.gif" />
+    <None Include="Resources\icon_clearselect.gif" />
+    <None Include="Resources\arrow-315.png" />
+    <None Include="Resources\arrow-225.png" />
+    <None Include="Resources\arrow-135.png" />
+    <None Include="Resources\arrow-045.png" />
     <Content Include="xerces-c_3_1mg.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -944,6 +979,15 @@
     <None Include="Resources\mapguide_en.res">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapPreviewWindow.resx">
+      <DependentUpon>MapPreviewWindow.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

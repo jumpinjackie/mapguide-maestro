@@ -40,20 +40,22 @@ namespace Maestro.Base.Services
             get { return new List<IEditorViewContent>(_openItems.Values).ToArray(); }
         }
 
-        public void CloseEditors(string resourceId, bool discardChanges)
+        public void CloseEditors(IServerConnection conn, string resourceId, bool discardChanges)
         {
-            if (_openItems.ContainsKey(resourceId))
+            string key = ComputeResourceKey(resourceId, conn);
+            if (_openItems.ContainsKey(key))
             {
-                var ed = _openItems[resourceId];
+                var ed = _openItems[key];
                 ed.Close(discardChanges);
             }
         }
 
-        public void CloseEditorsExceptFor(string resourceId, bool discardChanges)
+        public void CloseEditorsExceptFor(IServerConnection conn, string resourceId, bool discardChanges)
         {
+            string key = ComputeResourceKey(resourceId, conn);
             var eds = new List<IEditorViewContent>(_openItems.Values);
-            if (_openItems.ContainsKey(resourceId))
-                eds.Remove(_openItems[resourceId]);
+            if (_openItems.ContainsKey(key))
+                eds.Remove(_openItems[key]);
 
             foreach (var ed in eds)
             {
@@ -98,25 +100,39 @@ namespace Maestro.Base.Services
             return GetRegisteredEditor(rtd);
         }
 
-        internal void RenameResourceId(string oldId, string newId, ISiteExplorer siteExp)
+        internal void RenameResourceId(string oldId, string newId, IServerConnection conn, ISiteExplorer siteExp)
         {
             Check.NotEmpty(oldId, "oldId");
             Check.NotEmpty(newId, "newId");
             Check.NotNull(siteExp, "siteExp");
+            Check.NotNull(conn, "conn");
 
-            if (oldId.Equals(newId))
+            string oldKey = ComputeResourceKey(oldId, conn);
+            string newKey = ComputeResourceKey(newId, conn);
+
+            if (oldKey.Equals(newKey))
                 return;
 
             //Original must exist and new id must not
-            if (_openItems.ContainsKey(oldId) && !_openItems.ContainsKey(newId))
+            if (_openItems.ContainsKey(oldKey) && !_openItems.ContainsKey(newKey))
             {
-                var ed = _openItems[oldId];
-                _openItems.Remove(oldId);
-                _openItems[newId] = ed;
+                var ed = _openItems[oldKey];
+                _openItems.Remove(oldKey);
+                _openItems[newKey] = ed;
 
-                siteExp.FlagNode(oldId, NodeFlagAction.None);
-                siteExp.FlagNode(newId, NodeFlagAction.HighlightOpen);
+                siteExp.FlagNode(conn.DisplayName, oldId, NodeFlagAction.None);
+                siteExp.FlagNode(conn.DisplayName, newId, NodeFlagAction.HighlightOpen);
             }
+        }
+
+        private static string ComputeResourceKey(string resId, IServerConnection conn)
+        {
+            return conn.DisplayName + "|" + resId;
+        }
+
+        private static string ComputeResourceKey(IResource res, IServerConnection conn)
+        {
+            return conn.DisplayName + "|" + res.ResourceID;
         }
 
         /// <summary>
@@ -130,8 +146,8 @@ namespace Maestro.Base.Services
         /// <param name="useXmlEditor"></param>
         public IEditorViewContent Open(IResource res, IServerConnection conn, bool useXmlEditor, ISiteExplorer siteExp)
         {
-            string resourceId = res.ResourceID;
-            if (!_openItems.ContainsKey(resourceId))
+            string key = ComputeResourceKey(res, conn);
+            if (!_openItems.ContainsKey(key))
             {
                 var svc = ServiceRegistry.GetService<ViewContentManager>();
                 IEditorViewContent ed = null;
@@ -144,9 +160,9 @@ namespace Maestro.Base.Services
                     ed = FindEditor(svc, res.GetResourceTypeDescriptor());
                 }
                 var launcher = ServiceRegistry.GetService<UrlLauncherService>();
-                var editorSvc = new ResourceEditorService(resourceId, conn, launcher, siteExp, this);
+                var editorSvc = new ResourceEditorService(res.ResourceID, conn, launcher, siteExp, this);
                 ed.EditorService = editorSvc;
-                _openItems[resourceId] = ed;
+                _openItems[key] = ed;
                 ed.ViewContentClosing += (sender, e) =>
                 {
                     if (ed.IsDirty && !ed.DiscardChangesOnClose)
@@ -160,29 +176,29 @@ namespace Maestro.Base.Services
                 };
                 ed.ViewContentClosed += (sender, e) =>
                 {
-                    _openItems.Remove(ed.EditorService.ResourceID);
-                    siteExp.FlagNode(ed.EditorService.ResourceID, NodeFlagAction.None);
+                    _openItems.Remove(key);
+                    siteExp.FlagNode(conn.DisplayName, ed.EditorService.ResourceID, NodeFlagAction.None);
                 };
                 ed.EditorService.Saved += (sender, e) =>
                 {
                     //If saved from new resource, the resource id would be session based
                     //So we need to update this to the new resource id as defined by the
                     //editor service
-                    if (_openItems.ContainsKey(resourceId))
+                    if (_openItems.ContainsKey(key))
                     {
-                        var ed2 = _openItems[resourceId];
-                        _openItems.Remove(resourceId);
-                        _openItems[ed.EditorService.ResourceID] = ed2;
+                        var ed2 = _openItems[key];
+                        _openItems.Remove(key);
+                        _openItems[ComputeResourceKey(ed.EditorService.ResourceID, conn)] = ed2;
                     }
                 };
                 ed.DirtyStateChanged += (sender, e) =>
                 {
-                    siteExp.FlagNode(resourceId, ed.IsDirty ? NodeFlagAction.HighlightDirty : NodeFlagAction.HighlightOpen);
+                    siteExp.FlagNode(key, ed.IsDirty ? NodeFlagAction.HighlightDirty : NodeFlagAction.HighlightOpen);
                 };
             }
-            _openItems[resourceId].Activate();
-            siteExp.FlagNode(resourceId, NodeFlagAction.HighlightOpen);
-            return _openItems[resourceId];
+            _openItems[key].Activate();
+            siteExp.FlagNode(conn.DisplayName, res.ResourceID, NodeFlagAction.HighlightOpen);
+            return _openItems[key];
         }
 
         /// <summary>

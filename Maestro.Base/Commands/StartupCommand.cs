@@ -43,6 +43,8 @@ namespace Maestro.Base.Commands
             ServiceRegistry.Initialize();
             EventWatcher.Initialize();
 
+            ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new DefaultResourcePreviewer());
+
             Workbench.WorkbenchInitialized += (sender, e) =>
             {
                 ServiceRegistry.GetService<NewItemTemplateService>().InitUserTemplates();

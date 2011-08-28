@@ -1,4 +1,4 @@
-﻿#region Disclaimer / License
+#region Disclaimer / License
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
@@ -17,32 +17,10 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using ICSharpCode.Core;
-using Maestro.Base.Services;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
-namespace Maestro.Base.Commands
-{
-    internal class PreviewResourceCommand : AbstractMenuCommand
-    {
-        public override void Run()
-        {
-            var wb = Workbench.Instance;
-            var ed = wb.ActiveEditor;
-            
-            if (ed != null && ed.CanBePreviewed)
-            {
-                //TODO: This needs to be reviewed when we decide to support
-                //multiple site connections from the same session
-
-                var exp = wb.ActiveSiteExplorer;
-                if (exp != null)
-                {
-                    ed.Preview();
-                }
-            }
-        }
-    }
-}
+[assembly: AssemblyDelaySign(false)]
+[assembly: AssemblyKeyFile("..\\Properties\\maestroapi.key")]
+[assembly: AssemblyKeyName("")]

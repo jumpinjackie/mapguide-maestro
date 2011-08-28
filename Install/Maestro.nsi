@@ -248,6 +248,7 @@ Section
 	
 	# main executables
 	File "${INST_OUTPUT_MAESTRO}\${EXE_MAESTRO}"
+    File "${INST_OUTPUT_MAESTRO}\LocalConfigure.exe"
 	File "${INST_OUTPUT_MAESTRO}\MgCooker.exe"
     File "${INST_OUTPUT_MAESTRO}\MgCookerCmd.exe"
     File "${INST_OUTPUT_MAESTRO}\MaestroFsPreview.exe"

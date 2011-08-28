@@ -137,8 +137,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         protected Dictionary<string, RuntimeMapLayer> _layerIdMap;
 
-        private IMappingService _mapSvc;
-        private IGetResourceContents _getRes;
+        protected IMappingService _mapSvc;
+        protected IGetResourceContents _getRes;
 
         public const double Z_ORDER_INCREMENT = 100.0;
 

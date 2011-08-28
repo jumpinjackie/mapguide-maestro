@@ -54,7 +54,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                             //Close any open editors on these resources before deleting them
                             foreach (var i in items)
                             {
-                                omgr.CloseEditors(i.ResourceId, true);
+                                omgr.CloseEditors(conn, i.ResourceId, true);
 
                                 foreach (var ed in omgr.OpenEditors)
                                 {

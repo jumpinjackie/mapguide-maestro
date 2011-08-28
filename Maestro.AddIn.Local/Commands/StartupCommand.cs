@@ -24,6 +24,8 @@ using ICSharpCode.Core;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Local;
 using System.IO;
+using Maestro.Base.Services;
+using Maestro.AddIn.Local.Services;
 
 namespace Maestro.AddIn.Local.Commands
 {
@@ -36,6 +38,8 @@ namespace Maestro.AddIn.Local.Commands
                 ConnectionProviderRegistry.RegisterProvider(
                     LocalConnection.ProviderInfo,
                     LocalConnection.Create);
+
+                ResourcePreviewerFactory.RegisterPreviewer(LocalConnection.PROVIDER_NAME, new LocalPreviewer());
             }
             else
             {

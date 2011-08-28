@@ -42,6 +42,9 @@
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Properties\SignedAssemblyInfo2.cs">
+      <Link>SignedAssemblyInfo2.cs</Link>
+    </Compile>
     <Compile Include="CancelException.cs" />
     <Compile Include="CheckBoxBinder.cs" />
     <Compile Include="CollapsiblePanel.cs">

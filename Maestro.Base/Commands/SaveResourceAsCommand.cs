@@ -60,7 +60,7 @@ namespace Maestro.Base.Commands
                             var oldId = ed.EditorService.ResourceID;
                             ed.EditorService.SaveAs(picker.ResourceID);
                             if (oldId != ed.EditorService.ResourceID)
-                                omgr.RenameResourceId(oldId, ed.EditorService.ResourceID, exp);
+                                omgr.RenameResourceId(oldId, ed.EditorService.ResourceID, conn, exp);
 
                             try
                             {

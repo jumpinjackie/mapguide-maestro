@@ -48,6 +48,7 @@
     <Reference Include="OSGeo.MapGuide.ExtendedObjectModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDK\bin\OSGeo.MapGuide.ExtendedObjectModels.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="OSGeo.MapGuide.MaestroAPI, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
