@@ -646,6 +646,15 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Create a Drawing Source.
+        /// </summary>
+        internal static string DwfHandlerAction {
+            get {
+                return ResourceManager.GetString("DwfHandlerAction", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap edit {
             get {
                 object obj = ResourceManager.GetObject("edit", resourceCulture);

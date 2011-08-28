@@ -34,6 +34,7 @@
     <Path name="/Maestro/DragDropHandlers">
         <Class id="MgpHandler" class="Maestro.Base.Services.DragDropHandlers.PackageFileHandler" />
         <Class id="SdfHandler" class="Maestro.Base.Services.DragDropHandlers.SdfFileHandler" />
+        <Class id="DwfHandler" class="Maestro.Base.Services.DragDropHandlers.DwfFileHandler" />
         <Class id="ShpHandler" class="Maestro.Base.Services.DragDropHandlers.ShpFileHandler" />
         <Class id="SltHandler" class="Maestro.Base.Services.DragDropHandlers.SltFileHandler" />
         <Class id="XmlResHandler" class="Maestro.Base.Services.DragDropHandlers.XmlResFileHandler" />

@@ -193,7 +193,7 @@ namespace Maestro.Base.Services
                 };
                 ed.DirtyStateChanged += (sender, e) =>
                 {
-                    siteExp.FlagNode(key, ed.IsDirty ? NodeFlagAction.HighlightDirty : NodeFlagAction.HighlightOpen);
+                    siteExp.FlagNode(conn.DisplayName, res.ResourceID, ed.IsDirty ? NodeFlagAction.HighlightDirty : NodeFlagAction.HighlightOpen);
                 };
             }
             _openItems[key].Activate();

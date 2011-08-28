@@ -24,6 +24,7 @@ using System.Windows.Forms;
 using Maestro.Base.Services;
 using Maestro.Shared.UI;
 using Aga.Controls.Tree;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Base.UI
 {
@@ -49,6 +50,9 @@ namespace Maestro.Base.UI
         {
             //If drop node specified, extract relevant folder, otherwise default to root (Library://)
             string folderId = "Library://";
+            IServerConnection conn = null;
+            var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
+                
             if (droppedNode != null)
             {
                 var ri = droppedNode.Tag as RepositoryItem;
@@ -59,6 +63,11 @@ namespace Maestro.Base.UI
                     else
                         folderId = ri.Parent != null ? ri.Parent.ResourceId : "Library://";
                 }
+                conn = mgr.GetConnection(ri.ConnectionName);
+            }
+            else
+            {
+                return;
             }
 
             Array a = e.Data.GetData(DataFormats.FileDrop) as Array;
@@ -79,7 +88,7 @@ namespace Maestro.Base.UI
                     {
                         using (new WaitCursor(Workbench.Instance))
                         {
-                            if (handlers[0].HandleDrop(file, folderId))
+                            if (handlers[0].HandleDrop(conn, file, folderId))
                                 refresh = true;
                         }
                     }
@@ -91,7 +100,7 @@ namespace Maestro.Base.UI
                 }
             }
             if (refresh)
-                sender.RefreshModel(folderId);
+                sender.RefreshModel(conn.DisplayName, folderId);
         }
     }
 }

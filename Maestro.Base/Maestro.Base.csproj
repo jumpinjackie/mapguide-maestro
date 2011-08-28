@@ -244,6 +244,7 @@
     </Compile>
     <Compile Include="Services\ClipboardService.cs" />
     <Compile Include="Services\DragDropHandlerService.cs" />
+    <Compile Include="Services\DragDropHandlers\DwfFileHandler.cs" />
     <Compile Include="Services\DragDropHandlers\PackageFileHandler.cs" />
     <Compile Include="Services\DragDropHandlers\SltFileHandler.cs" />
     <Compile Include="Services\DragDropHandlers\SdfFileHandler.cs" />

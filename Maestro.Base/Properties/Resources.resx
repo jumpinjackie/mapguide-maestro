@@ -1064,4 +1064,7 @@ Error message: {1}</value>
   <data name="EditorTitleTemplate" xml:space="preserve">
     <value>Resource ID: {0}{1}Connection: {2}</value>
   </data>
+  <data name="DwfHandlerAction" xml:space="preserve">
+    <value>Create a Drawing Source</value>
+  </data>
 </root>

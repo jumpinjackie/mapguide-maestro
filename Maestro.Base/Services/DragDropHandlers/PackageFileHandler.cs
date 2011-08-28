@@ -24,6 +24,7 @@ using System.IO;
 using ICSharpCode.Core;
 using Maestro.Packaging;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Base.Services.DragDropHandlers
 {
@@ -41,7 +42,7 @@ namespace Maestro.Base.Services.DragDropHandlers
             get { return extensions; }
         }
 
-        public bool HandleDrop(string file, string folderId)
+        public bool HandleDrop(IServerConnection conn, string file, string folderId)
         {
             try
             {
@@ -50,8 +51,6 @@ namespace Maestro.Base.Services.DragDropHandlers
 
                 var wb = Workbench.Instance;
                 var exp = wb.ActiveSiteExplorer;
-                var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
-                var conn = mgr.GetConnection(exp.ConnectionName);
                 var res = PackageProgress.UploadPackage(
                         wb,
                         conn,

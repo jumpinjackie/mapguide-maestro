@@ -51,14 +51,12 @@ namespace Maestro.Base.Services.DragDropHandlers
             get { return extensions; }
         }
 
-        public bool HandleDrop(string file, string folderId)
+        public bool HandleDrop(IServerConnection conn, string file, string folderId)
         {
             try
             {
                 var wb = Workbench.Instance;
                 var exp = wb.ActiveSiteExplorer;
-                var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
-                var conn = mgr.GetConnection(exp.ConnectionName);
 
                 //The easiest way to tell if this XML file is legit
                 var res = ResourceTypeRegistry.Deserialize(File.ReadAllText(file));

@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Base.Services
 {
@@ -41,9 +42,10 @@ namespace Maestro.Base.Services
         /// <summary>
         /// Handles the file drop
         /// </summary>
+        /// <param name="conn">The connection this drop affects</param>
         /// <param name="file">The file being dropped</param>
         /// <param name="folderId">The site explorer folder this drop was performed</param>
         /// <returns>true if the drop was successfully handled</returns>
-        bool HandleDrop(string file, string folderId);
+        bool HandleDrop(IServerConnection conn, string file, string folderId);
     }
 }

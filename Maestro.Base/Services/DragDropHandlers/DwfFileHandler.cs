@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -20,23 +20,23 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 using System.IO;
 using ICSharpCode.Core;
-using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Base.Services.DragDropHandlers
 {
-    public class ShpFileHandler : IDragDropHandler
+    public class DwfFileHandler : IDragDropHandler
     {
         public string HandlerAction
         {
-            get { return Properties.Resources.ShpHandlerAction; }
+            get { return Properties.Resources.DwfHandlerAction; }
         }
 
-        private string[] extensions = { ".shp" };
+        string[] extensions = { ".dwf" };
 
         public string[] FileExtensions
         {
@@ -49,42 +49,26 @@ namespace Maestro.Base.Services.DragDropHandlers
             {
                 var wb = Workbench.Instance;
                 var exp = wb.ActiveSiteExplorer;
-                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SHP");
+                var ds = ObjectFactory.CreateDrawingSource(conn);
 
                 string fileName = Path.GetFileName(file);
                 string resName = Path.GetFileNameWithoutExtension(file);
                 int counter = 0;
-                string resId = folderId + resName + ".FeatureSource";
+                string resId = folderId + resName + ".DrawingSource";
                 while (conn.ResourceService.ResourceExists(resId))
                 {
                     counter++;
-                    resId = folderId + resName + " (" + counter + ").FeatureSource";
+                    resId = folderId + resName + " (" + counter + ").DrawingSource";
                 }
-                fs.ResourceID = resId;
-                fs.SetConnectionProperty("DefaultFileLocation", "%MG_DATA_FILE_PATH%" + fileName);
-                conn.ResourceService.SaveResource(fs);
+                ds.ResourceID = resId;
+                //fs.SetConnectionProperty("File", "%MG_DATA_FILE_PATH%" + fileName);
 
-                //As we all know, the term shape file is deceptive...
-                string[] files = new string[] 
-                {
-                    file,
-                    file.Substring(0, file.LastIndexOf(".")) + ".shx",
-                    file.Substring(0, file.LastIndexOf(".")) + ".dbf",
-                    file.Substring(0, file.LastIndexOf(".")) + ".idx",
-                    file.Substring(0, file.LastIndexOf(".")) + ".prj",
-                    file.Substring(0, file.LastIndexOf(".")) + ".cpg"
-                };
+                ds.SourceName = fileName;
+                conn.ResourceService.SaveResource(ds);
 
-                foreach (string fn in files)
+                using (var stream = File.Open(file, FileMode.Open))
                 {
-                    if (File.Exists(fn))
-                    {
-                        using (var stream = File.Open(fn, FileMode.Open))
-                        {
-                            string dataName = Path.GetFileName(fn);
-                            fs.SetResourceData(dataName, OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.File, stream);
-                        }
-                    }
+                    ds.SetResourceData(fileName, OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.File, stream);
                 }
 
                 return true;
