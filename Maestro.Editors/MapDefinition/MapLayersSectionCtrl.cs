@@ -892,7 +892,7 @@ namespace Maestro.Editors.MapDefinition
         private static void HandleDragEnter(DragEventArgs e)
         {
             //Accepting all resource id drops
-            var rids = e.Data.GetData(typeof(ResourceIdentifier[])) as ResourceIdentifier[];
+            var rids = e.Data.GetData(typeof(RepositoryHandle[])) as RepositoryHandle[];
             if (rids == null || rids.Length == 0)
             {
                 e.Effect = DragDropEffects.None;
@@ -900,7 +900,7 @@ namespace Maestro.Editors.MapDefinition
             }
 
             //But only of the Layer Definition kind
-            if (rids.Length == 1 && rids[0].ResourceType != ResourceTypes.LayerDefinition)
+            if (rids.Length == 1 && rids[0].ResourceId.ResourceType != ResourceTypes.LayerDefinition)
             {
                 e.Effect = DragDropEffects.None;
                 return;
@@ -909,7 +909,7 @@ namespace Maestro.Editors.MapDefinition
             //Even in multiples
             foreach (var r in rids)
             {
-                if (r.ResourceType != ResourceTypes.LayerDefinition)
+                if (r.ResourceId.ResourceType != ResourceTypes.LayerDefinition)
                 {
                     e.Effect = DragDropEffects.None;
                     return;
@@ -919,7 +919,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void trvLayersGroup_DragDrop(object sender, DragEventArgs e)
         {
-            var rids = e.Data.GetData(typeof(ResourceIdentifier[])) as ResourceIdentifier[];
+            var rids = e.Data.GetData(typeof(RepositoryHandle[])) as RepositoryHandle[];
             var nodes = e.Data.GetData(typeof(TreeNodeAdv[])) as TreeNodeAdv[];
             if (rids != null && rids.Length > 0)
             {
@@ -936,10 +936,10 @@ namespace Maestro.Editors.MapDefinition
                 int added = 0;
                 foreach (var rid in rids)
                 {
-                    if (rid.ResourceType == ResourceTypes.LayerDefinition)
+                    if (rid.ResourceId.ResourceType == ResourceTypes.LayerDefinition)
                     {
-                        var name = GenerateLayerName(rid.ToString(), _map);
-                        var layer = _map.AddLayer(parent == null ? null : parent.Name, name, rid.ToString());
+                        var name = GenerateLayerName(rid.ResourceId.ToString(), _map);
+                        var layer = _map.AddLayer(parent == null ? null : parent.Name, name, rid.ResourceId.ToString());
                         added++;
                     }
                 }
@@ -1021,13 +1021,23 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        private static void HandleDragOver(DragEventArgs e)
+        private void HandleDragOver(DragEventArgs e)
         {
-            var rids = e.Data.GetData(typeof(ResourceIdentifier[])) as ResourceIdentifier[];
+            var rids = e.Data.GetData(typeof(RepositoryHandle[])) as RepositoryHandle[];
             if (rids == null || rids.Length == 0)
             {
                 e.Effect = DragDropEffects.None;
                 return;
+            }
+            else
+            {
+                //All handles should have the same connection, so sample the first
+                //Must be the same connection as this current editor
+                if (rids[0].Connection != _edSvc.GetEditedResource().CurrentConnection)
+                {
+                    e.Effect = DragDropEffects.None;
+                    return;
+                }
             }
 
             e.Effect = DragDropEffects.Copy;
@@ -1036,7 +1046,7 @@ namespace Maestro.Editors.MapDefinition
         private void trvLayerDrawingOrder_DragDrop(object sender, DragEventArgs e)
         {
             //TODO: Handle drag/drop re-ordering
-            var rids = e.Data.GetData(typeof(ResourceIdentifier[])) as ResourceIdentifier[];
+            var rids = e.Data.GetData(typeof(RepositoryHandle[])) as RepositoryHandle[];
             if (rids != null && rids.Length > 0)
             {
                 IMapLayer layer = null;
@@ -1051,11 +1061,11 @@ namespace Maestro.Editors.MapDefinition
                 int added = 0;
                 foreach (var rid in rids)
                 {
-                    if (rid.ResourceType == ResourceTypes.LayerDefinition)
+                    if (rid.ResourceId.ResourceType == ResourceTypes.LayerDefinition)
                     {
-                        var name = GenerateLayerName(rid.ToString(), _map);
+                        var name = GenerateLayerName(rid.ResourceId.ToString(), _map);
                         //var layer = _map.AddLayer(parent == null ? null : parent.Name, name, rid.ToString());
-                        var lyr = _map.AddLayer(layer, null, name, rid.ToString());
+                        var lyr = _map.AddLayer(layer, null, name, rid.ResourceId.ToString());
                         added++;
                     }
                 }
@@ -1151,7 +1161,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void trvBaseLayers_DragDrop(object sender, DragEventArgs e)
         {
-            var rids = e.Data.GetData(typeof(ResourceIdentifier[])) as ResourceIdentifier[];
+            var rids = e.Data.GetData(typeof(RepositoryHandle[])) as RepositoryHandle[];
             var data = e.Data.GetData(typeof(TreeNodeAdv[])) as TreeNodeAdv[];
             if (rids != null && rids.Length > 0)
             {
@@ -1173,9 +1183,9 @@ namespace Maestro.Editors.MapDefinition
 
                 foreach (var rid in rids)
                 {
-                    if (rid.ResourceType == ResourceTypes.LayerDefinition)
+                    if (rid.ResourceId.ResourceType == ResourceTypes.LayerDefinition)
                     {
-                        group.AddLayer(GenerateBaseLayerName(rid.ToString(), _map.BaseMap), rid.ToString());
+                        group.AddLayer(GenerateBaseLayerName(rid.ResourceId.ToString(), _map.BaseMap), rid.ResourceId.ToString());
                         added++;
                     }
                 }

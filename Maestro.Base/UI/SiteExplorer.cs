@@ -35,6 +35,7 @@ using Maestro.Shared.UI;
 using Maestro.Base.Commands.SiteExplorer;
 using Maestro.Base.Commands;
 using System.Linq;
+using Maestro.Editors;
 
 namespace Maestro.Base.UI
 {
@@ -358,12 +359,16 @@ namespace Maestro.Base.UI
         private void trvResources_ItemDrag(object sender, ItemDragEventArgs e)
         {
             var nodes = e.Item as TreeNodeAdv[];
-            if (nodes != null)
+            if (nodes != null && nodes.Length > 0)
             {
-                List<RepositoryItem> rids = new List<RepositoryItem>();
+                IServerConnection conn = null;
+                List<RepositoryHandle> rids = new List<RepositoryHandle>();
                 foreach (var n in nodes)
                 {
-                    rids.Add((RepositoryItem)n.Tag);
+                    var ri = (RepositoryItem)n.Tag;
+                    conn = _connManager.GetConnection(ri.ConnectionName);
+                    rids.Add(new RepositoryHandle(new ResourceIdentifier(ri.ResourceId), conn));
+
                 }
                 trvResources.DoDragDrop(rids.ToArray(), DragDropEffects.All);
             }
