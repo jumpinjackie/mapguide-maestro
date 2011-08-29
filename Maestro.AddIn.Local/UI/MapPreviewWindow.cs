@@ -27,6 +27,9 @@ using System.Windows.Forms;
 using OSGeo.MapGuide;
 using System.IO;
 using System.Diagnostics;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace Maestro.AddIn.Local.UI
 {
@@ -39,11 +42,12 @@ namespace Maestro.AddIn.Local.UI
         private MgRenderingOptions _layerRenderOpts;
         private MgMeasure _mapMeasure;
         private MgWktReaderWriter _wktRW;
+        private MgAgfReaderWriter _agfRW;
         private MgGeometryFactory _geomFact;
 
         private Color _mapBgColor;
         
-        public MapPreviewWindow(MgdMap map)
+        public MapPreviewWindow(MgdMap map, IServerConnection conn)
         {
             InitializeComponent();
             _map = map;
@@ -51,10 +55,11 @@ namespace Maestro.AddIn.Local.UI
             _mapCs = fact.Create(_map.GetMapSRS());
             _mapMeasure = _mapCs.GetMeasure();
             _wktRW = new MgWktReaderWriter();
+            _agfRW = new MgAgfReaderWriter();
             _geomFact = new MgGeometryFactory();
             this.Disposed += new EventHandler(OnDisposed);
 
-            Init(_map);
+            Init(_map, conn);
         }
 
         void OnDisposed(object sender, EventArgs e)
@@ -89,6 +94,12 @@ namespace Maestro.AddIn.Local.UI
                 _wktRW = null;
             }
 
+            if (_agfRW != null)
+            {
+                _agfRW.Dispose();
+                _agfRW = null;
+            }
+
             if (_geomFact != null)
             {
                 _geomFact.Dispose();
@@ -108,7 +119,11 @@ namespace Maestro.AddIn.Local.UI
 
         private bool _init = false;
 
-        public void Init(MgdMap map)
+#if DEBUG
+        private MgdLayer _debugLayer;
+#endif
+
+        public void Init(MgdMap map, IServerConnection conn)
         {
             numScale.Maximum = int.MaxValue;
             _init = false;
@@ -147,8 +162,108 @@ namespace Maestro.AddIn.Local.UI
             _map.SetViewCenterXY(_extX1 + (_extX2 - _extX1) / 2, _extY2 + (_extY1 - _extY2) / 2);
             _map.SetViewScale(scale);
 
+#if DEBUG
+            CreateDebugFeatureSource(conn);
+#endif
+
             _init = true;
         }
+
+#if DEBUG
+        private void CreateDebugFeatureSource(IServerConnection conn)
+        {
+            var id = new MgDataPropertyDefinition("ID");
+            id.DataType = MgPropertyType.Int32;
+            id.Nullable = false;
+            id.SetAutoGeneration(true);
+
+            var geom = new MgGeometricPropertyDefinition("Geometry");
+            geom.GeometryTypes = MgFeatureGeometricType.Point;
+            geom.SpatialContextAssociation = "MapCs";
+
+            var cls = new MgClassDefinition();
+            cls.Name = "Debug";
+            var props = cls.GetProperties();
+            props.Add(id);
+            props.Add(geom);
+
+            var idProps = cls.GetIdentityProperties();
+            idProps.Add(id);
+
+            cls.DefaultGeometryPropertyName = "Geometry";
+
+            var schema = new MgFeatureSchema("Default", "Default schema");
+            var classes = schema.GetClasses();
+            classes.Add(cls);
+
+            var debugFsId = new MgResourceIdentifier("Session:" + conn.SessionID + "//Debug" + Guid.NewGuid().ToString() + ".FeatureSource");
+            var createSdf = new MgCreateSdfParams("MapCs", _map.GetMapSRS(), schema);
+            var featureSvc = MgServiceFactory.CreateFeatureService();
+            var resSvc = MgServiceFactory.CreateResourceService();
+            featureSvc.CreateFeatureSource(debugFsId, createSdf);
+
+            //We use a v1.0.0 Layer Definition so that a default composite style is not created
+            //A composite style would override every other basic geometry style
+            var ldf = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector, new Version(1, 0, 0));
+            var vl = ((IVectorLayerDefinition)ldf.SubLayer);
+            vl.FeatureName = "Default:Debug";
+            vl.ResourceId = debugFsId.ToString();
+            vl.Geometry = "Geometry";
+
+            var vsrs = new List<IVectorScaleRange>(vl.VectorScaleRange);
+            var rules = new List<IPointRule>(vsrs[0].PointStyle.Rules);
+            rules[0].Label = ldf.CreateDefaultTextSymbol();
+            rules[0].Label.SetForegroundColor(Color.Red);
+            rules[0].Label.BackgroundStyle = BackgroundStyleType.Ghosted;
+            rules[0].Label.Text = "Concat(X(Geometry),',',Y(Geometry))";
+
+            var debugLayerId = new MgResourceIdentifier("Session:" + conn.SessionID + "//" + debugFsId.Name + ".LayerDefinition");
+            ldf.ResourceID = debugLayerId.ToString();
+            conn.ResourceService.SaveResource(ldf);
+
+            _debugLayer = new MgdLayer(debugLayerId, resSvc);
+            _debugLayer.SetVisible(true);
+            _debugLayer.SetDisplayInLegend(true);
+
+            var mapLayers = _map.GetLayers();
+            mapLayers.Insert(0, _debugLayer);
+
+            UpdateCenterDebugPoint();
+        }
+
+        private MgPropertyCollection _debugCenter;
+
+        private void UpdateCenterDebugPoint()
+        {
+            if (_debugCenter == null)
+                _debugCenter = new MgPropertyCollection();
+
+            var center = _wktRW.Read("POINT (" + _map.ViewCenter.Coordinate.X + " " + _map.ViewCenter.Coordinate.Y + ")");
+            var agf = _agfRW.Write(center);
+            if (!_debugCenter.Contains("Geometry"))
+            {
+                MgGeometryProperty geom = new MgGeometryProperty("Geometry", agf);
+                _debugCenter.Add(geom);
+            }
+            else
+            {
+                MgGeometryProperty geom = (MgGeometryProperty)_debugCenter.GetItem("Geometry");
+                geom.SetValue(agf);
+            }
+
+            int deleted = _debugLayer.DeleteFeatures("");
+            Trace.TraceInformation("Deleted {0} debug points", deleted);
+            var reader = _debugLayer.InsertFeatures(_debugCenter);
+            int inserted = 0;
+            while (reader.ReadNext())
+            {
+                inserted++;
+            }
+            reader.Close();
+            Trace.TraceInformation("Added {0} debug points", inserted);
+            _debugLayer.ForceRefresh();
+        }
+#endif
 
         private double CalculateScale(double mcsW, double mcsH, int devW, int devH)
         {
@@ -211,6 +326,7 @@ namespace Maestro.AddIn.Local.UI
         {
             _map.SetViewCenterXY(x, y);
 #if DEBUG
+            UpdateCenterDebugPoint();
             //var mapExt = _map.MapExtent;
             //var dataExt = _map.DataExtent;
             //Trace.TraceInformation("Map Extent is ({0},{1} {2},{3})", mapExt.LowerLeftCoordinate.X, mapExt.LowerLeftCoordinate.Y, mapExt.UpperRightCoordinate.X, mapExt.UpperRightCoordinate.Y);
@@ -283,14 +399,20 @@ namespace Maestro.AddIn.Local.UI
 
         private void btnZoomIn_Click(object sender, EventArgs e)
         {
-            _map.SetViewScale(_map.ViewScale * 0.8);
-            RefreshMap();
+            var scale = _map.ViewScale * 0.8;
+            ZoomToView(_extX1 + (_extX2 - _extX1) / 2, _extY2 + (_extY1 - _extY2) / 2, scale, true);
+
+            //_map.SetViewScale(_map.ViewScale * 0.8);
+            //RefreshMap();
         }
 
         private void btnZoomOut_Click(object sender, EventArgs e)
         {
-            _map.SetViewScale(_map.ViewScale * 1.2);
-            RefreshMap();
+            var scale = _map.ViewScale * 1.2;
+            ZoomToView(_extX1 + (_extX2 - _extX1) / 2, _extY2 + (_extY1 - _extY2) / 2, scale, true);
+
+            //_map.SetViewScale(_map.ViewScale * 1.2);
+            //RefreshMap();
         }
 
         private void btnZoomExtents_Click(object sender, EventArgs e)
@@ -380,7 +502,7 @@ namespace Maestro.AddIn.Local.UI
             for (int i = 0; i < layers.GetCount(); i++)
             {
                 var layer = layers.GetItem(i);
-                if (!layer.Selectable && !layer.IsVisible())
+                if (!layer.Selectable || !layer.IsVisible())
                     continue;
 
                 var objId = layer.GetObjectId();
@@ -401,7 +523,7 @@ namespace Maestro.AddIn.Local.UI
             for (int i = 0; i < layers.GetCount(); i++)
             {
                 var layer = layers.GetItem(i);
-                if (!layer.Selectable && !layer.IsVisible())
+                if (!layer.Selectable || !layer.IsVisible())
                     continue;
 
                 var objId = layer.GetObjectId();
@@ -472,8 +594,8 @@ namespace Maestro.AddIn.Local.UI
 
         private void btnZoomScale_Click(object sender, EventArgs e)
         {
-            _map.SetViewScale(Convert.ToDouble(numScale.Value));
-            RefreshMap();
+            var scale = Convert.ToDouble(numScale.Value);
+            ZoomToView(_extX1 + (_extX2 - _extX1) / 2, _extY2 + (_extY1 - _extY2) / 2, scale, true);
         }
 
         private void mapImage_MouseMove(object sender, MouseEventArgs e)

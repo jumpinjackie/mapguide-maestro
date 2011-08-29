@@ -83,7 +83,7 @@ namespace Maestro.AddIn.Local.Services
 
             MgdMap map = new MgdMap(mapResId);
 
-            var diag = new MapPreviewWindow(map);
+            var diag = new MapPreviewWindow(map, conn);
             diag.ShowDialog();
         }
     }
