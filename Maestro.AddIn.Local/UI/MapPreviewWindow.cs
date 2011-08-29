@@ -144,6 +144,7 @@ namespace Maestro.AddIn.Local.UI
 
             double scale = CalculateScale(Math.Abs(_orgX2 - _orgX1), Math.Abs(_orgY2 - _orgY1), this.Width, this.Height);
             numScale.Value = Convert.ToDecimal(scale);
+            _map.SetViewCenterXY(_extX1 + (_extX2 - _extX1) / 2, _extY2 + (_extY1 - _extY2) / 2);
             _map.SetViewScale(scale);
 
             _init = true;
@@ -411,15 +412,13 @@ namespace Maestro.AddIn.Local.UI
                 _selection.AddFeatures(layer, reader, 0);
             }
 
-#if DEBUG
             int total = 0;
             for (int i = 0; i < layers.GetCount(); i++)
             {
                 var layer = layers.GetItem(i);
                 total += _selection.GetSelectedFeaturesCount(layer, layer.FeatureClassName);
             }
-            Trace.TraceInformation("Selecting {0} features", total);
-#endif
+            lblFeaturesSelected.Text = string.Format("{0} features selected", total);
 
             string xml = _selection.ToXml();
             if (!string.IsNullOrEmpty(xml))
@@ -475,6 +474,12 @@ namespace Maestro.AddIn.Local.UI
         {
             _map.SetViewScale(Convert.ToDouble(numScale.Value));
             RefreshMap();
+        }
+
+        private void mapImage_MouseMove(object sender, MouseEventArgs e)
+        {
+            var mapPt = ScreenToMapUnits(e.X, e.Y);
+            lblCoordinates.Text = string.Format("X: {0:0.0000000}, Y: {1:0.0000000} ({2})", mapPt.X, mapPt.Y, _mapCs.Units);
         }
     }
 }

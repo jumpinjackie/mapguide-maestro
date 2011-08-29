@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.mapImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkSelectFeatures = new System.Windows.Forms.CheckBox();
-            this.renderWorker = new System.ComponentModel.BackgroundWorker();
-            this.mapImage = new System.Windows.Forms.PictureBox();
+            this.btnZoomScale = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numScale = new System.Windows.Forms.NumericUpDown();
             this.btnLowerRight = new System.Windows.Forms.Button();
             this.btnLowerLeft = new System.Windows.Forms.Button();
             this.btnUpperLeft = new System.Windows.Forms.Button();
             this.btnUpperRight = new System.Windows.Forms.Button();
             this.btnClearSelect = new System.Windows.Forms.Button();
+            this.chkSelectFeatures = new System.Windows.Forms.CheckBox();
             this.btnZoomExtents = new System.Windows.Forms.Button();
             this.btnZoomOut = new System.Windows.Forms.Button();
             this.btnZoomIn = new System.Windows.Forms.Button();
@@ -46,16 +48,18 @@
             this.btnRight = new System.Windows.Forms.Button();
             this.btnLeft = new System.Windows.Forms.Button();
             this.btnUp = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.numScale = new System.Windows.Forms.NumericUpDown();
-            this.btnZoomScale = new System.Windows.Forms.Button();
+            this.renderWorker = new System.ComponentModel.BackgroundWorker();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblCoordinates = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblFeaturesSelected = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mapImage)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mapImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numScale)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -72,9 +76,20 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(674, 487);
+            this.splitContainer1.Size = new System.Drawing.Size(674, 465);
             this.splitContainer1.SplitterDistance = 549;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // mapImage
+            // 
+            this.mapImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapImage.Location = new System.Drawing.Point(0, 0);
+            this.mapImage.Name = "mapImage";
+            this.mapImage.Size = new System.Drawing.Size(549, 465);
+            this.mapImage.TabIndex = 0;
+            this.mapImage.TabStop = false;
+            this.mapImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mapImage_MouseMove);
+            this.mapImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mapImage_MouseClick);
             // 
             // panel1
             // 
@@ -82,7 +97,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(121, 487);
+            this.panel1.Size = new System.Drawing.Size(121, 465);
             this.panel1.TabIndex = 0;
             // 
             // groupBox1
@@ -110,31 +125,46 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Controls";
             // 
-            // chkSelectFeatures
+            // btnZoomScale
             // 
-            this.chkSelectFeatures.AutoSize = true;
-            this.chkSelectFeatures.Location = new System.Drawing.Point(22, 219);
-            this.chkSelectFeatures.Name = "chkSelectFeatures";
-            this.chkSelectFeatures.Size = new System.Drawing.Size(56, 17);
-            this.chkSelectFeatures.TabIndex = 7;
-            this.chkSelectFeatures.Text = "Select";
-            this.chkSelectFeatures.UseVisualStyleBackColor = true;
+            this.btnZoomScale.Location = new System.Drawing.Point(22, 295);
+            this.btnZoomScale.Name = "btnZoomScale";
+            this.btnZoomScale.Size = new System.Drawing.Size(66, 23);
+            this.btnZoomScale.TabIndex = 17;
+            this.btnZoomScale.Text = "Zoom";
+            this.btnZoomScale.UseVisualStyleBackColor = true;
+            this.btnZoomScale.Click += new System.EventHandler(this.btnZoomScale_Click);
             // 
-            // renderWorker
+            // label1
             // 
-            this.renderWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.renderWorker_DoWork);
-            this.renderWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.renderWorker_RunWorkerCompleted);
-            this.renderWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.renderWorker_ProgressChanged);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 252);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Current Scale";
             // 
-            // mapImage
+            // numScale
             // 
-            this.mapImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mapImage.Location = new System.Drawing.Point(0, 0);
-            this.mapImage.Name = "mapImage";
-            this.mapImage.Size = new System.Drawing.Size(549, 487);
-            this.mapImage.TabIndex = 0;
-            this.mapImage.TabStop = false;
-            this.mapImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mapImage_MouseClick);
+            this.numScale.Location = new System.Drawing.Point(22, 268);
+            this.numScale.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.numScale.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numScale.Name = "numScale";
+            this.numScale.Size = new System.Drawing.Size(66, 20);
+            this.numScale.TabIndex = 15;
+            this.numScale.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // btnLowerRight
             // 
@@ -185,6 +215,16 @@
             this.btnClearSelect.TabIndex = 8;
             this.btnClearSelect.UseVisualStyleBackColor = true;
             this.btnClearSelect.Click += new System.EventHandler(this.btnClearSelect_Click);
+            // 
+            // chkSelectFeatures
+            // 
+            this.chkSelectFeatures.AutoSize = true;
+            this.chkSelectFeatures.Location = new System.Drawing.Point(22, 219);
+            this.chkSelectFeatures.Name = "chkSelectFeatures";
+            this.chkSelectFeatures.Size = new System.Drawing.Size(56, 17);
+            this.chkSelectFeatures.TabIndex = 7;
+            this.chkSelectFeatures.Text = "Select";
+            this.chkSelectFeatures.UseVisualStyleBackColor = true;
             // 
             // btnZoomExtents
             // 
@@ -256,46 +296,34 @@
             this.btnUp.UseVisualStyleBackColor = true;
             this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
-            // label1
+            // renderWorker
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 252);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Current Scale";
+            this.renderWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.renderWorker_DoWork);
+            this.renderWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.renderWorker_RunWorkerCompleted);
+            this.renderWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.renderWorker_ProgressChanged);
             // 
-            // numScale
+            // statusStrip1
             // 
-            this.numScale.Location = new System.Drawing.Point(22, 268);
-            this.numScale.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            0});
-            this.numScale.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numScale.Name = "numScale";
-            this.numScale.Size = new System.Drawing.Size(66, 20);
-            this.numScale.TabIndex = 15;
-            this.numScale.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblCoordinates,
+            this.lblFeaturesSelected});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 465);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(674, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // btnZoomScale
+            // lblCoordinates
             // 
-            this.btnZoomScale.Location = new System.Drawing.Point(22, 295);
-            this.btnZoomScale.Name = "btnZoomScale";
-            this.btnZoomScale.Size = new System.Drawing.Size(66, 23);
-            this.btnZoomScale.TabIndex = 17;
-            this.btnZoomScale.Text = "Zoom";
-            this.btnZoomScale.UseVisualStyleBackColor = true;
-            this.btnZoomScale.Click += new System.EventHandler(this.btnZoomScale_Click);
+            this.lblCoordinates.Name = "lblCoordinates";
+            this.lblCoordinates.Size = new System.Drawing.Size(659, 17);
+            this.lblCoordinates.Spring = true;
+            this.lblCoordinates.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblFeaturesSelected
+            // 
+            this.lblFeaturesSelected.Name = "lblFeaturesSelected";
+            this.lblFeaturesSelected.Size = new System.Drawing.Size(0, 17);
             // 
             // MapPreviewWindow
             // 
@@ -303,18 +331,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 487);
             this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.statusStrip1);
             this.Name = "MapPreviewWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Map Preview";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mapImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mapImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numScale)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -341,5 +373,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numScale;
         private System.Windows.Forms.Button btnZoomScale;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblCoordinates;
+        private System.Windows.Forms.ToolStripStatusLabel lblFeaturesSelected;
     }
 }
