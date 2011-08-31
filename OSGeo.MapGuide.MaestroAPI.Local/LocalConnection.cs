@@ -414,10 +414,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             var fes = GetFeatureService();
             MgSpatialContextReader rd = fes.GetSpatialContexts(new MgResourceIdentifier(resourceID), activeOnly);
-
             LogMethodCall("MgFeatureService::GetSpatialContexts", true, resourceID, activeOnly.ToString());
-
-            return this.DeserializeObject(typeof(FdoSpatialContextList), Native.Utility.MgStreamToNetStream(rd, rd.GetType().GetMethod("ToXml"), null)) as FdoSpatialContextList;
+            var scList = this.DeserializeObject(typeof(FdoSpatialContextList), Native.Utility.MgStreamToNetStream(rd, rd.GetType().GetMethod("ToXml"), null)) as FdoSpatialContextList;
+            rd.Close();
+            return scList;
         }
 
         public override string[] GetIdentityProperties(string resourceID, string classname)

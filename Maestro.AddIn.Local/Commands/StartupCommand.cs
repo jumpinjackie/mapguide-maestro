@@ -26,6 +26,7 @@ using OSGeo.MapGuide.MaestroAPI.Local;
 using System.IO;
 using Maestro.Base.Services;
 using Maestro.AddIn.Local.Services;
+using OSGeo.MapGuide;
 
 namespace Maestro.AddIn.Local.Commands
 {
@@ -40,10 +41,25 @@ namespace Maestro.AddIn.Local.Commands
                     LocalConnection.Create);
 
                 ResourcePreviewerFactory.RegisterPreviewer(LocalConnection.PROVIDER_NAME, new LocalPreviewer());
+
+                System.Windows.Forms.Application.ApplicationExit += new EventHandler(OnAppExit);
             }
             else
             {
                 LoggingService.Info("Skipping local connection provider registration because I am guessing we're running Mono on Linux/Mac"); //LOCALIZEME
+            }
+        }
+
+        void OnAppExit(object sender, EventArgs e)
+        {
+            try
+            {
+                MgdResourceService resSvc = MgServiceFactory.CreateResourceService();
+                resSvc.DeleteSessionFiles();
+            }
+            catch (MgException ex)
+            {
+                ex.Dispose();
             }
         }
     }

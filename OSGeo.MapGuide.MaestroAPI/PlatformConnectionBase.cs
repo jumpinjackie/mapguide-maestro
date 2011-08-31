@@ -1584,6 +1584,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                     }
                     else
                         throw new Exception("No data found in resource: " + resourceID);
+
+                    fsr.Close();
                 }
             }
             catch

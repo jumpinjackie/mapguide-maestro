@@ -48,9 +48,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
         public override void Dispose()
         {
-            _reader.Dispose();
-            _agfRw.Dispose();
-            _wktRw.Dispose();
+            Close();
+            if (_agfRw != null)
+            {
+                _agfRw.Dispose();
+                _agfRw = null;
+            }
+            if (_wktRw != null)
+            {
+                _wktRw.Dispose();
+                _wktRw = null;
+            }
             base.Dispose();
         }
 

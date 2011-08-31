@@ -778,6 +778,7 @@ namespace Maestro.Editors.Common
                                     else
                                         values[Convert.ToString(rd[ColumnName.Text], System.Globalization.CultureInfo.InvariantCulture)] = null;
                                 }
+                                rd.Close();
                             }
                         }
                         catch (Exception ex)

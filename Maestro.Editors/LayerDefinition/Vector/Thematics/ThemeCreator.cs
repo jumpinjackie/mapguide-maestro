@@ -241,6 +241,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                                     m_values[value]++;
                                 }
                             }
+                            rd.Close();
                         }
 
                         rawEx = null; //Clear error
