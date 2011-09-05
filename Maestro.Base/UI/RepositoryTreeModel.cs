@@ -445,8 +445,13 @@ namespace Maestro.Base.UI
         {
             if (treePath.IsEmpty())
             {
+                _rootNodes.Clear();
+                var roots = new List<RepositoryItem>();
                 foreach (var connName in _connManager.GetConnectionNames())
                 {
+                    if (_rootNodes.ContainsKey(connName))
+                        continue;
+
                     var conn = _connManager.GetConnection(connName);
 
                     var list = conn.ResourceService.GetRepositoryResources("Library://", 0);
@@ -460,8 +465,16 @@ namespace Maestro.Base.UI
                     connNode.Name = connName;
                     connNode.Model = this;
 
-                    _rootNodes[connName] = connNode;
-                    yield return connNode;
+                    if (!_rootNodes.ContainsKey(connName))
+                    {
+                        _rootNodes[connName] = connNode;
+                        roots.Add(connNode);
+                    }
+                }
+
+                foreach (var r in roots)
+                {
+                    yield return r;
                 }
             }
             else
