@@ -26,7 +26,6 @@ using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide;
-using Maestro.AddIn.Local.UI;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
@@ -81,9 +80,13 @@ namespace Maestro.AddIn.Local.Services
             var mapResId = new MgResourceIdentifier("Session:" + edSvc.SessionID + "//" + Guid.NewGuid() + "." + res.ResourceType.ToString());
             edSvc.ResourceService.SetResourceXmlData(mapResId.ToString(), ResourceTypeRegistry.Serialize(mapDef));
 
-            MgdMap map = new MgdMap(mapResId);
+            //MgdMap map = new MgdMap(mapResId);
 
-            var diag = new MapPreviewWindow(map, conn);
+            //var diag = new MapPreviewWindow(map, conn);
+            //diag.ShowDialog();
+
+            var diag = new UI.MapPreviewWindow(conn);
+            diag.Init(mapResId);
             diag.ShowDialog();
         }
     }

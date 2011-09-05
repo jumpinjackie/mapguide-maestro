@@ -34,6 +34,11 @@
     <Reference Include="OSGeo.MapGuide.Desktop, Version=2.4.0.0, Culture=neutral, PublicKeyToken=e75f9fd7cf82dc3f, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
+    <Reference Include="OSGeo.MapGuide.Viewer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\OSGeo.MapGuide.Viewer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -60,6 +65,12 @@
     </Compile>
     <Compile Include="UI\MapPreviewWindow.Designer.cs">
       <DependentUpon>MapPreviewWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ZoomScaleDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ZoomScaleDialog.Designer.cs">
+      <DependentUpon>ZoomScaleDialog.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -287,6 +298,9 @@
     <None Include="Resources\arrow-225.png" />
     <None Include="Resources\arrow-135.png" />
     <None Include="Resources\arrow-045.png" />
+    <Content Include="OSGeo.MapGuide.Viewer.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="xerces-c_3_1mg.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -987,6 +1001,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MapPreviewWindow.resx">
       <DependentUpon>MapPreviewWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ZoomScaleDialog.resx">
+      <DependentUpon>ZoomScaleDialog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
