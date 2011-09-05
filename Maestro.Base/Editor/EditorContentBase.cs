@@ -74,7 +74,6 @@ namespace Maestro.Base.Editor
                 _svc.Saved += OnSaved;
                 _svc.BeforeSave += OnBeforeSave;
 
-                this.Resource = _svc.GetEditedResource();
                 UpdateTitle();
                 
                 this.CanUpgrade = _svc.IsUpgradeAvailable;
@@ -100,6 +99,8 @@ namespace Maestro.Base.Editor
                 return sr.ReadToEnd();
             }
         }
+
+        public IResource Resource { get { return this.EditorService.GetEditedResource(); } }
 
         /// <summary>
         /// Performs any pre-save validation logic. The base implementation performs
@@ -196,8 +197,6 @@ namespace Maestro.Base.Editor
                     this.Title = this.Title.Substring(1);
             }
         }
-
-        public IResource Resource { get; private set; }
 
         /// <summary>
         /// Binds the specified resource to this control. This effectively initializes

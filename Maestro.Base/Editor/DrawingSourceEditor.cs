@@ -38,7 +38,6 @@ namespace Maestro.Base.Editor
             InitializeComponent();
         }
 
-        private IResource _res;
         private IEditorService _edsvc;
 
         private bool _init = false;
@@ -48,11 +47,12 @@ namespace Maestro.Base.Editor
             if (!_init)
             {
                 _edsvc = service;
-                _res = _edsvc.GetEditedResource();
                 //_edsvc.BeforeSave += new CancelEventHandler(OnBeforeSave);
                 _init = true;
             }
-            
+
+            panelBody.Controls.Clear();
+
             var dsEditor = new DrawingSourceEditorCtrl();
             dsEditor.Dock = DockStyle.Fill;
             panelBody.Controls.Add(dsEditor);
