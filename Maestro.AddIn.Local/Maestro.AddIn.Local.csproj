@@ -1015,6 +1015,6 @@
   </Target>
   -->
   <PropertyGroup>
-    <PreBuildEvent>$(ProjectDir)CS_Comp.exe /b $(ProjectDir)Dictionaries $(ProjectDir)Dictionaries</PreBuildEvent>
+    <PreBuildEvent>"$(ProjectDir)CS_Comp.exe" /b "$(ProjectDir)Dictionaries" "$(ProjectDir)Dictionaries"</PreBuildEvent>
   </PropertyGroup>
 </Project>
