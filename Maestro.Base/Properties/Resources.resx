@@ -1067,4 +1067,7 @@ Error message: {1}</value>
   <data name="DwfHandlerAction" xml:space="preserve">
     <value>Create a Drawing Source</value>
   </data>
+  <data name="PromptOverwriteOnTargetConnection" xml:space="preserve">
+    <value>There are {0} already existing resources that have the same name. Do you want to overwrite these resources?</value>
+  </data>
 </root>

@@ -1588,6 +1588,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are {0} already existing resources that have the same name. Do you want to overwrite these resources?.
+        /// </summary>
+        internal static string PromptOverwriteOnTargetConnection {
+            get {
+                return ResourceManager.GetString("PromptOverwriteOnTargetConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rename to.
         /// </summary>
         internal static string RenameTo {

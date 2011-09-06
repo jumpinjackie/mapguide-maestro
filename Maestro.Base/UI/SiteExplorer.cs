@@ -36,6 +36,7 @@ using Maestro.Base.Commands.SiteExplorer;
 using Maestro.Base.Commands;
 using System.Linq;
 using Maestro.Editors;
+using OSGeo.MapGuide.MaestroAPI.CrossConnection;
 
 namespace Maestro.Base.UI
 {
@@ -376,7 +377,7 @@ namespace Maestro.Base.UI
 
         private void trvResources_DragDrop(object sender, DragEventArgs e)
         {
-            var data = e.Data.GetData(typeof(RepositoryItem[])) as RepositoryItem[];
+            var data = e.Data.GetData(typeof(RepositoryHandle[])) as RepositoryHandle[];
             if (data == null)
             {
                 //See if the mouse is currently over a node
@@ -397,16 +398,19 @@ namespace Maestro.Base.UI
                     string connectionName = RepositoryTreeModel.GetParentConnectionName(item);
                     string folderId = item.ResourceId;
 
-                    //I think it's nice to ask for confirmation
-                    if (data.Length > 0)
-                    {
-                        if (!MessageService.AskQuestion(Properties.Resources.ConfirmMove))
-                            return;
-                    }
+                    if (data.Length < 0)
+                        return;
 
-                    if (data.First().ConnectionName == connectionName)
+                    if (data.First().Connection.DisplayName == connectionName)
                     {
-                        string[] folders = MoveResourcesWithinConnection(connectionName, data.Select(x => x.ResourceId).ToArray(), folderId);
+                        //I think it's nice to ask for confirmation
+                        if (data.Length > 0)
+                        {
+                            if (!MessageService.AskQuestion(Properties.Resources.ConfirmMove))
+                                return;
+                        }
+
+                        string[] folders = MoveResourcesWithinConnection(connectionName, data.Select(x => x.ResourceId.ToString()).ToArray(), folderId);
 
                         foreach (var fid in folders)
                         {
@@ -416,17 +420,135 @@ namespace Maestro.Base.UI
                     }
                     else
                     {
-                        //TODO: Revisit later
-                        MessageService.ShowError("Moving resources between connections is currently not implemented");
-                        return;
+                        string rootSourceParent = GetCommonParent(data);
+
+                        //There is an implicit assumption here that all items dropped come from the same connection
+                        var sourceConn = data.First().Connection;
+                        var targetConn = _connManager.GetConnection(connectionName);
+                        var migrator = new ResourceMigrator(sourceConn, targetConn);
+
+                        //Collect all source ids
+                        var sourceIds = new List<string>();
+                        foreach (var resId in data.Select(x => x.ResourceId.ToString()))
+                        {
+                            if (ResourceIdentifier.IsFolderResource(resId))
+                                sourceIds.AddRange(GetFullResourceList(sourceConn, resId));
+                            else
+                                sourceIds.Add(resId);
+                        
+                        }
+
+                        /*
+                        //If we're dropping to the root, the common parent becomes our 
+                        //target root
+                        if (folderId == "Library://")
+                            folderId = rootSourceParent;
+                        */
+                        //If common parent is not root, we want the name of the folder to append
+                        //to our target
+                        if (rootSourceParent != "Library://")
+                        {
+                            ResourceIdentifier resId = new ResourceIdentifier(rootSourceParent);
+                            folderId = folderId + resId.Name + "/";
+                        }
+
+                        var targets = new List<string>();
+                        foreach (var resId in sourceIds)
+                        {
+                            var dstId = resId.Replace(rootSourceParent, folderId);
+                            System.Diagnostics.Trace.TraceInformation("{0} => {1}", resId, dstId);
+                            targets.Add(dstId);
+                        }
+
+                        bool overwrite = true;
+                        var existing = new List<string>();
+                        foreach (var resId in targets)
+                        {
+                            if (targetConn.ResourceService.ResourceExists(resId))
+                            {
+                                existing.Add(resId);
+                            }
+                        }
+                        if (existing.Count > 0)
+                            overwrite = MessageService.AskQuestion(string.Format(Properties.Resources.PromptOverwriteOnTargetConnection, existing.Count));
+
+                        var wb = Workbench.Instance;
+                        var dlg = new ProgressDialog();
+                        var worker = new ProgressDialog.DoBackgroundWork((w, evt, args) =>
+                        {
+                            LengthyOperationProgressCallBack cb = (s, cbe) =>
+                            {
+                                w.ReportProgress(cbe.Progress, cbe.StatusMessage);
+                            };
+
+                            return migrator.CopyResources(sourceIds.ToArray(), targets.ToArray(), overwrite, new RebaseOptions(rootSourceParent, folderId), cb);
+                        });
+
+                        dlg.RunOperationAsync(wb, worker);
+                        RefreshModel(targetConn.DisplayName, folderId);
+                        ExpandNode(targetConn.DisplayName, folderId);
                     }
                 }
             }
         }
 
+        private string GetCommonParent(RepositoryHandle[] data)
+        {
+            if (data.Length > 0)
+            {
+                if (data.Length == 1)
+                {
+                    if (data[0].ResourceId.IsFolder)
+                        return data[0].ResourceId.ToString();
+                    else
+                        return data[0].ResourceId.ParentFolder;
+                }
+                else
+                {
+                    int matches = 0;
+                    string[] parts = data.First().ResourceId.ToString()
+                                         .Substring("Library://".Length)
+                                         .Split('/');
+                    string test = "Library://";
+                    string parent = test;
+                    int partIndex = 0;
+                    //Use first one as a sample to see how far we can go. Keep going until we have
+                    //a parent that doesn't match all of them. The one we recorded before then will
+                    //be the common parent
+                    while (matches == data.Length)
+                    {
+                        parent = test;
+                        partIndex++;
+                        if (partIndex < parts.Length) //Shouldn't happen, but just in case
+                            break;
+
+                        test = test + parts[partIndex];
+                        matches = data.Where(x => x.ResourceId.ResourceId.StartsWith(test)).Count(); 
+                    }
+                    return parent;
+                }
+            }
+            else
+            {
+                return "Library://";
+            }
+        }
+
+        private static IEnumerable<string> GetFullResourceList(IServerConnection sourceConn, string resId)
+        {
+            var list = sourceConn.ResourceService.GetRepositoryResources(resId, -1);
+            foreach (var res in list.Children)
+            {
+                if (res.IsFolder)
+                    continue;
+
+                yield return res.ResourceId;
+            }
+        }
+
         private void trvResources_DragOver(object sender, DragEventArgs e)
         {
-            var data = e.Data.GetData(typeof(RepositoryItem[])) as RepositoryItem[];
+            var data = e.Data.GetData(typeof(RepositoryHandle[])) as RepositoryHandle[];
             if (data == null)
             {
                 SiteExplorerDragDropHandler.OnDragEnter(this, e);

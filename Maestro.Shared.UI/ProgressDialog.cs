@@ -128,7 +128,9 @@ namespace Maestro.Shared.UI
             }
             else if (e.Error != null)
             {
-                throw e.Error;
+                ErrorDialog.Show(e.Error);
+                this.DialogResult = DialogResult.Abort;
+                this.Close();
             }
             else
             {

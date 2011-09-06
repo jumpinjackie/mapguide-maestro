@@ -191,6 +191,7 @@
     <Compile Include="CoordinateSystem\MeterBasedCoordinateSystem.cs" />
     <Compile Include="CoordinateSystem\NsDoc.cs" />
     <Compile Include="CrossConnection\NsDoc.cs" />
+    <Compile Include="CrossConnection\ResourceRebaser.cs" />
     <Compile Include="Exceptions\CustomPropertyNotFoundException.cs" />
     <Compile Include="Exceptions\ExpressionException.cs" />
     <Compile Include="Exceptions\MaestroException.cs" />

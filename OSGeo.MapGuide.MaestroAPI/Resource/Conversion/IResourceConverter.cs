@@ -42,6 +42,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
     {
         public IResource Convert(IResource resource, Version targetVersion)
         {
+            //How does this work? If source and target versions are known, it means the classes
+            //that represent them are also known and we just serialize from the source type to xml
+            //and deserialize that xml to the target type, with any unsupported bits falling by the
+            //wayside in the process, and any new bits flubbed with default values as part of deserialization
+
             var resVer = resource.GetResourceTypeDescriptor().Version;
             var dstVer = string.Format("{0}.{1}.{2}", targetVersion.Major, targetVersion.Minor, targetVersion.Build);
             var dstXsd = resource.ValidatingSchema.Replace(resVer, dstVer);
@@ -56,6 +61,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
 
                     var convRes = ResourceTypeRegistry.Deserialize(xml.ToString());
                     convRes.CurrentConnection = resource.CurrentConnection;
+                    convRes.ResourceID = resource.ResourceID;
                     return convRes;
                 }
             }

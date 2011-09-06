@@ -21,6 +21,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
+using System.IO;
 
 namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
 {
@@ -33,6 +35,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         private IServerConnection _source;
         private IServerConnection _target;
 
+        private IResourceConverter _converter;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ResourceMigrator"/> class.
         /// </summary>
@@ -44,6 +48,103 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
             Check.NotNull(target, "target");
             _source = source;
             _target = target;
+            _converter = new ResourceObjectConverter();
+        }
+
+        /// <summary>
+        /// Copies resource from the source connection to another connection. 
+        /// </summary>
+        /// <param name="sourceResourceIds">The array of source resource ids</param>
+        /// <param name="targetResourceIds">The array of target resource ids to copy to. Each resource id in the source array will be copied to the corresponding resource id in the target array</param>
+        /// <param name="overwrite">Indicates whether to overwrite </param>
+        /// <param name="options">Re-base options</param>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        public int CopyResources(string[] sourceResourceIds, string[] targetResourceIds, bool overwrite, RebaseOptions options, LengthyOperationProgressCallBack callback)
+        {
+            Check.NotNull(sourceResourceIds, "sourceResourceIds");
+            Check.NotNull(targetResourceIds, "targetResourceIds");
+            Check.Precondition(sourceResourceIds.Length == targetResourceIds.Length, "resourceIds.Length == targetResourceIds.Length");
+
+            var cb = callback;
+            if (cb == null)
+            {
+                cb = new LengthyOperationProgressCallBack((s, e) =>
+                {
+                    //Do nothing
+                });
+            }
+
+            var targetCaps = _target.Capabilities;
+
+            int copied = 0;
+            int unit = 100 / sourceResourceIds.Length;
+            int progress = 0;
+
+            string message = "";
+            for (int i = 0; i < sourceResourceIds.Length; i++)
+            {
+                var srcResId = sourceResourceIds[i];
+                var dstResId = targetResourceIds[i];
+                
+                //Get the source resource object
+                IResource res = _source.ResourceService.GetResource(srcResId);
+
+                //Skip if target exists and overwrite is not specified
+                if (!overwrite && _target.ResourceService.ResourceExists(dstResId))
+                {
+                    progress += unit;
+                    continue;
+                }
+                else
+                {
+                    //Check if downgrading is required
+                    var maxVer = targetCaps.GetMaxSupportedResourceVersion(res.ResourceType);
+                    if (res.ResourceVersion > maxVer)
+                    {
+                        res = _converter.Convert(res, maxVer);
+                        cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.DowngradedResource, srcResId, maxVer), progress));
+                    }
+
+                    //Now rebase if rebase options supplied
+                    if (options != null)
+                    {
+                        var rebaser = new ResourceRebaser(res);
+                        res = rebaser.Rebase(options.SourceFolder, options.TargetFolder);
+                    }
+
+                    //Save resource
+                    _target.ResourceService.SaveResourceAs(res, dstResId);
+                    //Copy resource data
+                    foreach (var data in res.EnumerateResourceData())
+                    {
+                        using (var stream = res.GetResourceData(data.Name))
+                        {
+                            if (!stream.CanSeek)
+                            {
+                                using (var ms = new MemoryStream())
+                                {
+                                    Utility.CopyStream(stream, ms, false);
+                                    ms.Position = 0L;
+                                    _target.ResourceService.SetResourceData(dstResId, data.Name, data.Type, ms);
+                                }
+                            }
+                            else
+                            {
+                                stream.Position = 0L;
+                                _target.ResourceService.SetResourceData(dstResId, data.Name, data.Type, stream);
+                            }
+                        }
+                    }
+
+                    copied++;
+                    message = string.Format(Properties.Resources.CopiedResourceToTarget, srcResId, dstResId);
+                }
+                progress += unit;
+                cb(this, new LengthyOperationProgressArgs(message, progress));
+            }
+
+            return copied;
         }
 
         /// <summary>
@@ -69,6 +170,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                 });
             }
 
+            var targetCaps = _target.Capabilities;
+
             int copied = 0;
             int unit = 100 / resourceIds.Length;
             int progress = 0;
@@ -81,10 +184,19 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                 //Skip if target exists and overwrite is not specified
                 if (!overwrite && _target.ResourceService.ResourceExists(targetId))
                 {
+                    progress += unit;
                     continue;
                 }
                 else
                 {
+                    //Check if downgrading is required
+                    var maxVer = targetCaps.GetMaxSupportedResourceVersion(res.ResourceType);
+                    if (res.ResourceVersion > maxVer)
+                    {
+                        res = _converter.Convert(res, maxVer);
+                        cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.DowngradedResource, resId, maxVer), progress));
+                    }
+
                     //Save resource
                     _target.ResourceService.SaveResourceAs(res, targetId);
                     //Copy resource data
@@ -92,8 +204,20 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                     {
                         using (var stream = res.GetResourceData(data.Name))
                         {
-                            stream.Position = 0L;
-                            _target.ResourceService.SetResourceData(targetId, data.Name, data.Type, stream);
+                            if (!stream.CanSeek)
+                            {
+                                using (var ms = new MemoryStream())
+                                {
+                                    Utility.CopyStream(stream, ms, false);
+                                    ms.Position = 0L;
+                                    _target.ResourceService.SetResourceData(targetId, data.Name, data.Type, ms);
+                                }
+                            }
+                            else
+                            {
+                                stream.Position = 0L;
+                                _target.ResourceService.SetResourceData(targetId, data.Name, data.Type, stream);
+                            }
                         }
                     }
 
@@ -128,6 +252,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                 });
             }
 
+            var targetCaps = _target.Capabilities;
+
             int moved = 0;
             int unit = 100 / resourceIds.Length;
             int progress = 0;
@@ -140,10 +266,19 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                 //Skip if target exists and overwrite is not specified
                 if (!overwrite && _target.ResourceService.ResourceExists(targetId))
                 {
+                    progress += unit;
                     continue;
                 }
                 else
                 {
+                    //Check if downgrading is required
+                    var maxVer = targetCaps.GetMaxSupportedResourceVersion(res.ResourceType);
+                    if (res.ResourceVersion > maxVer)
+                    {
+                        res = _converter.Convert(res, maxVer);
+                        cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.DowngradedResource, resId, maxVer), progress));
+                    }
+
                     //Save resource
                     _target.ResourceService.SaveResourceAs(res, targetId);
                     //Copy resource data
@@ -151,8 +286,20 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                     {
                         using (var stream = res.GetResourceData(data.Name))
                         {
-                            stream.Position = 0L;
-                            _target.ResourceService.SetResourceData(targetId, data.Name, data.Type, stream);
+                            if (!stream.CanSeek)
+                            {
+                                using (var ms = new MemoryStream())
+                                {
+                                    Utility.CopyStream(stream, ms, false);
+                                    ms.Position = 0L;
+                                    _target.ResourceService.SetResourceData(targetId, data.Name, data.Type, ms);
+                                }
+                            }
+                            else
+                            {
+                                stream.Position = 0L;
+                                _target.ResourceService.SetResourceData(targetId, data.Name, data.Type, stream);
+                            }
                         }
                     }
 
@@ -194,6 +341,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                 cb = new LengthyOperationProgressCallBack((o, a) => { });
             }
 
+            var targetCaps = _target.Capabilities;
             int total = dependentResourceIds.Length + 1;
             int unit = 100 / total;
             int progress = 0;
@@ -202,6 +350,14 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
             {
                 //Copy the specified resource
                 IResource res = _source.ResourceService.GetResource(resourceId);
+
+                //Check if downgrading is required
+                var maxVer = targetCaps.GetMaxSupportedResourceVersion(res.ResourceType);
+                if (res.ResourceVersion > maxVer)
+                {
+                    res = _converter.Convert(res, maxVer);
+                    cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.DowngradedResource, resourceId, maxVer), progress));
+                }
                 _target.ResourceService.SaveResource(res);
 
                 //Copy its resource data
@@ -209,8 +365,20 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                 {
                     using (var stream = res.GetResourceData(data.Name))
                     {
-                        stream.Position = 0L;
-                        _target.ResourceService.SetResourceData(resourceId, data.Name, data.Type, stream);
+                        if (!stream.CanSeek)
+                        {
+                            using (var ms = new MemoryStream())
+                            {
+                                Utility.CopyStream(stream, ms, false);
+                                ms.Position = 0L;
+                                _target.ResourceService.SetResourceData(resourceId, data.Name, data.Type, ms);
+                            }
+                        }
+                        else
+                        {
+                            stream.Position = 0L;
+                            _target.ResourceService.SetResourceData(resourceId, data.Name, data.Type, stream);
+                        }
                     }
                 }
 
@@ -243,8 +411,20 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                             {
                                 using (var stream = res.GetResourceData(data.Name))
                                 {
-                                    stream.Position = 0L;
-                                    _target.ResourceService.SetResourceData(resId, data.Name, data.Type, stream);
+                                    if (!stream.CanSeek)
+                                    {
+                                        using (var ms = new MemoryStream())
+                                        {
+                                            Utility.CopyStream(stream, ms, false);
+                                            ms.Position = 0L;
+                                            _target.ResourceService.SetResourceData(resId, data.Name, data.Type, ms);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        stream.Position = 0L;
+                                        _target.ResourceService.SetResourceData(resId, data.Name, data.Type, stream);
+                                    }
                                 }
                             }
 

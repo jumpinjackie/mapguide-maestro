@@ -530,4 +530,10 @@
   <data name="MDF_NoCoordinateSystem" xml:space="preserve">
     <value>Map Definition has no coordinate system</value>
   </data>
+  <data name="CopiedResourceToTarget" xml:space="preserve">
+    <value>Copied: {0} =&gt; {1}</value>
+  </data>
+  <data name="DowngradedResource" xml:space="preserve">
+    <value>Resource {0} downgraded to version {1}</value>
+  </data>
 </root>

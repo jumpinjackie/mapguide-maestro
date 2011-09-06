@@ -278,6 +278,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copied: {0} =&gt; {1}.
+        /// </summary>
+        internal static string CopiedResourceToTarget {
+            get {
+                return ResourceManager.GetString("CopiedResourceToTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource {0} downgraded to version {1}.
+        /// </summary>
+        internal static string DowngradedResource {
+            get {
+                return ResourceManager.GetString("DowngradedResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No coordinate system specified. The coordinate system if not specified will default to LL84.
         /// </summary>
         internal static string DS_NoCoordinateSpace {
