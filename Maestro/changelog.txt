@@ -1,4 +1,10 @@
-﻿3.5
+﻿4.0 beta 1
+----------
+
+ - Support for working against multiple connections
+ - New Local Connection mode, backed by the new mg-desktop library (http://mg-desktop.googlecode.com). This feature is Windows only
+
+3.5
 ---
 
  - New Copy Resource IDs to clipboard command

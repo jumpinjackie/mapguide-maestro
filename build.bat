@@ -2,7 +2,7 @@
 SET TYPEACTION=build
 SET TYPEBUILD=Release
 SET PLATFORM=Any CPU
-SET RELEASE_VERSION=3.5.0
+SET RELEASE_VERSION=4.0b1
 SET OLDPATH=%PATH%
 SET PATH=%PATH%;%CD%\Thirdparty\NSIS;C:\Windows\Microsoft.NET\Framework\v3.5
 SET SLNDIR=%CD%
@@ -72,11 +72,8 @@ if "%TYPEACTION%"=="build" goto build
 if "%TYPEACTION%"=="clean" goto clean
 
 :build
-pushd SDK
-%MSBUILD% SDK.sln
-popd
 pushd Maestro
-%MSBUILD% Maestro.sln
+%MSBUILD% Maestro_All.sln
 popd
 pushd UserDoc
 call make.bat html

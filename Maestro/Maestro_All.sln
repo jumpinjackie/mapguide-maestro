@@ -86,6 +86,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.Local", "..\OSGeo.MapGuide.MaestroAPI.Local\OSGeo.MapGuide.MaestroAPI.Local.csproj", "{3DDF6501-0148-474C-8674-7C7DA49C7F02}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.Local", "..\Maestro.AddIn.Local\Maestro.AddIn.Local.csproj", "{2419F940-BFB7-4F3F-B5DA-1052EB4706E5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3DDF6501-0148-474C-8674-7C7DA49C7F02} = {3DDF6501-0148-474C-8674-7C7DA49C7F02}
+		{80FA3158-8B5F-48D1-A393-0378AFE48A7E} = {80FA3158-8B5F-48D1-A393-0378AFE48A7E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalConfigure", "..\LocalConfigure\LocalConfigure.csproj", "{6EE16FFD-296E-42FF-B994-8902C27AA0F4}"
 EndProject
