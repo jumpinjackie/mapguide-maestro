@@ -87,12 +87,8 @@ popd
 goto quit
 
 :clean
-pushd SDK
-%MSBUILD% /t:clean SDK.sln
-rd /S /Q bin
-popd
 pushd Maestro
-%MSBUILD% /t:clean Maestro.sln
+%MSBUILD% /t:clean Maestro_All.sln
 popd
 rd /S /Q out
 goto quit

@@ -3,6 +3,12 @@
 
  - Support for working against multiple connections
  - New Local Connection mode, backed by the new mg-desktop library (http://mg-desktop.googlecode.com). This feature is Windows only
+ - MgCooker updated to support Local Connections
+ - Support drag/drop creation of Drawing Sources from DWF files
+ - Resource Previewing is now an connection provider defined function
+ - API: ResourceMigrator now applies any downgrades if required
+ - API: Each connection provider is now responsible for creating coordinate transformers. Local and LocalNative connections return a MgCoordinateSystem-wrapped transformer.
+ - Fix: SizeContext values not saved
 
 3.5
 ---
