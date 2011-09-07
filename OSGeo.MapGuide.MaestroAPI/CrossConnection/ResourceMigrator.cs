@@ -60,12 +60,13 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <param name="options">Re-base options</param>
         /// <param name="callback"></param>
         /// <returns></returns>
-        public int CopyResources(string[] sourceResourceIds, string[] targetResourceIds, bool overwrite, RebaseOptions options, LengthyOperationProgressCallBack callback)
+        public string[] CopyResources(string[] sourceResourceIds, string[] targetResourceIds, bool overwrite, RebaseOptions options, LengthyOperationProgressCallBack callback)
         {
             Check.NotNull(sourceResourceIds, "sourceResourceIds");
             Check.NotNull(targetResourceIds, "targetResourceIds");
             Check.Precondition(sourceResourceIds.Length == targetResourceIds.Length, "resourceIds.Length == targetResourceIds.Length");
 
+            var copiedItems = new List<string>();
             var cb = callback;
             if (cb == null)
             {
@@ -140,11 +141,12 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                     copied++;
                     message = string.Format(Properties.Resources.CopiedResourceToTarget, srcResId, dstResId);
                 }
+                copiedItems.Add(srcResId);
                 progress += unit;
                 cb(this, new LengthyOperationProgressArgs(message, progress));
             }
 
-            return copied;
+            return copiedItems.ToArray();
         }
 
         /// <summary>

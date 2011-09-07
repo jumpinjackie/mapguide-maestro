@@ -420,79 +420,85 @@ namespace Maestro.Base.UI
                     }
                     else
                     {
-                        string rootSourceParent = GetCommonParent(data);
-
-                        //There is an implicit assumption here that all items dropped come from the same connection
-                        var sourceConn = data.First().Connection;
-                        var targetConn = _connManager.GetConnection(connectionName);
-                        var migrator = new ResourceMigrator(sourceConn, targetConn);
-
-                        //Collect all source ids
-                        var sourceIds = new List<string>();
-                        foreach (var resId in data.Select(x => x.ResourceId.ToString()))
-                        {
-                            if (ResourceIdentifier.IsFolderResource(resId))
-                                sourceIds.AddRange(GetFullResourceList(sourceConn, resId));
-                            else
-                                sourceIds.Add(resId);
-                        
-                        }
-
-                        /*
-                        //If we're dropping to the root, the common parent becomes our 
-                        //target root
-                        if (folderId == "Library://")
-                            folderId = rootSourceParent;
-                        */
-                        //If common parent is not root, we want the name of the folder to append
-                        //to our target
-                        if (rootSourceParent != "Library://")
-                        {
-                            ResourceIdentifier resId = new ResourceIdentifier(rootSourceParent);
-                            folderId = folderId + resId.Name + "/";
-                        }
-
-                        var targets = new List<string>();
-                        foreach (var resId in sourceIds)
-                        {
-                            var dstId = resId.Replace(rootSourceParent, folderId);
-                            System.Diagnostics.Trace.TraceInformation("{0} => {1}", resId, dstId);
-                            targets.Add(dstId);
-                        }
-
-                        bool overwrite = true;
-                        var existing = new List<string>();
-                        foreach (var resId in targets)
-                        {
-                            if (targetConn.ResourceService.ResourceExists(resId))
-                            {
-                                existing.Add(resId);
-                            }
-                        }
-                        if (existing.Count > 0)
-                            overwrite = MessageService.AskQuestion(string.Format(Properties.Resources.PromptOverwriteOnTargetConnection, existing.Count));
-
-                        var wb = Workbench.Instance;
-                        var dlg = new ProgressDialog();
-                        var worker = new ProgressDialog.DoBackgroundWork((w, evt, args) =>
-                        {
-                            LengthyOperationProgressCallBack cb = (s, cbe) =>
-                            {
-                                w.ReportProgress(cbe.Progress, cbe.StatusMessage);
-                            };
-
-                            return migrator.CopyResources(sourceIds.ToArray(), targets.ToArray(), overwrite, new RebaseOptions(rootSourceParent, folderId), cb);
-                        });
-
-                        dlg.RunOperationAsync(wb, worker);
-                        RefreshModel(targetConn.DisplayName, folderId);
-                        ExpandNode(targetConn.DisplayName, folderId);
+                        CopyResourcesToFolder(data, connectionName, folderId);
                     }
                 }
             }
         }
 
-        private string GetCommonParent(RepositoryHandle[] data)
+        internal string[] CopyResourcesToFolder(RepositoryHandle[] data, string targetConnectionName, string folderId)
+        {
+            string rootSourceParent = GetCommonParent(data);
+
+            //There is an implicit assumption here that all items dropped come from the same connection
+            var sourceConn = data.First().Connection;
+            var targetConn = _connManager.GetConnection(targetConnectionName);
+            var migrator = new ResourceMigrator(sourceConn, targetConn);
+
+            //Collect all source ids
+            var sourceIds = new List<string>();
+            foreach (var resId in data.Select(x => x.ResourceId.ToString()))
+            {
+                if (ResourceIdentifier.IsFolderResource(resId))
+                    sourceIds.AddRange(GetFullResourceList(sourceConn, resId));
+                else
+                    sourceIds.Add(resId);
+
+            }
+
+            /*
+            //If we're dropping to the root, the common parent becomes our 
+            //target root
+            if (folderId == "Library://")
+                folderId = rootSourceParent;
+            */
+            //If common parent is not root, we want the name of the folder to append
+            //to our target
+            if (rootSourceParent != "Library://")
+            {
+                ResourceIdentifier resId = new ResourceIdentifier(rootSourceParent);
+                folderId = folderId + resId.Name + "/";
+            }
+
+            var targets = new List<string>();
+            foreach (var resId in sourceIds)
+            {
+                var dstId = resId.Replace(rootSourceParent, folderId);
+                System.Diagnostics.Trace.TraceInformation("{0} => {1}", resId, dstId);
+                targets.Add(dstId);
+            }
+
+            bool overwrite = true;
+            var existing = new List<string>();
+            foreach (var resId in targets)
+            {
+                if (targetConn.ResourceService.ResourceExists(resId))
+                {
+                    existing.Add(resId);
+                }
+            }
+            if (existing.Count > 0)
+                overwrite = MessageService.AskQuestion(string.Format(Properties.Resources.PromptOverwriteOnTargetConnection, existing.Count));
+
+            var wb = Workbench.Instance;
+            var dlg = new ProgressDialog();
+            var worker = new ProgressDialog.DoBackgroundWork((w, evt, args) =>
+            {
+                LengthyOperationProgressCallBack cb = (s, cbe) =>
+                {
+                    w.ReportProgress(cbe.Progress, cbe.StatusMessage);
+                };
+
+                return migrator.CopyResources(sourceIds.ToArray(), targets.ToArray(), overwrite, new RebaseOptions(rootSourceParent, folderId), cb);
+            });
+
+            var result = (string[])dlg.RunOperationAsync(wb, worker);
+            RefreshModel(targetConn.DisplayName, folderId);
+            ExpandNode(targetConn.DisplayName, folderId);
+            return result; 
+        }
+
+        internal static string GetCommonParent(RepositoryHandle[] data)
         {
             if (data.Length > 0)
             {
@@ -534,7 +540,49 @@ namespace Maestro.Base.UI
             }
         }
 
-        private static IEnumerable<string> GetFullResourceList(IServerConnection sourceConn, string resId)
+        internal static string GetCommonParent(RepositoryItem[] data)
+        {
+            if (data.Length > 0)
+            {
+                if (data.Length == 1)
+                {
+                    if (data[0].IsFolder)
+                        return data[0].ToString();
+                    else
+                        return data[0].Parent.ResourceId;
+                }
+                else
+                {
+                    int matches = 0;
+                    string[] parts = data.First().ResourceId.ToString()
+                                         .Substring("Library://".Length)
+                                         .Split('/');
+                    string test = "Library://";
+                    string parent = test;
+                    int partIndex = 0;
+                    //Use first one as a sample to see how far we can go. Keep going until we have
+                    //a parent that doesn't match all of them. The one we recorded before then will
+                    //be the common parent
+                    while (matches == data.Length)
+                    {
+                        parent = test;
+                        partIndex++;
+                        if (partIndex < parts.Length) //Shouldn't happen, but just in case
+                            break;
+
+                        test = test + parts[partIndex];
+                        matches = data.Where(x => x.ResourceId.StartsWith(test)).Count();
+                    }
+                    return parent;
+                }
+            }
+            else
+            {
+                return "Library://";
+            }
+        }
+
+        internal static IEnumerable<string> GetFullResourceList(IServerConnection sourceConn, string resId)
         {
             var list = sourceConn.ResourceService.GetRepositoryResources(resId, -1);
             foreach (var res in list.Children)

@@ -20,11 +20,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using ICSharpCode.Core;
+using Maestro.Editors;
 using Maestro.Base.Services;
 using Maestro.Base.UI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.Shared.UI;
+using Wintellect.PowerCollections;
 
 namespace Maestro.Base.Commands
 {
@@ -60,9 +63,10 @@ namespace Maestro.Base.Commands
             Dictionary<string, string> folders = new Dictionary<string, string>();
             var notPasted = new List<RepositoryItem>();
 
-            foreach (var item in itemsToPaste)
+            //From same connection
+            if (itemsToPaste.First().ConnectionName == targetConnName)
             {
-                if (item.ConnectionName == targetConnName) //From same connection
+                foreach (var item in itemsToPaste)
                 {
                     LoggingService.InfoFormatted(Properties.Resources.ClipboardAction, item.ClipboardState, item.ResourceId, folder.ResourceId);
 
@@ -121,11 +125,25 @@ namespace Maestro.Base.Commands
                             folders[item.Parent.ResourceId] = item.Parent.ResourceId;
                     }
                 }
-                else
+            }
+            else
+            {
+                var copied = ((UI.SiteExplorer)exp).CopyResourcesToFolder(
+                    itemsToPaste.Select(x => new RepositoryHandle(new ResourceIdentifier(x.ResourceId), connMgr.GetConnection(x.ConnectionName))).ToArray(),
+                    targetConnName,
+                    folder.ResourceId);
+
+                //Delete any originating items that were successfully cut/pasted
+                foreach (var item in itemsToPaste)
                 {
-                    //TODO: Revisit later
-                    MessageService.ShowError("Copy/Pasting between connections is currently not implemented");
-                    return;
+                    if (item.ClipboardState == RepositoryItem.ClipboardAction.Cut)
+                    {
+                        var origConn = connMgr.GetConnection(item.ConnectionName);
+                        if (origConn.ResourceService.ResourceExists(item.ResourceId))
+                        {
+                            origConn.ResourceService.DeleteResource(item.ResourceId);
+                        }
+                    }
                 }
             }
             if (sourceItemsNotMoved.Count > 0)
