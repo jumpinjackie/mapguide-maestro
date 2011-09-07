@@ -327,7 +327,16 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 				if (m_item.Stroke != null)
 				{
 					sizeUnitsCombo.SelectedValue = m_item.Stroke.Unit.ToString();
-                    //sizeContextCombo.SelectedValue = m_item.Stroke.SizeContext.ToString();
+                    var s2 = m_item.Stroke as IStroke2;
+                    if (s2 != null)
+                    {
+                        sizeContextCombo.Enabled = true;
+                        sizeContextCombo.SelectedValue = s2.SizeContext.ToString();
+                    }
+                    else
+                    {
+                        sizeContextCombo.Enabled = false;
+                    }
                     if (!string.IsNullOrEmpty(m_item.Stroke.Color))
                         lineStyleEditor.colorCombo.CurrentColor = Utility.ParseHTMLColor(m_item.Stroke.Color);
 					lineStyleEditor.fillCombo.SelectedIndex = lineStyleEditor.fillCombo.FindString(m_item.Stroke.LineStyle);
@@ -514,10 +523,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         private void sizeContextCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (m_inUpdate || m_item.Stroke == null)
+            var s2 = m_item.Stroke as IStroke2;
+            if (m_inUpdate || s2 == null)
                 return;
 
-            //m_item.Stroke.SizeContext = (SizeContextType)Enum.Parse(typeof(SizeContextType), (string)sizeContextCombo.SelectedValue);
+            if (s2 != null)
+                s2.SizeContext = (SizeContextType)Enum.Parse(typeof(SizeContextType), (string)sizeContextCombo.SelectedValue);
         }
 
         private void sizeUnitsCombo_SelectedIndexChanged(object sender, EventArgs e)
