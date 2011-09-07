@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Local;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -18,3 +20,5 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("1a33e84e-0180-4b3f-bae5-51b1a62f6bd1")]
+
+[assembly: MaestroApiProvider("Maestro.Local", "Maestro connection wrapper for mg-desktop library", typeof(LocalConnection), true)]

@@ -49,7 +49,7 @@ namespace MgCooker
             this.label10 = new System.Windows.Forms.Label();
             this.txtLowerX = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpDifferentConnection = new System.Windows.Forms.GroupBox();
             this.UseNativeAPI = new System.Windows.Forms.CheckBox();
             this.Password = new System.Windows.Forms.TextBox();
             this.Username = new System.Windows.Forms.TextBox();
@@ -73,10 +73,11 @@ namespace MgCooker
             this.MaxColLimit = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.chkUseDifferentConnection = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.BoundsOverride.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grpDifferentConnection.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ThreadCount)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -142,7 +143,7 @@ namespace MgCooker
             // panel2
             // 
             this.panel2.Controls.Add(this.BoundsOverride);
-            this.panel2.Controls.Add(this.groupBox1);
+            this.panel2.Controls.Add(this.grpDifferentConnection);
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.groupBox2);
             resources.ApplyResources(this.panel2, "panel2");
@@ -224,18 +225,19 @@ namespace MgCooker
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
             // 
-            // groupBox1
+            // grpDifferentConnection
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.UseNativeAPI);
-            this.groupBox1.Controls.Add(this.Password);
-            this.groupBox1.Controls.Add(this.Username);
-            this.groupBox1.Controls.Add(this.MapAgent);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            resources.ApplyResources(this.grpDifferentConnection, "grpDifferentConnection");
+            this.grpDifferentConnection.Controls.Add(this.chkUseDifferentConnection);
+            this.grpDifferentConnection.Controls.Add(this.UseNativeAPI);
+            this.grpDifferentConnection.Controls.Add(this.Password);
+            this.grpDifferentConnection.Controls.Add(this.Username);
+            this.grpDifferentConnection.Controls.Add(this.MapAgent);
+            this.grpDifferentConnection.Controls.Add(this.label3);
+            this.grpDifferentConnection.Controls.Add(this.label2);
+            this.grpDifferentConnection.Controls.Add(this.label1);
+            this.grpDifferentConnection.Name = "grpDifferentConnection";
+            this.grpDifferentConnection.TabStop = false;
             // 
             // UseNativeAPI
             // 
@@ -413,10 +415,16 @@ namespace MgCooker
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
+            // chkUseDifferentConnection
+            // 
+            resources.ApplyResources(this.chkUseDifferentConnection, "chkUseDifferentConnection");
+            this.chkUseDifferentConnection.Name = "chkUseDifferentConnection";
+            this.chkUseDifferentConnection.UseVisualStyleBackColor = true;
+            // 
             // SetupRun
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.MapTree);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -425,8 +433,8 @@ namespace MgCooker
             this.panel2.ResumeLayout(false);
             this.BoundsOverride.ResumeLayout(false);
             this.BoundsOverride.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpDifferentConnection.ResumeLayout(false);
+            this.grpDifferentConnection.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ThreadCount)).EndInit();
@@ -453,7 +461,7 @@ namespace MgCooker
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpDifferentConnection;
         private System.Windows.Forms.CheckBox UseNativeAPI;
         private System.Windows.Forms.TextBox Password;
         private System.Windows.Forms.TextBox Username;
@@ -488,5 +496,6 @@ namespace MgCooker
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button ResetBounds;
         private System.Windows.Forms.Label ModfiedOverrideWarning;
+        private System.Windows.Forms.CheckBox chkUseDifferentConnection;
     }
 }

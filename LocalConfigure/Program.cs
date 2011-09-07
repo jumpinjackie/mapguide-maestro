@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Text;
 using ICSharpCode.Core;
 using System.IO;
+using System.Xml;
 
 namespace LocalConfigure
 {
@@ -30,9 +31,10 @@ namespace LocalConfigure
         static void Main(string[] args)
         {
             var path = Path.Combine(FileUtility.ApplicationRootPath, "Platform.ini");
+            var providersPath = Path.Combine(FileUtility.ApplicationRootPath, "ConnectionProviders.xml");
+            var addInPath = Path.Combine(FileUtility.ApplicationRootPath, "AddIns\\Local");
             if (!File.Exists(path))
             {
-                var addInPath = Path.Combine(FileUtility.ApplicationRootPath, "AddIns\\Local");
                 var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
                 StringBuilder sb = new StringBuilder(Properties.Resources.Platform);
@@ -46,6 +48,27 @@ namespace LocalConfigure
             else
             {
                 Console.WriteLine("Platform.ini already exists. Nothing to do");
+            }
+
+            if (File.Exists(providersPath))
+            {
+                var doc = new XmlDocument();
+                doc.Load(providersPath);
+                var nodes = doc.GetElementsByTagName("Name");
+                foreach (XmlNode n in nodes)
+                {
+                    if (n.InnerText == "Maestro.Local")
+                    {
+                        Console.WriteLine("ConnectionProviders.xml already has Maestro.Local registered. Nothing to do");
+                        return;
+                    }
+                }
+
+                var root = doc.DocumentElement;
+                root.InnerXml += Properties.Resources.ProviderEntry.Replace("%ADDINDIR%", addInPath);
+
+                doc.Save(providersPath);
+                Console.WriteLine("Maestro.Local registered in ConnectionProviders.xml");
             }
         }
     }

@@ -55,13 +55,19 @@ namespace MgCooker
             : this()
         {
             m_connection = connection;
+
+            grpDifferentConnection.Enabled = chkUseDifferentConnection.Enabled = !m_connection.ProviderName.ToUpper().Equals("MAESTRO.LOCAL");
             m_commandlineargs = args;
             m_coordinateOverrides = new Dictionary<string, IEnvelope>();
 
             //HttpServerConnection hc = connection as HttpServerConnection;
-            var url = connection.GetCustomProperty("BaseUrl");
-            if (url != null)
-                MapAgent.Text = url.ToString();
+            try
+            {
+                var url = connection.GetCustomProperty("BaseUrl");
+                if (url != null)
+                    MapAgent.Text = url.ToString();
+            }
+            catch { }
 
             if (m_commandlineargs.ContainsKey("mapdefinitions"))
                 m_commandlineargs.Remove("mapdefinitions");
@@ -167,55 +173,56 @@ namespace MgCooker
 
         private void button1_Click(object sender, EventArgs e)
         {
-            IServerConnection con = null;
-
-            if (UseNativeAPI.Checked)
+            IServerConnection con = m_connection;
+            if (chkUseDifferentConnection.Checked)
             {
-                string webconfig = System.IO.Path.Combine(Application.StartupPath, "webconfig.ini");
-                if (!System.IO.File.Exists(webconfig))
+                if (UseNativeAPI.Checked)
                 {
-                    MessageBox.Show(this, string.Format(Properties.Resources.MissingWebConfigFile, webconfig), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    string webconfig = System.IO.Path.Combine(Application.StartupPath, "webconfig.ini");
+                    if (!System.IO.File.Exists(webconfig))
+                    {
+                        MessageBox.Show(this, string.Format(Properties.Resources.MissingWebConfigFile, webconfig), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    try
+                    {
+                        var initP = new NameValueCollection();
+
+                        initP["ConfigFile"] = webconfig;
+                        initP["Username"] = Username.Text;
+                        initP["Password"] = Password.Text;
+
+                        con = ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", initP);
+                    }
+                    catch (Exception ex)
+                    {
+                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                        MessageBox.Show(this, string.Format(Properties.Resources.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
-
-                try
+                else
                 {
-                    var initP = new NameValueCollection();
+                    try
+                    {
+                        var initP = new NameValueCollection();
 
-                    initP["ConfigFile"] = webconfig;
-                    initP["Username"] = Username.Text;
-                    initP["Password"] = Password.Text;
+                        initP["Url"] = MapAgent.Text;
+                        initP["Username"] = Username.Text;
+                        initP["Password"] = Password.Text;
+                        initP["AllowUntestedVersion"] = "true";
 
-                    con = ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", initP);
-                }
-                catch (Exception ex)
-                {
-                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    MessageBox.Show(this, string.Format(Properties.Resources.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                        con = ConnectionProviderRegistry.CreateConnection("Maestro.Http", initP);
+                    }
+                    catch (Exception ex)
+                    {
+                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                        MessageBox.Show(this, string.Format(Properties.Resources.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
-            else
-            {
-                try
-                {
-                    var initP = new NameValueCollection();
-
-                    initP["Url"] = MapAgent.Text;
-                    initP["Username"] = Username.Text;
-                    initP["Password"] = Password.Text;
-                    initP["AllowUntestedVersion"] = "true";
-
-                    con = ConnectionProviderRegistry.CreateConnection("Maestro.Http", initP);
-                }
-                catch (Exception ex)
-                {
-                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    MessageBox.Show(this, string.Format(Properties.Resources.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-
             try
             {
                 BatchSettings bx = new BatchSettings(con);

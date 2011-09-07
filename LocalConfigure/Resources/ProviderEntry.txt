@@ -1,0 +1,6 @@
+<ConnectionProvider>
+    <Name>Maestro.Local</Name>
+    <Description>Connection that wraps the mg-desktop library</Description>
+    <Assembly>%ADDINDIR%\OSGeo.MapGuide.MaestroAPI.Local.dll</Assembly>
+    <Type>OSGeo.MapGuide.MaestroAPI.Local.LocalConnection</Type>
+</ConnectionProvider>

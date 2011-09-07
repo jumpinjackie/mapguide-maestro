@@ -81,5 +81,19 @@ namespace LocalConfigure.Properties {
                 return ResourceManager.GetString("Platform", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ConnectionProvider&gt;
+        ///    &lt;Name&gt;Maestro.Local&lt;/Name&gt;
+        ///    &lt;Description&gt;Connection that wraps the mg-desktop library&lt;/Description&gt;
+        ///    &lt;Assembly&gt;%ADDINDIR%\OSGeo.MapGuide.MaestroAPI.Local.dll&lt;/Assembly&gt;
+        ///    &lt;Type&gt;OSGeo.MapGuide.MaestroAPI.Local.LocalConnection&lt;/Type&gt;
+        ///&lt;/ConnectionProvider&gt;.
+        /// </summary>
+        internal static string ProviderEntry {
+            get {
+                return ResourceManager.GetString("ProviderEntry", resourceCulture);
+            }
+        }
     }
 }

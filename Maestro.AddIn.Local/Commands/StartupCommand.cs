@@ -36,10 +36,6 @@ namespace Maestro.AddIn.Local.Commands
         {
             if (!Platform.IsRunningOnMono)
             {
-                ConnectionProviderRegistry.RegisterProvider(
-                    LocalConnection.ProviderInfo,
-                    LocalConnection.Create);
-
                 ResourcePreviewerFactory.RegisterPreviewer(LocalConnection.PROVIDER_NAME, new LocalPreviewer());
 
                 System.Windows.Forms.Application.ApplicationExit += new EventHandler(OnAppExit);
