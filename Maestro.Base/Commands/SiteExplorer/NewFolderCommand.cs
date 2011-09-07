@@ -65,8 +65,8 @@ namespace Maestro.Base.Commands.SiteExplorer
                         item.Model.RaiseStructureChanged(new Aga.Controls.Tree.TreeModelEventArgs(path, new object[0]));
 
                         //Expand so user can see this new folder
-                        exp.ExpandNode(item.ResourceId);
-                        exp.SelectNode(item.ResourceId + name + "/");
+                        exp.ExpandNode(conn.DisplayName, item.ResourceId);
+                        exp.SelectNode(conn.DisplayName, item.ResourceId + name + "/");
                     }
                 }
             }

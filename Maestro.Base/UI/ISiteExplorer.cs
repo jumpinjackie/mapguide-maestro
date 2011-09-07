@@ -104,37 +104,3 @@ namespace Maestro.Base.UI
         None
     }
 }
-
-//This is a compatibility shim. Most existing consumers of these APIs operate based on the active connection anyway
-
-namespace Maestro.Base
-{
-    using UI;
-
-    internal static class SiteExplorerShims
-    {
-        public static void RefreshModel(this ISiteExplorer explorer)
-        {
-            Check.NotNull(explorer, "explorer");
-            explorer.RefreshModel(explorer.ConnectionName);
-        }
-
-        public static void ExpandNode(this ISiteExplorer explorer, string resId)
-        {
-            Check.NotNull(explorer, "explorer");
-            explorer.ExpandNode(explorer.ConnectionName, resId);
-        }
-
-        public static void FlagNode(this ISiteExplorer explorer, string resId, NodeFlagAction action)
-        {
-            Check.NotNull(explorer, "explorer");
-            explorer.FlagNode(explorer.ConnectionName, resId, action);
-        }
-
-        public static void SelectNode(this ISiteExplorer explorer, string resId)
-        {
-            Check.NotNull(explorer, "explorer");
-            explorer.SelectNode(explorer.ConnectionName, resId);
-        }
-    }
-}

@@ -48,7 +48,7 @@ namespace Maestro.Base.Commands
 
                     if (res == System.Windows.Forms.DialogResult.OK)
                     {
-                        exp.RefreshModel();
+                        exp.RefreshModel(conn.DisplayName);
                     }
                 }
             }

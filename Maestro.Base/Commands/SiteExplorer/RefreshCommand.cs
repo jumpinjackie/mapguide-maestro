@@ -32,7 +32,7 @@ namespace Maestro.Base.Commands.SiteExplorer
             var exp = wb.ActiveSiteExplorer;
             if (exp != null)
             {
-                exp.RefreshModel();
+                exp.RefreshModel(exp.ConnectionName);
             }
         }
     }

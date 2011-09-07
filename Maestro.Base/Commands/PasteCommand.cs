@@ -145,6 +145,9 @@ namespace Maestro.Base.Commands
                         }
                     }
                 }
+                var refreshFolder = UI.SiteExplorer.GetCommonParent(itemsToPaste);
+                exp.RefreshModel(itemsToPaste.First().ConnectionName, refreshFolder);
+                exp.ExpandNode(itemsToPaste.First().ConnectionName, refreshFolder);
             }
             if (sourceItemsNotMoved.Count > 0)
                 MessageService.ShowMessage(string.Format(Properties.Resources.ItemsNotMovedDueToBeingOpen, Environment.NewLine + string.Join(Environment.NewLine, sourceItemsNotMoved.ToArray())));

@@ -58,7 +58,7 @@ namespace Maestro.Base.Services.DragDropHandlers
 
                 if (res == System.Windows.Forms.DialogResult.OK)
                 {
-                    exp.RefreshModel();
+                    exp.RefreshModel(conn.DisplayName);
                 }
                 return false; //Already refreshed if successful
             }
