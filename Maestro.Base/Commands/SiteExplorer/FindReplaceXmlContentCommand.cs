@@ -51,11 +51,11 @@ namespace Maestro.Base.Commands.SiteExplorer
                         //To maintain resource integrity, we don't modify any open resources. So we
                         //ask if they want to close down first. If they say no, omit this resource from
                         //the find/replace
-                        if (omgr.IsOpen(item.ResourceId))
+                        if (omgr.IsOpen(item.ResourceId, conn))
                         {
                             omgr.CloseEditors(conn, item.ResourceId, false);
                             //Still open. Must've said no
-                            if (omgr.IsOpen(item.ResourceId))
+                            if (omgr.IsOpen(item.ResourceId, conn))
                             {
                                 LoggingService.Info(string.Format(Properties.Resources.SkippingResource, item.ResourceId));
                                 continue;

@@ -125,12 +125,12 @@ namespace Maestro.Base.Services
             }
         }
 
-        private static string ComputeResourceKey(string resId, IServerConnection conn)
+        public static string ComputeResourceKey(string resId, IServerConnection conn)
         {
             return conn.DisplayName + "|" + resId;
         }
 
-        private static string ComputeResourceKey(IResource res, IServerConnection conn)
+        public static string ComputeResourceKey(IResource res, IServerConnection conn)
         {
             return conn.DisplayName + "|" + res.ResourceID;
         }
@@ -247,14 +247,14 @@ namespace Maestro.Base.Services
             return ed;
         }
 
-        internal bool IsOpen(string resourceId)
+        internal bool IsOpen(string resourceId, IServerConnection conn)
         {
-            return _openItems.ContainsKey(resourceId);
+            return _openItems.ContainsKey(ComputeResourceKey(resourceId, conn));
         }
 
-        internal IEditorViewContent GetOpenEditor(string resourceId)
+        internal IEditorViewContent GetOpenEditor(string resourceId, IServerConnection conn)
         {
-            return _openItems[resourceId];
+            return _openItems[ComputeResourceKey(resourceId, conn)];
         }
     }
 }

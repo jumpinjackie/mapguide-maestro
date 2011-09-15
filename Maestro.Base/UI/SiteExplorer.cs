@@ -664,13 +664,13 @@ namespace Maestro.Base.UI
                     {
                         var rid = new ResourceIdentifier(r);
                         var target = folderId + rid.Name + "." + rid.Extension;
-                        if (omgr.IsOpen(r))
+                        if (omgr.IsOpen(r, conn))
                         {
                             notMovedFromSource.Add(r);
                             continue;
                         }
 
-                        if (!omgr.IsOpen(target))
+                        if (!omgr.IsOpen(target, conn))
                             conn.ResourceService.MoveResourceWithReferences(r, target, null, cb);
                         else
                             notMovedToTarget.Add(r);

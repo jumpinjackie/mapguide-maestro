@@ -109,7 +109,7 @@ namespace Maestro.Base.Commands
                     {
                         if (!item.IsFolder)
                         {
-                            if (omgr.IsOpen(item.ResourceId))
+                            if (omgr.IsOpen(item.ResourceId, conn))
                             {
                                 sourceItemsNotMoved.Add(item.ResourceId);
                                 continue;
@@ -152,11 +152,11 @@ namespace Maestro.Base.Commands
             if (sourceItemsNotMoved.Count > 0)
                 MessageService.ShowMessage(string.Format(Properties.Resources.ItemsNotMovedDueToBeingOpen, Environment.NewLine + string.Join(Environment.NewLine, sourceItemsNotMoved.ToArray())));
 
-            ResetItems(omgr, itemsToPaste);
-            exp.RefreshModel(folder.ResourceId);
+            ResetItems(omgr, itemsToPaste, connMgr);
+            exp.RefreshModel(conn.DisplayName, folder.ResourceId);
             foreach (var f in folders.Keys)
             {
-                exp.RefreshModel(f);
+                exp.RefreshModel(conn.DisplayName, f);
             }
         }
 

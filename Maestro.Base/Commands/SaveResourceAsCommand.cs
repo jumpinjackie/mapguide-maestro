@@ -49,7 +49,7 @@ namespace Maestro.Base.Commands
 
                     if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        if (omgr.IsOpen(picker.ResourceID))
+                        if (omgr.IsOpen(picker.ResourceID, conn))
                         {
                             MessageService.ShowMessage(string.Format(Properties.Resources.CannotSaveToResourceAlreadyOpened, picker.ResourceID));
                             return;
@@ -65,7 +65,7 @@ namespace Maestro.Base.Commands
                             try
                             {
                                 var rid = new ResourceIdentifier(picker.ResourceID);
-                                exp.RefreshModel(rid.ParentFolder);
+                                exp.RefreshModel(conn.DisplayName, rid.ParentFolder);
                             }
                             catch (NullReferenceException)
                             {

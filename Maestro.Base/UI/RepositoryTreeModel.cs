@@ -429,10 +429,11 @@ namespace Maestro.Base.UI
         /// <param name="item"></param>
         private void ApplyCurrentItemState(RepositoryItem item)
         {
-            if (_openResMgr.IsOpen(item.ResourceId))
+            var conn = _connManager.GetConnection(item.ConnectionName);
+            if (_openResMgr.IsOpen(item.ResourceId, conn))
             {
                 item.IsOpen = true;
-                var ed = _openResMgr.GetOpenEditor(item.ResourceId);
+                var ed = _openResMgr.GetOpenEditor(item.ResourceId, conn);
                 if (ed.IsDirty)
                     item.IsDirty = true;
             }

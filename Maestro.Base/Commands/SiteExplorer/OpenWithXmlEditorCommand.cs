@@ -45,9 +45,9 @@ namespace Maestro.Base.Commands.SiteExplorer
                 var item = items[0];
                 if (!item.IsFolder)
                 {
-                    if (openMgr.IsOpen(item.ResourceId))
+                    if (openMgr.IsOpen(item.ResourceId, _conn))
                     {
-                        var ed = openMgr.GetOpenEditor(item.ResourceId);
+                        var ed = openMgr.GetOpenEditor(item.ResourceId, _conn);
                         if (!(ed is XmlEditor))
                         {
                             MessageService.ShowMessage(Properties.Resources.ResourceAlreadyOpened);

@@ -34,8 +34,9 @@ namespace Maestro.Base.Commands
             var exp = wb.ActiveSiteExplorer;
             var clip = ServiceRegistry.GetService<ClipboardService>();
             var omgr = ServiceRegistry.GetService<OpenResourceManager>();
+            var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
 
-            ResetClipboardedItems(clip, omgr);
+            ResetClipboardedItems(clip, omgr, connMgr);
 
             if (exp.SelectedItems.Length > 0)
             {
@@ -50,7 +51,7 @@ namespace Maestro.Base.Commands
             }
         }
 
-        private new static void ResetClipboardedItems(ClipboardService clip, OpenResourceManager omgr)
+        private new static void ResetClipboardedItems(ClipboardService clip, OpenResourceManager omgr, ServerConnectionManager connMgr)
         {
             //Reset state of clipboarded items
             if (clip.HasContent())
@@ -60,11 +61,12 @@ namespace Maestro.Base.Commands
                 var rs = o as RepositoryItem[];
                 if (r != null)
                 {
+                    var conn = connMgr.GetConnection(r.ConnectionName);
                     r.Reset();
-                    if (omgr.IsOpen(r.ResourceId))
+                    if (omgr.IsOpen(r.ResourceId, conn))
                     {
                         r.IsOpen = true;
-                        var ed = omgr.GetOpenEditor(r.ResourceId);
+                        var ed = omgr.GetOpenEditor(r.ResourceId, conn);
                         if (ed.IsDirty)
                             r.IsDirty = true;
                     }
@@ -73,11 +75,12 @@ namespace Maestro.Base.Commands
                 {
                     foreach (var ri in rs)
                     {
+                        var conn = connMgr.GetConnection(r.ConnectionName);
                         ri.Reset();
-                        if (omgr.IsOpen(ri.ResourceId))
+                        if (omgr.IsOpen(ri.ResourceId, conn))
                         {
                             ri.IsOpen = true;
-                            var ed = omgr.GetOpenEditor(ri.ResourceId);
+                            var ed = omgr.GetOpenEditor(ri.ResourceId, conn);
                             if (ed.IsDirty)
                                 ri.IsDirty = true;
                         }

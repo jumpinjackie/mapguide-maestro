@@ -62,9 +62,9 @@ namespace Maestro.Base.Commands.SiteExplorer
                         {
                             var parent = exp.SelectedItems[0].Parent;
                             if (parent != null)
-                                exp.RefreshModel(parent.ResourceId);
+                                exp.RefreshModel(source.DisplayName, parent.ResourceId);
                             else
-                                exp.RefreshModel("Library://");
+                                exp.RefreshModel(source.DisplayName, "Library://");
                         }
                     }
                 }

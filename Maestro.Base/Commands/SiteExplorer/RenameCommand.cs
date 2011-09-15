@@ -50,7 +50,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                     }
                 }
 
-                if (!current.IsFolder && omgr.IsOpen(current.ResourceId))
+                if (!current.IsFolder && omgr.IsOpen(current.ResourceId, conn))
                 {
                     MessageService.ShowMessage(Properties.Resources.CannotRenameAlreadyOpenedResource);
                     return;
@@ -72,7 +72,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                         newid = parent.ResourceId + dlg.NewName + "." + current.ResourceType;
                     }
 
-                    if (omgr.IsOpen(newid))
+                    if (omgr.IsOpen(newid, conn))
                     {
                         MessageService.ShowMessage(string.Format(Properties.Resources.CannotRenameToResourceAlreadyOpened, newid));
                         return;
@@ -120,7 +120,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                     //Need to refresh the model because it still is called by the old name
                     var rid = new OSGeo.MapGuide.MaestroAPI.Resource.ResourceIdentifier(oldid);
                     var folder = rid.ParentFolder;
-                    exp.RefreshModel(folder);
+                    exp.RefreshModel(conn.DisplayName, folder);
                 }
             }
         }

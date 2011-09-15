@@ -23,6 +23,7 @@ using System.Text;
 using ICSharpCode.Core;
 using Maestro.Base.Services;
 using Maestro.Base.UI;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Base.Commands
 {
@@ -34,8 +35,9 @@ namespace Maestro.Base.Commands
             var exp = wb.ActiveSiteExplorer;
             var clip = ServiceRegistry.GetService<ClipboardService>();
             var omgr = ServiceRegistry.GetService<OpenResourceManager>();
+            var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
 
-            ResetClipboardedItems(clip, omgr);
+            ResetClipboardedItems(clip, omgr, connMgr);
 
             if (exp.SelectedItems.Length > 0)
             {
@@ -53,7 +55,7 @@ namespace Maestro.Base.Commands
 
     internal abstract class ClipboardCommand : AbstractMenuCommand
     {
-        protected static void ResetClipboardedItems(ClipboardService clip, OpenResourceManager omgr)
+        protected static void ResetClipboardedItems(ClipboardService clip, OpenResourceManager omgr, ServerConnectionManager connMgr)
         {
             //Reset state of clipboarded items
             if (clip.HasContent())
@@ -63,30 +65,32 @@ namespace Maestro.Base.Commands
                 var rs = o as RepositoryItem[];
                 if (r != null)
                 {
-                    ResetItem(omgr, r);
+                    var conn = connMgr.GetConnection(r.ConnectionName);
+                    ResetItem(omgr, r, conn);
                 }
                 else if (rs != null)
                 {
-                    ResetItems(omgr, rs);
+                    ResetItems(omgr, rs, connMgr);
                 }
             }
         }
 
-        protected static void ResetItems(OpenResourceManager omgr, IEnumerable<RepositoryItem> rs)
+        protected static void ResetItems(OpenResourceManager omgr, IEnumerable<RepositoryItem> rs, ServerConnectionManager connMgr)
         {
             foreach (var ri in rs)
             {
-                ResetItem(omgr, ri);
+                var conn = connMgr.GetConnection(ri.ConnectionName);
+                ResetItem(omgr, ri, conn);
             }
         }
 
-        protected static void ResetItem(OpenResourceManager omgr, RepositoryItem ri)
+        protected static void ResetItem(OpenResourceManager omgr, RepositoryItem ri, IServerConnection conn)
         {
             ri.Reset();
-            if (omgr.IsOpen(ri.ResourceId))
+            if (omgr.IsOpen(ri.ResourceId, conn))
             {
                 ri.IsOpen = true;
-                var ed = omgr.GetOpenEditor(ri.ResourceId);
+                var ed = omgr.GetOpenEditor(ri.ResourceId, conn);
                 if (ed.IsDirty)
                     ri.IsDirty = true;
             }

@@ -45,9 +45,9 @@ namespace Maestro.Base.Commands.SiteExplorer
                 {
                     if (!item.IsFolder)
                     {
-                        if (openMgr.IsOpen(item.ResourceId))
+                        if (openMgr.IsOpen(item.ResourceId, _conn))
                         {
-                            openMgr.GetOpenEditor(item.ResourceId).Activate();
+                            openMgr.GetOpenEditor(item.ResourceId, _conn).Activate();
                         }
                         else
                         {

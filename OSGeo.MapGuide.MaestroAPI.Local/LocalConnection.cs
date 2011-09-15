@@ -50,8 +50,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         static bool _init = false;
 
+        private MgServiceFactory _fact;
+
         protected LocalConnection(NameValueCollection initParams) : base()
         {
+            _fact = new MgServiceFactory();
             _sessionId = Guid.NewGuid().ToString();
             _configFile = initParams[PARAM_CONFIG];
 
@@ -152,7 +155,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         private MgResourceService GetResourceService()
         {
             if (_resSvc == null)
-                _resSvc = MgServiceFactory.CreateResourceService();
+                _resSvc = (MgResourceService)_fact.CreateService(MgServiceType.ResourceService);
 
             return _resSvc;
         }
@@ -160,7 +163,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         private MgFeatureService GetFeatureService()
         {
             if (_featSvc == null)
-                _featSvc = MgServiceFactory.CreateFeatureService();
+                _featSvc = (MgFeatureService)_fact.CreateService(MgServiceType.FeatureService);
 
             return _featSvc;
         }
@@ -168,7 +171,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         private MgDrawingService GetDrawingService()
         {
             if (_drawSvc == null)
-                _drawSvc = MgServiceFactory.CreateDrawingService();
+                _drawSvc = (MgDrawingService)_fact.CreateService(MgServiceType.DrawingService);
 
             return _drawSvc;
         }
@@ -176,7 +179,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         private MgRenderingService GetRenderingService()
         {
             if (_renderSvc == null)
-                _renderSvc = MgServiceFactory.CreateRenderingService();
+                _renderSvc = (MgRenderingService)_fact.CreateService(MgServiceType.RenderingService);
 
             return _renderSvc;
         }
@@ -184,7 +187,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         private MgTileService GetTileService()
         {
             if (_tileSvc == null)
-                _tileSvc = MgServiceFactory.CreateTileService();
+                _tileSvc = (MgTileService)_fact.CreateService(MgServiceType.TileService);
 
             return _tileSvc;
         }

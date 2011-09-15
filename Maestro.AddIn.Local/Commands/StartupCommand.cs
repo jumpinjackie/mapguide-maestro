@@ -50,7 +50,8 @@ namespace Maestro.AddIn.Local.Commands
         {
             try
             {
-                MgdResourceService resSvc = MgServiceFactory.CreateResourceService();
+                var fact = new MgServiceFactory();
+                MgdResourceService resSvc = (MgdResourceService)fact.CreateService(MgServiceType.ResourceService);
                 resSvc.DeleteSessionFiles();
             }
             catch (MgException ex)
