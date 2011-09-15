@@ -25,6 +25,7 @@ using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI;
+using Maestro.Shared.UI;
 
 namespace Maestro.Packaging
 {
@@ -79,7 +80,12 @@ namespace Maestro.Packaging
 
             if (dlg.ShowDialog(owner) == DialogResult.OK)
             {
-                return UploadPackage(owner, con, dlg.FileName);
+                var optDiag = new PackageUploadOptionDialog();
+                optDiag.ShowDialog();
+                if (optDiag.Method == PackageUploadMethod.Transactional)
+                    return UploadPackage(owner, con, dlg.FileName);
+                else
+                    return UploadPackageNonTransactional(owner, con, dlg.FileName);
             }
             else
                 return DialogResult.Cancel;
@@ -119,6 +125,24 @@ namespace Maestro.Packaging
             pkgp.m_invokeArgs = new object[] { packageFile };
             pkgp.m_invokeObj = new PackageBuilder(connection);
             pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("UploadPackage");
+
+            return pkgp.ShowDialog(owner);
+        }
+
+        /// <summary>
+        ///  Uploads a package file to the server in a non-transactional fashion
+        /// </summary>
+        /// <param name="owner">The owner form</param>
+        /// <param name="connection">The connection used to upload the package</param>
+        /// <param name="packageFile">The package file to upload</param>
+        /// <returns>A DialogResult object that indicates the result of the operation</returns>
+        public static DialogResult UploadPackageNonTransactional(Form owner, IServerConnection connection, string packageFile)
+        {
+            PackageProgress pkgp = new PackageProgress();
+            pkgp.Text = Properties.Resources.TitleUploading;
+            pkgp.m_invokeArgs = new object[] { packageFile, new List<PackageOperation>(), new List<PackageOperation>() };
+            pkgp.m_invokeObj = new PackageBuilder(connection);
+            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("UploadPackageNonTransactional");
 
             return pkgp.ShowDialog(owner);
         }
@@ -190,8 +214,8 @@ namespace Maestro.Packaging
             }
         }
 
-        private delegate void SetCurrentProgressDelegate(ProgressType type, string resource, int total, int pg);
-        private void SetCurrentProgress(ProgressType type, string resource, int total, int pg)
+        private delegate void SetCurrentProgressDelegate(ProgressType type, string resource, int total, double pg);
+        private void SetCurrentProgress(ProgressType type, string resource, int total, double pg)
         {
             if (this.InvokeRequired)
                 this.Invoke(new SetCurrentProgressDelegate(SetCurrentProgress), new object[] { type, resource, total, pg });
@@ -209,7 +233,7 @@ namespace Maestro.Packaging
                     this.TotalProgress.Minimum = 0;
 
                     double tick = 100 / BUILD_STAGES.Length;
-                    double lv = (tick * largePg) + (tick * ((double)pg / total));
+                    double lv = (tick * largePg) + (tick * (pg / total));
 
                     this.TotalProgress.Value = (int)Math.Max(Math.Min((int)lv, this.TotalProgress.Maximum), this.TotalProgress.Minimum);
                 }
@@ -246,7 +270,20 @@ namespace Maestro.Packaging
                 {
                     OperationLabel.Text = resource;
                 }
-
+                else if (type == ProgressType.SetResource)
+                {
+                    CurrentProgress.Style = ProgressBarStyle.Continuous;
+                    CurrentProgress.Maximum = 100;
+                    CurrentProgress.Value = Convert.ToInt32(Math.Min(100.0, pg));
+                    OperationLabel.Text = string.Format(Properties.Resources.ProgressSetResource, resource, pg);
+                }
+                else if (type == ProgressType.SetResourceData)
+                {
+                    CurrentProgress.Style = ProgressBarStyle.Continuous;
+                    CurrentProgress.Maximum = 100;
+                    CurrentProgress.Value = Convert.ToInt32(Math.Min(100.0, pg));
+                    OperationLabel.Text = string.Format(Properties.Resources.ProgressSetResourceData, resource, pg);
+                }
             }
         }
 
@@ -292,7 +329,9 @@ namespace Maestro.Packaging
                 return;
             }
             else if (e.Error != null)
-                throw e.Error;
+            {
+                ErrorDialog.Show(e.Error);
+            }
 
             m_invokeResult = e.Result;
             this.DialogResult = DialogResult.OK;

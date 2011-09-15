@@ -24,6 +24,7 @@ using ICSharpCode.Core;
 using Maestro.Base.Services;
 using Maestro.Shared.UI;
 using Maestro.Packaging;
+using System.Windows.Forms;
 
 namespace Maestro.Base.Commands
 {
@@ -41,11 +42,21 @@ namespace Maestro.Base.Commands
                 open.Filter = Properties.Resources.Filter_Mgp_Files;
                 if (open.ShowDialog(wb) == System.Windows.Forms.DialogResult.OK)
                 {
-                    var res = PackageProgress.UploadPackage(
-                        wb,
-                        conn,
-                        open.FileName);
-
+                    var optDiag = new PackageUploadOptionDialog();
+                    optDiag.ShowDialog();
+                    DialogResult res;
+                    if (optDiag.Method == PackageUploadMethod.Transactional)
+                    {
+                        res = PackageProgress.UploadPackage(wb,
+                                                            conn,
+                                                            open.FileName);
+                    }
+                    else
+                    {
+                        res = PackageProgress.UploadPackageNonTransactional(wb,
+                                                                            conn,
+                                                                            open.FileName);
+                    }
                     if (res == System.Windows.Forms.DialogResult.OK)
                     {
                         exp.RefreshModel(conn.DisplayName);

@@ -25,6 +25,7 @@ using ICSharpCode.Core;
 using Maestro.Packaging;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using System.Windows.Forms;
 
 namespace Maestro.Base.Services.DragDropHandlers
 {
@@ -51,11 +52,21 @@ namespace Maestro.Base.Services.DragDropHandlers
 
                 var wb = Workbench.Instance;
                 var exp = wb.ActiveSiteExplorer;
-                var res = PackageProgress.UploadPackage(
-                        wb,
-                        conn,
-                        file);
-
+                var optDiag = new PackageUploadOptionDialog();
+                optDiag.ShowDialog();
+                DialogResult res;
+                if (optDiag.Method == PackageUploadMethod.Transactional)
+                {
+                    res = PackageProgress.UploadPackage(wb,
+                                                        conn,
+                                                        file);
+                }
+                else
+                {
+                    res = PackageProgress.UploadPackageNonTransactional(wb,
+                                                                        conn,
+                                                                        file);
+                }
                 if (res == System.Windows.Forms.DialogResult.OK)
                 {
                     exp.RefreshModel(conn.DisplayName);

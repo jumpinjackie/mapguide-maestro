@@ -85,8 +85,8 @@ namespace Maestro.Packaging
             // 
             // PackageProgress
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.OperationLabel);
             this.Controls.Add(this.label3);

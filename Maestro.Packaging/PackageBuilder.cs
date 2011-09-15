@@ -23,6 +23,11 @@ using System.Text;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using ICSharpCode.SharpZipLib.Zip;
+using System.Xml;
+using System.Collections.Specialized;
+using System.IO;
 
 namespace Maestro.Packaging
 {
@@ -58,7 +63,15 @@ namespace Maestro.Packaging
         /// <summary>
         /// Extracting filenames from package
         /// </summary>
-        ListingFiles
+        ListingFiles,
+        /// <summary>
+        /// Setting resource content
+        /// </summary>
+        SetResource,
+        /// <summary>
+        /// Setting resource data
+        /// </summary>
+        SetResourceData
     }
 
     /// <summary>
@@ -87,7 +100,7 @@ namespace Maestro.Packaging
     /// <param name="maxValue">The max value, meaning that when value equals maxValue, progress is equal to 100%</param>
     /// <param name="value">The current item being progressed</param>
     /// <param name="resourceId">The name of the resource being processed, if any</param>
-    public delegate void ProgressDelegate(ProgressType type, string resourceId, int maxValue, int value);
+    public delegate void ProgressDelegate(ProgressType type, string resourceId, int maxValue, double value);
 
     /// <summary>
     /// A class to create MapGuide data packages
@@ -134,6 +147,172 @@ namespace Maestro.Packaging
 
             if (Progress != null)
                 Progress(ProgressType.Uploading, sourceFile, 100, 100);
+        }
+
+        /// <summary>
+        /// Uploads a package to the server in a non-transactional fashion. Resources which fail to load are added to the specified list of 
+        /// failed resources. The upload is non-transactional in the sense that it can partially fail. Failed operations are logged.
+        /// </summary>
+        /// <param name="sourceFile">The source package file</param>
+        /// <param name="skipResourceIds">The list of resource ids in the package to skip</param>
+        /// <param name="failedResourceIds">The list of resources ids that failed to load</param>
+        public void UploadPackageNonTransactional(string sourceFile, ICollection<PackageOperation> skipResourceIds, ICollection<PackageOperation> failedResourceIds)
+        {
+            Dictionary<PackageOperation, PackageOperation> skipOps = new Dictionary<PackageOperation, PackageOperation>();
+            if (skipResourceIds != null)
+            {
+                foreach (var op in skipResourceIds)
+                {
+                    skipOps[op] = op;
+                }
+            }
+
+            ProgressDelegate progress = this.Progress;
+            if (progress == null)
+                progress = (type, file, a, b) => { };
+
+            double step = 0.0;
+            progress(ProgressType.ListingFiles, sourceFile, 100, step);
+            
+            //Process overview:
+            //
+            // 1. Extract the package to a temp directory
+            // 2. Read the package manifest
+            // 3. For each resource id in the manifest, if it is in the list of resource ids to skip 
+            //    then skip it. Otherwise process the directive that uses this id.
+
+            ZipFile package = new ZipFile(sourceFile);
+            ZipEntry manifestEntry = package.GetEntry("MgResourcePackageManifest.xml");
+            XmlDocument doc = new XmlDocument();
+            using (var s = package.GetInputStream(manifestEntry))
+            {
+                doc.Load(s);
+            }
+            XmlNodeList opNodes = doc.GetElementsByTagName("Operation");
+            double unit = (100.0 / (double)opNodes.Count);
+            foreach (XmlNode opNode in opNodes)
+            {
+                step += unit;
+                string name = opNode["Name"].InnerText.ToUpper();
+
+                PackageOperation op = ParseOperation(opNode);
+                //TODO: A DELETERESOURCE would cause a null operation. Should we bother to support it?
+                if (op == null)
+                    continue;
+
+                //Is a skipped operation?
+                if (skipOps.ContainsKey(op))
+                {
+                    System.Diagnostics.Trace.TraceInformation("Skipping " + op.OperationName + " on " + op.ResourceId);
+                    continue;
+                }
+
+                switch (name)
+                {
+                    case "SETRESOURCE":
+                        {
+                            SetResourcePackageOperation sop = (SetResourcePackageOperation)op;
+                            ZipEntry contentEntry = package.GetEntry(sop.Content);
+                            ZipEntry headerEntry = null;
+
+                            if (!string.IsNullOrEmpty(sop.Header))
+                                headerEntry = package.GetEntry(sop.Header);
+
+                            try
+                            {
+                                using (var s = package.GetInputStream(contentEntry))
+                                {
+                                    m_connection.ResourceService.SetResourceXmlData(op.ResourceId, s);
+                                    progress(ProgressType.SetResource, op.ResourceId, 100, step);
+                                }
+
+                                if (headerEntry != null)
+                                {
+                                    using (var s = package.GetInputStream(headerEntry))
+                                    {
+                                        using (var sr = new StreamReader(s))
+                                        {
+                                            ResourceDocumentHeaderType header = ResourceDocumentHeaderType.Deserialize(sr.ReadToEnd());
+                                            m_connection.ResourceService.SetResourceHeader(op.ResourceId, header);
+                                            progress(ProgressType.SetResource, op.ResourceId, 100, step);
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                //We don't really care about the header. We consider failure if the
+                                //content upload did not succeed
+                                if (!m_connection.ResourceService.ResourceExists(op.ResourceId))
+                                    failedResourceIds.Add(op);
+                            }
+                        }
+                        break;
+                    case "SETRESOURCEDATA":
+                        {
+                            SetResourceDataPackageOperation sop = (SetResourceDataPackageOperation)op;
+                            ZipEntry dataEntry = package.GetEntry(sop.Data);
+
+                            try
+                            {
+                                using (var s = package.GetInputStream(dataEntry))
+                                {
+                                    m_connection.ResourceService.SetResourceData(sop.ResourceId, sop.DataName, sop.DataType, s);
+                                    progress(ProgressType.SetResourceData, sop.ResourceId, 100, step);
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                var resData = m_connection.ResourceService.EnumerateResourceData(sop.ResourceId);
+                                bool found = false;
+
+                                foreach (var data in resData.ResourceData)
+                                {
+                                    if (data.Name == sop.DataName)
+                                    {
+                                        found = true;
+                                        break;
+                                    }
+                                }
+
+                                if (!found)
+                                    failedResourceIds.Add(sop);
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+
+        private static PackageOperation ParseOperation(XmlNode opNode)
+        {
+            PackageOperation op = null;
+            NameValueCollection p = new NameValueCollection();
+            foreach (XmlNode paramNode in opNode["Parameters"].ChildNodes)
+            {
+                p[paramNode["Name"].InnerText] = paramNode["Value"].InnerText;
+            }
+            string resourceId = p["RESOURCEID"];
+            switch (opNode["Name"].InnerText)
+            {
+                case "SETRESOURCE":
+                    {
+                        op = new SetResourcePackageOperation(resourceId, p["CONTENT"], p["HEADER"]);
+                    }
+                    break;
+                case "SETRESOURCEDATA":
+                    {
+                        ResourceDataType rdt;
+                        try
+                        {
+                            rdt = (ResourceDataType)Enum.Parse(typeof(ResourceDataType), p["DATATYPE"], true);
+                        }
+                        catch { rdt = ResourceDataType.File; }
+                        op = new SetResourceDataPackageOperation(resourceId, p["DATA"], p["DATANAME"], rdt);
+                    }
+                    break;
+            }
+            return op;
         }
 
         private void ProgressCallback_Upload(long copied, long remain, long total)
@@ -928,6 +1107,143 @@ namespace Maestro.Packaging
             }
 
             return resourceList;
+        }
+    }
+
+    public abstract class PackageOperation
+    {
+        public string ResourceId { get; set; }
+
+        public string OperationName { get; set; }
+
+        protected PackageOperation(string resId) { this.ResourceId = resId; }
+    }
+
+    public class SetResourcePackageOperation : PackageOperation
+    {
+        public SetResourcePackageOperation(string resId, string content, string header)
+            : base(resId)
+        {
+            this.OperationName = "SETRESOURCE";
+            this.Content = content;
+            this.Header = header;
+        }
+
+        public string Content { get; set; }
+
+        public string Header { get; set; }
+
+        /// <summary>
+        /// Determines whether the specified <see cref="System.Object"/> is equal to this instance.
+        /// </summary>
+        /// <param name="obj">The <see cref="System.Object"/> to compare with this instance.</param>
+        /// <returns>
+        /// 	<c>true</c> if the specified <see cref="System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        /// <exception cref="T:System.NullReferenceException">
+        /// The <paramref name="obj"/> parameter is null.
+        /// </exception>
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            if (!typeof(SetResourcePackageOperation).IsAssignableFrom(obj.GetType()))
+                return false;
+
+            SetResourcePackageOperation vi = (SetResourcePackageOperation)obj;
+            return string.Compare(this.Content, vi.Content) == 0 &&
+                   string.Compare(this.Header, vi.Header) == 0 &&
+                   string.Compare(this.OperationName, vi.OperationName) == 0 &&
+                   string.Compare(this.ResourceId, vi.ResourceId) == 0;
+        }
+
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// </returns>
+        public override int GetHashCode()
+        {
+            //http://stackoverflow.com/questions/263400/what-is-the-best-algorithm-for-an-overridden-systemobjectgethashcode
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + this.Content.GetHashCode();
+                if (this.Header != null)
+                    hash = hash * 23 + this.Header.GetHashCode();
+                hash = hash * 23 + this.OperationName.GetHashCode();
+                hash = hash * 23 + this.ResourceId.GetHashCode();
+
+                return hash;
+            }
+        }
+    }
+
+    public class SetResourceDataPackageOperation : PackageOperation
+    {
+        public SetResourceDataPackageOperation(string resId, string data, string dataName, ResourceDataType dataType)
+            : base(resId)
+        {
+            this.OperationName = "SETRESOURCEDATA";
+            this.Data = data;
+            this.DataName = dataName;
+            this.DataType = dataType;
+        }
+
+        public string Data { get; set; }
+
+        public string DataName { get; set; }
+
+        public ResourceDataType DataType { get; set; }
+
+        /// <summary>
+        /// Determines whether the specified <see cref="System.Object"/> is equal to this instance.
+        /// </summary>
+        /// <param name="obj">The <see cref="System.Object"/> to compare with this instance.</param>
+        /// <returns>
+        /// 	<c>true</c> if the specified <see cref="System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        /// <exception cref="T:System.NullReferenceException">
+        /// The <paramref name="obj"/> parameter is null.
+        /// </exception>
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            if (!typeof(SetResourceDataPackageOperation).IsAssignableFrom(obj.GetType()))
+                return false;
+
+            SetResourceDataPackageOperation vi = (SetResourceDataPackageOperation)obj;
+            return this.Data.Equals(vi.Data) &&
+                   this.DataName.Equals(vi.DataName) &&
+                   this.OperationName.Equals(vi.OperationName) &&
+                   this.ResourceId.Equals(vi.ResourceId) &&
+                   this.DataType == vi.DataType;
+        }
+
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// </returns>
+        public override int GetHashCode()
+        {
+            //http://stackoverflow.com/questions/263400/what-is-the-best-algorithm-for-an-overridden-systemobjectgethashcode
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + this.Data.GetHashCode();
+                hash = hash * 23 + this.DataName.GetHashCode();
+                hash = hash * 23 + this.OperationName.GetHashCode();
+                hash = hash * 23 + this.ResourceId.GetHashCode();
+                hash = hash * 23 + this.DataType.GetHashCode();
+
+                return hash;
+            }
         }
     }
 }
