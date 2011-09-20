@@ -37,10 +37,10 @@
             this.lblMapSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.legend = new MapViewer.MgLegend();
-            this.propertyPane = new MapViewer.MgPropertyPane();
-            this.viewer = new MapViewer.MgMapViewer();
-            this.toolbar = new MapViewer.MgDefaultToolbar();
+            this.legend = new OSGeo.MapGuide.Viewer.MgLegend();
+            this.propertyPane = new OSGeo.MapGuide.Viewer.MgPropertyPane();
+            this.viewer = new OSGeo.MapGuide.Viewer.MgMapViewer();
+            this.toolbar = new OSGeo.MapGuide.Viewer.MgDefaultToolbar();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -146,7 +146,7 @@
             // 
             // viewer
             // 
-            this.viewer.ActiveTool = MapViewer.MapActiveTool.None;
+            this.viewer.ActiveTool = OSGeo.MapGuide.Viewer.MapActiveTool.None;
             this.viewer.Cursor = System.Windows.Forms.Cursors.Default;
             this.viewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewer.FeatureTooltipsEnabled = false;
@@ -214,10 +214,10 @@
         private System.Windows.Forms.ToolStripStatusLabel lblMapSize;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private MapViewer.MgLegend legend;
-        private MapViewer.MgPropertyPane propertyPane;
-        private MapViewer.MgMapViewer viewer;
-        private MapViewer.MgDefaultToolbar toolbar;
+        private OSGeo.MapGuide.Viewer.MgLegend legend;
+        private OSGeo.MapGuide.Viewer.MgPropertyPane propertyPane;
+        private OSGeo.MapGuide.Viewer.MgMapViewer viewer;
+        private OSGeo.MapGuide.Viewer.MgDefaultToolbar toolbar;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

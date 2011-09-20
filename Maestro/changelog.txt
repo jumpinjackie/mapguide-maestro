@@ -1,4 +1,12 @@
-﻿4.0 beta 1
+﻿4.0 beta 2
+----------
+
+ - Support for non-transactional package loading w/ ability to retry failed operations
+ - Style editor support for FDO expressions in color properties 
+ - Fix: assorted issues introduced by the new multi-site support.
+ - Updated mg-desktop binaries for Local Connection mode.
+
+4.0 beta 1
 ----------
 
  - Support for working against multiple connections

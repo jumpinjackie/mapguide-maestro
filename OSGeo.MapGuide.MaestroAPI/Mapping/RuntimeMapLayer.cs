@@ -90,6 +90,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 this.QualifiedClassName = vl.FeatureName;
                 this.GeometryPropertyName = vl.Geometry;
                 this.FeatureSourceID = vl.ResourceId;
+                this.Filter = vl.Filter;
             }
             else if (ldf.SubLayer.LayerType == LayerType.Raster)
             {

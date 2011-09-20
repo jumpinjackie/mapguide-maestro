@@ -30,7 +30,7 @@ using System.Diagnostics;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using MapViewer;
+using OSGeo.MapGuide.Viewer;
 using ICSharpCode.Core;
 
 namespace Maestro.AddIn.Local.UI
