@@ -59,6 +59,13 @@
     <Compile Include="PackageProgress.designer.cs">
       <DependentUpon>PackageProgress.cs</DependentUpon>
     </Compile>
+    <Compile Include="PackageUploadResultDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackageUploadResultDialog.Designer.cs">
+      <DependentUpon>PackageUploadResultDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UploadPackageResult.cs" />
     <Compile Include="PackageUploadOptionDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +84,9 @@
   <ItemGroup>
     <EmbeddedResource Include="PackageProgress.resx">
       <DependentUpon>PackageProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageUploadResultDialog.resx">
+      <DependentUpon>PackageUploadResultDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PackageUploadOptionDialog.resx">
       <DependentUpon>PackageUploadOptionDialog.cs</DependentUpon>

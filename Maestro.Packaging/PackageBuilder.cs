@@ -154,14 +154,13 @@ namespace Maestro.Packaging
         /// failed resources. The upload is non-transactional in the sense that it can partially fail. Failed operations are logged.
         /// </summary>
         /// <param name="sourceFile">The source package file</param>
-        /// <param name="skipResourceIds">The list of resource ids in the package to skip</param>
-        /// <param name="failedResourceIds">The list of resources ids that failed to load</param>
-        public void UploadPackageNonTransactional(string sourceFile, ICollection<PackageOperation> skipResourceIds, ICollection<PackageOperation> failedResourceIds)
+        /// <param name="result">An <see cref="T:Maestro.Packaging.UploadPackageResult"/> object containing an optional list of operations to skip. It will be populated with the list of operations that passed and failed as the process executes</param>
+        public void UploadPackageNonTransactional(string sourceFile, UploadPackageResult result)
         {
             Dictionary<PackageOperation, PackageOperation> skipOps = new Dictionary<PackageOperation, PackageOperation>();
-            if (skipResourceIds != null)
+            if (result.SkipOperations.Count > 0)
             {
-                foreach (var op in skipResourceIds)
+                foreach (var op in result.SkipOperations)
                 {
                     skipOps[op] = op;
                 }
@@ -238,13 +237,15 @@ namespace Maestro.Packaging
                                         }
                                     }
                                 }
+
+                                result.Successful.Add(op);
                             }
                             catch (Exception)
                             {
                                 //We don't really care about the header. We consider failure if the
                                 //content upload did not succeed
                                 if (!m_connection.ResourceService.ResourceExists(op.ResourceId))
-                                    failedResourceIds.Add(op);
+                                    result.Failed.Add(op);
                             }
                         }
                         break;
@@ -260,6 +261,8 @@ namespace Maestro.Packaging
                                     m_connection.ResourceService.SetResourceData(sop.ResourceId, sop.DataName, sop.DataType, s);
                                     progress(ProgressType.SetResourceData, sop.ResourceId, 100, step);
                                 }
+
+                                result.Successful.Add(op);
                             }
                             catch (Exception)
                             {
@@ -276,7 +279,7 @@ namespace Maestro.Packaging
                                 }
 
                                 if (!found)
-                                    failedResourceIds.Add(sop);
+                                    result.Failed.Add(sop);
                             }
                         }
                         break;

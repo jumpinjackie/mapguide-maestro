@@ -53,9 +53,7 @@ namespace Maestro.Base.Commands
                     }
                     else
                     {
-                        res = PackageProgress.UploadPackageNonTransactional(wb,
-                                                                            conn,
-                                                                            open.FileName);
+                        res = PackageProgress.StartNonTransactionalUploadLoop(wb, conn, open.FileName);
                     }
                     if (res == System.Windows.Forms.DialogResult.OK)
                     {

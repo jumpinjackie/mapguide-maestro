@@ -133,6 +133,15 @@
     <value>Failed to locate file MgResourcePackageManifest.xml in zip file. Most likely the file is not a MapGuide package.</value>
     <comment>An error message that is displayed if the package file is invalid</comment>
   </data>
+  <data name="PackageOperationsFailed" xml:space="preserve">
+    <value>{0} Package Operations Failed</value>
+  </data>
+  <data name="PackageOperationsSkipped" xml:space="preserve">
+    <value>{0} Package Operations Skipped</value>
+  </data>
+  <data name="PackageOperationsSucceeded" xml:space="preserve">
+    <value>{0} Package Operations Succeeded</value>
+  </data>
   <data name="ProgressCompressed" xml:space="preserve">
     <value>Compressed</value>
     <comment>A progress message that is displayed when the files are compressed</comment>

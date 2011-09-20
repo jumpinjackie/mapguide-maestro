@@ -83,12 +83,57 @@ namespace Maestro.Packaging
                 var optDiag = new PackageUploadOptionDialog();
                 optDiag.ShowDialog();
                 if (optDiag.Method == PackageUploadMethod.Transactional)
+                {
                     return UploadPackage(owner, con, dlg.FileName);
+                }
                 else
-                    return UploadPackageNonTransactional(owner, con, dlg.FileName);
+                {
+                    return StartNonTransactionalUploadLoop(owner, con, dlg.FileName);
+                }
             }
             else
                 return DialogResult.Cancel;
+        }
+
+        /// <summary>
+        /// Initiates a user-controlled upload loop whereby failed operations from a non-transactional
+        /// package upload can be retried as many times until either all failed operations have been 
+        /// accounted for, or the user has decided to stop
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="conn"></param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public static DialogResult StartNonTransactionalUploadLoop(Form owner, IServerConnection conn, string fileName)
+        {
+            var result = new UploadPackageResult();
+            var res = UploadPackageNonTransactional(owner, conn, fileName, result);
+
+            //We do this until either there are no failures or the user has given up retrying
+            while (result.Failed.Count > 0)
+            {
+                using (var resultDiag = new PackageUploadResultDialog(result))
+                {
+                    if (resultDiag.ShowDialog() == DialogResult.Retry)
+                    {
+                        var success = result.Successful;
+                        var skipped = result.SkipOperations;
+
+                        //Create a new result object and skip any previous ones that were
+                        //either successful or skipped themselves
+                        result = new UploadPackageResult(success);
+                        foreach (var skip in skipped)
+                            result.SkipOperations.Add(skip);
+
+                        res = UploadPackageNonTransactional(owner, conn, fileName, result);
+                    }
+                    else //Not retrying
+                    {
+                        break;
+                    }
+                }
+            }
+            return res;
         }
 
         /// <summary>
@@ -135,12 +180,13 @@ namespace Maestro.Packaging
         /// <param name="owner">The owner form</param>
         /// <param name="connection">The connection used to upload the package</param>
         /// <param name="packageFile">The package file to upload</param>
+        /// <param name="result">An <see cref="T:Maestro.Packaging.UploadPackageResult"/> object containing an optional list of operations to skip. It will be populated with the list of operations that passed and failed as the process executes</param>
         /// <returns>A DialogResult object that indicates the result of the operation</returns>
-        public static DialogResult UploadPackageNonTransactional(Form owner, IServerConnection connection, string packageFile)
+        public static DialogResult UploadPackageNonTransactional(Form owner, IServerConnection connection, string packageFile, UploadPackageResult result)
         {
             PackageProgress pkgp = new PackageProgress();
             pkgp.Text = Properties.Resources.TitleUploading;
-            pkgp.m_invokeArgs = new object[] { packageFile, new List<PackageOperation>(), new List<PackageOperation>() };
+            pkgp.m_invokeArgs = new object[] { packageFile, result };
             pkgp.m_invokeObj = new PackageBuilder(connection);
             pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("UploadPackageNonTransactional");
 

@@ -57,15 +57,11 @@ namespace Maestro.Base.Services.DragDropHandlers
                 DialogResult res;
                 if (optDiag.Method == PackageUploadMethod.Transactional)
                 {
-                    res = PackageProgress.UploadPackage(wb,
-                                                        conn,
-                                                        file);
+                    res = PackageProgress.UploadPackage(wb, conn, file);
                 }
                 else
                 {
-                    res = PackageProgress.UploadPackageNonTransactional(wb,
-                                                                        conn,
-                                                                        file);
+                    res = PackageProgress.StartNonTransactionalUploadLoop(wb, conn, file);
                 }
                 if (res == System.Windows.Forms.DialogResult.OK)
                 {

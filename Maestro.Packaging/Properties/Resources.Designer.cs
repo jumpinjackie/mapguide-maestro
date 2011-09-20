@@ -97,6 +97,33 @@ namespace Maestro.Packaging.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} Package Operations Failed.
+        /// </summary>
+        internal static string PackageOperationsFailed {
+            get {
+                return ResourceManager.GetString("PackageOperationsFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Package Operations Skipped.
+        /// </summary>
+        internal static string PackageOperationsSkipped {
+            get {
+                return ResourceManager.GetString("PackageOperationsSkipped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Package Operations Succeeded.
+        /// </summary>
+        internal static string PackageOperationsSucceeded {
+            get {
+                return ResourceManager.GetString("PackageOperationsSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Compressed.
         /// </summary>
         internal static string ProgressCompressed {
