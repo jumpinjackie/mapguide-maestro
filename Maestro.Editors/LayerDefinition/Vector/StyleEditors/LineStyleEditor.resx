@@ -136,7 +136,7 @@
     <value>fillCombo</value>
   </data>
   <data name="&gt;&gt;fillCombo.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ImageStylePicker, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.ImageStylePicker, Maestro.Editors, Version=4.0.0.6128, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;fillCombo.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -298,7 +298,7 @@
     <value>colorCombo</value>
   </data>
   <data name="&gt;&gt;colorCombo.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboWithTransparency, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField, Maestro.Editors, Version=4.0.0.6128, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;colorCombo.Parent" xml:space="preserve">
     <value>panel1</value>

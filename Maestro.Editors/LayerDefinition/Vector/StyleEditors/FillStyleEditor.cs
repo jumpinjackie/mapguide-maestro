@@ -39,10 +39,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         private System.Windows.Forms.Label lblBackground;
         public Label lblForeground;
         private System.Windows.Forms.Label lblFill;
-        public ColorComboWithTransparency foregroundColor;
-        public Label lblForegroundTransparency;
-        public ColorComboWithTransparency backgroundColor;
-        public Label lblBackgroundTransparency;
+        public ColorExpressionField foregroundColor;
+        public ColorExpressionField backgroundColor;
 
 		/// <summary> 
 		/// Required designer variable.
@@ -84,12 +82,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.lblBackground = new System.Windows.Forms.Label();
             this.lblForeground = new System.Windows.Forms.Label();
             this.lblFill = new System.Windows.Forms.Label();
-            this.fillCombo = new ImageStylePicker();
+            this.fillCombo = new Maestro.Editors.Common.ImageStylePicker();
             this.displayFill = new System.Windows.Forms.CheckBox();
-            this.foregroundColor = new ColorComboWithTransparency();
-            this.lblForegroundTransparency = new System.Windows.Forms.Label();
-            this.backgroundColor = new ColorComboWithTransparency();
-            this.lblBackgroundTransparency = new System.Windows.Forms.Label();
+            this.foregroundColor = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField();
+            this.backgroundColor = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField();
             this.SuspendLayout();
             // 
             // lblBackground
@@ -126,30 +122,20 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             // foregroundColor
             // 
             resources.ApplyResources(this.foregroundColor, "foregroundColor");
-            this.foregroundColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.foregroundColor.ColorExpression = "";
             this.foregroundColor.Name = "foregroundColor";
-            // 
-            // lblForegroundTransparency
-            // 
-            resources.ApplyResources(this.lblForegroundTransparency, "lblForegroundTransparency");
-            this.lblForegroundTransparency.Name = "lblForegroundTransparency";
+            this.foregroundColor.RequestExpressionEditor += new System.EventHandler(this.foregroundColor_RequestExpressionEditor);
             // 
             // backgroundColor
             // 
             resources.ApplyResources(this.backgroundColor, "backgroundColor");
-            this.backgroundColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.backgroundColor.ColorExpression = "";
             this.backgroundColor.Name = "backgroundColor";
-            // 
-            // lblBackgroundTransparency
-            // 
-            resources.ApplyResources(this.lblBackgroundTransparency, "lblBackgroundTransparency");
-            this.lblBackgroundTransparency.Name = "lblBackgroundTransparency";
+            this.backgroundColor.RequestExpressionEditor += new System.EventHandler(this.backgroundColor_RequestExpressionEditor);
             // 
             // FillStyleEditor
             // 
-            this.Controls.Add(this.lblBackgroundTransparency);
             this.Controls.Add(this.backgroundColor);
-            this.Controls.Add(this.lblForegroundTransparency);
             this.Controls.Add(this.foregroundColor);
             this.Controls.Add(this.displayFill);
             this.Controls.Add(this.fillCombo);
@@ -174,13 +160,28 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 			lblFill.Enabled = 
 			lblForeground.Enabled = 
 			lblBackground.Enabled = 
-            lblForegroundTransparency.Enabled = 
-            lblBackgroundTransparency.Enabled =
 			fillCombo.Enabled =
 			foregroundColor.Enabled =
 			backgroundColor.Enabled = 
 				displayFill.Checked;
 		}
 
+        public event EventHandler ForegroundRequiresExpression;
+        public event EventHandler BackgroundRequiresExpression;
+
+
+        private void foregroundColor_RequestExpressionEditor(object sender, EventArgs e)
+        {
+            var handler = this.ForegroundRequiresExpression;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        private void backgroundColor_RequestExpressionEditor(object sender, EventArgs e)
+        {
+            var handler = this.BackgroundRequiresExpression;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
 	}
 }

@@ -77,16 +77,25 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
                         //Until the above is resolved, this is a VERY slow way to do it, even with app. 200 pixels
                         //Unfortunately I don't want "unsafe" code here...
+                        Color? bg = null;
+                        Color? fg = null;
+                        try
+                        {
+                            bg = Utility.ParseHTMLColor(item.Fill.BackgroundColor);
+                            fg = Utility.ParseHTMLColor(item.Fill.ForegroundColor);
+                        }
+                        catch { }
+
                         Bitmap bmp = new Bitmap(img.Image);
                         for (int y = 0; y < bmp.Height; y++)
                             for (int x = 0; x < bmp.Width; x++)
                             {
                                 Color c = bmp.GetPixel(x, y);
 
-                                if (c.A > 0x7F /*&& c.R == Color.Black.R && c.B == Color.Black.B && c.G == Color.Black.G*/)
-                                    bmp.SetPixel(x, y, Utility.ParseHTMLColor(item.Fill.ForegroundColor));
-                                else //if (c.R == Color.White.R && c.B == Color.White.B && c.G == Color.White.G)
-                                    bmp.SetPixel(x, y, Utility.ParseHTMLColor(item.Fill.BackgroundColor));
+                                if (c.A > 0x7F && fg.HasValue /*&& c.R == Color.Black.R && c.B == Color.Black.B && c.G == Color.Black.G*/)
+                                    bmp.SetPixel(x, y, fg.Value);
+                                else if (bg.HasValue)//if (c.R == Color.White.R && c.B == Color.White.B && c.G == Color.White.G)
+                                    bmp.SetPixel(x, y, bg.Value);
                             }
 
 
@@ -94,21 +103,38 @@ namespace Maestro.Editors.LayerDefinition.Vector
                         break;
                     }
                 }
-			
-				if (texture == null)
-					b = new SolidBrush(Utility.ParseHTMLColor(item.Fill.BackgroundColor));
+
+                Color? bgColor = null;
+                try
+                {
+                    bgColor = Utility.ParseHTMLColor(item.Fill.BackgroundColor);
+                }
+                catch { }
+                if (texture == null && bgColor.HasValue)
+                    b = new SolidBrush(bgColor.Value);
 				else
 					b = new TextureBrush(texture);
-			
-				g.FillPolygon(b, points);
-				b.Dispose();
+
+                if (b != null)
+                {
+                    g.FillPolygon(b, points);
+                    b.Dispose();
+                }
 			}
 
 			if (item.Stroke != null && !string.IsNullOrEmpty(item.Stroke.Color))
 			{
-                var c = Utility.ParseHTMLColor(item.Stroke.Color);
-                using (Pen p = new Pen(c, /*float.Parse(item.Stroke.Thickness)*/ 1)) //TODO: Calculate appropriate thickness
-					g.DrawPolygon(p, points); //TODO: Implement line dash
+                Color? c = null;
+                try
+                {
+                    c = Utility.ParseHTMLColor(item.Stroke.Color);
+                }
+                catch { }
+                if (c.HasValue)
+                {
+                    using (Pen p = new Pen(c.Value, /*float.Parse(item.Stroke.Thickness)*/ 1)) //TODO: Calculate appropriate thickness
+                        g.DrawPolygon(p, points); //TODO: Implement line dash
+                }
 			}
 
 		}
@@ -126,9 +152,19 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 //TODO: Implement line dash
                 foreach (IStroke st in item)
                 {
-                    using (Pen p = new Pen(string.IsNullOrEmpty(st.Color) ? Color.White : Utility.ParseHTMLColor(st.Color), /*float.Parse(st.Thickness)*/ 1)) //TODO: Calculate appropriate thickness
+                    Color? c = null;
+                    try
                     {
-                        g.DrawLine(p, new Point(size.Left, size.Top + (size.Height / 2)), new Point(size.Right, size.Top + (size.Height / 2)));
+                        c = string.IsNullOrEmpty(st.Color) ? Color.White : Utility.ParseHTMLColor(st.Color);
+                    }
+                    catch { }
+
+                    if (c.HasValue)
+                    {
+                        using (Pen p = new Pen(c.Value, /*float.Parse(st.Thickness)*/ 1)) //TODO: Calculate appropriate thickness
+                        {
+                            g.DrawLine(p, new Point(size.Left, size.Top + (size.Height / 2)), new Point(size.Right, size.Top + (size.Height / 2)));
+                        }
                     }
                 }
             }
@@ -140,8 +176,8 @@ namespace Maestro.Editors.LayerDefinition.Vector
 		public static void RenderPreviewFont(Graphics g, Rectangle size, ITextSymbol item)
 		{
 			Font font;
-			Color foreground;
-			Color background;
+            Color? foreground = null;
+            Color? background = null;
 			string text = "";
             BackgroundStyleType bgStyle;
             
@@ -158,8 +194,12 @@ namespace Maestro.Editors.LayerDefinition.Vector
 			{
 				try { font = new Font(item.FontName, 12); }
 				catch { font = new Font("Arial", 12); }
-				foreground = Utility.ParseHTMLColor(item.ForegroundColor);
-				background = Utility.ParseHTMLColor(item.BackgroundColor);
+                try
+                {
+                    foreground = Utility.ParseHTMLColor(item.ForegroundColor);
+                    background = Utility.ParseHTMLColor(item.BackgroundColor);
+                }
+                catch { }
                 bgStyle = item.BackgroundStyle;
 
 				FontStyle fs = FontStyle.Regular;
@@ -183,11 +223,17 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
                     pth.AddString(text, font.FontFamily, (int)font.Style, font.Size * 1.25f, size.Location, StringFormat.GenericDefault);
 
-                    using (Pen p = new Pen(background, 1.5f))
-                        g.DrawPath(p, pth);
+                    if (background.HasValue)
+                    {
+                        using (Pen p = new Pen(background.Value, 1.5f))
+                            g.DrawPath(p, pth);
+                    }
 
-                    using (Brush b = new SolidBrush(foreground))
-                        g.FillPath(b, pth);
+                    if (foreground.HasValue)
+                    {
+                        using (Brush b = new SolidBrush(foreground.Value))
+                            g.FillPath(b, pth);
+                    }
                 }
             }
             else
@@ -195,19 +241,25 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 if (bgStyle == BackgroundStyleType.Opaque)
                 {
                     SizeF bgSize = g.MeasureString(text, font, new SizeF(size.Width, size.Height));
-                    using (Brush b = new SolidBrush(background))
-                        g.FillRectangle(b, new Rectangle(size.Top, size.Left, (int)bgSize.Width, (int)bgSize.Height));
+                    if (background.HasValue)
+                    {
+                        using (Brush b = new SolidBrush(background.Value))
+                            g.FillRectangle(b, new Rectangle(size.Top, size.Left, (int)bgSize.Width, (int)bgSize.Height));
+                    }
                 }
 
-                using (Brush b = new SolidBrush(foreground))
-                    g.DrawString(text, font, b, size);
+                if (foreground.HasValue)
+                {
+                    using (Brush b = new SolidBrush(foreground.Value))
+                        g.DrawString(text, font, b, size);
+                }
             }
 		}
 
 		public static void RenderPreviewFontSymbol(Graphics g, Rectangle size, IFontSymbol item)
 		{
 			Font font;
-			Color foreground;
+            Color? foreground = null;
 			string text = "";
 
             if (item == null || item.FontName == null)
@@ -220,10 +272,14 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 try { font = new Font(item.FontName, 12); }
                 catch { font = new Font("Arial", 12); }
 
-                if (string.IsNullOrEmpty(item.ForegroundColor))
-                    foreground = Color.Black;
-                else
-                    foreground = Utility.ParseHTMLColor(item.ForegroundColor);
+                try
+                {
+                    if (string.IsNullOrEmpty(item.ForegroundColor))
+                        foreground = Color.Black;
+                    else
+                        foreground = Utility.ParseHTMLColor(item.ForegroundColor);
+                }
+                catch { }
 
                 FontStyle fs = FontStyle.Regular;
                 if (item.Bold.HasValue && item.Bold.Value)
@@ -241,8 +297,11 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
             PointF center = new PointF((size.Width - textSize.Width) / 2, (size.Height - textSize.Height) / 2);
 
-			using (Brush b = new SolidBrush(foreground))
-				g.DrawString(text, font, b, center);
+            if (foreground.HasValue)
+            {
+                using (Brush b = new SolidBrush(foreground.Value))
+                    g.DrawString(text, font, b, center);
+            }
 		}
 
 		public static void RenderPreviewPoint(Graphics g, Rectangle size, IMarkSymbol item)
@@ -310,7 +369,17 @@ namespace Maestro.Editors.LayerDefinition.Vector
 			if (item.Fill != null)
 			{
 				Brush b;
-			
+
+                Color? bgColor = null;
+                Color? fgColor = null;
+
+                try
+                {
+                    bgColor = Utility.ParseHTMLColor(item.Fill.BackgroundColor);
+                    fgColor = Utility.ParseHTMLColor(item.Fill.ForegroundColor);
+                }
+                catch { }
+
 				Image texture = null;
                 foreach (ImageStylePicker.NamedImage img in FillImages)
                 {
@@ -333,10 +402,10 @@ namespace Maestro.Editors.LayerDefinition.Vector
                             {
                                 Color c = bmp.GetPixel(x, y);
 
-                                if (c.R == Color.Black.R && c.B == Color.Black.B && c.G == Color.Black.G)
-                                    bmp.SetPixel(x, y, Utility.ParseHTMLColor(item.Fill.ForegroundColor));
-                                else if (c.R == Color.White.R && c.B == Color.White.B && c.G == Color.White.G)
-                                    bmp.SetPixel(x, y, Utility.ParseHTMLColor(item.Fill.BackgroundColor));
+                                if (c.R == Color.Black.R && c.B == Color.Black.B && c.G == Color.Black.G && fgColor.HasValue)
+                                    bmp.SetPixel(x, y, fgColor.Value);
+                                else if (c.R == Color.White.R && c.B == Color.White.B && c.G == Color.White.G && bgColor.HasValue)
+                                    bmp.SetPixel(x, y, bgColor.Value);
                             }
 
 
@@ -345,19 +414,32 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     }
                 }
 
-				if (texture == null)
-					b = new SolidBrush(Utility.ParseHTMLColor(item.Fill.BackgroundColor));
+				if (texture == null && bgColor.HasValue)
+					b = new SolidBrush(bgColor.Value);
 				else
 					b = new TextureBrush(texture);
-			
-				g.FillPolygon(b, points);
-				b.Dispose();
+
+                if (b != null)
+                {
+                    g.FillPolygon(b, points);
+                    b.Dispose();
+                }
 			}
 
 			if (item.Edge != null)
 			{
-				using(Pen p = new Pen(string.IsNullOrEmpty(item.Edge.Color) ? Color.White : Utility.ParseHTMLColor(item.Edge.Color), /* float.Parse(item.Edge.Thickness) */ 1)) //TODO: Calculate appropriate thickness
-					g.DrawPolygon(p, points); //TODO: Implement line dash
+                Color? c = null;
+                try
+                {
+                    c = string.IsNullOrEmpty(item.Edge.Color) ? Color.White : Utility.ParseHTMLColor(item.Edge.Color);
+                }
+                catch { }
+
+                if (c.HasValue)
+                {
+                    using (Pen p = new Pen(c.Value, /* float.Parse(item.Edge.Thickness) */ 1)) //TODO: Calculate appropriate thickness
+                        g.DrawPolygon(p, points); //TODO: Implement line dash
+                }
 			}
 		}
 

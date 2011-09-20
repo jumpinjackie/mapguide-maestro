@@ -246,6 +246,13 @@ namespace Maestro.Editors.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap color {
+            get {
+                object obj = ResourceManager.GetObject("color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to &quot;ColorName&quot;,&quot;NumOfColors&quot;,&quot;Type&quot;,&quot;CritVal&quot;,&quot;ColorNum&quot;,&quot;ColorLetter&quot;,&quot;R&quot;,&quot;G&quot;,&quot;B&quot;,&quot;SchemeType&quot;
         ///&quot;Accent&quot;,3,&quot;qual&quot;,,1,&quot;A&quot;,127,201,127,&quot;Qualitative&quot;
@@ -277,6 +284,15 @@ namespace Maestro.Editors.Properties {
         internal static string ColorCountError {
             get {
                 return ResourceManager.GetString("ColorCountError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color Picker ....
+        /// </summary>
+        internal static string ColorPicker {
+            get {
+                return ResourceManager.GetString("ColorPicker", resourceCulture);
             }
         }
         

@@ -166,9 +166,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     //sizeContextCombo.SelectedValue = st.SizeContext.ToString();
 
                     if (st.Color == null)
-                        lineStyleEditor.colorCombo.CurrentColor = Color.Black;
+                        lineStyleEditor.colorCombo.ColorExpression = Utility.SerializeHTMLColor(Color.Black, true);
                     else
-                        lineStyleEditor.colorCombo.CurrentColor = Utility.ParseHTMLColor(st.Color);
+                        lineStyleEditor.colorCombo.ColorExpression = st.Color;
 
                     foreach(object i in lineStyleEditor.fillCombo.Items)
                         if (i as ImageStylePicker.NamedImage != null && (i as ImageStylePicker.NamedImage).Name == st.LineStyle)
@@ -235,7 +235,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.compositePanel = new System.Windows.Forms.Panel();
             this.propertyPanel = new System.Windows.Forms.Panel();
             this.lineGroup = new System.Windows.Forms.GroupBox();
-            this.lineStyleEditor = new LineStyleEditor();
+            this.lineStyleEditor = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.LineStyleEditor();
             this.sizeGroup = new System.Windows.Forms.GroupBox();
             this.sizeUnitsCombo = new System.Windows.Forms.ComboBox();
             this.UnitsTable = new System.Data.DataTable();
@@ -351,6 +351,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             // 
             resources.ApplyResources(this.lineStyleEditor, "lineStyleEditor");
             this.lineStyleEditor.Name = "lineStyleEditor";
+            this.lineStyleEditor.RequiresExpressionEditor += new System.EventHandler(this.lineStyleEditor_RequiresExpressionEditor);
             // 
             // sizeGroup
             // 
@@ -551,7 +552,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		{
             if (m_inUpdate || this.CurrentStrokeType == null)
 				return;
-            this.CurrentStrokeType.Color = Utility.SerializeHTMLColor(lineStyleEditor.colorCombo.CurrentColor, true);
+            this.CurrentStrokeType.Color = lineStyleEditor.colorCombo.ColorExpression;
 			previewPicture.Refresh();
 			lineStyles.Refresh();
 			if (Changed != null)
@@ -684,6 +685,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 if (!userChange)
                     m_inUpdate = false;
             }
+        }
+
+        private void lineStyleEditor_RequiresExpressionEditor(object sender, EventArgs e)
+        {
+            string expr = m_editor.EditExpression(lineStyleEditor.ColorExpression, m_schema, m_providername, m_featureSource);
+            if (expr != null)
+                lineStyleEditor.ColorExpression = expr;
         }
     }
 }

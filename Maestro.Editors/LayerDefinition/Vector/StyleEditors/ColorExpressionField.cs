@@ -1,0 +1,88 @@
+﻿#region Disclaimer / License
+// Copyright (C) 2011, Jackie Ng
+// http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
+// 
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+// 
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+// 
+#endregion
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Text;
+using System.Windows.Forms;
+using OSGeo.MapGuide.MaestroAPI;
+
+namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
+{
+    [ToolboxItem(true)]
+    public partial class ColorExpressionField : UserControl
+    {
+        public ColorExpressionField()
+        {
+            InitializeComponent();
+        }
+
+        [DefaultValue("00000000")]
+        public string ColorExpression
+        {
+            get { return txtColor.Text; }
+            set 
+            {
+                txtColor.Text = value;
+            }
+        }
+
+        public event EventHandler CurrentColorChanged;
+
+        public event EventHandler RequestExpressionEditor;
+
+        private void btnExpr_Click(object sender, EventArgs e)
+        {
+            var handler = this.RequestExpressionEditor;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        private void txtColor_TextChanged(object sender, EventArgs e)
+        {
+            var handler = this.CurrentColorChanged;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        private void btnColor_Click(object sender, EventArgs e)
+        {
+            using (var picker = new ColorDialog())
+            {
+                Color? currentColor = null;
+                try
+                {
+                    currentColor = Utility.ParseHTMLColor(this.ColorExpression);
+                }
+                catch { }
+
+                if (currentColor.HasValue)
+                    picker.Color = currentColor.Value;
+
+                if (picker.ShowDialog() == DialogResult.OK)
+                {
+                    this.ColorExpression = Utility.SerializeHTMLColor(picker.Color, true);
+                }
+            }
+        }
+    }
+}

@@ -129,8 +129,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		private void InitializeComponent()
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AreaFeatureStyleEditor));
-            this.fillStyleEditor = new FillStyleEditor();
-            this.lineStyleEditor = new LineStyleEditor();
+            this.fillStyleEditor = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.FillStyleEditor();
+            this.lineStyleEditor = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.LineStyleEditor();
             this.sizeUnitsCombo = new System.Windows.Forms.ComboBox();
             this.UnitsTable = new System.Data.DataTable();
             this.dataColumn5 = new System.Data.DataColumn();
@@ -159,6 +159,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             // 
             resources.ApplyResources(this.fillStyleEditor, "fillStyleEditor");
             this.fillStyleEditor.Name = "fillStyleEditor";
+            this.fillStyleEditor.ForegroundRequiresExpression += new System.EventHandler(this.fillStyleEditor_ForegroundRequiresExpression);
+            this.fillStyleEditor.BackgroundRequiresExpression += new System.EventHandler(this.fillStyleEditor_BackgroundRequiresExpression);
             // 
             // lineStyleEditor
             // 
@@ -315,8 +317,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 				fillStyleEditor.displayFill.Checked = m_item.Fill != null;
 				if (m_item.Fill != null)
 				{
-                    fillStyleEditor.foregroundColor.CurrentColor = Utility.ParseHTMLColor(m_item.Fill.ForegroundColor);
-                    fillStyleEditor.backgroundColor.CurrentColor = Utility.ParseHTMLColor(m_item.Fill.BackgroundColor);
+                    fillStyleEditor.foregroundColor.ColorExpression = m_item.Fill.ForegroundColor;
+                    fillStyleEditor.backgroundColor.ColorExpression = m_item.Fill.BackgroundColor;
 
 					fillStyleEditor.fillCombo.SelectedValue = m_item.Fill.FillPattern;
 					if (fillStyleEditor.fillCombo.SelectedItem == null && fillStyleEditor.fillCombo.Items.Count > 0)
@@ -338,7 +340,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                         sizeContextCombo.Enabled = false;
                     }
                     if (!string.IsNullOrEmpty(m_item.Stroke.Color))
-                        lineStyleEditor.colorCombo.CurrentColor = Utility.ParseHTMLColor(m_item.Stroke.Color);
+                        lineStyleEditor.colorCombo.ColorExpression = m_item.Stroke.Color;
 					lineStyleEditor.fillCombo.SelectedIndex = lineStyleEditor.fillCombo.FindString(m_item.Stroke.LineStyle);
                     lineStyleEditor.thicknessCombo.Text = m_item.Stroke.Thickness;
 				}
@@ -400,7 +402,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 			if (m_inUpdate)
 				return;
 
-            m_item.Fill.ForegroundColor = Utility.SerializeHTMLColor(fillStyleEditor.foregroundColor.CurrentColor, true);
+            m_item.Fill.ForegroundColor = fillStyleEditor.foregroundColor.ColorExpression;
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
@@ -411,7 +413,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 			if (m_inUpdate)
 				return;
 
-            m_item.Fill.BackgroundColor = Utility.SerializeHTMLColor(fillStyleEditor.backgroundColor.CurrentColor, true);
+            m_item.Fill.BackgroundColor = fillStyleEditor.backgroundColor.ColorExpression;
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
@@ -440,7 +442,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 			if (m_inUpdate)
 				return;
 
-            m_item.Stroke.Color = Utility.SerializeHTMLColor(lineStyleEditor.colorCombo.CurrentColor, true);
+            m_item.Stroke.Color = lineStyleEditor.colorCombo.ColorExpression;
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
@@ -537,6 +539,20 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             m_item.Stroke.Unit = (LengthUnitType)Enum.Parse(typeof(LengthUnitType), (string)sizeUnitsCombo.SelectedValue);
+        }
+
+        private void fillStyleEditor_BackgroundRequiresExpression(object sender, EventArgs e)
+        {
+            string expr = m_editor.EditExpression(fillStyleEditor.backgroundColor.ColorExpression, m_schema, m_providername, m_featureSource);
+            if (expr != null)
+                fillStyleEditor.backgroundColor.ColorExpression = expr;
+        }
+
+        private void fillStyleEditor_ForegroundRequiresExpression(object sender, EventArgs e)
+        {
+            string expr = m_editor.EditExpression(fillStyleEditor.foregroundColor.ColorExpression, m_schema, m_providername, m_featureSource);
+            if (expr != null)
+                fillStyleEditor.foregroundColor.ColorExpression = expr;
         }
     }
 }

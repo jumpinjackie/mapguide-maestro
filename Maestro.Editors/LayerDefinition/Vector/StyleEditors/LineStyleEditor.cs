@@ -39,9 +39,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		private System.Windows.Forms.Label lblFill;
 		public System.Windows.Forms.CheckBox displayLine;
         private System.Windows.Forms.Panel panel1;
-        private Label label1;
-        public ColorComboWithTransparency colorCombo;
         public ComboBox thicknessCombo;
+        public ColorExpressionField colorCombo;
+        private Label label1;
 
 		/// <summary> 
 		/// Required designer variable.
@@ -80,14 +80,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		private void InitializeComponent()
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LineStyleEditor));
-            this.fillCombo = new ImageStylePicker();
+            this.fillCombo = new Maestro.Editors.Common.ImageStylePicker();
             this.lblColor = new System.Windows.Forms.Label();
             this.lblThickness = new System.Windows.Forms.Label();
             this.lblFill = new System.Windows.Forms.Label();
             this.displayLine = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.thicknessCombo = new System.Windows.Forms.ComboBox();
-            this.colorCombo = new ColorComboWithTransparency();
+            this.colorCombo = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -146,8 +146,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             // colorCombo
             // 
             resources.ApplyResources(this.colorCombo, "colorCombo");
-            this.colorCombo.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.colorCombo.Name = "colorCombo";
+            this.colorCombo.RequestExpressionEditor += new System.EventHandler(this.colorCombo_RequestExpressionEditor);
             // 
             // label1
             // 
@@ -177,5 +177,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             panel1.Enabled = displayLine.Checked;
 		}
 
+        public event EventHandler RequiresExpressionEditor;
+
+        private void colorCombo_RequestExpressionEditor(object sender, EventArgs e)
+        {
+            var handler = this.RequiresExpressionEditor;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        public string ColorExpression
+        {
+            get { return colorCombo.ColorExpression; }
+            set { colorCombo.ColorExpression = value; }
+        }
 	}
 }

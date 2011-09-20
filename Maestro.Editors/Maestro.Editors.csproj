@@ -723,6 +723,12 @@
     <Compile Include="LayerDefinition\Vector\StyleEditors\AreaFeatureStyleEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="LayerDefinition\Vector\StyleEditors\ColorExpressionField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\StyleEditors\ColorExpressionField.Designer.cs">
+      <DependentUpon>ColorExpressionField.cs</DependentUpon>
+    </Compile>
     <Compile Include="LayerDefinition\Vector\StyleEditors\ElevationDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2194,8 +2200,12 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\color.png" />
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\CompositeStyleListCtrl.resx">
       <DependentUpon>CompositeStyleListCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\StyleEditors\ColorExpressionField.resx">
+      <DependentUpon>ColorExpressionField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MapDefinition\ExtentCalculationDialog.resx">
       <DependentUpon>ExtentCalculationDialog.cs</DependentUpon>

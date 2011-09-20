@@ -96,10 +96,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		internal System.Windows.Forms.Label verticalLabel;
 		internal System.Windows.Forms.Label horizontalLabel;
         private CheckBox DisplayLabel;
-        private ColorComboWithTransparency textColor;
+        private ColorExpressionField textColor;
         private Label label12;
         private Label label11;
-        private ColorComboWithTransparency backgroundColor;
+        private ColorExpressionField backgroundColor;
 		private bool m_inUpdate = false;
 
 		public event EventHandler Changed;
@@ -180,8 +180,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 				boldCheck.Checked = m_item.Bold == "true";
 				italicCheck.Checked = m_item.Italic == "true";
 				underlineCheck.Checked = m_item.Underlined == "true";
-                textColor.CurrentColor = Utility.ParseHTMLColor(m_item.ForegroundColor);
-                backgroundColor.CurrentColor = Utility.ParseHTMLColor(m_item.BackgroundColor);
+                textColor.ColorExpression = m_item.ForegroundColor;
+                backgroundColor.ColorExpression = m_item.BackgroundColor;
 				backgroundTypeCombo.SelectedValue = m_item.BackgroundStyle.ToString();
                 rotationCombo.SelectedIndex = -1;
                 rotationCombo.Text = m_item.Rotation;
@@ -263,8 +263,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.colorGroup = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.backgroundColor = new ColorComboWithTransparency();
-            this.textColor = new ColorComboWithTransparency();
+            this.backgroundColor = new ColorExpressionField();
+            this.textColor = new ColorExpressionField();
             this.backgroundTypeCombo = new System.Windows.Forms.ComboBox();
             this.BackgroundTypeTable = new System.Data.DataTable();
             this.dataColumn9 = new System.Data.DataColumn();
@@ -504,14 +504,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             // backgroundColor
             // 
             resources.ApplyResources(this.backgroundColor, "backgroundColor");
-            this.backgroundColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.backgroundColor.ColorExpression = "00000000";
             this.backgroundColor.Name = "backgroundColor";
             this.backgroundColor.CurrentColorChanged += new System.EventHandler(this.backgroundColor_SelectedIndexChanged);
             // 
             // textColor
             // 
             resources.ApplyResources(this.textColor, "textColor");
-            this.textColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.textColor.ColorExpression = "00000000";
             this.textColor.Name = "textColor";
             this.textColor.CurrentColorChanged += new System.EventHandler(this.textColor_SelectedIndexChanged);
             // 
@@ -828,7 +828,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		{
 			if (m_inUpdate)
 				return;
-            m_item.ForegroundColor = Utility.SerializeHTMLColor(textColor.CurrentColor, true);
+            m_item.ForegroundColor = textColor.ColorExpression;
 			previewPicture.Refresh();
 
 			if (Changed != null)
@@ -839,7 +839,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		{
 			if (m_inUpdate)
 				return;
-            m_item.BackgroundColor = Utility.SerializeHTMLColor(backgroundColor.CurrentColor, true);
+            m_item.BackgroundColor = backgroundColor.ColorExpression;
 			previewPicture.Refresh();
 
 			if (Changed != null)

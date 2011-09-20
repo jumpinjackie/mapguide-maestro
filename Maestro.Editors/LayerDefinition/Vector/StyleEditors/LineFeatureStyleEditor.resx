@@ -358,7 +358,7 @@
     <value>lineStyleEditor</value>
   </data>
   <data name="&gt;&gt;lineStyleEditor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.LineStyleEditor, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.LineStyleEditor, Maestro.Editors, Version=4.0.0.6128, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;lineStyleEditor.Parent" xml:space="preserve">
     <value>lineGroup</value>

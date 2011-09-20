@@ -237,8 +237,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 					fillStyleEditor.displayFill.Checked = t.Fill != null;
 					if (t.Fill != null)
 					{
-                        fillStyleEditor.foregroundColor.CurrentColor = Utility.ParseHTMLColor(t.Fill.ForegroundColor);
-                        fillStyleEditor.backgroundColor.CurrentColor = Utility.ParseHTMLColor(t.Fill.BackgroundColor);
+                        fillStyleEditor.foregroundColor.ColorExpression = t.Fill.ForegroundColor;
+                        fillStyleEditor.backgroundColor.ColorExpression = t.Fill.BackgroundColor;
 						fillStyleEditor.fillCombo.SelectedValue = t.Fill.FillPattern;
 						if (fillStyleEditor.fillCombo.SelectedItem == null && fillStyleEditor.fillCombo.Items.Count > 0)
 							fillStyleEditor.fillCombo.SelectedIndex = fillStyleEditor.fillCombo.FindString(t.Fill.FillPattern);
@@ -251,7 +251,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 						if (lineStyleEditor.fillCombo.SelectedItem == null && lineStyleEditor.fillCombo.Items.Count > 0)
 							lineStyleEditor.fillCombo.SelectedIndex = lineStyleEditor.fillCombo.FindString(t.Edge.LineStyle);
 
-                        lineStyleEditor.colorCombo.CurrentColor = Utility.ParseHTMLColor(t.Edge.Color);
+                        lineStyleEditor.colorCombo.ColorExpression = t.Edge.Color;
 						lineStyleEditor.thicknessCombo.Text = t.Edge.Thickness;
 					}
 
@@ -1235,7 +1235,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 				return;
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
-                ((IMarkSymbol)m_item.Symbol).Fill.ForegroundColor = Utility.SerializeHTMLColor(fillStyleEditor.foregroundColor.CurrentColor, true);
+                ((IMarkSymbol)m_item.Symbol).Fill.ForegroundColor = fillStyleEditor.foregroundColor.ColorExpression;
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
@@ -1247,7 +1247,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 				return;
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
-                ((IMarkSymbol)m_item.Symbol).Fill.BackgroundColor = Utility.SerializeHTMLColor(fillStyleEditor.backgroundColor.CurrentColor, true);
+                ((IMarkSymbol)m_item.Symbol).Fill.BackgroundColor = fillStyleEditor.backgroundColor.ColorExpression;
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
@@ -1294,7 +1294,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 				return;
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
-                ((IMarkSymbol)m_item.Symbol).Edge.Color = Utility.SerializeHTMLColor(lineStyleEditor.colorCombo.CurrentColor, true);
+                ((IMarkSymbol)m_item.Symbol).Edge.Color = lineStyleEditor.colorCombo.ColorExpression;
 			previewPicture.Refresh();
 			if (Changed != null)
 				Changed(this, new EventArgs());
