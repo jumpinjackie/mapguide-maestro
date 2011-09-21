@@ -114,6 +114,7 @@ namespace Maestro.Editors.LayerDefinition
                     if (picker.ShowDialog() == DialogResult.OK)
                     {
                         _vl.ResourceId = picker.ResourceID;
+                        OnResourceChanged();
                     }
                 }
             }
