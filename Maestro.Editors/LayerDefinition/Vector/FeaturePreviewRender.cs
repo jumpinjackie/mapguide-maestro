@@ -58,7 +58,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
 			if (item.Fill != null)
 			{
-				Brush b;
+                Brush b = null;
 			
 				Image texture = null;
                 foreach (ImageStylePicker.NamedImage img in FillImages)
@@ -112,7 +112,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 catch { }
                 if (texture == null && bgColor.HasValue)
                     b = new SolidBrush(bgColor.Value);
-				else
+				else if (texture != null)
 					b = new TextureBrush(texture);
 
                 if (b != null)

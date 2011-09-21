@@ -2315,6 +2315,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The resource id {0} could not be found. You will now be prompted to select the correct feature source.
+        /// </summary>
+        internal static string PromptRepairBrokenFeatureSource {
+            get {
+                return ResourceManager.GetString("PromptRepairBrokenFeatureSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use Office 2010 Drivers? (these are 64-bit compatible).
         /// </summary>
         internal static string PromptUseOffice2010Drivers {

@@ -9,6 +9,8 @@ using Maestro.Shared.UI;
 using System.Diagnostics;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using Maestro.Editors.Common;
+using Maestro.Editors.Generic;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.LayerDefinition
 {
@@ -77,27 +79,41 @@ namespace Maestro.Editors.LayerDefinition
             if (_vl == null || string.IsNullOrEmpty(_vl.FeatureName))
                 return;
 
-            //TODO: Should just fetch the class definition
-            var desc = _edsvc.FeatureService.DescribeFeatureSource(_vl.ResourceId);
-            var cls = desc.GetClass(_vl.FeatureName);
-            if (cls != null)
+            if (_edsvc.ResourceService.ResourceExists(_vl.ResourceId))
             {
-                grdProperties.Rows.Clear();
-                foreach (var col in cls.Properties)
+                //TODO: Should just fetch the class definition
+                var desc = _edsvc.FeatureService.DescribeFeatureSource(_vl.ResourceId);
+                var cls = desc.GetClass(_vl.FeatureName);
+                if (cls != null)
                 {
-                    if (col.Type == OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinitionType.Data)
+                    grdProperties.Rows.Clear();
+                    foreach (var col in cls.Properties)
                     {
-                        bool visible = false;
-                        string disp = col.Name;
-                        foreach (var item in _vl.PropertyMapping)
+                        if (col.Type == OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinitionType.Data)
                         {
-                            if (item.Name == col.Name)
+                            bool visible = false;
+                            string disp = col.Name;
+                            foreach (var item in _vl.PropertyMapping)
                             {
-                                visible = true;
-                                disp = item.Value;
+                                if (item.Name == col.Name)
+                                {
+                                    visible = true;
+                                    disp = item.Value;
+                                }
                             }
+                            grdProperties.Rows.Add(visible, col.Name, disp);
                         }
-                        grdProperties.Rows.Add(visible, col.Name, disp);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(string.Format(Properties.Resources.PromptRepairBrokenFeatureSource, _vl.ResourceId));
+                using (var picker = new ResourcePicker(_edsvc.ResourceService, ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource))
+                {
+                    if (picker.ShowDialog() == DialogResult.OK)
+                    {
+                        _vl.ResourceId = picker.ResourceID;
                     }
                 }
             }
