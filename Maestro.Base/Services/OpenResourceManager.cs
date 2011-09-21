@@ -176,7 +176,8 @@ namespace Maestro.Base.Services
                 };
                 ed.ViewContentClosed += (sender, e) =>
                 {
-                    _openItems.Remove(key);
+                    //Recompute the resource key as that may have changed by a save as operation
+                    _openItems.Remove(ComputeResourceKey(((EditorContentBase)sender).EditorService.ResourceID, conn));
                     siteExp.FlagNode(conn.DisplayName, ed.EditorService.ResourceID, NodeFlagAction.None);
                 };
                 ed.EditorService.Saved += (sender, e) =>
