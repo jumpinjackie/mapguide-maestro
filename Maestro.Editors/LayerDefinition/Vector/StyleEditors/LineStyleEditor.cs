@@ -41,7 +41,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         private System.Windows.Forms.Panel panel1;
         public ComboBox thicknessCombo;
         public ColorExpressionField colorCombo;
-        private Label label1;
 
 		/// <summary> 
 		/// Required designer variable.
@@ -88,7 +87,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.panel1 = new System.Windows.Forms.Panel();
             this.thicknessCombo = new System.Windows.Forms.ComboBox();
             this.colorCombo = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,7 +125,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             // 
             this.panel1.Controls.Add(this.thicknessCombo);
             this.panel1.Controls.Add(this.colorCombo);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.fillCombo);
             this.panel1.Controls.Add(this.lblColor);
             this.panel1.Controls.Add(this.lblThickness);
@@ -146,13 +143,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             // colorCombo
             // 
             resources.ApplyResources(this.colorCombo, "colorCombo");
+            this.colorCombo.ColorExpression = "";
             this.colorCombo.Name = "colorCombo";
             this.colorCombo.RequestExpressionEditor += new System.EventHandler(this.colorCombo_RequestExpressionEditor);
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
             // 
             // LineStyleEditor
             // 

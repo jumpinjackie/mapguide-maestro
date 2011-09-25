@@ -25,6 +25,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
+using Maestro.Editors.Common;
 
 namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {
@@ -66,7 +67,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         private void btnColor_Click(object sender, EventArgs e)
         {
-            using (var picker = new ColorDialog())
+            using (var picker = new ColorPickerDialog())
             {
                 Color? currentColor = null;
                 try
@@ -76,11 +77,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 catch { }
 
                 if (currentColor.HasValue)
-                    picker.Color = currentColor.Value;
+                    picker.SelectedColor = currentColor.Value;
 
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
-                    this.ColorExpression = Utility.SerializeHTMLColor(picker.Color, true);
+                    this.ColorExpression = Utility.SerializeHTMLColor(picker.SelectedColor, true).ToUpper();
                 }
             }
         }

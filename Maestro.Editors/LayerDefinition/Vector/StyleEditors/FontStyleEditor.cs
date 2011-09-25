@@ -97,8 +97,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		internal System.Windows.Forms.Label horizontalLabel;
         private CheckBox DisplayLabel;
         private ColorExpressionField textColor;
-        private Label label12;
-        private Label label11;
         private ColorExpressionField backgroundColor;
 		private bool m_inUpdate = false;
 
@@ -261,10 +259,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.dataColumn1 = new System.Data.DataColumn();
             this.dataColumn2 = new System.Data.DataColumn();
             this.colorGroup = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.backgroundColor = new ColorExpressionField();
-            this.textColor = new ColorExpressionField();
+            this.backgroundColor = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField();
+            this.textColor = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField();
             this.backgroundTypeCombo = new System.Windows.Forms.ComboBox();
             this.BackgroundTypeTable = new System.Data.DataTable();
             this.dataColumn9 = new System.Data.DataColumn();
@@ -480,8 +476,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             // colorGroup
             // 
             resources.ApplyResources(this.colorGroup, "colorGroup");
-            this.colorGroup.Controls.Add(this.label12);
-            this.colorGroup.Controls.Add(this.label11);
             this.colorGroup.Controls.Add(this.backgroundColor);
             this.colorGroup.Controls.Add(this.textColor);
             this.colorGroup.Controls.Add(this.backgroundTypeCombo);
@@ -491,27 +485,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.colorGroup.Name = "colorGroup";
             this.colorGroup.TabStop = false;
             // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
-            // 
             // backgroundColor
             // 
             resources.ApplyResources(this.backgroundColor, "backgroundColor");
-            this.backgroundColor.ColorExpression = "00000000";
             this.backgroundColor.Name = "backgroundColor";
             this.backgroundColor.CurrentColorChanged += new System.EventHandler(this.backgroundColor_SelectedIndexChanged);
             // 
             // textColor
             // 
             resources.ApplyResources(this.textColor, "textColor");
-            this.textColor.ColorExpression = "00000000";
             this.textColor.Name = "textColor";
             this.textColor.CurrentColorChanged += new System.EventHandler(this.textColor_SelectedIndexChanged);
             // 

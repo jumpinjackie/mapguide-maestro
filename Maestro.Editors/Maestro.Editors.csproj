@@ -59,6 +59,12 @@
     <Compile Include="Common\ColorComboWithTransparency.designer.cs">
       <DependentUpon>ColorComboWithTransparency.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\ColorPickerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\ColorPickerDialog.Designer.cs">
+      <DependentUpon>ColorPickerDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\CoordinateSystemPicker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2201,6 +2207,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\color.png" />
+    <EmbeddedResource Include="Common\ColorPickerDialog.resx">
+      <DependentUpon>ColorPickerDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\CompositeStyleListCtrl.resx">
       <DependentUpon>CompositeStyleListCtrl.cs</DependentUpon>
     </EmbeddedResource>

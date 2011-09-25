@@ -136,13 +136,13 @@
     <value>fillCombo</value>
   </data>
   <data name="&gt;&gt;fillCombo.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ImageStylePicker, Maestro.Editors, Version=4.0.0.6128, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.Common.ImageStylePicker, Maestro.Editors, Version=4.0.0.6143, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;fillCombo.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;fillCombo.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="lblColor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -169,7 +169,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;lblColor.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="lblThickness.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -196,7 +196,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;lblThickness.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="lblFill.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -223,7 +223,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;lblFill.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="displayLine.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -298,43 +298,13 @@
     <value>colorCombo</value>
   </data>
   <data name="&gt;&gt;colorCombo.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField, Maestro.Editors, Version=4.0.0.6128, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField, Maestro.Editors, Version=4.0.0.6143, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;colorCombo.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;colorCombo.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 96</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 13</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Transparency</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
