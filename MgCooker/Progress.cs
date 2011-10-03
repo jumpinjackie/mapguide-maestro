@@ -76,9 +76,13 @@ namespace MgCooker
             exception = null; //Eat it
         }
 
+        public TimeSpan TotalTime { get; private set; }
+
         private void DoClose()
         {
             m_allowClose = true;
+
+            this.TotalTime = DateTime.Now - m_grandBegin;
 
             if (m_cancel)
                 this.DialogResult = DialogResult.Cancel;

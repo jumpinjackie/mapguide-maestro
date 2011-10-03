@@ -256,7 +256,10 @@ namespace MgCooker
 
                 Progress p = new Progress(bx);
                 if (p.ShowDialog(this) != DialogResult.Cancel)
-                    this.Close();
+                {
+                    var ts = p.TotalTime;
+                    MessageBox.Show(string.Format(Properties.Resources.TileGenerationCompleted, ((ts.Days * 24) + ts.Hours), ts.Minutes, ts.Seconds));
+                }
             }
             catch (Exception ex)
             {

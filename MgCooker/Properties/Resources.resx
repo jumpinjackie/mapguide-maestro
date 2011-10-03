@@ -231,4 +231,7 @@ Either copy in the file, or do not use the Native connection method</value>
     <value>({0} failed tiles)</value>
     <comment>Text inserted in the CurrentTileCounter if any tiles are failed</comment>
   </data>
+  <data name="TileGenerationCompleted" xml:space="preserve">
+    <value>Tile Generation Complete. The operation completed in {0}h {1}m {2}s</value>
+  </data>
 </root>
