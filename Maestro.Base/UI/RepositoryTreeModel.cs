@@ -145,7 +145,8 @@ namespace Maestro.Base.UI
         internal void AddChildWithoutNotification(RepositoryItem item)
         {
             item.Parent = this;
-            _children.Add(item.NameQualified, item);
+            if (!_children.ContainsKey(item.NameQualified))
+                _children.Add(item.NameQualified, item);
         }
 
         internal void RemoveChildWithoutNotification(RepositoryItem item)
