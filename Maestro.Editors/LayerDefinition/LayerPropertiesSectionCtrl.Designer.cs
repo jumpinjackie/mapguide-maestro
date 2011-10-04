@@ -91,16 +91,18 @@
             // btnMoveUp
             // 
             this.btnMoveUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnMoveUp.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
             resources.ApplyResources(this.btnMoveUp, "btnMoveUp");
+            this.btnMoveUp.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
             this.btnMoveUp.Name = "btnMoveUp";
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
             // 
             // btnMoveDown
             // 
             this.btnMoveDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnMoveDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
             resources.ApplyResources(this.btnMoveDown, "btnMoveDown");
+            this.btnMoveDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
             this.btnMoveDown.Name = "btnMoveDown";
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
             // 
             // grdProperties
             // 
@@ -113,8 +115,8 @@
             this.COL_DISPLAY});
             resources.ApplyResources(this.grdProperties, "grdProperties");
             this.grdProperties.Name = "grdProperties";
-            this.grdProperties.RowHeadersVisible = false;
             this.grdProperties.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdProperties_CellEndEdit);
+            this.grdProperties.SelectionChanged += new System.EventHandler(this.grdProperties_SelectionChanged);
             // 
             // COL_VISIBLE
             // 
@@ -136,7 +138,7 @@
             // LayerPropertiesSectionCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "Layer Properties Visible in Viewer";
+            resources.ApplyResources(this, "$this");
             this.Name = "LayerPropertiesSectionCtrl";
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();

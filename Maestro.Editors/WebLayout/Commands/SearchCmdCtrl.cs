@@ -210,10 +210,20 @@ namespace Maestro.Editors.WebLayout.Commands
             UpdateColumns();
         }
 
+        class LayerItem
+        {
+            public string ResourceId { get; set; }
+            public string Name { get; set; }
+        }
+
         private void btnBrowseLayer_Click(object sender, EventArgs e)
         {
-            //FIXME: This doesn't properly show the specified display member. WTF?
-            var layer = GenericItemSelectionDialog.SelectItem(Properties.Resources.SelectLayer, Properties.Resources.SelectLayer, _layers.ToArray(), "Name", "Name");
+            var layers = new List<LayerItem>();
+            foreach (var l in _layers)
+            {
+                layers.Add(new LayerItem() { Name = l.Name, ResourceId = l.ResourceId });
+            }
+            var layer = GenericItemSelectionDialog.SelectItem(Properties.Resources.SelectLayer, Properties.Resources.SelectLayer, layers.ToArray(), "Name", "Name");
             if (layer != null)
             {
                 txtLayer.Tag = layer.ResourceId;

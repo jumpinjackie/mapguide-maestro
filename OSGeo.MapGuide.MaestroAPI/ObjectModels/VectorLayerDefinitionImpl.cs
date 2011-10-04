@@ -1585,6 +1585,24 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             }
         }
 
+        INameStringPair IVectorLayerDefinition.GetPropertyMapping(string name)
+        {
+            foreach (var p in this.PropertyMapping)
+            {
+                if (p.Name == name)
+                    return p;
+            }
+            return null;
+        }
+
+        INameStringPair IVectorLayerDefinition.GetPropertyMappingAt(int index)
+        {
+            if (index < 0 || index >= this.PropertyMapping.Count)
+                throw new ArgumentOutOfRangeException();
+
+            var item = this.PropertyMapping[index];
+            return item;
+        }
 
         void IVectorLayerDefinition.AddVectorScaleRange(IVectorScaleRange range)
         {

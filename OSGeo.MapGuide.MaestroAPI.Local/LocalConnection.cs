@@ -391,7 +391,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         public override UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type)
         {
-            throw new NotImplementedException();
+            var resSvc = GetResourceService();
+            //HACK: The SWIG wrapper breaks down on null string parameters (apparently). So coalesce them.
+            var br = resSvc.EnumerateUnmanagedData(startpath ?? string.Empty, recursive, type.ToString(), filter ?? string.Empty);
+            var result = (UnmanagedDataList)base.DeserializeObject(typeof(UnmanagedDataList), new MgReadOnlyStream(new GetByteReaderMethod(() => { return br; })));
+            LogMethodCall("MgResourceService::EnumerateUnmanagedData", true, startpath, recursive.ToString(), type.ToString(), filter);
+            return result;
         }
 
         public override string TestConnection(string featuresource)

@@ -199,5 +199,93 @@ namespace Maestro.Editors.LayerDefinition
                 }
             }
         }
+
+        private static DataGridViewRow CloneRow(DataGridViewRow row)
+        {
+            var clone = (DataGridViewRow)row.Clone();
+            for (int i = 0; i < row.Cells.Count; i++)
+            {
+                clone.Cells[i].Value = row.Cells[i].Value;
+            }
+            return clone;
+        }
+
+        static bool IsMapped(DataGridViewRow row)
+        {
+            return row.Cells[0].Value != null && Convert.ToBoolean(row.Cells[0].Value);
+        }
+
+        private void btnMoveUp_Click(object sender, EventArgs e)
+        {
+            if (grdProperties.SelectedRows.Count == 1)
+            {
+                var row = grdProperties.SelectedRows[0];
+                var rowIdx = row.Index;
+                var idx = rowIdx - 1;
+                if (idx >= 0)
+                {
+                    grdProperties.ClearSelection();
+                    var swap = grdProperties.Rows[idx];
+                    grdProperties.Rows.RemoveAt(rowIdx);
+                    grdProperties.Rows.RemoveAt(idx);
+                    
+                    var rowClone = CloneRow(row);
+                    var swapClone = CloneRow(swap);
+                    grdProperties.Rows.Insert(idx, rowClone);
+                    grdProperties.Rows.Insert(rowIdx, swapClone);
+
+                    if (IsMapped(row) && IsMapped(swapClone))
+                    {
+                        var mp = _vl.GetPropertyMapping(row.Cells[1].Value.ToString());
+                        _vl.MoveUp(mp);
+                    }
+
+                    rowClone.Selected = true;
+                }
+            }
+        }
+
+        private void btnMoveDown_Click(object sender, EventArgs e)
+        {
+            if (grdProperties.SelectedRows.Count == 1)
+            {
+                var row = grdProperties.SelectedRows[0];
+                var rowIdx = row.Index;
+                var idx = rowIdx + 1;
+                if (idx < grdProperties.Rows.Count - 1)
+                {
+                    grdProperties.ClearSelection();
+                    var swap = grdProperties.Rows[idx];
+                    grdProperties.Rows.RemoveAt(idx);
+                    grdProperties.Rows.RemoveAt(rowIdx);
+
+                    var rowClone = CloneRow(row);
+                    var swapClone = CloneRow(swap);
+                    grdProperties.Rows.Insert(rowIdx, swapClone);
+                    grdProperties.Rows.Insert(idx, rowClone);
+
+                    if (IsMapped(row) && IsMapped(swapClone))
+                    {
+                        var mp = _vl.GetPropertyMapping(row.Cells[1].Value.ToString());
+                        _vl.MoveDown(mp);
+                    }
+
+                    rowClone.Selected = true;
+                }
+            }
+        }
+
+        private void grdProperties_SelectionChanged(object sender, EventArgs e)
+        {
+            btnMoveDown.Enabled = btnMoveUp.Enabled = false;
+            if (grdProperties.SelectedRows.Count == 1)
+            {
+                if (grdProperties.SelectedRows[0].Index > 0)
+                    btnMoveUp.Enabled = true;
+
+                if (grdProperties.SelectedRows[0].Index < grdProperties.Rows.Count - 1)
+                    btnMoveDown.Enabled = true;
+            }
+        }
     }
 }

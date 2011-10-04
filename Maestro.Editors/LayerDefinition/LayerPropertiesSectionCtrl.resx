@@ -150,6 +150,9 @@
   <data name="grdProperties.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 25</value>
   </data>
+  <data name="grdProperties.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
   <data name="grdProperties.Size" type="System.Drawing.Size, System.Drawing">
     <value>449, 267</value>
   </data>
@@ -169,7 +172,7 @@
     <value>0</value>
   </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>0, 0</value>
   </metadata>
   <data name="btnCheckAll.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -204,6 +207,9 @@
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
+  <data name="btnMoveUp.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnMoveUp.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -211,7 +217,10 @@
     <value>23, 22</value>
   </data>
   <data name="btnMoveUp.Text" xml:space="preserve">
-    <value>toolStripButton1</value>
+    <value>Move Up</value>
+  </data>
+  <data name="btnMoveDown.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="btnMoveDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -220,7 +229,7 @@
     <value>23, 22</value>
   </data>
   <data name="btnMoveDown.Text" xml:space="preserve">
-    <value>toolStripButton2</value>
+    <value>Move Down</value>
   </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -261,6 +270,9 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.HeaderText" xml:space="preserve">
+    <value>Layer Properties Visible in Viewer</value>
+  </data>
   <data name="&gt;&gt;btnCheckAll.Name" xml:space="preserve">
     <value>btnCheckAll</value>
   </data>
@@ -319,6 +331,6 @@
     <value>LayerPropertiesSectionCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=3.0.0.5334, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=4.0.0.6143, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
 </root>

@@ -460,6 +460,20 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         void RemovePropertyMapping(INameStringPair pair);
 
         /// <summary>
+        /// Gets the property mapping at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        INameStringPair GetPropertyMappingAt(int index);
+
+        /// <summary>
+        /// Gets the property mapping for the feature class property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        INameStringPair GetPropertyMapping(string name);
+
+        /// <summary>
         /// Gets the position of the specified pair in the order of property mappings
         /// </summary>
         /// <param name="pair"></param>
