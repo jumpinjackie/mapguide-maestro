@@ -43,7 +43,10 @@ namespace Maestro.Shared.UI
         public static Binding BindText(TextBoxBase txt, Binding b)
         {
             txt.DataBindings.Add(b);
-            txt.TextChanged += (sender, e) => { b.WriteValue(); };
+            txt.TextChanged += (sender, e) => 
+            { 
+                b.WriteValue(); 
+            };
 
             return b;
         }
@@ -58,7 +61,10 @@ namespace Maestro.Shared.UI
         public static Binding BindText(TextBoxBase txt, object dataSource, string dataMember)
         {
             var binding = txt.DataBindings.Add("Text", dataSource, dataMember);
-            txt.TextChanged += (sender, e) => { binding.WriteValue(); };
+            txt.TextChanged += (sender, e) => 
+            { 
+                binding.WriteValue(); 
+            };
 
             return binding;
         }

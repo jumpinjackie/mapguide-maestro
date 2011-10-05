@@ -80,13 +80,13 @@ namespace Maestro.Editors.WebLayout
             else
             {
                 //Not editable
-                txtTooltip.ReadOnly = true;
-                txtDescription.ReadOnly = true;
-                txtDisabledIcon.ReadOnly = true;
-                txtEnabledIcon.ReadOnly = true;
+                txtTooltip.ReadOnly = false;
+                txtDescription.ReadOnly = false;
+                txtDisabledIcon.ReadOnly = false;
+                txtEnabledIcon.ReadOnly = false;
                 txtName.ReadOnly = true;
-                txtTitle.ReadOnly = true;
-                txtTooltip.ReadOnly = true;
+                txtTitle.ReadOnly = false;
+                txtTooltip.ReadOnly = false;
 
                 tabProperties.TabPages.Remove(TAB_ADVANCED);
             }
