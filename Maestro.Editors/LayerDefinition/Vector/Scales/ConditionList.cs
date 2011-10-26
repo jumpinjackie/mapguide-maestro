@@ -317,23 +317,28 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             {
                 this.Controls.SetChildIndex(selectedControl, pos + (down ? -1 : 1));
 
-                System.Collections.IList ic = null;
-                if (m_point != null)
-                    ic = (System.Collections.IList)m_point.Rules;
-                else if (m_line != null)
-                    ic = (System.Collections.IList)m_line.Rules;
-                else if (m_area != null)
-                    ic = (System.Collections.IList)m_area.Rules;
-                else if (m_comp != null)
-                    ic = (System.Collections.IList)m_comp.CompositeRule;
-
-                pos = ic.IndexOf(selectedRule);
-                if ((!down && pos > 0) || (down && pos < ic.Count - 1 && pos > 0))
+                if (down)
                 {
-                    ic.RemoveAt(pos);
-                    ic.Insert(pos + (down ? 1 : -1), selectedRule);
+                    if (m_point != null)
+                        m_point.MoveDown((IPointRule)selectedRule);
+                    else if (m_line != null)
+                        m_line.MoveDown((ILineRule)selectedRule);
+                    else if (m_area != null)
+                        m_area.MoveDown((IAreaRule)selectedRule);
+                    else if (m_comp != null)
+                        m_comp.MoveDown((ICompositeRule)selectedRule);
                 }
-
+                else
+                {
+                    if (m_point != null)
+                        m_point.MoveUp((IPointRule)selectedRule);
+                    else if (m_line != null)
+                        m_line.MoveUp((ILineRule)selectedRule);
+                    else if (m_area != null)
+                        m_area.MoveUp((IAreaRule)selectedRule);
+                    else if (m_comp != null)
+                        m_comp.MoveUp((ICompositeRule)selectedRule);
+                }
             }
         }
 

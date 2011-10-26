@@ -697,7 +697,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// Style specification for a area geometry layer
     /// </summary>
-    public interface IAreaVectorStyle : IVectorStyle
+    public interface IAreaVectorStyle : IVectorStyle, IRuleCollection<IAreaRule>
     {
         /// <summary>
         /// Enumerates the rules in this specification
@@ -725,7 +725,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// Style specification for a line geometry layer
     /// </summary>
-    public interface ILineVectorStyle : IVectorStyle
+    public interface ILineVectorStyle : IVectorStyle, IRuleCollection<ILineRule>
     {
         /// <summary>
         /// Enumerates the rules in this specification
@@ -758,9 +758,41 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     }
 
     /// <summary>
+    /// Defines a collection of style rules
+    /// </summary>
+    /// <typeparam name="TRule">The type of the rule.</typeparam>
+    public interface IRuleCollection<TRule>
+    {
+        /// <summary>
+        /// Gets the index of the specified rule
+        /// </summary>
+        /// <param name="rule"></param>
+        /// <returns></returns>
+        int IndexOfRule(TRule rule);
+        /// <summary>
+        /// Gets the rule at the specified index
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
+        TRule GetRuleAt(int index);
+        /// <summary>
+        /// Moves the specified rule up the list
+        /// </summary>
+        /// <param name="rule">The rule.</param>
+        /// <returns></returns>
+        bool MoveUp(TRule rule);
+        /// <summary>
+        /// Moves the specified rule down the list
+        /// </summary>
+        /// <param name="rule">The rule.</param>
+        /// <returns></returns>
+        bool MoveDown(TRule rule);
+    }
+
+    /// <summary>
     /// Style specification for a point geometry layer
     /// </summary>
-    public interface IPointVectorStyle : IVectorStyle
+    public interface IPointVectorStyle : IVectorStyle, IRuleCollection<IPointRule>
     {
         /// <summary>
         /// Gets or sets whether to create a text layer
@@ -1620,7 +1652,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// Represents a composite style definition
     /// </summary>
-    public interface ICompositeTypeStyle : IVectorStyle
+    public interface ICompositeTypeStyle : IVectorStyle, IRuleCollection<ICompositeRule>
     {
         /// <summary>
         /// Gets the composite rules.

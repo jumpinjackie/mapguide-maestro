@@ -476,6 +476,78 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             get { return StyleType.Area; }
         }
+
+        #region IRuleCollection<IAreaRule> Members
+
+        public int IndexOfRule(IAreaRule rule)
+        {
+            var r = rule as AreaRuleType;
+            if (r != null)
+                return this.AreaRule.IndexOf(r);
+            return -1;
+        }
+
+        public IAreaRule GetRuleAt(int index)
+        {
+            return this.AreaRule[index];
+        }
+
+        public bool MoveUp(IAreaRule rule)
+        {
+            var r = rule as AreaRuleType;
+            if (r != null)
+            {
+                return CollectionUtil.MoveUp(this.AreaRule, r);
+            }
+            return false;
+        }
+
+        public bool MoveDown(IAreaRule rule)
+        {
+            var r = rule as AreaRuleType;
+            if (r != null)
+            {
+                return CollectionUtil.MoveDown(this.AreaRule, r);
+            }
+            return false;
+        }
+
+        #endregion
+    }
+
+    internal static class CollectionUtil
+    {
+        public static bool MoveUp<T>(IList<T> list, T obj)
+        {
+            var idx = list.IndexOf(obj);
+            if (idx == 0) //Already at top
+                return false;
+
+            var newIdx = idx - 1;
+            //Get object at index
+            var obj2 = list[newIdx];
+            //Swap them
+            list[idx] = obj2;
+            list[newIdx] = obj;
+
+            return true;
+        }
+
+        public static bool MoveDown<T>(IList<T> list, T obj)
+        {
+            var idx = list.IndexOf(obj);
+            if (idx == list.Count - 1) //Already at bottom
+                return false;
+
+            var newIdx = idx + 1;
+            //Get object at index
+            var obj2 = list[newIdx];
+            //Swap them
+            list[idx] = obj2;
+            list[newIdx] = obj;
+
+            return true;
+        }
     }
 
     partial class AreaRuleType : IAreaRule
@@ -559,6 +631,39 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             get { return StyleType.Point; }
         }
+
+        #region IRuleCollection<IPointRule> Members
+
+        public int IndexOfRule(IPointRule rule)
+        {
+            var pr = rule as PointRuleType;
+            if (pr != null)
+                return this.PointRule.IndexOf(pr);
+            return -1;
+        }
+
+        public IPointRule GetRuleAt(int index)
+        {
+            return this.PointRule[index];
+        }
+
+        public bool MoveUp(IPointRule rule)
+        {
+            var pr = rule as PointRuleType;
+            if (pr != null)
+                return CollectionUtil.MoveUp(this.PointRule, pr);
+            return false;
+        }
+
+        public bool MoveDown(IPointRule rule)
+        {
+            var pr = rule as PointRuleType;
+            if (pr != null)
+                return CollectionUtil.MoveDown(this.PointRule, pr);
+            return false;
+        }
+
+        #endregion
     }
 
 
@@ -657,6 +762,34 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             get { return StyleType.Line; }
         }
+
+        #region IRuleCollection<ILineRule> Members
+
+        public int IndexOfRule(ILineRule rule)
+        {
+            var lr = rule as LineRuleType;
+            if (lr != null)
+                return this.LineRule.IndexOf(lr);
+            return -1;
+        }
+
+        public bool MoveUp(ILineRule rule)
+        {
+            var lr = rule as LineRuleType;
+            if (lr != null)
+                return CollectionUtil.MoveUp(this.LineRule, lr);
+            return false;
+        }
+
+        public bool MoveDown(ILineRule rule)
+        {
+            var lr = rule as LineRuleType;
+            if (lr != null)
+                return CollectionUtil.MoveDown(this.LineRule, lr);
+            return false;
+        }
+
+        #endregion
     }
 
     partial class LineRuleType : ILineRule
@@ -1997,6 +2130,39 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             get { return this.CompositeRule.Count; }
         }
+
+        #region IRuleCollection<ICompositeRule> Members
+
+        public int IndexOfRule(ICompositeRule rule)
+        {
+            var cr = rule as CompositeRule;
+            if (cr != null)
+                return this.CompositeRule.IndexOf(cr);
+            return -1;
+        }
+
+        public ICompositeRule GetRuleAt(int index)
+        {
+            return this.CompositeRule[index];
+        }
+
+        public bool MoveUp(ICompositeRule rule)
+        {
+            var cr = rule as CompositeRule;
+            if (cr != null)
+                return CollectionUtil.MoveUp(this.CompositeRule, cr);
+            return false;
+        }
+
+        public bool MoveDown(ICompositeRule rule)
+        {
+            var cr = rule as CompositeRule;
+            if (cr != null)
+                return CollectionUtil.MoveDown(this.CompositeRule, cr);
+            return false;
+        }
+
+        #endregion
     }
 #endif
     #endregion
