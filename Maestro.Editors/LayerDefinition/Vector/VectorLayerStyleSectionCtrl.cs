@@ -263,14 +263,24 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     _update = true;
 
                     if (vsc.Item.MinScale.HasValue)
+                    {
                         cmbMinScale.Text = vsc.Item.MinScale.Value.ToString(CultureInfo.InvariantCulture);
+                    }
                     else
+                    {
                         cmbMinScale.SelectedIndex = 0;
+                        cmbMinScale.Text = cmbMinScale.SelectedItem.ToString();
+                    }
 
                     if (vsc.Item.MaxScale.HasValue)
+                    {
                         cmbMaxScale.Text = vsc.Item.MaxScale.Value.ToString(CultureInfo.InvariantCulture);
+                    }
                     else
+                    {
                         cmbMaxScale.SelectedIndex = 0;
+                        cmbMaxScale.Text = cmbMaxScale.SelectedItem.ToString();
+                    }
 
                     grpScaleRange.Text = string.Format("{0} ({1})", Properties.Resources.ScaleRange, vsc.ScaleDisplayString);
                     grpScaleRange.Controls.Clear();
