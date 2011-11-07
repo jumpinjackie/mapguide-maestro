@@ -34,6 +34,7 @@ using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using Ldf = OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using System.Collections.Specialized;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 {
@@ -228,22 +229,53 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     try
                     {
                         IVectorLayerDefinition vl = (IVectorLayerDefinition)m_layer.SubLayer;
-                        using (var rd = m_editor.FeatureService.QueryFeatureSource(vl.ResourceId, m_schema.QualifiedName, filter, new string[] { col.Name }))
+                        try
                         {
-                            while (rd.ReadNext() && m_values.Count < 100000) //No more than 100.000 records in memory
+                            //Either UNIQUE() is an undocumented FDO expression function (!!!)
+                            //Or it is FDO expression sugar to work around the fact there is no distinct
+                            //flag in the SELECTAGGREGATES operation that's exposed over HTTP. Either
+                            //case, try this method first.
+                            using (var rd = m_editor.FeatureService.AggregateQueryFeatureSource(
+                                                    vl.ResourceId, 
+                                                    m_schema.QualifiedName, 
+                                                    filter, 
+                                                    new NameValueCollection() {
+                                                        { "value", "UNIQUE(\"" + col.Name + "\")" } 
+                                                    }))
                             {
-                                if (!rd.IsNull(col.Name))
+                                while (rd.ReadNext() && m_values.Count < 100000) //No more than 100.000 records in memory
                                 {
-                                    object value = rd[col.Name];
-                                    if (!m_values.ContainsKey(value))
-                                        m_values.Add(value, 0);
+                                    if (!rd.IsNull("value"))
+                                    {
+                                        object value = rd["value"];
+                                        if (!m_values.ContainsKey(value))
+                                            m_values.Add(value, 0);
 
-                                    m_values[value]++;
+                                        m_values[value]++;
+                                    }
                                 }
+                                rd.Close();
                             }
-                            rd.Close();
                         }
+                        catch
+                        {
+                            
+                            using (var rd = m_editor.FeatureService.QueryFeatureSource(vl.ResourceId, m_schema.QualifiedName, filter, new string[] { col.Name }))
+                            {
+                                while (rd.ReadNext() && m_values.Count < 100000) //No more than 100.000 records in memory
+                                {
+                                    if (!rd.IsNull(col.Name))
+                                    {
+                                        object value = rd[col.Name];
+                                        if (!m_values.ContainsKey(value))
+                                            m_values.Add(value, 0);
 
+                                        m_values[value]++;
+                                    }
+                                }
+                                rd.Close();
+                            }
+                        }
                         rawEx = null; //Clear error
 
                     }

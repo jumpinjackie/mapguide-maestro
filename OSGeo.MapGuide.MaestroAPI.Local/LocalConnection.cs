@@ -652,7 +652,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 foreach (string s in computedProperties.Keys)
                     mgf.AddComputedProperty(s, computedProperties[s]);
 
-            MgFeatureReader mr = fes.SelectFeatures(new MgResourceIdentifier(resourceID), schema, mgf);
+            var fsId = new MgResourceIdentifier(resourceID);
+            MgFeatureReader mr = fes.SelectFeatures(fsId, schema, mgf);
 
             LogMethodCall("MgFeatureService::SelectFeatures", true, resourceID, schema, "MgFeatureQueryOptions");
 

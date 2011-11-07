@@ -1268,4 +1268,10 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="PromptRepairBrokenFeatureSource" xml:space="preserve">
     <value>The resource id {0} could not be found. You will now be prompted to select the correct feature source</value>
   </data>
+  <data name="PreviewQueryElapsed" xml:space="preserve">
+    <value>Preview Completed in {0}ms</value>
+  </data>
+  <data name="PreviewRecordCount" xml:space="preserve">
+    <value>{0} results found</value>
+  </data>
 </root>

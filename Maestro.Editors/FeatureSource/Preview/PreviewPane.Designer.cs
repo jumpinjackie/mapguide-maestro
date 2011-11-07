@@ -35,9 +35,12 @@
             this.btnClear = new System.Windows.Forms.ToolStripButton();
             this.queryPane = new System.Windows.Forms.Panel();
             this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.lblCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblElapsed = new System.Windows.Forms.ToolStripStatusLabel();
             this.grdResults = new System.Windows.Forms.DataGridView();
             this.queryWorker = new System.ComponentModel.BackgroundWorker();
             this.toolStrip1.SuspendLayout();
+            this.statusBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdResults)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,8 +81,22 @@
             // 
             // statusBar
             // 
+            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblCount,
+            this.lblElapsed});
             resources.ApplyResources(this.statusBar, "statusBar");
             this.statusBar.Name = "statusBar";
+            // 
+            // lblCount
+            // 
+            this.lblCount.Name = "lblCount";
+            resources.ApplyResources(this.lblCount, "lblCount");
+            // 
+            // lblElapsed
+            // 
+            this.lblElapsed.Name = "lblElapsed";
+            resources.ApplyResources(this.lblElapsed, "lblElapsed");
+            this.lblElapsed.Spring = true;
             // 
             // grdResults
             // 
@@ -108,6 +125,8 @@
             resources.ApplyResources(this, "$this");
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.statusBar.ResumeLayout(false);
+            this.statusBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdResults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -124,5 +143,7 @@
         private System.Windows.Forms.ToolStripButton btnStop;
         private System.Windows.Forms.ToolStripButton btnClear;
         private System.ComponentModel.BackgroundWorker queryWorker;
+        private System.Windows.Forms.ToolStripStatusLabel lblCount;
+        private System.Windows.Forms.ToolStripStatusLabel lblElapsed;
     }
 }

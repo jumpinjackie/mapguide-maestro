@@ -100,6 +100,7 @@ namespace Maestro.Editors.FeatureSource.Preview
             btnClear.Enabled = false;
             btnStop.Enabled = true;
             btnRunQuery.Enabled = false;
+            lblCount.Text = lblElapsed.Text = string.Empty;
             queryWorker.RunWorkerAsync();
         }
 
@@ -122,8 +123,10 @@ namespace Maestro.Editors.FeatureSource.Preview
                 InitTable(reader, res.Result);
                 while (reader.ReadNext())
                 {
-                    if (e.Cancel)
+                    if (queryWorker.CancellationPending)
                     {
+                        e.Cancel = true;
+                        _cancelResult = res.Result;
                         break;
                     }
 
@@ -142,6 +145,10 @@ namespace Maestro.Editors.FeatureSource.Preview
             {
                 reader.Close();
                 sw.Stop();
+                if (queryWorker.CancellationPending)
+                {
+                    _cancelDuration = sw.Elapsed;
+                }
             }
             e.Result = res;
         }
@@ -158,6 +165,9 @@ namespace Maestro.Editors.FeatureSource.Preview
             }
         }
 
+        DataTable _cancelResult;
+        TimeSpan? _cancelDuration;
+
         private void queryWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Error != null)
@@ -166,10 +176,21 @@ namespace Maestro.Editors.FeatureSource.Preview
             }
             else
             {
-                var res = e.Result as QueryResult;
-                if (res != null)
+                if (e.Cancelled)
                 {
-                    grdResults.DataSource = res.Result;
+                    grdResults.DataSource = _cancelResult;
+                    lblElapsed.Text = string.Format(Properties.Resources.PreviewQueryElapsed, _cancelDuration.Value.TotalMilliseconds);
+                    lblCount.Text = string.Format(Properties.Resources.PreviewRecordCount, _cancelResult.Rows.Count);
+                }
+                else
+                {
+                    var res = e.Result as QueryResult;
+                    if (res != null)
+                    {
+                        grdResults.DataSource = res.Result;
+                        lblElapsed.Text = string.Format(Properties.Resources.PreviewQueryElapsed, res.Duration.TotalMilliseconds);
+                        lblCount.Text = string.Format(Properties.Resources.PreviewRecordCount, res.Result.Rows.Count);
+                    }
                 }
             }
 

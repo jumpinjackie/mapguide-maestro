@@ -1565,27 +1565,32 @@ namespace OSGeo.MapGuide.MaestroAPI
                 fun.Add("extent", "SpatialExtents(\"" + geometry + "\")");
                 using (IReader fsr = AggregateQueryFeatureSource(resourceID, schema, filter, fun))
                 {
-                    if (fsr.ReadNext())
+                    try
                     {
-                        IGeometry geom = fsr["extent"] as IGeometry;
-                        if (geom == null)
+                        if (fsr.ReadNext())
                         {
-                            throw new Exception("No data found in resource: " + resourceID);
+                            IGeometry geom = fsr["extent"] as IGeometry;
+                            if (geom == null)
+                            {
+                                throw new Exception("No data found in resource: " + resourceID);
+                            }
+                            else
+                            {
+                                var env = geom.EnvelopeInternal;
+                                return OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateEnvelope(
+                                    env.MinX,
+                                    env.MinY,
+                                    env.MaxX,
+                                    env.MaxY);
+                            }
                         }
                         else
-                        {
-                            var env = geom.EnvelopeInternal;
-                            return OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateEnvelope(
-                                env.MinX,
-                                env.MinY,
-                                env.MaxX,
-                                env.MaxY);
-                        }
+                            throw new Exception("No data found in resource: " + resourceID);
                     }
-                    else
-                        throw new Exception("No data found in resource: " + resourceID);
-
-                    fsr.Close();
+                    finally
+                    {
+                        fsr.Close();
+                    }
                 }
             }
             catch
