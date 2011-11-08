@@ -82,7 +82,6 @@
             // 
             this.lstDataFiles.AllowDrop = true;
             resources.ApplyResources(this.lstDataFiles, "lstDataFiles");
-            this.lstDataFiles.MultiSelect = false;
             this.lstDataFiles.Name = "lstDataFiles";
             this.lstDataFiles.ShowItemToolTips = true;
             this.lstDataFiles.SmallImageList = this.imgIcons;

@@ -55,10 +55,11 @@ namespace Maestro.Editors.Common
 
         private void EvaluateCommands()
         {
+            var items = this.SelectedItems;
             btnAdd.Enabled = (_edSvc != null);
-            btnDelete.Enabled = (_edSvc != null && this.SelectedItem != null);
-            btnDownload.Enabled = (_edSvc != null && this.SelectedItem != null);
-            btnMark.Enabled = (this.SelectedItem != null);
+            btnDelete.Enabled = (_edSvc != null && items.Length > 0);
+            btnDownload.Enabled = (_edSvc != null && items.Length == 1);
+            btnMark.Enabled = (items.Length == 1);
         }
 
         private IEditorService _edSvc;
@@ -74,6 +75,19 @@ namespace Maestro.Editors.Common
                     return lstDataFiles.SelectedItems[0].Tag as ResourceDataListResourceData;
                 }
                 return null;
+            }
+        }
+
+        private ResourceDataListResourceData[] SelectedItems
+        {
+            get
+            {
+                var items = new List<ResourceDataListResourceData>();
+                foreach(ListViewItem selItem in lstDataFiles.SelectedItems)
+                {
+                    items.Add(selItem.Tag as ResourceDataListResourceData);
+                }
+                return items.ToArray();
             }
         }
 
@@ -202,8 +216,8 @@ namespace Maestro.Editors.Common
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var item = this.SelectedItem;
-            if (item != null)
+            var items = this.SelectedItems;
+            if (items.Length > 0)
             {
                 if (MessageBox.Show(Properties.Resources.ConfirmDeleteResourceData, Properties.Resources.Confirm, MessageBoxButtons.YesNo) == DialogResult.No)
                     return;
@@ -212,10 +226,13 @@ namespace Maestro.Editors.Common
                 {
                     using (new WaitCursor(this))
                     {
-                        //_edSvc.RemoveResourceData(item.Name);
-                        IResource res = _edSvc.GetEditedResource();
-                        res.DeleteResourceData(item.Name);
-                        _data.Remove(item);
+                        foreach (var item in items)
+                        {
+                            //_edSvc.RemoveResourceData(item.Name);
+                            IResource res = _edSvc.GetEditedResource();
+                            res.DeleteResourceData(item.Name);
+                            _data.Remove(item);
+                        }
                         BindResourceList();
                         OnDataListChanged();
                     }
