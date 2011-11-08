@@ -69,6 +69,7 @@
     <Compile Include="Commands\CreatePackageCommand.cs" />
     <Compile Include="Commands\CutCommand.cs" />
     <Compile Include="Commands\EditAsXmlCommand.cs" />
+    <Compile Include="Commands\EditPackageCommand.cs" />
     <Compile Include="Commands\LoadPackageCommand.cs" />
     <Compile Include="Commands\LocalFeatureSourcePreviewCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
@@ -385,6 +386,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maestro.Base.addin" />
+    <None Include="Resources\box--pencil.png" />
     <None Include="Resources\Contributors.txt" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\marker.png" />

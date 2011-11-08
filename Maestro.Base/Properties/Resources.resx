@@ -1070,4 +1070,10 @@ Error message: {1}</value>
   <data name="PromptOverwriteOnTargetConnection" xml:space="preserve">
     <value>There are {0} already existing resources that have the same name. Do you want to overwrite these resources?</value>
   </data>
+  <data name="EditPackage" xml:space="preserve">
+    <value>Package Editor</value>
+  </data>
+  <data name="box__pencil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\box--pencil.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

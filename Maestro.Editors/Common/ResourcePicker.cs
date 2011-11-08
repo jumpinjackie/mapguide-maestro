@@ -38,18 +38,6 @@ namespace Maestro.Editors.Generic
     /// </summary>
     public partial class ResourcePicker : Form
     {
-        const int RES_UNKNOWN = 0;
-        const int RES_FEATURESOURCE = 1;
-        const int RES_LAYERDEFINITION = 2;
-        const int RES_MAPDEFINITION = 3;
-        const int RES_WEBLAYOUT = 4;
-        const int RES_SYMBOLLIBRARY = 5;
-        const int RES_PRINTLAYOUT = 6;
-        const int RES_DRAWINGSOURCE = 7;
-        const int RES_APPLICATIONDEFINITION = 8;
-        const int RES_SYMBOLDEFINITION = 9;
-        const int RES_WATERMARK = 10;
-
         private ResourceTypes[] _resTypes;
 
         private ResourcePicker()
@@ -71,6 +59,8 @@ namespace Maestro.Editors.Generic
                 ResourceTypes.WatermarkDefinition
             };
             cmbResourceFilter.DataSource = _resTypes;
+            RepositoryIcons.PopulateImageList(resImageList);
+            RepositoryIcons.PopulateImageList(folderImageList);
         }
 
         private IResourceService _resSvc;
@@ -347,46 +337,11 @@ namespace Maestro.Editors.Generic
                 try
                 {
                     var rt = ResourceIdentifier.GetResourceType(doc.ResourceId);
-                    switch (rt)
-                    {
-                        case ResourceTypes.ApplicationDefinition:
-                            li.ImageIndex = RES_APPLICATIONDEFINITION;
-                            break;
-                        case ResourceTypes.DrawingSource:
-                            li.ImageIndex = RES_DRAWINGSOURCE;
-                            break;
-                        case ResourceTypes.FeatureSource:
-                            li.ImageIndex = RES_FEATURESOURCE;
-                            break;
-                        case ResourceTypes.LayerDefinition:
-                            li.ImageIndex = RES_LAYERDEFINITION;
-                            break;
-                        case ResourceTypes.MapDefinition:
-                            li.ImageIndex = RES_MAPDEFINITION;
-                            break;
-                        case ResourceTypes.PrintLayout:
-                            li.ImageIndex = RES_PRINTLAYOUT;
-                            break;
-                        case ResourceTypes.SymbolLibrary:
-                            li.ImageIndex = RES_SYMBOLLIBRARY;
-                            break;
-                        case ResourceTypes.WebLayout:
-                            li.ImageIndex = RES_WEBLAYOUT;
-                            break;
-                        case ResourceTypes.SymbolDefinition:
-                            li.ImageIndex = RES_SYMBOLDEFINITION;
-                            break;
-                        case ResourceTypes.WatermarkDefinition:
-                            li.ImageIndex = RES_WATERMARK;
-                            break;
-                        default:
-                            li.ImageIndex = RES_UNKNOWN;
-                            break;
-                    }
+                    li.ImageIndex = RepositoryIcons.GetImageIndexForResourceType(rt);
                 }
                 catch
                 {
-                    li.ImageIndex = RES_UNKNOWN;
+                    li.ImageIndex = RepositoryIcons.RES_UNKNOWN;
                 }
 
                 lstResources.Items.Add(li);
@@ -581,16 +536,13 @@ namespace Maestro.Editors.Generic
             }
         }
 
-        const int IDX_SERVER = 0;
-        const int IDX_FOLDER = 1;
-
         private static TreeNode CreateNode(RepositoryFolder folder)
         {
             var node = new TreeNode();
             node.Name = folder.Name;
             node.Text = folder.Name;
             node.Tag = folder;
-            node.ImageIndex = node.SelectedImageIndex = folder.IsRoot ? IDX_SERVER : IDX_FOLDER;
+            node.ImageIndex = node.SelectedImageIndex = folder.IsRoot ? RepositoryIcons.RES_ROOT : RepositoryIcons.RES_FOLDER;
             node.Nodes.Add(new DummyNode());
             return node;
         }

@@ -862,7 +862,7 @@ namespace Maestro.Packaging
                         {
                             if (string.IsNullOrEmpty(ri.Headerpath))
                             {
-                                filemap.Add(new KeyValuePair<string, string>(headerpath, System.IO.Path.Combine(tempfolder, Guid.NewGuid().ToString())));
+                                filemap.Add(new KeyValuePair<string, string>(headerpath, System.IO.Path.Combine(tempfolder, ri.GenerateUniqueName())));
                                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
                                 {
                                     byte[] data = System.Text.Encoding.UTF8.GetBytes(DEFAULT_HEADER);
@@ -882,7 +882,7 @@ namespace Maestro.Packaging
                         {
                             if (string.IsNullOrEmpty(ri.Headerpath))
                             {
-                                filemap.Add(new KeyValuePair<string, string>(headerpath, System.IO.Path.Combine(tempfolder, Guid.NewGuid().ToString())));
+                                filemap.Add(new KeyValuePair<string, string>(headerpath, System.IO.Path.Combine(tempfolder, ri.GenerateUniqueName())));
                                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
                                 {
                                     byte[] data = System.Text.Encoding.UTF8.GetBytes(DEFAULT_HEADER);
@@ -895,7 +895,7 @@ namespace Maestro.Packaging
                                 if (index < 0)
                                     throw new Exception(string.Format(Properties.Resources.FileMissingError, ri.Headerpath));
 
-                                filemap.Add(new KeyValuePair<string, string>(headerpath, System.IO.Path.Combine(tempfolder, Guid.NewGuid().ToString())));
+                                filemap.Add(new KeyValuePair<string, string>(headerpath, System.IO.Path.Combine(tempfolder, ri.GenerateUniqueName())));
                                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
                                     Utility.CopyStream(zipfile.GetInputStream(index), fs);
                             }
@@ -906,7 +906,7 @@ namespace Maestro.Packaging
                                 if (index < 0)
                                     throw new Exception(string.Format(Properties.Resources.FileMissingError, ri.Contentpath));
 
-                                filemap.Add(new KeyValuePair<string, string>(contentpath, System.IO.Path.Combine(tempfolder, Guid.NewGuid().ToString())));
+                                filemap.Add(new KeyValuePair<string, string>(contentpath, System.IO.Path.Combine(tempfolder, ri.GenerateUniqueName())));
                                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
                                     Utility.CopyStream(zipfile.GetInputStream(index), fs);
                             }
@@ -921,7 +921,10 @@ namespace Maestro.Packaging
                             string targetpath = filebase + "_DATA_" + EncodeFilename(rdi.ResourceName);
                             if (rdi.EntryType == EntryTypeEnum.Added)
                             {
-                                filemap.Add(new KeyValuePair<string, string>(targetpath, System.IO.Path.Combine(tempfolder, Guid.NewGuid().ToString())));
+                                var tempFilePath = System.IO.Path.Combine(tempfolder, ri.GenerateUniqueName());
+                                filemap.Add(new KeyValuePair<string, string>(targetpath, tempFilePath));
+                                if (File.Exists(rdi.Filename)) 
+                                    File.Copy(rdi.Filename, tempFilePath);
                             }
                             else
                             {
@@ -929,7 +932,7 @@ namespace Maestro.Packaging
                                 if (index < 0)
                                     throw new Exception(string.Format(Properties.Resources.FileMissingError, rdi.Filename));
 
-                                filemap.Add(new KeyValuePair<string, string>(targetpath, System.IO.Path.Combine(tempfolder, Guid.NewGuid().ToString())));
+                                filemap.Add(new KeyValuePair<string, string>(targetpath, System.IO.Path.Combine(tempfolder, ri.GenerateUniqueName())));
                                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
                                     Utility.CopyStream(zipfile.GetInputStream(index), fs);
                             }
@@ -991,6 +994,7 @@ namespace Maestro.Packaging
                 manifest.Operations.Operation = new System.ComponentModel.BindingList<ResourcePackageManifestOperationsOperation>();
 
                 foreach (ResourceItem ri in items)
+                {
                     if (ri.IsFolder)
                     {
                         AddFolderResource(
@@ -1009,6 +1013,7 @@ namespace Maestro.Packaging
                             insertEraseCommands);
 
                         foreach (ResourceDataItem rdi in ri.Items)
+                        {
                             AddResourceData(
                                 manifest,
                                 ri.ResourcePath,
@@ -1017,7 +1022,9 @@ namespace Maestro.Packaging
                                 rdi.ResourceName,
                                 RelativeName(rdi.Filename, tempfolder).Replace('\\', '/'),
                                 new System.IO.FileInfo(filemap_lookup[rdi.Filename]).Length);
+                        }
                     }
+                }
 
                 filemap.Add(new KeyValuePair<string, string>(System.IO.Path.Combine(tempfolder, "MgResourcePackageManifest.xml"), System.IO.Path.Combine(tempfolder, Guid.NewGuid().ToString())));
                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))

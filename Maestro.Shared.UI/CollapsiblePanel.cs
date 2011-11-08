@@ -117,8 +117,8 @@ namespace Maestro.Shared.UI
         [Category("Collapsible Panel")]
         public bool CanCollapse
         {
-            get { return btnCollapse.Visible; }
-            set { btnCollapse.Visible = value; }
+            get { return btnCollapse.Visible && btnExpand.Visible; }
+            set { btnCollapse.Visible = btnExpand.Visible = value; }
         }
 
         private bool _collapsed;

@@ -237,6 +237,10 @@
                       icon="box__arrow"
                       label="${res:Menu_Package_LoadPackage}"
                       class="Maestro.Base.Commands.LoadPackageCommand" />
+            <MenuItem id="EditPackage"
+                      label="${res:EditPackage}"
+                      icon="box__pencil"
+                      class="Maestro.Base.Commands.EditPackageCommand"/>
         </MenuItem>
         <MenuItem id="Menu_Help"
                   type="Menu"

@@ -84,19 +84,9 @@
             // 
             // resImageList
             // 
-            this.resImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("resImageList.ImageStream")));
+            this.resImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            resources.ApplyResources(this.resImageList, "resImageList");
             this.resImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.resImageList.Images.SetKeyName(0, "document.png");
-            this.resImageList.Images.SetKeyName(1, "database-share.png");
-            this.resImageList.Images.SetKeyName(2, "layer.png");
-            this.resImageList.Images.SetKeyName(3, "map.png");
-            this.resImageList.Images.SetKeyName(4, "application-browser.png");
-            this.resImageList.Images.SetKeyName(5, "images-stack.png");
-            this.resImageList.Images.SetKeyName(6, "printer.png");
-            this.resImageList.Images.SetKeyName(7, "blueprints.png");
-            this.resImageList.Images.SetKeyName(8, "applications-stack.png");
-            this.resImageList.Images.SetKeyName(9, "marker.png");
-            this.resImageList.Images.SetKeyName(10, "edit.png");
             // 
             // btnOK
             // 
@@ -170,10 +160,9 @@
             // 
             // folderImageList
             // 
-            this.folderImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("folderImageList.ImageStream")));
+            this.folderImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            resources.ApplyResources(this.folderImageList, "folderImageList");
             this.folderImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.folderImageList.Images.SetKeyName(0, "server.png");
-            this.folderImageList.Images.SetKeyName(1, "folder-horizontal.png");
             // 
             // label2
             // 

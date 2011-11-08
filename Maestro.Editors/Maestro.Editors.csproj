@@ -893,6 +893,24 @@
     </Compile>
     <Compile Include="Migration\NsDoc.cs" />
     <Compile Include="NsDoc.cs" />
+    <Compile Include="Packaging\AddResourceEntryDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Packaging\AddResourceEntryDialog.designer.cs">
+      <DependentUpon>AddResourceEntryDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Packaging\EditResourceDataEntryDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Packaging\EditResourceDataEntryDialog.designer.cs">
+      <DependentUpon>EditResourceDataEntryDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Packaging\PackageEditorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Packaging\PackageEditorDialog.designer.cs">
+      <DependentUpon>PackageEditorDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrintLayout\LogoDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -937,6 +955,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RepositoryHandle.cs" />
+    <Compile Include="RepositoryIcons.cs" />
     <Compile Include="ResourceEditorServiceBase.cs" />
     <Compile Include="SymbolDefinition\AdvancedSettingsCtrl.cs">
       <SubType>UserControl</SubType>
@@ -2206,6 +2225,14 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\disk.png" />
+    <None Include="Resources\printer.png" />
+    <None Include="Resources\map.png" />
+    <None Include="Resources\images-stack.png" />
+    <None Include="Resources\database-share.png" />
+    <None Include="Resources\blueprints.png" />
+    <None Include="Resources\applications-stack.png" />
+    <None Include="Resources\application-browser.png" />
     <None Include="Resources\color.png" />
     <EmbeddedResource Include="Common\ColorPickerDialog.resx">
       <DependentUpon>ColorPickerDialog.cs</DependentUpon>
@@ -2218,6 +2245,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MapDefinition\ExtentCalculationDialog.resx">
       <DependentUpon>ExtentCalculationDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Packaging\AddResourceEntryDialog.resx">
+      <DependentUpon>AddResourceEntryDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Packaging\EditResourceDataEntryDialog.resx">
+      <DependentUpon>EditResourceDataEntryDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Packaging\PackageEditorDialog.resx">
+      <DependentUpon>PackageEditorDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\areas\Acad_iso02w100.png" />
     <EmbeddedResource Include="Resources\areas\Acad_iso03w100.png" />

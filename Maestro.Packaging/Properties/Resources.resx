@@ -117,9 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AlternateNameMissing" xml:space="preserve">
+    <value>You must enter a alternate name, or remove the checkmark</value>
+    <comment>A message displayed when the user has not entered an alternate name for a resource</comment>
+  </data>
   <data name="CancelConfirmation" xml:space="preserve">
     <value>Do you want to cancel?</value>
     <comment>A confirmation message displayed when the user presses the cancel button</comment>
+  </data>
+  <data name="ContentFileMissing" xml:space="preserve">
+    <value>The content file does not exist</value>
+    <comment>A message displayed when the user selects a non-existing file</comment>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Do you want to remove the selected item?</value>
+    <comment>A confirmation message displayed when deleting a resource</comment>
+  </data>
+  <data name="FileCopyError" xml:space="preserve">
+    <value>An error occured while copying file: {0}</value>
+    <comment>A message displayed when a file copy fails</comment>
   </data>
   <data name="FileMissingError" xml:space="preserve">
     <value>Failed to find file {0} in archive</value>
@@ -129,9 +145,37 @@
     <value>Filename "{0}" is not relative to "{1}"</value>
     <comment>An internal error that is displayed when a filename inconsistency is encountered</comment>
   </data>
+  <data name="FilenameValidationError" xml:space="preserve">
+    <value>Failed to validate the filenames: {0}</value>
+    <comment>A message displayed when the user enters an invalid filename</comment>
+  </data>
+  <data name="FiletypeAll" xml:space="preserve">
+    <value>All files ({0})</value>
+    <comment>The text displayed when browsing for all file types</comment>
+  </data>
+  <data name="FiletypeMGP" xml:space="preserve">
+    <value>MapGuide Packages ({0})</value>
+    <comment>The text displayed when browsing for MGP files</comment>
+  </data>
+  <data name="FiletypeZip" xml:space="preserve">
+    <value>Zip files ({0})</value>
+    <comment>The text displayed when browsing for zip files</comment>
+  </data>
+  <data name="HeaderFileMissing" xml:space="preserve">
+    <value>The header file does not exist</value>
+    <comment>A message displayed when the user selects a non-existing file</comment>
+  </data>
   <data name="InvalidPackageFileError" xml:space="preserve">
     <value>Failed to locate file MgResourcePackageManifest.xml in zip file. Most likely the file is not a MapGuide package.</value>
     <comment>An error message that is displayed if the package file is invalid</comment>
+  </data>
+  <data name="NewFolder" xml:space="preserve">
+    <value>New folder</value>
+    <comment>The default name of a new folder</comment>
+  </data>
+  <data name="PackageBuildError" xml:space="preserve">
+    <value>An error occured while building package: {0}</value>
+    <comment>A message displayed when the package creation fails</comment>
   </data>
   <data name="PackageOperationsFailed" xml:space="preserve">
     <value>{0} Package Operations Failed</value>
@@ -195,6 +239,10 @@
   <data name="ProgressWaitingForServer" xml:space="preserve">
     <value>Awating server processing ...</value>
     <comment>A message that is displayed after the file is uploaded, and the server restores the file</comment>
+  </data>
+  <data name="SelectPackageFile" xml:space="preserve">
+    <value>Select the package file to edit</value>
+    <comment>The title of the dialog that the is used to pick the package file to edit</comment>
   </data>
   <data name="TitleUploading" xml:space="preserve">
     <value>Uploading Package</value>

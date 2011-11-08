@@ -140,5 +140,10 @@ namespace Maestro.Packaging
             get { return m_headerpath; }
             set { m_headerpath = value; }
         }
+
+        internal string GenerateUniqueName()
+        {
+            return this.ResourcePath.Replace("://", "_").Replace("/", "_").Replace(".", "_") + Guid.NewGuid().ToString();
+        }
     }
 }
