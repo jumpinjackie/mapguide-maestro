@@ -27,7 +27,7 @@ namespace Maestro.Packaging
     {
         public ICollection<PackageOperation> Successful { get; private set; }
 
-        public ICollection<PackageOperation> Failed { get; private set; }
+        public Dictionary<PackageOperation, Exception> Failed { get; private set; }
 
         public ICollection<PackageOperation> SkipOperations { get; private set; }
 
@@ -36,7 +36,7 @@ namespace Maestro.Packaging
         public UploadPackageResult(IEnumerable<PackageOperation> skip)
         {
             this.Successful = new List<PackageOperation>();
-            this.Failed = new List<PackageOperation>();
+            this.Failed = new Dictionary<PackageOperation, Exception>();
             this.SkipOperations = new List<PackageOperation>(skip);
         }
     }

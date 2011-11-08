@@ -43,7 +43,14 @@ namespace Maestro.Packaging
             lblFailed.Text = string.Format(Properties.Resources.PackageOperationsFailed, result.Failed.Count);
             lblSkipped.Text = string.Format(Properties.Resources.PackageOperationsSkipped, result.SkipOperations.Count);
             lblSucceeded.Text = string.Format(Properties.Resources.PackageOperationsSucceeded, result.Successful.Count);
-            grdFailed.DataSource = result.Failed;
+            //grdFailed.DataSource = result.Failed;
+            grdFailed.Columns.Add("Resource ID", "Resource ID");
+            grdFailed.Columns.Add("Operation", "Operation");
+            grdFailed.Columns.Add("Error", "Error");
+            foreach (var op in result.Failed.Keys)
+            {
+                grdFailed.Rows.Add(op.ResourceId, op.OperationName, result.Failed[op].ToString());
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)

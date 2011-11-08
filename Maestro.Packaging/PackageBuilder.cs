@@ -211,41 +211,48 @@ namespace Maestro.Packaging
                     case "SETRESOURCE":
                         {
                             SetResourcePackageOperation sop = (SetResourcePackageOperation)op;
-                            ZipEntry contentEntry = package.GetEntry(sop.Content);
-                            ZipEntry headerEntry = null;
-
-                            if (!string.IsNullOrEmpty(sop.Header))
-                                headerEntry = package.GetEntry(sop.Header);
-
-                            try
+                            if (sop.Content == null)
                             {
-                                using (var s = package.GetInputStream(contentEntry))
-                                {
-                                    m_connection.ResourceService.SetResourceXmlData(op.ResourceId, s);
-                                    progress(ProgressType.SetResource, op.ResourceId, 100, step);
-                                }
+                                skipOps[sop] = sop;
+                            }
+                            else
+                            {
+                                ZipEntry contentEntry = package.GetEntry(sop.Content);
+                                ZipEntry headerEntry = null;
 
-                                if (headerEntry != null)
+                                if (!string.IsNullOrEmpty(sop.Header))
+                                    headerEntry = package.GetEntry(sop.Header);
+
+                                try
                                 {
-                                    using (var s = package.GetInputStream(headerEntry))
+                                    using (var s = package.GetInputStream(contentEntry))
                                     {
-                                        using (var sr = new StreamReader(s))
+                                        m_connection.ResourceService.SetResourceXmlData(op.ResourceId, s);
+                                        progress(ProgressType.SetResource, op.ResourceId, 100, step);
+                                    }
+
+                                    if (headerEntry != null)
+                                    {
+                                        using (var s = package.GetInputStream(headerEntry))
                                         {
-                                            ResourceDocumentHeaderType header = ResourceDocumentHeaderType.Deserialize(sr.ReadToEnd());
-                                            m_connection.ResourceService.SetResourceHeader(op.ResourceId, header);
-                                            progress(ProgressType.SetResource, op.ResourceId, 100, step);
+                                            using (var sr = new StreamReader(s))
+                                            {
+                                                ResourceDocumentHeaderType header = ResourceDocumentHeaderType.Deserialize(sr.ReadToEnd());
+                                                m_connection.ResourceService.SetResourceHeader(op.ResourceId, header);
+                                                progress(ProgressType.SetResource, op.ResourceId, 100, step);
+                                            }
                                         }
                                     }
-                                }
 
-                                result.Successful.Add(op);
-                            }
-                            catch (Exception)
-                            {
-                                //We don't really care about the header. We consider failure if the
-                                //content upload did not succeed
-                                if (!m_connection.ResourceService.ResourceExists(op.ResourceId))
-                                    result.Failed.Add(op);
+                                    result.Successful.Add(op);
+                                }
+                                catch (Exception ex)
+                                {
+                                    //We don't really care about the header. We consider failure if the
+                                    //content upload did not succeed
+                                    if (!m_connection.ResourceService.ResourceExists(op.ResourceId))
+                                        result.Failed.Add(op, ex);
+                                }
                             }
                         }
                         break;
@@ -264,7 +271,7 @@ namespace Maestro.Packaging
 
                                 result.Successful.Add(op);
                             }
-                            catch (Exception)
+                            catch (Exception ex)
                             {
                                 var resData = m_connection.ResourceService.EnumerateResourceData(sop.ResourceId);
                                 bool found = false;
@@ -279,7 +286,7 @@ namespace Maestro.Packaging
                                 }
 
                                 if (!found)
-                                    result.Failed.Add(sop);
+                                    result.Failed.Add(sop, ex);
                             }
                         }
                         break;
@@ -1180,7 +1187,7 @@ namespace Maestro.Packaging
             unchecked
             {
                 int hash = 17;
-                hash = hash * 23 + this.Content.GetHashCode();
+                hash = hash * 23 + (this.Content ?? "").GetHashCode();
                 if (this.Header != null)
                     hash = hash * 23 + this.Header.GetHashCode();
                 hash = hash * 23 + this.OperationName.GetHashCode();
