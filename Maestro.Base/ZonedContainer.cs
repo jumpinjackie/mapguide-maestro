@@ -258,9 +258,14 @@ namespace Maestro.Base
             if (this.DocumentTabContextMenuEnabled)
                 return;
 
+            var tabs = new List<TabPage>();
             for (int i = 0; i < documentTabs.TabPages.Count; i++)
             {
                 var tab = documentTabs.TabPages[i];
+                tabs.Add(tab);
+            }
+            foreach (var tab in tabs)
+            {
                 ((IViewContent)tab.Tag).Close();
             }
         }
