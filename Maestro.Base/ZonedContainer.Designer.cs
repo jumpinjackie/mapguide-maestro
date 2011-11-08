@@ -30,9 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ZonedContainer));
-            this.topContainer = new System.Windows.Forms.SplitContainer();
-            this.leftZone = new System.Windows.Forms.TabControl();
-            this.leftImgList = new System.Windows.Forms.ImageList(this.components);
             this.docRightContainer = new System.Windows.Forms.SplitContainer();
             this.docBottomContainer = new System.Windows.Forms.SplitContainer();
             this.documentTabs = new System.Windows.Forms.TabControl();
@@ -41,49 +38,24 @@
             this.bottomImgList = new System.Windows.Forms.ImageList(this.components);
             this.rightZone = new System.Windows.Forms.TabControl();
             this.rightImgList = new System.Windows.Forms.ImageList(this.components);
-            this.topContainer.Panel1.SuspendLayout();
-            this.topContainer.Panel2.SuspendLayout();
-            this.topContainer.SuspendLayout();
+            this.topContainer = new System.Windows.Forms.SplitContainer();
+            this.leftZone = new System.Windows.Forms.TabControl();
+            this.leftImgList = new System.Windows.Forms.ImageList(this.components);
+            this.ctxDocumentTabs = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.closeTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeAllButThisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeAllTabsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.docRightContainer.Panel1.SuspendLayout();
             this.docRightContainer.Panel2.SuspendLayout();
             this.docRightContainer.SuspendLayout();
             this.docBottomContainer.Panel1.SuspendLayout();
             this.docBottomContainer.Panel2.SuspendLayout();
             this.docBottomContainer.SuspendLayout();
+            this.topContainer.Panel1.SuspendLayout();
+            this.topContainer.Panel2.SuspendLayout();
+            this.topContainer.SuspendLayout();
+            this.ctxDocumentTabs.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // topContainer
-            // 
-            resources.ApplyResources(this.topContainer, "topContainer");
-            this.topContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.topContainer.Name = "topContainer";
-            // 
-            // topContainer.Panel1
-            // 
-            this.topContainer.Panel1.Controls.Add(this.leftZone);
-            // 
-            // topContainer.Panel2
-            // 
-            this.topContainer.Panel2.Controls.Add(this.docRightContainer);
-            // 
-            // leftZone
-            // 
-            resources.ApplyResources(this.leftZone, "leftZone");
-            this.leftZone.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.leftZone.HotTrack = true;
-            this.leftZone.ImageList = this.leftImgList;
-            this.leftZone.Name = "leftZone";
-            this.leftZone.SelectedIndex = 0;
-            this.leftZone.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ZoneDrawItem);
-            this.leftZone.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ZoneMouseClick);
-            this.leftZone.TabIndexChanged += new System.EventHandler(this.ZoneTabSelectedIndexChanged);
-            this.leftZone.SelectedIndexChanged += new System.EventHandler(this.ZoneTabSelectedIndexChanged);
-            // 
-            // leftImgList
-            // 
-            this.leftImgList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            resources.ApplyResources(this.leftImgList, "leftImgList");
-            this.leftImgList.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // docRightContainer
             // 
@@ -174,21 +146,82 @@
             resources.ApplyResources(this.rightImgList, "rightImgList");
             this.rightImgList.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // topContainer
+            // 
+            resources.ApplyResources(this.topContainer, "topContainer");
+            this.topContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.topContainer.Name = "topContainer";
+            // 
+            // topContainer.Panel1
+            // 
+            this.topContainer.Panel1.Controls.Add(this.leftZone);
+            // 
+            // topContainer.Panel2
+            // 
+            this.topContainer.Panel2.Controls.Add(this.docRightContainer);
+            // 
+            // leftZone
+            // 
+            resources.ApplyResources(this.leftZone, "leftZone");
+            this.leftZone.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.leftZone.HotTrack = true;
+            this.leftZone.ImageList = this.leftImgList;
+            this.leftZone.Name = "leftZone";
+            this.leftZone.SelectedIndex = 0;
+            this.leftZone.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ZoneDrawItem);
+            this.leftZone.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ZoneMouseClick);
+            this.leftZone.TabIndexChanged += new System.EventHandler(this.ZoneTabSelectedIndexChanged);
+            this.leftZone.SelectedIndexChanged += new System.EventHandler(this.ZoneTabSelectedIndexChanged);
+            // 
+            // leftImgList
+            // 
+            this.leftImgList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            resources.ApplyResources(this.leftImgList, "leftImgList");
+            this.leftImgList.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // ctxDocumentTabs
+            // 
+            this.ctxDocumentTabs.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.closeTabToolStripMenuItem,
+            this.closeAllButThisToolStripMenuItem,
+            this.closeAllTabsToolStripMenuItem});
+            this.ctxDocumentTabs.Name = "ctxDocumentTabs";
+            resources.ApplyResources(this.ctxDocumentTabs, "ctxDocumentTabs");
+            // 
+            // closeTabToolStripMenuItem
+            // 
+            this.closeTabToolStripMenuItem.Name = "closeTabToolStripMenuItem";
+            resources.ApplyResources(this.closeTabToolStripMenuItem, "closeTabToolStripMenuItem");
+            this.closeTabToolStripMenuItem.Click += new System.EventHandler(this.closeTabToolStripMenuItem_Click);
+            // 
+            // closeAllButThisToolStripMenuItem
+            // 
+            this.closeAllButThisToolStripMenuItem.Name = "closeAllButThisToolStripMenuItem";
+            resources.ApplyResources(this.closeAllButThisToolStripMenuItem, "closeAllButThisToolStripMenuItem");
+            this.closeAllButThisToolStripMenuItem.Click += new System.EventHandler(this.closeAllButThisToolStripMenuItem_Click);
+            // 
+            // closeAllTabsToolStripMenuItem
+            // 
+            this.closeAllTabsToolStripMenuItem.Name = "closeAllTabsToolStripMenuItem";
+            resources.ApplyResources(this.closeAllTabsToolStripMenuItem, "closeAllTabsToolStripMenuItem");
+            this.closeAllTabsToolStripMenuItem.Click += new System.EventHandler(this.closeAllTabsToolStripMenuItem_Click);
+            // 
             // ZonedContainer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.topContainer);
             this.Name = "ZonedContainer";
             resources.ApplyResources(this, "$this");
-            this.topContainer.Panel1.ResumeLayout(false);
-            this.topContainer.Panel2.ResumeLayout(false);
-            this.topContainer.ResumeLayout(false);
             this.docRightContainer.Panel1.ResumeLayout(false);
             this.docRightContainer.Panel2.ResumeLayout(false);
             this.docRightContainer.ResumeLayout(false);
             this.docBottomContainer.Panel1.ResumeLayout(false);
             this.docBottomContainer.Panel2.ResumeLayout(false);
             this.docBottomContainer.ResumeLayout(false);
+            this.topContainer.Panel1.ResumeLayout(false);
+            this.topContainer.Panel2.ResumeLayout(false);
+            this.topContainer.ResumeLayout(false);
+            this.ctxDocumentTabs.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -206,5 +239,9 @@
         private System.Windows.Forms.ImageList rightImgList;
         private System.Windows.Forms.ImageList docImgList;
         private System.Windows.Forms.ImageList bottomImgList;
+        private System.Windows.Forms.ContextMenuStrip ctxDocumentTabs;
+        private System.Windows.Forms.ToolStripMenuItem closeTabToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeAllButThisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeAllTabsToolStripMenuItem;
     }
 }

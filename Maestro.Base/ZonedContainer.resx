@@ -118,68 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="topContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="topContainer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="leftZone.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <metadata name="leftImgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="leftImgList.ImageSize" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
-  </data>
-  <data name="leftZone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="leftZone.Padding" type="System.Drawing.Point, System.Drawing">
-    <value>12, 3</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="leftZone.ShowToolTips" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="leftZone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 444</value>
-  </data>
-  <data name="leftZone.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;leftZone.Name" xml:space="preserve">
-    <value>leftZone</value>
-  </data>
-  <data name="&gt;&gt;leftZone.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;leftZone.Parent" xml:space="preserve">
-    <value>topContainer.Panel1</value>
-  </data>
-  <data name="&gt;&gt;leftZone.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;topContainer.Panel1.Name" xml:space="preserve">
-    <value>topContainer.Panel1</value>
-  </data>
-  <data name="&gt;&gt;topContainer.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;topContainer.Panel1.Parent" xml:space="preserve">
-    <value>topContainer</value>
-  </data>
-  <data name="&gt;&gt;topContainer.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="topContainer.Panel1MinSize" type="System.Int32, mscorlib">
-    <value>240</value>
-  </data>
   <data name="docRightContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="docRightContainer.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -196,7 +138,7 @@
     <value>Fill</value>
   </data>
   <metadata name="docImgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>227, 17</value>
+    <value>239, 17</value>
   </metadata>
   <data name="docImgList.ImageSize" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
@@ -207,6 +149,7 @@
   <data name="documentTabs.Padding" type="System.Drawing.Point, System.Drawing">
     <value>12, 3</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="documentTabs.ShowToolTips" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -247,7 +190,7 @@
     <value>Fill</value>
   </data>
   <metadata name="bottomImgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>332, 17</value>
+    <value>350, 17</value>
   </metadata>
   <data name="bottomImgList.ImageSize" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
@@ -411,6 +354,63 @@
   <data name="&gt;&gt;docRightContainer.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="topContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="topContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="leftZone.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <metadata name="leftImgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="leftImgList.ImageSize" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="leftZone.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="leftZone.Padding" type="System.Drawing.Point, System.Drawing">
+    <value>12, 3</value>
+  </data>
+  <data name="leftZone.ShowToolTips" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="leftZone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 444</value>
+  </data>
+  <data name="leftZone.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;leftZone.Name" xml:space="preserve">
+    <value>leftZone</value>
+  </data>
+  <data name="&gt;&gt;leftZone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;leftZone.Parent" xml:space="preserve">
+    <value>topContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;leftZone.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;topContainer.Panel1.Name" xml:space="preserve">
+    <value>topContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;topContainer.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;topContainer.Panel1.Parent" xml:space="preserve">
+    <value>topContainer</value>
+  </data>
+  <data name="&gt;&gt;topContainer.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="topContainer.Panel1MinSize" type="System.Int32, mscorlib">
+    <value>240</value>
+  </data>
   <data name="&gt;&gt;topContainer.Panel2.Name" xml:space="preserve">
     <value>topContainer.Panel2</value>
   </data>
@@ -442,19 +442,43 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;topContainer.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
+  </data>
+  <metadata name="ctxDocumentTabs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>482, 17</value>
+  </metadata>
+  <data name="closeTabToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="closeTabToolStripMenuItem.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="closeAllButThisToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="closeAllButThisToolStripMenuItem.Text" xml:space="preserve">
+    <value>Close All But This</value>
+  </data>
+  <data name="closeAllTabsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="closeAllTabsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Close All Tabs</value>
+  </data>
+  <data name="ctxDocumentTabs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 92</value>
+  </data>
+  <data name="&gt;&gt;ctxDocumentTabs.Name" xml:space="preserve">
+    <value>ctxDocumentTabs</value>
+  </data>
+  <data name="&gt;&gt;ctxDocumentTabs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>626, 444</value>
-  </data>
-  <data name="&gt;&gt;leftImgList.Name" xml:space="preserve">
-    <value>leftImgList</value>
-  </data>
-  <data name="&gt;&gt;leftImgList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;docImgList.Name" xml:space="preserve">
     <value>docImgList</value>
@@ -473,6 +497,30 @@
   </data>
   <data name="&gt;&gt;rightImgList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;leftImgList.Name" xml:space="preserve">
+    <value>leftImgList</value>
+  </data>
+  <data name="&gt;&gt;leftImgList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;closeTabToolStripMenuItem.Name" xml:space="preserve">
+    <value>closeTabToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;closeTabToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;closeAllButThisToolStripMenuItem.Name" xml:space="preserve">
+    <value>closeAllButThisToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;closeAllButThisToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;closeAllTabsToolStripMenuItem.Name" xml:space="preserve">
+    <value>closeAllTabsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;closeAllTabsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ZonedContainer</value>

@@ -44,6 +44,8 @@ namespace Maestro.Base
     {
         private static List<HiddenTab> _hiddenTabs = new List<HiddenTab>();
 
+        static ContextMenuStrip smStrip;
+
         internal static TabPage CreateTab(IViewContent content, string imgKey)
         {
             TabPage page = new TabPage();
@@ -52,6 +54,14 @@ namespace Maestro.Base
             page.ToolTipText = content.Description;
             page.Tag = content;
 
+            if (smStrip == null)
+            {
+                smStrip = new ContextMenuStrip();
+                smStrip.Items.Add("Close This Tab");
+                smStrip.Items.Add("Close All But This");
+                smStrip.Items.Add("Close All");
+            }
+            
             content.TitleChanged += (sender, e) => 
             {
                 page.Text = content.Title; 

@@ -192,6 +192,16 @@ namespace Maestro.Base
                         ((IViewContent)page.Tag).Close();
                     }
                 }
+                else
+                {
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        if (this.DocumentTabContextMenuEnabled)
+                            return;
+
+                        ctxDocumentTabs.Show(tc, new Point(e.X, e.Y));
+                    }
+                }
             }
             catch { }
         }
@@ -212,6 +222,55 @@ namespace Maestro.Base
                 TabPage page = tabs.TabPages[indx];
                 OnViewActivated((IViewContent)page.Tag);
             }
+        }
+
+        private void closeTabToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.DocumentTabContextMenuEnabled || documentTabs.SelectedIndex < 0)
+                return;
+
+            var tab = documentTabs.TabPages[documentTabs.SelectedIndex];
+            ((IViewContent)tab.Tag).Close();
+        }
+
+        private void closeAllButThisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.DocumentTabContextMenuEnabled || documentTabs.SelectedIndex < 0)
+                return;
+
+            var tabs = new List<TabPage>();
+            for (int i = 0; i < documentTabs.TabPages.Count; i++)
+            {
+                if (i == documentTabs.SelectedIndex)
+                    continue;
+
+                var tab = documentTabs.TabPages[i];
+                tabs.Add(tab);
+            }
+            foreach (var tab in tabs)
+            {
+                ((IViewContent)tab.Tag).Close();
+            }
+        }
+
+        private void closeAllTabsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.DocumentTabContextMenuEnabled)
+                return;
+
+            for (int i = 0; i < documentTabs.TabPages.Count; i++)
+            {
+                var tab = documentTabs.TabPages[i];
+                ((IViewContent)tab.Tag).Close();
+            }
+        }
+
+        [DefaultValue(true)]
+        [Description("Indicates whether the document tabs context menu is enabled")]
+        public bool DocumentTabContextMenuEnabled
+        {
+            get;
+            set;
         }
     }
 }
