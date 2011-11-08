@@ -139,6 +139,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     txtFeatureSource.Text = picker.ResourceID;
                     //Invalidate
                     _cachedFs = null;
+                    OnResourceChanged(); //Maybe same feature class, different feature source
                 }
             }
         }
