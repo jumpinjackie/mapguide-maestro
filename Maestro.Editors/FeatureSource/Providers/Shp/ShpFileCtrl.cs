@@ -48,6 +48,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Shp
             _service = service;
             _fs = service.GetEditedResource() as IFeatureSource;
             Debug.Assert(_fs != null);
+            if (_fs.ConnectionPropertyNames.Length == 0)
+            {
+                _fs.SetConnectionProperty("DefaultFileLocation", "%MG_DATA_FILE_PATH%");
+            }
             MarkSelected();
             resDataCtrl.ResourceDataUploaded += new Maestro.Editors.Common.ResourceDataCtrl.ResourceUploadEventHandler(OnResourceDataUploaded);
         }
