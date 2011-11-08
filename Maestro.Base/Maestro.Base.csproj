@@ -70,6 +70,7 @@
     <Compile Include="Commands\CutCommand.cs" />
     <Compile Include="Commands\EditAsXmlCommand.cs" />
     <Compile Include="Commands\EditPackageCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\EditResourceHeaderCommand.cs" />
     <Compile Include="Commands\LoadPackageCommand.cs" />
     <Compile Include="Commands\LocalFeatureSourcePreviewCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
@@ -331,6 +332,12 @@
       <DependentUpon>RepointerDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\RepositoryTreeModel.cs" />
+    <Compile Include="UI\ResourceHeaderXmlDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ResourceHeaderXmlDialog.Designer.cs">
+      <DependentUpon>ResourceHeaderXmlDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ResourceIconCache.cs" />
     <Compile Include="UI\ResourcePropertiesDialog.cs">
       <SubType>Form</SubType>
@@ -533,6 +540,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\RepointerDialog.resx">
       <DependentUpon>RepointerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ResourceHeaderXmlDialog.resx">
+      <DependentUpon>ResourceHeaderXmlDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ResourcePropertiesDialog.resx">
       <DependentUpon>ResourcePropertiesDialog.cs</DependentUpon>

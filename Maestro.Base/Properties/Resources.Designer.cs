@@ -697,6 +697,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Raw Header XML.
+        /// </summary>
+        internal static string EditRawHeader {
+            get {
+                return ResourceManager.GetString("EditRawHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Singleton view content cannot be closed by users. The AllowUserClose property must return false.
         /// </summary>
         internal static string Error_Closeable_Singleton_Content {
