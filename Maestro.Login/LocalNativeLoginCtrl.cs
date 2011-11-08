@@ -84,6 +84,7 @@ namespace Maestro.Login
         {
             using (var dlg = DialogFactory.OpenFile())
             {
+                dlg.InitialDirectory = Application.StartupPath;
                 //WTF does this default to false??? Does MS not realize that changing directories 
                 //via this dialog absolutely screws up file/assembly loading from relative paths?
                 dlg.RestoreDirectory = true; 

@@ -40,7 +40,8 @@ namespace Maestro.Login
         {
             using (var open = DialogFactory.OpenFile())
             {
-                open.RestoreDirectory = true; 
+                open.InitialDirectory = Application.StartupPath;
+                open.RestoreDirectory = true;
                 open.Filter = "*.ini|*.ini";
                 if (open.ShowDialog() == DialogResult.OK)
                 {

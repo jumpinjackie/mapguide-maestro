@@ -1,4 +1,27 @@
-﻿4.0 beta 2
+﻿4.0 RC1
+-------
+
+ - A warning will now be displayed when attempting to preview a map definition with tiled layers in Local Connection Mode (because the mg-desktop viewer has not implemented support for this yet)
+ - Failed non-transactional package loading operations now include a corresponding exception as part of the results display.
+ - Support for deleting multiple resource data items
+ - New context menu command for editing raw document/header XML
+ - Document tabs now have a context menu for mass tab closure.
+ - Updated mg-desktop binaries for Local Connection mode.
+ - Re-instated the Package editor, which has been missing since Maestro 2.1
+ - Feature Source Preview now shows elapsed query time for executed queries.
+ - MgCooker windows application no longer closes after a successful tiling run.
+ - Improved Color editor field support. Can now use either FDO expressions or pick a color.
+ - Theme Generation will now use the UNIQUE() aggregate function first instead of raw spinning a feature reader for distinct values.
+ - Fix: Non-Transactional package loading will now skip any SETRESOURCE operations with no content
+ - Fix: Layer Property display cannot be re-ordered in Layer Definition editor
+ - Fix: Fields for built-in WebLayout commands are now editable
+ - Fix: Search layer display in WebLayout editor
+ - Fix: SHP Feature Source editor does not properly handle multiple embedded SHP files.
+ - Fix: Duplicate repository items being displayed in Site Explorer
+ - Fix: Min/Max Scale display in Layer Definition editor
+ - Fix: Error re-ordering style rules in Layer Definition editor
+
+4.0 beta 2
 ----------
 
  - Support for non-transactional package loading w/ ability to retry failed operations

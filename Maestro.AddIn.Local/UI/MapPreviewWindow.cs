@@ -53,6 +53,19 @@ namespace Maestro.AddIn.Local.UI
         public void Init(MgResourceIdentifier mapResId)
         {
             _map = new MgdMap(mapResId);
+            var groups = _map.GetLayerGroups();
+            if (groups != null && groups.GetCount() > 0)
+            {
+                for (int i = 0; i < groups.GetCount(); i++)
+                {
+                    var grp = groups.GetItem(i);
+                    if (grp.LayerGroupType == MgLayerGroupType.BaseMap)
+                    {
+                        MessageBox.Show("WARNING: The Map Preview does not yet support previews of maps with tiled layers. You will only see un-tiled ones");
+                        break;
+                    }
+                }
+            }
             viewer.Init(_map);
             viewer.RefreshMap();
         }
