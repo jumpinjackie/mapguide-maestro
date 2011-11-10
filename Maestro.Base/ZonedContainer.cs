@@ -196,10 +196,20 @@ namespace Maestro.Base
                 {
                     if (e.Button == MouseButtons.Right)
                     {
+                        var pt = new Point(e.X, e.Y);
+                        for (int i = 0; i < tc.TabPages.Count; i++)
+                        {
+                            if (tc.GetTabRect(i).Contains(pt))
+                            {
+                                tc.SelectedIndex = i;
+                                break;
+                            }
+                        }
+
                         if (this.DocumentTabContextMenuEnabled)
                             return;
 
-                        ctxDocumentTabs.Show(tc, new Point(e.X, e.Y));
+                        ctxDocumentTabs.Show(tc, pt);
                     }
                 }
             }
