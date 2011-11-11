@@ -45,6 +45,12 @@ namespace Maestro.Editors.WatermarkDefinition
 
         private IWatermarkDefinition _wm;
 
+        /// <summary>
+        /// Sets the initial state of this editor and sets up any databinding
+        /// within such that user interface changes will propagate back to the
+        /// model.
+        /// </summary>
+        /// <param name="service"></param>
         public override void Bind(IEditorService service)
         {
             _wm = (IWatermarkDefinition)service.GetEditedResource();

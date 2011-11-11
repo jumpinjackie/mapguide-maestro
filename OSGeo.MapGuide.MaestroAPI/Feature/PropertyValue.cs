@@ -31,12 +31,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public abstract class PropertyValue
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PropertyValue"/> class.
+        /// </summary>
         protected PropertyValue() { this.IsNull = true; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is null.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is null; otherwise, <c>false</c>.
+        /// </value>
         public virtual bool IsNull { get; protected set; }
 
+        /// <summary>
+        /// Sets the value to null.
+        /// </summary>
         public virtual void SetNull() { this.IsNull = true; }
 
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public abstract PropertyValueType Type { get; }
     }
 
@@ -46,8 +61,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// <typeparam name="T"></typeparam>
     public abstract class ValueTypePropertyValue<T> : PropertyValue where T : struct
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ValueTypePropertyValue&lt;T&gt;"/> class.
+        /// </summary>
         protected ValueTypePropertyValue() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ValueTypePropertyValue&lt;T&gt;"/> class.
+        /// </summary>
+        /// <param name="value">The value.</param>
         protected ValueTypePropertyValue(T value)
             : base()
         {
@@ -56,6 +78,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
 
         private Nullable<T> _value;
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is null.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is null; otherwise, <c>false</c>.
+        /// </value>
         public override bool IsNull
         {
             get
@@ -64,6 +92,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        /// <value>
+        /// The value.
+        /// </value>
         public T Value
         {
             get
@@ -79,6 +113,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             }
         }
 
+        /// <summary>
+        /// Sets the value to null.
+        /// </summary>
         public override void SetNull()
         {
             _value = null;
@@ -91,8 +128,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// <typeparam name="T"></typeparam>
     public abstract class ReferenceTypePropertyValue<T> : PropertyValue where T : class
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReferenceTypePropertyValue&lt;T&gt;"/> class.
+        /// </summary>
         protected ReferenceTypePropertyValue() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReferenceTypePropertyValue&lt;T&gt;"/> class.
+        /// </summary>
+        /// <param name="value">The value.</param>
         protected ReferenceTypePropertyValue(T value)
             : base()
         {
@@ -102,6 +146,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
 
         private T _value;
 
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        /// <value>
+        /// The value.
+        /// </value>
         public T Value
         {
             get
@@ -124,6 +174,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class ByteValue : ValueTypePropertyValue<byte>
     {
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Byte; }
@@ -135,6 +188,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class BooleanValue : ValueTypePropertyValue<bool>
     {
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Boolean; }
@@ -146,6 +202,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class BlobValue : ReferenceTypePropertyValue<byte[]>
     {
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Blob; }
@@ -157,6 +216,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class ClobValue : ReferenceTypePropertyValue<char[]>
     {
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Clob; }
@@ -168,6 +230,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class DateTimeValue : ValueTypePropertyValue<DateTime>
     {
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.DateTime; }
@@ -179,6 +244,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class DoubleValue : ValueTypePropertyValue<double>
     {
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Double; }
@@ -190,6 +258,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class FeatureValue : ReferenceTypePropertyValue<IFeature[]>
     {
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Feature; }
@@ -201,6 +272,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class GeometryValue : ReferenceTypePropertyValue<IGeometry>
     {
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Geometry; }
@@ -212,6 +286,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class Int16Value : ValueTypePropertyValue<short>
     {
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Int16; }
@@ -223,6 +300,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class Int32Value : ValueTypePropertyValue<int>
     {
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Int32; }
@@ -234,6 +314,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class Int64Value : ValueTypePropertyValue<long>
     {
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Int64; }
@@ -245,6 +328,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class RasterValue : ReferenceTypePropertyValue<byte[]>
     {
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Raster; }
@@ -256,6 +342,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class SingleValue : ValueTypePropertyValue<float>
     {
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Single; }
@@ -267,6 +356,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class StringValue : ReferenceTypePropertyValue<string>
     {
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.String; }

@@ -83,6 +83,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// </summary>
         public GdalRasterItem[] Items { get { return new List<GdalRasterItem>(_items.Values).ToArray(); } }
 
+        /// <summary>
+        /// Writes the current element's content
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             var loc = doc.CreateElement("Location");
@@ -98,6 +103,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             currentNode.AppendChild(loc);
         }
 
+        /// <summary>
+        /// Set the current element's content from the current XML node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (node.Name != "Location")
@@ -155,6 +165,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// </summary>
         public double MaxY { get; set; }
 
+        /// <summary>
+        /// Writes the current element's content
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             var feat = doc.CreateElement("Feature");
@@ -194,6 +209,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             currentNode.AppendChild(feat);
         }
 
+        /// <summary>
+        /// Set the current element's content from the current XML node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (node.Name != "Feature")

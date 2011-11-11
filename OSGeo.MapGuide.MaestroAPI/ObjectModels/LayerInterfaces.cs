@@ -332,8 +332,16 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <returns></returns>
         IW2DSymbol CreateDefaultW2DSymbol(string symbolLibrary, string symbolName);
 
+        /// <summary>
+        /// Creates the default composite rule.
+        /// </summary>
+        /// <returns></returns>
         ICompositeRule CreateDefaultCompositeRule();
 
+        /// <summary>
+        /// Creates the default composite style.
+        /// </summary>
+        /// <returns></returns>
         ICompositeTypeStyle CreateDefaultCompositeStyle();
     }
 
@@ -536,10 +544,23 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="range"></param>
         void RemoveGridScaleRange(IGridScaleRange range);
 
+        /// <summary>
+        /// Indexes the of scale range.
+        /// </summary>
+        /// <param name="range">The range.</param>
+        /// <returns></returns>
         int IndexOfScaleRange(IGridScaleRange range);
 
+        /// <summary>
+        /// Gets the scale range at.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
         IGridScaleRange GetScaleRangeAt(int index);
 
+        /// <summary>
+        /// Gets the grid scale range count.
+        /// </summary>
         int GridScaleRangeCount { get; }
     }
 
@@ -668,6 +689,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// </summary>
         StyleType StyleType { get; }
 
+        /// <summary>
+        /// Gets the rule count.
+        /// </summary>
         int RuleCount { get; }
     }
 
@@ -748,13 +772,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// Removes all current rules
         /// </summary>
         void RemoveAllRules();
-
-        /// <summary>
-        /// Gets the line rule at the specified index
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        ILineRule GetRuleAt(int index);
     }
 
     /// <summary>

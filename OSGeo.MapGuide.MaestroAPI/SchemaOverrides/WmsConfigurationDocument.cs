@@ -48,6 +48,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <param name="item"></param>
         public void RemoveRasterItem(RasterWmsItem item) { _rasterItems.Remove(item); }
 
+        /// <summary>
+        /// Write this document's schema mappings to the given XML document
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         protected override void WriteSchemaMappings(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             var map = doc.CreateElement("SchemaMapping");
@@ -70,6 +75,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             currentNode.AppendChild(map);
         }
 
+        /// <summary>
+        /// Write this document's schema mappings from the given XML document
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <param name="mgr">The namespace manager.</param>
         protected override void ReadSchemaMappings(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             //XmlNodeList mappings = node.SelectNodes("SchemaMapping");

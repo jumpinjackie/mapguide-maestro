@@ -24,16 +24,43 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
+    /// <summary>
+    /// WMS Layer Definition configuration element
+    /// </summary>
     public class WmsLayerDefinition : IFdoSerializable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WmsLayerDefinition"/> class.
+        /// </summary>
         public WmsLayerDefinition() { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WmsLayerDefinition"/> class.
+        /// </summary>
+        /// <param name="layerName">Name of the layer.</param>
         public WmsLayerDefinition(string layerName) { this.Name = layerName; }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the style.
+        /// </summary>
+        /// <value>
+        /// The style.
+        /// </value>
         public string Style { get; set; }
 
+        /// <summary>
+        /// Writes the current element's content
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             var layer = doc.CreateElement("Layer");
@@ -50,6 +77,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             currentNode.AppendChild(layer);
         }
 
+        /// <summary>
+        /// Set the current element's content from the current XML node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (node.Name != "Layer")

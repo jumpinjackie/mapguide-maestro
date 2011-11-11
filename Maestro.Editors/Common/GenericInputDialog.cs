@@ -32,11 +32,17 @@ namespace Maestro.Editors.Common
     /// </summary>
     public partial class GenericInputDialog : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GenericInputDialog"/> class.
+        /// </summary>
         public GenericInputDialog()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Gets the input value.
+        /// </summary>
         public string InputValue { get { return txtInput.Text; } }
 
         private void button1_Click(object sender, EventArgs e)
@@ -49,6 +55,13 @@ namespace Maestro.Editors.Common
             this.DialogResult = DialogResult.Cancel;
         }
 
+        /// <summary>
+        /// Gets the value.
+        /// </summary>
+        /// <param name="title">The title.</param>
+        /// <param name="prompt">The prompt.</param>
+        /// <param name="initialValue">The initial value.</param>
+        /// <returns></returns>
         public static string GetValue(string title, string prompt, string initialValue)
         {
             using (var diag = new GenericInputDialog())

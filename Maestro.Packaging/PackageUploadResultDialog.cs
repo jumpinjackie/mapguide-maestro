@@ -37,6 +37,10 @@ namespace Maestro.Packaging
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PackageUploadResultDialog"/> class.
+        /// </summary>
+        /// <param name="result">The result.</param>
         public PackageUploadResultDialog(UploadPackageResult result)
             : this()
         {

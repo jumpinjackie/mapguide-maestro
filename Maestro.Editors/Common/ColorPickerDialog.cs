@@ -32,6 +32,9 @@ namespace Maestro.Editors.Common
     /// </summary>
     public partial class ColorPickerDialog : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ColorPickerDialog"/> class.
+        /// </summary>
         public ColorPickerDialog()
         {
             InitializeComponent();

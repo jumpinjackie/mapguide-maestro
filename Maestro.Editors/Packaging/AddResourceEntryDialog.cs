@@ -29,8 +29,14 @@ using OSGeo.MapGuide.MaestroAPI.Exceptions;
 
 namespace Maestro.Editors.Packaging
 {
+    /// <summary>
+    /// A dialog for entering information for a new package resource entry
+    /// </summary>
     public partial class AddResourceEntryDialog : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddResourceEntryDialog"/> class.
+        /// </summary>
         public AddResourceEntryDialog()
         {
             InitializeComponent();
@@ -89,8 +95,20 @@ namespace Maestro.Editors.Packaging
             this.Close();
         }
 
+        /// <summary>
+        /// Gets the content filepath.
+        /// </summary>
         public string ContentFilepath { get { return ContentPath.Text; } }
+        /// <summary>
+        /// Gets the header filepath.
+        /// </summary>
         public string HeaderFilepath { get { return UseHeader.Checked ? HeaderPath.Text : null; } }
+        /// <summary>
+        /// Gets the name of the resource.
+        /// </summary>
+        /// <value>
+        /// The name of the resource.
+        /// </value>
         public string ResourceName { get { return UseAlternateName.Checked ? AlternateName.Text : System.IO.Path.GetFileName(ContentPath.Text); } }
 
         private void UseAlternateName_CheckedChanged(object sender, EventArgs e)

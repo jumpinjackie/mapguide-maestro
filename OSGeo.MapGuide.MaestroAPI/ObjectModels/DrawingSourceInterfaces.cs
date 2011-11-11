@@ -98,6 +98,9 @@ namespace OSGeo.MapGuide.ObjectModels.DrawingSource
         IEnvelope Extent { get; set; }
     }
 
+    /// <summary>
+    /// Extension methods for Drawing Sources
+    /// </summary>
     public static class DrawingSourceExtensions
     {
         /// <summary>

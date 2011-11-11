@@ -32,10 +32,17 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.MapDefinition
 {
+    /// <summary>
+    /// Displays the progress and result of Map Definition extent calculation
+    /// </summary>
     public partial class ExtentCalculationDialog : Form
     {
         private IMapDefinition _mdf;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ExtentCalculationDialog"/> class.
+        /// </summary>
+        /// <param name="mdf">The MDF.</param>
         public ExtentCalculationDialog(IMapDefinition mdf)
         {
             InitializeComponent();
@@ -62,6 +69,10 @@ namespace Maestro.Editors.MapDefinition
             return count;
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.Form.Load"/> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             bgCalculation.RunWorkerAsync(_mdf);
@@ -93,6 +104,9 @@ namespace Maestro.Editors.MapDefinition
 
         private BindingList<CalculationResult> _results = new BindingList<CalculationResult>();
 
+        /// <summary>
+        /// Gets the extents.
+        /// </summary>
         public IEnvelope Extents
         {
             get

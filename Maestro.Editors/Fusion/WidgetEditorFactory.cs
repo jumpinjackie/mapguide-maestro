@@ -38,6 +38,11 @@ namespace Maestro.Editors.Fusion
             _editorTypes = new Dictionary<string, Type>();
         }
 
+        /// <summary>
+        /// Registers the editor.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="type">The type.</param>
         public static void RegisterEditor(string name, Type type)
         {
             if (!typeof(IWidgetEditor).IsAssignableFrom(type))
@@ -46,6 +51,11 @@ namespace Maestro.Editors.Fusion
             _editorTypes[name] = type;
         }
 
+        /// <summary>
+        /// Gets the editor for widget.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
         public static IWidgetEditor GetEditorForWidget(string name)
         {
             if (_editorTypes.ContainsKey(name))

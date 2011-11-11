@@ -612,10 +612,11 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         }
 
         /// <summary>
-        /// Removes the specified widget from this 
+        /// Removes the specified widget from this
         /// </summary>
-        /// <param name="widget"></param>
-        /// <param name="deleteReferences"></param>
+        /// <param name="appDef">The app definition.</param>
+        /// <param name="widgetName">Name of the widget to remove.</param>
+        /// <param name="deleteReferences">if set to <c>true</c> [deletes any references to the widget to be deleted].</param>
         public static void RemoveWidget(this IApplicationDefinition appDef, string widgetName, bool deleteReferences)
         {
             Check.NotNull(appDef, "appDef");

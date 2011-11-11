@@ -17,6 +17,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
+#pragma warning disable 1591, 0114, 0108, 0114, 0108
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,20 +33,68 @@ namespace OSGeo.MapGuide.ObjectModels.Common
     /// </summary>
     public interface IFdoSpatialContext : IFdoSerializable
     {
+        /// <summary>
+        /// Gets or sets the name of the coordinate system.
+        /// </summary>
+        /// <value>
+        /// The name of the coordinate system.
+        /// </value>
         string CoordinateSystemName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the coordinate system WKT.
+        /// </summary>
+        /// <value>
+        /// The coordinate system WKT.
+        /// </value>
         string CoordinateSystemWkt { get; set; }
 
+        /// <summary>
+        /// Gets or sets the description.
+        /// </summary>
+        /// <value>
+        /// The description.
+        /// </value>
         string Description { get; set; }
 
+        /// <summary>
+        /// Gets or sets the extent.
+        /// </summary>
+        /// <value>
+        /// The extent.
+        /// </value>
         IEnvelope Extent { get; set; }
 
+        /// <summary>
+        /// Gets or sets the type of the extent.
+        /// </summary>
+        /// <value>
+        /// The type of the extent.
+        /// </value>
         FdoSpatialContextListSpatialContextExtentType ExtentType { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
         string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the XY tolerance.
+        /// </summary>
+        /// <value>
+        /// The XY tolerance.
+        /// </value>
         double XYTolerance { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Z tolerance.
+        /// </summary>
+        /// <value>
+        /// The Z tolerance.
+        /// </value>
         double ZTolerance { get; set; }
     }
 

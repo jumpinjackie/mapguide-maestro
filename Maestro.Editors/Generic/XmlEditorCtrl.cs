@@ -152,6 +152,11 @@ namespace Maestro.Editors.Generic
             FindAndReplace(txtFind.Text, txtReplace.Text);
         }
 
+        /// <summary>
+        /// Finds and replaces the specified search string with the specified replacement string
+        /// </summary>
+        /// <param name="szFind">The search string.</param>
+        /// <param name="szReplace">The replacement string.</param>
         public void FindAndReplace(string szFind, string szReplace)
         {
             var textEditor = txtXmlContent;
@@ -270,7 +275,10 @@ namespace Maestro.Editors.Generic
         /// Performs validation of the XML content
         /// </summary>
         /// <param name="silentSuccess">If true will not show a success dialog on successful validation</param>
-        /// <returns>true if validation was successful, false otherwise</returns>
+        /// <param name="errorsOnly">if set to <c>true</c> displays only errors in validation, otherwise it shows both errors and warnings.</param>
+        /// <returns>
+        /// true if validation was successful, false otherwise
+        /// </returns>
         public bool PerformValidation(bool silentSuccess, bool errorsOnly)
         {
             if (this.Validator != null)

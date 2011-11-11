@@ -35,6 +35,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
         internal FeatureSchema() { _classes = new List<ClassDefinition>(); }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FeatureSchema"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="description">The description.</param>
         public FeatureSchema(string name, string description)
             : this()
         {
@@ -114,6 +119,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <returns></returns>
         public ClassDefinition GetItem(int index) { return _classes[index]; }
 
+        /// <summary>
+        /// Writes the current element's content
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             var schema = doc.CreateElement("xs", "schema", XmlNamespaces.XS);
@@ -132,6 +142,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             currentNode.AppendChild(schema);
         }
 
+        /// <summary>
+        /// Set the current element's content from the current XML node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (!node.Name.Equals("xs:schema"))

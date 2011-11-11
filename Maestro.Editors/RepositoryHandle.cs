@@ -25,12 +25,26 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors
 {
+    /// <summary>
+    /// Represents a resource id in teh context of a connection
+    /// </summary>
     public class RepositoryHandle
     {
+        /// <summary>
+        /// Gets the resource id.
+        /// </summary>
         public ResourceIdentifier ResourceId { get; private set; }
 
+        /// <summary>
+        /// Gets the connection.
+        /// </summary>
         public IServerConnection Connection { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RepositoryHandle"/> class.
+        /// </summary>
+        /// <param name="resId">The res id.</param>
+        /// <param name="conn">The conn.</param>
         public RepositoryHandle(ResourceIdentifier resId, IServerConnection conn)
         {
             this.ResourceId = resId;

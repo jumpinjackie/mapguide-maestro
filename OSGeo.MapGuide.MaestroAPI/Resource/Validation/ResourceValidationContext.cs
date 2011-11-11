@@ -41,6 +41,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         private IResourceService _resSvc;
         private IFeatureService _featSvc;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ResourceValidationContext"/> class.
+        /// </summary>
+        /// <param name="resSvc">The res SVC.</param>
+        /// <param name="featSvc">The feat SVC.</param>
         public ResourceValidationContext(IResourceService resSvc, IFeatureService featSvc)
         {
             _resSvc = resSvc;
@@ -62,6 +67,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             _spatialContexts.Clear();
         }
 
+        /// <summary>
+        /// Gets the spatial contexts.
+        /// </summary>
+        /// <param name="resourceId">The resource id.</param>
+        /// <returns></returns>
         public FdoSpatialContextList GetSpatialContexts(string resourceId)
         {
             if (_spatialContexts.ContainsKey(resourceId))
@@ -76,6 +86,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             return scList;
         }
 
+        /// <summary>
+        /// Describes the feature source
+        /// </summary>
+        /// <param name="resourceId">The resource id.</param>
+        /// <returns></returns>
         public FeatureSourceDescription DescribeFeatureSource(string resourceId)
         {
             if (_schemas.ContainsKey(resourceId))
@@ -90,6 +105,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             return desc;
         }
 
+        /// <summary>
+        /// Gets the resource.
+        /// </summary>
+        /// <param name="resourceId">The resource id.</param>
+        /// <returns></returns>
         public IResource GetResource(string resourceId)
         {
             if (_resources.ContainsKey(resourceId))
@@ -104,6 +124,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             return res;
         }
 
+        /// <summary>
+        /// Determines whether the specified resource has already been validated
+        /// </summary>
+        /// <param name="resourceId">The resource id.</param>
+        /// <returns>
+        ///   <c>true</c> if [the specified resource has already been validated]; otherwise, <c>false</c>.
+        /// </returns>
         public bool IsAlreadyValidated(string resourceId)
         {
             var res = _validated.ContainsKey(resourceId);
@@ -114,6 +141,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             return res;
         }
 
+        /// <summary>
+        /// Marks the specified resource id as being validated.
+        /// </summary>
+        /// <param name="resourceId">The resource id.</param>
         public void MarkValidated(string resourceId)
         {
             _validated[resourceId] = resourceId;
@@ -121,6 +152,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             Trace.TraceInformation("Validated: " + resourceId);
         }
 
+        /// <summary>
+        /// Gets whether the specified resource exists
+        /// </summary>
+        /// <param name="resourceId">The resource id.</param>
+        /// <returns></returns>
         public bool ResourceExists(string resourceId)
         {
             return _resSvc.ResourceExists(resourceId);

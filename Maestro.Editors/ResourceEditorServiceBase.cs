@@ -31,11 +31,25 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors
 {
+    /// <summary>
+    /// A base class for providing editor services
+    /// </summary>
     public abstract class ResourceEditorServiceBase : IEditorService
     {
+        /// <summary>
+        /// The server connection
+        /// </summary>
         protected IServerConnection _conn;
+        /// <summary>
+        /// The resource being edited
+        /// </summary>
         protected IResource _editCopy;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ResourceEditorServiceBase"/> class.
+        /// </summary>
+        /// <param name="resourceID">The resource ID.</param>
+        /// <param name="conn">The conn.</param>
         protected ResourceEditorServiceBase(string resourceID, IServerConnection conn)
         {
             this.IsNew = ResourceIdentifier.IsSessionBased(resourceID);
@@ -43,8 +57,19 @@ namespace Maestro.Editors
             _conn = conn;
         }
 
+        /// <summary>
+        /// Raised when the edited resource has changed
+        /// </summary>
         public event EventHandler DirtyStateChanged;
 
+        /// <summary>
+        /// Edits the expression.
+        /// </summary>
+        /// <param name="currentExpr">The current expr.</param>
+        /// <param name="classDef">The class def.</param>
+        /// <param name="providerName">Name of the provider.</param>
+        /// <param name="featureSourceId">The feature source id.</param>
+        /// <returns></returns>
         public string EditExpression(string currentExpr, ClassDefinition classDef, string providerName, string featureSourceId)
         {
             var ed = new ExpressionEditor();
@@ -58,6 +83,14 @@ namespace Maestro.Editors
             return null;
         }
 
+        /// <summary>
+        /// Initiates the editing process. The resource to be edited is copied to the session repository and
+        /// a deserialized version is returned from this copy. Subsequent calls will return the same reference
+        /// to this resource object.
+        /// </summary>
+        /// <returns>
+        /// A deserialized version of a session-copy of the resource to be edited
+        /// </returns>
         public IResource GetEditedResource()
         {
             if (_editCopy == null)
@@ -72,11 +105,19 @@ namespace Maestro.Editors
             return _editCopy;
         }
 
+        /// <summary>
+        /// Called when [resource property changed].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.ComponentModel.PropertyChangedEventArgs"/> instance containing the event data.</param>
         protected void OnResourcePropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             MarkDirty();
         }
 
+        /// <summary>
+        /// Called when [dirty state changed].
+        /// </summary>
         protected void OnDirtyStateChanged()
         {
             var handler = this.DirtyStateChanged;
@@ -84,28 +125,48 @@ namespace Maestro.Editors
                 handler(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Indicates whether the edited resource has unsaved changes
+        /// </summary>
         public bool IsDirty
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Forces the edited resource to be marked as dirty
+        /// </summary>
         public void MarkDirty()
         {
             this.IsDirty = true;
             OnDirtyStateChanged();
         }
 
+        /// <summary>
+        /// Indicates whether the edited resource is a new resource
+        /// </summary>
         public bool IsNew
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Opens the specified URL
+        /// </summary>
+        /// <param name="url"></param>
         public abstract void OpenUrl(string url);
 
+        /// <summary>
+        /// Gets the resource ID of the resource, whose session-copy is being edited
+        /// </summary>
         public string ResourceID { get; private set; }
 
+        /// <summary>
+        /// Invokes a prompt to select a resource of any type
+        /// </summary>
+        /// <returns></returns>
         public string SelectAnyResource()
         {
             var picker = new ResourcePicker(_conn.ResourceService, ResourcePickerMode.OpenResource);
@@ -116,6 +177,11 @@ namespace Maestro.Editors
             return string.Empty;
         }
 
+        /// <summary>
+        /// Invokes a prompt to select a resource of the specified type
+        /// </summary>
+        /// <param name="resType"></param>
+        /// <returns></returns>
         public string SelectResource(OSGeo.MapGuide.MaestroAPI.ResourceTypes resType)
         {
             var picker = new ResourcePicker(_conn.ResourceService, resType, ResourcePickerMode.OpenResource);
@@ -126,6 +192,10 @@ namespace Maestro.Editors
             return string.Empty;
         }
 
+        /// <summary>
+        /// Invokes a prompt to select a folder
+        /// </summary>
+        /// <returns></returns>
         public string SelectFolder()
         {
             var picker = new ResourcePicker(_conn.ResourceService, ResourcePickerMode.OpenFolder);
@@ -136,8 +206,18 @@ namespace Maestro.Editors
             return string.Empty;
         }
 
+        /// <summary>
+        /// Invokes a prompt to select a file from an unmanaged alias
+        /// </summary>
+        /// <param name="startPath"></param>
+        /// <param name="fileTypes"></param>
+        /// <returns></returns>
         public abstract string SelectUnmanagedData(string startPath, System.Collections.Specialized.NameValueCollection fileTypes);
 
+        /// <summary>
+        /// Saves the edited resource. The session copy, which holds the current changes is copied back
+        /// to the original resource ID.
+        /// </summary>
         public void Save()
         {
             if (!OnBeforeSave())
@@ -150,6 +230,11 @@ namespace Maestro.Editors
             }
         }
 
+        /// <summary>
+        /// Saves the edited resource under a different resource ID. The session copy, which holds the current changes is copied back
+        /// to the specified resource ID
+        /// </summary>
+        /// <param name="resourceID"></param>
         public void SaveAs(string resourceID)
         {
             if (ResourceIdentifier.IsSessionBased(resourceID))
@@ -168,6 +253,9 @@ namespace Maestro.Editors
             }
         }
 
+        /// <summary>
+        /// Indicates whether an upgrade for this resource is available
+        /// </summary>
         public bool IsUpgradeAvailable
         {
             get 
@@ -178,11 +266,18 @@ namespace Maestro.Editors
             }
         }
 
+        /// <summary>
+        /// Gets the resource ID of the actively edited resource
+        /// </summary>
         public string EditedResourceID
         {
             get { return _editCopy.ResourceID; }
         }
 
+        /// <summary>
+        /// Registers a custom notifier
+        /// </summary>
+        /// <param name="irc"></param>
         public void RegisterCustomNotifier(INotifyResourceChanged irc)
         {
             irc.ResourceChanged += (sender, e) =>
@@ -192,6 +287,10 @@ namespace Maestro.Editors
             };
         }
 
+        /// <summary>
+        /// Updates the session copy's resource content
+        /// </summary>
+        /// <param name="xml"></param>
         public void UpdateResourceContent(string xml)
         {
             using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
@@ -200,6 +299,10 @@ namespace Maestro.Editors
             }
         }
 
+        /// <summary>
+        /// Called when [before save].
+        /// </summary>
+        /// <returns></returns>
         private bool OnBeforeSave()
         {
             var e = new CancelEventArgs();
@@ -210,18 +313,31 @@ namespace Maestro.Editors
             return e.Cancel;
         }
 
+        /// <summary>
+        /// Raised before a save operation commences
+        /// </summary>
         public event System.ComponentModel.CancelEventHandler BeforeSave;
 
+        /// <summary>
+        /// Gets the associated feature service
+        /// </summary>
         public IFeatureService FeatureService
         {
             get { return _conn.FeatureService; }
         }
 
+        /// <summary>
+        /// Gets the associated resource service
+        /// </summary>
         public IResourceService ResourceService
         {
             get { return _conn.ResourceService; }
         }
 
+        /// <summary>
+        /// Invokes a prompt to select the coordinate system
+        /// </summary>
+        /// <returns></returns>
         public string GetCoordinateSystem()
         {
             var dlg = new CoordinateSystemPicker(_conn.CoordinateSystemCatalog);
@@ -233,36 +349,67 @@ namespace Maestro.Editors
         }
 
 
+        /// <summary>
+        /// Gets the associated drawing service
+        /// </summary>
         public IDrawingService DrawingService
         {
             get { return (IDrawingService)_conn.GetService((int)ServiceType.Drawing); }
         }
 
+        /// <summary>
+        /// Forces the the <see cref="DirtyStateChanged"/> event. Normally the databinding
+        /// system should auto-flag dirty state, only call this if you don't utilise this
+        /// databinding system.
+        /// </summary>
         public void HasChanged()
         {
             this.IsDirty = true;
             OnDirtyStateChanged();
         }
 
+        /// <summary>
+        /// Gets the session id
+        /// </summary>
         public string SessionID
         {
             get { return _conn.SessionID; }
         }
 
+        /// <summary>
+        /// Indicates if a specified custom command is supported and can be created
+        /// </summary>
+        /// <param name="cmdType"></param>
+        /// <returns></returns>
         public bool SupportsCommand(OSGeo.MapGuide.MaestroAPI.Commands.CommandType cmdType)
         {
             return Array.IndexOf(_conn.Capabilities.SupportedCommands, (int)cmdType) >= 0;
         }
 
+        /// <summary>
+        /// Create a custom command
+        /// </summary>
+        /// <param name="cmdType"></param>
+        /// <returns></returns>
         public OSGeo.MapGuide.MaestroAPI.Commands.ICommand CreateCommand(OSGeo.MapGuide.MaestroAPI.Commands.CommandType cmdType)
         {
             return _conn.CreateCommand((int)cmdType);
         }
 
+        /// <summary>
+        /// Raises a request to refresh the Site Explorer
+        /// </summary>
         public abstract void RequestRefresh();
 
+        /// <summary>
+        /// Raises a request to refresh the Site Explorer at the specified folder id
+        /// </summary>
+        /// <param name="folderId"></param>
         public abstract void RequestRefresh(string folderId);
 
+        /// <summary>
+        /// Called when [saved].
+        /// </summary>
         protected void OnSaved()
         {
             var handler = this.Saved;
@@ -270,36 +417,66 @@ namespace Maestro.Editors
                 handler(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Raised when the edited resource is saved
+        /// </summary>
         public event EventHandler Saved;
 
+        /// <summary>
+        /// Synchronises changes in the in-memory resource back to the session repository. This is usually called
+        /// before validation of the edited resource begins.
+        /// </summary>
         public void SyncSessionCopy()
         {
             this.ResourceService.SetResourceXmlData(_editCopy.ResourceID, _editCopy.SerializeToStream());
         }
 
+        /// <summary>
+        /// Gets the MapGuide Server version
+        /// </summary>
         public Version SiteVersion
         {
             get { return _conn.SiteVersion; }
         }
 
+        /// <summary>
+        /// Opens the specified resource
+        /// </summary>
+        /// <param name="resourceId"></param>
         public abstract void OpenResource(string resourceId);
 
+        /// <summary>
+        /// Gets the suggested save folder for a "save as" operation
+        /// </summary>
         public string SuggestedSaveFolder
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Gets the value of a custom connection property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public object GetCustomProperty(string name)
         {
             return _conn.GetCustomProperty(name);
         }
 
+        /// <summary>
+        /// Gets the service of the specified type
+        /// </summary>
+        /// <param name="serviceType"></param>
+        /// <returns></returns>
         public IService GetService(int serviceType)
         {
             return _conn.GetService(serviceType);
         }
 
+        /// <summary>
+        /// Gets the supported services
+        /// </summary>
         public int[] SupportedServiceTypes
         {
             get { return _conn.Capabilities.SupportedServices; }

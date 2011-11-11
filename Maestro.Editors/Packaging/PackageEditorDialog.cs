@@ -32,12 +32,20 @@ using Maestro.Packaging;
 
 namespace Maestro.Editors.Packaging
 {
+    /// <summary>
+    /// A dialog for editing the contents of a MapGuide Package
+    /// </summary>
     public partial class PackageEditorDialog : Form
     {
         private string m_filename;
         private Dictionary<string, ResourceItem> m_resources;
         private IServerConnection _conn;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PackageEditorDialog"/> class.
+        /// </summary>
+        /// <param name="filename">The filename.</param>
+        /// <param name="conn">The conn.</param>
         public PackageEditorDialog(string filename, IServerConnection conn)
             : this()
         {

@@ -45,8 +45,14 @@ namespace Maestro.Packaging
         NonTransactional
     }
 
+    /// <summary>
+    /// Dialog for showing package loading options
+    /// </summary>
     public partial class PackageUploadOptionDialog : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PackageUploadOptionDialog"/> class.
+        /// </summary>
         public PackageUploadOptionDialog()
         {
             InitializeComponent();

@@ -25,16 +25,30 @@ using System.ComponentModel;
 
 namespace OSGeo.MapGuide.MaestroAPI.Commands
 {
+    /// <summary>
+    /// Defines the command for querying the cache status of FDO connections
+    /// </summary>
     public interface IGetFdoCacheInfo : ICommand
     {
+        /// <summary>
+        /// Executes this command and returns a <see cref="T:OSGeo.MapGuide.MaestroAPI.Commands.FdoCacheInfo"/> that
+        /// represents this cache status information
+        /// </summary>
+        /// <returns></returns>
         FdoCacheInfo Execute();
     }
 
+    /// <summary>
+    /// Represents the cache status of FDO connections currently managed by the MapGuide Server
+    /// </summary>
     [XmlRoot(ElementName = "FdoCacheInformation")]
     public class FdoCacheInfo
     {
         private static XmlSerializer smSerializer;
 
+        /// <summary>
+        /// Gets the serializer.
+        /// </summary>
         public static XmlSerializer Serializer
         {
             get
@@ -46,105 +60,169 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
             }
         }
 
+        /// <summary>
+        /// Gets the timestamp
+        /// </summary>
+        /// <value>
+        /// The time stamp.
+        /// </value>
         [XmlElement]
         public DateTime TimeStamp { get; set; }
 
-        
+
+        /// <summary>
+        /// Gets the configuration settings
+        /// </summary>
+        /// <value>
+        /// The configuration.
+        /// </value>
         [XmlElement(ElementName = "ConfigurationSettings")]
         [DisplayName("Configuration Settings")]
         public ConfigurationSettings Configuration { get; set; }
 
 
+        /// <summary>
+        /// Gets an array of cache status of connections for each provider
+        /// </summary>
         [XmlElement(ElementName = "Provider")]
         [DisplayName("Cached FDO Providers")]
         public CachedProviderInfo[] Providers { get; set; }
     }
 
+    /// <summary>
+    /// Represents information about a cached FDO connection
+    /// </summary>
     [Serializable]
     public class CachedFdoConnection
     {
-        
+
+        /// <summary>
+        /// Gets the feature source
+        /// </summary>
         [XmlElement]
         [DisplayName("Feature Source")]
         public string Name { get; set; }
 
-        
+        /// <summary>
+        /// Gets the state of this connection
+        /// </summary>
         [XmlElement]
         public string ConnectionState { get; set; }
 
-        
+        /// <summary>
+        /// Gets whether this connection is currently in use
+        /// </summary>
         [XmlElement]
         public string InUse { get; set; }
 
-        
+        /// <summary>
+        /// Gets the number of objects currently using this connection
+        /// </summary>
         [XmlElement]
         public int UseCount { get; set; }
 
-        
+        /// <summary>
+        /// Gets the long transaction
+        /// </summary>
         [XmlElement]
         public string LongTransaction { get; set; }
 
-        
+        /// <summary>
+        /// Gets the date this connection was last used
+        /// </summary>
         [XmlElement]
         public DateTime LastUsed { get; set; }
 
-        
+        /// <summary>
+        /// Gets whether this connection is valid
+        /// </summary>
         [XmlElement]
         public string Valid { get; set; }
     }
 
+    /// <summary>
+    /// Represents the cache status of connections for a particular provider
+    /// </summary>
     [Serializable]
     public class CachedProviderInfo
     {
-        
+        /// <summary>
+        /// Gets the feature source
+        /// </summary>
         [XmlElement(ElementName = "Name")]
         public string FeatureSourceId { get; set; }
 
-        
+        /// <summary>
+        /// Gets the maximum connection pool size 
+        /// </summary>
         [XmlElement]
         public int MaximumDataConnectionPoolSize { get; set; }
 
-        
+        /// <summary>
+        /// Gets the current connection pool size
+        /// </summary>
         [XmlElement]
         public int CurrentDataConnectionPoolSize { get; set; }
 
-        
+        /// <summary>
+        /// Gets the number of current connections
+        /// </summary>
         [XmlElement]
         public int CurrentDataConnections { get; set; }
 
-        
+        /// <summary>
+        /// Gets the thread model
+        /// </summary>
         [XmlElement]
         public string ThreadModel { get; set; }
 
-        
+        /// <summary>
+        /// Gets whether connections are cached
+        /// </summary>
         [XmlElement]
         public string KeepDataConnectionsCached { get; set; }
 
+        /// <summary>
+        /// Gets an array of cached connections using this provider
+        /// </summary>
         [XmlElement(ElementName = "CachedFdoConnection")]
         [DisplayName("Cached Feature Sources")]
         public CachedFdoConnection[] CachedFdoConnections { get; set; }
     }
 
+    /// <summary>
+    /// Represents the FDO cache configuration
+    /// </summary>
     [Serializable]
     public class ConfigurationSettings
     {
-        
+        /// <summary>
+        /// Gets whether connection pooling is enabled
+        /// </summary>
         [XmlElement]
         public string DataConnectionPoolEnabled { get; set; }
 
-        
+        /// <summary>
+        /// Gets the FDO providers which are excluded from connection pooling
+        /// </summary>
         [XmlElement]
         public string DataConnectionPoolExcludedProviders { get; set; }
 
-        
+        /// <summary>
+        /// Gets the size of the connection pool
+        /// </summary>
         [XmlElement]
         public int DataConnectionPoolSize { get; set; }
 
-        
+        /// <summary>
+        /// Gets a delimited list of custom connection pool sizes by provider
+        /// </summary>
         [XmlElement]
         public string DataConnectionPoolSizeCustom { get; set; }
 
-        
+        /// <summary>
+        /// Gets the connection timeout
+        /// </summary>
         [XmlElement]
         public int DataConnectionTimeout { get; set; }
     }

@@ -132,8 +132,16 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         ISymbolDefinitionBase SymbolDefinition { get; set; } 
     }
 
+    /// <summary>
+    /// Extension methods for symbol definitions
+    /// </summary>
     public static class SymbolDefExtensions
     {
+        /// <summary>
+        /// Gets the parameters.
+        /// </summary>
+        /// <param name="sym">The sym.</param>
+        /// <returns></returns>
         public static IEnumerable<IParameter> GetParameters(this ISymbolDefinitionBase sym)
         {
             Check.NotNull(sym, "sym");
@@ -143,12 +151,22 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
                 return ((ICompoundSymbolDefinition)sym).GetParameters();
         }
 
+        /// <summary>
+        /// Gets the parameters.
+        /// </summary>
+        /// <param name="ssym">The ssym.</param>
+        /// <returns></returns>
         public static IEnumerable<IParameter> GetParameters(this ISimpleSymbolDefinition ssym)
         {
             Check.NotNull(ssym, "ssym");
             return ssym.ParameterDefinition.Parameter;
         }
 
+        /// <summary>
+        /// Gets the parameters.
+        /// </summary>
+        /// <param name="csym">The csym.</param>
+        /// <returns></returns>
         public static IEnumerable<IParameter> GetParameters(this ICompoundSymbolDefinition csym)
         {
             Check.NotNull(csym, "csym");
@@ -316,14 +334,34 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <returns></returns>
         IResizeBox CreateResizeBox();
 
+        /// <summary>
+        /// Creates the frame.
+        /// </summary>
+        /// <returns></returns>
         ITextFrame CreateFrame();
 
+        /// <summary>
+        /// Creates the text graphics.
+        /// </summary>
+        /// <returns></returns>
         ITextGraphic CreateTextGraphics();
 
+        /// <summary>
+        /// Creates the path graphics.
+        /// </summary>
+        /// <returns></returns>
         IPathGraphic CreatePathGraphics();
 
+        /// <summary>
+        /// Creates the image graphics.
+        /// </summary>
+        /// <returns></returns>
         IImageGraphic CreateImageGraphics();
 
+        /// <summary>
+        /// Creates the parameter.
+        /// </summary>
+        /// <returns></returns>
         IParameter CreateParameter();
 
         /// <summary>
@@ -365,7 +403,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <summary>
         /// Creates a resource id based symbol reference
         /// </summary>
-        /// <param name="p"></param>
+        /// <param name="resourceId">The resource id.</param>
         /// <returns></returns>
         ISimpleSymbolReferenceBase CreateSymbolReference(string resourceId);
 
@@ -722,7 +760,9 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <summary>
         /// Gets or sets the description.
         /// </summary>
-        /// <value>The description.</value>
+        /// <value>
+        /// The description.
+        /// </value>
         string Description { get; set; }
 
         /// <summary>
@@ -926,15 +966,18 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     public enum ImageType
     {
         /// <summary>
-        /// 
+        /// A reference to an image
         /// </summary>
         Reference,
         /// <summary>
-        /// 
+        /// Inline content
         /// </summary>
         Inline
     }
 
+    /// <summary>
+    /// Defines an image graphic
+    /// </summary>
     public interface IImageGraphic : IGraphicBase
     {
         /// <summary>

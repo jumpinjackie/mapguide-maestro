@@ -33,6 +33,9 @@ namespace Maestro.Editors.Fusion
     /// </summary>
     public partial class FlexibleLayoutEditor : EditorBase
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FlexibleLayoutEditor"/> class.
+        /// </summary>
         public FlexibleLayoutEditor()
         {
             InitializeComponent();
@@ -40,6 +43,12 @@ namespace Maestro.Editors.Fusion
 
         private IApplicationDefinition _flexLayout;
 
+        /// <summary>
+        /// Sets the initial state of this editor and sets up any databinding
+        /// within such that user interface changes will propagate back to the
+        /// model.
+        /// </summary>
+        /// <param name="service"></param>
         public override void Bind(IEditorService service)
         {
             _flexLayout = (IApplicationDefinition)service.GetEditedResource();

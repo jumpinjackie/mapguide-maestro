@@ -466,6 +466,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             #endregion
         }
 
+        /// <summary>
+        /// Serializes this instance using the specified serializer.
+        /// </summary>
+        /// <param name="s">The serializer.</param>
         public void Serialize(MgBinarySerializer s)
         {
             var m_selection = new XmlDocument();
@@ -499,6 +503,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
         }
 
+        /// <summary>
+        /// Deserializes this object using the specified deserializer.
+        /// </summary>
+        /// <param name="d">The deserializer.</param>
         public void Deserialize(MgBinaryDeserializer d)
         {
             XmlDocument doc = new XmlDocument();
@@ -538,8 +546,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Returns the index of the given layer
         /// </summary>
-        /// <param name="item">The layer to look for</param>
-        /// <returns>The index of the layer, or -1 if the layer is not in the collection</returns>
+        /// <param name="layer">The layer.</param>
+        /// <returns>
+        /// The index of the layer, or -1 if the layer is not in the collection
+        /// </returns>
         public int IndexOf(RuntimeMapLayer layer)
         {
             for (int i = 0; i < _layers.Count; i++)
@@ -667,6 +677,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             return IndexOf(item) >= 0;
         }
 
+        /// <summary>
+        /// Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"/> to an <see cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
+        /// </summary>
+        /// <param name="array">The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements copied from <see cref="T:System.Collections.Generic.ICollection`1"/>. The <see cref="T:System.Array"/> must have zero-based indexing.</param>
+        /// <param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param>
+        /// <exception cref="T:System.ArgumentNullException">
+        ///   <paramref name="array"/> is null.
+        ///   </exception>
+        ///   
+        /// <exception cref="T:System.ArgumentOutOfRangeException">
+        ///   <paramref name="arrayIndex"/> is less than 0.
+        ///   </exception>
+        ///   
+        /// <exception cref="T:System.ArgumentException">
+        ///   <paramref name="array"/> is multidimensional.
+        /// -or-
+        ///   <paramref name="arrayIndex"/> is equal to or greater than the length of <paramref name="array"/>.
+        /// -or-
+        /// The number of elements in the source <see cref="T:System.Collections.Generic.ICollection`1"/> is greater than the available space from <paramref name="arrayIndex"/> to the end of the destination <paramref name="array"/>.
+        /// -or-
+        /// Type <paramref name="T"/> cannot be cast automatically to the type of the destination <paramref name="array"/>.
+        ///   </exception>
         public void CopyTo(MapSelection.LayerSelection[] array, int arrayIndex)
         {
             throw new NotImplementedException();

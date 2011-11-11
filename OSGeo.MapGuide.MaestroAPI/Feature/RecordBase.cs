@@ -31,20 +31,39 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public abstract class RecordBase : IRecord, IRecordReset, IRecordInitialize
     {
+        /// <summary>
+        /// The map of property values
+        /// </summary>
         protected Dictionary<string, PropertyValue> _values;
+        /// <summary>
+        /// A dictionary to map indexes to property names
+        /// </summary>
         protected Dictionary<int, string> _ordinalMap;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RecordBase"/> class.
+        /// </summary>
         protected RecordBase()
         {
             _values = new Dictionary<string, PropertyValue>();
             _ordinalMap = new Dictionary<int, string>();
         }
 
+        /// <summary>
+        /// Gets the specified property value by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public PropertyValue GetValue(string name)
         {
             return _values[name];
         }
 
+        /// <summary>
+        /// Adds the specified property value
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
         public void PutValue(string name, PropertyValue value)
         {
             if (_values.ContainsKey(name))
@@ -53,151 +72,298 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             _values[name] = value;
         }
 
+        /// <summary>
+        /// Gets whether the specified property name has a null property value
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public bool IsNull(string name)
         {
             return _values[name].IsNull;
         }
 
+        /// <summary>
+        /// Gets whether the property value at the specified index has a null property value. You must
+        /// call this method first to determine if it is safe to call the corresponding GetXXX() methods
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public bool IsNull(int index)
         {
             return IsNull(_ordinalMap[index]);
         }
 
+        /// <summary>
+        /// Gets the boolean value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public bool GetBoolean(string name)
         {
             return ((BooleanValue)_values[name]).Value;
         }
 
+        /// <summary>
+        /// Gets the byte value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public byte GetByte(string name)
         {
             return ((ByteValue)_values[name]).Value;
         }
 
+        /// <summary>
+        /// Gets the blob value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public byte[] GetBlob(string name)
         {
             return ((BlobValue)_values[name]).Value;
         }
 
+        /// <summary>
+        /// Gets the clob value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public char[] GetClob(string name)
         {
             return ((ClobValue)_values[name]).Value;
         }
 
+        /// <summary>
+        /// Gets the double value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public double GetDouble(string name)
         {
             return ((DoubleValue)_values[name]).Value;
         }
 
+        /// <summary>
+        /// Gets the datetime value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public DateTime GetDateTime(string name)
         {
             return ((DateTimeValue)_values[name]).Value;
         }
 
+        /// <summary>
+        /// Gets the feature object.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
         public IFeatureReader GetFeatureObject(string name)
         {
             return new FeatureArrayReader(((FeatureValue)_values[name]).Value);
         }
 
+        /// <summary>
+        /// Gets the int16 value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public short GetInt16(string name)
         {
             return ((Int16Value)_values[name]).Value;
         }
 
+        /// <summary>
+        /// Gets the int32 value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public int GetInt32(string name)
         {
             return ((Int32Value)_values[name]).Value;
         }
 
+        /// <summary>
+        /// Gets the int64 value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public long GetInt64(string name)
         {
             return ((Int64Value)_values[name]).Value;
         }
 
+        /// <summary>
+        /// Gets the single value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public float GetSingle(string name)
         {
             return ((SingleValue)_values[name]).Value;
         }
 
+        /// <summary>
+        /// Gets the string value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public string GetString(string name)
         {
             return ((StringValue)_values[name]).Value;
         }
 
+        /// <summary>
+        /// Gets the geometry value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public IGeometry GetGeometry(string name)
         {
             return ((GeometryValue)_values[name]).Value;
         }
 
+        /// <summary>
+        /// Gets the boolean value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public bool GetBoolean(int index)
         {
             return GetBoolean(_ordinalMap[index]);
         }
 
+        /// <summary>
+        /// Gets the byte value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public byte GetByte(int index)
         {
             return GetByte(_ordinalMap[index]);
         }
 
+        /// <summary>
+        /// Gets the blob value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public byte[] GetBlob(int index)
         {
             return GetBlob(_ordinalMap[index]);
         }
 
+        /// <summary>
+        /// Gets the clob value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public char[] GetClob(int index)
         {
             return GetClob(_ordinalMap[index]);
         }
 
+        /// <summary>
+        /// Gets the double value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public double GetDouble(int index)
         {
             return GetDouble(_ordinalMap[index]);
         }
 
+        /// <summary>
+        /// Gets the datetime value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public DateTime GetDateTime(int index)
         {
             return GetDateTime(_ordinalMap[index]);
         }
 
+        /// <summary>
+        /// Gets the feature object.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
         public IFeatureReader GetFeatureObject(int index)
         {
             return GetFeatureObject(_ordinalMap[index]);
         }
 
+        /// <summary>
+        /// Gets the int16 value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public short GetInt16(int index)
         {
             return GetInt16(_ordinalMap[index]);
         }
 
+        /// <summary>
+        /// Gets the int32 value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public int GetInt32(int index)
         {
             return GetInt32(_ordinalMap[index]);
         }
 
+        /// <summary>
+        /// Gets the int64 value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public long GetInt64(int index)
         {
             return GetInt64(_ordinalMap[index]);
         }
 
+        /// <summary>
+        /// Gets the single value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public float GetSingle(int index)
         {
             return GetSingle(_ordinalMap[index]);
         }
 
+        /// <summary>
+        /// Gets the string value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public string GetString(int index)
         {
             return GetString(_ordinalMap[index]);
         }
 
+        /// <summary>
+        /// Gets the geometry value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public IGeometry GetGeometry(int index)
         {
             return GetGeometry(_ordinalMap[index]);
         }
 
+        /// <summary>
+        /// Gets the <see cref="System.Object"/> at the specified index.
+        /// </summary>
         public object this[int index]
         {
             get { return this[_ordinalMap[index]]; }
         }
 
+        /// <summary>
+        /// Gets the <see cref="System.Object"/> with the specified name.
+        /// </summary>
         public object this[string name]
         {
             get
@@ -237,21 +403,38 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             }
         }
 
+        /// <summary>
+        /// Gets the number of fields in this record
+        /// </summary>
         public int FieldCount
         {
             get { return _values.Count; }
         }
 
+        /// <summary>
+        /// Gets the name of the field at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public string GetName(int index)
         {
             return _ordinalMap[index];
         }
 
+        /// <summary>
+        /// Gets the CLR type of the field at the specified index
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
         public Type GetFieldType(int i)
         {
             return ClrFdoTypeMap.GetClrType(_values[GetName(i)].Type);
         }
 
+        /// <summary>
+        /// Updates the specified record.
+        /// </summary>
+        /// <param name="record">The record.</param>
         public void Update(IRecord record)
         {
             if (record.FieldCount != this.FieldCount)

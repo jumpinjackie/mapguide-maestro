@@ -50,6 +50,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </value>
         public bool IsMultiPlatform { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConnectionProviderEntry"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="desc">The desc.</param>
+        /// <param name="multiPlatform">if set to <c>true</c> [multi platform].</param>
         public ConnectionProviderEntry(string name, string desc, bool multiPlatform)
         {
             this.Name = name;
@@ -58,6 +64,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
     }
 
+    /// <summary>
+    /// A method that creates <see cref="T:OSGeo.MapGuide.MaestroAPI.IServerConnection"/> instances from the given parameters
+    /// </summary>
+    /// <param name="initParams">The init params.</param>
+    /// <returns></returns>
     public delegate IServerConnection ConnectionFactoryMethod(NameValueCollection initParams);
 
     /// <summary>
@@ -190,8 +201,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Registers a new connection provider
         /// </summary>
-        /// <param name="provider"></param>
-        /// <param name="method"></param>
+        /// <param name="entry">The provider entry.</param>
+        /// <param name="method">The factory method.</param>
         public static void RegisterProvider(ConnectionProviderEntry entry, ConnectionFactoryMethod method)
         {
             string name = entry.Name.ToUpper();

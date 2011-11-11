@@ -30,22 +30,69 @@ namespace Maestro.Editors
     /// </summary>
     public class RepositoryIcons
     {
+        /// <summary>
+        /// Icon for resource types
+        /// </summary>
         public const int RES_UNKNOWN = 0;
+        /// <summary>
+        /// Icon for feature sources
+        /// </summary>
         public const int RES_FEATURESOURCE = 1;
+        /// <summary>
+        /// Icon for layer definitions
+        /// </summary>
         public const int RES_LAYERDEFINITION = 2;
+        /// <summary>
+        /// Icon for map definitions
+        /// </summary>
         public const int RES_MAPDEFINITION = 3;
+        /// <summary>
+        /// Icon for web layouts
+        /// </summary>
         public const int RES_WEBLAYOUT = 4;
+        /// <summary>
+        /// Icon for symbol libraries
+        /// </summary>
         public const int RES_SYMBOLLIBRARY = 5;
+        /// <summary>
+        /// Icon for print layouts
+        /// </summary>
         public const int RES_PRINTLAYOUT = 6;
+        /// <summary>
+        /// Icon for drawing sources
+        /// </summary>
         public const int RES_DRAWINGSOURCE = 7;
+        /// <summary>
+        /// Icon for application definitions
+        /// </summary>
         public const int RES_APPLICATIONDEFINITION = 8;
+        /// <summary>
+        /// Icon for symbol definitions
+        /// </summary>
         public const int RES_SYMBOLDEFINITION = 9;
+        /// <summary>
+        /// Icon for watermark definitions
+        /// </summary>
         public const int RES_WATERMARK = 10;
+        /// <summary>
+        /// Icon for load procedures
+        /// </summary>
         public const int RES_LOADPROCEDURE = 11;
 
+        /// <summary>
+        /// Icon for the root of the repository
+        /// </summary>
         public const int RES_ROOT = 12;
+        /// <summary>
+        /// Icon for folders
+        /// </summary>
         public const int RES_FOLDER = 13;
 
+        /// <summary>
+        /// Gets the image icon index for the given resource type
+        /// </summary>
+        /// <param name="resType">Type of the resource.</param>
+        /// <returns></returns>
         public static int GetImageIndexForResourceType(ResourceTypes resType)
         {
             switch (resType)
@@ -79,6 +126,10 @@ namespace Maestro.Editors
             }
         }
 
+        /// <summary>
+        /// Creates the image list.
+        /// </summary>
+        /// <returns></returns>
         public static ImageList CreateImageList()
         {
             var imgList = new ImageList();
@@ -88,6 +139,10 @@ namespace Maestro.Editors
             return imgList;
         }
 
+        /// <summary>
+        /// Populates the image list.
+        /// </summary>
+        /// <param name="imgList">The img list.</param>
         public static void PopulateImageList(ImageList imgList)
         {
             imgList.Images.Add(Properties.Resources.document);

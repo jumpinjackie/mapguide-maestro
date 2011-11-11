@@ -29,8 +29,14 @@ using System.IO;
 
 namespace Maestro.Login
 {
+    /// <summary>
+    /// A user control for entering connection information for a local connection
+    /// </summary>
     public partial class LocalLoginCtrl : UserControl, ILoginCtrl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LocalLoginCtrl"/> class.
+        /// </summary>
         public LocalLoginCtrl()
         {
             InitializeComponent();
@@ -51,21 +57,39 @@ namespace Maestro.Login
             }
         }
 
+        /// <summary>
+        /// Gets the platform config path.
+        /// </summary>
         public string PlatformConfigPath
         {
             get { return txtPlatformConfig.Text; }
         }
 
+        /// <summary>
+        /// Gets the username.
+        /// </summary>
+        /// <value>
+        /// The username.
+        /// </value>
         public string Username
         {
             get { return string.Empty; }
         }
 
+        /// <summary>
+        /// Gets the password.
+        /// </summary>
+        /// <value>
+        /// The password.
+        /// </value>
         public string Password
         {
             get { return string.Empty; }
         }
 
+        /// <summary>
+        /// Updates the login status.
+        /// </summary>
         public void UpdateLoginStatus()
         {
             if (this.PlatformConfigPath.Trim().Length > 0 && File.Exists(this.PlatformConfigPath))
@@ -74,10 +98,19 @@ namespace Maestro.Login
                 DisabledOk(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Occurs when [enable ok].
+        /// </summary>
         public event EventHandler EnableOk;
 
+        /// <summary>
+        /// Occurs when [disabled ok].
+        /// </summary>
         public event EventHandler DisabledOk;
 
+        /// <summary>
+        /// Occurs when [check saved password].
+        /// </summary>
         public event EventHandler CheckSavedPassword;
     }
 }

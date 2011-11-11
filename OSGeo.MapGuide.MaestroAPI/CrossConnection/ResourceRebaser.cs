@@ -31,6 +31,11 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
     /// </summary>
     public class RebaseOptions
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RebaseOptions"/> class.
+        /// </summary>
+        /// <param name="sourceFolder">The source folder.</param>
+        /// <param name="targetFolder">The target folder.</param>
         public RebaseOptions(string sourceFolder, string targetFolder)
         {
             Check.Precondition(ResourceIdentifier.IsFolderResource(sourceFolder), "ResourceIdentifier.IsFolderResource(sourceFolder)");
@@ -66,6 +71,10 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
     {
         private IResource _res;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ResourceRebaser"/> class.
+        /// </summary>
+        /// <param name="res">The res.</param>
         public ResourceRebaser(IResource res)
         {
             _res = res;

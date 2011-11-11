@@ -133,6 +133,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// </summary>
         Warning_MapDefinition_LayerMissingLegendLabel = 3301,
 
+        /// <summary>
+        /// Could not find a spatial context for a referenced layer definition in the map definition
+        /// </summary>
         Warning_MapDefinition_MissingSpatialContext,
 
         /// <summary>
@@ -147,6 +150,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// </summary>
         Warning_MapDefinition_DataOutsideMapBounds,
 
+        /// <summary>
+        /// The Map Definition does not have a coordinate system
+        /// </summary>
         Warning_MapDefinition_MissingCoordinateSystem,
 
         /// <summary>

@@ -137,9 +137,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         protected Dictionary<string, RuntimeMapLayer> _layerIdMap;
 
+        /// <summary>
+        /// The mapping service
+        /// </summary>
         protected IMappingService _mapSvc;
+        /// <summary>
+        /// The GetResourceContents command
+        /// </summary>
         protected IGetResourceContents _getRes;
 
+        /// <summary>
+        /// The amount to increment the Z order for successive layers being added
+        /// </summary>
         public const double Z_ORDER_INCREMENT = 100.0;
 
         internal RuntimeMap(IServerConnection conn)
@@ -990,6 +999,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             AddLayerInternal(layer, index);
         }
 
+        /// <summary>
+        /// Sets the layer to the specified index
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <param name="layer">The layer.</param>
         public void SetLayerIndex(int index, RuntimeMapLayer layer)
         {
             if (index >= _layers.Count || index < 0)
@@ -1003,6 +1017,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
         }
 
+        /// <summary>
+        /// Removes the layer at the specified index
+        /// </summary>
+        /// <param name="index">The index.</param>
         public void RemoveLayerAt(int index)
         {
             if (index >= _layers.Count || index < 0)

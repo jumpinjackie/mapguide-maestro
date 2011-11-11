@@ -38,8 +38,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
         IResource Convert(IResource resource, Version targetVersion);
     }
 
+    /// <summary>
+    /// Performs schematic upgrades of resources
+    /// </summary>
     public class ResourceObjectConverter : IResourceConverter
     {
+        /// <summary>
+        /// Converts the resource to the specified version
+        /// </summary>
+        /// <param name="resource">The resource.</param>
+        /// <param name="targetVersion">The target version.</param>
+        /// <returns></returns>
         public IResource Convert(IResource resource, Version targetVersion)
         {
             //How does this work? If source and target versions are known, it means the classes

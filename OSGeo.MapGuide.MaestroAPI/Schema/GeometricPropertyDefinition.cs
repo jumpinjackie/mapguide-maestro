@@ -30,10 +30,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     [Flags]
     public enum FeatureGeometricType : int
     {
+        /// <summary>
+        /// Points
+        /// </summary>
         Point = 1,
+        /// <summary>
+        /// Curves (lines)
+        /// </summary>
         Curve = 2,
+        /// <summary>
+        /// Surfaces (polygons)
+        /// </summary>
         Surface = 4,
+        /// <summary>
+        /// Solids
+        /// </summary>
         Solid = 8,
+        /// <summary>
+        /// All types
+        /// </summary>
         All = Curve | Point | Solid | Surface
     }
 
@@ -42,16 +57,49 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     /// </summary>
     public enum SpecificGeometryType
     {
+        /// <summary>
+        /// Points
+        /// </summary>
         Point = 1,
+        /// <summary>
+        /// Line Strings
+        /// </summary>
         LineString = 2,
+        /// <summary>
+        /// Polygons
+        /// </summary>
         Polygon = 3,
+        /// <summary>
+        /// Multi Points
+        /// </summary>
         MultiPoint = 4,
+        /// <summary>
+        /// Multi Line Strings
+        /// </summary>
         MultiLineString = 5,
+        /// <summary>
+        /// Multi Polygons
+        /// </summary>
         MultiPolygon = 6,
+        /// <summary>
+        /// Multi Geometries
+        /// </summary>
         MultiGeometry = 7,
+        /// <summary>
+        /// Curve Strings
+        /// </summary>
         CurveString = 10,
+        /// <summary>
+        /// Curve Polygons
+        /// </summary>
         CurvePolygon = 11,
+        /// <summary>
+        /// Multi Curve Strings
+        /// </summary>
         MultiCurveString = 12,
+        /// <summary>
+        /// Multi Curve Polygons
+        /// </summary>
         MultiCurvePolygon = 13
     }
 
@@ -62,6 +110,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     {
         private GeometricPropertyDefinition() { this.SpecificGeometryTypes = new SpecificGeometryType[0]; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GeometricPropertyDefinition"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="description">The description.</param>
         public GeometricPropertyDefinition(string name, string description)
             : this()
         {
@@ -209,6 +262,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             get { return PropertyDefinitionType.Geometry; }
         }
 
+        /// <summary>
+        /// Writes the current element's content
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         public override void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             var en = Utility.EncodeFDOName(this.Name);
@@ -226,6 +284,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             currentNode.AppendChild(geom);
         }
 
+        /// <summary>
+        /// Set the current element's content from the current XML node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
         public override void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             var gt = Utility.GetFdoAttribute(node, "geometricTypes");
@@ -245,6 +308,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             this.SpatialContextAssociation = (srs != null ? srs.Value : string.Empty);
         }
 
+        /// <summary>
+        /// Converts the current specified geometry types to a space-delimited list of types
+        /// </summary>
+        /// <returns></returns>
         public string GeometryTypesToString()
         {
             List<string> values = new List<string>();
@@ -386,6 +453,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 throw new ArgumentException();
         }
 
+        /// <summary>
+        /// Gets the expression data type
+        /// </summary>
         public override OSGeo.MapGuide.ObjectModels.Common.ExpressionDataType ExpressionType
         {
             get { return OSGeo.MapGuide.ObjectModels.Common.ExpressionDataType.Geometry; }

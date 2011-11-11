@@ -1767,10 +1767,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
-        /// Creates a new runtime map instance from an existing map definition. The runtime map resource id is calculated from the 
+        /// Creates a new runtime map instance from an existing map definition. The runtime map resource id is calculated from the
         /// current session id and the name component of the Map Definition resource id
         /// </summary>
-        /// <param name="mdf"></param>
+        /// <param name="mdf">The map definition.</param>
+        /// <param name="metersPerUnit">The meters per unit.</param>
         /// <returns></returns>
         public RuntimeMap CreateMap(IMapDefinition mdf, double metersPerUnit)
         {

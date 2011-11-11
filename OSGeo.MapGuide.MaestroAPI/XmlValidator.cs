@@ -41,11 +41,17 @@ namespace OSGeo.MapGuide.MaestroAPI
         private List<string> warnings = new List<string>();
         private List<string> errors = new List<string>();
 
+        /// <summary>
+        /// Gets the validation warnings.
+        /// </summary>
         public ReadOnlyCollection<string> ValidationWarnings
         {
             get { return this.warnings.AsReadOnly(); }
         }
 
+        /// <summary>
+        /// Gets the validation errors.
+        /// </summary>
         public ReadOnlyCollection<string> ValidationErrors
         {
             get { return this.errors.AsReadOnly(); }
@@ -108,6 +114,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             return null;
         }
 
+        /// <summary>
+        /// Validates the content of the resource XML.
+        /// </summary>
+        /// <param name="xmlContent">Content of the XML.</param>
+        /// <param name="xsdPath">The XSD path.</param>
+        /// <param name="errors">The errors.</param>
+        /// <param name="warnings">The warnings.</param>
         public static void ValidateResourceXmlContent(string xmlContent, string xsdPath, out string[] errors, out string[] warnings)
         {
             errors = new string[0];

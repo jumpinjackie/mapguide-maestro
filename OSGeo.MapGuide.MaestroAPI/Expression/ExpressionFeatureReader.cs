@@ -27,7 +27,7 @@ using OSGeo.MapGuide.MaestroAPI.Feature;
 namespace OSGeo.MapGuide.MaestroAPI.Expression
 {
     /// <summary>
-    /// A <see cref="FeatureSetReader"/> that supports expression evaluation
+    /// A subclass <see cref="ReaderBase"/> that supports expression evaluation
     /// </summary>
     internal class ExpressionFeatureReader : ReaderBase
     {

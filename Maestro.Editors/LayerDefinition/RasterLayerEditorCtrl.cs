@@ -44,6 +44,12 @@ namespace Maestro.Editors.LayerDefinition
         private IRasterLayerDefinition _rldf;
         private IEditorService _edsvc;
 
+        /// <summary>
+        /// Sets the initial state of this editor and sets up any databinding
+        /// within such that user interface changes will propagate back to the
+        /// model.
+        /// </summary>
+        /// <param name="service"></param>
         public override void Bind(IEditorService service)
         {
             _edsvc = service;

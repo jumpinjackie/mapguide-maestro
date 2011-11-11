@@ -35,6 +35,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 	/// </summary>
 	public class FeatureSourceDescription
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FeatureSourceDescription"/> class.
+        /// </summary>
+        /// <param name="stream">The stream.</param>
         public FeatureSourceDescription(System.IO.Stream stream)
         {
             List<FeatureSchema> schemas = new List<FeatureSchema>();

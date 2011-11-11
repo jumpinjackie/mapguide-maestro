@@ -607,6 +607,7 @@ namespace MaestroAPITests
             var conn = _mocks.NewMock<IServerConnection>();
             var conv = new ResourceObjectConverter();
             var ldf = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector, new Version(1, 0, 0));
+            ldf.ResourceID = "Library://Samples/Sheboygan/Layers/Parcels.LayerDefinition";
             ldf.SubLayer.ResourceId = "Library://Samples/Sheboygan/Data/Parcels.FeatureSource";
             ((IVectorLayerDefinition)ldf.SubLayer).FeatureName = "SHP_Schema:Parcels";
             ((IVectorLayerDefinition)ldf.SubLayer).Geometry = "Geometry";
@@ -697,6 +698,7 @@ namespace MaestroAPITests
             var conv = new ResourceObjectConverter();
 
             var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "Test Map");
+            mdf.ResourceID = "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition";
 
             Assert.AreEqual("1.0.0", mdf.GetResourceTypeDescriptor().Version);
             Assert.AreEqual("MapDefinition-1.0.0.xsd", mdf.GetResourceTypeDescriptor().XsdName);
@@ -736,6 +738,7 @@ namespace MaestroAPITests
             var conv = new ResourceObjectConverter();
 
             var lproc = ObjectFactory.CreateLoadProcedure(conn, LoadType.Sdf);
+            lproc.ResourceID = "Library://Samples/Sheboygan/Load/Load.LoadProcedure";
 
             Assert.AreEqual("1.0.0", lproc.GetResourceTypeDescriptor().Version);
             Assert.AreEqual("LoadProcedure-1.0.0.xsd", lproc.GetResourceTypeDescriptor().XsdName);
@@ -790,6 +793,7 @@ namespace MaestroAPITests
             var conv = new ResourceObjectConverter();
 
             var wl = ObjectFactory.CreateWebLayout(conn, new Version(1, 0, 0), "Library://Test.MapDefinition");
+            wl.ResourceID = "Library://Test.WebLayout";
 
             Assert.AreEqual("1.0.0", wl.GetResourceTypeDescriptor().Version);
             Assert.AreEqual("WebLayout-1.0.0.xsd", wl.GetResourceTypeDescriptor().XsdName);
@@ -829,6 +833,7 @@ namespace MaestroAPITests
             var conv = new ResourceObjectConverter();
 
             var ssym = ObjectFactory.CreateSimpleSymbol(conn, new Version(1, 0, 0), "SimpleSymbolTest", "Test simple symbol");
+            ssym.ResourceID = "Library://Samples/Sheboygan/Symbols/Test.SymbolDefinition";
 
             Assert.AreEqual("1.0.0", ssym.GetResourceTypeDescriptor().Version);
             Assert.AreEqual("SymbolDefinition-1.0.0.xsd", ssym.GetResourceTypeDescriptor().XsdName);
@@ -860,6 +865,7 @@ namespace MaestroAPITests
             }
 
             var csym = ObjectFactory.CreateCompoundSymbol(conn, new Version(1, 0, 0), "CompoundSymbolTest", "Test compound symbol");
+            csym.ResourceID = "Library://Samples/Sheboygan/Symbols/Compound.SymbolDefinition";
 
             Assert.AreEqual("1.0.0", csym.GetResourceTypeDescriptor().Version);
             Assert.AreEqual("SymbolDefinition-1.0.0.xsd", csym.GetResourceTypeDescriptor().XsdName);

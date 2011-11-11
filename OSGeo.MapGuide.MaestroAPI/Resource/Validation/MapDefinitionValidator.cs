@@ -31,6 +31,9 @@ using OSGeo.MapGuide.ObjectModels;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {
+    /// <summary>
+    /// A Map Definition validator
+    /// </summary>
     public class MapDefinitionValidator : BaseMapDefinitionValidator 
     {
         /// <summary>

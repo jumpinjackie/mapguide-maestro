@@ -81,7 +81,7 @@ namespace Maestro.Base.Services
                         var tpl = new UserItemTemplate(file);
                         tpls.Add(tpl);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         LoggingService.Info("Could not load user template: " + file); //LOCALIZE
                     }

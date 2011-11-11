@@ -61,6 +61,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// </summary>
         public string ZColumn { get; set; }
 
+        /// <summary>
+        /// Writes the current element's content
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             var cls = this.Parent.GetClass(this.SchemaName, this.ClassName);
@@ -114,6 +119,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             }
         }
 
+        /// <summary>
+        /// Set the current element's content from the current XML node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (!node.Name.Equals("complexType"))

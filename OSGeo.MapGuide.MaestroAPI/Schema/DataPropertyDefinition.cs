@@ -35,6 +35,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     {
         private DataPropertyDefinition() { this.DataType = DataPropertyType.String; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DataPropertyDefinition"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="description">The description.</param>
         public DataPropertyDefinition(string name, string description) 
             : this()
         {
@@ -121,6 +126,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             }
         }
 
+        /// <summary>
+        /// Gets the type of the data.
+        /// </summary>
+        /// <param name="xmlType">Type of the XML.</param>
+        /// <returns></returns>
         public static DataPropertyType GetDataType(string xmlType)
         {
             switch (xmlType)
@@ -163,6 +173,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             }
         }
 
+        /// <summary>
+        /// Writes the current element's content
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         public override void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             var en = Utility.EncodeFDOName(this.Name);
@@ -193,6 +208,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             currentNode.AppendChild(prop);
         }
 
+        /// <summary>
+        /// Set the current element's content from the current XML node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
         public override void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             var ro = Utility.GetFdoAttribute(node, "readOnly");
@@ -249,6 +269,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             throw new ArgumentException();
         }
 
+        /// <summary>
+        /// Gets the expression data type
+        /// </summary>
         public override ExpressionDataType ExpressionType
         {
             get { return GetExpressionType(this.DataType); }

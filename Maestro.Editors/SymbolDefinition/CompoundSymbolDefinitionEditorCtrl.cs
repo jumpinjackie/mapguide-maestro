@@ -41,6 +41,9 @@ namespace Maestro.Editors.SymbolDefinition
         const int IDX_SYMBOL = 0;
         const int IDX_REFERENCE = 1;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompoundSymbolDefinitionEditorCtrl"/> class.
+        /// </summary>
         public CompoundSymbolDefinitionEditorCtrl()
         {
             InitializeComponent();
@@ -49,6 +52,12 @@ namespace Maestro.Editors.SymbolDefinition
         private IEditorService _edSvc;
         private ICompoundSymbolDefinition _compSym;
 
+        /// <summary>
+        /// Sets the initial state of this editor and sets up any databinding
+        /// within such that user interface changes will propagate back to the
+        /// model.
+        /// </summary>
+        /// <param name="service"></param>
         public override void Bind(IEditorService service)
         {
             service.RegisterCustomNotifier(this);

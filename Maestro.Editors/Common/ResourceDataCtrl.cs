@@ -195,6 +195,10 @@ namespace Maestro.Editors.Common
             }
         }
 
+        /// <summary>
+        /// Uploads the file.
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
         public void UploadFile(string fileName)
         {
             using (var fs = new FileStream(fileName, FileMode.Open))
@@ -335,6 +339,13 @@ namespace Maestro.Editors.Common
             }
         }
 
+        /// <summary>
+        /// Determines whether the specified name contains file.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified name contains file; otherwise, <c>false</c>.
+        /// </returns>
         public bool ContainsFile(string name)
         {
             return lstDataFiles.Items.ContainsKey(name);

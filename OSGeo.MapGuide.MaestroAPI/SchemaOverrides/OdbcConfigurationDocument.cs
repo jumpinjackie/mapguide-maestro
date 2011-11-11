@@ -33,6 +33,9 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
     {
         private List<OdbcTableItem> _tables;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OdbcConfigurationDocument"/> class.
+        /// </summary>
         public OdbcConfigurationDocument() { _tables = new List<OdbcTableItem>(); }
 
         /// <summary>
@@ -66,6 +69,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             return items;
         }
 
+        /// <summary>
+        /// Write this document's schema mappings to the given XML document
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         protected override void WriteSchemaMappings(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             foreach (var fs in _schemas)
@@ -89,6 +97,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             }
         }
 
+        /// <summary>
+        /// Write this document's schema mappings from the given XML document
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <param name="mgr">The namespace manager.</param>
         protected override void ReadSchemaMappings(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             //var mappings = node.SelectNodes("SchemaMapping", mgr);

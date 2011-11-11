@@ -31,24 +31,52 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
     /// </summary>
     public abstract class ConfigurationDocument : IFdoSerializable
     {
+        /// <summary>
+        /// The list of spatial contexts
+        /// </summary>
         protected List<IFdoSpatialContext> _spatialContexts;
 
+        /// <summary>
+        /// The list of logical schemas
+        /// </summary>
         protected List<FeatureSchema> _schemas;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConfigurationDocument"/> class.
+        /// </summary>
         protected ConfigurationDocument() 
         { 
             _spatialContexts = new List<IFdoSpatialContext>();
             _schemas = new List<FeatureSchema>();
         }
 
+        /// <summary>
+        /// Gets the array of spatial contexts.
+        /// </summary>
         public IFdoSpatialContext[] SpatialContexts { get { return _spatialContexts.ToArray(); } }
 
+        /// <summary>
+        /// Gets the array of logical schemas.
+        /// </summary>
         public FeatureSchema[] Schemas { get { return _schemas.ToArray(); } }
 
+        /// <summary>
+        /// Adds the spatial context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public void AddSpatialContext(IFdoSpatialContext context) { _spatialContexts.Add(context); }
 
+        /// <summary>
+        /// Removes the spatial context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public void RemoveSpatialContext(IFdoSpatialContext context) { _spatialContexts.Remove(context); }
 
+        /// <summary>
+        /// Gets the spatial context by name
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
         public IFdoSpatialContext GetSpatialContext(string name)
         {
             foreach (var ctx in _spatialContexts)
@@ -59,6 +87,10 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             return null;
         }
 
+        /// <summary>
+        /// Gets the array spatial context names.
+        /// </summary>
+        /// <returns></returns>
         public string[] GetSpatialContextNames()
         {
             List<string> names = new List<string>();
@@ -71,10 +103,23 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             return names.ToArray();
         }
 
+        /// <summary>
+        /// Adds the logical schema.
+        /// </summary>
+        /// <param name="schema">The schema.</param>
         public void AddSchema(FeatureSchema schema) { _schemas.Add(schema); }
 
+        /// <summary>
+        /// Removes the logical schema.
+        /// </summary>
+        /// <param name="schema">The schema.</param>
         public void RemoveSchema(FeatureSchema schema) { _schemas.Remove(schema); }
 
+        /// <summary>
+        /// Gets the schema by name.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
         public FeatureSchema GetSchema(string name)
         {
             foreach (var fsc in _schemas)
@@ -85,12 +130,23 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             return null;
         }
 
+        /// <summary>
+        /// Gets the class definition by schema and class names
+        /// </summary>
+        /// <param name="schemaName">Name of the schema.</param>
+        /// <param name="className">Name of the class.</param>
+        /// <returns></returns>
         public ClassDefinition GetClass(string schemaName, string className)
         {
             var fs = GetSchema(schemaName);
             return fs.GetClass(className);
         }
 
+        /// <summary>
+        /// Writes the current element's content
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             var dstore = doc.CreateElement("fdo", "DataStore", XmlNamespaces.FDO);
@@ -113,10 +169,25 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             currentNode.AppendChild(dstore);
         }
 
+        /// <summary>
+        /// Write this document's schema mappings to the given XML document
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         protected abstract void WriteSchemaMappings(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode);
 
+        /// <summary>
+        /// Write this document's schema mappings from the given XML document
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <param name="mgr">The namespace manager.</param>
         protected abstract void ReadSchemaMappings(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr);
 
+        /// <summary>
+        /// Set the current element's content from the current XML node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (!node.Name.Equals("fdo:DataStore"))
@@ -145,6 +216,10 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             ReadSchemaMappings(node, mgr);
         }
 
+        /// <summary>
+        /// Returns the XML form of this document
+        /// </summary>
+        /// <returns></returns>
         public string ToXml()
         {
             XmlDocument doc = new XmlDocument();
@@ -152,6 +227,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             return doc.OuterXml;
         }
 
+        /// <summary>
+        /// Creates a configuration document from XML.
+        /// </summary>
+        /// <param name="xml">The XML.</param>
+        /// <returns>The configuration document</returns>
         public static ConfigurationDocument LoadXml(string xml)
         {
             XmlDocument doc = new XmlDocument();

@@ -29,6 +29,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     /// </summary>
     public class RasterPropertyDefinition : PropertyDefinition
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RasterPropertyDefinition"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="description">The description.</param>
         public RasterPropertyDefinition(string name, string description)
         {
             this.Name = name;
@@ -68,6 +73,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             get { return PropertyDefinitionType.Raster; }
         }
 
+        /// <summary>
+        /// Writes the current element's content
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         public override void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             var en = Utility.EncodeFDOName(this.Name);
@@ -82,6 +92,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             currentNode.AppendChild(geom);
         }
 
+        /// <summary>
+        /// Set the current element's content from the current XML node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
         public override void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             var dix = Utility.GetFdoAttribute(node, "defaultImageXSize");
@@ -100,6 +115,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             this.SpatialContextAssociation = (srs != null ? srs.Value : string.Empty);
         }
 
+        /// <summary>
+        /// Gets the expression data type
+        /// </summary>
         public override OSGeo.MapGuide.ObjectModels.Common.ExpressionDataType ExpressionType
         {
             get { return OSGeo.MapGuide.ObjectModels.Common.ExpressionDataType.Raster; }

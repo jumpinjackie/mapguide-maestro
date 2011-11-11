@@ -34,6 +34,9 @@ namespace Maestro.Shared.UI
     /// </summary>
     public partial class ErrorDialog : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ErrorDialog"/> class.
+        /// </summary>
         public ErrorDialog()
         {
             InitializeComponent();
@@ -59,6 +62,11 @@ namespace Maestro.Shared.UI
             }
         }
 
+        /// <summary>
+        /// Shows the specified message.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="detail">The detail.</param>
         public static void Show(string message, string detail)
         {
             var diag = new ErrorDialog();
@@ -67,6 +75,10 @@ namespace Maestro.Shared.UI
             diag.ShowDialog();    
         }
 
+        /// <summary>
+        /// Shows the specified exception.
+        /// </summary>
+        /// <param name="ex">The exception.</param>
         public static void Show(Exception ex)
         {
             Show(ex.Message, ex.ToString());

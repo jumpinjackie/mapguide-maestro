@@ -27,6 +27,9 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Packaging
 {
+    /// <summary>
+    /// A dialog to allow editing of a resource data entry
+    /// </summary>
     public partial class EditResourceDataEntryDialog : Form
     {
         private string m_resourceName;
@@ -34,30 +37,57 @@ namespace Maestro.Editors.Packaging
         private string m_filename;
         private string m_datatype;
 
+        /// <summary>
+        /// Gets or sets the name of the resource.
+        /// </summary>
+        /// <value>
+        /// The name of the resource.
+        /// </value>
         public string ResourceName
         {
             get { return m_resourceName; }
             set { m_resourceName = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the type of the content.
+        /// </summary>
+        /// <value>
+        /// The type of the content.
+        /// </value>
         public string ContentType
         {
             get { return m_contentType; }
             set { m_contentType = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the filename.
+        /// </summary>
+        /// <value>
+        /// The filename.
+        /// </value>
         public string Filename
         {
             get { return m_filename; }
             set { m_filename = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the type of the data.
+        /// </summary>
+        /// <value>
+        /// The type of the data.
+        /// </value>
         public string DataType
         {
             get { return m_datatype; }
             set { m_datatype = value; }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EditResourceDataEntryDialog"/> class.
+        /// </summary>
         public EditResourceDataEntryDialog()
         {
             InitializeComponent();
@@ -88,8 +118,5 @@ namespace Maestro.Editors.Packaging
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-
-
-
     }
 }

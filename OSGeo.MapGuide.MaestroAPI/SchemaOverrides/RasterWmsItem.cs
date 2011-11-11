@@ -28,50 +28,143 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
+    /// <summary>
+    /// A WMS Raster configuration element
+    /// </summary>
     public class RasterWmsItem : IFdoSerializable
     {
+        /// <summary>
+        /// Represents all valid WMS image formats
+        /// </summary>
         public class WmsImageFormat
         {
+            /// <summary>
+            /// Portable Network Graphics (PNG)
+            /// </summary>
             public const string PNG = "PNG";
+            /// <summary>
+            /// Tagged Image File (TIF)
+            /// </summary>
             public const string TIF = "TIF";
+            /// <summary>
+            /// Joint Photographic Experts Group (JPEG)
+            /// </summary>
             public const string JPG = "JPG";
+            /// <summary>
+            /// Graphics Interchange Format (GIF)
+            /// </summary>
             public const string GIF = "GIF";
         }
 
         internal RasterWmsItem() { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RasterWmsItem"/> class.
+        /// </summary>
+        /// <param name="className">Name of the class.</param>
+        /// <param name="rasterPropertyName">Name of the raster property.</param>
         public RasterWmsItem(string className, string rasterPropertyName)
         {
             this.FeatureClass = className;
             this.RasterPropertyName = rasterPropertyName;
         }
 
+        /// <summary>
+        /// Gets or sets the feature class.
+        /// </summary>
+        /// <value>
+        /// The feature class.
+        /// </value>
         public string FeatureClass { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the raster property.
+        /// </summary>
+        /// <value>
+        /// The name of the raster property.
+        /// </value>
         public string RasterPropertyName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the elevation dimension.
+        /// </summary>
+        /// <value>
+        /// The elevation dimension.
+        /// </value>
         public string ElevationDimension { get; set; }
 
+        /// <summary>
+        /// Gets or sets the image format.
+        /// </summary>
+        /// <value>
+        /// The image format.
+        /// </value>
         public string ImageFormat { get; set; }
 
         private List<WmsLayerDefinition> _layers = new List<WmsLayerDefinition>();
 
+        /// <summary>
+        /// Gets the array of WMS layer configuration elements
+        /// </summary>
         public WmsLayerDefinition[] Layers { get { return _layers.ToArray(); } }
 
+        /// <summary>
+        /// Adds a WMS layer configuration element.
+        /// </summary>
+        /// <param name="layer">The layer.</param>
         public void AddLayer(WmsLayerDefinition layer) { _layers.Add(layer); }
 
+        /// <summary>
+        /// Removes the given WMS layer configuration element
+        /// </summary>
+        /// <param name="layer">The layer.</param>
         public void RemoveLayer(WmsLayerDefinition layer) { _layers.Remove(layer); }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether tile caching is used
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if tile caching is used; otherwise, <c>false</c>.
+        /// </value>
         public bool UseTileCache { get; set; }
 
+        /// <summary>
+        /// Gets or sets the time.
+        /// </summary>
+        /// <value>
+        /// The time.
+        /// </value>
         public string Time { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the spatial context.
+        /// </summary>
+        /// <value>
+        /// The name of the spatial context.
+        /// </value>
         public string SpatialContextName { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is transparent.
+        /// </summary>
+        /// <value>
+        /// 	<c>true</c> if this instance is transparent; otherwise, <c>false</c>.
+        /// </value>
         public bool IsTransparent { get; set; }
 
+        /// <summary>
+        /// Gets or sets the color of the background.
+        /// </summary>
+        /// <value>
+        /// The color of the background.
+        /// </value>
         public Color BackgroundColor { get; set; }
 
+        /// <summary>
+        /// Writes the current element's content
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             var rasterDef = doc.CreateElement("RasterDefinition");
@@ -138,6 +231,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             currentNode.AppendChild(rasterDef);
         }
 
+        /// <summary>
+        /// Set the current element's content from the current XML node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (node.Name != "RasterDefinition")
@@ -200,6 +298,9 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             }
         }
 
+        /// <summary>
+        /// Removes all WMS layer configuration elements
+        /// </summary>
         public void RemoveAllLayers()
         {
             _layers.Clear();

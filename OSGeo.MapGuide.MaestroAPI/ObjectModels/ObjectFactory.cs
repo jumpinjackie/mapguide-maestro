@@ -474,6 +474,9 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Creates a simple symbol definition.
         /// </summary>
         /// <param name="owner">The owner.</param>
+        /// <param name="version">The version.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="description">The description.</param>
         /// <returns></returns>
         public static ISimpleSymbolDefinition CreateSimpleSymbol(IServerConnection owner, Version version, string name, string description)
         {
@@ -506,6 +509,9 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Creates the compound symbol.
         /// </summary>
         /// <param name="owner">The owner.</param>
+        /// <param name="version">The version.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="description">The description.</param>
         /// <returns></returns>
         public static ICompoundSymbolDefinition CreateCompoundSymbol(IServerConnection owner, Version version, string name, string description)
         {

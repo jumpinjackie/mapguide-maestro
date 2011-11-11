@@ -705,6 +705,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        /// <summary>
+        /// Transforms the envelope.
+        /// </summary>
+        /// <param name="env">The env.</param>
+        /// <param name="srcCsWkt">The source coordinate system WKT.</param>
+        /// <param name="dstCsWkt">The destination coordinate system WKT.</param>
+        /// <returns></returns>
         public static OSGeo.MapGuide.ObjectModels.Common.IEnvelope TransformEnvelope(OSGeo.MapGuide.ObjectModels.Common.IEnvelope env, string srcCsWkt, string dstCsWkt)
         {
             try

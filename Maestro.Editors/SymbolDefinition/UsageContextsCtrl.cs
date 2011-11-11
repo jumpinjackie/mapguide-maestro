@@ -29,9 +29,15 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
 namespace Maestro.Editors.SymbolDefinition
 {
+    /// <summary>
+    /// Displays usage contexts options for a Symbol Definition
+    /// </summary>
     [ToolboxItem(false)]
     internal partial class UsageContextsCtrl : EditorBindableCollapsiblePanel
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UsageContextsCtrl"/> class.
+        /// </summary>
         public UsageContextsCtrl()
         {
             InitializeComponent();
@@ -46,6 +52,12 @@ namespace Maestro.Editors.SymbolDefinition
 
         private bool _init = false;
 
+        /// <summary>
+        /// Sets the initial state of this editor and sets up any databinding
+        /// within such that user interface changes will propagate back to the
+        /// model.
+        /// </summary>
+        /// <param name="service"></param>
         public override void Bind(IEditorService service)
         {
             service.RegisterCustomNotifier(this);

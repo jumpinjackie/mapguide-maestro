@@ -23,16 +23,35 @@ using System.Text;
 
 namespace Maestro.Packaging
 {
+    /// <summary>
+    /// Represents the result of a non-transactional package loading operation
+    /// </summary>
     public class UploadPackageResult
     {
+        /// <summary>
+        /// Gets the successful operations
+        /// </summary>
         public ICollection<PackageOperation> Successful { get; private set; }
 
+        /// <summary>
+        /// Gets the failed operations
+        /// </summary>
         public Dictionary<PackageOperation, Exception> Failed { get; private set; }
 
+        /// <summary>
+        /// Gets the operations that were skipped
+        /// </summary>
         public ICollection<PackageOperation> SkipOperations { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UploadPackageResult"/> class.
+        /// </summary>
         public UploadPackageResult() : this(new PackageOperation[0]) { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UploadPackageResult"/> class.
+        /// </summary>
+        /// <param name="skip">The skip.</param>
         public UploadPackageResult(IEnumerable<PackageOperation> skip)
         {
             this.Successful = new List<PackageOperation>();

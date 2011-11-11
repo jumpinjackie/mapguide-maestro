@@ -139,6 +139,12 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <value></value>
         public abstract bool IsLoaded { get; }
 
+        /// <summary>
+        /// Creates a simple coordinate system transformation from the source and target WKT strings
+        /// </summary>
+        /// <param name="sourceWkt"></param>
+        /// <param name="targetWkt"></param>
+        /// <returns></returns>
         public virtual ISimpleTransform CreateTransform(string sourceWkt, string targetWkt)
         {
             return new DefaultSimpleTransform(sourceWkt, targetWkt);

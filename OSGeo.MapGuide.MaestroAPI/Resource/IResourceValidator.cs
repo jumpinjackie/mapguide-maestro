@@ -54,9 +54,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidationIssue"/> class.
         /// </summary>
-        /// <param name="res">The res.</param>
-        /// <param name="stat">The stat.</param>
-        /// <param name="msg">The MSG.</param>
+        /// <param name="res">The resource.</param>
+        /// <param name="stat">The validation status.</param>
+        /// <param name="code">The validation status code.</param>
+        /// <param name="msg">The message.</param>
         public ValidationIssue(IResource res, ValidationStatus stat, ValidationStatusCode code, string msg)
         {
             Check.NotNull(res, "res");

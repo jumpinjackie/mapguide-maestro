@@ -45,6 +45,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             _properties = new List<PropertyDefinition>();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ClassDefinition"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="description">The description.</param>
         public ClassDefinition(string name, string description)
             : this()
         {
@@ -67,6 +72,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             get { return _properties[index]; }
         }
 
+        /// <summary>
+        /// Gets the ordinal of the specified property name
+        /// </summary>
+        /// <param name="name">The property name.</param>
+        /// <returns></returns>
         public int GetOrdinal(string name)
         {
             if (_ordinalMap.ContainsKey(name))
@@ -196,6 +206,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             return removed;
         }
 
+        /// <summary>
+        /// Gets the parent schema
+        /// </summary>
         public FeatureSchema Parent { get; internal set; }
 
         /// <summary>
@@ -218,6 +231,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// </summary>
         public string QualifiedName { get { return this.Parent != null ? this.Parent.Name + ":" + this.Name : this.Name; } }
 
+        /// <summary>
+        /// Writes the current element's content
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         public void WriteXml(XmlDocument doc, XmlNode currentNode)
         {
             XmlElement id = null;
@@ -291,6 +309,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             currentNode.AppendChild(ctype);
         }
 
+        /// <summary>
+        /// Set the current element's content from the current XML node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
         public void ReadXml(XmlNode node, XmlNamespaceManager mgr)
         {
             var en = Utility.EncodeFDOName(this.Name);

@@ -92,6 +92,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// </summary>
         public GdalRasterLocationItem[] RasterLocations { get { return new List<GdalRasterLocationItem>(_items.Values).ToArray(); } }
 
+        /// <summary>
+        /// Write this document's schema mappings to the given XML document
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         protected override void WriteSchemaMappings(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             foreach (var schema in base._schemas)
@@ -130,6 +135,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             }
         }
 
+        /// <summary>
+        /// Write this document's schema mappings from the given XML document
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <param name="mgr">The namespace manager.</param>
         protected override void ReadSchemaMappings(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             //XmlNodeList mappings = node.SelectNodes("SchemaMapping");

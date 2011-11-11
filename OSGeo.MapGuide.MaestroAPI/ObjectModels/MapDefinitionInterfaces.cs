@@ -434,8 +434,9 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// <summary>
         /// Updates the group name references of all layers belonging to a particular group
         /// </summary>
-        /// <param name="oldGroupName"></param>
-        /// <param name="newGroupName"></param>
+        /// <param name="map">The map.</param>
+        /// <param name="oldGroupName">Old name of the group.</param>
+        /// <param name="newGroupName">New name of the group.</param>
         public static void UpdateDynamicGroupName(this IMapDefinition map, string oldGroupName, string newGroupName)
         {
             Check.NotNull(map, "map");

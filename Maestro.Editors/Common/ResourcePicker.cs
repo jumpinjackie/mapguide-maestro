@@ -109,6 +109,9 @@ namespace Maestro.Editors.Generic
             
         }
 
+        /// <summary>
+        /// Gets the selected folder.
+        /// </summary>
         public string SelectedFolder { get; private set; }
 
         private ResourcePickerMode _mode = ResourcePickerMode.OpenResource;

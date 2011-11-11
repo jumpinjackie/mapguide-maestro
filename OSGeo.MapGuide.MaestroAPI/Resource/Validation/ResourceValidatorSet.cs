@@ -46,6 +46,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <summary>
         /// Validates the specified items.
         /// </summary>
+        /// <param name="context">The context.</param>
         /// <param name="items">The items.</param>
         /// <param name="recurse">if set to <c>true</c> [recurse].</param>
         /// <returns></returns>

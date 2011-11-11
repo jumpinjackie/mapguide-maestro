@@ -525,6 +525,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
         }
 
+        /// <summary>
+        /// Parses encoded id string into an array of values
+        /// </summary>
+        /// <param name="encodedId">The encoded id string.</param>
+        /// <returns></returns>
         public object[] ParseSelectionValues(string encodedId)
         {
             int index = 0;
@@ -752,7 +757,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
-        /// Raises the <see cref="PropertyChanged"/> event
+        /// Raises the <see cref="E:System.ComponentModel.INotfiyPropertyChanged.PropertyChanged"/> event
         /// </summary>
         /// <param name="propertyName"></param>
         protected override void OnPropertyChanged(string propertyName)

@@ -29,7 +29,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Exceptions
     public static class NestedExceptionMessageProcessor
     {
         /// <summary>
-        /// Returns a formatted string containing the main exception message and all messages within the <see cref="InnerException"/> properties
+        /// Returns a formatted string containing the main exception message and all messages within the <see cref="P:System.Exception.InnerException"/> properties
         /// </summary>
         /// <param name="error">The error.</param>
         /// <returns></returns>

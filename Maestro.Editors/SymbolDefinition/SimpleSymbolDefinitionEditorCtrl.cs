@@ -33,11 +33,20 @@ namespace Maestro.Editors.SymbolDefinition
     [ToolboxItem(true)]
     public partial class SimpleSymbolDefinitionEditorCtrl : EditorBase
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SimpleSymbolDefinitionEditorCtrl"/> class.
+        /// </summary>
         public SimpleSymbolDefinitionEditorCtrl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Sets the initial state of this editor and sets up any databinding
+        /// within such that user interface changes will propagate back to the
+        /// model.
+        /// </summary>
+        /// <param name="service"></param>
         public override void Bind(IEditorService service)
         {
             service.RegisterCustomNotifier(this);

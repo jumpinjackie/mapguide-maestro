@@ -5,6 +5,9 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {
+    /// <summary>
+    /// The base class of Symbol Definition validators
+    /// </summary>
     public abstract class BaseSymbolDefinitionValidator : IResourceValidator
     {
         /// <summary>
@@ -76,6 +79,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             return issues.ToArray();
         }
 
+        /// <summary>
+        /// Validates the simple symbol definition.
+        /// </summary>
+        /// <param name="ssym">The ssym.</param>
+        /// <param name="context">The context.</param>
+        /// <returns></returns>
         protected static IEnumerable<ValidationIssue> ValidateSimpleSymbolDefinition(ISimpleSymbolDefinition ssym, ResourceValidationContext context)
         {
             //Check that one geometry usage context has been specified

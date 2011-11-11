@@ -32,6 +32,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     {
         private ClassDefinition _clsDef;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FeatureBase"/> class.
+        /// </summary>
+        /// <param name="clsDef">The class definition.</param>
         public FeatureBase(ClassDefinition clsDef) : base()
         {
             _clsDef = clsDef;
@@ -96,18 +100,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             }
         }
 
+        /// <summary>
+        /// Gets the class definition of the object currently being read. If the user has requested
+        /// only a subset of the class properties (as specified in the filter text), the class
+        /// definition reflects what the user has requested, rather than the full class definition.
+        /// </summary>
         public ClassDefinition ClassDefinition
         {
             get { return _clsDef; }
         }
     }
 
+    /// <summary>
+    /// A subclass of <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase"/> that
+    /// iterates over an array of <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeature"/> instances
+    /// </summary>
     public class FeatureArrayReader : FeatureReaderBase
     {
         private IFeature[] _features;
 
         private int _pos;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FeatureArrayReader"/> class.
+        /// </summary>
+        /// <param name="features">The features.</param>
         public FeatureArrayReader(IFeature[] features)
         {
             _features = features;
@@ -117,6 +134,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             _pos = -1;
         }
 
+        /// <summary>
+        /// Reads the next feature.
+        /// </summary>
+        /// <returns></returns>
         protected override IFeature ReadNextFeature()
         {
             _pos++;
@@ -126,6 +147,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             return null;
         }
 
+        /// <summary>
+        /// Closes the object, freeing any resources it may be holding.
+        /// </summary>
         public override void Close()
         {
             

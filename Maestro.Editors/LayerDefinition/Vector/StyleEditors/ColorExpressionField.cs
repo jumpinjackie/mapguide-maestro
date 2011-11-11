@@ -29,14 +29,26 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {
+    /// <summary>
+    /// A field for entering color values by color picker selection or FDO expressions
+    /// </summary>
     [ToolboxItem(true)]
     public partial class ColorExpressionField : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ColorExpressionField"/> class.
+        /// </summary>
         public ColorExpressionField()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Gets or sets the color expression.
+        /// </summary>
+        /// <value>
+        /// The color expression.
+        /// </value>
         [DefaultValue("00000000")]
         public string ColorExpression
         {
@@ -47,8 +59,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             }
         }
 
+        /// <summary>
+        /// Occurs when [current color changed].
+        /// </summary>
         public event EventHandler CurrentColorChanged;
 
+        /// <summary>
+        /// Occurs when [request expression editor].
+        /// </summary>
         public event EventHandler RequestExpressionEditor;
 
         private void btnExpr_Click(object sender, EventArgs e)

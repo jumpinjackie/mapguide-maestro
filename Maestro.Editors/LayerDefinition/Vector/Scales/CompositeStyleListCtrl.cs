@@ -28,9 +28,15 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
+    /// <summary>
+    /// A user control to manage composite styles
+    /// </summary>
     [ToolboxItem(true)]
     public partial class CompositeStyleListCtrl : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompositeStyleListCtrl"/> class.
+        /// </summary>
         public CompositeStyleListCtrl()
         {
             InitializeComponent();
@@ -42,6 +48,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private IVectorScaleRange2 _parent;
         private BindingList<ICompositeTypeStyle> _styles;
 
+        /// <summary>
+        /// Loads the specified parent.
+        /// </summary>
+        /// <param name="parent">The parent.</param>
+        /// <param name="styles">The styles.</param>
         public void Load(IVectorScaleRange2 parent, BindingList<ICompositeTypeStyle> styles)
         {
             _parent = parent;

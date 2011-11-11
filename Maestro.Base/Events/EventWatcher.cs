@@ -68,7 +68,7 @@ namespace Maestro.Base.Events
                         conn.FeatureService.GetProviderCapabilities("OSGeo.SDF");
                         LoggingService.Info("Session kept alive: " + sessionId);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         if (smShowingError)
                             return;

@@ -17,6 +17,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
+#pragma warning disable 1591, 0114, 0108, 0114, 0108
 using System;
 using System.Collections.Generic;
 using System.Text;

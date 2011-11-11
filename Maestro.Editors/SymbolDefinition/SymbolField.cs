@@ -90,10 +90,20 @@ namespace Maestro.Editors.SymbolDefinition
             }
         }
 
+        /// <summary>
+        /// A method for presenting symbol parameters for a given symbol field
+        /// </summary>
+        /// <param name="sender">The sender.</param>
         public delegate void BrowseEventHandler(SymbolField sender);
 
+        /// <summary>
+        /// Occurs when a request has been made to present symbol parameters for selection
+        /// </summary>
         public event BrowseEventHandler RequestBrowse;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SymbolField"/> class.
+        /// </summary>
         public SymbolField()
         {
             InitializeComponent();
@@ -105,9 +115,18 @@ namespace Maestro.Editors.SymbolDefinition
             OnContentChanged();
         }
 
+        /// <summary>
+        /// Occurs when [content changed].
+        /// </summary>
         public event EventHandler ContentChanged;
 
         //Important: We need to set this otherwise the Winforms Designer will put you in a world of pain
+        /// <summary>
+        /// Gets or sets the content.
+        /// </summary>
+        /// <value>
+        /// The content.
+        /// </value>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Content
         {
@@ -155,6 +174,12 @@ namespace Maestro.Editors.SymbolDefinition
         private string[] _items;
 
         //Important: We need to set this otherwise the Winforms Designer will put you in a world of pain
+        /// <summary>
+        /// Gets or sets the items.
+        /// </summary>
+        /// <value>
+        /// The items.
+        /// </value>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string[] Items
         {
@@ -184,9 +209,20 @@ namespace Maestro.Editors.SymbolDefinition
 
         //Important: We need to set this otherwise the Winforms Designer will put you in a world of pain
         //[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        /// <summary>
+        /// Gets or sets the supported enhanced data types.
+        /// </summary>
+        /// <value>
+        /// The supported enhanced data types.
+        /// </value>
         [Description("Indicates the parameter data type(s) that are suitable for this field. Leave empty for all types")]
         public DataType2[] SupportedEnhancedDataTypes { get; set; }
 
+        /// <summary>
+        /// Gets the items.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static string[] GetItems<T>()
         {
             var values = Enum.GetValues(typeof(T));
@@ -209,6 +245,11 @@ namespace Maestro.Editors.SymbolDefinition
         private Type _boundObjectType;
         private PropertyInfo _boundProperty;
 
+        /// <summary>
+        /// Binds the specified data source.
+        /// </summary>
+        /// <param name="dataSource">The data source.</param>
+        /// <param name="propertyName">Name of the property.</param>
         public void Bind(object dataSource, string propertyName)
         {
             Check.NotNull(dataSource, "dataSource");

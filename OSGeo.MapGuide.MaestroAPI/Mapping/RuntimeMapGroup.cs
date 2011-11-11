@@ -256,7 +256,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
-        /// Raises the <see cref="PropertyChanged"/> event
+        /// Raises the <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/> event
         /// </summary>
         /// <param name="propertyName"></param>
         protected override void OnPropertyChanged(string propertyName)

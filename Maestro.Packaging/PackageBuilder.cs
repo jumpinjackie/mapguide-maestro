@@ -1127,17 +1127,45 @@ namespace Maestro.Packaging
         }
     }
 
+    /// <summary>
+    /// Base calss of all package operations
+    /// </summary>
     public abstract class PackageOperation
     {
+        /// <summary>
+        /// Gets or sets the resource id.
+        /// </summary>
+        /// <value>
+        /// The resource id.
+        /// </value>
         public string ResourceId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the operation.
+        /// </summary>
+        /// <value>
+        /// The name of the operation.
+        /// </value>
         public string OperationName { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PackageOperation"/> class.
+        /// </summary>
+        /// <param name="resId">The res id.</param>
         protected PackageOperation(string resId) { this.ResourceId = resId; }
     }
 
+    /// <summary>
+    /// A SETRESOURCE package operation
+    /// </summary>
     public class SetResourcePackageOperation : PackageOperation
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SetResourcePackageOperation"/> class.
+        /// </summary>
+        /// <param name="resId">The res id.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="header">The header.</param>
         public SetResourcePackageOperation(string resId, string content, string header)
             : base(resId)
         {
@@ -1146,8 +1174,20 @@ namespace Maestro.Packaging
             this.Header = header;
         }
 
+        /// <summary>
+        /// Gets or sets the content.
+        /// </summary>
+        /// <value>
+        /// The content.
+        /// </value>
         public string Content { get; set; }
 
+        /// <summary>
+        /// Gets or sets the header.
+        /// </summary>
+        /// <value>
+        /// The header.
+        /// </value>
         public string Header { get; set; }
 
         /// <summary>
@@ -1198,8 +1238,18 @@ namespace Maestro.Packaging
         }
     }
 
+    /// <summary>
+    /// A SETRESOURCEDATA package operation
+    /// </summary>
     public class SetResourceDataPackageOperation : PackageOperation
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SetResourceDataPackageOperation"/> class.
+        /// </summary>
+        /// <param name="resId">The res id.</param>
+        /// <param name="data">The data.</param>
+        /// <param name="dataName">Name of the data.</param>
+        /// <param name="dataType">Type of the data.</param>
         public SetResourceDataPackageOperation(string resId, string data, string dataName, ResourceDataType dataType)
             : base(resId)
         {
@@ -1209,10 +1259,28 @@ namespace Maestro.Packaging
             this.DataType = dataType;
         }
 
+        /// <summary>
+        /// Gets or sets the data.
+        /// </summary>
+        /// <value>
+        /// The data.
+        /// </value>
         public string Data { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the data.
+        /// </summary>
+        /// <value>
+        /// The name of the data.
+        /// </value>
         public string DataName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the type of the data.
+        /// </summary>
+        /// <value>
+        /// The type of the data.
+        /// </value>
         public ResourceDataType DataType { get; set; }
 
         /// <summary>

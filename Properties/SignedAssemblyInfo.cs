@@ -17,6 +17,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
+#pragma warning disable 1699
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;

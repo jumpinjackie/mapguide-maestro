@@ -87,6 +87,13 @@ namespace Maestro.Editors.Fusion
             //_edTypes[KnownWidgetNames.ZoomToSelection]
         }
 
+        /// <summary>
+        /// Gets the editor for widget.
+        /// </summary>
+        /// <param name="widget">The widget.</param>
+        /// <param name="context">The context.</param>
+        /// <param name="edsvc">The edsvc.</param>
+        /// <returns></returns>
         public static IWidgetEditor GetEditorForWidget(IWidget widget, FlexibleLayoutEditorContext context, IEditorService edsvc)
         {
             Check.NotNull(widget, "widget");

@@ -126,8 +126,16 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
         /// <returns></returns>
         IWatermark CreateInstance();
 
+        /// <summary>
+        /// Creates the XY position.
+        /// </summary>
+        /// <returns></returns>
         IXYPosition CreateXYPosition();
 
+        /// <summary>
+        /// Creates the tile position.
+        /// </summary>
+        /// <returns></returns>
         ITilePosition CreateTilePosition();
     }
 
@@ -152,7 +160,13 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
     /// </summary>
     public enum PositionType
     {
+        /// <summary>
+        /// X/Y based position
+        /// </summary>
         XY,
+        /// <summary>
+        /// Tile-based position
+        /// </summary>
         Tile
     }
 
@@ -309,10 +323,22 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
         /// </summary>
         IPosition PositionOverride { get; set; }
 
+        /// <summary>
+        /// Creates the default appearance.
+        /// </summary>
+        /// <returns></returns>
         IWatermarkAppearance CreateDefaultAppearance();
 
+        /// <summary>
+        /// Creates the default XY position.
+        /// </summary>
+        /// <returns></returns>
         IXYPosition CreateDefaultXYPosition();
 
+        /// <summary>
+        /// Creates the default tile position.
+        /// </summary>
+        /// <returns></returns>
         ITilePosition CreateDefaultTilePosition();
     }
 }

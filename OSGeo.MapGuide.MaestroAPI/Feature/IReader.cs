@@ -67,6 +67,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public interface IRecordReset
     {
+        /// <summary>
+        /// Updates the specified record.
+        /// </summary>
+        /// <param name="record">The record.</param>
         void Update(IRecord record);
     }
 

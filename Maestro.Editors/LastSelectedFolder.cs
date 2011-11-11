@@ -23,6 +23,9 @@ using System.Text;
 
 namespace Maestro.Editors
 {
+    /// <summary>
+    /// Used to keep track of the last selected folder in file/directory pickers
+    /// </summary>
     public static class LastSelectedFolder
     {
         /// <summary>
