@@ -178,6 +178,7 @@ Section
 	# directories
 	File /r "${INST_OUTPUT_MAESTRO}\AddIns"
     File /r "${INST_OUTPUT_MAESTRO}\Data"
+    File /r "${INST_OUTPUT_MAESTRO}\Schemas"
     File /r "${INST_OUTPUT_MAESTRO}\UserDoc"
 	
 	# docs
