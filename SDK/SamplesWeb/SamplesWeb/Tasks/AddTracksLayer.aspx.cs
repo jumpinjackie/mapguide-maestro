@@ -102,7 +102,7 @@ namespace SamplesWeb.Tasks
                     "load",
                     "<script type=\"text/javascript\"> window.onload = function() { parent.parent.Refresh(); } </script>");
 
-                lblMessage.Text = "Parcels layer added again";
+                lblMessage.Text = "Tracks layer added again";
             }
 
             rtMap = mpSvc.OpenMap(rtMapId);
@@ -133,6 +133,15 @@ namespace SamplesWeb.Tasks
             //Get the first rule (a created one will only have one)
             ILineRule rule = lstyle.GetRuleAt(0);
 
+            //What are we doing here? We're checking if this vector scale range is a
+            //IVectorScaleRange2 instance. If it is, it means this layer definition
+            //has a composite style attached, which takes precedence over point/area/line
+            //styles. We don't want this, so this removes the composite styles if they
+            //exist.
+            IVectorScaleRange2 vsr2 = vsr as IVectorScaleRange2;
+            if (vsr2 != null)
+                vsr2.CompositeStyle = null;
+
             //There's only one stroke here, but iteration is the only
             //way to go through
             foreach (var stroke in rule.Strokes)
@@ -159,6 +168,7 @@ namespace SamplesWeb.Tasks
             foreach (var layer in rtMap.Layers)
             {
                 sb.Append("<li>Name: " + layer.Name + " (Selectable: " + layer.Selectable + ", Visible: " + layer.Visible + ")<br/>");
+                sb.Append("Label: " + layer.LegendLabel + "<br/>");
                 sb.Append("Group: " + layer.Group + "<br/>");
                 sb.Append("Draw Order: " + layer.DisplayOrder + "</li>");
             }

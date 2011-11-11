@@ -151,6 +151,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         public const double Z_ORDER_INCREMENT = 100.0;
 
+        /// <summary>
+        /// The draw order of the topmost layer
+        /// </summary>
+        public const double Z_ORDER_TOP = 100.0;
+
         internal RuntimeMap(IServerConnection conn)
         {
             _disableChangeTracking = true;
@@ -272,7 +277,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             foreach (var layer in mdf.MapLayer)
             {
                 var rtl = new RuntimeMapLayer(this, layer, GetLayerDefinition(layer.ResourceId));
-                rtl.DisplayOrder = (++dispIndex) * 1000;
+                rtl.DisplayOrder = (++dispIndex) * Z_ORDER_INCREMENT;
                 AddLayerInternal(rtl);
             }
 
@@ -295,7 +300,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                         {
                             var rtl = new RuntimeMapLayer(this, layer, GetLayerDefinition(layer.ResourceId)) { Visible = true };
                             rtl.Type = RuntimeMapLayer.kBaseMap;
-                            rtl.DisplayOrder = (++dispIndex) * 1000;
+                            rtl.DisplayOrder = (++dispIndex) * Z_ORDER_INCREMENT;
                             AddLayerInternal(rtl);
                         }
                     }
@@ -986,6 +991,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
+        /// Adds the layer.
+        /// </summary>
+        /// <param name="layer">The layer.</param>
+        internal void AddLayerInternal(RuntimeMapLayer layer)
+        {
+            RuntimeMapLayer prevLayer = (_layers.Count == 0 ? null : _layers[_layers.Count - 1]);
+            double zOrder = prevLayer == null ? Z_ORDER_TOP : prevLayer.DisplayOrder + Z_ORDER_INCREMENT;
+            layer.DisplayOrder = zOrder;
+
+            _layers.Add(layer);
+            _layerIdMap[layer.ObjectId] = layer;
+
+            OnLayerAdded(layer);
+        }
+
+        /// <summary>
         /// Inserts the specified layer at the specified index. Does nothing
         /// if the layer instance is already in the map.
         /// </summary>
@@ -997,6 +1018,40 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 throw new ArgumentOutOfRangeException("index");
 
             AddLayerInternal(layer, index);
+        }
+
+        /// <summary>
+        /// Adds the layer
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="index"></param>
+        internal void AddLayerInternal(RuntimeMapLayer value, int index)
+        {
+            //calculate zorder for the new layer
+            double zOrderLow, zOrderHigh;
+            RuntimeMapLayer layer;
+            if(index == 0)
+            {
+                zOrderLow = 0;
+                layer = _layers.Count > 0 ? _layers[index] : null;
+                if (layer != null)
+                    zOrderHigh = layer.DisplayOrder;
+                else
+                    zOrderHigh = 2.0 * Z_ORDER_INCREMENT;
+            }
+            else
+            {
+                layer = _layers[index - 1];
+                zOrderLow = layer.DisplayOrder;
+                layer = _layers.Count > index ? _layers[index] : null;
+                zOrderHigh = layer != null ? layer.DisplayOrder : zOrderLow + 2.0 * Z_ORDER_INCREMENT;
+            }
+            value.DisplayOrder = (zOrderLow + (zOrderHigh - zOrderLow) / 2.0);
+
+            _layers.Insert(index, value);
+            _layerIdMap[value.ObjectId] = value;
+
+            OnLayerAdded(value);
         }
 
         /// <summary>
@@ -1088,31 +1143,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 layerDefinitionCache[layerDefinitionId] = ldf;
             }
             return ldf;
-        }
-
-        /// <summary>
-        /// Adds the layer.
-        /// </summary>
-        /// <param name="layer">The layer.</param>
-        internal void AddLayerInternal(RuntimeMapLayer layer)
-        {
-            _layers.Add(layer);
-            _layerIdMap[layer.ObjectId] = layer;
-
-            OnLayerAdded(layer);
-        }
-
-        /// <summary>
-        /// Adss the layer
-        /// </summary>
-        /// <param name="layer"></param>
-        /// <param name="index"></param>
-        internal void AddLayerInternal(RuntimeMapLayer layer, int index)
-        {
-            _layers.Insert(index, layer);
-            _layerIdMap[layer.ObjectId] = layer;
-
-            OnLayerAdded(layer);
         }
 
         /// <summary>
@@ -1386,6 +1416,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         internal void OnLayerAdded(RuntimeMapLayer layer)
         {
+            //Fix the draw order of this layer that was added
+            
             //???
 
             TrackChange(layer.ObjectId, true, Change.ChangeType.added, string.Empty);

@@ -24,6 +24,8 @@ using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Serialization;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.MaestroAPI.Feature;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
@@ -91,6 +93,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 this.GeometryPropertyName = vl.Geometry;
                 this.FeatureSourceID = vl.ResourceId;
                 this.Filter = vl.Filter;
+                InitIdentityProperties(vl);
             }
             else if (ldf.SubLayer.LayerType == LayerType.Raster)
             {
@@ -186,12 +189,30 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                         }
                         this.HasTooltips = !string.IsNullOrEmpty(vld.ToolTip);
                         //get identity property information
-
+                        InitIdentityProperties(vld);
                     }
                     break;
             }
 
             _disableChangeTracking = false;
+        }
+
+        private void InitIdentityProperties(IVectorLayerDefinition vl)
+        {
+            var fs = (IFeatureSource)this.Parent.ResourceService.GetResource(vl.ResourceId);
+            var cls = fs.GetClass(vl.FeatureName);
+
+            var idProps = cls.IdentityProperties;
+            var propInfo = new PropertyInfo[idProps.Count];
+
+            int i = 0;
+            foreach (var prop in idProps)
+            {
+                propInfo[i] = new PropertyInfo(prop.Name, ClrFdoTypeMap.GetClrType(prop.DataType));
+                i++;
+            }
+
+            this.IdentityProperties = propInfo;
         }
 
         private bool _visible;
