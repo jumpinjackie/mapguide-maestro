@@ -905,6 +905,7 @@
     <Compile Include="Packaging\EditResourceDataEntryDialog.designer.cs">
       <DependentUpon>EditResourceDataEntryDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Packaging\NsDoc.cs" />
     <Compile Include="Packaging\PackageEditorDialog.cs">
       <SubType>Form</SubType>
     </Compile>

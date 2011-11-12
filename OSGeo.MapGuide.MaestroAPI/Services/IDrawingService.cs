@@ -27,6 +27,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
     /// <summary>
     /// Allows low level access to DWF (Design Web Format) data stored in a resource repository as part of a drawing source. 
     /// </summary>
+    /// <example>
+    /// This example shows how to obtain a drawing service instance. Note that you should check if this service type is
+    /// supported through its capabilities.
+    /// <code>
+    /// <![CDATA[
+    /// IServerConnection conn;
+    /// ...
+    /// IDrawingService drawingSvc = (IDrawingService)conn.GetService((int)ServiceType.Drawing);
+    /// ]]>
+    /// </code>
+    /// </example>
     public interface IDrawingService : IService
     {
         /// <summary>

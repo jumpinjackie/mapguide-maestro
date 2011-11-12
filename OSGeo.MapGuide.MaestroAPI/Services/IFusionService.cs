@@ -27,6 +27,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
     /// <summary>
     /// Provides services for the construction of Fusion web applications
     /// </summary>
+    /// <example>
+    /// This example shows how to obtain a fusion service instance. Note that you should check if this service type is
+    /// supported through its capabilities.
+    /// <code>
+    /// <![CDATA[
+    /// IServerConnection conn;
+    /// ...
+    /// IFusionService fusionSvc = (IFusionService)conn.GetService((int)ServiceType.Fusion);
+    /// ]]>
+    /// </code>
+    /// </example>
     public interface IFusionService : IService
     {
         /// <summary>

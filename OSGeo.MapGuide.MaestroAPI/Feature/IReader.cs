@@ -28,6 +28,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// Provides a forward-only, read-only iterator for reading data. You must call <see cref="ReadNext"/> 
     /// before you can access any data
     /// </summary>
+    /// <remarks>
+    /// <list type="bullet">
+    /// <item><description>You must call <see cref="M:ReadNext"/> before you can access the data</description></item>
+    /// <item><description>For each property, determine the property type and then call the appropriate Get&lt;type&gt;() method to get the value of the property.</description></item>
+    /// <item><description>The exception for this is if you are access the value via the indexer. In this case you only need determine the property type when casting from the System.Object that is returned by the indexer</description></item>
+    /// </list>
+    /// </remarks>
     public interface IReader : IDisposable, IRecord
     {
         /// <summary>
@@ -98,6 +105,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// <summary>
     /// Provides access to the property values within each result for a <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IReader"/>
     /// </summary>
+    /// <remarks>
+    /// <list type="bullet">
+    /// <item><description>For each property, determine the property type and then call the appropriate Get&lt;type&gt;() method to get the value of the property.</description></item>
+    /// <item><description>The exception for this is if you are access the value via the indexer. In this case you only need determine the property type when casting from the System.Object that is returned by the indexer</description></item>
+    /// </list>
+    /// </remarks>
     public interface IRecord
     {
         /// <summary>

@@ -29,11 +29,14 @@ using System.Collections.Specialized;
 namespace OSGeo.MapGuide.MaestroAPI
 {
     /// <summary>
+    /// <para>
     /// MapGuide Platform connection interface. This is the root object of the Maestro API which typically 
     /// represents a session with a MapGuide Server. Connections are created through the 
     /// <see cref="T:OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry"/> class.
-    /// 
+    /// </para>
+    /// <para>
     /// All implementations supports the base services of the MapGuide Geospatial API:
+    /// </para>
     /// <list type="bullet">
     ///     <item>
     ///         <description>Resource Service (<see cref="T:OSGeo.MapGuide.MaestroAPI.Services.IResourceService"/>) for manipulation of repositories and resources</description>
@@ -45,10 +48,11 @@ namespace OSGeo.MapGuide.MaestroAPI
     ///         <description>Coordinate System Catalog (<see cref="T:OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog"/> for querying coordinate systems and for translating WKT, cs code and EPSG codes to other forms</description>    
     ///     </item> 
     /// </list>
-    ///  
+    /// <para>
     /// Additional services are supported at various levels depending on the implementation. 
     /// The <see cref="P:OSGeo.MapGuide.MaestroAPI.IServerConnection.Capabilities"/> property provides information about 
     /// what features, services and resource types are not supported.
+    /// </para>
     /// </summary>
     public interface IServerConnection
     {

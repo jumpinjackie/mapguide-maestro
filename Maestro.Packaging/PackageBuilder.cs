@@ -1128,7 +1128,7 @@ namespace Maestro.Packaging
     }
 
     /// <summary>
-    /// Base calss of all package operations
+    /// Base class of all package operations
     /// </summary>
     public abstract class PackageOperation
     {

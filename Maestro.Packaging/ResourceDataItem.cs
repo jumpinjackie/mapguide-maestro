@@ -24,7 +24,7 @@ using System.Text;
 namespace Maestro.Packaging
 {
     /// <summary>
-    /// Represents a data item on a resource
+    /// Represents a resource data item from a package
     /// </summary>
     public class ResourceDataItem
     {

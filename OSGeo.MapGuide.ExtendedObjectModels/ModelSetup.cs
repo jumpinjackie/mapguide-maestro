@@ -52,7 +52,7 @@ namespace OSGeo.MapGuide.ExtendedObjectModels
     /// 
     /// </summary>
     [CompilerGenerated]
-    public class NsDoc { }
+    class NsDoc { }
 
     public static class ModelSetup
     {

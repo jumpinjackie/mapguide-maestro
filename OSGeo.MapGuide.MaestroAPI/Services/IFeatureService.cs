@@ -30,6 +30,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
     /// <summary>
     /// Provides services for accessing, querying and inspecting feature sources
     /// </summary>
+    /// <remarks>
+    /// Note that <see cref="T:OSGeo.MapGuide.MaestroAPI.IServerConnection"/> provides
+    /// built-in access to resource and feature services. Using the <see cref="M:OSGeo.MapGuide.MaestroAPI.IServerConnection.GetService"/>
+    /// method is not necessary
+    /// </remarks>
     public interface IFeatureService : IService
     {
         /// <summary>

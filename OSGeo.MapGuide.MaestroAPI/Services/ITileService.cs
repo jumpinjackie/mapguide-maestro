@@ -26,6 +26,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
     /// <summary>
     /// Provides services for map tile generation
     /// </summary>
+    /// <example>
+    /// This example shows how to obtain a tile service instance. Note that you should check if this service type is
+    /// supported through its capabilities.
+    /// <code>
+    /// <![CDATA[
+    /// IServerConnection conn;
+    /// ...
+    /// ITileService tileSvc = (ITileService)conn.GetService((int)ServiceType.Tile);
+    /// ]]>
+    /// </code>
+    /// </example>
     public interface ITileService : IService
     {
         /// <summary>

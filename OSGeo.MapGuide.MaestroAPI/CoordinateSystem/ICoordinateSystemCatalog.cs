@@ -23,6 +23,30 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
     /// <summary>
     /// Defines a coordinate system catalog
     /// </summary>
+    /// <example>
+    /// This example uses the <see cref="T:OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordindateSystemCatalog"/>
+    /// to create a simple coordinate system transformation to transform points.
+    /// <code>
+    /// <![CDATA[
+    /// IServerConnection conn;
+    /// ...
+    /// ICoordinateSystemCatalog csCatalog = conn.CoordinateSystemCatalog;
+    /// //Find the source and target coordinate system definitions
+    /// CoordinateSystemDefinitionBase srcCs = csCatalog.FindCoordSys("LL84");
+    /// CoordinateSystemDefinitionBase dstCs = csCatalog.FindCoordSys("WGS84.PseudoMercator");
+    /// //Create the transform using the WKTs of the source and target coordinate system definitions
+    /// ISimpleTransform trans = csCatalog.CreateTransform(srcCs.WKT, dstCs.WKT);
+    /// 
+    /// double x = -71.061342;
+    /// double y = 42.355892;
+    /// double tx;
+    /// double ty;
+    /// 
+    /// trans.Transform(x, y, out tx, out ty);
+    /// //tx and ty will contain the transformed coordinates
+    /// ]]>
+    /// </code>
+    /// </example>
     public interface ICoordinateSystemCatalog
     {
         /// <summary>

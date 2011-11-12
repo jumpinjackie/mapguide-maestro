@@ -10,6 +10,68 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     /// <summary>
     /// Represents a map selection
     /// </summary>
+    /// <example>
+    /// This sample shows how to list selected features in ASP.net. The sample expects 3 parameters:
+    /// <list type="number">
+    ///     <item><description>The session ID (SESSION)</description></item>
+    ///     <item><description>The runtime map name (MAPNAME)</description></item>
+    ///     <item><description>The selection XML (SELECTION)</description></item>
+    /// </list>
+    /// <code>
+    /// <![CDATA[
+    /// string agent = "http://localhost/mapguide/mapagent/mapagent.fcgi";
+    /// IServerConnection conn = ConnectionProviderRegistry.CreateConnection(
+    ///            "Maestro.Http",
+    ///            "Url", agent,
+    ///            "SessionId", Request.Params["SESSION"]);
+    ///
+    /// IMappingService mpSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+    /// string rtMapId = "Session:" + conn.SessionID + "//" + Request.Params["MAPNAME"] + ".Map";
+    /// RuntimeMap rtMap = mpSvc.OpenMap(rtMapId);
+    ///
+    /// string xml = Request.Params["SELECTION"];
+    /// //The map selection contains one or more layer selections
+    /// //each containing a one or more sets of identity property values
+    /// //(because a feature may have multiple identity properties)
+    ///
+    /// MapSelection selection = new MapSelection(rtMap, System.Web.HttpUtility.UrlDecode(xml));
+    /// if (selection.Count > 0)
+    /// {
+    ///     StringBuilder sb = new StringBuilder();
+    ///     for (int i = 0; i < selection.Count; i++)
+    ///     {
+    ///         MapSelection.LayerSelection layerSel = selection[i];
+    ///         sb.Append("<p>Layer: " + layerSel.Layer.Name + " (" + layerSel.Count + " selected item)");
+    ///         sb.Append("<table>");          
+    ///         for (int j = 0; j < layerSel.Count; j++)
+    ///         {
+    ///             sb.Append("<tr>");
+    ///             object[] values = layerSel[j];
+    ///             for (int k = 0; k < values.Length; k++)
+    ///             {
+    ///                 sb.Append("<td>");
+    ///                 sb.Append(values[k].ToString());
+    ///                 sb.Append("</td>");
+    ///             }
+    ///             sb.AppendFormat("<td><a href='FeatureInfo.aspx?MAPNAME={0}&SESSION={1}&LAYERID={2}&ID={3}'>More Info</a></td>",
+    ///                 rtMap.Name,
+    ///                 conn.SessionID,
+    ///                 layerSel.Layer.ObjectId,
+    ///                 System.Web.HttpUtility.UrlEncode(layerSel.EncodeIDString(values)));
+    ///             sb.Append("</tr>");
+    ///         }
+    ///         sb.Append("</table>");
+    ///         Response.WriteLine("<p>Showing IDs of selected features</p>");
+    ///         Response.WriteLine(sb.ToString());
+    ///     }
+    /// }
+    /// else
+    /// {
+    ///     Response.WriteLine("Nothing selected. Select some features first then run this sample again.");
+    /// }
+    /// ]]>
+    /// </code>
+    /// </example>
     public class MapSelection : IBinarySerializable, IList<MapSelection.LayerSelection>
     {
         private RuntimeMap _map;

@@ -22,11 +22,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Runtime.CompilerServices;
 
-namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
+namespace Maestro.Editors.Packaging
 {
     /// <summary>
-    /// The <c>OSGeo.MapGuide.MaestroAPI.Resource.Conversion</c> namespace provides classes and interfaces for 
-    /// upgrading resources to newer versions.
+    /// The <c>Maestro.Editors.Packaging</c> namespace provides UI components for
+    /// editing MapGuide Package files
     /// </summary>
     [CompilerGenerated]
     class NamespaceDoc

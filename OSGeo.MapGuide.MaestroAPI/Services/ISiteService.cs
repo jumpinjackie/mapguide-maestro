@@ -27,6 +27,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
     /// <summary>
     /// Service interface for site operations
     /// </summary>
+    /// <example>
+    /// This example shows how to obtain a site service instance. Note that you should check if this service type is
+    /// supported through its capabilities.
+    /// <code>
+    /// <![CDATA[
+    /// IServerConnection conn;
+    /// ...
+    /// ISiteService siteSvc = (ISiteService)conn.GetService((int)ServiceType.Site);
+    /// ]]>
+    /// </code>
+    /// </example>
     public interface ISiteService : IService
     {
         /// <summary>

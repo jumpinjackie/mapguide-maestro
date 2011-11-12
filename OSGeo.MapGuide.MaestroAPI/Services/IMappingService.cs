@@ -29,6 +29,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
     /// <summary>
     /// Provides services for interaction with the runtime map
     /// </summary>
+    /// <example>
+    /// This example shows how to obtain a mapping service instance. Note that you should check if this service type is
+    /// supported through its capabilities.
+    /// <code>
+    /// <![CDATA[
+    /// IServerConnection conn;
+    /// ...
+    /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+    /// ]]>
+    /// </code>
+    /// </example>
     public interface IMappingService : IService
     {
         /// <summary>

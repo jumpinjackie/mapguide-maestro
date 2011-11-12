@@ -26,7 +26,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {
     /// <summary>
     /// The <c>OSGeo.MapGuide.MaestroAPI.Resource.Validation</c> namespace provides classes for validating resources
-    /// for common issues.
+    /// for common issues. The <see cref="T:OSGeo.MapGuide.MaestroAPI.Resource.Validation.ResourceValidatorSet"/> class provides the ability to validate resources
     /// </summary>
     [CompilerGenerated]
     class NamespaceDoc

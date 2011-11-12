@@ -27,6 +27,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     /// <summary>
     /// Defines a command to get a set of resource contents in a single batch
     /// </summary>
+    /// <example>
+    /// This example shows how invoke the <see cref="T:OSGeo.MapGuide.MaestroAPI.Commands.IGetResourceContents"/>
+    /// command. Note that you should check if the connection supports this command through its capabilities
+    /// <code>
+    /// <![CDATA[
+    /// IServerConnection conn;
+    /// ...
+    /// IGetResourceContents command = (IGetResourceContents)conn.CreateCommand(CommandType.GetResourceContents);
+    /// string [] resourceIds = new string[] {
+    ///     "Library://Samples/Sheboygan/Layers/Parcels.LayerDefinition",
+    ///     "Library://Samples/Sheboygan/Layers/Rail.LayerDefinition",
+    ///     "Library://Samples/Sheboygan/Layers/HydrographicPolygons.LayerDefinition",
+    ///     "Library://Samples/Sheboygan/Layers/CityLimits.LayerDefinition",
+    ///     "Library://Samples/Sheboygan/Layers/Buildings.LayerDefinition",
+    ///     "Library://Samples/Sheboygan/Layers/Roads.LayerDefinition"
+    /// };
+    /// Dictionary<string, IResource> results = command.Execute(resourceIds);
+    /// ]]>
+    /// </code>
+    /// </example>
     public interface IGetResourceContents : ICommand
     {
         /// <summary>

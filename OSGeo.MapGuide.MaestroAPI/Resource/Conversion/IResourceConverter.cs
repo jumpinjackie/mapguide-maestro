@@ -41,6 +41,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
     /// <summary>
     /// Performs schematic upgrades of resources
     /// </summary>
+    /// <example>
+    /// This example shows how to convert a given Layer Definition to a specific version
+    /// <code>
+    /// <![CDATA[
+    /// ILayerDefinition layerDef;
+    /// ...
+    /// IResourceConverter converter = new ResourceObjectConverter();
+    /// ILayerDefinition converted = converter.Convert(layerDef, new Version(2, 3, 0));
+    /// 
+    /// Version convertedVersion = converted.ResourceVersion;
+    /// // convertedVersion.Major == 2
+    /// // convertedVersion.Minor == 3
+    /// // convertedVersion.Build == 0
+    /// ]]>
+    /// </code>
+    /// </example>
     public class ResourceObjectConverter : IResourceConverter
     {
         /// <summary>

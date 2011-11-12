@@ -39,21 +39,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     /// Represents a runtime instance of a Map Definition
     /// </summary>
     /// <remarks>
+    /// <para>
     /// If you want to use this instance with the Rendering Service APIs, it is important to set the correct
     /// meters per unit value before calling the <see cref="T:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Save"/> method, as an incorrect meters
     /// per unit value will produce incorrect images. 
-    /// 
+    /// </para>
+    /// <para>
     /// Also note that to improve the creation performance, certain implementations of <see cref="T:OSGeo.MapGuide.MaestroAPI.IServerConnection"/>
     /// offer a <see cref="T:OSGeo.MapGuide.MaestroAPI.Mapping.IRuntimeMapSetup"/> helper to return a series of layer definitions in a batch (fetching
     /// layer definitions one at a time is the main performance bottleneck for large maps), batching can improve creation times by:
-    /// 
-    ///  - HTTP: 2x
-    ///  - Local: 3x (if using MapGuide 2.2 APIs. As this takes advantage of the GetResourceContents() API introduced in 2.2). For older versions of MapGuide there is no batching.
-    /// 
+    /// </para>
+    /// <list type="bullet">
+    /// <item><description>HTTP: 2x</description></item>
+    /// <item><description>Local: 3x (if using MapGuide 2.2 APIs. As this takes advantage of the GetResourceContents() API introduced in 2.2). For older versions of MapGuide there is no batching.</description></item>
+    /// </list>
+    /// <para>
     /// In particular, the HTTP implementation of <see cref="T:OSGeo.MapGuide.MaestroAPI.IServerConection"/> uses the <see cref="T:System.Threading.ThreadPool"/>
     /// class to fetch multiple layer definitions in parallel. If your code uses this implementation, be aware of this face and the performance implications
     /// involved, as an excessively large thread pool size may negatively affect stability of your MapGuide Server.
-    /// 
+    /// </para>
     /// </remarks>
     /// <example>
     /// How to create a <see cref="RuntimeMap"/> with the correct meters per unit value using the MgCoordinateSystem API

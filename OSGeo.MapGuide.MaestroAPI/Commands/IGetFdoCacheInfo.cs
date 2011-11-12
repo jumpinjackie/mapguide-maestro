@@ -28,6 +28,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     /// <summary>
     /// Defines the command for querying the cache status of FDO connections
     /// </summary>
+    /// <example>
+    /// This example shows how invoke the <see cref="T:OSGeo.MapGuide.MaestroAPI.Commands.IGetFdoCacheInfo"/>
+    /// command. Note that you should check if the connection supports this command through its capabilities
+    /// <code>
+    /// <![CDATA[
+    /// IServerConnection conn;
+    /// ...
+    /// IGetFdoCacheInfo command = (IGetFdoCacheInfo)conn.CreateCommand(CommandType.GetFdoCacheInfo);
+    /// FdoCacheInfo cacheInfo = command.Execute();
+    /// ]]>
+    /// </code>
+    /// </example>
     public interface IGetFdoCacheInfo : ICommand
     {
         /// <summary>

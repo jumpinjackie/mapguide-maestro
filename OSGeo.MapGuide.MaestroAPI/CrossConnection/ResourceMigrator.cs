@@ -30,6 +30,39 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
     /// A helper class that copies/moves resources from one
     /// connection to another
     /// </summary>
+    /// <example>
+    /// This example shows how to copy resources from one connection to another using
+    /// the <see cref="T:OSGeo.MapGuide.MaestroAPI.CrossConnection.ResourceMigrator"/> class
+    /// <code>
+    /// <![CDATA[
+    /// IServerConnection sourceConn;
+    /// IServerConnection targetConn;
+    /// ...
+    /// ResourceMigrator migrator = new ResourceMigrator(sourceConn, targetConn);
+    /// //These are the source resource ids to copy
+    /// string [] sourceIds = new string[] {
+    ///     "Library://Samples/Sheboyan/Data/Parcels.FeatureSource",
+    ///     "Library://Samples/Sheboyan/Data/Rail.FeatureSource",
+    ///     "Library://Samples/Sheboyan/Data/Islands.FeatureSource",
+    ///     "Library://Samples/Sheboyan/Data/Buildings.FeatureSource"
+    /// };
+    /// //These the the target ids we are copying to. The number of source and
+    /// //target ids must be the same
+    /// string [] targetIds = new string[] {
+    ///     "Library://Production/Data/Parcels.FeatureSource",
+    ///     "Library://Production/Data/Rail.FeatureSource",
+    ///     "Library://Production/Data/Islands.FeatureSource",
+    ///     "Library://Production/Data/Buildings.FeatureSource"
+    /// };
+    /// //Set up the re-base options. This is generally the common parent of the source and target ids.
+    /// //This is to ensure that any resource ids references are updated as they are copied across
+    /// RebaseOptions options = new RebaseOptions("Library://Samples/Sheboygan/", "Library://Production/");
+    /// bool bOverwrite = true;
+    /// //Execute the migration
+    /// string [] copied = migrator.CopyResources(sourceIds, targetIds, bOverwrite, options, null);
+    /// ]]>
+    /// </code>
+    /// </example>
     public class ResourceMigrator
     {
         private IServerConnection _source;

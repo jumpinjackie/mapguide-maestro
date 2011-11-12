@@ -276,6 +276,12 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
     /// <summary>
     /// A SDF load procedure. Execution is supported with limitations
     /// </summary>
+    /// <remarks>
+    /// The SDF Load Procedure has the following limitations when executed by Maestro
+    /// <list type="bullet">
+    /// <item><description>The input SDF files must be SDF3 files. Loading of SDF2 files is not supported</description></item>
+    /// </list>
+    /// </remarks>
     public interface ISdfLoadProcedure : IBaseLoadProcedure
     {
         /// <summary>
@@ -292,6 +298,13 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
     /// <summary>
     /// A SHP load procedure. Execution is supported with limitations
     /// </summary>
+    /// <remarks>
+    /// The SHP Load Procedure has the following limitations when executed by Maestro
+    /// <list type="bullet">
+    /// <item><description>Generalization is not supported</description></item>
+    /// <item><description>Conversion to SDF is not supported</description></item>
+    /// </list>
+    /// </remarks>
     public interface IShpLoadProcedure : IBaseLoadProcedure
     {
         /// <summary>
@@ -308,6 +321,13 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
     /// <summary>
     /// A SQLite load procedure. Execution is supported with limitations
     /// </summary>
+    /// <remarks>
+    /// <para>SQLite load procedures can only be saved to a server whose site version is 2.2 or higher</para>
+    /// <para>The SQLite Load Procedure has the following limitations when executed by Maestro</para>
+    /// <list type="bullet">
+    /// <item><description>Generalization is not supported</description></item>
+    /// </list>
+    /// </remarks>
     public interface ISqliteLoadProcedure : IBaseLoadProcedure
     {
         /// <summary>

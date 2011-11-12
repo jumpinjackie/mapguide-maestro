@@ -72,21 +72,26 @@ namespace OSGeo.MapGuide.MaestroAPI
     public delegate IServerConnection ConnectionFactoryMethod(NameValueCollection initParams);
 
     /// <summary>
+    /// <para>
     /// The entry point of the Maestro API. The <see cref="ConnectionProviderRegistry"/> is used to create <see cref="IServerConnection"/>
     /// objects. <see cref="IServerConnection"/> is the root object of the Maestro API, and is where most of the functionality provided
     /// by this API is accessed from.
-    /// 
+    /// </para>
+    /// <para>
     /// The <see cref="ConnectionProviderRegistry"/> supports dynamic creation of <see cref="IServerConnection"/> objects given a provider name
     /// and a connection string, which specifies the initialization parameters of the connection. The connection providers are defined in an XML
     /// file called ConnectionProviders.xml which contains all the registered providers. Each provider has the following properties:
-    /// 
-    /// 1. The name of the provider
-    /// 2. The assembly containing the <see cref="IServerConnection"/> implementation
-    /// 3. The name of this <see cref="IServerConnection"/> implementation.
-    /// 
+    /// </para>
+    /// <list type="number">
+    ///     <item><description>The name of the provider</description></item>
+    ///     <item><description>The assembly containing the <see cref="IServerConnection"/> implementation</description></item>
+    ///     <item><description>The name of this <see cref="IServerConnection"/> implementation</description></item>
+    /// </list>
+    /// <para>
     /// The <see cref="IServerConnection"/> implementation is expected to have a non-public constructor which takes a single parameter, 
     /// a <see cref="System.Collections.Specialized.NameValueCollection"/> containing the initialization parameters parsed from the given connection
     /// string.
+    /// </para>
     /// </summary>
     /// <example>
     /// This example shows how to create a http-based MapGuide Server connection to the server's mapagent interface.
