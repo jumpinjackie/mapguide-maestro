@@ -35,6 +35,7 @@ Contents:
    packaging
    mgcooker
    localpreview
+   local_connection_mode
    other_tools
    other_resources
 

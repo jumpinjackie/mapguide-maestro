@@ -14,6 +14,10 @@ You can choose either the installer or zip file
 .. note::
 
  MapGuide Maestro requires .net Framework 2.0 or higher installed. For Windows Vista or newer versions of Windows, this is already installed.
+ 
+.. note::
+
+ As of the 4.0 release of Maestro, the zip package differs from the installer package in that the zip package does not include the :doc:`Local Connection Mode <local_connection_mode>` feature.
 
 Installing on Linux/Mac OSX
 ---------------------------
@@ -22,7 +26,7 @@ Before you run MapGuide Maestro, you need to install the Mono framework. Mono is
 
 The installation is simply unzipping the file::
 
- unzip "MapGuideMaestro-3.0.0-Release.zip"
+ unzip "MapGuideMaestro-4.0.0-Release.zip"
 
 Then run the application::
 
@@ -41,4 +45,8 @@ Then run the application::
 
     **Please note that Mono support for WinForms is not 100% stable.** Even though WinForms is feature complete, some features do not work flawlessly. This means that there are occasional drawing problems. Flipping a tab page back and forth usually solves the problem. Some buttons are missing, because Mono renders them outside the visible area. There are also some issues with certain icons.
     For best results, use the most current release of Mono (currently 2.10.2) where possible. The minimum usable release is Mono 2.0 (this was the release where WinForms was 100% API complete) 
+    
+.. note::
+
+    The :doc:`Local Connection Mode <local_connection_mode>` feature is only available on windows. The zip package does not include this feature.
 
