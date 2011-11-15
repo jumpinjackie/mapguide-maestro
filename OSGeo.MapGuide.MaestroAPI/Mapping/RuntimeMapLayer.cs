@@ -811,5 +811,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
             base.OnPropertyChanged(propertyName);
         }
+
+        /// <summary>
+        /// Determines whether this layer is potentially visible at the specified scale
+        /// </summary>
+        /// <remarks>
+        /// Current layer visibility does not factor into the final result
+        /// </remarks>
+        /// <param name="scale">The scale to check for potential visibility</param>
+        /// <returns></returns>
+        public bool IsVisibleAtScale(double scale)
+        {
+            for (int i = 0; i < _scaleRanges.Length; i += 2) 
+            {
+                if (scale >= _scaleRanges[i] && scale <= _scaleRanges[i + 1])
+                    return true;
+            }
+            return false;
+        }
     }
 }
