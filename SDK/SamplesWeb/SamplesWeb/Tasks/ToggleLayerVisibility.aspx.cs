@@ -49,7 +49,7 @@ namespace SamplesWeb.Tasks
 
             RuntimeMap rtMap = mpSvc.OpenMap(rtMapId);
 
-            RuntimeMapLayer layer = rtMap.GetLayerByName(Request.Params["LAYERNAME"]);
+            RuntimeMapLayer layer = rtMap.Layers[Request.Params["LAYERNAME"]];
             if (layer != null)
             {
                 layer.Visible = !layer.Visible;

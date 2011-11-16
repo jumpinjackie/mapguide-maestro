@@ -42,7 +42,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.ObjectId = Guid.NewGuid().ToString();
         }
 
-        internal RuntimeMapGroup(RuntimeMap map, string name) 
+        public RuntimeMapGroup(RuntimeMap map, string name) 
             : this()
         {
             this.Parent = map;

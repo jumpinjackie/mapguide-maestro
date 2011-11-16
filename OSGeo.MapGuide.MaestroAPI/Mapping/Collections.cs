@@ -62,6 +62,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
+        /// Determines the index of a specific key in the collection
+        /// </summary>
+        /// <param name="key">The key of the object to locate in the collection</param>
+        /// <returns>
+        /// The index of <paramref name="key"/> if found in the list; otherwise, -1.
+        /// </returns>
+        public int IndexOf(TKey key)
+        {
+            var item = this[key];
+            return IndexOf(item);
+        }
+
+        /// <summary>
         /// Inserts an item to the <see cref="T:System.Collections.Generic.IList`1"/> at the specified index.
         /// </summary>
         /// <param name="index">The zero-based index at which <paramref name="item"/> should be inserted.</param>
@@ -434,7 +447,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             return value.Name;
         }
 
-        internal RuntimeMapLayer GetByObjectId(string id)
+        /// <summary>
+        /// Gets a runtime map layer by its object id.
+        /// </summary>
+        /// <param name="id">The object id.</param>
+        /// <returns></returns>
+        public RuntimeMapLayer GetByObjectId(string id)
         {
             return _layerIdMap.ContainsKey(id) ? _layerIdMap[id] : null;
         }

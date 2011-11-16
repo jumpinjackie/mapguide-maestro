@@ -31,6 +31,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using System.Text;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace SamplesWeb.Tasks
 {
@@ -50,10 +51,10 @@ namespace SamplesWeb.Tasks
 
             RuntimeMap rtMap = mpSvc.OpenMap(rtMapId);
 
-            RuntimeMapLayer parcels = rtMap.GetLayerByName("Parcels");
+            RuntimeMapLayer parcels = rtMap.Layers["Parcels"];
             if (parcels != null)
             {
-                rtMap.RemoveLayer(parcels);
+                rtMap.Layers.Remove(parcels);
 
                 rtMap.Save();
 
@@ -66,15 +67,19 @@ namespace SamplesWeb.Tasks
             }
             else
             {
-                RuntimeMapGroup group = rtMap.GetGroupByName("Municipal");
+                string groupName = "Municipal";
+                RuntimeMapGroup group = rtMap.Groups[groupName];
                 if (group == null)
                 {
-                    group = rtMap.AddGroup("Municipal");
+                    group = new RuntimeMapGroup(rtMap, groupName);
+                    rtMap.Groups.Add(group);
                     throw new Exception("Layer group not found");
                 }
 
-                RuntimeMapLayer layer = rtMap.CreateLayer("Library://Samples/Sheboygan/Layers/Parcels.LayerDefinition", group);
+                ILayerDefinition layerDef = (ILayerDefinition)conn.ResourceService.GetResource("Library://Samples/Sheboygan/Layers/Parcels.LayerDefinition");
+                RuntimeMapLayer layer = new RuntimeMapLayer(rtMap, layerDef);
 
+                layer.Group = group.Name;
                 layer.LegendLabel = "Parcels";
                 layer.ShowInLegend = true;
                 layer.ExpandInLegend = true;
@@ -86,8 +91,8 @@ namespace SamplesWeb.Tasks
                 //So for a layer to be drawn above something else, its draw order must be
                 //less than that particular layer.
 
-                int index = rtMap.IndexOfLayer("Islands");
-                rtMap.InsertLayer(index, layer);
+                int index = rtMap.Layers.IndexOf("Islands");
+                rtMap.Layers.Insert(index, layer);
 
                 rtMap.Save();
 

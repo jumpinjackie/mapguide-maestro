@@ -54,7 +54,7 @@ namespace SamplesWeb.Tasks
             string rtMapId = "Session:" + conn.SessionID + "//" + mapName + ".Map";
 
             RuntimeMap rtMap = mpSvc.OpenMap(rtMapId);
-            RuntimeMapLayer layer = rtMap.GetLayerByObjectId(layerId);
+            RuntimeMapLayer layer = rtMap.Layers.GetByObjectId(layerId);
 
             //The values returned are in the same order as the array from the IdentityProperties
             object[] values = layer.ParseSelectionValues(id);

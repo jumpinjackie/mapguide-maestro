@@ -77,7 +77,7 @@ namespace SamplesWeb.Tasks
             RuntimeMap rtMap = mpSvc.OpenMap(rtMapId);
             
             //Get the selected layer
-            RuntimeMapLayer rtLayer = rtMap.GetLayerByObjectId(ddlLayers.SelectedValue);
+            RuntimeMapLayer rtLayer = rtMap.Layers.GetByObjectId(ddlLayers.SelectedValue);
 
             //Query using the user filter
             IFeatureReader reader = conn.FeatureService.QueryFeatureSource(

@@ -80,7 +80,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.Group = string.Empty;
         }
 
-        internal RuntimeMapLayer(RuntimeMap parent, ILayerDefinition ldf)
+        public RuntimeMapLayer(RuntimeMap parent, ILayerDefinition ldf)
             : this(parent)
         {
             Check.NotNull(ldf, "ldf");

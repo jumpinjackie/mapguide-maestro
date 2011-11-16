@@ -1033,6 +1033,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="layerDefinitionId"></param>
         /// <param name="group"></param>
         /// <returns></returns>
+        [Obsolete("Use RuntimeMapLayer constructor")]
         public RuntimeMapLayer CreateLayer(string layerDefinitionId, RuntimeMapGroup group)
         {
             ILayerDefinition ldf = GetLayerDefinition(layerDefinitionId);

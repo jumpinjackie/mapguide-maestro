@@ -53,17 +53,19 @@ namespace SamplesWeb.Tasks
 
             RuntimeMap rtMap = mpSvc.OpenMap(rtMapId);
 
-            RuntimeMapLayer tracks = rtMap.GetLayerByName("Tracks");
+            RuntimeMapLayer tracks = rtMap.Layers["Tracks"];
             if (tracks != null)
             {
                 lblMessage.Text = "Tracks layer already added";
             }
             else
             {
-                RuntimeMapGroup group = rtMap.GetGroupByName("Transportation");
+                string groupName = "Transportation";
+                RuntimeMapGroup group = rtMap.Groups[groupName];
                 if (group == null)
                 {
-                    group = rtMap.AddGroup("Transportation");
+                    group = new RuntimeMapGroup(rtMap, groupName);
+                    rtMap.Groups.Add(group);
                     throw new Exception("Layer group not found");
                 }
 
@@ -79,8 +81,10 @@ namespace SamplesWeb.Tasks
 
                 CreateTracksLayer(conn, fsId, layerId);
 
-                RuntimeMapLayer layer = rtMap.CreateLayer(layerId, group);
+                ILayerDefinition layerDef = (ILayerDefinition)conn.ResourceService.GetResource(layerId);
+                RuntimeMapLayer layer = new RuntimeMapLayer(rtMap, layerDef);
 
+                layer.Group = groupName;
                 layer.LegendLabel = "Tracks";
                 layer.ShowInLegend = true;
                 layer.ExpandInLegend = true;
@@ -92,8 +96,8 @@ namespace SamplesWeb.Tasks
                 //So for a layer to be drawn above something else, its draw order must be
                 //less than that particular layer.
 
-                int index = rtMap.IndexOfLayer("Districts");
-                rtMap.InsertLayer(index, layer);
+                int index = rtMap.Layers.IndexOf("Districts");
+                rtMap.Layers.Insert(index, layer);
 
                 rtMap.Save();
 

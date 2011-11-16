@@ -49,7 +49,7 @@ namespace SamplesWeb.Tasks
 
             RuntimeMap rtMap = mpSvc.OpenMap(rtMapId);
 
-            RuntimeMapGroup group = rtMap.GetGroupByName(Request.Params["GROUPNAME"]);
+            RuntimeMapGroup group = rtMap.Groups[Request.Params["GROUPNAME"]];
             if (group != null)
             {
                 group.Visible = !group.Visible;
