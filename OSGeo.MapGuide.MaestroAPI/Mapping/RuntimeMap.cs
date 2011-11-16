@@ -30,6 +30,7 @@ using System.ComponentModel;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System.Diagnostics;
 using OSGeo.MapGuide.MaestroAPI.Commands;
+using OSGeo.MapGuide.MaestroAPI.Exceptions;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
@@ -120,26 +121,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     /// </example>
     public class RuntimeMap : MapObservable
     {
-        internal IFeatureService FeatureService { get; set; }
+        internal IFeatureService FeatureService { get { return this.CurrentConnection.FeatureService; } }
 
-        internal IResourceService ResourceService { get; set; }
+        internal IResourceService ResourceService { get { return this.CurrentConnection.ResourceService; } }
+
+        public IServerConnection CurrentConnection { get; private set; }
 
         internal Version SiteVersion { get; private set; }
-
-        /// <summary>
-        /// The layer collection
-        /// </summary>
-        protected List<RuntimeMapLayer> _layers;
-        
-        /// <summary>
-        /// The group collection
-        /// </summary>
-        protected List<RuntimeMapGroup> _groups;
-
-        /// <summary>
-        /// The id to layer lookup dictionary
-        /// </summary>
-        protected Dictionary<string, RuntimeMapLayer> _layerIdMap;
 
         /// <summary>
         /// The mapping service
@@ -169,8 +157,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.ObjectId = Guid.NewGuid().ToString();
             m_changeList = new Dictionary<string, ChangeList>();
             _finiteDisplayScales = new double[0];
-            this.ResourceService = conn.ResourceService;
-            this.FeatureService = conn.FeatureService;
+            this.CurrentConnection = conn;
             if (Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0)
             {
                 _mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
@@ -179,9 +166,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             {
                 _getRes = (IGetResourceContents)conn.CreateCommand((int)CommandType.GetResourceContents);
             }
-            _layers = new List<RuntimeMapLayer>();
-            _groups = new List<RuntimeMapGroup>();
-            _layerIdMap = new Dictionary<string, RuntimeMapLayer>();
+            this.Layers = new RuntimeMapLayerCollection(this);
+            this.Groups = new RuntimeMapGroupCollection(this);
             this.Selection = new MapSelection(this);
         }
 
@@ -276,20 +262,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 Trace.TraceInformation("[RuntimeMap.ctor]: {0} layers pre-cached", layerDefinitionCache.Count);
             }
 
-            int dispIndex = 0;
             //Load map layers
             foreach (var layer in mdf.MapLayer)
             {
                 var rtl = new RuntimeMapLayer(this, layer, GetLayerDefinition(layer.ResourceId));
-                rtl.DisplayOrder = (++dispIndex) * Z_ORDER_INCREMENT;
-                AddLayerInternal(rtl);
+                this.Layers.Add(rtl);
             }
 
             //Load map groups
             foreach (var group in mdf.MapLayerGroup)
             {
                 var grp = new RuntimeMapGroup(this, group);
-                _groups.Add(grp);
+                this.Groups.Add(grp);
             }
 
             //If base map specified load layers and groups there
@@ -304,12 +288,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                         {
                             var rtl = new RuntimeMapLayer(this, layer, GetLayerDefinition(layer.ResourceId)) { Visible = true };
                             rtl.Type = RuntimeMapLayer.kBaseMap;
-                            rtl.DisplayOrder = (++dispIndex) * Z_ORDER_INCREMENT;
-                            AddLayerInternal(rtl);
+                            this.Layers.Add(rtl);
                         }
                     }
                     var rtg = new RuntimeMapGroup(this, group);
-                    _groups.Add(rtg);
+                    this.Groups.Add(rtg);
                 }
 
                 //Init finite display scales
@@ -755,12 +738,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="s"></param>
         protected void SerializeLayerData(MgBinarySerializer s)
         {
-            s.Write((int)_groups.Count);
-            foreach (var g in _groups)
+            s.Write((int)this.Groups.Count);
+            foreach (var g in this.Groups)
                 g.Serialize(s);
 
-            s.Write(_layers.Count);
-            foreach (var t in _layers)
+            s.Write(this.Layers.Count);
+            foreach (var t in this.Layers)
                 t.Serialize(s);
         }
 
@@ -897,25 +880,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             int groupCount = d.ReadInt32();
 
-            _groups.Clear();
+            this.Groups.Clear();
 
             for (int i = 0; i < groupCount; i++)
             {
                 RuntimeMapGroup g = new RuntimeMapGroup();
                 g.Deserialize(d);
-                _groups.Add(g);
+                this.Groups.Add(g);
             }
 
             int mapLayerCount = d.ReadInt32();
 
-            _layers.Clear();
-            _layerIdMap.Clear();
+            this.Layers.Clear();
 
             while (mapLayerCount-- > 0)
             {
                 RuntimeMapLayer t = new RuntimeMapLayer(this);
                 t.Deserialize(d);
-                AddLayerInternal(t);
+                this.Layers.Add(t);
             }
         }
 
@@ -934,15 +916,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns></returns>
+        [Obsolete("Use the indexer of the Groups property instead")]
         public RuntimeMapGroup GetGroupByName(string name)
         {
             Check.NotNull(name, "name");
-            foreach (var group in _groups)
-            {
-                if (name.Equals(group.Name))
-                    return group;
-            }
-            return null;
+            return this.Groups[name];
         }
 
         /// <summary>
@@ -950,30 +928,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="id">The id.</param>
         /// <returns></returns>
+        [Obsolete("Use the Layers property instead")]
         public RuntimeMapLayer GetLayerByObjectId(string id)
         {
-            if (_layerIdMap.ContainsKey(id))
-                return _layerIdMap[id];
-
-            return null;
+            return this.Layers.GetByObjectId(id);
         }
 
         /// <summary>
-        /// Gets an array of all layers in this map
+        /// The collection of layers in this map
         /// </summary>
-        /// <value>The layers.</value>
-        public RuntimeMapLayer[] Layers
+        public RuntimeMapLayerCollection Layers
         {
-            get { return _layers.ToArray(); }
+            get;
+            private set;
         }
 
         /// <summary>
-        /// Gets an array of all groups in this map
+        /// The collection of groups in this map
         /// </summary>
-        /// <value>The groups.</value>
-        public RuntimeMapGroup[] Groups
+        public RuntimeMapGroupCollection Groups
         {
-            get { return _groups.ToArray(); }
+            get;
+            private set;
         }
 
         /// <summary>
@@ -986,28 +962,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="layer"></param>
         /// <returns></returns>
-        public void AddLayer(RuntimeMapLayer layer)
+        [Obsolete("Use the Layers property instead")]
+        internal void AddLayer(RuntimeMapLayer layer)
         {
-            if (_layerIdMap.ContainsKey(layer.ObjectId))
-                return;
-
-            AddLayerInternal(layer);
-        }
-
-        /// <summary>
-        /// Adds the layer.
-        /// </summary>
-        /// <param name="layer">The layer.</param>
-        internal void AddLayerInternal(RuntimeMapLayer layer)
-        {
-            RuntimeMapLayer prevLayer = (_layers.Count == 0 ? null : _layers[_layers.Count - 1]);
-            double zOrder = prevLayer == null ? Z_ORDER_TOP : prevLayer.DisplayOrder + Z_ORDER_INCREMENT;
-            layer.DisplayOrder = zOrder;
-
-            _layers.Add(layer);
-            _layerIdMap[layer.ObjectId] = layer;
-
-            OnLayerAdded(layer);
+            this.Layers.Add(layer);
         }
 
         /// <summary>
@@ -1016,46 +974,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="index"></param>
         /// <param name="layer"></param>
+        [Obsolete("Use the Layers property instead")]
         public void InsertLayer(int index, RuntimeMapLayer layer)
         {
-            if (index >= _layers.Count || index < 0)
-                throw new ArgumentOutOfRangeException("index");
-
-            AddLayerInternal(layer, index);
-        }
-
-        /// <summary>
-        /// Adds the layer
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="index"></param>
-        internal void AddLayerInternal(RuntimeMapLayer value, int index)
-        {
-            //calculate zorder for the new layer
-            double zOrderLow, zOrderHigh;
-            RuntimeMapLayer layer;
-            if(index == 0)
-            {
-                zOrderLow = 0;
-                layer = _layers.Count > 0 ? _layers[index] : null;
-                if (layer != null)
-                    zOrderHigh = layer.DisplayOrder;
-                else
-                    zOrderHigh = 2.0 * Z_ORDER_INCREMENT;
-            }
-            else
-            {
-                layer = _layers[index - 1];
-                zOrderLow = layer.DisplayOrder;
-                layer = _layers.Count > index ? _layers[index] : null;
-                zOrderHigh = layer != null ? layer.DisplayOrder : zOrderLow + 2.0 * Z_ORDER_INCREMENT;
-            }
-            value.DisplayOrder = (zOrderLow + (zOrderHigh - zOrderLow) / 2.0);
-
-            _layers.Insert(index, value);
-            _layerIdMap[value.ObjectId] = value;
-
-            OnLayerAdded(value);
+            this.Layers.Insert(index, layer);
         }
 
         /// <summary>
@@ -1063,29 +985,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="index">The index.</param>
         /// <param name="layer">The layer.</param>
+        [Obsolete("Use the Layers property instead")]
         public void SetLayerIndex(int index, RuntimeMapLayer layer)
         {
-            if (index >= _layers.Count || index < 0)
-                throw new ArgumentOutOfRangeException("index");
-
-            int idx = IndexOfLayer(layer);
-            if (idx >= 0)
-            {
-                RemoveLayerAt(idx);
-                AddLayerInternal(layer, index);
-            }
+            this.Layers[index] = layer;
         }
 
         /// <summary>
         /// Removes the layer at the specified index
         /// </summary>
         /// <param name="index">The index.</param>
+        [Obsolete("Use the Layers property instead")]
         public void RemoveLayerAt(int index)
         {
-            if (index >= _layers.Count || index < 0)
-                throw new ArgumentOutOfRangeException("index");
-
-            RemoveLayerInternal(index);
+            this.Layers.RemoveAt(index);
         }
 
         /// <summary>
@@ -1093,9 +1006,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="layer"></param>
         /// <returns></returns>
+        [Obsolete("Use the Layers property instead")]
         public int IndexOfLayer(RuntimeMapLayer layer)
         {
-            return _layers.IndexOf(layer);
+            return this.Layers.IndexOf(layer);
         }
 
         /// <summary>
@@ -1103,16 +1017,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="layerName"></param>
         /// <returns></returns>
+        [Obsolete("Use the Layers property instead")]
         public int IndexOfLayer(string layerName)
         {
             Check.NotEmpty(layerName, "layerName");
 
-            for (int i = 0; i < _layers.Count; i++)
-            {
-                if (layerName.Equals(_layers[i].Name))
-                    return i;
-            }
-            return -1;
+            var layer = this.Layers[layerName];
+            return this.Layers.IndexOf(layer);
         }
 
         /// <summary>
@@ -1154,68 +1065,35 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns></returns>
-        public RuntimeMapGroup AddGroup(string name)
+        internal RuntimeMapGroup AddGroup(string name)
         {
             var group = new RuntimeMapGroup(this, name);
-            AddGroupInternal(group);
+            this.Groups.Add(group);
             return group;
-        }
-
-        internal void AddGroupInternal(RuntimeMapGroup group)
-        {
-            _groups.Add(group);
-            OnGroupAdded(group);
-        }
-
-        /// <summary>
-        /// Removes the layer
-        /// </summary>
-        /// <param name="layer">The layer.</param>
-        internal void RemoveLayerInternal(RuntimeMapLayer layer)
-        {
-            if (_layers.Remove(layer))
-            {
-                OnLayerRemoved(layer);
-            }
-        }
-
-        private void RemoveLayerInternal(int index)
-        {
-            if (index >= 0 && index < _layers.Count)
-            {
-                var layer = _layers[index];
-                _layers.RemoveAt(index);
-                OnLayerRemoved(layer);
-            }
         }
 
         /// <summary>
         /// Removes the specified layer.
         /// </summary>
         /// <param name="layer">The layer.</param>
+        [Obsolete("Use the Layers property instead")]
         public void RemoveLayer(RuntimeMapLayer layer)
         {
             Check.NotNull(layer, "layer");
-            RemoveLayerInternal(layer);
+            this.Layers.Remove(layer);
         }
 
         /// <summary>
         /// Removes the specified group.
         /// </summary>
         /// <param name="group">The group.</param>
+        [Obsolete("Use the Groups property instead")]
         public void RemoveGroup(RuntimeMapGroup group)
         {
             Check.NotNull(group, "group");
-            RemoveGroupInternal(group);
+            this.Groups.Remove(group);
         }
 
-        internal void RemoveGroupInternal(RuntimeMapGroup group)
-        {
-            if (_groups.Remove(group))
-            {
-                OnGroupRemoved(group);
-            }
-        }
 
         /// <summary>
         /// Gets the layers of the specified group
@@ -1226,7 +1104,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             Check.NotEmpty(groupName, "groupName");
             List<RuntimeMapLayer> layers = new List<RuntimeMapLayer>();
-            foreach (var lyr in _layers)
+            foreach (var lyr in this.Layers)
             {
                 if (groupName.Equals(lyr.Group))
                     layers.Add(lyr);
@@ -1318,15 +1196,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns></returns>
+        [Obsolete("Use the indexer of the Layer property instead")]
         public RuntimeMapLayer GetLayerByName(string name)
         {
             Check.NotEmpty(name, "name");
-            foreach (var layer in _layers)
-            {
-                if (name.Equals(layer.Name))
-                    return layer;
-            }
-            return null;
+            return this.Layers[name];
         }
 
         #region change tracking
@@ -1364,13 +1238,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Called when a group is removed
         /// </summary>
         /// <param name="group"></param>
-        protected void OnGroupRemoved(RuntimeMapGroup group)
+        internal void OnGroupRemoved(RuntimeMapGroup group)
         {
             //???
             var layers = GetLayersOfGroup(group.Name);
             foreach (var lyr in layers)
             {
-                RemoveLayerInternal(lyr);
+                this.Layers.Remove(lyr);
             }
 
             TrackChange(group.ObjectId, false, Change.ChangeType.removed, string.Empty);
@@ -1380,7 +1254,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Called when a group is added
         /// </summary>
         /// <param name="group"></param>
-        protected void OnGroupAdded(RuntimeMapGroup group)
+        internal void OnGroupAdded(RuntimeMapGroup group)
         {
             //???
 
@@ -1412,9 +1286,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         internal void OnLayerRemoved(RuntimeMapLayer layer)
         {
             //???
-            if (_layerIdMap.ContainsKey(layer.ObjectId))
-                _layerIdMap.Remove(layer.ObjectId);
-
             TrackChange(layer.ObjectId, true, Change.ChangeType.removed, string.Empty);
         }
 
@@ -1523,7 +1394,5 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         #endregion
-
-        
     }
 }

@@ -536,4 +536,7 @@
   <data name="DowngradedResource" xml:space="preserve">
     <value>Resource {0} downgraded to version {1}</value>
   </data>
+  <data name="DuplicateKeyExceptionMessage" xml:space="preserve">
+    <value>An item with the key value ({0}) already exists in the collection</value>
+  </data>
 </root>

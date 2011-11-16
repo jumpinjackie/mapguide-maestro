@@ -120,7 +120,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 if (n.Attributes["id"] != null)
                 {
                     string guid = n.Attributes["id"].Value;
-                    var l = _map.GetLayerByObjectId(guid);
+                    var l = _map.Layers.GetByObjectId(guid);
                     if (l != null)
                     {
                         foreach (System.Xml.XmlNode c in n.SelectNodes("Class"))

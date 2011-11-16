@@ -38,6 +38,7 @@ namespace MaestroAPITests
     using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
     using System.Drawing;
     using OSGeo.MapGuide.ExtendedObjectModels;
+    using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
     [SetUpFixture]
     public class TestBootstrap
@@ -143,8 +144,8 @@ namespace MaestroAPITests
         private bool Matches(RuntimeMap map, IMapDefinition mdf)
         {
             if (map.MapDefinition != mdf.ResourceID) return false;
-            if (map.Groups.Length != mdf.GetGroupCount()) return false;
-            if (map.Layers.Length != mdf.GetLayerCount()) return false;
+            if (map.Groups.Count != mdf.GetGroupCount()) return false;
+            if (map.Layers.Count != mdf.GetLayerCount()) return false;
 
             foreach (var layer in map.Layers)
             {
@@ -614,6 +615,252 @@ namespace MaestroAPITests
             RenderLegendAndVerifyConvenience(map, 200, 600, "TestLegend12kConvenience_RailReAdded.png", "PNG");
         }
 
+        public virtual void TestMapManipulation2()
+        {
+            //This is mainly to exercise Insert() and to verify that draw orders come back as expected
+
+            var resSvc = _conn.ResourceService;
+            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            Assert.NotNull(mapSvc);
+
+            var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
+            Assert.NotNull(mdf);
+
+            //FIXME: We have a problem. Can we calculate this value without MgCoordinateSystem and just using the WKT?
+            //The answer to this will answer whether we can actually support the Rendering Service API over http 
+            //using pure client-side runtime maps 
+            //
+            //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
+            //for this particular map.
+            double metersPerUnit = 111319.490793274;
+            var cs = CoordinateSystemBase.Create(mdf.CoordinateSystem);
+            metersPerUnit = cs.MetersPerUnitX;
+            Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
+
+            //Empty the layer/group list because we will add them individually
+            var removeLayers = new List<IMapLayer>(mdf.MapLayer);
+            foreach (var removeMe in removeLayers)
+                mdf.RemoveLayer(removeMe);
+
+            var removeGroups = new List<IMapLayerGroup>(mdf.MapLayerGroup);
+            foreach (var removeMe in removeGroups)
+                mdf.RemoveGroup(removeMe);
+
+            //Now create our runtime map
+            var mid = "Session:" + _conn.SessionID + "//TestMapManipulation2.Map";
+            var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
+            map.ViewScale = 12000;
+            map.DisplayWidth = 1024;
+            map.DisplayHeight = 1024;
+            map.DisplayDpi = 96;
+
+            Assert.AreEqual(0, map.Layers.Count);
+            Assert.AreEqual(0, map.Groups.Count);
+
+            map.Groups.Add(new RuntimeMapGroup(map, "Group1"));
+            map.Groups.Add(new RuntimeMapGroup(map, "Group2"));
+            Assert.AreEqual(2, map.Groups.Count);
+
+            Assert.NotNull(map.Groups["Group1"]);
+            Assert.NotNull(map.Groups["Group2"]);
+            Assert.Null(map.Groups["Group3"]);
+
+            var layer = new RuntimeMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"));
+            layer.Group = "Group1";
+
+            map.Layers.Insert(0, layer);
+            Assert.AreEqual(1, map.Layers.Count);
+            Assert.NotNull(map.Layers["HydrographicPolygons"]);
+            Assert.True(map.Layers["HydrographicPolygons"] == map.Layers[0]);
+            Assert.NotNull(map.Layers.GetByObjectId(layer.ObjectId));
+
+            var layer2 = new RuntimeMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Parcels.LayerDefinition"));
+            map.Layers.Insert(0, layer2);
+            layer2.Group = "Group1"; //Intentional
+
+            Assert.AreEqual(2, map.Layers.Count);
+            Assert.True(layer2 == map.Layers[0]);
+            Assert.False(layer2 == map.Layers[1]);
+            Assert.NotNull(map.Layers["HydrographicPolygons"]);
+            Assert.NotNull(map.Layers["Parcels"]);
+            Assert.True(map.Layers["Parcels"] == map.Layers[0]);
+            Assert.True(map.Layers["HydrographicPolygons"] == map.Layers[1]);
+            Assert.NotNull(map.Layers.GetByObjectId(layer.ObjectId));
+            Assert.NotNull(map.Layers.GetByObjectId(layer2.ObjectId));
+            //The important one
+            Assert.True(map.Layers[0].DisplayOrder < map.Layers[1].DisplayOrder);
+
+            var layer3 = new RuntimeMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Rail.LayerDefinition"));
+            layer3.Group = "Group2";
+            map.Layers.Insert(0, layer3);
+            Assert.AreEqual(3, map.Layers.Count);
+            Assert.True(layer3 == map.Layers[0]);
+            Assert.False(layer3 == map.Layers[1]);
+            Assert.False(layer3 == map.Layers[2]);
+            Assert.NotNull(map.Layers["HydrographicPolygons"]);
+            Assert.NotNull(map.Layers["Parcels"]);
+            Assert.NotNull(map.Layers["Rail"]);
+            Assert.True(map.Layers["Rail"] == map.Layers[0]);
+            Assert.True(map.Layers["Parcels"] == map.Layers[1]);
+            Assert.True(map.Layers["HydrographicPolygons"] == map.Layers[2]);
+            //The important one
+            Assert.True(map.Layers[0].DisplayOrder < map.Layers[1].DisplayOrder);
+            Assert.True(map.Layers[0].DisplayOrder < map.Layers[2].DisplayOrder);
+            Assert.True(map.Layers[1].DisplayOrder < map.Layers[2].DisplayOrder);
+            Assert.NotNull(map.Layers.GetByObjectId(layer.ObjectId));
+            Assert.NotNull(map.Layers.GetByObjectId(layer2.ObjectId));
+            Assert.NotNull(map.Layers.GetByObjectId(layer3.ObjectId));
+
+            Assert.AreEqual(2, map.GetLayersOfGroup("Group1").Length);
+            Assert.AreEqual(1, map.GetLayersOfGroup("Group2").Length);
+
+            //Group1 has 2 layers
+            map.Groups.Remove("Group1");
+            Assert.AreEqual(1, map.Layers.Count);
+            Assert.Null(map.Groups["Group1"]);
+            Assert.True(map.Groups["Group2"] == map.Groups[0]);
+            Assert.Null(map.Layers.GetByObjectId(layer.ObjectId));
+            Assert.Null(map.Layers.GetByObjectId(layer2.ObjectId));
+            Assert.NotNull(map.Layers.GetByObjectId(layer3.ObjectId));
+
+            //Removing layer doesn't affect its group. It will still be there
+            map.Layers.Remove(layer3.Name);
+            Assert.AreEqual(0, map.Layers.Count);
+            Assert.AreEqual(1, map.Groups.Count);
+            Assert.NotNull(map.Groups["Group2"]);
+            Assert.Null(map.Layers.GetByObjectId(layer.ObjectId));
+            Assert.Null(map.Layers.GetByObjectId(layer2.ObjectId));
+            Assert.Null(map.Layers.GetByObjectId(layer3.ObjectId));
+
+            map.Groups.Remove("Group2");
+            Assert.AreEqual(0, map.Layers.Count);
+            Assert.AreEqual(0, map.Groups.Count);
+        }
+
+        public virtual void TestMapManipulation3()
+        {
+            //Pretty much the same as TestMapManipulation2() but with Add() instead of Insert()
+            //Add() puts the item at the end of the collection, so draw orders should reflect
+            //that
+
+            var resSvc = _conn.ResourceService;
+            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            Assert.NotNull(mapSvc);
+
+            var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
+            Assert.NotNull(mdf);
+
+            //FIXME: We have a problem. Can we calculate this value without MgCoordinateSystem and just using the WKT?
+            //The answer to this will answer whether we can actually support the Rendering Service API over http 
+            //using pure client-side runtime maps 
+            //
+            //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
+            //for this particular map.
+            double metersPerUnit = 111319.490793274;
+            var cs = CoordinateSystemBase.Create(mdf.CoordinateSystem);
+            metersPerUnit = cs.MetersPerUnitX;
+            Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
+
+            //Empty the layer/group list because we will add them individually
+            var removeLayers = new List<IMapLayer>(mdf.MapLayer);
+            foreach (var removeMe in removeLayers)
+                mdf.RemoveLayer(removeMe);
+
+            var removeGroups = new List<IMapLayerGroup>(mdf.MapLayerGroup);
+            foreach (var removeMe in removeGroups)
+                mdf.RemoveGroup(removeMe);
+
+            //Now create our runtime map
+            var mid = "Session:" + _conn.SessionID + "//TestMapManipulation2.Map";
+            var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
+            map.ViewScale = 12000;
+            map.DisplayWidth = 1024;
+            map.DisplayHeight = 1024;
+            map.DisplayDpi = 96;
+
+            Assert.AreEqual(0, map.Layers.Count);
+            Assert.AreEqual(0, map.Groups.Count);
+
+            map.Groups.Add(new RuntimeMapGroup(map, "Group1"));
+            map.Groups.Add(new RuntimeMapGroup(map, "Group2"));
+            Assert.AreEqual(2, map.Groups.Count);
+
+            Assert.NotNull(map.Groups["Group1"]);
+            Assert.NotNull(map.Groups["Group2"]);
+            Assert.Null(map.Groups["Group3"]);
+
+            var layer = new RuntimeMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"));
+            layer.Group = "Group1";
+
+            map.Layers.Add(layer);
+            Assert.AreEqual(1, map.Layers.Count);
+            Assert.NotNull(map.Layers["HydrographicPolygons"]);
+            Assert.True(map.Layers["HydrographicPolygons"] == map.Layers[0]);
+            Assert.NotNull(map.Layers.GetByObjectId(layer.ObjectId));
+
+            var layer2 = new RuntimeMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Parcels.LayerDefinition"));
+            map.Layers.Add(layer2);
+            layer2.Group = "Group1"; //Intentional
+
+            Assert.AreEqual(2, map.Layers.Count);
+            Assert.False(layer2 == map.Layers[0]);
+            Assert.True(layer2 == map.Layers[1]);
+            Assert.NotNull(map.Layers["HydrographicPolygons"]);
+            Assert.NotNull(map.Layers["Parcels"]);
+            Assert.True(map.Layers["HydrographicPolygons"] == map.Layers[0]);
+            Assert.True(map.Layers["Parcels"] == map.Layers[1]);
+            Assert.NotNull(map.Layers.GetByObjectId(layer.ObjectId));
+            Assert.NotNull(map.Layers.GetByObjectId(layer2.ObjectId));
+            //The important one
+            Assert.True(map.Layers[0].DisplayOrder < map.Layers[1].DisplayOrder);
+
+            var layer3 = new RuntimeMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Rail.LayerDefinition"));
+            layer3.Group = "Group2";
+            map.Layers.Add(layer3);
+            Assert.AreEqual(3, map.Layers.Count);
+            Assert.False(layer3 == map.Layers[0]);
+            Assert.False(layer3 == map.Layers[1]);
+            Assert.True(layer3 == map.Layers[2]);
+            Assert.NotNull(map.Layers["HydrographicPolygons"]);
+            Assert.NotNull(map.Layers["Parcels"]);
+            Assert.NotNull(map.Layers["Rail"]);
+            Assert.True(map.Layers["HydrographicPolygons"] == map.Layers[0]);
+            Assert.True(map.Layers["Parcels"] == map.Layers[1]);
+            Assert.True(map.Layers["Rail"] == map.Layers[2]);
+            //The important one
+            Assert.True(map.Layers[0].DisplayOrder < map.Layers[1].DisplayOrder);
+            Assert.True(map.Layers[0].DisplayOrder < map.Layers[2].DisplayOrder);
+            Assert.True(map.Layers[1].DisplayOrder < map.Layers[2].DisplayOrder);
+            Assert.NotNull(map.Layers.GetByObjectId(layer.ObjectId));
+            Assert.NotNull(map.Layers.GetByObjectId(layer2.ObjectId));
+            Assert.NotNull(map.Layers.GetByObjectId(layer3.ObjectId));
+
+            Assert.AreEqual(2, map.GetLayersOfGroup("Group1").Length);
+            Assert.AreEqual(1, map.GetLayersOfGroup("Group2").Length);
+
+            //Group1 has 2 layers
+            map.Groups.Remove("Group1");
+            Assert.AreEqual(1, map.Layers.Count);
+            Assert.Null(map.Groups["Group1"]);
+            Assert.True(map.Groups["Group2"] == map.Groups[0]);
+            Assert.Null(map.Layers.GetByObjectId(layer.ObjectId));
+            Assert.Null(map.Layers.GetByObjectId(layer2.ObjectId));
+            Assert.NotNull(map.Layers.GetByObjectId(layer3.ObjectId));
+
+            //Removing layer doesn't affect its group. It will still be there
+            map.Layers.Remove(layer3.Name);
+            Assert.AreEqual(0, map.Layers.Count);
+            Assert.AreEqual(1, map.Groups.Count);
+            Assert.NotNull(map.Groups["Group2"]);
+            Assert.Null(map.Layers.GetByObjectId(layer.ObjectId));
+            Assert.Null(map.Layers.GetByObjectId(layer2.ObjectId));
+            Assert.Null(map.Layers.GetByObjectId(layer3.ObjectId));
+
+            map.Groups.Remove("Group2");
+            Assert.AreEqual(0, map.Layers.Count);
+            Assert.AreEqual(0, map.Groups.Count);
+        }
+
         public virtual void TestResourceEvents()
         {
             bool deleteCalled = false;
@@ -748,6 +995,18 @@ namespace MaestroAPITests
         }
 
         [Test]
+        public override void TestMapManipulation2()
+        {
+            base.TestMapManipulation2();
+        }
+
+        [Test]
+        public override void TestMapManipulation3()
+        {
+            base.TestMapManipulation3();
+        }
+
+        [Test]
         public override void TestLargeMapCreatePerformance()
         {
             base.TestLargeMapCreatePerformance();
@@ -799,6 +1058,18 @@ namespace MaestroAPITests
         public override void TestMapManipulation()
         {
             base.TestMapManipulation();
+        }
+
+        [Test]
+        public override void TestMapManipulation2()
+        {
+            base.TestMapManipulation2();
+        }
+
+        [Test]
+        public override void TestMapManipulation3()
+        {
+            base.TestMapManipulation3();
         }
 
         [Test]

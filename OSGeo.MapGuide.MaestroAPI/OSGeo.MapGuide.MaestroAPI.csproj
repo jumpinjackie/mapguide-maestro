@@ -193,6 +193,7 @@
     <Compile Include="CrossConnection\NsDoc.cs" />
     <Compile Include="CrossConnection\ResourceRebaser.cs" />
     <Compile Include="Exceptions\CustomPropertyNotFoundException.cs" />
+    <Compile Include="Exceptions\DuplicateKeyException.cs" />
     <Compile Include="Exceptions\ExpressionException.cs" />
     <Compile Include="Exceptions\MaestroException.cs" />
     <Compile Include="Exceptions\NestedExceptionMessageProcessor.cs" />
@@ -216,6 +217,7 @@
     <Compile Include="Feature\ReaderBase.cs" />
     <Compile Include="Feature\RecordBase.cs" />
     <Compile Include="IO\NsDoc.cs" />
+    <Compile Include="Mapping\Collections.cs" />
     <Compile Include="Mapping\NsDoc.cs" />
     <Compile Include="NsDoc.cs" />
     <Compile Include="ObjectModels\CommonTypes.cs" />
