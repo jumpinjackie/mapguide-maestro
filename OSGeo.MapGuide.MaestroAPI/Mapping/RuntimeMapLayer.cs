@@ -247,6 +247,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
+                if (this.Type == kBaseMap)
+                    throw new InvalidOperationException("Setting visbility of a tiled map layer is not permitted");
+
                 SetField(ref _visible, value, "Visible");
             }
         }
@@ -454,6 +457,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             get;
             internal set;
+        }
+
+        /// <summary>
+        /// Sets the refresh flag for this layer
+        /// </summary>
+        public void ForceRefresh()
+        {
+            if (!this.IsVisibleAtScale(this.Parent.ViewScale))
+                return;
+
+            this.NeedsRefresh = true;
         }
 
         /// <summary>

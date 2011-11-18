@@ -134,10 +134,10 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// if this has not been set already.
         /// </summary>
         /// <param name="layerToInsertAbove">The layer to insert above in the draw order</param>
-        /// <param name="groupName"></param>
-        /// <param name="layerName"></param>
-        /// <param name="resourceId"></param>
-        /// <returns></returns>
+        /// <param name="groupName">The name of the group this layer belongs to. If null or empty, this layer will not belong to any group</param>
+        /// <param name="layerName">The name of this layer. This must be unique</param>
+        /// <param name="resourceId">The layer definition id</param>
+        /// <returns>The added layer</returns>
         IMapLayer AddLayer(IMapLayer layerToInsertAbove, string groupName, string layerName, string resourceId);
 
         /// <summary>
