@@ -26,6 +26,7 @@ using OSGeo.MapGuide.MaestroAPI.Serialization;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using System.Diagnostics;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
@@ -193,8 +194,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     }
                     break;
             }
-
+            EnsureOrderedMinMaxScales();
             _disableChangeTracking = false;
+        }
+
+        private void EnsureOrderedMinMaxScales()
+        {
+            Debug.Assert(_scaleRanges.Length % 2 == 0);
+            int scaleCount = _scaleRanges.Length / 2;
+            for (int i = 0; i < scaleCount; i++)
+            {
+                int minPos = i * 2;
+                int maxPos = i * 2 + 1;
+                if (_scaleRanges[minPos] > _scaleRanges[maxPos])
+                {
+                    double temp = _scaleRanges[minPos];
+                    _scaleRanges[minPos] = _scaleRanges[maxPos];
+                    _scaleRanges[maxPos] = temp;
+                }
+            }
         }
 
         private void InitIdentityProperties(IVectorLayerDefinition vl)
@@ -693,6 +711,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
                 this.IdentityProperties = ids.ToArray();
             }
+
+            EnsureOrderedMinMaxScales();
         }
 
         //from MgPropertyType
