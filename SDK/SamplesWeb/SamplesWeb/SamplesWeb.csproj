@@ -84,8 +84,10 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="readme.txt" />
+    <Content Include="Tasks\AddThemedDistrictsLayer.aspx" />
     <Content Include="Tasks\AddTracksLayer.aspx" />
     <Content Include="Tasks\FeatureInfo.aspx" />
+    <Content Include="Tasks\LayerInfo.aspx" />
     <Content Include="Tasks\ListSelection.aspx" />
     <Content Include="Tasks\SetSelectedFeatures.aspx" />
     <Content Include="Tasks\ToggleGroupVisibility.aspx" />
@@ -106,6 +108,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tasks\AddThemedDistrictsLayer.aspx.cs">
+      <DependentUpon>AddThemedDistrictsLayer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\AddThemedDistrictsLayer.aspx.designer.cs">
+      <DependentUpon>AddThemedDistrictsLayer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tasks\AddTracksLayer.aspx.cs">
       <DependentUpon>AddTracksLayer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -119,6 +128,13 @@
     </Compile>
     <Compile Include="Tasks\FeatureInfo.aspx.designer.cs">
       <DependentUpon>FeatureInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\LayerInfo.aspx.cs">
+      <DependentUpon>LayerInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\LayerInfo.aspx.designer.cs">
+      <DependentUpon>LayerInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tasks\ListSelection.aspx.cs">
       <DependentUpon>ListSelection.aspx</DependentUpon>

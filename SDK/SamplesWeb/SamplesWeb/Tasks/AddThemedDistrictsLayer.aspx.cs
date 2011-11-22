@@ -18,26 +18,24 @@
 // 
 #endregion
 using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
+using System.Collections.Generic;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using OSGeo.MapGuide.MaestroAPI.Mapping;
-using System.Text;
+using System.Configuration;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels;
 using System.Drawing;
+using System.Collections.Specialized;
+using OSGeo.MapGuide.MaestroAPI.Feature;
+using System.Text;
 
 namespace SamplesWeb.Tasks
 {
-    public partial class AddTracksLayer : System.Web.UI.Page
+    public partial class AddThemedDistrictsLayer : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -53,38 +51,29 @@ namespace SamplesWeb.Tasks
 
             RuntimeMap rtMap = mpSvc.OpenMap(rtMapId);
 
-            RuntimeMapLayer tracks = rtMap.Layers["Tracks"];
+            RuntimeMapLayer tracks = rtMap.Layers["ThemedDistricts"];
             if (tracks != null)
             {
-                lblMessage.Text = "Tracks layer already added";
+                lblMessage.Text = "Themed districts layer already added";
             }
             else
             {
-                string groupName = "Transportation";
-                RuntimeMapGroup group = rtMap.Groups[groupName];
-                if (group == null)
-                {
-                    group = new RuntimeMapGroup(rtMap, groupName);
-                    rtMap.Groups.Add(group);
-                }
-
-                //For some reason, the Sheboygan sample data does not have a Rail
-                //Layer Definition, so what better time to show how to create a
-                //layer dynamically :)
+                //Add our themed districts layer
 
                 //Our Feature Source
-                string fsId = "Library://Samples/Sheboygan/Data/Rail.FeatureSource";
+                string fsId = "Library://Samples/Sheboygan/Data/VotingDistricts.FeatureSource";
 
                 //The place we'll store the layer definition
-                string layerId = "Session:" + conn.SessionID + "//Rail.LayerDefinition";
+                string layerId = "Session:" + conn.SessionID + "//ThemedVotingDistricts.LayerDefinition";
 
-                CreateTracksLayer(conn, fsId, layerId);
+                CreateDistrictsLayer(conn, fsId, layerId);
 
                 ILayerDefinition layerDef = (ILayerDefinition)conn.ResourceService.GetResource(layerId);
                 RuntimeMapLayer layer = new RuntimeMapLayer(rtMap, layerDef);
 
-                layer.Group = groupName;
-                layer.LegendLabel = "Tracks";
+                layer.Name = "ThemedDistricts";
+                layer.Group = "";
+                layer.LegendLabel = "Themed Districts";
                 layer.ShowInLegend = true;
                 layer.ExpandInLegend = true;
                 layer.Selectable = true;
@@ -105,14 +94,14 @@ namespace SamplesWeb.Tasks
                     "load",
                     "<script type=\"text/javascript\"> window.onload = function() { parent.parent.Refresh(); } </script>");
 
-                lblMessage.Text = "Tracks layer added again";
+                lblMessage.Text = "Themed districts layer added";
             }
 
             rtMap = mpSvc.OpenMap(rtMapId);
             DumpMap(rtMap);
         }
 
-        private static void CreateTracksLayer(IServerConnection conn, string resId, string layerId)
+        private void CreateDistrictsLayer(IServerConnection conn, string resId, string layerId)
         {
             //We use the ObjectFactory class to create our layer
             ILayerDefinition ldf = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector);
@@ -122,19 +111,13 @@ namespace SamplesWeb.Tasks
             vldf.ResourceId = resId;
 
             //Set the feature class
-            vldf.FeatureName = "SHP_Schema:Rail";
+            vldf.FeatureName = "SDF_2_Schema:VotingDistricts";
 
             //Set the designated geometry
-            vldf.Geometry = "SHPGEOM";
+            vldf.Geometry = "Data";
 
             //Get the first vector scale range. This will have been created for us and is 0 to infinity
             IVectorScaleRange vsr = vldf.GetScaleRangeAt(0);
-
-            //Get the line style
-            ILineVectorStyle lstyle = vsr.LineStyle;
-
-            //Get the first rule (a created one will only have one)
-            ILineRule rule = lstyle.GetRuleAt(0);
 
             //What are we doing here? We're checking if this vector scale range is a
             //IVectorScaleRange2 instance. If it is, it means this layer definition
@@ -145,16 +128,43 @@ namespace SamplesWeb.Tasks
             if (vsr2 != null)
                 vsr2.CompositeStyle = null;
 
-            //There's only one stroke here, but iteration is the only
-            //way to go through
-            foreach (var stroke in rule.Strokes)
+            //Get the area style
+            IAreaVectorStyle astyle = vsr.AreaStyle;
+            //Remove the default rule
+            astyle.RemoveAllRules();
+
+            IFeatureService featSvc = conn.FeatureService;
+            //Generate a random color for each distinct feature id
+            //Perform a distinct value query
+            IReader valueReader = featSvc.AggregateQueryFeatureSource(resId, "SDF_2_Schema:VotingDistricts", null, new NameValueCollection()
             {
-                //Set color to red
-                stroke.Color = "ffff0000";
+                { "Value", "UNIQUE(Autogenerated_SDF_ID)" } //UNIQUE() is the aggregate function that collects all distinct values of FeatId
+            });
+
+            while (valueReader.ReadNext())
+            {
+                //The parent Layer Definition provides all the methods needed to create the necessary child elements
+                IAreaRule rule = ldf.CreateDefaultAreaRule();
+                //Set the filter for this rule
+                rule.Filter = "Autogenerated_SDF_ID = " + valueReader["Value"].ToString();
+                //IReader allows object access by name in case you don't care to determine the data type
+                rule.LegendLabel = valueReader["Value"].ToString();
+                //Assign a random color fill
+                rule.AreaSymbolization2D.Fill.ForegroundColor = Utility.SerializeHTMLColor(RandomColor(), true);
+                //Add this rule
+                astyle.AddRule(rule);
             }
+            valueReader.Close();
 
             //Now save it
             conn.ResourceService.SaveResourceAs(ldf, layerId);
+        }
+
+        Random rand = new Random();
+
+        Color RandomColor()
+        {
+            return Color.FromArgb(rand.Next(0, 256), rand.Next(0, 256), rand.Next(0, 256));
         }
 
         //This method dumps the runtime state of the map. I personally

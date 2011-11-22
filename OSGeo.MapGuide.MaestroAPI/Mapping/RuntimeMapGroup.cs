@@ -38,6 +38,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             _disableChangeTracking = true;
             this.Group = "";
+            this.LegendLabel = "";
             this.Type = kNormal;
             this.ObjectId = Guid.NewGuid().ToString();
         }

@@ -42,6 +42,7 @@
     <ul>
         <li><a href="#" onclick="Go('../SamplesWeb/Tasks/ToggleParcelsLayer.aspx')">Add/Remove Parcels Layer</a></li>
         <li><a href="#" onclick="Go('../SamplesWeb/Tasks/AddTracksLayer.aspx')">Add Tracks Layer</a></li>
+        <li><a href="#" onclick="Go('../SamplesWeb/Tasks/AddThemedDistrictsLayer.aspx')">Add Themed Districts Layer</a></li>
         <li><a href="#" onclick="Go('../SamplesWeb/Tasks/ToggleGroupVisibility.aspx','GROUPNAME','Base Map')">Toggle "Base Map" Group</a></li>
         <li><a href="#" onclick="Go('../SamplesWeb/Tasks/ToggleLayerVisibility.aspx','LAYERNAME','Parcels')">Toggle "Parcels" Layer</a></li>
     </ul>
@@ -49,6 +50,10 @@
     <ul>
         <li><a href="#" onclick="Go('../SamplesWeb/Tasks/ListSelection.aspx')">List Selected Features</a></li>
         <li><a href="#" onclick="Go('../SamplesWeb/Tasks/SetSelectedFeatures.aspx')">Set Selected Features</a></li>
+    </ul>
+    <p>Map/Layer Information:</p>
+    <ul>
+        <li><a href="#" onclick="Go('../SamplesWeb/Tasks/LayerInfo.aspx')">Layer Information</a></li>
     </ul>
 </body>
 </html>
