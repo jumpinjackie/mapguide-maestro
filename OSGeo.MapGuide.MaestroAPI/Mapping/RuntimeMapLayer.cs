@@ -58,11 +58,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <value>The type.</value>
         public Type Type { get; set; }
     }
+
     /// <summary>
     /// Represents a runtime map layer
     /// </summary>
     public class RuntimeMapLayer : MapObservable
     {
+        /// <summary>
+        /// Represents a scale range
+        /// </summary>
+        public class ScaleRange
+        {
+            internal ScaleRange(double minVal, double maxVal)
+            {
+                this.MinScale = minVal;
+                this.MaxScale = maxVal;
+            }
+
+            /// <summary>
+            /// Gets the min scale.
+            /// </summary>
+            public double MinScale { get; private set; }
+
+            /// <summary>
+            /// Gets the max scale.
+            /// </summary>
+            public double MaxScale { get; private set; }
+        }
+
         //From MgLayerType
         internal const int kBaseMap = 2;
         internal const int kDynamic = 1;
@@ -213,7 +236,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     _scaleRanges[maxPos] = temp;
                 }
             }
+            List<ScaleRange> ranges = new List<ScaleRange>();
+            for (int i = 0; i < scaleCount; i++)
+            {
+                ranges.Add(new ScaleRange(_scaleRanges[i * 2], _scaleRanges[i * 2 + 1]));
+            }
+            this.ScaleRanges = ranges.ToArray();
         }
+
+        /// <summary>
+        /// Gets the applicable scale ranges for this layer
+        /// </summary>
+        public ScaleRange[] ScaleRanges { get; private set; }
 
         private void InitIdentityProperties(IVectorLayerDefinition vl)
         {
