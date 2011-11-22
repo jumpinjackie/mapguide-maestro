@@ -1298,7 +1298,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             return new System.Drawing.Bitmap(this.OpenRead(param));
         }
 
-
         /// <summary>
         /// Upload a MapGuide Package file to the server
         /// </summary>

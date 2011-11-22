@@ -460,6 +460,46 @@ namespace MaestroAPITests
 
         #endregion
 
+        public virtual void TestLegendIconRendering()
+        {
+            var resSvc = _conn.ResourceService;
+            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            Assert.NotNull(mapSvc);
+
+            var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
+            Assert.NotNull(mdf);
+
+            //FIXME: We have a problem. Can we calculate this value without MgCoordinateSystem and just using the WKT?
+            //The answer to this will answer whether we can actually support the Rendering Service API over http 
+            //using pure client-side runtime maps 
+            //
+            //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
+            //for this particular map.
+            double metersPerUnit = 111319.490793274;
+            var cs = CoordinateSystemBase.Create(mdf.CoordinateSystem);
+            metersPerUnit = cs.MetersPerUnitX;
+            Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
+
+            var mid = "Session:" + _conn.SessionID + "//TestLegendIconRendering.Map";
+            var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
+            map.ViewScale = 12000;
+            map.DisplayWidth = 1024;
+            map.DisplayHeight = 1024;
+            map.DisplayDpi = 96;
+
+            //Doesn't exist yet because save isn't called
+            Assert.IsTrue(!resSvc.ResourceExists(mid));
+            map.Save();
+
+            int counter = 0;
+            foreach (var layer in map.Layers)
+            {
+                var icon = mapSvc.GetLegendImage(map.ViewScale, layer.LayerDefinitionID, -1, -1);
+                icon.Save("TestLegendIconRendering_" + counter + ".png");
+                counter++;
+            }
+        }
+
         public virtual void TestRender12k()
         { 
             //Render a map of sheboygan at 12k
@@ -989,6 +1029,12 @@ namespace MaestroAPITests
         }
 
         [Test]
+        public override void TestLegendIconRendering()
+        {
+            base.TestLegendIconRendering();
+        }
+
+        [Test]
         public override void TestMapManipulation()
         {
             base.TestMapManipulation();
@@ -1052,6 +1098,12 @@ namespace MaestroAPITests
         public override void TestRender12k()
         {
             base.TestRender12k();
+        }
+
+        [Test]
+        public override void TestLegendIconRendering()
+        {
+            base.TestLegendIconRendering();
         }
 
         [Test]

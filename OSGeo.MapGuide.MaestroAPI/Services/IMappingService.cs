@@ -228,5 +228,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="format"></param>
         /// <returns></returns>
         System.IO.Stream RenderMapLegend(RuntimeMap map, int width, int height, Color backgroundColor, string format);
+
+        /// <summary>
+        /// Renders a minature bitmap of the layers style
+        /// </summary>
+        /// <param name="scale">The scale for the bitmap to match</param>
+        /// <param name="layerdefinition">The layer definition resource id</param>
+        /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
+        /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
+        /// <returns>The minature bitmap</returns>
+        System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type);
     }
 }
