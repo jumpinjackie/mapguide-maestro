@@ -61,7 +61,7 @@ namespace Maestro.AddIn.Local.UI
                     var grp = groups.GetItem(i);
                     if (grp.LayerGroupType == MgLayerGroupType.BaseMap)
                     {
-                        MessageBox.Show("WARNING: The Map Preview does not yet support previews of maps with tiled layers. You will only see un-tiled ones");
+                        MessageBox.Show(Properties.Resources.TiledLayerSupportWarning);
                         break;
                     }
                 }

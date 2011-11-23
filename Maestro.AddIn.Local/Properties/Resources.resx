@@ -157,4 +157,7 @@
   <data name="arrow-045" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow-045.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="TiledLayerSupportWarning" xml:space="preserve">
+    <value>WARNING: The Map Preview does not yet support rendering of tiled layers. Such layers will be rendered as normal layers for the purpose of this preview</value>
+  </data>
 </root>

@@ -131,6 +131,8 @@
             // legend
             // 
             this.legend.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.legend.GroupContextMenu = null;
+            this.legend.LayerContextMenu = null;
             this.legend.Location = new System.Drawing.Point(0, 0);
             this.legend.Name = "legend";
             this.legend.Size = new System.Drawing.Size(224, 223);
@@ -146,12 +148,12 @@
             // 
             // viewer
             // 
-            this.viewer.ActiveTool = OSGeo.MapGuide.Viewer.MapActiveTool.None;
+            this.viewer.ConvertTiledGroupsToNonTiled = true;
             this.viewer.Cursor = System.Windows.Forms.Cursors.Default;
             this.viewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewer.FeatureTooltipsEnabled = false;
             this.viewer.Location = new System.Drawing.Point(0, 0);
             this.viewer.Name = "viewer";
+            this.viewer.SelectionColor = System.Drawing.Color.Blue;
             this.viewer.Size = new System.Drawing.Size(446, 440);
             this.viewer.TabIndex = 0;
             this.viewer.Text = "mgMapViewer1";
