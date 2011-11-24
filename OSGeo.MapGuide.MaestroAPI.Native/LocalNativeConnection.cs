@@ -1193,5 +1193,36 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             LogMethodCall("MgDrawingService::GetSectionResource", true, resourceID, resourceName);
             return res;
         }
+
+        public override string QueryMapFeatures(string runtimeMapName, string wkt, bool persist, QueryMapFeaturesLayerAttributes attributes, bool raw)
+        {
+            MgRenderingService rs = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            MgMap map = new MgMap();
+            string mapname = runtimeMapName.IndexOf(":") > 0 ? new ResourceIdentifier(runtimeMapName).Path : runtimeMapName;
+            map.Open(res, mapname);
+
+            MgWktReaderWriter r = new MgWktReaderWriter();
+            MgFeatureInformation info = rs.QueryFeatures(map, null, r.Read(wkt), (int)MgFeatureSpatialOperations.Intersects, "", -1, (int)attributes);
+
+            using (var ms = new MemoryStream())
+            {
+                using (var stream = Utility.MgStreamToNetStream(info, info.GetType().GetMethod("ToXml"), null))
+                {
+                    MaestroAPI.Utility.CopyStream(stream, ms);
+                    ms.Position = 0L;
+
+                    string xml = System.Text.Encoding.UTF8.GetString(ms.ToArray()).Trim();
+
+                    if (persist)
+                    {
+                        MgSelection sel = new MgSelection(map, xml);
+                        sel.Save(res, mapname);
+                    }
+
+                    return xml;
+                }
+            }
+        }
     }
 }
