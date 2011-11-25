@@ -82,6 +82,7 @@
     <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj">
       <Project>{5AD2CDBA-952E-4148-98A1-31D2E0D540D5}</Project>
       <Name>Maestro.Editors</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj">
       <Project>{CFD19053-2172-41D3-8460-0FD2123A1E88}</Project>
@@ -94,6 +95,7 @@
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj">
       <Project>{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}</Project>

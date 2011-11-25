@@ -285,6 +285,13 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         ITextSymbol CreateDefaultTextSymbol();
 
         /// <summary>
+        /// Creates a default advanced placement setting
+        /// </summary>
+        /// <param name="limit"></param>
+        /// <returns></returns>
+        IAdvancedPlacement CreateDefaultAdvancedPlacement(double scaleLimit);
+
+        /// <summary>
         /// Creates a fill
         /// </summary>
         /// <param name="pattern"></param>

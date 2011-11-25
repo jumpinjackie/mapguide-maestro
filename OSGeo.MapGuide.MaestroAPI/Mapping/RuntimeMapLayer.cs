@@ -92,7 +92,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         const double InfinityScale = double.MaxValue;
 
-        internal RuntimeMap Parent { get; private set; }
+        /// <summary>
+        /// Gets the <see cref="T:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap"/> that this layer belongs to
+        /// </summary>
+        public RuntimeMap Parent { get; private set; }
 
         internal RuntimeMapLayer(RuntimeMap parent) 
         {

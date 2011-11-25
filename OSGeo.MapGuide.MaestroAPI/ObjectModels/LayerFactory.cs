@@ -348,6 +348,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return lr;
         }
 
+        public IAdvancedPlacement CreateDefaultAdvancedPlacement(double scaleLimit)
+        {
+            return new TextSymbolTypeAdvancedPlacement() { ScaleLimit = scaleLimit };
+        }
+
         public ITextSymbol CreateDefaultTextSymbol()
         {
             return new TextSymbolType()
