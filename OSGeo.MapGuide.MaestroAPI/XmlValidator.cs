@@ -163,6 +163,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                 var xsd = GetXsd(xsdPath, res.ValidatingSchema);
                 if (xsd != null)
                     xsds.Add(res.ValidatingSchema, xsd);
+                else
+                    return; //One or more schemas is not found. Cannot proceed. Let MG figure it out
 
                 //HACK: Yes this is hard-coded because XmlSchema's dependency resolution sucks!
 

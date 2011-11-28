@@ -40,6 +40,13 @@ namespace OSGeo.MapGuide.ObjectModels
             this.ResourceVersion = new Version(version);
         }
 
+        internal UntypedResource(string xml, ResourceTypes resourceType, Version version)
+        {
+            this.XmlContent = xml;
+            this.ResourceType = resourceType;
+            this.ResourceVersion = version;
+        }
+
         /// <summary>
         /// Gets or sets the current connection.
         /// </summary>

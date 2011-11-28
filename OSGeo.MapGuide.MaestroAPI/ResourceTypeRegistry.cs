@@ -259,7 +259,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             var rd = res.GetResourceTypeDescriptor();
             if (!_serializers.ContainsKey(rd))
-                throw new SerializationException(Properties.Resources.ERR_NO_SERIALIZER + rd.ToString());
+            {
+                var utr = res as UntypedResource;
+                if (utr == null)
+                    throw new SerializationException(Properties.Resources.ERR_NO_SERIALIZER + rd.ToString());
+                return utr.SerializeToStream();
+            }
 
             return _serializers[rd].Serialize(res);
         }
@@ -293,7 +298,11 @@ namespace OSGeo.MapGuide.MaestroAPI
                 throw new SerializationException(Properties.Resources.ERR_NOT_RESOURCE_CONTENT_XML);
 
             if (!_serializers.ContainsKey(rd))
-                throw new SerializationException(Properties.Resources.ERR_NO_SERIALIZER + rd.ToString());
+            {
+                var rtype = (ResourceTypes)Enum.Parse(typeof(ResourceTypes), rd.ResourceType);
+                return new UntypedResource(xml, rtype, rd.Version);
+                //throw new SerializationException(Properties.Resources.ERR_NO_SERIALIZER + rd.ToString());
+            }
 
             return _serializers[rd].Deserialize(xml);
         }
