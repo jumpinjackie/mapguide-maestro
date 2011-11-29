@@ -58,7 +58,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             //Note: Must be saved!
             string s = feature.CurrentConnection.FeatureService.TestConnection(feature.ResourceID);
             if (s.Trim().ToUpper() != true.ToString().ToUpper())
-                return new ValidationIssue[] { new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_ConnectionTestFailed, Properties.Resources.FS_ConnectionTestFailed) };
+                return new ValidationIssue[] { new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_ConnectionTestFailed, string.Format(Properties.Resources.FS_ConnectionTestFailed, s)) };
 
             try
             {

@@ -35,10 +35,9 @@ namespace Maestro.Base.Commands
         {
             var wb = Workbench.Instance;
             var exp = wb.ActiveSiteExplorer;
-            var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
             var omgr = ServiceRegistry.GetService<OpenResourceManager>();
-            var conn = connMgr.GetConnection(exp.ConnectionName);
             var ed = wb.ActiveDocumentView as IEditorViewContent;
+            var conn = ed.EditorService.GetEditedResource().CurrentConnection;
             
             if (ed != null)
             {

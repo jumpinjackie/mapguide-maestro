@@ -110,13 +110,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 case DataPropertyType.Double:
                     return "xs:double";
                 case DataPropertyType.Int16:
-                    return "xs:int16";
+                    return "xs:short";
                 case DataPropertyType.Int32:
-                    return "fdo:int32";
+                    return "xs:int";
                 case DataPropertyType.Int64:
                     return "xs:int64";
                 case DataPropertyType.Single:
-                    return "xs:single";
+                    return "xs:float";
                 case DataPropertyType.String:
                     return "xs:string";
                 case DataPropertyType.Clob:

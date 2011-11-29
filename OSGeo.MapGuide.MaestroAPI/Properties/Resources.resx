@@ -186,7 +186,7 @@
     <value>Factory method already registered for version: </value>
   </data>
   <data name="FS_ConnectionTestFailed" xml:space="preserve">
-    <value>Connection test failed</value>
+    <value>Connection test failed: {0}</value>
     <comment>An error message that is displayed if a connection test on the feature source failed</comment>
   </data>
   <data name="FS_DefaultSpatialContextWarning" xml:space="preserve">

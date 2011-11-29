@@ -32,5 +32,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         event EventHandler ConnectionChanged;
 
         Control Content { get; }
+
+        NameValueCollection Get64BitConnectionProperties();
     }
 }

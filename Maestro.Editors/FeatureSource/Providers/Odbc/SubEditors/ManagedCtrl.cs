@@ -66,23 +66,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         {
             get
             {
-                var values = new NameValueCollection();
-
-                if (string.IsNullOrEmpty(resDataCtrl.MarkedFile))
-                    return values;
-                    //throw new InvalidOperationException(Properties.Resources.OdbcNoMarkedFile);
-
-                string drv = InferDriver(resDataCtrl.MarkedFile);
-                if (drv == null)
-                    return values;
-                    //throw new InvalidOperationException(string.Format(Properties.Resources.OdbcCannotInferDriver, resDataCtrl.MarkedFile));
-
-                var inner = new System.Data.Odbc.OdbcConnectionStringBuilder();
-                inner["Driver"] = drv;
-                inner["Dbq"] = "%MG_DATA_FILE_PATH%" + resDataCtrl.MarkedFile;
-                values["ConnectionString"] = inner.ToString();
-
-                return values;
+                return GetConnectionPropertiesInternal(false);
             }
             set
             {
@@ -100,9 +84,35 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             }
         }
 
+        public NameValueCollection Get64BitConnectionProperties()
+        {
+            return GetConnectionPropertiesInternal(true);
+        }
+
+        private NameValueCollection GetConnectionPropertiesInternal(bool use64Bit)
+        {
+            var values = new NameValueCollection();
+
+            if (string.IsNullOrEmpty(resDataCtrl.MarkedFile))
+                return values;
+            //throw new InvalidOperationException(Properties.Resources.OdbcNoMarkedFile);
+
+            string drv = InferDriver(resDataCtrl.MarkedFile, use64Bit);
+            if (drv == null)
+                return values;
+            //throw new InvalidOperationException(string.Format(Properties.Resources.OdbcCannotInferDriver, resDataCtrl.MarkedFile));
+
+            var inner = new System.Data.Odbc.OdbcConnectionStringBuilder();
+            inner["Driver"] = drv;
+            inner["Dbq"] = "%MG_DATA_FILE_PATH%" + resDataCtrl.MarkedFile;
+            values["ConnectionString"] = inner.ToString();
+
+            return values;
+        }
+
         public event EventHandler ConnectionChanged;
 
-        private static string InferDriver(string fileName)
+        private static string InferDriver(string fileName, bool use64Bit)
         {
             string ext = System.IO.Path.GetExtension(fileName).ToUpper();
             switch (ext)
@@ -110,9 +120,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
                 case ".ACCDB":
                     return Properties.Resources.OdbcDriverAccess64;
                 case ".MDB":
-                    return Properties.Resources.OdbcDriverAccess;
+                    return use64Bit ? Properties.Resources.OdbcDriverAccess64 : Properties.Resources.OdbcDriverAccess;
                 case ".XLS":
-                    return Properties.Resources.OdbcDriverExcel;
+                    return use64Bit ? Properties.Resources.OdbcDriverExcel64 : Properties.Resources.OdbcDriverExcel;
                 case ".XLSX":
                 case ".XLSM":
                 case ".XLSB":

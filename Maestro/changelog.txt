@@ -1,4 +1,7 @@
-﻿4.0 RC1
+﻿4.0
+---
+
+4.0 RC1
 -------
 
  - A warning will now be displayed when attempting to preview a map definition with tiled layers in Local Connection Mode (because the mg-desktop viewer has not implemented support for this yet)

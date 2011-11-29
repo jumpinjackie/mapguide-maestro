@@ -39,6 +39,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtConnectionStatus = new System.Windows.Forms.TextBox();
             this.pnlMethod = new System.Windows.Forms.Panel();
+            this.chkUse64Bit = new System.Windows.Forms.CheckBox();
             this.contentPanel.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -46,6 +47,7 @@
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.chkUse64Bit);
             this.contentPanel.Controls.Add(this.pnlMethod);
             this.contentPanel.Controls.Add(this.groupBox3);
             this.contentPanel.Controls.Add(this.groupBox2);
@@ -121,12 +123,18 @@
             resources.ApplyResources(this.pnlMethod, "pnlMethod");
             this.pnlMethod.Name = "pnlMethod";
             // 
+            // chkUse64Bit
+            // 
+            resources.ApplyResources(this.chkUse64Bit, "chkUse64Bit");
+            this.chkUse64Bit.Name = "chkUse64Bit";
+            this.chkUse64Bit.UseVisualStyleBackColor = true;
+            this.chkUse64Bit.CheckedChanged += new System.EventHandler(this.chkUse64Bit_CheckedChanged);
+            // 
             // OdbcProviderCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "ODBC Feature Source";
-            this.Name = "OdbcProviderCtrl";
             resources.ApplyResources(this, "$this");
+            this.Name = "OdbcProviderCtrl";
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -149,5 +157,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtConnStr;
         private System.Windows.Forms.Panel pnlMethod;
+        private System.Windows.Forms.CheckBox chkUse64Bit;
     }
 }

@@ -56,11 +56,14 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
         private IEditorService _service;
         private IFeatureSource _fs;
 
+        bool Use64BitDriver { get { return chkUse64Bit.Visible && chkUse64Bit.Checked; } }
+
         void InternalConnectionChanged(object sender, EventArgs e)
         {
             btnTest.Enabled = true;
+            var props = (Use64BitDriver) ? this.ChildEditor.Get64BitConnectionProperties() : this.ChildEditor.ConnectionProperties;
             if (this.ChildEditor != null)
-                txtConnStr.Text = Utility.ToConnectionString(this.ChildEditor.ConnectionProperties);
+                txtConnStr.Text = Utility.ToConnectionString(props);
             else
                 txtConnStr.Text = string.Empty;
 
@@ -191,7 +194,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
             txtConnectionStatus.Text = string.Empty;
             if (this.ChildEditor != null)
             {
-                var props = this.ChildEditor.ConnectionProperties;
+                var props = Use64BitDriver ? this.ChildEditor.Get64BitConnectionProperties() : this.ChildEditor.ConnectionProperties;
                 _fs.ApplyConnectionProperties(props);
                 //Flush back to session before testing
                 _service.SyncSessionCopy();
@@ -308,6 +311,15 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                 _service.SyncSessionCopy();
                 BuildDefaultDocument();
                 MessageBox.Show(Properties.Resources.ConfigurationDocumentReset);
+            }
+        }
+
+        private void chkUse64Bit_CheckedChanged(object sender, EventArgs e)
+        {
+            OdbcConnectionMethod method = (OdbcConnectionMethod)cmbMethod.SelectedItem;
+            if (method == OdbcConnectionMethod.ManagedFile || method == OdbcConnectionMethod.Unmanaged)
+            {
+                InternalConnectionChanged(this, EventArgs.Empty);
             }
         }
     }

@@ -81,5 +81,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             if (lstDSN.SelectedItem != null)
                 OnConnectionChanged();
         }
+
+        public NameValueCollection Get64BitConnectionProperties()
+        {
+            return this.ConnectionProperties;
+        }
     }
 }

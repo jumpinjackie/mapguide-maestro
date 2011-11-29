@@ -68,5 +68,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         {
             get { return this; }
         }
+
+        public NameValueCollection Get64BitConnectionProperties()
+        {
+            return this.ConnectionProperties;
+        }
     }
 }

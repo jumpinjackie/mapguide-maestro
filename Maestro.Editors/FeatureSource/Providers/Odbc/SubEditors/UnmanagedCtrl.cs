@@ -58,7 +58,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
                 handler(this, EventArgs.Empty);
         }
 
-        private static string InferDriver(string fileName)
+        private static string InferDriver(string fileName, bool use64Bit)
         {
             string ext = System.IO.Path.GetExtension(fileName).ToUpper();
             switch (ext)
@@ -66,15 +66,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
                 case ".ACCDB":
                     return Properties.Resources.OdbcDriverAccess64;
                 case ".MDB":
-                    if (MessageBox.Show(Properties.Resources.PromptUseOffice2010Drivers, Properties.Resources.TitleQuestion, MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        return Properties.Resources.OdbcDriverAccess64;
-                    else
-                        return Properties.Resources.OdbcDriverAccess;
+                    return use64Bit ? Properties.Resources.OdbcDriverAccess64 : Properties.Resources.OdbcDriverAccess;
                 case ".XLS":
-                    if (MessageBox.Show(Properties.Resources.PromptUseOffice2010Drivers, Properties.Resources.TitleQuestion, MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        return Properties.Resources.OdbcDriverExcel64;
-                    else
-                        return Properties.Resources.OdbcDriverExcel;
+                    return use64Bit ? Properties.Resources.OdbcDriverExcel64 : Properties.Resources.OdbcDriverExcel;
                 case ".XLSX":
                 case ".XLSM":
                 case ".XLSB":
@@ -87,23 +81,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         {
             get
             {
-                var values = new NameValueCollection();
-                string path = txtFilePath.Text;
-                if (string.IsNullOrEmpty(path))
-                    return values;
-                    //throw new InvalidOperationException(Properties.Resources.OdbcNoMarkedFile);
-
-                string drv = InferDriver(path);
-                if (drv == null)
-                    return values;
-                    //throw new InvalidOperationException(string.Format(Properties.Resources.OdbcCannotInferDriver, path));
-
-                var inner = new System.Data.Odbc.OdbcConnectionStringBuilder();
-                inner["Driver"] = drv;
-                inner["Dbq"] = path;
-                values["ConnectionString"] = inner.ToString();
-
-                return values;
+                return GetConnectionPropertiesInternal(false);
             }
             set
             {
@@ -113,6 +91,32 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
                 if (builder["Dbq"] != null)
                     txtFilePath.Text = builder["Dbq"].ToString();
             }
+        }
+
+        private NameValueCollection GetConnectionPropertiesInternal(bool use64Bit)
+        {
+            var values = new NameValueCollection();
+            string path = txtFilePath.Text;
+            if (string.IsNullOrEmpty(path))
+                return values;
+            //throw new InvalidOperationException(Properties.Resources.OdbcNoMarkedFile);
+
+            string drv = InferDriver(path, use64Bit);
+            if (drv == null)
+                return values;
+            //throw new InvalidOperationException(string.Format(Properties.Resources.OdbcCannotInferDriver, path));
+
+            var inner = new System.Data.Odbc.OdbcConnectionStringBuilder();
+            inner["Driver"] = drv;
+            inner["Dbq"] = path;
+            values["ConnectionString"] = inner.ToString();
+
+            return values;
+        }
+
+        public NameValueCollection Get64BitConnectionProperties()
+        {
+            return GetConnectionPropertiesInternal(true);
         }
 
         public event EventHandler ConnectionChanged;
