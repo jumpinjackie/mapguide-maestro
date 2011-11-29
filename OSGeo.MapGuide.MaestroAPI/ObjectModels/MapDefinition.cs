@@ -115,6 +115,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
 #if MDF_230
             this.versionField = "2.3.0";
 #endif
+            this.SetExtentsFromFirstAddedLayer = false;
         }
 
 #if MDF_230
@@ -122,6 +123,9 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
 #else
         private static readonly Version RES_VERSION = new Version(1, 0, 0);
 #endif
+
+        [XmlIgnore]
+        public bool SetExtentsFromFirstAddedLayer { get; set; }
 
         [XmlIgnore]
         public OSGeo.MapGuide.MaestroAPI.IServerConnection CurrentConnection
@@ -283,6 +287,10 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
 
         private void OnFirstLayerAdded(MapLayerType layer)
         {
+            //Do nothing if this is false
+            if (!this.SetExtentsFromFirstAddedLayer)
+                return;
+
             string csWkt;
             var ldf = (ILayerDefinition)this.CurrentConnection.ResourceService.GetResource(layer.ResourceId);
             var env = ldf.GetSpatialExtent(true, out csWkt);

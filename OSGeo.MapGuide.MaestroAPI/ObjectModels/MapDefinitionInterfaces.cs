@@ -60,6 +60,11 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
     public interface IMapDefinition : IResource, IMapDefinitionBase, INotifyPropertyChanged
     {
         /// <summary>
+        /// If true, the first layer added to this map definition will automatically set the extents
+        /// based on that layer's added extents. Default is false
+        /// </summary>
+        bool SetExtentsFromFirstAddedLayer { get; set; }
+        /// <summary>
         /// Gets or sets the name.
         /// </summary>
         /// <value>The name.</value>
