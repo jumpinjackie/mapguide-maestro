@@ -1140,7 +1140,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
-        public string GetLegendImage(double scale, string layerdef, int themeIndex, int type)
+        public string GetLegendImage(double scale, string layerdef, int themeIndex, int type, int width, int height, string format)
         {
             NameValueCollection param = new NameValueCollection();
             param.Add("OPERATION", "GETLEGENDIMAGE");
@@ -1149,6 +1149,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("SCALE", scale.ToString(System.Globalization.CultureInfo.InvariantCulture));
             param.Add("LAYERDEFINITION", layerdef);
             param.Add("THEMECATEGORY", themeIndex.ToString());
+            param.Add("WIDTH", width.ToString());
+            param.Add("HEIGHT", height.ToString());
+            param.Add("FORMAT", format);
             param.Add("TYPE", type.ToString());
             param.Add("CLIENTAGENT", m_userAgent);
 

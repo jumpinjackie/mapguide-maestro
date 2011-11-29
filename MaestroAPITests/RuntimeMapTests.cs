@@ -495,7 +495,28 @@ namespace MaestroAPITests
             foreach (var layer in map.Layers)
             {
                 var icon = mapSvc.GetLegendImage(map.ViewScale, layer.LayerDefinitionID, -1, -1);
-                icon.Save("TestLegendIconRendering_" + counter + ".png");
+                icon.Save("TestLegendIconRendering_" + counter + "_16x16.png");
+                counter++;
+            }
+
+            foreach (var layer in map.Layers)
+            {
+                var icon = mapSvc.GetLegendImage(map.ViewScale, layer.LayerDefinitionID, -1, -1, 16, 16, "JPG");
+                icon.Save("TestLegendIconRendering_" + counter + "_16x16.jpg");
+                counter++;
+            }
+
+            foreach (var layer in map.Layers)
+            {
+                var icon = mapSvc.GetLegendImage(map.ViewScale, layer.LayerDefinitionID, -1, -1, 16, 16, "GIF");
+                icon.Save("TestLegendIconRendering_" + counter + "_16x16.gif");
+                counter++;
+            }
+
+            foreach (var layer in map.Layers)
+            {
+                var icon = mapSvc.GetLegendImage(map.ViewScale, layer.LayerDefinitionID, -1, -1, 160, 50, "PNG");
+                icon.Save("TestLegendIconRendering_" + counter + "_160x50.png");
                 counter++;
             }
         }

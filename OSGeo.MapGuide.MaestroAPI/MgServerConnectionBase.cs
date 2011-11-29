@@ -176,9 +176,23 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
         /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
         /// <returns>The minature bitmap</returns>
-        abstract public System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type);
+        public virtual System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type)
+        {
+            return GetLegendImage(scale, layerdefinition, themeIndex, type, 16, 16, "PNG");
+        }
 
-
+        /// <summary>
+        /// Gets the legend image.
+        /// </summary>
+        /// <param name="scale">The scale.</param>
+        /// <param name="layerdefinition">The layerdefinition.</param>
+        /// <param name="themeIndex">Index of the theme.</param>
+        /// <param name="type">The type.</param>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <param name="format">The format.</param>
+        /// <returns></returns>
+        abstract public System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format);
 
         /// <summary>
         /// Renders the runtime map.

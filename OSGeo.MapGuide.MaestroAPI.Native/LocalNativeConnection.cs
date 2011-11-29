@@ -871,13 +871,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         /// <param name="layerdefinition">The layer the image should represent</param>
         /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
         /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
-        /// <returns>The minature bitmap</returns>
-        public override System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type)
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <param name="format">The format.</param>
+        /// <returns>
+        /// The minature bitmap
+        /// </returns>
+        public override System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
         {
             MgMappingService ms = this.Connection.CreateService(MgServiceType.MappingService) as MgMappingService;
             MgResourceIdentifier ldef = new MgResourceIdentifier(layerdefinition);
 
-            var bmp = new System.Drawing.Bitmap(Utility.MgStreamToNetStream(ms, ms.GetType().GetMethod("GenerateLegendImage"), new object[] { ldef, scale, 16, 16, "PNG", type, themeIndex }));
+            var bmp = new System.Drawing.Bitmap(Utility.MgStreamToNetStream(ms, ms.GetType().GetMethod("GenerateLegendImage"), new object[] { ldef, scale, width, height, format, type, themeIndex }));
             LogMethodCall("MgMappingService::GetLegendImage", true, scale.ToString(), layerdefinition, themeIndex.ToString(), type.ToString());
             return bmp;
         }
