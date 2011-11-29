@@ -582,7 +582,7 @@
             <MenuItem type="Separator" />
             <MenuItem id="Properties"
                       label="${res:SiteExplorer_SelectedItem_Properties}"
-                      class="Maestro.Base.Commands.SiteExplorer.EditResourceHeaderCommand" />
+                      class="Maestro.Base.Commands.SiteExplorer.ResourcePropertiesCommand" />
         </Condition>
     </Path>
 
