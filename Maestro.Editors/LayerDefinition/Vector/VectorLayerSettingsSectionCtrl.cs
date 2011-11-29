@@ -109,11 +109,42 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
         private void txtFeatureSource_TextChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtFeatureSource.Text))
+                return;
+
             _cachedDesc = _edsvc.FeatureService.DescribeFeatureSource(txtFeatureSource.Text);
 
             if (string.IsNullOrEmpty(txtFeatureClass.Text))
             {
-                SetFeatureClass(_cachedDesc.Schemas[0].Classes[0]);
+                //This feature source must have at least one class definition with a geometry property
+                ClassDefinition clsDef = null;
+                foreach (FeatureSchema fs in _cachedDesc.Schemas)
+                {
+                    if (clsDef != null)
+                        break;
+
+                    foreach (ClassDefinition cls in fs.Classes)
+                    {
+                        if (clsDef != null)
+                            break;
+
+                        foreach (PropertyDefinition prop in cls.Properties)
+                        {
+                            if (prop.Type == PropertyDefinitionType.Geometry)
+                            {
+                                clsDef = cls;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (clsDef == null)
+                {
+                    MessageBox.Show(string.Format(Properties.Resources.InvalidFeatureSourceNoClasses, txtFeatureSource.Text));
+                    txtFeatureSource.Text = string.Empty;
+                    return;
+                }
+                SetFeatureClass(clsDef);
             }
         }
 
