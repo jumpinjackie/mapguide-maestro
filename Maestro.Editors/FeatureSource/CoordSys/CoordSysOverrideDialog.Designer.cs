@@ -66,6 +66,7 @@
             this.cmbName.FormattingEnabled = true;
             resources.ApplyResources(this.cmbName, "cmbName");
             this.cmbName.Name = "cmbName";
+            this.cmbName.TextChanged += new System.EventHandler(this.cmbName_TextChanged);
             // 
             // btnOK
             // 

@@ -80,7 +80,17 @@ namespace Maestro.Editors.FeatureSource.CoordSys
 
         private void txtCoordinateSystem_TextChanged(object sender, EventArgs e)
         {
+            CheckSubmitStatus();
+        }
+
+        private void CheckSubmitStatus()
+        {
             btnOK.Enabled = !string.IsNullOrEmpty(txtCoordinateSystem.Text) && !string.IsNullOrEmpty(cmbName.Text);
+        }
+
+        private void cmbName_TextChanged(object sender, EventArgs e)
+        {
+            CheckSubmitStatus();
         }
     }
 }
