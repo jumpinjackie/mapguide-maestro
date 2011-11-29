@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="0395ae33-fb9f-46cf-bf1e-528a4ec3d948" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+    <introduction>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <!-- <autoOutline /> -->
+      <para>Getting started with the Maestro API</para>
+    </introduction>
+    <!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyperlink. -->
+    <section address="GettingStartedRequiredKnowledge">
+      <title>Required Knowledge</title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para>
+        Before you get started with the Maestro API, it helps to have an understanding
+        of the following:
+        </para>
+		<list class="bullet">
+		  <listItem><para>Programming in C# and/or the .net Framework. Most of the code examples illustrated here are in C#</para></listItem>
+		  <listItem><para>Understanding the basics of MapGuide development and/or the MapGuide API. The Maestro API supplements MapGuide as an additional development option and carries many of the same concepts used in the official MapGuide API</para></listItem>
+		</list>
+      </content>
+    </section>
+    <section address="WhyMaestroApi">
+      <title>Why use the Maestro API?</title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para>
+        As mentioned above, the Maestro API is an alternative option for MapGuide application development. 
+        Depending on your needs, the Maestro API may either complement the official MapGuide API or be a wholesale
+        replacement. The Maestro API may be of interest to you if:
+        </para>
+		<list class="bullet">
+		  <listItem><para>You prefer to work with MapGuide resources as strongly-typed objects instead of raw XML content</para></listItem>
+		  <listItem><para>You require a strongly-typed service client interface to the http mapagent</para></listItem>
+		  <listItem><para>You would like to build MapGuide applications/libraries that can work on <legacyBold>both</legacyBold> client and web tiers</para></listItem>
+		  <listItem><para>You would like to build MapGuide applications/libraries that can easily integrate with the respective .net web (asp.net) and desktop (WinForms/WPF) platforms</para></listItem>
+		</list>
+      </content>
+    </section>
+    <section address="SupportedVersions">
+      <title>Supported versions of .net Framework / Visual Studio</title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para>
+        To use the Maestro API in your project, your application must target the .net Framework 2.0 or higher. You can use
+        any version (and any edition) of Visual Studio that supports targeting the .net Framework 2.0 or higher.
+        </para>
+      </content>
+    </section>
+    <section address="VSSetup">
+      <title>Visual Studio project setup</title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para>
+        To use the Maestro API in your project, simply reference the OSGeo.MapGuide.MaestroAPI assembly from the SDK.
+        </para>
+      </content>
+    </section>
+	<section address="ExtendedModelSetup">
+      <title>Setting up extended model support</title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para>
+        The Maestro API understands and supports all known schema versions of every resource. If your application only references
+        the OSGeo.MapGuide.MaestroAPI assembly, it will only recognise v1.0.0 resources. Newer versions will return an <codeEntityReference qualifyHint="false">T:OSGeo.MapGuide.ObjectModels.UntypedResource</codeEntityReference> if you
+        are to retrieve a resource via <codeEntityReference qualifyHint="false" autoUpgrade="true">M:OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResource(System.String)</codeEntityReference>.
+        For your application to recognise all supported resource schema versions, and to have the above APIs return strongly typed objects,
+        you will need to also reference the OSGeo.MapGuide.ExtendedObjectModels assembly.
+        
+        Then in your application's entry point, add the following line of code:
+        </para>
+		<code language="cs">
+		/// Code 
+		ModelSetup.Initialize();
+		</code>
+		<para>
+		This line of code will automatically register the additional schema versions with the Maestro API. For an ASP.net application,
+		you can use the Application_Start() entry point in Global.asax to add this line of code.
+		</para>
+      </content>
+    </section>
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

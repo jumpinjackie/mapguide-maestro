@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="ce7d4037-69e0-434d-9a0a-0ff8e01f9057" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+    <introduction>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <!-- <autoOutline /> -->
+      <para>This page details the requirements to consider when deploying your MaestroAPI application for the web</para>
+    </introduction>
+    <!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyperlink. -->
+    <section address="RequiredAspNetLibs">
+      <title>Binaries that you must include</title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para>
+		When deploying your Maestro web application, you need to ensure that you 
+		have the following binaries included in your application's bin directory:
+		</para>
+		<list class="bullet">
+		  <listItem><para>OSGeo.MapGuide.MaestroAPI.dll</para></listItem>
+		  <listItem><para>ConnectionProviders.xml</para></listItem>
+		  <listItem><para>Ciloci.Flee.dll</para></listItem>
+		  <listItem><para>NetTopologySuite.Merged.dll</para></listItem>
+		  <listItem><para>OSGeo.MapGuide.MaestroAPI.Http.dll</para></listItem>
+		</list>
+		<para>
+		In addition, if you have referenced the OSGeo.MapGuide.ExtenedObjectModels assembly
+		and need to support all known resource versions (greater than v1.0.0), then your application needs to
+		include the following additional binaries in your application's bin directory:
+		</para>
+		<list class="bullet">
+		  <listItem><para>OSGeo.MapGuide.ExtendedObjectModels.dll</para></listItem>
+		  <listItem><para>OSGeo.MapGuide.ObjectModels.*.dll</para></listItem>
+		</list>
+      </content>
+	</section>
+	<section address="OptionalAspNetLibs">
+      <title>Binaries that you must include for optional components</title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para>
+		If your application uses any optional components, then their dependencies will also
+		have to be included in your application's bin directory
+		</para>
+		<para>Editor Library</para>
+		<list class="bullet">
+		  <listItem><para>Aga.Controls.dll</para></listItem>
+		  <listItem><para>ICSharpCode.SharpZipLib.dll</para></listItem>
+		  <listItem><para>Maestro.Packaging.dll</para></listItem>
+		  <listItem><para>Maestro.Shared.UI.dll</para></listItem>
+		</list>
+		<para>Packaging Library</para>
+		<list class="bullet">
+		  <listItem><para>ICSharpCode.SharpZipLib.dll</para></listItem>
+		  <listItem><para>Maestro.Shared.UI.dll</para></listItem>
+		</list>
+		<para>Login Library</para>
+		<list class="bullet">
+		  <listItem><para>Maestro.Shared.UI.dll</para></listItem>
+		</list>
+		<para>Shared UI Library</para>
+		<list class="bullet">
+		  <listItem><para>no additional depedencies</para></listItem>
+		</list>
+      </content>
+    </section>
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>
