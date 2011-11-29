@@ -43,6 +43,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.ObjectId = Guid.NewGuid().ToString();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RuntimeMapGroup"/> class.
+        /// </summary>
+        /// <param name="map">The map.</param>
+        /// <param name="name">The name.</param>
         public RuntimeMapGroup(RuntimeMap map, string name) 
             : this()
         {
@@ -52,7 +57,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             _disableChangeTracking = false;
         }
 
-        internal RuntimeMapGroup(RuntimeMap map, IMapLayerGroup group)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RuntimeMapGroup"/> class.
+        /// </summary>
+        /// <param name="map">The map.</param>
+        /// <param name="group">The group.</param>
+        public RuntimeMapGroup(RuntimeMap map, IMapLayerGroup group)
             : this(map, group.Name)
         {
             _disableChangeTracking = true;

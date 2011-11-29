@@ -33,7 +33,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// Extension method clas
     /// </summary>
-    public static class BlockSymbolExtensions
+    public static class ExtensionMethods
     {
         /// <summary>
         /// Sets the color of the block.
@@ -56,13 +56,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             Check.NotNull(sym, "sym");
             sym.LayerColor = Utility.SerializeHTMLColor(c, true);
         }
-    }
 
-    /// <summary>
-    /// Extension method class
-    /// </summary>
-    public static class FontSymbolExtensions
-    {
         /// <summary>
         /// Applies properties (name, italic, bold, underline) from the characteristics of the specified font
         /// </summary>
@@ -87,13 +81,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             Check.NotNull(sym, "sym");
             sym.ForegroundColor = Utility.SerializeHTMLColor(c, true);
         }
-    }
 
-    /// <summary>
-    /// Extension method class
-    /// </summary>
-    public static class VectorLayerExtensions
-    {
         /// <summary>
         /// Determines whether the vector layer has scale ranges
         /// </summary>
@@ -118,13 +106,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             var list = new List<IVectorScaleRange>(vl.VectorScaleRange);
             return list.Count;
         }
-    }
 
-    /// <summary>
-    /// Extension method class
-    /// </summary>
-    public static class VectorScaleRangeExtensions
-    {
         /// <summary>
         /// Purge the specified scale range of the following styles
         /// </summary>
@@ -163,13 +145,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         {
             range.RemoveStyles(geomTypes);
         }
-    }
 
-    /// <summary>
-    /// Extension method class
-    /// </summary>
-    public static class LayerDefinitionExtensions
-    {
         /// <summary>
         /// Gets the coordinate system WKT.
         /// </summary>
@@ -320,13 +296,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
                     }
             }
         }
-    }
 
-    /// <summary>
-    /// Extension method class
-    /// </summary>
-    public static class LayerExtensionMethods
-    {
         /// <summary>
         /// Gets the referenced schema of this vector layer
         /// </summary>
@@ -339,13 +309,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             else
                 return vl.FeatureName.Split(':')[0];
         }
-    }
 
-    /// <summary>
-    /// Extension method class
-    /// </summary>
-    public static class W2DSymbolTypeExtensions
-    {
         /// <summary>
         /// Sets the color of the fill.
         /// </summary>
@@ -378,13 +342,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             Check.NotNull(sym, "sym");
             sym.TextColor = Utility.SerializeHTMLColor(c, true);
         }
-    }
 
-    /// <summary>
-    /// Extension method class
-    /// </summary>
-    public static class TextSymbolExtensions
-    {
         /// <summary>
         /// Sets the color of the foreground.
         /// </summary>
@@ -420,13 +378,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             sym.Bold = f.Bold.ToString();
             sym.Underlined = f.Underline.ToString();
         }
-    }
 
-    /// <summary>
-    /// Extension method class
-    /// </summary>
-    public static class FillExtensions
-    {
         /// <summary>
         /// Sets the color of the background.
         /// </summary>
@@ -448,13 +400,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             Check.NotNull(fil, "fil");
             fil.ForegroundColor = Utility.SerializeHTMLColor(c, true);
         }
-    }
 
-    /// <summary>
-    /// Extension method class
-    /// </summary>
-    public static class GridColorStyleExtensions
-    {
         /// <summary>
         /// Sets the color of the transparency.
         /// </summary>
@@ -465,13 +411,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             Check.NotNull(style, "style");
             style.TransparencyColor = Utility.SerializeHTMLColor(c, true);
         }
-    }
 
-    /// <summary>
-    /// Extension method class
-    /// </summary>
-    public static class GridSurfaceStyleExtensions
-    {
         /// <summary>
         /// Sets the default color.
         /// </summary>

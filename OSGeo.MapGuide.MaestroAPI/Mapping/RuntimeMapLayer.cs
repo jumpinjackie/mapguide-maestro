@@ -107,6 +107,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.Group = string.Empty;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RuntimeMapLayer"/> class.
+        /// </summary>
+        /// <param name="parent">The parent.</param>
+        /// <param name="ldf">The LDF.</param>
         public RuntimeMapLayer(RuntimeMap parent, ILayerDefinition ldf)
             : this(parent)
         {
@@ -136,6 +141,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.ShowInLegend = true;
             this.Visible = true;
 
+            _disableChangeTracking = false;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RuntimeMapLayer"/> class.
+        /// </summary>
+        /// <param name="parent">The parent.</param>
+        /// <param name="source">The source.</param>
+        public RuntimeMapLayer(RuntimeMap parent, IMapLayer source)
+            : this(parent, source, (ILayerDefinition)parent.CurrentConnection.ResourceService.GetResource(source.ResourceId))
+        {
             _disableChangeTracking = false;
         }
 
