@@ -27,6 +27,9 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using Maestro.Editors.LayerDefinition.Vector.Scales;
+using System.Diagnostics;
 
 namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {
@@ -34,7 +37,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 	/// Summary description for AreaFeatureStyleEditor.
 	/// </summary>
     [ToolboxItem(false)]
-	internal class AreaFeatureStyleEditor : System.Windows.Forms.UserControl
+	internal class AreaFeatureStyleEditor : System.Windows.Forms.UserControl, IFeatureStyleEditor
 	{
 		private System.Windows.Forms.ComboBox sizeContextCombo;
 		private System.Windows.Forms.Label label4;
@@ -71,18 +74,23 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         private string m_featureSource;
         private string m_providername;
         private ILayerElementFactory _factory;
+        private IVectorScaleRange _parentRange;
+        private int _themeCategory;
 
-        public AreaFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource)
+        public AreaFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource, IVectorScaleRange parentRange, int themeCategory, IAreaSymbolizationFill originalItem)
             : this()
         {
             m_editor = editor;
             m_schema = schema;
+            _parentRange = parentRange;
+            _themeCategory = themeCategory;
 
             _factory = (ILayerElementFactory)editor.GetEditedResource();
             var fs = (IFeatureSource)m_editor.ResourceService.GetResource(featureSource);
 
             m_providername = fs.Provider;
             m_featureSource = featureSource;
+            m_item = originalItem;
         }
 
         private AreaFeatureStyleEditor()
@@ -353,19 +361,46 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 			}
 		}
 
+        private IMappingService _mapSvc;
+
+        IMappingService GetMappingService()
+        {
+            if (null == _mapSvc)
+            {
+                var conn = m_editor.GetEditedResource().CurrentConnection;
+                if (Array.IndexOf<int>(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0)
+                    _mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+            }
+            return _mapSvc;
+        }
+
+        int GetGeomType()
+        {
+            return 3;
+        }
+
 		private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
 		{
-			FeaturePreviewRender.RenderPreviewArea(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 4, previewPicture.Height - 4), m_item);
-		}
+            IMappingService mapSvc = GetMappingService();
+            if (mapSvc != null && _parentRange != null && !StylePreview.UseClientSideStylePreview)
+            {
+                double scale = 10000.0;
+                if (_parentRange.MaxScale.HasValue)
+                    scale = _parentRange.MaxScale.Value - 1.0;
+                else if (_parentRange.MinScale.HasValue)
+                    scale = _parentRange.MinScale.Value + 1.0;
 
-		public IAreaSymbolizationFill Item 
-		{
-			get { return m_item; }
-			set
-			{
-				m_item = value;
-				UpdateDisplay();
-			}
+                //Ensure the layer def we're rendering from is latest
+                m_editor.SyncSessionCopy();
+                using (var img = mapSvc.GetLegendImage(scale, m_editor.GetEditedResource().ResourceID, _themeCategory, GetGeomType(), previewPicture.Width, previewPicture.Height, "PNG"))
+                {
+                    e.Graphics.DrawImage(img, new Point(0, 0));
+                }
+            }
+            else
+            {
+                FeaturePreviewRender.RenderPreviewArea(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 4, previewPicture.Height - 4), m_item);
+            }
 		}
 
 		private void fillCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -554,5 +589,54 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (expr != null)
                 fillStyleEditor.foregroundColor.ColorExpression = expr;
         }
+
+        public void RejectChanges()
+        {
+            if (m_snapshot != null)
+            {
+                m_item.Fill = m_snapshot.Fill;
+                m_item.Stroke = m_snapshot.Stroke;
+                Trace.TraceInformation("AreaFeatureStyleEditor: Changes rejected");
+            }
+        }
+
+        private IAreaSymbolizationFill m_snapshot;
+
+        public void CreateSnapshot()
+        {
+            if (m_item != null)
+            {
+                m_snapshot = m_item.Clone();
+                Trace.TraceInformation("AreaFeatureStyleEditor: Style snapshot created");
+            }
+            UpdateDisplay();
+        }
+
+        public Control Content
+        {
+            get { return this; }
+        }
+
+        public void Detach()
+        {
+            this.IsAttached = false;
+            var handler = this.StyleDetached;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        public void Attach()
+        {
+            this.IsAttached = true;
+            var handler = this.StyleAttached;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        public bool IsAttached { get; private set;  }
+
+        public event EventHandler StyleDetached;
+
+        public event EventHandler StyleAttached;
     }
 }

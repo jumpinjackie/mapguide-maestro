@@ -37,6 +37,9 @@ namespace Maestro.Base.UI.Preferences
 
             var path = Props.Get(ConfigProperties.XsdSchemaPath, ConfigProperties.DefaultXsdSchemaPath);
             txtXsdPath.Text = path;
+
+            var clientStyle = Props.Get(ConfigProperties.UseClientSideStylePreview, ConfigProperties.DefaultUseClientSideStylePreview);
+            chkUseClientSidePreviews.Checked = clientStyle;
         }
 
         public string Title
@@ -54,6 +57,8 @@ namespace Maestro.Base.UI.Preferences
             bool restart = false;
 
             Apply(ConfigProperties.ValidateOnSave, chkValidateOnSave.Checked);
+            Apply(ConfigProperties.UseClientSideStylePreview, chkUseClientSidePreviews.Checked);
+            Maestro.Editors.LayerDefinition.Vector.Scales.StylePreview.UseClientSideStylePreview = chkUseClientSidePreviews.Checked;
 
             //These changes require restart
             if (Apply(ConfigProperties.XsdSchemaPath, txtXsdPath.Text))

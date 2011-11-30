@@ -40,6 +40,7 @@ namespace Maestro.Base.UI.Preferences
         public const string ValidateOnSave = "General.ValidateResourceOnSave";
         public const string XsdSchemaPath = "Editor.XsdSchemaPath";
         public const string ShowTipOfTheDay = "General.ShowTipOfTheDay";
+        public const string UseClientSideStylePreview = "Editor.UseClientSideStylePreview";
 
         internal static void ApplyDefaults()
         {
@@ -51,6 +52,7 @@ namespace Maestro.Base.UI.Preferences
         {
             Props.Set(ConfigProperties.ValidateOnSave, DefaultValidateOnSave);
             Props.Set(ConfigProperties.XsdSchemaPath, DefaultXsdSchemaPath);
+            Props.Set(ConfigProperties.UseClientSideStylePreview, DefaultUseClientSideStylePreview);
         }
 
         internal static void ApplyGeneralDefaults()
@@ -87,5 +89,7 @@ namespace Maestro.Base.UI.Preferences
         public static string DefaultPreviewViewerType { get { return "AJAX"; } }
 
         public static string DefaultUserTemplatesDirectory { get { return Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates"); } }
+
+        public static bool DefaultUseClientSideStylePreview { get { return true; } }
     }
 }

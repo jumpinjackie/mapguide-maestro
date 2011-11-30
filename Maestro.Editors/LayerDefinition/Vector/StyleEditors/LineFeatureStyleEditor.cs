@@ -29,6 +29,9 @@ using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using Maestro.Editors.Common;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using Maestro.Editors.LayerDefinition.Vector.Scales;
+using System.Diagnostics;
 
 namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {
@@ -36,7 +39,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 	/// Summary description for LineFeatureStyleEditor.
 	/// </summary>
     [ToolboxItem(false)]
-	internal class LineFeatureStyleEditor : System.Windows.Forms.UserControl
+	internal class LineFeatureStyleEditor : System.Windows.Forms.UserControl, IFeatureStyleEditor
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -79,12 +82,16 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         private string m_featureSource;
         private string m_providername;
         private ILayerElementFactory _factory;
+        private IVectorScaleRange _parentRange;
+        private int _themeCategory;
 
-        public LineFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource, ILayerElementFactory factory)
+        public LineFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource, ILayerElementFactory factory, IVectorScaleRange parentRange, int themeCategory, IList<IStroke> originalItem)
             : this()
         {
             m_editor = editor;
             m_schema = schema;
+            _parentRange = parentRange;
+            _themeCategory = themeCategory;
 
             _factory = (ILayerElementFactory)editor.GetEditedResource();
 
@@ -92,6 +99,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             m_providername = fs.Provider;
             m_featureSource = featureSource;
+            m_item = originalItem;
         }
 
 		private LineFeatureStyleEditor()
@@ -512,16 +520,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 				Changed(this, new EventArgs());
 		}
 
-        public IList<IStroke> Item
-		{
-			get { return m_item; }
-			set
-			{
-				m_item = value;
-				UpdateDisplay();
-			}
-		}
-
         private void thicknessCombo_TextChanged(object sender, EventArgs e)
         {
             if (m_inUpdate || lineStyleEditor.thicknessCombo.SelectedIndex != -1)
@@ -586,6 +584,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 if (!applyLineStyle.Checked)
                 {
                     applyLineStyle.Tag = m_item;
+                    //TODO: Need to review this given the accept/reject pattern changes
                     m_item = new BindingList<IStroke>();
                 }
                 else
@@ -618,9 +617,46 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 				Changed(this, new EventArgs());
 		}
 
+        private IMappingService _mapSvc;
+
+        IMappingService GetMappingService()
+        {
+            if (null == _mapSvc)
+            {
+                var conn = m_editor.GetEditedResource().CurrentConnection;
+                if (Array.IndexOf<int>(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0)
+                    _mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+            }
+            return _mapSvc;
+        }
+
+        int GetGeomType()
+        {
+            return 1;
+        }
+
 		private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
 		{
-			FeaturePreviewRender.RenderPreviewLine(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), m_item);		
+            var mapSvc = GetMappingService();
+            if (mapSvc != null && _parentRange != null && !StylePreview.UseClientSideStylePreview)
+            {
+                double scale = 10000.0;
+                if (_parentRange.MaxScale.HasValue)
+                    scale = _parentRange.MaxScale.Value - 1.0;
+                else if (_parentRange.MinScale.HasValue)
+                    scale = _parentRange.MinScale.Value + 1.0;
+
+                //Ensure the layer def we're rendering from is latest
+                m_editor.SyncSessionCopy();
+                using (var img = mapSvc.GetLegendImage(scale, m_editor.GetEditedResource().ResourceID, _themeCategory, GetGeomType(), previewPicture.Width, previewPicture.Height, "PNG"))
+                {
+                    e.Graphics.DrawImage(img, new Point(0, 0));
+                }
+            }
+            else
+            {
+                FeaturePreviewRender.RenderPreviewLine(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), m_item);
+            }
 		}
 
 		private void lineStyles_DrawItem(object sender, System.Windows.Forms.DrawItemEventArgs e)
@@ -693,5 +729,56 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (expr != null)
                 lineStyleEditor.ColorExpression = expr;
         }
+
+        public void RejectChanges()
+        {
+            if (m_snapshot != null)
+            {
+                m_item.Clear();
+                foreach (IStroke st in m_snapshot)
+                    m_item.Add(st);
+
+                Trace.TraceInformation("LineFeatureStyleEditor: Changes rejected");
+            }
+        }
+
+        private IList<IStroke> m_snapshot;
+
+        public void CreateSnapshot()
+        {
+            if (m_item != null)
+            {
+                m_snapshot = LayerElementCloningUtil.CloneStrokes(m_item);
+                Trace.TraceInformation("LineFeatureStyleEditor: Style snapshot created");
+            }
+            UpdateDisplay();
+        }
+
+        public Control Content
+        {
+            get { return this; }
+        }
+
+        public void Detach()
+        {
+            this.IsAttached = false;
+            var handler = this.StyleDetached;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        public void Attach()
+        {
+            this.IsAttached = true;
+            var handler = this.StyleAttached;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        public bool IsAttached { get; private set; }
+
+        public event EventHandler StyleDetached;
+
+        public event EventHandler StyleAttached;
     }
 }

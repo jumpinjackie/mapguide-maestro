@@ -27,6 +27,7 @@ using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
+using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
@@ -65,19 +66,20 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         }
 
         private ILayerElementFactory _factory;
+        private IVectorScaleRange _parentRange;
 
         public ItemStyle(ILayerElementFactory factory)
         {
             _factory = factory;
         }
 
-        public void SetItem(object parent, ITextSymbol label)
+        public void SetItem(IVectorScaleRange parentRange, object parent, ITextSymbol label, int themeCategory)
         {
             isLabel = true;
-            SetItemInternal(parent, label);
+            SetItemInternal(parentRange, parent, label, themeCategory);
         }
 
-        public void SetItem(IPointRule parent, IPointSymbolization2D point, Image img)
+        public void SetItem(IVectorScaleRange parentRange, IPointRule parent, IPointSymbolization2D point, Image img, int themeCategory)
         {
             if (point == null)
             {
@@ -89,30 +91,34 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 isPoint = (point.Symbol.Type != PointSymbolType.W2D);
                 isW2dSymbol = (point.Symbol.Type == PointSymbolType.W2D);
             }
-            SetItemInternal(parent, point);
+            SetItemInternal(parentRange, parent, point, themeCategory);
             m_w2dsymbol = img;
         }
 
-        public void SetItem(ILineRule parent, IEnumerable<IStroke> line)
+        public void SetItem(IVectorScaleRange parentRange, ILineRule parent, IEnumerable<IStroke> line, int themeCategory)
         {
             isLine = true;
-            SetItemInternal(parent, line);
+            SetItemInternal(parentRange, parent, line, themeCategory);
         }
 
-        public void SetItem(IAreaRule parent, IAreaSymbolizationFill area)
+        public void SetItem(IVectorScaleRange parentRange, IAreaRule parent, IAreaSymbolizationFill area, int themeCategory)
         {
             isArea = true;
-            SetItemInternal(parent, area);
+            SetItemInternal(parentRange, parent, area, themeCategory);
         }
 
-        public void SetItem(ICompositeRule parent, ICompositeSymbolization comp)
+        public void SetItem(IVectorScaleRange parentRange, ICompositeRule parent, ICompositeSymbolization comp, int themeCategory)
         {
             isComp = true;
-            SetItemInternal(parent, comp);
+            SetItemInternal(parentRange, parent, comp, themeCategory);
         }
 
-        private void SetItemInternal(object parent, object item)
+        private int _themeCategory;
+
+        private void SetItemInternal(IVectorScaleRange parentRange, object parent, object item, int themeCategory)
         {
+            _parentRange = parentRange;
+            _themeCategory = themeCategory;
             m_parent = parent;
             m_label = item as ITextSymbol;
             m_point = item as IPointSymbolization2D;
@@ -126,66 +132,112 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 m_line = null;
         }
 
+        private IMappingService _mapSvc = null;
+
+        IMappingService GetMappingService()
+        {
+            if (null == _mapSvc)
+            {
+                var conn = Owner.EditorService.GetEditedResource().CurrentConnection;
+                if (Array.IndexOf<int>(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0)
+                    _mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+            }
+            return _mapSvc;
+        }
+
+        int GetGeomType()
+        {
+            int gt = -1;
+            if (isPoint || isLabel || isW2dSymbol)
+                return 1;
+            else if (isLine)
+                return 2;
+            else if (isArea)
+                return 3;
+            else if (isComp)
+                return 4;
+            return gt;
+        }
+
         private void previewPicture_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Rectangle rect = new Rectangle(0, 0, previewPicture.Width, previewPicture.Height);
-            if (m_label != null)
+            var mapSvc = GetMappingService();
+            if (mapSvc != null && !StylePreview.UseClientSideStylePreview)
             {
-                FeaturePreviewRender.RenderPreviewFont(e.Graphics, rect, m_label);
-            }
-            else if (m_point != null)
-            {
-                if (m_point.Symbol.Type == PointSymbolType.Mark)
-                    FeaturePreviewRender.RenderPreviewPoint(e.Graphics, rect, m_point.Symbol as IMarkSymbol);
-                else if (m_point.Symbol.Type == PointSymbolType.Font)
-                    FeaturePreviewRender.RenderPreviewFontSymbol(e.Graphics, rect, m_point.Symbol as IFontSymbol);
-                else if (m_point.Symbol.Type == PointSymbolType.W2D)
-                    FeaturePreviewRender.RenderW2DImage(e.Graphics, rect, m_point.Symbol as IW2DSymbol, m_w2dsymbol);
-			}
-            else if (m_line != null)
-            {
-                FeaturePreviewRender.RenderPreviewLine(e.Graphics, rect, m_line);
-            }
-            else if (m_area != null)
-            {
-                FeaturePreviewRender.RenderPreviewArea(e.Graphics, rect, m_area);
-            }
-            else if (m_comp != null)
-            {
-                FeaturePreviewRender.RenderNoPreview(e.Graphics, rect);
+                double scale = 10000.0;
+                if (_parentRange.MaxScale.HasValue)
+                    scale = _parentRange.MaxScale.Value - 1.0;
+                else if (_parentRange.MinScale.HasValue)
+                    scale = _parentRange.MinScale.Value + 1.0;
+
+                //Ensure the layer def we're rendering from is latest
+                Owner.EditorService.SyncSessionCopy();
+                using (var img = mapSvc.GetLegendImage(scale, Owner.EditorService.GetEditedResource().ResourceID, _themeCategory, GetGeomType(), previewPicture.Width, previewPicture.Height, "PNG"))
+                {
+                    e.Graphics.DrawImage(img, new Point(0, 0));
+                }
             }
             else
-                FeaturePreviewRender.RenderPreviewFont(e.Graphics, rect, null);
+            {
+                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                Rectangle rect = new Rectangle(0, 0, previewPicture.Width, previewPicture.Height);
+                if (m_label != null)
+                {
+                    FeaturePreviewRender.RenderPreviewFont(e.Graphics, rect, m_label);
+                }
+                else if (m_point != null)
+                {
+                    if (m_point.Symbol.Type == PointSymbolType.Mark)
+                        FeaturePreviewRender.RenderPreviewPoint(e.Graphics, rect, m_point.Symbol as IMarkSymbol);
+                    else if (m_point.Symbol.Type == PointSymbolType.Font)
+                        FeaturePreviewRender.RenderPreviewFontSymbol(e.Graphics, rect, m_point.Symbol as IFontSymbol);
+                    else if (m_point.Symbol.Type == PointSymbolType.W2D)
+                        FeaturePreviewRender.RenderW2DImage(e.Graphics, rect, m_point.Symbol as IW2DSymbol, m_w2dsymbol);
+                }
+                else if (m_line != null)
+                {
+                    FeaturePreviewRender.RenderPreviewLine(e.Graphics, rect, m_line);
+                }
+                else if (m_area != null)
+                {
+                    FeaturePreviewRender.RenderPreviewArea(e.Graphics, rect, m_area);
+                }
+                else if (m_comp != null)
+                {
+                    FeaturePreviewRender.RenderNoPreview(e.Graphics, rect);
+                }
+                else
+                    FeaturePreviewRender.RenderPreviewFont(e.Graphics, rect, null);
+            }
         }
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            UserControl uc = null;
+            IFeatureStyleEditor uc = null;
             if (isLabel)
             {
-                uc = new FontStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId);
-                ((FontStyleEditor)uc).Item = m_label == null ? null : (ITextSymbol)m_label.Clone(); //(ITextSymbol)Utility.DeepCopy(m_label);
+                uc = new FontStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId, m_label);
+                //((FontStyleEditor)uc).Item = m_label == null ? null : (ITextSymbol)m_label.Clone(); //(ITextSymbol)Utility.DeepCopy(m_label);
             }
             else if (isW2dSymbol)
             {
-                uc = new PointFeatureStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId, m_w2dsymbol);
-                ((PointFeatureStyleEditor)uc).Item = m_point == null ? null : (IPointSymbolization2D)m_point.Clone(); //(IPointSymbolization2D)Utility.XmlDeepCopy(m_point);
+                uc = new PointFeatureStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId, m_w2dsymbol, _parentRange, _themeCategory, m_point);
+                //((PointFeatureStyleEditor)uc).Item = m_point == null ? null : (IPointSymbolization2D)m_point.Clone(); //(IPointSymbolization2D)Utility.XmlDeepCopy(m_point);
             }
             else if (isPoint)
             {
-                uc = new PointFeatureStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId);
-                ((PointFeatureStyleEditor)uc).Item = m_point == null ? null : (IPointSymbolization2D)m_point.Clone(); //(IPointSymbolization2D)Utility.XmlDeepCopy(m_point);
+                uc = new PointFeatureStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId, _parentRange, _themeCategory, m_point);
+                //((PointFeatureStyleEditor)uc).Item = m_point == null ? null : (IPointSymbolization2D)m_point.Clone(); //(IPointSymbolization2D)Utility.XmlDeepCopy(m_point);
             }
             else if (isLine)
             {
-                uc = new LineFeatureStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId, _factory);
-                ((LineFeatureStyleEditor)uc).Item = m_line == null ? null : LayerElementCloningUtil.CloneStrokes(m_line);//(IList<IStroke>)Utility.XmlDeepCopy(m_line);
+                uc = new LineFeatureStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId, _factory, _parentRange, _themeCategory, m_line);
+                //((LineFeatureStyleEditor)uc).Item = m_line == null ? null : LayerElementCloningUtil.CloneStrokes(m_line);//(IList<IStroke>)Utility.XmlDeepCopy(m_line);
             }
             else if (isArea)
             {
-                uc = new AreaFeatureStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId);
-                ((AreaFeatureStyleEditor)uc).Item = m_area == null ? null : (IAreaSymbolizationFill)m_area.Clone(); //(IAreaSymbolizationFill)Utility.XmlDeepCopy(m_area);
+                uc = new AreaFeatureStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId, _parentRange, _themeCategory, m_area);
+                //((AreaFeatureStyleEditor)uc).Item = m_area == null ? null : (IAreaSymbolizationFill)m_area.Clone(); //(IAreaSymbolizationFill)Utility.XmlDeepCopy(m_area);
             }
             else if (isComp)
             {
@@ -198,12 +250,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
             if (uc != null)
             {
+                uc.CreateSnapshot();
+                
                 EditorTemplateForm dlg = new EditorTemplateForm();
-                dlg.ItemPanel.Controls.Add(uc);
-                uc.Dock = DockStyle.Fill;
+                dlg.ItemPanel.Controls.Add(uc.Content);
+                uc.Content.Dock = DockStyle.Fill;
                 dlg.RefreshSize();
                 if (dlg.ShowDialog(this) == DialogResult.OK)
                 {
+                    /*
                     if (isLabel)
                     {
                         m_label = ((FontStyleEditor)uc).Item;
@@ -246,9 +301,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                         if (ItemChanged != null)
                             ItemChanged(m_area, null);
                     }
-                    
+                    */
                     this.Refresh();
-
+                    Owner.FlagDirty();
+                }
+                else
+                {
+                    uc.RejectChanges();
                 }
             }
 
@@ -266,6 +325,35 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             catch { }
 
             EditButton_Click(sender, e);
+        }
+    }
+
+    internal interface IFeatureStyleEditor
+    {
+        void RejectChanges();
+        void CreateSnapshot();
+        Control Content { get; }
+        void Detach();
+        void Attach();
+        bool IsAttached { get; }
+        event EventHandler StyleDetached;
+        event EventHandler StyleAttached;
+    }
+
+    public class StylePreview
+    {
+        /// <summary>
+        /// Indicates whether to use client-side rendering to generate style previews. Client-side rendering is more efficient, but does
+        /// not produce fully accurate preview styles. Setting it to false will use the GETLEGENDIMAGE API to produce the style preview which
+        /// will produce the exact preview style.
+        /// 
+        /// For style-intensive layers, the GETLEGENDIMAGE approach can momentarily grind the MapGuide Server
+        /// </summary>
+        public static bool UseClientSideStylePreview;
+
+        static StylePreview()
+        {
+            UseClientSideStylePreview = true;
         }
     }
 }
