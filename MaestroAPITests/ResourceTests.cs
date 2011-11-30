@@ -896,5 +896,61 @@ namespace MaestroAPITests
                 }
             }
         }
+
+        [Test]
+        public void TestMapDefinitionNestedGroupDelete()
+        {
+            var conn = _mocks.NewMock<IServerConnection>();
+            var caps = _mocks.NewMock<IConnectionCapabilities>();
+            Stub.On(conn).GetProperty("Capabilities").Will(Return.Value(caps));
+            foreach (var rt in Enum.GetValues(typeof(ResourceTypes)))
+            {
+                Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt).Will(Return.Value(new Version(1, 0, 0)));
+            }
+
+            IMapDefinition mdf = ObjectFactory.CreateMapDefinition(conn, "Test");
+            /*
+             
+             [G] Group1
+                [L] Layer1
+                [G] Group2
+                   [L] Layer2
+                   [G] Group3
+                      [L] Layer3
+             [G] Group4
+                [L] Layer4
+             
+             */
+            var grp1 = mdf.AddGroup("Group1");
+            var grp2 = mdf.AddGroup("Group2");
+            var grp3 = mdf.AddGroup("Group3");
+            var grp4 = mdf.AddGroup("Group4");
+
+            grp3.Group = "Group2";
+            grp2.Group = "Group1";
+
+            var lyr1 = mdf.AddLayer("Group1", "Layer1", "Library://Test.LayerDefinition");
+            var lyr2 = mdf.AddLayer("Group2", "Layer2", "Library://Test.LayerDefinition");
+            var lyr3 = mdf.AddLayer("Group3", "Layer3", "Library://Test.LayerDefinition");
+            var lyr4 = mdf.AddLayer("Group4", "Layer4", "Library://Test.LayerDefinition");
+
+            //Delete group 1. Expect the following structure
+            /*
+             [G] Group4
+                [L] Layer4
+             */
+
+            mdf.RemoveLayerGroupAndChildLayers("Group1");
+            Assert.AreEqual(1, mdf.GetGroupCount());
+            Assert.AreEqual(1, mdf.GetLayerCount());
+            Assert.Null(mdf.GetLayerByName("Layer1"));
+            Assert.Null(mdf.GetLayerByName("Layer2"));
+            Assert.Null(mdf.GetLayerByName("Layer3"));
+            Assert.NotNull(mdf.GetLayerByName("Layer4"));
+            Assert.Null(mdf.GetGroupByName("Group1"));
+            Assert.Null(mdf.GetGroupByName("Group2"));
+            Assert.Null(mdf.GetGroupByName("Group3"));
+            Assert.NotNull(mdf.GetGroupByName("Group4"));
+        }
     }
 }

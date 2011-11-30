@@ -465,7 +465,22 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
             Check.NotNull(map, "map");
             Check.NotEmpty(groupName, "groupName");
 
-            var group = map.GetGroupByName(groupName);
+            var affectedParentGroups = new Dictionary<string, List<IMapLayerGroup>>();
+            IMapLayerGroup group = null;
+            foreach (var grp in map.MapLayerGroup)
+            {
+                if (grp.Name == groupName)
+                    group = grp;
+
+                string parentGroupName = grp.Group;
+                if (!string.IsNullOrEmpty(parentGroupName))
+                {
+                    if (!affectedParentGroups.ContainsKey(parentGroupName))
+                        affectedParentGroups[parentGroupName] = new List<IMapLayerGroup>();
+                    affectedParentGroups[parentGroupName].Add(grp);
+                }
+            }
+
             if (group != null)
             {
                 List<IMapLayer> layers = new List<IMapLayer>(map.GetLayersForGroup(groupName));
@@ -479,6 +494,16 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
                 }
                 //Then the group
                 map.RemoveGroup(group);
+
+                //Then see if any child groups are under this group and remove them too
+                if (affectedParentGroups.ContainsKey(group.Name))
+                {
+                    for (int i = 0; i < affectedParentGroups[group.Name].Count; i++)
+                    {
+                        var removeMe = affectedParentGroups[group.Name][i];
+                        removed += map.RemoveLayerGroupAndChildLayers(removeMe.Name);
+                    }
+                }
 
                 return removed;
             }
