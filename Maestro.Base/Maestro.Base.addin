@@ -14,6 +14,7 @@
             <ConditionEvaluator name="NotConnected" class="Maestro.Base.Commands.Conditions.NotConnectedConditionEvaluator" />
             <ConditionEvaluator name="IsNotRoot" class="Maestro.Base.Commands.Conditions.SelectedRootItemConditionEvaluator" />
             <ConditionEvaluator name="EditorFunction" class="Maestro.Base.Commands.Conditions.ActiveEditorConditionEvaluator" />
+            <ConditionEvaluator name="EditorOfType" class="Maestro.Base.Commands.Conditions.ActiveEditorTypeConditionEvaluator" />
             <ConditionEvaluator name="CanClose" class="Maestro.Base.Commands.Conditions.CloseableDocumentConditionEvaluator" />
             <ConditionEvaluator name="SelectedItem" class="Maestro.Base.Commands.Conditions.SelectedItemConditionEvaluator" />
             <ConditionEvaluator name="CanPaste" class="Maestro.Base.Commands.Conditions.PasteConditionEvaluator" />
@@ -363,6 +364,13 @@
                          label="${res:Toolbar_Validate}"
                          tooltip="${res:Menu_File_ValidateEditedResource}"
                          class="Maestro.Base.Commands.ValidateEditedResourceCommand" />
+        </Condition>
+        <Condition action="Disable" name="EditorOfType" types="WebLayout,ApplicationDefinition">
+            <ToolbarItem id="Translate"
+                         icon="edit_language"
+                         label="${res:Menu_Tools_Translate}"
+                         tooltip="${res:Menu_Tools_Translate_Desc}"
+                         class="Maestro.Base.Commands.TranslateLayoutCommand" />
         </Condition>
         <!-- 
         Only needed if our custom drawn close buttons don't appear on document

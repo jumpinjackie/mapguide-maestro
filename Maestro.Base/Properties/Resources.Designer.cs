@@ -669,6 +669,13 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap edit_language {
+            get {
+                object obj = ResourceManager.GetObject("edit_language", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Registered Editor: {0}.
         /// </summary>
@@ -930,6 +937,15 @@ namespace Maestro.Base.Properties {
         internal static string ItemsNotMovedDueToBeingOpen {
             get {
                 return ResourceManager.GetString("ItemsNotMovedDueToBeingOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} items were successfully translated.
+        /// </summary>
+        internal static string ItemsTranslated {
+            get {
+                return ResourceManager.GetString("ItemsTranslated", resourceCulture);
             }
         }
         
@@ -1262,6 +1278,24 @@ namespace Maestro.Base.Properties {
         internal static string Menu_Tools_Options {
             get {
                 return ResourceManager.GetString("Menu_Tools_Options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Translate.
+        /// </summary>
+        internal static string Menu_Tools_Translate {
+            get {
+                return ResourceManager.GetString("Menu_Tools_Translate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Translate this Layout.
+        /// </summary>
+        internal static string Menu_Tools_Translate_Desc {
+            get {
+                return ResourceManager.GetString("Menu_Tools_Translate_Desc", resourceCulture);
             }
         }
         
