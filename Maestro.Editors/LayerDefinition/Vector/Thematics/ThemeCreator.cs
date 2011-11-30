@@ -820,45 +820,42 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         private void ChangeBaseStyleBtn_Click(object sender, EventArgs e)
         {
             IVectorLayerDefinition vl = (IVectorLayerDefinition)m_layer.SubLayer;
-            IFeatureStyleEditor uc = null;
+            UserControl uc = null;
             if (m_ruleCollection is IPointVectorStyle)
             {
-                uc = new PointFeatureStyleEditor(m_editor, m_schema, vl.ResourceId, null, -1, (IPointSymbolization2D)m_defaultItem);
-                //((PointFeatureStyleEditor)uc).Item = (IPointSymbolization2D)Utility.XmlDeepCopy(m_defaultItem);
+                uc = new PointFeatureStyleEditor(m_editor, m_schema, vl.ResourceId);
+                ((PointFeatureStyleEditor)uc).Item = (IPointSymbolization2D)Utility.XmlDeepCopy(m_defaultItem);
                 ((PointFeatureStyleEditor)uc).SetupForTheming();
             }
             else if (m_ruleCollection is ILineVectorStyle)
             {
+                uc = new LineFeatureStyleEditor(m_editor, m_schema, vl.ResourceId, _factory);
                 var rule = _factory.CreateDefaultLineRule();
-                uc = new LineFeatureStyleEditor(m_editor, m_schema, vl.ResourceId, _factory, null, -1, new List<IStroke>(rule.Strokes));
-                //((LineFeatureStyleEditor)uc).Item = new List<IStroke>(rule.Strokes);
+                ((LineFeatureStyleEditor)uc).Item = new List<IStroke>(rule.Strokes);
                 ((LineFeatureStyleEditor)uc).SetupForTheming();
             }
             else if (m_ruleCollection is IAreaVectorStyle)
             {
-                uc = new AreaFeatureStyleEditor(m_editor, m_schema, vl.ResourceId, null, -1, (IAreaSymbolizationFill)m_defaultItem);
-                //((AreaFeatureStyleEditor)uc).Item = (IAreaSymbolizationFill)Utility.XmlDeepCopy(m_defaultItem);
+                uc = new AreaFeatureStyleEditor(m_editor, m_schema, vl.ResourceId);
+                ((AreaFeatureStyleEditor)uc).Item = (IAreaSymbolizationFill)Utility.XmlDeepCopy(m_defaultItem);
                 ((AreaFeatureStyleEditor)uc).SetupForTheming();
             }
 
             if (uc != null)
             {
                 EditorTemplateForm dlg = new EditorTemplateForm();
-                dlg.ItemPanel.Controls.Add(uc.Content);
-                uc.Content.Dock = DockStyle.Fill;
+                dlg.ItemPanel.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
                 dlg.RefreshSize();
 
-                if (dlg.ShowDialog(this) != DialogResult.OK)
+                if (dlg.ShowDialog(this) == DialogResult.OK)
                 {
-                    uc.RejectChanges();
-                    /*
                     if (m_ruleCollection is IPointVectorStyle)
                         m_defaultItem = ((PointFeatureStyleEditor)uc).Item;
                     else if (m_ruleCollection is ILineVectorStyle)
                         m_defaultItem = ((LineFeatureStyleEditor)uc).Item;
                     else if (m_ruleCollection is IAreaVectorStyle)
                         m_defaultItem = ((AreaFeatureStyleEditor)uc).Item;
-                     */
                 }
             }
 

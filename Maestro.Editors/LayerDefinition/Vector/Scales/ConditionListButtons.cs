@@ -133,26 +133,26 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             if (m_point != null)
             {
                 IPointRule prt = _factory.CreateDefaultPointRule();
+                conditionList.AddRuleControl(prt).Focus();
                 m_point.AddRule(prt);
-                conditionList.AddRuleControl(prt, m_point.RuleCount - 1).Focus();
             }
             else if (m_line != null)
             {
                 ILineRule lrt = _factory.CreateDefaultLineRule();
+                conditionList.AddRuleControl(lrt).Focus();
                 m_line.AddRule(lrt);
-                conditionList.AddRuleControl(lrt, m_line.RuleCount - 1).Focus();
             }
             else if (m_area != null)
             {
                 IAreaRule art = _factory.CreateDefaultAreaRule();
+                conditionList.AddRuleControl(art).Focus();
                 m_area.AddRule(art);
-                conditionList.AddRuleControl(art, m_area.RuleCount - 1).Focus();
             }
             else if (m_comp != null)
             {
                 ICompositeRule cr = _factory.CreateDefaultCompositeRule();
+                conditionList.AddRuleControl(cr).Focus();
                 m_comp.AddCompositeRule(cr);
-                conditionList.AddRuleControl(cr, m_comp.RuleCount - 1).Focus();
             }
 
             if (ItemChanged != null)
@@ -215,26 +215,23 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
             object rule = Utility.XmlDeepCopy(conditionList.SelectedItem);
 
-            int themeCategory = -1;
+
             if (m_point != null)
             {
                 m_point.AddRule((IPointRule)rule);
-                themeCategory = m_point.RuleCount - 1;
             }
             else if (m_line != null)
             {
                 m_line.AddRule((ILineRule)rule);
-                themeCategory = m_line.RuleCount - 1;
             }
             else if (m_area != null)
             {
                 m_area.AddRule((IAreaRule)rule);
-                themeCategory = m_area.RuleCount - 1;
             }
             else
                 return;
 
-            conditionList.AddRuleControl(rule, themeCategory).Focus();
+            conditionList.AddRuleControl(rule).Focus();
 
             if (ItemChanged != null)
                 ItemChanged(this, null);

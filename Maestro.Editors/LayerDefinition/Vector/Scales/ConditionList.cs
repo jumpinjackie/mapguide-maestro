@@ -110,7 +110,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             m_comp = item as ICompositeTypeStyle;
 
             this.Controls.Clear();
-            int themeCategory = 0;
+
             try
             {
                 this.Visible = false;
@@ -119,34 +119,22 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 if (m_point != null)
                 {
                     foreach (IPointRule prt in m_point.Rules)
-                    {
-                        AddRuleControl(prt, themeCategory);
-                        themeCategory++;
-                    }
+                        AddRuleControl(prt);
                 }
                 else if (m_line != null)
                 {
                     foreach (ILineRule lrt in m_line.Rules)
-                    {
-                        AddRuleControl(lrt, themeCategory);
-                        themeCategory++;
-                    }
+                        AddRuleControl(lrt);
                 }
                 else if (m_area != null)
                 {
                     foreach (IAreaRule art in m_area.Rules)
-                    {
-                        AddRuleControl(art, themeCategory);
-                        themeCategory++;
-                    }
+                        AddRuleControl(art);
                 }
                 else if (m_comp != null)
                 {
                     foreach (ICompositeRule comp in m_comp.CompositeRule)
-                    {
-                        AddRuleControl(comp, themeCategory);
-                        themeCategory++;
-                    }
+                        AddRuleControl(comp);
                 }
             }
             finally
@@ -156,7 +144,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
         }
 
-        public Condition AddRuleControl(object rule, int themeCategory)
+        public Condition AddRuleControl(object rule)
         {
             if (rule == null)
                 return null;
@@ -165,13 +153,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             Condition c = new Condition(m_owner.EditorService.GetEditedResource().CurrentConnection);
 
             if (rule as IPointRule != null)
-                c.SetItem(m_parent, rule as IPointRule, themeCategory);
+                c.SetItem(rule as IPointRule);
             else if (rule as ILineRule != null)
-                c.SetItem(m_parent, rule as ILineRule, themeCategory);
+                c.SetItem(rule as ILineRule);
             else if (rule as IAreaRule != null)
-                c.SetItem(m_parent, rule as IAreaRule, themeCategory);
+                c.SetItem(rule as IAreaRule);
             else if (rule as ICompositeRule != null)
-                c.SetItem(m_parent, rule as ICompositeRule, themeCategory);
+                c.SetItem(rule as ICompositeRule);
 
             c.Owner = m_owner;
             c.Dock = DockStyle.Top;

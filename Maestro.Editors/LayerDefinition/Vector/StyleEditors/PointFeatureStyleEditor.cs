@@ -31,9 +31,6 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using Maestro.Editors.LayerDefinition.Vector.Scales;
-using System.Diagnostics;
 
 namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {
@@ -41,7 +38,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 	/// Summary description for PointFeatureStyleEditor.
 	/// </summary>
     [ToolboxItem(false)]
-	internal class PointFeatureStyleEditor : System.Windows.Forms.UserControl, IFeatureStyleEditor
+	internal class PointFeatureStyleEditor : System.Windows.Forms.UserControl
 	{
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Label label1;
@@ -124,16 +121,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         private CheckBox chkW2DFillColor;
         private ColorComboWithTransparency cmbW2DFillColor;
         private ILayerElementFactory _factory;
-        private IVectorScaleRange _parentRange;
-        private int _themeCategory;
 
-        public PointFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource, IVectorScaleRange parentRange, int themeCategory, IPointSymbolization2D originalItem)
+        public PointFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource)
             : this()
         {
             m_editor = editor;
             m_schema = schema;
-            _parentRange = parentRange;
-            _themeCategory = themeCategory;
 
             _factory = (ILayerElementFactory)editor.GetEditedResource();
             var fs = (IFeatureSource)editor.ResourceService.GetResource(featureSource);
@@ -141,11 +134,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_providername = fs.Provider;
             m_featureSource = featureSource;
 
-            m_item = originalItem;
+            m_item = _factory.CreateDefaultPointSymbolization2D();
         }
 
-        public PointFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource, Image currentW2D, IVectorScaleRange parentRange, int themeCategory, IPointSymbolization2D originalItem)
-            : this(editor, schema, featureSource, parentRange, themeCategory, originalItem)
+        public PointFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource, Image currentW2D)
+            : this(editor, schema, featureSource)
         {
             grpW2DStyle.Tag = currentW2D;
         }
@@ -896,54 +889,17 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 			UpdateDisplay();
 		}
 
-        private IMappingService _mapSvc;
-
-        IMappingService GetMappingService()
-        {
-            if (null == _mapSvc)
-            {
-                var conn = m_editor.GetEditedResource().CurrentConnection;
-                if (Array.IndexOf<int>(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0)
-                    _mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
-            }
-            return _mapSvc;
-        }
-
-        int GetGeomType()
-        {
-            return 1;
-        }
-
 		private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
 		{
-            IMappingService mapSvc = GetMappingService();
-            if (mapSvc != null && _parentRange != null && !StylePreview.UseClientSideStylePreview)
-            {
-                double scale = 10000.0;
-                if (_parentRange.MaxScale.HasValue)
-                    scale = _parentRange.MaxScale.Value - 1.0;
-                else if (_parentRange.MinScale.HasValue)
-                    scale = _parentRange.MinScale.Value + 1.0;
-
-                //Ensure the layer def we're rendering from is latest
-                m_editor.SyncSessionCopy();
-                using (var img = mapSvc.GetLegendImage(scale, m_editor.GetEditedResource().ResourceID, _themeCategory, GetGeomType(), previewPicture.Width, previewPicture.Height, "PNG"))
-                {
-                    e.Graphics.DrawImage(img, new Point(0, 0));
-                }
-            }
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            if (m_item != null && m_item.Symbol.Type == PointSymbolType.Mark)
+                FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IMarkSymbol)m_item.Symbol);
+            else if (m_item != null && m_item.Symbol.Type == PointSymbolType.Font)
+                FeaturePreviewRender.RenderPreviewFontSymbol(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IFontSymbol)m_item.Symbol);
+            else if (m_item != null && m_item.Symbol.Type == PointSymbolType.W2D)
+                FeaturePreviewRender.RenderW2DImage(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IW2DSymbol)m_item.Symbol, grpW2DStyle.Tag as Image);
             else
-            {
-                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                if (m_item != null && m_item.Symbol.Type == PointSymbolType.Mark)
-                    FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IMarkSymbol)m_item.Symbol);
-                else if (m_item != null && m_item.Symbol.Type == PointSymbolType.Font)
-                    FeaturePreviewRender.RenderPreviewFontSymbol(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IFontSymbol)m_item.Symbol);
-                else if (m_item != null && m_item.Symbol.Type == PointSymbolType.W2D)
-                    FeaturePreviewRender.RenderW2DImage(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IW2DSymbol)m_item.Symbol, grpW2DStyle.Tag as Image);
-                else
-                    FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), null);
-            }
+                FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), null);
 		}
 
         private IW2DSymbol m_lastSymbol;
@@ -1420,6 +1376,17 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 			comboBoxCharacter_SelectedIndexChanged(sender, e);
 		}
 
+
+		public IPointSymbolization2D Item
+		{
+			get { return m_item; }
+			set 
+			{
+				m_item = value;
+				UpdateDisplay();
+			}
+		}
+
         private void DisplayPoints_CheckedChanged(object sender, EventArgs e)
         {
             foreach (Control c in this.Controls)
@@ -1428,11 +1395,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (m_inUpdate)
                 return;
 
-            if (DisplayPoints.Checked)
-                Attach();
-            else
-                Detach();
-            /*
             if (DisplayPoints.Checked)
             {
                 if (DisplayPoints.Tag as IPointSymbolization2D != null)
@@ -1444,7 +1406,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             {
                 DisplayPoints.Tag = m_item;
                 this.Item = null;
-            }*/
+            }
         }
 
         static string DoubleToString(double? value)
@@ -1695,53 +1657,5 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
-
-        public void RejectChanges()
-        {
-            if (m_snapshot != null)
-            {
-                m_item.Symbol = m_snapshot.Symbol;
-                Trace.TraceInformation("PointFeatureStyleEditor: Changes rejected");
-            }
-        }
-
-        private IPointSymbolization2D m_snapshot;
-
-        public void CreateSnapshot()
-        {
-            if (m_item != null)
-            {
-                m_snapshot = m_item.Clone();
-                Trace.TraceInformation("PointFeatureStyleEditor: Style snapshot created");
-            }
-            UpdateDisplay();
-        }
-
-        public Control Content
-        {
-            get { return this; }
-        }
-
-        public void Detach()
-        {
-            this.IsAttached = false;
-            var handler = this.StyleDetached;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
-
-        public void Attach()
-        {
-            this.IsAttached = true;
-            var handler = this.StyleAttached;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
-
-        public bool IsAttached { get; private set; }
-
-        public event EventHandler StyleDetached;
-
-        public event EventHandler StyleAttached;
     }
 }

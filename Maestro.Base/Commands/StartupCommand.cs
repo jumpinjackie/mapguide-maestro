@@ -40,8 +40,6 @@ namespace Maestro.Base.Commands
             ResourceService.RegisterNeutralImages(Properties.Resources.ResourceManager);
             ResourceService.RegisterNeutralStrings(Properties.Resources.ResourceManager);
 
-            Maestro.Editors.LayerDefinition.Vector.Scales.StylePreview.UseClientSideStylePreview = PropertyService.Get(ConfigProperties.UseClientSideStylePreview, ConfigProperties.DefaultUseClientSideStylePreview);
-
             ServiceRegistry.Initialize();
             EventWatcher.Initialize();
 

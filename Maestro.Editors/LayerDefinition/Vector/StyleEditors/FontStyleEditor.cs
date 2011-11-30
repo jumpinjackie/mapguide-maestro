@@ -28,8 +28,6 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Schema;
-using Maestro.Editors.LayerDefinition.Vector.Scales;
-using System.Diagnostics;
 
 namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {
@@ -37,7 +35,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 	/// Summary description for FontStyleEditor.
 	/// </summary>
     [ToolboxItem(false)]
-	internal class FontStyleEditor : System.Windows.Forms.UserControl, IFeatureStyleEditor
+	internal class FontStyleEditor : System.Windows.Forms.UserControl
 	{
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
@@ -111,7 +109,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         private ILayerElementFactory _factory;
 
-        public FontStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource, ITextSymbol originalItem)
+        public FontStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource)
             : this()
         {
             m_editor = editor;
@@ -136,7 +134,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             foreach (FontFamily f in new System.Drawing.Text.InstalledFontCollection().Families)
                 fontCombo.Items.Add(f.Name);
 
-            m_item = originalItem;
         }
 
         private FontStyleEditor()
@@ -929,6 +926,16 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 Changed(this, new EventArgs());
         }
 
+        public ITextSymbol Item
+		{
+			get { return m_item; }
+			set 
+			{
+				m_item = value;
+				UpdateDisplay();
+			}
+		}
+
         private void DisplayLabel_CheckedChanged(object sender, EventArgs e)
         {
             foreach (Control c in this.Controls)
@@ -937,11 +944,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (m_inUpdate)
                 return;
 
-            if (DisplayLabel.Checked)
-                Attach();
-            else
-                Detach();
-            /*
             if (DisplayLabel.Checked)
             {
                 if (DisplayLabel.Tag as ITextSymbol != null)
@@ -953,7 +955,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             {
                 DisplayLabel.Tag = m_item;
                 this.Item = null;
-            }*/
+            }
+
         }
 
         private void sizeCombo_TextChanged(object sender, EventArgs e)
@@ -1035,73 +1038,5 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 Changed(this, new EventArgs());
         }
 
-
-        public void RejectChanges()
-        {
-            if (m_snapshot != null)
-            {
-                m_item.AdvancedPlacement = m_snapshot.AdvancedPlacement;
-                m_item.BackgroundColor = m_snapshot.BackgroundColor;
-                m_item.BackgroundStyle = m_snapshot.BackgroundStyle;
-                m_item.Bold = m_snapshot.Bold;
-                m_item.FontName = m_snapshot.FontName;
-                m_item.ForegroundColor = m_snapshot.ForegroundColor;
-                m_item.HorizontalAlignment = m_snapshot.HorizontalAlignment;
-                m_item.InsertionPointX = m_snapshot.InsertionPointX;
-                m_item.InsertionPointY = m_snapshot.InsertionPointY;
-                m_item.Italic = m_snapshot.Italic;
-                m_item.MaintainAspect = m_snapshot.MaintainAspect;
-                m_item.Rotation = m_snapshot.Rotation;
-                m_item.SizeContext = m_snapshot.SizeContext;
-                m_item.SizeX = m_snapshot.SizeX;
-                m_item.SizeY = m_snapshot.SizeY;
-                m_item.Text = m_snapshot.Text;
-                //m_item.Type = m_snapshot.Type;
-                m_item.Underlined = m_snapshot.Underlined;
-                m_item.Unit = m_snapshot.Unit;
-                m_item.VerticalAlignment = m_snapshot.VerticalAlignment;
-
-                Trace.TraceInformation("FontStyleEditor: Changes rejected");
-            }
-        }
-
-        private ITextSymbol m_snapshot;
-
-        public void CreateSnapshot()
-        {
-            if (m_item != null)
-            {
-                m_snapshot = m_item.Clone();
-                Trace.TraceInformation("FontStyleEditor: Style snapshot created");
-            }
-            UpdateDisplay();
-        }
-
-        public Control Content
-        {
-            get { return this; }
-        }
-
-        public void Detach()
-        {
-            this.IsAttached = false;
-            var handler = this.StyleDetached;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
-
-        public void Attach()
-        {
-            this.IsAttached = true;
-            var handler = this.StyleAttached;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
-
-        public bool IsAttached { get; private set; }
-
-        public event EventHandler StyleDetached;
-
-        public event EventHandler StyleAttached;
-    }
+	}
 }
