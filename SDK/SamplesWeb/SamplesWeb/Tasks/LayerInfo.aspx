@@ -11,7 +11,7 @@
     <div>
         <input id="MAPNAME" runat="server" type="hidden" />
         <input id="SESSION" runat="server" type="hidden" />
-        <p>Select a map layer and click describe to get the class definition</p>
+        <p>Select a map layer and click describe to get the properties of that layer and its associated class definition</p>
         <p>Layer:</p>
         <asp:DropDownList ID="ddlLayers" runat="server" />
         <asp:Button ID="btnDescribe" runat="server" Text="Describe" 

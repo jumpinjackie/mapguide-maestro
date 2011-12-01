@@ -45,6 +45,7 @@
         <li><a href="#" onclick="Go('../SamplesWeb/Tasks/AddThemedDistrictsLayer.aspx')">Add Themed Districts Layer</a></li>
         <li><a href="#" onclick="Go('../SamplesWeb/Tasks/ToggleGroupVisibility.aspx','GROUPNAME','Base Map')">Toggle "Base Map" Group</a></li>
         <li><a href="#" onclick="Go('../SamplesWeb/Tasks/ToggleLayerVisibility.aspx','LAYERNAME','Parcels')">Toggle "Parcels" Layer</a></li>
+        <li><a href="#" onclick="Go('../SamplesWeb/Tasks/ModifyParcelsFilter.aspx')">Change "Parcels" layer filter</a></li>
     </ul>
     <p>Feature Selection:</p>
     <ul>

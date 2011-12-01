@@ -291,8 +291,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="resource"></param>
         void SaveResource(IResource resource);
         /// <summary>
-        /// Saves an object into the repository
+        /// Saves an object into the repository using the specified resource id.
         /// </summary>
+        /// <remarks>
+        /// The <paramref name="resourceid"/> parameter only instructs this method where to save the resource to. It does
+        /// not modify the <see cref="P:IResource.ResourceID"/> property of the input resource does not get
+        /// updated as a result of this operation.
+        /// </remarks>
         /// <param name="resource">The object to save</param>
         /// <param name="resourceid">The resourceId to save the object as</param>
         void SaveResourceAs(IResource resource, string resourceid);

@@ -222,6 +222,14 @@ namespace OSGeo.MapGuide.MaestroAPI
                     }
                 }
 
+                string xsdName = res.ResourceType.ToString() + "-" + res.ResourceVersion.ToString() + ".xsd";
+                if (!xsds.ContainsKey(xsdName))
+                {
+                    var schemaObj = GetXsd(xsdPath, xsdName);
+                    if (schemaObj != null)
+                        xsds.Add(xsdName, schemaObj);
+                }
+
                 var validator = new XmlValidator();
                 using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
                 {

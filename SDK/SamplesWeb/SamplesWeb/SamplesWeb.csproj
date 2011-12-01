@@ -89,6 +89,7 @@
     <Content Include="Tasks\FeatureInfo.aspx" />
     <Content Include="Tasks\LayerInfo.aspx" />
     <Content Include="Tasks\ListSelection.aspx" />
+    <Content Include="Tasks\ModifyParcelsFilter.aspx" />
     <Content Include="Tasks\SetSelectedFeatures.aspx" />
     <Content Include="Tasks\ToggleGroupVisibility.aspx" />
     <Content Include="Tasks\ToggleLayerVisibility.aspx" />
@@ -142,6 +143,13 @@
     </Compile>
     <Compile Include="Tasks\ListSelection.aspx.designer.cs">
       <DependentUpon>ListSelection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\ModifyParcelsFilter.aspx.cs">
+      <DependentUpon>ModifyParcelsFilter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\ModifyParcelsFilter.aspx.designer.cs">
+      <DependentUpon>ModifyParcelsFilter.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tasks\SetSelectedFeatures.aspx.cs">
       <DependentUpon>SetSelectedFeatures.aspx</DependentUpon>

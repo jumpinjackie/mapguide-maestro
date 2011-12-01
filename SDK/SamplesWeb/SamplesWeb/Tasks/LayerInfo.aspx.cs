@@ -81,6 +81,19 @@ namespace SamplesWeb.Tasks
 
             StringBuilder sb = new StringBuilder();
 
+            sb.Append("<h3>Layer Properties</h3><hr/>");
+            sb.Append("<p>Name: " + rtLayer.Name + "</p>");
+            sb.Append("<p>Legend Label: " + rtLayer.LegendLabel + "</p>");
+            sb.Append("<p>Display Level: " + rtLayer.DisplayOrder + "</p>");
+            sb.Append("<p>Expand In Legend: " + rtLayer.ExpandInLegend + "</p>");
+            sb.Append("<p>Show In Legend: " + rtLayer.ShowInLegend + "</p>");
+            sb.Append("<p>Visible: " + rtLayer.Visible + "</p>");
+            sb.Append("<p>Layer Definition: " + rtLayer.LayerDefinitionID + "</p>");
+            sb.Append("<p>Has Tooltips: " + rtLayer.HasTooltips + "</p>");
+            sb.Append("<p>Filter: " + rtLayer.Filter + "</p>");
+
+            sb.Append("<h3>Class Definition</h3><hr/>");
+
             sb.Append("<p>Schema: " + clsDef.QualifiedName.Split(':')[0] + "</p>");
             sb.Append("<p>Class Name: " + clsDef.Name + "</p>");
             sb.Append("<strong>Properties (* indicates identity):</strong>");

@@ -436,9 +436,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
-        /// Gets or sets the name of the qualified class.
+        /// Gets the name of the qualified name of the feature class.
         /// </summary>
-        /// <value>The name of the qualified class.</value>
+        /// <value>The name of the qualified name of the feature class.</value>
         public string QualifiedClassName
         {
             get;
