@@ -91,6 +91,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                     List<KeyValuePair<double, double>> ranges = new List<KeyValuePair<double, double>>();
                     foreach (IVectorScaleRange vsr in vldef.VectorScaleRange)
                     {
+                        IVectorScaleRange2 vsr2 = vsr as IVectorScaleRange2;
+                        if (vsr2 != null)
+                        {
+                            var area = vsr2.AreaStyle;
+                            var line = vsr2.LineStyle;
+                            var point = vsr2.PointStyle;
+                            var comp = vsr2.CompositeStyle;
+
+                            if (comp != null && (area != null || line != null || point != null))
+                            {
+                                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LayerDefinition_CompositeStyleDefinedAlongsideBasicStyle, string.Format(
+                                    Properties.Resources.LDF_CompositeStyleDefinedAlongsideBasicStyle,
+                                    vsr2.MinScale.HasValue ? vsr2.MinScale.Value : 0,
+                                    vsr2.MaxScale.HasValue ? vsr2.MaxScale.Value.ToString() : Properties.Resources.Infinity))); 
+                            }
+                        }
+
                         ranges.Add(new KeyValuePair<double, double>(
                             vsr.MaxScale.HasValue ? vsr.MaxScale.Value : double.PositiveInfinity,
                             vsr.MinScale.HasValue ? vsr.MinScale.Value : double.NegativeInfinity));

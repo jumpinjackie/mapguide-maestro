@@ -539,4 +539,10 @@
   <data name="DuplicateKeyExceptionMessage" xml:space="preserve">
     <value>An item with the key value ({0}) already exists in the collection</value>
   </data>
+  <data name="LDF_CompositeStyleDefinedAlongsideBasicStyle" xml:space="preserve">
+    <value>The scale range {0} to {1} contains a composite style defined alongside a area/point/line style. The composite style takes precedence in such cases meaning the area/point/line style is always ignored</value>
+  </data>
+  <data name="Infinity" xml:space="preserve">
+    <value>Infinity</value>
+  </data>
 </root>

@@ -176,6 +176,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Warning_LayerDefinition_MultipleGridScaleRanges,
 
         /// <summary>
+        /// A scale range was found in a Layer Definition which has a composite style defined along side a point, line or area style. In such cases, the 
+        /// composite style will always take precedence and the point/line/area style will have no effect
+        /// </summary>
+        Warning_LayerDefinition_CompositeStyleDefinedAlongsideBasicStyle,
+
+        /// <summary>
         /// The web layout's initial view lies outside the referenced map definition's extents. Usually means you will see nothing when the AJAX viewer loads.
         /// </summary>
         Warning_WebLayout_InitialViewOutsideMapExtents = 3601,
