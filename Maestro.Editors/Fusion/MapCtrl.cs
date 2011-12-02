@@ -38,10 +38,10 @@ namespace Maestro.Editors.Fusion
     [ToolboxItem(false)]
     internal partial class MapCtrl : UserControl, INotifyResourceChanged
     {
-        const string G_NORMAL_MAP = "ROADMAP";
-        const string G_SATELLITE_MAP = "SATELLITE";
-        const string G_HYBRID_MAP = "HYBRID";
-        const string G_PHYSICAL_MAP = "TERRAIN";
+        const string G_NORMAL_MAP = "G_NORMAL_MAP";
+        const string G_SATELLITE_MAP = "G_SATELLITE_MAP";
+        const string G_HYBRID_MAP = "G_HYBRID_MAP";
+        const string G_PHYSICAL_MAP = "G_PHYSICAL_MAP";
 
         const string YAHOO_MAP_REG = "YAHOO_MAP_REG";
         const string YAHOO_MAP_SAT = "YAHOO_MAP_SAT";
@@ -54,6 +54,11 @@ namespace Maestro.Editors.Fusion
         const string Type_Google = "Google";
         const string Type_Yahoo = "Yahoo";
         const string Type_Bing = "VirtualEarth";
+        const string Type_OSM = "OpenStreetMap";
+
+        const string OSM_MAP_MAPNIK = "Mapnik";
+        const string OSM_MAP_OSMARENDER = "Osmarender";
+        const string OSM_MAP_CYCLEMAP = "CycleMap";
 
         private MapCtrl()
         {
@@ -219,7 +224,7 @@ namespace Maestro.Editors.Fusion
             chkOverride.Checked = (_initialView != null);
 
             InitCmsMaps(group);
-            Debug.Assert(_cmsMaps.Count == 10);
+            Debug.Assert(_cmsMaps.Count == 13);
 
             if (_initialView == null)
                 _initialView = group.CreateInitialView(0.0, 0.0, 0.0);
@@ -339,7 +344,12 @@ namespace Maestro.Editors.Fusion
                 _cmsMaps[BING_AERIAL] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, "Bing Maps Satellite", BING_AERIAL)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(BING_HYBRID))
                 _cmsMaps[BING_HYBRID] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, "Bing Maps Hybrid", BING_HYBRID)) { IsEnabled = false };
-
+            if (!_cmsMaps.ContainsKey(OSM_MAP_MAPNIK))
+                _cmsMaps[OSM_MAP_MAPNIK] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, "Open Street Map", OSM_MAP_MAPNIK)) { IsEnabled = false };
+            if (!_cmsMaps.ContainsKey(OSM_MAP_OSMARENDER))
+                _cmsMaps[OSM_MAP_OSMARENDER] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, "Open Street Map (Osmarender)", OSM_MAP_OSMARENDER)) { IsEnabled = false };
+            if (!_cmsMaps.ContainsKey(OSM_MAP_CYCLEMAP))
+                _cmsMaps[OSM_MAP_CYCLEMAP] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, "Open Street Map (CycleMap)", OSM_MAP_CYCLEMAP)) { IsEnabled = false };
         }
 
         private void chkOverride_CheckedChanged(object sender, EventArgs e)
@@ -517,6 +527,30 @@ namespace Maestro.Editors.Fusion
 
             SetCmsAvailability(YAHOO_MAP_HYB, chkYahooHybrid.Checked);
             EvaluateCmsStates();
+        }
+
+        private void chkOsmMapnik_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_noEvents)
+                return;
+
+            SetCmsAvailability(OSM_MAP_MAPNIK, chkOsmMapnik.Checked);
+        }
+
+        private void chkOsmOsmarender_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_noEvents)
+                return;
+
+            SetCmsAvailability(OSM_MAP_OSMARENDER, chkOsmOsmarender.Checked);
+        }
+
+        private void chkOsmCycleMap_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_noEvents)
+                return;
+
+            SetCmsAvailability(OSM_MAP_CYCLEMAP, chkOsmCycleMap.Checked);
         }
 
         private void EvaluateCmsStates()

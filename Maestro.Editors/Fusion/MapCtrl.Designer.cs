@@ -48,6 +48,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cmbSelectionColor = new Maestro.Editors.Common.ColorComboBox();
             this.grpCms = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.chkOsmMapnik = new System.Windows.Forms.CheckBox();
+            this.chkOsmOsmarender = new System.Windows.Forms.CheckBox();
+            this.chkOsmCycleMap = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.chkGoogTerrain = new System.Windows.Forms.CheckBox();
             this.chkGoogStreets = new System.Windows.Forms.CheckBox();
@@ -66,6 +70,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.grpCms.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -191,6 +196,7 @@
             // grpCms
             // 
             resources.ApplyResources(this.grpCms, "grpCms");
+            this.grpCms.Controls.Add(this.groupBox6);
             this.grpCms.Controls.Add(this.groupBox5);
             this.grpCms.Controls.Add(this.groupBox4);
             this.grpCms.Controls.Add(this.groupBox3);
@@ -198,6 +204,36 @@
             this.grpCms.Controls.Add(this.label7);
             this.grpCms.Name = "grpCms";
             this.grpCms.TabStop = false;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.chkOsmMapnik);
+            this.groupBox6.Controls.Add(this.chkOsmOsmarender);
+            this.groupBox6.Controls.Add(this.chkOsmCycleMap);
+            resources.ApplyResources(this.groupBox6, "groupBox6");
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.TabStop = false;
+            // 
+            // chkOsmMapnik
+            // 
+            resources.ApplyResources(this.chkOsmMapnik, "chkOsmMapnik");
+            this.chkOsmMapnik.Name = "chkOsmMapnik";
+            this.chkOsmMapnik.UseVisualStyleBackColor = true;
+            this.chkOsmMapnik.CheckedChanged += new System.EventHandler(this.chkOsmMapnik_CheckedChanged);
+            // 
+            // chkOsmOsmarender
+            // 
+            resources.ApplyResources(this.chkOsmOsmarender, "chkOsmOsmarender");
+            this.chkOsmOsmarender.Name = "chkOsmOsmarender";
+            this.chkOsmOsmarender.UseVisualStyleBackColor = true;
+            this.chkOsmOsmarender.CheckedChanged += new System.EventHandler(this.chkOsmOsmarender_CheckedChanged);
+            // 
+            // chkOsmCycleMap
+            // 
+            resources.ApplyResources(this.chkOsmCycleMap, "chkOsmCycleMap");
+            this.chkOsmCycleMap.Name = "chkOsmCycleMap";
+            this.chkOsmCycleMap.UseVisualStyleBackColor = true;
+            this.chkOsmCycleMap.CheckedChanged += new System.EventHandler(this.chkOsmCycleMap_CheckedChanged);
             // 
             // groupBox5
             // 
@@ -321,6 +357,8 @@
             this.groupBox2.PerformLayout();
             this.grpCms.ResumeLayout(false);
             this.grpCms.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -367,5 +405,9 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox chkGoogTerrain;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox chkOsmMapnik;
+        private System.Windows.Forms.CheckBox chkOsmOsmarender;
+        private System.Windows.Forms.CheckBox chkOsmCycleMap;
     }
 }
