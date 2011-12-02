@@ -26,6 +26,7 @@ using System.Text;
 using System.Windows.Forms;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -162,6 +163,41 @@ namespace Maestro.Editors.MapDefinition
                             _scales.Add(scale);
                         }
                     }
+                }
+            }
+        }
+
+        static double[] CMS_SCALE_LIST = { 
+            1128.49722,
+            2256.9944399999999,
+            4513.9888799999999,
+            9027.9777610000001,
+            18055.95552,
+            36111.911039999999,
+            72223.822090000001,
+            144447.64420000001,
+            288895.28840000002,
+            577790.57669999998,
+            1155581.1529999999,
+            2311162.307,
+            4622324.6140000001,
+            9244649.227,
+            18489298.449999999,
+            36978596.909999996,
+            73957193.819999993,
+            147914387.59999999,
+            295828775.30000001,
+            591657550.5
+        };
+
+        private void btnCmsScaleList_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(Properties.Resources.ConfirmGoogleScaleList, Properties.Resources.Confirm, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                _scales.Clear();
+                foreach (var scale in CMS_SCALE_LIST)
+                {
+                    _scales.Add(scale);
                 }
             }
         }

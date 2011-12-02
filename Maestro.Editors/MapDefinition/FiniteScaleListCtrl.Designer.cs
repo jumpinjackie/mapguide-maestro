@@ -46,6 +46,8 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnEditScalesManually = new System.Windows.Forms.ToolStripButton();
             this.btnRemoveScale = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnCmsScaleList = new System.Windows.Forms.ToolStripButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxScale)).BeginInit();
@@ -166,7 +168,9 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnEditScalesManually,
-            this.btnRemoveScale});
+            this.btnRemoveScale,
+            this.toolStripSeparator1,
+            this.btnCmsScaleList});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -185,6 +189,18 @@
             this.btnRemoveScale.Image = global::Maestro.Editors.Properties.Resources.cross_script;
             this.btnRemoveScale.Name = "btnRemoveScale";
             this.btnRemoveScale.Click += new System.EventHandler(this.btnRemoveScale_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // btnCmsScaleList
+            // 
+            this.btnCmsScaleList.Image = global::Maestro.Editors.Properties.Resources.layers_stack;
+            resources.ApplyResources(this.btnCmsScaleList, "btnCmsScaleList");
+            this.btnCmsScaleList.Name = "btnCmsScaleList";
+            this.btnCmsScaleList.Click += new System.EventHandler(this.btnCmsScaleList_Click);
             // 
             // FiniteScaleListCtrl
             // 
@@ -225,5 +241,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnEditScalesManually;
         private System.Windows.Forms.ToolStripButton btnRemoveScale;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnCmsScaleList;
     }
 }

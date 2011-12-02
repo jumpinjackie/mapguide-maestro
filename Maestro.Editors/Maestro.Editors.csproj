@@ -2226,6 +2226,7 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\layers-stack.png" />
     <None Include="Resources\disk.png" />
     <None Include="Resources\printer.png" />
     <None Include="Resources\map.png" />

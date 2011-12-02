@@ -125,17 +125,14 @@
     <value>Failed to read {0} color(s) in line {1}</value>
     <comment>An error message that is displayed if the expected color count does not match the actual count</comment>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
-  </data>
   <data name="InvokeUrlNoMapDefined" xml:space="preserve">
     <value>Cannot get layers. No map definition specified</value>
   </data>
-  <data name="arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="minus-circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minus-circle.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SelectLayer" xml:space="preserve">
+    <value>Select Layer</value>
   </data>
   <data name="map--arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\map--arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -143,18 +140,14 @@
   <data name="layer--plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\layer--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="HeaderFileMissing" xml:space="preserve">
-    <value>The header file does not exist</value>
-    <comment>A message displayed when the user selects a non-existing file</comment>
-  </data>
   <data name="application--plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\application--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\image.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="property" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\property.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PropEnumNoValues" xml:space="preserve">
+    <value>Could not find possible values for enumerable property</value>
   </data>
   <data name="DataReadError" xml:space="preserve">
     <value>Unable to read data from the selected column: {0}</value>
@@ -173,14 +166,11 @@
   <data name="tick-circle-frame" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tick-circle-frame.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="application_browser" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\application-browser.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ColorPicker" xml:space="preserve">
+    <value>Color Picker ...</value>
   </data>
   <data name="icon_printablepage_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_printablepage_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_measure" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_measure.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="application--arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\application--arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -191,8 +181,8 @@
   <data name="icon_refreshmap_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_refreshmap_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="images_stack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images-stack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="folder_horizontal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\folder-horizontal.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="block" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\block.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -200,8 +190,8 @@
   <data name="icon_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_print.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ruler1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ruler1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon_tasks" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_tasks.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ColHeaderName" xml:space="preserve">
     <value>Name</value>
@@ -209,20 +199,20 @@
   <data name="SelectSpatialContext" xml:space="preserve">
     <value>Select Spatial Context</value>
   </data>
-  <data name="database_share" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\database-share.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ui_splitter_horizontal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ui-splitter-horizontal.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NotSessionBasedId" xml:space="preserve">
     <value>Resource ID must not be session based</value>
   </data>
-  <data name="icon_restorecenter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_restorecenter.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\printer.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SaveResourceFirst" xml:space="preserve">
+    <value>Please save this resource first</value>
   </data>
   <data name="layer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\layer.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gear--plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gear--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NoWidgetEditorIface" xml:space="preserve">
     <value>The specified editor does not implement the required IWidgetEditor interface</value>
@@ -230,18 +220,11 @@
   <data name="control" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\control.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sql" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sql.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="images_stack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images-stack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_zoomout_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_zoomout_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PackageReadError" xml:space="preserve">
-    <value>Failed to read package. Error message was: {0}</value>
-    <comment>A message displayed when the package could not be read</comment>
-  </data>
-  <data name="icon_zoomselect_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_zoomselect_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sql-join-left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sql-join-left.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -256,9 +239,6 @@
   <data name="NewFolder" xml:space="preserve">
     <value>New folder</value>
     <comment>The default name of a new folder</comment>
-  </data>
-  <data name="icon_invokescript_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_invokescript_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="grid" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\grid.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -275,8 +255,8 @@
   <data name="blueprints" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blueprints.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PreviewRecordCount" xml:space="preserve">
-    <value>{0} results found</value>
+  <data name="LayerGroupConvertedToBaseLayerGroup" xml:space="preserve">
+    <value>Layer Group ({0}) successfully converted to Base Layer Group ({1})</value>
   </data>
   <data name="server" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\server.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -297,8 +277,8 @@
   <data name="LastUpdated" xml:space="preserve">
     <value>Last Updated: </value>
   </data>
-  <data name="ExtentsTransformationFailed" xml:space="preserve">
-    <value>Could not transform extent of layer {0} to the map definition's coordinate system. Extents ignored</value>
+  <data name="printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\printer.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="InvalidResourceId" xml:space="preserve">
     <value>Not a valid resource identifier</value>
@@ -309,17 +289,17 @@
   <data name="PromptDeleteWidgetAndReferences" xml:space="preserve">
     <value>Delete this widget and all references to it?</value>
   </data>
-  <data name="icon_selectwithin_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_selectwithin_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="gear" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gear.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AggregateQuery" xml:space="preserve">
     <value>Aggregate Query</value>
   </data>
-  <data name="map--minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\map--minus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="InvalidResourceIdNotSpecifiedType" xml:space="preserve">
+    <value>Invalid Resource Identifier. Not the specified type</value>
+  </data>
+  <data name="FilterPng" xml:space="preserve">
+    <value>Portable Network Graphics (*.png)|*.png</value>
   </data>
   <data name="icon_zoomin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_zoomin.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -342,11 +322,11 @@
   <data name="SpecifySecondaryFeatureSource" xml:space="preserve">
     <value>Please specify the secondary feature source</value>
   </data>
+  <data name="globe--arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\globe--arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="drive-download" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\drive-download.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_search.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="QualitativeName" xml:space="preserve">
     <value>Qualitative</value>
@@ -358,11 +338,17 @@
   <data name="sort-number" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sort-number.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IncompatibleConnection" xml:space="preserve">
-    <value>This connection is not compatible</value>
+  <data name="SelectWidget" xml:space="preserve">
+    <value>Select widget</value>
   </data>
-  <data name="icon_selectwithin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_selectwithin.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon_invokeurl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_invokeurl.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="disk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\disk.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DeleteCommand" xml:space="preserve">
+    <value>Delete Command</value>
   </data>
   <data name="map--plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\map--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -372,9 +358,6 @@
   </data>
   <data name="icon_popupscrollup_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_popupscrollup_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="color" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\color.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_plotdwf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_plotdwf.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -389,9 +372,6 @@ Do you want to continue?</value>
   </data>
   <data name="ruler" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ruler.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="application-import" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\application-import.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="document-copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\document-copy.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -420,8 +400,14 @@ Do you want to continue?</value>
   <data name="ErrorLoadingWmsConfig" xml:space="preserve">
     <value>Error loading WMS configuration document: {0}. A default document will be created</value>
   </data>
+  <data name="SymbolGraphicsImagePlaceholder" xml:space="preserve">
+    <value>&lt;image&gt;</value>
+  </data>
   <data name="ui-separator" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ui-separator.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="database--plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\database--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="UnitsKb" xml:space="preserve">
     <value>KB</value>
@@ -431,6 +417,9 @@ Do you want to continue?</value>
   </data>
   <data name="icon_panright_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_panright_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NoSchemasInFeatureSource" xml:space="preserve">
+    <value>Feature Source has no schemas</value>
   </data>
   <data name="RdbmsFeatureSource" xml:space="preserve">
     <value>RDBMS Feature Source</value>
@@ -442,11 +431,11 @@ Do you want to continue?</value>
   <data name="TestConnectionNoErrors" xml:space="preserve">
     <value>Provider reported no errors</value>
   </data>
-  <data name="InvokeScriptCmdDescription" xml:space="preserve">
-    <value>Invoke Script Command</value>
-  </data>
   <data name="CustomCommandsExported" xml:space="preserve">
     <value>Custom commands exported to {0}</value>
+  </data>
+  <data name="SelectFeatureClass" xml:space="preserve">
+    <value>Select Feature Class</value>
   </data>
   <data name="ExtentsCalculationCompleted" xml:space="preserve">
     <value>Map extents calculation completed. Click Accept to use the calculated extents.</value>
@@ -457,10 +446,8 @@ Do you want to continue?</value>
   <data name="layer-shape-curve" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\layer-shape-curve.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TooMuchDataWarning" xml:space="preserve">
-    <value>The selected column contains more than {0} different values.
-The calculated averages only accounts for the first {0} distinct values.</value>
-    <comment>A warning message that is displayed if the dataset is too large</comment>
+  <data name="color" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\color.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NoTypesSelected" xml:space="preserve">
     <value>You must select at least one type</value>
@@ -479,9 +466,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="ParameterOverrideExists" xml:space="preserve">
     <value>Parameter Override already specified</value>
   </data>
-  <data name="SymbolGraphicsTextPlaceholder" xml:space="preserve">
-    <value>&lt;text&gt;</value>
-  </data>
   <data name="layer--minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\layer--minus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -495,8 +479,8 @@ The calculated averages only accounts for the first {0} distinct values.</value>
     <value>Unknown types</value>
     <comment>The list entry that represents unknown resource types</comment>
   </data>
-  <data name="gear--pencil" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gear--pencil.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon_zoomin_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_zoomin_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_panright" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_panright.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -507,6 +491,9 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   </data>
   <data name="icon_home" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_home.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="QuestionResetFsOverrideList" xml:space="preserve">
+    <value>Reset Feature Source override list?</value>
   </data>
   <data name="icon_restorecenter_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_restorecenter_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -539,6 +526,9 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="icon_pan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_pan.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_search_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_search_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon_viewoptions" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_viewoptions.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -551,8 +541,8 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="drive-upload" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\drive-upload.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="document--plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\document--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="application-search-result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\application-search-result.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SpatialContextsFound" xml:space="preserve">
     <value>{0} spatial contexts found</value>
@@ -566,16 +556,19 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="globe--minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\globe--minus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TooManyIndiviualValuesError" xml:space="preserve">
-    <value>The selected column contains more than {0} different values, and thus cannot be used for theming with individual values</value>
-    <comment>An error message that is displayed if the selected column has too many distinct values</comment>
-  </data>
   <data name="FdoConnectionStringComponentNotFound" xml:space="preserve">
     <value>The component "{0}" could not be found in the specified FDO connection string</value>
+  </data>
+  <data name="FindNothing" xml:space="preserve">
+    <value>Could not find specified string or end of document reached</value>
   </data>
   <data name="OutputFileMissing" xml:space="preserve">
     <value>You must enter a full path to the output file</value>
     <comment>A message that is displayed when the user has not entered an output file</comment>
+  </data>
+  <data name="FontPreviewError" xml:space="preserve">
+    <value>Cannot Preview Font "{0}"</value>
+    <comment>An error message that is displayed when the rendering fails, using the specified font</comment>
   </data>
   <data name="OdbcCannotInferDriver" xml:space="preserve">
     <value>Could not infer ODBC driver from file name: {0}</value>
@@ -585,6 +578,9 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   </data>
   <data name="UnitsMs" xml:space="preserve">
     <value>ms</value>
+  </data>
+  <data name="icon_zoomprev" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_zoomprev.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="databases-relation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\databases-relation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -598,9 +594,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   </data>
   <data name="arrow-return-180" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow-return-180.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="tick" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tick.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="arrow-curve-180-left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow-curve-180-left.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -619,18 +612,14 @@ The calculated averages only accounts for the first {0} distinct values.</value>
     <value>You have entered a non-numeric value in the Reference Y field. Due to a bug in MapGuide, this will likely give an error when saving.</value>
     <comment>An error message that is displayed if the user attempts to use an expression as the InsertionPointY value (caused by an xsd bug in MapGuide)</comment>
   </data>
-  <data name="OdbcDriverAccess64" xml:space="preserve">
-    <value>{Microsoft Access Driver (*.mdb, *.accdb)}</value>
-  </data>
-  <data name="SymbolTypeNotSupported" xml:space="preserve">
-    <value>Only symbols of type "Mark" and "Font" are currently supported</value>
-    <comment>A message that is displayed when the user attempts to modify an item with an unsupported type</comment>
-  </data>
   <data name="FieldRequired" xml:space="preserve">
     <value>This field is required: {0}</value>
   </data>
   <data name="icon_copy_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_copy_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="script--arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\script--arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ColumnHasNoValidDataError" xml:space="preserve">
     <value>The selected column had no non-null values and cannot be used.</value>
@@ -642,8 +631,8 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="CoordinateTransformationFailed" xml:space="preserve">
     <value>Failed to transform coordinates: {0}</value>
   </data>
-  <data name="SQLQuery" xml:space="preserve">
-    <value>SQL Query</value>
+  <data name="cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cross.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PropertyTooltip" xml:space="preserve">
     <value>Property: {0}
@@ -672,12 +661,8 @@ Type: {1}</value>
   <data name="UpdatingConfiguration" xml:space="preserve">
     <value>Updating Configuration Document</value>
   </data>
-  <data name="RepositoryWipeWarning" xml:space="preserve">
-    <value>You have selected to restore the package at the root.
-You have also selected to delete the target before restoring.
-This will result in the entire repository being deleted and replaced with this package.
-Are you absolutely sure that is what you want?</value>
-    <comment>A confirmation message displayed to the user, when creating a package that will completely wipe a repository</comment>
+  <data name="database_share" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\database-share.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Separator" xml:space="preserve">
     <value>Separator</value>
@@ -685,17 +670,17 @@ Are you absolutely sure that is what you want?</value>
   <data name="icon_panup_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_panup_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icon_selectpolygon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_selectpolygon.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="InvalidConnection" xml:space="preserve">
     <value>This is not a valid connection: {0}</value>
   </data>
   <data name="folder--plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icon_zoom_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_zoom_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="arrow-curve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow-curve.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FsPreview_ClassNodeTooltip" xml:space="preserve">
+    <value>Name: {0}{3}Description: {1}{3}Geometry Property: {2}</value>
   </data>
   <data name="folder--minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder--minus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -703,8 +688,10 @@ Are you absolutely sure that is what you want?</value>
   <data name="ExportNoCustomCommandsSelected" xml:space="preserve">
     <value>No custom commands selected. Nothing to export</value>
   </data>
-  <data name="gear--minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gear--minus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="TooMuchDataWarning" xml:space="preserve">
+    <value>The selected column contains more than {0} different values.
+The calculated averages only accounts for the first {0} distinct values.</value>
+    <comment>A warning message that is displayed if the dataset is too large</comment>
   </data>
   <data name="control-stop-square" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\control-stop-square.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -713,8 +700,12 @@ Are you absolutely sure that is what you want?</value>
     <value>An error occured while reading column values: {0}</value>
     <comment>An error message that is displayed when the column values could not be read</comment>
   </data>
-  <data name="WmsLayersUpdated" xml:space="preserve">
-    <value>WMS layers updated</value>
+  <data name="RepositoryWipeWarning" xml:space="preserve">
+    <value>You have selected to restore the package at the root.
+You have also selected to delete the target before restoring.
+This will result in the entire repository being deleted and replaced with this package.
+Are you absolutely sure that is what you want?</value>
+    <comment>A confirmation message displayed to the user, when creating a package that will completely wipe a repository</comment>
   </data>
   <data name="icon_viewoptions_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_viewoptions_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -754,14 +745,22 @@ Are you sure this is what you want?</value>
   <data name="cross-script" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cross-script.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_clearselect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_clearselect.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ExportNoCommandsSelected" xml:space="preserve">
     <value>No commands selected. Nothing to export</value>
   </data>
-  <data name="UnknownQueryMode" xml:space="preserve">
-    <value>Unknown query mode</value>
+  <data name="StandardQuery" xml:space="preserve">
+    <value>Standard Query</value>
   </data>
-  <data name="FsPreview_GeometryPropertyNodeTooltip" xml:space="preserve">
-    <value>Name: {0}{7}Description: {1}{7}Geometry Types: {2}{7}Read Only: {3}{7}Has Elevation: {4}{7}Has Measure: {5}{7}Spatial Context: {6}</value>
+  <data name="FiletypeMGP" xml:space="preserve">
+    <value>MapGuide Packages ({0})</value>
+    <comment>The text displayed when browsing for MGP files</comment>
+  </data>
+  <data name="SymbolTypeNotSupported" xml:space="preserve">
+    <value>Only symbols of type "Mark" and "Font" are currently supported</value>
+    <comment>A message that is displayed when the user attempts to modify an item with an unsupported type</comment>
   </data>
   <data name="FdoConnectionStatus" xml:space="preserve">
     <value>FDO Connection Status: {0}</value>
@@ -773,16 +772,6 @@ Are you sure this is what you want?</value>
     <value>Missing column "{0}"</value>
     <comment>An error message that is displayed if the file is missing a required column</comment>
   </data>
-  <data name="icon_zoomrect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_zoomrect.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="InvalidColorComponent" xml:space="preserve">
-    <value>Invalid {0} color component {1} in line {2}</value>
-    <comment>An error message that is displayed if a color component is outside the [0-255] range.
-{0} is the color component, eg. R, G or B
-{1} is the value read
-{2} is the line where the error was encountered</comment>
-  </data>
   <data name="OverwriteDisplayScales" xml:space="preserve">
     <value>Overwrite the current display scales?</value>
   </data>
@@ -793,8 +782,8 @@ Are you sure this is what you want?</value>
   <data name="cross-circle-frame" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cross-circle-frame.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="script--arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\script--arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PreviewRecordCount" xml:space="preserve">
+    <value>{0} results found</value>
   </data>
   <data name="icon_fitwindow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_fitwindow.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -805,8 +794,8 @@ Are you sure this is what you want?</value>
   <data name="sql-join" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sql-join.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NoSchemasInFeatureSource" xml:space="preserve">
-    <value>Feature Source has no schemas</value>
+  <data name="UnknownQueryMode" xml:space="preserve">
+    <value>Unknown query mode</value>
   </data>
   <data name="SymbolGraphicsPathPlaceholder" xml:space="preserve">
     <value>&lt;path&gt;</value>
@@ -818,14 +807,14 @@ Are you sure this is what you want?</value>
   <data name="NoActiveDataFile" xml:space="preserve">
     <value>No active resource data file selected</value>
   </data>
-  <data name="PreviewQueryElapsed" xml:space="preserve">
-    <value>Preview Completed in {0}ms</value>
+  <data name="ModeNotAllowed" xml:space="preserve">
+    <value>Mode not allowed: {0}</value>
   </data>
-  <data name="XmlDocIsValid" xml:space="preserve">
-    <value>Document is valid</value>
+  <data name="TitleQuestion" xml:space="preserve">
+    <value>Question</value>
   </data>
-  <data name="SelectFeatureClass" xml:space="preserve">
-    <value>Select Feature Class</value>
+  <data name="map--minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\map--minus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_zoomnext" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_zoomnext.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -839,18 +828,18 @@ Are you sure this is what you want?</value>
   <data name="arrow-270" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow-270.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UnmanagedBrowserMultiSelectionNotAllowed" xml:space="preserve">
-    <value>Multiple selection is not allowed when SelectFoldersOnly is set to true</value>
-  </data>
   <data name="AlternateNameMissing" xml:space="preserve">
     <value>You must enter a alternate name, or remove the checkmark</value>
     <comment>A message displayed when the user has not entered an alternate name for a resource</comment>
   </data>
+  <data name="arrow-090" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow-090.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="globe--plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\globe--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DeleteCommand" xml:space="preserve">
-    <value>Delete Command</value>
+  <data name="icon_selectwithin_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_selectwithin_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_selectradius" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_selectradius.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -858,11 +847,14 @@ Are you sure this is what you want?</value>
   <data name="application-export" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\application-export.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GeometryStyleComboDataset" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GeometryStyleComboDataset.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="icon_select_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icon_selectradius_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_selectradius_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="question" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\question.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InvalidFeatureSourceNoClasses" xml:space="preserve">
+    <value>Feature Source ({0}) has no usable feature classes. Choose a different feature source</value>
   </data>
   <data name="TitleError" xml:space="preserve">
     <value>Error</value>
@@ -873,20 +865,26 @@ Are you sure this is what you want?</value>
   <data name="icon_plotdwf_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_plotdwf_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ui_splitter_horizontal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ui-splitter-horizontal.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FilterAll" xml:space="preserve">
+    <value>All File Types (*.*)|*.*</value>
   </data>
-  <data name="folder_horizontal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder-horizontal.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_copy.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="gear--pencil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gear--pencil.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_ctxarrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_ctxarrow.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="EditWatermarkInstance" xml:space="preserve">
-    <value>Edit Watermark Instance</value>
+  <data name="InvalidResourceIdFolder" xml:space="preserve">
+    <value>Must be valid resource id. Cannot be a folder</value>
   </data>
-  <data name="ColorBrewer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColorBrewer.csv;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="icon_measure" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_measure.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FilenameValidationError" xml:space="preserve">
     <value>Failed to validate the filenames: {0}</value>
@@ -895,11 +893,17 @@ Are you sure this is what you want?</value>
   <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\table.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="question" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\question.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ExtentsTransformationFailed" xml:space="preserve">
+    <value>Could not transform extent of layer {0} to the map definition's coordinate system. Extents ignored</value>
   </data>
-  <data name="FindNothing" xml:space="preserve">
-    <value>Could not find specified string or end of document reached</value>
+  <data name="icon_selectpolygon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_selectpolygon.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pandown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pandown.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_selectwithin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_selectwithin.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_panup" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_panup.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -913,11 +917,12 @@ Are you sure this is what you want?</value>
   <data name="FilterXml" xml:space="preserve">
     <value>XML Files (.xml)|*.xml</value>
   </data>
-  <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="HeaderFileMissing" xml:space="preserve">
+    <value>The header file does not exist</value>
+    <comment>A message displayed when the user selects a non-existing file</comment>
   </data>
-  <data name="icon_select_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_select_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon_search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_search.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ConfirmDeleteResourceData" xml:space="preserve">
     <value>Are you sure you want to delete this resource data?</value>
@@ -940,8 +945,8 @@ Are you sure this is what you want?</value>
         WFv7wcxM6j8JZ9++bzL/aISV/Ja7mnNYqmY07YouQubg/l1NwG/XLb2y/7oFegAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="QuestionResetFsOverrideList" xml:space="preserve">
-    <value>Reset Feature Source override list?</value>
+  <data name="icon_restorecenter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_restorecenter.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SelectPackageFile" xml:space="preserve">
     <value>Select the package file to edit</value>
@@ -960,8 +965,8 @@ Are you sure this is what you want?</value>
     <value>Invalid column name</value>
     <comment>An error message that is displayed when the column selected does not exist</comment>
   </data>
-  <data name="SaveResourceFirst" xml:space="preserve">
-    <value>Please save this resource first</value>
+  <data name="arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FilterShp" xml:space="preserve">
     <value>ESRI Shape File (*.shp)|*.shp</value>
@@ -976,9 +981,6 @@ Are you sure this is what you want?</value>
   <data name="FilterSdf" xml:space="preserve">
     <value>Autodesk SDF (*.sdf)|*.sdf</value>
   </data>
-  <data name="icon_zoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_zoom.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="SelectFolder" xml:space="preserve">
     <value>Select Folder</value>
   </data>
@@ -987,10 +989,6 @@ Are you sure this is what you want?</value>
   </data>
   <data name="InlineSymbolDefinition" xml:space="preserve">
     <value>Inline Symbol Definition</value>
-  </data>
-  <data name="BetweenLabel" xml:space="preserve">
-    <value>Between {0} and {1}</value>
-    <comment>The label used for all "between" values in the graduated theme set</comment>
   </data>
   <data name="OdbcDriverExcel" xml:space="preserve">
     <value>{Microsoft Excel Driver (*.xls)}</value>
@@ -1004,29 +1002,26 @@ Are you sure this is what you want?</value>
   <data name="arrow-circle-135" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow-circle-135.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="document_task" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\document-task.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="WidgetNameExists" xml:space="preserve">
     <value>A widget named {0} already exists</value>
   </data>
   <data name="CustomCommandsImported" xml:space="preserve">
     <value>{0} custom commands imported from {1}. The following commands had to be renamed to prevent clashes: {2}</value>
   </data>
-  <data name="icon_clearselect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_clearselect.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon_zoom_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_zoom_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icon_invokeurl" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_invokeurl.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="UnmanagedBrowserMultiSelectionNotAllowed" xml:space="preserve">
+    <value>Multiple selection is not allowed when SelectFoldersOnly is set to true</value>
   </data>
   <data name="sql-join-right" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sql-join-right.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SelectSymbolLibraryFirst" xml:space="preserve">
-    <value>Please specify the symbol library first</value>
-  </data>
-  <data name="LayerGroupConvertedToBaseLayerGroup" xml:space="preserve">
-    <value>Layer Group ({0}) successfully converted to Base Layer Group ({1})</value>
-  </data>
-  <data name="icon_zoomnext_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_zoomnext_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SQLQuery" xml:space="preserve">
+    <value>SQL Query</value>
   </data>
   <data name="InvalidFieldCountError" xml:space="preserve">
     <value>Invalid field count in line {0}</value>
@@ -1034,6 +1029,9 @@ Are you sure this is what you want?</value>
   </data>
   <data name="PromptName" xml:space="preserve">
     <value>Enter the name</value>
+  </data>
+  <data name="layers-stack-arrange-back" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\layers-stack-arrange-back.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_buffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_buffer.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -1049,14 +1047,14 @@ Are you sure this is what you want?</value>
     <value>All types</value>
     <comment>The list entry that represents all resource types</comment>
   </data>
-  <data name="TitleQuestion" xml:space="preserve">
-    <value>Question</value>
+  <data name="SelectSymbolLibraryFirst" xml:space="preserve">
+    <value>Please specify the symbol library first</value>
   </data>
   <data name="NoSiteService" xml:space="preserve">
     <value>No site service available</value>
   </data>
-  <data name="FsPreview_ClassNodeTooltip" xml:space="preserve">
-    <value>Name: {0}{3}Description: {1}{3}Geometry Property: {2}</value>
+  <data name="OdbcDriverAccess64" xml:space="preserve">
+    <value>{Microsoft Access Driver (*.mdb, *.accdb)}</value>
   </data>
   <data name="icon_forward" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_forward.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -1064,29 +1062,33 @@ Are you sure this is what you want?</value>
   <data name="InvokeUrlCmdDescription" xml:space="preserve">
     <value>Invoke URL command</value>
   </data>
-  <data name="icon_pandown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_pandown.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="EditWatermarkInstance" xml:space="preserve">
+    <value>Edit Watermark Instance</value>
   </data>
-  <data name="PropEnumNoValues" xml:space="preserve">
-    <value>Could not find possible values for enumerable property</value>
+  <data name="ColorBrewer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ColorBrewer.csv;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="CheckGeometryFirst" xml:space="preserve">
     <value>Ensure the Geometry box is checked</value>
   </data>
-  <data name="ModeNotAllowed" xml:space="preserve">
-    <value>Mode not allowed: {0}</value>
+  <data name="SelectColumnPlaceholder" xml:space="preserve">
+    <value>&lt;Select column&gt;</value>
+    <comment>A placeholder message displayed when the user has not yet selected a column</comment>
+  </data>
+  <data name="application_browser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\application-browser.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NoScalesToGenerate" xml:space="preserve">
     <value>Number of Scales to generate cannot be less than or equal to 0</value>
   </data>
-  <data name="icon_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_copy.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon_zoomselect_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_zoomselect_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gear--plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gear--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ruler1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ruler1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SelectWidget" xml:space="preserve">
-    <value>Select widget</value>
+  <data name="gear--minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gear--minus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TooManyValuesError" xml:space="preserve">
     <value>The selected column contains more than {0} different values, and thus cannot be used for theming</value>
@@ -1101,8 +1103,8 @@ Are you sure this is what you want?</value>
   <data name="icon_panleft_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_panleft_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SelectLayer" xml:space="preserve">
-    <value>Select Layer</value>
+  <data name="FsPreview_GeometryPropertyNodeTooltip" xml:space="preserve">
+    <value>Name: {0}{7}Description: {1}{7}Geometry Types: {2}{7}Read Only: {3}{7}Has Elevation: {4}{7}Has Measure: {5}{7}Spatial Context: {6}</value>
   </data>
   <data name="function" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\function.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -1110,8 +1112,8 @@ Are you sure this is what you want?</value>
   <data name="OdbcNoMarkedFile" xml:space="preserve">
     <value>Could not infer ODBC driver. No file specified</value>
   </data>
-  <data name="icon_zoomprev" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_zoomprev.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon_zoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_zoom.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="exclamation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exclamation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -1138,14 +1140,19 @@ Returns: {0}</value>
   <data name="NoTransformationRequired" xml:space="preserve">
     <value>No transformation required</value>
   </data>
-  <data name="StandardQuery" xml:space="preserve">
-    <value>Standard Query</value>
+  <data name="IncompatibleConnection" xml:space="preserve">
+    <value>This connection is not compatible</value>
   </data>
-  <data name="InvalidResourceIdFolder" xml:space="preserve">
-    <value>Must be valid resource id. Cannot be a folder</value>
+  <data name="InvalidColorComponent" xml:space="preserve">
+    <value>Invalid {0} color component {1} in line {2}</value>
+    <comment>An error message that is displayed if a color component is outside the [0-255] range.
+{0} is the color component, eg. R, G or B
+{1} is the value read
+{2} is the line where the error was encountered</comment>
   </data>
-  <data name="globe--arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\globe--arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="TooManyIndiviualValuesError" xml:space="preserve">
+    <value>The selected column contains more than {0} different values, and thus cannot be used for theming with individual values</value>
+    <comment>An error message that is displayed if the selected column has too many distinct values</comment>
   </data>
   <data name="OdbcDriverAccess" xml:space="preserve">
     <value>{Microsoft Access Driver (*.mdb)}</value>
@@ -1156,8 +1163,8 @@ Returns: {0}</value>
   <data name="NoRasterClasses" xml:space="preserve">
     <value>This feature source has no class definitions with raster properties</value>
   </data>
-  <data name="icon_zoomin_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_zoomin_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tick.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ErrorMapExtentCalculationFailed" xml:space="preserve">
     <value>Could not transform extents of any layer in this Map Definition. You will have to specify the extents manually.</value>
@@ -1171,18 +1178,18 @@ Returns: {0}</value>
   <data name="SpecifyMapForWebLayout" xml:space="preserve">
     <value>Specify a map for this web layout</value>
   </data>
-  <data name="application-search-result" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\application-search-result.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon_invokescript_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_invokescript_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sql-join-inner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sql-join-inner.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="InvalidValueError" xml:space="preserve">
-    <value>Invalid value</value>
-    <comment>An error message that is displayed when the entered value is invalid</comment>
+  <data name="PackageReadError" xml:space="preserve">
+    <value>Failed to read package. Error message was: {0}</value>
+    <comment>A message displayed when the package could not be read</comment>
   </data>
-  <data name="ColorPicker" xml:space="preserve">
-    <value>Color Picker ...</value>
+  <data name="sql" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sql.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LessThanLabel" xml:space="preserve">
     <value>Less than {0}</value>
@@ -1200,16 +1207,14 @@ Returns: {0}</value>
   <data name="NewFlyout" xml:space="preserve">
     <value>New Flyout</value>
   </data>
-  <data name="layers-stack-arrange-back" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\layers-stack-arrange-back.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PreviewQueryElapsed" xml:space="preserve">
+    <value>Preview Completed in {0}ms</value>
   </data>
-  <data name="FontPreviewError" xml:space="preserve">
-    <value>Cannot Preview Font "{0}"</value>
-    <comment>An error message that is displayed when the rendering fails, using the specified font</comment>
+  <data name="document--plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\document--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FiletypeMGP" xml:space="preserve">
-    <value>MapGuide Packages ({0})</value>
-    <comment>The text displayed when browsing for MGP files</comment>
+  <data name="WmsLayersUpdated" xml:space="preserve">
+    <value>WMS layers updated</value>
   </data>
   <data name="plus-circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\plus-circle.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -1224,30 +1229,30 @@ Returns: {0}</value>
     <value>The folder must start with \"Library://\", do you want the starting folder to become:\n {0} ?</value>
     <comment>A message that is displayed when the user has not entered a folder starting with Library://</comment>
   </data>
-  <data name="FilterAll" xml:space="preserve">
-    <value>All File Types (*.*)|*.*</value>
+  <data name="property" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\property.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="document_task" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\document-task.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SymbolGraphicsTextPlaceholder" xml:space="preserve">
+    <value>&lt;text&gt;</value>
   </data>
   <data name="SelectLayerFirst" xml:space="preserve">
     <value>Please select the layer first</value>
   </data>
-  <data name="icon_search_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_search_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="application-import" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\application-import.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sum" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sum.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SelectColumnPlaceholder" xml:space="preserve">
-    <value>&lt;Select column&gt;</value>
-    <comment>A placeholder message displayed when the user has not yet selected a column</comment>
+  <data name="InvalidValueError" xml:space="preserve">
+    <value>Invalid value</value>
+    <comment>An error message that is displayed when the entered value is invalid</comment>
   </data>
-  <data name="icon_tasks" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_tasks.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="XmlDocIsValid" xml:space="preserve">
+    <value>Document is valid</value>
   </data>
-  <data name="InvalidResourceIdNotSpecifiedType" xml:space="preserve">
-    <value>Invalid Resource Identifier. Not the specified type</value>
+  <data name="icon_zoomnext_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_zoomnext_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_select" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_select.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -1255,20 +1260,21 @@ Returns: {0}</value>
   <data name="icon_back" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_back.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="database--plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\database--plus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BetweenLabel" xml:space="preserve">
+    <value>Between {0} and {1}</value>
+    <comment>The label used for all "between" values in the graduated theme set</comment>
   </data>
-  <data name="arrow-090" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrow-090.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="InvokeScriptCmdDescription" xml:space="preserve">
+    <value>Invoke Script Command</value>
   </data>
-  <data name="cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cross.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GeometryStyleComboDataset" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GeometryStyleComboDataset.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="CommandTypesDataset" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CommandTypesDataset.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="arrow-curve" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrow-curve.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon_selectradius_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_selectradius_disabled.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="edit-indent" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit-indent.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -1277,8 +1283,8 @@ Returns: {0}</value>
     <value>Expression...</value>
     <comment>A value displayed in the combobox to activate the expression builder</comment>
   </data>
-  <data name="FilterPng" xml:space="preserve">
-    <value>Portable Network Graphics (*.png)|*.png</value>
+  <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FsMySql" xml:space="preserve">
     <value>MySQL Feature Source</value>
@@ -1289,16 +1295,16 @@ Returns: {0}</value>
   <data name="FsPostgreSql" xml:space="preserve">
     <value>PostgreSQL/PostGIS Feature Source</value>
   </data>
-  <data name="SymbolGraphicsImagePlaceholder" xml:space="preserve">
-    <value>&lt;image&gt;</value>
+  <data name="icon_zoomrect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_zoomrect.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FindEmptyString" xml:space="preserve">
     <value>Cannot Find an Empty String</value>
   </data>
-  <data name="disk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\disk.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="layers-stack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\layers-stack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="InvalidFeatureSourceNoClasses" xml:space="preserve">
-    <value>Feature Source ({0}) has no usable feature classes. Choose a different feature source</value>
+  <data name="ConfirmGoogleScaleList" xml:space="preserve">
+    <value>Are you sure you want to use a Google-compatible Scale List? This will overwrite your existing scale ranges and will only line up with commercial layers in Fusion if your Map's Coordinate System is WGS84.PseudoMercator</value>
   </data>
 </root>
