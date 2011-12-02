@@ -94,6 +94,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     ///     RuntimeMap map = mapSvc.CreateRuntimeMap(rtMapId, mdf, metersPerUnit);
     ///     
     ///     //Set some display parameters for this map
+    ///     map.ViewScale = 75000;
     ///     map.DisplayWidth = 1024;
     ///     map.DisplayHeight = 1024;
     ///     map.DisplayDpi = 96;
