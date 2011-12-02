@@ -100,11 +100,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             switch (dataPropertyType)
             {
                 case DataPropertyType.Blob:
-                    return "xs:base64Binary";
+                    return "xs:hexBinary";
                 case DataPropertyType.Boolean:
                     return "xs:boolean";
                 case DataPropertyType.Byte:
-                    return "fdo:byte";
+                    return "xs:unsignedByte";
                 case DataPropertyType.DateTime:
                     return "xs:dateTime";
                 case DataPropertyType.Double:
@@ -114,13 +114,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 case DataPropertyType.Int32:
                     return "xs:int";
                 case DataPropertyType.Int64:
-                    return "xs:int64";
+                    return "xs:long";
                 case DataPropertyType.Single:
                     return "xs:float";
                 case DataPropertyType.String:
                     return "xs:string";
                 case DataPropertyType.Clob:
-                    return "xs:string";
+                    return "fdo:clob";
                 default:
                     throw new ArgumentException();
             }
@@ -178,8 +178,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                     return DataPropertyType.Single;
                 case "xs:string":
                     return DataPropertyType.String;
-                //case "xs:string":
-                //    return DataPropertyType.Clob;
+                case "fdo:clob":
+                    return DataPropertyType.Clob;
                 default:
                     throw new ArgumentException();
             }
