@@ -345,9 +345,8 @@
             // WebLayoutSettingsCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "General Settings";
-            this.Name = "WebLayoutSettingsCtrl";
             resources.ApplyResources(this, "$this");
+            this.Name = "WebLayoutSettingsCtrl";
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);

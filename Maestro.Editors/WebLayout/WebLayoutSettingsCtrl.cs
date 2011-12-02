@@ -93,6 +93,7 @@ namespace Maestro.Editors.WebLayout
             CheckBoxBinder.BindChecked(chkStatusBar, _wl.StatusBar, "Visible");
 
             CheckBoxBinder.BindChecked(chkTaskPane, _wl.TaskPane, "Visible");
+            CheckBoxBinder.BindChecked(chkTaskBar, _wl.TaskPane.TaskBar, "Visible");
             CheckBoxBinder.BindChecked(chkToolbar, _wl.ToolBar, "Visible");
             CheckBoxBinder.BindChecked(chkZoomControl, _wl.ZoomControl, "Visible");
 
