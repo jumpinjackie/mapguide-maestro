@@ -83,6 +83,7 @@ namespace SamplesWeb.Tasks
                 RuntimeMapLayer replace = new RuntimeMapLayer(rtMap, ldf);
                 replace.ExpandInLegend = layer.ExpandInLegend;
                 replace.Group = layer.Group;
+                replace.LegendLabel = layer.LegendLabel;
                 replace.Name = layer.Name;
                 replace.Selectable = layer.Selectable;
                 replace.ShowInLegend = layer.ShowInLegend;

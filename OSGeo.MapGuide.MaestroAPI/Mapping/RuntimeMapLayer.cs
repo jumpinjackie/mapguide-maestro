@@ -126,6 +126,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 this.FeatureSourceID = vl.ResourceId;
                 this.Filter = vl.Filter;
                 InitIdentityProperties(vl);
+                this.HasTooltips = !string.IsNullOrEmpty(vl.ToolTip);
             }
             else if (ldf.SubLayer.LayerType == LayerType.Raster)
             {
