@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<topic id="5e1e5592-14ad-4f6f-ab05-941a6c0fe9ae" revisionNumber="1">
+<topic id="3bb213ee-9083-4673-9463-9399bbd1b91c" revisionNumber="1">
   <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!--
     <summary>
@@ -12,42 +12,35 @@
            a specific number of sub-topics when creating the outline.  Specify
            zero (0) to limit it to top-level sections only.  -->
       <!-- <autoOutline /> -->
-      <para>Runtime Maps</para>
+      <para>Class Diagram of core types</para>
     </introduction>
     <!-- Add one or more top-level section elements.  These are collapsible.
          If using <autoOutline />, add an address attribute to identify it
          and specify a title so that it can be jumped to with a hyperlink. -->
-    <section address="RuntimeMapOverview">
-      <title>Overview</title>
+    <section address="CoreTypesClassDiagramSection">
+      <title>Class Diagram: Maestro API Core Types</title>
       <content>
         <!-- Uncomment this to create a sub-section outline
         <autoOutline /> -->
-        <para>
-        The <codeEntityReference qualifyHint="false">T:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap</codeEntityReference>
-        represents the state of the map that a user is currently looking at in the viewer. It contains all the relevant
-        information about the current map:
-        </para>
-		<list class="bullet">
-		  <listItem><para>The current view center and scale</para></listItem>
-		  <listItem><para>The list of <codeEntityReference qualifyHint="false">T:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer</codeEntityReference> instances that belong to this map</para></listItem>
-		  <listItem><para>The list of <codeEntityReference qualifyHint="false">T:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapGroup</codeEntityReference> instances that belong to this map</para></listItem>
-		  <listItem><para>The current extents of the map</para></listItem>
-		  <listItem><para>The display width/height/dpi of the map</para></listItem>
-		</list>
-		<para>
-		To obtain a reference to a runtime map, you will have to create one (via <codeEntityReference qualifyHint="false" autoUpgrade="true">M:OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition)</codeEntityReference>) or
-		open an existing one (via <codeEntityReference qualifyHint="false" autoUpgrade="true">M:OSGeo.MapGuide.MaestroAPI.Services.IMappingService.OpenMap(System.String)</codeEntityReference>). Note that when opening an existing runtime map, you need to supply the resource id of the runtime map state
-		</para>
-		<para>
-		If given a map name and session id, the runtime map state resource id is usually of the form:
-		</para>
-		<code>Session:session-id//mapName.Map</code>
-		<para>
-		Most of this runtime map state can be manipulated through the APIs provided by the Maestro API. When manipulating the state
-		of the runtime map, you must remember to call <codeEntityReference qualifyHint="false">M:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Save</codeEntityReference> on the map
-		to persist your modifications.
-		</para>
+        <para>The following class diagram outlines the core classes and interfaces of the Maestro API</para>
+        <mediaLink><image xlink:href="CoreTypesClassDiagram" placement="center" /></mediaLink>
       </content>
+      <!-- If a section contains a sections element, its content creates
+           sub-sections.  These are not collapsible.
+      <sections>
+          <section address="SubSection1">
+              <title>Sub-section 1</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+          </section>
+          <section address="SubSection2">
+              <title>Sub-section 2</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+          </section>
+      </sections> -->
     </section>
     <relatedTopics>
       <!-- One or more of the following:

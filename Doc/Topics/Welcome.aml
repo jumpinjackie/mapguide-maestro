@@ -18,7 +18,9 @@
 		   <listItem><para>The Maestro Login UI library (Maestro.Login.dll)</para></listItem>
 		   <listItem><para>The Maestro Shared UI library (Maestro.Shared.UI.dll)</para></listItem>
 		</list>
-      
+      <para>
+      Also included in this documentation is the Developer's Guide to help you <link xlink:href="0395ae33-fb9f-46cf-bf1e-528a4ec3d948">Get Started</link>
+      </para>
     </introduction>
     <!-- <inThisSection>Optional description of content in this section</inThisSection> -->
     <!-- <reference>Optional reference section</reference> -->

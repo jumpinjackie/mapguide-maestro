@@ -19,5 +19,6 @@
       <Topic id="f47821f2-31ba-4cb7-868b-5896e5a3268e" visible="True" title="Shared UI Library" tocTitle="Shared UI Library" linkText="Shared UI Library" />
       <Topic id="2f9e519e-8f39-463d-98db-b687f8567670" visible="True" title="Login Library" tocTitle="Login Library" linkText="Login Library" />
     </Topic>
+    <Topic id="3bb213ee-9083-4673-9463-9399bbd1b91c" visible="True" title="Class Diagram" tocTitle="Class Diagram" linkText="Class Diagram" />
   </Topic>
 </Topics>

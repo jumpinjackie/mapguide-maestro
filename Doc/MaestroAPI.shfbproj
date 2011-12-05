@@ -94,6 +94,7 @@ The main namespaces of the Maestro API are listed below
     <ContentLayout Include="Layout.content" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Topics\ClassDiagram.aml" />
     <None Include="Topics\Component_Login.aml" />
     <None Include="Topics\GettingStarted.aml" />
     <None Include="Topics\GettingStarted.aml" />
@@ -120,6 +121,10 @@ The main namespaces of the Maestro API are listed below
     <Folder Include="Topics\" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Images\CoreTypesClassDiagram.png">
+      <ImageId>CoreTypesClassDiagram</ImageId>
+      <AlternateText>Core Types Class Diagram</AlternateText>
+    </Image>
     <Image Include="Images\ConnectionOverview.PNG">
       <ImageId>ConnectionOverview</ImageId>
       <AlternateText>Connection Overview</AlternateText>
