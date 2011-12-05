@@ -214,6 +214,10 @@
         <Function>Widget</Function>
         <Widget>MapMenu</Widget>
       </Item>
+      <Item xsi:type="WidgetItemType">
+        <Function>Widget</Function>
+        <Widget>BasemapSwitcher</Widget>
+      </Item>
       <Item xsi:type="FlyoutItemType">
         <Function>Flyout</Function>
         <Label>View</Label>
