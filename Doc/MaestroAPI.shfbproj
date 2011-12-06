@@ -105,7 +105,6 @@ The main namespaces of the Maestro API are listed below
     <None Include="Topics\Deployment_AspNet.aml" />
     <None Include="Topics\Deployment_Desktop.aml" />
     <None Include="Topics\Deployment.aml" />
-    <None Include="Topics\VSSetup.aml" />
     <None Include="Topics\Concept_ObjectModels.aml" />
     <None Include="Topics\Concept_Services.aml" />
     <None Include="Topics\Concept_Services.aml" />

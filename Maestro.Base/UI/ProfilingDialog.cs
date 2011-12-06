@@ -147,8 +147,8 @@ namespace Maestro.Base.UI
                 }
                 catch (Exception ex)
                 {
-                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_LayerDefinitionProfilingError, resourceId, msg)));
+                    //string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                    backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_LayerDefinitionProfilingError, resourceId, ex.ToString(), Environment.NewLine)));
                 }
             }
 
@@ -275,8 +275,8 @@ namespace Maestro.Base.UI
                     }
                     catch (Exception ex)
                     {
-                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                        backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_LayerDefinitionProfilingError, ml.ResourceId, msg)));
+                        //string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                        backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_LayerDefinitionProfilingError, ml.ResourceId, ex.ToString(), Environment.NewLine)));
                     }
                 }
 
@@ -298,8 +298,8 @@ namespace Maestro.Base.UI
                                 }
                                 catch (Exception ex)
                                 {
-                                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                                    backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_LayerDefinitionProfilingError, ml.ResourceId, msg)));
+                                    //string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                                    backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_LayerDefinitionProfilingError, ml.ResourceId, ex.ToString(), Environment.NewLine)));
                                 }
                             }
                         }
@@ -323,8 +323,8 @@ namespace Maestro.Base.UI
             }
             catch (Exception ex)
             {
-                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_RuntimeMapProfilingError, resourceId, msg)));
+                //string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_RuntimeMapProfilingError, resourceId, ex.ToString(), Environment.NewLine)));
             }
 
             try
@@ -355,8 +355,8 @@ namespace Maestro.Base.UI
             }
             catch (Exception ex)
             {
-                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_MapRenderingError, resourceId, msg)));
+                //string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_MapRenderingError, resourceId, ex.ToString(), Environment.NewLine)));
             }
         }
 

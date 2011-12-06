@@ -1491,8 +1491,7 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed while profiling LayerDefinition: {0},
-        ///Error message: {1}.
+        ///   Looks up a localized string similar to Failed while profiling Layer Definition: {0}{2}============= ERROR DETAILS =========={2}{1}{2} ======== END ERROR DETAILS =============.
         /// </summary>
         internal static string Prof_LayerDefinitionProfilingError {
             get {
@@ -1609,8 +1608,7 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed while profiling MapDefinition rendering: {0},
-        ///Error message: {1}.
+        ///   Looks up a localized string similar to Failed while profiling MapDefinition rendering: {0}{2}============= ERROR DETAILS =========={2}{1}{2} ======== END ERROR DETAILS =============.
         /// </summary>
         internal static string Prof_MapRenderingError {
             get {
@@ -1628,8 +1626,7 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed while profiling MapDefinition runtime: {0},
-        ///Error message: {1}.
+        ///   Looks up a localized string similar to Failed while profiling MapDefinition runtime {0}{2}============= ERROR DETAILS =========={2}{1}{2} ======== END ERROR DETAILS =============.
         /// </summary>
         internal static string Prof_RuntimeMapProfilingError {
             get {
