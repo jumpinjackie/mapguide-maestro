@@ -152,7 +152,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         internal RuntimeMap(IServerConnection conn)
         {
             _disableChangeTracking = true;
-            
+
+            this.WatermarkUsage = (int)WatermarkUsageType.Viewer;
             this.SiteVersion = conn.SiteVersion;
             this.SessionId = conn.SessionID;
             this.ObjectId = Guid.NewGuid().ToString();
@@ -585,6 +586,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
+        /// Gets the watermark usage. Not applicable for version of MapGuide older than 2.3
+        /// </summary>
+        public int WatermarkUsage
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// MapGuide internal value
         /// </summary>
         protected const int MgBinaryVersion = 262144; //1;
@@ -643,6 +653,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             if (s.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
             {
                 SerializeChangeMap(s);
+                if (s.SiteVersion >= new Version(2, 3)) //SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP2012))
+                {
+                    s.Write(this.WatermarkUsage);
+                }
                 s.Write((int)0);
             }
             else
@@ -650,6 +664,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 SerializeLayerData(s);
                 SerializeChangeMap(s);
             }
+        }
+
+        enum WatermarkUsageType
+        {
+            WMS = 1,
+            Viewer = 2
         }
 
         private static void SerializeExtent(IEnvelope env, MgBinarySerializer s)
@@ -815,6 +835,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
                 DeserializeLayerData(d);
                 m_changeList = DeserializeChangeMap(d);
+            }
+
+            if (d.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP2012))
+            {
+                this.WatermarkUsage = d.ReadInt32();
             }
 
             _disableChangeTracking = false;

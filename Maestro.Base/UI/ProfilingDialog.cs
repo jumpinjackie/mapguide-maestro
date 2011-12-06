@@ -98,7 +98,8 @@ namespace Maestro.Base.UI
                 m.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]";
                 m.SetExtents(-1, -1, 1, 1);
 
-                m.ResourceID = "Library://non-existing.MapDefinition";
+                //AIMS 2012 demands this checks out. Can't flub it anymore
+                m.ResourceID = "Session:" + m_connection.SessionID + "//non-existing.MapDefinition";
                 var mpsvc = (IMappingService)m_connection.GetService((int)ServiceType.Mapping);
                 var rid = new ResourceIdentifier(Guid.NewGuid().ToString(), ResourceTypes.RuntimeMap, m_connection.SessionID);
 
@@ -125,7 +126,9 @@ namespace Maestro.Base.UI
                 try
                 {
                     IMapDefinition mdef = ObjectFactory.CreateMapDefinition(m_connection, "");
-                    mdef.ResourceID = "Library://ProfileTest.MapDefinition"; //Flub it
+                    //We cannot flub this anymore. AIMS 2012 demands the Map Definition id specified checks out
+                    mdef.ResourceID = "Session:" + m_connection.SessionID + "//ProfileTest.MapDefinition";
+                    m_connection.ResourceService.SaveResource(mdef);
                     IMapLayer layer = mdef.AddLayer(null, "Test Layer", ldef.ResourceID);
                     layer.Visible = false;
                     layer.Selectable = false;
@@ -209,8 +212,9 @@ namespace Maestro.Base.UI
                                 SetTempLayer(mdf, tmp1);
                                 
                                 var mpsvc = (IMappingService)m_connection.GetService((int)ServiceType.Mapping);
-
-                                mdf.ResourceID = "Library://ProfileTest.MapDefinition"; //Flub it
+                                //We cannot flub this anymore. AIMS 2012 demands the Map Definition id specified checks out
+                                mdf.ResourceID = "Session:" + m_connection.SessionID + "//ProfileTest.MapDefinition";
+                                m_connection.ResourceService.SaveResource(mdf);
                                 var rtmap = mpsvc.CreateMap(mdf);
 
                                 if (m_connection.ResourceService.ResourceExists(rtmap.ResourceID))
@@ -332,8 +336,9 @@ namespace Maestro.Base.UI
                 if (backgroundWorker.CancellationPending)
                     return;
 
-                //Flub for runtime map creation
-                mdef.ResourceID = "Library://ProfilingTest.MapDefinition";
+                //We cannot flub this anymore. AIMS 2012 demands the Map Definition id specified checks out
+                mdef.ResourceID = "Session:" + m_connection.SessionID + "//ProfilingTest.MapDefinition";
+                m_connection.ResourceService.SaveResource(mdef);
 
                 var rtmap = mpsvc.CreateMap(mdef);
 

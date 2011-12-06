@@ -90,6 +90,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// MapGuide Open Source 2.2.0
         /// </summary>
         MapGuideOS2_2,
+        /// <summary>
+        /// Autodesk Infrastructure Map Server 2012
+        /// </summary>
+        MapGuideEP2012,
 	}
 
     /// <summary>
@@ -118,6 +122,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             new Version(2,2,0,5305),    //MGE 2011
             new Version(2,2,0,6001),    //MGE 2011 Update 1
             new Version(2,2,0,5703),    //MGOS 2.2.0
+            new Version(2,3,0,4202),    //AIMS 2012
 		};
 
         /// <summary>
