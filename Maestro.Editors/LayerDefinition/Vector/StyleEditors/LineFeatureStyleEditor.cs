@@ -128,11 +128,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
                 if (!compositeLines.Checked)
                 {
-                    var st2 = m_item[0] as IStroke2;
-                    if (st2 != null)
-                        sizeContextCombo.SelectedValue = st2.SizeContext;
-                    else
-                        sizeContextCombo.Enabled = false; //Must be a 1.0.0 schema line rule
+                    if (m_item.Count > 0)
+                    {
+                        var st2 = m_item[0] as IStroke2;
+                        if (st2 != null)
+                            sizeContextCombo.SelectedValue = st2.SizeContext;
+                        else
+                            sizeContextCombo.Enabled = false; //Must be a 1.0.0 schema line rule
+                    }
                 }
 
 				UpdateDisplayForSelected();
