@@ -40,7 +40,6 @@
             </Column>
             <Column>
                 <Name>URL</Name>
-                <Value></Value>
             </Column>
         </Row>
         <Row>
@@ -50,11 +49,9 @@
             </Column>
             <Column>
                 <Name>Name</Name>
-                <Value></Value>
             </Column>
             <Column>
                 <Name>URL</Name>
-                <Value></Value>
             </Column>
         </Row>
     </Rows>	

@@ -40,7 +40,6 @@
             </Property>
             <Property>
                 <Name>URL</Name>
-                <Value></Value>
             </Property>
         </PropertyCollection>
         <PropertyCollection>
@@ -50,11 +49,9 @@
             </Property>
             <Property>
                 <Name>Name</Name>
-                <Value></Value>
             </Property>
             <Property>
                 <Name>URL</Name>
-                <Value></Value>
             </Property>
         </PropertyCollection>
     </Properties>

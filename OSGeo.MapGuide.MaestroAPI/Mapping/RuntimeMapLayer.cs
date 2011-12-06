@@ -271,20 +271,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         private void InitIdentityProperties(IVectorLayerDefinition vl)
         {
-            var fs = (IFeatureSource)this.Parent.ResourceService.GetResource(vl.ResourceId);
-            var cls = fs.GetClass(vl.FeatureName);
-
-            var idProps = cls.IdentityProperties;
-            var propInfo = new PropertyInfo[idProps.Count];
-
-            int i = 0;
-            foreach (var prop in idProps)
+            try
             {
-                propInfo[i] = new PropertyInfo(prop.Name, ClrFdoTypeMap.GetClrType(prop.DataType));
-                i++;
-            }
+                var fs = (IFeatureSource)this.Parent.ResourceService.GetResource(vl.ResourceId);
+                var cls = fs.GetClass(vl.FeatureName);
 
-            this.IdentityProperties = propInfo;
+                var idProps = cls.IdentityProperties;
+                var propInfo = new PropertyInfo[idProps.Count];
+
+                int i = 0;
+                foreach (var prop in idProps)
+                {
+                    propInfo[i] = new PropertyInfo(prop.Name, ClrFdoTypeMap.GetClrType(prop.DataType));
+                    i++;
+                }
+
+                this.IdentityProperties = propInfo;
+            }
+            catch (Exception ex) //Has to be a bug in MapGuide
+            {
+                Trace.TraceWarning("Could fetch and initialize identity properties for " + this.Name + " This is likely a bug in MapGuide " + Environment.NewLine + ex.ToString());
+            }
         }
 
         private bool _visible;

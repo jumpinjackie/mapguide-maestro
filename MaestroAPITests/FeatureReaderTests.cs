@@ -31,6 +31,7 @@ namespace MaestroAPITests
     [TestFixture]
     public class FeatureReaderTests
     {
+        [Test]
         public void TestXmlFeatureNullValues()
         {
             //Simulate post-#708 SELECTFEATURES and verify reader properly handles null values in response
@@ -87,62 +88,23 @@ namespace MaestroAPITests
             }
         }
 
-        /*
         [Test]
-        public void TestXmlFeatureNullValues()
+        public void TestXmlFeatureJoinValues()
         {
-            //Simulate post-#708 SELECTFEATURES and verify reader properly handles null values in response
-            var bytes = Encoding.UTF8.GetBytes(Properties.Resources.SelectFeatureSample);
-            var reader = new XmlFeatureSetReader(new MemoryStream(bytes));
+            var bytes = Encoding.UTF8.GetBytes(Properties.Resources.FeatureJoinSelectSample);
+            var reader = new XmlFeatureReader(new MemoryStream(bytes));
 
-            reader.Read();
+            Assert.AreEqual(40, reader.FieldCount);
 
-            Assert.IsFalse(reader.IsDBNull(0));
-            Assert.IsFalse(reader.IsDBNull(1));
-            Assert.IsFalse(reader.IsDBNull(2));
-
-            reader.Read();
-
-            Assert.IsFalse(reader.IsDBNull(0));
-            Assert.IsFalse(reader.IsDBNull(1));
-            Assert.IsTrue(reader.IsDBNull(2));
-
-            reader.Read();
-
-            Assert.IsFalse(reader.IsDBNull(0));
-            Assert.IsTrue(reader.IsDBNull(1));
-            Assert.IsTrue(reader.IsDBNull(2));
-
-            Assert.IsFalse(reader.Read()); //end of stream
-
-            //Test the IEnumerable approach
-            reader = new XmlFeatureSetReader(new MemoryStream(bytes));
-
-            int i = 0;
-            foreach (var feat in reader)
+            int count = 0;
+            while (reader.ReadNext())
             {
-                switch (i)
-                {
-                    case 0:
-                        Assert.IsFalse(feat.IsDBNull(0));
-                        Assert.IsFalse(feat.IsDBNull(1));
-                        Assert.IsFalse(feat.IsDBNull(2));
-                        break;
-                    case 1:
-                        Assert.IsFalse(feat.IsDBNull(0));
-                        Assert.IsFalse(feat.IsDBNull(1));
-                        Assert.IsTrue(feat.IsDBNull(2));
-                        break;
-                    case 2:
-                        Assert.IsFalse(feat.IsDBNull(0));
-                        Assert.IsTrue(feat.IsDBNull(1));
-                        Assert.IsTrue(feat.IsDBNull(2));
-                        break;
-                }
-                i++;
+                count++;
             }
-        }*/
+            Assert.AreEqual(63, count);
+        }
 
+        [Test]
         public void TestXmlAggregateNullValues()
         {
             //Simulate post-#708 SELECTAGGREGATES and verify reader properly handles null values in response
@@ -199,63 +161,7 @@ namespace MaestroAPITests
             }
         }
 
-        /*
         [Test]
-        public void TestXmlAggregateNullValues()
-        {
-            //Simulate post-#708 SELECTAGGREGATES and verify reader properly handles null values in response
-            var bytes = Encoding.UTF8.GetBytes(Properties.Resources.SelectAggregatesSample);
-            var reader = new XmlAggregateSetReader(new MemoryStream(bytes));
-
-            reader.Read();
-
-            Assert.IsFalse(reader.IsDBNull(0));
-            Assert.IsFalse(reader.IsDBNull(1));
-            Assert.IsFalse(reader.IsDBNull(2));
-
-            reader.Read();
-
-            Assert.IsFalse(reader.IsDBNull(0));
-            Assert.IsFalse(reader.IsDBNull(1));
-            Assert.IsTrue(reader.IsDBNull(2));
-
-            reader.Read();
-
-            Assert.IsFalse(reader.IsDBNull(0));
-            Assert.IsTrue(reader.IsDBNull(1));
-            Assert.IsTrue(reader.IsDBNull(2));
-
-            Assert.IsFalse(reader.Read()); //end of stream
-
-            //Test the IEnumerable approach
-            reader = new XmlAggregateSetReader(new MemoryStream(bytes));
-
-            int i = 0;
-            foreach (var feat in reader)
-            {
-                switch (i)
-                {
-                    case 0:
-                        Assert.IsFalse(feat.IsDBNull(0));
-                        Assert.IsFalse(feat.IsDBNull(1));
-                        Assert.IsFalse(feat.IsDBNull(2));
-                        break;
-                    case 1:
-                        Assert.IsFalse(feat.IsDBNull(0));
-                        Assert.IsFalse(feat.IsDBNull(1));
-                        Assert.IsTrue(feat.IsDBNull(2));
-                        break;
-                    case 2:
-                        Assert.IsFalse(feat.IsDBNull(0));
-                        Assert.IsTrue(feat.IsDBNull(1));
-                        Assert.IsTrue(feat.IsDBNull(2));
-                        break;
-                }
-                i++;
-            }
-        }
-         */
-
         public void TestXmlSqlNullValues()
         {
             //Simulate post-#708 EXECUTESQL and verify reader properly handles null values in response
@@ -311,61 +217,5 @@ namespace MaestroAPITests
                 i++;
             }
         }
-        
-        /*
-        [Test]
-        public void TestXmlSqlNullValues()
-        {
-            //Simulate post-#708 EXECUTESQL and verify reader properly handles null values in response
-            var bytes = Encoding.UTF8.GetBytes(Properties.Resources.SelectSqlSample);
-            var reader = new XmlSqlResultReader(new MemoryStream(bytes));
-
-            reader.Read();
-
-            Assert.IsFalse(reader.IsDBNull(0));
-            Assert.IsFalse(reader.IsDBNull(1));
-            Assert.IsFalse(reader.IsDBNull(2));
-
-            reader.Read();
-
-            Assert.IsFalse(reader.IsDBNull(0));
-            Assert.IsFalse(reader.IsDBNull(1));
-            Assert.IsTrue(reader.IsDBNull(2));
-
-            reader.Read();
-
-            Assert.IsFalse(reader.IsDBNull(0));
-            Assert.IsTrue(reader.IsDBNull(1));
-            Assert.IsTrue(reader.IsDBNull(2));
-
-            Assert.IsFalse(reader.Read()); //end of stream
-
-            //Test the IEnumerable approach
-            reader = new XmlSqlResultReader(new MemoryStream(bytes));
-
-            int i = 0;
-            foreach (var feat in reader)
-            {
-                switch (i)
-                {
-                    case 0:
-                        Assert.IsFalse(feat.IsDBNull(0));
-                        Assert.IsFalse(feat.IsDBNull(1));
-                        Assert.IsFalse(feat.IsDBNull(2));
-                        break;
-                    case 1:
-                        Assert.IsFalse(feat.IsDBNull(0));
-                        Assert.IsFalse(feat.IsDBNull(1));
-                        Assert.IsTrue(feat.IsDBNull(2));
-                        break;
-                    case 2:
-                        Assert.IsFalse(feat.IsDBNull(0));
-                        Assert.IsTrue(feat.IsDBNull(1));
-                        Assert.IsTrue(feat.IsDBNull(2));
-                        break;
-                }
-                i++;
-            }
-        }*/
     }
 }

@@ -331,6 +331,7 @@
       <Link>UserTestData\gen_default1_SqlServer_master.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\FeatureJoinSelectSample.xml" />
     <Content Include="TestData\CoordinateSystems\epsgcodes.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

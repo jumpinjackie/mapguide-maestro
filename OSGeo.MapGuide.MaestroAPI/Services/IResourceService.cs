@@ -169,6 +169,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Sets the resource data of a specified resource
         /// </summary>
+        /// <remarks>For the HTTP implementation of this API, the input stream must be seekable</remarks>
         /// <param name="resourceid"></param>
         /// <param name="dataname"></param>
         /// <param name="datatype"></param>
@@ -178,6 +179,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Sets the resource data of a specified resource
         /// </summary>
+        /// <remarks>For the HTTP implementation of this API, the input stream must be seekable</remarks>
         /// <param name="resourceid"></param>
         /// <param name="dataname"></param>
         /// <param name="datatype"></param>
