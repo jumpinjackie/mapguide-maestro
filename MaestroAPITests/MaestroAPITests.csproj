@@ -87,6 +87,7 @@
     <Compile Include="RuntimeMapTests.cs" />
     <Compile Include="SchemaTests.cs" />
     <Compile Include="SerializationTests.cs" />
+    <Compile Include="TestControl.cs" />
     <Compile Include="ValidationTests.cs" />
   </ItemGroup>
   <ItemGroup>

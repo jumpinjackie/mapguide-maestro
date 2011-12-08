@@ -922,6 +922,25 @@ namespace MaestroAPITests
             Assert.AreEqual(0, map.Groups.Count);
         }
 
+        [Test]
+        public virtual void TestMapManipulation4()
+        {
+            IServerConnection conn = CreateTestConnection();
+            IMappingService mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+            string mapdefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
+            ResourceIdentifier rtmX = new ResourceIdentifier(mapdefinition);
+            string rtmDef = "Library://UnitTests/Cache/" + rtmX.Fullpath.Replace(":", "_").Replace("/", "_");
+            string mapName = rtmX.Name;
+            ResourceIdentifier mapid = new ResourceIdentifier(mapName, ResourceTypes.RuntimeMap, conn.SessionID);
+            IMapDefinition mdef = (IMapDefinition)conn.ResourceService.GetResource(mapdefinition);
+            RuntimeMap rtm = mapSvc.CreateMap(mdef); // Create new runtime map
+            rtm.Save();
+            RuntimeMap tmprtm = mapSvc.CreateMap(mapid, mdef); // Create new map in data cache
+            tmprtm.Save();
+
+            RuntimeMap mymap = mapSvc.OpenMap(mapid); 
+        }
+
         public virtual void TestResourceEvents()
         {
             bool deleteCalled = false;
@@ -1008,17 +1027,25 @@ namespace MaestroAPITests
         }
     }
 
-    [TestFixture(Ignore = false)]
-    public class HttpRuntimeMapTests : RuntimeMapTests
+    public class ConnectionUtil
     {
-        protected override IServerConnection CreateTestConnection()
+        public static IServerConnection CreateTestHttpConnection()
         {
             return ConnectionProviderRegistry.CreateConnection("Maestro.Http",
                 "Url", "http://" + Environment.MachineName + "/mapguide/mapagent/mapagent.fcgi",
                 "Username", "Administrator",
                 "Password", "admin");
         }
+    }
 
+    [TestFixture(Ignore = TestControl.IgnoreHttpRuntimeMapTests)]
+    public class HttpRuntimeMapTests : RuntimeMapTests
+    {
+        protected override IServerConnection CreateTestConnection()
+        {
+            return ConnectionUtil.CreateTestHttpConnection();
+        }
+        /*
         [Test]
         public override void TestResourceEvents()
         {
@@ -1078,9 +1105,15 @@ namespace MaestroAPITests
         {
             base.TestLargeMapCreatePerformance();
         }
+        */
+        [Test]
+        public override void TestMapManipulation4()
+        {
+            base.TestMapManipulation4();
+        }
     }
 
-    [TestFixture(Ignore = true)]
+    [TestFixture(Ignore = TestControl.IgnoreLocalRuntimeMapTests)]
     public class LocalRuntimeMapTests : RuntimeMapTests
     {
         protected override IServerConnection CreateTestConnection()

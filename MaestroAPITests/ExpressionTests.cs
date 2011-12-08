@@ -39,7 +39,7 @@ namespace MaestroAPITests
     // 2 | snafu  | (null)
     // 2 | (null) | (null)
 
-    [TestFixture]
+    [TestFixture(Ignore = TestControl.IgnoreExpressionTests)]
     public class ExpressionTests
     {
         [Test]

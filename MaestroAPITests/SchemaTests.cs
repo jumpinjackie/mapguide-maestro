@@ -27,7 +27,7 @@ using System.Xml;
 
 namespace MaestroAPITests
 {
-    [TestFixture]
+    [TestFixture(Ignore = TestControl.IgnoreSchemaTests)]
     public class SchemaTests
     {
         //These tests are to verify that we can read FDO XML configuration and schema documents without problems

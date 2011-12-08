@@ -45,7 +45,7 @@ using System.Diagnostics;
 
 namespace MaestroAPITests
 {
-    [TestFixture]
+    [TestFixture(Ignore = TestControl.IgnoreResourceTests)]
     public class ResourceTests
     {
         private Mockery _mocks;

@@ -29,7 +29,7 @@ using OSGeo.MapGuide.MaestroAPI.Exceptions;
 
 namespace MaestroAPITests
 {
-    [TestFixture]
+    [TestFixture(Ignore = TestControl.IgnoreCapabilityTests)]
     public class CapabilityTests
     {
         private Mockery _mocks;

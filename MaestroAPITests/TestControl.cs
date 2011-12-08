@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -20,29 +20,25 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using NUnit.Framework;
-using OSGeo.MapGuide.ObjectModels;
-using NMock2;
-using OSGeo.MapGuide.MaestroAPI;
 
 namespace MaestroAPITests
 {
-    [TestFixture(Ignore = TestControl.IgnoreSerializationTests)]
-    public class SerializationTests
-    {
-        [Test]
-        public void TestPreMg22FdoCapabilities()
-        {
-            //MGOS <= 2.2 returned different xml from a GETCAPABILITIES
-            //call even though the schema was the same. Verify capabilities
-            //are read properly regardless of version
-        }
+    //Use this to toggle individual test suites
 
-        [Test]
-        public void TestResourceContentVersionInspection()
-        {
-            //Verify our ResoureContentVersionChecker can correctly read the
-            //version numbers of resource content streams
-        }
+    public class TestControl
+    {
+        public const bool IgnoreConfigurationTests = false;
+        public const bool IgnoreCapabilityTests = false;
+        public const bool IgnoreExpressionTests = false;
+        public const bool IgnoreFeatureReaderTests = false;
+        public const bool IgnoreHttpConnectionTests = false;
+        public const bool IgnoreHttpSiteTests = false;
+        public const bool IgnoreObjectTests = false;
+        public const bool IgnoreResourceTests = false;
+        public const bool IgnoreHttpRuntimeMapTests = false;
+        public const bool IgnoreLocalRuntimeMapTests = true;
+        public const bool IgnoreSchemaTests = false;
+        public const bool IgnoreSerializationTests = false;
+        public const bool IgnoreValidationTests = false;
     }
 }

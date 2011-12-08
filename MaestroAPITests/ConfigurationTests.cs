@@ -29,7 +29,7 @@ using System.Drawing;
 
 namespace MaestroAPITests
 {
-    [TestFixture]
+    [TestFixture(Ignore = TestControl.IgnoreConfigurationTests)]
     public class ConfigurationTests
     {
         [Test]

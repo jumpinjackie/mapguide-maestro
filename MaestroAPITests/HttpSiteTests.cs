@@ -29,15 +29,12 @@ using System.IO;
 
 namespace MaestroAPITests
 {
-    [TestFixture(Ignore = false)]
+    [TestFixture(Ignore = TestControl.IgnoreHttpSiteTests)]
     public class HttpSiteTests
     {
         private IServerConnection CreateTestConnection()
         {
-            return ConnectionProviderRegistry.CreateConnection("Maestro.Http",
-                "Url", "http://" + Environment.MachineName + "/mapguide/mapagent/mapagent.fcgi",
-                "Username", "Administrator",
-                "Password", "admin");
+            return ConnectionUtil.CreateTestHttpConnection();
         }
 
         [Test]

@@ -32,7 +32,7 @@ namespace MaestroAPITests
     /// 
     /// Also tests for various classes (not belonging to any particular group) reside here
     /// </summary>
-    [TestFixture]
+    [TestFixture(Ignore = TestControl.IgnoreObjectTests)]
     public class ObjectTests
     {
         [Test]

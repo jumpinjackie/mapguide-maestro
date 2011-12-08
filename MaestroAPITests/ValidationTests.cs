@@ -35,7 +35,7 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace MaestroAPITests
 {
-    [TestFixture]
+    [TestFixture(Ignore = TestControl.IgnoreValidationTests)]
     public class ValidationTests
     {
         [Test]

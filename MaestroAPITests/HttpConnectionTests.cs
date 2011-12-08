@@ -23,10 +23,11 @@ using System.Text;
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using System.IO;
 
 namespace MaestroAPITests
 {
-    [TestFixture]
+    [TestFixture(Ignore = TestControl.IgnoreHttpConnectionTests)]
     public class HttpConnectionTests
     {
         [Test]
@@ -120,6 +121,17 @@ namespace MaestroAPITests
                     Assert.Fail("Supported service type mismatch");
                 }
             }
+        }
+
+        [Test]
+        public void TestAnyStreamInput()
+        {
+            var conn = ConnectionUtil.CreateTestHttpConnection();
+            var resSvc = conn.ResourceService;
+            if (!resSvc.ResourceExists("Library://UnitTests/Data/HydrographicPolygons.FeatureSource"))
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.fs"));
+
+            resSvc.SetResourceXmlData("Library://UnitTests/Data/TestAnyStreamInput.FeatureSource", resSvc.GetResourceXmlData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource"));
         }
     }
 }
