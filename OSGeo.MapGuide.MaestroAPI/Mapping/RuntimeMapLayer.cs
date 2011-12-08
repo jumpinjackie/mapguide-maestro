@@ -112,7 +112,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="parent">The parent.</param>
         /// <param name="ldf">The LDF.</param>
-        public RuntimeMapLayer(RuntimeMap parent, ILayerDefinition ldf)
+        internal RuntimeMapLayer(RuntimeMap parent, ILayerDefinition ldf)
             : this(parent)
         {
             Check.NotNull(ldf, "ldf");
@@ -138,6 +138,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
             this.ExpandInLegend = false;
             this.Name = ResourceIdentifier.GetName(ldf.ResourceID);
+            this.LegendLabel = this.Name;
             this.Selectable = true;
             this.ShowInLegend = true;
             this.Visible = true;
@@ -150,7 +151,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="parent">The parent.</param>
         /// <param name="source">The source.</param>
-        public RuntimeMapLayer(RuntimeMap parent, IMapLayer source)
+        internal RuntimeMapLayer(RuntimeMap parent, IMapLayer source)
             : this(parent, source, (ILayerDefinition)parent.CurrentConnection.ResourceService.GetResource(source.ResourceId))
         {
             _disableChangeTracking = false;

@@ -80,7 +80,7 @@ namespace SamplesWeb.Tasks
                 ldf.ResourceID = ldfId;
 
                 //Create our replacement layer and apply the same properties from the old one
-                RuntimeMapLayer replace = new RuntimeMapLayer(rtMap, ldf);
+                RuntimeMapLayer replace = mpSvc.CreateMapLayer(rtMap, ldf);
                 replace.ExpandInLegend = layer.ExpandInLegend;
                 replace.Group = layer.Group;
                 replace.LegendLabel = layer.LegendLabel;

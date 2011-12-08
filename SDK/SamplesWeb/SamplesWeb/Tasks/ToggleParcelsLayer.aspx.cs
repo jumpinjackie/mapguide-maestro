@@ -77,7 +77,7 @@ namespace SamplesWeb.Tasks
                 }
 
                 ILayerDefinition layerDef = (ILayerDefinition)conn.ResourceService.GetResource("Library://Samples/Sheboygan/Layers/Parcels.LayerDefinition");
-                RuntimeMapLayer layer = new RuntimeMapLayer(rtMap, layerDef);
+                RuntimeMapLayer layer = mpSvc.CreateMapLayer(rtMap, layerDef);
 
                 layer.Group = group.Name;
                 layer.LegendLabel = "Parcels";

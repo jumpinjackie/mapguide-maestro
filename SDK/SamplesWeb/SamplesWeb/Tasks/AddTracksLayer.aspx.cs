@@ -81,7 +81,7 @@ namespace SamplesWeb.Tasks
                 CreateTracksLayer(conn, fsId, layerId);
 
                 ILayerDefinition layerDef = (ILayerDefinition)conn.ResourceService.GetResource(layerId);
-                RuntimeMapLayer layer = new RuntimeMapLayer(rtMap, layerDef);
+                RuntimeMapLayer layer = mpSvc.CreateMapLayer(rtMap, layerDef);
 
                 layer.Group = groupName;
                 layer.LegendLabel = "Tracks";

@@ -38,6 +38,7 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using GeoAPI.Geometries;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -1718,6 +1719,39 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return cs.MetersPerUnitX * units;
             }
             catch { return 1.0; }
+        }
+
+        /// <summary>
+        /// Creates a new runtime map layer from the specified Layer Definition
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="ldf">The layer definition</param>
+        /// <returns></returns>
+        public virtual RuntimeMapLayer CreateMapLayer(RuntimeMap parent, ILayerDefinition ldf)
+        {
+            //TODO: Review when we decide to split the implementations
+            return new RuntimeMapLayer(parent, ldf);
+        }
+
+        /// <summary>
+        /// Creates a new runtime map layer from the specified <see cref="T:OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer"/> instance
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="source">The map definition layer</param>
+        /// <returns></returns>
+        public RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IBaseMapLayer source)
+        {
+            ILayerDefinition layerDef = (ILayerDefinition)GetResource(source.ResourceId);
+            var rtLayer = CreateMapLayer(parent, layerDef);
+
+            //These may not match, so set them here
+            rtLayer.ExpandInLegend = source.ExpandInLegend;
+            rtLayer.LegendLabel = source.LegendLabel;
+            rtLayer.Name = source.Name;
+            rtLayer.Selectable = source.Selectable;
+            rtLayer.ShowInLegend = source.ShowInLegend;
+            
+            return rtLayer;
         }
 
         /// <summary>

@@ -244,7 +244,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.DataExtent = mdf.Extents.Clone();
             this.BackgroundColor = mdf.BackgroundColor;
             this.CoordinateSystem = mdf.CoordinateSystem;
-            
+
+            if (Array.IndexOf(this.CurrentConnection.Capabilities.SupportedServices, (int)ServiceType.Mapping) < 0)
+                throw new InvalidOperationException("The Map Definition originates from an incompatible IServerConnection implementation");
+
+            IMappingService mappingSvc = (IMappingService)this.CurrentConnection.GetService((int)ServiceType.Mapping);
+
             //TODO: infer real mpu from coordinate system
 
             //If a setup helper exists, use it to get required layers in a single
@@ -267,7 +272,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             //Load map layers
             foreach (var layer in mdf.MapLayer)
             {
-                var rtl = new RuntimeMapLayer(this, layer, GetLayerDefinition(layer.ResourceId));
+                var rtl = mappingSvc.CreateMapLayer(this, layer);
                 this.Layers.Add(rtl);
             }
 
@@ -288,7 +293,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     {
                         foreach (var layer in group.BaseMapLayer)
                         {
-                            var rtl = new RuntimeMapLayer(this, layer, GetLayerDefinition(layer.ResourceId)) { Visible = true };
+                            var rtl = mappingSvc.CreateMapLayer(this, layer);
+                            rtl.Visible = true;
                             rtl.Type = RuntimeMapLayer.kBaseMap;
                             this.Layers.Add(rtl);
                         }
@@ -919,10 +925,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
             while (mapLayerCount-- > 0)
             {
-                RuntimeMapLayer t = new RuntimeMapLayer(this);
-                t.Deserialize(d);
+                RuntimeMapLayer t = DeserializeLayer(d);
                 this.Layers.Add(t);
             }
+        }
+
+        private RuntimeMapLayer DeserializeLayer(MgBinaryDeserializer d)
+        {
+            //TODO: Review when we split to specific implementations
+            RuntimeMapLayer t = new RuntimeMapLayer(this);
+            t.Deserialize(d);
+            return t;
         }
 
         /// <summary>

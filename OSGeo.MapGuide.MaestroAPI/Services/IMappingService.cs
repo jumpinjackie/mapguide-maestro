@@ -23,6 +23,7 @@ using System.Text;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using System.Drawing;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace OSGeo.MapGuide.MaestroAPI.Services
 {
@@ -42,6 +43,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
     /// </example>
     public interface IMappingService : IService
     {
+        /// <summary>
+        /// Creates a new runtime map layer from the specified Layer Definition
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="ldf">The layer definition</param>
+        /// <returns></returns>
+        RuntimeMapLayer CreateMapLayer(RuntimeMap parent, ILayerDefinition ldf);
+
+        /// <summary>
+        /// Creates a new runtime map layer from the specified <see cref="T:OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer"/> instance
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="source">The map definition layer</param>
+        /// <returns></returns>
+        RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IBaseMapLayer source);
+
         /// <summary>
         /// Creates a new runtime map instance from an existing map definition.
         /// </summary>

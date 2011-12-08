@@ -726,7 +726,7 @@ namespace MaestroAPITests
             Assert.NotNull(map.Groups["Group2"]);
             Assert.Null(map.Groups["Group3"]);
 
-            var layer = new RuntimeMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"));
+            var layer = mapSvc.CreateMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"));
             layer.Group = "Group1";
 
             map.Layers.Insert(0, layer);
@@ -735,7 +735,7 @@ namespace MaestroAPITests
             Assert.True(map.Layers["HydrographicPolygons"] == map.Layers[0]);
             Assert.NotNull(map.Layers.GetByObjectId(layer.ObjectId));
 
-            var layer2 = new RuntimeMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Parcels.LayerDefinition"));
+            var layer2 = mapSvc.CreateMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Parcels.LayerDefinition"));
             map.Layers.Insert(0, layer2);
             layer2.Group = "Group1"; //Intentional
 
@@ -751,7 +751,7 @@ namespace MaestroAPITests
             //The important one
             Assert.True(map.Layers[0].DisplayOrder < map.Layers[1].DisplayOrder);
 
-            var layer3 = new RuntimeMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Rail.LayerDefinition"));
+            var layer3 = mapSvc.CreateMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Rail.LayerDefinition"));
             layer3.Group = "Group2";
             map.Layers.Insert(0, layer3);
             Assert.AreEqual(3, map.Layers.Count);
@@ -850,7 +850,7 @@ namespace MaestroAPITests
             Assert.NotNull(map.Groups["Group2"]);
             Assert.Null(map.Groups["Group3"]);
 
-            var layer = new RuntimeMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"));
+            var layer = mapSvc.CreateMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"));
             layer.Group = "Group1";
 
             map.Layers.Add(layer);
@@ -859,7 +859,7 @@ namespace MaestroAPITests
             Assert.True(map.Layers["HydrographicPolygons"] == map.Layers[0]);
             Assert.NotNull(map.Layers.GetByObjectId(layer.ObjectId));
 
-            var layer2 = new RuntimeMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Parcels.LayerDefinition"));
+            var layer2 = mapSvc.CreateMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Parcels.LayerDefinition"));
             map.Layers.Add(layer2);
             layer2.Group = "Group1"; //Intentional
 
@@ -875,7 +875,7 @@ namespace MaestroAPITests
             //The important one
             Assert.True(map.Layers[0].DisplayOrder < map.Layers[1].DisplayOrder);
 
-            var layer3 = new RuntimeMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Rail.LayerDefinition"));
+            var layer3 = mapSvc.CreateMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Rail.LayerDefinition"));
             layer3.Group = "Group2";
             map.Layers.Add(layer3);
             Assert.AreEqual(3, map.Layers.Count);
