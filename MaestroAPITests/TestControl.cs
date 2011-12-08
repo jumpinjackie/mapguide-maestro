@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace MaestroAPITests
 {
@@ -40,5 +41,16 @@ namespace MaestroAPITests
         public const bool IgnoreSchemaTests = false;
         public const bool IgnoreSerializationTests = false;
         public const bool IgnoreValidationTests = false;
+    }
+
+    public class ConnectionUtil
+    {
+        public static IServerConnection CreateTestHttpConnection()
+        {
+            return ConnectionProviderRegistry.CreateConnection("Maestro.Http",
+                "Url", "http://" + Environment.MachineName + "/mapguide/mapagent/mapagent.fcgi",
+                "Username", "Administrator",
+                "Password", "admin");
+        }
     }
 }

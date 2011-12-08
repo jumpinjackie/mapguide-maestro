@@ -60,7 +60,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             if (_reader.Name != this.ResponseRootElement)
                 throw new Exception("Bad document. Expected element: " + this.ResponseRootElement); //LOCALIZEME
             _reader.Read();
-            //FIXME: serialized schema not included in queries for extended feature classes!
+            //FIXME: Gracefully handle empty result sets. Empty result sets do not include a schema element
             if (_reader.Name != this.DefinitionRootElement)
                 throw new Exception("Bad document. Expected element: " + this.DefinitionRootElement); //LOCALIZEME
 

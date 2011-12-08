@@ -824,7 +824,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             if (d.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
             {
                 m_changeList = DeserializeChangeMap(d);
-
+                if (d.SiteVersion >= new Version(2, 3))
+                {
+                    this.WatermarkUsage = d.ReadInt32();
+                }
                 int mapLayerCount = d.ReadInt32();
                 if (mapLayerCount != 0)
                     throw new Exception("On new versions, there should be no layer data in map");
@@ -835,11 +838,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
                 DeserializeLayerData(d);
                 m_changeList = DeserializeChangeMap(d);
-            }
-
-            if (d.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP2012))
-            {
-                this.WatermarkUsage = d.ReadInt32();
             }
 
             _disableChangeTracking = false;

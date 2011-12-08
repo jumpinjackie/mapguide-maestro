@@ -449,7 +449,11 @@ namespace OSGeo.MapGuide.MaestroAPI
 			param.Add("RESOURCEID", id);
 			param.Add("DATANAME", dataname);
 			param.Add("DATATYPE", datatype.ToString());
-			param.Add("DATALENGTH", content.Length.ToString());
+
+            //This does not appear to be used anywhere in the MG WebTier code
+            //anyway, set this if stream supports seeking
+            if (content.CanSeek)
+			    param.Add("DATALENGTH", content.Length.ToString());
 
 			string boundary;
 			System.Net.WebRequest req = PrepareFormContent(outStream, out boundary);

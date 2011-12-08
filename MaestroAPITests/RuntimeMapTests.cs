@@ -1027,17 +1027,6 @@ namespace MaestroAPITests
         }
     }
 
-    public class ConnectionUtil
-    {
-        public static IServerConnection CreateTestHttpConnection()
-        {
-            return ConnectionProviderRegistry.CreateConnection("Maestro.Http",
-                "Url", "http://" + Environment.MachineName + "/mapguide/mapagent/mapagent.fcgi",
-                "Username", "Administrator",
-                "Password", "admin");
-        }
-    }
-
     [TestFixture(Ignore = TestControl.IgnoreHttpRuntimeMapTests)]
     public class HttpRuntimeMapTests : RuntimeMapTests
     {
@@ -1045,7 +1034,7 @@ namespace MaestroAPITests
         {
             return ConnectionUtil.CreateTestHttpConnection();
         }
-        /*
+        
         [Test]
         public override void TestResourceEvents()
         {
@@ -1105,7 +1094,7 @@ namespace MaestroAPITests
         {
             base.TestLargeMapCreatePerformance();
         }
-        */
+        
         [Test]
         public override void TestMapManipulation4()
         {

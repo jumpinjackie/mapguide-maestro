@@ -24,6 +24,7 @@ using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using System.IO;
+using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace MaestroAPITests
 {
@@ -124,14 +125,37 @@ namespace MaestroAPITests
         }
 
         [Test]
-        public void TestAnyStreamInput()
+        public void TestTouch()
         {
             var conn = ConnectionUtil.CreateTestHttpConnection();
             var resSvc = conn.ResourceService;
             if (!resSvc.ResourceExists("Library://UnitTests/Data/HydrographicPolygons.FeatureSource"))
                 resSvc.SetResourceXmlData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.fs"));
 
-            resSvc.SetResourceXmlData("Library://UnitTests/Data/TestAnyStreamInput.FeatureSource", resSvc.GetResourceXmlData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource"));
+            resSvc.Touch("Library://UnitTests/Data/HydrographicPolygons.FeatureSource");
+        }
+
+        [Test]
+        public void TestAnyStreamInput()
+        {
+            string source = "Library://UnitTests/Data/HydrographicPolygons.FeatureSource";
+            string target = "Library://UnitTests/Data/TestAnyStreamInput.FeatureSource";
+
+            var conn = ConnectionUtil.CreateTestHttpConnection();
+            var resSvc = conn.ResourceService;
+            if (!resSvc.ResourceExists(source))
+                resSvc.SetResourceXmlData(source, File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.fs"));
+
+            resSvc.SetResourceXmlData(target, resSvc.GetResourceXmlData(source));
+
+            string dataName = "";
+            var resDataList = resSvc.EnumerateResourceData(source);
+            dataName = resDataList.ResourceData[0].Name;
+
+            resSvc.SetResourceData(target,
+                                   dataName,
+                                   ResourceDataType.File,
+                                   resSvc.GetResourceData(source, dataName));
         }
     }
 }
