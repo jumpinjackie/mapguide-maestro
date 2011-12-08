@@ -103,13 +103,22 @@ namespace Maestro.Editors.Fusion
 
         private void lstMaps_SelectedIndexChanged(object sender, EventArgs e)
         {
+            btnRemoveMap.Enabled = false;
             var grp = this.SelectedGroup;
             if (grp != null)
             {
                 propertiesPanel.Controls.Clear();
-                var mapCtrl = new MapCtrl(_flexLayout, grp, _edsvc);
+                IMapWidget widget = null;
+
+                var mapWidget = _flexLayout.GetFirstWidgetSet().MapWidget;
+                //We're editing the one used by the map widget
+                if (grp.id == mapWidget.MapId)
+                    widget = mapWidget;
+
+                var mapCtrl = new MapCtrl(_flexLayout, grp, _edsvc, widget);
                 mapCtrl.Dock = DockStyle.Fill;
                 propertiesPanel.Controls.Add(mapCtrl);
+                btnRemoveMap.Enabled = true;
             }
         }
 
@@ -120,9 +129,50 @@ namespace Maestro.Editors.Fusion
                 var item = lstMaps.SelectedItems[0];
                 var group = (IMapGroup)item.Tag;
 
-                _flexLayout.MapSet.RemoveGroup(group);
-                lstMaps.Items.Remove(item);
-                OnResourceChanged();
+                var mapWidget = _flexLayout.GetFirstWidgetSet().MapWidget;
+                //The map group we removed is being referenced by the map widget
+                if (group.id == mapWidget.MapId)
+                {
+                    if (_flexLayout.MapSet.MapGroupCount >= 2)
+                    {
+                        if (_flexLayout.MapSet.MapGroupCount == 2)
+                        {
+                            _flexLayout.MapSet.RemoveGroup(group);
+                            lstMaps.Items.Remove(item);
+
+                            mapWidget.MapId = _flexLayout.MapSet.GetGroupAt(0).id;
+                            MessageBox.Show(string.Format(Properties.Resources.MapUpdatedToUseGroup, mapWidget.MapId));
+                            OnResourceChanged();
+                        }
+                        else if (_flexLayout.MapSet.MapGroupCount > 2)
+                        {
+                            List<string> mapGroupIds = new List<string>();
+                            for (int i = 0; i < _flexLayout.MapSet.MapGroupCount; i++)
+                            {
+                                mapGroupIds.Add(_flexLayout.MapSet.GetGroupAt(i).id);
+                            }
+
+                            mapGroupIds.Remove(group.id); //Remove the one to be removed from the list
+
+                            string id = GenericItemSelectionDialog.SelectItem(Properties.Resources.PromptSelectMap, Properties.Resources.PromptUpdateMapWidgetReference, mapGroupIds.ToArray());
+                            if (id != null) //A replacement has been selected, now we can remove
+                            {
+                                _flexLayout.MapSet.RemoveGroup(group);
+                                lstMaps.Items.Remove(item);
+
+                                mapWidget.MapId = id;
+
+                                OnResourceChanged();
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    _flexLayout.MapSet.RemoveGroup(group);
+                    lstMaps.Items.Remove(item);
+                    OnResourceChanged();
+                }
             }
         }
 

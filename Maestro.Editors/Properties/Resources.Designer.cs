@@ -1980,6 +1980,15 @@ namespace Maestro.Editors.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Map widget has been updated to use the map group: {0}.
+        /// </summary>
+        internal static string MapUpdatedToUseGroup {
+            get {
+                return ResourceManager.GetString("MapUpdatedToUseGroup", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap marker {
             get {
                 object obj = ResourceManager.GetObject("marker", resourceCulture);
@@ -2419,6 +2428,24 @@ namespace Maestro.Editors.Properties {
         internal static string PromptRepairBrokenFeatureSource {
             get {
                 return ResourceManager.GetString("PromptRepairBrokenFeatureSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Map.
+        /// </summary>
+        internal static string PromptSelectMap {
+            get {
+                return ResourceManager.GetString("PromptSelectMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Map Widget to point to.
+        /// </summary>
+        internal static string PromptUpdateMapWidgetReference {
+            get {
+                return ResourceManager.GetString("PromptUpdateMapWidgetReference", resourceCulture);
             }
         }
         

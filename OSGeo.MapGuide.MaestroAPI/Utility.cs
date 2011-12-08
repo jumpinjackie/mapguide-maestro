@@ -107,8 +107,36 @@ namespace OSGeo.MapGuide.MaestroAPI
 				throw new Exception("Bad HTML color: \"" + color + "\"");
 		}
 
+        /// <summary>
+        /// Parses a color in HTML notation (ea. #ffaabbff)
+        /// </summary>
+        /// <param name="color">The HTML representation of the color</param>
+        /// <returns>The .Net color structure that matches the color</returns>
+        public static Color ParseHTMLColorRGBA(string color)
+        {
+            if (color.Length == 8)
+            {
+                int r = int.Parse(color.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+                int g = int.Parse(color.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+                int b = int.Parse(color.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+                int a = int.Parse(color.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+
+                return Color.FromArgb(a, r, g, b);
+            }
+            else if (color.Length == 6)
+            {
+                int r = int.Parse(color.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+                int g = int.Parse(color.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+                int b = int.Parse(color.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+
+                return Color.FromArgb(r, g, b);
+            }
+            else
+                throw new Exception("Bad HTML color: \"" + color + "\"");
+        }
+
 		/// <summary>
-		/// Returns the HTML representation of an .Net color structure
+		/// Returns the HTML ARGB representation of an .Net color structure
 		/// </summary>
 		/// <param name="color">The color to encode</param>
 		/// <param name="includeAlpha">A flag indicating if the color structures alpha value should be included</param>
@@ -123,6 +151,23 @@ namespace OSGeo.MapGuide.MaestroAPI
 			res += color.B.ToString("x02");
 			return res;
 		}
+
+        /// <summary>
+        /// Returns the HTML RGBA representation of an .Net color structure
+        /// </summary>
+        /// <param name="color">The color to encode</param>
+        /// <param name="includeAlpha">A flag indicating if the color structures alpha value should be included</param>
+        /// <returns>The HTML representation of the color structure</returns>
+        public static string SerializeHTMLColorRGBA(Color color, bool includeAlpha)
+        {
+            string res = "";
+            res += color.R.ToString("x02");
+            res += color.G.ToString("x02");
+            res += color.B.ToString("x02");
+            if (includeAlpha)
+                res += color.A.ToString("x02");
+            return res;
+        }
 
 		/// <summary>
 		/// Parses a string with a decimal value in EN-US format

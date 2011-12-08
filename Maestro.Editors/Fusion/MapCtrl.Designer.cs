@@ -85,6 +85,7 @@
             // 
             resources.ApplyResources(this.txtMapId, "txtMapId");
             this.txtMapId.Name = "txtMapId";
+            this.txtMapId.TextChanged += new System.EventHandler(this.txtMapId_TextChanged);
             // 
             // groupBox1
             // 

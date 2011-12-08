@@ -121,6 +121,10 @@
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 22</value>
@@ -146,7 +150,6 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtMapId.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -174,113 +177,11 @@
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="&gt;&gt;chkOverride.Name" xml:space="preserve">
-    <value>chkOverride</value>
-  </data>
-  <data name="&gt;&gt;chkOverride.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkOverride.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;chkOverride.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtViewScale.Name" xml:space="preserve">
-    <value>txtViewScale</value>
-  </data>
-  <data name="&gt;&gt;txtViewScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtViewScale.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtViewScale.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtViewY.Name" xml:space="preserve">
-    <value>txtViewY</value>
-  </data>
-  <data name="&gt;&gt;txtViewY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtViewY.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtViewY.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtViewX.Name" xml:space="preserve">
-    <value>txtViewX</value>
-  </data>
-  <data name="&gt;&gt;txtViewX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtViewX.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtViewX.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 75</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>449, 56</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="chkOverride.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="chkOverride.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="chkOverride.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 0</value>
@@ -372,6 +273,9 @@
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>272, 26</value>
   </data>
@@ -398,6 +302,9 @@
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>148, 26</value>
@@ -426,6 +333,9 @@
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 26</value>
   </data>
@@ -450,8 +360,32 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 75</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>449, 56</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 51</value>
@@ -504,6 +438,9 @@
   <data name="btnBrowseMdf.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
+  <data name="btnBrowseMdf.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnBrowseMdf.Location" type="System.Drawing.Point, System.Drawing">
     <value>437, 46</value>
   </data>
@@ -530,6 +467,9 @@
   </data>
   <data name="chkSingleTiled.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="chkSingleTiled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="chkSingleTiled.Location" type="System.Drawing.Point, System.Drawing">
     <value>234, 139</value>
@@ -558,6 +498,9 @@
   <data name="lblSelColor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblSelColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblSelColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>17, 140</value>
   </data>
@@ -585,6 +528,9 @@
   <data name="chkSelectionAsOverlay.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="chkSelectionAsOverlay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="chkSelectionAsOverlay.Location" type="System.Drawing.Point, System.Drawing">
     <value>327, 139</value>
   </data>
@@ -609,11 +555,20 @@
   <data name="&gt;&gt;chkSelectionAsOverlay.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="cmbSelectionColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 137</value>
+  </data>
+  <data name="cmbSelectionColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="cmbSelectionColor.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
   <data name="&gt;&gt;cmbSelectionColor.Name" xml:space="preserve">
     <value>cmbSelectionColor</value>
   </data>
   <data name="&gt;&gt;cmbSelectionColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=4.0.0.6216, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=4.0.0.6282, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;cmbSelectionColor.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -645,32 +600,14 @@
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="cmbSelectionColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 137</value>
-  </data>
-  <data name="cmbSelectionColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="cmbSelectionColor.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;cmbSelectionColor.Name" xml:space="preserve">
-    <value>cmbSelectionColor</value>
-  </data>
-  <data name="&gt;&gt;cmbSelectionColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=4.0.0.6216, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
-  </data>
-  <data name="&gt;&gt;cmbSelectionColor.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;cmbSelectionColor.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="grpCms.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="chkOsmMapnik.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="chkOsmMapnik.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="chkOsmMapnik.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 19</value>
@@ -780,6 +717,24 @@
   <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="chkGoogTerrain.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkGoogTerrain.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkGoogTerrain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 89</value>
+  </data>
+  <data name="chkGoogTerrain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 17</value>
+  </data>
+  <data name="chkGoogTerrain.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="chkGoogTerrain.Text" xml:space="preserve">
+    <value>Terrain</value>
+  </data>
   <data name="&gt;&gt;chkGoogTerrain.Name" xml:space="preserve">
     <value>chkGoogTerrain</value>
   </data>
@@ -791,6 +746,24 @@
   </data>
   <data name="&gt;&gt;chkGoogTerrain.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="chkGoogStreets.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkGoogStreets.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkGoogStreets.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 19</value>
+  </data>
+  <data name="chkGoogStreets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 17</value>
+  </data>
+  <data name="chkGoogStreets.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="chkGoogStreets.Text" xml:space="preserve">
+    <value>Streets</value>
   </data>
   <data name="&gt;&gt;chkGoogStreets.Name" xml:space="preserve">
     <value>chkGoogStreets</value>
@@ -804,6 +777,24 @@
   <data name="&gt;&gt;chkGoogStreets.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="chkGoogSatellite.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkGoogSatellite.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkGoogSatellite.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 43</value>
+  </data>
+  <data name="chkGoogSatellite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 17</value>
+  </data>
+  <data name="chkGoogSatellite.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="chkGoogSatellite.Text" xml:space="preserve">
+    <value>Satellite</value>
+  </data>
   <data name="&gt;&gt;chkGoogSatellite.Name" xml:space="preserve">
     <value>chkGoogSatellite</value>
   </data>
@@ -815,6 +806,24 @@
   </data>
   <data name="&gt;&gt;chkGoogSatellite.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="chkGoogHybrid.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkGoogHybrid.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkGoogHybrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 66</value>
+  </data>
+  <data name="chkGoogHybrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 17</value>
+  </data>
+  <data name="chkGoogHybrid.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="chkGoogHybrid.Text" xml:space="preserve">
+    <value>Hybrid</value>
   </data>
   <data name="&gt;&gt;chkGoogHybrid.Name" xml:space="preserve">
     <value>chkGoogHybrid</value>
@@ -852,6 +861,24 @@
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="chkBingStreets.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkBingStreets.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkBingStreets.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 19</value>
+  </data>
+  <data name="chkBingStreets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 17</value>
+  </data>
+  <data name="chkBingStreets.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="chkBingStreets.Text" xml:space="preserve">
+    <value>Streets</value>
+  </data>
   <data name="&gt;&gt;chkBingStreets.Name" xml:space="preserve">
     <value>chkBingStreets</value>
   </data>
@@ -864,6 +891,24 @@
   <data name="&gt;&gt;chkBingStreets.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="chkBingSatellite.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkBingSatellite.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkBingSatellite.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 43</value>
+  </data>
+  <data name="chkBingSatellite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 17</value>
+  </data>
+  <data name="chkBingSatellite.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="chkBingSatellite.Text" xml:space="preserve">
+    <value>Satellite</value>
+  </data>
   <data name="&gt;&gt;chkBingSatellite.Name" xml:space="preserve">
     <value>chkBingSatellite</value>
   </data>
@@ -875,6 +920,24 @@
   </data>
   <data name="&gt;&gt;chkBingSatellite.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="chkBingHybrid.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkBingHybrid.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkBingHybrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 66</value>
+  </data>
+  <data name="chkBingHybrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 17</value>
+  </data>
+  <data name="chkBingHybrid.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="chkBingHybrid.Text" xml:space="preserve">
+    <value>Hybrid</value>
   </data>
   <data name="&gt;&gt;chkBingHybrid.Name" xml:space="preserve">
     <value>chkBingHybrid</value>
@@ -912,6 +975,24 @@
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="chkYahooStreets.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkYahooStreets.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkYahooStreets.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 19</value>
+  </data>
+  <data name="chkYahooStreets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 17</value>
+  </data>
+  <data name="chkYahooStreets.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="chkYahooStreets.Text" xml:space="preserve">
+    <value>Streets</value>
+  </data>
   <data name="&gt;&gt;chkYahooStreets.Name" xml:space="preserve">
     <value>chkYahooStreets</value>
   </data>
@@ -924,6 +1005,24 @@
   <data name="&gt;&gt;chkYahooStreets.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="chkYahooSatellite.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkYahooSatellite.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkYahooSatellite.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 43</value>
+  </data>
+  <data name="chkYahooSatellite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 17</value>
+  </data>
+  <data name="chkYahooSatellite.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="chkYahooSatellite.Text" xml:space="preserve">
+    <value>Satellite</value>
+  </data>
   <data name="&gt;&gt;chkYahooSatellite.Name" xml:space="preserve">
     <value>chkYahooSatellite</value>
   </data>
@@ -935,6 +1034,24 @@
   </data>
   <data name="&gt;&gt;chkYahooSatellite.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="chkYahooHybrid.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkYahooHybrid.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkYahooHybrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 66</value>
+  </data>
+  <data name="chkYahooHybrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 17</value>
+  </data>
+  <data name="chkYahooHybrid.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="chkYahooHybrid.Text" xml:space="preserve">
+    <value>Hybrid</value>
   </data>
   <data name="&gt;&gt;chkYahooHybrid.Name" xml:space="preserve">
     <value>chkYahooHybrid</value>
@@ -1005,6 +1122,9 @@
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 166</value>
   </data>
@@ -1052,279 +1172,6 @@
   </data>
   <data name="&gt;&gt;grpCms.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="chkGoogTerrain.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkGoogTerrain.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkGoogTerrain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 89</value>
-  </data>
-  <data name="chkGoogTerrain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 17</value>
-  </data>
-  <data name="chkGoogTerrain.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="chkGoogTerrain.Text" xml:space="preserve">
-    <value>Terrain</value>
-  </data>
-  <data name="&gt;&gt;chkGoogTerrain.Name" xml:space="preserve">
-    <value>chkGoogTerrain</value>
-  </data>
-  <data name="&gt;&gt;chkGoogTerrain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkGoogTerrain.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;chkGoogTerrain.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="chkGoogStreets.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkGoogStreets.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 19</value>
-  </data>
-  <data name="chkGoogStreets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 17</value>
-  </data>
-  <data name="chkGoogStreets.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="chkGoogStreets.Text" xml:space="preserve">
-    <value>Streets</value>
-  </data>
-  <data name="&gt;&gt;chkGoogStreets.Name" xml:space="preserve">
-    <value>chkGoogStreets</value>
-  </data>
-  <data name="&gt;&gt;chkGoogStreets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkGoogStreets.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;chkGoogStreets.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="chkGoogSatellite.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkGoogSatellite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 43</value>
-  </data>
-  <data name="chkGoogSatellite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 17</value>
-  </data>
-  <data name="chkGoogSatellite.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="chkGoogSatellite.Text" xml:space="preserve">
-    <value>Satellite</value>
-  </data>
-  <data name="&gt;&gt;chkGoogSatellite.Name" xml:space="preserve">
-    <value>chkGoogSatellite</value>
-  </data>
-  <data name="&gt;&gt;chkGoogSatellite.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkGoogSatellite.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;chkGoogSatellite.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="chkGoogHybrid.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkGoogHybrid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 66</value>
-  </data>
-  <data name="chkGoogHybrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 17</value>
-  </data>
-  <data name="chkGoogHybrid.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="chkGoogHybrid.Text" xml:space="preserve">
-    <value>Hybrid</value>
-  </data>
-  <data name="&gt;&gt;chkGoogHybrid.Name" xml:space="preserve">
-    <value>chkGoogHybrid</value>
-  </data>
-  <data name="&gt;&gt;chkGoogHybrid.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkGoogHybrid.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;chkGoogHybrid.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="chkBingStreets.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkBingStreets.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 19</value>
-  </data>
-  <data name="chkBingStreets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 17</value>
-  </data>
-  <data name="chkBingStreets.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="chkBingStreets.Text" xml:space="preserve">
-    <value>Streets</value>
-  </data>
-  <data name="&gt;&gt;chkBingStreets.Name" xml:space="preserve">
-    <value>chkBingStreets</value>
-  </data>
-  <data name="&gt;&gt;chkBingStreets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkBingStreets.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;chkBingStreets.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="chkBingSatellite.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkBingSatellite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 43</value>
-  </data>
-  <data name="chkBingSatellite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 17</value>
-  </data>
-  <data name="chkBingSatellite.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="chkBingSatellite.Text" xml:space="preserve">
-    <value>Satellite</value>
-  </data>
-  <data name="&gt;&gt;chkBingSatellite.Name" xml:space="preserve">
-    <value>chkBingSatellite</value>
-  </data>
-  <data name="&gt;&gt;chkBingSatellite.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkBingSatellite.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;chkBingSatellite.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="chkBingHybrid.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkBingHybrid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 66</value>
-  </data>
-  <data name="chkBingHybrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 17</value>
-  </data>
-  <data name="chkBingHybrid.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="chkBingHybrid.Text" xml:space="preserve">
-    <value>Hybrid</value>
-  </data>
-  <data name="&gt;&gt;chkBingHybrid.Name" xml:space="preserve">
-    <value>chkBingHybrid</value>
-  </data>
-  <data name="&gt;&gt;chkBingHybrid.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkBingHybrid.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;chkBingHybrid.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="chkYahooStreets.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkYahooStreets.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 19</value>
-  </data>
-  <data name="chkYahooStreets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 17</value>
-  </data>
-  <data name="chkYahooStreets.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="chkYahooStreets.Text" xml:space="preserve">
-    <value>Streets</value>
-  </data>
-  <data name="&gt;&gt;chkYahooStreets.Name" xml:space="preserve">
-    <value>chkYahooStreets</value>
-  </data>
-  <data name="&gt;&gt;chkYahooStreets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkYahooStreets.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;chkYahooStreets.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="chkYahooSatellite.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkYahooSatellite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 43</value>
-  </data>
-  <data name="chkYahooSatellite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 17</value>
-  </data>
-  <data name="chkYahooSatellite.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="chkYahooSatellite.Text" xml:space="preserve">
-    <value>Satellite</value>
-  </data>
-  <data name="&gt;&gt;chkYahooSatellite.Name" xml:space="preserve">
-    <value>chkYahooSatellite</value>
-  </data>
-  <data name="&gt;&gt;chkYahooSatellite.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkYahooSatellite.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;chkYahooSatellite.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="chkYahooHybrid.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkYahooHybrid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 66</value>
-  </data>
-  <data name="chkYahooHybrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 17</value>
-  </data>
-  <data name="chkYahooHybrid.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="chkYahooHybrid.Text" xml:space="preserve">
-    <value>Hybrid</value>
-  </data>
-  <data name="&gt;&gt;chkYahooHybrid.Name" xml:space="preserve">
-    <value>chkYahooHybrid</value>
-  </data>
-  <data name="&gt;&gt;chkYahooHybrid.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkYahooHybrid.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;chkYahooHybrid.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

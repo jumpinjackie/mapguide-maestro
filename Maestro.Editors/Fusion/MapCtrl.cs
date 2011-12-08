@@ -154,13 +154,15 @@ namespace Maestro.Editors.Fusion
         private bool _noEvents = true;
         private IApplicationDefinition _appDef;
         private IEditorService _edsvc;
+        private IMapWidget _widget;
 
-        public MapCtrl(IApplicationDefinition appDef, IMapGroup group, IEditorService edService) : this() 
+        public MapCtrl(IApplicationDefinition appDef, IMapGroup group, IEditorService edService, IMapWidget widget) : this() 
         {
             _edsvc = edService;
             _edsvc.RegisterCustomNotifier(this);
             _appDef = appDef;
             _group = group;
+            _widget = widget;
 
             foreach (var map in group.Map)
             {
@@ -276,7 +278,7 @@ namespace Maestro.Editors.Fusion
             var selColor = _map.GetValue("SelectionColor");
 
             if (!string.IsNullOrEmpty(selColor))
-                cmbSelectionColor.CurrentColor = Utility.ParseHTMLColor(selColor.Substring(2)); //Strip the "0x" part
+                cmbSelectionColor.CurrentColor = Utility.ParseHTMLColorRGBA(selColor.Substring(2)); //Strip the "0x" part
             
             if (!string.IsNullOrEmpty(selOverlay))
             {
@@ -287,7 +289,7 @@ namespace Maestro.Editors.Fusion
 
             cmbSelectionColor.SelectedIndexChanged += (s, e) => 
             {
-                _map.SetValue("SelectionColor", "0x" + Utility.SerializeHTMLColor(cmbSelectionColor.CurrentColor, true));
+                _map.SetValue("SelectionColor", "0x" + Utility.SerializeHTMLColorRGBA(cmbSelectionColor.CurrentColor, true));
                 OnResourceChanged();
             };
             chkSelectionAsOverlay.CheckedChanged += (s, e) => 
@@ -593,5 +595,11 @@ namespace Maestro.Editors.Fusion
         }
 
         public event EventHandler ResourceChanged;
+
+        private void txtMapId_TextChanged(object sender, EventArgs e)
+        {
+            if (_widget != null)
+                _widget.MapId = txtMapId.Text;
+        }
     }
 }

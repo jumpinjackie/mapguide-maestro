@@ -1307,4 +1307,13 @@ Returns: {0}</value>
   <data name="ConfirmGoogleScaleList" xml:space="preserve">
     <value>Are you sure you want to use a Google-compatible Scale List? This will overwrite your existing scale ranges and will only line up with commercial layers in Fusion if your Map's Coordinate System is WGS84.PseudoMercator</value>
   </data>
+  <data name="MapUpdatedToUseGroup" xml:space="preserve">
+    <value>Map widget has been updated to use the map group: {0}</value>
+  </data>
+  <data name="PromptSelectMap" xml:space="preserve">
+    <value>Select Map</value>
+  </data>
+  <data name="PromptUpdateMapWidgetReference" xml:space="preserve">
+    <value>Update Map Widget to point to</value>
+  </data>
 </root>
