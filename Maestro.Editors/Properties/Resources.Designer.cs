@@ -2432,6 +2432,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changing the DSN will reset the current configuration document. Proceed?.
+        /// </summary>
+        internal static string PromptResetOdbcConfigDocument {
+            get {
+                return ResourceManager.GetString("PromptResetOdbcConfigDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Map.
         /// </summary>
         internal static string PromptSelectMap {

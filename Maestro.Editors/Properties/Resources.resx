@@ -1316,4 +1316,7 @@ Returns: {0}</value>
   <data name="PromptUpdateMapWidgetReference" xml:space="preserve">
     <value>Update Map Widget to point to</value>
   </data>
+  <data name="PromptResetOdbcConfigDocument" xml:space="preserve">
+    <value>Changing the DSN will reset the current configuration document. Proceed?</value>
+  </data>
 </root>

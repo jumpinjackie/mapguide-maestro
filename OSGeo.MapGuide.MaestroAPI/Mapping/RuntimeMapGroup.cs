@@ -48,7 +48,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="map">The map.</param>
         /// <param name="name">The name.</param>
-        public RuntimeMapGroup(RuntimeMap map, string name) 
+        internal RuntimeMapGroup(RuntimeMap map, string name) 
             : this()
         {
             this.Parent = map;
@@ -62,7 +62,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="map">The map.</param>
         /// <param name="group">The group.</param>
-        public RuntimeMapGroup(RuntimeMap map, IMapLayerGroup group)
+        internal RuntimeMapGroup(RuntimeMap map, IMapLayerGroup group)
             : this(map, group.Name)
         {
             _disableChangeTracking = true;

@@ -1722,6 +1722,39 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
+        /// Creates the map group.
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
+        public virtual RuntimeMapGroup CreateMapGroup(RuntimeMap parent, string name)
+        {
+            return new RuntimeMapGroup(parent, name);
+        }
+
+        /// <summary>
+        /// Creates a new runtime map group
+        /// </summary>
+        /// <param name="parent">The map.</param>
+        /// <param name="group">The group.</param>
+        /// <returns></returns>
+        public virtual RuntimeMapGroup CreateMapGroup(RuntimeMap parent, IBaseMapGroup group)
+        {
+            return new RuntimeMapGroup(parent, group);
+        }
+
+        /// <summary>
+        /// Creates a new runtime map group
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="group">The group.</param>
+        /// <returns></returns>
+        public virtual RuntimeMapGroup CreateMapGroup(RuntimeMap parent, IMapLayerGroup group)
+        {
+            return new RuntimeMapGroup(parent, group);
+        }
+
+        /// <summary>
         /// Creates a new runtime map layer from the specified Layer Definition
         /// </summary>
         /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
@@ -1750,6 +1783,23 @@ namespace OSGeo.MapGuide.MaestroAPI
             rtLayer.Name = source.Name;
             rtLayer.Selectable = source.Selectable;
             rtLayer.ShowInLegend = source.ShowInLegend;
+            
+            return rtLayer;
+        }
+
+        /// <summary>
+        /// Creates a new runtime map layer from the specified <see cref="T:OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer"/> instance
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="source">The map definition layer</param>
+        /// <returns></returns>
+        public RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source)
+        {
+            var rtLayer = CreateMapLayer(parent, (IBaseMapLayer)source);
+
+            //These may not match, so set them here
+            rtLayer.Group = source.Group;
+            rtLayer.Visible = source.Visible;
             
             return rtLayer;
         }

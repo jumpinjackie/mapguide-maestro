@@ -64,7 +64,7 @@ namespace SamplesWeb.Tasks
                 RuntimeMapGroup group = rtMap.Groups[groupName];
                 if (group == null)
                 {
-                    group = new RuntimeMapGroup(rtMap, groupName);
+                    group = mpSvc.CreateMapGroup(rtMap, groupName);
                     rtMap.Groups.Add(group);
                 }
 

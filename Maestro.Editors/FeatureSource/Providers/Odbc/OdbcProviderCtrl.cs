@@ -71,6 +71,11 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                 OnResourceChanged();
         }
 
+        void RequestedDocumentReset(object sender, EventArgs e)
+        {
+            DoDocumentReset();
+        }
+
         private bool _init = false;
 
         public override void Bind(IEditorService service)
@@ -166,13 +171,17 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                 catch { }
 
                 childEditor.ConnectionChanged += InternalConnectionChanged;
+                childEditor.RequestDocumentReset += RequestedDocumentReset;
                 pnlMethod.Controls.Clear();
                 childEditor.Content.Dock = DockStyle.Fill;
                 pnlMethod.Controls.Add(childEditor.Content);
             }
 
             if (this.ChildEditor != null)
+            {
                 this.ChildEditor.ConnectionChanged -= InternalConnectionChanged;
+                this.ChildEditor.RequestDocumentReset -= RequestedDocumentReset;
+            }
 
             this.ChildEditor = childEditor;
 
@@ -292,26 +301,44 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
             mgr.AddNamespace("xlink", XmlNamespaces.XLINK);
             mgr.AddNamespace("fds", XmlNamespaces.FDS);
 
-            var desc = _fs.Describe();
-            _doc.AddSchema(desc.Schemas[0]); //Only one schema is supported by ODBC so this is ok
+            //This may have changed, so reapply
+            var props = Use64BitDriver ? this.ChildEditor.Get64BitConnectionProperties() : this.ChildEditor.ConnectionProperties;
+            _fs.ApplyConnectionProperties(props);
+            _service.SyncSessionCopy();
 
-            var scList = _fs.GetSpatialInfo(false);
-            foreach (var sc in scList.SpatialContext)
+            try
             {
-                _doc.AddSpatialContext(sc);
+                var desc = _fs.Describe();
+                if (desc.Schemas.Length == 0)
+                    throw new ApplicationException("Could not retrieve any schemas from this connection. If it is a DSN, ensure it is a valid DSN");
+                _doc.AddSchema(desc.Schemas[0]); //Only one schema is supported by ODBC so this is ok
+
+                var scList = _fs.GetSpatialInfo(false);
+                foreach (var sc in scList.SpatialContext)
+                {
+                    _doc.AddSpatialContext(sc);
+                }
+            }
+            catch (Exception ex)
+            {
+                _doc = null;
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            if (CheckValidConnection())
-            {
-                _fs.SetConfigurationContent(null);
-                _fs.ConfigurationDocument = null;
-                _service.SyncSessionCopy();
-                BuildDefaultDocument();
-                MessageBox.Show(Properties.Resources.ConfigurationDocumentReset);
-            }
+            DoDocumentReset();
+        }
+
+        private void DoDocumentReset()
+        {
+            _fs.SetConfigurationContent(null);
+            _fs.ConfigurationDocument = null;
+            _service.SyncSessionCopy();
+            _doc = null;
+            BuildDefaultDocument();
+            MessageBox.Show(Properties.Resources.ConfigurationDocumentReset);
         }
 
         private void chkUse64Bit_CheckedChanged(object sender, EventArgs e)

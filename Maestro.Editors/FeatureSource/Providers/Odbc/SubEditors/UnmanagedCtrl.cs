@@ -152,5 +152,8 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         {
             OnConnectionChanged();
         }
+
+
+        public event EventHandler RequestDocumentReset;
     }
 }

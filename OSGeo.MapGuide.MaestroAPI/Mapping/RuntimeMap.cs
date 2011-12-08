@@ -245,11 +245,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.BackgroundColor = mdf.BackgroundColor;
             this.CoordinateSystem = mdf.CoordinateSystem;
 
-            if (Array.IndexOf(this.CurrentConnection.Capabilities.SupportedServices, (int)ServiceType.Mapping) < 0)
-                throw new InvalidOperationException("The Map Definition originates from an incompatible IServerConnection implementation");
-
-            IMappingService mappingSvc = (IMappingService)this.CurrentConnection.GetService((int)ServiceType.Mapping);
-
             //TODO: infer real mpu from coordinate system
 
             //If a setup helper exists, use it to get required layers in a single
@@ -272,14 +267,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             //Load map layers
             foreach (var layer in mdf.MapLayer)
             {
-                var rtl = mappingSvc.CreateMapLayer(this, layer);
+                var rtl = _mapSvc.CreateMapLayer(this, layer);
                 this.Layers.Add(rtl);
             }
 
             //Load map groups
             foreach (var group in mdf.MapLayerGroup)
             {
-                var grp = new RuntimeMapGroup(this, group);
+                var grp = _mapSvc.CreateMapGroup(this, group);
                 this.Groups.Add(grp);
             }
 
@@ -293,13 +288,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     {
                         foreach (var layer in group.BaseMapLayer)
                         {
-                            var rtl = mappingSvc.CreateMapLayer(this, layer);
+                            var rtl = _mapSvc.CreateMapLayer(this, layer);
                             rtl.Visible = true;
                             rtl.Type = RuntimeMapLayer.kBaseMap;
                             this.Layers.Add(rtl);
                         }
                     }
-                    var rtg = new RuntimeMapGroup(this, group);
+                    var rtg = _mapSvc.CreateMapGroup(this, group);
                     this.Groups.Add(rtg);
                 }
 
@@ -914,6 +909,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
             for (int i = 0; i < groupCount; i++)
             {
+                //TODO: Review when we split to specific implementations
                 RuntimeMapGroup g = new RuntimeMapGroup();
                 g.Deserialize(d);
                 this.Groups.Add(g);
@@ -1105,7 +1101,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns></returns>
         internal RuntimeMapGroup AddGroup(string name)
         {
-            var group = new RuntimeMapGroup(this, name);
+            var group = _mapSvc.CreateMapGroup(this, name);
             this.Groups.Add(group);
             return group;
         }

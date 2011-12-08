@@ -27,6 +27,7 @@ using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
 using System.Collections.Specialized;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using Maestro.Editors.Common;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
 {
@@ -40,11 +41,13 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
 
         private IFeatureSource _fs;
 
+        string[] _dsnNames;
+
         public override void Bind(IEditorService service)
         {
             service.RegisterCustomNotifier(this);
             _fs = (IFeatureSource)service.GetEditedResource();
-            lstDSN.DataSource = service.FeatureService.GetConnectionPropertyValues("OSGeo.ODBC", "DataSourceName", string.Empty);
+            _dsnNames = service.FeatureService.GetConnectionPropertyValues("OSGeo.ODBC", "DataSourceName", string.Empty);
         }
 
         void OnConnectionChanged()
@@ -59,13 +62,13 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             get
             {
                 var values = new NameValueCollection();
-                if (lstDSN.SelectedItem != null)
-                    values["DataSourceName"] = lstDSN.SelectedItem.ToString();
+                if (!string.IsNullOrEmpty(txtDSN.Text))
+                    values["DataSourceName"] = txtDSN.Text;
                 return values;
             }
             set
             {
-                lstDSN.SelectedItem = value["DataSourceName"];
+                txtDSN.Text = value["DataSourceName"];
             }
         }
 
@@ -76,15 +79,36 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             get { return this; }
         }
 
-        private void lstDSN_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lstDSN.SelectedItem != null)
-                OnConnectionChanged();
-        }
-
         public NameValueCollection Get64BitConnectionProperties()
         {
             return this.ConnectionProperties;
         }
+
+        private void btnBrowseDsn_Click(object sender, EventArgs e)
+        {
+            string dsn = GenericItemSelectionDialog.SelectItem(null, null, _dsnNames);
+            if (dsn != null)
+            {
+                if (dsn != txtDSN.Text)
+                {
+                    bool reset = MessageBox.Show(Properties.Resources.PromptResetOdbcConfigDocument, Properties.Resources.TitleQuestion, MessageBoxButtons.YesNo) == DialogResult.Yes;
+                    if (reset)
+                    {
+                        txtDSN.Text = dsn;
+                        OnRequestDocumentReset();
+                        OnConnectionChanged();
+                    }
+                }
+            }
+        }
+
+        void OnRequestDocumentReset()
+        {
+            var handler = this.RequestDocumentReset;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        public event EventHandler RequestDocumentReset;
     }
 }

@@ -44,6 +44,30 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
     public interface IMappingService : IService
     {
         /// <summary>
+        /// Creates the map group.
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
+        RuntimeMapGroup CreateMapGroup(RuntimeMap parent, string name);
+
+        /// <summary>
+        /// Creates a new runtime map group
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="group">The group.</param>
+        /// <returns></returns>
+        RuntimeMapGroup CreateMapGroup(RuntimeMap parent, IBaseMapGroup group);
+
+        /// <summary>
+        /// Creates a new runtime map group
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="group">The group.</param>
+        /// <returns></returns>
+        RuntimeMapGroup CreateMapGroup(RuntimeMap parent, IMapLayerGroup group);
+
+        /// <summary>
         /// Creates a new runtime map layer from the specified Layer Definition
         /// </summary>
         /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
@@ -58,6 +82,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="source">The map definition layer</param>
         /// <returns></returns>
         RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IBaseMapLayer source);
+
+        /// <summary>
+        /// Creates a new runtime map layer from the specified <see cref="T:OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer"/> instance
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="source">The map definition layer</param>
+        /// <returns></returns>
+        RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source);
 
         /// <summary>
         /// Creates a new runtime map instance from an existing map definition.

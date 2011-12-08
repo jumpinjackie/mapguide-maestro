@@ -73,5 +73,8 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         {
             return this.ConnectionProperties;
         }
+
+
+        public event EventHandler RequestDocumentReset;
     }
 }

@@ -96,5 +96,8 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
                 this.SelectedDriver = OdbcDriverMap.GetDriver(lstDriver.SelectedItem.ToString());
             }
         }
+
+
+        public event EventHandler RequestDocumentReset;
     }
 }
