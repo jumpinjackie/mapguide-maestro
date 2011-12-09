@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
   <Comment CommentText="Runtime Map Classes">
-    <Position X="24.312" Y="1.387" Height="0.311" Width="2.134" />
+    <Position X="24.124" Y="1.189" Height="0.311" Width="2.759" />
   </Comment>
   <Comment CommentText="Maestro API root classes / interfaces">
     <Position X="23.786" Y="6.767" Height="0.441" Width="2.653" />
@@ -18,8 +18,8 @@
   <Comment CommentText="Use IServerConnection.GetService(int) to create service objects of the specified type, passing in a ServiceType enum casted to an int. Use connection capabilities to determine supported services. All IServerConnection implementations have built-in support for resource and feature services and are accessible  via the top-level ResourceService and FeatureService properties.">
     <Position X="11.946" Y="6.668" Height="1.073" Width="4.942" />
   </Comment>
-  <Comment CommentText="The IMappingService provides operations to create, open and interact with a RuntimeMap">
-    <Position X="24.298" Y="1.851" Height="0.609" Width="2.134" />
+  <Comment CommentText="The IMappingService provides operations to create, open and interact with a RuntimeMap and methods to create RuntimeMapLayer and RuntimeMapGroup instances that can then be added to the RuntimeMap">
+    <Position X="24.11" Y="1.653" Height="0.984" Width="3.113" />
   </Comment>
   <Comment CommentText="Schema API - Classes used to model the structure of a Feature Source">
     <Position X="22.665" Y="9.539" Height="0.353" Width="4.34" />
@@ -61,7 +61,7 @@
     <Position X="7.266" Y="9.617" Height="0.531" Width="1.971" />
   </Comment>
   <Comment CommentText="Used for creating, opening and interacting with a Runtime Map">
-    <Position X="9.508" Y="10.805" Height="0.552" Width="1.971" />
+    <Position X="9.529" Y="11.295" Height="0.552" Width="1.971" />
   </Comment>
   <Comment CommentText="Used for querying MapGuide Server information">
     <Position X="11.758" Y="10.034" Height="0.51" Width="1.981" />
@@ -273,7 +273,7 @@
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.IMappingService">
     <Position X="9.5" Y="8.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAEAAAAAEABAAEAAAUAA=</HashCode>
+      <HashCode>AAAAAAAAEAAAAAAAAAEAAAAAAEAAAAAEABAAEAAAUAE=</HashCode>
       <FileName>Services\IMappingService.cs</FileName>
     </TypeIdentifier>
   </Interface>

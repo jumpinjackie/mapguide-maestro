@@ -44,7 +44,8 @@
 		<code>Session:session-id//mapName.Map</code>
 		<para>
 		Most of this runtime map state can be manipulated through the APIs provided by the Maestro API. When manipulating the state
-		of the runtime map, you must remember to call <codeEntityReference qualifyHint="false">M:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Save</codeEntityReference> on the map
+		of the runtime map (which also includes modifications to layers and groups that belong to it), you must remember to call 
+		<codeEntityReference qualifyHint="false">M:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Save</codeEntityReference> on the map
 		to persist your modifications.
 		</para>
       </content>

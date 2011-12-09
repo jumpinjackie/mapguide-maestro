@@ -1729,6 +1729,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public virtual RuntimeMapGroup CreateMapGroup(RuntimeMap parent, string name)
         {
+            //TODO: Review when we split implementations
             return new RuntimeMapGroup(parent, name);
         }
 
@@ -1740,6 +1741,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public virtual RuntimeMapGroup CreateMapGroup(RuntimeMap parent, IBaseMapGroup group)
         {
+            //TODO: Review when we split implementations
             return new RuntimeMapGroup(parent, group);
         }
 
@@ -1751,6 +1753,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public virtual RuntimeMapGroup CreateMapGroup(RuntimeMap parent, IMapLayerGroup group)
         {
+            //TODO: Review when we split implementations
             return new RuntimeMapGroup(parent, group);
         }
 

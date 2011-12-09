@@ -60,7 +60,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     }
 
     /// <summary>
-    /// Represents a runtime map layer
+    /// Represents a runtime map layer. Use <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition)"/> to create
+    /// instances of this class.
     /// </summary>
     public class RuntimeMapLayer : MapObservable
     {

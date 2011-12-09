@@ -273,8 +273,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static void CopyStream(System.IO.Stream source, System.IO.Stream target, StreamCopyProgressDelegate callback, long updateFrequence)
         {
             long length = -1;
-            try { length = source.Length; }
-            catch { }
+            if (source.CanSeek)
+                length = source.Length;
 
             long copied = 0;
             long freqCount = 0;

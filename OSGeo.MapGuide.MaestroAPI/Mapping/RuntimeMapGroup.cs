@@ -26,7 +26,8 @@ using OSGeo.MapGuide.MaestroAPI.Serialization;
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
     /// <summary>
-    /// Represents a group of layers in a runtime map
+    /// Represents a group of layers in a runtime map. Use <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup)"/> to create
+    /// instances of this class.
     /// </summary>
     public class RuntimeMapGroup : MapObservable
     {

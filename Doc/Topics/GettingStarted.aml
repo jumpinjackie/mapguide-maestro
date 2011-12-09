@@ -85,8 +85,7 @@
         
         Then in your application's entry point, add the following line of code:
         </para>
-		<code language="cs">
-		/// Code 
+		<code language="cs"> 
 		ModelSetup.Initialize();
 		</code>
 		<para>
