@@ -563,6 +563,8 @@ namespace OSGeo.MapGuide.ObjectModels
             return vert;
         }
 
+        static Version VER_240 = new Version(2, 4);
+
         /// <summary>
         /// Creates a fusion flexible layout
         /// </summary>
@@ -618,7 +620,7 @@ namespace OSGeo.MapGuide.ObjectModels
             {
                 //NOTE: Depending on MapGuide Server version, this document may be 
                 //invalid (eg. References to widgets not available in that version)
-                return DeserializeEmbeddedFlexLayout(); 
+                return DeserializeEmbeddedFlexLayout(owner); 
             }
 
             //Toolbars, every template has them
@@ -776,6 +778,11 @@ namespace OSGeo.MapGuide.ObjectModels
 
             toolbar.AddItem(appDef.CreateSeparator());
             toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.RefreshMap));
+            //2.4 requires maptips to be a toggle widget
+            if (owner.SiteVersion >= VER_240)
+            {
+                toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Maptip));
+            }
             toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.SelectRadius));
             toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.SelectPolygon));
             toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.ClearSelection));
@@ -913,9 +920,12 @@ namespace OSGeo.MapGuide.ObjectModels
             return appDef;
         }
 
-        internal static IApplicationDefinition DeserializeEmbeddedFlexLayout()
+        internal static IApplicationDefinition DeserializeEmbeddedFlexLayout(IServerConnection owner)
         {
-            return (IApplicationDefinition)ResourceTypeRegistry.Deserialize(OSGeo.MapGuide.MaestroAPI.Properties.Resources.BaseTemplate_ApplicationDefinition);
+            if (owner.SiteVersion >= VER_240)
+                return (IApplicationDefinition)ResourceTypeRegistry.Deserialize(OSGeo.MapGuide.MaestroAPI.Properties.Resources.BaseTemplate240_ApplicationDefinition);
+            else
+                return (IApplicationDefinition)ResourceTypeRegistry.Deserialize(OSGeo.MapGuide.MaestroAPI.Properties.Resources.BaseTemplate_ApplicationDefinition);
         }
 
         /// <summary>

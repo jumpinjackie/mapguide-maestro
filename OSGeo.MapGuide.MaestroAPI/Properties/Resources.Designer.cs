@@ -260,6 +260,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///&lt;ApplicationDefinition xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xsi:noNamespaceSchemaLocation=&quot;ApplicationDefinition-1.0.0.xsd&quot;&gt;
+        ///  &lt;TemplateUrl&gt;fusion/templates/mapguide/slate/index.html&lt;/TemplateUrl&gt;
+        ///  &lt;MapSet&gt;
+        ///    &lt;MapGroup id=&quot;MgMainMapId&quot;&gt;
+        ///      &lt;Map&gt;
+        ///        &lt;Type&gt;MapGuide&lt;/Type&gt;
+        ///        &lt;SingleTile&gt;true&lt;/SingleTile&gt;
+        ///        &lt;Extension&gt;
+        ///          &lt;ResourceId /&gt;
+        ///          &lt;SelectionAsOverlay&gt;true&lt;/SelectionAsOverla [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string BaseTemplate240_ApplicationDefinition {
+            get {
+                return ResourceManager.GetString("BaseTemplate240_ApplicationDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not create load procedure of type: .
         /// </summary>
         internal static string CannotCreateLoadProcedureSubType {

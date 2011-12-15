@@ -480,7 +480,7 @@
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="BaseTemplate_ApplicationDefinition" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BaseTemplate.ApplicationDefinition.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+    <value>..\Resources\BaseTemplate.ApplicationDefinition.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
   </data>
   <data name="UnknownSymbolDefVersion" xml:space="preserve">
     <value>Unknown Symbol Definition version: </value>
@@ -544,5 +544,8 @@
   </data>
   <data name="Infinity" xml:space="preserve">
     <value>Infinity</value>
+  </data>
+  <data name="BaseTemplate240_ApplicationDefinition" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BaseTemplate.ApplicationDefinition1.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

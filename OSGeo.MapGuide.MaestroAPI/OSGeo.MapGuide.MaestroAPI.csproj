@@ -477,6 +477,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ObjectModels\readme.txt" />
+    <None Include="Resources\BaseTemplate.ApplicationDefinition1.xml" />
     <None Include="CoreTypes.cd" />
     <None Include="Resources\BaseTemplate.ApplicationDefinition.xml" />
   </ItemGroup>

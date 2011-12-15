@@ -56,6 +56,7 @@ namespace MaestroAPITests
             //Generated classes have built in Clone() methods. Verify they check out
             _mocks = new Mockery();
             var conn = _mocks.NewMock<IServerConnection>();
+            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(2, 2, 0, 0)));
             var caps = _mocks.NewMock<IConnectionCapabilities>();
             Stub.On(conn).GetProperty("Capabilities").Will(Return.Value(caps));
             foreach (var rt in Enum.GetValues(typeof(ResourceTypes)))
@@ -63,7 +64,7 @@ namespace MaestroAPITests
                 Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt).Will(Return.Value(new Version(1, 0, 0)));
             }
 
-            var app = ObjectFactory.DeserializeEmbeddedFlexLayout();
+            var app = ObjectFactory.DeserializeEmbeddedFlexLayout(conn);
             var app2 = app.Clone();
             Assert.AreNotSame(app, app2);
 
@@ -104,6 +105,7 @@ namespace MaestroAPITests
         public void TestValidResourceIdentifiers()
         {
             var conn = _mocks.NewMock<IServerConnection>();
+            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(2, 2, 0, 0)));
             var caps = _mocks.NewMock<IConnectionCapabilities>();
             Stub.On(conn).GetProperty("Capabilities").Will(Return.Value(caps));
             foreach (var rt in Enum.GetValues(typeof(ResourceTypes)))
@@ -245,7 +247,7 @@ namespace MaestroAPITests
             }
             #endregion
 
-            res = ObjectFactory.DeserializeEmbeddedFlexLayout();
+            res = ObjectFactory.DeserializeEmbeddedFlexLayout(conn);
             #region Application Definition
             try
             {
