@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MapDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="MapDefinition-1.0.0.xsd">
+    <Name>New Map</Name>
+    <CoordinateSystem>GEOGCS["WGS84 Lat/Long's, Degrees, -180 ==&gt; +180",DATUM["D_WGS_1984",SPHEROID["World_Geodetic_System_of_1984",6378137,298.257222932867]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]</CoordinateSystem>
+    <Extents>
+        <MinX>-87.770746109180749</MinX>
+        <MaxX>-87.6957605384125</MaxX>
+        <MinY>43.686899685828813</MinY>
+        <MaxY>43.805498742206247</MaxY>
+    </Extents>
+    <BackgroundColor>ffffffff</BackgroundColor>
+    <BaseMapDefinition>
+        <FiniteDisplayScale>100</FiniteDisplayScale>
+        <FiniteDisplayScale>5427</FiniteDisplayScale>
+        <FiniteDisplayScale>10753</FiniteDisplayScale>
+        <FiniteDisplayScale>16080</FiniteDisplayScale>
+        <FiniteDisplayScale>21407</FiniteDisplayScale>
+        <FiniteDisplayScale>26733</FiniteDisplayScale>
+        <FiniteDisplayScale>32060</FiniteDisplayScale>
+        <FiniteDisplayScale>37387</FiniteDisplayScale>
+        <FiniteDisplayScale>42713</FiniteDisplayScale>
+        <FiniteDisplayScale>48040</FiniteDisplayScale>
+        <FiniteDisplayScale>53367</FiniteDisplayScale>
+        <FiniteDisplayScale>58693</FiniteDisplayScale>
+        <FiniteDisplayScale>64020</FiniteDisplayScale>
+        <FiniteDisplayScale>69347</FiniteDisplayScale>
+        <FiniteDisplayScale>80000</FiniteDisplayScale>
+        <BaseMapLayerGroup>
+            <Name>Base Layer Group</Name>
+            <Visible>true</Visible>
+            <ShowInLegend>true</ShowInLegend>
+            <ExpandInLegend>true</ExpandInLegend>
+            <LegendLabel>Base Layer Group</LegendLabel>
+            <BaseMapLayer>
+                <Name>Rail</Name>
+                <ResourceId>Library://UnitTests/Layers/Rail.LayerDefinition</ResourceId>
+                <Selectable>true</Selectable>
+                <ShowInLegend>true</ShowInLegend>
+                <LegendLabel>Rail</LegendLabel>
+                <ExpandInLegend>true</ExpandInLegend>
+            </BaseMapLayer>
+            <BaseMapLayer>
+                <Name>Parcels</Name>
+                <ResourceId>Library://UnitTests/Layers/Parcels.LayerDefinition</ResourceId>
+                <Selectable>true</Selectable>
+                <ShowInLegend>true</ShowInLegend>
+                <LegendLabel>Parcels</LegendLabel>
+                <ExpandInLegend>true</ExpandInLegend>
+            </BaseMapLayer>
+            <BaseMapLayer>
+                <Name>HydrographicPolygons</Name>
+                <ResourceId>Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition</ResourceId>
+                <Selectable>true</Selectable>
+                <ShowInLegend>true</ShowInLegend>
+                <LegendLabel>HydrographicPolygons</LegendLabel>
+                <ExpandInLegend>true</ExpandInLegend>
+            </BaseMapLayer>
+        </BaseMapLayerGroup>
+    </BaseMapDefinition>
+</MapDefinition>

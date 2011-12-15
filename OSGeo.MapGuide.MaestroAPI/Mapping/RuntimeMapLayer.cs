@@ -101,11 +101,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         internal RuntimeMapLayer(RuntimeMap parent) 
         {
             _scaleRanges = new double[] { 0.0, InfinityScale };
-            this.Type = kDynamic;
+            _type = kDynamic;
             this.IdentityProperties = new PropertyInfo[0];
-            this.ObjectId = Guid.NewGuid().ToString();
+            _objectId = Guid.NewGuid().ToString();
             this.Parent = parent;
-            this.Group = string.Empty;
+            _group = string.Empty;
         }
 
         /// <summary>
@@ -122,27 +122,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             if (ldf.SubLayer.LayerType == LayerType.Vector)
             {
                 var vl = ((IVectorLayerDefinition)ldf.SubLayer);
-                this.QualifiedClassName = vl.FeatureName;
-                this.GeometryPropertyName = vl.Geometry;
-                this.FeatureSourceID = vl.ResourceId;
-                this.Filter = vl.Filter;
+                _qualifiedClassName = vl.FeatureName;
+                _geometryPropertyName = vl.Geometry;
+                _featureSourceId = vl.ResourceId;
+                _filter = vl.Filter;
                 InitIdentityProperties(vl);
-                this.HasTooltips = !string.IsNullOrEmpty(vl.ToolTip);
+                _hasTooltips = !string.IsNullOrEmpty(vl.ToolTip);
             }
             else if (ldf.SubLayer.LayerType == LayerType.Raster)
             {
                 var rl = ((IRasterLayerDefinition)ldf.SubLayer);
-                this.QualifiedClassName = rl.FeatureName;
-                this.GeometryPropertyName = rl.Geometry;
-                this.FeatureSourceID = rl.ResourceId;
+                _qualifiedClassName = rl.FeatureName;
+                _geometryPropertyName = rl.Geometry;
+                _featureSourceId = rl.ResourceId;
             }
 
-            this.ExpandInLegend = false;
+            _expandInLegend = false;
             this.Name = ResourceIdentifier.GetName(ldf.ResourceID);
-            this.LegendLabel = this.Name;
-            this.Selectable = true;
-            this.ShowInLegend = true;
-            this.Visible = true;
+            _legendLabel = this.Name;
+            _selectable = true;
+            _showInLegend = true;
+            _visible = true;
 
             _disableChangeTracking = false;
         }
@@ -164,7 +164,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             _disableChangeTracking = true;
 
             this.Group = source.Group;
-            this.Visible = source.Visible;
+            _visible = source.Visible;
 
             _disableChangeTracking = false;
         }
@@ -179,14 +179,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             _disableChangeTracking = true;
 
             this.LayerDefinitionID = source.ResourceId;
-            this.ExpandInLegend = source.ExpandInLegend;
+            _expandInLegend = source.ExpandInLegend;
             this.Name = source.Name;
-            this.Selectable = source.Selectable;
-            this.ShowInLegend = source.ShowInLegend;
-            this.LegendLabel = source.LegendLabel;
+            _selectable = source.Selectable;
+            _showInLegend = source.ShowInLegend;
+            _legendLabel = source.LegendLabel;
 
-            this.NeedsRefresh = false;
-            this.DisplayOrder = 0;
+            _needsRefresh = false;
+            _displayOrder = 0;
 
             switch (ldf.SubLayer.LayerType)
             {
@@ -197,9 +197,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 case LayerType.Raster:
                     {
                         IRasterLayerDefinition rdf = (IRasterLayerDefinition)ldf.SubLayer;
-                        this.FeatureSourceID = rdf.ResourceId;
-                        this.GeometryPropertyName = rdf.Geometry;
-                        this.QualifiedClassName = rdf.FeatureName;
+                        _featureSourceId = rdf.ResourceId;
+                        _geometryPropertyName = rdf.Geometry;
+                        _qualifiedClassName = rdf.FeatureName;
 
                         if (rdf.GridScaleRangeCount > 0)
                         {
@@ -217,10 +217,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 case LayerType.Vector:
                     {
                         IVectorLayerDefinition vld = (IVectorLayerDefinition)ldf.SubLayer;
-                        this.FeatureSourceID = vld.ResourceId;
-                        this.GeometryPropertyName = vld.Geometry;
-                        this.QualifiedClassName = vld.FeatureName;
-                        this.Filter = vld.Filter;
+                        _featureSourceId = vld.ResourceId;
+                        _geometryPropertyName = vld.Geometry;
+                        _qualifiedClassName = vld.FeatureName;
+                        _filter = vld.Filter;
 
                         if (vld.HasVectorScaleRanges())
                         {
@@ -233,7 +233,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                                 _scaleRanges[i * 2 + 1] = vsr.MaxScale.HasValue ? vsr.MaxScale.Value : InfinityScale;
                             }
                         }
-                        this.HasTooltips = !string.IsNullOrEmpty(vld.ToolTip);
+                        _hasTooltips = !string.IsNullOrEmpty(vld.ToolTip);
                         //get identity property information
                         InitIdentityProperties(vld);
                     }
@@ -435,15 +435,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
         }
 
+        private string _featureSourceId;
+
         /// <summary>
         /// Gets or sets the feature source ID.
         /// </summary>
         /// <value>The feature source ID.</value>
         public string FeatureSourceID
         {
-            get;
-            internal set;
+            get { return _featureSourceId; }
+            internal set { _featureSourceId = value; }
         }
+
+        private string _qualifiedClassName;
 
         /// <summary>
         /// Gets the name of the qualified name of the feature class.
@@ -451,8 +455,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <value>The name of the qualified name of the feature class.</value>
         public string QualifiedClassName
         {
-            get;
-            internal set;
+            get { return _qualifiedClassName; }
+            internal set { _qualifiedClassName = value; }
         }
 
         /// <summary>
@@ -465,15 +469,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             private set;
         }
 
+        private string _objectId;
+
         /// <summary>
         /// Gets the object id.
         /// </summary>
         /// <value>The object id.</value>
         public string ObjectId
         {
-            get;
-            internal set;
+            get { return _objectId; }
+            internal set { _objectId = value; }
         }
+
+        private string _geometryPropertyName;
 
         /// <summary>
         /// Gets the name of the geometry property.
@@ -481,9 +489,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <value>The name of the geometry property.</value>
         public string GeometryPropertyName
         {
-            get;
-            private set;
+            get { return _geometryPropertyName; }
+            private set { _geometryPropertyName = value; }
         }
+
+        private string _filter;
 
         /// <summary>
         /// Gets the filter.
@@ -491,35 +501,41 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <value>The filter.</value>
         public string Filter
         {
-            get;
-            internal set;
+            get { return _filter; }
+            internal set { _filter = value; }
         }
+
+        private int _type;
 
         /// <summary>
         /// Gets the type
         /// </summary>
         public int Type
         {
-            get;
-            internal set;
+            get { return _type; }
+            internal set { _type = value; }
         }
+
+        private double _displayOrder;
 
         /// <summary>
         /// Gets the display order
         /// </summary>
         public double DisplayOrder
         {
-            get;
-            internal set;
+            get { return _displayOrder; }
+            internal set { _displayOrder = value; }
         }
+
+        private bool _needsRefresh;
 
         /// <summary>
         /// Gets whether this layer needs to be refreshed
         /// </summary>
         public bool NeedsRefresh
         {
-            get;
-            internal set;
+            get { return _needsRefresh; }
+            internal set { _needsRefresh = value; }
         }
 
         /// <summary>
@@ -533,13 +549,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.NeedsRefresh = true;
         }
 
+        private bool _hasTooltips;
+
         /// <summary>
         /// Gets whether this layer has tooltips
         /// </summary>
         public bool HasTooltips
         {
-            get;
-            internal set;
+            get { return _hasTooltips; }
+            internal set { _hasTooltips = value; }
         }
 
         /// <summary>
@@ -708,17 +726,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             if (d.SiteVersion < SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
             {
                 this.Name = d.ReadString();
-                this.ObjectId = d.ReadString();
-                this.Type = d.ReadInt32();
+                _objectId = d.ReadString();
+                _type = d.ReadInt32();
 
-                this.Visible = d.ReadByte() > 0;
-                this.Selectable = d.ReadByte() > 0;
-                this.ShowInLegend = d.ReadByte() > 0;
-                this.ExpandInLegend = d.ReadByte() > 0;
+                _visible = d.ReadByte() > 0;
+                _selectable = d.ReadByte() > 0;
+                _showInLegend = d.ReadByte() > 0;
+                _expandInLegend = d.ReadByte() > 0;
 
-                this.LegendLabel = d.ReadString();
-                this.NeedsRefresh = d.ReadByte() > 0;
-                this.DisplayOrder = d.ReadDouble();
+                _legendLabel = d.ReadString();
+                _needsRefresh = d.ReadByte() > 0;
+                _displayOrder = d.ReadDouble();
 
                 var scaleRanges = new List<double>();
                 int scales = d.ReadInt32();
@@ -727,9 +745,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
                 _scaleRanges = scaleRanges.ToArray();
                 
-                this.FeatureSourceID = d.ReadString();
-                this.QualifiedClassName = d.ReadString();
-                this.GeometryPropertyName = d.ReadString();
+                _featureSourceId = d.ReadString();
+                _qualifiedClassName = d.ReadString();
+                _geometryPropertyName = d.ReadString();
 
                 var ids = new List<PropertyInfo>();
                 int idCount = d.ReadInt32();
@@ -747,19 +765,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             {
                 //AAARGH!!! Now they bypass their own header system ....
                 this.Name = d.ReadInternalString();
-                this.ObjectId = d.ReadInternalString();
-                this.Type = BitConverter.ToInt32(d.ReadStreamRepeat(4), 0);
+                _objectId = d.ReadInternalString();
+                _type = BitConverter.ToInt32(d.ReadStreamRepeat(4), 0);
 
                 int flags = d.ReadStreamRepeat(1)[0];
-                this.Visible = (flags & 1) > 0;
-                this.Selectable = (flags & 2) > 0;
-                this.ShowInLegend = (flags & 4) > 0;
-                this.ExpandInLegend = (flags & 8) > 0;
-                this.NeedsRefresh = (flags & 16) > 0;
-                this.HasTooltips = (flags & 32) > 0;
+                _visible = (flags & 1) > 0;
+                _selectable = (flags & 2) > 0;
+                _showInLegend = (flags & 4) > 0;
+                _expandInLegend = (flags & 8) > 0;
+                _needsRefresh = (flags & 16) > 0;
+                _hasTooltips = (flags & 32) > 0;
 
-                this.LegendLabel = d.ReadInternalString();
-                this.DisplayOrder = BitConverter.ToDouble(d.ReadStreamRepeat(8), 0);
+                _legendLabel = d.ReadInternalString();
+                _displayOrder = BitConverter.ToDouble(d.ReadStreamRepeat(8), 0);
 
                 var scaleRanges = new List<double>();
                 int scales = BitConverter.ToInt32(d.ReadStreamRepeat(4), 0);
@@ -768,13 +786,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
                 _scaleRanges = scaleRanges.ToArray();
                 
-                this.FeatureSourceID = d.ReadInternalString();
-                this.QualifiedClassName = d.ReadInternalString();
+                _featureSourceId = d.ReadInternalString();
+                _qualifiedClassName = d.ReadInternalString();
                 if (d.SiteVersion > SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_1))
-                    this.Filter = d.ReadInternalString();
+                    _filter = d.ReadInternalString();
                 //this.SchemaName = d.ReadInternalString();
                 d.ReadInternalString();
-                this.GeometryPropertyName = d.ReadInternalString();
+                _geometryPropertyName = d.ReadInternalString();
 
                 var ids = new List<PropertyInfo>();
                 int idCount = BitConverter.ToInt32(d.ReadStreamRepeat(4), 0);

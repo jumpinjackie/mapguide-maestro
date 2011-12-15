@@ -88,6 +88,7 @@ namespace MaestroAPITests
             resSvc.DeleteResource("Library://UnitTests/");
 
             resSvc.SetResourceXmlData("Library://UnitTests/Maps/Sheboygan.MapDefinition", File.OpenRead("TestData/MappingService/UT_Sheboygan.mdf"));
+            resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganTiled.MapDefinition", File.OpenRead("UserTestData/TestTiledMap.xml"));
 
             resSvc.SetResourceXmlData("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.ldf"));
             resSvc.SetResourceXmlData("Library://UnitTests/Layers/Rail.LayerDefinition", File.OpenRead("TestData/MappingService/UT_Rail.ldf"));
@@ -922,7 +923,6 @@ namespace MaestroAPITests
             Assert.AreEqual(0, map.Groups.Count);
         }
 
-        [Test]
         public virtual void TestMapManipulation4()
         {
             IServerConnection conn = CreateTestConnection();
@@ -939,6 +939,17 @@ namespace MaestroAPITests
             tmprtm.Save();
 
             RuntimeMap mymap = mapSvc.OpenMap(mapid); 
+        }
+
+        public virtual void TestMapManipulation5()
+        {
+            IServerConnection conn = CreateTestConnection();
+            IMappingService mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+            string mapdefinition = "Library://UnitTests/Maps/SheboyganTiled.MapDefinition";
+            IMapDefinition mdef = (IMapDefinition)conn.ResourceService.GetResource(mapdefinition);
+            RuntimeMap rtm = mapSvc.CreateMap(mdef); // Create new runtime map
+            rtm.Save();
+            RuntimeMap mymap = mapSvc.OpenMap("Session:" + conn.SessionID + "//" + rtm.Name + ".Map");
         }
 
         public virtual void TestResourceEvents()
@@ -1099,6 +1110,12 @@ namespace MaestroAPITests
         public override void TestMapManipulation4()
         {
             base.TestMapManipulation4();
+        }
+
+        [Test]
+        public override void TestMapManipulation5()
+        {
+            base.TestMapManipulation5();
         }
     }
 
