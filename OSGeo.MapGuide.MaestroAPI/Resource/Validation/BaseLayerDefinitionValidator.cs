@@ -97,9 +97,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                             var area = vsr2.AreaStyle;
                             var line = vsr2.LineStyle;
                             var point = vsr2.PointStyle;
-                            var comp = vsr2.CompositeStyle;
 
-                            if (comp != null && (area != null || line != null || point != null))
+                            if (vsr2.CompositeStyleCount > 0 && (area != null || line != null || point != null))
                             {
                                 issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LayerDefinition_CompositeStyleDefinedAlongsideBasicStyle, string.Format(
                                     Properties.Resources.LDF_CompositeStyleDefinedAlongsideBasicStyle,

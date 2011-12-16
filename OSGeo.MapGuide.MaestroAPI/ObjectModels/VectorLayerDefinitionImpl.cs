@@ -384,6 +384,20 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 Unit = unit
             };
         }
+
+        int IVectorScaleRange2.CompositeStyleCount
+        {
+            get
+            {
+                int count = 0;
+                foreach (var item in this.itemsField)
+                {
+                    if (typeof(ICompositeTypeStyle).IsAssignableFrom(item.GetType()))
+                        count++;
+                }
+                return count;
+            }
+        }
 #endif
     }
 

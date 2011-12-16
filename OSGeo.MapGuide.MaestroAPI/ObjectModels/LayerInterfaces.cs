@@ -668,6 +668,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// Gets or sets the composite styles for this scale range
         /// </summary>
         IEnumerable<ICompositeTypeStyle> CompositeStyle { get; set; }
+
+        /// <summary>
+        /// Gets the composite style count.
+        /// </summary>
+        int CompositeStyleCount { get; }
     }
 
     /// <summary>
