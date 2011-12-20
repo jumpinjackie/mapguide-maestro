@@ -385,6 +385,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             };
         }
 
+        [XmlIgnore]
         int IVectorScaleRange2.CompositeStyleCount
         {
             get
