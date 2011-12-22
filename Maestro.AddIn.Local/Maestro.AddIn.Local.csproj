@@ -52,6 +52,7 @@
     <Compile Include="..\Properties\SignedAssemblyInfo2.cs">
       <Link>SignedAssemblyInfo2.cs</Link>
     </Compile>
+    <Compile Include="Commands\ConnectionPoolStatusCommand.cs" />
     <Compile Include="Commands\StartupCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -60,6 +61,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\LocalPreviewer.cs" />
+    <Compile Include="UI\ConnectionPoolStatusDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ConnectionPoolStatusDialog.Designer.cs">
+      <DependentUpon>ConnectionPoolStatusDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MapPreviewWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -997,6 +1004,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ConnectionPoolStatusDialog.resx">
+      <DependentUpon>ConnectionPoolStatusDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MapPreviewWindow.resx">
       <DependentUpon>MapPreviewWindow.cs</DependentUpon>

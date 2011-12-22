@@ -130,6 +130,15 @@ namespace Maestro.AddIn.Local.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Local Connection Pool Status.
+        /// </summary>
+        internal static string LocalConnectionPoolStatus {
+            get {
+                return ResourceManager.GetString("LocalConnectionPoolStatus", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap magnifier_zoom_fit {
             get {
                 object obj = ResourceManager.GetObject("magnifier-zoom-fit", resourceCulture);

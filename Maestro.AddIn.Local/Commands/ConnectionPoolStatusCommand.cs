@@ -21,44 +21,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ICSharpCode.Core;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Local;
-using System.IO;
-using Maestro.Base.Services;
-using Maestro.AddIn.Local.Services;
 using OSGeo.MapGuide;
+using Maestro.AddIn.Local.UI;
 
 namespace Maestro.AddIn.Local.Commands
 {
-    public class StartupCommand : AbstractCommand
+    public class ConnectionPoolStatusCommand : AbstractMenuCommand
     {
         public override void Run()
         {
-            ResourceService.RegisterNeutralImages(Properties.Resources.ResourceManager);
-            ResourceService.RegisterNeutralStrings(Properties.Resources.ResourceManager);
+            MgServiceFactory fact = new MgServiceFactory();
+            MgdFeatureService featSvc = (MgdFeatureService)fact.CreateService(MgServiceType.FeatureService);
 
-            if (!Platform.IsRunningOnMono)
-            {
-                ResourcePreviewerFactory.RegisterPreviewer(LocalConnection.PROVIDER_NAME, new LocalPreviewer());
-
-                System.Windows.Forms.Application.ApplicationExit += new EventHandler(OnAppExit);
-            }
-            else
-            {
-                LoggingService.Info("Skipping local connection provider registration because I am guessing we're running Mono on Linux/Mac"); //LOCALIZEME
-            }
-        }
-
-        void OnAppExit(object sender, EventArgs e)
-        {
-            try
-            {
-                MgPlatform.Terminate();
-            }
-            catch (MgException ex)
-            {
-                ex.Dispose();
-            }
+            MgByteReader br = featSvc.QueryCacheInfo();
+            new ConnectionPoolStatusDialog(br).ShowDialog();
         }
     }
 }

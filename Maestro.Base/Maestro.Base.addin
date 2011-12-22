@@ -185,27 +185,7 @@
         <MenuItem id="Menu_Tools"
                   type="Menu"
                   label="${res:Menu_Tools}">
-            <MenuItem id="SiteAdmin"
-                      label="${res:SiteAdministrator}"
-                      class="Maestro.Base.Commands.SiteAdministratorCommand"/>
-            <MenuItem id="MgCooker"
-                      label="${res:MgCooker}"
-                      class="Maestro.Base.Commands.MgCookerCommand"/>
-            <MenuItem id="LocalFsPreview"
-                      label="${res:LocalFsPreview}"
-                      class="Maestro.Base.Commands.LocalFeatureSourcePreviewCommand"/>
-            <MenuItem id="ServerMonitor"
-                      label="${res:ServerMonitor}"
-                      icon="system_monitor"
-                      class="Maestro.Base.Commands.ServerMonitorCommand"/>
-            <MenuItem id="CacheView"
-                      label="${res:CacheView}"
-                      class="Maestro.Base.Commands.CacheViewerCommand"/>
-            <MenuItem type="Separator" />
-            <MenuItem id="Menu_Tools_Options"
-                      label="${res:Menu_Tools_Options}"
-                      icon="application_task"
-                      class="Maestro.Base.Commands.OptionsCommand"/>
+            <Include id="ToolList" path="/Workspace/Tools" />
         </MenuItem>
         <MenuItem id="Menu_Window"
                   type="Menu"
@@ -671,6 +651,30 @@
                       label="${res:SiteExplorer_ValidateResources}"
                       class="Maestro.Base.Commands.SiteExplorer.ValidateCommand" />
         </Condition>
+    </Path>
+
+    <Path id="/Workspace/Tools">
+        <MenuItem id="SiteAdmin"
+                      label="${res:SiteAdministrator}"
+                      class="Maestro.Base.Commands.SiteAdministratorCommand"/>
+        <MenuItem id="MgCooker"
+                  label="${res:MgCooker}"
+                  class="Maestro.Base.Commands.MgCookerCommand"/>
+        <MenuItem id="LocalFsPreview"
+                  label="${res:LocalFsPreview}"
+                  class="Maestro.Base.Commands.LocalFeatureSourcePreviewCommand"/>
+        <MenuItem id="ServerMonitor"
+                  label="${res:ServerMonitor}"
+                  icon="system_monitor"
+                  class="Maestro.Base.Commands.ServerMonitorCommand"/>
+        <MenuItem id="CacheView"
+                  label="${res:CacheView}"
+                  class="Maestro.Base.Commands.CacheViewerCommand"/>
+        <MenuItem type="Separator" />
+        <MenuItem id="Menu_Tools_Options"
+                  label="${res:Menu_Tools_Options}"
+                  icon="application_task"
+                  class="Maestro.Base.Commands.OptionsCommand"/>
     </Path>
     
 </AddIn>

@@ -17,4 +17,12 @@
     <Path name="/Workspace/Autostart">
         <Class id="Startup" class="Maestro.AddIn.Local.Commands.StartupCommand" />
     </Path>
+
+    <!-- Main Menu Definition -->
+    <Path name="/Workspace/Tools">
+        <MenuItem id="LocalConnectionPoolStatus"
+                  insertbefore="CacheView"
+                  label="${res:LocalConnectionPoolStatus}"
+                  class="Maestro.AddIn.Local.Commands.ConnectionPoolStatusCommand"/>
+    </Path>
 </AddIn>
