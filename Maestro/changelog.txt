@@ -3,17 +3,24 @@
 
  - Map Definition Editor support for specifying a Google/Yahoo/Bing/OSM compatible finite scale list
  - OpenStreetMap layer support in the Fusion editor
+ - Forward-looking fusion enhancements:
+    - Fusion editor support for new Maptip widget in next version of MapGuide/AIMS
+    - Updated default Flexible Layout template for next version of MapGuide/AIMS
  - Support for localizing Web Layouts and Application Definitions
  - Tiled maps will be converted to non-tiled maps when previewed in local mode.
  - A whole assortment of API tweaks to improve general usability.
+ - Uses new mg-desktop release (22 Dec 2011) w/ support for connection pooling and faster feature joins. A new command is available under "Tools" to inspect the status of the connection pool.
  - Fix: Inability to toggle Task Bar in the Web Layout editor
  - Fix: Gracefully handle feature sources with no feature classes in the Layer Definition Editor
  - Fix: Minor usability issue when creating Coordinate System Overrides.
  - Fix: Resource Properties command bringing up XML header editor instead of properties dialog
- - Fix: Bad data type serialization when saving configuration documents
+ - Fix: Bad data type serialization when saving configuration documents. Should resolve most/all ODBC table mapping issues.
  - Fix: Bad data type deserialization when deserializing feature schema xml
  - Fix: ResourceTypeRegistry not handling unsupported schema versions.
  - Fix: Deleting a map group in a Map Definition does not do a deep recursive delete of all its children
+ - Fix: Assorted Web Layout Editor defects relating to custom commands
+ - Fix: Incorrect validation rules for Layer Definitions
+ - Fix: Exception editing a line style with no symbolization defined.
 
 4.0 RC1
 -------
