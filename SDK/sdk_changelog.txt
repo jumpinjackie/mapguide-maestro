@@ -1,3 +1,8 @@
+4.0
+---
+
+- Updated samples to match current APIs
+
 3.5
 ---
 
