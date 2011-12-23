@@ -22,6 +22,7 @@
             <ConditionEvaluator name="MultipleSelected" class="Maestro.Base.Commands.Conditions.MultipleSelectedItemConditionEvaluator" />
             <ConditionEvaluator name="HasDocuments" class="Maestro.Base.Commands.Conditions.NonZeroDocumentConditionEvaluator" />
             <ConditionEvaluator name="ResourceType" class="Maestro.Base.Commands.Conditions.ResourceTypeConditionEvaluator" />
+            <ConditionEvaluator name="NoConnectionOfType" class="Maestro.Base.Commands.Conditions.ConnectionProviderConditionEvaluator" />
         </Import>
     </Runtime>
 

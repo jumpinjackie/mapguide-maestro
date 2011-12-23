@@ -57,6 +57,7 @@
     <Compile Include="Commands\Conditions\ActiveEditorConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\CloseableDocumentConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\ActiveEditorTypeConditionEvaluator.cs" />
+    <Compile Include="Commands\Conditions\ConnectionProviderConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\CutCopyConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\MultipleSelectedItemConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\NotConnectedConditionEvaluator.cs" />
