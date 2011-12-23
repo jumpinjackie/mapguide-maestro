@@ -45,50 +45,68 @@ namespace Maestro.Editors.WebLayout
             _edsvc = service;
         }
 
+        private bool _init = false;
+        private ICommand _cmd;
+
         internal void Bind(ICommand command, IEditorService service)
         {
             Bind(service);
+            try
+            {
+                _init = false;
+                _cmd = command;
+                //TextBoxBinder.BindText(txtDescription, command, "Description");
+                //TextBoxBinder.BindText(txtDisabledIcon, command, "DisabledImageURL");
+                //TextBoxBinder.BindText(txtEnabledIcon, command, "ImageURL");
+                //TextBoxBinder.BindText(txtName, command, "Name");
+                //TextBoxBinder.BindText(txtTitle, command, "Label");
+                //TextBoxBinder.BindText(txtTooltip, command, "Tooltip");
 
-            TextBoxBinder.BindText(txtDescription, command, "Description");
-            TextBoxBinder.BindText(txtDisabledIcon, command, "DisabledImageURL");
-            TextBoxBinder.BindText(txtEnabledIcon, command, "ImageURL");
-            TextBoxBinder.BindText(txtName, command, "Name");
-            TextBoxBinder.BindText(txtTitle, command, "Label");
-            TextBoxBinder.BindText(txtTooltip, command, "Tooltip");
+                txtDescription.Text = command.Description;
+                txtDisabledIcon.Text = command.DisabledImageURL;
+                txtEnabledIcon.Text = command.ImageURL;
+                txtName.Text = command.Name;
+                txtTitle.Text = command.Label;
+                txtTooltip.Text = command.Tooltip;
 
-            if (typeof(IInvokeScriptCommand).IsAssignableFrom(command.GetType()))
-            {
-                var ctrl = new InvokeScriptCtrl();
-                ctrl.Bind((IInvokeScriptCommand)command, service);
-                ctrl.Dock = DockStyle.Fill;
-                TAB_ADVANCED.Controls.Add(ctrl);
-            }
-            else if (typeof(IInvokeUrlCommand).IsAssignableFrom(command.GetType()))
-            {
-                var ctrl = new InvokeURLCtrl();
-                ctrl.Bind((IInvokeUrlCommand)command, service);
-                ctrl.Dock = DockStyle.Fill;
-                TAB_ADVANCED.Controls.Add(ctrl);
-            }
-            else if (typeof(ISearchCommand).IsAssignableFrom(command.GetType()))
-            {
-                var ctrl = new SearchCmdCtrl();
-                ctrl.Bind((ISearchCommand)command, service);
-                ctrl.Dock = DockStyle.Fill;
-                TAB_ADVANCED.Controls.Add(ctrl);
-            }
-            else
-            {
-                //Not editable
-                txtTooltip.ReadOnly = false;
-                txtDescription.ReadOnly = false;
-                txtDisabledIcon.ReadOnly = false;
-                txtEnabledIcon.ReadOnly = false;
-                txtName.ReadOnly = true;
-                txtTitle.ReadOnly = false;
-                txtTooltip.ReadOnly = false;
+                if (typeof(IInvokeScriptCommand).IsAssignableFrom(command.GetType()))
+                {
+                    var ctrl = new InvokeScriptCtrl();
+                    ctrl.Bind((IInvokeScriptCommand)command, service);
+                    ctrl.Dock = DockStyle.Fill;
+                    TAB_ADVANCED.Controls.Add(ctrl);
+                }
+                else if (typeof(IInvokeUrlCommand).IsAssignableFrom(command.GetType()))
+                {
+                    var ctrl = new InvokeURLCtrl();
+                    ctrl.Bind((IInvokeUrlCommand)command, service);
+                    ctrl.Dock = DockStyle.Fill;
+                    TAB_ADVANCED.Controls.Add(ctrl);
+                }
+                else if (typeof(ISearchCommand).IsAssignableFrom(command.GetType()))
+                {
+                    var ctrl = new SearchCmdCtrl();
+                    ctrl.Bind((ISearchCommand)command, service);
+                    ctrl.Dock = DockStyle.Fill;
+                    TAB_ADVANCED.Controls.Add(ctrl);
+                }
+                else
+                {
+                    //Not editable
+                    txtTooltip.ReadOnly = false;
+                    txtDescription.ReadOnly = false;
+                    txtDisabledIcon.ReadOnly = false;
+                    txtEnabledIcon.ReadOnly = false;
+                    txtName.ReadOnly = true;
+                    txtTitle.ReadOnly = false;
+                    txtTooltip.ReadOnly = false;
 
-                tabProperties.TabPages.Remove(TAB_ADVANCED);
+                    tabProperties.TabPages.Remove(TAB_ADVANCED);
+                }
+            }
+            finally
+            {
+                _init = true;
             }
         }
 
@@ -103,6 +121,9 @@ namespace Maestro.Editors.WebLayout
             {
                 imgEnabled.Image = Properties.Resources.cross_circle_frame;
             }
+
+            if (!_init) return;
+            _cmd.ImageURL = txtEnabledIcon.Text;
         }
 
         private void txtDisabledIcon_TextChanged(object sender, EventArgs e)
@@ -116,6 +137,33 @@ namespace Maestro.Editors.WebLayout
             {
                 imgDisabled.Image = Properties.Resources.cross_circle_frame;
             }
+
+            if (!_init) return;
+            _cmd.DisabledImageURL = txtDisabledIcon.Text;
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            if (!_init) return;
+            _cmd.Name = txtName.Text;
+        }
+
+        private void txtTitle_TextChanged(object sender, EventArgs e)
+        {
+            if (!_init) return;
+            _cmd.Label = txtTitle.Text;
+        }
+
+        private void txtTooltip_TextChanged(object sender, EventArgs e)
+        {
+            if (!_init) return;
+            _cmd.Tooltip = txtTooltip.Text;
+        }
+
+        private void txtDescription_TextChanged(object sender, EventArgs e)
+        {
+            if (!_init) return;
+            _cmd.Description = txtDescription.Text;
         }
     }
 }

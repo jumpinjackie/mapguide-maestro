@@ -659,16 +659,38 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
             return cmd;
         }
 
+        private string GenerateUniqueName(string prefix)
+        {
+            int counter = 0;
+            string name = prefix + counter;
+
+            Dictionary<string, string> ids = new Dictionary<string, string>();
+            foreach (var cmd in this.CommandSet)
+            {
+                ids.Add(cmd.Name, cmd.Name);
+            }
+
+            while (ids.ContainsKey(name))
+            {
+                counter++;
+                name = prefix + counter;
+            }
+
+            return name;
+        }
+
         public IInvokeUrlCommand CreateInvokeUrlCommand()
         {
             return new InvokeURLCommandType()
             {
+                Name = GenerateUniqueName("InvokeUrlCommand"),
                 Target = TargetType.TaskPane,
                 DisableIfSelectionEmpty = false,
                 ImageURL = "../stdicons/icon_invokeurl.gif",
                 DisabledImageURL = "../stdicons/icon_invokeurl_disabled.gif",
                 TargetViewer = TargetViewerType.All,
                 AdditionalParameter = new BindingList<ParameterPairType>(),
+                URL = "",
                 LayerSet = new BindingList<string>()
             };
         }
@@ -677,11 +699,13 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         {
             return new SearchCommandType()
             {
+                Name = GenerateUniqueName("SearchCommand"),
                 ResultColumns = new System.ComponentModel.BindingList<ResultColumnType>(),
                 Target = TargetType.TaskPane,
                 TargetViewer = TargetViewerType.All,
                 DisabledImageURL = "../stdicons/icon_search_disabled.gif",
                 ImageURL = "../stdicons/icon_search.gif",
+                Layer = string.Empty,
                 Filter = string.Empty,
                 MatchLimit = "100",
                 Prompt = string.Empty
@@ -692,9 +716,11 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         {
             return new InvokeScriptCommandType()
             {
+                Name = GenerateUniqueName("InvokeScriptCommand"),
                 DisabledImageURL = "../stdicons/icon_invokescript_disabled.gif",
                 ImageURL = "../stdicons/icon_invokescript.gif",
-                TargetViewer = TargetViewerType.All
+                TargetViewer = TargetViewerType.All,
+                Script = "//Enter your script code here. You can use AJAX viewer API calls here. This code is called from the viewer's main frame"
             };
         }
 

@@ -562,6 +562,6 @@
     <value>CustomCommandPropertyCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.EditorBase, Maestro.Editors, Version=3.0.0.5334, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.EditorBase, Maestro.Editors, Version=4.0.0.6282, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
 </root>

@@ -118,6 +118,7 @@
             // 
             resources.ApplyResources(this.txtDescription, "txtDescription");
             this.txtDescription.Name = "txtDescription";
+            this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
             // 
             // label4
             // 
@@ -128,6 +129,7 @@
             // 
             resources.ApplyResources(this.txtTooltip, "txtTooltip");
             this.txtTooltip.Name = "txtTooltip";
+            this.txtTooltip.TextChanged += new System.EventHandler(this.txtTooltip_TextChanged);
             // 
             // label3
             // 
@@ -138,6 +140,7 @@
             // 
             resources.ApplyResources(this.txtTitle, "txtTitle");
             this.txtTitle.Name = "txtTitle";
+            this.txtTitle.TextChanged += new System.EventHandler(this.txtTitle_TextChanged);
             // 
             // label2
             // 
@@ -148,6 +151,7 @@
             // 
             resources.ApplyResources(this.txtName, "txtName");
             this.txtName.Name = "txtName";
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // label1
             // 

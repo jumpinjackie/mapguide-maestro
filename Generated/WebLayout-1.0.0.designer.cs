@@ -3862,14 +3862,14 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0 {
             }
         }
         
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        //public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
-        public virtual void OnPropertyChanged(string info) {
-            System.ComponentModel.PropertyChangedEventHandler handler = this.PropertyChanged;
-            if ((handler != null)) {
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(info));
-            }
-        }
+        //public virtual void OnPropertyChanged(string info) {
+        //    System.ComponentModel.PropertyChangedEventHandler handler = this.PropertyChanged;
+        //    if ((handler != null)) {
+        //        handler(this, new System.ComponentModel.PropertyChangedEventArgs(info));
+        //    }
+        //}
         
         #region Serialize/Deserialize
         /// <summary>

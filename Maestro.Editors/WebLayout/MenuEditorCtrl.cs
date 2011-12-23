@@ -201,6 +201,16 @@ namespace Maestro.Editors.WebLayout
                 var cmd = (ICommand)tsi.Tag;
 
                 var ci = _wl.CreateCommandItem(cmd.Name);
+                //Reg property listener
+                PropertyChangedEventHandler handler = (s, evt) =>
+                {
+                    if (evt.PropertyName == "Name")
+                    {
+                        ci.Command = cmd.Name;
+                        trvMenuItems.Refresh();
+                    }
+                };
+                cmd.PropertyChanged += handler;
 
                 if (trvMenuItems.SelectedNode != null)
                 {
