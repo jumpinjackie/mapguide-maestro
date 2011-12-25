@@ -62,10 +62,6 @@
       <Project>{351D49A3-2E4A-4EC3-AFC2-D56598F44F51}</Project>
       <Name>MaestroAPITests</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Native\OSGeo.MapGuide.MaestroAPI.Native.csproj">
-      <Project>{F4420153-9DF3-4407-AD65-E8ABED2B6E25}</Project>
-      <Name>OSGeo.MapGuide.MaestroAPI.Native</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI</Name>

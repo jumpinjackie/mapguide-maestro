@@ -7,19 +7,14 @@
         <Type>OSGeo.MapGuide.MaestroAPI.HttpServerConnection</Type>
     </ConnectionProvider>
     <!-- 
-    If you want to use the Maestro.LocalNative provider, you need to set up
-    assembly binding redirection by editing Maestro.exe.config. See these links
-    below for more information:
-    
-    http://trac.osgeo.org/mapguide/wiki/maestro/MaestroAPI/MapGuideDotNetApiVersions
-    
-    http://themapguyde.blogspot.com/2010/10/using-maestro-in-native-mode-with.html
+    If you want to use the Maestro.LocalNative provider, register the desired
+    LocalNative provider assembly here.
     -->
     <!--
     <ConnectionProvider>
         <Name>Maestro.LocalNative</Name>
-        <Description>Connection using the MapGuide Web API</Description>
-        <Assembly>OSGeo.MapGuide.MaestroAPI.Native.dll</Assembly>
+        <Description>Connection using the MapGuide Web API for MGOS 2.2.0 (32-bit)</Description>
+        <Assembly>OSGeo.MapGuide.MaestroAPI.Native32-2.2.0.dll</Assembly>
         <Type>OSGeo.MapGuide.MaestroAPI.LocalNativeConnection</Type>
     </ConnectionProvider>
     -->

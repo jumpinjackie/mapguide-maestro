@@ -436,8 +436,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
                 //Default
                 if (m_siteVersion == null)
+                {
+#if MG220
+                    m_siteVersion = SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_2);
+#elif MG210
+                    m_siteVersion = SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_2);
+#elif MG200
+                    m_siteVersion = SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_0_2);
+#else
                     m_siteVersion = SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2);
-
+#endif
+                }
                 return m_siteVersion;
             }
 		}

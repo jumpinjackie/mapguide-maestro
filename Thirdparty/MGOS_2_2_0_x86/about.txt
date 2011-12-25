@@ -1,0 +1,1 @@
+This is the official MapGuide API binaries from the MapGuide Open Source v2.2 signed with the SignMapGuideApi.exe utility
