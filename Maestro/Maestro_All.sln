@@ -93,6 +93,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.Local", "..\M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalConfigure", "..\LocalConfigure\LocalConfigure.csproj", "{6EE16FFD-296E-42FF-B994-8902C27AA0F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignMapGuideApi", "..\SignMapGuideApi\SignMapGuideApi.csproj", "{D24F724A-1CBF-4EB6-A48B-92C08353C4CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -227,6 +229,10 @@ Global
 		{6EE16FFD-296E-42FF-B994-8902C27AA0F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EE16FFD-296E-42FF-B994-8902C27AA0F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EE16FFD-296E-42FF-B994-8902C27AA0F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D24F724A-1CBF-4EB6-A48B-92C08353C4CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D24F724A-1CBF-4EB6-A48B-92C08353C4CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D24F724A-1CBF-4EB6-A48B-92C08353C4CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D24F724A-1CBF-4EB6-A48B-92C08353C4CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
