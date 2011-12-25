@@ -89,11 +89,11 @@ namespace Maestro.Editors.LayerDefinition
             get { return _edsvc; }
         }
 
-        internal string EditExpression(string expr)
+        internal string EditExpression(string expr, bool attachStylizationFunctions)
         {
             var fs = (IFeatureSource)_edsvc.ResourceService.GetResource(_vl.ResourceId);
 
-            return _edsvc.EditExpression(expr, fs.GetClass(_vl.FeatureName), fs.Provider, _vl.ResourceId);
+            return _edsvc.EditExpression(expr, fs.GetClass(_vl.FeatureName), fs.Provider, _vl.ResourceId, attachStylizationFunctions);
         }
 
         internal void UpdateDisplay()

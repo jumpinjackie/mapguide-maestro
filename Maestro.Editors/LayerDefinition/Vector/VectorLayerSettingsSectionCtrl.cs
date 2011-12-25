@@ -203,7 +203,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
             if (cls != null)
             {
                 var fs = GetFeatureSource();
-                var expr = _edsvc.EditExpression(txtFilter.Text, cls, fs.Provider, fs.ResourceID);
+                var expr = _edsvc.EditExpression(txtFilter.Text, cls, fs.Provider, fs.ResourceID, false);
                 if (expr != null)
                 {
                     txtFilter.Text = expr;
@@ -217,7 +217,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
             if (cls != null)
             {
                 var fs = GetFeatureSource();
-                var expr = _edsvc.EditExpression(txtHyperlink.Text, cls, fs.Provider, fs.ResourceID);
+                var expr = _edsvc.EditExpression(txtHyperlink.Text, cls, fs.Provider, fs.ResourceID, true);
                 if (expr != null)
                 {
                     txtHyperlink.Text = expr;
@@ -231,7 +231,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
             if (cls != null)
             {
                 var fs = GetFeatureSource();
-                var expr = _edsvc.EditExpression(txtTooltip.Text, cls, fs.Provider, fs.ResourceID);
+                var expr = _edsvc.EditExpression(txtTooltip.Text, cls, fs.Provider, fs.ResourceID, true);
                 if (expr != null)
                 {
                     txtTooltip.Text = expr;

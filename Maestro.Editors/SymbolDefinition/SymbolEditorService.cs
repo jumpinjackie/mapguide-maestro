@@ -115,9 +115,9 @@ namespace Maestro.Editors.SymbolDefinition
             return _inner.SelectUnmanagedData(startPath, fileTypes);
         }
 
-        public string EditExpression(string currentExpr, OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition schema, string providerName, string featureSourceId)
+        public string EditExpression(string currentExpr, OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition schema, string providerName, string featureSourceId, bool attachStylizationFunctions)
         {
-            return _inner.EditExpression(currentExpr, schema, providerName, featureSourceId);
+            return _inner.EditExpression(currentExpr, schema, providerName, featureSourceId, attachStylizationFunctions);
         }
 
         public string ResourceID

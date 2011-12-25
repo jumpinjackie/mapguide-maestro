@@ -483,7 +483,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             string expr = null;
             if (current != null)
             {
-                expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource, true);
                 if (!string.IsNullOrEmpty(expr))
                     current = expr;
             }
@@ -543,14 +543,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         private void fillStyleEditor_BackgroundRequiresExpression(object sender, EventArgs e)
         {
-            string expr = m_editor.EditExpression(fillStyleEditor.backgroundColor.ColorExpression, m_schema, m_providername, m_featureSource);
+            string expr = m_editor.EditExpression(fillStyleEditor.backgroundColor.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
                 fillStyleEditor.backgroundColor.ColorExpression = expr;
         }
 
         private void fillStyleEditor_ForegroundRequiresExpression(object sender, EventArgs e)
         {
-            string expr = m_editor.EditExpression(fillStyleEditor.foregroundColor.ColorExpression, m_schema, m_providername, m_featureSource);
+            string expr = m_editor.EditExpression(fillStyleEditor.foregroundColor.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
                 fillStyleEditor.foregroundColor.ColorExpression = expr;
         }

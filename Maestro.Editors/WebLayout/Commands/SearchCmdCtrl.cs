@@ -174,7 +174,7 @@ namespace Maestro.Editors.WebLayout.Commands
 
                 var fs = (IFeatureSource)_edsvc.ResourceService.GetResource(vl.ResourceId);
 
-                string expr = _edsvc.EditExpression(txtFilter.Text, _cls, fs.Provider, vl.ResourceId);
+                string expr = _edsvc.EditExpression(txtFilter.Text, _cls, fs.Provider, vl.ResourceId, false);
                 if (expr != null)
                 {
                     txtFilter.Text = expr;

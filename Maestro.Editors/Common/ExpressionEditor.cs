@@ -107,7 +107,8 @@ namespace Maestro.Editors.Common
         /// <param name="caps">The provider capabilities.</param>
         /// <param name="cls">The class definition.</param>
         /// <param name="featuresSourceId">The features source id.</param>
-        public void Initialize(IFeatureService featSvc, FdoProviderCapabilities caps, ClassDefinition cls, string featuresSourceId)
+        /// <param name="attachStylizationFunctions">if set to <c>true</c> stylization functions are also attached</param>
+        public void Initialize(IFeatureService featSvc, FdoProviderCapabilities caps, ClassDefinition cls, string featuresSourceId, bool attachStylizationFunctions)
         {
             try
             {
@@ -154,6 +155,14 @@ namespace Maestro.Editors.Common
                     sortedFuncs.Add(func.Name, func);
                 }
 
+                if (attachStylizationFunctions)
+                {
+                    foreach (var func in GetStylizationFunctions())
+                    {
+                        sortedFuncs.Add(func.Name, func);
+                    }
+                }
+
                 foreach (FdoProviderCapabilitiesExpressionFunctionDefinition func in sortedFuncs.Values)
                 {
                     string name = func.Name;
@@ -175,6 +184,8 @@ namespace Maestro.Editors.Common
                     btnFunctions.DropDown.Items.Add(btn);
                 }
                 LoadCompletableFunctions(caps.Expression.FunctionDefinitionList);
+                if (attachStylizationFunctions)
+                    LoadCompletableFunctions(GetStylizationFunctions());
 
                 //Spatial Operators
                 foreach (FdoProviderCapabilitiesFilterOperation op in caps.Filter.Spatial)
@@ -232,6 +243,218 @@ namespace Maestro.Editors.Common
             {
             }
 
+        }
+
+        private IEnumerable<FdoProviderCapabilitiesExpressionFunctionDefinition> GetStylizationFunctions()
+        {
+            //ARGB
+            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
+            {
+                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
+                {
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "aValue",
+                        Description = Properties.Resources.Func_ARGB_AValueDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
+                    },
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "rValue",
+                        Description = Properties.Resources.Func_ARGB_RValueDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
+                    },
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "gValue",
+                        Description = Properties.Resources.Func_ARGB_GValueDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
+                    },
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "bValue",
+                        Description = Properties.Resources.Func_ARGB_BValueDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
+                    },
+                },
+                Description = Properties.Resources.Func_ARGB_Description,
+                Name = "ARGB",
+                ReturnType = "Int32"
+            };
+            //DECAP
+            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
+            {
+                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
+                {
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "strValue",
+                        Description = Properties.Resources.Func_DECAP_StringValueDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
+                    }
+                },
+                Description = Properties.Resources.Func_DECAP_Description,
+                Name = "DECAP",
+                ReturnType = "String"
+            };
+            //FEATURECLASS
+            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
+            {
+                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
+                Description = Properties.Resources.Func_FEATURECLASS_Description,
+                Name = "FEATURECLASS",
+                ReturnType = "String"
+            };
+            //FEATUREID
+            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
+            {
+                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
+                Description = Properties.Resources.Func_FEATUREID_Description,
+                Name = "FEATUREID",
+                ReturnType = "String"
+            };
+            //IF
+            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
+            {
+                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
+                {
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "condition",
+                        Description = Properties.Resources.Func_IF_ConditionDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
+                    },
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "trueValue",
+                        Description = Properties.Resources.Func_IF_TrueValueDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
+                    },
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "falseValue",
+                        Description = Properties.Resources.Func_IF_FalseValueDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
+                    }
+                },
+                Description = Properties.Resources.Func_IF_Description,
+                Name = "IF",
+                ReturnType = "String"
+            };
+            //LAYERID
+            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
+            {
+                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
+                Description = Properties.Resources.Func_LAYERID_Description,
+                Name = "LAYERID",
+                ReturnType = "String"
+            };
+            //LOOKUP
+            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
+            {
+                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
+                {
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "expression",
+                        Description = Properties.Resources.Func_LOOKUP_ExpressionDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
+                    },
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "defaultValue",
+                        Description = Properties.Resources.Func_LOOKUP_DefaultValueDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
+                    },
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "index",
+                        Description = Properties.Resources.Func_LOOKUP_IndexDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
+                    },
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "value",
+                        Description = Properties.Resources.Func_LOOKUP_ValueDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
+                    }
+                },
+                Description = Properties.Resources.Func_LOOKUP_Description,
+                Name = "LOOKUP",
+                ReturnType = "String"
+            };
+            //MAPNAME
+            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
+            {
+                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
+                Description = Properties.Resources.Func_MAPNAME_Description,
+                Name = "MAPNAME",
+                ReturnType = "String"
+            };
+            //RANGE
+            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
+            {
+                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
+                {
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "expression",
+                        Description = Properties.Resources.Func_RANGE_ExpressionDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
+                    },
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "rangeMin",
+                        Description = Properties.Resources.Func_RANGE_MinDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
+                    },
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "rangeMax",
+                        Description = Properties.Resources.Func_RANGE_MaxDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
+                    },
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "defaultValue",
+                        Description = Properties.Resources.Func_RANGE_DefaultValueDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
+                    },
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "value",
+                        Description = Properties.Resources.Func_RANGE_ValueDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
+                    }
+                },
+                Description = Properties.Resources.Func_RANGE_Description,
+                Name = "RANGE",
+                ReturnType = "String"
+            };
+            //SESSION
+            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
+            {
+                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
+                Description = Properties.Resources.Func_SESSION_Description,
+                Name = "SESSION",
+                ReturnType = "String"
+            };
+            //URLENCODE
+            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
+            {
+                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
+                {
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    {
+                        Name = "strValue",
+                        Description = Properties.Resources.Func_URLENCODE_StringValueDescription,
+                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
+                    }
+                },
+                Description = Properties.Resources.Func_URLENCODE_Description,
+                Name = "URLENCODE",
+                ReturnType = "String"
+            };
         }
 
         private void InsertText(string exprText)

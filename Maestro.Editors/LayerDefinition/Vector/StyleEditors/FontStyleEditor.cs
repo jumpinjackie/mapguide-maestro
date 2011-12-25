@@ -717,7 +717,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (propertyCombo.SelectedIndex == propertyCombo.Items.Count - 1)
             {
                 string current = m_item.Text;
-                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource, true);
                 if (!string.IsNullOrEmpty(expr))
                     current = expr;
 
@@ -764,7 +764,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (sizeCombo.SelectedIndex == sizeCombo.Items.Count - 1)
             {
                 string current = m_item.SizeX;
-                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource, true);
                 if (!string.IsNullOrEmpty(expr))
                     current = expr;
 
@@ -847,7 +847,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (horizontalCombo.SelectedIndex == horizontalCombo.Items.Count - 1)
             {
                 string current = m_item.HorizontalAlignment;
-                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource, true);
                 if (!string.IsNullOrEmpty(expr))
                     current = expr;
 
@@ -865,7 +865,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (verticalCombo.SelectedIndex == verticalCombo.Items.Count - 1)
             {
                 string current = m_item.VerticalAlignment;
-                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource, true);
                 if (!string.IsNullOrEmpty(expr))
                     current = expr;
 
@@ -883,7 +883,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (rotationCombo.SelectedIndex == rotationCombo.Items.Count - 1)
             {
                 string current = m_item.Rotation;
-                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource, true);
                 if (!string.IsNullOrEmpty(expr))
                     current = expr;
 

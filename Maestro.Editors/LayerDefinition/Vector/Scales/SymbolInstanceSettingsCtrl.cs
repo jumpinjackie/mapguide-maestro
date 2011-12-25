@@ -168,7 +168,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             if (grdOverrides.SelectedRows.Count == 1)
             {
                 var ov = (IParameterOverride)grdOverrides.SelectedRows[0].DataBoundItem;
-                string expr = _edSvc.EditExpression(ov.ParameterValue, _cls, _provider, _featureSourceId);
+                string expr = _edSvc.EditExpression(ov.ParameterValue, _cls, _provider, _featureSourceId, true);
                 if (expr != null)
                 {
                     ov.ParameterValue = expr;

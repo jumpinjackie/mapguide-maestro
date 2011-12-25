@@ -117,8 +117,9 @@ namespace Maestro.Editors
         /// <param name="schema"></param>
         /// <param name="providerName"></param>
         /// <param name="featureSourceId"></param>
+        /// <param name="attachStylizationFunctions"></param>
         /// <returns></returns>
-        string EditExpression(string currentExpr, ClassDefinition schema, string providerName, string featureSourceId);
+        string EditExpression(string currentExpr, ClassDefinition schema, string providerName, string featureSourceId, bool attachStylizationFunctions);
 
         /// <summary>
         /// Gets the resource ID of the resource, whose session-copy is being edited

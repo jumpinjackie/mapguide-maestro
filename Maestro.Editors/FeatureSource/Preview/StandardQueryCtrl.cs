@@ -109,7 +109,7 @@ namespace Maestro.Editors.FeatureSource.Preview
         private void txtFilter_Click(object sender, EventArgs e)
         {
             var ed = new ExpressionEditor();
-            ed.Initialize(_featSvc, _caps, _cls, _fsId);
+            ed.Initialize(_featSvc, _caps, _cls, _fsId, false);
             ed.Expression = txtFilter.Text;
             if (ed.ShowDialog() == DialogResult.OK)
             {
@@ -136,7 +136,7 @@ namespace Maestro.Editors.FeatureSource.Preview
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var ed = new ExpressionEditor();
-            ed.Initialize(_featSvc, _caps, _cls, _fsId);
+            ed.Initialize(_featSvc, _caps, _cls, _fsId, false);
             if (ed.ShowDialog() == DialogResult.OK)
             {
                 grdExpressions.Rows.Add(GenerateAlias(), ed.Expression);

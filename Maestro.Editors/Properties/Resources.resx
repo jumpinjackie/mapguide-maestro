@@ -1319,4 +1319,91 @@ Returns: {0}</value>
   <data name="PromptResetOdbcConfigDocument" xml:space="preserve">
     <value>Changing the DSN will reset the current configuration document. Proceed?</value>
   </data>
+  <data name="Func_ARGB_AValueDescription" xml:space="preserve">
+    <value>Alpha value</value>
+  </data>
+  <data name="Func_ARGB_BValueDescription" xml:space="preserve">
+    <value>Blue value</value>
+  </data>
+  <data name="Func_ARGB_Description" xml:space="preserve">
+    <value>Color generation function</value>
+  </data>
+  <data name="Func_ARGB_GValueDescription" xml:space="preserve">
+    <value>Green value</value>
+  </data>
+  <data name="Func_ARGB_RValueDescription" xml:space="preserve">
+    <value>Red value</value>
+  </data>
+  <data name="Func_DECAP_Description" xml:space="preserve">
+    <value>String formatting function</value>
+  </data>
+  <data name="Func_DECAP_StringValueDescription" xml:space="preserve">
+    <value>String to format</value>
+  </data>
+  <data name="Func_FEATURECLASS_Description" xml:space="preserve">
+    <value>Returns the active feature class name</value>
+  </data>
+  <data name="Func_FEATUREID_Description" xml:space="preserve">
+    <value>Returns the active feature Id</value>
+  </data>
+  <data name="Func_IF_ConditionDescription" xml:space="preserve">
+    <value>Boolean expression (filter) encapsulated in a string</value>
+  </data>
+  <data name="Func_IF_Description" xml:space="preserve">
+    <value>If evaluator for style theming</value>
+  </data>
+  <data name="Func_IF_FalseValueDescription" xml:space="preserve">
+    <value>Returned if condition is false</value>
+  </data>
+  <data name="Func_IF_TrueValueDescription" xml:space="preserve">
+    <value>Returned if condition is true</value>
+  </data>
+  <data name="Func_LAYERID_Description" xml:space="preserve">
+    <value>Returns the active layer Id</value>
+  </data>
+  <data name="Func_LOOKUP_DefaultValueDescription" xml:space="preserve">
+    <value>Default value returned if expression does not evaluate to any of the keys</value>
+  </data>
+  <data name="Func_LOOKUP_Description" xml:space="preserve">
+    <value>Lookup table for style theming</value>
+  </data>
+  <data name="Func_LOOKUP_ExpressionDescription" xml:space="preserve">
+    <value>Key expression</value>
+  </data>
+  <data name="Func_LOOKUP_IndexDescription" xml:space="preserve">
+    <value>Lookup index that can be matched by the key expression</value>
+  </data>
+  <data name="Func_LOOKUP_ValueDescription" xml:space="preserve">
+    <value>Value that is returned when the key expression matches the associated index</value>
+  </data>
+  <data name="Func_MAPNAME_Description" xml:space="preserve">
+    <value>Returns the active map name</value>
+  </data>
+  <data name="Func_RANGE_DefaultValueDescription" xml:space="preserve">
+    <value>Default value returned if expression does not fall into any of the ranges</value>
+  </data>
+  <data name="Func_RANGE_Description" xml:space="preserve">
+    <value>Range table for style theming</value>
+  </data>
+  <data name="Func_RANGE_ExpressionDescription" xml:space="preserve">
+    <value>Key expression</value>
+  </data>
+  <data name="Func_RANGE_MaxDescription" xml:space="preserve">
+    <value>Exclusive maximum of range that can be matched by the key expression</value>
+  </data>
+  <data name="Func_RANGE_MinDescription" xml:space="preserve">
+    <value>Inclusive minimum of range that can be matched by the key expression</value>
+  </data>
+  <data name="Func_RANGE_ValueDescription" xml:space="preserve">
+    <value>Value that is returned when the key expression matches the associated range</value>
+  </data>
+  <data name="Func_SESSION_Description" xml:space="preserve">
+    <value>Returns the active session</value>
+  </data>
+  <data name="Func_URLENCODE_Description" xml:space="preserve">
+    <value>String encoding function</value>
+  </data>
+  <data name="Func_URLENCODE_StringValueDescription" xml:space="preserve">
+    <value>String to URL encode</value>
+  </data>
 </root>

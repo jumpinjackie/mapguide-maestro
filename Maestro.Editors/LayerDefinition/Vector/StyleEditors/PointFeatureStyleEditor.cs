@@ -1075,7 +1075,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 string expr = null;
                 if (current != null)
                 {
-                    expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                    expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource, true);
                     if (!string.IsNullOrEmpty(expr))
                         current = expr;
                 }
@@ -1099,7 +1099,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 string expr = null;
                 if (current != null)
                 {
-                    expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                    expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource, true);
                     if (!string.IsNullOrEmpty(expr))
                         current = expr;
                 }
@@ -1161,7 +1161,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 string expr = null;
                 if (current != null)
                 {
-                    expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                    expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource, true);
                     if (!string.IsNullOrEmpty(expr))
                         current = expr;
                 }
@@ -1279,7 +1279,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 string expr = null;
                 if (current != null)
                 {
-                    expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource);
+                    expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource, true);
                     if (!string.IsNullOrEmpty(expr))
                         current = expr;
                 }

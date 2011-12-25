@@ -112,14 +112,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         private void btnZOffset_Click(object sender, EventArgs e)
         {
-            string expr = _edSvc.EditExpression(txtZOffset.Text, _clsDef, _provider, _featureSourceId);
+            string expr = _edSvc.EditExpression(txtZOffset.Text, _clsDef, _provider, _featureSourceId, true);
             if (expr != null)
                 txtZOffset.Text = expr;
         }
 
         private void btnZExtrusion_Click(object sender, EventArgs e)
         {
-            string expr = _edSvc.EditExpression(txtZExtrusion.Text, _clsDef, _provider, _featureSourceId);
+            string expr = _edSvc.EditExpression(txtZExtrusion.Text, _clsDef, _provider, _featureSourceId, true);
             if (expr != null)
                 txtZExtrusion.Text = expr;
         }
