@@ -35,7 +35,6 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0
             set
             {
                 this.EnablePingServer = value;
-                this.EnablePingServerSpecified = true;
             }
         }
     }

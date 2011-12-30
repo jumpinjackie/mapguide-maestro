@@ -32,9 +32,6 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0 {
         private bool enablePingServerField;
         
         [EditorBrowsable(EditorBrowsableState.Never)]
-        private bool enablePingServerFieldSpecified;
-        
-        [EditorBrowsable(EditorBrowsableState.Never)]
         private ToolBarType toolBarField;
         
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -101,19 +98,6 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0 {
                 if ((enablePingServerField.Equals(value) != true)) {
                     this.enablePingServerField = value;
                     this.OnPropertyChanged("EnablePingServer");
-                }
-            }
-        }
-        
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool EnablePingServerSpecified {
-            get {
-                return this.enablePingServerFieldSpecified;
-            }
-            set {
-                if ((enablePingServerFieldSpecified.Equals(value) != true)) {
-                    this.enablePingServerFieldSpecified = value;
-                    this.OnPropertyChanged("EnablePingServerSpecified");
                 }
             }
         }
