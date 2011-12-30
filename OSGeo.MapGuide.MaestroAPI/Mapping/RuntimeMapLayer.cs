@@ -313,7 +313,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 if (this.Type == kBaseMap)
                     throw new InvalidOperationException("Setting visbility of a tiled map layer is not permitted");
 
-                SetField(ref _visible, value, "Visible");
+                if (SetField(ref _visible, value, "Visible"))
+                    Parent.IsDirty = true;
             }
         }
 
@@ -331,7 +332,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _group, value, "Group");
+                if (SetField(ref _group, value, "Group"))
+                    Parent.IsDirty = true;
             }
         }
 
@@ -359,7 +361,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _selectable, value, "Selectable");
+                if (SetField(ref _selectable, value, "Selectable"))
+                    Parent.IsDirty = true;
             }
         }
 
@@ -377,7 +380,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _name, value, "Name");
+                if (SetField(ref _name, value, "Name"))
+                    Parent.IsDirty = true;
             }
         }
 
@@ -395,7 +399,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _showInLegend, value, "ShowInLegend");
+                if (SetField(ref _showInLegend, value, "ShowInLegend"))
+                    Parent.IsDirty = true;
             }
         }
 
@@ -413,7 +418,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _legendLabel, value, "LegendLabel");
+                if (SetField(ref _legendLabel, value, "LegendLabel"))
+                    Parent.IsDirty = true;
             }
         }
 
@@ -431,7 +437,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _expandInLegend, value, "ExpandInLegend");
+                if (SetField(ref _expandInLegend, value, "ExpandInLegend"))
+                    Parent.IsDirty = true;
             }
         }
 

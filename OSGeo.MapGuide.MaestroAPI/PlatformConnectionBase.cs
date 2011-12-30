@@ -1897,6 +1897,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             var map = new RuntimeMap(mdf, metersPerUnit);
             map.ResourceID = runtimeMapResourceId;
+            map.IsDirty = false;
             return map;
         }
 
@@ -1915,6 +1916,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (this.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
                 map.DeserializeLayerData(new MgBinaryDeserializer(this.GetResourceData(runtimeMapResourceId, "LayerGroupData"), this.SiteVersion));
 
+            map.IsDirty = false;
             return map;
         }
         #endregion

@@ -196,7 +196,9 @@ namespace MaestroAPITests
             
             //Call save
             Assert.IsTrue(Matches(map, mdf));
+            Assert.IsFalse(map.IsDirty);
             map.Save();
+            Assert.IsFalse(map.IsDirty);
             Assert.IsTrue(Matches(map, mdf));
             Assert.IsTrue(resSvc.ResourceExists(mid));
 
@@ -219,7 +221,9 @@ namespace MaestroAPITests
 
             //Save
             Assert.IsFalse(Matches(map2, mdf));
+            Assert.IsTrue(map2.IsDirty);
             map2.Save();
+            Assert.IsFalse(map2.IsDirty);
             Assert.IsFalse(Matches(map2, mdf));
 
             var map3 = mapSvc.OpenMap(mid);
@@ -273,7 +277,9 @@ namespace MaestroAPITests
 
             //Doesn't exist yet because save isn't called
             Assert.IsTrue(!resSvc.ResourceExists(mid));
+            Assert.IsTrue(map.IsDirty);
             map.Save();
+            Assert.IsFalse(map.IsDirty);
 
             //Render default
             RenderAndVerify(mapSvc, map, "TestRender75k.png", "PNG");
@@ -285,7 +291,9 @@ namespace MaestroAPITests
             var rail = map.GetLayerByName("Rail");
             Assert.NotNull(rail);
             rail.Visible = false;
+            Assert.IsTrue(map.IsDirty);
             map.Save();
+            Assert.IsFalse(map.IsDirty);
 
             //Render again
             RenderAndVerify(mapSvc, map, "TestRender75k_NoRail.png", "PNG");
@@ -298,7 +306,9 @@ namespace MaestroAPITests
             rail = map.GetLayerByName("Rail");
             Assert.NotNull(rail);
             rail.Visible = true;
+            Assert.IsTrue(map.IsDirty);
             map.Save();
+            Assert.IsFalse(map.IsDirty);
 
             //Render again
             RenderAndVerify(mapSvc, map, "TestRender75k_RailBackOn.png", "PNG");
@@ -490,7 +500,9 @@ namespace MaestroAPITests
 
             //Doesn't exist yet because save isn't called
             Assert.IsTrue(!resSvc.ResourceExists(mid));
+            Assert.IsTrue(map.IsDirty);
             map.Save();
+            Assert.IsFalse(map.IsDirty);
 
             int counter = 0;
             foreach (var layer in map.Layers)
@@ -555,7 +567,9 @@ namespace MaestroAPITests
 
             //Doesn't exist yet because save isn't called
             Assert.IsTrue(!resSvc.ResourceExists(mid));
+            Assert.IsTrue(map.IsDirty);
             map.Save();
+            Assert.IsFalse(map.IsDirty);
 
             //Render default
             RenderAndVerify(mapSvc, map, "TestRender12k.png", "PNG");
@@ -567,7 +581,9 @@ namespace MaestroAPITests
             var parcels = map.GetLayerByName("Parcels");
             Assert.NotNull(parcels);
             parcels.Visible = false;
+            Assert.IsTrue(map.IsDirty);
             map.Save();
+            Assert.IsFalse(map.IsDirty);
             
             //Render again
             RenderAndVerify(mapSvc, map, "TestRender12k_NoParcels.png", "PNG");
@@ -580,7 +596,9 @@ namespace MaestroAPITests
             parcels = map.GetLayerByName("Parcels");
             Assert.NotNull(parcels);
             parcels.Visible = true;
+            Assert.IsTrue(map.IsDirty);
             map.Save();
+            Assert.IsFalse(map.IsDirty);
 
             //Render again
             RenderAndVerify(mapSvc, map, "TestRender12k_ParcelsBackOn.png", "PNG");
@@ -621,7 +639,9 @@ namespace MaestroAPITests
 
             //Doesn't exist yet because save isn't called
             Assert.IsTrue(!resSvc.ResourceExists(mid));
+            Assert.IsTrue(map.IsDirty);
             map.Save();
+            Assert.IsFalse(map.IsDirty);
 
             //Render default
             RenderAndVerify(mapSvc, map, "TestMapManipulation12kWithRail.png", "PNG");
@@ -636,7 +656,9 @@ namespace MaestroAPITests
             var rail = map.GetLayerByName("Rail");
             Assert.NotNull(rail);
             map.RemoveLayer(rail);
+            Assert.IsTrue(map.IsDirty);
             map.Save();
+            Assert.IsFalse(map.IsDirty);
 
             //Render again
             RenderAndVerify(mapSvc, map, "TestMapManipulation12k_RailRemoved.png", "PNG");
@@ -665,7 +687,9 @@ namespace MaestroAPITests
             //var parcels = map.GetLayerByName("Parcels");
             //rail.SetDrawOrder(parcels.DisplayOrder - 0.000001);
 
+            Assert.IsTrue(map.IsDirty);
             map.Save();
+            Assert.IsFalse(map.IsDirty);
 
             //Render again. Rail should be above parcels
             RenderAndVerify(mapSvc, map, "TestMapManipulation12k_RailReAdded.png", "PNG");
@@ -934,9 +958,13 @@ namespace MaestroAPITests
             ResourceIdentifier mapid = new ResourceIdentifier(mapName, ResourceTypes.RuntimeMap, conn.SessionID);
             IMapDefinition mdef = (IMapDefinition)conn.ResourceService.GetResource(mapdefinition);
             RuntimeMap rtm = mapSvc.CreateMap(mdef); // Create new runtime map
+            Assert.IsFalse(rtm.IsDirty);
             rtm.Save();
+            Assert.IsFalse(rtm.IsDirty);
             RuntimeMap tmprtm = mapSvc.CreateMap(mapid, mdef); // Create new map in data cache
+            Assert.IsFalse(tmprtm.IsDirty);
             tmprtm.Save();
+            Assert.IsFalse(tmprtm.IsDirty);
 
             RuntimeMap mymap = mapSvc.OpenMap(mapid); 
         }
@@ -949,6 +977,7 @@ namespace MaestroAPITests
             IMapDefinition mdef = (IMapDefinition)conn.ResourceService.GetResource(mapdefinition);
             RuntimeMap rtm = mapSvc.CreateMap(mdef); // Create new runtime map
             rtm.Save();
+            Assert.IsFalse(rtm.IsDirty);
             RuntimeMap mymap = mapSvc.OpenMap("Session:" + conn.SessionID + "//" + rtm.Name + ".Map");
         }
 

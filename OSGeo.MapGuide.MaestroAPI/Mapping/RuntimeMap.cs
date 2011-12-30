@@ -171,6 +171,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.Layers = new RuntimeMapLayerCollection(this);
             this.Groups = new RuntimeMapGroupCollection(this);
             this.Selection = new MapSelection(this);
+            this.IsDirty = false;
         }
 
         static IEnumerable<string> GetLayerIds(IMapDefinition mdf)
@@ -842,6 +843,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
 
             _disableChangeTracking = false;
+            this.IsDirty = false;
         }
 
         private static IEnvelope DeserializeExtents(MgBinaryDeserializer d)
@@ -1203,12 +1205,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     this.ResourceService.SetResourceData(resourceID, "LayerGroupData", ResourceDataType.Stream, ms2);
 
                 SaveSelectionXml(resourceID);
+                this.IsDirty = false;
             }
             finally
             {
                 map.Name = r;
                 map.ResourceID = t;
             }
+        }
+
+        /// <summary>
+        /// Gets whether this instance has state changes which require a call to <see cref="M:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Save"/>
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is dirty; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsDirty
+        {
+            get;
+            internal set;
         }
 
         private void SaveSelectionXml(string resourceID)
@@ -1258,6 +1273,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
             var change = new Change(type, param);
             changes.Changes.Add(change);
+
+            this.IsDirty = true;
+        }
+
+        /// <summary>
+        /// Raises the <see cref="PropertyChanged"/> event
+        /// </summary>
+        /// <param name="propertyName"></param>
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            this.IsDirty = true;
         }
 
         /// <summary>

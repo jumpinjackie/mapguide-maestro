@@ -148,9 +148,10 @@ namespace MaestroAPITests
 
             resSvc.SetResourceXmlData(target, resSvc.GetResourceXmlData(source));
 
-            string dataName = "";
+            string dataName = "UT_HydrographicPolygons.sdf";
             var resDataList = resSvc.EnumerateResourceData(source);
-            dataName = resDataList.ResourceData[0].Name;
+            if (resDataList.ResourceData.Count == 1)
+                dataName = resDataList.ResourceData[0].Name;
 
             resSvc.SetResourceData(target,
                                    dataName,
