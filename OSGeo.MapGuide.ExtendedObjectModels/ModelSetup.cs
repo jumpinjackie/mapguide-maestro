@@ -33,6 +33,7 @@ using Ldf230 = OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0;
 using Lp110 = OSGeo.MapGuide.ObjectModels.LoadProcedure_1_1_0;
 using Lp220 = OSGeo.MapGuide.ObjectModels.LoadProcedure_2_2_0;
 using WL110 = OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0;
+using WL240 = OSGeo.MapGuide.ObjectModels.WebLayout_2_4_0;
 
 using Sym110 = OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0;
 
@@ -126,6 +127,14 @@ namespace OSGeo.MapGuide.ExtendedObjectModels
                 new ResourceSerializationCallback(WL110.WebLayoutEntryPoint.Serialize),
                 new ResourceDeserializationCallback(WL110.WebLayoutEntryPoint.Deserialize));
             ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(1, 1, 0), new WebLayoutCreatorFunc(WL110.WebLayoutEntryPoint.CreateDefault));
+
+            //Web Layout 2.4.0 - Note we are mostly re-using the 1.1.0 impl because the changes are so insignificant
+            ResourceValidatorSet.RegisterValidator(new WL240.WebLayoutValidator());
+            ResourceTypeRegistry.RegisterResource(
+                new ResourceTypeDescriptor(ResourceTypes.WebLayout, "2.4.0"),
+                new ResourceSerializationCallback(WL240.WebLayoutEntryPoint.Serialize),
+                new ResourceDeserializationCallback(WL240.WebLayoutEntryPoint.Deserialize));
+            ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(2, 4, 0), new WebLayoutCreatorFunc(WL240.WebLayoutEntryPoint.CreateDefault));
 
             //Symbol Definition 1.1.0
             ResourceValidatorSet.RegisterValidator(new Sym110.SymbolDefinitionValidator());

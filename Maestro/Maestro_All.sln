@@ -95,6 +95,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignMapGuideApi", "..\SignM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.Native32-2.2.0", "..\OSGeo.MapGuide.MaestroAPI.Native\OSGeo.MapGuide.MaestroAPI.Native32-2.2.0.csproj", "{F4420153-9DF3-4407-AD65-E8ABED2B6E25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0", "..\ExtendedModels\WebLayout-2.4.0\OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0.csproj", "{BEC17FD3-2ADB-4154-934D-494313C588EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -233,6 +235,10 @@ Global
 		{F4420153-9DF3-4407-AD65-E8ABED2B6E25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4420153-9DF3-4407-AD65-E8ABED2B6E25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4420153-9DF3-4407-AD65-E8ABED2B6E25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEC17FD3-2ADB-4154-934D-494313C588EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEC17FD3-2ADB-4154-934D-494313C588EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEC17FD3-2ADB-4154-934D-494313C588EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEC17FD3-2ADB-4154-934D-494313C588EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

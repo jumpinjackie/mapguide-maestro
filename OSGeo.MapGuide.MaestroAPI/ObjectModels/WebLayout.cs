@@ -29,7 +29,9 @@ using System.IO;
 
 #pragma warning disable 1591, 0114, 0108
 
-#if WL110
+#if WL240
+namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_4_0
+#elif WL110
 namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0
 #else
 namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
@@ -40,6 +42,14 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         public static IWebLayout CreateDefault(string mapDefinitionId)
         {
             IWebLayout wl = WebLayoutType.CreateDefault(mapDefinitionId);
+#if WL240
+            //NOTE: This separator is needed because the AJAX viewer currently assumes the maptip
+            //command to be at a certain position (!!!). The seperator ensures the command is at
+            //the right position
+            wl.ToolBar.AddItem(wl.CreateSeparator());
+            wl.CommandSet.AddCommand(wl.CreateBasicCommand("Maptip", "Click to enable/disable display of map tooltips", "Click to enable/disable display of map tooltips", "icon_maptip", TargetViewerType.All, BasicCommandActionType.MapTip));
+            wl.ToolBar.AddItem(wl.CreateCommandItem(BasicCommandActionType.MapTip.ToString()));
+#endif
             return wl;
         }
 
@@ -65,7 +75,9 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
     {
         internal WebLayoutType() { }
 
-#if WL110
+#if WL240
+        private static readonly Version RES_VERSION = new Version(2, 4, 0);
+#elif WL110
         private static readonly Version RES_VERSION = new Version(1, 1, 0);
 #else
         private static readonly Version RES_VERSION = new Version(1, 0, 0);
@@ -127,7 +139,9 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
         public string ValidatingSchema
         {
-#if WL110
+#if WL240
+            get { return "WebLayout-2.4.0.xsd"; }
+#elif WL110
             get { return "WebLayout-1.1.0.xsd"; }
 #else
             get { return "WebLayout-1.0.0.xsd"; }

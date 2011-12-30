@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.4.0">
+  <xs:include schemaLocation="PlatformCommon-1.0.0.xsd"/>
+  <xs:element name="ProfileResult">
+    <xs:annotation>
+      <xs:documentation>The specification of the information in profile result.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="ProfileResultType">
+          <xs:attribute name="version" type="xs:string" use="required" fixed="2.4.0"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ProfileResultType">
+    <xs:choice>
+      <xs:element name="ProfileRenderMap" type="ProfileRenderMapType">
+        <xs:annotation>
+          <xs:documentation>Profiling result which records information during RenderMap procss.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProfileRenderDynamicOverlay" type="ProfileRenderMapType">
+        <xs:annotation>
+          <xs:documentation>Profiling result which records information during RenderDynamicOverlay procss.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="ProfileRenderMapType">
+    <xs:annotation>
+      <xs:documentation>Profiling result which records information during RenderMap or RenderDynamicOverlay processes.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ResourceId" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The resource identifier of the map.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CoordinateSystem" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The coordinate system code used by the map.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Extents" type="Box2DType">
+        <xs:annotation>
+          <xs:documentation>A bounding box around the area of the map.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Scale" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The display scale of the map.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LayerCount" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>The number of layers contained by the map.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ImageFormat" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The format of the map image.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RendererType" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The renderer used in the image rendering process.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RenderTime" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The total render time to generate the map image, which includes layer(s) render time, selection render time, watermark(s) render time, labels render time and other misc time.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProfileRenderLayers" type="ProfileRenderLayersType">
+        <xs:annotation>
+          <xs:documentation>Profiling result which records information during layer rendering processes.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProfileRenderSelection" type="ProfileRenderSelectionType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Profiling result which records information during selection rendering processes.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProfileRenderWatermarks" type="ProfileRenderWatermarksType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Profiling result which records information during watermark rendering processes.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProfileRenderLabels" type="ProfileRenderLabelsType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Profiling result which records information during label rendering processes.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CreateImageTime" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The time of rendering stylized map to an image.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Error" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Error message if rendering map failed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProfileRenderLayersType">
+    <xs:annotation>
+      <xs:documentation>Profiling result which records information during layer rendering processes.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RenderTime" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The time of stylizing all layers in the map.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProfileRenderLayer" type="ProfileRenderLayerType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Profiling result which records information for a particular layer rendering process.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProfileRenderSelectionType">
+    <xs:annotation>
+      <xs:documentation>Profiling result which records information during selected layer rendering processes.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RenderTime" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The time of stylizing all selected layers in the map.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProfileSelectedRenderLayer" type="ProfileRenderLayerType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Profiling result which records information for a particular selected layer rendering process.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProfileRenderWatermarksType">
+    <xs:annotation>
+      <xs:documentation>Profiling result which records information during watermark rendering processes.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RenderTime" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The time of stylizing all watermarks in the map.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProfileRenderWatermark" type="ProfileRenderWatermarkType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Profiling result which records information for a particular watermark rendering process.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProfileRenderLabelsType">
+    <xs:annotation>
+      <xs:documentation>Profiling result which records information during label rendering processes.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RenderTime" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The time of stylizing labels in the map.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Error" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Error message if rendering labels failed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProfileRenderLayerType">
+    <xs:annotation>
+      <xs:documentation>Profiling result which records information for a particular layer rendering process.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ResourceId" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The resource identifier of the layer.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LayerName" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the layer.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LayerType" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The type (vector or raster) of the layer.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FeatureClassName" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the feature class referenced by the layer.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CoordinateSystem" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The coordinate system code used by the layer.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ScaleRange" type="ScaleRangeType">
+        <xs:annotation>
+          <xs:documentation>The current scale range of the layer in the map.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Filter" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A boolean FDO expression that specifies which features to return.  No filter means pass all features through.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RenderTime" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The time of stylizing a paricular layer in the map.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Error" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Error message if rendering layer failed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProfileRenderWatermarkType">
+    <xs:annotation>
+      <xs:documentation>Profiling result which records information for a particular watermark rendering process.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ResourceId" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The resource identifier of the watermark.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PositionType" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The position type (XY or Tile) of the watermark.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RenderTime" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The time of stylizing a paricular watermark in the map.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Error" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Error message if rendering watermark failed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Box2DType">
+    <xs:annotation>
+      <xs:documentation>Box2D encapsulates the the coordinates of a box in 2-D space</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MinX" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>Minimum x-coordinate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MaxX" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>Maximum x-coordinate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MinY" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>Minimum y-coordinate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MaxY" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>Maximum y-coordinate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ScaleRangeType">
+    <xs:annotation>
+      <xs:documentation>The range includes the min and max scales of a particular layer.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MinScale" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The zoomed in part of the scale range. Inclusive.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MaxScale" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The zoomed out part of the scale range. Exclusive.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExtendedData1" type="ExtendedDataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

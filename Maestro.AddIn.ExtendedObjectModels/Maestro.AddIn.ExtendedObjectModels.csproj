@@ -82,6 +82,7 @@
     <Compile Include="Templates\VectorLayer120ItemTemplate.cs" />
     <Compile Include="Templates\VectorLayer110ItemTemplate.cs" />
     <Compile Include="Templates\WebLayout110ItemTemplate.cs" />
+    <Compile Include="Templates\WebLayout240ItemTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Manifest.addin">

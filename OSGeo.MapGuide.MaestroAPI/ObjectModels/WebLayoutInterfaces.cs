@@ -213,6 +213,9 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
 
         /// <remarks/>
         About,
+
+        /// <remarks/>
+        MapTip,
     }
 
     /// <summary>

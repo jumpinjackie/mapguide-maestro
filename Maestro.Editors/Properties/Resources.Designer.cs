@@ -1551,6 +1551,20 @@ namespace Maestro.Editors.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap icon_maptip {
+            get {
+                object obj = ResourceManager.GetObject("icon_maptip", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap icon_maptip_disabled {
+            get {
+                object obj = ResourceManager.GetObject("icon_maptip_disabled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap icon_measure {
             get {
                 object obj = ResourceManager.GetObject("icon_measure", resourceCulture);

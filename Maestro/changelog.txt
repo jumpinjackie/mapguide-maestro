@@ -1,4 +1,9 @@
-﻿4.0
+﻿4.1
+---
+
+ - Fix: Stylization functions not shown in Expression Editor
+
+4.0
 ---
 
  - Map Definition Editor support for specifying a Google/Yahoo/Bing/OSM compatible finite scale list

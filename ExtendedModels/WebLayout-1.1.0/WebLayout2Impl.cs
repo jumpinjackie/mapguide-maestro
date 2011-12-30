@@ -22,7 +22,11 @@ using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 
+#if WL240
+namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_4_0
+#else
 namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0
+#endif
 {
     partial class WebLayoutType : IWebLayout2
     {

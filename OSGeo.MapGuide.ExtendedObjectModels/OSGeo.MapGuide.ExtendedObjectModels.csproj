@@ -32,6 +32,7 @@
     <DocumentationFile>..\SDK\bin\OSGeo.MapGuide.ExtendedObjectModels.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />

@@ -232,4 +232,13 @@
   <data name="TPL_WDFS_230_NAME" xml:space="preserve">
     <value>Watermark Definition - Simple (v2.3.0)</value>
   </data>
+  <data name="TPL_CATEGORY_MGOS24" xml:space="preserve">
+    <value>Autodesk Infrastructure Map Server 2013</value>
+  </data>
+  <data name="TPL_WL_240_DESC" xml:space="preserve">
+    <value>Create a new Web Layout using the v2.4.0 schema</value>
+  </data>
+  <data name="TPL_WL_240_NAME" xml:space="preserve">
+    <value>Web Layout (v2.4.0)</value>
+  </data>
 </root>
