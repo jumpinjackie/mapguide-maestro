@@ -22,27 +22,14 @@ using System.Collections.Generic;
 using System.Text;
 using ICSharpCode.Core;
 using Maestro.Base.UI;
+using Maestro.Shared.UI;
 
 namespace Maestro.Base.Services
 {
-    public class ViewContentManager : ServiceBase
+    public class ViewContentManager : ViewContentManagerBase
     {
-        private Dictionary<string, Type> _singletonViewContentTypes;
-        private List<IViewContent> _singletonInstances;
-
-        public event EventHandler ViewHidden;
-
-        private Workbench _wb;
-
         public override void Initialize()
         {
-            base.Initialize();
-
-            Workbench.WorkbenchInitialized += (sender, e) =>
-            {
-                _wb = Workbench.Instance;
-            };
-
             _singletonInstances = new List<IViewContent>();
             _singletonViewContentTypes = new Dictionary<string, Type>();
 
@@ -58,122 +45,9 @@ namespace Maestro.Base.Services
             LoggingService.Info(Properties.Resources.Service_Init_ViewContent_Manager);
         }
 
-        public bool IsCreated<T>() where T : IViewContent
+        protected override WorkbenchBase GetWorkbench()
         {
-            var type = typeof(T);
-            if (_singletonViewContentTypes.ContainsKey(type.Name))
-            {
-                foreach (var cnt in _singletonInstances)
-                {
-                    if (type.IsAssignableFrom(cnt.GetType()))
-                    {
-                        return true;
-                    }
-                }
-                return false;
-            }
-            else
-            {
-                throw new InvalidOperationException(string.Format(Properties.Resources.Error_ViewContent_Type_Not_Singleton, type.Name));
-            }
-        }
-
-        public void HideContent<T>() where T : IViewContent
-        {
-            var type = typeof(T);
-            if (_singletonViewContentTypes.ContainsKey(type.Name))
-            {
-                foreach (var cnt in _singletonInstances)
-                {
-                    if (type.IsAssignableFrom(cnt.GetType()))
-                    {
-                        cnt.Hide();
-                        var handler = this.ViewHidden;
-                        if (handler != null)
-                            handler(this, EventArgs.Empty);
-
-                        if (_wb != null)
-                            _wb.CheckContainerStatus();
-                        return;
-                    }
-                }
-            }
-            else
-            {
-                throw new InvalidOperationException(string.Format(Properties.Resources.Error_ViewContent_Type_Not_Singleton, type.Name));
-            }
-        }
-
-        public void ShowContent<T>() where T : IViewContent
-        {
-            var type = typeof(T);
-            if (_singletonViewContentTypes.ContainsKey(type.Name))
-            {
-                foreach (var cnt in _singletonInstances)
-                {
-                    if (type.IsAssignableFrom(cnt.GetType()))
-                    {
-                        if (!cnt.IsAttached)
-                            _wb.ShowContent(cnt);
-                        cnt.Activate();
-                        if (_wb != null)
-                            _wb.CheckContainerStatus();
-                        return;
-                    }
-                }
-            }
-            else
-            {
-                throw new InvalidOperationException(string.Format(Properties.Resources.Error_ViewContent_Type_Not_Singleton, type.Name));
-            }
-        }
-
-        public T OpenContent<T>(ViewRegion region, CreateFunc<T> method) where T : IViewContent
-        {
-            return OpenContent<T>(null, null, region, method);
-        }
-
-        public T OpenContent<T>(ViewRegion region) where T : IViewContent
-        {
-            return OpenContent<T>(null, null, region);
-        }
-
-        public T OpenContent<T>(string title, string description, ViewRegion region) where T : IViewContent
-        {
-            return OpenContent<T>(title, description, region, () => { return (T)Activator.CreateInstance(typeof(T), true); });
-        }
-
-        public T OpenContent<T>(string title, string description, ViewRegion region, CreateFunc<T> method) where T : IViewContent
-        {
-            var type = typeof(T);
-            var wb = Workbench.Instance;
-            if (_singletonViewContentTypes.ContainsKey(type.Name))
-            {
-                foreach (var cnt in _singletonInstances)
-                {
-                    if (type.IsAssignableFrom(cnt.GetType()))
-                    {
-                        if (!cnt.IsAttached)
-                            _wb.ShowContent(cnt);
-                        cnt.Activate();
-                        if (_wb != null)
-                            _wb.CheckContainerStatus();
-                        return (T)cnt;
-                    }
-                }
-            }
-
-            T obj = method(); //(T)Activator.CreateInstance(type, true);
-            SingletonViewContent svc = obj as SingletonViewContent;
-            if (svc != null)
-                throw new InvalidOperationException(string.Format(Properties.Resources.Error_ViewContent_Not_Registered, type.Name));
-
-            obj.Title = title;
-            obj.Description = description;
-            wb.ShowContent(obj);
-            return obj;
+            return Workbench.Instance;
         }
     }
-
-    public delegate T CreateFunc<T>();
 }

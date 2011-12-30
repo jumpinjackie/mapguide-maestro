@@ -32,6 +32,8 @@ using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using Maestro.Login;
 using Maestro.Shared.UI;
 using System.Diagnostics;
+using Maestro.Base.Services;
+using Maestro.Base.Events;
 
 namespace Maestro
 {
@@ -134,27 +136,28 @@ namespace Maestro
             LoggingService.Info("Initializing Workbench...");
             // Workbench is our class from the base project, this method creates an instance
             // of the main form.
-            Workbench.InitializeWorkbench();
-
-            try
-            {
-                LoggingService.Info("Running application...");
-                // Workbench.Instance is the instance of the main form, run the message loop.
-                Application.Run(Workbench.Instance);
-            }
-            finally
-            {
+            ServiceRegistry.Initialize(() => {
+                Workbench.InitializeWorkbench(new WorkbenchInitializer());
                 try
                 {
-                    // Save changed properties
-                    PropertyService.Save();
+                    LoggingService.Info("Running application...");
+                    // Workbench.Instance is the instance of the main form, run the message loop.
+                    Application.Run(Workbench.Instance);
                 }
-                catch (Exception ex)
+                finally
                 {
-                    ErrorDialog.Show("Error storing properties", ex.ToString());
+                    try
+                    {
+                        // Save changed properties
+                        PropertyService.Save();
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorDialog.Show("Error storing properties", ex.ToString());
+                    }
                 }
-            }
-            LoggingService.Info("Application shutdown");
+                LoggingService.Info("Application shutdown");
+            });
         }
 
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

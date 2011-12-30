@@ -1,13 +1,13 @@
-﻿namespace Maestro.Base.UI
+﻿namespace Maestro.Shared.UI
 {
-    partial class SingletonViewContent
+    partial class WorkbenchBase
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,24 +20,28 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WorkbenchBase));
             this.SuspendLayout();
             // 
-            // SingletonViewContent
+            // Workbench
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.Name = "SingletonViewContent";
+            resources.ApplyResources(this, "$this");
+            this.Name = "Workbench";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
     }
 }

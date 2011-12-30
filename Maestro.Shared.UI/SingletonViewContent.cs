@@ -25,7 +25,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Maestro.Base.UI
+namespace Maestro.Shared.UI
 {
     public partial class SingletonViewContent : ViewContentBase
     {

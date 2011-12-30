@@ -24,11 +24,8 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using ICSharpCode.Core.WinForms;
-using ICSharpCode.Core;
-using Maestro.Shared.UI;
 
-namespace Maestro.Base
+namespace Maestro.Shared.UI
 {
     /// <summary>
     /// The base class of all view content. Provides the default implementation of <see cref="IViewContent"/>
@@ -118,9 +115,10 @@ namespace Maestro.Base
         /// Displays an error message
         /// </summary>
         /// <param name="message">The message</param>
-        public void ShowError(string message)
+        public virtual void ShowError(string message)
         {
-            MessageService.ShowError(message);
+            //MessageService.ShowError(message);
+            ErrorDialog.Show(message, message);
         }
 
         /// <summary>
@@ -128,9 +126,10 @@ namespace Maestro.Base
         /// </summary>
         /// <param name="title">The title of this message</param>
         /// <param name="message">The message</param>
-        public void ShowMessage(string title, string message)
+        public virtual void ShowMessage(string title, string message)
         {
-            MessageService.ShowMessage(message, title);
+            //MessageService.ShowMessage(message, title);
+            MessageBox.Show(message, title);
         }
 
         /// <summary>
@@ -141,9 +140,10 @@ namespace Maestro.Base
         /// <returns>
         /// true if confirmed, false otherwise
         /// </returns>
-        public bool Confirm(string title, string message)
+        public virtual bool Confirm(string title, string message)
         {
-            return MessageService.AskQuestion(message, title);
+            //return MessageService.AskQuestion(message, title);
+            return MessageBox.Show(message, title, MessageBoxButtons.YesNo) == DialogResult.Yes;
         }
 
         /// <summary>
@@ -155,9 +155,10 @@ namespace Maestro.Base
         /// <returns>
         /// true if confirmed, false otherwise
         /// </returns>
-        public bool ConfirmFormatted(string title, string format, params string[] args)
+        public virtual bool ConfirmFormatted(string title, string format, params string[] args)
         {
-            return MessageService.AskQuestion(string.Format(format, args), title);
+            //return MessageService.AskQuestion(string.Format(format, args), title);
+            return MessageBox.Show(string.Format(format, args), title, MessageBoxButtons.YesNo) == DialogResult.Yes;
         }
 
         /// <summary>
@@ -212,11 +213,6 @@ namespace Maestro.Base
         public event EventHandler ViewContentHiding;
 
         /// <summary>
-        /// Fired when the view, which was hidden is now being shown
-        /// </summary>
-        public event EventHandler ViewContentShowing;
-
-        /// <summary>
         /// Fired when the view is activating
         /// </summary>
         public event EventHandler ViewContentActivating;
@@ -258,5 +254,10 @@ namespace Maestro.Base
         /// Fired when the view has been closed internally
         /// </summary>
         public event EventHandler ViewContentClosed;
+
+        /// <summary>
+        /// Fired when the view, which was hidden is now being shown
+        /// </summary>
+        public event EventHandler ViewContentShowing;
     }
 }

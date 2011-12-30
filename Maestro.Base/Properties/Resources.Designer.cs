@@ -518,11 +518,12 @@ namespace Maestro.Base.Properties {
         ///  Andrew DeMerchant
         ///  Gabriele Monfardini
         ///  Gordon Luckett
+        ///  Hans Milling
         ///
         ///Many thanks to the following people who have translated Maestro into other languages:
         ///
         ///  José Manuel Cerrejón González (Spanish)
-        ///  Pierre Cardina [rest of string was truncated]&quot;;.
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Contributors {
             get {
@@ -718,24 +719,6 @@ namespace Maestro.Base.Properties {
         internal static string Error_Closeable_Singleton_Content {
             get {
                 return ResourceManager.GetString("Error_Closeable_Singleton_Content", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The specified view content type is not registered in any addin files: {0}.
-        /// </summary>
-        internal static string Error_ViewContent_Not_Registered {
-            get {
-                return ResourceManager.GetString("Error_ViewContent_Not_Registered", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The specified view content type is not a singleton: {0}.
-        /// </summary>
-        internal static string Error_ViewContent_Type_Not_Singleton {
-            get {
-                return ResourceManager.GetString("Error_ViewContent_Type_Not_Singleton", resourceCulture);
             }
         }
         

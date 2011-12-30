@@ -22,7 +22,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Maestro.Base
+namespace Maestro.Shared.UI
 {
     /// <summary>
     /// A control sub view

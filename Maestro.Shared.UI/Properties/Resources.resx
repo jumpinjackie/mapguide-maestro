@@ -136,4 +136,10 @@
   <data name="FileSaved" xml:space="preserve">
     <value>File saved</value>
   </data>
+  <data name="Error_ViewContent_Not_Registered" xml:space="preserve">
+    <value>The specified view content type is not registered in any addin files: {0}</value>
+  </data>
+  <data name="Error_ViewContent_Type_Not_Singleton" xml:space="preserve">
+    <value>The specified view content type is not a singleton: {0}</value>
+  </data>
 </root>

@@ -24,6 +24,7 @@ using System.Windows.Forms;
 using ICSharpCode.Core;
 using Maestro.Base.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using Maestro.Shared.UI;
 
 namespace Maestro.Base.Services
 {

@@ -30,6 +30,7 @@ namespace Maestro.Base.Services
     using Res = Properties.Resources;
     using Maestro.Base.Templates;
     using System.IO;
+    using Maestro.Shared.UI;
 
     public class NewItemTemplateService : ServiceBase
     {

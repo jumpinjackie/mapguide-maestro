@@ -21,14 +21,38 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI;
 
-namespace Maestro.Base
+namespace Maestro.Shared.UI
 {
     internal class HiddenTab
     {
         public TabControl Parent { get; set; }
         public TabPage Tab { get; set; }
+    }
+
+    /// <summary>
+    /// Platform check helper class. Use this class to determine if this assembly is executing
+    /// under the Mono Runtime environment.
+    /// </summary>
+    static class Platform
+    {
+        static Platform()
+        {
+            _mrtType = Type.GetType("Mono.Runtime");
+        }
+
+        private static Type _mrtType;
+
+        /// <summary>
+        /// Gets whether this application is running under the Mono CLR
+        /// </summary>
+        public static bool IsRunningOnMono
+        {
+            get
+            {
+                return _mrtType != null;
+            }
+        }
     }
 
     // A BIG NOTE TO ANYONE THINKING ABOUT HACKING THIS CODE:

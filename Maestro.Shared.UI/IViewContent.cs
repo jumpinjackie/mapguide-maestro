@@ -23,7 +23,7 @@ using System.Text;
 using System.Drawing;
 using System.ComponentModel;
 
-namespace Maestro.Base
+namespace Maestro.Shared.UI
 {
     /// <summary>
     /// Abstract view interface.

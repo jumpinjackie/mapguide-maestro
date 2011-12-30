@@ -27,6 +27,7 @@ using Maestro.Editors.Diagnostics;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using ICSharpCode.Core;
 using System.Windows.Forms;
+using Maestro.Shared.UI;
 
 namespace Maestro.Base.Events
 {
@@ -108,7 +109,12 @@ namespace Maestro.Base.Events
             if (wb.ActiveSiteExplorer == null)
             {
                 var siteExp = new SiteExplorer();
-                wb.ShowContent(siteExp);
+                var viewMgr = ServiceRegistry.GetService<ViewContentManager>();
+
+                viewMgr.OpenContent(Properties.Resources.Content_SiteExplorer, 
+                                    Properties.Resources.Content_SiteExplorer, 
+                                    ViewRegion.Left, 
+                                    () => { return new SiteExplorer(); });
             }
 
             wb.ActiveSiteExplorer.RefreshModel(name);

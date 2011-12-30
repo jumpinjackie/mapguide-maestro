@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Editors;
+using Maestro.Shared.UI;
 
 namespace Maestro.Base.UI
 {

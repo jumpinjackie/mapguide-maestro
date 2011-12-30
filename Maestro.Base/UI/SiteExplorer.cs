@@ -52,9 +52,6 @@ namespace Maestro.Base.UI
             ndResource.ToolTipProvider = new RepositoryItemToolTipProvider();
             ndResource.DrawText += new EventHandler<Aga.Controls.Tree.NodeControls.DrawEventArgs>(OnNodeDrawText);
 
-            this.Title = Properties.Resources.Content_SiteExplorer;
-            this.Description = Properties.Resources.Content_SiteExplorer;
-
             var ts = ToolbarService.CreateToolStripItems("/Maestro/Shell/SiteExplorer/Toolbar", this, true);
             tsSiteExplorer.Items.AddRange(ts);
 

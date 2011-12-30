@@ -61,6 +61,10 @@
     <Compile Include="ErrorDialog.Designer.cs">
       <DependentUpon>ErrorDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="ISubView.cs" />
+    <Compile Include="IViewContent.cs" />
+    <Compile Include="IViewContentManager.cs" />
+    <Compile Include="IWorkbenchInitializer.cs" />
     <Compile Include="NumericBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -68,13 +72,40 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ServiceBase.cs" />
+    <Compile Include="SingletonViewContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SingletonViewContent.Designer.cs">
+      <DependentUpon>SingletonViewContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabFactory.cs" />
     <Compile Include="TextBoxBinder.cs" />
+    <Compile Include="ViewContentBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewContentBase.Designer.cs">
+      <DependentUpon>ViewContentBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewContentManagerBase.cs" />
     <Compile Include="WaitCursor.cs" />
     <Compile Include="ProgressDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProgressDialog.designer.cs">
       <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkbenchBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkbenchBase.Designer.cs">
+      <DependentUpon>WorkbenchBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZonedContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZonedContainer.Designer.cs">
+      <DependentUpon>ZonedContainer.cs</DependentUpon>
     </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
@@ -93,6 +124,20 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProgressDialog.resx">
       <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingletonViewContent.resx">
+      <DependentUpon>SingletonViewContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewContentBase.resx">
+      <DependentUpon>ViewContentBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkbenchBase.resx">
+      <DependentUpon>WorkbenchBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZonedContainer.resx">
+      <DependentUpon>ZonedContainer.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

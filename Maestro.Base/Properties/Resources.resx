@@ -301,12 +301,6 @@
   <data name="Error_Closeable_Singleton_Content" xml:space="preserve">
     <value>Singleton view content cannot be closed by users. The AllowUserClose property must return false</value>
   </data>
-  <data name="Error_ViewContent_Not_Registered" xml:space="preserve">
-    <value>The specified view content type is not registered in any addin files: {0}</value>
-  </data>
-  <data name="Error_ViewContent_Type_Not_Singleton" xml:space="preserve">
-    <value>The specified view content type is not a singleton: {0}</value>
-  </data>
   <data name="applications_stack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\applications-stack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

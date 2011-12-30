@@ -30,6 +30,7 @@ using OSGeo.MapGuide.ObjectModels.WebLayout;
 using Props = ICSharpCode.Core.PropertyService;
 using Maestro.Base.UI.Preferences;
 using System.Windows.Forms;
+using Maestro.Shared.UI;
 
 namespace Maestro.Base.Commands
 {
@@ -39,9 +40,6 @@ namespace Maestro.Base.Commands
         {
             ResourceService.RegisterNeutralImages(Properties.Resources.ResourceManager);
             ResourceService.RegisterNeutralStrings(Properties.Resources.ResourceManager);
-
-            ServiceRegistry.Initialize();
-            EventWatcher.Initialize();
 
             ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new DefaultResourcePreviewer());
 

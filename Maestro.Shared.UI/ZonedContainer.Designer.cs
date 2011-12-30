@@ -1,4 +1,4 @@
-﻿namespace Maestro.Base
+﻿namespace Maestro.Shared.UI
 {
     partial class ZonedContainer
     {

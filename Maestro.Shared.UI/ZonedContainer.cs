@@ -25,18 +25,22 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-using Maestro.Base.Services;
-using OSGeo.MapGuide.MaestroAPI;
+using Maestro.Shared.UI;
 
-namespace Maestro.Base
+namespace Maestro.Shared.UI
 {
     public delegate void ViewContentActivateEventHandler(object sender, IViewContent content);
 
     internal partial class ZonedContainer : UserControl
     {
-        public ZonedContainer()
+        private IViewContentManager _vcManager;
+        private IWorkbenchInitializer _init;
+
+        public ZonedContainer(IWorkbenchInitializer init)
         {
             InitializeComponent();
+            _init = init;
+            _vcManager = _init.GetViewContentManager();
         }
 
         public IViewContent ActiveDocumentView
@@ -64,9 +68,7 @@ namespace Maestro.Base
             base.OnLoad(e);
 
             CheckContainerStatus();
-
-            var mgr = ServiceRegistry.GetService<ViewContentManager>();
-            mgr.ViewHidden += new EventHandler(OnViewHidden);
+            _vcManager.ViewHidden += new EventHandler(OnViewHidden);
         }
 
         void OnViewHidden(object sender, EventArgs e)
@@ -164,7 +166,7 @@ namespace Maestro.Base
                 if (draw)
                 {
                     //Close Image to draw
-                    Image img = Properties.Resources.cross_small;
+                    Image img = _init.GetDocumentCloseIcon(); // Properties.Resources.cross_small;
                     e.Graphics.DrawImage(img, new Point(r.X + (tab.GetTabRect(e.Index).Width - _imageLocation.X), _imageLocation.Y));
                 }
             }

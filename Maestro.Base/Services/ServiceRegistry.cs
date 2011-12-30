@@ -21,6 +21,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ICSharpCode.Core;
+using Maestro.Shared.UI;
+using Maestro.Base.Events;
 
 namespace Maestro.Base.Services
 {
@@ -28,14 +30,23 @@ namespace Maestro.Base.Services
     {
         private static List<ServiceBase> _services;
 
-        internal static void Initialize()
+        private static bool _init = false;
+
+        public static void Initialize(Action callback)
         {
+            if (_init)
+                return;
+
             _services = AddInTree.BuildItems<ServiceBase>("/Maestro/ApplicationServices", null);
             foreach (var svc in _services)
             {
                 svc.Initialize();
                 svc.Load();
             }
+            _init = true;
+            EventWatcher.Initialize();
+            if (callback != null)
+                callback();
         }
 
         public static T GetService<T>() where T : ServiceBase

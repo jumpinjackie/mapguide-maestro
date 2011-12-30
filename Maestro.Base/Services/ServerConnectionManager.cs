@@ -23,6 +23,7 @@ using System.Text;
 using OSGeo.MapGuide.MaestroAPI;
 using ICSharpCode.Core;
 using System.ComponentModel;
+using Maestro.Shared.UI;
 
 namespace Maestro.Base.Services
 {

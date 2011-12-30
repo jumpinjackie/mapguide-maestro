@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -20,15 +20,20 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Drawing;
+using System.Windows.Forms;
 
-namespace Maestro.Base.Services
+namespace Maestro.Shared.UI
 {
-    public abstract class ServiceBase
+    public interface IWorkbenchInitializer
     {
-        public virtual void Initialize() { }
+        Icon GetIcon();
+        MenuStrip GetMainMenu(WorkbenchBase workbench);
+        ToolStrip GetMainToolStrip(WorkbenchBase workbench);
+        void UpdateMenuItemStatus(MenuStrip menu, IEnumerable<ToolStrip> toolstrips);
 
-        public virtual void Load() { }
+        IViewContentManager GetViewContentManager();
 
-        public virtual void Save() { }
+        Image GetDocumentCloseIcon();
     }
 }

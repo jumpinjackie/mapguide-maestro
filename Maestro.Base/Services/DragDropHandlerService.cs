@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using ICSharpCode.Core;
+using Maestro.Shared.UI;
 
 namespace Maestro.Base.Services
 {

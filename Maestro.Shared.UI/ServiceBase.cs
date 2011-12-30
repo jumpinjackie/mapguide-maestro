@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -20,34 +20,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using ICSharpCode.Core;
-using System.Diagnostics;
-using Maestro.Base.UI;
-using OSGeo.MapGuide.MaestroAPI;
-using Maestro.Shared.UI;
 
-namespace Maestro.Base.Services
+namespace Maestro.Shared.UI
 {
-    public interface IUrlLauncherService
+    public abstract class ServiceBase
     {
-        void OpenUrl(string url);
-    }
+        public virtual void Initialize() { }
 
-    public class UrlLauncherService : ServiceBase, IUrlLauncherService
-    {
-        public override void Initialize()
-        {
-            base.Initialize();
-            LoggingService.Info(Properties.Resources.Service_Init_Url_Launcher);
-        }
+        public virtual void Load() { }
 
-        /// <summary>
-        /// Opens the specified url using the system default web browser
-        /// </summary>
-        /// <param name="url">The url to open</param>
-        public void OpenUrl(string url)
-        {
-            Process.Start(url);
-        }
+        public virtual void Save() { }
     }
 }
