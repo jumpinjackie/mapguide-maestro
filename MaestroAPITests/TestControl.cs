@@ -45,12 +45,24 @@ namespace MaestroAPITests
 
     public class ConnectionUtil
     {
+        public static string Port { get { return ""; } }
+
         public static IServerConnection CreateTestHttpConnection()
         {
-            return ConnectionProviderRegistry.CreateConnection("Maestro.Http",
-                "Url", "http://" + Environment.MachineName + "/mapguide/mapagent/mapagent.fcgi",
-                "Username", "Administrator",
-                "Password", "admin");
+            if (!string.IsNullOrEmpty(Port))
+            {
+                return ConnectionProviderRegistry.CreateConnection("Maestro.Http",
+                    "Url", "http://" + Environment.MachineName + ":" + Port + "/mapguide/mapagent/mapagent.fcgi",
+                    "Username", "Administrator",
+                    "Password", "admin");
+            }
+            else
+            {
+                return ConnectionProviderRegistry.CreateConnection("Maestro.Http",
+                    "Url", "http://" + Environment.MachineName + "/mapguide/mapagent/mapagent.fcgi",
+                    "Username", "Administrator",
+                    "Password", "admin");
+            }
         }
     }
 }

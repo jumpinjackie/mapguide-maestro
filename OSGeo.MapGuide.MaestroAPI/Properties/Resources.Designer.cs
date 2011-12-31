@@ -612,6 +612,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Referenced Symbol Definition {0} has an irrelevant usage context for this layer because this layer does not have features of type: {1}.
+        /// </summary>
+        internal static string LDF_IrrelevantUsageContext {
+            get {
+                return ResourceManager.GetString("LDF_IrrelevantUsageContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Layer is missing core information.
         /// </summary>
         internal static string LDF_LayerNullError {
@@ -707,6 +716,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         internal static string LDF_SheetNotFound {
             get {
                 return ResourceManager.GetString("LDF_SheetNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Layer Definition contains a Composite Rule pointing to a non-existent Symbol Definition: {0}.
+        /// </summary>
+        internal static string LDF_SymbolDefintionReferenceNotFound {
+            get {
+                return ResourceManager.GetString("LDF_SymbolDefintionReferenceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Layer Definition specifies a parameter override for {0} that does not exist ({1}).
+        /// </summary>
+        internal static string LDF_SymbolParameterOverrideToNonExistentParameter {
+            get {
+                return ResourceManager.GetString("LDF_SymbolParameterOverrideToNonExistentParameter", resourceCulture);
             }
         }
         

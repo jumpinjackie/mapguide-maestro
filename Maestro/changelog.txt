@@ -1,6 +1,13 @@
 ﻿4.1
 ---
 
+ - Support for v2.4.0 resources (Web Layout, Map Definition, Layer Definition, Watermark Definition, Symbol Definition)
+ - Added extra symbol definition validation rules
+ - Fix: Select font link in Text Symbol Definition dialog does nothing
+ - Fix: Incorrect resource being flagged for Map Definition validation issues
+ - Fix: Size Context not being saved for composite lines in Line Style Editor
+ - Fix: Web Layout editor not persisting "Keep Connection Alive" option.
+ - Fix: Missing Symbol Definition 1.1.0 resource template
  - Fix: Stylization functions not shown in Expression Editor
 
 4.0

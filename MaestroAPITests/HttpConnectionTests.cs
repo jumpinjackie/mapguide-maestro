@@ -152,6 +152,8 @@ namespace MaestroAPITests
             var resDataList = resSvc.EnumerateResourceData(source);
             if (resDataList.ResourceData.Count == 1)
                 dataName = resDataList.ResourceData[0].Name;
+            else
+                resSvc.SetResourceData(source, dataName, ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.sdf"));
 
             resSvc.SetResourceData(target,
                                    dataName,

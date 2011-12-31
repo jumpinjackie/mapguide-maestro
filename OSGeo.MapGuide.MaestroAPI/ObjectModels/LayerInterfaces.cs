@@ -1864,6 +1864,18 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         IEnumerable<IParameterOverride> Override { get; }
 
         /// <summary>
+        /// Gets the number of parameter overrides
+        /// </summary>
+        int Count { get; }
+
+        /// <summary>
+        /// Gets the parameter override at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        IParameterOverride this[int index] { get; }
+
+        /// <summary>
         /// Adds the parameter override.
         /// </summary>
         /// <param name="ov">The parameter override</param>

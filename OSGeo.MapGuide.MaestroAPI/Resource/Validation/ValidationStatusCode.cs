@@ -64,6 +64,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// One or more scale ranges overlap. Can affect presentation of data. 
         /// </summary>
         Info_LayerDefinition_ScaleRangeOverlap = 1201,
+
+        /// <summary>
+        /// A referenced symbol definition contains irrelevant usage contexts for this particular layer
+        /// </summary>
+        Info_LayerDefinition_IrrelevantUsageContext,
         #endregion
 
         #region warnings
@@ -180,6 +185,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// composite style will always take precedence and the point/line/area style will have no effect
         /// </summary>
         Warning_LayerDefinition_CompositeStyleDefinedAlongsideBasicStyle,
+
+        /// <summary>
+        /// A parameter override has been specified for a parameter that does not exist
+        /// </summary>
+        Warning_LayerDefinition_SymbolParameterOverrideToNonExistentParameter,
 
         /// <summary>
         /// The web layout's initial view lies outside the referenced map definition's extents. Usually means you will see nothing when the AJAX viewer loads.
@@ -334,6 +344,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// Cannot determine the layer sub-type
         /// </summary>
         Error_LayerDefinition_LayerNull,
+
+        /// <summary>
+        /// The Layer Definition contains a composite rule pointing to a non-existent symbol definition
+        /// </summary>
+        Error_LayerDefinition_SymbolDefintionReferenceNotFound,
 
         /// <summary>
         /// Unclassified validation error

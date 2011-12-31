@@ -2136,6 +2136,24 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             }
         }
 
+        [XmlIgnore]
+        public int Count
+        {
+            get { return this.Override.Count; }
+        }
+
+        [XmlIgnore]
+        public IParameterOverride this[int index]
+        {
+            get
+            {
+                if (index >= this.Override.Count)
+                    throw new ArgumentOutOfRangeException();
+
+                return this.Override[index];
+            }
+        }
+
         public void AddOverride(IParameterOverride ov)
         {
             var o = ov as Override;

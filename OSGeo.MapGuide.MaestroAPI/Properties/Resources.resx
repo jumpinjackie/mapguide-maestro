@@ -548,4 +548,13 @@
   <data name="BaseTemplate240_ApplicationDefinition" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BaseTemplate.ApplicationDefinition1.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="LDF_SymbolDefintionReferenceNotFound" xml:space="preserve">
+    <value>The Layer Definition contains a Composite Rule pointing to a non-existent Symbol Definition: {0}</value>
+  </data>
+  <data name="LDF_SymbolParameterOverrideToNonExistentParameter" xml:space="preserve">
+    <value>The Layer Definition specifies a parameter override for {0} that does not exist ({1})</value>
+  </data>
+  <data name="LDF_IrrelevantUsageContext" xml:space="preserve">
+    <value>Referenced Symbol Definition {0} has an irrelevant usage context for this layer because this layer does not have features of type: {1}</value>
+  </data>
 </root>
