@@ -20,39 +20,17 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Maestro.Base.Templates;
-using Res = Maestro.AddIn.ExtendedObjectModels.Properties.Resources;
-using OSGeo.MapGuide.MaestroAPI;
-using Maestro.Editors.Generic;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI;
 
-namespace Maestro.AddIn.ExtendedObjectModels.Templates
+namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0
 {
-    internal class WebLayout240ItemTemplate : ItemTemplate
+    public class SymbolDefinitionValidator : BaseSymbolDefinitionValidator
     {
-        public WebLayout240ItemTemplate()
+        public override ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            Category = Res.TPL_CATEGORY_MGOS24;
-            Icon = Res.application_browser;
-            Description = Res.TPL_WL_240_DESC;
-            Name = Res.TPL_WL_240_NAME;
-            ResourceType = ResourceTypes.WebLayout.ToString();
-        }
-
-        public override Version MinimumSiteVersion
-        {
-            get
-            {
-                return new Version(2, 4);
-            }
-        }
-
-        public override IResource CreateItem(string startPoint, IServerConnection conn)
-        {
-            return ObjectFactory.CreateWebLayout(conn, new Version(2, 4, 0), string.Empty);
+            get { return new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition, "2.4.0"); }
         }
     }
 }

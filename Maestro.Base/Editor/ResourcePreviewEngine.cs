@@ -176,8 +176,11 @@ namespace Maestro.Base.Editor
 
         private string GenerateWatermarkPreviewUrl(IWatermarkDefinition wmd)
         {
-            //We demand a 2.3.0 Map Definition
-            IMapDefinition2 map = (IMapDefinition2)ObjectFactory.CreateMapDefinition(wmd.CurrentConnection, new Version(2, 3, 0), "Watermark Definition Preview");
+            //We demand a 2.3.0 Map Definition or higher
+            if (wmd.CurrentConnection.SiteVersion < new Version(2, 3))
+                throw new InvalidOperationException("The site version of this current connection is not known to support watermarks");
+
+            IMapDefinition2 map = (IMapDefinition2)ObjectFactory.CreateMapDefinition(wmd.CurrentConnection, wmd.SupportedMapDefinitionVersion, "Watermark Definition Preview");
             map.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]";
             map.Extents = ObjectFactory.CreateEnvelope(-1000000, -1000000, 1000000, 1000000);
             map.AddWatermark(wmd.CreateInstance());

@@ -252,6 +252,42 @@ namespace Maestro.AddIn.ExtendedObjectModels.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a new Map Definition using the v2.4.0 schema.
+        /// </summary>
+        internal static string TPL_MDF_240_DESC {
+            get {
+                return ResourceManager.GetString("TPL_MDF_240_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map Definition (v2.4.0).
+        /// </summary>
+        internal static string TPL_MDF_240_NAME {
+            get {
+                return ResourceManager.GetString("TPL_MDF_240_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new Simple Symbol Definition using the v2.4.0 schema.
+        /// </summary>
+        internal static string TPL_SSD_240_DESC {
+            get {
+                return ResourceManager.GetString("TPL_SSD_240_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simple Symbol Definition (v2.4.0).
+        /// </summary>
+        internal static string TPL_SSD_240_NAME {
+            get {
+                return ResourceManager.GetString("TPL_SSD_240_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new Simple Symbol Definition using the v1.1.0 schema.
         /// </summary>
         internal static string TPL_SSD_DESC {
@@ -342,6 +378,24 @@ namespace Maestro.AddIn.ExtendedObjectModels.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a new Vector Layer Definition using the v2.4.0 schema.
+        /// </summary>
+        internal static string TPL_VLDF_240_DESC {
+            get {
+                return ResourceManager.GetString("TPL_VLDF_240_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vector Layer Definition (v2.4.0).
+        /// </summary>
+        internal static string TPL_VLDF_240_NAME {
+            get {
+                return ResourceManager.GetString("TPL_VLDF_240_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new Watermark Definition using the v2.3.0 schema based on a Compound Symbol Definition.
         /// </summary>
         internal static string TPL_WDFC_230_DESC {
@@ -360,6 +414,24 @@ namespace Maestro.AddIn.ExtendedObjectModels.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a new Watermark Definition using the v2.4.0 schema based on a Compound Symbol Definition.
+        /// </summary>
+        internal static string TPL_WDFC_240_DESC {
+            get {
+                return ResourceManager.GetString("TPL_WDFC_240_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Watermark Definition - Compound (v2.4.0).
+        /// </summary>
+        internal static string TPL_WDFC_240_NAME {
+            get {
+                return ResourceManager.GetString("TPL_WDFC_240_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new Watermark Definition using the v2.3.0 schema based on a Simple Symbol Definition.
         /// </summary>
         internal static string TPL_WDFS_230_DESC {
@@ -374,6 +446,24 @@ namespace Maestro.AddIn.ExtendedObjectModels.Properties {
         internal static string TPL_WDFS_230_NAME {
             get {
                 return ResourceManager.GetString("TPL_WDFS_230_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new Watermark Definition using the v2.4.0 schema based on a Simple Symbol Definition.
+        /// </summary>
+        internal static string TPL_WDFS_240_DESC {
+            get {
+                return ResourceManager.GetString("TPL_WDFS_240_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Watermark Definition - Simple (v2.4.0).
+        /// </summary>
+        internal static string TPL_WDFS_240_NAME {
+            get {
+                return ResourceManager.GetString("TPL_WDFS_240_NAME", resourceCulture);
             }
         }
         

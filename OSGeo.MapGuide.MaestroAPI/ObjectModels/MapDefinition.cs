@@ -33,7 +33,9 @@ using System.IO;
 
 #pragma warning disable 1591, 0114, 0108
 
-#if MDF_230
+#if MDF_240
+namespace OSGeo.MapGuide.ObjectModels.MapDefinition_2_4_0
+#elif MDF_230
 namespace OSGeo.MapGuide.ObjectModels.MapDefinition_2_3_0
 #else
 namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
@@ -83,7 +85,9 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
                 BackgroundColor = Color.White,
                 MapLayer = new System.ComponentModel.BindingList<MapLayerType>(),
                 MapLayerGroup = new System.ComponentModel.BindingList<MapLayerGroupType>(),
-#if MDF_230
+#if MDF_240
+                Watermarks = new BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0.WatermarkType>()
+#elif MDF_230
                 Watermarks = new BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType>()
 #endif
             };
@@ -106,19 +110,23 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
     }
 
     partial class MapDefinition : IMapDefinition
-#if MDF_230
+#if MDF_230 || MDF_240
         , IMapDefinition2
 #endif
     {
         internal MapDefinition() 
         { 
-#if MDF_230
+#if MDF_240
+            this.versionField = "2.4.0";
+#elif MDF_230
             this.versionField = "2.3.0";
 #endif
             this.SetExtentsFromFirstAddedLayer = false;
         }
 
-#if MDF_230
+#if MDF_240
+        private static readonly Version RES_VERSION = new Version(2, 4, 0);
+#elif MDF_230
         private static readonly Version RES_VERSION = new Version(2, 3, 0);
 #else
         private static readonly Version RES_VERSION = new Version(1, 0, 0);
@@ -187,7 +195,9 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
         public string ValidatingSchema 
         { 
-#if MDF_230
+#if MDF_240
+            get { return "MapDefinition-2.4.0.xsd"; }
+#elif MDF_230
             get { return "MapDefinition-2.3.0.xsd"; }
 #else
             get { return "MapDefinition-1.0.0.xsd"; }
@@ -634,7 +644,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
             }
         }
 
-#if MDF_230
+#if MDF_230 || MDF_240
         IEnumerable<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark> IWatermarkCollection.Watermarks
         {
             get 
@@ -646,14 +656,22 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
 
         void IWatermarkCollection.AddWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
         {
+#if MDF_240
+            var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0.WatermarkType;
+#else
             var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType;
+#endif
             if (wm != null)
                 this.Watermarks.Add(wm);
         }
 
         void IWatermarkCollection.RemoveWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
         {
+#if MDF_240
+            var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0.WatermarkType;
+#else
             var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType;
+#endif
             if (wm != null)
                 this.Watermarks.Remove(wm);
         }

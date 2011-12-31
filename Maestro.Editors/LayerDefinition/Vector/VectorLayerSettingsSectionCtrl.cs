@@ -48,27 +48,41 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
         private IVectorLayerDefinition _vl;
 
+        private bool _init = false;
+
         public override void Bind(IEditorService service)
         {
-            _edsvc = service;
-            _edsvc.RegisterCustomNotifier(this);
+            try
+            {
+                _init = true;
+                _edsvc = service;
+                _edsvc.RegisterCustomNotifier(this);
 
-            var res = service.GetEditedResource() as ILayerDefinition;
-            Debug.Assert(res != null);
+                var res = service.GetEditedResource() as ILayerDefinition;
+                Debug.Assert(res != null);
 
-            _vl = res.SubLayer as IVectorLayerDefinition;
-            Debug.Assert(_vl != null);
+                _vl = res.SubLayer as IVectorLayerDefinition;
+                Debug.Assert(_vl != null);
 
-            TextBoxBinder.BindText(txtFeatureSource, _vl, "ResourceId");
+                TextBoxBinder.BindText(txtFeatureSource, _vl, "ResourceId");
 
-            TextBoxBinder.BindText(txtFeatureClass, _vl, "FeatureName");
-            TextBoxBinder.BindText(txtGeometry, _vl, "Geometry");
-            TextBoxBinder.BindText(txtFilter, _vl, "Filter");
-            TextBoxBinder.BindText(txtHyperlink, _vl, "Url");
-            TextBoxBinder.BindText(txtTooltip, _vl, "ToolTip");
+                TextBoxBinder.BindText(txtFeatureClass, _vl, "FeatureName");
+                TextBoxBinder.BindText(txtGeometry, _vl, "Geometry");
+                TextBoxBinder.BindText(txtFilter, _vl, "Filter");
+                
+                //Loose bind this one because 2.4 changes this behaviour making it
+                //unsuitable for databinding via TextBoxBinder
+                txtHyperlink.Text = _vl.Url;
 
-            //This is not the root object so no change listeners have been subscribed
-            _vl.PropertyChanged += OnVectorLayerPropertyChanged;
+                TextBoxBinder.BindText(txtTooltip, _vl, "ToolTip");
+
+                //This is not the root object so no change listeners have been subscribed
+                _vl.PropertyChanged += OnVectorLayerPropertyChanged;
+            }
+            finally
+            {
+                _init = false;
+            }
         }
 
         protected override void OnLoad(EventArgs e)
@@ -300,6 +314,14 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     txtGeometry.Text = item.Name;
                 }
             }
+        }
+
+        private void txtHyperlink_TextChanged(object sender, EventArgs e)
+        {
+            if (_init)
+                return;
+
+            _vl.Url = txtHyperlink.Text;
         }
     }
 }

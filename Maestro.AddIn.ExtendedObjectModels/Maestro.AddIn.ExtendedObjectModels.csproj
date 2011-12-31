@@ -73,6 +73,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Templates\WatermarkDefinition240ItemTemplate.cs" />
+    <Compile Include="Templates\VectorLayer240ItemTemplate.cs" />
+    <Compile Include="Templates\MapDefinition240ItemTemplate.cs" />
     <Compile Include="Templates\WatermarkDefinition230ItemTemplate.cs" />
     <Compile Include="Templates\MapDefinition230ItemTemplate.cs" />
     <Compile Include="Templates\VectorLayer230ItemTemplate.cs" />

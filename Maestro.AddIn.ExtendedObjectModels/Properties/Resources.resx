@@ -241,4 +241,34 @@
   <data name="TPL_WL_240_NAME" xml:space="preserve">
     <value>Web Layout (v2.4.0)</value>
   </data>
+  <data name="TPL_MDF_240_DESC" xml:space="preserve">
+    <value>Create a new Map Definition using the v2.4.0 schema</value>
+  </data>
+  <data name="TPL_MDF_240_NAME" xml:space="preserve">
+    <value>Map Definition (v2.4.0)</value>
+  </data>
+  <data name="TPL_SSD_240_DESC" xml:space="preserve">
+    <value>Create a new Simple Symbol Definition using the v2.4.0 schema</value>
+  </data>
+  <data name="TPL_SSD_240_NAME" xml:space="preserve">
+    <value>Simple Symbol Definition (v2.4.0)</value>
+  </data>
+  <data name="TPL_VLDF_240_DESC" xml:space="preserve">
+    <value>Create a new Vector Layer Definition using the v2.4.0 schema</value>
+  </data>
+  <data name="TPL_VLDF_240_NAME" xml:space="preserve">
+    <value>Vector Layer Definition (v2.4.0)</value>
+  </data>
+  <data name="TPL_WDFC_240_DESC" xml:space="preserve">
+    <value>Create a new Watermark Definition using the v2.4.0 schema based on a Compound Symbol Definition</value>
+  </data>
+  <data name="TPL_WDFC_240_NAME" xml:space="preserve">
+    <value>Watermark Definition - Compound (v2.4.0)</value>
+  </data>
+  <data name="TPL_WDFS_240_DESC" xml:space="preserve">
+    <value>Create a new Watermark Definition using the v2.4.0 schema based on a Simple Symbol Definition</value>
+  </data>
+  <data name="TPL_WDFS_240_NAME" xml:space="preserve">
+    <value>Watermark Definition - Simple (v2.4.0)</value>
+  </data>
 </root>

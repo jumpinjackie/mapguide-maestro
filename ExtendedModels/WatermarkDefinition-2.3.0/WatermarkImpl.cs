@@ -27,9 +27,15 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System.IO;
 
+#if WDF_240
+namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0
+{
+    using Sdf240 = SymbolDefinition_2_4_0;
+#else
 namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0
 {
     using Sdf110 = SymbolDefinition_1_1_0;
+#endif
 
     public static class WdfEntryPoint
     {
@@ -40,13 +46,22 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0
                 Appearance = new WatermarkAppearanceType(),
                 Content = new WatermarkDefinitionTypeContent()
                 {
+#if WDF_240
+                    Item = (type == SymbolDefinitionType.Simple) ? (Sdf240.SymbolDefinitionBase)Sdf240.SymbolDefEntryPoint.CreateDefaultSimple() : (Sdf240.SymbolDefinitionBase)Sdf240.SymbolDefEntryPoint.CreateDefaultCompound()
+#else
                     Item = (type == SymbolDefinitionType.Simple) ? (Sdf110.SymbolDefinitionBase)Sdf110.SymbolDefEntryPoint.CreateDefaultSimple() : (Sdf110.SymbolDefinitionBase)Sdf110.SymbolDefEntryPoint.CreateDefaultCompound()
+#endif
                 },
                 Position = new WatermarkDefinitionTypePosition()
                 {
                     Item = new XYPositionType()
                 }
             };
+            if (wdf.Content.Item.Type == SymbolDefinitionType.Simple)
+            {
+                var sym = (ISimpleSymbolDefinition)wdf.Content.Item;
+                sym.PointUsage = sym.CreatePointUsage();
+            }
             wdf.Content.Item.Name = wdf.Content.Item.Description = "";
             wdf.Content.Item.RemoveSchemaAttributes();
             return wdf;
@@ -69,7 +84,11 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0
 
     partial class WatermarkDefinition : IWatermarkDefinition
     {
+#if WDF_240
+        private static readonly Version RES_VERSION = new Version(2, 4, 0);
+#else
         private static readonly Version RES_VERSION = new Version(2, 3, 0);
+#endif
 
         [XmlIgnore]
         public ResourceTypes ResourceType
@@ -92,7 +111,11 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
         public string ValidatingSchema
         {
+#if WDF_240
+            get { return "WatermarkDefinition-2.4.0.xsd"; }
+#else
             get { return "WatermarkDefinition-2.3.0.xsd"; }
+#endif
             set { }
         }
 
@@ -214,6 +237,30 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0
                 HorizontalPosition = new HorizontalPositionType(),
                 VerticalPosition = new VerticalPositionType()
             };
+        }
+
+        public Version SupportedMapDefinitionVersion
+        {
+            get 
+            { 
+#if WDF_240
+                return new Version(2, 4, 0);
+#else
+                return new Version(2, 3, 0);
+#endif
+            }
+        }
+
+        public Version SupportedLayerDefinitionVersion
+        {
+            get
+            {
+#if WDF_240
+                return new Version(2, 4, 0);
+#else
+                return new Version(2, 3, 0);
+#endif
+            }
         }
     }
 

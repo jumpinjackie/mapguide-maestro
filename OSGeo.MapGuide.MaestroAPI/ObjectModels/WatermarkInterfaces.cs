@@ -137,6 +137,16 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
         /// </summary>
         /// <returns></returns>
         ITilePosition CreateTilePosition();
+
+        /// <summary>
+        /// Gets the version of the Map Definition that can take this watermark
+        /// </summary>
+        Version SupportedMapDefinitionVersion { get; }
+
+        /// <summary>
+        /// Gets the version of the Layer Definition that can take this watermark
+        /// </summary>
+        Version SupportedLayerDefinitionVersion { get; }
     }
 
     /// <summary>

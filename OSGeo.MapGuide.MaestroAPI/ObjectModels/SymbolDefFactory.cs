@@ -27,7 +27,9 @@ using System.IO;
 using System.Xml;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 
-#if SYM_DEF_110
+#if SYM_DEF_240
+namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0
+#elif SYM_DEF_110
 namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0
 #else
 namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0

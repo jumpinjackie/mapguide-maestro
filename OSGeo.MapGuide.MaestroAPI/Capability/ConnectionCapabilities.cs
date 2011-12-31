@@ -107,6 +107,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// <returns></returns>
         protected virtual Version GetMaxWatermarkDefinitionVersion()
         {
+            if (_parent.SiteVersion >= new Version(2, 4))
+                return new Version(2, 4, 0);
             return new Version(2, 3, 0);
         }
 
@@ -131,6 +133,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// <returns></returns>
         protected virtual Version GetMaxSymbolDefinitionVersion()
         {
+            if (_parent.SiteVersion >= new Version(2, 4))
+                return new Version(2, 4, 0);
             if (_parent.SiteVersion >= new Version(2, 0))
                 return new Version(1, 1, 0);
 
@@ -143,6 +147,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// <returns></returns>
         protected virtual Version GetMaxWebLayoutVersion()
         {
+            if (_parent.SiteVersion >= new Version(2, 4))
+                return new Version(2, 4, 0);
             if (_parent.SiteVersion >= new Version(2, 2))
                 return new Version(1, 1, 0);
             return new Version(1, 0, 0);
@@ -154,6 +160,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// <returns></returns>
         protected virtual Version GetMaxMapDefinitionVersion()
         {
+            if (_parent.SiteVersion >= new Version(2, 4))
+                return new Version(2, 4, 0);
             if (_parent.SiteVersion >= new Version(2, 3))
                 return new Version(2, 3, 0);
 
@@ -166,6 +174,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// <returns></returns>
         protected virtual Version GetMaxLayerDefinitionVersion()
         {
+            if (_parent.SiteVersion >= new Version(2, 4))
+                return new Version(2, 4, 0);
             if (_parent.SiteVersion >= new Version(2, 3))
                 return new Version(2, 3, 0);
             if (_parent.SiteVersion >= new Version(2, 1))

@@ -121,5 +121,22 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
         {
             this.Close();
         }
+
+        private void lnkSelectFont_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FontDialog fd = new FontDialog();
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                var font = fd.Font;
+                _text.FontName = "'" + font.Name + "'";
+                if (font.Bold)
+                    _text.Bold = font.Bold.ToString();
+                if (font.Italic)
+                    _text.Italic = font.Italic.ToString();
+                if (font.Underline)
+                    _text.Underlined = font.Underline.ToString();
+                _text.Height = font.Size.ToString();
+            }
+        }
     }
 }

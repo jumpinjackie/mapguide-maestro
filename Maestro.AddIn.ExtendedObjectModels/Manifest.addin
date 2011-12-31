@@ -23,8 +23,11 @@
         <Class id="WebLayoutEditor110" class="Maestro.AddIn.ExtendedObjectModels.Editor.WebLayout110EditorFactory" />
         <Class id="WebLayoutEditor240" class="Maestro.AddIn.ExtendedObjectModels.Editor.WebLayout240EditorFactory" />
         <Class id="LayerDefinitionEditor230" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition230EditorFactory" />
+        <Class id="LayerDefinitionEditor240" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition240EditorFactory" />
         <Class id="MapDefinition230" class="Maestro.AddIn.ExtendedObjectModels.Editor.MapDefinition230EditorFactory" />
+        <Class id="MapDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Editor.MapDefinition240EditorFactory" />
         <Class id="WatermarkDefinition230" class="Maestro.AddIn.ExtendedObjectModels.Editor.WatermarkDefinition230EditorFactory" />
+        <Class id="WatermarkDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Editor.WatermarkDefinition240EditorFactory" />
     </Path>
 
     <!-- Registered System Templates -->
@@ -33,8 +36,11 @@
         <Class id="VectorLayerDefinition120" class="Maestro.AddIn.ExtendedObjectModels.Templates.VectorLayer120ItemTemplate" />
         <Class id="VectorLayerDefinition130" class="Maestro.AddIn.ExtendedObjectModels.Templates.VectorLayer130ItemTemplate" />
         <Class id="VectorLayerDefinition230" class="Maestro.AddIn.ExtendedObjectModels.Templates.VectorLayer230ItemTemplate" />
+        <Class id="VectorLayerDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Templates.VectorLayer240ItemTemplate" />
         <Class id="MapDefinition230" class="Maestro.AddIn.ExtendedObjectModels.Templates.MapDefinition230ItemTemplate" />
+        <Class id="MapDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Templates.MapDefinition240ItemTemplate" />
         <Class id="WatermarkDefinitionSimple230" class="Maestro.AddIn.ExtendedObjectModels.Templates.WatermarkDefinitionSimple230ItemTemplate" />
+        <Class id="WatermarkDefinitionSimple240" class="Maestro.AddIn.ExtendedObjectModels.Templates.WatermarkDefinitionSimple240ItemTemplate" />
         <!--
         <Class id="WatermarkDefinitionCompound230" class="Maestro.AddIn.ExtendedObjectModels.Templates.WatermarkDefinitionCompound230ItemTemplate" />
         -->

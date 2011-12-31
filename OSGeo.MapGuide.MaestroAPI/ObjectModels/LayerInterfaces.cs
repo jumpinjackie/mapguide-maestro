@@ -350,6 +350,12 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// </summary>
         /// <returns></returns>
         ICompositeTypeStyle CreateDefaultCompositeStyle();
+
+        /// <summary>
+        /// Creates tehe default URL data
+        /// </summary>
+        /// <returns></returns>
+        IUrlData CreateUrlData();
     }
 
     /// <summary>
@@ -407,6 +413,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// Gets or sets an FDO expression which represents the URL that is opened when
         /// a feature is selected
         /// </summary>
+        /// <remarks>
+        /// If this is a <see cref="T:OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition2"/>
+        /// instance, this property is a pass through to the <see cref="P:OSGeo.MapGuide.ObjectModels.LayerDefinition.IUrlData.Content"/>
+        /// property value. In other words it is equivalent to getting or setting the value of UrlData.Content
+        /// </remarks>
         string Url { get; set; }
 
         /// <summary>
@@ -514,6 +525,55 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// If the Layer Definition does not support composite symbolization, null is returned
         /// </summary>
         Version SymbolDefinitionVersion { get; }
+    }
+
+    /// <summary>
+    /// Based on Layer Definition schema 2.4.0
+    /// </summary>
+    public interface IVectorLayerDefinition2 : IVectorLayerDefinition
+    {
+        /// <summary>
+        /// Gets or sets the URL data.
+        /// </summary>
+        /// <value>
+        /// The URL data.
+        /// </value>
+        IUrlData UrlData { get; set; }
+    }
+
+    /// <summary>
+    /// URL information for features
+    /// </summary>
+    public interface IUrlData
+    {
+        /// <summary>
+        /// Gets or sets the real address of the URL. This can be a string FDO expression
+        /// </summary>
+        /// <value>
+        /// The content.
+        /// </value>
+        string Content { get; set; }
+        /// <summary>
+        /// Gets or sets the description of the URL. This can be a string FDO expression
+        /// </summary>
+        /// <value>
+        /// The description.
+        /// </value>
+        string Description { get; set; }
+        /// <summary>
+        /// Gets or sets the override of URL content for a specific feature which can be a string FDO expression
+        /// </summary>
+        /// <value>
+        /// The content override.
+        /// </value>
+        string ContentOverride { get; set; }
+        /// <summary>
+        /// Gets or sets the override of URL description for a specific feature which can be a string FDO expression
+        /// </summary>
+        /// <value>
+        /// The description override.
+        /// </value>
+        string DescriptionOverride { get; set; }
     }
 
     /// <summary>

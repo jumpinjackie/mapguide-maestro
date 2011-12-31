@@ -39,6 +39,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_2_0
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_3_0
 #elif LDF_230
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0
+#elif LDF_240
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_4_0
 #else
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #endif
@@ -48,14 +50,14 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
     using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 
     abstract partial class BaseLayerDefinitionType : ISubLayerDefinition
-#if LDF_230
+#if LDF_230 || LDF_240
         , ISubLayerDefinition2
 #endif
     {
         [XmlIgnore]
         public abstract LayerType LayerType { get; }
 
-#if LDF_230
+#if LDF_230 || LDF_240
         [XmlIgnore]
         IEnumerable<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark> IWatermarkCollection.Watermarks
         {
@@ -68,14 +70,22 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
         void IWatermarkCollection.AddWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
         {
+#if LDF_240
+            var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0.WatermarkType;
+#else
             var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType;
+#endif
             if (wm != null)
                 this.Watermarks.Add(wm);
         }
 
         void IWatermarkCollection.RemoveWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
         {
+#if LDF_240
+            var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0.WatermarkType;
+#else
             var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType;
+#endif
             if (wm != null)
                 this.Watermarks.Remove(wm);
         }
@@ -324,7 +334,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 }
             }
         }
-#elif LDF_130 || LDF_230
+#elif LDF_130 || LDF_230 || LDF_240
         [XmlIgnore]
         public IEnumerable<ICompositeTypeStyle> CompositeStyle
         {
@@ -440,7 +450,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
     }
 
     partial class AreaTypeStyleType : IAreaVectorStyle
-#if LDF_130 || LDF_230
+#if LDF_130 || LDF_230 || LDF_240
         , IAreaVectorStyle2
 #endif
     {
@@ -595,7 +605,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
     }
 
     partial class PointTypeStyleType : IPointVectorStyle
-#if LDF_130 || LDF_230
+#if LDF_130 || LDF_230 || LDF_240
         , IPointVectorStyle2
 #endif
     {
@@ -721,7 +731,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
     }
 
     partial class LineTypeStyleType : ILineVectorStyle
-#if LDF_130 || LDF_230
+#if LDF_130 || LDF_230 || LDF_240
         , ILineVectorStyle2
 #endif
     {
@@ -1551,6 +1561,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         private static readonly Version RES_VERSION = new Version(1, 3, 0);
         #elif LDF_230
         private static readonly Version RES_VERSION = new Version(2, 3, 0);
+        #elif LDF_240
+        private static readonly Version RES_VERSION = new Version(2, 4, 0);
         #else
         private static readonly Version RES_VERSION = new Version(1, 0, 0);
         #endif
@@ -1619,6 +1631,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             get { return "LayerDefinition-1.3.0.xsd"; }
 #elif LDF_230
             get { return "LayerDefinition-2.3.0.xsd"; }
+#elif LDF_240
+            get { return "LayerDefinition-2.4.0.xsd"; }
 #else
             get { return "LayerDefinition-1.0.0.xsd"; }
 #endif
@@ -1660,6 +1674,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
     }
 
     partial class VectorLayerDefinitionType : IVectorLayerDefinition
+#if LDF_240
+        , IVectorLayerDefinition2
+#endif
     {
         [XmlIgnore]
         public override LayerType LayerType
@@ -1691,8 +1708,24 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         [XmlIgnore]
         string IVectorLayerDefinition.Url
         {
+#if LDF_240
+            get
+            {
+                if (this.urlDataField == null)
+                    return string.Empty;
+                else
+                    return this.urlDataField.Content;
+            }
+            set
+            {
+                if (this.urlDataField == null)
+                    this.urlDataField = new URLDataType();
+                this.urlDataField.Content = value;
+            }
+#else
             get { return this.Url; }
             set { this.Url = value; }
+#endif
         }
 
         [XmlIgnore]
@@ -1856,11 +1889,28 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 return new Version(1, 0, 0);
 #elif LDF_120 || LDF_230
                 return new Version(1, 1, 0);
+#elif LDF_240
+                return new Version(2, 4, 0);
 #else
                 return null;
 #endif          
             }
         }
+
+#if LDF_240
+        [XmlIgnore]
+        IUrlData IVectorLayerDefinition2.UrlData
+        {
+            get
+            {
+                return this.UrlData;
+            }
+            set
+            {
+                this.UrlData = (URLDataType)value;
+            }
+        }
+#endif
     }
     #region Composite Symbolization
 #if !LDF_100
@@ -1928,8 +1978,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             {
 #if LDF_110
                 Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition)symDef,
-#else
+#elif LDF_120 || LDF_130 || LDF_230
                 Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.SimpleSymbolDefinition)symDef,
+#else
+                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0.SimpleSymbolDefinition)symDef,
 #endif
                 ParameterOverrides = new ParameterOverrides()
                 {
@@ -1944,8 +1996,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             {
 #if LDF_110
                 Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition)compDef,
-#else
+#elif LDF_120 || LDF_130 || LDF_230
                 Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.CompoundSymbolDefinition)compDef,
+#else
+                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0.CompoundSymbolDefinition)compDef,
 #endif
                 ParameterOverrides = new ParameterOverrides()
                 {
@@ -1972,9 +2026,12 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #if LDF_110
                 var simpSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition;
                 var compSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition;
-#else
+#elif LDF_120 || LDF_130 || LDF_230
                 var simpSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.SimpleSymbolDefinition;
                 var compSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.CompoundSymbolDefinition;
+#else
+                var simpSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0.SimpleSymbolDefinition;
+                var compSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0.CompoundSymbolDefinition;
 #endif
                 if (libId != null)
                     return new SymbolInstanceLibrary() { ResourceId = libId };
@@ -1999,11 +2056,16 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                         this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition)ir.SymbolDefinition;
                     else if (ir.SymbolDefinition.Type == SymbolDefinitionType.Compound)
                         this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition)ir.SymbolDefinition;
-#else
+#elif LDF_120 || LDF_130 || LDF_230
                     if (ir.SymbolDefinition.Type == SymbolDefinitionType.Simple)
                         this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.SimpleSymbolDefinition)ir.SymbolDefinition;
                     else if (ir.SymbolDefinition.Type == SymbolDefinitionType.Compound)
                         this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.CompoundSymbolDefinition)ir.SymbolDefinition;
+#else
+                    if (ir.SymbolDefinition.Type == SymbolDefinitionType.Simple)
+                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0.SimpleSymbolDefinition)ir.SymbolDefinition;
+                    else if (ir.SymbolDefinition.Type == SymbolDefinitionType.Compound)
+                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0.CompoundSymbolDefinition)ir.SymbolDefinition;
 #endif
                 }
                 this.Item = null;
@@ -2104,7 +2166,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
     }
 
     partial class CompositeTypeStyle : ICompositeTypeStyle
-#if LDF_130 || LDF_230
+#if LDF_130 || LDF_230 || LDF_240
         , ICompositeTypeStyle2
 #endif
     {
@@ -2181,4 +2243,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
     }
 #endif
     #endregion
+
+#if LDF_240
+    partial class URLDataType : IUrlData
+    {
+
+    }
+#endif
 }

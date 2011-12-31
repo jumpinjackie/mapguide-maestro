@@ -32,7 +32,9 @@ using OSGeo.MapGuide.ObjectModels.Common;
 
 #pragma warning disable 1591, 0114, 0108
 
-#if SYM_DEF_110
+#if SYM_DEF_240
+namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0
+#elif SYM_DEF_110
 namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0
 #else
 namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
@@ -42,7 +44,9 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
     {
         public abstract void RemoveSchemaAttributes();
 
-#if SYM_DEF_110
+#if SYM_DEF_240
+        private static readonly Version RES_VERSION = new Version(2, 4, 0);
+#elif SYM_DEF_110
         private static readonly Version RES_VERSION = new Version(1, 1, 0);
 #else
         private static readonly Version RES_VERSION = new Version(1, 0, 0);
@@ -101,7 +105,9 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             return this.Clone();
         }
 
-#if SYM_DEF_110
+#if SYM_DEF_240
+        protected string _vschema = "SymbolDefinition-2.4.0.xsd";
+#elif SYM_DEF_110
         protected string _vschema = "SymbolDefinition-1.1.0.xsd";
 #else
         protected string _vschema = "SymbolDefinition-1.0.0.xsd";
@@ -371,7 +377,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         }
     }
 
-#if SYM_DEF_110
+#if SYM_DEF_240 || SYM_DEF_110
     partial class Text : ITextGraphic2
 #else
     partial class Text : ITextGraphic
@@ -494,7 +500,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
             set
             {
-#if SYM_DEF_110
+#if SYM_DEF_110 || SYM_DEF_240
                 dataTypeField = (DataType2)Enum.Parse(typeof(DataType2), value);
 #else
                 dataTypeField = (DataType)Enum.Parse(typeof(DataType), value);
@@ -512,7 +518,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             get { return this.Description; }
         }
 
-#if SYM_DEF_110
+#if SYM_DEF_110 || SYM_DEF_240
         static ExpressionDataType GetExpressionType(DataType2 dt)
         {
             switch (dt)
@@ -670,6 +676,9 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
     }
 
     partial class Path : IPathGraphic
+#if SYM_DEF_240
+        , IPathGraphic2
+#endif
     {
         [XmlIgnore]
         public override GraphicElementType Type

@@ -29,6 +29,7 @@ using Ldf110 = OSGeo.MapGuide.ObjectModels.LayerDefinition_1_1_0;
 using Ldf120 = OSGeo.MapGuide.ObjectModels.LayerDefinition_1_2_0;
 using Ldf130 = OSGeo.MapGuide.ObjectModels.LayerDefinition_1_3_0;
 using Ldf230 = OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0;
+using Ldf240 = OSGeo.MapGuide.ObjectModels.LayerDefinition_2_4_0;
 
 using Lp110 = OSGeo.MapGuide.ObjectModels.LoadProcedure_1_1_0;
 using Lp220 = OSGeo.MapGuide.ObjectModels.LoadProcedure_2_2_0;
@@ -36,10 +37,13 @@ using WL110 = OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0;
 using WL240 = OSGeo.MapGuide.ObjectModels.WebLayout_2_4_0;
 
 using Sym110 = OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0;
+using Sym240 = OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0;
 
 using Mdf230 = OSGeo.MapGuide.ObjectModels.MapDefinition_2_3_0;
+using Mdf240 = OSGeo.MapGuide.ObjectModels.MapDefinition_2_4_0;
 
 using Wdf230 = OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0;
+using Wdf240 = OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0;
 
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
@@ -102,6 +106,14 @@ namespace OSGeo.MapGuide.ExtendedObjectModels
                 new ResourceDeserializationCallback(Ldf230.LdfEntryPoint.Deserialize));
             ObjectFactory.RegisterLayerFactoryMethod(new Version(2, 3, 0), new LayerCreatorFunc(Ldf230.LdfEntryPoint.CreateDefault));
 
+            //Layer Definition 2.4.0
+            ResourceValidatorSet.RegisterValidator(new Ldf240.LayerDefinitionValidator());
+            ResourceTypeRegistry.RegisterResource(
+                new ResourceTypeDescriptor(ResourceTypes.LayerDefinition, "2.4.0"),
+                new ResourceSerializationCallback(Ldf240.LdfEntryPoint.Serialize),
+                new ResourceDeserializationCallback(Ldf240.LdfEntryPoint.Deserialize));
+            ObjectFactory.RegisterLayerFactoryMethod(new Version(2, 4, 0), new LayerCreatorFunc(Ldf240.LdfEntryPoint.CreateDefault));
+
             //Load Procedure 1.1.0
             ResourceValidatorSet.RegisterValidator(new Lp110.LoadProcedureValidator());
             ResourceTypeRegistry.RegisterResource(
@@ -128,7 +140,7 @@ namespace OSGeo.MapGuide.ExtendedObjectModels
                 new ResourceDeserializationCallback(WL110.WebLayoutEntryPoint.Deserialize));
             ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(1, 1, 0), new WebLayoutCreatorFunc(WL110.WebLayoutEntryPoint.CreateDefault));
 
-            //Web Layout 2.4.0 - Note we are mostly re-using the 1.1.0 impl because the changes are so insignificant
+            //Web Layout 2.4.0
             ResourceValidatorSet.RegisterValidator(new WL240.WebLayoutValidator());
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.WebLayout, "2.4.0"),
@@ -145,6 +157,15 @@ namespace OSGeo.MapGuide.ExtendedObjectModels
             ObjectFactory.RegisterCompoundSymbolFactoryMethod(new Version(1, 1, 0), new CompoundSymbolDefCreatorFunc(Sym110.SymbolDefEntryPoint.CreateDefaultCompound));
             ObjectFactory.RegisterSimpleSymbolFactoryMethod(new Version(1, 1, 0), new SimpleSymbolDefCreatorFunc(Sym110.SymbolDefEntryPoint.CreateDefaultSimple));
 
+            //Symbol Definition 2.4.0
+            ResourceValidatorSet.RegisterValidator(new Sym240.SymbolDefinitionValidator());
+            ResourceTypeRegistry.RegisterResource(
+                new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition, "2.4.0"),
+                new ResourceSerializationCallback(Sym240.SymbolDefEntryPoint.Serialize),
+                new ResourceDeserializationCallback(Sym240.SymbolDefEntryPoint.Deserialize));
+            ObjectFactory.RegisterCompoundSymbolFactoryMethod(new Version(2, 4, 0), new CompoundSymbolDefCreatorFunc(Sym240.SymbolDefEntryPoint.CreateDefaultCompound));
+            ObjectFactory.RegisterSimpleSymbolFactoryMethod(new Version(2, 4, 0), new SimpleSymbolDefCreatorFunc(Sym240.SymbolDefEntryPoint.CreateDefaultSimple));
+
             //Map Definition 2.3.0
             ResourceValidatorSet.RegisterValidator(new Mdf230.MapDefinitionValidator());
             ResourceTypeRegistry.RegisterResource(
@@ -153,12 +174,27 @@ namespace OSGeo.MapGuide.ExtendedObjectModels
                 new ResourceDeserializationCallback(Mdf230.MdfEntryPoint.Deserialize));
             ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(2, 3, 0), new MapDefinitionCreatorFunc(Mdf230.MdfEntryPoint.CreateDefault));
 
+            //Map Definition 2.4.0
+            ResourceValidatorSet.RegisterValidator(new Mdf240.MapDefinitionValidator());
+            ResourceTypeRegistry.RegisterResource(
+                new ResourceTypeDescriptor(ResourceTypes.MapDefinition, "2.4.0"),
+                new ResourceSerializationCallback(Mdf240.MdfEntryPoint.Serialize),
+                new ResourceDeserializationCallback(Mdf240.MdfEntryPoint.Deserialize));
+            ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(2, 4, 0), new MapDefinitionCreatorFunc(Mdf240.MdfEntryPoint.CreateDefault));
+
             //Watermark Definition 2.3.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.WatermarkDefinition, "2.3.0"),
                 new ResourceSerializationCallback(Wdf230.WdfEntryPoint.Serialize),
                 new ResourceDeserializationCallback(Wdf230.WdfEntryPoint.Deserialize));
             ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(new Version(2, 3, 0), new WatermarkCreatorFunc(Wdf230.WdfEntryPoint.CreateDefault));
+
+            //Watermark Definition 2.4.0
+            ResourceTypeRegistry.RegisterResource(
+                new ResourceTypeDescriptor(ResourceTypes.WatermarkDefinition, "2.4.0"),
+                new ResourceSerializationCallback(Wdf240.WdfEntryPoint.Serialize),
+                new ResourceDeserializationCallback(Wdf240.WdfEntryPoint.Deserialize));
+            ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(new Version(2, 4, 0), new WatermarkCreatorFunc(Wdf240.WdfEntryPoint.CreateDefault));
         }
     }
 }

@@ -943,6 +943,23 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     }
 
     /// <summary>
+    /// Path with support for scaling. Only applicable for Symbol Definition schema
+    /// 2.4.0 and higher
+    /// </summary>
+    public interface IPathGraphic2 : IPathGraphic
+    {
+        /// <summary>
+        /// >The amount to scale the path geometry in the horizontal direction. This is only applied to the Geometry element. Defaults to 1 if not specified.
+        /// </summary>
+        string ScaleX { get; set; }
+
+        /// <summary>
+        /// The amount to scale the path geometry in the vertical direction. This is only applied to the Geometry element. Defaults to 1 if not specified
+        /// </summary>
+        string ScaleY { get; set; }
+    }
+
+    /// <summary>
     /// An image reference
     /// </summary>
     public interface IImageReference : IImageBase

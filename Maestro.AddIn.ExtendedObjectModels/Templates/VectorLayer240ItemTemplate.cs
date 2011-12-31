@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2011, Jackie Ng
+// Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -26,20 +26,18 @@ using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using Maestro.Shared.UI;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 
 namespace Maestro.AddIn.ExtendedObjectModels.Templates
 {
-    internal class WebLayout240ItemTemplate : ItemTemplate
+    internal class VectorLayer240ItemTemplate : ItemTemplate
     {
-        public WebLayout240ItemTemplate()
+        public VectorLayer240ItemTemplate()
         {
             Category = Res.TPL_CATEGORY_MGOS24;
-            Icon = Res.application_browser;
-            Description = Res.TPL_WL_240_DESC;
-            Name = Res.TPL_WL_240_NAME;
-            ResourceType = ResourceTypes.WebLayout.ToString();
+            Icon = Res.layer;
+            Description = Res.TPL_VLDF_240_DESC;
+            Name = Res.TPL_VLDF_240_NAME;
+            ResourceType = ResourceTypes.LayerDefinition.ToString();
         }
 
         public override Version MinimumSiteVersion
@@ -50,9 +48,27 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
             }
         }
 
-        public override IResource CreateItem(string startPoint, IServerConnection conn)
+        public override OSGeo.MapGuide.MaestroAPI.Resource.IResource CreateItem(string startPoint, OSGeo.MapGuide.MaestroAPI.IServerConnection conn)
         {
-            return ObjectFactory.CreateWebLayout(conn, new Version(2, 4, 0), string.Empty);
+            using (var picker = new ResourcePicker(conn.ResourceService, ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource))
+            {
+                picker.SetStartingPoint(startPoint);
+                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    var lyr = ObjectFactory.CreateDefaultLayer(conn, OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Vector, new Version(2, 4, 0));
+                    var vl = (IVectorLayerDefinition)lyr.SubLayer;
+                    vl.ResourceId = picker.ResourceID;
+                    //Stub these for now, validation will ensure this never makes it
+                    //into the session repository until all validation errors pass
+                    vl.FeatureName = string.Empty;
+                    vl.Geometry = string.Empty;
+                    return lyr;
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
     }
 }

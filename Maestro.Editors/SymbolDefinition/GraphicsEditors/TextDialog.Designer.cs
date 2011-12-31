@@ -35,7 +35,7 @@
             this.symFontItalic = new Maestro.Editors.SymbolDefinition.SymbolField();
             this.symFontBold = new Maestro.Editors.SymbolDefinition.SymbolField();
             this.symFontFamily = new Maestro.Editors.SymbolDefinition.SymbolField();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.lnkSelectFont = new System.Windows.Forms.LinkLabel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -92,7 +92,7 @@
             this.groupBox1.Controls.Add(this.symFontItalic);
             this.groupBox1.Controls.Add(this.symFontBold);
             this.groupBox1.Controls.Add(this.symFontFamily);
-            this.groupBox1.Controls.Add(this.linkLabel1);
+            this.groupBox1.Controls.Add(this.lnkSelectFont);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -133,11 +133,12 @@
             this.symFontFamily.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symFontFamily.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
             // 
-            // linkLabel1
+            // lnkSelectFont
             // 
-            resources.ApplyResources(this.linkLabel1, "linkLabel1");
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.TabStop = true;
+            resources.ApplyResources(this.lnkSelectFont, "lnkSelectFont");
+            this.lnkSelectFont.Name = "lnkSelectFont";
+            this.lnkSelectFont.TabStop = true;
+            this.lnkSelectFont.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSelectFont_LinkClicked);
             // 
             // label5
             // 
@@ -474,7 +475,7 @@
 
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel lnkSelectFont;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

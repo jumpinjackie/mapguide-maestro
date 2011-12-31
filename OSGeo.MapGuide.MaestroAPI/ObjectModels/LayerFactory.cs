@@ -37,6 +37,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_2_0
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_3_0
 #elif LDF_230
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0
+#elif LDF_240
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_4_0
 #else
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #endif
@@ -122,7 +124,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             var vl = new VectorLayerDefinitionType()
             {
-#if LDF_230
+#if LDF_240
+                Watermarks = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0.WatermarkType>()
+#elif LDF_230
                 Watermarks = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType>()
 #endif
             };
@@ -421,6 +425,15 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             };
             cts.AddCompositeRule(CreateDefaultCompositeRule());
             return cts;
+#endif
+        }
+
+        public IUrlData CreateUrlData()
+        {
+#if LDF_240
+            return new URLDataType();
+#else
+            throw new NotImplementedException();
 #endif
         }
     }

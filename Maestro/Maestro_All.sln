@@ -97,6 +97,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0", "..\ExtendedModels\WebLayout-2.4.0\OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0.csproj", "{BEC17FD3-2ADB-4154-934D-494313C588EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.LayerDefinition-2.4.0", "..\ExtendedModels\LayerDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.LayerDefinition-2.4.0.csproj", "{16E6B250-C805-4C31-9A7D-F56A0051EC93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.MapDefinition-2.4.0", "..\ExtendedModels\MapDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.MapDefinition-2.4.0.csproj", "{C0CA5D05-72C0-4F22-8618-B31BF0FFA190}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.SymbolDefinition-2.4.0", "..\ExtendedModels\SymbolDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.SymbolDefinition-2.4.0.csproj", "{222CB020-5336-47D7-9BB9-A22D18953C80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0", "..\ExtendedModels\WatermarkDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0.csproj", "{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -239,6 +247,22 @@ Global
 		{BEC17FD3-2ADB-4154-934D-494313C588EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEC17FD3-2ADB-4154-934D-494313C588EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEC17FD3-2ADB-4154-934D-494313C588EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16E6B250-C805-4C31-9A7D-F56A0051EC93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16E6B250-C805-4C31-9A7D-F56A0051EC93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16E6B250-C805-4C31-9A7D-F56A0051EC93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16E6B250-C805-4C31-9A7D-F56A0051EC93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0CA5D05-72C0-4F22-8618-B31BF0FFA190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0CA5D05-72C0-4F22-8618-B31BF0FFA190}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0CA5D05-72C0-4F22-8618-B31BF0FFA190}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0CA5D05-72C0-4F22-8618-B31BF0FFA190}.Release|Any CPU.Build.0 = Release|Any CPU
+		{222CB020-5336-47D7-9BB9-A22D18953C80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{222CB020-5336-47D7-9BB9-A22D18953C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{222CB020-5336-47D7-9BB9-A22D18953C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{222CB020-5336-47D7-9BB9-A22D18953C80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

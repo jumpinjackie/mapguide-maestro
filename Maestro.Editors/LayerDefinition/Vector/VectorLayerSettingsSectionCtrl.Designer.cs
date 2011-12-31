@@ -175,6 +175,7 @@
             // 
             resources.ApplyResources(this.txtHyperlink, "txtHyperlink");
             this.txtHyperlink.Name = "txtHyperlink";
+            this.txtHyperlink.TextChanged += new System.EventHandler(this.txtHyperlink_TextChanged);
             // 
             // txtFilter
             // 
@@ -199,9 +200,8 @@
             // VectorLayerSettingsSectionCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "Feature Source Settings";
-            this.Name = "VectorLayerSettingsSectionCtrl";
             resources.ApplyResources(this, "$this");
+            this.Name = "VectorLayerSettingsSectionCtrl";
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
             this.grpFeatureClass.ResumeLayout(false);

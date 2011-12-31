@@ -119,6 +119,22 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
         }
     }
 
+    internal class LayerDefinition240EditorFactory : IEditorFactory
+    {
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+
+        public LayerDefinition240EditorFactory()
+        {
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition, "2.4.0");
+        }
+
+        public IEditorViewContent Create()
+        {
+            //Use the same 1.0.0 editor for now
+            return new LayerDefinitionEditor();
+        }
+    }
+
     internal class MapDefinition230EditorFactory : IEditorFactory
     {
         public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
@@ -135,6 +151,22 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
         }
     }
 
+    internal class MapDefinition240EditorFactory : IEditorFactory
+    {
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+
+        public MapDefinition240EditorFactory()
+        {
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, "2.4.0");
+        }
+
+        public IEditorViewContent Create()
+        {
+            //Use the same 1.0.0 editor for now
+            return new MapDefinitionEditor();
+        }
+    }
+
     internal class WatermarkDefinition230EditorFactory : IEditorFactory
     {
         public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
@@ -142,6 +174,22 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
         public WatermarkDefinition230EditorFactory()
         {
             this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WatermarkDefinition, "2.3.0");
+        }
+
+        public IEditorViewContent Create()
+        {
+            //Use the same 1.0.0 editor for now
+            return new WatermarkDefinitionEditor();
+        }
+    }
+
+    internal class WatermarkDefinition240EditorFactory : IEditorFactory
+    {
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+
+        public WatermarkDefinition240EditorFactory()
+        {
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WatermarkDefinition, "2.4.0");
         }
 
         public IEditorViewContent Create()
