@@ -271,4 +271,10 @@
   <data name="TPL_WDFS_240_NAME" xml:space="preserve">
     <value>Watermark Definition - Simple (v2.4.0)</value>
   </data>
+  <data name="TPL_CSD_240_DESC" xml:space="preserve">
+    <value>Create a new Compound Symbol Definition using the v2.4.0 schema</value>
+  </data>
+  <data name="TPL_CSD_240_NAME" xml:space="preserve">
+    <value>Compound Symbol Definition (v2.4.0)</value>
+  </data>
 </root>

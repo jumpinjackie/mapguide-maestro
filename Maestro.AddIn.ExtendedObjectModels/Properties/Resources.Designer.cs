@@ -198,6 +198,24 @@ namespace Maestro.AddIn.ExtendedObjectModels.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a new Compound Symbol Definition using the v2.4.0 schema.
+        /// </summary>
+        internal static string TPL_CSD_240_DESC {
+            get {
+                return ResourceManager.GetString("TPL_CSD_240_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compound Symbol Definition (v2.4.0).
+        /// </summary>
+        internal static string TPL_CSD_240_NAME {
+            get {
+                return ResourceManager.GetString("TPL_CSD_240_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new Compund Symbol Definition using the v1.1.0 schema.
         /// </summary>
         internal static string TPL_CSD_DESC {
