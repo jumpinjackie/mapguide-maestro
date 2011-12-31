@@ -181,6 +181,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                         }
 
                     lineStyleEditor.thicknessCombo.Text = st.Thickness;
+
+                    sizeContextCombo.Enabled = true;
+                    var st2 = st as IStroke2;
+                    if (st2 != null)
+                        sizeContextCombo.SelectedValue = st2.SizeContext;
+                    else
+                        sizeContextCombo.Enabled = false;
 				}
 				previewPicture.Refresh();
 			} 
@@ -352,6 +359,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             // 
             // lineStyleEditor
             // 
+            this.lineStyleEditor.ColorExpression = "";
             resources.ApplyResources(this.lineStyleEditor, "lineStyleEditor");
             this.lineStyleEditor.Name = "lineStyleEditor";
             this.lineStyleEditor.RequiresExpressionEditor += new System.EventHandler(this.lineStyleEditor_RequiresExpressionEditor);

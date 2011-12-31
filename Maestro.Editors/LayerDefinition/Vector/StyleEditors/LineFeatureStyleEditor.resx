@@ -175,7 +175,7 @@
     <value>0</value>
   </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>3, 16</value>
+    <value>17, 17</value>
   </metadata>
   <data name="AddStyleButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -280,7 +280,7 @@
     <value>2</value>
   </data>
   <data name="CompositeGroup.Text" xml:space="preserve">
-    <value>Composite line</value>
+    <value>Composite line (lines are drawn top to bottom)</value>
   </data>
   <data name="&gt;&gt;CompositeGroup.Name" xml:space="preserve">
     <value>CompositeGroup</value>
@@ -342,23 +342,59 @@
   <data name="&gt;&gt;compositePanel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="lineStyleEditor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;lineGroup.Name" xml:space="preserve">
+    <value>lineGroup</value>
   </data>
-  <data name="lineStyleEditor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 16</value>
+  <data name="&gt;&gt;lineGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="lineStyleEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 133</value>
+  <data name="&gt;&gt;lineGroup.Parent" xml:space="preserve">
+    <value>propertyPanel</value>
   </data>
-  <data name="lineStyleEditor.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;lineGroup.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;sizeGroup.Name" xml:space="preserve">
+    <value>sizeGroup</value>
+  </data>
+  <data name="&gt;&gt;sizeGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sizeGroup.Parent" xml:space="preserve">
+    <value>propertyPanel</value>
+  </data>
+  <data name="&gt;&gt;sizeGroup.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="propertyPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="propertyPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 208</value>
+  </data>
+  <data name="propertyPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 232</value>
+  </data>
+  <data name="propertyPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;propertyPanel.Name" xml:space="preserve">
+    <value>propertyPanel</value>
+  </data>
+  <data name="&gt;&gt;propertyPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;propertyPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;propertyPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;lineStyleEditor.Name" xml:space="preserve">
     <value>lineStyleEditor</value>
   </data>
   <data name="&gt;&gt;lineStyleEditor.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.LineStyleEditor, Maestro.Editors, Version=4.0.0.6128, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.LineStyleEditor, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;lineStyleEditor.Parent" xml:space="preserve">
     <value>lineGroup</value>
@@ -392,6 +428,105 @@
   </data>
   <data name="&gt;&gt;lineGroup.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="lineStyleEditor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="lineStyleEditor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
+  </data>
+  <data name="lineStyleEditor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>291, 133</value>
+  </data>
+  <data name="lineStyleEditor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lineStyleEditor.Name" xml:space="preserve">
+    <value>lineStyleEditor</value>
+  </data>
+  <data name="&gt;&gt;lineStyleEditor.Type" xml:space="preserve">
+    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.LineStyleEditor, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="&gt;&gt;lineStyleEditor.Parent" xml:space="preserve">
+    <value>lineGroup</value>
+  </data>
+  <data name="&gt;&gt;lineStyleEditor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;sizeUnitsCombo.Name" xml:space="preserve">
+    <value>sizeUnitsCombo</value>
+  </data>
+  <data name="&gt;&gt;sizeUnitsCombo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sizeUnitsCombo.Parent" xml:space="preserve">
+    <value>sizeGroup</value>
+  </data>
+  <data name="&gt;&gt;sizeUnitsCombo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;sizeContextCombo.Name" xml:space="preserve">
+    <value>sizeContextCombo</value>
+  </data>
+  <data name="&gt;&gt;sizeContextCombo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sizeContextCombo.Parent" xml:space="preserve">
+    <value>sizeGroup</value>
+  </data>
+  <data name="&gt;&gt;sizeContextCombo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>sizeGroup</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>sizeGroup</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="sizeGroup.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="sizeGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="sizeGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 80</value>
+  </data>
+  <data name="sizeGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="sizeGroup.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="&gt;&gt;sizeGroup.Name" xml:space="preserve">
+    <value>sizeGroup</value>
+  </data>
+  <data name="&gt;&gt;sizeGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sizeGroup.Parent" xml:space="preserve">
+    <value>propertyPanel</value>
+  </data>
+  <data name="&gt;&gt;sizeGroup.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="sizeUnitsCombo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -495,69 +630,6 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="sizeGroup.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="sizeGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="sizeGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 80</value>
-  </data>
-  <data name="sizeGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="sizeGroup.Text" xml:space="preserve">
-    <value>Size</value>
-  </data>
-  <data name="&gt;&gt;sizeGroup.Name" xml:space="preserve">
-    <value>sizeGroup</value>
-  </data>
-  <data name="&gt;&gt;sizeGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;sizeGroup.Parent" xml:space="preserve">
-    <value>propertyPanel</value>
-  </data>
-  <data name="&gt;&gt;sizeGroup.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="propertyPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="propertyPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 208</value>
-  </data>
-  <data name="propertyPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 232</value>
-  </data>
-  <data name="propertyPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;propertyPanel.Name" xml:space="preserve">
-    <value>propertyPanel</value>
-  </data>
-  <data name="&gt;&gt;propertyPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;propertyPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;propertyPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="previewPicture.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="previewPicture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 16</value>
-  </data>
-  <data name="previewPicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 24</value>
-  </data>
-  <data name="previewPicture.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;previewPicture.Name" xml:space="preserve">
     <value>previewPicture</value>
   </data>
@@ -600,8 +672,32 @@
   <data name="&gt;&gt;previewGroup.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="previewPicture.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="previewPicture.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 16</value>
+  </data>
+  <data name="previewPicture.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 24</value>
+  </data>
+  <data name="previewPicture.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;previewPicture.Name" xml:space="preserve">
+    <value>previewPicture</value>
+  </data>
+  <data name="&gt;&gt;previewPicture.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;previewPicture.Parent" xml:space="preserve">
+    <value>previewGroup</value>
+  </data>
+  <data name="&gt;&gt;previewPicture.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="ComboBoxDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>122, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
