@@ -29,7 +29,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\SDK\bin\</OutputPath>
-    <DefineConstants>TRACE;WL110</DefineConstants>
+    <DefineConstants>TRACE;WL240</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>

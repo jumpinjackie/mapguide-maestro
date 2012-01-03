@@ -80,6 +80,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0", "..\ExtendedModels\WatermarkDefinition-2.3.0\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0.csproj", "{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ExtendedObjectModels", "..\OSGeo.MapGuide.ExtendedObjectModels\OSGeo.MapGuide.ExtendedObjectModels.csproj", "{B3A2B816-9F41-4857-A111-09D2DF2550D6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C0CA5D05-72C0-4F22-8618-B31BF0FFA190} = {C0CA5D05-72C0-4F22-8618-B31BF0FFA190}
+		{222CB020-5336-47D7-9BB9-A22D18953C80} = {222CB020-5336-47D7-9BB9-A22D18953C80}
+		{16E6B250-C805-4C31-9A7D-F56A0051EC93} = {16E6B250-C805-4C31-9A7D-F56A0051EC93}
+		{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0} = {E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}
+		{BEC17FD3-2ADB-4154-934D-494313C588EE} = {BEC17FD3-2ADB-4154-934D-494313C588EE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.Local", "..\OSGeo.MapGuide.MaestroAPI.Local\OSGeo.MapGuide.MaestroAPI.Local.csproj", "{3DDF6501-0148-474C-8674-7C7DA49C7F02}"
 EndProject
@@ -98,12 +105,22 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0", "..\ExtendedModels\WebLayout-2.4.0\OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0.csproj", "{BEC17FD3-2ADB-4154-934D-494313C588EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.LayerDefinition-2.4.0", "..\ExtendedModels\LayerDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.LayerDefinition-2.4.0.csproj", "{16E6B250-C805-4C31-9A7D-F56A0051EC93}"
+	ProjectSection(ProjectDependencies) = postProject
+		{222CB020-5336-47D7-9BB9-A22D18953C80} = {222CB020-5336-47D7-9BB9-A22D18953C80}
+		{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0} = {E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.MapDefinition-2.4.0", "..\ExtendedModels\MapDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.MapDefinition-2.4.0.csproj", "{C0CA5D05-72C0-4F22-8618-B31BF0FFA190}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0} = {E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.SymbolDefinition-2.4.0", "..\ExtendedModels\SymbolDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.SymbolDefinition-2.4.0.csproj", "{222CB020-5336-47D7-9BB9-A22D18953C80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0", "..\ExtendedModels\WatermarkDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0.csproj", "{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{222CB020-5336-47D7-9BB9-A22D18953C80} = {222CB020-5336-47D7-9BB9-A22D18953C80}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
