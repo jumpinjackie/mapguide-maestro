@@ -39,6 +39,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Maestro.AddIn.Local\OSGeo.MapGuide.Desktop.dll</HintPath>
     </Reference>
+    <Reference Include="OSGeo.MapGuide.Foundation, Version=1.0.0.1, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Maestro.AddIn.Local\OSGeo.MapGuide.Foundation.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.Geometry, Version=1.0.0.1, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Maestro.AddIn.Local\OSGeo.MapGuide.Geometry.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.PlatformBase, Version=1.0.0.1, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Maestro.AddIn.Local\OSGeo.MapGuide.PlatformBase.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />

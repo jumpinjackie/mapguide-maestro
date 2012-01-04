@@ -32,6 +32,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.Viewer;
 using ICSharpCode.Core;
+using OSGeo.MapGuide.Viewer.Desktop;
 
 namespace Maestro.AddIn.Local.UI
 {
@@ -66,7 +67,12 @@ namespace Maestro.AddIn.Local.UI
                     }
                 }
             }
-            viewer.Init(_map);
+            var fact = new MgServiceFactory();
+            viewer.Init(
+                new MgDesktopMapViewerProvider(
+                    _map, 
+                    (MgdResourceService)fact.CreateService(MgServiceType.ResourceService), 
+                    (MgRenderingService)fact.CreateService(MgServiceType.RenderingService)));
             viewer.RefreshMap();
         }
 

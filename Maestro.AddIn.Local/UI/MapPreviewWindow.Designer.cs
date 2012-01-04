@@ -137,6 +137,7 @@
             this.legend.Name = "legend";
             this.legend.Size = new System.Drawing.Size(224, 223);
             this.legend.TabIndex = 0;
+            this.legend.ThemeCompressionLimit = 25;
             // 
             // propertyPane
             // 
