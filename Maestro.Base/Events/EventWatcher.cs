@@ -108,7 +108,6 @@ namespace Maestro.Base.Events
             var wb = Workbench.Instance;
             if (wb.ActiveSiteExplorer == null)
             {
-                var siteExp = new SiteExplorer();
                 var viewMgr = ServiceRegistry.GetService<ViewContentManager>();
 
                 viewMgr.OpenContent(Properties.Resources.Content_SiteExplorer, 

@@ -1419,7 +1419,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// a class definition cache
         /// </summary>
-        protected Dictionary<string, ClassDefinition> m_featureSchemaNameCache = new Dictionary<string, ClassDefinition>();
+        protected Dictionary<string, ClassDefinition> m_classDefinitionCache = new Dictionary<string, ClassDefinition>();
 
         /// <summary>
         /// Gets the feature source description.
@@ -1434,7 +1434,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 {
                     m_featureSchemaCache[resourceID] = this.DescribeFeatureSource(resourceID);
                     foreach (ClassDefinition scm in m_featureSchemaCache[resourceID].AllClasses)
-                        m_featureSchemaNameCache[resourceID + "!" + scm.QualifiedName] = scm;
+                        m_classDefinitionCache[resourceID + "!" + scm.QualifiedName] = scm;
                 }
                 catch
                 {
@@ -1451,21 +1451,44 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Gets the class definition.
         /// </summary>
         /// <param name="resourceID">The resource ID.</param>
-        /// <param name="schema">The schema.</param>
+        /// <param name="className">The class name to look for.</param>
         /// <returns></returns>
-        public virtual ClassDefinition GetClassDefinition(string resourceID, string schema)
+        public virtual ClassDefinition GetClassDefinition(string resourceID, string className)
         {
             /*if (schema != null && schema.IndexOf(":") > 0)
                 schema = schema.Substring(0, schema.IndexOf(":"));*/
 
+            FeatureSourceDescription desc = null;
             //If it is missing, just get the entire schema, and hope that we will need the others
             //Some providers actually return the entire list even when asked for a particular schema
-            if (!m_featureSchemaCache.ContainsKey(resourceID + "!" + schema))
-                GetFeatureSourceDescription(resourceID);
-            if (!m_featureSchemaNameCache.ContainsKey(resourceID + "!" + schema))
-                m_featureSchemaNameCache[resourceID + "!" + schema] = null;
+            if (!m_featureSchemaCache.ContainsKey(resourceID + "!" + className))
+                desc = GetFeatureSourceDescription(resourceID);
+            if (!m_classDefinitionCache.ContainsKey(resourceID + "!" + className))
+                m_classDefinitionCache[resourceID + "!" + className] = null;
 
-            return m_featureSchemaNameCache[resourceID + "!" + schema];
+            var cls = m_classDefinitionCache[resourceID + "!" + className];
+            if (cls == null)
+            {
+                //Try non qualified
+                if (desc != null)
+                {
+                    if (desc.Schemas.Length == 1)
+                    {
+                        return desc.GetClass(desc.SchemaNames[0], className);
+                    }
+                    else
+                    {
+                        //Since this is not qualified, just find the first matching
+                        //class by its name, regardless of its parent
+                        foreach (var klass in desc.AllClasses)
+                        {
+                            if (klass.Name == className)
+                                return klass;
+                        }
+                    }
+                }
+            }
+            return cls;
         }
 
         /// <summary>
@@ -1474,7 +1497,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public virtual void ResetFeatureSourceSchemaCache()
         {
             m_featureSchemaCache = new Dictionary<string, FeatureSourceDescription>();
-            m_featureSchemaNameCache = new Dictionary<string, ClassDefinition>();
+            m_classDefinitionCache = new Dictionary<string, ClassDefinition>();
         }
 
         /// <summary>

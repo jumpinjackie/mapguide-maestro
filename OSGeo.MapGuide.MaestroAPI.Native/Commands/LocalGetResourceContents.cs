@@ -25,17 +25,30 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using System.Diagnostics;
 using System.IO;
 
+#if LOCAL_API
+namespace OSGeo.MapGuide.MaestroAPI.Local.Commands
+#else
 namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
+#endif
 {
     public class LocalGetResourceContents : IGetResourceContents
     {
         private MgResourceService _resSvc;
 
+#if LOCAL_API
+        public LocalGetResourceContents(LocalConnection conn)
+        {
+            this.Parent = conn;
+            var fact = new MgServiceFactory();
+            _resSvc = (MgResourceService)fact.CreateService(MgServiceType.ResourceService);
+        }
+#else 
         public LocalGetResourceContents(LocalNativeConnection conn)
         {
             this.Parent = conn;
             _resSvc = (MgResourceService)conn.Connection.CreateService(MgServiceType.ResourceService);
         }
+#endif
 
         Dictionary<string, IResource> IGetResourceContents.Execute(IEnumerable<string> resourceIds)
         {

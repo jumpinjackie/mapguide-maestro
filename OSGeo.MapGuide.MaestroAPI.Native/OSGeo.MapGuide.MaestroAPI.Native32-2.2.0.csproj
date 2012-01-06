@@ -76,6 +76,7 @@
     <Compile Include="..\Properties\SignedAssemblyInfo.cs">
       <Link>SignedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Commands\FeatureCommandsImpl.cs" />
     <Compile Include="Commands\LocalGetResourceContents.cs" />
     <Compile Include="LocalNativeDataReader.cs" />
     <Compile Include="LocalNativeFeature.cs" />

@@ -74,4 +74,30 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <returns></returns>
         IFeatureReader GetFeatureObject(int index);
     }
+
+    public interface IMutableFeature : IMutableRecord
+    {
+        /// <summary>
+        /// Gets the class definition of the object currently being read. If the user has requested 
+        /// only a subset of the class properties (as specified in the filter text), the class 
+        /// definition reflects what the user has requested, rather than the full class definition. 
+        /// </summary>
+        ClassDefinition ClassDefinition { get; }
+
+        /// <summary>
+        /// Gets a <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing
+        /// all the nested features of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        IFeatureReader GetFeatureObject(string name);
+
+        /// <summary>
+        /// Gets a <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing
+        /// all the nested features at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        IFeatureReader GetFeatureObject(int index);
+    }
 }

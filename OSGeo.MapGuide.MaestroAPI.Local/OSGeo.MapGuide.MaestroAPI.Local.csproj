@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\Commands\FeatureCommandsImpl.cs">
+      <Link>FeatureCommandsImpl.cs</Link>
+    </Compile>
+    <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\Commands\LocalGetResourceContents.cs">
+      <Link>LocalGetResourceContents.cs</Link>
+    </Compile>
     <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\LocalNativeCoordinateSystem.cs">
       <Link>LocalNativeCoordinateSystem.cs</Link>
     </Compile>

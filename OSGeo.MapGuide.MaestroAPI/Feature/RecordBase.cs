@@ -60,6 +60,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         }
 
         /// <summary>
+        /// Gets whether the specified named property exists
+        /// </summary>
+        /// <param name="name">The property name.</param>
+        /// <returns></returns>
+        public bool PropertyExists(string name)
+        {
+            return _values.ContainsKey(name);
+        }
+
+        /// <summary>
         /// Adds the specified property value
         /// </summary>
         /// <param name="name"></param>
@@ -69,6 +79,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             if (_values.ContainsKey(name))
                 throw new ArgumentException("Key " + name + " already exists"); //LOCALIZEME
 
+            _ordinalMap[this.FieldCount] = name;
             _values[name] = value;
         }
 
@@ -505,6 +516,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
                         break;
                 }
             }
+        }
+
+        /// <summary>
+        /// Gets the property names.
+        /// </summary>
+        public IEnumerable<string> PropertyNames
+        {
+            get { return _ordinalMap.Values; }
+        }
+
+        /// <summary>
+        /// Gets the type of the property.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
+        public PropertyValueType GetPropertyType(string name)
+        {
+            return _values[name].Type;
+        }
+
+        /// <summary>
+        /// Gets the type of the property at the specified index.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
+        public PropertyValueType GetPropertyType(int index)
+        {
+            return GetPropertyType(_ordinalMap[index]);
         }
     }
 }

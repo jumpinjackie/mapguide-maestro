@@ -39,7 +39,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                     //TODO: Work out what this can/can't do
                     return new int[] 
                     {
-                        (int)CommandType.GetResourceContents
+                        (int)CommandType.GetResourceContents,
+                        (int)CommandType.ApplySchema,
+                        (int)CommandType.InsertFeature,
+                        (int)CommandType.UpdateFeatures,
+                        (int)CommandType.DeleteFeatures
                     };
                 }
                 else
@@ -47,6 +51,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                     //TODO: Work out what this can/can't do
                     return new int[] 
                     {
+                        (int)CommandType.ApplySchema,
+                        (int)CommandType.InsertFeature,
+                        (int)CommandType.UpdateFeatures,
+                        (int)CommandType.DeleteFeatures
                     };
                 }
             }

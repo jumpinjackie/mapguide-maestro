@@ -909,8 +909,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         public override OSGeo.MapGuide.MaestroAPI.Commands.ICommand CreateCommand(int cmdType)
         {
             CommandType ct = (CommandType)cmdType;
-            if (ct == CommandType.GetResourceContents)
-                return new LocalGetResourceContents(this);
+            switch (ct)
+            {
+                case CommandType.GetResourceContents:
+                    return new LocalGetResourceContents(this);
+                case CommandType.ApplySchema:
+                    return new LocalNativeApplySchema(this);
+                case CommandType.DeleteFeatures:
+                    return new LocalNativeDelete(this);
+                case CommandType.InsertFeature:
+                    return new LocalNativeDelete(this);
+                case CommandType.UpdateFeatures:
+                    return new LocalNativeDelete(this);
+            }
             return base.CreateCommand(cmdType);
         }
 
@@ -1236,6 +1247,115 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
                     return xml;
                 }
+            }
+        }
+
+        internal void InsertFeatures(MgResourceIdentifier fsId, string className, MgPropertyCollection props)
+        {
+            try
+            {
+                MgFeatureCommandCollection cmds = new MgFeatureCommandCollection();
+                MgInsertFeatures insert = new MgInsertFeatures(className, props);
+                cmds.Add(insert);
+
+                MgFeatureService fs = (MgFeatureService)this.Connection.CreateService(MgServiceType.FeatureService);
+                MgPropertyCollection result = fs.UpdateFeatures(fsId, cmds, false);
+
+                ((MgFeatureProperty)result.GetItem(0)).GetValue().Close();
+            }
+            catch (MgException ex)
+            {
+                var exMgd = new FeatureServiceException(ex.Message);
+                exMgd.MgErrorDetails = ex.GetDetails();
+                exMgd.MgStackTrace = ex.GetStackTrace();
+                ex.Dispose();
+                throw exMgd;
+            }
+        }
+
+        internal int UpdateFeatures(MgResourceIdentifier fsId, string className, MgPropertyCollection props, string filter)
+        {
+            try
+            {
+                MgFeatureCommandCollection cmds = new MgFeatureCommandCollection();
+                MgUpdateFeatures update = new MgUpdateFeatures(className, props, filter);
+                cmds.Add(update);
+
+                MgFeatureService fs = (MgFeatureService)this.Connection.CreateService(MgServiceType.FeatureService);
+                MgPropertyCollection result = fs.UpdateFeatures(fsId, cmds, false);
+
+                var ip = result.GetItem(0) as MgInt32Property;
+                if (ip != null)
+                    return ip.GetValue();
+                return -1;
+            }
+            catch (MgException ex)
+            {
+                var exMgd = new FeatureServiceException(ex.Message);
+                exMgd.MgErrorDetails = ex.GetDetails();
+                exMgd.MgStackTrace = ex.GetStackTrace();
+                ex.Dispose();
+                throw exMgd;
+            }
+        }
+
+        internal int DeleteFeatures(MgResourceIdentifier fsId, string className, string filter)
+        {
+            try
+            {
+                MgFeatureCommandCollection cmds = new MgFeatureCommandCollection();
+                MgDeleteFeatures delete = new MgDeleteFeatures(className, filter);
+                cmds.Add(delete);
+
+                MgFeatureService fs = (MgFeatureService)this.Connection.CreateService(MgServiceType.FeatureService);
+                MgPropertyCollection result = fs.UpdateFeatures(fsId, cmds, false);
+
+                var ip = result.GetItem(0) as MgInt32Property;
+                if (ip != null)
+                    return ip.GetValue();
+                return -1;
+            }
+            catch (MgException ex)
+            {
+                var exMgd = new FeatureServiceException(ex.Message);
+                exMgd.MgErrorDetails = ex.GetDetails();
+                exMgd.MgStackTrace = ex.GetStackTrace();
+                ex.Dispose();
+                throw exMgd;
+            }
+        }
+
+        internal void ApplySchema(MgResourceIdentifier fsId, MgFeatureSchema schemaToApply)
+        {
+            try
+            {
+                MgFeatureService fs = (MgFeatureService)this.Connection.CreateService(MgServiceType.FeatureService);
+                fs.ApplySchema(fsId, schemaToApply);
+            }
+            catch (MgException ex)
+            {
+                var exMgd = new FeatureServiceException(ex.Message);
+                exMgd.MgErrorDetails = ex.GetDetails();
+                exMgd.MgStackTrace = ex.GetStackTrace();
+                ex.Dispose();
+                throw exMgd;
+            }
+        }
+
+        internal void CreateDataStore(MgResourceIdentifier fsId, MgFeatureSourceParams fp)
+        {
+            try
+            {
+                MgFeatureService fs = (MgFeatureService)this.Connection.CreateService(MgServiceType.FeatureService);
+                fs.CreateFeatureSource(fsId, fp);
+            }
+            catch (MgException ex)
+            {
+                var exMgd = new FeatureServiceException(ex.Message);
+                exMgd.MgErrorDetails = ex.GetDetails();
+                exMgd.MgStackTrace = ex.GetStackTrace();
+                ex.Dispose();
+                throw exMgd;
             }
         }
     }

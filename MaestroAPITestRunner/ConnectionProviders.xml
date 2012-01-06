@@ -21,4 +21,11 @@
         <Assembly>OSGeo.MapGuide.MaestroAPI.Native.dll</Assembly>
         <Type>OSGeo.MapGuide.MaestroAPI.LocalNativeConnection</Type>
     </ConnectionProvider>
+
+    <ConnectionProvider>
+        <Name>Maestro.Local</Name>
+        <Description>Connection wrapping the mg-desktop library</Description>
+        <Assembly>OSGeo.MapGuide.MaestroAPI.Local.dll</Assembly>
+        <Type>OSGeo.MapGuide.MaestroAPI.LocalConnection</Type>
+    </ConnectionProvider>
 </ConnectionProviderRegistry>

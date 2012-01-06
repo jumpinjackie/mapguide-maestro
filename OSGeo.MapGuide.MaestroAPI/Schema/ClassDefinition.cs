@@ -357,5 +357,30 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 }
             }
         }
+
+        /// <summary>
+        /// Creates a clone of the specified instance
+        /// </summary>
+        /// <param name="source">The instance to clone.</param>
+        /// <returns></returns>
+        public static ClassDefinition Clone(ClassDefinition source)
+        {
+            var clone = new ClassDefinition(source.Name, source.Description);
+            foreach (var prop in source.Properties)
+            {
+                var clonedProp = PropertyDefinition.Clone(prop);
+                if (clonedProp.Type == PropertyDefinitionType.Data &&
+                    source.IdentityProperties.Contains((DataPropertyDefinition)prop))
+                {
+                    clone.AddProperty((DataPropertyDefinition)clonedProp, true);
+                }
+                else
+                {
+                    clone.AddProperty(clonedProp);
+                }
+            }
+            //TODO: Base Class
+            return clone;
+        }
     }
 }

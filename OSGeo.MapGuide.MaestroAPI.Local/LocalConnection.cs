@@ -32,6 +32,8 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.IO;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using System.Diagnostics;
+using OSGeo.MapGuide.MaestroAPI.Local.Commands;
+using OSGeo.MapGuide.MaestroAPI.Commands;
 
 namespace OSGeo.MapGuide.MaestroAPI.Local
 {
@@ -64,6 +66,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             _init = true;
             sw.Stop();
             Trace.TraceInformation("MapGuide Platform initialized in {0}ms", sw.ElapsedMilliseconds);
+        }
+
+        public override OSGeo.MapGuide.MaestroAPI.Commands.ICommand CreateCommand(int cmdType)
+        {
+            CommandType ct = (CommandType)cmdType;
+            switch (ct)
+            {
+                case CommandType.ApplySchema:
+                    return new LocalNativeApplySchema(this);
+                case CommandType.CreateDataStore:
+                    return new LocalNativeCreateDataStore(this);
+                case CommandType.DeleteFeatures:
+                    return new LocalNativeDelete(this);
+                case CommandType.InsertFeature:
+                    return new LocalNativeInsert(this);
+                case CommandType.UpdateFeatures:
+                    return new LocalNativeUpdate(this);
+            }
+            return base.CreateCommand(cmdType);
         }
 
         public const string PROVIDER_NAME = "Maestro.Local";
@@ -113,8 +134,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         private string _configFile;
         const string PARAM_CONFIG = "ConfigFile";
 
-        private MgResourceService _resSvc;
-        private MgFeatureService _featSvc;
+        private MgdResourceService _resSvc;
+        private MgdFeatureService _featSvc;
         private MgDrawingService _drawSvc;
         private MgRenderingService _renderSvc;
         private MgTileService _tileSvc;
@@ -152,18 +173,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
         }
 
-        private MgResourceService GetResourceService()
+        private MgdResourceService GetResourceService()
         {
             if (_resSvc == null)
-                _resSvc = (MgResourceService)_fact.CreateService(MgServiceType.ResourceService);
+                _resSvc = (MgdResourceService)_fact.CreateService(MgServiceType.ResourceService);
 
             return _resSvc;
         }
 
-        private MgFeatureService GetFeatureService()
+        private MgdFeatureService GetFeatureService()
         {
             if (_featSvc == null)
-                _featSvc = (MgFeatureService)_fact.CreateService(MgServiceType.FeatureService);
+                _featSvc = (MgdFeatureService)_fact.CreateService(MgServiceType.FeatureService);
 
             return _featSvc;
         }
@@ -835,6 +856,100 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         public bool RestartSession(bool throwException)
         {
             return true;
+        }
+
+        internal void InsertFeatures(MgResourceIdentifier fsId, string className, MgPropertyCollection props)
+        {
+            try
+            {
+                MgdFeatureService fs = GetFeatureService();
+                MgFeatureReader fr = null;
+                try
+                {
+                    fr = fs.InsertFeatures(fsId, className, props);
+                }
+                finally
+                {
+                    if (fr != null)
+                        fr.Close();
+                }
+            }
+            catch (MgException ex)
+            {
+                var exMgd = new FeatureServiceException(ex.Message);
+                exMgd.MgErrorDetails = ex.GetDetails();
+                exMgd.MgStackTrace = ex.GetStackTrace();
+                ex.Dispose();
+                throw exMgd;
+            }
+        }
+
+        internal int UpdateFeatures(MgResourceIdentifier fsId, string className, MgPropertyCollection props, string filter)
+        {
+            try
+            {
+                MgdFeatureService fs = GetFeatureService();
+                return fs.UpdateFeatures(fsId, className, props, filter);
+            }
+            catch (MgException ex)
+            {
+                var exMgd = new FeatureServiceException(ex.Message);
+                exMgd.MgErrorDetails = ex.GetDetails();
+                exMgd.MgStackTrace = ex.GetStackTrace();
+                ex.Dispose();
+                throw exMgd;
+            }
+        }
+
+        internal int DeleteFeatures(MgResourceIdentifier fsId, string className, string filter)
+        {
+            try
+            {
+                MgdFeatureService fs = GetFeatureService();
+                return fs.DeleteFeatures(fsId, className, filter);
+            }
+            catch (MgException ex)
+            {
+                var exMgd = new FeatureServiceException(ex.Message);
+                exMgd.MgErrorDetails = ex.GetDetails();
+                exMgd.MgStackTrace = ex.GetStackTrace();
+                ex.Dispose();
+                throw exMgd;
+            }
+        }
+
+        internal void ApplySchema(MgResourceIdentifier fsId, MgFeatureSchema schemaToApply)
+        {
+            try
+            {
+                MgdFeatureService fs = GetFeatureService();
+                fs.ApplySchema(fsId, schemaToApply);
+            }
+            catch (MgException ex)
+            {
+                var exMgd = new FeatureServiceException(ex.Message);
+                exMgd.MgErrorDetails = ex.GetDetails();
+                exMgd.MgStackTrace = ex.GetStackTrace();
+                ex.Dispose();
+                throw exMgd;
+            }
+        }
+
+        internal void CreateDataStore(MgResourceIdentifier fsId, MgFeatureSourceParams fp)
+        {
+            try
+            {
+                MgdFeatureService fs = GetFeatureService();
+                fs.CreateFeatureSource(fsId, fp);
+            }
+            catch (MgException ex)
+            {
+                var exMgd = new FeatureServiceException(ex.Message);
+                exMgd.MgErrorDetails = ex.GetDetails();
+                exMgd.MgStackTrace = ex.GetStackTrace();
+                ex.Dispose();
+                throw exMgd;
+            }
         }
     }
 }

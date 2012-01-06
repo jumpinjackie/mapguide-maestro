@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -19,21 +19,30 @@
 #endregion
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Diagnostics;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 
-namespace MaestroAPITestRunner
+namespace OSGeo.MapGuide.MaestroAPI.Feature
 {
-    /// <summary>
-    /// This is a simple NUnit test runner, to work around the fact that you can't launch an external program
-    /// in a debug session (in our case, nunit-console.exe) in Visual Studio Express.
-    /// </summary>
-    class Program
+    public class MutableFeatureBase : MutableRecordBase, IMutableFeature
     {
-        static void Main(string[] args)
+        protected ClassDefinition _clsDef;
+
+        protected MutableFeatureBase(IRecordInitialize feature, ClassDefinition source)
+            : base(feature)
         {
-            NUnit.ConsoleRunner.Runner.Main(args);
+            _clsDef = ClassDefinition.Clone(source);
+        }
+
+        protected MutableFeatureBase(MutableFeatureBase feat)
+            : this(feat, feat.ClassDefinition)
+        {
+
+        }
+
+        public ClassDefinition ClassDefinition
+        {
+            get { return _clsDef; }
         }
     }
 }

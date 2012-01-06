@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -19,21 +19,19 @@
 #endregion
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Diagnostics;
+using ICSharpCode.Core;
+using Maestro.Base;
+using Maestro.Base.Services;
+using Maestro.Shared.UI;
 
-namespace MaestroAPITestRunner
+namespace Maestro.AddIn.FdoToolbox.Commands
 {
-    /// <summary>
-    /// This is a simple NUnit test runner, to work around the fact that you can't launch an external program
-    /// in a debug session (in our case, nunit-console.exe) in Visual Studio Express.
-    /// </summary>
-    class Program
+    public class StartupCommand : AbstractCommand
     {
-        static void Main(string[] args)
+        public override void Run()
         {
-            NUnit.ConsoleRunner.Runner.Main(args);
+
         }
     }
 }

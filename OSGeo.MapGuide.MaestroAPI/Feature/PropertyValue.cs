@@ -53,6 +53,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Gets the type.
         /// </summary>
         public abstract PropertyValueType Type { get; }
+
+        /// <summary>
+        /// Gets the suggsted property definition type for this value
+        /// </summary>
+        /// <value>
+        /// The suggsted property definition type.
+        /// </value>
+        public abstract PropertyDefinitionType PropertyDefType { get; }
     }
 
     /// <summary>
@@ -120,6 +128,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             _value = null;
         }
+
+        /// <summary>
+        /// Gets the suggsted property definition type for this value
+        /// </summary>
+        /// <value>
+        /// The suggsted property definition type.
+        /// </value>
+        public override PropertyDefinitionType PropertyDefType
+        {
+            get { return PropertyDefinitionType.Data; }
+        }
     }
 
     /// <summary>
@@ -140,8 +159,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         protected ReferenceTypePropertyValue(T value)
             : base()
         {
-            _value = value;
-            this.IsNull = false;
+            this.Value = value;
         }
 
         private T _value;
@@ -174,6 +192,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class ByteValue : ValueTypePropertyValue<byte>
     {
+        public ByteValue() : base() { }
+
+        public ByteValue(byte value) : base() { }
+
         /// <summary>
         /// Gets the type.
         /// </summary>
@@ -188,6 +210,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class BooleanValue : ValueTypePropertyValue<bool>
     {
+        public BooleanValue() : base() { }
+
+        public BooleanValue(bool value) : base(value) { }
+
         /// <summary>
         /// Gets the type.
         /// </summary>
@@ -202,12 +228,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class BlobValue : ReferenceTypePropertyValue<byte[]>
     {
+        public BlobValue() : base() { }
+
+        public BlobValue(byte[] value) : base(value) { } 
+
         /// <summary>
         /// Gets the type.
         /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Blob; }
+        }
+
+        /// <summary>
+        /// Gets the suggsted property definition type for this value
+        /// </summary>
+        /// <value>
+        /// The suggsted property definition type.
+        /// </value>
+        public override PropertyDefinitionType PropertyDefType
+        {
+            get { return PropertyDefinitionType.Data; }
         }
     }
 
@@ -216,12 +257,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class ClobValue : ReferenceTypePropertyValue<char[]>
     {
+        public ClobValue() : base() { }
+
+        public ClobValue(char[] value) : base(value) { }
+
         /// <summary>
         /// Gets the type.
         /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Clob; }
+        }
+
+        /// <summary>
+        /// Gets the suggsted property definition type for this value
+        /// </summary>
+        /// <value>
+        /// The suggsted property definition type.
+        /// </value>
+        public override PropertyDefinitionType PropertyDefType
+        {
+            get { return PropertyDefinitionType.Data; }
         }
     }
 
@@ -230,6 +286,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class DateTimeValue : ValueTypePropertyValue<DateTime>
     {
+        public DateTimeValue() : base() { }
+
+        public DateTimeValue(DateTime value) : base(value) { }
+
         /// <summary>
         /// Gets the type.
         /// </summary>
@@ -244,6 +304,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class DoubleValue : ValueTypePropertyValue<double>
     {
+        public DoubleValue() : base() { }
+
+        public DoubleValue(double value) : base(value) { }
+
         /// <summary>
         /// Gets the type.
         /// </summary>
@@ -258,12 +322,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class FeatureValue : ReferenceTypePropertyValue<IFeature[]>
     {
+        public FeatureValue() : base() { }
+
+        public FeatureValue(IFeature[] values) : base(values) { }
+
         /// <summary>
         /// Gets the type.
         /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Feature; }
+        }
+
+        /// <summary>
+        /// Gets the suggsted property definition type for this value
+        /// </summary>
+        /// <value>
+        /// The suggsted property definition type.
+        /// </value>
+        public override PropertyDefinitionType PropertyDefType
+        {
+            get { return PropertyDefinitionType.Object; }
         }
     }
 
@@ -272,12 +351,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class GeometryValue : ReferenceTypePropertyValue<IGeometry>
     {
+        public GeometryValue() : base() { }
+
+        public GeometryValue(IGeometry value) : base(value) { }
+
         /// <summary>
         /// Gets the type.
         /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Geometry; }
+        }
+
+        /// <summary>
+        /// Gets the suggsted property definition type for this value
+        /// </summary>
+        /// <value>
+        /// The suggsted property definition type.
+        /// </value>
+        public override PropertyDefinitionType PropertyDefType
+        {
+            get { return PropertyDefinitionType.Geometry; }
         }
     }
 
@@ -286,6 +380,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class Int16Value : ValueTypePropertyValue<short>
     {
+        public Int16Value() : base() { }
+
+        public Int16Value(short value) : base(value) { }
+
         /// <summary>
         /// Gets the type.
         /// </summary>
@@ -300,6 +398,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class Int32Value : ValueTypePropertyValue<int>
     {
+        public Int32Value() : base() { }
+
+        public Int32Value(int value) : base(value) { }
+
         /// <summary>
         /// Gets the type.
         /// </summary>
@@ -314,6 +416,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class Int64Value : ValueTypePropertyValue<long>
     {
+        public Int64Value() : base() { }
+
+        public Int64Value(long value) : base(value) { }
+
         /// <summary>
         /// Gets the type.
         /// </summary>
@@ -328,12 +434,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class RasterValue : ReferenceTypePropertyValue<byte[]>
     {
+        public RasterValue() : base() { }
+
+        public RasterValue(byte[] value) : base(value) { }
+
         /// <summary>
         /// Gets the type.
         /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Raster; }
+        }
+
+        /// <summary>
+        /// Gets the suggsted property definition type for this value
+        /// </summary>
+        /// <value>
+        /// The suggsted property definition type.
+        /// </value>
+        public override PropertyDefinitionType PropertyDefType
+        {
+            get { return PropertyDefinitionType.Raster; }
         }
     }
 
@@ -342,6 +463,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class SingleValue : ValueTypePropertyValue<float>
     {
+        public SingleValue() : base() { }
+
+        public SingleValue(float value) : base(value) { }
+
         /// <summary>
         /// Gets the type.
         /// </summary>
@@ -356,12 +481,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class StringValue : ReferenceTypePropertyValue<string>
     {
+        public StringValue() : base() { }
+
+        public StringValue(string value) : base(value) { }
+
         /// <summary>
         /// Gets the type.
         /// </summary>
         public override PropertyValueType Type
         {
             get { return PropertyValueType.String; }
+        }
+
+        /// <summary>
+        /// Gets the suggsted property definition type for this value
+        /// </summary>
+        /// <value>
+        /// The suggsted property definition type.
+        /// </value>
+        public override PropertyDefinitionType PropertyDefType
+        {
+            get { return PropertyDefinitionType.Data; }
         }
     }
 

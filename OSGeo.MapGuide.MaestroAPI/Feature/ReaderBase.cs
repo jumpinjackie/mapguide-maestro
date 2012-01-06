@@ -368,5 +368,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             get { return this.Current[name]; }
         }
+
+
+        /// <summary>
+        /// Gets the type of the property.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
+        public OSGeo.MapGuide.MaestroAPI.Schema.PropertyValueType GetPropertyType(string name)
+        {
+            return this.Current.GetPropertyType(name);
+        }
+
+        /// <summary>
+        /// Gets the type of the property at the specified index.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
+        public OSGeo.MapGuide.MaestroAPI.Schema.PropertyValueType GetPropertyType(int index)
+        {
+            return this.Current.GetPropertyType(index);
+        }
     }
 }

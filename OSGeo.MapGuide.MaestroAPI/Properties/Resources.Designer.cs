@@ -441,6 +441,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified property {0} is not of type: {1}.
+        /// </summary>
+        internal static string ERR_PROPERTY_VALUE_NOT_OF_TYPE {
+            get {
+                return ResourceManager.GetString("ERR_PROPERTY_VALUE_NOT_OF_TYPE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No connection attached to this resource.
         /// </summary>
         internal static string ERR_RESOURCE_NOT_ATTACHED {

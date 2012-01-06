@@ -38,6 +38,8 @@ namespace MaestroAPITests
         public const bool IgnoreResourceTests = false;
         public const bool IgnoreHttpRuntimeMapTests = false;
         public const bool IgnoreLocalRuntimeMapTests = true;
+        public const bool IgnoreLocalFeatureTests = false;
+        public const bool IgnoreLocalNativeFeatureTests = false;
         public const bool IgnoreSchemaTests = false;
         public const bool IgnoreSerializationTests = false;
         public const bool IgnoreValidationTests = false;
@@ -45,7 +47,7 @@ namespace MaestroAPITests
 
     public class ConnectionUtil
     {
-        public static string Port { get { return ""; } }
+        public static string Port { get { return "8008"; } }
 
         public static IServerConnection CreateTestHttpConnection()
         {

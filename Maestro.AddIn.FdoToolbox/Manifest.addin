@@ -1,0 +1,20 @@
+﻿<AddIn name="Maestro.AddIn.FdoToolbox"
+       author="Jackie Ng"
+       url="http://trac.osgeo.org/mapguide/wiki/maestro"
+       description="FDO Toolbox AddIn for MapGuide Maestro"
+       addInManagerHidden="preinstalled">
+
+    <Manifest>
+        <Identity name="Maestro.AddIn.FdoToolbox" />
+    </Manifest>
+
+    <Runtime>
+        <Import assembly="../../Maestro.Base.dll" />
+        <Import assembly="Maestro.AddIn.FdoToolbox.dll" />
+    </Runtime>
+
+    <!-- Auto-start commands -->
+    <Path name="/Workspace/Autostart">
+        <Class id="Startup" class="Maestro.AddIn.FdoToolbox.Commands.StartupCommand" />
+    </Path>
+</AddIn>

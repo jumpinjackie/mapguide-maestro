@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace OSGeo.MapGuide.MaestroAPI.Feature
 {
@@ -87,6 +88,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public interface IRecordInitialize
     {
+        /// <summary>
+        /// Gets the property names.
+        /// </summary>
+        IEnumerable<string> PropertyNames { get; }
+
         /// <summary>
         /// Gets the specified property value by name
         /// </summary>
@@ -331,5 +337,217 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <param name="name"></param>
         /// <returns></returns>
         object this[string name] { get; }
+
+        /// <summary>
+        /// Gets the type of the property.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
+        PropertyValueType GetPropertyType(string name);
+        /// <summary>
+        /// Gets the type of the property at the specified index.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
+        PropertyValueType GetPropertyType(int index);
+    }
+
+    public interface IMutableRecord : IRecord, IRecordInitialize
+    {
+        /// <summary>
+        /// Gets or sets the object at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        object this[int index] { set; get; }
+
+        /// <summary>
+        /// Gets or sets the object value for the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        object this[string name] { set; get; }
+
+        /// <summary>
+        /// Sets whether the specified property name has a null property value
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        void SetNull(string name);
+
+        /// <summary>
+        /// Sets whether the property value at the specified index has a null property value.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        void SetNull(int index);
+
+        /// <summary>
+        /// Sets the boolean value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        void SetBoolean(string name, bool value);
+
+        /// <summary>
+        /// Sets the byte value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        void SetByte(string name, byte value);
+
+        /// <summary>
+        /// Sets the blob value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        void SetBlob(string name, byte[] value);
+
+        /// <summary>
+        /// Sets the clob value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        void SetClob(string name, char[] value);
+
+        /// <summary>
+        /// Sets the double value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        void SetDouble(string name, double value);
+
+        /// <summary>
+        /// Sets the datetime value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        void SetDateTime(string name, DateTime value);
+
+        /// <summary>
+        /// Sets the int16 value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        void SetInt16(string name, short value);
+
+        /// <summary>
+        /// Sets the int32 value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        void SetInt32(string name, int value);
+
+        /// <summary>
+        /// Sets the int64 value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        void SetInt64(string name, long value);
+
+        /// <summary>
+        /// Sets the single value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        void SetSingle(string name, float value);
+
+        /// <summary>
+        /// Sets the string value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        void SetString(string name, string value);
+
+        /// <summary>
+        /// Sets the geometry value of the specified property
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        void SetGeometry(string name, IGeometry value);
+
+        /// <summary>
+        /// Sets the boolean value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        void SetBoolean(int index, bool value);
+
+        /// <summary>
+        /// Sets the byte value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        void SetByte(int index, byte value);
+
+        /// <summary>
+        /// Sets the blob value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        void SetBlob(int index, byte[] value);
+
+        /// <summary>
+        /// Sets the clob value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        void SetClob(int index, char[] value);
+
+        /// <summary>
+        /// Sets the double value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        void SetDouble(int index, double value);
+
+        /// <summary>
+        /// Sets the datetime value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        void SetDateTime(int index, DateTime value);
+
+        /// <summary>
+        /// Sets the int16 value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        void SetInt16(int index, short value);
+
+        /// <summary>
+        /// Sets the int32 value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        void SetInt32(int index, int value);
+
+        /// <summary>
+        /// Sets the int64 value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        void SetInt64(int index, long value);
+
+        /// <summary>
+        /// Sets the single value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        void SetSingle(int index, float value);
+
+        /// <summary>
+        /// Sets the string value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        void SetString(int index, string value);
+
+        /// <summary>
+        /// Sets the geometry value at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        void SetGeometry(int index, IGeometry value);
     }
 }

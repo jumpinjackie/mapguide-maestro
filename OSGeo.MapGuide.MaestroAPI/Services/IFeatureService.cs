@@ -99,28 +99,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// Executes a feature query on the specified feature source
         /// </summary>
         /// <param name="resourceID"></param>
-        /// <param name="schema"></param>
-        /// <param name="query"></param>
+        /// <param name="className"></param>
+        /// <param name="filter"></param>
         /// <returns></returns>
-        IFeatureReader QueryFeatureSource(string resourceID, string schema, string query);
+        IFeatureReader QueryFeatureSource(string resourceID, string className, string filter);
 
         /// <summary>
         /// Executes a feature query on the specified feature source
         /// </summary>
         /// <param name="resourceID"></param>
-        /// <param name="schema"></param>
+        /// <param name="className"></param>
         /// <returns></returns>
-        IFeatureReader QueryFeatureSource(string resourceID, string schema);
+        IFeatureReader QueryFeatureSource(string resourceID, string className);
 
         /// <summary>
         /// Executes a feature query on the specified feature source
         /// </summary>
         /// <param name="resourceID"></param>
-        /// <param name="schema"></param>
-        /// <param name="query"></param>
-        /// <param name="columns"></param>
+        /// <param name="className"></param>
+        /// <param name="filter"></param>
+        /// <param name="propertyNames"></param>
         /// <returns></returns>
-        IFeatureReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns);
+        IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames);
 
         /// <summary>
         /// Executes a feature query on the specified feature source
@@ -212,7 +212,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="resourceID"></param>
         /// <param name="schema"></param>
         /// <returns></returns>
-        ClassDefinition GetClassDefinition(string resourceID, string schema);
+        ClassDefinition GetClassDefinition(string resourceID, string className);
 
         /// <summary>
         /// Get the spatial context information for the specified feature source

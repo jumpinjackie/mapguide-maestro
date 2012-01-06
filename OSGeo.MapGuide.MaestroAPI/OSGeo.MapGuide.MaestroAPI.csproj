@@ -175,6 +175,8 @@
     <Compile Include="ArgumentParser.cs" />
     <Compile Include="BindingListExtensions.cs" />
     <Compile Include="Capability\NsDoc.cs" />
+    <Compile Include="Commands\FeatureManipulationCommandImpl.cs" />
+    <Compile Include="Commands\FeatureManipulationCommands.cs" />
     <Compile Include="Commands\IGetFdoCacheInfo.cs" />
     <Compile Include="Commands\IGetResourceContents.cs" />
     <Compile Include="Capability\ConnectionCapabilities.cs" />
@@ -212,6 +214,8 @@
     <Compile Include="Feature\FeatureReaderBase.cs" />
     <Compile Include="Feature\IFeatureReader.cs" />
     <Compile Include="Feature\IReader.cs" />
+    <Compile Include="Feature\MutableFeatureBase.cs" />
+    <Compile Include="Feature\MutableRecordBase.cs" />
     <Compile Include="Feature\NsDoc.cs" />
     <Compile Include="Feature\PropertyValue.cs" />
     <Compile Include="Feature\ReaderBase.cs" />
