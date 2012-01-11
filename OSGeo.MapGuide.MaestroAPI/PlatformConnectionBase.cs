@@ -1931,7 +1931,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public virtual RuntimeMap OpenMap(string runtimeMapResourceId)
         {
-            if (!runtimeMapResourceId.StartsWith("Session:" + this.SessionID + "//") || !runtimeMapResourceId.EndsWith(".Map"))
+            if (!runtimeMapResourceId.StartsWith("Session:") || !runtimeMapResourceId.EndsWith(".Map"))
                 throw new ArgumentException("Runtime maps must be in the current session repository");
 
             var map = new RuntimeMap(GetInterface());

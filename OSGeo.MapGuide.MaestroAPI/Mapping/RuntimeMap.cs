@@ -1149,6 +1149,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
+        /// Gets the groups of the specified group.
+        /// </summary>
+        /// <param name="groupName">Name of the group.</param>
+        /// <returns></returns>
+        public RuntimeMapGroup[] GetGroupsOfGroup(string groupName)
+        {
+            Check.NotEmpty(groupName, "groupName");
+            List<RuntimeMapGroup> groups = new List<RuntimeMapGroup>();
+            foreach (var grp in this.Groups)
+            {
+                if (groupName.Equals(grp.Group))
+                    groups.Add(grp);
+            }
+            return groups.ToArray();
+        }
+
+        /// <summary>
         /// Saves this instance. The changes are propagated back to the MapGuide Server
         /// </summary>
         public virtual void Save()

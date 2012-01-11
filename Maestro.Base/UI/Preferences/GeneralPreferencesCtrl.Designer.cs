@@ -36,6 +36,7 @@
             this.txtTemplatePath = new System.Windows.Forms.TextBox();
             this.btnBrowseTemplatePath = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkShowTipOfTheDay = new System.Windows.Forms.CheckBox();
             this.chkOutbound = new System.Windows.Forms.CheckBox();
             this.chkMessages = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -50,7 +51,9 @@
             this.cmbOpenedColor = new Maestro.Editors.Common.ColorComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.chkShowTipOfTheDay = new System.Windows.Forms.CheckBox();
+            this.btnBrowseRtMapInspector = new System.Windows.Forms.Button();
+            this.txtRtMapInspector = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -102,6 +105,12 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
+            // chkShowTipOfTheDay
+            // 
+            resources.ApplyResources(this.chkShowTipOfTheDay, "chkShowTipOfTheDay");
+            this.chkShowTipOfTheDay.Name = "chkShowTipOfTheDay";
+            this.chkShowTipOfTheDay.UseVisualStyleBackColor = true;
+            // 
             // chkOutbound
             // 
             resources.ApplyResources(this.chkOutbound, "chkOutbound");
@@ -117,6 +126,9 @@
             // groupBox2
             // 
             resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.btnBrowseRtMapInspector);
+            this.groupBox2.Controls.Add(this.txtRtMapInspector);
             this.groupBox2.Controls.Add(this.btnBrowseFsPreview);
             this.groupBox2.Controls.Add(this.txtFsPreview);
             this.groupBox2.Controls.Add(this.btnBrowseMgCooker);
@@ -194,11 +206,23 @@
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
-            // chkShowTipOfTheDay
+            // btnBrowseRtMapInspector
             // 
-            resources.ApplyResources(this.chkShowTipOfTheDay, "chkShowTipOfTheDay");
-            this.chkShowTipOfTheDay.Name = "chkShowTipOfTheDay";
-            this.chkShowTipOfTheDay.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnBrowseRtMapInspector, "btnBrowseRtMapInspector");
+            this.btnBrowseRtMapInspector.Name = "btnBrowseRtMapInspector";
+            this.btnBrowseRtMapInspector.UseVisualStyleBackColor = true;
+            this.btnBrowseRtMapInspector.Click += new System.EventHandler(this.btnBrowseRtMapInspector_Click);
+            // 
+            // txtRtMapInspector
+            // 
+            resources.ApplyResources(this.txtRtMapInspector, "txtRtMapInspector");
+            this.txtRtMapInspector.Name = "txtRtMapInspector";
+            this.txtRtMapInspector.ReadOnly = true;
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
             // 
             // GeneralPreferencesCtrl
             // 
@@ -249,5 +273,8 @@
         private Maestro.Editors.Common.ColorComboBox cmbModifiedColor;
         private Maestro.Editors.Common.ColorComboBox cmbOpenedColor;
         private System.Windows.Forms.CheckBox chkShowTipOfTheDay;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnBrowseRtMapInspector;
+        private System.Windows.Forms.TextBox txtRtMapInspector;
     }
 }

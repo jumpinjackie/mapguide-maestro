@@ -23,6 +23,7 @@
             <ConditionEvaluator name="HasDocuments" class="Maestro.Base.Commands.Conditions.NonZeroDocumentConditionEvaluator" />
             <ConditionEvaluator name="ResourceType" class="Maestro.Base.Commands.Conditions.ResourceTypeConditionEvaluator" />
             <ConditionEvaluator name="NoConnectionOfType" class="Maestro.Base.Commands.Conditions.ConnectionProviderConditionEvaluator" />
+            <ConditionEvaluator name="SupportedCommand" class="Maestro.Base.Commands.Conditions.SupportedCommandConditionEvaluator" />
         </Import>
     </Runtime>
 
@@ -664,6 +665,9 @@
         <MenuItem id="LocalFsPreview"
                   label="${res:LocalFsPreview}"
                   class="Maestro.Base.Commands.LocalFeatureSourcePreviewCommand"/>
+        <MenuItem id="RtMapInspector"
+                  label="${res:RtMapInspector}"
+                  class="Maestro.Base.Commands.RtMapInspectorCommand"/>
         <MenuItem id="ServerMonitor"
                   label="${res:ServerMonitor}"
                   icon="system_monitor"

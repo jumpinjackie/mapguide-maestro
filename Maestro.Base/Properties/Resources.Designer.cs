@@ -1863,6 +1863,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Runtime Map Inspector.
+        /// </summary>
+        internal static string RtMapInspector {
+            get {
+                return ResourceManager.GetString("RtMapInspector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saved resource content to {0}.
         /// </summary>
         internal static string SavedResource {

@@ -62,6 +62,7 @@ namespace Maestro.Base.UI.Preferences
 
             txtFsPreview.Text = Props.Get(ConfigProperties.LocalFsPreviewPath, ConfigProperties.DefaultLocalFsPreviewPath);
             txtMgCooker.Text = Props.Get(ConfigProperties.MgCookerPath, ConfigProperties.DefaultMgCookerPath);
+            txtRtMapInspector.Text = Props.Get(ConfigProperties.RtMapInspectorPath, ConfigProperties.DefaultRtMapInspectorPath);
 
             cmbOpenedColor.CurrentColor = Props.Get(ConfigProperties.OpenColor, Color.LightGreen);
             cmbModifiedColor.CurrentColor = Props.Get(ConfigProperties.DirtyColor, Color.Pink);
@@ -99,6 +100,7 @@ namespace Maestro.Base.UI.Preferences
             Apply(ConfigProperties.UserTemplatesDirectory, txtTemplatePath.Text);
             Apply(ConfigProperties.MgCookerPath, txtMgCooker.Text);
             Apply(ConfigProperties.LocalFsPreviewPath, txtFsPreview.Text);
+            Apply(ConfigProperties.RtMapInspectorPath, txtRtMapInspector.Text);
             Apply(ConfigProperties.OpenColor, (Color)cmbOpenedColor.CurrentColor);
             Apply(ConfigProperties.DirtyColor, (Color)cmbModifiedColor.CurrentColor);
             Apply(ConfigProperties.ShowTipOfTheDay, chkShowTipOfTheDay.Checked);
@@ -152,6 +154,19 @@ namespace Maestro.Base.UI.Preferences
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     txtFsPreview.Text = dlg.FileName;
+                }
+            }
+        }
+
+        private void btnBrowseRtMapInspector_Click(object sender, EventArgs e)
+        {
+            using (var dlg = DialogFactory.OpenFile())
+            {
+                dlg.Title = string.Format(Properties.Resources.LocateExecutable, "RtMapInspector.exe");
+                dlg.Filter = Properties.Resources.FilterExecutables;
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    txtRtMapInspector.Text = dlg.FileName;
                 }
             }
         }

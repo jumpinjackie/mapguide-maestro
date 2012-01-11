@@ -1082,4 +1082,7 @@ Do you want to convert the values?</value>
   <data name="Menu_Tools_Translate_Desc" xml:space="preserve">
     <value>Translate this Layout</value>
   </data>
+  <data name="RtMapInspector" xml:space="preserve">
+    <value>Runtime Map Inspector</value>
+  </data>
 </root>

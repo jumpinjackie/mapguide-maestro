@@ -36,6 +36,7 @@ namespace Maestro.Base.UI.Preferences
         public const string OpenColor = "General.OpenColor";
         public const string DirtyColor = "General.DirtyColor";
         public const string MgCookerPath = "General.MgCookerPath";
+        public const string RtMapInspectorPath = "General.RtMapInspectorPath";
         public const string LocalFsPreviewPath = "General.LocalFsPreviewPath";
         public const string ValidateOnSave = "General.ValidateResourceOnSave";
         public const string XsdSchemaPath = "Editor.XsdSchemaPath";
@@ -62,6 +63,7 @@ namespace Maestro.Base.UI.Preferences
             Props.Set(ConfigProperties.OpenColor, DefaultOpenColor);
             Props.Set(ConfigProperties.DirtyColor, DefaultDirtyColor);
             Props.Set(ConfigProperties.MgCookerPath, DefaultMgCookerPath);
+            Props.Set(ConfigProperties.RtMapInspectorPath, DefaultRtMapInspectorPath);
             Props.Set(ConfigProperties.LocalFsPreviewPath, DefaultLocalFsPreviewPath);
             Props.Set(ConfigProperties.ShowTipOfTheDay, DefaultShowTipOfTheDay);
         }
@@ -71,6 +73,8 @@ namespace Maestro.Base.UI.Preferences
         public static string DefaultMgCookerPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "MgCooker.exe"); } }
 
         public static string DefaultLocalFsPreviewPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "MaestroFsPreview.exe"); } }
+
+        public static string DefaultRtMapInspectorPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "RtMapInspector.exe"); } }
 
         public static Color DefaultOpenColor { get { return Color.LightGreen; } }
 
