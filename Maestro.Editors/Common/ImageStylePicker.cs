@@ -100,12 +100,15 @@ namespace Maestro.Editors.Common
 
 			Color brushcolor = this.Enabled ? this.ForeColor : System.Drawing.SystemColors.GrayText; 
 			int imageWidth = e.Bounds.Width - m_textWidth - MARGIN * 2;
+
+            int startX = e.Bounds.X + MARGIN;
+            int startY = e.Bounds.Y + MARGIN;
+
 			//TODO: Apply B/W + dim filter here
-			Rectangle r = new Rectangle(e.Bounds.X + MARGIN + 1, e.Bounds.Y + MARGIN + 1, imageWidth - 1, m_itemHeight - 1);
-			using (Brush b = new TextureBrush(bmp))
-				e.Graphics.FillRectangle(b, r);
-			
-			r = new Rectangle(e.Bounds.X + MARGIN, e.Bounds.Y + MARGIN, imageWidth, m_itemHeight);
+            Rectangle r = new Rectangle(startX + 1, startY + 1, imageWidth - 1, m_itemHeight - 1);
+            e.Graphics.DrawImageUnscaledAndClipped(bmp, r);
+
+            r = new Rectangle(startX, startY, imageWidth, m_itemHeight);
 			using(Pen p = new Pen(brushcolor))
 				e.Graphics.DrawRectangle(p, r);
 
