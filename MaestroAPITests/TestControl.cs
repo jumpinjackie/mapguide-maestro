@@ -28,20 +28,20 @@ namespace MaestroAPITests
 
     public class TestControl
     {
-        public const bool IgnoreConfigurationTests = false;
-        public const bool IgnoreCapabilityTests = false;
-        public const bool IgnoreExpressionTests = false;
-        public const bool IgnoreFeatureReaderTests = false;
-        public const bool IgnoreHttpConnectionTests = false;
-        public const bool IgnoreHttpSiteTests = false;
-        public const bool IgnoreObjectTests = false;
-        public const bool IgnoreResourceTests = false;
-        public const bool IgnoreHttpRuntimeMapTests = false;
+        public const bool IgnoreConfigurationTests = true;
+        public const bool IgnoreCapabilityTests = true;
+        public const bool IgnoreExpressionTests = true;
+        public const bool IgnoreFeatureReaderTests = true;
+        public const bool IgnoreHttpConnectionTests = true;
+        public const bool IgnoreHttpSiteTests = true;
+        public const bool IgnoreObjectTests = true;
+        public const bool IgnoreResourceTests = true;
+        public const bool IgnoreHttpRuntimeMapTests = true;
         public const bool IgnoreLocalRuntimeMapTests = true;
-        public const bool IgnoreLocalFeatureTests = false;
-        public const bool IgnoreLocalNativeFeatureTests = false;
-        public const bool IgnoreSchemaTests = false;
-        public const bool IgnoreSerializationTests = false;
+        public const bool IgnoreLocalFeatureTests = true;
+        public const bool IgnoreLocalNativeFeatureTests = true;
+        public const bool IgnoreSchemaTests = true;
+        public const bool IgnoreSerializationTests = true;
         public const bool IgnoreValidationTests = false;
     }
 

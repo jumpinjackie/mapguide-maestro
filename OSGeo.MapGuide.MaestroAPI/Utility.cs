@@ -592,6 +592,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                        .Replace("'", "-x27-")
                        .Replace("<", "-x3C-")
                        .Replace(">", "-x3E-")
+                       .Replace("~", "-x7E-")
                        .Replace(" ", "-x20-");
         }
 

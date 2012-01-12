@@ -341,7 +341,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
             //Process identity properties
             var parent = node.ParentNode;
-            var key = parent.SelectSingleNode("xs:element[@name=\"" + en + "\"]/xs:key", mgr);
+            //This is a lower-case coerced xpath query as our encoded name for querying may not be of the correct case
+            var xpath = "xs:element[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')=\"" + en.ToLower() + "\"]/xs:key";
+            var key = parent.SelectSingleNode(xpath, mgr);
             if (key != null)
             {
                 var fields = key.SelectNodes("xs:field", mgr);

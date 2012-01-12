@@ -32,6 +32,7 @@ using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System.Xml;
 
 namespace MaestroAPITests
 {
@@ -547,6 +548,30 @@ namespace MaestroAPITests
             }
 
             Assert.False(hasIssue);
+        }
+
+        [Test]
+        public void TestCase1896()
+        {
+            var fs = new FeatureSchema();
+            var doc = new XmlDocument();
+            
+            doc.Load("UserTestData\\1896.xml");
+
+            var mgr = new XmlNamespaceManager(doc.NameTable);
+            mgr.AddNamespace("xs", XmlNamespaces.XS);
+            mgr.AddNamespace("xsi", XmlNamespaces.XSI);
+            mgr.AddNamespace("fdo", XmlNamespaces.FDO);
+            mgr.AddNamespace("gml", XmlNamespaces.GML);
+            mgr.AddNamespace("xlink", XmlNamespaces.XLINK);
+            mgr.AddNamespace("fds", XmlNamespaces.FDS);
+
+            fs.ReadXml(doc.SelectSingleNode("xs:schema", mgr), mgr);
+
+            foreach (var cls in fs.Classes)
+            {
+                Assert.True(cls.IdentityProperties.Count > 0, "Expected identity properties in: " + cls.QualifiedName);
+            }
         }
     }
 }
