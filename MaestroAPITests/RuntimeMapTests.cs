@@ -1148,15 +1148,12 @@ namespace MaestroAPITests
         }
     }
 
-    [TestFixture(Ignore = TestControl.IgnoreLocalRuntimeMapTests)]
+    [TestFixture(Ignore = TestControl.IgnoreLocalNativeRuntimeMapTests)]
     public class LocalRuntimeMapTests : RuntimeMapTests
     {
         protected override IServerConnection CreateTestConnection()
         {
-            return ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative",
-                "ConfigFile", "webconfig.ini",
-                "Username", "Administrator",
-                "Password", "admin");
+            return LocalNativeConnectionUtil.CreateTestConnection();
         }
 
         [Test]

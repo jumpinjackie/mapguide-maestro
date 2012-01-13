@@ -406,6 +406,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 		{
 			get
 			{
+#if MG220
+                return SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_2);
+#elif MG210
+                return SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_1);
+#elif MG202
+                return SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_0_2);
+#else
+
                 if (m_siteVersion != null)
                     return m_siteVersion;
 
@@ -433,21 +441,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 {
                 }
 
-
                 //Default
                 if (m_siteVersion == null)
                 {
-#if MG220
-                    m_siteVersion = SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_2);
-#elif MG210
-                    m_siteVersion = SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_2);
-#elif MG200
-                    m_siteVersion = SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_0_2);
-#else
                     m_siteVersion = SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2);
-#endif
                 }
                 return m_siteVersion;
+#endif
             }
 		}
 
@@ -833,7 +833,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         public override bool ResourceExists(string resourceid)
         {
             //API is safe to call in MG 2.1 and newer
-            if (this.SiteVersion >= new Version(2, 1))
+            var version = this.SiteVersion;
+            if (version >= new Version(2, 1))
             {
                 MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
                 var result = res.ResourceExists(new MgResourceIdentifier(resourceid));
@@ -913,14 +914,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             {
                 case CommandType.GetResourceContents:
                     return new LocalGetResourceContents(this);
+                case CommandType.CreateDataStore:
+                    return new LocalNativeCreateDataStore(this);
                 case CommandType.ApplySchema:
                     return new LocalNativeApplySchema(this);
                 case CommandType.DeleteFeatures:
                     return new LocalNativeDelete(this);
                 case CommandType.InsertFeature:
-                    return new LocalNativeDelete(this);
+                    return new LocalNativeInsert(this);
                 case CommandType.UpdateFeatures:
-                    return new LocalNativeDelete(this);
+                    return new LocalNativeUpdate(this);
             }
             return base.CreateCommand(cmdType);
         }

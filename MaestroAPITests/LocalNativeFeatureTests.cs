@@ -294,6 +294,45 @@ namespace MaestroAPITests
         }
     }
 
+    [TestFixture(Ignore = TestControl.IgnoreLocalNativeFeatureTests)]
+    public class LocalNativeFeatureTests : LocalNativeFeatureTestsBase
+    {
+        protected override IServerConnection CreateTestConnection()
+        {
+            return LocalNativeConnectionUtil.CreateTestConnection();
+        }
+
+        [Test]
+        public override void TestApplySchema()
+        {
+            base.TestApplySchema();
+        }
+
+        [Test]
+        public override void TestCreateDataStore()
+        {
+            base.TestCreateDataStore();
+        }
+
+        [Test]
+        public override void TestDeleteFeatures()
+        {
+            base.TestDeleteFeatures();
+        }
+
+        [Test]
+        public override void TestInsertFeatures()
+        {
+            base.TestInsertFeatures();
+        }
+
+        [Test]
+        public override void TestUpdateFeatures()
+        {
+            base.TestUpdateFeatures();
+        }
+    }
+
     [TestFixture(Ignore = TestControl.IgnoreLocalFeatureTests)]
     public class LocalFeatureTests : LocalNativeFeatureTestsBase
     {

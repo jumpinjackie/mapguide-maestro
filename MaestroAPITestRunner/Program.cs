@@ -22,6 +22,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace MaestroAPITestRunner
 {
@@ -33,6 +35,29 @@ namespace MaestroAPITestRunner
     {
         static void Main(string[] args)
         {
+            //NOTE: Maestro.Local and Maestro.LocalNative unit tests cannot be run at the
+            //same time. They are mutually exclusive. You will need to remove the postbuild
+            //and change the TestControl settings if you want to activate the Maestro.LocalNative tests
+            //
+            //For reference, this is the postbuild required for Maestro.Local tests
+
+            /*
+IF EXIST "$(ProjectDir)Setup" XCOPY /Y /I "$(ProjectDir)Setup\*.*" "$(ProjectDir)$(OutDir)"
+IF NOT EXIST "$(OutDir)Dictionaries" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\Dictionaries\*.*" "$(ProjectDir)$(OutDir)Dictionaries"
+IF NOT EXIST "$(OutDir)FDO" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\FDO\*.*" "$(ProjectDir)$(OutDir)FDO"
+IF NOT EXIST "$(OutDir)Resources" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\Resources\*.res" "$(ProjectDir)$(OutDir)Resources"
+COPY /Y "$(SolutionDir)..\Maestro.AddIn.Local\*.dll" "$(ProjectDir)$(OutDir)"
+             */
+            /*
+            Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH") + ";C:\\Program Files\\OSGeo\\MapGuide\\Web\\www\\mapviewernet\\bin");
+            Environment.SetEnvironmentVariable("MENTOR_DICTIONARY_PATH", "C:\\Program Files\\OSGeo\\MapGuide\\CS-Map\\Dictionaries");
+
+            Assembly.LoadFrom("MGOS22\\OSGeo.MapGuide.Foundation.dll");
+            Assembly.LoadFrom("MGOS22\\OSGeo.MapGuide.Geometry.dll");
+            Assembly.LoadFrom("MGOS22\\OSGeo.MapGuide.PlatformBase.dll");
+            Assembly.LoadFrom("MGOS22\\OSGeo.MapGuide.MapGuideCommon.dll");
+            Assembly.LoadFrom("MGOS22\\OSGeo.MapGuide.Web.dll");
+            */
             NUnit.ConsoleRunner.Runner.Main(args);
         }
     }
