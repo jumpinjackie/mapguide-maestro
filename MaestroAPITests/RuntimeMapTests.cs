@@ -111,6 +111,26 @@ namespace MaestroAPITests
 
         protected abstract IServerConnection CreateTestConnection();
 
+        public virtual void TestExtentSerialization()
+        {
+            var resSvc = _conn.ResourceService;
+            var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
+            Assert.NotNull(mdf);
+            mdf.Extents = ObjectFactory.CreateEnvelope(1.0, 2.0, 3.0, 4.0);
+
+            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            Assert.NotNull(mapSvc);
+
+            var map = mapSvc.CreateMap("Session:" + _conn.SessionID + "//TestExtentSerialization.Map", mdf, 1.0);
+            map.Save();
+
+            var map2 = mapSvc.OpenMap("Session:" + _conn.SessionID + "//TestExtentSerialization.Map");
+            Assert.AreEqual(1.0, map2.DataExtent.MinX);
+            Assert.AreEqual(2.0, map2.DataExtent.MinY);
+            Assert.AreEqual(3.0, map2.DataExtent.MaxX);
+            Assert.AreEqual(4.0, map2.DataExtent.MaxY);
+        }
+
         public virtual void TestCreate()
         {
             //Create a runtime map from its map definition, verify layer/group
@@ -1074,6 +1094,12 @@ namespace MaestroAPITests
         {
             return ConnectionUtil.CreateTestHttpConnection();
         }
+
+        [Test]
+        public override void TestExtentSerialization()
+        {
+            base.TestExtentSerialization();
+        }
         
         [Test]
         public override void TestResourceEvents()
@@ -1154,6 +1180,12 @@ namespace MaestroAPITests
         protected override IServerConnection CreateTestConnection()
         {
             return LocalNativeConnectionUtil.CreateTestConnection();
+        }
+
+        [Test]
+        public override void TestExtentSerialization()
+        {
+            base.TestExtentSerialization();
         }
 
         [Test]

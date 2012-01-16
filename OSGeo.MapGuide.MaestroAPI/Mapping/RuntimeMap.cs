@@ -685,7 +685,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
             s.Write(env.MinX);
             s.Write(env.MinY);
-            s.Write(env.MaxY);
+            s.Write(env.MaxX);
             s.Write(env.MaxY);
         }
 
