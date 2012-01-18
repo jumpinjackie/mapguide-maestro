@@ -37,19 +37,19 @@
     <Position X="23.801" Y="7.423" Height="0.75" Width="2.642" />
   </Comment>
   <Comment CommentText="Feature API - Core Interfaces for working with data queried via IFeatureService">
-    <Position X="30.166" Y="2.231" Height="0.503" Width="2.656" />
+    <Position X="31.958" Y="2.231" Height="0.503" Width="2.656" />
   </Comment>
   <Comment CommentText="Feature Queries return IFeatureReader">
-    <Position X="30.166" Y="2.984" Height="0.379" Width="2.656" />
+    <Position X="31.958" Y="2.984" Height="0.379" Width="2.656" />
   </Comment>
   <Comment CommentText="Aggregate and SQL Queries return IReader">
-    <Position X="30.166" Y="3.467" Height="0.39" Width="2.656" />
+    <Position X="31.958" Y="3.467" Height="0.39" Width="2.656" />
   </Comment>
   <Comment CommentText="Both IReader and IFeatureReader are forward-only iterators. Must first call ReadNext() on respective readers to access the data">
-    <Position X="30.166" Y="3.973" Height="0.75" Width="2.644" />
+    <Position X="31.958" Y="3.973" Height="0.75" Width="2.644" />
   </Comment>
   <Comment CommentText="IReader and IFeatureReader are IEnumerable&lt;IRecord&gt; and IEnumerable&lt;IFeature&gt; respectively. This means that these readers can also be iterated via a foreach loop instead of ReadNext() in a while loop">
-    <Position X="30.177" Y="4.85" Height="1.192" Width="2.622" />
+    <Position X="31.969" Y="4.85" Height="1.192" Width="2.622" />
   </Comment>
   <Comment CommentText="Used for describing and querying drawing data from a Drawing Source">
     <Position X="2.026" Y="11.19" Height="0.594" Width="2.492" />
@@ -81,6 +81,12 @@
   <Comment CommentText="Use the Type property of PropertyDefinition to determine the subclass it can be cast to">
     <Position X="20.218" Y="12.461" Height="0.654" Width="2.287" />
   </Comment>
+  <Comment CommentText="Custom Commands - Interfaces for custom commands to execute custom functionality. Support for such commands vary between connection providers">
+    <Position X="31.667" Y="11.437" Height="0.904" Width="2.841" />
+  </Comment>
+  <Comment CommentText="Mutable features and records can have their property values modified">
+    <Position X="27.74" Y="4.188" Height="0.708" Width="1.7" />
+  </Comment>
   <Class Name="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry" Collapsed="true">
     <Position X="21.25" Y="7" Width="2.25" />
     <TypeIdentifier>
@@ -91,7 +97,7 @@
   <Class Name="OSGeo.MapGuide.ObjectModels.ObjectFactory" Collapsed="true">
     <Position X="21.25" Y="6.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>iaANAgAABERABAAAJAoAkAAgBAAACABAYAhAgCCAAEg=</HashCode>
+      <HashCode>iaANAgAABERABAAAJAoAkAAgRAAACABAYAhAgCCAAEg=</HashCode>
       <FileName>ObjectModels\ObjectFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -105,7 +111,7 @@
   <Class Name="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap" Collapsed="true">
     <Position X="21.5" Y="2" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>VgqBItUhFBECAAABI4BWwSaLymhwkBLFjRIEYIFISVA=</HashCode>
+      <HashCode>VgqRItUhFBECAAABI4BWwSaLymhwkBLFjRIFYIFISVA=</HashCode>
       <FileName>Mapping\RuntimeMap.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -119,7 +125,7 @@
   <Class Name="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer" Collapsed="true">
     <Position X="24.25" Y="4.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>QEAIYEMQATQAEQABYAQQQATALHBDgAQJE0JACAKyyBM=</HashCode>
+      <HashCode>QEAIYEMQATQAEQQBYARwQATALHBTgIQJE0NACAKyyBM=</HashCode>
       <FileName>Mapping\RuntimeMapLayer.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -193,7 +199,7 @@
   <Class Name="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition" Collapsed="true">
     <Position X="22.75" Y="12.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAAAAAAAAAQAACAAAAAAAAAQAAgAAAAIA=</HashCode>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAQAACAAAAAAAAAQAAgAAAAJA=</HashCode>
       <FileName>Schema\PropertyDefinition.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -404,31 +410,108 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Feature.IReader">
-    <Position X="27.25" Y="6.5" Width="1.5" />
+    <Position X="29" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAACAAAA=</HashCode>
       <FileName>Feature\IReader.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Feature.IRecord">
-    <Position X="28" Y="2" Width="2" />
+    <Position X="29.75" Y="2" Width="2" />
     <TypeIdentifier>
       <HashCode>BAAAAAQggAACAAAACAAABAIAAAAEAAQYIBAAAAAABkA=</HashCode>
       <FileName>Feature\IReader.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader">
-    <Position X="28.25" Y="8.5" Width="1.5" />
+    <Position X="30" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Feature\IFeatureReader.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Feature.IFeature">
-    <Position X="29.25" Y="6.5" Width="1.5" />
+    <Position X="31" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAIAAAAA=</HashCode>
       <FileName>Feature\IFeatureReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Feature.IMutableFeature" Collapsed="true">
+    <Position X="27.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Feature\IFeatureReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Feature.IMutableRecord" Collapsed="true">
+    <Position X="27.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEBAAAIgAAEAAAAACEAAAAAAIABACAAAAAEAAAAABCA=</HashCode>
+      <FileName>Feature\IReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.ICommand" Collapsed="true">
+    <Position X="29.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\ICommand.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore">
+    <Position X="28" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAQAAAAAAAAEAAAAAAAAAAAAAABgAAA=</HashCode>
+      <FileName>Commands\FeatureManipulationCommands.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.IDeleteFeatures">
+    <Position X="31.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\FeatureManipulationCommands.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.IFeatureCommand">
+    <Position X="31.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Commands\FeatureManipulationCommands.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.IInsertFeatures">
+    <Position X="33.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\FeatureManipulationCommands.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.IUpdateFeatures">
+    <Position X="35.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAABAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Commands\FeatureManipulationCommands.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.IApplySchema">
+    <Position X="29.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAEAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Commands\FeatureManipulationCommands.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.IGetResourceContents">
+    <Position X="29.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\IGetResourceContents.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.IGetFdoCacheInfo">
+    <Position X="28" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\IGetFdoCacheInfo.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="OSGeo.MapGuide.MaestroAPI.Services.ServiceType">
@@ -464,6 +547,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAhAAAAAAAAAAAAABAAAAAAAAAAgQA=</HashCode>
       <FileName>Schema\PropertyDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="OSGeo.MapGuide.MaestroAPI.Commands.CommandType">
+    <Position X="34.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAQAAGAAAAAAAAAAIBAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Commands\CommandType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />
