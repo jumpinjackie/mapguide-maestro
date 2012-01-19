@@ -43,7 +43,7 @@ namespace Maestro.Base.Commands
                     if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         exe = dlg.FileName;
-                        PropertyService.Set(ConfigProperties.MgCookerPath, exe);
+                        PropertyService.Set(ConfigProperties.RtMapInspectorPath, exe);
                     }
                 }
             }
