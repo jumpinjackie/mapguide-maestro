@@ -1586,14 +1586,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             try
             {
                 System.Collections.Specialized.NameValueCollection fun = new System.Collections.Specialized.NameValueCollection();
-                fun.Add("extent", "SpatialExtents(\"" + geometry + "\")");
+                fun.Add("EXTENT", "SpatialExtents(\"" + geometry + "\")");
                 using (IReader fsr = AggregateQueryFeatureSource(resourceID, schema, filter, fun))
                 {
                     try
                     {
                         if (fsr.ReadNext())
                         {
-                            IGeometry geom = fsr["extent"] as IGeometry;
+                            IGeometry geom = fsr["EXTENT"] as IGeometry;
                             if (geom == null)
                             {
                                 throw new Exception("No data found in resource: " + resourceID);
