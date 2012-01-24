@@ -23,12 +23,13 @@ using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using GisSharpBlog.NetTopologySuite.IO;
+using OSGeo.MapGuide.MaestroAPI.Internal;
 
 namespace OSGeo.MapGuide.MaestroAPI.Native
 {
     public class LocalNativeRecord : RecordBase
     {
-        public LocalNativeRecord(MgReader reader, WKTReader mgReader, MgAgfReaderWriter agfRw, MgWktReaderWriter wktRw)
+        public LocalNativeRecord(MgReader reader, FixedWKTReader mgReader, MgAgfReaderWriter agfRw, MgWktReaderWriter wktRw)
         {
             for (int i = 0; i < reader.GetPropertyCount(); i++)
             {

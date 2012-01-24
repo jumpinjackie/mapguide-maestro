@@ -221,6 +221,7 @@
     <Compile Include="Feature\PropertyValue.cs" />
     <Compile Include="Feature\ReaderBase.cs" />
     <Compile Include="Feature\RecordBase.cs" />
+    <Compile Include="Internal\FixedWKTReader.cs" />
     <Compile Include="IO\NsDoc.cs" />
     <Compile Include="Mapping\Collections.cs" />
     <Compile Include="Mapping\NsDoc.cs" />

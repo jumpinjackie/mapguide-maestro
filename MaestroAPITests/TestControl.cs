@@ -44,6 +44,7 @@ namespace MaestroAPITests
         public const bool IgnoreSchemaTests = false;
         public const bool IgnoreSerializationTests = false;
         public const bool IgnoreValidationTests = false;
+        public const bool IgnoreMiscTests = false;
     }
 
     public class LocalNativeConnectionUtil

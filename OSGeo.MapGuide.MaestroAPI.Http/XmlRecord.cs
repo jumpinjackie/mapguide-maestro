@@ -24,6 +24,7 @@ using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.Xml;
 using GisSharpBlog.NetTopologySuite.IO;
+using OSGeo.MapGuide.MaestroAPI.Internal;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
@@ -42,7 +43,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
 
     public class XmlRecord : RecordBase
     {
-        public XmlRecord(XmlProperty[] properties, WKTReader wktReader, XmlNodeList propertyNodes, string nameElement, string valueElement)
+        public XmlRecord(XmlProperty[] properties, FixedWKTReader wktReader, XmlNodeList propertyNodes, string nameElement, string valueElement)
         {
             for (int i = 0; i < properties.Length; i++)
             {

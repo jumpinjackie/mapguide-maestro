@@ -23,6 +23,7 @@ using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.MaestroAPI.Internal;
 
 #if LOCAL_API
 namespace OSGeo.MapGuide.MaestroAPI.Local.Commands
@@ -57,13 +58,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
     {
         static MgAgfReaderWriter _agfRw;
         static MgWktReaderWriter _wktRw;
-        static GisSharpBlog.NetTopologySuite.IO.WKTReader _reader;
+        static FixedWKTReader _reader;
 
         static GeomConverter()
         {
             _agfRw = new MgAgfReaderWriter();
             _wktRw = new MgWktReaderWriter();
-            _reader = new GisSharpBlog.NetTopologySuite.IO.WKTReader();
+            _reader = new FixedWKTReader();
         }
 
         public static MgByteReader GetAgf(GeoAPI.Geometries.IGeometry geom)

@@ -25,6 +25,7 @@ using System.IO;
 using System.Xml;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using GisSharpBlog.NetTopologySuite.IO;
+using OSGeo.MapGuide.MaestroAPI.Internal;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
@@ -32,7 +33,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
 
     public abstract class XmlReaderBase : ReaderBase
     {
-        protected WKTReader _wktReader;
+        protected FixedWKTReader _wktReader;
         protected XmlTextReader _reader;
 
         protected XmlProperty[] _properties;
@@ -63,7 +64,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
         public XmlReaderBase(Stream source) 
         {
             _reader = new XmlTextReader(source);
-            _wktReader = new WKTReader();
+            _wktReader = new FixedWKTReader();
             _reader.WhitespaceHandling = WhitespaceHandling.Significant;
             _propertyMap = new Dictionary<string, XmlProperty>();
 
