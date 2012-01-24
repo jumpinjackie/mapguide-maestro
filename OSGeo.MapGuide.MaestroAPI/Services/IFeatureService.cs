@@ -188,6 +188,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="schema"></param>
         /// <param name="geometry"></param>
         /// <param name="allowFallbackToContextInformation"></param>
+        /// <exception cref="T:OSGeo.MapGuide.MaestroAPI.Exceptions.NullExtentException">Thrown if the geometric extent is null</exception>
         /// <returns></returns>
         ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, bool allowFallbackToContextInformation);
 

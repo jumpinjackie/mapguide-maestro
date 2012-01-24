@@ -200,6 +200,7 @@
     <Compile Include="Exceptions\MaestroException.cs" />
     <Compile Include="Exceptions\NestedExceptionMessageProcessor.cs" />
     <Compile Include="Exceptions\NsDoc.cs" />
+    <Compile Include="Exceptions\NullExtentException.cs" />
     <Compile Include="Exceptions\ResourceConversionException.cs" />
     <Compile Include="Exceptions\SerializationException.cs" />
     <Compile Include="Exceptions\UnsupportedResourceTypeException.cs" />

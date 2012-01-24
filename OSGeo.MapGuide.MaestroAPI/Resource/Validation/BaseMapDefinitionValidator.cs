@@ -198,8 +198,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                             }
                             catch (Exception ex)
                             {
-                                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_MapDefinition_ResourceRead, string.Format(Properties.Resources.MDF_ResourceReadError, fs.ResourceID, msg)));
+                                var nex = ex as NullExtentException;
+                                if (nex != null)
+                                {
+                                    issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_MapDefinition_FeatureSourceWithNullExtent, string.Format(Properties.Resources.MDF_LayerWithNullExtent, fs.ResourceID)));
+                                }
+                                else
+                                {
+                                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_MapDefinition_ResourceRead, string.Format(Properties.Resources.MDF_ResourceReadError, fs.ResourceID, msg)));
+                                }
                             }
                         }
                         catch (Exception ex)

@@ -560,4 +560,7 @@
   <data name="ERR_PROPERTY_VALUE_NOT_OF_TYPE" xml:space="preserve">
     <value>The specified property {0} is not of type: {1}</value>
   </data>
+  <data name="MDF_LayerWithNullExtent" xml:space="preserve">
+    <value>Map Definition references feature source {0} which has a null extent. Most likely caused by feature source having no actual data inside it</value>
+  </data>
 </root>

@@ -161,6 +161,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Warning_MapDefinition_MissingCoordinateSystem,
 
         /// <summary>
+        /// The Map Definition contains a referenced feature source that has a null extent (usually caused by having no data in the feature source)
+        /// </summary>
+        Warning_MapDefinition_FeatureSourceWithNullExtent,
+
+        /// <summary>
         /// The specified initial view parameters lie outside the referenced Map Definition's extents. Usually means you will see nothing when the Fusion viewer loads.
         /// </summary>
         Warning_Fusion_InitialViewOutsideMapExtents = 3401,

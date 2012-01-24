@@ -39,6 +39,7 @@ using OSGeo.MapGuide.MaestroAPI.Feature;
 using GeoAPI.Geometries;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.MaestroAPI.Exceptions;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -1578,6 +1579,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="geometry">The geometry.</param>
         /// <param name="filter">The filter.</param>
         /// <param name="allowFallbackToContextInformation">if set to <c>true</c> [allow fallback to context information].</param>
+        /// <exception cref="T:OSGeo.MapGuide.MaestroAPI.Exceptions.NullExtentException">Thrown if the geometric extent is null</exception>
         /// <returns></returns>
         protected virtual OSGeo.MapGuide.ObjectModels.Common.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, string filter, bool allowFallbackToContextInformation)
         {
@@ -1593,10 +1595,13 @@ namespace OSGeo.MapGuide.MaestroAPI
                     {
                         if (fsr.ReadNext())
                         {
+                            if (fsr.IsNull("EXTENT"))
+                                throw new NullExtentException();
+
                             IGeometry geom = fsr["EXTENT"] as IGeometry;
                             if (geom == null)
                             {
-                                throw new Exception("No data found in resource: " + resourceID);
+                                throw new NullExtentException();
                             }
                             else
                             {
