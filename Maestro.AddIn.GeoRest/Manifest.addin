@@ -1,0 +1,30 @@
+﻿<AddIn name="Maestro.AddIn.GeoRest"
+       author="Jackie Ng"
+       url="http://trac.osgeo.org/mapguide/wiki/maestro"
+       description="GeoRest AddIn for MapGuide Maestro"
+       addInManagerHidden="preinstalled">
+
+    <Manifest>
+        <Identity name="Maestro.AddIn.GeoRest" />
+    </Manifest>
+
+    <Runtime>
+        <Import assembly="../../Maestro.Base.dll" />
+        <Import assembly="Maestro.AddIn.GeoRest.dll" />
+    </Runtime>
+
+    <!-- Application-level services -->
+    <Path name="/Maestro/ApplicationServices">
+        <Class id="GeoRestService" class="Maestro.AddIn.GeoRest.Services.GeoRestService" />
+    </Path>
+
+    <!-- Singleton view content -->
+    <Path name="/Maestro/Shell/SingleViewContent">
+        <Class id="GeoRestExplorer" class="Maestro.AddIn.GeoRest.UI.FileSystemView" />
+    </Path>
+
+    <!-- Auto-start commands -->
+    <Path name="/Workspace/Autostart">
+        <Class id="Startup" class="Maestro.AddIn.GeoRest.Commands.StartupCommand" />
+    </Path>
+</AddIn>

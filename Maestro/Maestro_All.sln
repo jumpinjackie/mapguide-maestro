@@ -126,6 +126,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.FdoToolbox", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RtMapInspector", "..\RtMapInspector\RtMapInspector.csproj", "{E204559D-EE92-4792-96E2-06F45654FAFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.GeoRest", "..\Maestro.AddIn.GeoRest\Maestro.AddIn.GeoRest.csproj", "{19A769B5-7CFA-4E9F-90D8-BF4A17F918C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -292,6 +294,10 @@ Global
 		{E204559D-EE92-4792-96E2-06F45654FAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E204559D-EE92-4792-96E2-06F45654FAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E204559D-EE92-4792-96E2-06F45654FAFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19A769B5-7CFA-4E9F-90D8-BF4A17F918C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19A769B5-7CFA-4E9F-90D8-BF4A17F918C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19A769B5-7CFA-4E9F-90D8-BF4A17F918C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19A769B5-7CFA-4E9F-90D8-BF4A17F918C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

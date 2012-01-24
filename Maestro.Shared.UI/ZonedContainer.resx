@@ -154,7 +154,7 @@
     <value>True</value>
   </data>
   <data name="documentTabs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 259</value>
+    <value>337, 415</value>
   </data>
   <data name="documentTabs.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -205,7 +205,7 @@
     <value>True</value>
   </data>
   <data name="bottomZone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 181</value>
+    <value>337, 181</value>
   </data>
   <data name="bottomZone.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -241,10 +241,10 @@
     <value>100</value>
   </data>
   <data name="docBottomContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 444</value>
+    <value>337, 600</value>
   </data>
   <data name="docBottomContainer.SplitterDistance" type="System.Int32, mscorlib">
-    <value>259</value>
+    <value>415</value>
   </data>
   <data name="docBottomContainer.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -298,7 +298,7 @@
     <value>True</value>
   </data>
   <data name="rightZone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 444</value>
+    <value>215, 600</value>
   </data>
   <data name="rightZone.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -334,10 +334,10 @@
     <value>No</value>
   </data>
   <data name="docRightContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>382, 444</value>
+    <value>556, 600</value>
   </data>
   <data name="docRightContainer.SplitterDistance" type="System.Int32, mscorlib">
-    <value>240</value>
+    <value>337</value>
   </data>
   <data name="docRightContainer.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -379,7 +379,7 @@
     <value>True</value>
   </data>
   <data name="leftZone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 444</value>
+    <value>240, 600</value>
   </data>
   <data name="leftZone.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -424,7 +424,7 @@
     <value>1</value>
   </data>
   <data name="topContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>626, 444</value>
+    <value>800, 600</value>
   </data>
   <data name="topContainer.SplitterDistance" type="System.Int32, mscorlib">
     <value>240</value>
@@ -466,7 +466,7 @@
     <value>Close All Tabs</value>
   </data>
   <data name="ctxDocumentTabs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 92</value>
+    <value>167, 70</value>
   </data>
   <data name="&gt;&gt;ctxDocumentTabs.Name" xml:space="preserve">
     <value>ctxDocumentTabs</value>
@@ -478,7 +478,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>626, 444</value>
+    <value>800, 600</value>
   </data>
   <data name="&gt;&gt;docImgList.Name" xml:space="preserve">
     <value>docImgList</value>

@@ -1,8 +1,10 @@
 ﻿4.1
 ---
 
+ - New experimental GeoREST AddIn for creating and editing GeoREST configurations
  - Support for v2.4.0 resources (Web Layout, Map Definition, Layer Definition, Watermark Definition, Symbol Definition)
  - Added extra symbol definition validation rules
+ - New utility for inspecting the state of a Runtime Map (RtMapInspector.exe)
  - Fix: Select font link in Text Symbol Definition dialog does nothing
  - Fix: Incorrect resource being flagged for Map Definition validation issues
  - Fix: Size Context not being saved for composite lines in Line Style Editor

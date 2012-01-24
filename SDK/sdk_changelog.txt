@@ -1,3 +1,13 @@
+4.1
+---
+
+- New utility included: SignMapGuideApi.exe 
+    - Use this tool to sign official MapGuide/AIMS .net assemblies with the maestroapi.key
+    
+- Includes source for the Maestro.LocalNative connection provider, allowing you to compile your own connection provider against your specific version of MapGuide/AIMS
+    - Assembly binding redirection is no longer supported
+    - Pre-built binaries for MGOS 2.2 included
+
 4.0
 ---
 
