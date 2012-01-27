@@ -9,17 +9,48 @@ namespace SignMapGuideApi
     class Program
     {
         static string[] files = { "MapGuideDotNetApi", "OSGeo.MapGuide.Foundation", "OSGeo.MapGuide.Geometry", "OSGeo.MapGuide.MapGuideCommon", "OSGeo.MapGuide.PlatformBase", "OSGeo.MapGuide.Web" };
-        static string[] ildasm32 = { "C:\\Program Files\\Microsoft SDKs\\Windows\\v6.0A\\Bin\\ildasm.exe",
+        
+        static Dictionary<string, string[]> ilasm32Paths = new Dictionary<string, string[]>()
+        {
+            { "2.0", new string [] { "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\ilasm.exe" } },
+            { "3.5", new string [] { "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\ilasm.exe" } },
+            { "4.0", new string [] { "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ilasm.exe" } },
+        };
+
+        static Dictionary<string, string[]> ilasm64Paths = new Dictionary<string, string[]>()
+        {
+            { "2.0", new string [] { "C:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\ilasm.exe" } },
+            { "3.5", new string [] { "C:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\ilasm.exe" } },
+            { "4.0", new string [] { "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ilasm.exe" } },
+        };
+
+        static Dictionary<string, string[]> ildasm32Paths = new Dictionary<string, string[]>()
+        {
+            { "2.0", new string [] { "C:\\Program Files\\Microsoft SDKs\\Windows\\v6.0A\\Bin\\ildasm.exe",
                                  "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v6.0A\\Bin\\ildasm.exe",
                                  "C:\\Program Files\\Microsoft SDKs\\Windows\\v7.0A\\Bin\\ildasm.exe",
-                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.0A\\Bin\\ildasm.exe" };
-        static string[] ildasm64 = { "C:\\Program Files\\Microsoft SDKs\\Windows\\v6.0A\\Bin\\x64\\ildasm.exe",
+                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.0A\\Bin\\ildasm.exe" }},
+            { "3.5", new string [] { "C:\\Program Files\\Microsoft SDKs\\Windows\\v6.0A\\Bin\\ildasm.exe",
+                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v6.0A\\Bin\\ildasm.exe",
+                                 "C:\\Program Files\\Microsoft SDKs\\Windows\\v7.0A\\Bin\\ildasm.exe",
+                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.0A\\Bin\\ildasm.exe" }},
+            { "4.0", new string [] { "C:\\Program Files\\Microsoft SDKs\\Windows\\v7.0A\\bin\\NETFX 4.0 Tools\\ildasm.exe",
+                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.0A\\bin\\NETFX 4.0 Tools\\ildasm.exe" }}
+        };
+
+        static Dictionary<string, string[]> ildasm64Paths = new Dictionary<string, string[]>()
+        {
+            { "2.0", new string [] { "C:\\Program Files\\Microsoft SDKs\\Windows\\v6.0A\\Bin\\x64\\ildasm.exe",
                                  "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v6.0A\\Bin\\x64\\ildasm.exe",
                                  "C:\\Program Files\\Microsoft SDKs\\Windows\\v7.0A\\Bin\\x64\\ildasm.exe",
-                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.0A\\Bin\\x64\\ildasm.exe" };
-
-        static string[] ilasm32 = { "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\ilasm.exe", "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ilasm.exe" };
-        static string[] ilasm64 = { "C:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\ilasm.exe", "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ilasm.exe" };
+                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.0A\\Bin\\x64\\ildasm.exe" }},
+            { "3.5", new string [] { "C:\\Program Files\\Microsoft SDKs\\Windows\\v6.0A\\Bin\\x64\\ildasm.exe",
+                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v6.0A\\Bin\\x64\\ildasm.exe",
+                                 "C:\\Program Files\\Microsoft SDKs\\Windows\\v7.0A\\Bin\\x64\\ildasm.exe",
+                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.0A\\Bin\\x64\\ildasm.exe" }},
+            { "4.0", new string [] { "C:\\Program Files\\Microsoft SDKs\\Windows\\v7.0A\\bin\\NETFX 4.0 Tools\\x64\\ildasm.exe",
+                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.0A\\bin\\NETFX 4.0 Tools\\x64\\ildasm.exe" }}
+        };
 
         //TODO: Allow for custom key and infer public key token from it
         static string _keyFile = "maestroapi.key";
@@ -30,34 +61,46 @@ namespace SignMapGuideApi
             return IntPtr.Size == 8;
         }
 
-        static string getILDASMEXE()
+        static string getILDASMEXE(string frameworkVersion)
         {
             if (Is64BitProcess())
             {
-                foreach (string f in ildasm64)
+                if (!ildasm64Paths.ContainsKey(frameworkVersion))
+                    throw new Exception("No registered ildasm.exe search paths for framework version: " + frameworkVersion);
+
+                foreach (string f in ildasm64Paths[frameworkVersion])
                     if (File.Exists(f))
                         return f;
             }
             else
             {
-                foreach (string f in ildasm32)
+                if (!ildasm32Paths.ContainsKey(frameworkVersion))
+                    throw new Exception("No registered ildasm.exe search paths for framework version: " + frameworkVersion);
+
+                foreach (string f in ildasm32Paths[frameworkVersion])
                     if (File.Exists(f))
                         return f;
             }
             return null;
         }
 
-        static string getILASMEXE()
+        static string getILASMEXE(string frameworkVersion)
         {
             if (Is64BitProcess())
             {
-                foreach (string f in ilasm64)
+                if (!ilasm64Paths.ContainsKey(frameworkVersion))
+                    throw new Exception("No registered ilasm.exe search paths for framework version: " + frameworkVersion);
+
+                foreach (string f in ilasm64Paths[frameworkVersion])
                     if (File.Exists(f))
                         return f;
             }
             else
             {
-                foreach (string f in ilasm32)
+                if (!ilasm32Paths.ContainsKey(frameworkVersion))
+                    throw new Exception("No registered ilasm.exe search paths for framework version: " + frameworkVersion);
+
+                foreach (string f in ilasm32Paths[frameworkVersion])
                     if (File.Exists(f))
                         return f;
             }
@@ -198,13 +241,23 @@ namespace SignMapGuideApi
 
         static void Main(string[] args)
         {
+            string fxVersion = "2.0"; //default version
+            foreach (var arg in args)
+            {
+                if (arg.StartsWith("/framework="))
+                {
+                    fxVersion = arg.Substring("/framework=".Length);
+                    break;
+                }
+            }
+            Console.WriteLine("Target Framework: " + fxVersion);
             try
             {
                 if (File.Exists(_keyFile))
                 {
                     Console.Write("Detecting tools...");
-                    string ildasmexe = getILDASMEXE(); // Detect 32 or 64 bit versions of decompiler and compiler
-                    string ilasmexe = getILASMEXE();
+                    string ildasmexe = getILDASMEXE(fxVersion); // Detect 32 or 64 bit versions of decompiler and compiler
+                    string ilasmexe = getILASMEXE(fxVersion);
                     Console.WriteLine("Done");
                     Console.WriteLine("Compiler: " + ilasmexe);
                     Console.WriteLine("Decompiler: " + ildasmexe);
