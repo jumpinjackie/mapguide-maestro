@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using GeoAPI.Geometries;
+using System.Globalization;
 
 namespace OSGeo.MapGuide.MaestroAPI.Feature
 {
@@ -61,6 +62,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// The suggsted property definition type.
         /// </value>
         public abstract PropertyDefinitionType PropertyDefType { get; }
+
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public abstract string ValueAsString();
     }
 
     /// <summary>
@@ -203,6 +210,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             get { return PropertyValueType.Byte; }
         }
+
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ValueAsString()
+        {
+            if (IsNull)
+                throw new Exception("Null Value"); //LOCALIZEME
+
+            return this.Value.ToString(CultureInfo.InvariantCulture);
+        }
     }
 
     /// <summary>
@@ -220,6 +239,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Boolean; }
+        }
+
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ValueAsString()
+        {
+            if (IsNull)
+                throw new Exception("Null Value"); //LOCALIZEME
+
+            return this.Value.ToString();
         }
     }
 
@@ -250,6 +281,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             get { return PropertyDefinitionType.Data; }
         }
+
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ValueAsString()
+        {
+            throw new NotSupportedException();
+        }
     }
 
     /// <summary>
@@ -279,6 +319,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             get { return PropertyDefinitionType.Data; }
         }
+
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ValueAsString()
+        {
+            throw new NotSupportedException();
+        }
     }
 
     /// <summary>
@@ -297,6 +346,33 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             get { return PropertyValueType.DateTime; }
         }
+
+        static string PadLeft(string str, char ch, int totalChars)
+        {
+            var value = str;
+            while (value.Length < totalChars)
+                value = ch + value;
+            return value;
+        }
+
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ValueAsString()
+        {
+            if (IsNull)
+                throw new Exception("Null Value"); //LOCALIZEME
+
+            var dt = this.Value;
+            return string.Format("TIMESTAMP '{0}-{1}-{2} {3}:{4}:{5}'",
+                PadLeft(dt.Year.ToString(), '0', 4),
+                PadLeft(dt.Month.ToString(), '0', 2),
+                PadLeft(dt.Year.ToString(), '0', 2),
+                PadLeft(dt.Hour.ToString(), '0', 2),
+                PadLeft(dt.Minute.ToString(), '0', 2),
+                PadLeft(dt.Second.ToString(), '0', 2));
+        }
     }
 
     /// <summary>
@@ -314,6 +390,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Double; }
+        }
+
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ValueAsString()
+        {
+            if (IsNull)
+                throw new Exception("Null Value"); //LOCALIZEME
+
+            return this.Value.ToString(CultureInfo.InvariantCulture);
         }
     }
 
@@ -344,6 +432,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             get { return PropertyDefinitionType.Object; }
         }
+
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ValueAsString()
+        {
+            if (IsNull)
+                throw new Exception("Null Value"); //LOCALIZEME
+
+            throw new NotSupportedException();
+        }
     }
 
     /// <summary>
@@ -373,6 +473,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             get { return PropertyDefinitionType.Geometry; }
         }
+
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ValueAsString()
+        {
+            if (IsNull)
+                throw new Exception("Null Value"); //LOCALIZEME
+
+            return this.Value.AsText();
+        }
     }
 
     /// <summary>
@@ -390,6 +502,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Int16; }
+        }
+
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ValueAsString()
+        {
+            if (IsNull)
+                throw new Exception("Null Value"); //LOCALIZEME
+
+            return this.Value.ToString(CultureInfo.InvariantCulture);
         }
     }
 
@@ -409,6 +533,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             get { return PropertyValueType.Int32; }
         }
+
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ValueAsString()
+        {
+            if (IsNull)
+                throw new Exception("Null Value"); //LOCALIZEME
+
+            return this.Value.ToString(CultureInfo.InvariantCulture);
+        }
     }
 
     /// <summary>
@@ -426,6 +562,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Int64; }
+        }
+
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ValueAsString()
+        {
+            if (IsNull)
+                throw new Exception("Null Value"); //LOCALIZEME
+
+            return this.Value.ToString(CultureInfo.InvariantCulture);
         }
     }
 
@@ -456,6 +604,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             get { return PropertyDefinitionType.Raster; }
         }
+
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ValueAsString()
+        {
+            throw new NotSupportedException();
+        }
     }
 
     /// <summary>
@@ -473,6 +630,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override PropertyValueType Type
         {
             get { return PropertyValueType.Single; }
+        }
+
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ValueAsString()
+        {
+            if (IsNull)
+                throw new Exception("Null Value"); //LOCALIZEME
+
+            return this.Value.ToString(CultureInfo.InvariantCulture);
         }
     }
 
@@ -503,6 +672,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             get { return PropertyDefinitionType.Data; }
         }
-    }
 
+        /// <summary>
+        /// Gets the value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ValueAsString()
+        {
+            if (IsNull)
+                throw new Exception("Null Value"); //LOCALIZEME
+
+            return this.Value;
+        }
+    }
 }

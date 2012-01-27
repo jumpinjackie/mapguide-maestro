@@ -64,10 +64,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDK\bin\Maestro.Shared.UI.dll</HintPath>
     </Reference>
-    <Reference Include="MapGuideDotNetApi, Version=2.0.0.2308, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\MapGuideDotNetApi.dll</HintPath>
-    </Reference>
     <Reference Include="NetTopologySuite.Merged, Version=1.8.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
@@ -83,10 +79,6 @@
     <Reference Include="OSGeo.MapGuide.MaestroAPI.Http, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDK\bin\OSGeo.MapGuide.MaestroAPI.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.MapGuide.MaestroAPI.Native, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\OSGeo.MapGuide.MaestroAPI.Native.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -394,6 +386,10 @@
     <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj">
       <Project>{F1E2F468-5030-4DBA-968C-9620284AFAA1}</Project>
       <Name>Maestro.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Native\OSGeo.MapGuide.MaestroAPI.Native32-2.2.0.csproj">
+      <Project>{F4420153-9DF3-4407-AD65-E8ABED2B6E25}</Project>
+      <Name>OSGeo.MapGuide.MaestroAPI.Native32-2.2.0</Name>
     </ProjectReference>
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj">
       <Project>{857CA1A3-FC88-4BE0-AB6A-D1EE772AB288}</Project>

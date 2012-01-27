@@ -74,6 +74,7 @@
     <Compile Include="ConfigurationTests.cs" />
     <Compile Include="ExpressionTests.cs" />
     <Compile Include="FeatureReaderTests.cs" />
+    <Compile Include="GeoRestTests.cs" />
     <Compile Include="HttpConnectionTests.cs" />
     <Compile Include="HttpSiteTests.cs" />
     <Compile Include="LocalNativeFeatureTests.cs" />
@@ -550,6 +551,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="UserTestData\1896.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UserTestData\GeoRestConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="UserTestData\NASA_WMS_config_doc.xml">

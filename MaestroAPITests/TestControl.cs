@@ -40,6 +40,7 @@ namespace MaestroAPITests
         public const bool IgnoreLocalNativeRuntimeMapTests = true;
         public const bool IgnoreLocalNativePerformanceTests = true;
         public const bool IgnoreLocalNativeFeatureTests = true;
+        public const bool IgnoreGeoRestTests = true;
         public const bool IgnoreLocalFeatureTests = false;
         public const bool IgnoreSchemaTests = false;
         public const bool IgnoreSerializationTests = false;
@@ -61,6 +62,28 @@ namespace MaestroAPITests
     public class ConnectionUtil
     {
         public static string Port { get { return ""; } }
+
+        public static IServerConnection CreateTestHttpConnectionWithGeoRest()
+        {
+            if (!string.IsNullOrEmpty(Port))
+            {
+                return ConnectionProviderRegistry.CreateConnection("Maestro.Http",
+                    "Url", "http://" + Environment.MachineName + ":" + Port + "/mapguide/mapagent/mapagent.fcgi",
+                    "Username", "Administrator",
+                    "Password", "admin",
+                    "GeoRestUrl", "http://localhost:99/",
+                    "GeoRestConfigPath", "UserTestData\\GeoRestConfig.xml");
+            }
+            else
+            {
+                return ConnectionProviderRegistry.CreateConnection("Maestro.Http",
+                    "Url", "http://" + Environment.MachineName + "/mapguide/mapagent/mapagent.fcgi",
+                    "Username", "Administrator",
+                    "Password", "admin",
+                    "GeoRestUrl", "http://localhost:99/",
+                    "GeoRestConfigPath", "UserTestData\\GeoRestConfig.xml");
+            }
+        }
 
         public static IServerConnection CreateTestHttpConnection()
         {

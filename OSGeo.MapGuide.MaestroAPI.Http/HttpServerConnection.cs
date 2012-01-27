@@ -86,11 +86,27 @@ namespace OSGeo.MapGuide.MaestroAPI
             get
             {
                 var nvc = new NameValueCollection();
-                nvc["Url"] = this.BaseURL;
+                nvc[PARAM_URL] = this.BaseURL;
                 nvc[CommandLineArguments.Provider] = this.ProviderName;
                 nvc[CommandLineArguments.Session] = this.SessionID;
+                nvc[PARAM_GEORESTURL] = this.GeoRestUrl;
+                nvc[PARAM_GEORESTCONF] = this.GeoRestConfigPath;
                 return nvc;
             }
+        }
+
+        private GeoRestConnection _geoRestConn;
+
+        internal GeoRestConnection GeoRestConnection { get { return _geoRestConn; } }
+
+        public string GeoRestUrl
+        {
+            get { return (_geoRestConn == null) ? string.Empty : _geoRestConn.Url; }
+        }
+
+        public string GeoRestConfigPath
+        {
+            get { return (_geoRestConn == null) ? string.Empty : _geoRestConn.ConfigPath; }
         }
 
         public override string ProviderName
@@ -120,10 +136,18 @@ namespace OSGeo.MapGuide.MaestroAPI
         public const string PARAM_USERNAME = "Username";
         public const string PARAM_PASSWORD = "Password";
 
+        public const string PARAM_GEORESTURL = "GeoRestUrl";
+        public const string PARAM_GEORESTCONF = "GeoRestConfigPath";
+
         private ICredentials _cred;
 
-        private void InitConnection(Uri hosturl, string sessionid, string locale, bool allowUntestedVersion)
+        private void InitConnection(Uri hosturl, string sessionid, string locale, bool allowUntestedVersion, string geoRestUrl, string geoRestConfigPath)
         {
+            if (!string.IsNullOrEmpty(geoRestUrl))
+            {
+                _geoRestConn = new GeoRestConnection(geoRestUrl, geoRestConfigPath);
+            }
+
             m_reqBuilder = new RequestBuilder(hosturl, locale, sessionid);
             string req = m_reqBuilder.GetSiteVersion();
             SiteVersion sv = null;
@@ -164,8 +188,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        private void InitConnection(Uri hosturl, string username, string password, string locale, bool allowUntestedVersion)
+        private void InitConnection(Uri hosturl, string username, string password, string locale, bool allowUntestedVersion, string geoRestUrl, string geoRestConfigPath)
         {
+            if (!string.IsNullOrEmpty(geoRestUrl))
+            {
+                _geoRestConn = new GeoRestConnection(geoRestUrl, geoRestConfigPath);
+            }
+
             m_reqBuilder = new RequestBuilder(hosturl, locale);
             mAnonymousUser = (username == "Anonymous");
 
@@ -201,16 +230,24 @@ namespace OSGeo.MapGuide.MaestroAPI
             string locale = null;
             bool allowUntestedVersion = true;
 
+            string geoRestUrl = null;
+            string geoRestConfig = null;
+
             if (initParams[PARAM_LOCALE] != null)
                 locale = initParams[PARAM_LOCALE];
             if (initParams[PARAM_UNTESTED] != null)
                 bool.TryParse(initParams[PARAM_UNTESTED], out allowUntestedVersion);
 
+            if (initParams[PARAM_GEORESTURL] != null)
+                geoRestUrl = initParams[PARAM_GEORESTURL];
+            if (initParams[PARAM_GEORESTCONF] != null)
+                geoRestConfig = initParams[PARAM_GEORESTCONF];
+
             if (initParams[PARAM_SESSION] != null) 
             {
                 string sessionid = initParams[PARAM_SESSION];
 
-                InitConnection(new Uri(initParams[PARAM_URL]), sessionid, locale, allowUntestedVersion);
+                InitConnection(new Uri(initParams[PARAM_URL]), sessionid, locale, allowUntestedVersion, geoRestUrl, geoRestConfig);
             }
             else //Assuming username/password combination
             {
@@ -218,7 +255,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 if (initParams[PARAM_USERNAME] == null)
                     throw new ArgumentException("Missing required connection parameter: " + PARAM_USERNAME);
 
-                InitConnection(new Uri(initParams[PARAM_URL]), initParams[PARAM_USERNAME], pwd, locale, allowUntestedVersion);
+                InitConnection(new Uri(initParams[PARAM_URL]), initParams[PARAM_USERNAME], pwd, locale, allowUntestedVersion, geoRestUrl, geoRestConfig);
             }
         }
 
@@ -226,14 +263,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 		public HttpServerConnection(Uri hosturl, string sessionid, string locale, bool allowUntestedVersion)
 			: this()
 		{
-            InitConnection(hosturl, sessionid, locale, allowUntestedVersion);
+            InitConnection(hosturl, sessionid, locale, allowUntestedVersion, null, null);
 		}
 
         [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateConnection() instead")]
 		public HttpServerConnection(Uri hosturl, string username, string password, string locale, bool allowUntestedVersion)
 			: this()
 		{
-            InitConnection(hosturl, username, password, locale, allowUntestedVersion);
+            InitConnection(hosturl, username, password, locale, allowUntestedVersion, null, null);
 		}
 
 		public override string SessionID
@@ -1792,7 +1829,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override ICommand CreateCommand(int cmdType)
         {
             CommandType ct = (CommandType)cmdType;
-            if (ct == CommandType.GetResourceContents)
+            if (ct == CommandType.InsertFeature)
+                return new GeoRestInsertFeatures(this);
+            else if (ct == CommandType.GetResourceContents)
                 return new HttpGetResourceContents(this);
             else if (ct == CommandType.GetFdoCacheInfo)
                 return new HttpGetFdoCacheInfo(this);

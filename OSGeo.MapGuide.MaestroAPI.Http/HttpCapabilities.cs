@@ -29,18 +29,40 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
 {
     internal class HttpCapabilities : ConnectionCapabilities
     {
-        internal HttpCapabilities(IServerConnection parent) : base(parent) { }
+        private HttpServerConnection _implConn;
+
+        internal HttpCapabilities(IServerConnection parent) 
+            : base(parent) 
+        {
+            _implConn = parent as HttpServerConnection;
+        }
 
         public override int[] SupportedCommands
         {
             get 
             {
-                //TODO: Work out what this can/can't do
-                return new int[] 
+                var gconn = _implConn.GeoRestConnection;
+                if (gconn != null && gconn.Configuration.FeatureSources.Count > 0)
                 {
-                    (int)CommandType.GetResourceContents,
-                    (int)CommandType.GetFdoCacheInfo
-                };
+                    return new int[] 
+                    {
+                        (int)CommandType.GetResourceContents,
+                        (int)CommandType.GetFdoCacheInfo,
+                        //GeoREST allows us to support these
+                        //(int)CommandType.DeleteFeatures,
+                        (int)CommandType.InsertFeature,
+                        //(int)CommandType.UpdateFeatures
+                    };
+                }
+                else
+                {
+                    //TODO: Work out what this can/can't do
+                    return new int[] 
+                    {
+                        (int)CommandType.GetResourceContents,
+                        (int)CommandType.GetFdoCacheInfo
+                    };
+                }
             }
         }
 

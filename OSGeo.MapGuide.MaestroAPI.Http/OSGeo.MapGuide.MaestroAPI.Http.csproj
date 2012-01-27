@@ -51,7 +51,9 @@
     <Compile Include="..\Properties\SignedAssemblyInfo.cs">
       <Link>SignedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Commands\GeoRestCommands.cs" />
     <Compile Include="Commands\HttpGetFdoCacheInfo.cs" />
+    <Compile Include="GeoRestConnection.cs" />
     <Compile Include="HttpCapabilities.cs" />
     <Compile Include="HttpCoordinateSystem.cs" />
     <Compile Include="HttpCoordinateSystemCatalog.cs" />
