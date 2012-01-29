@@ -128,6 +128,7 @@
     <Content Include="Manifest.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\application-list.png" />
     <None Include="Resources\arrow-circle-045-left.png" />
     <None Include="Resources\document-task.png" />
     <None Include="Resources\disk.png" />

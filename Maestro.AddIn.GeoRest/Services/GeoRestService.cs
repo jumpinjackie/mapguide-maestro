@@ -50,6 +50,89 @@ namespace Maestro.AddIn.GeoRest.Services
             } 
         }
 
+        public XmlDocument GetMaestroConfig()
+        {
+            var doc = new XmlDocument();
+            var config = doc.CreateElement("GeoRestConfiguration");
+            doc.AppendChild(config);
+
+            var files = Directory.GetFiles(_configRootPath, "restcfg.xml", SearchOption.AllDirectories);
+            foreach (var f in files)
+            {
+                AddConfigs(f, doc, config);
+            }
+
+            return doc;
+        }
+
+        private static void AddConfigs(string file, XmlDocument config, XmlNode root)
+        {
+            var doc = new XmlDocument();
+            doc.Load(file);
+
+            XmlNodeList sources = doc.GetElementsByTagName("Source");
+            foreach (XmlNode sourceNode in sources)
+            {
+                var attr = sourceNode.Attributes["type"];
+                if (attr != null && attr.Value == "MapGuide")
+                {
+                    var configNode = config.CreateElement("GeoRestFeatureSource");
+                    var fsNode = config.CreateElement("FeatureSource");
+                    var fsClassNode = config.CreateElement("FeatureClass");
+
+                    fsNode.InnerText = sourceNode["FeatureSource"].InnerText;
+                    fsClassNode.InnerText = sourceNode["FeatureClass"].InnerText;
+
+                    configNode.AppendChild(fsNode);
+                    configNode.AppendChild(fsClassNode);
+
+                    var uriPartNode = config.CreateElement("UriPart");
+                    uriPartNode.InnerText = sourceNode.ParentNode.Attributes["uripart"].Value;
+
+                    configNode.AppendChild(uriPartNode);
+
+                    var allowInsertNode = config.CreateElement("AllowInsert");
+                    var allowUpdateNode = config.CreateElement("AllowUpdate");
+                    var allowDeleteNode = config.CreateElement("AllowDelete");
+
+                    allowInsertNode.InnerText = "false";
+                    allowUpdateNode.InnerText = "false";
+                    allowDeleteNode.InnerText = "false";
+
+                    configNode.AppendChild(allowInsertNode);
+                    configNode.AppendChild(allowUpdateNode);
+                    configNode.AppendChild(allowDeleteNode);
+
+                    var parent = sourceNode.ParentNode;
+                    var match = parent.SelectSingleNode("Representation[@renderer='XML']");
+                    if (match != null)
+                    {
+                        foreach (XmlNode repNode in match.ChildNodes)
+                        {
+                            var method = repNode.Attributes["name"];
+                            if (method != null)
+                            {
+                                switch (method.Value)
+                                {
+                                    case "POST":
+                                        allowInsertNode.InnerText = "true";
+                                        break;
+                                    case "PUT":
+                                        allowUpdateNode.InnerText = "true";
+                                        break;
+                                    case "DELETE":
+                                        allowDeleteNode.InnerText = "true";
+                                        break;
+                                }
+                            }
+                        }
+                    }
+
+                    root.AppendChild(configNode);
+                }
+            }
+        }
+
         public FileSystemEntry[] GetEntries(string path)
         {
             var entries = new List<FileSystemEntry>();

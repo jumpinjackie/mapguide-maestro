@@ -60,6 +60,13 @@ namespace Maestro.AddIn.GeoRest.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap application_list {
+            get {
+                object obj = ResourceManager.GetObject("application-list", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap arrow_circle_045_left {
             get {
                 object obj = ResourceManager.GetObject("arrow-circle-045-left", resourceCulture);
@@ -162,6 +169,15 @@ namespace Maestro.AddIn.GeoRest.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Maestro Config Saved to {0}.
+        /// </summary>
+        internal static string MaestroConfigSaved {
+            get {
+                return ResourceManager.GetString("MaestroConfigSaved", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap magnifier {
             get {
                 object obj = ResourceManager.GetObject("magnifier", resourceCulture);
@@ -227,6 +243,15 @@ namespace Maestro.AddIn.GeoRest.Properties {
         internal static string TitleSelectPreview {
             get {
                 return ResourceManager.GetString("TitleSelectPreview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to XML Files (*.xml)|*.xml.
+        /// </summary>
+        internal static string XmlFilter {
+            get {
+                return ResourceManager.GetString("XmlFilter", resourceCulture);
             }
         }
         

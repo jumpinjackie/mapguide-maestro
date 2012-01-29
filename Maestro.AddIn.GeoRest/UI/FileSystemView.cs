@@ -90,6 +90,7 @@ namespace Maestro.AddIn.GeoRest.UI
                 {
                     fileTree.Nodes.Clear();
                     _service.Connect(diag.ConfigurationRoot, diag.GeoRestUrl);
+                    btnOptions.Enabled = true;
                     var node = new TreeNode();
                     node.Text = "Root";
                     node.Tag = new FileSystemEntry() { Name = _service.ConfigurationRoot, IsFolder = true };
@@ -211,6 +212,20 @@ namespace Maestro.AddIn.GeoRest.UI
 
             var entries = _service.GetEntries(GetFilePath(node));
             PopulateEntries(node.Nodes, entries);
+        }
+
+        private void saveMaestroConfigToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var save = DialogFactory.SaveFile())
+            {
+                save.Filter = Properties.Resources.XmlFilter;
+                if (save.ShowDialog() == DialogResult.OK)
+                {
+                    var doc = _service.GetMaestroConfig();
+                    doc.Save(save.FileName);
+                    MessageBox.Show(string.Format(Properties.Resources.MaestroConfigSaved, save.FileName));
+                }
+            }
         }
     }
 
