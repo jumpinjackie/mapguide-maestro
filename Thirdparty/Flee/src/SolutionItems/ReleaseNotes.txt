@@ -1,0 +1,17 @@
+Flee - Fast Lightweight Expression Evaluator
+Eugene Ciloci
+http://www.codeplex.com/Flee
+-------------
+
+Version: [Version]
+Release Date: [Date]
+
+New features:
+-ExpressionOptions.RealLiteralDataType: Specify the data type used to store real literals
+-Decimal literals (ie: 123.45M + 3.45M)
+-Optimization: A number raised to a constant integral power (ie: num1 ^ 2) will be optimized to a sequence of multiplications instead of a call to the Pow function
+
+Breaking Changes:
+-The result of the power operator is now of the same type as its first argument.  Example: 100 ^ 2 will return an integer; 1.5 ^ 2 will return a double.  Previously, the power operator always returned a double.
+
+Bug fixes:

@@ -21,8 +21,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Schema;
-using GeoAPI.Geometries;
 using System.Globalization;
+using GeoAPI.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI.Feature
 {

@@ -22,7 +22,6 @@ using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Schema;
-using GisSharpBlog.NetTopologySuite.IO;
 using OSGeo.MapGuide.MaestroAPI.Internal;
 
 namespace OSGeo.MapGuide.MaestroAPI.Native

@@ -26,7 +26,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
-using GisSharpBlog.NetTopologySuite.IO;
+using OSGeo.MapGuide.MaestroAPI.Internal;
 
 namespace MaestroAPITests
 {
@@ -100,7 +100,7 @@ namespace MaestroAPITests
             insert.FeatureSourceId = fsId;
             var feat = new MutableRecord();
 
-            var reader = new WKTReader();
+            var reader = new FixedWKTReader();
 
             //Initialize this record
             feat.PutValue("GEOM", new GeometryValue(reader.Read("POINT (0 0)")));
@@ -140,7 +140,7 @@ namespace MaestroAPITests
             insert.FeatureSourceId = fsId;
             var feat = new MutableRecord();
 
-            var reader = new WKTReader();
+            var reader = new FixedWKTReader();
 
             //Initialize this record
             feat.PutValue("GEOM", new GeometryValue(reader.Read("POINT (0 0)")));

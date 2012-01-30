@@ -19,21 +19,21 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using ICSharpCode.Core;
-using System.IO;
-using Maestro.Base;
-using System.Reflection;
 using ICSharpCode.Core.Services;
-using Maestro.Base.UI;
-using OSGeo.MapGuide.MaestroAPI;
 using ICSharpCode.Core.WinForms;
-using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
+using Maestro.Base;
+using Maestro.Base.Events;
+using Maestro.Base.Services;
+using Maestro.Base.UI;
 using Maestro.Login;
 using Maestro.Shared.UI;
-using System.Diagnostics;
-using Maestro.Base.Services;
-using Maestro.Base.Events;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 
 namespace Maestro
 {

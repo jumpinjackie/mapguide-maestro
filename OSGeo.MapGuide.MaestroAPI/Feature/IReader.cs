@@ -20,8 +20,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using GeoAPI.Geometries;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using GeoAPI.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI.Feature
 {

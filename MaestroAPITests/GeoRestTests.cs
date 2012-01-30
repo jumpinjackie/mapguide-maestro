@@ -23,8 +23,8 @@ using System.Text;
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Feature;
-using GisSharpBlog.NetTopologySuite.IO;
 using System.Collections.Specialized;
+using OSGeo.MapGuide.MaestroAPI.Internal;
 
 namespace MaestroAPITests
 {
@@ -58,7 +58,7 @@ namespace MaestroAPITests
             }
             dr.Close();
 
-            var wktReader = new WKTReader();
+            var wktReader = new FixedWKTReader();
 
             rec.PutValue("RNAME", new StringValue("Hello World"));
             rec.PutValue("Geometry", new GeometryValue(wktReader.Read("POLYGON ((30 10, 10 20, 20 40, 40 40, 30 10))")));

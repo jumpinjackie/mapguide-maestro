@@ -51,7 +51,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 
         public override double MetersPerUnitY { get { return UDM_Y; } }
 
-        protected override double CalculateScale(GeoAPI.Geometries.IEnvelope bbox, Size size)
+        protected override double CalculateScale(IEnvelope bbox, Size size)
         {
             double picture_width_in_meters = (size.Width / DPI) / IPM;
             double picture_height_in_meters = (size.Height / DPI) / IPM;

@@ -23,9 +23,9 @@ using System.Collections.Generic;
 using System.IO;
 using GeoAPI.Geometries;
 using GisSharpBlog.NetTopologySuite.Geometries;
-using GisSharpBlog.NetTopologySuite.Utilities;
 using RTools_NTS.Util;
 using GisSharpBlog.NetTopologySuite.IO;
+using GisSharpBlog.NetTopologySuite.Utilities;
 
 namespace OSGeo.MapGuide.MaestroAPI.Internal
 {
@@ -88,7 +88,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         public IGeometry Read(TextReader reader)
         {
             StreamTokenizer tokenizer = new StreamTokenizer(reader);
-            List<Token> tokens = new List<Token>();
+            var tokens = new List<Token>();
             tokenizer.Tokenize(tokens);     // Read directly all tokens
             index = 0;                      // Reset pointer to start of tokens
 

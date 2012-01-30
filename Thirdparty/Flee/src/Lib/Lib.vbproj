@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{28334152-7FB7-46A5-8639-68EB84A99BE0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Ciloci.Flee</RootNamespace>
+    <AssemblyName>Ciloci.Flee</AssemblyName>
+    <DocumentationFile>Ciloci.Flee.xml</DocumentationFile>
+    <MyType>Windows</MyType>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\SolutionItems\Flee.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <NoWarn>41999,42016,42353,42354,42355</NoWarn>
+    <WarningsAsErrors>42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <NoWarn>41999,42016,42353,42354,42355</NoWarn>
+    <WarningsAsErrors>42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CalcEngine\InternalTypes\IdentifierAnalyzer.vb" />
+    <Compile Include="CalcEngine\PublicTypes\Exceptions.vb" />
+    <Compile Include="CalcEngine\InternalTypes\DependencyManager.vb" />
+    <Compile Include="CalcEngine\InternalTypes\Miscellaneous.vb" />
+    <Compile Include="CalcEngine\PublicTypes\BatchLoader.vb" />
+    <Compile Include="CalcEngine\PublicTypes\SimpleCalcEngine.vb" />
+    <Compile Include="ExpressionElements\Arithmetic.vb" />
+    <Compile Include="AssemblyInfo.vb" />
+    <Compile Include="ExpressionElements\Base\Binary.vb" />
+    <Compile Include="ExpressionElements\Base\Literals\Real.vb" />
+    <Compile Include="ExpressionElements\Base\Literals\Integral.vb" />
+    <Compile Include="ExpressionElements\Base\Literals\LiteralElement.vb" />
+    <Compile Include="ExpressionElements\Base\Member.vb" />
+    <Compile Include="ExpressionElements\Base\Unary.vb" />
+    <Compile Include="ExpressionElements\Conditional.vb" />
+    <Compile Include="ExpressionElements\In.vb" />
+    <Compile Include="ExpressionElements\Literals\Boolean.vb" />
+    <Compile Include="ExpressionElements\Literals\Char.vb" />
+    <Compile Include="ExpressionElements\Literals\DateTime.vb" />
+    <Compile Include="ExpressionElements\Literals\Integral\Int32.vb" />
+    <Compile Include="ExpressionElements\Literals\Integral\Int64.vb" />
+    <Compile Include="ExpressionElements\Literals\Integral\UInt32.vb" />
+    <Compile Include="ExpressionElements\Literals\Integral\UInt64.vb" />
+    <Compile Include="ExpressionElements\Literals\Null.vb" />
+    <Compile Include="ExpressionElements\Literals\Real\Decimal.vb" />
+    <Compile Include="ExpressionElements\Literals\Real\Double.vb" />
+    <Compile Include="ExpressionElements\Literals\Real\Single.vb" />
+    <Compile Include="ExpressionElements\Literals\String.vb" />
+    <Compile Include="ExpressionElements\Literals\TimeSpan.vb" />
+    <Compile Include="ExpressionElements\LogicalBitwise\AndOr.vb" />
+    <Compile Include="ExpressionElements\LogicalBitwise\Not.vb" />
+    <Compile Include="ExpressionElements\MemberElements\ArgumentList.vb" />
+    <Compile Include="ExpressionElements\MemberElements\Indexer.vb" />
+    <Compile Include="ExpressionElements\MemberElements\FunctionCall.vb" />
+    <Compile Include="ExpressionElements\MemberElements\Identifier.vb" />
+    <Compile Include="ExpressionElements\MemberElements\InvocationList.vb" />
+    <Compile Include="ExpressionElements\Negate.vb" />
+    <Compile Include="ExpressionElements\Root.vb" />
+    <Compile Include="ExpressionElements\Shift.vb" />
+    <Compile Include="InternalTypes\BranchManager.vb" />
+    <Compile Include="InternalTypes\FleeILGenerator.vb" />
+    <Compile Include="InternalTypes\VariableTypes.vb" />
+    <Compile Include="Parsing\CustomTokenPatterns.vb" />
+    <Compile Include="PublicTypes\ExpressionParserOptions.vb" />
+    <Compile Include="PublicTypes\ImportTypes.vb" />
+    <Compile Include="Resources\FleeResourceManager.vb" />
+    <Compile Include="InternalTypes\Utility.vb" />
+    <Compile Include="CalcEngine\PublicTypes\CalculationEngine.vb" />
+    <Compile Include="ExpressionElements\Compare.vb" />
+    <Compile Include="ExpressionElements\Base\ExpressionElement.vb" />
+    <Compile Include="PublicTypes\Exceptions.vb" />
+    <Compile Include="PublicTypes\ExpressionContext.vb" />
+    <Compile Include="PublicTypes\ExpressionImports.vb" />
+    <Compile Include="InternalTypes\Miscellaneous.vb" />
+    <Compile Include="PublicTypes\ExpressionOptions.vb" />
+    <Compile Include="PublicTypes\Miscellaneous.vb" />
+    <Compile Include="Parsing\CustomExpressionAnalyzer.vb" />
+    <Compile Include="InternalTypes\Expression.vb" />
+    <Compile Include="Parsing\ExpressionAnalyzer.vb" />
+    <Compile Include="Parsing\ExpressionConstants.vb" />
+    <Compile Include="Parsing\ExpressionParser.vb" />
+    <Compile Include="Parsing\ExpressionTokenizer.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime.RE\AlternativeElement.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime.RE\CharacterSetElement.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime.RE\CombineElement.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime.RE\Element.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime.RE\Matcher.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime.RE\RegExp.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime.RE\RegExpException.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime.RE\RepeatElement.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime.RE\StringElement.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\Analyzer.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\Automaton.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\LookAheadReader.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\LookAheadSet.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\Node.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\ParseException.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\Parser.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\ParserCreationException.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\ParserLogException.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\Production.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\ProductionPattern.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\ProductionPatternAlternative.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\ProductionPatternElement.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\RecursiveDescentParser.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\Token.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\Tokenizer.vb" />
+    <Compile Include="Parsing\grammatica-1.5.alpha2\PerCederberg.Grammatica.Runtime\TokenPattern.vb" />
+    <Compile Include="ExpressionElements\LogicalBitwise\Xor.vb" />
+    <Compile Include="InternalTypes\ImplicitConversions.vb" />
+    <Compile Include="ExpressionElements\MemberElements\Miscellaneous.vb" />
+    <Compile Include="ExpressionElements\Cast.vb" />
+    <Compile Include="PublicTypes\VariableCollection.vb" />
+    <Compile Include="Resources\ResourceKeys.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\DocComments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\CompileErrors.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ElementNames.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\GeneralErrors.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Parsing\Expression.grammar" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

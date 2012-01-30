@@ -24,6 +24,7 @@ using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Internal;
+using GeoAPI.Geometries;
 
 #if LOCAL_API
 namespace OSGeo.MapGuide.MaestroAPI.Local.Commands
@@ -67,7 +68,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
             _reader = new FixedWKTReader();
         }
 
-        public static MgByteReader GetAgf(GeoAPI.Geometries.IGeometry geom)
+        public static MgByteReader GetAgf(IGeometry geom)
         {
             MgGeometry mgeom = _wktRw.Read(geom.AsText());
             return _agfRw.Write(mgeom);
@@ -78,7 +79,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
             return _wktRw.Write(geom);
         }
 
-        public static GeoAPI.Geometries.IGeometry GetGeometry(MgByteReader agf)
+        public static IGeometry GetGeometry(MgByteReader agf)
         {
             MgGeometry mgeom = _agfRw.Read(agf);
             return _reader.Read(GetWkt(mgeom));   

@@ -24,7 +24,6 @@ using OSGeo.MapGuide.MaestroAPI.Feature;
 using System.IO;
 using System.Xml;
 using OSGeo.MapGuide.MaestroAPI.Schema;
-using GisSharpBlog.NetTopologySuite.IO;
 using OSGeo.MapGuide.MaestroAPI.Internal;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http

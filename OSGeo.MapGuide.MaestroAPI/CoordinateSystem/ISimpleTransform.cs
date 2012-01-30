@@ -20,8 +20,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using GeoAPI.CoordinateSystems.Transformations;
 using GeoAPI.CoordinateSystems;
+using GeoAPI.CoordinateSystems.Transformations;
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
 

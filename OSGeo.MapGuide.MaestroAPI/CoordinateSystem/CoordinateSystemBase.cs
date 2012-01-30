@@ -20,9 +20,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Drawing;
-using ProjNet.CoordinateSystems;
 using GeoAPI.CoordinateSystems;
+using ProjNet.CoordinateSystems;
 using GeoAPI.Geometries;
 using GisSharpBlog.NetTopologySuite.Geometries;
 
@@ -90,7 +89,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="bbox">The map bounding box</param>
         /// <param name="size">The size of the image</param>
         /// <returns>The scale</returns>
-        public double CalculateScale(ObjectModels.Common.IEnvelope bbox, Size size)
+        public double CalculateScale(ObjectModels.Common.IEnvelope bbox, System.Drawing.Size size)
         {
             Check.NotNull(bbox, "bbox");
             return CalculateScale(new Envelope(bbox.MinX, bbox.MaxX, bbox.MinY, bbox.MaxY), size);
@@ -102,7 +101,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="bbox">The map bounding box</param>
         /// <param name="size">The size of the image</param>
         /// <returns>The scale</returns>
-        protected abstract double CalculateScale(IEnvelope bbox, Size size);
+        protected abstract double CalculateScale(IEnvelope bbox, System.Drawing.Size size);
 
         /// <summary>
         /// Adjusts the boundingbox to equal proportions 
@@ -111,7 +110,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="scale">The scale to fit</param>
         /// <param name="size">The size to fit to</param>
         /// <returns>A bounding box with the correct ratio</returns>
-        public ObjectModels.Common.IEnvelope AdjustBoundingBox(ObjectModels.Common.IEnvelope bbox, double scale, Size size)
+        public ObjectModels.Common.IEnvelope AdjustBoundingBox(ObjectModels.Common.IEnvelope bbox, double scale, System.Drawing.Size size)
         {
             Check.NotNull(bbox, "bbox");
             var env = AdjustBoundingBox(new Envelope(bbox.MinX, bbox.MaxX, bbox.MinY, bbox.MaxY), scale, size);
@@ -125,7 +124,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="scale">The scale to fit</param>
         /// <param name="size">The size to fit to</param>
         /// <returns>A bounding box with the correct ratio</returns>
-        protected abstract IEnvelope AdjustBoundingBox(IEnvelope bbox, double scale, Size size);
+        protected abstract IEnvelope AdjustBoundingBox(IEnvelope bbox, double scale, System.Drawing.Size size);
 
         /// <summary>
         /// Calculates the distance from one point to another, in meters
@@ -138,8 +137,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         public double DistanceInMeters(double x1, double y1, double x2, double y2)
         {
             return DistanceInMeters(
-                new GisSharpBlog.NetTopologySuite.Geometries.Point(x1, y1),
-                new GisSharpBlog.NetTopologySuite.Geometries.Point(x2, y2));
+                new Point(x1, y1),
+                new Point(x2, y2));
         }
 
         /// <summary>

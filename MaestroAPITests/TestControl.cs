@@ -40,7 +40,7 @@ namespace MaestroAPITests
         public const bool IgnoreLocalNativeRuntimeMapTests = true;
         public const bool IgnoreLocalNativePerformanceTests = true;
         public const bool IgnoreLocalNativeFeatureTests = true;
-        public const bool IgnoreGeoRestTests = true;
+        public const bool IgnoreGeoRestTests = false;
         public const bool IgnoreLocalFeatureTests = false;
         public const bool IgnoreSchemaTests = false;
         public const bool IgnoreSerializationTests = false;

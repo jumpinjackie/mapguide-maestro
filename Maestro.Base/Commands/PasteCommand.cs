@@ -27,7 +27,6 @@ using Maestro.Base.Services;
 using Maestro.Base.UI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.Shared.UI;
-using Wintellect.PowerCollections;
 
 namespace Maestro.Base.Commands
 {

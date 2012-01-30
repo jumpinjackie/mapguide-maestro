@@ -20,12 +20,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using ProjNet.CoordinateSystems.Transformations;
-using ProjNet.CoordinateSystems;
 using GeoAPI.CoordinateSystems.Transformations;
 using GeoAPI.CoordinateSystems;
-using GeoAPI.Geometries;
+using ProjNet.CoordinateSystems.Transformations;
+using ProjNet.CoordinateSystems;
 using GisSharpBlog.NetTopologySuite.Geometries;
+using GeoAPI.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 {

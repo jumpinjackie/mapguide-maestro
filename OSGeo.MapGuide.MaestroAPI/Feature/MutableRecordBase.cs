@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using GeoAPI.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI.Feature
 {
@@ -165,7 +166,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
                         SetDouble(name, (double)value);
                         break;
                     case PropertyValueType.Geometry:
-                        SetGeometry(name, (GeoAPI.Geometries.IGeometry)value);
+                        SetGeometry(name, (IGeometry)value);
                         break;
                     case PropertyValueType.Int16:
                         SetInt16(name, (short)value);
@@ -364,7 +365,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// </summary>
         /// <param name="name"></param>
         /// <param name="value"></param>
-        public void SetGeometry(string name, GeoAPI.Geometries.IGeometry value)
+        public void SetGeometry(string name, IGeometry value)
         {
             var propVal = _values[name] as GeometryValue;
             if (propVal == null)
@@ -488,7 +489,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// </summary>
         /// <param name="index"></param>
         /// <param name="value"></param>
-        public void SetGeometry(int index, GeoAPI.Geometries.IGeometry value)
+        public void SetGeometry(int index, IGeometry value)
         {
             SetGeometry(_ordinalMap[index], value);
         }

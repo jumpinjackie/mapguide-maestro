@@ -32,6 +32,32 @@ namespace MaestroAPITests
     public class HttpConnectionTests
     {
         [Test]
+        public void TestSheboyganCsToPseudoMercator()
+        {
+            //Purpose: Unit test to guard against regression as a result of updating/replacing NTS
+
+            var conn = ConnectionUtil.CreateTestHttpConnection();
+            var srcWkt = "GEOGCS[\"WGS84 Lat/Long's, Degrees, -180 ==> +180\",DATUM[\"D_WGS_1984\",SPHEROID[\"World_Geodetic_System_of_1984\",6378137,298.257222932867]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.017453292519943295]]";
+            var dstCs = conn.CoordinateSystemCatalog.FindCoordSys("WGS84.PseudoMercator");
+            var dstWkt = dstCs.WKT;
+
+            var trans = conn.CoordinateSystemCatalog.CreateTransform(srcWkt, dstWkt);
+
+            double tx1;
+            double ty1;
+            trans.Transform(-87.7649869909628, 43.6913981287878, out tx1, out ty1);
+            Assert.AreEqual(-9769953.66131227, tx1, 0.0000001);
+            Assert.AreEqual(5417808.88017179, ty1, 0.0000001);
+
+            double tx2;
+            double ty2;
+
+            trans.Transform(-87.6955215108997, 43.7975200004803, out tx2, out ty2);
+            Assert.AreEqual(-9762220.79944393, tx2, 0.0000001);
+            Assert.AreEqual(5434161.22418638, ty2, 0.0000001);
+        }
+
+        [Test]
         public void TestConnectionString()
         {
             System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();

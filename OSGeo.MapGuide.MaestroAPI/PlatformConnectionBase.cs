@@ -36,10 +36,10 @@ using OSGeo.MapGuide.ObjectModels.Common;
 using System.Collections.Specialized;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Feature;
-using GeoAPI.Geometries;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using GeoAPI.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
