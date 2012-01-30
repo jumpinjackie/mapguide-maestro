@@ -53,16 +53,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IronPython">
+      <HintPath>..\Thirdparty\IronPython-2.7.1\IronPython.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="IronPython.Modules">
+      <HintPath>..\Thirdparty\IronPython-2.7.1\IronPython.Modules.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Dynamic">
+      <HintPath>..\Thirdparty\IronPython-2.7.1\Microsoft.Dynamic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Scripting">
+      <HintPath>..\Thirdparty\IronPython-2.7.1\Microsoft.Scripting.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Metadata">
+      <HintPath>..\Thirdparty\IronPython-2.7.1\Microsoft.Scripting.Metadata.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Topology, Version=1.0.9.0, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Thirdparty\TF.net\Topology.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
@@ -256,6 +273,8 @@
     <Compile Include="Services\NewItemTemplateService.cs" />
     <Compile Include="Services\OpenResourceManager.cs" />
     <Compile Include="Services\ResourcePreviewerFactory.cs" />
+    <Compile Include="Services\ScriptingService.cs" />
+    <Compile Include="Services\Scripting\ScriptingClasses.cs" />
     <Compile Include="Services\ServerConnectionManager.cs" />
     <Compile Include="Services\ServiceRegistry.cs" />
     <Compile Include="Services\UrlLauncherService.cs" />
@@ -626,6 +645,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

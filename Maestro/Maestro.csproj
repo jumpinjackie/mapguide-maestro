@@ -73,6 +73,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDK\bin\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="IronPython">
+      <HintPath>..\Thirdparty\IronPython-2.7.1\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules">
+      <HintPath>..\Thirdparty\IronPython-2.7.1\IronPython.Modules.dll</HintPath>
+    </Reference>
     <Reference Include="Maestro.Editors, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDK\bin\Maestro.Editors.dll</HintPath>
@@ -88,6 +94,15 @@
     <Reference Include="Maestro.Shared.UI, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDK\bin\Maestro.Shared.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic">
+      <HintPath>..\Thirdparty\IronPython-2.7.1\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting">
+      <HintPath>..\Thirdparty\IronPython-2.7.1\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Metadata">
+      <HintPath>..\Thirdparty\IronPython-2.7.1\Microsoft.Scripting.Metadata.dll</HintPath>
     </Reference>
     <Reference Include="NetTopologySuite.Merged, Version=1.8.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
