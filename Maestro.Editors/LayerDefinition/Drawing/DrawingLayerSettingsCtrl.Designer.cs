@@ -42,12 +42,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbSheet = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnGoToDrawingSource = new System.Windows.Forms.Button();
             this.contentPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.btnGoToDrawingSource);
             this.contentPanel.Controls.Add(this.groupBox1);
             this.contentPanel.Controls.Add(this.btnBrowse);
             this.contentPanel.Controls.Add(this.txtDrawingSource);
@@ -137,10 +139,18 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
+            // btnGoToDrawingSource
+            // 
+            resources.ApplyResources(this.btnGoToDrawingSource, "btnGoToDrawingSource");
+            this.btnGoToDrawingSource.Image = global::Maestro.Editors.Properties.Resources.arrow;
+            this.btnGoToDrawingSource.Name = "btnGoToDrawingSource";
+            this.btnGoToDrawingSource.UseVisualStyleBackColor = true;
+            this.btnGoToDrawingSource.Click += new System.EventHandler(this.btnGoToDrawingSource_Click);
+            // 
             // DrawingLayerSettingsCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "Drawing Source Settings";
+            resources.ApplyResources(this, "$this");
             this.Name = "DrawingLayerSettingsCtrl";
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
@@ -165,5 +175,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckedListBox chkListDwfLayers;
         private System.Windows.Forms.LinkLabel lnkCheckAll;
+        private System.Windows.Forms.Button btnGoToDrawingSource;
     }
 }

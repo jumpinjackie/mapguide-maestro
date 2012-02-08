@@ -175,5 +175,10 @@ namespace Maestro.Editors.LayerDefinition.Drawing
             Debug.Assert(chkListDwfLayers.CheckedIndices.Count == chkListDwfLayers.Items.Count);
             _dlayer.LayerFilter = GetLayerFilter();
         }
+
+        private void btnGoToDrawingSource_Click(object sender, EventArgs e)
+        {
+            _service.OpenResource(txtDrawingSource.Text);
+        }
     }
 }

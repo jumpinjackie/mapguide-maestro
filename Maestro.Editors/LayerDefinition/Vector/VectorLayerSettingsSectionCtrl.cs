@@ -175,9 +175,6 @@ namespace Maestro.Editors.LayerDefinition.Vector
         {
             using (var picker = new ResourcePicker(_edsvc.ResourceService, ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource))
             {
-                if (LastSelectedFolder.IsSet)
-                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
-
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
                     LastSelectedFolder.FolderId = picker.SelectedFolder;
@@ -322,6 +319,11 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 return;
 
             _vl.Url = txtHyperlink.Text;
+        }
+
+        private void btnGoToFeatureSource_Click(object sender, EventArgs e)
+        {
+            _edsvc.OpenResource(txtFeatureSource.Text);
         }
     }
 }

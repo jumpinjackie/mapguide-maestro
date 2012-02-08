@@ -84,6 +84,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
 
         private void btnTest_Click(object sender, EventArgs e)
         {
+            txtStatus.Text = string.Empty;
             using (new WaitCursor(this))
             {
                 _service.SyncSessionCopy();

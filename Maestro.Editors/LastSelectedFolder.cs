@@ -28,14 +28,24 @@ namespace Maestro.Editors
     /// </summary>
     public static class LastSelectedFolder
     {
+        private static string smFolderId;
+
         /// <summary>
         /// Gets or sets the last selected folder resource id
         /// </summary>
-        public static string FolderId;
-
-        /// <summary>
-        /// Gets whether the last selected folder has been set
-        /// </summary>
-        public static bool IsSet { get { return !string.IsNullOrEmpty(FolderId); } }
+        public static string FolderId
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(smFolderId))
+                    return "Library://";
+                else
+                    return smFolderId;
+            }
+            set
+            {
+                smFolderId = value;
+            }
+        }
     }
 }

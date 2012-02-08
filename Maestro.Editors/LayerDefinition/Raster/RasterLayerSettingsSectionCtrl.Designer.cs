@@ -39,12 +39,14 @@
             this.btnBrowseFeatureSource = new System.Windows.Forms.Button();
             this.txtFeatureSource = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnGoToFeatureSource = new System.Windows.Forms.Button();
             this.contentPanel.SuspendLayout();
             this.grpFeatureClass.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.btnGoToFeatureSource);
             this.contentPanel.Controls.Add(this.grpFeatureClass);
             this.contentPanel.Controls.Add(this.txtFeatureSource);
             this.contentPanel.Controls.Add(this.btnBrowseFeatureSource);
@@ -117,12 +119,19 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
+            // btnGoToFeatureSource
+            // 
+            resources.ApplyResources(this.btnGoToFeatureSource, "btnGoToFeatureSource");
+            this.btnGoToFeatureSource.Image = global::Maestro.Editors.Properties.Resources.arrow;
+            this.btnGoToFeatureSource.Name = "btnGoToFeatureSource";
+            this.btnGoToFeatureSource.UseVisualStyleBackColor = true;
+            this.btnGoToFeatureSource.Click += new System.EventHandler(this.btnGoToFeatureSource_Click);
+            // 
             // RasterLayerSettingsSectionCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "Feature Source Settings";
-            this.Name = "RasterLayerSettingsSectionCtrl";
             resources.ApplyResources(this, "$this");
+            this.Name = "RasterLayerSettingsSectionCtrl";
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
             this.grpFeatureClass.ResumeLayout(false);
@@ -143,5 +152,6 @@
         private System.Windows.Forms.TextBox txtFeatureSource;
         private System.Windows.Forms.Button btnBrowseFeatureSource;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnGoToFeatureSource;
     }
 }

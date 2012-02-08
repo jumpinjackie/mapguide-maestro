@@ -49,6 +49,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnGoToFeatureSource = new System.Windows.Forms.Button();
             this.contentPanel.SuspendLayout();
             this.grpFeatureClass.SuspendLayout();
             this.grpLayerSettings.SuspendLayout();
@@ -56,6 +57,7 @@
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.btnGoToFeatureSource);
             this.contentPanel.Controls.Add(this.grpLayerSettings);
             this.contentPanel.Controls.Add(this.grpFeatureClass);
             this.contentPanel.Controls.Add(this.btnBrowseFeatureSource);
@@ -197,6 +199,14 @@
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
+            // btnGoToFeatureSource
+            // 
+            resources.ApplyResources(this.btnGoToFeatureSource, "btnGoToFeatureSource");
+            this.btnGoToFeatureSource.Image = global::Maestro.Editors.Properties.Resources.arrow;
+            this.btnGoToFeatureSource.Name = "btnGoToFeatureSource";
+            this.btnGoToFeatureSource.UseVisualStyleBackColor = true;
+            this.btnGoToFeatureSource.Click += new System.EventHandler(this.btnGoToFeatureSource_Click);
+            // 
             // VectorLayerSettingsSectionCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -234,5 +244,6 @@
         private System.Windows.Forms.Button btnBrowseSchema;
         private System.Windows.Forms.TextBox txtGeometry;
         private System.Windows.Forms.TextBox txtFeatureClass;
+        private System.Windows.Forms.Button btnGoToFeatureSource;
     }
 }

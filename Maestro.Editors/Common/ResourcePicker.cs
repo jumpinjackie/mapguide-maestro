@@ -84,6 +84,7 @@ namespace Maestro.Editors.Generic
             _model.FolderSelected += OnFolderSelected;
             this.UseFilter = true;
             this.Mode = mode;
+            SetStartingPoint(LastSelectedFolder.FolderId);
         }
 
         void OnFolderSelected(object sender, EventArgs e)
@@ -95,18 +96,25 @@ namespace Maestro.Editors.Generic
         /// Sets the starting point.
         /// </summary>
         /// <param name="folderId">The folder id.</param>
+        /// <remarks>If the specified folder does not exist, it will fallback to Library://</remarks>
         public void SetStartingPoint(string folderId)
         {
             if (string.IsNullOrEmpty(folderId))
                 return;
             if (!ResourceIdentifier.IsFolderResource(folderId))
                 throw new ArgumentException(string.Format(Properties.Resources.NotAFolder, folderId));
-            //if (!_resSvc.ResourceExists(folderId))
-            //    return;
+            
+            // Library:// will *always* exist, so fallback to this if given folder doesn't check out
+            if (!_resSvc.ResourceExists(folderId))
+                folderId = "Library://";
+
             this.ActiveControl = trvFolders;
             _model.NavigateTo(folderId);
             this.SelectedFolder = folderId;
-            
+
+            //HACK: Navigating to the specified folder takes away the focus to the 
+            //name field
+            this.ActiveControl = txtName;
         }
 
         /// <summary>
@@ -293,6 +301,10 @@ namespace Maestro.Editors.Generic
                     }
                 }
             }
+            if (ResourceIdentifier.IsFolderResource(txtResourceId.Text))
+                LastSelectedFolder.FolderId = txtResourceId.Text;
+            else
+                LastSelectedFolder.FolderId = (txtResourceId.Text != "Library://") ? ResourceIdentifier.GetParentFolder(txtResourceId.Text) : "Library://";
             this.DialogResult = DialogResult.OK;
         }
 

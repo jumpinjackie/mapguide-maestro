@@ -50,6 +50,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.resIdComponentPanel = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -79,8 +80,8 @@
             this.lstResources.SmallImageList = this.resImageList;
             this.lstResources.UseCompatibleStateImageBehavior = false;
             this.lstResources.View = System.Windows.Forms.View.List;
-            this.lstResources.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstResources_MouseDoubleClick);
             this.lstResources.SelectedIndexChanged += new System.EventHandler(this.lstResources_SelectedIndexChanged);
+            this.lstResources.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstResources_MouseDoubleClick);
             // 
             // resImageList
             // 
@@ -216,6 +217,7 @@
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.resIdComponentPanel.ResumeLayout(false);
             this.resIdComponentPanel.PerformLayout();

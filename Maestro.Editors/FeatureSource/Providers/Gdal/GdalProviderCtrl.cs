@@ -95,6 +95,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
         private void btnTest_Click(object sender, EventArgs e)
         {
+            txtStatus.Text = string.Empty;
             //Flush back to session before testing
             _service.SyncSessionCopy();
             string result = _fs.TestConnection();

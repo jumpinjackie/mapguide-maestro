@@ -63,9 +63,6 @@ namespace Maestro.Editors.SymbolDefinition
                                                    ResourceTypes.SymbolDefinition,
                                                    ResourcePickerMode.OpenResource))
             {
-                if (LastSelectedFolder.IsSet)
-                    picker.SetStartingPoint(LastSelectedFolder.FolderId);
-
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
                     LastSelectedFolder.FolderId = picker.ResourceID;
