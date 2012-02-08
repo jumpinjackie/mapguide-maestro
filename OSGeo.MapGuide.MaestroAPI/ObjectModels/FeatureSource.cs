@@ -25,6 +25,7 @@ using System.Xml.Serialization;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using System.ComponentModel;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -86,7 +87,9 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
 
         object ICloneable.Clone()
         {
-            return this.Clone();
+            var fs = this.Clone();
+            fs.DetachChangeListeners();
+            return fs;
         }
 
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
@@ -153,6 +156,19 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
                 this.Parameter.Add(new NameValuePairType() { Name = name, Value = value });
             }
             OnPropertyChanged("Parameter");
+        }
+
+        protected void DetachChangeListeners()
+        {
+            var handler = this.PropertyChanged;
+            if (handler != null)
+            {
+                foreach (var h in handler.GetInvocationList())
+                {
+                    this.PropertyChanged -= (PropertyChangedEventHandler)h;
+                }
+                handler = null;
+            }
         }
 
         [XmlIgnore]

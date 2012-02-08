@@ -101,22 +101,26 @@ namespace Maestro.Editors.FeatureSource.Providers
                 nameCell.Value = p.Name;
                 nameCell.ToolTipText = p.LocalizedName;
 
+                var currentValue = _fs.GetConnectionProperty(p.Name);
                 DataGridViewCell valueCell = null;
                 if (p.Enumerable)
                 {
                     valueCell = new DataGridViewTextBoxCell();
                     valueCell.Tag = p;
-                    valueCell.Value = _fs.GetConnectionProperty(p.Name);
+                    valueCell.Value = currentValue;
                 }
                 else
                 {
                     valueCell = new DataGridViewTextBoxCell();
                     valueCell.Tag = p;
-                    valueCell.Value = _fs.GetConnectionProperty(p.Name);
+                    valueCell.Value = currentValue;
                 }
 
-                if (!string.IsNullOrEmpty(p.DefaultValue))
+                if (string.IsNullOrEmpty(currentValue) && !string.IsNullOrEmpty(p.DefaultValue))
+                {
                     valueCell.Value = p.DefaultValue;
+                    _fs.SetConnectionProperty(p.Name, p.DefaultValue);
+                }
 
                 row.Cells.Add(nameCell);
                 row.Cells.Add(valueCell);
@@ -182,14 +186,19 @@ namespace Maestro.Editors.FeatureSource.Providers
         private void btnTest_Click(object sender, EventArgs e)
         {
             txtTestResult.Text = string.Empty;
-
             var param = GetConnectionParameters();
+
+            var cloneFs = (IFeatureSource)_fs.Clone();
+            _service.ResourceService.SaveResourceAs(cloneFs, "Session:" + _service.SessionID + "//" + Guid.NewGuid().ToString() + ".FeatureSource");
+            
+            cloneFs.ClearConnectionProperties();
             foreach (var key in param.AllKeys)
             {
-                _fs.SetConnectionProperty(key, param[key]);
+                cloneFs.SetConnectionProperty(key, param[key]);
             }
-            _service.ResourceService.SaveResource(_fs);
-            string msg = _service.FeatureService.TestConnection(_fs.ResourceID);
+            _service.ResourceService.SaveResource(cloneFs);
+
+            string msg = _service.FeatureService.TestConnection(cloneFs.ResourceID);
 
             if (string.IsNullOrEmpty(msg))
                 msg = Properties.Resources.TestConnectionNoErrors;
