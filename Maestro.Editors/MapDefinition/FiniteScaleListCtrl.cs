@@ -49,11 +49,13 @@ namespace Maestro.Editors.MapDefinition
         private BindingList<double> _scales;
 
         private IMapDefinition _map;
+        private IEditorService _edSvc;
 
-        public FiniteScaleListCtrl(IMapDefinition map)
+        public FiniteScaleListCtrl(IMapDefinition map, IEditorService editorSvc)
             : this()
         {
             _map = map;
+            _edSvc = editorSvc;
             //Init scale list
             if (_map.BaseMap != null)
             {
@@ -87,6 +89,7 @@ namespace Maestro.Editors.MapDefinition
         {
             _map.InitBaseMap();
             _map.BaseMap.RemoveAllScales();
+            _edSvc.MarkDirty();
         }
 
         private void RemoveScaleFromMap(double scale)
@@ -94,12 +97,14 @@ namespace Maestro.Editors.MapDefinition
             _scales.Remove(scale);
             _map.InitBaseMap();
             _map.BaseMap.RemoveFiniteDisplayScale(scale);
+            _edSvc.MarkDirty();
         }
 
         private void AddScaleToMap(double scale)
         {
             _map.InitBaseMap();
             _map.BaseMap.AddFiniteDisplayScale(scale);
+            _edSvc.MarkDirty();
         }
 
         private void btnGenerateScales_Click(object sender, EventArgs e)
@@ -132,6 +137,7 @@ namespace Maestro.Editors.MapDefinition
                 {
                     _scales.Add(s);
                 }
+                _edSvc.MarkDirty();
             }
         }
 
@@ -162,6 +168,7 @@ namespace Maestro.Editors.MapDefinition
                         {
                             _scales.Add(scale);
                         }
+                        _edSvc.MarkDirty();
                     }
                 }
             }
@@ -199,6 +206,7 @@ namespace Maestro.Editors.MapDefinition
                 {
                     _scales.Add(scale);
                 }
+                _edSvc.MarkDirty();
             }
         }
     }

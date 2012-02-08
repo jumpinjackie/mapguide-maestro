@@ -824,7 +824,7 @@ namespace Maestro.Editors.MapDefinition
         private void OnFiniteScaleListSelected()
         {
             propertiesPanel.Controls.Clear();
-            var item = new FiniteScaleListCtrl(_map);
+            var item = new FiniteScaleListCtrl(_map, _edSvc);
 
             item.Dock = DockStyle.Fill;
             propertiesPanel.Controls.Add(item);
