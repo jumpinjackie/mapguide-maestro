@@ -137,20 +137,41 @@ namespace Maestro.Editors.WebLayout
             btnExport.Enabled = customCmds.Length > 0;
         }
 
+        private void SetSelectedCommand(ICommand cmd)
+        {
+            grdCommands.ClearSelection();
+            foreach (DataGridViewRow row in grdCommands.Rows)
+            {
+                if (row.DataBoundItem == cmd)
+                {
+                    //HACK: This is a long-winded way of simulating a programmatic
+                    //click of the cell that contains this databound item
+                    //
+                    //See: http://social.msdn.microsoft.com/forums/en-US/winformsdatacontrols/thread/47e9c3ef-a8de-48c9-8e0d-4f3fdd34517e/
+                    grdCommands.FirstDisplayedScrollingRowIndex = row.Index;
+                    grdCommands.Refresh();
+                    grdCommands.CurrentCell = row.Cells[1];
+                    row.Selected = true;
+                    grdCommands_CellContentClick(this, new DataGridViewCellEventArgs(1, row.Index));
+                    break;
+                }
+            }
+        }
+
         private void invokeURLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var cmd = _wl.CreateInvokeUrlCommand();
             cmd.Description = cmd.Label = cmd.Tooltip = Properties.Resources.InvokeUrlCmdDescription;
-            //_wl.CommandSet.AddCommand(cmd);
             _commands.Add(cmd);
+            SetSelectedCommand(cmd);
         }
 
         private void invokeScriptToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var cmd = _wl.CreateInvokeScriptCommand();
             cmd.Description = cmd.Label = cmd.Tooltip = Properties.Resources.InvokeScriptCmdDescription;
-            //_wl.CommandSet.AddCommand(cmd);
             _commands.Add(cmd);
+            SetSelectedCommand(cmd);
         }
 
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -163,8 +184,8 @@ namespace Maestro.Editors.WebLayout
 
             var cmd = _wl.CreateSearchCommand();
             cmd.Description = cmd.Label = cmd.Tooltip = Properties.Resources.SearchCmdDescription;
-            //_wl.CommandSet.AddCommand(cmd);
             _commands.Add(cmd);
+            SetSelectedCommand(cmd);
         }
 
         private void grdCommands_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -236,7 +257,7 @@ namespace Maestro.Editors.WebLayout
                     using (new WaitCursor(this))
                     {
                         _wl.CommandSet.RemoveCommand(iscr);
-                        _commands.Remove(iurl);
+                        _commands.Remove(iscr);
                         _wl.RemoveAllReferences(iscr.Name);
                         ClearCommandUI();
                     }
@@ -252,7 +273,7 @@ namespace Maestro.Editors.WebLayout
                     using (new WaitCursor(this))
                     {
                         _wl.CommandSet.RemoveCommand(srch);
-                        _commands.Remove(iurl);
+                        _commands.Remove(srch);
                         _wl.RemoveAllReferences(srch.Name);
                         ClearCommandUI();
                     }
