@@ -53,27 +53,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IronPython">
-      <HintPath>..\Thirdparty\IronPython-2.7.1\IronPython.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="IronPython.Modules">
-      <HintPath>..\Thirdparty\IronPython-2.7.1\IronPython.Modules.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Dynamic">
-      <HintPath>..\Thirdparty\IronPython-2.7.1\Microsoft.Dynamic.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Scripting">
-      <HintPath>..\Thirdparty\IronPython-2.7.1\Microsoft.Scripting.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Scripting.Metadata">
-      <HintPath>..\Thirdparty\IronPython-2.7.1\Microsoft.Scripting.Metadata.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -273,8 +253,6 @@
     <Compile Include="Services\NewItemTemplateService.cs" />
     <Compile Include="Services\OpenResourceManager.cs" />
     <Compile Include="Services\ResourcePreviewerFactory.cs" />
-    <Compile Include="Services\ScriptingService.cs" />
-    <Compile Include="Services\Scripting\ScriptingClasses.cs" />
     <Compile Include="Services\ServerConnectionManager.cs" />
     <Compile Include="Services\ServiceRegistry.cs" />
     <Compile Include="Services\UrlLauncherService.cs" />
@@ -304,6 +282,12 @@
       <DependentUpon>BoundsPicker.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\BroadcastTextWriter.cs" />
+    <Compile Include="UI\DirtyStateConfirmationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DirtyStateConfirmationDialog.Designer.cs">
+      <DependentUpon>DirtyStateConfirmationDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ISiteExplorer.cs" />
     <Compile Include="UI\LabelLocalizationDialog.cs">
       <SubType>Form</SubType>
@@ -533,6 +517,9 @@
     <EmbeddedResource Include="UI\BoundsPicker.resx">
       <DependentUpon>BoundsPicker.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DirtyStateConfirmationDialog.resx">
+      <DependentUpon>DirtyStateConfirmationDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LabelLocalizationDialog.resx">
       <DependentUpon>LabelLocalizationDialog.cs</DependentUpon>

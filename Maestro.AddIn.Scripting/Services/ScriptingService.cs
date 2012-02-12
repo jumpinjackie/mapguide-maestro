@@ -26,7 +26,7 @@ using Microsoft.Scripting.Hosting;
 using IronPython.Hosting;
 using ICSharpCode.Core;
 
-namespace Maestro.Base.Services
+namespace Maestro.AddIn.Scripting.Services
 {
     public class ScriptingService : ServiceBase
     {
@@ -43,7 +43,7 @@ namespace Maestro.Base.Services
 
         private void InitializeScope(ScriptScope scope)
         {
-            scope.SetVariable("app", new Scripting.App());
+            scope.SetVariable("app", new HostApplication());
         }
 
         private static ScriptEngine CreateDefaultEngine()

@@ -255,7 +255,6 @@
         <Class id="OpenResourceManager" class="Maestro.Base.Services.OpenResourceManager" />
         <Class id="ViewContentManager" class="Maestro.Base.Services.ViewContentManager" />
         <Class id="NewItemTemplateService" class="Maestro.Base.Services.NewItemTemplateService" />
-        <Class id="ScriptingService" class="Maestro.Base.Services.ScriptingService" />
     </Path>
 
     <!-- Singleton view content -->

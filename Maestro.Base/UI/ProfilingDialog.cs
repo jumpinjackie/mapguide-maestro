@@ -141,7 +141,7 @@ namespace Maestro.Base.UI
                     var map = mpsvc.CreateMap(mdef);
                     using (new Timer(Properties.Resources.Prof_LogMessageIdentifyFetching, backgroundWorker))
                     {
-                        var rtl = map.GetLayerByName("Test Layer");
+                    	var rtl = map.Layers["Test Layer"];
                         rtl.Visible = true;
                         rtl.Selectable = true;
                     }

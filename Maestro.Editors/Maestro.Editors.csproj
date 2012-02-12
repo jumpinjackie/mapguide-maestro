@@ -164,6 +164,12 @@
     <Compile Include="Diagnostics\ServerStatusMonitor.designer.cs">
       <DependentUpon>ServerStatusMonitor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Diff\TextDiffView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diff\TextDiffView.Designer.cs">
+      <DependentUpon>TextDiffView.cs</DependentUpon>
+    </Compile>
     <Compile Include="DrawingSource\DrawingSourceEditorCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1243,6 +1249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Diagnostics\ServerStatusMonitor.resx">
       <DependentUpon>ServerStatusMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diff\TextDiffView.resx">
+      <DependentUpon>TextDiffView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DrawingSource\DrawingSourceEditorCtrl.resx">
       <DependentUpon>DrawingSourceEditorCtrl.cs</DependentUpon>

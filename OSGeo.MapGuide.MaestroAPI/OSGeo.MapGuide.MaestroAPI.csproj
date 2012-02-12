@@ -252,6 +252,10 @@
     <Compile Include="ObjectModels\NsDoc.cs" />
     <Compile Include="ObjectModels\SymbolDefFactory.cs" />
     <Compile Include="ObjectModels\WatermarkInterfaces.cs" />
+    <Compile Include="Resource\Comparison\BinaryData.cs" />
+    <Compile Include="Resource\Comparison\CharData.cs" />
+    <Compile Include="Resource\Comparison\DiffEngine.cs" />
+    <Compile Include="Resource\Comparison\TextFile.cs" />
     <Compile Include="Resource\Conversion\NsDoc.cs" />
     <Compile Include="Resource\NsDoc.cs" />
     <Compile Include="Resource\Validation\BaseMapDefinitionValidator.cs" />
@@ -532,6 +536,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

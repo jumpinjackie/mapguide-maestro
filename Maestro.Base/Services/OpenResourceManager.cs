@@ -167,10 +167,22 @@ namespace Maestro.Base.Services
                 {
                     if (ed.IsDirty && !ed.DiscardChangesOnClose)
                     {
-                        string name = ed.IsNew ? string.Empty : "(" + ResourceIdentifier.GetName(ed.EditorService.ResourceID) + ")";
-                        if (!MessageService.AskQuestion(string.Format(Properties.Resources.CloseUnsavedResource, name)))
+                        if (ed.IsNew)
                         {
-                            e.Cancel = true;
+                            if (!MessageService.AskQuestion(string.Format(Properties.Resources.CloseUnsavedResource, string.Empty)))
+                            {
+                                e.Cancel = true;
+                            }
+                        }
+                        else
+                        {
+                            using (var diag = new DirtyStateConfirmationDialog(ed.EditorService))
+                            {
+                                if (diag.ShowDialog() == System.Windows.Forms.DialogResult.No)
+                                {
+                                    e.Cancel = true;
+                                }
+                            }
                         }
                     }
                 };

@@ -24,13 +24,15 @@ using System.Text;
 using Maestro.Shared.UI;
 using ICSharpCode.Core;
 using OSGeo.MapGuide.MaestroAPI;
+using Maestro.Base;
+using Maestro.Base.Services;
 
-namespace Maestro.Base.Services.Scripting
+namespace Maestro.AddIn.Scripting.Services
 {
     /// <summary>
     /// A simplified helper class that is exposed to python scripts
     /// </summary>
-    public class App
+    public class HostApplication
     {
         /// <summary>
         /// The main application window
