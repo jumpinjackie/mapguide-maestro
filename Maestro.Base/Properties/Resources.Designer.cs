@@ -670,6 +670,13 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap edit_diff {
+            get {
+                object obj = ResourceManager.GetObject("edit_diff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap edit_language {
             get {
                 object obj = ResourceManager.GetObject("edit_language", resourceCulture);
@@ -1279,6 +1286,24 @@ namespace Maestro.Base.Properties {
         internal static string Menu_Tools_Translate_Desc {
             get {
                 return ResourceManager.GetString("Menu_Tools_Translate_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Changes.
+        /// </summary>
+        internal static string Menu_Tools_XmlChanges {
+            get {
+                return ResourceManager.GetString("Menu_Tools_XmlChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View XML content changes of current resource.
+        /// </summary>
+        internal static string Menu_Tools_XmlChanges_Desc {
+            get {
+                return ResourceManager.GetString("Menu_Tools_XmlChanges_Desc", resourceCulture);
             }
         }
         

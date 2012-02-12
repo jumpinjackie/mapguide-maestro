@@ -139,6 +139,7 @@
     <Compile Include="Commands\TranslateLayoutCommand.cs" />
     <Compile Include="Commands\UserGuideCommand.cs" />
     <Compile Include="Commands\ValidateEditedResourceCommand.cs" />
+    <Compile Include="Commands\ViewXmlChangesCommand.cs" />
     <Compile Include="Commands\XmlEditCommand.cs" />
     <Compile Include="Editor\DrawingSourceEditor.cs">
       <SubType>UserControl</SubType>
@@ -404,6 +405,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maestro.Base.addin" />
+    <None Include="Resources\edit-diff.png" />
     <None Include="Resources\edit-language.png" />
     <None Include="Resources\box--pencil.png" />
     <None Include="Resources\Contributors.txt" />

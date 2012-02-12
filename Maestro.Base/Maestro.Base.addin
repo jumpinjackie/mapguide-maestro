@@ -354,6 +354,13 @@
                          tooltip="${res:Menu_Tools_Translate_Desc}"
                          class="Maestro.Base.Commands.TranslateLayoutCommand" />
         </Condition>
+        <Condition action="Disable" name="EditorFunction" property="CANSAVE">
+            <ToolbarItem id="XmlChanges"
+                         icon="edit_diff"
+                         label="${res:Menu_Tools_XmlChanges}"
+                         tooltip="${res:Menu_Tools_XmlChanges_Desc}"
+                         class="Maestro.Base.Commands.ViewXmlChangesCommand" />
+        </Condition>
         <!-- 
         Only needed if our custom drawn close buttons don't appear on document
         tabs (I'm looking at you Mono). So far this isn't the case. 
