@@ -41,7 +41,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
         Matched = 1,
         NoMatch = -1,
         Unknown = -2
-
     }
 
     internal class DiffState
@@ -75,6 +74,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
                 return len;
             }
         }
+
         public DiffStatus Status
         {
             get
@@ -266,7 +266,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
     {
         private IDiffList _source;
         private IDiffList _dest;
-        private ArrayList _matchList;
+        private List<DiffResultSpan> _matchList;
 
         private DiffEngineLevel _level;
 
@@ -437,7 +437,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
             DateTime dt = DateTime.Now;
             _source = source;
             _dest = destination;
-            _matchList = new ArrayList();
+            _matchList = new List<DiffResultSpan>();
 
             int dcount = _dest.Count();
             int scount = _source.Count();
@@ -455,7 +455,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 
 
         private bool AddChanges(
-            ArrayList report,
+            List<DiffResultSpan> report,
             int curDest,
             int nextDest,
             int curSource,
@@ -502,9 +502,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
             return retval;
         }
 
-        public ArrayList DiffReport()
+        public List<DiffResultSpan> DiffReport()
         {
-            ArrayList retval = new ArrayList();
+            var retval = new List<DiffResultSpan>();
             int dcount = _dest.Count();
             int scount = _source.Count();
 

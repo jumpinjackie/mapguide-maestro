@@ -62,8 +62,8 @@ namespace Maestro.Base.UI
 
         private void btnDiff_Click(object sender, EventArgs e)
         {
-            DiffList_TextFile sLF = null;
-            DiffList_TextFile dLF = null;
+            TextFileDiffList sLF = null;
+            TextFileDiffList dLF = null;
             string sourceFile = Path.GetTempFileName();
             string targetFile = Path.GetTempFileName();
             try
@@ -75,8 +75,8 @@ namespace Maestro.Base.UI
                     File.WriteAllText(sourceFile, source.ReadToEnd());
                     File.WriteAllText(targetFile, target.ReadToEnd());
 
-                    sLF = new DiffList_TextFile(sourceFile);
-                    dLF = new DiffList_TextFile(targetFile);
+                    sLF = new TextFileDiffList(sourceFile);
+                    dLF = new TextFileDiffList(targetFile);
                 }
             }
             catch (Exception ex)
@@ -98,8 +98,9 @@ namespace Maestro.Base.UI
                 DiffEngine de = new DiffEngine();
                 time = de.ProcessDiff(sLF, dLF, DiffEngineLevel.SlowPerfect);
 
-                ArrayList rep = de.DiffReport();
+                var rep = de.DiffReport();
                 TextDiffView dlg = new TextDiffView(sLF, dLF, rep, time);
+                dlg.Text += " - " + _edSvc.ResourceID;
                 dlg.ShowDialog();
                 dlg.Dispose();
             }

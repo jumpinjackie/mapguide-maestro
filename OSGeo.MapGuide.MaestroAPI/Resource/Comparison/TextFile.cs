@@ -51,14 +51,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
     }
 
 
-    public class DiffList_TextFile : IDiffList
+    public class TextFileDiffList : IDiffList
     {
         private const int MaxLineLength = 1024;
-        private ArrayList _lines;
+        private List<TextLine> _lines;
 
-        public DiffList_TextFile(string fileName)
+        public TextFileDiffList(string fileName)
         {
-            _lines = new ArrayList();
+            _lines = new List<TextLine>();
             using (StreamReader sr = new StreamReader(fileName))
             {
                 String line;
@@ -85,7 +85,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 
         public IComparable GetByIndex(int index)
         {
-            return (TextLine)_lines[index];
+            return _lines[index];
         }
 
         #endregion

@@ -41,11 +41,9 @@ namespace Maestro.Editors.Diff
             InitializeComponent();
         }
 
-        public TextDiffView(DiffList_TextFile source, DiffList_TextFile destination, ArrayList DiffLines, double seconds)
+        public TextDiffView(TextFileDiffList source, TextFileDiffList destination, List<DiffResultSpan> DiffLines, double seconds)
             : this()
         {
-            //this.Text = string.Format("Results: {0} secs.",seconds.ToString("#0.00"));
-
             ListViewItem lviS;
             ListViewItem lviD;
             int cnt = 1;

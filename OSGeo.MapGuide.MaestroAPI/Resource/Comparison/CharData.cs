@@ -28,11 +28,11 @@ using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 {
-    public class DiffList_CharData : IDiffList
+    public class CharDataDiffList : IDiffList
     {
         private char[] _charList;
 
-        public DiffList_CharData(string charData)
+        public CharDataDiffList(string charData)
         {
             _charList = charData.ToCharArray();
         }

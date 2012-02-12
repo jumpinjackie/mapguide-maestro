@@ -29,11 +29,11 @@ using System.IO;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 {
-    public class DiffList_BinaryFile : IDiffList
+    public class BinaryFileDiffList : IDiffList
     {
         private byte[] _byteList;
 
-        public DiffList_BinaryFile(string fileName)
+        public BinaryFileDiffList(string fileName)
         {
             FileStream fs = null;
             BinaryReader br = null;
