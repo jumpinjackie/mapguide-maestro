@@ -284,7 +284,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
             //TODO: Throw exception if adding to non-existent group?
             layer.Group = string.IsNullOrEmpty(groupName) ? string.Empty : groupName;
             
-            this.MapLayer.Add(layer);
+            this.MapLayer.Insert(0, layer);
             OnPropertyChanged("MapLayer");
 
             if (this.MapLayer.Count == 1) //First one
