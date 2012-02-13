@@ -34,15 +34,21 @@
             this.SaveReportBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.chkErrors = new System.Windows.Forms.CheckBox();
+            this.chkWarnings = new System.Windows.Forms.CheckBox();
+            this.chkNotices = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chkNotices);
+            this.panel1.Controls.Add(this.chkWarnings);
+            this.panel1.Controls.Add(this.chkErrors);
             this.panel1.Controls.Add(this.SaveReportBtn);
             this.panel1.Controls.Add(this.CancelBtn);
             resources.ApplyResources(this.panel1, "panel1");
@@ -96,6 +102,33 @@
             this.saveFileDialog.DefaultExt = "txt";
             resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
             // 
+            // chkErrors
+            // 
+            resources.ApplyResources(this.chkErrors, "chkErrors");
+            this.chkErrors.Checked = true;
+            this.chkErrors.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkErrors.Name = "chkErrors";
+            this.chkErrors.UseVisualStyleBackColor = true;
+            this.chkErrors.CheckedChanged += new System.EventHandler(this.OnResultFilterCheckedChanged);
+            // 
+            // chkWarnings
+            // 
+            resources.ApplyResources(this.chkWarnings, "chkWarnings");
+            this.chkWarnings.Checked = true;
+            this.chkWarnings.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkWarnings.Name = "chkWarnings";
+            this.chkWarnings.UseVisualStyleBackColor = true;
+            this.chkWarnings.CheckedChanged += new System.EventHandler(this.OnResultFilterCheckedChanged);
+            // 
+            // chkNotices
+            // 
+            resources.ApplyResources(this.chkNotices, "chkNotices");
+            this.chkNotices.Checked = true;
+            this.chkNotices.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkNotices.Name = "chkNotices";
+            this.chkNotices.UseVisualStyleBackColor = true;
+            this.chkNotices.CheckedChanged += new System.EventHandler(this.OnResultFilterCheckedChanged);
+            // 
             // ValidationResultsDialog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -106,6 +139,7 @@
             this.Name = "ValidationResultsDialog";
             this.ShowIcon = false;
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -120,5 +154,8 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button SaveReportBtn;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.CheckBox chkNotices;
+        private System.Windows.Forms.CheckBox chkWarnings;
+        private System.Windows.Forms.CheckBox chkErrors;
     }
 }

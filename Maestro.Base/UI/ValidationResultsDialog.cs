@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
@@ -47,13 +48,42 @@ namespace Maestro.Base
         public ValidationResultsDialog(List<KeyValuePair<string, ValidationIssue[]>> issues)
             : this()
         {
-            listView1.Items.Clear();
-
             m_issues = issues;
+            PopulateIssues();
+        }
 
-            foreach (KeyValuePair<string, ValidationIssue[]> e in issues)
+        private void PopulateIssues()
+        {
+            listView1.Items.Clear();
+            foreach (KeyValuePair<string, ValidationIssue[]> e in m_issues)
             {
-                foreach (ValidationIssue issue in e.Value)
+                IEnumerable<ValidationIssue> items = null;
+                if (chkErrors.Checked)
+                {
+                    if (items == null)
+                        items = e.Value.Where(x => x.Status == ValidationStatus.Error);
+                    else
+                        items = items.Concat(e.Value.Where(x => x.Status == ValidationStatus.Error));
+                }
+                if (chkWarnings.Checked)
+                {
+                    if (items == null)
+                        items = e.Value.Where(x => x.Status == ValidationStatus.Warning);
+                    else
+                        items = items.Concat(e.Value.Where(x => x.Status == ValidationStatus.Warning));
+                }
+                if (chkNotices.Checked)
+                {
+                    if (items == null)
+                        items = e.Value.Where(x => x.Status == ValidationStatus.Information);
+                    else
+                        items = items.Concat(e.Value.Where(x => x.Status == ValidationStatus.Information));
+                }
+
+                if (items == null)
+                    continue;
+
+                foreach (ValidationIssue issue in items)
                 {
                     if (issue == null || issue.Resource == null || string.IsNullOrEmpty(issue.Message) || string.IsNullOrEmpty(issue.Resource.ResourceID))
                         continue;
@@ -118,6 +148,11 @@ namespace Maestro.Base
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 MessageBox.Show(this, string.Format(Properties.Resources.ValidationFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void OnResultFilterCheckedChanged(object sender, EventArgs e)
+        {
+            PopulateIssues();
         }
     }
 }
