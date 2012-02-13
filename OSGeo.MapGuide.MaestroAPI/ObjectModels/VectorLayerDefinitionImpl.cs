@@ -1718,9 +1718,20 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             }
             set
             {
-                if (this.urlDataField == null)
-                    this.urlDataField = new URLDataType();
-                this.urlDataField.Content = value;
+                if (!string.IsNullOrEmpty(value))
+                {
+                    if (this.urlDataField == null)
+                        this.urlDataField = new URLDataType();
+                    this.urlDataField.Content = value;
+                    OnPropertyChanged("Url");
+                }
+                else 
+                {
+                    //NOTE: None of the other URLData properties seem to be used atm
+                    //hence why we are nulling this
+                    this.urlDataField = null;
+                    OnPropertyChanged("Url");
+                }
             }
 #else
             get { return this.Url; }

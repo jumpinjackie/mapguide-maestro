@@ -68,13 +68,15 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
                 TextBoxBinder.BindText(txtFeatureClass, _vl, "FeatureName");
                 TextBoxBinder.BindText(txtGeometry, _vl, "Geometry");
-                TextBoxBinder.BindText(txtFilter, _vl, "Filter");
-                
+                //TextBoxBinder.BindText(txtFilter, _vl, "Filter");
+                txtFilter.Text = _vl.Filter;
+
                 //Loose bind this one because 2.4 changes this behaviour making it
                 //unsuitable for databinding via TextBoxBinder
                 txtHyperlink.Text = _vl.Url;
 
-                TextBoxBinder.BindText(txtTooltip, _vl, "ToolTip");
+                //TextBoxBinder.BindText(txtTooltip, _vl, "ToolTip");
+                txtTooltip.Text = _vl.ToolTip;
 
                 //This is not the root object so no change listeners have been subscribed
                 _vl.PropertyChanged += OnVectorLayerPropertyChanged;
@@ -318,7 +320,32 @@ namespace Maestro.Editors.LayerDefinition.Vector
             if (_init)
                 return;
 
-            _vl.Url = txtHyperlink.Text;
+            if (string.IsNullOrEmpty(txtHyperlink.Text))
+                _vl.Url = null;
+            else
+                _vl.Url = txtHyperlink.Text;
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            if (_init)
+                return;
+
+            if (string.IsNullOrEmpty(txtFilter.Text))
+                _vl.Filter = null;
+            else
+                _vl.Filter = txtFilter.Text;
+        }
+
+        private void txtTooltip_TextChanged(object sender, EventArgs e)
+        {
+            if (_init)
+                return;
+
+            if (string.IsNullOrEmpty(txtTooltip.Text))
+                _vl.ToolTip = null;
+            else
+                _vl.ToolTip = txtTooltip.Text;
         }
 
         private void btnGoToFeatureSource_Click(object sender, EventArgs e)

@@ -172,6 +172,7 @@
             // 
             resources.ApplyResources(this.txtTooltip, "txtTooltip");
             this.txtTooltip.Name = "txtTooltip";
+            this.txtTooltip.TextChanged += new System.EventHandler(this.txtTooltip_TextChanged);
             // 
             // txtHyperlink
             // 
@@ -183,6 +184,7 @@
             // 
             resources.ApplyResources(this.txtFilter, "txtFilter");
             this.txtFilter.Name = "txtFilter";
+            this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
             // label6
             // 
