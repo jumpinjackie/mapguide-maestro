@@ -44,6 +44,7 @@
             // 
             // cmbSiteVersion
             // 
+            this.cmbSiteVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSiteVersion.FormattingEnabled = true;
             resources.ApplyResources(this.cmbSiteVersion, "cmbSiteVersion");
             this.cmbSiteVersion.Name = "cmbSiteVersion";

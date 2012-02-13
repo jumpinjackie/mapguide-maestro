@@ -91,6 +91,7 @@
     <Compile Include="Commands\CutCommand.cs" />
     <Compile Include="Commands\EditAsXmlCommand.cs" />
     <Compile Include="Commands\EditPackageCommand.cs" />
+    <Compile Include="Commands\OpenResourceIdCommand.cs" />
     <Compile Include="Commands\RtMapInspectorCommand.cs" />
     <Compile Include="Commands\SiteExplorer\EditResourceHeaderCommand.cs" />
     <Compile Include="Commands\LoadPackageCommand.cs" />
@@ -321,6 +322,12 @@
     <Compile Include="UI\NewResourceDialog.Designer.cs">
       <DependentUpon>NewResourceDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\OpenResourceIdDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\OpenResourceIdDialog.Designer.cs">
+      <DependentUpon>OpenResourceIdDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\OutboundRequestViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -418,6 +425,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maestro.Base.addin" />
+    <None Include="Resources\folder-open-document.png" />
     <None Include="Resources\edit-diff.png" />
     <None Include="Resources\edit-language.png" />
     <None Include="Resources\box--pencil.png" />
@@ -552,6 +560,9 @@
     <EmbeddedResource Include="UI\NewResourceDialog.resx">
       <DependentUpon>NewResourceDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\OpenResourceIdDialog.resx">
+      <DependentUpon>OpenResourceIdDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\OutboundRequestViewer.resx">
       <DependentUpon>OutboundRequestViewer.cs</DependentUpon>

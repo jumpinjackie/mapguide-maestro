@@ -89,6 +89,11 @@
                           icon="document__plus"
                           class="Maestro.Base.Commands.NewItemCommand" />
             </Condition>
+            <MenuItem id="OpenResource"
+                      label="${res:Menu_File_OpenResource}"
+                      icon="folder_open_document"
+                      shortcut="Control|O"
+                      class="Maestro.Base.Commands.OpenResourceIdCommand" />
             <MenuItem type="Separator" />
             <Condition action="Disable" name="EditorFunction">
                 <Condition action="Disable" name="HasDocuments">

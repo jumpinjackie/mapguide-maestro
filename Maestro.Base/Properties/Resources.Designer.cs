@@ -833,6 +833,13 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap folder_open_document {
+            get {
+                object obj = ResourceManager.GetObject("folder_open_document", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Symbols.
         /// </summary>
@@ -891,6 +898,15 @@ namespace Maestro.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("images_stack", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Resource ID.
+        /// </summary>
+        internal static string InvalidResourceId {
+            get {
+                return ResourceManager.GetString("InvalidResourceId", resourceCulture);
             }
         }
         
@@ -1124,6 +1140,15 @@ namespace Maestro.Base.Properties {
         internal static string Menu_File_NewResource {
             get {
                 return ResourceManager.GetString("Menu_File_NewResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Resource.
+        /// </summary>
+        internal static string Menu_File_OpenResource {
+            get {
+                return ResourceManager.GetString("Menu_File_OpenResource", resourceCulture);
             }
         }
         
@@ -1413,6 +1438,15 @@ namespace Maestro.Base.Properties {
         internal static string NoFiniteDisplayScalesSpecified {
             get {
                 return ResourceManager.GetString("NoFiniteDisplayScalesSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Open Connections.
+        /// </summary>
+        internal static string NoOpenConnections {
+            get {
+                return ResourceManager.GetString("NoOpenConnections", resourceCulture);
             }
         }
         
@@ -1718,6 +1752,15 @@ namespace Maestro.Base.Properties {
         internal static string ResourceMigrated {
             get {
                 return ResourceManager.GetString("ResourceMigrated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource not found.
+        /// </summary>
+        internal static string ResourceNotFound {
+            get {
+                return ResourceManager.GetString("ResourceNotFound", resourceCulture);
             }
         }
         
