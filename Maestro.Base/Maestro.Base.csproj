@@ -129,6 +129,7 @@
     <Compile Include="Commands\SiteExplorer\ShowSpatialContextsCommand.cs" />
     <Compile Include="Commands\SiteExplorer\ValidateCommand.cs" />
     <Compile Include="Commands\StartupCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\TestResourceCompatibilityCommand.cs" />
     <Compile Include="Commands\Test\OpenCoordinateSystemPickerCommand.cs" />
     <Compile Include="Commands\Test\OpenResourceCommand.cs" />
     <Compile Include="Commands\Test\OpenSymbolBrowserCommand.cs" />
@@ -289,6 +290,12 @@
     <Compile Include="UI\DirtyStateConfirmationDialog.Designer.cs">
       <DependentUpon>DirtyStateConfirmationDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\IncompatibleResourcesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\IncompatibleResourcesDialog.Designer.cs">
+      <DependentUpon>IncompatibleResourcesDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ISiteExplorer.cs" />
     <Compile Include="UI\LabelLocalizationDialog.cs">
       <SubType>Form</SubType>
@@ -385,6 +392,12 @@
       <DependentUpon>SiteExplorer.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SiteExplorerDragDropHandler.cs" />
+    <Compile Include="UI\TestResourceCompatibilityDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TestResourceCompatibilityDialog.Designer.cs">
+      <DependentUpon>TestResourceCompatibilityDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\TipOfTheDayDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -523,6 +536,9 @@
     <EmbeddedResource Include="UI\DirtyStateConfirmationDialog.resx">
       <DependentUpon>DirtyStateConfirmationDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\IncompatibleResourcesDialog.resx">
+      <DependentUpon>IncompatibleResourcesDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\LabelLocalizationDialog.resx">
       <DependentUpon>LabelLocalizationDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -571,6 +587,9 @@
     <EmbeddedResource Include="UI\SiteExplorer.resx">
       <DependentUpon>SiteExplorer.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TestResourceCompatibilityDialog.resx">
+      <DependentUpon>TestResourceCompatibilityDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TipOfTheDayDialog.resx">
       <DependentUpon>TipOfTheDayDialog.cs</DependentUpon>

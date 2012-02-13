@@ -1731,6 +1731,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All resources selected are compatible with the selected site version {0}..
+        /// </summary>
+        internal static string ResourcesCompatibleWithSelectedVersion {
+            get {
+                return ResourceManager.GetString("ResourcesCompatibleWithSelectedVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} resources processed.
         /// </summary>
         internal static string ResourcesProcessed {
@@ -2238,6 +2247,15 @@ namespace Maestro.Base.Properties {
         internal static string SiteExplorer_ShowSpatialContexts {
             get {
                 return ResourceManager.GetString("SiteExplorer_ShowSpatialContexts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test Resource Compatibility.
+        /// </summary>
+        internal static string SiteExplorer_TestResourceCompatibility {
+            get {
+                return ResourceManager.GetString("SiteExplorer_TestResourceCompatibility", resourceCulture);
             }
         }
         

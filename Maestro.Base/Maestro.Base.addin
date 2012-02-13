@@ -454,6 +454,9 @@
                           label="${res:SiteExplorer_SelectedItem_Delete}"
                           class="Maestro.Base.Commands.SiteExplorer.DeleteSelectedItemsCommand" />
             </Condition>
+            <MenuItem id="TestCompatibility"
+                      label="${res:SiteExplorer_TestResourceCompatibility}"
+                      class="Maestro.Base.Commands.SiteExplorer.TestResourceCompatibilityCommand" />
             <MenuItem id="Validate"
                       icon="tick"
                       label="${res:SiteExplorer_ValidateResources}"
