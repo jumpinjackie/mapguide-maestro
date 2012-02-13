@@ -215,15 +215,14 @@ namespace Maestro.Editors.MapDefinition
         {
             if (treePath.IsEmpty())
             {
+                foreach (var layer in _map.GetLayersWithoutGroups())
+                {
+                    yield return new LayerItem(layer);
+                }
                 foreach (var group in _map.MapLayerGroup)
                 {
                     if (string.IsNullOrEmpty(group.Group))
                         yield return new GroupItem(group);
-                }
-
-                foreach (var layer in _map.GetLayersWithoutGroups())
-                {
-                    yield return new LayerItem(layer);
                 }
             }
             else
@@ -232,15 +231,14 @@ namespace Maestro.Editors.MapDefinition
                 if (gitem != null)
                 {
                     var group = gitem.Tag;
+                    foreach (var l in _map.GetLayersForGroup(group.Name))
+                    {
+                        yield return new LayerItem(l);
+                    }
                     foreach (var g in _map.MapLayerGroup)
                     {
                         if (g.Group == group.Name)
                             yield return new GroupItem(g);
-                    }
-
-                    foreach (var l in _map.GetLayersForGroup(gitem.Tag.Name))
-                    {
-                        yield return new LayerItem(l);
                     }
                 }
                 else
