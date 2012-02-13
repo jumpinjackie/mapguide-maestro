@@ -29,6 +29,7 @@ using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using Maestro.Shared.UI;
 using Maestro.Base.Services;
+using Maestro.Base.Editor;
 
 namespace Maestro.Base.Commands
 {
@@ -139,8 +140,16 @@ namespace Maestro.Base.Commands
             {
                 _conn = ed.EditorService.GetEditedResource().CurrentConnection;
 
-                ed.EditorService.SyncSessionCopy();
-
+                var xed = ed as XmlEditor;
+                if (xed != null)
+                {
+                    xed.EditorService.UpdateResourceContent(xed.GetXmlContent());
+                }
+                else
+                {
+                    ed.EditorService.SyncSessionCopy();
+                }
+                
                 var pdlg = new ProgressDialog();
                 pdlg.CancelAbortsThread = true;
 

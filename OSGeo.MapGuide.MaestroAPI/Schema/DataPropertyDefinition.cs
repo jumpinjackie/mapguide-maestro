@@ -133,16 +133,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <returns></returns>
         public static DataPropertyType GetDataType(string xmlType)
         {
-            switch (xmlType)
+            switch (xmlType.ToLower())
             {
                 case "xs:hexbinary":
-                case "xs:base64Binary":
+                case "xs:base64binary":
                     return DataPropertyType.Blob;
                 case "xs:boolean":
                     return DataPropertyType.Boolean;
                 case "fdo:byte":
                 case "xs:byte":
-                case "xs:unsignedByte":
+                case "xs:unsignedbyte":
                     return DataPropertyType.Byte;
                 case "xs:date":
                 case "xs:datetime":
@@ -155,22 +155,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 case "fdo:int16":
                 case "xs:int16":
                 case "xs:short":
-                case "xs:unsignedShort":
+                case "xs:unsignedshort":
                     return DataPropertyType.Int16;
                 case "fdo:int32":
                 case "xs:int32":
                 case "xs:integer":
-                case "xs:negativeInteger":
-                case "xs:nonNegativeInteger":
-                case "xs:nonPositiveInteger":
-                case "xs:positiveInteger":
-                case "xs:unsignedInt":
+                case "xs:negativeinteger":
+                case "xs:nonnegativeinteger":
+                case "xs:nonpositiveinteger":
+                case "xs:positiveinteger":
+                case "xs:unsignedint":
                 case "xs:int":
                     return DataPropertyType.Int32;
                 case "fdo:int64":
                 case "xs:int64":
                 case "xs:long":
-                case "xs:unsignedLong":
+                case "xs:unsignedlong":
                     return DataPropertyType.Int64;
                 case "xs:float":
                 case "xs:single":
