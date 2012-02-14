@@ -29,6 +29,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Base.Services;
 using System.Collections;
+using Maestro.Editors.Generic;
 
 namespace Maestro.Base.UI
 {
@@ -82,6 +83,17 @@ namespace Maestro.Base.UI
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            using (var picker = new ResourcePicker(SelectedConnection.ResourceService, ResourcePickerMode.OpenResource))
+            {
+                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    txtResourceId.Text = picker.ResourceID;
+                }
+            }
         }
     }
 }
