@@ -55,7 +55,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -86,6 +85,10 @@
     <ProjectReference Include="..\..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WatermarkDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0.csproj">
+      <Project>{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}</Project>
+      <Name>OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

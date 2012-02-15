@@ -53,11 +53,6 @@
     <DocumentationFile>..\SDK\bin\OSGeo.MapGuide.ExtendedObjectModels.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OSGeo.MapGuide.ObjectModels.LayerDefinition-2.4.0, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL" />
-    <Reference Include="OSGeo.MapGuide.ObjectModels.MapDefinition-2.4.0, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL" />
-    <Reference Include="OSGeo.MapGuide.ObjectModels.SymbolDefinition-2.4.0, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL" />
-    <Reference Include="OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL" />
-    <Reference Include="OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -89,6 +84,10 @@
       <Project>{F976A709-D9DB-407E-A4CD-2CEA31C6B1D9}</Project>
       <Name>OSGeo.MapGuide.ObjectModels.LayerDefinition-2.3.0</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExtendedModels\LayerDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.LayerDefinition-2.4.0.csproj">
+      <Project>{16E6B250-C805-4C31-9A7D-F56A0051EC93}</Project>
+      <Name>OSGeo.MapGuide.ObjectModels.LayerDefinition-2.4.0</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExtendedModels\LoadProcedure-1.1.0\OSGeo.MapGuide.ObjectModels.LoadProcedure-1.1.0.csproj">
       <Project>{B2A1F69E-52AA-42A2-8DED-89ADB9B14A38}</Project>
       <Name>OSGeo.MapGuide.ObjectModels.LoadProcedure-1.1.0</Name>
@@ -101,17 +100,33 @@
       <Project>{C8DB3E77-3AF4-471D-A214-69DBEB32750E}</Project>
       <Name>OSGeo.MapGuide.ObjectModels.MapDefinition-2.3.0</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExtendedModels\MapDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.MapDefinition-2.4.0.csproj">
+      <Project>{C0CA5D05-72C0-4F22-8618-B31BF0FFA190}</Project>
+      <Name>OSGeo.MapGuide.ObjectModels.MapDefinition-2.4.0</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExtendedModels\SymbolDefinition-1.1.0\OSGeo.MapGuide.ObjectModels.SymbolDefinition-1.1.0.csproj">
       <Project>{BF6E996E-27AF-44CD-B3CF-A40874E15B2E}</Project>
       <Name>OSGeo.MapGuide.ObjectModels.SymbolDefinition-1.1.0</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExtendedModels\SymbolDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.SymbolDefinition-2.4.0.csproj">
+      <Project>{222CB020-5336-47D7-9BB9-A22D18953C80}</Project>
+      <Name>OSGeo.MapGuide.ObjectModels.SymbolDefinition-2.4.0</Name>
     </ProjectReference>
     <ProjectReference Include="..\ExtendedModels\WatermarkDefinition-2.3.0\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0.csproj">
       <Project>{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}</Project>
       <Name>OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExtendedModels\WatermarkDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0.csproj">
+      <Project>{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}</Project>
+      <Name>OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExtendedModels\WebLayout-1.1.0\OSGeo.MapGuide.ObjectModels.WebLayout-1.1.0.csproj">
       <Project>{0A93ACA8-5B21-44E6-B0B7-5D1E72D3A6A2}</Project>
       <Name>OSGeo.MapGuide.ObjectModels.WebLayout-1.1.0</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExtendedModels\WebLayout-2.4.0\OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0.csproj">
+      <Project>{BEC17FD3-2ADB-4154-934D-494313C588EE}</Project>
+      <Name>OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0</Name>
     </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>

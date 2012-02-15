@@ -170,8 +170,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                         });
                         _providers.Add(new ConnectionProviderEntry(name, desc, attr[0].IsMultiPlatform));    
                     }
-
-                    
                 }
                 catch
                 {
