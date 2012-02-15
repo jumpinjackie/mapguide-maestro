@@ -4,7 +4,7 @@ SET TYPEBUILD=Release
 SET PLATFORM=Any CPU
 SET RELEASE_VERSION=4.0.0
 SET OLDPATH=%PATH%
-SET PATH=%PATH%;%CD%\Thirdparty\NSIS;C:\Windows\Microsoft.NET\Framework\v3.5
+SET PATH=%PATH%;%CD%\Thirdparty\NSIS;C:\Windows\Microsoft.NET\Framework\v4.0.30319
 SET SLNDIR=%CD%
 
 :study_params
