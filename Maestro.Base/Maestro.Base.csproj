@@ -417,6 +417,7 @@
     <Compile Include="UI\ValidationResultsDialog.Designer.cs">
       <DependentUpon>ValidationResultsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="MaestroPaths.cs" />
     <Compile Include="Workbench.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -41,7 +41,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\SDK\bin\</OutputPath>
+    <OutputPath>..\SDK\bin\bin.x86.MGOS2.2.0\</OutputPath>
     <DefineConstants>TRACE;DEBUG;MG220</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>

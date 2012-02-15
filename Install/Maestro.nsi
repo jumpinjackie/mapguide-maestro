@@ -175,8 +175,11 @@ Section
 	# set installation dir
 	SetOutPath $INSTDIR
 	
-	# directories
-	File /r "${INST_OUTPUT_MAESTRO}\AddIns"
+	# directories / core addins
+	File /r "${INST_OUTPUT_MAESTRO}\AddIns\ExtendedObjectModels"
+    File /r "${INST_OUTPUT_MAESTRO}\AddIns\FdoToolbox"
+    File /r "${INST_OUTPUT_MAESTRO}\AddIns\Scripting"
+    File "${INST_OUTPUT_MAESTRO}\AddIns\Maestro.Base.addin"
     File /r "${INST_OUTPUT_MAESTRO}\Data"
     File /r "${INST_OUTPUT_MAESTRO}\Schemas"
     File /r "${INST_OUTPUT_MAESTRO}\UserDoc"

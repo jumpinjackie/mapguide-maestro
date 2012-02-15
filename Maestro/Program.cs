@@ -105,7 +105,11 @@ namespace Maestro
             CoreStartup coreStartup = new CoreStartup("MapGuide Maestro");
             // It is also used as default storage location for the application settings:
             // "%Application Data%\%Application Name%", but you can override that by setting c.ConfigDirectory
-            
+
+            // #1955: Each version of Maestro from here on in will store their user data under
+            // %APPDATA%\Maestro-x.y
+            coreStartup.ConfigDirectory = MaestroPaths.BasePath;
+
             // Specify the name of the application settings file (.xml is automatically appended)
             coreStartup.PropertiesName = "AppProperties";
 

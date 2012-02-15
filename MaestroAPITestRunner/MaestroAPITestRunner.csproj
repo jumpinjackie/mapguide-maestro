@@ -99,9 +99,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\SDK\bin\OSGeo.MapGuide.MaestroAPI.Native32-2.2.0.dll">
+    <Content Include="..\SDK\bin\bin.x86.MGOS2.2.0\OSGeo.MapGuide.MaestroAPI.Native32-2.2.0.dll">
       <Link>MGOS22\OSGeo.MapGuide.MaestroAPI.Native32-2.2.0.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\Thirdparty\MGOS_2_2_0_x86\OSGeo.MapGuide.Foundation.dll">
       <Link>MGOS22\OSGeo.MapGuide.Foundation.dll</Link>
