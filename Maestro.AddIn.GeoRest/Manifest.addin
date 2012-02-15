@@ -9,7 +9,7 @@
     </Manifest>
 
     <Runtime>
-        <Import assembly="../../Maestro.Base.dll" />
+        <Import assembly=":Maestro.Base" />
         <Import assembly="Maestro.AddIn.GeoRest.dll" />
     </Runtime>
 
