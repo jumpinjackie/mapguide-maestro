@@ -1,13 +1,11 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 3287 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace ICSharpCode.Core
 {
@@ -16,9 +14,10 @@ namespace ICSharpCode.Core
 	/// </summary>
 	public sealed class AddInTreeNode
 	{
+		readonly object lockObj = new object();
 		Dictionary<string, AddInTreeNode> childNodes = new Dictionary<string, AddInTreeNode>();
-		List<Codon> codons = new List<Codon>();
-		bool isSorted = false;
+		ReadOnlyCollection<Codon> codons;
+		List<IEnumerable<Codon>> codonInput;
 		
 		/// <summary>
 		/// A dictionary containing the child paths.
@@ -29,106 +28,36 @@ namespace ICSharpCode.Core
 			}
 		}
 		
-		/// <summary>
-		/// A list of child <see cref="Codon"/>s.
-		/// </summary>
-		public List<Codon> Codons {
-			get {
-				return codons;
+		public void AddCodons(IEnumerable<Codon> newCodons)
+		{
+			if (newCodons == null)
+				throw new ArgumentNullException("newCodons");
+			lock (lockObj) {
+				if (codonInput == null) {
+					codonInput = new List<IEnumerable<Codon>>();
+					if (codons != null)
+						codonInput.Add(codons);
+				}
+				codonInput.Add(newCodons);
 			}
 		}
 		
-//
-//		public void BinarySerialize(BinaryWriter writer)
-//		{
-//			if (!isSorted) {
-//				(new SortCodons(this)).Execute();
-//				isSorted = true;
-//			}
-//			writer.Write((ushort)codons.Count);
-//			foreach (Codon codon in codons) {
-//				codon.BinarySerialize(writer);
-//			}
-//
-//			writer.Write((ushort)childNodes.Count);
-//			foreach (KeyValuePair<string, AddInTreeNode> child in childNodes) {
-//				writer.Write(AddInTree.GetNameOffset(child.Key));
-//				child.Value.BinarySerialize(writer);
-//			}
-//		}
-		
 		/// <summary>
-		/// Supports sorting codons using InsertBefore/InsertAfter
+		/// A list of child <see cref="Codon"/>s.
 		/// </summary>
-		sealed class TopologicalSort
-		{
-			List<Codon> codons;
-			bool[] visited;
-			List<Codon> sortedCodons;
-			Dictionary<string, int> indexOfName;
-			
-			public TopologicalSort(List<Codon> codons)
-			{
-				this.codons = codons;
-				visited = new bool[codons.Count];
-				sortedCodons = new List<Codon>(codons.Count);
-				indexOfName = new Dictionary<string, int>(codons.Count);
-				// initialize visited to false and fill the indexOfName dictionary
-				for (int i = 0; i < codons.Count; ++i) {
-					visited[i] = false;
-					indexOfName[codons[i].Id] = i;
-				}
-			}
-			
-			void InsertEdges()
-			{
-				// add the InsertBefore to the corresponding InsertAfter
-				for (int i = 0; i < codons.Count; ++i) {
-					string before = codons[i].InsertBefore;
-					if (before != null && before != "") {
-						if (indexOfName.ContainsKey(before)) {
-							string after = codons[indexOfName[before]].InsertAfter;
-							if (after == null || after == "") {
-								codons[indexOfName[before]].InsertAfter = codons[i].Id;
-							} else {
-								codons[indexOfName[before]].InsertAfter = after + ',' + codons[i].Id;
-							}
+		public ReadOnlyCollection<Codon> Codons {
+			get {
+				lock (lockObj) {
+					if (codons == null) {
+						if (codonInput == null) {
+							codons = new ReadOnlyCollection<Codon>(new Codon[0]);
 						} else {
-							LoggingService.WarnFormatted("Codon ({0}) specified in the insertbefore of the {1} codon does not exist!", before, codons[i]);
+							codons = TopologicalSort.Sort(codonInput).AsReadOnly();
+							codonInput = null;
 						}
 					}
+					return codons;
 				}
-			}
-			
-			public List<Codon> Execute()
-			{
-				InsertEdges();
-				
-				// Visit all codons
-				for (int i = 0; i < codons.Count; ++i) {
-					Visit(i);
-				}
-				return sortedCodons;
-			}
-			
-			void Visit(int codonIndex)
-			{
-				if (visited[codonIndex]) {
-					return;
-				}
-				string[] after = codons[codonIndex].InsertAfter.Split(new char[] {','});
-				foreach (string s in after) {
-					if (s == null || s.Length == 0) {
-						continue;
-					}
-					if (indexOfName.ContainsKey(s)) {
-						Visit(indexOfName[s]);
-					} else {
-						LoggingService.WarnFormatted("Codon ({0}) specified in the insertafter of the {1} codon does not exist!", codons[codonIndex].InsertAfter, codons[codonIndex]);
-					}
-				}
-				sortedCodons.Add(codons[codonIndex]);
-				visited[codonIndex] = true;
 			}
 		}
 		
@@ -136,19 +65,13 @@ namespace ICSharpCode.Core
 		/// Builds the child items in this path. Ensures that all items have the type T.
 		/// </summary>
 		/// <param name="caller">The owner used to create the objects.</param>
-		public List<T> BuildChildItems<T>(object caller)
+		/// <param name="additionalConditions">Additional conditions applied to the node.</param>
+		public List<T> BuildChildItems<T>(object caller, IEnumerable<ICondition> additionalConditions = null)
 		{
+			var codons = this.Codons;
 			List<T> items = new List<T>(codons.Count);
-			if (!isSorted) {
-				codons = (new TopologicalSort(codons)).Execute();
-				isSorted = true;
-			}
 			foreach (Codon codon in codons) {
-				ArrayList subItems = null;
-				if (childNodes.ContainsKey(codon.Id)) {
-					subItems = childNodes[codon.Id].BuildChildItems(caller);
-				}
-				object result = codon.BuildItem(caller, subItems);
+				object result = BuildChildItem(codon, caller, additionalConditions);
 				if (result == null)
 					continue;
 				IBuildItemsModifier mod = result as IBuildItemsModifier;
@@ -158,40 +81,40 @@ namespace ICSharpCode.Core
 					items.Add((T)result);
 				} else {
 					throw new InvalidCastException("The AddInTreeNode <" + codon.Name + " id='" + codon.Id
-					                               + "' returned an instance of " + result.GetType().FullName
+					                               + "'> returned an instance of " + result.GetType().FullName
 					                               + " but the type " + typeof(T).FullName + " is expected.");
 				}
 			}
 			return items;
 		}
 		
+		public object BuildChildItem(Codon codon, object caller, IEnumerable<ICondition> additionalConditions = null)
+		{
+			if (codon == null)
+				throw new ArgumentNullException("codon");
+			
+			AddInTreeNode subItemNode;
+			childNodes.TryGetValue(codon.Id, out subItemNode);
+			
+			IEnumerable<ICondition> conditions;
+			if (additionalConditions == null)
+				conditions = codon.Conditions;
+			else if (codon.Conditions.Length == 0)
+				conditions = additionalConditions;
+			else
+				conditions = additionalConditions.Concat(codon.Conditions);
+			
+			return codon.BuildItem(new BuildItemArgs(caller, codon, conditions, subItemNode));
+		}
+		
 		/// <summary>
 		/// Builds the child items in this path.
 		/// </summary>
 		/// <param name="caller">The owner used to create the objects.</param>
+		[Obsolete("Use the generic BuildChildItems version instead")]
 		public ArrayList BuildChildItems(object caller)
 		{
-			ArrayList items = new ArrayList(codons.Count);
-			if (!isSorted) {
-				codons = (new TopologicalSort(codons)).Execute();
-				isSorted = true;
-			}
-			foreach (Codon codon in codons) {
-				ArrayList subItems = null;
-				if (childNodes.ContainsKey(codon.Id)) {
-					subItems = childNodes[codon.Id].BuildChildItems(caller);
-				}
-				object result = codon.BuildItem(caller, subItems);
-				if (result == null)
-					continue;
-				IBuildItemsModifier mod = result as IBuildItemsModifier;
-				if (mod != null) {
-					mod.Apply(items);
-				} else {
-					items.Add(result);
-				}
-			}
-			return items;
+			return new ArrayList(this.BuildChildItems<object>(caller));
 		}
 		
 		/// <summary>
@@ -201,15 +124,15 @@ namespace ICSharpCode.Core
 		/// The ID of the child item to build.
 		/// </param>
 		/// <param name="caller">The owner used to create the objects.</param>
-		/// <param name="subItems">The subitems to pass to the doozer</param>
+		/// <param name="additionalConditions">Additional conditions applied to the created object</param>
 		/// <exception cref="TreePathNotFoundException">
 		/// Occurs when <paramref name="childItemID"/> does not exist in this path.
 		/// </exception>
-		public object BuildChildItem(string childItemID, object caller, ArrayList subItems)
+		public object BuildChildItem(string childItemID, object caller, IEnumerable<ICondition> additionalConditions = null)
 		{
-			foreach (Codon codon in codons) {
+			foreach (Codon codon in this.Codons) {
 				if (codon.Id == childItemID) {
-					return codon.BuildItem(caller, subItems);
+					return BuildChildItem(codon, caller, additionalConditions);
 				}
 			}
 			throw new TreePathNotFoundException(childItemID);

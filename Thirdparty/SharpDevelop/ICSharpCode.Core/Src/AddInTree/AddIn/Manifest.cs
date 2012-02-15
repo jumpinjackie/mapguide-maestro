@@ -1,12 +1,9 @@
-// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Daniel Grunwald" email="daniel@danielgrunwald.de"/>
-//     <version>$Revision: 915 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Xml;
 
 namespace ICSharpCode.Core
@@ -40,15 +37,15 @@ namespace ICSharpCode.Core
 			}
 		}
 		
-		public List<AddInReference> Dependencies {
+		public ReadOnlyCollection<AddInReference> Dependencies {
 			get {
-				return dependencies;
+				return dependencies.AsReadOnly();
 			}
 		}
 		
-		public List<AddInReference> Conflicts {
+		public ReadOnlyCollection<AddInReference> Conflicts {
 			get {
-				return conflicts;
+				return conflicts.AsReadOnly();
 			}
 		}
 		

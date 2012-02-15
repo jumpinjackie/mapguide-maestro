@@ -1,32 +1,31 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 915 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 
 namespace ICSharpCode.Core
 {
-	public delegate void FileNameEventHandler(object sender, FileNameEventArgs e);
-	
 	/// <summary>
-	/// Description of FileEventHandler.
+	/// EventArgs with a file name.
 	/// </summary>
 	public class FileNameEventArgs : System.EventArgs
 	{
-		string fileName;
+		FileName fileName;
 		
-		public string FileName {
+		public FileName FileName {
 			get {
 				return fileName;
 			}
 		}
 		
-		public FileNameEventArgs(string fileName)
+		public FileNameEventArgs(FileName fileName)
 		{
 			this.fileName = fileName;
+		}
+		
+		public FileNameEventArgs(string fileName)
+		{
+			this.fileName = FileName.Create(fileName);
 		}
 	}
 }

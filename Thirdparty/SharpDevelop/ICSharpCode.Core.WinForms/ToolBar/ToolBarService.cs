@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 3702 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Collections.Generic;
@@ -29,7 +25,7 @@ namespace ICSharpCode.Core.WinForms
 					collection.Add((ToolStripItem)item);
 				} else {
 					ISubmenuBuilder submenuBuilder = (ISubmenuBuilder)item;
-					collection.AddRange(submenuBuilder.BuildSubmenu(null, owner));
+					collection.AddRange(submenuBuilder.BuildSubmenu(descriptor.Codon, owner));
 				}
 			}
 			

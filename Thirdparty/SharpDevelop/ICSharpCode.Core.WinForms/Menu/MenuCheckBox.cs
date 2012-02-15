@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 3702 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Windows.Forms;
@@ -23,7 +19,7 @@ namespace ICSharpCode.Core.WinForms
 				try {
 					menuCommand = (ICheckableMenuCommand)codon.AddIn.CreateObject(codon.Properties["class"]);
 				} catch (Exception e) {
-					MessageService.ShowError(e, "Can't create menu command : " + codon.Id);
+					MessageService.ShowException(e, "Can't create menu command : " + codon.Id);
 				}
 			}
 		}

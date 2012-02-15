@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 3287 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Collections;
@@ -33,6 +29,11 @@ namespace ICSharpCode.Core
 	/// <attribute name="class" use="optional">
 	/// Command class that is run when item is clicked.
 	/// </attribute>
+	/// <attribute name="command" use="optional">
+	/// A WPF routed command that is executed when item is clicked.
+	/// Currently, this property is supported only for WPF Menus.
+	/// Only one of the "class" and "command" attributes can be used on a menu entry.
+	/// </attribute>
 	/// <attribute name="link" use="optional">
 	/// Only for the type "Item"/"Command". Opens a webpage instead of running a command when
 	/// clicking the item.
@@ -60,9 +61,9 @@ namespace ICSharpCode.Core
 			}
 		}
 		
-		public object BuildItem(object caller, Codon codon, ArrayList subItems)
+		public object BuildItem(BuildItemArgs args)
 		{
-			return new MenuItemDescriptor(caller, codon, subItems);
+			return new MenuItemDescriptor(args.Caller, args.Codon, args.BuildSubItems<object>());
 		}
 	}
 	
@@ -78,6 +79,8 @@ namespace ICSharpCode.Core
 		
 		public MenuItemDescriptor(object caller, Codon codon, IList subItems)
 		{
+			if (codon == null)
+				throw new ArgumentNullException("codon");
 			this.Caller = caller;
 			this.Codon = codon;
 			this.SubItems = subItems;

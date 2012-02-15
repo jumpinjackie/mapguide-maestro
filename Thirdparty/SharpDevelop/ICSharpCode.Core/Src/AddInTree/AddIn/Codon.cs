@@ -1,13 +1,10 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 2059 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ICSharpCode.Core
 {
@@ -41,25 +38,13 @@ namespace ICSharpCode.Core
 		
 		public string InsertAfter {
 			get {
-				if (!properties.Contains("insertafter")) {
-					return "";
-				}
 				return properties["insertafter"];
-			}
-			set {
-				properties["insertafter"] = value;
 			}
 		}
 		
 		public string InsertBefore {
 			get {
-				if (!properties.Contains("insertbefore")) {
-					return "";
-				}
 				return properties["insertbefore"];
-			}
-			set {
-				properties["insertbefore"] = value;
 			}
 		}
 		
@@ -102,25 +87,27 @@ namespace ICSharpCode.Core
 //			properties.BinarySerialize(writer);
 //		}
 //
-		public object BuildItem(object owner, ArrayList subItems)
+		
+		internal object BuildItem(BuildItemArgs args)
 		{
 			IDoozer doozer;
 			if (!AddInTree.Doozers.TryGetValue(Name, out doozer))
-				throw new CoreException("Doozer " + Name + " not found!");
+				throw new CoreException("Doozer " + Name + " not found! " + ToString());
 			
-			if (!doozer.HandleConditions && conditions.Length > 0) {
-				ConditionFailedAction action = GetFailedAction(owner);
+			if (!doozer.HandleConditions) {
+				ConditionFailedAction action = Condition.GetFailedAction(args.Conditions, args.Caller);
 				if (action != ConditionFailedAction.Nothing) {
 					return null;
 				}
 			}
-			return doozer.BuildItem(owner, this, subItems);
+			return doozer.BuildItem(args);
 		}
 		
 		public override string ToString()
 		{
-			return String.Format("[Codon: name = {0}, addIn={1}]",
+			return String.Format("[Codon: name = {0}, id = {1}, addIn={2}]",
 			                     name,
+			                     Id,
 			                     addIn.FileName);
 		}
 	}

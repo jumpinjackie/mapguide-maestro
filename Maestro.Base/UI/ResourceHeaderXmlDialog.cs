@@ -85,7 +85,7 @@ namespace Maestro.Base.UI
             }
             catch (Exception ex)
             {
-                MessageService.ShowError(ex);
+                MessageService.ShowError(ex.ToString());
                 return;
             }
 

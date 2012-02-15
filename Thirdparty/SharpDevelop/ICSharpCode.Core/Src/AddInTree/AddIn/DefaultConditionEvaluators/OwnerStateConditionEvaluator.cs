@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 1965 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 
@@ -32,8 +28,8 @@ namespace ICSharpCode.Core
 					int conditionInt = Int32.Parse(conditionEnum.ToString("D"));
 					
 					return (stateInt & conditionInt) > 0;
-				} catch (Exception) {
-					throw new ApplicationException("can't parse '" + condition.Properties["state"] + "'. Not a valid value.");
+				} catch (Exception ex) {
+					throw new CoreException("can't parse '" + condition.Properties["state"] + "'. Not a valid value.", ex);
 				}
 			}
 			return false;

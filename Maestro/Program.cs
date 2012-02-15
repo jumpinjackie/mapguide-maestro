@@ -51,17 +51,15 @@ namespace Maestro
 
             string lang = PreferredSiteList.InitCulture();
 
-            var btw = BroadcastTextWriter.Instance;
+            //var btw = BroadcastTextWriter.Instance;
 
             // Logging service by default uses System.Diagnostics.Debug. Re-route this
             // to our writer
-            var wfmsg = WinFormsMessageService.Instance;
-            ServiceManager.LoggingService = new TextWriterLoggingService(btw);
-            ServiceManager.MessageService = wfmsg;
+            //var wfmsg = WinFormsMessageService.Instance;
+            //ServiceManager.LoggingService = new TextWriterLoggingService(btw);
+            //ServiceManager.MessageService = wfmsg;
 
-            // The LoggingService is a small wrapper around log4net.
-            // Our application contains a .config file telling log4net to write
-            // to System.Diagnostics.Trace.
+            ServiceManager.Instance = new MaestroServiceManager();
             LoggingService.Info("Application start");
 
             // Setup Platform.ini if required
@@ -181,6 +179,32 @@ namespace Maestro
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
             ErrorDialog.Show(e.Exception);
+        }
+    }
+
+    sealed class MaestroServiceManager : ServiceManager
+    {
+        static ILoggingService loggingService = new TextWriterLoggingService(BroadcastTextWriter.Instance);
+        static IMessageService messageService = new TextWriterMessageService(Console.Out);
+
+        public override ILoggingService LoggingService
+        {
+            get { return loggingService; }
+        }
+
+        public override IMessageService MessageService
+        {
+            get { return messageService; }
+        }
+
+        public override object GetService(Type serviceType)
+        {
+            if (serviceType == typeof(ILoggingService))
+                return loggingService;
+            else if (serviceType == typeof(IMessageService))
+                return messageService;
+            else
+                return null;
         }
     }
 }

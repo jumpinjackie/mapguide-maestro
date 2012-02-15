@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 2085 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Collections.Generic;
@@ -53,14 +49,13 @@ namespace ICSharpCode.Core
 			action = properties.Get("action", ConditionFailedAction.Exclude);
 		}
 		
-		public bool IsValid(object caller)
+		public bool IsValid(object owner)
 		{
 			try {
-				return AddInTree.ConditionEvaluators[name].IsValid(caller, this);
+				return AddInTree.ConditionEvaluators[name].IsValid(owner, this);
 			} catch (KeyNotFoundException) {
 				throw new CoreException("Condition evaluator " + name + " not found!");
 			}
-
 		}
 		
 		public static ICondition Read(XmlReader reader)

@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 2318 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Collections;
@@ -25,10 +21,11 @@ namespace ICSharpCode.Core
 		/// <summary>
 		/// Construct the item.
 		/// </summary>
-		/// <param name="caller">The caller passed to <see cref="AddInTree.BuildItem"/>.</param>
-		/// <param name="codon">The codon to build.</param>
-		/// <param name="subItems">The list of objects created by (other) doozers for the sub items.</param>
-		/// <returns>The constructed item.</returns>
-		object BuildItem(object caller, Codon codon, ArrayList subItems);
+		/// <returns>
+		/// The constructed item.
+		/// May return an object implementing <see cref="IBuildItemsModifier"/> for returning
+		/// multiple arguments.
+		/// </returns>
+		object BuildItem(BuildItemArgs args);
 	}
 }

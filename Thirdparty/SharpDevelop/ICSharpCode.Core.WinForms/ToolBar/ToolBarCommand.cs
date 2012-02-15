@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 3763 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Windows.Forms;
@@ -45,7 +41,7 @@ namespace ICSharpCode.Core.WinForms
 			}
 			if (menuCommand != null) {
 				menuCommand.Owner = caller;
-				LoggingService.Info("Run command " + menuCommand.GetType().FullName);
+				AnalyticsMonitorService.TrackFeature(menuCommand.GetType().FullName, "Toolbar");
 				menuCommand.Run();
 			}
 		}

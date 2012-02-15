@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 3287 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Collections;
@@ -46,9 +42,13 @@ namespace ICSharpCode.Core
 				return PropertyService.Get(uiLanguageProperty, Thread.CurrentThread.CurrentUICulture.Name);
 			}
 			set {
-				PropertyService.Set(uiLanguageProperty, value);
+				if (Language != value) {
+					PropertyService.Set(uiLanguageProperty, value);
+				}
 			}
 		}
+		
+		static readonly object loadLock = new object();
 		
 		/// <summary>English strings (list of resource managers)</summary>
 		static List<ResourceManager> strings = new List<ResourceManager>();
@@ -166,8 +166,9 @@ namespace ICSharpCode.Core
 		{
 			if (e.Key == uiLanguageProperty && e.NewValue != e.OldValue) {
 				LoadLanguageResources((string)e.NewValue);
-				if (LanguageChanged != null)
-					LanguageChanged(null, e);
+				EventHandler handler = LanguageChanged;
+				if (handler != null)
+					handler(null, e);
 			}
 		}
 		
@@ -178,33 +179,35 @@ namespace ICSharpCode.Core
 		
 		static void LoadLanguageResources(string language)
 		{
-			if (ClearCaches != null)
-				ClearCaches(null, EventArgs.Empty);
-			
-			try {
-				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(language);
-			} catch (Exception) {
+			lock (loadLock) {
 				try {
-					Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(language.Split('-')[0]);
-				} catch (Exception) {}
+					Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(language);
+				} catch (Exception) {
+					try {
+						Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(language.Split('-')[0]);
+					} catch (Exception) {}
+				}
+				
+				localStrings = Load(stringResources, language);
+				if (localStrings == null && language.IndexOf('-') > 0) {
+					localStrings = Load(stringResources, language.Split('-')[0]);
+				}
+				
+				localIcons = Load(imageResources, language);
+				if (localIcons == null && language.IndexOf('-') > 0) {
+					localIcons = Load(imageResources, language.Split('-')[0]);
+				}
+				
+				localStringsResMgrs.Clear();
+				localIconsResMgrs.Clear();
+				currentLanguage = language;
+				foreach (ResourceAssembly ra in resourceAssemblies) {
+					ra.Load();
+				}
 			}
-			
-			localStrings = Load(stringResources, language);
-			if (localStrings == null && language.IndexOf('-') > 0) {
-				localStrings = Load(stringResources, language.Split('-')[0]);
-			}
-			
-			localIcons = Load(imageResources, language);
-			if (localIcons == null && language.IndexOf('-') > 0) {
-				localIcons = Load(imageResources, language.Split('-')[0]);
-			}
-			
-			localStringsResMgrs.Clear();
-			localIconsResMgrs.Clear();
-			currentLanguage = language;
-			foreach (ResourceAssembly ra in resourceAssemblies) {
-				ra.Load();
-			}
+			EventHandler handler = ClearCaches;
+			if (handler != null)
+				handler(null, EventArgs.Empty);
 		}
 		
 		static Hashtable Load(string fileName)
@@ -241,68 +244,72 @@ namespace ICSharpCode.Core
 		/// </exception>
 		public static string GetString(string name)
 		{
-			if (localStrings != null && localStrings[name] != null) {
-				return localStrings[name].ToString();
-			}
-			
-			string s = null;
-			foreach (ResourceManager resourceManger in localStringsResMgrs) {
-				try {
-					s = resourceManger.GetString(name);
+			lock (loadLock) {
+				if (localStrings != null && localStrings[name] != null) {
+					return localStrings[name].ToString();
 				}
-				catch (Exception) { }
-
-				if (s != null) {
-					break;
-				}
-			}
-			
-			if (s == null) {
-				foreach (ResourceManager resourceManger in strings) {
+				
+				string s = null;
+				foreach (ResourceManager resourceManger in localStringsResMgrs) {
 					try {
 						s = resourceManger.GetString(name);
 					}
 					catch (Exception) { }
-					
+
 					if (s != null) {
 						break;
 					}
 				}
-			}
-			if (s == null) {
-				throw new ResourceNotFoundException("string >" + name + "<");
-			}
-			
-			return s;
-		}
-		
-		public static object GetImageResource(string name)
-		{
-			object iconobj = null;
-			if (localIcons != null && localIcons[name] != null) {
-				iconobj = localIcons[name];
-			} else {
-				foreach (ResourceManager resourceManger in localIconsResMgrs) {
-					iconobj = resourceManger.GetObject(name);
-					if (iconobj != null) {
-						break;
-					}
-				}
 				
-				if (iconobj == null) {
-					foreach (ResourceManager resourceManger in icons) {
+				if (s == null) {
+					foreach (ResourceManager resourceManger in strings) {
 						try {
-							iconobj = resourceManger.GetObject(name);
+							s = resourceManger.GetString(name);
 						}
 						catch (Exception) { }
-
-						if (iconobj != null) {
+						
+						if (s != null) {
 							break;
 						}
 					}
 				}
+				if (s == null) {
+					throw new ResourceNotFoundException("string >" + name + "<");
+				}
+				
+				return s;
 			}
-			return iconobj;
+		}
+		
+		public static object GetImageResource(string name)
+		{
+			lock (loadLock) {
+				object iconobj = null;
+				if (localIcons != null && localIcons[name] != null) {
+					iconobj = localIcons[name];
+				} else {
+					foreach (ResourceManager resourceManger in localIconsResMgrs) {
+						iconobj = resourceManger.GetObject(name);
+						if (iconobj != null) {
+							break;
+						}
+					}
+					
+					if (iconobj == null) {
+						foreach (ResourceManager resourceManger in icons) {
+							try {
+								iconobj = resourceManger.GetObject(name);
+							}
+							catch (Exception) { }
+
+							if (iconobj != null) {
+								break;
+							}
+						}
+					}
+				}
+				return iconobj;
+			}
 		}
 	}
 }

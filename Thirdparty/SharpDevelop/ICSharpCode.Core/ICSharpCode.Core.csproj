@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>8.0.50215</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}</ProjectGuid>
     <RootNamespace>ICSharpCode.Core</RootNamespace>
@@ -21,27 +21,8 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
+    <SourceAnalysisOverrideSettingsFile>C:\Users\daniel\AppData\Roaming\ICSharpCode/SharpDevelop3.0\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -70,6 +51,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +63,8 @@
     <Compile Include="Configuration\AssemblyInfo.cs" />
     <Compile Include="Src\AddInTree\AddIn\AddIn.cs" />
     <Compile Include="Src\AddInTree\AddIn\AddInLoadException.cs" />
+    <Compile Include="Src\AddInTree\AddIn\AssemblyLocator.cs" />
+    <Compile Include="Src\AddInTree\AddIn\BuildItemArgs.cs" />
     <Compile Include="Src\AddInTree\AddIn\Codon.cs" />
     <Compile Include="Src\AddInTree\AddIn\ComplexCondition.cs" />
     <Compile Include="Src\AddInTree\AddIn\Condition.cs" />
@@ -105,9 +91,13 @@
     <Compile Include="Src\AddInTree\AddIn\DefaultDoozers\ToolBarItem\ToolBarItemDoozer.cs" />
     <Compile Include="Src\AddInTree\AddInTree.cs" />
     <Compile Include="Src\AddInTree\AddInTreeNode.cs" />
+    <Compile Include="Src\AddInTree\TopologicalSort.cs" />
     <Compile Include="Src\AddInTree\TreePathNotFoundException.cs" />
     <Compile Include="Src\CoreException.cs" />
+    <Compile Include="Src\Services\AnalyticsMonitor\AnalyticsMonitorService.cs" />
+    <Compile Include="Src\Services\AnalyticsMonitor\IAnalyticsMonitor.cs" />
     <Compile Include="Src\Services\ApplicationStateInfoService.cs" />
+    <Compile Include="Src\Services\FileUtility\FileName.cs" />
     <Compile Include="Src\Services\FileUtility\FileNameEventHandler.cs" />
     <Compile Include="Src\Services\FileUtility\FileUtility.cs" />
     <Compile Include="Src\Services\FileUtility\FileUtility.Minimal.cs" />
@@ -119,10 +109,13 @@
     <Compile Include="Src\Services\PropertyService\Properties.cs" />
     <Compile Include="Src\Services\PropertyService\PropertyChangedEvent.cs" />
     <Compile Include="Src\Services\PropertyService\PropertyService.cs" />
+    <Compile Include="Src\Services\RegistryService\RegistryService.cs" />
     <Compile Include="Src\Services\ResourceService\ResourceNotFoundException.cs" />
     <Compile Include="Src\Services\ResourceService\ResourceService.cs" />
     <Compile Include="Src\Services\ServiceManager.cs" />
+    <Compile Include="Src\Services\ServiceNotFoundException.cs" />
     <Compile Include="Src\Services\StringParser\IStringTagProvider.cs" />
+    <Compile Include="Src\Services\StringParser\PropertyObjectTagProvider.cs" />
     <Compile Include="Src\Services\StringParser\StringParser.cs" />
     <Compile Include="Src\Util\AbstractCommand.cs" />
     <Compile Include="Src\Util\CallbackOnDispose.cs" />
@@ -136,7 +129,6 @@
     <Compile Include="Src\AddInTree\CoreStartup.cs" />
     <Compile Include="Src\AddInTree\AddInManager.cs" />
     <Compile Include="Src\AddInTree\AddIn\DefaultDoozers\StringDoozer.cs" />
-    <Compile Include="Src\Util\AppDomainLaunchHelper.cs" />
     <Compile Include="Src\AddInTree\AddIn\DefaultDoozers\ToolBarItem\AbstractTextBoxCommand.cs" />
     <Compile Include="Src\AddInTree\AddIn\DefaultDoozers\ToolBarItem\ITextBoxCommand.cs" />
   </ItemGroup>
@@ -145,26 +137,5 @@
       <Link>Src\AddInTree\AddIn\AddIn.xsd</Link>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
 </Project>

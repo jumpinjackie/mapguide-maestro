@@ -26,11 +26,14 @@ using ICSharpCode.Core;
 using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Base;
 using Maestro.Base.Services;
+using System.IO;
 
 namespace Maestro.AddIn.Scripting.Services
 {
     /// <summary>
-    /// A simplified helper class that is exposed to python scripts
+    /// A simplified helper class that is exposed to python scripts to provide
+    /// convenience functionality or to workaround concepts that don't cleanly
+    /// translate to IronPython (eg. Generics)
     /// </summary>
     public class HostApplication
     {
@@ -48,6 +51,32 @@ namespace Maestro.AddIn.Scripting.Services
         public ServerConnectionManager ConnectionManager
         {
             get { return ServiceRegistry.GetService<ServerConnectionManager>(); }
+        }
+
+        /// <summary>
+        /// Gets the XML content of the given resource id
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="resourceId"></param>
+        /// <returns></returns>
+        public string GetResourceXml(IServerConnection conn, string resourceId)
+        {
+            var res = conn.ResourceService.GetResource(resourceId);
+            return ResourceTypeRegistry.SerializeAsString(res);
+        }
+
+        /// <summary>
+        /// Sets the XML content of the given resource id
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="resourceId"></param>
+        /// <param name="xml"></param>
+        public void SetResourceXml(IServerConnection conn, string resourceId, string xml)
+        {
+            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+            {
+                conn.ResourceService.SetResourceXmlData(resourceId, ms);
+            }
         }
 
         /// <summary>

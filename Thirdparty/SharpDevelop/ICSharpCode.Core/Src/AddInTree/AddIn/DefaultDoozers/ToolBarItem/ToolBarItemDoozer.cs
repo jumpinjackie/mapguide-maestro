@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 3287 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Collections;
@@ -34,6 +30,9 @@ namespace ICSharpCode.Core
 	/// Command class that is run when item is clicked; or class that manages
 	/// the ComboBox/DropDownButton. Required for everything except "Separator".
 	/// </attribute>
+	/// <attribute name="shortcut" use="optional">
+	/// Shortcut that activates the command (e.g. "Control|S").
+	/// </attribute>
 	/// <usage>Any toolbar strip paths, e.g. /SharpDevelop/Workbench/ToolBar</usage>
 	/// <children childTypes="MenuItem">A drop down button has menu items as sub elements.</children>
 	/// <returns>
@@ -52,9 +51,9 @@ namespace ICSharpCode.Core
 			}
 		}
 		
-		public object BuildItem(object caller, Codon codon, ArrayList subItems)
+		public object BuildItem(BuildItemArgs args)
 		{
-			return new ToolbarItemDescriptor(caller, codon, subItems);
+			return new ToolbarItemDescriptor(args.Caller, args.Codon, args.BuildSubItems<object>());
 		}
 	}
 	

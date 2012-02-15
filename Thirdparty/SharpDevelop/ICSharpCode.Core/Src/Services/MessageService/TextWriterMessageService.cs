@@ -1,9 +1,5 @@
-// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <author name="Daniel Grunwald"/>
-//     <version>$Revision$</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.IO;
@@ -25,7 +21,12 @@ namespace ICSharpCode.Core.Services
 			this.writer = writer;
 		}
 		
-		public void ShowError(Exception ex, string message)
+		public void ShowError(string message)
+		{
+			writer.WriteLine(message);
+		}
+		
+		public void ShowException(Exception ex, string message)
 		{
 			if (message != null) {
 				writer.WriteLine(message);

@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 1751 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 
@@ -37,6 +33,6 @@ namespace ICSharpCode.Core
 		/// <summary>
 		/// Returns true, when the condition is valid otherwise false.
 		/// </summary>
-		bool IsValid(object caller);
+		bool IsValid(object owner);
 	}
 }

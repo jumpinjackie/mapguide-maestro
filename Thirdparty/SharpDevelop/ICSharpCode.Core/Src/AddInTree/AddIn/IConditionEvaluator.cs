@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 915 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 
@@ -14,6 +10,6 @@ namespace ICSharpCode.Core
 	/// </summary>
 	public interface IConditionEvaluator
 	{
-		bool IsValid(object caller, Condition condition);
+		bool IsValid(object owner, Condition condition);
 	}
 }

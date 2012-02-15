@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 3702 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Drawing;
@@ -32,12 +28,13 @@ namespace ICSharpCode.Core.WinForms
 			this.InitializeComponent2();
 			RightToLeftConverter.ConvertRecursive(this);
 			
-			displayMessage = StringParser.Parse(message, new string[,] {
-				{"FileName", fileName},
-				{"Path",     Path.GetDirectoryName(fileName)},
-				{"FileNameWithoutPath", Path.GetFileName(fileName)},
-				{"Exception", exceptionGot.GetType().FullName},
-			});
+			displayMessage = StringParser.Parse(
+				message,
+				new StringTagPair("FileName", fileName),
+				new StringTagPair("Path",     Path.GetDirectoryName(fileName)),
+				new StringTagPair("FileNameWithoutPath", Path.GetFileName(fileName)),
+				new StringTagPair("Exception", exceptionGot.GetType().FullName)
+			);
 			descriptionTextBox.Lines = this.displayMessage.Split('\n');
 			
 			this.exceptionGot = exceptionGot;

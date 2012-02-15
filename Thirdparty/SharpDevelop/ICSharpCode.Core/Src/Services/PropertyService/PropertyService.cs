@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 4029 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.IO;
@@ -23,20 +19,20 @@ namespace ICSharpCode.Core
 		
 		static Properties properties;
 		
-		public static bool Initialized
+		public static bool Initialized {
+			get { return properties != null; }
+		}
+		
+		public static void InitializeServiceForUnitTests()
 		{
-			get
-			{
-				return properties != null;
-			}
+			properties = null;
+			InitializeService(null, null, null);
 		}
 
 		public static void InitializeService(string configDirectory, string dataDirectory, string propertiesName)
 		{
 			if (properties != null)
 				throw new InvalidOperationException("Service is already initialized.");
-			if (configDirectory == null || dataDirectory == null || propertiesName == null)
-				throw new ArgumentNullException();
 			properties = new Properties();
 			PropertyService.configDirectory = configDirectory;
 			PropertyService.dataDirectory = dataDirectory;
@@ -76,12 +72,14 @@ namespace ICSharpCode.Core
 		{
 			if (properties == null)
 				throw new InvalidOperationException("Service is not initialized.");
+			if (string.IsNullOrEmpty(configDirectory) || string.IsNullOrEmpty(propertyXmlRootNodeName))
+				throw new InvalidOperationException("No file name was specified on service creation");
 			if (!Directory.Exists(configDirectory)) {
 				Directory.CreateDirectory(configDirectory);
 			}
 			
 			if (!LoadPropertiesFromStream(Path.Combine(configDirectory, propertyFileName))) {
-				LoadPropertiesFromStream(FileUtility.Combine(DataDirectory, "options", propertyFileName));
+				LoadPropertiesFromStream(Path.Combine(DataDirectory, "options", propertyFileName));
 			}
 		}
 		
@@ -111,6 +109,8 @@ namespace ICSharpCode.Core
 		
 		public static void Save()
 		{
+			if (string.IsNullOrEmpty(configDirectory) || string.IsNullOrEmpty(propertyXmlRootNodeName))
+				throw new InvalidOperationException("No file name was specified on service creation");
 			using (MemoryStream ms = new MemoryStream()) {
 				XmlTextWriter writer = new XmlTextWriter(ms, Encoding.UTF8);
 				writer.Formatting = Formatting.Indented;

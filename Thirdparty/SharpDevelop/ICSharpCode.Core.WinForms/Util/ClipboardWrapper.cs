@@ -1,9 +1,5 @@
-// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Daniel Grunwald" email="daniel@danielgrunwald.de"/>
-//     <version>$Revision: 3702 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Runtime.InteropServices;
@@ -16,6 +12,8 @@ namespace ICSharpCode.Core.WinForms
 	/// </summary>
 	public static class ClipboardWrapper
 	{
+		[Obsolete("Avoid using this property: it is problematic because it requires exclusive clipboard access. " +
+		          "The Clipboard.ContainsText() implementation in WPF is much better than the one in WinForms.")]
 		public static bool ContainsText {
 			get {
 				try {

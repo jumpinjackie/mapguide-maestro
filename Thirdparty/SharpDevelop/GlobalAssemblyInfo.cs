@@ -20,16 +20,19 @@ using System.Reflection;
 [assembly: System.Runtime.InteropServices.ComVisible(false)]
 [assembly: AssemblyCompany("ic#code")]
 [assembly: AssemblyProduct("SharpDevelop")]
-[assembly: AssemblyCopyright("2000-2010 AlphaSierraPapa")]
+[assembly: AssemblyCopyright("2000-2012 AlphaSierraPapa")]
 [assembly: AssemblyVersion(RevisionClass.FullVersion)]
 [assembly: NeutralResourcesLanguage("en-US")]
 
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2243:AttributeStringLiteralsShouldParseCorrectly",
+	Justification = "AssemblyInformationalVersion does not need to be a parsable version")]
+
 internal static class RevisionClass
 {
-	public const string Major = "3";
-	public const string Minor = "2";
+	public const string Major = "4";
+	public const string Minor = "1";
 	public const string Build = "0";
-	public const string Revision = "5777";
+	public const string Revision = "8000";
 	
 	public const string MainVersion = Major + "." + Minor;
 	public const string FullVersion = Major + "." + Minor + "." + Build + "." + Revision;

@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 3702 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Windows.Forms;
@@ -49,7 +45,8 @@ namespace ICSharpCode.Core.WinForms
 			this.codon   = codon;
 			
 			menuCommand = (IComboBoxCommand)codon.AddIn.CreateObject(codon.Properties["class"]);
-			menuCommand.Owner = this;
+			menuCommand.ComboBox = this;
+			menuCommand.Owner = caller;
 			if (menuCommand == null) {
 				throw new NullReferenceException("Can't create combobox menu command");
 			}

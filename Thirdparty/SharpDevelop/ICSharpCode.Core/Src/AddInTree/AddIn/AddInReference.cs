@@ -1,9 +1,5 @@
-// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Daniel Grunwald" email="daniel@danielgrunwald.de"/>
-//     <version>$Revision: 5352 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Collections.Generic;
@@ -98,15 +94,6 @@ namespace ICSharpCode.Core
 				} else {
 					reference.maximumVersion = reference.minimumVersion = ParseVersion(version, hintPath);
 				}
-				
-				if (reference.Name == "SharpDevelop") {
-					// HACK: SD 3.0 AddIns work with SharpDevelop 3.1
-					// Because some 3.0 AddIns restrict themselves to SD 3.0, we extend the
-					// supported SD range.
-					if (reference.maximumVersion == new Version("3.0") || reference.maximumVersion == new Version("3.1")) {
-						reference.maximumVersion = new Version(RevisionClass.MainVersion);
-					}
-				}
 			}
 			reference.requirePreload = string.Equals(properties["requirePreload"], "true", StringComparison.OrdinalIgnoreCase);
 			return reference;
@@ -121,7 +108,7 @@ namespace ICSharpCode.Core
 			if (version.StartsWith("@")) {
 				if (version == "@SharpDevelopCoreVersion") {
 					if (entryVersion == null)
-						entryVersion = new Version(RevisionClass.FullVersion);
+						entryVersion = new Version(RevisionClass.Major + "." + RevisionClass.Minor + "." + RevisionClass.Build + "." + RevisionClass.Revision);
 					return entryVersion;
 				}
 				if (hintPath != null) {

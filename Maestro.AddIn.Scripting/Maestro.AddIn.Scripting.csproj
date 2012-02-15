@@ -53,6 +53,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -69,8 +70,30 @@
     </Compile>
     <Compile Include="Commands\StartupCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\ScriptingService.cs" />
     <Compile Include="Services\ScriptingClasses.cs" />
+    <Compile Include="UI\IPEWrapper.cs" />
+    <Compile Include="UI\IronPythonRepl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\IronPythonRepl.Designer.cs">
+      <DependentUpon>IronPythonRepl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IronTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Paths.cs" />
+    <Compile Include="UI\TextWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TextWindow.Designer.cs">
+      <DependentUpon>TextWindow.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Manifest.addin">
@@ -97,6 +120,18 @@
       <Project>{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}</Project>
       <Name>ICSharpCode.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\IronPythonRepl.resx">
+      <DependentUpon>IronPythonRepl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TextWindow.resx">
+      <DependentUpon>TextWindow.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

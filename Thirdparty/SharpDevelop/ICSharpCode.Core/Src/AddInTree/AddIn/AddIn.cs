@@ -1,13 +1,10 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 3671 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Xml;
 
 namespace ICSharpCode.Core
@@ -29,18 +26,42 @@ namespace ICSharpCode.Core
 
 		public object CreateObject(string className)
 		{
+			Type t = FindType(className);
+			if (t != null)
+				return Activator.CreateInstance(t);
+			else
+				return null;
+		}
+		
+		public Type FindType(string className)
+		{
 			LoadDependencies();
 			foreach (Runtime runtime in runtimes) {
-				object o = runtime.CreateInstance(className);
-				if (o != null) {
-					return o;
+				Type t = runtime.FindType(className);
+				if (t != null) {
+					return t;
 				}
 			}
 			if (hasShownErrorMessage) {
-				LoggingService.Error("Cannot create object: " + className);
+				LoggingService.Error("Cannot find class: " + className);
 			} else {
 				hasShownErrorMessage = true;
-				MessageService.ShowError("Cannot create object: " + className + "\nFuture missing objects will not cause an error message.");
+				MessageService.ShowError("Cannot find class: " + className + "\nFuture missing objects will not cause an error message.");
+			}
+			return null;
+		}
+		
+		public Stream GetManifestResourceStream(string resourceName)
+		{
+			LoadDependencies();
+			foreach (Runtime runtime in runtimes) {
+				Assembly assembly = runtime.LoadedAssembly;
+				if (assembly != null) {
+					Stream s = assembly.GetManifestResourceStream(resourceName);
+					if (s != null) {
+						return s;
+					}
+				}
 			}
 			return null;
 		}
@@ -49,16 +70,24 @@ namespace ICSharpCode.Core
 		{
 			LoadDependencies();
 			foreach (Runtime runtime in runtimes) {
-				runtime.Load();
+				if (runtime.IsActive)
+					runtime.Load();
 			}
 		}
 		
-		bool dependenciesLoaded;
+		volatile bool dependenciesLoaded;
 		
 		void LoadDependencies()
 		{
+			// Thread-safe dependency loading:
+			// Because the methods being called should be thread-safe, there's
+			// no problem when we load dependencies multiple times concurrently.
+			// However, we need to make sure we don't return before the dependencies are ready,
+			// so "bool dependenciesLoaded" must be volatile and set only at the very end of this method.
 			if (!dependenciesLoaded) {
-				dependenciesLoaded = true;
+				LoggingService.Info("Loading addin " + this.Name);
+				
+				AssemblyLocator.Init();
 				foreach (AddInReference r in manifest.Dependencies) {
 					if (r.RequirePreload) {
 						bool found = false;
@@ -73,6 +102,7 @@ namespace ICSharpCode.Core
 						}
 					}
 				}
+				dependenciesLoaded = true;
 			}
 		}
 		
@@ -89,9 +119,7 @@ namespace ICSharpCode.Core
 		/// Action to be set to AddInAction.CustomError.
 		/// </summary>
 		public string CustomErrorMessage {
-			get {
-				return customErrorMessage;
-			}
+			get { return customErrorMessage; }
 			internal set {
 				if (value != null) {
 					Enabled = false;
@@ -105,78 +133,51 @@ namespace ICSharpCode.Core
 		/// Action to execute when the application is restarted.
 		/// </summary>
 		public AddInAction Action {
-			get {
-				return action;
-			}
-			set {
-				action = value;
-			}
+			get { return action; }
+			set { action = value; }
 		}
 		
 		public List<Runtime> Runtimes {
-			get {
-				return runtimes;
-			}
+			get { return runtimes; }
 		}
 		
 		public Version Version {
-			get {
-				return manifest.PrimaryVersion;
-			}
+			get { return manifest.PrimaryVersion; }
 		}
 		
 		public string FileName {
-			get {
-				return addInFileName;
-			}
+			get { return addInFileName; }
+			set { addInFileName = value; }
 		}
 		
 		public string Name {
-			get {
-				return properties["name"];
-			}
+			get { return properties["name"]; }
 		}
 		
 		public AddInManifest Manifest {
-			get {
-				return manifest;
-			}
+			get { return manifest; }
 		}
 		
 		public Dictionary<string, ExtensionPath> Paths {
-			get {
-				return paths;
-			}
+			get { return paths; }
 		}
 		
 		public Properties Properties {
-			get {
-				return properties;
-			}
+			get { return properties; }
 		}
 		
 		public List<string> BitmapResources {
-			get {
-				return bitmapResources;
-			}
-			set {
-				bitmapResources = value;
-			}
+			get { return bitmapResources; }
+			set { bitmapResources = value; }
 		}
 		
 		public List<string> StringResources {
-			get {
-				return stringResources;
-			}
-			set {
-				stringResources = value;
-			}
+			get { return stringResources; }
+			set { stringResources = value; }
 		}
 		
 		public bool Enabled {
-			get {
-				return enabled;
-			}
+			get { return enabled; }
 			set {
 				enabled = value;
 				this.Action = value ? AddInAction.Enable : AddInAction.Disable;
@@ -226,6 +227,7 @@ namespace ICSharpCode.Core
 							}
 							string fileName = Path.Combine(hintPath, reader.GetAttribute(0));
 							XmlReaderSettings xrs = new XmlReaderSettings();
+							xrs.NameTable = reader.NameTable; // share the name table
 							xrs.ConformanceLevel = ConformanceLevel.Fragment;
 							using (XmlReader includeReader = XmlTextReader.Create(fileName, xrs)) {
 								SetupAddIn(includeReader, addIn, Path.GetDirectoryName(fileName));
@@ -259,41 +261,59 @@ namespace ICSharpCode.Core
 			return paths[pathName];
 		}
 		
-		public static AddIn Load(TextReader textReader)
+		public static AddIn Load(TextReader textReader, string hintPath = null, XmlNameTable nameTable = null)
 		{
-			return Load(textReader, null);
-		}
-		
-		public static AddIn Load(TextReader textReader, string hintPath)
-		{
-			AddIn addIn = new AddIn();
-			using (XmlTextReader reader = new XmlTextReader(textReader)) {
-				while (reader.Read()){
-					if (reader.IsStartElement()) {
-						switch (reader.LocalName) {
-							case "AddIn":
-								addIn.properties = Properties.ReadFromAttributes(reader);
-								SetupAddIn(reader, addIn, hintPath);
-								break;
-							default:
-								throw new AddInLoadException("Unknown add-in file.");
+			if (nameTable == null)
+				nameTable = new NameTable();
+			try {
+				AddIn addIn = new AddIn();
+				using (XmlTextReader reader = new XmlTextReader(textReader, nameTable)) {
+					while (reader.Read()){
+						if (reader.IsStartElement()) {
+							switch (reader.LocalName) {
+								case "AddIn":
+									addIn.properties = Properties.ReadFromAttributes(reader);
+									SetupAddIn(reader, addIn, hintPath);
+									break;
+								default:
+									throw new AddInLoadException("Unknown add-in file.");
+							}
 						}
 					}
 				}
+				return addIn;
+			} catch (XmlException ex) {
+				throw new AddInLoadException(ex.Message, ex);
 			}
-			return addIn;
 		}
 		
-		public static AddIn Load(string fileName)
+		public static AddIn Load(string fileName, XmlNameTable nameTable = null)
 		{
 			try {
 				using (TextReader textReader = File.OpenText(fileName)) {
-					AddIn addIn = Load(textReader, Path.GetDirectoryName(fileName));
+					AddIn addIn = Load(textReader, Path.GetDirectoryName(fileName), nameTable);
 					addIn.addInFileName = fileName;
 					return addIn;
 				}
+			} catch (AddInLoadException) {
+				throw;
 			} catch (Exception e) {
 				throw new AddInLoadException("Can't load " + fileName, e);
+			}
+		}
+		
+		/// <summary>
+		/// Gets whether the AddIn is a preinstalled component of the host application.
+		/// </summary>
+		public bool IsPreinstalled {
+			get {
+				if (FileUtility.IsBaseDirectory(FileUtility.ApplicationRootPath, this.FileName)) {
+					string hidden = this.Properties["addInManagerHidden"];
+					return string.Equals(hidden, "true", StringComparison.OrdinalIgnoreCase)
+						|| string.Equals(hidden, "preinstalled", StringComparison.OrdinalIgnoreCase);
+				} else {
+					return false;
+				}
 			}
 		}
 	}

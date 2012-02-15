@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Daniel Grunwald" email="daniel@danielgrunwald.de"/>
-//     <version>$Revision: 1048 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Collections;
@@ -31,9 +27,9 @@ namespace ICSharpCode.Core
 			}
 		}
 		
-		public object BuildItem(object caller, Codon codon, ArrayList subItems)
+		public object BuildItem(BuildItemArgs args)
 		{
-			return StringParser.Parse(codon.Properties["text"]);
+			return StringParser.Parse(args.Codon.Properties["text"]);
 		}
 	}
 }

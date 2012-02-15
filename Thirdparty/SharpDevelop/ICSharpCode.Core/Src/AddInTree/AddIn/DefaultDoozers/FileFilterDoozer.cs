@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 915 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Collections;
@@ -21,7 +17,7 @@ namespace ICSharpCode.Core
 	/// </attribute>
 	/// <usage>Only in /SharpDevelop/Workbench/FileFilter</usage>
 	/// <returns>
-	/// String in the format "name|extensions".
+	/// <see cref="FileFilterDescriptor"/> in the format "name|extensions".
 	/// </returns>
 	public class FileFilterDoozer : IDoozer
 	{
@@ -35,9 +31,41 @@ namespace ICSharpCode.Core
 			}
 		}
 		
-		public object BuildItem(object caller, Codon codon, ArrayList subItems)
+		public object BuildItem(BuildItemArgs args)
 		{
-			return StringParser.Parse(codon.Properties["name"]) + "|" + codon.Properties["extensions"];
+			Codon codon = args.Codon;
+			return new FileFilterDescriptor {
+				Name = StringParser.Parse(codon.Properties["name"]),
+				Extensions = codon.Properties["extensions"],
+				MimeType = codon.Properties["mimeType"]
+			};
+		}
+	}
+	
+	public sealed class FileFilterDescriptor
+	{
+		public string Name { get; set; }
+		public string Extensions { get; set; }
+		public string MimeType { get; set; }
+		
+		/// <summary>
+		/// Gets whether this descriptor matches the specified file extension.
+		/// </summary>
+		/// <param name="extension">File extension starting with '.'</param>
+		public bool ContainsExtension(string extension)
+		{
+			if (string.IsNullOrEmpty(extension))
+				return false;
+			int index = this.Extensions.IndexOf("*" + extension, StringComparison.OrdinalIgnoreCase);
+			if (index < 0 || index + extension.Length > this.Extensions.Length)
+				return false;
+			return index + extension.Length < this.Extensions.Length
+				|| this.Extensions[index + extension.Length] == ';';
+		}
+		
+		public override string ToString()
+		{
+			return Name + "|" + Extensions;
 		}
 	}
 }

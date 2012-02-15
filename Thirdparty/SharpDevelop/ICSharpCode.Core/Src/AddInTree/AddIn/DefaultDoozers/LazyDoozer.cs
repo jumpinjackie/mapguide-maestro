@@ -1,9 +1,5 @@
-﻿// <file>
-//     <copyright see="prj:///doc/copyright.txt"/>
-//     <license see="prj:///doc/license.txt"/>
-//     <owner name="Mike Krüger" email="mike@icsharpcode.net"/>
-//     <version>$Revision: 915 $</version>
-// </file>
+﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
+// This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
 using System;
 using System.Collections;
@@ -55,14 +51,14 @@ namespace ICSharpCode.Core
 			}
 		}
 		
-		public object BuildItem(object caller, Codon codon, ArrayList subItems)
+		public object BuildItem(BuildItemArgs args)
 		{
 			IDoozer doozer = (IDoozer)addIn.CreateObject(className);
 			if (doozer == null) {
 				return null;
 			}
 			AddInTree.Doozers[name] = doozer;
-			return doozer.BuildItem(caller, codon, subItems);
+			return doozer.BuildItem(args);
 		}
 		
 		public override string ToString()
@@ -71,6 +67,5 @@ namespace ICSharpCode.Core
 			                     className,
 			                     name);
 		}
-		
 	}
 }
