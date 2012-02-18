@@ -27,6 +27,8 @@ using ICSharpCode.Core;
 using Maestro.Editors.Diff;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI.Resource.Comparison;
+using System.Xml;
+using Maestro.Base.Util;
 
 namespace Maestro.Base.Commands
 {
@@ -42,20 +44,18 @@ namespace Maestro.Base.Commands
 
             TextFileDiffList sLF = null;
             TextFileDiffList dLF = null;
-            string sourceFile = Path.GetTempFileName();
-            string targetFile = Path.GetTempFileName();
+            string sourceFile = null;
+            string targetFile = null;
             try
             {
                 edSvc.SyncSessionCopy();
-                using (var source = new StreamReader(edSvc.ResourceService.GetResourceXmlData(edSvc.ResourceID)))
-                using (var target = new StreamReader(edSvc.ResourceService.GetResourceXmlData(edSvc.EditedResourceID)))
-                {
-                    File.WriteAllText(sourceFile, source.ReadToEnd());
-                    File.WriteAllText(targetFile, target.ReadToEnd());
-
-                    sLF = new TextFileDiffList(sourceFile);
-                    dLF = new TextFileDiffList(targetFile);
-                }
+                XmlCompareUtil.PrepareForComparison(edSvc.ResourceService,
+                                                    edSvc.ResourceID,
+                                                    edSvc.EditedResourceID,
+                                                    out sourceFile,
+                                                    out targetFile);
+                sLF = new TextFileDiffList(sourceFile);
+                dLF = new TextFileDiffList(targetFile);
             }
             catch (Exception ex)
             {

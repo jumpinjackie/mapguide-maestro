@@ -31,6 +31,7 @@ using System.Collections;
 using Maestro.Editors.Diff;
 using Maestro.Shared.UI;
 using System.IO;
+using Maestro.Base.Util;
 
 namespace Maestro.Base.UI
 {
@@ -64,20 +65,18 @@ namespace Maestro.Base.UI
         {
             TextFileDiffList sLF = null;
             TextFileDiffList dLF = null;
-            string sourceFile = Path.GetTempFileName();
-            string targetFile = Path.GetTempFileName();
+            string sourceFile = null;
+            string targetFile = null;
             try
             {
                 _edSvc.SyncSessionCopy();
-                using (var source = new StreamReader(_edSvc.ResourceService.GetResourceXmlData(_edSvc.ResourceID)))
-                using (var target = new StreamReader(_edSvc.ResourceService.GetResourceXmlData(_edSvc.EditedResourceID)))
-                {
-                    File.WriteAllText(sourceFile, source.ReadToEnd());
-                    File.WriteAllText(targetFile, target.ReadToEnd());
-
-                    sLF = new TextFileDiffList(sourceFile);
-                    dLF = new TextFileDiffList(targetFile);
-                }
+                XmlCompareUtil.PrepareForComparison(_edSvc.ResourceService,
+                                                    _edSvc.ResourceID,
+                                                    _edSvc.EditedResourceID,
+                                                    out sourceFile,
+                                                    out targetFile);
+                sLF = new TextFileDiffList(sourceFile);
+                dLF = new TextFileDiffList(targetFile);
             }
             catch (Exception ex)
             {
