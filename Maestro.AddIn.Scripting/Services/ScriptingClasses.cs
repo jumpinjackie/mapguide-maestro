@@ -46,11 +46,22 @@ namespace Maestro.AddIn.Scripting.Services
         }
 
         /// <summary>
-        /// The connection manager
+        /// Returns a list of the names of all currently open connections
         /// </summary>
-        public ServerConnectionManager ConnectionManager
+        /// <returns></returns>
+        public string[] GetConnectionNames()
         {
-            get { return ServiceRegistry.GetService<ServerConnectionManager>(); }
+            return ServiceRegistry.GetService<ServerConnectionManager>().GetConnectionNames().ToArray();
+        }
+
+        /// <summary>
+        /// Gets the connection by its specified name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public IServerConnection GetConnection(string name)
+        {
+            return ServiceRegistry.GetService<ServerConnectionManager>().GetConnection(name);
         }
 
         /// <summary>

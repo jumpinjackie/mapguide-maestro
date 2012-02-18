@@ -185,7 +185,7 @@ namespace Maestro
     sealed class MaestroServiceManager : ServiceManager
     {
         static ILoggingService loggingService = new TextWriterLoggingService(BroadcastTextWriter.Instance);
-        static IMessageService messageService = new TextWriterMessageService(Console.Out);
+        static IMessageService messageService = new WinFormsMessageService(); //new TextWriterMessageService(Console.Out);
 
         public override ILoggingService LoggingService
         {
