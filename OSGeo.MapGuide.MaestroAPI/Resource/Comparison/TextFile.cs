@@ -53,7 +53,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 
     public class TextFileDiffList : IDiffList
     {
-        private const int MaxLineLength = 1024;
         private List<TextLine> _lines;
 
         public TextFileDiffList(string fileName)
@@ -66,12 +65,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
                 // the file is reached.
                 while ((line = sr.ReadLine()) != null)
                 {
-                    if (line.Length > MaxLineLength)
-                    {
-                        throw new InvalidOperationException(
-                            string.Format("File contains a line greater than {0} characters.",
-                            MaxLineLength.ToString()));
-                    }
                     _lines.Add(new TextLine(line));
                 }
             }
